@@ -8,6 +8,6 @@
 
 This file is continiously getting updated as we update our project.
 
-Folder `./report` includes all the files needed for our report and the report itself.
-Folder `./code` includes all our runnable code to reproduce our reported results.
-Folder `./model` has weights of our reported model that can be downloaded and used.
+Folder `./report` includes all the files needed for our report and the report itself.  
+Folder `./code` includes all our runnable code to reproduce our reported results.  
+Folder `./model` has weights of our reported model that can be downloaded and used.  
