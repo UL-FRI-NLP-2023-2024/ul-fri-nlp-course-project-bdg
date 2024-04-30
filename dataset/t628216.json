@@ -1,0 +1,186 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdrav!  V PCju imam tri palčke DDR3 rama, skupno 16GB. Ko sem pred cca 2 leti to kupoval, sem seveda gledal na vsak € in kupil najcenejšega.   Zanima me, kolikšen pomen ima pasivni hladilnik na RAMu? Bistveno zniža temperature ali je bolj za okras? Kakšne temperature na stock ram sploh dosega? Se da kako izmeriti? Npr tole sem našel: http://www.conrad.si/AKASA-Hladilni-plo.......htm?websale8=conrad-slowenien&pi=870386&ci=SHOP_AREA_17693_0415174   O nakupu nekega hladilnika na ram sem začel razmišljati, ker zadnje čase dobival občutek, da ram neki štrajka. V MemTestu sicer nič ne zazna, Windowsi tudi delajo brez problema, a se pri igranju novih iger dogaja, da mi framerate pade recimo iz 60fps na 12fps vsaki 2 min za 15 sekund. (Gta 4, Far Cry 4,...). Pregledal sem že vse mogoče, tako temerature CPUja (max 55stopinj) in Grafične (max 75stopinj), vse posodobitve, gonilniki so zadnji, windows 8.1 64x.  In ko sem naredil še PassMark Performance test in videl, da ram dobi le 1,5 do 2 zvezdici, sem se vprašal...    @user mislite?  SPecs: - Asrock 990FX extreme 3 - FX 8120 ponavadi na stock, včasih tudi na 4 GHz (problem glede fpsjev isti) - Gigabyte HD 7970 - ram zgoraj na sliki - chieftec 850w bps-850c"
+    },
+    {
+        "role": "assistant_0",
+        "message": "tisti hladilniki so bolj ali manj za okras (sploh za take frekvence), tako da tukaj ne tiči tvoj problem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zanima me, kolikšen pomen ima pasivni hladilnik na RAMu? \"Good looking\".  Na 1.5V voltaže nobenega.  Zakaj tebi igre delajo slabo je drugo vprašanje.Na kateri resoluciji igraš s kakšnimi nastavitvami ?"
+    },
+    {
+        "role": "user",
+        "message": "1920x1080, bolj kot ne vse na ultra. Smešno je, ker se fps ne zviša bistveno, če dam na medium ali low.  Problem se pojavlja pri dosti igrah. Sem štopal: skoraj točno na 2 min, za skoraj točno 15 sec fps pade na 8-13 slikic."
+    },
+    {
+        "role": "user",
+        "message": "....pregledal sem vse vse vse na googlu. Probal vse, zmeril vse. Pri drugih se je ta problem največkrat pojavil zaradi temperature diska. Jaz imam vse diske med 25 - 35 stopinj.  Pregledal sem tudi vse nastavitve v Catalist Control Centru. Testi stabilnosti ne pokažejo ničesar."
+    },
+    {
+        "role": "assistant_0",
+        "message": "si ziher, da se ti proc oz. grafa ne throttla takrat in ti padejo frejmi ?  kaj pa zdravje diska (smart) ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user pravi task manager za cpu in gpu-z za grafično med igranjem ?"
+    },
+    {
+        "role": "user",
+        "message": "kaj pravi task manager? ne razumem :P  Evo, sem zdajle še enkrat zagnal AIDA64:   Je tam pri CPU clock kaj narobe, ker tako niha med 3100 in 1400 MHz?  (pri corsair Force SSDju je normalno, da kaže 128 stopinj, ker ta disk nima merilca temperature in si potem nekaj izmisli)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "evo ti krivca, cpu se throttla na 1400Mhz in ti padajo frejmi..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "To je kar hud drop... Če imaš original glajenje na FXu ga obvezno zamenjaj. Brat je lih včeraj ruknu na 8320 ta novo Nocuo 15."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 26. nov 2014 ob 14:51 izjavil:evo ti krivca, cpu se throttla na 1400Mhz in ti padajo frejmi...   Že, samo sodeč po tem grafu se to dogaja vsake pol minute. Zdajle se je graf naadanjeval v idle (torej brez vkopljenega testa):  ne, imam Scythe NInja 3 rev 2"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ščist si hladilnik (tako prah kot tudi novo termalno pasto). Potem pa v biosu izklop cool 'n quiet pa testiraj še enkrat v igrah."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Samo cool 'n quiet je vklopi ko sistem idla, ne med igranjem iger. Bi prej rekel da se cpu pregreva."
+    },
+    {
+        "role": "user",
+        "message": "Tega padanja na 1400 MHz ne razumem. V CCC imam opcijo, da natavim razpon frekvence CPUja, da ne lavfa ves čas na 3100 MHz. In kot je tle vidno, imam naštimano da je le na 3100 MHz.   Termalno pasto sem dal novo pred tednom. Za vsak slučaj. In vse očistil. Moj PC je takoalitako vedno brez vsake smeti in prahu."
+    },
+    {
+        "role": "assistant_0",
+        "message": "če ti overrajda to nastavitev, pomeni da se pregreva al pa ne dobi dovolj štroma."
+    },
+    {
+        "role": "user",
+        "message": "Cool and Quiet sem izklopil. Bom sedaj pognal Far Cry 4 za 10 min. Hvala zaenkrat :)"
+    },
+    {
+        "role": "user",
+        "message": "Evo, sedajle med igranjem Far Cry 4:  (program AIDA je bil le odprt, test ustavljen)  Res hvala za nasvete, je očitno izklop Cool'n Quiet v biosu pomagal.  Bilo ni nobenega padca fpsja v slabih 10 minutah, igral pa sem pri sprejemljivih 23-41 fpsjih, odvisno od hitrosti premikanja, kar pa mislim, da je glede nanedokončanost igre še kar ok (upam da patch 1.04 kaj izboljša).  + hkrati sem v biosu izklopil tudi C1E. Naj pustim tako? :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "če ti dela kul, potem pusti tako... Lahko se pa še poigraš z različnimi komboti nastavitev."
+    },
+    {
+        "role": "user",
+        "message": "Samo še ena stvar mi ni jasna. Kje računalnik najde frekvenco 3400MHz, če je stock 3100 MHz.  V Biosih imam nastavljeno na auto, v windowsih mi pa eni programi kažejo 3,1, drugi pa 3,4. (?) Multiplikator nekje očitno skoči iz 15,5x na 17x...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "3400mhz je verjetno turbo frekvenca"
+    },
+    {
+        "role": "user",
+        "message": "aa, to bo to, turbo ja :) Hvala  Pa še nekaj: par postov gor sem imel v CCC v zavihku Performance možnosti za CPU power, sedaj pa le en podzavihek- AMD overdrive:  je to zaradi cool'n quiet opcije?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "čisto možno."
+    },
+    {
+        "role": "user",
+        "message": "tema je sicer mal zašla, ampak bom vseeno spet tu vprašal:  Danes se je problem s padanjem frekvence CPUja in posledično padcem fpsja v igrah spet pojavil:    Včeraj smo (očitno le začasno) to rešili z izklopom cool'n quiet opcije v biosu. @user še lahko naredim? Pregrevanja ni. Temperature so iste kot včeraj."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Izklopi turbo.  - Support for Socket AM3+ processors - Support for Socket AM3 processors: AMD Phenom™ II X6 / X4 / X3 / X2 (except 920 / 940) / Athlon II X4 / X3 / X2 / Sempron processors - Supports 8-Core CPU - Supports UCC feature (Unlock CPU Core) - Digi Power Design - 4 + 1 Power Phase Design - Supports CPU up to 140W - Supports AMD's Cool 'n' Quiet Technology - FSB 2600 MHz (5.2 GT/s) - Supports Untied Overclocking Technology - Supports Hyper-Transport 3.0 (HT 3.0) Technology  Tisti \"Supports CPU up to 140W\" pa je bolj kot ne za okras. Nekje si sposodi IR termometer in med full loadom izmeri vrm-je...boš takoj spremenil mnenje o normalnih temperaturah."
+    },
+    {
+        "role": "user",
+        "message": "Rajvno prejle sem probal v biosih dati nastavitve iz auto na manual in ročno manestil na stock frekvenco 3100MHz (200x15,5) in se sedaj kot klop drži 3100MHz-ev:"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 27. nov 2014 ob 12:25 izjavil: Tisti \"Supports CPU up to 140W\" pa je bolj kot ne za okras. Nekje si sposodi IR termometer in med full loadom izmeri vrm-je...boš takoj spremenil mnenje o normalnih temperaturah.    Tega glede 140W ne razumem... Sodeč po specifikacijah in mnogih drugih uporabnikih je fx8120 primeren za 990fx extreme3 (https://www.google.si/?gws_rd=ssl#q=990...  Ta IR termometer bom verjetno bolj težko kje našel, ampak tudi če nekaj visokega izmerim, kaj potem? Lahko kaj naredim? Konfiguracije raje ne bi menjaval, trenutno finančno ni ugoden čas. Raje bi tole kar imam porihtal, saj je skoraj sigurno neka banalna težava (nastavitve ipd.)"
+    },
+    {
+        "role": "user",
+        "message": "okej, sem kar s prstom probal. Če se na matični dotaknem teh vrm-jev, se fino spečem. Kar je obkroženo z rdečo, fino zapeče, kar je z zeleno, je bodisi mlačno ali sprejemljivo vroče:   ...nimam pa pojma, kaj mi to pove (in kaj je normalno)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "to ti pove, da se vrmji kr fajn pregrevajo :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 27. nov 2014 ob 13:05 izjavil:to ti pove, da se vrmji kr fajn pregrevajo :)   Že, samo, kaj lahko naredim?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "en fan pokneš gor... Al pa kupiš proper plato z 8+ fazami."
+    },
+    {
+        "role": "assistant_3",
+        "message": "drugo kot menjava plate ti ne preostane...s 4+1 fazami bi še ti fx-6 throttlal (vsaj tako pravi google pri \"990fx extreme3 throttling\")  lahko tudi probaš zraven nastavit en vent"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Aktivno hlajenje bi sigurno pomenilo razliko, na tvojem mestu bi poskusil."
+    },
+    {
+        "role": "user",
+        "message": "Aktivno hlajenje, mišljeno prav posebej en mali ventilatorček za vrm?  Ker prostora ni veliko:"
+    },
+    {
+        "role": "user",
+        "message": "Zdle sm iskal pol ure tele ventilatorčke, našel pa bolj malo. V slo spletnih trgovinah trgovinah nisem nič našel, na googlu najde le nekaj takih (cca 15EUR, ponavadi celo brez možnosti pošiljanja v slo):    + zgleda prekratek + mislim da mi ga ne bo uspelo zbasati zraven CPu hladilnika"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Koliko prostora v cm imaš na voljo (gabariti) ?"
+    },
+    {
+        "role": "user",
+        "message": "Problem je, ker gre hladilnik procesorja malenkost čez hladilnik vrmja (moder, gre malo čez sivo). Sivo je seveda ta hladilnik vrmja. Na levi pa je rdeča za ventilator in pod njim z zeleno konektorji za usb, zvok ipd, ki pa so po višini malo višji od vrha hladilnika za vrm.   Uglavnm pa, med hladilnikom cpuja in ventilatorjem (rdeč) je 3,5 cm.   Še neki mi ni jasno... zakaj je pasivni hladilnik od vrmja zraven teh 5ih vrm škatlic in ne na njih?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Še neki mi ni jasno... zakaj je pasivni hladilnik od vrmja zraven teh 5ih vrm škatlic in ne na njih?  Ker te niso potrebne hlajenja. To so ubistvo samo tuljave, pod hladilnikom so pa vrm čipi."
+    },
+    {
+        "role": "user",
+        "message": "@user pa, če bi dal nek pasivni hladilnik na tega trenutnega kar čez, ravno toliko, da bi bil dovolj visok, da bi ga hladil zračni pretok od pcu hladilnika do ventilatorja na zadnji stranici ohišja?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "kupi to http://www.bolha.com/racunalnistvo/osno..., tvojo pa prodaj za podobno ceno oz. med 60 in 80€...990fx itak ne rabiš, če ne misliš imeti treh grafičnih.  lahko tudi daš malo večji vent na cpu hladilnik, da ustvariš malo prepiha"
+    },
+    {
+        "role": "user",
+        "message": "ma ne ne ne, ni šans da zdaj kaj menjavam. + ne maram kupovati rabljenih stvari.   Bom kar tako naredil kot ste napisali. Kupil z ebaya en ta vrm ventilatorček za 6USD (najde kdo kje kaj cenejšega) in zamenjal cpu ventilator za enga 140mm.  Očitno bo treba okrepiti pretok zraka. Namreč, sedaj imam vse tri ventilatorje (sprednji, na cpuju in zadnji) preklopnjene na regulator obratov, s tem da imam 1. in 3. vendno na minimum, na cpu pa na max. Predvidevam, da bi bilo bolje priklopiti vse nazaj na mobo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Poišči kak vent iz starih kišt (p1 120 Mhz, 80486) ali agp grafičnih."
+    },
+    {
+        "role": "assistant_0",
+        "message": "lahko tudi menjaš 8120 za 8320E :)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Nevem kako bi bil 990FX extreme 3 na stock throttlu, jst mam Asusa M5A97 R2.0 4+2 power phase in navitga Fx6300 4.4ghz nič ne throttla in nobenih drastičnih fps padcov kot se navaja. http://www.overclock.net/t/946407/amd-m... Sej tist heatsink za vrmje ki ga ima bi moralo biti dovolj za stock. Res je pa da imam fajn prezračeno ohišje mogoče to ima neki vpliv.  Kot že rekli, Probi ugasnt turbo in ga ročno dat na stock tam nekje nekje okol 3.5ghz. pa testeri če ti se neha fps dropi"
+    },
+    {
+        "role": "user",
+        "message": "Ma sej ubistvu jst zdej sploh nimam več težav. Ko sem izklopu cool'n quiet in dal v biosih iz auto na manual (na stock frekvenco ročno), je začelo super delat. Tudi temperature procesorja so čisto ok. V idle 18-23 stopinj (odvisno od frekvence ventilatorja - v prostoru je cca. 23 stopinj), grafična dela (max temp je 70 stopinj).  Zdej če pa tist klinčev vrm kuha, naj pa kuha. :P (vprašanje, koliko dejansko kuha)   Skratka, hvala vsem za nasvete, rešitev smo našli :))"
+    },
+    {
+        "role": "assistant_0",
+        "message": "sam v vednost, amd temparature niso primerljive z intelovimi. Pa idle temparature je treba jemat z rezervno, ker so večinoma mimo (ko vidiš 5C v 20C prostoru, pol veš da neki nešteima)."
+    },
+    {
+        "role": "user",
+        "message": "to razumem. sej že po otipu čutim, da je veter iz škatle približno isto kot zrak v prostoru.  No, o tistem ventilatorčku za vrm bom vseeno mal razmislu :)"
+    }
+]

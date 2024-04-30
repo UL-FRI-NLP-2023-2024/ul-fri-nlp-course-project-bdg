@@ -1,0 +1,86 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Punca si je včeraj določila geslo za neko mapo s pomembnimi podatki, vendar ji je uspelo določiti geslo za celoten računalnik (ne vem kako ji je uspelo). Problem je se pojavil danes, ko računalnik ni hotel sprejeti gesla. Karkoli vtipka - računalnik vse zavrne.  Torej, prosim vas za pomoč...kaj sedaj? Kako rešiti problem? Formatiranje ne pride v poštev, ker so na disku zelo pomembne stvari. Kolega mi je omenil menjavo diska, ampak to kot zadnjo rešitev. Kaj menite vi?  Lp Tensor"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V teoriji bi lahko disk formatiral, potem pa s programom ala get data back povrnil podatke. Je pa še zmeraj možno da bo nek % podatkov izgubljen. To je bolj reskirana verzija rešitve."
+    },
+    {
+        "role": "user",
+        "message": "Ok, kaj pa v praksi?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Punca si je včeraj določila geslo za neko mapo s pomembnimi podatki Karkoli vtipka - računalnik vse zavrne Kako ? Z kakšnim programom ? Kakšen OS maš gor ? Karkoli ne sme vtipkat, ampak za določenega uporabnika more vpisati geslo - njemu določeno.  Lahko je določila le pravice dostopa uporabnikom do mape, jo enkriptirala/kompresirala preko trenutnega accounta da prepreči dostop ostalim uporabnikom. Torej zelo čudno dejanje v praksi  oz. imamo premalo informacij o tem.   Prvo poglej če ni kakšen caps lock, druga tipkovnica ... prižgan ipd pri vnosu gesla uporabnika (upam da gre za NT OS na NTFS DS) Potem preglej če ja password za določenega uporabnika pravi. Kaj je pa za administratorskim passwordom ? Če še to ne gre probaj dobiti passworde ( upam da za lastno mašino) z kakšnim Live CD-jem  http://ophcrack.sourceforge.net/"
+    },
+    {
+        "role": "assistant_2",
+        "message": "A ni vseno najlažji način da v safemodu odstraništ geslo?"
+    },
+    {
+        "role": "user",
+        "message": "Lahko je določila le pravice dostopa uporabnikom do mape, jo enkriptirala/kompresirala preko trenutnega accounta da prepreči dostop ostalim uporabnikom.  Točno to je šla delat. Ima WinXp (ne vem kater service pack), računalnik uporablja samo ona, geslo je enako kot za pošto, caps ni bil vklopljen, tipkovnica deluje. Poskusla je safemode, vendar ji F4 noče zagrabt. Je še kak drug način da se pride do safemoda?  S tem programom, ki ste mi jih pondl ne znam delat in nočem, da se ji še kaj dodatno zasirje. Več informacij bom lahko dal, ko pridem do računalnika (trenutno sem doma). O postopkih in tehničnih specifikacijah je ne bom sprašval, kr vem da odgovora ne pozna."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Torej ali se je igrala z user related security atributi določenih map/diskov in user related passwordi.  Glede safemoda/safeboota prideš notri z F8 oziroma podobnim, če le ni drugače nastavljeno oz. onemogočeno ob sistemskimi datotekami pri zagonu. Kaj je z administratorskimi accounti ? Poročaj ko boš lahko.   User/password related stvari po vnosu ustreznega gesla, torej loginu : V Start/Run ----> control userpasswords ali control userpasswords2  [EDIT] Tipkarske napake [/EDIT]"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Prvič slišim, da bi bilo možno brez kakršnihkoli dodatnih programov v windowsih zakriptirat kakšno mapo in jo celo spravit pod geslo.... Je to res možno? Ne verjamem. Ozoroma vsaj jaz še nisem tega našel - in če imam prav, potem je edino, kar je lahko naredila to, da je pomotoma zamenjala uporabniško geslo... To se lahko uredi v varnem načinu, če seveda ni pod geslom tudi administratorski račun...."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če imaš NTFS format particije možno ja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Lahko poveš, na kakšen način?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Nisem dobro razumel, kaj točno se je zgodilo. Obstaja možnost, da je odstranila dostop do mape prav vsem? V tem primeru te reši \"Take Ownership\". Imaš pod Properties -> Security -> Advanced -> Owner -> Izbereš administratorja, kljukico na \"Replace owner on subcontainers....\" in OK."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Opis problema je precej površen. Daj točno opiši, kaj se je dogajalo, na kakšen način in kje je postavljala geslo... To bo po moje rešilo pol problema.  Če gre za problem dostopa na nivoju NTFS pravic oz. za problem user accountov, Safe mode ne bo pomagal niti približno.  @assistant_3: verjetno si rahlo sarkastičen, ker je trditev postavljena res nekoliko pavšalno. Drugače pa je zaščita dostopa do posameznih direktorijev preko NTFS pravic in z uporabo različnih user accountov, nekaj povsem vsakdanjega. Takšna mapa sicer ni zakodirana, prebrat je pa vseeno ne moreš. Če disk preneseš v drugo mašino, se do podatkov da brez problema priti."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_6: Ne, nisem bil sarkastičen in sem tvojo trditev vzel čisto resno. Se pa opravičujem, če je moje vprašanje zvenelo sarkastično. To čisto zares ni bil moj namen. Dokaj solidno poznam windows OS, zagotovo pa ga ne poznamo odlično. Vem, da se da na razne načine preko uporabniških pravic omejiti manevrski prostor uporabnikom, tudi dostope do map in datotek, nisem pa še prišel do tega, da se da zadevo tudi spraviti pod geslo ali zakodirati. No, zato sem resno vprašal, na kakšen način, ker me tudi resno zanima. To je to, pa brez zamere. OK?   Na nivoju user accountov je problem rešljiv, če v safe modu administrator nima gesla. Če ima tudi administrator geslo, oziroma, če je administrator sploh edini izbrani uporabnik (če je to sploh možno, nikdar nisem sprobal), in je to geslo izgubljeno, potem se problem lahko rešuje v recovery console, ampak na pamet zdajle ne vem, kako."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_3:  Original trditve nisem postavil jaz  Drugače pa z izrazom \"sarkastičen\" nisem mislil nič slabega. Jaz sem tudi občasno    Kot rečeno - dejansko uporabnikom ne moreš z out-of-the-box Polkni \"zaklenit\" mape tako, da bi moral vnesti geslo. Lahko pa dostope rešiš z uporabo več uporabnikov in potem omejiš, do kam ima kdo dostop. Prvi predpogoj je, da imaš izklopljen Simple file sharing.  Govorim sicer iz stališča sysadmina, tako da predpostavljam, da ima vsak PC nastavljeno administratorsko geslo. Če je geslo nastavljeno, je nastavljeno tudi v safe modu, tako da se tja ne da priti. Če privzeti administrator gesla nima nastavljenega, lahko vstopiš v Polkna tudi brez Safe moda - enostavno pri prijavi dvakrat zaporedoma stisneš ctrl-alt-del in se lahko prijaviš tudi kot admin.  Kako bi se prijavil, če je admin edini uporabnik? Recovery console? Mnja, ne vem. Obstajajo orodja, ki berejo in bruteforcajo password file v polknih. @assistant_1 je predlagal enega precej hudega. Sem pa pozabil, a lahko s tem programom tudi povoziš nastavljeno geslo oz. \"zresetiraš\" hash file.  V glavnem, iz živega sistema ne bo šlo. LiveCD FTW, če pa recovery console vsebuje kakšno rešitev, pa ne vem z glave."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kolikor jaz vem, safe mode nima načina za reset gesla. Bi bilo preveč enostavno. Drugače pa obstaja malo morje orodij, ki so na boot CD-jih in ti resetirajo administratorsko geslo (ERD commander, Hiren's Boot CD,...)  Če je sploh tu problem..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zakaj pa ne tudi v safe/boot modu ? Tudi tam se da narediti veliko, če imaš še kakšen dodatke še več ali pa lasten prirejen bootable disk.  Seveda govorim za (re)set passworda. Z sam datotekami (local ali oddaljene) lahko delaš čuda.  Večina LiveBootCD jev ima integrirane programe za gesla ipd ...  Da se tudi ob bootu z NTFS dostopom veliko stvari napraviti glede sam datotek.   WinXP gesla  NT admin geslo, pozabil ?  Bootdisk  Gesla od A do Ž Priporočam branje  [EDIT] Typo   [/EDIT]"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Napisal sem, da safe mode nima načina - orodij, ne da se v safe modu ne da tega narediti. S programi/linki, ki si jih podal, se to lahko naredi. Definitivno pa vse to prej in bolj enostavno naredim z Hiren's Boot CD-jem.  Edit: SAM datoteko moraš še vedno modificirati, kar pa dvomim, da delaš ročno  , se pravi, da spet rabiš neko orodje, ki ga Windowsi po defaultu nimajo nameščenega."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Še enkrat - v safe modu brez posebnih orodij reset passworda ne gre. Če imaš admin dostop, itak nima veze, a si v normal mode ali v safe mode, vedno lahko povoziš geslo od drugega uporabnika. Če pa v safe mode ne moreš priti z administratorskim uporabniškim računom, pa ne bo muzke."
+    },
+    {
+        "role": "user",
+        "message": "Živijo fantje in dekleta!  Problem je rešen - windows sem zagnal z varnim zagonom, nato pa šel: nadzorna plošča->uporabniški računi, izbral željen račun->odstranitev gesla in ponovno zagnal računalnik.  Punca je nardila: mapa->properties->sharing in nato označila okno \"Make this folder private\", ampak še vedno mi ni jasno kako je lahko potem zaklenila celoten računalnik.  Kakorkoli že, problem je rešen - hvala za vašo pomoč!  Lp"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_3 samo zate tale  KLIK. Uživaj pa da si ne boš kaj zakriptiral"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pozdravljene dekleta in fantje :D    Še enkrat ne vem zakaj bi se šli reset passworda/ov, če lahko prekopiramo sam ter potem z orodji ... ali z bootable live diski z rainbow tabelami kar hitro dobimo passworde uporabnikov, oz dosti je če dobimo password katerega izmed administratorske grupe potem pa vse gre kot po maslu. Še enkrat mi ni jasno kako se ni mogla logirati v sistem, če ni spreminjala passworde oz. kakršne koli security nastavitve. ... Čeprav me zdaj to sploh nič ne zanima oz. muči."
+    }
+]

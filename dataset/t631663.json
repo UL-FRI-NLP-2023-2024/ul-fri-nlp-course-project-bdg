@@ -1,0 +1,22 @@
+[
+    {
+        "role": "user",
+        "message": "Poskušam postavit neko Wayland-only okolje, pa imam nekaj težav.  Enlightenment crowd se hvali, da naj bi izvedenka E19 znala delati wayland-only, pa mi nikakor ne rata.  Gentoo nima v repositoriju E19, externi repo ( ixit) pa se mi sicer scompila, ampak potem ne dela.  Stvar kao neki sicer najde grafikuljo, ampak potem se zapleza ( neko čudno utripanje na ene od monitorjev)  Poskusil sem s standardnim Weston compositorjem in tega pripravim k delu. Dela mi recimo mpv player na njem, sicer brez okenskih okraskov, ampak dela.  Ampak Weston je bolj demo. Menijev in ostalega ni, da bi pa ročno nastavljal maljon ikon, mi pa ne diši.  EFL/Enlightenment 0.19 _naj_ bi delal, pa ne dela.  Po drugi strani je pa mogoče kaj v kakih driverjih itd, ker tudi nova verzija RebeccaBlackOS ne dela."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Gnome od verzije 3.14 prav lepo dela v Waylandu. Je pa res, da se pri tem precej naslanja na Xwayland. Dobra stran je, da delujejo tudi X-u namenjeni programi. Za zagon potrebujes gdm, oziroma iz tty zazenes z  gnome-session --session=gnome-wayland. Vec na sledecem linku."
+    },
+    {
+        "role": "user",
+        "message": "Vem za Gnome.   Ampak Gnome je precej bloated. Zanima me Enlightenment, ker je kompakten, pa tudi zasnova mi je všeč.  Kar nekako štekam une knjižnice in utilitije in stvar je primerna za delo na vsaki, tudi zelo majhni mašini."
+    },
+    {
+        "role": "assistant_1",
+        "message": "E zadnje čase sponzorira Samsung za svoj mobile phone os thingy. Drugače najlažji jumpstart vanj je distribucija Bodhi linux, ki je ubistvu ubuntu + E. Tako da bi moral biti wayland ista zgodba kot na ubuntu."
+    },
+    {
+        "role": "user",
+        "message": "Saj E je v Gentoo repositorijih, no E17 in ostale, pre-wayland verzije.  E19.2 je v overlayu. Ampak ni zdosti da stvar inšteliraš, razumeti jo moraš.  Wayland mi je full všeč. Namesto kraveštine od Xorga simple, majhen library. Ki se resda opira na obstoječe driverje in evdev, ampak to je zaradi lažjega prehoda. Nima pa šitloada ostale krame, ki samo žre štrom za prevajanje, dela zmedo na disku in jemlje plac v RAM.  Pa še enostaven in razumljiv je. Redki so pristopali X11 protokolu direktno, vse to se je prepuščalo toolkitom. Pri Waylandu je povsem drugače. Čisto komot se zlinkaš z libwaylandom in počneš zadeve na najnižjem nivoju.  Če ti to ni všeč, je na voljo Evas za 2D risanje in Ecore-Evas za gadgete, knofe itd i njihovo interakcijo. E je zelo eleganten in kompakten, pisan je pa v C namesto šitloada visokonivojskih jezikov.  Kar se XWaylanda tiče, to ni nobena kunšt, če imaš preveden ustrezni modul, skozi katerega Wayland compositor prepusti določene površine Xorgu, mora pa imeti ta IIRC Wayland driver.  Meni bi bila ta stvar všeč za majhen, namenski distro za majhno, namensko mašino z omejenimi resursi."
+    }
+]

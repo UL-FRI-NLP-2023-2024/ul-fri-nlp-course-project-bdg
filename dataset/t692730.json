@@ -1,0 +1,186 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni sestavil sem nov računalnik in vse priklopil, sedaj pa imam problem pri prvi inštalaciji Windows-a.  Inštaliram kot ponavadi iz enakega USB ključa. Ustavi se mi tukaj in javi takšno napako kot je na sliki:    Probal sem ustaviti USB va 2.0 port in nič ni drugače..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uporabi plošček (dvd) oz integriraj chipset/usb šoferje v usb instalacijo. http://www.win-raid.com/t750f25-Guide-I...  Kaby lake platforma ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Na spletni strani proizvajalca matične poišči driver za HDD/storage. Ponavadi je to ločen driver in piše zraven, da je za inštalacijo win. Odpakiraj ga in daj na ločen USB ključ, ki ga vstaviš v tem koraku in poiščeš in namestiš ustrezen driver."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Si poskusil z Windows 10? Je tam ista napaka?"
+    },
+    {
+        "role": "user",
+        "message": "Poskusil in win 10 in to drugo opcijo pri obeh mi javi sedaj to napako: http://shrani.najdi.si/?3q/zJ/3QqfsC19/...  S tem da sem probal par različnih win 7 in win 10 pri vseh ista težava..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nekaj je narobe ali z diskom/particijo (možno, da je slab SATA kabel/priklop, manjkajoč SATA gonilnik, kaj imaš nastavljeno v BIOS-u, AHCI ali IDE?), RAM-om ali instalacijskim medijem.  Na novih platformah (npr. intel Kaby lake) starejši Windowsi ne bodo delali. Tudi prva varianta 10-ke zna delat težave. Prenesi si Windows 10 Annyiversary varianto oz. pač najnovejše ISO-je.  Morebitne rešitve za to napako: http://www.eassos.com/how-to/fix-error-...  Ali pa:"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kot je napisal @assistant_3, poskusi z zadnjo verzijo Windows 10. Dobiš jo tukaj: https://www.microsoft.com/sl-si/softwar..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 29. jan 2017 ob 10:16 izjavil:Nekaj je narobe ali z diskom/particijo (možno, da je slab SATA kabel/priklop, manjkajoč SATA gonilnik, kaj imaš nastavljeno v BIOS-u, AHCI ali IDE?), RAM-om ali instalacijskim medijem.  Na novih platformah (npr. intel Kaby lake) starejši Windowsi ne bodo delali. Tudi prva varianta 10-ke zna delat težave. Prenesi si Windows 10 Annyiversary varianto oz. pač najnovejše ISO-je.  Morebitne rešitve za to napako: http://www.eassos.com/how-to/fix-error-...  Ali pa:     SATA kabel je enak kot v prejšnjem račlunalniku kjer je brez problema delal prav tako disk. Kako vem ali je manjkajoč SATA gonilnik oz. kako se ga dobi če manjka? V biosu ne vem kaj je nastavljeno ker ne najdem kje se to pogleda malo sem brskal po netu pa nisem najdel kam točno moram iti za svoj bios.  Počasi izgubljam že voljo za vse to ker sem probal vse živo...ram ven not v drugo režo enega potem drugega, drug disk drug kabel, par razlićnih windowsov in nič vedno ista napaka."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Po mojem je na novih računalnikih/matičnih ploščah privzeto nastavljen AHCI. Če napišeš točno številko/model tvoj matične, ni vrag, da ne bomo našli gonilnik na proizvajalčevi strani."
+    },
+    {
+        "role": "user",
+        "message": "gigabyte B250M D3H"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če imaš KabyLake proc, win7 ne bodo delal in pika."
+    },
+    {
+        "role": "user",
+        "message": "Problem je ker mi je vseeno ali je win 7 ali win 10 samo da dela. Ampak kot kaže ne dela niti win 10. Tukaj je konfiguracija: http://shrani.najdi.si/?3w/N5/4YjcZWxR/..."
+    },
+    {
+        "role": "user",
+        "message": "Je možno da kaj nisem pravilno priklopil? Kaj naj preverim?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če se računalnik zažene in v UEFI vidiš SSD, je načeloma vse OK."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Butasto vprasanje pa vseeno, si windows 10 bootable naredil z Microsoft Toolkitom? Mas ga vtaknjenga v USB 3.0 - nastavljeno na Legacy?"
+    },
+    {
+        "role": "user",
+        "message": "Naredil sem z rufus programom. Vtaknjen v USB 2.0 nastavljeno pa na legacy.   Še eno moje butasto vprašanje: UEFI je bivši BIOS meni?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "UEFI je nova verzija BIOSa po domače povedano, določene moderne grafike in kaki drug hardware zna biti UEFI only in ne dela več preko legacy boota.  Ti lepo zapeči in zlovdaj Windows 10 z uradnim Microsoft toolom in boš imel ziher najnovejšo verzijo, ki je hkrati UEFi in legacy. Za ziher še v biosu izklopi legacy če imaš novejši računalnik (da bo ziher boot preko UEFIja zagnal, drugače se sam odloči kaj ima prednost) in problemov ne sme biti."
+    },
+    {
+        "role": "user",
+        "message": "Izklopil sem legacy in prišel najdlje do sem: http://shrani.najdi.si/?24/iw/3izxaURS/...  V drugi faci Getting files ready for installation pr nekje 23% mi spet javi napako..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nekaj ne bo štimalo. To nalagaš na SSD?  Jaz bi vseeno še enkrat naredil inštalacijski medij (USB ali dvoslojni DVD) in poskušal ponovno zagnati namestitev. Če tudi v tem primeru ne deluje, potem je problem s strojno opremo (matična, SSD, RAM-i, slab priklop, kabli, karkoli šestega)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Aja, pa še ena zadeva: zakaj inštalacijske medija ustvarjate z Rufusom (kot berem tudi v tej temi), če pa imaš uradno podprto orodje od Microsofta, ki 100% deluje?  https://www.microsoft.com/sl-si/softwar... http://go.microsoft.com/fwlink/?LinkId=..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Glede na probleme, ki se ti pojavljajo bi jaz na tvojem mestu priklopil ssd v drug racunalnik in tam probal namestit windows na tvoj ssd. Ce se bodo ponavljale iste tezave potem ves da mas defekt ssd."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če delaš bootable USB z Rufus, najprej izklopi realtime antivirus (ta včasih kaj zafrkava), pod Partition scheme pa izberi GPT.  Kot so drugi predlagali lahko poskusiš tudi direkt z MS orodjem. Tudi tukaj bi svetoval izklop realtime antivirus medtem, ko delaš bootable USB."
+    },
+    {
+        "role": "user",
+        "message": "Bom najprej probal naložiti Ubuntu da vidim če je problem v iso datoteki oz. v strojni opremi. Naj povem še da mi računalnik zazna vseh 16gb ram-a ko pogledam v biosu, SSD na katerega pa nalagam pa deluje 100% ker sem ga iz delujočega računalnika prenesel v tega in formatiral. Bompa preveril še enkrat če je vse priklopljeno kot je treba"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tukaj je bila rešitev GPT Partition Scheme pri Rufus Ne gre namestiti windowsa na nov prenosnik"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 29. jan 2017 ob 16:50 izjavil:Izklopil sem legacy in prišel najdlje do sem: http://shrani.najdi.si/?24/iw/3izxaURS/...  V drugi faci Getting files ready for installation pr nekje 23% mi spet javi napako...  A med instalacijo kr prekine?  To meni smrdi po napaki SSDja oz. USB kljucka ali komunikacije med tema dvema. Potegni si \"parted magic\" zbootaj live x64 pa zalaufi system stability test (kvazi nek superpi), Pa Secure erase naredi na SSD.  Sicer pa ja, ce imas moznost probat v drugem racunalniku naredi najprej to."
+    },
+    {
+        "role": "user",
+        "message": "Ok hvala za vso pomoč kot kaže je problem bil v USB ključku. Kolega mi je posodil svojega z win10 in sem naložil brez težav tako da najlažja rešitev je kot kaže spet bila prava pa nisem prej imel možnosti probat."
+    },
+    {
+        "role": "user",
+        "message": "Imam novo težavo in sicer z inštalacijo driverjev za matično. Poleg matične sem dobil tudi cd z driverji pa mi noče. Lahko kakšen nasvet kako najti prave driverje ki delujejo za ziher?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Načeloma pustiš Windows update da naredi svoje lahko traja nekaj ur."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7 je 29. jan 2017 ob 21:23 izjavil:Načeloma pustiš Windows update da naredi svoje lahko traja nekaj ur.  Ne morem če pa nisem povezan na internet :) Driverji za internet mi manjkajo...to je moj glavni problem. :)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če avtomatski setup od matične ni poštimal je naslednji korak da v Device Managerju klikneš z desno network driver in potem daš cel CD od matične za poskenirat(oziroma če sam najdeš pravi folder bo hitreje), to bi moral najti.  Na ta način se tudi izogneš morebitnemu balastu iz CDja od matične, ki včasih inštalira še kaj nepotrebnega."
+    },
+    {
+        "role": "user",
+        "message": "Napiše: The best driver software for your device is already installed. Čudno mi je že to da v device managerju v zavihku Network adapters ni nobenega rumenega trikotbika kot je ponavadi če kaj manjka ampak je okrog 8 WAN miniport in zraven v oklepaju to (IP, IPV6, IKEV2, L2TP, Network Monitor, PPPOE, PPTP, SSTP). Pri nobenem klisaja oz. rumenega trikotnika oot bi vse bilo tako.kot je treba pa še vedno ne dela."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Hja, to seveda pomeni da je težava malce bolj kompleksna kot samo manjko driverja. Za take stvari se uporablja Google, napisal sem \"8 WAN miniport\" in dobil za prva dva zadetka zelo dobra navodila kako rešit težavo(oba enak postopek, to je dober znak da se splača probat): https://answers.microsoft.com/en-us/win... https://forums.lenovo.com/t5/Windows-8-...  Si ti morda inštaliral kak driver preveč iz setup CDja, ki ti je to sranje naredil?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Mas USB Wlan stick? Vtakni ga, zazeni ponovno racunalnik in se povezi na wlan."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 30. jan 2017 ob 11:03 izjavil:Mas USB Wlan stick? Vtakni ga, zazeni ponovno racunalnik in se povezi na wlan.   Nimam ga da bi probal.   Ko probam naložiti driver mi napiše. Cannot install drivera. No Intel Adapters are present in this computer."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vsi šoferji so tu: http://www.gigabyte.us/products/product..."
+    },
+    {
+        "role": "user",
+        "message": "Vem da so in pri LAN Driverjih kliknem Europe zlovdam in ne dela..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prilepi pci vendor številko problematične naprave http://www.makeuseof.com/tag/how-to-fin... The Manual Way from the Device Manager   primer slika http://cdn.makeuseof.com/wp-content/upl..."
+    },
+    {
+        "role": "user",
+        "message": "VEN_8086&DEV_15B8"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kateri os ? Šoferje za ostalo si namestil (intel Rapid Storage Technology, intel Management Engine Interface, Intel INF installation) ?   PCI\\VEN_8086&DEV_15B8 je Intel(R) Ethernet Connection (2) I219-V https://downloadcenter.intel.com/produc..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user, si probal odstraniti pokvarjene driverje za Wan Miniport po navodilih iz tistih linkov?"
+    },
+    {
+        "role": "user",
+        "message": "Sedaj bom probal vse kar ste predlagali, ker sem ravno iz službe in imam zdaj čas testirati te opcije."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 30. jan 2017 ob 18:26 izjavil:Kateri os ? Šoferje za ostalo si namestil (intel Rapid Storage Technology, intel Management Engine Interface, Intel INF installation) ?   PCI\\VEN_8086&DEV_15B8 je Intel(R) Ethernet Connection (2) I219-V https://downloadcenter.intel.com/produc...    Os je win10 z64. Z linka sem zlovdal driverje še pred tem pa vse omenjene driverje v oklepaju. Spet pa mi javi isto napako samo pri inštalaciji tega driverja za I219-V.  @assistant_7 je 30. jan 2017 ob 18:30 izjavil:@user, si probal odstraniti pokvarjene driverje za Wan Miniport po navodilih iz tistih linkov?   Problem tukaj je ker pri nobenem ni opozorila da je pokvarjen. Kot sem dojel je pri pokvarjenih rumen trikotnik oz . klicaj pri meni ni nič, kot bi vsi bilo normalno delujoči."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prilepi \"ipconfig/all\" izpis (start, run, cmd, desni klik \"run as admin\"). Si zagnal intel lan install (in ostale prej naštete) kot admin ?"
+    },
+    {
+        "role": "user",
+        "message": "Nisem jih zagnal kot admin ampak navadno.  Izpis je tak: Host name : DESKTOP-AU37OQ4 Primary Dns Suffix: Node type : Hybrid IP Routing Enabled : No WINS Proxy Enabled : No"
+    },
+    {
+        "role": "user",
+        "message": "Naj omenim da mi internet preko USB tethering iz telefona deluje. Nevem pa zakaj noče preko internet kabla."
+    },
+    {
+        "role": "user",
+        "message": "Nekako mi je uspelo usposobiti, nevem niti sam kako važno da dela sedaj. Hvala za vso pomoč."
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Kupujem nov router, starega bi pa postavil v en kot, da mi malo ojača signal v eni sobi. Na netu in slo-techu je veliko nasvetov glede tega in rad bi poskusil, ampak ni mi nekaj ni jasno.   OK, na starem routerju onemogočim DHCP, nastavim iste parametre kot na glavnem routerju, itd... potem pa kaj?  Ga samo vključim v električno vtičnico in dela? Kolikor berem navodila, je potrebno, da sta novi in stari router povezana s kablom. Ali sta lahko povezana brezžično?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lahko sta brezžično, če podpirata WDS, priporoča pa se uporabo kabla.  DHCP onemogočiš na tistem routerju, kateri bo deloval kot WiFi Access Point, na primarnem ne spreminjaš nič. Na WiFi AP routerju nastaviš enako ime WiFi omrežja kot na primarnem in enako geslo in vrsto zaščite (WPA, WPA2, TKIP, AES). Frekvenco/kanal pa nastaviš različno - na enem 1, na drugem 11."
+    },
+    {
+        "role": "user",
+        "message": "Super, hvala za jedrnat odgovor. Mislim pa, da je moj stari router prešvoh za WDS, t.j. ga nima. Ampak vseeno mi je dosti bolj jasno."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lahko preveriš, če za stari router obstaja DD-WRT. DD-WRT načeloma podpira WDS. Če boš namestil DD-WRT, je potrebno to naredit na obeh routerjih. Preveri tudi, da imata routerja HW istega proizvajalca - WDS between different chip vendors (atheros, broadcom, ralink) will not work most of the time since it's INCOMPATIBLE and no we will NOT fix it."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz sem svoj router nastavil kot repetitor in se prek wifi poveže na obstoječe omrežje in ga deli naprej. Je pa povezan le v električno omrežje, brez kakšnih kablov. Sem pa za to moral naložiti gargoyle firmware."
+    },
+    {
+        "role": "user",
+        "message": "Sem obupal nad brez-kabelsko dostopno točko. Tole srovšno imam: http://www.belkin.com/IWCatProductPage....  Bom pa razmislil o kabelski AP, če novi ne bo pokril cele bajte.  Hvala!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Da se malo priključim:  Torej, če želim novi router uporabljati kot AP (brezžična povezava na obstoječi router), morata oba podpirati WDS?  Ali Iskratelovi (Amis) to omogočajo?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Da. Ne (Iskratelovi), mogoče Amis speedtouch, samo to so bolj slabotna jajćka.  Zakaj ne kupiš samo dodaten AP in razširiš območje pokrivanja wifi (wds na routerju ni potreben, samo na AP se povežeš z routerjem) ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Na oddaljeni lokaciji potrebujem priključiti eno napravo preko kabla (LAN), pa mi ni za razbijati sten in vlečti kabla do tja."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ne potrebuješ WDSja. Novi router lahko na obstoječega povežeš v načinu client (ali client bridge). Če je možno, priporočam dd-wrt na routerju.   Navodila: link"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vedno je možna tudi povezava ruterjev s kablom."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zanima me, kako bi lahko svoj stari ruter  https://www.mimovrste.com/usmerjevalnik...  imel zraven še kot wifi dostopno točko in switch, da se IP-ji ne bodo križali itd.  Imam modem od telekoma, mislim da je statični IP, modem pa je nastavljen kot ruter, nanj je namesto starega ruterja zdaj priklopljen switch. Stari ruter bi namestil poleg enega izmed računalnikov v zgornjem nadstropju, se pravi mora it kabel v ruter in iz ruterja v računalnik + wifi. Hvala za pomoč. :)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "en kabel iz modema vtakni v en lan port na tem routerju, na njem ugasni razne dhcp zadeve (predvidevam da ma to že telekomov modem čez če nisi šaril po nastavitvah) in nastavi wlan (pač standard... wpa2/geslo/ssid in te reči) in to bo to"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Imam dva routerja na istem kanalu, razlčnI SSID. Dela tudi tako. Tablica (v mojem primeru) se vedno logira na tistega, ki ima močnejši signal."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_8 je 10. jul 2017 ob 18:48 izjavil:Imam dva routerja na istem kanalu, razlčnI SSID. Dela tudi tako. Tablica (v mojem primeru) se vedno logira na tistega, ki ima močnejši signal.   Najboljše je, če sta routerja na različnih kanalih, da se ne motita med sabo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "pa upoštevaj še to - https://aruba.i.lithium.com/t5/image/se..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če bo večinoma uporabljal eno napravo, katera bo priklopljena na en ali drug AP, potem je to brezpredmetno. Najbolje pustiti na AUTO, pa naj AP sam izbere. (itak se bo skoraj 100% prekrivalo s kakim sosedovim kanalom)"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Točno tako! Ni važno koliko AP-jev je na istem kanalu ampak koliko \"prometa\" se dogaja na njem..."
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Imam težavo, pri kateri ne morem v app.configu spremeniti connection stringa, ki bi ga rad podal ob neki premestitvi baze ali ob prvem zagonu aplikacije.Poskusil sem z naslednjo kodo vendar pa v app.config ni spremenjenega stringa:  //shrani povezavo   System.Configuration.Configuration config =ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None); ConnectionStringSettings csSettings = new ConnectionStringSettings(\"Aplikacija.Properties.Settings.BazaConnectionString\", povezava(),\"System.Data.OleDb\");  // Get the connection strings section. ConnectionStringsSection csSection = config.ConnectionStrings;  // Add the new element. csSection.ConnectionStrings.Clear(); csSection.ConnectionStrings.Add(csSettings);   // Save the configuration file. config.Save(ConfigurationSaveMode.Modified);   Zanima me v čem je težava?  Poleg tega bi še vprašal zakaj se mi ob spremembi connection stringa sesipa včasih program? ali moraš spremembe nardit tut v Settings.setings in ali zaradi tega prihaja do prekinitve programa. Napaka ob sesutjo je, da ne more incializirat connection stringa in potem moram v settings še enkrat podat ročno connection.  Lepo prosim za vse napotke, komentarje in rešitve, čim več pište, ker nujno rabim ...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V enem prejšnjem postu sem ti lepo napisal glede nastavitev. Ne kompliciraj po nepotrebnem..."
+    },
+    {
+        "role": "user",
+        "message": "V enem prejšnjem postu sem ti lepo napisal glede nastavitev. Ne kompliciraj po nepotrebnem... To maš prov ... samo meni ni jasno kako bo potem aplikacija vedela oz kako bo uporabnik nastavil, kje je baza, če bo nekej v neki datoteki na nekem strežniku :/ :("
+    },
+    {
+        "role": "assistant_1",
+        "message": "V bistvu uporabnik nastavi Data source. če nastavi ip strežnika oz tam kjer deluje mssql, bo tako od tam vzel ven, če pa je datoteka v določeni mapi pa pot napišeš,.."
+    },
+    {
+        "role": "user",
+        "message": "a ma kdo kakšen primer kode slučajno ???"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za WinForms aplikacije se app.config nahaja na istem računalniku in v isti mapi kot *.exe datoteka. V tej app.config datoteki so vse \"application\" nastavitve, torej nastavitve, ki jih uporabnik ne more spremeniti v programu (lahko pa jih spremeni ročno tako, da odpre app.config datoteko) in \"user\" nastavitve, nastavitve, ki jih uporabnik lahko spremeni v programu-okno z nastavitvami.  Po prvem zagonu programa oz. po tem ko uporabnik spremeni določeno nastavitev se ustvari \"user.config\" datoteka v mapi \"C:\\Users\\uporabnik\\AppData\\Local\\ime_podjetja\\ime_programa\\verzija_programa\" (za WinXP je malo drugačna pot) kjer so dejanske nastavitve programa za vsako verzijo posebej. Kako se naredi samodejna \"nadgradnja\" nastavitev pri novi verziji pa tukaj: http://blogs.msdn.com/rprabhu/articles/..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za mravba3 sem naredil primer uporabe .NET nastavitev od različne uporabe \"connection stringa\" do branja/shranjevanja uporabniških nastavitev preko okna, uporabo nastavitev za velikost, pozicijo in stanje okna ter \"nadgradnjo\" nastavitev ob novejši verziji. Če še koga zanima primer aplikacije naj javi na ZS..."
+    }
+]

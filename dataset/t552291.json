@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, potrebujem nekaj pomoči z php in jquery. V bistvu potrebujem nekoga, ki bi nekaj naredil zame v zameno za plačilo.  Torej...izdelati moram nekakšen prevajalnik. Do sedaj imam narejeno: - Na levi strani besede katere je treba prevesti. - Na sredini button \"prevedi\". - Na desni strani textarea, kamor bi se preveden text izpisal.  Vse te besede, ki jih je treba prevesti so prikazane iz baze. Kaj rabim: - Ko se pritisne gum prevedi, vzami besedno iz leve strani, jo prevedi z Bing prevajalnikom in prevedeno besedo izpiši v textareo na desni strani. - Prevaja se iz več jezikov.  Če je kdo zainteresiran naj mi napiše za koliko je pripravljen to narediti, dela se preko teamviewerja. Če dobim nekoga, ki bo resen in delo opravil dobro se bomo zmenili za vnaprej."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kako se pa plača to?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Da ne odpiram nove teme, bom kr tule napisal, znotraj ene foreach zanke bi želel dosežt da po skupinah razvrsti nek array, kar mi je ratalo, sedaj bi pa rad preštel koliko je v eni skupini vseh in vsakega posebej štel od 1 do x, nekako tako zgleda sedaj koda:  $files = array(\"test_1\",\"test_1\",\"test_1\",\"test_2\",\"test_2\",\"test_2\",);\n$j = 0;\nforeach($files as $file){\n    $category = explode(\"_\",$file);\n    if($categoryType !== $category[1]){\n\t\t$categoryType = $category[1];\n        echo '<b> Skupina '. ucfirst($category[1]) . ' skupi '. $j .'</b><br/> ';\n        $i++;\n    }  \n\techo $file .'  '. $j .'<br>';\n\t$j++; \n} Ne vem pa točno, kako bi za vsako skupino potem posebej štet začel od 1, in na kak način bi dejansko izračunal vse v neki skupini.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "pod $i++; daš $j = 0;?  sam tole nimaš ok, raje naredi dvodimenzionalen array"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kakšna je kaj najboljša alternativa za izpisovanje aktivnosti, ki so izvedene, denimo da imamo na eni strani v tabeli izpisanih 10 vrstic nekih podatkov in recimo enega zbrišemo, ta preko get/post metode naredi svojo delo in nanovo naloži stran, ampak lepo bi pa bilo da izpiše tudi nad tabelo kaj se je zgodilo. Sepravi da pri brisanju izpiše izbrisanih 10 elementov. Naj uporabim raje get metodo pa potem preusmeri na recimo &izpis=brisanje, ali raje shranim v session in potem iz sesiona preberem ter ga unsetam?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tudi jaz bi prosil bi za malo pomoči. Naredil sem 2 scenarija(glej sliko). V prvem mi deluje $_GET in ne znam poimenovati zadeve tako, da bi mi izpisalo želeni text iz baze, na katerega bi lahko kliknil. V drugem scenariju mi je pa uspela ravno obratna zadeva. Sedaj bi rabu to zadevo združit, da bi bil volk sit, koza cela, ovca pa ostrižena :) Prvi primer je napisan v znački PHP, drugi primer pa izven značke. Hvala za pomoč.    PHP-poimenovanje linka"
+    },
+    {
+        "role": "assistant_4",
+        "message": "V prvem primeru moraš dati tekst, na katerega bi kliknil med  <a></a>, trenutno tukaj namreč nimaš nič. V drugem primeru, če je res izven php značke, pa ti pred $row[...] manjka začetek php  <?php, konec namreč imaš."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ne pisat htmlja s phpjem  v html vstavi php kodo   <?=$imeSpremenljivke?>"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_2 je 22. apr 2013 ob 20:53 izjavil:ne pisat htmlja s phpjem  v html vstavi php kodo  &lt;?=$imeSpremenljivke?>   ... in e uporabljat short php tagov :)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "ker? povej mi dober razlog.. ne mi rečt, da imajo nekateri strežniki disablane short tage, ker je najmanjši problem enablat to. od php 5.5 naprej mislim, da bodo enablani po defaultu"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tam, kjer moram poimenovati sem nalašč pustil prazno. Sem pa sedaj rešil zagato.. :) Tole sem dal v prvi primer, kjer manjka koda, kot sta prej opazila zgoraj: '.$row['up_ime'].'; Zadeva sedaj deluje in lahko nanjo kliknem+izpisan je resničen podatek iz baze. Hvala vseeno za pomoč :)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_6 je 22. apr 2013 ob 23:11 izjavil:ker? povej mi dober razlog.. ne mi rečt, da imajo nekateri strežniki disablane short tage, ker je najmanjši problem enablat to. od php 5.5 naprej mislim, da bodo enablani po defaultu  Od PHP 5.4 naprej je <?= sintaksa možna kljub onemogočenim short_tags v php.ini. V PHP 5.1 in 5.2 se short tagi odsvetujejo (tako v PHP manualu kot tudi v php.ini-recommended), od PHP 5.3 naprej pa so tudi privzeto izklopljeni. Za PHP6 pa se špekulira, da bi že bili deprecated.  Torej lahko se uporablja &lt?=$neki; ?>, medtem ko je <? odsvetovano."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Spet rabim pomoč. Ker delam forum, bi rad dopuščal dostop do novic, tem, itd ampak ne bi rad dopuščal komentiranja in podobnih reči. Torej bi rad naredil, da se nekatere funkcije prikažejo šele ob prijavi. Ob prijavi shranim id prijavljenega v session.php, ampak, če pride novico pogledati nekdo, ki ni prijavljen na moj forum, se bo polek vsebine izpisala tudi napaka, ker v sesssion ni zapisano prav nič.. Kako odpravim napako? Mogoče kdo ve kako preverjati session.php, da bo tudi v primeru neprijave zadeva delovala kot mora?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "isset() zna (mora) biti tvoj dober prijatelj."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Sem uspel nagruntat.. Nisem si mislil, da lahko napišem kar if(!isset($SESSION['ID_UPORABNIKA'])) in bo delovalo.... :D"
+    }
+]

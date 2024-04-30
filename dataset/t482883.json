@@ -1,0 +1,190 @@
+[
+    {
+        "role": "user",
+        "message": "Imam eno težavo. Do pred kratkim mi je računalnik normalno šel v spanje, od sobote pa mi noče. Ne spominjam se, da bi kaj nalagal (razen Windows update). Poskušal sem že vse živo, od resetiranja nastavitev (ponastavi na privzeto) v oknu \"upravljanje porabe\", do resetiranja BIOS-a (oz. UEFI-ja). Žal nič ne pomaga.   Imam en zunanji disk (priklopljen preko SATA), ki je še prejšnji teden normalno zaspal, zdaj pa niti ta noče. Skratka, bilokaj poskušam (recimo Windows zastava -> Zaustavitev sistema -> Spanje) ali pa samo pustim računalnik, enostavno noče zaspati. Niti monitor noče zaspati. Ima kdo kako idejo.  Operacijski sistem je Windows 7 Home Premium. Ima kdo kako idejo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "A Hibernacija dela ? Preglej še te primere. Če ti ne uspe, potem naredi SFC (system file checker)."
+    },
+    {
+        "role": "user",
+        "message": "Ne, žal tudi hibernacija ne dela."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ponavadi je kriv driver za grafiko. Zarolaj ga nazaj."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Precej podobne simptome sem imel tudi sam. Razlog pri meni je bil napajalnik, ki je začel odpovedovat."
+    },
+    {
+        "role": "user",
+        "message": "Driver za grafiko? Hmmm ... bom poskusil.   Trenutno imam gor Catalysta 11.7, sem pa imel naloženo cca. kakšno uro verzijo 11.8. Pri slednjem so se pokazali čudni artefakti v določenih programih. Zato sem 11.8 deinštaliral in naložil starejšega.  @assistant_2: napajalnik bo decembra star 1 leto. Sicer je Chieftecov 360 W-ni, ampak bi moral zdržati komponente (Asrock H67M, Intel i3 2100, 2 x 4 GB DDR3 RAM, Radeon 5450, en 500 GB-ni disk, DVD pekač, dva ventilatorja, disketnik). Zunanji disk ima svoje lastno napajanje.  Če ne drugo, bom čez vikend na novo formatiral računalnik ..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prehitro se predaš ! Format je pa res zadnja možnost... Naredi SFC (system file checker), ki po potrebi obnovi koruptane sistemske fajle. Torej: Logiraj se kot admin ali Command Prompt zaženi kot Admin nato odtipkaj: sfc /scannow Če še ne deluje naredi v Command Promptu še : chkdsk x:/r x=črka sistemskega diska kjer imaš inštalacijo WIn7HP in ker tega ne more izvesti takoj, se strinjaj, da to naredi ob ponovnem zagonu. Restartaj komp in pusti, da chkdsk naredi svoje. namesto Command Prompta lahko CHKDSK izvedeš tudi preko GUI Poročaj."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Si probal system restore? Odklopi zunanji disk in probaj."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za nasvet. Prvo bom poskusil @assistant_0ov naslov. Potem pa system restore."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Daj namest da tule čaraš neki kot slepa miš lepo v Administrativni command prompt napišeš powercfg /requests, ki ti bo pokazal, kaj trenutno preprečuje sleep. Obenem probaj še druga poročila powercfgja, da boš videl kje pride do problema."
+    },
+    {
+        "role": "user",
+        "message": "Torej, poskusil sem sledeče:  1.) \"sfc /scannow\" v Command promtu, po koncu tega ukaza napiše, da je neke zadeve popravil. A žal se tudi po ponovnem zagonu nič ni spremenilo. Računalnik noče zaspati.  2.) ATI-jev gonilnik sem popolnoma odstranil (dodatno popucal še ostanke s Total Uninstallerjem), ponovni zagon, naložil verzijo 11.8, spet ponovni zagon, žal nobene spremembe ...  3.) @mavrik, to kar si napisal, sem poskusil, dobim sledeče:   Win 7 Power Request  Zdaj bom poskusil še duhecov drugi nasvet glede chkdiska na koncu pa @assistant_3ov nasvet."
+    },
+    {
+        "role": "assistant_5",
+        "message": "kaj pa v cmdju ukaz: powercfg -devicequery wake_armed ??  to sm jst učeri, naredu ker se mi je vedno zbudu ko je zaspal, to je preprečevala mrežna kartica.."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Peter, zdajle bom pa malo \"žleht\".   > Ampak merge in cut pa delajo, ne?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 6. sep 2011 ob 18:29 izjavil:Peter, zdajle bom pa malo \"žleht\".   > Ampak merge in cut pa delajo, ne?   Jep. Hehe  Že zaradi tega se splača mučit z Windows . No, saj na Lionu so tudi marsikaj zrihtali.  @assistant_5: žal ne pomaga. Izgleda, da se je nekaj zelo pomešalo ..."
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljeni vsi skupaj, še vedno se mučim s tem problemom ... do zdaj sem prišel do tegale rezultata:   Windows 7 CMD: Energy report  HTML datoteka (energy report) je tukaj: Energy_report.html (Dropbox link)  Vodič sem našel na tej strani: http://www.windowsbbs.com/windows-7/876...  Start your troubleshooting by running powercfg /energy from a command prompt.  When finished, copy C:\\Windows\\System32\\energy-report.html to the desktop & open it with IE.   To, kar sem ugotovil je, da težave povzroča Intelov USB kontroler. Gonilnike sem že ne vem kolikokrat namestil, ne boste verjeli, celo računalnik sem formatiral in to dvakrat (!). A problem še vedno obstaja.  Tukaj je nekaj slik o teh USB hubih, razdelilcih ali karkoli je že to (drugače so to USB izhodi na zadnji strani matične):   prvi intelov USB   drugi intelov USB   USB hub   USB hub - poraba   Miška - izklopljena možnost za prebujanje  Skratka miška, tipkovnica in tudi mrežna kartica imajo izklopljeno možnost, da bi računalnik prebudili.  Trenutno je nameščen goli Windows 7 (trenutno še neaktiviran), vsi gonilniki (Intel INF Chipset driver 9.20.1030, Realtek HD Audio 2.65, REaltek LAN driver, ATI Catalyst 11.8 ... vsi gonilniki so tazadnje verzije) tazadnji Firefox 6.0.2.   Nobena USB naprava ni priklopljena - razen USB miške in tipkovnice.  Na srečo imam zdaj dopust, drugače se s tem ne bi mogel ukvarjati. A, počasi mi zmanjkuje idej. Ima kdo kakšen nasvet? Je mogoče, da je USB vmesnik pokvarjen?"
+    },
+    {
+        "role": "user",
+        "message": "Preden pozabim: zamenjal sem tudi napajalnik (je čisto nov - LC Power 420W)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zanimivo je to, da ti je prej vse delovalo ok. Sedaj pa ti tudi po reinštalaciji ne dela. Kar mi pade na pamet je le to, ali si tudi prvič sam naložil winse al so ti jih v štacuni? Lahko, da so še kake druge \"driverje\" ali \"servise\" naložili.  Ne vem, samo na glas razmišljam."
+    },
+    {
+        "role": "user",
+        "message": "Sam sem si namestil. Nisem začetnik. Matična je nova, kupljena prejšnji teden. Na začetku je spanje delovalo, od sobote pa spanje ne deluje. Računalnik moram izklopiti, če želim prišparati na elektriki.  To je vse, kar je trenutno naloženo:   Naloženi programi  Če dam spanje:   Poskus spanja  ... se prebudi v sekundi (vseeno je, ali to delam preko menija start ali pa počakam recimo 5 minut - za poskus imam tako nastavljeno)  Če vpišem powercfg -LASTAWAKE v CMD, dobim sledeče:   LASTAWAKE  Skratka, nobena uporabna informacija."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tole je pa zelo čudno, da ti pri pravilni sintaksi ukaza \"powercfg -lastwake\" javi \"Invalid parameters...\" !!!???  Kot da so koruptani Win7HP, mogoče heca tudi ram, ker se OS melje tam. Je inštaliran SP1 za Win7HP?  Izklopi mrežno in v biosu poglej, da imaš izklopljen WOL (wake on lan) ter poizkusi znova."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0, hvala bom takoj poskusil vse, kar si napisal, samo da se dokonča namestitev Service Pack 1."
+    },
+    {
+        "role": "user",
+        "message": "Torej, spet jaz.   @assistant_0, SP1 je nameščen, v BIOS-u oz. točneje UEFI-ju jaz opcije za izklop Wake on Lan oz. WOL ne najdem.   Vse kar je, je sledeče:   Pri \"Advanced\" ikoni imam opcije:  1.) South Bridge configuration (glej video od 3:10): * Restore on AC/Power Loss je nastavljen na \"Power off\" * Deep Sx ima nastavljena na \"Enabled in S5\" (piše, da je to Deep Sleep) * Onboard LAN je nastavljen na \"enabled\" * ACPI HPET table (1) je nastavljen na \"disabled\" - privzeto je sicer \"enabled\", vendar dejansko ni nobene občutne razlike ... * PCI legacy mode = enabled  1 -> HPET v opisu piše, da je High Precision Energy Timer  2.) ACPI configuration (glej video od 3:17): * suspend to RAM: Auto,  * check ready bit: enabled,  * vse ostalo je disabled razen zadnje opcije RTC Alarm Power On, ki ima nastavitve \"By OS\"  Skratka 99,9% nastavitev je vse nastavljeno na privzeto."
+    },
+    {
+        "role": "user",
+        "message": "Nov poskus: v UEFI-ju sem izklopil opcijo Suspend to RAM. Torej namesto \"Auto\" je sedaj na \"Disabled\".  Efekt tega je, da sistem v primeru, da dam \"spanje\" izklopi ekran, tudi oba diska, lučka na ohišju začne \"utripati\", žal pa se ventilatorji nočejo ustaviti.  Sem že bližje rešitvi mojega problema?  Pa še eno vprašanje: tam, ko sem zgoraj naštel Deep Sx (globoko spanje) so sledeče opcije: - Enabled in S5 - Enabled in S4 in S5 - pa še ena ali dve opciji, bom takoj dodal Kaj naj nastavim?  Medtem sem nekaj našel. Bom takoj poskusil: http://forums.tweaktown.com/asrock/4389...  EDIT: tretja opcija v Deep Sx je \"disabled\"."
+    },
+    {
+        "role": "user",
+        "message": "Poskus 2  Če dam sledeče opcije:  Varianta 1: Deep Sx = Enabled in S4 and S5 Susped to RAM = Enabled  Se zgodi tole: monitor zaspi, računalnik še vedno deluje  Varianta 2: Deep Sx = Enabled in S4 and S5 Susped to RAM = Disabled  Se zgodi tole: monitor zaspi, diski se izklopijo, LED na ohišju začne \"žmigati\", ventilatorji še vedno delujejo na polno."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hm, na bios filmčku sem opazil, da imaš še prvo verzijo biosa, t.j. 1.20.  Posodobi ga na zadnjo verzijo. , ki je 1.60. Kako se flasha bios pa imaš na voljo 3 izbire, izberi tisto, ki ti je najljubša. Do navodil prideš s klikom na ikonco prve pomoči."
+    },
+    {
+        "role": "user",
+        "message": "Ne, ne, zgornji filmček ni moj. Povezavo do filmčka sem prilepil samo zaradi tega, da se vidi, kakšen je tale UEFI ali karkoli je že. Jaz imam BIOS/UEFI že od torka posodobljeno na verzijo 1.60."
+    },
+    {
+        "role": "user",
+        "message": "Mogoče pa je v tem težava? http://www.asrock.com/feature/appcharge...  Sicer tega program nimam nameščenega, vendar so nastavitve nekam poznane ...  *** To support APP Charger under S5 (Shut Down), A. If you could find \"Deep S5\" in BIOS SETUP, please set the option to [Disable]. B. If you could not find the Deep S5 option, please set BIOS > Advanced > ACPI Settings > \"PCI Devices Power On\" as [Enabled].  Eh, nič ... prvo bom poskušal srečo tukaj: http://forums.tweaktown.com/asrock/  Če pa mi ne bodo znali pomagati, pa bom kontaktiral trgovino, kjer se kupil matično."
+    },
+    {
+        "role": "assistant_6",
+        "message": "To mora bit nekaj drugega kot BIOS (ali kajžejetisto). Kako se ti lahko same od sebe spremenijo nastavitve?  Pa ravno sem ti hotel predlagati klic v trgovino. Ker to je tudi neke vrste napaka, če noče spati. Ne vem če bi ravno stvarno napako uveljavljal, ampak napaka je pa dejstvo in komp ti ne dela tako, kot bi moral.  P.S. Joj, kako me drži, da bi bil še \"Žleht\". Pa ne bom."
+    },
+    {
+        "role": "user",
+        "message": "Hvala. Bom jutri klical v trgovino."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Še malo sem na glas razmišljal.  A ko si na novo inštaliral si poskusil najprej na \"golo\" inštalacijo in potam za vsak driver, ki si ga dodal? A si probal mogoče kakšne XP-je tudi? BIOSi so imeli v časih, ko sem se jaz ubadal z njimi, še neke dve možnosti, kao \"load optimal settings\" in še nekaj kao \"load safe settings\". Si probal? Kaj pa v safe modu spi?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ti dela hibernacija v win 7?  Pri slikci \"USB hub - poraba\", izklopi možnost.   Kako dela pc npr. v Ubuntuju -> standby (da se vidi ali je težava v tvojih winsih ali kje drugje) ?  Če ventilatorji še \"meljejo\", ko daš pc v standby, moraš prestaviti nekje v biosu (recimo fan control auto/slow ...)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6:  V Safe mode \"spanje\" ne deluje. Oziroma vsaj pri meni ne deluje. Glede \"load optimal setting\" sem zdaj ponovno vse nastavil na privzeto. Nobene spremembe.  @assistant_7:   @assistant_7 je 8. sep 2011 ob 17:46 izjavil:Če ventilatorji še \"meljejo\", ko daš pc v standby, moraš prestaviti nekje v biosu (recimo fan control auto/slow ...).  Pri fan ima nastavljeno na \"automatic\" in hitrost dodatno še \"6\". Ampak to velja le med samim delovanje računalnika (torej, kako hitro želiš, da se ventilatorji obračajo).   @assistant_7 je 8. sep 2011 ob 17:46 izjavil:Ti dela hibernacija v win 7?  Hibernacije oz. mirovanje bi se moralo pokazati tudi v star meniju, ne? Pri meni se ne pokaže. Glej sliko:   Spanje   @assistant_7 je 8. sep 2011 ob 17:46 izjavil:Kako dela pc npr. v Ubuntuju -> standby (da se vidi ali je težava v tvojih winsih ali kje drugje) ?  Ali to deluje pri Ubuntu Live CD-ju?   @assistant_7 je 8. sep 2011 ob 17:46 izjavil:Pri slikci \"USB hub - poraba\", izklopi možnost.   Bom takoj poskusil"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7, poskusil sem tisto z USB-jem. Nič se ni spremenilo. Vse je isto."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hm, ko sem te v prvem pojem postu vprašal, če hibernacija dela si odgovoril da ne.  To sem razumel drugače kot praviš zdaj, da je niti nimaš med izborom.  Aktiviraj Hibernacijo z ukazom v Command Promptu kot administrator: powercfg -h on  in preveri, če se zdaj pojavi ukaz Hibernate v Start meniju. A v biosu pa kake S3 power state opcije ni ali je samo S4/5 ?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Fantje a je to res, ( prebral na tem forumu) da če imaš SSD disk, da ni priporočljivo dajat prenosnik v hibernacijo, ampak raje v spanje."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 8. sep 2011 ob 20:40 izjavil:Hm, ko sem te v prvem pojem postu vprašal, če hibernacija dela si odgovoril da ne.  To sem razumel drugače kot praviš zdaj, da je niti nimaš med izborom.  Aktiviraj Hibernacijo z ukazom v Command Promptu kot administrator: powercfg -h on  in preveri, če se zdaj pojavi ukaz Hibernate v Start meniju. A v biosu pa kake S3 power state opcije ni ali je samo S4/5 ?   Pozdravljen @assistant_0, hibarnacijo bom takoj poskusil.  V BIOS-u/UEFI-ju so na izbiro samo sledeče možnosti:  Deep Sx (Sleep): - Enabled in S5 - Enabled in S4 and S5 - Disabled  Aja, še to sem pozabil: Susped to RAM sem ponastavil na \"Enabled\"."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_8 je 8. sep 2011 ob 21:09 izjavil:Fantje a je to res, ( prebral na tem forumu) da če imaš SSD disk, da ni priporočljivo dajat prenosnik v hibernacijo, ampak raje v spanje.   Verjetno ja, ker če daš v hibernacijo, se zapiše velikanska datoteka (nekaj gigabajtov/gibibajtov) na SSD. Pri SSD-ju pa imaš določeno število prepisov celic in se ti lahko zaradi tega hitro ponucajo ... prej ti crkne SSD.   Ravno zaradi tega je močno odsvetovano (oz. v določenih primerih celo izklopljeno) defragmentiranje SSD-jev."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0, tudi hibernacija ne dela ...  Zdaj bom poskusil še en nasvet, ki sem ga dobil od AsRockove podpore.  Če še to ne bo delalo, bom v ponedeljek poslal matično nazaj k trgovini, oni pa naj dajo v servis."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Še to povej ali ukaz: powercfg -h on  javi napako kot v prejšnjih primerih (\"Invalid parameters...) ali pa gre ukaz skozi ampak se Hibernate izbor ne pojavi v meniju ? Čudno mi je namreč že dejstvo, da ti pri pravilni sintaksi ukaza OS najprej zavrne nato pa po drugem ali tretjem poizkusu ta isti ukaz sprejme. Kak Clear Cmosa tudi ne bi škodoval."
+    },
+    {
+        "role": "user",
+        "message": "Fantje, ne boste verjeli ... problem je rešen!   Napaka je zelo zanimive sorte. To sem dobil kot en predlog od ASRockove podpore, kaj naj naredim:  Dear @user,  We did the test, but we cannot see the symptom. Below is our test configuration. CPU: i3-2100 Memory: Kingston DDR3-1600 4GBx2 VGA card: HD5450 HDD: Seagate ST3250318AS BIOS: P1.60  Please kindly refer to below suggestions for testing. 1. Load BIOS default settings to check whether the symptom still occur. 2. Please only install Seagate (ST31500341AS) 1.5TB HDD and HD5450 to check whether the symptom still occur.  Thanks!  Have a nice day ASRock TSD Emily   Torej, sistem sem kloniral na Seagate-ov disk, odklopil WD-jev 500 GB-ni disk in ... PRESENEČENJE! Spanje in hibernacija delujeta brez problemov od prvega trenutka.   Po treh ponovnih inštalacijah Windows 7-ke, po štirih BIOS/UEFI nadgradnjah (na najnovejšo, potem spet nazaj na staro verzijo, pa na še starejšo, na koncu pa spet na najnovejšo), ene šest CMOS resetiranj in odstranitve baterije na matični se je kot edini krivec pokazal Western digitalov trdi disk!!!  Celo Ubuntu 11.04 sem namestil preko Wubija, tudi tam ni delovalo spanje ...  Zdaj še čakam na odgovor, ker sem poslal še en mail, kako to, da WD-jevi diski ne delujejo, medtem pa sem dobil še eno zasebno sporočilo, da so baje neke težava pri določenih trdih diskih in določenimi Intelovimi čipseti serije X6x (H61, H67, P61 itn.), neodvisno od proizvajalcev (ASRock, ASUS, Gigabyte itn.) ... toliko, da veste.  Samo zakaj pa mi je še v soboto zaspal računalnik, res ne razumem. Ali pa sploh ni zaspal? Zdaj se že sploh ne spominjam. Glavno, da zdaj deluje.  Hvala vsem za vse nasvete, posebej Duhcu.  Fantje, če se enkrat kje srečamo, imate pivo v dobrem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Odlično in hvala za info ! Sprva sem pri sebi tudi pomislil na disk ampak, ker sem zasledil, da si vmes napisal \"Nobena USB naprava ni priklopljena - razen USB miške in tipkovnice\" sem to avtomatsko potem odmislil in si rekel, saj ima samo usb miš in tipkovnico, nobene druge zunanje usb enote, ki bi te lahko hecala .... nisem pa bil pozoren, da si napisal, da je to ext. sata disk in sem ga čisto odmislil. Spremljaj WD stran, če je na voljo že kak nov firmware za disk."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 9. sep 2011 ob 16:25 izjavil:Spremljaj WD stran, če je na voljo že kak nov firmware za disk.   Bom, hvala še enkrat za vse! Lep vikend vsem skupaj."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No ja. Se je splačalo! Sam da si zrihtal.  P.S. Žlehtnoba"
+    },
+    {
+        "role": "user",
+        "message": "Najbolj zanimivo je to, da me je hecal notranji, glavni disk, ki je znamke Western Digital Green in ne zunanji eSATA (Medion ohišje, v katerem je bil ta Seagate)."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Saj sata interni diski so na enih čipsetih (v winsih zaznani) kot usb izmenljive naprave ."
+    },
+    {
+        "role": "user",
+        "message": "Ja, ampak samo v primeru, da imaš nastavljen AHCI oz. RAID."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Še vedno me bega tale tvoja slika:  Sintaksa ukaza je v prvem, tretjem in četrtem poizkusu pravilna (v drugem si se pač zatipkal in na koncu manjka črka \"e\") ampak samo v zadnjem poizkusu je ukaz sprejet, prej pa ti je javilo \"Invalid parameters....). Mogoče je pa kaj z diskom narobe, kak muhast cache na elektroniki?"
+    },
+    {
+        "role": "user",
+        "message": "Možno. Takšna je aktualna slika:   Powercfg - lastwake (9.9.2011 ob 18:24)"
+    }
+]

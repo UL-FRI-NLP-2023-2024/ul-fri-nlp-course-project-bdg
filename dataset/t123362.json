@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "No... v glavnem mam en problem... Nameravam narest en špil aka Liero, sam d bi mel grafiko na OpenGL-u... No pa sem prišel do problema... opengl nima vgrajene podpore za \"voxel\"-e... Sicer se jih da risat kot 3-d teksturo (v bistvu jst rabm samo 2d), sam je problem v hitosti... Če bi hotel vsako sekundo tridesetkrat obnoviti celo teksturo recimo 480*640*9*3 bi bla stvar pomojem prepočasna... Tekstura je sicer ful dobra rešitev, če maš statičen objekt, za dinamičnega je pa bl tko... A kdo ve kako bi drugače lahko naredil ozadje? A se mogoče da direktno dostopat do tekstur v spominu (ko so že naložene z opengl)?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj bi rad naredil? Tega Lierota ne poznam... daj kak screenshot"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Liero je en tak real-time worms za dva igralca. Zakon zadeva z grdo grafiko, tako da je ideja dobra. Mogoče ti jo še ukradem .  Sicer pa eno podatkovno strukturo za opis igralnega polja (ozadja) boš itak rabil. Zakaj ne potem kar drawPixel? Realizirat to bi bilo zelo enostavno.  LP"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Upam da sem iz tvojega posta pravilno razbral problem: rad bi spreminjal vsebino texture? Da se ustvariti GL kontext, ki je v bistvu textura, tako da lahko rises direkto nanjo. Hitrost tu sploh ni vprasljiva. Mislim da bi moral biti tutorial celo na NeHe (ena izmed visjih stevilk).  Ce pa hoces uporabiti 3D texturo raje se enkrat premisli. Sem 100% da lahko vsak tvoj problem resis z uporabo navadnih 2D textur (morda celo 1D ;)). Ce ti ni jasno kako bi to naredil pa kar vprasaj."
+    },
+    {
+        "role": "assistant_0",
+        "message": "real time worms?  Naj neko opise, kako zgleda... To bi bila samo podlaga za game al kako? To vzames en 'neskoncem' bitmap, ki ga tile-as na 'podlago'. Textura je pac minimalna. Vse ostale stvari, dodatne okrasne zadeve so pa svoji bitmapi, ki jih po potrebi lepis na vrh te podlage.  Tako je narejena vecina 2D oz 2.5D iger. Vseeno ali imas RTS igro v stilu StarCrafta ali pa eno streljacino v stilu Raptorja (pogled od zgoraj, spodaj se pa scrolla pokrajina)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "ej BW pa ne morem verjet kak tega kultnega špila ne poznaš. pa ovo pozna vsak pravi heker.  pa da si tak len de še poguglat ne moreš: http://images.google.com/images?q=liero..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Baje se da z \"RenderToTexture\" metodami marsikaj naredit. Probaj še z glSlangom."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ce bi bil ta spil kulten, potem bi ga ziher poznal ;> Kultni so Jet Set Willy, pa PSSST.... ;>  No ja, sicer pa, kot sem rekel, to so skupaj zlimani bitmapi.. Vsaj tako se zdi. Pozabi na texture, vsaj zaenkrat, ker je to precejsen overkill. Tukaj gre samo zato, da stari bitmap nadomestis z novim."
+    }
+]

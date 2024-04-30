@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Ker sem za več dni odpotoval, sem računalnik odklopil iz napajanja, torej preprosto zmaknil iz vtičnice. Ko sem prišel nazaj domov, sem računalnik spet priklopil nazaj v napajanje vendar se več noče zagnati.. Ko ga hočem zagnati, se ne zgodi nič, ne zavrtijo se niti ventilatorji in zgleda kot, da je popolnoma \"mrtev\".   Elektriko očitno dobi vendar se vidi, da je nekaj narobe, saj hitro utripa (skoraj sveti) rumena diodica, ki ponavadi gori, ko je računalnik prižgan. Zanimivo je tudi to, da lučka utripa še tudi nekaj trenutkov po tem, ko mu vzamem napajanje.. Opazil sem še, da so na tipkovnici v nekem trenutku bliskale vse lučke.  Računalnik je star 4 leta. Ali je problem v napajalniku?   Vsaka pomoč bi bila dobrodošla !"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če veš samo to Računalnik je star 4 leta. odnesi raje na servis."
+    },
+    {
+        "role": "user",
+        "message": "Vem še veliko več, ampak nevem, če je smiselno pisat vse podrobnosti, če mi lahko kdo iz prve roke pove, v kater komponenti je težava..  Drugače pa, če ti to kaj pomaga: Procesor: Intel Core 2 Quad Q6600 2.4GHz Plata: Gigabyte P35-DS4, S775 Ram: 6 Gb mislim da OCZ, 800Mhz Grafa: Leadtek GeForce 8800 GTX 768mb Disk: WD 400GB SATA2, 16Mb, 7200rpm Napajalnik: LC Power 850W, Arkangel OS: Win7  Še kakšno informacijo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Priklopi samo najnujnejše, 1x ram, grafična, cpu in testiraj.  Zelo čudno da bi kišta crknila, ko je bila ugasnjena.  El. napeljava/ups je ok ?  Preveri še kondenzatorje.   http://slo-tech.com/clanki/2nap/2nap.sh... kako testiraš samo napajalnik Načrt: Ideja je bila nekako taka: Ko pritisnem gumb za vklop, nastane NEKJE NA MATIČNI PLOŠČI kratek stik. Ta stik povzroči vklop napajalnika, in posledično, vklop računalnika. Razlika med AT in ATX napajalniki je v tem, da ATX napajalnike vključuje matična plošča, in ne direkten kontakt gumba za vklop na napajalniku, kot je to bilo pri AT napajalnikih. Naslednji logični korak je bila ugotovitev, kaj je treba narediti, da se napajalnik vklopi brez pomoči matične plošče. Sledili so trije mukotrpni dnevi ugotavljanja, kako se to naredi. V shemi za ATX napajalnike sem opazil, da 8. pin pomeni »power good« in da 14. pin pomeni »On/Off Control Signal«. Torej, ta dva pina imata neko vezo.  Ko je napajalnik vključen, daje v MOLEX konektorje napetost 5V in 12V. Ampak to samo takrat, ko mu osnovna plošča sporoči, naj se vklopi. Tu pride zelo prav voltmeter, s katerim sva s Primožem ugotavljala, kdaj je bil napajalnik prižgan in kdaj (večinoma) ne. Vedno, ko sva hotela narediti stik med 8.in 14.kontaktom, se je za trenutek pokazala napetost. Enkrat sva pa po nesreči PUSTILA kontakt, in stvar je delovala! Torej, zdaj veste kako usposobiti ATX napajalnik brez pomoči matične plošče. Z navadno prevodno (ma ne) žičko povežete 8. in 14. kontakt in stvar bo delovala. Če se slučajno stvar NE BO vključila, ne še metati napajalnika v koš, češ da ne dela. Namesto da bi povezali 8. in 14. pin, povežete zeleno žičko (14.pin) z maso (ohišje napajalnika) in stvar bo 100% delala (razen če je napajalnik res pokvarjen, seveda :)). Tako. Najhujše je mimo. Vse, kar moramte narediti sedaj, je da povežete dva napajalnika na en kabel."
+    },
+    {
+        "role": "user",
+        "message": "Sem probal samo z grafo, procesorjem in rami pa se zgodi isto kot prej. Lučka spredaj začne zelo hitro bliskati ostalo zgleda mrtvo. V napajalnike pa se ne spoznam in nevem niti kje so ti pini, da bi ga stestiral in zagnal brez pomoči matične.. Najbolje se mi zdi, da ga stestiram na drugem Pcju...  To se mi je enkrat že zgodilo, vendar takrat so se ventilatorji zavrteli ampak se je po nekaj sekundah spet resetiral.. Pa sem ga komaj prižgal od takrat pa ga nisem niti enkrat ugasnil. Sedaj, ko sem ga pa spet ugasnil, pa nobenih znakov živlenja več.."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po vsej verjetnosti je šla matična, še ne dolgo nazaj je bila ugodno v oglasih P45delux."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Meni se to dogaja vedno ko je računalnik 14 izklopljen iz elektrike.  Tako da rabi ene pol ure preden ga lahko vklopim nazaj. Kot bi bila baterija malo zanič.  Ampak zgleda imaš ti večji problem."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1 je 28. maj 2012 ob 12:17 izjavil:Po vsej verjetnosti je šla matična, še ne dolgo nazaj je bila ugodno v oglasih P45delux.    Mogoče je res šla matična. Vendar zakaj za hudiča bi šla matična, če je bil samo iz elektrike izklopljen?!  a je kdo uporabljal tvoj PC ko te ni bilo?"
+    },
+    {
+        "role": "user",
+        "message": "Računalnik sem pravilno vgasnil, ga zmaknil iz vtičnice in nihče ga ni uporabljal, bili smo na morju, prazna hiša.. Računalnika ponavadi ne izklapljam in laufa že 4 leta 24/7 ampak, če gremo kam za več dni ga izklopim in odklopim iz napajanja zaradi neviht.   Najbolj čudno je to, da rumena lučka, ki ponavadi gori, ko je računalnik prižgan zdaj hitro utripa oz. bliska podobno kot žarnica, ki bo kmalu crknila.. Tudi na tipkovnici so en trenutek bliskale vse 3 lučke (caps, scroll, num lock).. Verjetno je res matična kriva, ker sem že večkrat mel težave z zagonom in tudi na servisu niso ugotovili kaj je vzrok..  Ko sem ga nazadnje izklopil, sem imel prav tako težave pri ponovnem zaganjanju, ventilatorji so se zavrteli, potem pa se je sam resetiral vendar takrat mi ga je nekako po več poskusih uspelo zagnati..   Če je napajalnik OK, to pomeni, da je 90% možnosti, da je šla matična? Ampak še zdaj nevem, zakaj bi računalnik delal super po odklopu iz napajanja pa se več nebi hotel prižgati.."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@MiDo, mogoče so kontakti na stikalu za vklop oksidirali in imajo slab stik. Na tvojem mestu bi iztaknil 220 V kabel iz vtičnice in večkrat vklopil in izklopil stikalo na ohišju in stikalo na napajalniku. Včasih se le s temi vklopi in izklopi v stikalu očisti oksidacija in nato deluje normalno. Če to ne pomaga in je razlog oksidacija kontaktov na stikalu, bo treba zamenjati stikalo."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 Hvala za nasvet, tudi z stikalom sem že imel probleme, namreč ni čist ok nameščeno ampak do sedaj je delalo. Bom pogledal tudi to.. Ni mi pa jasno zakaj lučka, ki ponavadi sveti, ko je računalnik prižgan sedaj bliska zelo hitro.."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@MiDo, na mojem ohišju sta dve lučki: rdeča (disk), modra (napajanje). Rdeča lučka utripa, kar je normalno in modra stalno gori, kar je tudi normalno. Če bliska lučka, ki ni disk, je možno, da je nekaj narobe s stikalom."
+    },
+    {
+        "role": "assistant_5",
+        "message": "probaj clr_cmos"
+    },
+    {
+        "role": "assistant_6",
+        "message": "No če problem še ni rešen meni se je to tudi že zgodilo a jaz sem le odklopil matično ploščo od vseh kablov in 1 uro kasneje spet priklopil in je delalo a če ne poznaš zgradbe računalnika ti odklapljanje kablov iz matične odsvetujem."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Živjo, jaz imam tudi problem z namiznim računalnikom. Pred 2 letoma sem si uničil ram na računalniku in ga nisem nič popravljal do zdaj. Računalnik pa je star 4 ali 5 let. Danes sem celoten računalnik razstavil tako, da sem iz matične vse kabile odklopil in da sem ves prah iz računalnika počistil. Iz procesorja sem lepo dol počistil s suho brisačo staro termalno pasto in z novo lepo namazal. Ko sem računalnik lepo priklopil nazaj še zmeraj ni deloval, kljub temu da sem kupil nov ddr2 ram. Ko \"prižgem\" računalnik mi ne zapiska. Zažene se samo za kratek čas in ventilator nad procesorjem se vrti samo za 6 sekund.  Kaj bi lahko tukaj bilo narobe?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ups imel sem napačne pine sklenjene, zdaj pa je tako, če vse izklopim in pustim samo procesor na matični priklopljen ne da zvoka, če pa ram še zraven dam tudi ne da zvoka,kaj bi lahko blo tukaj narobe? No drugače pa se ventilatorji vrtijo non stop, kdaj ga seveda prižgem. :)"
+    }
+]

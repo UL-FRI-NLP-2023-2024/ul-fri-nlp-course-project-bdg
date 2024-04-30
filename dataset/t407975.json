@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Na HP DM3 prenosniku sem imel najprej 3 particije: sistemsko, recovery in HP_tools (za slednjo še vedno ne vem čisto točno, čemu je namenjena). Dokumente sem hotel imeti na ločeni particiji, zato sem naredil še eno particijo tako, da sem sistemsko zmanjšal in na praznem prostoru ustavaril novo. Vse skupaj sem izvedel z Paragon Partition Managerjem. Ko sem dodajal particijo, me je sistem opozoroil, da če bom \"prčkal\" po particijah, bo kot boot particijai ostala označena samo tista, na kateri je nameščen trenutno pognan operacijski sistem. Ker sem imel inštalirano samo windows 7 home premium sem predvideval, da mi to ne bi semlo povzročat problemov.  Ampak se mi zdi da mi jih je. Ker se mi je inštalacija nekako zjebala, po zagonu in vnosu gesla na login zaslonu se sistem namreč ni postavil, niti v safe modu, pomagala ni niti repair installation funkcije z DVDja. Ko sem probal zalaufat System recovery, do katerega dostopaš preko boot menija, se je takoj po pritisku na tipko F11, ki bi mogla zagnat recovery sotfware, nadaljeval zagon operacijskega sistema.  Kaj moram nardit, da bo komp ob pritisku na f11 našel software in recvery particijo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nest ga na servis ! (ker nisi bral navodil ter ker nisi napravil back up-a particijske tabele prej kot si šaril!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pobriši vse skupaj in naredi svežo inštalacijo W7. Kodo imaš itak nalimano na prenosniku. Tako se znebiš tega recovery sranja, ki samo zažira plac, ter imaš normalno inštalacijo brez prednaloženega sranja, ki le smeti sistem."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user: Čudo prečudno. Žal si naredil napako, da si nisi naredil Recovery medijev (=podatki iz recovery particije se zapišejo na DVD, s katerim lahko zbudiš in obnoviš sistem). Čudi me, da imaš težav. Na enemu svojih prenosnikov imam prav tako nasneto Recovery particijo, pa nisem imel nobenih težav, ko sem zmanjšal velikost particije C: in ustvaril novo (D:). Sem pa uporabljal eno prastaro verzijo programa Partition Magic oz. kasneje gparted (Linux program).  Zdaj, če si slučajno poleg prenosnika dobil kakšen DVD, ga lahko uporabiš za obnovo sistema, nakar uporabi kakšen drug program za spreminjanje particij.  @assistant_1: Imaš sicer prav glede odstranjevanja Recovery particije, vendar je ponekod možno izbrati, kateri programi se namestijo ob obnovi sistema, kar drastično poveča uporabno vrednost Recovery particije. Kot dodaten bonus se ni potrebno ubadati z inštalacijo 100+1 gonilnika za napravo XYZ.  Priznam pa, da so moje trenutne izkušnje z Windows 7 take, da se privzeto inštalirajo vsi gonilniki sami od sebe."
+    },
+    {
+        "role": "user",
+        "message": "Nagibam se v smeri kompletnega brisanja celotnega diska in particij ter namestitve W7HP, in potem izdelave backup slike s pomočjo backup utilitya od W7. Ga je že kdo preizkusil? Problem je le v tem, da bi v primeru sesutja moral uporabiti W7 dvd, da pridem do orodij Repair installation - laptop pa ima externi dvd, ki ga seveda ne nosim vedno sabo."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Sem poizkusil že OGROMNO programov za backup slike in ti povem da sem bil v večini razočaran. Najbolj nad tem da so te programi čisti bloatware. Programčič od windows 7 je še kar vredu, ampak izredno počasen.  Nakoncu sem našel Macrium Reflect Free Edition. Simpel mali programčič, vse dela tipitopi in pa najpomembejša stvar: dela nevrjetno hitro!   Slika 46GB zasedenega diska se po 18 minutah naredi po 100mbit mreži, končna slika je velika 21GB. Windows utility je mlel več kot 40 minut.   Torej močno priporočam!"
+    }
+]

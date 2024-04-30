@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Če grem na programi/pripomočki/komunikacije in na povezavo z oddaljenim namizjem - ali lahko v tem primeru denimo od doma gledam računalnik v službi?  Potrebujem verjetno IP številko in geslo?  Hvaaalaaa za odgovor."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mors met staticni IP...in pa geslo kot si rekla...Pa ne pozabit omogocit oddaljenega namizja!  Lp Primoz  p.s. Jaz mam tudi to samo v obratni smeri...iz sluzbe domov"
+    },
+    {
+        "role": "user",
+        "message": "Se pravi, da če ima nekdo IP številko od mojega računalnika in moje geslo (ki ga je sila lahko ugotoviti, denimo) se mi lahko od doma konekta na računalnik, ne da bi jaz vedela?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mors met staticni IP...in pa geslo kot si rekla...Pa ne pozabit omogocit oddaljenega namizja! Zakaj že bi moral met statični IP za Remote Desktop? Je priporočljivo in seveda udobno vendar nimam pojma zakaj bi bilo nujno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "pa če imaš v službi firewall do katerega nimaš dostopa.. pol lahko kr pozabiš na take finte.. :>"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Za dostop do RDPja rabis par stvari:  - RDP more bit omogcen na tistem PCju, kamor hoces it. To naredis tako: Control Panel > System > tab Remote > dodas kljukico v spodnjem delu pred Allow users to connect remotely to this computer > potem spodaj kliknes na Select Remote Users... kjer dodas uporabnike, katerim dovolis dostop - Pol mora firewall pustit port, po katerem bo sel ta RDP. Default je to 3389 TCP. Ce ti to ne pase, ga spremenis: Start > Run... > vpises regedit > si pogledas navodila, ki so opisana v  KB306759. - Ce mas kaksne routerje vmes, pa itak da morajo forwardat port na tvojo lokalno masino. In ker tvoja sluzbena masina 110% ni server, rabis tudi to. Torej, ko tvoja zahteva pride v omrezje vase firme, morajo pac PCji pravilno usmerit zahtevo tako, da ta konca na tvojem sluzbenem PCju. Kot recimo nek policaj, ki pac stoji na kriziscu in izloca tovornjake na levo, avte na desno.   by Miha"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Tudi sam nameravam začeti uporabljati RDP. Če imam vse zgornje pogoje izpolnjene, me zanima: 1. kako poskrbeti za varnost in ali 2. je potreben samo inbound in outbound TCP porta ali tudi UDP?  To je zaenkrat vse, hvala za odgovore."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če imaš firewall si lahko pomagaš npr. z msn messingerjem, ki ima vgrajeno \"remote desktop\". Vse kar rabiš sta dva email predala.  p.s. problem statičnega IPja lahko rešiš z dynDNS.org"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Za izboljšanje varnosti v Win RDC sem naredil naslednje: - spremenil port - onemogočil dostop vsem uporabnikom razen enemu - določil da se po treh napačnih vnosih gesla pc zaklene  Ima kdo še kakšno idejo? Kaj se še da narediti?"
+    },
+    {
+        "role": "user",
+        "message": "Če mi pa pol npr na ekranu, ko hočem ugasniti računalnik piše \"V ta računalnik so priključeni oddaljeni ljudje...\" to pomeni, da nedko uporablja ravno to funkcijo \"Povezava z oddaljenim računalnikom\"?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ne grem odpirati nove teme, me pa zanima nekaj o dostopa do službenega računalnika. Doma imam prenosnik (windows 7), s katerim se povezujem s službenim računalnikom (windows xp), me pa muči, ker ne vem, kako naj nekaj natisnem, saj če inštaliram tiskalnik, mi ga inštalira na prenosnik in ko sem povezan s službenim računalnikom, mi tiskalnika ne pokaže v nadzorni plošči in tako ne morem tiskati. No, saj sem inštaliral tudi, ko sem imel službeno povezavo, ampak ker ni vtaknjen v tistem računalniku v službi, mi kaže, da tiskalnik ni priklopljen. Enako je, če vtaknem usb ključ. Zato izgubljam čas, ko moram nekaj natisniti, ker dokument pošljem pri službeni povezavi po e-pošti sebi, izklopim povezavo, odprem na prenosniku in natisnem. Se da kaj narediti?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user je 15. feb 2006 ob 13:02 izjavil:Če mi pa pol npr na ekranu, ko hočem ugasniti računalnik piše \"V ta računalnik so priključeni oddaljeni ljudje...\" to pomeni, da nedko uporablja ravno to funkcijo \"Povezava z oddaljenim računalnikom\"?   Verjetno je prijavljen nekdo na firmi, drugače pa kontaktiraj vašega sistemca, da ti uredi to pa ti bo točno povedal kako in kaj.   @assistant_6 je 24. mar 2014 ob 10:07 izjavil:Ne grem odpirati nove teme, me pa zanima nekaj o dostopa do službenega računalnika. Doma imam prenosnik (windows 7), s katerim se povezujem s službenim računalnikom (windows xp), me pa muči, ker ne vem, kako naj nekaj natisnem, saj če inštaliram tiskalnik, mi ga inštalira na prenosnik in ko sem povezan s službenim računalnikom, mi tiskalnika ne pokaže v nadzorni plošči in tako ne morem tiskati. No, saj sem inštaliral tudi, ko sem imel službeno povezavo, ampak ker ni vtaknjen v tistem računalniku v službi, mi kaže, da tiskalnik ni priklopljen. Enako je, če vtaknem usb ključ. Zato izgubljam čas, ko moram nekaj natisniti, ker dokument pošljem pri službeni povezavi po e-pošti sebi, izklopim povezavo, odprem na prenosniku in natisnem. Se da kaj narediti?   Razloži to malo v detajle? Če se povezuješ preko \"remote desktop connection\" potem lahko dostopaš do oddaljenega namizja, ne pomeni pa, da je tudi tvoj računalnik na katerem si pognal \"remote desktop connection\" v službenem omrežju, za kaj takšnega boste potrebovali še recimo VPN."
+    },
+    {
+        "role": "assistant_8",
+        "message": "http://support.microsoft.com/kb/312135  http://windows.microsoft.com/en-us/wind...  pa podobno za druge verzije winsow.. Pri nam deluje."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Moj računalnik je A. Na Innbox-u je povezan na 3. port, da lahko preko compa spremljam TV. LAN kartici torej ni dodeljen lokalni IP 192.168.64.x. Želeni računalnik je B. V internet je povezan preko Wi-Fi. Ima dodeljen lokalni IP.  Na Innboxu je za lokalni IP računalnika B dodeljeno pravilo forwardiranja na port 3389. Na obeh računalnikih je RDP omogočen, laufajo tudi vse povezane storitve.  Kljub temu spletno preverjanje javi, da je port 3389 zaprt. Ping z mojega računalnika na računalnik B ni uspešen.  Kaj sem spregledal oz. česa ne vem?  Lp.  P.s.: Mnenja o ostalih programih enakega namena me ne zanimajo."
+    },
+    {
+        "role": "assistant_10",
+        "message": "T2 isp, srednja varnost ? Potem porti niso dosegljivi."
+    },
+    {
+        "role": "assistant_9",
+        "message": "T-2. Nizka varnost."
+    },
+    {
+        "role": "assistant_10",
+        "message": "V win firewallu si odprl port ?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ja, v firewallu ni ovir."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Urejeno.  1. Omogočil in skreiral ti. Domačo skupino (Home Group). Verjetno ni potrebna, a sem šel na ziher. 2. Svoj računalnik s TV omrežja kablovno preklopil nazaj na klasično domače 192.168.64.x omrežje. 3. Omogočil in vklopil odkrivanje omrežja ter javljanje v njem. 4. Med uporabnike z dovoljenim oddaljenim dostopom dodal uporabniške profile NETWORK, NETWORK SERVICE, REMOTE INTERACTIVE LOGON, TERMINAL SERVER USER in HomeGroupUser$. 5. Na oddaljenem računalniku spremenil geslo, ga odjavil in prijavil nazaj."
+    }
+]

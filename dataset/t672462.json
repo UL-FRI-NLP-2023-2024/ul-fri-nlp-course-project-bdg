@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Well, MPC predvaja choppy (CPU zabije na 100%, ni gledljivo), VLC pokaže samo prvi frame, BS Player da samo glas od sebe :).  Probal sem s ta prvim fileom tukaj: http://4ksamples.com/  Proc je Q8200@3.0 GHz, RAMa je 12GB. Grafika je nvidia 9600 GT.  thnx."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Grafična ti ne podpira dekodiranja 4K videov in se verjetno zadavi ko playerji probajo to predvajati. Probaj ugasniti strojno pospeševanje v nastavitvah playerja in predvajaj s CPUjem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kaj pa pravi GPU-Z ko daš play?  --  Meni: 1. frekvenca CPUja naraste, usage je 10-20%. 2. frekvenca GPUja narase, GPU Usage je pa nekje na 35%.  3770K & Radeon 7950   --  Pri ne navadnih videih, ne 4K, je usage zanemarljiv, tudi z uporabo Smooth Video Project, ki računa vmesne sličice, da jih prikaže z isto frekvenco, kot je frekvenca osveževanja monitorja. SVP pa 4K ne zmore (se sesuje) in MPC predvaja z FPS 4K videa."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Windows media player še probaj."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 27. apr 2016 ob 19:03 izjavil:Windows media player še probaj.   Nabije na 100%.  @assistant_0 je 27. apr 2016 ob 19:02 izjavil:Grafična ti ne podpira dekodiranja 4K videov in se verjetno zadavi ko playerji probajo to predvajati. Probaj ugasniti strojno pospeševanje v nastavitvah playerja in predvajaj s CPUjem.   Thnx, če ne bo delal, kakšen predlog glede low cost grafične?  @assistant_1 je 27. apr 2016 ob 19:02 izjavil:Kaj pa pravi GPU-Z ko daš play?  --  Meni: 1. frekvenca CPUja naraste, usage je 10-20%. 2. frekvenca GPUja narase, GPU Usage je pa nekje na 35%.  3770K & Radeon 7950   --  Pri ne navadnih videih, ne 4K, je usage zanemarljiv, tudi z uporabo Smooth Video Project, ki računa vmesne sličice, da jih prikaže z isto frekvenco, kot je frekvenca osveževanja monitorja. SVP pa 4K ne zmore (se sesuje) in MPC predvaja z FPS 4K videa.   GPU load je 3%. Se pravi se fura vse čez CPU. Sej moogče je sample slab, ne vem... amapk recmo, da mora delat. Grem gledat, kaj je z nastavitvami v MPC HC."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za 4K H.264 dekodiranje rabiš pri nVidii PureVideo feature set D, torej kartice serije 6xx in novejše. Če hočeš še meti H.265 dekodiranje bo treba nekaj najnovejšega s feature set F, GTX 750SE, GTX 950, ali GTX960.  Pri AMD rabiš podporo za UVD5 za 4K H.264 ter UVD6 za H.265. Podatki o tem kere kartice pa to podpirajo so pa precej bolj skopi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Procesor je rekel vse lahko, tega pa ne morem...Težko boš kaj dosegel..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "čas za upgrade mašine :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Elysium sample je sigurno čuden. V VLC mi ne kaže pravih barv, ampak je vse skoraj črno-belo, MPC pa pri seek zmrzne in ne predvaja naprej. Dela samo če ga odprem in pustim predvajati. Že samo pavza ga zmede.  Z drugimi 4K videi, ki sem jih v preteklosti probaval, pa nisem imel težav. Ups, popravek od prej. Gledal sem napačen graf. MPC predvaja Elysium z ~60% CPU (3770K), GPU pa skače iz nule na 30%."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 27. apr 2016 ob 19:51 izjavil:Za 4K H.264 dekodiranje rabiš pri nVidii PureVideo feature set D, torej kartice serije 6xx in novejše. Če hočeš še meti H.265 dekodiranje bo treba nekaj najnovejšega s feature set F, GTX 750SE, GTX 950, ali GTX960.  Pri AMD rabiš podporo za UVD5 za 4K H.264 ter UVD6 za H.265. Podatki o tem kere kartice pa to podpirajo so pa precej bolj skopi.   Thnx.  @assistant_4 je 27. apr 2016 ob 19:58 izjavil:čas za upgrade mašine :)   Ko bom zamenjal fotiča. Do takrat ni potrebe, ker kišta leti. Z izjemo 4k :).  @assistant_1 je 27. apr 2016 ob 20:00 izjavil:Elysium sample je sigurno čuden. V VLC mi ne kaže pravih barv, ampak je vse skoraj črno-belo, MPC pa pri seek zmrzne in ne predvaja naprej. Dela samo če ga odprem in pustim predvajati. Že samo pavza ga zmede.  Z drugimi 4K videi, ki sem jih v preteklosti probaval, pa nisem imel težav. Ups, popravek od prej. Gledal sem napačen graf. MPC predvaja Elysium z ~60% CPU (3770K), GPU pa skače iz nule na 30%.   Mogoče, da sem se zapiču v čudno zakodiran file..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kako ti predvaja tega ? https://docs.google.com/file/d/0B24xtHi..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tale elysium je res malce čudn. Pri meni dejansko začnejo stvari štekat, če ta video prižgem.   Ena majhna primerjava: Elysium 2013 sample / 23 fps / 51000 kbps    Fifa World Cup 2014 Uruguay-Colombia 4K x265 / 60 fps / 60000 kbps"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 27. apr 2016 ob 20:24 izjavil:Kako ti predvaja tega ? https://docs.google.com/file/d/0B24xtHi...   Normalno, tekoče. Samo to je stream... vpr. je, kakšen je tu bitrate. nova 750 je 90 evrov, v tujini, huh :)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_2 Preklopi na igpu @ 6600k.  @user File size : 152 MiB Duration : 42s 42ms Overall bit rate mode : Variable Overall bit rate : 30.3 Mbps  Na starem prenosniku z p8600 c2d zadeva ni gledljiva oz so diapozitivi."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Zgornji video ni stream, privzeto je mp4 video fajl, samo za google drive ga po novem kaže/predvaja v browserju. Shrani ga na disk in predvajaj z mpc-hc."
+    },
+    {
+        "role": "assistant_4",
+        "message": "če hočeš cheap h265 predvajanje, maš tv škatlice za 30$, ki bodo zmlele tut te videe."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_5 je 27. apr 2016 ob 20:29 izjavil:@assistant_2 Preklopi na igpu @ 6600k.  @user File size : 152 MiB Duration : 42s 42ms Overall bit rate mode : Variable Overall bit rate : 30.3 Mbps  Na starem prenosniku z p8600 c2d zadeva ni gledljiva oz so diapozitivi.   No HD530 pa normalno laufa tole, brež štekanja"
+    },
+    {
+        "role": "assistant_4",
+        "message": "tut na hd520. Z dual channel ramom dela tut 4k@hevc@60fps"
+    },
+    {
+        "role": "assistant_1",
+        "message": "A misliš 5200? To imam jaz. Z Iris 5200 (Pro?), sem pred nekaj časa komot pogledal 4K trailer Interstellar (dolgo časa po tem, ko sem pogledal film). Med predvajanjem se mi je zdelo, da nima težav, ker je vse delalo butter smooth. Na Intelovi strani pa ne najdem, če ima HEVC dekoder..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_1 je 27. apr 2016 ob 22:25 izjavil:A misliš 5200? To imam jaz. Z Iris 5200 (Pro?), sem pred nekaj časa komot pogledal 4K trailer Interstellar (dolgo časa po tem, ko sem pogledal film). Med predvajanjem se mi je zdelo, da nima težav, ker je vse delalo butter smooth. Na Intelovi strani pa ne najdem, če ima HEVC dekoder...   Njegov i3 6100U ima hd 520."
+    },
+    {
+        "role": "assistant_4",
+        "message": "nope, HD520, ki je odvita verzija HD530. cisto druga zver kot hd5200 hd5200 nima strojnega dekodiranja, samo preko gpu shaderjev."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Probal zdele Elysium na treh compih.  3570k+GTX970 mpc-hc - cpu 60-80%, gpu load 11-17%, video engine 0% popolnoma tekoce predvajanje Phenom II X6+GTX660Ti mpc-hc - cpu 70-90%, gpu load 23-45%, video engine 0% popolnoma tekoce predvajanje Celeron J1900+GT640DDR3 - cpu 100% konkretno steka."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ravno včeraj sem se s tem zafrkaval.  4K video iz GoPro je nenormalno štekal na prenosniku. The problem lies with the codec; the method of COmpressing and DECompressing the footage. The GoPro HD Hero and HD Hero2 cameras use some clever methods to compress the footage very heavily. This means that they take up less space on the card but, on the flip side, makes them very hard for your computer to play back. So, the way to make GoPro video footage a bit easier on your computer, and therefore play back much more smoothly, is by changing it to a less compressed, more easily worked format.   http://rossfairgrieve.com/fixing-jerky-...  Skonvertiral sem v drug format in dela normalno."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Da je odvisno od nastavitev kodeka je itak jasno. Ni pa to rešitev. Človek ne bo vsako 4K vsebino, ki bi jo rad pogledal, prvo prekodiral in nato pogledal."
+    }
+]

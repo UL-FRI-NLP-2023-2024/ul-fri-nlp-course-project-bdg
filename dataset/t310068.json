@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Imam en starejši prenosnik, Compaq Armada 7400. Baterija le-tega je bila v zelo majhni uporabi (bila je skoraj 3 leta spravljena) in je kljub starosti (letnik 1998) zdržala še 1 uro. Dva dni nazaj sem se odločil, da jo bom skalibriral, saj battery gauge ni več kazal natančno (skakal gor in dol). Naložil sem BatteryMark, ki omogoča battery rundown, da se na ta način lepo vidi, koliko časa baterija zdrži. Stvar sem pustil prižgano na bateriji čez noč, naslednji dan prenosnik vklopim, se zažene, BatteryMark javi, da je baterija držala 1 uro in 10 minut. A sedaj se baterija ne polni. Piše, da preostane 23% in da se polni (v Windowsih). Lučka za polnenje ne sveti in tudi v 6 urah, kolikor sem pustil to stati se ni zgodilo nič drugega, kakor da je številka padla iz 23% na 14%. Prenosnik baterijo zazna, ampak je ne polni. Če iztaknem napajalni kabel, se računalnik izklopi (baterija je prazna). Baterijo sem že odstranil za par ur, najmanj desetkrat sem jo dal ven in notri, a stvar se še kar ne fila.  Prosim pomagajte!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Po moje je crknila baterija. Pomeri napetost na bateriji, če napetosti ni, pomeni, da so elementi v njej izgubili stik in ker nimajo stika se tudi polniti ne more. Jaz bi si poskusil sposoditi dobro baterijo in jo preizkusil, ker možno je tudi, da ti je crknil tisti del v prenosniku, ki polni baterijo (ker je ne polni, je pač čisto prazna in ne more napajati prenosnika). V vsakem primeru je zadeva podobna kakor pri akumulatorju v avtu, ko dokončno crkne, ti lahko poskusiš polniti vendar se ne bo napolnila in moraš kupiti novo. Tu starost baterije ne igra nobene vloge. Slabše je za baterijo, da stoji v omari, kakor pa, da jo občasno sprazniš in spet napolniš, ker jo tako držiš v \"formi\". Baterijo bi lahko tudi poskusil napolniti pri komu z enakim prenosnikom ali pa direktno z usmernikom, vendar, če ne obvladaš teh stvari raje prepusti komu, ki ve za kaj se gre. Jaz imam Compaq Armado 1700, a pašejo baterije?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če so ni-cad je možno, da je ena celica odletela. A, če pa laptop pustiš na bateriji in izklopiš napajanje, stvar lavfa ?"
+    },
+    {
+        "role": "user",
+        "message": "Baterija je Li-Ion. Drugače se je baterija rabila približno na vsakih 6 mesecev in se je takrat napolnila do konca, nato pa sem jo dal na 40% in ven iz prenosnika.  Od Armade 1700 baterije sigurno ne pašejo, ker imam doma Armado 1750 in sem že tudi to probal. Prenosnik mi brez napajanja ne deluje in takoj crkne.  Slišal sem, da imajo nekatere baterije vgrajen counter in ko ta preseže neko mejo, se baterije ne da več filat. Je to mogoče vzrok? Je mogoče tudi to, da sem celice s tem rundownom izpraznil preko meje in jo zato ne fila? Če bi že baterijo polnil, me zanima s kakšniim tokom in na kateri voltaži."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ročno polnenje li-celic je zelo nevarno, če ne poznaš njihovih lastnosti. Celice se ob prenapolnjenju NE grejejo, tako kot se ostale. Lahko probaš pomeriti napetost (če imaš dober inštrument) na celicah, ki bi morala biti nekje med 3.3V in 4.1V na celico."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če ne izmeri nobene napetosti je tako skoraj sigurno baterija zanič. Predlog polnjenja baterije je zgolj zato, da ugotovi, kaj dejansko je šlo rakom žvižgat, da ne bo kupoval nove baterije na koncu pa ugotovil, da mu je crknil polnilni del v laptop-u. Samo dve možnosti sta polnilec ali baterija. Baterijo se da kupiti, polnilec bo pa težko našel točno tega, ki je v laptop-u. Tudi polnil ne bi kaj več kakor par minut, da bi ugotovil, če baterija sploh vleče kakšen tok. Če nič ne potegne, potem je izgubljen stik v bateriji in tako nima kaj. Ne vem kakšna baterija je, moje so tako zalite v plastiki, da bi moral ohišje zrezati in to pomeni, da s popravilom ne bo lahko (menjavo enega elementa)."
+    },
+    {
+        "role": "user",
+        "message": "Baterijo sem relativno enostavno odprl (cca. 5 minut) in ugotovil, da celice še držijo tok, skupaj ima baterija 10.8V, edino, kar se mi zdi čudno je to, da ima 6 od 8 celic voltažo 3.6V, 2 pa imajo 2.9V. Bi bilo dobro, če bi eliminiral notranje (senzorske) kontakte in baterijo priklopil samo na + in - od prenonsika? Menim, da bi to vzdignilo voltažo na 3 ali več voltov in bi se baterija potem normalno polnila."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Se mi zdi, da bi bilo najbolje napolniti tista 2 člena do 3.6V in probati srečo. 2.9V je prenizka voltaža za litijeve akkuje."
+    },
+    {
+        "role": "user",
+        "message": "Hja, kako pa naj to stvar napolnim. Specifičnega polnilca nimam (posodil prijatelju), to takega, ki lahko polni pri različnih voltažah v različnih tokovih (50, 100 mA). S kakšnim tokom in voltažo je pametno to zanesljivo napolniti?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jst bi rekel, če je nestabiliziran bi bilo 3.3V lahko še preveč (4,6V+ eff). Drugače bi jaz stvar priklopil preko kakšnega 20 ohmskegaupora na 5V. Če imaš nastavitev toka (da ga res limitira in ne tako, da začne piskati, ko je presežen) in pa napetosti pa super pol. Za začetek bi zagnal baterijo na 50mA do 3.1V, nato nadaljeval z 100mA do 3.2V (najbrž doseženo v 5 min) in z 200mA do 3.6V oz. napetosti ostalih celic. Če ima akku kapaciteto okoli 4Ah na celico, lahko seveda večji tok (max. C/6 za slabe li-celice), samo v vsakem primeru nastavi odklopno napetost max. na 3.6V. Pretiravati ni potrebno, samo vzami si čas, saj če so baterije res tako prazne, ni dobro, da jih siliš z polnenjem. Seveda, če polnilcu nastavljaš napetost in tok in ne število ter kapaciteto celic.  Drugače pa je akku preventivno odklopila elektronika. Če nimaš dobrega multimetra boš spohal celice in še kaj drugega za povrh. Če se celice začnejo greti, jih takoj odklopi in odnesi ven, kjer bi lahko v miru 'izdihnile'. Za na mizo bi kakšen telekomov imenik zadostoval, da ne prežge do dol"
+    },
+    {
+        "role": "assistant_2",
+        "message": "No, če pa lahko malo menjam temo, imam prenosnik dell latitude d505, baterija je skoraj nova. Pred tednom, pa sem jo napolnil dokonca, in jo spravil. Čez en dan sem jo dal nazaj v prenosnik, in se ni hotela polniti. Če sem izključil napajalni kabel, je prenosnik deloval, samo stanje baterije je vpadalo. Če sem kabel priključil nazaj mi je v XP-ju napisalo, da se baterija polni, vendar je obstalo pri 78%. Zanima me ali je baterija crknila, ali pa napajalni kabel, saj mi v BIOS-u napiše, da ne prepozna napajalca..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Nekaj z napajalnikom."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tut men se dogaja da mi ne polni baterije, računalnik pa dela dokler je priklopljen. Če izklopim napajalnik, takoj ugasne. Sem pa kupila nov napajalnik, prej sem imela 65w, zdej pa 90w in je ta tudi original Dellov. Mam pa prenosnik Dell 500 tko da nevem zakaj ga ne zazna ker naj bi biv združljiv z mojim modelom. Aja pa takoj ko prižgem računalnik mi napiše da ne zazna watne moči in tipa napajalnika in naj priključim 65 ali več wattni napajalnik... Nevem kaj lahko nardim?   Tkole napiše: \"Power Adapter not recognized\".  \"The AC power adapter type cannot be determined. Your system will operate slower and the battery will not charge. Please connect a Dell 90W AC adapter or higher for best system operation.\""
+    },
+    {
+        "role": "assistant_1",
+        "message": "Uničen konektor ali pa kaj podobnega na prenosnikovi strani."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pr sestri je blo podobno. Fuč baterija. Pisal je da fila, sam v bistvu ni. Dokler je blo priklopljeno je delalo, ko si sklopu je ckrnu. Po menjavi baterije dela vse"
+    }
+]

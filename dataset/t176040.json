@@ -1,0 +1,194 @@
+[
+    {
+        "role": "user",
+        "message": "Naprava s katero je bilo merjenje opravljeno:   (enofazni števec )  Stanje števca pred testom 7176,75kWh.   Stanje števca po testu: 7177kWh     Testiranje se je začelo točno ob 20:37, končalo točno ob 21:37.  Poganjal sem prime (large FFT's) in 3dmark2001 (looping)  Sistem (nenavit) Venice 3200+, Neo2, 2x512mb ram, 9800xt, 160gb + 40gb disk, dvdrw, cdrw Tagan 380W 17'' CRT  Rezultati so samo okvirni, ker je števec narejen za merilno območje 10 - 30 A, toliko pa naši mlinčki ne \"žrejo\" (hvalabogu )  edit: pozabil na monitor lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "250W na uro... hmm, not that much :D. To nase stiri zarnice v kuhni vec porabijo (ljubkovalno ime za ta luster je \"černobil\")."
+    },
+    {
+        "role": "assistant_1",
+        "message": "od tega 100W porabi 17\" crt"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Itak"
+    },
+    {
+        "role": "assistant_2",
+        "message": "btw je stevec lezal na mizi ko si testiral?"
+    },
+    {
+        "role": "user",
+        "message": "\"btw je stevec lezal na mizi ko si testiral?\"  Med testom je bil števec obešen, torej v takem položaju kot je v električni omarici. Ležal je le med slikanjem.  Danes bom probal še koliko porabi navita mašina ob polni obremenitvi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "a se ti ne zdi da je samo en racunalnik premal za natancno merjenje, saj je kot si rekel merilno obmocje med 10 in 30A  IMO bi mogel to merit in preimerjat z digitalnim vatmetrom  ps. lahko probas samo ampermeter ponucat, napetost je pa itak 220v, pa iz tega zracunas. IMO dost bolj natancno"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@dumbo911  Ne, nobene digitalne šare zraven, samo več možnosti za napako prinese. Mogoče bi bilo vredno meritve ponoviti še z analognim Wattmetrom, da bi videl kdaj so špice, vendar je problem, da je do tega inštrumenta še težje pridt, kot do števca el. energije.  BTW. Izračun P= U x I daje pri switcher napajalnikih prevelik rezultat.  @user  Res sem vesel, da si se odločil pomeriti porabo preko števca. Rezultat je pričakovan, čeprav bodo eni kot vedno razočarani, ker comp brez monitorja ne žge vsaj 330W oz. toliko kot kažejo razne (slaboumne) tabele."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ja, uporaba tazgale števca je kar pravilna izbira, sej ne gre tolk za natančnost meritve v W, pač pa koliko dejansko števec nameri, ker Elektro obračunava po takih števcih (pa tud če kažejo 10% drugače od enega naj-naj digitalnega instrumenta).  Mogoče bi le časovni interval povečal, n.pr. 24 ur, pa mogoče en mesec. Samo pri enomesečnemu intervalu bi si moral zapisovat čas, kdaj je računalnik vklopljen. Razen če ga ne misliš pustiti vklopljenega cel mesec."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No tudi jaz sem hotel izmeriti porabo sistema na malo drugačen sistem. Pogumen kot sem, sem šel v podalšek - 220V  , v katerega imam vkloplen monitor in računalnik zaporedno vezat ampermeter na fazo (modra žica), da bi ugotovil koliko toka si potegneta monitor in računalnik. Multimeter je bil nastavljen na izmenični tok z območjem do 10A. No multimeter je kazal nihanje od 0,02 do 0,08.   Ve kdo mogoče, zakaj se na tak način ne da izmerit točno toka, ki teče skozi ampermeter. Na elektro-n sem bral, da naj bi bili problemi, ker napetost ni čista sinusna. Sem mogoče kaj narobe zvezal?  Edit: sedaj vidim da moj multimeter sploh nima možnosti meriti izmenični tok, ampak samo enosmernega - ups. No ja, se pozna da je stal sam 2,5k sit."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Evo, moj komp z ojačevalcem, 19\" monitorjem, UPS-om in 600W ojačevalcem kuri 189.7W   Porabe se pa direkt ne da mert zato, ke nimaš več sinusoide in imaš zamik toka in frekvence."
+    },
+    {
+        "role": "assistant_2",
+        "message": ">> Med testom je bil števec obešen, torej v takem položaju kot je v električni omarici. Ležal je le med slikanjem.  pravilno. vsak instrument ima doloceno lego za tocne rezultate   >>a se ti ne zdi da je samo en racunalnik premal za natancno merjenje, saj je kot si rekel merilno obmocje med 10 in 30A IMO bi mogel to merit in preimerjat z digitalnim vatmetrom  ti stevci so \"pozegnani\" s strani drzave in so merodajni instrumenti, ker se tice obracuna elektrike.  digitalni merilci so za en drek, ce na njih ne pise \"true RMS\", pa se pri teh sem vcasih skepticen... na koncu bo vseeno merodajen star iskrin stevec, ki ga imas v elektro omarici   >> ps. lahko probas samo ampermeter ponucat, napetost je pa itak 220v, pa iz tega zracunas. IMO dost bolj natancno  emm... ne. dalec od tega    @assistant_6: navadni multimetri ne kazejo pravih rezultatov. sploh pri toku 0,02-0,08A bi lahk bil skepticen, saj to pomeni porabo nekje 5-20W...   >>Res sem vesel, da si se odločil pomeriti porabo preko števca. Rezultat je pričakovan, čeprav bodo eni kot vedno razočarani, ker comp brez monitorja ne žge vsaj 330W oz. toliko kot kažejo razne (slaboumne) tabele.  ja, eni res enacijo moc napajalnika z dejansko porabo  edit: typo"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Kje pa si staknu števec? Ta energija, ki si jo nameru je poraba v watih, torej energija pri cosfi=1, računalniški swičer pa ziher nima cosfi=1, zato računalo ne pokuri teh 250W, ampak še kaj več (to je pa poraba v VA, kjer cos fi ni enak 1).  Ta tema je že ena četrta o porabi računala na slo-tecu"
+    },
+    {
+        "role": "user",
+        "message": "Števec sem staknil v garaži.   Mene je predvsem zanimalo koliko me stane poganjanje računalnika, zato sem zraven priključil še monitor. Same komponente v seštevku sigurno porabijo nekaj več. Koliko? To pa prepustimo raznim online kalkulatorjem."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_8: cos fi nima veze, ker stevec meri watte in ne volt-ampere"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Super tema. Končno imam nek argument, da mi ne bojo doma govoril, da gre ves denar za elektriko zaradi računalnikov"
+    },
+    {
+        "role": "assistant_10",
+        "message": "moj komp v max obremenitvi porab tam okol 800W"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Moj A64 3000 z 17\" CRT monotorjem, 512Rama dvema diskoma, dvema cd jema in GF6600GTX, kabel modemom in zvočniki.  Pokuri v mirovanju: 235VA, če pa je prikurjen do konca (RTHDRIBL.exe + folding): 307VA  Watov zaradi pomanjkanja cosfi ne morem podati.   Volt-Ampere ti elektro zaračuna. Tako da je ta podatek kar ustrezen."
+    },
+    {
+        "role": "assistant_2",
+        "message": ">> Volt-Ampere ti elektro zaračuna. Tako da je ta podatek kar ustrezen.  ja, ce imas industrijski tok ti zaracunajo tud jalovo energijo. doma pa ne  a pise na stevcu kWh ali kVAh? kar poglej..."
+    },
+    {
+        "role": "assistant_11",
+        "message": "My Mistake"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tisto z cos fi-jem je blo mišljeno glede porabe ki jo je pokazal števec- povedat sem hotu da računalnik v resnic več porabi, a elektro tega ne registrinra, pa zard tega kao zadustuje 300W napajalc za vsak račnalnik."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Same komponente v seštevku sigurno porabijo nekaj več. Koliko? To pa prepustimo raznim online kalkulatorjem.  Cos fi meter, ali pa kVAh meter.  Pa kako je štev pristal v garaži?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Števec električne energije meri delovno moč - tisto, ki opravlja delo. Pri računalniku je to v večini toplota, nekaj neznatne moči gre še v mehansko delo, premikanje zraka in hrup. Brez skrbi, država in elektro nič ne šenkata.  Izvijajte se kakor hočete, realna poraba je taka, nič posebnega, kar lepo dokazuje, da je 99% današnjih napajalnikov navadnih smeti. Res pa je, da se taka jajčka mnogo lažje prodajo z oznako 400, 500 in več W, kot z realnimi 50 - 150W. Škoda je samo to, da stari in kvalitetni AT napajalniki na ATX ploščah niso uporabni."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ma kdo cos fi meter?     Glej, pri induktivnih in kapacitivnih bremenih cos fi ni enak 1, kar pomeni da dela na jalovno energijo, kar pa ni delovna energija ki jo registrira števec:"
+    },
+    {
+        "role": "assistant_2",
+        "message": ">>Ma kdo cos fi meter?  mam, ja... a ga rabis?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "In kaj ti bo podatek o jalovi energiji, saj že kot ime pove, ne opravlja nobenega dela? O.K. lahko magneti tuljave in nepotrebno obremenjuje omrežje, samo na porabniku ni od te moči nič.  Dal ti bom primer: skozi kondenzator 100uF, pri napetosti 230V 50 Hz teče tok 7.2A, kar pomeni navidezno moč 1661VA, ampak ker je cos fi praktično nič, kondenzator ni uporaben kot grelec, če je brezhiben in na njem ni višja napetost od dovoljene.   Rač. napajalnik daje na svojih izhodih istosmerno napetost in pri istosmerni napetosti ni govora o kaknem cos fi, kar gladko ovrže možnost, da bi bil napajalnik zaradi komponent dodatno obremenjen kapacitivno ali induktivno. Lahko je obremenjen samo z ohmskim bremenom, ki se resnici na ljubo spreminja zelo hitro, ampak to je samo problem napajalnika ne meritve."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Števec električne energije meri delovno moč - tisto, ki opravlja delo. Električna energija se deli na jalovno energijo, to je energija ki je induktivni števec ne more registrirati in pa delovna energija, to pa števec registrira. No računalo lafa na kar nekaj % jalovne energije, monitor ki ima za napjanje obični transformator pa lufa na okoli 50%-70% jalovne energije."
+    },
+    {
+        "role": "assistant_12",
+        "message": "moj komp v max obremenitvi porab tam okol 800W Ti, moj sesalec pa tudi tam nekje  Sej tvoja kišta bi sam še krila pa turbino mogla met - then I would've seen it all"
+    },
+    {
+        "role": "assistant_4",
+        "message": "> monitor ki ima za napjanje obični transformator pa lufa na okoli 50%-70% jalovne energije.  ???   Imaš še vedno Hercules monokromatski monitor? Danes se v monitorjih ne uporablja drugega kot switcher napajalnik."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Veš zakaj je PFC vezje? Zato da popravi cos fi na 1, oziroma ga enki čim bolj približa. Vprašanje za avorja teme: Ma merjeni računalnik PFC vezje(kakršno koli)? Tist ki ma cos fi meter nej ga veže pred svoj comp in poroča o rezultatih."
+    },
+    {
+        "role": "user",
+        "message": "Vprašanje za avorja teme: Ma merjeni računalnik PFC vezje(kakršno koli)?  Napajalnik uporabljen pri testu ima aktivno PFC vezje.   Je še kateri napajalnik s pasivnim ali celo brez PFCja, da bi potem meritev ponovil še s tistim."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pasivni se dajo še dobit.  EDIT: Nisem opazil da maš tangana .  Eno vprašanje: koliko bi porabil Prescot . Povečajte sliko in poglejte letnik izdelave..   Dej da vidm da je še točen priklop gor 100W žarnico in jo pusti prižgano 10 ur. Poglej napetost za katero je narjena žarnica, zmer napetost in deli zmerjeno napetost z napetostjo za katero je narejena žarnica. Rezultat pomnoži z močjo žarnice. Ta rezultat je moč žarnice pri priklopljeni napetosti. Pomnoži z destimi urami in dobiš porabo in primerjaj rezultat z namerjeno porabo. Poročaj o rezultatih."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Slo-tech tema o enem napajalcu  Parkrat sem tudi opazil, da si čudno razlagate PFC. Korekcija izgubnega faktorja moči NIČ ne vpliva na izhodno moč napajalnika, ima pa velik vpliv na vhodno moč. Stvar postane problematična, ko vam elektrodistributer začne zaračunavati \"jalovo\" komponento moči (poleg delovne). Zaenkrat naši \"hišni\" števci el. enrgije odčitavajo samo delovno moč in ne jalove. Večjim porabnikom pa elektro veselo zaračunava tudi porabo jalove energije (posebni števci jalove energije) in tam je še kako pomembno ali imamo 200 PC-jev z PFC ali brez.  Malo šole:  Navidezna moč (VA) = Delovna moč (W) X Jalova moč (VAR), pri tem da X ni množenje ampak vektorski produkt dveh komponent. Med jalovo komponento in delovno komponento pa je ena zadeva, ki se ji reče cos fi . Zadeva je zanimiva le pri IZMENIČNIH napetostih, pri enosmernih napetostih je vse jasno."
+    },
+    {
+        "role": "user",
+        "message": "Zaradi letnika mislim da še vedno mora biti točen. V večini hiš tu okrog so električni števci letnika 1970-1980. V naši je letnik 1976. Zelo malo primerov je, da bi el. števec lagal.   Test z žarnico bom izvedel."
+    },
+    {
+        "role": "assistant_2",
+        "message": "letnica ni tako vazna, saj gre instrument periodicno na umerjanje (na vsakih 10 let se mi zdi)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Navidezna moč (VA) = Delovna moč (W) X Jalova moč (VAR), pri tem da X ni množenje ampak vektorski produkt dveh komponent. Med jalovo komponento in delovno komponento pa je ena zadeva, ki se ji reče cos fi . Zadeva je zanimiva le pri IZMENIČNIH napetostih, pri enosmernih napetostih je vse jasno.  Tole je sicer pravilno, vendar si laik lahko razlaga na napačen način. Lažje gre takole:  Navidezna moč se meri v VA (Volt Amperih) P= U * I Delovna moč v Wattih P= U * I * cos (fi) Jalova moč v VAr (Volt Amperih reaktivni) Q= U * I * sin (fi)  Ali kar  Wiki  Števci so običajno dokaj točni, če le ni bil izpostavljen vlagi ali vročini. Imel sem števec, ki je bil nazadnje pregledan 1964 in 3 leta nazaj ni bilo posebnega odstopanja, glede na uradno požegnan števec."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Prej ste se neki kregal o cos(fi) v @userovem primeru je ta od 0.96 do 0.99, ker ma aktiven PFC, torej skoraj nič jalove moči... Napajalniki z pasivnim PFCjem imajo cos(fi) okoli od 0.7 do 0.8... brez PFCja je pa kriza, kar je pač posledica switcherja...  Drgač pa lepa tema... in lepo izvedena meritev.  @user če se ti da, izvedi meritev še enkrat, ampak tokrat v tokokrog vklopi še en ampermeter... Pa pol zračunaj kolk je razlike med obema metodama ;) Me mal firbc matra.  Jest sem zadnjič (3 mesce nazaj) meril moč računalnika z ampermetrom in sem nameril 100W med foldanjem... in okoli 90W v idle. Grafika je bla pa na off... Sistem je pa  Tagan 480W A64 S939 2700MHz 2*512MB RAMa GF 6600 Hitachi 7k250 160GB DVDRW Liteon TV Tuner WiFi PCI kartica  edit: Zmeril sem tudi moč na backup mašini ki jo je poganjal en noname 400W napajalnik drgač pa Barton na nazivni frekvenci 512 RAMa disk, DVD combo, Radeon 9000Pro... in rezultat je bil 230W... seveda je bila to predvsem posledica zanič napajalnika... Pol sem šel kupit LC Power ki ima vsaj pasivni PFC... :/ pol je bla poraba okoli 140W oziroma bolj prav bo če rečem 140VA :)  LP  @assistant_13"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Nekje piše da naj bi meli LC poverji aktivni PFC ."
+    },
+    {
+        "role": "assistant_8",
+        "message": ". brez PFCja je pa kriza, kar je pač posledica switcherja... Kaj pa monitor? Sicer naj bi mmogli met račnalniki vsaj pasiven PFC po neki europski direktivi."
+    },
+    {
+        "role": "user",
+        "message": "Test no.2 Stanje števca: 22:28 7177,1 kWh 23:28 7177,36kWh  ura             I(A)         U(V)       P(VA)\n------------------------------------------\n22:28         1,18         228          269\n22:33         1,14         231          263\n22:38         1,28         225          288\n22:43         1,2          228          273\n22:48         1,12         229          256\n22:53         1,12         228          255\n22:58         1,11         229          254\n23:03         1,14         231          263\n23:08         1,1          228          250\n23:13         1,09         232          252\n23:18         1,1          233          256\n23:23         1,16         229          265\n23:28         1,15         232          266\n-----------------------------------------\n Konfiguracija in nastavitve enaki kot pri prvem testu.  edit: Zakaj mi tabelo skup potegne? V predogledu je OK.  edit by @assistant_13: Sem uredil tabelo, pa dodal izračunano moč..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Skoraj enaki rezultati pri obeh metodah. Lahko teste izvedeš še z navitim računalnikom?"
+    },
+    {
+        "role": "assistant_13",
+        "message": "@user hvala za lepo opravljeno meritev. Metodi res data zelo podobne rezultate. Zgleda da ma Tagan res dober cos(fi)... pa tud v ekranu ni nobenih pretresljivih jalovih tokov.  LP  @assistant_13"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Kaj pa test z žarnico?  Števec pokaže 105% povprečne moči čez celo uro v primerjavi z merjenjem A metra(kakšen inštrument pa? )"
+    },
+    {
+        "role": "user",
+        "message": "Žarnica bo (ko najdem \"fasungo\" )  Za merjenje toka sem uporabljal tokovne klešče (HC 649AB), za merjenje napetosti pa Fluke (T5-600)."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Conradov merilc Kaj pa to?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Jest sem že pred časom meril porabo tako, da sem vse porabnike odklopil, da je tista plošča v el.števcu mirovala; pol sem priklopil nekaj porabnikov z znano porabo (150W žarnico, 2KW bojler ipd.) in preštel koliko obratov je naredila ploščica v določenem času in potem pač preračunal, koliko W ima 1 obrat. Pa sem zračunal, da mi komp pije v idle okoli 60W, 70Wfull load, CRT monitor pa še cca.100W; se pravi skupaj okoli cca.165W, ma pa moj sistem relativno skromno porabo ..."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Navidezna moč (VA) = Delovna moč (W) X Jalova moč (VAR), pri tem da X ni množenje ampak vektorski produkt dveh komponent. Med jalovo komponento in delovno komponento pa je ena zadeva, ki se ji reče cos fi . Zadeva je zanimiva le pri IZMENIČNIH napetostih, pri enosmernih napetostih je vse jasno.  ...tole je seveda pravilno...   Tole seveda ni pravilno!!"
+    },
+    {
+        "role": "assistant_16",
+        "message": "@assistant_7: Porabe se pa direkt ne da mert zato, ke nimaš več sinusoide in imaš zamik toka in frekvence.  Oslarija. primerjaš hruške in jabolke.  @assistant_8: Električna energija se deli na jalovno energijo, to je energija ki je induktivni števec ne more registrirati in pa delovna energija, to pa števec registrira. ..  Oslarija, seveda obstajajo tudi števci jalove energije.  Malo šole: Navidezna moč (VA) = Delovna moč (W) X Jalova moč (VAR), pri tem da X ni množenje ampak vektorski produkt dveh komponent. Med jalovo komponento in delovno komponento pa je ena zadeva, ki se ji reče cos fi . Zadeva je zanimiva le pri IZMENIČNIH napetostih, pri enosmernih napetostih je vse jasno.  To se pa res vidi, da si ti bolj malo hodil v šolo. Ta trditev je seveda napačna.   Še malo, pa bodo temelji elektrotehnike postavljeni na glavo. Fantje, dajte preden pišete take neumnosti, poglejte v kaki učbenik ali elektrotehniški priročnik."
+    }
+]

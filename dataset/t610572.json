@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Potreboval bi pomoč pri povezavi treh linksys ruterjev med seboj. Prvi ima IP 192.168.1.2, drugi xxx.xxx.xxx.3 in tretji xxx.xxx.xxx.4. Internet je priključen na lan port prvega ruterja in sicer preko dveh Ubiquiti 5Ghz anten. Potrebujem natančno pomoč pri konfiguraciji omrežja. Natančno konfiguracijo prikazuje sledeča slika:  Vsakemu ki je pripravljen pomagati dam za pir!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "čist tko kaj želiš naredit s tem ? Ali ih boš povezal z kablom ali bodo medseboj povezani brezžično ?"
+    },
+    {
+        "role": "user",
+        "message": "Brezžično bojo povezani med seboj. Zadeva je že bila skongigurirana in je delovala odlično, vse do včeraj ko se je eden od ruterjev \"obesil\" in sem želel na novo skonfigurirati vse skupaj. Hitrost interneta je 10 Mbps, prek wds-ja pa dobim cca 5Mbps,na tretjem ruterju ki je malo dlje stran (100 metrov) pa komaj 0,5 Mbps. Več ne vem kaj narediti..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Prek WDS-a bo tole lahko šlo. Boš pa potreboval drug firmware, kot je Tomato. Pa seveda govorim za routerje in ne za antene.  1.Flash (lahko ti napišem še postopek, da ne boš zaflashal). 2.V glavni router pod Access point + WDS daš mac naslov od drugih dveh routerjev, pazi, !Wireless mac! 3.Onemogoči na xxx.xxx.xxx.3 in xxx.xxx.xxx.4 LAN in (po želji) WAN DHCP. 4.Nastavi WEP zaščito na vseh routerjih in na vseh enako geslo. 5.Alles stimt!  Točno to sem sedaj dva dni delal na povsem enakih routerjih."
+    },
+    {
+        "role": "assistant_2",
+        "message": "4.Nastavi WEP zaščito na vseh routerjih in na vseh enako geslo. Wep je bil joke že par let nazaj.  wds kako nastaviš http://www.polarcloud.com/tomatofaq#how...  Izogibaj se zankam !"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2 je 27. maj 2014 ob 18:40 izjavil:Wep je bil joke že par let nazaj.   Ok, nevem preveč natančno o tem. Pa pozabil se povedati, da je treba dati vse routerje na isti kanal."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Niso pozabili: Channel = 3 piše za vse."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 27. maj 2014 ob 18:33 izjavil:Prek WDS-a bo tole lahko šlo. Boš pa potreboval drug firmware, kot je Tomato. Pa seveda govorim za routerje in ne za antene.  1.Flash (lahko ti napišem še postopek, da ne boš zaflashal). 2.V glavni router pod Access point + WDS daš mac naslov od drugih dveh routerjev, pazi, !Wireless mac! 3.Onemogoči na xxx.xxx.xxx.3 in xxx.xxx.xxx.4 LAN in (po želji) WAN DHCP. 4.Nastavi WEP zaščito na vseh routerjih in na vseh enako geslo. 5.Alles stimt!  Točno to sem sedaj dva dni delal na povsem enakih routerjih.   Seveda bi prosil za navodila kako flashati tomato firmware, do sedaj sem namreč uporabljal DD-WRT in o tomato-u nimam pojma"
+    },
+    {
+        "role": "assistant_0",
+        "message": "enako kot ddwrt, downloadaj pravi fajl tukaj http://www.4shared.com/dir/v1BuINP3/Toa... in potem nastavi vse kako so ti povedali"
+    },
+    {
+        "role": "user",
+        "message": "Ekola, zadeva je sledeča. Na vseh treh ruterjih je naložen Tomato FW 1.28. Ruterji so povezani preko WDS, ampak zadeva je popolnoma enaka kot pri DD-WRT, pri glavnem ruterju so hitrosti 10 MBps, pri drugem ruterju ki je oddaljen cca 7 metrov in se nahaja v sosednji sobi so hitrosti do 5 MBps, pri tretjem ruterju ki se nahaja pri sosedu (cca 100 metrov zračne razdalje ) pa hitrost pade drastično na 0,05 MBps. Pred tem je z dd wrt delovalo vse tako kot mora, sedaj pa kar naenkrat težave. Počasi obupujem z wireless povezavo in bom enostavno potegnil kabel do soseda :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Izključi DHCP, vsaj wireless DHCP, če ne tudi WAN.  Ps: pusti vključeno ma 1. routerju."
+    },
+    {
+        "role": "user",
+        "message": "DHCP je aktiven le na glavnem ruterju pri sosedu od katerega imam sploh dostop do interneta. Vmes sta 2 airgrid anteni za povezavo do prvega ruterja na moji strani. Moj ruter je ptek wds povezan z ruterjem v sosednji sobi, ta pa naprej z ruterjem pri sosedu. Na teh 3 ruterjih je dhcp izklopljen, saj je glavni dhcp na ruterju od soseda."
+    },
+    {
+        "role": "user",
+        "message": "Aja da nebo kakšne pomote, od prvega soseda imam internetni dostop (razdalja 800 metrov) in povezavo z dvema airmax antenama do naše hiše, tu pri nas je iz airmax antene utp kabel povezan na ruter lan port 4 in računalnik kar z utp kablom povezan na lan port 1 od ruterja št. 1 (192.168.1.2) s tem ruterjem je v WDS povezan ruter v sosednji sobi (192.168.1.3)na ta ruter pa še od drugega soseda ruter (oddaljen cca 100 metrov)z IP naslovom 192.168.1.4. Vsi razen mojega računalnika dostopajo do interneta brezžično. Na mojem računalniku speetest pokaže natanko 10 MBps in če se brezžična naprava uspe povezati na moj ruter (192.168.1.2) je hitrost približno enaka, vsi ostali ruterji pa drastično poslabšajo wi-fi hitrost. To je glavna težava."
+    },
+    {
+        "role": "assistant_3",
+        "message": "http://www.linksysinfo.org/index.php?th..."
+    },
+    {
+        "role": "user",
+        "message": "Torej če prav razumem je bolj enostavno potegniti kabel do vsakega ruterja?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "da."
+    }
+]

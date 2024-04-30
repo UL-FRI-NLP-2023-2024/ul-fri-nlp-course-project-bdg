@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Imam neko skripto, ki gleda network activity na strežniku in po določeni neaktivnosti ugasne strežnik z ukazom sudo /sbin/shutdown -h now. Vendar mi nikakor ne uspe omenjene skripte zagnati s cron-om oz crontab-om. Crond se zažene ob boot-u, v /var/log/syslog je viden potek CRON. Vnos je dodan v cron z ukazom crontab -e. Uporabniku je dovoljeno v sudo visudo pognati /sbin/shutdown brez gesla. Kaj bi bilo lahko narobe? LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja daj nalimaj skripto in cron ukaz sem, da ti bomo lažje pomagali.  EDIT: sicer pa, zakaj poganjaš to kot sudo, če pa lahko komando dodaš direktno v /etc/crontab in se bo pognala kot root?"
+    },
+    {
+        "role": "user",
+        "message": "Torej, skripta off.sh:  #!/bin/bash (oz. /bin/sh) # # This is scheduled in CRON. It will run every 20 minutes # and check for inactivity. It compares the RX and TX packets # from 20 minutes ago to detect if they significantly increased. # If they haven't, it will force the system to sleep. #  log=~/Scripts/idle/log  # Extract the RX/TX rx=`/sbin/ifconfig eth0 | grep -m 1 RX | cut -d: -f2 | sed 's/ //g' | sed 's/errors//g'` tx=`/sbin/ifconfig eth0 | grep -m 1 TX | cut -d: -f2 | sed 's/ //g' | sed 's/errors//g'`  #Write Date to log date >> $log echo \"Current Values\" >> $log echo \"rx: \"$rx >> $log echo \"tx: \"$tx >> $log  # Check if RX/TX Files Exist if [ -f ~/Scripts/idle/rx ] || [ -f ~Scripts/idle/tx ]; then p_rx=`cat ~/Scripts/idle/rx` ## store previous rx value in p_rx p_tx=`cat ~/Scripts/idle/tx` ## store previous tx value in p_tx  echo \"Previous Values\" >> $log echo \"p_rx: \"$p_rx >> $log echo \"t_rx: \"$p_tx >> $log  echo $rx > ~/Scripts/idle/rx ## Write packets to RX file echo $tx > ~/Scripts/idle/tx ## Write packets to TX file  # Calculate threshold limit t_rx=`expr $p_rx + 1000` t_tx=`expr $p_tx + 1000`  echo \"Threshold Values\" >> $log echo \"t_rx: \"$t_rx >> $log echo \"t_tx: \"$t_tx >> $log echo \" \" >> $log  if [ $rx -le $t_rx ] || [ $tx -le $t_tx ]; then ## If network packets have not changed that much echo \"Shutdown ...\" >> $log echo \" \" >> $log rm ~/Scripts/idle/rx rm ~/Scripts/idle/tx sudo /sbin/shutdown -h now ## Shutdown fi  #Check if RX/TX Files Doesn't Exist else echo $rx > ~/Scripts/idle/rx ## Write packets to file echo $tx > ~/Scripts/idle/tx echo \" \" >> $log fi  cron ukaz:  */20 * * * * /home/user/off.sh  off.sh je executable  sudo rabim zaradi samega ukaza, ki se mora izvršiti brez gesla (ALL= NOPASSWD)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne rabis poganjati kot sudo, ker se stvar ze izvaja kot root."
+    },
+    {
+        "role": "user",
+        "message": "že, ampak stvar se mora izvršiti brez gesla..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "A shutdown vprasa za geslo?"
+    },
+    {
+        "role": "user",
+        "message": "Da."
+    },
+    {
+        "role": "user",
+        "message": "Očitno so bile problem relativne poti do direktorijev skripti. Absolutne delajo. Hval za pomoč. LP"
+    },
+    {
+        "role": "assistant_2",
+        "message": "da ne odpiram nove teme...  nastavil sem crontab, ampak ni nobenega efekta...  crontab -l kaže sledeče:   # m h  dom mon dow   command\n30 21 * * sun,mon,tue,wed,thu iptables -A FORWARD -s 192.168.0.11 -j DROP\n0 23 * * fri,sat iptables -A FORWARD -s 192.168.0.11 -j DROP\n0 4 * * * iptables -D FORWARD -s 192.168.0.11 -j DROP  to sem naredil kot root, se pravi sudo su"
+    },
+    {
+        "role": "assistant_1",
+        "message": "pot to iptables?"
+    }
+]

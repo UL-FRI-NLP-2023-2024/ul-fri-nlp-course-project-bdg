@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, Rabil bi naredit 5W napajalnik za napajanje 64 LED diod. Se pravi: 64 LED × 20mA × 3.6V = 4,6W  Predpostavimo da kupim zalit trafo 12V AC, 5W, gor navezem greatz, en kondenzator za stabilizacijo, potem pa kaj? Rabil bi nek stabilizator kot je (7805 to je 5V stabilizator), jaz pa rabim 3,6V stabilizator, so se kake opcije?  Dobro, da se kupit tudi Adapter 3,6V ko je  ta ampak ima premajhno amperažo. Poleg tega pa mora bit zadeva čim manjša.  LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kolk je men znan obstaja stabilizator tud za 3,3V Sam zaj se mi res ne da razkapat starega gradiva, da bi to prevero   Če ti je pa en prešvoh, pol pa naredi več vej, s tem zmanjšaš tok na posameznem stabilizatorju."
+    },
+    {
+        "role": "assistant_1",
+        "message": "LM317 ali njemu podobni, so regulirni stabilizatorji. 2 upora in 2 kondenzatorja in imaš na izhodi zako napetost kot hočeš."
+    },
+    {
+        "role": "user",
+        "message": "Ja LM317 dobra ideja to dela do 1,5A pomoje si mislu nekaj  podobnega. bom se malo poigral, upam da mi uspe moje znanje o elektroniki je že malo zarustalo, THX."
+    },
+    {
+        "role": "assistant_2",
+        "message": "12V 5VA je max tok 416mA.  1. Zakaj ne vežeš po nekaj LED-k zaporedno? 2. DC-DC :)"
+    },
+    {
+        "role": "user",
+        "message": "Ja na AC strani je 12V /416mA, pol dobim po greatzu 17V DC, da bi jih vezal po pet zaporedno brez upora pol dobim na vsaki po 3.4V napajanja, to je dobra poceni opcija.  Ampak se zakomplicira pr Tiv ploščici (vec dela), ker bom naredil več različnih verzij zunanjih svetilk za osvetlitev hiše. Najbolj enostavno mi je da vežem vse LED vzporedno, pa naredim napajalnik z LM317 oz. LM217, ki deluje optimalno tudi pri -25 C, ker bo napajalnik zunaj."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če misliš tupiti z linearnimi napajalniki, potem bo izkoristek tako slab, da je bolje, če tja zmontiraš kar navadno žarnico..."
+    },
+    {
+        "role": "user",
+        "message": "Ja, kaka pa je najbolj optimalna rešitev @assistant_3"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Poskusi čimbolj zmanjšati izgube, kar pri linearnem napajalcu pomeni čimmanj napetosti zgubiti na preduporih.  Če inssisitraš na linearnem napajalniku, če se da, poveži več diod v serijo in psokusi čimbolj zadeti izhodno napetost napajalnika.   Seveda je bolje če si omisliš switching napajalnik, za katerega bo treba poiskat shemo na netu..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "v bistvu bi lahk naredil tokovni generator... ta je bolj domac za LEDice in ja, cimvec jih v serijo spravit, da bodo izgube minimalne"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tokvni generator se razume. Ampak ta ti ne bo nič zmanjšal izgub.   Vse med napetostjo, ki jo da od sebe usmerjena in poglajena sinusna napetost s sekundarja traflca in napetostjo, kijo rabijo LEDce, se bo spremenilo v toploto."
+    },
+    {
+        "role": "user",
+        "message": "Najbolj, da dam naredit trafote po naročilu na sekundar 2.55V AC, pa dam greatz pa kondenzator pa je rešen! Zdej za kako ceno bi mi naredil 15 trafotov tud ne vem."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Narobe. Majna nihanja omrežne napetosti bi povzročila majna nihanja napetosti sekundarja, vendar zato velika nihanja toka skozi diode.  Tisti predupor pred diodami je tam z vzrokom."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Hmm LEDike niso žarnice. Dobro jim je omejevati tok z nekim tokovnim generatorjem, saj se njihov tok zelo spreminja tudi od temperature okolice in ledike same, velik vpliv ima tudi starost in dosedanji delovni pogoji.   Torej tudi, če imaš zabetonirano napajalno napetost, se ti zlahka zgodi, da ledika kar naenkrat odpove, oz. še bol verjetno, da bo svetila en dan bolj, drug dan manj.  Če že misliš dati izdelati trafo po naročilu, poskusi upoštevati idejo, ki jo je @assistant_3 realiziral v temi  KJe bi dobil kakovostno namizno lečo z vdelano svetilko ?"
+    },
+    {
+        "role": "user",
+        "message": "Hm, zanimivo @assistant_5, ja sm opazu, ko sm naredu ročno svetilko iz Led diod da ene delajo bolj močno ko drude. Zadeva je bolj komplicirana, ko sm mislu. zdaj sploh ne vem kaj naj naredim ??"
+    },
+    {
+        "role": "user",
+        "message": "Kak si pa ti @assistant_3 zrihtu pol napajalnik za tisto lečo?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "NA žalost sem nekaj prčkal po strežniku in fotke niso več, kjer so bile, ker pa svojih postov ne morem več odpreti, tega tudi popraviti ne morem več...    Napajalnik sem zrihtal točno tako, kot sem napisal. Povezal sem toliko LED-ic v serijo, da transformatorja praktično nisem več rabil, le majhen tokovni ponor, ki je omejeval tok."
+    }
+]

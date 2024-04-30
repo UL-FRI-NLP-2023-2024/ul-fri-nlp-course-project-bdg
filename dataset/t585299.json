@@ -1,0 +1,18 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo, imam težavo s strežnikom na katerem je postavljen ClearOS.  Težava je v tem, da ko strežnik nekaj časa deluje, gre disk v readonly mode in kar naenkrat začnejo zginjat komande, reboot ni možen (niti s init 6). Vn meče tudi napake input/output error in journal i/o error.  Pognal sem že shutdown -rF now, rezultat ni nič boljši. Zdajle sem hotel s DD klonirat disk, pa je pri 196 GB začel ven metat napako. Je možno da je tam kak sektor poškodovan? SMART podatki kažejo da je s diskom vse vredu."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Je možno. Poženi diagnostično orodje proizvajalca Diagnostična orodja in reševanje podatkov s trdih diskov"
+    },
+    {
+        "role": "assistant_1",
+        "message": "dd ma drugače nastavitev, da ignorira napake, pržgi jo in imel boš image celega diska (razn tistega kar ne more prebrat), potem pa na kopiji imaga poganjaš orodja za reševanje podatkov"
+    },
+    {
+        "role": "user",
+        "message": "Pognal sem tolo komando: dd if=/dev/sda of=/dev/sdb bs=4096 conv=notrunc,noerror  In naj bi ignorirala napake kolkor mi je jasno? Vglavnem, bi skopiral kaj je napisalo pa sem že zaprl tisto sejo. Pisalo je da je pri 196 GB, hitrost je bila okoli 63 MB/s, pa da je bila napaka pri vhodu/izhodu...  Btw, kaj je tole:  [root@server ~]# last -n 10 root pts/3 cpe-213-157-248- Thu Oct 24 20:26 still logged in clearcon tty1 Thu Oct 24 20:24 still logged in root pts/2 192.168.111.89 Thu Oct 24 20:24 still logged in reboot system boot 2.6.18-194.8.1.v Thu Oct 24 20:21 (00:21) root pts/4 cpe-90-157-129-1 Thu Oct 24 20:07 - crash (00:13) root pts/3 cpe-213-157-248- Thu Oct 24 19:30 - crash (00:50) root pts/2 cpe-213-157-248- Thu Oct 24 19:22 - crash (00:58) root tty2 Thu Oct 24 19:22 - crash (00:58) clearcon tty1 Thu Oct 24 19:19 - crash (01:01) reboot system boot 2.6.18-194.8.1.v Thu Oct 24 19:17 (01:24)  wtmp begins Tue Apr 23 15:34:06 2013 [root@server ~]#"
+    }
+]

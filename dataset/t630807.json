@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "Imam situacijo, ko je v eni hiši wifi omtrežje, ki ga želim napeljati v drugo hišo stran 20m, vmes je dvorišče.   Zadeva je takšna, da bi signal iz te hiše usmeril in ojačal v drugo hišo. Zdej problem je k moram v drugi narediti tudi omrežje. Kaj rabim - en reciver in pol še en router?  Predlogi?  Hvala!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "To je odvisno ali želiš v obeh hišah wireless (npr. na pametnih telefonih).. potem rabis router in repeater."
+    },
+    {
+        "role": "user",
+        "message": "Ja v obeh hišah wifi.   Če prav razumem bi moralo tole takole zgledati. Hiša 1: wifi router+adsl modem -> Outdoor Wireless Access Point -> hiša 2 reapeater - preko tega dostopajo vsi v hiši.  A kej manjka?  Hvala"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kako hiter net imaš/pričakuješ ? 2x wrt54gl v wds bridge (wifi ima max 54 mbit, lahko zamenjaš antene), 2x yagi antena in dalje repeater. Prvo bi jaz poskusil kar 2x wrt54gl s privzeto anteno, če signal je, ter je zadosti hiter, ni potrebe po menjavi z yagi (usmerjeno). Meni npr mobitel vleče \"G\" signal od routerja vsaj 20 m daleč zunaj na omni anteno, brez vsakega čaranja po nastavitvah."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ceneje in bolje je da potegneš kabel"
+    },
+    {
+        "role": "user",
+        "message": "Glede kabla se strinajm, je tudi v igri.  @assistant_1: Ne pričakujem v drugi hiši, da bo 100%, tam nekje 70-80% neta, ki pride v hišo. A če naredim Brdige se na router tudi drugi priklopijo, ne samo routerja ki sta v brfigu med sabo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "tam nekje 70-80% neta, Koliko je to v mbit ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "20 metrov, pa to bi moralo v drugi hiši loviti signal iz prve. Razen če je v hiši postavljen čisto na drugi strani."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 22. dec 2014 ob 17:37 izjavil:Glede kabla se strinajm, je tudi v igri.   No potem si olajšaj življenje in potegni 1Gb kabel. Škoda živcev se ukvarjati s tem poflom od wifi-ja."
+    },
+    {
+        "role": "user",
+        "message": "V hiši že lovi na eni strani, na drugi pa ne."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Bojo zunaj močnejše padavine/megla pa bo s signalom konec. Bo en uporabnik v drugi hiši stremal film, drugi pognal torrent pa bo konec veselja . In polno podobnih situacij. Če obstaja možnost le potegni kabel pa bo mir."
+    },
+    {
+        "role": "assistant_5",
+        "message": "No ja, že s poceni opremo se da doseči marsikaj. Sam imam do kolega 3,5 km proč WDS link, in na tem linku praktično zmeraj deluje Siol TV, tudi mini HD kanali in še internet kolikor ga ostane do naročenih 15 Mbit. Uporabljena oprema pa sta dva TpLink-a, 741ND in 842ND (šlo bi tudi z 2x 741ND). Firmware je OpenWRT. Antene so 2x panel 18 dB.  Za tvoje potrebe lahko poskusiš že z dvema 741ND brez dodatnih anten, eden nastavljen kot WDS AP, drugi kot WDS Client in dodatno na Clientu lahko ustvariš še AP, in imaš takoj tudi dostopno točko. Nameščena naj bosta na skupnih straneh hiše, da je med njima čimmanj razdalje.  WRT54G ne priporočam, ker gre za dobesedno zastarel kos opreme (čeprav še tudi pri meni eden dela), pa tudi trgovci ga tam kjer ga še lahko kupiš tržijo kot suho zlato.  Za najbolj zanesljivo in stabilno delovanje pa kot je že bilo svetovano, kabel. Samo pazi kje in kako ga boš polagal, ker kakšne razelektritve v zemljo hitro sesujejo kakšen port na opremi.  Edit: Dež, Megla, Sneg... pri meni ne delajo nobenih težav, moraš že v štartu zadevo postaviti tako, da je nekaj rezerve signala. Torrent in streming pa ponavadi najbolj obremenijo glavni usmerjevalnik oziroma modem, vmesni usmerjevalniki niso tako na udaru."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_2 je 22. dec 2014 ob 16:53 izjavil:Ceneje in bolje je da potegneš kabel  Za 20 metrov skoplji jarek in položi kabel. Najceneje in najbolj varno ter najbolj hitro.  Bom vsaj imel 1Gbit duplex prenosa."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 23. dec 2014 ob 11:34 izjavil:No ja, že s poceni opremo se da doseči marsikaj. Sam imam do kolega 3,5 km proč WDS link, in na tem linku praktično zmeraj deluje Siol TV, tudi mini HD kanali in še internet kolikor ga ostane do naročenih 15 Mbit. Uporabljena oprema pa sta dva TpLink-a, 741ND in 842ND (šlo bi tudi z 2x 741ND). Firmware je OpenWRT. Antene so 2x panel 18 dB.  Za tvoje potrebe lahko poskusiš že z dvema 741ND brez dodatnih anten, eden nastavljen kot WDS AP, drugi kot WDS Client in dodatno na Clientu lahko ustvariš še AP, in imaš takoj tudi dostopno točko. Nameščena naj bosta na skupnih straneh hiše, da je med njima čimmanj razdalje.  WRT54G ne priporočam, ker gre za dobesedno zastarel kos opreme (čeprav še tudi pri meni eden dela), pa tudi trgovci ga tam kjer ga še lahko kupiš tržijo kot suho zlato.  Za najbolj zanesljivo in stabilno delovanje pa kot je že bilo svetovano, kabel. Samo pazi kje in kako ga boš polagal, ker kakšne razelektritve v zemljo hitro sesujejo kakšen port na opremi.  Edit: Dež, Megla, Sneg... pri meni ne delajo nobenih težav, moraš že v štartu zadevo postaviti tako, da je nekaj rezerve signala. Torrent in streming pa ponavadi najbolj obremenijo glavni usmerjevalnik oziroma modem, vmesni usmerjevalniki niso tako na udaru.   Hvala za to. Če bom imel še kakšno vprašanje pa še napišem."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Morda ne škodi dodati, da 741ND z novejšimi verzijami OpenWRT zaradi premalo pomnilnika nima več vmesnika in se vse nastavlja preko ukazne vrstice ali preko WinSCP (meni bolj praktično). Sicer pa je potrebno na obeh WDS točkah izklopiti DHCP, da naslove dodeljuje primarni router in jima nastaviti statični ip v rangu primarnega routerja, da imaš do njiju dostop kjerkoli v omrežju.  Če se boš lotil tega napiši in ti bom tukaj zapisal točne nastavitve posameznega routerja."
+    },
+    {
+        "role": "user",
+        "message": "Bom tole kar poizkusil v roku tedna dveh. hvala!"
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa tole a bi šlo - Npr. Router TP 741 v eni hiši, v drugi hiši pa tale zadeva Wireles range extended, povezava bi bila med njima vidna in range extender bi pokril celotno drugo hišo (enonadstopna). Kaj pravite?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Še eno boleče učenje in bodoče zgublanje živcev. Ja bi šlo. Razen kadar ne.  Po mnogoterih živčnih zlomih zaradi Hebanja z wireless opremo spoznaš vrednost kabla. V teoriji dela marsikaj, v praksi marsikaj tudi (ko se je treba pohvalit, kaj si skup spravil). Na mal daljši rok pa sta besedi zanesljivost in WiFi protipomenke."
+    },
+    {
+        "role": "assistant_5",
+        "message": "No ja, jaz nimam dosti takih izkušenj. Razen TpLink 1043ND v1, ki je z uporabo OpenWRT rad prekinjal WiFi povezavo mi vse ostalo dela praktično perfektno in brez napak že skorajda leto dni. Dejstvo seveda ostaja, da kabel je še zmeraj kabel. Vsak pa se na koncu mora sam odločiti katero opcijo bo izbral.  Morda bi šlo tudi z range extenderjem a dokler ne boš poskusil ne boš vedel ali je ok. V vsakem primeru lahko tega, ki si ga linkal uporabiš tudi z kablom in se potem obnaša kot dostopna točka (to sicer na OpenWRT ni tak problem skonfigurirati na skoraj vsak router in potem ne rabiš namenskega extenderja)."
+    },
+    {
+        "role": "assistant_8",
+        "message": "wireless zna biti tudi stabilen.. 8 let star laptop, siolov router, razlicno nadstropje pa imam 73 ur neprekinjeno povezavo. sele po okoli 3 dneh se ponovno poveze.."
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdrav,  imam \"majhen\" problem z omenjenim raid kontrolerjem. Potrebujem samo ločen raid1 kontroler, kupil st-lab a-410 (ki ima čip silicone si3132r5) vendar gonilniki, ki so na uradni strani nikakor ne najdejo diska v namestitvenem setupu win7 (32 in 64). Idej nimam več, mogoče kaj pozabljam, kaka nastavitev v biosu potrebna?  flashal sem tudi kartico z zadnjim biosem, tako da to ni problem.  sem pa kartico dal še v svoj pc (ki ima win že naložene) in je brez problema poiskal sam gonilnik na internet (avtomatsko naložil) in sem lahko dostopal do kartice (tudi tako sem flashal bios).  sicer mogoče še probat ta gonilnik, katerega je naložilo na moj pc, vendar nevem več kam in kje je, ker kartico sem vmes že vrnil v drugi pc (še 1x šraufat pa se mi ne lubi).  Mogoče kakšna ideja kako rešit to?  Lp  ps: kolko sem bral je ta kartica povsem enaka zadeva kot software raid v windows 7 in da je zanesljivost vsega skupaj vprašljiva? gre za raid1, torej pomembnost podatkov, zato tudi mirror"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tale fajl razzipaj na disk: http://www.st-lab.com/admin/upfile/Uplo... Vsebino, ki je v mapi C:\\ST-LAB\\SiI3132\\Windows\\Driver\\32-bit Windows 7\\SATARAID5 skopiraj na usb ključek (ali disketo) ter ga/jo vtakni v PC. Nato pri inštalaciji Win7, v fazi kjer pokaže kam želiš inštalirat (seveda je okno prazno, ker (še) ne najde sata diska) izberi \"Load driver\", izberi medij kjer imaš sata furman in izberi Silicon Image Sil 3132 SATALink Controller. Ko se furman naloži se ti pokaže disk in nato klasično nadaljuješ z inštalacijo (particioniranje, formatiranje, nalaganje OS-a....)"
+    },
+    {
+        "role": "user",
+        "message": "Sicer ta postopek poznam in po tem postopku sm delu, gonilnike sem probal vse z CDja, vse iz st-lab strani in vse direktno iz silicon strani za chipset si3132r5, pa ni uspeha :-S  probal sem tudi gonilnike, katere si dal v povezavi. še vedno ne pokaže nobenega diska iz tega kontrolerja (pri instalaciji win7, sta pa samo te dva diska notr na omenjeni kotroler v raid1 polju)"
+    },
+    {
+        "role": "user",
+        "message": "rešen problem, težava ni bila v gonilniku ali bilo kar povezano s tem postopkom, ampak v tem, da nisem pobrisal vsebine in particij (oz. formatiral) po tem, ko sem na raid kontrolerju ustvaril raid1 polje.  naredil sem tako, da sem premaknil raid kontroler in diske v svoj pc, popravil (formatiral) diske v polju, vrnil nazaj v drugi pc in naložil gonilnik, takoj prikazalo tako kot mora disk (naprej pa namestitev kot do sedaj).  sicer pa raid0 na tej kartici je neuporaben, če bo slučajno kdo imel namen kaj takega uporabit. pri raid1 polju, pa se ne pozna na hitristi, diski še vedno berejo avg 120mb/s (zaenkrat še prazni)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zakaj pa da bi bil raid0 neuporaben? Je zadeva tako slabo skupej spacana?"
+    },
+    {
+        "role": "user",
+        "message": "zelo slabo, v raid0 polju zadeva praktični nič hitreje ne bere, edino graf (HD Tune) zelo skače gor/dol, zelo nepravilna krivulja, hitrost branja avg je bila pa okol 135mb/s. Koliko sem opazil v drugih temah (hitrost vašega diska) je z istima diskoma imel avg read preko 200mb/s, takko da se tole niti primerjat ne more. Raid1 pa je hitrost približno pričakovana.  aja sata mode je bilo potrebno še nastavit na ACHI in zadeva končno dela, tako mot mora."
+    }
+]

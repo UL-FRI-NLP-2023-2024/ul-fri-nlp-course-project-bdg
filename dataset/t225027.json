@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Ker imam  probleme z občasnimi zastoji sistema, sem posumil, da je za to krivo pregrevanje. Takole je. Prižgal sem računalnik in šel v BIOS, kjer se opazoval temperaturo. V prvih 5. minutah je zrasla iz 23° na 59°, v naslednjih 5. minutah še na 67°in v naslednjih 5. še na 70°, kjer se je potem ustavila. Temp. plošče je bila tukaj 36°. V sobi, kjer je računalnik, laufa klima in je okrog 25°. Na ohišju je dodatni ventilator spredaj pred diski in zadaj pod napajalnikom. Je torej to segrevanje normalno, sploh glede na to, da je procesor bil v \"mirovanju\". Imam pa naložen tudi program Hardware sensor monitor, kjer pa mi kaže temp. procesorja zdajle (25 min po vklopu) 55° (plošča 40°), torej skoraj 20 manj kot v BIOS-u. Katero merjenje bi naj bilo bolj pravilno? Kaki predlogi?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zaženi Prime95 in daj torture test. Če temp ne grejo nad 80°C in ti program ne vrže napak je vse v redu. Mogoče ne bi bilo napačno malo spucat pc (prah) in preverit kako je kaj s pasto med procesorjem in hladilnikom. (Pa vse je odvisno od procesorja in matične, ki jo imaš... nimamo vsi kristalne krogle)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Je sicer res, da sem to ploščo vgradil naknadeno, ker mi je stara (nforce 2) crknila, sistema pa nisem na novo naložil, ampak dvomim da je to težava.  ASUS A7V600-F ima VIA KT600 chipset, prejšnja pa očitno nForce2. -> namesti na novo sistem."
+    },
+    {
+        "role": "user",
+        "message": "V bistvu sem ga enkrat že hotel na novo namestit, pa mi je že med inštalacijo, na začetku ko nekaj iz cd-ja nalaga (še v dosu), tudi zmrznilo. Zato sem posumil, da je kaj drugega krivo in bi rad to ugotovil preden se lotim ponovne inštalacije. Procesor je sicer AMD 2500+ (iz pred treh let) plata pa je nova (piše zgoraj). Bom probal s tem Primom testirat."
+    },
+    {
+        "role": "user",
+        "message": "No, zagnal sem tale torture test, vendar po 2h se ni nič zgodilo. Procesor se je sicer segrel na okrog 76°, vendar zablokiral ni. Se je pa dogajalo, da ponavadi zablokira pri precej nižjih temperaturah. Mogoče bom vseeno poskusil reinstal XP-jev. Fora je v tem, da imam težave tudi pri gledanju filmov z zvokom (prekinja na random čas. intrevale, 10-60 sek), ampak spet ne vedno. Včasih mogoče čez cel film prekine 5-krat, včasih pa 5-krat v minuti."
+    },
+    {
+        "role": "assistant_1",
+        "message": "ja če ob menjavi plošče nisi win ponovno naložil, potem so lahko driverji krivi, drgač pa v biosu dvigni temp. prag"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ponovna inštalacija Winsov ti bo pomagala rešiti določene probleme, ne bo pa ti zmanjšala temperature procesorja, ki se po mojem mnenju preveč segreva. Meni se Athlon XP 2400+ (2.0 GHz) segreje na idle do kakšnih 42°C. Preveri, če se vsi ventilatorčki v ohišju vrtijo in probaj spucat prah, ki se je nabral v ohišju računalnika. Dobro je tudi nadgraditi BIOS na matični plošči. Pa upam, da na proc nisi nanesel preveč termalne paste, ker več v tem primeru ne pomeni bolje!  LP, @assistant_2"
+    },
+    {
+        "role": "user",
+        "message": "Procesor mi je montiral kolega, ki dela v rač. trgovini servis ipd. Ventilatorji se vrtijo vsi, praha tudi ne bi smelo bit preveč, ker ni dolgo kar sem ga spihal (bom pa še enkrat). BIOS bi nadgradil, ampak za to mojo plato sploh ne najdem nekih podatkov, kaj šele biosa. Moja plošča ima oznako F na koncu in tega ni na proizvajalčevi strani. Procesorja pa še sam nisem montiral in se zato tudi ne spravim k temu, da bi preveril ali pa ga na novo montiral.  V BIOSU lahko nastavljam edino med prikazovanjem temperature procesorja in pa med opcijo IGNORE. Zdaj pa ne vem, če ta ignore pomeni, da samo temperature ne meri, ali kaj drugega."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Opcija IGNORE v BIOSu pomeni, da ta ne odčitava temperature z senzorja na procesorju/matični plošči. To pomeni, da je neodvisna od opcije ASUS C.O.P., ki ugasne računalnik ob pregrevanju procesorja. Kar se tiče matične plošče, se mi zdi, da tisti F na koncu pomeni, da gre za Asusovo OEM varianto, namenjeno Siemens-Fujitsu modelom računalnikov. Imaš morda omenjen računalnik? BIOS bi moral načeloma biti na Siemens-Fujitsovi spletni strani. Pa v BIOSU je višja temeratura CPUja kot v Windowsih, ker ti znajo preklopiti procesor v stanje nižje porabe energije (C1,C1E, itd.).  Lp, @assistant_2"
+    },
+    {
+        "role": "user",
+        "message": "Nimam omenjenega računalnika in niti ne vem, v čem se razlikuje od navadnega Pc-ja, sestavljenega iz različnih komponent."
+    },
+    {
+        "role": "user",
+        "message": "Huh, formatiral in inštaliral na novo, vendar se bojim, da ne bom odkril vzroka, saj mi je že med samo inštalacijo zablokiralo 3-krat. Zdaj, ko mi je ratalo vse naložit nazaj, mi sicer še ni (2 uri), bomo videli kaj bo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mogoče imaš premajhno napetost na ramih... ponavadi je lahko to vzrok, da namestitev ne poteče kot mora (tudi, če memtest ne najde napake)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Glede temperature. Obe (v BIOSu in v Windowsih) sta pravilni (kolikor pač odstopajo senzorji). V resnici tudi v Windows programček bere iste podatke, kot BIOS, samo, da je zadeva malo bolj grafično okrašena.  V BIOSu (in tudi DOSu) je procesor vedno obremenjen 100% in temu primerno kuha, Windows (2k in novejši) imajo vgrajen SW CPU hlajenje, ki zmanjšuje porabo in posledično gretje procesorja, ki je povrhu le redko dolgotrajno obremenjen 100%.  Vendar pri delu z IDE enotami že sama enota obremeni procesor 80% (brez ostalih procesov) in zato imaš posledično težave, ko si nameščal sistem.   Očitno je nekaj narobe s hlajenjem, ali ni hladilnik prav obrnjen (oz. njegova klipsna), oz v primeru pritditve z vijaki skozi luknje na plošči (nisem šel preverjat ali ima tvoja plošča sploh to možnost), niso vijaki enakomerno zategnjeni.  V tem primeru je hladilnik na otip hladen ali mlačen, CPU pa nasprotno kuha. Če ugotoviš, da je tudi hladilnik hudo vroč, je sam hladilnik montiran pravilno, vendar se ti ventilator ne vrti ali se vrti prepočasi (zaradi tujka, prahu ali okvare). Seveda v primeru, če je hladilnik primeren za dotični CPU.  V primeru napačne montaže hladilnika se hladilnik dotika procesorja samo na robu (pri AMD K7 pomeni veliko nevarnost, da se okruši CPU) in ne na celotni površini in zato je hlajenje nezadostno. Najprej bi jaz šel preveriti montažo CPU hladilnika in njegov ventilator."
+    },
+    {
+        "role": "user",
+        "message": "Bom preveril malo temp. hladilnika. Sem pa šel dvakrat preverjat temp. v BIOS, takoj potem ko mi je sistem zablikiral (ja, kljub ponovni inštalaciji XP-jev). Enkrat je bilo 76°, drugič pa 67°, tako da verjetno ni pregrevanje vzrok. Kako se da preverit težave z napetostmi na ramih ipd. oz kako te tažave odstranit?  Je možno, da je napajlnik (300W) prešvoh? V sitemu imam: - proc. AMD 2500+ - 512 Mb ram - 2 HD (80 + 160 Gb) - Dvd - cd-DVD recorder - tv kartica ATi - usb miš - usb modem - usb čitalec kartic - usb IR sprejemnik za Tv kartico-daljinc - tipkovnica - grafična Geforce 4200 TI"
+    },
+    {
+        "role": "assistant_4",
+        "message": "blackhole: neglede na to, kaj bodo drugi rekli, poskusi menjat napajalnik, vsaj 420W (probaj si sposodit za zacetek). jaz trenutno se vedno resujem \"tvoj\" problem.  imam abit nf72 in athlona2500 in ne boste verjeli - menjal sem ze oba diska (ok, zaradi kapacitete), ram, graficno (je bla itak potrebna menjave), kupil nov pekac (sledil modi),.. skratka, menjal sem vse kar se je menjati dalo in kljub nizki temperaturi proc (~42°C) ima racunalnik \"obcasne prebavne\" motnje in se resetira. v zadnjem casu pa sem opazu da mi pi 16x hitrosti ni sposoben posnet dvd-ja brez napak :) torej, samo se napajalnik lahko menjam :) poskusi tudi ti, preden menjal polovico drobovja :)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Tvoj problem lahko ima več vzrokov:  1. Slabo namontiran hladilnik na procesor - to ugotoviš tako, da potipaš hladilnik in če je ta hladen je to to,  2. Premajhen hladilnik za omenjeni procesor, posebej če je stara verzija bartona, ki deluje na 1.75V - spet potipaš hladilnik, če je vroč le to lahko to ali  3. Ventilator na hladilniku je že bolj slab in je zmanjšana pretočnost zraka - spet nastaviš roko ob hladilnik in če ne čutiš pretoka zraka je to rešitev tvoje težave - menjava ventilatorja.   Upam, da sem ti pripomogel k rešitvi tvoje težave."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5, hvala, ampak se mi zdi, da ni kriva temperatura za te zastoje, saj bi potem moral računalnik zablokirat vendo ob enakih (vsaj približno) temperaturah. Ali se motim?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Prva stvar, ki jo moraš narediti je zmanjšati temperaturo procesorja. Očitno je tvoj hladilnik za procesor sposoben hladiti samo kuhana jajca... 70 stopinj!!!! Snemi hladilnik in ga lepo očisti spodaj, potem pa poglej proti svetlobi. Če površina ni popolnoma gladka in ravna kot zrcalo, potem je vzrok za pregrevanje v tem. Sam sem imel podoben primer s hladilnikom TITAN - cel aluminijast in površinsko tako slabo obdelan, da je procesor nalegal samo na cca 3x4 mm. Potem sem ga zbrusil na ravni plošči z vodobrusnim papirjem(vsaj 500) in spoliral z pasto - temperatura je padla z 73 na 54 - 58 stopinj... in konec je bilo zmrzovanja računalnika. Ali pa si nabavi bakreni hladilnik za procesor..."
+    },
+    {
+        "role": "user",
+        "message": "Včeraj sem malo \"preveril\" hladilnik in moram rečt, da je precej vroč, ampak zgleda da bi ga res bilo treba sneti in pošteno spucat. Verjetno se bom lotil tega problema. Če bi vedel, da je to vzrok, se sploh ne bi obotavljal, tako pa sem hotel vse drugo prej preverit, ker tega pač še nisem delal. Verjetno celo obstajajo kje kakšna slikovna navodila za montažo hladilnika?"
+    },
+    {
+        "role": "user",
+        "message": "Se da sploh pasto posebej kupit? Kateri hladilnik bi pa priporočali drugače, če bi že šel v novega?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "http://www.silentpcreview.com/article30..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jaz bi ti priporočal kakšnega Zalmana, npr. CNPS7000A-Cu ali pa CNPS6000-Cu. Oba sta praktično neslišna v \"tišjem\" načinu in zelo dobro hladita starejše nenavite procesorje. Pri novih hladilnikih moraš paziti predvsem na to, da podpirajo tudi Socket A podnožje za Athlone XP. Sam imam CNPS6000-Cu in mi temperatura procesorja (Athlon XP 2400+) ne naraste čez 42°C.  Lp, @assistant_2"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ta cooler... klik...bo cisto vredu.Cu verzija je precej tezek in ne hladi bistveno boljse.Pa v ceni se tudi nekaj pozna"
+    },
+    {
+        "role": "user",
+        "message": "No, včeraj sem ventilator dol vzel in malo spucal hladlnik oz. s sesalcem potegnil ven prah, ki ga je bilo kar nekaj. Temp. je potem bila nekaj manjša in včeraj še ni bilo nobene blokade. V BIOSU je v 10 min narasla na 60°, verjetno še vedno kar veliko. Bomo videli, če bo to zadostovalo, če ne bo pa res treba po nov hladilnik."
+    }
+]

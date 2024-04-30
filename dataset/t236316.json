@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "torej v nekaterih prostorih mi zelo slabo vleče WLAN signal kako ga naj ojačam na tistih mestih? ker mam laptop in mi je glupo da mi je omejeno kjer lahko koristim net hiša ma pa zelo debele stene zato mi signal hitro upada"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zamenjaj antene na routerju z ojačanimi."
+    },
+    {
+        "role": "user",
+        "message": "kaj takega pa ne obstaja v stilu repeater? torej da bi to namestil nekje po hiši, kjer je signal že slabši, je pa še pa da bi repeater te signale ponavljal in jih pošiljal dalje, torej bi bla potem večja pokritost..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To je potem potrebno postaviti AP-je, access pointe, ali pa še en router nabavit, pa en pokriva eno stran hiše, drugi pa drugo. Kolikor mi je znano, se ta drugi router potem tudi uporablja samo kot access point."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Linksys ima range expander, samo bi bilo treba probati če deluje tudi z ne-Linksys napravami (gori piše da je samo za Linskys, najbrž to ni preveč res), nimam veliko izkušenj glede tega."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kar se tiče repeaterjev... teoretično je to vse možno v praksi pa malo težje izvedljivo. Problem je že v tem, da moraš imeti dvosmerno komunikacijo (se pravi repeater v obe smeri). Kar se tiče ojačanja signala na anteni... mora bit tudi antenski signal v laptopu ojačan, če ne si bolj malo naredil. Povsem jasno je da ti v bajti v isti sobi v leven zadnjem kotu lahko zadeva super špila v desnem sprednjem pa ne... gre za valovanje, pri valovanju pa poznamo odboje, absorbcije, interference in podobne reči. WiFi dela na 2.4 GHz kar je kar precej in ga zmoti tudi roka ob PCMCIA kartici na laptopu - v tem primeru je razlika že v tem če imaš PCMCIA režo na levi ali na desni strani. V novejših laptopih imaš anteni vgrajeni v zaslon eno navpično, drugo vodoravno ravno zato da pač loviš s tisto ki bolje sprejema glede na odboje v danem trenutku...  V končni fazi bi mogoče delovalo če bi v vogale bajte namestil reflektorje od katerih bi se valovanje odbijalo, problem je samo v tem da ti valov ne vidiš in ne veš kam točno namontirat reflektor, da se bo valovanje odbijalo ravno do tiste točke ki jo želiš pokriti, brez da bi vmes nastalo preveč motenj (interferenc). Skratka princip je isti kot če bi za se s svetilko (z morzejevo abecedo) želel pogovarjat z nekom v drugem štuku na skretu - odpret bi moral vsa vrata, namontirat ene 10 špeglov (reflektorjev) pa bi se dalo...  Edina \"sane\" varianta je da po bajti postaviš AP-je in jih povežeš v WDS. V tem primeru bodo AP-ji nadomeščali repeaterje, cena vsega skupaj je pa druga zgodba."
+    },
+    {
+        "role": "user",
+        "message": "ja saj to je ravno to sicer zdaj nimam routerja mam samo tisto sagemovo wifi kartico v trgovini na telekomu(delam preko študenta) sicer imamo 2 access pointa, samo se mi zdi da ju je treba povezati z utp kablom, tega pa nebi rad da bi mel utp kabl po celi hiši napeljan v spodnjo etažo obstaja kak AP katerega se da povezat v omrežje brez kabla, torej Wireless? da mi nebi blo treba kabla potegnit po hiši do njega, da bi se AP povezal na router ali wifi kartico preko wireless signala?  razmišljal sem pa tudi o nabavi enega malo boljšega routerja(sem mel en slabši router sposojen na testni \"vožnji\" in tudi ni tak špilalo kot sem hotel) razmišljam o tem routerju: Lynksis WRT300N MIMO zavira me le...CENA...41k (tudi če boste rekli da to ni dost za dober router, za mojo denarnico je dost) :P"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jah, router te pride 40k (ne 41 :>), pa še kartice moraš kupiti da je dejansko kakšen efekt, ker seveda nobena druga kartica ne podpira trenutne inkarnacije \"802.11n/02\" standarda, z izjemo Linksysovih iz iste serije.  Je pa to definitivno en najboljših routerjev na trgu za domače uporabnike."
+    },
+    {
+        "role": "assistant_4",
+        "message": "nastavi vse na 802.11b standard only"
+    },
+    {
+        "role": "assistant_5",
+        "message": "doma sem imel podoben problem - na podstresju nisem lovil signala zaradi kovinske konstrukcije na kateri visijo gips plosce, router (linksys wrt54gs) je pac nadstropje nize. in ja, kako sem ze resu problem? original firmware sem zamenjal z dd-wrt, anteno sem ojacal z privzetih 28mW na se vedno varnih 70mW in ne samo da je zacelo po celi hisi lovit brez problemov, se okoli lovi, tako da se lahko lezim pod figo na vrtu in pisem poste tle.. :)  p.s.: kako pa vpliva tako poivsanje moci na router sam, razen tega, da se malo vec greje ne vem. za to so drugi strokovnjaki tle."
+    },
+    {
+        "role": "user",
+        "message": "ja za laptop PCMCIA kartico ne? to pa mislim da je okrog 20 ali 30k tu vmes nekje če se ne motim torej me pride router 40k, pa še ta kartica v najslabšem primeru 30k me pride vseskup 70k  za stacionarni računalnik mam pa USB adapter in je dokaj blizu modema in je signal dober, tak da tu nebi smelo bit potem problemov kje pa naj zdaj vzamem kredit?   b standard only bo povečal signal? ne me j... moram probat :)  P.S: z kreditom se zajebavam :P"
+    },
+    {
+        "role": "assistant_4",
+        "message": ">b standard only bo povečal signal?< ... da, rahlo pri oddaji in bistveno povečal občutljivost opreme pri sprejemu ..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@FireSTORM: Ne, AP-jev ni treba povezovat s kablom, če imajo WDS možnost! Torej recimo da imaš en WiFi router in en WiFi AP... zadevi postaviš tako, da se med sabo \"vidita\" in ju postaviš v WDS. V končni fazi sta to lahko tudi dva WiFi routerja, od katerih samo enega povežeš v inet drugi ti pa sliži kot AP pa jasno ima še switch kamor lahko priklopiš računalnik s kablom. BTW WiFi router košta recimo 16k SIT, AP pa tudi tam nekje. Od kod vam info o 40k SIT jaz ne vem.  Kar se tiče PCMCIA kartic... enkrat lani sem kupil eno D-Link DWL-G650 za 7k SIT in je majka (ima to možnost da se lahko postavi v AP mode). Tudi one Canyon za 5k SIT, ki jih prodaja enaa.com so čisto OK... sem jo nabavil za fotra in nima problemov (router je v kleti on pa v pritličju in zadeva funkcionira BP)."
+    },
+    {
+        "role": "user",
+        "message": "40k za linksys wrt300n mimo"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mah ne vem no. N standard še ni approved... te zadeve so vse nekakšni interni hack-i, to pomeni da ti dela samo Linksys z Linksys-om, D-Link z D-Linkom in podobno.  Če hočeš dobro delovanje postavi en WTR54G v en štuk, drugega v drugega, poveži v WDS in imaš super rešeno.  Kar se tiče B... res je da je sprejem boljši pri B samo moraš pazit da imaš vse naprave potem na B, ker se mešana B/G omrežja slabše obnašajo."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No, da ne bom odpiral nove teme, si bom sposodil kar tole.  Doma imam router Linksys WRT54GL (tomato firmware), vendar pa nekjer ni dovolj dober/pokrit signal. Zanima me, kaj priporočate za ojačanje signala."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Nastavi hitrost Tx rate na prvo večjo kot je tvoj iNet priključek ..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Definiraj \"nikjer\"? Če ti v isti sobi ne lovi brezžično na polno je nekaj narobe s hardware-om ali nastavitvami (to kar pišem v nadaljevanju bi moralo tudi z originalnim firmware-om delat). Pa zunaj skozi vrata te sobe (verjetno lesena) bi moralo biti enako. Pa sosednja soba ob steni kjer je router po vsej verjetnosti še prav tako. Potem naprej čez drugo steno pa verjamem da je slab signal (pri meni - klasična gradnja) lovi po diagonali hiše v istem nadstropju 1-2 črtici (od petih), ampak to je bolj individualno. Če ti ne pomaga ojačitev s firware-om potem ti preostane le še da kupiš še enega takega, ju postaviš toliko vsaksebi da se bosta še lepo videla in bosta hkrati pokrivala vsak svoj del stanovanja, pa med njima WDS brezžično povezavo in imaš distribucijo po flatu."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Aha, no saj to me je zanimalo ali kuptim dostopno točko za večjo pokritost signala ali obstaja kakšna antena, ki se zamenja na tem routerju."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Obstaja na nekaterih routerjih tudi da samo firmware zamenjaš pa ojačaš signal - mogoče bo lovilo (se pa bolj greje, včasih manj stabilen, ampak navadno ni panike). Druga varianta je da zamenjaš anteno, ampak spet so to samo omejene rešitve. Antene niti niso tako poceni, posebej ob dejstvu, da se da dva routerja za WDS dobiti za ene 100EUR."
+    }
+]

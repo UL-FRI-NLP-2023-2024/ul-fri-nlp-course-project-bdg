@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo,pred kratkim sem kupil 2 Logilink nova adapterja (pretvornika) in sicer enega iz IDE V SATA,drugega pa BIDIRECTIONAL,torej isto IDE V SATA,vendar ta omogoča še obratno. Noben od njiju ne dela,vse sem pravilno povezal pa nič... V Biosu ne pokaže nobenega od IDE diska ki naj bi postal prek pretvornika SATA disk,diski pa normalno LAUFAJO, kar se sliši  V Biosu kjer so izpisani samo SATA devices je naštimano vse na IDE,če dam na AHCI  (RAID itak nima smisla) se pa začne znova in znova v nedogled zaganjati, tko da moram  pustiti na SATA IDE,ne na Ahci,tako kot je v originalu.Plošča je Asus M5A87,Bios je originalen.  Slika pretvornikov: 1) Prvi ki je IDE V SATA (BIDIRECTIONAL)   Ta prvi BIDIRECTIONAL potrebuje vklop v električno omrežje ali povezavo z USB z kablom  2) Drugi ki je NAVADNI IDE V SATA   Ta Drugi NAVADNI IDE V SATA NE potrebuje vklopa v električno omrežje samo na kabel od disketnika  Prosil bi za nasvet kaj naj naredim,kaj bi bil temu vzrok,adapterji so popolnoma novi in so seveda namenjeni za IDE diske v katere lepo vklopiš te adapterje da postanejo SATA diski."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ni slik."
+    },
+    {
+        "role": "user",
+        "message": "So so slike,samo klikni,ne vem meni se odpre... alpa probaj v drugem brskalniku... A še kdo ne vidi slik? Če ne dam ponovno LINK."
+    },
+    {
+        "role": "assistant_1",
+        "message": "garant je problem v Bios nastavitvi/autodetekciji diskov .."
+    },
+    {
+        "role": "assistant_2",
+        "message": "daj direktni link do slik v form, ne link do page-a"
+    },
+    {
+        "role": "user",
+        "message": "Evo direktni link:  Ta prvi je IDE V SATA (BIDIRECTIONAL) priklaplja se v električno omrežje alpa  prek USB kabla ki je bil priložen... (ko je vklopljeno lučka sveti,disk laufa če ga priklopim na 4PIN konektor od računalnika,drugače ne,kar je logično) Ne pomaga premikati gumbek na adapterju levo ali desno,sem probaval... http://postimg.org/image/c1yhn8t7z/  Ta drugi je pa NAVADNI IDE V SATA pa kolkor je meni jasno ga moraš vklopiti na kabel za disketnik pol pa še priklopit na 4 PIN konektor od računalnika da disk zalaufa... Ima en gumbek na sebi ki sem ga pritiskal gor in dol pa nič... http://postimg.org/image/r9y0345j5/  SATA kable sem pa povezal z matično za prenos podatkov,logično.  @assistant_1 a misliš da je garant problem v Bios nastavitvi/autodetekciji diskov... Ne vem,vse je nastavljeno na SATA IDE ne na AHCI ali Raid,probal sem tudi to,pa noče,zaganja se v nedogled... Bom prilimal še sliko BIOS NASTAVITVE DISKOV..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Jumper na disku mora bit na MAster, v bios-u pa na IDE."
+    },
+    {
+        "role": "assistant_4",
+        "message": "IDE disk priklopi še na napajanje z molex konektorjem."
+    },
+    {
+        "role": "user",
+        "message": "Dobro,JUMPER bom dal na MASTER,v Biosu pa je na IDE. Na Molex 4PIN konektor  pa JE priklopljen.  Evo slike:  1 V BIOSU NE zazna oz.ne pokaže IDE DISKA,ki bi moral biti napisan pod SATA, ker je to narejeno z IDE V SATA ADAPTERJEM http://postimg.org/image/x4om2351h/  2 V SATA Configuration so vsi dani na IDE ,kot je v originalu (ne na AHCI ali Raid) Port 5 in 6 pa itak AHCI in Raid ne podpirata http://postimg.org/image/sl8qtfsu1/"
+    },
+    {
+        "role": "user",
+        "message": "Jumper je na MASTER,v MOLEX in v ELEKTRIKO je VKLOPLJENO,lučka sveti,disk se sliši da se obrača, probal sem premakniti gumb levo desno a ga v BIOSU vseeno NE zazna. Mislim da bi moral biti izpisan tam kjer piše SATA Devices,glede na to,da ga je adapter iz Ide pretvoril V SATA?  http://postimg.org/image/na3hjcpi9/  Ne vem več,kaj bi naredil,nova stvar je ta IDE V SATA pretvornik,pa da to ne deluje,to ne more preprosto biti...Če bi bil rabljen,pa ne bi reku,tko je pa nov,in s tem adapterjem je vse v redu, disk je pa tud testiran in je ok."
+    },
+    {
+        "role": "assistant_3",
+        "message": "V bios-u ti ga ne zazna, ker moraš imeti gonilnik za adapter, katerega ti naloži sistem. Poženi sistem in bi moral videt diske v disk managerju. V bios-u namreč nimaš gonilnikov za periferijo, ki ni na MB."
+    },
+    {
+        "role": "user",
+        "message": "Kje naj najdem ta Disk Manager? Probal sem z desnim klikom na  My Computer pa opcija MANAGE...Aje to to? Sam ne pokaže diskov!  Praviš da Bios zato ne izpiše in ne zazna diskov ker ni DRAJVER ZA  ta IDE v SATA ADAPTER instaliran. Samo to je blesavo,zakaj mi niso v trgovini pol priložili zraven cd-ja z driverjem za ta adapter Logilink? Oooo,glava me že boli od tega... Kaj nj zdaj nardim,glede na to da ga v Manage ne najde,Disk Manager pa ne vem a je to to?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sata disk preko takšnih direkt IDE-Sata pretvornikov mora v Bios-u prikazati pod IDE !!! in ne pod Sata! Konfigurirati je treba v podmenijih na IDE postavki, enako nastavitve Auto parametre (ponovna autodetekcija parametrov - cilindre, glave etc.)... probaj tadrugi disk postavit na slave; lahko se kaj tepe ... si siguren, da toliko selotape-ja, ki drži Sata kabl ni škodilo?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pred leti sem kar nekaj teh pretvornikov uporabil in nisem imel problemov. PC-ji vse prepoznali in delovanje HDD-jev je bilo normalno. Uporabljal ravno ta pretvornik iz linka: https://www.mimovrste.com/ostali-kabli-..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Sem imel tudi sam neki bidirectional IDE-SATA pretvornik. In sem imel na dolocenih masinah probleme, da jih ni zaznal. Na drugih je pa delal brez problema - Bios je zazanal ... Tako, da probaj se na drugi masini, ce imas moznost."
+    },
+    {
+        "role": "user",
+        "message": "Ojoj... prov razočaral sm se... toliko truda pa nič... Vse sem pravilno nastavil, sj ste vidli zgoraj na slikah,kable prov povezal,lučke zdj svetita na obeh adapterjih, diski se vrtijo,kar se sliši,ampak da bi jih zaznalo v Biosu pa pri štartu PC-ja pa ne... Tud na Master sem dal jumper,pa probal na Slave na obeh adapterjih,na navadnem IDE V SATA in na BIDirectional ampak vse zastonj...Ne morem se načudit temu,nova stvar pa da noče  in te zajebava...  P.S.: Na Bidirectional adapter sem pa dal mal selotejpa da prime Sata kabel,ker se non stop  na lahko izvlači... tud brez selotejpa ni zaznal... mah,nj gre vse v p.m. Od tega Logilinka bom pa čim manj proizvodov kupoval,skoz nekj serjejo,zadnjič mi je crknu tut Usb Hub njihov, dva pa še delata,ma Low End firma po moje..."
+    },
+    {
+        "role": "user",
+        "message": "Ne. Noče in noče pa da oba adapterja obrneš stokrat na glavo. Mah,izklopil sem oba  IDE v SATA adapterja,ta Logilinkova sranja... Škoda da niso prej prodajali ali pa da vsaj nisem zapazil da obstaja adapter IDE v USB,ker ta bi pa mogel delat.Ima dobre možnosti priklopa stane pa 27 eurov. Probat ni greh enkrat,da izkoristim še stare IDE diske in njihov prostor...  Ta adapter pa zgleda takole: http://postimg.org/image/42tctnlt7/  Hvala vsem za pomoč,vseeno."
+    }
+]

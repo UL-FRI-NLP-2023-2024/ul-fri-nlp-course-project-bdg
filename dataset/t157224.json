@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "torej imam zgoraj omenjenega GF 6200 in sem mu brez vsakih problemov odklenil cevovode (rivatuner). Sedaj me pa zamina če lahko na to grafično enostavno flasham bios od A6600TD in bi s tem ostali cevovodi za vedno odklenjeni? Zanima me še to: Ali slučajno kdo ve kej bi se dalo najti biose za leadtekove 6600 in 6200 serije ki bi imeli aktiviran senzor za temperaturo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ni treba flashat nič samo za temperaturo  Originally Posted by Symbios By \"Symbios\"  Step 1: Create a bootable floppy with Nvflash included.  1. Place a blank floopy into drive a:.  2. Chose format and check the \"create a boot disk for DOS\" box.  3. Download NVflash.  4. Put Nvflash.exe and Cwsdpmi.exe onto the boot disk you’ve just created.  Step 2: Save that BIOS!  1. With the floppy you created still in your drive, restart your computer and let it boot off of the floppy.  2. Type “Nvflash –b biosbackup.rom” (without quotes) and hit ‘enter’.  3. Nvflash will now save your bios to the floppy.  4. When it’s done, remove the floppy and restart your computer.   Step 3: Edit the BIOS.  1. Download a hex editor, I prefer Hextreme.  2. Launch the editor insert your boot disk once again. Browse to the floppy, you should find a file called “biosbackup.rom”, open it.  3. Search for “04031201” (make sure you are in Hex mode, click the dropdown menu next to the binoculars and select “HEX”), right after that sequence you should see “10 0A 01 11”. Highlight the “10” in the string and change it to “00” so it looks like this, “00 0A 01 11”  4. Save the edited bios to your floppy. Be sure to save it as something different then the original (we want to keep the original intact incase something goes wrong). To keep things simple, save it as “Biosmod.rom”.  Step 4: Flash your card with the edited BIOS.  1. With the floppy you created still in your drive, restart your computer and let it boot off of the floppy.  2. Type \"nvflash -5 -6 biosmod.rom” (without quotes) and hit ‘enter’.  Nvflash will now flash your cards BIOS. When it’s done, remove the floppy and restart your computer.   Congratulations! You should now be able to monitor the temperature of your Nvidia GeForce 6600."
+    },
+    {
+        "role": "assistant_1",
+        "message": "> ni treba flashat nič samo za temperaturo > Nvflash will now flash your cards BIOS."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tudi jaz imam po novem Chaintech GeForce 6200 AGP 64-bit (300/400)...Problem je, ker imam revizijo jedra NV43 A4, ki se naj ne bi jih dalo softmodati, kar mi res ne uspe, pravilno pa pokaže 1 qudrozilion skritih cevovodov...  Kako lahko ugotovim, če ima moj model vgrajen temperaturni senzor, na chaintech strani namreč ni tega podatka.  P.S. Se pa vsaj dobro navija, vsaj na 450/550 je bilo še vedno stabilno...."
+    },
+    {
+        "role": "user",
+        "message": "tvoja grafična se res neda softmodat... sploh pa bi tut s softmodom zlo malo pridobil ker maš 64bit verzijo. senzor pa po moje bi moral bit v GPU-ju ker mislim da ga majo vse grafične z NV43 in NV44 čipi, le disabled je."
+    },
+    {
+        "role": "user",
+        "message": "še zmeraj pa nevem če bi cevovodi ostali odklenjeni na grafični če bi jo flashal z A6600TD biosem."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Probej pa boš vidu"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kateri modeli oz. od katerega proizvajalca se pa dajo odklenit? Leadtek? Ali sem spet prepozen za take stvari"
+    },
+    {
+        "role": "user",
+        "message": "mislim da še nisi prepozen... v Jae v Celju majo še ene 3 take kot je moja.... bodo pa kmal prišle ven 6200 z nv44 čipom ki se jih pa nebo dal modat"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Se vam za 5 čukov splača riskirat?Ne bi bilo bolje kr default 6600 kupit?"
+    },
+    {
+        "role": "user",
+        "message": "jah men ni blo problem ker sem mel dogovor da lahko grafično vrnem če nebo delala z vsemi cevovodi. če pa ni možn tak dogovor se pa ne splača reskirat ... vsaj zame ne."
+    },
+    {
+        "role": "assistant_6",
+        "message": "pravi overclocker bi to preizkusil,tudi če bi na koncu zmetal za grafično kartico 3x več denarja kolikor je vredna,samo da pokaže več kar naj bi dejansko bila...."
+    },
+    {
+        "role": "user",
+        "message": "zanima me če slučajno senzor na moji grafični kaže narobe? temp. GPU-ja aj bi se pri poganjajnu iger dvignila kar do 84°C... je to normalno?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "jp je."
+    },
+    {
+        "role": "assistant_7",
+        "message": "zdj pa mene neki zanima: Pred parimi dnevi sm kupu to leadteakovo kartico A6200TD (AGP) in glede na nasvete v tej temi odklenu preostale 4 cevovode(rivatuner). Nato sm probu v doom3 zalaufat demo(v konzolo utipkaš \"timedemo demo1.demo\") da bi mi izračunu povprečje FPS v demu. To sm sprobal z odklenjenimi cevovodi in neodklenjenimi cevovodi, v obeh primerih je bil rezultat enak. A slučajno špili preprosto ne znajo uporabljat teh dodatnih 4ih cevovodov ker jim v gonilnikih piše da ima ta kartica kao samo 4 cevovde, al kaj? čim se komu kej več sanja o tem naj napiše. Pa še neki a se da ta bios nadgradit s biosom od 6600TD?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Luk zgleda da nisi dobro naredil postopek odklepanja, probaj še enkrat ;)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Prestavljeno v Kaj kupiti"
+    }
+]

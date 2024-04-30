@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Od nekoga sem dobil kartico in sicer je to PCI kartica IDE RAID. Probal sem gor priklopit stari IDE disk,a ga Bios ne prepozna. Pri startu računalnika sicer izpiše podrobnosti kartice in ponudi da stisneš F3 da  narediš ali izbrišeš RAID.  Zdj pa ne vem: če vklopim samo 1 disk ga Bios nič ne izpiše,pa pri startu računalnika se nč ne izpišejo podrobnosti... A moram pol NUJNO vklopit DVA diska,verjetno ja,da bi sploh lahko naredil RAID in da bi zadeva štartala...   Mal bedasto vprašanje,zato ker sem mislil,da lahko priklopim samo 1 disk pa da ne bi delal RAIDA,ampak da bi samo tako uporabljal 1 sam ide disk, vendar to noče,non stop se restarta,v nedogled, zgleda zato,ker to ni \"dodatna IDE kartica\"ampak RAID kartica, in ker nimam IDE utora na plošči,ker so to plošče nove generacije,sem mislil da bi lahko enostavno samo priklopil stari ide disk na to pci IDE RAID kartico pa ne gre...   Ponavljam,to ni navadna IDE kartica,to je IDE RAID kartica   katera ne omogoča da priklopiš en ide disk gortako kot si na starih matičnih ploščah in ta ki mi jo je šenkal mi tega ni rekel.   Jst sm v bistvu rabil dodatno ide kartico za priklop ide diska,ne pa povezovanje v raid, kar me pa ta kartica ki mi jo je on šenkal sili. Ta navadna ide kartica je ponavadi zelena z dva črna utora,tale moja ide raid pa je črna in ima en moder in en rdeč utor. In kuj mi je bilo jasno da to ni tista klasična dodatna ide kartica v katero samo vtakneš ide disk,če nimaš ide utora na plošči...  Je pa zanimivo da če priklopim IDE DVD PEKAČ da ga v Biosu ZAZNA,ampak v My Computer  ga pa ne prikaže. Tko da ne morem niti pekača uporabljat... Evo še slika:   Slika"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tebi je bilo kuj jasno, da je to le prevelik zalogaj zate...  RAID je le opcija, ki ti jo nudi IDE kontroler. Kontroler ima tudi svoj, neke vrste BIOS, v katerem konfiguriraš kot kaj naj sploh deluje. Saj raid ni samo eden, raidov je več... Naštudiraj kako priti v nastavitve kartice in izklopi vse kar ne rabiš."
+    },
+    {
+        "role": "user",
+        "message": "Ne vem kaj bi več od tega kar sem opisal še naredil...drugih možnosti ni... če pa veš za kakšen nasvet pa mi prosim pomagaj,ti bom hvaležen..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri startu računalnika sicer izpiše podrobnosti kartice in ponudi da stisneš F3 da  narediš ali izbrišeš RAID. Pa si izbrisal RAID?  Drugače bo pa brez kristalne krogle težko. (mojo sem žal moral prodat, recesija pa to, nisem več mogel plačevat servisov in kalibracije...) Slike ni videt, podatke ki bi jih lahko natipkal pa skrivaš kot kača noge..."
+    },
+    {
+        "role": "user",
+        "message": "Prvič ko sem vstavil to kartico v PC mi je ponudil opcijo da stisnem F3 in sem to naredil ampak je bila opcija le da KREIRAŠ ali IZBRIŠEŠ RAID,nobene druge opcije... Raid sem najprej kreiral nato sem ga pa zbrisal.Potem sem dal kartico fizično ven in nazaj noter v PC,nato pa se več NI IZPISOVAL BOOT zaznanja kartice z možnostjo pritiska na F3. V BIOSU pa nič ni pokazalo da je disk zaznan... Bom slikal,če ZAZNA SPET te opcije za pritisk na F3,pa mi boš lahko povedal KAJ naj storim,še prej pa ali je nujno da priklopim DVA ide diska ali lahko tudi eden ali recimo kombinacijo 1 Ide disk in 1 Ide Dvd pekač.  Bom slikal nastavitve Boot zagona,če ga zazna (z opcijo na F3)  pa BIOS,da vidiš,kako mam naštimano. Sploh NE ZAZNA DISKA v Biosu,vse je pa na SATA IDE če dam pa  na SATA AHCI ali na Raid noče in se zaganja v nedogled..."
+    },
+    {
+        "role": "user",
+        "message": "Vstavil sem PCI IDE RAID v računalnik in pripel IDE DVD-RW,in IDE DISK. Skupaj računalnik ni hotel,zato sem disk iztaknil in pustil samo IDE DVD-RW. Potem pa je računalnik POKAZAL IN ZAZNAL IDE RAID KARTICO in se je ispisal tudi IDE DVD-RW pogon v Biosu in po pritisku na F3. Po pritisku na F3 so se mi odprle tudi MOŽNOSTI ZA IZBIRO,a se nisem hotel nič dotikati dokler mi ne poveš KAJ NAJ IZBEREM !  Evo SLIKE:  1 BIOS BOOT DEVICE - ZAZNAN IDE DVD-RW ! http://postimg.org/image/uc0h44d79/  2 ZAZNANA IDE Raid kartica PRI STARTU ! http://postimg.org/image/6aou1iiat/  3 PRITISK NA F3 Dalje ispisuje pri startu http://postimg.org/image/l6a89a2f5/  4 PONUJENE MOŽNOSTI po pritisku na F3 ! http://postimg.org/image/uvodr6agt/  5 Nadzorna plošča - zazna IDE Raid kartico in išče driver http://postimg.org/image/6uoubijpn/  Kaj sedaj svetuješ? KATERO opcijo naj IZBEREM OB PRITISKU na F3?  (Disk sem izklopil,ker PC z diskom pa ni hotel štartati)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja pa, če je pokazalo 1 ide napravo samo, obeh pa ne, je ziher z jumperji (master/slave) kaj narobe nastavljeno; disk mora bit na master, DVD rom opa na slave običajno ..."
+    },
+    {
+        "role": "user",
+        "message": "Ja sj sm dal disk na Master Dvd Rw pa na Slave,pa ni računalnik hotel štartat... Zdj ko sem pa odklopil disk pa pustil samo Dvd Rw ga pa Bios zazna in ga pri startu tut  izpiše.   Sam zdj ne vem ko mi pri vsakem startanju ponudi opcijo F3,pa ne vem  KAJ naj izberem...   Evo ponujene opcije: to sem tud linkal s slikami zgoraj   Press F1 to delete RAID set  Press F2 to create RAID set  Press F3 to create spare drive - po moje bi mogu to stisnit,ker Raida nočem  Press F4 to resolve conflicts  Press F5 to config 1st HDD - to bi po moje mogu stisnit če bi računalnik hotel z priključenim  diskom štartat,pa noče,starta samo z Dvd Rw ampak če daš not DVD pa noče recimo začeti Bootat  Windowsa   Pa še Press ESC to exit RAID configuration utility   To so opcije... Kaj naj zdaj izberem F3 AL F5"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če podatkov na disku ne rabiš, lahko verjetno narediš RAID 1 (mirror) samo z enim diskom, ki bi ga potem OS moral videt."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V BIOS od PCja, prva slika od včeraj, http://postimg.org/image/uc0h44d79/ : tako kot je, s priklopljenim diskom na raid kartico nekako ne more delat (če te prav razumem, bi ti s to nesrečno kartico rad le dodal disk obstoječemu, na kateremu je sistem?), ker išče zagon iz kartice. Moraš dat \"taglavni\" disk (predvidevam da je to samsung) na prvo mesto."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Na IDE kablih maš dve možnosti izbire M/S:  - lahko eksplicitno nastaviš jumper na M ali S - lahko ga pustiš na \"auto\" in vlogo določiš s tem v kateri konektor ga vštekaš - skarjni konec je za master, sredina je za slave.  Če je samo en pogon na kablu, mora biti obvezno montiran na koncu kabla in mora biti master."
+    },
+    {
+        "role": "user",
+        "message": "Evo kaj je zdej po novem problem:  1) Ne zazna več IDE DVD-Rw (ali diska) pa sem naredu CLEAR CMOS ker se izpišejo samo SATA naprave,ne pa tudi IDE ki so priklopljene gor  preko te PCI IDE Raid kartice   http://postimg.org/image/91h00va0d/  2) Disk sem probal vlopiti SAMEGA (brez DVD Rw) in zmeraj dela isto: ALI imaš lahko vklopljen samo disk ALI samo Dvd Rw.Če vklopim OBOJE ,računalnik NOČE STARTATI,zaganja se v nedogled...  Je pa tako: Če imam vklopljeno OBOJE,PC sicer izpiše pri startu kao 2 napravi  in ponuja opcijo F3,pri kateri če HOČEM izbrati katerokoli opcijo NOČE.  Vendar v BIOSU še kar NE PRIKAŽE PRIKLOPLJENIH OBEH IDE NAPRAV.  Če dam samo DVD Rw ga enkrat zazna enkrat NE zazna v Biosu... Vsak je pa na SVOJEM kablu oz.kanalu,pa je na Master. Slave ni nujen,ker je vsak na svojem kanalu,kot rečeno...  Slika: Prvi izbran za zagon je normalno SATA disk,vendar JE PROBLEM V TEM,da če priklopim  OBE IDE napravi (Disk in Dvd Rw) na to PCI IDE Raid kartico,da NE IZPIŠE OBEH v Biosu,samo prikazuje mi da sta dve pri startanju računalnika...  http://postimg.org/image/j6w7abkdx/  Slika 2: Kot rečeno če priklopim OBE IDE NAPRAVI (Disk in Dvd Rw) na to PCI IDE Raid kartico, NE IZPIŠE OBEH V BIOSU,samo prikazuje da sta dve pri startanju računalnika kar se vidi na tej sliki spodaj.  (ne pusti mi pa več uporabiti nobene opcije od F1 do F4,F5 je pa itak izginila)  http://postimg.org/image/6pvvpfenl/  Pomoči tukaj mislim da ni več nobene... Hvala vseeno za vaš trud. Pozdrav."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Dvomim da je nerešljivo, le težko je vse možnosti spisat v normalnem času. Poišči koga v bližini ki je zrasel v času ATA kablov, ki loči 33, 66, 100, ve zakaj je en konektor moder, da je pomembno kako je kabel obrnjen, zakaj so jumperji na napravah...  10 minut v živo bo neprimerno bolj učinkovito kot par ur, ki smo jih že zapravili s tem tipkanjem tukaj"
+    },
+    {
+        "role": "user",
+        "message": "Mah,izklopil sem vse,brezveze se je dajat s tem,če noče pa noče k.rc jo gleda. Enkrat zazna enkrat ne zazna... Na moderne plošče kakršno imam proizvajalci več ne vgrajujejo IDE utorov,vidim pa da je tudi PCI rež vse manj in jih zamenjujejo PCIEX 1 reže,pravtako pa USB 3.0 izpodriva USB 2.0,in na novih ploščah bo USB 3.0 počasi popolnoma izpodrinil USB 2.0.  Obstaja tudi varijanta da bi IDE priklopil na USB prek adapterja,ki stane 27 eurov. Mislim da bi s tem potem IDE disk moral delovati... (kot USB)  Na tole mislim: http://postimg.org/image/42tctnlt7/  Mogoče bom to enkrat kupil pa še to probal,da izkoristim plac ki mi ga nudi IDE disk"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user - Saj je stvar čisto enostavna - IDE DISK moraš priklopit na zunanji konektor; Jumper na HDD mora bit na MA, v bios-u moraš nastavit boot, saj ti spremeni boot komando, ko se pojavi enota nižjega ranga - IDE-SATA in ti poizkuša bootat z IDE DISKA, kar pa ne gre, ker nimaš instaliranega sistema na starem disku, zato ti resetira mašino in poizkuša s ponovnim zagonom.  kratko - priklopi disk, zaženi mašino, stisni gumb za urejanje bios-a, razvrsti boot prioritete (na prvo mesto sistemski disk), poglej, če je AHCI ostal ali ti je vrglo na IDE, popravi še to na AHCI in zadeva bo delala."
+    },
+    {
+        "role": "user",
+        "message": "Čak mal,noben mi ni rekel da moram dat na AHCI... mel sem na IDE...samo enkrat prej sem dal na AHCI,pa mi je vrglo nazaj na IDE,sistem ni hotel startat in se je skoz v nedogled restartal...  Vse drugo kar si napisal pa imam nastavljeno  (Jumperji na Master,nastavljen Bios First Boot ipd...)  Zdj sm že dal kartico vn iz računalnika... mogoče kdaj drugič še to sprobam na AHCI dat... Samo a ni AHCI za SSD diske? Drugače pa mogoče bom kupil enkrat pa probal z uno zadevo IDE (in sata) V USB adapter,ki sem ga linkal zgoraj."
+    },
+    {
+        "role": "assistant_4",
+        "message": "AHCI je dobro da imaš vklopljen od viste naprej in na SATA napravah (na starejših ga ni, so pa druge opcije - SATA native,...), XP pa ne moreš poganjat na AHCI, razen, če daš gonilnik pozneje in v registru popraviš. Diski na sata pač delajo pod drugačnim režimom in predvsem mnogo hitreje.  Če imaš 7-ico ali 8-ico pa diske na IDE, ti zadeva delujejo veliko bolj počasi. Na netu imaš navodila, kako spremeniš iz IDE načina v SATA način, brez ponovne instalacije.  Če imaš vse na IDE bi ti morala kartica delovati pravilno, samo disk moraš dati na zunanji konektor (paziti moraš tudi kateri del kabla imaš priklopljen v kartico - kabel izgleda tako 1---2--3, enka, torej daljši del, gre na kartico, dvojka ostane prazna (ali pa gor obesiš drugi disk, ki mora imeti jumper na SL) na trojko pa obesiš disk, za napajanje pa porabiš štiripinski molek in ga pravilno obrnjenega priklopiš na disk. Obvezno mora bit jumper na MA - master.   Potem šele, pri zagonu pogledaš, da ni slučajno IDE disk na prvem mestu za boot."
+    }
+]

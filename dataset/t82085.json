@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Imam problem imam namreč grafično GF FX5600 in hočem naložit Linux, no ko vstaim prvi cd in zaznava strojno opremo ne zazna prave grafične in kot posldica tega je nadaljna inštalacija ni možna ker v naslednjem koraku odklopi monitor na njem napiše nosignal.  Zanima me kaj bi bla rešitev, de bi men to delal???  Že vneprej HVALA!!!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "na slotechu sicer ne podpiramo konkurenčnih verzij st linuxu ampak naj ti bo... očitno se ti po zaznavanju všalta refresh ki je večji od tega kot ga tvoj monitor sposoben prenest. nastavitev refresha od vsega začetka ima st linux tako naret da cd poženeš s parametrom \"knoppix refresh=60\" , ta nastavitev zavzame privzeto 60hz osveževalno frekvenco. če še vedno nebo delalo potem probaj v text mode postorit zadeve ali pa mu ročno dopovedat katero grafično imaš"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Živjo!  Ali se ti to zgodi pred vstopom v grafični namestitveni program ? Če da, potem na syslinux zaslonu vnesi ukaz \"text\" in namestitev bo potekala samo v znakovnem načinu. Pain, ampak bolje kot nič . Sicer pa lahko z F1-F5 malce prebereš kaj vse se da nastaviti na začetku.  Če se problem pojavi pri nastavljanju X vmesnika, lahko določiš namesto NVIDIA gonilnika recimo splošni gonilnik Vesa ali VGA.   Po končani namestitvi (velja za oba zgoraj navedena primera) pa je najbolje namestiti NVIDiine gonilnike z http://www.nvidia.com. Pri nastavljanju X-ov ti bo najbrž precej pomagal ukaz redhat-config-xfree86 če kaj ponagajajo obstoječe nastavitve pa lahko probaš še z redhat-config-xfree86 --reconfig  Upam, da bo kaj pomagalo ."
+    },
+    {
+        "role": "user",
+        "message": "glej isto dela kolegu ki ima FX5200, in sva probavala več linuxov tudi tisto verzijo ki jo je slotech na INFOSU talu ki se zažene s CDja in rezultati povsod enaki.  Bom probu tist nares šenkrat hvala, če pa še kej zvesta pa sporočte."
+    },
+    {
+        "role": "assistant_2",
+        "message": "> na slotechu sicer ne podpiramo konkurenčnih verzij st linuxu ampak naj ti bo...  A Windowse pa podpirate? Malo trapasta izjava. Resnicno.  Medtem, ko bi si mogli pomagati med sabo, si takele pisemo po raznih forumih in mailing listah... Naravnost bedasto...  :("
+    },
+    {
+        "role": "assistant_3",
+        "message": "velikikit: ta izjava je bila sigurno mišljena s \"kilo soli\".  na slo-techu smo tolk strpni, da toleriramo celo nek tako zmešan in obskurn OS kot je windows!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "se opravičujem za izjavo!!! bigwhale... pozabil stavek spremeniti na poševno pisavo... hotel sem samo povedat da bodo izdelovalci pingota vedeli kaj več."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Saj jaz sem bil tud se precej jutranji... Ampak vseeno... :)  Radi se imejmo... ;>  Platonicno... Jasno.... :P"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Živjo! Jst sm tist kolega z GF 5200FX. Kot je že Rider povedov mi noce poslat nobenga signala na ekran, probov sm pa že tud vse tist k ste že napisal... Ali ima mogoče še kdo kakšno idejo, ker nekako nujn morm zdihtat Linux. Lepa hvala"
+    },
+    {
+        "role": "assistant_5",
+        "message": "imas LCD?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ne nimam LCD-ja. Mam pa Panasonic SyncMaster 557. Zakaj to sprašuješ? Ker drugač mi zaslon in vso ostalo opremo pravolno zazna. No razen za grafično mi napiše, da je Vesa Generic. Drugač sm Linux v tekstovnem načinu že do konca instalirov. Instalacija se je izvedla do konca, potem sm ponovno zagnov in na zaslonu se je pojavu tist meni kjer izbiras med Windowsom in Linuxom (čisto običajno). Ko sm izbrav Linuks je blo vse vredu, začev se je zaganjat, v trenutku ko je pa na graficni nacin preklopu je blo pa konc \"muske\". Pc na ekran ni vec poslov signala in je blo tko kt d PC nebi lavfov. Pomoje se je Linux celo zagnov do konca, samo jst tega nism vidu.  V najslabsem primeru bo treba grafisno zamenat, ane? Kva nj se probam?  Hvala"
+    },
+    {
+        "role": "assistant_6",
+        "message": "alt+ctrl+Fn (n=1...6) padeš v konzolo. Popravi /etc/X11/XF86Config-4 Restartaj X-e  Za več podrobnosti pobrskaj tule gor po starih temah o Linuxu. Je bilo že 100x napisano..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kako pa lahko spreminjas datoteke, ce so na cd-ju ?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "A je tip napisal, da je s težavo NEMESTIL Pingo? Torej ima datoteke na disku.. Za Knoppix pa nisem povsem prepričan ampak se mi zdi da /etc obstaja v RAMu in se ne bere direkt s CDja. (Gandalf?)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "a držanje ctrl+alt ter pritiskanje na \"minus\" ali \"plus\" (na numeričnem delu tipkovnice)odpravi težavo?  če to ne odpravi težave potem bo treba it v konzolo pa popravit.. verjetno je prevlki refresh za določeno resolucijo... poleg tega če se ne motim se pingo zaganja s cdja podobno kot st linux ter knoppix? al sem sedaj to zamenjal s distribucijo slix?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_6: knoppix ma lastne fore kako se to popravlja, da ..  Pingo je pa poslovenjen RH in ima oseba vse ze na disku namescene in se bi moralo obnasati kot navaden RH sistem"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Živjo!  > No razen za grafično mi napiše, da je Vesa Generic  Pomemben kos informacije. Po mojem priloženi XFree86 gonilnik ne podpira (še) tvoje kartice in je bil nameščen VESA gonilnik, ki pa ne deluje pravilnno.  > V najslabsem primeru bo treba grafisno zamenat, ane? > Kva nj se probam?  Rešitev je preprosta ;).   Najprej zbudimo sistem v načinu (runlevel) 3, kjer ne zažene grafike: 1. V GRUB meniju (tam kjer izbiraš med Win/Lin) označiš Pingo in pritisneš tipko 'e' (ne Enter).  2. Označiš vrstico z kernel in zopet pritisneš 'e'. 3. na koncu vrstice dodaš presledek in številko 3. 4. pritisneš 'b' in Linux se bo zagnal  V sistem se prijavi kot sistemski skrbnik - user 'root'.  Sedaj potegneš s spleta NVIDIA gonilnike in jih namestiš: 1. wget http://download.nvidia.com/XFree86/Linu...  2. sh NVIDIA-Linux-x86-1.0-4496-pkg2.run in slediš navodilom na zaslonu.  ----------------------------  Drugače lahko poženeš v načinu 3 tudi redhat-config-xfree86 --reconfig in poskušaš nastaviti gonilnik na nv ali vsaj vga.  Da se tudi tako, da poženeš redhat-config-xfree86 --set-driver nv ali pa redhat-config-xfree86 --set-driver vga   Nastavitve za poigravanje so pa v /etc/X11/XF86Config. Naredi si kopijo, predno spreminjas."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Rider97 in @assistant_4: A sta rešila problem?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_8, ne skrbi. Če ti ne bo takoj prepoznalo grafične za inštalacijo v grafičnem načinu, jo boš pa v tekstovnem (namesto klikanja, se premakneš s kurzorji na OK in pritisneš enter). Ko imaš vse inštalirano in bootneš v sistem, je pa vse mogoče."
+    },
+    {
+        "role": "assistant_1",
+        "message": "> Rider97 in @assistant_4: A sta rešila problem?  Enkrat sem se vmes že poigral s podobno kartico, Nvidia FX5200 pri kateri je pri namestitvi Pingo nepravilno nastavil frekvenco monitorja. Rešitev je sledeče:  1. Namestitev v znakovnem načinu 2. potem kot root poženeš redhat-config-xfree86 --set-driver=nv --reconfig 3. poženeš s startx X okolje 4. z redhat-config-xfree86 nastaviš ustrezno število barv in ločljivost 5. v /etc/inittab spremeniš: id:3:initdefault: v id:5:initdefault:  In zadeva se po ponovnem zagonu zbudi v X-ih. Mimogrede, meni so Nvidiini uradni gonilniki zmrzovali pri tej kartici. Pri drugi kartici, mislim da je GeForce MX440 pa je delovalo le z uradnimi gonilniki, ker je bil uporabljen DVI izhod na LCD monitor.  Če želiš uporabiti NVidiine gonilnike po namestitvi (Pinga in njenih gonilnikov) vtipkaš v točki 2. redhat-config-xfree86 --set-driver=nvidia --reconfig  Mimogrede... podobne težave ima tudi na Fedora Core 1. Upam, da bodo XFree-jevci kmalu poštimali te zadeve."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Hvala za pomoč, zadeva je sedaj taka:  Pingo Linux uspešno nameščen na svojo particijo veliko 7GB.  Vendar mi v grafičnem načinu monitor pokaže črn ekran in nimam kej druzga kot hard reset.  V čem je problem?  V tem, da sem jaz med instalacijo izbral grafično kartico \"GeForce FX\" ali pa v tem, da sem izbral monitor \"LG 2010\". V resnici imam: GeForce FX5200 in LCD LG L1810B  Kaj mi je sedaj narediti? Poskusil sem tole kar nad menoj pravi RokPapez, ampak mi v tocki 3 sistem pride v X, toda monitor je seveda črn.      --- Hm, lahko pa potegnem driverje za graficno z neta in jih instaliram v tekstovnem nacinu, tako kot pravi RokPapez, stiri poste nad mojim. Ampak je pa problem ker jaz iz win nimam dostopa v Linux in ne morem tja kopirat .run fajla !  Tako, da bi mi moral nekdo povedat kako se iz Root@Root.Linux instalira fajl, ki je izven Root particije.  ...newbi in linux talking here"
+    },
+    {
+        "role": "assistant_10",
+        "message": "MArjan: Ko se ti noče zbudit v Xe greš v konzolo (ctrl+alt+F1) kot root,   links www.nvidia.com, prvi link je Linux and nevemkajže (mislim da BSD) drivers prvi link oz prvi download ko zloada lepo rečeš chmod 777 ime_downloadanega_fajla (ls ti pokaže če si pozabu ime ali je komplicirano, probaj pritisnit tabulator med tipkanjem :-)) ./ime_fajla agree, ok, yes, da, jeste, aha, OK potem pa:  \"killall gdm && gdm &\" (sej pingo uporabla gdm, ane?)  Če spet ne bo delalo se oglasi, je treba popravit xf86config."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Hvala za hiter odgovor, vendar je problem ker nimam vzpostavljene še povezave z internetom tako, da kakršenkoli download v Linuxu odpade.  A se ne da fajla iz NTFS normalno presneti v ext3 ?   PS: Možno, da je problem v monitorju, saj sem izbral 20\" beštijo, ki ločljivost našopa na 1600x1200, moj ima pa 1280x1024."
+    },
+    {
+        "role": "assistant_10",
+        "message": "1. da, v monitorju je lahko problem 2. to lahko odpraviš tako da popraviš XF86Config-4 3. da, NTFS lahko mountaš: \"mkdir /mnt/wintendo && mount -t ntfs /dev/hda1 /mnt/wintendo\" (I guess its hda1) 4. in ja, lahko uštimaš mrežo v linuxu. Najbrž imaš eepro100 (ethernet express) ali rtl8139too (poceni kartice). za prvo rečeš \"modprobe eepro100\" za drugo pa \"modprobe 8139too\". 5. Če imaš v omrežju router in dobiš IP avtomatsko (dorej so dinamični) \"dhclient\", drugače se spet oglasi :-D  6. in imaš net v linuxu :-p"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Wooow    Nisem mislu, da bom tolk hitro zrihtal. Tole že pišem z Linuxa    Samo ločljivost je ubitačna, okoli 800x600 ali pa še manj    Bom probu zrihtat...  Thx!"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ok, mi ne rata zrihtat ločljivosti, zato par vprašanj, ki so tudi iz drugih področij, saj nimam pojma o linxu, zato se še meni zdijo naslednja vprašanja smešna :  Kako pridem v ukazno okno (only!), brez KDE in da lufa internet? Kakšna je razlika med KDE in GNOME? A to je samo izgled grafičnega vmesnika ali kaj več? Katerega naj uporablam? Kako naj instaliram LCD monitor? Driverje se dobi samo za Winse!   = grem spat zdele"
+    },
+    {
+        "role": "assistant_2",
+        "message": "> Kako pridem v ukazno okno (only!), brez KDE in da lufa internet?  Pritisnes CTRL-ALT-F1 in se bos znasel tam... :) Kako vzpostavis povezavo v Pingo Linuxu nimam pojma... ;) Najbrz bo kak redhatovec vedel...  > Kakšna je razlika med KDE in GNOME? A to je samo izgled   V vecini je samo izgled (ceprav je pri red hatu sedaj precej manj razlik), je pa se nekaj razlik med tem kako deluje doloceno okolje.  > grafičnega vmesnika ali kaj več? Katerega naj uporablam?  Tistega, ki je je bolj vsec. ;)  > Kako naj instaliram LCD monitor? Driverje se dobi samo za Winse!  Naceloma lahko nastavis v konfiguraciji kar nek generic lcd moitor. Nekih posebnih driverjev ne nucas."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ahh, novo jutro, nov dan - za učenje Linuxa seveda     Thx @assistant_2... na kakšni drogi si pa ti? SUSE, Mandrake...?  Ej, @assistant_2, @assistant_10, @assistant_5, itd., a ste kej razmišljali, da bi napisali članek \"uvod v Linux\" ?!    Imam se par vprasanj: Kje in kako editiram fajl X86Config ? Kolikor razumem je tale Pingo čisto pravi Rad Hat 9.0. Torej lahko prevajam jedro... in nadgrajujem z novimi paketi? Kako? Ali obstaja kak program, ki je ZELO podoben Total Commanderju v winsih? Ali se, da s tem programom na enostaven način v grafičnem načinu kopirati fajle, ki so kjerkoli na disku (npr. ntfs -> ext3)? Kakšen je pomen končnic v Linuxu? Za razliko od winsov?   PS: Slo-techovci smo povečini revni ljudje, glede na ceno programske opreme. Povečini tudi ne maramo krast. Torej bomo uporabljal Linux! Samo članke začnite pisat - linuksaši"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_8: naceloma smo mi na Debianu.. res dobr stuff :>  X11 lahko na roko editiras, ce zelis .. pac odpres z nekim tekstovnim urejevalnikom /etc/X11/XFree86-4  je pa se lazji nacin. Poskrbis, da si v Xih root in potem gres v KDE-jev control panel in tam notri poisces nekje konfiguracijo Xov in lahko stvari direktno iz Xov spreminjas. Potem moras samo logout/login nares, da bos opazil spremembe.  Aja, pa ne pozabit prej backupirat delujocega XFree86-4 fajla.. ponavadi se izkaze, da ga v prvih 10 poskusih rabis ;)  Naceloma imas midnight commander za v konzolo oz. neka gui verzija tega tudi obstaja .. gmc se ji rece :)    Ali se, da s tem programom na enostaven način v grafičnem načinu kopirati fajle, ki so kjerkoli na disku (npr. ntfs -> ext3)?    Ja, ti samo poskrbi, da bos imel priklopljene particije (mountane) in lahko brez tezav kopiras iz ntfs kamorkoli na ext3. Nazaj pa ne bo slo.    Kakšen je pomen končnic v Linuxu? Za razliko od winsov?    Linux ni obseden s koncnicami. Vecina aplikacij uporablja drugacne metode za ugotavljanje ali je to prava datoteka ali ni. So pa se vedno fajn zato, da ti ves kaksen tip datoteke je. Vecina native stvari nima koncnice. Koncnico ponavadi dodas kaksnim skriptam (.pl, .py, .sh), da kasneje ves s katerim intrepreterjem jo moras pognat. Drugace pa so stvari bolj ali manj brez. Aja .. poleg .avi pa .mp3 datotek ;)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Aaa, Debian odvisniki torej :)))  Hmm... a lahko daš link za ta GMC ?  ----  Samo zdele moram res grafiko instalirat, ker se matram k žvau na teli ločljivosti... Tisto Ctrl+Alt+F1 ni dobr, ker mi reče, da sem še vedno v Xsih, ko hočem instalirat grafično.  Pa rabim še ukaz za konektanje na net v ukazni lupini (aktivacija Siol xDSL v mrežnih nastavitvah)...=?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_8:  v konzoli, ko se prijavis kot root napises:  # telinit 3  Xi bodo umrli in ostal bos brez.. sedaj lahko nvidia driver instaliras.  potem ko je zadeva koncana, pa tole:  # telinit 5 # /etc/init.d/xdm start   PS: Vsec mi je tvoj PS ;>"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ko tako instaliram graficno mi v \"Nastavitvah zaslona\" se vedno pise: Vesa driver generic   ?!"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Gandalf, sem najdu MC, je že notr. Spominja na NC pred 5. leti :))  GMCja pa očitno ni notr, na netu pa ne najdem...   Še glede direktorijev me zanima:  / - naddirektorij vseh  /home - shranjujem svoje programe in fajle /root - domač imenik administratorja /vsi ostali - sistemski?    Žal pa še vedno nisem off-topic, saj mi še vedno ne zazna grafične GeForce FX5200, kljub (uspešni) inštalaciji. Če ima kdo rešitev naj pove, plizz."
+    },
+    {
+        "role": "assistant_10",
+        "message": "OK najprej glede gmc; gmc je kar zastarela zadeva....a jo sploh še razvijajo?  V gnome je nautilus, za znak ima tako školjkico; če boš kliknu na domek se ti bo odprl. V KDE pa konqueror.  zdaj pa direktoriji: Unix razume direktorije drugače kot WinTendo. Vse se začne v RAČUNALNIKU. (/) kaj ima računalnik?:  -naprave (/dev) -inforamcije o samem sebi (/proc) -knjižnice (/lib) -osnovne ukaze in programe (/bin) -uporabniške zadeve [programi, knjižnice,....] (/usr) -nastavitve (/etc) -razne stvari (/var) -superuporabnika (/root) -domove uporabnikov (/home/ime_uporabnika)  Svoje podatke načeloma daješ v svoj dom; tam si urediš po želji. Prednost tega je: - ko greš na drugo mašino skopiraš samo home in imaš vse svoje zadeve tam (MS je to izumil z \"briefcaesom\" ki ne dela tako kot bi mogu) - drugi uporabniki ne morejo gledat tvojih zaeev (če je prav naštimano) - ne packaš stvari - veš kje imaš dom in konec itd....   Še kakšno vprašanje?   BTW glede skripte oz uvoda: 1. obstaja jih cel kup na netu 2. da, je v izdelavi"
+    },
+    {
+        "role": "assistant_8",
+        "message": "> Še kakšno vprašanje?  Absolutno    A se splača bit nek uporabnik, al je bolje, da se logiram kot root, saj imam tako več pravic, in tudi ni drugih userjev...?  Predvsem pa bi rad zvedel zakaj mi grafične ne zazna kljub inštalaciji."
+    },
+    {
+        "role": "assistant_11",
+        "message": "jst sm biu na Mandrake drogi pred kšne pol leta in sm tud par dni porabu za instalacijo grafe. Un driver sm naložu bp pol pa ni delal. Izkazal se je, da je bilo dovolj, da sm samo skopiral un XF86-4 fajl iz dira od NVIDIE (mau poisci, jst sm se spet na wintendote prvadu pa sm ze mau pozabu.. - se bom pa vrnu... KMALU!. No potem pa samo ta fajl skopiri tja kje maš originalnega. Pa tko kot so že drugi rekl - nared si varnostno originalnega. Ti bo prou pršlo...   P.S.: Kako si zadovoljen s Pingotom? Jst si ga mislm naložit pa me zanima. A mounta sam particije?   LP"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@BMW-F1  Aha, bom probu!  Hja, jest sem tok nov v linuxu, da ti ne vem kej dost povedat. Prej sem probu samo Slo-tech Linux in se mi je dost dopadu, zato sem rekel, da bom instaliral pravi linux. In sem se odločil za Pingota, ki ni nič drugega kot poslovenjen RH v. 9. Instalacija je bila dokaj lahka, malo sem se hecal s particijami, in sem ugotovil, da je najboljse v Winsih naredit Unallocated particijo s kakšnim PMjem in potem ti RH lahko tudi samodejno doloci particije oz. mape na njem. Imaš pa lepo GRUB noter, pa tudi dosti sistemskih orodij, izbiras lahko med GNOME ali KDE, kar ti bolj sede... 3CDje zasede.  Dosedaj sem naletel samo na tri probleme: instalacija graficne, nedelovanje kakega programa in sporocilo: \"Program \"eggcups\" 3244 se je zaradi usodne napake sesul...sesutje programov GNOME\".  Tko no... jaz se ga kar privajam :)  (1) Sploh ne znam se instalirat programov... kaj naj naredim z datotekama .tar.bz in .tar.gz, ki jih potegnem z neta?!  (2) Kje je kaj najbolj podobnega beležnici?  (3) Wintendo = ?  (4) Mountanje particij? Nimam pojma    (5) XF86-4 ? Hoces rect X86Config ?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "ja hm.   (1) kolkor se jst spomnem so .tar.gz končnice zazipanih fajlov v linuxu. Mislm, da maš celo en program v KDEju, drgač pa v konzoli to delaš (ne me prašat kako, ker sm že pozabu)  (2) najbolj podoben beležnici, oz. še boljša sta vi in vim - odpreš konzolo in napišeš vim ali vi.   (3) Wintendo = windows   (4) je priklop ne-linux particij  (5) no, pa to... Ne vem več točnega fajla. Tist k maš pr helpu od NVIDIA drajverja zravn v glavnm.    P.S.: A si ti uno carsko ohišje modificiru že a je biu en drug tist....?  LP"
+    },
+    {
+        "role": "assistant_10",
+        "message": "OK, najprej glede root/not root worka:  - delaj kot NAVADEN UPORABNIK. Root lahko postaneš v konzoli z ukazom \"su\" (in potem \"exit\" za nazaj). Superuporabnik bodi le za instalacije, konfiguracije, ipd. Z računalnikom delaš kot navaden uporabnik. Ko se boš privadil boš videl da je tako dobro in prav.  - notepad: jih je cel kup. Še vedno nisem čisto ziher ali uporabljaš gnome ali kde, mogoče sem slabo bral. za gnome sta gedit, gnp (GnomeNotePad) (in ostali), za kde pa je kedit (in ostali) - namesto textpada je za programiranje odličen kate (resnično cool grafični editor). - inštalacija (vse je korakoma čeprav bi lahko udzipavanje združili s taranjem; treba je razumet): RPM: (kot root) rpm -ivh ime_fajla.rpm (i-install, v in h da je verbosde in prikaže progress meter)  tar.gz ali .tgz: \"gunzip ime_gajla.tar.gz\" (ali .tgz) ga odzipa, \"tar -vxf ime_fajla.tar\" Vesbosely (seznam datotek) eXtrakta iz Fajla ime_fajla. tar.bz2: \"bunzip2 ime_fajla.tar.bz2\" odzipa, \"tar -vxf ime_fajla.tar\" Vesbosely (seznam datotek) eXtrakta iz Fajla ime_fajla.  za spodaj omenjena primera je tako da si najbrž dl-jal source. Klasičen postopek je: \"cd ime_direktorija_ki_ga_je_najverjetneje_ustavilo\" \"./configure\", če to ne prime (No such file or directory) probaj \"make config\" če nič ne joka in zaključi nekako z \"Makefile.... created\" lahko nadaljuješ, sicer moraš instalirat potrebne zadeve. ko si prišel do sem: \"make\" ko konča, če je seveda brez errorov: \"make install\".  Ta postopek ki je opisan je za prevajanje programov. (kjer dobiš source in ne le skompajlanega programa)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@bmw-f1  Ja, jest sem ta članek napisal.  Glede (4), ne zal sam tega ne naredi, baje pa se da enostavno... Gandalf je zgoraj omenil.   ...Grem zdej brat kar pravi @assistant_10!"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Nisem prebral vsega, zato dodajam.  Odpiranje kompresiranih fajlov v grafičnem vmesniku dela BP- v gnome je program za to delo \"file roller\", ce pritisneš (enter) nad fajlom v mc tudi prikaže vsebino arhiva  ŠE ena pripomba :) Kot začetnik ki ne pozna konzole si raje prišparaj vi (oz vim) za kasneje ker se ti bo sicer zameril linux    mountanje particij je takole: v windows daš noter disketo in lahko bereš in pišeš. In sej veš, včasih se lučka od disketarja ugasne in še ni do konca zapisano. Ali pa nekdo preko mreže bere CD pa ga ti ven vzameš. Zato se mounta - cd se npr. ne ejecta dokler ni un-mountan. Postopek je preprost. (nevem kje ima pingo mount pointe ampak predvidevam da kot redhat) CD: mount /mnt/cdrom Floppy: mount /mnt/floppy  Ko boš mountal bo v omenjenem direktoriju vsebina CDja/diskete.  ko končaš oz hočeš vzet ven: umount /mnt/cdrom oz. umounz /mnt/floppy  (debian ima po defaultu /cdrom in /floppy)  Po želji si lahko te zadeve nastaviš v datoteki /etc/fstab"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Za diske in cdrome se pa naredi sledeče:  mount /dev/xdyZ /mnt/tvojdisk  -x lahko zavzema črki h ali s - h je paralelni ATA disk, s je SCSI ali SATA disk  -y lahko zavzema celo abecedo: a (master na prvem IDE kanalu), b (slave na prvem IDE kanalu), c (master na drugem IDE kanalu), d (slave na drugem IDE kanalu) itd  -Z je številka, ki označuje particijo. Sledijo si od začetka diska, pa do konca (prva, ponavadi windows, je 1). Če jih želiš videti vpiši (kot root) fdisk /dev/xdy  Če ti zateži \"Must specify file system type\", se pred /dev/xdyZ napiše -t filesystem Spremenljivka filesystem lahko zavzema vrednosti (nekaj jih bom naštel): ext2, ext3, reiserfs, ntfs, vfat (windows FAT32), iso9660 (CD-ROM). Uporabi po želji   Domnevam, da si iz naravoslovnega področja in sem malo \"prilagojeno\" napisal     Za spremenjanje resolucij se odpre XF86Config, poišče vrstice (3), kjer so navedene resolucije in se vpiše zaželjene.  edit1: Za hitro odpakiranje v konzoli:  tar -xvzf file.tar.gz tar -xvjf file.tar.bz2 unrar x file.rar unzip file.zip unace e file.ace"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ok, mountat in razpakirat bom zdej znal     Zdej pa tole: > Za spremenjanje resolucij se odpre XF86Config, poišče vrstice (3), kjer so navedene resolucije in se vpiše zaželjene.  Jah, sliši se lepo, vendar tega v graficnem nacinu ne morem naredit, ker nimam dostopa do tega fajla, imam le do njegovega backupa. Torej v konzoli! Z unim hudičem \"vi\"! Kaj napisem tocno?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "POZABI VI, si začetnik :)  v konzoli ali gnome-terminal ali karkoli konzolskega: \"su\", password \"mc\" greš do direktorija /etc/X11 greš \"nad\" XF86Config-4 pritisneš F4 (edit) greš dooooooooooooooooooooooooool do Section: Screen (prilagam primer)  Section \"Screen\" Identifier \"Default Screen\" Device \"Generic Video Card\" Monitor \"Generic Monitor\" DefaultDepth 24 SubSection \"Display\" Depth 15 Modes \"1280x1024\" \"1152x864\" \"1024x768\" \"800x600\" \"640x480\" EndSubSection SubSection \"Display\" Depth 16 Modes \"1280x1024\" \"1152x864\" \"1024x768\" \"800x600\" \"640x480\" EndSubSection SubSection \"Display\" Depth 24 Modes \"1280x1024\" \"1152x864\" \"1024x768\" \"800x600\" \"640x480\" EndSubSection EndSection  Najbrž vidiš resolucije v narekovajih ane? No, pri VSEH barvnih globinah (=povsod kjer imaš \"Modes\") dodaj spredaj tvojo resolucijo v narekovaje inloči s presledkom ali tabulatorjem.    Ampak najbrž je napaka tudi pri osveževanju. V istem fajlu poišči section \"Monitor\". Ključna je vertikala ki jo monitor zmore (že vnaprej za komentarje na moj refresh rate: imam lcd ) : Torej, popravi VertRefresh.  Section \"Monitor\" Identifier \"Generic Monitor\" HorizSync 30-100 VertRefresh 55-65 Option \"DPMS\" EndSection    In če imaš nvidio in nvidiine drajverje, seveda moraš imet v sekciji \"device\" nvidia:  Section \"Device\" Identifier \"Generic Video Card\" Driver \"nvidia\" Option \"Rotate\" \"CCW\" Option \"ConnectedMonitor\" \"lcd\" EndSection  (rotate opcija je za LCDje ki znajo it v pokončni mode).    Torej, popraviš, pritisneš F2 (save) in greš ven (F10). Reštartaš X-e in je. Če bo kaj narobe, lahko pogledaš v fajlu /var/log/XFree86.0.log \"cat /var/log/XFree86.0.log\" bo izpisal vsebino. Itak so glavne večalmanj zadnje vrstice če ne dela, ker bo napisalo napako. (v konzoli se premikaš stran gor/dol s SHIFT+PgUp oz SHIFT+PgDn.  Dela boljše?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "BTW še tole- resolucijo v X spreminjaš s ctrl alt + in ctrl alt - (kontrol+alt+plus, kontrol+alt+minus)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_8: delaj cim manj kot root, ker te lahko najmanjsa tipkarska napaka stane polovico sistema, .. sicer pa rabis ene dvakrat kej cudnga narest, da te izuci, da ne tipkas kot root stvari za katere nisi prej preveril kaj delajo :>"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_10.  Sem tako vpisal kot imas ti, in sem ob restartu dobil naslednji error: --- Data incomplete in file /etc/x11/xf86Config  Undefined Monitor \"Generic Monitor\" referenced by Screen \"Default: (EE) Problem parsing the config file (EE) Error from x86HanleConfigFile  Fatal Server Error: no screens found ---  In nato mi je zgleda automatsko bootalo iz backup loga.  A sem preveč spremenil imena? Bi moral samo frekvence?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "to je meni isto pisalo vsakič ko sm spreminju tip monitorja.   Nism šur kva sm že pol naredu... Vrjetno sm kr nanovo naložu linux"
+    },
+    {
+        "role": "assistant_10",
+        "message": "da, jaz sem dal samo sample :-)  Poglej na dnu fajla ime monitorja in popravi...in enako naredi za graficno."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Aha! Groovy baby"
+    }
+]

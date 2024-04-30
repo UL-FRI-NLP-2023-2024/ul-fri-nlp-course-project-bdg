@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni. Imam 3 računalnike v workgroupi in swichem. Za medsebojno \"vidljivost\" sem nastimal na vse hoste s statičnimi ip naslovi. Ker je več uporabnikov imajo vsi na vsakem računalniku svoje račune z pravicami do datotek oz. sredstev. Tudi deljenje interneta je nastavljeno. Vse nekaj časa dela dokler, kar na enkrat enem izmed računalnikov pozabi vse pravice dostopa do sredstev drugega računalnika . Napiše Access Denied. Potem spremenim geslo ali pa se malce poigram z namesitvami dostopa in spet dela. Čez nekaj časa se pojavi isto. Firewalli so naštimani pravilno, da dovolijo drepustnost za mrežo. Ne najdem kaj bi bil lahko vzrok.  Lep pozdrav."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Firewalli so naštimani pravilno, da dovolijo prepustnost za mrežo.  Kako se pa to nastavi? Bi rabil na enem racunalniku.  Hvala!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Imaš kakšne mapirane drive, podavtomatiko. Si spreminajl dispaly name, ali login name ?"
+    },
+    {
+        "role": "user",
+        "message": "MarcoP: Filewall sem nastimal, da dovoli omrežni promet, ki je del notranje mreže (etherneta) npr. 192.168.0.0 in masko 255.255.255.0.  @assistant_1: Vsi logini so vedno isti in nespremenjeni, prav tako gesla v vseh računalnikih. Prav tako mislim, da sem prav naštimal pravice uporabnikov.  Danes zvečer je računalnik, recimo mu B, popolnoma izgubil vse omrežne povezave in mi napiše: Network path not found. Pingam računalnik, recimo mu A, z ipjem 192.168.0.1, ki deli Internetno povezavo in je računalnik do katerega poiskušam priti in brez problema dobim reply. Potem pingam spet računalnik A, toda tokrat kot ime in glej ga zlomka: \"could not find host\", pa čeprav ga imam napisanga pod host: 192.168.0.1 računalnik A  Internet oz. ICS deloma deluje. A je mogoče konflikt z DNSjem od računalnika A in Hostom računalnika B?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Preveri če imaš vsebino host fila identičnega z dejanskim stanjem mreže, saj uporabljaš DHCP od ICS-a, kar pomeni da dobijo mašine IP dinamično in pod ICS-om isti MAC ne dobi vedno istega IP-ja. Drugo pa preveri kaj ti javi recimo net use x: \\\\IP\\Ime shara ?"
+    },
+    {
+        "role": "user",
+        "message": "Vse host datoteke so na vseh računalnikih enake. DHCP od ICS se ne uporablja, saj so vse ip številke ročno vnešene (statične).   Net use komanda mi vrže ven naslednje soročilo: System error 53 has occurred. The network path was not found.  Omrežni računalniki se prikazujejo in izginjajo.  Ugotovil sem še da ima računalnik A dostop do računalnika B in pri tem lahko vidim vsa omrežna sredstva. Probal bom zamenati omrežno kartico ali pa je swich?"
+    }
+]

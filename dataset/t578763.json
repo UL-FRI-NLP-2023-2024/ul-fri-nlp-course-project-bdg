@@ -1,0 +1,102 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Do sedaj sem imel 8GB (4x2) RAMa ... sedaj sem dal noter 4x4 tako da imam 16GB. Prejšnji in novi RAM sta DDR3 1600Mhz .. voltaže imata enake (1.65v) tako da v biosu ni bilo kaj nastavljat.   Po menjavi se je PC normalno vžgal ... Windowsi so zaznali 16gb .. vse je delalo ok včeraj. Danes ko sem ga vžgal mi je začel piskat in se resetiral in obstal z napisom:  The system has expereienced boot failures because of overclocking.  Last settings in BIOS may not coincide with current H/W states.  Current CPU speed: 16.0 x 200Mhz Current Memory speed: 1600Mhz Current HT speed: 2000Mhz  PC ni nič overclockan .. ima kdo idejo v čem je težava ? .. zakaj je nastala in predvsem kako jo odpravit?   Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "a ti zdej deluje stvar ? sicer pa nastav na 1333mhz 1.5V"
+    },
+    {
+        "role": "user",
+        "message": "ne ne dela  prej sem imel 8gb 1600mhz 1.65v in je delalo super ... zakaj zdaj z 16gb bi mroal znižati hitrost na 1333mhz in 1.5v ?  no bom probal če bo delalo .. vendar bi rad izkoristil hitrost 1600mhz če jo že imam in je delalo prej z 8gb."
+    },
+    {
+        "role": "assistant_0",
+        "message": "očitno niso čist enaki moduli in se mem kontroler ne razume najbolje z njimi."
+    },
+    {
+        "role": "user",
+        "message": "moduli so bili kupljeni v paketu takod a morajo biti vsi enaki ... z starimi se pa razlikujejo samo v velikosti. Kakorkoli sem dal na 1333mhz 1.5v pa zadeva vedno javlja error. Na začetku če sem stisnil presledek mi je naredilo ponoven restart ... sedaj pa mi gre v winse .. vendar ob vsakem zagonu mi teži ono opozorilo ... nastavil sem nazaj na 1600mhz in 1.65v ... pa mi gre v windowse .. samo pač tisti pisk je na začetku in opozorilo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "tudi če je isti komplet, še ni nujno da so isti rami. proizvajalci ramov majo dostirat po par deset revizij istega modela rama...  pa sj maš verjetno kje kake xmp profile za rame ..."
+    },
+    {
+        "role": "user",
+        "message": "ej pojma nimam .. hardware ni zame ... slučaj je nanesel da sem dobil 16gb .. pa ga ne znam spravit v delovanje tako kot je treba ... saj OS dela .. samo start me heca. Pognal sem razne mem teste in vsi so šli lepo skozi .."
+    },
+    {
+        "role": "assistant_0",
+        "message": "dj bios na reset.."
+    },
+    {
+        "role": "user",
+        "message": "sem dal load fail safe defaults in load optimize defaults ... vedno isti rezultat"
+    },
+    {
+        "role": "assistant_0",
+        "message": "RESETIRAJ BIOS... baterijo ven in nazaj noter.."
+    },
+    {
+        "role": "user",
+        "message": "hm.. samo potem moram vse ponovno nastavljat ... so moram prvo zapisat trenutno stanje ker sam nimam pojma kaj nastavit :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "če nisi nič spreminal v biosu nebo treba nč nastavlat.."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Probaj samo z novimi rami, če sploh delajo."
+    },
+    {
+        "role": "assistant_2",
+        "message": "memtest čez noč. 12ur + šele potem lahko rečeš zgleda da ram dela :D"
+    },
+    {
+        "role": "user",
+        "message": "čw bi imel bluescreene in da bi se mi PC sesuval bi delal memtest ipd... vendar ko preskočim opozorilo pri zagonu PC teče brez težav ... pod bilokakšno obremenitvijo..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Prodaj celoten komplet in nabavi 2x 8GB in je mir. Ocitno se moduli ne razumejo med sabo."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 28. avg 2013 ob 04:06 izjavil:Prodaj celoten komplet in nabavi 2x 8GB in je mir. Ocitno se moduli ne razumejo med sabo.   ja najbolje da celo mašino zamenjam... kdo pravi da bo 2x8gb mir .. lahkoda bi imel še več sranja ..   bom že rešil .. hvala za predloge"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pojdi na FAQ proizvajalca matične plošče. Nekatere matične imajo probleme z določenimi rami, če so vse reže polne. So RAM-i na spisku kompatabilnih za tvoj MB?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kako dela samo z novimi rami ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 28. avg 2013 ob 12:12 izjavil:Pojdi na FAQ proizvajalca matične plošče. Nekatere matične imajo probleme z določenimi rami, če so vse reže polne. So RAM-i na spisku kompatabilnih za tvoj MB?   Do sedaj sem tudi imel vse reže polne samo da so bili manjši moduli. Sem preveril in Rami so kompatibilni z mojo plato.   @assistant_5 je 28. avg 2013 ob 12:17 izjavil:Kako dela samo z novimi rami ?  Vedno sem testiral samo z novimi ali samo z starimi rami .. nisem kombiniral. Z novimi dela ok vendar mi javlja bios ob vsakem zagonu overclock problem.  da bo bolj jasno:   Screen"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zadeva je nestabilna. Ali je kaj narobe z rami (mogoče kontakti? daj jih ven, mogoče premešaj vrstni red), memory controller (preglej napetosti v biosu) ali chipset... Najbolj sem se praskal po glavi, ko si napisal, da imaš pod 1333 še več težav"
+    },
+    {
+        "role": "user",
+        "message": "nisem imel več težav na 1333 .. v bistvu je vedno isto .. neglede kako frekvenco in voltažo nastavim .. ko vžgem PC se oglasi dolg pisk .. pokaže sporočilo .. stisnem presledek in se mi windows normalno zažene. Ko je PC zagnan dela brez težave neglede kako ga obremenjujem .. samo tisti zagon me zajeb..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "http://www.gigabyte.com/products/produc... Support for DDR3 2000(OC)/1333/1066 MHz memory modules Plošča v osnovi ne podpira 1600 Mhz ramov, zato ti \"teži\" (za vse, akr je več kot 1333 Mhz).Poglej si \"Memory Support List\" na gigabyte strani.  ctrl+f1 v biosu za advanced settingse.   Manuals: 2-3 MB Intelligent Tweaker(M.I.T.) #39 Set memory clock -> iz auto na 1333.  Katere rame imaš ? bo potrebno vse spraviti na 1333, potem bo delalo."
+    },
+    {
+        "role": "user",
+        "message": "Do sedaj sem imel 8gb RAM-a na 1600Mhz ... če je podpirala prej nevem zakaj ne bi še zdaj ??  Ram je Kingston KHX1600C9D3/4GX (4x4GB)  Včeraj sem testiral in sem dal ram na 1333Mhz pa je isto mi težilo... no se bom še malo poigral z nastavitvami."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Aja, sem nakeko napačno prišel na misel da imaš one prve na 1333 ."
+    }
+]

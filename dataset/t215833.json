@@ -1,0 +1,50 @@
+[
+    {
+        "role": "user",
+        "message": "ko napišem apt-get install ssh ali pa apt-get update mi naredi tole, mam an slikcah in si poglejte:       pa se opravičujem, zard fleša :D  //S-T ni phpBB forum - popravil slike - Omy"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz v debianu nisem lih doma ampak zgleda kot da internet nebi delal.  btw: kaj nisi mogel samo paste-at tisto kar je napisalo, namesto da slikaš? ;)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zanimivo :) 1.) Ti nisi poganjal apt-get update, ampak apt-get upgrade To je velika razlika. poglej malo dokumentacijo.  2.) Resitev tvojega problema: (V primeru da imas delujoc internet) apt-get clean apt-get update potem pa preveri ce paket ssh obstaja v teh tvojih listah apt-cache show ssh ce to vse dela potem naredis se apt-get install ssh   LP"
+    },
+    {
+        "role": "user",
+        "message": "tudi ce dam update mi naredi isto. Ko sem napisal apt-get clean pa ne naredi nicesar samo napise na novo debian: /home/miha/"
+    },
+    {
+        "role": "assistant_1",
+        "message": "pravis da ne dela :/ A lahko prosim pokazes se kaj ti izpise ukaz:  cat /etc/apt/sources.list  Hvala.  P.S.: Internet ti na tem racunalniku deluje?"
+    },
+    {
+        "role": "user",
+        "message": "Evo tuki:   za internet mam pa tako, ker imam kuplen router sem u nano /etc/network/interfaces naredu takole:"
+    },
+    {
+        "role": "assistant_0",
+        "message": "napiši še: ping ftp.si.debian.org -c 3 pa slikaj ;)  ma kaj ni običajno tako, da se stvari inštalira ko si root (sudo apt-get update)?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "za inštalirat karkoli je treba bit root ali pa preko ukaza sudo."
+    },
+    {
+        "role": "user",
+        "message": "seveda se logiram kot root  tuki sm pingu ftp.si.debian  tukaj pa nalozu apt-get insall openssh-server   iz vedno more it neki narobe, ali je kaka resitev?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "ellow  Ti se prvo moras odlociti ali bos mel stable al unstable pakete...ker kakor vidim  tu (tvoja slika) , da mas zmesnjavo...    Daj si najprej nastavi linke c sources.list pa potem apt-get update, zatem upgrade pa potem namesti nadaljno SW opremo...  Moj (na enem strezniku) sources.list:  #deb file:///cdrom/ sarge main  deb ftp://ftp.si.debian.org/debian/ unstable main non-free contrib deb-src ftp://ftp.si.debian.org/debian/ unstable main non-free contrib  deb http://security.debian.org/ sarge/updates main contrib non-free   lp, bug"
+    },
+    {
+        "role": "user",
+        "message": "kako moram skonfigurirati /etc/ssh/sshd.config sedaj imam prazno?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "ellow  kako moram skonfigurirati /etc/ssh/sshd.config sedaj imam prazno?  kak te mas to prazno...  to ti skoraj tezko verjamem...ker po namestitvi paketa ni potrebna skoraj nobena konfiguracija...  lp, bug"
+    }
+]

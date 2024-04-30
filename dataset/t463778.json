@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Imam modem ---> router mikrotik rb750g ---> switch --->uporabniki trenutno povezava dela, ko bi pa rad izklopil router na modemu(Ganymade) ne dela več. torej izklopim pppoe na moedemu in vklopim na mikrotiku dobim status:connected. NAT nastavim na pppoe, internet ne dela, prav tako ping 88.88 ne dela.  [img] b]  [img] a]   a   a           ali bi moral dodati še kaj od naštetega"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Imaš pod IP > firewall > NAT kot zadnje pravilo nastavljen masquerade?  /ip firewall nat add chain=srcnat action=masquerade src-address=10.0.24.0/24  Zamenjaj 10.0.24.0/24 s svojim LAN subnetom."
+    },
+    {
+        "role": "user",
+        "message": "ja mam masquerade sem dodal še tale src adress- 192.168.88.0/24 pa tud ne dela. :/ A ima še kdo prek siola mikrotik?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "PEBKAC, RTFM. Žal."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Glede na (sicer obupno majhne) screenshote, nisi enajblal pppoe interfejsa. Prvo to naredi... pol pa zna začet delat. Sicer pa iz moje ex silol povezave:   \n> interface pppoe-client print \nFlags: X - disabled, R - running \n 0 X  ;;; Siol PPPOE link name=\"silol\" max-mtu=1480 max-mru=1480 mrru=disabled interface=ether1-gateway user=\"username\" password=\"password\" profile=default service-name=\"\" ac-name=\"\" add-default-route=yes dial-on-demand=no use-peer-dns=yes allow=pap,chap,mschap1,mschap2\n\n> ip firewall filter print\n\n12 X ;;; Allow established on SIOL\n     chain=input action=accept connection-state=established in-interface=silol \n\n13 X ;;; Allow related on SIOL\n     chain=input action=accept connection-state=related in-interface=silol\n\n17 X ;;; Default input drop on SIOL\n     chain=input action=drop in-interface=silol\n\n > ip firewall nat print\n 3   ;;; default configuration\n     chain=srcnat action=masquerade out-interface=silol\n  Načeloma pa najprej nastaviš ppoe, potem dovoliš related/established povezave na interfesju, nato default in drop, dodaš masquerade na ppoe out, interno pa dhcp in ostale malenkosti. Zgoraj maš izpis konfiguracije.... index cifre so malo off, ker je kup ostalih pravil poleg/vmes, pa X-e ignoriraj, ko siola ne uporabljam več:)"
+    },
+    {
+        "role": "user",
+        "message": "aha ja screenshots nevem zakaj neki shrani.si matra... seveda da enablam pppoe =)  mislim da mi tole manjka chain=input action=accept connection-state=established in-interface=silol"
+    },
+    {
+        "role": "user",
+        "message": "3   \n;;; default configuration\n     chain=input action=drop tcp-flags=syn protocol=tcp \n     in-interface=ether1-gateway src-port=1025-65535 connection-limit=10,32 \n\n 4 X chain=forward action=drop p2p=all-p2p \n\n 5 X chain=input action=accept connection-state=established in-interface=siol \n\n 6 X chain=input action=drop in-interface=siol\n\nFlags: X - disabled, I - invalid, D - dynamic \n\n 0   ;;; default configuration\n     chain=srcnat action=masquerade out-interface=siol \nFlags: D - dynamic, X - disabled, R - running, S - slave \n #     NAME                                          TYPE             MTU   L2MTU\n 0  R  ether1-gateway                                ether            1500  1524 \n 1  R  ether2-local-master                           ether            1500  1524 \n 2     ether3-local-slave                            ether            1500  1524 \n 3     ether4-local-slave                            ether            1500  1524 \n 4     ether5-local-slave                            ether            1500  1524 \n 5  X  bridge-interface                              bridge           1500 \n 6  X  siol                                          pppoe-out       \n------- zdaj mam disablan pppoe da lahko pišem na forum =)\n\nFlags: X - disabled, R - running \n 0 X  name=\"siol\" max-mtu=1480 max-mru=1480 mrru=disabled \n      interface=ether1-gateway user=\"antono85\" password=\"ganedam=)\" \n      profile=default service-name=\"\" ac-name=\"\" add-default-route=yes \n      dial-on-demand=no use-peer-dns=yes allow=pap,chap,mschap1,mschap2 \n\n[admin@MikroTik] > ip firewall mangle print \nFlags: X - disabled, I - invalid, D - dynamic \n 0 X chain=prerouting action=mark-packet new-packet-mark=all passthrough=no \n\n 1 X chain=prerouting action=mark-packet new-packet-mark=all passthrough=no \n\n 2   ;;; QoS_1\n     chain=prerouting action=mark-packet new-packet-mark=QoS_1_In passthrough=no protocol=tcp \n     in-interface=ether1-gateway src-port=80,53,443,3074,1863 \n\n 3   chain=postrouting action=mark-packet new-packet-mark=QoS_1_Out passthrough=no protocol=tcp \n     out-interface=ether1-gateway dst-port=80,53,443,3074,1863 \n\n 4   chain=prerouting action=mark-packet new-packet-mark=QoS_1_In passthrough=no protocol=udp \n     in-interface=ether1-gateway src-port=53,88,3074,1863 \n\n 5   chain=postrouting action=mark-packet new-packet-mark=QoS_1_Out passthrough=no protocol=udp \n     out-interface=ether1-gateway dst-port=53,88,3074,1863 \n\n 6   chain=prerouting action=mark-packet new-packet-mark=QoS_1_In passthrough=no protocol=icmp \n     in-interface=ether1-gateway \n\n 7   chain=postrouting action=mark-packet new-packet-mark=QoS_1_Out passthrough=no protocol=icmp \n     out-interface=ether1-gateway \n\n 8   ;;; QoS_2\n     chain=prerouting action=mark-packet new-packet-mark=QoS_2_In passthrough=no protocol=tcp \n     in-interface=ether1-gateway src-port=110,25,995,465,587,21,113 \n\n 9   chain=postrouting action=mark-packet new-packet-mark=QoS_2_Out passthrough=no protocol=tcp \n     out-interface=ether1-gateway dst-port=110,25,995,465,587,21,113 \n\n10   chain=prerouting action=mark-packet new-packet-mark=QoS_2_In passthrough=no protocol=udp \n     in-interface=ether1-gateway src-port=123,113 \n\n11   chain=postrouting action=mark-packet new-packet-mark=QoS_2_Out passthrough=no protocol=udp \n     out-interface=ether1-gateway dst-port=123,113 \n\n\n12   ;;; QoS_7\n     chain=prerouting action=mark-packet new-packet-mark=QoS_7_In passthrough=no protocol=tcp \n     in-interface=ether1-gateway \n\n13   chain=postrouting action=mark-packet new-packet-mark=QoS_7_Out passthrough=no protocol=tcp \n     out-interface=ether1-gateway \n\n14   chain=prerouting action=mark-packet new-packet-mark=QoS_7_In passthrough=no protocol=udp \n     in-interface=ether1-gateway \n\n15   chain=postrouting action=mark-packet new-packet-mark=QoS_7_Out passthrough=no protocol=udp \n     out-interface=ether1-gateway \n\n16   chain=prerouting action=mark-packet new-packet-mark=QoS_7_In passthrough=no \n     in-interface=ether1-gateway \n\n17   chain=postrouting action=mark-packet new-packet-mark=QoS_7_Out passthrough=no \n     out-interface=ether1-gateway \n\n18   ;;; QoS_8\n     chain=prerouting action=mark-packet new-packet-mark=QoS_8_In passthrough=no p2p=all-p2p \n\n19   chain=postrouting action=mark-packet new-packet-mark=QoS_8_Out passthrough=no p2p=all-p2p\n\n[admin@MikroTik] > ip dns print \n                servers: 193.189.160.13,193.189.160.23\n  allow-remote-requests: yes\n    max-udp-packet-size: 512\n             cache-size: 2048KiB\n          cache-max-ttl: 1w\n             cache-used: 10KiB\n\n\n  prosim za pomoč ker še vedno ne dela..  A je kriv mogoče mangle ker je na ether-1 interface?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Huh, bom zvečer pogledal, zdajle ne utegnem. Bi ti pa svetoval, da narediš backup trenutne konfiguracije, potem počistiš vse in od začetka najprej vzpostaviš delujočo povezavo. Pol pa naprej dodajaj ostala pravila."
+    },
+    {
+        "role": "user",
+        "message": "ok neki sm uštimal  ampak mi zadeva crkuje... kar naenkrat imaš prenos 0/0 (status: waiting for packets) pol moram disablat počakat 10 sec in pol spet eneblat in dela...   mislm da je problem kr je dinamičen ip ki se menjuje, pppoe pa se ne.  a bi znal kdo spisat skripto ki zazna ko je pppoe = 0/0 in da je status: waiting for packets, da disabla za 10 sec in pol spet enabla  al ste imeli vi dinamične ipje in niste imeli tega problema?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Jaz nisem imel takih problemov... Lahko postaš pravila, ki jih imaš trenutno?"
+    },
+    {
+        "role": "user",
+        "message": "[admin@MikroTik] > interface pppoe-client print detail  Flags: X - disabled, R - running  0 R name=\"pppoe-out1\" max-mtu=1492 max-mru=1492 mrru=disabled  interface=ether1-gateway user=\"xxxxxx\" password=\"xxxxxx\"  profile=default service-name=\"\" ac-name=\"\" add-default-route=yes  dial-on-demand=no use-peer-dns=yes allow=pap,chap,mschap1,mschap2  tu so vse nastavitve http://dl.dropbox.com/u/26591320/settin...  torej je možno da je napaka na siolu?   trenutno imam modem ki ima pppoe vzpostavljen in skrati tudi tale moj router. bojim se da zadeva crkne(kot to dela sedaj), pol pa tu folk ne zna nazaj vklop pppoe ko mene ni...  vrjetno res ni napaka glede ipja ker enkrat je zdržalo 4 dni. čeprav skripta bi zadevo sigurno rešila"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Na hitro preletel tole... Rukni ven: /ip dhcp-client add add-default-route=yes comment=\"default configuration\" \\ default-route-distance=1 disabled=no interface=ether1-gateway \\ use-peer-dns=yes use-peer-ntp=yes  Oziroma če hočeš dostopat do modema čez router vsaj rukni stran add-default-route in use-peer-dns. Tko da zgleda nekako takole: add comment=\"Modem\" interface=ether1-gateway in ročno dodaj route na 192.168.2.0/24 v route delu."
+    },
+    {
+        "role": "user",
+        "message": "kje ročno dodam route?     drgač moj modem ma 192.168.1.0 omrežje torej dodam nekje 192.168.1.0./24 ?   še neki zanimivega. ko crkne, če resetiram modem začne delat"
+    },
+    {
+        "role": "assistant_3",
+        "message": "IP->Routes"
+    },
+    {
+        "role": "user",
+        "message": "uno modro sem sedaj dodal, a enako sem že imel po defaoultu, modema še vedno ne dosežem. bi bilo pa ful hudo če ga bi"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ok sem zabluzil. Route je že by default prav. Moraš pa še masquerade popravit, ker ga imaš samo za PPPoE interface. Lahko pobrišeš trenuten rule in daš \"add action=masquerade chain=srcnat src-address=192.168.88.0/24\", ali pa dodaš še en rule za ether1 interface."
+    },
+    {
+        "role": "user",
+        "message": "waw ful hvala, zj dela  še neki me moti..     čeprav imam nat na mikrotiku kako je lahko neki folka še vedno na modem priklopljenih?  skrati so tudi na seznamu mikrotik_>dhcp server->leases"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Modem jih še ni pozabil. Bodo šli stran čez dan, dva, tri,... Reboot modema jih bo pa instant spravil stran."
+    }
+]

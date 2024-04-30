@@ -1,0 +1,110 @@
+[
+    {
+        "role": "user",
+        "message": "Ker skoraj nimam pojma o elek. ne vem kaj potrebujem da priklopim led diodo na 220V,zato prosim za nasvet   Verjetno pride kak upor vmes al kaj podobnega,samo ne vem kaj in kakih specifikacij. Tnx"
+    },
+    {
+        "role": "assistant_0",
+        "message": "230V*  hmmm 76 diod?"
+    },
+    {
+        "role": "user",
+        "message": "Bom za uticnice naredu okvircke iz plexi-ja in v vsakon uticnico dal 2 modre ledice da svetijo iz robov plexi-ja. Zato bi pa ledice povezal kr na kable od uticnic pa ne vem kako bi to izvedu"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Nism še slišal, da je kdo na 220V vezal ledice  . Ledice zdržijo okol 3V se mi zdi, tako da ti priporočam da uporabiš kakšen star pomnilec za mobitel, ki ga ne uporabljaš več in na njega priklopiš led diode(več kot 3 zaporedno ne bojo vredu svetle ker je premajhna napetost). Če imaš pa možnost pa potegneš kar iz računalnika (rumena žička je 12V se mi zdi) in lahko na njo vežeš zaporedno 4 ledice(visokosvetleče ledice vem da zdržijo 3V)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zaporedno veži kondenzator (ne elektrolitski) in upor s precej veliko upornostjo, na koncu pa še zener diodo. Vrednosti ti pa ne znam povedat. Nekaj takega kot:  230V LED,  še nekaj"
+    },
+    {
+        "role": "assistant_3",
+        "message": "v konradu kupiš set za priklop ledice na 220 ali pa se malo zajebavaš s samogradnjo"
+    },
+    {
+        "role": "user",
+        "message": "Se pravi da rabim vezja in razne komponente. Hmm...glede na to da mam v studiu 20 uticnic vidim da se ne splaca. No,hvala za pomoc.Carji ste"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Emmm, kaj pa to, da je v vticnici izmenicni tok, se vam ne zdi pomembno?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Bo pa pač utipal"
+    },
+    {
+        "role": "assistant_0",
+        "message": "!KLIK!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nisem štromar, ampak a ni kondenzator tam zato, da zgladi napetost, tako da v bistvu ledica dobiva vseskozi enosmerno napetost. Se pravi ni utripanja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ma z izmenično napetostjo se bo doseglo, da bo manjša poraba."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Najbolj enostavno ti je da zaporedno vežeš led in upor. Upor pa si izračunaš iz enačbe: R=U/I U=230v I=tok ki ga porabi dioda (20mA). Iz te enačbe dobiš upor približno 11,5k"
+    },
+    {
+        "role": "assistant_1",
+        "message": "takšen upor se bo pa zelo grel"
+    },
+    {
+        "role": "assistant_3",
+        "message": "P=UxI"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Predupor za LED diodo ki jo priključiš na 230V, se izračuna enako kot za upor, ki ga priključiš na 5V Tipični tok skozi LED je 20mA, napetost =230V  Približno točen izračun gre takole: R=U/I -> 230/0,02= 11500Ohmov Oziroma najbližji 12000Ohmov Moč, ki se troši na uporu= P=R*I^2 = 12000* 0,02^2= 4,8W najbližja vrednost= 5W -> JA tole se krepko greje!  Vsporedno z LED je potrebno v zaporni smeri priključiti še diodo kot je recimo 1N4007, ki skrbi da LED dioda ne crkne tisto polperiodo, ko ne sveti. Napetost iz vtičnice je izmenična zato LED prevaja in sveti samo v eni polperiodi sinusa.  Če upornost upora višaš se manjša tok skozi LED, ter pada moč, ki se troši na uporu.  Druga varianta, ki prav tako dela je, da daš namesto upora kondenzator z primerno kapacitivnostjo: Veš kakšen predupor rabiš iz prejšnje enačbe ->12000Ohmov Kondenzator ima navidezno upornost:  Rc=1/(2 * Pi * F * C) Pi=3,141529654 F= 50Hz za naše omrežje C= kapacitivnost kondenzatorja Rc = navidezna upornost =12000  Iz tega sledi: C= 1/(Rc * 2 * Pi * F) = 0,265 mikro Farada Najbližji ustrezni je verjetno 0,22mikro farada.  Kondenzator mora biti foljiski za napetost min 250V AC Prednost kondenzatorja je, da se ne greje. Veže se ga kot bi drugače vezal upor. Dodatna dioda je NUJNA! Napetosti lahko povzročijo smrt zato previdno!!!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa če se boš odločil samo za predupor: Svetujem ti, da upoštevaš amplitudno napetost - 320V in ne 230V."
+    },
+    {
+        "role": "assistant_9",
+        "message": "se nekaj: namesto ene diode lahko das usmerniski mosticek, in ti bo potem LED utripal z 100 Hz namesto 50Hz. lahko tudi dodas en elektrolitski kondenzator in se dodatno zmanjsas utripanje"
+    },
+    {
+        "role": "user",
+        "message": "Sej ce utripa ni panike.Skoraj boljse. A pol rabim samo upor??? Meni je bistvo da dela in da je cim ceneje. Ledico bi pa dal cisto navadno,modro."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mislim da tisto utripanje ne boš zaznal, ker bo utripalo prehitro."
+    },
+    {
+        "role": "assistant_10",
+        "message": "natančno 50* na sekundo..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Puškin malo si za*ebal.  Dioda sveti samo eno periodo. Zato utripa z frekvenco 25Hz oz 25x na sekundo."
+    },
+    {
+        "role": "assistant_9",
+        "message": "ni zaj*bal... sveti le pol periode, ampak se vseeno 50x na sekundo   sicer se pa 50Hz utripanje lepo zazna... kar poglej razliko med recimo navadno neonko z dusilko in tisto z elektroniko, ki deluje na nekaj kHz"
+    },
+    {
+        "role": "assistant_11",
+        "message": "S tole idejo se že nekaj časa tudi sam ukvarjam.Namreč namen sem imel dati RGB LED v okvirček od stikal po stanovanju, vendar mi na žalost zmanjkuje časa. Drugače pa poglej tole: http://www.elektro-n.com/forum2/viewtop..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "telih 50Hz te ravno moti, jaz postanem kar živčen..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Daj polnovalni usmernik pa boš imel 100Hz"
+    },
+    {
+        "role": "assistant_13",
+        "message": "A ni bolj enostavno za nekoga ki nima pojma elektrotehnika da naredi stvar čimbolj preprosto? Saj je menda en zgori omenil preprosto rešitev. Led diodo in navadno diodo povežeš vzporedno in zaporedno teh dveh daš en kondenzator. Mislim da človek ne bo dobil kakšne epilepsije zaradi tistih neopaznih 50 Hz. Kaj pravite vi?"
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "role": "user",
+        "message": "Pred kratkim sem dobil v roke staro in umazano IBM tipkovnico, eno tistih, ki ima vzmetene tipke. Problem pa je, ker je brezžična. Sicer vse lepo in prav, ampak v originalu je imela stvar žico. V kratkem dobimen PS/2 kabel in me zanima, kako stvar priklopiti.   Pin-out za PS/2 - da vem, kako oštevilčiti žice od kabla.  Tipkovnica:    Vezje:    Problem se pojavi pri konektorju, ker ne vem katera žica gre kam."
+    },
+    {
+        "role": "user",
+        "message": "Še konektor, ki sem ga našel v notranjosti tipkovnice:    Še to me matra: poleg priključka na vezju je še ena \"kljukca\", ki zgleda kot ozemljitev - je to tudi del kablovja?   Nov link za pinout - tokrat za tipkovnico :) Tu dve žici nista priklopljeni - beli konektor na sliki pa ima 4 žice + še tista ozemljitev. Kak predlog?"
+    },
+    {
+        "role": "user",
+        "message": "Še ena in  še ena povezava. Če komu kaj več pove..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V tale konektor grejo žice od leve proti desni: bela, zelena, rumena, črna. Vsaj tako je pri eni moji cherry tipkovnici. lahko pa poskusiš s kakšnim kablom od druge tipkovnice, že narejenim, z enakim priključkom.  Še slikca, malo slabša, a se vidi."
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa naredim s konektorjem za ozemljitev? Očitno je bila tudi tja napeljana ena žica...  Kabel od ene druge tipkovnice pa še čakam."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Takole samo z gledanjem barv ti verjetno ne bo uspelo. Npr. cherry in mitsumi imata ravno toliko zamenjane barve, da +5V priklopiš na maso, maso pa na +5V, tako, da v primeru priklopa na comp takoj skuriš elektroniko tipkovnice in mogoče še varovalko na matični.  Poskusi ugotoviti, kateri priključek je masa in kateri +5V. Masa je vsekakor direktno spojena s tisto pletenico. +5V je težje, vendar, če so v tipkovnici običajni chipi v DIL ohišjih z oznakami, na netu poišči njihov pinout in poglej kateri pin je napajanje. Na ta način, potem z ohmmetrom poiščeš kateri pin na konektorju za kabel je +5V.   Ostaneta ti še pina za clock in data. Tu ti ne vem svetovati, jaz sem uporabil (ne)preverjeno taktiko an ban pet podgan... in zvezal. Tipkovnico sem najprej preizkusil na eni stari plati, ki je ni bilo škoda in ugotovil, da prva možnost ne dela, druga pa. Šlo pa je za Cherry G80."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Aja še tista pletenica.  Če imaš koaksialni kabel zveži oplet kabla s to pletenico, v nasprotnem, če boš imel navaden 4 žilni kabel, pusti v zraku ali odstrani, če je nevarnost, da bi ta pletenica naredila kakšen kratek stik."
+    },
+    {
+        "role": "assistant_2",
+        "message": "za napajanje lahk pogledas tud un elektrolit na sredini tiskane plosce... kolikor se vidi iz slike, je masa (minus) drugi pin iz leve - ampak raje vseeno premeri z ohmmetrom  glede clk in data pa ne bi smelo biti panike, ce zamenjas - v enem primeru pac ne bo delovalo"
+    },
+    {
+        "role": "user",
+        "message": "OK... Se pravi bo treba it do sošolca štromarja, da mi malo izmeri zadeve. Če zamenjam podatkovne žice ni panike - samo da se ne kaj skuri, pol je zakon.  Še kaka informacija kako ločiti z ohm-metrom kaj je kaj? Za slučaj, če kolega v 4. letniku elektro faxa ne ve :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "na U1 (7406) lahko ugotoviš, kje je + in kje -. pin 7 je -, pin 14 pa + . kukr vidm s s like (http://slike.slo-tech.com/16421.jpg) je pin 2 na J1 minus (preveri z om metrom na pin 7 od U1). najdi še + s pomočjo pina 14 na U1, data pa clock pa loto. uno pletenico (oklokp) od kabla pa na un ušes, k je desno od konektorja, če je kaka pletenica v igri.  če pa toj kulega s faxa nau znau pogruntat, kje je + p -, pol je pa tud đabe u šolo hodu.."
+    },
+    {
+        "role": "user",
+        "message": "Hvala vsem za prispevke... Se bom vrgel v delo proti poznim nočnim uram.  Zaenkrat pa iščem kak PS/2 kabel - dobil sem namreč eno tipkovnico, ki pa je žal hudo prestara in ima posledično še star priključek. Je kdo kje iz centra ali okolice centra Lj, da ima kak kabel odveč?"
+    },
+    {
+        "role": "user",
+        "message": "Šment! Je sploh PS/2 ta tipkovnica? Nalepka pravi, da je bila izdelana v Veliki Britaniji leta '92 - številka izdelka 1399073 (na googlu nisem zasledil nič na to temo). Famozna Type-M tipkovnica, ki je imela še ločen kabel (št. izdelka 1391401), je bila med leti 1986 in 1993 že na voljo s PS/2 kablom. Ampak leta '95 sem še vedno lahko kupil novo tipkovnico z DIN 5 priključkom."
+    },
+    {
+        "role": "assistant_1",
+        "message": "PS2 in DIN tipkovnica je razlika samo v konektorju, ki gre v računalnik.   Vse ostalo je isto (napajanje, signalni nivoji, protokol). Lahko brez skrbi predelaš DIN tipkovnico v PS2 ali obratno."
+    },
+    {
+        "role": "user",
+        "message": "OK tnx    Čez kake tri al štiri urce se najverjetneje javim z rezultati. Štromarji so mi odobrili obisk pisarne."
+    },
+    {
+        "role": "user",
+        "message": "Aja - je kaka nevarnost, če imam kabel brez tiste \"ozemljitve\"? Da so noter samo 4 žice? Ker razmišljam, da bi razdrl kako staro, kroglično miško..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Problem bi bil lahko samo, če je to tipkovnica za XT računalnike, ker ima XT drug protokol in isti pinout, vendar se mi ta tipkovnica zdi preveč mlada, pa še čisto AT izgleda. Mogoče je kje spodaj celo preklopno ali DIP stikalo s katerim izbereš protokol AT ali XT."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Glede kabla, masa pride v tipkovnico tako ali tako, ne glede na oplet. Tisti oplet skrbi, da kabel ne lovi vseh radijskih motenj. Ampak, večina današnjih tipkovnic in vse miške ima samo navaden 4 žilni kabel in ni težav. Tako, da brez skrbi, samo napajanje ne zamešaj in upam, da ti bo uspelo.   Pri kablu od miške preveri, da ni katera od žil prekinjena, ker kabel zelo rad crkne, ko ga enkrat vzameš ven. To se najraje zgodi na tistem mestu, kjer je kabel prej prišel ven iz ohišja miške."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_1: Hočeš rečt, da XT tipkovnice ne delajo na AT mašinah? Ker meni je ena preverjeno delovala. Najbrz se zdej dela, ce jo nekje iz prahu zbrskam."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Originalne XT tipkovnice še nisem imel, vendar lahko povem, da mi ne Cherry in ne Chicony tipkovnica nastavljena na AT na XT računalniku nista delali.   Ker je bil to Atarijev XT 8088 (klon IBM XT), dopuščam možnost, da je bil tam kakšna konstrukcijska zanka. Iz tega sem sklepal, če AT ne dela na XT, tudi obratno ne gre, lahko pa se motim. ker nisem še nikoli nastavil na XT in poskusil, kaj se zgodi na AT mašinah (286 in vse naprej). Bo treba enkrat probat."
+    },
+    {
+        "role": "user",
+        "message": "Torej: (glede na 2. sliko mojega 1. posta) - je drugi pin z leve, + je prvi pin z desne. @assistant_3, prav si imel   Sedaj moram samo še kabel dobiti. Poročam o napredku takoj, ko pridem do tega frdamanega kabla. Hvala za ves dosedanji info."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Aja sej maš prav, sem se spomnu zdele. Jst sem imel na xtju tipkovnico, ki je mela zadaj at/xt switch, tko da je delala na obeh. Se posipam s pepelom.  Tkole nekak je zgledal"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kot je povedal @assistant_1. Razlika med XT in AT tipkovnico (in pa seveda med ustreznimi keyboard kontrolerji npr. Intel 8042) je bila v tem, da so XT tipkovnice komunicirale 'enosmerno' (unidirectional), AT pa 'dvosmerno'(bi-directional). V prehodnem XT/AT obdobju so proizvajalci kompatibilnost tipkovnice med XT in AT sistemom reševali z dodatnim preklopnikom pod tipkovnico."
+    }
+]

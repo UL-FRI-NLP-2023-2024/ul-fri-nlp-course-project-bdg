@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni.  Imam sledeč problem. Kupil sem računalnik i je na mojo žalsot brez LPT vrat. Zato sem se odločil, da dokupim PCI LPT kartico. N računalnik imam naložen sistem Windows Vista 32bit. Problem je, da kartica ne deluje. Naloćil sem driverje ki so bili priloženi na cdju in sledil navodilom. računalnik mi kartico zazna, a se ne odziva na programe. Poskusil sem priklopiti PIC programator in ga ne zazna, nato sem poizkusil s portom s pomočjo programa vklapljati led diode. Vse diode so stalno svetile in jih nisem mogel ugasniti. Kako rešiti tale problem. Res potrebujem ta vrata, predvsem za programiranje PIC mikrokontrolerjev in pogona CNC stroja! Hvala za pomoč.   Še tehnične specifikacije računalnika:  CPU: AMD Phenom x3 8450 3X2.1 GHz,s.AM2+ 1,5MB RAM: 4096MB DDRII HDD: 1TB SATAII Matična plošča: A770 s.AM2, Dual DDRII, RAID, PCI Ex16, USB2.0, SATAII GbE Lan, 6-ch HD Audio  Upam, da mi bo kdo lahko pomagal!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Imaš možnost to kartico preizkusiti še v nekem drugem računalniku ali operacijskem sistemu? Tako, da v neki meri lahko izločiš morebitne HW konflikte.  Obstaja tudi možnost, da je kartica hudo osnovna in ne zna brati podatkov in je uporabna samo za tiskalnike, za programator pa ne."
+    },
+    {
+        "role": "assistant_1",
+        "message": "katero ploščo imaš?  -če imaš biostar a770,rabiš samo še konektor za priklop lpt na ploščo  -če imaš pa asrock A770CrossFire,pa ti ostane še igranje z pci kartico,probaj spreminjat nastavitve,če je možno"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Verjetno si nastavil LPT kartico da je samo enosmerna, mislim da je to SPP nastavitev. Nastavi na ECP, in podobno. http://www.allpinouts.org/index.php/ECP..."
+    },
+    {
+        "role": "user",
+        "message": "Plošča je od biostara. Ko bi le prej to pogledal :). Nič zdaj je kar je, kartica je kupljena. To sedaj pomeni, da lahko direktno na printer port priključim LPT konektor!? In naložim driverje iz CDja, ki sem ga dobil k matični plošči!? A gre v tem primeru za običajni dvosmerni \"promet\" podatkov?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pri LPT portu na plošči skoraj zagotovo ne rabiš nobenih gonilnikov. Pri LPT portu na kartici pa preveri, da imaš najnovejše gonilnike (ugotovi, kateri čip je gor, in prenesi gonilnike neposredno od proizvajalca čipa - se mi je že večkrat zgodilo, da so mašine zmrzovale z gonilniki, ki so bile pri teh karticah na priloženem CDju)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "port iz plošče uporabi za PIC,pci kartico pa za tiskalnik Tega na plošči nastavljaš v BIOS-u,drugega pa mogoče v upravitelju naprav"
+    },
+    {
+        "role": "user",
+        "message": "Doma sem našel 2 LPT konekorja, ki pa imata 10 pinski flat kabel in 10 pinski konektor. Na matični plošči pa je 25 pinski konektor. A se dobi normalno v računalniški trgovini 25 pinski LPT konektor?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "10 pinski je serijski,ti rabiš paralelni.....dobi se v kakem starejšem računalniku.  pošlji zs,če si iz lj,imam par komadov na rezervi"
+    },
+    {
+        "role": "user",
+        "message": "V kratkem verjetno ne bom šel v LJ, ker so počitnice. Škoda! Bom šel jutri vprašat v trgovino, če se kaj takega dobi. Če delajo matične s konektorji, potem bi se po logiki morali dobiti tudi ti LPT konektorji, ki se priključijo na njih. Še zmeraj p ami ni uspelo usposobiti kartice. Res ne vem, kako naj se zadeve lotim!?"
+    },
+    {
+        "role": "user",
+        "message": "A obstaja kaka možnost da spemenim naslov vrat LPT porta na kartici. Sedaj je naslov CC00. Program s katerim programiram PICe pa mi omogoča samo naslove 3bc, 378 in 278 (torej LPT1, 2 in 3). Tudi če sšrenim v nastavitvah port settings mi ostane isti naslov. Če kliknem na sredstva, pa ne morem ničesar spreminjati. V specifikacijah piše, da si kartica avtomatsko izbere IRQ in port adress."
+    },
+    {
+        "role": "user",
+        "message": "Aja še to sem pozabil: kartica je od STLab, model I-420."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zelo težko boš karkoli naredil, ne da bi destabiliziral sistem - sem imel podoben problem s serijsko kartico, in je bil edini način da sem v Device managerju spremenil vrsto računalnika v Standard PC, nakar imaš možnost nastavljati naslove na roko - vendar je bil sistem potem precej nestabilen, pa še omeji te na 1 procesor (jedro)."
+    }
+]

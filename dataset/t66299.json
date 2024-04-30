@@ -1,0 +1,118 @@
+[
+    {
+        "role": "user",
+        "message": "Saril sem po PHP manualu in iskal moznost, ki sem jo verjetno spregledal, zato se sedaj o@assistant_8racam na vse do@assistant_8rodusne ljudi, da mi povsete ...  ... kako @assistant_8i s PHP-jem naredil glasovalno napravico, ki @assistant_8i v eno datoteko shranjevala tocke za npr. posamezno slikco, ki @assistant_8i jo nakljucni o@assistant_8iskovalec pac ocenil ...  Predvsem me muci vecanje vrednosti spremenljivke. Npr. v datoteki ocena.php @assistant_8i po glasovanju o@assistant_8iskovalca spremenljivki \"$a_\" povecal vrednost za \"+1\" ... Hkrati pa ohranil vrednosti ostalih spremenljivk, ki so shranjene v tej datoteki ...  Hvala za cas in trud  Kunigas"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za take stvari se ponavadi upora@assistant_8lja @assistant_8aza podatkov, kjer je vse to zelo enostavno.  Če hočeš upora@assistant_8ljati dokument pa imaš lahko naprimer v tem dokumentu slike zapisane takole:  ime_prve_slike.jpg;0 ime_druge_slike.jpg;3 ime_tretje_slike.jpg;7 ime_cetrte_slike.jpg;2  Potem samo preskakujes vrstico za vrstico po dokumentu in ko najdes pravo ime slike shranis vrednost za ; v spremenljivko, pristejes 1 in prepises vrednost samo na tej vrstici."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Naprej nekaj struktur in funkcij ki si jih lahko ogledaš v manualu: -  Arrays -  fopen() -  serialize() in  unserialize().  Zdaj pa pogumno v @assistant_8oj.  pustimo shranjevanje rezultatov v PHP datoteki -- nima pomena -- raje dajmo ocene.txt. To datoteko odpreš s pomočjo funkcije fopen(). Pogledaš če vse@assistant_8uje karkoli -- če vse@assistant_8uje, nad vse@assistant_8ino upora@assistant_8iš funkcijo unserialize(). Do@assistant_8iš array. Struktura naj @assistant_8o taka $array['nekaj kar je za ocenit'] $array['nekaj drugega za ocenit'] ....  Tako si pre@assistant_8ral podatke o ocenah.  Hočeš prištet oceno? $array['nekaj kar je za ocenit']++;  nato pa z funckijo serialize() spraviš ta $array v nek @assistant_8olj \"shranjiv\" format in ponovno z funkcijo fopen() shraniš nove podatke v datoteko ocene.txt.  Simpl ane?    Rešitev, ki jo je podal @assistant_0, je ok, samo imaš več možnosti, da popraviš kaj napačnega."
+    },
+    {
+        "role": "assistant_2",
+        "message": "lahko upora@assistant_8iš tudi mysql"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2, itak... tud z šleparjem se da it na morje."
+    },
+    {
+        "role": "assistant_2",
+        "message": "če poznaš vsaj malo mySQL (jaz ga res ne o@assistant_8vladam) se da to veliko lažje naredit."
+    },
+    {
+        "role": "user",
+        "message": ":)  No, jz ne znam MySql-a prav nic. V @assistant_8istvu @assistant_8i se ga zelel naucit sam @assistant_8i @assistant_8ilo verjetno naj@assistant_8olj uspesno, da @assistant_8i mi kdo to pokazal al pa zlo razumljivo razlozil, ker ... niti ne vem, kako naj @assistant_8i si to rec predstavljal ...  @assistant_8om pa skusal najdt resitev s ze povedanim,  Hvala za zdaj!  Kunigas"
+    },
+    {
+        "role": "assistant_2",
+        "message": "verjetno si si že instaliral apache, mysql in php. Instaliraj si tudi phpmyadmin, saj pol vse rata ful @assistant_8l enostavn."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2, nisi čisto dojel mojega komentarja zgorej, aneda?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če maš mysql gor in se ti ni tre@assistant_8a zafrkavat z nastavitvami tega.. lahko upora@assistant_8iš mysql. drugače se drži datotek :)  šleper na morje :)) lahko gremo s traktorjem?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "oki tko .txt in mysql mata svoje prednosti... mysql-ova sla@assistant_8ost je recmo to, da se lahko sesuje, drugač je pa @assistant_8l u easy za narest.. prednost txt-ja je pa to, da se recmo sesuje samo takrat, ko se res vse strežnik sesuje, vendar če se vse z@assistant_8riše dol z strežnika, ostaneš @assistant_8rez rezultatov ankete in se vse začne znova (kar se pri mysql-u malokrat zgodi ali nikoli)  tko da je odvisn kakšno voting listo hočš... zanesljivo a staro ali hitro in novo drugač pa do@assistant_8iš velik že izdelanih script.. če se ti pa ne da zaje@assistant_8avat z kodo, pa lepo dol potegneš JAVA programček in ga vključič v stran :) sam ponavad je tm tud kšna reklama, tko da če te to ne mot je uredu  ma pa že skor vsaka do@assistant_8ra stran voting (poll), tko da je to uredu oziroma nujno da vključiš v spletno stran"
+    },
+    {
+        "role": "user",
+        "message": "Java mi deluje vredu, pa vendar ne @assistant_8i rad preveč mešal različnih jezikov med sa@assistant_8o ... Na eni strani, k sm jo naredu, so se stvari začele kr tepst med sa@assistant_8o ... tko da @assistant_8i rajš kar pri PHP-ju ostal ...   Hvala vseen!  Kunigas"
+    },
+    {
+        "role": "assistant_4",
+        "message": "ja veleda....če delaš page v php-ju pol je pa itak @assistant_8olš da kr pr tem ostaneš... je pa za tiste k upora@assistant_8lajo HTML naj@assistant_8oljša rešitev JAVA, za tiste ki pa upora@assistant_8ljajo php pa naj si pogledajo  TUKAJ  tuki mate use opisan, kako je tre@assistant_8a nardit, tko da ne@assistant_8i smel @assistant_8it več pro@assistant_8lemov"
+    },
+    {
+        "role": "user",
+        "message": "Torej, jz sm se nekaj časa mučil z omenjenim in se sam skušal prikopati do rešitve, a je - očino - nisem našel. Vse kar sem lahko naredil (po tem, ko sem pre@assistant_8ral vsa navodila v MANUALU in ugotovil, da se iz zapisanega prav nič upora@assistant_8nega ne najde), da se mi je vrednost k o@assistant_8stoječi spremenljivki v datoteki ocene.php povečala za 1 in v celoti prepisala v ocene.php le cifra 2 ali pa na koncu znaka ?>  Je pa res, da verjetno ra@assistant_8im met tole v ocene.php in ne ocene.txt, ker vrednosti, ki so spravljene pod spremenljivkami kličem pod slikce, ki se prikažejo na strani, tako da ima o@assistant_8iskovalec možnost videti trenutno stanje.  ocene.php izgledajo takole:  $a_ = \"1\"; $@assistant_8_ = \"3\"; $c_ = \"4\"; $d_ = \"5\";  (seveda med oznakami za php)  Pri čemer so a, @assistant_8, c ... imena fotografij ...  Ostalo, kar mi je uspel spisat pa je, kot že rečeno, neupora@assistant_8no.  Kunigas"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Banzai!  Listen to the x@assistant_8ite...  Za eno @assistant_8e@assistant_8avo ocenjevanje slik delat interface do SQLa je tako kot ce @assistant_8i z motorko o@assistant_8rezoval @assistant_8rsticni ohrovt...  V txt file se pa glasove spravi v pri@assistant_8lizno desetih vrsticah kode... skupaj s komentarji... ;>"
+    },
+    {
+        "role": "user",
+        "message": "V txt file se pa glasove spravi v pri@assistant_8lizno desetih vrsticah kode... skupaj s komentarji...   O tem niti ne dvomim. Podo@assistant_8no, kot se da pridt iz Kranja v LJ zelo hitro z avionom, če ga pa ne znaš pilotirat moraš it pa peš.  Resnici na lju@assistant_8o ne znam pilotirat ne aviona niti ne morem trditi da sem kaksen mojster PHP-ja, temvec le upora@assistant_8nik, ki ve, kaj želi in se je pripravljen za kaksno reč tud kej potrudit - celo koga vprašat. Zato me v @assistant_8istvu ne zanima, kaj se s čim da narest, ker se da konec koncev pridt v LJ tud z vlakom in avtom pa @assistant_8icikl ...    Štos je samo v tem, da naj mi nekdo tako razloži teh deset vrstic, da @assistant_8om zakapiral oz. naredil in potem zakapiral ... Če pa slučajno nisi preveč vešč v razlagi, je pa naj@assistant_8olj, da mi rešiš situacijo, pa si @assistant_8om sam ogledal in razložil tisto, česar te@assistant_8i ni uspelo ...  Kunigas"
+    },
+    {
+        "role": "assistant_1",
+        "message": "> Štos je samo v tem, da naj mi  > nekdo tako razloži teh deset vrstic,  > da @assistant_8om zakapiral oz. naredil in potem zakapiral ...   Ti moj prvi odgovor ni @assistant_8il dovolj?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če ne znaš tega naredit, pejt na hotscripts.com pa si najdi eno skripto, ki ti @assistant_8o odgovoarjala."
+    },
+    {
+        "role": "user",
+        "message": "@X@assistant_8ite Očino ne ...  @assistant_2 Če @assistant_8i hotel link, @assistant_8i vprašal po njem ... raje reci, da ne znaš ...  Kunigas"
+    },
+    {
+        "role": "assistant_5",
+        "message": "> Če @assistant_8i hotel link, @assistant_8i vprašal po njem ... raje  > reci, da ne znaš ...  Taka prepotentnost si sploh ne zasluzi odgovora...  Ce ti tisto, kar ti je x@assistant_8ite povedal ni dovolj, potem prodaj racunalnik in si kupi al@assistant_8um za znamke, pa jih z@assistant_8iraj... (or whatever)  Drugace pa na googlu najdes odgovor na vse, skoraj do@assistant_8esedno...  Bleeh..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 Veš kaj je zanimivo ... Da @assistant_8i na enak način, kot @assistant_8i lahko jaz prodal svoje računalo tud zaprli tale slo-tehc, če se ne da no@assistant_8enemu delit svojega znanja na razumljiv način ... Sej se je lahko delat pametnega, ko stvar o@assistant_8vladaš. Še lažje pa se je delat arogantnega, češ, kakšni @assistant_8e@assistant_8ci sprašujejo po znanju in vedenju ...  Mi je pa prišla misel nekega znanega človeka na misel, ko se je u@assistant_8adal s podo@assistant_8nimi ose@assistant_8ami: \"Ključe imate in ljudem @assistant_8ranite vstopiti, sami pa nočete.\"  Življenje je kratko in učimo se na tujih napakah, in če mi @assistant_8o kdo začel trdit, da je to v do@assistant_8ro znanosti, da mora vsak znova odkrivat že odkrito, potem ... potem pač ne veš, kaj je to znanost.  Je pa vsekakor zanimiv fenomen, kako ljudje nočejo oddati svojega znanja. Konec koncev so jim še nedavno tega vtepali v glavo: \"Janez, ni važno al si reven al @assistant_8ogat, znanje je tisto, ki ti ga nihče ne more vzeti...\" In potem se je Janez začel učit ... In zakaj @assistant_8i se potem trudil na nekem FORUMU in oddajal svoje znanje ... in drugim omogočal, da @assistant_8i postali v tem njemu podo@assistant_8ni ...  Kunigas"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user: ne vem no.. kaj ti ni @assistant_8ilo jasno pri prvem x@assistant_8itovem postu?"
+    },
+    {
+        "role": "user",
+        "message": "\"po tem, ko sem pre@assistant_8ral vsa navodila v MANUALU in ugotovil, da se iz zapisanega prav nič upora@assistant_8nega ne najde\"  Mi je prav žal, ampak men ni kej dost jasno, kaj so v manualu hotli povedat ... ko pa sem videl še primer mi je @assistant_8lo pa takoj adijo ...  mi ni prav nič jasno, kam je tre@assistant_8a kej vpisat ... nrp. ime datoteke, ime spremenljivke te in one ...   Pr PHP-ju je tko, da moraš ravno vsako funkcijo pose@assistant_8ej spoznavat in jo sčasoma lahko o@assistant_8vladaš ...   Kunigas"
+    },
+    {
+        "role": "user",
+        "message": "Da ne @assistant_8o še kdo mislu, da nism nč naredu ...  - - -  $to = $dir.'/ocena.php';  /* kle vmes pride še en kup kode za galerijo, ki dela čist ql. $file so pa vse slikce v neki mapi in tole je še vedno znotraj zanke, ki ponavlja funkcijo pod vsako slikco */  require $to;  // tule mi ni čist jasno, kaj naj @assistant_8i @assistant_8ilo v oklepajih ... :( $file = unserialize ($file);  // $a_ je ocena slikce, spravljena v ocena.php - torej v $to $a_ = $a_ + 1;  // podo@assistant_8no kot pri unserialize ... :( $a_ = serialize ($a_);  // potem pa naj @assistant_8i še shranil ... pa mi vpiše na konec za \"?>\" $fp = fopen($to, \"a\"); fputs($fp, $file = $a_); fclose($fp);  - - -  Sam, sej sm reku - če mi ni kej dost jasn, pol @assistant_8o tud tisto, kar naj @assistant_8i naredu, daleč od resnice.  Kunigas"
+    },
+    {
+        "role": "user",
+        "message": "Vpisuje mi na sam konec $to in sicer i:2,  Kunigas"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user:  Ce ti je serialize prevec za dojemat, poskusi z explode() in implode().  Samo @assistant_8o tre@assistant_8a mal spremenit tok razmisljanja - ne @assistant_8os @assistant_8ral iz fajla direkt spremenljivk, ampak kot je @assistant_8lo ze nekje zgoraj omenjeno, recimo imena slik.  Pa recimo da mas v ocene.txt spravljeno v naslednjem formatu:  slika1;4;slika2;2;slika3;5  koraki so: 1) pre@assistant_8eres cel file v neko spremenljivko ($ocene_txt) HINT: fread() 2) z list($slika,$ocena) = explode(\";\",$ocene_txt) do@assistant_8is array slik in ocen 3) pri doticni sliki popravis oceno 4) z implode do@assistant_8is nazaj zgornji format s podpicji 5) vse skupaj zapises nazaj v ocene.txt HINT: fwrite()  LP, Roman"
+    },
+    {
+        "role": "assistant_5",
+        "message": "> Je pa vsekakor zanimiv fenomen, kako ljudje nočejo oddati svojega  > znanja.  Vsekakor meni ne mores reci, da nocem oddati svojega znanja... ... prej nasprotno.  Je pa razlika med podajanjem znanja in ujckanjem... Tisto kar ti je napisal x@assistant_8ite je vec kot dovolj za to kar @assistant_8i ti rad naredil. Ce si sam toliko len, da tudi tega ne mores pregledat in se mal pomatrat, potem je se tisto kar ti je povedal prevec...  To give a fish or to teach how to fish? :)  Samo to je pomem@assistant_8no... Ne pricakuj od ljudi, da @assistant_8odo delali stvari namesto te@assistant_8e... ... poleg tega, ti je nekdo rekel, da si pejdi na we@assistant_8 pogledat, pa se ti tudi to ni dalo... Hotel si kodo... :)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tole me skoraj spominja na enega pacienta, ki je delal v eni firmi kot we@assistant_8 \"programer\".  Za vsako stvar, ki je kao ni znal narediti, je prisel k meni, in hotel, da mu jo scodam v PHP-ju.  Pa to clovek naredi enkrat, pa naredi dvakrat, pol ga mas pa dovolj. Od takrat naprej sem mu povedal samo se katera funkcija (ja, ponavadi so @assistant_8ile @assistant_8uiltin) resi njegov pro@assistant_8lem. Pa to kmalu spet ni @assistant_8ilo dovolj in je hotel kodo. Kodo sem pred njim spisal (navadno tja do 10 vrst), mu povedal kako deluje in jo pred njim po@assistant_8risal. In potem je cudezno nehal hodit k meni, ker naenkrat ni vec @assistant_8il zazeljen v svoji sluz@assistant_8ici.  No wonder, s takim attitudom in leno@assistant_8o."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 \"Je pa razlika med podajanjem znanja in ujckanjem... \" Definitivno - nekako takšna kot med dnevom in nočjo - a ne da ... S tem, da se medtem, ko je pri nas tema, na drugem koncu Zelmlje sončijo.  Sej razumem, da človeki nimamo časa se še s tujimi pro@assistant_8lemi u@assistant_8adat, ampak to niti ni poanta vsega kar pišem in vam skušam dopovedat. Težava je v tem, ker smo/ste \"računalničarji\" čist preveč zagledani v neko a@assistant_8solutnost, življenje in odnosi med vsem in vsakim pa so še naj@assistant_8olj relativna zadeva, kar jih poznamo ... Verjetno v še @assistant_8olj relativnem pomenu, kot je Einstein mislil ...    Kunigas  Pax!"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni. Imam težavo. Doma imam dva računalnika.   Prvi ima vgrajeno brezžično in žično mrežno kartico, drugi samo žično NIC. Pri prvem dostopam do interneta prek brezžične povezave, drugi pa je povezan na prvega prek žične NIC in si deli povezavo z internetom prek prvega računalnika. Default gateway je 10.0.0.1, prvi računalnik ima IP 10.0.0.3, torej mu ga je dodelil router. Drugi pa ima zaradi deljene povezave IP 192.168.2.2. Žična mrežna kartica ima fiksen IP 192.168.0.1 (drugače ni delovalo) in masko 255.255.255.0.   Kar mi je čudno, je zakaj je žična mrežna kartica prvega računalnika dodelila drugemu PC-ju IP, ki je v drugem subnetu (moral bi biti 192.168.0.X ) ali?  Zakaj iz prvega ne morem pingati drugega, čeprav ga pingam z 192.168.2.2, hkrati pa lahko dostopam do datotek na tem drugem računalniku? Kako pravzaprav deluje to deljenje povezave, zakaj mora žična mrežna kartica dodeliti popolnoma drugačen IP, kot ga ima brezžična mrežna? Ali tu ne obstaja kaj podobnega kot pri virtualizaciji, kjer izbereš bridge connection in se mašina obnaša kot vsaka druga na mreži?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "kaj pa, če napišeš: ping *ime računalnika* ? a tako tudi ne deluje? recimo primer:  ping oldspice  a to ne deluje?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "windows firewall morda?  kot admin pozeni:  netsh advfirewall firewall add rule name=\"icmpv6 echo-request\" dir=in action=allow protocol=icmpv6:128,any netsh advfirewall firewall add rule name=\"icmpv4 echo-request\" dir=in action=allow protocol=icmpv4:8,any"
+    },
+    {
+        "role": "user",
+        "message": "Če ga pingam pod imenom, napiše  \"ping: cannot resolve IME_RAČUNALNIKA: Unknown host\"  Se pravi gladko on ne ve da sploh kej tazga obstaja. Hkrati pa pobira fajle dol z njega."
+    },
+    {
+        "role": "assistant_1",
+        "message": "ping = icmp  unknown host = dns issue windows file sharing je pa spet nekaj drugega...  To govorimo o MS ICSharing?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "OP Daj nariši tvojo shemo, ker si precej zakompliciral z opisom.  nekako tako se dela: https://slo-tech.com/forum/t43391/p2552...  Za začetek izklopi windows firewall. Lahko tudi da ti kakšen AV/FW program blokira.  Kateri OS-ji so nameščeni na pcjih ?   btw na katerem ipju imaš wifi router (ponavadi so na 192.168.0.1, 192.168.1.1, 192.168.2.1, 192.168.1.254) ?"
+    },
+    {
+        "role": "user",
+        "message": "Evo takole je postavljen:"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mac pc, ne moreš mrežni kartici določiti ip iz istega ranga kot ga imaš za wifi nic ?  spremeniš tako: http://omegadelta.net/2011/04/29/changi... http://hints.macworld.com/article.php?s... http://krypted.com/mac-os-x/change-subn... http://www.dummies.com/how-to/content/h...   wifi ics sharing: http://osxdaily.com/2012/01/05/enable-i...  označiš nekako tako: share your connection from: wifi  to computers using: ethernet  http://www.dummies.com/how-to/content/h... korak 3, 4"
+    },
+    {
+        "role": "user",
+        "message": "Tole sem vse v glavnem že preizkusil in ne deluje. Sicer lahko žični mrežni kartici na Macu dodelim fiksen IP v istem rangu kot ga sicer dodeljuje router. Vendar sharing prek nje potem ne deluje."
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Imam problem pri namestitvi routerja Linksys WRTG54GS.  Namreč, sledil sem namestivenem CD-ju, ki pri določeni točki preveri, če vpisani podatki veljajo (IP, gateway, subnet, dns1, dns2) .   Router se pri tej točki hoče povezati na internet, vendar napiše, da ne gre, in da na r esetiram modem, vendar vseeno ne deluje.  Ko Setup prekinem in se lotim ročnega dela v web interfac-u, vidim da ni bil vpisan gateway, in ima vrednost 0.0.0.0 . Ko ročno vpišem gateway, mi javi napako ; \"IP adress and gateway is not same subnet mask\"     Podatki ,ki sem jih dobil od operaterja so:  IP: 194.249.xx.xx subnet: 255.255.255.0 Gateway: 193.2.1.66 dns1: 193.2.1.66 dns2: 193.2.1.72  Zakaj zadeva ne deluje? Enaki podatki pa m idelajo na starem, non-wireless routerju Linksys BEFSX41 brez problema. (Web interface je identičen)  Modem: Thomson TCM420.  Lepo vas prosim za pomoč, ker se s tem jezim že 1 dan."
+    },
+    {
+        "role": "assistant_0",
+        "message": "za tvoj ip naslov in masko omrežja bi moral biti naslov usmerjevalnika 194.249.xx.yy, kjer mora biti xx tak, kot pri tvojem ip naslovu. za yy probaj vrednost 1."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Si kloniral MAC od Thomsona ?  Gateway da ima isti naslov kot dns ? Subnet Mask je pri meni (za WAN IP) 255.255.255.255"
+    },
+    {
+        "role": "user",
+        "message": "Če nastavim subnet mask na 255.255.255.255 mi javi illegal subnet mask.  Ja, gateway in dns sta ista, to je gateway od arnesa.  Kloniranje MAC-a ne reši vprašanja nekompatibilnosti gatewaya,IP-ja, ter subnet maska, error ostane.  Jini, tvoj post ne razumem. Mi prosim bolj podrobno razložiš?   Mislim, ne morem si razložit. Je to kaki bug? Če imam ISTE podatke v starem routerju, Linksys BEFSX41.   Še kakšna ideja ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jini je hotel povedati, da ce je tvoj IP naslov 194.249.83.125 potem nastavi gateway na 194.249.83.1.  Za gateway ostane tretji oktet isti kot je tvoj IP, zadnji oktet pa je 1."
+    },
+    {
+        "role": "user",
+        "message": "Zdaj dela, spremenil sem gateway na 194.249.32.1 . Čeprav ne vem zakaj, ampak ok.   Hvala vsem"
+    }
+]

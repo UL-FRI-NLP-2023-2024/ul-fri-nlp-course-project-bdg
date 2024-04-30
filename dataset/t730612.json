@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Če bo komu v pomoč ta nasvet. Ponudnik je Telekom. Iz njihovega modema gre UTP kabel najprej do routerja (TP-WR1043N) ter nato naprej na televizijo. Kar nekaj časa sem potreboval za nastavitve, katere prilagam: Slika klik  Obkljukati je potrebno Enable IPTV. Ter nato Mode: Custom Internet VLAN id: 3900 Ip-Phone VLAN id: 3998 IPTV VLAN id: 3999  IPTV VLAN priority dodamo največjo številko. Ter kabel do telekomovega BOX sprejemnika za TV priklopimo na npr. LAN4, kateri je dodeljen za IPTV.  Ostale nastavitve nisem spreminjal (nastavljeno na dinamični ip...)"
+    },
+    {
+        "role": "user",
+        "message": "Hejla, Z novim NEO box-om, te nastavitve ne delujejo več... Ima kdo idejo kaj sedaj? :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "NEO box ni več zadovoljen samo z VIDEO VLANom (VLAN id 3999), ampak je treba do njega zvleči TRUNK port, ki vsebuje vse VLAN idje. Na Telekomovi škatli se port nastavi na \"TRUNK\", kako boš to nastavil na svoji škatli, pojma nimam...  L.p., Kloko"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Menjaj 1043ND za nekaj novejšega. Odvisno sicer, kaj bi rad dosegel, v osnovi pa moraš spraviti TRUNK port čez. Tale internet VLAN ID mi sicer ni ravno jasen, ker je internet na VLANU 1. Mogoče pride do Modema po tem VLANU in je to mišljeno za direktni priklop, brez modema."
+    },
+    {
+        "role": "user",
+        "message": "Če menjam router na kaj novejšega... kaj priporočate, da bo čim manj težav z želenimi nastavitvami?  Pač modem - router(dostop do wifi) - naprej na TV, da dela NEO."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ponudnikov modem. Za vse drugo boš rabil vsaj nekaj znanja iz nastavljanja omrežja.  Na Mikrotiku kot že omenjeno gre to z lahkoto, če ga veš konfigurirati. Če rabiš AX Wifi in podobne novotarije potem Mikrotik ni zate, za vse ostalo pa je odličen.  Recimo primer, da ne bom na novo delal slik:      To in morda še par malenkosti je dovolj, da VLAN3999 gre čez Mikrotik. Ampak če boš že kupoval, kupi takega, ki ima vsaj 4 jedrni ARM, Hap AC2, AC3, Audience itd... Starejši na MIPS procesorjih so znali zakockati ob večji obremenitvi."
+    },
+    {
+        "role": "user",
+        "message": "Delo z mikrotiki mi najbolj všeč...  Razmišljal sem malo tko drugače... NEO box ima opcijo wifi, katerega ti oddaja po bližini, pa če potem tam blizu nastavim wifi extender in imam wifi še v tistem delu hiše"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Čisto po želji. Sicer mislim, da NEO oddaja samo na 5 GhZ."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Samo 5GHz in izolirano omrezje, tako da za kaj več kot brskanje zadeva ni."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tudi sam imam sedaj pri novi škatli (NEO) težave, lahko kdo bolj konkretno pove, kaj moram nastaviti? Se to na mojem routerju (TP-Link Archer C6) sploh da? Slika trenutnih nastavitev spodaj.  https://ibb.co/WKG55xj"
+    },
+    {
+        "role": "assistant_3",
+        "message": "A noben nima nasveta za mojo težavo zgoraj? Torej kako nastaviti router pred neo boxom, da tv dela?  A če dam switch pred router in potem en kabel v router, drugega v neo box, bo zadeva delala? Je spodnji ok?  https://www.mimovrste.com/stikala/tp-li..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Išči slo-tech vlan 3999 Bistvo je, da narediš VLAN 3999 - ne vem pa kako se to na tvojem naredi, (mogoče je to tole: https://www.tp-link.com/us/support/faq/..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "a ni internt vlan 1? Malo se poigraj, ti bo že ratalo ali pa ne. na modemu imaš naštiman port na Trunk?, kater gre pol na router - wan. Probi obkljukat 802.1Q Tag in priority pust default."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_3 je 15. jul 2022 ob 08:14 izjavil:A noben nima nasveta za mojo težavo zgoraj? Torej kako nastaviti router pred neo boxom, da tv dela?  A če dam switch pred router in potem en kabel v router, drugega v neo box, bo zadeva delala? Je spodnji ok?  https://www.mimovrste.com/stikala/tp-li...   Glaven thread glede nastavitev za NEO najdeš tukaj, kjer sem se jaz spraševal isto. Meni ni uspelo drugače, kot, da sem nabavil tale router za 30€, kar je za moje potrebe čisto dovolj. Ima OpenWRT in LuCI web interface, ki je pomojem dosti bolj prijazen običajnim uporabnikom kot Mikrotik. Kaj in kako bolj točno je potrebno nastaviti, da NEO deluje, pa lahko vidiš na sliki v tem, tem, ali tem postu."
+    },
+    {
+        "role": "assistant_1",
+        "message": "OpenWRT ni ravno neki biser prijaznosti, tako kot tudi Mikrotik ni. Ampak za osnovno delovanje TVja čez Mikrotik niti ne rabiš kaj dosti nastavitev."
+    }
+]

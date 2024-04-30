@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,   delam na projektu, pri katerem zajamem sliko konektorja z 10-timi barvnimi vodniki.Slika na naslednji povezavi:    Slika konektorjaveril pravilno zaporedje vodnikov - torej pravilno zaporedje barv.   Reference s podobnega področja, ki jim želim slediti :     nullZanima me ali ima kdorkoli kakršnekoli predloge za sestavo algoritma detekcije pravilne sekvence barv? Vsakršni predlogi, ideje, viri so dobrodošli!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V bistvu je težko dati boljše nasvete kot članek, ki si ga sam linkal. Cel postop je tam detajno opisal, še celo s pseudokodom."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Poizkusi z OpenCV  http://www.pyimagesearch.com/2014/08/04..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovor obema.   Težavo imam ker so si barve po RGB vrednostih zelo podobne in jih težko razločim med sabo. Pretvoril sem barve tudi v HSV formate in še vedno razlika med njimi premajhna.   @assistant_0 : znaš mogoče pojasniti pseudokodo iz predlaganega članka? kako bi se lotil ti algoritma? Ker gre za machine learning, je verjetno algoritem precej kompliciran (govorim zase,ker sem začentik)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Niso si ravno podobne (razen če sta na sliki 2 dejansko različna odtenka barv rdeče, rumene, črne... potem good luck ). Morda dobiš podobne barve, če računaš povprečno barvo celotne regije - potem verjetno dobiš nek zmazek. Mediana, o kateri je govora tudi v članku, bi bila boljša.  @assistant_0 : znaš mogoče pojasniti pseudokodo iz predlaganega članka? kako bi se lotil ti algoritma? Ker gre za machine learning, je verjetno algoritem precej kompliciran (govorim zase,ker sem začentik). Težko boljše, kot je v članku (pa tudi nimam toliko časa, da bi spisal par A4 strani slovenskega prevoda). Ja, je kar kompliciran postopek, ker bi naj bil robusten. Imaš 2 možnosti: ali implementiraš tako kot je opisano v članku - dobil boš verjetno najboljše rezultate, ali pa si stvari poenostaviš ampak boš dobil malo slabše rezultate.  precej poenostavljen pristop bi bil recimo: - segmentacija (izločitev ROI - kablov): oni uporabljajo referenčno sliko ozadja. To fajn, če jo maš, potrebuješ pa fiksno kamero, fiksno ozadje in nek pričakovan položaj konektorja... to je vse napisano v članku.  - izračunaj reprezentativno vrednost vsake regije - npr. RGB/HSV mediano  - klasificiraj to vrednost. Tu lahko uporabiš strojno učenje (npr. nearest neighbour, nevronska mreža), če se sam nočeš hecat z določanjem pragov. Hint: OpenCV ma KNN že implementiran.  Zaporedje barv je potem torej zaporedje klasificiranih vrednosti reprezentativnih vrednosti vsake regije, pri čemer so regije urejene (verjetno po X osi)."
+    },
+    {
+        "role": "user",
+        "message": "Najlepša hvala za super informacije.   Kar se tiče določevanja pragov (3. alineja)... zakaj bi sploh želel za določevanje pragov uporabiti strojno učenje? Predstavljam si, da po izračunu mediane na določenem območju slike dobimo pač neko vrednost (npr. za rdečo 244, za modro 280...) in nato določim prag med rdečo in modro nekje 260?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "S strojnim ucenjem bos dolocil optimalen prag (kjer optimalen pomeni razlicne stvari, glede na metodo, ki jo uporabis) in avtomatsko. V tvojem enostavnem primeru bi verjetno slo tudi z rocnim nastajanjem thresholdov, se sploh ce si v kontroliranem okolju (isti pogoji na sliki, predvsem kar se tice osvetlitve). Na mobitelu mi ne pokaze slike, tako da ti tezko vec povem, mogoce mi uspe zvecer ali jutri pogledat"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Samo se ena ideja... Verjetno bi lahko izboljsal obcutljivost ce bi z eno RGB led diodo (lahko osvetlis s katero koli barvo) osvetlil konektor in naredil izracune pri razlicnih barvah svetlobe, ki pade na konektor."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 18. maj 2017 ob 09:20 izjavil:Kar se tiče določevanja pragov (3. alineja)... zakaj bi sploh želel za določevanje pragov uporabiti strojno učenje? Predstavljam si, da po izračunu mediane na določenem območju slike dobimo pač neko vrednost (npr. za rdečo 244, za modro 280...) in nato določim prag med rdečo in modro nekje 260?   Ti imaš 3-kanalno sliko. Verjetno boš dobil 3 dimenzionalno mediano (mediana vsakega kanala), razen če boš telovadil s kakimi IR^3 --> IR preslikavami.  Ročno nastavljanje praga (klasifikacije) pri 3 dimenzijah je nerodna reč, ki jo dobro reši strojno učenje."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ce imas ponovljive pogoje, tole izgleda precej enostavno. Meni izgleda, kot da bi pretvorba v HSV zadoscala in potem bele in crne locis od ostalih glede na value komponento in barve glede na hue. Kako pa dolocis barve posameznih zic (kako dolocis podrocje posamezne zice in kako iz tega potem dolocis barvo)?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Še ena eksperimentalna ideja za spopadanje z različnimi tipi osvetlitev (poleg pretvorbe v HSV): namesto absolutnih vrednosti pikslov lahko gledaš razlike med njimi. Slabo osvetljena rdeča lahko ima enak value kot bolje osvetljena rjava. Bo pa v enaki svetlobi rjava mela manjši value od rdeče. Če lahko zagotoviš konstantno osvetlitev (recimo preverjanje na tekočem traku v tovarni) potem se z tem ne rabiš ukvarjat. Če bi rad mel app na telefonu, ki ga uporabljajo delavci na terenu, potem bo osvetlitev in razpoznava barv velik problem. Lahko pogledaš tudi algoritme za barvno vztrajnost oz. barvno kalibriranje. Na koncu ugotoviš, da je vse skupaj \"igranje\" z izbiro značilnic - podatkov ki jih uporabiš za klasifikacijo. Pri tem pride prav strojno učenje, ker lahko spremeniš vhodne podatke (namesto barv žic gledaš razlike med njimi) in ne rabiš ročno nastavljat novih pragov ampak samo ponoviš postopek učenja ter preveriš uspešnost. Za strojno učenje boš rabil učno in testno množico - v praksi torej kup slik s pravilno in nepravilno razvrščenimi slikami."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_3 je 18. maj 2017 ob 13:33 izjavil:Še ena eksperimentalna ideja za spopadanje z različnimi tipi osvetlitev (poleg pretvorbe v HSV): namesto absolutnih vrednosti pikslov lahko gledaš razlike med njimi. Slabo osvetljena rdeča lahko ima enak value kot bolje osvetljena rjava. Bo pa v enaki svetlobi rjava mela manjši value od rdeče. Če lahko zagotoviš konstantno osvetlitev (recimo preverjanje na tekočem traku v tovarni) potem se z tem ne rabiš ukvarjat. Če bi rad mel app na telefonu, ki ga uporabljajo delavci na terenu, potem bo osvetlitev in razpoznava barv velik problem. Lahko pogledaš tudi algoritme za barvno vztrajnost oz. barvno kalibriranje. Na koncu ugotoviš, da je vse skupaj \"igranje\" z izbiro značilnic - podatkov ki jih uporabiš za klasifikacijo. Pri tem pride prav strojno učenje, ker lahko spremeniš vhodne podatke (namesto barv žic gledaš razlike med njimi) in ne rabiš ročno nastavljat novih pragov ampak samo ponoviš postopek učenja ter preveriš uspešnost. Za strojno učenje boš rabil učno in testno množico - v praksi torej kup slik s pravilno in nepravilno razvrščenimi slikami.   tehnicno gledano ce z rdeco svetlobo posvetis bos videl samo rdece crte. Se pravi se bo dobro dalo lociti rdeco od ostalih. Ubistvu ce ves da bodo barve zic vedno iste samo preveris da je pozicija prava. Lahko z RGB diodo posvetis z barvo, ki jo isces in z OpenCV pogledas kje najde zice. Iz tega potem zracunas lego in ali je prava ali ni.  Samo kot je ze bilo receno. Mogoce z nevronsko mrezo, ki jo naucis barve zic tole se najlazje resit.  A imas vec teh fotorgrafij, ki bi jih lahko poslal ali kam UL? Sam se ravno igram z nevronskimi mrezami in cuDNN. Pa bi bil tole dober problem za resit poleg ucenja. p.s. Zadnje vprasanje je za avtorja teme :)"
+    },
+    {
+        "role": "user",
+        "message": "Lepo se zahvaljujem vsem za odlične informacije in ideje.   @assistant_1 tvoj pristop z nevronskimi mrežami me zelo zanima. Zanima me koliko \"Training Sample-ov\" potrebuješ za učenje algoritma? Nam lahko zaupaš svoj pristop, pseudo kodo, ali celo kodo? Sam nisem še nikoli implementiral \"Machine Learning\" v svoje aplikacije in je to zame relativno novo področje. Super bi bilo, da bi se na podlagi trenutnega problema naučil to uporabljati in preizkusil kar na konkretnem primeru...  Drugače pa različni tipi osvetlitev žal ne pridejo v poštev. Osvetlil bi z difuzno (belo - 5000K) LED svetlobo celoten konektor. Konektorji so relativno na vedno enakih mestih (kot je v članku, ki sem, ga prilepil v prvem postu).   Lepo se imejte!!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 19. maj 2017 ob 15:28 izjavil:Lepo se zahvaljujem vsem za odlične informacije in ideje.   @assistant_1 tvoj pristop z nevronskimi mrežami me zelo zanima. Zanima me koliko \"Training Sample-ov\" potrebuješ za učenje algoritma? Nam lahko zaupaš svoj pristop, pseudo kodo, ali celo kodo? Sam nisem še nikoli implementiral \"Machine Learning\" v svoje aplikacije in je to zame relativno novo področje. Super bi bilo, da bi se na podlagi trenutnega problema naučil to uporabljati in preizkusil kar na konkretnem primeru...  Drugače pa različni tipi osvetlitev žal ne pridejo v poštev. Osvetlil bi z difuzno (belo - 5000K) LED svetlobo celoten konektor. Konektorji so relativno na vedno enakih mestih (kot je v članku, ki sem, ga prilepil v prvem postu).   Lepo se imejte!!   Do sedaj tudi sam se nisem nic delal z nevronskimi mrezami. Se pa enako strinjam da bi bil zanimiv projekt za ucenje. Tako, da ce lahko delis slike konektorjev ti lahko potem dam samo nevronsko mrezo. Koliko podatkov rabis je odvisno. Vec kot jih imas za ucenje boljse je in visja bo stopnja zanesljivosti.   Naceloma kako zadeva deluje je na v digits naredis katalog slik. Vsaka direktorij ima tag kjer so razlicne slike za ucenje tega tag-a. Torej v tvojem primeru bi imel en direktorij za vsako barvo. rabis slike male velikosti, tipicno 28x28 pixelov (nope, nisem se zatipkal). S katerimi ucis mrezo. Ko imas mrezo nauceno ji lahko posiljas potem 28x28 slike in ti pove barvo ce jo prepozna.  Predstavljam si tako, da svojo sliko razrezes v 28x28 kvadrate, ki jih potem nevronska mreza ovrednoti. Mogoce pa imas ze funkcije, ki ti ze vrnejo lokacije na sliki, ki ustrezajo barvam. Ne vem. Nisem se tako dalec. Do sedaj sem se samo igral z izdelavo katalogov. In imam sedaj namensko Ubuntu masino z dvema nVidia karticama tako, da bi moralo iti hitreje kot prej :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Po mojem mnenju nevronske mreze za ta enostaven primer niti niso potrebne. Jaz bi uporabil SVM ali multiclass logistic regression (aka softmax). Stevilo classov bo enako stevilu moznih barv. Ce bos direktno sel implementirat za iskanje zaporedja, se zna mogoce mal zakomplicirat (ni pa nujno, mogoce multilabel verzija za katero izmed machine learning metod pocne to, bi moral pogledat). Tako kot je rekel red mamba, vec kot je training samplov, bolje je. Ce pridobivanje le teh ni drago (oz. zamudno), potem cim vec. Lahko pa uporabis se kaksno kombinacijo supervised in unsupervised learning, tukaj bi znal active learning zlo fajn delat (probas s cim manj dela vse sample labelirat). Jaz bi se tega lotil tako, da bi locil vsako zico posebej (segmentacija tistega dela slike, ki vsebuje zice), potem bi pa v najbolj enostavnem primeru samo naredil skripto, za katero bi bil input zica in bi ti pritisnil tipko za labelo (npr. rdeca = 0, rumena = 1, ...). Ko koncas in zacnes trenirat tvoj classifier, je pomembno da locis podatke na training in test set. Odvisno od stevila podatkov v training setu in stevila featurejev, bos moral mogoce uporabit regularizacijo (v tem primeru uporabi cross validation za dolocitev regularization parametra). Treba bo se pomislit kako naredit feature extraction (tukaj se lahko precej igras, nekaj idej: povprecna vrednost, mediana, std h, s, v komponent, ...). Ce se bos zacel z nevronskimi mrezami igrat, bos moral dolocit arhitekturo nevronske mreze in funkcijo posameznega layerja. Super stvar uporabe neural netsov je, da ne rabis eksplicitno delat feature extractiona (to se mreza nauci, med training stage-om). Bos pa tudi v tem primeru moral razmislit, kaj sploh so tvoji podatki. Se ena stvar, ki govori v prid uporabi klasifikacije posamezne barve, namesto direktno kombinacije barv - pomisli, koliko je stevilo moznih barv in koliko je stevilo moznih kombinacij barv."
+    },
+    {
+        "role": "user",
+        "message": "justdoit : Hvala lepa za info in napotke. Uporaba Support Vector Machine-a je zame povsem nova, zato bom preštudiral zadeve in se javim.   V članku, ki sem ga priložil ni točno podano kateri način \"Self-learninga\" je bil uporabljen. Ima kdo mogoče kakšno idejo kaj je avtor uporabil?"
+    }
+]

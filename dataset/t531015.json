@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo!  V podjetju, kjer sem zaposlen, imajo vsi računalniki tak IP: 10.8.XXX.YYY (XXX je za vse enak, YYY se razlikuje glede na računalnik). Iz katerega koli računalnika lahko zaposleni dostopamo do katerega koli - seveda če poznaš geslo. Podjetje ima poslovalnico še v MB, vendar imajo tam računalniki IP v obliki 10.9.AAA.BBB (AAA je za vse enak, BBB se razlikuje glede na računalnik). Ne glede na to, v katerem kraju sem, lahko dostopam do vseh računalnikov, ki so del podjetja. Ne razumem kako je to mogoče, glede na to, da računalniki niso povezani na isti usmerjevalnik - kako le, če je sedež podjetja v LJ, poslovalnica pa v MB. Bi mi lahko kdo to razložil?  Sprašujem zato, ker bi nekaj takega rad postavil za domačo uporabo. Doma imam 2 računalnika, ki sta priključena na usmerjevalnik A. V kraju kjer delam, imam 2 računalnika, ki so (verjetno) povezani na usmerjevalnik B (usmerjevalnika ne vidim, računalnik je priključen neposredno v vtičnico v steni). Kako bi zdaj lahko iz nekega računalnika, ki je na usmerjevalniku A dostopal (na primer ping) do računalnika, ki je na usmerjevalniku B?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lokalni mreži sta očitno povezani v VPN (to je torej ključna beseda, po kateri boš iskal za rešitev tvojega problema), implementacij le tega pa je malo morje (na različnih nivojih omrežnega protokola) in se iz podanega ne da uganiti.  Za tvojo rešitev bi ti za začetek priporočil OpenVPN, ki je sorazmerno enostaven za nastaviti, brezplačen in na voljo za vse mainstream OS. Če sta tista dva računalnika v kraju dela slučajno v firmi, se pa pred kakršnimkoli povezovanjem še pogovori z administratorjem, da ne bo pozneje problemov."
+    },
+    {
+        "role": "user",
+        "message": "A tako to gre. Čudno mi je bilo samo tole, kako se računalniki lahko pingajo in vidijo, kot da so priključeni le na en usmerjevalnik. Računalniki v podjetju nimajo nobene veze z mojimi - to sem uporabil le za primer, tako da administrator nima nič s tem.  Sedaj pa še eno vprašanje. V podjetju imamo le desktop računalnike, tako da ven iz podjetja ne morejo, zato ni problemov. Jaz pa imam recimo prenosni računalnik (wireless povezava) in ga včasih vzamem kam na teren - hočem reči, računalnik ni vedno v enem omrežju, ampak ga lahko odnesem nekam drugam in tako postane del nekega drugega omrežja. A v tem primeru VPN tudi deluje?  Kako pa je z nastavitvami usmerjevalnikov za VPN? A moram prej nastavit kakšen port forwarding ali kaj podobnega? Sprašujem zato, ker usmerjevalnik lahko spreminjam le doma, tukaj (v kraju kjer delam) pa nimam dostopa do usmerjevalnika. A bi moral še kaj vedet, preden se lotim postavitve?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Oba usmerjevalnika VPN morata imeti fiksen in globalen IP naslov (ne sme se začeti z 10 ali 192) in pri nastavitvah VPN moraš največkrat na obeh straneh vnesti oba.  Ko si na terenu, to žal ne bo funkcioniralo (skoraj zmeraj boš v gostujoči mreži dobil le lokalen IP). Pri IPv6 so si sicer zamislili t.i. mobilni IP naslov, ki potuje s tabo (podobno kot mobilni telefon, ko se v tujini priključiš na drugo omrežje, si dosegljiv na svoji običajni številki). Ta mobilni IP morata podpirati tvoj ISP in gostujoče omrežje, ampak večina javnih wireless točk dandanes ne podpira niti IPv6, kaj šele mobilni IP.  Da obideš te omejitve, je varianta, da na nekem fiksnem strežniku postaviš SSH strežnik in se nanj od praktično koderkoli povezuješ s SSH odjemalcem, kjer nastaviš t.i. port forwarding (oz. port redirection). To je zelo ohlapna oblika VPN (nekateri ji pravijo tudi \"poor man's VPN\"), vsako želeno posredovanje (za vsak port) moraš nastaviti posebej in deluje le za TCP povezave, ping torej ne bo deloval. In svojih programov ne usmerjaš direktno na ciljni strežnik temveč na posredovani port na svoji mašini.  Varianta je tudi, da se z neko implementacijo remote desktopa (spet jih je na voljo malo morje) povežeš na neko fiksno mašino in vse programe poganjaš kar na njej."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kot je že @assistant_0 povedal - v podjetju imate VPN povezavo med oddaljenima lokacijama.  Po tehnični plati skoraj zagotovo ni zadržkov, da se nebi dalo na nek način vzpostaviti še dodatno VPN povezavo z domačim omrežjem - tak pristop uporabljajo mnoga podjetja, ki imajo trgovske potnike ali omogočajo zaposlenim delo od doma.  VENDAR - se gre v zgoraj navedenih primerih za povezave z 'zaupanja vrednimi' oddaljenimi točkami oz. lokacijami. Kadar se omogoči delo od doma, se recimo dovoljuje dostop izključno za službeni prenosnik, ne pa tudi za ostale računalnike na domačem omrežju. Nekatere bolj 'high end' variante celo pred vzpostavitvijo povezave preverijo ali je antivirus nameščen, posodobljen in kdaj se je izvedel zadnji AV scan.  Brez dovoljenja admina/poslovodstva karkoli čarati na tem področju ima lahko hude posledice - lahko tudi ostaneš brez službe. Če obstaja interes podjetja, da imaš VPN povezavo do domačega računalnika (npr. za prenašanje podatkov, ki si jih doma pripravil), potem se bo dalo kaj dogovoriti - drugače pa bo težka. Noben resen admin ne bo želel na svojem omrežju naprav oz. računalnikov, ki jih nima pod nadzorom, saj koneckoncev odgovarja za varnost omrežja.  Drugače pa moraš ločiti dva osnovna tipa VPN povezav: mreža-mreža in računalnik-mreža.  Resno dvomim, da bi se lahko dogovoril za povezavo mreža-mreža. Za kaj takega bi morali obstajati zares tehtni razlogi.  Varianta računalnik-mreža se pa včasih da dogovoriti - seveda če obstaja poslovni interes. V tem primeru si doma postaviš VPN strežnik, ki mu lahko od koderkoli (ne le iz službe) dostopaš in te potem poveže z računalniki na tvojem omrežju. V ta namen se ponavadi namesti/skonfigurira ustrezni VPN klient na prenosnik, tablico, pametni telefon."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 -ne bo čisto držalo.   Jaz imam lahko gateway (VPN strežnik) na dinamični IP številki, urediti moram le dyndns, da bo stvar delovala. Klient (prenosnik) pa je lahko kjerkoli, tudi na nekem naslovu z 192.168.x.x ali 10.x.x.x, pa se lahko povežem, če požarna pregrada na tisti lokaciji to dovoljuje. RDP je pa strogo za odsvetovati (ravnokar so spet krpali neke luknje v RDP). Jaz ga uporabljam izključno preko VPN."
+    },
+    {
+        "role": "user",
+        "message": "Sem pregledal še par tutorialov in mislim da razumem. Namen imam zadevo še v praksi izvesti in testirati, pa bom videl kako se bo obneslo. Sedaj me pa še nekaj zanima. A se da kako preko CMD nastavit forwardiranje portov na usmerjevalniku? Kako to naredim? Torej, v CMD bi vpisal ukaz in ko v brskalnik vpisal IP usmerjevalnika in pogledal v meni port-forwarding, bi tam videl spremembo - nastavljen port."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ta reč bo malo težavnejša.... pa tudi odvisno od tega, kaj razumeš pod CMD.  Nekateri routerji/požarne pregrade omogočajo dostop preko ssh (bolj resno - varno) ali telnet (se v resnih rešitvah ne uporablja) protokola, s čemer dobiš dostop do Command Line Interface-a (CLI).  Pri bolj preprostih routerjih, nadgrajenimi z dd-wrt ali drugimi Linux inkarnacijami se povežeš na Linux shell, kjer lahko izvajaš konfiguracijske posege.  Pri malo resnejših požarnih pregradah pa nimaš dostopa do shell-a, ampak te ob prijavi pričaka namenski CLI, ki je namenjen izključno upravljanju požarne pregrade, ne omogoča pa posegov na sistemski nivo (zaradi zagotavljanja integritete sistema).  Tako v eni, kot v drugi varianti imaš na voljo ukaze/orodja, s katerimi lahko ponastavljaš vse bistvene elemente, tudi port forwarding.  Tako telnet, kot ssh povezave se lahko izvaja v CMD oknu, vendar večina uporabnikov koristi malo naprednejše terminalske emulacije, od zastonjskega Putty emulatorja, pa do dokaj drage profesionalne Reflection terminalske emulacije. Obe emulaciji omogočata pisanje skript, pri čemur se moraš pri Putty malo bolj potruditi (namestiti dodatne komponente), medtem ko Reflection že pride z vgrajenim Visual Basic For Applications (VBA) in script recorderjem (ti pokažeš, on naredi VBA skripto). Tako lahko avtomatiziraš različne administrativne posege krepko iznad nivoja, ki bi ti ga omogočil CMD."
+    },
+    {
+        "role": "assistant_2",
+        "message": "A se da kako preko CMD nastavit forwardiranje portov na usmerjevalniku? Cisco poslovni routerji uporabljajo CLI.Kje bi nastavljal forwardiranje portov ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zdravo. Eno vprašanje za katero dvomim da je rešitev. Rad bi dostopal do svojega računalnika iz nekega drugega omrežja. Za remote desktop vem. Tam samo vpišeš zunanji ip in port.  Jaz pa bi rad dostopal samo do datotek in map. Na primer v domačem omrežju jaz vpišem ip računalnika\\c$ in pridem do vseh datotek in map. Kaj moram storiti, da bi tako dostopal iz drugih omrežji?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Narediš VPN tunel do tvojega domačega routerja (router mora podpirati VPN - če imaš dd-wrt, je to že vključeno). Potem ko si povezan preko VPN-ja, pa je isto kot če si v lokalnem omrežju."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 15. avg 2012 ob 20:26 izjavil:Zdravo!  V podjetju, kjer sem zaposlen, imajo vsi računalniki tak IP: 10.8.XXX.YYY (XXX je za vse enak, YYY se razlikuje glede na računalnik). Iz katerega koli računalnika lahko zaposleni dostopamo do katerega koli - seveda če poznaš geslo. Podjetje ima poslovalnico še v MB, vendar imajo tam računalniki IP v obliki 10.9.AAA.BBB (AAA je za vse enak, BBB se razlikuje glede na računalnik). Ne glede na to, v katerem kraju sem, lahko dostopam do vseh računalnikov, ki so del podjetja. Ne razumem kako je to mogoče, glede na to, da računalniki niso povezani na isti usmerjevalnik - kako le, če je sedež podjetja v LJ, poslovalnica pa v MB. Bi mi lahko kdo to razložil?  Sprašujem zato, ker bi nekaj takega rad postavil za domačo uporabo. Doma imam 2 računalnika, ki sta priključena na usmerjevalnik A. V kraju kjer delam, imam 2 računalnika, ki so (verjetno) povezani na usmerjevalnik B (usmerjevalnika ne vidim, računalnik je priključen neposredno v vtičnico v steni). Kako bi zdaj lahko iz nekega računalnika, ki je na usmerjevalniku A dostopal (na primer ping) do računalnika, ki je na usmerjevalniku B?    Med lokacijami je verjetno MPLS."
+    },
+    {
+        "role": "assistant_3",
+        "message": "A to velja enako tudi za skupno rabo?"
+    }
+]

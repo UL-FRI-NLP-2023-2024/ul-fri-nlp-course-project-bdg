@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  prosil bi za pomoč, saj v zadevi popolnoma nov. Torej ideja je narediti email (kasneje tudi osnovno spletno stran) na Google Apps, pri čemer bi želeli uporabljati .si domeno.  Google baje zahteva,da se v dokaz lastništva domene nek fajl uploada na server. Težava je, da bi kupil le domeno, brez gostovanja, zato ne vem kako to dokazat. Gostovanje bi bilo namreč pri googlu, ki je prosto in tudi preprosto za uporabo (verjetno tudi zanesljivo).  Prosil bi torej za naslednje: - kje se izplača registrirati domeno (videl sem,da je ponudnikov ogromno); - (kako je s podaljšanjem domene - je rizik, da ti domeno kdo prevzame, ali te registrator obvesti in ponudi podaljšanj) - kako zadevo speljat, da bo delal mail in spletna stran preko google apps; (videl sem, da so potrebne MX nastavitve, pa mi ni niti povsem jasno kje jih nastavljaš).  Hvala za pomoč. Verjamem, da bo tak kratek guide pomagal še kakšnemu uporabniku.  Lp!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Domeno pač registriraš pri najecenejšem ponudniku, je pa fajn da ima tudi zastonj dns gostovanje da lahko upravljaš z DNSji kar tam.  Za spletno stran nevem, a za mail ni nujno da dokažeš z datotekami na spletnem strežniku. Koliko vem lahko daš nek A record na dns server."
+    },
+    {
+        "role": "user",
+        "message": "Ali je možno domeno brezplačno prenesti k drugemu, če mi recimo ukinejo brezplačno dns gostovanje?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ja seveda saj sam nastavis katere dns strežnike uporabljaš. Jaz sem že kar nekaj mailov \"postavil\" preko google apps. Pošlji zs ali pa email pa če rabiš pomoč ni problema :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": ".si domeno registriraj pri slo ponudniku (recimo spletnabeceda), dobil bol account za urejanje nastavitev (dns, MX records, etc). Pred potekom te vsak normalen ponudnik obvesti. Spletno stran naredi na Googlu če že nočeš gostovanja plačat. Pol ustvari google apps account (free), vsa navodila za a in mx records boš dobil tam.  Prenašat domene ti ne bo treba, ker ti accounta ne ukinejo kr tak z aktivno domeno. Razen če so šalabajzerji."
+    },
+    {
+        "role": "user",
+        "message": "A lahko iz vaših izkušenj svetujete še ponudnika, ki mi bo omogočal account za urejanje nastavitev (DNS, MX..), ter, ki ni \"šalabajzer\" :) Aja, pa verjetno mora omogočat tudi upload tiste datoteke, da bo delala spletna stran na google apps.  hvala vsem!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "tisto datoteko za katero vstrajaš da se mora uploadat, boš itaq ti uploadal tam kjer boš mel page. Registrator domene je samo posrednik do fizične lokacije datotek aka gostovanje."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Upload tiste datoteke ne rabiš, ker lahko to storiš tudi z DNS zapisom.  Da jaz vem, da imajo brezplačen DNS so  Hitrost Siel, samo zanje ne vem, če imajo online registracijo domen Zabec.net"
+    },
+    {
+        "role": "user",
+        "message": "Vse deluje. Če bo kdo v podobni situaciji: - registriraš domeno .si (jaz sem šel na žabec.net ker nudijo brezplačno DNS gostovanje. moja izkušnja z njimi je res dobra, so zelo odzivni in priskočijo na pomoč - kar je, če s tem nimaš nobenih izkušenj, zelo hvalevredno!) - ustvariš google apps račun za to domeno - najprej moraš potrditi, da je domena tvoja - zdaj je upload fajla zamenjan (kot pravi DC) z zmožnostjo, da v DNS zapis (to storiš preko svojega ponudnika (torej v mojem primeru zabec.net)) zapises nek niz, ki ti ga da google - traja nekaj ur,da zadeva deluje (osvezevanje streznikov) - slediš navodilom na google apps in usvaris potrebne uporabnike, mail, itd... - ce zelis dostop na mail na naslovu \"mail.domena.si\", moras tudi nastavit \"CNAME ZAPIS\" in sicer \"mail ghs.google.com.\" (pazi piko na koncu!) podobno za www.  upam, da bo to komu pomagalo. vem, da vam je vecini tukaj to zelo enostavno,a ce prvic delas je kar veliko novega.  lp!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če si drznem izposoditi to temo: tudi jaz sem nekaj mesecev nazaj prešel na Google Apps, ki je načeloma super stvar, vendar se sedaj srečujem z enim zelo motečim problemom, ki ga ne znam odpraviti. In sicer v določenih primerih, ko hočem mejl poslati iz računa na Google Apps pač nekomu, dobim 'Delivery Status Notification (Failure)' povratni mejl, z vsebino:  Delivery to the following recipient failed permanently:  imepriimek@gmail.com  Technical details of permanent failure: Message rejected. See http://mail.google.com/support/bin/answ... for more information. Ker uporabljam spletno trgovino, se v določenih primerih tudi avtomatsko pošljejo recimo 3 mejli nekemu naslovniku v razmeroma kratkem času, in takrat skoraj sigurno dobim ta povratni mejl, da pošta ni bila dostavljena ... Očitno so tu na delu SPAM filtri, kateri vsi vemo da ne delujejo ravno s 100% zanesljivostjo. Torej kako se lahko rešiti tega problema, da bodo moji mejli sigurno dostavljeni? Hvala za pomoč!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_3, mislim, da google omogoča vklop DKIM podpisovanja pošte, prav tako pa je fajn imeti SPF zapis za domeno... oboje vključi, tisti tvoji aplikaciji, ki pošto pošilja, pa dopovej, naj pošilja sporočila preko googlovega smtp strežnika, obenem pa moraš imeti vključeno šifriranje povezave (ssl/tls) ter smtp avtentikacijo oz. preverjanje pristnosti po slovensko."
+    }
+]

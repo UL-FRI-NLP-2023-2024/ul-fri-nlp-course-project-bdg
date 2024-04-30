@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Kako naj nastavim ipje in maske na routerju in ostalih , da bo stvar delovala.  Sprva sem stvari nastavil tako:  ROUTER OSTALI RAČUNALNIKI 164.8.210.89 (255.255.254.0) ------ internet 192.168.0.1 (255.255.255.0) ----------------------192.168.0.2 (255.255.255.0) 192.168.0.10 (255.255.255.0) ----------------------192.168.0.11 (255.255.255.0) 192.168.0.20 (255.255.255.0) ----------------------192.168.0.21 (255.255.255.0) 192.168.0.30 (255.255.255.0) ----------------------192.168.0.31 (255.255.255.0) 192.168.0.40 (255.255.255.0) ----------------------192.168.0.41 (255.255.255.0)   Stvar ni delovala.  Po nasvetu kolega sem stvari nastavil takole:  ROUTER OSTALI RAČUNALNIKI 164.8.210.89 (255.255.254.0) ------ internet 192.168.0.1 (255.255.255.0) ----------------------192.168.0.2 (255.255.255.0) 10.1.0.1 (255.255.0.0) ----------------------10.1.0.2 (255.255.0.0) 11.0.0.1 (255.0.0.0) ----------------------11.0.0.2 (255.0.0.0) ? ? ? ---------------------- ? ? ? ? ? ? ---------------------- ? ? ?   Sedaj deluje, vendar ne vem kako naj stari nastavim za računalnika, kjer so zgoraj vprašaji."
+    },
+    {
+        "role": "assistant_0",
+        "message": "A to je en router in 5 mrež, ki so povezane v router? Vsaka mreža pa vsebuje 2 računalnika?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "1. mreža za 13 računalnikov... Prehod: 192.168.0.1 Računalniki: 192.168.0.2 ... 192.168.0.14 Broadcast: 192.168.0.15 Maska: 255.255.255.240 Omrežje: 192.168.0.0/28   2. mreža za 13 računalnikov... Prehod: 192.168.0.17 Računalniki: 192.168.0.18 ... 192.168.0.30 Broadcast: 192.168.0.31 Maska: 255.255.255.240 Omrežje: 192.168.0.16/28  ... Je v redu?"
+    },
+    {
+        "role": "user",
+        "message": "Se opravičujem za nepopolno razlago in slabe slike, slo-tech očitno briše presledke, zato se malo bolj čudno vidi. Da malo bolje razložim: Imam 1 računalnik router, v katerem sem 1 mrežno kartico povezal na internet, ostale pa z cross-over kablom na druge računalnike. Nastavitve kartic na routerju so na levi strani, za ostale računalnike pa na desni."
+    },
+    {
+        "role": "assistant_0",
+        "message": "1. mreža za 1 računalnik... Prehod: 192.168.0.1 <- na tistem računalniku, kjer je več mrežnih Računalnik: 192.168.0.2 Broadcast: 192.168.0.3 Maska: 255.255.255.252 Omrežje: 192.168.0.0/30   2. mreža za 1 računalnik... Prehod: 192.168.0.5 Računalnik: 192.168.0.6 Broadcast: 192.168.0.7 Maska: 255.255.255.252 Omrežje: 192.168.0.4/30   3. mreža za 1 računalnik... Prehod: 192.168.0.9 Računalnik: 192.168.0.10 Broadcast: 192.168.0.11 Maska: 255.255.255.252 Omrežje: 192.168.0.8/30   4. mreža za 1 računalnik... Prehod: 192.168.0.13 Računalnik: 192.168.0.14 Broadcast: 192.168.0.15 Maska: 255.255.255.252 Omrežje: 192.168.0.12/30   5. mreža za 1 računalnik... Prehod: 192.168.0.17 Računalnik: 192.168.0.18 Broadcast: 192.168.0.19 Maska: 255.255.255.252 Omrežje: 192.168.0.16/30"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Torej po tvoje:  GATEWAY ... PC 192.168.0.1 ... 192.168.0.2 192.168.0.5 ... 192.168.0.6 192.168.0.9 ... 192.168.0.10 192.168.0.13 ... 192.168.0.14 192.168.0.17 ... 192.168.0.18  Omrežna maska je 255.255.255.252  Upam, da bo.   Druga rešitev: kupi switch."
+    },
+    {
+        "role": "user",
+        "message": "Nekaj takega sem najprej nastavil, s tem da sem dal masko na 255.255.255.0. Bom poskusil še z 255.255.255.252. Najlepša hvala za pomoč pa se čujemo, ko naštimam."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če imaš na gw linux, ni treba kupiti switcha. Nainštaliraj/skonfiguriraj switch"
+    },
+    {
+        "role": "assistant_2",
+        "message": "1. Tale maska mi ni jasna: 164.8.210.89 (255.255.254.0) ------ internet A to celo klaso IPjev furas v internet? Po tej maski sodec kar 512 IPjev.  2. Taka mreza kot jo imas sedaj z masko 255.255.255.252 se ne more sirit nikamor, ne da bi delal velik poseg v nastavitve mreze.   V prvem postu si v bistvu ze naredil dosti dobro razdelitev IPjev, sam je ena napaka pri teh IPjih. Da bo stvar delovala kakor hoces, bi moral namesto 192.168.0.10 / 255.255.255.0 in 192.168.0.20 / 255.255.255.0 napisati 192.168.10.1 / 255.255.255.0 in 192.168.20.1 / 255.255.255.0 ....itd za ostale. Torej za locevanje omrezij z masko 255.255.255.0 moras spremeniti tretjo stevilko, ne cetrte."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz imam internetno masko 255.255.192.0. Pa kaj? Pri P2P (point-to-point) povezavah maska sploh ni pomembna, ker je treba itak vse poslati peer-u na drugi strani in razen tistega noben drug host ni neposredno dosegljiv. Načeloma celo sploh ne rabiš niti IP naslova niti maske, samo konfiguriranje je potem težje."
+    },
+    {
+        "role": "user",
+        "message": "Še eno vprašanje, predt grem to štimat: Zdej mam za router athlona 2600 (sm mel do pred kratkim durona 800, pa ni več delal dovolj hitro). A se mi bolj splača kupit navaden router, pa to kišto prklopit zraven na router al naj kr raje pustim to kišto za router pa probam naštimat tk ko ste napisali zgoraj. Zanima me predvsem primerjava zanesljivosti, pingov itd. Kolega je imel en navaden router, pa je rekel, da ga je blo treba včasih resetirati, ter da mu je vsake nekaj časa kar vredu zapingal. Na računalnikih bi imel serverje, ki bi morali imeti čim manjši pin. Pa kaka je razlika med routerji, ker na mimovrste majo 8-portnega že za 13.000, naslednji po ceni je pa potem linksys za 28.000. Hvala za odgovore."
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Dobro jutro,  rabil bi pomoč pri eni preusmeritvi. Ne vem, kako narediti preusmeritev iz www.stran.si/index.html na samo www.stran.si, če mi lahko kdo prosim pomaga, ker na google-u nisem našel takšnega primera.  Lp in hvala, @user"
+    },
+    {
+        "role": "assistant_0",
+        "message": "saj ce vpisessamo stran.si brez index.html zadeva ze dela"
+    },
+    {
+        "role": "user",
+        "message": "Vem jaz to dobro hehe =)  Gre se zaradi optimizacije, da nimaš podvojene vsebine in pač izbereš prednostno povezavo, torej v mojem primeru www.stran.si =)"
+    },
+    {
+        "role": "user",
+        "message": "Evo, sem našel, če bo slučajno kdo rabil.  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\\ /index\\.html\\ HTTP/  RewriteRule ^index\\.html$ http://www.stran.si/ [R=301,L]  Lp, @user"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mocno dvomim da gre v tem primeru za podvajanje vsebine, lahko pa da se motim."
+    },
+    {
+        "role": "user",
+        "message": "http://www.stran.si/ http://www.stran.si/index.html http://stran.si/ http://stran.si/index.html  Imaš kar 4-krat vstopno stran a ne? =)  In ravno zaradi tega nardiš z redirectom, da ti iz stran.si preusmeri na www.stran.si ter da index.html preusmeri na www.stran.si, potem še nastaviš v google webmasters prednostno domeno, torej www.stran.si in je to to =)  Če pa si še vedno v dvomih, pa kar poišči malo na google forumih ;)  Lp, @user"
+    },
+    {
+        "role": "assistant_1",
+        "message": "nastavi v meta tagsih canonical url pa bo :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1, tudi to bi lahko nastavil za index.html ja =)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user si imel prav ja, ze popravljam na svojih domenah in sajtih :)  Hvala!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "RewriteRule priporočam vedno, da se preusmeri iz no WWW na WWW ali obratno. jaz osebno vedno iz www na no www ker se mi zdi enostavno bedasto met to zraven :)"
+    },
+    {
+        "role": "user",
+        "message": "HardPhuck, fajn je tudi, da podvojeno vsebino odstraniš iz google indexa, torej, da ni več vidna med rezultati iskanja.  Še link, kako to storiš -> klik  Bom mogoče napisal kak članek na to temo in bom zajel vse te stvari.  Lp, @user"
+    }
+]

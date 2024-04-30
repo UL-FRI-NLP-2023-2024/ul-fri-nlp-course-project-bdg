@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Torej imam router Linksys z DD-ERT Firmware-om. Do sedja sem imel dinamični IP in nastavitve sem vpisal v opcijo PPPoE.  Sedaj pa ne vem - v opciji statični IP ne moreš vpisat up. imena in gesla, je pa še neka opcija PPTP, kjer se pa lahko vse to vpiše.  Kje torej naj nastavim in ali je potrebno vpisat tudi Geteway (pri PPTP) - če ja, kje to dobim? Subnet mask je pa verjetno 255.255.225.0 ali ne?  Hvala za pomoč že vnaprej."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri ADSLju, četudi imaš statični IP, še vedno uporabi opcijo PPPoE.   Finta statičnega ipja je samo v tem, da ti Amis dodeli vedno istega, ko se prijaviš s tvojim usernamom/geslom."
+    },
+    {
+        "role": "user",
+        "message": "Torej ga sploh ne rabim vpisat??  Kar PPPoE naprej šibam - no saj se mi je zdelo čudno, da na tastarih nastavitvah še vedno vse dela."
+    },
+    {
+        "role": "assistant_1",
+        "message": "tebi nastavitev ni treba nic spreminjati ker pri dinamičnem IPju se vsakih 24ur povezava prekine da se ti dodeli nov IP naslov pri statičnem se povezava ne prekinja in vedno ko se nanov povezes se ti vedno dodeli isti IP naslov.  PPPoE je pa protokol s katerim se v ADSL prijavlas"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Povezava se prekinja na 24ur samo pri siolu. Pač.. njihova ideja dinamike."
+    },
+    {
+        "role": "user",
+        "message": "Hvala  Vidim da ste stručkoti - še eno vprašanje: Na Linksysa imam povezanih 5 pc jev, ki imajo potem pač vsak določen IP. Zanima me, ali se da od zunaj prit do teh posameznih PCjev (za recimo remote desktop ali ftp prenose) - kako to izvest, glede na to, da imam statični ip, ruter ima svoj ip in vsak računalnik spet svoj ip?  Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Seveda se da. Rabiš forwardat porte za vsak PC posebej. Recimo RDP (remote desktop) uporablja port 3389, tega moraš forwardat naprej na LAN IP od računalnika, do katerega želiš pač dostopat..   V dd-wrt imaš to pod Applications & Gaming, Port forwawrding."
+    },
+    {
+        "role": "user",
+        "message": "Torej, če bi želel dostopati do več kot enega namizja bi mogo potem v programu za remote desktop spremenit tudi port, da bi lahko recimo imel na enem routerju dva pcja do katerih lahko dostopam z remote desktopom. Ali to remote desktop v windovsih omogoča, ali je bolše takoj iskat alternativo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vsakemu PCju lahko določiš svoj port, na katerem naj posluša RDP, in potem te porte pravilno forwardaš.  Kako spremeniš porte:  klik."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Se portov ni treba spreminjat na racunalnikih, samo pravilno je treba port forward na routerju naredit.  Npr: port 3390 -> 192.168.1.2:3389 port 3391 -> 192.168.1.3:3389 port 3392 -> 192.168.1.4.3389 itd.  na drugem racunalniku pa samo poves, na kater port se naj RDC poveze.  Start -> run -> \"mstsc -v:88.65.56.111:3391\""
+    },
+    {
+        "role": "user",
+        "message": "Aha - hvala vsem, bom sprobal.  Lep pozdrav. Bogdan"
+    }
+]

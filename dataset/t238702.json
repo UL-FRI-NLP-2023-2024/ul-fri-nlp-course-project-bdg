@@ -1,0 +1,14 @@
+[
+    {
+        "role": "user",
+        "message": "Zanima me ce mogoce ve kdo kak tober tutorial ali kaj podobnega, rad bi domeno gostoval pri sebi. registrirana je ze nekaj let samo sedaj jo nebi vec imel pri registrerju ampak pri sebi pa ne vem kako bi lahko to naredil. Imam bind server namescen in vse samo ne vem kako jo spravit sem. OS je Linux!  Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bom kar tole temo uporabil ker me zanima ista zadeva :) No recimo da sem korak dlje in sem že napisal zone file. Zanima me, če je to pravilno in če moram v bindu še kakšne stvari nastaviti (drugače kot ponavadi) da bom hostal svojo domeno, torej da bo dns server v isti domeni kot hostana domena. del mojega zone file-a (domena pa ip je fake ):   $TTL 3D\nprimer.net. IN   SOA   ns.primer.net.  root.primer.net. (\n                                        20070311        ; Serial\n                                        1D      ; Refresh\n                                        30M     ; Retry\n                                        1W      ; Expiry\n                                        1D )    ; Minimum\n\n@                       IN      NS      ns.primer.net.\n@                       IN      MX 0    mail.primer.net.\n@                       IN      A       193.0.0.1\nns                      IN      A       193.0.0.1\nmail                    IN      A       193.0.0.1\nwww                     IN      A       193.0.0.1\nftp                     IN      A       193.0.0.1\n  A bo tole delovalo? Se pravi potem jaz samo sporočim mojemu registrarju, da zamenja ns server iz svojega na mojega?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "[st koda]  $origin primer.net $TTL 3D  @ IN SOA ns.primer.net. root.primer.net. (  20070311 ; Serial  1D ; Refresh  30M ; Retry  1W ; Expiry  1D ) ; Minimum    @ IN NS ns.primer.net.  @ IN MX 10 mail.primer.net.  @ IN A 193.0.0.1  ns IN A 193.0.0.1  mail IN A 193.0.0.1  www IN A 193.0.0.1  ftp IN A 193.0.0.1  [/st koda]  Tako bi moralo delovati."
+    }
+]

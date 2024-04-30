@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo, imam sledečo težavo. Win 10 se mi konstantno vrtijo v update loopu. Updatov se nikakor ne da namestiti, vedno dobim ekran \"Undoing changes..\". Bral sem, da je lahko težava v premajhni system particiji. Trenutno je velika 100 MB, optimalno pa bi bilo okoli 500 MB.  Particije se lahko poljubno veča in manjša, to vem. Ampak konkretno te system particije nikakor ne morem povečat. Poskusil sem z Disk Managerjem, AOMEI Partition Assistant, Partition Wizard in nikakor ne gre. Vedno javi error ali je možnost v celoti onemogočena. Disk je enkriptiran z VeraCrypt, je to mogoče razlog? Spodaj je screenshot kako izgleda. Kako naj jo torej povečam na 500 MB?  Hvala za pomoč"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kako ti je uspelo System Reserved Partition zmanjšati na 100 MB ?  Bl in veracrypt ne šarita po srp https://sourceforge.net/p/veracrypt/dis...  Omenjeno particijo povečaj v offline načinu, ne iz zagnanih wibnsev. Se pravi za 400 MB zmanjšaš soležnih particijo in povečaš srp."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne moreš večat, ker je C v napoto. Moral bi C premaknit na konec (tistih 500Mb, ki jih imaš prostih). Potem bi za 100MB sistemsko ratal nedodeljen prostor, in šele nato bi lahko povečal.  AMPAK kolikor jaz vem, je v teh 100mb zapisana tudi lokacija, kje se C začne. Če to premakneš, sistem definitivno ne bo bootal. Bi pa verjetno potem pomagal ukaz bootrec /rebuildbcd pa /fixboot.  Sedaj, če sam nisi manjšal te particije, bi morala biti dovolj velika. Disk je SSD?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Drugače na ta problem sem že naletel, ampak particij nikoli nisem spreminjal, da sem odpravil težavo.  Če imaš HDD je prvo preverit, da nimaš slabe sektorje. Po treh rebootih bi te tako moralo vreči v recovery meni, pa tam pod več opcij izbereš remove recent updates. Če imaš kak recovery point, lahko tudi to izbereš.  Da bi bila enkripcija kriva ne vem, bi pa v kolikor bi se sistem postavil, jaz svetoval naložit najnovejši update (2004 ali 20H2 ročno.. ali pa zaustavit posodobitve, dokler ne pride 2104.  Sorry za dvojni post, zgornjega mi ne pusti popravit."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če imaš sys partition kriptirano z Veracrypt, jo najprej dekriptiraj, potem pa bo šlo... to je zagotovo issue - iz izkušenj ;) Ko se update naloži pa ponovno kriptiraj. :D Boš pa moral to vedno, ko bo major update.  Sem pozabil: Been there, done that, still doing it!"
+    },
+    {
+        "role": "user",
+        "message": "Disk je SSD. Sem dal dekriptirat, poročam kaj bo. Hvala za pomoč."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Nima veze ali je SSD ali pa HDD.  Pri major upgradu (ko se spremeni build number) moraš dekriptirati sistemsko particijo. Vsaj pri VeraCrypt. Tudi sam imam to na enem od kalkulatorjev, kjer žal nimam naložene Pro verzije Oken in ni Bitlockerja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Partition Magic, prestaviš particijo in povečaš sistemsko.  Znal bi mogoče tudi GPArted delat, sam ne vem kako je stanje z NTFS...  Drugače pa backup in reinstall. SPloh, če imaš probleme z Winsi. To še vedno pomaga ."
+    },
+    {
+        "role": "assistant_4",
+        "message": "EFI particija se lahko nahaja kjerkoli na disku. Jo lahko premakneš na konec diska? Drugače je to čisto navadna FAT32 particija, ki ima kot tip nastavljen EFI partition. Če zbootaš s kakšnega live CD z Linuxom, lahko vidiš vsebino in jo skopiraš drugam, na kakšno drugo večjo EFI particijo in to pobrišeš. Preveriš lahko tudi, koliko je še placa. Po spominu mislim, da Windowsev bootloader zasede okoli 30 MiB, tako da 100 MiB bi moralo biti čisto dovolj.   @assistant_1 je 12. apr 2021 ob 14:00 izjavil: AMPAK kolikor jaz vem, je v teh 100mb zapisana tudi lokacija, kje se C začne. Če to premakneš, sistem definitivno ne bo bootal.  Ne govori traparij. To je zapisano v particijski tabeli, na EFI particiji so bootloaderji in ostali programčki, ki jih lahko poženeš iz BIOSa."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0 je 12. apr 2021 ob 13:55 izjavil:Kako ti je uspelo System Reserved Partition zmanjšati na 100 MB ?    Ponavadi to zelo lepo naredi kater od cloning SW pri migraciji iz HDD na SSD. Drugače pa, kot je moj predhodnik napisal je 100MB čisto dovolj..."
+    },
+    {
+        "role": "user",
+        "message": "Dekriptiral sem disk in povečal System particijo na 500 MB. Izgleda pa da to ni rešilo moje težave. Še vedno ob zagonu in inštalaciji updatov dobivam ekran \"Undoing changes...\". Updatov se nikakor ne da namestiti, računalnik pa se zaradi tega zaganja zelo dolgo. Ima kdo kako idejo?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "backup + reinstall... Poskusiš lahko tudi z ccleanerjem + wicleanup, da malo spucaš Windowse."
+    },
+    {
+        "role": "assistant_5",
+        "message": "emm, jaz imam tudi 100MB veliko to particjo tko da dvomim, da je to narobe."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user če misliš, da je sedaj problem samo še s posodobitvami ti predlagam, da poizkusiš še z wsus offline programom \"https://download.wsusoffline.net/\"."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če prideš v win naredi backup na drug disk in svež install. Na w7 je rezervirana particija velika 100mb na w10 pa 400MB oz 500MB ne vem pa od česa je ta velikost odvisna. PS. Če želiš lahko omenjenio particijo tudi zbrišeš in potem nastaviš active partition kjer je win naložen."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če ti še vedno ne gre, potegni dol nov MediaCreationTool in lahko posodobiš na novejšo verzijo direktno... če nimaš nekih aplikacij, ne rabiš niti backupirat, čeprav to ne priporočam. Prav tako lahko ponastaviš (reinstaliraš) Windows10 na način, da pustiš uporabniške datoteke (Ponastavitev)... in nato posodobiš \"čist\" sistem."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Na particiji se nahaja polno \"smeti\", ki jih lahko mirno pobrišeš.  Običajno pomaga, če zbrišeš nepotrebne jezike (ni potrebe po večanju)."
+    },
+    {
+        "role": "user",
+        "message": "Hvala vam za vse predloge. Nisem uspel nič zrihtat, zgleda bo treba narest repair."
+    }
+]

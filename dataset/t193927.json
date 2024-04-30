@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Distribucija je Debian Sarge, sem pa noob v teh zadevah in ker na računalnik ni naložen X me zanima kako se tem rečem streže v konzoli: IP address, subnet mask, Gateway, DNS-ji."
+    },
+    {
+        "role": "assistant_0",
+        "message": "ce se nimas nalozenega: apt-get install etherconf  ce ze imas nalozen etherconf: dpkg-reconfigure etherconf   --- edit: tipkarska napaka"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ifconfig ethX down ifconfig ethX IP netmask MASK up route add default GATEWAY"
+    },
+    {
+        "role": "assistant_2",
+        "message": "route add default GATEWAY Wrong.  route add default gw GATEWAY Right."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nekateri raje uporabljajo iproute2 namesto route in ifconfig, saj so vse stvari na enem mestu. Poleg tega podpira vse novejse mrezne funkcije kernela.  # Ce nimas iproute ga namestis apt-get install iproute  # Najprej odstranis obstojece IPje ip addr flush dev eth1  # Dodas IP ip addr add 10.1.11.23/16 dev eth1  # Dodas gateway ip route add default via GATEWAY   Vec o iproute2"
+    },
+    {
+        "role": "user",
+        "message": "Waaa, hvala hvala za izdatno pomoč."
+    }
+]

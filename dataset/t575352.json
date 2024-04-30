@@ -1,0 +1,274 @@
+[
+    {
+        "role": "user",
+        "message": "Nisem si mislil, da je to l. 2013 možno - downlovdam datoteko večkrat in vsakič drugačen checksum. Najbrž je odveč povedati, da inštalacija seveda v nobenem primeru ne deluje. V najboljšem primeru sredi setupa ven vrže. Kaj bi bil lahko vzrok temu, morda vročina? Sem pa poskusil s Chrome in Mozillo Firefox. Program za checksum je pa očitno dolpotegnil bp (je sicer kratek)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Podaj URL, da poskusim in ti povem, kako je pri meni."
+    },
+    {
+        "role": "user",
+        "message": "http://download.virtualbox.org/virtualb...  SHA-256: b25eb43c9a3cd066f6a9811f426e2cd876f4fcf72fdc5bc05447c9f84455c980"
+    },
+    {
+        "role": "assistant_0",
+        "message": "b25eb43c9a3cd066f6a9811f426e2cd876f4fcf72fdc5bc05447c9f84455c980 VirtualBox-4.2.16-86992-Win.exe  Poskusi še na kakšnem drugem računalniku."
+    },
+    {
+        "role": "user",
+        "message": "Vow, hvala, očitno tabi deluje. No, meni je 8x failalo. Ravno prejle sem pa pravilno dolpotegnil z nekega mirrorja.  Me pa zanima, kaj je vzrok temu."
+    },
+    {
+        "role": "assistant_1",
+        "message": "virus, fuč ram, fuč disk.. Loh tut njihov streznik v koncni fazi, ampak malo verjetno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če imaš winse, bootaj v safe mode with network support.  Kateri firewall (na enih os ploščah z nvidia čipsetom si dobil njihov nedelujoči fw tako mimogrede), Av ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Še ena bolj obskurna varjanta za tako obnašanje - fubar tcp checksum offload na mrežni kartici. Sicer je bolj verjetno ram ali disk, a bi potem opazil še marsikak drug sindrom."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovore. Očitno zna problem biti resnejši!  @assistant_2: Imam ZoneAlarm in avast! Antivirus. In nimam Nvidia."
+    },
+    {
+        "role": "user",
+        "message": "Še to, mi lahko priporočate kak (zastonjski) program za skeniranje diska in rama? Iščem za Win7, vem da je tudi nekaj priloženo zraven (CHKDSK, ScanDisk)."
+    },
+    {
+        "role": "user",
+        "message": "Ista težava na Linixu. Ali je torej mreža ali pa RAM."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Popolnoma enako težavo sem imel nekoč tudi sam. Izkazalo se je da je bil kriv ram. Po menjavi rama je bilo vse ok."
+    },
+    {
+        "role": "user",
+        "message": "Windows Memory Diagnostics Tool pravi, da je RAM OK."
+    },
+    {
+        "role": "assistant_5",
+        "message": "memtest pa naj laufa dolgo."
+    },
+    {
+        "role": "user",
+        "message": "Hoho, zdaj sem še enkrat dolpotegnil datoteko na povezavi, ki sem jo zgoraj podal.  Preko kabla zopet fail, preko wifi pa OK (!). Zdi se, da napaka tiči v mrežni povezavi. Mrežna kartica ali kaj na routerju? Kabel najbrž ne, čeprav sem ga večkrat že povozil s stolu. Bi se najbrž drugače poznalo, če bi napravil kratek stik."
+    },
+    {
+        "role": "user",
+        "message": "Ali je recimo zdaj uporaba P2P tehnologije sploh še varna? Lahko poškodovani zapis datotek se preseli tudi na druge računalnike ali pač ima P2P (torrent npr.) tehnologija kake dodatne varovalke za preverjanje?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "P2p preverja hash daoteke. Mrežne kartice so smešno poceni, dodaj eno notri in testiraj."
+    },
+    {
+        "role": "user",
+        "message": "Sedaj vse kaže na to, da je mrežna kartica fuč, torej najbrž tcp checksum offload, kot je napovedal @assistant_3. Mrežne kartice ne bo mogoče menjati, ker je fiksirana na matično (imam prenosnik), bo treba dodati usb kartico. Sicer za to napako mrežno obstaja sicer kak softverski prijem? Recimo, p2p zgleda, kot da pravilno deluje.  Hvala vsem za pomoč!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "tcpchecksum se da izklopit v gonilniku!"
+    },
+    {
+        "role": "user",
+        "message": "Imam novo mrežno kartico, a še vedno isti problem. Preko brezžične povezave pa dela bp.  Torej je napaka na routerju?"
+    },
+    {
+        "role": "user",
+        "message": "Napaka na routerju najbrž ni, na drugem računalniku je prenos bp.  Na mojem dela bp preko wireless, z mrežnima karticama pa ne.  Sedaj res ne vem, kaj bi lahko bilo narobe."
+    },
+    {
+        "role": "assistant_1",
+        "message": "probaj z drugim ramom ali odstrani kakšno ploščico če jih imaš več"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 31. jul 2013 ob 21:53 izjavil:probaj z drugim ramom ali odstrani kakšno ploščico če jih imaš več  Hvala za hiter odgovor. Toda ali je to res nujno? Windows Memory Diagnostic ni pokazal napak in tudi če bi bil ram fuč, bi najbrž tudi preko wireless prišlo do napake v zapisu datoteke?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Imaš primeren kabel?"
+    },
+    {
+        "role": "user",
+        "message": "Sem poskusil tudi z drugim kablom, a tudi tam ne deluje. Drugi kabel je sicer ok (preveril na drugem računalniku)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Windows Memory Diagnostic ni pokazal napak in tudi če bi bil ram fuč, bi najbrž tudi preko wireless prišlo do napake v zapisu datoteke?  da windows diagnostic pokaže mora bit res nekaj hudo narobe.. lahko je pa ravno tok ok da pride čez ta hitre teste.. ja nevem lej, dokler za ram nisi 100% da je ok, nima smisla drugih stvari testirat in menjat..zato je najboljše da bi probal z drugim ramom"
+    },
+    {
+        "role": "user",
+        "message": "Notri imam dve reži za RAM in v obe sta vtaknjeni ploščici.  Torej naj dam najprej eno ven in testiram, potem pa drugo ven in prvo notri ter ponovno testiram. Naj nato še ponovim isto, a tako, da uporabim še drugo režo?  In še vedno, wireless deluje BP, obe mrežni pa ne."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj pa če hitrost zmanjšaš na 10Mbps v device managerju?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Jah, če še vedno nisi pognal čez vsaj malo resnejši memory tester, daj najprej to.  Memtest86+ naj požene čez cel batch svojih testov v enem ali dveh prehodih int ti bo dalo začetni feeling."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Poskusi uporabiti tudi kakšen download manager. Recimo FDM. Poznam primere s forumov, kjer je to pomagalo."
+    },
+    {
+        "role": "user",
+        "message": "Če hitrost zmanjšam v Device managerju, vsaj nova mrežna deluje. Toda hitrost interneta je zdaj čist čist prepočasna.  Bom pa memory tester pognal jutri in to kar Memtest86+. Danes ne morem, moram prej kupiti cd plošček, na USB ključ pa ne comp ne potegne. Od rezultatov tega pa bodo odvisni nadaljni koraki.  FDM bom pa poskusil.  Hvala."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pa si menjal UTP kabel? Sm že imel čist nove kable in so bli vsi zanič, čeprav na testerju vse kaže ok."
+    },
+    {
+        "role": "user",
+        "message": "Memtest86+ - prvič je šlo do kake tretjine, nato se je računalnik resetiral. V drugo se je to zgodilo kmalu na začetku. V tretje pa malce čez 50%. Nisem pa videl, da bi napisal, da je našel kako napako. Bom poskusil še test, ki je priložen prenosniku in se ga da zagnati z BIOS-om.  UTP kabel pa še nisem menjal."
+    },
+    {
+        "role": "user",
+        "message": "Preizkušeno na drugem UTP kablu in pričakovano: na stari žični kartici NE dela, na novi žični kartici NE dela, brezžično DELA. Torej tako kot na mojem kablu.  Morda pa je vendarle s spominom kaj narobe, ker navsezadnje niti testa ne opravi. Ali pa se mogoče reset med testiranjem spomina izvrši zaradi pregretja (že temeperatura v sobi je čez dan >30°C)?  Test bom še enkrat zagnal jutri zjutraj, ko je najhladneje in ko se bo tudi comp ohladil."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Hm, jaz imam eno virtualno mašino, ki se ji dogaja enako - razen prekinjenih/pokvarjenih downloadov mi vse dela. Hardverska napaka je skoraj zagotovo izključena (cel kup virtualk dela BP na isti mašini).  Nisem si pa še utegnil vzeti časa za zdebugat. Mogoče si ga bom zdaj :)"
+    },
+    {
+        "role": "user",
+        "message": "Evo, Memtest86+ sem danes zjutraj zagnal. Uspešno je opravil Pass 1, ni javil napak, ob začetku Pass 2 sem ga zaprl. Kak zanesljiv pa je ta program?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Noben memory test ni ravno 100% zanesljiv.  Je pa memtest86+ boljši od vse ostale meni znane poceni ali zastonj robe. Sploh od kakih memory testerjev v okvirih OS-a, ki so v bistvu slabši od igrače.  Če ti memtest pade semtertja, bi to znalo kazati na kako napako v boardu, procu ali napajalniku. Mogoče izsušeni elektroliti, mogoče kaj drugega."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Od vseh izkušenj z memtest86+ se ne spomnim, da bi kdaj v zadnjih letih diagnosticiral neobstoječo napako.  Se je to dogajalo redko na nekaterih strojih, ko ni pravilno prebral od BIOS-a informacijo o tem, kako je RAM konfiguriran ampak tega je že nekaj časa.  Se je pa zgodilo da napake ni našel, čeprav tudi to poredko.  Tako da če mašina pade na memtest86+, bi to jemal kot zaskrbljujoč problem."
+    },
+    {
+        "role": "user",
+        "message": "Koliko passov bi pa moral dati skoz, da lahko govorimo o neki verjetnosti?  Ja, če je napaka v boardu, procu, potem pa moram zamenjati računalnik :(."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj pa če shraniš/downloadš na zunanji disk, usb ključek ...?"
+    },
+    {
+        "role": "user",
+        "message": "@rb750: Tega še nisem poskusil :(, mogoče bom tekom današnjega dne. Toda po mojem ne pričakujem drugačnega razpleta, ker če downlovdam preko wifi, mi pravilno zapiše na notranji disk."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@user je 3. avg 2013 ob 12:33 izjavil:Koliko passov bi pa moral dati skoz, da lahko govorimo o neki verjetnosti?  Ja, če je napaka v boardu, procu, potem pa moram zamenjati računalnik :(.   Meni je v 90%, če je šlo za napako v RAM, to našel v prvem prehodu.  Če se je pokazala samo občasno, je šlo praviloma za kaj drugega ( slaba plata, nihanja v napajanju taka in drugačna itd).  Poglej:  - ali se stvari hladijo OK. Da niso hladilniki zabasani s prahom, da se venti lepo vrtijo in niso zaribani in da imaš pasto na procu itd. Prah je težko sesat. Daleč najlažje ga izpihaš. Jaz to počnem s poceni Hoferjevim sesalcem, ki ima opcijo, da lahko daš cev na zračni izpuh. Seveda ker taka stvar zna ustvarit oblake prahu, jo je najbolje izpeljati zunaj ali na balkonu.  - spucaj kontakte RAMov in vseh kartic najprej s trdo radirko, nato pa s servietom namočenim v alkohol - vse overclock in undervolt opcije, ki si jih morebiti imel vklopljene, sedaj izklopi. - poskusi še enkrat dljat tisti fajl, vendar s skrajno odvitim tako procom kot RAM-om. Naj delata na bistveno nižji STABILNI frekvenci od delovne ( se pravi, izklopi CnQ in podobne sheme šparanja štroma) BTW: si prečekiral, da ti ni kak elektrolitski kondi napihnjen na plati ali v napajalniku ?"
+    },
+    {
+        "role": "user",
+        "message": "Hvala za dolg odgovor.  Računalnik sem spucal kak mesec nazaj, ponavadi ga spiham s kompresorjem za pumpanje gum.  Kontaktne na RAM-u bom pogledal, ostalo mam pa fiksirano na plati (imam prenosnik).   Pa če je kondenzator pokvarjen, pol treba itaq ves laptop zamenjal ali pa vsaj plato.  Z drugačnimi nastavitvami bom pa poskusil."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9 je 1. avg 2013 ob 19:56 izjavil:Poskusi uporabiti tudi kakšen download manager. Recimo FDM. Poznam primere s forumov, kjer je to pomagalo.  Nak, tudi to ne deluje, napačen checksum."
+    },
+    {
+        "role": "user",
+        "message": "Je možno, da je s kablom nekaj narobe in to povzroči nepopravljivo napako na mrežni?  Vem za primer, ko se je skuril port na routerju, ker je prišlo do kratkega stika med žičkami."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Težko verjamem, razen če je šlo za port s PoE ( Power over Ethernet- torej da je imel po kablu tudi napajanje), kar je pa IMHO v tej opremii bolj redkost."
+    },
+    {
+        "role": "user",
+        "message": "Port po kratkem stiku ni več delal, pa še piskalo je po tem.   Pa še to, sedaj sem se spomnil: zdi se mi, da ta napaka že dalj časa traja. In to vidim, ko se na spletu slike ne prikazujejo v celoti ali pa so \"zamazane\". In to je od približno takrat, ko sem v BIOS vključil podporo virtualnim mašinam. Ali je to morda vplivalo na delovanje žičnih mrežen? Sicer sem prejle začasno izključil virtualizacijo, a ni bilo nič bolje."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Da si nisi ti pridelal kak virus kam v BIOS ?  A lahko probaš zbootat kako Linux distribucijo s ploščka ali USB ključka in pogledat kako se ti mrežna obnaša tam ?"
+    },
+    {
+        "role": "user",
+        "message": "A če vključim virtualizacijo, se podre kaka zaščita BIOS-a? Virtualizacijo sem ročno v BIOS-u nastavljal, brez da bi kaj šaril s kakimi programi.  Ja, dobra ideja, Linux distribucijo bi lahko zagnal."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ne, samo bilo je govora o tem, da se da podporo virtualizaciji uporabiti za grde namene in pred OS-om skrivati ZlobnoKodo...  Zdaj, če si na tak način fasal kaj za WInse, je za domnevati da pod Linuxom verjetno ne bo delalo.  Razen, če je skrito kje v kakem BIOSu in se izvede pred zagonom samega OS-a."
+    },
+    {
+        "role": "user",
+        "message": "Aha, torej bi moral precheckirati BIOS ali pa ga pač kar poflashati na novo. No, prej bom še na Linuxu testiral."
+    },
+    {
+        "role": "user",
+        "message": "Bravo, @assistant_8, kapo dol!   Na Linuxu sem downlovdal dve datoteki in OBE sta OK."
+    },
+    {
+        "role": "user",
+        "message": "Torej lahko sedaj rečem, da ni napaka v strojni omremi, temveč nekaj z Windows 7.  Mimogrede, je normalno, da mi Win7 ob zagonu in prijavi javi, da je požarni zid izklopljen, takoj zatem se pa vklopi?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Verjetno ti ga nekaj serje kak virus, ali pa slab driver.  Kolega ma Win7 in z networkingom je mel dolgo sranja. Ne tolikšna, pa vendar.  Lahko probaš v upravitelju naprav odpret kartico in pogledat lastnosti hardvera.  Poglej, če imaš vklopljene Jumbo Frames oziroma kot temu uradno radi rečejo \"MTU size\" Ta naj bo 1500 oziroma blizu. Winsi iz nekega meni neznanega razloga večinoma ne pustijo, da to nastaviš poljubno v mejah, ki jih dovoljuje kartica, ampak ponujajo nekaj vrednosti. Če že ni, probaj izbrati tisto, ki je najbližje 1500.  Potem lahko poskusiš nastaviti half duplex namesto auto ali full, pa kak tcp-offload lahko izklopiš, da tega pač ne počne kartica ampak CPU in potem probaš še enkrat. Če bo delalo, probaj nazaj vrniti parameter za parametrom in poglej, kdaj se napaka ponovi."
+    },
+    {
+        "role": "user",
+        "message": "Jumbo Frame sem dal z Disabled na 2KB MTU (najbližje 1500), Speed & Duplex z Auto Negotation na 100 Mbps Half Duplex in izklopil sem vseh pet (IPv4 ter TCP/UDP x IPv4/IPv6) Checksum Offload.  Kljub vsemu temu pa download ne deluje nč bolje."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Katera os. ploščo oz mrežno imaš ?"
+    },
+    {
+        "role": "user",
+        "message": "Za osnovno ploščo trenutno ne vem, mrežna je pa Realtek PCIe GBE Family Controller.  Če je napaka v Win7, bi najbrž pomagala ponovna inštalacija, ne?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Najbrž. Lahko pred tem probaš samo driver zamenjat z novejšim ali starejšim.  Dobiš ga na www.realtek.com.tw"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Imaš driverje na proizvajalčevi strani."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Poglej še v Event Viewer, če so kakšni errorji za disk. Opis napake zgleda približno takole:   Log Name: System\nSource: Disk\nDate: 7/13/2012 3:38:44 PM\nEvent ID: 11\nTask Category: None\nLevel: Error\nKeywords: Classic\nUser: N/A\nComputer: xxxxxx\nDescription:\nThe driver detected a controller error on \\Device\\Harddisk3\\DR3.\nEvent Xml:\n<Event xmlns=\"http://schemas.microsoft.com/win/2004/08/events/event\">\n<System>\n<Provider Name=\"Disk\" />\n<EventID Qualifiers=\"49156\">11</EventID>\n<Level>2</Level>\n<Task>0</Task>\n<Keywords>0x80000000000000</Keywords>\n<TimeCreated SystemTime=\"2012-07-13T19:38:44.199218700Z\" />\n<EventRecordID>136049</EventRecordID>\n<Channel>System</Channel>\n<Computer>xxxxx</Computer>\n<Security />\n</System>\n<EventData>\n<Data>\\Device\\Harddisk3\\DR3</Data>\n<Binary>0E01800001000000000000000B0004C003010000000000000000000000082D0000000000000000000D563C000000 0000FFFFFFFF0600000058000000000000000000061208000010000000003C0000000000000000000000405E7A0780FAFFFF 00000000000000001066250A80FAFFFF00000000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000</Binary>\n</EventData>\n</Event>"
+    },
+    {
+        "role": "user",
+        "message": "Driver sem že prej updejtal in ni nič drugače.  Sicer mi pa Event Viewer stalno sporoča napake: The Peer Name Resolution Protocol service terminated with the following error:  %%-2140993535  The Peer Networking Grouping service depends on the Peer Name Resolution Protocol service which failed to start because of the following error:  %%-2140993535  The Peer Name Resolution Protocol cloud did not start because the creation of the default identity failed with error code: 0x80630801."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Težko rečem. Reinstall Winsev ?"
+    },
+    {
+        "role": "user",
+        "message": "Zgleda, da bo res treba reinštalirati :(."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Odpri kišto in poglej za model osnovne plošče. Kaj od AV/FW&stuff uporabljaš ?   Počasi, omenjena napaka je del .net fw 4.5  http://www.techspot.com/community/topic...  Boot into Safe Mode Restart your computer and start pressing the F8 key on your keyboard. Select the Safe Mode option when the Windows Advanced Options menu appears, and then press ENTER. ===================================================== The PeerName Resolution is part of Network Programming in the Microsoft .NET Framework . I don't know if you're using it, but you can check the Service and set it to Manual as follows:  Click on Start> Run> type in services.msc> Enter> Double click on Peer Networking Identity Manager (it may shows as p2pimsvc)> Set the Startup type to Manual. Then exit Services and reboot the computer.  As some point in your computer history, you either set up a Homegroup or tried to. I suspect the doing the factory resets may have messed that up. Here are questions to ask yourself: 1. Did you \"join\" or make a homegroup when first installed? write down the password? 2. Does windows report you as on a \"homegroup\", either pc? 3. Have you turned ON Network Discovery? ie: advanced sharing settings, under (current profile)  You have the SQL Server 2005 Compact Edition installed. You may need the Peer Name for that. IF you need further help with that, you may find more knowledgeable members in the networking forum.    http://windowsforum.com/threads/peer-ne... trex; Hello and welcome to the forum. Usually that 1068 error reflects that a dependent service was not able to start. Please open the services console type services.msc into the search or run dialog box and hit enter scroll down and make sure the the  Peer Networking Identity Manager is not set to disabled just double click it and set the startup type to manual.   in  There is much discussion on the web about a corrupt file resulting in similar issues. The file is located here C:\\Windows\\ServiceProfiles\\LocalService\\AppData\\Roaming\\PeerNetworking and is called idstore.sst  Basically it calls for deleting the file and then restarting the service and the file is recreated. So I tested the premise. I stopped Peer Name Resolution Protocol Peer Networking Grouping Peer Networking Identity Manager PNRP Machine Name Publication Service Deleted the contents of the folder noted above which in my case included idstore.sst and idstore.sst.new restarted the services and everything worked both files were re-created. So it might be worth a try. Regards  Randy"
+    },
+    {
+        "role": "user",
+        "message": "Za matično ploščo ne vem, le za procesor lahko povem: 2.3 GHz AMD Turion II Dual-Core Processor P520."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Cpu-z, zavitek mb."
+    },
+    {
+        "role": "user",
+        "message": "Manufacturer: HP, Model: 1440 67.16, Chipset: AMD 785GX, Southbridge: AMD SB800"
+    },
+    {
+        "role": "user",
+        "message": "Ok, potlej predlagate, da naložim Windows 7?  In kot včasih, Windows 7 particijo sformatirati in vse na novo gor?"
+    }
+]

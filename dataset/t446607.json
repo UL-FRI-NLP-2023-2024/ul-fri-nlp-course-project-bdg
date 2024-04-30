@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Kot sem zasledil, se v slo prodajajo trdi diski z podporo USB 3.0, katere hitrosti znašajo do 5 Gbit/s.   Samo zanima me, ali moja matična, podpira usb 3.0 Imam pa sledečo: Mainboard S - 1366 ASUS P6T SE, ATX  v lastnostih piše, da ima 12x usb, 1 x ATA, 6 x SATA ter 1 x eSATA.  Vzadaj za računalnikom, pa imam samo enih par priključkov (6xusb - črne barve) ter 1x eSATA. Mislim, da bi matična za toliko denarja lahko imela usb 3.0 priključke...  Vem da so usb 3.0 ponavadi modre barve, vendar tega nisem zasledil za računalnikom. Je možno, da na matični so? vednar niso vsi priključki vidni z ohišja ven?  lep pozdrav"
+    },
+    {
+        "role": "assistant_0",
+        "message": "1x External SATA 1x IEEE 1394a 1x LAN(RJ45) 6x USB 2.0/1.1 1x PS/2 za tipkovnico 1x PS/2 za miško 1x Coaxial S/PDIF izhod 1x Optical S/PDIF izhod  ni bilo težko, samo googla vprašaš in najdeš celo v Slovenščini ;)  http://www.mimovrste.com/artikel/238007..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kupi si eSATA disk, ce imas eSATA prikljucek. Bo zadeva delala hitreje kot z USB 3.0. Dobis dosti zunanjih ohisji, ki podpirajo eSATA in USB 2.0"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa je kdo probal v praksi ?  Od USB 3.0 bi človek pričakoval spodobne hitrosti...  Sicer pa me ta niti ne zanima kaj dosti, ker mi eSATA laufa zelo fino.  BTW: je kdo že dosegel kaj podobnega s SATA štekerjem na Linuxu ?  Meni še ni ratalo, da bi dosegel PnP na SATA. Če je disk vštekan ob resetu, ga stroj najde, sicer pa ne.  KAr je škoda, ker eSATA šteker imam samo en na plati..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2 je 21. dec 2010 ob 11:57 izjavil:Pa je kdo probal v praksi ?  Od USB 3.0 bi človek pričakoval spodobne hitrosti...  Sicer pa me ta niti ne zanima kaj dosti, ker mi eSATA laufa zelo fino.  BTW: je kdo že dosegel kaj podobnega s SATA štekerjem na Linuxu ?  Meni še ni ratalo, da bi dosegel PnP na SATA. Če je disk vštekan ob resetu, ga stroj najde, sicer pa ne.  KAr je škoda, ker eSATA šteker imam samo en na plati...   Meni (maticno imam Asus p5k) najde Ubuntu disk takoj ob vklopu. V bistvu sem imel ogromno tezav z Windows Visto, kjer mi diska ni prepoznalo ce ni bil vklopljen ob vzigu. Na linuxu imas drugace tudi en ukaz (se ga zdej ne zmislim iz glave), da prisilis ponovno skeniranje diskov, pa ti bi ga moralo dobit.  Drugace pa USB 3.0 nism probal, ampak po logiki bi moral disk, ki je priklopljen direkt na diskovno vodilo delat hitrejo kot prek nekega vmesnika. Ta hitrost se bo najbolj kazala v nizjih latencah in nizjim zasedanjem ostalih resursov. Nisem bral specifikacij USB 3.0 standarda, ampak sklepam da za delovanje se vedno tvori prekinitve, ki so vsaj pri USB 2.0 ohromile celotn racunalnik v kolikor je bilo dosti nezaporednih dostopov do diska. (e.g. torrenti na kak USB disk so obsodba na smrt)  edit: tutorial za eSATA hot-swap z Ubuntujem"
+    },
+    {
+        "role": "user",
+        "message": "hvala, torej sem popušu z usb 3.0 no esata imam pa gre za kar hiter pretok podatkov, vendar sem mislil da bom lahko tudi 3.0 izkoristil, na novem disku.  kako je pa kaj z vgradnjo 3.0? bi matična podpirala? ker sem videl, da imajo že nekateri prenosniki nižjega razreda 3.0 porte, wtf."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user: dokupis USB 3.0 kartico in vtakens v comp.  @assistant_2: uporabis programcek HotSwap in lahko vse SATA diske hotswapas. Program je sicer za Winse, vendar pod Linuxom ziher nekaj podobnega obstaja. http://mt-naka.com/hotswap/index_enu.htm  lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Glede na to ta ima eSATA vsaj 1.5Gb/s (ce imas novejso verzijo 3Gb/s) prenosa nevem zakaj bi rabil vec. Ne poznam diska, ki bi se lahko vsaj spogledal s takimi hitrostmi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1 je 21. dec 2010 ob 11:48 izjavil:Kupi si eSATA disk, ce imas eSATA prikljucek. Bo zadeva delala hitreje kot z USB 3.0. Dobis dosti zunanjih ohisji, ki podpirajo eSATA in USB 2.0   Glede na te teste se USB3 prav lepo kosa z eSATA - prakticno pri trenutnih diskih ni razlike. Je pa lahko razlika v implementaciji USB3-ja in s tem povezano razliko v hitrosti.  http://www.tomshardware.com/reviews/usb..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_1 je 21. dec 2010 ob 12:04 izjavil:@assistant_2 je 21. dec 2010 ob 11:57 izjavil:Pa je kdo probal v praksi ?  Od USB 3.0 bi človek pričakoval spodobne hitrosti...  Sicer pa me ta niti ne zanima kaj dosti, ker mi eSATA laufa zelo fino.  BTW: je kdo že dosegel kaj podobnega s SATA štekerjem na Linuxu ?  Meni še ni ratalo, da bi dosegel PnP na SATA. Če je disk vštekan ob resetu, ga stroj najde, sicer pa ne.  KAr je škoda, ker eSATA šteker imam samo en na plati...   Meni (maticno imam Asus p5k) najde Ubuntu disk takoj ob vklopu. V bistvu sem imel ogromno tezav z Windows Visto, kjer mi diska ni prepoznalo ce ni bil vklopljen ob vzigu. Na linuxu imas drugace tudi en ukaz (se ga zdej ne zmislim iz glave), da prisilis ponovno skeniranje diskov, pa ti bi ga moralo dobit.  Drugace pa USB 3.0 nism probal, ampak po logiki bi moral disk, ki je priklopljen direkt na diskovno vodilo delat hitrejo kot prek nekega vmesnika. Ta hitrost se bo najbolj kazala v nizjih latencah in nizjim zasedanjem ostalih resursov. Nisem bral specifikacij USB 3.0 standarda, ampak sklepam da za delovanje se vedno tvori prekinitve, ki so vsaj pri USB 2.0 ohromile celotn racunalnik v kolikor je bilo dosti nezaporednih dostopov do diska. (e.g. torrenti na kak USB disk so obsodba na smrt)  edit: tutorial za eSATA hot-swap z Ubuntujem    USB 3.0 je precej bolj napreden od USB 2.0, med drugim ponuja tudi več \"mA\" na priklopu. USB 2.0 bere ali pa piše oboje naenkrat ne gre. Pri USB 3.0 gre oboje... ima pa USB 3.0 več kontaktov v kablu."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Drugače je pa zunaj tudi že eSATA3 s teoretično hitrostjo 6Gb/s."
+    },
+    {
+        "role": "assistant_6",
+        "message": "bom porabil tole temo...  Za backup bi rabil zunanji disk 1 TB. Stegnu bi se do 130 € ! In naj podpira oznako iz naslova teme.  Glede na to, da bo bolj kot ne obstal na istem mestu, me zanima če ima v tem primeru smisel kupovat 2,5\", usb napajanje ...In če, zakaj? Morda kakšna izkušnja, kakšen predlog?  tnx"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Hofer je imel 2TB za 100EUR mogoče še najdeš kje."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Glede na to, da bo bolj kot ne obstal na istem mestu, me zanima če ima v tem primeru smisel kupovat 2,5\", usb napajanje ...In če, zakaj? Manj kablov, manj prostora, bolj prenosen/praktičen/priročen..tudi če ti stoji na mestu. Kar se tiče hitrosti pa nekih opaznih razlik tudi ni."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Jaz sem ravno tega 2TB USB3 disk vzel včerej v gracu in imam en problem. Disk dela na USB2, amapak na USB3 pa mam problem, namreč mi ga ne zazna.  Ima kdo kak nasvet?  Matična: Gigabyte P55A-UD7  EDIT: Eh, nevermind, manjkal mi je NEC USB3 driver...."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Živijo! Za darilo sem dobil prenosni disk z možnostjo USB 3.0. Moj PC ne podpira teh hitrosti, pa me zanima, če obstaja kakšna komponenta za dokupit, ki jo vgradiš v PC in tako izkoristiš hitrost USB-ja 3.0. Na internetu sem ob iskanju našel samo kartice za notesnike (npr. ExpressCard USB 3.0 2-port ST-Lab). Vsel bi bil kakšnega mnenja o tem in kakšnega linka (po možnosti na slovensko stran - rad bi kupil v Sloveniji). Najlepša hvala! Boris"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Temu se reče usb kontroler/krmilnik in se da dokupit ja. Zdaj če ne uporabljaš diska non stop oz ne prenašaš ogromnih datotek potem nima lih smisla...moje mnenje."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Pozdrav.  Mene pa zanima če kupim zunanji disk, pri katerem piše USB 3.0 (npr http://www.bigbang.si/racunalnistvo/rac..., ali lahko sedaj jaz uporabljam ta disk (in se normalno priključim in izmenjujem datoteke) čeprav imamo samo USB 2.0 priključke?  Ali potem pomeni, da če želim uporabljati ta disk moram še nabaviti nekaj takšnega kot je bilo prej omenjeno (http://www.enaa.com/oddelki/racunalnisk... ? - ali se da brez tega (pa je to samo če želim 3.0 koristiti, torej večje hitrosti).  Hvala za odgovor."
+    },
+    {
+        "role": "assistant_11",
+        "message": "USB 3.0 diski delujejo tudi na 2.0 priključkih, s hitrostjo, ki jo omogoča 2.0. Če boš želel višje hitrosti, potem, kot si sam povedal, potrebuješ to kar si linkal (v primeru prenosnika) ali pa kaj takega za stacionarni računalnik: http://www.mimovrste.com/artikel/235001..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Žiujo, imam eno vprašanje... Je možno priklopit razširitveno USB 3.0 kartico s priklopom PCI-e x1 na PCI-e x4?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Tudi v PCI-e 16x lahko daš."
+    },
+    {
+        "role": "assistant_13",
+        "message": "matixs ne vem če bo šlo Izgleda pa, da sem jaz imel srečo. Imam isti hoferjev 2T disk, nabavil sem tudi že omenjeno asrockovo usb3 kartico. Odprem računalo, ker imam notri grafiko ati 5870 (ki je kot ena opeka), mi je postalo kar vroče - PCI-e x1 je bil skoraj pokrit. ampak usb kartica je šla vseeno noter. ne vem, če je med grafiki in usb kartico 1 mm \"lufta\". sreča dela pa ko šus - hitrosti so cca 80MB/s se pozna - kakšen velik mkv file je prej pretakalo 20 min, zdaj rabi cca 4 minute. angelofdeath hvala za info"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Hvala :) ... kaj pa proizvajalec kartice pa matične je lahk drug sei to ni važno ne? :)"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Seveda."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Jaz nisem sledil diskom odkar je Sata prišel ven:)  Pa me zanima, zakaj se sploh dela zmeda s Sata2 in Sata3, če so diski še vedno pri istih obratih, cache tudi ostaja na 8,16,32MB. A se res pozna?  2. Kako bi lahko bil e-sata hitrejši od USB3, ali nista oba hitrejša od hitrosti diskov? (ne glede na režijske čase)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_13 je 5. feb 2011 ob 00:22 izjavil:matixs ne vem če bo šlo Izgleda pa, da sem jaz imel srečo. Imam isti hoferjev 2T disk, nabavil sem tudi že omenjeno asrockovo usb3 kartico. Odprem računalo, ker imam notri grafiko ati 5870 (ki je kot ena opeka), mi je postalo kar vroče - PCI-e x1 je bil skoraj pokrit. ampak usb kartica je šla vseeno noter. ne vem, če je med grafiki in usb kartico 1 mm \"lufta\". sreča dela pa ko šus - hitrosti so cca 80MB/s se pozna - kakšen velik mkv file je prej pretakalo 20 min, zdaj rabi cca 4 minute. angelofdeath hvala za info   Razlika med USB ključkom, ter tem diskom pa je par UR, v mkv fajlu! Preverjeno... :)"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Živjo,  imam matično http://www.enaa.com/oddelki/racunalnist... Sedaj pa me zanima, kako bi usposobil USB 3.0 ? Priključki so vsi enaki, v manualu lepo piše kje naj bi bili priključki za USB 3.0. Na prenosnem disku pa je prenos maksimalno 30MB/s. Kaj naj naredim ?  Kakšni bi mogli biti priključki za USB 3.0 ? Če bi mogli bit plave barve, jih pri meni ni."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Ta plošča nima USB 3.0."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Kaj pa to potem pomen ?   12x USB 2.0 + 2 USB 3.0"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Tukaj ne vidim da piše usb3.0 http://www.gigabyte.com/products/produc... http://www.agt.si/racunalniska-oprema/m...  Je pa res, če bi sam kupoval ploščo bi tudi razumel da ima 2x usb3.0 12x USB 2.0 + 2 USB 3.0 kaj to pomeni pa če kdo drug ve, ali je tiskarska napaka?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "Zgleda kot napaka. Kje si jo pa kupil?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Kupu sm jo v enaa še zagotovil so mi da podpira USB 3.0."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Tukaj še vedno piše 12x USB 2.0+2 USB 3.0."
+    },
+    {
+        "role": "assistant_20",
+        "message": "http://www.gigabyte.com/products/produc...  na uradni strani ni nikjer omenjenega usb 3 !"
+    },
+    {
+        "role": "assistant_17",
+        "message": "Vrni jo (če rabiš usb 3.0)."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Torej sm dubu nateg :-S Seveda rabim USB 3.0 oz. če sm dal za plato 100€ je logično, da bo imela USB 3.0. Sj bom še prej poklicu v trgovino da mi povedo, če je kaka fora oz. mi jo zamenjajo za drugo plato."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Seveda rabim USB 3.0 oz. če sm dal za plato 100€ je logično, da bo imela USB 3.0.  Haha, malo veliko pricakujes, da bo imela v slo H67 plata za 100€ se USB3. Lahko si vesel, da sploh ima socket za cpu   Gigabyte GA-PH67A-UD3-B3 pa ima USB3"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Kdaj pa si kupil, ker na enaa piše da ni več dobaviljivo?"
+    },
+    {
+        "role": "assistant_21",
+        "message": "In kaj ma to zdej veze s to temo?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Sistem sem kupu 6.4.2011 S tem, ko sem omenu da je bla plata 100€, sem pričakoval, da bo podpirala USB 3.0, saj po eni strani bi mogli bit to že serijsko. Še ko sem naročeval sistem mi je prodajalec preko telefona zagotovil, da ima plata podporo 3.0, zato sem jo tudi vzel, sicer pa tudi v opisu tako piše. Zgleda so imeli tiskarskega škrata. Jutri pokličem v trgovino in upam da razrešimo to napako. Sicer pa kar se plate tiče a je tok napačna al kako ?"
+    },
+    {
+        "role": "assistant_20",
+        "message": "tudi mimovrste ima ocitno napacne specifikacije: http://www.mimovrste.com/artikel/238008..."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Haha, malo veliko pricakujes, da bo imela v slo H67 plata za 100€ se USB3.  Zanimivo, ker sem jaz eno dobo za (celo!) 90€ ;)  Drugače ko boš naslednjo menjaval poglej če ima modre USB priključke (vsi proizvajalci tako označujejo USB 3.0 porte)."
+    },
+    {
+        "role": "assistant_21",
+        "message": "@assistant_22 je 27. apr 2011 ob 21:07 izjavil:Haha, malo veliko pricakujes, da bo imela v slo H67 plata za 100€ se USB3.  Zanimivo, ker sem jaz eno dobo za (celo!) 90€ ;)  Drugače ko boš naslednjo menjaval poglej če ima modre USB priključke (vsi proizvajalci tako označujejo USB 3.0 porte).    Opa, katero pa?   Vidim, da se jih da kar nekaj dobit, celo za 80EUR, ampak vse micro ATX, 2x ram sloti in...socket za cpu."
+    },
+    {
+        "role": "assistant_22",
+        "message": "ASUS P8H67 3.0 je bila pri AGT 92,15€ ko sem jaz naročal... zdaj so jo očitno podražili :)"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Sj 3 tedne nazaj sm kupu verjetno morajo upoštevati zamenjavo glede nato, da so me oni zavedli right ?  Kero naj vzamem če mi odbrijo zamenjavo ?  Morda tole http://www.enaa.com/oddelki/racunalnist..."
+    },
+    {
+        "role": "assistant_23",
+        "message": "pcie usb 3.0 ti dajo pa mir"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Ja 40€ stane, če sm prov vidu. Raj se grem zajebavat z novo plato oz. doplačam 20€ za tisto zgoraj."
+    },
+    {
+        "role": "assistant_23",
+        "message": "20€ pa res.   PCI-E -> USB 3.0 kartica Trans (TS-PDU3)"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Kaj je sploh slaba stran ene plate za 70€, razen tega da ima samo recimo 2 slota za ram. (Ram speed enak, število Sata priključkov, USB plat enako...)"
+    },
+    {
+        "role": "assistant_24",
+        "message": "Pa stare kondenzatorje, slabšo zvočno kartico, samo en PCI-ex 16x, samo 1 dodatni PCI slot, manj izhodov USB, brez Dual, 1Gb Lan...  Nič, dokler dela in ti zadostuje to, kar je gor."
+    }
+]

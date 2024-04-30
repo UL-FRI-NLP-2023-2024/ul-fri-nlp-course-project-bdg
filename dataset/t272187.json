@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "V manjšem podjetju moramo vzpostaviti zanesljiv sistem, ki bo skrbel za varnost podatkov (natančneje datotek načrtov in modelov). Razmišljal sem o nabavi NAS RAID sistema (v katerem bi bili diski povezani v RAID 1 oz. 5). Ta sistem bi potem bil preko gigabitne povezave povezan v lokalno mrežo, preko katere bi uporabniki realtime dostopali do teh datotek, ustvarjali nove, jih popravljali, itd.  Zanimajo me vaša priporočila glede teh sistemov. Sam sem že nekaj gledal za Intel SS4000-E (malo namesnko ohišje, 4xdisk, RAID0/1/5, 2xgigabit ethernet) pa ima baje zelo slabe performance in veliko folka se pritožuje, češ da je totalen crap. Kaj še priporočate v tem rangu (entry-level)?  Sedaj me, poleg varnosti seveda, zanima tudi hitrostna zmogljivost takšnega sistema, da ne bo potem recimo veliko počasneje kot sedaj, ko stvari odpiramo direktno z lokalnega diska. Trenutno so v podjetju 3-je računalniki, ki bi najbolj aktivno uporabljali to pasovno širino.  Hvala za nasvete!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kakšen je budget?  Jaz sem najceneje prišel skozi s strežnikom z 12 hotswap SATA bayi, not sta dva opterona in 2G rama, Linux in Samba, diski so obešeni na areco in zloženi v raid-6 (raid-5 ki mu lahko odletita dva diska, pa še vedno dela, po domače) na diskih pa LVM2, nad njim pa XFS. Stvar je performančno odlična, z 12 250G diski pa dejansko preseže 2 terabajta uporabnega prostora (od tega je 1.5 terabajta namenjenega datotekam, preostanek pa za snapshote, da se da dobit tudi stare verzije datotek, če jih kdo potrebuje)."
+    },
+    {
+        "role": "user",
+        "message": "Budget? Hmm... ni še natančno določen, fino bi bilo da čimcenejše. Kakšno hitrost prenosa ti da potem ta zadeva ven in pa koliko si dal za ta sistem (brez diskov)? Pa je potreba po teh dveh Opetronih in 2GB rama (glede na to da imaš notri profi kontroler, ki ima svoj procesor in cache)? Predvidevam, da imaš to namensko zadevo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tudi sam iščem podobno zadevo, nekako se nagibam da bom vzel tole:  Thecus N5200  Zastopnik za te zadeve je LanCom in zadeva po testih doma in v tujin deluje dobro. Res da je kakšen strežnik kakor je bilo zgoraj napisano perfomančno boljši, problem je samo v tem da potrebuješ znanje da zadev postaviš in vzdržuješ, namensko kišto pa lahko preprosto manegeriaš preko weba, kar zna skoraj vsak. Pa še lepo se da zadeva vključit v AD, tako da tudi pravice bi morale igrat"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sam imam eno malo drugačno idejo, kaj bi bilo dobro za tak sistem, če je treba šparat (verjemi, da vem kaj je to šparanje, ker v firmi ki jim štimam karkoli z računalniki delajo še na celeronih 400 z win98 in nočejo it na karkoli drugega, edino server sem jih prepričal, da kupijo dual xeon 550 - pa še to so vzeli 7 let staro mašino - ampak začuda se niti ena mašina ne sesuva - vse deluje brezhibno).   Na bolhi se prodaja mašina s štirimi xeoni 700MHz s po 1mb cacheja, 2.5Gb rama(nadgradljiv do 16GB) in štirimi scsi diski po 18GB v raid polju. Seveda so diski premajhni, a za sam sistem (karkoli bo že teklo gor) v raid 5 ni nobenega problema in je to dovolj placa.  Potem pa kupiš en odličen sata raid kontroler in gor obesiš 4 diske vsakega s po 500Gb ali več, kar bo okoli 2tera. So pa tudi že diski po en tera, ampak je cena 400 evrov, kar je preveč zaenkrat - ceneje 2x po 500Gb - pride okoli 50 evrov ceneje.   Mašina sama te pride 400 evrov, diski so po 175 evrov X4 ali več in kontroler okoli 200 evrov(kvaliteten) Torej te vse skupaj pride dost ugodno, štirje P3-xeon 700 pa so dovolj za take zadeve."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Dva opterona sta zato, ker je v takih mašinah praviloma bottleneck ravno datotečni sistem (in zato ker je to danes precej ugodna reč - ohišje, motherboard, ram in raid kontroler so bili skupaj vredni 2000 evrov, od tega 12 portni raid kontroler skoraj 1000 evrov).  Bolje se obnesejo FC diski v škatlah in FC switchi, ampak tisto je drag špas. Za tako uporabo se ne splača, če firma ni zares ogromna, pa še takrat je do neke velikosti ceneje imeti oddelčne strežnike."
+    },
+    {
+        "role": "user",
+        "message": "Torej, da obnovim malo aktualno vprašanje: skupen proračun bi naj znašal okoli 3000€. Torej kaj gledati za ta denar?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Za taki denar si lahko komot postaviš rešitev ki jo je predlagal @assistant_0. Zagotovo pa lahko postaviš tudi rešitev ki sem jo predlagal jaz, zdaj samo do tebe odvisno koliko dela si pripravljen vložit, ali uporabiš že preverjeno good rešitev ali pa postaviš sistem na noge sam in ga potem vzdržuješ. Ono Thecus ohišje prazno pride cca 800€, potem pa še samo od velikosti diskov odvisno kaj boš dal noter, vsekakor pa pride skupaj manj kakor 3000€."
+    },
+    {
+        "role": "assistant_3",
+        "message": "a poznas se kasna podobna (prazna) ohisja, ki se jih da dobit pr nas?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Par dni nazaj sem sestavil eno kišto, ki se v ta namen zelo lepo obnese.  Vzel sem poceni Foxconnovo plato s 6+1 SATA štekerji, počil gor 4 G RAMa, AMD 6000+ pa 6 500GB diskov in jih povezal v softverski RAID6.  Pri teh azdevah je fajn, da je SATA vdelan direkt v SB in ni treba prenašati podatkov čez počasen PCI, ravno tako je z Ethrenetom, ki je gigabiten in soliden, saj nVidia ethernet ima obilo dodatkov, med drugim pošten TCP offload in MTU 10.000 (mislim- čez 9.000 je zagotovo).  Stvar dela super. hdparm pravi, da dosegam pri branju mislim da tam nekje 290 MB/s (linearno, seveda)!  Če bi sedaj resneje razmišlal o kaki taki mašinci, bi vzel tisto Asusovo \"4x4\" plato za 2 AMD proca, preprosto zato, ker ima 2x6 SATA štekarjev, ki so vezani direktno na SB... Ja, plata je malce dražja in gor gresta dva proca, ampak kje drugje dobiš off-the-shelf rešitev, ki sprejme 12 diskov ?  Seveda je zaradi deljenosti zadeve (po š SATA na en SB, ki je na svojem CPUju) in \"počasnih\" HT1.0 linkov tu optimalno imeti dva RAID polja, recimo 2x RAID-6, vsako na svoji skupini diskov na svojem CPUju in ju po potrebi \"sešteti\" z LVM v en soliden LG. 2x6x500GB v RAID6 bi ti dalo ~4TB uporabnega placa.  Če se bo pojavila nova verzija te plate za Barcelone s hitrimi HT3.0 linki, bi verjetno tudi RAID-6 z vsemi 12 diski enako lepo delal in bi imel uporabnih 5 TB ob solidnih histrostih prenosa..."
+    },
+    {
+        "role": "user",
+        "message": "Pri teh zadevah je fajn, da je SATA vdelan direkt v SB in ni treba prenašati podatkov čez počasen PCI, ravno tako je z Ethrenetom, ki je gigabiten in soliden, saj nVidia ethernet ima obilo dodatkov, med drugim pošten TCP offload in MTU 10.000 (mislim- čez 9.000 je zagotovo).Če imaš kakšno sevresko plato s PCI-X (66MHz ali 100MHz) ali PCI-E sloti in temu primerno en dober hardwerski kontroler, je pomoje zadeva dosti hitrejša in bolj odzivna (skratka ni ozko grlo v kontrolerju ali podnožju), ker kolikor vem, integrirani kontrolerji ne slovijo kot neka jako dobra stvar, ampak so predvsem najcenejša rešitev..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Saj ti pravim, da stvar _v_praksi_ deluje.  Na dual Opteron mašini imam sedaj 16 diskov po 200 GB v RAID-6 na Areca 1160 kartici v PCI-X 100 MHz slotu.  hdparm -tT zanj pravi:  /dev/sda: Timing cached reads: 1414 MB in 2.00 seconds = 706.83 MB/sec Timing buffered disk reads: 736 MB in 3.00 seconds = 245.07 MB/sec   Sedaj ne morem prilimati podatkov za _softverski_ raid-6 na Linuxu na tej mali AMD64 pixni, a tako iz spommina bi rekel, da je šlo za 2+GiB/s za branej iz bufferja in tam nekje 290 MB/s za branje z diska. Not bad at all. Resda z novimi 500 GB diski, pa vendar.  Saj solidna Areca za PCIE je lahko zelo dobra rešitev ampak taka kartica za 16 diskov je lahko sama zase 1000 EUR.  Če pa za $300+ dobiš motherboard, ki ima 12 SATA štekerjev in lahko nanj počiš še 4 GB RAM-a in dva CPUja in dobiš rezultat, ki ti lahko zlahka zasiti bandwidth Etherneta, je to lahko zelo dobra rešitev...  Sploh, če ne potrebuješ toliko diskov. Če delaš z do 6 diski, imaš za to na razpolago plate za manj ko 100 EUR. S to Foxconnovo sem mega zadovoljen. Poceni zadeva, 6 SATA štekerjev, enostaven dizajn z malo elektroliti, ki bi se lahko napihnili in VRMom, ki je praktično stalno mrzel.  O.K. Softverski RAID ima svoje težave, če zmanjka štroma itd ( ker nima baterijsko napajanega keša itd) ampak to je rešljivo."
+    },
+    {
+        "role": "user",
+        "message": "Brane, lahko poveš, kakšne imaš potem prenose preko mreže? Ker se mi zdi, da je ob takem RAID6 polju zelo ozko grlo že gigabitna mreža. Kakšne so pa prednosti dual gigabit povezave, razen tega da lahko priklopiš nanj različni 2 omrežji...?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Težko rečem, ker je mašina razšraufana trenutno.  NJeno plato in proc sem dal v svo stroj, novo plato zanjo pa dobim predvidoma v četrtek.  Glede na pretekle izkušnje pričakujem prenose vsaj 70 MB/s pod NFSom pri branju večjih datotek..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Aja, prednosti dual Gig: hja, odvisno kaj rabiš.  Lahko jo recimo izkoristiš za razdelitev klientov na dve veji, kjer ima vsaka veja na razpolago polno prepustnost Gig-Etherneta in ni treba vsem viseti v istem omrežju. To je lahko korsitno, če imaš recimo skupine strojev, ki si znotraj skupine intenzivno izmenjujejo podatke recimo.  Lahko bi tudi stvar uporabil kot nekakšen mrežni RAID in bi mašien povezoval preko para mrežnih, ki bi ju spojil v eno logično mrežno kartico z dvakrat hitrejšimi prenosi- ampak tega v praksi še nisem poskusil..."
+    }
+]

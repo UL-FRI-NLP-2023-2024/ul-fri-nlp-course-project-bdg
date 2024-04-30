@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "Programsko lahko na ventilatorju, ki je na hladilniku procesorja znižam le na okrog 1000 obr/min. Ker še ni tako tih, kot bi želel, nameravam kupiti 3-pinski podaljšek, ki pri nas stane 1,40 €, prerezati rdečo (+) žico in nanjo prilotati upor.   Kateri tri upore naj kupim, da bodo znižali voltažo iz 12 V na manj voltov, in sicer tako, da bodo vrtljaji ventilatorja na enem podaljšku približno 250 obr/min, na drugem 500 obr/min in na tretjem 750 obr/min?   Če se bo ventilator sploh zagnal na najmanjši napetosti, bom uporabil podaljšek z uporom, ki to omogoča, sicer pa drugega. Za moj procesor Intel i5 (Haswell, 35W TDP) ni nevarnosti, da bi se pri 250 obr/min premalo hladil, saj se malo segreva.   Vprašal bi torej: katere upore naj kupim in kje v Ljubljani? Imam ZALMAN CNPS10X Optima hladilnik, ki ima krmiljenje ventilatorja PWM."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hočeš torej obrate regulirat z regulacijo napetosti.  http://www.pcbheaven.com/circuitpages/A...  Jaz bi šel postopno, najprej stestiral, če se ti Zalman sploh obrne recimo pri 5V. Nekateri ventilatorji se ne. Če se tvoj obrne, je bolj malo obratov, koliko točno, bi moral pa zvezat tisto rumeno žičko na cpu fan konektor in pogledat v biosu koliko obratov kaže. Vsaj upam, da bo to delovalo. Pa imaš že znane obrate pri 5V. 7V tud lahko dobiš na molex konektorju, za 12V pa že veš, da ima tvoj Zalmane max. obratov, mislim da je to 1700. Tako imaš 3 točke različnih obratov; če je pri 5V že dovolj malo obratov, da zadovolji tvoje slušne zahteve se ne matraj z upori, ki bodo morali biti nekaj W. Oglej si zgornji link.  Tu je še ena simpl shema, sicer ne z upori. Samo tranzistor je treba pa hladit."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne moreš v biosu nastaviti na low regulation mode, če imaš pwm ventilator ? Katera os. plošča ? Pri meni dela scyte mugen 4 + original 120 mm vent (GlideStream 120 PWM). v idlu na 668 rpm (vsaj tako pravi HWMonitor) in je neslišen.  Fan Speed:  400 (?200 rpm) ~ 1.400 rpm (?10%) (PWM-controlled)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0, hvala za podatke.  @assistant_1, imam ploščo Asus H87 PRO. V biosu ne morem nastaviti na manj kot 1000 rpm."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 15. okt 2013 ob 22:23 izjavil:@assistant_0, hvala za podatke.  @assistant_1, imam ploščo Asus H87 PRO. V biosu ne morem nastaviti na manj kot 1000 rpm.   Menjaj ventilator...  na 1000 rmp bi moglo bit neslišno"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 15. okt 2013 ob 22:40 izjavil:Menjaj ventilator... na 1000 rmp bi moglo bit neslišno Znižanje vrtljajev ventilatorja na procesorskem hladilniku preko kabla z uporom je precej cenejša rešitev, rezultat pa skoraj enak."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nabavi Zalman Fan Mate 2 in se poigraj:  http://www.ebay.com/itm/Zalman-Fan-Mate...  Včasih je prodajal pri nas Mlacom, samo ne vem če so še zastopniki.  LP  Aleš"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 16. okt 2013 ob 10:16 izjavil:Nabavi Zalman Fan Mate 2 Zalman FAN Mate 2 ne pride v poštev, ker moj ventilator dela na 12 V. Zalman je zapisal: \"Do not use FAN MATE 2 with fans that have a start up voltage of more than 5V. Please check the start up voltage in the specifications of the fan.\"  Je še ena varianta utišanja ventilatorja na procesorskem hladilniku, in sicer, da se ventilator odklopi. Ventilator se v tem primeru ne vrti, procesor hladijo le kovinske lamele hladilnika. Nekatere verzije procesorja Intel i3 in i5 se ne grejejo tako zelo, da bi prišlo do poškodb procesorja zaradi pasivnega hlajenja."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pise minimum 5V. Problematicna ti je lahko edino moc, ki ne sme presegati 6W.  Tega Zalmana imam tudi sam in je vec kot dober.  lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tale vent. kupi (ebay.de): Model SY1225SL12SL 500 rpm http://www.scythe-eu.com/produkte/lueft..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 in @assistant_1, najbolj enostavna in najcenejša rešitev je upor na kablu. Kabel z dvema priključkoma in uporom stane 2 €, upor pa lahko sam na kabel nalotam."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne, najbolj poceni rešitev je da vzameš 2 žički in priklopiš napajanje ventilatorja na prost rdeč (+5V) in črn priključek (ground) napajalnika namesto na priklop na os. plošči (cpu fan). Tako boš zmanjšal obrate na cca 500 rpm."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1, takšen priklop ima dve pomanjkljivosti:  1. Nekateri ventilatorji imajo težave z zagonom pri 5 V. Ni dobro, da se ventilator občasno sploh ne zažene pri tej napetosti, ker je zanj prenizka. 2. Ker ventilator ni priključen na matično ploščo, program HWMonitor ali kakšen podoben program ne bo pokazal hitrosti vrtenja ventilatorja."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Meni je prav, da lahko sam kontroliram obrate, ce/ko mi pase. Zato sem vzel tistega Fanmate2. Cena pa tudi ni pretirana - pri AGT-ju je za dobre 3€ (pazi le, da ga imajo res na zalogi).  Pred leti sem tudi kupil nekaj Zalmanovih 12cm ventilatorjev in si poleg dobil upor na kablu s konektorji in si lahko za cca 40% zmanjsal obrate. To uporabljam tam, kjer me ne motijo fiksni obrati."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Glede na procesor,bi ga lahko z malo vecjim hladilnikom + malo undervolta kamot pasivno hladil"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Mislim, da mu kaksnih 40€ za boljsi hladilnik ne bo disalo.  lp"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 16. okt 2013 ob 13:48 izjavil:Pred leti sem tudi kupil nekaj Zalmanovih 12cm ventilatorjev in si poleg dobil upor na kablu s konektorji Poznam te upore na kablu s konektorji. Prodajajo se tudi pri nas za 3,48 €: http://www.mlacom.si/uporcek-za-znizanj...  Ni pa podatka o tem za koliko zmanjšajo obrate ventilatorja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "U = R*I izračunaj."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 16. okt 2013 ob 13:49 izjavil:Glede na procesor,bi ga lahko z malo vecjim hladilnikom + malo undervolta kamot pasivno hladil Procesor že sedaj pasivno hladim s sedanjim hladilnikom ZALMAN CNPS10X Optima, pa ima dokaj majhno velikost hladilnih reber: 132 x 152 x 85 mm, undervolta nisem uporabil.   Hlajenje z ventilatorjem preko upora bo prišlo v poštev pri bolj zahtevnih opravilih, ko bo procesor bolj obremenjen.  @assistant_4 je 16. okt 2013 ob 14:00 izjavil:Mislim, da mu kaksnih 40€ za boljsi hladilnik ne bo disalo. Moj sedanji hladilnik je dovolj dober, zamenjava ne pride v poštev."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 16. okt 2013 ob 14:10 izjavil:U = R*I izračunaj. Na pcbheaven.com so dobro razložili, kako se izračunajo vrednosti pri uporih. http://www.pcbheaven.com/circuitpages/A..."
+    }
+]

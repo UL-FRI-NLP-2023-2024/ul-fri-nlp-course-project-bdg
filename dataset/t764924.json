@@ -1,0 +1,106 @@
+[
+    {
+        "role": "user",
+        "message": "Imamo telemachovo optiko in njihov modem ima samo 4 Lan izhode. Od tega sta dva za TV podatke dva za net. Rad bi postavil domače omrežje na katerega bi priklopil še mrežni tiskalnik priklopljen na Lan port. Zamislil sem si tako. Imel bi 8 portni žični router na katerega bi pripeljal net iz telemachovega modema. Na ta moj router bi potem priklopil vse naprave (2 tv-ja, dva računalnika, tiskalnik, eon box). Wi-fi bi imel izklopljen. Glede na to da imamo 200mb linijo bi vzel giga portni router. A bi moral imeti router izhod za tiskalnik al bo delalo na Lan port? Moram biti pozoren še na kaj druga pri nakupu routerja?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz bi se zadeve lotil drugače. Telemachov modem bi dal v bridge mode, EON box bi ostal na njem, vse ostalo pa bi obesil na primerno zmogljiv router. V tem primeru router s 4 prostimi gigabitnimi LAN porti zadošča."
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa naredi \"bridge mode\"?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Onemogoči NAT oziroma \"router\" funkcjo v modemu."
+    },
+    {
+        "role": "user",
+        "message": "Čemu pa služi to?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Guglaj NAT, DHCP ipd."
+    },
+    {
+        "role": "user",
+        "message": "Poguglal, a je to zame znanstvena fantastika  Če priklopim eon box v telemachov modem, vse ostalo pa v moj router, bo delalo kaj slabše z običajnimi nastavitvami?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 1. maj 2020 ob 20:18 izjavil:Imamo telemachovo optiko in njihov modem ima samo 4 Lan izhode. Od tega sta dva za TV podatke dva za net. Rad bi postavil domače omrežje na katerega bi priklopil še mrežni tiskalnik priklopljen na Lan port. Zamislil sem si tako. Imel bi 8 portni žični router na katerega bi pripeljal net iz telemachovega modema. Na ta moj router bi potem priklopil vse naprave (2 tv-ja, dva računalnika, tiskalnik, eon box). Wi-fi bi imel izklopljen. Glede na to da imamo 200mb linijo bi vzel giga portni router. A bi moral imeti router izhod za tiskalnik al bo delalo na Lan port? Moram biti pozoren še na kaj druga pri nakupu routerja?  To kar ti iščeš, se ne imenuje router, temveč SWITCH.   Glede na napisano namreč iščeš 'nekaj' kar deluje zgolj kot 'razdelilec', brez kakršnekoli druge dodatne funkcionalnosti. Točno to pa je switch.  Če bi iskal druge funkcionalnosti (boljši Wifi, oddaljeni dostop, ...), potem bi dejansko bilo smiselno razmišljati o lastnem routerju, ki bi nadomestil ponudnikovega. Da pa ta lahko v celoti prevzame to nalogo, mora ponudnik svojega prestaviti v 'bridge mode', poenostavljeno rečeno, ga naresti 'nevidnega', da se ne vpleta v promet."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če je edini problem premajhno število LAN portov, potem je rešitev stikalo.   @assistant_0 je 1. maj 2020 ob 20:44 izjavil:Jaz bi se zadeve lotil drugače. Telemachov modem bi dal v bridge mode, EON box bi ostal na njem, vse ostalo pa bi obesil na primerno zmogljiv router. V tem primeru router s 4 prostimi gigabitnimi LAN porti zadošča.   Tole pa ne bo šlo. Če se odloči za bridge mode, bo Telemachova škatla samo še modem oziroma stikalo, kar je sicer točno to kar običajno hočeš, če imaš svoj lasten router, ampak potem tudi EON box nima kaj delat na modemu, ker več kot ena naprava (router) ne bo dobila IPja. Drugače je z legacy boxi, ki imajo ločeno mrežo."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kupi svoj ruter in na njega prištekaj vse domače naprave, razen EON-a, njega pa dej direktno na modem ker nimaš kaj od njega v svojem omrežju. Na ruterju boš imeč 4 lan vhode, če boš rabil več si kupi poceni unmanaged switch (pod 20 ojrov) in on ti bo kot razdelilec. Switch je tudi praktičen če npr ruter ne boš imel blizu vseh naprav, ker potem potegneš en kabel iz njega do naprav, prišteškaš switch in iz njega v vse ostale naprave."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_3 je 2. maj 2020 ob 00:01 izjavil:razen EON-a, njega pa dej direktno na modem ker nimaš kaj od njega v svojem omrežju  Za osnovno funkcionalost res ni ptorebe, da je v istem omrežju. Če želiš uporabljat tudi Kodi/Plex/VLC za predvajanje vsebin iz interne mreže in po možnosti pričakuješ, da bo delal tudi integrated chromecast, ki rabi delujoč mDNS, bo pa precej lažje v istem omrežju (čeprav se da zrihtat tudi če ni)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Na modem v 1. ali 2. port priklopi 8portni gigabitni switch in potem naprave na switch. Ne obremenjuj se z bridgi, vlani, itd. če rabiš samo več portov."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za nasvete.  Kakšna je pa sploh razlika med switchom in routerjem na Lan portih?(če odmislimo wifi) A ni včasih veljalo, da je switch razdelil download med vse porte enako in nisi mogel na enem lan portu koristiti vsega downloada, ki ga ponuja ponudnik?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 2. maj 2020 ob 17:43 izjavil:Hvala za nasvete.  Kakšna je pa sploh razlika med switchom in routerjem na Lan portih?(če odmislimo wifi)   Stikalo (switch) deluje na L2 in posreduje pakete na podlagi naslova MAC (po domače znotraj enega omrežja). Usmerjevalnik (router) deluje na L3 in usmerja pakete med omrežji na podlagi naslovov IP (naprimer med tvojim internim omrežjem in zunanjim svetom).   To kar večina uporabnikov razume kot \"router\" pa je tako ali tako all-in-one naprava, ki ima vgrajeno 4-5 ali več portno stikalo, WiFi in SoC, ki je priklopljen na stikalo, običajno laufa nek Linux based OS in opravlja funkcijo usmerjevalnika, požarne pregrade, NAT, DHCP, DNS, itd... (vse kar je nad L2 in ne more handlat že sam switch chip). Tako da razlike med stikalom in LAN porti na takšnem \"routerju\" ni, ker je tisto ravno tako stikalo. Razlika je v tem, da 8 portno stikalo dobiš za 20-25€, \"routerji\" so ponavadi dražji in imajo malokrat vgrajeno več kot 4-5 portno stikalo. Če rabiš samo stikalo, nima smisla plačevat še vseh ostalih funkcij. Pri bolj resnih škatlah, pa stikalo tako ali tako kupiš posebaj.   @user je 2. maj 2020 ob 17:43 izjavil: A ni včasih veljalo, da je switch razdelil download med vse porte enako in nisi mogel na enem lan portu koristiti vsega downloada, ki ga ponuja ponudnik?  Ne."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 2. maj 2020 ob 17:43 izjavil:A ni včasih veljalo, da je switch razdelil download med vse porte enako in nisi mogel na enem lan portu koristiti vsega downloada, ki ga ponuja ponudnik?  To je veljalo 20 let nazaj na poceni hub-ih (al kako se jih je že imenovalo). Tam so podatki iz enega porta bili poslani na vse ostale porte, ne le na ciljnega."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_5 je 2. maj 2020 ob 20:20 izjavil:@user je 2. maj 2020 ob 17:43 izjavil:A ni včasih veljalo, da je switch razdelil download med vse porte enako in nisi mogel na enem lan portu koristiti vsega downloada, ki ga ponuja ponudnik?  To je veljalo 20 let nazaj na poceni hub-ih (al kako se jih je že imenovalo). Tam so podatki iz enega porta bili poslani na vse ostale porte, ne le na ciljnega.  Ampak tudi na hubu ni razloga, da na enem portu ne bi mogel izkoristit celotnega bandwidtha, razen, če ima sam port premalo pasovne širine. Kako se deli pasovna širina med različne naprave je odvisno od protokolov na višjih nivojih in pa od tega, kje so ozka grla. Hub ali pa switch sam od sebe ne bo nič enakomerno razporejal, da posemezna naprava ne bi mogla dobit celotne pasovne širine, če je le ta na voljo (razen kakšna bolj napredna varjanta, ki jo namerno tako nastaviš)."
+    },
+    {
+        "role": "user",
+        "message": "Potem pride zame v poštev nekaj takega? https://www.mimovrste.com/stikala/dlink... Ali pa to https://www.mimovrste.com/stikala/tp-li...  https://www.mimovrste.com/stikala/tp-li...  Je vseeno katerega vzamem?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 3. maj 2020 ob 07:49 izjavil:Je vseeno katerega vzamem?   Oba dva sta čisto vredu za to kar ti rabiš. Vzami katerega hočeš."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za informacije vsem."
+    },
+    {
+        "role": "user",
+        "message": "Ponovno se obračam po nasvet. Nabavil sem 8 portni switch. Eon box pustil na telemachovem routerju na drug izhod priklopil switch. Iz tega switcha naredil mrežo 4 računalnikov, enega printerja in en router. Na računalnikih ki jih imam priklopljene na switch lahko printam preko mreže. Rad bi ta moj router, ki je priklopljen na switch nastavil tako, da bi lahko printal tudi ko sem na wifi priklopljen preko njega. Sem gledal nekaj YouTube a mi ne potegne. Imam pa to Link 1043N. Prosim za pomoč."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 31. maj 2020 ob 22:39 izjavil:Ponovno se obračam po nasvet. Nabavil sem 8 portni switch. Eon box pustil na telemachovem routerju na drug izhod priklopil switch. Iz tega switcha naredil mrežo 4 računalnikov, enega printerja in en router. Na računalnikih ki jih imam priklopljene na switch lahko printam preko mreže. Rad bi ta moj router, ki je priklopljen na switch nastavil tako, da bi lahko printal tudi ko sem na wifi priklopljen preko njega. Sem gledal nekaj YouTube a mi ne potegne. Imam pa to Link 1043N. Prosim za pomoč.  'Ta moj router' = ??? Je to tisti Telemach router? Ali nek drug router? Ki je priključen kam? Nastavljen kako?  Če pa je to govora o Telemach routerju in imaš WiFi preko njega, potem bi zadeva v bistvu morala delovati, če so računalniki na switchu na istem omrežju, kot WiFi omrežje (se dodeljuje naslove iz istega IP območja)."
+    },
+    {
+        "role": "user",
+        "message": "Moj router je mišljen drug router. Vezava je takšna. Telemachov router iz katerega gre na switch. Iz switcha gre na vse ostalo med drugim tudi na printer in moj router. Sedaj sem na mojem izklopil dhcp in kabel iz switcha priklopil na LAN port mojega routerja in mislim da bo delalo. Gre se mi da imam eno omrežje ne dveh. Mrežo sem naredil žično da smo šli na kablovje. V pritličju imam pa svoj router, da ko rabim parkrat na teden wi-fi ga vklopim, ostalo je izklopljeno."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 31. maj 2020 ob 23:28 izjavil:Moj router je mišljen drug router. Vezava je takšna. Telemachov router iz katerega gre na switch. Iz switcha gre na vse ostalo med drugim tudi na printer in moj router. Sedaj sem na mojem izklopil dhcp in kabel iz switcha priklopil na LAN port mojega routerja in mislim da bo delalo. Gre se mi da imam eno omrežje ne dveh. Mrežo sem naredil žično da smo šli na kablovje. V pritličju imam pa svoj router, da ko rabim parkrat na teden wi-fi ga vklopim, ostalo je izklopljeno.  No, kot kaže, si že sam pravilno pogruntal, kako moraš nastaviti 'tvoj' router."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Lep pozdrav,  Jaz pa se ukvarjam z mrežo na routerju od A1. In sicer imam težavo z mrežnim printerjem. V sobo imam speljan kabel, na katerega se lahko priklopim z računalnikom in internet dela. Če pa nanj priklopim mrežni printer pa le tega na mreži ne najde.Če ga priklopim na nadomestni kabel potem ga najde. Ali kdo ve v čem je problem? Kabel verjetno ne bi smel biti težava, če internet po njem deluje.  Hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Od kod pride ta \"nadomestni\" kabel? Je tiskalnik pravilno nastavljen (DHCP ali statičen IP, gateway...)?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zadevo sem sedaj dodobra preizkusil in izgleda takole. Imam hišno napeljavo UTP kablov. Od modema mi gresta dva kabla v sobo po zidu v zidno vtičnico. Na obe vtičnici mi računalnik in internet dela, medtem ko mi mrežni printer na mreži zazna samo na eni vtičnici (na drugi mi sploh lučka na modemu ob portu ne utripa). Sem kabla na modemu zamenjal med sabo in je enako. Na istem kablu (sedaj drugem portu na modemu) mrežnega tiskalnika ponovno ne zazna (lučka ne utripa). Sem mislil, da je kaj na zidni vtičnici in sem odklopil kable in ponovno priklopil. Identična zgodba. Karkoli poizkušam, tiskalnika na mreži sploh ne zazna (sploh ne morem dostopati do njega).  Sicer vse deluje če sta računalnik in printer priklopljena na pravilnih kablih ampak zadevi bi rad prišel do dna. Če se ne bi poglobil bi verjetno že reklamiral printer..."
+    }
+]

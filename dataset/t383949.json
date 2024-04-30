@@ -1,0 +1,90 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Imam sledeč problem. Kupil sem novo osnovno ploščo in sedaj se mi pojavlja konstanten problem pri zaustavitvi sistema. Ko izvršim zaustavitev sistema, se le ta normalno zaustavi, računalnik se ugasne, nato pa se zgodi nekaj zanimivega. Po 2-3 sekundah, ko je računalnik ugasnjen, se le ta samodejno znova zažene!!?? Torej moja edina možnost za popolno zaustavitev sistema je, da takoj ko se računalnik izklopi, potem izklopim še stikalo na napajalniku..Zelo je moteče, zato prosim za kakršni koli predlog, da odpravim to težavo.  ps: zadeva se mi dogaja tako na XP kot tudi na 7 (imam dual boot), zato vem, da OS nima pri tem nobene vloge.  Hvala!  lp, J"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Verjetno je problem v bios-u.   Je mogoče omogočen kakšen wake-up event iz tipkovnice, miške, modema ali lan-a?"
+    },
+    {
+        "role": "user",
+        "message": "Tudi to sem že preveril...Vse v zvezi s tem je na onemogočeno, kakor je tudi po bios defaultu."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Naštej komponente ki jih imaš. Sumim da je kaj z napajalnim sklopom, najverjetneje matična ali napajalnik"
+    },
+    {
+        "role": "user",
+        "message": "- ASUSTeK Computer INC. Model P5QL PRO (stara 2 meseca!!) - Intel(R) Pentium(R) D CPU 3.00GHz / 2 Cores / 2 Logical Processors / 64 bits - Kingston 3gb - ATI Radeon HD 4800 Series  - Napajalnik Power LC6420 420W - 1,5 TB HDD"
+    },
+    {
+        "role": "assistant_2",
+        "message": "mogoče si pa narobe priklopil tiste kable od ohišja za vklop/izklop/HDDled/PWRled,..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "tako je, preveri priključne kable. Pa tudi napajalnik je malenkost preslab."
+    },
+    {
+        "role": "assistant_3",
+        "message": "ejga @user , sem imel oz še imam točno iste težave....  probal sem že use stvari ki so navedene tu :  http://www.overclock.net/windows/490464... http://www.aumha.org/win5/a/shtdwnxp.php  Poglej če boš našel kaj kar ti bo prijelo.... jaz sem našel enostavno ampak ne tok prijazno rešitev, ko se mi komp ugasne takoj ko se zakluče stisnem zadi power knof  druge opcije zaenkat nism našu:S pa se jebem s tem že konkretno doug časa in iščem odgovore, n vem probaj gor na linkih najdt kak koristn odgovor=)  L p Shadow"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poizkusi v varnem zagonu. Če se tam lepo izklopi potem zaženi MSCONFIG (pod Start/Run) in pod zavihkom Startup odstranjuj kljukice pred vrsticam dokler ne najdeš programa, ki ti nagaja. Še prej odstrani kljukico pred \"Automaticaly restart\" v System Properties/Startup end recovery."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 @assistant_1 Napajalni kabli o pravilno priklopljeni, o tem ne dvomim  @assistant_3 Sodeč po tvojem postu v navedenem linku, si zadevo rešil?? \"I updated my BIOS and reset the CMOS and that fixed it!\"  @assistant_4 Probam in poročam. Hvala."
+    },
+    {
+        "role": "user",
+        "message": "Problem rešen!!   Rešitev sem našel na tujem forumu, kjer je bilo rečeno, da to napako povzroča baterija na osnovni plošči. Zanimivo, ko sem jo zamenjal, problemov več nimam!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Hm, čudno tole. Prej bi dejal, da si z menjavo baterije nevede naredil tudi Clear Cmosa in s tem nastavitve podrl na default. Daj nazaj staro baterijo in boš takoj videl, če je res to to. Poročaj."
+    },
+    {
+        "role": "user",
+        "message": "Res je, ko sedaj vstavim nazaj staro (novo) baterijo, zadeva prav tako deluje brez problema. Očitno je zadevo zares rešil reset cmosa. Nima veze, glavno da so težave odpravljene."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Odlično! Hvala za pomemben info."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Da ne odpiram nove teme - imam podobno težavo pri na novo sestavljeni kišti. Matična je GA-785GM-US2H. Ko PC ugasnem s power button, se PC zaustavi, in potem skoraj isti trenutek ponovno začene. CPU vent se že skoraj zaustavi in potem spet zalaufa. Zanimivo pa je, da te težave ni, ko kliknem shutdown v kateremkoli OS."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Probaj nekaj sekund držat pritisnjen power gumb, dokler se računalnik ne ugasne."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ali pa v Power Options pod zavihkom Advanced spodaj pod Power Buttons določiš kaj se naj zgodi, ko pritisneš na Power Button."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4, saj sem napisal, da če ugasnem iz bilokaterega OS, se normalno ugasne. Govorim o restartu ki sledi, če noben OS ni naložen in ugasnem z gumbom. Fosil - tud če držim par sekund je enako. Se ugasne in potem takoj restarta. Sem pa v BIOS pod power management izklopil vse evente, ki bi lahko samodejno vklopili kišto. No, sej \"problem\" ni tako pereč, ker praktično nikoli ne ugašam kište kar tako, pred nalaganjem OS. Je pa zanimov, zakaj se to dogaja."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Aha, pardon, sem spregledal tisto brez OSa. Potem poglej v Cmos nastavitvah Biosa pod Power Management Setup, če je Enejblana funkcija AC Power Loss Restart in jo Disejblaj. Privzeto je sicer na Disable ampak je uporabno, če imaš kak komp za katerega želiš, da se vedno vklopi sam nazaj, če pride npr. do prekinitve el. energije. Takoj, ko pride štrom nazaj, se bo pc sam vklopil in ne bo čakal, da ga nekdo fizično vklopi. Npr. kak manjši serverček. :)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vse je nastavljeno na disabled, še USB device wake up... Mogoče je pa to fičr te plate."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Za hec še izštekaj mrežni kabel in ugasni komp. Če ostane ugasnjen je nekaj narobe okoli WOL. Zato preveri, če imaš zadnjo verzijo biosa. Na Gigabyte strani je zadnji popravek za Bios ravno okoli S3 power state."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Mah, zdej sm še pogruntal, da se sistem ne zbudi iz S3 spanja. Probal sem že vse variante v BIOS in v Win7 64bit. Izklopil/vklopil hibridno spanje itd. S pritiskom na tipkovnico se kišta zbudi, HDD in DVD diode se prižgejo, utripajo, zavrtijo se ventilatorji, ampak na ekranu ni NIČ. HDD in DVD diode se nato ugasnejo in potem se ne dogaja nič več. Iz S1 spanja se zbudi normalno. Plata kot sem rekel GA785GM-US2H.  Ima kdo kakšno idejo, kaj bi lahko še naredil? Disk imam nastavljen na native IDE, grafične driverje (HD4200) imam najnovejše, prav tako vse driverje za plato."
+    }
+]

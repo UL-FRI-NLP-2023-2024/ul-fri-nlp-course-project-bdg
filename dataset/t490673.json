@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "LP!  V knjižnici gradimo Eduroam omrežje in imam rahle probleme pri iskanju primernega strežnika. Ponudbe je ogromno, ni pa enega pametnega sistema iskanja, kjer bi lahko označil zahtevane specifikacije in dobil sisteme, ki ustrezajo. Ker ste verjetno nekateri tukaj že postavljali takšne sisteme oz. ste morda bolj domači v strežniških vodah, vas prosim za malo pomoči.  Zahtevane specifikacije: 1. \"rack mount\" ohišje 1U z izmenljivimi \"hot-swap\" diski - verjetno ne bo narobe, če bo tudi 2U 3. ohišje naj vsebuje redudančni napajalnik 230V 4. osnovna plošča s podporo za dva štirijedrna (\"quad core\") procesorja 5. na osnovni plošči naj bo vsaj ena PCI-Express razširitvena reţa 6. vsaj en štiri-jedrni (\"quad core\") AMD Opteron vsaj 2 GHz hitrostjo in najmanj 23xx druţine ali vsaj en štiri-jedrni (\"quad core\") Intel Xeon procesor z vsaj 2Ghz hitrostjo in najmanj 54XX druţine 7. vsaj 4 GB RAM procesorju ustreznega pomnilnika; z dodatnimi spominskimi moduli mora biti mogoča razširitev na vsaj 32 GB pomnilnika. 8. grafična kartica, lahko na osnovni plošči 9. vsaj dva 100Mb/1Gb Ethernet vmesnika, po moţnosti na osnovni plošči 10. strojni RAID, lahko na osnovni plošči, podprti vsaj RAID nivoji 0 in 1; RAID rešitev mora podpirati interne diske. 11. vsaj 2x 250GB SATA 7200RPM ali vsaj 2x 146GB SAS 10000RPM diska 12. DVD-ROM/CD-RW enota 13. možnost oddaljenega nadzora (možnost kontrole napajanja, možnost ponovnega zagona sistema, sporočanje o napakah sistema preko elektronske pošte, grafični KVM (keyboard,video, mouse) dostop preko Ethernet vmesnika, možnost uporabe oddaljenih medijev (remote media), komunikacija s sistemom preko Ethernet vmesnika, uporaba sistema preko CLI (command line interface), krmilnik deluje tudi pri ugasnjenem strežniku) 14. vsa oprema podprta pod vsaj enem izmed sledečih operacijskih sistemov: RHEL 5 (update 2) ali CentOS 5 (update 2) 15. vsaj triletna garancija na vso ponujeno strojno opremo  No, pa mogoče še kakšno idejo za kak 24 portni switch. Mora podpirat VLANe pa 1GBps hitrost...  lp, Matej"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ee, ni treba za to naredit javni razpis al' pa vsaj zbirat ponudbe?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ni treba... Dovolj je da preveriš ceno pri treh ponudnikih in izbereš najugodnejšega. Lahko pa točno specificiraš, kaj želiš.  @user Vzamite ohišje 2U."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Eduroam rabi server natančno zakaj ?  Logiranje uporabniških podatkov in prometa as usual ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "iz kerga leta so te specifikacije? :)"
+    },
+    {
+        "role": "user",
+        "message": "Jap... Gor je RADIUS server in orodja za logiranje...  IMHO so specifikacije strežnika močno preterane. A kaj čmo, takšne so zahteve.   @assistant_3: Razpis je letošnji...  Matej"
+    },
+    {
+        "role": "assistant_3",
+        "message": "6. vsaj en štiri-jedrni (\"quad core\") AMD Opteron vsaj 2 GHz hitrostjo in najmanj 23xx druţine ali vsaj en štiri-jedrni (\"quad core\") Intel Xeon procesor z vsaj 2Ghz hitrostjo in najmanj 54XX druţine  tega ni več že najmanj 2 leti"
+    },
+    {
+        "role": "user",
+        "message": "Hum, spodaj na dnu strani, kjer so specifikacije strežnika, piše \"razpisna dokumentacija ****/2007\". Očitno so popravili samo nekatere stvari, medtem ko so specifikacije ostale enake.  Sem mislil, da s temi Xeoni mislijo *54XX procesorje. A sedaj vidim tudi, da so omenjeni Opteroni stari in jih je že nasledila nova generacija ali dve.  Očitno imam potem malo bolj odprte roke..."
+    },
+    {
+        "role": "user",
+        "message": "Eno vprašanje glede switcha...  Za potrebe interneta in mreže potrebujemo 24 portni switch, kmalu pa planirajo zamenjati obstoječe telefone z IP telefoni in bi bilo zato pametno razmisliti in morda kupiti switch z 48 porti. Imam malo dileme, al kupiti 2x 24portna switcha ali enega 48? V primeru, da imam 2 24portna, mi v primeru, da crkne eden, še vedno deluje mreža oz. telefon. Kakšna je praksa na tem področju?  Glede samega switcha pa imam trenutno ogledanega naslednjega: HP 1810 series  Vsaj na ethernet switchu bi rabil VLAN tagging support. Na VoIP switchu verjetno vlanov ne rabim ker bi bili gor tako ali tako priklopljeni samo telefoni.  Vaše mnenje?  Matej"
+    }
+]

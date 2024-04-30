@@ -1,0 +1,166 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Zaradi zahtev strank moramo postaviti lastni web strežnik za linux in mysql. Na njem bo tekla web aplikacija za zaprto uporabniško skupino cca. 500 uporabnikov. Aplikacija bo morala generirati kakšen PDF ostalo pa bo shranjevanje podatkov in slik preko obrazcev. Hostanje ni opcija.  Ker gre za pomembne podatke me zanima kaj je najboljša varianta oz. kaj je praksa.  Zahteve so da imam podvajanje in to ne samo na diskih ampak na vsem. Se pravi, če odleti en strežnik mora drugi prevzeti.  Kaj priporočate? 2 strežnika z virtualizacijo in skupnim diskovnim prostorom ali obstaja kaj bolj enostavnega.  Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Takole na pamet težko reči, ker take zadeve dizajniraš s stališča potreb aplikacije in naročnika. Pravilna vprašanja so kolikšen downtime se tolerira, kolišen failover time se tolerira, mora biti podvajane podatkov v realnem času ali lahko asinhrono? Predvidevam, da bo aplikacija navzven vidna na samo enem IP naslovu, torej si oglej rešitve v smeri floating IPja (heartbeat, mogoče bo že ucarp zadostoval, itd).  Praksa je sicer postavit vendor supported solution in potem kriviti vendorja za vse, kar ne dela   Bazo daš master-master, app kodo in apache config rsyncaš, data daš ali na zunanji NAS ali pa rešiš s kakim drbd."
+    },
+    {
+        "role": "assistant_1",
+        "message": "CentOS, Pacemaker/corosync cluster stack za HA cluster... za shared storage pa DRBD. :>"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Master-Slave ali Master-Master baza, ostale datoteke synkaš redno z rsyncom. Failover pa... če si lahko privoščiš nekaj downtima, je lahko ročni, drugače pa well, ucarp?  Al pa via Amazon AWS, load balancer, 2x Apache backend, sync skucaš s pomočjo inotify in rsync ali uploadaš datoteke v S3, Amazon RDS pa za data backend. Pa je problemov na lepem precej manj."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Server Load Ballancing/Failover se pogosto lahko implementira tudi na routerju ali požarni pregradi (kar se tiče same komunikacije).  Seveda če se že greš zares, mora potem tudi ta segment biti HA, in ne le Web/aplikacijski strežnik. Koneckoncev nima smisla, da imaš zadaj vse v visoki razpoložljivosti, potem pa ti neka napaka na firewall-u podre ves vloženi trud."
+    },
+    {
+        "role": "assistant_0",
+        "message": "In ko čisto vse postaviš v HA ugotoviš, da je stvar ratala tako kompleksna za upravljane in vzdrževanje, da vložen trud preseže njeno vrednost.  Ko se postaviš na realna tla, ugotoviš, da je HA dejansko potreben le v kakih 10% primerov, vse ostalo so samo prenapete stranke. No, ubistvu smo krivi ITjevci sami, ker proper HA čisto prepoceni prodajamo. Če imaš single node postavitev, ki je ocenjena na N, potem HA postavitev ni 2.5xN (dva nodea + malo več dela), ampak najmanj 10xN.  In potem začneš razmišljat, da je to vseskup kurc, ker bo v istem prostoru, na isti elektriki, itd ... rabiš najmanj dve ločeni tektonski plošči, še raje dve celini, idealno dva planeta ..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Temu vsekakor ni za oporekati - razen tista z dvema planetoma je pa res že malo huda zaradi latence :)  Dejstvo je, da je treba temeljito presoditi, če HA dejansko potrebuješ.  Če pa ga, potem pa nisi nič naredil, če vso stvar samo polovičarsko spelješ.  Se pa da tudi z malo pameti ugotoviti, kje je najbolj verjetni 'point of failure' in zadeve 'okrepiti' glede na perečnost. Zagotovo pa je velika razlika v ceni implementiranja HA na posameznih segmentih celotne rešitve.  Levji delež tu zagotovo pade na sam web/aplikacijski strežnik in aplikacijo, ki teče na njemu."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Po mojih izkušnjah je daleč najbolj verjeten (heh, zanesljiv) point of failure operater, ki bo nekaj \"na hitro\" popravil, ker se mu bo ravno takrat mudilo domov in ne bo šel delat po izdelani proceduri, ki jo kompleksen HA sistem potrebuje. Zato sem se navadil delati zadeve po rusko - dovolj enostavno, da jih razume tudi operater brez \"dragega\" izobraževanja, privajanja in učenja, in hkrati poskrbim, da je postavitev odporna tudi na človeške neumnosti."
+    },
+    {
+        "role": "assistant_3",
+        "message": "A ni 'po rusko' z macolo? Kar po operaterju... ?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pri drbdju maš lahko še problem s split-brainom, ki ga moraš potem \"ročno\" reševat."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_0 je 10. okt 2012 ob 17:12 izjavil:In ko čisto vse postaviš v HA ugotoviš, da je stvar ratala tako kompleksna za upravljane in vzdrževanje, da vložen trud preseže njeno vrednost.  Ko se postaviš na realna tla, ugotoviš, da je HA dejansko potreben le v kakih 10% primerov, vse ostalo so samo prenapete stranke. No, ubistvu smo krivi ITjevci sami, ker proper HA čisto prepoceni prodajamo. Če imaš single node postavitev, ki je ocenjena na N, potem HA postavitev ni 2.5xN (dva nodea + malo več dela), ampak najmanj 10xN.  In potem začneš razmišljat, da je to vseskup kurc, ker bo v istem prostoru, na isti elektriki, itd ... rabiš najmanj dve ločeni tektonski plošči, še raje dve celini, idealno dva planeta ...   odvisno na čim baziraš rešitev. couchdb je no brainer za master master ofline replikacijo. ampak to ni mysql tko da sem offtopic."
+    },
+    {
+        "role": "assistant_2",
+        "message": "In potem začneš razmišljat, da je to vseskup kurc, ker bo v istem prostoru, na isti elektriki, itd ... rabiš najmanj dve ločeni tektonski plošči, še raje dve celini, idealno dva planeta ...   AWS, torej... sicer je še vedno isti planet, lahko je pa druga celina"
+    },
+    {
+        "role": "user",
+        "message": "Stvari se že malce bolj kristalizirajo in glede na stroške verjetno ne bomo šli v HA.  Kaj priporočate, če bi rekel da potrebujem postaviti server kjer bo tekla aplikacija in je zelo zaželjeno da ni downtime-a. Tudi če kaj odleti mora biti v npr. 1 uri zrihtano. Magari na drugem strežniku.  Sam sem razmišljal o postavitvi strežnika nokaj takega kot je HP DL380 z redundantnim napajalnikom in RAID-5 s petimi diski + spare. V primeru odpovedi pa ne vem ali bi imel 1 slabši strežnik na rezervi in samo prekopiram bazo in aplikacijo ali kaj drugega. Tukaj nisem tako močen zato sprašujem.  Zanima me še katero distribucijo linuxa priporočate? Aplikacija bo spisana v PHP, za bazo še ne vem 100%, verjetno bo mysql. CentOS?  Hvala za vse odgovore. Izvedel sem nekaj zanimivih stvari, ki jih nisem poznal npr. pacemaker/coroync."
+    },
+    {
+        "role": "assistant_6",
+        "message": "MySQL ima še najbolj rusko replikacijo (ki omogoča spodoben failover) v primeru napak, kakšen je hardver je v resnici vseeno, dokler imaš dve fizično ločeni mašini, ki znata ostat sinhronizirani dokler ena ne umre.  Avtomatično lahko failover narediš z eno od že omenjenih tehnologij, če je baza edini storage backend."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nisi še povedal, kakšen bo obseg podatkov. Govoriš tu v nekaj 100gb ali več? Če manj, potem se ti splača vseskupaj zapakirati v eno virtualko na tvoji priljubljeni virtualizacijski platformi in skrbeti samo za to, da je njen image vedno ažuren (frekvenca glede na zahteve stranke) na rezervni mašini."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Backup opcija je koneckoncev lahko zasnovana tudi na virtualizaciji - kar morda odpre še kakšno dodatno možnost?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 11. okt 2012 ob 17:09 izjavil:Nisi še povedal, kakšen bo obseg podatkov. Govoriš tu v nekaj 100gb ali več? Če manj, potem se ti splača vseskupaj zapakirati v eno virtualko na tvoji priljubljeni virtualizacijski platformi in skrbeti samo za to, da je njen image vedno ažuren (frekvenca glede na zahteve stranke) na rezervni mašini.   Pegasus a mi lahko tole bolj razložiš. Z virtualizacijo se v praksi še nisem ukvarjal, čeprav vem za kaj gre.   Računam da se bo nabiralo 100GB podatkov na leto. Aplikacija bo vsebovala prilaganje slik."
+    },
+    {
+        "role": "user",
+        "message": "Ali si mislil samo tako, da vzameš snapshot in ga daš drugam, če odleti."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Danes že vsaka virtualizacijska platforma zna v skupino vzeti več fizičnih mašin in med njimi sinhronizirati virtualke tako, da te delajo dalje (lahko tudi brez prekinitve), tudi ko kaka fizična mašina izpade iz skupine.  Za odprtokodne rešitve boš malo konfiguriral, za komercialne rešitve pa malo plačal in naklikal, pa bo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Na vmware platformi mislim, da bi ti prišle prav dve opciji. Prva je vsphere vmotion, kjer lahko virtualke ročno premikaš iz enga fizičnega hosta na drugega, druga opcija pa je vspshere HA, kjer naj bi ble virtualke v \"real-time\" sinhronizirane.. Bi si pa mogu tudi sam malo pobliže pogledat kako stvari potekajo in v katerih primerih pridejo v poštev.."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 11. okt 2012 ob 16:43 izjavil:Sam sem razmišljal o postavitvi strežnika nokaj takega kot je HP DL380 z redundantnim napajalnikom in RAID-5 s petimi diski + spare. V primeru odpovedi pa ne vem ali bi imel 1 slabši strežnik na rezervi in samo prekopiram bazo in aplikacijo ali kaj drugega. Tukaj nisem tako močen zato sprašujem.    Moraš se zavedat, da ti bo moral slabši strežnik prebavit 200, 300, 400GB velik restore v eni uri, v primeru, da mrkne primarni. Razen, če imaš to kako drugače prevideno (delni restore ali kaj podobnega).   Kaj pa glusterfs? -> klik"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če bo imel fizično ločen aplikacijski nivo od database/filesistema, najbrž ne bo tako hudo?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kaj priporočate, če bi rekel da potrebujem postaviti server kjer bo tekla aplikacija in je zelo zaželjeno da ni downtime-a. Tudi če kaj odleti mora biti v npr. 1 uri zrihtano. Magari na drugem strežniku.  Še vedno AWS. Vse statične datoteke se strpajo na S3, z bazo se lahko ubadaš ročno al pa zakupiš DB as service. Če ti S3 ni všeč, pa pač uporabiš EBS/več njih ustrezne velikosti. V nasprotnem primeru se pač vedno zezaš s hardwerom (precej naporno in stresno na trenutke), kupuješ HW preko palca (in na koncu kupiše nekaj, česar v resnici ne rabiš), plus tile tvoji načrti za hiter failover... če ne veš čisto točno, kaj delaš, ne bo lih hiter, bo šlo pa res veliko živcev takrt, ko jih že itak ni na voljo. Plus, zadeva crkne ob treh zjutraj... in ti narediš kaj že? Vzemi AWS, instance upgrejdaš po potrebi, imaš na voljo res hiter restore iz snapshota in mašine-na-zahtevo, ko jih rabiš. Vmware? Ja, če hočeš zagonit milijon. Opensource? Ja, če res veš kaj delaš. In res rabiš lastno infrastrukturo. Kar je pa verjetno ne."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_2 je 11. okt 2012 ob 20:21 izjavil:Kaj priporočate, če bi rekel da potrebujem postaviti server kjer bo tekla aplikacija in je zelo zaželjeno da ni downtime-a. Tudi če kaj odleti mora biti v npr. 1 uri zrihtano. Magari na drugem strežniku.  Še vedno AWS. Vse statične datoteke se strpajo na S3, z bazo se lahko ubadaš ročno al pa zakupiš DB as service. Če ti S3 ni všeč, pa pač uporabiš EBS/več njih ustrezne velikosti. V nasprotnem primeru se pač vedno zezaš s hardwerom (precej naporno in stresno na trenutke), kupuješ HW preko palca (in na koncu kupiše nekaj, česar v resnici ne rabiš), plus tile tvoji načrti za hiter failover... če ne veš čisto točno, kaj delaš, ne bo lih hiter, bo šlo pa res veliko živcev takrt, ko jih že itak ni na voljo. Plus, zadeva crkne ob treh zjutraj... in ti narediš kaj že? Vzemi AWS, instance upgrejdaš po potrebi, imaš na voljo res hiter restore iz snapshota in mašine-na-zahtevo, ko jih rabiš. Vmware? Ja, če hočeš zagonit milijon. Opensource? Ja, če res veš kaj delaš. In res rabiš lastno infrastrukturo. Kar je pa verjetno ne.  vprašanje je kako je z aplikacijo, če je že v php ... je spet nekaj dela spravt v aws. pa še inhouse če met bazo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Sem preletel še enkrat prvi post.. Ker gre za pomembne podatke me zanima kaj je najboljša varianta oz. kaj je praksa.  @assistant_2 a misliš, da bi bil to pravi fit za omenjen problem? Amazonove storitve vidim predvsem z vidika hendlanja processing pickov in obvladovanja velikih zbirk podatkov za katerih hranjenje je ustrezno poskrbljeno.. Res je, da če tam gor postavi te zadeve se ne bo rabil spraševat kaj se zgodi če odleti kakšen disk ali pa glede uptajma, samo po drugi so še vedno podatki pri providerju nad katerim nima vpliva.. Nimam tolko izkušenj, da bi vedel kaj se podjetja v takih primerih odločajo, vem pa da v našem primeru občutljivih podatkov nismo izpostavljali navzven.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "vprašanje je kako je z aplikacijo, če je že v php ... je spet nekaj dela spravt v aws. pa še inhouse če met bazo.  Deploy serverja pač... ne razumem čisto, kje bi naj bil problem. Baza pa... če je storitev dovolj dobra za US federalce, bi skor moglo zadoščat. Dvomim, da ima bolj pomembne podatke za hranit. Kot tudi dvomim, da bo ob količini podatkov, ki jih AWS shifta sem pa tja, nekdo šal gledat, kaj točno že shranjujejo.  Nimam tolko izkušenj, da bi vedel kaj se podjetja v takih primerih odločajo, vem pa da v našem primeru občutljivih podatkov nismo izpostavljali navzven..  Isto, beri link v odgovoru. It's good enough. Če nisi lih banka. Al pa top secret vladna agencija, ki ne obstaja. V vsakem primeru si pa z javno dosegljivo storitvijo izpostavljen raznim nevarnostim napadov in odtujitve podatkov. Sam pač zagovarjam bolj pragmatičen pristop, kot pa klasičnega \"gremo vse narisat pa overengineerat.\" Če ne drugo, lahko v času razvoja evalvirajo še kako rešitev, ne pa grejo takoj zmetat par jurjev v opremo, ki je ne bojo rabli. 500 uporabnikov... ne zveni baš neka gužva"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_2 je 11. okt 2012 ob 21:02 izjavil:vprašanje je kako je z aplikacijo, če je že v php ... je spet nekaj dela spravt v aws. pa še inhouse če met bazo.  Deploy serverja pač... ne razumem čisto, kje bi naj bil problem. Baza pa... če je storitev dovolj dobra za US federalce, bi skor moglo zadoščat. Dvomim, da ima bolj pomembne podatke za hranit. Kot tudi dvomim, da bo ob količini podatkov, ki jih AWS shifta sem pa tja, nekdo šal gledat, kaj točno že shranjujejo.  Nimam tolko izkušenj, da bi vedel kaj se podjetja v takih primerih odločajo, vem pa da v našem primeru občutljivih podatkov nismo izpostavljali navzven..  Isto, beri link v odgovoru. It's good enough. Če nisi lih banka. Al pa top secret vladna agencija, ki ne obstaja. V vsakem primeru si pa z javno dosegljivo storitvijo izpostavljen raznim nevarnostim napadov in odtujitve podatkov. Sam pač zagovarjam bolj pragmatičen pristop, kot pa klasičnega \"gremo vse narisat pa overengineerat.\" Če ne drugo, lahko v času razvoja evalvirajo še kako rešitev, ne pa grejo takoj zmetat par jurjev v opremo, ki je ne bojo rabli. 500 uporabnikov... ne zveni baš neka gužva  nimajo veze federalci, tud ni to njihova edina rešitev. pa stem ne oporekam da stvar nebi bila varna. oblačnih ponudnikov je itak več amazon je le najbolj razširjen, pa konec koncev obstaja tud opensource stack identičen amazonovem. vse lepo in prav.  ampak pod dokumentnimi rešitvami nima glih neki prov blestečega. tu ti iriscouch in couchdb nudita precej večji izplen z precej manj dela.  pa še vedno imaš doma bazo. lahko pa tudi na svojem mobilnem telefonu, kompletno master replikacijo. pa zadeva je preprosta in narejena za tovrstne probleme.  glede federalcev pa če je couch za cern dost dober bo tud za ... (izjave tega tipa ne držijo vode). včasih si preprosto zavezan ali politiki podjetja drugič zakonodaji."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tehnično so Cloud servisi že zanimivi, varnostno so 'stvar okusa', cenovno pa...?  Če je inhouse HA pod vprašajem zaradi finančnih sredstev, potem dvomim, da si bodo lahko privoščili v oblaku skladiščiti stotine gigabyte-ov? Sicer ne vem, kakšne so dejanske cene, vendar sumim, da stvar (ob ustreznem SLA) na letni ravni ne bo bistveno cenejša, kot sam hw, ki bi ga potreboval za lokalno skladiščenje."
+    },
+    {
+        "role": "assistant_5",
+        "message": "mah cene cloud storitev ali pa hw so zanemarljive. če upostevaš da plačujepš delovno silo za razvoj in vzdrževanje aplikacije. že samo integracija obstoječe in vzdrževanje je za kako magnitudo večji strošek."
+    },
+    {
+        "role": "assistant_8",
+        "message": "http://www.theregister.co.uk/2012/07/03...  http://www.theregister.co.uk/2011/04/26..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ampak pod dokumentnimi rešitvami nima glih neki prov blestečega. tu ti iriscouch in couchdb nudita precej večji izplen z precej manj dela.   In kaj točno ti preprečuje na EC2 instanco inštalirat CouchDB? Sej veš, da AWS ponujajo EC2, kar je nič drugega kot virtualci on demand? Če ti pa baza doma pač tolko pomeni, jo pa mej doma. Your choice.  mah cene cloud storitev ali pa hw so zanemarljive.  Odvisno od faze in uspešnosti (tržne) projekta. Kdaj so, kdaj niso.   Sicer ne vem, kakšne so dejanske cene, vendar sumim, da stvar (ob ustreznem SLA) na letni ravni ne bo bistveno cenejša, kot sam hw, ki bi ga potreboval za lokalno skladiščenje.  Ne bo čisto držalo. Lokalni HW potegne s sabo kup \"skritih\" stroškov tipa elektrika, klima, prostor, uplink, nabava dodatnega hw-ja, ko ga potrebuješ... Tu pa pač plačaš, kolker rabiš (po njihovem ceniku, se razume).  @assistant_8 - pred takimi dogodki nisi nikol in nikjer varen. Smo meli tudi lokalne server room meltdowne, pa ne samo enega. Na AWS je pač tako, da volume snapshotaš redno. Če temu ne zaupaš, pa lahko shranjuješ podatke še kam. Ni pa cloud čudežna rešitev za vse težave. V bistvu rešuje problem nabave in hostanja hardwera na različnih lokacijah po svetu. To je res enostavno in fleksibilno narejeno. Ostali postopki so pač klasika v našem biznisu. Če se jih ne držiš, pa kdaj jebeš ježa."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_2 je 12. okt 2012 ob 08:16 izjavil:Ne bo čisto držalo. Lokalni HW potegne s sabo kup \"skritih\" stroškov tipa elektrika, klima, prostor, uplink, nabava dodatnega hw-ja, ko ga potrebuješ... Tu pa pač plačaš, kolker rabiš (po njihovem ceniku, se razume).  TO je danes verjetno več ali manj že vsakomur jasno, saj je to eden glavnih marketinških argumentov, s katerimi razni Cloud servisi vabijo stranke. Moj pomislek je bil na ogromni količini podatkov, kjer cene niso več v rangu neke spletne trgovince v oblaku, temveč v čisto drugih kategorijah.  Sam aplikacijski del poganjati on demand v oblaku, verjetno nebi bil nek poseben strošek, verjetno bi bilo celo bistveno ceneje, kot vzpostaviti lokalni HA/backup strežnik in ga držati v pripravljenosti. Problem vidim na strani podatkovnega dela, kjer ne moremo več govoriti o nekakšnem 'on demand' principu, saj bi se morali podatki ves čas sinhronizirati, skladiščilo pa bi se 100TB/leto - torej po treh letih že 300 TB. Pri takih količinah podatkov, pa se bojim, da stroški v oblaku niso več 'peanuts'.  Bi pa bilo zanimivo, če bi kdo znal s konkretno številko povedati, koliko bi to stalo - če nič drugega, da dobimo nek približni občutek koliko oblačne storitve dejansko v praksi stanejo."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Raid 5 ali 50 na HPjevem P410 kontrolerju je za zjokat počasen. Tudi sam bi statiko za začetek zmetal na S3, v končni fazi če ne bo ok, potem vzameš EC instance ter notri namestiš nekaj, kar je na API nivoju kompatibilno s S3."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_9: sam natjunat ga morš znat pravilno ;) Z nekaj readahedi in povečanimi request queueji dosežeš tja do 8x default performance, kar zadostuje za večino potreb, je pa še vedno 3x manj kot bi zmogli goli diski."
+    },
+    {
+        "role": "assistant_2",
+        "message": "TO je danes verjetno več ali manj že vsakomur jasno, saj je to eden glavnih marketinških argumentov, s katerimi razni Cloud servisi vabijo stranke. Moj pomislek je bil na ogromni količini podatkov, kjer cene niso več v rangu neke spletne trgovince v oblaku, temveč v čisto drugih kategorijah.  Sam aplikacijski del poganjati on demand v oblaku, verjetno nebi bil nek poseben strošek, verjetno bi bilo celo bistveno ceneje, kot vzpostaviti lokalni HA/backup strežnik in ga držati v pripravljenosti. Problem vidim na strani podatkovnega dela, kjer ne moremo več govoriti o nekakšnem 'on demand' principu, saj bi se morali podatki ves čas sinhronizirati, skladiščilo pa bi se 100TB/leto - torej po treh letih že 300 TB. Pri takih količinah podatkov, pa se bojim, da stroški v oblaku niso več 'peanuts'.  Bi pa bilo zanimivo, če bi kdo znal s konkretno številko povedati, koliko bi to stalo - če nič drugega, da dobimo nek približni občutek koliko oblačne storitve dejansko v praksi stanejo.  Podatek je bill 100GB/letno... kar ni lih ogromno. Drugače pa recimo o velikih količinah podatkov - Instagram \"case study\".  Če te zanimajo cene na AWS, je pa AWC calculator. Sem na hitro poračunal za S3 - 100GB storaga, 10GB in/out na mesec, 1 mio PUT/POST requestov in 10 mio GET requestov = malo manj kot 32 USB/mesec. Bi moglo zadostovati..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ups - nekje se mi je očitno v spomin prikradlo TB namesto GB.  Če te torej tak backup na letni ravni stane nekje okoli 400 USD...se mi zdi, da moraš dobro razmisliti.  Cenovno je zadeva dejansko od primera do primera bodisi ugodna, bodisi neugodna - odvisno, kaj pričakuješ, kaj potrebuješ in kako bi rad imel zadevo implementirano.  Definitivno ne morem reči niti 'je poceni', niti ne morem reči 'je drago'.  Predvidevam, da so točno s tem v mislih tudi koncipirali ceno za te storitve."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sej pravim, ideja v ozadju je \"focus on getting job done\" napram \"gremo gruntat, kake serverje pa RAID kartice rabimo, pa kake omare, pa kje...\". Strošek pa je pol rezultat načina uporabe storitve. 400USD/letno pa ni neka huda cifra za servirat in shranjevat live podatke (to je vse zajeto v zgornjo ceno). Sploh če vzameš v račun ceno strežnika, setupa, backupa, kolokacije in ostalih malenkosti, ki pridejo poleg.  Če pa kdo prav hoče fizičen HW najemat - je Hetzner dobra izbira."
+    },
+    {
+        "role": "assistant_5",
+        "message": "In kaj točno ti preprečuje na EC2 instanco inštalirat CouchDB? Sej veš, da AWS ponujajo EC2, kar je nič drugega kot virtualci on demand? Če ti pa baza doma pač tolko pomeni, jo pa mej doma. Your choice. zakaj bi se zajebaval z postavitvijo virtualke, pa to še ni tak problem, kor vzdrževanje le te. če lahko preprosto najameš servis. vpišeš v bazo naslov replikatorja ga dodaš v balancer in čao. Glede baze doma si pa včasih vezan na to, da imaš lokalno instanco + tega je trivialno preselit replikacijo na drugega ponudnika. nevem kak lipov bog ti je ta amazon ponudnik oblačnih storitev, dokaj ugoden ampak samo to in nič več."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ko bi ti pisal vsaj na pol razumljive stavke..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "pejt ti branjevkam prodajat tvojo amazon ekspertizo. pa ablačne sturitve. pust kompjutre k ne zastopš za kva se gre. al pa pejt za lektorja."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ti pa izvoli iti nazaj v OŠ. Da te naučijo vsaj približno spodobnega in delno razumljivega izražanja."
+    }
+]

@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "message": "Sistem: Athlon XP 2600+ RAM: 2x512 MB (Geil) Matična: Gigabyte: GA-7N400 Pro2 v2.0 OS: Windows XP SP2 (sveže nameščen)  Problem: Problem se pojavlja že nekaj časa, zdaj sem formatiral disk in na novo namestil OS, pa je še vedno isto. Računalnik se občasno brez razloga obesi (zmrzne) za nekaj časa - lahko za tri sekunde in potem dela normalno naprej, lahko pa se ustavi za slabo minuto in potem pokaže modri ekran (\"beginning dump of physical memory\") in se restarta. To se zgodi pri najbolj preprostih opravilih - odpiranje naključne mape na disku, odpiranje firefoxa. Med igranjem iger ali uporabljanjem zahtevnejših programov se mi to še ni zgodilo.  Drugi problem, ki se mi je prav tako pojavljal pred in po formatiranju pa je ta, da miš (USB - priklopljena na USB) ob prvem zagonu računalnika ponavadi ne deluje. Senzor je prižgan (miš sveti rdeče), ampak premikati ali klikati se pa ne da. Po restartu pa deluje.  Kdo ve, kaj bi bil vzrok temu?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Računalniki se brez razloga ne obesijo (zmrznejo). Vedno je neki razlog, če je v strojni opremi, so lahko okvarjeni napajalnik, matična plošča, grafična plošča. Kondenzatorji v vseh teh napravah se eni prej, drugi pozneje iztrošijo in začnejo delati težave."
+    },
+    {
+        "role": "user",
+        "message": "Ja, imaš prav. Brez meni znanega razloga. OS je sveže nameščen in ne počnem nič strojno zahtevnega.  Veš mogoče, kako bi ugotovil katera komponenta je okvarjena?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Preveri RAM z memtest86+ Po moznosti vsak modul posebaj."
+    },
+    {
+        "role": "user",
+        "message": "Zdaj teče memtest."
+    },
+    {
+        "role": "user",
+        "message": "Memtest je rekel, da ni zaznal napak.  Še kakšna ideja?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "kaj izjavi tisti bluescreen? Pregrevanje?"
+    },
+    {
+        "role": "user",
+        "message": "Uh. Zdaj si me pa dobil. Ne vem, vem samo da je bil en kup ničel in podobnih zadev in na koncu tisti \"memory dump\". Če se zgodi si bom zapisal ali pa slikal in dal na forum. Pregrevanje pa dvomim, da je krivo, ker ga to ni nikoli motilo, zdaj je pa še dokaj sveže posesan. Tudi niso mu problem obremenitve - igre. Lahko je idle celo uro pa hočem poiskati neko datoteko, ali odpreti bitcommet ali kaj podobnega pa ga zmanjka."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Morda so v napajalniku delno okvarjeni kondenzatorji, posledica tega pa je občasno precej večje nihanje napetosti, kot je še sprejemljivo.   Poglej v BIOS kakšne napetosti proizvaja tvoj napajalnik in te vrednosti primerjaj s kakšnim napajalnikom na testu, recimo s  tem  Če pa so okvarjeni elektrolitski kondenzatorji na matični ali grafični, je to možno videti s prostim očesom. Takšni kondenzatorji spustijo nekaj, kar je videti kot želatina. Delajo kondenzatorji sicer še vedno, vendar slabše in sesuvajo sistem."
+    },
+    {
+        "role": "user",
+        "message": "Jaz tega ne najdem v BIOSu :S Verjetno sem jaz slep, amapk tega ni ne pod Frequency/Voltage control, ne kje drugje. A je možno, da tega v biosu ni, ali moram samo bolje pogledati?  Bom zdaj pogledal še matično, če kje kak žele teče:)  Pa pozabil sem napisati: napajalnik je 380 W Antec True 380SP, če komu to še kaj pove.   DODATEK: Zdaj sem pogledal kondenzatorje pa so vsi normalni. Ne zgleda, da bi bilo kaj z njimi narobe."
+    },
+    {
+        "role": "assistant_3",
+        "message": "..hmm, imel sem podoben problem pa so bili krivi Ram-i, kljub temu da je memtest pokazal da je vse ok. Poskušaj odstraniti vsakič po en modul RAM-a in zaženi računalnik znova. Prah v okolicah RAM pravtako lahko škodi, zato slote dobro očisti (izpihaj !). Lahko pa je za to napako kriv tudi trdi disk, saj veš da si windowsi sposojajo za svoje delovanje tudi disk."
+    },
+    {
+        "role": "user",
+        "message": "Bom poskusil. Bom temeljito sčistil pa potem dal to ven. Kako bi pa ugotovil, če je disk kriv? Nek program sem že zagnal, za pregledovanje diska (mislim da je bil HD tune in je iskal samo slabe sektorje) - ta je rekel, da je vse super."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz tega ne najdem v BIOSu.....  BIOS moje matične Gigabyte pod PC health status pokaže tole: DDR voltage ...OK; +3,3 V ...OK; +12 V ...OK. Kar pomeni, da je sedaj v redu. Kako pokaže, če je nekaj narobe z voltažo, ne vem, ker se to še ni zgodilo.  Če imaš možnost, si izposodi drug napajalnik in comp preizkusi z njim. Tako boš lahko videl ali težave povzroča tvoj Antec.  Ne bi bilo slabo, da optimiziraš register s kakšnim programom recimo System Mechanic.   Ali pa uporabi program Advanced WindowsCare. O njem so zapisali: \"Za razliko od drugih orodij Advanced WindowsCare ne bo le očistil registra, temveč bo temeljito pregledal celoten sistem Windows, natančno zaznal ozka grla, ki upočasnjujejo delovanje in povzročajo težave, in vse to popravil.\""
+    },
+    {
+        "role": "user",
+        "message": "Zdaj sem končno vse lepo ščistil. RAM sem tudi premaknil v sosednje slote. Ne vem še, če bo zdaj še prihajalo do obešanja, ampak v Everestu sem naredil hitrostne teste za RAM pa ne kaže dobro.  Preden se je težava začela pojavljati (ko je bil RAM še zelo nov): Branje 2195 MB/s Pisanje 920 MB/s Latency 136,9 ns  Preden sem posesal in zamenjal slote: Branje 1885 MB/s Pisanje 807 MB/s Latency 152,6 ns  Po spremembah: Branje 1910 MB/s Pisanje 814 MB/s Latency 151 ns  Pa še te spremembe so verjetno samo zato, ker je bil po spremembah računalnik sveže prižgan, prej je pa že nekaj časa gorel. A je tak upad hitrosti v (približno) dveh letih normalen?"
+    },
+    {
+        "role": "user",
+        "message": "Lahko povem, da miš in tipkovnica še vedno ne delujeta po zagonu in je potreben restart. Zmrznil od včeraj še ni. Zdaj sem zagnal Advanced WindowsCare in je našel nekaj napak, ki jih je baje popravil. Zagnal sem ga še enkrat in je našel še štiri napake v registru in dve v \"privacy sweep\". Jih ponovno popravil in zdaj sta še dve v \"privacy sweep\".  A mi lahko nekdo prosim pove, če je, v prejšnjem postu opisana upočasnitev RAMa, normalna?  EDIT: Še nekaj dodatnih ugotovitev: Izgleda, da ni nič bolje. Tudi pri igrah dela probleme (baje že dalj časa, jaz nisem vedel, ker jih ne igram). Poskusil sem zamenjati 2x512 z eno drugo 512 ploščico, ki jo še imam pa se je zataknilo pri nalaganju igre (CS:S). Potem sem dal v računalnik vse tri ploščice RAMa 2x Geil in 1x Corsair pa je prišel do Windowsov in se potem resetiral. Pa je nekoč deloval v tej kombinaciji RAMa. Zdaj je notri spet 2x512 pa ima probleme. Je pa tako, da ob nalaganju igre vse skupaj zašteka, disk pa očitno neha brati (je tih in lučka za branje se ne prižiga) in je potreben restart."
+    },
+    {
+        "role": "user",
+        "message": "Se oproščam za spam, ampak ne morem več urejati svojega zadnjega odgovora.  Zdaj je v računalniku 1x512 RAMa in zaenkrat še ni zmrznil ali se obesil. Ali to pomeni, da je krivec RAM ali je še vedno možnost, da probleme dela matična ali celo kaj drugega."
+    },
+    {
+        "role": "assistant_2",
+        "message": "daj v računalnik samo drugega in poženi memtest."
+    },
+    {
+        "role": "user",
+        "message": "Memtest še vedno nima pripomb."
+    },
+    {
+        "role": "assistant_2",
+        "message": "pa če daš oba skupaj?"
+    },
+    {
+        "role": "user",
+        "message": "Tudi ni nič rekel. Ampak, koliko časa naj bi sploh tekel ta mem test? Ker pravi, da je vse ok, pa test še kar teče. Zdaj, ko sem samo enega imel notri sem pustil dlje kot prejšnjič z obema."
+    },
+    {
+        "role": "user",
+        "message": "Memtest vedno znova pove, da je vse dobro. Ampak računalnik še vedno povzroča probleme. Zdaj je notri 1x512 MB RAMa in Windowsi (sprehajanje po mapah, kopiranje semtertja ipd.) delajo normalno, brez obešanja. Problem pa se pojavi pri zagonu iger. Trenutno imam nameščen samo Counterstrike Source in da bi prišel v igro, je ponavadi potrebnih več poizkusov, saj med nalaganjem računalnik zmrzne in pomaga le restart. Se je pa že zgodilo, da po tem restartu niti v Windowse ni več prišel.  Ima kdo še kakšno idejo? Saj bi vse skupaj vrgel v smeti, ampak verjetno je kriva le ena komponenta."
+    },
+    {
+        "role": "assistant_4",
+        "message": "POzdravljen!  Malce pozno ampak ne morem verjeti. Tudi sam imam podobne probleme z obešanjem računalnika. Meni ponavadi zmrzne, če poslušam glasbo ali gledam film se zvok ponavlja (delec sekunde) pomaga pa samo reset tipka na kišti.  In ne morem verjet.... imam Gigabyte matično enako kot ti, le da ni pro. Ima oznako S-L. Imam 2x512RAMA, Athlon XP 1700, Geforce 6600GT, Audigy SE zvočno in 300W napajalnik.  Sem že menjal disk, ker je imel nekaj slabih sektorje, novega dal not in je bilo isto.  Testiral tako, da sem dal vse pci kartice ven (če bi bil kakšen IRQ spor mogoče) in vklopil v bisou zvočno na plati, pa čez nekaj časa spet zmrznitev.  BOm še testiral in če pridem do kakšne ugotovitve... pišem. Lep pozdrav. T"
+    },
+    {
+        "role": "user",
+        "message": "A potem bo pa treba kar matično menjati?:( In z njo vse ostalo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "A ima tvoja plata na južnem mostu kakšna hladilna rebra gor? To je tisti čip takoj pod AGP slotom.  Preveri z BurnIn testom in vse daj na 100, razen cd/dvd, printerja. Vse do polnega obremeni in zalaufaj test. Pa instaliraj si kak program za odčitavanje temperature, npr. Motherboard Monitor.  Tukaj imaš BurnIn test: http://www.passmark.com/ftp/bitstd.exe Tu pa Motherboard Monitor: http://majorgeeks.com/downloadget.php?i...  Meni je matična plošča pokazala 101 stopinjo celzija, pri zaprtem ohišju in računalnik zmrznil. Pri odprtem pa vse ok. LP T"
+    },
+    {
+        "role": "user",
+        "message": "Ventilatorja ni. Čip je pa res kar topel (glede na ostale). Bom zdaj naredil te teste s programi.  EDIT: MBM mi normalno kaže temperaturo CPU in Case, pri Sensor 3 pa ves čas piše 0°C. Zdaj sem zagnal še Everesta pa ima malo več temperatur napisanih, ampak ne vem, če bi bilo kaj od tega ta Južni most (te temperature kaže Everest - Osnovna plošča, Procesor, AUX, Grafični procesor in GPU ambient). Nobena temperatura tudi ni posebno visoka.  EDIT2: Test je \"passed\". Bom pa vseeno poskusil kak ventilator usmeriti proti tistemu čipu, saj je kar topel - ne vem koliko stopinj ima, ker očitno senzor ne dela, ali pa ga sploh ni tam, ampak prst je težko držati gor več kot kako sekundo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poskusi v motherboard monitorju pri nastavitvah za temperaturo nastavit tam, če se da sensor 3. Lahko sam določiš v kakšnem vrstnem redu ti jih bo odčitavalo. Zdaj nimam pri sebi, da bi kak screenshot naredil. Pa saj boš znal. ker če ti Everest kaže temperaturo za osnovno ploščo, potem se da v MM tudi nastavit, vsaj jaz sem moral za 3. senzor sam nastavit.  Je pa zanimivo, da če zaženem samo everesta meni kaže normalno temperaturo Osnovne plošče. V MM pa ni več tako normalna in potem se Everest prilagodi MM-ju.  Poskusi, če je možno.  EDIT: Torej, če je prst težko držati gor več kot sekundo imaš tak problem kot jaz, pri meni je isto.  EDIT2: Evo screenshot:   Motherboard Monitor nastavitve senzorja"
+    },
+    {
+        "role": "user",
+        "message": "O, hvala. To nastavitev sem pa spregledal. Temperatura je bila 75 že ko sem imel zagnan samo MBM. Zdaj se sicer nič ne spreminja, ko teče tudi BurIn Test. Zagnal sem še Everesta in res zdaj tudi tu piše 75°C, ampak pod \"Procesor\".  Kako si ti potem to rešil? Samo dodaten ventilator na ohišje, ali še kaj na čip? Ker tam je bolj malo prostora."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Nisem še nič namestil, bom pa na čip dal hladilna reberca pa mali ventilatorček mogoče (če še bo potreba) gor na njih.  Nameravam pa še na ohišje ob strani narediti enega silent 120mm.  Če zaprem ohišje in zalaufam kako igro ali pa več programov na enkrat naraste temperatura tam do 110-120 stopinj. In potem zmrzne - ironično :)  Spremljaj temperature in če se še ti to zgodi, ko bo temperatura normalna, potem bo krivec kje drugje.(pri meni ko nič ne delam ali pa brskam po netu in pri odprtem ohišje znaša 40 C)  Upam, pa da je to, ker se da to z ventilatojem rešiti, pa še strošek ni velik.  Lep pozdrav. T"
+    },
+    {
+        "role": "user",
+        "message": "Upam, da je res to. Hvala za pomoč."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ni blema, samo da bo ok."
+    }
+]

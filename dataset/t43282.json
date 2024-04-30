@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Že nekaj dni se mučim, z naslednjim problemom. Imam dve delovni postaji z Windows 2000 Pro. Na vsaki delovni postaji je lokalno priključen en tiskalnik (na LPT1). Kako naj prvo delovno postajo prepričam v to, da bo tiskalnik, ki je priključen na drugo postajo sama privzame kot tiskalnik LPT2. Vem, da je bilo to možno v Windows 98, saj me je program ob koncu nastavljanja tiskalnika vprašal, ali želim da naj ga MS-DOS based programi vidijo kot tiskalnik LPT2 in zadeva je delovala. Kako naj to zadevo nastavim v Windows 2000? Hvala za odgovore.  LP,"
+    },
+    {
+        "role": "assistant_0",
+        "message": "A ni tko da najporej omrezn tiskalnik dodas pa mu das da ma lpt2 pa configure port pa mu pot das ;) moral bi it... pa das da tiska z dosa tut.."
+    },
+    {
+        "role": "user",
+        "message": "Ja, sam imam problem, ker to ni omrežni tiskalnik, ki bi imel svojo mrežno kartico in svoj IP naslov, ampak je običajen tisklanik, ki je lokalno priključen na delovno postajo. LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Run->CMD.exe  NET USE lpt2 \\\\ime_racunalnika\\ime_tiskalnika"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1: Najlepša ti dala. 100x"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kako pa to narediš na Win98 , ker men to tam pa ne dela."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Run->Command NET USE lpt2 \\\\ime_racunalnika\\ime_tiskalnika"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_1 sklepam pa da tega nisi nikoli naredil pod Windowsi 98 generacije."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Imam en kup printerjev ki laufajo kot omrežni tiskalniki pod raznimi operacijskimi sistemi (od Novell 3.11 preko linuxa, DOSa do windows .NET server) in do vseh se da dostopati preko mreže, ne glede na to, na katerem OS delaš.   Sicer pa povej, kaj natančno te muči, pa bomo poskušali pomagati."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tipični primer : Win98 nanj priključen preko LPT-ja Epsonov printer. SIcer laufa clipperska aplikacija , ampak težava je v tem da bi rad ta printer vidu pod net use commando. Žal ti gonilniki tega ne omogočajo , kot tudi NEt use commanda ti ne bo delala za ta printer , Pod NT-ji da. Je pa res da lokalno nerabiš imeti inštaleranih nobenih gonilnikov , ker lahko direktno printaš na printer saj pod W98 (copy bla to lpt1)..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če prav razumem, imaš na enem win98 printer, na katerega bi rad tiskal z drugega računalnika z win98 iz clipperske aplikacije na lpt1 in ti ne dela ukaz net use? Ne vem, kako imaš zadevo nastavljeno, ampak jaz ravno z tem rešujem probleme tiskanja iz clippersih aplikacij. Po možnosti napišem še en batch file, s katerim uporabnik zaganja aplikacijo in obenem mapira tiskalnik in ga po končanem delu izbriše. Zadeva deluje tudi, če ima na svojem lpt1 portu svoj tiskalnik (izpisi grejo na omrežni tiskalnik)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pri Win98 ne moreš naresti sledečega , kar bi jaz rad. Imam mašino ALFA , na njo je priključen preko LPT1 porta matrični tiskalnik ! NA mašini ALFA , mi ni in ti tudi ni treba inštalerati gonilnikov za matrični tiskalnik. Če imaš kaj izkušenj z dosom obstaja ukaz copy na LPT port . Toda če ga hočeš šerati potem pa moraš inšalerati gonilnike in ta printer šerati , recimo ga šeramo pod imenom PRINTER. Po mreži je le ta viden kot : Dos okno \\\\ALFA\\printer oz na remote mašini X napišeš lahko net use LPT3 \\\\\\ALFA\\printer , seveda oz ponavadi moraš narediti okolje za clipersko aplikacijo če ne drugega da dela ČŠŽ in pravilno printa. Kot tudi net use in net stop ....  1. Jaz bi rad na mašini ALFA izvedel ukaz net use LPTx \\\\ALFA\\printer , kar seveda ne dela ampak tudi ni problem. Problem je v tem da ko so enkrat inštalerani gonilniki za K.... od epsona se z aplikacije pogosto neda printati , oz , ko noče printat ugasneš printer in ga prižgeš in to je to ...spet printa oz. protestera ponavadi s čšž-ji 2. Težava je v tem da lokalno printa čšž-je iz remote mašine pa ne , pa lokalno ne rabim une pin datotek. Iz remote mašine maperam printer , kar mi tudi printa BP , ampak brez čšž-jev , sem probal komplet okolje naresti lokalno pa ne dela oz remot pa tudi ne\""
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja.. Ta problem poznam. Zato imajo vsi iglični tiskalniki v naši firmi ČŠŽ-je hardversko vgrajene. To je bila izrecna zahteva ravno zaradi problemov printanja preko mreže.   Mogoče kot predlog: meni so se pokazali kot najboljši originalni gonilniki od Epsona, predvsem zaradi uporabe printerskih fontov v Windows okolju."
+    }
+]

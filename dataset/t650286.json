@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Sem raje kar odprl novo temo.  Torej, na Linksys E1200v2 sem namestil Tomato (Shibby) firmware in router dela super.  Pomagal sem si s tem tutorialom in nastavil Tomato router kot OpenVPN strežnik: http://www.howtogeek.com/60774/connect-...  Klient PC sem za test naredil v VMware playerju in izgledalo je, da vse dela.  Danes sem pa poskusil preko prijateljevega oddaljenega računalnika (torej drugi javni IP, drugi ISP), tako, da je bil on klient. Skopiral sem tele datoteke, ki sem jih že včeraj naredil na svojem PC-ju v njegovo OpenVPN config mapo: client.key, client.crt, ca.crt in client.ovpn.  OpenVPN se pri njemu poveže (zelena ikona s ključavnico) in njegov PC se tudi pokaže v mojem routerju (torej OpenVPN serverju) ampak ko gre prijatelj na internet preverit IP se mu še vedno prikaže njegov originalen javni IP (in njegov ISP). WebRTC sem izklopil v Forefoxu, tako da to ni problem.  Ko se OpenVPN poveže javi \"Assigned IP: 192.168.1.101\". Tu bi verjetno moral pokazati javni IP za WAN mojega routerja? Namesto tega pa pokaže LAN IP od routerja (dodeljen od DHCP-ja).  Poizkusila sva s TUN in TAP varianto, TCP in UDP (TCP sploh noče povezat, UDP pa ja), poizkusila s klient PC jem z XPji in drugim z Windows 8.1 a problem ostaja enak.  Zakaj torej OpenVPN pravi, da je povezan in se prijateljev oddaljeni PC sicer pokaže v mojem Tomato routerju ampak ko on preveri IP ima pa še vedno originalen javni IP (namesto mojega)? Kaj počneva narobe?  Hvala že vnaprej!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mislim, da imaš postavljeno konfiguracijo za 'Split VPN'. Pri tej varianti gre preko tunel izključno promet, ki je namenjen v tvoje omrežje. Ves ostali promet pa gre vem kot vedno, preko prijateljevega ISP-ja.  Preveri routing tabelo, če je default gateway isti, kot takrat, ko nisi povezan preko OpenVPN.  Naprej pa malo googlaj 'OpenVPN disable split tunnel'"
+    },
+    {
+        "role": "user",
+        "message": "Hm, nikjer nisem nič namensko označil za split varianto.  Routing tabelo v Tomato routerju misliš? Ta je vedno enaka, če vklopim OpenVPN server ali ko ga izklopim, vedno enaka.  Verjetno misliš routing tabelo v Windowsih klient PC-ja? Moram počakat da bo kolega spet doma, javim potem...  Sem googlal 'OpenVPN disable split tunnel' ampak nisem dobil nič kaj takega kar bi mi dalo vedeti v čem je problem.  V bistvu sem šel pri nastavitvah prav po tem postopku, res ne vem v čem bi bil problem: http://www.howtogeek.com/60774/connect-..."
+    },
+    {
+        "role": "user",
+        "message": "Tomato router (OpenVPN server) ima LAN naslov 10.0.0.1. Router oddaljenega PC-ja ima LAN naslov 192.168.1.1.  IP config in routing tabela z izklopljenim OpenVPN:   IP config brez VPN   Routing tabela brez VPN  IP config in routing tabela z vklopljenim OpenVPN:   IP config z VPN   Routing tabela z VPN  Še en (meni) nenavaden detajl - OpenVPN pravi, da je povezan s Client-om (ne bi moral biti s serverjem?). Mogoče se motim:   Client  Hvala za pomoč!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "No jaz imam nastavljeno na TUN. Ravno ta opcija (Direct Clients to redirect Internet traffic) povzroči, da boš dobil preko VPN povezave tudi internetni dostop, ne zgolj dostop do notranjega dela omrežja. Poskusi in poročaj. Sam sicer za testiranje takih stvari uporabljam Android z OpenVPN clientom in povezavo preko mobilnega omrežja, da preverim delovanje \"od zunaj\"."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če hočeš, da gre ruta čez VPN, moraš OpenVPN client-a štartat kot administrator. Vsaj za Win 7 in naprej je bilo pri meni tako.  Probaj in poročaj."
+    },
+    {
+        "role": "user",
+        "message": "Bom še enkrat poizkusil tako TUN kot TAP in dal kljukico pri Direct Clients to redirect Internet traffic.  OpenVPN vedno štartam kot admin v W7 in W8, v XP pa sem tako prijavljen kot administrator.  Poizkusim v roku pol ure nekje in javim kako in kaj. Hvala vam!"
+    },
+    {
+        "role": "user",
+        "message": "Poizkusil s TAP in dal kljukico pri Direct Clients to redirect Internet traffic: DELA! :)  IP in ISP kaže od mojega Routerja namesto originalnega (od oddaljenega PC-ja).  Hvala za vse napotke, še posebej tega glede kljukice! :)  Je to torej to, client PC pripravljen za varno povezavo iz nevarnega WiFija domov preko routerja v internet? Ali moram še kaj narediti?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ko ste že omenjali Android - če se ne motim, ta ne podpira split vpn variante."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Android ne podpira TAP protokola. Sicer obstaja aplikacija, ki trdi, da zmore tudi to, vendar v praksi še nisem preveril ali dela ali ne:   https://play.google.com/store/apps/deta..."
+    },
+    {
+        "role": "user",
+        "message": "@user je 11. avg 2015 ob 23:19 izjavil: Je to torej to, client PC pripravljen za varno povezavo iz nevarnega WiFija domov preko routerja v internet? Ali moram še kaj narediti?   A imati vi tako nastavljeno OpenVPN povezavo? https://openvpn.net/index.php/open-sour...  Bi lahko kdo povedal ali pa kar prilepil screeshot nastavitev za OpenVPN server iz (Tomato) routerja?  Raz bi naredil tako, da bo zadeva tako varna kot je največ lahko v danih okoliščinah.  Hvala. :)"
+    },
+    {
+        "role": "user",
+        "message": "Naredil sem screenshote, takole imam jaz nastavljeno ampak včasih dela včasih pa ne - in ne vem točnega razloga zakaj tako. OpenVPN se sicer vedno poveže in javi, da je \"Connected\" (zelena ikona z zakljenjeno ključavnico) a včasih klient nima dostopa do interneta. Mogoče veste kaj bi moral spremeniti v nastavitvah routerja, da bi bila zadeva stabilnejša?    Basic settings    Advanced settings  Zanima me tudi kaj točno poemnijo tele DNS nastavitve v Tomato in ali bi bilo potrebno kaj premakniti?    DNS settings  OpenVPN povezava se vzpostavi le če nastavim na UDP, TCP ne gre - je to običajno? TUN ali TAP, kaj je boljše (boljše glede varnosti in performansa)?  Enkripcija je TLS, to ja najboljše, ne? Firewall je nastavljen na automatic, je to v redu? Encryptio cipher - je v redu ali bi lahko izboljšal?  WebRTC lahko izklopim v Firefoxu, da ne bo puščal pravih IP-jev ven? Ali s tem izgubim kakšno funkcionalnost brskalnika ali česa drugega?  Opazil sem, da če sta router LAN IP-ja enaka na serverju in klientu OpenVPN ne deluje prav. Ne smeta torej oba biti 192.168.1.1 pač pa se mora network del razlikovati in potem dela v redu.  Hvala za pomoč že v naprej!"
+    },
+    {
+        "role": "user",
+        "message": "Ravnokar sem prebral, da je za prenos vsega preko VPN tunela potrebno v config datoteko vnesti tole:  push \"redirect-gateway def1\"  Ali to drži? Samo to vpišem v config in to je to?  Na splošno me kot nevednega/novega uporabnika pri OpenVPN moti, da se poveže, javi conencted to client, je zele barve in mi daje občutek varnosti, po drugi strani pa če ni vse prav nastavljeno še vedno kaže moj pravi IP in pošilja podatke tudi izven VPN tunela."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz imam OpenVPN 'kompatibilen' strežnik, zato ti ne morem kaj dosti konkretnega reči za strežniško stran na 'originalnem' OpenVPN.  Lahko pa si pogledaš, kako pri meni izgleda konfiguracija na strani klienta: (ves promet se preusmerja skozi tunel)  dev tun\nclient\nproto tcp\nremote-cert-eku \"TLS Web Server Authentication\"\nremote xxx.xxx.xxx.xxx 443\nredirect-gateway def1\npersist-key\npersist-tun\nverb 3\nmute 20\nkeepalive 10 60\ncipher AES-256-CBC\nauth SHA1\nfloat\nreneg-sec 3660\nnobind\nmute-replay-warnings\nauth-user-pass\n;remember_connection 1\n;auto_reconnect 1\n<ca>\n-----BEGIN CERTIFICATE-----\n(brisano)\n-----END CERTIFICATE-----\n</ca>\n<cert>\n-----BEGIN CERTIFICATE-----\n(brisano)\n-----END CERTIFICATE-----\n</cert>\n<key>\n-----BEGIN RSA PRIVATE KEY-----\n(brisano)\n-----END RSA PRIVATE KEY-----\n</key>"
+    },
+    {
+        "role": "user",
+        "message": "Res ti hvala za tole! Ampak sedaj si v neljubi situaciji ker te bom zasul z vprašanji.  Ali je na Windows sitemih res potrebno tole? Jaz tega nimam, upam, da nimam zaradi tega problemov: dev-node MyTap  Meni deluje le, če nastavim na UDP server (na obeh straneh seveda), s TCP se ne poveže: proto udp  Tegale nimam: Je to nujno? Ali le za dodatno varnost? remote-cert-eku  Zakaj si pri remote server zamenjal port 1194 z 433? Security through obscurity? Pa je vredu, če gre VPN skozi port namenjen HTTPS?  Imam pa tole, je to pametno? resolv-retry infinite  Tega nimam. Bi moral dodati? mute-replay-warnings  Tole imam. Pri tebi tega ne vidim? ns-cert-type server  Tage tudi nimam, a sem sploh enkriptiran? :/ auth SHA1  Kaj pomeni reneg-sec 3660, obnova povezave? Zakaj je to potrebno? Tega nimam.  Enkripcijo imam sledečo, mislim, da za moje potrebe zadostuje? cipher AES-128-CBC  Keel alive nimam, potrebujem? keep alive 10 60  Glede kompresije isto? comp-lzo  Verbosity imam na 4, ker sem pobral z enega turoriala, je bolje da dam na 3?  Tega nimam, bi moral dodat? mute 20  Tega tudi nimam: Bi moral dodati? Je to dodatna varnost? auth-user-pass  Sledeče tri imam v posamičnih datotekah. Katera varianta je boljša/varnejša/hitrejša? ca ca.crt cert client.crt key client.key  In pa seveda tole moram očitno takoj dodati: redirect-gateway def1  Je zaporedje teh opcij v config datoteki nepomembno?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Huh, si me pa res zasul z vprašanji....  Pri meni se ta konfiguracijska datoteka samodejno ustvari glede na nastavitve na strežniški strani. Sama nastavitev na strani strežnika je sila preprosta in v bistvu sploh ne ponuja, da bi kaj dosti štrikal okoli teh parametrov ampak so nekje 'zapečeni'.  Jaz si to konfiguracijo preprosto prenesem s strežnika, tako da se z brskalnikom prijavim in kliknem na 'prenos konfiguracije'. Zato je seveda nadvse praktično, da je vse v eni datoteki - bolj 'trotlziher'.  Po defaultu mi sicer certifikate uvrsti bolj na začetek konfiguracije, kar pa se je izkazalo, da mi na Androidu povzroča težave (se ni povezal in metal ven neke errorje). Ko sem jih ročno postavil na dno, se je stvar tudi na Androidu pričela normalno obnašati. Predvidevam, da je to prej posledica kakšnega buga v Android klientu, kot pa da bi to bilo pogoj, saj mi pod Windows-i dela tudi brez popravkov.  Port 443/tcp? Tega imam nastavljenega, ker je praktično v vseh omrežjih odprt. Zatakne se lahko edino v kakšnih omrežjih, kjer imajo preveč pameten firewall, ki preko porta 443 spušča izključno https compliant promet - teh pa ni veliko. Kakršenkoli drug port ponavadi povzroča veliko več težav. Prvenstveno drugače uporabljam IPSec za povezovanje, vendar mi marsikje ne preostane drugega, kot preklopiti na SSL VPN varianto, ker standardni IPSec porti in protokoli niso odprti.  Port 443 ti lahko povzroča težavo na strežniški strani, če imaš na istem IP naslovu še kakšen web server s podporo https. Takrat moraš zadevo prestaviti na drugo IP adreso ali na drug port.  Ker pri meni dela enkripcijo poseben kripto čip, mi po default ponuja 256bit, lahko pa bi nastavil tudi kakšno drugo varianto, vendar mora biti zadeva usklajena tako na serverju, kot v klientovi konfiguraciji. Če bi kaj pridobil z nižjo enkripcijo nisem nikoli preizkušal. Predvidevam pa, da bi se to pri tebi znalo kar poznati. Vsekakor se mi zdi, da je AES-128-CBC čisto dovolj.  Za kompresijo, boš moral preveriti, če jo Tomato sploh podpira, kot tudi druge opcije. Ni nujno, da so na vseh strežnikih podprte iste opcije, čeprav v osnovi vse skupaj temelji na OpenVPN. Razlike so lahko že med verzijami OpenVPN, ki se prenesejo na drug sistem, potem pa se lahko še dela določene prilagoditve, da se zadeva bolje prilagodi sistemu, na katerega se je vse skupaj preneslo.  Kot rečeno, se pri meni konfiguracijska datoteka samodejno kreira, tako da se v bistvu nikoli nisem ubadal s tem, za kaj je katera opcija dobra, kaj bi se zgodilo, če jo pobrišem ali spremenim. Karkoli bi ti še nakladal o opcijah, bi bilo špekuliranje in ugibanje. Lahko ti samo svetujem, da pogledaš, če ima Tomato kakšne linke z razlago konfiguracijskih parametrov v njihovi implementacijo OpenVPN."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Še kratka razlaga UDP vs. TCP in zakaj port 443 in alternative"
+    },
+    {
+        "role": "user",
+        "message": "Hvala za izčrpno razlago!  Jaz sem za \"OpenVPN client / Tomato server\" šel po nekem online tutorialu (http://www.howtogeek.com/60774/connect-... ampak sedaj vidim da je v bistvu zelo pomanjkljiv. Saj povezava se ustvari, ni pa to to. Najprej mi sploh ni pokazalo IP-ja s serverja ampak kar lokalnega (na klientu). Ogromno stvari je v ozadju, ki jih moram še zgruntat, da bom imel res varno in popolno povezavo (s tem mislim na to, da gre ves pretok podatkov skozi VPN tunel, ne nekaj na pol).  Tole mislim, da je ključno: redirect-gateway def1  Za port imam jaz kar gnenričen VPN port (1194), to je pomoje čisto OK za domače okolje. Mislim, da to router sam odpira + Windows firewall (sicer sploh ne bi mogel povezati).  Grem testirat najrej, je pa toliko vseh parametrov, da se težko znajdem...  Še 1x hvala!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "No moja Config datoteka s katero se povezujem na Tomato z OpenVPN strežnikom izgleda nekako tako:  client dev tun proto udp remote xxx.xxx.xxx.xxx 1194 resolv-retry infinite  nobind  ca ca.crt  cert my-client.crt  key my-client.key dh dh2048.pem persist-tun  persist-key  verb 3 #redirect-gateway def1  Redirect gateway def1 ima hash, ker dela normalno brez njega.  Vse skupaj dela brez težav. Prav tako tudi normalno dobim zunanji IP na strani strežnika (uporabljam, da lahko gledam TV iz tujine)."
+    },
+    {
+        "role": "user",
+        "message": "Na Tomato routerju imaš nastavitve tako kot jaz nekaj sporočil višje (screenshot)? Firewall na auto itd.?  Jaz imam conf datoteko takole: client dev tun proto udp remote x.x.x.x 1194 resolv-retry infinite nobind persist-key persist-tun ca ca.crt cert client1.crt key client1.key ns-cert-type server cipher AES-128-CBC comp-lzo verb 4  Vidim, da imaš ti še dh, nimaš pa cipher. Uh, nič mi ni jasno.  Vsi, ki uporabljate OpenVPN, tule lahko testirate, če vam brskalnik spušča skozi \"pravi\" IP: https://www.cactusvpn.com/webrtc-test.h...  Če ja, lahko (v Firefoxu, to pač sam uporabljam) naredite tole in problem bo rešen: V naslovno vrstico vpišete \"about:config\", potrdite da razumete opozorilo, vpišete \"media.peerconnection.enabled\" in nastavite iz \"true\" na \"false\". Vse brez navednic. Potem pa še 1x testirajte."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Da, pri KEYS delu imam še DiffieHellman ključ. Ob generiranju ga je ustvarilo, pa sem ga kar vpisal.   Tisti tvoj test mi pri povezavi skozi VPN zapiše zgoraj oba lokalna IP naslova spodaj pa oba Internetna naslova.  Cipher imam nastavljeno na Use default, torej ga najbrž niti ne uporablja, Compression pa imam na Disabled.  Ponavadi, ko kaj ne dela je najbolje najprej vse onemogočiti, da dobiš osnovno povezavo in potem dodajaš enkripcijo itd., da ugotoviš kaj dela težave. Katera verzija Tomata je sedaj to, ko si prilepil slike. Jaz imam še 1.28, ker router ni pri meni in si ne vzamem časa, da bi ga posodobil zato mi nekatere opcije manjkajo, nekaterih pa pri tebi ne vidim (npr. Push LAN to Clients).  V Firewall-u nisem nič nastavljal.  Zakaj imaš v Config datoteki vpisano \"dev tun\" zgoraj na sliki pa imaš nastavljeno na \"TAP\"?"
+    },
+    {
+        "role": "user",
+        "message": "Slika je od včeraj, danes sem nastavil na TUN in bo tako tudi ostalo verjetno. Sedaj imam TUN v routerji in config datoteki.  Tomato (Shibby) verzijo imam sledečo: 1.28.0000 MIPSR2-130 K26 Max.  Compression imam na Adaptive, čeprav se nisem še poglabljal v to. Cipher imaš na default - potem verjetno uporabljal Blowfish cipher, kar je v redu.  DiffieHellman ključ imam tudi jaz v routerju a nič v config datoteki na klientu. Verjetno bi moral vpisati v config datoteko. To si ti sam ročno vpisal?  Če ti test pri VPN povezavi izpiše tvoj poravi oz. originalni IP ti ga web browser spušča skozi. Firefox in Chrome naj bi imela vgrajen nek dodatek ki ima to slabost, da spušča pravi IP skzi pri uporabi OpenVPNja. IE pa baje da ne."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Dodatek: Push LAN to Clients opcije nimaš ker imaš nastavljeno na TAP. Diffie Hellman imam generirano datoteko in potem v Config.ovpn vpisano ime te datoteke, da ve kje iskati. A ti je ni generiralo, ko si generiral certifikate?  In kje je pravzaprav težava tega, da spušča pravi IP skozi? Speedtest mi npr. napiše operaterja kjer je OpenVPN server. Mene to ne moti. Ti bi rad, da se ti lokalni internetni IP sploh ne bi izpisal? Je to sploh možno?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zanimivo, če vzpostavim PPTP povezavo na isti strežnik mi spodaj izpiše samo oddaljeni zunanji IP. Brskalnik Chrome.  Tale mi še IPv6 naslov vrže ven: https://diafygi.github.io/webrtc-ips/"
+    },
+    {
+        "role": "user",
+        "message": "Meni v Firefoxu samo IPv4. Sicer pa zanimivo ja.  DH datoteko mi je generiralo in sem jo vpisal v server pod keys. A ti si jo potem sam ročno vpisal v config datoteko?  Speedtest mi je na klientu napisal ISP in IP od klienta namesto od OpenVPN serverja. Tega ne dela več odkar sem dal kljukico na \"Direct Clients to redirect Internet traffic\", sedaj kaže IP in ISP serverja.  Vse kar jaz želim doseči je popolna enkripcija vsega prometa ki gre preko VPN tunela. To, da se lahko absolutno varno povežem s klientom na nevarnem WiFiju, vse skupaj enkriptirano tuneliram domov na VPN server (Tomato router) in potem preko domačega ISP-ja varno dostopam na internet, mail, banko itd."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Koliko pa na speedtestu uspete iztisniti iz te vpn povezave na dd-wrt (itak variira v odvisnosti od routerja, a vendarle...)?"
+    },
+    {
+        "role": "user",
+        "message": "Jaz imam Tomato na Linksys E1200 kot OpenVPN server, na klientu mi speedtest pokaže 1,7 Mbps DL in 0,7 Mbps UL. Za preverit mail in še kaj osebnega na nezaščiteni povezavi čisto dovolj pomoje."
+    },
+    {
+        "role": "user",
+        "message": "PS: Še nekaj me zanima - se da VPN povezavo s čim testirati proti napadom, puščanju itd.? Rad bi se prepričal, da je pravilno nastavljena in popolnoma enkriptirana."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Meni gre nekje do 8,5/8,5 (na 20/20 liniji). FTP prenos z/na lokalno mrežo pa gre nekako down 11,5Mbps / up 9Mbps.  Za preverit mail in še kaj..... zvrhan koš.  Sam VPN tunel zagotovo ne 'pušča', lahko ti edino 'pušča' lokalno na računalniku, če recimo nekaj ne uboga routing (ignorira/zbriše default routo, ki kaže v tunel). Na drugi strani pa itak hočeš, da 'spusti'...."
+    },
+    {
+        "role": "user",
+        "message": "Saj nisem mislil, da bi sam tunel puščal pač pa zaradi morebitnih narobe nastavljenih zadev z moje strani. Prvotna nastavitev je bila kar nekaj (tista iz tutoriala), vse je šlo mimo tunela - ravno obratno kot sem želel. S čim bi lahko to stestiral? Rad bi bil prepričan, da gre res vse skozi tunel in to enkriptirano."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Najbolj ziher način, da se prepričaš, je ta, da 'sniffaš' promet med računalnikom in routerjem."
+    },
+    {
+        "role": "user",
+        "message": "Z Wiresharkom se sicer poznava, nisva pa še takšna prijatelja da bi on to naredil zame. :P  Če se da na hitro opredeliti mogoče - kaj bi moral iskati (filtrirati) ko bi snifal povezavo med klient PC-jem in routerjem? Neke paketke v katerih bi lahko bil razviden tekst verjetno (to bi potem pomenilo da nekaj ni v redu)?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zakaj bi pa iskal nek tekst? Aja - zaradi enkripcije misliš? Načeloma lahko gledaš VPN promet, ampak verjemi, da ne boš tam notri nič našel, kar bi izgledalo 'čitljivo'.  Če že 'paničariš', potem glej ostali promet, ki ni vezan na VPN, če tam še kaj drugega 'uhaja'. Pa niti ni treba iskati teksta, bo že čisto zadoščalo, če boš hledal če obstajajo kakšni DNS, http ali https requesti - vse to bi namreč moralo iti skozi tunel, če nimaš 'split tunnel' variante."
+    },
+    {
+        "role": "user",
+        "message": "Roko na srce, ne vem kaj in kako bi moral iskati, da bi videl razliko med pravilnim delovanjem in \"uhajanjem\" podatkov zaradi napačne nastavitve VPN-ja. Kaj bi moral vpisati v filter za iskanje morebitnih DNS, HTTP in HTTPS requestov? Če gre res vse skozi tunel se torej ne sme videti čisto nič nam čitljivega?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "A ne zganjaš malce preveč panike okrog tega? Profesionalcem (NSA) najbrž niti s tem ne boš neviden, za vse ostale pa je to več kot dovolj."
+    },
+    {
+        "role": "user",
+        "message": "Verjetno ja, ampak tak sem. Mislil sem, da je preprosteje in potem ko sem videl, da mi OpenVPN spušča ven (oz. bolje rečeno: mimo) \"pravi\" IP namesto tistega pri strežniku sem se poglobil in videl da ni kar na 1, 2, 3. Pač rad bi da res dela kot mora."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V bistvu se tu ne gre za to, da bi OpenVPN 'spuščal'. On že dela prav - samo ti ga nisi imel nastavljenega, da bi delal tako, ko si želel.  Predstavljaj si, da nekemu podjetju vzdržuješ en strežnik. Da od doma lahko prideš do njega, ti bodo naročili, da si namesti OpenVPN in dali konfiguracijsko datoteko.  a) ali misliš, da te bo to podjetje želelo sponzorirati, da boš preko njih brskal po spletu?  b) vsekakor lahko pričakuješ, da to podjetje na nek način beleži povezave, ki se ustvarjajo, morda tudi URL-je, ki se obiskujejo iz njihovega omrežja. Ali bi ti želel, da lahko admin v tistem podjetju vidi, kje vse si ti preko VPN povezave brskal?  Zato je možno OpenVPN nastaviti tako, da uporablja split tunnel varianto, ali pa varianto, da gre ves promet skozi tunel, kar se uporablja predvsem pri domači rabi VPN povezav ali pri raznih VPN servisih."
+    },
+    {
+        "role": "user",
+        "message": "Da, točno tako. In ker OpenVPN ni ravno navaden consumer program sem zmotno mislil da zelena ikona s ključavnico avtomatsko pomeni da gre vse skozi tunel - moja napaka.  a) Ne. :)  b) Ne, ampak ko bi končal z delom za podjetje bi izklopil VPN in brskal preko svoje povezave (svojega ISP-ja). :P  Razumem kaj mi skušaš razložiti. Ali lahko trdimo, da če na klientu pri speedtestu vidim IP od VPN serverja, da gre potem vse enkriptirano skozi tunel? Jaz mislim da ne, torej se bom moral še poglobiti. Prečesal sem OpenVPN forume a ne najdem enega enostavnega 100% navodila kako preprosto vzpostaviti povezavo med Windows klientom in router serverjem tako, da bo vse šlo skozi tunel in to enkriptirano, torej varno. Ko bom končal, kako naj torej filtriram v Wiresharku da lahko pogledam za morebitne razkrite HTTP, HTTPS in DNS requeste?"
+    },
+    {
+        "role": "user",
+        "message": "PS: Ravnokar sem zguglal nek članek kjer piše da lahko preveriš če ti VPN pošilja vse skozi tunel enostavno tako da uporabiš tracert in vidiš kam gre. Kaj mora torej tracert 8.8.8.8 na klient PC-ju pokazati kot prvi hop - IP routerja ki funkcionira kot OpenVPN server, ne? Če je pa prvi hop lokalni router (tisti pri klient PC-ju), potem VPN pač ne štima oz. gre za split varianto."
+    },
+    {
+        "role": "user",
+        "message": "Ni konca težav z OpenVPN-jem. Danes sem še malo testiral, povezava je bila sklenjena a s klient PC-jem nisem imel dostopa na internet.  Preizkusil sem vse mogoče in na koncu ugotovil tole (neverjetno): če hočem dostop na internet moram v Tomato routerju izklopit možnost \"Direct clients to redirect Internet traffic\".  Po tem je imel klient PC dostop do interneta a What's My IP je pokazal IP lokalnega routerja. Tracert pravtako seveda.  Po tem sem v client config datoteko dodal \"redirect-gateway def1\" in potem se je lahko povezal, imel povezavo na internat ter kazal IP oddaljenega (Tomato OpenVPN) routerja. Upam, da je to sedaj to.  Nenavadno, ravno obratno kot je bilo rečeno tukaj, a \"Direct clients to redirect Internet traffic\" moram očitno imeti izklopljen da dobi klient dostop na internet, z \"redirect-gateway def1\" v config datoteki pa pošlje ves promet (upam) skozi enkriptiran (upam) tunel. Uh...  Še ena zanimivost, če dodam \"dh dh1024.pem\" v config datoteko se OpenVPN noče povezat. Bom še raziskoval..."
+    },
+    {
+        "role": "user",
+        "message": "Danes spet prizkušal, spet ni bilo dostopa na internet. Prekinil povezavo, poveza znova in - deluje. Buggy... Ampak dela. Recimo, da je to to."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ponavadi, ko že prevečkrat premakneš kje kljukice in popraviš konfiguracijo je najbolje vse skupaj ponastaviti in začeti znova. Tudi sam sem se kar nekaj časa ukvarjal s postavljanjem vsega tega, da je delovalo tako kot mi ustreza. Nimam težav s tem, da ne bi bilo dostopa do interneta."
+    },
+    {
+        "role": "user",
+        "message": "Saj bom res naredil vse znova en dan. Ampak zdaj že nekaj dni končno deluje tako kot mora in sem kar vesel. Client config datoteka:  client dev tun proto udp remote x.x.x.x 1194 resolv-retry infinite nobind persist-key persist-tun redirect-gateway def1 # če to vpišem kaže da gre vse skozi VPN tunel (končno!) ns-cert-type server ca ca.crt cert client1.crt key client1.key # dh dh1024.pem - če to vpišem na client config se OpenVPN ne poveže (vsaj ne z obstoječimi server nastavitvami) cipher AES-128-CBC comp-lzo verb 3 # če obkljukam \"Direct clients to redirect Internet traffic\" v Tomatu se OpenVPN poveže a nimam dostopa do interneta na klientu"
+    },
+    {
+        "role": "assistant_1",
+        "message": "dh1024.pem mora biti vpisan tudi na strani strežnika, če želiš, da deluje. Sicer nisem vedel, da dela tudi brez tega."
+    },
+    {
+        "role": "user",
+        "message": "Vsebino datoteke dh1024.pem imam prilepljeno na OpenVPN strežniku, ne vem pa kje moram to na strežniškem delu omogočiti."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ni kaj omogočati. Če je vpisana mora delati."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Upam da moje vprašanje paše v to temo. Na firmi imamo Cyberoam firewall skonfiguriran na Open VPN. Doma imam maca, in po navodilih na proizvajalčevi strani, bi povezavo moral vzpostaviti s Tunnelblick aplikacijo, v katero importiraš config datoteko, ki ti jo skreira firewall. No, v mojem primeru config datoteke Tunnelblick ne prepozna, posledično povezave ne morem odpreti. Ima morda kdo podobno izkušnjo z Cyberoam/mac/openVPN kombinacijo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne morem ti reči konkretno za Cyberoam ampak pri WatchGuardu je konfiguracijska datoteka, ki jo zgenerira požarna pregrada kompatibilna s standardnim OpenVPN klientom (tega uporabljam na Androidu).  Nič te ne bo stalo, če poskusiš namestiti standardni OpenVPN odjemalec in uvoziti to konfiguracijo.  Še prej pa jo preglej, če je sploh podobna OpenVPN konfiguraciji."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hvala za odgovor. Gre za ssl povezavo (to je open VPN, ne?), Tunnelblick sem vzel ker to zahteva proizvajalec. Za druge kompatibilne odjemalce nisem našel podatka. Bom pa preiskusil tvoj predlog.  Frustrirajoče zame je to, da vpn povezave z mac-a nisem uspel vzpostaviti tudi na starem firewallu na cisco standardu. Na pc-ju pa ta vedno dela. Rešitve na webu ali pri sistemcu nisem dobil."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_3 je 20. avg 2015 ob 09:27 izjavil:Hvala za odgovor. Gre za ssl povezavo (to je open VPN, ne?), Tunnelblick sem vzel ker to zahteva proizvajalec. Za druge kompatibilne odjemalce nisem našel podatka. Bom pa preiskusil tvoj predlog.  Frustrirajoče zame je to, da vpn povezave z mac-a nisem uspel vzpostaviti tudi na starem firewallu na cisco standardu. Na pc-ju pa ta vedno dela. Rešitve na webu ali pri sistemcu nisem dobil.  Si šel po postopku, ki je tukaj opisan?"
+    }
+]

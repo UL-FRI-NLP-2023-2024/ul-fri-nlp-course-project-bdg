@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "OK, zdej mam pa res dost življanja v mestu. Super, živim v svoji hiši, ampak do svojega parkirišča pridem skozi velika vrata, ki so bila prej na nek special ključ in so se zapirala, da nestanovalci niso parkirali noter (skozi isti vhod prihajajo tudi stanovalci sosednjega bloka). Zdaj so naredili odlično, na daljinca, tako da se tudi sama zapirajo vrata, ampak tu je pa huge problem- dobili smo lahko največ dva daljinca na stanovanje (oz mi na hišo). Zdaj en more bit u autu od matere, en more bit doma. Zdaj pa a naj vedno upam da bo mimel srečo in ne bo brat vzel drugega daljinca??? Seveda tudi jaz rabim daljinca, samo ga je, kot pravi hišnik, nemogoče dobit, ker je kot že omenjeno, možno samo 2/flat.  Torej, pitalica je, če kdo pozna kakšne delujoče sheme (včasih vem da smo zapornice uspešno \"hekali\", samo tisti daljinci so bli drugačni..ali pa samo drug design??), ali pa celo univerzalca (sej na neko kodo itak primejo vsa vrata, kao za gasilce, če sem prav razumel).  Oz., a kdo pozna kakšnega majstra, ki prodaja in zna skodirat takega daljinca."
+    },
+    {
+        "role": "user",
+        "message": "OK, refresh po nekaj mesecih- še vedno nisem naredil daljinca, bom pa pripopal slike, če mogoče kdo ve, kje (kdo) dela TE daljince, oz. kje dobit kopijo (če se da, ker ni tak kot tisti stari, ki so imeli 8 stikalc pa si naklikal):  Tak je zunaj:     In tak noter:      Any1?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ej, kva piše na čipu? Tuki je mal zmazan pa ne vidm dobr"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pozanimaj se kdo ti je montiral vrata in se pri njih pozanimaj... Po moje nebi smelo bit problema..dokupiš še 2 daljinca in sprogramirali ti bodo že oni.. LP"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kar huda zadeva za shekat (čip HCS301):  • Programmable 28-bit serial number • Programmable 64-bit encryption key • Each transmission is unique • 66-bit transmission code length • 32-bit hopping code • 34-bit fixed code (28-bit serial number, 4-bit button code, 2-bit status) • Encryption keys are read protected  Microchip pač zna"
+    },
+    {
+        "role": "user",
+        "message": "Torej je to eden izmed tistih ki se vsakič posebej s škatlico \"dogovori\" za naslednjo kodo? Darn, pol bo treba res iskat izvajalca..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Glih v tem je catch. Nč se ne dogovarjata. Škatlica že ve, katero kodo ji bo poslal ključ.  Cel ta čip (ki se imenuje KeeLoq BTW) je namenjen temu, da prišparaš sprejemnik v ključu in oddajnik v škatlici.  Stvar dela skoraj tako kot navaden ključ, \"le\" da uporablja rotacijsko kodo, ki se ob vsakem odklepanju spremeni..."
+    },
+    {
+        "role": "user",
+        "message": "OK, torej lahko naredim identično kopijo (no, mi to naredijo), pa potem ne bo problema, ker se bosta oba enako rotirala, right? Ajaaa, darn, eden se bo zarotiral, drugi ne,....potem bo mogu nekdo še škatlco prepričat nej sprejema nov ključ? OK, ok, bom naredu kot sem reku; monterja poiskal :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "No, to je eden od matematičnih haklcev...    Keeloq ma to tako urejeno, da mu lahko določiš \"okno\". Če je iskana kombinacija v oknu, se bo škatla prilagodila ključu, drugače ga bo otpikala. Se pravi, da lahko v zajebanciji samo do X krat pritisneš na tipko ključa brez posledic...  Brez skrbi, brez pisnega privoljenja naročnika del ne boš pri izvajalcu zelo verjetno nič dosegel, saj ti duplikata ne sme narediti.  Zakaj misliš da te stvari sploh montirajo ?  BTW: Tudi z duplikatom zna biti problem, tudio če ti ga izdelajo. Če se zgodi, da se večinoma uporablja samo en ključ, zna drugi pasti izven okna. Samo mislim, da je nekaj haklcev tudi tu. Če stavr pade izven sinhro okna, ne odpove takoj, le nekaj dodatnih pritiskov je potrebnih ali nekaj takega..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če je npr. 20 stanovanj in ima vsak 2 daljinca je to 40 daljincev. Tako, da tisto okno mora biti kar precej veliko. Lahko gre npr. eden 50x čez vrata v nekem času. Drugi npr. ne gredo v tem času. Ampak vseeno morajo tudi drugi kasneje odpret vrata. Ali pa npr., če pol leta ne uporabljaš ključa (bolniška, dopust,...), mora tvoj daljinec prav tako poslati pravo kodo.  To je samo moje razmišljanje čisto po domače. Drugače pa ne poznam tega sistema.   lp, jani"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Razen če škatla ne spremlja 40 oken z rotacijsko kodo hkrati.  Ne vem, ne spomnim se več točno in me to že takrat ni zanimalo kaj dosti, ker mi zadeva ni bla všeč..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Amaterji!!!   (čip HCS301):  • Programmable 28-bit serial number • Programmable 64-bit encryption key • Each transmission is unique • 66-bit transmission code length • 32-bit hopping code • 34-bit fixed code (28-bit serial number, 4-bit button code, 2-bit status) • Encryption keys are read protected  Vse te vstice so samo zmogljivosti tega čipa, kar pa jih software-sko določimo katere od teh funkcij bomo uporabili.  Princip je enostaven! Čip oziroma software v čipu pošlje 66-bitno kodo po DECT odajniku( tista mala srebrna škatlica zravn čipa), ki je vrjetno kodirana! Ob vskem pritisku tipke se zavrti števec pomeni, da se tej 66-bitni številki prešteje neka stevilka, ki je zana samo oddajniku in sprejemniku. Ko daljinec signal odda poveča nasljedno kodo, prav tako pa poveča kodo tudi sprejemnik na ta način mu je znano katero koda bo naslednja. (tako se znebimo ponarejanja kod). Daljinec v 66 - bitni informaciji zapiše:  - 28-bitno kodo daljinca, (vsak daljinec svojo lastno, tako prepozna kateri daljinec odpira vrata) - 4 biti v tem označujejo kaj zahtevamo (katero tipko smo pritisnili) - in 2 bita sta za statu (večinoma se uporablata za kontrolo)   No drugace se to lahko izvede takole:  -vzameš daljinec ter prebereš program iz čipa, kupiš nov identičen čip ter nanj zapečeš isti program (to narediš z programatorjem)!! Potem ti preostane samo da sestaviš identično vezje kar pa ni težko!!!   Have fun!!!!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Samo bo verjetno problem prebrati program z cipa, saj imajo cipi lockbit in ga lahko samo zbrises nemores pa prebrati celotnega programa. Ce se kaj motim me opomnite . Pac n00b"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj res vsi sosede uporabljajo oba daljinca? Ziher je kje kaki 'samski' ki ti lahko proda 2.   lp, FReAK."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Zadeva je čist preprosta. K sprejemniku dodaj še en sprejemnik ter kontakt za odpiranje vežeš paralelno z oriiginal kontaktom. Tako boš lahko imel svoj sistem v njihovem sistemu ter poljubno število daljincev."
+    }
+]

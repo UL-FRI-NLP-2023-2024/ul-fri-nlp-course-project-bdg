@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Pred nekaj dnevi so se na našem družinskem „praračunalniku“ začele težave z USB porti. Sestava računalnika je naslednja:  -Matična plošča: Asrock K7S8X R3.0 -Procesor: AMD Athlon XP 3000+ (Barton) -Grafika: Nvidia GeForce 2 Pro -Trdi(a) disk(a): WDC WD5000AAKB-00H8A0 (Western Digital caviar Blue), Maxtor 6Y080P0 -Operacijska sistema: Win XP SP3, Lubuntu 13.04  Pred nekaj dnevi so se začele težave z USB porti pri delovanu računalnika pod Windows XP. Na enem portu je priključen HP-jev „multipraktik“, na drugem pa Canyonov USB hub (4 USB priključki). Najprej smo opazili težave s tiskanjem, ker tiskalnik ni hotel tiskati, dokument je enostavno ždel v čakalni vrsti. Najprej sem mislil, da so težave z gonilniki tiskalnika. Slednje sem odstranil (po deinstalaciji sem še z driver sweeperjem malo počistil...) in na novo namestil. Takrat sem opazil, da operacijski sistem enostavno ne razpozna naprav, priklopljenih na USB porte. V device managerju pri obeh portih piše „unknown device“. Tudi če katero od naprav izklopim in ponovno vklopim (kabel ven – kabel not ) se v opravilni vrstici pojavi opozorilo „USB Device Not Recognized“ in potem ne gre iskat gonilnikov, kot je to običajno pri vklopu kakšne za računalnik nove USB naprave.  Zadeva je skoraj 100% programske narave, ker če računalnik dela pod Lubunu OS-om, vse naprave delujejo normalno (tiskanje in skeniranje z „multipraktikom“ kot tudi priključitev USB ključkov na USB hub).   Kaj mi svetujete, kako se naj lotim problema? Zadeva je še toliko bolj neprijetna, ker je ta računalnik hkrati tudi tiskalniški strežnik za ostale računalnike v hiši...  LP  Jože"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Povej mi, so ti priključni zadaj na matični plošči?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "http://www.nirsoft.net/utils/usb_device... Za začetek naredi uninstall za vse naprave, desni klik v programu -> uninstall selected device.  Če ne pomaga: device manager, usb ports, uninstall  in naredi restart."
+    },
+    {
+        "role": "user",
+        "message": "Pozdrav  -@assistant_0: Ja, priključki so zadaj na matični...  -@assistant_1: V Device Managerju sem pri Unknown Device naredil unistall ter naredil ponoven zagon računalnika. Po zagonu sistema je dvakrat javil, da je našel novo USB strojno opremo (\"USB new hardware found\", ali nekaj takega...) in tako nato napisal \"Unknown Device\". Tako, da sem po zagonu sistema na istem, kot prej pred uninstall-om...  P.S. Hvala za link do tistega programa, sem nekaj takega iskal zadnjih par dni....  LP  Jože"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Moj klasičen stavek: Lahko so se driverji sesuli..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "V konzoli naredi \"sfc/scannow\".  Če ne pomaga naredi reinstall chipset driverjev ali bootaj v safe mode in počisti chipset driverje z Driver Sweeper. http://www.techspot.com/downloads/4266-..."
+    },
+    {
+        "role": "user",
+        "message": "Pozdrav  Sem z device managerjem deinstaliral vse USB zadeve (plošča ima na voljo USB 1.0 in USB 2.0 porte), naredil \"sfc /scannow\" v terminalu in nato na novo zagnal zadevo. Brez uspeha, vzpostavilo se je prejšnje stanje. Gonilnikov se nisem dotikal, ker na proizvajalčevi strani nekako ni gonilnikov, ki bi se dotikali USB naprav, so samo za AGP vodilo za grafiko, zvočni del in integrirano mrežno kartico:  http://www.asrock.com/mb/SiS/K7S8X%20R3...  Danes sem se lotil še enega poskusa in sem v device managerju najprej deinstaliral USB 2.0 naprave. Takoj po tem je računalnik javil, da je zaznal novo strojno opremo in namestil gonilnike tiskalnika . Preiskusil sem tiskanje in skeniranje, oboje dela. Kaj se je zgodilo, mi ni jasno. Čas bo pa pokazal, ali je trajne narave.  Hvala vsem za pomoč  Jože"
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljeni. Trenutna (pol)rešitev je taka, da sem v upravitelju naprav (device managerju) onemogočil USB 2.0 naprave. Sicer mi javlja, da tiskalnik dela na USB 1.0 napravi, ampak sedaj vsaj dela. Dela tudi skeniranje, ki pa ga uporabljamo relativno malo. Ima pa ta (pol)rešitev čuden stranski pojav. Ob vsakem zagonu računalnika mi uro prestavi za točno dve uri nazaj, kljub nastavitvi na srednjeevropski čas...  Zaenkrat bom zadeve pustil take, kot so, hkrati pa iskal kakšno boljšo rešitev....  LP  Jože"
+    }
+]

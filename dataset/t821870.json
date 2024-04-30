@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "message": "V coworkingu se srečujemo s težavami pri tiskanju, probam navesti čim več dejstev: - tiskalnik najet pri enem od ponudnikov, HP pageWide 477, predelan na posode za barve, mesečni najem... - brezžično povezan v mrežo (wi-fi), nobenih posebnih nastavitev, plug&play - tiska se preko airplay, windwos wi-fi, telefonov, tablic na wi-fi  Stalno so določene težave, da se kakšen računalnik ne poveže na tiskalnik, ga preprosto ne najde, ga lahko potem odstraniš/dodaš, včasih pomaga in deluje, včasih enostavno ne deluje. Včasih se tudi na zaslonu kar pojavi \"blue screen\" z neko napako in pomag samo izklop/vklop iz elektrike.  Pondunik najema nas prepričuje, da je problem naša mreža (edgerouter X + UniFi AC) in da bi moralo povezat na kabel, statični IP...da niso oni krivi itd...  Jaz pa sumim, da je to težava ker imajo pomoje oni kak workaround firmwara, ker zamenjajo kartuše s temi posodami z barvami in da potem to povzroča težave. Sedaj se sprašujem, da bi kupili svoj tiskalnik in uporabljali original kartuše, če bi to rešilo moje težave ali bi res težave še vedno vztrajale. Ne vem zakaj ne bi delovalo na WiFi če je to funkcija tiskalnika, pa sigurno nismo edini ki tako uporabljamo. Nimam neke pametne možnosti druge povezave...  Imamo pa res potrebno po barvnem tiskanju, lahko tudi laser in da se lahko vsi priklopijo na njega. Je kakšna boljša rešitev ima kdo kak predlog? Upam da sem jasno napisal no"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če gre za 2,4/5ghz omrežje in HP... Jaz sem nek podoben printer raje upokojil , kot , da bi se še jebal z njim."
+    },
+    {
+        "role": "user",
+        "message": "Ja, omrežje je tako kot si napisal, mešano. Kaj pa je rešitev? Odprti smo za nakup nekega tiskalnika, ki bo zagotavljal 100% delovanje v takih pogojih, kot sem jih napisal"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če imate v najemu nekaj kar ni HP."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Neki je narobe s samim tiskalnikom ziher, ker mi smo pred kratkim zamenjali oba ta velika laserska barvna z drugim ponudnikom in dobesedno nobeden še ni imel problemov kot ti opisuješ."
+    },
+    {
+        "role": "assistant_2",
+        "message": "HP, ali ne HP, nekaj pravil je treba upoštevati. 1. tiskalnik mora imeti fiksen IP naslov, 2. powezan mora biti v omrežje s UTP kablom (zanesljivost), wi-fi mora biti izključen, če je preko wi-fi je zanesljivost delovanja krepko slabša. 3. če je preko wi-fi mora biti tip povezave obvezno infrastructure in nikakor ne adhoc. 4. vsi odjemalci rač., prenosniki, tablice, itd. morajo do tiskalnika dostopati samo preko ene dostopne točke, torej vašega omrežja.  če dopuščate tudi adhoc povezave do tiskalnika preko wi-fi naprav direktno, potem imate pač sranje kakršnokoli že je."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hekanje kartuš ni vzrok za težave z mrežno povezljivostjo... Prav tako hekanje kartuš ni krivo za blue screen na PCju. \"če dopuščate tudi adhoc povezave do tiskalnika preko wi-fi naprav direktno, potem imate pač sranje kakršnokoli že je.\"  Ad-hoc wifi povezav na printer se je treba čimprej rešiti. To se tako ne dela. Podobno je parkiranju avta doma na balkonu - v 1. nadstropju."
+    },
+    {
+        "role": "user",
+        "message": "OK. Blue screen sicer ni na PCju, ampak na tiskalniku   Potem pa prosim še samo za 1 nasvet... Na tiskalniku gledam (prav na tem mini zaslončku za upravljanje), da je že nastavljen statičen IP v stilu 192.168.1.XXX. Ali moram še kaj nastaviti na routerju? Router je DCHP, pa me samo skrbi ali je dovolj pameten da tega IPja, ne bo poskušal dodeliti še za kakšno drugo napravo. Ali to ni skrb? Če ja, kaj vse je potrebno še urediti.  Bom pa danes poskušal povezati tiskalnik preko kabla.  Uporabniki bodo še vedno tiskali preko npr. AirPrinta, tako da ne vem ali lahko onemogočim prav WiFi na tiskalniku? Ali ga samo \"pozabim\" iz obstoječega brezžičnega omrežja?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Na routerju načeloma ne, na tiskalniku pa praviloma poleg IP tiskalnika vneseš še IP prehoda (gateway) oziroma routerja."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 24. okt 2023 ob 21:15 izjavil: Pondunik najema nas prepričuje, da je problem naša mreža (edgerouter X + UniFi AC) in da bi moralo povezat na kabel, statični IP...da niso oni krivi itd...    Ponudnik ima verjetno nekaj 10, ce ne 100 strank in bo ze kaj vedel o delovanju, tezavah in potencialnih resitvah."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 25. okt 2023 ob 12:21 izjavil:@user je 24. okt 2023 ob 21:15 izjavil: Pondunik najema nas prepričuje, da je problem naša mreža (edgerouter X + UniFi AC) in da bi moralo povezat na kabel, statični IP...da niso oni krivi itd...   Ponudnik ima verjetno nekaj 10, ce ne 100 strank in bo ze kaj vedel o delovanju, tezavah in potencialnih resitvah.   Bi si mislil ja...žal ni tako oz. ni interesa na drugi strani. Citiram \"mi samo posodimo tiskalnik, stranke si morejo same namestiti\""
+    },
+    {
+        "role": "assistant_3",
+        "message": "\"OK. Blue screen sicer ni na PCju, ampak na tiskalniku :| \"  Kako to izgleda? Ima printer ekran? Če ja, potem pa to je problem tistega, ki printer renta.  Še to: WIFI oddajnik na printerju se zagotovo da ugasniti. Če pa res ne, mu pa nastavi geslo, ki ga nihče ne pozna, pa bo konec WIFI zgodbe.  @user je 25. okt 2023 ob 12:57 izjavil:@assistant_5 je 25. okt 2023 ob 12:21 izjavil:@user je 24. okt 2023 ob 21:15 izjavil: Pondunik najema nas prepričuje, da je problem naša mreža (edgerouter X + UniFi AC) in da bi moralo povezat na kabel, statični IP...da niso oni krivi itd...   Ponudnik ima verjetno nekaj 10, ce ne 100 strank in bo ze kaj vedel o delovanju, tezavah in potencialnih resitvah.   Bi si mislil ja...žal ni tako oz. ni interesa na drugi strani. Citiram \"mi samo posodimo tiskalnik, stranke si morejo same namestiti\"   Če potrebujete tudi vzdrževanje, ga je treba plačati. Ni vrag, da se ne najde tudi tak ponudnik najema tiskalnikov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 25. okt 2023 ob 08:12 izjavil:OK. Blue screen sicer ni na PCju, ampak na tiskalniku   Potem pa prosim še samo za 1 nasvet... Na tiskalniku gledam (prav na tem mini zaslončku za upravljanje), da je že nastavljen statičen IP v stilu 192.168.1.XXX. Ali moram še kaj nastaviti na routerju? Router je DCHP, pa me samo skrbi ali je dovolj pameten da tega IPja, ne bo poskušal dodeliti še za kakšno drugo napravo. Ali to ni skrb? Če ja, kaj vse je potrebno še urediti.  Bom pa danes poskušal povezati tiskalnik preko kabla.  Uporabniki bodo še vedno tiskali preko npr. AirPrinta, tako da ne vem ali lahko onemogočim prav WiFi na tiskalniku? Ali ga samo \"pozabim\" iz obstoječega brezžičnega omrežja?  Ce ste tiskalniku dali fiksni IP in je ta IP del DHCP poola, potem je lahko to problem. V routerju je treba oznacit, da tega IP-ja ne dodeli komu drugemu preko DHCP. ODgovor je \"ne\", router ni zadosti pameten, da bi to sam naredil"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Router ne more vedeti, da je na delu kretenski admin, ki ve ne, kaj so to podvojeni IP naslovi..."
+    }
+]

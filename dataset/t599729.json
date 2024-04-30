@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Imam router TP Link WDR3600 na katerega sem naložil Gargoyle 1.6.0. Deluje vse razen WiFi, kjer vsake toliko pade povezava. Na enem forumu sem zasledil, da je težava v OpenWRT in je rešitev verzija 1.5.9. Ima kdo isit model routerja in je naletel na podobno težavo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Version/Model WDR3600 ? 5 jih je http://wiki.openwrt.org/toh/tp-link/tl-... ."
+    },
+    {
+        "role": "user",
+        "message": "Pozabil napisati - v1.4. WiFi je nestabilen tako na 1.5.9 kot 1.5.11. Ocitno bo potrebno iti nazaj na stock, ce ne najdem resitve."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Preveri verzijo 1.4.7.  podoben hrošč: https://dev.openwrt.org/ticket/14441  Kako si namestil Gargoyle ? Si naredil \"nvram erase\" po flashanju ?  Kakšen wifi nic imaš na strani odjemalca ? Razdalja ?"
+    },
+    {
+        "role": "user",
+        "message": "Pobrisal in rebootal. Razdalja je cca 13m, dve steni. Na stock fw je delovalo brez problema. NIC na laptopu je nek vgrajen Ralink, telefon je HTC One."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na obeh prekinja wifi ? Imaš veliko drugih omrežij blizu ? Prestavi na kanal 1,6 ali 11."
+    },
+    {
+        "role": "user",
+        "message": "Ni nobenega drugega brezžičnega omrežja v bližini. Prekinja na obeh.  Edit: kanal 6 s širino 20MHz vsaj zaenkrat deluje. 40MHz ni delovalo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sicer nimam izkušenj z OpenWRT-jem na tem routerju, sem imel pa podobne probleme na wdr4300 (enak HW) in dd-wrt. Klient se na določeni razdalji od ruterja ni več povezal čeprav je bil signal še čisto OK. Če pa se je klient povezal na router bližje in si ga odnesel proč pa je tudi izgubil povezavo čeprav je bil signal čisto OK.  Ta problem je bil potem odpravljen z zadnjim relisom v letu 2013. Od takrat dela zadovoljivo čeprav problemi še vedno ostajajo. Recimo na 5 GHz imam max prenos na klienta 11 MiB/s, s klienta pa 20 MiB/s. Pri 2,4 GHz je v obeh primerih prenos tam med 16 in 20 MiB/s.  Obstaja pa pri dd-wrt en drawback... modeli imajo svoj (proprietary) driver za Atheros radie, tako da s prenosom na OpenWRT ne bo nič. Edino če v OpenWRT nadomestiš kernel + vse module s tistim iz dd-wrt.  Edit: Uff, sem se spomnil da zgornje ne bo šlo, ker ima dd-wrt drugačen MTD layout od OpenWRT-ja."
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Najprej sori, ker sprašujem verjetno že n-krat predelano temo, pa vendarle.  Do sedaj sem našel mnogo različnih nasvetov, kako se namesti drugi router kot AP, vendar mora biti le-ta s prvim povezan z mrežnim kablom. Jest pa tega ne morem imeti. Torej želim nek star router konfigurirati tako, da ga postavim nekam kjer mrežnega kabla ne bo (poleg tega bo tam v uporabi izključno tablica in morda telefon), deliti pa mora signal prvega routerja. Mnja, tudi SSID in geslo na drugem routerju bi moralo biti drugačno kot je nastavljeno na prvem. Administracija pa npr. za prvega na naslovu 192.168.1.1, za drugega pa 192.168.1.2.  Mi lahko kdo pomaga s kakim linkom kje je to opisano na način, da ga razumemo tudi telebani ali pa če je morda pripravljen tukajle povedati kako se to najenostavneje naredi?  Če so potrebne dodatne informacije ali skica, lahko dopišem tudi to. Hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Verjetno bi bilo dobro podati modele routerjev. Pri nekaterih je enostavno, pri nekaterih pa sploh ne gre."
+    },
+    {
+        "role": "user",
+        "message": "Router 1 - Asus RT-N66U Router 2 - Dlink GO-RT-N150"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po domače izklopiš DHCP na drugem routerju mu daš statičen ip ,ki je v istem subnetu npr. 192.168.0.250 in kabl iz drugega routerja vtakneš v eth (1-4) port. Wlan konfigureraš tako kot prvega. Iste nastavitve za varnost samo da mu daš drugi channel. Prvemu dodeliš channel 1 drugemu pa 6."
+    },
+    {
+        "role": "user",
+        "message": "Kabel je med routerjema le v času konfiguracije? Ker pol ga ne morem več imet. Pa wlan bi rad imel med seboj različen..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pol pa rabiš narediti wireless bridge. Če ti podpira kateri ddrwrt potem se da tam notri to krasno nastavit. Moraš pa imeti identične nastavitve za wireless na obeh."
+    },
+    {
+        "role": "user",
+        "message": "Mnja, Asus sicer podpira dd-wrt, ampak ga kar ne bi nalagal, ker sem z obstoječim popolnoma zadovoljen. Dlink pa tega žal ne podpira. Se pa sprašujem - če imam na obeh routerjih enake wifi nastavitve, katero pravilo potem velja kam se prenosnik poveže?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kaj kompliciraš. Greš v trgovino (mislim, da je imel Hofer) in kupiš ojačevalec Wifi signala.  PS: Enega prodajam tudi jaz, EMOS EmGo. Skoraj nov, deluje popolnoma vredu."
+    },
+    {
+        "role": "user",
+        "message": "Problem je v tem, da tam, kjer potrebujem signal ne morem napeljati mrežnih kablov..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "No saj, ta ojačevalec vklopiš v elektriko in nastaviš katero omrežje naj ojača. Ne potrebuje mrežnega kabla."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Namesto ojačevalcev signala raje kupi dva PowerLine adapterja, ki bosta delovala bistveno bolj zanesljivo in hitreje - ojačevalec signala v končni fazi mora spravljati še vedno signal preko zanič pogovjev.   Par PowerLine adapterjev, od katerih ima eden AP točko že vgrajeno stane 50-100EUR."
+    },
+    {
+        "role": "assistant_5",
+        "message": "http://www.polarcloud.com/tomatofaq#how..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_2 je 21. nov 2015 ob 21:45 izjavil:Pol pa rabiš narediti wireless bridge. Če ti podpira kateri ddrwrt potem se da tam notri to krasno nastavit. Moraš pa imeti identične nastavitve za wireless na obeh.   Jaz mam navaden Telemachov Cisco modem/router pa WRT54GL v repeater bridge povezan. Cisco modem ma stock firmware, WRT54GL pa DD-WRT. 54GL ma nastavljen svoj SSID in geslo, na njega pa se da priklopiti preko kabla, ali na wireless. Med sabo nista povezana s kablom.  To je to. Zastonj zadeva, kupiš nek rabljen 54GL za 5€. Se skoraj vsakemu valja nekje na podstrešju."
+    },
+    {
+        "role": "user",
+        "message": "Ok, če razumem prav, bi bilo v mojem primeru dovolj že to, da bi nabavil nek star wrt 54gl, s katerim bi lahko naredil AP brez prisotnih kablov? Ne razumem pa nekaj - v prvem postu si napisal da mora biti SSID enak, v drugem pa da imaš različne...?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Problem istih ssidjev je, da če se premikaš od prvega routerja mimo drugega, bo prenosnik/tablica/telefon vztrajal na prvem routerju dokler bo imel signal. Potem pa se bo priklopil na drugega. Zato imaš lahko zraven drugega routerja slab signal in se moraš na novo povezat, da se priklopi na ta drugi AP.  Spet, če imaš različne SSIDje, je spet ta težava da se moraš ponovno povezat. Meni popolnoma zadošča ta wireless repetitor, ki sem ga postavil v klet (router pa je v 1. nadstropju). SSID je IME-ext in je čist vredu. Ravno tam, kjer rabim wifi, mi ga zmanjka in se preklopi na -ext. Moraš pa vedno dat ojačevalnik nekam, kjer imaš še dovolj signala. Če jaz prav razumem to čudo, mi kaže moč signala z ledicami.  Naj bi šlo s DDWRT, čeprav nisem nikoli poskušal. So pa kar dragi tej WRTji. Enkrat sem jih v avstriji zasledil za 5 ali pa 7€, s tem da so imeli gor nek nemški firmware.   Pazi le na kanale. Router sem nastavil na auto, pravtako ojačevalec. Hudiča sta se oba postavila na 6 kanal. Napake nisem zasledil takoj, sem pa opažal, da je internet zelo počasen. Ko sem spremenil kanal na ojač., je wifi spet normalno zadihal."
+    },
+    {
+        "role": "user",
+        "message": "Ok, poizkusil bom najti nek router in če bo delovalo, javim. thx."
+    }
+]

@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Torej imam naslednji problem, Microsoft-Windows-Kernel-Power, kateri se ponavlja že nekaj časa in sicer zaradi tega pride do naključnega resetiranja računalnika 1-5x na dan. Pregledal sem že cel google in nikakor ne najdem vzroka, pojavljati se je pa začelo po namestitvi windows 10 updejta (1511), prej je bilo vse OK. Vzrokov naj bi bilo več, verjetno je kriv kateri od driverjev zanima me če je že kdo imel podobno težavo. Sumljivi naj bi bili realtek-ovi driverji, vendar ko jih odstranim mi jih windows po resetu namesti nazaj (prilagam slikco). Kako jih poslati v večna lovišča, da bi počivali v miru.   - <System>\n  <Provider Name=\"Microsoft-Windows-Kernel-Power\" Guid=\"{331C3B3A-2005-44C2-AC5E-77220C37D6B4}\" /> \n  <EventID>41</EventID> \n  <Version>3</Version> \n  <Level>1</Level> \n  <Task>63</Task> \n  <Opcode>0</Opcode> \n  <Keywords>0x8000400000000002</Keywords> \n  <TimeCreated SystemTime=\"2015-11-27T08:43:21.611167900Z\" /> \n  <EventRecordID>1833</EventRecordID> \n  <Correlation /> \n  <Execution ProcessID=\"4\" ThreadID=\"8\" /> \n  <Channel>System</Channel> \n      Specifikacije: i5 (2500K), Asus P8Z68-V LX, HD5450."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Si poskusil to? https://support.microsoft.com/en-us/kb/..."
+    },
+    {
+        "role": "user",
+        "message": "Nisem, samo tukaj mi ponudi samo intel, te ki naj bi bili ok (chipset, dram, usb)."
+    },
+    {
+        "role": "user",
+        "message": "Po ponovni inštalaciji windowsa se problem spet pojavlja, res ne vem več kaj storiti. Driverji so samo tisti, ki jih naloži windows 10. Ram je preverjen, ni napak. Problem pa se je začel pojavljati po zamenjavi SSDja in updejtu windowsa (verzija 1511), pred tem je na istem SSD-ju delalo ok. Mogoče bi menjal SSD, trenutno je Adata SP920, in bi poskusil s Samsungom?"
+    },
+    {
+        "role": "user",
+        "message": "Lahko bi bil pa tudi PSU (CX500), je možnost da ga kako testiram, drugega dovolj zmogljivega žal nimam."
+    },
+    {
+        "role": "user",
+        "message": "Mislim, da sem ugotovil težavo, sicer sem SSD vseeno menjal in sicer za Samsung 850 EVO, vendar se je takoj po fresh instalu in priklopu vseh diskov ter vsemi updejti problem spet pojavil. Mislim, da so krivi driverji za SATA kontroler. mogoče mi lahko kdo pomaga kaj več, sam res ne najdem vzroka, ali pa bom moral iti nazaj na win10 (v. 10240).   System errors:\n=============\nError: (12/12/2015 07:21:41 PM) (Source: Service Control Manager) (User: )\nDescription: A timeout (30000 milliseconds) was reached while waiting for a transaction response from the WSearch service.\n\nError: (12/12/2015 02:16:47 PM) (Source: volmgr) (User: )\nDescription: Crash dump initialization failed!\n\nError: (12/12/2015 02:16:46 PM) (Source: Microsoft-Windows-EnhancedStorage-EhStorTcgDrv) (User: NT AUTHORITY)\nDescription: A TCG Command has returned an error.\nDesc: AuthenticateSession\nParam1: 0x1\nParam2: 0x60000001c\nParam3: 0x900000006\nParam4: 0x0\nStatus: 0x1\n\nError: (12/12/2015 02:16:55 PM) (Source: EventLog) (User: )\nDescription: The previous system shutdown at 2:15:28 PM on ?12/?12/?2015 was unexpected.\n\nError: (12/12/2015 12:51:28 PM) (Source: DCOM) (User: NT AUTHORITY)\nDescription: application-specificLocalActivation{D63B10C5-BB46-4990-A94F-E40B9D520160}{9CA88EE3-ACB7-47C8-AFC4-AB702511C276}NT AUTHORITYSYSTEMS-1-5-18LocalHost (Using LRPC)UnavailableUnavailable\n\nError: (12/12/2015 12:46:20 PM) (Source: volmgr) (User: )\nDescription: Crash dump initialization failed!\n\nError: (12/12/2015 12:46:19 PM) (Source: Microsoft-Windows-EnhancedStorage-EhStorTcgDrv) (User: NT AUTHORITY)\nDescription: A TCG Command has returned an error.\nDesc: AuthenticateSession\nParam1: 0x1\nParam2: 0x60000001c\nParam3: 0x900000006\nParam4: 0x0\nStatus: 0x1\n\nError: (12/12/2015 12:46:02 PM) (Source: Service Control Manager) (User: )\nDescription: The Sync Host_2ef03 service terminated unexpectedly.  It has done this 1 time(s).  The following corrective action will be taken in 10000 milliseconds: Restart the service.\n\nError: (12/12/2015 12:46:02 PM) (Source: DCOM) (User: NT AUTHORITY)\nDescription: application-specificLocalActivation{D63B10C5-BB46-4990-A94F-E40B9D520160}{9CA88EE3-ACB7-47C8-AFC4-AB702511C276}NT AUTHORITYSYSTEMS-1-5-18LocalHost (Using LRPC)UnavailableUnavailable\n\nError: (12/12/2015 12:30:31 PM) (Source: volmgr) (User: )\nDescription: Crash dump initialization failed!"
+    },
+    {
+        "role": "user",
+        "message": "Nobeden nič ne ve? Tole z driverji sem rešil ampak težava se se kar pojavlja, vendar brez volmgr-ja in EhStorTcgDrv-ja, ampak tipični Microsoft-Windows-Kernel-Power brez vzroka in čisto tja v tri dni, pojavi se tudi čez noč, če računalnik dela samo v idle, vse sleep funkcije so izklopljene prav tako izklop diskov. Danes fasal 2 reseta. Vsi diverji so zadnji. Mogoče napajalnik je lahko to vzrok?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 13. dec 2015 ob 16:48 izjavil:Nobeden nič ne ve? Tole z driverji sem rešil ampak težava se se kar pojavlja, vendar brez volmgr-ja in EhStorTcgDrv-ja, ampak tipični Microsoft-Windows-Kernel-Power brez vzroka in čisto tja v tri dni, pojavi se tudi čez noč, če računalnik dela samo v idle, vse sleep funkcije so izklopljene prav tako izklop diskov. Danes fasal 2 reseta. Vsi diverji so zadnji. Mogoče napajalnik je lahko to vzrok?   Sem imel isto težavo, poiskusi preklopit način porabe energije na High Performace, meni je to pomagalo."
+    },
+    {
+        "role": "user",
+        "message": "Sem dal, pa da vidimo. Če zdrži en dan bo ok. :) Drugače bom primoran iti na build 10240, tam je bilo vse ok, po nadgradnji in fresh instalu ter menjavi ssdja pa se je začelo. Grozno me moti, ker mi sredi dela crkne, in je nevzdržno.   System errors:\n=============\nError: (12/13/2015 07:34:23 PM) (Source: DCOM) (User: NT AUTHORITY)\nDescription: application-specificLocalActivation{D63B10C5-BB46-4990-A94F-E40B9D520160}{9CA88EE3-ACB7-47C8-AFC4-AB702511C276}NT AUTHORITYSYSTEMS-1-5-18LocalHost (Using LRPC)UnavailableUnavailable\n\nError: (12/13/2015 07:30:07 PM) (Source: Service Control Manager) (User: )\nDescription: The Sync Host_37156 service terminated unexpectedly.  It has done this 1 time(s).  The following corrective action will be taken in 10000 milliseconds: Restart the service.\n\nError: (12/13/2015 07:30:07 PM) (Source: DCOM) (User: NT AUTHORITY)\nDescription: application-specificLocalActivation{D63B10C5-BB46-4990-A94F-E40B9D520160}{9CA88EE3-ACB7-47C8-AFC4-AB702511C276}NT AUTHORITYSYSTEMS-1-5-18LocalHost (Using LRPC)UnavailableUnavailable\n\nError: (12/13/2015 07:08:17 PM) (Source: BugCheck) (User: )\nDescription: 0x00000109 (0xa3a01f589e57150b, 0xb3b72bdef0d7cea4, 0x0000000000000001, 0x0000000000000018)C:\\Windows\\MEMORY.DMPf7a8ab1b-899c-441e-9fd0-fc17fd1543b5\n\nError: (12/13/2015 07:08:15 PM) (Source: EventLog) (User: )\nDescription: The previous system shutdown at 7:06:50 PM on &#8206;12/&#8206;13/&#8206;2015 was unexpected."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 13. dec 2015 ob 19:38 izjavil:Sem dal, pa da vidimo. Če zdrži en dan bo ok. :) Drugače bom primoran iti na build 10240, tam je bilo vse ok, po nadgradnji in fresh instalu ter menjavi ssdja pa se je začelo. Grozno me meti, ker mi sredi dela crkne, in je nevzdržno.  System errors: ============= Error: (12/13/2015 07:34:23 PM) (Source: DCOM) (User: NT AUTHORITY) Description: application-specificLocalActivation{D63B10C5-BB46-4990-A94F-E40B9D520160}{9CA88EE3-ACB7-47C8-AFC4-AB702511C276}NT AUTHORITYSYSTEMS-1-5-18LocalHost (Using LRPC)UnavailableUnavailable  Error: (12/13/2015 07:30:07 PM) (Source: Service Control Manager) (User: ) Description: The Sync Host_37156 service terminated unexpectedly. It has done this 1 time(s). The following corrective action will be taken in 10000 milliseconds: Restart the service.  Error: (12/13/2015 07:30:07 PM) (Source: DCOM) (User: NT AUTHORITY) Description: application-specificLocalActivation{D63B10C5-BB46-4990-A94F-E40B9D520160}{9CA88EE3-ACB7-47C8-AFC4-AB702511C276}NT AUTHORITYSYSTEMS-1-5-18LocalHost (Using LRPC)UnavailableUnavailable  Error: (12/13/2015 07:08:17 PM) (Source: BugCheck) (User: ) Description: 0x00000109 (0xa3a01f589e57150b, 0xb3b72bdef0d7cea4, 0x0000000000000001, 0x0000000000000018)C:\\Windows\\MEMORY.DMPf7a8ab1b-899c-441e-9fd0-fc17fd1543b5  Error: (12/13/2015 07:08:15 PM) (Source: EventLog) (User: ) Description: The previous system shutdown at 7:06:50 PM on &#8206;12/&#8206;13/&#8206;2015 was unexpected.   vem kako ti je :/ Sporoči kakšno je stanje, sedaj iščem rešitev, ki bi funkcionirala na Linuxu"
+    },
+    {
+        "role": "user",
+        "message": "Je možno, da bi bila napaka zaradi napajalnika? Sem že za nov SSD vrgel denar proč in nebi rad še za napajalnik. Imam CORSAIR CX500 star nekje 4-5let. Grafika je navadna ATI 5450HD pasivna. Neke hude porabe ni, gor so priklopljeni še trije HDDji, dva SSDja ter BD-ROM. Rama je 8GB. Igre se ne igrajo, razen procesor I5 2500K je večina časa še kar aktiven (100%load), recimo nekje 4-8 ur dnevno odvisno od dneva."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pri meni je tako, da je crkaval na random, sem gledal video na YT, paf tema... Ko sem delal stresne teste pa ni bilo nobenih problemov, tko na nevem kaj bi bil razlog."
+    },
+    {
+        "role": "user",
+        "message": "Enako je pr meni, katastrofa. crkne tudi čez noč v idle, ko se nič ne dela in nič ne obremenjuje, sumim neke driverje ali pa napajalc, samo kateri bi ti driverji bili. Na katerem sistemu je tebi to delalo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 13. dec 2015 ob 21:28 izjavil:Enako je pr meni, katastrofa. crkne tudi čez noč v idle, ko se nič ne dela in nič ne obremenjuje, sumim neke driverje ali pa napajalc, samo kateri bi ti driverji bili. Na katerem sistemu je tebi to delalo?   Windows 7 64bit, kjer je high performance rešil situacijo Ubuntu in Mint, kjer sem še vedno brez rešitve"
+    },
+    {
+        "role": "user",
+        "message": "Hm zanimivo, da ti to dela v dveh različnih okoljih, torej bi napaka lahko bila mehanska. Si že zamenjal kakšno komponento?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Isti problem sem imel s staro maticno z AMD chipsetom, resitev je bila onemogocitev PM za SATA v ini-ju pred namestitvijo gonilnika, nekaterim pomaga high performance nacin, natancneje da izklopis AHCI PM: http://www.sevenforums.com/tutorials/17... (raje kot da cel sistem dela s polno paro nonstop)  Ultimativno cepivo je pa posodobitev firmware-a za sata kontroler. Je kaka bios posodobitev na voljo? Drugace si mrzel... Linux ima tudi cmd switch za AHCI PM."
+    },
+    {
+        "role": "user",
+        "message": "Tega sploh nimam v power planu, bios je zadnji (plata ASUS P8Z68-V LX), driver za SATA kontroler je datuma 1. 08. 2013 in ni novejšega. Intel(R) Desktop/Workstation/Server Express Chipset SATA AHCI Controller"
+    },
+    {
+        "role": "user",
+        "message": "Aha sem videl reg fajl, če ga dodam imam potem to možnost. Super. Zdaj grem pa v fresh install in vklopim tole zadevo pa da vidimo. bo najbolje s fresh instalom, ker mam že vse pobrklano s preizkušanjem 1000 in 1 možnosti."
+    },
+    {
+        "role": "user",
+        "message": "Evo fresh instal z driverji iz leta 2014 (7. 04. 2014), sem našel nove v.12.9.4.1000 in izklopljenim link power manegmentom v Intel Rapid Storagu. Vsi driverji updejtani, pa da vidimo, vse ostalo je nameščeno kot prej. Power plan: Balanced. Poročam kako se bo obneslo. Ni učinka, z ničemer."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Se tebi diska med sabo tepeta? Daj enega stran in delaj samo z enim, pa povej, če se še dogaja. In potem tudi zamenjaj, pa povej če z drugim tudi deluje.   Si probal  https://downloadcenter.intel.com/downlo..."
+    },
+    {
+        "role": "user",
+        "message": "Vse je že bilo sprobano, vključno s modificiranimi driverji za sata, sistem vedno znova fresh install. Ni važno kateri disk je priklopljen, eden ali drugi ali oba, vedno isto.      Pravkar bsod, medtem, ko sem pisal ta post."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kontroler na plati? Si probal s starim diskom, s katerim je pred tem vse normalno delovalo?"
+    },
+    {
+        "role": "user",
+        "message": "Žal ga nimam več. Sej nekaj dni je na Adati tudi delovalo potem pa se je začelo, bi mogoče PCI adapter za SATA diske (oz en sistemski disk) rešil težavo? To mi še edino ostane. :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "A si iz LJ? Mislim da imam en pci sata kontroler za 2 diska."
+    },
+    {
+        "role": "user",
+        "message": "Nisem, žal mi ga pa lahko vseeno pošlješ na moje stroške, pa ti ga vrnem, če nebo haska, drugače pa se zmenima za ceno. Seveda, če si pripravljen."
+    },
+    {
+        "role": "assistant_2",
+        "message": "V event viewer poglej pod Error vejo, se kaj drugega zabelezeno pod zadnjo uro (oz odvisno kdaj se je bsod zgodil)? Vem da je meni javljajo se eno napako v zvezi z SATA krmilnikom, poleg unclean shutdown.  Kak drugi kabel si najbrz ze poskusil?"
+    },
+    {
+        "role": "user",
+        "message": "Error je samo tale kernel power ID 41, ostali 3je errji so povezani s tem, ampak po njem. Kolikor sem do zdaj pregledal 67,2% spleta sumim na AHCI/SATA krmilnik. (driver).       Prvi ID 1001  Log Name:      System\nSource:        Microsoft-Windows-WER-SystemErrorReporting\nDate:          18. 12. 2015 10:35:02\nEvent ID:      1001\nTask Category: None\nLevel:         Error\nKeywords:      Classic\nUser:          N/A\nComputer:      Computer\nDescription:\nThe computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa3a01f58f6a8b551, 0xb3b72bdf49296efa, 0x0000000000000001, 0x0000000000000018). A dump was saved in: C:\\Windows\\MEMORY.DMP. Report Id: 64810415-228b-46f5-baa0-ec95c5762f41.\nEvent Xml:\n<Event xmlns=\"http://schemas.microsoft.com/win/2004/08/events/event\">\n  <System>\n    <Provider Name=\"Microsoft-Windows-WER-SystemErrorReporting\" Guid=\"{ABCE23E7-DE45-4366-8631-84FA6C525952}\" EventSourceName=\"BugCheck\" />\n    <EventID Qualifiers=\"16384\">1001</EventID>\n    <Version>0</Version>\n    <Level>2</Level>\n    <Task>0</Task>\n    <Opcode>0</Opcode>\n    <Keywords>0x80000000000000</Keywords>\n    <TimeCreated SystemTime=\"2015-12-18T09:35:02.197717200Z\" />\n    <EventRecordID>4588</EventRecordID>\n    <Correlation />\n    <Execution ProcessID=\"0\" ThreadID=\"0\" />\n    <Channel>System</Channel>\n    <Computer>Computer</Computer>\n    <Security />\n  </System>\n  <EventData>\n    <Data Name=\"param1\">0x00000109 (0xa3a01f58f6a8b551, 0xb3b72bdf49296efa, 0x0000000000000001, 0x0000000000000018)</Data>\n    <Data Name=\"param2\">C:\\Windows\\MEMORY.DMP</Data>\n    <Data Name=\"param3\">64810415-228b-46f5-baa0-ec95c5762f41</Data>\n  </EventData>\n</Event>  Drugi ID 1101  Log Name:      Security\nSource:        Microsoft-Windows-Eventlog\nDate:          18. 12. 2015 10:35:00\nEvent ID:      1101\nTask Category: Event processing\nLevel:         Error\nKeywords:      Audit Success\nUser:          N/A\nComputer:      Computer\nDescription:\nAudit events have been dropped by the transport.  0\nEvent Xml:\n<Event xmlns=\"http://schemas.microsoft.com/win/2004/08/events/event\">\n  <System>\n    <Provider Name=\"Microsoft-Windows-Eventlog\" Guid=\"{fc65ddd8-d6ef-4962-83d5-6e5cfe9ce148}\" />\n    <EventID>1101</EventID>\n    <Version>0</Version>\n    <Level>2</Level>\n    <Task>101</Task>\n    <Opcode>0</Opcode>\n    <Keywords>0x4020000000000000</Keywords>\n    <TimeCreated SystemTime=\"2015-12-18T09:35:00.791350800Z\" />\n    <EventRecordID>7492</EventRecordID>\n    <Correlation />\n\nTretji ID 6008\n<pre class=\"brush:c\">Log Name:      System\nSource:        EventLog\nDate:          18. 12. 2015 10:35:00\nEvent ID:      6008\nTask Category: None\nLevel:         Error\nKeywords:      Classic\nUser:          N/A\nComputer:      Computer\nDescription:\nThe previous system shutdown at 10:33:48 AM on &amp;#8206;12/&amp;#8206;18/&amp;#8206;2015 was unexpected.\nEvent Xml:\n&lt;Event xmlns=&quot;http://schemas.microsoft.com/win/2004/08/events/event&quot;&gt;\n  &lt;System&gt;\n    &lt;Provider Name=&quot;EventLog&quot; /&gt;\n    &lt;EventID Qualifiers=&quot;32768&quot;&gt;6008&lt;/EventID&gt;\n    &lt;Level&gt;2&lt;/Level&gt;\n    &lt;Task&gt;0&lt;/Task&gt;\n    &lt;Keywords&gt;0x80000000000000&lt;/Keywords&gt;\n    &lt;TimeCreated SystemTime=&quot;2015-12-18T09:35:00.775724500Z&quot; /&gt;\n    &lt;EventRecordID&gt;4557&lt;/EventRecordID&gt;\n    &lt;Channel&gt;System&lt;/Channel&gt;\n    &lt;Computer&gt;Computer&lt;/Computer&gt;\n    &lt;Security /&gt;\n  &lt;/System&gt;\n  &lt;EventData&gt;\n    &lt;Data&gt;10:33:48 AM&lt;/Data&gt;\n    &lt;Data&gt;&amp;#8206;12/&amp;#8206;18/&amp;#8206;2015&lt;/Data&gt;\n    &lt;Data&gt;\n    &lt;/Data&gt;\n    &lt;Data&gt;\n    &lt;/Data&gt;\n    &lt;Data&gt;5408&lt;/Data&gt;\n    &lt;Data&gt;\n    &lt;/Data&gt;\n    &lt;Data&gt;\n    &lt;/Data&gt;\n    &lt;Binary&gt;DF070C00050012000A00210030004C03DF070C00050012000900210030004C033C0000003C000000000000000000000000000000000000000100000000000000&lt;/Binary&gt;\n  &lt;/EventData&gt;\n&lt;/Event&gt;</pre>\n\n    <Execution ProcessID=\"980\" ThreadID=\"1232\" />\n    <Channel>Security</Channel>\n    <Computer>Computer</Computer>\n    <Security />\n  </System>\n  <UserData>\n    <AuditEventsDropped xmlns=\"http://manifests.microsoft.com/win/2004/08/windows/eventlog\">\n      <Reason>0</Reason>\n    </AuditEventsDropped>\n  </UserData>\n</Event>"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Aham, tisti bugcheck ce pogledas podrobnosti je verjetno watchdog, ki resetira celo masino ko se zatakne. Probaj googlat tiste cifre, ki jih vidis v podrobnostih dogodka v vezi z tvojim chipsetom / krmilnikom (Details zavihek, error code). Moja resitev je bila onemogocitev power managementa za sata link. Upam da najdes svojo :)"
+    },
+    {
+        "role": "user",
+        "message": "To sem že vse storil prav tako ugasnil power link v intel rapid storage, nastavil power plan na najvišjega, itd. Povsod isto sranje.  Error ID 6008  Log Name:      System\nSource:        EventLog\nDate:          18. 12. 2015 10:35:00\nEvent ID:      6008\nTask Category: None\nLevel:         Error\nKeywords:      Classic\nUser:          N/A\nComputer:      Computer\nDescription:\nThe previous system shutdown at 10:33:48 AM on ?12/?18/?2015 was unexpected.\nEvent Xml:\n<Event xmlns=\"http://schemas.microsoft.com/win/2004/08/events/event\">\n  <System>\n    <Provider Name=\"EventLog\" />\n    <EventID Qualifiers=\"32768\">6008</EventID>\n    <Level>2</Level>\n    <Task>0</Task>\n    <Keywords>0x80000000000000</Keywords>\n    <TimeCreated SystemTime=\"2015-12-18T09:35:00.775724500Z\" />\n    <EventRecordID>4557</EventRecordID>\n    <Channel>System</Channel>\n    <Computer>Computer</Computer>\n    <Security />\n  </System>\n  <EventData>\n    <Data>10:33:48 AM</Data>\n    <Data>?12/?18/?2015</Data>\n    <Data>\n    </Data>\n    <Data>\n    </Data>\n    <Data>5408</Data>\n    <Data>\n    </Data>\n    <Data>\n    </Data>\n    <Binary>DF070C00050012000A00210030004C03DF070C00050012000900210030004C033C0000003C000000000000000000000000000000000000000100000000000000</Binary>\n  </EventData>\n</Event>  Error ID 1001  Log Name:      System\nSource:        Microsoft-Windows-WER-SystemErrorReporting\nDate:          18. 12. 2015 10:35:02\nEvent ID:      1001\nTask Category: None\nLevel:         Error\nKeywords:      Classic\nUser:          N/A\nComputer:      Computer\nDescription:\nThe computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa3a01f58f6a8b551, 0xb3b72bdf49296efa, 0x0000000000000001, 0x0000000000000018). A dump was saved in: C:\\Windows\\MEMORY.DMP. Report Id: 64810415-228b-46f5-baa0-ec95c5762f41.\nEvent Xml:\n<Event xmlns=\"http://schemas.microsoft.com/win/2004/08/events/event\">\n  <System>\n    <Provider Name=\"Microsoft-Windows-WER-SystemErrorReporting\" Guid=\"{ABCE23E7-DE45-4366-8631-84FA6C525952}\" EventSourceName=\"BugCheck\" />\n    <EventID Qualifiers=\"16384\">1001</EventID>\n    <Version>0</Version>\n    <Level>2</Level>\n    <Task>0</Task>\n    <Opcode>0</Opcode>\n    <Keywords>0x80000000000000</Keywords>\n    <TimeCreated SystemTime=\"2015-12-18T09:35:02.197717200Z\" />\n    <EventRecordID>4588</EventRecordID>\n    <Correlation />\n    <Execution ProcessID=\"0\" ThreadID=\"0\" />\n    <Channel>System</Channel>\n    <Computer>Computer</Computer>\n    <Security />\n  </System>\n  <EventData>\n    <Data Name=\"param1\">0x00000109 (0xa3a01f58f6a8b551, 0xb3b72bdf49296efa, 0x0000000000000001, 0x0000000000000018)</Data>\n    <Data Name=\"param2\">C:\\Windows\\MEMORY.DMP</Data>\n    <Data Name=\"param3\">64810415-228b-46f5-baa0-ec95c5762f41</Data>\n  </EventData>\n</Event>  Error ID 1101  Log Name:      Security\nSource:        Microsoft-Windows-Eventlog\nDate:          18. 12. 2015 10:35:00\nEvent ID:      1101\nTask Category: Event processing\nLevel:         Error\nKeywords:      Audit Success\nUser:          N/A\nComputer:      Computer\nDescription:\nAudit events have been dropped by the transport.  0\nEvent Xml:\n<Event xmlns=\"http://schemas.microsoft.com/win/2004/08/events/event\">\n  <System>\n    <Provider Name=\"Microsoft-Windows-Eventlog\" Guid=\"{fc65ddd8-d6ef-4962-83d5-6e5cfe9ce148}\" />\n    <EventID>1101</EventID>\n    <Version>0</Version>\n    <Level>2</Level>\n    <Task>101</Task>\n    <Opcode>0</Opcode>\n    <Keywords>0x4020000000000000</Keywords>\n    <TimeCreated SystemTime=\"2015-12-18T09:35:00.791350800Z\" />\n    <EventRecordID>7492</EventRecordID>\n    <Correlation />\n    <Execution ProcessID=\"980\" ThreadID=\"1232\" />\n    <Channel>Security</Channel>\n    <Computer>Computer</Computer>\n    <Security />\n  </System>\n  <UserData>\n    <AuditEventsDropped xmlns=\"http://manifests.microsoft.com/win/2004/08/windows/eventlog\">\n      <Reason>0</Reason>\n    </AuditEventsDropped>\n  </UserData>\n</Event>"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ce se ti se da, poskusi pregledat memory dump z windbg: http://mikemstech.blogspot.si/2011/11/w...  Najbrz bo kazalo na sata gonilnik in bo mogoce kaj vec povedalo, kar ti bo dalo lahko kaj vec za iskati. Ce se prav spomnim sem ravno z tem orodjem napredoval pri iskanju tezave."
+    },
+    {
+        "role": "user",
+        "message": "Druge nimam, pravkar sem spet poletel . :)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Sposodi si nekje napajalnik in ga priklopi ter stestiraj. Bi skorajda dal roko v ogenj, da je kriv PSU."
+    },
+    {
+        "role": "user",
+        "message": "To bi bilo odlično, koliko kaj rabim nekje minimalno za moj sistem? Mam neke starejše cca 300-350W nekje v kleti."
+    },
+    {
+        "role": "user",
+        "message": "Tole mi je izvrgel debug iz fajla MEMORY.DMP. Sam se na to ne spoznam najbolje, zato bi prosil za pomoč, upam, da sem izvlekel prave informacije.   Microsoft (R) Windows Debugger Version 6.3.9600.17336 AMD64\nCopyright (c) Microsoft Corporation. All rights reserved.\n\n\nLoading Dump File [C:\\Windows\\MEMORY.DMP]\nKernel Bitmap Dump File: Only kernel address space is available\n\n\n************* Symbol Path validation summary **************\nResponse                         Time (ms)     Location\nDeferred                                       srv*c:\\Symbols*http://msdl.microsoft.com/download/symbols\nSymbol search path is: srv*c:\\Symbols*http://msdl.microsoft.com/download/symbols\nExecutable search path is: \nWindows 8 Kernel Version 10586 MP (4 procs) Free x64\nProduct: WinNt, suite: TerminalServer SingleUserTS\nBuilt by: 10586.17.amd64fre.th2_release.151121-2308\nMachine Name:\nKernel base = 0xfffff802`c0879000 PsLoadedModuleList = 0xfffff802`c0b57c70\nDebug session time: Sat Dec 19 08:25:28.739 2015 (UTC + 1:00)\nSystem Uptime: 0 days 10:34:46.417\nLoading Kernel Symbols\n...............................................................\n................................................................\n...........................\nLoading User Symbols\nPEB is paged out (Peb.Ldr = 0000004b`ce9a4018).  Type \".hh dbgerr001\" for details\nLoading unloaded module list\n...........\n*******************************************************************************\n*                                                                             *\n*                        Bugcheck Analysis                                    *\n*                                                                             *\n*******************************************************************************\n\nUse !analyze -v to get detailed debugging information.\n\nBugCheck 109, {a3a01f59238db513, b3b72bdf760e6eac, 1, 18}\n\nProbably caused by : Unknown_Image ( ANALYSIS_INCONCLUSIVE )\n\nFollowup: MachineOwner\n---------\n\n2: kd> !analyze -v\n*******************************************************************************\n*                                                                             *\n*                        Bugcheck Analysis                                    *\n*                                                                             *\n*******************************************************************************\n\nCRITICAL_STRUCTURE_CORRUPTION (109)\nThis bugcheck is generated when the kernel detects that critical kernel code or\ndata have been corrupted. There are generally three causes for a corruption:\n1) A driver has inadvertently or deliberately modified critical kernel code\n or data. See http://www.microsoft.com/whdc/driver/kernel/64bitPatching.mspx\n2) A developer attempted to set a normal kernel breakpoint using a kernel\n debugger that was not attached when the system was booted. Normal breakpoints,\n \"bp\", can only be set if the debugger is attached at boot time. Hardware\n breakpoints, \"ba\", can be set at any time.\n3) A hardware corruption occurred, e.g. failing RAM holding kernel code or data.\nArguments:\nArg1: a3a01f59238db513, Reserved\nArg2: b3b72bdf760e6eac, Reserved\nArg3: 0000000000000001, Failure type dependent information\nArg4: 0000000000000018, Type of corrupted region, can be\n\t0 : A generic data region\n\t1 : Modification of a function or .pdata\n\t2 : A processor IDT\n\t3 : A processor GDT\n\t4 : Type 1 process list corruption\n\t5 : Type 2 process list corruption\n\t6 : Debug routine modification\n\t7 : Critical MSR modification\n\nDebugging Details:\n------------------\n\n\nDEFAULT_BUCKET_ID:  WIN8_DRIVER_FAULT\n\nBUGCHECK_STR:  0x109\n\nPROCESS_NAME:  csrss.exe\n\nCURRENT_IRQL:  2\n\nANALYSIS_VERSION: 6.3.9600.17336 (debuggers(dbg).150226-1500) amd64fre\n\nSTACK_TEXT:  \nffffd000`275f60b8 00000000`00000000 : 00000000`00000109 a3a01f59`238db513 b3b72bdf`760e6eac 00000000`00000001 : nt!KeBugCheckEx\n\n\nSTACK_COMMAND:  kb\n\nSYMBOL_NAME:  ANALYSIS_INCONCLUSIVE\n\nFOLLOWUP_NAME:  MachineOwner\n\nMODULE_NAME: Unknown_Module\n\nIMAGE_NAME:  Unknown_Image\n\nDEBUG_FLR_IMAGE_TIMESTAMP:  0\n\nIMAGE_VERSION:  \n\nBUCKET_ID:  BAD_STACK\n\nFAILURE_BUCKET_ID:  BAD_STACK\n\nANALYSIS_SOURCE:  KM\n\nFAILURE_ID_HASH_STRING:  km:bad_stack\n\nFAILURE_ID_HASH:  {75814664-faf6-4b70-bbc7-dc592132ecdd}\n\nFollowup: MachineOwner\n---------"
+    },
+    {
+        "role": "user",
+        "message": "*******************************************************************************\n*                                                                             *\n*                        Bugcheck Analysis                                    *\n*                                                                             *\n*******************************************************************************\n\nCRITICAL_STRUCTURE_CORRUPTION (109)\nThis bugcheck is generated when the kernel detects that critical kernel code or\ndata have been corrupted. There are generally three causes for a corruption:\n1) A driver has inadvertently or deliberately modified critical kernel code\n or data. See http://www.microsoft.com/whdc/driver/kernel/64bitPatching.mspx\n2) A developer attempted to set a normal kernel breakpoint using a kernel\n debugger that was not attached when the system was booted. Normal breakpoints,\n \"bp\", can only be set if the debugger is attached at boot time. Hardware\n breakpoints, \"ba\", can be set at any time.\n3) A hardware corruption occurred, e.g. failing RAM holding kernel code or data.\nArguments:\nArg1: a3a01f5916d2b722, Reserved\nArg2: b3b72bdf695370bb, Reserved\nArg3: 0000000000000001, Failure type dependent information\nArg4: 0000000000000018, Type of corrupted region, can be\n\t0 : A generic data region\n\t1 : Modification of a function or .pdata\n\t2 : A processor IDT\n\t3 : A processor GDT\n\t4 : Type 1 process list corruption\n\t5 : Type 2 process list corruption\n\t6 : Debug routine modification\n\t7 : Critical MSR modification\n\nDebugging Details:\n------------------\n\n\nCUSTOMER_CRASH_COUNT:  1\n\nDEFAULT_BUCKET_ID:  WIN8_DRIVER_FAULT\n\nBUGCHECK_STR:  0x109\n\nPROCESS_NAME:  System\n\nCURRENT_IRQL:  2\n\nANALYSIS_VERSION: 6.3.9600.17336 (debuggers(dbg).150226-1500) amd64fre\n\nSTACK_TEXT:  \nffffd000`621f60b8 00000000`00000000 : 00000000`00000109 a3a01f59`16d2b722 b3b72bdf`695370bb 00000000`00000001 : nt!KeBugCheckEx\n\n\nSTACK_COMMAND:  kb\n\nSYMBOL_NAME:  ANALYSIS_INCONCLUSIVE\n\nFOLLOWUP_NAME:  MachineOwner\n\nMODULE_NAME: Unknown_Module\n\nIMAGE_NAME:  Unknown_Image\n\nDEBUG_FLR_IMAGE_TIMESTAMP:  0\n\nIMAGE_VERSION:  \n\nBUCKET_ID:  BAD_STACK\n\nFAILURE_BUCKET_ID:  BAD_STACK\n\nANALYSIS_SOURCE:  KM\n\nFAILURE_ID_HASH_STRING:  km:bad_stack\n\nFAILURE_ID_HASH:  {75814664-faf6-4b70-bbc7-dc592132ecdd}\n\nFollowup: MachineOwner\n---------"
+    },
+    {
+        "role": "user",
+        "message": "Ugotovil sem tudi tole z BlueScreenView in sicer napaka oz driver ntoskrnl.exe, za kar pravijo, da naj bi bilo krovo tole: Driver ntoskrnl.exe (ntoskrnl.exe+142760) Although many ntoskrnl errors are caused bu Superfetch running wild. Yours appears to be driver related.  Zdaj pa prosim za pomoč, sam sem izgubljen. :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "To je kernel in ne pove dosti. Bugcheck 109: http://mikemstech.blogspot.si/2012/01/t...  To ni ravno pogosta zadeva, ali je pomnilnik (si pustil veckrat skozi, http://www.memtest86.com/ ?) ali pa kaka grda napaka v gonilniku. Ce ne najdes nekih tezav po netu v zvezi z tvojim krmilnikom / gonilnikom, je verjetno nekaj z kompatibilnostjo strojne opreme. Lahko je napajalnik, disk, krmilnik,..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kakšne imaš ram module? Si kaj menjal vrstni red?"
+    },
+    {
+        "role": "user",
+        "message": "Mem test, danes čez noč."
+    },
+    {
+        "role": "assistant_5",
+        "message": "7645? , dej probi sam z eno pomnilško palico :)"
+    },
+    {
+        "role": "user",
+        "message": "RAM je Kingston HyperX Genesis. Kaj si mislil poskustit samo z eno palčko, test?"
+    },
+    {
+        "role": "user",
+        "message": "Ena palčka:"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Potem je bodisi disk ali krmilnik. Imas v raid konfiguraciji ta en disk, ali kako eksoticno opcijo od asusa vklopljeno?(vidim da imajo nek Smart response tech) Sata dela v AHCI nacinu ce gres v nastavitve od biosa?"
+    },
+    {
+        "role": "user",
+        "message": "V Biosu je vse OK nastavljeno, RAIDA ni, trenutno je priklopljen samo en disk SSD (Saamsung) in ostali 4je HDDji. Vstavljena je samo ena palčka RAMA, da vidim, če pride do errorja, potem vstavim drugo in ponovim vajo. Dobil sem tudi napajalnik, drugo grafiko, da poskusim še tole, zdaj pa čakat errorje.  Slika SATA driverja."
+    },
+    {
+        "role": "user",
+        "message": "Torej RAM ni, ista težave se pojavi tako na eni kot na drugi palčki, sedaj sem zamenjal napajalnik in spet čakam. Kaj še storiti, če bo ista težava tudi sedaj?"
+    },
+    {
+        "role": "user",
+        "message": "Edit: Tudi napajalnik ni, takoj po prej kot eni uri menjave dobil isti BSOD, Kernel Power (ID 41)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Priklopi samo ssd, testiraj delovanje. Mogoče je težava v kateri od usb naprav.  Sumljivi naj bi bili realtek-ovi driverji, vendar ko jih odstranim mi jih windows po resetu namesti nazaj (prilagam slikco). Kako jih poslati v večna lovišča, da bi počivali v miru. http://www.techspot.com/downloads/4266-...   Katera plata/cpu ? Bios je zadnji in naložene privzete nastavitve ? Na win7/8 se zgodba nestabilnosti ponovi ?"
+    },
+    {
+        "role": "user",
+        "message": "Plata je ASUS P8Z68-V LX, bios je zadnji, v windows 8 in 8.1 je bilo vse OK, prav tako v win10 že od same prewiew variante. Prej sem imel SSD 830 (64GB). Kasneje sem zamenjal z ADATO in je nekaj tednov bilo vse ok na buildu 10240, kasneje se je posodabljalo in začelo se je s težavami. Seveda sem vmes naredil že najmanj 6x fresh install in brez ali s posodobitvami je ista pesem, tako na ADATI kot Samsungu. Bom še to naredil resetiral bios (čeprav sem ga že in priklopil samo SSD)."
+    },
+    {
+        "role": "user",
+        "message": "Torej zaključek je takšen, krivi so bili eni driverji v Win 10 (zadnji build). Kateri so to bili ne vem, ker sem obupal, sumim pa SATA driverje ali USB, možno da tudi kaj drugega. Poskusil sem skoraj vse, vendar nič ni delovalo, torej je napaka v samem windowsu, da se en driver ''tepe'' s to ploščo.  Po ponovni namestitvi Win 8.1 računalnik gladko dela že 3 dni. Nameščeni so popolnoma enaki driverji kot v Win 10 za sata, audio, usb 3.0, chipset in grafiko. Ponovno poskusim po naslednjem večjem updejtu windowsa 10."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Poskusi vse stock uporabaljat torej kar windows ponudi in namesti samodejno kar se tice gonilnikov. Sele potem namescaj to kar je na voljo pri proizvajalcih.  Verjetno je res kaka bedarija z gonilniki, znan primer je bil mislim da nekaj casa nazaj z Realtek gonilniki ter Nvidio kateri so povzrocali sesuvanje dolocenih konfiguracij."
+    }
+]

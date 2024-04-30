@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Imam računalnik, ki je v splet povezan preko brezžičnega ruterja. Na računalniku mi dela internet in mreža bp. Sedaj bi pa rad delil povezavo z internetom še na drugi računalnik, ki pa nima brezžične kartice. Delil bi jo preko kablo. Shema: Modem->ruter->prvi računalnik->drugi računalnik  Ali se to da narediti? Kaj moram narediti? Imam Windows XP."
+    },
+    {
+        "role": "user",
+        "message": "a res nihče ne bi vedel?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zakaj pa ne bi raje ta drug racunalnik direk na router povezal, magari preko kabla, saj ma tvoj router zagotovo kaksne porte za navadni lan."
+    },
+    {
+        "role": "user",
+        "message": "problem je razdalja zato mam brezžičen ruter, saj bi lahko kupil kartico brezžično ma trenutno ni denarja"
+    },
+    {
+        "role": "assistant_1",
+        "message": "DHCP od routerja ti najbrz dodeli IP v omrezju 192.168.0.x z masko 255.255.255.0. To isto omrezje uporablja ICS v winsih po defaultu, kar skupaj z routerjem ne bi smel nardit nic kaj prevec uporabnega. Nastimi na routerju, da DHCP uporablja kako drugo omrezje...npr 192.168.1.x in na Prvem racunalniku pozeni Wizarda za deljenje internetne povezave (ICS). Prvemu racunalniku bo po defaultu dodeljen IP Address 192.168.0.1, drugemu racunalniku pa na roke vpis 192.168.0.2, masko 255.255.255.0 in default gateway 192.168.0.1. Na drugem racunalniku se v settingsih poglej v Internet Options -> Connections -> LAN Settings. Obkljukaj Use automatic configuration script, in vpisi IP Prvega racunalnika 192.168.0.1. Ce ne bo delal iz prve se disejblaj in spet enejblaj mrezni kartici na prvem in drugem.  Pa srecno   PS: Ce ti ne rata DHCPja porihtat na routerju, pa pac na obeh racunalnikih (namesto 192.168.0.x povsod) uporabi nekaj drugega, potem ko bos wizarda dal skoz...npr 192.168.1.x. Med samim wizardom ti zna tezit, ker ze nekdo uporablja dodeljen IP address, sam se ne sekirat"
+    },
+    {
+        "role": "user",
+        "message": "kako naj naštimam pa brezično mrežno vkartico na prvem računalniku? a ni važno kak ip ima ali ja? v bistvu moram to povezavo potem sherati."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Daj brezžično kartico in navadno kartico v most (bridge) in se bo še tretji računalnik znašel v istem omrežju."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Se opravičujem, ker kradem temo...  Zanima me, če se da, da bi obstoječi Router uporabil kot stikalo, torej da bi samo razdelil povezavo med druge uporabnike, namesto, da preusmerja povezavo...  Ker imam namen naredit en računalnik kot malo boljši router in bi rabil ali switch ali pa 3 mrežne (samo za komp, ki bi bil router)  torej, če se da... please speak now"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja Ce \"router\" racunalnik namest v WAN port priklopis zravn ostalih v LAN porte, pol bi router deloval kot switch."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hvala, bom poskusil, ko zrihtam \"router\"comp..."
+    }
+]

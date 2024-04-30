@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravleni!  Začel sem z izdelavo robota z Raspberry Pi-jom. Pa me zanima ali je taka vezava mogoča:    motor  Na enkrat bo napetost zamo v 1 ali v 2. Saj potrebujem da se motor vrti v obe smeri. Malo sem skeptičen glede te vezave saj sta plus in minus direktno vezana. Če to nebo mogoče imam še plan B da se pri zavijanju vrti samo eno kolo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "za robota hocs stepperje  Stepper motor @ Wikipedia  da bos loh nekak dolocu kok dalec se bo motor obrnu"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ne rabiš stepperjev  rabiš pa H-driver/bridge, to pa so štirje tranzistorji vezani v H-obliko, vklapljata pa se po dva naenkrat, en za plus, en pa za minus, in preprečujeta, da bi plus prišel direktno na minus http://t0.gstatic.com/images?q=tbn:ANd9..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "upam da maš gerthboard ali kej podobnega, ker Rpi gpioti niso za take obremenitve !"
+    },
+    {
+        "role": "user",
+        "message": "Si bom pogledal H-driverje, zaenkrat sem računal, da bi se premikal tako:  15 sekund L-naprej, D-naprej (premikanje naprej) 3 sekunda L-naprej, D-nazaj (zavijanje v desno za npr: 90 °), kot bi reguliral glede na čas npr 1 sekunda je 5°  @assistant_2-o kakšnih obremenitvah govoriš ? Dva motorčka (stvar bo majhna -ogrodje iz lego kock + gume + RPi+ motorja), napetost je 3.3V"
+    },
+    {
+        "role": "assistant_2",
+        "message": "niti ne razmišljat o obešanju te zadeve na gpio-te od rpi..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 25. jun 2013 ob 15:18 izjavil:niti ne razmišljat o obešanju te zadeve na gpio-te od rpi...   Zakaj ne ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "ker so gpioti vezani direkt na SoC od rpija + niso mišljeni za take bremenitve..."
+    },
+    {
+        "role": "user",
+        "message": "aha, potem je najbolje da gpiote uporabim kot stikalo, ko da signal se odpre povezava baterija -motor"
+    },
+    {
+        "role": "assistant_2",
+        "message": "yup.. tako je veliko bolje.."
+    },
+    {
+        "role": "user",
+        "message": "Ok. Hvala, si bom tranzistorje pogledal. Kaj pa z zavijanjem a je bolje da se pri zavijanju vrti samo eno kolo (L-naprej, D-stop) ali oba (L-naprej, D- nazaj)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "odvisno kakšen zavoj želiš"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 25. jun 2013 ob 21:23 izjavil:odvisno kakšen zavoj želiš   To sem ugotovil, vem tudi da je to da se premika samo eno kolo narediti precej lažje, kot pa da se en obrača nazaj. Kako je s temi stepper motorji ? A se to premika tudi za -5 (koliko nazaj)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "To so koračni motorji, ki imajo posebno krmiljenje preko več žic, vendar jih lahko zelo natančno krmiliš, npr. določiš kot obračanja, en korak naredi 0.5 stopinje, torej 180 korakov za 90 stopinj. Več o tem tukaj."
+    },
+    {
+        "role": "user",
+        "message": "Sedaj sem se odločil za brezkrtačni motor. Teli koračni motorji bodo pa nadgradnja čez nekaj časa. Me pa zanima kako močna motorja rabim kupit da bosta skupaj lahko poganjala ? Ima kdo idejo kako preprečiti prosto vrtenje po koncu kontakta ?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Za brezkrtačni motor rabiš namenski kontroler, raspberry pi ne bo dovolj."
+    },
+    {
+        "role": "user",
+        "message": "Aha, verjetno se na tem kontrolerju da tudi kontrolirati hitrost ?  Za enkrat je bil moj plan takle:    plan  Ali kaj manjka ? Kako močan motor bi približno rabil, da bi mi poganjalo (motorja bosta 2) ? Ali bo 9V dovolj ?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Manjka krmilnik, ki ti bo ta motor vrtel.Brushless motor ni nekaj, kar priklopiš na baterijo in se vrti (mimogrede, 9V baterija nima niti približno dovolj energije, da bi ti naokrog vozila robota), ampak rabi namenski krmilnik."
+    },
+    {
+        "role": "user",
+        "message": "Potem moram gledati na take baterije ki se jih da polnit (ki so tudi v laptopih itd), baterija bo morala poganjati Raspberrya ter motorja, kakšno baterijo priporočaš ? Krmilnike si bom sedaj ogledal. Hvala za informacije"
+    }
+]

@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Imam naslednjo težavo in bi prosil za pomoč :) Poskušam dostopati do spletne banke klik nlb in tu se začne \"zanimiva\" težava...V hiši imamo 3 računalnike in tudi 3 račune klik-a. težava je, da nobeden od nas ne more dostopati do spletne banke.Z mobilnimi telefoni je povsem isto, v kolikor so povezani na wifi. Ne ponudi nam niti možnost izbire oz potrditve certifikata(Tega spletnega mesta ni mogoče doseči). težava se je pojavila kak teden nazaj, tehniki na siolu ne vidijo težave, ponudnik OŠO optike nam je tudi že zamenjal modem, a težava še vedno ostaja. Iz nlb-ja so potrdili na oni ne blokirajo nič. Sedaj pa postane zadeva zanimiva..... Če se povežemo na wifi od soseda ali če naredim hot spot z mobilnim telefonom,vsi 3je računalniki brez problema dostopajo do spletne banke klik. Bi to bila lahko težava zaradi tega ker imamo statični IP? Zadeva je delovala normalno do pred kratkim.  Hvala za odgovore."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nekdo ti izvaja slab MITM. Prestreza ti promet med tvojim omrežjem in banko. Banka zahteva identifikacijo s certifikatom, ki pa jo tvoj MITM napadalec ne posreduje k tvojemu odjemalcu.  Na navadnih računalnikih bi ti to delal kakšen slab antivirus. Glede na to da imaš isto tudi na telefonu, in če tam nimaš antivirusa, ti nekdo šnoflja po mreži.  Ali imaš kakšen \"pameten\" router ali kaj podobnega? Imaš na telefonih naložen certifikat za dostop? Pa prosim sporoči kdo je ponudnik optike, lahko da oni delajo kakšne neumnosti.  Statični IP naslov nima nobene zveze s tem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Bi to bila lahko težava zaradi tega ker imamo statični IP?  ne  probaj pingat klik.nlb.si da vidis ce ti sploh resolva domeno?   Pinging klik.nlb.si [193.201.214.51] with 32 bytes of data"
+    },
+    {
+        "role": "user",
+        "message": "Na telefonu imam naložen certifikat, prav tako z aplikacijo klikin ne morem dostopat do banke, v kolikor sm na domačem wifiju. nimam pameten router, tudi če se povežem z kablom direktno na modem, je zadeva ista. Antivirusnih porgramov nimam nikjer nameščenih,samo firewall. Ponudnik optike je tritel.  Sem pingal klik.nlb.si"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Em, klik se na ping ne odziva =) No, vsaj iz telekomovega omrežja =)  @x_rade Glede na to kar si napisal, ti tvoj ponudnik optike ali blokira dostop do klika ali pa dela nek MITM.  Iz glave se ne spomnim kam se še lahko prijaviš s klikovim certifikatom da bi lahko testiral. Če ve kdo naj prosim napiše. Včasih je imel AJPES nekaj, ampak ne najdem več.  Kakorkoli, preveri še na kakšni drugi strani, ki sprejema NLBjev certifikat. Če ti tudi tam ne deluje, potem ti ga nekdo neki biksa.  Lahko pa da imaš kaj takega: https://www.bleepingcomputer.com/news/s..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Em, klik se na ping ne odziva =)  Res je.. Zanimalo me je ce mu domeno resolva, kar mu ampak se vedno ne deluje.. Cudna stvar.."
+    },
+    {
+        "role": "user",
+        "message": "Sem poskušal izpolnit neko e-vlogo kjer potrebujes certifikat in stvar deluje, lepo ponudi izbiro digitanega potrdila. res nevem kje bi bla težava. tako tritel kot telekom trdita da je pri njih vse vredu. probal sem ze vse mogoče,rešitve pa ni in ni"
+    },
+    {
+        "role": "assistant_2",
+        "message": "morda neumnost, ali je pri vam inštaliran fiddler?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 22. maj 2018 ob 13:33 izjavil:morda neumnost, ali je pri vam inštaliran fiddler?   Ni..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Maš kakšen DrayTek? https://www.draytek.co.uk/support/secur..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Podoben problem pri Abanki (pred nekaj meseci) - krivec Bitdefender."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 22. maj 2018 ob 13:45 izjavil:Maš kakšen DrayTek? https://www.draytek.co.uk/support/secur...   Nimam, modem je od Tritela(Genexis), Antivirusnega programa nimam, izklopil tudi wirefall, težava ostaja."
+    },
+    {
+        "role": "assistant_2",
+        "message": "kakšen proxy v igri ?"
+    }
+]

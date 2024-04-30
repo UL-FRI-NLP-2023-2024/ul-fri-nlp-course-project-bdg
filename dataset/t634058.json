@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo. Torej, moje vprašanje je tako:  Videl sem videe na katerih prikazujejo kako lahko star router uporabimo za okrepitev signala prvega routerja, oziroma da nastavimo novo WIFI omrežje, ki koristi isti \"internet\". Torej, imam 2 routerja, prvi (glavni) je WRT54GL s TOMATO firmwareom, in drugi (stari) router TP-LINK WR741ND. Zanima me kako bi lahko nastavil stari router, da bi jačal signal/imel svoj WIFI, ki bi koristil internet glavnega routerja, ki je priklopljen na modem?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če imaš prvi router recimo v na ip 192.168.1.1 potem daj drugega recimo na 192.168.1.1 in mu izklopi DHCP strežnik da ne bo sam dodeljeval ipjev in vtakni kabel iz prvega v drugi router v enega od 4 portov za lan. Če boš dal v wan ne bo delovalo."
+    },
+    {
+        "role": "user",
+        "message": "Torej povezava med prvim in drugim routerjem mora biti obvezno s kablom? Namreč problem je, da je drugi router eno nadstropje niže."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne lahko je tudi wifi, vendar v tem primeru moraš nastaviti kot repetitor. Tukaj ti svetujem da na tp-linka namestiš http://www.gargoyle-router.com/ je enostaven in deluje perfektno."
+    },
+    {
+        "role": "user",
+        "message": "Trenutno je že DDWRT gor, pa nevem če bi spreminjal, razen če je nujno. Načeloma pa lahko izbiram samo med naslednjimi možnostmi: WDS Station, WDS AP, Access point, Client, Client Bridge, ADHOC.  Repeater ni med možnostmi. Poleg tega, a moram glavni router opredelit kot \"Gateway\" al \"ROuter\"?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 25. jan 2015 ob 12:16 izjavil:Če imaš prvi router recimo v na ip 192.168.1.1 potem daj drugega recimo na 192.168.1.1 in mu izklopi DHCP strežnik da ne bo sam dodeljeval ipjev in vtakni kabel iz prvega v drugi router v enega od 4 portov za lan. Če boš dal v wan ne bo delovalo.    Mislim da si se malo zatipkal. Prvi je 192.168.1.1 drugi mora imeti drug IP torej 2 na koncu. Če bi nekdo nastavil kot si napisal bi imel težavo v omrežju."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja sem se zatipka se opravičujem, glava prav mislila, roke narobe natipkale  DD-wrt je malo preveč za tak podhranjen router, vsaj kar imam jaz izkušenj."
+    },
+    {
+        "role": "assistant_2",
+        "message": "dd-wrt je za ta router kot rojen, samo različico moraš izbrat pravo, prvo mini, potem pa vidiš ali je treba naložit big ali mega.  Edino kar mene zeza je to da mi ne drži povezave več kot 24 ur, ampak bom probl o rešit ko bo malo več časa."
+    },
+    {
+        "role": "user",
+        "message": "Hvala vsem za odgovore. DDWRT sem naložil edini ki je bil na njihovi uradni strani za TP Link WR741ND. Skratka, še vedno mi ni uspelo nastaviti omenjenega routerja kot \"repeater\". Držal sem se tega tutoriala: http://www.dd-wrt.com/phpBB2/viewtopic....  Zanima me če mi zna kdo odgovoriti na naslednja vprašanja: 1.) Je potrebo nastaviti Wireless physical interface IN Virtual interface? 2.) Zakaj v tutorialu enkrat nastavlja Physical interface drugič pa Virtual interface (slika 2 in 4) 3.) Je potrebno na glavnem routerju v settingsih tudi kaj spreminjati?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zavedaj se samo, da če boš router nastavil kot repetitor, si naredil bolj drek - saj veš ta promet od drugega routerja mora priti do prvega po ISTEM kanalu (kar pomeni efektino prepolovitev hitrosti wifija) po že ITAK slabem signalu?  Potegni kabel če se le da."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Potegni kabel če se le da.  ali se pa kupi powerline.."
+    },
+    {
+        "role": "assistant_0",
+        "message": "http://www.pcplus.si/mrezna-oprema/lan-...  Tako zadevo si nabavi pa si rešil vse"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 25. jan 2015 ob 18:55 izjavil:Zavedaj se samo, da če boš router nastavil kot repetitor, si naredil bolj drek - saj veš ta promet od drugega routerja mora priti do prvega po ISTEM kanalu (kar pomeni efektino prepolovitev hitrosti wifija) po že ITAK slabem signalu?  Potegni kabel če se le da.   V bistvu mi je uspelo... nekako...za nekaj časa.  Router št. 2 (ki sem ga želel uporabiti kot repetitor) sem nastavil na \"Client\" mode, dodelil Isto SSID ime, enak password. Oba routerja sta bila med seboj povezana, vendar ko se je mobitel povezal na 2. router (repetitor), dostopa do interneta ni bilo. Zadevo sem potem rešil tako, da sem izbral \"Client Bridge (Routed)\" mode in namesto AUTO DHCP izbral Manual, kjer me je vprašal za gateway. Iz routerja št. 1 sem razbral gateway, in ga vpisal v router št. 2. Voila! Problem je bil rešen. No, nekako. Signal je bil po celi hiši odličen, internet hiter...ampak to ni dolgo trajalo, ker je WIFI kar naenkrat izginil. Ni mi jasno zakaj se vzpostavi za cca. 10 minut, potem pa izgine...Nato moram routerja izklopiti iz štroma in nazaj priklopiti, da deluje zopet 10 minut in potem spet crkne. Ni mi jasno kaj bi lahko bilo narobe?!  @assistant_0 je 25. jan 2015 ob 19:20 izjavil:http://www.pcplus.si/mrezna-oprema/lan-...  Tako zadevo si nabavi pa si rešil vse    Ja, to bo izhod v sili. Doma imam 2 routerja, ki ne služita ničemur... v bistvu vsakič ko menjam operaterja dobim nov router, tako da mi je škoda denarja, če lahko nekaj rešim \"ghetto way\""
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_3 je 25. jan 2015 ob 18:55 izjavil:Zavedaj se samo, da če boš router nastavil kot repetitor, si naredil bolj drek - saj veš ta promet od drugega routerja mora priti do prvega po ISTEM kanalu (kar pomeni efektino prepolovitev hitrosti wifija) po že ITAK slabem signalu?  Potegni kabel če se le da.   Ja razpolovi sam maximalno hitrost? Torej če router podpira 150mbit je max 75mbit? Ker js imam linijo 10mbit in je hitrost na repeaterju, če delam speedtest še vedno 10mbit."
+    }
+]

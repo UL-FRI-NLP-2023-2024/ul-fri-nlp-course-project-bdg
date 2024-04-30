@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Torej, situacija je sledeča.  V hiši živi 6 ljudi, vsak ima svoj računalnik. Že leta se pobijamo glede interneta ker seveda vsak vedno čimveč rabi da mu bo ja vsako stran odprl v 0.3 sekunde.  Če na kratko povem kaj se običajno dogaja: Štirje brskajo po youtubu, facebooku (dva to počneta nonstop, če na računalniku počas dela pol še telefone vn pa na wifi *facepalm*), bolha, avtonet,... skratka povprečen uporabnik. Eden občasno dela nekej za šiht in se zato poveže prek oddaljenega dostopa na računalnik v firmi. Seveda začne noret ker vsi na internetu visijo in vse počas dela. Potem sm pa tukej še jst. Večinoma drgnem online fps igrce, kakšn film pogledam, novice,... nič posebnega.  Torej kaj mi gre tukej v nos? Vsakič ko nekdo odpre youtube mi ping že začne skakat iz 50 pa do 300 če je treba in ker se seveda mojemu \"pametnemu\" bratu ne da razložit, da tud če ti qtorrent vesčas laufa na 100kb/s dl in 1 kb/s up seveda bremza hitrost njemu in vsem ostalim.  Trenutno imamo adsl 10/1 linijo kar je očitno premal. ISP je pa telekom slovenije. (optika ni možna)  Torej, kakšno linijo bi predlagal glede na situacijo opisano zgorej?  Se opravičujem če je mal čudn napisan :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kupte router z dobrim QoS shaperjem. Hitrost lahko ostane enaka. Če lahko dobite 20/20, priporočam."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kateri router imaš sedaj ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kot je @assistant_0 rekel - ti ne rabiš hitrejšega interneta (ker imaš dovolj pasovne širine), rabiš router ki zna delati QoS s prioritetami. Kakšen ASUS AC56U, 66U in podobni znajo to out of the box, drugače pa imaš karkoli kar lahko sprejme Shibby tomato ali kaj podobnega.  Nastaviš da imajo video streami nižjo prioriteto kot tvoje igre (in višjo kot BitTorrent) in bo čudežno vse delalo."
+    },
+    {
+        "role": "assistant_3",
+        "message": "nadgradnja hitrosti DSL linije? prehod na VDSL ? transparent proxy ?  in predvsem to kar je @assistant_0 napisal - router z dobrim QoS."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Hitrejša DSL linija ti ne bo veliko pomagala, ker bo YouTube pač potem požrl 20Mbit pri nalaganju videa."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Še par nasvetov za izboljšanje/lajšanje težav, poleg že omenjenega QoS: 1. Poženi speedtest, da vidiš če res dosegate 10/1 2. Zmanjšat kvaliteto gledanih youtube posnetkov (lahko v settingih nastaviš) 3. Torrenti naj laufajo ponoči/ko ni noben gor 4. Preverite, da vam IPTV ne krade linije. HD kanal zna požret 8Mb, pol ti ostane bore malo 5. Na bakru ste itak precej omejeni z max. hitrostjo glede na oddaljenost od centrale, najprej se pozanimaj kolko lahko mate max. hitrost in kolko stane"
+    },
+    {
+        "role": "user",
+        "message": "Trenutno imam router Linksys WRT54GL. Sicer imam naložen ddwrt in qos nastavljen ampak očitno je ddwrt bolj zanič. Speedtest: dl speed 8.03 Mbps, up speed 0.86 Mbps"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tale router je za računanje QoSa na taki liniji že precej zastarel."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 29. sep 2016 ob 14:03 izjavil:Tale router je za računanje QoSa na taki liniji že precej zastarel.   Potemtakem mi ostane le dvoje: nakup novega routerja z naprednimi qos nastavitvami ali pa da naložim tomato firmware na trenutnega. Glede na to kolk gorenjca sem bi raje drug formware naložil ampak me skrbi da ne bom v procesu še routerja brickal."
+    },
+    {
+        "role": "assistant_5",
+        "message": "6 vas visi na eni liniji in ste tolk škrt, da si niti boljšega rutarje ne umislite. Potem pa še jamrajo, da ne dela perfect!?? Wtf..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 29. sep 2016 ob 13:48 izjavil:Trenutno imam router Linksys WRT54GL. Sicer imam naložen ddwrt in qos nastavljen ampak očitno je ddwrt bolj zanič. Speedtest: dl speed 8.03 Mbps, up speed 0.86 Mbps  Za 10/1 je več kot dovolj, samo tomato raf http://victek.is-a-geek.com/downloads.h... moraš dati gor in omogočiti tole http://www.linksysinfo.org/index.php?th... Tudi za tudi 20/1, kot je max hitrost pri bakra (vdsl2+).  manjkajoči sliki iz strani"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 29. sep 2016 ob 13:38 izjavil:Še par nasvetov za izboljšanje/lajšanje težav, poleg že omenjenega QoS: 1. Poženi speedtest, da vidiš če res dosegate 10/1 2. Zmanjšat kvaliteto gledanih youtube posnetkov (lahko v settingih nastaviš) 3. Torrenti naj laufajo ponoči/ko ni noben gor 4. Preverite, da vam IPTV ne krade linije. HD kanal zna požret 8Mb, pol ti ostane bore malo 5. Na bakru ste itak precej omejeni z max. hitrostjo glede na oddaljenost od centrale, najprej se pozanimaj kolko lahko mate max. hitrost in kolko stane  Jaz imam vdsl 2 in sem od centrale oddaljen 300metrov in ko so telekomovci testirali je šlo do 50/5. Zdej pa če vrjamete al pa ne..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kernel 2.6.22 http://tinyurl.com/hm8nqab tomato raf, na strani ima viden samo K2.4.20 .  Tomato shibby K2.4 http://tomato.groov.pl/download/K24/bui...  K2.6 v1.32 http://tomato.groov.pl/download/K26/bui...  v1.38 http://tomato.groov.pl/download/K26/bui..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 29. sep 2016 ob 18:41 izjavil:@user je 29. sep 2016 ob 13:48 izjavil:Trenutno imam router Linksys WRT54GL. Sicer imam naložen ddwrt in qos nastavljen ampak očitno je ddwrt bolj zanič. Speedtest: dl speed 8.03 Mbps, up speed 0.86 Mbps  Za 10/1 je več kot dovolj, samo tomato raf http://victek.is-a-geek.com/downloads.h... moraš dati gor in omogočiti tole http://www.linksysinfo.org/index.php?th... Tudi za tudi 20/1, kot je max hitrost pri bakra (vdsl2+).  manjkajoči sliki iz strani      Probal in dela. Instalacija je šla brez problema, v minutki sem bil spet na netu. Kar se pa qos tiče se bom pa še tako malce poigral.  Hvala za odgovor :)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 je 29. sep 2016 ob 18:47 izjavil: Jaz imam vdsl 2 in sem od centrale oddaljen 300metrov in ko so telekomovci testirali je šlo do 50/5. Zdej pa če vrjamete al pa ne...  S 300m si precej blizu centrale, večina ljudi je 800m+"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Normalno, VDSL2 dosega precej dobre hitrosti. Je pa seveda kvaliteta linije ključna. Ravno zato se dela FFTN, ker baker ni nujno slaba stvar."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_1 je 29. sep 2016 ob 18:41 izjavil:[ Za 10/1 je več kot dovolj, samo tomato raf http://victek.is-a-geek.com/downloads.h... moraš dati gor in omogočiti tole http://www.linksysinfo.org/index.php?th... Tudi za tudi 20/1, kot je max hitrost pri bakra (vdsl2+).   Za samo linijo je dovolj, bo pa crknil pri večjem številu povezav.  Vrzi ta stara jajca v smeti... Njegov čas je potekel tako kot poteče 60 let stari kurbi..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Jaz sem 400M stran, sinhronizacija 60/25 trenutno, net 40/10 (telekom toptrioC+2€). Menda bi šlo do okrog 90/35."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_9 je 30. sep 2016 ob 09:37 izjavil:Jaz sem 400M stran, sinhronizacija 60/25 trenutno, net 40/10 (telekom toptrioC+2€). Menda bi šlo do okrog 90/35.  Optika?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "VDSL2, optike ne bomo videli še kakšno desetletje. Mogoče vpliva tudi to da ima večina kraja vse prek coaxa lokalnega kabelskega ponudnika (je zato manj motenj in posledično višja hitrost?), ali so pač kabli toliko večje kvalitete kot drugje. Na žalost pa so paketi samo do 40/10, tako da mi sinhronizacija pride v poštev samo takrat ko so vse televizije v hiši prižgane."
+    },
+    {
+        "role": "assistant_10",
+        "message": "1/1 (gbit) je minimum od minumuma"
+    },
+    {
+        "role": "assistant_3",
+        "message": "najprej menjaj router. wrt54 je EOL"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Ali bi se dalo kaj podobnega naštimat za TP-Link TL-WR741ND router?"
+    }
+]

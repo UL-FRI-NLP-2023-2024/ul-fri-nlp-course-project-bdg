@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Mam Teacov CD ROM 40x pa sm probu z cd speedom, ki ga dobis zravn nerota, pa mi je bral najvec z 25x hitrostjo. Tam ko meri pr kolki hitrosti ponucava kolk % procesorja, je pr 8x rabu 30% proc. casa. Testiru sm pa v W2k in v W98. V w98 so bli mal boljsi rezultati. Se da to kak zrihtat, da bi brau 40x al je za to kriv proc. ???? al kej druga ? :D   Hvala za odgovore, LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Maš enejblan DMA?"
+    },
+    {
+        "role": "user",
+        "message": "Ja, dela v DMA mode-u.  Kaj ga bremza ?  Hvala, LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa si dal not CD, ki je polno posnet? Ponavadi je najvišja hitrost dosežena na zunanjem robu ploščka... A si probal več CDjev al sam nenega?"
+    },
+    {
+        "role": "user",
+        "message": "Zdej sm probu se only PIO mode, pa je bral max. 14x. Ce bo inf. kej v pomoc :)  LP"
+    },
+    {
+        "role": "user",
+        "message": "Probal sm 3 cdje, cist polne 700Mb in je blo pr vseh identicno. koncna hitrost max. 25x.  LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz sem tudi mel taki problem. Finta je v tem, da more toti teac bit na ide kablu od diska in nastavljen kot slave. takrat bere z 40x hitrostjo, drugace pa ne.ko sem ga mel na svojem ide kanalu in na master je tudi meni bralo tako pocasi, pa sem potem prestavil in dela vse vredu."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Meni v w98 doseže na drugem IDE kanalu 40x hitrost oz. celo nekaj čez, tako da to definitivno ni vzrok."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Eh kaj boš s 40x jaz sem znižal hitrost vrtenja na 20x ker mi je šel na živce hrup. :)"
+    },
+    {
+        "role": "user",
+        "message": "Ok sm probu zdej dat na kabl zravn diska, in je delal tak ko more, brau 40x ... ko sm ga prklopu nazaj na sekundar pa max 25x. S tem da je tam ko je disk (primarn ide) je ata100 kabl, tam ko je CDrom (sekundarn ide) je pa navadn ide kabl. A mogoc zarad kabla bremza ?? oz deluje pocasnej. Sm se stestirou vse skup pa so prsl takile rezultati vn :  na primarnem ide (ata100 kabl) povpr: 31x zacetna: 18x koncna: 41x poraba procesorja 1x branje - 1% 2x branje - 1% 4x branje - 2% 8x branje - 5%  na sekundarnem ide (navadn ide kabl) povpr: 23x zacetna: 18x koncna: 24x poraba procesorja 1x branje - 3% 2x branje - 6% 4x branje - 12% 8x branje - 25%  A bi pomagal, ce bi dau se na sekundarn ide ata 100 kabl ? Bi pol delu CDrom tak ko more ? Iz primarja namrec ne morm drota gor do CDroma potegnat, kr ni dost dolg 8-O   Hvala za odgovore, LP"
+    },
+    {
+        "role": "assistant_4",
+        "message": "mogoče bi ata100 kabl pomagal, samo dvomim ker sem ga jaz mel tud na navadnem kablu pa je delal ok. sicer pa obstajajo tud oni tadolgi ide kabli - mislim da 90 cm  >:D"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Z zelo podobnimi problemi sem se ukvarjal sam danes. Zadeva je delala v nacinu PIO in je brala s 17x hitrostjo po celem CDju, obremenitev procesorja je bila pa velika. Nato sem na novo namestil ustrezen kanal kontrolerja za disk in preklopil je v UDMA 2, kjer je bila obremenitev procesorja majhna, hitrost pa ocitno vecja (samo ne vem kaksna, ker mi CDSpeed zdaj ne dela).  Ce imas UDMA 2, potem to ne bi smel bit problem, ce imas pa kaksen drugacen DMA, je pa se vedno lahko to. Vredno je poizkusit tudi z Viinimi gonilniki za kontroler za disk (ce imas seveda Viino cipovje) - s tem mislim miniport driver, ki ga dobis posebej (ne v 4in1)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nekoc nekje sem bral, da obstajata dve verziji navadna, ki bere 40x in OEM, ki je 30x"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kabl naj ne bi bil kriv, saj je cd rom UDMA 33. Pa tudi jaz imam vse na navadnih kablih, ker imam samo udma 33 plato, pa dela CD rom s končno hitrostjo 40 x. V bistvu tudi ni razlike, če je priklopljen na IDE 1 ali IDE 2, razen v w2k, kjer mi na IDE 2 ne podpira UDMA mode, ampak samo PIO, na IDE1 pa podpira UDMA, samo se ne more z diskom, vsaj disk spušča neke čudne zvoke, sicer pa dela, tako da ga imam vseeno na IDE 2. Je pa vse skupaj popolnoma različno od računalnika do računalnika, tako da moraš pač probati vse možne kombinacije, da ugotoviš, pri čem si..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "tole mi povejte: ali komu dela teac 40 v XP-jih v udma načinu? men dela neki (prebira podatkovne cd-je), ampak ko dam pa kakšen glasbeni cd not, pol pa ful dolg rab, da ga dojame, al pa mislim, da ga včasih sploh ne. enako pri raznih cd-jih, ki se sami zaženejo (pc-mediji, windows inštalacijski). ide dela bp.  imam via 694x čipset."
+    }
+]

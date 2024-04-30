@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Naredil sem par testov z najnovejšim 4k modelom SHARP-a. Gre za ta 4k TV: http://www.sharp.eu/av/product/8770-2/4... Sharp LC-43XUF8772ES  Enako velja za sharp-ove RGBY tevizorje, saj uporabljajo enak OS / Dekoderje: http://www.sharp-world.com/aquos/en/4k4...  Tukaj so testi (Slike so RAW, 16 bitov na kanal, png):  MPEG-2 4:2:2 8bitov na kanal (24bitov) 1920x1080p25 HD:   MPEG-4 4:2:0 8bitov na kanal (24bitov) 1920x1080i50 HD:   MPEG-4 4:2:2 8bitov na kanal (24bitov) 1920x1080i50 HD:   MPEG-4 4:2:2 10bitov na kanal (30bitov) 1920x1080i50 HD:   HEVC 4:2:0 12bitov na kanal (36bitov) 3840 × 2160p60 UHD:    Kot sem opazil so vsi 4k ultra hudo sranje, saj ne podpirajo niti MPEG-2 4:2:2 8bitov na kanal.  Zamima me če vaš 4k/HD televizor podpira vsaj MPEG-2 4:2:2 format. Moje uplinke posnete iz satelita, ki so v 4:2:0 / 4:2:2 / 8/10/12bitov najdete na partis-u ali mojblink-u (torrent si), iščite UPLINK.  Res me zanima če kater drug TV podpira več, recimo kakšen sony ali samsung..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Saj si mislil v resnici HEVC 4:2:2 / 12bit @ 4K a ne? Ne MPEG-2?"
+    },
+    {
+        "role": "user",
+        "message": "Ja, MPEG-2 4:2:2.  MPEG-4 4:2:2 in MPEG-2 4:2:2 ne delujeta na TVjih, in to mi je zelo čudno. HEVC 4:2:2 verjetno deluje, žal nimam tesnega videja.  Harmonic-ov HEVC je samo 4:2:0"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Čao.  V čem je problem da meni ne spelje 4K mkv vido HEVC 10bit?  Video je skoraj 60GB, česar še nisem probaval nikoli gledati. Po slabi minuti začne vse štekat.   V različnih playerjih je zelo podobna zgodba. Še najbolje se mi zdi da ga pelje privzeti player WIN10, ampak pa ni zvoka.   Hvala za kake namige.  v opisu je sicer:   2160p UHD 4K Blu-Ray Rip HEVC 10 Bits BT709  High End CPU + GPU is required to play very high bitrate 4K. Fully tested with : - PC with PotPlayer V 1.6 / Xeon Broadwell CPU / NVidia GTX1080 - Nvidia Shield streaming through PLEX on Samsung TV  *res pa da tega potplayerja nisem stestiral.."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pač rabiš player ki bo dejansko dekodiral video na tvoji grafični in ne CPUju, ker bo drugače vse skupaj precej žalostno. Pri takem bitratu ti tudi mora mreža hitro delovati če streamaš. v VLCju in podobnih preveri ali imaš hardware acceleration (DXVA) vklopljen in ti ustrezno hitro dela.  V vsakem primeru pa so to trenutno še precej slabo podprti profili... in če nimaš HDR monitorja ti je mučenje z 10-bit mal brezveze."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Nimam HDR monitorja in ne streamam. V nekem playerju, mislim da v VLCju sem nastavil da sliko renderira GPU, ampak ni bilo razlike. Dobro se bom še malo poigral. Ja vem, da je brezveze, samo me vseeno gnjavi da dokaj spodobna kišta ni sposobna tega zmleti."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Grafična bi morala to znati (predvidevam da laufaš na mašini s podpisa, GTX1080?) s svojim strojnim dekoderjem brez težav, tako da moraš poiskati zakaj točno ti playerji ne znajo pravilno uporabiti grafične."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Roger."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Si probal z mpc-hc + lav filters?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Enkrat sem nasel en 4k hevc demo, ki mi ga nikakor ni uspelo predvajat iz hddja, nakar sem ugotovil, da je prepocasen, iz ssdja je pa spilalo, branje je bilo pa od 60MB/s do 270MB/s. Ceprav 60GB za film ni tako veliko."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2 nisem, bom pogooglal o čem govoriš.  @assistant_3, se mrazmišljal v tej smeri, vendar se mi ni dalo placa delat na SSDju, ker bi rabil še ca 40GB sprostit."
+    },
+    {
+        "role": "assistant_2",
+        "message": "MPC-HC player: https://mpc-hc.org/ Lav-filter kodeki: https://github.com/Nevcairiel/LAVFilter... Za disk pa lahko v task managerju (ctrl+alt+del) spremljaš, na kolk je obremenjen med predvajanjem. Če je konstantno na 100%, pol si našel krivca"
+    },
+    {
+        "role": "assistant_4",
+        "message": "cekirajte se madVR, topsit render...  https://wiki.mikejung.biz/PotPlayer"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Potplayer dela tako kot je treba. CPU pa pride do max 30%. Tudi diski skoraj spijo."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_1 je 13. feb 2017 ob 10:02 izjavil:Nimam HDR monitorja in ne streamam. V nekem playerju, mislim da v VLCju sem nastavil da sliko renderira GPU, ampak ni bilo razlike. Dobro se bom še malo poigral. Ja vem, da je brezveze, samo me vseeno gnjavi da dokaj spodobna kišta ni sposobna tega zmleti.  Tudi jaz sem imel težave z VLC pri 4K predvajanju, MPC-HC pa predvaja brezhibno. (I3 + GTX 1050)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "VLC ali pot player :) pa osodobite si kodeke BPS je pa šara."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 28. avg 2017 ob 10:16 izjavil:VLC ali pot player :) pa osodobite si kodeke BPS je pa šara.  Zakaj bi rabil VLC player če pa TV podpira DVB-S2. Če predlagaš, da bi na TV priklopil računalnik in preko VLC playerja potem gledal zadeve na TV potem ne vem zakaj sem kupoval TV saj je PC+Monitor 100000% boljši kot TV, saj TV ne podpira čisto nič razen 4:2:0 pa še to je omejeno na določene zadeve. Se pravi če bi hotel gledat uplink direktno iz satelita na 4k TVju, tega ne morem naredit, čeprav TV vidi DVB-S2 in vse prepozna, na koncu ne more prikazati slike, ker je 4:2:2 in zato spet potrebujem dodaten računalnik in ne morem narediti tega kar direktno na TVju, kar pomeni, da je TV neuporaben, saj je potem 100000% boljša kombinacija navadni PC+DVB S2 kartica z navadnim 4k monitorjem.  Ne razumem pa zakaj ne vgradijo podpore za vse kodeke v samo televizijo, se pravi da bi TV podpirala vse kaj podpira MPC-HC ( LAV Video Filter ) ali VLC, oba programa/kodeki so opensource in bi jih lahko komot intergrirali v TVje, ampak seveda to nočejo, saj bi potem TV podpirala tudi vse PRO standarde in to jim ne bi bilo preveč všeč. Pri kolegu sem tudi probal. On ima 4k sony tv za 3000EUR in mu tudi podpira samo 4:2:0 formate, vse kaj je višje je tema."
+    }
+]

@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Kako iz tabele a avtomatsko narediti tabelo b   primer"
+    },
+    {
+        "role": "assistant_0",
+        "message": "https://support.office.com/en-us/articl..."
+    },
+    {
+        "role": "user",
+        "message": "To ni to. Ne potrebujem transponiranja ampak preureditev podatkov."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Šlo bi: dodaten stolpec, ki šteje po \"kategoriji\", sestavljen ključ, vlookup"
+    },
+    {
+        "role": "user",
+        "message": "Kolikor sem gledal funkcijo razumel vookup da samo en rezultat. Jaz potrebujem vse rezultate iz ene kategorije v novem stolpcu. Potrebujem funkcijo: poišči vse enke v prvem stolpcu in prepiši ustrezne vrednosti iz drugega stolpca v nov stolpec, poišči vse dvojke in prepiši.... Za vsako števiklo iz prvega stoplca"
+    },
+    {
+        "role": "assistant_2",
+        "message": "beri: http://eimagine.com/how-to-return-multi..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "VLOOOKUP primer:   Excel Tvoja osnovna tabela je v C1:D15 V stolpcu B je formula (B1) =COUNTIF(C$1:C1;C1) Ta najde vrstni red i-te vrstice znotraj njene kategorije. V stolpcu A je formula za ključ: (A1) =B1&\"-\"&C1  Nova tabela je na področju F1:J9. Vrstica 1 je glava (tu sem predpostavil, da se ve, katere so različne vrednosti; sicer se da z isto tehniko urediti tudi to). V ostalih celicah so furmule: (F2) =IF(ISNA(VLOOKUP(F$1&\"-\"&ROW()-ROW(F$1);$A$1:$D$15;4;FALSE));\"\";VLOOKUP(F$1&\"-\"&ROW()-ROW(F$1);$A$1:$D$15;4;FALSE)) V bistvu gre za en VLOOKUP in preverjanje, če ne najde ustreznega podatka da izpišemo \"\" in ne #N/A. Ta en VLOOKUP pa išče za kategorijo stolpca in j-to vrstico ustrezen ključ. Simple as that. Če to tabelo narediš vsaj tako dolgo kot je osnovna (v mojem primeru torej F1:J16, ne more iti narobe (razen morda hitrosti)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "če so podatki v A1 do B15  Glave kot jih je predvidel @assistant_1 so od F1...XFD1  formula v celici F2 =IFERROR(INDEX($B$1:$B$15;AGGREGATE(15;6;(ROW($B$1:$B$15)-ROW($B$1)+1)/($A$1:$A$15=F$1);ROW()-1));\"\")  in to formulo se skopira po matriki desno in navzdol."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Nekaterih celic na listu ne želim tiskati, ker služijo samo kot sklic do ostalih celic in so vse na kupu, da porabiš čim manj časa za izpolnjevanje. Postavljene so nekje na sredini lista. Če označim za polje tiskanja cel list in te celice odznačim, mi list razdeli na štiri dele in jih želi tudi tiskati vsakega na svoj list. Nikakor mi ne uspe, da bi tiskal cel list, te celice bi pa pač spregledal.  Gre ubistvu za predlogo in ne želim skrivati celic na način, kot lahko to storiš z oblikovanjem celic po meri in vrsto ;;;. Kaka ideja, kako naj to storim?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Na žalost excel vedno tiska tisto kar vidiš, vendar se na netu dobijo orodja (ad oni), ketera omogočajo tudi takšno funkcionalnost, oziroma je možno takšeo orodje tudi napisati, vendar ni ravno za začetnike. Eno od takih orodij je Kutools for Excel.  Se pa tvoji zahtevi lahko približaš na sledeče načine. 1. V excelu lahko skriješ/razkriješ celotno vrstico oziroma stolpec.  2. Nastaviš pisavo enake barve kot je ozadje.  3. Uporabiš pogojno oblikovanje. Pri tej rešitvi nastaviš, da so črke in ozadje enake barve, dokler v neko celico po tvoji izbiri ne napišeš magično besedo.  Postopek: Izbereš območja katera želiš skrivati, nato[pogojno oblikovanje], [novo pravilo], [uporabi formulo za določanje celic za oblikovanje] in nato v polje vpišeš formula =$A$1=\"čaraj\", ter nato izbereš ustrezno obliko kot pod točko 2. Formula je za primer, da za izvedbo pogojnega oblikovanja v celico A1 vpišeš besedo \"Čaraj\". Enačaj pred formulo je obvezen ter tudi dolarji imajo svoj namen."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Jaz to rešujem tako, da za tiskanje ustvarim nov delovni list in dodam formule, da tja prenašajo podatke iz izvirnega lista. S tem dobiš dva ločena pogleda (enega za urejanje na PC, drugega za tisk), ki imata iste podatke."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Raznih dodatnih orodij niti ne želim, ker bi rad, da je datoteka prenosna in združjiva tudi na ostalih računalnikih.   Pogojno oblikovanje imam nastavljeno, da so celice rdeče, dokler so prazne, nato pa zelene, pa tudi drugače ne bi bilo to najboljše, ker je podatke treba spreminjat in je lahko tečno, če je celica potem nevidna. Zaenkrat sem rešil tako, da sem te celice pač postavil na stran izven polja tiskanja. Sicer pa tudi tale način z dve listoma ni slab.   Še mogoče kaka ideja, kako izdelam tabelo oz. območje vrstic, ki se prilagodljivo širi in krči? Torej imam npr. pet praznih vrstic z orisom in ko vse zapolnem, se mi spodaj pojavi še šesta, nato sedma itd. Če začnem zadnje vrstice brisati, se oris ustrezno krči. Pa super bi bilo, da to ne vpliva na vrstice nad in pod tem območjem, v smislu, da bi se potem vse vrstice spodaj tudi prestavile nižje, ker lahko potem kaka pobegne iz polja tiskanja."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Bom kar tukaj vprašal.  V Excelu izračunam neko vrednost, npr.: 45,2  Nato pa moram na podlagi te vrednosti določiti razred (C4) in sledeče tabele:  C1 10 C2 20 C3 30 C4 40 C5 50  Obstaja kakšna funkcija,ki bi ta razred poiskala (v kolikor imam izračunano vrednost med 40 in 50 je to razred C4).  Hvala"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Poglej funkciji vlookup ali hlookup. nadomsetiš jih lahko tudi z kombinacijo index in match."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hvala, deluje!  Lp"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Rabim pomoč v excelu  Naredil sem seznam z določenimi imeni, sedaj pa bi jaz rad, ko izberem neko ime s seznama da mi v naslednji celici pokaže določeno vrednost. Ampak za eno ime znam narediti to (s funkcijo IF)..primer, če izberem ime Marko mi vrže v vrednost 0,3.  kako a naredim da bo vsako ime imelo svojo vrednost ko ga izberem?  Hvala"
+    },
+    {
+        "role": "assistant_5",
+        "message": "VLOOKUP: https://support.office.com/sl-si/articl..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Najprej moraš imet tabelo z vsemi imeni in pripadajočimi vrednostmi.  Potem pa v drugi tabeli s pomočjo funkcij match() in index() poiščeš in uporabiš pripadajočo vrednost (npr.: =INDEX(Delavci;MATCH(A1;Ime;0);2) ).   Priporočam, da malo googlaš za match in index funkcijo- je na netu mali miljon primerov uporabe teh dveh funkcij.  Alternativno se da uporabljati LOOKUP funkcijo (ali vlookup, hlookup), ampak nekako z leti sem to varianto (resda narediš vse z eno funkcijo) zamenjal z index+match varianto, ki meni na koncu izpade nekako bolj pregledna."
+    },
+    {
+        "role": "assistant_9",
+        "message": "zapisujem si recepte, zelel bi narediti tabelo kjer določim vrednost kateregakoli polja ter se ostala spremenijo po vnaprej pripravljeni formuli. Se pravi formule polj niso vidne, samo rezultat. Dovolj je če ima kdo idejo kaj naj iščem na spletu da najdem tutorial."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Mogoce to  link"
+    },
+    {
+        "role": "assistant_11",
+        "message": "slabo si postavil vprašanje. po moje misliš tole: imaš stolpec a, stoplpec b je vmesna kalkulacija, c tudi, d pa je rezultat. skriješ b in c kolono, desno klikneš in hide."
+    },
+    {
+        "role": "assistant_9",
+        "message": ":) ja se opravicujem, grem se enkrat, recimo klasicna tabela za recept bo zgledal takole:  sestavina % kolicina moka 100.0% 20 kg voda 62.0% 12.4 kg sol 2.0% 0.4 kg sladkor 3.0% 0.6 kg mascoba 1.5% 0.3 kg kvas 2.5% 0.5 kg skupaj: 171.0% 34.20 kg  izhaja iz tega da spreminjas samo eno vrednost, npr \"kolicina moke\", vse ostale temu sledijo. Ok to znam postavit v excel, \"kolicina moke\" je prazno polje, vsa ostale so izracunana, npr voda = \"moka\"*0.62. Kako naredim tabelo kjer lahko vnesem katerokoli od teh količin, ostale pa se bodo izracunale?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "slika  tako, stolpec % je malo zakompliciran, zato sem naredil stolpec delež v stolpec vnos vneseš v eno poljubno polje v stolpec izračun daš formulo (vnos/delež), v spodnjo celico (skupaj) pa sešteješ zgornje celice v stolpcu količina pa formulo ki ti množi delež iz iste vrstice fiksno z to vsoto (izračun:skupaj)"
+    },
+    {
+        "role": "assistant_13",
+        "message": "V eno celico daš neko \"vrednost/faktor\", to celico kopiraš (oz. narediš povezavo na vnosno celico $Column$Row)) za vrednostmi v vsaki vrstici ter množiš prvotno vrednost s tem faktorjem --> v novem stolpcu dobiš nove vrednosti.  sestavina količina A B C D E 1 moka 20 kg 0,5 10 2 voda 12.4 kg 0,5 6,2 3 sol 0.4 kg 0,5 0,2 4 sladkor 0.6 kg 0,5 0,3 5 maščoba 0.3 kg 0,5 0,15 6 kvas 0.5 kg 0,5 0,25 7 skupaj: 34.20 kg =vsota stolpca 8 Faktor 0,5  Ali napišeš formulo v E1 celico =B2*$B$8 in potem vlečeš navzdol"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Imam nekaj podobnega. Delal sem mesilne liste za Pekarno Grosuplje in Pekarno Maximarket. Prvi zavihek je mesilni list, kjer so vsi artikli in potrebne sestavine zanje. Izračunavajo se na podlagi števila komadov. Na naslednjih zavihkih so recepture, kjer lahko spreminjaš % sestavin in zatehto (kilski kruh se tehta okrog 1,12kg). Vse spremembe se seveda sproti vidijo v mesilnem listu. Rezultat je, da vedno izračuna pravo količino testa in razmerje sestavin za določeno količino artiklov. Dodal sem še skupno dnevno porabo sestavin in makro za dnevni izvoz porabe v drugo datoteko.  Če ti kaj koristi, lahko odstranim makro in ti dam liste od Maxija. Glede na to, da pekarne že ni skoraj 6 let ni več najbrž poslovna tajna ni več v igri. Ali pač?"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Približno ali pa prav tako kot je zapisal @assistant_12. Najprej sešteješ vse količine osnovnega sestava in določiš delež posamezne sestavine. Potem v poljubno celico vpišeš sestavino, ki jo imaš na razpolago, v sosednjo celico pa vpišeš količino, ki jo imaš na razpolago. S funkcijo vlookup poiščeš v osnovni tabeli delež znane sestavine, s katerim deliš vpisano količino. Ta rezultat napišeš na koncu nove tabele. Potem narediš formulo zmnožek deleža z izračunano skupno količino in boš dobil vse potrebne količine. V vnosno celico lahko vpišeš katerokoli setavino iz tabele, vedno boš dobil enak recept glede na količino"
+    },
+    {
+        "role": "assistant_9",
+        "message": "hvala vsem"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Imam problem pri uvažanju podatkov iz csv, kjer so določene vrednosti zapisane brez ničle pred decimalno piko, in mi nikakor tega ne rata tega spravit v excel kot številko.  Primer:  Company Name,Ticker,Sector,Market Cap (mil),Exchange,Month of Fiscal Yr End,Industry,F0 Consensus Est.,F1 Consensus Est.,F2 Consensus Est.,P/E (Trailing 12 Months),P/E (F1),P/E (F2),PEG Ratio \"Ambev S.A.\",\"ABEV\",\"Consumer Staples\",\"43721.64\",\"NYSE\",\"12\",\"Beverages - Alcohol\",\".19\",\".11\",\".14\",\"16.35\",\"25.27\",\"19.17\",\"4.4\"  Kako bi pri uvozu iz csv v xls, ali kako drugače, pred decimalne pike dodal ničle, da bi excel tole dejansko lahko prebral kot številko? Imam več kot sto vrstic podobnih podatkov in ročno dodajanje ničel odpade.   Ali obstaja kakšna druga rešitev, nekakšen csv editor?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "@assistant_16 je 11. jul 2020 ob 22:29 izjavil:Imam problem pri uvažanju podatkov iz csv, kjer so določene vrednosti zapisane brez ničle pred decimalno piko, in mi nikakor tega ne rata tega spravit v excel kot številko.  Primer:  Company Name,Ticker,Sector,Market Cap (mil),Exchange,Month of Fiscal Yr End,Industry,F0 Consensus Est.,F1 Consensus Est.,F2 Consensus Est.,P/E (Trailing 12 Months),P/E (F1),P/E (F2),PEG Ratio \"Ambev S.A.\",\"ABEV\",\"Consumer Staples\",\"43721.64\",\"NYSE\",\"12\",\"Beverages - Alcohol\",\".19\",\".11\",\".14\",\"16.35\",\"25.27\",\"19.17\",\"4.4\"  Kako bi pri uvozu iz csv v xls, ali kako drugače, pred decimalne pike dodal ničle, da bi excel tole dejansko lahko prebral kot številko? Imam več kot sto vrstic podobnih podatkov in ročno dodajanje ničel odpade.   Ali obstaja kakšna druga rešitev, nekakšen csv editor?   ti ne znam direkt odgovorit, ampak zakaj enostavno dobljene številke ne deliš s 100 potem ko ti uvozi napačno. kopiraj potem čez vrednosti in imaš ... malo \"ruski\" sistem, ampak bi moral delovat"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Zamenjaj piko za vejico. V Power Query-ju greš na Preoblikuj..Zamenjaj vrednosti, v Excelu pa na Najdi in zamenjaj."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Kot je zapisal @assistant_14. Moraš pa v excelu enako kot zamenjaš piko za vejico, odstraniti narekovaje.  Imam pa tudi jaz vprašanje. Imam tabelo s tremi stolpci. V prva dva stolpca vpisujem posamezne številke, v tretjem pa številke združim v pare z medsebojno ločitvijo s pomišljajem. Sedaj me zanima, kolikokrat se v tretjem stolpcu pojavi iskani par. To naredim s funkcijo countif. Hec pa je, da mi ta fukkcija, ko iščem par 1-2, poleg tega para prišteje tudi pare 2-20 in enako, če iščem število parov 2-20, mi prišteje pare 1-2. Ali je že kdo imel takšen primer in če, kako ga je rešil?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "@assistant_15 je 12. jul 2020 ob 23:27 izjavil:Kot je zapisal @assistant_14. Moraš pa v excelu enako kot zamenjaš piko za vejico, odstraniti narekovaje.  Imam pa tudi jaz vprašanje. Imam tabelo s tremi stolpci. V prva dva stolpca vpisujem posamezne številke, v tretjem pa številke združim v pare z medsebojno ločitvijo s pomišljajem. Sedaj me zanima, kolikokrat se v tretjem stolpcu pojavi iskani par. To naredim s funkcijo countif. Hec pa je, da mi ta fukkcija, ko iščem par 1-2, poleg tega para prišteje tudi pare 2-20 in enako, če iščem število parov 2-20, mi prišteje pare 1-2. Ali je že kdo imel takšen primer in če, kako ga je rešil?   mogoče kakšna fora v nastavitvah teksta v celicah? jaz sem na hitro naredil test na majhnem vzorcu, pa countif dela ok. pošlješ file?"
+    },
+    {
+        "role": "assistant_15",
+        "message": "File-a ne znam priložiti. Sem pa preizkus naredil na treh računalnikih pa povsod isto. Mogoče je kaj narobe s formulo v iskalnem stolpcu. Primer tabele:  A B C 1 1 2 A1&\"-\"&B1 2 2 20 A2&\"-\"&B2 3 4 1 2 COUNTIF(C1:C2;A4&\"-\"&B4)  Rezultat je 2, moral pa bi biti 1. Zanimivo je, da je napaka samo pri teh dveh parih.  Bom poklical na Microsoft, če bodo lahko oni pomagali."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Mogoče pri tebi napaka. Izgleda, da dela ok:    Excel countif"
+    },
+    {
+        "role": "assistant_17",
+        "message": "Naredi se en stolpec, kopiraj stolpec c kot vrednosti in poskusi znova. Mogoce ga mede, ker isce po stolpcu s formulami"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Če vama dela, potem je res pri meni neka napaka. Samo zanimivo je, da sem preizkusil na različnih računalnikih z različnimi exceli: excel office 2010 - 32 bit, excel office 2010 - 64 bit in excel office 365 - 64 bit in pa, da se to zgodi samo pri teh dveh parih. Sedaj sem način ločitve števil spremenil, namesto pomišljaja sem dal najprej presledek in potem še podčrtaj in v obeh primerih je rezultat pravilen.  Sem prej tudi poskusil s kopijo vrednosti, pa tudi kar direktne vrednosti brez formul sem vnesel pa je bilo isto."
+    },
+    {
+        "role": "assistant_16",
+        "message": "@assistant_14 je 12. jul 2020 ob 01:34 izjavil:Zamenjaj piko za vejico. V Power Query-ju greš na Preoblikuj..Zamenjaj vrednosti, v Excelu pa na Najdi in zamenjaj.  Hvala, rešil z zamenjavo pike za vejico. Ob vseh v prazno porabljenih možganskih kapacitetah za tako glup problem, se prav čudim, da sem preživel do mojih let"
+    },
+    {
+        "role": "assistant_14",
+        "message": "@assistant_15 je 13. jul 2020 ob 08:47 izjavil:Če vama dela, potem je res pri meni neka napaka. Samo zanimivo je, da sem preizkusil na različnih računalnikih z različnimi exceli: excel office 2010 - 32 bit, excel office 2010 - 64 bit in excel office 365 - 64 bit in pa, da se to zgodi samo pri teh dveh parih. Sedaj sem način ločitve števil spremenil, namesto pomišljaja sem dal najprej presledek in potem še podčrtaj in v obeh primerih je rezultat pravilen.  Sem prej tudi poskusil s kopijo vrednosti, pa tudi kar direktne vrednosti brez formul sem vnesel pa je bilo isto.  Ni problem samo pri tebi. Se že eno uro zajebavam zakaj mu ravno 2-20 dela probleme. Vse ostale pare lepo šteje tudi 1-20, 2-10, 2-30,... samo 2-20 ga zajebava. Nimam pojma zakaj, bom jutri nadaljeval, če ne bo rešitve.  @assistant_18 Ti imaš v prvem stolpcu same 1-ke. To dela. Probaj dati 2 v A5 pa javi, če dela.   Ok, zdej sem ugotovil, da 2-20 Excel vzame kot datum (če kopiraš samo vrednosti javi napako, da gre za datumski zapis s samo 2 mestno letnico). Najbrž bo nekaj na tem."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Tudi ostale zapise vzame excel kot datum, ne samo 2-20. Sem poklical na Microsoft in izgleda, da gre za napako v excelu."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Takole je s to zadevo. Napaka je v excelu in bo verjetno odpravljena s kakšno posodobitvijo. Če je kdo v excelu delal s funkcijo countif, naj preveri kombinacije parov 1-x in x-20. Pri tem je 0 < x < 13. Pri ostalih kombinacijah , napake ni."
+    },
+    {
+        "role": "assistant_19",
+        "message": "(dec. '20) zgleda da sem nekaj po nesreči vklopil v enem od stolpcev v Excelovi tabeli, pa ne znam izklopiti, in zdaj mi ta tabela zelo počasi deluje: traja kakšno sekundo in pol da sprejme zapisano številko, kopiranje stolpca traja 5 sekund, itd.  Priložene slike: našel sem da se miškin kurzor drugače prikazuje v enem od stolpcev v primerjavi z drugimi. Rdeče: narobe; zeleno: prav. Kako to izklopiti, karkoli že je ?  Če kliknem na celico, se v polju zgoraj levo izpiše \"Text Box 132\"; - pritisnem DEL in še enkrat kliknem: se izpiše \"Text Box 134\"; - in tako v neskončnost; - nekako mi je uspelo ta \"text box\" odstraniti iz prvih dveh celic, naprej pa ne gre; - če dvokliknem v problematično celico, se na ekranu zgoraj odpre jeziček \"orodja za risanje\" in podjeziček \"oblika\", kar se pri normalno delujočih celicah ne; - torej imam v tem stolcu vklopljeno nekakšna \"orodja za risanje / oblika\", kar ne znam izklopiti; - kaže da gre za Excel 2007, Win Xp.    0   1   2   3   4   5"
+    },
+    {
+        "role": "assistant_20",
+        "message": "očitno si pod developer/razvijalec nabutal not textboxe   izbriši objecte  https://www.excelhow.net/how-to-delete-..."
+    },
+    {
+        "role": "assistant_21",
+        "message": "a TI KAKŠNI MAKROJI laufajo v ozadju?"
+    },
+    {
+        "role": "assistant_19",
+        "message": "@assistant_20 je 6. dec 2020 ob 15:12 izjavil:očitno si pod developer/razvijalec nabutal not textboxe   izbriši objecte  https://www.excelhow.net/how-to-delete-... zgleda, da bo to to. Hvala."
+    },
+    {
+        "role": "assistant_15",
+        "message": "@assistant_15 je 20. jul 2020 ob 12:58 izjavil:Takole je s to zadevo. Napaka je v excelu in bo verjetno odpravljena s kakšno posodobitvijo. Če je kdo v excelu delal s funkcijo countif, naj preveri kombinacije parov 1-x in x-20. Pri tem je 0 < x < 13. Pri ostalih kombinacijah , napake ni.  Če koga zanima, še epilog težave s \"countif\". Z zadnjo posodobitvijo offica, funkcija \"countif\" nima več težav."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Včeraj sem se spravil v Excelu računati razliko med datumi, in vidim da funkcije DATEDIF sploh ni med vsemi formulami... Kaj vse je na voljo:   DATEDIF (tole funkcijo google najde) https://support.microsoft.com/sl-si/off...  Do DATEDIF lahko pridem samo ročno, da jo vpišem (funkcija ima 3 parametre).In med posameznimi parametri moram dati podpičje [;] ne vejice [,], drugače Excel javi napako. Koliko je potem še ostalih takih skritih funkcij, ki jih sploh ni mogoče izbrati raje ne bom ugibal.   Na voljo za izbrati imam samo DateDifference (ki ima 5 parametrov).   Testirano na Excel 2010/2016 x32 Slo pro plus.Oblika celic je datum. Kaj delam narobe ?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "=DATEDIF(A1;A2;\"D\")  Tole sem jaz vpisal, pa dobim pravilen rezultat. Oblika celic z datumom je datum, celice s formulo pa splošno."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Če rabiš razliko v dnevih ne rabiš formul. Samo odšteješ. Excel tretira datum kot številko."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Živjo,  recimo, da imam v listu Summary v A2 tole formulo: MIN(data!H:H). Jaz bi rad, da je funkcija malo bolj pametna. Da najprej pogleda vrednost, ki je eno vrstico nad funkcijo, v A1 (recimo da je EU.ESI), in na osnovi tega, kar je v A1, določi stolpec v listu data, kjer bo iskala minimalne vrednosti.  Torej, če še bolj kmečko napišem: najdi minimalno vrednost v listu data v stolpcu, ki ima v prvi vrstici vrednost, ki je zapisana nad formulo. Rabim neke vrste lookup, a ne?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Poglej si funkciji offset in index. Za razumevanje je lažja offset funkcija, index pa se izvaja hitreje."
+    }
+]

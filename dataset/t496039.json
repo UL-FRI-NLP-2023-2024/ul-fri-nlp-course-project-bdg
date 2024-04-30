@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo, bi prosila za kak konkreten nasvet, če je možno. Na računalniku sem par dni nazaj inštalirala windows 7 ultimate 64 bit. Danes zjutraj, ko sem prižgala komp, pa mi je javilo tole \"napako\"...  Problem signature: Problem Event Name: BlueScreen OS Version: 6.1.7600.2.0.0.256.1 Locale ID: 1060  Additional information about the problem: BCCode: 1a BCP1: 0000000000041287 BCP2: 0000000000000030 BCP3: 0000000000000000 BCP4: 0000000000000000 OS Version: 6_1_7600 Service Pack: 0_0 Product: 256_1  Files that help describe the problem: C:\\Windows\\Minidump\\120311-32463-01.dmp C:\\Windows\\Temp\\WER-40061-0.sysdata.xml  Kaj naj bi to pomenilo, kako porihtam tole? Sem nekaj brskala po internetu, ampak nič pametnega našla. Hvala vam!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Iz tistega sporočila se ne da razbrati ničesar... bi bilo dobro pogledati tiste fajle na koncu, sam je treba vedeti, kako in kaj.  BSOD (Blue Screen Of Death) se največkrat zgodi zaradi napake v strojni opremi, npr. v RAM-u. Če imaš kak linux live cd, ga zadegaj not in zalaufaj diagnostična orodja.  Še prej pa zaženi Windowse v varnem zagonu in poglej, kako stabilni so."
+    },
+    {
+        "role": "user",
+        "message": "Ja, to sem razbrala iz neta, da naj bi šlo za napako strojne opreme... Je možno, da je premalo rama morda?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne. V tem primeru ne bi vrglo BSOD."
+    },
+    {
+        "role": "user",
+        "message": "Aha...  Pa še nekaj me zanima, imam matično AMD M2N68-AM... Ko sem naložila windowse na novo, nikakor nisem mogla inštalirati Cool& Quiet Utility. Sem šla prav na stran od AMD, poiskala svojo matično, pa da od tam zloadala in potem inštalirala to zadevo, ker mi jo preko CD-ja ni... Kao vse ok, cel postopek inštalacije gre čez, ampak se ne inštalira- kar mi najbolj ni jasno, kako je možno... Aja, pa spet mi šteka računalnik za znoret... :-((( Ahm, naj povem, da sem pred inštalacijo teh novih windowsov tudi menjala grafično kartico in dala nov ram not."
+    },
+    {
+        "role": "assistant_1",
+        "message": "V Event Manager pojdi (desni klik na My computer, nato Manage). Tam v razdelku System poglej po datumu/uri ali ti je v tistem času zabeležilo kakšen dogodek označen z rdečim. Sumim harddisk ali plato."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Formatiraj :)"
+    },
+    {
+        "role": "user",
+        "message": "Ok, zdaj gledam...  number of events: 5, critical (v rdečem krogcu x)- to misliš?  @assistant_2 je 3. dec 2011 ob 14:20 izjavil:Formatiraj :)  Pa menda ne že spet, sem pred štirimi dnevi."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Druge rešitve ni :) al pa če daš na servis (to so resne težave) ČE JE KAKA MANJŠA NAPAKA TI LAHKO POMAGAMO :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 3. dec 2011 ob 14:23 izjavil:Druge rešitve ni :) al pa če daš na servis (to so resne težave) ČE JE KAKA MANJŠA NAPAKA TI LAHKO POMAGAMO :)   Ajoj, zdej sem mal preveč broke, da bi si lahko servis privoščila... Upam, da gre za manjšo napako, če mi uspe pogruntati, z vašo pomočjo... :-)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "kwa to folk balina brez da bi sploh vidl dump file neverjetno... Link tole dol potegn pa poglej zaradi cesa se bsod nardi...   1) odraras 2) odpri program  3) 2 klikn na bsod (dump) in ti odpre novo okno v katerem je vse napisan!  + UPLOUDI TO in nam daj link Files that help describe the problem: C:\\Windows\\Minidump\\120311-32463-01.dmp"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user: Kot je rekel @assistant_3, ljudje kot so Pixer samo nekaj na pamet balinajo, brez da bi sploh se preverilo kaj je vzrok napake.  Pri tebi jih je lahko več, zato naredi, kot je napisal @assistant_3:  Nekam naloži in polinkaj C:\\Windows\\Minidump\\120311-32463-01.dmp, da lahko pogledamo kje točno se usuje. Če lahko naložiš še več .dmp datotek s tiste mape nam bo še bolj pomagalo."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Preveri kondenzatorje na MB. Se kaj pregreva ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "lahko poveš tudi katere komponente imaš in kaj delaš ko se ti prikaže BSoD al je random..."
+    },
+    {
+        "role": "user",
+        "message": "Ok, naredila sem, kar je rekel @assistant_3...  Sem shranila potem tiste datoteke, zdaj pa bom kar kopirala tole iz notepad, če kaj pomaga...  Čeprav sem šla sama še nekaj gledati po netu in a je problem t.i. ntoskrnl.exe ?!?  Aja, samo jaz dejansko v teh zadnjih dneh, ko sem te nove windowse naložila, nisem prav videla blue screena... Vem, kako to izgleda, ko se pojavi, nisem toliko blond, zato mi ni bilo jasno, kaj to javlja.  Full Path : C:\\Windows\\Minidump\\120311-29515-01.dmp Processors Count : 2 Major Version : 15 Minor Version : 7600 ==================================================  ================================================== Dump File : 120311-32463-01.dmp Crash Time : 3.12.2011 11:24:11 Bug Check String : MEMORY_MANAGEMENT Bug Check Code : 0x0000001a Parameter 1 : 00000000`00041287 Parameter 2 : 00000000`00000030 Parameter 3 : 00000000`00000000 Parameter 4 : 00000000`00000000 Caused By Driver : ntoskrnl.exe Caused By Address : ntoskrnl.exe+705c0 File Description : NT Kernel & System Product Name : Microsoft® Windows® Operating System Company : Microsoft Corporation File Version : 6.1.7600.16841 (win7_gdr.110622-1503) Processor : x64 Computer Name :  Full Path : C:\\Windows\\Minidump\\120311-32463-01.dmp Processors Count : 2 Major Version : 15 Minor Version : 7600 ==================================================  ================================================== Dump File : 120311-39671-01.dmp Crash Time : 3.12.2011 11:12:53 Bug Check String :  Bug Check Code : 0x00000124 Parameter 1 : 00000000`00000000 Parameter 2 : fffffa80`02cea278 Parameter 3 : 00000000`00000000 Parameter 4 : 00000000`00000000 Caused By Driver : ntoskrnl.exe Caused By Address : ntoskrnl.exe+4a5e4c File Description : NT Kernel & System Product Name : Microsoft® Windows® Operating System Company : Microsoft Corporation File Version : 6.1.7600.16841 (win7_gdr.110622-1503) Processor : x64 Computer Name :  Full Path : C:\\Windows\\Minidump\\120311-39671-01.dmp Processors Count : 2 Major Version : 15 Minor Version : 7600 ==================================================  ================================================== Dump File : 120311-19765-01.dmp Crash Time : 3.12.2011 2:06:03 Bug Check String : MEMORY_MANAGEMENT Bug Check Code : 0x0000001a Parameter 1 : 00000000`00041287 Parameter 2 : 00000000`00000030 Parameter 3 : 00000000`00000000 Parameter 4 : 00000000`00000000 Caused By Driver : ntoskrnl.exe Caused By Address : ntoskrnl.exe+705c0 File Description : NT Kernel & System Product Name : Microsoft® Windows® Operating System Company : Microsoft Corporation File Version : 6.1.7600.16841 (win7_gdr.110622-1503) Processor : x64 Computer Name :  Full Path : C:\\Windows\\Minidump\\120311-19765-01.dmp Processors Count : 2 Major Version : 15 Minor Version : 7600 =================================================="
+    },
+    {
+        "role": "user",
+        "message": "Aja, drugi podatki, ne vem niti katere naj vse napišem, če bo še kaj potrebno, povejte.  matična: AMD M2N68-AM; grafična: Nvidia Geforce GT440, procesor: AMD Athlon (tm)7750 Dual- Core Processor, RAMA imam G GB, 2 trda diska...  Ne pregreva se nič, sem preverila."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Koliko RAM-a je nameščenega(koliko modulov)?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 3. dec 2011 ob 15:41 izjavil:Koliko RAM-a je nameščenega(koliko modulov)?   1x 2 giga 1x 4 giga"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Kolikokrat dnevno pa prihaja do Bsod? Naj se pod zagon in obnovitev izklopi opcija (pod okvara sistema) zaženi znova samodejno. Na ta način bo razvidno, do kakšne napake pride pri BSOD.PC se bo v tem primeru tudi zaustavil( in ne ponovno restartal samodejno).Upam da sta obe ploščici RAM-a istega tipa (Se lahko preveri z CPU-Z programom).Lahko bi bil problemtačen RAM. Naj se vzame ena ploščica RAM-a ven in potem preveri stabilnost mašine. Ne bi bilo slabo preveriti RAM z Memtest-om."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vzel bi tistega 2 giga ven. Mešanje RAM-a različnih kapacitet ni priporočljivo, različnih modelov oz. proizvajalcev pa še manj."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Napaka NTOSKRNL.EXE kaže na težave s hardverom. Ni nujno, da je kaj pokvarjeno (sploh ker je PC novejši), lahko je samo kaj narobe nastavljeno v BIOSu, ipd. RAM je lahko tudi krivec. Mogoče je prešvoh napajalec, ali pa crkuje plata (sem že videl precej Asusk AM2 pokvarjenih). A so v Event Viewerju ob tistem času rdeče napake tudi v zvezi z NTOSKRNL?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "ni zmeraj hardware problem ker sm imel tudi jst probleme z ntoskrnl in sem samo resetiral bios in je vse vredu zdej :) z vsemi RAM banki naredit Memtest86+ in potem se vsazga posebaj!"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_0 je 3. dec 2011 ob 17:16 izjavil:Vzel bi tistega 2 giga ven. Mešanje RAM-a različnih kapacitet ni priporočljivo, različnih modelov oz. proizvajalcev pa še manj.  Dokler je clock isti to ne bi smelo biti problem. Pa še če je clock različen ni neke grozne panike... pač vse skupaj teče malenkost bolj počasi.  Ampak ja... poor mans test... vzameš eno palčko ven, probaš če stvar laufa. Če ne laufa palčki zamenjaš in probaš če gre z drugo. Če ne gre z nobeno verjetno ni ram kriv in bo treba na servis. Če z eno dela... pol je pač kriva tadruga.  Vse to lahko podkrepiš s memtest86.  Sama sem ene 95% ziher da je ram kriv. Zaradi une 0x1A memory managment napake."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_1 je 3. dec 2011 ob 17:22 izjavil:Napaka NTOSKRNL.EXE kaže na težave s hardverom. Ni nujno, da je kaj pokvarjeno (sploh ker je PC novejši), lahko je samo kaj narobe nastavljeno v BIOSu, ipd. RAM je lahko tudi krivec. Mogoče je prešvoh napajalec, ali pa crkuje plata (sem že videl precej Asusk AM2 pokvarjenih). A so v Event Viewerju ob tistem času rdeče napake tudi v zvezi z NTOSKRNL?   Huh, vsak BSOD je napaka v NTOSKRNL.EXE (ker je to jedro sistema, ki se pri napaki usuje z BSOD :P ), tako da bo treba malo paziti kaj se okoli razlaga.  MEMORY_MANAGEMENT error z nedokumentirano napako res kaže na to, da se najverjetneje nova ploščica RAMa ne razume s staro.  Koraki, ki jih lahko narediš za diagnstiko ali odpravo napake:  1.) Resetiraš BIOS (Load defaults), v primeru da so trenutno postavljeni napačni parametri. -- če še vedno pride do sesutja -- 2.) Odstraniš (staro) 2GB ploščico -- če še vedno pride do sesutja -- 3.) Odstraniš (novo) 4GB ploščico in vstaviš staro  V kolikor ti deluje samo z novo, potem maš malo nesrečo, ker se ploščici ne razumeta. Če ti deluje samo s staro, jo vrni v trgovino in razloži da ne dela."
+    }
+]

@@ -1,0 +1,118 @@
+[
+    {
+        "role": "user",
+        "message": "Lp  Mi lahko kdo pove zakaj ne morem na ta novi prenosnik naložiti windows 10?  Poizkusil sem že rekoč vse, na sliki prilagam problem katerega ne morem rešit.  prosim za pomoč.  Hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Izgleda kot da želiš naložit Windows 7...  https://www.microsoft.com/sl-si/softwar...  Preneseš orodje - MediaCreationTool in narediš zagonski USB."
+    },
+    {
+        "role": "user",
+        "message": "Windows 10"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Disk obriši in sformatiraj, izgleda, da imaš na disku nek fail, ki ne dovoljuje instalacije ali pa je napačen sistem MBR ali GTP - prvi je preko legacy instala, drugi UEFI."
+    },
+    {
+        "role": "user",
+        "message": "Preko cmdja sem obrisal in formatiral shift+f10 Prenosnik je pod garancijo ne morem drugam dat diskov."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Resetiraj in posodobi BIOS, odstrani (izbriši) vse particije na disku..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če nisi uporabil windows media creation toola ga uporabi. Mogoče v biosu izklopi še kak secure boot in podobna sranja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user - V postopku instalacije, ti pokaže mesta za možno instalacijo, tam izbrišeš vse particije in dobiš celoten disk unalocated, potem pritisneš \"nova\" in ti disk razdeli v nove particije, še prej pa določiš velikost, če ne boš uporabil celotnega diska za OS. Izbereš po velikosti največi in daš next. Če ne gre, imaš slabo kopijo Windows -a in boš moral dobit drugi medij.  Če je računalnik nov, verjetno ne bo šla instalacija W7 brez problemov.  V bios-u označi UEFI (če nimaš travniške verzije OS-a) ali legacy."
+    },
+    {
+        "role": "user",
+        "message": "Preko uefi lahko nalozim? Bom probal zdaj sem preko gpt"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user - GPT naredi UEFI. Ko se računalnik zažene, štartaš z EFI. Ugasni secure boot. F12 imaš verjetno za izbiro boot naprave, izberi EFI - USB, če ti tega ne pokaže imaš napačno narejen ključek."
+    },
+    {
+        "role": "user",
+        "message": "ewo do sem pridem"
+    },
+    {
+        "role": "user",
+        "message": "kak naredim znak =? v cmd   hvala"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Vse 3 particije izbriši z gumbom Delete in pritisni Next."
+    },
+    {
+        "role": "user",
+        "message": "pa kaj jaz prvič windows nalagam ali kaj se norce delajo z biosof   na 1tb disk ide nalagat windows. zakaj mi ne pusti na m2 ssd nalagat windowsa"
+    },
+    {
+        "role": "user",
+        "message": "ne gre spremeniti disk iz mbr v gpt.... če je zaščiten..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "V bios-u moraš določit boot enoto in to naj bo M.2 sedaj imaš naštiman HDD. Če ne znaš, boš moral dobit nekoga, ki za celotno instalacijo rabi pol ure, ker vse obvlada in dela avtomatsko. Prejšnji vikend sem nalagal na HP480G3 in je šlo brez problema."
+    },
+    {
+        "role": "assistant_4",
+        "message": "v biosu disablaj tistega diska k noces imet za instalacijo. Sata controler nastavi na compatibility ali enhanced ide (verjetno je nastavljen na ahci pa vcasih noce). Po koncani instalaciji spet vklopis drugi disk v biosu."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_4 - IDE je že kar nekaj let zgodovina in ni več v bios-u, od kar je UEFI. Imaš AHCI sata. Tudi nobene obstoječe naprave ne moreš v bios-u izključit, lahko pa ga fizično umakne (dva vijaka za pokrov in štirje vijaki za odstranitev diska. Ne vpliva na garancijo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_1 je 26. feb 2020 ob 20:40 izjavil:@assistant_4 - IDE je že kar nekaj let zgodovina in ni več v bios-u, od kar je UEFI. Imaš AHCI sata. Tudi nobene obstoječe naprave ne moreš v bios-u izključit, lahko pa ga fizično umakne (dva vijaka za pokrov in štirje vijaki za odstranitev diska. Ne vpliva na garancijo.  Par mescv nazaj sem kloniral win10 iz navadnega na ssd, pa se po kloniranju sistem/win ni hotu nalozit, par sekund pa takoj bsod. Tezavo resil z nastavitev sata controler na enhanced ide in je takoj bootalo. Opcija je obstajala kljub temu da plata/racunalnik ni imel ide prikljuckov, biv je hp stacionarc z i5 3 generacije."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To bi pa rad videl, imam namreč hp4730S, to je 2 generacija i5, pa tega niti slučajno nima. Ima samo sata in AHCI, nič drugega. A se morda še spomniš, kako so izgledali IDE konektorji?"
+    },
+    {
+        "role": "user",
+        "message": "Ni to 10let staro da bi lahko kaj izklopil."
+    },
+    {
+        "role": "user",
+        "message": "M2 bom ven vzel pa v drugem prenosniku nalozil pa nazaj dal pa bo delalo."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Dejmo ne mešat različnih zadev med sabo. Nekaj so PATA _konektorji_, nekaj pa protokol ki teče po njih. V primeru PATA je to IDE, pri SATA imaš pa lahko IDE in AHCI. Iz tega tut prihaja legacy ali native način.  Res je, da se je ide način začel poslavljat z uvedbo UEFI biosov, ampak še vedno je bil prisoten na nekaterih platah/prenosnikih.  @assistant_4 je 26. feb 2020 ob 20:50 izjavil:@assistant_1 je 26. feb 2020 ob 20:40 izjavil:@assistant_4 - IDE je že kar nekaj let zgodovina in ni več v bios-u, od kar je UEFI. Imaš AHCI sata. Tudi nobene obstoječe naprave ne moreš v bios-u izključit, lahko pa ga fizično umakne (dva vijaka za pokrov in štirje vijaki za odstranitev diska. Ne vpliva na garancijo.  Par mescv nazaj sem kloniral win10 iz navadnega na ssd, pa se po kloniranju sistem/win ni hotu nalozit, par sekund pa takoj bsod. Tezavo resil z nastavitev sata controler na enhanced ide in je takoj bootalo. Opcija je obstajala kljub temu da plata/racunalnik ni imel ide prikljuckov, biv je hp stacionarc z i5 3 generacije.  zadevo se da tut rešit brez, da se hendikepiraš z IDE načinom, treba je popravit registery vnos, da se naloži tut ahci driver.  V bios-u označi UEFI (če nimaš travniške verzije OS-a) ali legacy.  Dejmo že nehat širit ta bullshit."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 27. feb 2020 ob 08:50 izjavil:M2 bom ven vzel pa v drugem prenosniku nalozil pa nazaj dal pa bo delalo.  Ne. Naredi po naslednjem postopku:  -naredi reset biosa -ustvari Windows 10 medij s tem linkom https://www.microsoft.com/sl-si/softwar... -zalaufaj inštalacijo -pobriši vse diske z diskpart->clean komando -reset -inštalacija normalno na m.2 disk  Tole je skor sure fire way za inštalacijo. _včasih_ je treba poskusit različne usb porta za inštalacijski usb, če stvar ne gre naprej pri formatiranju ali pa sploh ne vidiš diskov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Čist tko iz firbca, tistle M.2 disk ti bios najde? Ali samo Windows inštalacija? Sprašujem ker sem nedavno imel isti primer, moj laptop ne podpira bootanja iz M.2 in ga niti bios ne vidi."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Še vedno je v vseh nastavitvah bios-a možnost izbire boot enote in od tega je odvisno, s katerega medija bo sistem zagnalo in tudi to, kam ga lahko instaliraš. Če bios nima možnosti zagona iz M.2, poglej za posodobitvami bios-a, saj je nesmiselno da prostor ima, dela pa ne."
+    },
+    {
+        "role": "assistant_5",
+        "message": "lahko je reža za sata in pcie m.2, pa recimo nima NVMe modula in nebo bootal NVMe M.2 ssdjov. Ker od začetka si mel ahci-pcie ssdje in ti sistemi niso mel nvme.."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_5 je 27. feb 2020 ob 09:00 izjavil:Dejmo ne mešat različnih zadev med sabo. Nekaj so PATA _konektorji_, nekaj pa protokol ki teče po njih. V primeru PATA je to IDE, pri SATA imaš pa lahko IDE in AHCI. Iz tega tut prihaja legacy ali native način.  Res je, da se je ide način začel poslavljat z uvedbo UEFI biosov, ampak še vedno je bil prisoten na nekaterih platah/prenosnikih. @assistant_4 je 26. feb 2020 ob 20:50 izjavil:@assistant_1 je 26. feb 2020 ob 20:40 izjavil:@assistant_4 - IDE je že kar nekaj let zgodovina in ni več v bios-u, od kar je UEFI. Imaš AHCI sata. Tudi nobene obstoječe naprave ne moreš v bios-u izključit, lahko pa ga fizično umakne (dva vijaka za pokrov in štirje vijaki za odstranitev diska. Ne vpliva na garancijo.  Par mescv nazaj sem kloniral win10 iz navadnega na ssd, pa se po kloniranju sistem/win ni hotu nalozit, par sekund pa takoj bsod. Tezavo resil z nastavitev sata controler na enhanced ide in je takoj bootalo. Opcija je obstajala kljub temu da plata/racunalnik ni imel ide prikljuckov, biv je hp stacionarc z i5 3 generacije.  zadevo se da tut rešit brez, da se hendikepiraš z IDE načinom, treba je popravit registery vnos, da se naloži tut ahci driver.  V bios-u označi UEFI (če nimaš travniške verzije OS-a) ali legacy.  Dejmo že nehat širit ta bullshit.  V bistvu preden se lotis kloniranja najboljse v device managerju deinstalirat vse gonilnike za sata ter ide kontrolerjev. Po koncani deinstalaciji ugasnes pc in kloniras v dosu z acronisom. Tole je vedno delalo na xp,vista,win7, verjetno bi tudi na 10ko slo, sem pozabil deinstalirat gonilnike pa se mi ni dalo se enkrat ponovit vajo s kloniranjem :) lahko pa tudi nastimas gonilnike ter register ko ze enkrat boota do konca kloniran hdd, pol pa spet ce bo treba spremenis v biosu nazaj na ahci."
+    },
+    {
+        "role": "user",
+        "message": "Vem samo da je bil disk zaklenjen z bitlockerom"
+    }
+]

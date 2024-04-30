@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo!  Imam sledeč problem.. računalnik se mi prižge in takrat ko hoče naložiti windowse zamrzne in na hitro pokaže blue screen nato pa se resetira. Probal sem že v safe mode in na novo instalirati windowse ampak mi vedno pokaže blue screen in se računalnik resetira. Menjal sem rame, napajalnik, grafično, trdi disk in nič ne pomaga.   Kakšna ideja ?  lep pozdrav"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ubuntu live (\"Try\" opcija), nato v skopiraj vsebino c:\\Windows\\Minidump\\ na usb, odpri z bluescreenview."
+    },
+    {
+        "role": "user",
+        "message": "lahko to malo bolj razložiš in zakaj sploh so te programi ? in kako se uporablja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "mogoče treba dat clear bios, kakšne so pa kaj specifikacije, pa povej če si kater del si najprej menjal da se je začel blu screen, pa še napiši kodo blue skrena če se prehutro ne skrije"
+    },
+    {
+        "role": "user",
+        "message": "računalnik sm čist od začetka sestavu tako da nevem kaj bi povzročil težavo sem pa vse tudi menjal razn procesorja..  ubistvu sem vse komponente iz ene kište premestil samo v drugo razen trdi disk je drug.  Slika bluescreena: http://tinypic.com/r/zxmcrd/8"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Z vsakim postom poveš malenkost več kar bi moral že uvodoma, da ne vlečemo iz tebe osnovnih informacij in dejanj kaj si in kaj nisi vse že počel. Razgovori se ! Povej ali si na disk na novo inštaliral neznan sistem ali si disk s sistemom kar prestavil iz starega v nov komp ? Ti je kdaj sistem ob zagonu sploh prišel do namizja ? Če si inštaliral Windows kje se je ustavilo pri inštalaciji?  Kako imaš v biosu na neznani plati nastavljen sata mode ? ahci ali ide ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Takojšen izklop lahko pomeni tudi nedelovanje hlajenja procesorja. Tudi sam mislim da z izjavo rečunalnik nagaja nisi pravzaprav povedal popolnoma nič.Napiši vse, čeprav se ti zdi nepomebno, ker za pomoč je več kot pomebno."
+    },
+    {
+        "role": "user",
+        "message": "Specifikacije: -Matična plošča: P4M900-M4 (prišlo zravn ostalih komponent) -Napajalnik: Power LC4620 (napajalnik ni bil zravn zato sem dal tega.) -Procesor: Intel Pentium 4 3,08 GHZ (ko sem ga nameščal nisem imel več veliko termalne paste zato sem jo nanesel malo in useno nadeljeval)(prišlo zravn ostalih komponent) -Cooler za procesor: ZALMAN, 2 ball bearing (prišlo zravn ostalih komponent) -Grafična kartica: Gigabyte GV-RX387512H (prišlo zravn ostalih komponent) -Rami: 2x po 1GB PC2 - 5300CL5 (prišlo zravn ostalih komponent) -Trdi disk: WDC WD1200BB-00GUAO (Ta trdi disk je bil nameščen v enem mojem prejšnem računalniku in sem ga vzel ven in namestil v ta novi računalnik.)  Trdi disk: Ta trdi disk je bil nameščen v enem mojem prejšnem računalniku in sem ga vzel ven in namestil v ta novi računalnik nato sem prižgal računalnik, ki nikoli ni uspel priti čez blue screen ko se je windows začel nalagati. Na trdi disk sem probal instalirati windowse na novo in takoj ko hoče začeti inštalacijo se računalnik resetira. Probal sem tudi drugi trdi disk ki ima nameščen windows xp in je enako kot pri prejšnem. Probal sem v safe mode in tudi da mi widows sam najde težave in jih odpravi ampak zmeraj naredi blue screen in reset. Trdi disk še nima rdečih kablov za priklop ampak še star sistem.  Vprašanja: -Na matični plošči nikjer ne vidim da bi bila kašna baterija ki bi jo lahko zamenjal.. fora? -Ko prižgem računalnik grafična kartica nekaj časa sveti rdeče nato pa luč ugasne včasih se pa sploh ne prižge. fora ?  BIOS: -SATA Controller: Enabled -SATA Controller Mode: IDE -IDE HHD Block Mode: Enabled -PNP OS Installed: No -Init Display First: PCIEx -Current CPU Temp: 18 -Current CPU FAN Speed: 0 RPM -Current SYS FAN Speed: 0 RPM -Voltage Battery: 3,28V -DRAM Voltage: 1,87V -CPU clock: 200HMz -Ansync PCIE Clk: 100MHz -1 Boot Device: Hard Disk -2 Boot Device: CDROM -3 Boot Device: Floppy -Halt On: All, But Keyboard  če rabte še kej sam povejte :)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Gumbek baterija je zraven PCIe 1x reže..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Grafična kartica ima še en dodaten 6-pinski pci-e konektor za napajanje. Si ga priključil na napajalnik?"
+    },
+    {
+        "role": "user",
+        "message": "da"
+    },
+    {
+        "role": "assistant_5",
+        "message": "V BIOSu poglej kakšne so temperature pa nam povej. Predvsem CPU temperaturo... Pa PNP OS Installed lahko prestaviš na YES, saj ne uporabljaš kakšnega arhaičnega OSja (ala Win 95 & 98)..."
+    },
+    {
+        "role": "user",
+        "message": "samo za procesor sm najdu da je temp. od 18 do 20."
+    },
+    {
+        "role": "assistant_1",
+        "message": "jaz bi probal še zamenjat ide kabel za disk pa imaš disk priključen na ide 1 ( primary kanal) dvd rom pa ide 2 ( secnd kanal) pa še probaj zamenjtat ram ven iz obeh rež pa nazaj kontra v obe reže, pa preveri še ostale kable da so dobro pritrjeni od napajalnika naprej, pa še to če imaš v biosu nastavitev first boot device hdd pa ne cd rom ti potem sistem še vedno pobira z diska če greš na novo nalagat win xp je, mora bit first boot device cd rom, 2 in tretja boot device nista potrebna še posebno je flopy odveč do prvega win xp zagona ko potem daš na first hdd"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Lahko je tudi težava v nastavitvi biosa.Si poskusil z neformatiranim diskom?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Samo nekaj, kako poskušaš naložit windowse?  Pišeš nekaj o safe mode in navadni zagon; za nalaganje novih windowsev, ne rabiš zagnati tistih, ki so na diksu, zaradi katerih boš vedno dobil BlueScreen, saj so bili naloženi za drug računalnik (drug hardware). Lahko da sem samo napačno razumel, ampak, si v BIOSU nastavil, da najprej požene USB ali DVD, kjer so inštalacijske datoteke za windows?  In še, napaka je lahko tudi na inštalacijskem DVDju/USBju, še posebej, če ne uporabljaš uradne verzije OSa, ali če je DVD že starejši oz. presnet, v takem primeru bi tudi lahko nastopil BlueScreen."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3:  ja sem že probal in je isto.  @assistant_6: windwsi so uredu ker sm jih naložu 1 dan prej na drug računalnik na tem pa hoče začet inštalacijo in nardi blue screen"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Napajalnik je že v letih, bi lahko bil krivec? Imaš možnost še kirega sprobat?  Drugač sem pa brez idej... Sem imel enkrat probleme z RAMi, ker se nastavil drug CAS, samo factory reset je to rešil..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Izberi tovarniške nastavitve BIOSa. Izberi Use Optimized Settings -> Save BIOS/CMOS settings -> Resetiraj..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Verjetno prej kakšen unsupported CPU, kar je višje kot Windows 7 ne gre gor pa tudi 7ka zna imeti probleme. Se mi je že zgodilo pri kolegu ko sem mu rihtal ...."
+    },
+    {
+        "role": "assistant_5",
+        "message": "OP naj najprej pove, katere Windowse želi inštalirati, ker jih je malo morje... XP, Vista, 7, 8, 32-bit, 64-bit,...?"
+    },
+    {
+        "role": "user",
+        "message": "Želim inštalirati windows 7 64-bit"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Inštaliraj windows 7 32 bit. P4 je 32 bitni cpu."
+    },
+    {
+        "role": "user",
+        "message": "hvala bom probal :)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Poglej jumperje na IDE napravah. Zunanji priklop ima vedno pozicijo MASTER, notranji (srednji) SLAVE. Če imaš to pomešano, ti ne bo boot-al, saj bios ne prepozna nobene naprave. Največkrat je bil problem pri IDE napravah ravno položaj jumperjev.  Vzemi ven DVD in HDD in poglej tabele ki jih imaš na ohišju obeh naprav. Zapomni - zunanji konektor je naprava M srednji je S. Sem prepričan da je pri tebi ravno ta problem."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@user je 25. feb 2015 ob 21:59 izjavil:Slika bluescreena: http://tinypic.com/r/zxmcrd/8   STOP 0x0000007B errors are caused by device driver issues (especially those related to hard drive and other storage controllers), viruses, data corruption, and sometimes even hardware failures. http://pcsupport.about.com/od/findbyerr..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9  mi lahko to mal bolj razložiš mal bloj po domače :)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "http://www.mikeshardware.com/howtos/how...  Na DVD-ju in HDD-ju imaš poleg napajalnega konektorja 8 ali 10-12 pinov in jumperje (ploščica ki poveže dva pina, oblečeno v plastiko). Na ohišju pa imaš narisano kako morajo bit te pini postavljeni na teh pinih.  IDE kabel ima tri priklope. Gledano od srednjega, gre krajši konec v MB na daljšem koncu imaš enoto MASTER - oznake na napravi M ali MA, na srednji priključek gre enota SLAVE - oznake S ali SL.   Ko to uštimaš, pa samo še v bios-u nastaviš s katere naprave boš boot-al. Tam imaš označene naprave - DVD tip nnnn in HDD - IDE tip nnnn. Če hočeš botat iz diska, daš disk na prvo mesto."
+    },
+    {
+        "role": "assistant_9",
+        "message": "http://www.mikeshardware.com/howtos/how...  Na DVD-ju in HDD-ju imaš poleg napajalnega konektorja 8 ali 10-12 pinov in jumperje (ploščica ki poveže dva pina, oblečeno v plastiko). Na ohišju pa imaš narisano kako morajo bit te pini postavljeni na teh pinih.  IDE kabel ima tri priklope. Gledano od srednjega, gre krajši konec v MB na daljšem koncu imaš enoto MASTER - oznake na napravi M ali MA, na srednji priključek gre enota SLAVE - oznake S ali SL.   Ko to uštimaš, pa samo še v bios-u nastaviš s katere naprave boš boot-al. Tam imaš označene naprave - DVD tip nnnn in HDD - IDE tip nnnn. Če hočeš botat iz diska, daš disk na prvo mesto.  http://www.easeus.com/resource/install-..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bios zazna tvoj hdd/dvd ?"
+    }
+]

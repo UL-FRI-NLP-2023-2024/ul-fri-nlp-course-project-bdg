@@ -1,0 +1,154 @@
+[
+    {
+        "role": "user",
+        "message": "Hej!  Eno vprašanje glede wordpresa, če bo kdo znal pomagat.  Objave iz poddomene sem prestavil na glavno domeno oz. na novo napisal. Poddomena je še vedno aktivna, bi pa rad, da se ves promet preusmeri na glavno domeno in tiste blog objave. Razmišljam o 301 redirect pa me zanima, glede na to, da nimam veliko objav, ali moram vsako posebej redirectat na novo objavo na glavni domeni?  Kako je pa potem, če url poddomene redirectam na glavno domeno? To ne vpliva na te blog objave ampak samo na osnovno poddomena stran in moram narediti še zgoraj omenjeno za vsako blog objavo?  Jao, sem zakompliciral. :)   Hvala za pomoč!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "To nima veze z wordpresom :)  Če hočeš obdržati rank na googlu potem moraš vsaki strani nastaviti 301 redirect na novo. To se da enostavno urediti v htaccess-u.   V kolikor imaš strukturo url-jev enako kot na stari strani potem v htaccessu določiš da te redirekta na novo domeno in obdrži preostali URl.  npr: staradomena.si/moj-lep-blog mora preusmeriti na => novadomena.si/moj-lep-blog"
+    },
+    {
+        "role": "user",
+        "message": "OK, sorry, sem bolj laik s tem :) Se vse učim sam, po včasih pojme mešam.  Na glavni domeni so blog zapisi malenkost drugačni naslovi, kot stari na poddomeni. Se pravi struktura ni enaka. Sedaj sem prek cPanela vseh 20 objav preusmeril vsako posebej na novo objavo. Bo to delovalo?  Ko sem poskušal še osnovno \"poddomena.mojastran.si\" redirectat na \"www.mojastran.si\", mi je pa zbrisalo vse tiste redirecte blog objav, ko sem jih že naredil. Sklepam, da zato, ker je program mislil, da potem vse komplet poddirektorije avtomatsko redirekta na glavno domeno. Ampak to ne bi bilo prav, zato sem ta redirect pobrisal in še enkrat vse blog objave redirectal na novo domeno oz. na novo objavo na glavni domeni. Pomoje bi moglo delovati. A razmišljam prav?   Takle, kot je na tej fotki, je izgledalo:     Pa ne mi zamerit, ker bolj tako tako pišem, res se ne spoznam preveč na te zadeve. Kar znam, me je naučil youtube pa google. Že tak čudež, da sem skupaj spacal karkoli na spletni strani. :)  Aja, pa podvprašanje: ko naredim te 301 redirecte, koliko časa traja, da začne vse skupaj funkcionirati? Ker zaenkrat (4 ure) še ne preusmerja.  Hvala!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa ti pusti tiste redirecte v konzoli in si odpri datoteko .htaccess ki se nahaja na root-u tvojega spletišča in tam noter daj redirecte. Na googlu je dosti primerov kako se to naredi. NPR KLIK  če narediš redirect v .htaccess začne delati takoj."
+    },
+    {
+        "role": "user",
+        "message": "Ok, bom problal. Našel sem ta htaccess file na poddomeni in imam notri tole:      Če hočem sedaj preusmeriti direktorije, moram za vsako blog objavo pisat tole: Redirect 301 /blogobjava1.htm http://example.net/blogobjava1.htm Je tako?   Vprašanje: kam pa zapišem sedaj te preusmeritve? V katero vrstico?  Hvala!"
+    },
+    {
+        "role": "user",
+        "message": "zgoraj sem gledal napačno poddomeno. Tule je prav:  Našel sem ta htaccess file na pravi poddomeni in imam notri tole (primer vrstice:  RewriteCond %{HTTP_HOST} ^poddomena\\.imedomene\\.com$ RewriteCond %{REQUEST_URI} !^/[0-9]+\\..+\\.cpaneldcv$ RewriteCond %{REQUEST_URI} !^/\\.well-known/pki-validation/[A-F0-9]{32}\\.txt(?:\\ Comodo\\ DCV)?$ RewriteRule ^o\\-meni\\/$ \"http\\:\\/\\/www\\.imedomene\\.com\\/o\\-meni\\/\" [R=301,L]  a bi moralo biti takole: Redirect 301 /o-meni.htm /www.imedomene.com/o-meni.htm  oz. za specifično objavo: Redirect 301 /2016/08/07/blogobjava1.htm /www.imedomene.com/2018/01/02/blogobjava...  itd...  Hvala!"
+    },
+    {
+        "role": "user",
+        "message": "Eh... še enkrat....  Sedaj sem pobrisal vse tiste redirecte in bom vnesel nove ročno v .htaccess.   Samo vprašanje...v katero vrstico jih pa vnesem (glej sliko zgoraj)?"
+    },
+    {
+        "role": "user",
+        "message": "Babylon5, uspelo mi je! :)  Vse lepo deluje, ne morem verjet. :D Hvala za nasvet in pomoč."
+    },
+    {
+        "role": "assistant_0",
+        "message": "lepo to :) jaz sem te samo usmeril pravilno, za ostalo si poskrbel sam oz. tvoj prijatelj gugl :)"
+    },
+    {
+        "role": "user",
+        "message": "Hja, brez tebe tudi do gugla ne bi prišel. :) Zato je tak forum fin, ker če ne drugega, te prav usmerijo. :) Jaz sem se pa še nekaj novega naučil. :D"
+    },
+    {
+        "role": "user",
+        "message": "Spet odpiram tole temo.... da zaključim sago s poddomeno. Upam na pomoč. :)  Torej, sedaj imam v poddomeni v datoteki .htacces vnešene 301 redirect za vse objave, ki so se premnesle na glavno domeno. Ker je od takrat, ko sem to naredil, preteklo že dovolj vode in je Google očitno poštekal to, bi sedaj to poddomeno zbrisal. Najlažje je seveda prek cpanela pobrisati poddomeno in je to to. Ampak, s tem bi zbrisal tudi ta .htaccess file in stare preusmeritve ne bi več delovale. Razmišljam, da če poddirektorij od te poddomene v cPanelu pustim, in dam notri samo ta .htaccess file, kjer bi dodal še \"redirect 301 sub.mydomain.com /www.mydomain.com\"  A je to smiselno, pa da ostale 301 redirekte tudi pustim tam?   Hvala za pomoč"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz bi ti priporočal da si namestil google analitiko če je še nimaš in uporabiš še google web master tools-e kjer lahko preveriš ali je in koliko je še stara domena aktualna. Pir webmaster toolsih če se ne motim lahko poveš googlu da stara ne obstaja več ker je šla na novo + zahtevaš ponovno indexacijo na novi lokaciji ipd..  Drugače pa ja, staro domeno z 301 redirectom je smiselno imeti dokler se ne vse preseli na novo, kar pa bi moralo biti že urejeno glede na to kdaj si to urejal."
+    },
+    {
+        "role": "user",
+        "message": "Ja, tudi google že lepo najde preusmerjene poste. Bi pa rad poddomeno čisto zbrisal, ker mi žre prostor na hostingu. Pa ne vem, a naj pustim ta .htaccess file ali kompletno zbrišem in v cPanel naredim preusmeritev."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Domena ti ne pobira prostora na hostingu, datoteke ti ga pobirajo :) .. pa ne .htaccess  Kakorkoli, zbriši gostovanje vezano na pod domeno in samo nastavi v cpanelu da pelje na glavno z 301 redirectom."
+    },
+    {
+        "role": "user",
+        "message": "No ja, to sem mislil. Datoteke v tej poddomeni, meaning cela instalacija wordpressa itd :)  OK, naredim tako. Se pravi, če bo kdo zalutal na tiste stare objave iz poddomene, ga bo vrglo na glavno domeno, main stran?"
+    },
+    {
+        "role": "assistant_1",
+        "message": ""
+    },
+    {
+        "role": "assistant_2",
+        "message": "Čaki, ti si iz poddomene prenesel vse članke na glavno domeno in, če prav razumem, imaš dejansko 2x inštaliran WP?  Če je temu tako, potem pusti 301 preusmeritve pri miru (.htaccess), poddomeno tudi, WP na poddomeni pa izbriši ker odkar si naredil 301 presumeritve obiskovalci starega WPja ne vidijo več ker so takoj preusmerjeni na glavno domeno na ustrezen blog. Lahko pa tudi narediš da če kdo dostopa do poddomene in blog ne obstaja, ga pač preusmeri na glavno domeno, in imaš pokrite vse scenarije.  Tako boš sprostil prostor od starega WPja, .htaccess zasede praktično nič prostora, pa še če je kje kakšna stara povezava do tvojega bloga na poddomeni, bo še naprej delala oz. bo obiskovalec preusmerjen na glavno domeno."
+    },
+    {
+        "role": "user",
+        "message": "Ja, pred časom sem vse članke dal na glavno domeno in iz starih naredil 301, da he google poštekal nove članke.  No, to sem želel vprašati. Malo težje se izrazim, ker ne znam preveč tega WP-ja. :) Se pravi, lahko v cPanelu vse datoteke pobrišem, pa pustim samo direktorij poddomena in notri .htaccess datoteko? Edino težavo vidim, če bo direkten klik na \"bivšo\" poddomeno, ki pa ni redirectana na glavno. (verjetno bi, če bi jo, vse ostale 301 redirecte izničil?)"
+    },
+    {
+        "role": "assistant_0",
+        "message": ".htaccess nima nobene veze z wordpressom, tako da WP lahko komot pobrišeš. Narediš generalni rule da vse kar pride na bivšo domeno preusmeri na novo in ne boš imel težav"
+    },
+    {
+        "role": "user",
+        "message": "A je kakšna zmeda, če pustim vse tiste članke 301 redirect, dodam pa še redirect za poddomena-> glavna domena?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ne"
+    },
+    {
+        "role": "user",
+        "message": "Se pravi, lahko vse, kar je v tem direktoriju poddomene, pobrišem. Pustim samo .htaccess ? ok, hvala! :) Se jutri vržem na delo :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja. Presumeritev za poddomeno na glavno pa daš kot zadnje pravilo v .htaccess in je to to. Aja, WPja tudi jaz ne poznam (vem da obstaja :D), ampak kar sprašuješ nima veze z WPjem ..."
+    },
+    {
+        "role": "user",
+        "message": "DePalma: vem, vem... ampak jaz s tem izrazom poimenujem vse prčkalice, ki jih moram delati na spletni strani :D   OK, hvala vsem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na žalost preveč ljudi povezuje spletne strani z WP :) saj mislijo da je to edino orodje. z WP se dela štancanje spletnih strani, če hočeš kaj bolj konkretnega se je WP bolje izognit."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0 je 21. nov 2018 ob 11:08 izjavil:Na žalost preveč ljudi povezuje spletne strani z WP :) saj mislijo da je to edino orodje. z WP se dela štancanje spletnih strani, če hočeš kaj bolj konkretnega se je WP bolje izognit.   Wp s kvalitetnimi modifikacijami je lahko komot vrhunsko orodje, ce te karkoli omejuje imas povsem proste roke da sfuras zadeve mimo frameworka. Woocommerce naj bi (njihova trditev) poganjal trgovine s 100k artiklov bp.   Drugo je ce ti obesis gor neke tretjerazredne teme in plugine, kar vecina pocne. To ne pomeni da je wp v osnovi slab."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nisem rekel da je WP slab :) Če je nekaj najpogosteje uporabljeno še ne pomeni da je najboljše."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0 je 24. nov 2018 ob 14:22 izjavil:Nisem rekel da je WP slab :) Če je nekaj najpogosteje uporabljeno še ne pomeni da je najboljše.   Vseeno je najbol univerzalen tool  Plus tole je zgovoren podatek:"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kdor enkrat dela z nekim konkretnim CMS-jem se ne bo vrnil na WP, vsaj za večje projekte ne."
+    },
+    {
+        "role": "user",
+        "message": "Samo CMS verjetno zahteva določena znanja, verjetno več kot WP. Jaz sem začel z WP kot čisti laik in se počasi naučil toliko, da sem si lahko postavil spletno stran iz osnovnega templata. Pa še kaj spremenim lahko.. nazadnje sem si celo sam očistil malware. In zame je čist dovolj to. Je pa res, da tu in tam še kaj povprašam, če se s čim na novo srečam."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tudi WP je CMS. Na grobo ločim jaz razvijalce na dve veji. V prvo spadajo taki kot si ti, kateri začnejo z nekim orodjem in širijo znanje iz njega. V drugo spadajo pa taki kot sem jaz, ki so svojo pot začeli z spoznavanjem html/css/js in nato še php/mysql in vmes še spoznavanje strežniškega okolja ipd...  V prvem primeru se spoznava kako deluje orodje in se širi znanje naprej, v drugem primeru pa spooznavaš tehnologije na katerih delujejo CMS-ji in iščeš svojim potrebam najprimernejšo rešitev.  Kaj je boljše je stvar posameznika in njihovih potreb. Word press je načeloma ok, vendar ima svoje meje katere se rade presegajo samo da se pokaže kaj vse WP zmore. Za določene stvari bi npr. z uporabo primernejšega orodja naredil isto stvar hitreje in bolj optimalno.  Najbolje se je držati načela da ni najboljšega CMS-ja in da je najbolje vzeti orodje ki je najbolj primerno opravilu ki ga imaš."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Wp ni resno orodje za spletne strani pa obrni kakor hočeš ker je preveč odprt za vdore. Sem si pred časom postavil WP blog, brez dodatkov, tem in pozabil nanj (seveda sem gesla spremenil, saj nisem neumen). Nato sem mesec dni kasneje moral čistit celoten hosting ker mi je nekdo vdrl gor in okužil tudi druge strani. Zanimivo da se je to zgodilo šele ko sem postavil WP, pred tem in po tem nikoli pa sem vse strani spisal iz nule.  Danes uporabljam frameworke zaradi lažjega dela (WP izključen!) in lahko rečem da so nekateri dobri, nekateri preveliki in nekateri zelo slabi in mi krajšajo življensko dobo. Da ne omenjam da so povečini dokumentacije samo za v smeti!  Še najbolj sem bil zadovoljen ko sem pisal strani sam, vse iz nule in vse ročno. Sem točno vedel kako kaj deluje, kje so lahko varnostne luknje in kako jih odpravit in niti ena strani ni bila shekana, medtem ko sem na oDesku/Upworku, Freelancerju in PPHju redno videval projekte za \"čiščenje WPja zaradi vdorov\" in se samo smejal naivnim."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pises bedarije. Wp je v osnovi varen, in gre za state of the art cms. Frameworka ti nihce ne bo posodobil ce pride do kaksne hude kritične ranljivosti,medtem ko si pri wpju dobro pokrit tako s strani njihovega security teama, updejtov, kot s strani hostinga.  Se pa vdori vseeno dogajajo, se enkrat, razlog so 99.99% gnili plugini in teme, jbg to je cena prilagodljivosti in svobode. Wp kot tak je se vedno vrhunski sistem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Smo že precej offtopic vendar imam par komentarjev:   @assistant_3 je 25. nov 2018 ob 20:06 izjavil:Wp je v osnovi varen,  Se strinjam, vendar zaradi razširjenosti je najbolj na udaru in posledično imaš lahko hitro sranje če ni vedno up to date. In zaradi prevelikega števila pluginov je težko ločiti kateri so dobri oz. varni saj večina so kar nekaj.    @assistant_3 je 25. nov 2018 ob 20:06 izjavil:in gre za state of the art cms.  Daj ne pretiravaj :)   @assistant_3 je 25. nov 2018 ob 20:06 izjavil:Frameworka ti nihce ne bo posodobil  Frameworke ni ravno za primerjat z CMS-ji. Frameworki se tudi posodabljajo vendar počasneje kot CMS-ji. Pa ko pride do vdora pride v večini primerov zaradi tvoje napake in ne sistema.   @assistant_3 je 25. nov 2018 ob 20:06 izjavil:medtem ko si pri wpju dobro pokrit tako s strani njihovega security teama, updejtov, kot s strani hostinga.  Samo če gostuješ pri WP, ostalim gostovanjem se jebe za tvoj WP in varnost.    @assistant_3 je 25. nov 2018 ob 20:06 izjavil:Se pa vdori vseeno dogajajo, se enkrat, razlog so 99.99% gnili plugini in teme,  Največja prednost WP je tudi največja slabost. Vse dobiš za WP .. vendar dobrega bolj malo :)   @assistant_3 je 25. nov 2018 ob 20:06 izjavil:jbg to je cena prilagodljivosti in svobode.  Prilagodljivosti :) ... očitno še nisi delal z drugmimi CMS-i (pa ne mislim joomle)   @assistant_3 je 25. nov 2018 ob 20:06 izjavil:Wp kot tak je se vedno vrhunski sistem.  Dober ja, vrhunski pa ne."
+    },
+    {
+        "role": "assistant_2",
+        "message": "WP ni varen in da ti napišem še enkrat celoten postopek: 1. potegnil sem dol najnovejši WP 2. namestil sem ga na strežnik 3. spremenil privzeta gesla 4. postavil preprost blog BREZ dodatkov in dodatnih tem, uporabil sem kar je bilo zraven 5. pozabil nanj in mesec kasneje reševal sranje, ko je letel dol, ni bilo več vdorov  Če je zate vrhunski sistem, super, ga le uporabljaj, meni pa če kdo samo omeni da je kak projekt narejen na WP, se ga izognem kolikor se ga lahko."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_2 je 25. nov 2018 ob 21:43 izjavil: Če je zate vrhunski sistem, super, ga le uporabljaj, meni pa če kdo samo omeni da je kak projekt narejen na WP, se ga izognem kolikor se ga lahko.  Drži se teme in napiši. WP -> 301 redirect drugam :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_2 je 25. nov 2018 ob 21:43 izjavil:WP ni varen in da ti napišem še enkrat celoten postopek: 1. potegnil sem dol najnovejši WP 2. namestil sem ga na strežnik 3. spremenil privzeta gesla 4. postavil preprost blog BREZ dodatkov in dodatnih tem, uporabil sem kar je bilo zraven 5. pozabil nanj in mesec kasneje reševal sranje, ko je letel dol, ni bilo več vdorov  Če je zate vrhunski sistem, super, ga le uporabljaj, meni pa če kdo samo omeni da je kak projekt narejen na WP, se ga izognem kolikor se ga lahko.   Moznost je minimalna. To je bil lahko nek drug vektor napada. Ce bi bila zadeva tok rizicna potem ne bi miljon+ trgovin poganajal wordpress/woocommerce. In trgovine imajo ponavadi se kar nekaj dodatkov.    Samo če gostuješ pri WP, ostalim gostovanjem se jebe za tvoj WP in varnost.   Na hostingu lahko en tak vdor vpliva na delovanje celotnega strežnika, tako da ne bi rekel da se jim ravno jebe   Pa ko pride do vdora pride v večini primerov zaradi tvoje napake in ne sistema.   Wuhu, to enako velja za wordpress. Ce ne zaupas pluginom na kljuc, si jih komot pišeš sam. Tako kot pocnes to v klasicnem frameworku."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_3 je 25. nov 2018 ob 22:56 izjavil: Samo če gostuješ pri WP, ostalim gostovanjem se jebe za tvoj WP in varnost.  Na hostingu lahko en tak vdor vpliva na delovanje celotnega strežnika, tako da ne bi rekel da se jim ravno jebe    To je mogoče veljalo včasih. Od kar se uporabljajo virtualci vdor na eno stran ne vpliva na ostale.   @assistant_3 je 25. nov 2018 ob 22:56 izjavil:  Pa ko pride do vdora pride v večini primerov zaradi tvoje napake in ne sistema.   Wuhu, to enako velja za wordpress. Ce ne zaupas pluginom na kljuc, si jih komot pišeš sam. Tako kot pocnes to v klasicnem frameworku.   Ja res je, to vedno velja vendar v primeru WP napadalec ve točno s čim ima opravka. V primeru uporabe frameworka pa mu ne preostane drugega kot na slepo iskat morebitne luknje."
+    }
+]

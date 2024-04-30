@@ -1,0 +1,86 @@
+[
+    {
+        "role": "user",
+        "message": "kašna je razlika med utp patch kablom in utp cross kablom?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Izraz \"patch kabel\" se uporablja za kable, ki jih napeljes od patch panela (obicajno je ta prisraufan v omaro ali vgrajen v steno) do naprave, v katero ta kabel vtaknes. Pri patch kablih je vseeno, ali so \"cross\" ali \"straight\", taki, ki jih kupis, pa so obicajno \"straight\", torej navadni kabli za povezavo racunalnika in stikala, recimo.  Cross kabel se uporablja za povezavo dveh enakih portov. Na stikalih, koncentratorjih (switchih, hubih) in podobnih napravah imas obicajno MDI porte, na \"terminalnih\" napravah pa MDI-X.  Ce hoces povezat dva switcha ali dva racunalnika torej potrebujes cross kabel.  Pri gigabit ethernetu je vseeno, kaksen je kabel, ker zna port sam ugotoviti, kako je obrnjen drugi port."
+    },
+    {
+        "role": "user",
+        "message": "no recimo jst mam zdej 2 kompa in zdej če jst prvi komp povežem z modemom druzga pa z prvim kompom z utp kablom in pol lahk z drugim kompom grem isto na internet?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pri gigabit ethernetu je vseeno, kaksen je kabel, ker zna port sam ugotoviti, kako je obrnjen drugi port.To ni odvisno od gigabit etherneta, ampak gre zgolj za funkcijo switcha oz. druge mrežne naprave (seveda tudi 100Mbit), t.i. Auto-MDI/MDIX.  @user: Ja rabiš cross kabel, ju povežeš, na računalniku z netom vklopiš ICS (šeranje neta), na drugem pa se povežeš na prvega in pravtako uporabljaš net..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tudi s straight kablom gre. Pr men doma mam povezana dva pcja (os XP) s straight kablom. Odvisn kak kvalitetno LAN kartico mas. Sam za info... lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja, res je, auto-MDI/MDI-X ni odvisen od gigabit etherneta, je pa del specifikacije gigabit over copper, tako da vse gigabit ethernet naprave z RJ45 vmesnikom zagotovo znajo auto-MDI/MDI-X.  Se opravicujem za nejasnost :)"
+    },
+    {
+        "role": "user",
+        "message": "ja in pol jst lahk printer uporabljam na drugmu kompu čeprov je prkloplen na prvi komp?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja komot. Sam more bit u skupni rabi oz. omrezni tiskalnik."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja itaq, samo ga je spet potrebno šerat na prvem PCju, na drugem pa ga potem poiščeš kot mrežni tiskalnik in si ga namestiš..."
+    },
+    {
+        "role": "user",
+        "message": "a to pol tm naštimaš moja omrežna mesta pa pol daš dodaj omrežno mesto al pripravi domače omrežje?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "vem da se bo tole glupo slisal ... sam vseeno ... a mas lahko 10base ethernet po 1 parici utpja  namrec 2 parici mi porabi ISDN 1 parico PSTN jst bi si pa se ethernet stlacu gor na preostalo parico? bi slo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Trirog: nope.  10BaseT nuca RX, gnd, TX, gnd (ki so na drugi strani obrnjene, tako da je RX na TX in obratno)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Imam par vprašanj...  kolegu bi rad dal dva compa v adsl preko switcha....kakšen kabel sedaj rabim...navaden UTP ali crossover. Če dam crossover ali lahko kaj izgubim ? Pa ali gre iz switcha na en comp lahko ena vrsta kabla, na drugega pa druga ?   Pa še to.....kolega je pravzaprav že potegnil kabel po bajti, vendar le 4 žilnega (konektor je sicer 8 pinski ) - s tem najbrž nima kaj dosti iskati al kako  ....pa že vse je pogipsal  . Ta kabel so mu svetovali v trgovini, sicer ne vem na podlagi kakšnega opisa potrebe     hvala"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Novejsim switchem je vseen kak kabl povezes vmes (MDI/MDIX), tak da vseeno ali cross ali straight.  4 zice so naceloma zadosti,da potegnes LAN povezavo. Poglej si na netu kateri pini morajo biti kam priklopljeni (uporabljajo se 1,2,3 in 6) , sam potem ne pricakovat 100Mbps mreze s takim kablom.  Ce ima kolega staticni IP, potem bosta morala zrihtat deljenje povezave (ICS v winsih) , ali pa povezat cez router. Pri dinamicnem IPju je switch zadosti za deljenje povezave."
+    },
+    {
+        "role": "assistant_4",
+        "message": "tnx... sam čudno, da ni bilo zaznati omrežne povezave, ko sem računalnik povezal na 4-pinski kabel in to direktno preko modema, ne preko switcha. Pisalo je pač, da je kabel izklopljen...mrežna kartica je vredu !   A potem ni prave razporeditve žičk ?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "ce na 8 zilnem kablu uporabljas pine 1,2,3 in 6 na obeh koncih kabla, bi naceloma moralo delovati. Uporabi google, poisci kako je UTP kabl povezan.  Modem seveda ne bo zaznal mrezne povezave. Moras priklopit v mrezno kartico.  EDIT: ne na 8 zilnem kablu ampak prikljucku."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja sej sem povezal mrežno in modem, pa je pisalo da ni povezave....ko sem prestavil comp na 8-žilni kabel (katerega pač uporablja prioritetni comp), je povezava delovala, tako da je verjetno res narobe nekaj v povezavi z razporeditvijo žičk po pinih...  p.s.: nimam pa sedajle vpogelda v konektor od kolega...."
+    },
+    {
+        "role": "assistant_6",
+        "message": "si sure da je 4 žilni kabel sukan? Če so parice potegnjene naravnost mreža ne bo delovala."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Zivijo!  Bi samo tle vprasal eno stvar ... da ne bom nove teme odpiral. Imam gigabitno omrezje med dvema racunalnikoma. Dosezem tam nekje do 25 MB/s. Zanima me kaksne hitrosti imate kaj ostali pri gigabitnem omrezju. Verjetno je nekaj odvisno tudi od strojne konfiguracije racunalnikov.   1.) AMD64 Athlon 3000+ 1 GB OCZ RAMa DFI lanparty nF4 (integrirana gigabitna kartica) Maxtor 160 GB SATA OS: WINXP pro  2.) abit nf7-s batron 2500+ 512 MB GEIL RAMa WD 120 GB ATA WB 80 GB ATA LevelOne gigabit eth card OS: Debian 3.1  Povezana sta preko TP-Link switcha ki ima dva gigabitna porta. Aja btw, 25 MB/s se mi zdi malo, teoreticno naj bi slo 125 MB/s ... se motim?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Šlo bi, če bi jo lahko filal. Če pa ti disk hitreje ne bere pa imaš ozko grlo, kar je nejbolj verjetno, saj 2 v stripe vezana SATA NCQ diska zmoreta 90 MB/s konstantnega prenosa."
+    },
+    {
+        "role": "assistant_7",
+        "message": "hmm, se mi je zdelo da je verjetno disk ozko grlo"
+    }
+]

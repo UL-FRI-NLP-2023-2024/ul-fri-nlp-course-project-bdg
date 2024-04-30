@@ -1,0 +1,138 @@
+[
+    {
+        "role": "user",
+        "message": "Želim se povezati z odaljenim računalnikom, preko VPN routerja. Na obeh računalnikih je win XP pro.  Na računalniku, do katerega želim pristopati že imam kljukice pri System/Remote (dve kljukice, kjer dopuščam remote assistence in remote desktop). Ne vem, kaj še moram narediti. Do sedaj mi še ni uspela povezava.  Moram obvezno določiti tudi uporabnika pri Select remote users?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Odpreti port če je firewall, mislim da je default 3389  Pa če še nimaš gesla za uporabnika s katerim dostopaš v win xp potem ga moreš določit. Saj meni ni pustil vstopa dokler se ni dodal password uporabniku."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če se povezuješ preko VPN je isto kot v lokalni mreži... ni potrebno odpirat portov. Je pa vprašanje če si povezan preko VPN v drugo omrežje . Morda pa nima določen uporabnik pravic za remote !"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Za remote desktop (RDC) remote assistence ne rabis (lahko odkljukas) Po privzetih vrednostih administratoji lahko uporabljajo RDC. Za navadne userje moras to pravico dodeliti vsakemu posebej (gumb Select Users). Uporabnik, ki nima passworda ne more uporabljati RDC (ce me spomin ne vara obstaja en poseg v register da tudi to dela) Ce gres preko routerja, moras pravilno nastaviti port forwarding (3389). Pri (MS) firewallu na PCjih je RDC po defaultu omogocen (mislim da je tako, drugace pa preveri zavihek izjeme in ce je potrebno obkljukaj izjemo - to moras preveriti na obeh oziroma vseh racunalnikih). Pravico dostopa RDCja za XP ima samo en uporabnik. Ce hoces vec hkratnih dostopov, moras narediti popravek v registru."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kako se pa preko interneta da povezati z drugim namizjem? Npr iz službenega na domačega. Ali je nujno potrebna kakšna aplikacija npr java?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "če uporabljaš xp ali visto ne potrebuješ nič, vse je del sistema - omogočiti moraš remote na domači mašini -če uporabljaš ruter na njemu pravilno nastaviti porte - na požarnem zidu omogočiti dostop na mašino preko omrežja - uporabniku na domači mašine ne smeš pozabiti nastaviti geslo - v primeru dinamičnega IP namestiti kakšen DynDNS da boš lahko dostopal tudi če se ti spremeni IP  to pa je tudi vse"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hvala. Pa za dostop uporabim mstsc ali kaj drugega? Sem bolj laik v teh stvareh."
+    },
+    {
+        "role": "assistant_4",
+        "message": "točno tega ja"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nekako sem nastavil kot je treba, vendar ne gre. Mislim, da je težava v modemu (sinope), ki deluje brezžično. Ne vem, kje se nastavi port oz. omogočanje remote deskop."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Uporabnik, ki nima passworda ne more uporabljati RDC (ce me spomin ne vara obstaja en poseg v register da tudi to dela)  Meni je delalo tudi brez gesla."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Primer nastavitve računalnika, kamor se povezuješ: tvoj računalnik ima notranji IP npr: 192.168.1.101 remote desktop ima port 3389  torej 192.168.1.101:3389  tvoj ruter ima zunanji IP npr: 233.250.15.79  V Nastavitvah ruterja poiščeš Port Forwarding in nastaviš, da ob uporabi porta 3389, ruter pošlje ta signal na IP 192.168.1.101  Z gostujočega računalnika zaženeš remote desktop in vpišeš IP ruterja t.j., kamor se povezuješ: 233.250.15.79  vpišeš uporabniško ime, geslo....."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ja, če bi hudiča najdu ta port forward. Sem preiskal cel sinope, pa ne najdem nič podobnega. Našel sem neke aplikacije npr:  * E-mail * News * MSN Messenger * Yahoo! Instant Messenger * AOL Instant Messenger * Internet Relay Chat (IRC) * NetMeeting (h323) * Real Audio * Ping * Web connections (HTTP, HTTPS) * DialPad * FTP * Telnet * Secure shell (SSH) * Windows Media Services * Gnutella * Kazaa * Windows Terminal Server * DNS * PPTP * Internet Key Exchange * LDAP * GRE * Databeam (T.120)  Kaj od tega lahko uporabim za remote?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Windows Terminal Server."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tako kot je povedal @assistant_7, sam imam sinopeja in mi RTC deluje BP. Z drugega računalnika samo vpišem moj ip:3389 in se zadeva poveže normalno."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_8: tisto da pišeš za IP:3389 nima nobene veza, razen če v računalniku iz katerega se povezuješ nisi spremenil standardnega porta za remote. Ker tebi sam program za remote že deluje isto kot da bi zraven napisal port. Drugo pa je če se želiš prijaviti na remote kateri posluša na drugem portu kot je 2289 takrat pa moraš vpisati IP:port kjer pač vpišeš ustrezni port.   Port forward mora biti nastavljen saj se le v tem primeru ve kam se mora prusmeriti povezava na določenem portu. In kako potem ti izbereš da bi se povezal na drugi PC ?? Edina možnost da ne rabiš nastaviti portforwarda je da uporabiš funkcijo kjer se ti vsi porti preusmerijo na en notranji IP."
+    },
+    {
+        "role": "assistant_8",
+        "message": "nevem, ker ko vpišem samo ip mi zadeva noče povezat, mogoče ker je več računalnikov na wireless priključenih, ko pa vpišem port zraven pa se zadeva takoj poveže.any ideas zakaj?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_3 Ne vem kje ti to iščeš ampak gotovo ne v Sinope routerju.  z brskalnikom se poveži na http://192.168.1.1 v okno vpiši user/pass za Sinope router najdi Advanced Security konfiguriraj v skladu z navodili roterja: najprej poimenuješ svoj računalnik, nato izbereš aplikacijo (Remote Desktop), če je ni kreiraš novo in ji določiš TCP 3389, nato z Enable Applications določiš da se aplikacija \"Remote Desktop\" poveže s \"tvojim računalnikom\"   Vse je jasno razloženo v navodilih za sinope.  to je to."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ja, kot je rekel deych, je to WTS. Hvala!"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Pozdravljeni,  Si bom kar sposodu temo ter postavil vrašanje.  Doma imam comp win xp SP2 povezan preko ruterja (T 2), v službi pa prenosnik vista povezan preko ruterja (siol). Doma sem si na hišnem comp \"odpru\" povezavo za remote desktop (RDT), pa port na rooterju 3389, v win firewall pa je že samo nastavilo kljukico na remote connection in namestil \"popravek\" od win WindowsXP-KB925876. Ko se povežem doma s prenosnikom preko RDT s hišnim mi zadeva fantastično deluje. Za lokalizitar comp. uporabim samo ime hišnega comp. Problem se pojavi, ko se poskušam iz službe povezat na domači comp. Ne gre in ne gre, pa tudi če vnesem IP od domačega comp.  Error: These comp can not connect to the remote computer. remote desktop can not find the remote comp.....  Mi lahko gdo pomaga in pove kaj delam narobe oz. kako pripravit comp da bi komunicirala med sabo.   Hvala,  lp"
+    },
+    {
+        "role": "assistant_10",
+        "message": "t2 ma neke varnostne pakete in pri \"najbolj varnem\" si ne mores portov odpirat ce se ne motm...vem da je bil nek problem ko je tud znanc hotu remota postavt...brez uspeha seveda"
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_10 Hvala na hitrem odgovoru, sam na T2 uporabljam paket z \"najnižjo varnostjo\", tko da booo....? Any idea?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Zadevo rešil tako, da sem vpisal tapravi IP in ne unega od mreže, ki sem ga mel. Sedaj deluje bp. Vprašanje: ali se da prenašat fajle (mp3, dwg, cdr, ...) iz enega comp. na drugega in če ja bi prosil za kratek vodič. Namreč coppy paste ne prime. :)  hvala, lp"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Pri oknu RDC-ja imas Options > Local Resources > Local devices > obkljukaj Disk drives...  edit: V oknu explorerja se pojavijo diski racunalnika na katerega si povezan."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@Killer  Hvalaaaaaaaaa..... lp"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Ojla, mene pa zanima kako sploh najdem Remote Desktop. Tam kjer bi moral biti ga nimam in ko sem poskušal inštalirati ko sem ga DL z Microsofta mi je napisalo da ga ne morem ker ga že imam, ikonce pa ne najdem. A kdo ve Kateri fajl moram zagnati???"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Pojdi na Start>Run in vpisi mstsc.  oz je na lokaciji  C:\\WINDOWS\\system32\\mstsc.exe"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Hvala, sicer pa sem našel."
+    },
+    {
+        "role": "assistant_10",
+        "message": "jst si ponavad kr bliznice nardim na namizju.  desni klik > new > text document > preimenujem v {nekaj}.rdp in je stvar resena"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Iz službe predo remote desktopa dostopam do domačega računalnika, ki ima nap. IP 192.168.1.1 z določenim imenom in geslo. Sedaj pa me zanima, kako bi dostopal tudi do drugega računalnika z IP nap. 192.168.1.2, ki ima drugačno ime in geslo. Vem, da se to ne da istočasno, želel pa bi, da lahko preko uporabniškega imena določim, na kateri računalnik hočem priti. Če je odgovor preko VPN, naj mi prosim nekdo opiše postopek."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Zelo enostavna varianta je Logmein ali pa TeamViever."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Samo to so plačljive zadeve, če se ne motim!?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "https://slo-tech.com/forum/t223315/p139..."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Zamenjaš RDP port na računalnku .2 (HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp, ključ PortNumber, postaviš na npr 3390) Potem do prvega računalnika dostopaš normalno, do drugega pa tako, da poveš še vrata (193.2.63.89:3390). In ja, lahko delaš z obema. In ne, ne poveš z uporabniškim imenom/geslom, s katerim bi."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Logmein ima free verzijo. Teamviewer pa je brezplačen za domačo uporabo."
+    }
+]

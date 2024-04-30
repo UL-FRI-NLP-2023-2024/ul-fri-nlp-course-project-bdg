@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Zanima me če obstaja kakšen program, da bi računalnik vrgel v sleep mode z enim klikom oz. da bi sprogramiral neko tipko da bi ob pritisku nanjo računalnik šel v sleep mode. Našel sem en program, ki sicer vrže monitor v sleep mode in pa nek program, ki lahko tipke sam programiraš vendar ne deluje ko sprogramiraš tipko za v sleep mode. Vem da nekatere tipkovnice že vsebujejo tiško za sleep mode, ampak moja jo žal ne. LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Morda si s temle lahko pomagaš: http://windows.microsoft.com/sl-SI/wind..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To create a shortcut that will execute the sleep command in Vista:  Right Click in the desired location (On the Desktop or in a folder) Select New -> Shortcut In the \"Type the location of the item\" field enter the following Rundll32.exe Powrprof.dll,SetSuspendState Sleep Click Next This will create a shortcut with the name rundll32, Right Click the shortcut, select Rename and type in Sleep  You can now open this shortcut whenever you desire to put your computer into sleep mode."
+    },
+    {
+        "role": "assistant_2",
+        "message": "živjo.. rad bi si naštimal, da ko računalnik preklopim v spanje mi ne utripa power led, ker je zelo moteče med spanjem..ali se sploh da?? prosim za nasvete..iskal sem po biosih vendar ne najdem.. a noben ne ve al ki??"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_2 je 20. jan 2013 ob 10:01 izjavil:živjo.. rad bi si naštimal, da ko računalnik preklopim v spanje mi ne utripa power led, ker je zelo moteče med spanjem..ali se sploh da?? Bi rekel, da se programsko to ne da rešiti. Če te moti power LED, ga prelepi s črnim lepilnim trakom. Ali lučko sploh potrebuješ? Verjetno ne."
+    },
+    {
+        "role": "assistant_2",
+        "message": "je ne je ne potrebujem sam pč sm mislu da se da kko naštimat..bom pač iztaknu kabel iz matične.."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Lahko na os. pl. odklopiš power LED priklop."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ja sei to sm naredu.."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pojavlja se mi čudna težava in sicer po koncu uporabe računalnika ga zmeraj z tipko \"sleep\" postavim v spanje, kar pomeni začasne podatke shrani v ram in potem ob vzbujanju prikaze vse kar je bilo odprto. Že dalj časa se pojavlja težava ko gre v spanje, ga naslednji dan zbudim, prikaže se črni zaslon in računalnik se vgasne. Največkrat je potrebno računalnik čisto izključit iz napajanja in šele potem ga lahko normalno prižgem. Ta sistem vgašaja že kr nekaj časa prakticiram na vseh ostalih računalnikih in ni bilo problema, ima kdo kakšne namige kaj bi lahko bilo narobe? Se mi zdi da v tem primeru ram pravilno ne funkcionira glede na to da se začasno v ramu hrani? Hibernacijo nisem preizkusil, ker mi je muka čakat nalaganje windowsa, načeloma če nebo druge alternative bom pa tudi hibernacijo uporabljal.."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Težave z driverji, ponavadi grafična kartica."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Moja težava pa je, da se računalnik po odhodu v spanje ali hibernacijo noče več vklopiti. Sploh ne reagira na pritisk tipke za vklop. Ravno tako ga je potrebno odklopiti od napajanja in nato se zažene. Kljub temu se iz hibernacije Windowsi ne zbudijo in je potreben svež zagon.  So tukaj ravno tako težava gonilniki? Imam Windows 7 in AMD A10 5800K."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poglej v biosu ACPI suspend type -> s1/s3 nastavitve.  http://www.tomshardware.co.uk/forum/644... http://www.sevenforums.com/installation..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Poizkusil sem dve različni grafični, 1. gf 9800gt ,2. radeon 4300 pa je pri obeh isto, pri obeh najnovejši driverji, tako da zgleda da to ne pomaga."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_6 je 22. feb 2013 ob 13:21 izjavil:Moja težava pa je, da se računalnik po odhodu v spanje ali hibernacijo noče več vklopiti. Imaš SSD? Spanje in hibernacija velikokrat ne delujeta dobro na SSD-ju."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_6 je 22. feb 2013 ob 13:21 izjavil:Moja težava pa je, da se računalnik po odhodu v spanje ali hibernacijo noče več vklopiti. Sploh ne reagira na pritisk tipke za vklop. Ravno tako ga je potrebno odklopiti od napajanja in nato se zažene. Kljub temu se iz hibernacije Windowsi ne zbudijo in je potreben svež zagon.  So tukaj ravno tako težava gonilniki? Imam Windows 7 in AMD A10 5800K.   Sestra je imela isti problem. Rešitev je bila zamenjava napajalnika.  Glej tukaj: Računalnik se noče prebudit -  AMD"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Imam SSD Intel 330 120GB.   Matična plošča je AsRock FM2A75 pro4-m, nikjer v biosu ne vidim nič podobnega, nekako takole izgleda:    FM2A75 pro4-m ACPI bios  Napajalnik je nov, LC6450 V2.2 450W.  Torej problem je, da tipka za vklop ne deluje. Po pritisku se ne zgodi nič, dokler ne izklopim kabla za elektriko in ga čez čas priklopim nazaj. Sedaj sem še malo testiral hibernacijo in se windowsi zdaj normalno zbudijo, ko se računalnik zažene. Se pa sem in tja zgodi, da se računalnik po prehodu v sleep mode ali v hibernacijo takoj ponovno odpre.  Bom poskusil tisto z mrežno kartico iz @assistant_7jeve teme."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_6 je 22. feb 2013 ob 18:09 izjavil:Imam SSD Intel 330 120GB. @assistant_6, morda ti bo koristilo. http://arstechnica.com/gadgets/2011/06/...  Q: Do SSDs have issues with sleep and/or hibernate (or hybrid-sleep) mode? If so, what causes it?  The problem is that when certain computers with SSDs are put to sleep, they will hang, cause a blue screen of death, or force a restart when woken up again. ...  Solutions If you have one of these sleep-averse configurations, there are a number of proposed solutions floating around that are worth trying. ..."
+    }
+]

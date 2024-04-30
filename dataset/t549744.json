@@ -1,0 +1,50 @@
+[
+    {
+        "role": "user",
+        "message": "Prenosnik HP G62, windows 7 home premium SP1 (licenčni+popravki). Prenosnik se sam resetira, pokaže blue screen in ponovno zažene. Ko se je to pojavilo parkrat sem ga nesel v Big Bang, ker je še v garanciji in so ga poslal na servis (birotehna). Dobil nazaj iz servisa, kjer so ga testirali in svetovali, da naj na novo naložim windows, ker so naredili upgrade bios-a. Vse naložim in se še vedno pojavlja isto. Nazadnje sedaj, ko sem iz dvd-ja kopiral na prenosni disk. Naloženo imam Superbike 2011, ki deluje normalno b\\p. Baterija je zanič, vendar dvomim, da bi to lahko bil vzrok. Ko se naložijo windowsi mi izpiše napako oz. hoče poiskati na netu, vendar nić ne najde. Sem pa kopiral kar napiše. Napiše pa tole:  Problem signature: Problem Event Name: BlueScreen OS Version: 6.1.7600.2.0.0.768.3 Locale ID: 1060  Additional information about the problem: BCCode: 1000007e BCP1: FFFFFFFFC0000094 BCP2: FFFFF88007314C99 BCP3: FFFFF8800907CFC8 BCP4: FFFFF8800907C830 OS Version: 6_1_7600 Service Pack: 0_0 Product: 768_1  Files that help describe the problem: C:\\Windows\\Minidump\\123112-40731-01.dmp C:\\Users\\Miha\\AppData\\Local\\Temp\\WER-60746-0.sysdata.xml ___________________________________________________________________________________________________________ Problem signature: Problem Event Name: BlueScreen OS Version: 6.1.7601.2.1.0.768.3 Locale ID: 1060  Additional information about the problem: BCCode: 1000007e BCP1: FFFFFFFFC0000094 BCP2: FFFFF8800730AC99 BCP3: FFFFF88002334FB8 BCP4: FFFFF88002334810 OS Version: 6_1_7601 Service Pack: 1_0 Product: 768_1  Files that help describe the problem: C:\\Windows\\Minidump\\123112-62166-01.dmp C:\\Users\\Miha\\AppData\\Local\\Temp\\WER-109606-0.sysdata.xml   Sedaj pregleduje na netu če kaj piše.  POMOČ!!!!!!!!!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prenesi s spleta Memtest86 (povezava) Vsebino razpakiraš ter jo zapečeš kot CD katerega nato zaženeš!   Verjetno še bo potrebno izbrati CD pogon kot privzeto napravo za zagon."
+    },
+    {
+        "role": "user",
+        "message": "trenutno delam memtest86 in ustavil se je oz. najdu error v: Test 3 [Moving inversions, ones&zeros, Sequential] This test uses the moving inversions algorithm with patterns of all ones and zeros. Cache is enabled even though it interferes to some degree with the test algorithm. With cache enabled this test does not take long and should quickly find all \"hard\" errors and some more subtle errors. This test is only a quick check. This test is done sequentially with each available CPU.  Trenutno je pri 1 500 000 erorjih :O  Kaj pomenijo te napake? K mi ni čist jasn, sam ne zgleda dobr vse skupi."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Predvidevam da kakšna hardwerska napaka, če si win na novo naložil pa ni pomagalo, razen če je kakšen driver zahebal situacijo. Poskusiš lahko tudi kakšen live linux cd, pa tam odvisiš kakšno urco gor, da vidiš če se tudi tam podre, če se ne podre bo pa vrjetno problem v kakšnem softwerju."
+    },
+    {
+        "role": "user",
+        "message": "Prišel tolk daleč da sem skor siguren da je kriv atikmdag.sys Prebiram net in opažam, da je imelo veliko ljudi ta problem in zelo redki so ga odpravili. Sem snel bluescreenview program in je takoj pokazal na to datoteko. Ta se navezuje na grafične gonilnike. Ali bi bilo možno, da je krivo naslednje? Pod DEVICE MANAGER - DISPLAY ADAPTERS imam dve grafični. To sta INTEL(R) HD GRAPHICS in ATI MOBILITY RADEON HD 5470. V CPU-Z pod grafiko pa imam tudi našteti dve grafiki s dvema različnima pomnilnikoma grafike. Prva ima 1722 MB, druga 1024 MB. Kaj če v DEVICE MANAGER - DISPLAY ADAPTERS onemogočim Intelovo grafiko? Sem enemu kolegu 1x rihtal laptop in ni delala grafika tako kot bi mogla, potem pa sem ugotovil, da je bilo potrebno po namestitvi onemogočiti grafiko od prenosnika."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user, te napake, ki ti jih javi memtest86 so pokazatelj okvarjenega pomnilnik sistema (RAM)!  Če je v garanciji jo uveljaviš lepo opišeš, da si pognal memtest86 (lahko tudi priložiš fotografijo) in da je našel tolko in tolko napak."
+    },
+    {
+        "role": "user",
+        "message": "3d Mark testi so bli vredu - nč ni vn metalo (Ko sem onemogočil eno grafiko in ko so bile obe vklopljene). Windows Memory Diagnostic - ni našel napake. Memory Diagnostics Tool - ni našel napake.  Edini, ki je do sedaj napako našel je memtest86 pa še ta ni do konca naredu. Bomzjutraj dal na test še 1in gapustil cel dan če bo treba.  Vglavnem še vedno ne vem kaj bi lahko blo narobe, razen sumi se RAM, zaradi memtest86."
+    },
+    {
+        "role": "user",
+        "message": "Danes šel čez memtest86 brez težav, sedaj ga dela drugič. Res pa je, da včeraj pred prvim testom ni bilo na računalniku nekaterih popravkov, ki jih je danes naložil.  Čemi včeri ni blo nč jasno, mi je danes še mn."
+    },
+    {
+        "role": "assistant_2",
+        "message": "memtest ni odsvisen od nobenih popravkov.. Je čsito hardwer test.. Sicer je en memtest, ki se opravlja v winsih samo ni verodostojen.."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Priporočam še HCI Memtest, ker kdaj najde napake ki jih Memtest86+ ne najde. Preverjeno tudi z moje strani.  Ampak v tem primeru mislim da je že jasno da nekaj ni v redu z RAMom (ali z RAM controllerjem..)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 1. jan 2013 ob 01:21 izjavil:3d Mark testi so bli vredu - nč ni vn metalo (Ko sem onemogočil eno grafiko in ko so bile obe vklopljene). Windows Memory Diagnostic - ni našel napake. Memory Diagnostics Tool - ni našel napake.  Edini, ki je do sedaj napako našel je memtest86 pa še ta ni do konca naredu. Bomzjutraj dal na test še 1in gapustil cel dan če bo treba.  Vglavnem še vedno ne vem kaj bi lahko blo narobe, razen sumi se RAM, zaradi memtest86.  ramčki so zanič---oz. ena ploščica ni v redu!!!  lahko se 50 testov nardis pa ne boš tople vode najdu!!!"
+    },
+    {
+        "role": "user",
+        "message": "Prenosnik je na servisu in danes sem govoril s serviserjem. Še 1x preveril ram in grafiko in pustil čezvikend. Rami vredu, grafika pa naj bi imela težko napako. Tako, da bodo grafiko menjal."
+    }
+]

@@ -1,0 +1,94 @@
+[
+    {
+        "role": "user",
+        "message": "Sem hotel malo brskati po kernelu, pa je to ročno oziroma z vi-jem etc totalna mora.  ZAto sem poskusil stvar odpreti v Anjuti kot projekt. Oziroma, bolj točno rečeno, importal sem zadevo. Stvar je kako uro sesljala filetke vsvoj projekt, nato je pa mirno umrla.  Nato sem psokusil s Kdevelop. Ta se je enako mučil s kernelom. Ni sicer umrl, vendar je delal tako počasi, da je imel odzivni čas kakih 5 sekund na vskao pritisnjeno tipko in klik z miško.  Obstaja kaj boljšega ali vsaj bolj primernega temu ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "cscope ?"
+    },
+    {
+        "role": "user",
+        "message": "Nice. Nekako dela. Čeprav to ni IDE, bolj pomagalo. Baje ga je spisal SCO. Zdaj vidim, zakaj so (med drugim) propadli.  Za GUI pa user friendliness baš ne zgubljajo časa..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "kscope lahko se pogledas..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "kernel bi rad gledal? kateri del pa? memory manager? kak specific driver? interupt handler?  To jo skoraj tako kot ce bi windows kodo odprl v Visual Studiu... ;)"
+    },
+    {
+        "role": "user",
+        "message": "Rad bi videl vse- po malem jasno. Zanima me vse od trenutka ko grub zadevo naloži v RAM. Kaj se razpakira, kako se razpakira, kako se inicializira zadeva, kje živi, kaj daje in zahteva od device driverjev itd.   Ena od mnogih stvari, ki me zanima:  Bi se dalo imeti recimo kje v /boot kernel \"v kosih\" in ga potem zlinkat \"on the fly\" med bootom ? Če bi se to dalo, ne bi rabil 10.000 različnih kernelov glede na plato in kombinacijo vdelanih driverjev, ampak bi lahko z neko kodo pošnjofal zadeve okrog sebe in si temu ustrezno zlinkal kernel ter ga zagnal..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "predvidevam da moduli niso dovolj..?"
+    },
+    {
+        "role": "user",
+        "message": "Ne vedno. Kako naložiš recimo SMP modul ? Ali pa recimo z modulom nastaviš preemptiveness ?  Poleg tega morajo določen stvari ob bootu biti bodisi kot modul, bodisi vdelane..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Obcutek imam, da stvari, ki niso modul, imajo razlog da to niso. Lahko se pa motim :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Linux kernel je se vedno zasnovan kot monolitno jedro. Tistega 'core' jedra, ki mora biti preveden in v celoti, danes ni vec prav dosti. Saj ves, da je cedalje manj zadev na voljo kot modul.  Prva in precej resna omejitev pri tem kaj ni na voljo kot modul je to, da ce imas stvari v 'ne-modul' obliki se ne rabis sekirati s tem, da jih isces. Jih ne isces po diskih ali pa po ram disku, ne potrebujes podpore za filesystem in tako naprej.  Kernel v kosih ze imas, rece se jim moduli. Kaj bolj drobit stvari, bi se seveda se dalo ampak nima smisla, vsaj v tem designu ne. Vse skupaj tudi pospesi boot proces, saj lahko naredis samo precej grobo oceno kaj bos bootal in cesa ne. Naredi test in probaj zbootat kak LiveCD in pa LiveCD, ki ga sam naredis, tak, ki ima kernel tocno za tvoj sistem. Bos videl kaj bo hitreje :)  Ce bi Linux bil microkernel potem bi v teoriji lahko imel samo nujni del kernela, ki bi se ukvarjal z memory managementom, procesi in timerji. Vse ostalo bi ti pa pohendlali user space serverji. Samo Linux pac ni tak. Je sestavljen iz polno modulov in te pac nalagas po potrebi in jih v teoriji tudi sproscas, ce jih ne nucas vec. SMP in pre-emptivness sta pa precej vpletena v sam 'core' kernela, tako da bi ju tezje kar kot modul insertal v kernel. Ceprav ni nemogoce, je pa vprasanje, ce je smiselno.  Sicer pa, saj ne rabis 10k razlicnih kernelov, rabis en kernel in 10k modulov. ;)"
+    },
+    {
+        "role": "user",
+        "message": "Ja, seveda. Zato ima gentoo CD nekaj kernelov ( pa še marsikakega nima, pa bi blo fajn da bi ga imel).  Ni vse v modulih. Pri določenih verzijah framebuffer dela samo, če je vdelan v kernel. Kot modul ne dela. Potem je tu recimo SMP podpora. Ali pa politika multitaskinga ( fully cooperative/cooperative/no preempt). Pa recimo resolucija jiffie timerja (100/250/1000 Hz). Pa recimo memory model (discrete/discontinuous), pa NUMA podpora, pa najbrž še marsikaj.  A že telih par stvari ti da veliko kombinacij."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user: za SMP podporo se sprasujem, ce ti skodi, ce jo imas vklopljeno na ne-SMP racunalniku. Itak kernel sam zazna, da ni SMP kista in potem normalno dela dalje."
+    },
+    {
+        "role": "user",
+        "message": "Če bi blo to povsem res, te opcije ne bi bilo na izbiro. Tudi na na LiveCDju te izbire ne bi bilo.  Določene zaje*ancije s timerjem so se recimo pri amd64 kazale samo pri SMP verziji.   Sploh pa to ni point. Je*eš SMP. To je itak samo ena od takih opcij. Tega je še, število kombinacij pa se z vsako tako opcijo podvoji..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ti ocitno rabis tole   TCCBOOT: TinyCC Boot Loader"
+    },
+    {
+        "role": "user",
+        "message": "Nice. Ima nas ludih i posle rata. Nisem sam."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ej, smp pa scheduler pa framebuffer lahko fiddlas s command line parametri od jedra.  Za to ne potrebujes 10 razlicno prevedenih jeder."
+    },
+    {
+        "role": "user",
+        "message": "In kako sfiddlaš, da ti stvar ne krešne ob aktivaciji fb, če se to siccer po defaultu zgodi ?  Je kaj v stilu modprobe nvidia video=1600x1200-16 nocrash ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user,  Vecina stvari, ki si jih nastel so precej specializirane, izjemi sta samo SMP in pa preempt multitasking. Pa se to dvoje je precej pogojno.  Izhajati moras iz tega, da je Linux jedro monolitno in si s tem precej omejen. Stvari, ki so vrzene v module so v glavnem take, ki imajo lep abstraction layer od ostalih zadev, da jih lahko ven zmeces.   Preempt multitasking je ena takih stvari, ki je precej globoko vkoreninjena v sam kernel. Da bi to zmoduliziral bi ponucal kar nekaj casa, ce bi se sploh dalo. Stvar enostavno ni tako zasnovana. Ceneje te pride, da stvar locis ob prevajanju jedra, kot pa, da bi to lahko spreminjal v run-timeu. Isto SMP/NUMA podpora in vecina teh stvari.  Tako pac je, big deal, spreminjati to, bi bilo resnicno trapasto vsaj zaenkrat, premajhen userbase. Vecina stvari se nastavlja potem na lastno zeljo. Je bolje in tudi priporocljivo. Tako ima vsak, ki zeli drugacno konfiguracijo svoj kernel preveden za njegovo arhitekturo z njegovimi zeljami, SMP, preempt, ... in tako naprej.  Takih, ki to spreminjajo precej pogosto je malo.  Ja, kaka stvar kot modul ne deluje. Ce ne, potem si preberi spremno dokumentacijo zakaj ne in kje so problemi. So tudi bugi... ;)"
+    },
+    {
+        "role": "user",
+        "message": "Saj tega nisem mislil spreminjat v runtimeu.  Ideja je bla,d a bi imel vse scompilane lego kocke nekje, nato bi jih pa samo zlinkal, naložil in pognal kernel.  Se pravi, kakšne monolitne dele bi imel v več verzijah (ali pa recimo samo osnovno verzijo in kup diffov). Tudi modul bi imel recimo preveden kot vgrajen modul pred linkanjem in diff za tistih nekaj sprememb, če hočem samostojen modul."
+    },
+    {
+        "role": "assistant_2",
+        "message": "No, kaj bistveno bolje ne bi bilo, kot so stvari urejene zdaj. ;) Niti neke pohitritve ne bi bilo. V bistvu bi bilo se slabse, saj bi zbootal monolitic kernel in driverje bi imel ze zapecene notri. Unload-a pa ne bi mogel narediti. Ce bi pa stvari nalagal kot module, ki bi jih on the fly prevajal oz linkal, potem pa v bistvu nisi pridobil popolnoma nic.  :)"
+    },
+    {
+        "role": "user",
+        "message": "Saj ne gre za to, da bi bil rezučltat hitrejši. Bil bi natanko enakoo hiter, kot če bi želejeno konfiguracijo scompilal sam.   Fora je v tem, da bi imel v pardeset MB lego kocke za kernel za nek CPU. Recimo, na DVDju bi imel v 250 MB lego kocke za gentoo-2.6.16r4 za P3/Celly, VIA C3, P4, K7 in K8. Rukneš DVD not, znotraj prilagojenega GRUB-a poženeš CPUID da ugotoviš, na katerem CPUju stvar laufa in poženeš simpl diagnostiko za tistih nekaj ključnih stvari, ki jih želiš vedet. V skladu s tem zlinkaš kernel in ga naložiš ter poženeš. Pri tem se program v skladu z internimi tabelami odloča, kaj hoče met v kernelu, kaj si bo pa pripravil kot eksterne module.  Stvar zlinkaš iz prevedenih xyz.o modulov, natanko tako kot to počne \"make bzImage modules\" v finalnem prehodu, ko zlinka prevedene kose v bzImage.  Kje je štos tega ? Hja, recimo kernel po meri. Sedaj se mi dogaja recimo, da mi framebuffer driverji delajo ( ko delajo) samo če so vdelani v kernel. ČE jih scompilam kot modul in ga modprobeam, modprobe izjavi,d anečesa ne more zlinkat in da modula ne bo naložil.   Tudi če si premislim glede narave dela kernela (interrupti/s, preemptiveness itd itd) ga moram sedaj povsem na novo scompilat.  Koliko različnih kernelov po CPUju moraš imeti na CDju/DVDju, da pokriješ vse kombinacije glavnih parametrov ? Vsekakor veliko preveč.   Ne bi blo fajn met Baltazar style program, ki bi ti izpljunil v par sekundah ferti rezultat iz že prej scompilanih delov ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Brezveze kompliciras.  Predelava kernela, da bo delal tako kot si ti zelis in predelava boot procesa in distribucije ti vzame toliko casa, da ti pokrije kakih 5 let prevajanja 1001 verzije kernela, ki ti potem zapolnijo 5% DVDja. ;)  In kot sem ze rekel, izmisljanje, kdaj bi imel preempt kernel, kdaj ne, kdaj bi imel FB driver nalozen in kdaj ne, je opravilo, ki ga pocnejo redki.  Nima smisla."
+    },
+    {
+        "role": "assistant_2",
+        "message": "No, nima smisla za 'mass production'. Ce tebi prav pride, pa si skodiraj. :)"
+    }
+]

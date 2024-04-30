@@ -1,0 +1,126 @@
+[
+    {
+        "role": "user",
+        "message": "Imam naslednjo situacijo: ohišje corsair 500r, hladilnik corsair h100i in grafično kartico gigabyte windforce 3. Konfiguracija ventilatorjev je naslednja: dva sprednja(120mm) en stranski(200mm) in en zadnji na vrhu ohišja(120mm), dva na vrhu ohišja, nad radiatorjem hladilnika(120mm) in trije na grafični kartici. Privzeto so nastavljeni klasično: dva sprednja in stranski ventilator vsesavata, tisti zadaj in dva na hladilniku, pa izsesavata. Grafična kartica vso toploto črpa v notranjost ohišja.   Moje vprašanje je namenjeno tistim, ki so se \"igrali\" s tej podobno konfiguracijo in imajo vsaj nekaj praktičnih izkušenj (teorijo sem prebral drugje, trial&error se lahko grem sam...). Kako bi bilo bolje usmeriti stranski in zadnji ventilator, da bi bilo vse skupaj čimbolj učinkovito? Je bolje, da stranski vsesava, ter zadnji izsesava, ali obratno? Mnogi zagovarjajo \"klasično\" usmeritev, a sem razmišljal in se mi zdi nekako bolje, da zadnji ventilator vsesava hladen zrak, ter ga piha direktno proti h100i, stranski pa izsesava vroč zrak iz ohišja (je tudi poravnan z grafično kartico, ki vroč zrak črpa v ohišje).  Torej, če je kdo, ki ima podobno konfiguracijo in je preizkušal različne smeri ventilatorjev, naj prosim deli svoje izkušnje in priporočila v tej temi."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Glede na to, da tvoja grafična kartica segreva zrak v ohišju (ne odvaja skozi pci reže) to negativno vpliva na temperature H100i. Situacija je preprosta, odloči se glede na trenutne temperature oz na to, kaj bi rad izboljšal.   Če bi raje nižje temperature na procesorju naj bo stranski izhoden in zadnji vhoden ventilator. Stranski bo poskrbel da se topel zrak od grafične čimprej odvaja, zadnji bo poskrbel še za dodaten hladen zrak za H100i.  Če bi raje nižje temperature na grafični, naj bo stranski vhoden, ampak zadni izhoden. Tako bo grafična dobivala več hladnejšega zraka, a bo za odvajanje moral poskrbeti samo zaden ventilator in pa H100i, zato bodo temperature na CPU slabše.  LP"
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovor. Do konca drugega odstavka se popolnoma strinjam in nimam pripomb. Malce me bega situacija okoli grafične kartice. Zadeva vsesava zrak od spodaj in ga (vsaj večino) razpihuje proti strani. Nimam veliko pojma o dinamiki zračnega pretoka, a tako po kmečko mi deluje, da stranski, vhodni ventilator, dejansko premeša vroč zrak, ki ga grafična kartica izpiha. Ta isti, vroč zrak, pa vrne grafični kartici, da ga ta spet vsesa in \"reciklira\". To je največja dilema..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Samo se parkiram v temo ker jutri dobim identično ohišje in vodno hlajenje. Bom filozofiral ko sestavim ohišje.  Drugače sem razmišljal isto kot ti, stranski naj piha ven zgornji pa naj piha notri, da H100i dobi čim bolj svež zrak. 500R omogoča da lepo zložiš kable kar pomeni da GPU bo imela ogromno pretoka svežega zraka."
+    },
+    {
+        "role": "assistant_2",
+        "message": "To je bedarija. Potem se bo hladen zrak od zunaj segrel na h100i radijatorju in bo v kišti topel zrak."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 4. nov 2013 ob 14:34 izjavil:Samo se parkiram v temo ker jutri dobim identično ohišje in vodno hlajenje. Bom filozofiral ko sestavim ohišje.   Morda bodo te ugotovitve kaj pomagale...  Predhodno sem imel grafično kartico z referenčnim (\"blower\") hladilnikom in naredil nekaj testov. Za grafično kartico s tovrstnim hladilnikom, je ventilatorje v ohišju najbolje pustiti, kot so (sprednja dva not, zadnji in stranski ven).   Glede h100i (in vseh temu podobnih sistemov), je v skoraj vseh primerih dobro, da so ventilatorji usmerjeni ven (iz ohišja). Za lažje čiščenje radiatorja je dobro, da ventilatorje namestiš tako, da zrak vlečejo, namesto potiskajo. Tu se ne znam najbolje izrazit, tako da bom \"narisal\" shemo. Puščice predstavljajo smer zračnega pretoka :>.  --> ventilator --> radiator --> =večina prahu med ventilatorjem in radiatorjem, težko očistiti  --> radiator --> ventilator --> =večina prahu na izpostavljeni strani radiatorja, preprosto očistiti, malenkost višja temperatura (pol do ene in pol stopinje, zanemarljivo)  @assistant_2 je 4. nov 2013 ob 14:48 izjavil:To je bedarija. Potem se bo hladen zrak od zunaj segrel na h100i radijatorju in bo v kišti topel zrak.   Razloži, prosim."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vse je odvisno od pozicije, to kar sem jaz povedal je tako: grafična dobi svež zrak od sprednjih ventilatorjev (ki bi bili optimalno spodaj, ne spredaj), stranski pa vleče topel zrak od strani (kamor tudi grafična izpihava), da se le ta ne dviguje do H100i. Če je stranski pozicioniran tudi pod grafično, zraven še vleče svež zrak in s tem izniči potrebo po sprednjih!!   Torej tak zelo specifičen primer bi bil razlog, zakaj bi stranski uporabljal kot izhodni ventilator.  Ravno zaradi tega vsega bi ti jaz predlagal, da če že moraš uporabljati stranski ventilator naj piha notri. ČE ŽE MORAŠ UPORABLJATI.  Glej že tako nasplošno po vseh izkušnjah, stranski ventilator je vedno mešal drek! Nikoli mi ni bila všeč ta pozicija, ker totalno z*jebe cel airflow, še posebaj te ogromni 200mm.   Upam da veš, da tiste 2°C ki jih boš MORDA pridobil ne pomeni praktično nič. Malo preveč se sekiraš, kakšna bi bila najbolj optimalna rešitev, čeprav problema sploh nimaš (samo špekuliram), npr previsoke temperature določene komponente, preglasno delovanje itd.   Vsi smo šli čez obdobje, ko želiš vse dokonca ohlajeno, ampak dajmo bit realni, pomembno je le, da so temperature v nekih zdravih okvirjih. Nekaj stopinj gor ali dol, popolnoma nepomembno.   Celotna konfiguracija ja popolnoma neprimerna za neko \"tiho\" mašino, torej edino kar lahko pridobiš je nekaj stopinj za še višji OC.   My 0.02$."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Itak da ni neke potrebe, ampak če si geek potem to je pomembno. :)  Glede ventilatorja pod H100i sem premalo napisal. H100i bi pihal ven, samo ventilator ki je zadaj, pod H100i, bi ga tako obrnil da piha notri."
+    },
+    {
+        "role": "user",
+        "message": "Hehe, nikjer nisem napisal, da imam previsoko temperaturo. Pravtako nisem nikjer napisal, da si želim neslišni računalnik (je pa trenutno precej tih, kljub stock ventilatorjem, ki jih ni malo...). In vsekakor nisem napisal, da sem \"zaljubljen\" v svoj 200mm ventilator, lahko se ločim od njega ;>. Sem že dolgo nazaj prerasel obdobje, ko sem \"zahteval\" super hladni, tihi in naviti računalnik za vsako ceno, sicer bi si sedaj omislil... Ni važno. Le mirno kri, konec koncev smo na računalniškem forumu in sem postavil čisto validno vprašanje, o kateremu se da debatirati.  Konec koncev pa...  \"Vse je odvisno od pozicije, to kar sem jaz povedal je tako: grafična dobi svež zrak od sprednjih ventilatorjev (ki bi bili optimalno spodaj, ne spredaj), stranski pa vleče topel zrak od strani (kamor tudi grafična izpihava), da se le ta ne dviguje do H100i. Če je stranski pozicioniran tudi pod grafično, zraven še vleče svež zrak in s tem izniči potrebo po sprednjih!!   Torej tak zelo specifičen primer bi bil razlog, zakaj bi stranski uporabljal kot izhodni ventilator.\"  Imam točno TA specifični primer!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne pomoje nimaš, stranski ventilator je tako velik in tako nizko pozicioniran, da se ga ne splača uporabljati kot izhodnega.   Moja napaka, da sem spregledal da gre za 500R ohišje, pred tem sem bolj napamet govoril, ker nisem vedel, kje točno je ta stranski ventilator.   Tako da, jaz bi ga pustil da piha v ohišje, bi prej odstranil vhodne 120mm ventilatorje, ker so najbrž nepotrebni. Razen če so tam zaradi estetskih razlogov :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Za katere 120mm ventilatorje govoriš? Jih je kar nekaj v tem ohišju."
+    },
+    {
+        "role": "user",
+        "message": "Za sprednje je to napisal, a ju bom kar pustil tam, kjer sta (predvsem zarad diska WD Black, ki zna biti nesramno vroč brez hlajenja)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Obvezno jih pustit, HDD diski se kar lepo grejejo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zdaj sem montiral zadevo, H100i je čisti overkill. Stock hitrost 2500k je na 50-52C v Prime95 (15 min). Zdaj sem ga v easy navil (4.4)@ 1.250v in z Prime 95 po 15 min imam max 54C na enem jedru, povprečje 50-52. Hitrost ventilatorjev na balanced, ampak očitno bom šel na quiet."
+    },
+    {
+        "role": "user",
+        "message": "Oho, lepa napetost. Zaženi še occt/linpack za kakšno uro in če gre čez, imaš \"golden chip\" :>. Temperatura zgleda normalna za h100i. Moja jedra imajo temperature (60 62 62 62) stopinj - pri minimalni hitrosti ventilatorjev in (47 50 50 50) stopinj - pri polni hitrosti ventilatorjev (2500K 4.5GHz 1.33V, OCCT). Škoda edino, da ventilatorji na tem hladilniku malce brenčijo, ali pa sem dobil škart robo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po 40 min Prime95 sem ga ugasnil da se pasta prime lepo. Čez en teden začne quest za 5.0. :)  Kupil rabljen PC ki je imel notri 2500k + asus p8z68-v pro za 250Eur. Katastrofa kdo je to sestavil, grafična neka boga ATI in 1 palčka rama. Zdaj moram to nazaj sestavit s svojim starim i5 750 in nekomu uvalit za 200eur. :)"
+    },
+    {
+        "role": "user",
+        "message": "Nekaj mi pravi, da je naredil nekaj podobnega, kot nameravaš ti ;>.   V glavnem, kar se tiče usmeritve ventilatorjev, zaradi katerih sem odprl temo. Ni mi dalo miru in sem pač preizkusil različne postavitve \"tistih dveh\".   Stranski not + zadnji ven in zadnji not + stranski ven. Saj vem, da deluje kot PC pornografija, ampak ok - ti postavitvi vrneta praktično enake rezultate. Procesor in grafična kartica sta se ohladila, ko sem oba usmeril not in tako snel \"cele\" tri stopinje z gpu in cpu. Tako, nekako sem izvedel, kar me je zanimalo. Zdaj sem odstranil stranski ventilator, kot je svetoval @assistant_0 in usmeril zadnji ventilator navznot, kar je moja ideja. Temperatura se je na celi črti dvignila za 1-2 stopinji (v primerjavi z originalno postavitvijo zadnji ven, stranski not), a bom vseeno pustil tako, ker je vse skupaj še daaaleč od kritične meje (tiste številke v prejšnjem postu so nove...). Tudi tišje je in zdaj vsa toplota s kartice šiba s strani, kjer je več prostora."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz sem delal zgornji test z odprtim PC-jem na mizi in notri je imel minimalno za ga prižgat in pride v winse. Ko bom dal vse notri in zapakiral bom sporočil.  Drugače začetni plan je H100i piha ven in vsi ostali pihajo notri."
+    },
+    {
+        "role": "user",
+        "message": "Tako bo najbolje, če želiš nizko temperaturo. Sicer pa lahko vse ventilatorje, na ohišju in h100i, brez težav nastaviš na min(tudi na 4.5GHz, verjetno še več, navij še grafično, navij VSE :> )."
+    },
+    {
+        "role": "assistant_3",
+        "message": "A si probal tudi tako da nisi imel nobenega ventilatorja ki vleče noter, ampak samo zadaj in zgoraj ven ? Probaj. Jaz sem imel 2 vhodna spredaj , enega vhodnega od strani , enega izpušnega zadaj in enega izpušnega zgoraj. Sprobal sem vse možne kombinacije, na koncu pa še to z samo dvema izpušnima. S tako postavitvijo sem dobil najnižje temperature.  Torej tako imam :    slk  Hladno ko hladilnik :-D Plus, da noter ni nič praha, ker ventilatorji, ki vlečejo zrak navznoter so ponavadi tik ob stranici in tako sesajo prah ko zmešani, če jih nimaš, to odpade."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Push vs pull vs push/pull konfiguracija   Tip priporoča pull ker več ali manj je performančno isto če se uporablja dobre ventilatorje, s tem da v pull konfiguraciji je bistveno lažje očistit prah na hladilniku ker ni potrebe po tem da vse skupaj razstaviš.  P.S: V trenutni konfiguraciji imam 670@1300. :)"
+    },
+    {
+        "role": "user",
+        "message": "Takole imam jaz... sem opisal par post-ov nazaj, ampak se nisem znal dobro izrazit :>. S sesalcem brez težav pobereš večino prahu, do ventilatorjev ga pride zelo zelo malo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "So far so good. 4.7@1.3"
+    },
+    {
+        "role": "assistant_4",
+        "message": "A mate vi v ohišju podtlak ali nadtlak? Mene bolj to zanima, ker sem sam izklopil zadnji 12cm fan ravno zato, da nimam podtlaka. zgoraj 2x12cm ven, stranski 22cm in prednji 12cm not pa še to se mi je upočasnil z leti na ene 600 rpm - original 1200rpm, torej sm tm tm s tlakom."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Se ne obremenjujem s tem, gledam bolj da je pretok vredu z najnižjimi možnimi obrati ventov. Ponavadi jih nastavim v speedfanu na minimalno vrednost kjer se začnejo vrteti + še dodatnih 5% hitrosti. Dela vse brezhibno in povsem tiho.  preprosto glej samo to da gre zrak mimo grafe in cpu ven. Na tvojem mestu bi vklopil zadnji vent in ga dal na neke minimalne obrate zado da se zagotovi, da gre zrak mimo hladilnika CPU ven iz ohišja. Lahko pa da je res povsem nepotrebno. Nisem še imel ohišja ki bi imel ventilator na stranici, tako da nevem čisto 100%."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Pri meni je razlika precejšnja, če primerjam push only vs. pull only konfiguracijo na h100i (fx 8350@4.8). In sicer v pull načinu je cca 8 stopinj višja temperatura CPUja, s tem da je nižja temperatura notranjosti kište (cca 6 stopinj nižja temperatura GPUja).   Tako, da sem se v bistvu moral odločit ali bom imel nižjo temperaturo GPUja ali CPUja - jaz sem se odločil za slednje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kot sem že prej napisal vsi ventilatorji razen H100i pihajo notri."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nebi bilo treba, ker potem gre cel exhaust čez H100. Jaz bi vseeno zadnjega obrnil.."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne vidim prednosti.  Če zadnji-zgornji ventilator obrnem na ven mogoče povečam pretok čez ohišje, ampak tudi H100i bo imel manj \"čistega\" zraka.  Bi moral testirat, ampak se mi ne da več. :)  @assistant_6 je 8. nov 2013 ob 09:57 izjavil:Pri meni je razlika precejšnja, če primerjam push only vs. pull only konfiguracijo na h100i (fx 8350@4.8). In sicer v pull načinu je cca 8 stopinj višja temperatura CPUja, s tem da je nižja temperatura notranjosti kište (cca 6 stopinj nižja temperatura GPUja).   Tako, da sem se v bistvu moral odločit ali bom imel nižjo temperaturo GPUja ali CPUja - jaz sem se odločil za slednje.   i5 se manj greje kot FX, tako da raje imam optimiziran sistem za RAM, GPU, Chipset, kot CPU (ker imam vse navito). Še v Prime95 je pod 60C, sicer na balanced, v real life je na 50C v quiet. Je pa tudi odvisno od ohišja. Imaš ti 500R ali nekaj temu podobnega ali kak random name?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Pri meni je takole: 1x120mm spredaj - intake 2x140mm side - intake 1x120mm zadaj - exhaust 2x120mm (h100i) na vrhu - intake  Ravno zadnjič se mi je zdela boljša ideja, da bi imel na vrhu exhaust.. ampak se mi preveč pozna na cpu temperaturah, grafična je pa dovolj hladna zaradi stranskih ventilatorjev. Res pa je, da bi bila ta varianta super, če bi imel 4 ventilatorje na radiatorju namontirane - pull/push (exhaust) na vrhu. Samo na žalost nimam dovolj prostora v ohišju.  Ohišje je cheap - samo za ta denar, bomba - http://www.aerocool.us/strikex/strikex_..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz imam spredaj 120mm vhod zraka,zadaj izgod 120mm,na stranici 2x120mm izhod in na vrhu še pride vhod 120mm. To je za mene glede zračnega hlajenja najboljšra varijanta,brez odkrivanja tople vode."
+    }
+]

@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Imam sledec problem.  Ali je možno, da je moj sistem preslab za poganjanje filmov (HDDVD ali BluRay rip), ki so kodirani v 1080p resoluciji. Filmi mi ne tecejo lepo, kdaj se slika malo ustavi ali pa pospesi...  Imam pa sledec sistem: NvidiaGeforce 6200 TurboCache ter AMD 3800 x2 procesor, ter windows xp. Imam instaliran CoreAvc H264 kodek??   Moje vprasanje: ali je cas, da zamenjam graficno?  Hvala l.p. @user"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če ti igre niso prioriteta in ti gre le za filme in pisarniško delo , kupi npr:  ATI HD 2400PRO , pa ti bodo HD filmi delal bp."
+    },
+    {
+        "role": "assistant_1",
+        "message": "S to kombinacijo bi moral brez težav predvajati tudi 1080p. Preveri, da ti res laufa CoreAVC, po potrebi ga posodobi na najnovejšo različico."
+    },
+    {
+        "role": "user",
+        "message": "marko_stamcar: Kako preverim, ce laufa COREAVC?   Filme gledam z VLC playerjem, tam imam po codeci MPEG4 AVC encoder.  THANKS"
+    },
+    {
+        "role": "assistant_2",
+        "message": "vlc je zanič za predvajanje x264 v hd ločljivosti. Filme predvajaj z media player classic +  coreavc Da bo sigurno izbran coreavc za predvajanje(nekateri filtri sposobni dekodirati x264 imajo višjo prioriteto(merit). Pojdi pri media player classic v nastavitve in pod external filters izberi dodaj in poišči coreavc. DAj ga na prefer. Taki hd ripi so ponavadi v .mkv: SVetujem, da posnameš še haali media splitter(za mkv), saj je vgrajeni v media player classic opazno počasnejši/zagtevnejši za cpu. NAto samo še v playerju v nastavitvah pod internal filters odkljukaj matroska."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tudi jaz imam podobno vprašanje (prosim, da mi avtor teme ne zameri ker sprašujem tukaj). Torej pred kratkim sem si kupil plazmo LG42 povezal z kompom z hdmi-dvi kablom in mi filmi v hd kvaliteti štekajo (ravno tolko, da se zazna(BsPlayer)). Je pa res , da imam xp- je že več kot eno leto (ne vem kako mi ni uspelo jih zrušit) . Imam pa še sledeč problem nabavil grafično 6600gt je crknila, dodal nadomestno, ki se je valjala okrog z radeon 9600 ker je bila prejšnja v garanciji in so mi ugodno rešili problem zamenjali za 7300 gs nvidia in mi je tudi ta crknila in spet menjal z radeon....NIKOLI NISEM NIČ ŠLATAL OKROG NASTAVITEV), garancija pa je potekla. Seveda sem vedno vse driverje povozil z drugimi. Ali mislite, da je potreben format oz.. čiščenje registra?  Ja pa še konfiguracija sistema : 2.8 pentium 1 giga rama ipd. Je pa tudi res, da mi je pred enim letom udarila špica v komp, česar niso preživeli mrežna, matična(P4P800SE zdaj jo nadomešča najcenejša z AGP vodilom) in napajalnik. Kolega mi je znal svetovati, da v takem primeru čimprej zamenjaj celoten komp (komponente, ki so preživele so na nitki; saj razumete kaj čem povedati). Prosim za odgovore v smislu ali je moja konfiguracija sposobna predvajati hd filmre brez NAPAK ali je posledica vsega špica ki sem jo fasal pred enim letom. Mislim, da si odgovarjam sam: naredi format in ponovno instaliraj potrebno in boš videl, ker konfiguracija bi morala zadoščati potrebam programa.  Hvala za odgovore in lep pozdrav!  Vladika"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user: No, kot so ti že napisali - CoreAVC se pri VLCju pač ne upošteva, ker ima le-ta svoje kodeke. Uporabi BSPlayer ali MPC - pri slednjem moraš v nastavitvah še ekstra izbrati prioriteto CoreAVCja pred ffdshow-om.  @assistant_3: Za začetek povej, kakšne filme gledaš - \"HD kvaliteta\" jih namreč ne opiše dovolj dobro - HR, 720p, 1080i, 1080p,... ter v kakšnih kodekih. Za zahtevnejše formate je tvoj PC definitivno prešvoh."
+    },
+    {
+        "role": "user",
+        "message": "Hvala vsem za odgovore.    Pri gledanju .mkv filmov z media player classic  imam obcutek, da se mi pojavijo nekaksni rezi, medtem ko z VLC tega ne vidim.   Se eno nevmesno vprasanje?   Ali obstajajo na trziscu ze kaksni predvajalniki, kot so npr. divx predvajalniki, ki predvajajo .mkv filme?  Hvala."
+    },
+    {
+        "role": "assistant_4",
+        "message": "čisto mimogrede, odličen program za predvajanje HD je tudi KMPlayer, ki ima že v sebi obilo kodekov za predvajanje tudi drugih formatov filmov."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mah vedno je boljš met ločeno to... sploh ga pa ni čez CoreAVC, ki je plačljiv in ga ne boš dobil v nobenem all-in-one playerju."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa si sloh naredil vse natančno tako kot sem napisal? Ko predvajaš,klikni z desnim in izberi filters. Kateri so napisani?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "X2 3800+ je na meji za 1080p, in se lahko zgodi, da bodo v kakšnih scenah z veliko gibanja težave. CoreAVC je za H264 obvezen (za XviD/DivX uporabi ffdshow brez vsakršnega post-processinga, vendar znajo kljub temu biti težave, ker se uporablja samo eno jedro), poleg tega pa moraš v MPCju izbrati \"Overlay Mixer\" za prikaz videa (je daleč najhitrejši)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "s CoreAVC ne bo nobenih težav pri predvajanju na X2, saj meni tekoče dela na Athlon 64 3200+ pri 70% obremenitvi procesorja."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Zelo odvisno od videa - na 4200+ sem imel od 60 do 100% (pri čemer so mi tisti, ki so prišli do 100% štekali)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2: vse sem naredil tako, kot si napisal. Pod filters mi med drugim pise CoreAVC Video Decoder.  Saj slika je super v primerjavi z VLC, slika se nic ne ustavlja in nic ne pospesuje. Vendar ce pozorno gledam, se mi kdaj pa kdaj pojavijo neki vodoravni rezi, ki jih ocitno samo jaz opazim. Punca jih npr. ne opazi. Mogoce sem ze mal deformiran, ker gledam 15 ur na dan v momnitor :).  Vseeno HVALA.  L.P. Dusan"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Em, sedaj sem na mojem x2 4600+ pognal en 1080p film. Povprečna obremenitev proca je približno 20%. Kaj vi to čarate, da vam zasede skoraj ves proc?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "A na mojem AMD 1700+ deluje ful HD    ???  Lp"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Še 720p ti ne deluje ."
+    },
+    {
+        "role": "assistant_4",
+        "message": "deluje s kodeki."
+    }
+]

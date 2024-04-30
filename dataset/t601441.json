@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Imam vprašanje glede adapterja Firewire IEEE1394 na USB 2.0. Link Ta adapter sem si nabavil, ker matična plošča nima integriranega Firewire IEEE1394 vhoda (prejšnja plata je to imela). Vem, da je boljša rešitev vgradnja posebne Firewire kartice. A ta priključek tako zelo redko uporabljam, da sem se odločil nabaviti zgoraj navedeni apapter IEEE1394 na USB2.0.  Vprašanje: Kamere pri priklopu in vklopu sistem sploh ne prepozna. Pri prejšnjem integriranem priključku Firewire jo je sistem zaznal kot USB napravo. Tega sedaj ne prikaže. Po mojem mi manjka verjetno posebni driver, kateri bi omogočal zaznavanje Firewire signala preko priklopa USB 2.0. Sem kar nekaj prebral o tem, a nisem našel nič uporabnega. Vem tudi, da bo hitrost prenosa video signala manjša preko USB-ja, kot jo ima sistem IEEE1394 (je več standardov).  Hvala za vsako pomoč in konkretni nasvet že vnaprej. NUJNO!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Naredi po tem postopku in najdi \"Vendor ID\" [1] ter \"Device ID\" [2]: http://www.ccboot.com/find-ven-dev-id.h...  Nato v http://www.pcidatabase.com/ poišči proizvajalca ali vpiši [12] v google.  OS je kateri ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "To ti ne bo delalo. Razen v primeru, da ima ta tvoja naprava nek kombo priklop in podpira tako USB kot FW. Ampak najbrž nima. Nabavi kartico."
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljen @assistant_0,  Najprej se ti lepo zahvaljujem za tvoj odgovor, oz. nasvet. Bo preveril in ti javim.  A ja, kateri OS. Torej sistem je: Windows Vista Ulitmate SP2 32 bitni."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 23. feb 2014 ob 20:56 izjavil:To ti ne bo delalo. Razen v primeru, da ima ta tvoja naprava nek kombo priklop in podpira tako USB kot FW. Ampak najbrž nima. Nabavi kartico.   Pozdravljen,  Kot rečeno, povezal bi Sony kamero, sistema Digital 8 (stara 13 let) preko klasičnih USB 2.0 vrat na matični plošči. Vse kar sem o tem prebral piše, da bi zadeva verjetno morala delovati, sicer je ne bi prodajali, ali pač?! Zajemam z zelo dobrim in malim programom WinDV, Link,  saj se mi zdi veliko boljši kot če bi z namenski recimo kar z Win Moviemaker-jem (ali kateim koli drugim video edit programom).  A imaš še kakšen nasvet, razen , kot rečeno vgradiš dodatno kartico Firewire.  hvala in l.p."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne, ne bo ti delalo. Firewire in USB sta dva totalno različna vmesnika. USB dela na 5V, Firewire na 25V (pa vse do 30V). Protokol za prenos podatkov je drugačen, hitrost pri USBju je nižja. Delalo bi ti v primeru, da bi po nekem čudnem spletu okoliščin Sony v kamere vgrajeval kombo vmesnike, ampak samo z firewire konektorjem. Kar pa najbrž niso počeli.  Skratka, če želiš povezati kamero na računalnik, dobi kamero z USB priklopom (če prav se mi zdi, da Digital 8 kamere preko USBja niso omogočale zajemanja slike), nabavi epress card FW vmesnik ali PCI kartico ali pa neke vrste aktiven adapter. Kaj takšnega npr. To kar maš ti, je zgolj fizični adapter med konektorji. Nekaj takšnega, kot bi kabel dal na eni strani priključek za vodo, na drugi pa šuko vtič."
+    },
+    {
+        "role": "assistant_0",
+        "message": "To kar maš ti, je zgolj fizični adapter med konektorji. Nekaj takšnega, kot bi kabel dal na eni strani priključek za vodo, na drugi pa šuko vtič. Hmm, zakaj se potem tak priključek lahko uporabi ?  Dober point glede voltaž !"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 23. feb 2014 ob 21:21 izjavil:Ne, ne bo ti delalo. Firewire in USB sta dva totalno različna vmesnika. USB dela na 5V, Firewire na 25V (pa vse do 30V). Protokol za prenos podatkov je drugačen, hitrost pri USBju je nižja. Delalo bi ti v primeru, da bi po nekem čudnem spletu okoliščin Sony v kamere vgrajeval kombo vmesnike, ampak samo z firewire konektorjem. Kar pa najbrž niso počeli.  Skratka, če želiš povezati kamero na računalnik, dobi kamero z USB priklopom (če prav se mi zdi, da Digital 8 kamere preko USBja niso omogočale zajemanja slike), nabavi epress card FW vmesnik ali PCI kartico ali pa neke vrste aktiven adapter. Kaj takšnega npr. To kar maš ti, je zgolj fizični adapter med konektorji. Nekaj takšnega, kot bi kabel dal na eni strani priključek za vodo, na drugi pa šuko vtič.   Najlepša hvala za tvoj odgovor. Ja, se mi je zdelo da ne bo delovalo, takoj ko si omenil delovno napetost.  Vem, da je USB na 5V, za Firewire pa nisem preverjal. Enako kot potegnemo analogijo z zunanjimi diski, kot vem za zunanje 2,5\" diske z USB priklopom, napram 3,5\" diskom, kateri rabijo napajanje 12V in ne 5V.  Hvala, vidim, da ni druge možnosti, kot vgradnja kartice IEEE1394, ker je pač plata nima integrirane."
+    }
+]

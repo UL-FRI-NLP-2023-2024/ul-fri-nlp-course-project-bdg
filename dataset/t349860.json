@@ -1,0 +1,162 @@
+[
+    {
+        "role": "user",
+        "message": "hej :) naj razložim kaj bi rabil. V mojem strežniku (,ki je bil navaden osebni PC) imam 8 prikljuckov SATA, torej lahko prikljucim 8 diskov. Zanima me kako bi naredil, da se mi delajo varnostne kopije, da imam nekaksen RAID. Gledal sem ze PCI RAID kartice ampak nisem našel nič pametnega. Mi lahko kdo kaj svetuje.  hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če bi rad imel varnostno kopijo kompletnega diska, potem izbereš Raid 1 (mirror) v kolikor to omogoča tvoja plata."
+    },
+    {
+        "role": "user",
+        "message": "Ja sem pogledal v knjigco od moje ASUS P5Q in omogoča. Razen zdj sm mal zmeden k je RAID 0, 1, 5 in 10. (pogledal sem in pise da mam 6 SATA prikljuckov.) Zanima me če imam lahko na RAID 1 več trdih diskov. Gledal sem tut RAID 10 k je baje skupek dobrih lastnosti iz RAID 0 in RAID 1 tako da zdaj ne vem.  za zacetek bi imel tko.. 2x1.5TB v RAID 1 potem pa ne vem kako bi naredil če bi dokupil še 2x1.5TB, da bi imel torej vse skupaj 3TB primarnega prostora in 3TB prostora za backupe."
+    },
+    {
+        "role": "assistant_1",
+        "message": "RAID-0+1 ?"
+    },
+    {
+        "role": "user",
+        "message": "ja pod RAID 10 piše tole  RAID 10 is data striping and data mirroring combined without parity (redundancy data) having to be calculated and writen. With RAID 10 configuration you get all the benefits of both RAID 0 and RAID 1 configurations, Use four new disk drives or use an existing drive and three new drives for this setup."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja Intel Matrix ima tudi Raid0 in Raid1"
+    },
+    {
+        "role": "assistant_3",
+        "message": "RAID0: stripping - podatki se pišejo enkrat, pri čemer so razdeljeni med diski, da se poveča hitrost branja in zapisovanja. Če crkne en disk, so izgubljeni vsi podatki. Prednost: visoka hitrost branja in pisanja (vendar le na pravih strojnih krmilnikih - na tistih v BIOSu je razlika ponavadi minimalna)  RAID1: mirroring - podatki se hkrati pišejo na vse diske, pri čemer je uporabna kapaciteta enega diska. Dokler ne odpovedo vsi diski, so podatki varni. Prednost: varnost, visoka hitrost branja.  RAID3,4,5: podatki se pišejo po vseh diskih, hkrati pa se pišejo še paritetni podatki, tako da lahko en disk crkne, in podatki ostanejo. Uporabna kapaciteta je število diskov - 1 (če so vsi diski enako veliki, seveda). Razlika med RAID3, 4 in 5 je v tem, kako so razporejeni paritetni podatki. Prednost: varnost, visoka hitrost branja; slabost: počasno pisanje majhnih datotek (ker je potrebno najprej prebrati obstoječe podatke za izračun paritete)  RAID6: podobno kot RAID5, samo da lahko odpovesta 2 diska (in je zato uporabna kapaciteta število diskov - 2).  RAID10,RAID1E: kombinacija RAID0 in RAID1. Uporabna kapaciteta je število diskov / 2 (nekatere implementacije dovoljujejo liho število diskov). RAID10/1E preživi izgubo najmanj enega diska, lahko pa tudi izgubo večih diskov, če le-ti niso del iste skupine. Prednost: zelo visoka hitrost branja in pisanja."
+    },
+    {
+        "role": "user",
+        "message": "iz tega razberem da bi bilo najbolje zame RAID 10. Zanima me kaj se potem naredi če en disk od 4 na RAID 10 crkne. Se ga samo zamenja in računalnik opravi ostalo?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ponavadi onboard raid kontrolerji so omejeni glede možnosti in hitrosti."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ponavadi onboard raid kontrolerji so omejeni glede možnosti in hitrosti.  Niti ne. Intelov ICH9R je kar se tiče RAID-1 soliden, mislim tukaj predvsem na hitrost. Verjetno je ICH10R še hitrejši."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če disk crkne se ga zamenja, in če boš imel srečo, ga bo krmilnik sam od sebe prepoznal in začel uporabljati (če nimaš sreče, boš moral še v programu za management dodati disk nazaj v polje)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ponavadi onboard raid kontrolerji so omejeni glede možnosti in hitrosti.  Niti ne. Intelov ICH9R je kar se tiče RAID-1 soliden, mislim tukaj predvsem na hitrost. Verjetno je ICH10R še hitrejši.  Da, dokler ne daš notri 4 diske v raid 5.Če sploh podpira."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ne vem, z dvemi diski v RAID-1 je hitrost super."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ti kontrolerji itak ne delajo nič neobičajnega - vsa RAID magija se odvija v gonilniku."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Da dodam še jaz svoje mnenje...  RAID polja delujejo tudi brez posebne strojne opreme.  Naprimer WIN Serverji 2003 vem, da imajo u disk managerju možnost vse to nastavlat in dela super, XP-ji mislim, da nimajo. Pri meni je le problem, ker imam propočasno mašino.  Imam namreč: 2x RAID-5: 1. 4X 750 GB 2. 4X 1TB  To mi dela na res stari mašini Celeron 900MHz, moram ponovno naložiti serverje, vendar trenutno hitrost prenosa ni večja od 50Mbps"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Novembra 2008 je bil v Monitorju članek na to temo Poceni ni nujno zanič Kupujete strežnik, katerega ključna naloga bo hraniti podatke, to pa pomeni, da bo moral vsebovati kar največ diskovja, seveda zvezanega v polje RAID. Kupiti \"resen\" strežnik z diski SAS, nekoliko privarčevati s hitrimi diski SATA ali se zadovoljiti kar z običajnimi diski SATA za namizne računalnike in programskim poljem RAID? Dilema, ki je žrla tudi nas. Zato smo jo raziskali."
+    },
+    {
+        "role": "user",
+        "message": "uporabno  hvala"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Imam podobno dilemo, rad bi naredil polje Raid 5 s štirimi diski.  Problem je le v tem, da mi plata podpira le 0,1,1+0.  Sem pa našel nek poceni krmilnik - ampak nisem prepričan če bo ta zadeva stabilna in varna."
+    },
+    {
+        "role": "assistant_10",
+        "message": ">Vem, že miljonkrat povsod napisano, ampak: raid != backup!!!!!!"
+    },
+    {
+        "role": "assistant_11",
+        "message": "odvisno od polja."
+    },
+    {
+        "role": "assistant_6",
+        "message": "blueFish> odvisno od polja.  Ne, ni.  Če pobrišeš dragoceno vsebino raid-60 krmilnika, si v istem zosu, kot če pobrišeš dragoceno vsebino enega samega diska.  RAID te varuje pred okvaro diska, pred ostalimi milijon možnostmi, da kaj zajebeš, pa ne."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_9: tista kartica ima gor SiI 3114 čip, ki naj bi v povezavi s pravim BIOSom (na kartici, ne na matični) podpiral RAID5 (preko gonilnikov) - samo še vse kartice, ki sem jih imel do sedaj so imele prestaro verzijo BIOSa, čipa se pa ni dalo flashat."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Enostavno tudi če ti plata ne podpira raid 5.  No jz mam naprimer na win server 2003, na xpjih je mislm da tut.  Kako narediš RAID-5 na serverjih 2003(na pamet pišem tko da upam da dela): 1.Priklopiš saj 3 diske v računalnik, ki imajo isto kapaciteto. 2.Odpreš Control Panel>Administrative Tools>Computer Management 3.Greš pod disk management 4.Željene diske pretvoriš v dinamične diske -desni klik na disk > Convert to Dynamic Disk 5.Desno klikneš na en disk >New Volume izbereš RAID5 6.Izbereš željene diske ti nardi raid 5 in pol nevem kaj še in to je to.  4b. Nisem prepričan vendar če naenkrat priklopiš več diskov ti že takoj pokaže okno v katerem te vpraša kere diske hočeš initializirat al kaj že in pol ka klikneš next vpraša še kere hočš pretvort in to je to.  Priporočam quick format ker men normalen v dveh dneh ni pršu do konca."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Kot je že nekdo prej napisal: disk se uporablja za tekoče podatke, backup se nikoli ne dela na ploščo, ki se tolikointolikokrat zavrti v minuti. Diski torej niso namenjeni arhiviranju, uporabi tračno enoto ali vsaj DVD-je s pametnim režimom arhiviranja. Konkretno: čisto navadna strela oz. preboj elektrike ti bo snel oba diska hkrati (si lahko s platicami obrišeš zadnjo plat, tudi če imaš raid 5 pač to narediš s tremi platicami). Raid ti reši izključno problem okvare enega diska in nič drugega. Npr. navaden požarček ali tatvina računalnika pomeni slovo od podatkov. Če rabiš zanesljivost delovanja aktualnih podatkov potem razmišljaj o raidu, za backup pa uporabljaj kaj resnega."
+    },
+    {
+        "role": "assistant_3",
+        "message": "DVDji so za backupe veliko premajhni, dovolj zmogljive tračne enote in trakovi pa predragi v primerjavi z zunanjimi diski. Za backupe se ti danes bolj splača kupit nekaj zunanjih diskov, nakar jih redno izmenjuješ."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Če boš imel 3 ali več diske, potem definitvno RAID 5. Če ti bo to prepočasno, lahko razmišljaš o kakem RAID 50.  LP I."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Na strežnikih smo vedno imeli po 4 SCSI diske v RAID5. Včasih softverski s strežnikom WinNT/XP, za kar plošča ne rabi podpirat RAID, zadnje čase kvazi-hardversko (Adaptecov \"Host-RAID\" je podoben kot Intlovi RAID krmilniki, vse deluje v driverju; pravi HW RAID pa je dražji). Po mojih izkušnjah je oboje približno isti šmorn, mogoče je oni od windowsov celo malo bolj komot glede uporabe. Kar nekajkrat nas je ob izpadu diskov rešilo pred reinstaliranjem. Backup seveda še vedno rabiš. Če je cilj hitrost, RAID5 ni najboljša rešitev.  Btw SCSI ni več v modi."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Se da v windows (2003 ali 2008) soft raid5 dodajat diske v že nareto polje? Recimo da maš 3diske pol pa hočeš dodat še 3 nove v isto raid5 polje. In ali more bit sistemski (boot) disk na ločenem disku al je lahk na tem raid5 polju. Pa še, če lahko nov sistem (recimo da mors formatirat windowse) prepozna prejšnje raid polje (ki je na ločenih diskih ofc), ali je kaput vse. Pač ne bi rad mel linuxa sam zarad soft raida, če se da to vse lepo z winsi"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Dodajanje diskov v že obstoječi RAID-5 se sigurno ne da. Ker če hočeš to naredit morš sedanjo particijo zbrisat, narediti novo in potem imaš nanovo polje tako, da priporočam da štartaš s štirimi diski.  Kar se pa tiče še formatiranja sistemskega diska, ni problema. Lepo formatiraj in, ko ti zazna diske lahko brez problema obnoviš raid polje, podatki se ne izgubijo. Preverjeno."
+    },
+    {
+        "role": "assistant_16",
+        "message": "nisem prepičan, če daš v raid 5 tri diske po 2TB je uporabna kapaciteta 4TB in če gre v večna lovišča en disk, ti samodejno obnovi, ko priklopiš drugega delujočega?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Res je. Se mi je že zgodilo, da se mi je en disk uničil, kaj je bil vzrok sicer ne vem. In ko sem priklopil nov prazen disk, kapaciteta mora biti najmanj tolikšna kot je bil prejšnji, mi je podatke lepo obnovilo.  Če se ti bosta uničila dva diska, pa gre vse rakom žvižgat ja. No rešitev je le še Kotar, kar je pa zlo drago."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Sem prestavil v pomoc in nasveti."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Lep pozdrav,  Tema je precej stara in me zanima ali je tehnologija šla kaj naprej. Rad bi namreč dva enaka diska priklopil tako, da bo istočasno zapisovalo na oba (skratka, da bo v Windovsih viden en disk, fizično pa bo pisalo na dva). V kolikor eden crkne, da imaš podatke na drugem. Ali gre to še vedno preko RAID? Imam dva SSD diska, win 7 ter to matično: http://www.funtech.si/si/vsi-oddelki/ko... Piše da ima RAID 0,1,5,10. Kaj izbrati ter kako nastaviti.  LP"
+    },
+    {
+        "role": "assistant_19",
+        "message": "raid 1 potem..."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Kakšna bo pa hitrost zapisovanja. Branje naj bi bilo hitro. Ali bo zapisovalo dvakrat počasneje? Pri RAID 10 naj bi tudi zapisovalo hitro."
+    },
+    {
+        "role": "assistant_20",
+        "message": "Raid1 pise s hitrostjo enega diska, bere pa dvojno."
+    },
+    {
+        "role": "assistant_19",
+        "message": "kolker vem za raid 10 rabiš vsaj 4 diske"
+    },
+    {
+        "role": "assistant_18",
+        "message": "@assistant_20 je 17. jan 2015 ob 22:58 izjavil:Raid1 pise s hitrostjo enega diska, bere pa dvojno.   OK. Potem računalnik ne bo delal počasneje. Kvečjemu hitreje pri branju. En disk imam že priklopljen ter na njem sistem. Ali sedaj samo priklopim še drugi disk ter vklopim ta RAID 1 controler ter bo sistem sam prenesel vse iz prvotnega diska še na drugega? Tako da bosta v bistvu potem kopija eden drugemu. Ali moram po priklopu ter vklopu RAID 1 formatirati ter sistem naložiti na novo, da se že v štartu vzporedno nalaga vse na oba diska? Če se le da bi se temu izognil.  Hvala."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Intel rapid storage (aka. on board raid) je precej smotan in je potrebno en kup trial and error da vidiš kako dela optimalno.   2 diska v Raid 1 načeloma imata isti write peformance kot 1 disk in read performance od dveh, vendar zadeva ne deluje vedno na on board kontrolerjih, govori se na Internetu da zadeva dela samo na top čipovjih.  Jaz imam 3 diske v radi-5 + ssd caching in sem potreboval celo večnost (aka Stripe in Cluster size) da sem dobil ven normalne write performance (od 1 diska), in še to gre katastrofalno če daš preveč zadev pisan na 1x. Read je cool in fenomenalno enkrat ko da v cache."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Kako se raid stripe zračuna najdeš na netu. Fino je vedeti, kakšen je tvoj io size on average. Raid sicer počasi postaja obsolete tehnologija, ker so recovery časi v večjih arrayih enostavno preveliki in tveganje za izgubo še enega diska v času recoveryja preveliko. To velja za raid5 in 6. Raid1 je še ok za doma."
+    }
+]

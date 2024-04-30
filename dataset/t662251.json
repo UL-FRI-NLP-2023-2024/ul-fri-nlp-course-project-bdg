@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  če v Windows Firewall-u omogočim RDP v domeni in uporabljam torej remote desktop connection za priklop iz PC-ja A na PC-B v dotični domeni, je le-ta lahko nezaščiten, ker to velja le za domeno (če zaupam ljudem v domeni seveda), ne? Drugo je, če bi \"RDP-jal\" od zunaj, preko interneta. Je tako?  Hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ponavadi imaš tako v domeni en glaven požarni zid (običajno na routerju) in če tu ne dovoliš RDP povezav oz. port redirection-a, potem se ti težko kdo od zunaj poveže ... sicer pa domena in \"nezaščitenost\" nekako ne gresta skupaj, kaj točno si imel v mislih z \"nezaščiten\"?"
+    },
+    {
+        "role": "user",
+        "message": "Pač tisto, ko daš \"Allow computer with any version of Remote Desktop to connect\" pa tam ko nekaj opozori ko zaženeš RDP povezavo in daš kljukico naj te ne opominja več, te zadeve.  To je lahko vse odprto pri komunikaciji dveh PCjev, ki sta oba znotraj iste domene, ne? (V primeru, da zaupaš uporabnikom seveda.)  Od zunaj pa itak router oz. firewall v routerju (ali firewall posebej kot komponenta) ščiti pred vdori nepovabljenih RDP povezav (razen, če je bil izrecno konfiguriran, da dopušča RDP), ne?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "RDP že od nekdaj velja za rizik, sploh nimaš posodobljen računalnik. Toda v bistvu podobno tveganje predstavlja katerikoli remote dostop do nekega računalnika (najslabše je še s telnet in ftp).  Direkten dostop iz interneta do RDP je že v osnovi no-go. Ali vežeš dostop na določeno IP adreso, ali pa ga omogočiš izključno preko VPN povezav ali na predhodno avtentikacijo. Najbolje je vsekakor VPN.  Znotraj podjetja pa se morebitne zlorabe skuša omejevati preko segmentacije omrežja. Če ima podjetje proizvodnjo, ta nima prav nobene potrebe, da bi lahko z RDP dostopala do veje omrežja, na kateri se nahaja računovodstvo. To pa spet nima potrebe, da preko RDP dostopa do direktorjevega računalnika ali računalnikov razvoja ali komerciale.  Ali to segmentacijo potem izvedeš s pomočjo switchev in VLAN-ov, ali celo na požarni pregradi, pa je potem prepuščeno možnostim, ki ti jih oprema, ki jo imaš na voljo, ponuja. Znotraj iste skupine uporabnikov (proizvodnja, računovodstvo, razvoj,...) pa se tveganje nanaša bolj na osebne podatke uporabnika, kot pa na poslovne podatke ali skrivnosti (te v isti uporabniški skupini običajno niso omejeni). Za samo podjetje je vsekakor prvenstvenega pomena varovanje poslovnih podatkov. Tu pa v bistvu sam RDP protokol niti ni največje tveganje, saj se preko file share-ov da precej bolj neopaženo krasti podatke.  Vsekakor bi lahko šel do ekstremov in vsak računalnik dal na lasten VLAN, tako da bi bil strogo izoliran od ostalih, ampak nekako to potem spet ni neko posebno veselje za upravljati."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kolikor jaz poznam, nezaščiten RDP ne obstaja, kajti kot prvo mora imeti uporabnik geslo ter biti v neki skupini, do GP natančno.  Išči: Limit local account use of blank password to console logon only ter Remote Desktop Users group."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2 je 27. dec 2015 ob 23:54 izjavil:Kolikor jaz poznam, nezaščiten RDP ne obstaja, kajti kot prvo mora imeti uporabnik geslo ter biti v neki skupini, do GP natančno.  Išči: Limit local account use of blank password to console logon only ter Remote Desktop Users group.  Malo poglej na youtube, kaj se najde pod 'hack RDP', pa ti bo jasno, da ni poanta v blank passwordih."
+    },
+    {
+        "role": "user",
+        "message": "Nimamo praznih gesel. Hvala za pojasnila!"
+    }
+]

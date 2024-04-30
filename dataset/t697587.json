@@ -1,0 +1,130 @@
+[
+    {
+        "role": "user",
+        "message": "Imam težave pri računanju azimutov glede na dve dani točki na zemeljski obli. Točki vzamem iz GPS-a.  Računam z uporabo trigonometrije na idealni krogli in rezultati se ne ujemajo z rezultati iz komercialnega geodetskega softvera, se pa ujemajo z raznimi spletnimi kalkulatorji.  Mi lahko kdo pojasni, kako iz npr. točke z GPS koordinatami (0°E, 30°N) in višino 0 m izračunam koordinate (x, y, z) v kartezičnem koordinatnem sistemu?  WGS dela na elipsoidu (a=6.378.137,0 m, b=6.356.752,314245 m) (vir: wikipedija)  Naj bodo vektorji X=(0°E 0°N), Y=(90°E 0°N), Z=(90°N).  A to pomeni, da točka (0°E, 30°N) leži na (R*cos(30), 0, R*sin(30)) ali na (a*cos(30), 0, b*sin(30))?  Če slednje, je računanje azimutov precej bolj zoprno.  Moja naivna formula za izračun azimuta:  # fa, fb: severna zemljepisna širina stojišča in tarče\n# la, lb: vzhodna zemljepisna dolžina stojišča in tarče \ndef azimuth(fa, la, fb, lb):\n    return asin(sin(acos(sin(fb)))*sin(lb-la)/sin(acos(sin(fa)*sin(fb)+cos(fa)*cos(fb)*cos(lb-la))))"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Preracun je malo bolj kompliciran od enostavne matematike, zato se ti ne ujemajo rezultati.  Rabis to v JS al kateri jezik imas?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Za katero stvar potrebuješ to ? (če je za geodezijo ti to ne bo nič pomagalo)  V navigaciji se za to uprablja loksodrma katero izračunamo z merkatorjevimi tablicami Rhumb line @ Wikipedia primer: http://imgur.com/SMRInY3"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0: Kaj (oz. kako točno) je bolj komplicirano?  @assistant_1: Kaj pomeni, da mi ne bo nič pomagalo, če gre za geodezijo?  Programski jezik nima veze. Potrebujem matematične formule, ki jih bom lahko implementirala kjerkoli (zaradi mene v Excelu). Trenutno je moj priljubljen jezik za tovrstno uporabo sicer Python, ampak še enkrat poudarjam, da me zanima matematika, ne programiranje. Saj bi vpisala izraz v TeXu, pa ne vem, če še dela.  Zakaj bi potrebovala loksodromo za izračun azimuta? Rešujem izključno naslednji problem:  Stojim v točki A in gledam vrh zvonika ali televizijskega stolpa v točki B. Zanima me azimut, torej kot med geografskim severom (poldnevnikom) in premico med A in B na vsaj kotno sekundo natančno.  Preden lahko to izračunam, moram vedeti, kaj sploh pomenijo koordinate GPS. Ampak mislim, da mi je zdaj jasno, da je odgovor na moje vprašanje zgoraj  (a*cos(30), 0, b*sin(30))  Našla sem en star članek, ki omenja reduced latitude  tan U = (1 - f)*tan(phi)  kar je po mojem razumevanju polarni kot (U) v sfernih koordinatah, ki ga preračunaš iz geografske širine phi iz koordinat GPS.  Najbolj čudno je, da če namesto kota phi v zgornjo enačbo vstavim  f = 1/298.257223563 phi_krogla = atan((1-2*f)*tan(phi))  potem dobim enak rezultat kot geodetski softver. Največja uganka mi je, kaj točno počne tisti faktor 2 pred sploščenostjo f."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sam nisem geodezije studiral, delam pa z GIS-i ze 15 let. Ce te zanima dejanska matematika, dobis ucbenike na fakulteti za geodezijo.  Koplicirano je ker zemlja ni kugla, ampak krompir. Naslednji problem je ker vsaka projekcija uparablja svoj krompir. Slovenija recimo uporablja krompir, ki da najbolj natancne podatke za Slovenijo. Ce primerjas WGS84 ali mercator projekcijo z Slovensko bos videla, da v naravi Slovenska manj odstopa. Vsaka drzava/regija ima svojo. In problem nastane ko preracunavas koordinate med temi krompirji :)  Za python ze imas knjiznice za preracun: http://toblerity.org/shapely/manual.htm... Ubistu je za python triljon razlicnih knjiznic. Tako, da vedno ko se lotis cesa s tem jezikom prvo poglej katere knjiznice ze obstajajo Ti po prihranilo ogromno casa ;)"
+    },
+    {
+        "role": "user",
+        "message": "Vem, da je zemlja \"krompir\". Pa da v Sloveniji vsaka vas uporablja svojo projekcijo.  Ampak mene ne zanima določanje razdalje med točkami v GK ali kateri drugi krompirjasti projekciji. Zanima me samo določitev azimuta do severa, če imam podane koordinate po WGS84 (ne po lokalnem krompirju, tega ne bom šla ročno preračunavat). In za bonus še določitev azimuta Sonca s pomočjo astronomski tabel (zares me zanima obratno: določitev azimuta cerkvenega zvonika na podlagi merjenja položaja sonca ob določeni uri).  To se mi ne zdi nerešljiv problem, pa verjamem, da astronomi še ne uporabljajo \"lokalnih\" projekcij oz. predpostavljam, da računajo na idealni krogli. Ali se motim?   Verjamem, da se da s knjižnicami marsikaj dobiti \"for free\", a že nekaj časa recimo neuspešno iščem softver, ki bi mi znal pravilno izračunati azimut Sonca (govorim o natančnosti na kotne sekunde).  O koordinatah iz GPS-a pa sem zastavila čisto preprosto vprašanje, na katerega mi še tako napredne knjižnice ne bodo odgovorile. Kvečjemu matematični učbeniki."
+    },
+    {
+        "role": "assistant_2",
+        "message": "To bo najbrz strel v prazno, ampak glede na to, da se za karte uporablja mercatorjeva projekcija, lahko to invertas da dobis tvoje tocke na 'krompirju'? Mercator projection @ Wikipedia"
+    },
+    {
+        "role": "assistant_3",
+        "message": "OP: koordinate ti naprava vrne v WGS84, torej na elipsoidu. Ne na sferi. Ali lahko za svoje potrebe to ignoriraš, ne vem. Kolikor vem, Google in Bing veselo uporabljata WGS84 na sferi 1:1."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2: Ne zanimajo me projekcije. Samo azimut.  @assistant_3: Razlike med računanjem na sferi in elipsoidu se za neke lokalne račune (reda velikosti 10-20 km medsebojne razdalje) razhajajo za do cca. 3 kotne minute, kar je nesprejemljivo. Nek geodet me je najprej prepičeval, da je GPS enak astronomskim koordinatam oz. idealni krogli in moji prvi izračuni so se celo ujemali z raznimi spletnimi kalkulatorji, ampak kot kaže, so tudi spletni kalkulatorji napisani srednje površno in je zanje krogla dovolj dober približek.  Zdaj razumem, da 45 stopinj S. zemljepisne širine ni enako 45-stopinjskemu kotu, še vedno pa ne znam pojasniti, zakaj potrebujem faktor dva v enačbi  phi_krogla = atan((1-2*f)*tan(phi))  (faktor 2 je bil določen \"eksperimentalno\", tako da so se rezultati ujemali z izračunom komercialnega softvera, kar seveda ni najbolj znanstven pristop oz. so morda moje formule še vedno napačne :)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 4. apr 2017 ob 14:43 izjavil:Vem, da je zemlja \"krompir\". Pa da v Sloveniji vsaka vas uporablja svojo projekcijo.  Ampak mene ne zanima določanje razdalje med točkami v GK ali kateri drugi krompirjasti projekciji. Zanima me samo določitev azimuta do severa, če imam podane koordinate po WGS84 (ne po lokalnem krompirju, tega ne bom šla ročno preračunavat). In za bonus še določitev azimuta Sonca s pomočjo astronomski tabel (zares me zanima obratno: določitev azimuta cerkvenega zvonika na podlagi merjenja položaja sonca ob določeni uri).  To se mi ne zdi nerešljiv problem, pa verjamem, da astronomi še ne uporabljajo \"lokalnih\" projekcij oz. predpostavljam, da računajo na idealni krogli. Ali se motim?   Verjamem, da se da s knjižnicami marsikaj dobiti \"for free\", a že nekaj časa recimo neuspešno iščem softver, ki bi mi znal pravilno izračunati azimut Sonca (govorim o natančnosti na kotne sekunde).  O koordinatah iz GPS-a pa sem zastavila čisto preprosto vprašanje, na katerega mi še tako napredne knjižnice ne bodo odgovorile. Kvečjemu matematični učbeniki.   V originalnem postu ni sonce nikjer omenjeno, zato pa si dobila napacne odgovore na vprasanje :) ubistvu delas nekaj podobnega kot sextant?"
+    },
+    {
+        "role": "user",
+        "message": "To sta dva čisto ločena primera. Sonce je \"upgrade\", ki ga je še malo težje rešiti (nisem še naštudirala teorije kroženja Sonca, pa tudi če enkrat spišem sama enačbe, bi si želela nek softver, s katerim bi lahko primerjala svoje rezultate).  Prvo vprašanje se je zaenkrat nanašalo samo na azimut, ko imam podane koordinate GPS. Nikjer nisem omenjala kakršnihkoli projekcij, merjenj razdalj itd.  Ne delam sicer svojega inštrumenta. Bi pa rada z malo boljšim geodetskim \"kotomerom\" (skala okrog ene kotne sekunde) znala določiti absolutno smer geografskega severa na katerikoli točki na Zemlji (ok, prav daleč iz Slovenije predvidoma ne grem, sploh ne na severni tečaj, je pa fino, če so formule univerzalne :). Merim lahko tako horizontalne kot vertikalne kote (vertikalne za ta namen ignoriram).  Ena od opcij je seveda, da spraviš ultraprecizen GPS (ki ga niti nimam) na vrh cerkvenega zvonika ali na vrh TV stolpa in od tam izračunaš azimut (oz. meriš naokrog). Druga opcija je, da iz fiksne točke izmenično opazuješ Sonce in cerkveni zvonik ter na ta način dokaj hitro lahko določiš azimut oz. absolutno smer geografskega severa. Zanimajo me sicer formule za oboje."
+    },
+    {
+        "role": "assistant_0",
+        "message": "predvidevam, da to racunas zato ker ti GPS ne vrne smeri? ker se najbolj poceni GPS vraca koordinato, smer in elevacijo"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ce rabis NMEA podatke: https://s3-eu-west-1.amazonaws.com/gis.... GPRMC stavek ima smer: http://aprs.gids.nl/nmea/"
+    },
+    {
+        "role": "user",
+        "message": "Ne, ne, ne, ne razumemo se. Tudi najdražji GPS mi ne bo vrnil azimuta do cerkve na sosednjem hribu, še zlasti pa ne s točnostjo kotne sekunde (verjetno sem lahko srečna, če GPS vrne +/- 5 stopinj), najcenejši GPS-i so pa itak povsem neuporabni, ker iz +/- 5 m natančnosti tudi slučajno ne morem dobiti azimuta z natančnostjo reda velikosti kotnih sekund (razen če je moja tarča Sonce, potem je razdalja res dovolj velika, da +/- 5 m ne naredi nobene razlike; če gledam tarčo 100 m stran, so pa napake rede velikosti višje in potrebujem pomoč geodeta s primerno dragim večvalovnim sprejemnikom GPS, post-procesiranjem meritev itd.).  Garažni GPS-i so a-priori neuporabni, razen morda za uro. (GPS štoparico sem si pa res naredila s parsanjem stavkov NEMA.)  Razen Zemlje, ki se vrti okrog svoje osi in Sonca, se (za moje potrebe) nič ne premika!  Potrebujem azimut iz vnaprej znanih koordinat GPS (in za bonus še formule za izračun azimuta Sonca).  (PS: OK, vem, da mi z meritvami ne bo uspelo doseči ravno sekundne točnosti, ampak s serijo meritev moram še vedno priti pod cca. 5 kotnih sekund. Za teoretične izračune pa si tudi slučajno ne smem privoščiti metode, ki se bo razhajala za par kotnih minut.)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "azimuth calculator v google ne vrne nič uporabnega zate ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4  Prvič: Testirala sem kar nekaj linkov in kar nekaj spletnih kalkulatorjev dela narobe, kot sem že omenila zgoraj, ker očitno računaja na krogli. Nekdo mi je sicer poslal link na kalkulator, ki dela enako kot geodetski softver in vrača pravilne rezultate.  Drugič: Ne bom vsake ušive koordinate pretipkovala v naključno spletno stran in v vsaki zajčji luknji iskala prenosnik in dostop do interneta. Formule želim integrirati v (svoj) softver, da bom to lahko kadarkoli po potrebi samodejno ali znotraj lastnih skript preračunavala podatke.  Spraševala sem po principu in formulah. (Zdaj mi formula skoraj dela, še vedno pa ne znam pojasniti faktorja dva v formuli.)   Tretjič: Če že kaj, potem še vedno iščem zanesljiv kalkulator za računanje položaja Sonca z natančnostjo kotne sekunde. Vem, da obstaja nek softver po imenu \"Soleil\", a ga ne najdem nikjer (in dela samo na Windowsih). Zato bi rada razumela matematiko z dovolj dobro natančnostjo, sama implementirala formule in to primerjala z enim preverjenim programom.  (Nasveti LMGIFY mi ne koristijo.)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Najboljše bo, da kontaktiraš uporabnika thomas-a."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Azimut in višina sonca c# http://rextester.com/discussion/ULOC423..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Soleil je po FR sonce, da mogoče ne iščeš jetija.  enačbe https://svn.osgeo.org/geotools/tags/2.2..."
+    },
+    {
+        "role": "user",
+        "message": "Milijonkrat hvala obema.  Deklinacijo in rektascenzijo naj bi vnesla iz tabele. Osgeo/geotools jih računa po formuli (sunDeclination(), sunRightAscension()), bom pa preverila, kakšna je razlika med vrednostjo, izračunano po njihovi formuli, in tisto iz tabele. Če sta enaki, bom tabele preskočila , ampak sumim, da gre v formuli zgolj za približek, medtem ko astronomske tabele uporabljajo dodatne popravke."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Čau @user, tisti faktor dva v formuli za reducirano geografsko širino nima kej iskat, prej bi rekel da imaš nekje naprej spuščeno eno dvojko iz druge enačbe in se potem pokompenzira. Kar iščeš je Vincentyeva formula. Po pravilih sferne trigonometrije bosta tvoj začetni in končni azimut različna (in ne za 180° kot je to v navadi na ravnini).  Še en nasvet, Slovenija je precej blizu 45° geografske širine, kar je z vidika testiranja lahko precej neugodno, predlagam da testiraš mejne primere (če seveda tega še ne počneš).  Ko sem se sam ukvarjal s podobnim problemom sem elipsoidne koordinate pretvoril v lokalno na elipsoid tangentno ravnino. Je pa res da so moje razdalje bile reda 40m in je bila natančnost GNSS sprejemnikov omejevalni faktor, ne pa aproksimacije."
+    },
+    {
+        "role": "assistant_7",
+        "message": "BTW, specifikacije imaš precej hude, 5\" je deklarirana natančnost solidnih total stationov za splošno geodezijo - 2.5mm na 100m :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7, hvala za vse namige. Itak, da ni šans, da bi merila bolj točno kot na 5\", čeprav mora biti rezultat in ponovljivost mojih meritev (ne merim azimuta, z njim si samo pomagam) dejansko znotraj 5\", ko poračunaš povprečja itd. Zato pa ni sprejemljivo, če mi fouš matematika prinese kotno minuto pogreška. Za \"tahitre\" meritve bo dovolj, če pridem znotraj 20-30\".  Hvala za tole opozorilo glede 45-ih stopinj. Na referenčnih koordinatah na tvojem linku (Flinders Peak/Buninyong) se mi dejansko ne izide. Bom šla lepo po vrsti in razhroščevala korak za korakom, zdaj sem si nabrala kar nekaj literature (če jo kdo potrebuje, naj pove :), prav tako sem našla še nekaj referenčne kode v Fortranu. Yay!  V teh formulah so še popravki za refrakcijo, torej moraš meriti še temperaturo in tlak. Jupi, to bo veselje :) Štoparici sem termometer (DHT22) že dodala, zdaj pa očitno potrebujem še en BMP180   @otago: hvala tudi tebi. Dobila sem več kot 20 uporabnih člankov/knjig/powerpoint prosojnic, vključno s tisto kodo v Fortranu."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user, verjetno bi ti še lažje kej svetoval, če bi se mi sanjalo kaj je cilj eksperimenta, ampak raziskovanje je del zabave! ;) Sicer pa ful dobro da se kdo tega loti, pa da ni izključno za študijske potrebe, s tem so nas namreč filali cel faks (geodezijo). Glede na to, da smo imeli precej tudi programiranja in podatkovnih baz me preseneča, da ni v Slo več razvoja na tem področju. Smer je namreč world class (pa čeprav je ne bom nikoli končal - ne rabim papirjev) ;).  Ne vem kje točno dobiš not refrakcijo (verjetno pri parametrih za kot sonca), je pa na to temo precej informacij tudi v geodeziji v sklopu trigonometričnega višinomerstva. Problem je lokalni značaj meritev temerature in vlage, kjer bi dejansko človek potreboval kontinuiral profil meritev vzdolž vizure (linije med opazovalcem in subjektom). Nekaj smo se igrali z droni in dobili precej dobre rezultate. Tebi verjetno to ne pride v poštev, ker bi potem merila do roba atmosfere ;)  Če rabiš še kak modul povej, bi moral imet kar nekaj lastne ali sposojene kode v matlabu ali pythonu na to temo. Dejansko mi prav paše malo o tem razmišljat, ravno poskušam PC natrenirat prepoznavat poškodbe na naftovodih, pa vsaka iteracija traja 2h... Dolgcajt."
+    },
+    {
+        "role": "user",
+        "message": "Ne gre za kakršenkoli poseben eksperiment. Samo pri meritvi deklinacije moram pač imeti absolutno referenco za smer geografskega severa ... ki jo pač moram od nekod dobiti/izmeriti.  Nisem rekla, da ravno protrebujem refrakcijo. Samo v materialih, ki sem jih zdaj dobila, so tudi formule z refrakcijo, ki naj bi jih upošteval za bolj točno merjenje azimuta. Iz faksa za geodezijo sem dobila še nekaj kode v Matlabu, ki vsaj za računanje azimutov dela točno to, kar potrebujem.  Za Sonce sicer še nimam kode, ki bi jo kar pognala, imam pa zdaj skoraj 100% dovolj materiala, da pridem do tam. Če mi še kaj ne bo jasno, bom vprašala. Eden od ciljev je, da spišem še modul za en paket v Pythonu, ki bo znal računati to dvoje."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Refrakcija je običajno med različno gostimi plastmi ozračja (vertikalna stratifikacija, stojišče in opazovana točka sta na različnih višinah, zaradi različnih gostot plasti se valovanje ukrivlja), in velja samo za subjekte, ki jih opazuješ z enega gledišča (torej če bi opravlala meritve vertikalnih kotov z tahimetrom/total stationom). Če imaš set dvoje koordinat refrakcija odpade :)  Aja, pazi še na razlike med severi, geografski (projekcijski, če delaš v lokalnih koordinatah) in astronomski sta blizu ampak ne nujno enaka, in ta razlika se s časom spreminja."
+    },
+    {
+        "role": "user",
+        "message": "Hvala. Projekcijski sever ni problem, ker nikjer ne uporabljam projekcije (oz. če bi že imela koordinate v kakšnem čudnem koordinatnem sistemu, bi prosila geodeta za pretvorbo), me pa malenkost bega razlika med geografskim in astronomskim severom. Je to zaradi precesije Zemlje?  Wikipedija pravi, da je razlika nekaj kotnih sekund. Teoretično bi me zanimalo poznati razliko in narediti popravek, toda če je res samo par sekund ... Pri vseh merskih napakah (sploh pri opazovanju Sonca) nikoli ne bom prišla do te meje točnosti, pa tudi tektonske plošče se premikajo, posledično koordinate GPS in azimuti niso ravno konstante. In deklinacija je dva metra stran tudi drugačna (ter se še kar hitro spreminja s časom)."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tvoji podatki sta dve tocki vzeti iz gps sprejemnika. Gps sistem uporablja za referencno ploskev wgs84 elipsoid, torej moras za azimut uporabiti izracun kota med dvema tockama na elipsoidu. Mislim da imam se zvezek iz predmeta geodetski racuni, kjer imam te formule napisane... ampak...  Vprasanje, ce gre za 2 relativno lokalni tocki (lokalni v smisli da padeta v obmocje ki ga pokriva izbrana projekcija, recimo ce sta v sloveniji bi to lahko bila utm33n, morda kar drzavni d96), zakaj tock ne projiciras v lokalni projiciran koordinatni sistem? Potem je azimut stvar arctan(dx/dy).  Kar se tice softwera out of the box, ima qgis podporo za vse projekcije, tudi za neprojicirane geografske koordinatne sisteme kot je wgs84. Izracun lahko opravis tam. Potem je se postgis baza, kjer bi zelo enostavno naredila tabelo z geometrijskim tipom geography, in poracunala azimute.  Ce ti moji hinti niso zadosti, lahko naredim konkreten primer ;)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Aha se to...   Kadar imas tocke v dveh koordinatnih sistemih, tipicen primer je bil vcasih je veljal se stari drzavni koordinatni sistem, prenos z gps sprejemnikom posnetih tock v dks. Proces gre nekako takole:  Elipsoidne koordinate wgs84 (lng, lat) najprej pretvoris v 3d kartezicne koordinate. Potem se izvede 7 parametricna transformacija na drugo osnovo (drug elipsoid, 7 parametrov je dobljenih z izravnavo na podlagi znanih tock v obeh sistemih). Na tem mestu imamo 3d kartezicne koordinate na recimo bessel 1841 elipsoidu. Te potem pretvorimo v geografske nazaj (lat, lng) in te potem projiciramo.  Ce prav razumem te zanima tudi pretvorba geografske kartezicne. Slednje so v geodeziji redko uporabne direktno oziroma so zgolj del izracuna."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user je 11. apr 2017 ob 06:59 izjavil:Pri vseh merskih napakah (sploh pri opazovanju Sonca) nikoli ne bom prišla do te meje točnosti, pa tudi tektonske plošče se premikajo, posledično koordinate GPS in azimuti niso ravno konstante. In deklinacija je dva metra stran tudi drugačna (ter se še kar hitro spreminja s časom).   Premiki plošč so v WGS84 pretty much zanemarljivi (evropa cca 5 cm na leto), če uporabljaš za določitev lokacije kakršnokoli korekcijo (recimo da ti pride geodet zmerit z RTK GNSS instrumentom) pa nisi več na WGS84 elipsoidu ampak na ETRS89, ki je fiksiran na evropsko ploščo. Za tvoje potrebe uvrh glave ;) Pri razliki med severi pa ne bi bil tako zelo siguren, glede na to da je kot merjen od centra zemlje, mi pa nismo v centru zemlje. Še vedno majhna količina, ampak morda ne tako zanemarljiva (pozabil točno vrednost, zdej ne najdem). Še ena stvar, če boš merila vertikalni kot teleskopa(oz naprave za opazovanje sonca) od lokalne težiščnice (recimo temu linija vzporedna gravitacijskim silnicam v stojišču), le ta ne bo pravokotna na WGS84 elipsoid, ker masa znotraj zemlje ni enakomerno razporejena. Razlika je lokalnega značaja, model ekvipotencialne ploskve (z enakim potencialom sile gravitacije) je geoid. Najverjetneje lahko tudi to zanemariš."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Na 2 simple querya v postgisu:  SELECT degrees(ST_Azimuth(st_geographyfromtext('POINT (15 45)'), st_geographyfromtext('POINT (20 40)'))); Rezultat je 141.782350558387 stopinj, izračun je narejen na elipsoidu, ker so argumenti (2 točki) za funkcijo ST_Azimuth tipa geography  Če bi naredil takole: SELECT degrees(st_azimuth(st_geomfromtext('POINT (15 45)', 4326), st_geomfromtext('POINT (20 40)', 4326))); ...je rezultat 135, torej preprosti kartezični azimut, kar ni pravilno, čeprav sem kot argument pri kreiranju dveh točk specificiral kodo wgs84 datuma: 4326, kar pomeni da sem v teoriji dodelil tema točkama geografski crs na Wgs84 datumu, ampak ker je osnovni podatkovni tip teh točk še vedno geometry in ne geography, se vsi izračuni izvajajo v 2d ravnini, v zgornjem primeru pa na sferoidu, zato je rezultat zgoraj pravilen.  https://postgis.net/docs/ST_Azimuth.html  V dokumentaciji piše, da je rezultat kot med severom in izbrano točko. Gre za geografski sever, saj magnetni ali astronomski nista konstantna oziroma razlika kakršna pač že je, ni modelirana in je tu ni možno upoštevati. Ampak na začetku si itak napisala da iščeš azimut med geografskih severom in točko."
+    },
+    {
+        "role": "assistant_9",
+        "message": "OK mislim, da vem kaj želi @user narediti: določiti (zmeriti) vrednost magnetne deklinacije v poljubni točki. To je mogoče samo, ko je inštrument (magnetometer) usmerjen v: a) točko z znanimi koordinatami in je mogoče z znamimi koordinatami stojišča izračunati točen azimut (projekcijski) proti tej točki b) točko, ki se giblje po predvidljivi poti in je vidna od povsod (podnevi Sonce, ponoči pa lahko izbiraš zvezde)  V primeru a) je opazovalec precej omejen, saj je število izmerjenih točk omejeno, medtem ko bi v primeru b) bilo mogoče azimut dejansko izmeriti iz poljubne točke. V primeru a) bi moral biti Urošev postopek dovolj dober  V primeru b) je potrebno rešiti oz. oceniti nekaj dejavnikov: - inštrument je horizontiran (zanemarimo odklone težiščnice ipd.) - viziranje Sonca je ustrezno izvedeno (to je še najtežje in morda izvedljivo s kakšnim sky trackerjem) - merimo tudi vertikalni kot Sonca (deklinacijo) za samo za kontrolo - merimo čas in ga znamo pretvoriti v primerno obliko - imamo tabele oz. enačbo, ki nam omogoča izračun pozicije Sonca (azimut oz. čas, deklinacija) glede na naš položaj  Pri položaju oz. azimutu Sonca je srčika problema v tem, da moramo določiti dejanski lokalni sončni čas oz. razliko le tega od UTC časa, ki ga uporablja GPS. Dejansko je azimut Sonca potem lahko izražen s časom. Glede samega algoritma je morda rešitev tudi SunRelativePosition, samo ne vem ali je res dovolj natančen. So pa uporabljene enačbe Jean Meeus-a."
+    }
+]

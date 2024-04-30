@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "prevzel sem administracijo strežnika z windows 2003, ki je za routerjem.  problem pa je sledeč... (ime domene je spremenjeno)  tisti, ki je server administrial pred mano je za glavno domeno strežnika določil: aaa.bbb.domena.si ki, ima ip serverja: 192.168.1.10  lastniki bi radi srežnik uporablini ne samo kot lokalni strežnik ampak tudi kot strežnik za 4 različne domene vključno z www in mail ter se s tem znebili zunanjega gostiteljstva.  in zdaj...  dodam domeno: domena.si in vse A,MX,NS in ostale zapise... imenski strežniki ns1 in ns2 so že bili oddani v registracijo pri registrarju .si domene.  grem na arnesovo preverjanje imenskih strežnikov vpišem:  server: domena.si primary nameserver: ns1.domain.si  in dobim:   INFO: Preverjam SOA zapis za domena.si na domenskem strežniku ns1.domena.si\n\nINFO: SOA zapis za domena.si na domenskem strežniku ns1.domena.si:\n      domena.si ; domain\n      hostmaster.domena.si ; email\n      86400 ; expire\n      3600 ; minimum\n      aaa.bbb.domena.si ; origin <-------------------------------------\n      900 ; refresh\n      600 ; retry\n      139 ; serial\n\nOK: SOA zapis za domena.si na domenskem strežniku ns1.domena.si obstaja\n\n--------------------------------------------------------------------------------\nINFO: Preverjam NS zapise za domeno domena.si na domenskem strežniku ns1.domena.si\n\nINFO: NS zapisi za domeno domena.si na domenskem strežniku ns1.domena.si so:\n   ns2.domena.si ns1.domena.si aaa.bbb.domena.si\nINFO: Računalnik aaa.bbb.domena.si ima IP številke: 192.168.1.10\nINFO: Računalnik ns2.domena.si ima IP številke: 89.212.16.214\nINFO: Računalnik ns1.domena.si ima IP številke: 89.212.16.214\n\nOK: NS zapisi so v redu\n\n--------------------------------------------------------------------------------\nINFO: Preverjam vrednosti v SOA zapisu\n\nINFO: Sprememba primarnega domenskega strežnika ns1.domena.si -> aaa.bbb.domena.si\n  in tukaj je problen ker aaa.bbb.domena.si kaže na notranji ip 192.168.1.10  kako naj prepričam \"zunanji svet\" da je primarni domenski strežnik na domena.si (ki kaže na zunanji ip routerja) in ne aaa.bbb.domena.si, ki kaže na notranji ip strežnika.  (moderatorja prosim, da temo prestavi pod programska oprema->operacijki sistemi)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ja registrar naj vpiše zunanji ip kot dns strežnik za domeno ane. Kater registrar ti je sploh vpisal privatni IP ???"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ja registrar naj vpiše zunanji ip kot dns strežnik za domeno ane. Kater registrar ti je sploh vpisal privatni IP ??? Lokalni IP so verjetno vpisali sami kot A zapis.  Tega je potrebno spremeniti da bo zunanji, ter na routerju preusmeriti porte 80, 443, 25, 110, 53 oz. po potrebi na lokalni IP in zadeva bi morala špilat. Primarni domenski strežnik, kot sekundarni mora v arnesov register vpisati registrar. Pred vpisom ne pozabi vpisati NS in A zapise na lastnem domenskem strežniku. lp"
+    },
+    {
+        "role": "user",
+        "message": "@Sasos  registrar ni vpisal privatnega ipja.  IP za ns1.domena.si in ns2.domena.si je zunanji.  vendar ob testiranju arnesova skripta z ns1. prestavi na primarni naslov strežnika (kot vidiš na koncu izpisa dns testa), ki je aaa.bbb.domena.si (namesto, da bi primarni bil domena.si - zapuščina prejšnjega admina). primarna domena pa ima seveda kot že rečeno interni ip.  @assistant_1 tisto je že vse narejeno.  tudi, če v SOA zapis spravim še zunanji ip (tako, da ga dodelim strežniku in primarni domeni) vedno obvelja notranji ip :/"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jaz ne razumem, zakaj Arnes tako komplicira? Delajo tako kot vsi drugi slovenci -> Je*eš userje.  Zakaj jih sploh briga, če so usmerjeni na prave DNSje in če ti dejansko imajo zapise za to domeno? Potem pa moraš čakati od dveh to treh ur da ti domena sploh začne delovati (1x na dve ure preverijo pravilnost podatkov, 1x na dve ure pa nove domene vpišejo).  Pri .com/.net/... lahko po nakupu takoj spremenim DNS strežnike in domena bo v večini primerov že takoj delovala."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mi zaupaš ime domene? (lahko PM)."
+    },
+    {
+        "role": "user",
+        "message": "nvm sm zrihtu. vseeno hvala."
+    }
+]

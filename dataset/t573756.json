@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, danes sem na svoj Raspberry Pi priklopil LEDico ter še sistem 2 LEDic iz naglavne svetilke. Po nekaj časa odličnem delovanju, se je LEDici začela manjšati svetloba, ki jo je oddajala, ter nato popolnoma ugasnila. Sistem 2LEDic deluje še naprej. Kakšen nasvet kaj se dogaja ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "podatki ledic in napajanja?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Si to prklopo direkt na gpio ?"
+    },
+    {
+        "role": "user",
+        "message": "direkt ja, podatkov nimam ker sem jih našel na podstrešju, lahko pa z multimetrom kaj zmerim. Napajam preko RPija, ki je prikloplen na štrom pač iz utičnice"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kupi si gertboard ali nekaj vmes, ker ti gpioti niso mišljeni za to..."
+    },
+    {
+        "role": "user",
+        "message": "A naj dam kakšten upor umes, oz zvezem na tranzistor ter napajam preko 9V baterije?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne... Resno kupi si gertboard, ker ti bo bcm umro slej ko prej.."
+    },
+    {
+        "role": "user",
+        "message": "bcm ? kaj je to ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Glavni čip, iz katerega tečejo gpio porti.."
+    },
+    {
+        "role": "user",
+        "message": "aha scarry O.o a pol tranzistor nebo dovolj ? kaj pa z gertboardom spremenim ?"
+    },
+    {
+        "role": "user",
+        "message": "A tole lahko direkt priklopim na GPIO ? http://www.hobbyking.com/hobbyking/stor..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@hojnik  sicer ne vem, koliko zmorejo izhodi rpi-ja ampak za ledico pa mislim, da nebi smel biti problem"
+    },
+    {
+        "role": "assistant_1",
+        "message": "SoC v Rpi-ju je zelo občutljiva zadeva, zato obešat cel kup ledoc na njega ni glih dobra ideja... fyi rpi v originalu sploh ni meu gpio pinov, ampak so jih tekom proizvodnje pozabl odstranit ..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tudi tri ledice niso nič posebnega."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kje je najbolje kupiti gertboard?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 13. jul 2013 ob 15:11 izjavil:A tole lahko direkt priklopim na GPIO ? http://www.hobbyking.com/hobbyking/stor... Če je na vezju ULN2003LV, potem ja.  Pri ULN2003 se v PDF-u omenja le 5V. Glede na to, da je to le darlington tranzistor z upori na vhodu, bi lahko delovalo.  Možno je, da pri 3,3V ULN2003 ne zmore več preklapljati deklariranega toka.  Dovoljene obremenitve GPIO so razložene tu : To prevent excessive power dissipation in the chip, you should not source/sink more current from the pin than its programmed limit. So, if you have set the current capability to 2 mA, do not draw more than 2 mA from the pin.  Never demand that any output pin source or sink more than 16 mA.  Current sourced by the outputs is drawn from the 3.3 V supply, which can supply only 50 mA maximum. Consequently, the maximum you can source from all the GPIO outputs simultaneously is less than 50 mA."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 13. jul 2013 ob 21:50 izjavil:@user je 13. jul 2013 ob 15:11 izjavil:A tole lahko direkt priklopim na GPIO ? http://www.hobbyking.com/hobbyking/stor... Če je na vezju ULN2003LV, potem ja.  Pri ULN2003 se v PDF-u omenja le 5V. Glede na to, da je to le darlington tranzistor z upori na vhodu, bi lahko delovalo.  Možno je, da pri 3,3V ULN2003 ne zmore več preklapljati deklariranega toka.  Dovoljene obremenitve GPIO so razložene tu : To prevent excessive power dissipation in the chip, you should not source/sink more current from the pin than its programmed limit. So, if you have set the current capability to 2 mA, do not draw more than 2 mA from the pin.  Never demand that any output pin source or sink more than 16 mA.  Current sourced by the outputs is drawn from the 3.3 V supply, which can supply only 50 mA maximum. Consequently, the maximum you can source from all the GPIO outputs simultaneously is less than 50 mA.   Deklarirani tok O.o ? na ULN2003 bom priklopil 4 žičke za kontroliranje motorja, ter 2 iz baterije 5v za pogon motorjev. To naj bi delovalo ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "ULN2003 je omejen z močjo in tokom.  Na strani 11 poglej graf \"Maximum collector current vs duty cycle\". Če sta dva izhoda vedno vključena (100% duty) je tok posameznega izhoda lahko 300mA pri 85˙C temperaturi okolice   Glede na ta dokument, je upornost posameznega navitja pri tvojem koračniku 50ohm. Preklapljaš torej 5V/50ohm = 0,1A. Bi znalo delat tudi pri 3.3V krmilni napetosti.  Ne napajaj motorja in RPI iz istega 5V vira. Glede na to, da je padec Uce na ULN2003 0,9 - 1,1V @100mA, bi bilo ULN in motor bolje napajati s 6V."
+    },
+    {
+        "role": "user",
+        "message": "Hmm....samo jaz rabim 2 motorja. Bo za ziher preko baterije. 6v praviš ok. Zakaj pa ne z istega vira ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "RPI se napaja preko USB. Zanj rabiš napetost 5V+-5%. Možno je, da bo brez uporabe USB in HDMI RPI deloval tudi pri nižji napetosti. Višjih napetosi raje ne priklapljaj.  Kakršnakoli baterija ima razliko napetosti polna-prazna večjo od 5%.  Motor bo povzročal motnje in nihanje napajalne napetosti.  Če boš kdaj rabil navor pri višjih vrtljajih, boš rabil generator toka skozi navitja in več kot 5-6V."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 14. jul 2013 ob 10:18 izjavil:RPI se napaja preko USB. Zanj rabiš napetost 5V+-5%. Možno je, da bo brez uporabe USB in HDMI RPI deloval tudi pri nižji napetosti. Višjih napetosi raje ne priklapljaj.  Kakršnakoli baterija ima razliko napetosti polna-prazna večjo od 5%.  Motor bo povzročal motnje in nihanje napajalne napetosti.  Če boš kdaj rabil navor pri višjih vrtljajih, boš rabil generator toka skozi navitja in več kot 5-6V.   USB bom rabil za mrežno kartico. Aha potem rabim 5v baterijo za RPi ter 6V za motorja. Hvala"
+    },
+    {
+        "role": "assistant_3",
+        "message": "5V baterija ne obstaja.  Lahko imaš samo eno baterijo, vendar moraš napajanje za RPI stabilizirat na 5V +-5%.  Odvisno od verzije RPI je potrebno zagotoviti 0,3 - 0,7A + poraba priključenih naprav."
+    },
+    {
+        "role": "user",
+        "message": "A preko regulatorja bi delalo ? 6v baterija, direktno na mikrokotroler na RPi pa preko 5v regulatorja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "če da stvar res 5V ven, potem je kul..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 14. jul 2013 ob 14:57 izjavil:A preko regulatorja bi delalo ? 6v baterija, direktno na mikrokotroler na RPi pa preko 5v regulatorja.   6V baterija + 7805 = win  osebno bi pa dal raje 9V baterijo, da bo za ziher vedno nad 5V ali pa še bolje 7.2 (če ne rabiš prav veliko toka) http://www.ic-elect.si/b2c/7800/ic-l780..."
+    },
+    {
+        "role": "user",
+        "message": "Aha ok. A potem lahko dam kar navadno 9V baterijo ?  Se pravi moram narediti:  9V baterija preko 7805 spravim na 5V, ter iz tega napajam RPi ter oba ULN2003. Nerabim potem nobenih uporov ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 14. jul 2013 ob 17:13 izjavil:9V baterija preko 7805 spravim na 5V, ter iz tega napajam RPi ter oba ULN2003. Nerabim potem nobenih uporov ?  Uporov ne. Rabiš plan B.  Mogoče tudi nov RPI in gasilni aparat.  7805 je neustrezen. Na vhodu rabiš 3V višjo napetost, kot jo da na izhodu. Torej 8V pri prazni bateriji. Dva motorja bosta prispevala še cca 0,4A porabe. RPI + motorja = 0,7 - 1,1+A. Linearni stabilizator odvečno energijo spreminja v toploto. V tvojem primeru bi ga moral hladit. Izkoristek 7805 bo 0,6(prazna baterija), ali slabši (polna baterija).  9V (6LR61) ima 6x1,5V celice. Pri 1A porabe bi zdržala manj kot 15min. Prazna ima 5,4-6V. Zato boš v kombinaciji z 7805 stran metal napol polne baterije, ker bo napetost hitro padla pod zate uporabno vrednost.   Rabiš stikalni napajalnik in baterijo z več energije."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_3  Pa za kaj on sploh rabi zdaj napajanje??? Za RPi ali za motorje??? Ker jaz sem imel v mislih s 7805 napajanje za RPi, ker je on rekel, da rabi 5V."
+    },
+    {
+        "role": "user",
+        "message": "Napajanje potrebujem za RPi ter 2x za stepperja preko ULN2003.  Za baterijo mi je jasno da rabim kakšno tako kot kot je v RC avtih. Kupujem preko hobbykinga, sem si malo gledal pa sem dobil tole:  http://www.hobbyking.com/hobbyking/stor... z 7,4v.  Potem iz tega speljem na RPi ter na dva ULN2003ja. Ker oba rabita 5v pred razdeljevanjem zbijem voltažo na 5v preko stikalnega napajalnika ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja, saj se stepperja ne bosta napajala preko rpi-ja, right? Če rabiš 5V za rpi, ki ni velik load, je 7805 več, kot odlična rešitev. Gor pa daš nekaj od vsaj 6 (raje malo več) pa do recimo 7.4V, da ne daje preveč toplote in imaš 5V napajanje."
+    },
+    {
+        "role": "user",
+        "message": "motorja se napajata preko ULN2003, ki je povezan direktno na baterijo"
+    },
+    {
+        "role": "assistant_0",
+        "message": "potem pa odvisno, koliko motorja rabita. mogoče bi dal celo raje posebej pack za motorja, da ni motenj v napetosti za rpi."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če rabiš 5V za rpi, ki ni velik load, je 7805 več, kot odlična rešitev. Gor pa daš nekaj od vsaj 6 (raje malo več) pa do recimo 7.4V, da ne daje preveč toplote in imaš 5V napajanje. Vsaj 7 - 7.5 V rabis, da ti bo 7805 delal.  Uporabi raje LDO regulator, recimo LM2940CT-5.0, ki potrebuje od 6V do 26V za izhodno napetost 5V."
+    },
+    {
+        "role": "user",
+        "message": "Aha..rabil bi motor da bi mi takole nekako poganjalo:    A naj dam te regulatorje pred vsako izmed treh povezav (2x motor, RPi) ? a je dovolj če dam pred RPi ter pred obema motorjoma skupaj"
+    },
+    {
+        "role": "user",
+        "message": "A mislite da bi bila 2 taka motorja dobra: http://www.robotica.si/default.asp?pid=... ?"
+    },
+    {
+        "role": "user",
+        "message": "oziroma tole: https://www.sparkfun.com/products/9238"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_4 je 15. jul 2013 ob 07:42 izjavil:Če rabiš 5V za rpi, ki ni velik load, je 7805 več, kot odlična rešitev. Gor pa daš nekaj od vsaj 6 (raje malo več) pa do recimo 7.4V, da ne daje preveč toplote in imaš 5V napajanje. Vsaj 7 - 7.5 V rabis, da ti bo 7805 delal.  Uporabi raje LDO regulator, recimo LM2940CT-5.0, ki potrebuje od 6V do 26V za izhodno napetost 5V.   preizkušeno dela že malo nad 5V, max. 6V"
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa za 12 V motor: http://www.phidgets.com/products.php?ca... kupil bi pa preko: http://www.robotica.si/default.asp?pid=..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "preizkušeno dela že malo nad 5V, max. 6V  Dela ti točno tisti, ki si ga preizkusil. Če pa fašeš kak kos na zgornji meji, boš pa čudno gledal, zakaj dobiš nižjo napetost."
+    },
+    {
+        "role": "user",
+        "message": "Aha...sedaj razmišlam o 12 V motorju zato bom rabil večjo voltažo na bateriji. Iz baterije bom preko tega:  http://si.farnell.com/jsp/search/produc...  Speljal na RPi na USB priključek, en konec kabla bom odrezat ter pustil samo rdečo ter črno žico. Dobim 1 A izhodnega toka a bo to dost da mi bo RPi delal brezhibno + v USBju bo wifi kartica + enkrat v prihodnosti bom dodal še RPi kamero ?  Nato pa rabim z baterije speljati žice na dva driverja: http://www.adafruit.com/products/807 a to lahko dam direktno iz baterije ?  Da bosta kontrolirala z dva taka motorja: http://www.adafruit.com/products/324  A bo to delovalo ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_5 je 17. jul 2013 ob 08:30 izjavil:preizkušeno dela že malo nad 5V, max. 6V  Dela ti točno tisti, ki si ga preizkusil. Če pa fašeš kak kos na zgornji meji, boš pa čudno gledal, zakaj dobiš nižjo napetost.    Ne, samo gledal bom, kako ne bo delal, ne bom gledal, kako bom dobil nižjo napetost. Če nisi vedel, regulator deluje tako, da daje od sebe regulirano napetost (v tem primeru 5V) ali pa nič - se pravi, da se vklopi šele pri neki napetosti, ne pa, da viša napetost do nominalne."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Regulator, o katerem se govori (LM2940CT-5.0), se zbudi pri ~2,5V in od te vhodne napetosti dobiš izhodno napetost, ki je, dokler ni vhodna napetost dovolj visoka, enaka vhodni napetosti minus dropout napetost. Tako da do ~5,5V vhodne napetosti boš na izhodu imel napetost, nižjo od 5V."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_5 je 18. jul 2013 ob 11:46 izjavil:Regulator, o katerem se govori (LM2940CT-5.0), se zbudi pri ~2,5V in od te vhodne napetosti dobiš izhodno napetost, ki je, dokler ni vhodna napetost dovolj visoka, enaka vhodni napetosti minus dropout napetost. Tako da do ~5,5V vhodne napetosti boš na izhodu imel napetost, nižjo od 5V.   Škoda, da se ne govori o 2940 ampak o 7805...  Preden kaj odgovoriš nazaj:  Vsaj 7 - 7.5 V rabis, da ti bo 7805 delal."
+    },
+    {
+        "role": "assistant_6",
+        "message": "torej, gradis robota....tukaj ti je izkoristek najpomembnejsa stvar, saj hoces da je avtonomija kar se da najdaljsa. 7805 pozabi, ker je prepotraten oz. ni dovolj ucinkovit...poleg tega rabis visjo napetost, da ti jo zregulira na nizjo. Bolj predlagam uporabo NiMH baterij, ki imajo zelo veliko kapaciteto ... od 2Ah naprej. Za resitev bos rabil nekaj takega:  http://www.ti.com/lsds/ti/power-managem...  Naroci si sample in testiraj...bredboard je obvezna oprema. Prav tako je nujno potrebna uporaba powersave rutin in izklapljanje senzorjev/motorjev, takrat ko jih ne rabis. Prva naloga vsakega robota mora biti, da ima vedno na voljo zadosti energije, da se prifura do polnilca."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Škoda, da se ne govori o 2940 ampak o 7805... In? Še zmeraj se ti ne izklopi, ko ne more več dat 5V na izhodu, ampak dobiš pač nižjo napetost, kadar je vhodna napetostnižja od teh 7 - 7,5V."
+    },
+    {
+        "role": "user",
+        "message": "Za začetek mislim baterijo od akumulacijskega vrtalnika z 14 oz 12 V ter 1,5 Ah. Zato bom za RPi rabil LM2940CT-5.0 za L293D pa nek regulator da dobim 12V ko bo napetost višja.   A bo 5V GPIO na RPiju imel dovolj energije da bo poganjal dva L293D čipa ?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "L293D gre do 36V vhodne napetosti in ne rabiš regulirat na 12V, logično napajanje je pa 5V, to lahko priklopiš na isti regulator, kamor bo priključen RPi. Vhodni signali na L293D čipu so samo logični, tako da ni problema, ima RPi več kot dovolj moči za poganjat dva čipa."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 18. jul 2013 ob 19:51 izjavil:L293D gre do 36V vhodne napetosti in ne rabiš regulirat na 12V, logično napajanje je pa 5V, to lahko priklopiš na isti regulator, kamor bo priključen RPi. Vhodni signali na L293D čipu so samo logični, tako da ni problema, ima RPi več kot dovolj moči za poganjat dva čipa.   Aha..samo motor zahteva 12 V : http://www.adafruit.com/products/324#De... da ga nebom prekuril"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Lahko namesto L293D čipa uporabiš DRV8811 od texas instruments - ima PWM regulacijo toka, nastaviš na 350 mA in ne sme bit problema. In z 14V ga ne boš skuril, brez skrbi."
+    },
+    {
+        "role": "user",
+        "message": "Bom ostal pri L293D ker sem ju že naročil. Bom uzel 12V rezervno baterijo od akumulacijskega vrtalnika z 1,5 Ah...koliko časa bo to laufalo ? Kako pa naštimam da bo L293D na motor dal na motor največ 350mA da nebo šel motor v 3pm ?"
+    }
+]

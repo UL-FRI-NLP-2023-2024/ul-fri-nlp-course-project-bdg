@@ -1,0 +1,354 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Prebral sem si več tukajšnjih vodičev oziroma tem o postavljanju omrežji, nastavitvah..., vendar mi še vedno ne uspe vzpostaviti na prvi pogled relativno enostavne stvari (glej fotko za boljšo ponazoritev).  Rad bi imel dva sočasno delujoča routerja v dvostanovanjski hiši (na vsak router bo potem naprej priklopljen TV, receiver, računalnik...). Do podstrešja pride koaksialen kabel,ki gre v delilnik in naprej ena veja v obstoječi modem. Modem ima en Rj45 izhod, torej poenostavljeno en \"net\" izhod. Torej ta izhod sem z UTP kablom povezal s switchem. Iz switcha gresta dva UTP kabla vsak do svojega routerja in to je to.    Omrežje  Podatki glede naprav: - modem (1x) CISCO EPC3208  - router (2x) TP-LINK TL-WR1043ND - switch (1x) TP-LINK TL-SF1005D   Vsi kabli so novi (DG Cavel 113, UTP cat 6), prav tako vsi kabli preverjeno delujejo, prav tako kupljeni bojši konektorji, boljši delilnik za koaksialen kabel v skladu z nasvetom človeka, ki se profi ukvarja s tem... narejene tudi meritve signalov in vse štima (opravljeno, ko sem imel samo en router). Torej tud sedaj vsak router preko svojih kablov deluje brez problemov, ko ga priklopim posamično na modem (ne glede na to ali je vmes switch). Prav tako delujejo vsi TV preko koaksialnega kabla popolnoma nemoteno, super slika...   Skratka rad bi povedal, da \"fizično\" po mojem mnenju ni nič narobe, razen morda v napačnih napravah ali njihovih nastavitvah (možno tudi v vrstnem redu naprav ali napačnih povezav kablov...). Zadeva ne deluje niti, če kable iz switcha vtaknem direktno v LAN (ne WAN) - tako naj bi delovalo zgolj kot \"acess point\", saj naj bi novejši modemi sami preklopili v to vrsto delovanja ob vklopu \"dovodnega\" utp kabla v LAN.  Torej kaj mi svetujete? Predvidevam, da je potrebno spremenit nastavitve modema... vendar kako? Morda celo zamenjat modem ali pa povezat routerja zaporedno (toda v tem primeru sta \"soodvisna\", tega pa nočem)? Vsi nasveti dobrodošli.  PS: Ko priklopim oba routerja istočasno, modem dodeli IP samo enemu routerju (vidno pri nastavitvah pri kategoriji Network - WAN). Pri nastavitvah za Network - LAN sem namerno naredil tako, da vsak router dodeljuje v svojem določenem razponu drugačen ip napravam, ki se povežejo nanj (eden ima 192.168.3.1, drugi 192.168.2.1). Signal dobivam od Telemacha, sicer nobenih težav niti z telefonom, niti faksom... vse deluje odlično (tudi meritve hitrosti interneta super, zelo blizu teoretičnim vrednostim), razen ko hočem zadevo nadgraditi takole kot sem opisal..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Rad bi imel dva sočasno delujoča routerja v dvostanovanjski hiši (na vsak modem bo potem naprej priklopljen TV, receiver, računalnik...) Tu si mislil routerja ? Da gre tv preko routerja/stikala ni tako enostavno Amis TV komunikator za usmerjevalnikom .  Koliko wan ipjev lahko hkrati dodeli Telemach ? Ker sedaj kaže, da 2 (2 routerja) ne more.  Enega od obeh routerjev boš moral uporabiti za glavnega."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 18. jan 2016 ob 14:02 izjavil:Rad bi imel dva sočasno delujoča routerja v dvostanovanjski hiši (na vsak modem bo potem naprej priklopljen TV, receiver, računalnik...) Tu si mislil routerja ? Da gre tv preko routerja/stikala ni tako enostavno Amis TV komunikator za usmerjevalnikom .  Koliko wan ipjev lahko hkrati dodeli Telemach ? Ker sedaj kaže, da 2 (2 routerja) ne more.  Enega od obeh routerjev boš moral uporabiti za glavnega.   Da moja napaka - popravljeno (namesto modem je router).  Tv ni problem in ne gre preko routerja/stikala, direktno koaksialen kabel do TV ozrioma do digitalnega sprejemnika in iz njega hdmi do TV. To sploh ni problem. Sem napisal, da je koaksialni delilnik in iz tam naprej gredo koaksialni kabli do vsakega TV in do modema. Skratka TV ni vprašanje, super slika.  WAN IP - tole je zgleda problem, se pravi poklicat na Telemach in vprašat koliko wan ip lahko dodelijo... in če lahko torej samo enega, potem bom moral vezati routerja zaporedno??? Ali obstaja možnost, da tega ciscota (modem) nekako skonfiguriram???"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tudi jaz mislim, da imaš težavo z ponudnikom in ne tehniko na tvoji strani.  Pokliči helpdesk svojega providerja in zateži, da imaš dva računalnika (naloži, da nimaš routerjev), ki si ju priklopil na switch, pa da lahko delaš samo z enim na enkrat. Naj ti umaknejo omejitev zgolj enega javnega IP naslova in omogočijo uporabo dveh javnih naslovov.  Če bi moral za to 'opcijo' kaj doplačati, ti bodo pa že sami povedali."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Logiraj se v router, kjer se vzpostavi net povezava. Imaš tam izbrano za wan tip povezave \"dhcp\" ali \"static ip\" ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 18. jan 2016 ob 14:16 izjavil:Logiraj se v router, kjer se vzpostavi net povezava. Imaš tam izbrano za wan tip povezave \"dhcp\" ali \"static ip\" ?   Nastavitve pod Network WAN:   WAN Connection Type - dynamic IP  Nastavitve pod DHCP settings:  DHCP server - enable  @assistant_1 je 18. jan 2016 ob 14:11 izjavil:Tudi jaz mislim, da imaš težavo z ponudnikom in ne tehniko na tvoji strani.  Pokliči helpdesk svojega providerja in zateži, da imaš dva računalnika (naloži, da nimaš routerjev), ki si ju priklopil na switch, pa da lahko delaš samo z enim na enkrat. Naj ti umaknejo omejitev zgolj enega javnega IP naslova in omogočijo uporabo dveh javnih naslovov.  Če bi moral za to 'opcijo' kaj doplačati, ti bodo pa že sami povedali.   Se pravi zelo verjetno je potem pri telemachu v tem primeru \"problem\"? Zanimivo je, da ponujajo tudi nek drug modem, ki ima štiri izhode za \"net\" (mislim, da array proizvajalec). Torej da sta modem in router združena, če prav razumem? Torej če bi povezal 2 routerja na ta modem/router potem verjetno ne bi bilo težav ali pač?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 18. jan 2016 ob 14:19 izjavil:Se pravi zelo verjetno je potem pri telemachu v tem primeru \"problem\"? Zanimivo je, da ponujajo tudi nek drug modem, ki ima štiri izhode za \"net\" (mislim, da array proizvajalec). Tudi Cisco EPC3928S ima štiri izhode (uporabljam sam). Deluje kot modem/router in sem nanj že povezal en računalnik direktno in en dodaten router."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Odvisno od politike telemacha na njihovem kabelskem omrežju. Včasih so šli celo tako daleč, da so MAC adreso računalnika zapekli v tvoje nastavitve priključka in nisi mogel niti računalnika zamenjati, če ti oni niso brisali MAC adreso, ali pa jo nisi kloniral na drug računalnik oz. router, če si ga nabavil.  Pri tem 'modemu' o katerem govoriš, pa je spet vprašanje, če se ne gre za modem z integriranim routerjem. V tem primru bi bili tisti dodatni porti LAN in ne WAN porti. Kaj dejansko je to za ena naprava, preveri na helpdesku. Tudi če je modem z integriranim routerjem, se ga verjetno da nastaviti v bridge mode - vprašanje pa je spet, če ti bodo potem na tvojem priključku omogočili dve javni adresi preko DHCP. Lahko da bi bil na istem kot sedaj, le da nebi potreboval switcha.  Skratka potrebuješ možnost dveh javnih IP naslovov preko DHCP na svojem priključku (lahko tudi statičnih, vsekakor pa dva javna naslova)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "DPC/EPC3208 VoIP Cable Modem Note: To install more than one Ethernet device on a cable modem that has only one Ethernet port, use an external multi port Ethernet switch(s) or cable router (not provided).Postavitev bi torej že sedaj morala delovati."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 18. jan 2016 ob 14:35 izjavil:@user je 18. jan 2016 ob 14:19 izjavil:Se pravi zelo verjetno je potem pri telemachu v tem primeru \"problem\"? Zanimivo je, da ponujajo tudi nek drug modem, ki ima štiri izhode za \"net\" (mislim, da array proizvajalec). Tudi Cisco EPC3928S ima štiri izhode (uporabljam sam). Deluje kot modem/router in sem nanj že povezal en računalnik direktno in en dodaten router.   To je nek drugi modem očitno. Tisti, ki sem ga videl sam pri sosedu je imel štiri izhode razporejene v obliki kvadrata in zagotovo ni bil cisco. Super hvala za model. Torej na tega bi šla ziher dva routerja?  @assistant_2 je 18. jan 2016 ob 14:49 izjavil:DPC/EPC3208 VoIP Cable Modem Note: To install more than one Ethernet device on a cable modem that has only one Ethernet port, use an external multi port Ethernet switch(s) or cable router (not provided).Postavitev bi torej že sedaj morala delovati.   Tudi sam to razumem enako kot ti. Torej edini problem bi bil lahko v mojem switchu, ki pa ga ni. Saj posamično router deluje (če je priklopljen le eden). Switch pa tudi nima nobenih nastavitev... skratka nimaš kaj \"falit\", le priklopiš in to je to."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 18. jan 2016 ob 14:40 izjavil:Odvisno od politike telemacha na njihovem kabelskem omrežju. Včasih so šli celo tako daleč, da so MAC adreso računalnika zapekli v tvoje nastavitve priključka in nisi mogel niti računalnika zamenjati, če ti oni niso brisali MAC adreso, ali pa jo nisi kloniral na drug računalnik oz. router, če si ga nabavil.  Pri tem 'modemu' o katerem govoriš, pa je spet vprašanje, če se ne gre za modem z integriranim routerjem. V tem primru bi bili tisti dodatni porti LAN in ne WAN porti. Kaj dejansko je to za ena naprava, preveri na helpdesku. Tudi če je modem z integriranim routerjem, se ga verjetno da nastaviti v bridge mode - vprašanje pa je spet, če ti bodo potem na tvojem priključku omogočili dve javni adresi preko DHCP. Lahko da bi bil na istem kot sedaj, le da nebi potreboval switcha.  Skratka potrebuješ možnost dveh javnih IP naslovov preko DHCP na svojem priključku (lahko tudi statičnih, vsekakor pa dva javna naslova).   Mac adress sigurno več ne zapečejo. Vsaj pri meni ne. Edino pri d3go je omejitev za hkratno uporabo na 3 napravah, kjer pač greš na njihov portal in tam zbrišeš določeno število mac adress in potem spet funkcionira normalno.  Da, bil je modem z integriranim routerjem (imel je tudi dve antenci za wifi, samo signal je bil obup).  Hmmm se pravi ne bi nič pridobil v najslabšem primeru? Torej rabim dva javna IP-ja. Samo ni mi jasno, kako je lahko forumaš zgoraj imel hkrati na cisco modem z večimi ethernet izhodi priklopljen router in računalnik ter je delovalo. Mar to pomeni, da je imel torej dva javna IP-ja?  Moram poklicat na helpdesk in imeti tale forum pred seboj ;-)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 18. jan 2016 ob 14:49 izjavil:DPC/EPC3208 VoIP Cable Modem Note: To install more than one Ethernet device on a cable modem that has only one Ethernet port, use an external multi port Ethernet switch(s) or cable router (not provided).Postavitev bi torej že sedaj morala delovati.   Sem še enkrat šel gledat navodila in točno na 19 strani točka 4 to piše in tudi sam sem to že prebral, kot rečeno razumem enako kot ti. Zato sem tudi odprl temo, ker mi ni bilo jasno zakaj ne dodeli drugemu routerju IP. Pri tistem sosedovem modemu z več izhodi (integriran router) si lahko komot priklopil več kompov. A zgoraj forumaš pravi, da lahko priklopiš tudi router in komp hkrati? Torej če prav razumem v tem primeru sta dva javna IP?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Seveda lahko priklopiš...pri SIOLu, T-2,....   Pri Telemachu pa vsaj po defaultu očitno ne. Da se pa prepričaš, pokličeš na helpdesk in vprašaš: \"Ali lahko na moj priključek povežem dva računalnika brez da dam vmes router\"  Ta čas, bi to že 5x lahko preveril!"
+    },
+    {
+        "role": "user",
+        "message": "Sem že klical. Nihče ne dvigne, vsi operaterji so trenutno zasedeni... Čakam na povratni klic...  Hvala v vsakem primeru za nasvete."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 18. jan 2016 ob 17:08 izjavil:Sem že klical. Nihče ne dvigne, vsi operaterji so trenutno zasedeni... Uporabi spletni klepet in izberi tehnično pomoč. Odziv takoj."
+    },
+    {
+        "role": "user",
+        "message": "Torej informacije v zvezi z mojim opisanim problemom za vse uporabnike TELEMACH (morda komu koristi):  = telemach žal zagotavlja le 1 javni IP za končnega fizičnega uporabnika =  Sicer sem \"matral\" sogovornika na tehnični podpori, da je 3- krat šel po 10 min na posvet k višji podpori... ker so mu dajali neumne odgovore, da se me pač znebijo. Da je to odvisno od moje mrežne kartice in podobne oslarije... Seveda sem prebral tudi izrecen zapis iz navodil (zanimivo, da jih sploh nimajo?!), ki je zgoraj omenjen. Iz tega pač jasno izhaja, da ta modem to omogoča. Dobil sem tudi odgovor v stilu, da po enem kablu lahko dodelijo samo en javni IP in še marsikaj :-D Skratka na koncu sem dobil odgovor v stilu: \" to je pogojno možno, da se ročno naredi route v modemu... ampak z naše strani tega ne delamo nikjer... tudi poslovnim uporabnikom damo en javen IP, pa imamo za njih najbolj prilagodljive pakete...\". Kaj pomeni prvi stavek, noben ne zna pojasnit, dobil sem le jankovićevski odgovor: odgovor je enak prejšnjemu ;-)  Torej edina rešitev pri telemachu je (po mojem mnenju, verjetno pravilno): - zaporedna vezava routerja - še en router (povezan direkt iz modema in potem dva routerja povezana na ta router) => torej trije routerji   Vseeno hvala vsem za odgovore.  Moderatorja bi prosil, da v naslov teme doda besedo \"TELEMACH\". Morda tudi komu drugemu, ki je naročnik telemachovih storitev koristi tale tema."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zahtevaj drugi router recimo tega, ki ga imam jaz (4x lan port). Ni pa mi jasno zakaj bi sploh potreboval dva javna IP naslova.  Aja, pa ne potrebuješ treh routerjev - ta dva, ki ju imaš sedaj, poveži zaporedno pa bo ok."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če tisti telemachov modem ima integriran router in ponuja več portov za priključevanje naprav, ga lahko skonfiguriraš kot router (mogoče mora to naresti Telemach). Tako potem ne rabiš nabavljati še enega routerja.  Izza njega daš potem svoja dva routerja, ki gresta v svet preko Telemachovega, ki dela NAT za tvojo mrežo.  Da se izogneš dvojnemu NAT-u bi bilo nice, če bi lahko na svojih routerjih izklopil NAT in delal direktno z dvema podomrežjema in statičnimi routami.  Če Telemachov router podeljuje 192.168.111.xxx, daš na router LAN port 192.168.111.1/24. Na svojih dveh routerjih pa WAN skonfiguriraš statični IP 192.168.111.10 in 192.168.111.20 na drugemu. Na LAN strani pa oba svoja routerja nastaviš npr. na 10.0.1.1/24 in 10.0.2.1/24 na drugemu.  Nato samo še dodaš statične route na Telemachovem routerju: net 10.0.1.0/24 gw 192.168.111.10 net 10.0.2.0/24 gw 192.168.111.20  Če na svojih dveh routerjih še nastaviš 102.168.111.1 za default gateway in izklopiš NAT, lahko špilaš pingpong med obema mrežama. Ostalo pa potem filtriraš na firewall-u v routerju."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Da še malenkost optimiziraš stvar, pa lahko na obeh tvojih routerjih tudi dodaš statične route do mreže na drugem routerju (če ti je sploh v interesu, da bi med njima potekal kakšen promet).  R1: net 10.0.2.0/24 gw 192.168.111.20 R2: net 10.0.1.0/24 gw 192.168.111.10"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_1 je 18. jan 2016 ob 19:24 izjavil:Če tisti telemachov modem ima integriran router in ponuja več portov za priključevanje naprav, ga lahko skonfiguriraš kot router (mogoče mora to naresti Telemach). Delovanje kot router je privzeti način delovanja. Za bridge mode je potrebno klicati na Telemach.   @assistant_1 je 18. jan 2016 ob 19:24 izjavil:Nato samo še dodaš statične route na Telemachovem routerju: net 10.0.1.0/24 gw 192.168.111.10 net 10.0.2.0/24 gw 192.168.111.20 Ja pa ja. Ni to router s katerimi delaš. Moj modem je izjemno neumen - edina stvar je nastavitev LAN omrežja 192.168.xxx.yyy, maske in DHCP serverja (ki pa je spet izjemno neumen)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Stvar bi delala tudi, če bi na Telemachovem routerju imel le en port na voljo. Bi pa moral v tem primeru dati vmes switch.  Vsekakor pa je treba modem iz bridge prestaviti v router način delovanja.  @assistant_2 je 18. jan 2016 ob 19:32 izjavil:@assistant_1 je 18. jan 2016 ob 19:24 izjavil:Če tisti telemachov modem ima integriran router in ponuja več portov za priključevanje naprav, ga lahko skonfiguriraš kot router (mogoče mora to naresti Telemach). Delovanje kot router je privzeti način delovanja. Za bridge mode je potrebno klicati na Telemach.  @assistant_1 je 18. jan 2016 ob 19:24 izjavil:Nato samo še dodaš statične route na Telemachovem routerju: net 10.0.1.0/24 gw 192.168.111.10 net 10.0.2.0/24 gw 192.168.111.20 Ja pa ja. Ni to router s katerimi delaš. Moj modem je izjemno neumen - edina stvar je nastavitev LAN omrežja 192.168.xxx.yyy, maske in DHCP serverja (ki pa je spet izjemno neumen).  Si prepričan, da res ni možno dodati statične route? Presnet krš....  Če ta, ki ga imaš ne podpira dodajanja statičnih rout, se pozanimaj, če tisti 'novejši model' to omogoča. Ne vem pa, kakšno imajo politiko pri Telemachu glede te opreme, ali lahko kar tako zaprosiš za zamenjavo, ali imajo tu še kakšne druge fore..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Vseeno se prepričaj na helpdesku - mogoče je toliko 'neumen' samo na tvoji strani - da imaš 'user' meni, zadaj pa je na voljo še nek 'admin' meni, kjer lahko Telemach dodaja neke statične route (kar očitno neradi delajo...?)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "In kaj je sploh narobe, če bi oba routerja povezal lepo zaporedoma? V kolikor je to fizično mogoče (povezava s kabli morda ni možna). Delal bi se trojni NAT ampak za uporabnika to sploh ni pomembno.  Ja, jaz vidim samo 'user' menu. Od zadaj verjetno obstaja kaj bolj sofisticiranega - pri AMIS-u sem tam lahko marsikaj nastavil :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Saj teoretično bi lahko tudi postavil router za router, samo sprašujem se kakšen je smisel tega početja.  Kaj če bi malo razložil, kaj pravzaprav želiš doseči? Morda obstaja še kakšen drug način, na katerega morda nisi pomislil. Kaj imaš to za ene routerje in kakšen firmware imaš na njih?  Trojni NAT je vsekakor nepotreben, saj lahko daš Telemachov modem v bridge mode in se tako znebiš enega NAT-a."
+    },
+    {
+        "role": "assistant_0",
+        "message": "On bi pomoje rad imel ločeni lan omrežji (2 stanovanji), kar se reši z dvema vlanoma na routerju. 3 žične poveazve potem ostanejo proste za router1, četrta gre na switch v drug vlan (drugo stanovanje). Tako bi jaz rešil."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tko bom rekel, za najmanj zajebancij, ko ti ISP menja zadeva ali ti menjaš ISPja je pač fajn imeti en glavni gateway ruter.  Da ne omenjam da ti interna mreža ne deluje, če nimaš vseh naprav v isti \"glavni ruter\" priklopljenih.  Idealno je da imaš ta glavni ruter na mestu, kjer dobro pokriva z WiFijem, po potrebi na dodatno mesto napeleš še drugo Wifi napravco, sploh ni nujno da je ta ruter zraven modema."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 18. jan 2016 ob 20:06 izjavil:On bi pomoje rad imel ločeni lan omrežji (2 stanovanji), kar se reši z dvema vlanoma na routerju. 3 žične poveazve potem ostanejo proste za router1, četrta gre na switch v drug vlan (drugo stanovanje). Tako bi jaz rešil.  VLAN-i so ena od rešitev, ki se ponuja.  Problem je le v tem, da moraš imeti opremo, ki podpira VLAN-e.  Druga varianta je, da imaš router, na katerem lahko na vsak port skonfiguriraš svoj LAN. Ampak to pri 'home grade' routerjih nekako ni standard. Zato se tudi potem čara z VLAN-i, ki določene stvari zakomplicirajo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Saj ima svoj router TP-LINK TL-WR1043ND, tako da lahko to opravi."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 18. jan 2016 ob 20:27 izjavil:Saj ima svoj router TP-LINK TL-WR1043ND, tako da lahko to opravi.  Ampak ne s stock firmware, če se ne motim? Bo moral DD-WRT nabutat gor, pa še potem mu ostane samo metoda z VLAN-i, ker ne moreš 'razdreti' bridge med porti.  Ampak za 'domačo rabo', da sosedom odstopiš 'malo interneta', tudi to lahko zadošča. Če bi se šlo za kaj resnejšega (npr. internet za lokal, goste v penzionu,....) pa bi raje posegel po malenkost bolj fleksibilni rešitvi, pa četudi bi si jo na Ebay priboril na aukciji."
+    },
+    {
+        "role": "user",
+        "message": "Uf ste se pa razpisal, bom moral še enkrat vse točno prebrat.  Narediti hočem tako kot je napisal uporabnik ACDC. Zaporedna vezava ni smiselna (problem cevi - novo štemanje, velika razdalja cca 40 tekočih metrov po kotih sob, čez podstrešje... žal na krajnih točkah routerja). Zamenjavo modema mi odsvetujejo (v vsakem primeru bi plačal zamejavo, ker ni tehničnih napak z \"njigove strani\"). Tisti modem EPC 3928S s štirimi ethernet izhodi, ki ima integriran router, naj bi bil precej nestabilen in zato se tudi menda izogibajo postavitvi teh modemov. Tako preferijajo ta modem, ki ga imam sam in potem zraven ponudijo najem (2€) točno takega routerja ki ga imam sam (tp-link wr1043nd). Pred tem so ponujali \"zastonj\" (brez najema) router tp-link wr740n in še en podoben model, vendar ni bilo vedno ok (slaba moč wifi signala in podobno) in so dodali v ponudbo tisti zgornji modem z integriranim routerjem. Problem je nastal, ko si nanj priklopil nov router. Samodejno naj bi se resetiral, prekinjal Wifi... obstaja pa še en modem cisco EPC 3212 (nadgradnja mojega), a ta naj bi imel pa spet neke probleme podobno kot ravno opisane (resetiranje...) in je problem glede update-a firmware. Očitno je neka serijska napaka na ciscotovih firmware za te modeme. Tko, da ne bi ravno eksperimentiral, sem klical prijatelja in je vsaj delno potrdil navedeno. Dopuščam pač tudi možnost, da ti ciscotovi modemi niso \"baš nešto\" ali da niso ravno najbolj primerni, čeprav bojda recimo software in hardware za digitalne TV sprejemnike prav prilagojen za potrebe telemacha oziroma sbb (krovna firma).  Skratka, očitno bom dodal še en router, ki ga imam na zalogi in mu bom izklopil wifi (vsega kar ste napisali itak ne razumem v popolnosti in še malo študiram ;-). Bom pa poskusil tele predloge upoštevat in v nastavitvah kaj spremeniti. Sem bolj sam svoj mojster tip in se vedno znova kaj novega naučim :-D Drugače pa mislim, da bo super. Za povprečno 33€ /mesec 5 televizij (4 na analognih shemi, ena zaenkrat z digitalnim sprejemnikom/ ena od \"analognih\" itak direkt vezan na kompu in nosilcu, kjer lahko prek d3go gledam praktično vse kanale iz digitalne sheme + časovni zamik / ena od analognih imam android tv... spet d3go...). Kanalov sicer ni \"250\", a zame tistih 40 analognih in 80 digitalnih iz osnovnega paketa dovolj. Net 16/1 (dovolj zame, res ni 100/10 hehe), 1 telefonska cifra - naredil dvojček, da se lahko javiš, če ni sosedov (staršev), gor še faks za te stare obrtnike, ki se nočjo matrat z maili... Dve mreži torej, dokaj dobri routerji, priklopljeni printer, disk... Zame super. Odjavljena parica od telekoma, ni več nič s telekomom, tudi že prej net odjavljen od T-2... prišparal kakih 20 € na mesec po tamalem. Tudi kasneje, če ukinejo analogni signal ni panike - že predivden plan kako bom to rešil ;-)  Upam, da ta prosti spis še komu pomaga. Mogoče še kdo dobi kakšno idejo, kako čim bolj izkoristiti ponujeno, da ne plačuješ brez veze več kot je potrebno. Naj se borijo za nas, mar ne ;-) Mogoče pa kmalu tudi to glede števila javnih IP kmalu doživi spremembe... na misel mi pridejo pametne hiše, polno utp kablov, polno nekih naprav... mogoče je bolj varno imeti te naprave tudi tako \"ločene\" - zgolj razmišljanje, časi se spreminjajo kot pravimo.  V vsakem primeru pa ne verjeti vsega kar slišiš in probat povleči maksimum. Mirno lahko rečem, da dosti folka plačuje več kot bi lahko, če bi si malce pretegnili. Da ne omenjam, da dosti tistega kar plačujejo sploh ne znajo izkoristiti ali pa ne koristijo. Jaz pa sem se tudi nekaj novega naučil ;-)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 18. jan 2016 ob 19:24 izjavil:Če tisti telemachov modem ima integriran router in ponuja več portov za priključevanje naprav, ga lahko skonfiguriraš kot router (mogoče mora to naresti Telemach). Tako potem ne rabiš nabavljati še enega routerja.  Izza njega daš potem svoja dva routerja, ki gresta v svet preko Telemachovega, ki dela NAT za tvojo mrežo.  Da se izogneš dvojnemu NAT-u bi bilo nice, če bi lahko na svojih routerjih izklopil NAT in delal direktno z dvema podomrežjema in statičnimi routami.  Če Telemachov router podeljuje 192.168.111.xxx, daš na router LAN port 192.168.111.1/24. Na svojih dveh routerjih pa WAN skonfiguriraš statični IP 192.168.111.10 in 192.168.111.20 na drugemu. Na LAN strani pa oba svoja routerja nastaviš npr. na 10.0.1.1/24 in 10.0.2.1/24 na drugemu.  Nato samo še dodaš statične route na Telemachovem routerju: net 10.0.1.0/24 gw 192.168.111.10 net 10.0.2.0/24 gw 192.168.111.20  Če na svojih dveh routerjih še nastaviš 102.168.111.1 za default gateway in izklopiš NAT, lahko špilaš pingpong med obema mrežama. Ostalo pa potem filtriraš na firewall-u v routerju.   Torej če prav razumem je to smiselno narediti tudi v mojem primeru treh routerjev. Torej izklopim NAT - obe opciji v nastavitvah ? Glej fotko...  Torej moram spremeniti WAN conection type v \"static ip\" in potem v nastavitvah za LAN naštimam tako kot si napisal?   Pa to sploh bistveno vpliva na hitrost prenosa net-a? Ali je pač fora tudi v tem, da potem lahko iz ene mreže \"skočim\" na drugo in tam recimo printam na priklopljen printer na router?  @assistant_2 je 18. jan 2016 ob 19:32 izjavil:@assistant_1 je 18. jan 2016 ob 19:24 izjavil:Če tisti telemachov modem ima integriran router in ponuja več portov za priključevanje naprav, ga lahko skonfiguriraš kot router (mogoče mora to naresti Telemach). Delovanje kot router je privzeti način delovanja. Za bridge mode je potrebno klicati na Telemach.  @assistant_1 je 18. jan 2016 ob 19:24 izjavil:Nato samo še dodaš statične route na Telemachovem routerju: net 10.0.1.0/24 gw 192.168.111.10 net 10.0.2.0/24 gw 192.168.111.20 Ja pa ja. Ni to router s katerimi delaš. Moj modem je izjemno neumen - edina stvar je nastavitev LAN omrežja 192.168.xxx.yyy, maske in DHCP serverja (ki pa je spet izjemno neumen).   Ravno to sem vprašal glede bridge mode - in dobil odgovor \"nope\", da to oni ne počnejo.  Glede modema imaš potem verjetno isto kot jaz EPC3208 (morda 3212) - dejansko pač sploh ni nič za štimat. Izredno primitivno. Tudi username in password enostavno nima, nič ne rabiš vpisovat - itak ni nič pametnega za štimat..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 18. jan 2016 ob 19:37 izjavil:Vseeno se prepričaj na helpdesku - mogoče je toliko 'neumen' samo na tvoji strani - da imaš 'user' meni, zadaj pa je na voljo še nek 'admin' meni, kjer lahko Telemach dodaja neke statične route (kar očitno neradi delajo...?)   Tudi to sem vprašal in je rekel, da tega on ne ve... To mi je prišlo prvo na misel, ko sem videl, da se ne da na modemu praktično nič štimat. Se je pa itak zagovoril, ker je rekel da na višji podpori pravijo, da je to \"pogojno možno... bla bla in tega ne delajo\" - tako kot sem napisal.  @assistant_1 je 18. jan 2016 ob 20:24 izjavil:@assistant_0 je 18. jan 2016 ob 20:06 izjavil:On bi pomoje rad imel ločeni lan omrežji (2 stanovanji), kar se reši z dvema vlanoma na routerju. 3 žične poveazve potem ostanejo proste za router1, četrta gre na switch v drug vlan (drugo stanovanje). Tako bi jaz rešil.  VLAN-i so ena od rešitev, ki se ponuja.  Problem je le v tem, da moraš imeti opremo, ki podpira VLAN-e.  Druga varianta je, da imaš router, na katerem lahko na vsak port skonfiguriraš svoj LAN. Ampak to pri 'home grade' routerjih nekako ni standard. Zato se tudi potem čara z VLAN-i, ki določene stvari zakomplicirajo.   Tistega prvega predloga glede povezave ne razumem ravno najbolje... po moje itak ni Ok, ker je problem povezave med obema routerjema \"drugega reda\" (ruter takoj za modemom in potem ta dva bo po moje enostavneje).  Kako se sploh to naredi? Mislim, da na vsak port skonfiguriraš svoj LAN."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 18. jan 2016 ob 20:47 izjavil:@assistant_0 je 18. jan 2016 ob 20:27 izjavil:Saj ima svoj router TP-LINK TL-WR1043ND, tako da lahko to opravi.  Ampak ne s stock firmware, če se ne motim? Bo moral DD-WRT nabutat gor, pa še potem mu ostane samo metoda z VLAN-i, ker ne moreš 'razdreti' bridge med porti.  Ampak za 'domačo rabo', da sosedom odstopiš 'malo interneta', tudi to lahko zadošča. Če bi se šlo za kaj resnejšega (npr. internet za lokal, goste v penzionu,....) pa bi raje posegel po malenkost bolj fleksibilni rešitvi, pa četudi bi si jo na Ebay priboril na aukciji.   DD-WRT... ne bi se igral s tem, sem že nekaj gledal... preveč kompleksno. Torej bom rešil tako kot sem predvideval. Thx za vse komentarje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pri tvoji internetni hitrosti najbrž ne boš opazil neke razlike med vklopljenim in izklopljenim NAT-om. Izklop NAT-a služi prvenstveno temu, da lahko vsak računalnik iz vsakega omrežja komunicira z vsakim, brez da bi za to rabil dodajat port forwarding za vsako figo posebej. Ker nisi razložil namena segmentiranja omrežja, pa ne morem ocenjevati, ali ti bo to prav prišlo ali ne. Samo komuniciranje potem lahko še vedno omejiš z firewall pravili.  Drugače pa je 'za eksperimentiranje' takšen hec s tremi routerji čisto luštkana stvar. Se lahko kar nekaj naučiš.  Če pa stvar ni čisto eksperimentalna, ampak imaš na eni strani še neko obrt obešeno gor (si težje privoščiš nekajurni izpad...), pa bi vseeno posegel po eni malo bolj 'kompaktni', bolj profesionalni rešitvi, kjer bi za ROUTING imel samo eden router, ki naredi to, za kar zdaj čaraš s tremi, dva pa bi potem uporabil zgolj kot accesspointa in minimalistična switcha na obeh konceh omrežja.  Glede VLAN-ov na DD-WRT ti kaj bolj konkretnega ne morem reči, ker sam nimam nobenega routerja z DD-WRT. Na WatchGuardih, s katerimi jaz delam, je to trivialno, te naprave ki so za domačo rabo pa imajo problem, da so LAN porti med seboj povezani v bridge, ki ga ne moreš 'razdreti'. Tako potem tudi ne moreš reči, da naj bo na enem portu omrežje 191.168.xxx.xxx, na drugemu pa 10.0.xxx.xxx. Tudi ne moreš reči, da bo vsak port svoj VLAN trunk, pa da naj untagged promet na portu 1 pade v VLAN1, na portu 2 pa v VLAN2. Tako si omejen, da imaš na vseh portih vse VLAN-e, skratka en sam trunk bridgan na vse porte.  Zato moraš potem še na oddaljeni strani skonfigurirati routerja, da se povežeta eden na VLAN1, drugi pa na VLAN2, kar sicer nebi bilo potrebno, če 'home grade' oprema nebi bila tako silno poenostavljena (resno dvomim, da bi tisto vezje za porte toliko več stalo, če bi jih naredili kot samostojne, nepovezane v bridge)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 19. jan 2016 ob 12:13 izjavil:Pri tvoji internetni hitrosti najbrž ne boš opazil neke razlike med vklopljenim in izklopljenim NAT-om. Izklop NAT-a služi prvenstveno temu, da lahko vsak računalnik iz vsakega omrežja komunicira z vsakim, brez da bi za to rabil dodajat port forwarding za vsako figo posebej. Ker nisi razložil namena segmentiranja omrežja, pa ne morem ocenjevati, ali ti bo to prav prišlo ali ne. Samo komuniciranje potem lahko še vedno omejiš z firewall pravili.  Drugače pa je 'za eksperimentiranje' takšen hec s tremi routerji čisto luštkana stvar. Se lahko kar nekaj naučiš.  Če pa stvar ni čisto eksperimentalna, ampak imaš na eni strani še neko obrt obešeno gor (si težje privoščiš nekajurni izpad...), pa bi vseeno posegel po eni malo bolj 'kompaktni', bolj profesionalni rešitvi, kjer bi za ROUTING imel samo eden router, ki naredi to, za kar zdaj čaraš s tremi, dva pa bi potem uporabil zgolj kot accesspointa in minimalistična switcha na obeh konceh omrežja.  Glede VLAN-ov na DD-WRT ti kaj bolj konkretnega ne morem reči, ker sam nimam nobenega routerja z DD-WRT. Na WatchGuardih, s katerimi jaz delam, je to trivialno, te naprave ki so za domačo rabo pa imajo problem, da so LAN porti med seboj povezani v bridge, ki ga ne moreš 'razdreti'. Tako potem tudi ne moreš reči, da naj bo na enem portu omrežje 191.168.xxx.xxx, na drugemu pa 10.0.xxx.xxx. Tudi ne moreš reči, da bo vsak port svoj VLAN trunk, pa da naj untagged promet na portu 1 pade v VLAN1, na portu 2 pa v VLAN2. Tako si omejen, da imaš na vseh portih vse VLAN-e, skratka en sam trunk bridgan na vse porte.  Zato moraš potem še na oddaljeni strani skonfigurirati routerja, da se povežeta eden na VLAN1, drugi pa na VLAN2, kar sicer nebi bilo potrebno, če 'home grade' oprema nebi bila tako silno poenostavljena (resno dvomim, da bi tisto vezje za porte toliko več stalo, če bi jih naredili kot samostojne, nepovezane v bridge).   Thx za razlago.  Segmentiranje - dve mreži: ena zame, druga za starše (torej vsako stanovanje svoje). Wifi ne lovi dovolj dobro iz enega konca na drug konec. Plate kar masivne, dosti železa, veliko zidov, vmes še stopnice ... Na mojo mrežo bo priklopljeno več naprav preko kabla...  Ni sile glede obrti. Če prav razumem tista dva ruterja drugega reda bi bila acces pointa? A ni tako, da sam router prevzame tak \"mode\", če namesto v WAN dovodni kabel vtakneš v LAN? Se to lahko samo v nastavitvah naštima in kako (torej brez preklopanja kabla iz ene v drugo ethernet vtičnico)?  To glede bridganja in omejitev izhajajočih iz harware razumem v osnovi. Torej to velja tudi za moj Tp-link wr1043nd? kaj pa za router 3com WL-527? Tudi jasno mi je, da moraš na obeh straneh naštimati tako, da se pravilno poveže. Samo kako, pa ne ravno ;-) Bom moral še malo vse te nastavitve pregledati ;-)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ker nisi že v štartu povedal, da se gre za dva konca, ki si med seboj 'zaupata' in ti ni namen onemogočati določen promet med obema omrežjema, je večina zgoraj napisanega v bistvi zate nepotrebno kompliciranje in zadeve lahko komot narediš tudi bolj simplistične.  Točno tako, kot si povedal, dostop (kabel) iz 'internetnega routerja' (IR) vtakneš v LAN port na 'WiFi routerju' (WR) in na njemu izklopiš DHCP strežnik. Ta naj bo samo na IR vključen.   Če je LAN port na IR npr. 192.168.111.1, daš WR LAN na 192.168.111.2, če želiš dodati še kakšnega WR ali Accesspoint, jih daš na .3 in tako dalje. Da nebi prišlo do konfliktov, pa na IR nastaviš DHCP strežnik, da dodeljuje naslove npr. od 192.168.111.50 - 192.168.100 (na spodnjem delu območja pustiš dosti prostora za vse, čemur bi rad na roke nastavil IP naslov).  Potem samo še skonfiguriraš SSID-je na WR. Če nastaviš isti SSID+password na vseh Wifi dostopih, potem na svojih napravah ne rabiš dodajat dodatnih SSID-jev in prijav."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Torej to velja tudi za moj Tp-link wr1043nd? kaj pa za router 3com WL-527? Za wr1043nd se pozanimaj/vprašaj v njegovi temi: TP-Link TL-WR1043ND Pomoje se da z drugim fw.   Če imaš 2x wr1043nd, potem ga uporabi v drugem stanovanju kot AP (ali stari 3com WL-527) in odvečnega wr1043nd prodaj.   Vlane nastaviš samo na 1 routerju (tam kjer se poveže v internet ), potem iz prej določenega lan porta potegneš kabel do drugega stanovanja - tam lahko uporabiš switch oz drug router priklopljen v lan port, tako da bo deloval kot AP (wifi dostopna točka).  Tale dela do koraka 4 (STEP 4) to, kar bi ti rad, dve ločeni lan omrežji in da internet na obeh dela. https://code.google.com/p/tomato-sdhc-v...  @assistant_1 prodaja profi opremo, zato ti sedaj odgovarja tako podrobno in tehnično zapleteno."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tale dela do koraka 4 (STEP 4) to, kar bi ti rad, dve ločeni lan omrežji in da internet na obeh dela. https://code.google.com/p/tomato-sdhc-v...  Ali lahko na vseh HW platformah definiraš VLAN-e 'per port', kot je to prikazano v tistih navodilih na linku? Predpostavljam, da je to zelo odvisno od routerja do routerja?  S temi možnostmi, ki so v tem primeru prikazane, pa dejansko ne rabiš na drugem routerju imeti podpore za VLANe, saj bo ves promet (untagged) padel v tisti VLAN, ki si ga nalepil na določeni port."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ali lahko na vseh HW platformah definiraš VLAN-e 'per port', kot je to prikazano v tistih navodilih na linku? Zelo verjetno ne.   S temi možnostmi, ki so v tem primeru prikazane, pa dejansko ne rabiš na drugem routerju imeti podpore za VLANe, saj bo ves promet (untagged) padel v tisti VLAN, ki si ga nalepil na določeni port. Tako je, ena prednost neumne opreme.   fwji: openwrt, dd wrt in Gargoyle. Pri tem je potrebno pogledati katero HW verzijo routerja imaš https://wiki.openwrt.org/toh/tp-link/tl... ; HW v1.x , HW v2.x ali HW v3.x."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Torej so le začeli v home grade naprave vgrajevati vezja za porte, ki se jih da tudi ločeno krmiliti. Saj je že bil čas.   Čudi me edino to, da praktično noben stock firmware na teh routerjih nižjega ranga ne podpira VLANov. Kaj res ne znajo malo preplonkat, kako to dela OpenSource?!?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pomoje ni nočejo skakati v zelje, če tovrstno opcijo podpira dražja oprema. wrt54gl grade oprema je že skoraj prazgodovinska roba."
+    },
+    {
+        "role": "user",
+        "message": "No zdaj je pa vrag vzel šalo, do sedaj sem malo eksperimentiral  Namreč zadeva ne deluje s tremi routerji... pa bi morala... Zdaj pa prosim konkretno, kaj naj naredim? Spodaj je točen opis še enkrat in zraven slika.  SKICA    skica omrežja  Na podstrešju modem in nanj vezan router 1 (3com WL-527) in na ta router vezana dva routerja 2+3 (tp link wr1043nd) vsak v svojem stanovanju. Na vsak stanovanjski router vezan računalnik, receiver...  Torej preko računalnika lahko komot dostopam do vseh routerjev, le do modema ne (povezava med router 1 in modemom je očitno problem)?! Torej ne moreš surfat po netu, če tako povežem. Dovodne kable sem vse vtaknil v WAN, ker bi rad imel čim več prostih LAN vtičnic, da ne dajem še drugih naprav zraven.   Torej kako skonfigurirat zadevo? Po posameznih routerjih prosim kako nastavit. Moralo bi biti čisto simple, pa zgleda ni hmmmmmm  PS: še enkrat naprave vse delajo 100%, vsi kabli 100%... torej kako nastavit vse skupaj, kako nastavit acces point v nastavitvah, če je to potrebno... PS2: SSID in (wifi) pass je za vse routerje določen posebej (jaz hočem imet na svojem routerju samo svoje naprave, zato sem staršem kupil dodaten router in zaradi slabega signala), razn pri routerju 1 sem izklopil wifi, ker ga ne rabim. PS3:  router1 sem LAN določil na 192.168.1.1 router2 sem LAN določil na 192.168.2.1 router3 sem LAN določil na 192.168.3.1 do modema pridem, če nanj priklopim samo eden katerikoli router preko ip 192.168.100.1"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Moral bi jih dati v isto omrežje. Predvidevam, da si dal netmasko /24 oz. 255.255.255.0, s tem pa so zdaj vsi trije v različnih podomrežjih.  Nastavi jih na: router1 LAN na 192.168.1.1 router2 LAN na 192.168.1.2 router3 LAN na 192.168.1.3  DHCP server na router1 pa daj, da dodeljuje naslove od 192.168.1.50 do 192.168.1.100 Na ostalih preveri, da je DHCP server izklopljen.  Default gateway v omrežju pa bo router1, torej 192.168.1.1  Ko to popraviš, bo stvar že drugače izgledala. Ups... čakaj....nisem prebral do konca.... spregledal, da si se šel dvojni NAT, torej R1 priključil na WAN port na R2 in R3. To seveda potem izpade čisto drugače..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "V tem primeru, ko se greš povezat preko WAN porta, moraš imeti DHCP strežnik na R2 in R3 vključen, sicer odjemalci ne bodo dobili IP naslovov.  Lahko daš tako na R2 in R3 WAN kot statični IP naslov, lahko pa tudi dobita naslov, gateway in DNS posredovan od R1, če imaš na njemu vključen DHCP strežnik.  Vsak router mora streči DHCP naslove iz območja, ki si ga na njemu določil za LAN.  Po moje je bil problem pri tvoji postavitvi, da na R2 in R3 nisi imel DHCP strežnika vključenega. DHCP zahteva potem 'ponikne' računalnik pa se nastavi na tisto autoconfigure adreso in ne more nikamor."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja, če je dvojni NAT mora imeti DHCP tudi na 2 in 3.   A internetno povezavo ti vzpostavi 3com ruter in modem imaš v bridge načinu?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pomanjkljivost te tvoje variante je v tem, da iz računalnikov na R2 ne boš mogel kar tako dostopati do računalnikov na R3 (in obratno). Za vsako reč bi moral nastaviti port forwarding, kar pa spet postane težavno, če računalniki vsakič dobivajo drugo adreso z DHCP strežnika. Torej bi jih moral skonfigurirati statično ali pa na routerju dodajati DHCP rezervacije.  Skratka 'povezljivost' je bistveno slabša, kot v varianti, da bi kabel iz R1 vtaknil v LAN port. Šmenta, zmeraj je en port premalo na teh škatlah?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če ima modem dva izhoda, lahko ukineš 1 router.  Seveda moraš od ISPja dobiti 2 javna IPja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 19. jan 2016 ob 16:43 izjavil:Če ima modem dva izhoda, lahko ukineš 1 router.  Seveda moraš od ISPja dobiti 2 javna IPja.  Je že ugotovil, da ne more dobiti - Telemach"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Jaz tudi mislim, da je boljše narediti LAN, če želiš dostopati do naprav za obema ruterjema. Če pa bi rad ločeno omrežje potem je pa v redu tako kot je.  Za WAN porte se pa jaz ne bi sekiral, na tega TP Linka lahko, daš OpenWrt in WAN port nastaviš, da se uporablja kot navaden LAN. Mogoče že DD-WRT to omogoča.  Če nisi vešč OpenWrt-ja namesti Gargoyle, je tako enostaven, da bolj ne gre:  http://www.gargoyle-router.com/download... Wan Ethernet Port: Bridge To LAN"
+    },
+    {
+        "role": "assistant_5",
+        "message": "OK, nisem bral vsega ...  Opcije so:  1. Zamenjaj ISPja. Ni tako slaba ideja, če imaš možnost. Sklepam da si na koaksialnem kablu?  2. Če se morajo škatle v obeh stanovanjih videti, ukini končna routerja. Saj rabiš samo switch. Kupi 8 portni switch in prodaj routerja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 19. jan 2016 ob 16:48 izjavil:OK, nisem bral vsega ...  Opcije so:  1. Zamenjaj ISPja. Ni tako slaba ideja, če imaš možnost. Sklepam da si na koaksialnem kablu?  2. Če se morajo škatle v obeh stanovanjih videti, ukini končna routerja. Saj rabiš samo switch. Kupi 8 portni switch in prodaj routerja.  Potem pa ostane brez WiFi-ja"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Potem naj pa router uporabi kot switch. Konec debate.  Izklopiš DHCP in vklopiš uplink kabel v LAN port."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Router 2 in 3 priklopi v lan port, na obeh izklopi dhcp server, vklopljen naj bo samo na router1.  Ali ga izklopiš na router1 , router 2 in 3 priklopiš v lan port ter na obeh vklopiš dhcp server. router2 sem LAN določil na 192.168.2.1 ... potem naj dhcp server dela od 192.168.2.100 dalje router3 sem LAN določil na 192.168.3.1 ... potem naj dhcp server dela od 192.168.3.100 dalje   Če hočeš imeti trojni nat (ni absolutno nobene potrebe po tem), potem moraš za default gateway vpisati za router 2 in 3  ip routerja 1 (192.168.1.1).   + ne vem, zakaj se jajcaš z 3com WL-527 kot glavnim routerjem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 19. jan 2016 ob 17:18 izjavil:Potem naj pa router uporabi kot switch. Konec debate.  Izklopiš DHCP in vklopiš uplink kabel v LAN port.  To sem mu že prvotno nanizal, pa je hotel (zlo)rabiti še en dodatni (WAN) port...  Samo upam, da se OP zdaj ni čisto izgubil v vseh teh variantah. Če veš, kaj delaš, je vse čisto enostavno. Če se ti pa kaj preveč ne sanja, potem pa imaš hitro lahko kakšen problem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Saj ne ve točno, kaj dela."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 19. jan 2016 ob 17:36 izjavil:Saj ne ve točno, kaj dela.  Ampak če ne bo probal, se tudi ne bo nikoli naučil. Tako da se naj kar malo matra"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Drug fw, vlan, 5 minut dela. Trojni nat, uff, to bo še zanimivo."
+    },
+    {
+        "role": "user",
+        "message": "Res je, za nekoga 5 min za drugega lahko 5 dni - pri kakšni drugi stvari je pa lahko ravno obratno ;-) Točno tako, vaja dela mojstra in tudi to mi bo ratal brez skrbi. Mi je že kaj dosti težjega.  Skratka ta vezava izključno prek LAN portov mi je sedaj razumljiva (to sem že sam prej predlagal, ker sem tudi že na podoben način reševal zadeve). Moja napaka je bila pri nastavitvah za DHPC (imel sem vključeno na vseh treh, očitno ne bi smel).  Ampak mene matra ta druga varianta prek WAN porta, ker pač se rad matram in na routerju 3 rabim glih ta en port, pa še nekaj novega se bom naučil ;-) Torej spodaj vprašanja, glede gargoyle firmware... še nikoli nisem upgradel firmware na routerju..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 19. jan 2016 ob 16:47 izjavil:Jaz tudi mislim, da je boljše narediti LAN, če želiš dostopati do naprav za obema ruterjema. Če pa bi rad ločeno omrežje potem je pa v redu tako kot je.  Za WAN porte se pa jaz ne bi sekiral, na tega TP Linka lahko, daš OpenWrt in WAN port nastaviš, da se uporablja kot navaden LAN. Mogoče že DD-WRT to omogoča.  Če nisi vešč OpenWrt-ja namesti Gargoyle, je tako enostaven, da bolj ne gre:  http://www.gargoyle-router.com/download... Wan Ethernet Port: Bridge To LAN   Torej  1) grem v nastavitve SYSTEM TOOLS -> FIRMWARE UPGRADE -> FILE BROWSE in UPGRADE... je to to? 2) kateri .bin file točno na tej strani http://www.gargoyle-router.com/download... ? A je to \"končni\" file ali je to image, tako da ga moram mountat z deamon tools recimo in kakšne druge file potem izbrat v nastavitvah pri routerju?  3) potem v novem FW torej CONNECTION -> BASIC -> DEVICE CONFIGURATION -> CONFIGURE DEVICE AS -> WIRELESS BRIDGE/REPEATER -> WAN ETHERNET PORT -> BRIDGE TO LAN  Dodatno za točko 2): **imam črne barve tp-link wr1043nd - sodeč po tej strani od firmware drugega ponudnika https://wiki.openwrt.org/toh/tp-link/tl... verzija 2 ali 3, ki pa sta v bistvu enaki (\"Same HW as v2.x\" \"The hardware of the v3 is identical to the v2.\", neke zlo majhne razlike samo v firmware, če prav razumem je bil 2.1 v testni in so samo v firmware preimenoval poimenovanje verzije, skratka nepomembno - so pa posebej FW za vsako verzijo?!) **Kaj točno izberem pri kriterijih : FIRMWARE IMAGE (to zihr), arhtecture ... (to pojma nimam), branch... (to verjetno 1.8, ki ima \"stable\" oznako) in verzijo 18.1 ** potem so pa vedno 2 bin datoteki, ki mata v opisu tl-wr1043nd za verzijo v2: ...factory.bin in ...sysupgrade.bin - če prav razumem je prvi to kar že imam na routerju, drugi pa je ta od gargoyle varianta, kjer lahko WAN port spremenim v LAN port? ** kaj to pomeni \"WARNING: Do not attempt to preserve settings when upgrading from.. to... \"???"
+    },
+    {
+        "role": "user",
+        "message": "Vidim, da ni glih tako kot sem mislil, glede ... factory.bin in ...sysupgrade.bin:   Download Factory image if you want to install OpenWrt on router with OEM firmware. Download Upgrade image if you already have OpenWrt installed.  Se pravi moram ... factory.bin in šele kasneje ... sysupgrade.bin (če je sploh potrebno?).  Ker vidim, da se spoznate vas še tole vprašam pri openwrt:  Ne kapiram kaj je to branch => Stable (chaos calmer) ali Trunk (designated driver). Katero bi moral izbrat? Je to isto kot zgoraj stable/experimental?  V nastavitvah routerja sem našel: \"Hardware Version: WR1043 v2 00000000\" -> torej imam verzijo 2?  Cela znanost hehehe"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Vzameš factory.bin. Če boš kdaj kasneje nadgrajeval na novejšo verzijo pa vzameš sysupgrade.bin.  Uporabi stable verzijo, trunk je trenutna verzija v aktivnem razvoju, stable pa prejšnja, stabilna. Delata sicer obe a je stable kot že ime kaže bolj stabilna.  Imaš verzijo v2 ja.  Bodi zelo previden pri izbiranju datoteke in raje 2x preveri preden nameščaš, drugače bo kar nekaj več dela s popravljanjem."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Pa še na to kar si napisal zgoraj:  WARNING: Do not attempt to preserve settings when upgrading from.. to... To pomeni, da tam ko je pri posodabljanju kljukica, če želiš, da ohrani nastavitve, tisto kljukico odstraniš.  Gargoyle je pravzaprav zgolj drugi vmesnik za OpenWRT. Še ena od možnosti je Luci, ki je nameščen na navadnem OpenWRT firmwaru. Tam si pač moraš pakete, ki jih rabiš dodatno namestiti.  .bin je končni image file, ki ga namestiš na router."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Drži se Gargoyla, je veliko bolj simpl kot Luci."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No ja, odvisno od uporabnika :)"
+    },
+    {
+        "role": "user",
+        "message": "Thx.  Torej dal bom ta FW (stable, isti router, v2) : gargoyle_1.8.1-ar71xx-generic-tl-wr1043nd-v2-squashfs-factory.bin Opcijsko kasneje: gargoyle_1.8.1-ar71xx-generic-tl-wr1043nd-v2-squashfs-sysupgrade.bin  Samo še tole vprašanje;-) A lahko potem nazaj dam na tovarniški Firmware, če bi bilo kaj narobe, da ne bi delovalo?  Sodeč po nastavitvah v mojem routerju in na TP-link webpage-u gre verjetno za isti FM, ki je obkrožen na fotki? Gledam, če je slučajno možno, da bi samo upgrade naredil od TP-linka FW in da bi ta imel možnost spremembe WAN porta v LAN port...    Moj router    Tp link Firmware  PS: a tole so pa driverji, ki se inštalirajo direktno na računalnik? http://www.tp-link.com/en/download/TL-W..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Beri gargoyle faq &forum: https://www.gargoyle-router.com/wiki/do... https://www.gargoyle-router.com/phpbb/i...   Samo še tole vprašanje;-) A lahko potem nazaj dam na tovarniški Firmware, če bi bilo kaj narobe, da ne bi delovalo? google: tl wr1043nd back to original firmware  PS: a tole so pa driverji, ki se inštalirajo direktno na računalnik? Utility TL-WR1043ND_V2_USB Printer Controller_Utility_140613, TL-WR1043ND_V2_Easy Setup Assistant"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ne rabiš nobenih driverjev za računalnik."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Za vrnitev na original firmware pa beri tole: https://wiki.openwrt.org/toh/tp-link/tl..."
+    },
+    {
+        "role": "user",
+        "message": "Thx za odgovore. E, zdaj mi je jasno v čem je fora, ko določam IP in kdaj je to isto omrežje in kdaj podomrežja... Če bo še kdo rabil:  1)nadgradnja Firmware tp-link wifi router => http://www.tp-link.com/en/faq-688.html 2)konfiguracija tp-link wifi router kot brezžična dostopna točka => http://www.tp-link.com/en/FAQ-417.html  Upam samo, da bo tudi printer in disk delal na temu FW brez problemov. No če pa bodo problemi bomo pa reševali vojaka Ryana... ups vrnitev na stari FW od tp-linka hahahha  @assistant_0 je 19. jan 2016 ob 17:29 izjavil:  + ne vem, zakaj se jajcaš z 3com WL-527 kot glavnim routerjem.   Saj je razvidno iz konteksta ;-) Slab wifi ima, ki ga pa rabim v obeh stanovanjih... plus tega najslabši router in ne morem met printer ali disk prikloplen na podstrešju. No lahko bi imel, ni pa ravno funkcionalno. Fajn bi pa bilo, da pogruntam kako nares usb kabel recimo iz utp kabla... že nova naloga hehhe"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Od tega 3Com-a je najbrž še najslabši TpLink boljša izbira. In zakaj bi moralo biti to na podstrešju? Saj lahko potegneš kabel v stanovanje, pa imaš tam glavni router."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 20. jan 2016 ob 20:51 izjavil:Od tega 3Com-a je najbrž še najslabši TpLink boljša izbira. In zakaj bi moralo biti to na podstrešju? Saj lahko potegneš kabel v stanovanje, pa imaš tam glavni router.   Mah fora je v lokaciji teh dveh routerjev, totalno na različnih straneh obeh stanovanj (stanovanji nista po štukih, obe stanovanji imata dva štuka, sta \"eden do drugega\"). Telemech da samo en javni IP, njihov modem je na podstrešju... zaporedna vezava ne pride v poštev ob trenutnih lokacijah routerjev.  Ja vem ta 3com je slab (to je bolj za silo, toliko da sem se naučil vse skupaj). Zanima me, če postane ozko grlo pri net povezavi 16/1 (wifi je izklopljen, gre se samo za to, da imam wifi signal dober v obeh stanovanjih in lan porte v obeh stanovanjih) ?  Sem pa ugotovil, da wifi deluje bolje po upgrade firmware na najnovejšega tovarniškega - tako bi lahko odstranil ta 3 com. Morda bi celo na podstrešju imel en router tp-link direkt povezan do modema in bi pokril wifi eno stanovanje 1, potem pa iz njega povezava do switcha v stanovanju 1, ki bo na mestu tega predvidenega routerja 1 in drugi router 2 tp link pa ostane v mojem stanovanju 2."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Podstrešje: https://t-2.rula.net/viewtopic.php?f=7&... Svetujem, da če se le da, modeme in opremo ne montirate na podstrešju, zlasti na krajih kjer velikokrat pride do prenapetosti zaradi strele. Pravtako, če se le da ne vlecite utp kablov čez podstrejse v druge prostore, ker ko pride do naelektrenosti ozračja, UTP kabel to \"pobira\" in potem imamo skurjene tv vmesnike, switche, modeme in lahko vse kar je povezanao z UTP kabli.   Si pogledal deklarirano temperaturno območje delovanja routerja ? Ponavadi je med 0 in 40C, poleti bo gor sigurno več.    Operating Temperature: 0C~40C Operating Humidity: 10%~90% non-condensing"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 20. jan 2016 ob 15:08 izjavil:Za vrnitev na original firmware pa beri tole: https://wiki.openwrt.org/toh/tp-link/tl...   Sem našel stripped firmware, da ne bi počel tega sam.   Vidim,da se lahko vse naredi prek web browserja, samo ni mi jasno kaj naj bi pomenila \"varna varianta\" in kam naj bi vpisoval to: \"sysupgrade /tmp/tplink.bin\"? Pa kaj naj bi pomenilo komuniciranje z routerjem preko ssh (če flashanje zašteka)?  @assistant_0 je 20. jan 2016 ob 21:42 izjavil:Podstrešje: https://t-2.rula.net/viewtopic.php?f=7&... Svetujem, da če se le da, modeme in opremo ne montirate na podstrešju, zlasti na krajih kjer velikokrat pride do prenapetosti zaradi strele. Pravtako, če se le da ne vlecite utp kablov čez podstrejse v druge prostore, ker ko pride do naelektrenosti ozračja, UTP kabel to \"pobira\" in potem imamo skurjene tv vmesnike, switche, modeme in lahko vse kar je povezanao z UTP kabli.   Si pogledal deklarirano temperaturno območje delovanja routerja ? Ponavadi je med 0 in 40C, poleti bo gor sigurno več.    Operating Temperature: 0C~40C Operating Humidity: 10%~90% non-condensing   Nova streha, zračni sloj... veliko bolje kot prej... prej je bilo neznosno, sedaj je pa \"vroče\" še vedno, a daleč od prej. Modem recimo dela brez problemov. Vem glede teh opozoril, samo drugače pač ni šlo oziroma ne gre. Ne bom preštemaval zaradi teh kablov. Saj praktično vse je narejeno, samo še to se reši in čao.  Raje poglej te moje poste in še kaj svetuj ;-)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zakaj bi zdaj nazaj na TP Link fw šel?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 20. jan 2016 ob 21:58 izjavil:Zakaj bi zdaj nazaj na TP Link fw šel?   Saj nisem šel. Napisal sem v primeru, da ne bi delalo - torej da znam tudi nazaj it na stari FW, če kaj zašteka. Pač te stvari niso 100%, tko kot nobena druga ne. Še originalni FW zna delat probleme (meni sicer ne in super laufa, samo vidim po forumih, da je pri enih čisti polom). Berem malo zadeve in vidim, da je lahko recimo problem zmanjšanje hitrosti preko wifi, ko upgrajdaš FW na kakšen opensource FW in podobno... Saj ni problem zdaj 3 Mbps manj, samo če prepolovi pa ni glih fajn. To sedaj karikiram.   Daj prosim, če se ti da odgovori na moja vprašanja zgoraj v mojem zadnjem postu, da ne odkrivam tople vode, ker tukaj veste o teh stavreh precej več kot jaz.  Torej ta del: \"Vidim,da se lahko vse naredi prek web browserja, samo ni mi jasno kaj naj bi pomenila \"varna varianta\" in kam naj bi vpisoval to: \"sysupgrade /tmp/tplink.bin\"? Pa kaj naj bi pomenilo komuniciranje z routerjem preko ssh (če flashanje zašteka)?\""
+    },
+    {
+        "role": "user",
+        "message": "+ ali 3com-Wl-537 predstavlja ozko grlo glede prenosa podatkov? (wifi bo izklopljen, ga ne rabim in je itak dost slabši glede hitrosti prenosa, samo kako je pa z LAN/WAN porti? gledam manual in naj bi bilo enako le gigabitni port ni - \"Four LAN Status LEDs Green (100 Mbps link)\" \"Cable/DSL Status LED Green (100 Mbps link)\")  Se pravi, če bi recimo vzel telemachov paket 120/10 tole ni OK. Za mojo povezavo 16/1 je pa to čist ok. Imam prav?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Varna varianta je vnaprej pripravljen fimrware, ki ima odstranjenih prvih nekaj bytov, da se ga da normalno flashati na OpenWRT če se želiš vrniti na tovarniški firmware (kot tam piše ne smeš flashati firmwara, ki ima v imenu besedo BOOT, ker ti boš sesul router).   Moral boš malce več brati na OpenWRT straneh :)   Sysupgrade postopek je postopek nadgradnje pri novejših verzijah OpenWRT, torej najprej firmware preneseš na router (po možnosti v /tmp mapo) in nato izvedeš ta ukaz. Firmware lahko preneseš direktno iz spletne strani z ukazom \"wget\" ali pa preko SCP iz računalnika.   Na Windows lahko uporabiš program WINSCP za prenašanje firmwara in ostalega urejanja, za izvajanje ukazov (nadgradnja ipd.) pa je bolj praktičen Putty (terminal vmesnik). Sam uporabljam oboje.  Pri tem WL-537 je že vprašanje koliko ima sploh WAN -> LAN hitrost, ker obstaja zaradi starosti routerja velika možnost, da ti ne bi šlo niti do 50 Mbit, kaj šele do 100. Vprašanje je tudi, kako se bo zadeva obanašala pri P2P, ali bo tako obremenjena, da ti ne bo niti odpiralo spletnih strani, ali bo delalo normalno."
+    },
+    {
+        "role": "user",
+        "message": "ThX. Vsakič malo preberem in vsakič mi je več jasno :-D  Sem malo preračunal in ugotovil, da ta 3com router ni dober niti za 16/1 povezavo, ker je govora o Byte-ih. Tudi, če teoretično dela 100Mb/s je to 12,5 MB/S. Jaz pa imam torej 16 MB/S in torej torrente ne bo vleklo tako kot bi lahko. O jebemti...  Vsa ta štorija samo zaradi politike dodeljevanja enega javnega IP... bedno. Ja kako bo pa pri pametnih hišah, ko imaš ful enih naprav, ful enih kablov... pa bi recimo mel rad kaj ločeno... ne vse na enem IP... hmmmmm"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Dražji router reši večino problemov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Narobe si izračunal.  16 Mbit ti je v praksi tam nekje 1,8 MB v teoriji pa 1,9.  http://www.ibeast.com/content/tools/ban...  Za 16 MB/s bi teoretično rabil internet s hitrostjo 128 Mbit."
+    },
+    {
+        "role": "user",
+        "message": "Pa sem res zamočil. MB na telemachovi strani v bistvu pomeni Mb...  Hvala vsem za pomoč."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 21. jan 2016 ob 10:54 izjavil:ThX. Vsakič malo preberem in vsakič mi je več jasno :-D  Sem malo preračunal in ugotovil, da ta 3com router ni dober niti za 16/1 povezavo, ker je govora o Byte-ih. Tudi, če teoretično dela 100Mb/s je to 12,5 MB/S. Jaz pa imam torej 16 MB/S in torej torrente ne bo vleklo tako kot bi lahko. O jebemti...  Vsa ta štorija samo zaradi politike dodeljevanja enega javnega IP... bedno. Ja kako bo pa pri pametnih hišah, ko imaš ful enih naprav, ful enih kablov... pa bi recimo mel rad kaj ločeno... ne vse na enem IP... hmmmmm  100 mbit zmore 3com v lan -> lan kar zmore praktično vsak router , 100 mbit wan -> lan je druga zgodba.    @user je 21. jan 2016 ob 13:23 izjavil:Pa sem res zamočil. MB na telemachovi strani v bistvu pomeni Mb...  Hvala vsem za pomoč.  V mega bitih imajo napisano hitrost 1 bajt = 8 bitov"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 21. jan 2016 ob 13:34 izjavil: 100 mbit wan -> lan je druga zgodba.    Kako pa zdaj to??? Kateri podatek to pove, če gledam spec?  Zdaj malo testiram in mi ena stvar deluje nelogično. Recimo grem na speedtest in ni logično, da isti ruouter pri liniji 16/1 za kabel cat6 potegne skoraj teoretičnih 16/1 (dejansko 15,6), na cat5 pa maks 10/1 (dejansko 9,6)... konkretno wr1043nd v3???"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mogoče imaš narobe zvezan kabel, pa vleče samo 10Mbps?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 21. jan 2016 ob 15:06 izjavil:Mogoče imaš narobe zvezan kabel, pa vleče samo 10Mbps?   Ma če bi bil narobe zvezan pol sploh vlekel ne bi po moje? Evo poskusil na cat5 in celo 3com vleče več... nekaj drugega je."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Če vmes menjaš samo kabel, vse ostalo pa je isto potem ni ravno verjetno, da je težava v routerju."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 21. jan 2016 ob 15:23 izjavil:Če vmes menjaš samo kabel, vse ostalo pa je isto potem ni ravno verjetno, da je težava v routerju.   Kabel dela ali ne dela, malo čudno da bi delal 3/4 hmmm Kot da bi router sam preklopil med 10 in 100 mbps glede na to kater kabel dam notri.  Nema veze, to bom že zrihtal. Samo kot zanimivost. Hvala vsem za odgovore."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz imam podoben problem zato si bom sposodil temo :)  V praksi povezujemo več stanovanjsko hišo (5 enot) preko 1 naročnine na A1 in si delimo povezavo.  Torej imamo 1x A1 router/modem s 4 izhodnimi porti za 5 ločenih stan enot (IP routerje tukaj je 192.168.1.254):  -1. port povezan v D-Link (8 portni switch) -2, 3, 4 port povezani direktno no TV  Iz zgornjega 8 portnega switcha grejo 3 UTP ven v 3 druge switche D-Link (5 portne): - prvi switch naprej povezuje naprave (PC) direktno in pa 1 LynSis wifi route - drugi switch naprej povezuje naprave (PC) direktno in pa 1 TP-Link wifi router - tretji switch naprej povezuje samo 1 Tenda wifi router  Problem je seveda nastavitev wifi routerjev na koncu, da se ne bodo medseboj tepli.   Ali pri vseh izklopim DHCP server (in kabl vklopim v Lan porte) ter jim uredim skupno zaporedno številko 192.168.2.1 ali morajo biti tudi ip na routerjih zaporedni (npr prvi ima 2.1, drugi 2.2.,...)?   Hvala"
+    }
+]

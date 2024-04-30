@@ -1,0 +1,146 @@
+[
+    {
+        "role": "user",
+        "message": "Zasledil sem več tem, kjer so imeli uporabniki težave s predvajanjem zvoka na svojih surround zvočnikih. Večino jih muči, da pri predvajanju mp3-jev ne igra center zvočnik in pri filmih s surroun zvokom le tega ni. Zato sem se odločil, da spišem en krajši vodič za AC3Filter, kodek, ki ponavadi odprevi vse te težave.  Link do programa:  AC3Filter  Najprej naj pa še povem, da je treba vedno zapreti ac3fillter in ponovno zagnati predvajalnik (npr. media player,...), da bodo spremebme učinkovale.  No, ko je enkrat AC3filter inštaliran, se lahko lotimo posameznih nastavitev. Pred tem pa je treba poskrbeti, da je povsod v gonilnikih in windowsih nastavljeno na 5.1 surround zvočnike.    1. Zavihek \"Main\":  Tu je najbolje nastaviti samo \"Output\" in sicer v primeru Geniusovih HT zvočnikov je \"to 3/2+SW channel\". Dolby Surround in Prologic ne prideta v poštev, ker ne podpirata ločenega subwooferja. Ostale nastavitve tukaj niso pomembne.   2. Zavihek \"Mixer\":  Tu se skriva bistvo programa. Spodaj levo je drop meni, kjer se lahko shranjujejo različni profili, npr. za mp3, za filme z AC3 zvokom,... Vse pa se pravzprav nastavlja v polju \"Matrix\". To se deli na stolpce in vrstice. Stolpci predstavljajo vhodni signal (L,C,R,SL,SR,SW), vrstice pa izhodni signal (L',C',R',SL',SR',SW'). Če želimo, da določen izhod predvaja določen vhodni signal, v presečišče njune vrstice in stolpca vpišemo kolikšen delež tega signala bo le ta predvajal. Npr., da levi spr.zvočnik predvaja levi signal, vpišemo 1 (100%) v zgorno levo celico (1,1). Če želimo da isti zvok predvaja še zadnji levi zvočnik, vpišemo 1 v presečišče L in SL' (1,4). Ta primer je tudi na sliki:   Za predvajanje mp3-jev na vseh šestih zvočnikih je treba porazdeliti levi signal na leva dva, center in sub, desni signal pa na desna dva ter center in sub. To naredimo tako, da levi in zadnji levi zvočnik igrata 100% levega, desni in zadnji desni 100% desnega ter center in subwoofer 70% levega in 70% desnega signala. Pametno je seveda nastavitev tudi shraniti, da je ne vpisujmo vedno znova. Matrika pa izgleda takole:   Za Divx/Xvid filme, ki pa imajo AC3 zvok, je treba pa nastaviti vsakemu izhodu svoj vhod, saj AC3 vsebuje 6 ločenih kanalov. Matrika izgleda takole:    Možne so tudi varjante, ko predvajamo surround signal na stereo zvočnikih. Takrat pač naredimo ravno obratno in na en zvočnik obesimo po štiri signale.   3. Zavihek \"Gain\":  Tu ni kaj dosti za nastavljat, tako da ga kar pusti.   4. Zavihek \"System\":  Pod \"Use AC3Filter for...\" obkljukaš kar vse razen \"MPEG\" in \"PES\" ter \"DTS\", če se zanje uporablja drug kodek. En izmed takih je npr. nVidia DVD codec. Potem je treba, če še ni, v \"Filter merit\" izbrati \"Prefer AC3Filter\". Nastavitev \"Default audio render\" pa je poljubna od sistema do sistema. Najprej Izberi \"Direct sound\" in če dela v redu je ok, če pa ne, izberi \"Wave out\".   No, sedaj pa bi stvar morala deovati in upam da sem s tem pomagal spraviti v tek kakšen center, ki je do sedaj le nabiral prah."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Super članek, samo 2 sliki ne delata."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Bravo @user.. zelo dobro napisano. Vrjamem, da bo to marsikomu pomagalo.   Sam drugace uporabljam malo drugacno matriko, kjer imam za stereo zvok na center zvocnik 50% iz levega in desnega ter prav tako isto za sub woofer. V tem primeru je se signal enako mocno poslje na vse zvocnike. Prav tako za 6 kanalni zvok se dodam malo (0.2) centra k levemu in desnemu zvocniku, saj je pri filmih vecinoma govor na center zvocniku in mi bolj ugaja ce je se se govor malo slisi na levem in desnem. Drugace si lahko vsak s pomocjo matrix mikserja sam enostavno nastavi zvok kak mu najboljse ugaja.  Od nastetih nastavitev pa se uporabljam DRC v primeru ce je vhodni nivo zvoka prenizek torej ce je pretiho (ali v nekaterih primerih tudi preglasno). S pomocjo Gain/Delay pa sem tudi eksperimentiral z odmevom, ki sicer ni ravno uporaben v vecini primerov ampak je zanimiv.    BTW. Zakaj je bila ta tema premaknjena v \"Programsko opremo\" in ne v \"Zvok in Slika\", kjer je bolj primeren prostor za njo?"
+    },
+    {
+        "role": "user",
+        "message": "Moj namen je bil predstaviti način delovanja matrike v AC3Filtru z nekaj osnovnimi primeri, tako da bi lahko vsak, ki želi zastopil sistem. Obstajajo pa seveda razni triki in malenkosti, ki izboljšajo ter prilagodijo zvok željam in različnim sistemom. Zato so pa seveda obrodošli vsi predlogi in primeri, ki predlagam da se objavijo kar v obliki števislke matrike, recimo za moj drugi primer bi to izgledalo takole:  1 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 0   No, tukaj sta pa še ostali dve sliki:  druga:    in tretja:    Je pa še nekaj in sicer če se za en zvočnik uporabita dva signala s polno jakostjo (1), se lahko to odraža v preobremenitvi predojačevalca/zvočne kartice, kar se sliši kot močno popačem zvok. Tako da tam nekje do 2 x 0.7 na en izhod je še sprejemljivo, če pa se sliši pretiho je to najbolje potem pojačati kar na samem ojačevalcu/zvočnikih."
+    },
+    {
+        "role": "assistant_1",
+        "message": "No torej moja matrika za MP3 oz. 2 kanalni zvok nasplosno zgleda takole:   1   0   0   0   0   0\n0.5 0   0.5 0   0   0\n0   0   1   0   0   0\n1   0   0   0   0   0\n0   0   1   0   0   0  \n0.5 0   0.5 0   0   0  \n  Za 6 kanalni zvok pa takole:  1   0.2 0   0   0   0\n0   1   0   0   0   0\n0   0.2 1   0   0   0\n0   0   0   1   0   0\n0   0   0   0   1   0  \n0   0   0   0   0   1  \n  Zanimivo se je tudi igrati z negativnimi vrednostmi, ki pomenijo ce se ne motim inverzno fazo. Recimo moja \"echo\" matrika zgleda takole:    1   0   0   0   0   0\n 0.5 0   0.5 0   0   0\n 0   0  -1   0   0   0\n-1   0   0   0   0   0\n 0   0   1   0   0   0  \n 0.5 0   0.5 0   0   0  \n + delay (Gains/Delays) nastavljen na 150 milisekund za SL in SR (zadnja zvocnika).  Skoda da matrix mixer ne vgrajujejo v same gonilnike od zvocne kartice (vsaj SoundStorm ga nima)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "A to izboljsa volumen? Imam namrec nekako prepotiho z AC3filter. Zdaj pa rabim ffdshow."
+    },
+    {
+        "role": "assistant_1",
+        "message": "fahrenheit: Vklopi DRC in daj na 20 ce ti je pretiho. =)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Lepo napisano, ampak nič kaj novega nisi napisal, kar nebi bilo samoumevno, ker pri Divx itak samo igra 5.1 zvok, če nastaviš samo 2+3+1 v AC3 in za Winamp(mp3) tud dejansko nisi kaj nič prida pridobil, če dejansko režeš volumen ostalim zvočnikom saj 30% + 30% kar je rezano je skoraj enako kot tisko kar ne režeš na 5 zvočnikih.    Si pa pozabil napisat za probleme ki se lahko zgodijo ko tikaš ta AC3 filter, ker ponavad če tikaš to matrix-o se zgodi, da začne ac3 filter zajebavat pri filmih, ali pa ko tikaš mixer in višaš vhodne kanale na zvočnike, ti preprosto neha delovat, tolk je tega tukaj za spisat, sam ura je pozna, pa ni ravno bistra glava"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ah kaj bi zdaj dlakocepili. Itak pa jaz samo pri eax tool-u vključim CMSS 3D upmix v 2x stereo in je isto. Za tiste ki pa nimajo te možnosti je pa super članek. Samo mislim da imaš manj težav če v programu samo kljukico daš in imaš."
+    },
+    {
+        "role": "user",
+        "message": "Vem, da nisem napisal nič novega za nekoga, ki ve kako se temu streže, za marsikoga je pa to španska vas. In slednjim sem poskušal vsaj malo osvetliti te zadeve. Meni pač niso ugajale default nastavitve in sem si jih prilagodil po svojih željah. In pa nekoga, ki se prvič srečuje s tem nisem hotel zamoriti z raznimi bugi in napakami v programu. Če bo kogar koli kaj mučilo v zvezi s tem, naj kar tukaj vpraša.   Aja, pa tam za mp3-je sem dal po 2x0.7 za sub in center, ker mi je pri 2x1 močno popačilo zvok. Če je pa 2x0.7 pretiho, se pač potem nastavi glasnost centra/suba v gonilnikih ali na zvočnik samih na željeno raven. In mislim da tako nič ne porežeš, le dosežeš da center predvaja malo bolj glasno (na nivoju posameznih ostalih zvočnikv) tisto kar je enako zapisano na obeh kanalih pri stereo. To pa je ponavadi govor ali vokal. Nekaj podobnega se doseže tudi z Dolby Prologic II.   Pri filmih pa tudi nastaviš po želji. Meni najbolj ustreza da so kanali ločeni in imajo jakost tako kot v originalnem zapisu. Posamezne delaye in take stvari je pa najbolja nastaviti potem, ko enkrat slišiš, kako zveni stvar v osnovi.  Najlaže je narediti tako kot je napisal @assistant_0, ampak večina gonilnikov, vsaj za malo starejše kartice, nima teh možnosti. In pa 2xstereo ponavadi ne vključuje centra, tako da si potem spet na istem. Jaz zato za večino signalov uporabljam kar SPDIF in vse potweakam potem na receiverju. Ampak za razne igre in eksotične surround zapise pa SPDIF tudi ni in je treba uporabit analogno povezavo med PC-jem in receiverjem, kjer pa spet pride v poštev AC3Filter.   [BI pa še prosil moderatorja, če lahko drugo sliko v prvem postu zamenja s  tole.]"
+    },
+    {
+        "role": "assistant_4",
+        "message": "zdaj delajo vse slike, pa tudi drugo sliko v prvem postu sem zamenjal. hvala za prispevek k skupnosti."
+    },
+    {
+        "role": "assistant_5",
+        "message": "js sm to use probal.... use kombinacije.. nč mam logitech X 530 zvočnike, zvočno 5.1 in sm dau use možne drajvrje, mam program Creative sorround Mixer sam je možnost sam slusalke, 2 zvocnika in 4.. kko bi dubu se 5.1. Vem da enx sm meu to naštiman.. sam sm use zbrisu pa ni več tga.. drajvrje sm dau že 100 ih da je še zmer isto.. center mi ne dela pa levi zadnji zvočnik tud ne .. a ve kdo kje bi bil progrma creative soround mixer 5.1 ? plis help"
+    },
+    {
+        "role": "assistant_6",
+        "message": "ej, a lohk kdo men pove kak naj mam naštiman za najboljše predvajanje filmov prek digitalnega izhoda na zunanji dekoder (5500) ki itak sam kodira pol v DPLII. trenutno mam output naštiman na stereo in PCM 24bit (niti sanja se mi ne kaj bi to bilo), sam sem spreminjal razne opcije, pa nisem opazil nobene razlike.  sicer pa če maš creativove driverje, nikol ni problema pri igranju muzike na vseh zvočnikih, maš pač CMSS."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6, ti itak preko spdif pošiljaš in te tam ti te nastavitve nič ne afektirajo. kolkor pač zunanji dekoder sam spremeni.. sicer pa naštelaj na spdif."
+    },
+    {
+        "role": "assistant_6",
+        "message": "aha, tam mam jst pod output \"SPDIF (disabled)\" če mam tam klukico to pomen da mam spdif on al off."
+    },
+    {
+        "role": "assistant_5",
+        "message": "zadnji zvocnik mi dela .. sam center še zmer ne .. kle pr ac3 filtru če dam na 24bit zvok dela normalno če dam pa FLAT pa kr šumi zvok"
+    },
+    {
+        "role": "assistant_7",
+        "message": "najnovejši beta ac3 je pa tukaj  ac3 download je pa 1.01 test 8"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Meni tudi ni jasno to z spdif out, pri o,70 si lahko za dolby prologic itd dal se moznost spdif out. Tukaj pa je pod tem menijem doli na prvi strani okence kjer lahko obkljukas spdif pa v oklepaju pise (disabled). Kaj zaj to pomenil Ce tam not ne naredis kljukice gre torej avtomatsko preko spdif out ?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "vse lepo in prov sm naštimov, sam še neki me zanima. Kako nej naštimam winamp da mi bodo stereo mp3-ji na 5 .1 delal oz kaj morm naštimat da mi winamp uporablja ac3filter za dekodiranje mp3jev? kje more bit kljukica v ac3filtru da mi on dekodira mp3je? pod pcm? pa tm pri spdif passtrough ? kaj pa tm na prvi strani v ac3filtru k maš spdif(disebled) mora bit kljuka al ne? zvočno mam pa sb live bulk pol sm pa še kabl za spdif dokupu. Hvala za pomoč"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Tudi jaz imam težave z WinAmp mp3. Vsi predlogi so dobrodošli."
+    },
+    {
+        "role": "assistant_11",
+        "message": "uporaben članek, kaj pa za dvje? ker meni center sploh ne dela."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Jst sem svojo težavo z WinAmpom rešu z temle  pluginom. Tko se rešiš preklapljanja med različnimi nastavitavami AC3 filtra.  Zanima me, če se da nastavljat tudi glasnost s katero predvaja določen zvočnik. Zame sta moja zadnja zvočnika namreč pretiha. Če to probam popravit v Control Panel\\Sounds and audio devices\\Volume\\Advanced to povzroči šumenje(tišina med komadi) sprednjih zvočnikov, saj moram za enako glasnost kot prej jakost zvoka na glavnem gumbu močno povečat."
+    },
+    {
+        "role": "assistant_13",
+        "message": "hja men tudi tale plugin ni pomagal (vse kar je naredil je bilo to da sem poslušal tišino)  Probal sem že vse nastavitve pa mi center še zdaj ne dela (msilim tudi da imam napako pri ac3filtru - saj mi v zavihku Mixer pod okvirček Output piše Input: UNKNOWN) Zvočno kartico imam pa od Creativa Sound Blaster Live (digital)  Morda kdo pozna rešitev?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Programsko je ni, sožalje. Sm probu vse kar se probati da, pa mi v winampu ni uspelo zrihtati centra. Sm probu vse plugine, najbolj zanimiv je bil tisti, ko ti musko vrti v krogu, s centrom vred. Pri vseh ostalih pluginih je bil center mrtev.  Pri svojih geniusih home SW5.1 sem rešil problem tako da sem dal na izhodu zvočne kartice za levi in desni zvočnik stereo razdelilec. Nato sem en kanal spelu na tv vhod. Preklopiš še gumb za tv vhod. Zanimivost je pa to da ti sistem sam podpira surround. Kar pomeni da ti potem delujejo vsi zvočniki s centrom in subom."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Svizy ti si car! Tvoj plugin deluje! Se vidi da je nov, ker ko sem se jaz s tem drku približno leto nazaj, tega še ni bilo(ali sem ga spregledal??!), ker sem resnično probal čisto vse plugine kar sem jih dobil na internetu. Tako da moja rešitev zgoraj ni potrebna, lahko pa jo vseeno probate, ni slaba....:)"
+    },
+    {
+        "role": "assistant_15",
+        "message": "hvala"
+    },
+    {
+        "role": "assistant_16",
+        "message": "No jaz pa imam probleme s CAMBRIDGE SOUNDWORKS 4.1 zvocniki. Namrec na Media Player Classic in s temi zvocniki so zadnji par mrtvi.  Po navodilih na uradni strani AC3 filtra sem nastimal MPC a so zadnji zvocniki mrtvi. Help most wanted."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Ok eno par noob vprašanj.  Mam nastavlen v AC3 po zgornjih mp3 nastavitvah. (sejvan, applyan, exitan, restartan player in ac3 config)  Mam instaliran ffdshow in AC3 filter in toj to. Uporabljam winamp 2.64 za audio in bsplayer za video.  Plata je epox 8rda+ ki podpira kvazi 5.1 (mic in line in).   V filmih ki so eksplicitno AC3 posneti delajo vsi zvocniki. (se vidi v NVmixerju)  Ostalo vse dela samo na 2 zvocnika oz ce vklopim v nvmixerju clone celo 4 je.  Kaj delam narobe?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Am a bi loh še men kdo pumagu. zdei men ne dela woofer... od kar mam take nastavitve... pa me zanima kake nastavitve morm met da bo delu tut woofer... zvočnike mam pa Genius SW-HF5.1 5000 pa so tut AC3 ready."
+    },
+    {
+        "role": "user",
+        "message": "Za @assistant_17ov problem, ki ga je najbž že rešil, je najverjetneje potrebno izbrati \"use ac3filter for pcm\". Le v tem primeru se uporablja ac3filter za wav, mp3,... zvoke. Izbrati je potrebno še \"prefer ac3filter...\", da se v nastavitve ne vmešavajo drugi kodeki. Prav tako mora biti tedaj matrika druga kot za ac3, kajti izvor sta samo dva kanala (L in D).  @scooby: A v softweru od zvočne kartice in drugače ti woofer dela? Kar se pa tiče wooferja in matrik v AC3Filtru je pa odvisno od izvora zvoka. Če je to ac3, je LFE->1->LFE' če pa stereo mp3 ali wav, pa L->0.707->LFE' in R->0.707->LFE'. V prvem primeru igra woofer svoj kanal, v drugem pa vsoto za 3 dB zmanjšanih prednjih kanalov, kar znese ravno prav basov za en kanal."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Pozdravljeni,  Jaz sem naredil vse kot je pisalo čisto zgoraj( za AC3 filter) pa mi center še vedno ne dela. Če še ima kdo kakšen nasvet ga prosim naj napiše.  LP  Martin"
+    },
+    {
+        "role": "assistant_20",
+        "message": "Tudi meni ne deluje pa sem probal več matric in tudi v wave načinu... kaj še mi ostane?  Hvala"
+    },
+    {
+        "role": "assistant_21",
+        "message": "zdravo! meni ne delujejo genius zvočniki 5.1. (oni lesenkoti za 100evrov). in sicer delata mi samo stereo in subwoofer.nedelata pa stranska in center. probal sem ze ta ac3filter pa ni razlike! zvocnike sem ze dal na servis z njimi ni nic narobe + tega pa v testerju (v windowsu visti) ce klikam posamic al pa dam skupi da use predvaja usi delajo! v windows media playerju pa winampu pa bsplajerju pa samo stereo pa center! wtf?  nevem kaj naj se probam bi pa res rad da bi delalo.  ima kdo kaj ideje ko se spozna?"
+    },
+    {
+        "role": "assistant_20",
+        "message": "Če imaš genius potem 5000 potem lahko zvočnike priklopiš na računalnik normalno kot stereo zvočnike, s tem da na wooferju ne priklopiš kot 5.1 ampak izbereš en od treh kanalov zraven 5.1 inputa ... Zvočniki ti bodo sami zvok razporedili na vse zvočnike, tudi na center. Ko vklopiš zvočnike avtomatsko predvaja 5.1 vhod, zato moraš menjat kanal na tisti, na katerega si pc priklopil(lahko tudi kaj druga) z štirimi gumbi na sprednji strani."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Zanimivo, sem mel enake probleme na Sound Blaster Live 5.1. In sem potem enkrat sprobal zvočno na plati... ALC 888. Hvala bogu, na SW od zvočne nastaviš število kanalov in vse špila na Geniusih. Creative je gnoj glede gonilnikov."
+    },
+    {
+        "role": "assistant_23",
+        "message": "Tudi sam sem naletel na težave pri svojih Creative GigaWorks S750 7.1 zvočnikih in Creative SB X-Fi kartico. DVD filmi v PowerDVD-ju delujejo zvokovno odlično, tudi DTS muziko je luxus poslušat, probleme pa imam pri mp3-jih in bolj ko ne vseh DivX filmih, kjer delujejo samo woofer in sprednja dva satelita. V WinAmpu sem si naložil 2 plug-ina, s katerima sem problem rešil, v WMP pa zadeve ne znam rešit sploh. Spreminjanje ac3 nastavitev ni nič pomagalo."
+    }
+]

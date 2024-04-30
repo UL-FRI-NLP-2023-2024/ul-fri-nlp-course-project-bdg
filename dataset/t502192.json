@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdrav V službi morem izdelat več nivojsko aplikacijo. Do sedaj sem izdelav aplikacije za več nivojev uporabnikov (admin, urejevalec, samo pregled podatkov,...) in sem jih razvrščal v skupine največ 4, vsaka skupina je bila označena z določenim znakom (A,B,C,D) in nato sem dodelil privilegije za posamezen znak. Sedaj bi rad naredil da bi imeli uporabniki določene pravice, za posamezne dele aplikacije. Rad bi se izognil prejšnjemu načinum administriranja, ker bi moral imeti preveč skupin z posameznimi znaki (A,B,C,...U) Razmišljal sem v tej smeri da bi kreiral tabelo v bazi privilegije in bi imel stolpce (primer) -dodajanje uporabnikov -odstranjevanje uporabnikov -pregled postavk -dodajanje postavk -brisanje postavk -... in recimo še 20 taksnih stolpcev in za posameznega uporabnika bi potem z 1 pri stolpcu pomeni da ima privilegij z 0 pa da ga nima. Vendar kako potem v aplikaciji vedno preverjat, kaj lahko in kaj ne?  Kakšna ideja, oziroma kako imate rešene nivoje in pravice pri vaših aplikacijah?  Za odgovor se že vnaprej zahvaljujem"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Access control list @ Wikipedia to je koncept, zdj za samo implementacija pa mormo vedt v čem bi to naredu..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Aplikacijo bo spletna, narejena v PHPju in MySql bazi. Morem malo pregledat takšen koncept. Mogoče lahko kdo še napiše kakšne načine dodeljevanje pravic uporabljate v svojih aplikacijah.   LP"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja no, sej si na pravi poti.  Glede preverjanja, če ima user dovolj pravic - a je res tok težko en if naredit preden izvedeš kočljivo akcijo in opozorit, v primeru da user nima pravic."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Admin ima pregled nad uporabniki in njihovimi profili, ob pregledu profila je okno ki prikaže seznam pravic in checkboxe.   2 vzdevka? Osebno se raje poslužujem variante s skupinami, pa magari imam 20 skupin, za preverjanje je dosti lažje ker vsakič preverjaš if(user->IsAdmin->load()) in ne rabiš preverjat katere pravice ima posamezen uporabnik."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pravice loadas iz baze za dolocenega userja enkrat na session. Ne bos pri vsakem dostopu sel na bazo valda."
+    },
+    {
+        "role": "assistant_5",
+        "message": "jaz za pravice uporabljam skupine + moznost nastavljanja pravic posameznim uporabnikom.   ko prijavim uporabnika preberem pravice (prvo skupinske, nato dodam morebitne posamezne) iz baze in jih zapišem v session. pol pa na podlagi tega izpisem gumbe za katere ima user pravico (+ preverjanje pri izvrsevanju, v primeru da hoce kdo kaj nardit, za kar nima pravic)  pravice hranim v bazi v serializirina obliki (array v php), to pa zato, da lahko enostavno dodajam nove pravice brez spreminjanja tabel. torej imam za vsako skupino uporabnikov polje pravice in za vsakega uporabnika polje pravice"
+    }
+]

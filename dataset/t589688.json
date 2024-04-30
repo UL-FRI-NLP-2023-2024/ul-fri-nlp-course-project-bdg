@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdrav, tokrat ne najdem pravilne rešitve za DateTime problem. In sicer.... delam okensko aplikacijo WindowsForms s C#. Imam narejeno tabelo z ListView gradnikom, ki ima 7. stolpcev, ki predstavljajo. Tako hočem v prvo vrstico pod vsak stolpec izpisati, pravilen datum, ki se nanaša na tisti dan. Se pravi orientiram se po današnjem datumu npr. 27.11.2013 in tega vnesem v 3.stolpec pod sredo.... nato pa moram zapolniti še ostale.  Problema sem se lotil tako, da sem celoten datum razkosal na 3 dele.... dan, mesec, leto. Potem preveril kateri dan v tednu je in nato glede na tistega prištel ali odštel dneve za ostale dni v tednu. Če se nahajamo na sredini meseca, dela vse lepo in prav, če pa je npr. 1.12.2013 nedelja pa po za soboto izračunalo 0.12.2013 kar je narobe.  Sem prepričan, da tule obstaja kakšna konkretna rešitev, ki ne požre 30 vrstic kode, ni dela samo v sredini meseca :D"
+    },
+    {
+        "role": "assistant_0",
+        "message": "takole?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Racunas s števili ali uporabljaš DateTime metode?  Za dneve recimo .AddDays(...), pomojem lahko tudi odštevaš.  http://msdn.microsoft.com/en-us/library..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Koda"
+    },
+    {
+        "role": "user",
+        "message": "Hvala @assistant_1, zadeva deluje zdaj pravilno.   Ostalim za primer če je dan sreda    string danVTednu = DateTime.Today.DayOfWeek.ToString();\n            DateTime danes = DateTime.Now;   if (danVTednu == \"Wednesday\")\n            {\n                listViewSeznam.Items.Add(danes.AddDays(-2).ToShortDateString());\n                listViewSeznam.Items[0].SubItems.Add(danes.AddDays(-1).ToShortDateString());\n                listViewSeznam.Items[0].SubItems.Add(danes.ToShortDateString());\n                listViewSeznam.Items[0].SubItems.Add(danes.AddDays(1).ToShortDateString());\n                listViewSeznam.Items[0].SubItems.Add(danes.AddDays(2).ToShortDateString());\n                listViewSeznam.Items[0].SubItems.Add(danes.AddDays(3).ToShortDateString());\n                listViewSeznam.Items[0].SubItems.Add(danes.AddDays(4).ToShortDateString());\n            }"
+    },
+    {
+        "role": "assistant_1",
+        "message": "DayOfWeek je enum .. tako da ne rabiš parsat v string in delat string compare :)   DateTime dt = new DateTime(2003, 5, 1);\nConsole.WriteLine(\"Is Thursday the day of the week for {0:d}?: {1}\", \n                   dt, dt.DayOfWeek == DayOfWeek.Thursday);\nConsole.WriteLine(\"The day of the week for {0:d} is {1}.\", dt, dt.DayOfWeek);"
+    },
+    {
+        "role": "assistant_1",
+        "message": ".. mi pa vseeni ni jasno kaj želiš narediti ... V vsakem primeru hočeš prikazat vse dni v tednu, samo v drugačnem zaporedju glede na trenutni dan?"
+    },
+    {
+        "role": "user",
+        "message": "Ko odpreš program imaš v tabeli vedno aktualen datum za vsak dan v tednu!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zakompliciral si. Vse kar rabiš za izpis imena dneva za nek datum je:    DateTime.Now.ToString(\"dddd\");  in za danes ti to vrne \"sreda\". Potem ne rabiš ničesar podobnega: if (danes = \"wednesday\")...."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 27. nov 2013 ob 19:59 izjavil:Zakompliciral si. Vse kar rabiš za izpis imena dneva za nek datum je:   DateTime.Now.ToString(\"dddd\");  in za danes ti to vrne \"sreda\". Potem ne rabiš ničesar podobnega: if (danes = \"wednesday\")....   Zelo zanimivo, da pri primeru 1. vrne zapis dneva v angleščini -> \"Wednesday\" pri tvojem drugem primeru pa v slo -> \"sreda\"!  Primer1: DateTime.Today.DayOfWeek.ToString() Primer2: DateTime.Now.ToString(\"dddddddddd\")  a je to odvisno ali imaš OS v slo ali angleščini ? Tisti if pa potrebujem, ker se glede na dan računajo ostali dnevi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Res je, MSDN pove točno to  The members of the DayOfWeek enumeration are not localized. To return the localized name of the day of the week, call the DateTime.ToString(String) or the DateTime.ToString(String, IFormatProvider)  DayOfWeek ti ne bo vrnil lokaliziranega stringa, ti bo pa koristil, če se hočeš spraševati, ali je danes sobota:   if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday)  Ta koda ni odvisna od nastavitev lokalizacije. Če pa hočeš ime dneva v tekstovni obliki pa pokličeš ToString(\"dddd\"). Ta klic upošteva lokalizacijo okolja, v katerem poganjaš program. Jaz imam lokalizacijo na slovensko, tako da je izpisalo \"sreda\". Lahko pa metodi podaš še en argument in boš dobil string v točno določeni lokalizaciji:   DateTime.Now.ToString(\"dddd\", new System.Globalization.CultureInfo(\"de\"))  Tu boš dobil \"Donnerstag\", kar je sreda v nemščini."
+    }
+]

@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Rabim vezje za zelo pocasno utripanje led diode.Namrec bi rad,de ne utripa oziroma output ni tak: [img]http://shrani.si/files/untitled1txhl.jp... Oprostite,to ni natancno...  Rad bi da bi otripalo nekako takole: [img]http://shrani.si/files/slowflashitxhm.j...  Tko da med usako zakasnitvijo je 2-3 sekunde casa.In se da to nastimati tako,da bi bilo 5 outputov naenkrat,ampak da bi vsak razlicno hitro/pocasno utripal? Nimam mobenih mikrokontrolerjev,samo enega od Velemana za 7k sit,za ene PICe,bi to bilo owkay?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne rabiš mikrokontrolerja.  Pojdi na google in najdi načrt za astabilni multivibrator. Recimo NE555 je že en čip ki to dela profesionalno s prgiščem elementov in je zelo enostaven za uporabo in lahko dobavljiv. Shem je pa milijon."
+    },
+    {
+        "role": "user",
+        "message": "Sej ga imam,samo...ne najdem nobenega takega vezja.In jaz bi rad,da bi LED diode utripale zelo smooth.Lepo prosim,ce ne bom najdel,bi lahko ti pripopal kak link?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Multivibrator   Povezava za izvirne strani  Hitrost utripanja določaš s kondenzatorji!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "To z multivibratorji ti ne bo delalo \"smooth\".  Za željeno rešitev je IMH najprimernejši kak simpl mali mikrokrmilnik in ustrezni program..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Jep, narediš en simpl PWM. Recimo tako. Imaš eno spremenljivko, recimo iPWMOut. Ko jo daš na 0, daš izhod na 1. Potem pa narediš interrupt rutino za en timer, ki ti ob vsakem interuptu najprej poveča tale števc za 1, potem pogleda, če je večji od neke vrednosti (recimo 100) in ga v tem primeru resetira na 0, potem pa še primerja števc z spremenljivko (recimo ji iTimeHigh) in če je iPWMOut > iTimeHigh, ti da izhod na 0. Taka koda ti bo dajala PWM output, ki ga potem prek upora vežeš na diodo in s spreminjanjem vrednosti iTimeHigh spreminjaš, koliko ti ledica sveti. Pote rabiš pa samo še kodo, ki ti bo nastavljala svetlost diode - narediš si eno uro, pa recimo povečaš iTimeHigh vsako sekundo za 10 in ko prideš do 100, jo vsako sekundo zmanjšaš za 10."
+    },
+    {
+        "role": "user",
+        "message": "Pa je to mozno z PICi? Ker bom sel v IC kupit par teh,opa uprasal bi ce je se kaka druga varianta,recimo kondenzatorji? Pa hvala za odgovore.In nisem mislil multivibratorje"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Da to je možno z PIC-om."
+    },
+    {
+        "role": "user",
+        "message": "Pa se en request,ce lahko kod naredi simpl programator,tko na un port od tiskalnika pa napise program zato? Uporabljam pa Windows XP.Pa sem si premilu,ni treba vec outputov,samo ce je mozno :D."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Z 555 čipom bi šlo mogoče, če vežeš še k ledici kondenzator, prek katerega se prazni, tako dosežeš počasen fade out... vklop pa še ostane kar hiter je pa nekako najpreprostejša rešitev to 20min dela max   lp"
+    },
+    {
+        "role": "user",
+        "message": "Ok,potem imamo fade out ze resen,samo fade in,bi lahko mozno narediti tako,da bi dal enako velik kondenzator,in potem ko bi se povnil,bi se tudi moc povecovala,in ko bi dosegel max,bi se praznil?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@Kobilica  Jest bi sam neki napisal: Napajaj LED s TRIKOTNO obliko napetosti in to je to.  Generator(oziroma načrt zanj) take napetosti pa ti bo pomagal najti striček, ki sliši na ime Google..  LP @assistant_6"
+    },
+    {
+        "role": "assistant_7",
+        "message": "> Pa se en request,ce lahko kod naredi simpl programator,tko na un port od tiskalnika pa napise program zato?  Ugrhm? A programator in program rabiš? Težko, da bi kdo šel zate izumljat to, lahko pa ti povem kaj mam jaz:  http://www.oshonsoft.com/picprog.html.  Če hočeš laufat samo par (max. 5) LED. Vzameš pic 12f675 (hte, 2€) in napraviš kot je @assistant_3 opisal (par spremenljivk en timer in si zmagal) Diode preko upora direktno vežeš na pine od mikrokontrolerja in lahko vsaki posebaj nastavljaš kako bo gorela, pa + in - na mikrokontroler in to je vse.  Lahko ga programiraš v C-ju z demo verzijo  hi tech picc."
+    },
+    {
+        "role": "user",
+        "message": "thx,bom probu."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Zadevo lahko izdelaš tudi z enostavnim tranzistorskim multivibratorjem, ki deluje s frekvenco pod 1Hz. Je sicer štorasto, saj imaš za vsako lediko 2 tranzistorja, 2 kondija in 4 upore razen, če z vsakim multivibratortjem goniš dve lediki, ki delujeta v protifazi.  Tudi če bodo vsi multivibratorji imeli enake elemente, so tolerance med elementi tako različne, da bo kmalu po vklopu vsaka ledika blinkala po svoje."
+    },
+    {
+        "role": "user",
+        "message": "OOOO svaka ti cast,moj programator podpera 12f675,zdej pa en vecni problem,nimam pojma kako programirat v Cju.Sam sem neki,ceprav ni za PICe,bi lahko copy/paste,edit :=).  Start Kode /* * Code for cross-fading 3 LEDs, red, green and blue, or one tri-color LED, using PWM * The program cross-fades slowly from red to green, green to blue, and blue to red * The debugging code assumes Arduino 0004, as it uses the new Serial.begin()-style functions *  */  // Output int redPin = 9; // Red LED, connected to digital pin 9 int greenPin = 10; // Green LED, connected to digital pin 10 int bluePin = 11; // Blue LED, connected to digital pin 11  // Program variables int redVal = 255; // Variables to store the values to send to the pins int greenVal = 1; // Initial values are Red full, Green and Blue off int blueVal = 1;  int i = 0; // Loop counter  int wait = 50; // 50ms (.05 second) delay; shorten for faster fades int DEBUG = 0; // DEBUG counter; if set to 1, will write values back via serial  void setup() { pinMode(redPin, OUTPUT); // sets the pins as output pinMode(greenPin, OUTPUT);  pinMode(bluePin, OUTPUT);  if (DEBUG) { // If we want to see the pin values for debugging... Serial.begin(9600); // ...set up the serial ouput on 0004 style } }  // Main program void loop() { i += 1; // Increment counter if (i < 255) // First phase of fades { redVal -= 1; // Red down greenVal += 1; // Green up blueVal = 1; // Blue low } else if (i < 509) // Second phase of fades { redVal = 1; // Red low greenVal -= 1; // Green down blueVal += 1; // Blue up }  else if (i < 763) // Third phase of fades { redVal += 1; // Red up greenVal = 1; // Green low blueVal -= 1; // Blue down } else // Re-set the counter, and start the fades again { i = 1; }   analogWrite(redPin, redVal); // Write current values to LED pins analogWrite(greenPin, greenVal);  analogWrite(bluePin, blueVal);   if (DEBUG) { // If we want to read the output DEBUG += 1; // Increment the DEBUG counter if (DEBUG > 10) // Print every 10 loops { DEBUG = 1; // Reset the counter  Serial.print(i); // Serial commands in 0004 style Serial.print(\"\\t\"); // Print a tab Serial.print(\"R:\"); // Indicate that output is red value Serial.print(redVal); // Print red value Serial.print(\"\\t\"); // Print a tab Serial.print(\"G:\"); // Repeat for green and blue... Serial.print(greenVal); Serial.print(\"\\t\");  Serial.print(\"B:\");  Serial.println(blueVal); // println, to end with a carriage return } } delay(wait); // Pause for 'wait' milliseconds before resuming the loop } Konec Kode  Bi se dalo nekako spreobrnit do 5 outputov,sam btw,sm zadovoljen z 3 ;).Pa sploh ne vem ce je to C,"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ojoj. Daj se naučit ledice prižigat pa ugašat v c-ju. To pa res ni tak problem, če je volja."
+    },
+    {
+        "role": "user",
+        "message": "Zame je very hard.Lahko ti napises kodo zame? Ker jaz sploh ne vem kateri C je pravi ali ce je elektronski in programski jezik posebej... Pa nikjer ne najdem Tutoriala,ki bi mi pokazal samo osnove za elektronsko,ne pa \"Hello World\"  ."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ojoj joj @user! Pa ti si vse pomešal... Sam maš pa voljo ob pol osmih zjutraj na forumu norije delat  Poslušaj,  Vsaak mikrokontroler za delovanje rabi nek program sestavljen iz ničel in enic, znan kot binarna ali strojna koda. To kodo mu v \"možgane\" ponavadi spravi osebni računalnik s programatorjem, kamor vstaviš ta svoj čip. Lahko si predstavljaš, da je tak binarni program nemogoče napisati na pamet, zato so si izmislili poseben, računalniški program, ki od uporabnika prejme skupek malo bolj \"človeških\" ukazov in jih prevede v binarno kodo. Reče se mu Assembler. S tem programom se že da napisati uporaben ter predvsem hiter in zanesljiv program. Če bi želeli v tem jeziku vklopiti ledico, priklopljeno na port B0 (pin št. nič na portu B) bi to izgledalo takole:  bsf STATUS, RP0  movlw 0FF  movwf TRISB  bcf STATUS, RP0 mov 01 movwf PORTB bcf STATUS, RP0  ;Program se najprej prestavi v registersko :banko ena, nato postavi vse pine porta B v ;stanje visoke impedance, se prestavi v ;registersko banko nula, postavi bit nic na ;PORT B v logično stanje 1. Nato se prestavi v ;reg. banko ena, postavi pin 0 na portu B za ;izhod, ostale pine pa naredi za vhodne. Potem ;gre nazaj v banko nula.  Super, ne? Simpl ko pasulj!  No nekaterim pa se je to zdelo še preveč zakomplicirano in so si izmislili compiler, program za prevajanje visokih programskih jezikov, kot so C ali BASIC v asembler. C je zelo priljubljen in veliko uporabnikov prisega, da je najboljši. Mogoče imajo prav. Meni osebno se zdi, da je ultimativni jezik za 90% primerov programov jezik BASIC, ki se ga je pa RES OTROČJE lahko naučiti, če znaš vsaj 37 angleških besed. Za programiranje PIC-ev se uporablja PICbasic. Sam uporabljam verzijo Picbasic Pro. Je pa za razliko od študentske verzije C-ja mastno plačljiv. Zdaj pa tvoj projekt z ledicami. Težje te je težje brati kot Stephena Hawkinga, mislim pa da vem približno kaj bi rad. Vzamiva uC PIC16F84, ki ga lahko večkrat sprogramiraš (flash). Nogice (pini) so razdeljeni na tiste, ki jih krmili PORTA in PORTB. Postavljanje bitov teh portov na 1 in 0 \"vklaplja\" in \"izklaplja\" posamezne pine. Napišiva enostaven program samo za eno diodo, vezano na prvi pin (pin 0) porta A.  TRISA = %00000 ' naredi pine porta A za izhodne PORTA =%00000 'Naj bodo na zacetku vsi off! main: HIGH PORTA.0 ' 'vklopi diodo PAUSE 50 ' Pocakaj 50 ms LOW PORTA.0 ' izklopi diodo PAUSE 1000 ' pocakaj 1 s GOTO main ' pojdi nazaj na main END  Tole je enostaven program, ki ga lahko uporabiš recimo v avtu, če nimaš alarma. Malo se poigraš s pavzami, dodaš še kako HIGH pa LOW POTRA.0 vrstico in že imaš fade-in ali out učinek. To je zelo poenostavljen koncept in naj služi samo za razlago. Drugače se to ne dela tako, ampak se uporabi ukaz HPWM (hardware pulse modulation) in recimo PIC16F876.  Tako, zdaj ko veš, kaj ne veš, pa pojdi lepo na google, ugasni telefon, si čimveč preberi, potem pa postavi na tem forumu kakšno pametno vprašanje.   P.S. Če koga zanima tale picbasic, lahko napišem kakšen bolj pedagoški članek. LP, Gregor."
+    },
+    {
+        "role": "user",
+        "message": "Vsaj neki zelo dobrega,ti bi lahko napisal en dober vodic za PICe.Bom probal to in se nekaj kar sem nasel na netu,tko da res lepo hvala da si si vzel cas zame :D.Ok eno vprasanje oz. check za errore,in sicer sem edital tvojo kodo  TRISA = %00000 ' naredi pine porta A za izhodne PORTA =%00000 'Naj bodo na zacetku vsi off! main: HIGH PORTA.0 ' 'vklopi diodo PAUSE 3000 ' Pocakaj 3 HIGH PORTA.1 ' 'vklopi diodo 1 PAUSE 1000 ' Pocakaj 3 LOW PORTA.0 ' izklopi diodo PAUSE 2000 ' pocakaj 3 LOW PORTA.1 ' 'izklopi diodo 1 GOTO main ' pojdi nazaj na main END  Ali obstaja PORTA.1? Aja,ali so to analogni outputi ane,ker digitalni dajo lahko samo 1 in 0.Ah,to ni point,mene zanima samo kje so te porti,kaksna slikca? Ali je to vse v datasheetu?  sam res,ta programski jezik je res simpl.Aja mogoce bo stupid vprasanje ali celo banalno,ce bi se mi splacalo zdljat compiler v HEX ampak warez verzijo,ker za 13 letnika res ne bom kupoval PRO programe...pa se brezveze toliko dajat za en projekt(oz vec  )  Aja,ce te zanima kaj sem nasel: http://www.metku.net/index.html?path=mo...  Prosim,napisi clanek o tem programskem jeziku,ker vidim da si master"
+    },
+    {
+        "role": "user",
+        "message": "Aja neki sem se zmotil:  TRISA = %00000 ' naredi pine porta A za izhodne PORTA =%00000 'Naj bodo na zacetku vsi off! main: HIGH PORTA.0 ' 'vklopi diodo PAUSE 3000 ' Pocakaj 3 sec HIGH PORTA.1 ' 'vklopi diodo 1 PAUSE 1000 ' Pocakaj 1 sec LOW PORTA.0 ' izklopi diodo PAUSE 2000 ' pocakaj 2 sec LOW PORTA.1 ' 'izklopi diodo 1 GOTO main ' pojdi nazaj na main END  Koliko casa pa traja HIGH PORTX.X? Toliko kot je pause,ali je to auto,recimo cip brebere program potem pa izracuna koliko casa je med HIGH pa LOW,potem pa deluje,pa z pauso to vez med HIGH PA LOW zaustavis oz poucasnis :D.Upam da grem v pravo smer :D,zdele bo veliko casa za ucenje,8 dni"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Kakšni analogni outputi? Kobilica, mogoče bi bilo fino si pogledati osnove osnov mikrokontrolerjev. Če nimaš možnosti, da bi ti kdorkoli le-te razložil, si vzami nekaj časa in downloadaj  tole knjigo, ki je super. Če česa ne razumeš. ko prebereš prvič, preberi še enkrat. Začni na začetku, saj je ta pomembnejši kot deli, kjer so opisani nekateri projekti.  Če nimaš pojma o programiranju, začni z assemblerjem. MPLAB je zastonj software, dobiš ga na  microchip-ovi strani (to je proizvajalec PIC-ev). Z nekaj iznajdljivosti se najde tudi PIC simulator, a vsekakor bo bolj zabavno, če kupiš/izdelaš preprost programator. Veliko programatorjev, bolj ali manj preprostih za izdelavo, lahko najdeš  tukaj, čeprav sprva ne boš mogel pobirati datotek.  Sam mikrokontroler zahteva tudi nekaj začetnih nastavitev, džeririganje kode pa odsvetujem. Nauči se principa in jo spiši sam. V assemblerju se da kaj kmalu. Če te res zanima, v enem tednu. Morda 14 dneh, če boš skupaj metal še programator. Na način, kakor si začel, pa ne boš daleč prišel. No, to je moje mnenje.  Vsekakor pa obstaja tudi možnost naročila programa (za gajbo vse )"
+    },
+    {
+        "role": "user",
+        "message": "Ne,sm bral da imajo pac neki mikrokontrolerji analogne pa digitalne outpute,sem se spomnil in mislil da je to PIC.Sam ucil se bom basic,in,imam knjigo Prakticna uporaba mikrokontrolerjev 2.Programator tudi imam,in vem kdo dela PICe  .Vseeno thanks. No imam poja o programiranju PICev,sam problem je,k ne znam nobenega programskega jezika. aja,@assistant_10,cakam na clanek  Kar uzemi si cas."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Aja mogoce bo stupid vprasanje ali celo banalno,ce bi se mi splacalo zdljat compiler v HEX ampak warez verzijo,ker za 13 letnika res ne bom kupoval PRO programe Hawking, ti si car. Jst te spet nec ne zastopim.    PicBasic Pro compiler ima tudi demo verzijo, ki jo brezplačno snameš  Tukaj Microcode studio pa je za nekomercialne namene zastonj in ga tudi dobiš  Tukaj Knjiga Praktična uporaba mikrokontrolerjev in pa tista, ki ti jo predlaga @assistant_9 sta super vira informacij. Če se boš odločil za assembler, rabiš zraven samo še katalog (datasheet) od izbranega PIC-a, bujno domišlijo in pa voljo. Za picbasic pa boš moral preštudirati še kakšno. Priporočam \"Programming PIC microcontrollers with BASIC\". Ocena 5. in \"PIC microcontroller project book\" Ocena (-5).   Program se izvaja vrstico za vrstico. Zadnja vrstica pred PAUSE je \"aktivna\" tako dolgo kot traja pavza. Za fade učinek si teoretično na pravi poti. Če hočeš bolj tekoči fade, rabiš več teh high pa low komand in predvsem mnogo krajše pavze. Po tvojem programu zdaj dioda utripa ne pa počasi ugaša. Za tale tvoj fade efekt se uporablja koncept PULZNE MODULACIJE. Sliši se ti mogoče hudo komplicirano, vendar je v resnici zelo preprosto. Pojdi na google pa vtipkaj PWM (pulse width modulation). Večina je v angleščini.  Lahko pa brez sramu odpreš novo temo z naslovom \"Kaj je pulzna modulacija\", vendar se prej prepričaj da že ne obstaja podobna tema. Vsekakor najprej sam raziskuj in vprašaj šele, če ne najdeš odgovora med prvimi desetimi google zadetki. Pa še to: Vprašanja naj bodo pametna, ker se nam večini ne da tipkat"
+    },
+    {
+        "role": "user",
+        "message": "Ja sem iskal pod HPWM,ne vem zakaj,pa sem nasel neko corupt kodo: Pac en clovk je to uporabljal za motorje,jaz pa bom za LED Zdej me pa zanima,kaj pomeni OSC 4? Mogoce Pin na katerega je vezan kvarcni kristal? Pa se te HPWM,ne vem kako delajo,vem da prva stevilka pomeni pin ali output,druga cycle,tretja pa frekvenca... Pa kaj pomeni to: gosub fwd gosub halt gosub rever  Zgleda da je to pol anglescina,pol nemscina,pa mislim da malo kode manjka,gotovo je kak define al neki takega,ki naj bi programu pokazal,kaj pomeni fwd halt revert...  DEFINE OSC 4 TRISC = %00000000  HPWM 1, 150, 400 HPWM 2, 150, 400  TRISB = %00000000  main:  gosub fwd pause 5000 gosub halt pause 5000 gosub rever pause 5000 gosub halt pause 5000  goto main end  Se sedaj ne vem tocno,zato bi te se enkrat prosil za reply,pa se kdaj drugic :D.Sem se hotel preseliti na elektro-n,sam sem ostal sam zarad tebe"
+    },
+    {
+        "role": "user",
+        "message": "Aja pa se neka koda :  ' Program PWM_2.BS2 ' ' Causes LED on P2 to rise and fall in brightness. Uses PWM commmand. ' ' P. H. Anderson, Dec 5, '97  DUTY VAR BYTE CYCLES VAR BYTE  DIRS=$00FF CYCLES = 100 MAIN: debug \".\" FOR DUTY=0 TO 20 STEP 2 PWM 2, DUTY, CYCLES NEXT  FOR DUTY=20 TO 0 STEP 2 PWM 2, DUTY, CYCLES NEXT   GOTO MAIN"
+    },
+    {
+        "role": "user",
+        "message": "lol,sorry,sam sem mogel vprasati,ali je Basic enak kot Visual Basic?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mislim da ne!  tukaj maš free internetno knjigo o picih! http://www.mikroe.com/en/books/picbook/..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Še vedno predlagam assembler. Obstaja 37 ukazov, ki so precej logični, če znaš nekaj angleščine. Kaj povzročijo, je lepo opisano v vsakem datasheetu picev. Res izgleda nepregleden, a za začetekje zelo dober, ker dobiš občutek, kako se koda izvaja in potom tega spoznaš tudi periferijo mikrokontrolerja. Vsekakor je potem laže preiti na višji programski jezik.  Če mi poveš, kateri pic boš uporabil oz. imaš, ti lahko spišem program v ASM-ju za eno ledico in pokomentiram, da si ga ogledaš."
+    },
+    {
+        "role": "user",
+        "message": "A res?  Uporabil bom med teli:  PIC12F675 PIC16F83, PIC16F84 PIC16F873  Upam da se ti prilagajajo za fade in fade out kodo oziroma PWM.Ne vem,assembler mi ne lezi tko lepo,sam bi se ga rad naucil  . aja,ce imas cas,bi lahko napisal kodo za 2 led diode,ki bi se crossfadale.Za pic 12F675 ne vem,ce lahko naredi to,zato lahko uporabis druge,ali te:  PIC12F629, PIC12F675 PIC16C83, PIC16CR83, PIC16F83, PIC16C84, PIC16CR84,PIC16F84, PIC16F84A PIC16F870, PIC16F871, PIC16F872, PIC16F873, PIC16F873A, PIC16F874,PIC16F874A, PIC16F876, PIC16F876A, PIC16F877(A)(ICSP only) PIC16F627, PIC16F627A, PIC16F628, PIC16F628A, PIC16F648A PICF630, PIC16F676 PIC16F818, PIC16F819   Ker,samo te podpira moj programator.Samo prosim tiste uporabi,ki niso drazji od 3.5€ ali 4€,pa da so dobavljivi v HTE :).  Aja,je mozno,da bi z enim gumbom spreminjal funkcijo utripanja? Ker bi rad,ko prvic pritisnes gumb,da bi se funkcija zamenjala in ponavljala,in ko bi drugic pritisnil,bi se druga funkcija ponavljala,in po tretjem bi se tretja etc,samo kako mikrokontroler prepozna,ce je tipka pritisnjena,medtem ko izvaja neko funkcijo?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "1.Visual basic in picbasic sta derivata oz. verziji jezika basic. Imata podobne ukaze, kot je na primer sintaksa za recimo IF stavek ali FOR zanka itd. Nista pa enaka. 2. DEFINE OSC 4 Prevajalniku povemo da bomo uporabili 4 MHz oscilator. BTW, oscilator je kot neka ura, ki daje mikrokontrolerju takt za delovanje. Hitrejši kot je oscilator, hitreje se tudi program izvaja. 4 MHz oscilatorja nam ni treba najavljati, ker ga ima prevajalnik za privzetega. Ostale pa je treba definirati. Npr. DEFINE OSC 20 3. GOSUB oznaka je podobno kot GOTO oznaka vendar je GOSUB podrutina, ki jo program najprej izvede, nato pa se vrne nazaj in nadaljuje takoj za GOSUB. V programu seveda manjkajo te podrutine, ker je avtor želel objaviti samo koncept programa. Halt, fwd, rever so oznake. To so nekakšne funkcije, kot je recimo main. V C-ju se funkcije označijo: Kobilica(), v Picbasicu pa Kobilica: Ime je lahko karkoli. 3. Ta drugi program pa je najbrž točno to kar ti rabiš. Žal ne deluje pravilno, ker je avtor pozabil znak minus v drugi FOR zanki.  4. Res nebi bilo slabo, če bi se ti učil Assembler. Vse programe dobiš zastonj, eno knjigo že imaš, veliko je razloženega v slovenščini pa še ogromno uporabnikov tega foruma ga obvlada.  5. Napiši točno po točkah, kaj hočeš, da ti program dela. Bo menda najboljše, da ti ga kar jaz napišem, drugače bova zametila celo temo. Povej še zakaj ga rabiš. 6. Glede na to, da sprašuješ na kero nogico se oscilator priklopi, se vidi da si nisi prebral niti tiste knjige, ki jo maš doma. Že veš kaj je to PWM?  7. PREBERI SI ČIMVEČ NA NETU!!! Začni s tisto zastonjsko knjigo. Pa lepo počasi, od začetka. Na hitro se sam muhe lovijo!"
+    },
+    {
+        "role": "user",
+        "message": "PWM - Pulse width modulation,vem :D.  Uporabil ga bom za mod racunalnika,miske,in mogoce se kaj za kolo  Oscilator sem vedel priblizno kaj je :D  Aja za oscilator,vem da se priklopi preko dveh pinov in med njima je Kvarcni kristal  Problem je,jaz znam kar veliko kod prebrat oz razbrati kaj delajo,ko pa hocem sam nekaj napisat,potem pa nimam pojma.  Pa una knjiga,ki jo imam doma...je veliko nacrtov,sam ni tko na splosno pojasneno,kako deluje PIC,ampak je tko,ko preberes vse,kar je zame 200 strani prevec :).  Pa se,vec jezikov je v knjigi.  Aja,mas kaksnem MSN ali gmail ali kej,da se bova realtime pogovarjala?"
+    },
+    {
+        "role": "user",
+        "message": "Aja video pove vec kot 1000 slik,ena slika pa pove vec kot 1000 besed :D.Tko da,priblizno to hocem,samo ne preko racunalnika in brez teh stevilk,samo led diode :D.Pa bi naredu,da bi se med sabo mixale,ali pa vsaj cross fade effect.Pa med vsako zamenjavo LED diode naj bo led dioda prizgana vsaj 1 sec,ne da takoj ugasne :D.(oz takoj fade out)"
+    },
+    {
+        "role": "user",
+        "message": "Pozabu link      Sorry za toliko veliko postov..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Nisem gledal linka, ne bom delal programa po narocilu za podpiranje lenobe za prazen nic. Ze to je prevec, kar sem ti spisal. Na vprasanja, ki bi sledila, bom odgovarjal le, ce bo razvidno, da si si pred tem vsaj malo pogledal datasheet in katero od predlaganih knjig. V tem primeru bos znal zadevo razsiriti za vec ledic. Nastavljanje dolzine priziganja pa sem vklucil v kodo. Tipko realiziraj sam.  MSN-ja nimam, videov ne bom gledal, ker sem na 56k.  Povej mail in ti posljem asm datoteko.  Ledica je prikljucena na gp5 preko upora na maso. Upor je npr 1k."
+    },
+    {
+        "role": "user",
+        "message": "@usergmod@gmail.com  Ne vem no,men se ucenje kode,sploh pa assemblerja ne lezi prav dobro,basic mi nekako se gre...Raje imam tko kode,pol pa jih sam editam oziroma razsirim.  Pa malo sem tudi len,tudo ti priznam,sam za ene cipe,k hocem datasheete,en pic sploh nima datasheeta,en pa ima 217 strani al kok,to sm najdu na microchipovi strani...  Se vedno ne vem,kaksnem pic bi rad programiral,ali je cip z 28 nogicami dobr,ker 40 nogic moj programator ne podpira,bi bilo mozno,da bi se v enemu picu predvajala 2 programa? Recimo vsak program ima rezerviranih nekaj outputov,sej inpute ne rabim .To zgleda tko,kokr navodilo za kodo,sej ni treba,cakam na nitro techov clanek.  Kdor caka,docaka :D"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ok. Pa kaj misliš da bo tisti članek tebi prinesel? Neko vseobče razodetje v trominutni seansi? Če smo ti dali linke knjig, od katerih si MORAŠ vsaj kakšno ogledati in prebrati pomembne dele,? Datasheet ima 217 strani, a te verjetno električne karakteristike ne zanimajo in pa dimenzije, kaj ne. Poglej si INSTRUCTION REFERENCE, PINOUT DIAGRAMS, REGISTER FILE MAP, prej pa zaboga vrži uč na uvod knjige, ki sem ti jo predlagal in je brezplačna ter si razjasni pojme, kako deluje mikrokontroler.  Če pa si pač len in bi vseeno rad imel modan bicikel, kišto in WC kotliček, pa pač naroči izdelan program po svojih željah, a ne pričakuj tega zastonj. Zbirka Čebelica pa žal ne vsebuje naslova \"Mikrokontrolerji v petih besedah\".   Že sam sem si vzel več kot eno uro zate in spisal ter pokomentiral program ter zbrskal 12f675 čip. Pošljem na mail, vseeno, čeprav sem se kar malo razil zdajle... Čreva na plot!"
+    },
+    {
+        "role": "user",
+        "message": "Ok hvala.Res hvala,toda zakaj si jezen,ce nekomu pomagas?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Program je za eno ledico na gp5 izhodu.   Zakaj sem se razjezil? Preberi malo svoje poste za nazaj in pa moje"
+    },
+    {
+        "role": "user",
+        "message": "Aja oprosti,k sem ignoriral en tvoj post.  .Zgleda da je ta maxi forum dober in velik stvari :D.Pa sorry za 56k povezavo,sm jo jst tut imel pa sucka.Hvala za tvoj help tut :D.Skoda da ni slovenskega programskega jezika potem pa prevajalnika v angleskega assemblerja,sam ok :D."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Hay!  Ne morem mimo, da še jaz dam mnenje...  Torej, kot ima prav @assistant_9 in ostali, delati nekaj z uPC brez absolutnega pojma, razen da veš, da je \"nekaj\" noter v njem in da nekaj lahko naredi, je isto kot bi brcal v meglo. Osebno se že 25 let ukvarjam z razvojem elektronike z vsemi mogočimi procesorji, kontrolerji, imam precej prakse v tem, in tudi brez teorije ne gre. Seveda si dobro pogruntal, da se da to lepo enostavno narediti z uPC, ampak šele takrat, ko si vse druge možnosti že izrabil in vidiš , da z njimi ni željenega učinka. Uporaba uPC je ok, ČE SEVEDA VSE ZNAŠ IN OBVLADAŠ O NJEM do potankosti razvoja shem in vezij, vse električne nivoje itd. Predlagal bi ti, da se raje \"učiš\" z kakih manj kompliciranim uPC, kot je recimo, atmel 1051 ali kaj podobnega, ki je narejen za tvoje skromne zahteve (čeprav meni \"tera\" komplet avtoalarm...). Tudi program zanj le lahko zložiti a assemblerju...ampak brez truda in logike, si kar kak mesec ali dva vzemi. Ko pa boš bolj podrobno poznal vso tematiko o uPC, pol se pa lahko spraviš na kake PIC-e ali na mašino od Texas Instr.   Sicer upam, da ti ne bom vzel volje za nadalje, se mi pa zdi, da ni noben tle in drugod kar znal v 23 minutah...kjub vsej literaturi in datasheet-om.   Uživaj naprej hi-tech."
+    },
+    {
+        "role": "user",
+        "message": "Heh,sej imam se veliko casa za uciti,sej moram koncati se osnovno solo najprej,toda bolse da se naucim prej,kot pa da se bom pol matral,ampak se ze zdej  .Ah kje,se imam voljo,sam ne vem,ali bom rabil kak kondenzator,al bom lahko direktno PIC povezal na voltazo,in LED na PIC,sam gotovo bo treba kondije dodat.Pa zdele me neki casa ni bilo gor,ker sem preselil moj comp v mojo sobo."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ok, potem ti je pol odpuščeno. Ker osnovno šolo sem tudi jaz naredil z nekajminutnimi knjižnimi seansami.  Potrebuješ  tole, kar je na dnu oz testna plošča natična, a ne kupi je v Conradu, ceneje dobiš v IC elektroniki (na Conradu imajo pač slikico), pic, LM7805 (napetostni stabilizator) upor 1k (1000 ohm), le diodo in nekaj tanke žice, ki se vtika v testno ploščo. Ter seveda 5-12V napajalnik (tam 500mA bi moralo zadostovati za začetek, npr od kakšne igrače ali celo morda kakšnih discmanov).  Diodo moraš OBVEZNO priklopiti preko upora."
+    },
+    {
+        "role": "user",
+        "message": "Hudo,tole plosco ze imam,imam tudi uno solderless,imam 3-15 V 1.200 A napajalnik pa enga laboratorijskega 0-30 10 A (kok je oci prjazn) Sam eno kiloomskega upora pa LM7805 tut nimam.Kaj pa ne rabim nobenega kondenzatorja?  Pa res se enkrat hvala :)."
+    },
+    {
+        "role": "assistant_12",
+        "message": "fajn bi blo dat kkšnega na vhod in izhod 7805 sicer... (poglej si datasheet), lahko ti pa povem da je na vhodu priporočljivo 220u in na izhodu (5v) 10u - vsaj jaz jih tako dajem"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ja, nekaj od oka elektrolit ob 7805 (ne prevelik) in en keramičen 100n med + in - čim bliže pica. Pa kupi ene par elektrolitov in 20 uporov ter ledic in par LM7805, ter par 20MHz kristalov (nimajo vsi pici notranjega oscilatorja).  Kje imajo take očije?"
+    },
+    {
+        "role": "user",
+        "message": "Hehe,danes nisem mogel in vceraj tudi,vceraj mi je crknil mobitel,danes pa...sem zbolel za vrocino al neki tazga,boli me v trebuhu,ze zjutri zaradi nekega neznanega razloga. Joj,ko bi vsaj znal nekaj v zvezi z elektronko...Pa moj oci je bil elektronik tudi,ampak je pustil poklic zaradi nas in tako dalje.Skoda,ker je imel pravo delavnico doma in vse...Pas se dogajajo nesrece,ampak to ni point topica :D."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne jamrat, pica si nabav in za začetek prižigaj in ugašaj eno ledico. Da dobiš občutek, kako se tole reč programira. Potem pa rabiš samo idejo, datasheet in nekaj časa. Za vse registre ti piše v datasheetu, kako morejo bit nastavljeni, da ti nek kos periferije deluje. Za vse. Če ti pa kaj ni jasno, je pa branja na to temo po internetu dosti.  Mimogrede, microchip je prav nemarno radodaren z zastonj primerki - se registriraš na njihovi strani in lahko naročaš kot zastonj primerke veliko njihovih izdelkov. Traja pa ene tri tedne, da dobiš domov."
+    },
+    {
+        "role": "assistant_7",
+        "message": "> PIC16F84  Raje 16f628a. Isti pinout, cenejši, več spomina, več periferije."
+    }
+]

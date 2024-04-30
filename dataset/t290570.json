@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Osebno razmišljam nadgraditi svoj sistem iz 2 gb na 4 gb rama v bližnji prihodnosti in ne dvomim, da o tem razmišlja tudi kdo izmed vas. Vendar tukaj nastane ena težava. Osebno si lastim windowse xp in visto le v 32-bitni izvedenki, katera naj nebi podpirala 4 gb rama in sicer prepoznala naj bi le 3 gb. Zdej v to nisem popolnoma prepričan in me zanima, če po vgradnji še dodatnih 2gb rama ali bom lahko koristil ves potencial kateri mi je ponujen s strani rama, ali bom lahko koristil le 3gb tolikor kolikor ga podpira operacijski sistem. Bom potem primoran uporaljati 64-bitni sistem, ampak potem se spet pojavi problem uporabe programov na takih sistemih.  Poznate mogoče kakšno alternativno rešitev izkoristka vseh 4gb rama na 32-bitnih sistemih ali je uporaba 64-bitnega neizbežna."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poznate mogoče kakšno alternativno rešitev izkoristka vseh 4gb rama na 32-bitnih sistemih ali je uporaba 64-bitnega neizbežna.   PAE ipd. fore ne delujejo v recimo 32-bitni Visti. Vsekakor rabiš 64-bitni sistem. Nekih velikih problemov s progami ni."
+    },
+    {
+        "role": "user",
+        "message": "Jah samo kje dobit zdej 64-bitno visto posebej in ne v izvedbi DSP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Katere programe pa uporabljaš?  Jaz obilno programiram in imam zdaj že nekaj mesecev 4GB rama, pa se odlično obnese, seveda pa imam 64 bitni OS (v mojem primeru Linux) in 64 bitne aplikacije (večino njih).  Če potrebuješ Windows, potem itak potrebuješ tudi 64 bitne aplikacije, sicer bo vsaka aplikacija še vedno lahko uporabljala precej manj kot ves pomnilnik. Če več pomnilnika potrebuješ zgolj zato, da počneš več reči hkrati, potem to sploh ni problem, če pa delaš z ogromnimi rastri ali čim podobnim, pa zna reč postati nerodna."
+    },
+    {
+        "role": "user",
+        "message": "Photoshop, dreamweaver, flash, filmi, mp'3, igre,...  Odloču sm se pa za nakup zaradi res smešno nizke cene vendar nisem vedel da bom potem naletel na tako težavo.  Zanimivost 4gb na 32-bit  klik"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jap, PAE ti bo omogočo da bo sistem uporabljal vseh 4 GB. Seveda bo vsaka aplikacija (če ne podpira AWE) še vedno omejena na 4 GB."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zakaj pa raje ne dokupis samo 2x512mb,ter imas tako 3gb + si ne delas takih groznih problemov glede OSa"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zdravo,   Na zgornjem linku je opisano, kako 32bit Vista uporabi 4GB RAMa. A je možno tudi 32bit XPje prelisičit? Najde mi 3,25GB RAMa, imam pa 4GB.  LP"
+    },
+    {
+        "role": "assistant_5",
+        "message": "v boot.ini dodaj: /3GB /PAE"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Windows XP SP2 in novejši vedno uporabljajo PAE, ker drugače ne deluje DEP (Data Execution Protection). Koliko RAMa vidijo 32bitni XPji je odvisno od matične plošče in BIOSa - če ima le-ta možnost \"Memory remap\" (ali kaj podobnega), bo morda sistem videl vse 4GB RAMa - ali pa se sploh ne bo zagnal. Opcija /3GB samo omogoči, da določeni programi lahko uporabljajo do 3GB RAMa naenkrat, namesto 2GB (na 32bitnih Windowsih en sam program ne more nikoli uporabljati več kot toliko RAMa). Na 64bitnih Windows lahko ti (32bitni) programi uporabljajo skoraj 4GB RAMa (spet, gre samo za določene programe - če ni bil program preveden s posebnim stikalom, lahko uporablja samo 2GB; novejši Adobeovi programi se mi zdi, da to podpirajo).  Še zanimivost: Microsoft je med XP SP1 in SP2 spremenil delovanje jedra, kadar je vklopljen PAE, tako da se lahko zgodi, da XP SP1 vidijo več RAMa kot pa SP2."
+    },
+    {
+        "role": "assistant_7",
+        "message": "No na Windows Server 2003, Datacenter Edtion R2 SP2, 32bit mi dela 4GB normalno brez problemov. Vtakneš in dela .. seveda pa mora chipset podpirat 4GB ali več."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Dela tudi več, vendar zgolj s PAE. Vsaka aplikacija še vedno lahko vidi največ 4GB naslovnega prostora (v praksi pa običajno OS pusti alocirati manj kot toliko spomina)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Windows Server sistemi nimajo takih omejitev kot Windows XP (razen morda SBS)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Prav vsi 32-bit sistemi imajo omejitev 4 GB RAM-a na proces (v bistvu 2... namreč razdeljeno je 2/2 GB, kjer druga 2 GB pripadata kernel-spacu, oz. 3/1 GB s 3 GB switchem), pa najsi je to Linux ali pa Windows Enterprise Datacenter Architect OMGLOL I Pwn edition. Za kaj več pa mora aplikacija (kot tudi OS seveda) podpirati AWE, ki v bistvu potem tistiva 2 GB \"vozi\" gor in dol po celotnem pomnilniku."
+    },
+    {
+        "role": "assistant_6",
+        "message": "AWE je spet nekaj drugega - sistem, ki omogoča, da 32bitna aplikacija uporablja več kot 2/3/4GB RAMa (in ga bolj ali manj uporabljajo samo baze podatkov)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Seveda, saj sem o tem govoril (navsezadnje delitev sistemskega rama na polovice nima smisla a ne?). Sta pa se mi očitno dve besedi izmuznili, sem že popravil."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Windows server standard edition še vedno podpira samo 4GB tudi s PAE. Šele Enterprise in Datacenter edition podpirata več."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Meni je uspelo na mojem računalniku 32bitni Windows Server 2003 Standard Edition prepričati, da vidi vse 4GB RAMa, samo je nastal problem, ko sem namestil gonilnik za nVidia grafično kartico - če v BIOSu nisem izklopil memory remap nastavitve, se je slika na zaslonu osveževala dvakrat na minuto (pri čemer se je pred vsako osvežitvijo zaslon za pol sekunde izklopil; brez memory remap je vidnih samo 3200MB). Na XP x64 ni problemov."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Torej so novi računalniki z 4GB RAM-a in 32-bitnim OS-om nateg desetletja. Če pa dobiš 64-bitno verzijo, pa je velika možnost da ti kak starejši program ne bo deloval.    No v Big-bangu že ponujajo verjetno prvi navaden desktop PC z 4GB RAM-a. In sicer za 999€."
+    },
+    {
+        "role": "assistant_0",
+        "message": "RAM je trenutno izredno poceni (saj je tudi potreben, ker je zdaj že 1 GB skoraj minimum, če že ni), tako da 4 o več GB sploh ni tako ZF kot se nekaterim zdi.  Sem imel priložnost preizkusiti Applov Mac Pro z 32 GB pomnilnika (uradno podpira 16 GB, vendar so ga fantje uspešno preliščiti )"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Comtron ima v katalogu že tudi par nižje cenovnih modelov z4GB RAMa"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Hitro prešaltat na Windows Server 2003, Datacenter Edition ali pa Enterprise Edition x86 .. pa bo mir."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Nisem rekel, da je 4G utopija, sploh ne, pri današnjih cenah RAM-a, samo zaradi SW-ja ni smotrno kupovati, ker kaj ti bo, če nimaš podpore in če noben program potem praktično ne uporabi toliko RAM-a? Govorim seveda o uporabniških programih in seveda okolju windows. Tole microsoft ni ravno najbolj zastavu... Hotu sem povedat, da gre kot zgleda za nateg kupcev, kajti prodajalec bi ti moral ob nakupu takega računalnika to lepo povedati in razložiti."
+    },
+    {
+        "role": "assistant_11",
+        "message": "čez 2 leti bo itak 32 bitni OS za nove PC-je zgodovina"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_9: edini programi, ki ne delajo na 64bitnih Windowsih so tisti, ki nalagajo kakšne gonilnike (večinoma gre za antivirusne programe), in pa 16-bitni Windows programi (za Win <= 3.x) in DOS programi."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Pa po večini še kake igre ane...???  Pa še kaj drugega."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Hitro prešaltat na Windows Server 2003, Datacenter Edition ali pa Enterprise Edition x86 .. pa bo mir. Seveda, takoj ko mi šenkaš $4k za Enterprise licenco...  Mi greš že na živce s to svojo Datacenter edition lajno; ja, lepo da ga imaš in ti dobro dela, še lepše če imaš dejansko legalno licenco. Ampak nehaj že enkrat težit drugim, da naj nabavijo OS s takšno absurdno ceno (absurdno za domačo uporabo).  Kar se (ne)delovanja programov tiče - ja, nekateri na 64-bitnih XP/Visti ne delajo oz. ni na voljo verzij za x64. Ampak za domačega uporabnika je redkokateri program nenadomestljiv in če eden ne dela, se skoraj zagotovo dobi delujočo alternativo. Problem so lahko kakšne starejše igre (recimo 5+ let) in pa predvsem gonilniki za nekatere naprave (TV kartice, printerji, skenerji, webcami...). Se mi zdi povsem nesprejemljivo, da si proizvajalci še upajo izdajat nov hardware brez x64 gonilnikov, ampak vsaj pri TV karticah je podpora res katastrofalna.  Sam uporabljam x64 XP-je in sedaj Visto že kakšno leto in pol brez resnih problemov. Zadnjega pol leta od tega s 4GB rama in v tem času sem se toliko razvadil, da nazaj na 2GB nikakor ne bi več želel . Za udobno delo z Visto se mi zdaj 2GB dejansko zdi premalo in ob trenutnih cenah rama vsakomur priporočam, da ob nakupu novega zmogljivejšega računalnika, doda še tistih 60€ za dodatna 2GB. Ne pravim, da je treba zdaj tlačit 4GB v vsako mašino za surfanje po netu in pisanje seminarskih; ampak razne Q6600/8800GT in podobne konfiguracije se mi pa zdi nesmiselno sparit s 'samo' 2GB."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če jaz recimo za en primer v comtronu, rolanu, jaetu.. itd itd.. kupim mašino z 4GB z nameščenimi XPji ki 4GB ne znajo uporabljat in sem dal za XPje denar.. gremo lepo na boljše windowse. To pa zato ker če mi proizvajalec računalnika ne more zagotovit da bom lahko 4GB uporabljal potem nevem kdo mi lahko. Windows-e si tako in tako kupil tako, da imaš licenco za domačo uporabo ... tudi če jih moraš iz neta potegnit da ti bo teh vseh 4GB uporabljalo pa si jih downloadaj .. noben te ne omejuje da si jih ne.   In datacentra sploh ne moreš \"piratizirat\" ker ga v trgovini ne moreš kupit .. in tistega česar ne moreš kupit ne moreš piratizirat. Vprašaj v comtronu če ti lahko pošljejo predračun za Windows Server 2003, Datacenter Edition .. in verjami mi rekli bodo da niso za prodajo in da jih dobiš samo zraven novega posebnega serverja z takih hardwarejem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Skratka, originalne Mona Lise ne moreš ukrast, ker ni naprodaj.  Lahko pa namestiš Linux in imaš hkrati legalno in delujočo programsko opremo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Skratka, originalne Mona Lise ne moreš ukrast, ker ni naprodaj. Ne. .. ampak. Če ti jo kdo zastojn ponudi in je dovolj prijazen da ti jo da ... da si jo skopiraš si jo ziher boš."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_7: datacenter ni za namizne računalnike, tolaži kolikor hočeš. Če ti pride inšpekcija, pa jim ti lajnaj o kopiranju kar počneš sedaj tukaj"
+    },
+    {
+        "role": "assistant_2",
+        "message": "In datacentra sploh ne moreš \"piratizirat\" ker ga v trgovini ne moreš kupit .. in tistega česar ne moreš kupit ne moreš piratizirat. Dečko, tu pa se zelo, zelo motiš."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_1 tukaj ni govora o linux-u. Kaj ti bo linux, ko pa spet zgubiš podporo pogrmaom/igram/...? Nič. Tu se debata o tem zaključi.   Govora je o 32-bitnih winsih, kjer je naš microsoft zajebal situacijo na celi črti s tem, da winsi preprosto ne morejo uporabiti vseh 4GB RAM-a če jih imaš notri oz. samiwinsi uporabijo prostor, samo noben program ga ne more. Tudi s stikalo sem skoraj 100% da ne moreš recimo rečt kakemu visual studiu, da ti lahko popapca 3,GB. (Seveda VS popapa precej RAM-a, če imaš še kak Resharper gor pa še kaj zraven...)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja, ampak to ni toliko problem Microsofta, kot je problem 32 bitne arhitekture. Če torej poganjaš 32 bitni OS na 64 bitni arhitekturi, moraš sprejeti nekatere omejitve, ki iz starejše arhitekture izhajajo. Nekatere matične plošče lahko flashas z novejšim BIOSom in potem tisto luknjo zaradi I/O predstavijo v petem gigabajtu, če seveda procesor in OS podpirata PAE (danes so to itak vsi).  Saj v tej in sorodni temi smo že večkrat razložili kaj so PAE, AWE in long mode - brez teh reči pač fizično ne moreš dostopati do več kot 4GB pomnilniških lokacij hkrati (pri tem pa je treba razumeti, da I/O lahko zasede precejšen del tega naslovnega prostora, kolikšen je pa seveda odvisno od naprav, ki so v računalniku).  @assistant_9> Kaj ti bo linux, ko pa spet zgubiš podporo pogrmaom/igram/...?  Alociraš lahko več pomnilnika. Nekaterim to zelo prav pride - si že videl kako šiba OpenLDAP, če ima bazo praktično ves čas v pomnilniku? Ja, tudi na 32 bitni mašini in ja, tudi na Linuxu vidiš samo 3.x gigabajtov pomnilnika, če BIOS ne zna pravilno predstavit I/O prostora."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Če imaš računalnik baziran na 64-bitni arhitekturi, potem bi lahko OS bil sprogramiran tako, da uporabi več kot 4GB."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_9> Če imaš računalnik baziran na 64-bitni arhitekturi, potem bi lahko OS bil sprogramiran tako, da uporabi več kot 4GB.  Ja, saj je. Windows x64.  Pri Linuxu je + ravno dostopnost izvorne kode. Programje je treba le prevesti z ustreznimi nastavitvami in reč deluje (če ni programer preveč pogumno predvideval kakšnih reči).  Res je sicer, da bi Microsoft lahko v vseh različicah Windows uporabil tiste mehanizme, ki jih 64 bitni sistemi ponujajo, vendar je zanj bolje, da uporabnik še enkrat plača za novo različico sistema. Da programje morda ne deluje na tej novi različici tudi ni njihov problem in prepričan sem, da tudi njihovi poslovni partnerji nič ne jamrajo, če lahko dodatno prodajo še 64 bitno različico programa."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Kaj pa boste rekli na to.  8 giga RAM."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Keri butci... Kwa ti bo tolk rama na eni grafični??? Če bi dal vsaj GTX SLI notr, potem bi lahko rekel mrcina. To je samo preseravanje, ker je itak neizkoriščeno... Če noben program ne more porabit več kot 2GB RAM-a (potem tudi igra ne more), potem je čist brezveze imet več kot 3GB RAM-a v računalu. Boljš dat pol notr 4 grafe v quad SLI kot pa 8 GB ram-a. Totalno neuravnotežen računalnik. Hiter proc, in veliko RAM-a, grafična sicer v visokem razredu, vendar samo ena in na koncu počasen disk.  Dobra kombinacija."
+    },
+    {
+        "role": "assistant_2",
+        "message": "64 bitni OS s 64-bit softwarom seveda lahko uporablja precej več kot 2 GB rama."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ja pa ti noben program ne zna porabit več kot 2GB! 8GB bi lahko uporabil edino za virtual disk v RAM-u."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_9> Ja pa ti noben program ne zna porabit več kot 2GB! 8GB bi lahko uporabil edino za virtual disk v RAM-u.  Res?  Moj program trenutno brez težav uporablja 7GB. Le kako je to mogoče?"
+    },
+    {
+        "role": "assistant_15",
+        "message": "tudi pri meni zna program uporabit ves RAM, brzcas je to kaksen cudez"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Jaz pa še nisem videl igre v winsih, ki bi pobrala več kot 2GB... Spet zgleda eni mešate windows in linux skupaj."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hmm... kdo pa govori o igrah?  Ti in to ves čas. Tudi pri meni marsikateri program brez problemov ponuca 3 GB ali več RAM-a, če pa ne, pa ostanek RAM-a uporablja namesto pagefile-a, kar je super, saj mi disk toliko ne škrta, pa vse skupaj mi še hitrejše odpira."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Že od nekdaj velja, da rama ni nikoli preveč. Nima veze, koliko grafičnih imaš ob tem v računalniku . Če ne druga, se bo magari ostalih 6GB porabilo za cache in boš pač toliko manj slišal disk; že to je skoraj vredno nakupa 8GB (sem že razmišljal o tem, glede na to, da se ga trenutno dobi že za 240€ - manj, kot sem pred pol leta dal za 4GB)."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Svetovna zarota; MS je namerno v task manager vkjučil, da kaže vsaj 4krat več rama porabljenega na program, kot pa je dejansko v ram ploščici.  Sej je logično. Če jaz vzamem 500MB tabelo, na kateri delam operacije, mi task manager kaže porabo vsaj 6000MB. (da je polno preslikav, sortov, simd.. ni važno, dal sem mu pol giga in nima kej jokat!) Zarota MSja, vam povem!!! Pa zihr so tudi same ram ploščice manjše, kot pa piše."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jaz pa še nisem videl igre v winsih, ki bi pobrala več kot 2GB...   Igre (razen FarCrya pa morda še kere) niso 64-bitne, zato seveda ne morejo naslavljati več kot 4 GB pomnilnika (ki je deljen 2+2)."
+    },
+    {
+        "role": "assistant_17",
+        "message": "@assistant_1 o kaksnem programu pa to govorimo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "O java aplikaciji, ki kopira podatke sem in tja med številnimi dislociranimi enotami.  Večja količina pomnilnika je na voljo, manj je treba dejansko potiskati skozi omrežje (ker lahko več transakcij zbašeš v eno samo in združiš redundančne spremembe)."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Še mojih 2 centa    Na 32-bitnem sistemu program uporablja največ 2 GB RAMA, ostalo uporablja sistem in ostali programi. Z uporabo /3GB lahko program uporabi največ 3 GB RAMA ostalo lahko uporabi samo sistem. Uporaba /3GB dostikrat prinese nestabilnost in sesuvanje nekaterih programov ali celega sistema.  Torej na 32-bitnem sistemu program lahko uporabi največ 2 GB RAMA, tudi če ti ga Windows zaznajo 3,5 GB. Tudi Photoshop lahko uporabi samo 2 GB RAMA. Isti 32-bitni program lahko na 64-bitnem sistemu uporabi celotnih 4 GB RAMA. Sicer 64-bitni sistem lahko da 32-bitnemu programu na razpolago celih 4 GB RAMA, ampak tukaj so problem programi, ker skoraj noben 32-bitni program ne zna uporabiti več kor 2 GB RAMA. Je pa možnost, da se 32-bitni program skompila z /LARGEADDRESSAWARE in bo tako lahko na 64-bitnem sistemu uporabil celotnih 4 GB RAMA samo zase, več pa tudi tukaj ne gre.  Na 64-bitnih sistemih lahko uporabljaš do 128 GB RAMA (ampak ne na vseh)  Na Visti x64 delujejo popolnoma vsi 32-bitni programi. Tukaj je največ zmede in nesporazumov, ker ljudje ne znajo zagnati programa in mislijo, da ne deluje. Včasih se zgodi, da moraš kakšnemu programu dodeliti Aministratorske pravice, da se lahko zažene, lahko pa mu določiš tudi kompatibility mode če ima še vedno probleme. Tako pripraviš do delovanja čisto vsak 32-bitni program.  Še enkrat poudarjam: SKORAJ NE OBSTAJA 32-BITNI PROGRAM, KI SE GA NE BI DALO POGNATI NA VISTI X64 ! (razen kakšni stari antivirus programi, ki se ne držijo pravil) To velja tudi za vse igre, če le niso 16-bitne. Osebno še nisem naletel na igro, ki ne bi delovala, pa včasih zaženem tudi kakšno 10 let staro miselno igrico    16-bitni programi ne delujejo in ni variante, da bi lahko kdaj sploh delovali. (To so DOS programi in pa programi do Windows 3.11)  Pravih 64-bitnih iger je res bolj malo, ampak nekaj pa jih le je: Crysis, FarCry, ArmedAssault, Shadow Ops: Red Mercury, Riddick, Unreal Tournament od 2004 naprej, Half-Life 2, Half-Life 2: Episode 1, Half-Life 2: Episode 2 Verjetno sem še kakšno spregledal  64-bitni driverji so že nekaj časa enako dobri kot 32-bitni. Deluje čisto vse, celo za vsako staro TV kartico se dobijo driverji.  Če imaš več kot 3 GB RAMA ni razloga, da bi ob nakupu računalnika kupoval 32-bitni sistem. Vsekakor pa priporočam 64-bitno Visto, ker 64-bitni XP so precej slabše podprti in se jih je bolje izogniti."
+    }
+]

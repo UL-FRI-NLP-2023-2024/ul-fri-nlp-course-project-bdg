@@ -1,0 +1,114 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Doma imam router Linksys WRT54G, katerega imam priklopljenega na ADSL in super dela. Sedaj sem našel še en brezžični router Siemens Gigaset SE505. Imam pa en računalnik stacionarni postavljen kjer ni kablov.  Sedaj želim ustvariti povezavo. ADSL->Linksys....wireless....Siemens->računalnik  Vendar sploh nevem kje začet oz kako nastaviti na siemens routerju da bo delovalo. Prosim za pomoč.   lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "SE505 podpira WDS  Siemens Gigaset Customer Care: http://tinyurl.com/yp3qfw   lahko pa ga flašaš z DD-WRT: http://tinyurl.com/222yt2   How do I use WDS? http://tinyurl.com/yvzngd"
+    },
+    {
+        "role": "user",
+        "message": "Bom poskusil z tem, če bo delovalo, vendar nisem prepričan če ste me pravilno razumeli. Med Siemensom in računalnikom more biti žična povezava, internet pa preko wlana do Siemensa.  Hvala lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "aces point?"
+    },
+    {
+        "role": "user",
+        "message": "Shema   polna črka-kabl črtkana črta - wireless  lp"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mogoče sicer ne najcenejše, ampak kaj pa če Siemensa dumpneš in za tadrugi računalnik kupiš WLAN kartico?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ti bi rad naredo povezavo med linsys in siemensom"
+    },
+    {
+        "role": "user",
+        "message": "rad bi, da siemens deluje kot \"wlan kartica\" Gre za to da se mi ta siemens valja v omari, trenutno brez uporabne vrednosti. in sem se domislo, da ga lahko uporabim, namesto da kupim wlan kartico.  lp"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kot je rekel že jeje997, inštaliraj DD-WRT na Siemensa. Potem pa ga daj v \"bridge\" način in nanj enostavno poveži (s kablom) drugi PC."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za vse odgovore.  Stanje je tako: Flashal sem router z DD-WRT mini generic v23. Preko TFTP (operacijski sistem Linux, distribucija VLOS). Vendar neuspešno. Pingam lahko samo stari IP 192.168.2.1, namesto 192.168.1.1 kot naj bi bil po flashanju. web wmesnik ni dosegljiv noben. đ Natančno sem sledil navodilom, tako da nevem kaj bi lahko bilo narobe.  lp"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Možno je da nisi uporabil pravi firmware. Si preveril, če DD-WRT podpira tvoj model routerja?"
+    },
+    {
+        "role": "user",
+        "message": "Vse težave rešene. Pomagalo je: -flashanje z orginalnim firmwarom -ponovno flashanje z dd-wrt  sedaj dela idealno  Opomba. Siemens gigaset se505 potrebuje ogromno časa za izvajanje operacij!  lp hvala vam"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Saj piše v navodilih: 5 do 10 minut"
+    },
+    {
+        "role": "user",
+        "message": "kar ni bilo nikakor dovol, na v drugo sem počakal dobro urco, prvič pa 20 minut   lp"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pozdravljeni!  Tudi sam se danes ubadam s podobnim vprašanjem, pa ne bom odpiral nove teme - @user, upam da ne zamerip :). Imam 2 brezžična routerja - enega Linksys WRT54GL (flashan z Tomato v.1.0.7), drugi pa je Belkin Pre-N Wireless Router. Drugega želim uporabiti kot podaljšek trenutnemu brezžičnemu omrežju, če bi mi ju uspelo povezati skupaj bi Belkina postavil na balkon in tako znatno razširil moje omrežje.  Ali obstaja možnost, da Belkina brezžično povežem z Linksysom. Belkin sicer ima opcijo, da deluje kot Access Point, vendar ne vem kaj bi mi to koristilo, ker Belkin ni priključen na internet.  Za vso pomoč se vam zahvaljujem."
+    },
+    {
+        "role": "user",
+        "message": "Poišči če ima belkin opcijo BRIDGED. Potem naj bi delovalo. Drugače pa ti svetujem, da preveriš če je tvoj model mogoče flashati z dd-wrt, kjer imaš možnost bridged.  P.S. nisem jezen  lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "rad bi, da siemens deluje kot \"wlan kartica\" Gre za to da se mi ta siemens valja v omari, trenutno brez uporabne vrednosti. in sem se domislo, da ga lahko uporabim, namesto da kupim wlan kartico.  Te skoraj ceneje pride, če kupiš kartico -> poraba elektrike 24/7/365 je kar 170 kWh"
+    },
+    {
+        "role": "assistant_7",
+        "message": "tudi jaz bi se pribružil temi, če se lahko ;) doma sem povezal dva wrt-ja z DD-WRT v WDS... nisem najbolj zadovoljen saj je med routerjema v sobah (8 metrov narazen) dokaj slaba povezava (cca 35%)... ampak zadeva dela. Naredil sem po navodilih od Tomato firmware FAQ  V spodnji etaži pa imam wifi PCI kartico na win98 kjer pa je vedno ko vklopim PC problem konektanja na wifi mrežo... po dolgem skaniranju najde kartica oba routerja vendar se le redko poveže na kateregakoli nato pa traja še enkrat toliko da se poveže na internet preko routerja. (signal je cca 47%)  ali je mogoče kakšna pomembna nastavitev v DD-WRT da bi spodnji pc hitreje prišel na net... mogoče kakšen drug SW za PCI wifi kartico ne pa original od linksys-a?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Residual, najprej poskušaj povečati Transmit Power (v Tomatu, Advanced: Wireless), tam nekje do 70mW lahko greš (to priporočajo, vendar sem se jaz oddaljil na 50mW, kar zadostuje mojim hišnim potrebam), čeprav sem bral po forumih, da je v Ameriki primarna nastavitev 100mW? Prav tako malce razmisli o lokaciji routerja, jaz imam enega Linksysa, pa imam signal po vsej hiši (dvojne stene 0,55m, armatura v vseh stenah)."
+    },
+    {
+        "role": "assistant_7",
+        "message": "hvala za odgovor ;)  sem probal v DD-WRT v23 SP2 tudi transmit power nastavljat (28 default, 30 do 100 sem probal- ni bistvene razlike), poskusil sem vklapljat ostale opcije (fiksni/auto kanal, B/G/mixed varianto, afterburner ON/OFF, obračal pololožaj anten...) a nisem kaj izboljšal linije.  Ko se povezava med routerjema (WDS) vzpostavi je par sekund 100% potem pa pade na tistih 35% ... internet laufa na obeh OK, problem je stabilen in kvaliteten signal... sploh PCI wifi je problematična! mogoče so krive kakšne nastavitve... ne bom še ubupal, eno pa je jasno - najboljše je imet kabel ;).   LP"
+    },
+    {
+        "role": "assistant_7",
+        "message": "OK, še vedno ne dela kot bi moral ;(, postajam že malo slabe volje...  oba linksysa v isti sobi 2m narazen v WDS vezavi pa kaže wds meter samo 78% signal quality ?!? ko sta vsak v svoji sobi (cca 8m narazen) pade signal na 34 % ...   oba routerja sem flashal na dd-wrt v23 sp2 standard tako da če je FW OK, bi moralo delat na 100%, ane?... probal sem v dd-wrt ojačat signal anten na obeh a nič boljše.   spreminal sem celo enkripcijo WPA in WEP ... pa nič boljše.  če se povežem z laptopom (dhcp) na katerikoli router v sobah je signal pri dveh metrih router-laptop samo 65% quality... vsaj tako kaže dd-wrt, medtem ko wifi USB asus wl-167g kaže signal strenght in quality 100%...  ali je možno da je dd-wrt prikazovalnik moči/kvalitete signala \"prepošten\" ? ker pol se ne bi več sekiral... ;)  drugače bi pa najraje še tomato gor vrgel in primerjal...   če ima kdo dva routerja vezana v WDS naj mi prosim pove kako narazen sta/so routerji in kako ima kvaliteto povezave med njimi... malo okvirno, da vidim ali mene *ebe sistem ali je nekaj normalnega, da je tako slabljenje signala na teh par metrih....   hvala in LP"
+    },
+    {
+        "role": "user",
+        "message": "Posebej za tebe sem naštimal razdaljo 2m. Rezultati:  AP Signal Signal Noise SNR -38 -72 34   lp"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ko imaš dva routerja v WDS modu se hitrost na drugem prepolovi in ti verjetno to povzroči problem povezave win98 kište na wlan. Jaz osebno imam WDS med dvema linkys-oma na cca 500m z zunanjimi antenami in deluje stabilno 10Mbit/s 24/7, pa tudi moč imam veliko nad dovoljeno pa zadeva deluje že 3 leta stabilno"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user: kvaliteto bom še danes primerjal z mojo doma... hvala ;)  @assistant_8: super, kar se tiče wds prepolovitve signala se strinjam, to me ne moti samo da je na dveh metrih 78% signal quality pa je žalostno. (dopuščam da je prikaz v FW kriv oz. \"prepošten\", do sedaj sem kar zaupal in bil zadovoljen z dd-wrt FWjem)  Imam pa vprašanje katere antene uporabljaš ker bi tudi jaz rad na streho poknil eno omni anteno da is razširim AP na nekaj 10 m okoli hiše. Kako si priklopil zunanjo anteno na linksys-a, na levo ali desno anteno, in si katero izklopil v FW ter kako?   danes me čaka še en večer testiranja, če ne pridem skupaj s @userjevim rezultatom grem še na tomato, thiborja ali kaj druga ki podpora wds    pol bo pa materiala že za kake pol članka...  Lp"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Sem primerjal signal na obeh routerjih pri:  A: razdalji 2m (WDS): 82% quality 1. ruter 2. ruter Signal Noise SNR Signal Noise SNR -30 -98 68 -28 -98 70   B: razdalji 5m - 1 stena 20cm (WDS): 49 % quality 1. ruter 2. ruter Signal Noise SNR Signal Noise SNR -56 -98 42 -54 -98 44   C: razdalji 9m - 2 steni 20cm (WDS): 33 % quality 1. ruter 2. ruter Signal Noise SNR Signal Noise SNR -66 -98 32 -66 -98 32   Glede na @user primerjavo ima on Noise -72, jaz po nastavljenega na Noise -98..., hmmm...    še ima kdo kake meritve za pokazat"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Na eni strani (glavno vozlišče) uporabljam tole  slot anteno, na drugi strani pa je ena home-made Quad antena. Vsekakor se na obeh routerjih moral 1 izhod izklopit, ker drugače je izguba paketkov, ker linksys ne ve katero bi uporabil. Mogoče bi ti tudi lahko probal za tvoj WDS. Povezava med antena v mojem primeru ni nevem kaj, mislim da drži na 18% ampak deluje stabilno brez izgube paketkov in prenos preko ftp-ja deluje konstanta 1,2MB/s (polnih 10Mbit), tako da sem zadovoljen, s tem, da je na glavno anteno obešenih še nekaj navadnih wlan odjemalcev. Pa tista kvaliteta signala ki jo izmeri DD-WRT ni nujno da je ravo ta prava, važno ti je bolj da nimaš izgub, ker podoben blem sem jaz imel z eno omni antenco, kar je slotka potem popravila. Btw, na prodaj imam tisto staro omni antanco z cca 7m kabla in konektorji za linksysa, idealno za teb"
+    },
+    {
+        "role": "user",
+        "message": "Te skoraj ceneje pride, če kupiš kartico -> poraba elektrike 24/7/365 je kar 170 kWh  No sem šel preverit to tvojo trditev in merit tok, ki ga porabi se505. Porabi 300mA , ne pa 1000mA ki jih je sposobn dat adapter. Tudi pri obremenitvi ne gre tok preko 350mA.  lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "A si slučajno meril, koliko žre adapter?  Že zvočniki ko idlajo žrejo 5W ..."
+    }
+]

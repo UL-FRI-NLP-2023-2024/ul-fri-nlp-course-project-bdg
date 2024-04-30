@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo. Malo me mika, da bi sprogramiral kakšen procesorček za zabavo. Rad bi naredil, da se led diodica na vsakih 5 sekund prižge in ugasne. S tem, da bi lahko procesor sprogramiral kar v Cju, ker assemblyja ne znam. Problem je pa v tem, da nimam pojma kako se programira take stvari. A rabim kakšno posebno ploščo za programiranje teh stvari, ali se da nekako procesor povezat direktno z rs232 portom in ga na tak način sprogramirat?  Torej kaj vse rabim? Ma kdo kakšen manual za tak začetniški projekt?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če teh stvari sploh ne obvladaš, potem ne inssistiraj na Cju.  Dobi si kje kak skrajno enostaven mikrokrmilnik in soliudno razvojno orodje zanj.  Microchipov MPLAB je zastonj in je relativno visoko ocenjen, PICi so razmeroma enostavni majhni luštni čipi ( samo 33 ukazov !) in dobi se tudi majhne FLASH modele.  Zanesljiv vir mi je rekel, da se bo dobil v kratkem zelo poceni ISP programator, to pa je tudi vse, kar res rabiš.  Majhni FLASH PICi so tudi praktično samozadostni, tako da posebnih doddatkov ne rabiš. Počiš čip, kjer bi ga rad imel, poskrbiš za napajanje in prilotaš tistih nekaj pinov na konektor, ki jih rabiš za programiranje v vezju in to je vse."
+    },
+    {
+        "role": "user",
+        "message": "ja.... sam v prihodnosti bi zelel povezati se lcd ekrancek in par tipk, pa termometer mogoce, pa ram modul."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pravi naslov zate je  Mikroelektronika.co.yu  Za začetek si lahko kupiš že precej zmogljivo  Razvojno okolje za PIC, ki je hkrati tudi programator, lahko začneš seveda tudi iz nič. Rabil boš  Programator in pa kakšno testno ploščo.  Na mikroelektroniki je tudi on-line knjiga o programiranju PICov v asemblerju. Nauči te osnove (ukaze, zanke, zakasnitve) in pa tudi težje reči (krmiljenje LED displayev, LCD displayev, AD pretvornika itd).  Knjiga - klik  Če ti asembler ni simpatičen pa lahko preizkusiš  MikroC for PIC. Na strani je sicer preizkusna verzija. Edina omejitev je, da lahko narediš največ 2k veliko hex datoteko (kar je za začetek že ogromno)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Em...   Sicer mi ni jasno, zakaj toliko forsirate asembler, ce je avtor zelel C.   Se ostala izbira:  AVR:  WinAVR - tu malce pobrskaj po linkih, kjer imas tocno tak primer, kot zelis - utripanje LED, IAR,... MSP430: GCC, IAR,... LPC900: Keil  Vsi omogocajo prakticno brezplacen programator in enostaven primer, ki omogoca takojsen zacetek (periferijo moras pa poznat v vsakem primeru). Trgovine z materialom so pa tudi doma. Poglej se malce Svet elektronike, kjer je nesteto clankov o zacetkih in primerih. Zadnje stevilke imajo nekaj precej enostavnih primerov z AVRji."
+    },
+    {
+        "role": "user",
+        "message": "od teh ze sestavljenih vezij se ne bom nc naucu.  Men je ful vsec tale 8051 oz 8052. Torej ce bi zelel da se mi ledica priziga, rabim ta procesor, en kristal pa eno ledico ne? pa par uporov? vse to potem zvezem na com port, sprogramiram z namensko programsko opremo in zadeva mora delat ne?  al mogoce rabim tudi kaksen pretvornik 2 -> 8 bit, glede na to da ima rs232 sam 9 pinov?"
+    },
+    {
+        "role": "user",
+        "message": "Tale mi je ful všeč:  http://tuxgraphics.org/electronics/200702/article07021.shtml"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Glede 8051:   Načeloma ja, vendar je \"8051\" generična oznaka, ki danes označuje družino jedra in ne sam čip, na trgu pa je veliko izvedenk.  Priporočam kakšno trotlziher z vdelanim FLASHom in ISP programmable, kot je denimo Atmelova 89xx.   Tam pa že ni take razlike do AVR. Tega dela tudi ATmel in ima bistveno močnejše jedro od 89xx in bo zato bistveno lažje napisati program zanj."
+    },
+    {
+        "role": "user",
+        "message": "ker je potem najhitrejsi in najmanjsi z dovolj integriranga rama in ki se ga da programirat z C oz kaksno namensko programsko opremo? V prihodnosti nej bi uporabljal graficni LCD ekrancek, in proc nej bi bil sposoben za kaksno hitro izrisovanje ipd... :P"
+    },
+    {
+        "role": "assistant_0",
+        "message": "C načeloma stane. Ne dobiš ga akr tako zastonj. No, Keil je svojčas dajal okrog oskubljene verzije, samo te so bile res omejene ( ponavadi z velikostjo kode).   Ker je najboljši ? Težko rečt. Izbira je _ogromna_ . Glede na to kje začenjaš ( blinkanje LEDice) bi se na tvojem mestu orientiral raje na to, kaj zmorejo razvojna orodja kot na to, kaj zmore sam čip. Za LEDico bo več ko zadosti dober.  Ko boš pa rabil kaj boljšega, boš pa pač ponovil vajo in izbral znova.   Kar se Cja tiče, se IMHO res ne splača komplicirat z njim, vsaj ne za majhne projekte.  C te izolira od HWja, vendar ima to lahko tudi slabe posledice. Compiler ni vsemogočen, sploh pa mogoče ne ve kaj točno si ti hotel in je koda lahko daleč od optimalne, kar pomeni, da rabiš dodaten čas da lahko spoznaš svoj compiler in njegove meje, nato pa se pri vsakem projektu še sprijazniš s tem, da čip ne bo optimalno izkoriščen.  Nič ne rečem, za kakšne bolj kompleksne projekte zna biti C edini racionalen odgovor, za blinkanje LEDice pa ga res ne rabiš.  No, to je samo IMHO, počni kar hočeš zaradi mene.  Tako na pamet bi ti mogoče lahko stresel par predlogov iz rokava, kjer lahko začneš iskanje:  - Microchip PIC. Dosegljive zadeve, relativno poceni, pa še izbira je velika in kar nekaj družin je vmes. Razlikujejo se v osnovi po velikosti jedra. 18C je kar solidna, vendar še vedno majhna zadeva.  - MIcrochip dsPIC. Nekakšen morf PICa in DSPja. Ni ne tič ne miš, nekaj vmes.  - Atmel AVR. Atmelova konkurenca PICu, vendar s precej hitrejšim jedrom. NI pa toliko izbire glede modelov in ATmelov IDE mi je bil vedno nekako grenak.  Drugače čipi nikoli niso bili napačni.  -Texas Instruments je zadnje čase precej agresiven in ima kar precej čiperaja. Preveč za opisat, je treba pogledat.  - Philips ima precej izvedenk z ARM jedrom. Ta bi bil mogoče boljša izbira, če inssistiraš na Cju.  -INfineon je imel nekaj solidnih čipov.  - Bivši Hitachi ( sedaj Elpida ?) je imel SuperH. Majhen, strupeno hiter čip."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tukaj je možno omeniti še Fujitsu FX (zaenkrat meni še popolna neznanka), TI pa forsira MSP430 (precej clean 16-bit RISC z nesramno majhno porabo; GCC podpora ni ravno optimalna). Takoj ko si želiš bolj kompliciran sistem(nad 20 MIPS) ti preostanejo le ARM7 TDMI, 9 in 11 rešitve, specilizirana FPGA vezja in morda še novi 32-bitni AVR Atmel. Dosti take robe po dokaj ugodnih cenah ponuja Olimex.  Razvojna okolja za AVR 8-bit, PIC in MSP430 so poceni in noben od teh čipov ni prezakompliciran za domačo amatersko uporabo. Kar se tiče programske podporei n spisane ponovno uporabljive kode pa bi si skoraj upal trditi, da prednjači Atmel."
+    },
+    {
+        "role": "assistant_4",
+        "message": "PIC je dober za začet, dobiš lahko zastonj sample, programator je preprost (kakšen JDM naprimer), za programe pisat imaš zastonj MPLAB in tudi c compiler študentsko verzijo (edina omejitev je, da po enem mescu ne moreš vklopit nekaterih optimizacij...katere to so, mi še ni uspelo ugotovit). Torej naroči si enega 18fxxx v 40 pinskem DIP ohišju, narediš mu še preprosto ploščico in je."
+    },
+    {
+        "role": "user",
+        "message": "ja brane, mene tudi skrbi ta odtujenost od hardwera, po drugi strani me pa skrbi veliko dela v asemblerju za se tako preproste stvari, kot je lcd."
+    },
+    {
+        "role": "assistant_5",
+        "message": "CCFly >Takoj ko si želiš bolj kompliciran sistem(nad 20 MIPS) ti preostanejo le ARM7 TDMI, 9 in 11 rešitve, specilizirana FPGA vezja in morda še novi 32-bitni AVR Atmel. Tja to 40MIPS gredo tudi 16-bitni dsPIC in pic24. Ampak kar je nad 75MIPS so le kakšna divja ohišja tipa BGA. Ali pač?   @assistant_4 Mislim, da gre tu za O2,O3 in Os optimizacije. Lahko uporabljaš le O1. Ki pa mi je na enem primeru, dala zelo podobne razultate kot ostale verzije. Velika razlika pa je med optimiranim in neoptimiranim programom.    @user Ma fino je spoznat assembler najprej, ampak je muka delati z nekaterimi stvarmi v primerjavi s C-jem. Predvsem sem vedno dobival sive lase ob kakšnih pogojnih stavkih... Ampak nič ne zato, ti si dobi enega 16f628a (4€), pa recimo narediš en serial ali paralel programator  PIC Projects. Pa začni z lučko, pa tipkami. Če pa res hočeš C pa si dobi kakšno demo verzijo kakega C prevajalnika, kot so MicroC, hi tech picc, ccx..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Za prižigat diode in ostala preprosta opravila zna bit zanimiv  Arduino na osnovi AVR ATmega8. Sicer ga sam še nisem sprobal, mam namen naredit vezje ta teden, ker mi že nekaj časa leži en mega8 doma. Je pa res da z njim ne spoznaš samih osnov mikrokrmilnika."
+    },
+    {
+        "role": "user",
+        "message": "pravkar gledam datasheet od atmel am2911A, ki ga prodajajo pri ic-elektronika. zgleda zelo preprost, 4 bitn. (me pa neki zanima, kako prklops 2 lcdja na tak mikrokontr/proc, ce imas sam 4 izhode?  )"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če boš atmela programiral, vzami potem recimo at tiny 2313 (8 bit) za začetek. Ima 18 pinov. Za LCD rabiš 6 povezav. 4 podatkovne, 2 kontrolne.  Tukaj pa imaš en super avr tutorial za gcc (winavr):  klik."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Glede na to, da si popoln zacetnik bi ti jaz priporocal Philipsove LPC900 (8051) mikrokontrolere. Z 16 in 32 bitnimi (MSP430, ARM...) se raje malo pocakaj. Prednost teh Philipsov je, da ne potrebujejo nic zunanjih komponent. Priklopis jim napajanje in ze jih lahko programiras. Odpadeta ti reset vezje in oscilator. Programiras pa jih lahko preko RS232, programator pa je dost enostaven, da si ga lahko izdelas sam. Tudi orodje za programiranje (flash) je zastojn, le C compiler ni."
+    },
+    {
+        "role": "user",
+        "message": "ah škoda ker ne špraham nemško.  torej ne mores 2 lcdja prklopt na en 8 bitni oz 4 bitni mikroproc? se da narest, da naprimer uporabljas 4 pine za en lcd, 4 pa za druzga?  (btw, moram se pridet do te faze, kako prklopt proc na pc, da se ga da sprogramirat sploh  )  hm tist AVR simulator je zakon...  @assistant_7, ja teli cipi so mi vsec. izgleda da imajo vse integriran, pa se 3x 8bitne I/O majo. zakon. Verjetno bom vzel unga z 16kB flasha."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ojej, dajte mu x86 arhitekturo predlagati. 75 mipsov...   Da se priklopiti več LCD-jev na en mikrokontroler. Dejansko rabi LCD, če govorimo o 2x16 oz podobnih tipih, 4 podatkovne in 3 kontrolne povezave. Dejansko bi se dalo iste štiri podatkovne povezave peljati na različne LCD-je, s komandnimi bi pa le enemu rekel, naj te posluša. Recimo.  Če imaš namen naresti tiso avto klimo, ne potrebuješ pol tiča mipsov. Zadostuje ti praktično karkoli, kar ima zadosti nogic (IO).  Jaz delam s PICi. Najraje imam 16f876a in 12f675, vmes pa 16f688. Pišem v ASM in PICC razvojnih okoljih.   Doslej mi je bila hitrost procesorja ovira le, ko sem pisal tetris za na TV, a sem uspel, brez uporabe kakršnegakoli integriranega vezja. Le s PIC16f876a, koda pa obvezno v ASM. C ni prišel v upoštev, ker je procesor prepočasen za neoptimizirano kodo."
+    },
+    {
+        "role": "user",
+        "message": "ok odlocu sm se PICe programirat, ker so dalec najbl podprti... verjetno tut najlazji.  Sem nasu se tole:  http://www.jdm.homepage.dk/newpic.htm  Torej bom tko povezu na com port, izdelu lasten program za uploadat hex fajle... al kva se ze uploada na pic :P potem sam se eno ledico prklopm na izhod pica in to je to :D (upam)    mmmmm kva sm nasu... glih to kar rabim :D  http://www.mstracey.btinternet.co.uk/pictutorial/pipage2.htm bom jutri malo prestudiral tole zadevico.... zgleda super, ker je tko simpl :D"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Svetujem ti tole, ali večjo sestrico, na kateri lahko sestaviš tudi programator. Tule je sestavljen že omenjeni tetris. Pice dokaj radodarno delijo tudi kot sample."
+    },
+    {
+        "role": "user",
+        "message": "ma ne... jz hocem zacet pr cist simpl zadevi, tko da se kej naucim. ce bo ze vse integriran, razni rami, lcdji ipd, ne bom nc samostojno naredu. hocem se naucit kako sestavit programator (zdej vem), potem kako flashat (to tut vem od zdej),.. sam se programirat pice se moram naucit... pa ledico preklapljat. potem pa naprej z integracijo pomnilnika, lcdja ipd....  tale programator bom naredu, ker je narejen za rs232 port:    edit: a ti to o tisti plasticni zadevi, kjer se vtika te zice ipd?   hmm... bom kr dokocno naredu programator... ker tisto mi zgleda bedno, ker lahko komot kako zico vn spulis....   skoda, da custom software za  flashat ne podpira nobenga vezja, ki bi delal na usb :( bi blo mal bl kreativno vsaj :D  edit: aja ker sem bl noob v tem, me zanima, če je možno uporabit eeprom ali flash pomnilnik kot podaljšek za zapis programske kode? ali je samo za shranjevanje spremenljivk?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ja, jaz o plastićni bedno izgledajoči zadevi. Zelo uporabno, veš. Nadomesti vse razvojne ploščice."
+    },
+    {
+        "role": "user",
+        "message": "zcert, a ti si prov igrico tertis naredu, ki se jo da gledat na tv? a si to uporabil analogni al digitalni signal? ze to da dela ok pri taki resoluciji tetris v 32 bitnih barvah je zakon... komi cakam da se naucim"
+    },
+    {
+        "role": "assistant_8",
+        "message": "32 bitnih barvah... Dream on    Pal standard, 4 bitni digitalno analogni pretvornik (z upori), 2 bitne \"barve\", en bit za sinhronizacijski nivo. So pa pacienti, ki so ga naredili v barvah. No ja, vsaj za  enega vem."
+    },
+    {
+        "role": "user",
+        "message": "joooj kva me mika da bi se zdej spravil programirat :D sem prebral pol tistega tutoriala, in mislm da bi ze znal sprogramirat en grafični lcd, vstavit en ram in narest moznost prenasanja slike iz racunalnika na lcd ekrancek :D res zakon zadeva. assembler jezik je tolk simpl... sam skoda da ni multitaskinga... vsaj do polovice tutoriala ne :D  v glavnem ce bom hotu 640x480 slikce iz pcja prenasat bom rabu 1 MB ram (640x480x3), razn ce bom mel direktno povezavo na lcd, sam to bi potem lahko ze kr direkt iz com porta na lcd povezu. še rs232 port memory ključek bi lahko naredu :D"
+    },
+    {
+        "role": "user",
+        "message": "a kdo ve kje bi dobil barvni grafični lcd, ki so v mobitelih in imajo veliko gostoto pik na površinsko enoto, ter se jih da programirat podobno kot navadne lcdje? (za nizko ceno seveda)"
+    },
+    {
+        "role": "user",
+        "message": "grrrr... sam da tole preberem http://ww1.microchip.com/downloads/en/D... pa me zacne glava bolet... nc mora bit C++ programabilen čip."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ti si pa en velik optimist... Malo prej sprašuješ kako prižigat LEDico, zdaj pa že ugotavljaš, da bi znal iz PCja pošiljat grafiko in prikazovat na grafičnem zaslonu???? A misliš, da če je datasheet dolg, to pomeni, da je nekaj slabega? Ravno obratno!  Kot ti je @assistant_8 svetoval, nabavi si protoboard (tisto plastiko, na kateri je on zgradil tetris. ZAČNI NA ZAČETKU. Svetujem ti (kakor večina ostalih), da vztrajaš pri assemblerju! Tipke, LEDice, mogoče LCD... C++ pozabi! Za mikrokontrolerje je primeren C, objekti v 392 bajtih RAMa nimajo kaj iskat (primer za PIC 16F876A)."
+    },
+    {
+        "role": "assistant_10",
+        "message": "1.Datasheeti MCUjev niso Harry potter. Priporočljivo je da prebereš vsaj osnove hardverja, uporabni pa so predvsem med razvojem, ko prideš do točke kjer rabiš del hardverja pogledaš kako se uporabi.  2. Tudi če boš programiral v Cju (ja, ne C++ ker nima smisla) boš še vedno moral prebrat datasheet isto kot da delaš v assemblerju. MCU je namreč vedno treba inicializirat, deklarirat registre, določiti funkcije portov, omogočiti prekinitve ipd. Če misliš da je to kot PC se nekoliko motiš. Večinoma moraš vedno kaj praskati po hardverju procesorja. Če pa že procesorja ne pa vse periferije. Za večino periferije moraš najprej napisati gonilnik (kar pomeni lahko tudi pardnevno ali tedensko obdelovanje datasheeta) in šele nato njegova uporaba.  res zakon zadeva. assembler jezik je tolk simpl... sam skoda da ni multitaskinga... vsaj do polovice tutoriala ne :D  Zakaj bi pa rabil multitasking? Sej pooling je en tip multitaskinga. Pa tudi interrupti so en tip. Če pa bi rad \"pravi\" multitaskihng bo pa treba poseči po kakšnem operacijskem sistemu. KAr je navadno zelo napredno programiranje, pa četudi vzameš že narejen operacijski sistem.  Skratka doolga pot je še pred tabo, rasno začni z blinkyjem .... (žmiganje diod)."
+    },
+    {
+        "role": "user",
+        "message": "mah bedn mi je to ker najprej beres kolk registrov majo 16F* pici, pol pa vids kva vse ma 32F*. Potem pa se ce hoces sestevat, mnozit in podobno, moras met ze prednapisane dele programa, ker skoraj ni sans da bi vse sam pogruntu. V Cju bi dal pa preprosto a=5*5 in stvar bi bla resena..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ja seveda, če nimaš nekega predznanja marsikaj ne gre. Res je v cju narediš 5*5. Lahko narediš tudi 2*5. Sproducira približno enako kodo kot 5*5, torej sintakso za množenje ... kar ni vedno najboljše saj množenje in deljenje z 2 dosežeš tudi z levim in desnim premikanjem. Skratka vedno pride prav tudi znanje nekaj assemblerja.  Kaj si hotel povedati s tem koliko registrov ima nimam pojma. SI morda mislil da bi moral imeti že enoto za množenje?   Vedno bolj je očitno, da se moraš zadev lotiti z začetka, ne pa s krmiljenjem nekega grafičnega displaya in podobno ..."
+    },
+    {
+        "role": "user",
+        "message": "ma krmiljenje graficnega zaslona je simpl. tm das preprosto en drzalni signal, potem pa spustis tistih 8 bitov cez, in tko ponavljas... komot bi lahko naredu en programcek ka bi narisu slikico na displey.. tut posamezne stevilke in crke bi lahko prikazu na displayu... preprosto bi mel shranjene oblike crk v spominu, ce ze niso na lcdju...  bedn mi je to ko moras za en sam \"if\" napisat ene 50 vrstic kode v assemblyju... edino kar mi je vsec so tisti interrupti. zlo kul zadevica."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Raje se osredotoči na en pic serije 16f in preprost hardware - LEDice, gumbi... potem kak alfanumerični LCD (kjer pride tudi kak datasheet zraven).  Ne rabiš 16 registrov za lučke prižigat (16 jih imajo 30f, 33f... 32f ne obstaja :P).  Naštudiraj porte, software delay, timerje...  Včasih je fino imet en končni izdelek v mislih in ne kar testiranje vsega po vrsti - recimo naredi uro, ki se jo da preko tipk nastavljat, pa ob določenih urah (recimo kot alarm), da se prižge/utripne določena ledica. In za tak projekt ne rabiš brat celotnega datasheeta, ampak zgolj poglavja I/O ports, pa timerje.  Da ne boš jutri že kak 1Msps A/D v kombinaciji z DMA in prenosom prek USB poskušal..."
+    },
+    {
+        "role": "user",
+        "message": "ka bi ti vedu kolk misli mi gre zdej po glavi o tem kva vse bi naredu....  npr naredu bi uro. en procesor bi mel za podajanje tocnega casa, druzga pa za prikazovanje na lcdju. pol je tuki se termometer, ki bi prikazoval temp. na lcdju potem sm ze mal obupu nad tem kolk je vsega pa sm hotu narest sam cpu in lcd, kjer bi z dvema gumboma odstevu in pristevu 1 k stevilki, ki bi se prikazovala na lcdju... da bi pa kej brez lcdja delu mi pa ni glih cool..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "En procesor je popolnoma dovolj za merjenje časa in prikaz na LCD."
+    },
+    {
+        "role": "user",
+        "message": "ja sam moras ful racunat... kolk ukazov mas ipd..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Meni en procesor meri štiri temperature prek ADja, iz tega izračuna PWM cikel (lahko izbiram med dvema možnima načinoma) in nastavlja štiri PWM outpute za ventilatorje. Potem meri še vrtljaje in vse skupaj prikazuje na 4x20 LCDju. Aja, pa nastavitve zapisuje v zunanji I2C, se mi ni dalo pisanja po FLASHu programirat.  Če ti plava veliko misli, jih dej na papir, dobi si enga PICa (od Microchipa dobiš dosti hitro), pa začni."
+    },
+    {
+        "role": "assistant_10",
+        "message": "bedn mi je to ko moras za en sam \"if\" napisat ene 50 vrstic kode v assemblyju  PA resno nisi resen. Najbolj preprost if ima lahko dve vrstici kode, no recimo tri, recimo v 68hc11 asm: ldaa whatever1 cmpa whatever2 bne (ali beq)  To je if, ki vrednost v registru a primerja z neko konstantro vrednostjo in če je enako skoči na določeno mesto kode. torej: if(whatever1==whatever2){ }  V picu je zaradi risc morda kakšna vrstica več, vseeno pa jih ni 50.   npr naredu bi uro. en procesor bi mel za podajanje tocnega casa, druzga pa za prikazovanje na lcdju.  ZAkaj bi pa rabil 2? To in še več lahko narediš z enim., brez večjih problemov.  ja sam moras ful racunat... kolk ukazov mas ipd...  Zakaj bi to moral delat? Skratka začni nekje na začetku in boš videl kako se stvari dela. Tudi krmiljenje LCDja lahko ni tako enostavno kot zgleda na prvi pogled, marsikaj gre lahko narobe. Recimo že takoj na začetku, pri konfiguraciji portov."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pri picu je lahko tudi le dve: \"btfsc\" aka bit test f, skip if clear (izpusti naslednji ukaz, ki je npr goto ali call). Obstaja tudi decfsz (zmanjšaj za eno, izpusti naslednji ukaz, ako 0. Analogija for stavku). Itd.  Sicer pa grafični zaslon krmiliš z naslednjim ukazom: \"gdpnb\" aka graphic display put naga baba. Prikaže mikavno golo žensko na grafični barvni zaslon. Potem pa le še \"rlf\" aka rotate left in je. Tako da ni nevem kakšen problem."
+    },
+    {
+        "role": "assistant_5",
+        "message": "50+? vrstic assembly kode za tole spodaj? Dost verjetno.  Na primer:  unsigned int a,b,c;\n//....\nif(a < b * c)\n{\n    ra0=1;\n}\nelse\n{\n    ra0=0;\n}"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ja... Pa saj je logično. Nihče ni rekel, da naj se v ASM-ju piše funkcijo za cos(x). Tudi C koda se prevede v ukaze, ki so ekvivalentni ASM ukazom, pa saj to po vsej verjetnosti veš. Odsvetovano pa je bilo pisanje v C-ju od samega začetka, ker se izgubi vsak občutek za dogajanje v samem procesorju. Tako časovna zahtevnost korakov kot kakšni nepredvideni problemi.  Drugo dejstvo pa je, da nekateri (enostavnejši) programi napisani v ASM-ju zasedejo bistveno manj prostora in se izvajajo bistveno hitreje, kot tisti, napisani v C-ju. Vsekakor to veliko zavisi od kompajlerja in zmožnosti procesorja.   V glavnem, upam da me tema ne bo več znova in znova pogrelo do te mere, da se bom odzival, saj imam občutek, da tako ali tako ne vodi nikamor. Mogoče pa se motim in me bo korenje presenetilo s projektom, ki bo še bolj uspešen, kot USB termometer (kjer hardverski del kar kliče po korenju)."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Jaz sem tudi najprej začel v asm in naredil nekaj projektov. Pri malo večjem projektu sem imel že kar rahle težave z obvladovanjem vsega skupaj, a to je bilo zaradi neprimerne strukture (vse sem tlačil v eno datoteko + preveč goto skakanja).  C res olajša delo pri bolj kompleksnih zadevah, recimo kjer je potrebno delo na večih nivojih. Pride pa asm prav ko je treba kakšno zadevo debugirat, ali optimizrat. Včasih pa si tudi kakšne funkcije napišem v asm zaradi večje kontrole ali zaradi hitrosti.  Se pa na splosno strinjam s tabo @assistant_8."
+    },
+    {
+        "role": "user",
+        "message": "pred nakupom hardwera moram se malo prestudirat... da ne bom zagonil 50 eur kar tako..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "PIC je zastonj, naročiš sample. Programator je tudi poceni, narediš en preprost JDM za začetek, par jurjev pa je zadeva narejena. Protoboard je dobro imet v vsakem primeru, tako da..."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Oglašam se, ker se mi zdi borba o tem ali delati v asm ali v C ne vodi nikamor. Vse je pametno poznati. Da bi spoznal, je vsekakor potrebno preizkusiti asm. Je pa popoln nonsens pisati programe v asm ( čeprav sem jih kar nekaj napisal), ker je produktivnost takega pisanja premajhna.  Vsi spodobni C prevajalniki imajo možnost vključevanja asm kode v svoje telo. Vse časovno hudo zahtevne dela se torej napiše v asm, drugače pa je program pametno pisati v C !  Kar se tiče primerjave kode programa, ki je pisan v C ali v ASM je pa precej odvisno od mikrokontrolerja, ki ga uporabljamo. Sodoben razvoj mikrokontrolerjev gre v tej smeri, da se vse bolj približuje jeziku C. Močno bi vas začudila prevedena koda za ARM mikrokontrolerje. Opazili bi namreč lahko, da je asm instrukcij celo manj kot vrstic v jeziku C.  Ne glede na to v katerem jeziku je napisan program, pa je zgradbo mikrokontrolerja potrebno podrobno poznati. In ne samo jedra, temveč tudi v določen čip vgrajene periferije. Čitanje (in to večkratno) dokumentacije izbranega čipa je nujno."
+    },
+    {
+        "role": "user",
+        "message": "ej kje delijo te sample chipov? :D majo tut kake sample barvnih lcdjev? :D  aja pa btw, neki sm se spomnu. Lahko bi naredu programcek, ka bi sam spremenu mojo custom kodo v assembly kodo. npr bi napisu: if a > b then .... pol bi pa to ta moj programcek interpretiru in zamenju z assembly kodo, da bi naredil to..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne boš verjel, ampak tak program(ček) že obstaja... Poleg tega zna še marsikaj drugega. Reče se mu compiler."
+    },
+    {
+        "role": "user",
+        "message": "ja to vem.... sam uni prevedejo direkt v bitno kodo. jz bi pa rad naredu sebi user frendli kompilercek, ka bi najprej prevedu v assembly, potem pa v hex kodo. mislim tut da bi se tko najvec naucu... pa mislim da ce se bom naucu http://ww1.microchip.com/downloads/en/D... do podrobnosti, bom znal potem ze malo bolj komplicirane mikrokontrolerje programirat. sm vidu da majo eni vso podporo za usb, ethernet in podobno ze integrirano..."
+    }
+]

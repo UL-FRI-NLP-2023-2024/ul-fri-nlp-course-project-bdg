@@ -1,0 +1,130 @@
+[
+    {
+        "role": "user",
+        "message": "Že par ur se zabavam, kako bi dotični tplink začel delovati v lokalnem wifi omrežju (v WDS načinu oz po njihovo \"Wireless Range Extender\"). Primarni wifi router je Buffalo WHR-HP-G54, FW Tomato RAF 1.28.9006 Captive Portal http://www.victek.is-a-geek.com/tomatoe... . Namreč zadeva ne dela ne brez kodiranja, kaj šele z njim, enostavno ga Buffalo ne zazna, mac filtri so povsod izklopljeni. Prej sem imel v wdsju sposojeni Thompson SpeedTouch 780WL in je wds delal bp (iscer samo wep kodiranje ali brez), tako da nisem danes prvič v postavljanju wdsja.  tplink: http://www.tp-link.com/en/products/deta...  Obe napravici sem že resetiral na default nastavitve, nastavil Buffala na \"Access Point + WDS\", izmenjal wifi maca, nastavil na tplinku default gateway na Buffala, oba sta v istem prostoru 1 meter stran, kodiranje off. nastavljam po tem vodiču: http://www.polarcloud.com/tomatofaq#how...  Na tplinku je že naložen isti FW kot je na njihovi strani.  Na tplink je spredaj en bgumb, v \"Quick Installation Guide\" piše (pod Method One / Setup by Button) sledeče:  1 Push the QSS/ WPS button on the Wireless Router.   2 Press and hold the RANGE EXTENDER button on the  front panel of TL-WA730RE for about 5 seconds until  RANGE EXTENDER LED \u001fashes, When the LED becomes  solid light, TL-WA730RE has successfully connected to the desired Router.    3 After successful connection, TL-WA730RE can be placed between the wireless router and wireless client to boost the signal, but not beyond the coverage of the wireless router.  vendar ni nobenega efekta.  Če grem v Buffalu v meni Status, \"Device List\" je sicer naveden \"wds0.1\", v Quality piše 99, toda ne pridobi ipja."
+    },
+    {
+        "role": "user",
+        "message": "Nekako mi se je uspelo povezati brez kodiranja, vendar to ni nič. Gledam nastavitve na tplinku in vidim da nikjer ne moreš vpisati ssid in fiksen kanal, ki je obvezen za wds."
+    },
+    {
+        "role": "assistant_0",
+        "message": "če ne pridobi IP naslova, je verjetno problem v drugem routerju: izklopi DHCP"
+    },
+    {
+        "role": "user",
+        "message": "Zelo čudno, glej v \"TX/RX Rate\", zadnji (spodaj) je tplink:   DHCP je off na obeh."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Običajno mora biti DHCP na tistem routerju ki je povezan v internet - če je na obeh izključen, potem router v nobenem primeru nebi smel dobiti IP-ja.   Kako si pa pri prejšnem routerju nastavil da je delovalo? tukaj bi moralo biti podobno, glede slike pa - podatke prejema pošilja mu jih pa ne - ponavadi je problem IP (vsaj pri konfiguraciji računalnik - router )  Po pravici povedano ne vem kaj bi lahko bil problem. Moj domači router ima opcijo vnosa MAC naslova repetitorja, na drugem routerju imam pa meni v katerem imam seznam omrežij (kot v windowsu). izberem enega, vnesem geslo in zadeva deluje.  Sicer pa če imaš to možnost, routerja med sabo poveži s kablom, pa boš še najhitreje rešil problem."
+    },
+    {
+        "role": "user",
+        "message": "Po pravici povedano ne vem kaj bi lahko bil problem. Moj domači router ima opcijo vnosa MAC naslova repetitorja, na drugem routerju imam pa meni v katerem imam seznam omrežij (kot v windowsu). izberem enega, vnesem geslo in zadeva deluje. Ja, tako sem pričakoval tudi sam da bo delalo, izmenjaš oba wan mac-a, izbereš isti kanal & protokol, geslo in dela, tako da mi ni jasno kaj mu ne ustreza. Ugotovil sem, da dela brez gesla, če omogočiš oddajanje ssid-ja, če je skrit še tega ni.  Sicer pa če imaš to možnost, routerja med sabo poveži s kablom, pa boš še najhitreje rešil problem. Sem delal tako.  tplink ima že določen (statičen) lan ip naslov 192.168.1.254.   Tplink slike default nastavitve:"
+    },
+    {
+        "role": "user",
+        "message": "How to Configure my TP- LINK Range Extender on MAC(For TL-WA730RE) ? http://www.tp-link.com/en/article/?id=4...  Step 3: Find the router's signal and connect. Please go to Wireless-Wireless Settings, Select Range Extender as the Operation Mode. Then click Search button, it will display all visible wireless signals around your location. Please find out the SSID(wireless network name) of your root router and click on Connect, then click Save.  Jaz Search gumba nimam (glej 4 slikco), lahko samo kliknem na \"Survey\", kjer mi pokaže razpoložljiva omrežja."
+    },
+    {
+        "role": "user",
+        "message": "Na tplink strani DL \"Easy Setup Assistant\", daj enostavno wps2 (potem še wpa1) aes geslo (testtplink), čarovnik pride do zadnjega koraka, kjer ne gre skozi.    Na amazon našel nekaj navidezno koristnega,  http://www.amazon.co.uk/review/R37JD6PV...  14. Now click SURVEY button to browse for your network, select by SSID and click connect. It should auto fill most of the rest for you. Tega spet ni."
+    },
+    {
+        "role": "user",
+        "message": "Nekako sem s tplink email supportom rešit težavo.  Tisti \"Connect\" se dejansko skriva, ko klikneš na ukaz \"survey\" (prej Search), le da je po defaultu okno pomanjšano in moraš premakniti drsnik spodaj na skrajno desno oz maksimirati okno, da se prikaže \"Connect\".  Na routerju sem moral tudi izklopiti mac wifi filter, ter v opciji Basic/Network -> WDS izbrati \"Automatic\" namesto \"Link with\" (in vpisati wifi mac druge dostopne točke).  Fora je da ima ta tplink za wifi in lan mac enak (tako kaže pod status in tudi če s kakim orodjem skeniraš za bssidji AP-jev) očitno to ni bilo po godu routerju oz tomato firmwareu.   Kaj sem naredil na tplinku: najprej sem pognal \"Quick Setup\" v www vmesniku, kodiranja v prvo ne moreš nastavljati, javi \"illegal character\" ne glede kaj vpišeš, reboot, v drugo nastaviš wifi kodiranje, reboot, v tretje nastaviš pod Network -> \"Default gateway\", reboot. Nato sem AP ugasnil - potegnil napajalni kabel iz el. vtičnice za 30 sekund in ponovno vklopil. Ko se zadeva vklopi v napajanje traja okoli 2 minuti da začne delovati."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Problem. Imam enako dostopno tocko, ki je povezana v moje wi-fi omrezje in nanj prikljucen en medijski predvajalnik. Na tplink se povezem preko lana s prenosnikom, nastavim preko easy setup povezavo na moj ruter in dela. Ponavadi en dan ali manj. Potem ne morem na tocko vec dostopat, razen ponovno priklopit prenosnik preko lan in spet rocno povezat na moj wi-fi. Pozablja in pozabla, kaj je vzrok nevem, je kaka ideja?"
+    },
+    {
+        "role": "user",
+        "message": "Se sedaj nastavitve ohranijo oz kaj pozablja ? Kateri fw je gor ?  Prvo naredi reset z gumbom, ugasni (izštekaj iz el. vtičnice) & prižgi.  Ko na tplinku nastaviš vse do konca (vmes se bo vsaj 3 rebootal) ga ugasni za 1 minuto (izštekaj) in priklopi (beri moj zadnji post \"Kaj sem naredil na tplinku:\")."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Malo pozno pišem. Trenutno 2dni celo dela. Saj sem že vse poskusil, reset gumb soloh prime ne, če ga izklopim pa nastavitev ne pozabi. Včasih se sam nazaj poveže, če pa se pri ponovnem zagonu ne, pa lahko ponovim 10x pa se še vedno ne bo. Še to mi potem v deseto komaj uspe povezat preko LAN in IP naslova, oziroma sploh ne gre. Povežem se lahko le s čarovnikom in njihovim softwareom s CD-ja. Še enkrat nastavim na katero omrežje naj se poveže in se poveže, potem pa spet lahko dostopam preko IP-ja v nastavitve. Firmware sem preveril, je zadnji. Imel sem dva ruter-ja, pa sem enkrat opazil (ko ni bil povezan), da se hoče povezat na drugega, napačnega, ker pa je bil pod geslom pa je čakal. Zakaj ni šel na prvega, katerega sem prvič nastavil, nevem. Zdaj imam samo en ruter in v dosegu ni drugega omrežja, pa še vedno čaka. Po mojem le nekaj zmrzne, glede na to, da tudi preko LAN in IP naslova ne pridem v CP?"
+    },
+    {
+        "role": "user",
+        "message": "Saj sem že vse poskusil, reset gumb soloh prime ne. Zelo čudno da reset gumb ne dela (pritisneš dovolj globoko ?).Si kupil novo napravo ? Še 1x ga flashaj z zadnjim FW in potem ugasni za minuto.  če ga izklopim pa nastavitev ne pozabi To je normalno, kdo bi bi vsakič na novo nastavljal, če zmanjka elektrike ?  Če ne moreš pingati/se povezati na 192.168.1.254 je lahko kaj z napajanjem, recimo sobna el. napeljava ali sam napajalnik naprave krivec (preveri kako/če se greje).Lan mrežna/kabel je drugače brezhibna ?  Kateri os uporabljaš ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Naprava je nova, kabel je dober, ker povsod vedno dela, tudi ruter in moje omrežje še nikoli ni povzročalo nobenih težav. Imam pa nove ugotovitve:  zadnje 3 dni je povezava vzpostavljena, brez težav dostopam do mojega predvajalnika (ki je na TP linku) in tudi na 192.168.1.254 lahko dostopam preko LAN in wi-fi. Danes pa sem iz omrežja izklopil moj ruter, torej wi-fi omrežje v katerega je povezan tp-link in ga čez 10min prižgal nazaj. Ruter in omrežje normalno dela, kot vedno, TP link pa se ni več povezal nazaj. Na napravi utripa system lučka - sistem deluje, wi-fi lučka občasno utripne, nevem zakaj, range extender lučka pa ne sveti, ta pa bi morala če bi bil povezan v moje wi-fi omrežje. TP-linka se nisem niti dodaknil.      Ko po 20min ni nič s povezavo, se s prenosnikom povežem preko LAN povezave (kabla direktno na TP link) in poskusim 192.168.1.254 in ne gre. Pod status omrežja piše undifined network (windows 7). Pognati moram čarovnika s priloženega CD-ja, klikam next (pod povezavo za ip TP-linka po defaultu napiše 192.168.1.254) in čarovnik se uspešno poveže, vpraša na katero omrežje naj se poveže (je že itak izbrano), kliknem conect in TP-link se spet poveže na wifi. Od tega trenutka dalje deluje tudi povezava preko ip tako z LAN ali wi-fi povezave v nastavitve TP-linka.      Ob vsem me zmoti mogoče tole, na zgornji sliki je MAC naslov napisan, ko kliknem next se pojavi še potrditev na katero omrežje želim in v njem je vse enako razen zadnjih 6 številk MAC naslova. Ali ima to kaj veze nevem, ampak v zadnjem koraku je MAC v glavnem vsakič enak. Mimogrede, še nobena naprava ni imela nikoli problema dostopat na moje wi-fi omrežje, imam le password in nobenega drugega filtriranja.  Hvala pa za vsako pomoč in čas."
+    },
+    {
+        "role": "user",
+        "message": "Bi rekel da je lahko problem v win 7, izklopi tcp/ip v6."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To misliš zaradi problema povezave prenosnika na TP link preko LAN? Bom probal naslednjič, ko se mi to zgodi. Ampak to ne pomaga pri tem, da se bo znal spet povezat v wi-fi, če bi meni wi-fi povezal potem me LAN itak ne zanima, predvajalnik bo skoraj sigurno povezan v wi-fi če bo tp-link v wi-fi."
+    },
+    {
+        "role": "user",
+        "message": "Pri obeh (lan in wifi) izklopi. Jaz imam win xp in nimam tvojih težav."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne razumem kaj ima veze windows in ipv6 s težavo, da se TP-link ne zna avtomatsko nazaj povezat na moj ruter? Razen če misliš kakšne nastavitve TP-linka?"
+    },
+    {
+        "role": "user",
+        "message": "To, da tudi preko kabla ne moreš dostopati to tplinka. Ga lahko vsaj pingaš ? btw, model routerja ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pingaš..kako se to izvede? (: Ruter je Siolov IskraTel Sinope568+. Mogoče veš za MAC naslov omrežja, ki ga TP-link v čarovniku pokaže pod imenom omrežja, na katerega se želim povezat, naj bi bil to MAC naslov mojega ruterja in je vedno isti?"
+    },
+    {
+        "role": "user",
+        "message": "Priklopi se na tplink s kablom, meni start, run/ cmd, arp -a, najdi tplink lan mac. bssid je wifi mac, pri meni sta oba maca enaka !  Pingaš z \"ping 192.168.1.254\".  Če greš na 192.168.1.254 -> Status -> glej kaj piše pod \"Wired MAC Address:\" in kaj pod \"Wireless MAC Address:\".  Jaz z njihovim \"čarovnikom\" nisem nič rešil.  Wifi Mac tvojega Sinope568+ najdeš na njegovi spodnji strani, v mogoče tudi v www vmesniku. glej, ko z tplinkom skeniraš, glej SSID-je (imena omrežij), ssid -> SkyNetwork , wifi mac 02-30-b4-e8-6a-d0 ."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Na 192.168.1.254 (TP-linku) sta v statusu wired in wireless MAC-a enaka F4-EC-38-EF-4A-54.  MAC Sinope ruterja pa je 00:01:38:DE:71:C6. V www vmesniku Sinope-a vidim tudi povezane naprave na wireless in ena izmed njih je f4:ec:38:ef:4a:54, torej TP-link. Trenutno je vse ok in vse dela.  Network MAC nima veze z MAC naslovom ruterja, tp-linka? Je potem možno, da se ob resetiranju ruterja vzpostavi wi-fi omrežje s drugačnim MAC naslovov, TP-link pa se želi povezat na MAC naslov omrežja od prej? Upam, da nisem vsega skupaj pomešal :)  Jutri ko bom spet doma poskusim še enkrat resetirat ruter in dostop do tp-linka preko LAN-a in preverim ping."
+    },
+    {
+        "role": "user",
+        "message": "Mac naslovi so v bistvu trije: wan, lan, wifi  in se sami od sebe ne spreminjajo. Wifi mac je pomemben, če daš več naprav v WDS in moraš jih izmenjati med seboj, da vedo, s čim se povezujejo ali če vklopiš wifi mac filter."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zadnjih nekaj dni TP-link že spet ni bil povezan v moje omrežje in se tudi ni povezal nazaj. Ping test preko LAN povezave direktno na TP-link:    Torej nekaj ni v redu, če računalnik TP-linka sploh vidi ne! Tudi če vpišem v ping random IP je rezultat isti, torej ga ne vidi. Restartam TP-link in počakam nekaj časa, vse lučke spredaj začnejo svetiti kot normalno ampak stanje isto kot prej. Potem zaženem program s CD-ja in preko njihovega Easy Setum Asistant vzpostavim povezavo NIORMALNO!!?? Vse kljukice so zelene, izberem wi-fi omrežje za povezavo, vstavim geslo in TP-link naj bi bil povezan. Ampak, še vedno ni, saj preko IP dostopa v admin ne gre, prav tako ping kaže tole:    Preko čarovnika grem isti postopek povezave skozi 4x, potem pa se TP-link resnično poveže v wi-fi in vse dela. Od dostopa preko IP, ping test je normalen, vse dela.  Halo? Naj ga nesem samo na servis ali sem res kaj delam narobe? Res se ne spoznam na MAC, LAN, WAN IP-je in cifre, ampak brez tega bi vseeno morat delati, mar ne?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Da obudim staro temo z istim problemom.  Imam siolov modem in nanj preko WDS povezan TP-link. Ker se mi vsake toliko časa zadeva več noče povezat in pomaga samo ponoven \"Survey\" in nato reboot TP-linka da se znova poveže, sem šel gledat v čem je finta.  Dejansko mi Siol modem ponudi nov BSSID - WLAN-Mac in se zato TP-link noče povezati ker ima še vedno vnešen BSSID od prejšnje delujoče povezave.  Kako rešiti težavo s spreminjanjem Sinope Wlan-Mac-a?  LP, Dejan"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pozdravljeni  pred nekaj dnevi nazaj sem kupil range extender TP LINK (TL-WA830RE). Ko sem ga namestil mi ni deloval pravilno. Nastavitve sem nastavil kot je bilo opisano v navodilih. Nekaj časa sem se igral z njim in mi je uspelo \"skalibrirati\" stvarco tako, da je deloval le kakšnih pol ure, nato je \"izgubil\" ali kako naj temu rečem povezavo z glavnim routerjem, ki je Linksys WRT54GL. Torej moja težava je zakaj noče oddajati omrežja oz. zakaj izgubi povezavo, da noče razširiti Wifi signala. Prosim za pomoč."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kako imaš nastavljen WRT54GL ? Kateri fw imaš gor ? Pri teh extenderjih ni potrebno ničesar posebej nastavljati na glavnem routerju."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Amm nevem natančno, ker ga nisem jaz postavljal. Pa tudi za fw nevem kateri je. Ali mi lahko poves kateri bi moral biti da bi delovalo.  PS. Pri prejsnjemu range extenderju ki sem ga imel mi je deloval pa nisem na ruoterju ničesar nastavljal. Na routerju WRT54GL imam tomato 1.28 verzijo gor."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pozdravljeni Pred kratkim sem kupil range extender od TP LINK-a (TL-WA830RE) da bi si podaljšal omrežje do moje sobe ker router ne seže do sem. Imam ruter Linksys WRT54GL ima Potato fw gor. Sedaj mi pa range extender ne deluje. Pač omrežje podaljša vendar mi internet ne deluje v orodni vrstici rač. mi kaže tisti rumeni trikotnik. Če pa se povežem preko wi-fija od ruterja mi pa deluje. Kaj sem narobe naredil, da mi preko range extenderja ne deluje wi-fi preko routerja pa deluje. Prosim za pomoč"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Tplink najde glavno wifi omrežje, ki ga oddaja wrt54gl ? Je tplink nastavljen kot Range Extender ? Nekje v nastavitvah Tplink najdi opcijo, kjer piše default gateway, tam moraš vpisati ip od wrt54gl. UG pravi da v: network -> lan.Tu priporočam da tplinku nastaviš en fiksen ip, dhcp naj bo vklopljen samo na glavnem routerju."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Da tplink najde glavno omrežje in je nastavljen kot Range extender. Hvala za pomoč."
+    },
+    {
+        "role": "assistant_3",
+        "message": "V default gateway ne morem vpisati IP od ruterja. DHCP je sklopljen vendar še vedno ne deluje."
+    }
+]

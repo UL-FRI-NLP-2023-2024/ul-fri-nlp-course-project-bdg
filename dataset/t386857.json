@@ -1,0 +1,402 @@
+[
+    {
+        "role": "user",
+        "message": "Torej, ta tema je namenjena za debato o predvajanju IPTV kanalov na Xtreamerju."
+    },
+    {
+        "role": "assistant_0",
+        "message": "No, @user svaka čast, spremljam tvoj razvoj IPTV-ja za Xtreamer, sem ga dobil par dni nazaj, mene pa bolj zanima kak RSS feed reader, če bi ga blo možno integrirat in sicer tak da bi podpiral, jasno, medija feede.  Predvidevam da so tiste internet notri verjetno prek kakega RSS readerja? Moti me pa to, da jih ne morem sam not devat. Če bi se to dalo zrihtat bi blo super."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mi lahko mišek pomagaš. Rad bi gledal siol tv preko extremaerja. Ker imam v hisi dve televiziji ena je prikolplena preko kabla iz siolovoge modema na siolov reciver. Na drugi bi pa rad gledal preko xtremerja. Moram kabel dati v port na modemu za tv se pravi 3 in 4? kako potem na xtreamerju nastavim da bom lahko gledal. Preko katerega menija? ker nimam diska v xtreamerju mi razlozi kaj moram naredit z tvojo zip datoteko o iptv? vesel bi bil ce mi posljes na privat tvoj skype ali msn da te lahko vprasam direktno ko bom instaliral.  hvala ti za pomoc"
+    },
+    {
+        "role": "assistant_2",
+        "message": "mišek...kaj pa kaka ideja o web browserju...kako kaj kaže s tem?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mene pa zanima ali bi se dalo USB tuner priklopit na Xtreamer?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Torej moram sedaj samo narediti robustnejšo zadevo in enostavno inštalacijo.   Uf, to se bere \"zame\". Fino fajn, ker ta vikend nisem uspel heckat svojga XTja. Ko to zgoraj urediš ne pozabi odpreti še svojga PayPal računa za donacije! :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0, za RSS sem že nekaj gledal, vendar verjetno ne gre, da bi prikazal kar nekaj iz interneta. Problem je v tem, da vgrajeni reader ni neki biser, ki bi znal prikazati marsikaj. Lahko se tudi sam poigraš, vendar potrebuješ neki svoj web strežnik, kamor naložiš potrebne datoteke. O tem se piše tukaj na XT forumu. Sam še nisem uspel pogledati. Premalo časa... @assistant_1, za iptv moraš priključiti XT preko kabla direktno na modem, če je to tako zahtevano. Pri T2 menda to ni, vendar je v routerju potrebno omogočiti multicast. Za podrobnosti o namestitvi pa poglej v temi za Xtreamer proti koncu (post 1, post 2). Ker nimaš diska vsebino zip datoteke odpakiraj na USB ključ in ga vstavi v XT in prižgi. @assistant_2, @assistant_3, morda enkrat, ko bo na razpolago izvorna koda. Zaenkrat pa to ni na vidiku. @assistant_4, saj bi ti moralo uspeti. Napiši kako si se lotil in ti pomagamo z obstoječo varianto. Še vsem je uspelo... Donacije preko PayPal-a pa niso potrebne. Delam za lastno veselje. Če pa komu zadeva koristi toliko boljše. Se veselim z njim"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Hvala @user, tudi meni je zalaufal IPTV (siol). Uporabil sem v 0.4.2, spremenil sem pa samo ETH iz 0 na 1, vse ostalo sem pustil, kot je bilo. Se da programe menjati na kakšen drug način? Jaz sem uspel le preko PGUP in PGDN."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Skip+ in Skip- tipka tudi prime. Drugače se na žalost ne da."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user thx za odgovor, nazalost ne morem dostopat do tistega XT foruma...nisem avtoriziran...."
+    },
+    {
+        "role": "assistant_1",
+        "message": "a zip datoteke posnames na usb in das v extremaerja? jih moras odzipat? kaj moras potem kliknit ko imas v xtremaerju?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1: Z http://drop.io/Xtreamer_iptv preneseš in odpakiraš Xtreamer_iptv_0.4.2.zip na notranji disk ali USB ključ. Na njem dobiš folder iptv_install. Ključ vtakneš v Xtreamer, se z brskalnikom povežeš na njega, na desni strani klikneš All, tam najdeš svoj ključ, se prestaviš v folder iptv_install, klikneš na fakeshell2.php in se ti odpre novo okno. Levo zgoraj klikneš na INSTALL_ALL, potrdiš z Enter, malo počakaš in imaš vse nameščeno. Morda kasneje pomaga kakšen reboot Xtreamerja, če ne dela s prve.  Lahko pa takoj po odpakiranju popraviš v datoteki ushare.conf vrstico USHARE_IPTV_LIST, v kateri pustiš link samo na eno m3u datoteko. Prav tako lahko po želji popraviš vsebino/kanale m3u datoteke.  Če želiš uporabljati sočasno WiFi za dostop do svojega lokalnega omrežja (in s tem računalnika), potem je pred namestitivijo potrebno popraviti IP naslov, masko,..., ADD_ETH_INTERFACE na 1 v skripti S99wlan_eth_activate. Potem se v primeru, da imaš izbran WiFi, še avtomatsko nastavi ethernet s podatki za iptv in imaš mrežni kabel direktno v modem. Ostane pa ti dostop do XT preko Wifi. Če pa imaš izbrano mrežo samo preko kabla potem se to ne nastavlja. Primerno npr. za streamanje kakšnega zahtevnega filma preko mreže, ki drugače ne gre preko WiFi.  Mhm, čas za en Readme v zip-u."
+    },
+    {
+        "role": "assistant_5",
+        "message": "glede na to, da mi iptv zdaj dela, bi si želel sam urediti m3u datoteko. kako jo potem (popravljeno) spravim na Xa? S telnetom se sicer poznava, nisva pa ravno najboljša kolega ;)"
+    },
+    {
+        "role": "user",
+        "message": "Imaš dve možnosti: ali s telnetom ali preko browserja. V vsakem primeru najprej uredi m3u file po želji. Nato v datoteki ushare.conf spremeni vrstico USHARE_IPTV_LIST da bo imela samo eno povezavo na to tvojo m3u datoteko. Ostale lahko zbrišeš.  Preko browserja odpreš fakeshell2.php in klikneš na update_playlist_iptv. Malo počakaš in bi se moralo spremeniti. Ali pa preko telneta z ukazi  cp -f ime_tvoje_datoteke.m3u /sbin/www/\ncp -f ushare.conf /sbin/www/\n/sbin/service upnp restart"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user: Končno sme našel čas, da sem vrgel IPTV v XTja. Nisem povsem prepričan ali bi rekel, da zadeva deluje ali ne :)  - T2 MILAN (vseh 8 portov istih-dela VLC v vseh), WRT610N - IPTV na XT bre spreminjanja eth nastavitev (ne nucam WiFi) - SD programi delujejo BP, - HD programi nimajo zvoka? (v VLC na PC seveda imajo)  Škoda, ker nekak je poanta gledanje HD programov. A ti je težava znana?  Še nekaj vprašanj in se opravičujem, če sem odg. kje v preteklih postih spregledal. - Za kaj zaboga bi sploh rabil WiFi na XTju? (itak rabiš kabel, če hočeš 1080p gledat iz Sharea) - Tudi sicer mi ni jasno zakaj na T2 optiki ne bi delovalo vse še naprej, če bi WiFi vklopil (uf se morda poigram) - Če sem mal poedital t-2.m3u je ni prikazal v XTju (kaj več se sicer nisem igral, edit pa z Wordpad :) ) - Čemu služi local_pc.m3u - Kaj so pohd_* in ushare in interface aktivator paketki v relaciji do IPTV na io.drop-u ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user: Končno sme našel čas, da sem vrgel IPTV v XTja. Nisem povsem prepričan ali bi rekel, da zadeva deluje ali ne :)  - T2 MILAN (vseh 8 portov istih-dela VLC v vseh), WRT610N - IPTV na XT bre spreminjanja eth nastavitev (ne nucam WiFi) - SD programi delujejo BP, - HD programi nimajo zvoka? (v VLC na PC seveda imajo)  Škoda, ker nekak je poanta gledanje HD programov. A ti je težava znana?  Še nekaj vprašanj in se opravičujem, če sem odg. kje v preteklih postih spregledal. - Za kaj zaboga bi sploh rabil WiFi na XTju? (itak rabiš kabel, če hočeš 1080p gledat iz Sharea) - Tudi sicer mi ni jasno zakaj na T2 optiki ne bi delovalo vse še naprej, če bi WiFi vklopil (uf se morda poigram) - Če sem mal poedital t-2.m3u je ni prikazal v XTju (kaj več se sicer nisem igral, edit pa z Wordpad :) ) - Čemu služi local_pc.m3u - Kaj so pohd_* in ushare in interface aktivator paketki v relaciji do IPTV na io.drop-u ?  hej, če HD kanali nimajo zvoka stisneš pavzo za kako sekundo in nato play...pa se zvok čudežno prikaže..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4, za zvok ti je že odgovoril. WiFi rabiš pri SIOL-u ker tam imaš ločen internet in TV promet. In je fino, da imaš dostop do XT preko WiFi, za TV pa je vezan preko kabla. Tak pač menda je. Če boš ti v sedanji konfiguraciji vklopil WiFi, se ti mo mreža preko kabla prekinila. Glede editiranja - upam da si pravilno poeditiral. M3U datoteka mora biti narejena po standardu. Rabiš samo eno m3u datoteko z želenimi kanali. Jaz sem pač vključil za t2 in siol. local_pc.m3u pa je namenjena meni za lokalno testiranje, ko sem streamal iz PC-ja (nimam IPTV). pohd_* vsebina je namenjena za PlayOn!HD predvajalnik. Vendar zaenkrat še ne dela. ushare in interface aktivator ne potrebuješ."
+    },
+    {
+        "role": "assistant_4",
+        "message": ">>PlayOn!HD predvajalnik Prosim? Kašen feature bo to in kje?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pa to ni novo to je starejše od Xtreamerja. http://www.playonhd.com/en/"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@user: To da nucaš WiFi, če hočeš notri pripeljat dva networka je nesmisel. Ti lahko po enem in istem kablu voziš 10 networkov če hočeš. Samo si moraš ruter prav skonfigurirati. Ena varianta je, da pripelješ inet v wan port od ruterja, kabel za televizijo pa enostavno priklopiš v svič od ruterja in onemogočiš dhcp na tem portu..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "bravo! če to rata, smo zmagal."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_8, si to že stestiral ali samo teoretiziraš? Seveda se da marsikaj narediti, je pa to odvisno vsaj od routerja kako in kaj. To kar sem naredil je pač ena opcija, ki zanesljivo deluje. Sem pa odprt za predloge... Pa ostali uporabniki tudi. Sem nov na tem področju tako da vsega pa tudi ne vem. Problem pa je tudi to, da sam niti nimam TV, tako da praktično preizkusiti ne morem."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_8, si to že stestiral ali samo teoretiziraš? Seveda se da marsikaj narediti, je pa to odvisno vsaj od routerja kako in kaj. To kar sem naredil je pač ena opcija, ki zanesljivo deluje. Sem pa odprt za predloge... Pa ostali uporabniki tudi. Sem nov na tem področju tako da vsega pa tudi ne vem. Problem pa je tudi to, da sam niti nimam TV, tako da praktično preizkusiti ne morem. pa mišek sem ti rekel, da lahko pri meni testiraš ;)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2, pa saj si do sedaj videl, kako kako poteka to \"testiranje\". Jaz nekaj napišem, potem nekdo sproba. Pa nekaj ni ok in se zgodba nekajkrat ponovi. Cel postopek pa traja in traja. Pa kaj vi, ki imate iptv, nič ne uporabljate računalnika za predvajanje? Predpostavljam da ja, vsaj tako sem lahko razumel iz vseh vaših postov. Ker v tem primeru bi že lahko ugotovili takšne male skrivnosti za delovanje mreže. Ko sem malo brskal po ostalih forumih na to temo (npr. t-2.rula.net) je tam en kup mojstrov. A tam še tudi niso tega ugotovili?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_2, pa saj si do sedaj videl, kako kako poteka to \"testiranje\". Jaz nekaj napišem, potem nekdo sproba. Pa nekaj ni ok in se zgodba nekajkrat ponovi. Cel postopek pa traja in traja. Pa kaj vi, ki imate iptv, nič ne uporabljate računalnika za predvajanje? Predpostavljam da ja, vsaj tako sem lahko razumel iz vseh vaših postov. Ker v tem primeru bi že lahko ugotovili takšne male skrivnosti za delovanje mreže. Ko sem malo brskal po ostalih forumih na to temo (npr. t-2.rula.net) je tam en kup mojstrov. A tam še tudi niso tega ugotovili?  no mišek se strinjam s teboj...je pa res nekaj: na t2 optiki ne potrebuješ nastavljat nobenih IP-jev in deluje (in na xtr in na compu) na siolu je pač potrebno poparsat IP ven...za le-tega naj fantje preberejo navodila na siol forumu...tam je vse lepo spisano...po moje ko imaš ip deluje tudi v xtr... t2 preko bakra je po moje ista zgodba kot siol? če pa je folk len in se jim ne da map pobrskat...pa naj bodo brez tv ;)"
+    },
+    {
+        "role": "assistant_10",
+        "message": "T-2 preko bakra je tako, da če je VDSL, rabiš vpisat nek IP 10.x.y.z, nekaj takega sem včasih uporabljal, VDSL2 je pa varijanta, da je enako kot optika, dela po vseh kablih."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Torej kokr jz tole vse skupej razumem... Aja imam SiOL TV mpeg2 shema. Najprej odpakiraš .zip file. Spremeniš v USHARE_IPTV_LIST da je samo ena m3u playlista. Potem se povežeš na xtremerja, zaženeš install all skripto. Ko se naloži resetiraš xtremerja. Ko se postavi v network konfiguraciji nastavim 10.49.x.x.x ip in nato kaj... greš v upnp? ta zadnji del mi ni jasen kaj potem narediš da prideš do kanalov...  Tnx za info.   LP A"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_11, iptv kanale potem vidis preko UPnP."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Imam sam roter WL500gp z Oleg-ovim paketom, kateri bi naj omogočal stream IPTV. Poleg ostalega sem poskušal celo s prevodi iz ruskih forumov (cirilica ipd) kjer sem našel nekaj how-to navodil, si naložil njihove programe za gledanje IPTV... pa mi še ni uspelo dobiti streama preko routerja kaj šele, da bi združil signal. Verjamem pa, da to gre, saj tudi SIOL IPTV, telefon in internet dobim po dveh žičkah do doma. Zato bi si želel še kakšnega @assistant_8 z dodatkom, da se oglasi s konkretnimi predlogi, navodili ali vsaj smernicami."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ja, mislim da sem par let nazaj prav v temi SiOL ali celo T-2 IPTV razpredal kako se zadevo da rešiti. Torej, zadeva gre nekako takole... na TV in inet lahko tukaj gledamo kot na dve popolnoma ločeni omrežji. Inet pride po kablu s severa, TV pa po kablu z juga. Vsako od teh omrežij ima svoje parametre (netwokr, maska, default gateway). No in zdaj ta dva kabla enega od inet (predpostavimo da smo tu že izvedli PPPoE mambo-džambo) omrežja ter drugega od TV omrežja vštekamo v isti switch. Ko na ta switch priklopimo še svoj računalnik ima le ta takorekoč že dostop do obeh omrežij samo še skonfigurirati je potrebno mrežni interfejs (mrežno na računalniku). Linux TCP/IP stack ti omogoča, da na enem interfejsu nastaviš več različnih IP-jev s pripadajočimi networki, maskami in gatewayi. Default gateway je v tem primeru nastavljen na inet, za TV network pa je potrebna samo ena network ruta. In ker je Ext v bistvu navaden računalnik z Linux jedrom bo to funkcioniralo.  Da me ne bo kdo zapel zaradi varnosti tega početja... jasno v tem primeru spustiš kompleten TV network direktno v svoje omrežje (na svoj switch) kar iz varnostnega vidika ni ravno pametno početje ampak glede na predpostavko, da gre v bistvu samo za nadzorovano multicas omrežje (recimo da vemo da je samo od SiOL-a) je to pogojno OK. Za rešitev omenjenega problema verjetno stock ruter web interfejsi (nastavitve za firewall) po vsej verjetnosti ne bodo zadosti, se pa da vse... ljudje si sploh ne predstavljajo kaj vse te male škatlice za 50 EUR znajo in zmorejo.  Seveda je varianta, ki jo predlaga @user z varnostnega vidika boljša, ker praktično TV network pripelješ samo do ene mašine v svojem omrežju (direktno do drugega mrežnega interfejsa v EXt-ju).  Pri T-2 je zadeva enostavnejša, ker obstaja samo en network, ki ga pripelješ na wan port, na ruterju odpreš in omogočiš multicast in zadeva mora delat.  Sam Ext-ja nimam, samo glede na to da sem zasledil, da se da dostopati do sistema (telnet) sem mnenja, da bi se dalo na USB port priheftati tudi kakšno spodobno 100 Mbit Ethernet kartico. Najlažje bi bilo, če bi kdo pogledal katera obstoječa (wired) mrežna je v Ext-ju in se potem uporabi USB Ethernet dongle z istim čipom, ki uporablja isti driver, ker obstaja verjetnost, da driverji za ostale mrežne niso v sistemu...  Jaz na žalost nimam cajta teh reči testirati niti nimam možnosti, rade volje pa pomagam pri takšnih in drugačnih podvigih. Če se kdo vsaj približno znajde v Linux shell-u in ima možnost ter voljo to testirat in probavat, naj me kontaktira na ZS. Aja, glede na ceno naprave, bi pričakoval da je notri kakšna Broadcom ali Ralink mrežna."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Bom jutri dopoldne narisal eno shemo omrežja za SiOL primer, da si boste malo predstavljali..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Preveril pavzo za zvok HD. Deluje razne pri Nationa G in Discovery. Tam mi te metode ne delujejo?!? A komu dela na T2 optiki tole?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Preveril pavzo za zvok HD. Deluje razne pri Nationa G in Discovery. Tam mi te metode ne delujejo?!? A komu dela na T2 optiki tole? meni deluje povsod..so pa dnevi ko ne ;) očitno je odvisn od lune..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Torej kokr jz tole vse skupej razumem... Aja imam SiOL TV mpeg2 shema. Najprej odpakiraš .zip file. Spremeniš v USHARE_IPTV_LIST da je samo ena m3u playlista. Potem se povežeš na xtremerja, zaženeš install all skripto. Ko se naloži resetiraš xtremerja. Ko se postavi v network konfiguraciji nastavim 10.49.x.x.x ip in nato kaj... greš v upnp? ta zadnji del mi ni jasen kaj potem narediš da prideš do kanalov... A  Pri Siolu TV-ju ne rabiš spreminjati IP-ja."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Danes sem uredil delovanje IPTV (SIOL TV) in internet preko istega kabla brez pretikanja kabla. V stikalo (switch) povežeš skupaj:  - data port iz modema ali iz usmerjevalnika (routerja) - video port iz modema - PC - Xtreamer  Deluje internet, mreža, ko hočeš IPTV, zaženeš skripto od Miseka (super si naredil, pohvala), malo počakaš. Meni začne IPTV delovati brez spremembe IP-ja, ter brez ponovnega zagona Xtreamerja, samo malo počakaš.  Še slika: http://www.cuzek.com/index.php?option=c..."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Dejansko to res dela ja. Samo še premikanje po kanalih z številkami bi blo treba uredit in je tole res krasna zadeva:)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "No fino, me je @assistant_13 prehitel s shemo omrežja..."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Sem res frišen... Se mi zdi, da sem namestitev pravilno izvedel po navodilih. Zdaj mi pa ni čisto jasno kateri fajl in kako zagnati, da bom ta iptv dejansko lahko gledal. Če namreč kliknem na enega od m3u-jev (to je vse kar se vidi na mojih vsebinah), se obnaša kot da je mapa, gre v globino, tam pa nič.  X je s kablom na ruterju. Imam pa T2."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_13, kaj pa pri T2, kjer so vsi porti video&data?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "BlaYo ima prav preveril doma,na Linksysu sem omogočil multikast in stvar dela brez pretikanja kablov.Seveda na T-2. Lp @assistant_7"
+    },
+    {
+        "role": "assistant_9",
+        "message": "help: dodal sem switch kot je predlagal @assistant_13 in stvar deluje brez pretikanja kablov. samo, če za iptv določim v XT DHCP Auto in mi potem določi en IP ki ni znotraj mojega Routerja in s tem moj XT in datoteke dodam v ne-varno omrežje. Če pa določim v XT static ip od enega prostih ip od Routerja, pa ne dela IPTV. ali je kako možno, da bi to rešili z kakšnimi mask nastavitvami ali podobno?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "BlaYo ima prav preveril doma,na Linksysu sem omogočil multikast in stvar dela brez pretikanja kablov.Seveda na T-2. Lp @assistant_7 kater linksys router pa imas?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Linsys WRT54-GL z firmwerom dd-wrt: http://www.dd-wrt.com/site/support/rout..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_15 & @assistant_9: Za T-2 ne nucaš take sheme kot jo je narisal @assistant_13! Beri par postov višje, kjer sem to tudi opisal. Pri T-2 nucaš samo router ki podpira in spušča skozi multicast. To je vse."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Evo tut men dela z Linksys routerjem in dd-wrt firmwareom IPTV.  Suppa!  Hvala mišek za hudo skripto in ostalim za info!"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Ma kaj naj recem? Misek in ostali hvala za vas trud. Super ste to zrihtal,ker meni dela brez problema  nisem mogel verjeti da bom lahko preko XT tudi videl hd programe na vdsl2 t-2 sedaj pa jih nekaj lahko celo gledam in to brez problema. Imam linksys wrt160n v3 router z firmwerom dd-wrt.Na xt sem napravil update firmwera na 2.0 in seveda iptv shema dela bp Se enkrat hvala."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Sam sem zvezal SIOL TV kot kaže slika @assistant_13. Namesto strežnika je bil router WL-500gp, drugače pa modem in stikalo in... kot je na sliki. Po poskusu predvajanja SIOL TV mi je po nekaj časa mletja napislo \"invalid file\". Po nekaj poskusih alternativnih vezav, statičnih in/ali dinamičnih IP in bog si ga vedi kaj še- router se ni več povezal na internet preko modema. Lahko sem dostopal na 192.168.1.1 od routerja, lahko sem videl Xtremer preko routerja in delil datoteke, lahko sem... vse razen WWW. Rešitev problema je bila: sveža namestitev firmwera, flash memory in setting router (sreča, da imam vse delujoče datoteka na varnem mestu!). V jezi, kje sem ga pihnil in ponovnem branju foruma sem prišel do ugotovitve, da povezava po enem kablu za IPTV in internet itak dela le ena naenkrat (če se tu motim, prosim za podrobnejša navodila, ker sem očitno full noob). Kot predpostavljam je to res in kot taka povsem useless. Po naporni službi in pičlem kosilu si želim pogledati na novo posneto epizodo priljubljene serije pa je na laptopu mrk. Sledi vklop TV, vklop xtremerja, setup, izklop TV. Pozno zvečer, tik pred spanjem želim pogledati poročila (ali kaj pač). Spet vklop TV, vklop Xtreamerja, setup.. Če pa uporabljam LAN in wireless ter miškovo skripto pa je banja- hvala @user."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Sam sem zvezal SIOL TV kot kaže slika @assistant_13. Namesto strežnika je bil router WL-500gp, drugače pa modem in stikalo in... kot je na sliki. Po poskusu predvajanja SIOL TV mi je po nekaj časa mletja napislo \"invalid file\". Po nekaj poskusih alternativnih vezav, statičnih in/ali dinamičnih IP in bog si ga vedi kaj še- router se ni več povezal na internet preko modema. Lahko sem dostopal na 192.168.1.1 od routerja, lahko sem videl Xtremer preko routerja in delil datoteke, lahko sem... vse razen WWW. Rešitev problema je bila: sveža namestitev firmwera, flash memory in setting router (sreča, da imam vse delujoče datoteka na varnem mestu!). V jezi, kje sem ga pihnil in ponovnem branju foruma sem prišel do ugotovitve, da povezava po enem kablu za IPTV in internet itak dela le ena naenkrat (če se tu motim, prosim za podrobnejša navodila, ker sem očitno full noob). Kot predpostavljam je to res in kot taka povsem useless. Po naporni službi in pičlem kosilu si želim pogledati na novo posneto epizodo priljubljene serije pa je na laptopu mrk. Sledi vklop TV, vklop xtremerja, setup, izklop TV. Pozno zvečer, tik pred spanjem želim pogledati poročila (ali kaj pač). Spet vklop TV, vklop Xtreamerja, setup.. Če pa uporabljam LAN in wireless ter miškovo skripto pa je banja- hvala @user.  Meni služi za usmerjevalnik PC z dvema mrežnima karticama, ampak nima veze, tudi tebi bi moralo delovat. Imaš stikalo pred usmerjevalnikom?   Stikalo bi moralo biti za usmerjevalnikom. Pomeni iz modema (data port) daš na WAN port usmerjevalnika, potem iz usmerjevalnika (eth1 ali podobno) daš na stikalo. Na isto stikalo pripelješ tudi port(VIDEO) iz modema in Xtreamer ter PC-je. Tako mora 100% delovati. Meni deluje brez težav v trenutku."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Mitfit- Najlepša hvala za tvoj trud in pomoč. Kot sem napisal, sem zvezal identično kot je tvoja shema s tam, da sem namesto serverja(wtf) uporabil router na enakem mestu in v enaki vezavi. Poleg pa še x variacij na to vezavo. Popolnoma je verjetno, da vezava 100% deluje (mogoče nisem počakal dovolj časa, mogoče nisem...) vendar, če nista možni obe povezavi istočasno (brez morebitnega preklapljanja) mi to ne more biti zamenjava za miskovo skripto. Če pa je možno, da po enem kablu pripeljem IPTV povezavo in WWW povezavo in mi bosta obe povezavi neodvisno na voljo po vsakem vklopu Xtreamerja pa se že v naprej zahvaljujem za podrobnejša navodila. Prav gotovo pa je omenjana vezava vredne vse pohvale in sem prepričan, da bo koristila veliko uporabnikom. Še enkrat hvala Mitfit-u in @assistant_8 za njune prispevke v zvezi s stremom po enem kablu med modemom in Xtreamerjem."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Telexdell, samo še nekaj je lahko:  - katero verzijo od Mišeka uporabljaš (predvidevam da 0.4.2)?   Te verzije (0.4.2) nisem nikoli preizkusil, uporabljam pa verzijo 0.4.1 - ta bi morala 100% delati."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Sem na Xtreamer naložil miskovo skripto 4.1, na računalnikih nastavil nadometno konfiguracijo mrežnih kartic, odstranil Switch, dal SIOL modem v Router način in omogočil DHCP, dal Router WL500gp v mode AccesPoint, dal na njega oba SIOL streama in stvar je začela delati. Sedaj imam na Xtreamerju, namiznem PC in laptopu po kablu oba streama (IPTV in WWW). Tako, da stvar deluje. Pač, človek se uči dokler živi. Hvala vsem za pomoč."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Res hvala Mišku za IPTV skripto. Bi se dalo kaj narediti še glede snemanja IPTV streama na vgrajeni disk?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_17, malo še počakaj pa bo tudi to. Je v delu . Sam ne gre tako hitro pri obilici rednega dela. Pa še v službi trenutno nimam luknje, da bi lahko delal."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja ja, to rabmo..snemanje. Bom imel vsaj razlog, da noter vtaknem tisti 250 2.5 disk noter (ker sedaj se mi ga ne da :) ). Preveril pavzo za zvok HD. Deluje razne pri Nationa G in Discovery. Tam mi te metode ne delujejo?!? A komu dela na T2 optiki tole? meni deluje povsod..so pa dnevi ko ne ;) očitno je odvisn od lune...  HD zvok na 0.4.2! Oj, še vedno nič zvoka na National G in Discovery. Na History deluje kar sam od sebe, medtem ko na Eurosport pa je potreben omenjen trik z \"pauzo\".  Za National G ma na začetku napiše ala \"Error reading Audio (To slow)\" .. kr nekaj. Sem se poigral, tako, da sem aktiviral ETH0 =1 in v tem primeru ne dobim tega errorja, sam rezultat je pa povsod isti.  Ali lahko od koga zvem kakšne nastavitve ima in ima T2 optiko in mu zvok deluje?  LPR"
+    },
+    {
+        "role": "user",
+        "message": "Morda se lahko poigraš z nastavitvami v skripti /etc/init.d/S99udpxy. Tam imaš na koncu start udpxy daemona, ki sprejme dva parametra: B in H.  udpxy -p 81 -B 262144 -H 8\n-B : buffer size (65536, 32Kb, 1Mb) for inbound (multicast) data\n     [default = 2048 bytes]\n-H : maximum time (sec) to hold data in buffer\n     (-1 = unlimited) [default = 1]Vrednosti sem pobral iz enega našega foruma. Sem pa jih prvič uporabil v verziji 0.4.2. Morda lahko poskusiš brez teh dveh."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Misek, eno vprasanje - glede na to, da novejsi TV-ji premorejo mrezno povezavo in omogocajo mpeg4/h264 stream predvajanje, bi torej naceloma tudi iptv udp stream moral delovat? Tnx."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Pozdrav vsem, ki tako pridno pišete v tem forumu. A mi lahko kdo pove, ali ta navodilo, ki jih opisujete (predvsem @user) delujejo v kombinaciji (PC windovs in Xt) ali pa je to za Linux, ker namreč, ko jaz naredim vse tako kot je opisano in zaštartam fakeshell2.pnp in pritisnem na prvo opcijo, ter nato še Enter, se ne zgodi nič. Prosim za pomoč!"
+    },
+    {
+        "role": "assistant_9",
+        "message": "@user and ostali doktorji: http://forum.xtreamer.net/viewtopic.php..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user and ostali doktorji: http://forum.xtreamer.net/viewtopic.php...     mišek sedaj boš končno lahko pošmekal ip tv kar v kodi ;)"
+    },
+    {
+        "role": "assistant_20",
+        "message": "S tem \"sourcom\" si nimajo kaj pomagat... več sreče prihodnjič."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2, you wish! Noter menda ni niti ene vrstice Xtreamer specific kode. Sploh pa ne glavne aplikacije. Tako da iz te moke ne bo kruha. Škoda. Morda enkrat...  @assistant_18, na to temo se ravno ne spoznam, ker nimam TV, ki bi to podpiral (mi ga kdo šenka?  Kakšen prodajalec morda... ali pa posodi...). Kolikor pa se spoznam ti TV-ji podpirajo DLNA protokol, ki je nekaj podobnega kot UPnP. Torej bi se po mojih predvidevanjih dalo narediti tako, da bi DLNA server ter udpxy program namestil na router (dd-wrt) in bi preko njega streamal na TV. Predvidevam. Bom pa podrobneje pobrskal o zadevi.  @assistant_19, ta moja navodila so samo za Xtreamer. Vse potrebno teče na njem. Ko si napisal, da se ne zgodi nič lahko to malce podrobneje napišeš? Ker drugače je malce težko pomagati. Sicer pa je (menda) še vsem uspelo. Ni vrag da ne bi še tebi."
+    },
+    {
+        "role": "assistant_19",
+        "message": "@user ja ne vem kaj narobe delam, pa najbolje da napišem točno - sej nisem tako z.... ampak res ne vem torej USB ključ vtaknem v Xt in se nato na njega povežem preko IE. nato skopiram datoteko iptv_install iz USB na HDD v Xt, nato zaženem datoteko fakeshell2.pnp in nato kliknem na INSTAL_ALL_IPTV in pritisnem enter. Tato se na ekranu lepo izpiše potek nalaganja in na koncu še naj restartam Xt. Vse to lepo naredim, potem pa ko grem na Xt v mapo Moje vsebine in nato UPnp ne vidim ničesar (razen drugega računalnika v mreži). Upam, da sem ti dovolj nazorno povedal, da boš vedel kaj je storiti. Pa hvala v naprej!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "mene pa zanima v bistvu samo webTV podpora, npr - IO od Siol.net ali pa MaxTV. Ali se kaj dela v tej smeri?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@user ja ne vem kaj narobe delam, pa najbolje da napišem točno - sej nisem tako z.... ampak res ne vem torej USB ključ vtaknem v Xt in se nato na njega povežem preko IE. nato skopiram datoteko iptv_install iz USB na HDD v Xt, nato zaženem datoteko fakeshell2.pnp in nato kliknem na INSTAL_ALL_IPTV in pritisnem enter. Tato se na ekranu lepo izpiše potek nalaganja in na koncu še naj restartam Xt. Vse to lepo naredim, potem pa ko grem na Xt v mapo Moje vsebine in nato UPnp ne vidim ničesar (razen drugega računalnika v mreži). Upam, da sem ti dovolj nazorno povedal, da boš vedel kaj je storiti. Pa hvala v naprej! Pa imaš IPTV signal pripeljan na Xtreamer?"
+    },
+    {
+        "role": "assistant_19",
+        "message": "@user ja ne vem kaj narobe delam, pa najbolje da napišem točno - sej nisem tako z.... ampak res ne vem torej USB ključ vtaknem v Xt in se nato na njega povežem preko IE. nato skopiram datoteko iptv_install iz USB na HDD v Xt, nato zaženem datoteko fakeshell2.pnp in nato kliknem na INSTAL_ALL_IPTV in pritisnem enter. Tato se na ekranu lepo izpiše potek nalaganja in na koncu še naj restartam Xt. Vse to lepo naredim, potem pa ko grem na Xt v mapo Moje vsebine in nato UPnp ne vidim ničesar (razen drugega računalnika v mreži). Upam, da sem ti dovolj nazorno povedal, da boš vedel kaj je storiti. Pa hvala v naprej! Pa imaš IPTV signal pripeljan na Xtreamer?  Imam, ker sem kabel izklopil iz STB-ja in ga vklopil v Xt"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Men se je pa pojavila nenavadna težava... Od vikenda naprej ko sem zadnjič probal gledati preko xt-ja iptv mi dela samo še SLO1 kanal in noben drug... ma kdo kako idejo kaj bi to lahko bilo. Sem že probal unistall all reset xtremerja in ponovno naložit iptv_all skripto a ne pomaga, še vedno deluje le SLO1... Sumljivo... :S  LP"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Moram dodat še to, da imam T-2 optiko, pa mislm da tut če ne bi imel tabla do Xt, bi mi moglo nekaj pokazat v UPnp (seveda potem ne bi predvajalo)."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Moram dodat še to, da imam T-2 optiko, pa mislm da tut če ne bi imel tabla do Xt, bi mi moglo nekaj pokazat v UPnp (seveda potem ne bi predvajalo). Ponavadi traja nekaj časa, da se pojavi direktorij za IPTV (cca 1'). Če si mogoče večkrat naredil install_all...bi bilo proporočljivo, da narediš deinstall_all in nato zopet install_all. Problem je lahko tudi, če spreminjaš Play listo. Sam sem si naredil listo priljubljnenih, pa mi nekajkrat ni hotela delati (to za tebe še ni problem,ker ne vidiš niti direktorija). To je nekaj stvari, katere so menene mučile ob zagonu skripte. Če ti to ne bo pomagalo, se bom poskušal spomniti še katero"
+    },
+    {
+        "role": "assistant_21",
+        "message": "mene pa zanima v bistvu samo webTV podpora, npr - IO od Siol.net ali pa MaxTV. Ali se kaj dela v tej smeri?  Ja, mene to tudi zanima, ker pač nimam SiolTV,T2, Amis TV. ALi moraš bit za Amis TV tudi njihov naročnik, ali je dovolj samo njihov modem in njihov internet?"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Ponavadi traja nekaj časa, da se pojavi direktorij za IPTV (cca 1'). Če si mogoče večkrat naredil install_all...bi bilo proporočljivo, da narediš deinstall_all in nato zopet install_all. Problem je lahko tudi, če spreminjaš Play listo. Sam sem si naredil listo priljubljnenih, pa mi nekajkrat ni hotela delati (to za tebe še ni problem,ker ne vidiš niti direktorija). To je nekaj stvari, katere so menene mučile ob zagonu skripte. Če ti to ne bo pomagalo, se bom poskušal spomniti še katero  @assistant_12 ja sem naredil tudi deinstall_all pa nič ne pomaga. hvala ker se trudiš!"
+    },
+    {
+        "role": "assistant_22",
+        "message": "Torej lahko z Xtreamerjem in modom od miška, brezplačno gledam IPTV na še enem TVju (poleg tistega, ki je priklopljen na Siolov STB)?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Morda se lahko poigraš z nastavitvami v skripti /etc/init.d/S99udpxy. Tam imaš na koncu start udpxy daemona, ki sprejme dva parametra: B in H.  udpxy -p 81 -B 262144 -H 8\n-B : buffer size (65536, 32Kb, 1Mb) for inbound (multicast) data\n     [default = 2048 bytes]\n-H : maximum time (sec) to hold data in buffer\n     (-1 = unlimited) [default = 1]Vrednosti sem pobral iz enega našega foruma. Sem pa jih prvič uporabil v verziji 0.4.2. Morda lahko poskusiš brez teh dveh.  Oj,tole sem poskusil in ne dela... le zatika se bolj (ker ni bufferja verjetno :) )  A res ni junaka tle, ki ima T2 optiko, XT 2.0.2 in mu dejansko dela zvok na National G. HD?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Misek, eno vprasanje - glede na to, da novejsi TV-ji premorejo mrezno povezavo in omogocajo mpeg4/h264 stream predvajanje, bi torej naceloma tudi iptv udp stream moral delovat? Tnx.  Hm, to ti povem iz prakse: DLNA se veliko lepše bere, kot uporablja v praksi. 1. Kdo kaj vidi? (Moj samsung vidi NAS (Synology DS409+) in Samsungu priložen DLNA program za Winse, ne vidi pa Win7 DLNA (Play to opcija); Xtreamer vidi vse 3) 2. Kdo kaj predvaja in sprejema prek DLNA? (DLNA lako pošilja določene formate datotek, določene pa ne. Tako imam primer, da prek enega DLNA delajo srt podnapisi z recimo avi, ne pa srt z recimo mkv. itd... 3. Kater TVji predvajajo KAJ? Moj Samsung (EISA Media TV award) ima težave VC-1 in DTS, pa čeprav je lista podprtega neskončna. Še to, VC-1 bo predvajal znotraj vmw, ne pa če je v mkv (sicer pa z mkv nima težav). A ti je sedaj jasno koliko kombinacij je tole?  Morda bi Win7 \"plat to\" DLNA znal parsat iptv, vendar ne vem kdo bo vse to šel študirat :)"
+    },
+    {
+        "role": "assistant_23",
+        "message": "No, pa sem si tudi jaz včeraj vzel nekaj minut (skoraj dobesedno) in inštaliral iptv. In sicer na t2 vdsl2. Vse kar sem naredil, je bilo po navodilih skopirano na usb ključ, nič spreminjal okrog IPjev in tega, na routerju (54gl z ddwrt) vklopil multicast, zagnal skripto, resetiral, počakal pol minute in užival v TV. Seveda dela tudi HD (samo zaradi slabše povezave pač moram izklopiti utorrent pri HD vsebinah). Zvok je skoraj povsod, na določenih prog. se kockam malo (čeprav mam poker raje), na nekaterih ne dela zvok (to vse velja za hd programe), medtem ko ostali delajo normalno.  In pa še 1x za vse - potrebno je biti naročnik IP-TVja da dela. In če si naročnik, potem načeloma lahko dela BP na večih predvajalnikih (se pravi stb, xtreamer, vlc, ...). Baje je pri Amisu to zaklenjeno na mac (to piše nekje na forumu, lahko nekdo preveri, če ima voljo). Na ostalih dela bp. Preverjeno na T2.  Lp"
+    },
+    {
+        "role": "assistant_4",
+        "message": "In pa še 1x za vse - potrebno je biti naročnik IP-TVja da dela. In če si naročnik, potem načeloma lahko dela BP na večih predvajalnikih (se pravi stb, xtreamer, vlc, ...). Baje je pri Amisu to zaklenjeno na mac (to piše nekje na forumu, lahko nekdo preveri, če ima voljo). Na ostalih dela bp. Preverjeno na T2.  Lp  :) Še enkrat za vse ostale: Ni POTREBNO, da si naročnik IP TVja na T2, če imaš optiko. (zvok meni ne deluje na 2x HD kanalih, ostalo dela)"
+    },
+    {
+        "role": "assistant_23",
+        "message": "oh, ok :) To sem pa spregledal :) majmistejkatumejka :)"
+    },
+    {
+        "role": "user",
+        "message": "A kdo pozna kakšno spletno aplikacijo, ki deluje kot VCR (nastavljanje kanala, začetek in konec snemanja, ...)? Se nekaj trudim da bi sam spisal, pa nekako nimam dobre ideje, kako naj bi vizualno zgledalo. Sem v tem bolj slab. Za osnovo sem mislil vzeti tole, pa nima možnosti editiranja vnosov, ponavljanja npr. vsaki dan, ... Samo dodajanje in brisanje."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@user: upam da ta dva programa kaj pomagata: http://arakar.ifastnet.com/andrej/softw... http://www.aditeya.net/Download.aspx  T2 record na PCu deluje odlično"
+    },
+    {
+        "role": "assistant_24",
+        "message": "Evo tudi jaz sem naložil po navodilih miska IP TV.Vendar mi ni čisto uspelo.Na XT imsm lepo napisane vse kanale,samo vse datoteke so velke 0 MB,tako da se nič ne zgodi ko pritisnem na ikono programa.Sedaj pa me zanima kaj sem spregledal ali pozabil nastaviti.Kabel sem samo pretaknil iz STB-ja.na Xt. Mogoče ima kdo kakšno idejo kje sem ga polomil???? Sem pa naročnik Siol IP TV  lp @assistant_24"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Evo tudi jaz sem naložil po navodilih miska IP TV.Vendar mi ni čisto uspelo.Na XT imsm lepo napisane vse kanale,samo vse datoteke so velke 0 MB,tako da se nič ne zgodi ko pritisnem na ikono programa.Sedaj pa me zanima kaj sem spregledal ali pozabil nastaviti.Kabel sem samo pretaknil iz STB-ja.na Xt. Mogoče ima kdo kakšno idejo kje sem ga polomil???? Sem pa naročnik Siol IP TV  lp @assistant_24 V xtreamer moraš napisati IP 10.192... (kot ga imaš na komunikatorju +1), masko 255.255.0.0 in getaway 10.192.1.1. Malo počakaš in more delati. Datoteke so pa vedno dolge 0 bitov. Pozneje, ko ti bo stvar delala, pa lahko združiš signale, kot je opisano."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Mišek- vidim, da si se resno lotil izdelave snemalnika. Se že veselim novih možnosti. Če bi snemalnik omogočal predvajanje programa, katerega trenutno snema na avdio/video izhodu bi stvar naredil še uporabnejšo. Mogoče neki ponter predvajaj da/ne. Tako bi lahko preveril potek snemanja (kako je z upoštevanjem pričetka oddaj itak vemo), mogoče snemal direktno na DVD ali HDD snemalnik..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9, hvala. Ampak najraje bi nekje dobil že narejene PHP skripte z osnovo funkcionalnosti. Ampak očitno bom moral vse sam napisati..."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Torej lahko z Xtreamerjem in modom od miška, brezplačno gledam IPTV na še enem TVju (poleg tistega, ki je priklopljen na Siolov STB)?  Odgovor prosim, da se čisto prepričam o nakupu :)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Torej lahko z Xtreamerjem in modom od miška, brezplačno gledam IPTV na še enem TVju (poleg tistega, ki je priklopljen na Siolov STB)?  Odgovor prosim, da se čisto prepričam o nakupu :). ma si len...mal preglej nazaj poste...eh!"
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_12 V xtreamer moraš napisati IP 10.192... (kot ga imaš na komunikatorju +1), masko 255.255.0.0 in getaway 10.192.1.1. Malo počakaš in more delati. Datoteke so pa vedno dolge 0 bitov. Pozneje, ko ti bo stvar delala, pa lahko združiš signale, kot je opisano.   Sem naredil po tvojih navodilih in spremenil IP pa zadeva še vedno ne dela. Imama pa IP komunikatorja 10.79.69... No pa saj sem vedel da se bo pri meni nekaj zakompliciralo...nisem pa neki računalniški frik in moram priznati da mi veliko pojmov o katerih se pogovarjate na forumu ni jasno  lp @assistant_24"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Torej lahko z Xtreamerjem in modom od miška, brezplačno gledam IPTV na še enem TVju (poleg tistega, ki je priklopljen na Siolov STB)?  Odgovor prosim, da se čisto prepričam o nakupu :). Siol ti zaračuna le eno TV. Če so na tvoji lokaciji tehnične možnosti, daj vlogo na SIOL, da ti ustrezno dvignejo stream. Torej te nič ne stane več, če gledaš dve TV. Sam Xtreamer pa mislim, da ni primeren za permanentno gledanje TV. Je pa Xtreamer vsekakor primeren, če gledaš npr. neki film pa bi rad na hitro nekaj pogledal na TV, če bo misko uredil snemanje, ogledaš si lahko kanale, katere mogoče nimaš v programski shemi..."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Drugače na moji lokaciji ni možno imeti še ene TV preko Siola, ampak ali bo kljub temu mogoče gledati TV še preko Xtreamerja? V bistvu bi bil Xtreamer kot dodatni STB za drugo televizijo, zato me zanima, če bi bila izkušnja enaka ali vsaj čimbolj podobna tisti, ki jo prinaša original STB od Siola? Najlepša hvala za tvoj odgovor, @assistant_12 ;)."
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_12 V xtreamer moraš napisati IP 10.192... (kot ga imaš na komunikatorju +1), masko 255.255.0.0 in getaway 10.192.1.1. Malo počakaš in more delati. Datoteke so pa vedno dolge 0 bitov. Pozneje, ko ti bo stvar delala, pa lahko združiš signale, kot je opisano.   Sem naredil po tvojih navodilih in spremenil IP pa zadeva še vedno ne dela. Imama pa IP komunikatorja 10.79.69... No pa saj sem vedel da se bo pri meni nekaj zakompliciralo...nisem pa neki računalniški frik in moram priznati da mi veliko pojmov o katerih se pogovarjate na forumu ni jasno  lp @assistant_24 Potem pa moraš vpisati 10.79.69.\"+nekaj več\", 255.255.0.0, 10.79.1.1 (DNS kar IP modeme npr. 192.168.1.1). Po vpisu se ti spodaj desno pokaže IP. Preden boš lahko dostopal do TV bo moralo preteči nekaj časa (1-2 min). Če ti to ne bo delalo, poskusi izklopiti Xtreamerja. Če še potem ne bo delalo deinstaliraj miskov paket, ga instaliraj na novo, vpisi/preveri IP, izklopi in nato vklopi Xtreamer, počakaj 1-2 min in ni vrag, da ne bi delalo.   Aja- poskusi najprej s skripto 0.41. Ko ti bo delalo pa lahko greš na 0.42 ali združiš streame."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Drugače na moji lokaciji ni možno imeti še ene TV preko Siola, ampak ali bo kljub temu mogoče gledati TV še preko Xtreamerja? V bistvu bi bil Xtreamer kot dodatni STB za drugo televizijo, zato me zanima, če bi bila izkušnja enaka ali vsaj čimbolj podobna tisti, ki jo prinaša original STB od Siola? Najlepša hvala za tvoj odgovor, @assistant_12 ;). Če ni tehničnih možnosti, potem ti tega ne more omogočiti niti Xtreamer. Lahko bi eventuelno izmenično gledal TV na dveh lokacijah (ko je izključen STB, gledaš preko Xtreamerja itd). Če nimaš ravno naročenega Full-HD-Mega-XXX paketa, bi lahko videl tudi nenaročene programe in jih ocenil. Če bi ti bili všeč pa bi pozneje naročil omenjeni paket ali pa ne."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Aha, tako gre to torej... Če pa recimo rečemo, da imam tehnične možnosti, je izkušnja podobna tisti, ki je na Siolovem STBju?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Aha, tako gre to torej... Če pa recimo rečemo, da imam tehnične možnosti, je izkušnja podobna tisti, ki je na Siolovem STBju? Programi se ti prikažejo enako dobro/slabo, kot preko STB. Nimaš pa EPG, filmov na zahtevo, programov ne moreš izbirati direktno preko številk ampak le +/-.... Če imaš tehnične možnosti in rabiš dva TV potem ti priporočam dva STB. Xtreamer (še več ti omogoča domači računalnik) pa le kot dodatek, kot sem omenil zgoraj."
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_12 Hvala za tvoj trud.V drugo mi je uspelo.Zadeva dela,le pri HD kanalih ni zvoka ampak kot sem prebral se to reši z tipko \"pausa\" in glej celo dela.Čeprav sem opazil da pri nekaterih zvok ne dela samo pri 1-2 kanalih,pri meni ne dela pri vseh HD kanalih. Me pa zanima sledeče: -Moti me to pretikanje kablov,ampak kot sem prebral nekje v temi bi se to dalo urediti z UTP kablom ki ga razdeliš na dva dela...bo to delalo??  -Ali je potrebno vedno nastavljati IP in podobne številke v nastavitvah..ker prvenstveno imam xt za predvajanje filmov i glasbe in je povezan v mrežo z PC. -Pri menjavi kanalov pri IP TV je potrebno iti ven iz kanala in nastaviti drugi kanal...ali je kakšna druga rešitev za menjanje kanalov??  lp @assistant_24"
+    },
+    {
+        "role": "assistant_25",
+        "message": "UTP kabel razdeliti na dva dela? Če s tem misiš izkoristiti \"proste\" štiri žile (UTP je 8-žilni, 100Mb mreža uporablja samo 4), lahko rešiš problem \"router v eni sobi, Xtreamer v drugi, vmes mam samo en kabel, ne morem vleči še enega\", ampak na Xtreamer koncu boš moral še vedno nekako signala združiti. V temi so omenjali uporabo stikala (switch), to pa bi znalo delati (in če ga postaviš ob router, bosta obe mreži šli po istem kablu in spet ne bo potrebe po nestandarnih rešitvah na UTP kablu)  Po kablu lahko pripelješ n različnih signalov (mrež), ampak naprava se bo priklopila samo na eno. Velja za vse naprave (ok, multi-home naprave imajo več mrežnih vmesnikov in zato lahko čepijo na različnih mrežah - npr router). Zato boš moral (a) ja, vedno nastavljati ustrezne parametre (b) dokupiti še en podprt mrežni vmesnik  Kot je znano, lahko kanale menjaš s tipkama \"<<\" in \">>\" (to je +/-, o katerem govori @assistant_12) ali pa tako, kot si rekel, ven in not."
+    },
+    {
+        "role": "assistant_23",
+        "message": "Meni je uspelo vse spraviti po enem kablu. IP sem nastavil taki, kot ga imam v LANu. Na routerju (linksys 54gl z ddwrt) sem samo omogočil multicast in zadeva dela. Dela share, dela iptv - skratka vse po enem kablu bp.  Lp"
+    },
+    {
+        "role": "assistant_12",
+        "message": "...Po kablu lahko pripelješ n različnih signalov (mrež), ampak naprava se bo priklopila samo na eno. Velja za vse naprave (ok, multi-home naprave imajo več mrežnih vmesnikov in zato lahko čepijo na različnih mrežah - npr router). Zato boš moral (a) ja, vedno nastavljati ustrezne parametre (b) dokupiti še en podprt mrežni vmesnik... To sem mislil tudi sam, pa sta mi Blay0 in @assistant_13 pokazala, da nimam prav (preberite prvo stran te teme!). Sam sem zvezal en data port iz SIOL modema na prvi priklop switcha, en video port iz SIOL modema na zadnji priklop switcha. Iz switcha sedaj vodim po en kabel na Xtreamer, laptop in namizni PC. Na Xtreamerju sem naložil miskovo 0.41 skripto, na računalnikih pa sem nastavil alternativno konfiguracijo kartice (omrežne povezave-LocalAreaConnection-lastnosti-InternetProtocol(TCP/IP)-Lastnosti-nadomestna konfiguracija), kamor sem vpisal IP (na vsaki kartici povečan!) in masko 255.255.0.0. Na vseh napravah mi dela internet in IPTV brez, da bi moral karkoli spreminjati (razen programa, katerega bi gledal ali naslova spletne strani, katero bi odprl). Sam imam do dnevne sobe napeljana dva kabla, zato sem na STB pripeljal direktni IPTV signal iz drugega video porta SIOL modema. Če pa bi imel potegnjen le en kabel, bi v dnevni sobi postavil še en switch, da bi kabel razdelil med STB in Xtreamerjem."
+    },
+    {
+        "role": "assistant_25",
+        "message": "@assistant_12: ja, to je trik s stikalom.  @assistant_24: menda je na T2 drugače oziroma signal ni ločen. Nam na SiOLu prospero za dobro jutro razcepi signal na \"voice\", \"data\", \"video\" in potem moraš data+video združiti s switchem ali dvema mrežnima (za Xtreamer to običajno pomeni wired + wireless; za comp pa lahko dve ožičeni mrežni, kot piše v vseh navodilih za TV over PC)  Morda bi se dalo namesto prospera uporabiti kak drug router - ne vem, kako bi SiOL gledal na to in ne vem, kako bi rešil telefonijo."
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_12: ja, to je trik s stikalom.  @assistant_24: menda je na T2 drugače oziroma signal ni ločen. Nam na SiOLu prospero za dobro jutro razcepi signal na \"voice\", \"data\", \"video\" in potem moraš data+video združiti s switchem ali dvema mrežnima (za Xtreamer to običajno pomeni wired + wireless; za comp pa lahko dve ožičeni mrežni, kot piše v vseh navodilih za TV over PC)  Morda bi se dalo namesto prospera uporabiti kak drug router - ne vem, kako bi SiOL gledal na to in ne vem, kako bi rešil telefonijo. Joze67- če si me nisi dobro prebral še enkrat: tudi na Xtreamerju vse poteka po enem kablu. Ne potrebuješ WiFi povazave in ni potrebno menjavati IP nastavitev."
+    },
+    {
+        "role": "assistant_9",
+        "message": "ali bi lahko kdo razložil kako se prepriča Linksys 54gl z ddwrt?"
+    },
+    {
+        "role": "assistant_23",
+        "message": "Enostavno. Greš v \"zaščito\" in odstraniš kljukico pri \"Filter za multicast \".  To je to. Počakaš nekaj minut in dela. Sam imam na xtreamerju nastavljen LAN ip (statičen, bi z dinamičnim moralo enako delat).  Lp"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Ja fantje kaj naj rečem, zdej pa dela! Pa ne bom povedal kaj sem zaj..al, včasih se pač človek sam sebi čudi, kako lahko naredi takšno neumnost. No bo drugič bolje."
+    }
+]

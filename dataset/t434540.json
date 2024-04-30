@@ -1,0 +1,14 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo mene zanima kaj je narobe z tem mojim programom pri sosrtiranju mi kaže v vskai vrstici napaka..ce mi lahko kdo pove napiše pa sbscripted value is neither array nor pointer..:)tudi če poveste samo kje naj bi bili napaka :)   #include <stdio.h>\n#include <stdlib.h>\nvoid papa();\nstruct delavec\n{\nchar ime_osebe[35];\nchar kraj_rojstva[35];\nint letnica_rojstva;\n};\n\nint main(int argc, char *argv[])\n{struct delavec x;\nFILE *fp;\nchar c;\nfp=fopen(\"garac.bin\",\"wb\");\ndo\n{\nfflush(stdin);\ngets(x.ime_osebe);\nfflush(stdin);\ngets(x.kraj_rojstva);\nscanf(\"%d\",&x.letnica_rojstva);\nfwrite(&x,sizeof(x),1,fp);\nprintf(\"vpisi bi se\");\nfflush(stdin);\nscanf(\"%c\",&c);\n}\nwhile(c=='d');\nfclose(fp);\npapa();\n  system(\"PAUSE\");\t\n  return 0;\n}\nvoid papa()\n{struct delavec x;\nFILE *fp;\nchar c;\nint i=0,j,k;int f;char l[35];\nfp=fopen(\"garac.bin\",\"rb\");\nwhile(fread(&x,sizeof(x),1,fp)==1)\n{i++;}\nfor(j=0;j<10;j++)\nfor(k=9;k>j;k--)\nif(x[k].letnica_rojstva>x[k-1].letnica_rojstva)\n{f=x[k].letnica_rojstva;\nx[k].letnica_rojstva=x[k-1].letnica_rojstva;\nx[k].letnica_rojstva=f;\nstrcpy(l,x[k].ime_osebe);\nstrcpy(x[k].ime_osebe,x[k-1].ime_osebe);\nstrcpy(x[k-1].ime_osebe,l);\nstrcpy(l,x[k].kraj_rojstva);\nstrcpy(x[k].kraj_rojstva,x[k-1].kraj_rojstva);\nstrcpy(x[k-1].kraj_rojstva,l);}\n\nfor(j=0;j<i;j++)\nprintf(\"%s  %s  %d\",x[j].kraj_rojstva,x[j].ime_osebe,x[j].letnica_rojstva);\n fclose(fp);    \n}"
+    },
+    {
+        "role": "assistant_0",
+        "message": "if(x[k].letnica_rojstva>x[k-1].letnica_rojstva) Z indeksom hoces dostopat do elementa k od objekta x, ki je sicer tip struct delavec."
+    },
+    {
+        "role": "user",
+        "message": "kaj bi mogu pr tem popravt.."
+    }
+]

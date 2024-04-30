@@ -1,0 +1,86 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  imam prenosnika z windowsi XP na katerega bi rad namestil laserski tiskalnik HP 4250. Printer poskušam namestiti preko USB kabla.   Problem kateri se mi pojavi je, da ne vem kako se inštalira driverje. Iz uradne strani od HP-ja sem prenesel vse driverje, ki so za windows XP se pravi PCL 5 in PCL 6. Nobeden od teh dveh driverjev nima nobenega .exe fajla. Če zaženem tistega z .msi pa mi napise error code 2753.  Potem sem poskušal posneti še univerzalne driverje na strani od HP-ja. Tile so ravno tako PCL 5 in PCL 6. Ti imajo .exe file. Če ga zaženem se mi pojavi sporočilo kjer me vpraša ali si želim tradicionalni način ali pa dinamični.   Če izberem dinamični način potem posname driverje brez problemov. Ampak potem, se pod lastnostmi printerja lahko izbere samo način preko mreže in ne preko USB.  Pri tradicionalnem načinu pa se mi zraven zažene čarovnik od windosov. Če pustim vse skupaj pri miru se ne zgodi več kakor pol ure nič. Če pri čarovniku izberem \"next\" potem išče printer.. potem ga ne najde.. potem ga lahko izberem ročno.. ampak... tule so na razpolago vsi porti razen USB-ja.   Gledal sem veliko tudi po internetu ampak nisem našel nič pametnega. Vsi pišejo da se tole inštalira tako, da se najprej posname driverje brez printerja potem pa se ga priključi.. Ampak meni nikakor ne uspe inštalirati driverjev..   Driverji so drugače na tej strani: http://h20000.www2.hp.com/bizsupport/Te...  Za vsako pomoč se zares lepo zahvaljujem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lahko je več stvari. V Command Promptu odtipkaj: regsvr32 vbscript.dll in še 1x poizkusi inštalirat msi program.  Ali ti računalnik javi neznano napravo, če priklopiš tiskalnik na USB ? Če ti jo, potem imaš v device managerju nekje rumen vprašaj in ročno namesti gonilnike za tiskalnik. Link, ki si ga dal vsebuje tudi .inf datoteko, ki potem opravi inštalacijo namesto klasične exe inštalacije.  Preveri, če imaš zadnji SP3 za XPje. Preveri, če nimaš kakega zajedalca (spyware, adware, črv, virus...), ki moti inštalacijo."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovor.  Preizkusil.  V Command Promptu odtipkaj: regsvr32 vbscript.dll in še 1x poizkusi inštalirat msi program.  Še vedno javi isto napako... 2753.  Če priklopim printer na USB, mi javi, da je tole HP 4250. Ko je priklopljen, v device managerju piše, da naprava deluje pravilno.. tudi, če ni gori nobenih driverjev. Problem se pojavi, ko hočem kaj sprintati.. potem lahko printam samo v .prn datoteko..   Imam SP3 in updatano čisto do konca.  Kar se tiče zajedalcev, mislim, da jih nebi smel imeti.. vsaj ne kakšnih hudih ker mi vse drugo čisto normalno dela.. tudi vsak dan program preverja če je slučajno gori kaj čudnega.. pa tudi strani, ki jih obiskujem so več ali manj vse čiste...  Še nekaj sem se spomnil.. ali je mogoče inštalirati driverje ročno? kakor si rekel preko .inf??"
+    },
+    {
+        "role": "user",
+        "message": "aja... pa še tole..   poskusil sem ga ištalirati tudi preko Ethernet kabla.. kar direktno iz mrežnne kartice računalnika.. če se izbere dinamični način pri univerzalnem driverju za printerje HP potem ga najde, kaor da je na mreži.. ampak, potem napiše, da ne more komunicirati z njim..   ali se ga bi dalo povezati kar preko Ethernet kabla??"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 4. feb 2010 ob 23:51 izjavil: Še nekaj sem se spomnil.. ali je mogoče inštalirati driverje ročno? kakor si rekel preko .inf??   Z desno tipko klikneš na .inf in izbereš install oz. namesti..."
+    },
+    {
+        "role": "user",
+        "message": "Z desno tipko klikneš na .inf in izbereš install oz. namesti...  poskusil.. ne zgodi se čisto nič... samo za kakšno milisekundo pomižikne ekran... to je potem to.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Glede na to, da se je probalo namestiti že vse vse sorte gonilnike, je očitno sedaj problem zaradi registra, v katerem je sedaj \"rahla zmešnjava\". Za pcl6 gonilnike je napisano, da ni exe datoteke na hp-jevski sttrani. To ne bo čisto držalo.Če se namešča preko univerzalnih gonilnikov, potem je bolje izbrati klasični način ( traditional mode).Dinamičen način je bolj primeren za uporabnike v omrežju. Napaka 2753 pomeni fatal error.Najbolje bi bilo počistiti s primernim orodjem v registru, kar je ostalo pri namestitvi gonilnikov."
+    },
+    {
+        "role": "user",
+        "message": "Sem sedaj preizkusil tudi tole. Vse skupaj sem pobrisal z Windows rescue kit tools, z ukazom cleancpl.exe. Tako mislim, da bi moralo biti cisto vse skupaj..  Potem sem se enkrat poskusil namestiti gonilnike iz \"čisto držalo\" linka. Exe fila ni notri..Ko se posname file dol in se ga zazene, tole ni .exe, ampak navaden zip??? mogoce delam jast kaj narobe?? ko ga zazenem me vprasa kam hoce odkrciti datoteke.. potem, ko jih odkrci notri ni .exe fila. Ce poskusam klikniti na .msi datoteko mi javi napako 2753.. isto kot prej.. ce poskusam dati install na .inf datoteko pa spet samo pomizikne ekran in se ne zgodi nic..  Pri univerzalnih driverjih pa je se vedno isto kakor sem napisal.. Ce dam traditional mode se mi zazene HP installer (status: installing)in zraven carovnik od windowsov (vellcome to the add printer). Ce carovnika od windowsow pustim pri miru, lahko cakam vec kakor pol ure pa se ne zgodi nic... Ce pri carovniku od windowsow kliknem na \"next\" potem zacne iskati printer.. potem ga ne najde... potem ga lahko nastavim samo rocno.. potem so za izbrati samo paralelni pa Com porti.. pa mreza.. nikjer pa ni usb porta..   Ce kliknem pri carovniku od windowsow cancel se tudi HP installer takoj prekine.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tisti exe je dejansko self-extract zip datoteka. Ko se razpakira v določeno mapo, je čisto v redu, če ni exe datoteke. Pomemba je inf datoteka, ki vsebuje vse informacije za namestitev gonilnikov. Ko windows sprašuje za gonilnike, mu je potrebno samo \"pokazati\" mapo, kjer se nahaja inf datoteka."
+    },
+    {
+        "role": "user",
+        "message": "Pa zakaj se potem ne zgodi nic, ce se .inf datoteko klikne z desnim gumbkom in se da install.. Ali obstaja se kaksen drugi nacin za instalacijo?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kakšno je sedaj stanje v upravitelju naprav? je gonilnik za tiskalnik nameščen?"
+    },
+    {
+        "role": "user",
+        "message": "Pod katero kategorijo sploh je? Nikjer ga ne najdem.  Tudi v nadzorni polsci pod printerji in faxi ni nic notri.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Očitno se gonilnik za tiskalnik noče namestiti. Naj se tiskalnik priklopi na drug usb port na prenosniku in poizkusi še enkrat."
+    },
+    {
+        "role": "user",
+        "message": "Tudi tole sem ze probal.. v vseh 5 portov... povsod isto.."
+    },
+    {
+        "role": "user",
+        "message": "Ali res nima vec nihce nobene ideje, kaj bi bilo lahko se narobe? Se vedno mi ne uspe.."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Po vsej verjetnosti imaš zapacan register. Preizkusi naslednje:  Izbriši vse na hp*.* v mapi C:\\Windows\\System32 Inštaliraj si  CCleaner, likni na levi strani na \"Registry\", spodaj \"Scan for Issues\" in nato \"Fix selected issues\". Zapri Ccleanerja in ponovi inštalacijo msi.  Če ni boljše pa še naslednji dve rešitvi  na tej strani.  Ena od možnosti je tudi, da inštaliraš predzadnji in ne zadnji gonilnik.  Poročaj !"
+    },
+    {
+        "role": "user",
+        "message": "Ja izgleda da je res neki z registrom.. Ccleaner je javil napake ravno od HP-ja.. potem jih je popravil.. potem sem zagnal .msi in errorja ni vec..   Sedaj pa imam problem, da ce zazenem .msi file se ne zgodi cisto nic.. racunalnik za kaksnih 5 sekund zacne ribati kakor, da se nekaj dogaja.. potem pa kar ni nic ?? aja.. pa se to... imam dvojne driverje PCL 5 in PCL 6... pri obojih je isto... tako da mislim da ni problem v driverjih.. Tudi, ce dam install na .inf file se ne zgodi nic.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Upajmo, da je ccleaner naredil svoje. Jaz osebno ne bi uporabil msi datoteke, temveč ali pcl5 ali pa pcl6 gonilnike. Za namestitev obojih res ni potrebe. Ko OS zazna, da je na usb-ju nova naprava, bi mu pač \"podtaknil\" ustrezno inf datoteko."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2: saj .msi datoteka je v PCL5 in PCL6 gonilnikih.. ali se jih da instalirati se kako drugace? Ce dam install na .inf file se ne zgodi nic..   Ce priklopim printer na usb se mi pokaze add printer wizard.. potem dam next... izberem moznost local printer (Plug&Play).. druga moznost je printer printer priklopljen na omrezje... zato izberem prvo moznost.. potem printerja ne najde.. potem ga lahko namestim samo rocno.. zato kliknem next.. potem imam moznost \"use following port\".. tule so samo LPT (1-3), COM (1-6), print to file pa XPS.. nikjer ni USB-ja.. Spodaj je se moznost \"create a new port\".. tule pa se lahko izbere samo local port..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Morda bi lahko poizkusil še s temle. Če se bo zagnal čarovnik od Hp-ja za namestitev tiskalnika, se tiskalnik poveže s Pc-jem z usb kablom šele, ko aplikacija to zahteva."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2: thanx za tole!!! Izgleda zares obetavno :) Lepo se zazene in vse izgleda kakor mora biti.  Nazalost sedaj nimam printerja tule pri sebi ampak bom preizkusil takoj, ko pridem nazaj domov. Pomoje, da bi tole moglo delati..."
+    }
+]

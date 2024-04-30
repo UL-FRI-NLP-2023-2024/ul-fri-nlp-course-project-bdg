@@ -1,0 +1,226 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo!  Imam star računalnik z windowsi 98, na katerem rad malo obujam nostalgijo. Opazil sem da pri starejših DOS igrah ne deluje glasba v ozadju, govor in ostali zvočni efekti so slišni. Predvidevam da je glasba MIDI format in ni podprt na mojem sistemu. Tudi ko odprem nastavitve za glasnost ni MIDI zvoka. Matična je ASUS A7V600-X. Probal sem tudi zvočno kartico Philips PSC605 ampak brez uspeha. Nastavitve v igrah niso problem. Zanima me ali je edini način, da dobim zvok, z ustrezno zvočno kartico, ali je kakšen bolj preprost način, ki ga ne poznam? Pa prosim brez dosbox ali scummvm emulatorjev."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V DOSu native delujejo samo zvocne na ISA vodilu. Obstajajo sicer zvocne na PCI vodilu z drajverji za DOS, ampak uporablajo neko emulacijo (ene clo na strojnem nivoju)...in delajo tako tako. Odvisno od spila. Eno tako kartico sam furam v dosu, narjena je okol CmI 8738 cipa. Dela par novejsih dos spilov, recimo warcraft2...c&c..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Na PCI vodilu so še najbolj kompatibilne Sound Blaster kartice."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Original SB, SBpro, SB16... to je vse na ISA vodilih. Sam se spomnim, da sem enkat, ze precej casa nazaj probal Creative SB128 PCI usposobit v DOSu. Brez uspeha."
+    },
+    {
+        "role": "assistant_1",
+        "message": "https://www.philscomputerlab.com/sound-..."
+    },
+    {
+        "role": "user",
+        "message": "Z integriranim zvokom na matični pa ni mogoče emulirati midi zvoka z kakšnimi driverji ali kaj podobno? Tudi če je kvaliteta slabša, samo da slišim glasbo v ozadju. V tišini mi res ni prijetno igrati."
+    },
+    {
+        "role": "assistant_2",
+        "message": "V device managerju bi moral imeti \"Microsoft GS Wavetable SW Synth\" softverski synth, ki ga MS prilaga od 98 dalje. Poskusi inštalirati DirectX 6.1 ali 7.0, če bo mogoče potem delovalo, ker zadeva potrebuje Direct Sound; pri meni je na 98SE sicer z Realtekovo AC97 delovalo takoj po inštalaciji zvočnih driverov.  Potem še lahko poskusiš Yamaha XG SoftSynth, ki so ga imele zraven driverjev tudi nekatere CMI8738 zvočne kartice s slabim hw synthom, kot je npr. tu na ST-ju opisana Maxi Sound Muse.  To vse seveda deluje samo, če igre zaženeš direktno iz Windowsa...za DOS mode je seveda potrebna ISA kartica z driverji oz. vsaj PCI z emulacijo, kot so npr. SB Live/Audigy, Yamaha YMF744, ESS Solo-1 in Ensoniq AudioPCI; priporočam SB Live CT4760, ki ga imam tudi sam."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Odvisno. Kateri čipset pa imaš na matični?  Preveri, če tukaj najdeš kaj pametnega: http://vogonsdrivers.com/index.php?cati..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_1 je zgoraj nalimal link z navodili za SB Live!. Kupiš to z bolhe (kakšnih 5 EUR) ali vprašaš koga, če jo zamenja za pivo (tega je kot smeti). Potem namestiš gonilnike za DOS, pa bi moralo delat. Poleg tega si naštimaš še DOS mode za Windows (ima isto Phil lepo pripravljen paket) + dodaš v autoexec.ini spremenljivko za BLASTER (v nekaterih igrah brez tega ne dela muzika, recimo Wacky Wheels). Ni pa zvok čisto tak, kot bi moral bit - za to rabiš ISA-zvočno kartico s čipom OPL3. SB Live! samo na približno emulira.  Lp"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 22. feb 2020 ob 16:55 izjavil:Pa prosim brez dosbox ali scummvm emulatorjev.   Po pravici povedano ni ga čez emulacije."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 22. feb 2020 ob 18:41 izjavil:V device managerju bi moral imeti \"Microsoft GS Wavetable SW Synth\" softverski synth, ki ga MS prilaga od 98 dalje. Poskusi inštalirati DirectX 6.1 ali 7.0, če bo mogoče potem delovalo, ker zadeva potrebuje Direct Sound; pri meni je na 98SE sicer z Realtekovo AC97 delovalo takoj po inštalaciji zvočnih driverov.   V nadzorni plošči pod \"multimedia\" imam zavihek \"MIDI\" in tam imam izbran \"Microsoft GS Wavetable SW Synth\". Tudi Realtek AC97 imam nameščen in ko grem v dxdiag in testiram direct sound mi vse dela normalno, ko pa zaženem katerokoli dos igro pa slišim samo določene efekte melodije v ozadju pa ne."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Tudi sound blaster ni kar tako podpiral midi, šele kasnejši bolj napredni AWE32 ali kaj so že bili.."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Asus je imel soundmax zvočni čip nalotan gor, če se ne motim. Za to ne obstajajo DOS driverji in ne boš mogel usposobiti.  Kaj je narobe z emulatorji? Win 98 itak ni retro sistem za igranje DOS iger. Z Dosbox lahko uporabiš munt in emulacijo Roland mt32, ki da pri mnogo igrah dejansko najbojšo muziko ven (razen seveda, če imaš original HW Roland synt)."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_3 je 22. feb 2020 ob 18:42 izjavil:@user je 22. feb 2020 ob 16:55 izjavil:Pa prosim brez dosbox ali scummvm emulatorjev.   Po pravici povedano ni ga čez emulacije.   Tako je, meni se že dolgo ne da priklapljati zaresnih MT-32 modulov, emulator (tak, ki uporabi prave MT-32/CM-32L rome, npr. v DosBoxu ali Scummvmju) deluje perfektno. Požre pa nekaj procesorja, in ne znam oceniti, če bi deloval OK na tako starem (tj. švoh) računalniku.  Glede starih DOSovih iger pa si naj OP prebere kaj več (največ materiala je na Youtubu in forumu Vogons) o hardverskih MIDI modulih (MT-32, CM-32L - za MT-32, CM-500 za GM), ki so bili popularni nekje so sredine devetdesetih. Šele takrat je prišel ven SB AWE 32, ki je imel zaresno podporo za predvajanje MIDI glasbe/zvočnih efektov - seveda pod pogojem, da ga je igra podpirala (včasih se je na spletni strani Creativa dalo dobiti patche, ki so dodali podporo za AWE 32 za ogromno starih DOSovskih iger).  Fora starih spilov je bila namreč v tem, da zaradi omejene količine placa na disketah podpirali MIDI glasbo, kar so bile pravzaprav note. Da si jo lahko slišal pa si rabil hardverski Roland MT-32 modul (obstajala je tudi ISA kartica LAPC-I), ki je muziko predvajal, prvi je ven prišel leta 1987 in stal 500 dolarjev, kar je bilo obsceno drago. Kasneje so izumili Roland CM-32L, ki je bil kompatibilen z MT-32, poleg tega pa je podpiral tudi nalaganje posebnih zvokov iz igre vanj (tako je poleg glasbe znal predvajati tudi npr. korakanje po tleh ali pa zavijanje vetra), ven je prišel nekje 1989. Nato so naredili še modul Roland CM-500, ki podpira glasbo po standardu General MIDI, ven je prišel nekje v začetku 90ih. Te škatle se da dobiti na Ebayju (rabiš še USB MIDI kabel, ki je zelo poceni), za 150-250 EUR, in vsako leto so dražje (en MT-32 prodam tudi sam).  Ko je ven prišel AWE32, je Creative naredil tudi orodje za emulacijo MT-32/GM v DOSu, slavni AWEUTIL.COM (komanda je aweutil /em:mt-32 ali pa aweutil /em:gm), žal pa je zelo hroščat in pri mnogo igrah ne deluje pravilno. Če se ne motim, tudi ne zna emulirati modula CM-32L.  Še nekaj izobraževalnih linkov, da bo bolj jasno, kakšen čudež je zares MT-32 (pred 30imi leti je bila reč pri nas popolnoma neznana, ker smo bili za takšne reči veliko preveč revni):    List of MT-32-compatible computer games @ Wikipedia https://www.youtube.com/results?search_..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Glede DOS emulatorjev je takole, da si je vseeno ekcelentno nabaviti kak retro VGA monitor in poskrbeti za priklop. Kolikor sem spremljal zadevo, tudi novejši DosBox-i podpirajo inštalacijo npr. Win98, tako, da so lahko izkušnje zelo zanimive. Razlika med emulacijo in pravo zadevo skorajda ne bi smela biti moteča."
+    },
+    {
+        "role": "user",
+        "message": "Ni mi jasno zakaj .midi datoteke lahko normalno predvajam v media playerju in slišim zvok, v igrah pa zvok ne deluje..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "To ti verjamemo. Manjka ti kup znanja, da bi doumel zakaj."
+    },
+    {
+        "role": "user",
+        "message": "Oprosti majster, prosim če me razsvetliš s svojim znanjem in prosim uporabi preproste besede, da te bom razumel."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Imaš driverje in ali se ti zaženejo ob zagonu dosa?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ker se stare igre nikoli niso pisale z mislijo, da boš 30 let kasneje njihovo MIDI glasbo predvajal z MIDI emulacijo na bog ve kakšni zvočni kartici.  To so bili časi, ko je PC imel samo PC speaker in nič drugega. Muzika v vsaki igri pa je bila razvita specifično za določen hardver (npr. samo za Adlib kartico). Z leti so prihajale nove, vedno boljše naprave za predvajanje zvoka (npr. MT-32, ki ga je prodajala celo Sierra v katalogu s svojimi igrami), igre, ki so jih podpirale, pa so bile zelo specifično napisane spet točno samo zanj.  Da lahko danes slišimo muziko v teh igrah potebujemo emulator točno določenih hardverskih zvočnih kartic (adlib, mt-32, sb,...), ki sicer veliko opletajo z besedo MIDI, vendar so ta standard uporabljali le kot ime vodila, prek katerega so se podatki o notah prenašali med računalnikom in npr. modulom mt-32 (ki je glasbo zaigral), nikakor pa to ne pomeni, da te igre predvajajo glasbo po MIDI standardu.  Poglej si link, kjer boš videl, kako se to dela danes, najbolj enostavno z emulatorjem:"
+    },
+    {
+        "role": "assistant_6",
+        "message": "O katerih tocno igrah je govora? In zakaj tocno zavracas uporabo dosbox, scumm v navezi s munt za glasbo?  @assistant_7 je 23. feb 2020 ob 17:07 izjavil:Ker se stare igre nikoli niso pisale z mislijo, da boš 30 let kasneje njihovo MIDI glasbo predvajal z MIDI emululacijo  Da lahko danes slišimo muziko v teh igrah potebujemo emulator točno določenih hardverskih zvočnih kartic (adlib, mt-32, sb,...), ki sicer veliko opletajo z besedo MIDI, vendar so ta standard uporabljali le kot ime vodila, prek katerega so se podatki o notah prenašali med računalnikom in npr. modulom mt-32 (ki je glasbo zaigral), nikakor pa to ne pomeni, da te igre predvajajo glasbo po MIDI standardu.    Odvisno od naslova, vendar so nekatere igre v pozni dos eri uporabljale, med drugim, tudi general midi standard za glasbo."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9 je 23. feb 2020 ob 17:01 izjavil:Imaš driverje in ali se ti zaženejo ob zagonu dosa?   Driverje imam vse, druge igre in programi delujejo normalno. Igre zaganjam kar iz Winowsov ne iz DOS-a.  @assistant_7 Razumem da niso te igre mišljene da bodo delovale 30 let kasneje, ampak igre kot so Fate of Atlantis iz '92. spet ni veliko starejša od mojega sistema.  Imam pa nameščen malo novejši directx za tisto ero in sicer 8.1, ima lahko to kakšen vpliv?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Hehe... imas sistem nekje letnik 2003 in igra iz 1992 ni veliko starejsa?! :lol:"
+    },
+    {
+        "role": "user",
+        "message": "\"O katerih tocno igrah je govora? In zakaj tocno zavracas uporabo dosbox, scumm v navezi s munt za glasbo?\"    O skoraj vseh DOS igrah: Doom, vsi Keen-i, Fate of Atlantis, Aladdin, Sam and Max, Duke nukem,... Povsod se sliši samo določeni efekti kot so streljanje in govor, melodije ali glasbe pa ni slišati... Zato ker si nekako hočem ustvariti čim bolj pristno izkušnjo, kot je bilo v otroštvu."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Driverjev seveda nimas. Nimas Dos driverja za zvocno na plati zato ti ne dela glasba. Fate of atlantis je tipicen primer igre, ki jo igras z dos emulatorjem in munt za muziko. Se ti bodo odprla usesa, ko bo slisal glasbo. Poglej filmcke na youtube. Emulator plus crt monitor in joystick za arkade drugega ne rabis in vse bo delalo brez tezav."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_6 je 23. feb 2020 ob 17:28 izjavil:O katerih tocno igrah je govora? In zakaj tocno zavracas uporabo dosbox, scumm v navezi s munt za glasbo? @assistant_7 je 23. feb 2020 ob 17:07 izjavil:Ker se stare igre nikoli niso pisale z mislijo, da boš 30 let kasneje njihovo MIDI glasbo predvajal z MIDI emululacijo  Da lahko danes slišimo muziko v teh igrah potebujemo emulator točno določenih hardverskih zvočnih kartic (adlib, mt-32, sb,...), ki sicer veliko opletajo z besedo MIDI, vendar so ta standard uporabljali le kot ime vodila, prek katerega so se podatki o notah prenašali med računalnikom in npr. modulom mt-32 (ki je glasbo zaigral), nikakor pa to ne pomeni, da te igre predvajajo glasbo po MIDI standardu.   Odvisno od naslova, vendar so nekatere igre v pozni dos eri uporabljale, med drugim, tudi general midi standard za glasbo.   To je jasno, saj sem zgoraj pisal o Rolandovih modulih CM-300/500, ki so hardversko predvajali GM glasbo. V zadnjem postu nisem naštel še GMja, ker sem razumel, da ima OP težavo s še starejšimi igrami, ki še ne podpirajo GMja.  Kolikor se sam spomnim časov win 98, mi je večina iger z GM podporo pravilno delovala v Win 98, kjer sem imel normalno inštaliran AWE 64. Danes bi vse te morale delovati b.p. tudi v Dosboxu."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_5 je 22. feb 2020 ob 19:44 izjavil:Tudi sound blaster ni kar tako podpiral midi, šele kasnejši bolj napredni AWE32 ali kaj so že bili..   Ne, to ni res. SoundBlaster je imel podporo za midi ze od verzije 1.0 naprej. Po domace povedano, AWE32 je namesto FM syntha za midi uporabljal wave tabele s sampli za zvok. Pri AWE32 je bil midi zvok manj umeten in veliko boljsi. Se vedno je bilo pa oboje MIDI. :)"
+    },
+    {
+        "role": "assistant_12",
+        "message": "sam uporablam classicreload tle se lahko špila vse te stare dos igre https://classicreload.com/"
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_7 je 23. feb 2020 ob 17:07 izjavil:Da lahko danes slišimo muziko v teh igrah potebujemo emulator točno določenih hardverskih zvočnih kartic (adlib, mt-32, sb,...), ki sicer veliko opletajo z besedo MIDI, vendar so ta standard uporabljali le kot ime vodila, prek katerega so se podatki o notah prenašali med računalnikom in npr. modulom mt-32 (ki je glasbo zaigral), nikakor pa to ne pomeni, da te igre predvajajo glasbo po MIDI standardu.   Hmmm...  Vecina iger, ki je imela podporo za zvok je podpirala PC Speaker, Adlib, Sound Blaster 1.0/2.0, nekatere pa tudi Roland MT-32. V marsikateri igri si lahko tudi posebaj nastavljal kje se bodo predvajali zvocni efekti in kje glasba. Glasba je bila prakticno vedno MIDI in jo je Roland MT-32 predvajal precej precej bolje kot recimo Sound Blaster, ki je za sintezo uporabljal zlo preproste algoritme. Po drugi strani pa Roland ni znal predvajati zvocnih efektov.  8bit guy to kr lepo demonstrira tukaj:   Driverjev kot taksnih pa za DOS ni bilo nobenih saj DOS ni imel nekega standardnega APIja za zvok, ki bi ga lahko uporabljali vsi programi. To je prislo sele z DirectX v Windows 95. Zato je moral vsak sam poskrbeti za predvajanje zvoka in podporo za razlicno strojno opremo."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@user je 22. feb 2020 ob 16:55 izjavil:Zdravo!  Imam star računalnik z windowsi 98, na katerem rad malo obujam nostalgijo. Opazil sem da pri starejših DOS igrah ne deluje glasba v ozadju, govor in ostali zvočni efekti so slišni. Predvidevam da je glasba MIDI format in ni podprt na mojem sistemu. Tudi ko odprem nastavitve za glasnost ni MIDI zvoka. Matična je ASUS A7V600-X. Probal sem tudi zvočno kartico Philips PSC605 ampak brez uspeha. Nastavitve v igrah niso problem. Zanima me ali je edini način, da dobim zvok, z ustrezno zvočno kartico, ali je kakšen bolj preprost način, ki ga ne poznam? Pa prosim brez dosbox ali scummvm emulatorjev.   Na tej maticni plosci je bil SoundMAX audio chip in vprasanje ali so gonilniki za Win98 podpirali 'midi emulacijo za DOS', verjetno je niso. Poisci Sound Blaster 2.0 ali pa, ce plosca nima vec ISA vodila, Sound Blaster AWE 32, oboje najbrz dobis za drobiz na ebayu ali pa bolhi.  Driverja za SoundMAX se pa ne spomnim, da bi kadarkoli bil. Takrat je bil ze DirectX in z zvokom v DOSu in midijem se ni nihce vec ukvarjal. :)  Prevec moderen racunalnik imas. ;)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tu si nametal sedaj nekaj odgovorov na vprašanja, ki so še odgovorjena.  Tip naj si sestavi proper retro sistem z DOSom in fizično zvočno kartico SB in bo užival v igrah svoje mladosti, ker rolanda tako ni imel takrat in ne ve za proper glasbo. Vprašanje, če je imel sploh SB, ali je za naštete igre slišal le piskanje preko speakerja.  Če se hoče izogniti vsemu temu in imeti glasbo in efekte na najvišjem nivoju, naj si namesti dosbox (scumm) + munt emulator na modernem računalniku in bo z najmanj težavami igral vse te špile (opcija je še CRT monitor).  Mislim, kakšen je to retro, da se igre iz začetka devetdesetih igra direktno preko Win 98?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_11 je 23. feb 2020 ob 19:41 izjavil:@assistant_7 je 23. feb 2020 ob 17:07 izjavil:Da lahko danes slišimo muziko v teh igrah potebujemo emulator točno določenih hardverskih zvočnih kartic (adlib, mt-32, sb,...), ki sicer veliko opletajo z besedo MIDI, vendar so ta standard uporabljali le kot ime vodila, prek katerega so se podatki o notah prenašali med računalnikom in npr. modulom mt-32 (ki je glasbo zaigral), nikakor pa to ne pomeni, da te igre predvajajo glasbo po MIDI standardu.   Hmmm...  Vecina iger, ki je imela podporo za zvok je podpirala PC Speaker, Adlib, Sound Blaster 1.0/2.0, nekatere pa tudi Roland MT-32. V marsikateri igri si lahko tudi posebaj nastavljal kje se bodo predvajali zvocni efekti in kje glasba. Glasba je bila prakticno vedno MIDI in jo je Roland MT-32 predvajal precej precej bolje kot recimo Sound Blaster, ki je za sintezo uporabljal zlo preproste algoritme. Po drugi strani pa Roland ni znal predvajati zvocnih efektov.  8bit guy to kr lepo demonstrira tukaj:   Driverjev kot taksnih pa za DOS ni bilo nobenih saj DOS ni imel nekega standardnega APIja za zvok, ki bi ga lahko uporabljali vsi programi. To je prislo sele z DirectX v Windows 95. Zato je moral vsak sam poskrbeti za predvajanje zvoka in podporo za razlicno strojno opremo.   Kar sem hotel povedati zgoraj je, da je ogromno iger s konca 80ih, ki podpirajo samo MT-32/CM-32L, ko adliba ali SBja sploh še ni bilo. Pri tistih si rabil Rolandov modul ali pa si poslušal tišino. Tudi s SBjem nekaj let kasneje si nisi imel kaj pomagati. V CM-32L se je dalo celo nalagati custom zvočne učinke, kar je izkoriščalo veliko iger, in tako se je efekte pravzaprav predvajalo prek Rolandovega modula (za večino obstaja patch za AWE32 podporo, ki omogoča, da le-te predvaja AWE32). Danes pa se vse to lahko predvaja tudi z MT-32/CM-32L emulatorjem.  To kombinacijo SBja za govor/efekte in MT-32/GMja/SBja za muziko smo dobili šele v začetku 90ih. Se pa strinjam, tudi tukaj je najbolje muziko poslušati na MT-32/GMju ker bo slišati veliko bolje kot na SBju."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No, tišine ravno ni bilo. Beeper je na polno navijal."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_11 je 23. feb 2020 ob 19:41 izjavil:  8bit guy to kr lepo demonstrira tukaj:     Pismo, šele zdaj se zavedam, kaj sem takrat zamujal, še sound blaster se sliši grozno na pram rolandu."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Sej je tudi v ceni bila takrat in je se danes razlika ogromna."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Marsikatero staro igro, tudi grafično in zvočno posodobljeno, lahko za male pare kupiš (občasno tudi dobiš) na www.gog.com."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Js se rad s starim hardverom igram... real stuff only ;)"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Tudi SB Live! dela v DOS-u. Samo moraš imeti gonilnike ustrezne in pravilno nastavljene."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_13  primerjava glasbe v igri Raptor: Call of te Shadows   na Sound Blaster/Adlib:   ... in General MIDI:  Pa dajmo še eno specialno verzijo (Roland SC-55mkII):   Da ni treba poslušat vse variante, je dovolj, da pri vsakem greste na približno 1:41, kjer se začne tema \"@assistant_1gar\"."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Oh ja, tole obuja spomine, ko sem nabavil AWE, sem vse stare igre hitro prestavil na tisti roland, ki sem ga prej vsa leta samo gledal lahko. Good times.  Pa še vse slote sem mu zafilal z ramom, čeprav nisem tega nikoli rabil, škodilo ziher ni. :)"
+    },
+    {
+        "role": "user",
+        "message": "Malo sem brskal po netu in našel eno rešitev. Dodal sem vrstico \"SET BLASTER=A220 I5 D1 T4 P330\" v autoexec.bat in sedaj se v določenih igrah sliši zvok, vendar zelo monofoničen in piskajoč. Ampak sedaj se ne sliši več določenih drugih efektov, kot so pogovori v fate of Atlantis."
+    },
+    {
+        "role": "assistant_10",
+        "message": "SET BLASTER=A220 I5 D1 T4 P330 ima tocno specifiko kaj pomeni in tvoja zvocna (ki ni Sound Blaster) mora to tudi podpirati. Ker ne podira, imas zato tudi cudne zvoke.  Ker tvoj sistem nima ISA vodila, kupi nekje SB Live! ali SB Audigy. Oba imata native DOS gonilnike in emulacijo SB16 - v igrah potem nastavis kot, da imas SB16 in bi moralo v vecini primerov delat zadovoljivo.  Ce res noces imeti problemov, pa moras imeti malo starejsi sistem, ki ima vsaj en ISA slot (Pentium 1 ali kaj novejsega do Socket 370 BX chipseta).  lp"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_10 je 25. feb 2020 ob 08:28 izjavil:SET BLASTER=A220 I5 D1 T4 P330 ima tocno specifiko kaj pomeni in tvoja zvocna (ki ni Sound Blaster) mora to tudi podpirati. Ker ne podira, imas zato tudi cudne zvoke.  Ker tvoj sistem nima ISA vodila, kupi nekje SB Live! ali SB Audigy. Oba imata native DOS gonilnike in emulacijo SB16 - v igrah potem nastavis kot, da imas SB16 in bi moralo v vecini primerov delat zadovoljivo.  Ce res noces imeti problemov, pa moras imeti malo starejsi sistem, ki ima vsaj en ISA slot (Pentium 1 ali kaj novejsega do Socket 370 BX chipseta).  lp   Hvala za odgovor. Bom res pobrskal za kakšno soundblaster kartico."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Evo, to rabiš za DOS igre:"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Super video, za tole kištico sploh nisem vedel, da obstaja.  Še to: SCju-55 enakovredna naprava za igranje iger z GM muziko je tudi Roland CM-300, če bi jo kje na ebayju lažje našel. Kakšen SC-55 se je včasih prodajal tudi na bolhi..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Takole pa izgleda CM-300:"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Super, tega sploh nisem vedel.  Hvala!"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Lahko samo tole pripopas na zvocno kartico: https://www.serdashop.com/waveblaster"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_10 je 28. feb 2020 ob 14:04 izjavil:Lahko samo tole pripopas na zvocno kartico: https://www.serdashop.com/waveblaster     Zanimiva zadeva"
+    },
+    {
+        "role": "user",
+        "message": "Bo tale kartica normalno delovala na Windows 98SE v 90's DOS igrah?  https://www.ebay.com/itm/AOPEN-AW744L-I...  Kolikor vidim na posnetku spodaj bi morala, vendar ker se na to ne spoznam preveč, me zanima če je še kakšna posebna zahteva za podporo te kartice, ali je dovolj podprti OS in PCI slot?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "To je vse odvisno od gonilnikov ..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pred leti sem sam te težave rešil tako, da sem za drobiž vzel varianto, ki se je zdela najbolj kompatibila: SB AWE 64.  Je polno kompatibilen z igrami, ki za MIDI podpirajo direktno AWE 32, in je polno kompatibilen z vsemi starimi sound blasterji (celo nekatere njihove buge so a AWE 64 odpravili).  Vse te kartice tretjih proizvajalcev so bile pred desetletji lahko konkurenčne predvsem s ceno (bile so 3x cenejše od AWE 64) in kakovostjo (niso bile nič slabše), imele pa so to hibo, da bi lahko bile nekompatibilne v DOSu, še posebej morda pri starejših igram (pred letom 95) - kar je, kot je navedel že Peter - vse odvisno od kvalitete njihovih gonilnikov oz. morebitnih obsoječih (?) popravkov za igre, ki bi igri dodala podporo za te kartice. Cenovno se je takrat nakup take kartice splačal, danes pa verjetno ne več..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "OP si s SB AWE 64 žal ne more pomagat, ker je to ISA kartica."
+    },
+    {
+        "role": "assistant_7",
+        "message": "O, ti je6a.  Potem pa poskusi s to Yamaho, pa boš videl kako bo šlo, OP."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zakaj bi to kupoval, ce lahko dobis SB live za male pare in imas polno dos in win 98 zdruzljivost?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Edina prednost, ki jo ima ta PCI kartica, je OPL3 muzika. Napram Creative Live! pa izgubiš funkcije EAX (odmevanje glede na velikost prostora itn.).  Te pa znajo začopatit na carini, če kupiš tole Yamaho (ker je v retail škatli) - boš ob 8 EUR za carinski postopek + DDV. Pa si kmalu tam na 50 EUR.  Mislim, da ni vredno, glede na to, da Live pri nas dobiš za kakšnih 5-10 EUR.  Če si pa res želiš pristen OPL3 zvok, pa kupi celo platformo, ki ima tudi ISA-reže. In potem kakšen SB16 ali katero izmed kartic, omenjenih zgoraj.  Lp"
+    }
+]

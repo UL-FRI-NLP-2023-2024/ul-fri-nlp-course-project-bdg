@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Mene zanima če mi bo gdo vedel rešit eno težavico, in sicer  Konfiguracija: Gigabyte GA-8I955X PRO (BIOS F10) intel P4 Dual core D (3,40 Ghz) Ram ddr2 1GB (trenutno) Nvidia 9600GT Seagate 160gb napajalnik NOV: LC 420W  Ko prižgem računalnik vse normalno deluje hitra odzivnost itd....do težave pride ko ga hočen zaustavit. Zaustavi se normalno ampak po 2s se samodejno prižge in ga ni mogoče ugasnit niti na tipko razen na stikalu pri napajalniku. Tika za VKLOP računalnika nima funkcije izklopa ne na klik in ne na pridržanje 5s.  Rami so bili že zamenjani z novomi testirani v vsakem slotu, zamenjana grafična kartica, disk, napajalnik in rami. dvd-romi izklopljeni.  Upam da mi neboste pisal da je plata fuč.  Nastavitve biosa: [url=http://shrani.si/?2c/uc/4qTsFy2P/sv1001... [url=http://shrani.si/?2L/bq/43RBmuXW/sv1001... [url=http://shrani.si/?3Q/D5/XFhiCSd/sv10014...  Se zahvaljujem za odgovore.  Lep pozdrav, Borut"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Probaj resetirat BIOS. Ali pa nadgradi z novo verzijo..."
+    },
+    {
+        "role": "user",
+        "message": "Resetiranje biosa je bilo najprej, Nadgradnja BIOS-a je bila pred 5 letami na zadnjo različico F10, novejšega ni. To se mi dogaja cca: 1 leto, ampak pred tem je pa bilo sledeče: namreč računalnik se je zaustavil ampak 2s po zaustavitvi so ventilatorji leteli na polno in se niso zaustavili (na grafični kartici, na procesorji in na chipsetu) in takrat ni bilo mogoče prižgati računalnika, ko sem ga ugasnil na stikalu pri napajalniku in ponovno prižgal je vse delovalo normalno oz. vse do zaustavitve. zdaj se pa zaustavi ampak po 2s se opet prižge .... :/"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Potem ostane samo še priklop na os. ploščo oz stikalo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja potem ti pa res preostane samo še stikalo kot pravi @assistant_1. Če se ne varam, je stikalo na matični plošči za Power dvopinsko, se pravi, da ga lahk \"povežeš\" z navadnim jumperjem. Nabavi kje jumper pa probaj prižgat in ugasnit PC z jumperjem..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Aja pa preveri, če imaš v BIOSu nastavljeno na Power Button - Shutdown ali kaj podobnega, ker nakateri BIOSi omogočajo preprogramiranje stikala za IZKLOP/VKLOP PCja... Prav tako preveri, če nimaš slučajno vklopljenega WoL-a (Wake on LAN)..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa povej, kako maš nastavljene parametre v BIOSu pod Power Management (ACPI Suspend Type, Soft-Off by PWR-BTTN, PME Event Wake UP,...)..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 evo ti slike nastavitev. (po mojem je to dobro nastavljeno)      WOL je izklopljen (preverjeno in še 1x testirano brez mrežnega kabla. torej smao (ps/2 tipkovnica miška in VGA monitor) in se še vedno enako dogaja.  ja res ima 2 pina za vklop in izklop ampak, če power button zamenjam z navadnim stikalom nič ne pomaga, ker tudi če imam odklopljen power button se računalnik ne zaustavi torej ni težava v stikalu oz power buttnu + tega plošča je bila že v večih ohišjih torej power button nima nobenega vpliva.  ne nimam stikala preprogramiranega v BIOSU ... :/"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja nastavitve v BIOSu izgledajo pravilne. Edino morda bi še probal premaknit ACPI Suspend Type iz S3 v S1 (probat ni greh).  Drugače pa, če si že res vse komponente zamenjal preostane edina možnost, da je matična plošča okvarjena. Preveri vizualno, če je kateri od kondenzatorjev \"napihnjen\", ali pa če se kateri od čipov med delovanjem ekstremno segreje (north bridge, south bridge , ACPI čip).  Sam sumim na okvarjen ACPI čip ali pa BIOS čip... Prav tako lahko probaš v BIOSu še izklopit razne kontrolerje (Realtek, Broadcom, TI,...)."
+    },
+    {
+        "role": "user",
+        "message": "ACPI Suspend Type iz S3 v S1, je že preverjeno in ni razlike. Ne noben kondenzator ni napihnjen + tega uporabljam prenapetostno zaščito APC 1500VA. Nobeden čip se ne greje oz. preveč segreva, vse je v mejah normale. Ne pomaga odklop kontrolerjev :/  :/"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Recimo, da imam laptop povezan preko GSM na internet. Ker na GSM nimam neomejenega prenosa podatkov me zanima katera opcija porabi manj podatkov (recimo, da samo surfam po netu)?  Opcija: 1. na internet dostopam preko laptopa (GSM) čisto običajno 2. preko laptopa (GSM) se z Google Remote Desktop povežem na domači računalnik in surfam preko domačega računalnika (ki ima seveda neomejen dostop do neta preko kabla)  Koliko sploh porabi remote desktop?  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja, izmeri. :)  Če smo pravljičarsko razpoloženi, pa po mojem odvisno od vsebine. Remote desktop, kolikor vem, prenaša sliko/video (kompresija odvisna od različice protokola). Če greš na denimo slo-tech direktno, je večina strani besedilo (+nekaj grafičnih elementov, ki se prenesejo enkrat in se spravijo v cache). Recimo: 10kb besedila, 1MB slik.  Če greš preko RDP, se bo še besedilo spremenilo v sliko in se bo vse preneslo kot slika. Ko boš stran v remote browserju premaknil, se bo prenesla nova slika celotne strani. In tako vsakič znova. Edini scenarij, kjer bi bila RDP verzija \"cenejša\" je kaj takega: iz 1GB arhiva, ki je nekje na netu potrebuješ 3-vrstični readme file. Če boš to počel direktno, te bo stalo 1GB prenosa, če preko domačega računala pa..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če ne misliš uporabljat SSH in lynx (konzolni browser, prikazuje samo txt), bo direkten dostop porabil precej manj podatkov"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kot pravi @assistant_0, povsem odvisno od načina uporabe ter protokola.  Nekateri protokoli pošiljajo sliko - \"skrinšote\" celotnega zaslona ali delov zaslona, ki se je spremenil. Drugi pošiljajo sistemske klice za risanje oken (v smislu \"nariši okno na koordinatah X,Y velikosti A,B, z naslovom Z, v notranjost vrzi tole sliko vsebine\").  Če boš gledal pretežno fotografije, ki bi se na klientu izrisovale 1:1 glede na remote server, potem bo prenos podatkov na klientu večji od prenosa na strežniku (zaradi overheada). Če bo protokol oddaljenega dostopa sliko, ki jo prenaša, kompresiral, je pa prav možno, da bo poraba na klientu manjša (karikirano: strežnik bo prenesel 10 MB veliko fotografijo, protokol bo na klienta prenesel beden GIF). Po drugi strani, če je stran, ki jo gledaš, processing-heavy (npr. fuckload javascripta in sledilnega programja, potrebnega za izris bednih reklam, ali pa prenos podatkov, ki se v browserju sprocesirajo in prikažejo v tabelici), se lahko zgodi obratno - da bo prenos na klientu manjši kot na gostitelju.  Skratka - izmeri. :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne rabiš merit. Remote bo porabil več. :) Team viewer porabi cca. 25 - 50MB na uro (brskanje po spletu, videa ne moreš gledat, ker so nastavitve minimalne). Windows Remote skuri na najnižjem cca. 12MB je šla pa tudi 3,4Gb za you tube streamming.  Na splošno je večina strani mobile friendly, tako da porabiš bistveno manj, ker je vsa stvar optimizirana. Še posebej če misliš kakšne video vsebine gledat."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Najbolje da sproti spremljaš porabo podatkov na telefonu, se kar lepo vidi kolk kej kuri.  Sem enkrat gledal par let nazaj in je androidni telefonski browser porabil reda 10x manj kot browser v windows (tethered), pa na počasni liniji je tudi delovalo 10x hitreje. Še posebej malo je pokurila Opera mini.  Zdej je stanje mogoče drugačno, ker so začeli z reklamami zasipat tudi mobilne strani. Pa blokiranje oglasov deluje bolje na Windowsih z uBlock origin kot na Androidu. Mislim, na Androidu sem poskusil že par variant blokiranja, ampak potem portali tudi linke blokirajo, grrr. Če ima kdo učinkovito metodo se priporočam za nasvet."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Teamviewer na dobri liniji tekoče prikazuje tudi video, kot bi sedel direkt za računalnikom."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 31. jan 2017 ob 00:10 izjavil:Pa blokiranje oglasov deluje bolje na Windowsih z uBlock origin kot na Androidu. Mislim, na Androidu sem poskusil že par variant blokiranja, ampak potem portali tudi linke blokirajo, grrr. Če ima kdo učinkovito metodo se priporočam za nasvet.  ucinkovita metoda obstaja da imas adblock namescen na routerju pa se potem preko openvpn povezes na to tvoje domace omrezje in android telefon kot racunalnik, tablica, teve, ostanejo brez reklam...to imam jaz instalirano na asus routerju in deluje perfektno..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "x2go. se da gledat youtube iz slovenije na serverju iz zda"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 je 31. jan 2017 ob 06:41 izjavil:@assistant_4 je 31. jan 2017 ob 00:10 izjavil:Pa blokiranje oglasov deluje bolje na Windowsih z uBlock origin kot na Androidu. Mislim, na Androidu sem poskusil že par variant blokiranja, ampak potem portali tudi linke blokirajo, grrr. Če ima kdo učinkovito metodo se priporočam za nasvet.  ucinkovita metoda obstaja da imas adblock namescen na routerju pa se potem preko openvpn povezes na to tvoje domace omrezje in android telefon kot racunalnik, tablica, teve, ostanejo brez reklam...to imam jaz instalirano na asus routerju in deluje perfektno...   Mislil sem nameščeno na telefonu, tako da deluje za zmanjšanje mobilnih podatkov. Sem enkrat bral da naj bi bila varianta ki bi se namestila na telefon kot nekakšen proxy. Ampak me skrbi da ne bo isti šmorn kot pri Firefoxu s pluginom oz Opero mini z vgrajenim blockerjem, da pol tudi večina vsebine ne pride skozi. Priročen primer sajtov 24kur, Zurnal24."
+    }
+]

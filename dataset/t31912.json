@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Imam naslednji problem. Ko hočem instalirati program MPlayer, mi izpiše nasldenje sporočilo:  [root@localhost MPlayer-0.90pre2]# make install make[1]: Entering directory `/home/boste/progi/MPlayer-0.90pre2/libdha' mkdir -p /usr/local/lib install -m 755 -s -p libdha-0.1.so /usr/local/lib/libdha-0.1.so rm -f /usr/local/lib/libdha.so ln -sf libdha-0.1.so /usr/local/lib/libdha.so ldconfig make[1]: ldconfig: Command not found make[1]: *** [install] Error 127 make[1]: Leaving directory `/home/boste/progi/MPlayer-0.90pre2/libdha' make[1]: Entering directory `/home/boste/progi/MPlayer-0.90pre2/vidix' make[2]: Entering directory `/home/boste/progi/MPlayer-0.90pre2/vidix/drivers' mkdir -p /usr/local/lib/mplayer/vidix install -m 755 -s -p *.so /usr/local/lib/mplayer/vidix make[2]: Leaving directory `/home/boste/progi/MPlayer-0.90pre2/vidix/drivers' make[1]: Leaving directory `/home/boste/progi/MPlayer-0.90pre2/vidix' if test ! -d /usr/local/bin ; then mkdir -p /usr/local/bin ; fi install -m 755 -s mplayer /usr/local/bin/mplayer if test ! -d /usr/local/man/man1 ; then mkdir -p /usr/local/man/man1; fi install -c -m 644 DOCS/mplayer.1 /usr/local/man/man1/mplayer.1 install -m 755 -s mencoder /usr/local/bin/mencoder install -c -m 644 DOCS/mencoder.1 /usr/local/man/man1/mencoder.1 *** Download font at http://www.mplayerhq.hu/homepage/dload.... *** for OSD/Subtitles support and extract to /usr/local/share/mplayer/font/ install -c -m 644 etc/codecs.conf /usr/local/share/mplayer/codecs.conf  Iz sporočila je sicer razvidno, da v mojem operacijskem sistemu (Red Hat 7.2) ni ldconfiga. Ldconfig bi se gotovo dalo najti kje na internetu, vendar pa nimam pojma, kje naj ga dobim. Preiskal sem že na RPMfind in na Googlu, vendar brez uspeha. Morda kdo od vas ve, kje lahko dobim ldconfig?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poglej tukaj, čeprav pa bi se obvezno moral nahajati na prvem ali drugem CDju od RH7.2 prav tako v RPM obliki."
+    },
+    {
+        "role": "assistant_1",
+        "message": "ldconfig je knjižnica. Preberi si fajl INSTALL in preglej katere knjižnice rabi program, poglej ča jih imaš. Tiste ki jih nimaš jih najdi kle"
+    },
+    {
+        "role": "user",
+        "message": "Eh, brez veze. Itak sem poizkušal knjižico na vsak način spraviti v sistem, pa mi je vedno javljalo neke spore med namestitvenimi paketki. Pol sem pa popenil in cel Red Hat 7.2 zmaličil do neuporabnosti (glibc je šel bye bye  ). No itak sem imel v planu clean install, ker mi je od upgrada iz Seawolfa na Enigmo vse skupaj nekaj zajebavalo pri črkah \"č\" in \"ć\".  Jovo na novo ..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ce mene vprasas je 7.2 razlicica REDHATA (Enigma) eno sra*** . Ko sem ga imel instaliranega sem imel vedno probleme , tako da jest ti bi predlagal kaksno drugo distribucijo . Vsaj jest nimam dobrih izkusenj z REDhatom ."
+    },
+    {
+        "role": "user",
+        "message": "Mah, jaz mislim ostatli kar na Red Hatu, ker ima najboljšo podporo in sem ga že preveč navajen. Vendar pa bom raje počakal na Skipjacka, ker na Enigmo ne grem več. Seawolf je bil čist OK, na Enigmi je pa vse nakam sumljivo deloavalo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pa poskusi še kakšen SuSE ali Slackware."
+    },
+    {
+        "role": "assistant_3",
+        "message": "No. počakaj par dni, da izide RH7.3. Direktorij na njihovem ftp strežniku je že :) Z RH7.2 dosedaj še nisem imel nobenih problemov. Moti me le, da ne dajo n.pr. KDE3.0 za upgrade, pa na nov kernel moraš čakati celo večnost."
+    }
+]

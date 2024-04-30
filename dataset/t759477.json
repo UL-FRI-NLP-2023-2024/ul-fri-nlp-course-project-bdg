@@ -1,0 +1,174 @@
+[
+    {
+        "role": "user",
+        "message": "Kako pripraviti/preizkusiti novo odsnovno ploščo s procesorjem da v primeru nedelovanja demontaža ne bo težavna in se bo plato odneslo na servis da osvežijo bios na plati ki za osveževanje potrebuje starejši procesor?  Bo bolje če se sestavi in prizkusi zunaj ohišja? Je v tem primeru potrebno kaj posebej ozemljiti ali kakšna druga posebnost?  Ali pa je bolje če se že na začetku vse sestavi v kišto in se ob potrebi na servis odnese vse?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ok, spomnim se te iz prejšnje teme, kjer si skoraj en mesec kompliciral z buildom in \"pomembnostjo\" posameznih komponent.  1) Odpakiraj vse 2) Postavi plato na tla 3) Položi vse na plato (ram, proc, kuler za proc, grafo) 4) Priklopi plato na napajalnik 5) Priklopi ekran na grafo/plato 6) Naredi stik na plati, da se prižge 7) Spremljaj ekran.  Kolikor se spomnim, se je nate obrnil kolega, ker naj bi kao \"imel pojma\" o PCjih in komponentah. Kolega, nič od tega ne bo držalo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če imaš razlog, da sumiš, da bo to potrebno, potem jes smiselno, drugače boš samo dodatno delo. Uporabiš lahko kr škatlo od matične, na kteri vse sestaviš za test."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ponavadi na boardu pise kater bios je naložen. Ce gres na support boarda bos videl kateri bios zahteva tvoj CPU in bos vedel ali bo tvoj CPU podprt.  Sicer pa ja...kot kaze OP prvič sestavlja pc. Lahko gre vsekakor kaj narobe. Vsaka šola nekaj stane. Če pa je želja se pa itak mora nekje naučit.  OP: napiši kateri board in CPU imas in ti mogoce lahko se pomagamo."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Plata in procesor pa sta - znamka, model?"
+    },
+    {
+        "role": "user",
+        "message": "https://www.mindfactory.de/product_info...  Zgoraj piše da je za uporabo Ryzen 3 potrebno updejtati bios.  Spodaj pod komentarji pa je en napisal 8.januarja to da je procesor deloval že takoj, brez updejtanja."
+    },
+    {
+        "role": "user",
+        "message": "Če se zraven CPU dobi termoprevodna mast jo moram za preizkus porabit čim manj da je bo dovolj za kasneje če bo potrebno bios updejtat z drugim procesorjem.  Je ob povezavi komponent potebno narediti še kaj drugega? Nastaviti v BIOSU ali kaj drugega, da se ne bo pokadilo?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Paste so poceni... BIOS je 99,99% dovolj svež, da bo tvoj CPU deloval iz prve. Če ni naložen trenutno zadnji (F50), ga posodobi, izberi po tem najprej privzete nastavitve in ga nato še optimalno nastavi, npr. vklopi XMP profil za RAM."
+    },
+    {
+        "role": "user",
+        "message": "https://www.gigabyte.com/Motherboard/B4...  Še driverji. Imam Windows 10 64bit  Driverji so za +Audio, +Chipset, +LAN in +SATA RAID/AHCI Mislim da obstaja nek program ki inštalira vse to samodejno preko interneta vendar teh par driverjev mi ni težko inštalirat ročno.  Pri avdio driverju ne vem ali inštaliram samo prvega ali lahko tudi tretjega. 1. Realtek Audio Driver // (Note) Win10 ver.1903 supported. // [6.0.8688.1] // 18.64 MB // 2019/06/14 2. Realtek Audio Driver // (Note) Win10 ver.1809 supported. // [6.0.1.8597] // 30.58 MB // 2019/02/22 3. Realtek HD Audio Driver // [8454_PG466] // 116.70 MB // 2018/11/28    Katere spodnje SATA RAID/AHCI inštaliram? RAID nikoli ne uporabljam. V primeru uporabe HDD diska ne inštaliram nič? V primeru SSD inštaliram katere stvari in kakšen je vrstni red inštalacije v primeru večih stvari?  SATA RAID/AHCI 1. AMD RAID Preinstall Driver // (Note) Win10 ver.1903 supported. // (Note) Windows setup to read from USB thumb drive. // [9.2.0.105] // 1.71 MB // 2019/08/07 2. AMD RAID Driver (Note) Win10 ver.1903 supported. // [9.2.0.105] // 271.25 MB // 2019/06/13  3. AMD RAID Driver (Note) Win10 ver.1809 supported. // [Win7: 8.1.0.26/Win10: 9.2.0.87] // 279.64 MB // 2019/02/22  4. AMD RAID Driver (Preinstall driver, press F6 during Windows* setup to read from floppy) (Note) Win10 ver.1809 supported. // [9.2.0.87] // 0.61 MB // 2019/02/21   Na linku zgoraj je lepše razvidno."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Daj ne kompkiciraj, sestavi in zapri. Driverje ti bo vse win zinstaliral sam. Če boš en od. tistih 1/nekajtisoč nesrečnikov, ki dobi novo plato okvarjeno, razstaviš v 10 min in rešuješ naprej. Pristopaš po sadomazo varianti in izgubljaš čas in energijo z nekimi maloverjetnimi scenariji."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Predvsem pa ne nameščaj starih Win10 verzij. Za AMD mora biti Win10 čimbolj svež. 2020 verzijo dobiš na uradni strani.  https://www.microsoft.com/sl-si/softwar..."
+    },
+    {
+        "role": "user",
+        "message": "Chipset spada pod driverje se torej tudi inštalira z windowsi.  Kaj pa Utility se tudi sam inštalira? Kaj to sploh je? Pogojno uporaben kič? https://www.gigabyte.com/Motherboard/B4..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Namestiš zgolj tiste šoferje za naprave v Upravitelju naprav, ki jih Windows 10 ne najde po enu uri uporabe..."
+    },
+    {
+        "role": "user",
+        "message": "Imam nekaj vprašanj glede priklapljanja napajalnika Bequiet straight power 11 550W na osnovno ploščo https://www.gigabyte.com/Motherboard/B4...  Napajalnik ima naslednje izhode: MB...priklopil MB....priklopil P8/P4.................ne vem še DRIVE....priklopil DRIVE....priklopil DRIVE....priklopil PCIe 2 PCIe 1...........verjetno na grafično karto  Na vrhu plate (nad napisom Aorus) je velik črn konektor pod katerim piše ATX_12V - na fotki 1. Ali se na ta konektor priklopi konektor ki je na napajalniku označen s P4 P8? Na dveh mestih kjer sta na vtičnici plastična kvadratka, sta na vtikaču dva polkroga, zato gre notri brez težav. Bo vredu če to povežem skupaj?   1  Na grafično GTX1660 Super OC 6GB bom priklopil črn konektor ki je na napajalniku označen s PCIe1. Grafična ima zadaj še en manjši prost priklop (6 žilni) za katerega nimam kabla niti ne vem če je sploh potrebno kaj priklopit. V kratkih navodilih ni omenjen. Zraven omenjenega 6 žilnega priklopa je en še manjši, že zaseden 4 žilni ki je verjetno za ventilatorja.  Na fotki 2 je konektor, povezan na 4 žilni napajalni konektor iz napajalnika, ki ne vem kam naj ga priklopim. Je to priklop za DVD enoto ali kaj drugega?   slika 2  Ohišja računalnika še nimam. Kratki stik za prižig PC je v navodilih poimenovan Power Switch. Za prižig torej povežem PW+ in PW-"
+    },
+    {
+        "role": "assistant_3",
+        "message": "P4/P8 je za CPU - slika 1.  Na sliki 2 je floppy konektor, ki je pogojno uporaben zgolj še za napajanje posebnih kartic, npr. zvočne."
+    },
+    {
+        "role": "user",
+        "message": "Na kablih poleg P4 in P8 res piše tudi CPU1 in CPU2 vendar meni to nič ne pove o tem kam naj omenjeni kabel priklopim."
+    },
+    {
+        "role": "user",
+        "message": "Zakaj sploh obstaja kabel P4/P8 za priklop CPU?.... saj ima CPU priklop na osnovni plošči. Ventilator sem tudi priključil.  Ali mi potem P4/P8 kabla ni potrebno nikamor priklopit? Vtičnica ATX_12V tudi ostane nepriklopljena?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 27. jan 2020 ob 23:03 izjavil:Zakaj sploh obstaja kabel P4/P8 za priklop CPU?  To je napajanje za procesor."
+    },
+    {
+        "role": "assistant_5",
+        "message": "P8 rabiš priklopit, ker je za cpu."
+    },
+    {
+        "role": "user",
+        "message": "Ali nista oba (P4 in P8) za CPU? P8 ima oznako CPU2. Ali ne bi moral priklopit P4 ker ima oznako CPU1? Po logiki štetja bi CPU2 priklopil v primeru če bi bil še drugi procesor ali kako to gre?   Na napajalniku piše P8/P4. Na koncu se kabel razcepi na dva konektorja. Na enem konektorju piše P4-CPU1, na drugem pa P8-CPU2.   Na matični je vtičnica ATX_12V  Konektor P8-CPU2 ima zaokrožene vse štiri plastične povezave, medtem ko sta na vtičnici zaokrožena dva, druga dva pa sta kvadratna.  Konektor P4-CPU1 ima vse 4 plastične povezave oblikovane enako kot vtičnica."
+    },
+    {
+        "role": "assistant_6",
+        "message": "zakaj si neznansko kompliciraš življenje? Priklopi tisti priklop, ki paše fizično noter in je to to. ATX spec je tako narejen da nemorš zajebat."
+    },
+    {
+        "role": "user",
+        "message": "Pa bi vseeno rad vedel kaj priklapljam. Mogoče bi moral prej koga vprašat kako naj postavim vprašanje."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Priklapljaš napajanje 12V. Tu ni raketne znanosti. Maš 24pin power za matično, 4+4pin za procesor in 6+2 za grafike. To je to. Vsi konektorji so tako nareti, da jih nemorš prklopit tja, kamor ne paše.  Če te zanima pa več, pa googlaj ATX spec."
+    },
+    {
+        "role": "assistant_1",
+        "message": "No, imaš tut mojstre, k znajo prklopt napajanje za grafo v konektor za cpu napajanje, ipd.; k sreč so redki"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Prav to se zgodilo meni. Ker je na teh polariteta obrnjena, je bila 12 V linija v kratkem stiku, ob vklopu sta šla napajalnikova stikalna tranzistorja rakom žviżgat in Hte je prejel naročilo za nova. :-) Zdaj pred priključitvijo raje vzamem v roke ohm meter."
+    },
+    {
+        "role": "user",
+        "message": "Laufa Ventilatorji od grafične so se rahlo vrteli 1 minuto potem pa ugasnili...verjetno zaradi neobremenjenosti. Več ne morem preizkusit ker nimam tipkovnice za vtipkat geslo. Napajalnik se vrti z do 10 obrati na sekundo.   Še kišto rabim. V nemčiji stane 69EUR pri nas je 20EUR dražja. Mogoče jo naročim v MF ker bi jo tud pri nas moral naročit po pošti."
+    },
+    {
+        "role": "user",
+        "message": "pri nas bom kupil ker je manj od 150€ ... zaradi poštnine"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Hm...me skrbi da se tole lahko slabo konča. Brez osnovnega znanja je tole loterija.  Ce te to zanima in veseli bi bilo fino, da imas ob sebi nekoga ki ti v živo lahko pomaga oz. te poazuje in da kak nasvet."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Če prebereš navodila, pogledaš kak youtube video (sam ne od the verge) komot sestaviš vse sam. Večina stvari je narejenih tako da pašejo samo v eno smer notri, za front panel pa je +/- označen in vse piše v navodilih.   Predno sestavljaš glih nisi v najbolj stereotipični sumeči trenirki, primeš mal radiator da se ozemljiš in slediš navodilom. Vse skupaj je kot lego kocke za odrasle.  Seveda so lahko kdaj tudi problemi po sestavi, ampak če maš neke osnove sestavljanja osvojene iz vseh informacij katere lahko dobiš iz spleta je to še najmanjši problem rešit.   Če pa misliš da gre termalna pasta med procesor in ležišče matične plošče, pa je bolje da vse prepustiš komu drugemu."
+    },
+    {
+        "role": "user",
+        "message": "- pozicija napajalnika.  Napajalnik sem v kišto obrnil tako da zrak sesa od zunaj v kišto. Ali bi moral napajalnik obrniti tako da bi sesal trak iz notranjosti kište?  - plata ima dva ASATA3 priklopa in štiri SATA3 priklope. Če sem na spletu prav razumel, so ASATA namenjeni za RAID. Ker ne potrebujem RAID, diske priklopim na SATA kajne?  - v kišti sta za krmiljenje ventilatorja pripravljena dva konektorja. Enega sem povezal na napajanje, drugi ki ima dve žice v nekakšnem kvadratnem konektorju pa ne vem kam priklopit"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Odvisno od ohišja. Če je prostor za napajalnik spodaj, in je pod njim odprtina z zračnim filtrom, naj sesa zrak iz okolice (od spodaj).  Diske priklopi na SATA.  Kišta pa je? Kristalna krogla je šla že spat... Firma, model?"
+    },
+    {
+        "role": "user",
+        "message": "be quiet Pure base 600. Ko sem šel sestavljat sem zaradi reže spodaj (ima mrežico) pomislil da je tako prav. Ko sem vse povezal pa sem pomislil da bi bilo bolje da vleče topel zrak iz kište in s tem pomaga ventilatorju."
+    },
+    {
+        "role": "user",
+        "message": "glede tistega priključka (kvadratna dvožilna vtičnica) od ohišja ki ne vem kam z njim...vidi se ga na tem linku  https://www.manualslib.com/manual/12514... Fan speed controler. Sata sem vtaknil v sata. Za tisto kvadratno dvožilno vtičnico zraven pa mi ne uspe najti vtikača."
+    },
+    {
+        "role": "user",
+        "message": "Sedaj sem na enem videu slišal da je omenjeni konektor (kvaratna vtičnica) namenjena za dodatni tretji ventilator. Na sprednjem panelu kište je stikalo števila obratov ventilatorjev, ki krmili sprednji in zadnji ventilator. Ima še možnost krmiljenja tretjega ventilatorja- zanj je pripravljen omenjeni prosti konektor.  Dodatni ventilator sem kupil enak spredaj vgrajenemu ventilatorju (vsaj tako je pisalo v specifikacijah) Be quiet shadow wings 2 , 140mm Kot kaže pa kupljen ventilator ni enak saj ima 4 žile, medtem ko imata ventilatorja v kišti po tri žile. Konektor kupljenega ventilatorja je širši zato ga ne morem povezati s prostim konektorjem. (V trižilnih konektorjih, ki gredo iz stikala na sprednjem panelu sta v resnici povezani le po dve žili ki gredo iz stikala obratov na sprednjem panelu. Ena žila ventilatorjev je torej prosta)  Čemu sploh služi četrta žila ventilatorja za razliko od ostalih dveh ventilatporjev ki imata po tri?  Ali lahko kako povežem kupljeni ventilator na stikalo števila obratov ali kaj naj naredim?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ponavadi je situacija s \"fan kontrolerjem\" takšna.  Imaš tisti kvadratni napajalni del. Tu priklopiš ploščati sata konektor iz napajalnika. Ta pa potem napaja vse ventilatorje katere priklopiš na ta kontroler.  Četrta žila kabla pri ventilatorju je PWM. To pomeni da če jo vtakneš v primeren vtič na matični plošči, da plošča lahko uravnava hitrost vrtenja venrilatorja glede na temperaturo katero izmeri prek vgrajenih senzorjev. Če boš ventilatorje priklopil na svoj kontroler jih nadzoruješ ti.  Komot priklopiš kolikor ventilatorjev hočeš na kontroler obratov. Ponavadi je itak omejeno število konektorjev za ventilator gor. Moje ohišje ima npr. 4"
+    },
+    {
+        "role": "user",
+        "message": "V mojem primeru je drugače: napajanje ventilatorjev gre iz sata priključka do kontrolerja obratov na panelu. Iz panela gredo trije pari žic do konektorjev, na katere se priklopijo trije ventilatorji.  Moj posebej kupljen ventilator ima večji konektor zato ga ne morem priključiti na obstoječega. Omenil si da lahko ventilator s PWM krmili matična plošča. To bi bil dober način.  Sedaj se prašujem o smiselnosti vgradnje tega ventilatorja v ohišje. Nameraval sem ga vgraditi v zadnji del ohišja ampak tam zanj ni prostora. Vgradil bi ga lahko spredaj - s tem bi bila spredaj dva 140mm ventilatorja zadaj pa samo en 120 mm kar se ne zdi dobro. Razen če bi napajalnik obrnil tako da bi zrak sesal iz notranjosti ohišja.  Zakaj naj bi napajalnik sploh sesal zrak iz zunanje strani ohišja? Jaz v tem ne vidim drugega plusa kot samo to da napajalnik dobi hladnejši zunanji zrak. Slabo pri tem je to da bi se fina mrežica skozi katero bi napajalnik sesal zrak sčasoma zabila in bi bilo za čiščenje mrežice potrebno odvijačiti napajalnik. Ali ne bi bilo bolje da imam spredaj dva 140 mm ventilatorja, zadaj pa 120mm ventilator ki mu s pretokom zraka pomaga napajalnik?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ti pa imaš ideje. Kako boš privijačil narobe obrnjen napajalnik, nove luknje v ohišju? Poleg tega pa ne bo nobenega pravega efekta črpanja vročega zraka preko napajalnika, saj so vse grelne komponente nad napajalnikom, vroč zrak pa se praviloma dviga."
+    },
+    {
+        "role": "assistant_0",
+        "message": "A nisi upošteval nobenega nasveta, ki so ti ga dali v tej temi?  Napajalnik mora biti obrnjen z ventilatorjem navzdol, da vleče (ko in če sploh vleče) mrzel zrak. 2x140 spredaj in 1x120 zadaj je kar standardna konfiguracija."
+    },
+    {
+        "role": "user",
+        "message": "Res je napajalnika zaradi načina postavljenih vijakov ne morem obrnit.  Sedaj sem vgradil kupljen ventilator in ga priklopil na SYS_FAN2  Kar sem ob vgradnji ventilatorja videl, lahko rečem da ta kišta ni dobro hlajena, razen če se ventilacijo posebej ureja skozi strop, ki ima prostor za 3 ventilatorje in za vodno hlajenje. Jaz tega nimam zato je zgoraj zaprto. Edini ventilator, ki menja zrak v kišti je 120mm ventilator na zadnji stranici zgoraj, ki vleče zrak ven iz kište. Ventilator (v mojem primeru sta dva) na sprednji strani v resnici hladita ventilatorje samo z mešanjem zraka v kišti. Med ventilatorjem in površino pred ventilatorjem je povsod okoli 2 cm lufta zato ventilatorja zraka ne moreta sesati od zunaj v kišto. Poleg tega sta na sprednji stranici kište le dve ozki reži ki sta uglavnem le okras. Na mrežicah je še filter (zaradi be quiet akustike) zato je svetlobo videt le na par slabo pokritih luknjicah ob strani.  Če povzamem, 120mm ventilator potiska zrak ven. V kišto zaradi podtlaka vstopa zrak skozi kup rež pod ventilatorjem kjer so luknjičaste reže za namestitev zunanjih kartic. Zrak vstopa tudi skozi polovico kvadratnega decimetra rež na dnu kište na katerem je filter mrežica.   Mrežica na kišti na sesalnem delu napajalnika se mi zdi povsem brezveze ker ovira pretok skozi napajalnik. Če se bo dalo jo bom odstranil. Boljše da občasno s kompresorjem spiham napajalnik kot pa da odšraufam napajalnik, odstranim mrežico, jo očistim,...   ( Prezračevanje v poceni kišti mojega starega računalnika je narejeno tako da ventilator na sprednji stranici spodaj zrak dejansko piha skozi diske, zgoraj po diagonali pa je napajalnik ki vleče zrak ven iz kište )"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Človek, čez napajalnik ti ne dobiš niti 5% svežega zraka v ohišju.  Če povzamem, 120mm ventilator potiska zrak ven. V kišto zaradi podtlaka vstopa zrak skozi kup rež pod ventilatorjem kjer so luknjičaste reže za namestitev zunanjih kartic. Zrak vstopa tudi skozi polovico kvadratnega decimetra rež na dnu kište na katerem je filter mrežica.   A si slučajno naredil test z dimno komoro, da mečeš okrog take špekulacije?"
+    },
+    {
+        "role": "user",
+        "message": "Vidim da je mrežica na zunanji strani ohišja kar je dobro.  Skozi napajlnik starega računalnika kar lepo pihlja. Če skozi današnje nove napajalnike več ne pa še nisem sprobal. Dejstvo je da pri tej kišti ni diagonalnega prezračevanja kot je to na stari, poceni kišti."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Nova kišta ima daleč boljše možnosti prezračevanja kot neko cheap ohišje izpred 10(?) let.  Za večji izpih lahko še na strop namestiš kakšen ventilator."
+    },
+    {
+        "role": "user",
+        "message": "Ob strani sta dva prostora za SSD diske. Moj Samsungov SSD je prevelik zato sem ga dal posebej. Z ohišjem ne dobiš adapterja za 2.5 disk. Dobro je to da se stvari lepo in hitro razstavljajo in sestavljajo."
+    }
+]

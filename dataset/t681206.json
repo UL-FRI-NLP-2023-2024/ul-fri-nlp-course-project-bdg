@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "IP WIFI kamera, kitajska, ONVIF. Na njo si se z brskalnikom prijavil na njen IP address 192.168.1.136, ter sliko gledal na MonitorClient. Prvič sem jo konfiguiral jo preko mrežnega kabla do ruterja. ko je bila nastavljena, sem kabel izklopil, resetiral, delala v dosegu WIFI-ja. Dostop sem imel samo znotraj mojega omrežja. Delala, dokler nisem v njenih nastavitvah šel spreminjati IP na ruterju ter kameri. Saj sem poskušal nastaviti dostop preko neta. Verjetno sem spremenil njenega oz njene nastavitve. Brskalnik mi njen IP 192.168.1.136 ne odpre, ko ta IP pingam napiše Destination host unreachable. Kamera drugače dela, sliši se tudi IR cut. Kako naj sedaj najdem kamerin IP, ter jo ponovno konfiguriram, saj se je po moje brez dostopa ne da resetirati na tovarniške nastavitve."
+    },
+    {
+        "role": "assistant_0",
+        "message": "prijaviš se na ruter in pogledaš katere naprave so gor in kateri IP majo"
+    },
+    {
+        "role": "user",
+        "message": "Smacker, zelo si hiter .-) ..Ruter je linksys, nastavljen na DHCP Ali naj gledam na ruterju (nisem našel kje), ali na ip config/all tre arp -a Na config/all je IpV4 addres 192.168.1.102 (preferred) DNS server xx.xxx.xxx.xx xx.xxx.xxx.xx"
+    },
+    {
+        "role": "assistant_0",
+        "message": "config ti kaže ip ip naprave (sklepam da računalnika), na ruterju bi moral met cliente izpisane - torej vse naprave ki so povezane na ruter, zraven pa njihove IPje. En od teh je kamera. Za v prihodnje probaj še naštelat da se na MAC naslov kamere dodeli vedno isti IP, ker zdaj vedno ko se kamera poveže z ruterjem lahko dobi drugačen IP iz DHCP range-a."
+    },
+    {
+        "role": "user",
+        "message": "Našel sem oba računalnika na ruterju, ter še dva IP. Ta dva se pingal, sta unrechable. Client Host Name IP Address MAC Address Expires Delete 192.168.1.100 28:F3:66:48:31:66 21:07:29  192.168.1.103 C0:6C:F0:69:D5:A3 21:02:56   ---------------------------------------------------------- Router Name: WRT54GL  Host Name:  Domain Name: t-2.net  Internet  Configuration Type Login Type: Automatic Configuration - DHCP  IP Address: xx.xxx.xxx.xx  Subnet Mask: 255.255.0.0  Default Gateway: xx.xxx.0.1  DNS 1: xx.xxx.209.79  DNS 2: xx.xxx.210.79  Kamere nikakor ne morem najti... Problem kje v tem da sem v njenih nastavitvah namesto njene IP: 192.168.1.136 ter še nekje drugje vpisal nekaj drugega... Se opravičujem, če zaradi nezadostnega znanja in želje ponovno oživeti kamero smetim po forumu..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Resetiraj kamero na tovarniške nastavitve."
+    },
+    {
+        "role": "user",
+        "message": "Hja, ko pa ne morem preko računalnika priti do nje, fizično pa nima gumba., samo napajanje in mrežni priključek in antenico. Ima pa svoje ime, PPIV-049164-xxxxx. Če jo priklopim z kablom na PC, ne vem kako najti njen sedanji IP. Če bi se z njo povezal, bi ji nastavil stari-tovarniški IP."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 31. avg 2016 ob 15:11 izjavil:... Če jo priklopim z kablom na PC, ne vem kako najti njen sedanji IP. Če bi se z njo povezal, bi ji nastavil stari-tovarniški IP.    IPCsearch --> IPCSearch1.0.15_Setup.exe  vir: Setting WiFi connection with wireless IP Cameras (zmodo.com)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "http://www.mylanviewer.com/network-ip-s..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "http://angryip.org/download/#windows Download version 2.21 below (120 kb)"
+    },
+    {
+        "role": "user",
+        "message": "Žal nikakor ne najdem tega ip. Ko kamero priklopim preko kabla na ruter, začne lučka na ruterju utripati, se pravi da prepozna da se je nekaj priklopilo. Vendar ko grem na ruterjev status mi kot DHCP klienta prepozna in pokaže samo računalnike. Kako naj nastavim zgornje programe, saj se mi zdi, če se prav spomnim, da ko sem spreminjal IP v nastavitvah kamere (tov. je bil C0:6C:F0:xx:xx:xx Wireless MAC: 28:F3:66:48:xx:xx IP: 192.168.1.136) sem nsatavil nekje okoli 80.xxx.xx.xxx . Kaj naj nastavim v programu za skaniranje, oz da mi bo našlo kamero, priklopljeno na ruter, Žal mi, saj je kamera takorekoč nova, navodil pa nimam. Kamero sem odprl, v njej je samo vezje, gumba ali mikrostikala za reset nisem opazil."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Moral bos ugotoviti oz se spomn8ti kaj si spreminjal, ip, subnet , gateway? V kolikor se ne spomnes bos na sami kameri moral poiskat reset gumb :)  Lahko pa da za kamero obstaja aplikacija ki ti isce znotraj mreze po mac naslovu :)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ce res ni reset gumba, lahko poskusis tole (vcasih je na nekaterih napravah to delovalo, ce bo tudi na tvoji, pa ne vem): - izmisli si en IP naslov, ki je se prost v tvojem omrezju (zgoraj omenjas 192.168.1.136, ce ga najprej poskusis pingati in nato pogledas arp tabelo z ukazom \"arp -a\" in tega IP naslova ni izpisanega, lahko izberes tega) - vpisi staticno mapiranje z ukazom \"arp -s 192.168.1.136 C0:6C:F0:xx:xx:xx\", pri cemer je ta zadnji podatek MAC naslov kamere. Za \"arp -s ...\" ukaz moras imeti admin pravice (se prvi, da command prompt zazenes kot skrbnik in potem vanj vpises ta ukaz) - ponovno poskusi pingati ta IP naslov (ali pa dostopati preko httpja) - ce ne dela, ponovi vajo, samo da vpises wireless MAC naslov kamere  Ce to ne dela, povezi ugasnjeno kamero direktno s PCjem (ali pa uporabi kaksen hub, na katerega priklopi kameor in PC, drugih naprav pa ne, da ne bo prevec prometa), na PCju startaj wireshark in daj kameri napajanje. Potem pa v wiresharku poglej, ce ob bootanju kaj posilja, ce da, bos verjetno videl njen IP naslov in po katerem IP naslovu sprasuje z ARPom, to ima verjetno nastavljeno za gateway. Ce je tako, si na PCju nastavi ta naslov in taksno masko, da bosta v istem subnetu, jo prekonfiguriraj na svoje omrezje (spremeni IP) in popravi nazaj IP naslov tudi na PCju.  Ce tudi to ne dela, pa pocasi nimam vec idej. ;)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Mislim, da je skorajda neverjetno, da kamera ne bi imela reset gumba."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če nima gumba ima luknjico za kemični svinčnik in moraš, kot pri routerjih, nekaj sekund držati pritisnjeno, da se začne reset."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Priključi kamero z lan kablom direktno v računalnik, ne preko routerja! Poskusi z IPcamera programom: https://1drv.ms/u/s!AhQFnDPaarOegVITz8wrLprZC1Wu"
+    },
+    {
+        "role": "assistant_1",
+        "message": "IP scaner, priključiš kamero na isto omrežje in poiščeš naslov kamere.  http://www.advanced-ip-scanner.com/inde..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Da nisi dal kamere v drugi subnet?"
+    }
+]

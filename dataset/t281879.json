@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "kupil sem prenosnika HP 6710 in ko sem ga prvič zagnal mi je kr odprlo instalacijo od viste ampak mi je javlo nek error  The computer restarted unexpectedly or encountered an unexpected  Error. Windows Installation cannot proceed,. To install Window, click  “OK” to restart the computer, and then restart the installation.  potem stisnem ok in ko pride do instalacije spet to pa nevem kaj naj naredim drugi OS pa ne morem naložit zato ker ne morem niti driverjev na prenosnika naložit.. res ne vem kaj naj  za pomoč se že vnaprej zahvaljujem"
+    },
+    {
+        "role": "assistant_0",
+        "message": "kako ne moreš naložit driverjev? o.O"
+    },
+    {
+        "role": "user",
+        "message": "zraven nisem dobil nobenega cdja al pa kaj zaj pa sem mislil naložit XPje pa ne morem ker ne zazna diska"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Več rešitev obstaja za namestitev tvojih XP-jev. 1.Dobi si novejšo verzijo windowsov, ki imajo integrirane gonilnike za sata controller na matični. 2.V biosu controller preklopiš na delovanje v \"Legacy\" načinu (ali kaj podobnega):   3.Sam si dodaš driverje na windowsov CD.-> Klik. 4.Dobiš si disketnik, narediš disketo z driverji in ob zagonu namestitve XP-jev, (ko spodaj napiše \"Press F6 to Install a Third Party Driver\") pritisneš F6 ter vstaviš pripravljeno disketo v disketnik 5.Namestiš Visto od začetka (ta verjetno že ima driverje na svojem DVD-ju) 6. ..."
+    },
+    {
+        "role": "user",
+        "message": "ne če setup za visto je že naložen na prenosniku . zraven prenosnika pa nisem dobil niti enega CDja pa nič pa da bi tal v biosu na legacy tudi ne gre ker te opcije sploh ni"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Uporabi druge nasvete.  “OK” to restart the computer, and then restart the installation. Tista Vistina namestitev očitno ni bla v redu. Stvar moreš zbrisat in na novo naložit. (Za kar pa rabiš Vistin DVD.) PS: Si poleg prenosnika kupil tudi Visto? Če ja, reci naj ti dajo drugega z delujočim operacijskim sistemom, oz. Vistin DVD."
+    },
+    {
+        "role": "user",
+        "message": "ne nisem kupil viste . saj najraje bi zbrisal to visto dol ampak ne vem kako"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po tem, ko boš Windows XP Install CD prepričal, da najde tvoj Sata disk, zbrišeš vse particije (z njimi bo šla bye-bye tudi Vista) in preko namestiš XP-je."
+    },
+    {
+        "role": "user",
+        "message": "če pa mi XP instal CD nikoli ne najde diska"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ma kaj prav ne razumeš? Ne bo ti ga najdel dokler mu ne boš dal gonilnikov zanj. Zgoraj sem ti pa napisal razne načine kako lahko to narediš.  Edit: Tukaj ni Vista tisti krivec, ki ti bi onemogočal namestitev XP-jev.  Edit2: Navodila za tisto z disketo:  Perform the following steps to install the Intel Matrix Storage Manager driver during operating system setup:   1. Press the F6 key when prompted in the status line with the \"Press F6 if you need to install a third party SCSI or RAID driver\" message. This message appears at the beginning of Windows* XP setup (during text-mode phase).   Note: Nothing will happen immediately after pressing F6. Setup will temporarily continue loading drivers. You will then be prompted with a screen asking you to load support for mass storage device(s).  2. Press the S key to Specify Additional Device.   3. You will be prompted to \"Please insert the disk labeled Manufacturer-supplied hardware support disk into Drive A:' When prompted, insert the floppy disk containing the following files: IAAHCI.INF, IAAHCI.CAT, IASTOR.INF, IASTOR.CAT, IASTOR.SYS, and TXTSETUP.OEM and press the ENTER key.   4. After pressing ENTER, you should be presented with a list of available SCSI Adapters. Select your controller from the list. The up and down arrow keys can be used to scroll through the list as all controllers may not be visible. The list can include:   * Intel® 6300ESB SATA RAID Controller  * Intel® 82801ER SATA RAID Controller  * Intel® 82801FR SATA RAID Controller  * Intel® 82801FR SATA AHCI Controller  * Intel® 82801FBM SATA AHCI Controller  * Intel® 82801GR/GH SATA RAID Controller  * Intel® 82801GR/GH SATA AHCI Controller  * Intel® 82801GBM SATA AHCI Controller  * Intel® 82801GHM SATA RAID Controller  * Intel® ESB2 SATA RAID Controller  * Intel® ESB2 SATA AHCI Controller  * Intel® 82801R/DO/DH SATA RAID Controller  * Intel® 82801R/DO/DH SATA AHCI Controller  * Intel® 82801HBM SATA AHCI Controller  * Intel® 82801HEM SATA RAID Controller  * Intel® 82801HEM SATA AHCI Controller   5. The next screen should confirm your selected controller. Press the ENTER key again to continue.   6. At this point, you have successfully F6'ed in the Intel Matrix Storage Manager driver and Windows setup should continue. Leave the floppy disk in the floppy drive until the system reboots. Windows setup will need to copy the files from the floppy again to the Windows installation folders. Once Windows setup has copied these files again, you should then remove the floppy diskette so that Windows setup can reboot as needed.   7. During Windows setup, create a partition and file system on the RAID volume as you would on any physical disk.  Edit3:Orodje za ustvarjanje te diskete lahko downloadaš na uradni Intelovi strani-> Klik."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če v BIOSU lahko spremeniš SATA mode iz SATA raid na IDE, ne boš potreboval diskete, xp ti bo zaznal disk. Imaš samo en disk, zakaj bi imel SATA mode na raid, preklopi na IDE."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Navodila za CD (Se mi nekako zdi, da z disketo ne bo šlo ;) ): Downloadaj in namesti  nLite. Vstavi WinXP CD v pogon in skopiraj vse kar se nahaja na njem (Ctrl+A) v eno mapo na trdem disku. Recimo, da C:\\WinXP Zaženi nLite->Next->v okence napišeš C:\\WinXP Next->Next->Pri integrate izberi \"Drivers\" in pa \"Bootable ISO\" pod Boot. Downloadaj in nekam extractaj  te driverje (sem ti jih že pripravil, da ne bo problemov). Next->Insert->Single driver->Najdi IASTOR.INI datoteko, ki se nahaja tam kamor si zgornje driverje extractal. Zdaj se ti bo pokazal menu, kjer boš imel na razpolago več možnosti... problem je, da ne vem katera stvar je prava (ni podatkov na hp-jevi strani). Poskusi z \"Mobile\" verzijami. Ko izbereš->ok-> Next-> Yes->Next->Mode:Burn image-> zapečeš CD (Po možnosti si dobi en CD-RW, ker verjetno s prve ne boš izbral pravega gonilnika in boš moral še en× skozi proces.) Sedaj poskusiš namest windowse in če ti najde disk, si iz zgornjega seznama izbral pravi driver. (Drugače pa še en×)  Edit: sem preskočil par korakov. Po mojem ti bi moglo uspeti, no... ni komplicirano. (Sem ta težje z iskanjem pravega gonilnika/datotek že naredil jaz :P.)  Edit2: Oz. poglej, če imaš kaj takega v BIOSU in preklopi na IDE (kot je predlagal @assistant_2):"
+    },
+    {
+        "role": "user",
+        "message": "Ok bom sprobal takoj ko si kupim prazne Cdje ker trenutno nimam nobenega praznega doma =)   Hvala za pomoč !!!!!"
+    },
+    {
+        "role": "user",
+        "message": "Uspelo je =) najdo mi je disk v zadno sn pa le trofo pravi driver haha  res hvala za pomoč slo-tech vlada ! =D"
+    },
+    {
+        "role": "assistant_3",
+        "message": "meni se nikakor ne uspe da naredim xp gor bi mi lahko se kdo pomagal prosim hvala lp jure"
+    },
+    {
+        "role": "assistant_3",
+        "message": "in mi koncno le uspelo s @assistant_1 pomocjo. S programom nLiTe sem naredil boot cd z gonilniki za intelovo plosco. Downloadal sem tudi Sata file katere link je dal @assistant_1. v programu nLiTe pa sem nastavil Intel (R) 82810GBM SATA AHCI Controller (Mobile ICH7M/DH). vse skupaj pa potem bootal s CD in stvar se je premaknila iz mrtve tocke.  se enkrat hvala za pomoc  lp jure"
+    }
+]

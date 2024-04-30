@@ -1,0 +1,402 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni.  Rad bi postavil pameten dom, ki temelji na Raspberry PI in programju Home Assistant. Trenutno imam doma več senzorjev in stikal od Sonoff (RF + Wifi), Intertechno (RF) in Xiaomi (ZigBee), katere bi rad združil. Hkrati bi rad omogočil delovanje tudi preko Google Home (vokalno).  A ima kdo izkušnje s tem? Glede na to, da Xiaomi deluje preko ZigBee, a rabim za Raspberry kak dodaten modul in katerega?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 31. jan 2019 ob 14:54 izjavil:Pozdravljeni.  Rad bi postavil pameten dom, ki temelji na Raspberry PI in programju Home Assistant. Trenutno imam doma več senzorjev in stikal od Sonoff (RF + Wifi), Intertechno (RF) in Xiaomi (ZigBee), katere bi rad združil. Hkrati bi rad omogočil delovanje tudi preko Google Home (vokalno).  A ima kdo izkušnje s tem? Glede na to, da Xiaomi deluje preko ZigBee, a rabim za Raspberry kak dodaten modul in katerega?  Že uporabljam, lahko uporabiš tudi cenejši Orange PI z H3 procesorjem. Za zigbee lahko uporabiš zigbee2mqtt modul, ki dela kar prek USB, Sonoff pa preflešaj na OpenMQTTgateway. Kakšno frekvenco pa uporabljajo Intertehno (stikala??)?"
+    },
+    {
+        "role": "user",
+        "message": "Intertechno ima navaden 433 RF.  Ker sem nov v svetu Raspberry imam par vprašanj: - A je zigbee2mqtt softver ali hardver? Če je če softver, kateri hardver rabiš zanj?  - Imam Sonoff RF Bridge. A tega naj nadgradim z OpenMQTT?  - Kaj pa Sonoff stikala (Basic), a jih je treba nadgradit ali je original firmware ok? Neki sem bral o \"Tasmota\" pa ne vem za kaj natančno se gre..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 31. jan 2019 ob 21:34 izjavil:Intertechno ima navaden 433 RF.  Ker sem nov v svetu Raspberry imam par vprašanj: - A je zigbee2mqtt softver ali hardver? Če je če softver, kateri hardver rabiš zanj?  - Imam Sonoff RF Bridge. A tega naj nadgradim z OpenMQTT?  - Kaj pa Sonoff stikala (Basic), a jih je treba nadgradit ali je original firmware ok? Neki sem bral o \"Tasmota\" pa ne vem za kaj natančno se gre...  V glavnem lahko upravljaš ta intertehno stikala z Sonoff RF Bridgeom, toplo priporočam, da nadgradiš z OpenMQTTGateway, ker da preko MQTT čiste podatke oz. jih čiste sprejme. Na sonoff stikala nalagam jaz esphomeyaml. So pred kratkim predstavili integracijo z Home assistantom, tako da je res super. Sedaj se imenuje ESPhome, če boš kaj raziskoval. Za zigbee2mqtt rabiš CC2531 USB ključek in Arduino za programiranje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 31. jan 2019 ob 18:57 izjavil:Že uporabljam, lahko uporabiš tudi cenejši Orange PI z H3 procesorjem.  Z OrangePi imam rahlo mešane rezultate (uporabljal sem jih za druge stvari). Eni so delali super, eni pa ne in ne. RPi po drugi strani je delal vsak.  Tasmoto je treba flasnit na Sonoff. OTA menda po novem ne dela (meni tudi ni šlo), najbolj enostavno je s programatorjem."
+    },
+    {
+        "role": "user",
+        "message": "Aha, zanimivo, bo očitno tole postal nov hobi.  Kateri hardver in softver pa je potrebno imeti za flashanje Sonoffa?  A za flashanje CC2531 USB ključka rabim vse tole: https://koenkk.github.io/zigbee2mqtt/ge...  Kaj pa če nabavim tole namesto CC2531 ključka? https://shop.dresden-elektronik.de/rasp..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Flashan CC2531 ti lahko jaz prodam - sem pred 14 dnevi naročil in ko pridejo bo en viška - mam pa opremo za flashanje doma in en že lepo deluje.  Ko te Home assistant potegne bo kar nekaj neprespanih noči - dela načeloma vse kar si zamisliš, samo čas rabiš da vse skonfiguriraš."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz sem nabavil tegale (za flashanje Sonoffa): https://www.aliexpress.com/item/Free-Sh...  Uporabil sem Arduino IDE.  Pri teh programatorjih je problem (to so me opozorili), da nekateri dajo premalo toka ven. Tile ESP čipi pa rabijo dovolj toka. Tako, da če vzameš takega, ki da premalo toka ven, moraš še 3.3V napajanje urediti.  Pa še tole - tale programator daje ven 5V ali 3.3V. To določiš s tistim jumperjem. Pri meni je bil nastavljen na 5V. Valjda ni nikjer nobene dokumentacije...  Tako da ko boš nastavil, pomeri z instrumentom.  Mogoče bom spisal en vodič kako poflashat, če bo čas.  Če si pa iz Ljubljane, se pa lahko enkrat zmeniva za pivo, pa ti to naredim."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Meni je uspelo flashanja sonoffa (z tasmota) direktno z vezavo na raspberry pi, preko kablov, brez dodatnega modula. Uporabljam pa openHAB, potem pa preko mqtt-ja uporavljam s sonoffom."
+    },
+    {
+        "role": "user",
+        "message": "Pa še nekaj:  Kako pa deluje Home Assistant na daljavo, na smartphone? A ima kako aplikacijo za Android?  Namreč sedaj preko kitajskih cloudov lahko enostavno preklapljam stikala tudi ko nisem doma oz. me opozarjajo senzorji, če npr. nekdo pozvoni na vratih oz. če je kje poplava."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Imaš android clienta za HA, vendar je tako tako. Oddaljen dostop se verjetno da vzpostavit preko routerja, da odpreš tisti port, kjer pač teče HA. Govorim na pamet, za openHab lahko narediš tako, lahko pa uporabiš openHABCloud, ki ti omogoča varno upravljanje preko njihove oblačne storitve.  Preveri ZS."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Oddaljen dostop si urediš preko duckdns."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz te zadeve rešujem tako, da imam lasten VPN in je potem RPi dosegljiv potem preko VPN. S tem je rešen tudi problem varnosti."
+    },
+    {
+        "role": "user",
+        "message": "Kako pa Home Assistant deluje z Google Home, vokalno? A preko IFTTT? Sedaj mi Sonoff in MagicHome delujeta direktno BP, Xiaomi pa ga ne podpira."
+    },
+    {
+        "role": "assistant_4",
+        "message": "OpenHAB podpira ZigBee  https://www.openhab.org/addons/bindings..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Mogoče kar tule vprašam...da ne odpiram nove teme.  Imamo kdo kaj izkušenj z Home Assistantom, konkretno z vremenskimi podatki in napovedmi od ARSO (Meteo.si)? HS ima cel kup možnih integracij, domači senzorji delajo top, temperatura, vlaga, tlak, pm delci tudi, vremenske napovedi pa ne znam...  hvala že vnaprej za kakšne izkušnje... lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jest mam integrirano samo radarsko sliko padavin  to mam v configu za  camera:\n  - platform: generic\n  name: 'Rain Radar'\n  still_image_url: 'http://meteo.arso.gov.si/uploads/probase/www/observ/radar/si0-rm-anim.gif'\n  verify_ssl: false\n  pol mam pa v HA dodan kot:  aspect_ratio: 0%\ncamera_image: camera.rain_radar\nentity: camera.rain_radar\nhold_action:\n  action: more-info\nimage: camera.rain_radar\nshow_name: false\nshow_state: false\ntap_action:\n  action: more-info\ntype: picture-entity\n  Kot kamero mam pa zato, ker se drugače gif ne refresha sam, tko se pa na vsake 10 sekund."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Uf, super, vsaj nekdo!! Hvala 100x!!  Ali imaš spodnjo kodo v config od camera.rain.radar? Jeeeej, dela!!! Hvala ti!"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pozdravljeni, na kateri strani bi lahko našel Raspberry Pi + Home assistant kakšen tutorial in kaj vse rabim. Gor bi dal temperature in vlago vseh sob, kamere, radiatorske ventile, sesalec itd..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Navodila za namestitev imaš na home-assistant.io. Na Piju bi verjetno raje namestil hass.io/Home Assistant OS kot Home Assistant Core. Kar se senzorjev tiče je pa zelo odvisno kaj imaš. Če obstaja integracija potem bolj ali manj le klikaš in slediš navodilom. Za kakšne druge primere je potrebno zavihati rokave in \"zintegrirati\" preko takšne ali drugačne kombinacije MQTT, Node-Red in/ali ESPHome."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Razen sesalca še nimam nič. Zato raje prvo vse pogledam kaj kupiti. To, da vidim s čem je že integriran mi je že pol dela, da ne kupujem nekaj in se potem vložim ogromno časa v integracijo"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Zelo zanimiva tema, pa zelo malo interesa.  Mene zanima, če imate kakšne wifi žarnice, ki so ok in niso tak drage kot Philips hue?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Poglej Shellyjeve, nej bi ble kul."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Te so bolj v USA kolikor gledam..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Yeelight so kul."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_9 je 11. nov 2020 ob 09:32 izjavil:Te so bolj v USA kolikor gledam...  Kaki USA :) Oni so iz Bulgarije. https://shop.shelly.cloud/"
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_9 je 11. nov 2020 ob 08:49 izjavil:Zelo zanimiva tema, pa zelo malo interesa.  Mene zanima, če imate kakšne wifi žarnice, ki so ok in niso tak drage kot Philips hue?   Zato ker podobna (in bolj aktivna) tema že obstaja Pametno stanovanje"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_9 je 11. nov 2020 ob 08:49 izjavil:Zelo zanimiva tema, pa zelo malo interesa.  Mene zanima, če imate kakšne wifi žarnice, ki so ok in niso tak drage kot Philips hue?  Ikea žarnice so relativno poceni in se bp integrirajo v HomeAssistant, če imaš tudi gateway.  Imam tudi eno generično Tuya iz BigBanga, ki sicer dela ampak se v HA lahko kontrolira le brightness. Dodajanje v HA je bilo precej trial and error."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Še čakam tele https://www.shelly.si/si/sijalke/9-shel...  Ampak baje, da se da tudi firmware zamenjat."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_8 je 11. nov 2020 ob 11:20 izjavil:Imam tudi eno generično Tuya iz BigBanga, ki sicer dela ampak se v HA lahko kontrolira le brightness. Dodajanje v HA je bilo precej trial and error. Če si malo bolj DIY lako na Tuya flashaš Tasmota firmware in potem lahko poljubno kontroliraš vsak kanal posebej (ali pa jih združiš)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Flashanje Tuye s Tasmoto je zelo enostavno. Bom mogoče enkrat en vodič pripravil."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_1 je 11. nov 2020 ob 21:58 izjavil:Flashanje Tuye s Tasmoto je zelo enostavno. Bom mogoče enkrat en vodič pripravil. Stare verzije, ja. Pri novih verzijah Tuya-convert ne deluje več in moraš lotati žičke."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pa saj to ni problem."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Mi lahko prosim predlagate kateri RPi 4, 4gb naj kupim. V sloveniji imajo to kje? Če je drugje bolj poceni bom od zunaj vzel. Ohišje si bom sam natisnil, ker še tak vprašanje kaj vse drugo bo zraven Prvo, da kupim to in skužim kako in kaj potem pa bom dalje nadgrajeval"
+    },
+    {
+        "role": "assistant_13",
+        "message": "V Sloveniji tukaj na primer: https://www.ic-elect.si/catalogsearch/r..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz sem nabavljal v IC Elektronika. Enkrat sem pomotoma naročil iz Kitajske, kjer je bil 1 EUR cenejši, samo potem fašeš carinski postopek in se definitivno ne splača...   Se pa splača pri Kitajcih nabaviti alu ohišja."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj pa farnell? Ta vidim, da je dosti cenejši"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Koliko je pa strošek pošiljanja v Slovenijo?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Drobiž: https://si.farnell.com/help-informacije...  Druga opcija je še Mouser. Na hitro ne najdem podatka o poštnini. Sem pa pred kratkim naročil Jetson Nano in je bila poštnina brezplačna. Pozor, cene so brez davka."
+    },
+    {
+        "role": "assistant_15",
+        "message": "https://www.galagomarket.com//item/disp..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_14 je 12. nov 2020 ob 14:09 izjavil:Drobiž: https://si.farnell.com/help-informacije...  Druga opcija je še Mouser. Na hitro ne najdem podatka o poštnini. Sem pa pred kratkim naročil Jetson Nano in je bila poštnina brezplačna. Pozor, cene so brez davka.  Nazadnje kar sem naročal je imel Mouser zastonj poštnino pri 100€+ naročilu. Fun fact: iz Texasa je pošiljka prišla prej kot iz katere koli Slovenske trgovine :/.  Kaj uporabljate za presence detection v HomeAssistantu? Trenutno imam bluetooth dongle, ki sicer bolj ali manj dela ampak telefon vsake toliko odleti in včasih se odziva blazno počasi (10+ minut, da zazna odhod). Poskusil sem še z HA appom na telefonu (ne zazna odhoda, če je telefon connectan na domače omrežje preko VPN, GPS lokacija skače tudi 100+ metrov v vse smeri) in OwnTracks (kljub dodatnemu filtriranju podatkov z nizko natančnostjo precej nezanesljiv, ubije baterijo na telefonu)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_8 je 13. nov 2020 ob 11:32 izjavil: Kaj uporabljate za presence detection v HomeAssistantu? Trenutno imam bluetooth dongle, ki sicer bolj ali manj dela ampak telefon vsake toliko odleti in včasih se odziva blazno počasi (10+ minut, da zazna odhod). Poskusil sem še z HA appom na telefonu (ne zazna odhoda, če je telefon connectan na domače omrežje preko VPN, GPS lokacija skače tudi 100+ metrov v vse smeri) in OwnTracks (kljub dodatnemu filtriranju podatkov z nizko natančnostjo precej nezanesljiv, ubije baterijo na telefonu).   motion senzorje z delayem. Naprimer, če v kuhinji ni nobenga giba pol ure, lahko z gotovostjo rečem, da je prazna. Mam jih v vseh sobah in deluje 100%. Na začetku je mal optimizacije, da pogruntaš delaye za vsako sobo, pol pa špila. Na ta način vem kdaj je hiša prazna in lahko prilagajam ogrevanje in ugašam luči, ki so morda ostale prižgane. Če imaš domačo žival, pol ta način ne pride v poštev, razen če dobiš senzorje, ki znajo ločit človeka od živali."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Zanimiva ideja. Tako ali tako imam v planu postaviti v vsako sobo esp32 s šopom senzorjev (temperatura, vlaga, svetloba); verjetno lahko zraven dodam še kak motion sensor. Pa še kak bluetooth beacon zraven :)."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Jaz sem room presence kar iz integracije paradox alarm sistema pobral. Nimam sicer za vse prostore, je pa dovolj. In dela tudi hitro."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Room assistant za BLE dongle na ključih + monitor (https://github.com/andrewjfreyer/monito... za telefone.  Oboje na enem ločenem PI zero."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pi mi zgleda malce overkill za kaj takega (ampak, če dela...) Bolj se mi dopade kakšen ESP32-mqtt-room."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ok, Pi je doma in priklopljen Zdaj bi prvo v vsako sob dal termometer, ki je lahko ožičen na neko centralno enoto in pol dalje preko wifi na pi. Ima kdo kaj podobnega in lahko priporoča? Teh termometrov vidim, da je dosti. Nočem nekaj v smislu shelly h&t ampak nekaj v smislu SONOFF DS18B20, da ga lahko nekam skrijem"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Aqara. Termometri so brežični."
+    },
+    {
+        "role": "assistant_7",
+        "message": "glede na to kar sem prebral, kje v sobi jih moram postaviti izgledajo dovolj majhni. Kateri hub pa moram kupit, da jih priklopim na home assistant?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Aqara Hub :)  Lahko pa greš DIY varjanto, ki je bolj fleksibilna, npr. Zigbee2mqtt ali Deconz, kjer priklučiš Zigbee sprejemnik na RPI in potem sprejemaš signal direkt od zigbee naprav."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Zigbee zgleda bolj zanimiv, ker še lahko potem dam gor termostatske ventile na radiatorje. Pa sprejemnik direkt na RPI se mi tudi dopade Torej kupim Aqara termometre, ki jih lahko skrijem povsod zaradi majhnosti.  Te lahko prosim, da si bolj specifičen glede zigbee huba in sprejemnika za RPI, da nebom kaj nekompatibilnega naročeval, ker vidim, da je veliko različnih."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Darko, kot vidim Aquara deluje preko Zigbee protokola. V tem primeru moraš na RPi priklopiti USB Zigbee sprejemnik... kaj priporočaš?  Kaj praviš na tegale: https://a.aliexpress.com/_mNtHt1b"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Jaz imam Conbee II, zadeva funkcionira. https://phoscon.de/en/conbee"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Kaki je doseg tega ključka? Pokrije stanovanje ali eno nadstropje hiše?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Videl sem celo, da ga lahko dobiš z priključkom za anteno"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Tisti ključek je OK za začetek, ga je treba pa flashati na pravi firmware. Za to je treba imeti programator + kabel (ni drago).  Tale je malo bolj primeren, ker ima na priključek, na katerega lahko direkt natakneš kabel iz programatorja.  Tale ima pa že kar nameščen firmware, ki direktno deluje z zigbee2mqtt in s tem s Home Assistantom.  Bolj \"profi\" rešitev je Conbee II ključek, ki je sicer malenkost dražji, je pa precej zmogljivejši (podpira večje omrežje) in ima vgrajen ojačevalec. Ta tudi deluje brez problemov v HASS.  Zigbee omrežje je \"mesh\", tako da vse naprave s stalnim napajanjem (npr. stikala za luči) avtomatsko delujejo tudi kot routerji/usmerjevalniki in s tem podaljšajo doseg omrežja.  Mimogrede, vse Ikea Tradfri naprave so Zigbee in delujejo z zgoraj omenjenimi ključki in HASS."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj pa vem, če se mi zdi, da mi ti ključki nebojo nikam vlekli. Pa prvi senzorji bojo vsi na baterije, stikala za luči bom vgrajeval verjetno komaj čez pol leta"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Lahko kupiš dva, pa na enega naložiš router firmware. Samo štrom mu daš in deluje kot zigbee router."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Jaz uporabljam tele Xiaomi senzorje, povezani so direktno na RPI preko bluetootha. Ni idealna rešitev, ker je zaradi BT doseg omejen, pa tudi baterijo (AAA) bo verjetno potrebno menjat na kakšne 2 leti. Sicer pa deluje brezhibno s Home Assistantom, in ne rabiš nobene dodatne aplikacije, da senzor spariš."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ok, nabavil bom aqara senzorje za temperaturo, conbe 2 usb ključek. Kateri zigbee hub še priporočaš?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Hehe, na Aliexpressu sem iskal \"conbee\", pa mi pravi, da moram biti nad 18 let, da lahko vstopim na ta del Aliexpressa...   Sem pa gledal RaspBee, zanimiva zadeva, samo precej zasoljena cena..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_7: če imaš conbee II, potem ne rabiš zigbee huba.  @Matthai: Conbee je nemška zadeva in je ni pri kitajcih - je na amazon.de."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Super hvala, bom kar naročil"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja, RaspBee je bil na Aliexpressu ene 160 EUR, na Amazonu pa okrog 40."
+    },
+    {
+        "role": "assistant_20",
+        "message": "Conbee uporabljam doma, deluje bp! Ima dober domet, omrežje pa je stabilno že lep čas."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Jaz bi Conbee II že nabavil ampak me skrbi, ker je HA na Rpi4 občasno nestabilen. Na cca pol leta se mi zgodi, da se mi kar neha odzivat in nič ne pomaga. 2 tedna nazaj se mi je zopet to zgodilo, v logu pa ničesar. Mi ne preostane nič drugega kot format SD kartice, ponovna instalacija in postavitev iz backupa. Če se mi to ne bi dogajalo, potem bi že mel Conbee II, tako imam pa še vedno Xiaomi hub in prek njega senzorje v HA. Eno obdobje pa sem imel, da se je po nekaj dneh nehal odzivat. Pol sem naredil skripto, da se je vsako noč restartal. Na forumih so nekateri javljali podobne probleme, a brez rešitve. Pomagala je zopet ponovna instalacija."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Probaj na USB - meni se to dogaja na vseh RPi-jih. Krivec je vedno corruptana SD kartica."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Super za to temo. Sem jo šele sedaj našel  Kolikor sem bral in gledal se priporoča da se namesto kartice uporabi SSD disk, saj naj bi imele kartice problem ker se prevečkrat piše na njih.  Sem pa v nakupo RPI 4, 4gb verzijo"
+    },
+    {
+        "role": "assistant_20",
+        "message": "@assistant_21 je 11. dec 2020 ob 11:38 izjavil:Jaz bi Conbee II že nabavil ampak me skrbi, ker je HA na Rpi4 občasno nestabilen. Na cca pol leta se mi zgodi, da se mi kar neha odzivat in nič ne pomaga. 2 tedna nazaj se mi je zopet to zgodilo, v logu pa ničesar. Mi ne preostane nič drugega kot format SD kartice, ponovna instalacija in postavitev iz backupa. Če se mi to ne bi dogajalo, potem bi že mel Conbee II, tako imam pa še vedno Xiaomi hub in prek njega senzorje v HA. Eno obdobje pa sem imel, da se je po nekaj dneh nehal odzivat. Pol sem naredil skripto, da se je vsako noč restartal. Na forumih so nekateri javljali podobne probleme, a brez rešitve. Pomagala je zopet ponovna instalacija.   Jaz sem šel na NUC ravno zato. Ubuntu mate in gor laufam vpn, HA, adguarda, ... Po merilcu mi žre pa rpi4 okoli 4W, nuc pa 5-8."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Meni se doma valja nekaj serverjev, pa jih bom vklopil, ko se preselim.  Lepo cluster doker imagov, pa bo .  Ker ne bo nekega loada, tudi porabe ne bo..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Ah nanporabi se bo poznalo. Serverjem se pod 50w zbudite ne da. Samo spet ni tak strošek. Sem imel pa zabrisal iz bajte. Od šihtarske opreme je za doma kakbips pa switch. Serverja se mi pa ne , da poslušat. Tudi če je v kabinetu.ja pa pocen."
+    },
+    {
+        "role": "assistant_21",
+        "message": "@assistant_10 je 11. dec 2020 ob 11:49 izjavil:Probaj na USB - meni se to dogaja na vseh RPi-jih. Krivec je vedno corruptana SD kartica.   A pa je možno na Rpi4 laufat HA iz usb?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja, lahko se boota iz USBja. Daš gor SSD, pa je mir... Škoda, da malina nima nvme porta..."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Sem našel navodila: https://savjee.be/2019/12/home-assistan...  A je vredu tudi, če dam na USB ključek namesto na SSD?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja, je v redu...  Pač karkoli se ti valja doma za začetek .  Sam ne dajat HDD..."
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_4 je 11. dec 2020 ob 22:01 izjavil:Ja, lahko se boota iz USBja. Daš gor SSD, pa je mir... Škoda, da malina nima nvme porta...   Eno težavo si zamenjal z drugo, ki je manjša in se pojavlja redkeje (USB quirks). Mir je PCI implementacija in pro napajanje.  Malina je zasnovana za igračkanje, vendar tudi igrače bodo dobile NVME ko bo pravi čas. Vmes bodo še prodali kak dodaten milijon kosov vmesnih zadev. Ravno so izdali en tak vmesni kos - na CM4 lahko že priklopiš nvme nativno ampak je hitrost bistveno omejena in zgleda kot da te hočejo žejnega peljat čez vodo. Konkurenca ponuja 4x hitrejše že od leta 2018."
+    },
+    {
+        "role": "assistant_24",
+        "message": "Jaz imam RPI 4, lavfa HA 24/7 na sandisk extreme kartici brez tezav, prej na isti kartici na RPI 3+ isto bp.  Raspberry pi je čist super zadeva, \"apple\" v svojem razredu. Nima vsega kar bi hotel, je pa enostaven in ima podporo. Karkoli si zaželim, vpišem v google in imam tutorial. Medtem ko hočem na neki drugi plati nekaj naredit, zabijem 1 teden, pa ne dela pol tistega, kar usposobim na RPIju v 1 uri.  To je moje mnenje in ga ne spremenim, pa sem probal kar nekaj teh plat. Na vsaki je nekaj drugače in nekaj dela po svoje...."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Ne vem kaj je narobe. Na Rpi4 sem nadgradil eeprom po tem postopku: https://www.tomshardware.com/how-to/boo...  Če dam Raspberry Pi OS, ki je na SD kartici v USB reader in to potem v USB na Rpi4 se mi zboota in je ok. Če pa dam home assistant SD instalacijo v USB reader in v Rpi4 pa se nič ne zgodi. Probal sem še direktno na usb ključek instalirat home assistant in tudi nič.   Screen Tu obvisi"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Na HASS forumu imaš navodila ... Uporabiti moraš hassos v5 (beta)."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Aha ok. To pol verjetno pomeni, da ko bo final verzija bo objavlena tule s postopkom vred? https://www.home-assistant.io/getting-s... Bom takrat potem to spravil na USB ali SSD."
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_24 je 12. dec 2020 ob 13:47 izjavil:Jaz imam RPI 4, lavfa HA 24/7 na sandisk extreme kartici brez tezav, prej na isti kartici na RPI 3+ isto bp.  Raspberry pi je čist super zadeva, \"apple\" v svojem razredu.    LOL  V svojem razredu, kjer je edini, je najboljši. Povezava z Applom je fanatizem uporabnikov in čisto nič drugega. Apple je sicer predrag ampak je vsaj kakovosten in tehnološko napreden izdelek.   @assistant_24 je 12. dec 2020 ob 13:47 izjavil: Nima vsega kar bi hotel, je pa enostaven in ima podporo. Karkoli si zaželim, vpišem v google in imam tutorial.    Rpi je \"prilagojen program\". Na strojnem nivoju je Linux delno virtualiziran, da \"ima podporo\". Na OS nivoju prednjači prilagojen Debian / Raspbian / Noobs ... Linux je preveč okoren in prezahteven za povprečnega Janeza. Debian Linux (99% raspbian) je OS, ki se je začel tam v sredini 90\" let in je nastal iz Unixov od še prej. To je osnova vsem in od tam izvira znanje ... Raspbian je recikliran Debian +- nekaj nestandardnih funkcij, ki se tičejo priklaplanja na gpio, lcdje in podobne zadeve. Standardne zavede se priklaplajo povsod enako ...   Poglej recimo to odlično zbirko navodil: https://www.digitalocean.com/community/...  Vtipkaj v iskalnik \"rpi\": 0 Tutorials  Da to zbirko downgrejdaš na Rpi, daš search in replace Debian v Raspbian in navodila bodo čudežno reciklirana za Rpi. Kakor je Ubuntu predvsem reciklaža Debiana ...   Če nič drugega, tema za Mythbusters :)"
+    },
+    {
+        "role": "assistant_25",
+        "message": "Imaš tule opisano SSD USB za hassio na rbpi4  https://community.home-assistant.io/t/i...  Jaz imam ravno naročeno zunanje ohišje (ki je sigurno podprto) in samsung SSD. https://www.amazon.de/-/en/gp/product/B...  Sicer pa imam na hassion zigbee in zwave sticka. Zigbee imam vse v stanovanju, zwave pa imam za oddaljene vtičnice v sosednji garaži (nese mnogo dlje). Edino zwave ima mnogo dražje napravice. Tudi radiatorske ventile imam zigbee in urnik prek hassio.  Imam tudi 1x sonoff flashed na Tasmota in enako Blizwolf vgradnjo vtičnico (flashanje je bolj zahtevno, ker moraš spajkati kontakte, ki so zelo blizu)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Za tiste, ki se nočte hecat z RPI je HA zdej dal ven tud hardware https://www.home-assistant.io/blue"
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_6 je 13. dec 2020 ob 23:00 izjavil:Za tiste, ki se nočte hecat z RPI je HA zdej dal ven tud hardware https://www.home-assistant.io/blue   https://www.hardkernel.com/shop/odroid-... Odroid N2+ z eMMC kartico na kateri je pre-instaliran HA ... in modro obarvano ohišje. Z lahkoto bi si lahko privoščili zares svoj, namenu prilagojen hardware.  Gotovo boljša izbira kot Rpi ampak popolnoma nepotreben overkill v smislu procesoroske moči."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Za ljudi, ki se ne znajo ali nočjo preveč ukvarjat z linuxom, še vedno pa hočjo met široko podporo napravam, je tole top rešitev. Cenovno je pa skor isto, kot da bi vzel komplet RPI z ohišjem in z SSD diskom."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Da nebi prejšnji mesec glih kupil rpi4"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Board stane 80$, torej HA kasira 70$ za ohišje in namestitev HA? Damn...   Koliko je poštnina iz hardkernela, če kdo ve?"
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_6 je 14. dec 2020 ob 09:52 izjavil:Za ljudi, ki se ne znajo ali nočjo preveč ukvarjat z linuxom, še vedno pa hočjo met široko podporo napravam, je tole top rešitev. Cenovno je pa skor isto, kot da bi vzel komplet RPI z ohišjem in z SSD diskom.   Mislim da je edina prednost tega kompleta da ti ni treba downloadat in zapečt HA image na eMMC. In da je hardware nekoliko boljši od Rpi4.  @assistant_11 je 14. dec 2020 ob 10:09 izjavil:Board stane 80$, torej HA kasira 70$ za ohišje in namestitev HA? Damn...   Koliko je poštnina iz hardkernela, če kdo ve?   Kolikor berem po forumih je kar zasoljena, pa carino še prištej ... EU distribucija https://www.pollin.de/p/odroid-n2-einpl..."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Tukaj je na zalogi, 113€ kar si potem tam tam s ceno za Blue.  https://www.reichelt.at/at/de/odroid-n2...   Je pa še nekaj, trgovine ki prodajajo Blue ne pošiljajo v Slovenijo (samo v Švico, Lihtenštajn in na Švedskem)."
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_11 je 14. dec 2020 ob 10:28 izjavil:Tukaj je na zalogi, 113EUR kar si potem tam tam s ceno za Blue.    H2+ je identična naprava. Čudno bi bilo če bi se cena bistveno razlikovala. Treba je seveda preveriti še drobni tisk in pa upoštevat vse dodatke in \"dodatke\", ki se jim ni možno izogiti - stroški pošiljanja, carinjenja in garancija. Uveljavljanje garancije direktno preko HK je drago in zamudno: https://forum.odroid.com/viewtopic.php?...  Na drugi strani pa je pri Reichelt zamenjava pokvarjenega artikla brezplačna (če odmisliš čas pakiranja in dostave na pošto), skratka top izkušnja, podobno kot Amazon. Pokvarjen artikel je možno zamenjati v manj kot tednu dni! Takega nivoja storitve z Bluejem gotovo ne bo šlo."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_23 je 14. dec 2020 ob 09:02 izjavil:Gotovo boljša izbira kot Rpi ampak popolnoma nepotreben overkill v smislu procesoroske moči. Nah, glede na to, da lahko na HASS pod dockerjem laufaš cel kup zadev, pride procesorska moč še kako prav."
+    },
+    {
+        "role": "assistant_6",
+        "message": "mah processor ni nikol overkill, tko kot TV ni nikol prevelik :)"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_10 je 14. dec 2020 ob 15:02 izjavil:@assistant_23 je 14. dec 2020 ob 09:02 izjavil:Gotovo boljša izbira kot Rpi ampak popolnoma nepotreben overkill v smislu procesoroske moči. Nah, glede na to, da lahko na HASS pod dockerjem laufaš cel kup zadev, pride procesorska moč še kako prav.  Eh nimam najboljših izkušenj laufat addone pod hass.io."
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_10 je 14. dec 2020 ob 15:02 izjavil:@assistant_23 je 14. dec 2020 ob 09:02 izjavil:Gotovo boljša izbira kot Rpi ampak popolnoma nepotreben overkill v smislu procesoroske moči. Nah, glede na to, da lahko na HASS pod dockerjem laufaš cel kup zadev, pride procesorska moč še kako prav.   Potem to ni več dedicated naprava za nadzor hiše, ampak strežnik ..."
+    },
+    {
+        "role": "assistant_15",
+        "message": "@assistant_25 je 12. dec 2020 ob 16:05 izjavil:Imaš tule opisano SSD USB za hassio na rbpi4  https://community.home-assistant.io/t/i...   Z včerajšnjim releasom (2020.12.6) tole ni več potrebno, je hass os 5,8 not."
+    },
+    {
+        "role": "assistant_21",
+        "message": "A to pomeni, da se da z uradno verzijo zdaj bootat iz usb?"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Tako je."
+    },
+    {
+        "role": "assistant_26",
+        "message": "Da bo HA deloval na RPI je pomembno, da je RPI povezan preko ethernet kabla in uporablja zelo hitro kartico npr. sandisk extreme.  Dodatno lahko še izključimo logiranje v loogbook, da zmanjšamo število zapisov na kartico.  # Example of combining include and exclude configurations logbook: include: domains: - sensor - switch - media_player exclude: entities: - sensor.last_boot - sensor.date entity_globs: - sensor.weather_*"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Saj lahko ssd gor priklopiš pa je isto ne?"
+    },
+    {
+        "role": "assistant_26",
+        "message": "Ne vem ali lahko priklopiš SSD na RPI3. Drugače pa priklopiš SSD in ne bo težav."
+    }
+]

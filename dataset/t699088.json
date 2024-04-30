@@ -1,0 +1,306 @@
+[
+    {
+        "role": "user",
+        "message": "Obračam se na vas za pomoč, ker se mi računalnik sam od sebe restarta kadar ima nizko porabo energije. Torej restarta se mi samo ko sem v desktopu, browserju, gledam filme,... Kadar igram igre se ne restarta.  V Event viewerju mi javi napako Kernel-power ID 41 z razlago: The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.  Event Data:  BugcheckCode 0 \n  BugcheckParameter1 0x0 \n  BugcheckParameter2 0x0 \n  BugcheckParameter3 0x0 \n  BugcheckParameter4 0x0 \n  SleepInProgress 0 \n  PowerButtonTimestamp 0 \n  BootAppStatus 0 \n  Checkpoint 0 \n  ConnectedStandbyInProgress false \n  SystemSleepTransitionsToOn 51 \n  CsEntryScenarioInstanceId 0 \n  Še opis računalnika in sistema: OS: Windows 10 GPU: GIGABYTE GV-N960WF2OC-4GD 4GB  MB: GIGABYTE Z170-HD3P DDR4 PSU: EVGA SuperNOVA GS 550W CPU: INTEL Core i5 6600T 2.7GHz OEM LGA1151 RAM: ram nevem na pamet moram odpreti kišto, upam da bo šlo brez, je pa podprt s strani matične  Prosim za pomoč, ker sem že kar obupan... Resetira se lahko 5x na dan ali pa nikoli...  Hvala in lep pozdrav, Peter"
+    },
+    {
+        "role": "assistant_0",
+        "message": "http://download.gigabyte.ru/manual/mb_m... #35 Power Loading Enables or disables dummy load. When the power supply is at low load, a self-protection will activate causing it to shutdown or fail. If this occurs, please set to Enabled. Auto lets the BIOS automatically configure this setting. (Default: Auto)  Daj na enabled.  w10 je upgrade ali clean install ? Tu en pravi da se mu potem, koj eš el 1x v safe mode, sistem v idlu ne ugaša več. https://www.tenforums.com/general-suppo...  bios je zadnji ?   Da ni to https://www.reddit.com/r/Windows10/comm... ?   Power management nastavitve daj na \"max performance\".  ter Went to Power Supply-->Change when Computer Sleeps-->Change Advanced Power Settings-->Hard Disk-->Turn off Hard Disk After... 999999999999"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pri meni je bil kriv slab kontakt PSU-matična."
+    },
+    {
+        "role": "user",
+        "message": "http://download.gigabyte.ru/manual/mb_m... #35  Power Loading Enables or disables dummy load. When the power supply is at low load, a self-protection will activate causing it to shutdown or fail. If this occurs, please set to Enabled. Auto lets the BIOS automatically configure this setting. (Default: Auto)    Daj na enabled.  To imam na enable.  w10 je upgrade ali clean install ? Clean.  Tu en pravi da se mu potem, koj eš el 1x v safe mode, sistem v idlu ne ugaša več. https://www.tenforums.com/general-suppo... Bom probal, če Da ni to https://www.reddit.com/r/Windows10/comm... ? to ne bo pomagalo. Danes ob 19:02 je bil zadnji update, ob 19:03 je bil crash :P . Lahko da je to, bom spremenil.  Ostalo bom probal, če update ne bo pomagal. Hvala zaenkrat :) .  LP, Peter"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 26. apr 2017 ob 19:40 izjavil:http://download.gigabyte.ru/manual/mb_m... #35 Power Loading Enables or disables dummy load. When the power supply is at low load, a self-protection will activate causing it to shutdown or fail. If this occurs, please set to Enabled. Auto lets the BIOS automatically configure this setting. (Default: Auto)  Daj na enabled.  w10 je upgrade ali clean install ? Tu en pravi da se mu potem, koj eš el 1x v safe mode, sistem v idlu ne ugaša več. https://www.tenforums.com/general-suppo...  bios je zadnji ?   Da ni to https://www.reddit.com/r/Windows10/comm... ?   Power management nastavitve daj na \"max performance\".  ter Went to Power Supply-->Change when Computer Sleeps-->Change Advanced Power Settings-->Hard Disk-->Turn off Hard Disk After... 999999999999   Updejtal sem vse driverje in se bios in sedaj se skos restarta.... Takoj ko vpisem geslo za v windowse se mi po prikazu desktopa racunalnik restarta.... Zdej pa res nic ne morem z racunalnikom....  Mi sploh kej pametnega preostane razen servis?  Hvala in lp, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sposodi si od nekoga napajalnik za 1 dan."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 28. apr 2017 ob 19:19 izjavil:Sposodi si od nekoga napajalnik za 1 dan.   ECO mode na napajalniku sm izklopu in sedaj se še ni resetiral.... Če je to to...  LP, Peter"
+    },
+    {
+        "role": "assistant_0",
+        "message": "bios na default nastavitve.  Kako delajo winsi v safe mode ? Kako dela live linux (lubuntu) ?   Naredi kopijo pomembnih podatkov in namesti win še 1x (ali jih namesti na kak drug hdd), vmes starega odklopi."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 28. apr 2017 ob 20:05 izjavil:@assistant_2 je 28. apr 2017 ob 19:19 izjavil:Sposodi si od nekoga napajalnik za 1 dan.   ECO mode na napajalniku sm izklopu in sedaj se še ni resetiral.... Če je to to...  LP, Peter  Pac mozno je ja, da napajalnik vec ne dela tako kot bi moral."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Bolj logična razlaga je, da je PSU poddimenzioniran na ECO mode."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 29. apr 2017 ob 11:07 izjavil:Bolj logična razlaga je, da je PSU poddimenzioniran na ECO mode.   Vse kar sem zasledu za ta \"ECO\" mode je, da do določene obremenitve PSU-ja ne vklopi ventilatorja... Sicer pa je bil včeraj zvečer spet reset računalnika... Zdej imam od soseda 450W noname napajalnik notri pa da vidim, če bo kaj bolje. Sicer ni isto vse priklopljeno(2 diska in DVD enota nisto priklopljene in CPU je samo na 4 pine in ne na vseh 8), ampak zaenkrat dela :) .  LP, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "PSU ni stabilen, to bo to. Nabavi nekaj kvalitetnega. Kaksne komponente imas, graficna, procesor?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 29. apr 2017 ob 13:38 izjavil:PSU ni stabilen, to bo to. Nabavi nekaj kvalitetnega. Kaksne komponente imas, graficna, procesor?   Ni PSU. Ravno ko sem postal, se je resetiral računalnik... Komponente imam naštete v prvem postu.  LP, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "A se ti resetira oz. dobis bluescreen?  Za foro naredi novega uporabnika, restartaj prijavi se vanj in cakaj. Izklopi kak screensaver ali podobno sranje. PS: Pred tem si instaliri: Bluescreenview in pokazi kaj ti izpise, kateri driver to dela."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 29. apr 2017 ob 13:59 izjavil:A se ti resetira oz. dobis bluescreen?  Za foro naredi novega uporabnika, restartaj prijavi se vanj in cakaj. Izklopi kak screensaver ali podobno sranje. PS: Pred tem si instaliri: Bluescreenview in pokazi kaj ti izpise, kateri driver to dela.   Ta program mi nič ne javi po resetu računalnika.  Ena komponenta mi serje, CPU, Ram ali celo MB... Tudi od windowsov blue sreen mi nič ne javi...  LP, Peter"
+    },
+    {
+        "role": "assistant_4",
+        "message": "za ram maš memtest."
+    },
+    {
+        "role": "assistant_5",
+        "message": "updejtaj bios in izklopi c7/c6 state"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 30. apr 2017 ob 14:15 izjavil:updejtaj bios in izklopi c7/c6 state   Nevem kaj je to c7/c6 state in kje se to naredi?  Bom probal se memtest, ce bo ratal do konca narest :) .  Je pa zelo neumna napaka to. Kolikor sem bral po netu jo nekateri odpravilo softwersko drugi pa hardwersko.... Uglavnem brez glave in repa zadeva. Softwerske zadeve sem pomojem ze vse sprobal, pa nic ne deluje. PSU sem zamenjal in ni nobene razlike... Kar sem opazu je, da je update biosa iz f5 na f21 zadevo samo poslabsal in to zelo..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če bootaš v live linux se tudi reboota ?  http://www.legitreviews.com/what-enabli..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 30. apr 2017 ob 20:47 izjavil:Če bootaš v live linux se tudi reboota ?  http://www.legitreviews.com/what-enabli...   Live linux zaenkrat deluje stabilno. c6/c7 state disabled ali enabled ni nic pomagal. Sosed mi je omenil, da lahko da mi zna mrezna kej zajebavat, ker mi tut internet obcasno neha delovati brez razloga... Da ima kaksno sleep funkcijo... Ce kdo ve kaj vec o tem.  LP,  Peter"
+    },
+    {
+        "role": "user",
+        "message": "Memtest sem pustil delovati cez noc in po petih zakljucenih ciklih ni nasel nobene napake... Kaj mi priporocate? Nalozim ponovno win10 ali win7? Ima kaksno vezo ce naredim install USB iz uradne MS strani ali s svojega nedelujocega sistema za win10?  LP, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jaz sem imel en primer, ko je bil za to kriv MS driver za mrezno/wifi kartico."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 2. maj 2017 ob 10:30 izjavil:Memtest sem pustil delovati cez noc in po petih zakljucenih ciklih ni nasel nobene napake... Kaj mi priporocate? Nalozim ponovno win10 ali win7? Ima kaksno vezo ce naredim install USB iz uradne MS strani ali s svojega nedelujocega sistema za win10?  LP, Peter win10 naredi iz ms websita. kaj si misli s tem iz svojega nedelujočega sistema?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 2. maj 2017 ob 12:06 izjavil:win10 naredi iz ms websita. kaj si misli s tem iz svojega nedelujočega sistema?   To da se mi nenadzorovano restarta. Ker od update biosa ne morem nic delat v windowsih.  LP, Peter"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V biosu, v safe mode tudi ? Normal mode windows, pred tem izklopi kabel od mrežne kartice.  Bios je F21 http://www.gigabyte.com/Motherboard/GA-... ? Si ga resetiral na privzete nastavitve ?  Preveri delovanje sistema brez gpu GTX 960 (uporabi igpu HD Graphics 530).  Zakaj Z plata in T cpu ? Sistem je nov/ koliko star ? Če nov, razmontiraj vse skupaj in sestavi ponovno. Kdaj/kako se je problem pojavil ? Po MS CU https://slo-tech.com/novice/t699086#crta ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "evga monitor orodje za psu http://www.evga.com/support/download/sh...  eco mode: http://www.evga.com/support/faq/afmview...    Si priklopil dodatno napajanje za gpu, cpu&mb (atx_12V_2x4) ? http://download.gigabyte.ru/manual/mb_m... stran 4 zgoraj  gpu http://www.gigabyte.com/Graphics-Card/G... Recommended PSU 400W (with one 6-pin & one 8-pin external power connectors)  Ne tlači noname 450W jajc v tvoj sistem."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 2. maj 2017 ob 13:46 izjavil:V biosu, v safe mode tudi ? Normal mode windows, pred tem izklopi kabel od mrežne kartice.   Bom probal.   @assistant_0 je 2. maj 2017 ob 13:46 izjavil:Bios je F21 http://www.gigabyte.com/Motherboard/GA-... ? Si ga resetiral na privzete nastavitve ?  Sem.   @assistant_0 je 2. maj 2017 ob 13:46 izjavil:Preveri delovanje sistema brez gpu GTX 960 (uporabi igpu HD Graphics 530).  Bom probal.    @assistant_0 je 2. maj 2017 ob 13:46 izjavil:Zakaj Z plata in T cpu ? Sistem je nov/ koliko star ? Če nov, razmontiraj vse skupaj in sestavi ponovno. Kdaj/kako se je problem pojavil ? Po MS CU https://slo-tech.com/novice/t699086#crta ?   T cpu ker je bolj varcen. Z plata, ker naj bi bila dobra in kompatibilna s cpujem. Sistem je star leto in pol in tezave so od samega zacetka, vendar so bile znosne(reset mogoce 1x na dan, sedaj neprestano). Nimam se MS CU updejta nalozenega.   @assistant_0 je 2. maj 2017 ob 13:46 izjavil:evga monitor orodje za psu http://www.evga.com/support/download/sh...  Bom nalozil.   @assistant_0 je 2. maj 2017 ob 13:46 izjavil:Si priklopil dodatno napajanje za gpu, cpu&mb (atx_12V_2x4) ? http://download.gigabyte.ru/manual/mb_m... stran 4 zgoraj   Imam v PSU 2x4 in CPU 2x4 napajanje. GPU imam priklopljen na PSU preko dveh locenih kablov na PSU(tudi ce je na isti kabel ni bilo razlike). MB imam tako kot mora biti in periferijo tudi.   @assistant_0 je 2. maj 2017 ob 13:46 izjavil:gpu http://www.gigabyte.com/Graphics-Card/G... Recommended PSU 400W (with one 6-pin & one 8-pin external power connectors)  Tega imam http://www.gigabyte.com/Graphics-Card/G... in je priklopljeno na dveh locenih 6 pin kablih na PSU. Napajalnik je tudi 550W.   @assistant_0 je 2. maj 2017 ob 13:46 izjavil:Ne tlači noname 450W jajc v tvoj sistem.   Sem samo za testiranje v desktopu in tezava je ostala.  Hvala za ideje.  LP, Peter"
+    },
+    {
+        "role": "assistant_0",
+        "message": "T cpu ker je bolj varcen. Z plata, ker naj bi bila dobra in kompatibilna s cpujem. Sistem je star leto in pol in tezave so od samega zacetka, vendar so bile znosne(reset mogoce 1x na dan, sedaj neprestano). Nimam se MS CU updejta nalozenega. Zgrešil si koncept, intelovi cpu od s775 dalje so varčni tudi brez raznih T variant.Sistem s starim i5 1150 & 8 let starim psu porablja 35W v idlu. Z plata je za OC. Kot bi na pagani zondo montiral nalite gume, tako je pri tebi.  Vsaka čast za živce ! Nadomesten psu: Super flower platinum 550/650, xfx xtr 550/ts 650."
+    },
+    {
+        "role": "assistant_5",
+        "message": "atom iz istega obdobja (v mojem primeru x205ta) porabi 0.7W v idle na screen off"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Notebook ne šteje."
+    },
+    {
+        "role": "assistant_5",
+        "message": "potem pa desktop z istim procom cca 2W v idle  (for some reason ta porabi več kot notebook)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sistem je star leto in pol in tezave so od samega zacetka, vendar so bile znosne(reset mogoce 1x na dan, sedaj neprestano). To se slisi sumljivo. Kako pogosto se resetira, mislim v kakem casovnem intervalu? Pojdi v BIOS v oddelek HW Monitoring oz. temu podobno in pusti tam cez noc. Ce to zdrzi, naredi bios updejt."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 2. maj 2017 ob 19:02 izjavil: Sistem je star leto in pol in tezave so od samega zacetka, vendar so bile znosne(reset mogoce 1x na dan, sedaj neprestano). To se slisi sumljivo. Kako pogosto se resetira, mislim v kakem casovnem intervalu? Pojdi v BIOS v oddelek HW Monitoring oz. temu podobno in pusti tam cez noc. Ce to zdrzi, naredi bios updejt.   Zdej sem našel neko povezavo v event viewerju pri crashu. Vedno se izvršijo poleg Event 41 Kernel-power še Event 172 Kernel-power in 4x Event 55 Kernel-processor-power(za vsa 4 jedra) in še Event 2 MEIx64 z opisom: Intel Management Engine Interface driver has started successfully.  Bom poiskal kaj to točno naredi in če imajo tudi drugi kakšne težave s tem driverjem..  LP, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja MEI driver nalozi najnovejsi ane."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jaz sem imel podobne težave, pa je bil kriv, nikoli nisem točno izvedel, vendar sumim driver za diske (sata). Računalnik je po parih nadgradnjah samega jedra WIN10 sistema začel spet delovati in danes ista konfiguracija dela tekoče na WIN10 CU updejtu in tudi na AU je delalo ok, vmes pa nekaj časa ne. Nobena komponenta ni bila zamenjana. Beri na linku spodaj. Težava Microsoft-Windows-Kernel-Power"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 2. maj 2017 ob 19:20 izjavil:Jaz sem imel podobne težave, pa je bil kriv, nikoli nisem točno izvedel, vendar sumim driver za diske (sata). Računalnik je po parih nadgradnjah samega jedra WIN10 sistema začel spet delovati in danes ista konfiguracija dela tekoče na WIN10 CU updejtu in tudi na AU je delalo ok, vmes pa nekaj časa ne. Nobena komponenta ni bila zamenjana. Beri na linku spodaj. Težava Microsoft-Windows-Kernel-Power   Odlično, hvala za info. Sedaj saj vem, da je zadeva brez glave in repa ter da je problem na strani MS/driver writerjev...  Ve kdo za kakšen vredu program, ki ti pokaže katere driverje potrebuješ in katere ne, da ti odstrani še kakšno navlako od driverjev...?  Hvala in LP, Peter"
+    },
+    {
+        "role": "user",
+        "message": "Na novo naložil zadnje win10 in ni nič pomagalo, takoj začelo rebootat... Po odklopu vseh dodatnih diskov in grafične v biosu, sedaj dela vse normalno. Po postopnem priklapljanju stvari nazaj se je izkazalo, da Samsungov 830 SSD disk in grafična povzročata rebootanje. Skupaj, vsak posamično, nima veze...  LP, Peter"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Bios reset, pa grafo al disk se v kak drugi slot poskusit."
+    },
+    {
+        "role": "assistant_5",
+        "message": "pa updejt firmware-a na ssdju"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7 je 6. maj 2017 ob 11:10 izjavil:Bios reset, pa grafo al disk se v kak drugi slot poskusit.   Te http://www.nvidia.com/download/driverRe... driverji so zgleda rešili problem z grafo(da se ne bom prehitro veselil :) ).   @assistant_5 je 6. maj 2017 ob 11:51 izjavil:pa updejt firmware-a na ssdju   Mam Samsungov Magician software gor in za 850 SSD mi je ponudil možnost upgrejda FW-ja in sem ga, za 830 pa javi da je zadnji gor.  Tko da je mogoče računalnik zrihtan, razen 830 SSD-ja :) .  LP, Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Verjetno se ti tepejo driverji za diske. To sem jaz domneval drugega skoraj ni bilo mogoče. Bilo je mirno tudi do 2 dni ali pa reset na 10 min, čisto random. Kater OS imaš (verzija). Tukaj imaš custom driverje, poskusi še s kakšnim od teh. http://www.win-raid.com/forum.php"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 6. maj 2017 ob 14:40 izjavil:Verjetno se ti tepejo driverji za diske. To sem jaz domneval drugega skoraj ni bilo mogoče. Bilo je mirno tudi do 2 dni ali pa reset na 10 min, čisto random. Kater OS imaš (verzija). Tukaj imaš custom driverje, poskusi še s kakšnim od teh. http://www.win-raid.com/forum.php   Verzija je 1703 OS Build je 15063.250 nevem katero je pomembno. Zanimivo je da mi zagon TeamViewer-ja brez inštalacije tudi resetira računalnik po tanovem... Samsung 830 SSD mi pa restarta računalnik, samo če v explorerju/total commanderju mal pobrskam po njem... Ker sem probal 5x zagon TeamViewer-ja in enako za disk in vsakič reboot računalnika... Kaj so to čudne napake/nekopatibilnosti...  LP,  Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Daj mi še podatek za krilnik IDE/ATA. Jaz imam tega in mi sedaj dela ok. verzija 12.9.4.1000 (iaStorA)    https://www.dropbox.com/s/xede1iyfw08kj..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 6. maj 2017 ob 16:54 izjavil:Daj mi še podatek za krilnik IDE/ATA. Jaz imam tega in mi sedaj dela ok. verzija 12.9.4.1000 (iaStorA)    https://www.dropbox.com/s/xede1iyfw08kj...   Kje to pogledam, sem pod system info->storage->IDE pa piše Standar SATA AHCI Controller, to rabiš al?  LP, Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tukaj je samo en problem, da imaš ti novejši chipset Z170 in je treba najti vrjetno duge, poskusi te pognati, če ne odgovarjalo tako ali tako ne bo zagnalo inštalacije."
+    },
+    {
+        "role": "user",
+        "message": "Tole verjetno:"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tukaj imaš te svoje driverje za AHCI, poglej pa še v biosu ali imaš AHCI vklopljen.   v13.2.8.1002 v14.8.16.1063 v15.2.16.1060  https://www.dropbox.com/s/4ydddyj2vs4nl..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Je pa to drugace pac the last and best Win10 drek. Tako da pokni gor 8.1, pa bo mir"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Problem tega je, da je res windows kriv, ker se nekatri driverji tepejo med sabo, ali pa navaze samsung win10. Nekaj od tega. Če imaš kakšen drug disk poskusi sistem poganjat z drugega diska za kakšen dan, pa vidiš če ti bo isto delalo. Spremljaj eventlog."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Seveda je...kolko kiksov sem dozivel na 10ki, jih se na nobenih winsih nisem. Se Vista je bolj kvaliteten OS."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 6. maj 2017 ob 17:17 izjavil:Tukaj imaš te svoje driverje za AHCI, poglej pa še v biosu ali imaš AHCI vklopljen.   v13.2.8.1002 v14.8.16.1063 v15.2.16.1060  https://www.dropbox.com/s/4ydddyj2vs4nl...   Te mi ni hotlo naložit na sistem... Sem dal uradne z intel strani, pa da vidim...    LP,  Peter"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 6. maj 2017 ob 17:17 izjavil:Tukaj imaš te svoje driverje za AHCI, poglej pa še v biosu ali imaš AHCI vklopljen.   v13.2.8.1002 v14.8.16.1063 v15.2.16.1060  https://www.dropbox.com/s/4ydddyj2vs4nl...   v15.2.16.1060 te delujejo stabilno že nekaj ur.  LP, Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Upaj na najbolje, meni je tudi po dveh dneh spet začelo sračkat."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 6. maj 2017 ob 20:57 izjavil:Upaj na najbolje, meni je tudi po dveh dneh spet začelo sračkat.   Kot si rekel, po treh dneh spet reseti... Imaš ti še vedno težave ali jih nimaš več?  LP, Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jaz jih po nadgradnji na AU (anniversary update) nisem več imel. Zato sem te zadnjič spraševal če si na zadnji nadgradnji ker težav tudi s CU (creators update) nimam. Poskusi dati windowse na drug disk, da jih ne poganjaš s samsunga."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Danes je prišel novi updejt 15063.296, pri katerem je omenjen da je popravljen tudi sam kernel, mogoče te reši tale updejt. Poskusi."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Lol..pa tej winsi so postali kot prve inacice androida, ko si stalno cakal na raznorazne fixe"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mja pa se HD 3000 so ruknil ven iz supported liste. Pred CUjem pa recimo na nekateri laptopih dela. Z novim CU pa ni sans. Pa spet ne dela DTS Interactive, bravo MS."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Na voljo je ogromno kombinacij komponent, driverjev je veliko manj in ni hudič, da se kje komu kaj zatakne. Je tako sreča da tega ni več. :) Jedro samega WIN10 pa se skozi evolucijo sistema močno spreminja in zato prihaja do občasnih nekompatibilnosti določenih komponent, driverjev in samega sistema."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Delno res, ampak recimo ko smo ze glih pri tem. Final build poleti ni podpiral DTS interactive oz. device not supported. Zadevo so v Annyversary popravili in v CU pa spet ista napaka pride nazaj. Torej tut oni muckajo, zdaj pa odgovor microsofta, da bodo popravili v prihodnje. Jebemu jim, ce so enkrat ze meli popravljeno.  Je pa to dobro za market research. Spustis napol delujoc izdelek na trg, delas seznam napak ki se nabira pr userjih in pocasi fixas. Skoda edino, da ne povejo pred upgradom: \"halo cuj, grafa oz. dts ti nebo delal ce to nalozis; popravl bomo pa cez 3-4 mesce\""
+    },
+    {
+        "role": "assistant_6",
+        "message": "Lih to je problem, oni nenehno spreminjajo, driverji se pa pišejo prepočasi. Počakat moraš na nov driver verjetno Realtek? Išči unlocked realtek drivers."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ne ni driver nic kriv. MS je sam povedal, da je krivda na njihovi strani. Tiste modificirane driverje si pa ne bom nalagal, ker imajo delay  Maurits [MSFT] replied on April 12 2017 Microsoft   Thanks to all those who filed problem reports on the Creators Update/Windows 10 1730/15063! We think we know the root cause and we're working on a fix.  Vglavnem, ponavlja se zgodba od prej. Microsoft Response The Creators Update, and Windows Insider builds 14980 and later, broke \"encoding Audio Processing Objects\" that are used in third-party drivers to power things like Dolby Digital Live and DTS Connect, where the output of the Windows shared-mode audio engine is sent to an external decoder such as a S/PDIF audio receiver. We have a fix in Insider builds 16183 and later. Depending on how well this works we will consider pushing out an update to the Creators Update. from Matthew v - Microsoft Engineer"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 10. maj 2017 ob 00:25 izjavil:Danes je prišel novi updejt 15063.296, pri katerem je omenjen da je popravljen tudi sam kernel, mogoče te reši tale updejt. Poskusi.   Včeraj zvečer pridem domov, naloži update in je sistem spet nemogoče uporabljati kot pred reinstallom sistema... Takoj ko pridem v desktop->reboot... Zdej ko je MS dal ven ta popravek, moram verjetno počakati na update driverjev ane.... Zdej bom moral spet vse komponente odklopiti, da bom lahko downgrade naredil, če se bo sploh dalo...  Bom kr 8.1 dal na ločen disk pa da vidim kolk bo pizdarij tam, če mi bo vse normalno delovalo, bom kr na osmici ostal...  Pred popravkom je čist normalno vse delovalo. Problem je delal samo Windows Explorer, ki je povzročal crashe sistema. Sistem je popolnoma stabilen bil, če nisem uporabljal Explorerja...  LP, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Evo meni je na enem drugem kompu novi update, pokvaril Radeon 3000 driver. Zadeva enostavno vec ne zazna dva monitorja (hdmi,vga). Prej pa brez problema."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tudi meni je na 8.1 lepo delovalo in sem vztrajal še kakšno leto, mogoče malo manj. Potem pa sem nekega dne poskusil nadgraditi (fresh install win 10) in je začuda delovalo normalno. Kaj je temu vzrok še danes ne vem. Počakaj do oktobra ko pride novi update (Redstone 3) in spet poskusi, druge skoraj ni. Lahko pa napako odpravi tudi kakšen vmesen updejt, vendar ne verjamem da boš poskušal na vsake 14 dni nameščat sistem."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mja, glupo je ko te tak zahrbtno doletijo te stvari in pustijo na suhem"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Radeon 3000 sploh nima uradne podpore driverja za win10."
+    },
+    {
+        "role": "user",
+        "message": "Win10 so postali pred tremi dnevi neznosni(nonstop rebooti)... Dal gor Win 8.1 random rebooti so ostali, vendar je zaenkrat še znosno(1-2x na dan)... Bom šel še 7 naložit, pa če bo tam brez rebootov.... Kolk je to zoprno, ko nekaj delaš in booom reboot....  LP, Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "To pa maš verjetno okvaro neke komponente."
+    },
+    {
+        "role": "user",
+        "message": "Bom na en drug disk naložil windowse 10 in samo sistemski disk bom imel priklopljen nekaj časa, pa bom šel na izločanje. Ni pa kakšnega softwera za testiranje nekompatibilnosti/napak sistema? Memtest sem že laufal in ni bilo napak.  LP, Peter"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ni microsoft kriv, ce imas ti defekten hardware.  Poizkusi to: https://www.google.si/amp/www.pcworld.c..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_8 je 20. maj 2017 ob 17:14 izjavil:Ni microsoft kriv, ce imas ti defekten hardware.  Poizkusi to: https://www.google.si/amp/www.pcworld.c...   Hvala sem si naštimal. Ne obtožujem ničesar MS, vendar morš razumet, kolk je to zoprna napaka za odkrit, če nimaš nadomestnih komponent za testirati in kolk dolgotrajen proces je to.  LP, Peter"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Pri tej napaki je možnost okvare čisto vsake komponente. Začni z diskom, napajalnikom."
+    },
+    {
+        "role": "user",
+        "message": "Sedaj sem naložil win 8.1 na drug disk, vse ostale diske sem odklopil in fizično odstranil grafično, tako da imam priklopljeno samo napajalnik, CPU, disk in matično. Težava je ostala. Še 1x bom probal priklopiti drug napajalnik, ampak to sem že naredil nekaj časa nazaj in je napaka ostala, ampak za vsak slučaj bom probal da napajalnik 100% izločim. Tako da mi ostane samo še napaka na matični ali CPU-ju. Vklopil sem si tudi BSOD in mi pri vsakem rebootu preskoči in ne pokaže BSOD, tako da je težava bolj resne napake(kakšen mrzel lot na matični...).   LP, Peter"
+    },
+    {
+        "role": "assistant_5",
+        "message": "reklamiraj maticno..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 21. maj 2017 ob 12:47 izjavil:reklamiraj maticno...   Je že šla pod reklamacijo na popravilo :) .  LP, Peter"
+    }
+]

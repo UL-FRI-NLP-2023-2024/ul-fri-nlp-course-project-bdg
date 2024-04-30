@@ -1,0 +1,174 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdrav  Iščem rešitev za postavitev WiFija in sicer na naslednji površini (direktno iz narave):    Slika parcele  Lastnosti: - antena bo postavljena na 5m drog - frekvenca 2.4Ghz - PROBLEM (po celi dolžini so visoka drevesa -> višja od 5m!) - na ustvarjen WiFi, bi se povezovali telefoni, tablice, osebni računalniki;  Zbral sem že nekaj predlogov in me zanima Vaše mnenje (kaj bi mi povedali o stabilnosti in dometu):  1. predlog: http://www.dx.com/p/edup-ep-ab003-2-4gh... http://shop.wlan-sat.com/antene/wlan-an...  2. predlog: http://shop.wlan-sat.com/strojnaoprema/...  3. predlog: http://shop.wlan-sat.com/strojnaoprema/..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Z eno anteno tega ne boš pokril.  Sam bi postavil 4 ap-je.  po širini in dolžini vsakega na 1/3 mere. 70m: na 23.3, 46,6 250m: 83.3, 166.6"
+    },
+    {
+        "role": "user",
+        "message": "Jih ne morem postaviti to je problem...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kje je lokacija za 5m drog ?"
+    },
+    {
+        "role": "user",
+        "message": "Zeleni obroček:   Antena"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Smem vprašati zakaj ni možna postavitev večih AP-jev?"
+    },
+    {
+        "role": "user",
+        "message": "Ker parcele vmes niso moje :) in to delam samo zase ;)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Torej lasten WiFi do obale od vikend hiške?  Najvrjetneje kakšne usmerjene antene, sicer bo področje potem bolj trikotno, ampak bi moralo pa delovati."
+    },
+    {
+        "role": "user",
+        "message": "Tako je...  http://shop.wlan-sat.com/strojnaoprema/...  Prebral sem in od prodajalca slišal da je to najmočnejša zadeva na tržišču (po tujih forumih), vendar ne vem kako je kaj Mikrotik v praksi in če bom znal spraviti zadevo skupaj ter kako je kaj z dometi v praksi... (predvsem drevesa so moteca)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če ne gre za kamp, potem uporabi usmerjeno anteno. Ko bi se izjasnil na začetku bi bilo lažje, sem mislil da moraš celotno površino pokriti s signalom. Če so drevesa vmes pozabi na 5 ghz.  Yagi/panel na 2.4 Ghz (ali kaj podobnega) za 40 eur bo dovolj zate. http://shop.wlan-sat.com/antene/wlan-an... http://shop.wlan-sat.com/antene/wlan-an...  malo pretiravam http://shop.wlan-sat.com/antene/wlan-an..."
+    },
+    {
+        "role": "user",
+        "message": "Yagi na 2.4 Ghz (ali kaj podobnega) za 30 eur bo dovolj zate. - sprobano ne deluje.... Plus važna je skoraj celotna površina znotraj pravokotnika...."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pozor! Za dobro delovaje WiFi-ja potrebuješ dobre antene... na obeh straneh."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1 je 27. maj 2015 ob 12:25 izjavil:Pozor! Za dobro delovaje WiFi-ja potrebuješ dobre antene... na obeh straneh.   Tukaj se bo zataknilo ja. Tudi če brez večjih težav pokriješ to območje bo (komunikacija enosmerna in) neuporabna zaradi šibkih oddajnikov v napravah."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Glede na prvo sliko, sem mislil, da se gre za camp, ki ga je treba pokriti v celoti.   Kot se je izkazalo, se gre zgolj za privatni gozdiček - pri čemur mi ni jasno, zakaj bi nekdo potreboval WiFi pri vsakem drevesu v gozdičku.   Po moji logiki bi moralo zadoščati, če imaš povezljivost na neki določeni točki ali dveh. Pri tem tudi ni povedano, če je na voljo elektrika, da bi npr. nekje postavil zmogljiv repeater z visoko anteno, ki bi lovila signal preko krošenj dreves.  Zgolj prenosnik, tablica ali mobitel pa zagotovo ne bo zmogel sam oddajati s takšno močjo, da bi signal prispel na drug konec, ne glede na anteno, ki jo obesiš gor."
+    },
+    {
+        "role": "user",
+        "message": "Antena je lahko samo tam, kot je narisana. Zanima me iz prvih linkov kaj bi se dalo narediti in predlogi...."
+    },
+    {
+        "role": "assistant_5",
+        "message": "to kar bi ti želel je pač skregano s fiziko  al postavi več dostopnih točk, al pa ti bo lovilo pri anteni v radiju 20m, ni druge"
+    },
+    {
+        "role": "user",
+        "message": "Ok. Zanimalo me je, če je to z dano situacijo sploh izvedljivo...."
+    },
+    {
+        "role": "assistant_6",
+        "message": "900 Mhz anyone? Pa da ne bo kdo reku da ne obstaja stvar. Primerna na področjih kjer ni LOS in so vmes drevesa in podobna šara. Ni pa poceni stvar."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@ @user :Jest bi probal z ono okroglo Mikrotik s tvojega drugega linka. Ima že vgrajen AP, ne bo RF kablov (Lan z napajanjem PoE), lan konfiguracija na manjšo Tx bitno hitrost, izhod RF moč 4x večja od normale!   Montiraš še na višji drug (žice za fixiranje, da ga veter ne guga!) in po možnosti obrni tako, da bo horizontalna polarizacija signala-bo lažje šlo skozi ovire ... Ja ni glih poceni, ma se mi zdi, da bi ti \"posodli\" na reverz, da prej probaš kako bo funkcioniralo provizorično, prej kot plačaš in zares kupiš. Bi ti znali it na roko v tem shopu  ..."
+    },
+    {
+        "role": "user",
+        "message": "Nekaj sem gledal tudi: http://dl.ubnt.com/datasheets/nanostati...  Ubiquiti NSM 2  in po možnosti obrni tako, da bo horizontalna polarizacija signala-bo lažje šlo skozi ovire Horizontalna s čim (mogoče čudno vprašanje vendar ne poznam ravno teh zadev)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Glej podatke, kakšna je polarizacija signala antene/naprave pri normal pokončni montaži: če je Vertikal, pač nardiš en adapter, da lahko jo po osi smeri signala obrneš za 90° levo ali desno, pa imaš npr. takrat horizontalno ...  Tazadnja tudi ni slaba, ( čeprav je ona Mikrotikova močnejša zadeva) ; če jo montiraš prečno namesto vertikalno, bo horiz.polarizacija ...  Vse je stvar cene in kaj dobiš v kompletu ..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7:  Katera Mikrotikova (drazja ali cenejsa)?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Model SXT 2HnD 2x2 MIMO za tega si sam spraševal ..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Opozorilo. Mikrotik je notorično težaven za konfiguracijo. Na papirju zgleda super, v praksi malo manj. Pač ruska scena."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pa še : ono visoko nosilno štango bo treba dobro ozemljit (razelektritve/nevihte) ..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_1 je 27. maj 2015 ob 12:25 izjavil:Pozor! Za dobro delovaje WiFi-ja potrebuješ dobre antene... na obeh straneh.  Spet ta mit... Dobro da deluje telefon s švoh antenco na 2+km razdalje. Zakaj že? Aha, mrbit pa bazna postaja ojačuje tako oddajanje, kot tudi sprejem"
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_9 je 1. jun 2015 ob 11:48 izjavil:Spet ta mit... Dobro da deluje telefon s švoh antenco na 2+km razdalje. Zakaj že? Aha, mrbit pa bazna postaja ojačuje tako oddajanje, kot tudi sprejem  Je pa že malce razlike v frekvenci oddajanja. Wi-Fi omrežje deluje na 5MHz, mobilna telefonija pa na 800...2100 MHz."
+    },
+    {
+        "role": "assistant_0",
+        "message": "In bazna postaja oddaja 0.1 W moči , na kolikor so načeloma omejeni wifi routerji.  gsm 900 Mhz umts 900/2100 (telekom samo 2100) Mhz lte 800 izven mest, 1800/2100 mesto.   wifi b/g 2.4 Ghz, n/ac 5 Ghz."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Zakaj se pa nebi poskusil zmeniti s sosedi, da skopaš kabel do obale, tam postaviš anteno ap in v zameno omogočiš dostop do wifija tudi njim? Po mojem morajo bit res zategnjeni, da ti nebi dovolil da skopaš tisto par cm široko lukno za kabel v cevi."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Vidim, da si se dans zbudil s polno vrečo humorja molnar :D"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Če ne bi bilo dreves, bi se mogoče še dalo kaj narest, takole je pa precej vprašljivo.  Opcija bi bila, da bi kak AP postavil na drevesa, ki jih je cel kup. S kakim solarnim panelčkom, ki vidi čim več direktnega sonca in malo večjo baterijo, bi verjetno lahko zadeva vzdržala kar lep čas. Če bi postavil vsaj ene tri, štiri dodatne postaje, bi menda lahko celo uspel. Poleg tega bi lahko imel anteno pod krošnjami in bi dejansko dosegal precej boljši signal, kot če loviš samo tistih nekaj signalčkov, ki se prebijejo skozi kup listja in iglic.  Sam sem, ko sem bil v kampu lovil z malo večjo anteno slab signal od kampa in ga redistribuiral okoli prikolice da sem lahko do spleta dostopal s telefonom. Rezultat je bil bolj kilav, sem bil pa omrežen. Naslednje leto sem si nabavil dongle VIP mobila in imel celo preveč prenosa podatkov po smešno nizki ceni (će bi v SLO prodal USB modem bi dobil nazaj za cel paket, pa še za enega dodatnega bi mi ostalo), delovalo pa je precej bolj zanesljivo in hitreje. :)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Žal OP še vedno ni pojasnil čemu potrebuje WiFi pokritost po CELEM GOZDU, če tam ni kampa ali česa drugega."
+    },
+    {
+        "role": "assistant_14",
+        "message": "On rabi, kakor je meni znano, samo po obali. Postavlja lahko oddajnik samo tam, kjer je oznaceno. Blizje morju ne more, ker ni tam nic njegovega."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kaj pa vem...po nepotrebnem se poudarja, da hoče imeti pokritost po GOZDU. Drugače pa dva droga in point-2-pint povezava čim bližje morju (je tista bajta na sliki njegova?).  Vzameš en 10/100 PoE switch, naviješ 100m UTP kabla na boben, tako kot imaš tiste dolge podaljške za elektriko, pa od bajte napelješ do plaže, tam pa gor natakneš en AP s panelno anteno :) Zvečer snameš AP, zrolaš kabel nazaj na kolut in konec komedije.  Sam res- koliko enega nepotrebnega kunštvanja, glede na to, da je UMTS razmeroma poceni, če vzameš kartico na Hrvaškem?"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Spet ta mit... Dobro da deluje telefon s švoh antenco na 2+km razdalje. Zakaj že? Aha, mrbit pa bazna postaja ojačuje tako oddajanje, kot tudi sprejem   To ni mit, ampak dejstvo. Bazna postaja ne ojača sprejema, ojača ga pa antena na sprejemni strani (na sprejemu) in to za toliko, kot pri oddaji.   Imam pa eno vprašanje: ali OP rabi signal iz zgornje lokacije ali pa lahko ob obali (recimo na parceli tik ob morju) postavi kak AP?  Edit: typo"
+    },
+    {
+        "role": "assistant_16",
+        "message": "10-15m drog, usmerjena antena, na koncu neka dostopna točka, ki signal razprši."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_10 je 1. jun 2015 ob 12:40 izjavil:@assistant_9 je 1. jun 2015 ob 11:48 izjavil:Spet ta mit... Dobro da deluje telefon s švoh antenco na 2+km razdalje. Zakaj že? Aha, mrbit pa bazna postaja ojačuje tako oddajanje, kot tudi sprejem  Je pa že malce razlike v frekvenci oddajanja. Wi-Fi omrežje deluje na 5MHz, mobilna telefonija pa na 800...2100 MHz.   Ja res, med 2,4GHz na povprečnem WIFI in 2,1GHz na UMTS je astronomska razlika"
+    },
+    {
+        "role": "assistant_17",
+        "message": "@assistant_9 je 2. jun 2015 ob 12:13 izjavil:@assistant_10 je 1. jun 2015 ob 12:40 izjavil:@assistant_9 je 1. jun 2015 ob 11:48 izjavil:Spet ta mit... Dobro da deluje telefon s švoh antenco na 2+km razdalje. Zakaj že? Aha, mrbit pa bazna postaja ojačuje tako oddajanje, kot tudi sprejem  Je pa že malce razlike v frekvenci oddajanja. Wi-Fi omrežje deluje na 5MHz, mobilna telefonija pa na 800...2100 MHz.   Ja res, med 2,4GHz na povprečnem WIFI in 2,1GHz na UMTS je astronomska razlika   Razlika je tudi v oddajni moči. Wifi nekje do 50 mW, mobilni telefoni tipično okoli 500 mW, starejši pa tudi 1 W.  Signal je možno ojačati, če ga sploh kaj pride. Iz 0 ga ne more noben ojačevalnik potegnit."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Če ti kaže na prikazovalniku 0 črtic, še ne pomeni, da signala ni. Je le prešvoh za uporabo s tvojo opremo. Signal vedno pride"
+    },
+    {
+        "role": "assistant_17",
+        "message": "@assistant_9 je 2. jun 2015 ob 13:31 izjavil:Če ti kaže na prikazovalniku 0 črtic, še ne pomeni, da signala ni. Je le prešvoh za uporabo s tvojo opremo. Signal vedno pride  Govorim o uporabnem signalu. Ko raven signala (ki pada z večanjem razdalje) pade pod raven šuma iz okolja, ga od njega ni več mogoče ločiti in je neuporaben. Si že slišal za Signal-to-Noise ratio?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Se bom ponovil. Je le prešvoh za uporabo s tvojo opremo. S še tako slabega signala, ki se utapla v šumu, se da dobiti uporabno povezavo. Jasno na račun hitrosti. Do kje je smiselno iti, določa globina denarnice in glomaznost sprejemne/oddajne naprave"
+    },
+    {
+        "role": "assistant_7",
+        "message": "... na -70dbm Rx signala, bi morale zadeve delat zadovoljivo; seveda je potrebno omejit Mbit/s speed na npr.2Mbit/s (max 6Mbit/s), pa občutljivost sprejemnih naprav zraste. Pa power save funkcijo wifi naprave ne dat nižje kot Fast powerSave mode ... stvar je dosti drajverjev in kvalitete anten v prenosnih napravah ..."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Če so drevesa višja od 5 metrov bi morda šlo s kakšno panel anteno tudi pod krošnjami dreves do plaže, če seveda ni vmes kakšne hiše."
+    }
+]

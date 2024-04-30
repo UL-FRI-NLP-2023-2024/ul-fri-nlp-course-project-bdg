@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Ali kdo zna napisat proceduro ali funkcijo ki bi pogledala če je cd v cd-romu željenega imena. In kako bi odprl Cd in zaprl cd-rom v vb6 Hvala za pomoč"
+    },
+    {
+        "role": "assistant_0",
+        "message": "mciSendString('Set cdaudio door open wait', nil, 0, handle);  mciSendString('Set cdaudio door closed wait', nil, 0, handle);"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ali kdo zna napisat proceduro ali funkcijo ki bi pogledala če je cd v cd-romu željenega imena  Kaj si z tem mislil   open/close CD Disk drive string ??? ali misliš na snemanje CD-RW/DVD ???  ja za odpiranje/zapiranje vratc cd-roma ni blema. Uporabiš API funkcijo mcisendstring/command  Private Declare Function mciSendString Lib \"winmm.dll\" Alias \"mciSendStringA\" (ByVal lpstrCommand As String, ByVal lpstrReturnString As String, ByVal uReturnLength As Long, ByVal hwndCallback As Long) As Long   Sub OpenCDDoor() mciSendString \"Set CDAudio Door Open Wait\", 0&, 0&, 0& End Sub  Sub CloseCDDoor() mciSendString \"Set CDAudio Door Closed Wait\", 0&, 0&, 0& End Sub  To velja če imaš recimo en cd-rom, drugače se pa pošpilčkaš z mcisendcommand-om  Public Declare Function mciSendCommand Lib \"winmm.dll\" Alias \"mciSendCommandA\" (ByVal wDeviceID As Long, ByVal uMessage As Long, ByVal dwParam1 As Long, ByVal dwParam2 As Any) As Long  Damn, pa še en me je prehitu :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1: sej ql. Ti kr pomagi. Moja pomoc je taka bolj spartanska. Bi mogu clovk clo pogledat v help kako je deklarirana funkcija.  Sicer pa ubistvu se mi zdi to kr prov. Vsaj ne naredis mu popolnoma vsega..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "That's the things that counts ...  No, to je še vseen easy, ker je vse v MSDN pa na netu tudi.  Sem že mislil, da ga zanima kako z \"VB\" zapreti CD ...  , hja naj mi na to kdo odgovori ... pa brez kakšnih kontrolnikov, sklicov na kakšne inported DLL-jev ..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0: A tebe tudi včasih zanese, da zamešaš VB in Delphi?    Meni se to tudi dogaja...  Pozna kdo kako zdravilo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_2: ubistvu me ne zanasa, ker poznam samo Delphi ^_^ Ampak saj ne bi smelo biti kaksnih blaznih razlik..  @assistant_1: kako mislis zapreti..? mciSendString('Set cdaudio door closed wait', nil, 0, handle); ze to ti zaprne cd predalcek.. ti mislis kot session preko writerja al kako?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Yup"
+    },
+    {
+        "role": "assistant_0",
+        "message": "hm ja .. ene komponente bi mogu mal prestudirat. Sicer pa naceloma preko ActiveX komponente, ce hoces v easy. Sicer pa so dllji cist pa kul. Ali morda niso v VB    http://homepages.borland.com/efg2lab/Li... http://www.componentsource.com/BuyCompo...  100035DOS cdr-utils in Pascalcinek Here is a collection of utilities for IDE-CD(R/W)-drives. They are all written in Pascal and running with DOS. The sources show how to: read, write, blank and fixate data/audio CD(R/W)s. http://sourceforge.net/snippet/browse.p...   zanimivo kaj zmore google ce mu posvetis kaksno minutko..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja, jaz pa rajši uporabljam Ahead nero burning rom za to !!!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Seveda je to koda samo za default AudioCDR, če jih maš mal več probaj sledeče :  Private Declare Function mciSendString Lib \"winmm.dll\" Alias \"mciSendStringA\" (ByVal lpstrCommand As String, ByVal lpstrReturnString As String, ByVal uReturnLength As Long, ByVal hwndCallback As Long) As Long  Public Function openCD(ByVal dRv As String) As Long  Dim Alias As String  Dim retval As Long  Alias = \"Drive\" & dRv  retval = -1 'we need to set retval to anything other then 0  retval = mciSendString(\"open \" & dRv & \": type cdaudio alias \" & Alias & \" wait\", vbNullString, 0&, 0&  retval = mciSendString(\"set \" & Alias & \" door open\", vbNullString, 0&, 0&  openCD = retval  End Function  Public Function closeCD(ByVal dRv As String) As Long  Dim Alias As String  Dim retval As Long  Alias = \"Drive\" & dRv  retval = -1 'we need to set retval to anything other then 0  retval = mciSendString(\"set \" & Alias & \" door closed\", vbNullString, 0&, 0&  retval = mciSendString(\"close \" & Alias, vbNullString, 0&, 0&  closeCD = retval  End Function"
+    }
+]

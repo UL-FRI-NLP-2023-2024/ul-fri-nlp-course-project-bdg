@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Zanima me če kdo ve ukaz (kodo),katero upišeš na začetek batch file-a, da se le ta zažene pomanjšan ali v odzadju.Nekako tako da se ti ne pokaže Dosovo okno, če pa že pa vsaj v pomanjšani ovliki MINIMIZIRANO  HVALA"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@ echo off"
+    },
+    {
+        "role": "user",
+        "message": "To že imam v kodi napisano na začetku in se mi še zmeraj pokaže dosovo okno, kar pa bi jaz želel pa je da se ta okno pokaže samo MINIMIZIRANO ali pa da se izvede nekje v ozadju bres, da se pokaže DOS-ovo okno.  Sekaksen nasvet bi bil dobrodošel  HVALA"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Okna v samem batchu ne moreš skriti, lahko pa določiš lastnosti bližnjice do te bat datoteke."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Naredis bliznico, gres pod Properties od te bliznice, tab Shortcut, pod Run: izberes Minimized in potem zaganjas to bliznjico.  Spet pa je odvisno, kako zaganjas ta fajl. Ker Commmand Pompt ima moznost, da pozenes tako, da napises: START /MIN c:\\neki.bat   by Miha"
+    },
+    {
+        "role": "user",
+        "message": "Ja ze razumem Hvala samo rad di to visal v kodo batch fajla (da se okno odpre pomanšano ali nekje nevidno v odazju)... Še kakšen nasvet   Hvala"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne mores. Te stvari se v .pifu nastavljajo"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Sam bat file nima s povečanjem, pomanjšanjem in podobnimi operacijami nad oknom konzole nič, ker sploh ne ve da se izvaja v oknu ali na full screen ali pa v ozadju. Lahko pa to, kot so ti že povedali, nastaviš v bližnjici."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Razen, če ga poganjaš kot EXE, ki potem ko kot zaželjeno poštima nastavitve .bat, tega tudi zažene."
+    },
+    {
+        "role": "assistant_4",
+        "message": "int main(int argc, char** argv) {\n   return system(argv[1]);\n}\n Ja, @assistant_5 to (ali morda nekaj podobnega) sem imel tudi jaz v mislih. Zgornje prevedeš kot windows projekt (tak brez konzole) in potem kličeš proggy.exe tihi.bat"
+    },
+    {
+        "role": "assistant_6",
+        "message": "system() ti bo še vedno odprl konzolno okno. Boljša izbira je:  WinExec(argv[1], SW_HIDE);  tu sploh ne vidiš okna :)"
+    }
+]

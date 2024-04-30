@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "message": "No nameravam zaceti programirati pac ene mikrokontrolerje in imam probleme zaradi prevelike izbire vsega.  Od vseh firm sta mi najbolj v oci padli mikrokontrolerji Motorole in Microchipa. Rad bi programiral v C-ju... ali je mogoče bolj efektivno delati v assemblerju.   Pa rad bi izvedel kaj o programatorjih za te dve vrste čipov...  hvala že v naprej  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kar se izbire tice, je res velika. Mogoce bi kazalo omeniti se Atmela, ki je pri nas tudi popularen.  Kar se C/Asm tice:  -je delo v Cju naceloma lazje za stvari, ki niso hudo casovno odvisne -so razvojni sistemi s C prevajalnikom bistveno drazji od tistih ki imajo samo asm -program, pisan vC ju ponavadi pokuri precej vec resursov za enak ucinek, vendar ga hitreje napises -za kriticne stvari ponavadi pride v postev samo asm -asm bi moral poznati, tudi ce bos pozneje delal v Cju. Moras pac vedeti, kako se stvari v mikrokrmilniku dogajajo na osnovni ravni  IIWY bi izbral za igranje Microchipov MPLAB. Stvar je zastonj, dela zelo lepo in je zelo prijazna. Poleg nje rabis samo se kak programator za PIC, teh pa tudi najdes malo morje na Webu."
+    },
+    {
+        "role": "user",
+        "message": "Ok, sem nekako cutil da bo treba asm. :)  Kako pa je potem s prehajanjem od ene firme k drugi? So razlike velike? Recimo microchip in motorola... opazil sem da imajo drugo vrsto outputa ... intel hex in motorola.. drugace pa najbrz razporeditev memorije in podobne zadeve..    Priporoca kdo kako dobro knjigo za zacetek... or should i find it myself? :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na netu je brdo informacij o mikrorkmilnikih. Sploh pa ta zadeva zahteva dinamičen intelekt in ni za geriatrijo. Če rabiš knjigo, potem nisi ti za te stvari....    Če rabiš poleg tega še slovensko knjigo, potem si že bolj kritičen primer...    Resno, najboljše informacije boš našel on-line. Recimo na Microchipovem siteu lahko začneš. Tam je obilje informacij. Datasheeti )lahko recimo začneš pri enem najmanjših in najenostavnejših PICov- 12C508), Application Notesi, gojekakvi Guidei, User manuali itd. Minilo bo kar nekaj časa preden boš obšel vse zanimive stvari tam.  Naprej bo pa google našel pot..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Drugače pa dobiš za Microcipove in Atmelove microkontrolerje tudi Basic    Drugače je pa tko kot je @assistant_0 rekel. Razen o knjigah.  V literaturi , ki je na voljo na mreži hitro pozabijo povedati kakšen detajl. Sploh se pa da papirnate verzije veliko lažje študirati."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tisto od Atmela bi bila dva: AVR in izboljsana 8051 druzina.  Pa se malce o argumentih: - kaj je hudo casovno odvisno? (odzivni cas pri interuptu potem se pa ze konca) - AVR C razvojni sistem je brezplacen (gcc) - drzi, se posebej za majhne projekte, ko pa je kode ze kar veliko, je pametno upravljanje z resourci prepustiti prevajalniku - drzi (ampak tudi ASM kodo lahko vkljucis v C projekte) - definitivno. To pride zelo prav pri debugu (kompiler pac ni idealna zadeva hehe)  Prehajanje iz ene firme k drugi: ko bos enkrat obvladal enega, bos vseeno moral pogledati datasheete od zacetka do konca, le da bo cas, ki ga bos potreboval za ucenje precej manjsi. Potem bos res videl kateri mikrokontroler bo \"najboljsi\" za tvoje projekte. Tisti output je najmanj kar te lahko skrbi  Ralicno je prav vse (tudi mnemoniki).  Tukaj ti pa podam mocan argument za C (in ti svetujem, da cimprej presaltas nanj, ce bo mozno). S pametnim pisanjem (torej, brez kaksnih posebnih compilerskih for in trikov, loceni deli kode, ki so odvisni od periferije in registrov mikrokrmilnika - modularno programiranje) bos lahko kodo zelo hitro in enostavno prenesel na katerikoli mikro. ASM se bos pa moral uciti vedno znova.   Se nekaj argumentov za C: - koda je bolj pregledna in je mnogokrat ze sama po sebi dokumentacija - C prevajalnik ni tako neumen kot se misli (se vedno bolj izpopolnjuje) - prenosljiva koda"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Med firmami ni neke jake razlike. sej kontrolerji so greajeni po pribljizno istem principu. js bi ti predlagu atmelove risc kontrolerje (AVR)... Hitri, razumljivi, mal predragi... sam se splaca:). Za programiranje v ASMju doobis na Atmelovi strani zastojn editor s compilerom in simulatorjem... beautiful:) Ce bos pisu pa v Cju pol pa kak IAR Embedded Workbench for Atmel AVR... tut beautiful. al pa AVRGCC sam je antipaticen... vsaj men. Pa primerni so za vse... za najbolj osnovnega dobis kodo za USB komunikacijo... pa velik tega je ze na Atmelovi strani (protokoli za daljince, RS232, ure... svashta). Tut MICROCHIP ma krasne kontrolerje... dokler se jih je dalo se zastonj naročit preko neta:) mal bolj igrackasto delujejo glede na AVRje... nimam tolk izkusenj kot z AVRji. Drgac pa ni swoh varjanta od TEXASa MSP druzinca kontrolerjev... periferije tolk da glava pece. pa definitivno programiras v Cju ker je ASM totalno antipaticen... MSPGCC.  sam neki pa je ne... AVR RULZ!!!!!!  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zdaj se oddaljujemo od originalnega vprasanja, tokrat le moj \"odgovor na odgovor\"...     Tisto od Atmela bi bila dva: AVR in izboljsana 8051 druzina.   Ja, res. To sem pozabu rec. Ce se odloci za Atmela, lahko izbere dve druzini. AVR je bolj RISC in nudi naceloma vecjo hitrost na istemn taktu in se nekaj drugih prednosti, 8051 druzina pa ima istoimeno tradicionalno jedro. Njena prednost naj bi bila brdo softverja in utilityjev in (baje) kompaktnost kode.    - kaj je hudo casovno odvisno? (odzivni cas pri interuptu potem se pa ze konca)   Sam sem dostikrat pocel stvari, za katere ni bistveno, da se izvajajo cimhitreje ampak da se izvedejo z natanko doloceno hitrostjo  in natanko sinhronizirano z drugimi procesi. Kako dopoves to C prevajalniku ?  Predpostavimo, da generirras video sliko softversko. Bos tako rutino napisal v Cju ? Ali pa recimo da poleg hardverskega UARTa rabis se enega \"glih tolk da je\" recimo za testiranje, konfiguracijo itd. Kljub pocasnosti komunikacije mora biti rutina zanj perfektno usklajena z vsem ostalim na cipu.  Se she spomnim, ko sem za kolega naredu serijsko-paralelni pretvornik za povezavo SInclairjevega QL-a na Centronics printer. Za to sem uporabil intelov 8048, ki nima ne UARTA, in IIRC ne prekinitev! Ne vidim, kako bi za kaj takega napisal program v Cju.   - AVR C razvojni sistem je brezplacen (gcc)   gcc je krasna stvar in zelo univerzalna, vendar baje dalec prevec razsipna za uporabo s tamalimi mikrokrmilniki. NIsem probal, samo slisal od folka, ki naj bi bil v Linux/gcc fohu. Folk, ki resneje uporablja C za te stvari, verjetno uporablja bistveno bolj namenske programe.  Za moje pojme je vsaj za zacetnika bistveno boljsa izbira asm kot C, zato ker:  - te C pri mikrokrmilnikih ne izolira od problema poznavanja hardvera. Se vedno ti mora biti natanko jasno kako se stvari dogajajo na osnovnem nivoju, ce hoces dobiti obcutek, kaj bo compiler lahko zadovoljivo opravil. Za zacetnika je ob vseh ostalih glavobolih C samo se ena stvar, ki bi lahko povzrocala tezave.  -ima na tem forumu pa se kje drugje folk silne probleme ze z priziganjem (brez zaziganja) LEDice in mu ne bi skodilo, ce bi se naucil kaj o stvareh na nizkem nivoju   Za dolocene profije in tudi dolocene napredne amaterje nic ne recem. Tudi C je lahko povsem spodobno orodje. Za zacetnika pa je IMHO assembler edina \"izbira\".  V tem sportu je glavni cilj izkoriscanje hardverja in cimvecji ucinek za cimmanj. Mnogi profiji so ze tako \"in\", da poznajo binarno kodo na pamet in jim dokaj hitro ustvarjanje v assemblerju za svoj mikrokrmilnik ni noben problem, prej uzitek. Poznajo ze milijon in eno foro, znacilno samo za njihov mikrokrmilnik in so vajeni polaganja v ovinkih. Taki Cja se povohali ne bodo pri delu z mikrokrmilnikom, ceprav ga mogoce zelo dobro poznajo...    Prehajanje iz ene firme k drugi: ko bos enkrat obvladal enega, bos vseeno moral pogledati datasheete od zacetka do konca, le da bo cas, ki ga bos potreboval za ucenje precej manjsi. Potem bos res videl kateri mikrokontroler bo \"najboljsi\" za tvoje projekte. Tisti output je najmanj kar te lahko skrbi Ralicno je prav vse (tudi mnemoniki).  Tukaj ti pa podam mocan argument za C (in ti svetujem, da cimprej presaltas nanj, ce bo mozno). S pametnim pisanjem (torej, brez kaksnih posebnih compilerskih for in trikov, loceni deli kode, ki so odvisni od periferije in registrov mikrokrmilnika - modularno programiranje) bos lahko kodo zelo hitro in enostavno prenesel na katerikoli mikro. ASM se bos pa moral uciti vedno znova.    To je sicer res, vendar:  -tudi C te ne odveze ucenja dolocenih specifik. Saj ponavadi nimas knjiznic za vse. Tudi ce kaj delas z UARTom, moras napisat funkcijo za konfiguracijo itd.  -kateri C pa objema vse mikrokrmilnike ? Ce delas v Cju in bi rad presaltal na druzino, ki jo tvoj C ne podpira, si na*ebal. Seveda lahko nabavis C compiler za novo druzino a vprasanje je kako se obnese, kaksne so razlike glede na \"stari\" C compiler, pa se knjiznico funkcij, ki si jo tako dolgo ustvarjal za svoj stari mikrokrmilnik (kojekakav low level stuff) bo treba zacet pisat znova. Da ne govorimo o ceni compilerja.   -asm za 8-bitne mikrokrmilnicke je pa ja dokaj simpl. Saj ta zadeva zaboga ni Pentium...  PIC ima par registrov in celih 33 ukazov, ki si jih je treba zapomniti. NO segmentation, no MMU, no caches no nothing else. Kje je problem ? No, drazji in \"napredni\" PICi imajo celih par ukazov vec. Groza...    -tudi strojna koda ni nujno nepregledna, le malo bolj je treba pazit ob pisanju komentarjev...  -Tudi C koda ni nujno tako zelo prenosljiva. Saj folk ima probleme recimo ze ob tem, da vsak novi projekt, pisan v Cju za x86 usposobi se za A64, IA64, PPC itd, pa dela v okolju, ki je prilagojeno temu in kjer naj bi se to dalo poceti brez problemov.  Ob tem uporabljajo isti C compiler itd. Koliko je prenosljiv C program za mikrokrmilnik, je po moje hudo odvisno od razmer (sorodnosti mikrokrmilnikov, izkoriscanja specifik prevajalnika in cipa, sorodnosti razvojnih okolij itd)  -za zacetnika prenosljivost kode itd dostikrat ne pomeni veliko. Pravzaprav prejkone tudi za se tako naprednega hobista. Delas pac s tistim kar imas pri roki in se ne sekiras za mozne bodoce mikrokrmilnike. Saj ne delas ogromnih serij, ampak resujes problem, ki je pred tabo."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa saj imamo konstruktivne OT debate    Za amaterja in mini projekte je asm zadovoljiv, kar je vec pa ... se ne strinjam sploh.  Kar se tice nekaterih stvari... Uporaba timerjev, nop-opv in vse ostale mozne in nemozne periferije je popolnoma nespremenjena pri Cju, do njih se dostopa enako kot v asm: register = vrednost (se prevede ldi r4, vrednost). Casovne zakasnitve so tocno definirane (ce le ni pipelinov in cache-a ; to ni pentium, ker je Sleep(1) med malo manj kot 1ms in 12ms). Sam uporabljam tako sinhronizacijo za komunikacijo do ASIC vezja (softversko, hardversko). Kaj se izvaja med klici funkcij je tocno definirano, tocno je definirano kateri registri se pri tem uporabljajo (pac, C zahteva svoj stack, ampak tudi to se da resit z uporabo inline funkcij in makrojev) Vse mikrokrmilnike, procesorje, DSPje kar zelis. Kot sem rekel. Pazis kako pises kodo, ki naj bo modularna. Platformsko odvisna je locena od platformsko neodvisne (recimo temu zgornji i nspodnji layer)! Definiras API za prenos podatkov med moduli. Novi mikro? Zamenjas spodnji layer, nova rutina za izracun FFT, zamenjas zgornji layer (v bistvu jih je vec)... Prakticni primer (zgornje komunikacije): zacetna koda (zgornji layer, state machine kot OS, obdelava podatkov) se je pisala in testirala na sunovi delovni postaji (gcc), spodnji je bil pac konzola, datoteke in podobno. Ta del se je za AVRje prevedel brez napak tudi na koncnem vezju. To velja tudi za npr. funkcije za prenos podatkov preko serijskega porta. Spet je pa res, da je taka zadeva bolj potratna. To prekladanje med funkcijami zahteva svoj programski in spominski prostor.  C koda pa ni prenosljiva zato, ker ljudje ne znajo pisat programov (pa da ne bo kdo mislil, da znam pisat 100% brezhibno prenosljive programe ali da se hvalim, grajam pa lahko, ker se od njih pricakuje da to naredijo), ceprav bi jih morali. So povrsni, leni, boli jih k*. Zakaj? Ker se ne drzijo nacel o platformsko neodvisnih delih kode. No vse pa se ravno ne da napisat tako, da bi se prevedlo povsod.  Zadnje pa drzi dokler ti ne zmanjka mikrkrmilnikov novih pa ni vec.   Vsekakor pa drzi, tudi pri Cjevskem programiranju je potrebno poznati asm in arhitekturo mikrokrmilnika."
+    },
+    {
+        "role": "user",
+        "message": "Bom najprej malo poiskual s microchipomivi pici, potem pa kakega atmela. Najprej bom zacel z asm in zgoraj predlaganim pic12c508. Sem gledal malo po ic elektronika spletni trgovini... tam majo najvec picov, malo manj motorilinih ... atmelov pa zelo malo. Kje se kaj dobi v Ljubljani kaj mikrokontrolerjev. HTE se trenutno nima spletne trgovine...  Programatorje se sam naredi a ne? Saj se da narediti kaksne dokaj univerzalne za tako pic kot atmele?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za programatorje pogooglaj malo po netu.  Pri PICu sem pozabil omeniti eno malenkost. 12C508 bos v stacuni dobil v dveh verzijah, in rabis obe. Prva ima okencek na sebi in po programiranju jo lahko z UV lampo zbrises, druga pa je v veliko cenejsem plasticnem ohisju in se je ne da zbrisat, ko je enkrat vpisana.   Ce te to moti, pac nabavi PIC, ki je ima FLASH, ne pa klasicni EPROM. Mislim da je nekaj novih modelov, ki so ravno tako majhni in simpl kot 12C508, imajo pa FLASH.  Kar se programatorja tice bos tezko nasel kaj univerzalnega. Poisci malo okrog..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Malčka sta 12F629 in 12F675 sta pravi raketi ;) Zelo ugodno jih dobiš v spletni trgovini SE. Pa še glede /JW (okenskih) ti niso ravno poceni Na zadnje ko sem kupoval 12C509 je le ta stala preko 3ksit :( Potrebuješ tudi UV brisalec. Zato se raje odloči za \"F\" varianto, razen, če jih ne nameravaš koristiti večjo količino. OTP verzije so še vedno cenejše od \"flash\" verzij.  lp Silvo"
+    },
+    {
+        "role": "user",
+        "message": "OTP? To je za enkratno pisanje torej? EPROM ki se ga ne da izbirsat. To so pici C? CE majo EEPROM... F pa flash...   Mi das prosim url naslov od te SE trgovine."
+    },
+    {
+        "role": "assistant_0",
+        "message": "OTP= One Time Programmable..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Spletna trgovina Svet elektronike"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Jaz navijam za assembler, c pa ... naj ostane za pcje. V assemblerju tocno ves kaj naredis, lazje je za debugirat ...., nikoli ne vem, kaj ti c natumba noter.  Glede literature: za PIC imas dobro serijo clankov v svetu elektronike, Pic od zacetka. Za druge, pa poisci malo okoli.   @assistant_0: malo cudno misljenje imas do tega. Na zacetku rabis nekaj literature, ker cene sploh ne ves, kje zacet, sploh z inicializacijo kontrolerja ....  Pri nadalnjemu programiranju ti pride tudi uposteva literatura, ce hoces res efektivno uporabljat mikrokontroler.  Dostikrat je najbolj uporabna literatura kar datasheet sam."
+    },
+    {
+        "role": "assistant_0",
+        "message": "In vso to literaturo imas vsaj za PICe na www.microchip.com  Ce ti je tako do tega, lahko z Googlom najdes par siteov zaljubljencev, ki ti razlozijo vse kar te zanima.  Domace knjige in nasploh literatura je bedna. Avtorjem se pozna dostikrat že kar laicnost ion zelja po zasluzku. Ker slovenskih knjig na to temo skorajda ni, lahko napises karkoli in bos to prodal brez tezav.   Ce se povprecnemu slovencu gabi pobiranje in uzivanje hrane iz smetnjakov, res ne vidim zakaj s tako vnemo iscejo prav domaco literaturo o elektroniki. Ce je kje kak biser v gnoju O.K., se pac potrudis ampak ni mi jasno zakaj bi placeval slabe informacije, ko pa lahko prides do solidnih informacvij na to temo zastonj..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala vsem za informacije.  Ja tudi sam sem dobil obcutek, da bom lazje (in hitreje) nasel neko literaturo glede mikrokontrolerjev na netu kot pa v kaki knjiznici."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user,  Strinjam se s vsem kar je napisel @assistant_5. Definitivno vsaj pri PIC-u je tako CITAT: \"Dostikrat je najbolj uporabna literatura kar datasheet sam.\"  Če se seveda odločiš za pic najdeš vse potrebno na microchipovi domači strani. Če bo to assembler snami navodilo za MPASM, ki je zelo solidno napisano in je \"razumljivo\" s povprečnim znanjem angleščine katerega pa vrjamem, da nekdo, ki se je odločil za učenje programiranja ima. Kot je napisal @assistant_0 vsaj sam res dobre slovenske literature kar se PIC-a tiče ne poznam. Nekaj dobrih uvodnih korakov v programiranje PIC-a v assemblerju je bilo opisano v par prvih številk SE avtorja Bojana Dobaj-a. Le ta ima tudi zanimiv ter splošno uporabljen programator za za pic,atmel,eeprom. www.picallw.com  lp Silvo"
+    },
+    {
+        "role": "user",
+        "message": "Tale picall zgleda dost kul programator. Ubistvu kar univerzalen kar se mene tice. Bi to kupil, ampak ne pridem do tipa... na enmu emailu ima nek autoreply, na drugega pa ne odgovarja.  Any ideas?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Kaj pa  PonyProg."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user,  Sam sem s tipom takrat kontaktiral preko telefona.Imam eno iz med prvih verzij programatorja. Cifro sem našel v TIS. Copy/paste TIS MARIBOR POŠTA: 2000 MARIBOR DOBAJ BOJAN KOČEVARJEVA ULICA 8 A TELEFON: (02) 2519063  Upam, da je cifra prava.   lp Silvo"
+    },
+    {
+        "role": "user",
+        "message": "Telefonska ne obstaja... Hvala vseeno.  No če kdo ve kako bi stopil v kontakt s tem človekom naj mi prosim sporoči..   Sem pa poiskal par shem programatorjev na netu... pa bo že nekaj nastalo."
+    },
+    {
+        "role": "user",
+        "message": "Temu pravim jaz tutorial."
+    },
+    {
+        "role": "user",
+        "message": "PonyProg bo kul zadeva ja..  pa če bi jaz lepo prebral opis tega v prvi reviji Elektronike...bi tudi bilo lepo.    Kul revija Brane! Keep up the good work."
+    },
+    {
+        "role": "assistant_7",
+        "message": "tu je par ql stvari o mikro kontrolerjih... kako izdelat multi chip programator...    jst tud mal tko razmišlam o te, čeprav v bistvu pojam nimam   sam mam pa veselje, pa sem poštudiru da se bo treba na mikrokontrolerje vržt... ko bi mel mal več časa...    a ni tole fajn npr:"
+    },
+    {
+        "role": "assistant_7",
+        "message": "aja, mene v bistvu zanima tko na kratko, če je kompliciran s tem delat, kakšne so kaj cene chipov... prosim upoštevite da sem res popolnoma n00b v tem      uf, k sem pisu sem najdu programček za tistgale zgornjega hudiča:  ORG 0  MOVLW 08  TRIS 06  OPTION 0DFh  MOVLW 17h  MOVWF 06  GOTO Main  BSF 06,5  NOP NOP BCF 06,0 MOVLW 42h MOVWF 1B DECFSZ 1A,1 GOTO Del1 MOVLW 01h XORWF 06,1  DECFSZ 1B,1 GOTO Del1 BSF 06,0  BCF 06,1 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del2 MOVLW 02h XORWF 06,1  DECFSZ 1B,1 GOTO Del2 BSF 06,1 BCF 06,2 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del3 MOVLW 04h XORWF 06,1  DECFSZ 1B,1 GOTO Del3 BSF 06,2 BCF 06,4 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del4 MOVLW 10h XORWF 06,1  DECFSZ 1B,1 GOTO Del4 BSF 06,4  BCF 06,5  BCF 06,0 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del5 MOVLW 01h XORWF 06,1  DECFSZ 1B,1 GOTO Del5 BSF 06,0  BCF 06,1 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del6 MOVLW 02h XORWF 06,1  DECFSZ 1B,1 GOTO Del6 BSF 06,1 BCF 06,2 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del7 MOVLW 04h XORWF 06,1  DECFSZ 1B,1 GOTO Del7 BSF 06,2 BCF 06,4 MOVLW 42h  MOVWF 1B DECFSZ 1A,1  GOTO Del8 MOVLW 10h XORWF 06,1  DECFSZ 1B,1 GOTO Del8 BSF 06,4 BTFSC 06,3  GOTO Main NOP GOTO Loop  END      ... ehm... mislim da ni tko enostavno..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "cene chipov se gibljejo od par sto tolarjev do par tisoc tolarjev, odvisno od zmogljivosti."
+    },
+    {
+        "role": "assistant_7",
+        "message": "aha... pol najbrž pride kr drago... če pride recimo 500 sit en mikro kontroler, pol bi mogu iz njega pol rakete nardit, da bi se splačal   jst bi tko za kke LEDice si kej fajnga naredu...   kaj vse lahko sploh delaš s tem?"
+    },
+    {
+        "role": "user",
+        "message": "Dosti se uporabljajo pic12f625 (8 pinski), pic16f84 (18 pinski), pic16f876(28 pinski)... Vsi ti stanejo do 1500 sit.  Ja lahko narediš čudo stvari. Prižiganje in ugašanje LED diod je najmanjši problem. Ubistvu gre za nastavljanje določenih pinov na vrednost 1 ali 0, ki narediš npr takole:   bsf PORTA,1 ;lučka na portu A1 prižgana     Ti poiščem en ok tutorial, če te zanima.   Sem začel s tem se ukvarjat pred enim mesecem (prvi post sprašujem ene zadeve), sedaj pa si bom napravil digitalni predvžig na mopedu :)"
+    }
+]

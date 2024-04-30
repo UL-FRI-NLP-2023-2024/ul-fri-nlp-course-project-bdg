@@ -1,0 +1,154 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, ali bi mi lahko kdo svetoval kaj pametnega, namreč, računalnik se mi noče prebudit po tistem, ko gre v spanje. Pritiskali smo že vse žvio (miška, tipke na tipkovnici, gumb na ohišju), ampak zadeva je mrtva.  Moraš prav izklopit iz elektrike, da se ti prebudi. Potem pa dobiš napako, da se je Windows nepravilno izklopil bla-bla-bla itn.  Skratka, neprijetno.  Konfiguracija je čisto nova, stara cca. 1 teden in sicer: - Gigabyte GA-F2A75M-HD2 (rev. 1.0) - AMD A8-5500 CPU - 8 GB Kingston DDR3 1600 MHz pomnilnika - trije trdi disk (dva SATA en zunanji USB), sistemski je interni WD 500 GB - DVD pekač - ohišje Enlight 4727 z 300 W-nim SFX napajalnikom  Tukaj so nastavitve:   Gigabyte UEFI/BIOS nastavitve  Če tukaj dam(o)/nastavim(o) opcijo vklop z miško ali tipkovnico, se računalnik sicer vklopi (z recimo dvoklikom), ampak iz spanja pa se ne prebudi in ne vem(o) zakaj.  Ali ima kdo kakšen nasvet? Hvala vnaprej."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kateri OS?, kakšen XP po določenem času rad zafrkava, win7 in sploh win8 pa dela tako kot se spodobi."
+    },
+    {
+        "role": "user",
+        "message": "Windows 7 SP1 nameščen z vsemi popravki ...   In enostavno ne vem, kaj bi še lahko bilo.  Nameščeno imam zadnje verzije gonilnikov (prvotno sem poskusil tudi tisto z CD-ja), torej zadnji za čipset.  Enostavno nimam idej."
+    },
+    {
+        "role": "assistant_1",
+        "message": "js mam podobn problem.. Sam men se ko ga dam u spanje, nevem kr tk random uzge.. Kot bi delalo kj kontakt, sam ce izklopim vse, se se kr to zgodi.   torej dam ga v spanje, in se mi enkrat po 30 sec uzge, drugic po 1 min, tretjic po 5 min cetrtic po 5 sec..... pac random"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user kaj imas tist power on by keyboard / mouse ... nimam GB zato lahko samo ugibam :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "kaj pa ce poskusis recimo z ubuntu live CDjem? Imel sem enkrat obraten primer, da ni hotel it v spanje, kriva je bila maticna."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 29. jan 2013 ob 10:02 izjavil:js mam podobn problem.. Sam men se ko ga dam u spanje, nevem kr tk random uzge.. Kot bi delalo kj kontakt, sam ce izklopim vse, se se kr to zgodi.   torej dam ga v spanje, in se mi enkrat po 30 sec uzge, drugic po 1 min, tretjic po 5 min cetrtic po 5 sec..... pac random   TO se mi je dogajalo pri eni stari plošči. Mislim, da so pozneje odpravili z nadgradnjo BIOS-a.  ***  Zdaj sem opazil, da so izdali nov BIOS. Bom poskušal zadevo nadgraditi pa bom potem odpisal."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Hmmmmm BETA bios. Ampak doda APM (application power management)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pri AMD to na splošno ne deluje, zbudi oz. resetira se samo, če se dvakrat pritisne na reset gumb."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 29. jan 2013 ob 10:41 izjavil:Pri AMD to na splošno ne deluje, zbudi oz. resetira se samo, če se dvakrat pritisne na reset gumb.   A res? To moram preizkusit. Kaj potem lastniki AMD-jevih sistemov ne dajate računalnik v stanje spanja oz. jih ne uspavate ampak samo izkapljate?  No, poskusil sem naložit BETA bios, a ni nobene spremembe ... V nastavitvah pri \"power management\" imam nastavljeno na profil \"usklajeno\" (privzeto Windows 7 - pomeni 10 min za ekran, računalnik pa zaspi po 30 min)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "en ko ga poznam, da pa v spanje pa uzge pa je tk koda bi ga zakurblu na novo, torej spet se mi nalozi windows itd.. Pa je zameju umes iz intela na amd, pa ista zgodba!"
+    },
+    {
+        "role": "user",
+        "message": "Je možno, da je problem v napajalniku?   Zdaj se dogaja celo to, da ko shraniš nastavitve v BIOS-u/UEFI-ju se namesto ponovnega zagona računalnik enostavno izklopi ...  Zdaj sem pa res že čisto brez idej."
+    },
+    {
+        "role": "user",
+        "message": "Malo sem bral priporočail in nastavitve na spodnjih povezavah: http://www.cyberpowerpc.com/forum/forum... http://experts.windows.com/frms/windows...  Kako naj nastavim S3, če te opcije ni v BIOS-u?  BIOS sem sicer dal nazaj stari, torej verzijo F2 (iz oktobra 2012), kateri je bil prvotno nameščen. Ta beta verzija (F3c) mi ni bila simpatična. Začele so se dogajati to, da se je računalnik namesto ponovnega zagona enostavno izklopil (ali pa preklopil spanje - deep sleep?).  Pomaga samo to, da ven iz elektrike (ali pa izklop UPS-a), počakaš kakšno minuto in potem se lahko vklopi.  * * *  S0 Working System is on and fully operational. Away System appears off, but the PC is kept operational. The display is blank and the audio is mute.  S1 Standby (Not normally used) System appears off. The CPU is stopped; RAM is refreshed; the system is running in a low power mode. This state can operate when a card or peripheral does not recognize S3.  S2 Standby (Not normally used) System appears off. The CPU has no power; RAM is refreshed; the system is in a lower power mode than S1.  S3 Standby (Normally used) System appears off. The CPU has no power; RAM is in self refresh; the power supply is in a reduced power mode. This mode is also referred to as 'Save To RAM'.  S4 Hibernate System appears off. The hardware is completely off, but the system memory has been saved as a temporary file onto the harddisk. This mode is also referred to as 'Save To Disk'.  S5 Off System is off. The hardware is completely off, the operating system has shut down; nothing has been saved. Requires a complete reboot to return to the Working state. The clock works."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ne bo šlo, AMD žal nima gonilnikov urejenih ali pa jih sploh ni za matične plošče. Pri meni se samo resetira, če se drugič pritisne na reset, potem pa sistem odpre Resume iz Hibernacije, ti daj kar off pa je, moram še sprobat na Osmici ob priliki."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 29. jan 2013 ob 10:20 izjavil:@user kaj imas tist power on by keyboard / mouse ... nimam GB zato lahko samo ugibam :)   Imam. Sem poskušal nastaviti, ampak kaj dosti ne pomaga. Računalnik se sicer vklopi na tipkovnico (če dam \"any button\") ali miško (\"double clik\" ali \"single click\"), ampak to ne pomaga, da bi se prebudil.  Deluje samo pri vklopu (kar je meni osebno v tem trenutku nesmiselno in nepotrebno)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nisem dobro prebral :/"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 29. jan 2013 ob 13:04 izjavil:Kaj pa imaš za en pogon? SSD?   1 x WD 500 GB Green 1 x WD 320 GB (blue), za backup (priklopljen preko SATA bracket v zuanjem ohišju) 1 x Hitatchi 1 TB (USB 3.0)  @assistant_5 je 29. jan 2013 ob 12:59 izjavil:Ne bo šlo, AMD žal nima gonilnikov urejenih ali pa jih sploh ni za matične plošče. Pri meni se samo resetira, če se drugič pritisne na reset, potem pa sistem odpre Resume iz Hibernacije, ti daj kar off pa je, moram še sprobat na Osmici ob priliki.   Oh, hvala za informacije.  Če bi to vedel, ne bi investirali v AMD. Prekleto.  Tu so navodila od te plošče: http://download.gigabyte.eu/FileList/Ma...  Na strani 40-41 (poglavje 2-7) piše vse opcije, kar imam na voljo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_5 je 29. jan 2013 ob 12:59 izjavil:Ne bo šlo, AMD žal nima gonilnikov urejenih ali pa jih sploh ni za matične plošče. Pri meni se samo resetira, če se drugič pritisne na reset, potem pa sistem odpre Resume iz Hibernacije, ti daj kar off pa je, moram še sprobat na Osmici ob priliki.   Pri meni pa sploh ni problemov glede spanja, res pa je da nimam najnovejši cpu amd phenom 2 x4 945. Disk pa imam ssd (prej sem imel navadnega in tudi ni bilo problemov)."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ja potem super, plato imaš?  Verjetno še niso naredili podpore za APU."
+    },
+    {
+        "role": "assistant_8",
+        "message": "men se tud na PH2 x6 lepo prebudi"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Meni se na PhII 945 normalno zbudi (Win8 64bit). Na AMD E-450 se tudi normalno zbudi (Win7 64bit)."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_5 je 29. jan 2013 ob 10:41 izjavil:Pri AMD to na splošno ne deluje, zbudi oz. resetira se samo, če se dvakrat pritisne na reset gumb.   Ne me smejat, no..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user kako je pa z napajalnikom? Vidim, da je 300W. Kakšne ima linije?"
+    },
+    {
+        "role": "user",
+        "message": "Evo, napajalnik sem zamenjal in ne boste verjeli, zdaj se normalno zbudi.  Zdaj sem dal LC Power 420 W.  Po podatkih sodeč se mi zdi, da napajalnik ni (bil) prešvoh. Dajte mi nekaj minut, da prepišem, kakšne so vrednosti linij."
+    },
+    {
+        "role": "assistant_10",
+        "message": "ja mel si jajac napajalc. eni ne nikoli ne naučijo in kupujejo jajac psuje"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Napajalnik je dobil že zraven ohišja."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Potem pa OK, zakaj pa pri meni ne deluje verjetno plata nima pravega napajanje ali pa je prestara brez podpore GA-770T-UD3 r1.5 s DDR3, PSU je 550GP od LC in vklopljeno vse in če pritisnem tipkovnico se numlock prižge in ugasne če jo spustim."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Si posodobil BIOS?"
+    },
+    {
+        "role": "user",
+        "message": "Tako, tukaj so vrednosti: DELTA Electronic  DPS-300AB-9 B, REV: 03F OUTPUT:  + 12V1: 11A, -12V: 0,4A, +3,3V: 18A + 12V2: 14,5A, +5V: 18A, +5VSB: 2A  MAX POWER: 300 W  THE COMBINED POWER ON +3,3V & +5V TOTAL 125W MAX. +3,3V & +5V = 125W +3,3V & +5V = 125 W  THE COMBINED POWER ON +3,3V & +5V & +12V2 TOTAL 285W MAX. +3,3V & +5V & +12V2 = 285 W +3,3V & +5V & +12V2 = 285 W  THE COMBINE CURRENT ON +12V1 & +12V2 TOTAL 22,5A MAX. +12V1 & +12V2 = 22,5A +12V1 & +12V2 = 22,5A  Letnik: 2004 ali 2005."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_5 je 29. jan 2013 ob 13:39 izjavil:Ja potem super, plato imaš?  Verjetno še niso naredili podpore za APU.   Asus M5A99X EVO R2.0  Na stari plati je tudi delalo pa je bla najcenejša plata 4 leta nazaj ko sem kupil je bila celih 35EUR (gigabyte ne vem kateri model)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 29. jan 2013 ob 15:08 izjavil:Si posodobil BIOS?   Sem. Ampak je postalo še slabše. Po nastavitvah v BIOS-u, ko so izbral \"Save and exit\" se je računalnik namesto ponovnega zagona samodejno izklopil ...  Dal sem nazaj \"stari\" (lanski) BIOS. Matično sem kupil pred cca. dobrim tednom nazaj pri sestaviju, ampak komaj včeraj sem imel čas, da zmontiram v računalnik od sestre."
+    },
+    {
+        "role": "assistant_4",
+        "message": "To si posodobil preden si menjal napajalnik A N."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 29. jan 2013 ob 15:18 izjavil:To si posodobil preden si menjal napajalnik A N.    Jep. Tako je."
+    },
+    {
+        "role": "assistant_4",
+        "message": "LOL. Ok lahko posodobiš nazaj ali pač ne tvoja izbira."
+    },
+    {
+        "role": "user",
+        "message": "Eh, zaenkrat bom pustil tak kot je. Ko bodo izdali spomladi ali poleti kakšno končno (torej ne BETA) verzijo, pa bom posodobil."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Sam bi rekel, da je napaka v biosu, drugace pa je lahko komot napaka osnovne plošče, dvomim da gre direkt povezava od prikljucka za napajalnik na osn. plosci do pina za on/off gumb.  Sicer lahko to preveris, tako da preprosto izmeris z multimetrom. Po navadi se je kak element vmes, in ta element ima napako. Se dogaja tudi na Intel sistemih."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Smo že rešili problem. Napajalnik je bil."
+    },
+    {
+        "role": "user",
+        "message": "Tako je. Napajalnik je bil.   Se je pa po tistem problemu čez en dan pozneje pojavila še ena zanimiva \"napaka\" oz. problem. Računalnik ni hotel ostati v spanju.   Po prebiranju raznih strani in forumov sem naposled pri mrežni kartici (oz. pač integriranem čipu) nastavil, naj ne prebuja tega računalnika in glej ga zlomka. Računalnik zdaj normalno spi.    Realtek - mrežna - izklop prebujanja"
+    }
+]

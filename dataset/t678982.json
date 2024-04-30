@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Na LCD-ju je crknila osvetlitev ozadja in rada bi pomerila, ali napetost sploh pride do lučke (torej: ali je pregorela lučka ali razsmernik).  LCD: TLX-1741-C3M (cca. 130 EUR), razsmernik (ne najdem zaloge), lampa (33 EUR).  Moj osciloskop (najcenejši Rigol iz serije DS1000Z) po specifikacijah dela do: CAT I 300 Vrms, CAT II 100 Vrms, Transient Overvoltage 1000 Vpk  Na razsmerniku piše: Minimum output voltage: 1000 Vrms Output voltage: 300 Vrms Output current: 5 mArms  Preden skurim osciloskop ali elektroniko, bi rada prosila za nasvet, kako pravilno izvesti meritev. Vseeno mi je, če meritev odstopa za 30% ali več, samo da bi diagnosticirala, ali je potrebna menjava razsmernika ali lučke (ali kar celega zaslona; razsmernik je sicer na matični plošči, ne na LCD-ju).  Naj zaporedno vežem 10 kOhm + 50 kOhm upor (ali morda še malo večjega), konca povežem s priklopom na lučko in z osciloskopom pomerim napetost na 10 kOhm uporu? Seveda moram paziti, da bo sonda osciloskopa nastavljena na 1x in ne morda na 10x. Ali to morda kliče po drugačni \"sondi\"? (RP1300H stane 230 USD, pa je ne bi kupovala samo za ta štos, ker mi sicer praktično nikoli ni potrebno meriti napetosti nad 12 V.)  Alternativno lahko namesto originalnega backlight-a uporabim \"kar eno\" ledico, ki bi od zadaj razsvetljevala zaslon oz. najdem neko drugo pol-kompatibilno rešitev za zamenjavo trenutne lučke :) No, ali pa najdem, kam sem založila star fizično poškodovan zaslon z brezhibno elektroniko; ampak slednje bo najtrši oreh :)"
+    },
+    {
+        "role": "user",
+        "message": "Pripis. Prebrala sem naslednje: Really, the best way to test the inverter is to replace it with a known good one. Inverters are fairly complex circuits and use many different designs and controller chips. Some controllers will attempt to strike an arc on the lamp multiple times and then shut down if the bulb is bad, so the fact that they are not putting out a voltage does not necessarily indicate that the inverter is bad. It could just mean the bulb failed to ignite and the inverter shut down. Different controllers behave differently so you won't have one single symptom that applies to all inverter boards. plus vse komplikacije, povezane že z malenkost nevarno napetostjo (za človeka in osciloskop brez primerne sonde), pa nisem več tako sigurna, je da problem tako enostavno rešljiv, kot sem si predstavljala.  Baje je osvetlitev delala nekaj malega časa, pa crknila (ne vem, ali takrat, ko je bil zaslon hladen ali takrat, ko je bil vroč), pa spet delala, pa crknila, ...  Verjetno bom za prvo silo montirala navadne ledice, potem pa poskusila menjati razsmernik (če ga dobim). Razen, če kdo ve, kje bi se dobilo kakšen primeren tester."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vzami žarnico iz podobnega ekrana, uporabi tlivko v izvijaču, ali pa si sposodi fluorescentko. Vse dela.  Upore lahko namestiš kakor si si zamislila, pazi na prebojno trdnost uporov (so le do 500V)  Možne okvare so tudi na kablu."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Cakaj, cakaj.... Ne bi bilo boljse nastavit na x10? A ni tako, da s x10 povecas obseg, torej lahko meris 10x vecje mapetosti kot s x1?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "V specifikacijah piše: With RP2200 10:1 probe : CAT II 300 Vrms  Ne merit z 1:1 sondo. Rabiš 10:1, ali 100:1 sondo.  Tvojega osciloskopa ne poznam.  Za vsak slučaj raje izvedi t.i. plavajočo meritev.  Rabiš dve (enaki) sondi, način prikaza v waveform math nastavi na A-B in krokodila poveži skupaj.  Nato meriš s konicama obeh sond.  Na ta način ni potrebno paziti, kakšen je potencial točke, na katero priklapljaš krokodil sonde.  [edit] 10:1 sonda ima premajhen merilni obseg v času vžiga. 100:1 bo bolj varno."
+    },
+    {
+        "role": "user",
+        "message": "Ne vem, zakaj sem bila prepričana, da nastavitev 10x na sondi pomeni 1:10 (tega praktično nikoli ne spreminjam, ker vedno merim samo do 12 V). Specifikacija res pravi 10x: CAT II 300V AC, ampak ja ... glede na omembe 1000+ V, se malo bojim skuriti osciloskop.  Sonde 100:1 nimam.  Sicer pa hvala za namig za plavajočo meritev. Kot novinec sem se že praskala po glavi, zakaj mi ni pomerilo napetosti oziroma zakaj se je vezje čudno obnašalo (merila sem napetost med potencialoma 10 in 12 V, krokodila sem dala na 12 V ), čeprav sem kmalu posumila, v čem je bil problem in na koncu nastavila matematično operacijo. Pri 1000 V se poskus verjetno ne bi tako dobro končal.  @assistant_0: a to pomeni, da bi moral biti test s fazenbriferjem na izhodu iz razsmernika sorazmerno zanesljiv?  Danes mi je backlight spet delal, čeprav samo za par minut, potem je spet ugasnil. Konektor, na katerem je tistih 1000 V, je na eni ušivi letvici (taka, kot na Raspbery Pi-ju). Lahko iz tega delovanja/nedelovanja bolj upravičeno sumim na napako v razsmerniku (ali kakšnem kablu/konektorju)? Če bi bila lampa fuč, se verjetno sploh ne bi več prižgala? Ali se motim?  Vidim, da na Conradu prodajajo razsmernike za 10 EUR. Kakšnega lahko uporabim za test? Na kaj moram biti pozorna? Ali bo načeloma skoraj kakršenkoli razsmernik za CCFL v redu?"
+    },
+    {
+        "role": "user",
+        "message": "Ne vem sicer, kje bi našla žarnico iz podobnega ekrana. Ja, ena je doma, ker smo prejšnji ekran fizično uničili (elektronsko je bil brezhiben), ampak tudi slučajno se mi ne sanja, kje iskati. Ekran se vsak dan uporablja za delo (trenutno skupaj z žepno svetilko, če ni dovolj dnevne svetlobe), tako da ne morem zdaj dva meseca brskati po podstrešju in nazadnje ugotoviti, da je verjetno pristal na odpadu. Malo pa tudi cvikam sama menjevati svetilko in bi v primeru okvare le-te skoraj raje naročila nov LCD. Če bomo nesli stvar prelotat profiju, bo skupna cena popravila dražja in \"čakalna doba\" daljša od nakupa novega zaslona.  Obstoječi (neoriginalen oz. menjan / kitajski) LCD ima sicer še en \"fehler\". Ko se segreje, potrebuje drugačno nastavitev na potenciometru. Prvo minuto ali dve je zato še kar neuporaben (nastavljen je tako, da je kontrast največji takrat, ko je segret).  Ni mi pa še uspelo ugotoviti, kako se odmontira razsmernik."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kakršnakoli fluorescentna žarnica bo delovala za poizkus.  Menjava žarnice odpade, ekran se zasvinja in tudi kvaliteta ni več ista. Glede na to da ima dodatne napake, zamenjaj celega. Led backlight dela, samo ni osvetlitev ista, tudi fokus je lahko mimo ipd. Ekran je namreč narejen za cevno žarnico  Žarnica, ki jo bi menjala mora biti točno do pike ista. Ostale delajo, vendar ni prava ne barva, ne svetilnost, ne napetost na kateri deluje. Če te to ne skrbi in je pogoj samo ta, da dela, menjaj.  Inverter dobiš kitajski, dela pa že tisti za hladne katode, tu ni high tech-a. http://www.ebay.com/itm/LCD-inverter-CC...  Življenska doba ne bo tako dolga kakor original, vendar delalo bo. Nastavi si še trimer za svetilnost in stikalo za on-off. Verjetno trenutni lcd gori dan in noč ? Obstoječi inverter pa odklopi"
+    },
+    {
+        "role": "user",
+        "message": "A pri inverterju ni bojazni, da bi pošiljal rahlo napačno napetost ali tok? Na specifikacijah lampe piše 420 +/- 50 Vrms, 5 +/- 1 mArm, na tem kitajskem inverterju pa ni ne duha ne sluha o kakšni omembi izhodne napetosti ali toka. (Glupo vprašanje: kje lahko dobim kakšno fluorescento žarnico za poskus?)  Ja, sem razmišljala o menjavi za LED, kar bi poenostavilo servise v prihodnje :) Kaj pomeni, da je fokus mimo? Ekran je sicer majhen (10x15 cm), črno-bel in z zelo malo piksli. Hude potrebe po vrhunski sliki niti ni, samo da se lahko prebere številke.  Kaj misliš z \"dela že tisti za hladne katode\"? Saj to je CCFL. Pa se podobnih inverterjev ne dobi kje pri nas? Sprašujem zato, ker bom kitajca čakala dva meseca, na koncu pa se bo izkazalo, da inverter niti ni kriv. Iz slike mi tudi ni jasno, kje je izhodna napetost. Zoprno je samo, da bo potem tisti kos bingljal nekje v luftu, ampak prostor imam, to ni problem.  Trimerja za svetilnost verjetno ne potrebujem (razen če se bo kakšen kos pregreval), prav tako ne potrebujem stikala za prižiganje, ker se načeloma prižiga in ugašal celo mašino in z njo samodejno tudi zaslon (razen če bi morala vhodno napetost vleči iz zunanjega vira). Ostale omenjene \"napake\" so prisotne že skoraj od nakupa zaslona (s kitajske). Dvomim, da bo nov zaslon bistveno drugačen. (Originalni servis je za menjavo hotel 5k EUR in bi verjetno v končni fazi vgradili enak kitajski zaslon. Hvala, ampak ne.)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če sveti sveti, sam se s tem nisem več ukvarjal.  Nastaviš s trimerjem na pravo svetilnost in pustiš.  Flurescentno imaš od kakšnih crknjenih varčnih.  Nadomestni trak ne svet enakomerno, razlog je v tem da so med ledicami razmiki, potem imaš pa na spodnjem robu nekje temo, nekje pa presvetlo. Hkrati sveti tudi v napačne plasti in se ti bo zdelo da je ekran nefokusiran ali zapacan. Nek čuden efekt, kakor da so polarizatorji fuč.  Hladne katode - to so bile tise lučke za osvetljevati notranjost pc-jev. Tisti inverterji so uporabni za vse.  Inverterjev zagotovo ne boš dobila. Kitajca pa najdi bližjega, naroči iz avstrije ali kaj podobnega. Te robe po ebayu je nebroj.  Originalni servis ima mogoče druge dele. Vsekakor pa imaš to zelo drago zadevo pod rokami."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 3. avg 2016 ob 16:21 izjavil:Hladne katode - to so bile tise lučke za osvetljevati notranjost pc-jev. Tisti inverterji so uporabni za vse.  Inverterjev zagotovo ne boš dobila. Kitajca pa najdi bližjega, naroči iz avstrije ali kaj podobnega.   Kaj (razen DDVja) je prednost bližjega Kitajca? Zaslona iz Avstrije ne najdem. Ko sem naročila trenutni zaslon, sem v petek popoldne (po 16h) plačala in v ponedeljek imela zaslon že doma. Niti iz slovenske trgovine zaslona ne bi dobila tako hitro domov.   Originalni servis ima mogoče druge dele. Vsekakor pa imaš to zelo drago zadevo pod rokami.   Morda so res deli drugi (barva originalnega zaslona je bila siva, zdaj je moder). Ampak saj tudi en ušiv priklop za USB ključek za avtoradio stane 500-1000 EUR, medtem ko je cena navadnega MP3 playerja stokrat nižja.  Zdaj sem poskusila. Na izhodni strani inverterja fazenbrifer ne pokaže ničesar (ampak: inverter daje od sebe samo par mA toka; ne vem, če je to da lučka posveti). Do meritve napetosti na vhodni strani pa mi še ni uspelo priti. Stvar je zalotana, zalita z neko smolo. Morala bom slediti sledem na matični plošči, da vidim, ali 5 V sploh pride na žičko, na katero je vezan inverter.  (Še vedno na pohodu za kakšno drugo lampo ali inverterjem.)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj (razen DDVja) je prednost bližjega Kitajca? Čas, če nočeš čakati cel mesec na inverter."
+    },
+    {
+        "role": "user",
+        "message": "Nazadnje sem ga plačala v petek in dobila v ponedeljek."
+    },
+    {
+        "role": "user",
+        "message": "Iz Conrada sem dobila en mali razsmernik za 5 EUR in backlight na zaslonu se z njim prižge. Torej moram samo še od nekje ukrasti napetost, menjati konektorje in vgraditi primeren pretvornik DC-DC. Hvala vsem za nasvete.  (S kitajskim univerzalnim inverterjem sicer ne bi potrebovala dodatnega pretvornika DC-DC, ampak tale conradov je vsaj zaščiten, ne potrebujem dodatne škatle in zdaj ga imam pri roki.)"
+    },
+    {
+        "role": "user",
+        "message": "Operacija uspela, hvala vsem za nasvete.  Na ničlo iz napajanja in ob ključ za prižiganje, kjer je ob prižganem stroju cca. 20 V in enoamperska varovalka, sem preko varovalke \"prisesala dodatno pijavko\": LM2596S za en funt, ga na drugem koncu zvezala s Conradovim razsmernik iz zgornjega linka, od kolega nafehtala konektor JST XH in krimp-klešče in voila: vse dela, kot mora! Izgleda malo klošarsko, ampak itak je skrito.  Vezje na tem \"rezervnem\" razsmerniku je tako simpl (na linku zgoraj je tudi vezje; in na spletu se dobijo jasna DIY navodila za sestavo lastnega inverterja), da bom morda enkrat spraskala tisto smolo, s katero je zalit originalni razsmernik, ga odlotala in pogledala, če je morebiti samo potrebno menjati kakšen kondenzator, da ga nazaj usposobimo. DC-DC žre 200 mA pri 20 V, kar je duplo poraba glede na original, ampak mislim, da bo ok (in da se zaradi dveh dodatnih vatov ne bo pregrevalo)."
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "po dveh dneh googlanja mi je koncno prislo na pamet, da vprasam tle gor ..  Stvar je taksna:  pred parimi tedni sem kupil prenosnik Dell XPS ... seveda je prisel z win7 Home Premium, ki so sami namestili pri prvem vklopu racunalnika .. nato sem jih zamenjal z drugimi winsi ..  zdaj pa bi rad se enkrat vse skupaj zbootal na factory settings, problem pa je v tem, da recovery particije nikakor ne morem zbudit .. cela particija je se vedno tam, ce ji v winsih dodelim crko pogona, lahko tudi gledam vse datoteke na njej .. edini problem je, da zdaj ni vec bootable ...  kako lahko to particijo spet zbootam, da namestim te originalne winse in gonilnike in ves software?"
+    },
+    {
+        "role": "user",
+        "message": "se posnetek mojih particij za pregled    posnetek mojih particij"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ob zagonu rač. moraš pritisniti eno od tipk, verjetno F11, ali F12. Morda moraš v bios-u izbrati opcijo, ki pravi, recimo \"recovery partition\", ali kaj podobnega. Točno kaj narediš, poglej v navodila, vsekakor pa to ni običajni \"boot\" računalnika!"
+    },
+    {
+        "role": "user",
+        "message": "mogoče bi moral napisat kaj vse sem že probal ...  seveda sem že pregledal možnosti v BIOSu in v boot meniju od winsov, nikjer ne morem izbrati te particije, ne vidim je niti po tem, ko sem ji v winsih dodelil črko pogona, nakar zdaj v winsih lahko normalno brskam po mapah (ki so vse nastavljene kot skrite) in na particiji so še vedno popolnoma vse datoteke od gonilnikov in Dellovega softwareja do image-a od prvotnih Win7 Home Premium ...  Edina navodila od Della pravijo, da naj grem v boot meni od winsov (F8 pri zagonu) in tam izberem Repair computer in da je potem na voljo možnost \"Dell recovery partition\" ... ker pa so zdaj nameščeni novi winsi, so očitno povozili ali spremenili zagonske sektorje na tej recovery particiji in je zato zdaj ni mogoče bootati in ni na voljo pri Repair computer.  Je kakšen način za nazaj nastavit zagonske sektorje na tej particiji, da se bo znova zbootala kot ob prvem zagonu računalnika? Ti trenutni winsi, ki so gor, se lahko v celoti izbrišejo in ne potrebujem nobenih podatkov s particije c:, tako da je čisto vseeno, če zgubim celotno particijo.  Razmišljam o uporabi kakšnega Live Linux USBja, s katerim bi lahko to recovery particijo nastavil kot bootable, samo kokr berem, to še ni dovolj .. treba bi bilo nazaj vzpostavit še vse zagonske sektorje, za kar je pa na voljo malo morje programčkov in ne bi šel ravno na slepo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Temu so na Dell podpori preko RD reinštalirali Dell DataSafe. Kontaktiraj jih ali poizvej, če lahko to narediš sam. http://en.community.dell.com/support-fo..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala @assistant_1, sem prebral še to temo in še nekaj drugih na Dellovih forumih, samo nihče ni v ravno istem položaju, ker v Windows Repair nimam možnosti za Dell Recovery Partition, kot jo omenjajo vsi ostali."
+    },
+    {
+        "role": "assistant_2",
+        "message": "pa si po prvem zagonu naredil recovery?  drugače je ta particija neuporabna"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Se lih s podobno zadevo sam ubadam. @user, probaj tole:  http://neosmart.net/forums/showthread.p... - Googlaj EasyBCD boot recovery partition za še več informacij.  Jaz imam še mal bolj specifičen problem, ki ga nisem uspel še rešit - če ima kdo še kakšno idejo, ste dobrodošli . Butasti HP prenosnik je prišel s 4 primarnimi particijami - eno skrito HP sistemsko, c: particijo z Windows inšalacijo, HP_Recovery particijo in HP_Tools particijo.  Ker sem želel naredit še eno particijo za podatke, sem pač naredil backup ene primarne particije, jo zbrisal, zmanjšal C: particijo, naredil Extended particijo, znotraj te naredil 2 Logical; v eno restoral zbrisano particijo in drugo formatiral v NTFS D: za Dato.  Zdej, ko tapkam na začetku F8 in želim izbrat Repair Windows, mi napiše, da je ne najde in vrže ven error 0x0000225  Ko sledim zgoraj linkanim navodilom in naredim z EasyBCD nov vnos, mi vrne, da je Ramdisk premajhen, error 0x0000017."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po mojem bi si moral tudi narediti Recovery DVDje, čeprav ima zgleda Dell povsem drugače kot HP, ki Recovery particija ni sistemska/boot in jo dosežeš z F11 pred bootom z diska. Tule je sicer program Dell DataSafe Local Backup, ki v svoji Basic varianti lahko skreira Recovery DVDje, samo zdaj, če nimaš ravno vseh fajlov bo težko skup sklanfal pravilni Recovery DVD. Poizkusiš pa lahko. http://dslbdownload.datasafelocalbackup...  Več na www strani: http://dslbdownload.datasafelocalbackup..."
+    },
+    {
+        "role": "user",
+        "message": "Ja, recovery DVD-ja si nisem naredil, ampak particija je še vedno tukaj z vsemi datotekami, samo zbootat je ne morem.  Se ne da nikakor obnovit MBRja na tej particiji ali kaj podobnega, da se spet zažene prvotna inštalacija?  Tale je imel skoraj enak problem tukaj, samo z malce starejšim modelom: http://jim-zimmerman.com/?p=368"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Čakaj, berem nazaj in ti nisi niti poizkusil, če deluje CTRL+F11, ki je v bistvu pravilni Recovery in ne iz Win boot menija preko F8! Poizkusi najprej to, po vsej verjetnosti, da bo delovalo.  http://johnsheadtree.headtreez.com/doc/..."
+    },
+    {
+        "role": "user",
+        "message": "Ctrl+F11 sem poskusil seveda in ne deluje, kokr sem bral je bilo to pri starejsih modelih. Zdaj gre prek F8 in imas tam na voljo moznost Recovery Partition oz. DataSafe. Samo, ker imam zdaj gor nove winse, v repair moznosti ne pokaze Dellove moznosti za recovery. Aja, grem zdaj probat s tem EasyBCD, ker nekaj dela z WIM image fajli, v navodilih je sicer za HP, samo so skoraj enake datoteke tudi na moji particiji."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sicer z Dell-i nimam izkušenj, vem pa, da če se je na ekranu ob zagonu po prikazu (F2 in F12) pokazal tisti moder trak z napisom www.dell.com potem je bil MBR za Recovery particijo ok, če tega napisa ni bilo, potem Ctrl+F11 ni deloval in je bil MBR za Recovery particijo povožen. Srečno in poročaj."
+    },
+    {
+        "role": "user",
+        "message": "Moder trak se pokaze in Dellov logotip, spodaj takrat tudi pise F2 za BIOS in F12 za boot menu, kjer lahko izbiras kaj bi rad bootal (disk, USB, network itd.) samo ni recovery particije. Ctrl+F11 pa ne naredi nic.  Zaenkrat mi se ni uspelo najti nic podobnega kot je v zgoraj linkanih navodilih za HP, mogoce je samo pod drugim imenom. Najbolj me zre to, da vidim vse datoteke. Celoten image za winse je, skupaj z vsemi posodobitvami in vso programsko opremo. Samo zbootat je treba particijo nekako oz. zagnati namestitev. Update: zdaj sem nasel v poti Recovery\\windowsre\\winre.wim\\Tools\\ nek PCrestore.exe"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Potem poizkusi z Dsrfix z linka, ki si ga sam dal zgoraj. Tvoj Dell XPS je na spisku. http://www.goodells.net/dellrestore/fix..."
+    },
+    {
+        "role": "user",
+        "message": "PCrestore.exe sem izvlekel iz image fajla in po zagonu mi napise tole      samo ne vem, ce bi kr nadaljeval, malce mi je sumljivo :)"
+    },
+    {
+        "role": "user",
+        "message": "Se bolj cudno je, kar mi pokaze EasyBCD:   Windows Boot Manager\n--------------------\nidentifier              {9dea862c-5cdd-4e70-acc1-f32b344d4795}\ndevice                  partition=T:\ndescription             Windows Boot Manager\nlocale                  en-US\ninherit                 {7ea2e1ac-2e61-4728-aaa3-896d9d0a9f0e}\ndefault                 {45b71280-9e3d-11e1-a2ec-d4a12bd7d067}\nresumeobject            {45b7127f-9e3d-11e1-a2ec-d4a12bd7d067}\ndisplayorder            {45b71280-9e3d-11e1-a2ec-d4a12bd7d067}\ntoolsdisplayorder       {b2721d73-1db4-4c62-bf78-c548a880142d}\ntimeout                 30\n\nWindows Boot Loader\n-------------------\nidentifier              {45b71280-9e3d-11e1-a2ec-d4a12bd7d067}\ndevice                  partition=C:\npath                    \\Windows\\system32\\winload.exe\ndescription             Windows 7\nlocale                  en-US\ninherit                 {6efb52bf-1766-41db-a6b3-0ee5eff72bd7}\nrecoverysequence        {45b71281-9e3d-11e1-a2ec-d4a12bd7d067}\nrecoveryenabled         Yes\nosdevice                partition=C:\nsystemroot              \\Windows\nresumeobject            {45b7127f-9e3d-11e1-a2ec-d4a12bd7d067}\nnx                      OptIn  Kar pravi tukaj je, da je na recovery particiji t: Windows Boot Manager in na trenutni Win7 particiji c: Windows Boot Loader. Ne vem sicer kaj tocno to pomeni, samo ze na prvi pogled izgleda cudno.  V EasyBCD lahko tudi nastavis nove bootable particije, samo se moram najti, na katero datoteko ga moram usmerit."
+    },
+    {
+        "role": "assistant_0",
+        "message": "PCrestore.exe sem izvlekel iz image fajla in po zagonu mi napise tole  To je pravo, le poženi, seveda naredil bo točno to kar napiše! Izgubil boš vse kar je sedaj -ta hip na aktivni boot particiji"
+    },
+    {
+        "role": "user",
+        "message": "Ja, za izgubo trenutne aktivne particije mi je vseeno."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Drugače pa lahko za instalacijo uporabiš katerikoli win7 dvd (ustrezne verzije) in nato vpišeš key, ki je zapisan na nalepki na prenosniku. Če ti uspe dobit dell oem dvd, ti verjetno ne bo treba niti aktivirat. Boš pa sedeva moral potem ročno naložit gonilnike."
+    },
+    {
+        "role": "user",
+        "message": "Update: PCrestore.exe je \"nekaj\" počel 5-10 minut, ampak na koncu nič drugače.  Ko sem v EasyBCD nastavil, da naj boota t: mu ni uspelo .. lahko pa v EasyBCD nastavim še, da zažene te WIM image fajle, samo sem v precepu, ker jih najdem tri.  Dva sta velika po 10 GB, ker vsebujeta ves software in gonilnike, imenujeta se BASE.WIM ter FACTORY.WIM. Potem je pa še eden čisto majhen v mapi Recovery z imenom WINRE.WIM  Najprej bom poskusil s tem WINRE.WIM, pa da vidimo kaj bo."
+    },
+    {
+        "role": "user",
+        "message": "Bullseye!!! :)  Zbootal tale WINRE.WIM, prišel notri v repair consolo in je bila na voljo možnost za recovery partition. Vse je spet na tovarniških nastavitvah, še par stvari inštaliram in/ali odstranim pa naredim recovery disk :)  Vsem hvala za pomoč in povejte naprej, če bo kdo rabil :)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "http://www.twistedethics.com/2008/06/30..."
+    },
+    {
+        "role": "user",
+        "message": "preberi višje, te možnosti prej ni bilo na voljo v repair konzoli od novo nameščenih winsov .. šele po tem ročnem mountu image fajla WINRE.WIM sem prišel v prvotno repair konzolo"
+    }
+]

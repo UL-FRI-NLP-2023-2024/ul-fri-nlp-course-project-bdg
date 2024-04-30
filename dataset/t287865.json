@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Eno vprašanje/težavica :  Punca ima doma router Linksys_WRT54GL! Sedaj pa sprašujem, kako skonfigurirat omenjeni router preko t-2, če ima stranka dinamičen ip? (sicer ona ima statičen ip in sem zadevo skonfiguriral preko statik ip v samem routerju). Glede statičnega ni problema, zanima me kako je, če ima dinamičnega? - za v prihodnje, če bom imel primer, če bo imel kdo dinamiko preko t-2?  Veliko routerjev sem že skonfiguriral, ok če je protokol PPPoE (siol), je vsem jasno, da se stranka prijavlja z ui/geslom,ki se ga unese v router, tako da tu potem statika ali dinamika nimata pomena! Kako je pa sedaj pri t-2, če ima stranka DINAMIKO ?  Prilagam slikico, s katere je vidno, kaj imam na razpolago?, kaj moram izbrat?, da bi dinamičen ip delal, ko bi prišlo do reseta modema, ko ga t-2 zamenja?, ok pod statiko (statičen ip) ni problema, če ima uporabnik seveda pri t-2 statičen ip, ostali načini povezave ( PPPoE, PPTP, L2TP in Telstra cable) pa vedno zahtevajo da se upiše u.i/geslo. Še najbolj logičen bi bil Telstra cable, vendar zahteva že omenjeno u.i./geslo.  Kaj bi moral izbrat, ter kako konfigurirat router, da bi ob menjavi ip, se router pravilno pobral (to sprašujem za v bodoče, ker me bega, če kdaj pridem do podobne situacije, ko stranka obvezno želi dinamiko!) - če pa dinamičen ip vnesem v router pod statik ip, seveda zadeva dela do ponovnega reseta modema, ko se ip zamenja!, nakar moram ponovno vnest v router drugi ip, ki mi ga dodeli modem.    LP Hvala !  ps Seveda vem, da je na trgu veliko neuradnih firmwaru, samo najprej me zanima kako skonfigurirat s tem, ki je priložen sedaj?!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Cudno, da ni opcije DHCP ali Auto.  Morala bi bit.  Originalnega firmwara sicer nisem na tem routerju videl ze lep cas, a je vseeno zelo cudno, da te opcije ni pri tebi."
+    },
+    {
+        "role": "assistant_1",
+        "message": "naredi upgrade firmwarea, npr. dd-wrt.  Pri meni imajo vsi WRT54GLji s tem firmwareom DHCP opcijo."
+    },
+    {
+        "role": "user",
+        "message": "RESNIČNO, ampak pod \"internet connection tipe\" DHCP možnost resnično ne obstaja !  Prosil bi za link do kakega neuradnega firmwara (npr. dd-wrt) za router Linksys_WRT54GL - torej GL izvedenka , ki preverjeno deluje, ker nebi rad kaj zašuštrav, pa postopek če je kje opisan, ter kere faile moram zloudat!  Hvala"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Firmaware zamenjaš enostavno preko \"Administration\" razdelka, samo izbereš upgrade firmware (ali nekaj podobnega).  Na voljo imaš več verzij dd-wrt: A za prvi flash naloži \"mini\" verzijo, kasnejo ko to dela lahko spreminiš v standard, če imaš želo po dodatnih funkcijah.  Imaš staro in preizkušeno V23SP2  DD-wrt v23 SP2 -- malo sttarejša verzija a stabilna.   DD-wrt V24 RC4 -- Nova verzija zelo fletno deluje (stabilno) pa kar nekaj izboljšav ima a je v Release Candidate fazi."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2, hvala! Zanima me samo ali omenjeni firmware lahko naložim na bilokateri \"Linksys WRT54G(L,U,S...) serije\"  Hvala LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Copy/paste:  DD-WRT Hardware Support Notes  -----------------------------  Note: Please read the flashing notes relevant to your hardware.   1.) DD-WRT supported/tested router hardware versions  Router: Serial Number prefixes:  Linksys WRT54G 1.0 CDF0xxx or CDF1xxx  Linksys WRT54G 1.1 CDF2xxx or CDF3xxx  Linksys WRT54G 2.0 CDF5xxx  Linksys WRT54G 2.2 CDF7xxx  Linksys WRT54G 3.0 CDF8xxx  Linksys WRT54G 3.1 CDF9xxx  Linksys WRT54G 4.0 CDFAxxx  Linksys WRT54G 5.0 (JTAG only with cfe update, see http://wrt-wiki.bsr-clan.de/index.php?t... Linksys WRT54GL 1.0 CL7Axxx  Linksys WRT54GL 1.1 CL7Bxxx  Linksys WRT54GS 1.0 CGN0xxx or CGN1xxx  Linksys WRT54GS 1.1 CGN2xxx  Linksys WRT54GS 2.0 CGN3xxx  Linksys WRT54GS 2.1 CGN4xxx  Linksys WRT54GS 3.0 CGN5xxx  Linksys WRT54GS 4.0 CGN6xxx   Linksys WAP v1.0 (micro only) Linksys WAP v2.0 (micro only) Linksys WAP v3.0 (micro only)  Linksys WRTSL54GS CJK0xxx  Linksys WRT300N v1 (v24 only)  Allnet ALL0277  Buffalo WHR-G54S  Buffalo WHR-HP-G54  Buffalo WZR-HP-G54 Buffalo WBR-G54 Buffalo WLA-G54 Buffalo WBR2-G54 Buffalo WBR2-G54S Buffalo WZR-RS-G54 Buffalo WZR-G300N Mimo / Nfinity (v24 only) Belkin F5D7130/7330 (2mb flash) Belkin F5D7230-4 v1444 (2mb flash) Belkin F5D7230-4 v1000 Belkin F5D7231-4  ASUS WL500G-Deluxe  ASUS WL500G-Premium ASUS WL-300g  ASUS WL-500g   Motorola WR850G/GP --> see flashing notes below  Siemens Gigaset SE505 --> see flashing notes below  Siemens Gigaset SX550i --> same as SE505 Ravo W54-RT --> see flashing notes for SE505 v1 (identical to SE505 v1)  Askey RT210W --> see flashing notes for SE505 v1 (identical to SE505 v1)    3.) Linksys WRT54G/GS (any version) flashing notes:  ---------------------------------------------------  -For upgrading from the original Linksys firmware, please use the generic mini version (dd-wrt.vXX_mini_generic.bin) and flash it from the web GUI interface. After this first flashing you can change to any other distribution, if you want.  -For flashing via the web GUI interface, always use the included 'generic' binaries. The other Linksys router specific binaries are only meant for tftp upgrades.    4.) Motorola WR850G flashing notes:  -----------------------------------  -Just use the dd-wrt.v23_mini_moto.bin for initial flashing of the motorola device using the boot wait state.  -WARNING: Never, and I say never try to clear the nvram by the mtd utility. (mtd erase nvram). This will also delete your hardware MAC adresses which aren't stored in the CFE like in other routers.  -DD-WRT itself prevents this if a Motorola router is detected, but the commandline mtd utility can still brick your router in this case   5.) Siemens Gigaset SE505 Flashing notes:  ---------------------------------  -For flashing the Siemens Gigaset SE505, you have to use the dd-wrt.v23_mini_generic.bin with boot tftp on 192.168.2.1  -Since the Siemens default settings do not fit to the Linksys/dd-wrt settings you must additionally check your configuration details after flashing."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poskusi se  Tomato."
+    }
+]

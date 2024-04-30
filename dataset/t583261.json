@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "delam neko bazo-excel....  imam 3 stolpce:  NAZIV NASLOV POŠTA A1 B1 C1 - vrsto - tako želim A2 B2 C2  iz spletne strani, ko dam v excel mi naredi A1 - vsak v svojo vrsto B1 C1 A2 B2 C2 itd....  Kako bi rekel excelu, da mi vse kar skopiram naredi pravilno? Se mi ne sanja :) ....copy + paste je zamudno :D"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poizkusi tako, da izbereš napačno skopiran A1 B1 in C1 in še enkrat kopiraj. Nato pa pase tako da pri meniju, ki se ti odpre ob desnem kliku izbereš opcijo \"Transpose\". Če ti bo to pomagalo poglej ali lahko kopiraš s \"Transpose\" že ob prvem koraku."
+    },
+    {
+        "role": "user",
+        "message": "transpose slovensko?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Uporabi funkcijo ROW, pa potem jemlji večkratnik 3."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kdo bi vedel kako so v Excelu prevedli transpose... Uporabljam angleške verzije."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Funkcija TRANSPOSE ni prevedena..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Transpose bo to naredil z celicami a1,b1,c1 ne pa za a2,b2,c2,a3,b3,c3,...Je treba za vsake 3 celice ročno. Mislim, da se brez vba ne da."
+    },
+    {
+        "role": "user",
+        "message": "ja sej to se bojim, ročno skopirat vsako 3 celico in v stolpec hehe......"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Transpose so \"prevedli\" transponiraj ... maš pod posebno leplenje. Bistveno je, da tisto, kar kopiraš očistiš oblik, tagov itd- mogoče bi bil prvi korak, da kopiraš v word ali notepad kot tekst. Al pa če daš link, kaj kopiraš, da vidim, kaj se da..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tole so podatki,   1\n1000\nLJ\n2\n2000\nMB\n3\n3000\nCE\n v B1 vpišeš:  =INDEX(A:A;ROW(A1)*3-2;1)&\"-\"&INDEX(A:A;ROW(A1)*3-1;1)&\"-\"&INDEX(A:A;ROW(A1)*3;1) pa dobiš  1-1000-LJ\n2-2000-MB\n3-3000-CE"
+    },
+    {
+        "role": "user",
+        "message": "malajlo mislim, da je to - grem sprobat :)  ni prav....jaz želim posebej naziv - naslov - pošta. sem proba transponiraj.....samo naredi potem vse v 1 vrsti."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Transpose so \"prevedli\" transponiraj ... maš pod posebno leplenje. Transponiraj je pravilen prevod. Izraz se uporablja v matematiki že ohoho časa."
+    },
+    {
+        "role": "user",
+        "message": "http://office.microsoft.com/sl-si/excel...  tole...samo a je treba 1 skupek posebej ali v šusu nič možno?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 7. okt 2013 ob 09:09 izjavil:malajlo mislim, da je to - grem sprobat :) ni prav....jaz želim posebej naziv - naslov - pošta.   Kaj pa, ce malo popravis, kar ti je @assistant_1 svetoval? V B1 das   =INDEX(A:A;ROW(A1)*3-2;1) v C1 das  =INDEX(A:A;ROW(A1)*3-1;1) v D1 pa  =INDEX(A:A;ROW(A1)*3;1)  In vse skupaj potegnes do tretjine..."
+    },
+    {
+        "role": "user",
+        "message": "yes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  HVALA 100X :)"
+    },
+    {
+        "role": "user",
+        "message": "edini problem je, ko hočem prvotno strukturo celit pobrisat, mi tole javi:  #SKLIC! #SKLIC! #SKLIC!  torej moram obdržati izvorne celice? uredil, daš VREDNOSTNO :)"
+    },
+    {
+        "role": "user",
+        "message": "Še eno vprašanje, kako podvojene vrstice brisati avtomatsko? Kakšen trik?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Data-Remove duplicates"
+    },
+    {
+        "role": "user",
+        "message": "thanks."
+    }
+]

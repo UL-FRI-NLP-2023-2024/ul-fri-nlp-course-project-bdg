@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Torej stvar je sledeča: Imam eno staro kišto (P200MMX, 64MB rama...) in nanjo sem namestil Clark Connect Home 2.1. Problem pa je, ker mi nikakor ne uspe vzpostaviti povezave s klientom. Se pravi, računalnika sta fizično povezana (lučka na obeh mrežnih gori), ampak nikakor se ne moreta pingati. Neta trenutno še nimam in bi zaenkrat rad, da zadeva laufa na lokalni ravni, da ga lahko vsaj upravljam preko http-ja... Kakšni nasveti?  Mrežna #1: RTL8139 PCI 10/100mbit (lokalna) Mrežna #2: 3Com EtherLink III ISA 10mbit (povezana na kabelski modem)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "torej imaš ti v tem računalniku ISA mrežno kartico Etherlnik, za katero Clark piše nekaj o ročni nastavitvi:  clarkconnect.com/docs HELP   clarkconnect.com/ NETWORK CARD CONFIGURATION  Predvsem pa, mislim da je Clark 'zamenjal' vlogo mrežnih kartic in je namenil mrežni Etherlink vlogo lokalne in Realtek za povezavo WAN ( povezava tukaj (console.htm) to lepo prikazuje, katera kartica ima kakšno vlogo. (pod next, je naslednja stran, kjer ti piše, kako z web browserjem nastavljaš, potem ko deluje) preveri... in sporoči"
+    },
+    {
+        "role": "user",
+        "message": "Predvsem pa, mislim da je Clark 'zamenjal' vlogo mrežnih kartic in je namenil mrežni Etherlink vlogo lokalne in Realtek za povezavo WAN Ja, to sem med tem časom že sam ugotovil, in sicer sem kabel vtaknil v ISA mrežno in se je le začelo premikati. Računalnika sedaj lahko pingam, ampak je ogromno izgubljenih paketkov (cca 85%). Sedaj ne vem v čem je fora, mogoče še v nastavitvah ISA mrežne? Mi lahko kdo tukaj pomaga?  Pa zanima me, kako bi bi lahko zamenjal vlogi mrežne, da bi bila PCI mrežna lokalna in ISA povezava do modema?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "tukaj opisuje nekje \"change the role of my network cards\" in tukaj odgovor  clarkconnect.com/help/howtos/swapnics.html, potem pa  ClarkConnect - Recommended Reading List / Answers to Frequently Asked Questions  LP"
+    },
+    {
+        "role": "user",
+        "message": "Hvala! Bom poskusil..."
+    },
+    {
+        "role": "user",
+        "message": "Sedaj sem uspel zamenjati vlogo mrežnih kartic, vendar sedaj nikakor ne uspem pingati priključenega računalnika, napiše mi Destination Host Unreachable. Lučki na obeh mrežnih, ki bi se morali pingati normalno delujejo. Ve kdo v čem je štos?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Saj nočem bit smotan, poskusi kupit še eno PCI mrežno kartico. In še nekaj bi ti rad priporaočal, da si daš gor raje clarkconnect 1.3, meni je 2.1 prepočasna pa še sistemsko požrešna je (imam 128 MB rama pa še vedno ni dovolj)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mogoče še ali si izklopil PnP na 3Com mrežni ? Namreč PnP na teh karticah je velikokrat zelo problematičen. To narediš z DOS-ovskim programom za nastavljanje kartice.  LP, @assistant_2"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2: Ja sem poskusil tudi izklopiti PnP, samo potem mi je pa sploh ne prepozna; tako imam sedaj PnP spet vklopljen... Ali je potrebno kje vpisati ročno I/O in IRQ-je in kam?"
+    },
+    {
+        "role": "user",
+        "message": "No sedaj sem samo za poskus dal ISA mrežno v računalnik z Winsi (kjer z njo ni problemov) in v router dal še eno PCI in sedaj sem končno uspel zadevo porihtati... Zgleda, da bom še mogel eno PCI mrežno nabavit... Z vsak slučaj pa me še vedno zanima, če je za ISA mrežno (z disejblanim PnP) potrebno vpisati ročno I/O in IRQ-je in kam?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Vsekakor, podatke pogledaš v tistem DOS programu od mrežne (mrežna mora biti v računalniku, ki bo router), potem pa je te podatke treba nekje v nastavitvah SW routerja ročno vpisati, kje točno za Clarkconect ne vem, ker se z njim nisem ukvarjal. Ravno zaradi tega vpisovanja vsi priporočajo PCI mrežne, ker tam to odpade, avtodetect in PnP pri PCI ponavadi dela.  Pa še nekaj: ali si prepričan da tvoj modem ni zaklenjen na MAC adreso mrežne, ker praviš, da imaš kabelsko ? Sicer baje to pri večin ISPjev to rešiš že s telefonskim klicem in prošnjo naj modem nastavijo na novo MAC adreo, ampak vseeno.  LP, @assistant_2"
+    },
+    {
+        "role": "user",
+        "message": "Bom najverjetneje kar novo PCI mrežno nabavu, bo najmanj problemov...  Ja možno, da je zklenjen na MAC adreso mrežne, mi bojo že pr ISPju to zrihtal da bo delalo... Sem jim modem nesel tja na testiranje in so rekli, da je OK, tako da po moje ni panike...  Sicer pa me še zanima, če kdo ve, za kaj se v CCju uporablja Name Server #1 in Name Server #2?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "To je zato, da ti ugotovi, kateri IP ima recimo \"ime.com\". Drugače se ti \"slo-tech.com\" nebi odprl v browserju. Drugo ime za to je DNS.  1. možnost: V CC upišeš tiste dve cifre, ki ti jih je dal ISP in v nastavitve v WinXP (za rač., ki je priklopljen na internet preko CC) daš 192.168.0.1 (oz. IP od CC - za lokalno mrežo - eth1). Če imaš DHCP moreš to uporabit.  2. možnost: To dvoje pustiš prazno in vpišeš DNSja direktno v WinXP (oz. kakšen drug windows ali linux) pod DNS nastavitve."
+    },
+    {
+        "role": "user",
+        "message": "Sem med tem časom že sam pogruntal... Tako da mi CC zdaj laufa kot je treba. Hvala za pomoč!"
+    },
+    {
+        "role": "user",
+        "message": "Sedaj me pa zanima še ena stvar, in sicer če ve kdo mogoče, kako bi naredil, da bi vsak uporabnik, ki na internet dostopa preko tega routerja, imel dostop do System Watch Log-erja (ki se nahaja pod Reports > System information > Trubleshooter, kjer lepo piše, če internet deluje ali ne... Hvala za odgovore!"
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "message": "Mali program (tri fome) velike težave ! Upam, da že gdo ima \"zdravilo\" za moje težave.  Torej, naredil sem en simpl program (VB6) ki za svoje delo uporablja 3 forme. V Sub Main() za še nezaprtih form uporabljam Sub Form_QueryUnload in Pomoc.Hide, Avtor.Hide.... Vse lepo in prav, po kliku na X-izhod iz programa se avtomatično zaprejo vse forme in izbriše okno glavnega programa. Ko pa pogledam v task mana@userr vidim, da program še vedno deluje (10 štartov programa? 10 aktivnih procesov v TM !!! ) ?!?! V čem je problem, oziroma kak pravilno rešiti problem ? Nujno prosim za pomoč !!!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V Unloadu moras zapret ostale forme. Ampak ne z hide, ker hide jih samo skrije. Probaj."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0; Tenx za nasvet.  Za \"ziher\" sem vstavil;  Private Sub Form_QueryUnload(Cancel As Inte@userr, UnloadMode As Inte@userr) Unload Pomoc Set Pomoc = Nothing Unload Avtor Set Avtor = Nothing Unload Test Set Test = Nothing Close End Sub  Deluje !   Khm, usput imaš kakšne iskušnje z vstavljanjem progress bara v program ?  Npr v to proceduro bi vstavil progress bar za indikacijo dela;  Open odpri For Input As #1 Do Input #1, vrstica . . . obdelava vrstic - samo branje in premetavanje matrik . . Loop While Not EOF(1) Close #1  Tenx za odgovor."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ge, nisi točno navedel, kakšno funkcijo naj ProgressBar opravlja. Kot sem uspel razbrati iz tvojega besedila, bi morda rad, da ProgressBar prikazuje potek odpiranja celotne datoteke vrstico za vrstico.  Najlažji način je, če že poznaš število vseh vrstic v datoteki. ProgressBar za svoj potek uporablja procente (torej števila od 0 do  100). Tako bi tvoja koda izgledala takole:  ------------------------------------------------------------ Private Sub mnuOpenFile_Click() Dim trenutnavrstica As Inte@userr  trenutnavrstica = 0  CD.ShowOpen  Open CD.FileName For Input As #1 Do While Not EOF(1) Input #1, GetTextLine trenutnavrstica = trenutnavrstica + 1 ProgressBar = (trenutnavrstica * 100) / število vseh vrstic ... ...  Loop Close #1 End Sub ------------------------------------------------------------"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1, ja pravilno si ugotovil, rad bi uporoabil progress bar glede na premikanje po tekstovni datoteki . Seveda zmes je še eno par izaračunov, premetavanja črk, ampak to bi zadostovalo. Problem je edino ker v naprej ne vem velikost datotke. Obstaja funkcija za ugotovitev števila vrstic v datoteki (tekstovna) ali je pač rešitev predhodno do-eof preštevanje ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "> Khm, usput imaš kakšne iskušnje z vstavljanjem progress bara v  > program ?  Khm, ne... Visual Basic se trudim cim prej pozabit... ;)  Stevilo vrstic bos moral presteti, zal. Tudi ce bi ze bila funkcija za to, bi tocno to naredila... ;)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "če delaš sz datotekami na splošno potem je to edina pot, če pa imaš svoje, specializirane datoteke, pa lahko število vrstic kar zapečeš notri, recimo v prvo vrstico. seveda ko v datoteko pišeš, moraš tudi to popraviti. ampak ponavadi je while not eof kr najboljša varjanta..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hmm maw me presenečate... Nuben ni reku da bi uporabu ukaz \"End\" namreč po mojih izkušnjah ta ukaz ugasne program... In nikakor ni možno da bi mew vsak form svoj proces v tasku, kokr se men dozdeva.. Itak pa če uporabljaš več forumov naenkrat pa raj uporabi MDI Form...  @assistant_1, rad bi te samo popraviw, jz osebno bi dodal v zanko še ukaz DoEvents. Nism prepričan če bi se brez tega ukaza progress bar lepo osveževal...ker bi zanka 100% zasedla CPU."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ge, vrstice poljubne datoteke lahko prešteješ tako, da najprej odpreš poljubno datoteko preko CommonDialog, program nato prebira vrstico za vrstico posebej, na ta način pa se število vrstic pri vsakem posameznem prebiranju vrstice poveča za +1. Ko program prebere vse vrstice, vrednost 'stevilovrstic' vsebuje število vseh vrstic v datoteki. Pri tem ni potrebno sprotno zapisovanje vrstic npr. v TextBox, dovolj je že tole: ------------------------------------------------------------------------------- Private Sub LineCounter_Click() Dim stevilovrstic As Inte@userr  stevilovrstic = 0  On Error Resume Next  CD.ShowOpen  Open CD.FileName For Input As #1 Do While Not EOF(1)  Input #1, GetTextLine  stevilovrstic = stevilovrstic + 1  Loop Close #1  End Sub ------------------------------------------------------------------------------- (CD = CommonDialog)  Število vseh vrstic se torej nahaja v vrednosti 'stevilovrstic'.  Nato ponoviš postopek na podoben način."
+    },
+    {
+        "role": "assistant_0",
+        "message": "> Nuben ni reku da bi uporabu ukaz \"End\" namreč po mojih izkušnjah ta  > ukaz ugasne program...   Si ti kdaj pokukal v MSDN? ;) No lej:   Note Executing the End statement unloads all forms and sets all object variables in your program to Nothing. However, this is a very abrupt way to terminate your program. None of your forms will @usert their QueryUnload, Unload, or Terminate events, and objects you've created will not @usert their Terminate events.   To je priblizno tako, kot ce bi med voznjo, za bremzanje uporabljal kandelabre... ;)  V Unload eventu moras prej vedno vse ostale forme spucat za sabo. Ce ne zarad dru@userga, pa zaradi tega, ker windows niso sloveli po nekih blazno dobrih memory mana@userrjih... ;)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "END dela čist lepo in prav... Sej vbistvu VB potem sam uporabi to funkcijo ko ti uporabiš al pa kličeš Unload evente... Itak pa predn daš END, daš prej kak msgbox k te vpraša če čš končat s programom... Unload se takrat izvede k ti prtisneš na \"X\" v zgornjem desnem kotu... Če čš pa nardif recimo File->Exit Menu, bi moral klicat Form1_Unload, tko pa sam End in puff, konc... ni bolšga, sej v Deplhiju je pa Close če se ne motim..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Daj MSDN preberi, pa ne pusti, da te Linux user uci VB ;>"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0 ti zgleda da tega stavka ne razumeš...  \"None of your forms will @usert their QueryUnload, Unload, or Terminate events, and objects you've created will not @usert their Terminate events.\"  Če uporabiš End, se samo ti eventi ne bojo izvedl... kr pa ni nujno da jih potrebuješ in uporabiš..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ne ti, objekti ki so se ustvarili pa. Pod objekte spadajo tudi forme ter ostale kontrole..."
+    }
+]

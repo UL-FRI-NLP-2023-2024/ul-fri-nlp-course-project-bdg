@@ -1,0 +1,22 @@
+[
+    {
+        "role": "user",
+        "message": "Imam problem z nastavitvami portov v Ufw firewallu (Ubuntu 14.04) in delovanjem programa Transmission za prenos torentov.  Prenos torentov v Transmission-u deluje brezhibno, če so nastavitve firewalla na default opciji: deny incoming allow outgoing  Ker pa imam raje da so outgoing porti odprti samo tisti ki so nujno potrebni, sem si jih temu primerno nastavil. Torej nastavil sem na \"deny outgoing\", ter dodal pravila za odprtje outgoing portov za dns, dhcp, web, mail in pa za program Transmission.  Vse ostalo potem deluje kot mora, le torent prenosi ne delajo več.   Nekje na netu sem zasledil da naj bi bilo to zato, ker Transmission dinamično uporablja cel rang outgoing portov in ne samo porta 51413, ki sem ga odprl pri outgoing portih.   Če pa ta port 51413 odprem v incoming portih, pa zadeva spet deluje.   Zdaj me pa zanima kaj je s stališča varnosti bolje:  Prva default opcija:  deny incoming (brez izjeme) allow (outgoing)  Ali morda druga varianta: deny incoming (odprt port 51413) deny outgoing (odprti zgoraj omenjeni porti)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Potem odpreš vse porte samo za Transmission. Razlog, da potrebuješ vse porte odprte je, da imajo tisti, ki sejejo različne nastavitve portov na katerih so ,,dosegljivi\".   Inštaliraj si gufw (sudo apt-get install gufw) s katerim lahko bolj izi urejaš firewall."
+    },
+    {
+        "role": "user",
+        "message": "V bistvu me je najbolj zanimalo če je varno, da imam za prenos torentov odprt incoming port 51413 ?  Namreč če hočem imeti v požarnem zidu outgoing porte zaprte, mi torenti normalno delajo le v primeru odprtega incoming porta 51413."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 11. sep 2014 ob 05:12 izjavil:V bistvu me je najbolj zanimalo če je varno, da imam za prenos torentov odprt incoming port 51413 ?    Varno je toliko kot je varen program in OS.    @user je 11. sep 2014 ob 05:12 izjavil:Namreč če hočem imeti v požarnem zidu outgoing porte zaprte, mi torenti normalno delajo le v primeru odprtega incoming porta 51413.   Mogoče imaš vključen UPnP."
+    },
+    {
+        "role": "assistant_1",
+        "message": "V bistvu me je najbolj zanimalo če je varno, da imam za prenos torentov odprt incoming port 51413 ?  Sedaj več ni, ko vemo. Upam da nimaš zagnan torrent odjelamec kot root."
+    }
+]

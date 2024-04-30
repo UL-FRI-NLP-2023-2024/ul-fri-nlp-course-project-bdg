@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Imam plato ECS K7S5A, ki ima že integrirano tudi mrežno kartico, sedaj pa sem hotel dodati še mrežno kartico 3C905C-TX-M. Ko vstavim to kartico v računalnik in ga prižgem, pregleda BIOS samo diske in potem se ustavi. V BIOSu sem pregledal že vse nastavitve za katere mislim, da bi lahko vplivale na to in tudi RAM sem zamenjal, vendar je rezultat vedno isti. Pozna kdo kakšno rešitev???"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kartica ne dela? Slabo vstavljena kartica? Napačno nastavljen IRQ? Probaj najprej integrirano mrežno izklopiti, nato nastavi vse za ta drugo, nato pa zopet vklopi integrirano?  @assistant_0"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Probaj penitrirat mamaplato v drugo luknjo."
+    },
+    {
+        "role": "user",
+        "message": "Mrežna kartica je OK, (sem jo zamenjal z drugo iz drugega PC, vendar je isto). IRQ v BIOSu imam nastavljene po defaultu. Integrirano mrežno kartico pa sem v BIOSu tudi že disable-au, vendar se nič ne spremeni!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne vem sicer kakšn računalnik maš... sam mogoče res probi zamenat port... če kej po com portih šarš gre tkole ... com1 pa com3 ne mort delat istočasno, com2 pa com 4 pa tut ne... No... al pa povej kere windowse maš ....  @assistant_0"
+    },
+    {
+        "role": "user",
+        "message": "Na COM portih nimam nič, ker imam miš in tipkovnico na PS/2. Tudi mrežno kartico sem vtaknil že v vse PCI vodila, pa je vedno isto (v PC-ju imam samo grafično in še ta je na AGP). Imam pa Win XP, vendar mislim, da to nima veze, ker se računalnik ustavi, ko pregeda diske, torej še preden se Win sploh zaženejo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Da ni kartica narejena za 64 bitno PCI vodilo? Kakšne barve je PCI reža v tistem računalniku k si jo vn uzeu?  @assistant_0"
+    },
+    {
+        "role": "user",
+        "message": "V obeh PC je PCI bele barve!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Na moji k7s5a so 4mrezne onboard,3com,realtek,cnet in vse dela. Tako da plosca po moje ni kriva. Predlagam ti da nalozis zadnjii bios od plosce in nastavis irq za pci slot rocno. No mozno je tudi prevec navit fsb."
+    },
+    {
+        "role": "user",
+        "message": "Malo gledam po BIOSu pa nikjer ni videt nič pametnega glede IRQ na PCI. DEJCI povej kero verzijo BIOSa imas in kje nastaviš te IRQ-je (v kerem menuji)!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "A maš mogoče kej navit procesor? Če je, dej na osnovne nastavitve... Resetiri BIOS... Dej vn to kartico... a ti dela če brez kartice poženeš? Če ti dela, pol izklop integrirano in zalaufi brez vseh mrežnih kartic... pol pa vstavi v PCI kartico...  p.s. men že mal zmankuje idej... a bi mogoče lahko še kdo drug sodelvou v tej temi?!?    @assistant_0"
+    },
+    {
+        "role": "assistant_2",
+        "message": "No tkole. Trenutno je na moji CheepoBios 1.07 beta.  1.)Za take probleme nej bi bla nek v biosu funkcija FORCE UPDATE ESCD das na enable. (po resetu se ti premakne nazaj na disable). Vendar v tem mojem 1.07beta ni te funkcije. Tko da preglej je ce pri tvojmu.  Za irq stelat mas v biosu pod pci/pnp ---> pci slot(x) irq priority. Tam namesto auto prekakn na eno cifro.  Ce nc od tega ne pomaga in tudi nimas tale force escd. Se ravnaj po tem spodnjem postu. V mojem primeru, je bilo potrebno pri menjavi iz sdr v ddr premakn jumper za reset biosa.     > > This k7s5a board will run linux, but the problem with it is that whenever > > i change *any* hardware in/out, i have to clear the flash memory. This > > includes plugging/unplugging a hard drive/cdrom/pci network card/sound > > card/SCSI card. And it doesn't just clear within 5 or 10 seconds, it > > takes 10 MINUTES or more. It's not a bad battery, its just a quirky > > motherboard. And this is not an isolated problem, if you look at the > > forums on ecs's website, you'll see alot of people with the same problem. > Try setting \"Force Update ESCD\" and possibly the \"Plug and Play OS\" > parameters differently. Forced updates will clear the PNP stuff > unconditionally, and it should not take 10 minutes. BTW, it has nothing to > do with flash, it's the CMOS memory that is screwed up. It definitely should > not take that long to clear it - maybe use the jumper to clear it manually?  lp @assistant_2"
+    },
+    {
+        "role": "user",
+        "message": "Procesor ni navit. Če ni mrežne kartice v računalniku dela vse normalno. Tudi integrirano kartico sem že disablov pa ne pomaga nič.  Bom probal še malo pogledat to kar pravi Dejci. Poročam jutri!  Hvala obema, ki se trudita s tem problemom!!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "en moj kolega je mel podoben problem k sta se mu skregala pci modem pa mrezna, in smo probal vse variante z rezami, ampak dolkler je bil modem noter mrezna ni hotla slisat kej u povezavi!!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Imel sem enak problem na Iwill matični plošči, prav tako sem imel 3COM dodatno mrežno poleg vgrajene.  Naredil sem vse, kar so že drugi opisali, pa ni delalo, dokler nisem storil tega:  1: V BIOSU nastavil oba COM porta na NONE ( ali DISABLE, odvisno od biosa), ker nekatere mrežne zasedejo točno in samo irq 3! V BIOSU izklopil vgrajeno AC97 zvočno kartico, ker zaseda ravno tisti naslov kot nekatere mrežne po defaultu. 2: DIsable IRQ for USB ( ni nujno, je pa dobro) 3. Disable IRQ for VGA ( ni nujno, je pa dobro) 6. Premaknil mrežno na PRVI PCI slot in nastavil first available IRQ na 3. 5.: Force update ESCD.( obvezno) 6. PNP OS disable ( zelo pomaga!). 7. reboot 8. DELA!  Če ti še ne dela, poberi vse razen grafične in mrežne ven iz PC in disablaj vse vgrajene stvari, nato pa dodaj mrežno in reboot."
+    },
+    {
+        "role": "user",
+        "message": "Ma jaz nimam nič na PCI razen to mrežno sem hotel dat not. Bom probal res še vse, kar je integriranega na plošči disablat, pa bom videl če kaj pomaga. Sicer pa sem dobil zdaj še eno mrežno kartico od Level One, tako da bom videl kako se bo zadeva zdaj obnašala!!"
+    },
+    {
+        "role": "user",
+        "message": "Sem probal dat noter uno kartico od Level One in dela, vse brez najmajših problemov (brez kakršnih koli speremb v BIOSu). Škoda da sem za uno 3Com kartico dal uko z glave, ta pa stane boga 2 jurja, ha!!"
+    }
+]

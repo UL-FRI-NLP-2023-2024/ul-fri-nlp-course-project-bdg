@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Kaki preprosti program je za prebrat CD/DVD v ISO fajl?  Sem ga že uporabljal, samo se zdaj ne spomnim, kateri je bil.   (se pa seveda spomnim programa za obratno: posneti ISO na CD/DVD: CD-Speed* - mali, brez navlake, brez instalacije, it just works - OK, novejši Windows to zdaj tudi znajo)  * CD Speed 2000 oziroma pozneje Nero CD-Speed, ne pa najnovejši OptiDriveControl, ki je plačljiv"
+    },
+    {
+        "role": "user",
+        "message": "cat /dev/sr0 > moj.iso\n cygwin rules !"
+    },
+    {
+        "role": "assistant_0",
+        "message": "LC ISO Creator :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sam osebno uporabljam  - kreiranje iso in peka cd/dvd-jev: imageburn - mount iso datotek: virtual-clonedrive  Mislim pa, da pri obeh programih ne gre brez namestitve."
+    },
+    {
+        "role": "assistant_2",
+        "message": "http://www.poweriso.com/, lp"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Na tem mestu me zanima sledeče. Vsak program za peko zna, če mu daš recimo ISO sliko, da jo zapeče na tak način, da se zapečeni plošček lahko boot-a. Taka funkcionalnost pekalnih programov je praktično že od zmeraj in spada pod (najbolj) osnovno.  Zakaj pa recimo ni nekega splošnega programa oz opcije v programih, da ti recimo ISO sliko \"ekstrahira\" na memory card/USB ključ? Saj obstaja recimo Microsoft-ov tool, da ti njihovo sliko da na USB ključ. Pa recimo UNetbootin za Linux. Samo to moraš pač imeti za vsako stvar posebej aplikacijo. To mi ne diši ravno. Je kak tehnični razlog, da še ni teke funkcionalnosti v magari pekalnih programih? To bi res prav plišlo, še posebej, ker obstaja da na ploščet to gre po neki splošni poti, ne vem pa kaj je usb ključ tako drugačen. Hvala za pojasnila."
+    },
+    {
+        "role": "assistant_4",
+        "message": "ISO lahko ekstrahiraš z vsakim programom za arhive (7-zip, Winrar...). Če pa si imel v mislih prav bootanje iz USBja, je pa zadeva malo bolj komplicirana. Recimo en problem je datotečni sistem, na USB je ponavadi FAT32/NTFS ipd., CDji in DVDji pa imajo svoje. Na koncu je odvisno od vsake posamezne ISO slike (oz. od tega kaj vsebuje) ali bo lepo bootala iz USB ali ne oz. kakšen postopek moraš ubrat da bo delovalo. Vsaka bootable zadeva lahko uporablja nek svoj način, ki ni nujno kompatibilen z ostalimi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Upam, da se bo kar se tiče boot-anja iz flash medijev kaj standardizirala, saj mi je res glupo, da moraš za vsako stvar po svoje delat bootable USB ključ ali kartico. Torej če prav razumem bi se že naredilo velik korak k temu, če bi se standardiziral nek nov datotečni standard, ki nebi imel takih omejitev, kot jih ima FAT32 in bi bil pisan na kožo napravam, kjer je dostopni čas do vseh lokacij praktično enak (optimizacija za sodobne naprave). Navsezadnje osebno ne vidim prihodnosti v optičnih medijih (ja, slišal sem že za holografske medije, samo stvar upam da se ne bo prijela) ampak pomnillnikih, ki imajo shranjeno informacijo za vedno (tudi ob manjku napajanja). Vsak optični medij je že v osnovi obsojen, da je zelo ranljiv, saj se ga ne da zaščititi proti praskam in čem podobnim. Pa še prevelik je za sodobne naprave in prepočasen. Potrebuje se tudi mehanika (laserska \"glava\"), da se pomika in bere po površini."
+    },
+    {
+        "role": "user",
+        "message": "Bootanje ni funkcija programa za peko, ampak ISO slike. Če program zna posneti ISO na CD, potem zna posneti tudi bootabilni ISO. Ker je to eno in isto.  Na USB ni problem datotečni standard. Ampak to, da CD-je in druge naprave BIOS tretira drugače. CD-ji (in drugi optični mediji; z DVD je identićno, z HD-DVD in blu-ray pa nimam izkušenj) so v bistvu izjema, special case. In ISO slike so vse \"posebej prilagojene\" za specifiko CD-jev, zato ne delajo na drugih medijih (ne na USB ključku, ne na flopiji, HDD-jih, karkoli drugega).  BIOS-u je vseeno za datotečne sisteme. Nobenega ne pozna. (eni imajo sicer posebej podporo za kaki FAT, da lhko na disketo posnamejo ali preberejo BIOS nastavitve ai sam BIOS, ampak ta del ne igra vloge pri boot-anju)  Drug problem je, da so vsi ISO-ti mišljeni, da zasedejo celotni medij, kar je smiselno, saj so ponavadi veliki 700 MB in za drugo ne bi ostalo prostora.  64GB ključ pa je seveda nekaj čisto drugega. (že na DVD bi kdo hotel več manjših ISO posneti)  Žal tudi ti programi (recimo Microsoft-ov, za Windows namestitev), ki kreirajo boot-abilne USB ključke, delajo po isti logiki: zbrisal bom ves ključ in svoji \"ISO\" gor namestil.  Jaz počnem to takole: - namestim zadevo na en \"žrtveni\" USB ključ - fajle skopiram na \"pravi\" USB ključ (ki je bootabile in ima že gor N ISO in drugih boot zadev) - popravim boot loader na drugem ključku (dodam točko v meni), da ponudi to novo zadevo za boot-at  Imam GRUB (bolj točno GRUB4DOS, ki podpira NTFS in še kup drugih dodatkov) na ključku, ki je formatiran v NTFS. Dela do zdaj zadovoljivo.  Gor imam: - Ubuntu (več verzij; že od nekdaj podpira zagon iz ISO fajla na USB ključku) - System Rescue CD (extract ISO in ročna pretvorba ISOLINUX konfiguracije v GRUB obliko) - RIPLinux (boot-a se linux kernel in ves paket kot initrd) - Hiren's Boot (preprosto, ker sam tudi uporablja GRUB) - memtest86(+) - več verzij, preprosto: kernel /boot/IMG/memtest86+-4.10.bin - Windows rescue (chainloader /bootmgr, dalje pa MS bootmgr naloži)   Lahko pogledaš še Easy2Boot. S tem kreiraš boot USB in potem samo kopiraš ISO fajle v podane mape in jih avtomatsko doda v boot meni. Podpira razne Windows namestitvene ISO-je, pa kup Linux in drugih. (tega imam tudi na omenjenem USB ključku, kot podmeni)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Osebno me ne moti, če bi program wedno formatiral kartico/USB ključ, če bi gor hotel nekaj \"zapeči\" kot bootable. Ni najlepše, vendar nič drugače kot pri optičnih medijih. Omenil si, da je največji problem BIOS. V zadnjem času praktično vsi namizni kompi (oz bolje rečeno matične plošče) dobivajo UEFI. Kakor mi je znano je ta reč precej bolj \"dovzetna za novejše tehnologije\" in predvsem na področju boot-anja bi lahko sedaj dodelali za novejše načine zaganjanja iz kartic ipd."
+    },
+    {
+        "role": "user",
+        "message": "BIOS, UEFI, v tem besedilu ekvivalentno. Saj bootanje z USB jev ni nič novega. To je isto kot z trdega diska in je delovalo že pred bootanjem s CD-jev. (takrat je bil problem, da zaradi bog ve kakih razlogov BIOS ni omogočal dostopa do vsebine CD-ja enako kot do drugih medijev, verjetno zaradi druge velikosti sektorja. Zato so naredili poseben standard \"samo za CD-je\" : El Torito)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kakorkoli. Upam, da se v bližnji prohodnosti te stvari standardizirajo, ne pa da se mora samo zaradi tega kupovati optični pogon, če želiš boot-ati kakšno reč, ki jo ne moreš na nek normalen in enostaven način narediti bootable na USB ključ. Računalniški giganti bi najbrž tudi kaj profitirali od tega."
+    },
+    {
+        "role": "user",
+        "message": "Nič ne bo standardizirano. Vsaj ne s strani BIOS/UEFI. Ker to je že standardardizirano že 20 let.  \"nestandardni\" so programski paketi, ki so narejeno tako, da znajo boot-ati le z optičnih medijev. Ter da računajo na to, da so edini paket na mediju. Nov standard, ki je potreben, je to: - store your files in a subdirecory - provide a boot file that supports a parameter (that specifies the beforementioned subdirectory)  Boot file je lahko po MultiBoot standardu ali po enem drugem popularnem. Vseeno, saj lahko boot loaderje chainloadaš. Torej po potrebi dodaš novega."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pa se pričakuje premik v tej smeri, ki si jo opisal?"
+    },
+    {
+        "role": "user",
+        "message": "Nadaljujem temo v tule: USB boot - standardi in ideje"
+    }
+]

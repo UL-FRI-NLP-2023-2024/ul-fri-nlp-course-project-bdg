@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Pozna morda kdo kaksen program, ki se ga lahko uporablja zastonj v komercialne namene ali pa za ne pretirano velik denar.   Idealno bi bilo, da je sam program odprtokoden in da ima nalozene tudi odprtokodne glasove.   Nujno je tudi, da se ga da naloziti na PC, ker projekt bi trajal dlje, glas pa se ne sme s casom spremeniti.   Torej nujno: - Zastonj ali poceni program in glasovi - Instalacija na PC, da se glasovi ne posodabljajo  Tnx..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "https://www.govornik.eu/domov"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 30. sep 2020 ob 13:24 izjavil:https://www.govornik.eu/domov  U mater, kako zaostaja za ebralcem ( https://ebralec.si/branje/ )"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Primerjaš profi rešitev firme oz. konzorcija (ebralec), ki se že x let ukvarja s TTS napram ljubiteljskemu projektu (govornik) srednješolca, ki je vzel open source MaryTTS in ga sportal na slovenščino.   Hkrati oba programa uporabljata tudi čisto različne pristope k sintezi, kar je seveda tudi slišno - če pri tem čisto zanemarimo, kako pomembno vlogo igra tukaj kvaliteta uporabljenih jezikovnih virov (govorna baza, segmentacija, anotacija, lematizator, normalizacija, g2f pretvorba)..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "U, pa res. Potem pa vsa čast za tole. Prej nisem bil pozoren, da gre za projekt dveh srednješolcev. Sem mislil, da je zadaj kakšna večja ekipa."
+    },
+    {
+        "role": "user",
+        "message": "Pozabil povedati, da potrebujem za anglescino in da ni treba da govori ne vem kako lepo. Govornik je menda online, nujno mora biti instalacija, da se glas ne spreminja."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 1. okt 2020 ob 08:58 izjavil:Pozabil povedati, da potrebujem za anglescino in da ni treba da govori ne vem kako lepo. Govornik je menda online, nujno mora biti instalacija, da se glas ne spreminja.   Tehnološko velja Googlov Tacotron 2 za zelo dobro TTS rešitev, ki uporablja globoko učenje z end-to-end pristopom. Programska koda je na voljo kot open source. Nisem pa toliko doma na tem ozkem področju, da bi vedel, ali je zraven tudi kakšen recept za demo sistem za angleščino, kjer rabiš jezikovne vire. Sem pa skoraj siguren, da je dostopno kje - samo googlati boš moral. Hkrati pa vedi, da rabiš za Tacotrona zelo zmogljivo strojno opremo, po možnosti nvidine GPUje zaradi CUDE....  Zgornji MaryTTS, ki je uporabljen v govorniku, velja za prejšnjo generacijo sinteze s slabšimi rezultati, je pa na voljo tudi za angleščino kot celotna rešitev.  Aja, še z moje strani pohvale avtorjem govornika! Za srednješolce je to res dober rezultat.  PS: pozabil prej napisati - za angleške jezikovne vire glej na LibriVox, če se prav spomnim je LJ Speech database en takšen primeren vir...."
+    },
+    {
+        "role": "user",
+        "message": "Pravzaprav iscem bolj slabega, da zveni robotsko.  Menda bo eSpeak OK."
+    },
+    {
+        "role": "assistant_2",
+        "message": "V tem primeru iščeč formantni sintetizator, ki praktično deluje kot matematični model človeškega govornega trakta in pride skozi brez baze posnetkov, ki je pogostvo ravno glavni zalogaj pri boljših metodah sinteze. Namesto bolj ali manj naravnega človeškega govora dobiš takšen tipičen filmski robotski glas.   Formantni sintetizator je bil na primer na voljo že v računalniški pradavnini na Amigi 500, eden izmed trenutnih pa je prav eSpeak."
+    },
+    {
+        "role": "user",
+        "message": "Kaj drugega verjetno dejansko ne obstaja za neko normalno ceno. Vse ostalo je ca. 25€ po glasu za osebno rabo in vec k€ za komercialne namene. Za Linux sem nasel se Festival."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 1. okt 2020 ob 17:34 izjavil:Za Linux sem nasel se Festival.   Festival je nekje iz iste kategorije/obdobja kot MaryTTS in je takrat pred dobrim desetletjem in pol veljal za neke vrste standard kar se tiče TTS sistema za raziskave. Tudi za Festival rabiš bazo s posnetki govora, tako kot za MaryTTS ali Tacotron. Res pa je, da je praviloma lahko manjša kot tista za globoko učenje. Prepričan sem, da tudi za Festival obstajajo odprtokodne govorne baze (hint: LibriVox) za angleščimo. Prednost Festivala je, da ne rabiš GPU. Je pa Festival korpusna sinteza, tako da ne boš dobil robotskega zvoka. Izpeljanka Festivala je FestVox, ki bi naj bil malo lažji za implementirati."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pozdravljeni! Sem soavtor sintetizatorja z imenom Govornik.   @assistant_2 je 1. okt 2020 ob 09:12 izjavil: Aja, še z moje strani pohvale avtorjem govornika! Za srednješolce je to res dober rezultat.  Hvala vsem za pohvale Govornika. Najin namen te raziskovalne naloge je bil najprej poiskusiti narediti sintetizator, vendar sva proti koncu raziskovalne naloge opazila, da deluje precej dobro. Zato sva se odločila, da ga dava v javno brezplačno uporabo. Kajti precej žalostno se nama zdi, da Slovenci nimamo brezplačnega sintetizatorja...  Prav tako je bil omenjen Tacotron. Orodje je precej napredno in se sliši obetavno, vendar je za nekaj takega potrebno veliko veliko ur posnetkov (LJSpeech je primer, ki ima 24 ur posnetkov, iz katerih se da narediti glas s pomočjo Tacotrona). Trajalo bi veliko časa, da bi pridobili velike količine posnetkov enega govorca... Prav tako je za treniranje takšnega modela potreben močan računalnik, ki pa ga marsikdo nima doma.  Največji problem izdelave sintetizatorja za slovenščino je torej pridobivanje velike količine posnetkov govora. Prav tako pa leksikonov za naš jezik (besede v SAMPA obliko, oblikoskladenjski slovar...).   @user je 1. okt 2020 ob 08:58 izjavil:Pozabil povedati, da potrebujem za anglescino in da ni treba da govori ne vem kako lepo. Govornik je menda online, nujno mora biti instalacija, da se glas ne spreminja.  Govornik je trenutno res potrebuje internetno povezavo. Prejšnja verzija Govornika za Windows je besedilo obdelala na lokalnem računalniku in samo poslala zahtevo MaryTTS za posnetek. Kasneje pa bo dostopen tudi program, ki bo vse to obdelal lokalno brez internetne povezave. In prav tako omogoča robotski glas in druge učinke, samo funkcija še ni implementirana v frontendu.   Lp vsem"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 1. okt 2020 ob 23:34 izjavil:@user je 1. okt 2020 ob 17:34 izjavil:Za Linux sem nasel se Festival.   Festival je nekje iz iste kategorije/obdobja kot MaryTTS in je takrat pred dobrim desetletjem in pol veljal za neke vrste standard kar se tiče TTS sistema za raziskave. Tudi za Festival rabiš bazo s posnetki govora, tako kot za MaryTTS ali Tacotron. Res pa je, da je praviloma lahko manjša kot tista za globoko učenje. Prepričan sem, da tudi za Festival obstajajo odprtokodne govorne baze (hint: LibriVox) za angleščimo. Prednost Festivala je, da ne rabiš GPU. Je pa Festival korpusna sinteza, tako da ne boš dobil robotskega zvoka. Izpeljanka Festivala je FestVox, ki bi naj bil malo lažji za implementirati.   Licenca:  http://www.festvox.org/cmu_arctic/cmu_a...  All voice talents have signed a waiver agreeing to distribution of their recordings under these terms.   V glavnem kakor ponavadi z Linuxom sem po dveh dneh nastudiravanja prisel do super rezultatov."
+    }
+]

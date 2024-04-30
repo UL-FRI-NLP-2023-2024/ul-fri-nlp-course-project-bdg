@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Računalnik kot računalnik(MB K9N NEO V3, AMD 6000+, 4GB RAM, Grafika GeForce 8600GT, inštaliran Windows XP Pro). Internetna konekcija je preko kablovskega modema in preko ruterja Sweex ki mi omogoča brezžično povezavo na internet z prenosnika.Konekcija je z DHCP pridobivanjem IP. Instaliral sem kot drugi OS Suse 10.2, vendar imam težave z internet konekcijom. Probal sem vse mogoče, pa mi ne uspeva priključiti se na internet. Poskušal sem tudi direktno priključiti se na modem in je bil rezultat isti - brez povezave.Ima kdo idejo kaj storiti?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj pravi ifconfig?  Si v yastu nastavil kartico? Mislim, da je po defaultu dhcp, ampak vseeno preveri."
+    },
+    {
+        "role": "user",
+        "message": "Ja, saj je dhcp, ampak ne gre ven. V yastu sem nastavil tisto kar se pac pri dhcp nastavlj, ampak zastonj je vse. Sem prelistal kompletne knjige ki jih imam, pa ne najdem in ne najdem kaj bi bilo narobe."
+    },
+    {
+        "role": "assistant_1",
+        "message": "V primeru če daješ XPje v hibernacijo, probaj še enkrat, to jih ne hibernirat, normalno jih ugasni."
+    },
+    {
+        "role": "user",
+        "message": "Kaj pravi ifconfig?  Si v yastu nastavil kartico? Mislim, da je po defaultu dhcp, ampak vseeno preveri.  Z ifconfig pridem do naslednjih podatkov: eth0 Link encape: Ethernet HWaddr 00:19:DB:CD:93:DA UP BROADCAST MULTICAST MTU: 1500 METRIC:1 Rx packets:0 errors:0 dropped:0 overruns:0 frame:0 Tx packets:0 errors:0 dropped:0 overruns:0 carrer:0 Collisions:0 tqueuelen:1000 Rx bytes:0 (0.0b) Tx bytes:0x1000  lo Link encape: Local Loopback inet addr: 127.0.0.1 Mask 255.0.0.0 UP LOOPBACK RUNNING MTU: 16436 Metric:1 Rx packets:74 errors:0 dropped:0 overruns:0 frame:0 Tx packets:74 errors:0 dropped:0 overruns:0 carrer:0 Collisions:0 tqueuelen:0 Rx bytes:5128 (5.0Kb) Tx bytes:5128 (5.0Kb)  Kartica je nastavljena na dhcp, vendar interneta nimam. Poleg interneta ne morem nastaviti zvocno kartico (integrirana v maticni plosci. Poskusal sem Suse linux zbrisati z ubuntom, pa mi ne ratuje, bootloader ne sprejema ubunta, a suse ostaje in ga je nemogoce izbrisati."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Izpis bi moral biti bolj podoben:  eth1 Link encap:Ethernet HWaddr 00:40:63:C3:86:ED inet addr:192.168.1.160 Bcast:192.168.1.255 Mask:255.255.255.0 inet6 addr: fe80::240:63ff:fec3:86ed/64 Scope:Link UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 RX packets:182 errors:0 dropped:0 overruns:0 frame:0 TX packets:208 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:1000 RX bytes:18440 (18.0 KiB) TX bytes:21474 (20.9 KiB) Interrupt:169 Base address:0xc800  Poskusi ročno zagnat dhcpcd ali pa dhclient in preveri če imaš naslov. Lahko poskusiš ip tudi nastavit ročno."
+    },
+    {
+        "role": "user",
+        "message": "Vse navedeno sem poskusil in mi ni ratalo. V obupu sem poskusil z novo namestitvijo po ne vem kateric, pri vprasanju v namestitvi da testiram internetno povezavo, pa sem isto odklonil in - internetna povezava je po restartu delovala. Popolnoma nic mi ni jasno po vsemu. Sedaj se iscem mogocnost da slisim zvok, pa ne morem najti nacina da se oglasijo zvocniki. Za zvok mi skrbi integriran Realtekov ALC888 Audio. Poskusil sem pridobiti gonilnik za isto, pa ne gre za sedaj.  Sicer sem se pa ohladil za suse linux, saj mi je pred polomijo kompletnega sistema bil instaliran Ubunto ki je pa deloval brezhibno. Ne vem zakaj sem sploh sel na suse linux, verjetno zaradi negdanje uporabe suse verzije 8 pro ki je funkcioniral odlicno, seveda na starejsi opremi pred kaksnimi peti leti. Vseeno hvala za nasvete."
+    }
+]

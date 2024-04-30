@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Zanima me, če ima kdo izkušnje s to brezžično povezavo in kako dobro deluje?  http://www.amis.net/web2/zasebni.php?pa...  Hvala  Lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Iz osebnih izkušenj ti lahko povem, da je oprema zelo dobra. Stabilno deluje in dejansko ima nadpovprečni signal. Zadeva je narejena z namenom, da v prvi vrsti omogoča stabilen prenos IPTV in to zelo dobro dela. Ne opaziš, da gre zadeva po zraku (ni pakcet lossa)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jp, tudi jaz lahko potrdim, da zadeva zelo dobro deluje. Imamo en usmerjevalnik in dva sprejemnika, vmes je veliko sten in vsega in zadeva dela super..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "cena?(cca)"
+    },
+    {
+        "role": "user",
+        "message": "cena?(cca)  Jaz sem gledal na Amisovi strani, kjer piše, da je cena v redni prodaji 274,80 EUR.  Ob naročilu Amis TV pa lahko dobiš Ruckus za 170 EUR tudi z možnostjo obročnega plačevanja.  Lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jp, mi smo dali tam okoli 250 EUR za komplet + še 100 EUR za dodaten sprejemnik (adapter). Je pa vredno vsakega centa IMHO."
+    },
+    {
+        "role": "assistant_3",
+        "message": "ali je lahko oddajnik osamljena enota ali mora bit povezan z računalnikom?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Povezan je z modemom."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja, z nečem mora bit povezan ane... običajno z modemom..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vprašanje za izkušene: A bi ta zadeva poslala signal iz podstrešja v drugem nadstropju, kjer je modem, skozi dve betonski plati do dnevne sobe s televizorjem?  Lahko tudi sprejemam stave, samo da najprej ugotovimo verjetnost :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Stavim par EUR na ja ;)  Trik je tukaj tudi v dobrem sprejemniku, ne samo v dobrem AP-ju ;)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ok, razmerje stav par evrov proti 1. Imamo koga s slabso izkusnjo? :)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Glede na mnenja, ki sem jih doslej prebral, ne dvomim, da je Ruckus odlična naprava. Glede na razgovor v eni izmed računalniških trgovin pa sem začel dvomiti, da je res vreden toliko denarja - prodajalec mi je namreč rekel, da naj bi novi 802.11N standard brez težav prenašal IPTV. Torej bi moral namesto Ruckusa kupiti 2 taka routerja in ju povezati v bridge. Cene 802.11N wireless naprav naj bi precej hitro padale, tako da bi verjetno kmalu lahko taka varianta stala pod 100 EUR, poleg tega pa bi se dalo skozi bridge \"stlačiti\" (poleg IPTV) še internet.   Je kdo tako postavitev že sprobal? Se obnese (vsaj) tako dobro kot Ruckus?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zakaj preko Ruckussa ne bi imel interneta že zdaj?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_6: Lej, finta je predvsem v tem, da mora biti povezava stabilna, da ne pride do kockanja v sliki. In Ruckusi imajo to odlično poštimano, ker so namenjeni prenašanju multimedijskih vsebin. Pri UDP protokolu pač ni ponovnega pošiljanja pokvarjenih paketkov...  Zdej, seveda obstajajo \"n\" rešitve, ki tudi podpirajo prenašanje multimedije, ampak stanejo vsaj toliko kot Ruckus, če ne celo več. Poleg tega je Ruckus že pred časom najavil nove modele MediaFlexov, ki prav tako podpirajo \"n\" standard."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Iz osebnih izkušenj ti lahko povem, da je oprema zelo dobra. Stabilno deluje in dejansko ima nadpovprečni signal. Zadeva je narejena z namenom, da v prvi vrsti omogoča stabilen prenos IPTV in to zelo dobro dela. Ne opaziš, da gre zadeva po zraku (ni pakcet lossa).  Ali mi lahko nekdo objasni par pojmov? Gre se za SIOL... Pri hiši imamo Ruckusa(adapter+usmerjevalnik(1komplet)). V spodnji etaži hiše je adapter vezan na TV komunikator. V zgornji etaži je usmerjevalnik povezan na modem preko WAN. Še en TV komunikator je v zgornji etaži direktno preko modema(IskrateL...) povezan v 3.port in vse lepo dela. Zanima pa me naslednje: ALI je možno preko usmerjevalnika spravit sliko na LAPTOPA(z naloženim VLC s playlisto od Siola) preko Wireless in obenem tudi če se da wireless nastavit internet? Preko laptopa lahko grem wireless v nastavitve Ruckusa, a internet mi piše da je DOWN. Slike preko VLC prav tako ni. Katere so tiste prave nastavitve, če se sploh da s samo enim usmerjevalnikom in adapterjem to rešit?   HVALA za odgovor, LP"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Glede wireless TV-ja. Kolikor vem, Ruckus oddaja dva signala. Enega za internet, kjer je SSID viden (nekaj v stilu V54-HOME...), in drugega za IPTV, kjer je SSID skrit. Na tega bi se mogel povazati za TV. Vendar moraš za to vedeti SSID (kar pa ne moreš, ker je skrit). Sedaj obstajate dve rešitvi. Ena je, da bi v Ruckus adminu se dalo nastaviti, da tudi drugi signal oddaja SSID, vendar te nastavitve jaz nisem našel. Tako pridemo do naslednje rešitve. S kakim orodjem (recimo airodump-ng - linux) pregleduješ promet na AP (seveda tisti, s skritim SSID-om). Ker se ob novi povezavi (ko se adapter na novo poveže) SSID pošilja v plain text bi ti ga programček moral izpisati. VENDAR :) airodump-ng sem laufal celo noč, vmes sam izklopil adapter tri krat brez uspega :( Tako da še vedno ne vem SSID-a.   Obstaja še tretja rešitev: mdk3 s katerim bi lahko z brute-force ali pa dictionary attackom izkopal SSID. Z brute-force bo malo težka, ker AP poleg tega, da skrije SSID, tudi sporoča, da je SSID dolžine 0 (še ena varnostna funkcija :). To pomeni, da neveš kolikšna je realna dolžina SSID-a in si primoran sprobavati vse kombinacije (popolnoma odsvetujem :). Za dictionary attack pa nevem, če bi dal kake rezultate.  Potem pa še obstaja četrta rešitev :) Da se najde nekdo na forumu, ki ve SSID :D. Sedaj pa samo čakajmo :p"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Predlagam, da si pogledate angleška navodila za uporabo. Najdete jih na spodnjem linku:  http://support.ruckuswireless.com/docum...  Tukaj je vse razloženo. Drugi SSID se lahko spreminja, samo v višjem nivoju dostopa. Več se mi ne da razlagat, RTFM ;)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "aaaa, pa sem iskal pa nisem našel :) No da vidimo kaj piše ;)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Se zahvaljujem za zgornji link :) Rešil vse probleme :) Wireless IPTV brez kakršne koli konfiguracije deluje BP. Povežeš se na omrežje s podatki, ki jih najdeš v tem manualu, potem pa rabiš samo še playlisto in VLC pa dela brez, da bi karkoli nastavljal.  EDIT: napake"
+    },
+    {
+        "role": "assistant_2",
+        "message": "atos malo vec povej o wireless iptv, kako imas vse skupaj nastavljeno,...."
+    },
+    {
+        "role": "assistant_8",
+        "message": "V bistvu je čist enostavno. Ruckus usmerjevalnik pač povežeš z modemom (v port, ki je namenjen video signalu). Kot sem že zgoraj opisal usmerjevalnik oddaja dva signala (oz. dve brezžični omrežji). Eno je podatkovno s SSID-om (imenom omrežja) nekaj v stilu V54-HOME001, drugo pa brez SSID-a (pomeni da je skrito). Meni se izpiše kot \"Other network\". Na to se moraš povezati. Rabiš pa dva podatka: ime omrežja in pa ključ. Oba podatka dobiš v administraciji usmerjevalnika tako, da se prijaviš kot \"super administrator\" (up. ime in geslo v zgornji povezavi na manual). Ko ju imaš (ime omrežja in pa ključ) pa se z računalnikom, na katerem želiš gledati TV, povežeš na omrežje. Potem še rabiš play listo za VLC media player (dobiš jo tudi na SiOL forumu - za SiOL - za ostale nevem - google is your friend). Odpreš VLC, naložiš play listo in gledaš.  No, še podatki za povezavo (nevem, če jih lahko objavim - če ne naj pač moderator zbriše ta del, da se jih pa dobiti v administraciji usmerjevalnika (SSID in ključ) oz. v manualu (up. ime in pass)):  Prijavni podatki za usmerjevalnik:  User: super Pass: sp-admin  SSID skritega omrežja: V54-390F40 Omrežni ključ: 9AB7F248591BD"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Torej, če razumem pravilno, kar si napisal: Če jaz povežem ruckusa z modemom na video portu, lahko preko super admina nastavim ruckusa tako, da bom z menjavo ssid-ja enkrat lahko gledal iptv preko vlc in playliste, drugič pa brskal po internetu?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Geslo in up. ime za super admina sem rabil samo zato, da sem ugotovil SSID skritega omrežja (s samo zamenjavo SSID-a ne boš nič pridobil - kvečjemu ti več adapter ne bo delal). Za internet nevem, ker imam ločen ruter. Jaz tukaj govorim izključno za TV. Z zgornjim SSID-om in omrežnim ključem se poveži na skrito omrežje, zaženi VLC s playlisto in gledaj TV :) Edino, boš mogoče še moral nastavit statični IP na mrežni, s katero se povezuješ na omrežje za TV:  IP (nekaj v stilu): 192.168.0.253 Maska omrežja: 255.255.255.0 Prehod (gateway): 192.168.0.1  DNS pusti prazno, moralo bi delovati tudi brez gateway-a. Mogoče ti IP-ja in maske omrežja niti ne bo potrebno nastavljati, ker ti ruter sam določi - nevem, nisem sprobal.  S takimi nastavitvami boš lahko enkrat gledal TV, drugič pa spet brskal po internetu. Oboje naenkrat ne. Če pa imaš slučajno dve ločeni mrežni kartici pa je tudi to možno :) Sam imam trenutno tako naštinamo, da imam preko kabla net, po zraku pa TV."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ok, zdaj poštimal, da zadeva laufa. Ruckus prkloplen na video port na modemu, adapter povezan s komunikatorjem. Preko wifi na laptopu tv dela na vlc brez problema. Ker sem preko super admin naštimal da mi pokaže SSId povezave, kjer se pretaka video promet se brez problema povežem, da tv dela.  Ne razumem pa, čemu služi potem navadna zaznana brezžična povezava, če vlc niti internet ne delata ko se povežeš.  Če nisi na optiki, ti 2825/2111 ne omogoča interneta/tv hkrati? (ali da bi vsaj lahko preklopil z menjavo zaznane brezžične povezave) Logično je, saj je ruckus vtaknjen v video port na modemu...  Ima kdo drugačno prakso?  LP"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Bom vprašal drugače: Se da zvezat kako drugače(ruckus kot switch), na modemu imam 1 lan port še prost...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "WAN port na Ruckusu se všteka v Video port na modemu. Promet iz WAN porta se bridga na IPTV SSID.  4. port switcha na ruckusu (DATA WAN port) se všteka v Data port na modemu. Promet iz 4. porta se preko NAT-a posreduje na DATA SSID (internetna povezava se terminira na Ruckusu - Ruckus 2825 deluje kot usmerjevalnik).  Porti 1-3 na Ruckusu so LAN porti. Promet se bridga na DATA SSID, če je to potrebno (lokalni promet)."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Car! Hvala ti..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Jaz pa imam Ruckus usmerjevalnik zraven hišnega PC-ja in bi želel prosti izhod izkoristiti za IPTV na PC-ju preko kabla. Stvar sem povezal vendar Aditya TV ne dobi signala, čeprav mi je prej stvar delovala, ko sem imel direkt povezano iz Siol-modema. Prosim za pomoč."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Geslo in up. ime za super admina sem rabil samo zato, da sem ugotovil SSID skritega omrežja (s samo zamenjavo SSID-a ne boš nič pridobil - kvečjemu ti več adapter ne bo delal). Za internet nevem, ker imam ločen ruter. Jaz tukaj govorim izključno za TV. Z zgornjim SSID-om in omrežnim ključem se poveži na skrito omrežje, zaženi VLC s playlisto in gledaj TV :) Edino, boš mogoče še moral nastavit statični IP na mrežni, s katero se povezuješ na omrežje za TV  Jaz nimam nobenega skritega omrežja na prenosniku! Prosim da bolj podrobno razložite."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Windows XP imaš? Za XP nevem, kako deluje, se mi zdi, da ti ga ne pokaže, če je skrito (čist možno da se motim). V tem primeru ga moraš ročno dodati. Obstaja pa še en lažji način: pojdi v administracijo od Ruckus (up. ime: super | geslo: sp-admin). Klikni na wireless (pod skupino Configuration) v levem stoplcu, potem pa na zavihek Video WLAN. Tam preklopi brodcast SSID na Enabled. Shrani nastavitve z Update settings. Tako omrežje ne bo več skrito in se ti bo pojavilo v wireless managerju. Zapiši si še Passphrase (potreboval ga boš, ko se boš povezal na omrežje). Sedaj bi se ti moralo tudi to omrežje pojaviti v wireless managerju. Poveži se najn in vpiši passphrase, ko bo to zahtevalo od tebe."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Sedaj sem stvar porihtal tako da imam na prenosniku (Vista Home Premium)tudi drugo omrežje, ampak ne morem imeti oboje omrežje (internet in IPTV) istočasno. Pišete, da je to možno. Kako?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "To ni možno. Je treba preklapljat med omrežji."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ni mozno? na wan je internet, na en lan priklopis se iz switcha se iptv bridge wireless in lan in preko wireless bi moglo iti in internet in iptv  bi ruckus to zdrzal?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za take čudne vezave ne morem nič garantirat, kako bo to Ruckus prenesel. Je treba probat. Zna biti, da se zadeva celo obnese oziroma deluje. Ja pa vezava z vidika načrtovanja omrežij katastrofalna."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ni mozno? na wan je internet, na en lan priklopis se iz switcha se iptv bridge wireless in lan in preko wireless bi moglo iti in internet in iptv  bi ruckus to zdrzal? Prosim te da to obrazložitev napišeš za take brihtneže kot sem jaz, ki ne poznam vse te terminologije in okrajšav, bolj podrobno in nazorno. Hvala ti."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Pozdravljeni!  Ta tema je res najboljša. Uspel mi brezžičen prenos tv signala iz usmernika na pc. Kak ste pa poštimal z internetom. Omrežje mi pc zazna se poveže vendar ne morem na splet. Mene zanima samo povezava pc z rockus-om usmerjevalnikom (kam je kaj povezano in kako so nastavljene nastavitve v rockus-u. Prosim za pomoč. Hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Malo si preglej priložena navodila. Mislim, da bi morali biti detajli noter napisani. Na kratko pa:  - modem nastavi, da deluje samo kot modem in ne kot usmerjevalnik - modemov DATA port poveži z 4. LAN portom na Ruckusu (port, ki je zraven WAN porta, ki je za IPTV) - v Ruckusovem GUI-ju pod Internet Connection (al nekaj takega) nastavi PPPoE sejo (seveda noter vpiši uporabniško ime ter geslo, ki si ga dobil od operaterja) - ko to narediš, bi se Ruckus moral povezati na internet in delovati tudi kot usmerjevalnik za internetni promet. Ko se boš povezal na SSID, ki je namenjen za DATA, boš lahko brskal po internetu"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Pozdravljeni!  Mam to zadevščno doma. Pa sem prebral že nekaj debat o nastavitvah vključno z tem Pa vse tiste angleške PDF faile.  Obupal sem.  Stvari sploh ne spravim v življenje. Pa delam po enih navodilih , pa po drugih , pa križem karažem menajvam kable , pa nič. To je sedaj moj zadnji poskus morda pa se končno posreči pa mi da kdo še kak pameten nasvet. Imam SIOL ADSL trojček. Modem je Sinope 568+, ... po moje kot večina.  Če že kaj mi uspe sicer priti v nastaitve Ruckosa , dalje je nula. Tu me pa že lep čas muči vprašanje, zakaj zaboga v mojem vmesniku pod Satus ali Configuration ni opcije INTERNET. JE device, Local Network, Wireless,... ni pa INTERNET.   Zatorej PLEASE pomagajte. LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "A IPTV ti dela, imaš težave samo z internetnim delom?  Če se tvoj GUI ne sklada z tistim, kar je napisano v navodilih za uporabo, zna biti čas, da pokličeš uradni servis ..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Lep pozdrav.Jaz bi narocal dodatno amis tv.Zanima me ali bi prezzicni usmerjevalnik deloval v sosednjo hiso.Priblizno 70m oddaljenosti,vmes sta dve steni.V svojem stanovanju bi imel zicno povezavo tvja. Sosednja hisa ima ze zdaj moj internet,ki brez problema deluje preko Linksys WRT54GL modema z dodatno nalozenim firmwarom,prej ni slo,oziroma je bil slab signal.Je mogoce tudi kaksna moznost,da bi bil brezzicni usmerjevalnik priklopljen pri sosedih v rac. nato pa brezzicno v njihov tv?hvala za odgovore Matej"
+    },
+    {
+        "role": "assistant_13",
+        "message": "brezizcna tehnologija se oddaja v kroga oziroma radiju okoli oddajnika...racunali smo da ruckus oddaja signal 250m okoli sebe.... no vsaj tovarna pravi tako..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_12: Ni variante, da boš spravil TV signal prek take razdalje brez kockic brez Ruckusa."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ali obstaja varianta da bi sprejemnik VF2111 uporabil za sprejem podatkov?  Namreč odšel sem iz SIOL-a na drug operater. Sem poskušal podatkovne linije 1-4 na oddajniku povezat z WAN priključkom vendar nobenega rezultata ni bilo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ruckus skonfiguriraj tako, da bo oddajnik vzpostavljal PPPOE povezavo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj imaš za en oddajnik? 2811 ali 2825?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "\"Ruckus skonfiguriraj tako, da bo oddajnik vzpostavljal PPPOE povezavo. \"  Nimam te variante saj je rockuc VF2825 priključen na drug ruter.  \"Kaj imaš za en oddajnik? 2811 ali 2825? \"  Oddajnik je VF2825 sprejemnik pa VF2111  Zanima me, če sprejmenik lahko izkoristim za sprejem podatkov oz. da opravlja isto funkcijo kot recimo wifi ključ in ne za sprejem zvoka ter slike."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če boš na skrajno desni port (WAN port, tisti, ki nima lučk) vključil zunanji usmerjevlanik, bo lahko naprava, ki je priključena na 2111, dostopala do interneta."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_0 je 2. feb 2012 ob 18:58 izjavil:Če boš na skrajno desni port (WAN port, tisti, ki nima lučk) vključil zunanji usmerjevlanik, bo lahko naprava, ki je priključena na 2111, dostopala do interneta.   Zadeva je taka, da imam usmerjevalnik v spodnji etaži rockus oddajnik VF2825 pa je v zgornji etaži povezana preko kabla, kjer je kabel vtaknjen v port 1. Nato sem poskusil iz porta 4 povezati z wan portom. Zadeva ni delovala, bom poskusil še to drugo varianto."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Našel sem sledeče:  Q:  How do i configure 2111 to connect to Data WLAN of the 2825? A:  1. Configure your PC with a static IP 192.168.0.100, 2. Log into 2111 by typing 192.168.0.254 into URL window of the browser on your PC. Use the super user login credential, 3. Disable Auto provisioning from Admin page, 4. Configure SSID and encryption method to match those of Data WLAN of 2825, 5. Save the configuration change by clicking Update button and reboot the 2111, 6. Make sure you change your PC to obtain IP address automatically.  Do tretjega koraka gre, dalje pa se zadeva zakomplicira. Nikjer ni opcije za onemogočitev nastavitev v koraku 3.   Mi kdo lahko pomaga kako naprej? Hvala.  Vprašanja in nekateri odgovori:  http://support.ruckuswireless.com/faqs/..."
+    }
+]

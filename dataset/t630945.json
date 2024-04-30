@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Imam enga Samsunga Ultrabook Series5, 250GB SSD disk, naložen Win 8.1 in UEFI. Particije:     Vse skupaj želim formatirati in narediti clean inštalacijo Ubuntu. Na kaj moram biti pazljiv? Ker sem imel težave ko sem vstavil prazen SSD, saj nisem mogel bootati nič, dokler nisem na kloniral HDD-ja na SSD. Predvidevam da zaradi zagonske particije. Ni mi tale UEFI najbolj jasen. Se da temu izogniti?  Kaj bo torej najboljše, da naredim?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "nastavi na legacy in inštaliraj normalno."
+    },
+    {
+        "role": "assistant_1",
+        "message": "EFI potrebuje posebno particijo, na katero vsak OS namesti nek svoj bootloader."
+    },
+    {
+        "role": "assistant_2",
+        "message": "UEFI je načeloma precej enostaven, ampak če te tehnikalije in prednosti ne zanimajo je \"legacy\" nasvet super."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja, je precej enostavno in se ga naučiš, ker se ga moraš, če nimaš legacy opcije.  Pa v nekem EFI Boot ... zadevi je potrebno določiti, kaj bo prevzeto pognal."
+    },
+    {
+        "role": "assistant_0",
+        "message": "si ziher da ni legacy opcije ? interneti pravijo drugače    OK I figured it out.  Under the Boot tab I needed to Disable Secure boot, this added an option to choose a boot option which includes CSM, UEFI and CSM and UEFI. Searching over the web I found that, at least the BIOS version in Samsung Series 5 (not sure if all Series X) does not work quite well with UEFI by itself, but it needs compatibility support.  So by using CSM or CSM and UEFI I was able to get my bootable devices listed again (I still wonder why the maker sets UEFI as an \"optimised\" default if it's not totally supported).  And by disabling Fast boot mode under Advanced tab, bootable USB is now running!  Anyways, thanks for your help!! :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če disablaš secure boot še vedno lahko imaš UEFI, samo ne preverja se, če je pravilno podpisan.  V biosu potem dodaš image, ki ga misliš naložit."
+    },
+    {
+        "role": "user",
+        "message": "nimam legacy mode, imam pa CSM OS. je to to?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "csm je legacy bios"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pa saj ni težko postavit UEFI za Ubuntu. Za nagrado dobiš precej hitrejši boot, kar je tudi nekaj vredno. Poženeš Ubuntu Live in z gparted narediš particije...  https://help.ubuntu.com/community/Insta..."
+    },
+    {
+        "role": "user",
+        "message": "Meh, ne da se mi s tem ukvarjat, pa tudi bootam 1x na dan, kar mi ne pomeni nič.  Torej dam na CSM (oz. imam možnost CSM and UEFI), vstavim LiveUSB, formatiram, ustvarim root in swap particijo pa to je to? ;)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Yup."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za 1x, poročam pol."
+    },
+    {
+        "role": "user",
+        "message": "Vbistvu sem namestil v EFI mode-u, ni bilo druge izbire :P Ni pa nič takega, le EFI particijo je potrebno ustvariti (poleg root in swap) in to je to.  LP"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Drži. Bit mora \"bios boot\" particija, na kateri je potem tisti EFI image (ki je v resnici grub)."
+    }
+]

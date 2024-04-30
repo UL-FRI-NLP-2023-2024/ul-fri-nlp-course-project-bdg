@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  napisanega na to temo je kar nekaj, vendar nikakor mi tega ne use nastaviti...  Imam A1 xDSL 30/5 (TS infrastrukutra), Ubee modem je v bridge načinu, nanj imam povezan TPLink-1043nd router(najsvežejši dd-wrt gor), ki vzpostavlja povezavo z internetom. STB bi rad priklopil direkt na router (se najhaja za TVjem) in ne na modem (razdalja med slednjima je 3-4m), saj raje ne bi vlekel še enega kabla po dnevni sobi.  Klical na A1 podporo, kjer so mi svetovali, naj raje imam 2 kabla (), saj da je nastavljanje tega komplicirano, ob vprašanju za dodatna pojasnila pa je bil odgovor, da sta dva kabla pač elegantnejša, zato nisem več drezal.  Nekaj opcij sem pogledal: https://www.dd-wrt.com/wiki/index.php/I... http://fredericiana.com/2012/05/30/fun-... ... vendar s te moke ni kruha...  Ima kdo praktične izkušnje s tem oz. kaj in kako lahko to uredim?  Najlepša hvala za vsakršnjo pomoč!  LP @user"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če že imaš kabel...nabavi mini 10/100 switch (5-portni so okoli 10EUR) in ga vklopi med router in modem, STB pa priključi na switch.  Stvar bo delovala tako, kot če bi napeljal še en kabel, na routerju pa ne rabiš 'čarat'."
+    },
+    {
+        "role": "assistant_1",
+        "message": "ne vem kako je pri a1, ampak jaz imam t2 in imam tako nastavljeno in mi stb dela brez problema preko routerja (1043nd v1 + lede)    (glej lan4)  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ampak zakaj bi STB fural čez router?!?  Kot prvo ga po nepotrebnem obremenjuješ, dodajaš nepotrebno latenco, zakockaš sliko s kakšnimi torrenti, pa še zajebavaš se, da stvar sploh pripraviš do delovanja.  Za manj kot 10EUR se vsega tega otreseš. Čemu se potem zajebavat?  OP-ov primer je nekoliko 'poseben', ker ima kabel z modema napeljan do TV, kjer ima tudi router in STB. Če bi imel router poleg modema, STB pa bi selil po hiši ali imel več STB-jev, potem bi bilo smiselno zadevo 'stlačiti' čez router. Ali pa tudi ne - če imaš pameten switch s podporo VLAN-ov in ustrezno ožičenje..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 dobr, cena stikala je ok glede na porabljen čas, ki sem ga vložil v iskanje rešitve, vendar stikalo ostaja plan B, saj to pomeni, da moram porabit še eno vtičnico, da priklopim še stikalo na štrom. Koliko pa bi se slika kockala, ne bi vedel, ker nimam izkušenj s tem...  @xy90 dd-wrt ma malce drugače nastavitve; je pa tudi razlika, ker broadcom majo vlane že med nastavitvami, atheros (tpl-1043) pa ne (opcija vlan tagging pa potem dodajaš...)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "http://www.dd-wrt.com/wiki/index.php/VL... http://www.dd-wrt.com/wiki/index.php/Sw...  video vlan je 8. Enjoy."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pa saj ne rabi prometa dejansko furat čez routerjev CPU, da bi ga s tem dodatno obremenjeval. Samo VLANe se ustrezno nastavi na switch chipu, ki je del te iste škatle.   Potrebno je samo ugotovit, kateri VLANi se uporabljajo, če uporabljajo VLAN per service. Če se prav spomnim, je bilo omenjeno, da ima A1 različne konfiguracije VLANov, glede na to, na katerem omrežju se nahajaš (OŠO, LLU, WS, ...). Bi bilo treba vprašat, ali pa zajet promet z Wiresharkom, da se pogleda. Če imajo slučajno VLAN per customer, pa bo dovolj že, da se v VLAN, ki pride untagged na WAN port in gre potem na CPU tagged (kot WAN interface), doda še en access port (untagged), kamor bo priklopil STB. No to je točno to, kar je naredil xy90 za T-2, vendar ne vem, če A1 uporablja enak model.  Telekom recimo uporablja VLAN per service in na portu, ki je nastavljen kot trunk, dobiš untagged DATA VLAN, ter tagged VIDEO VLAN z ID 3999, s tem da novejši boxi, ki omogočajo ogled za nazaj, potrebujejo oboje. Kolegu sem BP nastavil VLANe na 1043NDv2 z OpenWRT tako, da gre od enega 1043NDv2, ki deluje kot usmerjevalnik, do drugega, ki je samo dostopna točka, samo en kabel. Ravno tako gre samo en kabel od Telekomovega modema (port nastavljen na trunk) do prvega 1043NDv2. Ima pa potem na drugi strani en port nastavljen za STB (untagged DATA + tagged VIDEO VLAN) ostale pa v lokalni mreži (ločen VLAN), kamor je bridgean tudi WiFi."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Da si sposodim to temo, ker imam mogoče podoben primer kot OP in sicer po menjavi starega Thomson-a 780wl smo dobili nov, sodobnejši modem (Ubee) in se ne spomnim, če so takrat pri starem modemu kaj spreminjali, vendar ko imam router (wrt54gl) priklopljen, wifi-ja ne uspem vzpostavit za nič na svetu. Probal sem router postavit v omrežje modema in izven dosega DHCPja, pa nisem uspel.   Ima kdo kakšno idejo?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Nov modem je v bridge mode ?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja, sem probal enablat in disablat bridge mode, pa ni razlike"
+    },
+    {
+        "role": "assistant_6",
+        "message": "ne vem zakaj bi še uporabljalwrt54gl. ubee ima proti wrt54gl dosti boljsi wifi."
+    },
+    {
+        "role": "user",
+        "message": "vlan_tagging1   vlan_tagging2   vlang_tagging3  @assistant_2: 8 sploh nimam? ali ne razumem mogoče prav?  p.s.: za info,imam 2 wifi omrežji, eno zame, drugo za goste (2dhcpja laufata)"
+    },
+    {
+        "role": "user",
+        "message": "Sem se predal - uzel stikalo TPL sf1005d...ko kar koli drugega priklopim na stikalo poleg routerja ta ne more vec vzpostaviti povezave z internetom..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Da ne odpiram nove teme. Ve mogoce kdo kateri VLAN se uporablja za A1 TV na Telekomovi optiki? Zelim zamenjat to ogromno skatlo, ki jo da A1 kot modem, ker je ne spravim v omarico (vrat se ne da zapret)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "a imaš nočno ali TK omarico ?   a na steno se je ne da spravit ?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ma tota stenska je in je ta skatla predebela, da bi sla cela noter. Sem uspel zrihtat. Wireshark vse resi :D Super dela sedaj vse preko Mikrotika."
+    },
+    {
+        "role": "assistant_2",
+        "message": "3970 al neki...wireshark it."
+    },
+    {
+        "role": "assistant_7",
+        "message": "3970 je ja, in ja, Wireshark je resil zadevo v minuti"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Sam imam tudi problem spravit STB preko routerja. Imam Ubee modem in gor vezan Asus RT-N18U v AP mode(firewall itd.. vse ugasnjeno). STB mi na Asus občasno pokaže pod LAN client, na Ubee pa kaže flags kot incomplete. Kaj morem na Ubee modemu nastavit, da bi zadeva špilala.. Še en kabel direkt modem-STB je velik problem."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Sem uspel prek njihovega modema v bridge in mojega Asus routerja usposobit IPTV na PORT4 , ampak ne dela pa internet na STB-ju - manjka info o programih itd.. Kako to usposobit? Verjetno bi mogel dodat VLAN ročno preko telneta glede na to, da nekih opcij znotraj stock firmware ne najdem.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "kater ip dobis na stbju?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "narediti moraš (L2) bridge IPTV vlana iz modema na port na katerem imaš STB.  ali pa kabel iz modema na STB"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Evo tabelo. So se zdaj tudi manjkajoči podatki streama pokazali tako, da zaenkrat špila. :) Pod DHCP oz. connections STB ne vidim.."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_8 je 11. apr 2019 ob 20:19 izjavil:Evo tabelo. So se zdaj tudi manjkajoči podatki streama pokazali tako, da zaenkrat špila. :) Pod DHCP oz. connections STB ne vidim..       Zakaj si dal iptv na svoj router ce ko ti vklopijo bridge nacin na modem ti dajo samo v bridge 192.168.1.x za net za svoj lasten router (lan1), medtem pa 192.168.2.x iz njihovega modema za iptv (lan2).  Stvar kar lepo deluje...malenkost ping je malo visji (8) v razliko z drugimi prej (4-5) ampak to verjetno ker je pppoe seja!? Ker drugi imajo dhcp...  Govorim za optiko gpon od TS"
+    }
+]

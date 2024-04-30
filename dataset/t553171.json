@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Čav, imam en res čuden problem na mojem laptopu z vsemi os-i nasploh.   Težko je to objasnit, ampak bom poskušal.  Ko sem dobil moj laptop (Asus K55a), sem nanj naložil windows7. Delalo je super, vsi programi so delovali, skratka vse je štimalo. Kasneje sem zaradi praktičnih razlogov naložil Linux Ubuntu 12.10, ki je ravno tako deloval super, kot vse ostale distribucije, ki sem jih sprobal - Mint, Xubuntu, Ubuntu Studio, itd itd.  Kasneje sem ponovno naložil windows7, saj sem potreboval windows okolje zaradi določenih studijskih audio naprav, ki zaenkrat še nimajo podpore za linux okolje. Eko tukaj se začnejo problemi.  Ko sem inštaliral windows7 sem najprej opazil, da mi nekateri programi, ki so mi prej delovali brez najmanjšega problema, ne delujejo več. Skoraj za vsak večji program ali igro (npr. Cubase5 in Skyrim) so redno manjkale nekatere dll datoteke.   Ko sem iz spleta programom priskrbel vse zahtevane manjkajoče datoteke, so se nekateri zagnali (Skyrim), nekateri pa sploh ne (npr. Cubase5). Pa tudi, ko se je Skyrim zagnal, ni deloval korektno. Če si v nastavitvah nastavil, da prikazuje podnapise, se to ni zgodilo. Ko sem naprimer v uvodni špici z ostalimi ujetniki prišel v mesto, se je igra ustavila tam, kjer bi mogli skočit ven iz voza. Enostavno nič se ne zgodi. Z nekaterimi ostalimi programi sem imel podobne probleme. Iz tega sem sklepal da je najverjetneje s samo inštalacijo nekaj narobe. Zato sem poskusil sistem naložiti še enkrat. Ponovno brez uspeha. Točno isti problemi, kot zgoraj navedeni. Nato sem sumil, da je s cdjem nekaj narobe. Zaženem cdcheck, nakar dobim potrditev, da je s cdjem vse ok.   Potem sem prišel na idejo, da bi namestil vseeno Linux nazaj, saj mi je nazadnje deloval kot mora.   Vendar temu spet ni tako. Namestil sem ubuntu 12.04LTS, in se mi dogaja kar redno, da zmrzne unity vrstica, pa čez 20 sekund odmrzne, pa čez čas spet zmrzne... Pomaga samo log out, potem spet teče normalno.   Zgodi se mi celo, da crknejo komplet opravilne vrstice programov. Npr. delal sem nek dokument v Libre Office Writerju, nakar sm hotel shranit ampak niti eden od gumbov v opravilni vrstici se ni odzival. Spet je zalegel log out oz. restart.   Nazadnje se mi je zgodilo celo to, da mi je crknila sistemska opravilna vrstica. Sem hotel ugasnit računalnik, ampak ko sem kliknil na komando \"Shut Down\" se ni nič zgodilo. Ugasnit sem ga moral preko fizčnega gumba na računalniku.   Zato sem še enkrat ponovil tudi to inštalacijo ampak spet ista zgodba. Po updejtih ubuntuja sem na prvi inštalaciji ob restartu dobil ob nalaganju ubuntuja celo obvestilo, da sistem ne more najti / mape, torej sistemske.   Spet sem sumil na slab inštalacijski cd. Zato sem prek ubuntu instalerja zagnal cdcheck. Tudi tokrat je vse štimalo z inštalacijo.   Začel sem sumiti HDD. Zagnal sem badblock test in po 3 urah testiranja ugotovil, da nimam okvarjenega niti enega sektorja.   Sedaj ne vem več kaj storiti. Kaj bi lahko bilo narobe? Zelo mi je nadležno vse skupaj ko takole heca računalnik. Je možno, da je kriva optična enota?  Za vsak slučaj bom poskušal še enkrat namestiti Ubuntu prek USBja, pa da vidim, če bi to rešilo problem.   Še kakšne druge ideje?  P.S.: Se opravičujem za textwall, ampak ne vem, kako bi to detajlirano objasnil krajše. Upam da se bo komu dalo to prebrat."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Si preveril rame ?  Lahko da dela štalo os. plošča ali napajalnik ;).  Za hdd test poženi proizvajalčevo orodje. Diagnostična orodja in reševanje podatkov s trdih diskov"
+    },
+    {
+        "role": "assistant_1",
+        "message": "na blef bi rekel da imaš defekten ram"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Imam podoben problem na mojem HPju zaradi takega saltanja win in linux. 12.10 je delal grozno, zmrzoval, itd...instaliral 12.04 in je nakekao delal, vendar dalec tako dobro kot winsi. Sem pol kar obupal in nalozu nazaj winse in sedaj ko zaprem pokrov in odprem gre svetilnost na min in jo ne morem vec nastavljat ce ne rebootam...pravtako ce dam v sleep, zbudim in zazenem kak video dobim po kaki min black screen...spet treba rebootat. Sam bi reku da rabim en konkreten format HDDja, ampak ni zdaj casa za to na zalost."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Preveri še kako ti dela ubuntu live !"
+    },
+    {
+        "role": "user",
+        "message": "Pravkar sem zagnal memtest za 3 ure in ni pokazalo nobne napake. Zgleda da je ram kul. Še kakšna ideja?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Sata kontroler? Pa memtest+ ne pokaže vedno slabe rame.  Formatiraj, oziroma zbriši vse particije. Zaženi en liveCD. Naredi bilokatero vrsto particije. Priklopi zunanji disk. Skopiraj 50GB. Naredi bit by bit check datotek. Pa v liveCD okolju naredi še en stress test (to bi jaz prvo naredil)."
+    },
+    {
+        "role": "user",
+        "message": "Hmm bom poskusil, sedaj si vlečem dol iso da naložim na USB, da preverim, če slučajno optična enota ne štrajka.  Hmm, tisto z zunanjim diskom izgleda super ideja, bom poskusil."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Samo kaj ko ne boš zvedel natančnega razloga, če se datoteke ne bodo ujemale. Lahko je kontroler na plati, disk ali pa celo USB* (preko katerega boš priklopil zunanji disk).   *kar bi pa pomenilo, da je nekaj narobe z chipsetom.   Je pa res, da ti zooža krivca.   Hmm, po premisleku, ... je lahko kriv tudi procesor. To bi se pa mogoče dalo ugotoviti z PIO vs. DMA mode za nastavitev za disk v BIOSu... Hmm... Bi moral malo bolj premisliti. Sedaj samo mečem ideje.   Sporoči, pa bomo mogoče skupaj ugotovili.   edit: A imaš v BIOSu ali mogoče na CDju opcijo \"Full Thorough Test-a?\" Jaz ga imam v BIOSu in traja ene štiri ure."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pa si naložil vsak OS na svojo particijo? Jaz bi raje v VBoxu laufal te linux distribucije."
+    },
+    {
+        "role": "user",
+        "message": "Hmm, a je možno, da je krivec program MyUnity? Sedaj sem preklopil iz modified Unityja, kjer se je to dogajalo, na Unity2D standard in že cel dan dela brez problemov...  Morm pa še veliko testov nardit, ker me res firbca, da ni slučajno kaj z hardwarjem.  OS sem inštaliral vedno na novo particijo ampak to ni bilo pač vsak dan. Recimo sem imel Ubuntu Studio skoraj mesec dni pa potem naložil novo distribucijo..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Itak da je s hwjem neki ce mas tok problemov. Procesor ni nikol fuc, ce je plata potem se naceloma sploh ne vzge, taki random simptomi so v vecini primerov fuc ram in nevem zakaj bi se z vsem drugim prvo ukvarjal..sposodi si en ram nekje in testiraj."
+    },
+    {
+        "role": "assistant_3",
+        "message": ">Procesor ni nikol fuc  False.   >ce je plata potem se naceloma sploh ne vzge  False. (Poglej si mojo temo.)   >taki random simptomi so v vecini primerov fuc ram  RAM bi tudi jaz prvo zamenjal, ker kot sem omenil, memtest86+ ne pokaže vedno, če je RAM krivec za napake."
+    },
+    {
+        "role": "assistant_3",
+        "message": "RAM bi tudi jaz prvo zamenjal, ker kot sem omenil, memtest86+ ne pokaže vedno, če je RAM krivec za napake. Pri memtestu sem jaz ugotovil naslednje: če je ram ploščica fuč, bo takoj, maksimalno po parih minutah, začelo kazati napake ali pa bo vse OK tudi čez 4 ure. Čudno, ampak pri meni je pač tako bilo že 2x. Enkrat na prenosniku, tam memtest ni pokazal nobene napake, čeprav se OS ni mogel niti naložiti (iz diska ali LiveCD) ali inštalirati. Drugič na Desktopu, ko mi je šla ploščica, je pa memtest takoj ko sem ga zagnal, začel izpisovati napake. Čudno obnašanje memtesta, zato mu jaz ne zaupam 100%, a kaj češ.   >>ce je plata potem se naceloma sploh ne vzge > >False. (Poglej si mojo temo.)  Meni se računalnik zaradi fuč plate ni hotel pravilno ugasniti, drugače je pa vse delalo normalno. A ko sem dal Shut Down (v bilokateremu OSu), se je OS zaprl, monitor ugasnil, a vsi ventilatorji so še vedno delali - vent od napajalnika, dva ohišja, dva procesorja in na grafični. Knofa na ohišju za reset ali za vžig oz. pri meni za izklop nista nič naredila, sem moral kabel iz napajalnika potegniti (oz. stikalo na napajalniku). Ko sem pa zamenjal ploščo, vse kable enako pravilno (kot prej) priklopil, je pa normalno delalo."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Js bi najprej pregledal software, preden začneš odpirati stvar.   Zdaj če imaš še windowse gor, bi rekel, da glede na to, da so windowsi sveži, nimajo inštaliranega vsega, kar nekateri programi potrebujejo. Za začetek, bi tako namestil Microsoft NET framework(vse update), in directx. Mogoče tudi sveža namestitev grafičnih driverjev. Se mi je to že dogajalo z nekaterimi igrami pri sveže naloženih windowsih, in je inštalacija teh zadev stvar odpravila. Seveda ne pozabi restartat kompa po inštalaciji(Čeprav v današnjih windowsih naj bi to delovalo on-the-fly)."
+    },
+    {
+        "role": "user",
+        "message": "Ne ne, windowsev nimam več. Vedno sem imel gor Linuxe, Windows sem dal samo ker sem hotel usposobit na laptopu moj studio sound card.   Sem pa naredil, kot sem zgoraj opisal, poskušal distribucije naložit prek USBja. Sedaj sem stestiral Xubuntu (ki je delal brez napak), kasneje pa prešaltal na Studio Ubuntu, saj mi je prav prišlo programje na njem. Sedaj se že cel dan hecam s tem distrojem in se mi ni zgodila še niti ena čudna stvar. Nič se mi ni še sesulo. Upam, da tako tudi ostane.  Aje kakšna varjanta da sprobam sam sistem s kakšnimi check orodji, ruknem kakšne stress teste, oz. nekaj, kar bi na tak ali drugačen način obremenilo hardware ali pa napravilo thorough test OSa in hardwara?  Možna je tudi varjanta, da 12.04 ni dobro sedel z mojo opreme. Hmm kdo ve.  Rad bi naredil čimveč testov, kajti kljub temu, da je moj prenosnik še vedno znotraj garancije nebi ravno pošiljal na servis. Čakal bi mesec dni, na koncu pa gotovo dobil nazaj pismo, da mam v računalniku kakšno vodo ali kaj podobnega. Zadnje čase kar preveč tem na tem forumu priča o podobnem.   Skratka, Ubuntu Studio 12.10 sedaj dela zaenkrat odlično. Upam, da tako tudi ostane."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Za linux imaš na voljo: GIMPS, CPUBurn, SPECviewperf 9 (GPU), Bonnie++ (FS), ter MySQL ima nek program za benchmark. Phoronix Test Suite je pa bolj all-in-one - sam ga ne poznam.   lm sensors je za monitoring voltaž, ventilatorjev in temperature.   Lahko skompajlaš Kernel ene parkrat za probo in ga uporabi v virtualki, če dela vse OK.  Ja. To bi jaz naredil: V Virtualki bi skompajlal kernel, ga uporabil, potem bi pa nekaj zgoraj naštetih programov uporabil (GIMPS recimo).   Seveda če imaš procesor, ki podpira virtualizacijo oz. vklopi v BIOSu."
+    },
+    {
+        "role": "user",
+        "message": "Bom poskusil. Podpira virtualizacijo seveda, noter imam i7 3610 QM. Ok sedaj se mi je v celem dnevu dela z računalnikom zgodilo, da mi je zmrznu vmesnik za gmail. Vse ostalo se je odzivalo super, z browserjem vred.  Kako sem lahko ziher, da ni to problem hwja temveč le mogoče freeze java skripte?  Ko sem zaprl zavihek z gmailom in odprl novega je seveda delal gladko."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "role": "user",
+        "message": "pozdravljeni,  imam težave pri vzpostavitvi vpn dostopa do mojega omrežja  moje omrežje je sestavljeno takole   omrežje  na mikrotiku sem nastavil VPN ipsec L2TP  če se z telefonom povežem na wifi od siola, se vpn povezava vzpostavi če pa telefon prestavim na podatke, in se poizkusim povezat preko javnega IP naslova siola, pa se povezava ne vzpostavi  na siolu sem nastavil port forwarding na naslov, ki ga siol dodelil mikrotiku (192.168.1.2) odprti porti so (500, 1701, 4500) - protokol UDP  a bi še moral kaj odprte da bi delovalo ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ko si na wifi brskas po notranjem omrezju, privatnem, ko si pa na podatkih, si pa zunaj in bos rabil vedet siolov zunanji naslov.   Segment ki se zacne na 192 ali 172 ali 10 so privatni in dokler imas ip na tel, ki se zacne 192 bos prisel na remote.  https://en.m.wikipedia.org/wiki/Private...  Ti moras vedet aioliv zunanji ip in potem v siol boxu narest port fowarding na notranji"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Poizkusi dodati še ESP protokol. Pa mogoče še odkljukaj \"permit independent port sharing\" v koliko imaš FritzBox."
+    },
+    {
+        "role": "user",
+        "message": "jop imam to...ko sem na podatkih uporabljam javni naslov 109.x.x.x na siolu imam tale portforwarding     modem je iskratel V45 ponudi pa samo tele protokole"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Glede tega je FritzBox (vdsl) bolj fleksibilen. Ima še GRE in ESP, plus tega ima še VPN opcijo (Cisco Ipsec VPN). In VPN na Fritzu lepo špila, za PPTP pa uporabljam pprt forwarding na cheap TP-Link Router."
+    }
+]

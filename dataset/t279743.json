@@ -1,0 +1,114 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Odločil sem se, da sistem nadgradim z Q6600 procesojem, vendar sem se ustavil pred vprašanjem, na katero ploščo naj ga posadim. Potreboval bi vaš nasvet. Ali naj bo plošča s P35 chipsetom ali kakšna Nforce 650/680? Navijal ne bom, želim pa ploščo, ki mi bo omogočala še kakšno nadgradno procesroja v prihodnosti. Prosil bi vas za konkretne predloge in razloge. (imam Nvidia 8800 GTX grafično).  Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz predlagam P35 chipset. Je boljši kot Nvidia. P35 je trenutno daleč najboljši chipset, čez kakšen mesec pa zna že priti X38, ki bo bojda še boljši   P35 je naslednik chipseta 965, X38 pa bo naslednik chipseta 975  Z ploščam X38 naj bi prišel novi PCIe 2.0 in FSB 1333"
+    },
+    {
+        "role": "assistant_1",
+        "message": "P35 ima tako FSB 1333 kot naj bi tudi imel PCI-E 2.0"
+    },
+    {
+        "role": "assistant_2",
+        "message": "P35 chipset že podpira FSB 1333. Mojo plato vidiš v podpisu in ti jo lahko samo priporočam."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jasno, da se da naštimat 1333, saj se da tudi 1500, če BIOS to omogoča. Nima pa naravne podpore, da bi BIOS sam izbral 1333. Tisto ko ti ročno premakneš na 1333 je v bistvu že overclock. PCIe 2.0 pa trenutno ne podpira še prav nobena plošča, ki je zunaj. Glede tega je kar nekaj prerekanja in nejasnosti po forumih, ampak na koncu so se nekako izjasnili, da nihče še ni videl plošče z podporo PCIe 2.0. Izdelovalci plošč bi lahko podporo za novi PCIe vklučili tudi v plošče z P35, ampak jo niso. Prve plošče, ki bodo to podpirale bodo tiste z X38. Sicer pa to nima nobene ga vpliva na hitrost dokler ne pridejo vem grafične z podporo PCIe 2.0, pa še takrat je vprašanje ali bo to imelo kašen smisel, podobno kot pri AGP 4x in AGP 8x ni bilo praktično nobene razlike."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Daj najprej preveri, potem pa svoje trdi!  KLIK do Asus strani In še citat: This motherboard supports the latest Intel® Core™2 processors in LGA775 package. It also can support Intel® next generation 45nm Multi-Core CPU. With new Intel® Core™ microarchitecture technology and 1333 / 1066 / 800 MHz FSB, Intel® Core™2 processor is one of the most powerful and energy efficient CPU in the world.  PCI-E 2.0 na P35"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Včasih sploh ne vem zakaj se trudim in odgovarjam, če ljudje nič ne razmišljajo. Počasi preberi še enkrat vse kar sem napisal. Daš link do ASUS plošče, kjer ti lepo piše Dual-channel DDR2 1066/800/667 MHz Spoadaj pa: Native DDR2 1066 Support To attain top performance, ASUS engineers have successfully unleashed the true potential of DDR2 memory. While in DDR2 1066 mode, ASUS´s exclusive technology offers a choice of FSB 1333 - providing great performance for 3D graphics and other memory demanding applications.  Nobena plošča trenutno še nima \"Native 1333 Support\"  Glede PCIe 2.0 pa se sem omenil, da so ljudje zmedeni in link, ki si ga dal sem si ogledal že 2 meseca nazaj. Dejstvo je, da ni zunaj nobene plošče, ki bi imela PCIe 2.0 support."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mi se pogovarjamo o FSB-ju procesorja in ne rama!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1, hudo smo zašli iz teme in to prepiranje ne bo prepečencu čisto nič pomagalo. FSB je en sam. Front Side Bus imenovan tudi sistemsko vodilo pri Intelu sploh ni del procesorja. AMD je pri teh rečeh precej bolj napreden in je FSB opustil že pred leti. Torej FSB je vodilo na matični plošči z katerim je CPU povezan z severnim mostom, ta pa je direkt povezan z spominom. Če torej spreminjaš FSB se dviguje frekvenca tako na CPU kot na RAMU."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Napisati bi moral: Mi se pogovarjamo o FSB-ju in ne hitrosti rama. P35 ima nativno podporo za FSB 1333 in podporo ramu 1066mhz. Bo dobr?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Jp native podporo ima 1333 ker so tud core duo procesorcki zdej uzunej s 1333fsbjem nprimer e6650.  Drugač če neboš navijal je ubistvu vseeno katero plato kupiš zdej glade stabilnosti in podpore kar je nad 130EUR je dobr. Jest mojga Q6600 in 8800gtx ženem na asus p5kc in nimam kej rečt dela odlično še navit se da dost dobr ima tud dve pcie reži.  Drugač ful priporočajo tole od asusa deluxe sam je bl navijalska plata."
+    },
+    {
+        "role": "user",
+        "message": "V bližnji prihodnosti se bo torej zgodil X38. Kdaj pa bo kaj novega s strani Nvidie (ali koga tretjega)?  Če izpustim vaš prepirček v zvezi s FSB-jem, me zanima če ste si vendarle edini, da je ta trenutek naj-chipset za quad procesorje intelov P35?  Glede na to da imam Nvidia grafično kartico (8800 gtx), me zanima, če je kaj logike v ugotovitvah nekaterih, da se le ta najbolje ujema z nividinim chipsetom? Ali gre pri tem zgolj za \"ujemanje\" v imenu?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poenostavljeno povedano: FBS je frekvenca, s katero se procesor pogovarja z ramom. Vsaj v najbolj osnovni teoriji.  Različne implementacije so očitno prisotne, vendar zdi se mi skrajno neumno, da pišejo specifikacije \"FSB 1333, ram 1066\".  Že ime Front Side Bus, je (skoraj) dovolj zgovorno: definicija: \"FSB: The connection of a microprocessor to the memory subsystem.\""
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user:   > me zanima če ste si vendarle edini, da je ta trenutek naj-chipset za quad procesorje intelov P35?  Ja, to se verjetno vsi tukaj strinjamo. Ni nobenega konkurenčnega chipseta trenutno prisotnega na trgu. Tudi vsi benchmarki po internetu so narejeni s platami s tem chipsetom."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nima veze nvidia ali p35 chipset grafična se bo z obema ujela povsem enako dobro. to je isto kot bi rekel zdej kupim amd procesor potem pa dam atijevo grafično notr kva to poj dobr dela ja čist isto dela kot s nvidio tko da stvar osebne odločitve."
+    },
+    {
+        "role": "assistant_5",
+        "message": "A potem 965 chipset ni vredu za q6600, Npr. ga-965p-ds3 rev3.3? Naj bi imel tut native 1333 fsb in quad core optimized (saj tko piše na prizvajalčrvi strani)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hmm.. rekel si, da ne boš navijal.. Potem je zate odlična izbira Gigabyte GA-P35C-DS3T - hitra, zanesljiva in nadgradljiva."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Romanowsky pred parimi dnevi si odprl temo kakšen računalnik kupiti oz. katere komponete. Še sam nisi vedel katero matično bi... Sedaj pa priporočuješ nekaj, kar verjetno sploh še nisi kupil oz. nimaš?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Zanima me samo, če je novi vezni nabor tolk boljši od starejšega. Vem, da ma podporo za prihajajoče procesorje,..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Streetracer: kak te lahko svojo krs plato priporocas, za katero si sam ugotovil da suxa in nemores voltaze znizat, da se procesor nebi grel kot butec? Sploh pa ce rece da nemisli navijat? Asus nej vzeme pa pika."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Vzemi Asus P5N32 E SLI. nVidiina grafična + nVidiina matična se dobr ujameta. zarad LinkBoost.  ta plata ma nForce 680i čipset, ki podpira 1333MHz FSB in prav tako nove prihajajoče 45nm Intelove procesorje (penryn)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "|Sawyer| krš LOL smešen si res. Asus je najboljši ja itaq."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Od tvoje ze. Zakaj bi terjal tolko visji vcore ce ne mislim navijat? Mi znas to razlozit. Da se hicam pozimi in poleti?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "dej Sawyer najedaš ... Se strinjam s CestnimDirkačem. Mislim da je ta Abitka ki jo ma best buy trenutno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Za ta rank kolk stane moja je najboljša, preberi si malo teste. Glede voltaže pa me to čisto nič ne moti, niti nobenga ni, ki jo ma oz. jo je testiro. Ti si pač nek tečneš, ki te moti in je sploh nimaš."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Slovenci smo znani po favšariji..."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Kako pol, se splača P5K vzet? Ker cena je kr ugodna tm okol 129.  lp"
+    },
+    {
+        "role": "assistant_8",
+        "message": "če ne misliš kakšnih kombotov z dvema grafičnima karticama delat.........ja, pol ga vzemi"
+    }
+]

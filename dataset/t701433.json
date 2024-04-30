@@ -1,0 +1,118 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Pred dobrim mesecem sem sestavil nov PC, ki je do nedavnega deloval brezhibno.  Gre za Ryzen 1500x build z Rx480 na Asusovi Prime B350M-A plati, 8gb Crucial ddr4 ram in Evga bronze+ 450w PSU.  Pred dnevi se mi je med gejmanjem zgodilo sledeče. Na monitorju je za nekaj sekund bila modra slika (ne BSoD) nato pa No Signal. Računalnik se ni izklopil, delovala sta tako gpu kot cpu fana. Miš in ostala periferija se ob crashu izklopijo, vendar ob ponovnem vtiku v usb spet delujejo (saj ne da jih lahko uporabljam, a poskušam biti čim izčpnejši.)  Po ponovnem vklopu računalnika se mi je začelo enako dogajati kmalu po zagonu, v praktično popolni neobremenjenosti PC-ja. Namesto blue screena gre tudi včasih za nekaj sekund v belo potem pa spet v no signal mode.  Kasneje se je stvar ponovila še nekajkrat, nato pa je bilo dva dni vse ok, tudi med resno obremenitvijo.  Najprej sem sumil napajalnik, saj sem zaradi omejenega budgeta vzel relativno kvaliteten 450w, namesto kakšnega 600w lcpower sranja za isto ceno. Ampak mislim da lahko psu overload izključimo, saj se računalnik ne izklopi, pa tudi kakšnihih koli drugih znakov preobremenitve ni zaznati.  Naj še omenim, da se komponente ne pregrevajo in da sistem deluje (ko deluje) normalno, v benchmarkih dobim enake rezultate itn.  Težave s spet nastopile danes. Med iskanjem težav sem začel sumiti motherboard in ob ogledu vrednosti v biosu ugotovil, da sistem avtomatskega overclockinga nastavlja nekoliko visoko voltažo cpu jedra, zato sem flashal najnovejši firmware in kasneje odpravil tudi to.   Sedaj se je stvar zgodila ponovno, spet zgolj med uporabo browserja in brez resne obremenitve.  Sam še zmeraj sumim kakšno drugo napako na matični plošči, ker mislim da tako cpu kot gpu delujeta sicer brezhibno, a zaradi pomanjkanja izkušenj tega ne morem z gotovostjo trditi.  Ima kdo od vas kakšno idejo? MB, CPU, GPU in RAM sem kupil pri mindfactory, zato se težko lotim reklamacije, brez da bi vedel kaj naj jim sploh pošljem nazaj.  Hvala za pomoč in LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Shit, skor kot bi bral moj problem s katerim se ubadam že tedne in kateri končno dobiva epilog (in je vse drugo kot sem prvotno mislil da je).  Za začetek izklopi VSE \"Auto overclock\" funkcije oz če imaš kaj navito daj na stock, da se izločijo stabilnostni razlogi.  Če imaš v ozadju glasbo v predvajalniku, ti igra naprej ali tud zašteka?  Pejt z desnim klikom na Start in izberi Event Viewer. Poglej po dnevniku za čas ko se je to zgodilo kaj piše. Bi moralo imet rumen klicaj oz rdeč križec zraven. Prepiši kaj ti piše pod tisto postavko.  Btw, LC Power drugače sploh nima tko slabih napajalnikov, sam folk jih po defaultu ne mara because miti in legende."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Spremljaj frekvence, voltažo in temperature (predvsem VRM, CPU in GPU) takrat ko crashne (hwinfo + riva) in poženi kak benchmark stress test. Napiši kake so vrednosti in prilimaj še kodo BSOD napake (najdeš v logih). Zna bit da auto overclock zeza - torej verjetno bo kak bios setting odpravil težavo. Za točno diagnosticiranje pa bo treba komponente sprobat. CPU skoraj ziher ni kriv (ne crkne + ma drugačne simptome), GPU lahko daš v drug PC, RAM lahko poskusiš vsako palčko posebaj."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Metoda z menjavo komponent je en način. Kot prvo bi jaz grafično dal v drugi PC, v tega pa drugo (sigurno se kje valja kaka stara grafa).  Omenjeno opazovanje zvoka je dobra ideja. Lahko pa kaki programček uporabiš,ki vsakih nekaj sekund zapiše nekaj v nek fajl. Da vidiš ali zgolj slike ni, ali vse crkne. Za ta namen lahko event viewer pogledaš,če je slučajno kaj takrat zabeležil. Lahko tudi probaš čez mrežo dostopati, vsaj ping.  Pa guglanje, če se še komu kaj takega dogaja, če že nisi. Sicer če periferija crkne, verjetno vse crkne. Ostane metoda eliminacije."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Glede na to da je tole povsem nov build skor težko verjamem, da je kaj defektno out of the box. Ni nemogoče ampak zelo malo verjetno. Men recimo je računalnik freezal samo med 3D loadom, torej med gamingom. Pri čemer bi pomislil, da je zanič PSU, neki z grafo, skratka nekaj z obremenitvijo sistema. Po tednih obračanja komponent, testiranja sem zdej ugotovil, da je očitno fuč DisplayPort kabel razlog za hard lockupe. Jeben KABEL!, ki niti ni neka kritična komponenta kot napajalnik. V miljon letih ne bi pomislil na kabel, ko sem drezal grafično, napajalnik in podobne tipične fore. Bil pa je edina stvar, ki je ostala od starih komponent, vse drugo sem vbistvu stestiral z nadomestno komponento.  Glede na to da je Ryzen bi definitivno prvo mal posumil RAM. So sicer z AGESA updati precej zrihtal ampak lahko da je še kakšna fora. Definitivno pa moramo najprej ugotovit za kakšen lockup/crash gre. Lahko da je samo kakšen brezvezen driver razlog, kar pa bo razvidno iz Event Viewerja..."
+    },
+    {
+        "role": "user",
+        "message": "Ja, crash zmeraj spremlja tudi sound loop. Sekunda, dve nekakšnega \"trrrrrrrrrrrr\" in potem mrk skupaj z no signal izpisom na monitorju.  V event viewerju je kot krtitična napaka navedeno samo nekaj v stilu: \"System didn't shut down properly\"  Kar se tiče auto overclockinga pa je stvar problematična, ker nikjer ni eksplicitnih nastavitev za popoln izklop. V ai tweaker meniju je možnost bodisi \"auto\", bodisi natačno ročno tweakanje, nikjer pa možnosti za popoln izklop avtomatskega prilagajanja.  Opravil sem tudi memtest in izgleda vse ok.  Pravkar pa je pc prvič crashnil tudi med zagonom, sedaj pa se monitor sploh več na odzove, tako da trenutno tudi do biosa ne morem dostopat.  Se opravičujem za odsotnost citatov, tole sem primoran pisati iz telefona, kjer je res neroden interface."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ok, ker sem imel jezst problem s POPOLNOMA enakim scenarijem, kakšen kabel uporabljaš iz grafične na monitor? Imaš slučajno DisplayPort kabel? Je nov ali star?  Men je začelo čist isto stvar kar na lepem delat in nisem mogu nikakor ugotovit kaj, do sedaj, ko so stvari prišle tolk daleč, da sem DisplayPort kabel nadomestil z DualLink DVI (jeba če imaš 144Hz monitor) in težava je zdej izginila (četrti dan brez takega lockupa/freeza, trkam na les...).  Čeprav je pa skrajno čudno, da se dvema uporabnikoma na povsem različnih platformah (jezst imam Intel X99) in grafičnih (GTX 980) pojavi prav bizarno enak problem..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Saj ni bizarno enak. Tebi friza med 3D loadom, njemu random. In frizanje sploh ni nekaj specifičnega, je verjetno en najbolj pogostih problemov."
+    },
+    {
+        "role": "user",
+        "message": "Jaz furam HDMI, pa monitor niti ne podpira DisplayPorta.  Žal nimam kakega rezervnega monitorja pri roki, da bi poskusil."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Lahko odklopiš monitor in se povežeš s telefona preko Remote Desktop. Ne bo udobno, a za test bo.  Če imaš kako Home Windows varianto, ki ne podpira RD, pa lahko uporabiš TeamViewer ali kaj podobnega. PS: TV tudi ni noben v bližini?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_2 je 6. jun 2017 ob 11:56 izjavil:Saj ni bizarno enak. Tebi friza med 3D loadom, njemu random. In frizanje sploh ni nekaj specifičnega, je verjetno en najbolj pogostih problemov.   Bizarno enak, da je outcome popolnoma enak. Men isto štekne, zabrni, slika izgine in NO SIGNAL. To da med 3D niti nima neke blazne veze, ker ni razlog v navitju, temperaturi al pa obremenitvi. Torej je razlog nekje drugje.  @user Monitor je lahko isti, samo HDMI kabel probaj drug (verjetno imaš še kakšnega, mogoče na setup boxu od TV ponudnika al pa pri kakšni konzoli or something... Ja, vem, čuden predlog, ki se ti mogoče zdi čuden. Tud men se je...  Tolk da izločimo to zadevo..."
+    },
+    {
+        "role": "user",
+        "message": "Trenutno se več sploh ne zažene, tako da težko vzpostavim remote desktop. Dejansko enak scenarij kot ob prejšnjih crashih že v štartu: no signal, cpu fan dela, miš in tipkovnica se niti ne vklopita.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0 je 6. jun 2017 ob 12:06 izjavil: Monitor je lahko isti, samo HDMI kabel probaj drug (verjetno imaš še kakšnega, mogoče na setup boxu od TV ponudnika al pa pri kakšni konzoli or something... Ja, vem, čuden predlog, ki se ti mogoče zdi čuden. Tud men se je...   Nič ni čudno. Kabel lahko povzroči vse od občasnih komaj opaznih napak v sliki, do trajne okvare celega sistema. Le misli si človek, da na zadevi preprosti kot par žic in konektor res ne more proizvajalec zaj*bati, ampak..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne zažene v kakšnem smislu? Ko zalaufaš sistem se ne zgodi nič, samo tema, NO SIGNAL? Al se sistem zažene in zgleda kot da gre v Windowse ampak ni slike?"
+    },
+    {
+        "role": "user",
+        "message": "Ne pride niti do bios startup screena, tema že v štartu. Edini znak, da stvar laufa so ventilatorji.   Bom šel kupit hdmi kabel, ker v skromnem študentskem stanovanju nimam ne tvja ne kake ostale naprave."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Imaš mogoče koga, da ti samo posodi drugega za test? Da ne boš stran vrgu 10€ če ne bo to razlog. Čeprav HDMI je dost univerzalen, ti lahko vseeno kdaj kasneje pride prav..."
+    },
+    {
+        "role": "user",
+        "message": "Bo že prišel prav na neki točki.  Ampak malo dvomim da bi bil kabel razlog. Zdaj sem opazil, da je ob vklopu tudi grafična čisto neaktivna in hladna."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ce se niti ne POST-a, ni v kablu problem. Njemu je zdaj nekaj dokoncno crknilo - ce mene vprasas, graficna."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 6. jun 2017 ob 13:08 izjavil:Bo že prišel prav na neki točki.  Ampak malo dvomim da bi bil kabel razlog. Zdaj sem opazil, da je ob vklopu tudi grafična čisto neaktivna in hladna.   Enako sem tud jezst reku, ko sem po tednih prekladanja komponent končno zamenjal kabel od grafične do monitorja, ker je to ostalo kot ena zadnjih stvari, ki jih nisem probal.  Grafične načeloma sploh ne delajo če nimajo video outputa (čist izklopijo praktično cel GPU), kar je verjetno razlog, da je čist hladna."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če izpuliš HDMI in potem vklopiš, je kaj drugače? (recimo disk lučka utripa kot da nalaga Windows, morebiti Window startup zvok itd...)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 6. jun 2017 ob 14:27 izjavil:Če izpuliš HDMI in potem vklopiš, je kaj drugače? (recimo disk lučka utripa kot da nalaga Windows, morebiti Window startup zvok itd...)  Ne. Enako. Če bi se pc zares zagbal bi pomoje morala miš in tipkovnica dobit energijo, zdaj pa je ne. Sem pa zdaj opazil da gpu fan vseeno deluje, verjetno je na praktično sobni temperaturi ker se pc pač ne zažene.  Sem pa odstranil RAM in menjaval reže in med drugim opazil da je situacija čisto enaka brez vstsvljenega rama, je možno da je problem v RAMu, kjub včeraj uspešno prestanem mem testu?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne, ram si izločil. Če bi bla kriva ena izmed ram palčk (da sta dve je enaka verjetnost kot da sedmico na lotu ftrofiš) bi se brez nje moral komp normalno prižgat. Če do POSTa ne pride, je najbrž plata fuč. Možno da si VRMje skuril (posledica auto overclocka) ali pa si dobil defektno. Probaj zrihtat drugo plato za test od kolega ali pa nesi na bližnji servis - diagnosticiranje napake navadno stane 15-20eur."
+    },
+    {
+        "role": "user",
+        "message": "Kakšna priporočila za servis v LJ? Sem razmišljal o Mlacomu."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_1 je 6. jun 2017 ob 14:52 izjavil:Če bi bla kriva ena izmed ram palčk (da sta dve je enaka verjetnost kot da sedmico na lotu ftrofiš) bi se brez nje moral komp normalno prižgat.  No, lani sem imel primer dveh (enakih) palčk, ki sta obe imela isto težavo (data error minuto po vklopu PC-ja)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja, crash zmeraj spremlja tudi sound loop. Sekunda, dve nekakšnega \"trrrrrrrrrrrr\" in potem mrk skupaj z no signal izpisom na monitorju.  Men se je točno to dogajal čist random vendar vedno pogosteje in ugotovil, da je en ram šel fuč, zamenjal ram in dela BP. Pa zvok bi tut opisal kot en trrrrr, kot bi ga zaciklal na 0.1 s interval. Prow za popyzdyt, ko ti to nažge ob 11 ponoč na full volume."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Odpri Mem test mdsched.exe ali pa probaj z drugo grafično, ali niso RX 480 znane da vzamejo več na vodilu, lahko ti je grafična kaj pokvarila."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_5 je 6. jun 2017 ob 17:54 izjavil:Odpri Mem test mdsched.exe ali pa probaj z drugo grafično, ali niso RX 480 znane da vzamejo več na vodilu, lahko ti je grafična kaj pokvarila.   Bullshit, RX480 power draw so rešil mesece nazaj, razen če uporablja prazgodovinske driverje, tega problema nima več."
+    },
+    {
+        "role": "user",
+        "message": "Pravkar sem govoril s serviserjem iz Mlacoma, ki pravi, da je šla grafa in da je PC deloval normalno ko jo je zamenjal.  Zdaj pa me zanima, če je kakšna možnost, da je dejansko izvor problemov matična, in je grafa zgolj posledična žrtev.  Vem da je long shot, ampak glede na to da moram zdaj stvar poslat nazaj mindfactoryju, bi res rad izčrpal vse možnosti.  Also, ima kdo izkušnje z vračilom na mindfactory? A znajo kaj komplicirat? Se lahko odločim pa pošljem še MB zraven?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Lahko njih vprašaš, verjetno nisi prvi taki primer."
+    }
+]

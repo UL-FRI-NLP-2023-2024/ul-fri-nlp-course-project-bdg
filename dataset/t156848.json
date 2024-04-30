@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "imam tezavo pri vzpostavitvi pppoe povezave na debianu. in sicer, po koncani \"pppoeconf\", ko pozenem stvar (\"pon dsl-provider\") pogledam log (\"plog\") nakar ugotovim, da povezava ni uspela. razlog: couldn't increase MRU/MTU to 1500.  pomoc prosim... sem ze poskusav rocno spremenih  etc/ppp/options nastavim:  mtu1500 mru1500  a stvar se vedno ne dela, smlk."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri pppoe ne mores imeti MTUja 1500 zaradi overheada pppoe protokola (enkapsulacija ppp v ethernet okvirje). MTU za pppoe je ponavadi 1492."
+    },
+    {
+        "role": "user",
+        "message": "poskusil nastavit... ne dela"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kolk imas pa na ethernet vmesniku (tisti ki gre na dsl modem) nastavljen?"
+    },
+    {
+        "role": "user",
+        "message": "eth0 ma 1492"
+    },
+    {
+        "role": "assistant_0",
+        "message": "eth mora imeti 1500."
+    },
+    {
+        "role": "user",
+        "message": "hvala matri[x], malce zmesnjave v moji glavi ;)  bom poskusil vzpostavit. porocam ce uspe."
+    },
+    {
+        "role": "user",
+        "message": "no namucil sem se in mountal floppy v ukazni vrstici in dobil naslednje:  ifconfig: eth0 Link encap:Ethernet HWaddr 00:08:A1:2C:EF:79  inet addr:192.168.0.1 Bcast:192.168.0.255 Mask:255.255.255.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 RX packets:28 errors:0 dropped:0 overruns:0 frame:0 TX packets:120 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:1000  RX bytes:1794 (1.7 KiB) TX bytes:4594 (4.4 KiB) Interrupt:10 Base address:0xec00 lo Link encap:Local Loopback  inet addr:127.0.0.1 Mask:255.0.0.0 UP LOOPBACK RUNNING MTU:16436 Metric:1 RX packets:32 errors:0 dropped:0 overruns:0 frame:0 TX packets:32 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:0  RX bytes:2680 (2.6 KiB) TX bytes:2680 (2.6 KiB) ppp0 Link encap:Point-to-Point Protocol  inet addr:xxx.xxx.xxx.xxx P-t-P:213.250.19.90 Mask:255.255.255.255 UP POINTOPOINT RUNNING NOARP MULTICAST MTU:1492 Metric:1 RX packets:14 errors:0 dropped:0 overruns:0 frame:0 TX packets:3 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:3  RX bytes:642 (642.0 b) TX bytes:54 (54.0 b)   plog: Mar 29 16:40:14 lamer pppd[1671]: Couldn't increase MRU to 1500 Mar 29 16:40:15 lamer pppd[1671]: CHAP authentication succeeded Mar 29 16:40:15 lamer pppd[1671]: peer from calling number xx:xx:xx:xx:xx:xx authorized Mar 29 16:40:15 lamer pppd[1671]: not replacing default route to eth0 [192.168.0.1] Mar 29 16:40:15 lamer pppd[1671]: Cannot determine ethernet address for proxy ARP Mar 29 16:40:15 lamer pppd[1671]: local IP address xxx.xxx.xxx.xxx Mar 29 16:40:15 lamer pppd[1671]: remote IP address 213.250.19.90 Mar 29 16:40:15 lamer pppd[1671]: primary DNS address 193.189.160.11 Mar 29 16:40:15 lamer pppd[1671]: secondary DNS address 193.189.160.12  kako mru povecat na 1500, smlk?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kot vidim se ti uspesno poveze. Zakaj bi pa sploh rad povecal MRU na 1500?"
+    },
+    {
+        "role": "user",
+        "message": "ko pa poskusam pingat karkoli ni localhost al pa moj dodeljen ip se pa ustavi... tudi ko hocem nastavit apt-get na FTP ne razresi naslova."
+    },
+    {
+        "role": "assistant_1",
+        "message": "A lahko pingaš 192.189.160.11?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ali paketi sploh zapustijo tvoj racunalnik ko poskusas pingat? Ali imas vklopljen firewall? Ali se ti ob vzpostavitvi povezave doda default gateway?"
+    },
+    {
+        "role": "user",
+        "message": "sem uredil, problem je bil v skripti \"pppoeconf\", rocno sem nastavil vse potrebno in stvar tece  . ker sem linux n00b pa je hudo verjetno da zastavim se kaksno vprasanje.  btw: tole pisem iz linuxa ;)"
+    }
+]

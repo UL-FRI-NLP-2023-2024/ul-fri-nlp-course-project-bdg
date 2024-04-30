@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo,  imam en starejši desktop HPC Elite 8100, z W10pro, ki je prejšnji teden pričel randomly zmrzovat. Ne morem povezat z nobenim programom, w10 memory test ni našel nobene napake, prav tako diagnostika od HP. Zadeva zgleda tako, da računalik dela brez problema dlje časa, potem se pa kar na enkrat začne. Najprej zmrzne interface, miška se še par sekund lahko premika, potem zmrzne tudi miška in tako ostane kako minut do 2. Računalnik potem dela cca 10-20 sekund in se zadeva ponovi. Resetiranje napake ne odpravi ali omili.  Računalnik ima sicer samo 4 GB RAMa ampak je vsaj pol leta deloval popolnoma brez problema pod ne ravno majhnimi obremenitvami (več 10 excel fajlov z vklopljenim coauthoring ker so bili odprti z sharepointa), računovodski Pantheon program, chrome z vsaj 5 tabi, outlook, slack...  Ko sem pred časom hotel nadgradit RAM sem imel težave z dvemi različnimi moduli, ki nista hotela delat z obstoječim ramom (2x 2 GB PC3-10600 DDR3 SDRAM Ramaxel Technology RMR1810EC58E8F1333).  Moje vprašanje za HW profije je, ali v primeru crkujočega RAM sistem zmrzuje ali se kompletno sesuva (BSOD)? In za MS profije, ali je MS zadnje čase uspel lansirati kak update, ki bi starejšim sistemom z W10 povzročal take simptome?  Hvala vsem za pomoč!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Imaš HDD ali SSD v njem? Si mogoče že probal frišno inštalacijo OSa? Zmrzuje lahko zaradi HW ker HDD išče po disku in zaustavi navadno nalaganje SW ali pa procesor down-clocka zaradi segrevanja."
+    },
+    {
+        "role": "user",
+        "message": "Imam en starejši SSD Kingston SH103S3120G, ki sodeč po Kingstonovi diagnostiki deluje BP. Sem updateal firmware. Reinštalaciji bi se rad izognil, ker je malo brdo prgramov za namestit, digitalna potrdila itd."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poglej pod event manager in poglej kake napake ti kaj sporoča. V BIOSu preveri temperaturo procesorja in s HWmonitor lahko tudi v Windowsu preveriš temperature HWja."
+    },
+    {
+        "role": "user",
+        "message": "Nekaj DCOM errorjev ID 10016, sem že malo googlal ampak te errorji naj ne bi imeli vpliva na performans. HWinfo ne javlja povišanih temperatur, trenutno delam extensive hard drive test od HP diagnostike in mi kaže temperaturo 30°C."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lahko pa narediš ghost copy na nov SSD, saj so zdaj smešno poceni.  @user je 28. maj 2019 ob 12:51 izjavil:Nekaj DCOM errorjev ID 10016, sem že malo googlal ampak te errorji naj ne bi imeli vpliva na performans. HWinfo ne javlja povišanih temperatur, trenutno delam extensive hard drive test od HP diagnostike in mi kaže temperaturo 30°C.  Kolko ti javi temperature za procesor na IDLE in medtem ko kaj delaš?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "joj no, kaj ne moreš prilepit kaj napiše na BSOD, keri error. Ponavadi se iz tega točno vidi v čem je problem.  In pomoje je RAM."
+    },
+    {
+        "role": "assistant_2",
+        "message": "kaj imaš kaj prahu al je kišta spihana"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Glede na to, da po \"cold startu\" kišta nekaj časa dela normalno, potem pa se začne obešat in reset ne pomaga, bi jaz rekel, da so krivec temperature (lahko je procesor, chipset, mogoče celo rami). Namesti kak programček, ki bo naredil full load in iz hwmonitorja pa prilepi screen sem. Glede na simptome se bo težava skrivala v tem."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poskusi še zamenjat napajalnik."
+    },
+    {
+        "role": "assistant_5",
+        "message": "A je tako težko inštalirat en programček za merjenje temperature?  Spucaj hladilnike za CPU in grafiko..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "fuc kondici na plati ali napajalcu... zacni tukaj pa kaksen drug ssd nabavi in skloniran. sandforce ssdji so bli drek, kar se tice zanesljivosti"
+    },
+    {
+        "role": "user",
+        "message": "SSD clone bi naredil, ampak mi Kingoston diagnostika ne javlja nobenih napak in OK stanje sistema.  Kišta je spihana, je pa še vedno originalna termalna pasta, ampak računalnik ni deloval kot da bi se pregreval. Ventilator ni bil glasen.  Sem imel že inštaliran HWinfo in ni kazala nobenih posebnosti. Laufam zdajle Heavy load stress test aplkacijo in logam z GWinfo, prilepim ko konča.  Hvala vsem za konstruktivne odgovore, vseeno pa moram rečt da je bilo med uporabniki včasih malo manj zadirčnosti..."
+    },
+    {
+        "role": "user",
+        "message": "Evo screenshoti: https://1drv.ms/f/s!AhiTgsvsC5WP6TMCTSu6BsWz4YTb  Če jaz kaj razumem se ta PC ne pregreva? Kakšna je je verjetnost, da se RAM ali SSD \"izmuzneta\" diagnostiki in da je dejansko težava? Ker tale load test je laufal več kot pol ure, ko naj bi bil sistem polno obremenjen. Lahko kdo priporoči kak stress test aplikacijo, ki po možnosti beleži in nariše še kak graf?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Po teh screenshootih zgleda vse ok. Jaz bi še fizično preveril, če so slučajno pod obremenitvijo rami zelo vroči. Vse prikazane temperature so ok.  Tole se splača pregledat:  @assistant_6 je 28. maj 2019 ob 18:28 izjavil:fuc kondici na plati ali napajalcu... zacni tukaj    Če ni to, potem pa še kak memtest čez spustit, zna bit kak fuč ram."
+    },
+    {
+        "role": "assistant_6",
+        "message": "ssdji ti defektov nebojo kr tak pokazal na smartu. tako da tut ce nic ne javlja, skloniraj. ti vzame se najmanj casa, pa lahko eno stvar izkjucis.  ce rami crkujejo, bi sigurno do zdaj dobil ze kaksen bsod."
+    }
+]

@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Izdati moram eRačun in imam nekaj vprašanj. Uporabljam cebelca.biz in banko Koper, zato me zanima, kateri je najlažji (in najcenejši) postopek za izdajo eRačuna. Po vsem prebranem vidim nekako dve opciji:  1) Izdelam račun v čebelci -> izvozim XML (ali zip) -> podpišem XML -> ga pošljem preko spletne banke  Tukaj se mi postavi vprašanje, kateri certifikat vzeti in s čim podpisati XML?  2) Izdelam račun v čebelci -> pridobim si certifikat -> še enkrat izdelam (in podpišem) račun v UJPnet -> pošljem preko UJPnet  Tukaj predvidevam da gre za sigen-ca in podpisovanje preko spletne aplikacije UJPnet? Katera opcija bi bila lažja? Ali obstaja še katera tretja pot? Spletna banka mi digitalnega podpisovanja žal ne omogoča.  LP, Uroš"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za Hal E-Banko vem da ni potrebno prej podpisovati eračunov. Ti jih podpiše aplikacija ob uvozu. Mogoče je tako tudi za UJPnet, če se moraš prijavljati s certifikatom.  Podpisovanje eračunov ni ravno enostavna zadeva, če se je misliš sam lotiti. Dokumentacija je marsikje pomanjkljiva. Certifikat mora omogočati digitalno podpisovanje. Nič posebnega. (Key usage: Digital Signature, Key Encipherment ))."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Imam identičen scenarij kot ti.   Točka 1) mi ni še uspela. Uporabil sem Čebelca Podpis (eračun mislim da v ZIP), ampak ni bilo OK. Problem je, ne izveš takoj, če je v redu ali ne (šele npr. drugi dan) - najprej dobiš sporočilo \"Obdelava uspešna\", naslednji dan pa še \"Eračun v prilogi ne ustreza shemi bla bla\". Preizkušanje na tak način je precej mučno.  Točka 2) je relativno enostavna - če ga še nimaš, zaprosiš za dostop z navadnim sigen-ca certifikatom, potem pa na spletni strani vneseš račun in ga podpišeš. Tukaj nimam nobenih pripomb, problem je edino, ker je račun treba pač na roke pretipkati iz čebelce ..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "http://www.cetis.si/eracun?gclid=COf7lM..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "do 5 e-računov/mesec preko UJP-neta je pošiljanje zastonj. Notri se registriraš in v formi kreiraš e-račun. Če imaš več (20+ ...) potem je pametno najti kakšno sistemsko rešitev v programju;"
+    },
+    {
+        "role": "user",
+        "message": "Uporabljam Banka IN (Banka Koper), ki ne omogoča podpisovanja, saj se ne prijavljam s certifikatom (in ga tudi nimam še). Sam podpisovat jih torej ne grem.   Opcija 2 bo potem najboljša torej? Pridobim certifikat -> izdelam, podpišem in pošljem račun (vse v UJPnet)?  edit: uf, 3 dgovori na enkrat. hvala. zanima me še, kateri sigen-ca certifikat potrebujem? glede na to, da gre za s.p., je mogoče dovolj tudi fizični?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Sej s.p. je fizična oseba. Se pravi sigenca, ki se glasi nate kot fizično osebo."
+    },
+    {
+        "role": "user",
+        "message": "Ok. Najlepša hvala vsem."
+    },
+    {
+        "role": "assistant_5",
+        "message": "UJP je brezplačna storitev, mislim da do 50 računov letno.  Sam sem naredil tako, da sem preko UJP izstavil račun in še interno v svojem programu za knjiženje."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Za UJP je tudi Poštarca certifikat OK. Pa pri UJP lahko vsak mesec pošlješ samo 5 računov proračunskim uporabnikom (za privat firme, ki bi hotele E-račun boš potreboval drugo rešitev). Pa na njihovi strani je dobro razloženo kako se namesti komponenta za podpis E-računov, tako da samo sledi navodilom."
+    },
+    {
+        "role": "assistant_7",
+        "message": "V kolikor rabiš podpisati e-slog XML datoteko se lahko poslužiš enostavne aplikacije, ki sem jo izdelal v ta namen.  Preneseš si jo lahko tukaj.  Potrebuješ nameščeno ustrezno digitalno potrdilo (SigenCa, PostarCA,..itd), potem pa v ukazni vrstici samo napišeš:  ConsoleSigner moj_racun.xml\n izbereš digitalno potrdilo in datoteka je podpisana."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Servis za preverjanje podpisa: http://proxsign.setcce.si/proXsign/"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Janko iz čebelce tukaj. Bi odgovoril par stvari in imel vprašanje za darklord.  @user:  * Pri 1. scenariju lahko eračun podpišeš (ali mu dodaš priponke) s programčkom Čebelca Podpis. To je program, ki se namesti na računalnik, ker rabi dostop do tvojega certifikata, kjer je splošna ideja da se ne pošilja okrog (ne npr. na nek strežnik).   Program je napisan v Python+QT+OpenSSL in deluje tudi na Linux/Mac, le inštalacije nimam. Za tiste ki poznajo python inštalacija na Linux ni težavna. Namesti se nekaj modulov preko pip in to je to. Glede MacOS pa, nek Mac python uporabnik je rekel da je inštalacija / compilanje trajalo (PySide/QT ...) zelo dolgo tako da ni najbolj elegantno. Jaz nisem poznavalec MaxOS tako da zaenkrat je to edina informacija, ki jo imam glede MacOS.  * Certifikati, ki so v redu so Sigenca, Poštarca in ACNLB (klik). Certifikat je lahko na podjetje ali na fizično osebo (smo preverjali na UJP). Lahko je tudi na koga zunaj podjetja, če ga pooblastiš za to (npr. računovodja). Sigenco na fizično dobiš brezplačno na upravni enoti. Tudi za UJP portal veljajo isti certifikati.  * V Čebelca Podpis vstaviš ZIP paket eRačuna (z ovojnico). XML varjanta eRačuna je uporabna le za Halcom eBank, ki že sama podpiše eRačun in naredi ovojnico.  * Več naših uporabnikov uporablja banko koper in z njo in našimi podpisi ni težav. Edina znana težava trenutno je z delavsko hranilnico, ker so se odločili da ne bodo podpirali W3C podpisa (ki UJP ga). Pri njih morajo potem uporabniki v spletni banki podpisati eRačun, a lahko le vsakega posebej. Čebelca Podpis lahko podpiše več paketov eRačunov hkrati in tudi v enem paketu/ovojnici je lahko več eRačunov in jih podpiše.  darklord:  Pri kateri banki pa so bile te težave in ali se da videti kaj je javilo, da je narobe?"
+    }
+]

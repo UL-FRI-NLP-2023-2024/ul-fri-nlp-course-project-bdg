@@ -1,0 +1,222 @@
+[
+    {
+        "role": "user",
+        "message": "Imam plato ABIT BX133-raid. Ima seveda AGP v. 1.0 (se pravi, da podpira AGP 1X in AGP 2X).  Sem se tudi pozanimal in ta standard napaja AGP kartico z napetostjo 3.3 V.  Zdej imam pa grafično k. GeForce FX 5200, ki podpira AGP 2.0 in 3.0 standarda. In taka karta rabi napajanje 1.5V.  UF!!!   Jest sem jo vseeno preizkusil in čudo prečudno - karta dela!  Zdej me samo zanima - ali obstaja kaka nevarnost, da se skuri? Ali je tako še bolje? Mogoče jo bom tako lahko še bolj navil???  Zaenkrat se kaže, da se odlično navija: GPU: 250Mhz, navil na 380MHz DDR Ram: 400MHz navil na 500MHz  Pa ni še nobenih artefaktov, tako, da lahko še kar dvigujem frekvenco!?  No, edino me zanima kaj je sedaj s to voltažo? Ali je OK ali moram nujno znižat? Če ja, KAKO? Kam naj vežem upor??! Ima še kdo tako foro?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ni panike, tudi R300 deluje na 2x AGP - torej 3.3V"
+    },
+    {
+        "role": "user",
+        "message": "====================== Ampak navija se mi pa odlično, sem še malo povečal: GPU: 250MHz -> 400MHz RAM: 400MH -> 540MHz ======================   Deluje, ampak čudno, da ne skuri.  Ker te karte, ki so za 1.5V narejene jim folk (ko jih navija) poveča voltažo na 1.7 ali 1.9V maksimalno! Tako, da je 3.3V definitivno preveč!?  Ena varka mora bit tukaj....?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "a nima grafična svojih regulatorjev napetosti?"
+    },
+    {
+        "role": "user",
+        "message": "Ne bi vedu!?  Sem gledu na netu in nic nasu. Na Sparcle (proizvajalec FX 5200) so mi rekli, da mora karta dobivati napajanje 1.5V.  Citat: ...becouse your M/B chipset only support AGP 2X, it supply voltage no correct,the VGA card use 1.5V working voltage,but your M/B AGP supply 3.3V,it's baleful for VGA card.can you change your mainboard?   V BIOSu lahko spreminjam pa samo slednje:  - AGP transfer mode - I/0 voltage - AGP Aperture size  Mislim, da ni nič od tega voltaža za AGP !?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "->Ni panike, tudi R300 deluje na 2x AGP - torej 3.3V  Kaksno vezo ima R300 z FX 5200?  Drugace pa @user bodi vesel, da ti dela. Naceloma naj ti ne bi.  Toda verjetno ima kartica oz. jih kar imajo svoje voltage kontrolerje gor, tako, da mislim, da se 3.3V zreducira(preko teh memory kontolerjev) na 1.5V.  Pravtako je brezveze visati voltazo na AGP rezi, ker ima itak vecina modernejsih graficnik kartic svoj voltage kontoler oz. limiter."
+    },
+    {
+        "role": "user",
+        "message": "Cool, potem sem pa vesel    Se ram navijem za 100MHz pa imam ULTRA verzijo!"
+    },
+    {
+        "role": "user",
+        "message": "Ali je še kaka druga razlika med AGP2X pri verziji 1.0 in pri 2.0 ?  Samo v voltaži, ali tudi v hitrosti prenosa?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "To načeloma naj ne bi bil problem. Obratno so pa, denimo za nForce2 plate nepremostljive težave, če hoče v AGP slot zatlačit 3.3V karto. Namreč, nForce2 je 1.5V AGP only."
+    },
+    {
+        "role": "assistant_2",
+        "message": "->Samo v voltaži, ali tudi v hitrosti prenosa?  Seveda, napetost je se najmanjsa razlika.   Takole gre:  AGP 1.0: 533MB/s AGP 2.0: 1066MB/s AGP 3.0: 2132MB/s  Torej, ce imas moznost naviti AGP frekvenco jo lahko do konca."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za pojasnila."
+    },
+    {
+        "role": "user",
+        "message": "Verjetno ni možno dvigniti hitrosti prenosa iz 533MB/s na 1066MB/s ?   Ali pač?     Bi moral kak čip zamenjat?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "->Verjetno ni možno dvigniti hitrosti prenosa iz 533MB/s na 1066MB/s ?   Lej, zdele imas prenosa 533MB/s, na 66MHz. Torej 8bajtov na cikel.  Zdej je pa vse odvisno od plate, ce ti podpira navitje frekvence AGP reze. Poglej v bios ce ti to podpira?  Ce ti, ponavadi podpira do 100MHz. Torej lahko navijes na 100MHz, s tem bos dobil takle bandwidth: 100*8 bajtov=800MB/s. Torej, to je najvec kot lahko dosezes. Mozno je tudi vec, toda za to so pa potrebne bolj korenite spremembe v Hardware. Ki se pa tudi ne splaca. Ce ti uspe naviti na 100MHz tole AGP rezo bos lahko zadovoljen.  Zakaj bi pa morala kartica delati na 100MHz, brez problemov? Hja, kartica je dizajnana za 2.1GB/s prenosa, torej navitih 800MB/s je se zdalec od specifikacij.  Zato, tudi nove graficne kartice(AFP 8x) ne pustijo visokih frekvenc na AGP rezi. Ker ze delujejo na nazivnih 2.1GB/s."
+    },
+    {
+        "role": "user",
+        "message": "A tako je to!!  AGP lahko jaz nastavljam 1/1 ali 2/3.  Laufam pa na frekvenci 100MHz, če pa fajn navijem pa tudi na 133MHz !  Torej lahko AGP nastavim 1/1 * 133Mhz * 8B = 1064 MB/s.  To je pa ravno enako kot AGP 2.0 !!!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "->Laufam pa na frekvenci 100MHz, če pa fajn navijem pa tudi na 133MHz !  Ja, ceprav moras vedeti, da ta viza ne gre v neskoncnost ... Recimo tam do 100MHz bi skor moral it kaj vec je pa vprasanje ..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "A kdo kej ve več o  tem problemom ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja, en programer je naletel na problem pri PS 2.0 ... Je pa vprasanje kolk je tle res. Ker Nvidia je sigurno dobro pretestirala GPU.  Ce pa se upostevamo, da je to je 2. generacija DX 9.0 kartic je pa vprasanje se vecje ce ima FX 5900 res z PS 2.0 probleme.  PS: Ce je pa res kaj na tem, bomo pa itak delezni novoh driverjev kot ze nestetokrat."
+    },
+    {
+        "role": "user",
+        "message": "asPeter: Vem, da ne gre z navijanjem v neskončnost (kot z nobeno stvarjo )  Ampak, saj jaz navijam procesor -> Taulatin deluje orig, na 100MHz in potem ga navijem na 133MHz. In skupaj z njim gre sinhrono RAM !!  Torej, če te jaz prav razumem -> če navijem procesor na FSB 133MHz se mi avtomatično dvigne AGP 1.0 na AGP 2.0  ?!   Ker to bi bilo pa res ZAKON     ps: Ker jest sem zmeram do zdej mislu, da grafa mora delovati na okoli 66MHz...!?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja, ce bi ti RES kartica delovala na 133MHz, bi res lahko govorili o AGP 2.0 ekvivalentu, vsekakor pa ne o AGP 2.0. Ce ne drugega, je napetost napacna ...   No, @user dej malo probal tole naviti ...  Ceprav ti moram se nekaj povedati. Ne nadejaj se kaksih groznih hitrosti z navitim APGjem ... Razlike so reda procent ...."
+    },
+    {
+        "role": "user",
+        "message": "Sem malo sprobaval...  Računalnik je stabilen tam nekje DO 120MHz (fsb in takt grafične).  Samo zdaj ugotoviti ali je nestabilen zaradi grafične ali zaradi procesorja je pa druga zgodba...    Če bi meni usepelo furat na 133MHz. Ali bi lahko sistem prepričal, da je AGP verzija 2.0 ?      ps: Zakaj mi Sandra napiše: AGP Data transfer rate: 2 x 115MHz = 230Mhz data rate ?!"
+    },
+    {
+        "role": "user",
+        "message": "Sem popolnoma pretesteru in ugotovitev je:  Takt grafične kartice ne sme biti višji od 113MHz za normalno delovanje."
+    },
+    {
+        "role": "assistant_2",
+        "message": "No, vidis saj v bistu 113MHz, niti ni tako slabo. Zdaj imas 904MB/s, kar je pa tudi nekaj.  Kot sem ti pa ze tudi povedal, navitje AGP reze ne prine bog ve kaksne hitrosti, sploh ce ima kartica 128MB pomnilnika ..."
+    },
+    {
+        "role": "user",
+        "message": "Pa bi jaz lahko sistem prepriču, da imam AGP 2.0, če bi navil na 133MHz ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user: Ne gre to tko ... Prvic, sam si ugotovil, da ti ne dela na 133MHz, drugic napetosti niso kompatibilne s AGP 2.0.  CE, pravim, ce bi ti uspelo napetost na AGP rezi spustit na 1.5V(spajkanje) in navitje na 133MHz, bi NACELOMA lahko govoru o priblizku AGP 2.0 Specifikaciji ... TODA se vedno bi imel AGP_f, na 133 in ne na 66 ..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Za navijanje Agp clocka in omejevanje hitrosti transferja textur z nVidia karticami si poglejte mojo rešitev pod Comp/moja mašina/kako sem jest napravu ... na moji strani... :-)"
+    },
+    {
+        "role": "user",
+        "message": "Cool @assistant_5! Sem si prebral. No, najprej nisem najdu... sem mislu, da si se hecal in da je edina grafična karta na tvoji strani tista med ženskami nogami      Očitno imaš isto kot jaz. Nisem pa čisto dobro razumel kaj si napravil... zmanjšal si AGP propustnost v registru na 1.966X, da si lahko navil na večji FSB ? Se pravi, da si fural 150fsb procesor in grafično kartico 100fsb, al kako?  Samo, da imaš ti grafično popolnoma kompatibilno s chipsetom. Jaz pa imam grafično boljšo od chipseta, tako, da bi rad, da bi mi grafična delala na 133MHz na kolikor mi laufa Tulc (če ni prevroče). Kakor sem sprobal pa mi gre grafa le do 113MHz.  Ti praviš, da če ji v registru napišem nižji AGP transver bi morala delat na višji frekvenci?  Ker potem bi jaz vezal še kak uporček in sistem prisilil v miselnost, da imam AGP 2.0"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user, stvar standarda ni v napajanju cele kartice, ampak v napetostih in tokovih samo signalnih linij veznega AGP čipa na njej in ne moreš \"samo\" enega upora ubacit da imaš npr.Agp2.0 standard. Signalnih linij je več, ker Agp port je v glavnem paralelna in bolj malo serijska zadeva. Lahko, da ima tvoja grafa že dodatni regulator napetosti gor in pa vezni agp čip take vrste, da avtomatsko prilagojuje napetosti, ali pa vsaj tokove (če ne bi jo po mojem že zdavnaj skuril!). Del standarda je tudi protokol pretoka texturnih podatkov, ki se zgleda stopnjuje na vsako celo številko; pri nVidia karticah se pa to da zgleda lepo v registru nastavit.  Kot prvo nastavi v biosu za kartico in chipset (če lahko seveda) Agp transfer 1x in tudi v registru isto; če ne moreš za chipset tega štelat probaj  Ta proggy DL-at(na grafo ne bo deloval, delal pa bo valjda na chipset!) in odvij kartico na defolt frekvence, pol pa se malo igraj (kombiniraj nastavitve), da vidiš do kolk ti prenese Agp clocka vsako posebej! Vrži ven iz kompa vse nepotrebne stvari, da te kaj drugega ne zeza. Ko ugotoviš meje pa preračunaj in nastavi malo manj, da ne bo zmrzovanja...pol pa lahko še malo kartico naviješ, vendar prej preveri, če se ti agp vezni čip (ne vem kateri je) ne segreva preveč, lahko, da ga bo treba dodatno hladit. Vendar po moje z nastavitvami za chipset Agp2x in v registru isto boš najvišje prišel, čene boš moral delitelj PCI/AGP zmanjšat, ker ga imaš zdej zgleda po Sandri na 1/1."
+    },
+    {
+        "role": "user",
+        "message": "Aha!  Samo jaz nimam v registru: \"EnableIronGate1X\"=dword:0000000, sploh nimam mape System tam notri. A jo ustvarim?  Frekvenca chipseta se mi pomoje spreminja že ob spreminjanju frekvence procesorja!? Ker samo to lahko spreminjam (in s tem se mi spreminja frekvenca RAMa, AGPjev, PCIjev...). Potem pa lahko za AGP in PCI nastavim delilnike te frekvence.  Imam pa eno zanimivo nastavitev v BIOSu: AGP transfer mode, ki je lahko fast, normal in default. Samo to bolj malo pove...  Potem pa lahko spreminjam tudi I/O voltage, ki je default 3.3V. Torej je tukaj notri zajeta tudi napetost AGPja. Samo je tudi RAM in druge komponente!?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user: Samo jaz nimam v registru: \"EnableIronGate1X\"=dword:0000000, sploh nimam mape System tam notri. A jo ustvarim? Kolikor sem gledal tisto stran so nasveti za win9x, če imaš kaj na NT jedru moraš poiskati ustreznico.  Frekvenca chipseta se mi pomoje spreminja že ob spreminjanju frekvence procesorja!?  Da.  Imam pa eno zanimivo nastavitev v BIOSu: AGP transfer mode, ki je lahko fast, normal in default. Samo to bolj malo pove... Normal zveni najpočasnejša izmed možnosti.  Potem pa lahko spreminjam tudi I/O voltage, ki je default 3.3V. Torej je tukaj notri zajeta tudi napetost AGPja. Samo je tudi RAM in druge komponente!?  Tukaj je zajte napetost veznega čipa, AGP vodila in spomina."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ja @user, s tisto Reg nastavitvijo se nastavi prepustnost kartice in pol lahko bolj našopaš Agp clock če znižaš transfer speed! ja s 135fsb furam agp clock 90MHz @ 1,85x agp = agp2,5x=665Mb/s ker moja kartica ni zmogla večje brzine za texture in je zmrzovala pri hardware accelerated igrah drugač nad 84 Agp clock in na agp2x. [84/66,6 x 2x 266Mb-sek= 670Mb/sek to je še šlo].  Mape in ključ (new Dword! z vrednostjo 0000001 !) je treba ustvarit, če jih ni v registru, saj to je štos! in je po moje isto za XPje ali W2k!"
+    },
+    {
+        "role": "user",
+        "message": "Zgleda, da fora v registru ne deluje. Sem si ustvaril mapo System in noter new Dword - EnableIronGate1X = 00000001 in nastavil delilnik AGP v biosu na 1/1.  In mi Sandra še vedno napiše: 115MHz x 2 = 230 MHz data transfer rate  !?!"
+    },
+    {
+        "role": "user",
+        "message": "Mi pa Sandra tudi napiše:  AGP Capabilities: - Version: 3.0 - Data transfer modes support: 1x 2x 4x  A to pomeni, da mi je že uspelo sistem prepričat, da imam AGP2.0 ali celo AGP3.0"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ko sem čisto slučajno brskal po AGP specifikacijah sem zasledil da/sta obstajala dva različna standarda (še pred AGP 3). Obstaja AGP universal in AGP (khm, se ne spomnim imena). AGP universal podpira tako 3.3 kot 1.5V. Medtem ko drugi podpira samo 3.3V. (AGP v1.0) Velika večina plat ima vgrajen univerzalen AGP slot. Če pa plata (spadajo že v muzej) podpira ta drugi standard (samo 3.3V) pa lahko v primeru da hočeš vanjo vtakniti novejšo grafično ki deluje samo v 1.5 načinu jo zagotovo skuriš . Tudi sam imam GF 4 Ti 4200 na Abitovi BH6 plati (stara že celih 4.5 let - podpira AGP v2.0) in dela brez problemov (razen občasnih izpadov slike ).  Nisem čisto prepričan, ampak mislim da AGP 3 ne podpira več 3.3V ampak samo 1.5V. Tako, da ne tlačit v tako plato starih grafičnih. Čeprav predvidevam, da taka grafična sploh ne paše not ker je AGP malce (fizično) spremenjen.  AGP v1.0 je podpiral samo AGP x1,  AGP v2.0 (ga ima sam) podpira AGP x1, x2 AGP v3.0 še zmeraj spada v standard AGP 2, je le nadgrajen da dela tudi v x4 načinu, in to imaš ti."
+    },
+    {
+        "role": "user",
+        "message": "Crimson, motiš se.   Jaz imam AGP standard 1.0 in podpira 1X in 2X. In to na 3.5V.  In jaz sem tak primerek, ki sem v to starinsko BX čipovje zatlačil novo FX 5200 kartico."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pusti Sandro, dostikrat laže! Pokaže samo zmožnosti kartice. Probaj raje zdej dvignit fsb če bo šlo bolj kot prej!"
+    },
+    {
+        "role": "user",
+        "message": "Ne, isti problemi se pojavijo pri 115Mhz. Zmrzne ob kaki stvari v Win, in v igrah vse utripa.  Dvomim, da sem s tem res spravil AGP na 1X. Tudi v nVidia settings mi pise AGP2X.  Mogoče kdo drug ve kako spreminjat AGP... sem dal drugo temo."
+    },
+    {
+        "role": "user",
+        "message": "Mi je sedaj uspelo dat na AGP 1X. Register je nekoliko drugacen v XPjih.  No in res mi AGP dela na 125MHz brez problema. Se pa grafa tako zelo greje!"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user, izvozi in pošlji mi na mejl (v profilu) tisti XP registrski ključ, da vidim, kako izgleda za XP-je..hvala. To, da se grafa tolk zelo greje pa ni v redu..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če bi šel gledat na Abitovo stran bi videl, da tvoja plata podpira ATA66/100. Sam posedujem Abitovo BH6, ki je občutno starejša in podpira samo DMA33 način. Tvoja plata ima sicer isti BX čipset, ampak je posodobljena, tako AGP kot IDE ATA vmesnik. Čeprav to nima nobene veze z AGPjem pa vseeno pokaže da imaš dokaj \"novo\" plato ki prav gotovo (sem 100% prepričan) podpira tudi AGPx4. Prav vse plate ki podpirajo ATA66/100 podpirajo tudi AGP x4, razen če imaš zelo zgodnjo verzijo. Ampak glede na to da ti podpira RAID je pa to še manj verjetno.   Kljub temu, da imava isto čipovje ima sam AGP v2.0, ti pa imaš malce posodobljeno verzijo v3.0, ki podpira tudi AGP x4.   Drugič, AGP vodilo je narejeno za delovanje na 66MHz, zato ti višanje frekvence AGP vodilo odsvetujem, ker se ti bo v najslabšem primeru zgodilo, da boš ob vse podatke na disku ali pa boš celo skuril grafično.   Če pa mi ne verjameš, pa malo pobrski po netu.  Aja, še to. Sandra ne laže. Podatke ki ti jih prikaže so shranjeni v firmwaru BIOSa, kartic, procesorja, ... . Če že, so napačni podatki že vnešeni vanjo, v kar pa ne verjamem."
+    },
+    {
+        "role": "user",
+        "message": "Brez skrbi, da sem orenk pregledal vse podatke o moji plati.  Res je - ima celo RAID, ampak AGP ima samo verzijo 1.0. To pa pomeni, da podpira prenose AGP1X in AGP2X."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Saj lahko verjameš samemu sebi, ampak ti nimaš AGP 1.0, razumeš! Saj si zgoraj napisal, kaj ti javi Sandra.   AGP 1 so imeli prve plate za Pentiume. Da, Pentium (60, 75?) 90, 100,133, 150, 166, 200, 233Mhz. Prvi standard (AGP 1) je predvideval le 1x hitrost in prenos 533MB/s. Torej, če ti plata podpira tudi 2x hitrost to vsekakor ni AGP 1. Točno ne vem kdaj, ampak mislim da z prihodom Pentuma 2 (lahko že prej) je pričel ven prenovljen AGP 2 (v?? lahko da v2.0). Kasneje (sicer je že dolgo tega; leta 1998) pa so naredili še revizijo AGP 2 na v3.0 (4x hitrost). Poponoma nov standard, pa je AGP 3 v1.0."
+    },
+    {
+        "role": "user",
+        "message": "Sej ni važno kako se standard imanuje. Važno je kaj podpira in to je AGP1X in 2X na voltaži 3.3V.   Sva pa s @assistant_5-jem ugotovila, da ima ta grafična karta universal AGP slot, kar pomeni, da deluje tudi na takih BX platah."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_7a ne jemati prevec resno, natrosil je kopico bedarij. Nekaj najbolj v nebo vpijocih:  AGP 1 so imeli prve plate za Pentiume. Da, Pentium (60, 75?) 90, 100,133, 150, 166, 200, 233Mhz.  Pravzaprav za Pentiume 2 in to v obliki nabora LX. Nekaj kasneje so nekateri drugi proizvajalci veznih čipov, AGP resda ponudili tudi za Pentiume 1 v obliki super socket 7 plošč, ki pa je bil prvenstveno namenjen zadnji generaciji MMXov in K6.  Tvoja plata ima sicer isti BX cipset, ampak je posodobljena, tako AGP kot IDE ATA vmesnik. Ceprav to nima nobene veze z AGPjem pa vseeno pokaže da imaš dokaj \"novo\" plato ki prav gotovo (sem 100% preprican) podpira tudi AGPx4. Prav vse plate ki podpirajo ATA66/100 podpirajo tudi AGP x4, razen ce imaš zelo zgodnjo verzijo. Ampak glede na to da ti podpira RAID je pa to še manj verjetno. BX ni bil nikoli \"posodobljen\" vse \"nove\" funkcionalnosti, ki so jih ponujale novejše plošce, so bile dodane v obliki dodatnih krmilnikov in posodobitev BIOSa. AGP 2x je omejitev nabora, tvoji 100 % prepricanosti navkljub.  Drugic, AGP vodilo je narejeno za delovanje na 66MHz, zato ti višanje frekvence AGP vodilo odsvetujem, ker se ti bo v najslabšem primeru zgodilo, da boš ob vse podatke na disku ali pa boš celo skuril graficno. Do solz znaš nasmejati cloveka, to ti priznam. Kako lahko anomalije podatkov na vodilu namenjenemu izkljucno graficni kartici upliva na podatke na disku. AGP vodilo se seveda da navijati, le pridobiš ne veliko, ker pri tako velikih teksturah postanejo omejujoce druge komponente. Da ne moreš skuriti naprave, zato ker deluje vodilo na katerega je priključena nepravilno, večina verjetno tako ve.  Aja, še to. Sandra ne laže. Podatke ki ti jih prikaže so shranjeni v firmwaru BIOSa, kartic, procesorja, ... . Ce že, so napacni podatki že vnešeni vanjo, v kar pa ne verjamem. Seveda in tam so shranjeni kar v obliki kot ti jo prikaže Sandra, kajne (po možnosti še v večih jezikih)?  Iluzije, da se vsi proizvajalci držijo standardov, pa raje niti ne komentiram."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Tisto, kar sem pisal, kdaj so se pojavile AGP sem pisal iz glave, pri tem pa sem popolnoma pozabil, da moj P200MMX sploh ni imel AGP. Moja napaka.   Glede posodabljanja si pa tudi sam napisal, da so bile dodane v obliki dodatnih krmilnikov in posodobitev BIOSa. Tu si me le malce popravil, glede AGP pa, hja sem se pač zmotil. (Kar je sploh običaj če pišeš iz glave).   Glede navijanja AGP sem bil pa premalo natančen. Starejše plate niso imele posebej za nastavljat hitrost AGP in PCI vodil, kot imajo to nove. Nekatere plate so omogočale višanje hitrosti FSB po 1MHz. Problem je nastal pri nestandardnih hitrostih (recimo vse frekvence med 75 - 90, 90 - 100 in med 100 - 133). Če je bil FSB nastavljen na nestandardno hitrost, je bila tudi PCI in AGP izven danih specifikacij. Recimo, pri FSB 85 MHz je bila hitrost vodila PCI (delitelj 3) 28Mhz. Pri AGP pa (2/3) 56Mhz. PCI med drugim skrbi tudi za integriran IDE krmilnik, temu pa odstopanje od specifikacij prav gotovo ni po godu. Ravno to se je zgodilo kolegu, ko je imel FSB nastavljen na 85MHz. Zgubil je vse podatke na disku in to ravno zaradi delovanja PCI in s tem tudi IDE krmilnika izven specifikacij.   Glede skuritve pa: če grafična ali karkaoli drugega deluje nad določeno hitrostjo vodila (66Mhz) je verjetno, da se kakšna stvar pregreva in v primeru slabega elementa in zanič hlajenja tudi skuri.   Glede Sandre pa: Določene stvari so prav gotovo preberejo iz firmware, biosa ali česa tretjega. Druge stvari pa so verjetno kar spravljene v bazi zraven Sandre in jih po potrebi prikažejo uporabniku. Če pa podatki niso točni (se ne držijo standardov) pa najebejo kvečjemu uporabniki. Poznavalci pa pametujejo in pri tem trosijo neumnosti okoli.   Glede AGP sem se pa motil. Bil sem prepričan, da je AGP 2 podpiral 1x in 2x hitrost in da je bil kasneje nadgrajen še z 4x hitrostjo. Se posipam s pepelom zaradi širjenja neresnic in pametovanja."
+    },
+    {
+        "role": "assistant_6",
+        "message": "tarejše plate niso imele posebej za nastavljat hitrost AGP in PCI vodil, kot imajo to nove.  Izbiro med razmerjem 2:3 in 1:1 (ki je bilo ločeno od razmerja PCI:FSB) so imele skoraj vse malo bolj navijaško usmerjene, kar Abitove gotovo so.  Glede skuritve pa: če grafična ali karkaoli drugega deluje nad določeno hitrostjo vodila (66Mhz) je verjetno, da se kakšna stvar pregreva in v primeru slabega elementa in zanič hlajenja tudi skuri. Ne, či bi spreminjal frekvenco kartice same, potem bi to držalo, ker pa gre za vodilo je lahko edina neljuba posledica, okvara podatkov, ki se po njem pretakajo.  Določene stvari so prav gotovo preberejo iz firmware, biosa ali česa tretjega. Ni problem v tem,da podatkov ne bi bilo, temveč v tem kje in kako so pospravljeni. Razporeditev (naslovi) podatkov so odvisni od nabora in deloma tudi od muh proizvajalca dane plošče. Ti podatki pa povečini niso javno dostopni, vsaj ne vsi, zato programi kot je sandra v mnogih primerih bolj ali manj ugibajo, pri čemer si pomagajo z različnimi triki, kot so baze lastnosi in podobno."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Hja, poglej, tole mi piše v navodilih od matične plošče Abit BH6.   Above 66Mhz/100Mhz bus speed supported but not guaranteed due to the PCI and chipset specs.   Kljub temu, da JE to navijaška plata, nestandardnih frekvenc ne priporoča niti proizvajalec sam. Mislim, da to pove dosti, a ne?   Glede \"skurjenih\" kartic pa. Nisem elektrotehnik, ampak včasih celo nove kartice crknejo že po nekaj dnevih, tednu ali po prvem mesecu. Pa jih sploh ni treba navijat, da se to zgodi. Tako tudi v tvojem primeru ko \"naviješ\" AGP ali kar jedro in pomnilnik na grafični ne moreš trditi da se grafična ne more skuriti. Verjetnost je majhna, a vseeno obstaja možnost da se to zgodi.   Sicer pa sem že dvakrat napisal moj problem z grafično Inno 3D Tornado GF 4-4200 Ti 64 MB. Že po slabih 2 mesecih uporabe se mi je začelo dogajati, da je monitor \"zgubil\" signal od grafične in se prestavi v standby način. Edini način da dobim sliko nazaj je reset mašine. Že dvakrat sem dal gor sistem (winXP - enkrat se mi je to zgodilo le uro po instalaciji sistema), dal skozi tri različne gonilnike, spreminjal ločljivost, bitno globino, ... . Kot zanimivost, včasih mašina deluje normalno naprej, samo slike ne vidim, včasih pa se sesuje tudi sistem. Kar pa ja najhuje pa je to, da se to dogaja zelo naključno, najmanj 1 na teden ali pa celo po večkrat v enem dnevu. Zgodi pa se kadarkoli, med igranjem igre ali pa celo ko kaj brskam po mašini, internetu, ali pa celo ko popolnoma nič ne počnem. Jebemti, take grafične ti ne zamenjajo v nobenem servisu. Garancija ti prav nič ne pomaga pri tem.   Potem progami, kot je Sandra, povzročajo samo zmedo med uporabniki.Tako ali tako sem ga namestil samo zaradi tega da preverim AGP. Nisem jaz kriv, če v Sandri piše AGP 2 revison 2.0. Potem se pa jaz delam pametnega na koncu pa izpadem kot bedak."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Jest sm si na BH6 zrihtal fixen PCI in AGP sicer je potrebno malo SMD lotanja in precejšnje poznavanje elektronike ampak se da. Glih kakšnih razlik pa nisem opazil, razen ko je bil FSB nad 150 takrat pa je modifikacija prišla še kako prav    LP  @assistant_8"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_8, kako si to ušpiču? Dodatni clock generator? (magari na mejl odgovori kako). lahko bi napisal kak člančič kako si to napravil (kake slikce obstajajo?), če ti ga tle ne bi hteli objavit, ga bi pa jest prevedel v EN in vrgu na mojo stran ... lahko si jo greš tudi mal pogledat ..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "To s konstantnim PCI in AGPjem niti ni taka umetnost, vse kar rabiš je en kvarčni oscilator pri 33 (oziroma pri meni 40MHz) za PCI, in enega 66MHz za AGP. Pleg tega rabiš še logični inverter ki je sposoben delat na taki frekvenci. Pol pa pogledaš kir clock generator maš na plati pa odciniš tiste nogce za PCI in prilotaš vse potrebne nove signale na ta mesta, potem pa še najdeš kje gre iz chipseta AGP clock prekineš signal, in uneseš novega. Bolj zanimiva rč je TurboPLL (ki ga mam tud na tej plati) z njim lohka štelam FSB v korakih po 200kHz (0.2MHz), vendar je to že druga zgodba. Drgač pa mal poglej po japonskih straneh, boš sigurno najdu kej o fixnem PCI in AGPju. Jest mam drgač BH6 in je blo na to temo že miljon modifikacij. Bom doma slikal plato da boš videl kako to zgleda.  LP  @assistant_8"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Thanks, to za turboPLL vem; če bo pa slikca s tvoje plate pa ok še bolj :-) ..."
+    },
+    {
+        "role": "assistant_9",
+        "message": ">Če je bil FSB nastavljen na nestandardno hitrost, je bila tudi PCI in AGP izven danih specifikacij. Recimo, pri FSB 85 MHz je bila hitrost vodila PCI (delitelj 3) 28Mhz. Pri AGP pa (2/3) 56Mhz. PCI med drugim skrbi tudi za integriran IDE krmilnik, temu pa odstopanje od specifikacij prav gotovo ni po godu. Ravno to se je zgodilo kolegu, ko je imel FSB nastavljen na 85MHz. Zgubil je vse podatke na disku in to ravno zaradi delovanja PCI in s tem tudi IDE krmilnika izven specifikacij.  Počaki, tule mi pa ni neki jasno. Tvoj kolega je zgubo podatke na disku, ki je bil priključel na IDE krmilniku, kateri je deloval pod normalnim taktom? Tole pa prvič slišim... Ne bi reko, če bi deloval nad standardno frekvenco. Sicer pa jaz gonim celerona 466@581 Mhz, to je 83 Mhz FSB, delitelji so pa 1/2 za PCI in 1/1 za AGP, pa še nikol nisem mel težav z diskom/grafo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ne vem sicer kakšne delitelje je on uporabljal takrat, sicer pa to ni važno. In glede na to da celo v navodilih od plate lepo piše: above 66Mhz/100Mhz bus speed supported but not guaranteed due to the PCI and chipset specs. Ima pa enako plato kot jaz.  Za posledice navijanja si pač sam odgovoren."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Sory k nism še postal slik plate, zadeve so se obrnile tako da sem bil čez vikend (spet) na morju in sm šele zdej domov prišel tak da ni bilo še cajta bo pa v kratkem.  LP  @assistant_8"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nekaj o @assistant_8ovih uspehih je zapisanega v temah  Ideja za hardcore modifikacijo oz. Ko ima človek preveč časa! in  Kar pošten overclock [>:D] ."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Evo slikce:  Najprej BH6 v vsej svoji zmodificiranosti, povdarek je na delu okrog generatorja frekvence, kjer je priklopljen fiksen PCI ter tisti privesek s plate, ki diktira frekvenco za upravljanje ure (da ne prehiteva) manjša pozornost gre na napajalni del, kjer vidite dodatne MosFET tranzstorje, kar pripomore k manj pregrevanja v napajalnem delu, druga je tud dušilka, ki ima namesto 0.75mm^2 debele žice malce debelejšo 2mm^2  tudi to pomaga k manj pregrevanja napajalnega dela, ter k bolj stabilni napetosti procesorja.     Druga slikca kaže TurboPLL v vsej svoji nakracanosti, zadeva je pač prototip ki se je obnesel preveč dobro da bi sploh spreminjal karkoli na njem  , tista stikalca omogočajo FSBje od 26MHz pa vse do 297MHz (no najbrž ni potrebno omenjat da je zgornja meja malce pretirana in je ni mogoče zalaufat) majveč kar je dejansko delalo je bilo 184MHz, kar se lepo vidi v temi do katere link je objavil OWCA.     Kej več vam pa že ne morem pokazat, ker \"slikam\" z skenerjem in nekako se ne da glih super slik delat, fiksen AGP je šel pa že dol z te plate, saj je delal probleme in konec koncev ga nisem rabil Riva TNT2 deluje do 120MHz AGP.  LP  @assistant_8"
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  imam spletno stran z lastno domeno, ki gostuje pri mojem spletnem ponudniku, za mail pa sem si usposobil google apps. Sedaj sem registriral se eno domeno in jo z DNS zapisom preusmeril na obstojeco spletno stran, ne znam pa preusmeriti mailov, ki prihajajo na to novo domeno. Pri tem potrebujem vaso pomoc in nasvet, kako preusmeriti e-maile, ki bodo prihajali na to novo domeno? TNX in LP! Robi"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V DNS moraš vpisati preusmeritev s pomočjo MX zapisov Za google so to sledeči zapisi: mojadomena (G) MX 20:alt1.aspmx.l.google.com mojadomena (G) MX 20:alt2.aspmx.l.google.com mojadomena (G) MX 10:aspmx.l.google.com mojadomena (G) MX 30:aspmx2.googlemail.com mojadomena (G) MX 30:aspmx3.googlemail.com mojadomena (G) MX 30:aspmx4.googlemail.com mojadomena (G) MX 30:aspmx5.googlemail.com"
+    },
+    {
+        "role": "user",
+        "message": "Hvala lepa, za domena1.com imam vse to vpisano in mi mail za to domeno v googlu tudi normalno delujejo. Sedaj pa imam se domena2.com in bi rad vse maile, ki pridejo na to domeno usmeril v mailbox od domena1.com. Ali je to sploh mozno narediti z DNS zapisi? Sicer sem gledal v dashboardu za domeno v google apps in se da narediti, da pobira se posto od poddomen, vendar ce prav razumem, je to mozno samo za zbiranje e-mailov, ki so naslovljeni na poddomeno npr. xxx@poddomena.domena1.com?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "domeno2.com moraš dodati v Google Apps, potem pa si v svojem mailu naredi, da ti pobira tudi pošto iz ...@domena2.com"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Problem je da moraš 1. v DNS-u vpisati MX strežnik za Domeno 2. 2. Nikakor ne pozabi, da mora MX strežnik domene 1 , ta mail sprejeti."
+    },
+    {
+        "role": "user",
+        "message": "Ice Heki, to sem razmisljal ja in ce ne bo slo drugage bom moral kreirati se Google Apps za 2. domeno.  @assistant_2 - obe domeni imata dns streznik dns1.register.com. Za domena1.com imam vpisane za MX zapise od googlea. Kaj bi potem moral vpisati za MX zapis za domena2.com? Ker mx zapisi za domena1.com so kar zapisi od googlea.  Bom pa poizkusil kaj se zgodi, ce v google apps pod domain alias za domeno1.com vpisem se domeno2.com, za mx zapise pa vpisem kar mx zapise od googlea. Mogoce bo celo delalo... Sporocim o uspehu..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pozdravljeni, imam podoben problem, ampak preden ga začnem reševati me zanima naslednje; - rad bi preusmeril maile iz domena@siol.net na xxx@domena.si  - osnovni mail podjetja je domena@siol.net (gostovanje siol...) 1. Ali bo pošiljanje maila na domena@siol.net po preusmeritvi onemogočeno? Namreč ne moremo si privoščiti, da naš primarni mail ne bi bil dostopen... 2. Kje lahko to spremenim?  dns poizvedba trenutnega stanja: domena.SI DNS RECORDS Record Type TTL Priority Content  mail.domena.si MX 1 day 1 mailhub.siol.net  www.domena.si CNAME 1 day sirius-b.siol.net  domena.si A 1 day 193.189.160.32 (Ljubljana, 04, SI)  domena.si MX 1 day 1 mailhub.siol.net  domena.si NS 1 day taurus-1.siol.net  domena.si NS 1 day taurus-2.siol.net  domena.si SOA 1 day taurus-1.siol.net. dns.siol.net. 2012032000 28800 3600 1209600 86400   Hvala za odgovor."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po DNSju tudi maili @domena.si uporabljajo Siolove poštne strežnike. Kaj storiti - prijaviš se v domena@siol.net in greš pod Nastavitve, Posredovanje ter vpišeš xxx@domena.si. Tako boš vse maile, ki pridejo v domena@siol.net dobil na xxx@domena.si Druga varianta je, da na xxx@domena.si nastaviš, da preverja maile v domena@siol.net."
+    }
+]

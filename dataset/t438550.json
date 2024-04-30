@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni.  V okviru študija moram poiskati ortonormalno bazo vektorskega prostora V (sumim da z uporabo Gram-Schmidtove teorije), generiranega z vektorji u1=[1;1;1;1], u2=[1;1;0;1] in u3=[1;0;1;1]. Naloga sprašuje tudi, kateri izmed vektorjev a, b in c so elementi V - rešitev napiši kot linearno kombinacijo vektorjev u1, u2, in u3.   a=[0;1;2;3], b = [2;0;1;3] in c=[1;0;3;2].   ; pomeni novo vrstico (torej imamo v vseh primerih en stolpec in štiri vrstice). Poleg tega me zanima še kaj sploh pomeni ortonormalna baza in kaj ortogonalna baza vektorskega prostora.   Sem skušal preguglati, pa slovenskega odgovora nisem našel, v angleščini pa tudi nekako nisem tako domač. Uporaba mat. programov ala Mathlab, Octave, ipd ni dovoljena.   Vsem se zahvaljujem za pomoč, vesel pa bom tudi samo kakšnih usmeritev, linkov, ipd., saj se bom moral za izpit zadevo naučiti, tako da mi sama rešitev niti ne koristi toliko.   Lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sam imam podobno snov :D Vektorsko analizo. Keri predemt maš to? Na matko hodiš?  Tak da če bi lahko en fajn odgovor dal al pa vsaj kaki link v ang ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mogoče ti kej koristi: link"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ortonormalno bazo vektorskega prostora sestavljajo med seboj paroma pravokotni vektorji (ortogonalni), ki so normirani, t. j. dolžine 1. Kako točno gre postopek ne vem več, faks je bil le dobrih 15 let nazaj, treba je najti le kakšen zgled v knjigi in mu slediti. Kolikor se spomnim je kar enostavno."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovore.  @assistant_1 link je zelo uporaben, tako da ga priporocam tudi Seminal, @assistant_2 hvala za odg., zanima me pa samo še kako vem da so vektorji med seboj pravokotni? Aja pa se nekaj mi ni jasno. Ko gledam rešitve nalog, velikokrat naletim na besedno zvezo distinct values. Ker ima npr vektor a distinct values, lahko sklepamo na bla bla bla...Torej kdaj je vrednost vektorja distinct value?   Hvala vsem se enkrat  lp"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Vektorja sta po definiciji pravokotna, če je njun skalarni produkt 0.  Nisi povedal kateri skalarni produkt imas definiran, zato predpostavimo standarnega.  Tista naloga zgoraj se da resit na bolj cloveski nacin kot z uporabo GS algoritma in sicer z metodo ostrega pogleda (res je GS algoritem enostaven, ampak potrebno je sestevat in mnozit :) )  Ker je prostor generiran z vektorji u1, u2 in u3 je vektor e1=u1-u3 tudi v njem, prav tako e2=u1-u2 in e3=u1-e1-e2. Vektorji e1, e2 in e3 so ocitno paroma pravokotni in ker so nenicelni so linearno neodvisni. Prva dva sta ze normirana, norma zadnjega pa je  \\sqrt{2} (napaka se odpravlja). Torej so vektorji  e_1,e_2,\\frac{e_3}{\\sqrt{2}} (napaka se odpravlja) ortonormirana baza prostora.  Od unih vektorjev pa izgleda nobeden ni v V, ker imajo vsi prvo in zadnjo komponento razlicno, vsi vektorji v V pa imajo enaki prvo in zadnjo komponento."
+    },
+    {
+        "role": "user",
+        "message": "Uf @assistant_3 vidm da obvladas...Hvala za tole, sm prebral, zj pa sam še dojamem pa je;)  lp"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zivjo tudi jaz imam problem in sicer: Preveri, da so vektorji e1 =[1;0;0;0,]T e2 =[1;1;0;0]T, e3 =[1;1;1;0]T in e4 =[1;1;1;1]T baza vektorskega prostora R4. Doloˇci koordinate vektorja a = [2;-3;1;5]T v tej bazi. Kakˇsne so koordinate vektorja a v bazi f1 = [1;1;-1;1]T, f2 = [1;-1;-1;1]T, f3 = [1;1;1;1]T in f4 = [-1;1;1;1]T  IN Zapiˇsi a=[1;-2;5;1]T kot linearno kombinacijo vektorjev e1 =[1;1;1;0]T, e2 =[1;2;3;1]T, e3 = [2;-1;1;-1]T in e4 = [0;0;0;1]T. Reˇsitev:[Reˇsitev v Matlabu je na datoteki V01N03.m] a(e) = -6e1+3e2+2e3   HVALA"
+    },
+    {
+        "role": "assistant_5",
+        "message": "4. koordinato doloca samo vektor e4 (ostali imajo 4. koordinato == 0). Zato: a = 5*e4 + ... 3. koordinato dolocata vektorja e4 in e3; od e4 ze imamo 5, dobiti moramo 1, to je, odsteti moramo 4, zato: a = 5*e4 - 4*e3 + ... 2. koordinato dolocajo e4, e3 in e3, od e4 in e3 ze imamo 1, odsteti se moramo 4, zato: a = 5*e4-4*e3-4*e2 + ... 1. koordinato dolocajo vsi vektorji, od e4,e3,e2 ze imamo -3, pristeti moramo 5, torej a = 5e1-4e2-4e3+5e4  Preverimo: M*a(e)=a, kjer je M matrika baznih vektorjev e1..e4 (stolpci), a(e) zapis vektorja a v bazi e1..e4, a je vektor s koordinatami enotskih vektorjev: M*a(e) = [e1;e2;e3;e4]*[5;-4;-4;5]T = [2;-3;1;5]T OK  2. primer: sestavis si matriko M|a (k matriki dodas stolpec a, kjer ke matrika sestavljena iz stolpcev f1..f4), malo Gaussove eliminacije, da dobis trikotno matriko (pri prvem primeru je ze bila), in dobis resitev  3. primer je isti problem, samo malo drugace zapisan"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Imam problem z dokazovanjem da je nek podprostor vektorski podprostor ali, da je neka Lin. preslikava linearna. Praktično vsak primer je drugačen, tako,da si z nekim vzorcem ne morem pomagati. Kaj točno je tu fora?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Da dokazes da je nekak vektorski (pod)prostor moras pokazati naslednjo dve stvari:  Naj bo V nas prostor. 1) ce sta u in v elementa V, potem mora biti tudi u+v element V 2) ce je u element V, potem mora biti tudi k*u element V za poljuben skalar k.  Ce ti dve stvari pokazes, potem je V vektorski (pod)prostor.  Ce zelis pokazati da je preslikava A : U --> V linearna moras pokazati, da velja:  1) za poljubna u1 in u2 iz U velja A(u1+u2) = Au1 + Au2 2) za poljuben u1 iz U in poljuben skalar k velja A(k*u) = k * Au  Ce to dvoje pokazes, potem velja, da je preslikava A linearna. Zgornjima lastnostima se sicer rece aditivnost in homogenost.  Z zgornjim lahko resis veliko vecino nalog, so pa potem tudi kaksne bolj teoreticne, kjer je potrebno pristopiti drugace."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ja to mi je jasno za te aksiome, sam postopek mi ni jasen. Primer1:  Podana sta vektorja a=[-3, 2, 1] in b=[1,2,3,]. Naj bo U:={x € R^3: a*x=b*x} Ali je U vektorski podprostor za U? Primer2: Za vektor a=[1,2], označimo z V množico vseh vektorjev 2x2 matrik, za katere je a(transponirano)*A*a=0. Dokaži, da je V vektorski podprostor v prostoru vseh 2x2 matrik in določi dimenzijo ter bazo za V. V zapiskih imam primere nalog, mi pa ne dajo dovolj insighta, da bi potem razumel rešil nek xyz primer. Vem pa določit npr. N(A) idr. prostore, ker poteka pač vse po neki šabloni."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Sem praktično enak problem z dokazovanjem imel pri analizi. Kljub temu, da sem se ravnal po zgledih, ki sem jih imel sem za dokazovanje dobil 0 točk pa sem samo moral dokazati, da je zaporedje naraščajoče, kaj komot narediš an-an+1>=0."
+    },
+    {
+        "role": "assistant_8",
+        "message": "an-an+1>=0. je padajoče in ne naraščajoče aporedje. Mislim da sem ti že enkrat rekel ampak ti bom še enkrat. Ne uči se postopkov nalog na pamet ampak poskušaj razumeti bistvo problema. v prvem primeru imaš lepo napisano a*x=b*x torej če je x=(x,y,z) -3x+2y+z=x+2y+3z. daš vse na eno stran in dobiš -4x-2z=0 oz če ti je lepše 2x+z=0 to je ravnina z normalo (2,0,1). to je vektorski podprostor ker je vsaka linearna kombinacija poljubnih baznih vektorjev (ki razenjata ravnino) spet v ravini. dodaten pogoj zaradi homogenosti je da gre skozi 0 kar pa ra ravnina gre in zato je v. podprostor"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Mislim, ja no padajoče whatever.Niti ni point v tem. Na žalost se 99% ljudi uči samo naloge, od tod tudi tako znanje, žal. Pač zanima me kako dokažem to s pomočjo teh aksiomov, jaz za sebe sicer vem, da je to ravnina."
+    },
+    {
+        "role": "assistant_8",
+        "message": "potem pa napiši da je to ravnina in da zato vsebuje vse kombinacije 2 baznih vektorjev in je zato, ker gre skozi 0 vektorsko polje in boš dobil vse točke. ena izmed mnogih lepot matematike je da lahko na več različnih načinov prideš do enakega rezultata in vsi so lahko pravilni"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nejde to tak na FRIju."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Bi pricakoval vec od FRIja oziroma njenih profesorjev/asistentov matematike. Kakorkoli, da se resiti tudi samo z tistima 2 tockama, ki sem ti jih dal.  Mamo prostor U v katerem so vsi vektorji, za katere velja a*x = b*x. (a*x oznacuje skalarni produkt).  Za aditivnost: imava x in y iz U, torej velja za njiju zgornje. Pokazati je treba  a*(x+y) = b*(x+y). Za skalarnu produkt velja a*(x+y) = a*x + a*y.  Uporabimo to lastnost na enacbi zgoraj, ki jo zelimo pokazat. Uporabimo predpostavki, ki veljata za x in y, ker sta elementa U in s tem je pokazana aditivnost.   Za dokaz homogenosti velja podobno, s tem da tukaj upostevamo naslednjo lasnost skalarnega produkta v R. a*(kx) = k(a*x).  Upam, da je tole dovolj razumljivo. Lahko ti zjutraj resim se drugo nalogo, tukaj na telefonu zdlee mi je res mucno pisat tele znake :/  Lahko pa resis tudi na drug nacin in sicer:  Prostor U je prostor vseh vektorjev za katere je a*x = b*x. Nesimo vse na eno stran in izpostavimo x. (Ista lasnost skalarnega produkta kot zgoraj). (a-b)*x = 0. Torej skalarni produkt dveh vektorjev je enak 0. Ta dva vektorja sta torej pravokotna. Prostor U je prostor vseh vektorjev, ki so pravokotni na a-b. To pa je vektorski prostor.  S tako razlago bi moral biti zagotovo zadovoljen vsak profesor/asistent, ki ni totalno nesposoben."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hvala ti za razlago. Ni mi treba še drugega primera. Bom že nekako to pokapiral."
+    }
+]

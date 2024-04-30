@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "V wordu imam normalno besedilo napisano v ARIAL CE pisavi. Ko omenjeni dokument z Acrobat PDFWriterjem pretvorim v pdf datoteko se v besedilu se namesto črk č pojavlja znak è. Ko sem adobe acrobatu pogledal pod text attributes vidim da ni pisave ARIAL CE anpak samo navadna arial.  Zanima me ali se v adobe acrobatu da dodati kako nova pisava, oziroma kako rešiti problem č-jev.  LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uporabljas Writer navadne ali CE verzije? Ce si ga dobil poleg kaksnega programa (recimo PageMaker) je skoraj zagotovo navadna verzija, v kolikor pa je del paketa AcrobatCE pa CE verzija (kar je tudi prav).  Poskusi drugace: v Wordu printaj v datoteko s koncnico *.ps in to datoteko \"destiliraj\". Ce fonti se bodo na ta nacin skorajda 100% \"embedali\" in bodo v PDF."
+    },
+    {
+        "role": "user",
+        "message": "Verjetno je problem ravno v tem da moj adobe acrobat kjer je bil writer ni CE verzije. Ali se kje na neto dobi samo Writer CE verzije.  LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Heh, ce najdes Acrobat CE imas seveda tudi CE Writer. Sirije se govorice, da se \"najde\" Acrobat 6.0 Pro CE.  Zdaj se pa znajdi :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Problem je tudi v windowsih , ki imajo kr svoje verzije standardnih fontov (kot so times, arial, sans serif) in ne true type in post script (pri macih je to zrihtano...). Kot je ze bilo omenjeno - ena resitev bi bila, da najprej sprintas (v fajl) in dobis post script (*.ps), katerega nato \"destiliras\" (acrobat distiller). Ce to ne bo delalo, pa ti ne preostane nic drugega, kot da si dobis \"prave\" fonte, ki jih bodisi kupis bodisi dobis od koga  in ponovis postopek - ali direktno z acrobat writerjem ali preko ps-ja in distillerja.  LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hmm ... se ne strinjam. MS fonti v WindowsXP so OpenType (TrueType outline) in kot taksni nosijo zapis za vec kodnih panel. CE oznaka samo olajsa prepoznavanje, da gre za font z razsirjenim naborom. Pri razsirjenih OpenType opcijah lahko avtor fonta doloci, kako se bo izpisalo ime fonta v dolocenem jeziku. Ce tega ne doloci se uporabi privzeta nastavitev (npr. font je v anglescini definiran kot \"Arial-Bold, avtor pa za slovenski jezik doloci ime \"ArialCE-Krepko\" se bo pri slovenski lokalizaciji izpisalo to zadnje, na engleski pa privzet opis). To velja tako za Windows kot Maca, ce le program polno izkoisti unicode in podoro OTF (InDesign 2.0, recimo).  Poleg tega so MS OpenType fonti eni izmed najbolj dodelanih in kvalitetnih pisav, da ne omenjam podpore jezikom. Tu jih Adobe s svojo serijo Pro fontov ne doseze.  ----  Se 1x ... Da se izognes problemom z embedanjem fontov uporabi CE verzijo Acrobata/Distillerja/Writerja. Tudi ce imas \"prave\" fonte so moznosti, da uporabnik s povprecnim znanjem pripravi do delovanja ne-CE varianto zelo majhne.  b."
+    }
+]

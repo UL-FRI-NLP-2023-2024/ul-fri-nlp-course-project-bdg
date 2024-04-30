@@ -1,0 +1,22 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Sledeče me matra. S te strani  URL2File sem si potegnu programček prekot katerega lahko z batch fajlu potegnem z interneta posamezno sliko...   Se pravi v batch preprosto napišem URL2File  18977.jpg in mi potegne to sliko v mapo kjer se nahaja batch fajl.  Problem je pa v tem da bi rad to sliko ki mi jo potegne dol poimenoval s časom ko je bila zdownlovdana recimo 1310slika.jpg...   Nimam pojma kako to naredti, oziroma ali je sploh možno ?   Najlepša hvala če pozna kdo to problematiko !!    Lp  Matej   [edit: Prosimo, da drugič temo poimenuješ v skladu z  PREBERI ME: označevanje topicov v oddelku programiranje! - snow]"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ce je sploh mozno? Seveda je mozno. Moram pa priznati, da kaj takega tudi sam v Windows ukazni vrstici se nikoli prej nisem poskusil. No, najprej naredi batch skripto datetime.bat, v katero vpisi tole:  ---------- odrezi @echo off  SETLOCAL  FOR /f \"tokens=1\" %%G in ('time /t') DO SET _time=%%G SET _time=%_time:~0,2%%_time:~3,2%  FOR /f \"tokens=2\" %%G in ('date /t') DO set _date=%%G SET _date=%_date:~8,2%%_date:~3,2%%_date:~0,2%  ENDLOCAL&SET _datetime=%_date%%_time% --------- odrezi  Nato v svoji batch skripti takoj, ko uspes z URL2File z interneta sneti sliko, pozeni datetime skripto. Ta skripta ti v okoljsko spremenljivko _datetime shrani trenutni datum in cas. Nato sliko preimenuj z ukazom:  ren slika.jpg %_datetime%.jpg   Priznam, da je bil tvoj problem zame kar izziv. Ker Windows okolje uporabljam zelo redko, Windows ukazno vrstico pa se redkeje, dopuscam, da za resitev tega problema obstajajo elegantnejse poti (pri predpostavki, da ni dovoljeno uporabljati \"zunanjih\" programov).  P.S. Ce mislis v prihodnje se veckrat poceti stvari v \"batch\" nacinu, toplo priporocam uporabo kaksne bolj  napredne ukazne lupine (npr. bash). Svetujem ti tudi, da si na internetu pogledas sledece: wget, curl, cygwin.  Za primerjavo, v bash-u bi tvoj problem resil v eni vrstici:  URL2File url `date +%y%m%d%k%M`.jpg"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 hvala za trud !   Amm naredu sem tako kot si mi svetoval, pa je en problem da namest da bi mi sliko poimenoval z datumom, časom mi jo naredi brez kakršnega koli imena.  Hmm vem da nimam pojma o programiranju zato prosim brez posmeha   Poglej tkole sem naredil    in mi naredi prej omenjeno   Uf sej vem da je batch prazgodovina, sam za to kar ga potrebujem bo kar vredu. Hvala za bash... in ostale predloge. Mogoče se kdaj lotim.   Hvala za kakšen namig    Lp  Matej"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poskusi ukaz run zamenjati z ukazom call: torej  call datetime.bat  in ne  run datetime.bat  P.S. Koncnico .bat lahko pri zagonu batch skripte izpustis (analogno z .exe)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 DELA, ti si CAR !! Jupii    Še enkrat ti hvala za tole  za začetek je... vidm da se bo treba vršt v kej kar si predlagal.  Lp  Matej"
+    }
+]

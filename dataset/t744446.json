@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  kolegica me je prosila, če bi ji pogledal računalnik saj ji naj ne bi delal internet - wifi. Pred kratkim naj bi bil računalnik - HP 350 G1 - formatiran na njem pa so naloženi Windowsi PRO 10.   Ker je trenutno odsotna oz. nedosegljiva naslednjih nekaj dni, da bi jo vprašal od kdaj ji ne dela oz. katere spremembe so se v vmesnem času zgodile prosim vas za kakšno idejo :)   Zadeva je takšna, da vidiš vse networke, se nanje lahko povežeš vendar ne dela internet - connected, no internet. Enaka zadeva če ga priklopim direktno preko UTP-ja.   Moj prvi sum so bili gonilniki, ki sem jih prenesel s HP-jove uradne strani vendar zadeva ni pomagala... Nato sem vse gonilnike za network v device managerju izbrisal in ponovno naložil...ista težava.   Ali je mogoče, da je računalnik prestar za gonilnike za WIN 10? Moti me le dejstvo, da so vsi networki najdeni in povezava uspe le internet je onemogočen...  Poskusil sem tudi s \"popravitvijo\" povezave vendar neuspešno...  tnx. :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Type \"ipconfig /flushdns\" and press Enter. Type \"ipconfig /registerdns\" and press Enter. Type \"ipconfig /release\" and press Enter. Type \"ipconfig /renew\" and press Enter. Type \"netsh winsock reset\" and press Enter. Restart the computer."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 30. apr 2019 ob 22:51 izjavil:Type \"ipconfig /flushdns\" and press Enter. Type \"ipconfig /registerdns\" and press Enter. Type \"ipconfig /release\" and press Enter. Type \"ipconfig /renew\" and press Enter. Type \"netsh winsock reset\" and press Enter. Restart the computer.   Release in Renew mi tudi v \"admin\" cmd modu napišeta: ‘The Operation Failed as no Adapter is in the State Permissible for this Operation’.  Googled it... https://appuals.com/fix-the-operation-f...   ne pomaga :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kateri isp, router/modem ? Lahko pingaš 8.8.8.8 ?  Kaj pravi ipconfig/all ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Fiz8čen gumb za komunikacijo oz. izklop vseh tehnologij. Je slučajno vklopljeno to?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 30. apr 2019 ob 23:12 izjavil:@assistant_0 je 30. apr 2019 ob 22:51 izjavil:Type \"ipconfig /flushdns\" and press Enter. Type \"ipconfig /registerdns\" and press Enter. Type \"ipconfig /release\" and press Enter. Type \"ipconfig /renew\" and press Enter. Type \"netsh winsock reset\" and press Enter. Restart the computer.   Release in Renew mi tudi v \"admin\" cmd modu napišeta: ‘The Operation Failed as no Adapter is in the State Permissible for this Operation’.  Googled it... https://appuals.com/fix-the-operation-f...   ne pomaga :)  Nima veze. Si vse vpisal? Predvsem zadnje. Ali pa: netsh int ip reset  Sicer pa lahko greš skozi te korake: https://support.microsoft.com/en-us/hel...  Slovenska verzija: https://support.microsoft.com/sl-si/hel..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "sformatiraj še enkrat in inštaliraj nanovo. Pa obvezno bios update; včasih se pri novejših windowsih pojavljajo kakšni bizarni problemi, če ni up to date bios"
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  hvala vsem za odgovore. Po dveh dneh testiranja tudi po zgoraj omenjenih korakih zadeva ni nic drugacna.  Kolegica je javila da sicer racunalnik uporablja tudi za sluzbene zadeve in da je njihov racunalnicar stikal po laptopu da ji je nalozil nrkaj zadev ne spomni pa se ali internet od takrat ne dela.  Poskusil sem tudi naslednji zadevi:  1. priklopil sem usb wifi sprejemnik ki se je povezal na omrezje vendar ista tezava - ni dostopa do interneta  2. Bootal sem OS knoppix direktno z dvd-ja in priklopil UTP kabel, vendar je le povezoval nikoli pa povezal oz. pridobil dostop do interneta.  Z drugim korakom sem - po mojem mnenju - 99% izlocil sistemske tezave, ce tudi drugi OS ni povezal na internet in predvidevam da je problem v harwareu.   Tu se mi pojavlja vprasanje...ce bi crknila mrezna kartica ali obstaja moznost, da sene bi mogel povezati preko USB sprejemnika? (po mojem mnenju skoraj nemogoce)  Any ideas??? Sicer bom v skraj i fazi formatiral vendar dvomim, da bo pomagalo..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Si mogoče kaj ugasnil router in prižgal? Si se mogoče poskusil priklopit z drugo napravo na wi-fi?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 3. maj 2019 ob 14:15 izjavil:Si mogoče kaj ugasnil router in prižgal? Si se mogoče poskusil priklopit z drugo napravo na wi-fi?   za test sem priklopil tablico, tri twlefone in laptop. laptop tudi direktno na kabel. vse naprave delujejo brez tezav"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Poženi posodobitve sistema. Včasih upgrade iz varnsotnih vzrokov kaj zablokira. Ti firewall kaže kakšno blokado?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "jst bi prej reku, da ji je nastavil proxy :) ali pa interne dnsje od podjetja :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5&@assistant_6  Predvidevam, da sem obe opciji izlocil z bootanjem drugega OS-a preko dvdja ..ali se motim?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne. Omenjeni računalničar naj pogleda, če je že šaril po računalniku. (a tam v službi deluje?)"
+    },
+    {
+        "role": "user",
+        "message": "Update:  preko OS Knoppixa se mi je uspelo povezati na internet z USB stickom. Kot kaze je zadeva sistemske narave v windowsih. Danes formatiram in bi moralo delovati.  Hvala vsem za pomoc."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če nekdo šari po sistemu, naj tudi rešuje problem. Postavitev sistema iz nule ni potreben. Običajno problem ta problem že reši, če poženeš \"WI-FI/Odpravi težave\", da se vse resetira."
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "role": "user",
+        "message": "Moj namen je, da sestavim eno mašino, ki bo server za okoli 4TB podatkov (v prihodnosti bom rabil več kot to). Ta server naj bi prek 1Gb mrežne stregel te podatke 4-im workstation-om. Ideja: Mašinca naj bi imela eno Areca kartico na PCI-e (x4 ali x8) vodilu z 12 SATA porti na katerih bi bivalo ustrezno število 500GB SATA diskov v RAID5 načinu. Vse skupaj bi delovalo na eni izmed linux platform. Problem mi predstavlja 1Gb/s povezava navzven. Ali je možna kakšna druga hitrejša rešitev za spraviti podatke ven? Ali bi se zadevo dalo furat prek dveh 1Gb mrežnih? Hm, pa zelo verjetno bo problem 12 diskov spraviti v ohišje. Kakšna ideja kako bi zadevo uredil optimalno?  Saj ko bodo potrebe večje (kmalu) bom razmislil o kakšni bolj resni omari, a trenutno ni dosti $$$$. Za kaj takega bo potrebno $$$$$.   Lui"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mislim da je raid5 hitrejši za branje kot 6. Glede več mrežnih ne vem, sam pomoje bi se dal probat. Kar se pa ohišja tiče pa ti samo nabavi  chieftec bigtower ki ma že plac za 8 diskov, v zgornje 5.25 prostore pa vržeš  2 tale boxa in maš placa za 16 diskov. Če je sila lahk en tak box daš še na zadnjo stran kjer je plac za 120mm vent nad napajalcem sam ga boš mogu mal fixirat. 20 diskov max torej...not bad a?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "RAID-5 je nekaj hitrejši od RAID-6, vendar priporočam slednjega. Pri taki količini diskov je en redundančen disk premalo, sploh ker ti lahko tudi sam krmilnik kdaj \"zgubi\" kak disk, vsaj meni se je to zgodilo.  Ne vem točno zakaj, ker disk je bil hardversko čisto O.K. in sem ga pozneje lahko dodal nazaj, vendar je bilo treba seveda rebuildati array na novo. ker imam na stroju 16 diskov in ker se je to zgodilo, ko sem premetaval podatke z ene skupine 8 diskov na drugo, domnevam da je bil glitch v napajalniku ali da se je na enem od diskov sprožila kaka termična rekalibracija v neugodnem trenutku...  Kar se mreže tiče, dobijo se neke intlove 10 Gb/s kartice, vendar stanejo manjše bogastvo.  Dajo se dobiti tudi 4x 1Gb vmesniki na eni kartici, a tudi ti stanejo malo bogastvo (malo manj kot 100 kSIT).  kernel naj bi ti načeloma omogočal paralelno delo dveh kartic kot en logičen, 2x hitrejši Etherne link..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 hvala za zanimivo ohišje v katerega bi se res dalo stlačiti veliko diskovja. Hm glede tistih boxov za HD sem pa malo skeptičen. Sam imam dva taka boxa v Stacker ohišju kateremu so pravzaprav namenjeni. Ne vem, če se so kompaktibilni z drugimi ohišji? Imaš kaj izkušenj? Brane, hvala ti tudi za tvoje informacije. Verjetno bo res potrebno RAID 6 implementirat. Imam pa še eno prošnjo. Ali mi lahko opišeš kako si rešil zadevo s 16-imi diski, kam si jih montiral, kako zadevo hladiiš, pa morda še kaj o napajanju? Upam, da ne bo preveč.  THX Lui"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Montiral sem jih v tavelko pixno, ki sem jo dobil pri MLacomu (Chieftec ?)  Za prilagodite sistema sem obilno uporabljal Proxxon. Celo škatlo sem izrezuckal ko da je sestavljanka...    Kjer se je dalo postavit vent, sem ga počil. Tista pixna ima ventov ko howercraft.  Na vsako kadičko sem dal poseben vent. Zgoraj, kjer je plac za CDje, sem namontiral kovinske trakove in nanje prišraufal diske. Spredi pa seveda vent.   Celo zadaj na napajalniku je šina/banja s tremi ali štirimi diski...in seveda vent...    Vse nosi napajalnik 500W, ki pa je bil malo nafriziran, ker je prešvoh. V bistvu te rešitve ne priporočam vsem. Najbolje bi bilo napajat tiske iz enega, mašino pa iz drugega napajalnika. Če gre za prave SATA diske, ne bi smelo biti frke, ker SATA je hotplug capable, torej ni panike, če dobijo diski malo prej ali pozneje elektriko glede na sistem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Par nasvetov:  1. Vzemi tako kartico, da boš imel kaj extra štekerjev. Če misliš imet 16 diskov, vzemi Areca 1170 za 24 diskov. Ta je na voljo samo za PCI-X zaenkrat, ni pa 2x za reč, da ni že ali bo kmaluu zunaj 1270 za PCIe... Stvar pride zelo prav pri migraciji polja, backupu na diske itd.  2. Napajalnik naj bo sposoben nosit vse to, pa še kaj. Če je treba, uporabi več ločenih napajlnikov.   3. Pri kartici dokupi baterijsko napajanje za vdelani RAM. Če zmanjka štroma, podatki v bufferju lahko čakajo do 3 dni, kar je v praksi več ko dosti. Tista Li-Ion baterija stane ko aku za kamion, vendar je vredna tega denarja.  4. Diski naj bodo enaki če se da, po možnosti iz iste serije. Ni pa nujno. Meni čisto lepo delajo 200 Gb WDji, od katerih je en del ATA z eksternim SATA adapterjem, drugi so pa SATA WDji in stvar dela. Vendar je najbolje ne tvegati, če ni treba. Če se da, naj bodo predvideni za stalno delo in naj bod namenjeni RAID poljem. VSaj pri WDju so diski za RAID tudi SW rahlo drugačni od navadnih diskov.  Pri teh lahko ECC izklopiš, ker ga itak opravlja RAID. Če disk torej zgubi sektor, se ne bo trudil in izgubljal čas z ECCjem (in poskušal popraviti sektor) ampak bo sektor remapiral in počakal, da RAID kartica sama izračuna pravo vsebino ter jo vpiše nazaj. V nasprotnem primeru lahko disk ostane neaktiven predolgo, toliko da RAID pomisli, da je nekaj narobe z njim in ga \"vrže ven\" iz polja, kar je ne glede na redundaco lahko neugodno, saj je treba polje potem regenerirati, kar je zamudno.  5. Diski naj bodo dobro hlajeni (toliko, da med delom niso opazno toplejši od okolišnjjega železja) in naj se ne ugašajo.  Vsakih par stopinj več bistveno skrajšuje delovno dobo diska, ravno tako stalno zaganjanje in ustavljanje. V svojih RAIDih imam čisto navadne WDje že tri leta, pa delajo B.P. Diski, ki so mislili crkniti, so se poslovili v prvioh nekaj tednih. Seveda bi blo bolje imeti namenske diske z boljšimi ležaji itd...  6. Pred začetkom preštudiraj/probaj, kateri stripe size se zate najbolje obnese. Stripe size pomeni samo bloke, ki so na enem disku. Če imaš recimo 5 diskov v RAID-5 in je stripe size 64K, boš blok 256 K dobil v enem šusu-vsakih 64K s svojega diska. Večji stripe je lahko prednost pri delu z daljšimi fajli, vendar bo zabremzal delo s krajšimi. Kompromis določaš sam.  Jaz porabljam stripe sie 8K, ker moji WDji znajo v šusu potegnit samo do 16 sektorjev, kar je 8K in se mi povečanje tega ne pozna veliko, delo z majhnimi fajli preko NFSja pa s tem stripe sizeom dela bistveno hitreje.  7. Uporabi solidno mrežno na 64-bitnem PCI-Xu in s solidnim MTU, vsaj 8500 byteov- toliko da recimo lahko spavi not 2 4096 bytna pagea + extra IP/TCP/NFS/SMB overhead.   8. Ne vem zakaj, a največjo prepustnost dosežem takrat, ko je kernel scompilan kot lowlatency desktop z interrupti na 1000 Hz. Naj bi blo obratno, pa ni...  9. Bodi previden s 64-bitnimi particijami (nad 2.5 Tb po \"RAID disku\"). Sem zgubil na megatone podatkov tako. Fdisk mi ni hotel sparticionirati tako velikega diska, pa sem ga kar celotnega sformatiral, brez particioniranja. Stvar je celo nekako delala, dokler se ni po par mesecih tako razletela,d a je nisem nikakor več pobral. ne vem, kaj je bilo, vendar tu ne krivim kartice. Ta ni nikoli niti trznila, fdisk in vse ostalo mi je pa stalno delalo težave ob tem in sem se moral pomatrat,d a sem našel delujočo kombinacijo.  Če rabiš več ko 2.5 Tb na enem disku, da sestavi iz več \"RAID diskov\" z LVMom v en logični volume.  10. Če iščeš naslov za nabavo Areca kartice, se obrni na \"Elena Mavraki, Sander Computer\" /melena@sander-europe.de/ Tam sem kupil svojo 1160 in sem zelo zadovoljen. Povej, da sem ti jaz dal naslov (Branko BAdrljica, revija Avtomatika, Slovenija).  Sem pred tem kontaktiral \"Starline\" (www.starline.de- B.Widmaier@starline.de )in ta mi je dal sicer ugodno ceno, vendar uporabljajo zelo dvomljive legalne prijeme (\"drobni tisk\" je grozljiv)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "In še en nasvet, če smem:  backup, backup in še enkrat backup."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To je res, vendar kam naj človek zbekapira 4+ Tb podatkov ?  Na 1000+ DVDjev ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mogoč neumestno vprašanje, ampak a ni RAID sam po sebi back-up? Al se motim?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz sem se tega lotil tako, da imam vedno nekaj extra hddjev na polici in najpomembnejši podatki se redno refreshajo na te diske.  Ostalo je na DVDjih itd, poleg tega pa imam v bistvu dva RAID-a. Podatki z enega se redno syncajo na drugega, potem se pa ta unmounta.  Še nisem našel pametnejše variante."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mogoč neumestno vprašanje, ampak a ni RAID sam po sebi back-up? Al se motim?   Raid ni backup. Če in ko dela, te lahko ščiti pred crkotjem kakega diska, če gr eza redundančni RAID (Raid-4,5,6,1,10 etc), ne pa pred tem,d a ti podivjani SW prepiše vsebino na diskih itd.   Ti imaš lahko superredundančni RAID, pa še vedno izgubiš vse podatke, čeprav ti ni crknil noben disk.  Zaodsti je le bug v kernelu ali recimo v Glibcih ali kaj takega."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ok, to nisem bil ziher.  Tvoja metoda se mi pa zdi učinkovita, sam kolk cajta ti vzamejo ti back-upi?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ok, to nisem bil ziher.  Tvoja metoda se mi pa zdi učinkovita, sam kolk cajta ti vzamejo ti back-upi?  Hmm.  Zanimivo vprašanje.  Kolk časa in predvsem denarja pa ti vzame reševanje parih TB podatkov?  RAIDI so praviloma zelo dobri, vseeno pa je izredno dobra odločitev backup vsaj ključnih podatkov, če že ne celaga sistema.  IMHO"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne pravim da je nesmiselno. Sam časovno me zanima. Backupiranje ima še kak smisel, tud najmanše količine podatkov!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Težava je, kjer morajo uporabniki sami skrbeti za backupe, ker jih po večkratnem opominjanju naredijo 1x letno.  Na eni firmi sem naredil 2x200GB raid 1, imajo pa tudi zunanji 200gb disk. Samo backup bi bilo dobro delat napr. 1x mesečno. Pa še vsake toliko na dvd.  Kako plato/procesor/ram pa imate za te raid mašine?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Server ima TYAN K8W plato, dve 240tki in 2 Gb RAM-a."
+    },
+    {
+        "role": "user",
+        "message": "Brane havala za res izčrpen odgovor in kontakte. Polni backup +4TB trenutno ne bo prišel v poštev, saj če bi si lahko špogal ustrezno tape tehnologijo, bi si verjetno lahko špogal tudi kakšno bolj namensko zadevo v stilu  te zadeve. Zadevo sem imel namen rešiti tako kot Brane z diski, ki so na lagerju. Pač, ko nabavljaš 16 diskov za RAID nabaviš še dodatne 4 za zamenjavo. Je pa ideja o še enem serverju s podobno kapaciteto kar zanimiva. Dnevni (beri nočni) backupi sploh ne bi bili problem saj bo sprememb glede na količino podatkov zanemarljivo malo.  Lui"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz mam to na istem serverju. Oba RAID polja, vendar je praktično vedno eno unmountano.  Ni ravno pametno, a dela. Zaenkrat. Seveda sta dva serverja veliko boljša rešitev. ČE boš šel v to , si vsekakor oglej AFS (Andrew File System), ki je naravnost namenjen takim in kupou podobnih trikov. Sam ga še nisem uporabil, med drugim ker je kar zaguljen za pogruntat, je pa baje zelo zanimiva stvar.   AFS ti med drugim omogoča hranjenje pdoatkov v mreži povezanih strojev, kerj je na vsaki mašini nekaj, sam FS se pa ukvarja s fizičnimi zaj*.  Ti samo rečeš kateri fajl v kateri logični mapi hočeš, AFS pa pogrunta, na katri mašini je to. STvar zna tudi transparentno podvajat ali migrirat podatke. Če veliko dostopaš mapi X, ki je na bližnji mašini, nato pa se preseliš v pisarno na drugem koncu bajte in ti ta mašina ni več blizu, zna FS potihem preselit te podatke na kak bližji stroj itd.  Ali če gre za stvari, katerim dostopajo vsi, in jih večinoma berejo, lahko AFS sfotokopira te zadev po mašinah v mreži, tako da vsi vidijo svoj najbližjo kopijo in če se kdo odloči za vpis, se ta razmnoži po vseh kopijah...  No v glavnem, veliko je možnosti za igranje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "ZA bližnjo porihodnost imam v planu,d abom trajni backup delal na DVDje,sveže spremembe pa bom imel na parih HDDjih na polici.  Takrat ne biom rabil podvojenega RAID-a in boma lahko spet \"zadihal\" na 2+ Tb...    JE pa z DVDjih haklc, ker rabiš namenski backup SW, ki bo posortiral zadeve in delal iso fajle za backup glede na politiko v posameznih mapah, pa tudi pariteto rabiš. Ni zadosti,d astvar zapiše DVDje ampak moraš imeti pot ven, tudi če kaj recimo spraskaš. Stvar bi zato morala nek del dvdja rezervirat za extra pariteto, pa v paketu recimo 10 DVDjev bi morala biti dva paritetna ali kaj podobnega. Ali recimo 2 od 25tih ploščkov- ravno paket za eno \"tortico\"...  Tudi če stvar ne bi znala rešiti podatkov, bi morala znati \"definirati luknjo\" in razpakirati preostanek paketa z jasno informacijo, kaj vse manjka in koliko je tega."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Stvar, ki jo jaz uporabljam pri peki backupov (pri drastično manjšem obsegu) ;) je RAR z omejitvijo datoteke na velikost CD/DVD in 5% recovery record. Do sedaj še vedno rešil vse, kar se sicer (delno) ni več dalo prebrati.  O kakovosti medijev, hitrosti peke pa mislim da ni potrebe, da kaj pišem."
+    },
+    {
+        "role": "assistant_6",
+        "message": "glede rar-a rar ima tudi recovery volume-s in tebi lahko manjka originalni fajl, in potem ti on vzame recovery file in sam zgenerira manjkajoči del, haklc pa je da če ti imaš samo 2 recovery fajla tebi pa manjakajo 3 originalni fajli on lahko zgenerira 2 manjkajoča fajla, drugače pa ti lahko manjka katerikoli fajl.  LP"
+    }
+]

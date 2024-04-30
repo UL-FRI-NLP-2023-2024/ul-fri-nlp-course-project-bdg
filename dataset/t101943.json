@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni !  Imam problem instaliral sem si terminal service na windows 2000 Server, da bi lahko uporabljal remote desktop. Problem je naslednji: ko se prijavim preko remote clienta se inicializira nova session.   Pozna kdo rešitev, da bi se lahko prijavil v isti session, ki že teče na windowsih?  Klemen"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ko se odjavis od seje, uporabi \"disconnect\" in ne \"Log off\". Enako je v \"Full Screen\" nacinu, ce pritisnes na \"X\". Upam tudi, da uporabljas \"Remote Desktop Connection\" program, ki ga DLjas od @assistant_3a, je pa ze zraven pri XPjih.  lp"
+    },
+    {
+        "role": "user",
+        "message": "Samo jaz bi se rad prijavil v prvotni session, ki je nastal ko sem se doma prijavil v računalnik. V tega pa preko remote client ne gre.  Pozna še kdo kakšno rešite?  Hvala vseeno:)  Lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "naredi si bliznjico za RDC, desni klik pa Properties, za ukazno vrstico pa na koncu dodaj /console zgleda nekako takole: C:\\WINNT\\system32\\mstsc.exe /console"
+    },
+    {
+        "role": "user",
+        "message": "Vseeno ne gre. To sta mi vidla povedla za WINDOWS XP, ampak jaz imam doma WINDOWS 2000 SERVER, na katerega sem naložil Terminal service, da se lahko lahko povežem remote na njega .   Lp"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Remote administrator 2.1 . Deluje fantastično ;) Pa še link:  stran na www.radmin.com  Lep pozdrav!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user, kako pa se odjavis, ko gres off?  Ker jst sm mel to zadevo, pa sm kr na \"x\" kliknu, pa je vse ostalo tam. Ko sm se naslednjic logiral, me je vprasalo na zacetku, kaj bom izbral.  BTW, ce nismas ukloplenega licensing server (al neki tazga), je tak server omejen na 2 taki remote desktop povezavi...   by Miha"
+    },
+    {
+        "role": "user",
+        "message": "Servus!  Problem je taksen: jaz doma zazenem racunalnik(windows 2000 server) se prijavim v njega z uporabniskim imenom npr. test123 zazenem par programov . Grem v solo in se s solskega racunalnika prijavim v svoj domači računalnik z uporabniskim imenom test123. Tu je zdaj problem, inicializira se nova session s tem uporabniskim imenom in ne tista ki ze tece na mojem domacem računalniku. Ne vidim nobenega programa, ki sem ga doma zagnal, ampak se na cisto novo prijavi v sistem pod imenom test123.  Jaz bi pa rad tako imel, da bi se prijavil v obstojeco sesion za uporabniško imen npr. test123. Tako to gre pod WINDOWS XP.  Lp."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Daj si raje nalozi program PCAnywhere pa bo ful lazje...."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user, mislim, da to ne gre. Ne bom pa trdil.  Ker jst sm isto naredil. Najprej sm se na PC lokalno prijavil. Sam potem, ko pa sem se z nekim drugim PCjem na ta server, se je odprla nova session.  Samo, ce sem samo zapru okno od remote desktop in se potem spet prijavil, sem dobil obvestilo, da je ze en sessino, in da se lahko prijavim v ta session.  Sam nikol mi pa ni uspelo, da bi se prijavil tako, da bi dobil taksen \"pogled\" , kot user, ki se je logiral lokalno.   Katere programe pa bi tako rad videl?  @assistant_4, mislm, ce je tistle program od Symanteca, ne more priti v upostev, ker stane kar  800$ z licenco za 5 instalacij. Mogoce z vrtnarijo (ceprav dvomim v uspeh)...    by Miha"
+    },
+    {
+        "role": "user",
+        "message": "Ja mislim, da ne bo šlo:(  Škoda.. Treba si bo dati gor XP..  Lp"
+    },
+    {
+        "role": "assistant_5",
+        "message": "VNC"
+    },
+    {
+        "role": "assistant_1",
+        "message": "tisti ukaz z /console more delat (meni je to delalo na 2000 server) ker pa pravis, da ti ne dela je pa najverjetneje vzrok nekje v terminal services"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1, dej malo vec napis o tistem switchu /console, ker tole tudi mene zanima. :))   by Miha"
+    }
+]
