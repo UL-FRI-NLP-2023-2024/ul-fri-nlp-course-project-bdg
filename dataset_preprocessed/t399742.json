@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Imam en čuden problem...  Prek enega KVM sem imel priklopljeni 2 mašini na en komplet miši, tipkovnice, monitorja.  Na začetku se mi je pričelo dogajati, da na priv mašini ni delala miš, če ni bila vkloplenja tudi druga. Na drugi je vse normalno delovalo neglede na prvo. Sedaj sem odstranil drugo mašino in KVM, na prvo pa priklopil ps2 tipkovnico in pa usb miš preko pretvornika na ps2, vendar miš ni hotela delati...  - Poskusil sem drugo miš direkt na usb, vendar tudi ni delala (niti se ne vklopi lučka v \"sledilniku\") - na stari ps2 miši se sicer vklopi lučka, vendar miš vseeno ne deluje - v mašino sem dodal dodatno kartico za usb in tudi na njej ne deluje nobena usb miš - vse druge naprave na usb delujejo kot je treba (usb ključki, čitalec kartic, tiskalnik...)  Vse skupaj mi izgleda kot da bi nekaj ne štimalo z napajanjem... Kakšne ideje?"
+    },
+    {
+        "role": "user",
+        "message": "Hiter updejt: Ne dela mi nobena LOGITECH miš! Našel sem eno staro CCS, ki sem jo imel za prenosnika, jo priklopil na usb in dela...  Problem sem torej uspel rešit do te mere, da lahko delam - še vedno me pa zanima v čem je trik?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nič ni napisano, kakšen je operacijski sistem. Na Visti so znani problemi z miškami od Logitech-a. Opis tukaj in tukaj. Je v device manager-ju pod hid device kakšna neznana naprava? lp"
+    },
+    {
+        "role": "user",
+        "message": "win XP"
+    },
+    {
+        "role": "user",
+        "message": "Še vedno sumim, da gre za bolj HW problem, ker ko se mašina boota \"laser\" na miški utripa (naključno) nakoncu pa ugasne (preden se začne nalagat os)...  Glede na to, da ena poceni miš (ki edina ni od logitecha) pa dela, me zanima lai je možno, da imam res kakšne probleme z napajanjem logitechova miš pa je bolj požrešna in se zato pri njej pozna?"
+    },
+    {
+        "role": "user",
+        "message": "še ena \"novica\": poskusil sm še z live linux (mandriva z cd, pendrivelinux z usb), pa v nobenem primeru miš noče delovati (nobena izmed 4 logitechovih, deluje pa tista, ki je že prej tudi - neka \"acme\" za prenosnike)  Kakšna ideja?  edit: Probal sm še 2 miši, ki sem jih našel v \"arhivu\"... Obe ps2, obe na kuglice (ja res so stare), ena logitech, druga genius... Rezultat: logitech vs. genius ? 0:1! genius dela, logitech ne!!!  Kaj je moj računalnik res fasal kako alergijo na logitech? drugega mi več ne pade na pamet... [:S]"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vzrok težav bi bilo lahko naslednje: Problem s portom ( USB oz. Ps/2) Problem z gonilniki Defektna miš od logitech-a. Glede na to, da druga miš dela, če se vstavi v isti port, bi sumil na gonilnike ali pa je miš pokvarjena. Če problematična miš dela na drugi mašini, potem ostanejo samo še gonilniki. Spominim se, da sem imel sam isti problem na xp-jih z Logitech mišmi. Problematičen je bil star mouseware software. KO sem ga odstranil in namestil zadnjega, ni bilo več problemov. Drugače pa nasveti za reševaneje glede Logitech-ovih miši tukaj in tukaj."
+    },
+    {
+        "role": "user",
+        "message": "Ampak popolnoma enak problem tudi na dveh različnih linux distribucijah?  Testirane so bile pa:  1x usb logitech laserska 2x usb logitech optična 2x ps2 logitech optična 1x ps2 logitech z kroglico  Pa nobena od njih ne dela (delujejo na drugih mašinah)!  Deluje pa: - usb ACME optična - ps2 genius z kroglico  No, grem sedaj še one nasvete malo pregledat..."
+    },
+    {
+        "role": "user",
+        "message": "Torej... Miši (nobene logitechove) mi ni uspelo usposobit... ima kdo sploh kakšno idejo zakaj ravno logitechove nebi delovale?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tukaj je zelo veliko postov na to temo.Glede na to, da je nameščen SP3, bi bila lahko tudi ta eden od posrednih krivcev. Predlagam, da se poskusi z eno od rešitev na koncu omenjenega posta. Kakšen operacijski sistem je pa tam, kjer iste logitechove miši delajo? Je morda na mašini problem tudi s kakšnimi drugimi usb napravami?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 6. feb 2010 ob 11:06 izjavil: Kakšen operacijski sistem je pa tam, kjer iste logitechove miši delajo? Je morda na mašini problem tudi s kakšnimi drugimi usb napravami?   Na ostalih mašinah kjer miši delajo je: xp sp3, w7, fedora 12, kubuntu, mandriva...  Na tej mašini kjer logitechove miši ne delajo pa je win xp sp3 / mandriva / probano pendrive linux... ostale naprave: usb ključki (3 različni), tiskalnik, čitalec kartic, čitalec kartice za EB, telefon, tipkovnica... - VSE to deluje brez problemov...   Logitechove miši pa NE deujejo samo na tej mašini neglede na OS!  Povzetek: NČ JASN! :DDD"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V upravitelju naprav ni nobenih rumenih trikotnikov (pod pogled naj se odkljuka opcija za skrite naprave)? Če je na tej mašini res nujno potrebna ta miš, potem morda naslednje: zažene se ukaz sfc /scannow ( najbrž bo zahteval cd od sp3) Odstranitev sp3 za xp-je windows repair A če je pa ps/2 vmesnik na logitech miši, ali potem dela?"
+    },
+    {
+        "role": "user",
+        "message": "Logitech miši ne delajo tudi v drugih OS (na tej mašini)!  Sklepam torej da gre za neko napako na strojni opremi - osnovna plošča, napajalnik? Kako bi to lahko preveril?  Ne delujejo ne usb ne usb na ps2, ne direkt ps2, ne optična, ne laserska, ne z kroglico...  In ne - ni potrebna ravno logitechova miš (bom že priklopil kaj drugega)... Rad bi pa ugotovil kaj je vzrok, da ravno logitech ne delujejo!   Hvala vseeno za pomoč ;)"
+    },
+    {
+        "role": "user",
+        "message": "Ponovno pozdravljnei!  Prekopal sem celo mašino in ugotovil, da bi problem lahko bil na napajalniku - 2 kondenzatorja sta napihnjena in se praktično ne držita več plošče...  Se mi splača zamenjat kondenzatorje ali raje nov napajalnik?   lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Napihnjena kondenzatorja na napajalniku?! Probleme sem že imel z napihnjenimi kondenzatorji na MB, tam pa še ne.Človek zmeraj zve kaj novega. Po mojem mnenju bi bilo skoraj bolje zamenjati napajalnik. Naj še kdo drug pove svoje mnenje."
+    },
+    {
+        "role": "user",
+        "message": "Na napajalniku sem zamenjal 2 pokvarjena kondenzatorja in zadeva sedaj deluje z katerokoli mišjo... ;) Pri vsej tej izkušnji mi je zanimiva predvsem ena zadeva - da imajo logitechove miške večjo porabo od drugih (no vsaj od genius in od acme)... Vsak dan se kaj naučimo - pa čeprav v nedeljo :D"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Lepo da si našel krivca. Verjetno ti je miška 'svetila' tudi ko je bil komp ugasnjen ?  Na nekaterih slabših napajalnikih (tudi tagan) je bil ta problem, da so bili določeni USB/PS2 porti prevezani na 5VSB in je tako papcalo Stand-by linijo napajalnika. Ker pa so bili proizvajalci škrti so namesto 400V naredili napajanje za pretvornik za stand-by iz 200V odcepa, ki pa je na sredini 2h 200V kondičev. Posledično se je napetost enega sesedla, napetost drugega pa močno zvišala (vsota bo vedno tistih omrežnih 320V). Eden se je napihnil, drugi pa ne. :)"
+    },
+    {
+        "role": "user",
+        "message": "Res je svetila tudi pri uganjenem kompu - kar se mi je dopadlo, ker sem lahko telefon polnil tudi pri ugasnjenem računalniku :D  Je pa bil to en LC napajalnik 550W max - ampak star že več kot 5 let... Tako, da se nisem pretirano čudil, da je kaj izdihnilo... Ampak napaka je pa bila takšna za \"razmislit\" :D  Drugače pa odletela sta dva 1000uF 10V kondenzatorja..."
+    }
+]

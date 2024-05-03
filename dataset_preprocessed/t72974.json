@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "POzdravljeni  včeraj sem iz čistega dolgčasa instaliral redhat 9, da vidim kako zgleda to čudo in imam par vprašanj (mogoče se vam bojo zdela neumna ampak jaz nisem NIKOLI videl drugega OSa razen winsow) :  1.na istem disku imam še particijo FAT32 z mp3, divxi, slikami ... in me zanima kako iz linuxa pridem do teh filov, če sploh lahko  2. kje so shranjeni programi, ki se instalirajo preko tega rpmja ( ko hočem povezat da se mi odprejo .aviji xinetom ga ne najdem nikjer)  3. kako se speče cd s tem ku... toasterjem: ko prenesem nek file v okence in poženem se mi speče samo ime fila v velikosti 1kb in cd je za v smeti   4. kako se instalirajo nove teme: probal sem prenesti (kot piše v hepu) temo.tar.gz in me lepo vpraša če želim instalirati jaz rečem da ja on reče o.k. in pol se ne zgodi nič.. nove teme ni nikjer!   5. kako se instalira modem, obični 56k dial up win modem  Probal sem iskati v 'Getting started guide'u samo nisem našel odgovorov. Če mi prosim lahko kdo pomaga z nasvetom ali povezavo bom zelo hvaležen!   lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "> jaz nisem NIKOLI videl drugega OSa razen winsow) :  Ubožec! Apmak vidim, da si na pravi poti!  1. Do fat32 particije se pride čisto enostavno, seveda če je nisi sformatiral. Kaj pravi komanda \"mount\" (napisi seveda brez narekovajev)? Kaj je v datoteki /etc/fstab?  2. Katerega rpmja? Napiši jasno, kaj hočeš!  3. Kaj pečeš in s čim? Program za peko je Xcdroast in k3b. Btw, jaz delam poskuse na cd-rw medijih; je ceneje.  4. Glede na to, da si še čisto nov v linuxu, ti inštalacije iz sourca ne priporočam. Gre nekako takole: cd /usr/local/src tar zxvf /pot/do/teme.tar.gz cd teme preberi README, INSTALL in podobne datoteke!!!! ./configue --prefix=/usr/local make  make install  in potem imaš teme nekje v /usr/local  5. In kateri modem je? Če je Motorola sm56, kar pozabi. Pa USB modemi so tudi bolj problematični, še posebej tisti isdn od Telekoma.  Poišči uporabne programe za RedHat 9 na  http://shrike.freshrpms.net/ ni vrag, da ne bo kaj uporabnega.  Aja, zgoraj navedene ukaze vpisuješ v komandno vrstico, n.pr. v xtermu.  Start-> poženi ukaz -> xterm  podobno kot v winsih."
+    },
+    {
+        "role": "user",
+        "message": "Dr.J, hvala za odziv!   1. particije nise formatiral, iz w2k je še vedno dosegljiva, ko vpišem mount se izpiše:  /dev/hda8 on / type ext3 (rw) none on /proc type proc (rw) usbdevfs on /proc/bus/usb type usbdevfs (rw) /dev/hda7 on /boot type ext3 (rw) none on /dev/pts type devpts (rw, gid=5, mode=620) none on /dev/shm type tmpfs (rw)  v dtoteki /etc/fstab piše: LABEL=/ / ext3 defaults 1 1 LABEL=/boot /boot ext3 defaults 1 2 none /dev/pts devpts GID=5,MODE=620 0 0 none /proc proc defaults 0 0 none /dev/shm empfs defaults 0 0 /dev/hda9 swap swap defaults 0 0 /dev/cdrom /mnt/cdrom udf,iso9660 noauto,owner,kudzu,ro 0 0 /dev/cdrom1 /mnt/cdrom1 udf,iso9660 noauto,owner,kudzu,ro 0 0  če pogledm v hardware browser pravi da je fat32 particija hda5, če pa ga probam mountat z mount /dev/hda5, pravi da hda5 ne obstaja. Ne razumem sploh.   2. Instaliral sem XINE za gledanje fimov in ko sem želel povezat filemske datoteke, da se odprajo z XINEom sem ga poiskal in edino kar je v zvezi z njim je nekaj v /etc/xine samo tam ni nobenega programa, mislim neki kot je v winsih .exe niti nobene .xine datoteke  3. Xcdroast zdaj deluje odlično, hvala za predlog z cdrw-ji- po pravici povedano sploh nisem pomislil da probam z njimi....ma sem mona:)   4. glede tem sem obupal, bom malo nabiral znanje pa bom poskusil kasneje...  5.imam motorolo sm56, hvala vseeno   res hvala za odgovor! lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "w2k sedijo na ntfs, ki ga RedHat default inštalacija ne podpira, zato jih tudi ne vidiš.  Odjadraj na  http://linux-ntfs.sourceforge.net/info/redhat.html in potegni k sebi ntfs module za natanko isti kernel, kot ga bootaš.   Tudi navodila za inštalacijo bodo tam, če ne pa kaj vprašaj.  sicer naredi direktorij w2k v /mnt nato vstavi ntfs modul: insmod ntfs in mountaj w2k particijo: mount -t ntfs /dev/hda1 /mnt/w2k in sprobaj. Potem pride na vrsto sprememba /etc/fstab  ntfs modul omogoča samo branje ntfs particij, za pisanje po njih pa bo treba malo več korajže in znanja za prevajanje jedra.  Xine + filmi: z upravljalnikom datotek skušaj odpreti film, pri tem te bo vprašal, s čim naj odpre - izberi xine ter naj s tem vedno odpira. Mislim, da se da."
+    },
+    {
+        "role": "user",
+        "message": "Zdaj se vidi particija NTFS, samo tiste FAT32 še vedno ni ampak ni važno. Bom konvertiral v NTFS.  Tisto z povezovanjem avijev ne deluje. Vpraša me s katero aplikacijo naj povežem file in ko kliknem browse ne najdem programov samo neke aplication linke, ki ne delujejo. Če kliknem pol na kak avi mi spet napiše da nautilus pač nima inkorporirane aplikacije za gledat ta file...  THX Dr. J"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pisanje po NTFS particijah je v kernelu označeno kot DANGEROUS in ni nikakor priporočljivo."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Za modem pojdi na  linmodem ali  linmodems2. Gonilnik namestiš, potem pa greš še enkrat skozi prepoznavanje opreme.Pazi, da je gonilnik za tvoj kernel. Če druga ne pa xine še enkrat dol potegni iz   rpmseek.Drugače za divxe pa priporočam mplayer. Dober, samo mene nekaj zafrkava."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja če pa je vfat, pa naredi takole:  insmod vfat  mount -t vfat /mnt/w2k /dev/hdaX   X je številka particije z vfat datotečnim sistemom (n.pr /dev/hda2).  Čudno pa je, da ti tega ni zaznal sam ob inštalaciji."
+    }
+]

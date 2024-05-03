@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Dober dan,   zanima me kako najlažje naredim image diska - da bi pozneje, če se mi sistem poruši samo naredil recover iz slike ki bi bila shranjena na drugem disku (in bi vse skupaj seveda bilo bootable)? vedno ko nameščam OS rabim 2 tedna da vse v red spravim tak da mi je to boljša opcija.   Kaj je torej razlika če jaz naredim BACKUP diska ali grem v Clone DISK?   je to isto? ali so drugačne slike diskov?  ker če greš v TI WD edition v Exclusions so tam neki fajle katere on ne vključi v image, če sem dobro razumel? in nič ne moreš spreminjat ker je WD edition... a je boljše da vzamem kak drug program?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Narediš clone sistema, orodij je veliko, tudi free.  http://www.backup-utility.com/free-back..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Image diska je neka datoteka, ki jo program lahko povrne v sistem kot ga imaš.   Clone diska je pa takojšnja kopija diska na drug disk.  Kar ti hočeš je image diska. Exclusions so pa pač mape, ki jih lahko izločiš pri kopiranju (uporabno če kloniraš na manjši disk)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kar on hoče je image sistema in ne nujno diska (lahko je gor več particij). Razlika med tema dvema je, da image sistema, lahko daš na kakršno koli velikost diska, ki je večja od velikosti sistema, pri disk image, pa mora bit disk enake velikosti ali večji.  Primer: sistem posnet na 1T disku, bi rad instaliral na SSD 128GB. Image sistema, ki zavzema kakšnih 30-50GB lahko razpakiraš na tak disk, image diska ne moreš, če prav je uporabljeno samo 30-50GB od 1T"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja, image sistemske particije bi bil verjetno dovolj. V primeru z SSD-jem, bi seveda jaz naredil iamge celega diska, da slučajno ne ostaneš potem brez boot particije. Če nisi vešč, je teško usposobit, da se sistem postavi brez tega.  Če ima samo 1 disk pa backup boot in OS particije na podatkovni del."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0 je 24. maj 2016 ob 11:27 izjavil:Kar on hoče je image sistema in ne nujno diska (lahko je gor več particij). Razlika med tema dvema je, da image sistema, lahko daš na kakršno koli velikost diska, ki je večja od velikosti sistema, pri disk image, pa mora bit disk enake velikosti ali večji.  Primer: sistem posnet na 1T disku, bi rad instaliral na SSD 128GB. Image sistema, ki zavzema kakšnih 30-50GB lahko razpakiraš na tak disk, image diska ne moreš, če prav je uporabljeno samo 30-50GB od 1T S katerim Sw-jem se tega ne da? Večinoma gre tudi to."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Image sistema pomeni, da se naredi slika vseh potrebnih particij, ob restoru so malenkost večje. Ni nobene potrebe po image-a celega diska, saj moraš potem imeti za restore enakega ali večjega, 128 na 120 ne gre, ravno tako ne 256 na 250 in kaj boš neredil potem s to sliko?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 26. maj 2016 ob 07:28 izjavil:Image sistema pomeni, da se naredi slika vseh potrebnih particij, ob restoru so malenkost večje. Ni nobene potrebe po image-a celega diska, saj moraš potem imeti za restore enakega ali večjega, 128 na 120 ne gre, ravno tako ne 256 na 250 in kaj boš neredil potem s to sliko?   Am, ti še nisi veliko Kloniral, ali pa te narobe razumem. Seveda par Gb manjši disk ni problem, dokler ni podatkov preveč za disk. Če imaš 128Gb podatkov, na 120Gb ne boš spravil (razen z exclusni). Če imaš pa 128Gb disk, in je samo 50Gb podatkov, pa to že na 60Gb disk ni problem spravit.  Pa kaj bluziš, da rabiš za restor več kot original? Če je original disk 100Gb bo restore točno 100Gb. Je pa res, da je sama slika, ki jo program naredi kompresirana, in seveda zasede manj prostora.  Klonirat cel disk zna biti res brezveze, če imaš veliko podatkov na dodatni particiji, gre se ti pa bolj za sistem."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kateri program pa priporočate, da je bootable? torej da lahko iz oken naredim sliko na zunanji diks, in potem v primeru česarkoli, lahko na nov disk naložim isto sliko?  Trenutno imam R-drive ki pa ni legalen :D"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 - Toliko, kot sem sam naredil slik sistemov, jih ti verjetno v življenju še videl nisi. Clon diska pomeni ravno to - do pike natančni posnetek diska. Če imaš disk velikosti 128GB, te slike na disk velikosti 120GB ne boš spravil, pa če prav je podatkov samo 5GB in OP je spraševal ravno to - razlika med image diska in image sistema.  Za image sistema rabiš 1GB večji disk ali particijo, kot jo zavzema razpakiran sistem, ne glede na to, iz kako velikega diska, si naredil image. Če pa cloniraš disk, pa slike ne moreš posneti na manjši disk, temveč samo enak ali večji.  Drugič poste beri počasi, da boš razumel o čem je govora.  http://www.backup-utility.com/free-back... Tale se mi zdi še najmanj zahteven za uporabo, z njegovim orodjem si narediš bootable USB ključek. Pogosto uporabljam zadnji dve leti in niti enkrat ni zatajil. Posnete slike so boot-ale b.p."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne vem Solatko, z čim ti kloniraš. Če rabiš še tebi pošljem eno kodo za Acronis True image HD. V windowsih programa skoraj ne uporabljam, je pa super boot cd, z katerim cloniram zadeve. V windowsih uporabljamo Paragona 15.  Glede na to, da v službi skoraj vsak računalnik kloniramo in delamo backup... je res vprašanje kdo je naredil več klonov. Če imaš težavo sklonirat na manjši disk od originalnega, ga kar k meni prinesi. Ti z veseljem pokažem, da gre.  Sem pa prebral tvoj post zelo počasi in vsaj 3x. Še vedno mi ni jasno kaj govoriš. Kar ti praviš, da se ne da, delam jaz skoraj vsak dan. (Iz 500Gb HDD diskov največkrat kloniram na 250Gb SSD. Včasih samo sistem, včasih pa kar cel disk)  P.S.: Kuvanasarma ti tudi, če rabiš Acronisov program, pošlji ZS pa posredujem kodo. Jih imam še polno."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 - OP je spraševal o razliki - clon diska, clon particije in clon sistema in jaz sem odgovoril na to, če pa si bralno nepismen, pa brez veze debatirat s teboj.  Clon diska pomeni kopija diska s točno določenimi parametri, tudi velikostjo in te slike, ob razpakiranju ne moreš skrčit, tako kot lahko druge clon-e.  Orodja pa pač uporabljamo vsak tistega, na katerega se navadimo in nam nudi največ za naše potrebe.  In mimo grede vi v službi ne clonirate vsak dan celotnih diskov, temveč spremembe (backup)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kdo sploh dela clon celotnega diska? Narediš backup particije z boot particijo (če je) pa imaš mir."
+    },
+    {
+        "role": "assistant_5",
+        "message": "WD Edition je precej oskubljen Acronis TrueImage in deluje samo, če je vsaj eden od priključenih diskov WD."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_4 - Verjetno zelo malo uporabnikov, vendar je OP spraševal ravno to - razlika med image disk in image sistem."
+    },
+    {
+        "role": "assistant_1",
+        "message": "OK, še enkrat. Mogoče pa potem nekaterim končno sede o čem JAZ govorim.  Backup diska - Slika vseh particij, ki se nahajajo na disku. (Lahko se kopira tudi na manjši disk, samo da je podatkov manj kot je nov disk velik. Prazen prostor se seveda NE kopira. Program tudi dodeli manj praznega prostora vsaki particiji.  Backup diska (sector by sector) - Eksaktna kopija diska, do milimetra enaka originalu. Kopira se tudi prazern prostor, zato se lahko kopira samo na disk ki ima enako ali večje število sektorjov. (Uporabno samo, za kako reševanje podatkov, ali če je kak eksotičen sistem ali kak drug poseben razlog za tako kopiranje)  Backup sistema - Kopira se particija kjer je sistem in boot particija. Prazen prostor se ne kopira.  Backup particije - Kopija 1 particije iz diska, Prazen prostor se ne kopira, tako da je na novem disku lahko večja ali manjša, samo da podatkov ni preveč.  Image sistema/particije/diska - Datoteka, ki jo naredi program. Glede na to, kaj smo izbrali, da kopiramo, bo velikost različna. Zaradi kompresije zaseda običajno manj prostora kot original. Večina programov omogoča, da sliko mountamo - Vidimo jo, kot bi bil priklopljen še en disk, in iz tega lahko kopiramo datoteke. Ne moremo pa jih popravljati (Read only).   ...Če imamo podatke na D. Particiji, ki je velika 100Gb, podatkov pa je 50Gb. Potem rabimo za uspešno kopiranje na drugem disku vsaj 50Gb prostora. V tem primeru seveda ne bomo imeli nič praznega prostora. Če pa kloniramo tako particijo sektor by sektor... OBVEZNO rabimo 100Gb ali več saj se kopirajo tudi informacije iz praznega prostora.  Aja še odgovor za @assistant_4.. sam zelo velikokrat delam backup celega diska, ker želim ohraniti vse podatke od stranke, ki prinese računalnik na servis. Razlogi so različni, največkrat ker disk crkuje. Stranke ne bi bile pretirano zadovoljne, če bi jim skopiral samo sistem, vse ostale podatke pa vrgel stran."
+    }
+]

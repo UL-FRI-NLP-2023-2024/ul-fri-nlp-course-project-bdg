@@ -1,0 +1,102 @@
+[
+    {
+        "role": "user",
+        "message": "tale program sicer zgleda super ampak je v praksi totaln crap. Ne morem ga naštimat, da mi kopira datoteke iz windows 7 iz mape dokumenti na mrežni disk v mapo dokumenti. Pa da če je datoteka tam nesrpemenjena, da je ne kopira še enkrat ampak preskoči. Ali ne kopira ali teži, da nimam nekih pravic ali kr neki. Ali kdo to uporablja pa s kakšnimi parametri, da deluje?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz uporabljam cobian backup za take zadeve (poleg backupa, ki mu je osnovno delo). Zna vse, ne teži in je zastonj."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sem imel iste težave, ker je bil mrežni disk na Linuxu.  Uporabi oz. poglej stikali /fft in pa /copy:dt Drugače pa: robocopy source destination /e /fft /w:1  /r:1 /ns /nc /nfl /ndl /np /copy:dt /log:c:\\backup.txt"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ali ne kopira ali teži, da nimam nekih pravic ali kr neki.   Ja a bi porital pravice za dostop te? Saj to nima veze z RoboCopy."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 8. maj 2013 ob 17:33 izjavil:tale program sicer zgleda super ampak je v praksi totaln crap.    Robocopy je ena izmed boljših stvari, ki obstaja."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 9. maj 2013 ob 07:40 izjavil:Sem imel iste težave, ker je bil mrežni disk na Linuxu.  Uporabi oz. poglej stikali /fft in pa /copy:dt Drugače pa: robocopy source destination /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt /log:c:\\backup.txt   ali ti tale varianta kopira vse fajle znova čez ali ti skopira po tem samo nove ali spremenjene?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kopira samo nove oz. spremenjene datoteke."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 9. maj 2013 ob 14:07 izjavil:Kopira samo nove oz. spremenjene datoteke.  super, hvala"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Meni se občasno dogaja, da za nekatere datoteke javi \"The network path was not found.\", ostale pa grejo skozi. Ima kdo izkušnje s tem?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ali lahko pošlješ log file? Meni je včasih delalo težavo, ker sem npr. namesto c:\\mapa1 napisal c:\\mapa1\\."
+    },
+    {
+        "role": "user",
+        "message": "Ugotovil sem da zadeva še vedno ne deluje. Pravzaprav je stvar v tem, da deluje, če jo poženem, kot uporabnik in ne deluje če nastavim task schedule, to ma robocopy neke fore glede kopiranja na mrežne pogone. Na žalost ne more nastaviti polne poti, ker ima vsak uporabnik svojo mapo in je drive zmapiran, to pa pri robocopy ne deluje. Ima kdo kakšno idejo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ali lahko objaviš to skripto?"
+    },
+    {
+        "role": "user",
+        "message": "samo tole je v bat fajlu robocopy source destination /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt   pa stvar ni v bat fajlu pač pa v tem, da robocopy NE dovoli kopiranja preko mreže ko poženem sam z dvojnim klikom dela preko task schedule pa ne"
+    },
+    {
+        "role": "user",
+        "message": "a obstaja kak drug comman line program, ki zna to normalno narediti, brez kompliciranja kot to komplicira robocopy?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Nevem zakaj ti ne dela. V našem podjetju imam narejeno enako z task schedule-rjem in lepo deluje. Tudi kopiramo na nek mrežni disk, ti lavfa na Linuxu. Moral bi videti log datoteko ..."
+    },
+    {
+        "role": "user",
+        "message": "ne laufa, ker piše, da robocopy ne deluje na mapiranih diskih, pač pa moraš vnesti celo mrežno pot, jaz tega ne morem, ker ima vsak uporabnik drugačno ime mape in ne morem tega razposlat prek GPO na vsakega klienta. robocopy je res en šit od programa ne vem zakaj so to zablokirali, da ne moreš na zmapiran disk kopirat."
+    },
+    {
+        "role": "assistant_0",
+        "message": "zakaj pa ne narediš v powershellu? ali pa kar navaden xcopy ukaz v navadnem cmd fajlu?"
+    },
+    {
+        "role": "user",
+        "message": "ne znam w powershellu"
+    },
+    {
+        "role": "user",
+        "message": "Mislim, da vem v čem je problem. Za nastavitev task shedulerja uporabljam naprimer c:\\users\\%username%\\desktop in verjetno sistem, ko to zaganja ne ve kateri user naj bo uporabljen. Kakšna ideja?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "V task scheduler lahko določiš s katerim uporabnikom naj se skripta zažene. Meni ta način lepo deluje."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 15. maj 2013 ob 20:51 izjavil:V task scheduler lahko določiš s katerim uporabnikom naj se skripta zažene. Meni ta način lepo deluje.   Tudi ko uporabnik ni prijavljen? Ravno v tem je poanta, da se računalnik prižge in se naredi backup in se ugasne. Mislim, da sem našel en trik rešitev, če bo delovalo bom objavil."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 15. maj 2013 ob 21:34 izjavil:@assistant_1 je 15. maj 2013 ob 20:51 izjavil:V task scheduler lahko določiš s katerim uporabnikom naj se skripta zažene. Meni ta način lepo deluje.   Tudi ko uporabnik ni prijavljen? Ravno v tem je poanta, da se računalnik prižge in se naredi backup in se ugasne. Mislim, da sem našel en trik rešitev, če bo delovalo bom objavil.   To pa nisem preveril. Jaz skripte zaganjam med malico in to s trenutno prijavljenim uporabnikom."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Probaj v skripti prej mapirati diske."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 15. maj 2013 ob 22:25 izjavil:Probaj v skripti prej mapirati diske.  kako to misliš?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "En ukaz je NET USE ali nekaj takega, kjer lahko ročno mapiraš diske. Sem imel podoben problem pred leti, da je bilo nekaj treba kopirati na en mrežni disk v schedulerju, a se je pojavil problem, da so se diski mapirali šele v logon skripti, kopiranje pa je bilo potrebno tudi, ko ni bil nihče prijavljen. Mislim, da sem takrat uporabil ukaz NET USE, a sem že pozabil."
+    }
+]

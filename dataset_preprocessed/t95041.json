@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo vem udeležencem foruma!  Imam problem ,ko po namestitvi Pingo linuxa,ne vidim ostalih particij na disku!  Particije ,ki bi jih moral videti: /dev/hda1 fat32 winME /dev/hdb5 fat32  /dev/hdb7 ntfs winXP na /dev/hdb8 imam pingo lin. in hdb9 swap  Flopy,dvd ter pekač so normalno vidni in delujejo!  lp Zoran"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hm... Ko žaženeš ne vidiš drugih particij? Si namestil boot loader (grub, lilo)?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "V konzolo napiši ls /dev/h* in prilepi output v forum."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če sem te prav razumel, ti ne vidiš windows particij v Linuxu! Jaz sem zadevo tako rešil: V konzoli sem vtipkal su Ko me je linux vprašal za root geslo sem mu le-to vtipkal. Nato sem šel naprej:  mkdir /mnt/okna1 mount /dev/hda1 /mnt/okna1 mkdir /mnt/okna5 mount /dev/hda5 /mnt/okna5 exit  Naslednji korak je: s text editorjem (najbolje z istoimenskim programom) odpri datoteko fstab v mapi etc, in vstavi niz:  /dev/hda1 /mnt/okna1 vfat rw,auto,noexec,user,uid=500 0 0 /dev/hda5 /mnt/okna5 vfat rw,auto,noexec,user,uid=500 0 0  Si opazil da nisem omenjal ntfs particije? Ker sam ntfs nimam, tega nisem poskušal, zato si tudi ne upam predlagat ničesar. Če kaj zasledim, ti bom sporočil!Če si slučajno novinec v Linuxu, imaš pa dvd rom, poskusi staknit Monitor prejšnjega meseca (Februar)! Notri je DVD s Pingo 2.0 Linuxom in pa 3 Letniki Monitorja v PDF formatu. V zadnjih 9-ih ali desetih številkah je Nikolaj Pečenko pisal, kako je inštaliral Linux. Meni je stvar zelo pomagala, zgornji trik sem povzel po njemu. Za ntfs pa bom še pogledal!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "O ntfs-ju smo se razpisali že na tem forumu in bi priporočal uporabo iskanja."
+    },
+    {
+        "role": "user",
+        "message": "Sintaksa ,ki jo imam jaz je taka:  fstab: LABEL=/ / ext3 defaults 1 1 none /dev/pts devpts gid=5,mode=620 0 0 none /proc proc defaults 0 0 none /dev/shm tmpfs defaults 0 0 /dev/hdb9 swap swap defaults 0 0 /dev/cdrom /mnt/cdrom udf,iso9660 noauto,owner,kudzu,ro 0 0 /dev/cdrom1 /mnt/cdrom1 udf,iso9660 noauto,owner,kudzu,ro 0 0 /dev/fd0 /mnt/floppy auto noauto,owner,kudzu 0 0  mtab: /dev/hdb8 / ext3 rw 0 0 none /proc proc rw 0 0  Imam tudi Mandrake 9.1,kjer to dela,vendar pa mi ne delejo druge stvari in sintaksa je čisto drugačna."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user: Stavim, da te je installer spraševal po \"točkah prikopa\" tam nekje v zgodnji fazi inštalacije. Ker jih nisi določil, imaš sedaj probleme.  Ali ti dela @assistant_2v recept?"
+    },
+    {
+        "role": "user",
+        "message": "Zdravo! Ja recept od @assistant_2 je deloval,vendar je bila moja napaka ,ker nisem upošteval sintakse.Sedaj je z vfat vse OK,na ntfs pa še delam. Nabavil sem tudi februarsko št.Monitorja.Vredno je bilo tudi pogledati man_instrukcije. Lepa hvala za pomoč!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Poglej si tudi forum na na http://oko.edus.si"
+    }
+]

@@ -1,0 +1,334 @@
+[
+    {
+        "role": "user",
+        "message": "Torej, glede na razmere so bili prejšnji teden v Sloveniji aktualni agregati. Ker živim na prizadetem območju in smo bili dlje časa brez elektrike, sem tudi sam nabavil enega. In sicer SWISS KRAFT SK65.  Zadeva da kao 6,5 kW moči, ima dve navadni in eno tri-fazno vtičnico (plus 12 V), čeprav ko greš pobrskat po spletu naj bi bila delovna moč 4,5 kW (http://www.kalaydo.de/kleinanzeigen/ele...  No, v bistvu je brskanje po spletu dalo nekoliko različne rezultate: Spitzenleistung: 6,5 kVA / 6,5 kW Dauerleistung (KW): eni pravijo 4,5 kW, eni pa 5,5 kW   Kakšne hude dokumentacije pa žal zraven ni bilo...   V glavnem, za osnovni namen - napajanje luči in skrinje - zadeva lepo služi. Ker pa generatorja ne mislim prodati, pač pa ga bom obdržal, me zanima kaj več. Naj povem, da o elektriki razen nekih res osnov nimam dosti pojma.  Prva stvar, ki me zanima je, kakšne so lahko obremenitve. Če prav razumem se ta celotna moč (6,5 kW) deli na vse tri vtičnice? Vsaka potem dobi manj? Kolikšna je lahko potem obremenitev 220V vtičnice?  Druga stvar je, kaj lahko priklopim gor? Namreč, ko so popravljali električno napeljavo, je eden od električarjev dejal, da so toplotne črpalke smrt za generetorje in sicer zato, ker naj bi imele zelo specifičen način porabe - v kratkem času potegnejo veliko toka, potem pa nekaj časa nič, itd.). Katere so še take naprave, ki se jih ne sme priklapljati (jasno mi je, da bojlerji, likalniki in podobni veliki porabniki odpadejo)?  Kako je z elektroniko, npr. priklop polnilca za telefon, računalnika,...? Zadeva ima kao inverter. Če prav razumem, naj bi inevrter poskrbel za sinusno obliko toka? Torej, če je napetost stabilna (220V), toka dovolj, oblika toka sinusna, kaj je potem še pomembno? Frekvenca, ki mora biti 50 Hz, še kaj?  Tretja stvar pa je ta, da nameravam v prihodnosti narediti priključek, s katerim bi celo hišo odklopil od elektro omrežja in priklopil na generator. Seveda bi v tem primeru izključil velike oz. nepotrebne porabnike, da ne bi prišlo do preobremenitev.  V omarici takoj za \"pancerkami\" bi namreč dal 32A 5-polno vtičnico, kamor bi potem priklopil celotno hišo. Eletrika bi potem šla do FID stikala in dalje po razdelilni omarici. V primeru izpada električnega omrežja, bi potem \"hišo\" enostavno izključil iz te vtičnice in jo povezal na generator. S tem bise tudi izognil temu, da npr, zaženem generator in pozabim izklopiti FID stikalo ter gre elektrika potem naprej v omrežje. In seveda, ko hišo odklopim, je fizično odklopljena, ne more priti do napake in koga strese/ubije...  V glavnem, to bi mi delal bratranec, ki je šolan električar (ima tudi firmo), zanima me, kaj mislite o tej ideji (da nisem kje udaril mimo)?  Morda se bodo komu vprašanja zdela neumna, ampak kot rečeno o teh zadevah žal ne vem veliko.  Vnaprej hvala za odgovore."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pokvarjen link si dal, tale bo pravi: http://www.kalaydo.de/kleinanzeigen/ele...  6500VA je navidezna moč, delovna moč na trifazni vtičnici pa je 5500W. Na enofazni bi rekel, da je tretina tega, če je trifazna neobremenjena.  Upal bi si trditi, da tvoj inverter ni sinusni ampak trapezni ali kaj podobnega.  Če boš priključeval na hišno inštalacijo ločuj tudi ničelni vodnik (nulo). Uporabi štiripolno stikalo 1-0-2."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Obremenitev posamezne faze 3f generatorja je lahko do 1/3 nazivne moči.  Na generator lahko priključiš porabnike, ki ne bodo trajno, ali trenutno preobremenili agregata. Naprave, ki vsebujejo motorje ob zagonu potrebujejo nekajkrat več moči, kot med delovanjem. Npr hladilnik ima lahko cca 300W kompresor. Ob vklopu pa nekaj sekund rabi cca 3 - 5x toliko. Zaradi tega rabiš rezervo moči na agregatu. Razne elektronske naprave brez PFC usmernika za razliko od npr. žarnice na žarilno nitko jemljejo moč samo kratek čas, ko je napetost najvišja, oz najnižja (+-Vpk). Za napajanje takšnih naprav naj bi bil agregat predimenzioniran za 60%. Probleme lahko dela tudi kakšen laserski tiskalnik.  Bojim se, da agregat ni inverter, ampak sinhroni generator. Regulator napetosti ima lahko težave, če je na agregat priključenih preveč \"elektronskih\" bremen. Pri meni pomaga, če prižgem 60 - 100W klasično žarnico. Ceneni agregati znajo ob izklopu večjega porabnika (glede na moč generatorja) generirati kratko prenapetostno konico. Kakšna prenapetostna zaščita ne bi bila odveč.  Močnejsi OFF-LINE in LINE-INTERAKTIVNI UPS se zna pritožit zaradi frekvence, ali preklapljat med agregatom in baterijo. Lahko poskusiš nastavljat občutljivost in napetostno okno. Agregat z mehanskim regulatorjem vrtljajev bo imel frekvenco med 50Hz (obremenjen) do cca 55Hz (Neobremenjen). Dokler je napetost okoli 230V +-10%, približno sinusne oblike in frekvenca okoli 50Hz ne bi smelo biti večjih težav.  Sam bi se pri manjših močeh izogibal 3f generatorjev, če nimaš 3f porabnikov.  V primerjavi z 1f generatorjem je regulacija napetosti slabša. Obremenitev ene faze lahko povzroči spremembo napetosti na ostalih dveh fazah. Moč, ki je na voljo na posamezni fazi je razmeroma majhna. Na vsaki fazi navadno ostane nekaj moči, ki je ne moreš koristno uporabit. Če ima agregat 3*6A varovalko, je max moč 3*6A*230V = 3*1,38kVA = 4,14kVA* (*Omejitev varovalke. Razpoložljiva moč je lahko manjša).  Pri priklopu na hišno instalacijo upoštevaj, da je agregat vir, ki mora biti ozemljen.  Agregata ne zaganjaj s priključenim bremenom. Zagon izvedi brez bremena in ko se agregat stabilizira priklopi porabnike.  Pri dovolj velikem bremenu zagon agregata ne bo uspel. Če je priključen samo kakšen računalnik, se lahko pokadi iz napajalnika. Odvisno od velikosti prenihaja napetostne regulacije.  Pri izklopu najprej odklopi porabnike, počakaj nekaj minut, da se agregat malo ohladi in ga nato ugasni.  Če ima agregat zagonsko baterijo in nima stand-by polnilca zanjo, ga dokupi. Brez njega bo zagonska baterija po enem letu fuč, ali prazna."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ta agregat je inverterski."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ob vklopu pa nekaj sekund rabi cca 3 - 5x toliko.  Glede večkratnika bi se strinjal, glede timinga pa ne, ker kompresor res ne rabi več sekund, da doseže polne obrate. recimo del sekunde, pa že laufa pri polnih obratih."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0 je 11. feb 2014 ob 18:47 izjavil:Ta agregat je inverterski.  Ja, na 3-fazni vtičnici. Sicer je kar običajni 1-fazni sinhroni stroj/generator, delovne (stalne maksimalne) moči cca +4 kW.   6,5kW je pa trenutna maksimalna moč \"peak power\", če tak odjem traja kaj dlje kot kako sekundo, bo motor ugasnil ...   Za \"kurjavo\" - gorilec + črpalko, pa skrinjo/hladilnik, TV + par PC-jev pa modem pa polnilce pa ostalo kramo je pa več kot dovolj...  Glede TČ, če je to taka za sanitarno vodo, bo že nekako šlo, če pa je ogrevalna (nekaj kW el.priključne moči), pa najbrž ne.  LP"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ve kdo mogoče, kakšni agregati napajajo cela naselja....zadnjič sem slišal, da kuri agregat 300 litrov na uro"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_4 je 11. feb 2014 ob 20:27 izjavil:Ve kdo mogoče, kakšni agregati napajajo cela naselja....zadnjič sem slišal, da kuri agregat 300 litrov na uro     Jah, tole je recimo 100kVA (0.1MVA) generator:"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Poglej kake specifikacije. Evo, eden je tukaj:http://currentgeneration.co.nz/site/cur...  Se pravi 800KVA, 100% obremenjen požere 170l/uro"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jah, tole je recimo 100kVA (1MVA) generator:  Kaj zdej 0,1 ali 1MVA?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "evo ga od končarja 250kVA: http://www.bolha.com/stroji-orodja/moto...   @assistant_6 je 11. feb 2014 ob 20:38 izjavil: Jah, tole je recimo 100kVA (1MVA) generator:  Kaj zdej 0,1 ali 1MVA?   Pardon, 0.1MVA"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Približen izračun: Diesel Generator Fuel Burn Calculator, cca 300l/h za 1MW generator."
+    },
+    {
+        "role": "user",
+        "message": "OK, pol stvari, ki ste jih napisali (zlasti @assistant_1) ne razumem...   Torej. Agregat sem vedno uporabljal ozemljen. Gor je priključek za ozemljitev, gor sem s pomočjo objemke navil 6 mm bakren kabel (pleten, oz. iz drobnih žičk, ne vem kako se mu točno reče), na drugem koncu pa kabel povezal na 1cm ali malo debelejšo kovinsko palico ki sem jo zabil več kot pol metra v tla. To bi verjetno moralo biti dovolj.  Zaženem ga vedno tako, da so porabniki izključeni. Ko se zadeva zažene malo počakam, nato priklopim porabnike oziroma vključim varovalko. Pri ugašanju je postopek obraten - izklop varovalke, nato malo počakam in nato ugasnem agregat.  Da, agregat naj bi bil inverterski, ne vem pa kaj točno to pomeni (razen tega, da naj bi bil zato primeren za pogon računalnikov in drugih elektronskih naprav).  Bolj me zanima tole: Če ima agregat 3*6A varovalko, je max moč 3*6A*230V = 3*1,38kVA = 4,14kVA* (*Omejitev varovalke. Razpoložljiva moč je lahko manjša).   Se pravi na posamezni 220V vtičnici (gor sta dve), je moč, ki se jo lahko priklopi 1,38 kW? Se pravi če imam dva porabnika, ki vsak posebej porabi 1 kW, na eno vtičnico lahko priklopim enega, na drugo pa drugega? Kaj pa 3-fazna vtičnica? Gor lahko priklopim večjo moč ali ne?  Glede prenapetostne zaščite. Sem jo imel v mislih. V bistvu sem razmišljal celo, da bi vmes montiral FID stikalo, saj ga agregat nima (ima le avtomatsko varovalko).  V bistvu agregat prvenstveno rabim za:  - dve skrinji in hladilnik, - gorilec za olje na peči in črpalko, - luči po hiši.  Eventuelno bi gor priklopil tudi pralno stroj, vendar tako, da bi bil takrat priklopljen samo pralni stroj in nič drugega. Pralni stroj je pa sicer \"elektronski\", pač ima nek displayček in neko elektroniko notri. To bi šlo? Verjetno bi bilo tudi pred pralni stroj smiselno priklopiti prenapetostno zaščito?  Opcija je pa še priklop TV-ja ali radia, računalnika skoraj ne, morda dveh polnilcev za mobitel.  P. S. Zdaj sem opazil, da sta v user manualu izrezani dve strani s tehničnimi specifikacijami. Damn bastardz... Zadevo je sicer preko Bolhe prodajala neka firma iz Maribora. Sicer sem zraven dobil račun in garancijo (oboje podpisano in požigosano), domnevam pa, da je tip račun vrgel stran oziroma ga bo skril pred davčno, garancija je pa najbrž tudi bolj tako-tako... ampak jebiga, zadeva je bila poceni, stvar sem nujno rabil, ni namenjena za heavy duty oz. vsakodnevno rabo, zaenkrat pa dela brez problemov."
+    },
+    {
+        "role": "user",
+        "message": "Še eno vprašanje... morda bi lahko dobil nekoga, ki ima osciloskop. Z osciloskopom se da zmeriti obliko krivulje toka in frekvenco.  Je mogoče izmeriti tudi moč v kW (brez da bi poškodoval agregat)?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 11. feb 2014 ob 23:10 izjavil:Še eno vprašanje... morda bi lahko dobil nekoga, ki ima osciloskop. Z osciloskopom se da zmeriti obliko krivulje toka in frekvenco.  Je mogoče izmeriti tudi moč v kW (brez da bi poškodoval agregat)?   Z osciloskopom se ne meri toka, samo napetost. Sicer obstajajo naprave, ki to omogočajo, ampak se za merjenje toka uporabi multimeter. Ampak ti seveda ne bi rad meril oblike toka, ampak napetosti. Frekvenca je 50Hz, kot je pri nas standard. Prav veliko +/- ne bo odstopalo.  Je mogoče izmeriti moč, brez da bi poškodoval, bi pa moral obremeniti ravno toliko, dokler še dela, brez da se ugasne in potem izmeriti tok in napetost, ter izračunati moč. Če te zanima samo moč iz navadnih vtičnic, lahko nabaviš merilec porabe: http://www.conrad.si/Merilna-naprava-st..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Da, agregat naj bi bil inverterski, ne vem pa kaj točno to pomeni (razen tega, da naj bi bil zato primeren za pogon računalnikov in drugih elektronskih naprav). Da ti izmenično napetost iz generatorja pretvori v enosmerno, nato pa nazaj v 50Hz izmenično.  Prednost je v precej nižji porabi goriva pri manjših obremenitvah, pri večjih/polni, te razlike ni.  Ostalo je larifari marketing.  http://kleinanzeigen.ebay.de/anzeigen/s... 320€  Še eno vprašanje... morda bi lahko dobil nekoga, ki ima osciloskop. Z osciloskopom se da zmeriti obliko krivulje toka in frekvenco. Da se, samo natanko zakaj bi to počel ?   Je mogoče izmeriti tudi moč v kW (brez da bi poškodoval agregat)? Zakaj bi potreboval to ? Tak agregat lahko obremeniš več po fazi kot osnovnega trifaznega. Pričakuj tam 3kW+  Izhod je verjetno enak tistim iz poceni ups-ov, sinusa tu nimaš za pričakovati. Je lahko sicer zelo dober približek.  Kakorkoli, to napravam ne škodi, črpalke bodo ali bolj ropotale ali pa ne bodo delovale. Hladilnik bo malce težje štartal, to je pa nekako tudi to.  V omarici takoj za \"pancerkami\" bi namreč dal 32A 5-polno vtičnico, kamor bi potem priklopil celotno hišo. Eletrika bi potem šla do FID stikala in dalje po razdelilni omarici. V primeru izpada električnega omrežja, bi potem \"hišo\" enostavno izključil iz te vtičnice in jo povezal na generator. S tem bise tudi izognil temu, da npr, zaženem generator in pozabim izklopiti FID stikalo ter gre elektrika potem naprej v omrežje. In seveda, ko hišo odklopim, je fizično odklopljena, ne more priti do napake in koga strese/ubije...  V primeru da bi dobil napajanje iz obeh strani bi agregat uničil v trenutku.  Boljša rešitev je preprosto preklopno stikalo ali pa to da razpelješ podaljške po bajti."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Po podatkih iz sosednjega foruma naj bi bilo na agregatu realno možno dobit do 1,5kw na fazo. Omenjajo se tudi težave z dobavljivostjo nadomestnih delov, saj so baje mere nestandardne (ventili za gorivo)."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Druga stvar je, kaj lahko priklopim gor? Namreč, ko so popravljali električno napeljavo, je eden od električarjev dejal, da so toplotne črpalke smrt za generetorje in sicer zato, ker naj bi imele zelo specifičen način porabe - v kratkem času potegnejo veliko toka, potem pa nekaj časa nič, itd.). Katere so še take naprave, ki se jih ne sme priklapljati (jasno mi je, da bojlerji, likalniki in podobni veliki porabniki odpadejo)?  Smrt so za zanič, poddimenzionirane kitajske agregate. Moč kompresorja niha tudi v smeri 30% več kakor je nazivna moč, če nimaš rezerve si ga naj*"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_2 je 12. feb 2014 ob 00:02 izjavil: Z osciloskopom se ne meri toka, samo napetost. Sicer obstajajo naprave, ki to omogočajo, ampak se za merjenje toka uporabi multimeter.   Multimeter meri tok na enak način, kot osciloskop. Oba merita le padec napetosti na vzporedno vezanem uporu. Le da ima multimeter upor že vgrajen, pri osciloskopu pa ga moraš vezati sam."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@ Matthai : vse kar se lahko da na prednapetostne (vse kar ima elektroniko v sebi !!!) se tudi da! Jest imam tudi navadno klimo-srednjo in pralni stroj ter celo 3/1 plin-elektrika štedilnik-pečice NIKOLI ne vklopim !!!  Klima na agregat lahko, vendar SAMO inverterska (soft starti!) manjših moči in preko prenapetostne zaščite! Odvisno koliko toka prenese prednapetostna (da se ta ne greje preveč!)"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Sem tudi v fazi nakupa tega agregata. Našel sem malo boljšo ceno in boljši opis. Prosim koga, če mi pokomentira kaj je to 1f avr zaščita faze. Poglej na link http://www.restposten24.dk/home+garden/...  No tako poceni ga ravno ne dobim."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Pozdravljeni.  Glede porabe agregatov.  Poraba se zelo razlikuje glede koliko je obremenjen (ali je konstantno obremnejen z enako močjo ali neha z 30kw gor dol.  Agregat 300kw bo pri 200kw manj popil kot agregat 200kw obremenjen 100%.  Drugače je poraba pri delovanju agregata 24 ur na dan nenormalna, tiski ki bi čez dan ukradel 100l nafte se nebi nič poznalo (zato policaji elajo obhode).  Servisi agregatov so od 300 ur do 500 ur, odvisno od proizvajalca."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@Mathai Imaš morda info koliko si ga obremenil po fazi, ali si takrat imel bolj kot ne enakomerno porazdeljeno porabo po fazah ali si uporabil samo 1f vtikač? Se ti zdi relativno TIH? Moč motorja je precejšnja 13.5 PS zato mislim, da gladko teče brez naprezanja. Daj še malo pokomentiraj. Hvala ti. Deli ob morebitni okvari se dobijo vsi, brez skrbi.Bom poiskal link."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Agregat.  Dobro poglejete koliko kw je agregat (da ne boste samo pogledali koliko je nalepka na bencinskem motorju in rekli toliko močan je agregat...)  Če imate 220v svetujem da kupite enofazne agregate, ne te agregate ki so narejeni iz trifaznih agregatov (dajo samo 3 x 220v vtičnice potem moreš mirkati koliko kw priklopiš na vsako fazo)  Podomače povedano,   pri enofaznih agregatih samo seštevaš moči porabnike in točno veš koliko lahko še priklopiš. Vedno pustite malo rezerve.  Ti kitajski agregati so dobri samo za luč, pumpo za centralno ogrevanje (zaradi slabega sinusa bo pumpa bolj glasna) pa kakšen hladnilk/skrijo. Tako da si saj na toplem.  Če se nemorete odpovedati za kake 2 dneva računalnika, si kupite polnilec na 12V pa avto laufite."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Če imate 220v svetujem da kupite enofazne agregate, ne te agregate ki so narejeni iz trifaznih agregatov (dajo samo 3 x 220v vtičnice potem moreš mirkati koliko kw priklopiš na vsako fazo)  Kar ni problem pri inverterjih"
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_6 je 12. feb 2014 ob 10:39 izjavil:@assistant_2 je 12. feb 2014 ob 00:02 izjavil: Z osciloskopom se ne meri toka, samo napetost. Sicer obstajajo naprave, ki to omogočajo, ampak se za merjenje toka uporabi multimeter.  Multimeter meri tok na enak način, kot osciloskop. Oba merita le padec napetosti na vzporedno vezanem uporu. Le da ima multimeter upor že vgrajen, pri osciloskopu pa ga moraš vezati sam.   No, saj to sem hotel reči."
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_8 je 12. feb 2014 ob 12:12 izjavil:Če imate 220v svetujem da kupite enofazne agregate, ne te agregate ki so narejeni iz trifaznih agregatov (dajo samo 3 x 220v vtičnice potem moreš mirkati koliko kw priklopiš na vsako fazo)  Kar ni problem pri inverterjih   Odvisno kaj kupuješ, tukaj sem hotel samo opozoriti na kaj bodo pozorni."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@user je 11. feb 2014 ob 22:21 izjavil:Agregat sem vedno uporabljal ozemljen. Gor je priključek za ozemljitev, gor sem s pomočjo objemke navil 6 mm bakren kabel (pleten, oz. iz drobnih žičk, ne vem kako se mu točno reče), na drugem koncu pa kabel povezal na 1cm ali malo debelejšo kovinsko palico ki sem jo zabil več kot pol metra v tla. To bi verjetno moralo biti dovolj.  Da mora biti agregat ozemljen pomeni, da se ga mora priključiti na ozemljitev objekta. Pravilno bi bilo da se ozemljitveni vodnik na obeh koncih zaključi s kabelskim čeveljčkom in potem vijačno pritrdi. Ozemljitev ni kar tako zaradi lepšega in mora biti pravilno izdelana. Zagotoviti mora namreč dve stvari: 1. dovolj velik tok okvare (če pride n.pr. do stika faze s kakšnim kovinski delom), pri katerem bo zagotovo pregorela varovalka ali izklopil inštalacijski odklopnik ali pa FID stikalo in pa 2. za izenačevanje potencialov."
+    },
+    {
+        "role": "user",
+        "message": "AD 1.  @assistant_8 je 12. feb 2014 ob 10:29 izjavil:Smrt so za zanič, poddimenzionirane kitajske agregate.  No, to je električar rekel za te agregate v Logatcu, od civilne zaščite. Da je eden crknil po 4 urah obratovanja, ko so gor priklopili blokovsko naselje s toplotnimi črpalkami.  AD 2.  @assistant_8 je 12. feb 2014 ob 12:12 izjavil:Če imate 220v svetujem da kupite enofazne agregate, ne te agregate ki so narejeni iz trifaznih agregatov (dajo samo 3 x 220v vtičnice potem moreš mirkati koliko kw priklopiš na vsako fazo)  Kar ni problem pri inverterjih  Zakaj to ni problem pri inverterjih? (Rabim precej osnovnošolsko razlago)...  AD 3. Nekdo je omenil, da bo zaradi slabega sinusa črpalka bolj glasna... zakaj? Če prav razumem, se potem ne vrti enakomerno, pač pa se malo bolj \"zaganja\" oz. \"trza\" (en del obrata se vrti hitreje kot druge)? Imam prav, ali sem vsekal mimo?  AD 4.  @assistant_13 je 12. feb 2014 ob 16:39 izjavil:Da mora biti agregat ozemljen pomeni, da se ga mora priključiti na ozemljitev objekta. Pravilno bi bilo da se ozemljitveni vodnik na obeh koncih zaključi s kabelskim čeveljčkom in potem vijačno pritrdi. Ozemljitev ni kar tako zaradi lepšega in mora biti pravilno izdelana. Zagotoviti mora namreč dve stvari: 1. dovolj velik tok okvare (če pride n.pr. do stika faze s kakšnim kovinski delom), pri katerem bo zagotovo pregorela varovalka ali izklopil inštalacijski odklopnik ali pa FID stikalo in pa 2. za izenačevanje potencialov.  Hmm, verjetno bo butasto vprašanje, ampak zakaj mora biti ozemljitev priključena na ozemljitev objekta - se pravi na valjanec?  Zakaj ni vseeno, če je zraven zabita še ena štanga? Kaj pa če priklopim samo enega porabnika, npr. skrinjo? Mislim, kaj če agregat uporabljam nekje sredi gozda?  AD 5.  @assistant_11 je 12. feb 2014 ob 11:49 izjavil:Imaš morda info koliko si ga obremenil po fazi, ali si takrat imel bolj kot ne enakomerno porazdeljeno porabo po fazah ali si uporabil samo 1f vtikač? Se ti zdi relativno TIH? Moč motorja je precejšnja 13.5 PS zato mislim, da gladko teče brez naprezanja. Daj še malo pokomentiraj.  Torej, priklopil sem samo na eno vtičnico skrinjo, na drugo pa luč (tisto prenosno gradbeno luč). Sicer se mi zdi relativno tih, da. Tudi poraba se mi zdi v mejah normale (v primerjavi s sosedi).  V bistvu je bil problem, ker smo prišli na idejo, da bi priklopili celo hišo. FID smo izklopili, potem pa bi enostavno agregat vtaknili v eno izmed vtičnic. No, jaz sem potem rekel,d a bi se znalo zgoditi, da bi bila lokalna vtičnica oz. kabel do nje preobremenjen in da se mi zdi boljše, da zadevo priklopimo v omarico. Sploh, ker imam v omarici vtičnico za 3-fazni tok.  No, problem je bil v tem, da prekleti šalabajzerji pred 30 leti, ko so delali elektro inštalacije, v tisto 3-fazno vtičnico niso vezali nule! Ker je seveda bila namenjena samo za cirkularno žago, elektro motorji pa potrebujejo samo 2 fazi in ne nule...  Seveda sem potem v napeljavo dobil 380 V namesto 220... ker so se pa takrat na polno zagnale skrinje, so potegnile precej toka in ostali porabniki niso bili tako zelo preobremenjeni. No, ena skrinja je bila prazna, zato sem jo izključil... v tistem trenutku je po hiši začelo lepo pokati. Na srečo je imela tašča v eni vtičnici priključen tisti mini odganjalec komarjev, ki ga je vmes že napol pretalilo in je potem začel kuriti tok na polno in s tem zmanjšal obremenitev ostalih porabnikov. Ko smo po ene pol minute ugotovili kaj se dogaja,smo seveda vse hitro izklopili. Končna bilanca je bila tri prekurjene luči, nek trafo v eni elektronski napravi (par EUR) ter tisti odganjalec komarjev. Skrinje in hladilnik so preživeli. Pralni stroj, TV, itd. so bili pa izključeni iz omrežja. Agregat pa ni vidno (slišno) trznil."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Joj pametujete,jaz sem mislil da je to bolj strokovni forum. Če flikneš fid stikalo ven in povežeš agregat v hišno vtičnico s podaljškom na obeh straneh 3f moški vtikač imaš vse kar potrebuješ tudi ozemljitev na pravem mestu. Važen je vrstni red priklopa in odklopa agregata!  Naj nekdo raje odgovori na moj prejšnji post z linkom, kaj je to 1f avr napetostna zaščita faze? Kaj je potem s preostalima fazama, ki nimata te zaščite. Kao inverter smo že ugotovili, da ga tale kitajc ziher nima. Skrbijo me prenapetostni sunki ob izklopu večjega porabnika na eni izmed faz. Potem ponavadi napetost doseže špico, lahko tudi do 280 V in če ob tem crknejo varčne žarnice je zelo poceni špas."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Da nebo kdo mislil da sem nadut. To ni bil moj namen. Imam pa morje izkušenj z agregati. Hvala Matthai."
+    },
+    {
+        "role": "assistant_6",
+        "message": "elektro motorji pa potrebujejo samo 2 fazi in ne nule... Običajni elektro motorji rabijo 1 ali 3 faze. Pri 3f vezanih v zvezdo je vseeno fajn imeti nulo, čeprav ni nujna."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_11 je 12. feb 2014 ob 17:27 izjavil:Da nebo kdo mislil da sem nadut. To ni bil moj namen. Imam pa morje izkušenj z agregati. Hvala Matthai.  No, jaz pa nobenih, zato sprašujem."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Zakaj to ni problem pri inverterjih? (Rabim precej osnovnošolsko razlago)... Inverter ti napetost iz generatorja usmeri v enosmerno in potem iz nje naredi 3f izmenično. Tako da imaš na vhodu vedno enakomerno obremenjen generator. Če imaš trifazni agregat in priklapljaš gor enofazne porabnike, ti vsak priklopljen porabnik obremeni samo eno fazo. Tako se ti lahko zgodi (če nimaš sreče), da bo ena faza generatorja na koncu moči, ostali dve pa v luft gledali. Nekdo je omenil, da bo zaradi slabega sinusa črpalka bolj glasna... zakaj? Če prav razumem, se potem ne vrti enakomerno, pač pa se malo bolj \"zaganja\" oz. \"trza\" (en del obrata se vrti hitreje kot druge)? Imam prav, ali sem vsekal mimo? Izmeničen tok ti v črpalki ustvarja vrteče magnetno polje (če gledaš, kam kaže vektor magnetnega polja, se ti bo vrtel okrog osi motorja). Če nimaš lepega sinusa, ti bo ta vektor 'cukal' (kot nizek FPS pri igrah) in rotor bo skakal skupaj z njim. Lahko pa kupiš invertersko črpalko in ne boš imel teh problemov . Hmm, verjetno bo butasto vprašanje, ampak zakaj mora biti ozemljitev priključena na ozemljitev objekta - se pravi na valjanec?  Zakaj ni vseeno, če je zraven zabita še ena štanga? Kaj pa če priklopim samo enega porabnika, npr. skrinjo? Mislim, kaj če agregat uporabljam nekje sredi gozda? Ti moraš gledat tokokrog, ki se sklene, ko se ti dotakneš naprave, ki prebija. Tok steče prek tebe v ozemljitev stavbe in ko je dovolj velik, FID odklopi. Zato hočeš imet upornost od tebe do ozemljitve generatorja (tok vedno teče v krogu) čim manjšo, da čim prej odklopi."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Agregat priključen tako kot sem napisal zgoraj je čist OK zadeva, vendar paziti moramo da je tokovno breme razporejeno po vseh fazah vsaj približno enakomerno. Recimo da na eni fazi vključimo pralni stroj in le ta ima tudi grelec, na drugi fazi pa imamo trenutno ravno vključen kompresor zam.skrinje. Na tretji pa večina hišne razsvetjave in TV, hišni kino ter računalniki. Ko agregat to vse napaja ni nobenega problema.  Ampak potem se gretje vode v pralnem stroju izključi, ker je dosegel svojo temperaturo po programu.  No v tistem trenutku so motorni obrati agregata bili na veliki moči. Neumno bi bilo pričakovati, da bo motor agregata tako hitro zmanjšal obrate motorja in izravnal napetost na pričakovanih 220 V po fazi brez nekega dobrega sistema za glajenje napetosti. ( kaj je to avr) Zato nam pride do špice, ki traja med 1-2 sek preden se spet napetost uravnovesi. Kar nekaj agregatov je skurilo na ta način mnogo elektronike po hišah v zadnjih dneh. Če agregat uporabljamo za gradbene stroje in črpalke z induktivnim navitjem, to sploh ni težava. Problem je v hišni elektroniki, garažna vrata, rolete in ostalo že prej navedeno."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@Matthai Nulo imaš v omarici in jo samo pravilno potegni nadometno 2.5 mm2 kabel do tega trifaznega štekerja in zveži na pravo mesto, da je ne boš dal na mesto ozemljitve. Potem boš dosegel to kar si želiš, imeti štrom na voljo povsod. Kako je pa z prenapetostno zaščito pri tem modelu pa bi lahko pomeril, če imaš unimer.  V eno vtičnico agregata vtakni kalorifer ali fen ali sesalec ali el.radiator. Na drugi neobremenjeni fazi pa meri voltažo. Potem ti nekdo pomaga in izklopi ta aparat in če ti unimer zaniha nad 250 V je to kar obremenitev za naprave. Če ne javi in jaz kupim 3 kom. To je namreč še edina ovira da bi se odločil zanj. ;)"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Kolk je cena tega agregata?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "320 eur + 40 dostava v slo za 418 ccm in 13.5 konjev motor z 6.5 kW. Motor je resnično premočan za ta agregat in lepo dela na 50 % moči ter malo žere ker se ne rabi naprezat na full gas."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Žal si omejen z porabo 2 kW po fazi. Vsaj običajno je tako. Ampak za ta denar boljšega ne najdem. Je pa res da bi bilo najbolje imeti enofazni 6 Kw agragat katerega pravtako vežeš v hišo na 3f ki jih v vtikaču brikaš in imaš povsod po hiši enakomeren štrom brez izrazitih nihanj. Pazit je treba, da pod vključenim agregatom ne vključiš v hiši kakšne mašine-ponavadi stroja ki rabi prave 3f. Samo cena za enofazni 6 kW bi bila jurja ali več."
+    },
+    {
+        "role": "assistant_8",
+        "message": "No, to je električar rekel za te agregate v Logatcu, od civilne zaščite. Da je eden crknil po 4 urah obratovanja, ko so gor priklopili blokovsko naselje s toplotnimi črpalkami.  Mjah, vprašanje je, kaj so naredili. Vsa trafo oprema lepo prebavlja obstoječe težave.  No v tistem trenutku so motorni obrati agregata bili na veliki moči. Neumno bi bilo pričakovati, da bo motor agregata tako hitro zmanjšal obrate motorja in izravnal napetost na pričakovanih 220 V po fazi brez nekega dobrega sistema za glajenje napetosti. ( kaj je to avr) Zato nam pride do špice, ki traja med 1-2 sek preden se spet napetost uravnovesi.  Wat ? Napetost je regulirana z regulatorjem napetosti, frekvenca z regulatorjem obratov. Motor je resnično premočan za ta agregat in lepo dela na 50 % moči ter malo žere ker se ne rabi naprezat na full gas. Ne, ni Ima 10kW na osi. Majhni agregati imajo precej nizke izkoristke, tudi samo 70% in še manj. Temu dodaj še 10% penal inverterja in ... vidiš da je dimenzioniran na max. moč ki jo zmore."
+    },
+    {
+        "role": "assistant_11",
+        "message": ":) Ja pri Hondi ali Kiporju. Pri Kitajcu? Ne me hecat, posodil agregat že marsikomu in mu je scvrlo gorilec ko je hkrati izklopilo skrinjo. Agregatek 800 W."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Priklopil sm pralni stroj na agr., ki ima max 2,5, pa je samo nek rele noter štrkal, medtem ko so obtočne frekvenčne pumpe delale bp."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Skrinja dela lastno sranje po omrežju ob izklopu Pač ne kupovati poceni robe pa je"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Večino nas je izučilo kako smo ranljivi brez elektrike. Izredne razmere kot so bile in ponekod še vedno so, so vseeno zelo redke. Ne pričakovati, da bo povprečna Slov.družina za to varnost in neodvisnost namenila več kot 200-500 eur. Hondini agregati se začnejo pri 700 eur za 800 W. Ta agregat, ki je tukaj v obravnavi SK65iex je glede na ostalo kitajsko robo enkrat dražji kot ostali, ki so na voljo že za 110 eur. http://m.kleinanzeigen.ebay.de/s-katego... Torej gledamo best bang for your buck ali preis-leistungs verhaltnis. Ne nas obsojat zaradi tega vsi si pač ne moremo privoščiti mercedeza."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ne nas obsojat zaradi tega vsi si pač ne moremo privoščiti mercedeza. Sure I can:)  Torej gledamo best bang for your buck ali preis-leistungs verhaltnis. Best bang for your buck ?  Niti najmanj. Je samo bang, worthless waste of money. Ti rabiš stroj, na katerega se lahko zaneseš. In agregat, ki ga boš lahko obudil od mrtvih ko bo zunaj -20 po dobrem letu mirovanja v lopi.  Vse ostalo je čisto enako kakor, če nimaš. When shit hits the fan pričakuj da bo šlo vse narobe."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Jaz ga rabim za dve obtočni črpalki skupne max moči 65 W in potopno črpalko moči 800 W. Dokler ga nisem prodal, je odlično služil lidlov 2,5 kw. Za luči in ostalo me ne briga."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_8 Ko kupiš iskra sesalec, mešalnik, parni čistilec... dobiš proizvod iz PRC. Ker bi bilo prevelik zalogaj, odpakirati aparat in tiskati Iskra na aparat v Sloveniji, še to natisnejo tam v PRC. Mojo hišo že tretje leto greje TČ Midea M-Thermal s porabo 500 eur elektrike na leto za celotno ogrevanje in pripravo sanitarne vode. In to v hiši zgrajeni v socialističnih časih 1970 z 200 m2. Pred temi tremi leti sem odštel 2600 eur in je bila vsaj 3.5 x cenejša kot druga zveneča imena Toshiba estia, Panasonic aquarea, LG. Omenjene sem naštel z razlogom. Ker so proizvedene v tovarni Midea, ki ima proste proizvodne kapacitete in zaposluje 400.000 ljudi. Kitajci znajo delati tudi dobro robo, sploh takrat ko so pod budnim nadzorom naročnika. Med tem delom se veliko naučijo in še več prekopirajo in ponudijo svoj izdelek. Izluščiti zrnje od plevela je naše delo in pravica."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_11 je 12. feb 2014 ob 17:21 izjavil:Če flikneš fid stikalo ven in povežeš agregat v hišno vtičnico s podaljškom na obeh straneh 3f moški vtikač imaš vse kar potrebuješ tudi ozemljitev na pravem mestu .  Ne bi polemiziral, ampak tole z moškima vtikačema na obeh straneh pa najbrž nisi mislil resno, ali pač?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ni glih varno za rokovanje, samo dokler si resno pri stvari ni problema."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Jap, fid ven in podaljšek z dvema"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Upam, da nihče ni in ne bo na takšen način, kot ga je opisal Mikey2, uredil priklopa agregata na obstoječo inštalacijo: 1. je skregano z vsemi predpisi 2. je smrtno nevarno"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Itak da je smrtno nevarno. Se strinjam, vsakršen poseg nepooblaščenega strokovnjaka v el.omrežje je tvegan.  Elektronik pripravnik pri strokovnem izpitu obrtne komisije na vprašanje varstva pri delu."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_11 je 12. feb 2014 ob 20:48 izjavil:Jap, fid ven in podaljšek z dvema    Recept za katastrofo..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Big deal.  A če je tak kabel priklopljen direktno v omarico na eni strani je pa kar naenkrat vse v redu ?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Mislim, sam sem mnenja, da čisto ok ni, sploh zato, ker izgubiš FID, kar pomeni, da imaš lahko na kovinskih ohišjih fazno napetost, ki te lahko ubije. Sploh pa je hec v tem, da kabel z moškima konektorjema na obeh straneh ni nikjer na voljo - kar pomeni, da ga moraš narediti sam, kar se lahko hitro sprevrže v katastrofo, sploh pri trofaznih konektorjih. Ena napaka v vezavi, pa maš 230V na ohišjih vseh 230V naprav. In zaščito, ki te ščiti pred takšno stvarjo si zaradi nasvetov na forumih odklopil.  Ne rečem, če veš kaj delaš, potem so možnosti za katastrofo minimalne. Vendar še vedno obstajajo, ker nikoli pa ne moreš vplivati, kdaj se bo neka naprava pokvarila, in funkcionirala drugače, kot bi bilo pričakovano. Sam bi se v takem primeru najbrž lotil izdelave preklopnika iz dveh različnih virov napajanja ali pa bi vsaj vezal odklopnik pred FID stikalo. Še elektra ne rabiš klicat, da ti pridejo pancerke ven pobrat. Seveda pri tem velja izjemna previdnost (kakšne električarske rokavice, pa dovolj razmaka med kabli), da slučajno elektro ne priklopi elektrike nazaj ravno v času našega dela na inštalaciji."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_8 je 14. feb 2014 ob 06:06 izjavil:Big deal.  A če je tak kabel priklopljen direktno v omarico na eni strani je pa kar naenkrat vse v redu ?  Seveda da ni. Tile agregati, ki se kupujejo po raznih trgovinah so namenjeni za samostojno obratovanje in ne za način mreža-agregat. Ko takšen agregat priključite tako kot je opisal @assistant_11, bo pod napetostjo celotni električni razdelilnik in grozijo nevarnosti: - če razdelilnik nima glavnega stikala ali fida ali če se tega ne izklopi, potem z agregatom pošljete napetost v javno omrežje, kar je izredno nevarno, če na omrežju kdo dela in ne ve, da je prišla napetost. Poleg tega se iz tega agregata napaja tudi kakšen sosedov porabnik. - če je kot glavno stikalo FID in se ga izklopi, potem inštalacija v hiši nima več zaščite pred električnim udarom (agregat ima običajno samo varovalke, ki pa ščitijo samo kabel). Pravilen priklop takšnega agregata na električni razdelilnik se izdela tako, da se pred električni razdelilnik (ali pa v njega, če je prostor) vgradi preklopno stikalo s položajema 1 - 2. Skupna točka kontakta gre na zbiralnice razdelilnika, na priključke v položaju 1 se prikopi kabel iz priključno merilne omarice, na priključke v položaju 2 pa kabel iz agregata. Seveda je potrebno agregat priključiti tudi na ozemljitev, kar pa se lahko naredi ravno tako ali na zaščitni zbiralnici v električnem razdelilniku ali pa v posebni dozi glavnega izenačevanja potencialov (ni torej potrebno kopati in iskati valjanec v zemlji). Pravzaprav bi na nevarnosti kupca moral opozoriti že prodajalec ter obvezno priložiti navodilo za način priklopa."
+    },
+    {
+        "role": "user",
+        "message": "OK, kaj pa \"moja\" varianta, ko bi naredil takole... Opis omrežja:  - vhod kabla v elektro omarico - naprej gre na pancerke -- tukaj vmes bi dal en 3-fazni 5-polni 32V ženski vtikač -- tukaj pa moški del, ki se priklopi ali na zgornji vtikač, ali pa na agregat - potem gre naprej na FID stikalo - nato pa gre naprej na razdelilno omarico/varovalke - in do končnih porabnikov   \"Moja\" rešitev tako predvideva navaden kabel, tam kjer je izvor napetosti (omrežje, za pancerkami ali agregat), je ženski del priključka, hišni del (ki ga priklapljamo, in ki vsebuje FID stikalo ter ostale zadeve in ki sam po sebi ni izvor napetosti), pa ima moški del priključka.  Sprašujem, ker v resnici o teh zadevah nimam pojma in bi rad dobil dober nasvet.  Še eno vprašanje... kam na zgornji shemi vezati plinske odvodnike? Trenutno jih namreč nimam, ampak sem mnenja, da bo to treba čimprej zrihtat."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_13 je 14. feb 2014 ob 08:06 izjavil:@assistant_8 je 14. feb 2014 ob 06:06 izjavil:Big deal.  A če je tak kabel priklopljen direktno v omarico na eni strani je pa kar naenkrat vse v redu ?  Seveda da ni. Tile agregati, ki se kupujejo po raznih trgovinah so namenjeni za samostojno obratovanje in ne za način mreža-agregat. Ko takšen agregat priključite tako kot je opisal @assistant_11, bo pod napetostjo celotni električni razdelilnik in grozijo nevarnosti: - če razdelilnik nima glavnega stikala ali fida ali če se tega ne izklopi, potem z agregatom pošljete napetost v javno omrežje, kar je izredno nevarno, če na omrežju kdo dela in ne ve, da je prišla napetost. Poleg tega se iz tega agregata napaja tudi kakšen sosedov porabnik. - če je kot glavno stikalo FID in se ga izklopi, potem inštalacija v hiši nima več zaščite pred električnim udarom (agregat ima običajno samo varovalke, ki pa ščitijo samo kabel). Pravilen priklop takšnega agregata na električni razdelilnik se izdela tako, da se pred električni razdelilnik (ali pa v njega, če je prostor) vgradi preklopno stikalo s položajema 1 - 2. Skupna točka kontakta gre na zbiralnice razdelilnika, na priključke v položaju 1 se prikopi kabel iz priključno merilne omarice, na priključke v položaju 2 pa kabel iz agregata. Seveda je potrebno agregat priključiti tudi na ozemljitev, kar pa se lahko naredi ravno tako ali na zaščitni zbiralnici v električnem razdelilniku ali pa v posebni dozi glavnega izenačevanja potencialov (ni torej potrebno kopati in iskati valjanec v zemlji). Pravzaprav bi na nevarnosti kupca moral opozoriti že prodajalec ter obvezno priložiti navodilo za način priklopa.   Čakaj, what ?  Imaš preklopno stikalo, ki ti odklopi dovod in preklopi na drug vir. Natanko kje bo tu nastala težava ?  To klobasanje o agregatih si lahko prihraniš, ker v osnovi, tudi ob fazi na ozemljitvi, zadeva ni povezana v zemljo, razen če tako želiš. Je praktično izolirani sistem.   Še eno vprašanje... kam na zgornji shemi vezati plinske odvodnike? Trenutno jih namreč nimam, ampak sem mnenja, da bo to treba čimprej zrihtat. Čim več, povsod.  Poglej si sisteme varovanja pred prenapetostjo.  Imaš jih na dovodu, v omarici in nato še pri porabnikih. To so trinivojski, edini ki ti kaj pomenijo.  Also Ne pozabi, da jih moraš menjat redno, drugače niso kaj veliko vredni.   \"Moja\" rešitev tako predvideva navaden kabel, tam kjer je izvor napetosti (omrežje, za pancerkami ali agregat), je ženski del priključka, hišni del (ki ga priklapljamo, in ki vsebuje FID stikalo ter ostale zadeve in ki sam po sebi ni izvor napetosti), pa ima moški del priključka. Če narediš sistem tako, da ne odklapljaš ozemljitve bi šlo, še vedno pa je lažja rešitev s preklopnim stikalom.  Moraš paziti, ker v primeru, da ti crkne masa in imaš ničlano v omarici za varovalkami in za priključkom dobiš polno napetost na ohišja naprav."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Jaz bi se tega invertorskega trofaznika izogibal ko hudič, morda za pogon kakšnega mešalca ali pumpe. Ostalo enofazno, če se le da. Sploh pa ne priključit kakega compa."
+    },
+    {
+        "role": "assistant_18",
+        "message": "@assistant_0 je 14. feb 2014 ob 05:14 izjavil:@assistant_11 je 12. feb 2014 ob 20:48 izjavil:Jap, fid ven in podaljšek z dvema    Recept za katastrofo... Kaj natančno je s tem narobe, če veš kaj počneš? Načeloma ti tole lepo poveže ohišje agregata s hišno ozemljitvijo, faze in nula so tam, kjer morajo biti. Odklopiš glavno stikalo ali FID, vštekaš tole v hišno 3p vtičnico, zaženeš agregat in je vse zrihtano. OK, zgubiš FID, ampak veste koliko stanovanj in bajt ga itak nima? Če gre za premostitev tistih nekaj dni ob katastrofi, je tveganje sprejemljivo. Jaz že 5 let živim v stanovanju samo z ničenjem, pa se nič ne bojim, da bi kaj bilo narobe. Ohišja naprav so povezana na nulo, faze pa ne bom še tikat. Pa tudi če bi, če stojim na laminatu, se itak nič ne zgodi."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@Matthai, nisem zasledil sheme, na katero se sklicujete. Se mi pa zdi, da sedaj z moškimi in ženskimi natiči oz. vtičnicami nekoliko komplicirate. Kot sem napisal nekoliko prej, vgradite preklopno stikalo s položajema 1 in 2. Položaj 1 naj bo normalno omrežna napetost, se pravi kabel od pancerk. Skupni kontakt stikala povežite na zbiralnice razdelilnika (elektro omarice). Iz kontaktov položaja 2 pa lahko napeljete kabel do nekega mesta, kjer boste priključevali agregat. Na koncu tega kabla lahko namesto fiksne priključnice, montirate natičnico (moški kontakti). Tako boste imeli pripravljeno možnost priklopa agregata kadarkoli.  Bistvo pri vsem tem je, da na kontaktih natičnice (ali na moških kontaktih) nikoli ne sme biti napetosti, če ni sklopljena z vtičnico. Kot ste že na začetku omenili, naj bi vam zadevo izvajal bratranec, ki je izšolani električar. Torej ne bi smel biti problem, sicer pa vam toplo priporočam, glede na to, da sami pravite, da se na elektriko ne spoznate najbolje, da se dogovorite s kakšnim električarjem, da vam pomaga."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Morda nisem bil dovolj jasen. Nekdo brez znanja in prakse tega ne bo delal in bo verjetno raje agregat postavil v dnevno sobo ali garažo in ga poleg TV zalaufal, ker nima podaljška pri roki. ;) Žal je to resnica, ki smo jo doživeli.  Če agregat laufamo zunaj in s podaljškom pripeljemo štrom v hišo kjer damo razdelilec za porabnike po hiši potem nam pa FID stikalo služi svojemu namenu ali kaj? Itak ga spet ni! Še huje ni niti ozemljitve.  Zadeva je bila opisana tako tudi na 24ur zvečer, kjer so ljudi kvečjemu opozorili na obvezen IZKLOP FID stikala.  Kot rečeno je to rešitev za izredne razmere.  Kaj pravijo predpisi je jasno, da ni skladno s tem početjem ampak predpisi pravijo tudi da se skozi naselja vozi 50 km/h in kolikokrat to kršimo?  Ni to forum za strokovnjake, zato se poslavljam. Da ne napravite kakšne škode.  Lepo se imejte, upam da kmalu vsi dobijo štrom v hišo. Tudi v Postojni kjer sicer že imajo elektriko ampak ZAČASNO REŠITEV ki ne omogoča normalne uporabe zaradi preobremenitve. Je to po predpisih? Kdo je tako rešil zadevo? Iznajdljivi ljudje kot sem jaz!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 11. feb 2014 ob 22:21 izjavil:Da, agregat naj bi bil inverterski, ne vem pa kaj točno to pomeni (razen tega, da naj bi bil zato primeren za pogon računalnikov in drugih elektronskih naprav).  Inverterski agregat bremena napaja iz elektronskega razsmernika, zaradi česar sta izhodna napetost in frekvenca neodvisni od vrtljajev in vzbujanja generatorja. Nekaj podobnega bi lahko dosegel, če bi bremena napajal preko ON-LINE UPS-a.  Če so vsi izhodi inverterski, agregatu pri manjšem bremenu ni potrebno vzdrževati sinhronih vrtljajev, zato ima takrat manjšo porabo. Če je npr. 3f izhod preko inverterja, 1f pa ne, se mora generator vrteti s konstantnimi vrtljaji. V tem primeru je edina prednost boljše reguliran 3f izhod.    @user je 11. feb 2014 ob 22:21 izjavil:Se pravi na posamezni 220V vtičnici (gor sta dve), je moč, ki se jo lahko priklopi 1,38 kW? Se pravi če imam dva porabnika, ki vsak posebej porabi 1 kW, na eno vtičnico lahko priklopim enega, na drugo pa drugega? Kaj pa 3-fazna vtičnica? Gor lahko priklopim večjo moč ali ne?  Pri klasičnih 3f generatorjih je 1f 220V vtičnica vezana na posamezno fazo 3f vtičnice. V tem primeru lahko vsako fazo obremeniš z 1/3 moči, ki je na voljo na 3f vtičnici. Iz 3f vtičnice lahko dobiš nazivno moč na dva načina. -Lahko nanjo priključiš ustrezno 3F breme. -Lahko na vsako od treh faz priključiš (L1-N, L2-N, L3-N) 1f 220V porabnike.   V tvojem primeru imaš agregat brez tehničnih specifikacij. Poglej s kakšno varovalko sta varovani 1f vtičnici. Sta vezani na 3f varovalko? Ima vsaka vtičnica svojo varovalko ? Kakšno ?  Pralni stroj vsebuje grelec. V mojem je moč grelca 2kW.   @user je 11. feb 2014 ob 23:10 izjavil:Še eno vprašanje... morda bi lahko dobil nekoga, ki ima osciloskop. Z osciloskopom se da zmeriti obliko krivulje toka in frekvenco.  Je mogoče izmeriti tudi moč v kW (brez da bi poškodoval agregat)?  Osciloskop ima lahko eno sponko vezano na ozemljeno ohišje!  Oblika toka je odvisna od oblike napetosti in (vrste) porabnika. Večinoma je dovolj, če se pomeri oblika napetosti (THDU popačenje) in frekvenca.  Varnost meritve razpoložljive moči je odvisna od kvalitete zaščit v generatorju. Ločljivost pa od moči testnih bremen, ki so na voljo. Obremenitveni test izvedi, dokler ima agregat še garancijo.  Plinski odvodniki so precej groba zaščita. Navadno se jih kombinira z varistorji. Med obema zaščitama mora biti neka minimalna dolžina kabla, ali ustrezen element. Poglej v specifikacije proizvajalca zaščite.  Če bo agregat montiran v prostoru, moraš poskrbeti za: -Odvod izpušnih plinov iz prostora. -Prezračevalno odprtino za zajem svežega zraka v agregatski prostor. -Izpih toplega zraka iz prostora.  Manjši agregati nimajo hladilnika in vetrnice, zato dodaj ventilator za izpih toplega zraka.  Motor z notranjim izgorevanjem je toplotni stroj s precej ubogim izkoristkom. Brez prezračevanja se prostoru hitro pregreje.  Ne uporabljaj ventilatorja za vpih svežega zraka v prostor! Če izpuh pušča, lahko nadtlak potisne izpušne pline v ostale prostore."
+    },
+    {
+        "role": "assistant_19",
+        "message": "O bog! Še dobro, da ne gori vsaka druga hiša v tej državi. Samo \"znalci\" in \"mojstri za vse\" z zelo slabimi nasveti.  1. ne glede na vrsto inštalacije 1F ali 3F je najbolje kupiti 1 F agregat. Zakaj? Zato, ker pri 3F agregatu moraš imeti enako obremenjene vse 3 faze, ker drugače je štala.  2. treba je imeti 2 različna povezovalna kabla. Eden, ki ima brikane vse 3 faze (za priklop 1F agregata na 3F inštalacijo) in en kabel, ki ima normalen 3F priklop, če slučajno pride do situacije, ko imaš na razpolago samo 3F agregat.  3. agregata se NIKOLI ne priklaplja tako, kot ste opisali. Edini pravilni način je vgradnja 1-0-2 (ne 1-2!!!) preklopnika, ki loči javno omrežje od priklopa agregata. Recimo, 4 polni 32 A preklopnik, Eti, slovenski proizvod (http://eurovolt.sk/index.php?page=prod_...  * 99 % sem, da ta najprej odklopi faze in nato nulo, priklopi na najprej nulo in nato faze. Kar je edino pravilno, ker drugače lahko pride do premika potenciala zvezdišča.   VSE VEZAVE MORA OPRAVITI OSEBA, KI JE KVALIFICIRANA ZA TAKA DELA!!!"
+    },
+    {
+        "role": "assistant_20",
+        "message": "@assistant_19 je 16. feb 2014 ob 15:06 izjavil:Eti, slovenski proizvod (http://eurovolt.sk/index.php?page=prod_...  Ta link ne pokaže izdelka, samo njihovo stran ki je v slovaškem jeziku"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Ups, evo ti:   http://eurovolt.sk/index.php?page=prod_...   Ni njihova slovaška stran, pač pa slovaška online elektro trgovina, ker nobena slovenska ne objavlja cen takih stvari.  Še uradni slovenski katalog: http://www.eti.si/files/userfiles/PDF/S...  Ni pa to edina firma, teh firm je zelo veliko, najbolje, da poiščete na spletu."
+    },
+    {
+        "role": "assistant_8",
+        "message": "1. ne glede na vrsto inštalacije 1F ali 3F je najbolje kupiti 1 F agregat. Zakaj? Zato, ker pri 3F agregatu moraš imeti enako obremenjene vse 3 faze, ker drugače je štala. Not since the inverter"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Seveda je danes vsak agregat inverterski in to velja tudi za najcenejše, ki so jih sedaj prodajali, kot žemlje. Not.   Inverter stane od recimo 1500€ naprej, večina ljudi pa je kupila agreagte do recimo 500€, zato je bolje vzeti 1F. Če pa denar ni ovira, potem pa inverter in 3F."
+    },
+    {
+        "role": "assistant_8",
+        "message": "V sloveniji res, kjer imamo precenjeno robo."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Če mi zrihtaš 3F inverterski agregat za 500€ ali manj bom zelo vesel. Pa ne 600 VA ampak malo močnejšega, da bo lahko brez težav poganjal celo hišo (kot, da sem priklopljen na javno omrežje).  Cene takih agregatov so par tisoč eur.  Toliko razlike spet ni med tujino in Slovenijo, pa ne upoštevaj izjemno navitih cen v zadnjem času pri nas in oderuških trgovcev, ki imajo vse cene navite. Takih sem pač izogneš, kupiš pri takem, ki ima cene iste ali podobne, kot v tujini."
+    },
+    {
+        "role": "assistant_21",
+        "message": "In kateri ima s cenejšo tujino (AT,DE,IT) primerljive cene ?"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Ko imam jaz kako investicijo naredim sledeče:  Najprej si izberem izdelek, ki bi ga imel, nato pregledam tujino in domače trgovine, nato pa si vzamem čas in kontaktiram domače trgovine, ter jim povem, kako je s cenami. V najslabšem primeru dobim isto ceno, kot v tujini, v najboljšem pa še kak procent nižjo ceno od najnižje najdene cene ter mogoče še kak bonbonček, kot je recimo dostava. Če si pa tiho, pa samo pogledaš cene doma in v tujini, se pa na prvi pogled zdi, da so cene v tujini nižje. Ni vedno tako, kar potrjujem sam.  Prednosti pri tem so: slovenska navodila in garancija, hitrost prejema pošiljke (naslednji dan), cena. Prve dve stvari so še najmanj pomembne, vendar zame je bolj važna hitrost dobave."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Če bi se lotil predelava kako umestit agregat v obstoječo hišno napeljavo bi jo jaz dal za števcem (da se ne vrti, ko si na dizlu) in pred el. omarico z varovalkami, kot je na spodnji skici. Obvezno s 4-polnim preklopnim stikalom 1-0-2, kot je bilo že zgoraj povedano. S tem si ob preklopu na pozicijo 2 zagotovo ločen od el. distributerja, da ti agregat ne pošlje kakšne kozlarije nazaj v omrežje in fenta delavca na štangi."
+    },
+    {
+        "role": "assistant_19",
+        "message": "FID je za preklopnikom 1-0-2, in ne pred števcem, kot je narisano na shemi.  Sem kontaktiral eti, preklopnik ima pravilno zaporedje odklopa in priklopa (omenjenih 99 % je sedaj 100 %)."
+    },
+    {
+        "role": "assistant_17",
+        "message": "No, jaz imam zadevo urejeno s kontaktorjem, ki ob prisotnosti zunanjega napajanja avtomarsko pritegne in tako odklopi agregat od omrežja. Plus še eno avtomatsko varovalko (stkalo, 20A), ki je običajno na off in opravlja enako funkcijo, poleg tega pa zagotavlja, da je agregat ob vklopu neobremenjen. Kar je ugodno tako za tisrega, ki mašino starta, kot za potrošnike, ki bi ob zagonu dobili buhvekaj. Meni se to obnese že cca20let, brez izpada. Honda ec 4000. Banzai, Honda!"
+    },
+    {
+        "role": "assistant_13",
+        "message": "@cervantes Že ne kje prej sem omenil, da agregati iz maloprodajnih trgovin niso namenjeni za način mreža - agregat.  Vi ste si pač, verjetno nekoliko obvladate električne inštalacije, izdelali izvedbo s kontaktorjem, ki pa je laiki ne razumejo. Nekdo je omenil, da je priklop agregata pravilno izveden samo preko stikala  1-0-2 z razliko z mojim predlogom s stikalom 1-2. In pravzaprav ima deloma povsem prav in sploh ni nič narobe z vgradnjo takšnih stikal. Ampak na tem forumu se oglašajo ljudje, ki samo mislijo, kako se spoznajo na električne inštalacije in pri tem pozabljajo na zaščito. Nikomur ni jasna razlika med nulo in ozemljitvijo niti ne vedo kako je ozemljitev in še posebej izenačevanje potencialov, pomembna za varnost ljudi in živali. Tudi vi niste napisali, kako ste izdelali ozemljitev, če sploh ste jo. To da vam funkcionira že 20 let je povsem irelevantno."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Ozemljitve nisem izdelal sploh. Ker v navodilih piše: \"no special grounding is required\". Izolirano ohišje, Honda pač. Se pa strinjam, da je xtikalo 1-0-2 bolj ziher rešitev, ker kontaktor se lahko tudi \"zalima\". Imam pa zato še eno dodatno stikalo. 20 let pa ni irelevantno. Me prav zanima, koliko od teh agregatov, ki so jih prodali te dni, bo še laufal čez 20 let... No mene najbrž ne bo zraven, da bi to videl"
+    },
+    {
+        "role": "assistant_23",
+        "message": "Lepo pozdravljeni!  Bom uporabil kar to temo, da ne odpiram nove.  Torej, stvar je sledeča. Imam agregat Einhell Bt-PG/2 2000W, poceni zadeva z sinhronim generatorjem. Je 4takten, z regulacijo napetosti. Večino časa je uporabljen za glasbo, 2X200W ojačevalec in pa 2 varčni žarnici.  Prejšnji teden sem poskusil priklopit električni radiator, moči 2000W, ima več stopenj in prva je z delovanjem 750W. (Recimo vbodna žaga, ki je okrog 600W sploh ni bilo občutiti kaksne razlike, niti zarnice niso utripnile, pa vem, da imajo te naprave kar velik zacetni tok.) Zanimivo je, da je agregat \"pokleknil\", obrati so se zelo znižali. Ne vem ali lahko tako pustim, ima radiator prevelik tok pri 750W?, kaj sele pri 1200W in 2000W!  Sem laik zato prosim kaksen nasvet :)  LP"
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_23 je 18. dec 2015 ob 13:06 izjavil:Lepo pozdravljeni!  Bom uporabil kar to temo, da ne odpiram nove.  Torej, stvar je sledeča. Imam agregat Einhell Bt-PG/2 2000W, poceni zadeva z sinhronim generatorjem. Je 4takten, z regulacijo napetosti. Večino časa je uporabljen za glasbo, 2X200W ojačevalec in pa 2 varčni žarnici.  Prejšnji teden sem poskusil priklopit električni radiator, moči 2000W, ima več stopenj in prva je z delovanjem 750W. (Recimo vbodna žaga, ki je okrog 600W sploh ni bilo občutiti kaksne razlike, niti zarnice niso utripnile, pa vem, da imajo te naprave kar velik zacetni tok.) Zanimivo je, da je agregat \"pokleknil\", obrati so se zelo znižali. Ne vem ali lahko tako pustim, ima radiator prevelik tok pri 750W?, kaj sele pri 1200W in 2000W!  Sem laik zato prosim kaksen nasvet :)  LP   Ja, glede na to, da ima trajno moč 2kW, potem ga lahko pustiš priklopljenega na največji moči. Pri taki obremenitvi je seveda normalno, da obrati padejo, saj motor, ki poganja generator, nima največjega navora pri obratih v prostem teku, temveč pri malo nižjih obratih. Predstavljaj si to, kot da se voziš na kolesu, po ravnem, kar na enkrat pa prideš do klanca - obrati ti seveda padejo. Enako je z generatorjem in bremenom. Zakaj ni imel težav z vbodno žago? - mogoče pa jih je imel, pa nisi toliko slišal spremembe obratov, zaradi ropotanja žage. Lahko tudi, da žaga ni bila nastavljena na najvišjo hitrost (če ima regulacijo). Skratka, če je v specifikacijah zmogljivost 2kW trajno, potem se ne sekiraj. Max. moč naj bi imel 2200W, če sem gledal za tapravega - ker pa radiator že ima 2kW moči, ob vklopu požre še nekaj več, kar bi mogoče lahko bilo preveč, zato ti priporočam, da kakšno minuto pustiš na manjši moči, da se grelci segrejejo, ker imajo večjo upornost, ko so vroči, nato lahko daš na polno moč. Sicer pa največ, kar se pri preobremenitvi lahko zgodi je, da ti motor zabremza in se ugasne, ali pa da varovalka pregori.  LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Z neobremenjenim ročnim orodjem je tako, kot z avtomobilom v prostem teku: Ne deluje niti blizu nazivne moči. Sinhroni agregat ima (mehanski) regulator vrtljajev, ki navadno drži frekvenco v območju 53 - 50Hz. Pri nazivni obremenitvi ne bi smel opaziti velikega zmanjšanja vrtljajev, bo pa slišati, da motor deluje \"bolj na trdo\". Skok obremenitve 0 - 100% lahko tudi za večje agregate predstavlja problem. Še posebno, takoj po zagonu.  Največ problemov z bencinskimi agregati je zaradi (starega) bencina. Preveri tudi svečko."
+    },
+    {
+        "role": "assistant_23",
+        "message": "Hvala za odgovora. Svecka bi morala biti ok, ker tudi vzge vedno \"iz prve\", v tem mrazu vcasih skoraj brez \"zauga\". Bencin pa ni nikoli starejsi od meseca dni,se ga redno porabi. Bom poskusil pustiti prizgano na 750w da se malo segreje. Res je, da sem navajen da agregat vecino casa deluje skoraj v prostem teku(zarnici in glasba),tako da sem se malo ustrasil ko so mu znatno padli obrati. Ko pa nabivamo glasbo do konca, pa utripajo zarnice malo ;)"
+    },
+    {
+        "role": "assistant_24",
+        "message": "PS: pozabil sem napisat točno to, kar je omenil @assistant_1; če je bila žaga neobremenjena (se pravi, nisi nič žagal), potem je bila daleč od 750W.  LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če je agregat večkrat v uporabi: Kako je z menjavo olja in filtri? Pri malih agregatih brez oljnega filtra je potrebna precej pogosta menjava olja na 20 - 50h. Občasno je potrebno očistiti in naoljiti zračni filter - gobico.  Verjetno ima agregat tudi filter goriva - mrežico na pipici v rezervarju."
+    }
+]

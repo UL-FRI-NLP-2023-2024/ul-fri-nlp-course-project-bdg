@@ -1,0 +1,150 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni! Omislil sem si še en enak disk z namenom, da bi si vzpostavil raid0. Pregledal sem že kar nekaj forumov, vodičev, pa bi vseeno rad kakšno dodatno pomoč pri postavljanju raida. Uporabljam Asus P5Q PRO ter 2x wd6400aaks. Zavedam se, da ob odpovedi enega diska izgubim podatke. To mi niti ni tako pomembno, fotografije in take zadeve hranim na prenosnem disku, računalnik pa pretežno uporabljam za igre.  Zdaj pa prosim za pomoč pri samem setupu: 1. ali je pomembno na katere sata vhode priključim diska?  2. ali je nujna uporaba disketnika? če ja, bom uporabil tistega, ki ga imam v starem računalniku. Baje moram na disketo skopirati sata driverje, ki naj bi jih dobil na cdju od matične. rabim še kaj drugega? 3. Kako je z izključitvijo raida (če se kasneje za to odločim)? se samo izklopi v biosu, ali je kako drugače? 4. Je nujno potrebno updatati bios matične plošče? 5. ali lahko kaj zajebem (poleg tega, da izgubim vse podatke)?  Zelo bi bil hvaležen, če bi mi kdo, ki se spozna na tovrstno početje, napisal kratek vodič s pomembnejšimi informacijami, kako vzpostaviti raid0. Vnaprej hvala za pomoč!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "zakaj bos uporabil raid? zaradi hitrosti? kateri operacijski sistem imas?"
+    },
+    {
+        "role": "user",
+        "message": "ja, poskusil bi, da vidim kako se res ta višja hitrost pokaže v praksi. hitrejše nalaganje windowsev, aplikacij, hitrejše kopiranje, branje... OS je pa Windows 7 RC."
+    },
+    {
+        "role": "assistant_0",
+        "message": "potem probaj rajsi SSD"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Oba diska priklopi na ICH10R, ce bos uporablju Win7 ne rabis disketarja."
+    },
+    {
+        "role": "user",
+        "message": "Lahko to malo bolj izčrpno opišeš prosim?  Diska že imam, o ssdju pa še ne razmišljam zaradi visoke cene."
+    },
+    {
+        "role": "assistant_0",
+        "message": "lahko se probas sw raid disk v dinamic oznacis oba diska in v raid 0"
+    },
+    {
+        "role": "assistant_2",
+        "message": "RAID0 ne naredi nič drugega, kot poveča burst hitrost, kar se pozna pri večjih datotekah. Dostopni časi ostanejo praktično enaki oz. se v primeru slabih kontrolerjev še povečajo."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Prvo poglej da imaš naložene sata gonilnike(če imaš slučajno v biosu sata nastavljen na ide mode).  NO. Ko boš imel Sata driverje inštalirane v biosu nastavi sata porte na RAID mode (ali nekaj takega. Ne poznam ravno tvoje matične) Potem ti mora, preden začne windowse bootat, pokazat novo okno (ki ga še nisi videl če nisi imel na sata na raid nastavljeno) Zgoraj mora pisati nekaj v stilu \"intel raid bios\". Potem stisneš tisto tipko ki ti bo spodaj pisalo da je za vstop v meni oz nastavitve. Tam izbereš \"new raid array\" - ali nekaj podobnega in slediš navodilom.  Če imaš sata driver inštaliran pogledaš pod device manager - storage controllers Če imaš med drugim tukaj Intel ICHXR/ICHYR sata raid controller  potem so sata driverji nameščeni.  Če ne jih moraš namestit, ampak ne gre če nimaš v biosu nastavljeno na sata/raid mode, ker napiše da ni prisotne strojne opreme. Če pa nastaviš na sata/raid brez da imaš driverje naložene, pa pričauj BSOD sredi loadanja windowsov. Takrat rabiš disketo, in tu ti ne znam pomagat kajti jaz sem to rešil na drugačen, manj eleganten način. :)   BTW kateri OS imaš?  edit:  -Če hočeš raid odstranit verjetno v biosih samo zbrišeš raid polje pa je. Seveda si ob vse podatke.  -Biosa ti ni treba updejtat  -Zajebat nimaš kaj."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Za Win7 potrebujes USB kljucek in gonilnike iz intelove strani. Ko ti setup ponudi nalaganje gonilnikov, enostavno nalozis gonilnike iz kljucka in to je to."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Za Win7 potrebujes USB kljucek in gonilnike iz intelove strani. Ko ti setup ponudi nalaganje gonilnikov, enostavno nalozis gonilnike iz kljucka in to je to. nisem se videl naprave ki ti je win7 nebi prepoznal ob instalaciji, kaj sele ubogi sata driverji.  @user: floppy rabs sam za winxp, od viste dalje pa usb kljucke :) diska sta lahko na poljubnih sata konektorjih na plati je pa fino dat nove winse gor ko postavs raid  torej...potek: bootas racunalnik, v biosu nastavs iz ahci na raid, ter omogocs sata raid kontroler shrans in restartas, vstops v sata raid confuguration utility (se mi zdi da je CTRL+L), kjer nastavis diska v raid0 polje restartas v setup windowsev, instaliras...in to je vse"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kaj sele ubogi sata driverji.  Med sata (IDE) pa raid je kar velika razlika."
+    },
+    {
+        "role": "assistant_4",
+        "message": "oprosti napacnemu izrazu. vendar so vseeno vsebovani v windowsih."
+    },
+    {
+        "role": "assistant_0",
+        "message": "http://www.hardwaresecrets.com/article/..."
+    },
+    {
+        "role": "user",
+        "message": "najlepša hvala za informacije, ko pridem domov, bom takoj poskusil. Da je pametno, oziroma nujno, reinštalirati windowse, sem pa prebral :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ko bos kreiral raid polje, bodo podatki tako ali tako izgubljeni."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Da ne odpitam nove teme. Postaviti sem poizkusil RAID1. OS: W7 build 7100 HDD: 2x Seagate 500GB/32MB cash V BIOSU sem prestavil na raid, pojavilo se mi je novo okno za združitzev diskov v enega, ki sem ga poimenoval kar RAID1 (ni preveč inovativno pa kaj). V device managerju pod Storage Controllers je Intelov RAID controler. Nikjer pa ni diska RAID1! Ali slučajno kdo ve kje sem ga polomil? Hvala."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pod disk drives nimas RAID1? Kje imas pa instalerana okna?"
+    },
+    {
+        "role": "user",
+        "message": "Uspelo mi je zadevo vzspostaviti  ubistvu je čisto preprosto, precej bolj kot sem pričakoval najlepša hvala za pomoč!"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4 Okna imam inštalirana na drugem 320GB disku. RADI1 mi bo služil za varnost podatkov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "lahko se probas sw raid disk v dinamic oznacis oba diska in v raid 0  A to deluje tudi za RAID-1? Kako pa je z \"varnostjo\". Mislim, če se poruši, se bo dalo softversko popraviti/ponastaviti?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "raid 1 deluje z hackom ce se pa porusi en disk, pol ni problema  ce pa dva, hmm :)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ne, ne, sem mislil bolj na primer, da se prouši en ... Ker na drugih OS-ih lahko programski RAID nastaviš/ustvariš brez problemov. V Windows sistemu pa to še nikoli nisem delal brez RAID čipovja/kartice."
+    },
+    {
+        "role": "assistant_0",
+        "message": "pac disk je v dynamic zapisu rabis en win2000 , das notri, in vidis datoteke  aja, ce se porusi en disk, potem dolgo traja, da se drugi disk synca tako, da nujno kaksen ups na tisti masini"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Torej je boljše uporabljat kontroler na matični, ne?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "po mojem ne hitrost bo ista problem je ce ti kontroler odleti in potem cez kako leto dve iskati istega ali pa ce gresta oba diska  ne vidim prednosti fake  ce mislis hw, pol vzami drazjega, se ti bo splacalo"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ne, ne, pol je pa v redu. Bom uporabljal tega, ki je vgrajen v Oknih."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pozdrav,  bom kar v tole temo povprašal, da ne odpiram nove. Se mi zdi, da je problem podoben, če ne celo enak.  Skratka, imam Asus P5B-E in sistem Win 7 postavljen. OS laufa na SATA disku 320GB. Nabavil sem 2x Samsung 1TB F3, ki nimata nobene veze s sistemom, sta ločena. Želim ju spraviti v RAID1, kar sem tudi v nastavitvah RAID-a na začetku nastavil. Seveda prej tudi v BIOS-u, vključno z označeno opcijo \"OnBoard Serial-ATA BOOTROM\".  A ko zaženem Windowse, se mi pojavi blue screen in sistema ne popravi niti tisti avtomatski repair, ki ga ima Win 7. Kaj mi je storiti? A kljub temu, da želim RAID postaviti na drugih ločenih diskih, bom moral ponovno inštalirat Win 7? Ker kolikor sem razbral prek googla, ko spremenim nastavitve v BIOS-u za ICH10R čip, sistem ne gre naprej.  Imam sploh kakšno možnost, da zaobidem to težavo brez da ponovno naložim Win 7? Verjetno, če je to taka \"težava\" za sistem, je tudi najbolj pametno, da po nastavitvah RAID-a naredim frišno inštalacijo?  Pa še eno pod-vprašanje; a potem, ko bom nastavil RAID polje npr. RAID1 in na novo naložil windowse, ali bom lahko kasneje po mili volji spreminjal RAID polja v recimo katerega drugega, če si vmes premislim? Ali bom spet moral na novo nalagat windowse?  Hvala!"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Jaz sem si dva diska postavil v RAID 0 in med inštalacijo Win 7 sem dobival blue screene z imeni ntfs.sys, nonpage area .... Na koncu sem odkril, da je bil pokvarjen ram. Tako da če lahko s primejon poženi blend test."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz sem si dva diska postavil v RAID 0 in med inštalacijo Win 7 sem dobival blue screene z imeni ntfs.sys, nonpage area .... Na koncu sem odkril, da je bil pokvarjen ram. Tako da če lahko s primejon poženi blend test.  Verjetno si mislil na blend test v prime95. Sem pomislil na to in ga fural več kot 2h, pa ni javil nobenega errorja...  OK pač se bo vdal v usodo in šel reinstall naredit. A vseeno rabim info, če sprva za nastavim RAID0, da stestiram hitrost (bolj za hec kot kaj drugega), potem pa nastavim RAID1 polje za resno delo, ali bom to lahko naredil brez ponovne inštalacije Windowsov?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "OK pač se bo vdal v usodo in šel reinstall naredit. A vseeno rabim info, če sprva za nastavim RAID0, da stestiram hitrost (bolj za hec kot kaj drugega), potem pa nastavim RAID1 polje za resno delo, ali bom to lahko naredil brez ponovne inštalacije Windowsov?  Po mojem žal ne ... Razen če Windows particijo kloniraš na 320 GB-ni disk in tistega nastaviš kot zagonski disk."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Mene pa zanima v katerem primeru izgubiš RAID polje in s tem podatke. Ko sem nadgrajeval FW na SSD-ju sem moral prestavit na IDE, nato pa spet na RAID, v tem primeru se RAID polje ne podre. Kaj pa če zamenjaš priključke na matični?  Sem pa prej bral v Monitorju (februar 2003) da je RAID0 v praksi enako varen kot pa če bi imel samo en disk."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Sem pa prej bral v Monitorju (februar 2003) da je RAID0 v praksi enako varen kot pa če bi imel samo en disk.   Tole nikakor nikakor ni res. Namreč ker imaš dva diska in ti lahko kateri koli izmed teh odpove (kar rezultira v izugbi vseh podatkov v polju) je možnost izgube podatkov vsaj dvakratna. Pa tule niti ne upoštevam muhastih poceni kontrolerjev, ki prav z veseljem v določenih primerih kar pozabijo polje (govorim iz izkušenj)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_9: ce zamenjas prikljucke se ni nujno da se izgubijo podatki. Ce me spomin ne vara, si lahko dolocis, kateri je prvi in kateri drugi disk. Ce ju nastimas v pravem zaporedju ni nic narobe.  Raid se podre ko ti odpove kak disk ali pa ce menjas raid kontroler in ta ni kompaktibilen s prejsnim"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Kaj pa če imaš RAID1, se v tem primeru tut izgubijo podatki če se podre polje, a vseeno ostanejo na vsaj enem disku?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "To pa tudi mene zanima; se podatki z razsutjem RAID1 polja izgubijo ali ohranijo na obeh diskih? Hvala!  Aja, brez problema sem lahko spremenil polje RAID0 v RAID1 tudi, ko je 1x že instalacija Win7 izvedena. Ni bilo potrebno na novo nalagat sistema. Sprva, da sem postavil RAID0, seveda ja, a potem je vse OK."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Jest sem se tega vprašanja lotil tako da sem RAID1 polje brisal. Ko sem prišel nazaj v Win7 sem moral najprej drugi disk postavit na Online:   RAID1 brisan In dokaz da tudi ob brisanju polja podatki ostanejo na obeh diskih, čeprav ti ob brisanju napiše da izgubiš vse podatke (to velja samo za RAID0):   RAID1 brisan, film ki sem ga imel na RAID-u, je sedaj viden na obeh diskih Tko da mislim da se pri RAID1 ni bat za izgubo podatkov, sam lahko to storiš edino če brišeš polje in pred backupom podatkov ustvariš novo polje, pa če ti crkneta dva diska naenkrat, kar je pa skoraj nemogoče. Da se pa tudi kombinirati RAID0 in RAID1 na dveh diskih, jest imam z 2x500GB diskoma nastavljeno 300GB za RAID1 ter 330GB za RAID0, mislim da še najboljše razmerje če hočeš dovolj prostora za varnost podatkov in dovolj prostora kjer rabiš hitrost, vse skupaj imaš potem 2/3 uporabnega prostora.  Aja, brez problema sem lahko spremenil polje RAID0 v RAID1 tudi, ko je 1x že instalacija Win7 izvedena. Ni bilo potrebno na novo nalagat sistema. Sprva, da sem postavil RAID0, seveda ja, a potem je vse OK. Ja, če imaš OS na disku ki ni del RAID polja, je treba samo prvič ko prestaviš iz IDE na RAID na novo dat Win, potem pa ostalim diskom lahko spreminjaš polja kakor hočeš."
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Zanima me kako lahko shranim script kodo od google analyitic v tabelo (phpmyadmin) je potrebno kje nastaviti podatkovni tip ali kako drugače.  Poskušal sem že z kodiranjem in potem spet dekodiranjem pa mi ne uspeva. Kaj mi priporočate je priporočeno shranjevati google analyitic z textbox-om v bazo?  Hvala v naprej in lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Malo se bolj potrudi pri razlagi prvo, nobenmu se ne sanja kaj bi ti rad, ker se GA script kode ponavadi ne shranjuje v bazo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zakaj bi shranil celo skripto, če je dovolj samo šifra (tipa CHAR, fiksne dolžine)?  Če pa imaš tehten razlog, da bi celo skripto shranil, uporabi PDO (link)."
+    },
+    {
+        "role": "user",
+        "message": "Zamislil sem si da vpišeš celotno script kodo ko ti jo da analyitic za sledenje spletne strani. Če je dovolj recimo samo glavni del id uporabnika primer: UA-12854582-72 se potem vpiše samo to in se z kodo skombinira.  Zakaj se pa potem nebi script kode shranjevale v bazo?  Hvala in lp,"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne razumem zakaj bi hotel celotno skripto imet v bazi. Če ti na isti kodi laufa več sajtov in ima vsak svojo tracking, potem je dovolj, da imaš samo tisto UA šifro shranjeno in jo izpisuješ. Če pa imaš samo en site, pustiš to hardcodano v kodi (ali bolje v enem config fileu), in ne shranjuješ tega v bazo. Branje iz baze je potratna operacija in v tvojem primeru skoraj zagotovo nepotrebna."
+    },
+    {
+        "role": "user",
+        "message": "Aha hvala  Se pravi da spreminjam samo kodo kako je pa z domainname npr. domena?  _gaq.push(['_setAccount', 'UA-12754532-22']); _gaq.push(['_setDomainName', 'domena.com']);"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Domene ti ni treba posebej beležit, ker sistem že ve kateri domeni UA koda pripada. Razen če rabiš cross-domain tracking, kar je spet druga zgodba."
+    }
+]

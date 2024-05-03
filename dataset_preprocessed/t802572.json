@@ -1,0 +1,170 @@
+[
+    {
+        "role": "user",
+        "message": "Trenutno imam https://www.amazon.de/-/en/M7350-wirele... Vse skupaj deluje v redu tako na LTE kot wifi strani. Sedaj bi želel povišati hitrosti povezovanja v mobilno omrežje.  Zanima me katere 4G/LTE ruterje z zunanjimi 4G/LTE antenami mi priporočate? Ni problema, če je potrebno kakšno ohišje prevrtati, montirati konektorje in kaj zaspajkati. Toliko bolje, če so antene še na wifi strani."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Router ki podpira cat6 naprej in ima moznost priklopa zunannjih anten."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Huawei B535. Na Bolhi od 50 Eur naprej."
+    },
+    {
+        "role": "assistant_2",
+        "message": "TP-Link Archer MR600. LTE 2x2 Cat6, gigabit Ethernet ter dual-band N+AC. Je pa ranga 100€."
+    },
+    {
+        "role": "assistant_1",
+        "message": "B535 (232) je Cat7 in ravno tako AC. Seveda pa je treba kupiti rabljenega, nov je predrag. Ima praktično vse, vključno z L2TP VPN in bridge mode"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1 je 3. jul 2022 ob 20:00 izjavil:B535 (232) je Cat7 in ravno tako AC. Seveda pa je treba kupiti rabljenega, nov je predrag. Ima praktično vse, vključno z L2TP VPN in bridge mode   Se en glas za huawei b535 ali b525, ki sicer nima cat7 prikljucka za eth (samo cat6), ampak, to ti je itak vazno samo, ce potrebujes res dobro linijo znotraj LANa. Poleg tega b535 podpira se 2300mhz frekvenco, ki je b525 ne, ampak se mi zdi, da tega frekvencnega pasu pri nasih operaterjih ni - naj me kdo popravi, ce se motim. B525 ima tudi moznost priklopa naprave preko usb 2.0, ki je b535 nima afaik - ce ti to igra kaksno vlogo.  Osebno sem nabavil b525, ker je bil na razpolago v blizini, bi pa prav tako vzel tudi 535. Razen parih perksov, sta same difference."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Cat 6 ni mišljen ethernet, pač pa kategorija LTE."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pozdravljeni Soočam se s spoblemom izpada ja povezave na b535-333. Imam ga od začetka aprila, in do sedaj je deloval čisto ok. Včeraj pa sami problemi. Kolikor sem sedaj uspel ugotoviti je problem v nizkih temperaturah. Imam ga lociranega na podstrehi, ker tam najbolje lovi sognal. Imam tud iskra antene. Je kdo imel podobne probleme zaradi mraza?  Lp Jure"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Najprej poskusi z drugim napajalnikom. Če ne pomaga, in boš še naprej uporabljal tak dostop menjaj s kakšnim Mikrotikom v izvedbi usmerjene antene. Delajo tudi zunaj na snegu."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Včeraj sem šel v bignang iskat asusovega 4g n16 ki naj bi po podatkih delovav v območju do -10. Da se ne poveže sploh primerljivo z b535 nam govoru. No, nakoncu ko sem ga postavil na isto mesto je po nekaj časa se zgodilo popolnoma isto. Sm že mislil da me re:do blokira, pa sem vstavil noter hot kartico, in je isto bilo. Trenutno ga imam v stanovanju, pa dela brez problemov, samo povezava je slabša. Kakšen pa naj bi imel napajalnik vpliv?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kondenzator je najbolj občutljiv element. In če so v napajalniku vgrajeni slabi kondenzatorji, potem pride do odpovedi napajalnika. Ob bolj robnih pogojih še prej.  Prvo menjava napajalnika.  Drugo pa je vgradnja v kako škatlo iz EPS. Ampak potem je treba tudi pazit, kako bo v poletnih dneh."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Se pravi, da napajalnik vbistvu še vedno deluje, ampak ravno toliko nagaja, da izklopi povezavo"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poskusi s kakim drugim. Žal se moramo v današnjem času ukvarjat s temi neumnostmi, ker proizvajalci varčujejo na vsakem koraku."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Bom potestiral :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 10. dec 2023 ob 12:03 izjavil:Včeraj sem šel v bignang iskat asusovega 4g n16 ki naj bi po podatkih delovav v območju do -10. Da se ne poveže sploh primerljivo z b535 nam govoru. No, nakoncu ko sem ga postavil na isto mesto je po nekaj časa se zgodilo popolnoma isto. Sm že mislil da me re:do blokira, pa sem vstavil noter hot kartico, in je isto bilo. Trenutno ga imam v stanovanju, pa dela brez problemov, samo povezava je slabša. Kakšen pa naj bi imel napajalnik vpliv?   Če drug router z drugim napajalnikom dela enako je ali zelo slab ali pa imaš neko drugo težavo z omrežjem. Ni ravno verjetno, da bi tam povsem nov napajalnik delal težave, čeprav je tale 4G N16 že krepko zastarela zadeva in jo že B535 povozi.  Če boš kdaj kaj nadgrajeval in veš kje so oddajniki se stegni po ali   https://mikrotik.com/product/sxt_lte6_2... (sicer ni ravno nek presežek, ker je še zmeraj na MIPS platformi in ima zgolj 100 Mbit LAN port) oz. še bolje https://mikrotik.com/product/lhg_lte18 https://mikrotik.com/product/atl18  Zmontiraš zunaj, napajaš po mrežnem kablu, v stanovanju zmontiraš dostopno točko in je to to.  Za podstreho pa bi bil med cenejšimi z zunanjimi antenami recimo https://mikrotik.com/product/chateau_lt... in potem cena raste z verzijo LTEja, ki jo podpira, moraš pa računati na izgube signala v kablu do anten, tako, kot imaš sedaj.  Če moraš priti skozi čim ceneje pa boš moral poskusiti najprej tole varianto z menjavo napajalnika in upati, da bo B535 zdržal še nekaj časa. Za dolgoročnejše rešitve pa se raje usmeri v kaj omenjenega zgoraj in podobne zadeve."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Narediš ohišje iz stirodura in vse skupaj not zatlačiš. Naprava se dovolj sama greje, da je notri 5-10 stopinj, ko je zunaj -15. Vsaj pri meni je tako. Poleti pa je še ventilator (kanal speljan od zunaj), tako da, tudi ko je vroče, se mi ne pregreva."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_5 je 10. dec 2023 ob 11:34 izjavil:Imam ga lociranega na podstrehi, ker tam najbolje lovi sognal. Imam tud iskra antene.   načeloma imaš lahko do 10m dolge kable med anteno in routerjem. Imaš mogoče opcijo, da ostanejo antene zunaj/pod streho, router pa pripelješ v hišo? Ker kolega ima tako urejeno in zadeve delajo bp čez celo leto, je pa moral zvrtat luknjo za antenska kabla."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_5 je 10. dec 2023 ob 11:34 izjavil:Pozdravljeni Soočam se s spoblemom izpada ja povezave na b535-333. Imam ga od začetka aprila, in do sedaj je deloval čisto ok. Včeraj pa sami problemi. Kolikor sem sedaj uspel ugotoviti je problem v nizkih temperaturah. Imam ga lociranega na podstrehi, ker tam najbolje lovi sognal. Imam tud iskra antene. Je kdo imel podobne probleme zaradi mraza?  Lp Jure   Imam tudi na podstrešju na mrzlem in vlažnem pa ni problemov. Mogoče je res napajalnik kriv"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_6 je 10. dec 2023 ob 13:26 izjavil:@assistant_5 je 10. dec 2023 ob 11:34 izjavil:Imam ga lociranega na podstrehi, ker tam najbolje lovi sognal. Imam tud iskra antene.  načeloma imaš lahko do 10m dolge kable med anteno in routerjem. Imaš mogoče opcijo, da ostanejo antene zunaj/pod streho, router pa pripelješ v hišo? Ker kolega ima tako urejeno in zadeve delajo bp čez celo leto, je pa moral zvrtat luknjo za antenska kabla.   Lahko jih imaš ampak vsak meter sploh pri višjih frekvencah pobere kar nekaj signala."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Evo. Sem testiral z napajalnikom od asusa. Pa je zadeva delovala. Sicer zdajle tudi ni bil tak mraz. Bolj me pa skrbi to, da ko sem s telefonom testiral hitrost na lokacijah kjer sem pomladi dosegal tudi 100mbps je danes prišlo komaj do 20mbps. Včeraj se mi je na isti lokaciji b535 povezal še do cca 70 dol in 20 gor, danes komaj 20/2. Bolj kot modem sumim da je s samim omrežjem nekaj narobe. Opažam tudi na telefonu, da mi prikazuje 5g a hitrosti so bolj 3g kot 5g. Je pa tudi problem, ker ne vidim oddajnika. Ta je na griču za hišo, vendar tako zadaj da ga ne vidim neposredno. Pa še to, če antene usmerim proti oddajniku lovim slabši signal, kot ga če ga zasukam za nekje 90 stopin. Počasi mi tole že načenja živce in razmišljam če bi prešel na starlink."
+    },
+    {
+        "role": "assistant_4",
+        "message": "To je tragika RF. Ko omrežje ni zasedeno, je v redu. Ko je zasedeno, pa se kakovost vsem poslabša.  Tudi pri starlinku bo tako, če bo vedno več ljudi priklopljenih nanj. Edina rešitev je optika.  Ampak seveda se vedno in povsod najdejo ljudje, ki trdijo nasprotno - da je optika preteklost in podobni nesmisli."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ah ja optika, smo bela lisa, pa nismo prišli v upoštev ko so vse okol vlekli. Zdaj bi dejansko lahko potegnili, samo bi morali sami nabrati dovolenja in narediti izkop. To pa nikomur ne diši. Potem pa smo kjer smo :)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Najprej moraš ugotoviti ali je težava v signalu ali v zasedenosti omrežja. Omrežje je lahko tudi zasedeno (ponavadi to sopada z uro), in posledično imaš na razpolago manj pasovne širine. Testi z telefonom so OK - ampak si prepričan, da sta povezana na isto celico?  Poglej nivo LTE signala - oziroma razmerje signal/šum. Več informacij na internetu. Nekje v modemu lahko tudi vidiš na katero bazno postajo se ti modem poveže. Mogoče ti bo boljše delovalo, če jo usmeriš proti drugi bazni postaji - čeprav je bolj daleč.  Če imaš relativno močen signal, ampak slabo signal/šum razmerje imaš mogoče kje motnje. Slabe LED svetilke, slabi napajalniki, ..., slabe naprave nasploh lahko ustvarijo dovolj motenj (fancy znamka ne pomeni, da je naprava dobra). Poskusi izklopiti okoliške naprave (tudi v sosednjih sobah).  Kakorkoli - ne ugibat - poglej indikatorje kvalitete signala pa potem postopat naprej."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Da bi se s telefonom povezal na drugo bazno postajo dvomim, ker je glede na akos tukaj od a1 samo na eni lokaciji. Motenj zaradi napajalnikov od led luči pa tudi ni, saj imam modem v stari hiši na podstrehi kjer ni ničesar (oziroma je bil). Do petka dopoldne je vse delovalo normalno. Pa so tudi že bile temperature pod ničlo. Sedaj pa nekaj časa deluje, nato pa prekine povezavo. Vzpostavi se samo z resetom oziroma preko naprednih nastavitev. Trenutno je modem v dnevni in deluje. Zdaj a je problem temperatura, kaksne motnje na omrezju ali pa oboje skupaj pa ugotavljam že drugi dan. Z veseljem bi stestiral kakšno mikrotik zadevo, samo dvomim da kdo posoja"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Pri A1 sem opazil, da pri meni ponoči izklapljajo 1800 mhz oddajnik. Če imaš zunanjo anteno (oz. dve) se ti lahko modem poveže na eno čisto X bazno postajo, ki se s telefonom ne bo nikoli povezala. Prav tako je odvisno, v katere smeri so obrnjene antene na bazni postaji. Tako da je kar precej dejavnikov, ki vplivajo tako na sprejem, kot tudi hitrost povezave. In ne nazadnje, ali se modem povezuje z LTE ali LTE+ povezavo. Sam sem precej raziskoval na gis AKOS glede baznih postaj, sam je problem, da so pred časom ukinili (ali pa jaz ne najdem) podatke o ID-jih, ki jih pa lahko vidiš na modemu. Potem pa delaš na slepo...  Sam sem modem (huawei) zaklenil na eno sicer ne najbližjo bazno postajo, pa je en čas delalo super, sedaj pa občasno sploh ni signala... Tako da tale LTE, če res nimaš bazne postaje na \"primernem dosegu in da ni prav zasedena\", ni ravno najboljši dostop do neta.   Tudi sam že razmišljam o Starlinku, sam je oprema čisto predraga. Če bi se dalo (samo verjetno ni opcije) bi jo naročil na hrvaški naslov, potem pa uporabljal pri nas."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 10. dec 2023 ob 19:08 izjavil:Da bi se s telefonom povezal na drugo bazno postajo dvomim, ker je glede na akos tukaj od a1 samo na eni lokaciji. Motenj zaradi napajalnikov od led luči pa tudi ni, saj imam modem v stari hiši na podstrehi kjer ni ničesar (oziroma je bil). Do petka dopoldne je vse delovalo normalno. Pa so tudi že bile temperature pod ničlo. Sedaj pa nekaj časa deluje, nato pa prekine povezavo. Vzpostavi se samo z resetom oziroma preko naprednih nastavitev. Trenutno je modem v dnevni in deluje. Zdaj a je problem temperatura, kaksne motnje na omrezju ali pa oboje skupaj pa ugotavljam že drugi dan. Z veseljem bi stestiral kakšno mikrotik zadevo, samo dvomim da kdo posoja   Odvisno od lokacije. Imam Hap AX lite LTE6 (vstopni model), ki sicer nima zunanjih anten. Je mišljen kot potovalni router. Okvirno štajerska, kaj več pa, če si kje tu okrog."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Prej se ke skoz povezovalo na 4g+, sedaj pa le hoče imet samo 4g. Tudi na telefonu sem opazil da pokaže 4g+ za sekundo in nato izgine. Preko aplikacije cell info sem videl, da se telefon ne poveže na isti oddajnik, kar mi je čudno, ker glede na podatke akos naj bi tukaj bil samo eden.  Pri pogojih starlinka sm opazil da piše, da je oprema zaklenjena na državo.   Starlink kits are certified per country. End-users are responsible for complying with local requirements. Starlink may restrict certain services to the country where Starlink or its Authorized Resellers originally sold the device, as required.  To piše pod navodili za prenos lastništva."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Kakorkoli - še zmeraj ti predlagam, da pogledaš nivoje signalov. Vidi ali te jakost signala jezi ali omrežje. Potem pa naprej."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_5 je 10. dec 2023 ob 21:45 izjavil:...Pri pogojih starlinka sm opazil da piše, da je oprema zaklenjena na državo.   Starlink kits are certified per country. End-users are responsible for complying with local requirements. Starlink may restrict certain services to the country where Starlink or its Authorized Resellers originally sold the device, as required.  To piše pod navodili za prenos lastništva.  Njihovo besedilo je precej nedorečeno, dejansko to ne pomeni, da je oprema zagotovo zaklenjena na državo. Nimam pa podatka, kako je v praksi. No, saj morda je to za drugo temo, če je kdo probal pri nas oz. v okolici..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Najprej zamenjaj A1 potem pa dalje"
+    },
+    {
+        "role": "assistant_5",
+        "message": "A1 imam ravno zato, ker se da poceni skoz pridit :)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "ja pol maš pa zabito omrežje. Pr meni se telemach najbolj obnese edino težijo z 20Gb na dan limit. Po porabi 20 Gb je treba poslati sms :("
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ma dvomim da je zabito omrežje, ker je do sedaj delovalo normalno. Se je tud do 100mbps povezali. Zadnje dni pa s telefonom na odprtem komaj do 20 zleze (testirano zjutraj ob 5h)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Potem so pa dali neko omejitev na hitrost. Ne bi bilo nič presenetljivega pri naših operaterjih."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Danes sem še malo testiral na poti domov, in dejansko skoraj po celi vasi normalno lovi, razn pri naši hiši, ker smo toliko v zaledju. Pa seveda nekaj so preštelali, da mi sedaj na isti lokaciji več ne lovi dobro. A bom moral res mikrotik da vrh ravfnka montirat zgleda ?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Evo soet sr oglašam. Katero anteno torej predlagate, za dostop do bazne postaje na katero nimam direktnega pogleda. Do najbližje za hišo imam 1km gozda. Najbolj oddaljena kamor bi glede na google earth lahko imel direktni pogled je pa 10km. Imam pa trenutno v lasti b535 in iskra p60. Opcija je montaža na dimnik, vendar bi moral dodati še en nosilec, da bi pridobil vsaj 60cm razmaka. Za kakšen mikrotik router pa ni problem ker je enojna enkta. Je pa nosilec od najbližje antene, ki je za hišo zasukan za 180°."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Od Mikrotika LHG LTE verzije po želji ali ATL LTE 18. Povsem odvisno, koliko si pripravljen vložiti."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kolikor sem gledal je atl cca 280€. Saj bi montiral iskre na kapo od dimnika, vendar tako izpostavljenega strelovoda na hiši nebi imel :) kaj pa če se še malo stegnem in vzamem rajši tole https://store.zyxel.com/nr7101-eu01v1f.... ki je bolj user friendly"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kaj naj ti rečem, tole je že 5G. Če boš nabavil potem vsaj poročaj kako se zadeva obnese, da bomo tudi ostali vedeli. Od Zyxela imam trenutno zgolj switch, s katerim ni nobenih težav. ATL pa je sicer nabavil en uporabnik tega foruma in bil zelo zadovoljen, malo pobrskaj, pa ti lahko morda kaj več in bolje svetuje.  Sam sicer čakam ali bo Mikrotik izdelal kakšno 5G outdoor zadevo. Potem si res future proof za kar nekaj časa (enako tudi z Zyxel)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sicer glede na ta video je zadeva izjemno zmogljiva:"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Tale NR7101 bi se splačalo testirati v Sloveniji, tudi cena ni velika proti ostalimi CPE 5G enotami. Vprašanje je, če je tale na nivoju Askey 5G ali Huaweia 5G."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Na amazonu se da dobiti huawei cpe win za cca 500€, na italijanski strani pa se da dobit cpe max 5 https://lowcostmobile.it/collections/ro...  Kaj je bolje izbrati. Zyxel me je malo odvrnil od nakupa ker prejemanje smsjev naj nebi delovalo.  Na splošno je pa tele huawejeve zunanje ruterje pri nas kar umetnost dobit."
+    }
+]

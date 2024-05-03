@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni Igram se z navijanjem ter imam nekaj vprašanj.  Voltaže v biosu, kako so default voltaže glede te matične plošče. Ugotovil sem z aido da je Cpu Vcore default 1,38V. Zanima me pa NB core koliko je defualt trenutno sem nastavil na +0,125.  Slika kako izgleda v biosu http://www.hardwaresecrets.com/fullimag...  No trenutno delam stres test z aido64 20min konstanta 40°C ali še naj testiram s čem drugim ? Množilnik 21,5x 4,3Ghz Cpu Vcore 1,38 torej default  NB core +0,125 nimam pojma koliko je default, pa če sem prau dvignil. NB voltage 1,150  NB frequency 2,4GHz HT frequency 2,6Ghz  Izklopil cool n quiet, C1E suport pa še nekaj to sem malo pobrskal po netu :)  Zanima me če delam prau in kaj naj pazim sicer sem bolj ali manj novinec pri navijanu.   Hvala za nasvete in pomoč!"
+    },
+    {
+        "role": "user",
+        "message": "ewo 4,3Ghz test z prime95 Pri 1,38V mi je eno jedro odpovedlo :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "izklopi apm, c1, c6, NB je ponavad default 1.2v (do 1.3v je nekak ok), bo treba voltažo povečat, ne rabiš štimat nb voltage, če spreminjaš samo multiplier, samo cpu vcore sprobaj še prime95 blend  z ustreznim hlajenjem greš komot do 1.5v cpu vcore naštimaj llc na high, če še nisi in potem zmanjšaš vcore, če ti preveč udari čez željeno voltažo aja....turbo core OFF in hpc ON"
+    },
+    {
+        "role": "user",
+        "message": "Vse imam tako kot si napisal turbo off hpc on... Edin llc sem pusto auto. Bom se se ju3 malo poigral zaj pa so druge stvari na vrsti :D  Mašinca pa sicer lepo leti.   Pa reci mi kaj je bolje da množilnik nabijam al da spremenim takt?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 pravite na to ? Sedaj laufa ze več kot pol ure."
+    },
+    {
+        "role": "assistant_0",
+        "message": "zgleda ok, laufaj še par ur, sicer ponavad se pokaže že v 15min, če je fail, lahko še mal voltažo znižaš za 0.02v (da nimaš zastonj preveč voltaže) in sprobaš, če je stabilno (če ni, zvišaš nazaj) če hočeš, lahko seveda naprej sprobavaš, do ene 4.6 bi šlo ziher na zrak (samo glej, da bo pod 60c)"
+    },
+    {
+        "role": "user",
+        "message": "ja komot bi slo kajtisedaj laufam še vedno od 11 ure pa do sedaj in najvec 54 stopinj. Ampak sem zadovoljen s tem. Voltaza pa je tak smešno za nastavit. Če dam voltažo +0.000 je 1.36-1.39V kar je premalo mi je freezno včeraj. Če dam +0.025 je tak kot sedaj okol 1.4-1.44V če pa dam +0.050 pa je od 1.42-146 in pa kaka stopinja več na CPU.   Sedaj še samo navijem GPU 7950 royal king :D"
+    },
+    {
+        "role": "assistant_0",
+        "message": "llc vklopi medimu/high (sprobaj kolk kaže potem na max load), če je preveč znižaš llc oz. vcore"
+    },
+    {
+        "role": "user",
+        "message": "Ce prau razumem LLC bi lahko probal spustit Vcore ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "llc je zato, da ti ne pade voltaža, ko je stvar na max load pade voltaža (če si naštimal 1.42 pade lahko na 1.4 oz še manj), torej če nimaš llc, daš več voltaže, če imaš llc vklopljen, ti ta drži vcore, da ne pade voltaža in ni nestabilnosti"
+    },
+    {
+        "role": "user",
+        "message": "Aha no dobro za vedet. @assistant_1ti sedaj sem probal llc dat na high in pa vcore znižal oz dau na default torej +0,000 in laufam test pa sedaj prvih 5min brez problema s tem da mi kaže Vcore isto med 1,42-1,5V v Aidi64."
+    },
+    {
+        "role": "user",
+        "message": "Trenutno je s temi nastavitvami 4-5s°C višja temperatura. Prej je bila max 54 in pa povprečna 50-51°C sedaj pa je max 56°C in pa povprečje 54-55°C  Sedaj bom še probal unižat v core na -0,025v kajti če je bilo prej stable bi moralo s tvojo razlago sedaj tut bit pač z znižano Vcore kar je pomojem mnenju še boljše.   PS bil mistake prej vcore sem pustil na +0,025 in pa llc na hihg, sedaj pa sem dau vcore 0,000 ampak ni stable oz 3 jedra ne delujejeo na polno.. tako da bom probal llc ne medium in vcore +0,025 pa upam da prišparam spet tistih par stopinj  Ewo še enkrat po 3min testa je prime nafilal va jedra na max load in deluje ? a pustim tako ali pocakam ce bo kateri worker prenehal delovat ?"
+    },
+    {
+        "role": "user",
+        "message": "Ni izdržal bremen :D Sedaj še testiram llc na medium in pa Vcore na +0,025 ce zdrzi 4,4Ghz na 50 stopinjak kot kaze sedaj je zakon. Vprašanje koliko je recimo zdravo za NB temperaturo sedaj se mi ponavadi giblje +1stopinjo od cpua.."
+    },
+    {
+        "role": "user",
+        "message": "Tukaj pa še končna slika navite grafe in pa delovanje CPU in hladilnika ob skoraj mirovanju samo uporaba croma."
+    },
+    {
+        "role": "assistant_0",
+        "message": "a to imaš cool n quiet in offset voltažo, al ti skos laufa na 1.4v? po moje ni glih smiselno imet skos na 4.4 in 1.4v"
+    },
+    {
+        "role": "user",
+        "message": "Ne cool n quiet je izkloplen voltaza pa ja voltaza je na 1.4 pa do 1.45 itq je v bisou nastimano +0.0025namanj kak lahko dvignem ker drugace pa je unstable... al kako bi nastimal ti na tej plati?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "A to je pri vseh teh novih Gigabyte platah tko, da voltaža ne piše v voltih, ampak v odmiku od začetne voltaže?  Še neki bi kr tu spotoma vprašal: Ko tudi sam navijam, recimo v biosih naštimam voltažo 1,35V. Torej manual vrednost. Ko pa pogledam v CPUZ, pa piše manjša vrednost. TO pomeni, da je nastavljena vrednost v biosih samo nek maximum, ali kaj? Imam tudi sam FX8320, cool'n quiet izklopljen, vrednost voltov pa v CPUZ malenkost niha."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 17. dec 2014 ob 04:48 izjavil:Ne cool n quiet je izkloplen voltaza pa ja voltaza je na 1.4 pa do 1.45 itq je v bisou nastimano +0.0025namanj kak lahko dvignem ker drugace pa je unstable... al kako bi nastimal ti na tej plati?   tko kot imaš sedaj, samo da vklopiš cool n quiet in ti spreminja freq. in voltažo glede na load, če ne ti laufa 24/7 na najvišji freq. in voltaži  MihaMiha: odvisno kake nastavitve ima plata in kako si naštimal, če si sprobal kak bench in ti na max kaže manj voltaže, potem nisi dal llc oz. če nimaš povečaš voltažo"
+    }
+]

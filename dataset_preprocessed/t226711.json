@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "no tako želel bi povezat slušalke pa mikrofon na zvočno kartico tipa CRETIVE AUDIGY 2 ZS .Ohišje ma za mic in slušalke naslednje ženske pine:  GND EAR R EAR R ta dva pina sta na istem kablu EAR L EAR L ta dva pina sta tut na istem kablu MIC VCC MIC DATA  sedaj nevem kam naj bi priklopil na zvočno kartico, saj nikjer nič ne piše, me pa čudi, da to ne bo bilo možno saj zvočna te priključke more met še posebno pa taka kot je audigy.Zasledil sem en priključel na zvočni AD_EXT, nevem če ma kaj veze, no skratka naj mi prosim kdo pomaga če je mel kake bodobne probleme s temi rečmi.  hvala,LP"
+    },
+    {
+        "role": "user",
+        "message": "kaj noben ne ve al kaj, dej dej potrudte se malo pa napište kej prosim"
+    },
+    {
+        "role": "assistant_0",
+        "message": "CD_IN/AUX_IN connector pin assignments  Pin Description I/O 1 Left Channel In 2 Ground - 3 Ground - 4 Right Channel In  MIC DATA -> 1 MIC VCC -> 2 (če ne dela probaj še s 3)  (tole zgoraj je za mikrofon->Priklopil ga boš na mesto namenjeno CD pogonu) Pa ne pozabi v nastavitvah zvišat volume CD IN / AUX IN -a.  PS: Audigy ni neka almighty kartica (ti se kar čudi dalje).  AD_EXT Pinout (žal nima nobenega navadnega audio-out priključka, da bi ga lahko uporabil za slušalke)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mikrofon brez VCC (napajanja) ne bo deloval. Vsaj kondenzatorski ne.  Tej priključki za avdio na sprednji strani računalnika so na nekaterih matičnih ploščah, tako da odstraniš nekaj jumperjev in pritrdiš ta kabel.  Poglej v navodila matične plošče, saj lahko uporabljaš 2 zvočni kartici hkrati."
+    },
+    {
+        "role": "user",
+        "message": "ja mam priključke na matični za sprednje mic in slušalke samo pol pa moram uporabljat vgrajeno zvočno na matični ki vsekakor se ne more primerjat z audigy"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poveži: 1. analog ground - GND 2. analog headphone left channel - EAR L (enega) 3. audio backpanel mute (short to ground to mute the backpanel output, for automute when headphones are plugged in) 4. analog headphone right channel - EAR R (enega) 5. same as #3 6. microphone input - MIC DATA 7. key pin (shouldn't be there) 8. VRef out (voltage reference for microphone) - MIC VCC 9. microphone input mute (ground when microphone isn't plugged in, +12VDC 10. audio cable detect (not normally used, will be ground when headphones are plugged in)"
+    },
+    {
+        "role": "user",
+        "message": "hvala lepa samo če še lahko razložil točke 3.,7.,9.,10. ker nisen glih vešč angleščine"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sicer ti ne rabijo, ampak: (bolj kot ne dobeseden prevod)  3. audio backpanel mute (short to ground to mute the backpanel output, for automute when headphones are plugged in) Mute (brez zvoka) za konektorje na zadnji strani grafične (tam kjer ponavadi vklopiš zvočnike). Če ta pin povežeš z maso, se izhodi na zadnji strani izklopijo. (Uporabno, če imaš konektor za slušalke s stikalom -> žal ga očitno nimaš)  7. key pin (shouldn't be there) ; ključni pin (ne bi smel bit tam)  9. microphone input mute (ground when microphone isn't plugged in, +12VDC Izklopi Mic IN. (masa, ko mic ni vključen, sicer pa +12VDC (12V enosmerna napetost))  10. audio cable detect (not normally used, will be ground when headphones are plugged in) zaznavanje audio kabla (ponavadi ni uporabljen; če so na zvočno priključene slušalke je masa)"
+    }
+]

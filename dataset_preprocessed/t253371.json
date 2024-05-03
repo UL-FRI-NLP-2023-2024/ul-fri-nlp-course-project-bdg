@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni Sem dijak 1. letnika gimnazije(splošne) z nekaj osnovnega znanja elektronike, samouk, vešč v spajkanju, naredil sem že nekaj preprostih vezij.  Za referat sem dobil temo stroboskopska metoda merjenja frekvence. Izdelal sem vrtečo se ploščo z kocentričnimi krogi, vendar brez stroboskopske luči. Dobro je bilo vidno navidezno vrtenje v pravo smer in nazaj na različnih kolobarjih. Vendar me je to toliko pritegnilo, da sedaj želim še sam to dopolniti z stroboskopsko lučjo.  Pregledal sem forum in dosedanje teme, vendar nisem našel nič, kaj bi delovalo na 12V  TUKAJ    vendar noben ne ustreza, napajanje na 220V  No če ni druge možnosti bom naredil pač na 220V vendar najraje na 12V vendar ne kapiram vseh delov, zanimajo me tudi vaša mnenja o izbolšavah, možnostih, doma imam tudi žarnico in transformator(rešil iz fotoaparata) za vžig z ločeno primarno in sekundarno tuljavo (sklepam, ima 6 priključkov, 3 na vsaki strani,z diodo je na enega priklopljena žica za vžig) oznaka je KMJ.H HA-149  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kupi eno močnejšo belo LED (3W) in jo boš zelo enostavno napajal z 12V. Plinsko žarnico pa pozabi. Boš imel precej manj problemov."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Led dioda samo sveti ne oddaja pa frekvence recimo 50Hz kot navadna 230v žarnica. Na enak princip se s 50Hz stroboskopsko ploščo in navadno 230v žarnico meri hitrost krožnika na gramofonu."
+    },
+    {
+        "role": "user",
+        "message": "No še vedno vztrajam pri plinski žarnici in večjemu kompliciranju, saj mi je zelo pomembno da lahko nastavljam čas med bliski (frekvenco) nekje med 1 in 30 Hz  lp"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mislim da ima Conrad eno vezje (komplet: deli + plošča) s plinsko žarnico (lahko ga kupiš tudi že sestavljenega, da si prihraniš težave). Lahko tudi nastavljaš frekvenco preko potenciometra... vendar pa je kljub temu na 220v"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če ti ti flash iz fotiča dela, ga lahko predelaš.  Zmanjšati moraš kapaciteo elektrolitskega kondenzatorja, ki se nabija z visoko napetostjo. Enostavno moraš skrajšati čas polnjenja, da ga bo elektronika lahko napolnila dovolj hitro. Za 30Hz, se bo moralč napolniti vsaj v 1/30s, bolje še malo prej.   Bliski bodo res šibkejši, ampak za tvoj namen še vedno zadostni (tudi sama ksenon žarnica bo zdržala dje). Za proženje uporabiš nek oscilator, ki mu lahko frekvenco menjaš v željenem obsegu. Res pa v primeru z ultra bright LED, z oscilatorjem poganjaš dotično lediko in je vse skupaj bolj enostavno."
+    },
+    {
+        "role": "user",
+        "message": "AssHole - hvala, vendar mi je čar prav v tem da sam naredim nekaj in se še kaj naučim  Imam eno rešeno vezje flash iz fotoaparat (kondenzaator je 350uF 330V) potem nekje dam 10uF kondenzator. Vendar potem bo flash zelo šibek.  Azrel lahko prosim za kakšno shemo oscilatorskega vezja, bom pa tudi pogooglal.  Kako pa bi bilo možno narediti, da bi vezje hitreje polnilo kondenzator, posledično hitrejši bliski.  lp"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Za oscilator lahko uporabiš integrirano vezje  555, še drug  proizvajalec.  Ker je preračunavanje vrednosti uporov in kondenzatorjev včasih zamudno, je tu  555 calculator, če ti ne ustreza, poguglaj za še katerim drugim, zgornji je prvi Googlov zadetek"
+    },
+    {
+        "role": "user",
+        "message": "Hvala Azrel  Naredil bom oscilatorsko vezje, ga preko optokoplera povezal z vezjem flasha in na njem zamenjal kondenzator. Bom objavil slike, ko končam."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Tukaj je ena taka varianta iz 12VDC."
+    },
+    {
+        "role": "user",
+        "message": "Svizec75 najlepša hvala, ravno to sem iskal. Bom naredil obe varjanti.  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kondenzator ne bit pameten. A misliš, da LED dioda ne zna utripat? Narediš astabini multivibrator in nanj priključiš LED pa bo utripala.    Isto vezje, ki ga boš sestavil za generiranje frekvence za plinsko žarnico lahko uporabiš za prižiganje LED diode. Če boš uporabil NE555 lahko na izhod priključiš preko upora eno malo led diodo(100mA), ki bo utripala z isto frekvenco kot plinska žarnica. Če na izhod vežeš še en tranzistor lahko z njim vklapljaš / izklapljaš poljubno močno LED diodo.  Led diodo sem omenil, ker se za takšne napravice tudi uporabljajo. To pa zato, ker se izredno hitro prižgejo/ugasnejo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Se opravičujem, nisem dobro razumel odgovora."
+    }
+]

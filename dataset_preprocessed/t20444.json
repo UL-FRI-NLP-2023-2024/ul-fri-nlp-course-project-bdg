@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "V roku 30 dneh bi mogel dobiti povezavo na ADSL. Torej imam 4 PC, ki bi jih rad povezal na internet preko mreže. PC so: 1. Pentium 100MHz, 32MB RAM, WIN 95  2.Pentium 2 233MHz, 32MB RAM, WIN95  3.Duron 750 MHz, 256MB RAM, WIN98 in WIN XP  4.Celeron 2 600 MHZ, 256MB RAM, WIN98 in WINXP  Situacija pa je taka. 1. in 2. PC sta pisarniška zato ne smem menjati windowsov. Ta dva sta povezana z neko staro mrežno preko UTP kabla brez HUB-u. ADSL bomo montirali na PC 2.  3. in 4. sta povezana tudi v mrežo, toda nista povezana s PC 1. in 2.  Torej, rabil bi nasvet kako speljati vse skupaj.   Hvala, za nasvete"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Najboljsa varianta je da kupis ruter. Svetujem ti naslednjega: SMC 7004BR , njegova cena pa je okoli 45.000 SIT Ima se firewall, pa switch sistem. Ce bos kupil ruter bos lahko z vsakim racunalnikom dostopal do interneta.  Obstaja se cenejsa varianta. Nabavis hub ter se eno mrezno. To pride okol 15K Sit. V racunalnik kjer bos montiral (povezal modem) adsl das se eno mrezno not in ga postavis za server. V tem primeru bos moral imet, ce bos hotel z drugih racunalnikov dostopat do interneta, ta rac. skoz przgan.   Ce te bolj natancno zanima povej."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Priporocam router , ki bo imel na izhodu , oy LAN delu se steri vtice (router + LAN).  Ce pa imas kej vec denarja se ti pa splaca kupiti Zzxel ZyWall 10 , ki je tudi firewal inside ( ne bos rabil proxy-a), in je superca , sem ga glih pri stranki postavljal in je enostaven za uporabo .Namenjen je ravno za Kabel ali ADSL. Rabil bos pa se najcenejsi pet portni 10Mbit-ni hub , ker ima ZyWall le en izhod.  Cena , kakor vem je okoli 100.000 Sit.  Mogoce je to bolj uporabno ya tistega ki ima doma kaksen web streznik ali kaj podobnega , ker ti masina pride , po vsej vrjetnost drazje kot Zyxell."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0 Mene tudi zanima (sedajle si ravno nekaj takega zelim omisliti), pa te prosim ce opises zadevo malo bolj. Ali na izbiro routerja lahko kaj vpliva ISP (kabelski operater)? Ali potem sploh rabim kak fw na svojem pcju (npr. ZA pro)? Ali konfiguracijo izvajas s katerega koli PCja v svoji mrezi? Prosim za nekaj najbolj osnovnih opisov, kako zadeva deluje.  Sem pa opazil da SMC 7004BR ni vec, sedaj imajo 7004ABR in pri jae je cena za 7004BR 40k.  In morda ne tako blesavo vprasanje: nekateri (da ne kar vsi sedaj) kabelski DOCSIS modem imajo USB prikljucek (torej brez NIC), kako potem te prikljuciti na ta router? Po moje to ne gre.  Kar pa je dobrega da ima predlagani router printer in com port sharing."
+    },
+    {
+        "role": "user",
+        "message": "SiroTka Odločil bi se za čenejšo varjanto. Hub že imam. Zanima me kako postavit server in če bo delalo vseno z trenutnimi sistemi. Upam da bom lahko s tako rešitvijo tudi surfav, pošiljal mail in igra igrce"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hm, pri ruterju je tko da ma ruter svojo ip adresso in ti ga moras z vsakim racunalnikom potem najdt. Torej ga lahko z vsakim racunalnikom nastavlas. Ampak ker si se odlocil za hub ne bom vec o tem razlagal. Glede na to da bos imel adsl in bos non-stop povezan na internet je obvezno da imas firewall, saj na netu kar mrgoli virusov, posebej nevarni so trojanski, saj ti lahko potem kdo sari po tvojem racunalniku. Najboljsi firewall-i so seveda hardwerski. Ce pac ne bos imel ruterja, je najbolj pogosto uporabljena alternativa zone - alarm pro. Naj te se opozorim glede igrc, ce imas server racunalnik bo ping na clientih malo slabsi, ker ti server doda malo pinga recimo 20 - 30. Ok kako nastavit hub. Najprej moras imet v enem racunalniku dve mrezni kartici - na eno priklopis adsl (to ti naredijo uni), na drugo mrezno kartico pa priklopis hub. Vse ostale racunalnike priklopis v hub.  Vsakemu racunalniku dodelis ip adresso - lahko je to 192.168.0.1 (spreminjaj samo zadnjo stevilko torej naslednji bo 192.168.0.2), ali pa das adrese 10.0.0.1 - 2. Potem nastavis gateway, ki mora biti na vseh racunalnikih enak npr 255.255.255.0 ali 255.0.0.0, delovna skupina (workgroup) je tudi ista na vseh racunalnikih (zmislis si eno ime).  Ce si vse prav nastavil, bi potem moral viditi vse racunalnike na mrezi. Dokler ne vidis racunalnike ti internet sigurno ne bo delal. Torej ne nadaljuj dokler nimas postimano mrezo. Potem pa moras postaviti proxy. Ce imas win2000 lahko vse naredis z internet sharing. V nasprotnem primeru moras uporabiti en proxy program. Jest sem uporabljal avirtgatewaysuite, ki je zelo enostaven za nastavit. Naslov: www.avirt.com Malo preberi navodila in vse ti bo jasno. Pognanega moras imeti na vseh racunalnikih. No na koncu ko ti avirt deluje moras postimat se ie in mail. V gres pod internet options in pod connections, in das da se bos povezoval prek lana. Zberes proxyserver in napises not ip racunalnika ki je povezan na adsl. Za maile pa imas vec nacinov. Lahko vse prebiras sam posebej na vsakem racunalniku. Mislim da v tem primeru normalno nastimas outgoing in incoming server. Lahko pa v avirtu nastavis, da glavni racunalnik prebira vso posto. V avirtu pod mejl nastavis postne predale. Na ostalih racunalnikih pa pod incoming in outgoing server napises ip adresso racunalnika, ki ima adsl."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Alienrex, glede nastavitev ruterja je tako. Ti priklopis adsl na ruter in svo racunalnik na ruter. Gres v internet explorer in vpises ip ruterja. Mas ga v knjizici napisanga. Odpre se ti pejdz kot na internetu. Vtipkas geslo za administratorja in potem preko explorerja nastavljas ruter. Zberes si lahko ip stevilko in gateway in se ostale nastavitve glede firewalla ipd.(VENDAR POZOR!!!!!!!!, NE POZABI KATER IP SI ZBRAL KER DRUGACE NE BOS VEC NASEL RUTERJA). Ko vse nastimas enostavno vsem ostalim racunalnikom dodelis ip adresso in tisti gateway ki ga ima ruter. In to je vse. Ruter je potrebnio gledati tako kot en racunalnik server, ki stoji v kotu."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kolko vem, ima SMC tudi DHCP, tako da ni treba vpisovati IP adres na računalnikh."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 Kateri router pa priporočaš in kje ga pordajajo. (mogoče kje blizu Kopra)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user: Kje tocneje si iz Kopra, jaz sem iz Prisoj in sem tudi narocil ADSL in dobil ze podpisano pogodbo od SiOLa, vendar ADSLja mi niso se vedno prisli instalirat, ceprav sem dobil podpisano pogodbo pred enim mesecem in pol. To delajo samo zato da pridobijo kupce ker ce ne bi jim jih vse pobral Telmont(kabelski internet).  V semedeli(300m stran) pa ADSL ze imajo.  Danes bom klical in verjetno preklical pogodbo.  Za router pa priporocam da ga narocis iz Ljubjane(npr. mlacom), ker v Kopru je mizerija z racunalniki. Cakal bos po nekaj tednov"
+    },
+    {
+        "role": "assistant_5",
+        "message": "V Izoli, če ti dial-up dela, si že cel cyberninja."
+    },
+    {
+        "role": "user",
+        "message": "Točneje iz žusterna/markovec. Rekli so mi tudi da so tukaj postavli že central in tudi podpisano pogodbo so mi že poslali. Upam v dobro P.S. Mi kdo zna priporočiti en dober router ne preveč drag."
+    },
+    {
+        "role": "assistant_3",
+        "message": "SMC 7004ABR je čisto dobra zadeva, ima print server, omogoča VPN, ima 4x 10/100Mb switch, pa cena je cca. 40000 SIT.  Še stran: www.smc.com"
+    }
+]

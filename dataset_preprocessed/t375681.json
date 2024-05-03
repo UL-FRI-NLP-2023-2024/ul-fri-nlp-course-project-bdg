@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "message": "Mam dva forma. Na prvem formu (form1) sta dva textboxa (textbox1 in textbox2), na drugem (form2) pa en (textbox1).   1. Rt bi primer kode, da se shran v fajl (beležnico) vsebina vseh treh textboxov (iz form1 in iz form2) in 2. da ob kliku na button1 forma2 prestavi tekst iz textboxa1 forma2 v textbox3 , ki je na formu1!  čist osnovna koda: private void button1_Click(object sender, EventArgs e) { using (StreamWriter sw = new StreamWriter(@\"D:\\test1.txt\")) { sw.WriteLine(\"Eno je:\"+ textBox1.Text + Environment.NewLine); sw.WriteLine(\"Drugo je:\" + textBox2.Text + Environment.NewLine); // tle še za textbox1 iz forma2 } }  form1: [url=http://www.shrani.si/?2i/112/1SP4tXCL/n... form2: [url=http://www.shrani.si/?Z/Og/4ApPv3a2/new...  hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na Form1 dodaš metodo:  public string GetTextBoxString()\n        {\n            return textBox1.Text;\n        } in prikažeš Form2 v button2_Click eventu:  using (Form2 form2 = new Form2())\n            {\n                form2.ShowDialog(this);\n            } Na Form2 pa v button1_Click event:   textBox1.Text = ((Form1) this.Owner).GetTextBoxString();"
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovor, ampak sm mislu glih kontra, da pobere iz forma2 in vstavi v form1."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na Form2 dodaj lastnost (property):  public string TextBoxText\n        {\n            get\n            {\n                return textBox1.Text;\n            }            \n        }  Na Form1 pa po tem ko prikažeš formo dodaš:  textBox2.Text = form2.TextBoxText;"
+    },
+    {
+        "role": "user",
+        "message": "oba primera naredita isto: prestavi tekst iz forma2 v form1 ko kliknem na križec v desnem vogalu, rt bi pa da kliknem na buton, ki je na formu2 in šele nato prestavi tekst. hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Drugič razloži po slovensko  Iz primerov, ki sem ti jih dal bi že lahko sam ugotovil kako narediti to kar bi rad...  V tretje gre rado zato: na form1 dodaj metodo:  public void SetTextBoxString(string text)\n        {\n            textBox1.Text = text;\n        }  na form2 pa v event button1_click:  ((Form1) this.Owner).SetTextBoxString(textBox1.Text);"
+    },
+    {
+        "role": "user",
+        "message": "tudi to ne bo v redu: Moglo bi bit za textbox3, ki je na formu1:  ((Form1)this.Owner).SetTextBoxString(textBox3.Text);  ampak textbox3 podčrta, ker je textbox3 na formu1,  error za form2:  The name 'textBox3' does not exist in the current context"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uf... !\"#$%&/)/? Nisem jasnoviden, da bi vedel kakšna imena si ti dal posameznim gradnikom na formi. Me tudi ne zanima. Če bi se vsaj malo potrudil bi lahko že sam pogruntal kako in kaj iz vseh zgornjih primerov...  Zadnji primer kode, naredi točno to kar bi ti rad - ko pritisneš gumb na formi 2 se skopira besedilo iz textboxa na formi 2 v textbox, ki je na formi 1. Če imaš ti drugačna imena textboxov popravi ime in ne govori, da ne dela..."
+    },
+    {
+        "role": "user",
+        "message": "form1  form2   ob kliku na button1 (forma2) prestavi podatek iz textbox1 (forma2) v textbox2 (forma1)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "In točno to rešitev imaš zgoraj... Spremeniti moraš samo ime textboxa..."
+    },
+    {
+        "role": "user",
+        "message": "Sm pogruntou, hvala, pozabil si napisati, da je treba dati textbox v modifiers iz private v public, da ga lahk prikličeš na drugem formu, ker drugače ga podčrta. in oba primera delata, ko izklopiš form, ne pa ob kliku na button."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz imam podoben problem. Imam razred seznamOseb,Form1, in Form2(forma za dodajanje oseb). V formi1 imam deklarirano oseba nova in seznamOseb seznam = new seznam(). Težava je v tem, ker mi meče exception na formi2 (event, ki se sproži ob kliku gumba \"dodaj\", v katerem uporabim ((Form1)this.owner).dodajOsebo(ime), če imam v metodi dodajOsebo na formi1 kakšen objekt (npr. nova = new Oseba()). Kako bi iz forme2 prenesel stringe na formo1, katere bi lahko potem uporabil kot parametre pri ustvarjanju novega objekta?  Del kode za Form1   public partial class Form1 : Form\n    {\n        Form2 dodaj = new Form2();\n        seznamOseb seznam= new seznamOseb();\n        oseba nova;\n\n        public Form1()\n        {\n            InitializeComponent();\n        }\n\n//event za odpiranje forme2 ob kliku na gumb\n        private void button1_Click(object sender, EventArgs e)\n        {\n                dodaj.Show();\n        }\n//dodajanje osebe\n        public void dodajOsebo(string ime)\n        {\n            nova=new Oseba(ime);\n            seznam.add(nova);\n        }\n  Del kode na Form2. Na formi izpolnim string polja in pritisnem gumb \"dodaj\"  public partial class dodajOsebo : Form\n    {\n        public dodajOsebo()\n        {\n            InitializeComponent();\n        }\n        private void gumbOK_Click(object sender, EventArgs e)\n        {\n                string ime = textBoxIme.Text\n\n                //Tukaj mi vrže exception, zaradi objekta v metodi dodajOsebo na formi1\n                ((Form1)this.owner).dodajOsebo(ime); \n\n                Hide();\n            }\n        }"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sem že porihtal in sicer:  na formi1  Form2 f = new Form2();\nf.owner = this;\n  na formi2  Form1 forma = this.Owner as Form1;"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Najlažje je, če narediš konstruktor forme2 tako, da prejme kot argument referenco na formo1, potem lahko poljubno spreminjaš stvari na formi1 s forme2."
+    }
+]

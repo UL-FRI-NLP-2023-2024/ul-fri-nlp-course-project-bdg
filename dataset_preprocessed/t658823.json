@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Ker bom za nekaj dni na internet vstopal prek nekega manj varnega ruterja, bi rad postavil VPN na svojem laptopu in imam nekaj vprašanj:  1. Koliko je varen VPN? Kaj (informacije ala gesla, datoteke na disku,katere spletne strani obiskujem, etc....) lahko lastnik/admin tega ruterja/modema dobi z mojega laptopa? 2. Bo lastnik vedel, da prek VPN vstopam na njegov ruter? 3. Se mi bo hitrost interneta (tj. upload in download) zmanjšala zaradi VPN ?  Hvala za odgovore."
+    },
+    {
+        "role": "assistant_0",
+        "message": "1. Odvisno od ponudnika. Lastnik/admin routerja tega ne bo videl. 2. Da. 3. Da, precej.  Napise se \"router\" ali usmerjevalnik ne \"ruter\".  Se to:  Ce bos uporabljal VPN ne bos mogel dostopati do routerja. VPN ti zasifrira povezavo in dodeli nek tipicno tuj IP naslov.  Skratka: tvoje se skrbi so povsem odvec."
+    },
+    {
+        "role": "user",
+        "message": "Stvar je v tem, da bi za tisti mesec dni rad zaščitil svoje dejavnosti na netu (gesla etc.) in podtake na laptopu. Katera zastonj in enostavna in učinkovita (beri: dovolj hiter net in omogočen dostop do routerja) alternativa VPN še obstaja?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Dajmo prvo razčistiti, na kakšen način bi rad uporabljal VPN.  Najpogosteje si ljudje na routerju doma ali v podjetju vzpostavijo 'VPN Gateway' - ti se z VPN odjemalcem povežeš na ta VPN prehod, do njega vse poteka kriptirano, od tod naprej pa kot 'navaden' promet. Pri tem obstajata dve varianti konfiguriranja VPN odjemalca: da VES promet proti internetu pošlje preko VPN-a, ali pa da preko VPN-a pošilja zgolj promet, ki je namenjen omrežju za routerjem, na katerem imaš prehod (domače omrežje, omrežje podjetja). Zate je v tem primeru zanimiva prva varianta, saj želiš, da bo ves tvoj promet zaščiten.  Kako hitro bo deloval promet preko VPN povezave, v največji meri zavisi od routerja, na katerem imaš postavljen VPN prehod. Če je nek podhranjen klasični routerček za domačo rabo z DD-WRT, potem bo stvar precej boga. Če pa imaš kakšen nekoliko resnejši router, ki po možnosti dela dekripcijo s podporo strojne opreme, pa gredo lahko VPN zmogljivosti tako visoko, da niti ne boš opazil bistvene razlike.  Kjerkoli že boš gostoval v tujini, pa mora lastnik tistega omrežja imeti to odprto za vrsto VPN povezave, ki jo boš uporabljal. IPSec ima tu pogosto precej težav, saj hoteli večinoma nimajo odprtih portov, ki bi jih potreboval za vzpostavitev IPSec VPN povezave. Kakšen 'home router', če boš kje na privat stanoval, pa lahko, da ne bo delal nobenih težav in bo imel navzven vse odprto .  Ravno zaradi tveganja, da VPN z določene lokacije morda ne bo deloval, je najbolj pogosta izbira SSL VPN (npr. OpenVPN) na portu 443, kateri je praktično povsod odprt, saj se ga potrebuje zaradi https prometa. Le redko kje boš naletel, da bi imeli tako napredno požarno pregrado, da bi zaznala razliko med SSL VPN in https prometom in kljub temu blokiralo VPN povezave.  Lastnik routerja, kjer gostuješ, mora imeti kar precej napreden router, da bo sploh zaznal, da uporabljaš SSL VPN. Teoretično lahko vidi, na kateri VPN prehod si vzpostavil povezavo, ne more pa videti, kaj ti počneš na tej povezavi. Ravno to pa je tudi razlog, zakaj v malo bolj resnih podjetjih ne dovoljujejo VPN povezovanje komurkoli in kamorkoli, saj bi lahko nekdo preko VPN povezave pretakal zaupne datoteke iz podjetja. Zato se je vedno dobro posluževati VPN povezav v dogovoru z upravljalcem omrežja v podjetju kjer gostuješ. Če ima kakšne blokade in razume tvojo potrebo, ti edino on lahko omogoči uporabo VPN povezav."
+    },
+    {
+        "role": "assistant_2",
+        "message": ">3. Se mi bo hitrost interneta (tj. upload in download) zmanjšala zaradi VPN ? zmanjsala(promet) se ti bo za toliko, kot bos kuril pasovne sirine vec kot bos kuril pasovne sirine vec CPU dela(pac mora vec podatkov obdelat) bo imel VPN  pazit se moras, kateri dns bos uporabljal preko vpn, iz tega se da marsikaj razbrat"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kar se tiče pasovne širine zadeva ni tako preprosta.  Če imaš npr. doma 20/4 povezavo, ti se pa nanjo preko VPN povezuješ z lokacije, ki ima 20/20, ti bo download preko VPN v najboljšem primeru deloval s 4Mbps, saj je ta promet z vidika tvoje domače lokacije 'upload'. Teoretično.  V praksi pa sta upload in download močno odvisna od zmogljivosti tvojega domačega routerčka. Eden od forumašev je pred časom testiral na svojem Linksys E1200 in dosegal 1,7 Mbps download-a in 0,7 Uploada.   Medtem pa jaz na mojem T30 dosegam dobrih 9/9 preko SSL VPN povezave.  Če pa uporabljam IPSec VPN, pa z FTP dosegam 19/19 na 20/20 internetni liniji - skratka jo izkoristim do polnega. Pri tem se mi obremenitev CPU-ja na routerju dvigne z 15% na 40-60%.  Skratka ni vseeno, kateri VPN protokol uporabljaš, ravno tako ni vseeno, kateri klient uporabljaš na določenem protokolu, še največjo razliko pa na koncu doprinesejo zmogljivosti samega routerja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Za varno surfanje je dovolj ssh tunel do tvojega domačega routerja. https://www.linode.com/docs/networking/...  https://web.archive.org/web/20110611042...  Na mojem win sistemu sem imel par let nazaj za ssh server copssh, za proxy apache - da sem lahko surfal preko ssh povezave. https://www.itefix.net/copssh , https://httpd.apache.org/ .  Za vzpostavitev ssh povezave je bil PuTTY, avtentikacija preko doma generiranega rsa dig. potrdila (public/private keypair) http://www.unixwiz.net/techtips/putty-o... . Apač je poslušal samo na 127.0.0.1:8080 ."
+    },
+    {
+        "role": "assistant_2",
+        "message": "rb951g kaksnih 18/18 na openvpn"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Torej ni večjih tveganj glede varnosti pri uporabi raznih zastonj vpn servisov? Trenutno imam na androidu SuperVPN. V nekaterih javnih institucijah je wifi javno odprt brez kakršnih koli gesel. Bi vi v takih primerih vedno uporabljali VPN? Je to preveč paranoično? Delat lastne vpn-je z dinamičnim IP-jem in routerjem od ISP-ja bi bilo malo preveč komplicirano predvidevam."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Uporaba zastonj VPN servisov je ravno tako precej tvegana. Kako namreč veš, da ti pa tam ne ,,sledijo\"?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ni večjih tveganj....?   Odvisno, kaj razumeš pod pojmom 'tveganje'.  VPN povezave so 'varne' na razdalji od odjemalca do VPN gateway-a.   Naprej od tod, pa nimaš pojma, kaj se dogaja s tvojim prometom. Realno gledano je celotba povezava na koncu še bolj tvegana, če uporabljaš nek 'public' VPN gateway/servis, o katerem ne veš ničesar.  Recimo, da ti jaz ponudim 'brezplačni VPN'. Ti si namestiš klienta in varno komuniciraš do mojega gateway-a. Jaz na njemu pridno delam dump tvojega prometa in v njemu iščem uporabniška imena, gesla,.... Uporabljaš https? Ni problema - naredim še MITM - certifikat si takointako že dobil s klientom, tako da boš vse videl lepo v zelenem, kot 'varne' https povezave - medtem ko bom jaz videl cleartext tvojega prometa.  Kaj si na koncu profitiral? Izognil si se potencialnemu amaterskemu prisluškovalcu v kafiču ali hotelu, nakopal pa si si profesionalca, ki ti bo na koncu lahko še bistveno več škode naredil.  Skratka zaupaš 'SuperDuperVPN-u'? Si 100% prepričan, da ničesar ne logira? Da znajo kakšni ameriški 'SuperDuperAnonimniVPN' ponudniki pridno sodelovati z FBI smo že videli v preteklosti.   V prvi vrsti se je treba vprašati za kaj boš potreboval in uporabljal 'javno' VPN storitev. Za dostop do česarkoli, kar je povezano z občutljivimi osebnimi podatki, bi se jih jaz ognil v velikem loku.  So pa lahko prikladni za dostop do kakšnih storitev, ki ti lokacijsko niso na voljo tam, kjer se nahajaš - če se te storitve ne nanašajo na osebne ali druge občutljive podatke (npr. dostop do lokacijsko omejenih streaming storitev).  Za vse ostale 'občutljive' stvari, pa si raje postavi svoj lastni VPN gateway. Če ti to omogoča router od providerja, ga vsekakor uporabi. Zadeva bo povsem zadoščala za varni dostop do elektronskega bančništva, mailov,.... in celo do podatkov na tvojem domačem računalniku, kar ti 'SuperDuperVPN' ne more nuditi."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Hvala za obširno razlago. Je z dinamičnim IP-jem in Enkovim modemom od Amisa to sploh izvedljivo? Verjetno bi rabil kak odprtokodni router, kamo bi namestil kake \"dynDNS\" cliente, ki bi sporočali vsakič nov IP?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4 je 30. dec 2015 ob 14:05 izjavil:Hvala za obširno razlago. Je z dinamičnim IP-jem in Enkovim modemom od Amisa to sploh izvedljivo? Verjetno bi rabil kak odprtokodni router, kamo bi namestil kake \"dynDNS\" cliente, ki bi sporočali vsakič nov IP?  Z omenjeno opremo: neizvedljivo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "DynDNS je tu še najmanjši problem, saj ga danes podpirajo skoraj vsi routerji.  Bolj problematično je glede samega VPN prehoda. Večinoma providerji ne talajo opreme, ki bi podpirala tudi vzpostavljanje VPN povezav, vsaj ne z firmware-om, ki je nameščen na njih. Nalaganje kakšnega alternativnega firmware-a na njihove routerje pa ponavadi ni zaželjeno, tudi če je na voljo.  Tako imaš dve možnosti:  a) nabaviš in postaviš svoj router, ki omogoča VPN povezave (s stock firmware ali alternativnim), providerju pa naročiš, da svojega preklopi v bridge mode  b) postaviš nek samostojen VPN gateway (npr. na RPi ?) izza providerjevega routerja in forwardiraš VPN povezave do svojega gatewaya."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ko smo že pri VPN, me zanima, katere tehnologije so priporočljive za uporabo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 30. dec 2015 ob 22:54 izjavil:Ko smo že pri VPN, me zanima, katere tehnologije so priporočljive za uporabo?  Na profi strani IPSec, ki pa spet s seboj prinaša kup problemčkov, saj nimaš nekega free klienta, ki bi univerzalno deloval z vsemi implementacijami IPSec-a tam zunaj. Poleg tega IPSec deluje na portih, ki marsikje niso odprti, zaradi česar na koncu še vedno potrebuješ 'backup rešitev' - SSL VPN.  S tem je potem jasno, da je SSL VPN trenutno nekje najbolj univerzalno uporaben, če se nasloniš na OpenVPN implementacijo pa tudi imaš na voljo kliente za praktično vse platforme, ki si jih izmisliš. Poleg tega marsikateri komercialni proizvod v svojem drobovju skriva nekaj, kar je kompatibilno z OpenVPN, tako da ti morda prihrani namestitev še kakšnega legacy klienta.  Privlačen se zdi tudi L2TP, saj je že vgrajen v Windows, a kaj, ko zanj nimaš podpore na DD-WRT in podobnih alternativnih firmware-ih. Problem z njim pa je isti, kot pri IPSec (saj tega v bistvu uporablja) - rabiš kup odprtih portov kjer se nahajaš, da bi zadeva delovala."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zanima me, če je kdo tu, ki bi delil IP, da bi lahko v tujini spremljal HBO GO? Uporabljam tigerVPN naročnino, delajo vse strani, od voya do tvina, ampak pri HBO GOju pa vseeno piše, da nisem v pravi državi, če tudi je kot IP naveden kot slovenski.  Rad bi gledal filme in serije, med tem, ko sem v tujini."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Je vse troje v isti državi ? Your IP Address, Your IP address - WebRTC detection, DNS Address detection https://ipleak.net/"
+    },
+    {
+        "role": "assistant_6",
+        "message": "prvi in zadnji zazna, kot da sem v sloveniji, onega webRTCja pa ne zazna sploh."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če gre za ta hbo, potem moraš imeti ZDA ip. http://www.hbogo.com/ To access HBO GO?, you must reside within the fifty states of the United States of America. If you reside in this area and are still experiencing difficulties, please contact your television provider."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_3 je 13. jun 2016 ob 20:31 izjavil:Če gre za ta hbo, potem moraš imeti ZDA ip. http://www.hbogo.com/ To access HBO GO?, you must reside within the fifty states of the United States of America. If you reside in this area and are still experiencing difficulties, please contact your television provider.   Vrjetno ima slovenski HBO GO (http://www.hbogo.si/) ne ameriškega, da bi rabil ameriški IP."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tako je ... hbogo.si ..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Stran uporablja MS Silverlight, možno da preko njega \"pušča\".  https://vpnreviewer.com/tools-check-ip-..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Torej, kako to pol narediti, da bo delalo? HBO GO je itak daleč najboljša spletna stran. Samo doma mi nikoli tak prav ne pride, kot ko sem v tujini."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nekaj sem bral zdaj, kateri vpn ponudnik je dober, oz ponuja možnost, da se da gledati hbo go iz tujine. Sicer je pisalo za ameriški hbo go, mislim, da je slovenski isti šmorn. Zdaj sem našel neki PureVPN, ampak očitno nimajo variante, da bi ga testiral, če je to kar hočem ali je isti ali še slabši od TigerVPNja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_6 purevpn  od tu dalje: https://slo-tech.com/forum/t667554/p517...  https://slo-tech.com/forum/t667554/p517...   Mobilni internet v ZDA preko VPN (slo ip) https://slo-tech.com/forum/t671834/p513...   Na ameriškem hbo go verjetno ne boš imel slo podnapisov, težje bo verjetno tudi plačati."
+    },
+    {
+        "role": "assistant_6",
+        "message": "ne, za ameriški hbo je verjetno vse isto kot slovenski hbo go ... to s silverlightom ipd? Problem je, da ne najdem rešitve za hbo go. 10 evrov na mesec plačujem za hbo, da bi ga lahko gledal, potem pa sem več v tujini kot doma, haska pa v bistvu nimam nič.  To pa kaže, ko pridem na hbogo.si ...   Ta pureVPN pa očitno ne bo delal, oz bo še slabše delal kot tigerVPN, tu vsaj lako te videe od rtvslo gledam."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Nimaš možnosti, da bi si doma ustvaril VPN?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "ne, ker imam preslabo povezavo .. v glavnem, sem pa našel zdaj en VPN program, sicer stane 12eur na mesec, sem reskiral pa v nulo dela vse. Od HBO GOja, Voya, Tvina, RTV 4D videov itd ... programu se resče ExpressVPN. TigerVPN je preteklost pri meni.  https://www.expressvpn.com/"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Brskalnik Opera z verzijo 40. ima možnost vključitve VPN. Kako pa sedaj? Vidim da v vrstici za vpis naslova, je ikona VPN. Sedaj le vpišem naslov in brskam? A je potrebno še kaj nastavljati? Tako ko brskam se pojavlja nastavitev države (Kanada, Nemčijs,...). S klikom na VPN se prikaže:"
+    },
+    {
+        "role": "assistant_9",
+        "message": "To dejansko deluje. Sem se preko VPN prijavil v gmail in je gmail zahteval potrditve preko varnostnih korakov. Sem šel zato v prijavo brez VPN, me je spustil brez problema v mejl, samo da mi je napisal sporočilo da se je nekdo drugi želel prijaviti in da najbrš prozna moje geslo, ker v sporočilu je bilo naveden IP in država Nizozemska.  Bom videl kako je v nadaljevanju. Ali se bo to obneslo ali bodo kmalu drugi videli kako je s tem in spreminjali svojo politiko. Ali pa da se bo to izkoriščalo itd."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Recimo da je stran napadena. A te vpn kaj obvaruje da se ne okužiš ali ne?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Precej mešaš pojme, oz. jih ponesrečeno izbiraš.  VPN ne dela prav nič drugega, kot da tvojo komunikacijo med točko A in B zakriptira, tako da na tej relaciji ni možno 'prisluškovati' ali pa spreminjati vsebine tvoje komunikacije, krasti gesel, ipd.  Nek XY VPN, kot ta v tvojem primeru, ti ščiti komunikacijo od tvoje naprave (PC, mobi, tablica) do neke točke XY nekje na Nizozemskem. Od trenutka, ko tam pride promet iz kriptiranega tunela, je popolnoma nezaščiten.  Eni takšne VPN-e uporabljajo, da se ne vidi, od kje prihajajo, drugi zato, da 'prebordijo' najbolj 'nevarne' odseke komunikacije (če si npr. na kakšnem javnem WiFi, kjer ti lahko nekdo prestreza promet).  Ne vem, če kateri od komercialnih VPN ponudnikov nudi tudi kakšne dodatne varnostne storitve. Načeloma bi ti lahko preverjal promet na viruse, blokiral znane okužene strani, nadiral komunikacijo z IPS,... To vse in še kaj več se dela v poslovnih okoljih, kjer imajo UTM požarne pregrade, katere imajo vse te napredne sposobnosti."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Malce študiram o tehle vpn storitvah in načelno razumm kako zadeva funkcionira. Medtem ko na eni strani vpn reši marsikakšen možen problem, ima kot berem po drugi strani slabo lastnost v tem da ti vpn ponudnik teoretično lahko spremlja promet. Če je plačljiv in znan, sicer tega naj ne bi počel. Tle mi samo neki ni čist jasno, a če preko vpnja obiščeš neko https stran, pol moj promet na tej strani tudi teoretično ni viden vpn ponudniku? Recimo da na strani s https vnesem geslo, to geslo ne more biti vidno vpn ponudniku ane? tnx ;) Kaj je lahko vidno vpn ponudniku, če si na https strani? Kr kompliciran je tale internet in upam za mal pomoči, šele štukam znanje o njem skupej :D Kdorkoli? :) Res kdorkoli? :D"
+    },
+    {
+        "role": "assistant_11",
+        "message": "na ssl/tsl je bilo zadnje čase cel kup napadov tako da ravno zihr ni, da ti ponudnik ne more videti kaj delaš po https straneh  dns pa tudi ni ravno varen in ti spet lahko gledajo kaj počneš  oziroma delajo mitm napad  razne vohunske agencije imajo nadzor nad root certifikati in si itak lahko izdajo https certifikat za določeno domeno, ki brskalniku deluje ok  uporaben brute force napad na dobre šifrirne protokole ni javno znan, ni pa 100% da ne obstaja niti ni 100% da ni nobene ranljivosti, ki ne rabi brute force napada  verjetnost da boš ravno ti žrtev kakih sofisticiranih napadov pa je nizka, zdej pa odvisno kolk si paranoičen"
+    },
+    {
+        "role": "assistant_10",
+        "message": "No skratka v plain obliki se vpn providerju nič ne servira. Hvala za odgovor :)"
+    },
+    {
+        "role": "assistant_12",
+        "message": "DNS zahtevki se.  Precej se da videti iz prometa, količine, itd., četudi se sam promet ne vidi kar tako oz. naj se ne bi. Metapodatki.  Ne posplošuj, vprašanje ni enoznačno, odgovor pa še manj..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_10 je 2. nov 2018 ob 07:37 izjavil:No skratka v plain obliki se vpn providerju nič ne servira. Hvala za odgovor :)  Kako nič?  Poleg DNS lahko bere tudi SNI v HTTPS povezavah.  Sploh pa ...od kdaj je na internetu samo https promet?  Najbolj me zabavajo tisti, ki se jokajo če v brskalniku ni 'zelene ključavnice' - istočasno pa preko ftp prenašajo vsebine, preko navadnega pop3 maile,...."
+    },
+    {
+        "role": "assistant_11",
+        "message": "pa tista zelena ključavnica je itak zavajajoča oziroma ne pove nujno tega kar ljudje mislijo"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Ta mesec grem za nekaj časa v BiH, kjer bi rad gledal preko prenosnika in EON oziroma Tvin aplikacije (imam možnost uporabo obeh) SI programe. Ker grem v državo izven EU to verjetno ne bo izvedljivo. Zanima me kateri strežnik v EU priporočate, da je dovolj hiter za gledanje TV in kako se to vzpostavi. To področje mi je povsem neznano."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Katerega VPN ponudnika predlagate, da je zadosti hiter za gledanje TV, da ima kvaliteten server v EU in da je varen - VPN Express, NordVPN ali kaj drugega ?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "@assistant_13 je 9. nov 2018 ob 07:46 izjavil:Katerega VPN ponudnika predlagate, da je zadosti hiter za gledanje TV, da ima kvaliteten server v EU in da je varen - VPN Express, NordVPN ali kaj drugega ?   Morda https://protonvpn.com/"
+    },
+    {
+        "role": "assistant_15",
+        "message": "@assistant_13 je 9. nov 2018 ob 07:46 izjavil:Katerega VPN ponudnika predlagate, da je zadosti hiter za gledanje TV, da ima kvaliteten server v EU in da je varen - VPN Express, NordVPN ali kaj drugega ?  Jaz bi vzel Express. Imel sem ze AirVPN, ni slab, ampak sedaj berem da je Express dosti boljsi, a drazji."
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_13 je 4. nov 2018 ob 09:48 izjavil:Ta mesec grem za nekaj časa v BiH, kjer bi rad gledal preko prenosnika in EON oziroma Tvin aplikacije (imam možnost uporabo obeh) SI programe. Ker grem v državo izven EU to verjetno ne bo izvedljivo. Zanima me kateri strežnik v EU priporočate, da je dovolj hiter za gledanje TV in kako se to vzpostavi. To področje mi je povsem neznano.  Poročaj, če ti bo delalo. United Group = Telemach Slovenija, Telemach BiH in SBB Srbija. EON je lokalno prisoten povsod, vprašanje pa, kako jim dela sistem za stranke iz Slovenije."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Imam enomesečni dostop preko NordVPN ponudnika, zanima me kateri strežnik naj izberem na področju EU da bo zadeva delovala hitro - EON, Tvin."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Greš po vrsti in narediš Speedtest..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_12 je 14. nov 2018 ob 15:12 izjavil:@assistant_13 je 4. nov 2018 ob 09:48 izjavil:Ta mesec grem za nekaj časa v BiH, kjer bi rad gledal preko prenosnika in EON oziroma Tvin aplikacije (imam možnost uporabo obeh) SI programe. Ker grem v državo izven EU to verjetno ne bo izvedljivo. Zanima me kateri strežnik v EU priporočate, da je dovolj hiter za gledanje TV in kako se to vzpostavi. To področje mi je povsem neznano.  Poročaj, če ti bo delalo. United Group = Telemach Slovenija, Telemach BiH in SBB Srbija. EON je lokalno prisoten povsod, vprašanje pa, kako jim dela sistem za stranke iz Slovenije.   EON mi lokalno ne dela - izprobano. Sem si nabavil mesečni dostop do NORD VPN serverja in s tem deluje.  @assistant_8 je 18. nov 2018 ob 10:40 izjavil:Greš po vrsti in narediš Speedtest...   Še najbolje mi deluje NordVPN s serverjem v Nemčiji."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Zanimivo, da lokalno ne dela, najbrž blokirajo na podlagi IP, ker Bosna ni v EU."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_8 je 21. nov 2018 ob 09:35 izjavil:Zanimivo, da lokalno ne dela, najbrž blokirajo na podlagi IP, ker Bosna ni v EU.  Sam EON bi moral delat, sigurno pa imajo geoblocking na IP za vse kanale, za katere nimajo pravic izven slo oz EU, kar pomeni, da v bosni bolj kot ne ne moreš nič gledat (razen jasno preko VPNja z EU IPjem). Znal bi delat edino kak bosanski kanal, ki ga ima v ponudbi tudi Telemach bosna."
+    },
+    {
+        "role": "assistant_16",
+        "message": "NordVPN, ima no log policy?"
+    }
+]

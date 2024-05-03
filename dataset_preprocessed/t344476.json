@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Mene pa zanima če obstaja kakšna zadeva, ki se jo vstavi pred signalnim I/O na čipu in tuljavo, ki bi delovala kot zadeva za spremembo polaritete na tuljavah. tm ene 7A bi rabil."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vprašanje je postavljeno pravzaprav tako, da lahko samo ugibam kaj bi potreboval.  No ena od predpostavk je, da potrebuješ H mostič. Le tega lahko izvedeš z diskretnimi elementi (Tranzistorji, Mosfeti) ali pa z namenskimi integriranimi vezji. Slednja se običajno izdelujejo do nekaj A. Za tokove reda 7 A bo potrebeno mostič narediti. Predlagam Mosfete. Izbira je odvisna od tega za kakšne napetosti so grajeni motorji."
+    },
+    {
+        "role": "user",
+        "message": "aja sem malo zamešal DC motor in koračni. koračni ima 6 izhodov ne? dva sta za ~+12V, ostali pa nule?  no jz imam DC motor od trdega diska, ki ima 4 izhode, torej je dvopolni. v glavnem enkrat moram doseči 0V, drugič pa +12V recimo 1A (v prihodnosti nekoč 7A :P). moj pic ima pa na izhodu 5V in okoli 20mA. torej to se reši z H bridge?  vidim da je max627 nekaj takega kar iščem. Samo ta ima 2A pri 18V. kar pomeni ~3A pri 12V ne? koliko A porabi koračni motor z ~200Ncm pri 12V?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sploh ni nujno da si kaj zamesal, koracni motorji imajo lahko od 4 do 8 prikljucnih zic. Poglej si res super clanek: Jones on Stepping Motors"
+    },
+    {
+        "role": "user",
+        "message": "Sploh ni nujno da si kaj zamesal, koracni motorji imajo lahko od 4 do 8 prikljucnih zic. Poglej si res super clanek: Jones on Stepping Motors  možno da je bipolarni. sem malo preizkušal in ugotovil, da so steppi 45°. ali pa ~5° (če to ni napaka v navitjih znotraj... :p)"
+    },
+    {
+        "role": "user",
+        "message": "a se da kako ugotovit pri stepperjih s povratno informacijo, če je bil step opravljen ali ne? v primeru da bi se motorček zablokiral kot posledica zunanjega fizičnega posredovanja...  ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Da, z uporabo ekstra enkoderja, brez tega pa ne. En od razlogov za uporabo koracnih motorckov je ravno ta, da je krmiljenje precej preprosto ce zagotovis razmere delovanja kjer motor ne preskakuje korakov :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Da se, samo ni ravno enostavno."
+    },
+    {
+        "role": "user",
+        "message": "a servo motorji majo vsi enkoderje notr? al je treba prav tazga kupit, ki ga ima?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Načeloma imajo vsi servo motorji enkoderje že vgrajene. Sam imam primerke elektromotorjev, ki imajo razen enkoderja še magnetno zavoro. Imam pa tudi primerke koračnega motorje, ki ima dodaten enkoder. Slednji ne služi kontroli preskakovanja, temveč fini kontroli gibanja koračnega motorja. Motor je namreč voden z finimi koraki (mmikrostep). Sicer pa je to 1,8° koračni motor. Inkrementalni dajalnik pa zanimivo - da 1600 impulzov na obrat."
+    }
+]

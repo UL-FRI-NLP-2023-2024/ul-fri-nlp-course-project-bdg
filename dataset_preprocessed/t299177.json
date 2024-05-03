@@ -1,0 +1,146 @@
+[
+    {
+        "role": "user",
+        "message": "Del posta:  @assistant_2: Ce ne znajo narediti parserja, ki bi delal konsistentno za \"simple syntax variable parsing\", naj pac vse skupaj opustijo (ter samo zacasno ohranijo sintakso kot kompatibilnost za nazaj) in postopoma ljudi spodbudijo k uporabi \"complex (curly) syntax\". Da ne govorimo o tem, da je najbrz celo expandanje spremenljivk znotraj \" \" oz. heredoc stringov bloat, saj obstaja recimo printf() oz. sprintf(), ki to resi na lepsi nacin, ce ne drugega se pa lahko vedno resis tako da uporabis konkatenacijo stringov.  Na zalost je IMHO PHP en tak zelo nepremisljen jezik. Vedno so neki novi feature-ji, ki naj bi delo olajsali, ampak v koncni fazi pa samo se bolj zakomplicirajo jezik in tako prispevajo k manjsi produktivnosti."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_2: to je res, da se v PHP-ju včaih pojavijo kakšne čudne situacije, vendar jaz še v vseh letih programiranja v PHP-ju nisem naletel na takšen problem. Ne moraš zdej rečt da PHP sux zaradi parih nepravilnosti, kaj boš potem rekel glede JavaScript-a, ki včasih dela v vsakem brskalniku drugače  . Pa tudi pri Javi sem danes imel en čudn problem:  int stevilo = Integer.parseInt(jTextField1.getText()); Zgornja koda vrže exception, ker parameter baje ni String, čeprav v manualu piše da metoda getText() vrača String. Rešitev je precej enostavna:  int stevilo = Integer.parseInt(jTextField1.getText().toString()); Samo zakaj hudiča moram String pretvarjati v String?    P.S.: Lahko da je ta napaka v Javi že odpravljena, ker imamo v šoli rahlo zastarel software (NetBeans 5.5 in JDK 1.4.2 al neki takega)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0: da je javascript lep jezik, ki ima tezave z implementacijami za razliko od PHP, ki je ze kot jezik zgresen."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sicer smo offtopic ampak zajaj je zgrešen? Ker ima par pomanjklivosti? Ker ni objektno usmerjen? ...?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Offtopic:  Ne recem, cisto mogoce da je slo za nek bug v Swing komponenti (kaksen exception si pa dobil BTW?),  ampak to je se vedno manj kriticno kot ce sama zasnova jezika sepa (in zaradi dodanih featurjev prihaja do raznih nekonsistentnosti).  Sicer nocem uzaliti uporabnikov PHP-ja, ampak po mojem mnenju je bil PHP misljen kot nek hack (skupina Perl script za Lerdorfovo domaco stran) in to zal se vedno je. Kar me moti: nekonsistentno poimenovanje funkcij (vcasih je podvezaj vcasih ga ni, nekatere funkcije imajo \"case\" nekatere \"i\" v imenu), nekonsistentno zaporedje parametrov, funkcije  v stilu solve_everything(), ki ne samo da podajajo nacin za resevanje ampak nudijo ze neko na pol resitev. Lepo je, da obstaja toliko nacinov kako se nekaj naredi, samo v koncni fazi vse skupaj le zakomplicira programiranje (zdi se mi tako nekako kot kompleksen CISC procesor).  JavaScript je zanimiv jezik ker je objekten in obenem zagovarja \"prototype-based programming\", kar pomeni, da ni razredov, ampak se le klonira obstojece objekte. Medtem ko PHP kot tak ni nekaj pretirano novega, ampak po sintaksi  izgleda kot nek copy-paste C-ja in Perla, ki pa se kljub podobnim imenom funkcij ne obnasa tako kot bi clovek mislil. Definitivno je zelo uporaben za spletno programiranje, ampak imho pa to ni nekaj cemur bi rekli \"programski jezik\", ampak bolj \"dobra zbirka pripomockov\"."
+    },
+    {
+        "role": "assistant_3",
+        "message": "> Definitivno je zelo uporaben za spletno programiranje, ampak  > imho pa to ni nekaj cemur bi rekli \"programski jezik\", ampak  > bolj \"dobra zbirka pripomockov\".  No ja no, pretiravat pa res ni treba. PHP ni ravno biser ampak, da mu ne bi rekel programski jezik je pa ze mal hecn. ;)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "nekonsistentno poimenovanje funkcij (vcasih je podvezaj vcasih ga ni, nekatere funkcije imajo \"case\" nekatere \"i\" v imenu), nekonsistentno zaporedje parametrov, No to je tudi ena izmed stvari, ki je meni najbolj tečna."
+    },
+    {
+        "role": "assistant_0",
+        "message": "kaksen exception si pa dobil BTW? Ne vem na pamet kakšen exception je ven vrglo, bom mogoče potem pozneje še 1x preveril pa ti skopiram  .  Kar se tiče poimenovanja funkcij je res zmeda, ampak kot pri vseh jezikih, se da naučiti uporabe funkcij. Pa če so še tako čudno poimenovane, pomaga tudi če uporabljaš editor, ki ti malce pomaga s temi parametri. Sicer pa bodo baje v PHP6 pometali ven alias funkcije. Ne bom pa rekel, da nebi bilo pametno tudi eno temeljito prenovo glede poimenovanja funkcij narediti, ampak tu se znajo potem pojaviti še večji problemi kot so se in se še pojavljajo pri prehodu iz PHP4 na PHP5. Čeprav mogoče bi se dalo prehod omiliti z kakšnim konverterjem kode, ki ob predpostavki, da se zamenjajo samo imena funkcij, nebi bil nič drugega kot en velik search & replace po tabeli novih in starih imen funkcij.  Medtem ko PHP kot tak ni nekaj pretirano novega, ampak po sintaksi izgleda kot nek copy-paste C-ja in Perla, ki pa se kljub podobnim imenom funkcij ne obnasa tako kot bi clovek mislil. Ja PHP dejansko izvira iz PERL-a in C-ja zato tudi podobnost.  Definitivno je zelo uporaben za spletno programiranje, ampak imho pa to ni nekaj cemur bi rekli \"programski jezik\", ampak bolj \"dobra zbirka pripomockov\". Zato mu nekateri pravijo tudi \"skriptni jezik\"  . Ampak IMHO je hibrid, lahko ga uporabljaš kot skriptni jezik ali pa kot programski jezik."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Prosil bi za definicijo kdaj en jezik ni vec skriptni jezik... ;)  Je Perl skriptni jezik? Je Phyton skriptni jezik?  > Ja PHP dejansko izvira iz PERL-a in C-ja zato tudi podobnost.  Eh, PHP nic ne izvira iz PERLa in Cja. PHP je bil napisan v Cje in je bil napisan kot nadomestilo za neke perl skripte. V parser se je pa not vtaknilo 'best of the both worlds'. Od Verzije 1 pa do verzije pet je dozivel ze vsaj dva rewrita."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Sicer to ni kakšrnakoli uradna derfinicija, toda če prav vem je skriptni jezik tisti jezik, ki ga ni treba prevajat(kompajlat)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_3: no ja mislil sem da \"izvira\" oz. ima korenine njegove sintakse v PERL-u in C-ju.  Kaj je skriptni jezik @  Wikipedia. PHP je recimo da lahko oboje... ker ga lahko tudi kompajlaš v bytecode. No ne vem če se temu sploh lahko reče kompajlanje, ker se jezik še zmeraj interpretira."
+    },
+    {
+        "role": "assistant_6",
+        "message": "PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. vir:  PHP.net"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Klicati PHP developerje skripterji in ne programerji je nekoliko podcenjeno, se ti ne zdi?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "PHP je so-last-century.  Priporočam Python.  Da bom malo konkretnejši: moti me skoraj popolna odsotnost razvoja jezika. Še vedno ne podpira zares objektnega programiranja, sovražim znak $, na živce mi gre \"komercialnost\" zend cachejev, če sodobni jeziki praviloma to ponujajo kot osnovno funkcionalnost (.pyc), njihovi DB layerji so še vedno narejeni tako, da začetnike spodbujajo k izdelovanju programov, dovzetnih za SQL injection...  Potem je pa vredno skritizirati še codebase, APIje, razširljivost in pogostost nekompatibilnih sprememb ob preskakovanju različic."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_8: Slišal za PDO? Očitno ne. (Sicer pa tako predvidevam, da se boš sedajle obesi na exec...) V Pythonu je pa delo s stringi ultra tečno, da ne govorim o unicode ter UnicodeDecodeError...."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_4> V Pythonu je pa delo s stringi ultra tečno, da ne govorim o unicode ter UnicodeDecodeError....  To je res, a bo v bližnji prihodnosti izginilo. Vsi stringi bodo postali unicode.  @assistant_4> @assistant_8: Slišal za PDO? Očitno ne. (Sicer pa tako predvidevam, da se boš sedajle obesi na exec...)  Ne. Moj problem s PHP ni ta, da se v njem ne bi dalo pisat kvalitetnega softvera. Skrbi me dejstvo, da v PHP še vedno (tudi v 5.x serijah) spodbuja neučinkovito in nevarno programiranje, učinkovitega in varnega pa otežuje."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Python. Hm ... Zaenkrat upam da nikoli vec. Ogromna poraba pomnilnika, processorja. V primerjavi je streznik z 10 php aplikacijami porabil manj pomnilnika kakor 1 python aplikacija. In to PHP brez Zenda. Toliko napak, ki so brez repa in glave, kjer je bil vzrok napake na popolnoma drugem mestu nisem videl se v nobenem programskem jeziku. Tukaj prekasa celo asp.net.  Da ne omenim identanja s presledki. Katastrofa ce je potrebno na hitro kaj popraviti v konzoli, kjer ti unicode zjebe vrstice v editorju, se posebi kej se je nickolikokrat zgodilo, da isti OS, isti python, razlicno obnasa na razlicnih sistemih. In posledicni debugging na remote masini. Za unicode probleme sicer ni kriv sam python, vendar v kombinaciji ima edini taksne probleme.   Potem portanje iz 2.4 na 2.5. Prakticno nobena knjiznica na spletu ni delala brez sprememb. Portanje nekaterih je trajalo vec kakor leto. Backward compatibility anyone?  Za primer si oglejte trac. Super aplikacija. Vendar pa ob malo vecjem loadu postane pocasna za pop******.  Python se mi je zdel zelo zanimiv. Potem sem ga zacel uporabljat.  Mogoce bo Python 3k kaj boljsi. Vendar se bojim zaradi, da spet zaradi vecjih sprememb, da bo trajalo se dlje predno bodo sportali vse zunanje knjiznice. Skratka mene zaenkrat se ni preprical."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_9> Ogromna poraba pomnilnika, processorja. V primerjavi je streznik z 10 php aplikacijami porabil manj pomnilnika kakor 1 python aplikacija. In to PHP brez Zenda.  Če ne znaš pravilno zrihtat, brez dvoma. Tudi php CGI požre približno 100x več resursov kot če isti site poganjaš z mod_php.  @assistant_9> Toliko napak, ki so brez repa in glave, kjer je bil vzrok napake na popolnoma drugem mestu nisem videl se v nobenem programskem jeziku. Tukaj prekasa celo asp.net.  S čim si pa delal, če ni skrivnost?  @assistant_9> Potem portanje iz 2.4 na 2.5. Prakticno nobena knjiznica na spletu ni delala brez sprememb. Portanje nekaterih je trajalo vec kakor leto. Backward compatibility anyone?  Hecno - meni pa ni bilo treba portat _nobene_. Pa praktično vse delam v Pythonu, če še ni očitno.  @assistant_9> Za primer si oglejte trac. Super aplikacija. Vendar pa ob malo vecjem loadu postane pocasna za pop******.  Če jo deploya amater, sicer je pa hitra tudi ob večjem loadu.  Moj aplikacijski strežnik (pure python) požre na mašini približno 600 zahtevkov na sekundo. FCGI različica na lighttpd požre približno 1400 zahtevkov na sekundo, apache z mod_python pa okoli 1200. PHP implementacija jih požre približno pol manj v vseh primerih, pa sem kar vešč optimizacije PHPja.  Če si imel s Pythonom smolo pa seveda še ne pomeni, da je jezik slab - da ga lahko tvoj priljubljeni sistemski integrator, kdorkoli že je, narobe namesti, pa ne more biti krivda jezika."
+    },
+    {
+        "role": "assistant_9",
+        "message": "S čim si pa delal, če ni skrivnost? Vecji del je bil v TurboGears. Koliko je trajalo, da so bile sportane vse knjiznice na 2.5, ki jih uporablja, pa si lahko pogledas na njihovi mailing listi (vec kot 3/4 leta). Bilo jih je pa kakor pol.  Glavni vir problema \"cudnih napak\" je uporaba reflectiona in injectanja metod raznih v classe za vsako malenkost. Spodbujanje dobrega programiranja my ass. Posledicno deluje tudi avtocomplete v IDEjih tako kakor deluje (v ene 50%, eclipse+pydev). Primer SQLObjects. Ali pa ko naredis napako v Kid templateu. Ali pa ko se pdf generira drugace na razlicnem racunalniku drugace (sicer isti OS, isti python). Problem tici nekje v newline-ih.  Če jo deploya amater, sicer je pa hitra tudi ob večjem loadu. Zelo mozno. V Sloveniji python programerjev prakticno ni. Kaj sele expertov. Pa smo jih iskali kar nekaj. Do takrat bo pa python bolj za one man band aplikacije. Res pa je da je to bilo malo manj kakor 1 leto nazaj.  Če jo deploya amater, sicer je pa hitra tudi ob večjem loadu. Kaksen pa je pravilni deploy? Kaksna dokumentacija? Da vidim kje smo ga kiksnili :)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_9> Vecji del je bil v TurboGears.  Ja kaj pa delaš? TurboGears je... Turbo. Nikoli ni končan, releasan pa skoraj vsak mesec in ne glede na to kako se matraš dokumentacije za TVOJO različico ne boš našel, ker je ni.  @assistant_9> Primer SQLObjects. Ali pa ko naredis napako v Kid templateu.  Ja, v najnovejših verzijah se to ne dogaja več. Ampak sportat turbogears app na te verzije ni mačji kašelj. Vendar se v tem primeru pogovarjamo o TurboGears, ne o Pythonu.  @assistant_9> V Sloveniji python programerjev prakticno ni. Kaj sele expertov.  Experti res nismo poceni, vendar enako velja za PHPjevce. Razlika je le v tem da je slabih PHP programerjev na trgu bistveno več kot slabih Python programerjev. Po moje to ni naključje.  @assistant_9> Kaksen pa je pravilni deploy? Kaksna dokumentacija? Da vidim kje smo ga kiksnili :)   http://trac.edgewall.org/wiki/TracModWSGI  BTW: Ne delat s TurboGears, pa bo 90% težav takoj izginilo. TurboGears so in bodo še dolgo časa work in progress. Še vsak patch, ki sem ga jaz poslal, ko sem pri sebi kaj popravil, je bil že obsolete v SVN trunku. To ni za resno produkcijo."
+    },
+    {
+        "role": "assistant_10",
+        "message": "int stevilo = Integer.parseInt(jTextField1.getText());  Kaj pa  int stevilo = Integer.parseInt(jTextField1.getText().trim());"
+    },
+    {
+        "role": "assistant_9",
+        "message": "TurbogearsKo smo to ugotovili, je bilo na zalost ze prepozno. Ce bi to prej vedeli bi vzeli PHP. Poleg tega za PHP obstaja tudi opensource eaccelerator. Ja, v najnovejših verzijah se to ne dogaja več.To se pravi, se morajo developerji posebej ukvarjati, da se njihov library pravilno obnasa v IDEju in v Pythonu, da prikaze pravilno avtocomplete, ter callstack ob napakah. Experti res nismo poceni, vendar enako velja za PHPjevce. Razlika je le v tem da je slabih PHP programerjev na trgu bistveno več kot slabih Python programerjev. Po moje to ni naključje.Jasno, da jih je vec. Absolutno gledano je tudi PHP expertov vec, kakor je vseh Python programerjev (dobrih in slabih). Po moje tudi to ni nakljucje. ZATE je to zalostno dejstvo. Zame pa samo dejstvo, ki ga je treba upostevati pri izbiri jezika za nove projekte."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_9> To se pravi, se morajo developerji posebej ukvarjati, da se njihov library pravilno obnasa v IDEju in v Pythonu, da prikaze pravilno avtocomplete, ter callstack ob napakah.  Z reflectionom lahko polomiš autocomplete tudi v Javi. Če se potrudiš, da ne dela, potem pač ne dela.  @assistant_9> ZATE je to zalostno dejstvo.  Žalostno? Zame je to konkurenčna prednost. Jaz projekt napišem v Pythonu v približno 30% časa, ki ga za to potrebujejo najboljši PHP programerji.  @assistant_9> Zame pa samo dejstvo, ki ga je treba upostevati pri izbiri jezika za nove projekte.  Večino kode pri spletnih aplikacijah napišem v PHP, ker to zahteva trg. Kadar se lahko odločim sam, se odločim za Python, ker mi prihrani čas in tipkovnico."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jaz projekt napišem v Pythonu v približno 30% časa, ki ga za to potrebujejo najboljši PHP programerji. Vsaka ti čast   Mi opišeš malo kateri framework (če) uporabljaš, kašen server itd. lahko tudi na PVT. da ne bo offtopic tle."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Saj mislim da ni off-topic.  Kadar lahko vedno uporabim svoja orodja, zgrajena nad mod_python in FCGI v kombinaciji z različnimi templating stroji, najpogosteje s cheetah in KID.  Precej reči sem pokradel iz TurboGears, a se ga ne upam uporabiti za večje projekte odkar sem nazadnje enega nadgradil :P  Včasih se zatečem tudi k Djangu, če so specifikacije takšne.  Pri PHP se pogosto zatečem k smartyju."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Z reflectionom lahko polomiš autocomplete tudi v Javi. Če se potrudiš, da ne dela, potem pač ne dela. V javi zelo tezko. Lahko pa mi demonstriras drugace. Primer za python. V Pythonu se npr on the fly generira cel kup metod npr. pri sqlobject. Kar pomeni, da dokler ti aplikacije ne pozenes ne more python vedeti katere so. IDE lahko samo neki na priblizno ugiba. In to se tudi dogaja. V javi tega ni. Vcasih so ljudlje pisali asm kodo, ki je spreminjala samo sebe. Danes tega prakticno noben vec ne pocne. Python to dela isto samo na visjem nivoju. Posledicno se compile time preverjanje prenese na runtime in s tem podaljsa razvoj ob iskanju napak. In potem isces generated metode, ki jih v resnici sploh ni, ali pa jih je nekdo zamenjal v runtimeu z drugo.  Da pa porabis 30% procentov glede na PHP. Ce primerjamo kot jezika (core php vs core python) hudo dvomim. Lahko pa da ti do tega pomagajo razni third party ali pa lastni frameworki oz. knjiznice.  Tudi v PHPju lahko delas do neke mere podobne zadeve  php. Predlagam ogled vsem, ki programirajo v phpju."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pravi devi smo že zdavnaj nehali uporabljati apache in mod_php za gonjenje php-ja :) nginx + php-fpm FTW"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_9> V javi tega ni.  Ja. Minus za Javo, kar se mene tiče.  Ampak ni, ker pri Javi tudi lahko to počneš - samo ker je strongly typed bi bilo to izjemno nehigienično početje. V Pythonu je to nekaj normalnega.  @assistant_9> Tudi v PHPju lahko delas do neke mere podobne zadeve php. Predlagam ogled vsem, ki programirajo v phpju.  No, tole je pa že nekaj vredno. Zdaj je treba samo še naredit bolj pythonic APIje, pa bo PHP kot Python, samo enostavnejši za web development."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Vcasih so ljudlje pisali asm kodo, ki je spreminjala samo sebe. Danes tega prakticno noben vec ne pocne. Python to dela isto samo na visjem nivoju. Posledicno se compile time preverjanje prenese na runtime in s tem podaljsa razvoj ob iskanju napak.  ne bo držalo , python je še vedno močno tipiziran , čeprav je sama tipizacija dinamična. php tipizacija je dinamična ter šibka.  reflection se uporablja za tipe kateri se ne poznajo ob compile time-u. in iz tega sledeč se pri kodiranju jasno , ne ve kateri bo uporabljan tip konsekventno autocompletition ne more delat.   autocompletiton ne more delat kolikor toliko spodobno(brez vsaj \"psevdo\" poganjanja programa ) niti v pythonu niti v php, za razliko od statično tipiziranih jezikov(java , vb.net,c#) kjer se zgradi v ta namen ast ob compile time-u(večinoma tipiziramo lahko že po parsanju , če pa se nad kodo izvajajo še metatransformacije je potrebno zadevo večinoma nekajkrat ponoviti nemerje , f#).   php je bil narejen zelo specialistično (procesiranje stringov) in kolikor sem pred leti gledal nekako objekti niso izgledali preveč native konstrukt. Za resno sodbo pa sam php premalo poznam vsekakor pa se mi znobenega vidika ne zdi zadosti privlačen jezik , da bi mu namenil večjo pozornost."
+    },
+    {
+        "role": "assistant_9",
+        "message": "No, tole je pa že nekaj vredno. Zdaj je treba samo še naredit bolj pythonic APIje, pa bo PHP kot Python, samo enostavnejši za web development. Nekako se gibljejo vsi jeziki/frameworki za web razvoj okoli MVC. Za php jih je ze vec kakor za python.  link. Je pa res da bolj obesajo na zvon razne django, tg, ruby on rails. reflection se uporablja za tipe kateri se ne poznajo ob compile time-u Na splosno imam obcutek, da python aplikacije to izkoriscajo cisto povsod. Dokler delas to v svoji kodi ok. Ko pa moras debugirati tuje knjiznice, kjer se potek kode spreminja je pa drugace. Poleg tega je compile optimizacija reflectiona izredno problematicna. Tudi sam ga uporabljam v phpju do neke mere. Se vedno je pa bolj pomemben code readability. in kolikor sem pred leti gledal nekako objekti niso izgledali preveč native konstrukt Ja pred nekaj leti. Sedaj imas frameworke, ki uporabljajo star ali pa oo nacin. Kar ti je ljubse.   V obeh (in se katerem drugem jeziku) je lahko nacin dela podoben. Tezko bi videl razliko, kjer bi bil pri pythonu za vec kot 300% bolj produktiven. Bom pa ko mi bo cas dopuscal, probal tudi ruby. Ceprav baje je tudi dokaj pocasen."
+    },
+    {
+        "role": "assistant_0",
+        "message": "PHP je so-last-century. Ah dej no, C++ je tudi last century pa je še zmeraj precej OSS pisanega v njem AFAIK. moti me skoraj popolna odsotnost razvoja jezika Malo poglej na uradno stran, še zmeraj se jezik razvija, ampak kaj ti nuca razvoj, če hosting ne podpira zadnje stable verzije. Nekateri še sedaj ko so pri PHP-ju opustili podporo za PHP4 vztrajajo na 4ki. Še vedno ne podpira zares objektnega programiranja PHP pač ni po defaultu usmerjen jezik... sicer pa povej mi kako bi z objektno usmerjenim jezikom kot je npr. Java naredil tole: <p><?php echo $var; ?></p> sovražim znak $ Meni se zdi znak $ koristen, ker posledično spremenljivke izstopajo in jih lažje ločiš od konstant..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "> Ah dej no, C++ je tudi last century pa je še zmeraj precej OSS pisanega v njem AFAIK.  A v PHPju pa ni?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_0> sicer pa povej mi kako bi z objektno usmerjenim jezikom kot je npr. Java naredil tole: <?php echo $var; ?>  Jaz bi to zapisal kot $var ali pa kot <?php echo var; ?>  Tisti $ v kodi se mi zdi totalno odveč.  Da mešaš kodo in podatke je seveda prima, dokler počneš majhne reči, potem pa postane ta funkcionalnost neuporabljana zaradi kupa neprilik, ki jih prinese."
+    },
+    {
+        "role": "assistant_11",
+        "message": "reflection se uporablja za tipe kateri se ne poznajo ob compile time-u Na splosno imam obcutek, da python aplikacije to izkoriscajo cisto povsod. Dokler delas to v svoji kodi ok....  seveda je to res. v bistvu je to kar definicija dinamične tipizacije. vendar php spada v isti koš. python gre še korak dlje z duck typingom, ampak to ne prinese bistvene razlike. sam preferiram jezik z statično tipizacijo , type inherence(om) ter unmutabli. Je pa precej stvar okusa ter potreb."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_11> Je pa precej stvar okusa ter potreb.  To drži. Python je izjemno primeren za rapid prototyping, v večjih projektih pa od programerja pričakuje precej več discipline, kot je dejansko zahteva. Java je v tem pogledu precej bolj toga in posledično manj naporna.  PHP pa... bolj na strani pythona, ampak vsaj kar se mene tiče dosti težje berljiv in ne preveč primeren za rapid prototyping, če ne gre ravno za web."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Dinamični interpretirani jeziki so way to go za hiter razvoj.  Python pa je tudi \"multi-paradigm programming language\". Kar v praksi pomeni, da lahko z mešanico več možnih pristopov, veliko pridobiš na hitrosti razvoja, ker lahko mešaš funkcijsko, objektno in proceduralno filozofijo.  Potem so tu še list comprehension in veliko podobnih \"bonbončkov\" z relativno clean sintakso.  Veliko uporabnih knjižnic že v standardni \"inštalaciji\".   Zelo uporabna zadeva, ki jo ima python tudi standardno na voljo, je interpretiranje ukazov s konzole. Zelo uporabno za debugiranje.  To da je najbolj berljiv jezik (po mojem mnenju), pa veliko pripomore pri vzdrževanju projekta.  Hitrost razvoja in berljivost kode sta definitivno na strani Pythona. Daleč pred večino ostalih jezikov.  Se pa da veliko teh featurjev zlorabljat, ampak to se da pri vseh.  Kar se tiče web frameworkov, pa je Django zelo stabilna zadeva in resna alternativa ostalim spletnim ogrodjem. Edino kar je mal moteče, je da hoče bit platforma in je težko določene reči ločit od Djanga, brez da zgubiš veliko funkcijonalnosti. TurboGears je s tega stališča boljši (vsaj ko sem ga nazadnje uporabljal)."
+    }
+]

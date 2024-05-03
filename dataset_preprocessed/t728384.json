@@ -1,0 +1,198 @@
+[
+    {
+        "role": "user",
+        "message": "Torej, v Outlooku, ki je del Office365 skušam dodati IMAP account na lokalni mail server. Vpišem e-mail, nastavim, da bom podatke o serverju vpisal ročno, vpišem IP naslov serverja (je na lokalni mreži, ni odprt navzven), nastavim SSL/TLS šifriranje in porte, vpišem geslo... in potem me najprej vpraša če je samopodpisani certifikat OK (ta del je v redu), nato pa se pojavi okno Internetna e-pošta, k i stalno sprašuje za geslo... če dam Cancel, se potem v Outlooku pojavi obvestilo, da je prišlo do neznane napake.  Tole je slikica okna:   Kakšna ideja kako rešiti to reč?  Naj povem, da je ta account že delal, pa sem ga potem izbrisal iz Outlooka, ko pa ga hočem vpisati nazaj, se zgodi tole."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa je geslo res pravo? Resetiraj ga za zihr :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kreiraš nov profil? https://support.office.com/en-us/articl...  https://support.office.com/en-us/articl...  namesto IPja uporabiš FQDN?"
+    },
+    {
+        "role": "user",
+        "message": "Geslo je gotovo pravo. Preko web vmesnika deluje. Preko Thunderbird tudi. Celo spremenil sem ga (in novo je tudi gotovo pravo).  IP je že delal. FQDN-ja pa ta server nima.  Če naredim nov profil... uporabnik ima na obstoječem profilu že en mail account. Bo lahko uporabljal oba hkrati ali bo moral preklapljati med profili? Zanimivo. Sem preveril profile - jih ni. Seznam je prazen.  Pa ima uporabnik trenutno že nastavljen en mail account."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pri teh voodoo Microsoft problemih je običajno najbolj smiselno, da vse podreš in greš iz nule. Sem imel nekaj dni nazaj problem, da ni zaznal default mail programa -outlook, na koncu sem instaliral thunderbird. Enostavno škoda cajta. Čeprav zadnja verzija thunderbirda v60 ne zna delat s šumniki v win10. V glavnem vse skup za v koruzo..Update je delal 5 ur na SSD disku, pro verzija win 10. Groza v glavnem. Ne vem kako folk to vzdržuje +500 mašin, mogoče so enostavno lukcy."
+    },
+    {
+        "role": "user",
+        "message": "Porkaduš, kaj res ni neke pametne rešitve? A ti kekci pri Microsoftu ne znajo narediti enega normalnega produkta? Thunderbird je sicer res cela zmeda in težko shajam z njim, ampak takih traparij mi pa ne poka.  Sem sicer pobrisal poverilnice v Credential Managerju, pa je isti problem. Za konkretni server sicer sploh NI bilo poverilnice."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ponavadi si Outlook ne zapomni gesla, če meni, da je varnost prestroga - zaklenjeni porti, požarni zid...  https://www.emclient.com/"
+    },
+    {
+        "role": "assistant_3",
+        "message": "POP3, IMAP, Gmail, vse to deluje precej zanič v outlooku. MS noče tega porihtat.  Outlook se uporablja samo z Exchangom, oz njihovimi web storitvami. Takrat je super ."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pri gmailu ti takole teži kadar je vklopljena dvostopenjska avtentikacija in je treba v gmailu ustvariti še eno posebno geslo za aplikacije. Isto je, če je v gmailu onemogočen dostop za manj varne aplikacije.  Samo dvomim, da imaš kaj od tega na lokalnem serverju."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Še en glas za em client. Izgleda tako kot Outlook, za bolj lesene uporabnike, dela pa veliko bolje.  Za stranko sem začel računati koliko posegov je bilo zaradi Outlooka - sesutje profila, ost/pst datotek, zavračanje pošiljanja pošte ven, ... drag šport tale Outlook =)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 23. avg 2018 ob 09:17 izjavil:Porkaduš, kaj res ni neke pametne rešitve? A ti kekci pri Microsoftu ne znajo narediti enega normalnega produkta? Thunderbird je sicer res cela zmeda in težko shajam z njim, ampak takih traparij mi pa ne poka.  Sem sicer pobrisal poverilnice v Credential Managerju, pa je isti problem. Za konkretni server sicer sploh NI bilo poverilnice.  Hm, a ni zanimivo da ljude pri naboru net maske /23 uporabljajo ip naslov, ki je med drugim preko ne majhne geo/nlb/fw forwardiran na backend streznik...morda sem nor, ampak za tistim ip naslovom, kjer se dela translacija glede na fqdn, ravno ne more zadeva delat. Ta si ravno prvic, ko je vzpostavljen persisten piskotek, ko je prvic testiral, zgolj slucajno ostal na istem strezniku. Zadeva v povezavi z oblakom, ne more delati preko ip"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz sem switchal na Mailspring, če ti kaj pomaga."
+    },
+    {
+        "role": "user",
+        "message": "Ne, to ni Gmail, to je v bistvu v lokalnem omrežju Zimbra server postavljen.  Ja, to sem opazil, da z Exchangom dela dobro (odlično nikakor ne; nekatere stvari so še vedno precej lesene), z ostalimi so pa same težave.  Do tega, da user, ki ima do istega accounta Exchange povezavo maile dobi precej prej kot če je do istega accounta IMAP povezava.  @assistant_2 je 23. avg 2018 ob 09:26 izjavil:Ponavadi si Outlook ne zapomni gesla, če meni, da je varnost prestroga - zaklenjeni porti, požarni zid...  https://www.emclient.com/  Kaj to pomeni?  Zaklenjeni porti na mail serverju?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Mi uporabljamo Opera Mail. Izjemno hiter mail client, če ne rabiš integriranega koledarja.  Outlook je PITA na gogolplex. Če imaš dostop do logov mail serverja, preveri, če je s certifikati in predvsem SSL/TSL verzijami res vse v redu. To je največkrat težava, ko je vse ostalo pravilno. Tudi, ali je morda uporabniško ime napačno - recimo, da mora biti ime@domena ali kaj podobnega?"
+    },
+    {
+        "role": "user",
+        "message": "Hec je, da je zadeva delala, dokler nisem accounta izbrisal. Zdaj sem hotel (isti!) account spet dodati (nazaj), pa ne dela več."
+    },
+    {
+        "role": "assistant_9",
+        "message": "pejt v control panel/credential manager tm najdi zapise ki se navezujejo na ta račun in jih pobriši. reštart, nato se vrž v konfiguriranje outlooka.. mogoče bo delalo brez da pobrišeš profil, če ne pa ponovi (pobrišeš robo v credential managerju in tudi outlook profil, reštart in ponovno)"
+    },
+    {
+        "role": "assistant_10",
+        "message": "MS ima ... seveda ... exchange.  Po moje nalašč zafrkavajo IMAP in POP, da pač kupiš njihov exchange.  Obratni problem je na linux, ko težko najdeš exchange klienta da je normalen (samo en plačljiv plugin za tbird), evolution pa zelo švoh, medtem ko android to ima vgrajeno... pa razumi kdor more.  Isto je pri formatih odt in doc (oz. docx).   Enostavno MS po moje nalašč ignorira standarde (nam v firmi so skušali vsiliti njihov 365, pa sem jih poslal v kurac naj se jebejo). Samo če bo šlo tako naprej...  zz"
+    },
+    {
+        "role": "assistant_8",
+        "message": "MS bi izgubil zelo veliko klientele, če exchange slučajno ne bi deloval na mobilnih platformah. Oni so odvisni od tega. Če se spomnite, 2007, je bil exchange med velikimi \"fičri\", ki so jih hvalili za iPhone, ko so najavili App store. Sicer osebno z IMAP nimam nekih težav, ampak Outlook in njegovi profili in PST/OST datoteke so pa en velik clusterphoque.  Nazaj na temo. A če narediš nov profil (control panel -> mail -> profiles), in tam odpreš ta račun, ali slučajno deluje?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Iz neznanega razloga nisem mogel dodati IMAP računa za google v samem Outlook-u (account settings -> email -> new).  Ko sem isto naredil v control panel -> mail -> email accounts, je delovalo?!"
+    },
+    {
+        "role": "user",
+        "message": "Hmm, zdaj sem ugotovil še eno budalaštino.  Imam skonfigururan account na Office365 do katerega dostopam preko Exchangea z Outlookom.  Do istega accounta dostopam preko IMAP iz telefona.  No, ko pošljem mail s telefonom preko IMAP, se ne sinhronizira s cloudom (na Outlooku ga ne vidim).  Mislim, W.T.F?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "hja, seveda da ne - on se bo syncal na exchange.  Jaz osebno ne vem kako se to obnaša znotraj exchange okolja (če imaš exchange in IMAP hkrati), a kolikor jaz razumem imaš lahko eno ali drugo. Oboje pa ne.   Saj pravim, to je pomoje nalašč. Pa je exchange okolje vrhunsko - samo v resnici - kdo pa rabi vse tiste bombončke? Ključen je mail, vsaj kar jaz delam, ostalo me ne zanima, že zato ne, ker sem na Linux.  Sicer pa kot sem rekel - exchange na androidu dela brez problema in ni razloga, da imaš IMAP  zz"
+    },
+    {
+        "role": "user",
+        "message": "Ja,ampak na starih BlackBerryih ne dela Exchange... nič, bo pač uporabnik kupil nov telefon. Vžno, da je pri Microsoftu vse pregledno in ni skritih stroškov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 25. avg 2018 ob 07:38 izjavil:Ja,ampak na starih BlackBerryih ne dela Exchange... nič, bo pač uporabnik kupil nov telefon. Vžno, da je pri Microsoftu vse pregledno in ni skritih stroškov.   Kaj nimas bb cloud?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 24. avg 2018 ob 19:11 izjavil:Hmm, zdaj sem ugotovil še eno budalaštino.  Imam skonfigururan account na Office365 do katerega dostopam preko Exchangea z Outlookom.  Do istega accounta dostopam preko IMAP iz telefona.  No, ko pošljem mail s telefonom preko IMAP, se ne sinhronizira s cloudom (na Outlooku ga ne vidim).  Mislim, W.T.F?  Ko si boš svoj email klienta pravilno nastavil, se bo sinhroniziral...  Največkrat so on takih problemih butasti uporabniki .  Ziher si pozabil nastavit, da se ti Sent folder (ali kak podoben) sinhronizira...  Sicer pa uporabljaj Outlook tudi na mobitelu, pa ni panike. Čeprav ni najbolj hiter pri sinhronizaciji...  @user je 25. avg 2018 ob 07:38 izjavil:Ja,ampak na starih BlackBerryih ne dela Exchange... nič, bo pač uporabnik kupil nov telefon. Vžno, da je pri Microsoftu vse pregledno in ni skritih stroškov.   A daj no...  Zakaj raje ne uporbaljaš Reglje? Ziher je še vedno kul...  Čas da se izkoplješ iz jame v trenutni čas..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Očitno sem špilfrderber, ampak meni in mojim strankam delujejo različne verzije Outlooka ali Windows Maila brezhibno preko IMAP in POP protokolov.   Si je pa včasih potrebno vzeti kakšno minuto več časa pri nastavitvah. Ali bognedaj celo pogoglati za rešitev."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 25. avg 2018 ob 11:42 izjavil:Ziher si pozabil nastavit, da se ti Sent folder (ali kak podoben) sinhronizira...  Aha.  In kje to nastavim?  Mislim, imam tudi Office365 račun na Thunderbirdu, ki sicer z drugimi IMAP strežniki nima težav. Lahko sicer, da je treba kje še kaj posebej nastaviti, ampak sem preklikal nastavitve in ni videti"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Me nič ne čudi glede na tvoje, zadnje čase množico postavljenih \"first-google-results-questions\"...  Evo ti rešitve...  https://support.mozilla.org/en-US/quest..."
+    },
+    {
+        "role": "user",
+        "message": "No, zdaj si spet dokazal to, zaradi cesar se vsi na forumu iz tebe norca delajo. To imam ze vse nastavljeno, pa ne dela. Mislim da je problem tocno to kar je Zvezdica napisal."
+    },
+    {
+        "role": "user",
+        "message": "OK, še eno opažanje... za določen mail account prihaja nova pošta z večurno zamudo.  Se pravi, v predal je sicer normalno dostavljena, ampak Outlook jo prikaže šele čez precej časa.  Razen... razen, če Outlook ugasneš in potem ponovno vklopiš. Potem nove maile čudežno takoj najde. Se pravi, nekaj časa deluje normalno (nov mail pride v minuti ali kaj podobnega), potem se pa očitno nek podproces \"obesi\" in do restarta programa je obnašanje Outlooka kot opisano.  Kakšna ideja kaj bi bilo? Protokol je tokrat POP3. Nastavitve so default."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Kaj pa, ko pritisneš send/receive? Pride pošta takoj?"
+    },
+    {
+        "role": "user",
+        "message": "Hmm... v Office365 admin panelu naredim novega uporabnika z novim e-mail naslovom. Nastavim geslo, dodelim licenco.  Nato grem v Outlook 2016 in kiknem dodajanje uporabnika. Vpišem e-naslov, vpišem geslo... in, voila! - prišlo je do neznane napake! Enostavno se novega poštnega e-računa NE DA dodati."
+    },
+    {
+        "role": "user",
+        "message": "Ni problema... izbrišeš uporabnika, narediš novega (z drugačnim imenom!) - pa dela.  Isti postopek kot prvič, ampak prvič ni delalo, zdaj pa dela. Kaj bi se sekirali, it's Microshit!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Dodajanje licence, in pricakovati takojsnje \"instantno\" delovanje postnega predala je no vsaj v oblaku, malo utopicno. A ne. Si preveril, da je imel uporabnik ze ustvarjen postni predal ko si testiral?, al je imel samo email."
+    },
+    {
+        "role": "assistant_14",
+        "message": "@user je 1. okt 2018 ob 21:18 izjavil:Isti postopek kot prvič, ampak prvič ni delalo, zdaj pa dela. Kaj bi se sekirali, it's Microshit!   Nič kaj pretresljivega. Zgoraj je celo eden pisal o Exchangu kot vrhunski rešitvi.  Millions of man hours wasted."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Jaz bi dal uporabnikom outlooka en preprost test: konfiguracijo novega e-poštnega računa na outlook in thunderbird. Pa da vidimo kje bo šlo čez lažje.  Ampak tak pravi račun, ne nek gmail/yahoo/neki, za kar ima ali google/yahoo ali outlook posebno konfiguracijo.  Mimogrede, ali še kdo opaža, da ob pošiljanju e-pošte preko SMTP na office365 občasno javi da server ne obstaja?  Na dig se javijo povsem normalno, s klientom pa ene 5 minut oddaja ne deluje, potem pa normalno za kak teden."
+    },
+    {
+        "role": "assistant_10",
+        "message": "lp,  exchange okolje, kjer moraš uskladiti delo stotin ljudi, je pač nadmočno v tem trenutku, za običajne potrebe. Pa sem sam recimo linuxaš, ampak vidim, da dela. SO pa fore in ovire, ki jih MS vedno zna dati not. Drugega celostnega okolja za home ali small business userja enostavno ni. TO je žalost - ne to, da MS nekaj dela. Kje je kako okolje, ne vem, Tbirda? Jebenega klienta naredijo v 20 letih in to je to? Svašta... Še na macu so morali porihtati office in exchange, ker sami niso zmogli.  Tbird recimo exchange ne podpira (spet nekaj o kvaliteti tega klienta) - tko da primerjava ni fer. Obstaja samo en plačljiv plugin, da dela, pa še to preko OWA, če se ne motim (ga uporabljam). Ne vem zakaj nekdo ne porta android rešitve na linux... ali tbird. A pustimo to. Potem primerjaj vsaj Evolution, k pa je hecen...   Obratno - če greš recimo na POP ali Imap - pa ti exchange ne bo delal - oziroma ne moreš oboje hkrati - torej more cela firma na POP in izgubiš integracijo. Ja je nalašč, sam kaj češ. In potem so težave z outlookom, drži - nisem pa ziher ali izgubiš še prednost enotne prijave v winse? Žal ali na srečo sem pingvin.  Napiši boljši program, pa bo, hehe  Glede na cirkuse okoli office in nespoštovanja standardov, je exchange nekaj, kar vsaj dela, skor 100%. Pač ni več časov, daimaš irc, pa mail. Zdaj je mail več kot mail, sicer je to neumno za 95% ljudi, sam izbire nimaš.  zz"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Heh, tu imaš dva pacienta, ki ju ne boš prepričal. :) Why bother then?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Glede exchange okolja ne bom komentiral, ker nimam dovolj izkušenj. To, da drugega celostnega okolja za home ali small business userja ni, je pa bedarija. Kaj je to celostno okolje. Naše stranke so od 1 do ene 150 uporabnikov. Vsak uporabnik ima neke svoje potrebe, ampak mail, koledar, taski, file-share jim ponujamo brez MS-ja. Delajo s podatki in tehnologijami, ki ne omogočajo in dovoljujejo hranjenja v oblakih, cena postavitve infrastrukture pa je dandanes tako majhna, da se oblak tudi ne splača.  Ampak moje bentenje ni vezano na exchange (no, delno tudi), temveč na Outlook. Kot je v eni temi xmetallic napisal in se z njem strinjam, Outlook je najboljši Outlook odjemalec. Verjetno tudi Exchange odjemalec. Ampak to je pa to. IMAP podpora je porazna, meji že na debilizem. POP3 deluje, dokler so PST datoteke OK. Ko so večje je od par 10GB si ga nasrkal (tudi OST), ker so vse MSjeve rešitve to, da naredi nov profil in nove PST/OST datoteke. Cela ekonomija je narejena iz rešitev za težave z Outlookom, ko ne se odpre, ko ne prejema pošte, ko ne oddaja pošte, ko ne najde pošt, ...  Ne vem, a pri vas nima nihče več od 10GB pošte? Nimate nikogar, ki bi se ukvarjal s prodajo, marketingom, logistiko? Ja, lahko se delajo dodatne arhivske mape, ampak potem so to PST datoteke in niso več syncane na mailsrv in uporabnik nima dostopa do njih iz drugih naprav.  Glede takihle \"Glede na cirkuse okoli office in nespoštovanja standardov, je exchange nekaj, kar vsaj dela, skor 100%.\" se pa vedno spomnim tistega memeta \"60% Of The Time, It Works Every\""
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_5 je 3. okt 2018 ob 06:15 izjavil:Glede exchange okolja ne bom komentiral, ker nimam dovolj izkušenj. To, da drugega celostnega okolja za home ali small business userja ni, je pa bedarija. Kaj je to celostno okolje. Naše stranke so od 1 do ene 150 uporabnikov. Vsak uporabnik ima neke svoje potrebe, ampak mail, koledar, taski, file-share jim ponujamo brez MS-ja. Delajo s podatki in tehnologijami, ki ne omogočajo in dovoljujejo hranjenja v oblakih, cena postavitve infrastrukture pa je dandanes tako majhna, da se oblak tudi ne splača.  Ampak moje bentenje ni vezano na exchange (no, delno tudi), temveč na Outlook. Kot je v eni temi xmetallic napisal in se z njem strinjam, Outlook je najboljši Outlook odjemalec. Verjetno tudi Exchange odjemalec. Ampak to je pa to. IMAP podpora je porazna, meji že na debilizem. POP3 deluje, dokler so PST datoteke OK. Ko so večje je od par 10GB si ga nasrkal (tudi OST), ker so vse MSjeve rešitve to, da naredi nov profil in nove PST/OST datoteke. Cela ekonomija je narejena iz rešitev za težave z Outlookom, ko ne se odpre, ko ne prejema pošte, ko ne oddaja pošte, ko ne najde pošt, ...  Ne vem, a pri vas nima nihče več od 10GB pošte? Nimate nikogar, ki bi se ukvarjal s prodajo, marketingom, logistiko? Ja, lahko se delajo dodatne arhivske mape, ampak potem so to PST datoteke in niso več syncane na mailsrv in uporabnik nima dostopa do njih iz drugih naprav.  Glede takihle \"Glede na cirkuse okoli office in nespoštovanja standardov, je exchange nekaj, kar vsaj dela, skor 100%.\" se pa vedno spomnim tistega memeta \"60% Of The Time, It Works Every\"  Mam stranko, cca 15k postnih predalov, produkcija je na 16 tih exchange streznikih + 4 jurnal strezniki, baz je 360. V novembru zacnemo migracijo v oblak, ker je lokalna postavitev predraga. Verjetno imajo tem podjetju kvalitetnejsi kader da preracunajo kaj je ceneje, kot ti."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Mam stranko, 50k userjev. Že zdavnaj so pobegnili na Gmail, ker niso sfolgali niti z vedno novimi in novimi nadgradnjami major verzij serverjev \"za zdravje\". (Če jim povem, da vsak Postfix že 10 let dela z isto konfiguracijo, mi preprosto nočejo verjeti.)  Držim pesti tudi, da se več ne dogajajo scene, ko se redno 1x mesečno zabaše input queue \"za zdravje\".   Ampak, ja, važno je, da ima folk koledar v Outlooku."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_6 je 3. okt 2018 ob 07:41 izjavil:@assistant_5 je 3. okt 2018 ob 06:15 izjavil:Glede exchange okolja ne bom komentiral, ker nimam dovolj izkušenj. To, da drugega celostnega okolja za home ali small business userja ni, je pa bedarija. Kaj je to celostno okolje. Naše stranke so od 1 do ene 150 uporabnikov. Vsak uporabnik ima neke svoje potrebe, ampak mail, koledar, taski, file-share jim ponujamo brez MS-ja. Delajo s podatki in tehnologijami, ki ne omogočajo in dovoljujejo hranjenja v oblakih, cena postavitve infrastrukture pa je dandanes tako majhna, da se oblak tudi ne splača.  Ampak moje bentenje ni vezano na exchange (no, delno tudi), temveč na Outlook. Kot je v eni temi xmetallic napisal in se z njem strinjam, Outlook je najboljši Outlook odjemalec. Verjetno tudi Exchange odjemalec. Ampak to je pa to. IMAP podpora je porazna, meji že na debilizem. POP3 deluje, dokler so PST datoteke OK. Ko so večje je od par 10GB si ga nasrkal (tudi OST), ker so vse MSjeve rešitve to, da naredi nov profil in nove PST/OST datoteke. Cela ekonomija je narejena iz rešitev za težave z Outlookom, ko ne se odpre, ko ne prejema pošte, ko ne oddaja pošte, ko ne najde pošt, ...  Ne vem, a pri vas nima nihče več od 10GB pošte? Nimate nikogar, ki bi se ukvarjal s prodajo, marketingom, logistiko? Ja, lahko se delajo dodatne arhivske mape, ampak potem so to PST datoteke in niso več syncane na mailsrv in uporabnik nima dostopa do njih iz drugih naprav.  Glede takihle \"Glede na cirkuse okoli office in nespoštovanja standardov, je exchange nekaj, kar vsaj dela, skor 100%.\" se pa vedno spomnim tistega memeta \"60% Of The Time, It Works Every\"  Mam stranko, cca 15k postnih predalov, produkcija je na 16 tih exchange streznikih + 4 jurnal strezniki, baz je 360. V novembru zacnemo migracijo v oblak, ker je lokalna postavitev predraga. Verjetno imajo tem podjetju kvalitetnejsi kader da preracunajo kaj je ceneje, kot ti.   Če jim ti računaš potem ne, ker ne ločiš med 5 in 150 uporabniki ter 15.000 (z besedo petnajsttisoč) uporabniki.  In še enkrat - ne poznam exchange toliko da bi solil pamet drugim. Poznam pa Outlook da je totalen jajc. In če med 15k uporabniki ne najdeš takega, ki ima 50GB pošte, ne vem s čim se ukvarjate. Lahko pa da imate urejeno tako, da je dovoljeno max 3 mesece pošt v Outlooku - ali zaradi varnost poslovanja (dober razlog) ali pa zato, ker vam Outlook tega ne sfolga (slab razlog).  @assistant_14 je 3. okt 2018 ob 08:33 izjavil:Mam stranko, 50k userjev. Že zdavnaj so pobegnili na Gmail, ker niso sfolgali niti z vedno novimi in novimi nadgradnjami major verzij serverjev \"za zdravje\". (Če jim povem, da vsak Postfix že 10 let dela z isto konfiguracijo, mi preprosto nočejo verjeti.)  Držim pesti tudi, da se več ne dogajajo scene, ko se redno 1x mesečno zabaše input queue \"za zdravje\".   Ampak, ja, važno je, da ima folk koledar v Outlooku.   Enim sem dal testirali emClient, ker je Thunderbird \"tak jajc\". Sedaj testirajo Thunderbird, ker je tudi emClient \"en jajc\" =) Če ima še kdo kak predlog kar na dan z njim. Nočem da so na koncu na outlooku z \"arhivskimi\" poštami v PSTjih."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Torej je glavni problem v tem, da bi se rad znebil Outlook klienta (in ne Exchange serverja)?  Kakšne točneje so ovire, da ne bi mogel uporabljati koledarja v TB klientu?  Katerih funkcij kombinacija Exchanga + TB klienta nima v primerjavi z Exchangom + Outlook klientom?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Z moje strani sploh ni govora o exchange. Matthai ima probleme z office365, vmes je bil rant na outlook in sem dodal moja 2 centa. In imam ene stranke, ki Outlooka ne morejo zamenjati, ker so ga tako navajene.  Imam pa problem s prodajanjem exchangea kot edine možne platforme za podjetja, ki ne morejo tlačiti podatkov v oblake in imajo več kot 0 uporabnikov e-pošte. To je totalna bedarija in ja, tudi tvoj primer Postfixa je odličen. Preveri še OpenSMTPD."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_5 je 3. okt 2018 ob 12:04 izjavil:@assistant_6 je 3. okt 2018 ob 07:41 izjavil:@assistant_5 je 3. okt 2018 ob 06:15 izjavil:Glede exchange okolja ne bom komentiral, ker nimam dovolj izkušenj. To, da drugega celostnega okolja za home ali small business userja ni, je pa bedarija. Kaj je to celostno okolje. Naše stranke so od 1 do ene 150 uporabnikov. Vsak uporabnik ima neke svoje potrebe, ampak mail, koledar, taski, file-share jim ponujamo brez MS-ja. Delajo s podatki in tehnologijami, ki ne omogočajo in dovoljujejo hranjenja v oblakih, cena postavitve infrastrukture pa je dandanes tako majhna, da se oblak tudi ne splača.  Ampak moje bentenje ni vezano na exchange (no, delno tudi), temveč na Outlook. Kot je v eni temi xmetallic napisal in se z njem strinjam, Outlook je najboljši Outlook odjemalec. Verjetno tudi Exchange odjemalec. Ampak to je pa to. IMAP podpora je porazna, meji že na debilizem. POP3 deluje, dokler so PST datoteke OK. Ko so večje je od par 10GB si ga nasrkal (tudi OST), ker so vse MSjeve rešitve to, da naredi nov profil in nove PST/OST datoteke. Cela ekonomija je narejena iz rešitev za težave z Outlookom, ko ne se odpre, ko ne prejema pošte, ko ne oddaja pošte, ko ne najde pošt, ...  Ne vem, a pri vas nima nihče več od 10GB pošte? Nimate nikogar, ki bi se ukvarjal s prodajo, marketingom, logistiko? Ja, lahko se delajo dodatne arhivske mape, ampak potem so to PST datoteke in niso več syncane na mailsrv in uporabnik nima dostopa do njih iz drugih naprav.  Glede takihle \"Glede na cirkuse okoli office in nespoštovanja standardov, je exchange nekaj, kar vsaj dela, skor 100%.\" se pa vedno spomnim tistega memeta \"60% Of The Time, It Works Every\"  Mam stranko, cca 15k postnih predalov, produkcija je na 16 tih exchange streznikih + 4 jurnal strezniki, baz je 360. V novembru zacnemo migracijo v oblak, ker je lokalna postavitev predraga. Verjetno imajo tem podjetju kvalitetnejsi kader da preracunajo kaj je ceneje, kot ti.   Če jim ti računaš potem ne, ker ne ločiš med 5 in 150 uporabniki ter 15.000 (z besedo petnajsttisoč) uporabniki.  In še enkrat - ne poznam exchange toliko da bi solil pamet drugim. Poznam pa Outlook da je totalen jajc. In če med 15k uporabniki ne najdeš takega, ki ima 50GB pošte, ne vem s čim se ukvarjate. Lahko pa da imate urejeno tako, da je dovoljeno max 3 mesece pošt v Outlooku - ali zaradi varnost poslovanja (dober razlog) ali pa zato, ker vam Outlook tega ne sfolga (slab razlog). @assistant_14 je 3. okt 2018 ob 08:33 izjavil:Mam stranko, 50k userjev. Že zdavnaj so pobegnili na Gmail, ker niso sfolgali niti z vedno novimi in novimi nadgradnjami major verzij serverjev \"za zdravje\". (Če jim povem, da vsak Postfix že 10 let dela z isto konfiguracijo, mi preprosto nočejo verjeti.)  Držim pesti tudi, da se več ne dogajajo scene, ko se redno 1x mesečno zabaše input queue \"za zdravje\".   Ampak, ja, važno je, da ima folk koledar v Outlooku.   Enim sem dal testirali emClient, ker je Thunderbird \"tak jajc\". Sedaj testirajo Thunderbird, ker je tudi emClient \"en jajc\" =) Če ima še kdo kak predlog kar na dan z njim. Nočem da so na koncu na outlooku z \"arhivskimi\" poštami v PSTjih.  Ja no vsak exchange im zunanji storage. Notri je po 24x 6TB diskov. Ja no, pozabi da je pri tej kolicini administracija preko GUI vmesnika, za kaj vec kot pogledati uporabnikove nastavitve 1st in second level support neuporabna."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 2. okt 2018 ob 07:36 izjavil:Dodajanje licence, in pricakovati takojsnje \"instantno\" delovanje postnega predala je no vsaj v oblaku, malo utopicno. A ne. Si preveril, da je imel uporabnik ze ustvarjen postni predal ko si testiral?, al je imel samo email.  Sicer bi to argumentacijo še požrl, ampak: a) v prvem primeru je minilo okrog pol ure, pa zadeva še vedno ni delala b) ko sem ustvari nov account, je zadeva delala v roku 5 minut."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_10 je 2. okt 2018 ob 20:37 izjavil:Kje je kako okolje, ne vem, Tbirda? Jebenega klienta naredijo v 20 letih in to je to? Svašta... Še na macu so morali porihtati office in exchange, ker sami niso zmogli.  Točno to je tudi moj rant nad Linuxom. In Canonical seveda raje bluzi z Waylandom itd., namesto da bi denar usmerili v razvoj enega normalnega mail clienta.   @assistant_10 je 2. okt 2018 ob 20:37 izjavil:Obratno - če greš recimo na POP ali Imap - pa ti exchange ne bo delal - oziroma ne moreš oboje hkrati - torej more cela firma na POP in izgubiš integracijo. Ja je nalašč, sam kaj češ.  To je pa ena tistih svinjarij, ki mi gredo na jetra. Razumem, da to delajo nalašč, samo potem pričakujem, da bo v reklami za Office365 z velikim fontom pisalo - \"podpiramo PO3/IMAP, VENDAR - ...\".  Ne pa da človek \"verjame\" kako super je ta produkt, nato pa ugotoviš, da je v resnici cel kup \"če\", \"toda\" in \"ampak\"..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "lp,  tbird ni ustrezen nadomestek outlooka, ker ne podpira exchange (če hočeš ostati na njemu seveda, če pa ne pa vse daš na IMAP ali POP).  V Linux exchange uporablja Evolution - če je port za win, ne vem. Sam ga nikdar nisem uporabljal.  Žal drugih sistemskih okolij, razen exchange, ne poznam.  zz"
+    },
+    {
+        "role": "assistant_16",
+        "message": "@user je 22. avg 2018 ob 22:13 izjavil:Torej, v Outlooku, ki je del Office365 skušam dodati IMAP account na lokalni mail server. Vpišem e-mail, nastavim, da bom podatke o serverju vpisal ročno, vpišem IP naslov serverja (je na lokalni mreži, ni odprt navzven), nastavim SSL/TLS šifriranje in porte, vpišem geslo... in potem me najprej vpraša če je samopodpisani certifikat OK (ta del je v redu), nato pa se pojavi okno Internetna e-pošta, k i stalno sprašuje za geslo... če dam Cancel, se potem v Outlooku pojavi obvestilo, da je prišlo do neznane napake.  Tole je slikica okna:   Kakšna ideja kako rešiti to reč?  Naj povem, da je ta account že delal, pa sem ga potem izbrisal iz Outlooka, ko pa ga hočem vpisati nazaj, se zgodi tole.   Daj na clientu za foro nek hostname v hosts, pa se konektaj prek njega, Outlook (ter Exchange) je nor na DNS zapise.   Drugace za alternativo Exchangu : https://www.axigen.com/ POP3,IMAP,*DAV, Outlook Connector za Outlook integracijo (ker ta ne zna *DAV) ter ActiveSync za mobile push + mail + cal + contacts."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Nekaj podobnega bi lahko opravljal tudi FortiMail: https://www.fortinet.com/content/dam/fo... https://cookbook.fortinet.com/fortimail..."
+    }
+]

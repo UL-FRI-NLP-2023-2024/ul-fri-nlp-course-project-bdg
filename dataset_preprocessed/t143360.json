@@ -1,0 +1,482 @@
+[
+    {
+        "role": "user",
+        "message": "Danes je Sloncek (administrator strani Suprnova) na  NovaStream radiju naznanil razvoj programa eXeem.  eXeem sam po sebi ni nic novega, vendar se od ostalih BitTorrent P2P odjemalcev in omrezij razlikuje predvsem po tem, da odpravlja njihovo najvecjo sibkost - tracker.  Ne poznam sicer tocnega delovanja protokola, ampak v teoriji zadeva deluje podobno kot Kazaa vozli (node), kjer vsak uporabnik poslje informacije o datoteki svojim sosedom v omrezju. Tako se odpravi potreba po centralnem trackerju, saj je vsak uporabnik tako rekoc sam tracker.  Tak sistem omogoca zelo enostavno in hitro objavo, iskanje ter izpis novih datotek v omrezju, vendar zaradi narave BitTorrent protokola ne omogoca ucinkovitega arhiviranja.  Glede na to, da bo program cez dva, tri tedne na voljo javnosti (public beta), mislim da ne bo tezav, ce objavim nekaj screenshotov trenutne verzije (0.16 beta).  1.   2.   3.   4.   5.   6.    1. Prikaz okna New Torrents, kjer se izpisejo trenutno najnovejsi torrenti.  2. Iskanje po omrezju je hitro in enostavno.  3. Okno za prenos datotek. Jedro programa je BitTorrent protokol, natancneje knjiznica  libtorrent. Vsako datoteko je mogoce oceniti z oznako OK ali Not OK s pomocjo katere se izracuna rating, ter ji dodati komentar, ki se shranjuje pri uporabnikih in se na zahtevo presname.  4. Objava datotek v omrezje je prav tako preprosta. Izberemo opcijo Publish, poiscemo zeljeno datoteko ali direktorij ter vpisemo zahtevane informacije. Program avtomatsko kreira meta datoteko in jo razglasi v omrezje.  5. Log okno. Prikaz razglasitve datoteke med vozlisci (vrstica publish torrent: propagating add_torrent to 10 nodes in segment 1).  6. Ob ponovni osvezitvi okna New Torrents se objavljena datoteka pojavi v omrezju.  Program bo zastonj, vendar bo po vsej verjetnosti vseboval nekaj reklamnih pasic. Na voljo bo na straneh  Suprnova in  eXeem (se ne deluje)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "uf, koncno se je zacel neki premikat. ocitno pa res kr precej dela(jo) na tem projektu, ker slona ni nc na ircu, da bi ga mal povprasu, kako napredujejo   je pa zadeva precej zanimiva in upam, da bo kmalu na voljo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user: kako bo s protokolom? Bo odprt ali bomo uporabniki alternativnih operacijskih sistemov izviseli?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "jao jao zakaj mi beta ne dela"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1: v intervjuju je povedu, da bo za1x sam za win. linux in mac za zdej ne bo podprt, vsaj sam klient ne. ce ga bo kdo drug spisu"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sej to sem vprasal. Ali bodo dali ven specifikacije protokola?"
+    },
+    {
+        "role": "user",
+        "message": "Ne vem, to moras pa njega vprasat. :) Ampak glede na to, da bo program ad supported, dvomim.  No, se eno lastnost sem pozabil omenit in sicer povezave do datotek v omrezju podobno kot pri ed2k. Zna se torej zgodit, da se bodo na netu pojavile sharereactor-like strani. Program ima tudi auto-update.  301204 - Sloncek Interview www.novastream.org.mp3"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hehe, Suprnovo ugasnejo, kmal zatem pa usekajo z večjim strupom. Pomoje se lohk RIAA in drugi še neki cajta praskajo po riti z britvicami."
+    },
+    {
+        "role": "user",
+        "message": "No, eno slabost ima program. Zacetne informacije o vozliscih namrec dobi od glavnega streznika. To zna bit problem. :)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ni vse zlato kar se sveti"
+    },
+    {
+        "role": "assistant_5",
+        "message": "jp, adware, ni za linux, slabo se jim piše.   itak bojo spisal svoje kliente, adfri."
+    },
+    {
+        "role": "assistant_1",
+        "message": "citat iz /.  eXeem is a piece of shit. Not only that it will have adaware and spyware, it is also a \"lock-in\". You will only be able to use it on SuprNova. They have modified the torrent file. It is missing a lot of dictionaries (\"key -> value\"), and dictionaries that should have been subdictionaries start directly in the file. For example \"files\" is not in \"info\" it starts with it directly. This torrent changes were unnecessary. Also, the \"announce\" and \"announce-list\" are missing. eXeem has a hardcoded url of a tracker of all the peers on eXeem. The original seeder of a torrent acts as a tracker (so SuprNova won't have to host torrents), but eXeem is in no way decentralized because of the tracker that keeps in contact all the eXeem users (it does not care about torrents, just eXeem users). So, all you have to do is to kill the main server, and all the users of exeem will be disconnected (this happened when suprnova died). THIS IS WORSE THAN THE WAY TORRENTS ACT NOW. EXEEM IS HYPE AND A WAY TO MAKE MONEY. IT SUCKS! I think the best way to decentralized BitTorrent, is to have trackers that are decentralized IRC server style. If you people want something decentralized and a little bit of BitTorrent, get G2 (Gnutella2) and add BitTorrent's tit-for-tat to it."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Nevem zakaj, ampak tale exeem se mi zdi da bo naredil bitorrenta mocno podobnega ed2k protokolu. Mogoce pa je kaj narobe z mano in bi prosil, ce bi en razlozi zakaj bo tale program toliko boljsi od kake Amule ali eMule ali bilokaterega ed2k client-a."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6: eMule je grozno pocasna zadeva. Sam BitTorrent protokol za izmenjavo podatkov je bolje optimiziran (ni cakalnih vrst, vecja razprsenost datoteke, manjsi koscki etc..). Jedro je torej se vedno BitTorrent, samo nacin objave datotek se je spremenil.  Kar se tice reklamnih pasic, bi naj imel ze vgrajen v program, torej nekaj taksnega kot je imel eDonkey in ne spyware programa. Vsaj tako sem jaz razumel iz vcerajsnega intervjuja."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user: hvala za razlago, ampak se pa nebi strinjal da je mula pocasna zadeva. Priznam da za tiste ko vlecete dol 30 stvari ali manj je mogoce mula pocasna in torrent bolj primeren. Ampak ce pa si hardcore leecher pa imas 250+ downloadov pa ti mula tako hitro zapolni bandwith da je joj :P No pa itaq nebo tega clienta za linux se en cajt tak da :>"
+    },
+    {
+        "role": "assistant_0",
+        "message": "jest na emule dubim mn kot 10% stvari, ki jih downloadam. pa jih sploh ne tok velik. 5-8 max naenkrat. pa se za tistih par 100MB cakam 1 teden. tko da, ja, emula je extremno pocasna in nezanesljiva."
+    },
+    {
+        "role": "assistant_4",
+        "message": "600 sourcev, cela noč downloadanja in bilo preneseno 30MB. Emule seka ja. Naj vržejo .torrent file na kazaa in gnutello in je problem rešen."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4: Nisi nic naredil, ker mora se vedno nekje tracker laufat. :)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "kaj jambrate čez mulo  jest sm dal pred pol ure par komadov zdownloadat pa jih mam že vse dol"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ma spet en sranj spet en kp virusov, spyware-a in adware-a. Tko k Kazaa, Imesh tko je zj na vrsti Exeem. Se vedno ostajam zvest originalnemu torrentu ! Ta exeem nej pa nekam gre u PM."
+    },
+    {
+        "role": "assistant_9",
+        "message": "DC++ pa segment download! Ga ni cez to!"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ma folk mal se pocakmo bomo vidli kako se bo zadeva razvila je sele v razvojnem stadiju.Tut do torrent-a ko je prsu smo tk mal postran gledal...."
+    },
+    {
+        "role": "user",
+        "message": "Ja, dokler je zadeva se v zaprti beti nima smisla prevec spekulirat.  V praksi ze deluje zadovoljivo, ceprav ima se precej bugov. Kot receno, edini problem trenutno je hardcodana povezava do master serverja ko prvic pozenes program.  To bi IMO lahko resili podobno kot razvijalci pri Gnutelli. Imas hosts.txt datoteko, ki se redno prenavlja in vsebuje nekaj zacetnih vozlisc oz. super vozlisc. Ko imas enkrat te zacetne informacije, ne potrebujes vec nic drugega, saj s vsakim searchem in downloadom dobis informacije o vozliscih.  Bolj me pa moti, da zelijo zasluzit na tehnologiji in idejah, ki so jih pobrali od drugih. Se strinjam, da bi moral bit project ali vsaj protokol odprt."
+    },
+    {
+        "role": "assistant_11",
+        "message": "To bo treba resiti zelo elegantno. Zakaj? Ce se recimo zve, kdo so tisti beta testerji in se enemu od tistih ponudi (na pamet govorim) 100.000 USD, da pove IP, na katerem laufa \"master server\" je vse slo elegantno v 3 pisane marelice.   Tudi v primeru, kot pravis, da se client zdaj aktivno samo tja povezuje lahko pride do neprijetnih mrkov. Kiddy-ji lahko snifnejo IP glavnega serverja(ko bo program za vse-predvidevam da se IP-ja master serverja ne bo dalo videt v samem programu) in ga kdaj za finto ddosajo(dolgcas). Uporabniki so v tem primeru spet mrzli, ne morejo nic.   Je pa to beta verzija in marsikaj se še mora oz se še bo spremenilo."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Najbol zanimovo od vsega tega mi je, da na forumu nikol nesmes objavit linka do suprnove ali kakor koli ze,zdej ko se je zaprla in ces cas ce se bo sept odprla , pa se jo promovira ko reklamo za sir. www.suprnova.com dela se ne,pocakajte do naslednjega dne, mogoce se sreca vzge :)"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Ko bo na njej (Suprnovi) spet DL linki za exeem ali kaj podobnega pa bo stvar za nazaj moderirana ali kaj?   Kaksno toleranco bomo izbrali moderatorji?"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Warez je baaaad... mmkay  sicer ne-da-bi-kaka-moderacija lahk preprečila uporabo torrentov & podobnih programov za vsakega \"ilegalca\", ki ima kej soli v glavi.  Kolk je mal treba, da so BSA opranci happy.  Glavno da ti carji \"rešujejo\" svet pred zlobnizlobnimi gusarji in na iPodih piše \"Please don't steal music.\"  Okej... naivne na stran, gremo k pomembni temi:  Glede novice... Najprej bo na voljo en zanič programček poln reklam, spywarea in podobnih svinjarij... tipičen razvoj dogodkov za situacijo, ko nekdo zavoha keš in hoče svoj iberdobrikul programček razširit med čimveč folka in jim ob tem (za svoj trud kopiranja tujih protokolov) vsilit svoje reklame. Potem pa, ko bo pameten folk presnifal paketke, pogruntal kako zadeva v ozadju deluje in bo čez neki časa kak gnu projekt vstal iz tega... takrat se bo pa taprava revolucija začela.  bottom line: Tale zadeva bo samo začrtala pot napredka... defenitivno pa (adware, closed source, ipd...) ne pomeni sama po sebi nek napredek, prej nasprotno v primerjavi z originalnimi torrenti."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Kje bi pa jaz lahko potegnil eXeem?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Beta testerji so _izbranci_. Ze iz zgoraj navedenega razloga. Imajo informacije, ki bi \"zlikovcem\" lahko prisle se kako prav za kasnejse hitro unicenje in propad klienta."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Hvala za informacijo."
+    },
+    {
+        "role": "user",
+        "message": "Kot zgleda bo tudi  Ares imel decentralizirano mrezo.   http://slyck.com/forums/viewtopic.php?t=8419  11) What can you tell me about the rumored anonymity features and BitTorrent speed downloads?    Anonymity is obviously the most highly demanded feature in P2P. We will combine IP blocking along with innovative cloaking techniques to protect the user.   Warez 3.0 will include BitTorrent downloading. Yes, decentralized BitTorrent. We have been working with BitTorrent technology for a while now, and soon we will combine the best of both worlds. Similar to SuprNova's recently announced network Exeem, users will search for torrent files within the Warez P2P network instead of a web site. Tracking is handled within the client itself."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Like i said...   Pa mamo dvojcka :)"
+    },
+    {
+        "role": "assistant_15",
+        "message": "i2p - anonimni bittorrent"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Kaj se si vse nebojo zmislili."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Sam en hint: v mula search napište eXeem    presenečeni kaj??"
+    },
+    {
+        "role": "user",
+        "message": "Rabis se beta kljuc, ker gre za zaprto beta testiranje. Public beta bo zunaj cez dva, tri tedne."
+    },
+    {
+        "role": "assistant_16",
+        "message": "em kak se že imenujejo oni aja crackerji"
+    },
+    {
+        "role": "assistant_17",
+        "message": "Prvo kot prvo baje je sloncek bl tko tko glede codiranja  Zato na eXeemu delajo drugi.  Drugo njemu se gre sam za kes tko da je prodal eXeema. Ena anonimna firma mu je ponudla sluzbo in je takoj skocu po njej. Tko da eXeem je zdej njihov.  Kar se pa tice Adware/Spyware dreka je pa se vecje srajne. OPEN SOURCE ALL THE WAY"
+    },
+    {
+        "role": "assistant_18",
+        "message": "A je sloncek res slovenc?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "Da."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Saj če bi se zbralo dovolj ljudi z dovolj idejami in znanja, bi se uzpostavilo paralelno open source omrežje, ki bi bilo bistveno bolje \"prodano\" uporabnikom. IMHO."
+    },
+    {
+        "role": "assistant_20",
+        "message": "ne disi mi ravno ta exeem...morda, ko bo brez adwera..."
+    },
+    {
+        "role": "assistant_21",
+        "message": "eMule je lahko prekleto hitra, če folk dost shara. Samo na žalost večina ne.  Prednost BT je ravno to, da ne seedaš starih fajlov in zato več seedaš novejše.. -> več uploada -> več downloada.   Glede torrentov.. zadeva je bila hitra na začetku, ko ni blo tolk leecherjev. Zdaj je pa že počasno, razen na trackerjih, ki te prisilijo, da ULjaš, kar pa lahko narediš samo z serverjem, ki je potem dost obremenjen in posledično dost stane, da ga laufaš.   Jedro programa je BitTorrent protokol, natancneje knjiznica libtorrent. Genialno. Vzameš že narejeno opensource zadevo.. dodaš par stvari.. in prodajaš pod znanim imenom (Suprnova)."
+    },
+    {
+        "role": "assistant_22",
+        "message": "pa gpl licenca sploh to omogoča?  /edit vem da ona pod katero so izdani bsdji to omogoča, takšne drznosti :) če gpl to omogoča potem tak ne vidim neke prednosti tega GePLa"
+    },
+    {
+        "role": "assistant_21",
+        "message": "Sej so samo uporabil knjižnico.. ostali del eXeema je ločen od tega.  edit: Nekako tako kot \"browserji\", ki uporabljajo IE engine. Ga uporabljajo, ampak spreminjajo pa ne."
+    },
+    {
+        "role": "assistant_23",
+        "message": "Naj se malce zgledujejo po razvijalcih edonkey omrežja, ki so naredili decentralizirano mrežo overnet, kasneje pa so jih kopirali pri emule-project in naredili podobno omrežje kademlia.  Sam pa najraje uporabljam MlDonkey, ki ima podporo za veliko p2p omrežij: edk2 (+ Overnet + Kademlia) bittorent Fasttrack (Kazaa) Gnutella Gnutella2 Opennapster Soulseek Na žalost DC++ ni popolnoma implementiran ( ni delal upload) in kot leecing program bil banan iz omrežja DC++ (je še v razvoju). Sheraza je kopirala del sourca od mldonkey-a. Mldonkey je opensource in dela na večih platformah (Unix, Linux, Win, Mac ...). Kot GUI pa je najboljši Sancho in se lahko kosa z GUI od Emule.  Za komentianje eXeema pa mislim da je še prezgodaj, čas bo povedal svoje. Če se bo dovolj razširil, bo zagotovo dodan v MlDonkey."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_21: ce je lib lgpl ja .. drgac bo pa se zanimivo  caqka: gpl lahko prodajas kolikor zelis. Samo source moras dati na voljo na zeljo prejemnika binarya. LGPL pa lahko poljubno linkas. Samo spremembe tega liba moras dat vet, na zeljo prejemnika binarya."
+    },
+    {
+        "role": "assistant_22",
+        "message": "upajmo da so naštudirali licence :)"
+    },
+    {
+        "role": "assistant_24",
+        "message": "Tale Ares... Je to na BT omrežju al na muli, kazaa... Al na čem?"
+    },
+    {
+        "role": "assistant_25",
+        "message": "V katerem programskem jeziku pa razvijajo? Meni zadeva diši na Delphi. Kjer lahko importiraš C++ dll in uporabljaš njegove metode.  Lahko pa uporabljajo kak C++ v Visual Studio.Net (unmanaged, torej brez .Net knjižnic in okolja) s MFC knjižnico. Po mojem je to glavni krivec, da programa ne bo na linux, macx in itd. Če bi se jest lotil tega kineta, bi ga sprogramiral v javi s uporabo SWT (IBM proguntavščina, ki deluje hitro (ua vsako platformo native implementacija 2D)) in bi bil tako na voljo vsem platformam od enkrat. Da ne omenjam pomoči Java VM, ko bi se kak bug zgodil."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_24: Jedro je BitTorrent, dodali pa so podoben sistem omrezja, kot pri Kazi (vozlisca - nodes)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_25: wtf? Saj lahko prakticno z vsemi programskimi jeziki uporabljas libe?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "ja sam men java ni všeč ker je slowwww preveč"
+    },
+    {
+        "role": "assistant_1",
+        "message": "nimam obcutka, da bi bil Azerous pocasen"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Misliš Azureus?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "em kva je pa \"Azureus\" k nimam pojma :P nkol ču :P"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_19: mja .. kakorkoli se ze napise :)"
+    },
+    {
+        "role": "assistant_26",
+        "message": "@assistant_16 : azureus je java based torrent client"
+    },
+    {
+        "role": "assistant_16",
+        "message": "aja nism vedu ker jst torenta nism uporablu ker ni gor muske ki jo jaz največ dl jam tukaj v exeem bo pa tud muska mnde :)"
+    },
+    {
+        "role": "assistant_27",
+        "message": "Ni muske? Veliko si zamudil..."
+    },
+    {
+        "role": "user",
+        "message": "Azureusa sem probal, pa je dosti ramcka popapal, pa malce slugish mi je deloval.  Nimam tudi rad programov, ki imajo polno nekih opcij, ki jih nikoli ne rabim. Imam rad preprost, hiter in nenasicen vmesnik. Download, queue in nic drugega. Taksen, kot recimo ABC. ;)"
+    },
+    {
+        "role": "assistant_28",
+        "message": "I'm sure you have heard of the bill the RIAA is currently trying to pass here in the US making ALL reproduction and recording devices illegal? If that bill passes, even our telephone answering machines will be considered illegal     Kaj si nebojo vse še zmislili. Se pravi, da sem jaz sedaj extremni ilegalec ker sem si posnel koncerte v petek iz 3sat-a (TV) na Digitalni Video recorder in nato v MPEG-2 ? Plus tega sem tudi ilegalec ker imam doma video rekorder in modem z vgrajeno \"tajnico\". Pa tote bo treba narezat malo."
+    },
+    {
+        "role": "assistant_29",
+        "message": "@assistant_28:  naj grejo še bolj v ekstreme... tko bojo zgubil še tisto malo kredibilnosti, ki jo imajo... MPAA bo sama sebe pokopala. Hvala bogu!  btw: ABC je res kul client, enostaven in pregleden."
+    },
+    {
+        "role": "assistant_25",
+        "message": "Ganalfar: jest samo uganjujem v katerem jeziku ga pišejo. Any ideas kater"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_25: koga briga .. itak cist neuporaben podatek"
+    },
+    {
+        "role": "assistant_30",
+        "message": "Kakšni komentariji na MUTE?  mute-net.sf.net"
+    },
+    {
+        "role": "user",
+        "message": "Mah, saj teh tako imenovanih \"anonimnih\" klientov je ogromno. Lahko zascitijo promet, ne pa tudi IP naslova. Pa tudi kaj veliko uporabnikov nimajo. Ce hoces met \"dober\" P2P network, rabis velik community."
+    },
+    {
+        "role": "assistant_31",
+        "message": "Ma mislim, da bi se bilo bolje usmerit na linux in tam naredit se kaj bolj pametnega, tako si v vodi kjer je več ali manj vse zastonj in se nimas bat, da ti bodo en dan prisli in preobrnili hišo in ti nabasali kazni in te olupili po vrhu še te dali na hladno....   Če delaš nekaj proti zakonu te slej ali prej dobijo, stvar je samo čas.   Sam sem zbrisal disk in si naložil samo tisto, kar me ne morejo lovit in dribljat. Še malo pa se bom poslovil še od windowsov, in testiram Debian Sarge- super stvar, čeprav še v testing. Že samo s prvim cd-jem si naložiš ves sistem v grafičnem sistemu....pa še v slovenščini je zelo veliko....  Kdor ima čas za ga metat stran naj pomaga raje pri tem projektu v končnem bo imel bolj mirno vest....in več zadovoljstva....  Naj živi LINUX in ...."
+    },
+    {
+        "role": "assistant_32",
+        "message": "Nja, tole mi ne diši najbolj, ker so notri ADi pa še open source ni.... no ja bomo videli, kaj bo ratalo. Še glede mule: Mula je pa pač počasna kakor za koga. Če imaš recimo neko mašino 24/7 konektano na en server+kad in recimo 30+ aktivnih DL -> lightspeed. Če pa furaš to po samo 10 ur skupaj pa še to z enimi 5-10 downloadi je pa brezveze čist. Pri muli mi je všeč to, da je hassle-free. Poklikaš 50 linkov in greš lahko stran za en teden na relaksacijo."
+    },
+    {
+        "role": "assistant_31",
+        "message": "Ma si lahko izmislite sto načinov kako lahko preneseš programe, ampak vedno ostaneš na istem. Če ni dovoljeno uporabljat/razmnoževat programe, ki so plačljivi mora ostat pri tem. Smo Balkanci da iščemo luknjo v zakonu samo da zakon sfintiramo. Ala vam vera ste face.  Naj na glas razmišljam: Lahko bi si izmislili, da bi uporabljali microsoftov update ali drugi update program in z njim pobirali dol programe. Lahko bi uporabili msn, google, altavisto , yahoo,....in iz njihovih cachov pobirali informacije kdo in kje ima na svojem PC-ju programe za delit..... Vendar vedno ostane nelegalno je le nova finta za butalce.  To je le moje osebno razmišljane in zato vam ga ne dovolim uporabljat anci vam ga prepovedujem ma če hočete ga še patentiram in v patentu bo klavzula, da kdor bo ta patent uporabil moral do konc življenja....    Ljubi svojega bližnjega, kakor samega sebe."
+    },
+    {
+        "role": "user",
+        "message": "Izjava Slonceka o spy in adwaru v eXeemu.   http://www.suprnovaforums.net/index.php?showtopic=33150I have read many of users posts and many of you are saying that eXeem will be bundled with spyware, all of this rumors are not true!  Yes, I did tell Slyck.com that there is going to be Cydoor bundled with the program, but if any of you accusing us of putting in spyware, would care to read some recent reviews of Cydoor, you would have noticed that Cydoor is labled as Adware and that Cydoor has changed very much since it was labeled as Spyware.  What this Cydoor is going to do is, display the ads inside the program, just like the ads on the SuprNova.org have been right now. But nobody complained that they will not use the SuprNova.org, because it had ads on it. Well guys, those ads were Cydoor ads too. I would have not allowed this kind of ads being in the program, if I was not sure if they are safe!  There will NOT be any spyware or very annoying adware bundled with the software. You will have an option to also install sponsor toolbar inside would also include features for helping you use eXeem (searching through eXeem, your UP and DOWN speed, and similar funtions).  Also DO NOT think that I or anybody else sold SuprNova and its fanbase to this company. This company approched me few months ago and we together worked on the program. They developed the program based on experience from SuprNova.org Team and they included the funtions in the program that made SuprNova.org famous, easy and reliable.  Please, before you decide you want to talk bad about eXeem, remember, that we are trying to better P2P world, and you are not forced to use this program. There are plenty of P2P programs in the world right now and I am sure you will use the one that suits your needs best and if somebody sees this program as useful, then they are very welcome to."
+    },
+    {
+        "role": "assistant_5",
+        "message": "To še zmer nč ne pomen. BT protokol bojo pokvarl in bo isto."
+    },
+    {
+        "role": "assistant_13",
+        "message": "What this Cydoor is going to do is, display the ads inside the program, just like the ads on the SuprNova.org have been right now. But nobody complained that they will not use the SuprNova.org, because it had ads on it. Tale pa še ni slišal za Adblock..."
+    },
+    {
+        "role": "assistant_33",
+        "message": "saj imamo hosts."
+    },
+    {
+        "role": "assistant_34",
+        "message": "eXeem"
+    },
+    {
+        "role": "assistant_34",
+        "message": "Kaj mislite o tem da Slonček z eXeem-om nima praktično nič..razen \"marketinški\" trik oziroma oglaševanje:  After the demise of Suprnova, hype has risen over Exeem, the supposed heir apparent to the popular BitTorrent index. Today on Novastream, Sloncek announced it officially, but to me his announcement raised more questions than it did answers. Since the official exeem.com website still isn't up, I've got a few notes below. Thanks to several users on irc.suprnova.org, and Sloncek himself for answering my questions. First, Exeem really isn't an extension of Suprnova as the hype might have you believe: the connection between the two seems more marketing than anything else. Sloncek has been hired to promote their product as the heir apparent to his popular website, but his involvement really seems to be almost entirely PR. It'll work obviously: my headline on this story mentions Suprnova, and so will hundreds of websites around the world in the coming days. \"Yet another p2p app\" would not create anywhere near the waves that \"Successor to Suprnova Announced\" will. I hope that people judge exeem by its own merits and not by its (clever) marketing.  Second, Exeem is pretty much what was rumored earlier: a blending of the tracker, the BitTorrent client, and decentralized indexing. It's Windows only. It's in beta now, and will be out at some indeterminate date in the future. It also has a rating and commenting system which appears to be somewhat rudimentary. It's unclear to me if the rating system will be as useless as other attempts, and I think this is the critical thing: Suprnova succeeded because the content available on it was verified and trustworthy. Suprnova was as much the work of a few dozen editors as it was a list of torrent URLs. So far no other p2p system has achieved that level of accuracy. Exeem supports magnet sites which is a start, but not exactly p2p either. And did I mention that it's adware?  Third, there's a mystery company. Someone is paying Sloncek. He won't say who, but there's a history in the p2p world of secretive development. Since Exeem is to be adware, someday it will have a billing address, which means the legal issues faced by predecessors like Napster and Kazaa will be forthcoming, which is of course why we have a mystery company that Sloncek won't talk about in the first place. We definitely haven't heard the last of this.  Personally I was hoping for more: source code and cross platform compatibility never hurts. These are the things that made BitTorrent a huge success. I guess I was hoping for a new protocol instead of just another Kazaa. I guess I was hoping for a monumental leap, and instead Exeem to be a more incremental step. I'm sure we'll learn more in the coming weeks."
+    },
+    {
+        "role": "user",
+        "message": "Izsla je pre public beta 0.17 eXeem progija. Deluje ze kr precej solidno. Verjetno bo kmalu public beta."
+    },
+    {
+        "role": "user",
+        "message": "eXeem Lite  Nepreverjeno."
+    },
+    {
+        "role": "assistant_35",
+        "message": "to je beta 0.18 še vedno rabiš key, tako da.. sej bo kmal public beta"
+    },
+    {
+        "role": "assistant_36",
+        "message": "evo prišla je verzija za vse ven, tko da kr navalite  www.exeem.com"
+    },
+    {
+        "role": "user",
+        "message": "Direktna povezava.   eXeem0.20.exe [2.47 MB]"
+    },
+    {
+        "role": "assistant_37",
+        "message": "Uf, je tole počasno. Imajo sam en strežnik za cel svet al kaj?"
+    },
+    {
+        "role": "assistant_38",
+        "message": "Tega exeema ne morem in nemorem snet, tako počasi gre. Zgleda da je naval."
+    },
+    {
+        "role": "assistant_37",
+        "message": "Kakšna je fora za povezavo na omrežje? Port 6881 je preusmerjen na pravi rač., povezat se pa noče... ????"
+    },
+    {
+        "role": "assistant_39",
+        "message": "sesuva se kot za šalo, tu in tam pa kakšenkrat zmrzne"
+    },
+    {
+        "role": "user",
+        "message": "eXeem0.20.exe [Mirror]  Zgleda je pri trenutni beta verziji problem, ker porabi kar precej casa za zbiranje informacij o seedih in peersih iz networka. Zato se download lahko zacne sele cez nekaj casa.  Vsak P2P network je pac samo tako dober, kot uporabniki v njem. Z dedicated seederji in kaksno stran za filtriranje releasov zna bit cool zadevscina. ;)"
+    },
+    {
+        "role": "assistant_40",
+        "message": "Mah ... Jz mislm da se Slon drka s tem sam zarad tega k MASTNO sluz ....  Usaj s SuprNovo je ....Gutov dobi kksn delez od oglasov na programu."
+    },
+    {
+        "role": "user",
+        "message": "Ja, sloncek je zaposlen pri tem podjetju, torej dobi po vsej verjetnosti tudi placo."
+    },
+    {
+        "role": "assistant_41",
+        "message": "In v čem je problem, če nekdo nekaj zasluži?"
+    },
+    {
+        "role": "user",
+        "message": "Jah, naceloma ni problema.  V tem primeru je pac tak, da so \"pokradli\" dve ideji in sicer ze napisano knjiznico libtorrent in sistem vozlisc od Kaze in sedaj na ta racun sluzijo.  To je sporno v tem primeru.  Saj zato pa upam, da bo cimprej eXeem Lite in Linux konzol verzija."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Zakaj meni program ne dela? KO vpisem ka jv search mi nic ne najde. Any ideas ? :)"
+    },
+    {
+        "role": "assistant_42",
+        "message": "probaj new files pa refresh. sem pa zadovoljen uporabnik exeem lite-a"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user: pa se pohabili so bittorrent protokol tko da nujno rabis exeem clienta, ce hoces uporabljat ta network. Namesto da bi razsirili specifikacijo in omogocili preprosto dodajanje te funkcionalnosti obstojecim odjemalcem.  Aja, sam pol bi tezko userje preprical da si njihov spyware instalarijo. Exeem toolbar .. WTF?!?"
+    },
+    {
+        "role": "assistant_36",
+        "message": "a kdo ve kaj je ta toolbar, ker jst si ga nisem inštaliru, pa me vseen zanima kaj je  ----------- brez wareza - P"
+    },
+    {
+        "role": "assistant_43",
+        "message": "http://www.exlite.net/  eXeem Lite is a spyware free version of eXeem"
+    },
+    {
+        "role": "assistant_11",
+        "message": "LOL, to pa je blo hitro :)"
+    },
+    {
+        "role": "assistant_44",
+        "message": "A ta Cydoor se kje skriva al kaj?   Z adaware sem pregledal celoten komp, najsvežejše definicije, pa exeem sem mel pognan pa ni blo nič.  Emmm ...    P.S: nimam lite verzije"
+    },
+    {
+        "role": "assistant_37",
+        "message": "imate vi tudi ta črna polja:"
+    },
+    {
+        "role": "user",
+        "message": "Tukaj not bodo adsi verjetno."
+    },
+    {
+        "role": "assistant_45",
+        "message": "a mi lahko en neki razloži dolpotegnem exlite .19 verzijo, ko pa zadevo zalaufam mi pa piše da mam .18 verzijo in ne nejde nobenga noda in nič  a drgač vam dela normalno al kj trokirajo zadeve"
+    },
+    {
+        "role": "assistant_46",
+        "message": "meni lite 019 tut ne dela..  http://kronixsoftware.com/exlite/index....  tu piše da je potrebene regfix.. sedaj dela :|"
+    },
+    {
+        "role": "assistant_38",
+        "message": "Jaz imam pa bela polja."
+    },
+    {
+        "role": "assistant_36",
+        "message": "pri meni so tudi črna polja tam kjer bi mogli biti oglasi, bojo pa kmalu gor, sam se more programer vrnit iz nekje da to zrihta  a je kdo najdu kšno stran za exeem linke, men sam exeems najde k je uporaben ker je tud neki španskega sam ni skor nič gor"
+    },
+    {
+        "role": "assistant_47",
+        "message": "ja jaz mam tud crno, sam se mi zdi da lite verzija dela se pocasnej ko originalna. ceprav vse dela FUL pocas."
+    },
+    {
+        "role": "assistant_5",
+        "message": "kar je še en dokaz, da exeem nima za burek."
+    },
+    {
+        "role": "assistant_48",
+        "message": "A bom spet obtozen carovnistva ce recem da meni dela odlicno in precej hitro, ce odmislim znane buge ki ga usujejo in bojo odpravljeni v verziji cez nekaj dni?"
+    },
+    {
+        "role": "assistant_45",
+        "message": "men je tut vleku z 200k, sicer en pornjak, ampak vseen je letel"
+    },
+    {
+        "role": "user",
+        "message": "Zunaj je nova verzija, ki popravi nekaj bugov in ne vsebuje vec Cydoor adware programa. Zgleda bodo presaltali na HTML reklame.   eXeem 0.21 Public Beta"
+    },
+    {
+        "role": "assistant_49",
+        "message": "Meni noče update-at:  -- tracker for 'update to 0.21' failed: 'tracker: \"http://83.149.87.155:6969/announce\" key did not match key supplied earlier'"
+    },
+    {
+        "role": "user",
+        "message": "Predlagam, da si odinstaliras staro verzijo in si na novo namestis 0.21 iz zgornjega linka.  Update jih precej zafrkava. :)"
+    },
+    {
+        "role": "assistant_11",
+        "message": "jaz sem ze sprva uninstallal pa na novo nalozo. Se mi dogaja da ga recimo lahk sam 1x gor odprem ko ga 1x zaprem pa ga ne gre vec odpret. Kliknem bliznjico pa tema. Da ne govorim o tem kako dolgo rabi da se poveze v node network ce se sploh poveze."
+    },
+    {
+        "role": "user",
+        "message": "Ja, vcasih moras 2x zagnat, da se pozene. Update pa dela samo prvic bolj pocasi, kasneje gre kr solidno. Vsaj ni vec \"failed node request\". :)"
+    },
+    {
+        "role": "assistant_11",
+        "message": "A se je prah polegel?"
+    },
+    {
+        "role": "user",
+        "message": "Heh, ja. Nekaj popravljajo pa nekak ne popravijo najbolj. Bomo vidli kako bo zadeva delovala ko ne bo vec beta."
+    },
+    {
+        "role": "assistant_44",
+        "message": "Meni se pa zdi da je omrežje down. Ne dela mi exeem.com niti client.exeem.com. Da o programu sploh ne govorim."
+    },
+    {
+        "role": "assistant_50",
+        "message": "Program je rahlo mrtev :)"
+    },
+    {
+        "role": "assistant_19",
+        "message": "http://www.slyck.com/news.php?story=963"
+    },
+    {
+        "role": "assistant_44",
+        "message": "Ful škoda, upam, da bo postal Open Source in ga bodo izboljšali. Sem ga nekaj časa uporabljal pa mi je bil kar všeč, zdaj pa ga nekaj časa nisem uporabljal pa ne dela več."
+    },
+    {
+        "role": "user",
+        "message": "Dobra ideja (ki se jo da se izboljsati), ampak slaba in skodljiva implementacija.  Naj izdajo kot open-source. Dolocene stvari se lahko uporabijo."
+    },
+    {
+        "role": "assistant_51",
+        "message": "Saj programa ni škoda, upam pa vseeno, da bo open-source."
+    }
+]

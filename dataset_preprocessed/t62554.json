@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Ja moja težava je sledeča: Mam plato Matsonic MS7127C, ki nima regulacije voltaže iz BIOS-a, niti preko mostičkov.     Najdu sem napetostni regulator, šel na net in najdu načrt za ta regulator. Ta regulator je SEMTECH SC1164 Mal sem preštudiru in na strani 12 najdu načrt vezja tega regulatorja. Zdej pa ne vem točno kako nej regulator prepričam da pošilja 1,95V namest 1,70V. Tam je vrisano še stikalo (S1) ki ga na moji plošči ni. Na desni pa še kaže tabela VID signale. A mi lohk kdo tole mal razvozla kje naj kaj polotam, da dobim tam okol 1,95V. PLIIIZ! Načrt je tle:  Semtech SC1164  Pa še to mam proc Celeron 667MHZ@830MHz, če bi mel več voltaž bi šu lohk še prek 1GHz, zato prosm če mi lohk kdo pomaga ker ni soldov za novo plato pa proc pa ram. Hlajenje je že zrihtano, sam še Voltmod manjka."
+    },
+    {
+        "role": "user",
+        "message": "Ja, vidm da je naloga kr težavna. No sam sem tud pršu do par zaključkov, mam pa še par stvari ki mi niso jasne. Ugotovu sem kako se regulira voltažo (to sem vedu že prej), namreč Preko VID pinov, ki lahko zavzamejo vrednosti 0 in 1. Predvidevam da ti vrednosti povesta kje teče tok, ali je vezan na nožico ki je v načrtu označena kot AGND(predvidevam zemljo), ali pa teče proti ustrezni nožici procesorja.   Tu nastane težava, ne vem kaj označuje 1 in kaj 0?  Ko bom to pogruntu bom pač za 1,95V nastavu  VID0->0 VID1->1 VID2->0 VID3->0 VID4->0  To bo kar enostavno, v nasprotju s tem kaj te nule in enke pomenjo. Pa na načrtu nč ne kaže pr temu stikalu (S1) da bi bil kak upornik, če je tako je vse vezano na zemljo in bom ustrezne nožice vezu kar na ohišje, da se ne bom zajebavu z nožico AGND.   Pa sej je najbrž na slotechu kak električar ki bi znal to vezje mal razvozlat, mislm da ste taki specijalci tle gor, kdor mi pove rešitev mu dam za per."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za izhod moraš nastavit 00011, pa dobiš 1,29 V na izhodu če nastaviš 00010, dobiš 1,79 V na izhodu plus tega, pa moraš še 2 upora, katera zdele ne vem, kam prideta priključena, ampak na plati bi jih ziher kmal našu, zamenjat, pa dat Rb 100 ohm in Ra 130 ohm. 0 pomeni, da jo vežeš na maso in 1, da je na plus. Poglej, kam je vezana sedaj in kako pa ti bo s pomočjo sheme vse jasno. sicer je pa tuki vezje in podatki, pa tud tabela, kako nastavit da bo izhod na čipu dal željeno napetost, vse piše. http://www.semtech.com/pdf/sc1164-5.pdf"
+    },
+    {
+        "role": "user",
+        "message": "Zdej mam 11100.->1,70V-Default Rad bi mel 01000.->1,95  Torej zvežem VID 0 in VID 2 na ohišje in to je to. AL ne?   Sam glede teh upornikov ki si mi jih reku mi nič še jasno??? Sej pol če vežeš na maso je tam nula?! A ni tko. Ne vem zakaj bi pol kake upore rabu. Daj mi mal razloži prosim.  Seprav tista nožica (VID 0-4), ki bi rad mel na 0 jo vežem lepo na maso(ohišje al ne), tista ki bi rad da je ena pa pustim?  A ne bo nič narobe če bo brez upora na maso vezan?  Pa še to ne vem kako mislijo da je ta čip obrnjen na shemi. Kater del je kater? Kako je napis obrnjen da bom ugotovil katere so vid nožice(da ne bom na napačno stran vezu).   Aja, na kateri strani načrta si pa vse te podatke kako vse to nardit najdu? Prosim če mi še mal pomagaš, ker še nisem čisto na jasnem s tem voltmodom. Bit če bolje!"
+    },
+    {
+        "role": "user",
+        "message": "Rb100ohm, Ra130ohm, zdej sem mal naštudiru tist načrt pa ugotovu kwa si te upore napisu, sam to je za drugo verzijo tega regulatorja jst mam SC1164, tist pa piše za SC1165; ker moj nima analogno nastavljive voltaže, gre sam po korakih po 0,05V;od 1,30 do 3,50V ."
+    },
+    {
+        "role": "assistant_0",
+        "message": "No pol ti je jasno, da nastaviš samo z tistimi vhodi napetost. Tam maš tabelo in ti piše, kako mora bit priklopljen vsak vhod. Mal poglej, kam so sedaj vezani vhodi, ponavad 1 pomeni na plus. Se pravi, boš na plati prekinu povezave in jih prklopu, po tabeli, da boš dobu željeno napetost. Ampak prever, ali je res, če je vhod na +, da je to 1, ker lahk pomeni, da je tud n -. Sej je čist simpl. Jst si nism tok podrobno ogledal tega datasheeta, zato boš to moral sam. Pa če nardiš tko kot piše, po moje nimaš kej zgrešit,"
+    }
+]

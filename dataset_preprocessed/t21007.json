@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Imam težavo za at komando pod Windowsi nt4.o  Hočem zalaufati eno batch datoteko s schedulom , pa se mi noče štartat. Če pa jo ročno zalaufam pa dela.  In če pogledam kaj je AT naredu , piše samo ok. V bistvu pa se ne naredi nič, samo prižge in ugasne se cmd okno in nič drugega.  Ne dela niti koperanje in niti ntbeckup. A ima kdo kakšno idejo , kaj bi bilo narobe ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Preveri v Control Panel->Services ali ti laufa Schedule servis. Če ne, ga zalaufaj in nastavi, da se bo avtomatsko zagnal!"
+    },
+    {
+        "role": "user",
+        "message": "Laufa . Samo koperanje sedaj ne dela ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj se pa zgodi, ko drugič napišeš AT. Recimo :  AT 23:00 /every:M,W,F backniga.cmd (Backniga.cmd je batch za backup, recimo ntbackup backup d: /D \"vse datoteke\" /b /l \"C:BACKUP.LOG) in potem še enkrat napišeš samo AT in ti mora nekaj napisat."
+    },
+    {
+        "role": "user",
+        "message": "Sledeče : NTbackup sedaj s skripto dela !!!!!!!!!!!!!  Ne dela pa navadno koperanje enega direktorija , ali same datoteke tako lokalno kot remote. Probati moram še scopy.  Če gledam kaj se zgodi oz. kaj napiše c dosovem oknu napiše samo da se je izvdlo ok in jutri ponovno , nobene napake ama nič. Če ročno zaženem datoteko dela , kar more , torej kopera , če pa preko at komende pa se na kratko prižge okno in se nat tako hitro zapre , ne glede a je interactive ali ne..... Sedaj mi nedela v batch datoteki xcopy in kopi noben !!!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Preveri tole:  Če je na NT4 nameščen IExplorer 4 ali višji, AT servis (včasih) ne deluje. IE nadomesti originalni Scheduler s servisom Task Scheduler, ta pa ne izvaja ukazov, ki jih želimo pognati z AT. Task Sch. zamenjaj z originalnim Schedulerjem, pa bo:   1. Poženi regedit.exe  2. Popravi ključ v registru, ki požene Task Scheduler  Key Name: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Schedule (Nekaj takega vidiš, če imaš IE>=4) Value Names: DependOnGroup: REG_MULTI_SZ DependOnService: REG_MULTI_SZ: RpcSs DisplayName: REG_SZ: Task Scheduler ErrorControl: REG_DWORD: 0x1 Group: REG_SZ: ImagePath: REG_EXPAND_SZ: C:\\WINNT\\System32\\MSTask.exe ObjectName: REG_SZ: LocalSystem Start: REG_DWORD: 0x3 Type: REG_DWORD: 0x120   tako, da se bo pognal NT AT Schedule Service:   Key Name: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Schedule  Value Names: ErrorControl:REG_DWORD: 0x1 ImagePath: REG_EXPAND_SZ: %SystemRoot%\\System32\\AtSvc.Exe ObjectName: REG_SZ: LocalSystem Start: REG_DWORD: 0x2 Type: REG_DWORD: 0x10"
+    },
+    {
+        "role": "user",
+        "message": "Ok , to bi pomagalo če mi nebi delal karkoli z at komando.  Kot sem reke , če izvedem afna.bat ali afna.cmd , kjer notri vpišem ntbackup ... , se izvede preko at komand. Če pa v taisto datoteko vpišem recimo copy a.txt v ..., pa se sicer dos okno odpre in nato ugasne . Toda če ročno kliknem na taisto datoteko pa bo začel koperati."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Probaj dodat /interactive switch in cmd /c v tvoj at ukaz: at 12:34 /interactive \"cmd /c c:\\neki.cmd\"  Lahko pa probas tudi \"cmd /k\" in si ogledas, kaj se zgodi (CMD okno se po izvedbi ukaza ne zapre). Ponavadi najdes kaksno napako. Uporabljaj cele poti do tvojih .bat in .cmd datotek."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Imam podoben problem. Hočem startat nek program ob določeni uri pa ne gre in ne gre  Ukaz: at 10:00 \"C:\\Windows\\System32\\notepad.exe\" mi napiše: Added a new job with job ID = 2 toda ne zgodi se nič ob določeni uri.  Poskusil sem že razne varijante nad AT ukazom pa nič. Imam win 7 x64. MOgoče kdo ve?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "/interactive"
+    },
+    {
+        "role": "assistant_2",
+        "message": "tudi že poskusil pa nič."
+    },
+    {
+        "role": "assistant_3",
+        "message": "sem preveru at dela ne dela pa v interactive morš schtasks zagnat"
+    },
+    {
+        "role": "assistant_2",
+        "message": "kak to misliš?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "http://blogs.technet.com/b/askperf/arch..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Thanks. Dela sedaj, čeprav je malo bolj komplicirano kot bi bil oni AT. Zanimivo kaj vse pokaže: schtasks /query"
+    },
+    {
+        "role": "assistant_2",
+        "message": "aja, vseeno. Zakaj pa AT ne dela, če pa job doda v izvrševanje? Za kaki \"wakeup-radio\", ki si ga dnevno prilagajam bi bil bolj enostaven."
+    },
+    {
+        "role": "assistant_3",
+        "message": "piše da zaradi varnostnih razlogov AT ukaz ne dela z interactive opcijo. program sicer zažene vendar v ozadju."
+    }
+]

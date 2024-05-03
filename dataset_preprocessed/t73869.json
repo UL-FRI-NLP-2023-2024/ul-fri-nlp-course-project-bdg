@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "ok, da se razumemo; kako popraviti vem... Samo kje dobiti točno take kondenzatorje, kot so tisti okoli procesorja (4700 mikro F, 6.3V) pa ne vem... Našel sem 16 voltne, a ne vem če pašejo gor (ker so isti ki so zj gor 6.3V...  Aja kako so se pa uničli? Kar naenkrat se mašina ni več zbudla (vse ram pa to je testiralo, le slike ni blo... Ko sem pa pogledal v kišto, pa sem videl dva odprta kond. z črno snovjo (tak ko da sta zažgana in ostale 3 napihnene, ostali so v redu). Kako torej?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "tiste razpočene 6V elektrolite lahko nadomestiš s 16V! mogoče raje pazi, da so enako veliki, saj so 16V najbrž večji in mogoče pol kaj več ne bo \"skup pasalo\".  da ti je vse elektrolite napihnilo, je zelo slab znak. napetost na njih se je močno dvignila nad njihovo specifikacijo, torej 6.3V, in raje povej, kaj si delal, da se je to zgodilo.  po moje je na plati crknilo še marsikaj drugega kot tile elektroliti, vendar probati popraviti ni greh :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "No jest mam pa vprasanje zakaj pride do unicenja teh kondenzatorjev.Ker bi pac blo dobr to vedet da se unicenje lahko prepreci."
+    },
+    {
+        "role": "user",
+        "message": "Ej nič nisem delal... Plata in proc sta bla stari 2 leti. Navijal nisem nič... (AMD 900mhz plata pa na Via KT133 čipovju) Je pa res da niso vsi napihnjeni... Aja pa mogoče je do tega prišlo zaradi tega, ker sem mel napajalc postavljen navzdol (čez cel procesorski hladilnik, in je tako bolj slabo hladilo, in so se kondiji mogoče zaradi tega pregreli (vroč zrak pihal nanje) Ne vem pravega razloga, zgodilo se je samo od sebe... Sicer pa zgubit nimam kaj..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa ABIT plato maš ane."
+    },
+    {
+        "role": "user",
+        "message": "Ne to moj stari sistem, crknu mi je pred kakima dvema mesecema... Msi plata je... Pač probal bom usposobit, pa bom plato pa procesor šenkal enemu frendo, ki ma star računalnik, pa nima keša za nadgradnjo... Sj sm že pred dvema mesecoma spraševal za to, pa so rekli da se da popravit, sam v tem času sem itaq že dva sistema zamenjal, tak da pol ni blo potrebe po tem... Zaj sem jo pa enmu frendu obljubil, ko ma še Pentiuma 200, da mu jo dam, če jobom usposobil..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Dragi @user!  Kondenzatorji so sli zato, ker... shit happens! ;)  Ko jih menjas pazi naslednje: - enaka ali manjsa velikost - priblizno enako stevilo in kapaciteta - enaka ali vecja voltaza"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kondenzatorji se unicijo najverjetneje zaradi previsoke temperature(okolice ali posledica previsoke napetosti).  Ko bos menjal te kondenzatorje, glej da bodo bolj kvalitetni kot so bili. Ce ima elektrolit preveliko ESR (ekvivalentno serijsko upornost), slabo gladi, se greje in na koncu rata big napih ali big bang.    Tezavo z velikim ESR se odpravi z vecjo kapacitivnostjo, ki pa povzroča vecje tokovne konice pri polnjenju in obremenitev napajalnika, ali z dodatnim LC clenom."
+    },
+    {
+        "role": "assistant_5",
+        "message": "da ti je vse elektrolite napihnilo, je zelo slab znak. napetost na njih se je močno dvignila nad njihovo specifikacijo, torej 6.3V, in raje povej, kaj si delal, da se je to zgodilo.   Ni nujno, pravzaprav v tvojem primeru niti verjetno, da so kondiji crknili za radi prenapetosti.  Crknili so zaradi pregrevanja. Zaradi tega ker idealnih stvari v naravi ni tudi kondii imajo pač neželjene lastnosti. Ena od teh je ESR (= notranja upornost žic in plošč etc v kondiju).  Kadarkoli je napetost v okolici višja od tiste na kondiju, bo stekel tok vanj. Čimvečja je razlika, tem večji je tok. Ker pa ima kondi neko upornost, bo ta tok segrel njegove žice, plošče v njem itd. Enako velja, ko napetost v okolici pade- tok, ki bo stekel ven iz kodija, ga bo segrel.  Če so tokovi veliki in če so napetostne spremembe hitre (in oboje je še kako res na mamaplatah, sploh okrog CPUja in RAMa) bodo notranji tokovi zelo greli kond.  gretje pa ni dobro za elektrolitski kondi, ke rmu odhlapeva elektrolit in še poslabšuje njegove lastnosti in pospešuje gretje. Stavr torej sama sebe pospešuje. Nad neko mejo bod stvari tako pospešile, da ga bo odprlo. Za zamenjavo potrebuješ kakovosten kondi, ki je predviden za take stvari.  Teoretično bi bilo najbolje da zamenjas stvar z enkaovredno- namenskim elektrolitom prav za to. Odsurfaš npr na Elbacompove strani www.elbacomp.si, kjer lahko iščeš med prodajnimi programi glede na komponento (elektrolitki kondenzator / electrolytic capacitor).  Nato si ogledaš programe proizvajalcev ki te zanimajo, se odloči za model, pokliči Elbacomp in naroči zadevo.  V praxi pa boš verjetno odbrzel v HTE in vzel prve kondije ki ti pridejo pod roko. Tudi prav. Veliko hitreje, nekaj ceneje in MOGOČE bo celo stabilno delalo. Vzemi če se da malo večje (fizično) kondije od originalnih, tudi če so za malo višjo napetost. Tako bo notri malo več elektrolita in se konddi mgoče ne bo toliko grel.  V bistvu je veliko bolje če vzameš N kondijev z Nkrat manjšo kapaciteto in jih vežeš vzporedno, ker je notranja upornost tako veliko manjša. LAhko torej kondi 4700 ľF zamenjaš z dvema 2200 ľF ali celo 3300 ľF- le žice naj bodo čimkrajše in stvar bi morala delati bolje kot sicer. S tem lahko vsaj deloma nadoknadiš izgubljeno z montažo cheap kondijev."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Zdravo.   Jaz sem mel tak problem z mojo abitko 133 raid. Napihnili so se mi kondenzatorji pa sem jih lepo odlotal dol. Vecji problem je blo najt te kondenzatorje. Spraseval sem po elektro trgovinah pa so me odpravili z odogovorom da tako majhnih kondenzatorjev ne bom dobil nikjer. Razen ce jih bom narocil (min. narocilo je 100 kom. da se splaca)  Tako mi je ostala moznost da stopim po rac. Trgovinah kjer imajo tudi servise. Serviserje sem spraseval ce majo kaksne plate ki so zanic. In jih niso vrnili v garancijo. Pogledal sem pa pobral dol kar je bilo zame uporabno.   Tako sem nabral moje kondenzatorje skup ter jih zopet nacinil na plato.  Vsi so mi zatrjevali da ta plata ne bo nikdar vec delala. Vendar na moje sreco zdaj dela ko urca. Masina je stabilna. Lavfa mi server na njej. Tako da se ti splaca probat zadevo ustimat, ker crknili so ti zihr elektroliti. So zelo obcutljivi na el. nihanje. Vzrokov je seveda vec. Slaba kvaliteta, pri breznapetosti je vecja moznost da se izsusijo.   Upam da ti uspe zrihtat!   Lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "zanima me, kakšno temperaturno oznako imajo tvoji napihnjeni kondiji?  @assistant_5 skoraj prepričan sem, da so 105'C in sem zato posledično izključil možnost vpliva temperature na te elektrolite ter napisal, da je bila najbrž na njih previsoka napetost"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Mislim, da to ni toliko pomembno.  O.K. je pomembno, če predvidevaš delo pri visokih temperaturah, a treba je vedeti, da se kondijem z temperaturo življenjska doba eksponenčno niža. Ni torej vseeno, na kaetri temperaturi delajo elektroliti, ne glede na temperaturno območje, za katerega so rateani...  Če bi kondiji crknili zaradi prenapetosti, bi skoraj gotovo odneslo na plati še kaj. 6.3V kondi ne bo crknil če napetost preseže 6.3V. Ne bi smel crkniti niti če napetost doseže 7.5V za trenutek. To pa so že napetosti, ki lahko precej zanesljivo ubijejo marsikaj petvoltnega na plati..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Bi dodal še nekaj ... Pred časom sem zasledil na neki internet strani da je bil to velik problem pri Abit-ovih platah ker so uporabili ene kondenzatorje v katerih je bil slab elektrolit (Chinese price, chinese quality) in so posledično crknili. Posledično je bilo tudi govora da so bile zato rabljene popravljene plate (z boljšimi kondenzatorji) celo dražje od @assistant_11h.  A lahko poveš od katere firme kondiji so bili gor?? Zagotovo piše na njih.  LP, Peter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Samo je pa treba vedt da zej abit zlo dobre kondenzatorje daje gor.  Zato sem pa preh namignu če ma abit plato."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_5: tnx, thats good to know"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tudi sam sem dal zamenjati kondenzatorje na dveh platah. Ena se vec ni zbudila, Abitka pa je 3 tedne delala lepo, nato pa sem spet našel napihnjene kondenzatorje. Plošča je na drugem napajalniku, tako da mora biti tudi nekaj drugo narobe. ??"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Tud jst imam doma eno abitko (KT133 RAID), ki ima napihnjene kondenzatorje. In sicer je 11 zelenih, 1500 uF, 6.3 V - ti so napihnjeni in neko rumenkasto-oranžno snov imajo na vrhu. Predvidevam, da je to elektrolit. Mogu bi it samo še v trgovino pa jih menjat, ampak nimam volje...   Ostali kondenzatorji na plati (črni, na njih piše LOW ESR, različnih vrednosti) pa so celi."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_8  Dobil si zanič kondenzatorje, to je to. Kondenzatorji na ploščah so izjemno hudo obremenjeni. Iz kondenzatorjev potegne CPU in RAM tiste strašne Watte, ki jih navajajo pri porabi le teh. Povprečna poraba je precej manjša in takrat se ti kondenzatorji polnijo, ko pa je potreba pa morajo skoraj v trenutku ododati, veliko moč in ker se to ponavlja velikokrat v sekundi, je kvaliteta zelo pomembna. Sicer je pa Brane to lepo razložil.  Drugače pa sem uporabil @assistant_6-vo taktiko in šel težit po trgovinah. In zaminivo, dobil sem eno ploščo za AMD ki ima vse integrirano, kje so bili vsi kondiji za 1200uF 6.3 V napihnjeni, plošča se je celo zbudla, samo v Win so se takoj sesuli (na servisu). Zamenjal sem vseh 11 kondijev in ploščo priklopil na napajalnik, brez procesorja, ker ga zaenkrat nimam. In ne vem ali sem dokončno uničil plato, ker na napajanju procesorja ni napetosti, RAM, NB in SB so pod napetostjo, na elektrolitih za napajanje procesorja pa ni napetosti. MOS Feti kjer so tudi taki kondenzatorji imajo 5V iz napajalca drugih napetosti pa ni. Ali kdo ve ali sem ploščo uničil , ker sem jo priklopil brez procesorja, ali je to normalno ali so le elektroliti iz HTE tako nekvalitetni? Kratkega stika ni, upornost na sponkah elektrolitov sumljive veje je 32 ohmov, kar glede porabe ne bi smel biti problem (škoda, da nisem prej kontroliral, ampak sem šel takoj lotat).  LP, @assistant_10"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_10 v vsem svojem pcpopravljalskem zivljenju se nisem vidu, da bi blo za plato slabo, da ni proca not. Poleg tega ni glede nevsebnosti proca prav nikakrsnega opozorila v katerem koli navodilu. Torej sklepam, da to ni to in da je slo nekaj narobe pri zamenjavi kondijev.  Verjetno kondiji niso direktn vzrok nedelovanja plate, ampak samo posledica cesa drugega? Mogoce tudi kak pin na socketu zaznava vsebnost proca in potem ne daje napetosti, ce ga ni?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Takole je, ker sem doslej menjaval kondije samo na dveh ploščah Concord za Intel procesorje, so na vseh kondenzatorjih napetosti, ko se ploščo priklopi brez procesorja, tu na plošči za AMD pa jih ni, kondiji so pravilno postavljeni (polarizirani), kapaciteta je ista, samo delovna napetost kondijev je višja 16V. Ali mogoče kdo ve ali so plošče za AMD, tako narejene, da v primeru nevstavljenega procesorja tudi napajanja procesorja ni, mogoče neka zaščita. če je procesor premalo ali narobe (dvomim, da je to sploh možno) porinjen v socket in zato ni napajan in se procesor na ta način nikakor ne more uničiti?   LP, @assistant_10"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Lahko ti en proc posljem za sprobat. Ali lahko sledis nazaj, iz kje bi ti kondenzatorji dobili napetost? Pa potem tam pogledas, kaj je narobe?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "takole: http://users.volja.net/zumes/Blodenje/M... Meni še danes dela ta plata Bp."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Hahaha ne boste verjeli. Preberem clanek na STju o kondijih in potem za hec pogledam mojo platko. In kaj dobim? 4 napihnjeni kondenzatorji - eni so tudi ze spustili malo elektrolita. In stvar se zmerom laufa.  Kaj pa priporocate v teh primerih? Naj pustim dolker ne kaj krepa ali naj zdaj ze zamenjam?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Bolje bo, če te pokvarjene kondije zamenjaš, sploh če imaš navit sistem."
+    },
+    {
+        "role": "assistant_13",
+        "message": "No saj ni tako težko. Mogoče bodo pomagale sledeče slike.... http://www.s5tech.net/forum/hampic.php?...  l Darko"
+    },
+    {
+        "role": "assistant_14",
+        "message": "hello,  Fantje nekaj mi rečite. Pripravljen sem kupit tistih 100kom, kondijev, saj jih sam pogosto potrebujem, ker dobim na servis veliko plat s napihnjenimi kondiji, pa bi jih potreboval, pa me zanima če je kdo zainteresiran za nakup, pošljem tudi po pošti, ipd...? kupil pa bi kakšne kvalitetne low-esr kondije.   lp, FReAK."
+    },
+    {
+        "role": "assistant_15",
+        "message": "@assistant_10   Pri AMD platah ni napetosti na procesorski veji, če notri ni procesorja ! (aja : upornost na sumljivi veji pa je pravilna - okoli 30 ohmov)"
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_15:  Res je, sem pregledal pdf dokumentacijo od AMD SocketA procesorjev in so res pini za detekcijo ali je procesor vstavljen. Če procesorja ni v socketu, tudi napetosti ni.   Sedaj moram samo še stakniti kakšen poceni SocketA procesor, ker mi P2 266MHz, ki je v garaži kot TV in pregledovalnik pdf dokumentov, melje tako obupno počasi, ne glede kateri OS teče gor. Izgleda, da QDI LegendV ni kakšna hitra plata."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Nima kej bit, če proca ni not. Sicer je pa tudi prenapetostna zaščita, če preseže 2V se izklopi (komp, ne prenapetostna)."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Kot je ze nekdo vprašal, če so kondenzatorji že napihnjeni in malo rumenkasti, pa stvar še vedno deluje - kaj se lahko zgodi, če s časoma odpove kakšen kondi? Ker se mi res ne da menjavati, če bo tako mogoče delalo še kakšno leto..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ko so kondiji napihnjeni so pokvarjeni in jih je treba menjati.  Koliko časa bodo še delovali ti napihnjeni kondiji ne ve ne bog, ne ciganka. Lahko bo že danes mrk, lahko boš prej kupil nov comp in tega vrgel v smeti."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Jest mam 2 plate na katerih so bli zamenjani kondenzatorji. Sam nobena ne dela, ker mi je kolega ki jih je menjov popraskov vezje.  A se da to še kak zrihtat? Mogoče z ono pasto za popravljanje vezij al ma premajno prevodnost?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Včasih se da popraviti, če je poškodba samo na površini in ne v globini plošče, ker je večplastna.   Lahko se poskusi zaciniti, včasih gre tudi z barvo za popravilo grelcev avtomobilskih šip. Slikaj zadevo in sliko objavi tukaj, ti bomo lažje svetovali."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Sej bi slikov sam to je tko majhno da se z mojim digitalcem nav nč vidlo."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Mogoče bo šlo s prevodno barvo, ampak moraš biti res previden in natančen, da povežeš samo prekinjeno vezico in nič drugega. Še bolje, a še malo težje, da pretrgan del povežes cinom in če bo vse v redu potem popravljen del zalakiraš s kakšnim lakom.  Ampak to je brez slike samo ugibanje."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Težka bo. Maš skener ? Probi gor ruknt, najslabši ima tam okoli 20Mpxlov, kar je več kot dovolj za spodobno povečavo."
+    },
+    {
+        "role": "assistant_18",
+        "message": "@assistant_16 super ideja  . Groza zdej ko je povečan se šele dobr vidi.  Zgleda kot da bi nekdo z traktorjem gor oral .    slikca   A so tuki vsi kontakti prekinjeni al sam uni k so svetlozeleni? Je še kej upanja?"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Tale tvoj kolega ima dve levi roki.   Tisto je samo zaščitni lak opraskan in ni problem. Glede na to kako izgledajo loti, bi rekel, da je težava pri kondenzatorjih. Poleg tega, da tvoj kolega ne zna lotat je čisto mogoče, da je tudi kak kondenzator narobe obrnil.  Lp"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Ojojojojoj, koliko se star tvoj kolega? S kom je tole šu lotat, s pištolo? Vidm, da ti je mato bolj uniču, kokr fixnu.  Iz kje si, ti lohka jst gor napopam ?"
+    },
+    {
+        "role": "assistant_20",
+        "message": "LOOOL keri loti   a je ta tvoj kolega pek al je kuhar?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Mislim da je cinu z pištolu za cinjenje al kak se že reče (taka velika nerodna reč). Drugač model ni štromar sam občasno popravi kak avtoradijo al pa televizor pa sm mu dal še tole zalotat, ker jest nimam nekih velikih izkušen z lotanjem pa tud spajkalnik mam tud bl bogi. Drugač dela nam nč kritiziru, ker tud sam verjetno nebi nč bolš naredu, edin plošče verjetno nebi sprasku.  @assistant_16 imaš ZS."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Zanima me ali so lahko kondezatorji krivi, da mi samo napetosto cpuja tako niha.. ostale napetosti so stabilne, no razen +12V nekaj malega niha, ampak nič v primerjavi z CPU Vcore. Ker pred 2 leti mi je comp sesula strela in so mi jo popravili, mogoče so takrat tudi šli kondiji? Abit nf7-s rev-2"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Jajboljš je da greš z voltmetrom s kazalcem merit, al pa če kakšen dober osciloskop dobiš. Sicer je pa tako, napr. realna napetost je 1.613 V, če vzamemo, da napetost ne niha, niha pa napetost, ki napaja ta čip, bi moglo kazati 1.615 (če ne niha), kče pa niha pa kaže pa sigurno 1.610-1.620. Kapito ? Še vedno je najboljš V-meter, ker edino tako dobiš prave podatke."
+    },
+    {
+        "role": "assistant_21",
+        "message": "hja če bi mal v-meter :)"
+    },
+    {
+        "role": "assistant_22",
+        "message": "pismu...moji kondiči so tud čist napihneni z rjavo stvarjo na vrhu...sej bi jih šou še menat (in reskirat da skurm celotno plato ;) )...ampak nimam lot mašine, samo tisto ogromno z ploščato glavo ...a stem se to da? kriza   in pa a je možno da se mi je zarad napihnjenih kondenzatorjev skurla grafična...kar se mi je zgodil pred kakima 2 mescoma ...čist iz lepga?"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Ja možno je. Če napetost ni bila pravilna, je mnogoče, da se je grafična poškodovala. Ni pa to prav verjeten razlog, ker običajno najprej neha delat plošča in potem je seveda video kartica izven pogona.  Če nisi predaleč, se ti splača priti do mene. Kondenzatorej imam, pa tudi zamenjam ti jih lahko. Jasno free. Edina težava je v tem, da sem v Divači."
+    },
+    {
+        "role": "assistant_22",
+        "message": "no ja ...sem iz lj ...mam avto ...tako da je za razmislt ...če se bo plata zarad prekondenziranja uničla verjetno lohk še vedno kako novo-rableno 8rda-jko nabavm...sam ta bo mela verjetno iste konde gor k moja... mal sem pa tud čekiru napetost na procu in kr fino niha..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "OK, ko boš na volji pošlji ZS !"
+    },
+    {
+        "role": "assistant_14",
+        "message": "če potrebuje kdo zamenjavo kondijev v bližini MB, naj piše    lp, FReAK."
+    },
+    {
+        "role": "assistant_21",
+        "message": "je kdo iz okolice ali vsaj v bližini ljubljane recimo ~40km od lj, pa bi biu prpraulen za neko normalno cena zamenat kondezatorje na nf7-s rev.2?"
+    }
+]

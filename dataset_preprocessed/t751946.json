@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  zanima me ali obstaja kak program da bi si naredu backup svojih windows z vsemi nastavitvami ter programi ki so nalozeni. Torej kopija kar imam sedaj na racunalniku windows sistem s programi in vsemi nastavitvami. Da bi si naredil boot na usb in da bi lahko nalozil na nek novi komp direktno kopijo kar imam sedaj recimo na sedanjem, da mi ni treba non stop nalagati vse zivo kar imam gor :)  Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za obstoječi računalnik si lahko narediš kloniraš disk in imaš tako svoj 'backup'. Če boš hotel disk dati na drug računalnik boš verjetno imel kakšne težave z driverji, čeprav jih načeloma windows sam poišče (druge variante še nisem prakticiral)."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To ne bo preveč uporabno, ker ti bodo programi hitro zastarali. Raje si spišeš skripte, ki jih zalaufaš na sveži instalaciji."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jaz za popolni identicni backup uporabljam AOMEI Backupper Technician Plus. To je bolj kot ne varnostna kopija, ce mi slucajno kdaj disk odleti in naredim hitri prenos na nov disk. Ampak kot receno, ce bo PC drug in drug hardware skoraj ni variante, da ga bootnes zaradi raznoraznih gonilnikov, ki ne bi bili kompatibilni.  Nekoc v zgodovini mi je celo to uspelo, ampak je bilo to na Windows XP sistemu, ampak sem prej vse gonilnike od celotnega hardwara odstranil in instaliral image na nov hardware in je z nekaj krci celo mi uspelo sistem postavit.  lp, d."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz nisem imel nobenih problemov, ko sem delal image win 10. Samo sysprep moraš prej naredit."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_2 je 20. sep 2019 ob 22:21 izjavil:Jaz za popolni identicni backup uporabljam AOMEI Backupper Technician Plus. To je bolj kot ne varnostna kopija, ce mi slucajno kdaj disk odleti in naredim hitri prenos na nov disk. Ampak kot receno, ce bo PC drug in drug hardware skoraj ni variante, da ga bootnes zaradi raznoraznih gonilnikov, ki ne bi bili kompatibilni.  Nekoc v zgodovini mi je celo to uspelo, ampak je bilo to na Windows XP sistemu, ampak sem prej vse gonilnike od celotnega hardwara odstranil in instaliral image na nov hardware in je z nekaj krci celo mi uspelo sistem postavit.  lp, d.  Win 10 ima s tem še najmanj težav. Jaz sem kloniral HDD na SSD, zamenjal plato, procesor, rame (i7 serije 3 na i5 9700K, DDR3 na DDR4) in grafično (GTX 560 na 1060), pa je šlo prav VSE brez problema. Boota iz prve, poinštaliraš driverje za nove stvari, odstraniš za stare in voila."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Clonezilla. Zastonj."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovore. Jaz imam se zmeraj Win 7 Pro ker mi je najljubsi sistem. Torej kls katerim programom naredim boot na usb da vsaj probam?   - Clonezilla  Bom probal da vidim kako se obnasa? Tudi ce bo cez cas kak zastarel program nima veze ga potem zamenjas, vazno bi mi bilo da je nekak vecina na mestu, driverje pa irak avtomatsko najde in lahko hitro menja. Kaj ni tako?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "https://www.cobiansoft.com/"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Parted Magic (linux utility) in Redo backup, zadnji je že vgrajen v PM.  Postopek:  Rabil boš usb prenosni disk, ključek in Rufus.  - Na usb ključek s Rufusem daš PartedMagic zaganjaj v Ram. - Z Gparted boš samo pobrisal in ne zbrisal particij, ker boš dajal backup particijo. - Super Grub Disk (to boš rabil ko boš skeniral sisteme da ti bodo rešil boot zagon)  in seveda Redo backup, s tem boš particije kloniral na usb disk.   Jaz, delam tako, prvo štartam PM iz ključka v ram načinu, pol particijo z Redo Backup dam na usb disk, ko jo hočem nazaj lih tako Redo samo v dam v Restore (prej z Gparted mal pobrišem particijo). No in na koncu moram popravit boot zagon z Super Grub Disk (ta je na PM samo v meniju predzadji spodaj Extras Menu)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user je 20. sep 2019 ob 20:09 izjavil:zanima me ali obstaja kak program da bi si naredu backup svojih windows z vsemi nastavitvami ter programi ki so nalozeni. Za te namene uporabljam free Macrium Reflect backup."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovore. Bom probal vse varijante in javim katera mi je bila najljubsa in najbolj enostavna"
+    },
+    {
+        "role": "assistant_8",
+        "message": "jaz ti za backup rešitev na windows računalniku toplo priporočam Veeam Agent for Microsoft Windows FREE. Da prideš do download linka, registriraj free account na veeam.com. Veeam je napram drugim predlogm čista poezija. :P"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_8 je 24. sep 2019 ob 16:47 izjavil:jaz ti za backup rešitev na windows računalniku toplo priporočam Veeam Agent for Microsoft Windows FREE. Sem z Veeam naredil backup particije, ki je imela win 10, vendar mi ni uspelo te particije obnoviti na drugem disku, z Macrium Reflect backup teh težav nimam."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Macrium free verzija dela bp, preizkušeno večkrat."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Bom kar tu not vprašal, sam se imam namen lotit menjave diska iz 250GB na 1GB s kloniranjem.  Če sem razumel vse vodiče in videje bi naj šlo tako :  1. Priklopim prazn nov disk v PC 2. Z enim od programov za klon (sam bom delal z Macrium) naredim clone starega diska s sistemom in programi na nov disk. 3. Odklopim star disk in na njegov priklop priklopim novega 4. Zaženem računalnik in vse bi naj bilo tako kot prej, s tem da bo na novem disku ? :)  Lp"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Da. lp, d."
+    }
+]

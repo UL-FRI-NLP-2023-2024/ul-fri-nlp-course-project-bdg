@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "torej zanima me kako bi na določeni sliki našel 100x100 pikslov praznega prostora (bele barve). A kdo pozna kakšen dober algoritem?*"
+    },
+    {
+        "role": "assistant_0",
+        "message": "je ta prazen prostor vedno kvadrat?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Je to zajeto z nekim fotoaparatom (in vse skupaj ni nujno vedno kvadrat oz. so piksli lahko tudi  ne cisto beli) ali gre za neko umetno ustvarjeno (idealno) sliko? Najlazje bi bilo pomoje narediti konvolucijo (sivinske) fotografije z nekim belim kvadratom. Tam kjer bi potem na sliki dobil veliko lokalnih maksimumov bi lahko sklepal da se nahaja ta kvadrat. Pri idealni sliki imas itak bele piksle z vrednostjo 255 in zadostno stevilo le teh oz. da je tisto tam kvadrat lahko detektiras z enostavnim \"sprehodom\" cez piksle slike."
+    },
+    {
+        "role": "user",
+        "message": "ja slike majo ozadje čist belo, zato k so sprintane v pdf. ni kvadrat ampak boljh pravootnik na katerega bomo dal elektronski žig. sej bi lahko ta kvadrat premiku po celi sliki in ko bi našel prazno polje bi pol prlepu za žig, ampak ker je massovno število takih slik - dokumentov je treba nek algoritem ugotovit k bi z čim manj koraki prišel do želenega praznega mesta v velikosti kvadrata... TOREJ ČIM BOLŠI ALGORITEM  dokument - slike so vektorsko narisane, to se pravi izelki pač nekih motorčkov itd... zato se skor zmer da najt prazn prostor"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kolk je pa cela slika velika?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Jah, po moje boste dober odgovor morali kar kupiti."
+    },
+    {
+        "role": "assistant_4",
+        "message": "a dokument spremljaš čez celoten življenski cikel?(guess not)  moti me predvsem ,da gre za načrte in se ti podobni kvadrati lahko pojavljajo v samem dokumentu.  glede na to , da je pravokotnik poravnan , najbrž celo znanih dimenzij(?) ter okolica previdljiva bi zadeva morala laufat na danjdanašnih mašinah celo za precej retardiranim pristopom. vsekakor pa poglej knjižnico  openCV. so tudi takšni primeri notri. še en hint , jaz sem si v podobnem primeru (ne identičnem) pomagal z reduciranjem resolucije(sem imel pač raster)."
+    },
+    {
+        "role": "user",
+        "message": "ja če pomanšaš sliko , potem pomanjšaš še kvadrat in imaš velik manj korakov."
+    },
+    {
+        "role": "assistant_4",
+        "message": "ampak merki , downsizanje ti lohk požre tanke linije. ampak za iskanje kandidatov bi moral delat."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Načeloma ti ni treba preverjat celo sliko. Razdeliš na eno mrežo kvadratov - lahko narediš bolj fino mrežo (večja natančnost) ali grobo (višja hitrost). Potem greš pa gledat meje kvadratov (oz. stranice). Če je na eni stranici število črnih pikslov večje od enega tresholda, rečeš, okej, tukej je ziher slika in označiš vse kvadratke, ki mejijo na to stranico kot \"slabe\". Enako narediš za ostale stranice kvadratov (pri tem lahko spustiš vse slabe kvadratke). Potem pa greš gledat samo \"dobre\" kvadratke in izbereš tiste, kjer jih je največ na kupu oz. ustrezajo tvoji velikosti (100*100 pikslov).  Pač, nekej na hitrico."
+    },
+    {
+        "role": "assistant_5",
+        "message": "V javi sem se šel malo zajebavat z zgoraj opisanim algoritmom. Za  tole sliko dobim ven  tole (uhm, slika je rotirana čez y os, kjer so X-i \"neugodni\" - črni - kvadranti in Oji beli kvadranti). Dela vse skupaj 0 sekund (  ), kvadrantov je 40*40, threshold je pa 10% črnih pikslov na eno stranico. Na žalost je to za jpg-je."
+    }
+]

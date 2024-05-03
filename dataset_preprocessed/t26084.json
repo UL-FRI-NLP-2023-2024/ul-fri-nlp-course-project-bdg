@@ -1,0 +1,174 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni Imam modem Motorola SM56. Modem sicer deluje vendar mi pred vsako vzpostavitvijo zveze javi napako \"Unable to suport current country setting. Change country to USA in tray helper application\". Ko potrdim se zveza vzpostavi. Zanima me kaj bi bilo lahko narobe. Probal sem ze z izbiro tudi drugih drzav ne samo USA vendar se ta problem javi ob vsako vzpostavitvi zveze. Prosim ce mi lahko svetujete. Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nabavi driverje, ki podpirajo CTR21 oz. v njih najdes celo slovenijo in potem bo delalo..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za odgovor, vendar a mi lahko poves kaj je to CTR21 in kje bi nasel omenene driverje. Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "CTR21 je kao podpora za evropske drzave...Kar pa se tice driverjev, bom pogledu ce jih imam jast kje pa ti bom dal link za dl....."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user, kle sem upload-al driverje...Dolgi so 1.6 Mb pa izvoli:  Motorola driver"
+    },
+    {
+        "role": "user",
+        "message": "Zaenkrat najlepsa hvala, bom sprobal pa porocal ce mi je uspelo. Se enkrat hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ej, @user pa da ne pozabim: Nastavi DTE hitrost na 57600 in init string atx3s10=255 ker bos dobil dober konect in odlicne prenose, razen ce nimas do konca linijo v K...."
+    },
+    {
+        "role": "assistant_1",
+        "message": "SAMSON: Ej, thx!!! Tud men je šlo to na jetra, s temi tvojim driverji pa nimam več teh težav, pa tud lepše (beri hitreje) se nalagajo strani. Thx še enkrat..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "No problem, ker jaz tega hardware-a mnogo prevec premecem cez roke in iscem razne dobre in slabe resitve, hehe...Sicer so tole malce prilagojeni driverji, ampak koga briga ce vse skupaj dela kot se sika. Zato vsi Motorolasi, ki imate novejse (rev 2) motorole kar na download...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0 (ali pa kdo drug):  A veš za kakšne driverje za modem GM56USB od Genius-a; deluje počasi in stalno prekinja.  Ali kaj bi bilo za narediti?"
+    },
+    {
+        "role": "user",
+        "message": "SAMSON: Najlepsa hvala. Res deluje s temi tvojimi driverji kot si rekel pa prenos je tudi hitrejsi. Me pa se nekaj zanima. Kaj je init string atx3s10=255 in kje se ta stvar nastavi. Pa se nekaj: DTE hitrost to je verjetno najvecja hitrost s katero bi naj delal prenos. A mi lahko kaj vec poves o tem zakaj dela hitreje pri hitrosti 57600 kot pri hitrosti 115200. Se enkrat najlepsa hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Boo: Trenutno ti ne morem kaj druzga povedat kot to, da preveri ce je USB v souporabi z kaksno drugo napravo (isti IRQ). Pa dej isti init string za modem: atx3s10=255"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Joco: Init string si nastavi pod povezavo (desni klik na povezavo,konfiguracija modema in potem tam poisci pod dodatno...). Kar se pa DTE hitrosti tice, je tako da je ce imas software modem bolje imeti 57600...Sicer lahko probas tud na vec, toda mislim da bo slabse, kajti pride do zabasanja...Je pa tudi res, da se prenosi poboljsajo, ce imas DTE nastavljen na 57600 tud za zunanje modeme (isti razlog). Obstaja pa tudi notranja supra (oz. se mi zdi da vse) in dovoljujejo nastavitve DTE hitrosti tudi do 460XXX, kar se pa pokaze da je neuporabno. Ce zelite pa se boljse prenose, si vpisite v system.ini pod [386 Enh] se dodatno linijo: Com1Irq4Buffer=1024, oz. Com2Irq3Buffer=1024...Pac odvisno na katerem portu je modem. Ce se pa notranji modem vsede na Irq3 oz 4, je pa resitev ta, da v bios-u onemogocis com port 2 in se bo modem po ponovnem nalaganu gonilnikov vsedu ravno nanj...MAGIC...:o)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "samson: a maš še ti mogoče te driverje za win 2k?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Driverje za kater modem?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hehe, je samson glup...Seveda se jih da dobit za Geniusa USB....Sam je en problem. Modemi ne delajo rado na USB pod XP, lahko pa probas z temi ruskimi driverji...Po moje bi pa mogl ze bit tudi na Genius-ovi strani driverji v anglescini....Genius USB RU"
+    },
+    {
+        "role": "user",
+        "message": "Zivjo, zanima me ali sem na pravem mestu vnesel vrednost: Init string . Nastavil sem jo pod opcijo povezave in dodatne nastavitve, kjer so se: nazor napak imam potrjeno stiskanje podatkov nadzor pretoka- strojni RTS/CTS vrsta modulacije- standardna posabne nastavitve- atx3s10=255 Nisem pa prav razumel vpisa v datoteko system.ini. Moj modem je na COM 4 ki ima prekinitev 3."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jap, pravilno napisan init string, sedaj pa samo se deinstaliraj gonilnike od motorole, diseblaj com port 2 v biosu (seveda ce nimas nic prklopljenega nanj), ponovno nalozi gonilnike kadar bo zahteval Winblows in voila...Imas ga na com port 2. Potem odpri npr. z notepadom datoteko c:\\windows\\system.ini in poisci okence: [386 Enh]  Dopisi noter se dodatno vrstico:  Com2Irq3Buffer=1024  Shrani in restart kante in to je to..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 vem da si se ze namucil z odgovori. A mi lahko poves najenostavnejsi nacin kako odstraniti gonilnike za doloceno napravo (v konkretnem primeru za motorolo). Ali pa je potrebno odstraniti celotno napravo. Imam se eno vprasanje na forumu. Ali mi lahko svetujes tudi glede tistega. Najlepsa hvala"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kaj pa driverji za motorolo za XP-je ?? driverje odstraniš v nadzorni plošči Dodaj odstrani program, oz uninstal zrave sriverjev Vsaj mislim."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0: Imas driverje za winXP za motorolo, one prirejene ko je slovenija tud noter, ker na tvojem pagu so mislim da samo za win9x."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_3: Page je bil samo tko postavljen, da si lahko se kdo dol potegne, da vsakemu ne posiljam posebno. Kar se tice pa XP, pa nisem nic se probal, ker nimam motorole, ampak SUpraexpress SST in zunanji puretek modem. Ce pa se dobro spomnim, so delali tudi pod XP, sam nisem ravno siguren da tile....Lahko pa probas dat gor od Win2000.... Joco: Kadar odpakiras driverje, imas nekje notri tudi .Exe za uninstall. Sicer pa prek nadzorne plosce Dodaj Odstrani Programe."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Imate pa res sreco: Nekje sem najdu driverje za Motorolo in sicer je od drugega proizvajalca, ampak celo delajo. Mislim da so od dell-ovi...Ne spomnim se vec. Upam, da bo link kmalu sledil....Pejte mal pozneje scekirat na page...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ok fantje go for it...Motorola XP"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ej SAMSONE! Js mam US Robotics ISA HW modem, pa se mi je od 97' leta skoz povezvau 56k, zdej se pa po 33.6 pa 38.6 pa 40.0 pa 42.7 pa nič več! zdej me pa zanima kaj bi blo, k se fajn spoznas na modeme! Aja pa kaj nardi tisti switch? JS sm dau tist not, pa nix ne nardi."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_5: Res se ti je povezoval z 56700, ker nisi imel pravih driverjev zanj in ti je namest konekta v bps, prikazal DTE speed. O Katerem switchu govoris? A init string? To je pojasnjeno v enem od posto zgoraj. ATS10=255 pa pomeni da ce zazna naprimer dvig telefona medtem ko je modem povezan ne vrze takoj inije dol, ampak se en cas poiskusa nadaljevati prenos in ce dokaj hitr odlozis slusalko telefona te ne vrze dol."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hip hip hura za @assistant_0a!!  Ej stari rešu si me že sm hotu ta garjavi modem od motorole zabrisat čez okno, pa it po enga US Roboticsa. Pa se izkaže da vse rešijo gonjači super!!  Hvala uno mas!  -------------------------------- Klepetalnik 1.2 - slovenski forumi na dlani http://www.ruleless.com/klepetalnik/"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Me veseli, da lahko komu pomagam...Ampak ne boste verjeli je doticni modem mene tudi stal nemalo zivcev in penezov (internet ko sem iskal resitev)..Tko da vam vsaj malce olajsam zadevo...Motorola niti ni tako slab modem kot pravijo...Dober konekt, dobri prenosi, sam mal se moras bolj poigrat. Seveda pa mora biti rev. 2, ker enke so pa res full u KURTZU!"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Hum, sm meu taprave driverje, z diskete, pod win 98, pa se je povezoval 52000bps ."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Torej je bilo v redu, ce se je povezoval z 52000 bps...Lahko se je zgodilo, da si v tem casu dodal se kaksen telefon v hisi...Ce jih je prevec ni ravno dobro. Je, ce je linija direkt do modema in potem cez modem naprej. Lahko pa tudi, da so ti telekomovci (mamicu mu dinozavrsko) priklopu se kaksen PCM al pa dvojcka in to ti je razlog da imas konekte kot jih imas. Pa dej mal poglej bo biosu, ce je kje PCI concurency al neki tazga pa enablaj. Mislim da se pr nekaterih platah temu rece tudi PCI 2.1 compliant..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ma ja mamo velik fonzijev v hisi. Vrjetn je to. A pa konekšn speed ful vpliva na dll?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vcasih ze...Lahko se full dobro konekta, pa je prenos slab, ker prihaja do ponovnega prenasanja zaradi napake. Lahko pa se konektas z starim modemom 33.6 in dobis prenose konstantno 3.8. Heh cudna so pota gospodova...Pardon modemova."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No mal prehitr sm se pohvalu.  V Win 98 dela OK v XP pa mi ko naložim dellove driverje teži da je linija zasedena in rediala v neskončnost. Any sugestions??  Vseeno 100x hvala  -------------------------------- Klepetalnik 1.2 - slovenski forumi na dlani http://www.ruleless.com/klepetalnik/"
+    },
+    {
+        "role": "assistant_4",
+        "message": "imam MOTOROLA SM 56 v xp-jih ne morem instalirat s temi driverji modema (stare driverje sem izbrisal popolnoma) install --> instaling modem(s) potem pa se vse ustavi čez 5 min pa se vse zapre in nič ne naredi. ??"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tribes Man: A si dal init string atx3s10=255...Ce si, potem dej se kljukico umakn tam ko je Wait for dial tone. T bi mogl delat 100%. APJ: Vcasih ne pobrise vse za seboj, in se zgodi ce je slo kaj narobe da javi da ne more nalozit gonilnikov. To je meni delal z zvocno kartico, nakar sem enostavno se enkrat na novo instalacijo XP-jev pognal, nakar je delalo BP."
+    },
+    {
+        "role": "assistant_7",
+        "message": "samson: mam disejblan com1 in com2 ... že odkar mam zdejšnjo konfiguracijo... modem pa se mi userje na com3! kaj zdaj? Pa kam vpišeš init string?  Mam pa winXP ... za 9x vem kam vpišeš!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "KrucyMucy: Pod XP je to isto kot v win98 pod lastnostmi od modem a ali povezave. Saj ves da so WinXP prepametni in se kot pravis modem naserje na com3. Nisi edini, vendar do sedaj tudi jaz nisem nasu resitve. Dejstvo je pa to, da vseeno dela bolje kot pod Win9x. pac izbolsana varianta prenosov in podobno. Nic ni potrbno pod Xp kot pravi driver in init string..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0: Oni driverji ko si jih dal za motorolo od della za winXP, ne grejo instalirat, pri odpakiravanju napise da je to za dellov modem, ki je poznan tudi kot motorola, ampak ce pozenem setup, mi ga ne zinstalira, ce pa rocno instaliram, ko mu pokazem na inf file pa mi javi, da niso driverji za moj hardware, maš mogoče kako idejo, kak bi to popravo, mogoce kaj v inf filu spremenil?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uh, tak vseznalec pa res nisem...Ce je meni uspelo zadevo pognat iz prve, potem jo menda boste tudi vi. Nimam vec idej, ker ne posedujem vec doticnega modema na zalost, sem se pa vcasih ogromno ukvarjal z njim...:("
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljeni imam modem motorola, ki ima sledece oznake na cipu: Motorola 62412-51 V04036.1-06 001 S/N0K206886I Pojavlja pa se mi sledeci problem. Ko zazenem racunalnik imam takoj signal zasedene linije. Tako da sploh ne morem vzpostaviti povezave. V kolikor pa iztaknem telefonski kabel iz modema in vtaknem nazaj takrat lahko vpostavim povezavo. Skratka vedno ko zelim vzpostaviti povezavo moram moram iztaknit in vtaknit telefonski kabel. Zanima me v cem bi bil problem? Ali je modem fuc ali nepravi gonilniki?  Hvala za nasvete"
+    },
+    {
+        "role": "user",
+        "message": "a ni noben se imel podobnih problemov? ni nobene ideje? LP"
+    },
+    {
+        "role": "assistant_8",
+        "message": "kwa pa nardiš, če ti javlja \"DSR is low while initializing modem\" ?!?  kaj naj bi sploh bil dsr?"
+    },
+    {
+        "role": "user",
+        "message": "razumem kaj si mislil s tem DSR-jem. Kaj je to sploh? LP"
+    }
+]

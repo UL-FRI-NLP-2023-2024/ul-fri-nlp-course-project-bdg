@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Zanima me kaj več o RAID polju... -kaj je RAID 1, RAID 0? -ali lahko narediš RAID polje iz dveh različnih diskov? no, kaj je v bistvo + pri polju RAID?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hm, malo smo leni Če bi uporabil iskanje tukaj bi našel že marsikaj napisanega, med drugimi tukaj na STju obstaja tudi  članek na to temo..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "RAID 0 -> stripping = dva diska, podatki se zapisujejo na enega in drugega delno, tako da recimo en disk vsebuje pol datoteke, drug disk pa drugo polovico. 2x 80GB v RAID 0 = 160GB, vidni kot en fizičen disk. RAID 1 -> mirroring = dva diska, podatki se zapisujejo na oba diska tako, da oba vsebujeta NATANČNO iste podatke. 2x 80GB v RAID 1 = 80GB, vidni kot en fizičen disk.  RAID 0 = teoretično hitrejša hitrost zapisovanja & branja, če en disk odpove, ostaneš brez VSEH podatkov. RAID 1 = večja varnost (če odpove en disk imaš še VSE podatke nedotaknjene in takoj delujoče), teoretično večja hitrost branja. Izgubiš pa za natanko en disk prostora.  [edit] Ah, kaj se trudim. Drugič pa samo link na Google, pa bo"
+    },
+    {
+        "role": "user",
+        "message": "Ja, vem da je o tem dosti že napisano, samo na dolgo in nerazumljivo oz. nezanimivo... No, hvala ALIEN3001 za to kratko in izčrpno obrazložitev... Zanima me ali je mogoče imeti dva diska, eden je WD 1800JB 180GB, drugi pa WD 2000JD 200GB v RAID polju, se pravi RAID 0? Kaj se s tem pridobi, če se to da?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Seveda se da, ampak RAID0 polje bo potem imelo velikost najmanjšega diska v raidu, torej 180GB. Preostalih 20GB na 200GB disku bo neuporabljenih... Pridobiš pa na hitrosti branja in pisanja, izgubiš na varnosti podatkov, saj imata 2 diska v RAID0 2× več možnosti da kater od njiju crkne in si ob podatke na obeh diskih..."
+    },
+    {
+        "role": "user",
+        "message": "Torej mi svetuješ, da enostavno priključim oba diska na SATA brez RAID 0 polja,ali???"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ja, RAIDa za domace potrebe ne nucas. :)"
+    },
+    {
+        "role": "user",
+        "message": "Ja ja.... Stvar je sicer sledeča. Imam dva diska, starega WD1800JB ATA133 180GB IDE pa čeprav je navaden disk ga imam prek adapterja(ki je bil zraven pri matični plošči) priključenega na SATA, zdaj pa sem še kupil novi disk WD2000JD 200GB ki pa je SATA, plata je pa ABIT NF7-S r.2.0, kako naj priključim diska da bo najbolje?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kaj bi rad naredil? Postavil RAID 0? Najprej, preden se SPLOH lotevaš razmisli, če ni to neumnost... namreč, če ti odleti en disk iz kakršnegakoli razloga izgubiš podatke tudi na drugem. Ne vem ce so ti ze zgoraj razlagali, ampak, pri stripu leti pri pisanju vsak \"prvi\" byte na en disk in vsak \"drugi\" na drugega... Se pravi ce izgubiš prvi disk so ti ostali vsi parni  byti... Stripa SE NE UPORABLJA za karkoli kjer so shranjeni podatki ampak predvsem tam kjer je potrebna hitra ZAČASNA obdelava podatkov. Da bi delal stripe na vsem diskovju kar ga imaš je NEVARNO, še posebaj glede na pogostost crkovanja diskov danes... če si že \"zakačil\" na stripe, potem si ali omisli se dva diska in postavi raid 10 ali pa preveri ce si lahko na obstojecem kontrolerju postavis raid 5 oz. kupi primeren kontroler.  No ja kar se pa postavitve tiče, priklopi diska, in pojdi v kontrolerjev setup (nekje ob zagonu racunalnika boš moral pritisniti ctrl+ nekaj podobno kot za priti v bios. Tam definiraš raid 0 array... malo poglej dokumentacijo od plate...  No pa dopolnjujem razpravo o stripu, pogosteje uporabljana sta še:  RAID 5 : (minimum trije diski) stripe with parity podatki se delijo med tri diske in sicer skupaj z pariteto (ECC), tako da lahko dejansko vzames ven en disk pa imas se vedno vse podatke, ki se rekonstruirajo iz paritete... zadeva je sicer zakon, je pa najbolj zakompliciran (po desingu) od vseh raidov, vendar je varen in hiter, pozre pa ti pa kapaciteto enega diska, razdeljeno med vse tri za hranjenje ECCja RIAD 10: (minimum štirje diski) je pa kombinacija stripa in mirrorja, na dveh diskih imas stripe na ostalih dveh pa miror tega stripa, kar se brzine tice ima hitrost stripa, varnost pa je enaka kot pri mirrorju, problem pa je da zgubiš kapaciteto dveh diskov.  Skratka RAID je drag. Ali zaradi diskov in kontrolerja, ali pa zaradi varnosti podatkov, v vsakem primeru plačaš nekje, ali z denarjem ali pa z ceno podatkov."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Nitpick:  Če diska spraviš v RAID-0, se podatki delijo na 512-bytne sektorje oziroma še raje gruče po N sektorjev (\"strip_size\") in ne na posamezne byte.  Se pravi, če ti škripne en od dveh diskov v RAID-0, ti od celega polja ostanejo sode ali lihe gruče po N sektorjev z vmesnimi pravtolikšnimi prazninami.   Če torej obupano rabiš kako datoteko, ki je manjša od strip_sizea, obstaja neka verjetnost, da jo nekako najdeš, vendar verjetno ročno, ker bo sistem direktorijev tudi \"preluknjan\" in torej neuporaben.  Prijateljski nasvet- če že moraš, si naredi RAID-1. Branje bo skoraj na RAID-0 nivoju, pisanje bo počasno, vendar bodo podatki zelo varni.  RAID-0 ti je za take stvari, kjer nimaš sistema gor in kjer ti podatki niso tako kritični ali pa so gor samo kratek čas. Recimo za kak buffer na sistemu za RIPanje DVDjev itd..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Aja, še dve pripombi:  Za RAID je v splošnem priporočljivo da uporabljaš enake diske, drugače so lahkko rezultati slabi.  Zato bo lahko ta kombinacije dveh različnih diskov lahko dala tudi slabe rezultate in se sam niti ne bi ubadal s tem...  Linux odnedavna podpira tudi RAID-6. Gre za varianto RAID-5, kjer pa je pariteta distribuirana na DVEH namesto enga diska v gruči in tako ti lahko crkneta tudi dva diska, pa bo stvar še vendo špilala.  Vrednosti tega nisem pogruntal, dokler mi ni v RAID-5 crknil disk, jaz pa nisem imel rezerve. Panika!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Brane; ups zajebal, hvala za popravek    Mimopgrede, ce se komu kaj sanja o SIL 3114 in njegovemu softwarskemu ( ) raid 5, bi bil hvalezen za kaksen podatek...  Ko sem brskal zanj po netu sem nasel tole, sicer se tega ne bi šel, je pa morda zanimivo za koga; http://www4.tomshardware.com/storage/20..."
+    },
+    {
+        "role": "user",
+        "message": "Stvar je sicer sledeča. Imam dva diska, starega WD1800JB ATA133 180GB IDE pa čeprav je navaden disk ga imam prek adapterja(ki je bil zraven pri matični plošči) priključenega na SATA, zdaj pa sem še kupil novi disk WD2000JD 200GB ki pa je SATA, plata je pa ABIT NF7-S r.2.0, kako naj priključim diska da bo najbolje?  Se pravi, da RAID 0 in RAID 1 odpadeta. Meni se ne gre za hitrost ampak nekoliko več za prostor, ker mi ga na disku zmanjkuje. Se pravi, da oba diska enostavno priključim na SATA, novega 200GB na SATA1 in na njega naložim Windows, na starega IDE diska pa prek adapterja na SATA2. Ali bo tako najbolje?"
+    },
+    {
+        "role": "user",
+        "message": "Se pravi, da RAID 0 in RAID 1 odpadeta. Meni se ne gre za hitrost ampak nekoliko več za prostor, ker mi ga na disku zmanjkuje. Se pravi, da oba diska enostavno priključim na SATA, novega 200GB na SATA1 in na njega naložim Windows, na starega IDE diska pa prek adapterja na SATA2. Ali bo tako najbolje?   Se pravi, če ni nobenega odgovora, da je v mojem primeru tako najboljše???"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Zmanjkuje prostora? Za božjo voljo, zato pa res ne potrebuješ RAID. Enostavno daš še en disk v računalnik in ga sformatiraš... pa boš imel tistih dodatnih 200GB prostora. Zakaj bi kompliciral?"
+    },
+    {
+        "role": "user",
+        "message": "Da nebom po nepotrebnem še eno temo odpiral...  Zanima me kako imate oz. svetujete, da razdelim disk na particije? Se pravi na particijo WINDOWS in še eno ali pa je boljše imeti disk razdeljenih na več particij?"
+    }
+]

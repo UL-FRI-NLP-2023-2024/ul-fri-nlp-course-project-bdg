@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Primer: celotna mreža podjetja je v Telekomovem MPLS-ju. Ali lahko uporabim OpenVPN in se tako preko VPN-ja povežem na lastni/zasebni OpenVPN server? S tem moje delo na internetu ne bo vidno nikomur, ne?  Če ima kdo izkušnje z MPLS in OpenVPN se priporočam za komentar. :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Teoretično bi šlo - če v firmi ne blokirajo SSL VPN povezav. MPLS tu ni noben bawbaw, ki bi karkoli preprečeval, zgolj povezuje vaše oddaljene lokacije v virtualno zasebno omrežje na nivoju ponudnika, da ti ni treba samemu vse te VPN povezave vzpostavljati na lastni opremi.  Kolikor se spomnim imaš ti svoj OpenVPN strežnik na nekem nestandardnem portu, kateri v firmi ni nujno odprt proti internetu.  Če bi ga prestavil na port 443/tcp, bi te bilo že precej težje 'uloviti' - ne pa tudi nemogoče. WatchGuard recimo omogoča, da na https zablokiraš vse, kar ne ustreza https prometu, tako da se SSL VPN na tem portu sploh nebi vzpostavil.  Druga točka, kjer te lahko ujamejo, pa je analiza prometa. Če se dela poročila, kateri zunanji hosti 'kurijo' največ prometa, se bo IP naslov tvojega VPN prehoda znašel precej blizu vrhu tega seznama. Čim gre kdo potem še gledat, kateri klient ves ta promet ustvarja...ups?  Če imajo v podjetju malenkost bolj pametno požarno pregrado, pa bo preko prepoznave aplikacij takointako prepoznala, da skušaš vzpostavljati SSL VPN povezavo in te blokirala, če jo je admin tako skonfiguriral.  Kar hočem reči: IZOGIBAJ se uporabi omrežja na način, ki v podjetju ni zaželjen. Tudi če ste brez požarne pregrade in imate vse skupaj kar direktno na switch priključeno, ga ni vraga, da nebi mogel počakat tistih 8 ur, da 'vprašljive stvari' pogledaš/preneseš na svojem domačem priključku, ko se vrneš s šihta domov.  Alternativno lahko preveriš, če imate kakšen ločen 'guest network'. Čim postaviš guest network, se takoj med osnovnimi zahtevami pojavi možnost vzpostavljanja VPN povezav gostov z omrežji njihovih podjetij (da lahko preverjajo zaloge, cene,....). Tu bi se bistveno lažje 'skril' pa še kršitev bi bila manjša. Seveda pa te lahko admin 'opazi' če boš visel gor, medtem ko v hiši ni nobenih gostov. Zato se je kljub vsemu dobro predhodno kaj dogovoriti z upravljalcem omrežja, da kasneje nebi imel kakšnih nepotrebnih sitnosti."
+    },
+    {
+        "role": "user",
+        "message": "No, saj ne delam nič vprašljivega ali škodljivega (razen, da v službenem času malo googlam in youtube-am privat, kadar se ne utapljam v gužvi dela seveda), bolj iz firbca sprašujem. Mogoče se bom poigral z guest networkom, da vidim, če se da. MPLS bom pa pustil na miru. Hvala za odlično razlago!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tole si preberi: http://www.telefoncek.si/tehnicno-ozadj..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Dobro spisano, vendar se mi zdi, da odstavek Z dodajanjem HMAC digitalnega podpisa SSL/TLS izmenjalnim paketkom pa preprečujemo DoS napade ali poplavljanje OpenVPN UDP vrat, onemogočamo ranljivosti prekoračitve pomnilnika (ang. buffer overflow) v SSL/TLS implementacijah, skeniranje vrat (ang. port scanning) z namenom ugotoviti katera UDP vrata so v stanju poslušanja (ang. listening state) ter zelo hitro onemogočimo povezovanje neavtoriziranih odjemalcev na strežnik). zavaja. Po mojem mnenju se vse opisane pasti dogajajo na nižjem, sistemskem nivoju."
+    },
+    {
+        "role": "assistant_1",
+        "message": "tls-auth  The tls-auth directive adds an additional HMAC signature to all SSL/TLS handshake packets for integrity verification. Any UDP packet not bearing the correct HMAC signature can be dropped without further processing. The tls-auth HMAC signature provides an additional level of security above and beyond that provided by SSL/TLS. It can protect against:  DoS attacks or port flooding on the OpenVPN UDP port. Port scanning to determine which server UDP ports are in a listening state. Buffer overflow vulnerabilities in the SSL/TLS implementation. SSL/TLS handshake initiations from unauthorized machines (while such handshakes would ultimately fail to authenticate, tls-auth can cut them off at a much earlier point)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_1 je 8. jan 2016 ob 12:33 izjavil:Any UDP packet not bearing the correct HMAC signature can be dropped without further processing.  Nisem bil dovolj jasen. Želim povedati, da bo OS sprejel vsak podatkovni paket, saj OS še ne preverja HMAC, kajti za OS ima UDP poleg nosilnih podatkov zgolj še štiri polja: izvorna in ciljna vrata, dolžina podatkov in preverjanje. Na tem nivoju HMAC ne ostaja. Če bo kdo zavračal komunikacijo je to šele aplikacija, torej bo vsaka poplava podatkov dosegla aplikacijo. Prav tako bodo vrata še vedno zaznana kot odprta. Če bo kdo zavračal komunikacijo je to šele aplikacija, torej bo vsaka poplava podatkov dosegla aplikacijo. Prav tako bodo vrata še vedno zaznana kot odprta."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za OP-a to niti ni relevantno, saj že ima postavljen OpenVPN na svojem routerju. Vprašanje je bilo bolj glede dostopa do tega prehoda iz omrežja podjetja, ob predvidevanju, da MPLS povezava tu prinaša kakšno foro, ki bi mu to onemogočala.  Koliko pa lahko izvajaš 'tuning' OprnVPN-a na kakšnem DD-WRT/Tomatu pa je tu spet drugo vprašanje. Na komercialnih požarnih pregradah, ki 'pod pokrovom' uporabljajo OpenVPN do večine teh parametrov takointako nimaš dostopa, temveč upaš, da so že privzeto nastavljeni najbolj optimalni. Jaz lahko izbiram zgolj avtentikacijo do SHA-512 in enkripcijo do AES 256bit in to je to. Ostalo je trivialno in bi prišlo v poštev zgolj, če bi si postavil ločen gateway z OpenVPN na kakšno Linux mašino.  Zakaj pa naj bi bil OpenVPN varnejši od IPSec?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Lahko uporabiš TS Gateway in se preko RDP povežeš na svojo mašino domov. Tako na firmi ne vidijo kaj delaš, ampak bo samo vidno da si ustvaril n GB prometa na tvoj TS gateway. Tako ne rabiš delat openVPN, pa še ena prednost, razni watchguardi in podobni pa ga ne blokirajo ker je to res ssl promet. Edina varjanta da ti blokirajo promet je da rečejo da je promet na tvoj TS gatewas prepovedan, ali pa da komplet ssl blokirajo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 8. jan 2016 ob 13:27 izjavil:Zakaj pa naj bi bil OpenVPN varnejši od IPSec?  Enostavnejši je za uporabo. Pa pri IPSec je NSA sodelovala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 je 8. jan 2016 ob 14:32 izjavil:@assistant_0 je 8. jan 2016 ob 13:27 izjavil:Zakaj pa naj bi bil OpenVPN varnejši od IPSec?  Enostavnejši je za uporabo. Pa pri IPSec je NSA sodelovala.  Že mogoče, da je sodelovala, ampak tudi OpenVPN ni neranljiv. Je kar nekaj varnostnih popravkov na njemu in če nisi dosleden, si ranljiv še s strani marsikoga drugega, kot zgolj NSA. Ker pa je vsaj pri meni tveganje višje s strani nekih tretjih barabinov, ne pa NSA,.....  Skratka, ni glavni problem protokol ampak lenoba (človeška narava?) adminov, ki sproti ne patchajo zadev. Kaj ti koristi, če je OpenVPN kvazi bolj varen, če 2/3 postavljenih OpenVPN strežnikov ni popatchanih in bolehajo za ranljivostmi, ki so celemu svetu znane že več let?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pri VPN strežnikih je vseeno koliko so drugi strežniki popatchani - pomembno je, kako je s TVOJIM serverjem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 je 8. jan 2016 ob 16:58 izjavil:Pri VPN strežnikih je vseeno koliko so drugi strežniki popatchani - pomembno je, kako je s TVOJIM serverjem.  Za MOJEGA ne skrbi, večkrat laufa beta verzijo, kot pa produkcijsko kodo.  Ampak govorimo na splošno. Koliko ljudi si je na routerčkih naredilo OpenVPN gateway lahko samo ugibam, ampak resno dvomim, da jih kaj več kot 10% po osnovni postavitvi tudi še kdaj naloži kakšno posodobitev.  Pri raznih WRT&Co firmwarih se morda še celo da dobiti kakšen patch, če imaš malo starejši router. Kako pa je s stock firmware-i pa vsi vemo - če so eno leto po nakupu na voljo še kakšne posodobitve, imaš že preklemansko srečo. Ljudje pa kupujejo routerje za 5-10let in so večino tega časa dejansko izpostavljeni vsem mogočim ranljivostim zastarele kode."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Se strinjam. Zato pa jaz uporabljam lasten Linux OpenVPN server, za katerega redno skrbim.  Imam pa tudi dobre izkušnje z Mikrotikom - updati so redni."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mikrotik nekako ni isto, kot tipični 'home grade router', saj se gre bolj za 'OS', katerega implementirajo na različnih HW platformah. Pri takem pristopu je vsekakor lažje nuditi osodobitve skozi celo paleto proizvodov, tudi eno ali dve generacije nazaj.  Precej podobno je pri bolj ali manj vseh business grade routerjih in požarnih pregradah - če plačuješ 'maintenance'.  Home grade rešitve pa so žrtve potrošniškega pristopa. Ker domačim uporabnikom le težko prodaš 'vzdrževanje', raje prodajajo nove modele usmerjevalnikov. Deloma jim pri tem pomagajo vse višje zahteve uporabnikov, ki bi radi vse višje hitrosti, podporo novejših WiFi standardov, možnost priklopa diska, tiskalnika,.... Žal pa pri tem novejši firmware naredijo samo za aktualni model, da bi uporabnike tako še dodatno spodbudili v nakup novega routerja, čeprav bi marsikomu stari še leta dobro služil."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To je res. Ampak tudi iz cenovnega vidika je Mikrotik ugoden. 30 EUR za lite verzijo, ki ima 4 eth porte in močan wifi. Pa še precej robustna zadeva je - preživel je udar strele, ki ga računalnik recimo ni."
+    },
+    {
+        "role": "assistant_4",
+        "message": "In v čem je problem, če večina domačih uporabnikov, katerim router ne dela drugega kot nat, ne upgrade-a firmware-a?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Biti neumen ni problem. Je pa - neumno."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Torej nimaš konkretnega odgovora?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "In v čem je problem, če večina domačih uporabnikov, katerim router ne dela drugega kot nat, ne upgrade-a firmware-a?   Večina ima samo modem/router od ISPja z anteno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sem se spomnil, da na tem forumu nekateri predlagajo namestitev Tomato programske opreme na Linksys opremo, a ta programska oprema že 5 let nima nikakršnih popravkov."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pa jih potrebuje?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 10. jan 2016 ob 13:11 izjavil:Pa jih potrebuje?  Ja, svet se je malo spremenil v 5 letih.  To samo pomeni da se s softverom nihče ne ukvarja."
+    },
+    {
+        "role": "assistant_4",
+        "message": "To lahko rečeš, če ima stvar kakšno znano ranljivost, pa jo ignorirajo. Če samo ne dodajajo feature-jev, kje je problem? Kaj se je tako zelo spremenilo za domačega uporabnika zadnjih 5 let, da bi rabil nov tomato firmware?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ranljivosti v OpenSSL recimo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če router nima vklopljenega remote accesa preko neta, kako OpenSSL ranljivost vpliva nanj ?  Zadnji paradajz by shibbby je iz 2015 http://tomato.groov.pl/download/K26/bui... tomato-K26-1.28.RT-MIPSR1-132-MiniIPv6.zip  (recimo za wrt54gl)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_0 je 7. jan 2016 ob 17:44 izjavil: Če bi ga prestavil na port 443/tcp, bi te bilo že precej težje 'uloviti' - ne pa tudi nemogoče. WatchGuard recimo omogoča, da na https zablokiraš vse, kar ne ustreza https prometu, tako da se SSL VPN na tem portu sploh nebi vzpostavil.   Tole ne stekam cist dobro, kako si predstavljas da firma \"legalno\" ve, ali je https ali ne ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "OpenVPN za SSL uporablja poseben kontejner. Če gledaš headerje lahko vidiš ali gre za HTTPS promet ali ne.  OpenSSL ranljivost vpliva na vse servise, kjer se uporablja SSL/TLS šifriranje. To so tudi VPN servisi med drugim."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_8 je 10. jan 2016 ob 22:31 izjavil:@assistant_0 je 7. jan 2016 ob 17:44 izjavil: Če bi ga prestavil na port 443/tcp, bi te bilo že precej težje 'uloviti' - ne pa tudi nemogoče. WatchGuard recimo omogoča, da na https zablokiraš vse, kar ne ustreza https prometu, tako da se SSL VPN na tem portu sploh nebi vzpostavil.  Tole ne stekam cist dobro, kako si predstavljas da firma \"legalno\" ve, ali je https ali ne ?  Kaj je tukaj lahko 'nelegalnega'? Nismo menda že spet pri debati o tem, da firma ne sme vedeti, katere web strani ti obiskuješ?   Jaz bi ti lepo dal dve opciji, ti pa podpiši, za katero si se odločil:   a)Strinjaš se z preverjanjem vsebine tvojega internetnega prometa (zasebnost zajamčena v skladu z zakonom o varovanju osebnih podatkov)  b) Nimaš dostopa do interneta  Izbira pa je tvoja.  Morali boste začeti razumeti, da ni razlike, če firma beleži in preverja http ali https promet. Še najmanj je razlike iz pravnega vidika. Enako morate razumeti, da se pri tem ne beležijo gesla in drugi kritični osebni podatki, temveč zgolj podatki potrebni za varovanje prometa/omrežja in statistiko rabe internetne povezave. Ne shranjujejo se komentarji, ki jih pišeš npr. na SLO-tech, ne shranjujejo se kopije datotek, ki jih prenašaš. Gre se za 'sorazmeren' poseg v zasebnost posameznika.  Matthai se morda ne strinja, ker ima malo bolj akademsko /raziskovalni pogled na dekripcijo https prometa, ampak na splošno velja, da se internetni promet vse bolj seli na https protokol. S tem pa se ne seli samo 'dobri' promet, temveč tudi 'zlonamerni'. Pregledovanje https prometa z IPS, antivirusom in blokiranje URL-jev, ki so znani izvori malware-a tako postaja danes vse bolj nujno, če se nočeš zanašat zgolj na AV, ki ga ima uporabnik nameščen na svojem računalniku.  Danes, ko smo v dobi BYOD, torej v času, ko vsak zaposleni s sabo prinaša vsaj še eno napravo, ki se hoče povezati na Internet, lahko uporabnike z mobiteli in tablicami preusmeriš na poseben SSID, ki s poslovnim delom omrežja komunicira zgolj toliko, da se lahko pobere/pošlje pošto in morda dostopa še do kakšne izbrane intranetne storitve. Takemu omrežju potem lahko omogočiš malo bolj ohlapna pravila in https promet ne nadziraš tako strogo, kot tistega v strikno poslovnem delu omrežja. Tako ti potem ne more nihče očitat, da se mu vtikaš v njegovo zasebnost."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 7. jan 2016 ob 17:44 izjavil:Kolikor se spomnim imaš ti svoj OpenVPN strežnik na nekem nestandardnem portu, kateri v firmi ni nujno odprt proti internetu. Če bi ga prestavil na port 443/tcp, bi te bilo že precej težje 'uloviti' - ne pa tudi nemogoče. WatchGuard recimo omogoča, da na https zablokiraš vse, kar ne ustreza https prometu, tako da se SSL VPN na tem portu sploh nebi vzpostavil.   Alternativno lahko preveriš, če imate kakšen ločen 'guest network'. Čim postaviš guest network, se takoj med osnovnimi zahtevami pojavi možnost vzpostavljanja VPN povezav gostov z omrežji njihovih podjetij (da lahko preverjajo zaloge, cene,....). Tu bi se bistveno lažje 'skril' pa še kršitev bi bila manjša. Seveda pa te lahko admin 'opazi' če boš visel gor, medtem ko v hiši ni nobenih gostov. Zato se je kljub vsemu dobro predhodno kaj dogovoriti z upravljalcem omrežja, da kasneje nebi imel kakšnih nepotrebnih sitnosti.   Preko Guest omrežja sem se danes že priklopil preko OpenVPN-ja na svoj VPN server, deluje.  Preko MPLS se pa bojim, da bi me, kot praviš v prvem odstavku, dobili, da neki mutim in pomislili, da hočem kaj shekat ali ukrast podatke ali nevem še kaj. Port, ki ga uporabljam za OpenVPN je 1194 UDP, tako lahko vidijo, da se nakaj dogaja na tem (nestandardnem) portu, ne? Rad bi iz firbca poizkusil ampak potem se izpostavim in bom mogoče pod drobnogledom. :P"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vse je odvisno od tega, kakšno imate varnostno politiko v podjetju. Če nekaj velja kot prepovedano, potem v bistvu niti nima veze, če je tehnično izvedljivo ali pa če tehnočno niso v stanju zaznati takšno kršitev - še vedno se gre za kršitev.   Tako, kot če se podiš 120km/h skozi naselje, pa imaš srečo, da ni radarja, ki bi te ujel - še vedno si storil kršitev. Lahko se 100x zapodiš preko naselja z noro hitrostjo, pa te ne bo nihče zalotil. Potem pa pride enkrat tisti černi dan, ko delajo zgolj kontrolo alkoholiziranosti, pa te zalotijo, kako se podiš....  Enako je tudi tu. Morda imajo zastarelo požarno pregrado, ki je po možnosti še slabo skonfigurirana. Loge, če se že beležijo, morda sploh ne analizirajo, ker jih nimajo s čem,.... pa lep čas ne odkrijejo 'anomalije' na mreži. Potem te pa enega dne nekdo od zadaj potreplja po rami in te vpraša \"kaj imaš pa ti to na svojem ekranu? Kaj to ni klient od OpenVPN? Mar ne veš, da to ni zaželjeno?....\"  Zato pravim, da se je vedno dobro pogovoriti s tistim, ki bi ti lahko stopil na prste. Če ti on da svoj blagoslov, potem si pokrit in se nimaš kaj sekirat. V nasprotnem slučaju, pa nimaš nikoli dobrega občutka."
+    },
+    {
+        "role": "user",
+        "message": "Nič, bom vprašal glavnega admina, če lahko uporabljam OpenVPN v našem MPLS omrežju. Je to lahko odvisno tudi kaj od Telekoma, ki je ponudnik našega MPLS?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 11. jan 2016 ob 08:36 izjavil:Enako morate razumeti, da se pri tem ne beležijo gesla in drugi kritični osebni podatki, temveč zgolj podatki potrebni za varovanje prometa/omrežja in statistiko rabe internetne povezave. Ne shranjujejo se komentarji, ki jih pišeš npr. na SLO-tech, ne shranjujejo se kopije datotek, ki jih prenašaš. Gre se za 'sorazmeren' poseg v zasebnost posameznika.  In kdo mi to zagotavlja? Kaj pa če nekdo poheka network appliance in krade gesla?   @assistant_0 je 11. jan 2016 ob 08:36 izjavil:Danes, ko smo v dobi BYOD, torej v času, ko vsak zaposleni s sabo prinaša vsaj še eno napravo, ki se hoče povezati na Internet, lahko uporabnike z mobiteli in tablicami preusmeriš na poseben SSID, ki s poslovnim delom omrežja komunicira zgolj toliko, da se lahko pobere/pošlje pošto in morda dostopa še do kakšne izbrane intranetne storitve.  Ja, ampak pri BYOD mi nima delodajalec kaj šarit po moji napravi. Naj mi da svoji in tam nastavi policy. Mojo pa bo pustil pri miru."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 je 11. jan 2016 ob 11:51 izjavil:@assistant_0 je 11. jan 2016 ob 08:36 izjavil:Enako morate razumeti, da se pri tem ne beležijo gesla in drugi kritični osebni podatki, temveč zgolj podatki potrebni za varovanje prometa/omrežja in statistiko rabe internetne povezave. Ne shranjujejo se komentarji, ki jih pišeš npr. na SLO-tech, ne shranjujejo se kopije datotek, ki jih prenašaš. Gre se za 'sorazmeren' poseg v zasebnost posameznika.  In kdo mi to zagotavlja? Kaj pa če nekdo poheka network appliance in krade gesla?   Toliko, kot ti tudi nihče ne zagotavlja, da ti ni kdo pohekal kar tvoj računalnik/telefon/tablico in direktno z njega kradel gesla.  Moraš pa priznati, da je rahlo manj verjetno, da bo kdo pohackal nek redno vzdrževani firewall, ki vendarle ima hardened OS, kot pa direktno tvoj PC/telefon/tablico, ki ponuja bistveno več ranljivih točk in ga bolj ali manj ščiti zgolj AV, ki ga imaš nameščenega.  Druga zgodba je seveda, če ciljaš na zlonamernega delodajalca, po možnosti takega, ki si je na mrežo navlekel kaj podobnega kot Netwitness. Potem si pa takointako pečen...   @assistant_1 je 11. jan 2016 ob 11:51 izjavil:@assistant_0 je 11. jan 2016 ob 08:36 izjavil:Danes, ko smo v dobi BYOD, torej v času, ko vsak zaposleni s sabo prinaša vsaj še eno napravo, ki se hoče povezati na Internet, lahko uporabnike z mobiteli in tablicami preusmeriš na poseben SSID, ki s poslovnim delom omrežja komunicira zgolj toliko, da se lahko pobere/pošlje pošto in morda dostopa še do kakšne izbrane intranetne storitve.  Ja, ampak pri BYOD mi nima delodajalec kaj šarit po moji napravi. Naj mi da svoji in tam nastavi policy. Mojo pa bo pustil pri miru.  Saj ravno to sem napisal - za BYOD definiraš podobne rule kot za guest network, s to razliko da guest networku ne dovoliš dostopa do internih resursov podjetja, BYOD omrežju pa dovoliš omejen dostop.  Če pa je kdo paranoičen, se pa naj raje povezuje preko mobilnega interneta svojega providerja, da ne bo v dilemi, kdo lahko kaj vidi.  Do določene mere pa moraš na koncu tudi zaupat svojemu delodajalcu, da ne bo zlorabljal tvojih osebnih podatkov in vohunil za teboj. Če tega zaupanja nimaš, potem bi morda bil čas, da si poiščeš drugega delodajalca, kateremu lahko bolj zaupaš. Če se namreč bojiš zaradi internetnih prometnih podatkov, potem se bojiš tudi zaradi marsičesa drugega, kar bi lahko zlorabil proti tebi in nima nobene veze z informatiko."
+    },
+    {
+        "role": "assistant_2",
+        "message": "BYOD pač prepoveš oziroma jim onemogočiš priklop.  Ljudje se obnašajo, kot da imajo pravico priklopa. Ne ne.  V internem omrežju imajo podjetja celo onemogočene USB priklope ter dovoljujejo le elektronsko pošto podjetja, katero filtrirajo po besedah, da se kakšna skrivnost ne bi razkrila. Če hočeš ostati zaposlen, boš to spoštoval. Lahko pa greš drugam."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hja.... imaš takšna podjetja, pa imaš drugačna podjetja....  Nekje so skrajno liberalni in ne pomislijo na to, kako s tem ogrožajo varnost omrežja (ne spametuje jih niti kakšen cryptolocker), kje drugje pa so bolj zadrgnejeni, kot bi bilo potrebno.   Zelo veliko je odvisno od tega, s čem se podjetje ukvarja, koliko MORAŠ biti zadrgnjen. V določenih branžah, to že predpisujejo standardi, ki se jih morajo držati.   Kje drugje, npr. kakšna Kegljaška zveza, pa nekako ni ravno neke hude panike in strahu, pa se lahko omejujejo na tisto, kar narekuje zdrava pamet in to potem še na požarni pregradi implementiraš za tiste, ki radi občasno pozabljajo, kaj je 'zdrava pamet'. To je pa tudi tisti minimalni nivo, ki bi ga morali povsod imeti implementiranega. Ampak od tega smo še svetlobna leta oddaljeni."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 11. jan 2016 ob 12:17 izjavil:Moraš pa priznati, da je rahlo manj verjetno, da bo kdo pohackal nek redno vzdrževani firewall  ...v povprečnem slovenskem podjetju? LOL... Žal.   @assistant_0 je 11. jan 2016 ob 12:17 izjavil:Če pa je kdo paranoičen, se pa naj raje povezuje preko mobilnega interneta svojega providerja, da ne bo v dilemi, kdo lahko kaj vidi.  Saj danes je mobilni internet že tako poceni, da to sploh ni problem. V bistvu si lahko celo zaženeš virtualko, ki jo povežeš na mobilni internet in je problem rešen."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_0 je 11. jan 2016 ob 08:36 izjavil: Kaj je tukaj lahko 'nelegalnega'? Nismo menda že spet pri debati o tem, da firma ne sme vedeti, katere web strani ti obiskuješ?    Vprasanje ni blo, ali firma sme, ampak kako ve katere strani obiskujes, ce je komplet seja SSL enkriptirana. Razen da nelegalno fejka sebe kot  SSL server ?  @assistant_1 je 11. jan 2016 ob 08:16 izjavil:OpenVPN za SSL uporablja poseben kontejner. Če gledaš headerje lahko vidiš ali gre za HTTPS promet ali ne.  OpenSSL ranljivost vpliva na vse servise, kjer se uporablja SSL/TLS šifriranje. To so tudi VPN servisi med drugim.  V katerih headerjih se pa to vidi ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_8 je 11. jan 2016 ob 15:35 izjavil: Vprasanje ni blo, ali firma sme, ampak kako ve katere strani obiskujes, ce je komplet seja SSL enkriptirana. Razen da nelegalno fejka sebe kot  SSL server ?  Lahko pokažeš zakon, po katerem je dekripcija, inšpekcija in ponovno enkriptiranje prometa okarakterizirano kot kaznivo dejanje, če se to dogaja z vednostjo uporabnika?  Poleg tega, pa kamorkoli se hočeš povezati z web browserjem, se najprej zgodi DNS lookup. Če si firewall beleži domeno, za katero si izvedel query, bo prestregel tudi IP naslov. Ko boš potem hotel vzpostaviti TCP connection, pa te lahko lepo odžaga, če se IP naslov sklada z '*.facebook.com', za katerega si tik pred tem (nevede) naredil DNS lookup. In to popolnoma brez da bi se karkoli dekriptiralo! Preko povezovanja DNS queryjev in prometa tako lahko že samo po sebi identificiraš večino spletnih strežnikov, katerim uporabniki dostopajo.  Čim pa greš gledat še headerje, pa imaš notri še dodatne informacije (zaženi wireshark in malo eksperimentiraj?) - hint: SNI"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_8 je 11. jan 2016 ob 15:35 izjavil:OpenSSL ranljivost vpliva na vse servise, kjer se uporablja SSL/TLS šifriranje. To so tudi VPN servisi med drugim. V katerih headerjih se pa to vidi ?   It is important to understand that OpenVPN doesn't use the SSL wire protocol directly, like the majority of SSL applications does. So all the SSL packets from OpenVPN are encapsulated in a kind of OpenVPN container. Which is why some deep packet inspection firewalls might not allow OpenVPN traffic.  https://www.anonyproz.com/supportsuite/..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_1 je 11. jan 2016 ob 16:35 izjavil:@assistant_8 je 11. jan 2016 ob 15:35 izjavil:OpenSSL ranljivost vpliva na vse servise, kjer se uporablja SSL/TLS šifriranje. To so tudi VPN servisi med drugim. V katerih headerjih se pa to vidi ?   It is important to understand that OpenVPN doesn't use the SSL wire protocol directly, like the majority of SSL applications does. So all the SSL packets from OpenVPN are encapsulated in a kind of OpenVPN container. Which is why some deep packet inspection firewalls might not allow OpenVPN traffic.  https://www.anonyproz.com/supportsuite/...  Zanimivo, to pa nism vedu glede \"real ssl\" :)  @assistant_0 je 11. jan 2016 ob 16:13 izjavil:@assistant_8 je 11. jan 2016 ob 15:35 izjavil: Vprasanje ni blo, ali firma sme, ampak kako ve katere strani obiskujes, ce je komplet seja SSL enkriptirana. Razen da nelegalno fejka sebe kot  SSL server ?  Lahko pokažeš zakon, po katerem je dekripcija, inšpekcija in ponovno enkriptiranje prometa okarakterizirano kot kaznivo dejanje, če se to dogaja z vednostjo uporabnika?  Poleg tega, pa kamorkoli se hočeš povezati z web browserjem, se najprej zgodi DNS lookup. Če si firewall beleži domeno, za katero si izvedel query, bo prestregel tudi IP naslov. Ko boš potem hotel vzpostaviti TCP connection, pa te lahko lepo odžaga, če se IP naslov sklada z '*.facebook.com', za katerega si tik pred tem (nevede) naredil DNS lookup. In to popolnoma brez da bi se karkoli dekriptiralo! Preko povezovanja DNS queryjev in prometa tako lahko že samo po sebi identificiraš večino spletnih strežnikov, katerim uporabniki dostopajo.  Čim pa greš gledat še headerje, pa imaš notri še dodatne informacije (zaženi wireshark in malo eksperimentiraj?) - hint: SNI  DNS request bo ze facebook, IP pa ne bo facebook-ov, ampak od VPN serverja...  Edino mozno razlago je Matthai podal z DPI(ker ocitno OpenVPN ni strict SSL)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_8 je 11. jan 2016 ob 18:19 izjavil: DNS request bo ze facebook, IP pa ne bo facebook-ov, ampak od VPN serverja...  Edino mozno razlago je Matthai podal z DPI(ker ocitno OpenVPN ni strict SSL)  Matthai ti je povedal za OpenVPN, jaz sem ti pa povedal za blokiranje ostalih Web strani, ki jih obiskuješ preko https, da se jih lahko 'vidi' in klasificira tudi brez da se pogleda sam 'payload' prometa.  DNS je pri temu 'približek', SNI pa je 'izdajalec'. Za SNI moraš vsaj headerje prebirat, za DNS moraš pa DNS promet analizirat. In kaj je važno, če nek IP naslov ni od facebook-a? Saj ne delaš reverse lookup. Keširaš forward lookup-e, kateri ti lepo povedo, da si hotel IP naslov za facebook, da bi mu lahko dostopal. Ko to tud skušaš naresti, pa ti firewall reče 'hop cefizel, pa te mam!'.  Včasih si se še lahko 'švercal na kakšnih starih firewall-ih. Na sodobnih pa to postaja čedalje težje.  Koneckoncev najdeš na internetu tudi napotke, kako npr. zlorabiti DNS kot nekakšen proxy. Če imaš nek star firewall, komot. Če ti pa to dovoljuje včeraj kupljeni, pa pojdi do prodajalca in zahtevaj denar nazaj."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ampak tukaj je govora o Open VPN. Browser bo HTTPS zakriptiru, Open VPN pa se enkrat, firma bo videla VPN savje, ne bo pa videla kaj je notri (lohk je torrent,https ipd.). Torej se gre samo se za to, ali bo firma odkrila da je Client-VPN Server na 443 port uporabil dejansko SSL HTTP ali pa SSL VPN. Po moje je to mogoce zgolj v handshake fingerprint-ih (eden od teh je pac ta container ki ga je matthai omenil). Kar se tice pa logiranje obiska strani, ko je enkrat VPN vzpostavljen (npr da je firma spustila cez 443 in ni pogruntala da gre za vpn), se prometa ne vidi, niti kam se hodi ipd.) Zato sem tudi omenil besedo \"legalno\" - luknje oz. slaba konfiguracija ssl client + serverja ter da firma pofejka vpn server s svojim ssl-om (to pa ze ni vec legal)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Firma nikoli ne bo fejkala tuj VPN server - ni to namen DPI inšpekcije, da se bo vdiralo v VPN sejo in jo preiskovalo. Za zagotavljanje varnosti je čisto dovolj, če uspeš ugotoviti, da se gre za nedovoljen VPN promet in ga skenslaš.  Nepooblaščen VPN promet pa vsekakor lahko predstavlja varnostno grožnjo, saj se gre za luknjo v požarnem zidu, za katero ne moreš reči kaj bo po njej prihajalo ali odhajalo iz tvojega omrežja. Če si se prej trudil, da bi ja čim več prometa poslal skozi IPS, AV in ostale kontrole, ti lahko z VPN povezavo nekdo ves ta trud izniči. Logično, da boš potem skušal onemogočiti tovrstne povezave (sem ne spada zgolj SSL VPN ampak še kup drugih protokolov in programov).  Po drugi strani pa so lahko določene VPN seje nujno potrebne za opravljanje dejavnosti. Če recimo nekomu nudiš tehnično podporo, bo treba dovoliti VPN dostop do njegovega gatewaya, da boš lahko nameščal popravke, itd. Medtem ko imaš pri Site-2-Site VPN povezavah bistveno boljši centralni nadzor nad samimi povezavami, je ta pri Client-2-Site ponavadi izveden precej enostransko, pogosto se čez gateway spušča kar 'karkoli' do 'kateregakoli' IP naslova, kar je vse kaj drugega kot pametno, ampak žal očitno adminom (pre)pogosto zmanjka volje, da bi dodali še tistih par pravil, ki bi ta del uredila. Očitno je veselje, da jim je sploh uspelo vzpostaviti VPN povezavo tako veliko, da pozabijo, da je treba ta vrata do omrežja priškrtniti, tako da skozi njih lahko prihaja in odhaja izključno tisti promet, zaradi katerega smo VPN povezavo sploh vzpostavljali. Kot da bi se bali, da se bo zadeva potem kar podrla in ne bo nič več delovalo. Dejansko pa bi v takem primeru bilo bolje, da nebi delovalo...ampak daj to komu dopovedat."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 11. jan 2016 ob 20:05 izjavil:DNS je pri temu 'približek', SNI pa je 'izdajalec'. Za SNI moraš vsaj headerje prebirat, za DNS moraš pa DNS promet analizirat. In kaj je važno, če nek IP naslov ni od facebook-a? Saj ne delaš reverse lookup. Keširaš forward lookup-e, kateri ti lepo povedo, da si hotel IP naslov za facebook, da bi mu lahko dostopal. Ko to tud skušaš naresti, pa ti firewall reče 'hop cefizel, pa te mam!'.  Pri OpenVPNju imaš problem DNS leakinga, ki pa ga je mogoče rešiti - vsi DNS zahtevki se preusmerijo na VPN. Je opisano na mojem linku kako se to naredi.   @assistant_0 je 11. jan 2016 ob 20:05 izjavil:Koneckoncev najdeš na internetu tudi napotke, kako npr. zlorabiti DNS kot nekakšen proxy. Če imaš nek star firewall, komot. Če ti pa to dovoljuje včeraj kupljeni, pa pojdi do prodajalca in zahtevaj denar nazaj.  Iodine. Obstaja celo Iodine plugin za Network Managerja.  Res je, da novejši firewalli zadeve čedalje bolje blokirajo. Ampak po drugi strani pa obstajajo tudi aplikacije, ki skušajo čim bolj maskirati promet. Recimo Obfsproxy. Zadeva je sicer igra mačke z mišjo, ampak ko ti enkrat kupiš firewall, ga moraš redno nadgrajevati (vključno s pravili), da boš imel zaščito proti najnovejšim trikom. Tako da vožnja pod radarjem je še vedno mogoča."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zato je še toliko bolj pomembno, da uporabnikom probaš dopovedat, da jih ne blokiraš iz gole hudobije ampak zato, ker skušaš omrežje varovati pred njihovimi (pogosto nehotenimi) napakami.  Seveda pa se potem še vedno najdejo eni, ki se jim ne da nič dopovedati in se imajo za najbolj pametne, se gredo nekakšen 'shadow IT', kakor se temu zadnje čase popularno pravi. V nekaterih okoljih so morda res admini tako togi, da se z njimi ne da dogovoriti niti najbolj osnovnih reči, ki bi jih potreboval za redno delo, kar potem spodbuja 'iznajdljivost' posameznikov. Žal pa ti posamezniki ne vidijo celotne slike in se ne zavedajo, kaj s tem pravzaprav lahko ušpičijo.  Danes, ko imaš možnost omrežja segmentirat na VLANe, imeti niz različnih varnostnih con, se da marsikaj dogovoriti in implementirati, če ima IT osebje posluh za potrebe uporabnikov. Daleč smo od tega, da bi imeli možnost izključno Da/NE - odprem port ali ne odprem.   Po drugi strani pa se morajo tudi zaposleni zavedati, da ne morejo v službi vlačiti torrente do onemoglosti, ker imajo gigabitno povezavo, doma pa ima samo 4/1Mbps povezavo. Ravno tako se morajo zaposleni zavedati, da jih delodajalec ne plačuje, da bodo polovico šihta na spletu ogledovali dvomljive vsebine, drugo polovico pa malicali in kofetkali. Vsaj meni še ni znano, da bi npr. spadal dostop do facebooka na delovnem mestu med univerzalne človeške pravice....  Zagotovo se bo vedno nekaj našlo, kar se bo na tak ali drugačen način znalo izmuzniti kontroli požarne pregrade. Se pa lahko s pomočjo analize logov tudi kakšnega takšnega 'iznajdljivca' razkrije. Ponavadi se nekdo ne bo trudil zaobiti firewall, da bo poslal ven en email, ampak se bo šlo za kar nekaj prometa, ki ga bo ustvarjal. Čim pa odstopa od povprečja, pa se bo njegov IP naslov in/ali username pričel pojavljati nekje v statistikah. Težava pa je, da marsikatero podjetje zgolj logira promet na nek syslogd, ni pa nikoli postavilo nekega orodja za statistično analizo. Tudi tam, kjer imajo vsa ta orodja, je še vedno vprašanje, kako vestno se bo dalo komu gledat tedenska in mesečna statistična poročila. Hudir, ko je vedno ista dolgočasna solata, drugega 'bolj pametnega' dela pa cela gora...."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Jep, ozavescanje ljudi je najbolj primerno. Pa rahla groznja s sestankom v kadrovski v primeru zlorab. To pomoje najvec pomaga :)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_0 je 11. jan 2016 ob 21:52 izjavil: Težava pa je, da marsikatero podjetje zgolj logira promet na nek syslogd, ni pa nikoli postavilo nekega orodja za statistično analizo.   Večina syslog in snmp prometa od naprav gre v večini podjetij na /dev/null.  Ali pa pošiljajo to na nek neobstoječ IP. Kar ustvarja samo UDP smeti na mreži.  To, da bi podjetje plačalo za analizo prometa in imeli celo kako obveščanje ob \"incidentih\", je v povprečju precej znanstvena fantastika.  Na žalost je nadzor (česarkoli, ne samo proimeta na mreži) eden najmanj prioritetnih področij v ITju. Moral bi biti pa skoraj najpomembnejši. Samo ponavadi razkrije cel kup pomanjkljivosti v celotni infrastrukturi, ter tudi na aplikativni ravni, pa ga nihče noče implementirati. Oz. ostane na nivoju pinga."
+    },
+    {
+        "role": "user",
+        "message": "@user je 11. jan 2016 ob 10:08 izjavil:Nič, bom vprašal glavnega admina, če lahko uporabljam OpenVPN v našem MPLS omrežju. Je to lahko odvisno tudi kaj od Telekoma, ki je ponudnik našega MPLS?   Pravi, da bi verjetno šlo (tehnično) ampak naj raje ne, ker lahko prinesem od zunaj kak virus in se potem ta prenese po MPLS. Bom torej pustil MPLS na miru in se igral na guest omrežju."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 12. jan 2016 ob 10:18 izjavil:@user je 11. jan 2016 ob 10:08 izjavil:Nič, bom vprašal glavnega admina, če lahko uporabljam OpenVPN v našem MPLS omrežju. Je to lahko odvisno tudi kaj od Telekoma, ki je ponudnik našega MPLS?   Pravi, da bi verjetno šlo (tehnično) ampak naj raje ne, ker lahko prinesem od zunaj kak virus in se potem ta prenese po MPLS. Bom torej pustil MPLS na miru in se igral na guest omrežju.  Če maš svoj prenosnik ali tablico, ga pač ne priklapljaš na 'trusted' mrežo ampak izključno na guest, pa ne moreš naresti nobene škode, če so stvari na mreži poštimane kot bi morale biti.  Čim pa imaš svoj 'delovni računalnik' in ga seliš sem pa tja med omrežji, pa tudi to ni dobra ideja, saj se lahko okužiš na guest mreži, potem pa to neseš na poslovni del.  Koneckoncev je za golo brskanje dovolj tudi ena tablica, ne rabiš niti prenosnika....  Kar pa se tiče bojazni 'raznašanja po mpls-u', pa očitno nič ne filtrirate promet med omrežji na mpls-u? Dejansko ni čisto nobene potrebe, da bi lahko kar kdorkoli s komurkoli komuniciral, pa tudi število portov, ki jih rabiš, je razmeroma omejeno. Se da kar dobro nafiltrirat zadeve, da gre skozi res samo tisto, kar dejansko mora, kar tudi lahko v precejšnji meri omejuje širjenje raznih okužb. Ampak se moraš vsesti in zavihat rokave, da to 'naštelaš'...."
+    }
+]

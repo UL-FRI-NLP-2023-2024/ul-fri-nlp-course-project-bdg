@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Imam problem pri posiljanju e-mailov. Imam namrec accounte pri Arnesu, SiOLu. Pri prejemanju ni tezav. Ko pa sem connectan na SiOL in hocem npr. poslati MAIL s svojega e-maila na ARNESU mi ga noce poslati. Napise naslednje:  Sporočila ni bilo mogoče poslati, ker je strežnik zavrnil e-poštni naslov enega od prejemnikov. Zavrnjen naslov je ťinfo@krneki.comŤ. Zadeva 'Krneki', Račun: 'pop3.arnes.si', Strežnik: 'mail.arnes.si', Protokol: SMTP, Odgovor strežnika: '450 : Recipient address rejected: Relay access denied', Vrata: 25, Varno(SSL): Ne, Napaka strežnika: 450, Številka napake: 0x800CCC79  Email sem vpisal pravilno, tako da ne iscite vzroka tle. Ista tezava se pojavi ko sem connectan na ARNES in hocem poslati email s SiOLovega emaila. Prav tako mi ne posilja preko GSM M@ILa..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "A je mogoce tezava pri preverjanju IP z Siolove in Arnesove strani?"
+    },
+    {
+        "role": "user",
+        "message": "Nimam pojma kaj bi bilo. Vse sem ze probal, ampak noce delat...pri prejemanju poste pa vse dela. Se pravi na POP server se lahko normalno prijavim in gledam, ne glede na to, na kater ISP sem prikljucen..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To je zelo preprosto. Gre za to, da smtp serverji (mail.siol.net, mail.arnes.si) dovolijo pošiljanje samo, če si v njihovem domenskem prostoru, ali po domače - moraš biti povezan preko ARNESa, če hočeš pošiljati preko mail.arnes.si serverja. SMTP server preveri, če imaš IP številko njegovega ponudnika dostopa (pri ARNESu imaš nekaj kot 193.2.xxx.xxx, pri SiOLu pa 193.189.xxx.xxx). To je narejeno zato, ker smtp ne zahtevajo avtentifikacije, kot POP3 serverji (uporabniško ime in geslo) in bi jih zato lahko preobremenjeval kdorkoli od koderkoli.  Miran Požar, Portorož, www.@assistant_1.com"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Verjetno je razlog res konfiguracija streznika, tako je danes nastavljena vecina straznikov, da preprecijo spam. A ni trik vedno v tem, da so zaprti (kar je sicer logicno). Jaz imam 3 account, Kiss, Siol in se enega tretjega. SMTP server je vedno isti, nekje v tujini. A samo preko Siola dela brez problema. Kiss dela, a obcasno dela timeoute, streznik javlja cudne napake ipd. Tretji account je za za firewallom in sem tudi pricakoval obcane tezave zaradi tega. Z njega prkaticno ne morem poslati poste. A glej ga vraga, obcasno (enkrat na pol ure, mu uspe poslati posto. Go figure... Sem preiskal pol neta, zamenjal programe, pa nic.."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ja... @assistant_1 je pravilno ugotovil... mozna resitev je, da nastavis kaksen free SMTP server... npr. na yahoju...  Seveda... lahko pa da je tm haklc ta, da mora biti outgoing mail s koncnico yahoo.com (ne vem, nisem preveril)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "jaz imam podoben blem. Imam kabelski net, račune pa pri mojem ponudniku Triera in 2 računa pri email.si. Problem je , ko mi nekdo senda mail ki ima račun pri Siolu, mu ne morm odgovorit oz dat reply. Javi da sporočila ni bilo mogoče dostavit spodaj navedenim prejemnikom. Če pa grem da ustavrim novo sporočilo, pa gre poslat. V čem je fora. Default naslov oz račun mam od Triere, on mi je pa sendal na email.si. Kje je težava pi meni ali pa pri ne vem komu?  Prosim za pomoč oz vsaj kak nasvet, saj je težava že malo nadležna in jo že kar dolgo poskušam odpravit.   Nastavtve za poštni strežnik pri trieri :  pop3.triera.net smtp.triera.net   nastavitve za email.si:  pop.email.si mail.email.si   hvala že vnparej"
+    }
+]

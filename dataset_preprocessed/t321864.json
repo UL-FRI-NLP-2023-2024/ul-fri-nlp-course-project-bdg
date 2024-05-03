@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo!  Doma sem si preuredil tri sobe kjer sedaj napeljujem el. omrežje. Pri prenovi sem na novo napeljal tudi ozemljitev. Do prenove je napeljava delovala sedaj pa se mi pojavlja problem pri FID stikalu, ki se mi nenehno odklaplja. Odklop se zgodi v dveh primerih. Največkrat mi ga odklopi tako da, ko omrežje priključim na ozemljitev, je nekaj časa vse O.K (cca 1 - 2 min) nato pa mi FID odklopi. FID stikala ostane v tem položaju dokler ne odklopi ozemljitve omrežja. Nekajkrat pa se mi je zgodilo tudi, da mi ga je odklopilo takoj po priključitvi ozemljitve. Zadevo sem poskusil rešiti tako, da sem izklopil vse varovalke vendar brez uspeha. Verjetno ne razumem delovanja FID stikala do potankosti. Vem, da meri izhodni in vhodni tok, ki morata biti ob normalnem delovanju enaka.   Ali je mogoče, da se to dogaja zaradi morebitnih prevezav nule z zemljo? Ali je morda kriva kakšna naprava?  V hiši imamo trofazno napeljavo.  Hvala za nasvete.."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nekje ti prebija nula ali pa faza na zemljo. Možno je tudi, da je ozemljitev preslaba - preveri stike z ozemljitvijo."
+    },
+    {
+        "role": "assistant_1",
+        "message": ">>Ali je mogoče, da se to dogaja zaradi morebitnih prevezav nule z zemljo? Seveda. Nula in zemlja mora biti ločena za FID-om (pred njim je lahko skupaj).  >>Ali je morda kriva kakšna naprava? Tudi možno, predvsem kaki grelci radi prebijajo na ohišje - bojler, štedilnik, itd"
+    },
+    {
+        "role": "user",
+        "message": "Kakšen je pa vpliv prebrikane zemlje na nulo? Zemljo sem po mojem mnenju pri prenovi kvečjemu izboljšala, saj se m jo priključil na valanc, ki je poločen ob glavni el. omarici.  Ali bi mogoče našel napako, če preverim vse vtičnice, ki so prebrikane in jih \"odbrikam\"?  Kako to, da kljub temu, da sem izklopil vse varovalke, FID še vedno izklaplja?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Nekje ti prebija ozemljitev in nula to se najraje naredi pri kakem narobe zvezanem trofaznem podaljšku.Fit ti izklopi če skupaj stakneš ozemljitev in nulo, če pa narediš kratek stik ti mora pa varovalka pregoret."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za hitre odgovore...bom premeril celo hiši pa vam sporočim, če mi bo uspel"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Najprej opozorilo, da se kot \"sam svoj mojster\" igraš z življenji (tvojim in bližnjih). FID stikalo je namreč pomembno prav zaradi varnostne funkcije.  Če si preurejal staro stanovanje, kjer pred tem ni bilo FID stikala je mogoče da je električna napeljava vezana po starem sistemu \"ničenja\" , kjer je bil nevtralni vodnik v omarici obenem tudi ozemljitveni, ampak šele od omarice dalje. FID ne deluje saj ravno stik med \"nulo\" in \"ozemljitvijo\" izklopi FID.   Mislim da si prav sklepal in imaš problem v instalaciji. Poglej kako imaš speljane nule in ozemljitve ter način vezave, TN-c TN-C-S...  poglej če si lahko kaj s tem pomagaš: http://www.elektronik.si/phpBB2/viewtop...  P.S. Dva FID stikala vezana zaporedno tudi ne delujeta (pogosti problemi ljudi, ki bi radi v kopalnici dodaten FID?!?)."
+    },
+    {
+        "role": "assistant_1",
+        "message": ">>Dva FID stikala vezana zaporedno tudi ne delujeta  Od kod ti pa ta ideja? Lahko povežeš 30 FID-ov zaporedoma, in bo prav lepo delovalo. Sicer ne bo nobene koristi iz tega, ampak vseeno... Je pa res, da se načeloma tega ne dela, vsah pri hišnih inštalacijah ne."
+    },
+    {
+        "role": "user",
+        "message": "Najprej opozorilo, da se kot \"sam svoj mojster\" igraš z življenji (tvojim in bližnjih). FID stikalo je namreč pomembno prav zaradi varnostne funkcije.   Hvala za opozorilo-vedno pridejo prav...te prizemljijo in pri takem delu postaneš previden.  Dejansko imamo v hiši FID stikalo montirano že nekaj let zato me čudi, da se je to začelo dogajati. Poskusil sem tudi tako, da sem celoten obnovljen del stanovanje odklopil in nato priključi ozemljitev - FID odklopi.  Ko smo že pri vezavi večih FID stikal....v obnovljenem delu imam namen vezati še KZS za kopalnico - kolikor je meni znano naj bi to delovalo."
+    },
+    {
+        "role": "assistant_4",
+        "message": ">Ali je mogoče, da se to dogaja zaradi morebitnih prevezav nule z zemljo?  DA, to je najbolj pogost način, za čudno obnašanje FID, vse od tega, da stikalo sploh ne reagira, pa do tega, da ga sploh ni mogoče vklopiti. Vse odvisno od kvalitete vodnikov in kje je stik.  Torej, če si mešal med seboj vodnike ozemljitve in nule, je opisan rezultat povsem pričakovan.  Če je preverjeno res zvezano by the book, so od naprav najbolj sumljivi bojlerji in razni el. štedilniki ter grelci.  In še:  FID stikalo meri razliko (diferenco) med tokom, ki teče v ščiteno inštalacijo in nazaj ven. V normalnih pogojih je ta razlika enaka 0 ( 2. Kirchhoffov zakon)  Če ta razlika ni nič stikalo izpade. Zato NE SME biti nobenega stika med nulo in ozemljitvijo, saj stikalo lahko izpade, čeprav ni nič narobe (del toka teče po ozemljitvi, kar pomeni razliko) ali pa še huje, ne izpade, ko pride do preboja na ozemljitev, če bi ves tok napake stekel po nuli in stikalo razlike ne bi moglo zaznati.  Med tema dvema skrajnostima je pa tvoj primer. Zveži tako kot mora biti ali pokliči štromarja, ki se res spozna na el. inštalacije (mnogi se žal ne)."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Še, da dopolnim, skozi FID tečejo tok faze (ali vseh treh faz (če je trofazen) in tok nule. Ozemljitev je speljana mimo FID stikala. Tudi če ima FID neko sponko za ozemljitev, stikalo tega toka ne upošteva.  Pa še nekaj, če je inštalacija sveže ometana - to pomeni vlažne stene, ti FID lahko izpada že samo zaradi vlage, ni treba nobene druge napake."
+    },
+    {
+        "role": "assistant_5",
+        "message": "za nepravilno delovanje je dovolj da imaš v eni vtičnici izvedeno ničenje......pa nastane cela zbrka...potencialni kandidati...peči bojlerji grelci štedilnik....  iskanje napake je j***a. najbolje je (in tudi najhitrje) omarco razdret....saj ti samo ločene faze ne pomahajo kaj dosti....in poiskati kjeje stik med ničelnim in zaščitnim vodnikom. lahko pa je samo oslabljena izolacija, za kar je fajno met megaohmmeter (navaden multimeter ni dovolj."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V službi smo imeli probleme z enim bojlerjem, ki je vsake toliko časa prebijal in je metalo FID stikalo ven."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No danes mi je po nekaj letih vrglo ven fid stikalo, ugotovil sem da je za izpad kriv grelec bojlerja. Kaj priporočate, verjetno menjavo grelca, kje se jih da kupiti in kakšne moči naj bo za 130L bojler (na samem bojlerju in grelcu ni nič napisano). Imate vsi priklopljene bojlerje preko fid stikala?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Na grelcu mora biti napisana delovna napetost in moč. Včasih se teh podatkov ne vidi, če jih zakriva invarski termostat, kar je pogosta rešitev pri italijanskih bojlerjih.   Kje dobiti drug grelec, težko vprašanje, ko se ne ve niti ime proizvajalca bojlerja. Načeloma pa servis, trgovina Plinstal, trgovine z elektro materialom in podobno."
+    },
+    {
+        "role": "assistant_7",
+        "message": "No danes mi je po nekaj letih vrglo ven fid stikalo, ugotovil sem da je za izpad kriv grelec bojlerja. Kaj priporočate, verjetno menjavo grelca, kje se jih da kupiti in kakšne moči naj bo za 130L bojler (na samem bojlerju in grelcu ni nič napisano). Imate vsi priklopljene bojlerje preko fid stikala? O zapisanem v zadnjem stavku pa niti ne pomišljaj. Kaj je nekaj 10€ v primerjavi z življenjem tebe ali tvojega bližnjega?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_4: Dobri in informativni odgovori ;)  Tole temo sem našel po iskanju v Googlu je sicer že dokaj stara ampak imam podoben problem ampak ne v hiši ampak v avtodomu. Kot sem lahko razbral sta skozi FID stikalo speljana samo faza in nula ne pa ozemljitev. Tudi meni namreč meče ven FID stikalo ampak se je to začelo dogajati šele v zadnjem času.  Problem je da je v avtodomu električna napeljava \"skrita\" za raznimi stenami in podobnimi zadevami tako, da je do nje dokaj težko dostopati. Verjetno je torej problem, da sta nekje nula in ozemljitev povezani, kje pa zna bit kar izziv najti. Zanimivo je to da v kolikor električno vtičnico 220V v avtodom vklopim v eni smeri FID stikalo vrže ven v kolikor pa jo obrnem okoli je pa vse v redu in FID stikalo ostaja vklopljen? Imate kakšen nasvet kaj bi lahko bilo oz. kako zadevo najhitreje odpraviti oz za začetek vsaj najti kje je problem?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Vtičnica za avtodom? Miliš priklop avtodoma na elektro omrežje? Preveri v kateri poziciji je nula nula in v kateri je nula v bistvu faza. Verjetno je ene 1000 možnosti kaj je narobe, sprobaj in se bo vidlo približno kje je napaka."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Če v primeru zamenjave ničelnega in faznega vodnika fid izklopi, verjetno faza prebija na ozemljitev.  Si karkoli spreminjal na instalaciji, priklapljal/menjal/premikal porabnike? Preveri vse, kar ima grelec. Krivec zna biti tudi kakšna na novo zvrtnana luknja ali vijak. Ti kje zamaka/pušča voda?"
+    }
+]

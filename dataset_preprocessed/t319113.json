@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo  Včeraj sem dobil računalnik iz servisa (kjer so mi naložili na novo windowse zaradi virusa) danes pa sem ga priklopil in ugotovim da mi manjkajo driverji za zvočno kartico ki pa je intergrirana na plati. Problem pa je v tem da so mi na servisu zgubili cd z gonilniki in sedaj ne vem kateri gonilniki so pravi.  Z driver agentom sem probal ugotoviti katera zvočna sploh je in mi je napisal tole:  Disk Drives : WDC WD3200AAKS-00VYA0  Display adapters : NVIDIA GeForce 7600 GS  DVD/CD-ROM drives : Optiarc DVD RW AD-5170A  IDE ATA/ATAPI controllers : NVIDIA nForce 590/570/550 Serial ATA Controller  Standard Dual Channel PCI IDE Controller  Infrared devices  Built-in Infrared Device  Keyboards Standard 101/102-Key or Microsoft Natural PS/2 Keyboard  Mice and other pointing devices  Microsoft PS/2 Mouse  Monitors  Plug and Play Monitor  Other devices  PCI Device  'Away Mode' device  Ports  Communications Port (COM1)  Printer Port (LPT1)  Processors AMD Athlon™ 64 X2 Dual Core Processor 4400+  System Devices  NVIDIA Network Bus Enumerator  NVIDIA nForce PCI System Management  Universal Serial Bus controllers  Standard Enhanced PCI to USB Host Controller  Standard OpenHCD USB Host Controller   Odebeljeno je tisto kar naj bi bilo narobna ali pa manjkajoče.  Sedaj pa ne vem kje je kaj od zvočne. imam pa tudi probleme s čitalci kartice ki tudi nimajo drivers.  Zdej me pa zanima če obstaja kakšen program, ki bi to mi strojno opremo malo bolj podrobno označil in pa kateri driverji bi morali biti za zvočno in čitalce kartice, da bi to vse delalo kot mora.   Hvala za pomoč"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zvočno maš verjetno kakšen Realtek, a ni driver za zvočno v sklopu z driverji za NVidia chipset?"
+    },
+    {
+        "role": "user",
+        "message": "Problem je v tem da so mi cd s temi gonilniki zgubili na servisu. In sedaj nimam pojma katere driverje dati gor."
+    },
+    {
+        "role": "assistant_1",
+        "message": "če maš realtek daj gor Realtek HD Audio Driver, maš na strani njihovi... za čitalce pa tudi malo pogooglaj.."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Driverji za chipset: http://www.nvidia.com/Download/index.as...  nForce 570/550(Windows XP): http://www.nvidia.com/object/nforce_nf5... nForce 590 (Windows XP): http://www.nvidia.com/object/nforce_nf5...  Z Everestom ugotovi, katero matično ploščo imaš, pri proizvajalcu plošče pa najdeš, katera je integrirana zvočna. Pa tudi driverji morajo biti na strani proizvajalca plošče.  Ali pa poizkusi z cpu-z programom, tudi ta ti bo povedal katero matično ploščo imaš."
+    },
+    {
+        "role": "user",
+        "message": "evo to mi je everest najdu:  Osnovna plošča: Tip procesorja Unknown, 2300 MHz Ime osnovne plošče Neznano Čipset osnovne plošče Neznano Sistemski spomin 2048 MB Tip BIOSa AMI (08/02/06) Komunikacijska vrata (COM in LPT) Communications Port (COM1) Komunikacijska vrata (COM in LPT) Printer Port (LPT1)  Zaslon: Grafična kartica NVIDIA GeForce 7600 GS (256 MB) Monitor Plug and Play Monitor [NoDB] (BZ30648330623)  Diski: IDE kontroler NVIDIA nForce 590/570/550 Serial ATA Controller IDE kontroler NVIDIA nForce 590/570/550 Serial ATA Controller IDE kontroler NVIDIA nForce 590/570/550 Serial ATA Controller IDE kontroler Standard Dual Channel PCI IDE Controller Trdi disk WDC WD3200AAKS-00VYA0 (298 GB, IDE) Optični disk Optiarc DVD RW AD-5170A SMART Hard Disks Status OK  Partiticije: C: (NTFS) 199996 MB (104732 MB prosto) D: (NTFS) 105238 MB (65737 MB prosto) Polna velikost 298.1 GB (166.5 GB prosto)  Vhod: Tastatura Standard 101/102-Key or Microsoft Natural PS/2 Keyboard Miška Microsoft PS/2 Mouse  Mreža: Mrežna kartica NVIDIA nForce Networking Controller (192.168.255.232) Mrežna kartica NVIDIA nForce Networking Controller (89.212.227.72)  Periferija: Tiskalnik Send To OneNote 2007 USB1 kontroler Standard OpenHCD USB Host Controller [NoDB] USB2 kontroler Standard Enhanced PCI to USB Host Controller [NoDB]   --------[ DMI ]---------------------------------------------------------------------------------------------------------  [ BIOS ]  BIOS lastnosti: Dobavitelj American Megatrends Inc. Vrzija 080014 Datum izdaje 08/02/2006 Veliost 512 KB Zagonska naprava Floppy Disk, Hard Disk, CD-ROM, ATAPI ZIP, LS-120 Sposobnosti Flash BIOS, Shadow BIOS, Selectable Boot, EDD, BBS Podprti standardi DMI, APM, ACPI, ESCD, PnP Sposobnosti razširitve ISA, PCI, USB  [ Sistem ]  Sistemske lastnosti: Proizvajalec MSI Proizvod MS-7250 Vrzija 2.1 Serijska številka To Be Filled By O.E.M. Univerzalna enotna ID 00020003-00040005-00060007-00080009 Zbudi-se tip Stikalo vklopa  [ Osnovna plošča ]  Lastnosti osnovne plošče: Proizvajalec MSI Proizvod MS-7250 Vrzija 2.1 Serijska številka To be filled by O.E.M.   Mogoče je to plošča nForce 570 SLI AMD / NFP 3400"
+    },
+    {
+        "role": "user",
+        "message": "evo to mi je everest najdu:  Osnovna plošča: Tip procesorja Unknown, 2300 MHz Ime osnovne plošče Neznano Čipset osnovne plošče Neznano Sistemski spomin 2048 MB Tip BIOSa AMI (08/02/06) Komunikacijska vrata (COM in LPT) Communications Port (COM1) Komunikacijska vrata (COM in LPT) Printer Port (LPT1)  Zaslon: Grafična kartica NVIDIA GeForce 7600 GS (256 MB) Monitor Plug and Play Monitor [NoDB] (BZ30648330623)  Diski: IDE kontroler NVIDIA nForce 590/570/550 Serial ATA Controller IDE kontroler NVIDIA nForce 590/570/550 Serial ATA Controller IDE kontroler NVIDIA nForce 590/570/550 Serial ATA Controller IDE kontroler Standard Dual Channel PCI IDE Controller Trdi disk WDC WD3200AAKS-00VYA0 (298 GB, IDE) Optični disk Optiarc DVD RW AD-5170A SMART Hard Disks Status OK  Partiticije: C: (NTFS) 199996 MB (104732 MB prosto) D: (NTFS) 105238 MB (65737 MB prosto) Polna velikost 298.1 GB (166.5 GB prosto)  Vhod: Tastatura Standard 101/102-Key or Microsoft Natural PS/2 Keyboard Miška Microsoft PS/2 Mouse  Mreža: Mrežna kartica NVIDIA nForce Networking Controller (192.168.255.232) Mrežna kartica NVIDIA nForce Networking Controller (89.212.227.72)  Periferija: Tiskalnik Send To OneNote 2007 USB1 kontroler Standard OpenHCD USB Host Controller [NoDB] USB2 kontroler Standard Enhanced PCI to USB Host Controller [NoDB]   --------[ DMI ]---------------------------------------------------------------------------------------------------------  [ BIOS ]  BIOS lastnosti: Dobavitelj American Megatrends Inc. Vrzija 080014 Datum izdaje 08/02/2006 Veliost 512 KB Zagonska naprava Floppy Disk, Hard Disk, CD-ROM, ATAPI ZIP, LS-120 Sposobnosti Flash BIOS, Shadow BIOS, Selectable Boot, EDD, BBS Podprti standardi DMI, APM, ACPI, ESCD, PnP Sposobnosti razširitve ISA, PCI, USB  [ Sistem ]  Sistemske lastnosti: Proizvajalec MSI Proizvod MS-7250 Vrzija 2.1 Serijska številka To Be Filled By O.E.M. Univerzalna enotna ID 00020003-00040005-00060007-00080009 Zbudi-se tip Stikalo vklopa  [ Osnovna plošča ]  Lastnosti osnovne plošče: Proizvajalec MSI Proizvod MS-7250 Vrzija 2.1 Serijska številka To be filled by O.E.M.   Mogoče je to plošča MS 7250"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Plošča je verjetno K9N Platinum - http://www.msicomputer.com/product/p_sp... . Od tu naprej pa verjetno ne rabiš več pomoči."
+    },
+    {
+        "role": "user",
+        "message": "To sem uredil samo še en problem imam kako pa je s čitalci kartic.Kakšne driverje pa to rabi ali se da kje pogledat katri so to sploh oz. firma."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa verjetno vsaj nekaj piše na čitalcih?"
+    },
+    {
+        "role": "user",
+        "message": "Na ohišju so samo ene oznake : act, pow, CF/MD, SM, MS/MS PRO, SD/MMC Drugega pa ni."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa če vzameš ven in pogledaš mal po ohišju?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "kaj če bi šel na windows update(custom) in bi ti tam najbrž predlagalo gonilnike..."
+    }
+]

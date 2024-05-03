@@ -1,0 +1,102 @@
+[
+    {
+        "role": "user",
+        "message": "Hoj!  Pomoč potrebujem. Sem popolnoma sveža v c# in sem prišla do problema pri predvajanju avi datoteke.  V kodi imam zapisano:  Microsoft.DirectX.AudioVideoPlayback.Video video1 = new Microsoft.DirectX.AudioVideoPlayback.Video(\"c:\\\\Film.avi\"); video1.Play();  ...in kot posledico mi javi napako:  Error in the application. -2147467262E_NOINTERFACE  Okoli tega kvačkam že dva dni, pa nič pametnega ne uspem naumit.  LP, maja"
+    },
+    {
+        "role": "user",
+        "message": "ups. sem šele nato prebrala temo o poimenovanju tem. se opravičujem.  maja"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Verjetno ti manjkajo kodeki."
+    },
+    {
+        "role": "user",
+        "message": "hvala lepa. deluje..."
+    },
+    {
+        "role": "user",
+        "message": "Še eno vprašanje. Če je kdo to že počel, da ne bom spet odkrivala tople vode, pa nič odkrila.  Rada bi, da se mi film odvrti točno na določeni poziciji na ekranu in s točno določenimi dimenzijami (širina, višina). Kako?  lp, maja"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bu,  video.Owner property lahko nastaviš na control (forma, picturebox, panel, ...), v katerem se bo video predvajal (in ga lahko potem ločeno pozicioniraš).   Velikost pa nastaviš z video.Size"
+    },
+    {
+        "role": "user",
+        "message": "Spet hvala lepa.  LP, maja"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pozdrav! Uporabljam Visual C# in mi ob vnosu kode javi sledečo napako:  Error 1 The type or namespace name 'DirectX' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?) C:\\Documents and Settings\\Moje_ime\\Local Settings\\Application Data\\Temporary Projects\\NIF Previewer\\Form1.cs 21 23 Program  Očitno je napaka povezana z DirectX? Z C# nimam ravno najbolj blage veze, saj po navadi programiram v C++ ali v Visual Basic-u, zato se zahvaljujem za odgovor."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tko kot ti piše, referenco na Microsoft.DirectX moraš dodat"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Že, že, samo kako to naredim? Saj vem, da imam čudna vprašanja, ampak, kot sem rekel, pri C#-ju res nimam najbolj blagih vez, ker ga uporabljam zelo malo časa.   LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V solution explorerju z desnim klikneš na projekt in daš Add Reference"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ah, tako si to mislil! Zdaj mi je jasno, hvala @assistant_0!"
+    },
+    {
+        "role": "user",
+        "message": "A obstaja ukaz v c# s katerim lahko začnem predvajati film na točno določenem mestu in ga nato na določenem mestu tudi ustavim?   LP, maja"
+    },
+    {
+        "role": "assistant_0",
+        "message": "SeekCurrentPosition in SeekStopPosition"
+    },
+    {
+        "role": "user",
+        "message": "Sem že nekaj delala s tema dvema ukazoma, pa mi ne dela. A če napišem tako:  Film.SeekCurrentPosition(20 * 10000000, SeekPositionFlags.AbsolutePositioning); Film.Play();  Bi mi moralo začeti Film predvajati v 20 sekundi?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja, a ti ne?"
+    },
+    {
+        "role": "user",
+        "message": "Ne. Sedaj vsaj vem, da je ukaz pravi. A mi morda ne dela, ker ukaza ne uporabim direktno na filmu, temveč na funkciji, ki vrne film?   Film(\"Video.avi\",sirina,visina,xkoordinata,ykoordinata).SeekCurrentPosition(20 * 10000000, SeekPositionFlags.AbsolutePositioning); Film(\"Video.avi\",sirina,visina,xkoordinata,ykoordinata).Play();"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Lahko namesto DirectX uporabljaš tudi WPF aplikacijo in MediaElemet. Rabiš pa .NET framework 3.0 in Windows Media Player 10 (ali več).  Drgač je Microsoft.DirectX.AudioVideoPlayback.Video kr dost okleščena zadeva."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če ti funkcija vrne vedno prav ISTI objekt, potem je OK - če ne, ga daj v eno spremenljivko in potem tistega štelaj:  Video film = Film(\"Video.avi\",sirina,visina,xkoordinata,ykoordinata); film.SeekCurrentPosition(20 * 10000000, SeekPositionFlags.AbsolutePositioning); film.Play();  Če to ne dela, poskusi še najprej Play, pa potem spreminjat pozicijo"
+    },
+    {
+        "role": "user",
+        "message": "Ja. Če mi ne bo uspelo z Microsoft.DirectX.AudioVideoPlayback.Video, bom pa poskušala še s tem.  Ja pa res, da potrebujem zelo malo (no, relativno malo). Rada bi, da mi film zavrti na točno določenem mestu na zaslonu (xkoordinata in ykoordinata) s točno dločenima dimenzijama (sirina in dolzina). Rada pa bi še film začela in končala na določeni časovni točki.  Pri tem gledalcu ni prepuščeno nič določanja. Vse te zadeve določi program. No in zataknilo se mi je pri tem, kje začne in konča predvajati film (časovno).  Bom poskušala pozicijo kjer film začne in konča dodati kot argument funkcije. Bom poročala, kaj se bo izcimilo.   Lp, maja"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Imaš pa tudi varjanto dodat Windows Media Player komponento v ta tvoj program in poganjat filme preko te komponente. S tem da pri tej varjanti ni treba imet DirectX inštaliran."
+    },
+    {
+        "role": "user",
+        "message": "Ja. To bo to.  darklord, najlepša hvala za pomoč.  Sem se potem kar odločila, da določim, kje začne in konča predvajati film, kar znotraj funkcije.  @assistant_2, tudi tebi hvala za nasvet. Ko Microsoft.DirectX.AudioVideoPlayback.Video ne bo več \"zadovoljeval mojih potreb\" bom prešaltala na WPF aplikacijo in MediaElemet.  lp, maja"
+    },
+    {
+        "role": "user",
+        "message": "Evo. Sem se odločila, da res ne bom uporabila Microsoft.DirectX.AudioVideoPlayback.Video. Saj je vse delalo, samo se mi zdi zadeva s pomočjo MCI sendstring bistveno bolj elegantna. Spodaj sem objavila še kodo. Sedaj moram rešiti samo še problem, kako zarotirati film za 90 stopinj. Upam, da bo delovalo samo z zasukanjem pictureBox. Če ima pa kdo kakšno idejo, je dobrodošla.   lp, maja   void Film(string film, int sirina, int visina, int xkor, int ykor, int zacetek, int konec)\n        {\n            string sCommand;\n\n            System.Windows.Forms.PictureBox videobox = pictureBox1;\n            pictureBox1.Width = sirina;\n            pictureBox1.Height = visina;\n            pictureBox1.Location = new Point(xkor, ykor);\n\n            sCommand = \"open \" + film + \" type AVIvideo alias MediaFile style child parent \" + videobox.Handle.ToInt32();\n            mciSendString(sCommand, null, 0, IntPtr.Zero);\n\n            sCommand = \"put MediaFile window at 0 0 \" + videobox.Width + \" \" + videobox.Height;\n            mciSendString(sCommand, null, 0, IntPtr.Zero);\n\n            sCommand = \"Set MediaFile time format milliseconds\";\n            mciSendString(sCommand, null, 0, IntPtr.Zero);\n\n            sCommand = \"Play MediaFile from \" + zacetek.ToString() + \" to \" + konec.ToString();\n            mciSendString(sCommand, null, 0, IntPtr.Zero);\n\n            pictureBox1.Show();\n\n            tmr4.Interval = (konec - zacetek);\n            tmr4.Start();\n            tmr4.Tick += new EventHandler(Timer_Tick4);\n\n         }\n\n\n\n        private void Timer_Tick4(object sender, EventArgs eArgs) // da skrije pictureBox in ugasne film po koncu predvajanja\n        {\n\n            sCommand = \"close Mediafile\";\n            mciSendString(sCommand, null, 0, IntPtr.Zero);\n\n            pictureBox1.Hide();\n            tmr4.Stop();\n \n        }"
+    },
+    {
+        "role": "user",
+        "message": "Da še tu napišem svoje ugotovitve. Morda komu prav pridejo. PictureBoxa se ne da zarotirat. Sem ugotovila, da bi za to morala uporabiti WPF aplikacijo, kot jo je predlagal @assistant_2. Ampak saj ni tako nujno potrebno, tako da bom ostala pri MCI sendstring.  Pa še to. Da bo zgornja koda delovala, je treba dodati še:  using System.Runtime.InteropServices;  in   [DllImport(\"winmm.dll\")] private static extern long mciSendString(string strCommand, StringBuilder strReturn, int iReturnLength, IntPtr hwndCallback);   LP, maja"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ko sem začel dela s Silverlight, sem videl kako lahko enostavno delaš nore reči :D ki si jih prej v navadnih projektih nisi mogel niti zamišljati... priporočam da si malo pogledate stvar"
+    }
+]

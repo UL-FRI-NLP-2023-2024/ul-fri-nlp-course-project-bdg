@@ -1,0 +1,126 @@
+[
+    {
+        "role": "user",
+        "message": "Do sedaj sem imel sharing hosting, do katerega sem dostopal preko laptopa, ki ga imam za vso uporabo. Po novem pa bom imel na strežniku zelo občutljive podatke strank (api keye trgovin) in iščem varno rešitev.  Razmišljam, da bi kupil en poceni laptop. Gledal sem na Mimovrste Lenovo V130-15 HD 3867U 4GB/128GB FreeDOS za 199€. Ta prenosnik bi imel potem izključno za dostop do strežnika, kamor bi občasno naložil fajle in posodabljal trgovino. Naložil bi original windowse, avg antivirus in to je to. Api keye strank pa bi shranjeval offline na ključek in jih uploadal na strežnik samo takrat, ko bi jih rabil.   Internet povezava do laptopa je preko LTE WiFi-modema preko 4G povezave.  Gostovanje pa bi naročil VPS pri siel kjer ne bi imel na strežniku nič drugega, kot samo ta del. Sem slišal da so kar dobri.   Mnenja?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Malo bolj opiši kaj točno so api keyi trgovin in za kaj točno se rabijo in na kakšen način.  Glede hrambe na USB ključku imam dve pripombi: - podatki na USB nosilcu morajo biti šifrirani - usb ključek ni ravno najbolj zanesliv medij, kaj se zgodi če te api kjuče zgubiš?  Za kaj bolj konkretnega pa boš moral povedati kaj več."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Namesto tega laptopa bi jaz raje vzel raspberry pi 4. Če res rabiš samo za samba share (oz kakšen share pač imaš), za en client ne bo neke ful razlike preko 4G."
+    },
+    {
+        "role": "assistant_2",
+        "message": "In pa seveda laptop mora bit tud šifriran. Pa VPS tudi."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 15. nov 2019 ob 19:51 izjavil:Malo bolj opiši kaj točno so api keyi trgovin in za kaj točno se rabijo in na kakšen način.  Glede hrambe na USB ključku imam dve pripombi: - podatki na USB nosilcu morajo biti šifrirani - usb ključek ni ravno najbolj zanesliv medij, kaj se zgodi če te api kjuče zgubiš?  Za kaj bolj konkretnega pa boš moral povedati kaj več.   Ključi za dostope do različnih zunanjih api-jev, do katerih lahko dostopa trgovina. Ampak to ni vezano na to vprašanje, ne zanima me kako naredit varno kodo, to je drugo vprašanje. To vprašanje se ne nanaša na server side kodo ampak me zanima izključno to, kako preprečiti da bi nekdo dobil dostop do strežnika ali do mojega računalnika ali prestregel podatke, takrat ko dostopam do strežnika. Seveda ob predpostavki da ni varnostne luknje v kodi, ker to je drugo vprašanje kot sem že rekel. In pa seveda ob predpostavki, da je vps ustrezno nastavljen in ima ustrezna varovala, za kar se sprašujem če je siel pravi naslov (popravite me če se motim ali imate drug predlog).  Ne rabim imet šifrirano, tudi če mi kdo ukrade ta ključ si nima z njim kaj pomagati, ker bi še vedno rabil dostop do strežnika. Tudi me ne skrbi, da bi kdo ukradel usb ključ.  To se pravi če vzamem povsem laptop in imam povezavo preko LTE WiFi-modema preko 4G povezave, obstaja kako večje varnostno tveganje?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "USB Ključki so problematični. Malo mi sicer ne gre skupaj to, da bi kupoval nameski laptop samo zato, da bi se povezoval na server, usb ključek pa ne bi šifriral. Ali je res tako problematično, da imaš ključe kar na serverju? Mogoče jih imej v kakšnem zašifriranem kontejnerju na strežniku, tako odrežeš kompliciranje z USB ključki. Ko pa api ključe rabiš pa se samo SSHjaš na server, dešifriraš ključe in jih uporabiš.  Načeloma nima veze ali je vmes 4G, sosedov wifi ali pa kaj tretjega. Dokler ga ne boš sral s kakšnimi FTPji, telnetom ali pa ignoriral opozorila o neveljavnih fingerprinti si all good.  PS.  1) SSH si prestavi iz 22 na kakšen obskuren port 2) na firewallu dropaj vse pakete, ki niso iz slovenije 3) vklopi fail2ban in podobne zadeve"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne potrebuješ namesnkega računalnika za varnost. Bistvo je, da imaš lokalno šifrirane podatke in da do strežnika dostopaš preko ssh povezave. Ter seveda ustrezno antivirusno / malware ipd lokalno zaščito."
+    },
+    {
+        "role": "assistant_4",
+        "message": "OP govori o Windows serverju, odgovore pa dobiva, ki so bolj primerni za Lunix server...  Dober SSH server na Windows platformi stane kakšnih 1k€.  Imaš tudi freeware varianto, ki pa je 'polovičarska' - ravno toliko, da pokrije minimalne potrebe.  Istočasno pa imaš na Windows serverju L2TP VPN povezljivost že 'vgrajeno'. Zakaj ne to izkoristiti?  Požarni zid je potem svoja zgodba. Windows požarni zid je spet po sistemu 'nekaj dela....kaj točno, pa nihče ne ve'.  Optimalno bi bilo, če bi ponudnik gostovanja omogočal dodatno filtriranje na svojem firewall-u, tako da že v osnovi ne spušča nič drugega, kot nujno potrebni promet do tvojega strežnika.  V nasprotnem primeru pa bi bilo bolje, da se spogledaš z virtualizacijo na najetem strežniku in poganjaš lastni virtualni firewall, ki bo v ozadju izoliral in nadzoroval promet do windows strežnika. Ker na strežniku ni 'živih uporabnikov', ne rabiš vseh najbolj fancy varnostnih storitev, ampak kakšen IPS bi pa že prav prišel, pa logiranje prometa (da sploh veš. kaj se dogaja) ravno tako."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 15. nov 2019 ob 20:50 izjavil:USB Ključki so problematični. Malo mi sicer ne gre skupaj to, da bi kupoval nameski laptop samo zato, da bi se povezoval na server, usb ključek pa ne bi šifriral. Ali je res tako problematično, da imaš ključe kar na serverju? Mogoče jih imej v kakšnem zašifriranem kontejnerju na strežniku, tako odrežeš kompliciranje z USB ključki. Ko pa api ključe rabiš pa se samo SSHjaš na server, dešifriraš ključe in jih uporabiš.  Načeloma nima veze ali je vmes 4G, sosedov wifi ali pa kaj tretjega. Dokler ga ne boš sral s kakšnimi FTPji, telnetom ali pa ignoriral opozorila o neveljavnih fingerprinti si all good.  PS.  1) SSH si prestavi iz 22 na kakšen obskuren port 2) na firewallu dropaj vse pakete, ki niso iz slovenije 3) vklopi fail2ban in podobne zadeve   Zakaj so usb ključki problematični? Kupim povsem nov ključek, kamor skopiram podatke in jih tako hranim offline. Ko rabim ključe, jih uplodam na strežnik, zaženem php scripto za posodabljanje, ko se posodobitev zaključi spet zbrišem ključe s strežnika. Tako so ključi večinoma časa offline kar se mi zdi še najbolj varno.  @assistant_3 je 15. nov 2019 ob 21:04 izjavil:Ne potrebuješ namesnkega računalnika za varnost. Bistvo je, da imaš lokalno šifrirane podatke in da do strežnika dostopaš preko ssh povezave. Ter seveda ustrezno antivirusno / malware ipd lokalno zaščito.   Enkrat jih bom moral odšifrirat. In če to lahko naredim jaz, lahko tudi nekdo drug, ki bi pridobil dostop do računalnika. Isto če lahko jaz dostopam do ssh, lahko tudi nekdo, ki bi pridobil dostop do računalnika. Zato se mi zdi bolj smiselno dati tistih 200EUR za laptop."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user => Odšifrira lahko samo tisti ki ima geslo ali ključ. Namenski laptop je samo še en računalnik poleg tistega ki ga že imaš. Do enega ali drugega se lahko dobi dostop :) zato moraš imeti podatke šifrirane. Namenski laptop bi lahko bil načeloma bolj varen samo če ga boš uporabljal / priklopil na net samo takrat ko boš potreboval podatke."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Še vedno ni jasno, kaj ti koristi 'namenski laptop' - da bo 'bolj zaščiten' dostop do nekega oddaljenega windows strežnika.  Tisti laptop bi zaščitil kot nevemkaj.... istočasno pa strežnik, kjer se dejansko nahaja 'zlatnina', pa po možnosti še z izpostavljenimi porti za SMB, RDP in bog vedi kaj še.  Nekako neresno se mi to vse skupaj zdi..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 16. nov 2019 ob 15:01 izjavil:Še vedno ni jasno, kaj ti koristi 'namenski laptop' - da bo 'bolj zaščiten' dostop do nekega oddaljenega windows strežnika.  Tisti laptop bi zaščitil kot nevemkaj.... istočasno pa strežnik, kjer se dejansko nahaja 'zlatnina', pa po možnosti še z izpostavljenimi porti za SMB, RDP in bog vedi kaj še.  Nekako neresno se mi to vse skupaj zdi...   Ne vem kaj je tu nejasnega. Preko laptopa se povezujem na sftp. Trenutno uporabljam isti laptop za brskanje po internetu, vsake toliko časa namestim kak program itd. In če pride do okužbe, se lahko nekdo preko tega laptopa v ozadju poveže na sftp tako kot se jaz, pa jaz tega niti ne vem. Če bi imel namenski laptop samo za to, bi bila verjetnost okužbe bistveno manjša. Jasno pa da mora biti tudi strežnik zaščiten, ampak ta del bom kot sem že napisal prepustil strokovnjakom (verjetno se bom obrnil na siel).  @assistant_3 je 16. nov 2019 ob 12:57 izjavil:@user => Odšifrira lahko samo tisti ki ima geslo ali ključ. Namenski laptop je samo še en računalnik poleg tistega ki ga že imaš. Do enega ali drugega se lahko dobi dostop :) zato moraš imeti podatke šifrirane. Namenski laptop bi lahko bil načeloma bolj varen samo če ga boš uporabljal / priklopil na net samo takrat ko boš potreboval podatke.   To sem potem jaz. In če nekdo pridobi dostop do api key-jev, kaj ga potem omejuje da ni pridobil tudi gesla (ker to pač nekje mora biti vneseno)."
+    },
+    {
+        "role": "user",
+        "message": "Verjetno bo bolje če dam malo več informacij. Žal ne morem navesti konkretne situacije, bom pa dal podoben primer. Če vzamem za primer spletno stran na PHP-ju, ki ponuja analizo naročnikov na e-novice od posamezne stranke. Stranka opravi kratko registracijo. Potem pa vnese Mailchimp api key in shrani. Ko je Mailchimp api key shranjen, lahko preko php scripte pokličem Mailchimp api (s pomočjo api secret key-a) in pridobim maile ter naredim analizo. Za analizo se uporablja php scripta, ki potem vrne poročilo. Analiza se izvaja 1x mesečno, zato ni potrebe da bi imel Mailchimp api ključe stranka ves čas na strežniku.  Moja ideja je bila, da bi api keye imel na strežniku le tistih par minut 1x mesečno. Sicer bi bili shranjeni offline. Podobno kot shranjujejo kripto menjalnice žetone v cold storage.  Omenjali ste šifriranje. Vendar mi ni jasno kaj bi s tem pridobil. Še vedno bi morala php scripta api key odšifrirati, takrat ko bo izvajal analizo, za kar bi morala scripta imeti geslo. Torej bi moral nekje vnesti geslo. In ne vidim razlike kaj tu pridobim, ker če nekdo pridobi dostop do računalnika in strežnika, lahko prav tako dobi tudi geslo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 16. nov 2019 ob 17:55 izjavil:@assistant_4 je 16. nov 2019 ob 15:01 izjavil:Še vedno ni jasno, kaj ti koristi 'namenski laptop' - da bo 'bolj zaščiten' dostop do nekega oddaljenega windows strežnika.  Tisti laptop bi zaščitil kot nevemkaj.... istočasno pa strežnik, kjer se dejansko nahaja 'zlatnina', pa po možnosti še z izpostavljenimi porti za SMB, RDP in bog vedi kaj še.  Nekako neresno se mi to vse skupaj zdi...   Ne vem kaj je tu nejasnega. Preko laptopa se povezujem na sftp. Trenutno uporabljam isti laptop za brskanje po internetu, vsake toliko časa namestim kak program itd. In če pride do okužbe, se lahko nekdo preko tega laptopa v ozadju poveže na sftp tako kot se jaz, pa jaz tega niti ne vem. Če bi imel namenski laptop samo za to, bi bila verjetnost okužbe bistveno manjša. Jasno pa da mora biti tudi strežnik zaščiten, ampak ta del bom kot sem že napisal prepustil strokovnjakom (verjetno se bom obrnil na siel).   Za večstopenjsko avtentikacijo pa še nisi slišal?  Če že zganjaš paranojo, potem začni ščititi dostop do strežnika in delovnega računalnika z MFA.  Ne vem kaj imaš to za eno aplikacijo/scenarij, zato ne morem soditi o tem, ali pretiravaš, ali pa je tvoja paranoja upravičena. Vsekakor pa mi pristop z 'namenskim laptopom' deluje nekako .... 'amaterski'. Ampak kot rečeno - samo ti veš vse okoliščine, kolikšno je realno tveganje in kolikšna potencialna škoda."
+    },
+    {
+        "role": "user",
+        "message": "Verjetno bo bolje če dam malo več informacij. Žal ne morem navesti konkretne situacije, bom pa dal podoben primer. Če vzamem za primer spletno stran na PHP-ju, ki ponuja analizo naročnikov na e-novice od posamezne stranke. Stranka opravi kratko registracijo. Potem pa vnese v profilu Mailchimp api key in shrani. Ko je Mailchimp api key shranjen, lahko preko php scripte pokličem Mailchimp REST api (potreben api secret key) in pridobim maile naročnikov na novice te stranke ter naredim analizo. Za analizo se uporablja php scripta, ki potem vrne poročilo. Analiza se izvaja 1x mesečno, zato ni potrebe da bi imel Mailchimp api ključe stranka ves čas na strežniku.  Moja ideja je bila, da bi api keye imel na strežniku le tistih par minut 1x mesečno. Sicer bi bili shranjeni offline.   Omenjali ste šifriranje. Vendar mi ni jasno kaj bi s tem pridobil. Še vedno bi morala php scripta api key odšifrirati, takrat ko bo izvajal analizo, za kar bi morala scripta imeti geslo. Torej bi moral nekje vnesti geslo. In ne vidim razlike kaj tu pridobim, ker če nekdo pridobi dostop do računalnika in strežnika, lahko prav tako dobi tudi geslo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Mogoče pa razmisliš o drugi smeri.....  Pri sebi lokalno (VPN povezava server-lokalna mreža) postaviš Filezilla ali kerikoli že SFTP strežnik, na njemu pa definiraš path do USB ključka z gesli.  Ko je ključek vključen v računalnik lahko oddaljeni server dostopa do sftp mape z datotekami na USB ključku. Ko ga vzameš ven, jih ne vidi več.... nihče!  Se pravi, da moraš samo še na strani serverja porihtat skripto, da gre po gesla in jih tudi pobriše po uporabi.  Druga alternativa - vse podatke zvlečeš na 'lokalnem računalniku' in samo prenešene podatke potem transportiraš na javni strežnik. Tako tisti javni strežnik nikoli ne vidi api ključev....."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj pa če bi uporabnikov API key šifriral kar z njegovim passwordom (glej tole). Tako bi aplikacija do API kjuča lahko dostopala le takrat, ko se uporabnik prijavi. Tako tudi ti ne bi imel dostopa do API keyev. Ti pa to onemogoča lavfanje cronjobov.  Se mi pa zdi vse skupaj malo nesorazmerno. Podatke na USB ključku ne bi šifriral, kupoval bi drug laptop...  USB ključki: niso zamišljeni za dolgotrajno hrambo v enterprise svetu. Kaj boš storil, ko odpove, ga založiš itd..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 15. nov 2019 ob 18:49 izjavil:Do sedaj sem imel sharing hosting, do katerega sem dostopal preko laptopa, ki ga imam za vso uporabo. Po novem pa bom imel na strežniku zelo občutljive podatke strank (api keye trgovin) in iščem varno rešitev.  Razmišljam, da bi kupil en poceni laptop. Gledal sem na Mimovrste Lenovo V130-15 HD 3867U 4GB/128GB FreeDOS za 199€. Ta prenosnik bi imel potem izključno za dostop do strežnika, kamor bi občasno naložil fajle in posodabljal trgovino. Naložil bi original windowse, avg antivirus in to je to. Api keye strank pa bi shranjeval offline na ključek in jih uploadal na strežnik samo takrat, ko bi jih rabil.   Internet povezava do laptopa je preko LTE WiFi-modema preko 4G povezave.  Gostovanje pa bi naročil VPS pri siel kjer ne bi imel na strežniku nič drugega, kot samo ta del. Sem slišal da so kar dobri.   Mnenja?    Kupiš windows to go usb ključ, inštaliraš gor windows 10 to go in vse naložiš nanj. Potem ključ kriptiraš z bitlockerjem. Ključ lahko vstaviš potem v katerikoli računalnik in štartaš windows 10 iz njega."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 16. nov 2019 ob 15:01 izjavil:Še vedno ni jasno, kaj ti koristi 'namenski laptop' - da bo 'bolj zaščiten' dostop do nekega oddaljenega windows strežnika.  V bitstamp so vdrli, ker so zaposleni za dostop uporabljali svoj laptop, namesto namenskega."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 je 18. nov 2019 ob 16:04 izjavil:@assistant_4 je 16. nov 2019 ob 15:01 izjavil:Še vedno ni jasno, kaj ti koristi 'namenski laptop' - da bo 'bolj zaščiten' dostop do nekega oddaljenega windows strežnika.  V bitstamp so vdrli, ker so zaposleni za dostop uporabljali svoj laptop, namesto namenskega.  To je preveč poenostavljena razlaga.  Če imaš kronske juvele podjetja izpostavljene tako, da lahko vsak zaposleni od koderkoli do njih dostopa, si že v osnovi naredil VSE narobe. Tisti nesrečni prenosnik je potem samo še zadnja pikica na I.  To je tako, kot če trezor postaviš na dvorišče banke, potem se pa čudiš, da so ga nepridipravi preko noči izpraznili."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tudi če je edini z dostopom, bi bilo enako."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 je 18. nov 2019 ob 22:24 izjavil:Tudi če je edini z dostopom, bi bilo enako.  Da, še vedno je trezor na dvorišču banke.  Le kombinacijo za odkleniti ve samo ena oseba. Kar pa ni nobena ovira."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Varen dostop do strežnika je SSH z močnim geslom preko VPN. Na Win pa sam izklopi RDP."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@user je 15. nov 2019 ob 22:41 izjavil:@assistant_0 je 15. nov 2019 ob 20:50 izjavil:USB Ključki so problematični. Malo mi sicer ne gre skupaj to, da bi kupoval nameski laptop samo zato, da bi se povezoval na server, usb ključek pa ne bi šifriral. Ali je res tako problematično, da imaš ključe kar na serverju? Mogoče jih imej v kakšnem zašifriranem kontejnerju na strežniku, tako odrežeš kompliciranje z USB ključki. Ko pa api ključe rabiš pa se samo SSHjaš na server, dešifriraš ključe in jih uporabiš.  Načeloma nima veze ali je vmes 4G, sosedov wifi ali pa kaj tretjega. Dokler ga ne boš sral s kakšnimi FTPji, telnetom ali pa ignoriral opozorila o neveljavnih fingerprinti si all good.  PS.  1) SSH si prestavi iz 22 na kakšen obskuren port 2) na firewallu dropaj vse pakete, ki niso iz slovenije 3) vklopi fail2ban in podobne zadeve   Zakaj so usb ključki problematični? Kupim povsem nov ključek, kamor skopiram podatke in jih tako hranim offline. Ko rabim ključe, jih uplodam na strežnik, zaženem php scripto za posodabljanje, ko se posodobitev zaključi spet zbrišem ključe s strežnika. Tako so ključi večinoma časa offline kar se mi zdi še najbolj varno. @assistant_3 je 15. nov 2019 ob 21:04 izjavil:Ne potrebuješ namesnkega računalnika za varnost. Bistvo je, da imaš lokalno šifrirane podatke in da do strežnika dostopaš preko ssh povezave. Ter seveda ustrezno antivirusno / malware ipd lokalno zaščito.   Enkrat jih bom moral odšifrirat. In če to lahko naredim jaz, lahko tudi nekdo drug, ki bi pridobil dostop do računalnika. Isto če lahko jaz dostopam do ssh, lahko tudi nekdo, ki bi pridobil dostop do računalnika. Zato se mi zdi bolj smiselno dati tistih 200EUR za laptop.   ocitno ti ni se noben flash odletel kajne? Mission critical podatkov NE hranis v bilokaki obliki na flash pomnilnikih. Skriptiraj in ja, zacni uporabljati Linux."
+    },
+    {
+        "role": "assistant_4",
+        "message": "In kaj konkretno tu Linux spremeni? Še vedno je zgolj OS.   Bistven je sam proces, v katerem se osvežijo podatki. OS tu ne igra bistvene vloge.  Moje mnenje je, da naj OP 'akvizicijo' podatkov z Mailchimpa izvede na lokalnem (zaradi mene lahko tudi namenskem) računalniku, nato pa samo pridobljene podatke prenese na 'javni' strežnik.  Tako 'javni' strežnik nikoli ne vidi raznoraznih ključev, niti jih ne pretakaš kar naprej po omrežju gor in dol.  Na lokalni ravni, bo pa menda OP že vedel, kako naj zaščiti tiste ključe - pa magari, če iztakne UTP kabel iz računalnika do naslednje posodobitve.  Pa nebi se jaz toliko zatikal ob flash medij. Ta v tem konceptu ni bil mišljen kot trajna hramba, temveč zgolj kot 'prenosni medij' med trajno hrambo (detached hdd?) in sistemom na katerem se vrši 'obdelava'. Bistvo je bilo, da se ključi na flashu enostavno odstranijo, brez nekega brisanja datotek.  Kaj bo pa OP naredil, je pa druga zgodba... najbrž bo stvar po nepotrebnem zakompliciral, na varnosti pa nič pridobil."
+    },
+    {
+        "role": "assistant_9",
+        "message": "USB kljuci izgubijo/corruptajo podatke ce dovolj casa niso priklopljeni - je to se vedno flash pomnilnik."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_9 je 20. nov 2019 ob 11:45 izjavil:USB kljuci izgubijo/corruptajo podatke ce dovolj casa niso priklopljeni - je to se vedno flash pomnilnik.  Zamenjajte \"USB Ključek\" z \"Removable Media\", da ne boste nabijali o 'trajnosti in zanesljivosti' USB pomnilniških medijev, kar sploh ni tema debate.  Presneto, pa če bi imel ključe na 1,44\" disketi!  Pogovarjali smo se o KONCEPTU / PRISTOPU / MOŽNI REŠITVI nekega problema, ne pa o tem, koliko časa zdrži in koliko je zanesljiv določen tip prenosnega medija. Takointako ni nobeden 'večen'...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_4 je 20. nov 2019 ob 11:53 izjavil:Pogovarjali smo se o KONCEPTU / PRISTOPU / MOŽNI REŠITVI nekega problema, ne pa o tem, koliko časa zdrži in koliko je zanesljiv določen tip prenosnega medija. Takointako ni nobeden 'večen'....   Koncept tukaj: Na račun varnosti se ne smemo odpovedati dosegljivosti.  V primerjavi z USB ključki, lahko za Pure storage rečemo, da je kar večen"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_0 je 20. nov 2019 ob 22:26 izjavil:@assistant_4 je 20. nov 2019 ob 11:53 izjavil:Pogovarjali smo se o KONCEPTU / PRISTOPU / MOŽNI REŠITVI nekega problema, ne pa o tem, koliko časa zdrži in koliko je zanesljiv določen tip prenosnega medija. Takointako ni nobeden 'večen'....   Koncept tukaj: Na račun varnosti se ne smemo odpovedati dosegljivosti.  V primerjavi z USB ključki, lahko za Pure storage rečemo, da je kar večen   In spet se vrtiš zgolj okoli PRENOSNEGA medija....kot da bi bil medij za trajno shranjevanje. Zakaj?!?!? Kje je kdo predlagal, da naj bo ključek medij za trajno shranjevanje?   Nekako dobiš občutek, da če že nimaš lastne ideje, potem pa dejmo j* tiste, ki so podali kakšno idejo... pa tudi če ni nič narobe z njo...bomo že kaj našli, da se obregnemo...evo...omenjen je bil usb ključek...katastrofa! Dajmo ga zdaj j* zaradi tega ključka!  Sem že rekel, da je čisto j* vseeno, če bi se kot prenosni/odstranljiv medij uporabljal pradavninski floppy disk. Pa ne boš verjel, tudi ti so preklemansko dolgo držali, če si pravilno delal z njimi. Samo se bojim, da si premlad, da bi to lahko vedel.  Skratka, če nimaš bolj pametne ideje, kot pametovati okoli USB ključkov, se prosim ne vpletaj v debato! Itak pa je debata že zdavnaj šla nekam.... morda tudi zaradi USB pametnjakovičev...?  OP-a ste definitivno pregnali...."
+    },
+    {
+        "role": "user",
+        "message": "Se opravičujem da se nisem vmes nič javil, projekt sem začasno postavil na stranski tir. Skratka rad se bi le zahvalil uporabniku @assistant_4 za uporabne predloge."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Vse to se da nadomestiti z uporabo rešitev v oblaku. Paranoičnim pa sploh ni treba zaupati tem rešitvam, ker imajo lahko vse pomembne dostopne/šifrirne ključe shranjene pri sebi. Poleg tega je monitoring in alarming oblačnih rešitev praviloma dosti lažji kot pri lastnih.  Par smernic: - Secrets Manager (ki uporablja KMS) - KMS  - EC2 security  Verjamem, da majo tudi drugi oblaki podobne rešitve."
+    }
+]

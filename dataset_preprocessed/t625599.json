@@ -1,0 +1,118 @@
+[
+    {
+        "role": "user",
+        "message": "Imam obstoječ, star win3.1 sistem ki ga imam možnost prikopiti na mrežo  Kako to najlažje virtualizirat? Po možnosti nekaj z vmware *..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "To je bolj kot ne precej enostavno.  V VMware (ali Virtualbox) si namesti DOS 6.22 in potem samo skopiras vse kar imas na pravem disku c:\\ v VMware C:\\ in bi moralo z nekaj srece delovati. Najbolj enostavno je kar vzeti disk iz starega racunalnika in ga priklopiti v novega. Starega lahko potem dodas v Virtualko kot drugi disk in samo kopiras vse kar potrebujes (uporabis xcopy *.* /s ali Norton Commmander za skrite datoteke).  Problemi, ki se lahko pojavijo.  - imas namescen gonilnik za pravo graficno kartico. Prej zazeni Setup in izberi standardni VGA gonilnik. - gonilniki za mrezno, zvozno... ne bodo vec delovali in jih je pametno prej odstranit - poglej v WIN.INI in SYSTEM.INI. Ce bos kopiral tudi CONFIG.SYS in AUTOEXEC.BAT, potem razne gonilnike komentiraj z REM.  Nekako tako"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Saj lahko uporabiš tudi fizičen hdd v virtualki. VBOX http://superuser.com/questions/495025/u..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Naj mu še nekdo izda, kako bo stari disk priklopil na novo matično. @Kixs ima 'bolj prav' - skopiraj."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Stari disk lahko brez tezav priklopis na novi racunalnik preko kaksnega vmesnika. Dobis tako PATA-SATA ali pa PATA-USB vmesnike. Na moji, par let, stari maticni pa je tudi se PATA prikljucek.  V glavnem, ker gre za stari racunalnik je podatkov za danasnje case zelo malo - morda par 100MB. Sami Win 3.11 zasedejo kaksnih 20MB.  Ravno imam na mizi eno 286-tko. Namesto diskov pa raje uporabljam CF2IDE in kaksno CompactFlash kartico (256/512MB)."
+    },
+    {
+        "role": "user",
+        "message": "Heh, včasih na najbol simpl rešitev pač ne pomisliš :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mogoče bi VMWare Converter lahko delal to, kar ti iščeš/rabiš. Najbolje pa da tole pogledaš. In tole."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Naj se malo popravim.  Najprej preveri katero verzijo DOS-a imas na stari kisti (ukaz: ver). Potem to isto verzijo namestis na virtualko, nato pa cel disk skopiras v virtualko. Upostevaj nasvete iz 1. posta za gonilnike. Win 3.1 se dejansko obnasa kot ena vecja aplikacija in ni posebej obcutljiv na spremembo okolja (ce se le drzis zgornjih napotkov)."
+    },
+    {
+        "role": "user",
+        "message": "Disk je 512MB, Dos6.2 in win3.1  Na tem koraku me, vsaj iz firbca zanima, zakaj je razlika v vmplayerju - lahko izberem msdos ali win31. Kakor vem je win31 ubistvu aplikacija?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sam vedno izberem DOS. Razlika je morda v kaksni podpori za virtualne mrezne kartice, ce so sploh potrebne.  Sicer kaksne bistvene razlike med eno in drugo opcijo ne bi smelo biti. VMware nima ne za enega ne za drugega kaksnih VMware Toolsov - zato moras uporabiti navaden VGA gonilnik. Kot berem pa tudi EMM386 ni pametno uporabit.  Ce smo ze pri virtualizaciji, je imel VirtualPC veliko boljso podporo za DOS/Windows, ker ze v osnovi emulira S3 graficno kartico, ki tako omogoca vec. Za VirtualBox pa ne vem kaj podpira - vem, da ima podporo za SB16.  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa tale stran ti zna prav prit: http://www.scampers.org/steve/vmware/#3...  Ce bos samo obcasno zaganjal to virtualko, potem mogoce ni panike, sicer pa je dobro namestiti (zagnati) DOSIDLE v DOSu in WQGHLT dodati v system.ini. Potem ti CPU ne bo vedno na 100% kot je to v navadi v DOSu. Ima pa se patch za VGA in nekaj drugih uporabnih stvari skupaj s kratkimi navodili.  lp"
+    },
+    {
+        "role": "user",
+        "message": "vmware player, posnel dos6.22 imam tudi gonilnik za cdrom tako da mountanje cdroma deluje.  naredil sem disk 2gb in dodal še \"en\" disk, ki ga je zmountal kar iz fizičnega (se da)  z virtualnim diskom lahko delam vse, fizičnemu pa je očitno treba dodati še črko pogona. kako?  fdisk ga pri izbiri fixnega diska vidi, kaj več pa ne (znam)...."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če ga fdisk v virtualki in sam VmWare vidi, potem probaj par črk za pogon (C:, D:, itn ...).   Ni treba narediti nič. Lahko se pa prijaviš v VmWare BIOS, pa pogledaš če je notri."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa si sigurno pravi disk dodal? Ce ima stari FAT16 ali FAT32, potem bo DOS avtomaticno dodal naslednjo enoto, navadno D:  Preveri v VMware BIOSu, da imas dodan pravi disk (vidis lahko po imenu in velikosti).  Ker si ocitno stari disk priklopil v novi racunalnik. Lahko vidis vsebino diska? Mozna je tudi varianta, da enostavno vsebino diska zapohas na CD in ga potem v virutalki samo skopiras (ker pravis, da ti CDROM dela)."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vzameš en zastonj program za image diskov delat. Narediš image, potem pa ga v virtualizaciji samo restavriraš, pa imaš rešeno, zadeva bi morala delovat.  Zakaj pa rabiš še win 3.1? To je že prestaro, da bi rabil zaradi česa zakonskega?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_0 je 17. nov 2014 ob 14:46 izjavil:Pa si sigurno pravi disk dodal? Ce ima stari FAT16 ali FAT32, potem bo DOS avtomaticno dodal naslednjo enoto, navadno D:  Preveri v VMware BIOSu, da imas dodan pravi disk (vidis lahko po imenu in velikosti).  Ker si ocitno stari disk priklopil v novi racunalnik. Lahko vidis vsebino diska? Mozna je tudi varianta, da enostavno vsebino diska zapohas na CD in ga potem v virutalki samo skopiras (ker pravis, da ti CDROM dela).   Tule je seveda napaka. FAT32 podpira sele Win95 OSR2."
+    },
+    {
+        "role": "user",
+        "message": "Ok.  Kak pa zj se lotit debugiranja?  Naredil nov 2gb disk in na njega posnel dos 6.22, naredil image starega diska(dos 6.20) (in ga pripel kot cdrom) in potem preko live ubuntuja vse skopiral.  Sedaj se zadeva ustavi pri starting msdos - prej se ni.  Kak se lotim pogledat zakaj se ustavi?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kako si dal sistem na disk? Ko si formatiral particijo, si dal format c: /S da se še sistem prenese na disk?"
+    },
+    {
+        "role": "user",
+        "message": "našel msdos622 na treh disketah in ga inštaliral. ker je bil disk neformatiran ga je itaq msdos sformatiral. po rebootu je delalo - se pravi v sam frišn msdos je prišlo. potem pa ko sem prenesel pa ne več."
+    },
+    {
+        "role": "assistant_5",
+        "message": "A si prenesel tudi datoteki msdos.sys in io.sys? Kaj si naredil z autoexec.bat in config.sys?  Če hočeš minimalne nastavitve (samo štart dosa), potem klikni F5 med štartanjem, če bi rad postopoma (debug) spuščal naprej ukaze, potem klikni F8 in boš vsak korak potrdil z Y. Tam kjer se bo ustavilo boš to potem videl.  In na ukazu, kjer se ti bo prvič ustavilo, potem naslednjič klikni N, pa bo moralo it skozi. Ko pa prideš v sistem, pa potem tisti ukaz iz autoexec.bat ali config.sys pobriši ali popravi."
+    },
+    {
+        "role": "user",
+        "message": "kot kaže ga dejansko moti dos 6.22 in dos6.20..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "ms.sys in io.sys ter command.com še enkrat naloži. Štartaš z diskete in štartaj na prvi disketi programček sys.com, pa bi ti moralo posneti sistem na disk."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ko smo ravno pri debati za Win NT Server tudi gre to?   Da image naredimi pa pol kar \"mountam\" v VirtualBox pa lahko tisti prastar HW končno na gnoj zabrišem?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ja tudi gre. Je pa še lažje.  Vzameš VMWARE in priklopiš oba računalnika v mrežo, potem pa v VMWARE samo rečeš uvozi mi ta računalnik v visrtualko in ga prenese preko mreže s kompletnimi nastavitvami. En driver gor posname (ki ga v virtualki potem odstraniš) in se zadeva sama pretoči v virtualko. Sam sem na ta način pretočil več starih serverjev v virtualke.  S tem da sem potem še konvertiral vse vmware datoteke v hyperV, da mi vse sedaj lepo teče pod windows 8.1 pro."
+    },
+    {
+        "role": "user",
+        "message": "no, smo naprej :  device=c:\\dos\\emm386.exe ram x=e000-e3ff x=ca00-cbff x=df00-dfff  virtualki sem dal 16mb rama, predvidevam da je problem nekje v naslavljanju rama?"
+    },
+    {
+        "role": "user",
+        "message": "in pa še : sem probal z acronis true image 2015, priklopil disk v drug računalnik - pa ga niti \"vidi\" ne"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sem ze prej napisal, da EMM386 ni ravno kompatibilen z VMware. V bistvu ga niti ne potrebujes, ker dvomim, da rabis prostega vec kot 600K spodnjega spomina. Imeti moras le himem.sys, da bo imela masina Extended memory in na voljo vseh 16MB.  Kje si dobil tiste parametre od EMM386? Od starega racunalnika? Potem niso pomembni, ker samo izkljucujejo dolocene segmente spomina.  Ce ze moras, uporabi cisto osnovni, ker verjetno tudi EMS ne potrebujes:  device=c:\\dos\\emm386.exe NOEMS  Za kloniranje bi verjetno uporabil kar Ghosta. Sicer ne vem na kako novem racunalniku probavas. Nazadnje sem preizkusil cel kup diskov na Abit NF7-S od 100MB naprej."
+    },
+    {
+        "role": "assistant_5",
+        "message": "A ni bil emm386.exe dodaten program in ni bil del dosa. Nastavi path do emm386. Nastavit moras v autoexec.bat. Mislim da je bil emm386 del win 3.1."
+    },
+    {
+        "role": "assistant_0",
+        "message": "EMM386 je kar lepo del DOS-a. Ce si imel staro verzijo DOS-a, npr. 5.0 in si instaliral Win 3.11, je Win setup namestil novejso verzijo. VMware ima probleme z njim.  Seveda pa so obstajali se drugi memory managerji - bolj znan 3rd party je bil QEMM."
+    }
+]

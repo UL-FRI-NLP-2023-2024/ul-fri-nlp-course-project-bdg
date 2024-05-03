@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Ravnokar sem si sestavil nov računalnik, nanj naložil Windows 7 in vse je delalo tako kot je treba. Nato sem se odločil prekopirati datoteke iz starega računalnika na novega. Ker pa nameravam prekopirati okoli 150GB podatkov, bi to preko 100Mbit ethernet povezave trajalo celo večnost. Zato sem vzel disk iz starega računalnika, na katerem sta nameščena Vista in Ubuntu, in ga vgradil v novega, da bi lahko datoteke prekopiral direktno iz enega diska na drugega. Nato sem vklopil računalnik, preveril BIOS, oba diska je zaznalo, in nastavil boot order da se najprej zažene iz diska, na katerem je naložen Windows 7. Toda takoj za tem se je pojavil problem. Če hočem zagnati tako konfiguriran sistem, pride ravno do zaslona \"Windows is starting\", gre takoj nato v startup recovery \"windows is loading files\", ta tudi spodleti, nato pa mi ponudi možnosti \"start windows normally\" in \"startup recovery\". Katerokoli možnost izberem nič ne pomaga, lahko samo rebootam računalnik nakar se vse skupaj ponovi. Če drugi disk odklopim se pa Windows 7 spet normalno zažene.  Kje točno tu tiči problem? Ni mi jasno zakaj se Windows 7 že začne zaganjati, nakar se ob prisotnosti drugega diska postopek kar naenkrat prekine."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Preslab napajalnik ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ide ali sata diska ? Si zagotovo prav nastavil boot order ? :) Safe mode dela ?"
+    },
+    {
+        "role": "user",
+        "message": "Napajalnik je Thermaltake 650W, za nenavit cpu + 2 diska je to več kot preveč, sploh glede na to da zaenkrat še uporabljam integrirano grafično kartico.  Imam občutek, da problem povzroča prisotnost več OSov, pa čeprav je na zagonskem disku samo Windows 7"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bootaj v live linux (knoppix)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1, nov disk je sata 3 priključen na sata 3 port na matični, star pa sata 2 na priključen na sata 2 portu. Matična plošča pa je Gigabyte GA-Z77-D3H, če ta podatek kaj pomaga. Boot order je zagotovo pravilno nastavljen, saj se že pokaže loading screen za Win7, nakar se zaganjanje prekine. Če hočem zagnati safe mode, se pojavi isti problem."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 23. avg 2012 ob 18:46 izjavil:Bootaj v live linux (knoppix).   Verjetno bi bila to res najhitrejša rešitev, bom preizkusil."
+    },
+    {
+        "role": "assistant_0",
+        "message": "In če zamenjaš sata priključka oz oba priklopiš na sata 2 ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 23. avg 2012 ob 18:56 izjavil:In če zamenjaš sata priključka oz oba priklopiš na sata 2 ?   Tudi to ne pomaga, pojavi se enak problem."
+    },
+    {
+        "role": "assistant_2",
+        "message": "si preveril v biosu (boot order za začetek)? sem ziher, da boš tam našel rešitev"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Je možno, da si pri 'boot order' kaj zamučkal? (mislim, da ne?)  Windowsi znajo včasih malo čudno handlati diske, čeprav si nastavil boot order na disk 1, znajo tam zagnati boot loader, bootati pa dejansko z diska 2, kar pa se zna potem grdo zatakniti, ker imaš popolnoma drugo HW konfiguracijo.  Meni se je to nekoč dogajalo, ko sem kloniral Win7 z manjšega na večji disk - vztrajno mi je zaganjalo stare Windowse na malem disku in nikakor nove (razen, če sem stari disk fizično odklopil).  Nisem 100%, ampak zdi se mi, da sem zadevo potem rešil z bcdedit, tako da sem na starem disku eksplicitno vpisal, naj se sistem zažene z novega diska. Problem pri tebi je ta, da stari disk ne moreš bootati, da bi na njemu popravil stvari.   Na tvojem mestu bi probal zagnati Windows repair iz inštalacijskega medija in tam odprl CMD okno. Ko si enkrat na cmd promtu, preveri kateri disk dejansko je disk C:, kateri D: itd.  Ko enkrat veš točno, katero črko ima novi disk, se lahko lotiš popravila:  bcdedit /copy {current}/d \"Zagon Win7 z NOVEGA diska\"  to ti bo generiralo nov {ID}, ki ga lahko razbereš iz sporočila izvedenega ukaza: The entry was successfully copied to {4c21825f-e04b-11dd-b760-00195b61617a} Ta ID (tvoj bo drugačen!) moraš nato uporabiti za naslednja dva ukaza:  bcdedit /set {ID} device partition=X: bcdedit /set {ID} osdevice partition=X:   V zgornjem primeru sem vpisal disk X: - ti vpiši tisti disk, za katerega si predhorno ugotovil, da je dejansko novi disk.  Ko si to izvedel, reštartaš računalnik in boš opazil novo boot opcijo \"Zagon Win7 z NOVEGA diska\". Če jo izbereš in potrdiš, bi se ti moral zagnati Win7 z novega diska.  Upam da bo to rešilo problem.  Ko ti bo na ta način zagnalo Win7 z novega diska, si lahko z neta preneseš EasyBCD in na malo bolj 'človeški' način popraviš boot opcije."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Problem je v tem, da ti prej prepozna disk na SATAII in ker imaš gori dual boot - linux in Visto, ti enostavno gonilnika za SataIII ne zažene. Daj disk s sistemom na sata II - port 0 ali 1, disk iz drugega računalnika pa na 3 ali 4, priporočam pa ti, da w7 najprej zaženeš iz tega novega priklopa, potem pa sistem ugasneš in dodaš še drugi disk. Lahko pa kopiraš preko eSata vhoda na zadnji strani, pripeljat moraš iz ohišja samo napajanje (nekatere plošče imajo tudi to na zadnji strani)."
+    },
+    {
+        "role": "user",
+        "message": "Ustvaril sem si Knoppix live USB, ta mi brez problema prepozna oba diska, tako da ze kopiram datoteke.   Hvala vsem za odgovore, mislim da bom imel na ta nacin se najmanj zajebancij z vsem skupaj."
+    },
+    {
+        "role": "user",
+        "message": "Pa se to, zanimivo je, da moram v biosu izbrati v boot opcijah windows boot manager in ne disk na katerem je OS instaliran, ce hocem, da se mi Windows zazene. Je to slucajno nov feature v UEFIju?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "V bios-u imaš po navadi dve nastavitve - ena za napravo - DVD, HDD, FLOPY, USB.... druga za diske - tu ti po navadi napipe oznake diskov, tako da moraš ob enakih diskih, vedeti kakšno oznako ima kateri disk. Boot manager pa uporabljaš, kadar imaš več operacijskih sistemov, v isti mašini."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Bi pa verjetno bila tudi opcija, da s drugega podatkovne nosilca poženeš Ubuntu OS in urediš zadevo. Se pravi, če boš še kdaj pred to dilemo.   Ali pa s pomočjo Grub 2 na drugem podatkovnem nosilcu, če ga torej uporabljaš, poskusil pognati W7 na prvem podatkovnem nosilcu!"
+    }
+]

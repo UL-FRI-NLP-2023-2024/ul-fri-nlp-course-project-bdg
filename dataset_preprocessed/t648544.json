@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Pred kratkim sem se odločil, da bom kupil močnejšo grafično kartico za moj PC, vendar sem pri vgradnji kartice naletel na hude probleme. Najprej naj omenim vse relevantne specifikacije:  matična: Gigabyte Z77-D3H napajalnik: Thermaltake Smart M650W procesor: i5-3570k ram: 2x4GB 1600MHz stara grafična: Sapphire Radeon 7870 nova grafična: MSI R9 390 OS: Windows 8.1 64 bit  Torej, ko sem novo grafično dobil, sem staro vzel iz pci-e 16x reže in notri vstavil novo, vklopil 8-pinski in 6-pinski kabel iz napajalca, nato računlnik priklopil nazaj na elektriko in na oba DVI izhoda grafične priklopil monitorja. Ko sem računalnik prižgal, se je na grafični prižgala bela lučka, iz česar sklepam da napajanje dela, vendar na monitorjih ni bilo nobene slike. Nato sem priklopil monitor na dvi izhod od integrirane grafike, od kjer sem dobil normalno sliko. Nato sem zagnal windowse in pogledal v device manager, in opazil da nove grafične sistem sploh ni zaznal, saj je ni bilo na seznamu. V biosu sem nato probal izklopiti integrirano grafiko in nastaviti, naj se najprej inicializira pci-e grafika. V tem primeru se ob vklopu računalnika pojavi zaporedje piskov: 1 dolg, 3 kratki.  Nato sem v računalnik nazaj vstavil staro grafično kartico, za katero vem da še deluje, in sedaj tudi ta ni delovala. Spet brez signala na monitorju in piskanje, ko onemogočim integrirano grafiko. Zato sem tudi to grafično vzel ven in nato zagnal računalnik samo z integrirano grafiko. Med vsemi temi rebooti in menjavami grafičnih pa se je še moji inštalaciji windowsow čisto odtrgalo. Do login screena je šlo še vse normalno, ko se pa sem se vpisal pa je začel ekran čudno utripati, viden je bil pa samo desktop background in taskbar. Tako da znotraj Windowsev praktično ničesar nisem mogel delati. Nato sem poskusil razne stvari, system restore ni pomagal, prav tako safe mode ni pravilno deloval. Ko sem obupal nad vsemi možnostmi sem pognal system refresh, kar je praktično tako kot bi naredil svežo inštalacijo. Od tu naprej so vsaj Windowsi normalno delovali.  Ko sem to zadevo uredil, sem se naprej čudil zakaj neki pci-e reža ne deluje več. Ko sem si od blizu pogledal matično ploščo, mi je kmalu postalo jasno, kaj je možen vzrok za to:      Pri vstavljanju nove grafične kartice sem imel rahle probleme, ker je tako velika da sem jo komaj stlačil v ohišje, in zgleda da sem nehote s kovinskim zadkom grafične podrgnil po matični. Mislim da bi moralo biti iz slik razvidno, ena tanka praska gre direktno čez 5 sledi na matični.  Zato sem se odločil da probam zadevo usposobiti še v \"rezervni\" pci-e reži. Moja matična ima namreč še eno režo v isti velikosti kot 16x pci-e reža, le da deluje pri 4x hitrosti. Zato sem najprej vstavil vanjo mojo staro HD 7870-ko in res, v tej reži se je normalno zagnala. Zato sem šel v windowse, inštaliral AMD driverje, a kmalu zatem mi je sistem čisto zmrznil. Zato sem naredil reboot, nakar opazim, da sistem sploh ne pride preko bios screena. V biosu sem opazil, da mi enega od SSD diskov sploh ni več zaznalo (2 leti star Samsung 840 250GB, doslej mi je deloval brez problemov in ga tudi nisem pretirano mučil). Disk sem zato vzel ven in ga stestiral še v drugem računalniku, tudi ta sploh ni hotel preko bios screena, tako da sklepam da je disk čisto crknil.  Torej, kot sem povedal, stara grafična v 4x reži deluje, vendar ko sem probal tja vstaviti še novo r9 390, ta ni delovala. Spet enaki simptomi kot na začetku, luč se prižge, vendar ni signala na monitorju in pa piskanje, če onemogočim integrirano grafiko.   Sedaj je situacija sledeča: -imam poškodovano matično ploščo -mrtev SSD -nova grafična, za katero niti ne vem ali sploh deluje  Zdaj me pa zanima, a je sploh varno da to matično še naprej uporabljam ali naj raje dobim novo, preden karkoli naprej delam z računalnikom? Ali je možno da mi je defektna matična ubila disk? Ima kdo mogoče kakšen nasvet, kako naj probam usposobiti novo grafično kartico, če ta sploh deluje?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "-imam poškodovano matično ploščo 99% je tole.  ssd in staro grafično lahko testiraš kje drugje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tl tr Meni zgleda da je poškodovano vezje za zvočni del matične. Probi izklopi onboard avdio Je pa to defektna matična."
+    },
+    {
+        "role": "user",
+        "message": "Mjah, zdaj sem malo bolje pogledal in res zgleda da grejo vse tiste sledi proti izhodom za audio. Ampak od česa neki bi mi potem lahko pci-e reža crknila? Bom probal izklopit onboard audio, če slučajno kaj pomaga."
+    },
+    {
+        "role": "user",
+        "message": "Ma ne me je***, ravnokar sem še enkrat sprobal pcie 16x režo, stara grafična (7870) v njej dejansko deluje, dobim iz nje sliko na monitor. Z novo grafično (r9 390) pa je isti problem kot prej, ni slike in ob zagonu računalnika 1 dolg pisk in 3je kratki.   Kje bi bil potem lahko problem, v sami grafični? Ali je mogoče tudi napajalnik lahko kriv za take stvari? Zmanjkuje mi idej."
+    },
+    {
+        "role": "assistant_2",
+        "message": "probaš posodobit bios oz če je najnovejši reflashaš možno da se je coruptal men se je enkrat pa so se venti vrtel 1 min pol pa ugasnil pa spet od začetka dobr da sm mu asus k ma bios flashback k je na usb"
+    },
+    {
+        "role": "user",
+        "message": "Najnovejši bios za mojo matično je neka beta verzija, enkrat sem jo že flashiral pa mi pri tisti verziji rami niso delali na pravih nastavitvah, tako da najnovejši bios ne pride v poštev. Že nekaj časa pa uporabljam predzadnjo verzijo, katera dela dobro in do zdaj z njo še nisem imel problemov. Lahko pa probam to verzijo, ki jo imam zdaj na novo reflashat."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pa za vsak slučaj si pobrisal v nulo vse prejšnje driverje? http://www.guru3d.com/files-details/dis...  Provaš lahko kak drug pcie priklop za foro"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3, problem sigurno ni v driverjih, saj mi sistem grafične ne zazna, kot da jo sploh ne bi bilo. Že preden se sploh zažene Windows in naložijo kakršnikoli driverji ne da graična od sebe nobenega video signala. Tistega adapterja za pci-e 1x reže pa nimam, sicer pa mislim da če sem že 2 reži sprobal, nima smisla da se ukvarjam še z ostalimi.  Flash biosa pa tudi ni nič pomagal.   Zdaj verjetno mi ne preostane drugega, kot da najdem še en drug računalnik in še tam stestiram grafično, pa če ne bo delala jo pač vrnem."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 21. jul 2015 ob 15:49 izjavil:@assistant_3, problem sigurno ni v driverjih, saj mi sistem grafične ne zazna, kot da jo sploh ne bi bilo. Že preden se sploh zažene Windows in naložijo kakršnikoli driverji ne da graična od sebe nobenega video signala. Tistega adapterja za pci-e 1x reže pa nimam, sicer pa mislim da če sem že 2 reži sprobal, nima smisla da se ukvarjam še z ostalimi.  Flash biosa pa tudi ni nič pomagal.   Zdaj verjetno mi ne preostane drugega, kot da najdem še en drug računalnik in še tam stestiram grafično, pa če ne bo delala jo pač vrnem.    Točno tako je. Vse kaže na grafično. Vezje na plati ne zgleda prekinjeno."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Grafična je DOA..."
+    }
+]

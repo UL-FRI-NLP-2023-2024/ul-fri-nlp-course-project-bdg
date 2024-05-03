@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo!  Imam težavo z dostopom do tega routerja. Priklopim ga na prenosnik, izklopim in onemogočim wifi kartico na laptopu. Dam kabel v enega od 4 rumenih na routerju.   Pri tem ni nobenega odziva. Ko stisnem ipconfig v cmdju mi piše samo moj ip, subnet mask 255. ..., default gateway je pa prazno.   Do routerja ne morem dostopat preko 192.168.1.1 ali 192.168.0.1 , saj se ne odziva.   Poskusil sem resetirat 30/30/30 pa brez uspeha?   Ali kdo še pozna kak trik, ali je router zanič?  hvala za vse odgovore,   Lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Daj ti v nastavitvah mrežne kartice na samodejno pridobivanje IP-ja in DNS-a"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pomagalo bi če bi omenil o katerem routerju se gre"
+    },
+    {
+        "role": "assistant_2",
+        "message": "ob ponovnem zagonu računalnika je situacija ista?  nisi napisal, če je do težave prišlo po kakšnem konkretnem dogodku (npr. nadgradnji ali zamenjavi fw-ja). wi-fi routerja je viden? lučke na routerju svetijo normalno?  more info ..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1 je 22. okt 2013 ob 15:19 izjavil:Pomagalo bi če bi omenil o katerem routerju se gre  Piše v naslovi teme.  V cmd probi z ukazoma  ipconfig /release in  ipconfig /renew"
+    },
+    {
+        "role": "assistant_4",
+        "message": "pa si dal svoj IP v isti range kot ruterjev?"
+    },
+    {
+        "role": "user",
+        "message": "Na prenosniku je nastavljeno da avtomatsko pridobi IP naslov in DNS. Probal sem tudi sam nastavit IP, vendar nekako neuspešno.  Ta TL-WR741ND router sem dobil v dar. V kolikor vem je gor vse originalno. Od lučk gori Power, ter pa lučka za port v katerega je vtaknjen kabel. Nobena druga lučka ne gori. Se pa pri resetu prižgejo.  Par slikc:              Če dam v cmd ipconfig /release in pa /renew se ne zgodi nič.  Wifija routerja ne vidim, niti ne gori zanj lučka.  edit: Sem na windows 8.1, enake težave imam če ga priklopim v win 7. Poskusil sem onemogočit MS Essentians in firewall, pa ni pomagalo :/"
+    },
+    {
+        "role": "assistant_2",
+        "message": "imaš možnost preverit delovanje napajalnega kabla?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ročno nastavi za mrežno kartico tako in se poveži preko kabla na 192.168.1.1: IPv4 Address. . . . . . . . . . . : 192.168.1.50 Subnet Mask . . . . . . . . . . . : 255.255.255.0 Default Gateway . . . . . . . . . : 192.168.1.1  Ga lahko pingaš ?  ping 192.168.1.1 -t   Če ne dela je opcija DOA Dead on arrival @ Wikipedia . Si preveril delovanje na kakem drugem pcju z drugim kablom ?"
+    },
+    {
+        "role": "user",
+        "message": "Nimam možnosti preverit napajalnega kabla. Amapk je originalen, in router sploh ni bil veliko rabljen, če to sploh kaj vpliva.   Če ga pingam skos timeouta requeste. Pa sem nastavil točno tako kot si napisal pod IPv4.   edit2:Aja zdej mi je še napisalo destination host unreachable.  Čudno mi je tole   . Kako to da ni default gatewaya?  Edit: probal več kablov, pa so vsi isti. Zgleda da je mrtev. Čeprav res vse lučke gor lepo utripajo :/."
+    },
+    {
+        "role": "assistant_2",
+        "message": "kak sosed, znanec, ... verjetno ima multimeter, da zmeri napajalni kabel."
+    },
+    {
+        "role": "user",
+        "message": "Torej preverim, da je točno toliko kot mora biti?  edit: Čez 1h bom vedu"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če ga pingam skos timeouta requeste. Pa sem nastavil točno tako kot si napisal pod IPv4. Tisto vpišeš v \"local area connection\", neka 100/1000 mbitmrežna kartica, properties, zavitek networking -> IPv4, properties -> use the following ip address (ter začasno disabljaš vse ostale (wifi) povezave).  Default Gateway imaš prazen, kaj skrivaš pod IPv4 Address (tu gre za lokalen lan ip naslov, nima nihče zunaj tvojega lana kaj početi z njim s stališča varnosti) ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poglej, če imaš pravi napajalnik. Včasih, ko mi kdo prinese kako napravo za popravilo, ugotovim da kak napajalnik sploh ne pripada dotični napravi. Izgovor pa je, da so vsi napajalniki enaki - kar pa ni res. Preveri, če slučajno ni posledic udara strele. Včasih se obnaša prav nenavadno. Dobil enega takega v roke in je deloval kot switch in to samo na dveh LAN-ih, dva pa bila mrtva."
+    },
+    {
+        "role": "user",
+        "message": "Ni bil 192.168.1.x zato sem zakril. Ta screen je bil od automatic IP/DNS  Izmeril sem volte na napajalniku in sicer 9.22V od 9V oglaševanega, amperov nisem izmeril. Nimam variante pa dejansko preverit če ne pade ko je enkrat zagnan :/.  Kako mi pa lahko WRT54GL dela brez problema, pa ni bilo treba nič tega nastavit :/. Routerja med seboj nista nikakor povezana, bi pa dal tega Tp linka kot sprejemnik. Sam ko ga ne morem dostopat.  edit: Tu je pa slika s tvojimi nastvitvami    edit2: Napajalnik se ujema po številkah 9V in 0,6A s routerjem. Bom poskusil še če je morda kak port skurjen.. ampak router ga zazna.. vsaj na vseh portih se lučke prižgejo če vklopim kabel."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ko imaš nastavitve kartice na avtomatsko pridobivanje ip-ja pa dobiš nekaj v rangu 169.xxx.xxx.xxx. router je brickan oz. je možno, da ga je skurla strela ali kaj podobnega, kot pravi @assistant_0."
+    },
+    {
+        "role": "user",
+        "message": "Okej. Bom vrgel v smeti potem. Škoda ker bi res prav prišel.   Mi je pa čudno kako to da ko pingam 192.168.1.1, na koncu pinga moj nastavljen IP -.-\"  Windows mi tudi ko to nastavim, napiše Default gateway is not available hehe"
+    },
+    {
+        "role": "assistant_2",
+        "message": "nov, model TL-WR740N te pri enaa pride 14,55 eur ..."
+    },
+    {
+        "role": "user",
+        "message": "Vem da je poceni. Saj verjetno bom to naredil :P"
+    }
+]

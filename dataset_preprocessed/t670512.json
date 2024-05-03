@@ -1,0 +1,130 @@
+[
+    {
+        "role": "user",
+        "message": "Torej, kmalu se mi bo potekla licenca za Backup, ki ga uporabljam tako, da se mi inkrementalno/diff zadeve sinhronizirajo na USB3 128GB ključek. Program ni bil posodobljen že nekaj časa, namesto njega je nov, Hard Disk Manager za 100$. To je pa too much, ker imam za \"močne\" backupe, druge rešitve.  In zato gledam razne Free Backup programe. Vidim, da jih je ogromno, ki imajo podobno, enako, ali boljšo funkcionalnost, kot pa tega, ki sem ga uporabljal do sedaj. Ampak vsi Free programi imajo kakšen \"quirk\".   Sedaj, ko sem raziskoval, kaj bi bilo zame najbolj primerno, imam odprtih 10+ dodatnih tabov. Ne bi rad vsak program inštaliral in testiral.  Kaj pa bi rad?  Ker se gre samo za file version backup, bi rad diff/incremental backup folderjev, ki jih izberem sam. (Za \"tapravi\" backup imam drugo zadevo, ki dela backup (tudi) v virtualno mašino.) Na USB ključu bi rad imel backup razne dokumente, slike, posnetke, certifikate,... Da sam zažene inkrementalni backup, ko je ključek priklopljen. (Inkrementalni backup bi tudi onemogočil razne Crypo viruse, kar bi precej hitro opazil. Čeprav še nisem imel \"sreče\", da bi dobil na bilokatero mašino bilokakšen malware/crapware že doooolgo časa.)  V bistvu enostavna zadeva. Ampak ker je ponudbe toliko, ne vem, kaj bi izbral.  Zato Vas sprašujem, kaj pa vi uporabljate?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz sem jih pred kratkim nekaj preizkusil in izbral brezplačni AOMEI. Edina opažena slabost je bila, da je pošiljanje mailov (obvestil) možno samo preko njihovega strežnika, ki pred kratkim precej dolgo ni deloval. Plačljiva verzija sicer omogoča nastavitev pošiljanja preko poljubnega smtp strežnika.  Zanimiva alternativa je tudi Cobian. Cobian nima kake svoje posebne oblike backup datotek (ampak pač dela kopije direktorijske strukture, tudi inkrementalno), kar je po eni strani plus, ker lahko do backupov direktno dostopaš, po drugi strani pa sem imel pomisleke, kako zapleteno bi bilo iz tistega restavrirati poljubno verzijo datotek oz. direktorijev.  Zakaj pa misliš, da bi te to rešilo pred raznimi crypto virusi? Kaj pa, če ti crypto virus (ali kak drug virus ali trojanec) uniči backup datoteko, ko na računalnik priključiš ključek?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ker Cobian že nekaj časa ni osvežen in so lahko določene težave pod Windows 10 sem jaz kot alternativo našel tole: http://www.duplicati.com/  Kmalu bo zunaj verzija 2.0 s posodobljenim grafičnim vmesnikom (že zdaj lahko preizkusiš razvojno varianto).  Med plačljivi programi pa imam pozitivno izkušnjo z O&O AutoBackup in SecondCopy (žal pa izgleda, da se je tudi pri slednjem ustavil razvoj)."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Veliko vas je, ki kupujete WD zunanje diske, večina diskov ima gor zelo uporaben backup program, jaz ga uporabljam že vsaj 5 let."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_2 je 31. mar 2016 ob 15:24 izjavil:Veliko vas je, ki kupujete WD zunanje diske, večina diskov ima gor zelo uporaben backup program, jaz ga uporabljam že vsaj 5 let.   Ko že uporbljate WD diske: ali je kdo opazil da če vzamete tak disk ven iz ohišja in ga priklopite drugam, se na disku ne vidi nič.  Namreč, crknil mi je en WD 2TB zunanji disk (disk je precej rožlal). V ohišje sem spravil drug (star, z brezveznimi podatki) disk in na moje začudenje ugotovil da na njem ni nič. Ko sem ga sfrormatiral je deloval normalno, vendar če sem ga preklopil v drugo ohišje in/ali PC ponovno ni bilo zaznati nič. V WDjevem ohišju je deloval normalno. Eksperimentiral sem tako z Linuxom (Ubuntu 14.04) kot z win7.  Je še kdo to zasledil?  Hvala in LP"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Jaz uporabljam FreeFileSync za file backup, za backup celotne particije pa Acronis 2014  Za Acronis 2014 free key vprašaj uporabnika MIHAc27"
+    },
+    {
+        "role": "user",
+        "message": ">Zakaj pa misliš, da bi te to rešilo pred raznimi crypto virusi?  Imam vsepovsod precej zaprte sisteme in nazadnje bi lahko fasal nek browser addon, ki se je hotel inštalirati z posodobitvijo KMPlayerja. Od takrat (Kmplayerja) ga ne uporabljam več.   Trenutni backup ne \"mounta\" USB ključek, zato ga tudi crypto ne bi mogel \"doseči\". Tega pa žal ne vidim v nobeni Free verziji. Če bi nadaljevali z programom, bi dal 30EUR, tako mi pa ponujajo preobsežen paket, ki ga ne rabim. Banda. Drobni teksti, kako jih sovražim..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "kateri program naj uporabim za backup celotnega windowsa na drugi disk  v primeru napake, da ne morem prit v windows da si rešim zadevo  lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ta filozofija je praviloma preteklost. Ce zelis to delati konkretno bos za cel windows delal verzije, ker naceloma lahko sistem naredi tudi backup zaklenjenega. Danes se to najceneje resuje s sinhronizacijo recimo v OneDrive, kjer imas revert za vse spremembe do enega meseca nazaj.  Ce iz kaksnega cudnega razloga potem izgubis dostop, recimo da ti virus zakodira vse datoteke, backupe itn., potem gres na stran od OneDrive, revertas vse dan nazaj. Na novo nalozis Winse, kar je dandanes rutisnko enostvatno, skonektas nazaj OneDrive in zadeve se ti sinhhronizirajo nazaj.   Vse ostalo je znanost.  Mimogrede Office 365 dajem jaz za 6 licenc 70€ letno. Vsaka ima 1TB OneDrive. Zna biti cenejsa opcija.  https://www.amazon.de/Microsoft-multili..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "RPI4 + usb disk in URBACKUP. Ti bo samo delalo image diska in še backup-e datotek če nastaviš. Dela zanesljivo. Boljše je seveda server, vendar tudi z RPI dela b.p. Samo malo bolj počasi."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Veeam Backup Agent Free.  Top zadeva, nima nobenih quirkov."
+    },
+    {
+        "role": "assistant_5",
+        "message": "za podatke že imam jaz rabim celoten windows, ker mi izpiše napako ob startup in da imam  celoten windows shranjen kot backup  možnost je tudi na zunanji disk"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ghost ali Acronis"
+    },
+    {
+        "role": "assistant_5",
+        "message": "če na zunanjem disku spremenim disk iz MBR v GPT a bom pri tem izgubil podatke? z EaseUS partiton master se da. uredil. edit:"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Jaz uporabljam Acronis backup, ni pa free."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Zgoraj omenjeni Veeam zna delati diferencialni backup celega računalnika ali posameznih map. Dela na lokalni disk, mrežni disk, USB (lahko naredi avtomatsko backup, ko ga vštekaš, in ga potem izvrže, da ga morebitni virusi ne najdejo), redno dela health check, zna narediti bare metal restore (tudi na drugačen hw) ..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "+1 za Veeam free"
+    },
+    {
+        "role": "assistant_5",
+        "message": "bom probal še ostale programe  a je ker program ki bi omogočal, da imaš celotno kopijo windowsa ali pa da bi imel samo, da dam windows na novo ostale stvari programi + driverji pa bi bila celotna kopija  z EaseUS Todo backup je ok program, uporablja kdo  vsakič ko se pokaže error pred naloženim windowsem ne pomaga nobeno varnostno kopiranje u windowsih niti obnovitev sistema, ne ostali programi in moram na novo dat windows"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Paragon je tudi free za zasebno rabo"
+    },
+    {
+        "role": "assistant_8",
+        "message": "A si prebral, kar smo ti napisali?  Pa mimogrede, če večkrat dobivaš napake in moraš ponovno nalagati sistem, potem imaš problem nekje drugje in je dobro, da bi ga tam rešil ..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "+1 za Veeam"
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_6 je 2. sep 2020 ob 07:28 izjavil: Ce iz kaksnega cudnega razloga potem izgubis dostop, recimo da ti virus zakodira vse datoteke, backupe itn., potem gres na stran od OneDrive, revertas vse dan nazaj. Na novo nalozis Winse, kar je dandanes rutisnko enostvatno, skonektas nazaj OneDrive in zadeve se ti sinhhronizirajo nazaj.    To deluje tudi za aplikacije? Register in podobno?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "ker je dober program za backup windows, če se sesuje da deluje backup"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Acronis True Image in njemu podobni."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Jaz imam vse aplikacije na ključku (narejen z Ventoy 1.0.46 aplikacijo (novejši imajo bug, ne deluje setup win_11, ne naloži nekega gonilnika)):  1. Parted Magic (2021.10.18 - ni free 2. RedoRescue prejšnji RedoBackup (3.0.2) (štirica ima probleme)  3. in isote Windows 11, Mint."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Z Veeam imam zdaj neke probleme. Začel je javljati razne napake, nekaj sem sicer izklapljal razna preverjanja v registru, ampak pod črto - stalno se pojavljajo neke nove napake. Program je postal nezanesljiv za backup preko omrežja.  Kakšen nasvet, s čim bi ga zamenjal?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "js uporabljam en custom batch file+robocopy Poleg mogoče še dodaš blat za pošiljanje emailov, npr. da ti pošlje log file. Dodaš v task scheduler in je to to. Lahko pa preko vbs skripte skriješ da ti ne prikazuje cmd okna. Mogoče narediš še skripto, da ti preverja ali je NAS/share online, če že nimaš, drugače če nima kam kopirat bo vse skup bolj kilavo.  @echo off for /f \"tokens=1-3 delims=/ \" %%a in ('date /t') do ( set _date=%%a%%b%%c )    robocopy C:\\whatever D:\\whatever /log:C:\\Users\\zxy\\Desktop\\log\\whatever_%_date%.txt /maxage:30 /S /xf *.zip /ndl /nc /ns /r:2 /w:3 /MT:32 /tee"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Hmm, zdaj sem poskusil Paragon in je tudi crknil sredi dela - je pa javil: Windows specific error (59(: An unxpected network error occured"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Kakšne napake javlja Veeam?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "shared memory connection was closed. failed to upload disk. agent failed to process  unable to perform treshold check for location failed to query backup repository disk space  Pa še nekaj, ampak nimam Windows mašine pri sebi sedaj.  Delam pa full backup preko Wifija..."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Škoda ker ntbackup ne deluje več. Sem pa imel sedaj primer; odpoved SSD diska, backup je imel nastavljen preko wifija na qnap mrežni disk, potem so pa vmes enkrat prišli T2jevci in mu obstoječ wifi priklopil preko WAN port na nov router. Rezultat; imel je dva wifija na različnih subnetih in brez routinga vmes oz. čist ločena mreža, backup pa ni več deloval, ker se je laptop povezoval na nov wifi, nekajkrat vmes pa tudi na starega, tako da je ostal brez podatkov, oziroma ima sam pa tja kakšno datoteko. Clusterfack in motion."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Dober Windows backup program podoben Acronis-u?"
+    }
+]

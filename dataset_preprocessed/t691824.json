@@ -1,0 +1,198 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, kot prvo ne vem, ce sem odprl temo na pravem mestu.... moj problem je sledec: sem telekomov narocnik, imam innbox v60, kateri mi sluzi samo za prehod, ker imam potem se asus router rt-ac3200 za njim, kateri vzpostavlja povezavo.na asus routerju je namescen tudi udpxy...iz innboxa imam speljana dva kabla v router, eden je data in drugi video...vse lepo in prav, ampak ko sta kabla povezana pri innboxu zacnejo utripati vse lucke in potem je vse neuporabno....v routerju nimam kaj vec prenastaviti, verjetno pa tudi v innboxu...ali je ze kdo imel podobne izkusnje in kako se jih da resiti?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na modemu se sproži loop detection mehanizem ker modem vidi na dveh ethernet portih enak MAC naslov tvojega router-ja. Ni nobene potrebe, da voziš iz modema na router 2 ločena kabla. V modemu nastavi en port na TRUNK in boš imel notri tako internet kot tudi video promet (video je tagiran vlan 3999).  lp"
+    },
+    {
+        "role": "user",
+        "message": "tudi to sem ze poskusil pa potem dobim samo internet, video signala pa udpxy ne vidi?"
+    },
+    {
+        "role": "user",
+        "message": "ali ima kdo na tem forumu instaliran udpxy na routerju, da gleda iptv preko njega in da je telekomov narocnik? rad bi vedel na katerem routerju, firmware routerja in seveda postopek nastavitev?"
+    },
+    {
+        "role": "user",
+        "message": "Izgleda da ni tukaj nobenega siolovca z udpxy na routerju?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "če imaš zadnjo verzijo Toastman-ovega Tomata udpxy je že gor, za naprej ti nemorem pomagat ker sm na T2"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Vinko, ne vem kako pričakuješ, da ti bo kdo podal kako rešitev. Ko ti na kakšnem drugem forumu podam komentar, s čem poskusi potem tam kar naenkrat izgineš in se pojaviš na drugi spletni strani z istim vprašanjem... Menda je to sedaj že tretji forum kjer si postavil isto vprašanje.  http://forumi.siol.net/showthread.php?t...  Kot bob ob steno..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sicer pa vsak router, na katerem deluje OpenWRT z omogočenim UDPXY. Sem šel pravkar namerno preizkusit, če še zmeraj dela, ker nimam tega nastavljenega pri sebi. Internet vzpostavlja router, kabel iz DATA v WAN. In iz VIDEO v LAN.  Še boljša varianta bi bila, če bi spravil TRUNK port čez WAN in bi uspel UDPXY nastaviti, da pobira na TRUNK portu in pošilja na BRIDGE. Vendar nimam več SIOLa, da bi te zadeve preveril. Zgoraj opisana pa vsekakor deluje."
+    },
+    {
+        "role": "user",
+        "message": "zakaj postavljam isto vprasanje na razlicnih forumih?odgovor je preprost....samo z besedami ne morem resiti mojega problema...potrebujem prava navodila od nekoga, kateri ima to ze pravilno nastavljeno in da deluje...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ko je pa zadeva že X krat opisana in pojasnjena. Ravnotako ne posreduješ nobenih detajlov svoje trenutne konfiguracije, zgolj nek površen opis, kar je premalo za reševanje kakršnekoli težave.  http://uross-digital-tools.appspot.com/..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Npr. napisal si, da imaš povezana DATA in VIDEO med Modemom in Routerjem, manjka pa podatek kaj je kam priklopljeno Torej ali je Data priklopljen v LAN ali v WAN? VIDEO je zagotovo v LAN.  In dokler ne boš uspel ASUSu dopovedati, da mora iskati Multicast na bridge oz LAN delu in ne na WAN (kot to deluje pri T2) ti zadeva ne bo delala. Ravno zato je z OpenWRT lažje, ker lahko vse nastaviš. Dovolj je že praktično najcenejši TpLink, ki dobro podpira OpenWRT pa je težava rešena."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Vinko, trunk port nastavi na Innboxu in pripelji naprej do Asusa. Tam bos bos dobil dva vlana - en (data) bo netagiran, drugi (video) pa bo tagiran s 3999. V video vlanu imaš potem multicast grupe, kjer ob joinu dobis ustrezen udp video stream."
+    },
+    {
+        "role": "assistant_2",
+        "message": "On mora v tem primeru nastaviti, da mu bo UDPXY pobiral multicast iz VLANa 3999. Kako se to nastavi pa nihče natančno ne ve.  Tako to izgleda na OpenWRT    OpenWRT UDPXY"
+    },
+    {
+        "role": "assistant_3",
+        "message": "VLAN tag je treba umaknit najprej. Torej na Asusu interfacu kjer sprejema promet mora obstajat ethX.3999 al kakršno koli poimenovanje ima tam. Od tam naprej pa običan routing."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Hvala za te informacije. To znanje tudi meni primanjkuje. Torej na WAN pripelješ VLAN3999 in ga od tam naprej nastaviš kot untagged da pride v bridge LAN dela?  Bi se dalo to nastaviti, da bi Multicast promet prišel zgolj do UDPXY in ne bi videl vseh MAC naslovov v omrežju? Sam sem to svojčas rešil tako, da sem v omrežje dodal še eno napravo, ki ni bila na istem LANu kot vse ostale naprave (Torej če je LAN na 192.168.0.1 je bila naprava na 192.168.1.1 naslovem prostoru) in jo potem uspel nekako na Mikrotiku dodati v omrežje. To pa sem moral narediti zato, ker ima Telekom omejitev števila MAC naslovov za IPTV na menda nekje 12 naslovov in ko se ti vse naprave v tvojem omrežju pojavijo na tej listi BOX kar naenkrat ne dobi več IP naslova in ne pokaže slike. Timeout pa je menda 24 ur."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ja, odstraniš tag in pripelješ naprej. Ta rešitev z ekstra napravo je čist legit, če nimaš že vmes sposobnosti nekega filteringa. Kolikor vem se omejuje št. MAC naslovov ne glede na VLAN. Meni recimo ni deloval PPPoE po tem ko sem neke virtualke schredal in ponovno kloniral z MAC re-initom."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sposobnosti bi morda še bile, znanja kako jih nastaviti pa zelo primanjkuje. Ravno razmišljam, kako bi pri znancih, ki se selijo na SIOL nastavil TRUNK na WAN port in potem UDPXY v OpenWRT routerju, da ne bi rabili BOXa na vsakem ekranu. Seveda, bi moral UDPXY nekako ločiti od ostalega omrežja.   Razmišljal sem, če bi morda šlo tudi tako, da en LAN port ločim iz bridga in vanj pripeljem VIDEO kabel, ter tam ustvarim ločen bridge in UDPXY na njem, potem pa dodam bridge tako, da bi promet tekel med njima a iz Telekomove strani se ne bi videle druge naprave kot BOXi in UDPXY.  Vzame pa to kar dosti časa, če ne veš točno kako :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ok, sedaj sem dal port, kamor pride VIDEO kabel v OpenWRT switchu na OFF (trenutno nimam možnosti fizičnega izklopa ker nisem na lokaciji), na WANu ustvaril TAGGED vlan 3999, ki je TAGGED tudi pri CPU in pri nobenem drugem portu (nimam STB priklopljenega na router). Potem sem pri INTERFACES dodal nov interface poimenovan IPTV, ga vezal na vlan eth0.3999 in mu določil nek statični ip, ki je v drugem območju, kot je ip rang ostalega omrežja. Nato sem pri UDPXY zgolj spremenil interface na katerem posluša na eth0.3999 in zadeva dela :) Odlična zadeva ti VLANi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "*GOLFCLAP* :D"
+    },
+    {
+        "role": "user",
+        "message": "za moj asus ni openwrt firmwareja pa tako ne morem nic....pri tem asuswrt-merlin fork pa nima nobenih takih nastavitev o tem kar mi svetujeta....jaz bi najrajsi videl, da mi nekdo nabavi nekako najboljsi router, skonfiguriran tako kot mora biti...jaz pridem iskat, placam in to je to....je kdo pripravljen to narediti zame?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Asus to ima ze nekaj let, enim to uspe nastavit, meni ni. Pol sem si pa mislil, zakaj hudica bi si kompliciral zivljenje in sem zadevo resil najbolj preprosto. Dela in zelo lahko je resevat morebitne (zelo redke) tezave. Tale iptv preko routerja je samo zguba casa in zivcev."
+    },
+    {
+        "role": "user",
+        "message": "sem nasel med starimi sarami en TL-WR841N router. vidim da ta router ima moznost za openwrt firmware, ampak ne vem kateri firmware je pravi?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Katera verzija je router? Piše na nalepki."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 26. jan 2017 ob 10:28 izjavil:Katera verzija je router? Piše na nalepki.  sem nasel, verzija je 9....ze nalozil, ampak nisem zasledil nic okrog udpxy gor?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zgoraj imaš v meniju opcijo Software. Tam osveži in si poišči med paketki Udpxy luci.   Priporočam, da izklopiš routing funkcije in ga v omrežju uporabiš zgolj kot dostopno točko ali celo samo udpxy server."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Sam sem na gargolye kateri je pač samo vmesnik za openwrt naštimal po teh navodilih in dela vredu. http://xmtvplayer.com/forums/topic/iptv..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 26. jan 2017 ob 11:02 izjavil:Zgoraj imaš v meniju opcijo Software. Tam osveži in si poišči med paketki Udpxy luci.   Priporočam, da izklopiš routing funkcije in ga v omrežju uporabiš zgolj kot dostopno točko ali celo samo udpxy server.   nic ni pod software....izgleda da ta router, oziroma edini firmware Barrier Breaker 14.07 za njega to ne podpira.....ceprav vidim da je udpxy startal, ampak nimam nobenih nastavitev do njega.....  hu Jan 26 10:16:06 2017 kern.info kernel: [   20.500000] IPv6: ADDRCONF(NETDEV_CHANGE): br-lan: link becomes ready\nThu Jan 26 10:16:06 2017 user.notice firewall: Reloading firewall due to ifup of lan (br-lan)\nThu Jan 26 10:16:06 2017 authpriv.warn dropbear[804]: Failed listening on '22': Error listening: Cannot assign requested address\nThu Jan 26 10:16:06 2017 authpriv.info dropbear[804]: Not backgrounding\nThu Jan 26 10:16:07 2017 local0.notice udpxy[904]: udpxy 1.0-23.9 (prod) standard [Linux 3.10.49 mips] is starting\nThu Jan 26 10:16:07 2017 kern.info kernel: [   22.110000] IPv6: ADDRCONF(NETDEV_UP): wlan0: link is not ready\nThu Jan 26 10:16:07 2017 kern.info kernel: [   22.120000] device wlan0 entered promiscuous mode\nThu Jan 26 10:16:07 2017 kern.info kernel: [   22.160000] br-lan: port 2(wlan0) entered forwarding state\nThu Jan 26 10:16:07 2017 kern.info kernel: [   22.160000] br-lan: port 2(wlan0) entered forwarding state\nThu Jan 26 10:16:07 2017 kern.info kernel: [   22.170000] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready\nThu Jan 26 10:16:08 2017 kern.info kernel: [   22.400000] br-lan: port 1(eth0) entered forwarding state"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Je kaka varianta, da ga priklopiš v omrežje, in narediš preusmeritev nanj, da pogledam? Potem mi to napiši v ZS. Si osvežil listo paketkov?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 26. jan 2017 ob 11:44 izjavil:Je kaka varianta, da ga priklopiš v omrežje, in narediš preusmeritev nanj, da pogledam? Potem mi to napiši v ZS. Si osvežil listo paketkov?  ce imas teamviewer bi sam najlaze videl kako in kaj?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Imam, pošlji mi na ZS podatke.  Najnovejši firmware za ta router je sicer Chaos Calmer, bolje bi bilo, če bi namestil tega.  https://downloads.openwrt.org/chaos_cal..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Kaksne procesorje imajo ti novi ruteri? Ker ko je siol zacel sibati te HD kanale mi in jaz hotel servirati dve istocasni seji je moj netgear 3500l ze poklekno pod udpxy. Zato sem raje opusto in zacel uporabljati PC server bodisi onega slvoenskega ali pa ruskega. Potem pa je siol presel iz udp na rtp in sem spet moral uporabljati udpxy ker je edini znal prebrati zadevo. Te pa zaj ubuntu server virtualko na windows 10 always on pcju poganjam in je dosti mocnejsa kot moj stari rutar."
+    },
+    {
+        "role": "assistant_2",
+        "message": "To si preizkušal z Optičnimi HDji ali tistimi za baker?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "udpxy ne že skoraj nič. igmproxy naredi skoraj vse delo. Ta pa mora biti na vredu routerju. Priporočam 1043nd v2 , tam dela super. Ali pa kaj močnejšega. Sam imam UBIQUITI Edge ER-X in laufa solidno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če se kdo bolj razume v samo delovanje UDPXY, v primeru, da se na stream preko UDPXY naročita 2 različna odjemalca ali na strani operaterja vidijo vsak MAC odjemalca posebej ali vidijo zgolj MAC, na katerem deluje UDPXY in izgleda kot da je le ta zahteval dva streama?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_2 je 27. jan 2017 ob 11:10 izjavil:To si preizkušal z Optičnimi HDji ali tistimi za baker?   opičnimi"
+    },
+    {
+        "role": "user",
+        "message": "s forumasem @assistant_2om sve danes nekako postavila sistem....kombinacija innbox-asus-tp-link....trenutno udpxy lepo deluje, drzim pesti da se mi ne bo internet vec sesuval....sedaj pa imam novo vprasanje...iptv v domacem lokalnem omrezju deluje preko wifi na vseh napravah kar jih imam....preko openvpn ali zunanjega IP pa iptv ne deluje....sedaj ne vem kaj se se kje nastavi, prenastavi v asusu ali tp-linku, da bi signal sel cez? to mi je pomembno, ker na drugi lokaciji v vasi potrebujem dostop do IPTV..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ti preko OpenVPN dela dostop do ostalih naprav v omrežju? Poskusi dostopati do TpLinka. Če ne gre je treba urediti routing pri OpenVPN."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sem šel pravkar preverit in mi dela preko OpenVPN in UDPXY naenkrat, je pa vse na enem TpLinku 1043ND."
+    },
+    {
+        "role": "user",
+        "message": "deluje sedaj tudi pri meni preko openvpn...najbolj vazno mi je sedaj da bi to vse stabilno delovalo..., da ne bi bilo kakih prekinitev....bom videl v logu kaj se bo dogajalo cez noc....drugace pa moramo se ugotovit kako do udpxy lahko dostopam izrecno z enega IP naslova...vsi ostali IP pa so blokirane...ce bi bil udpxy na asusu vem kako se to naredi...na openwrt pa ne poznam firewalla...upam da mi bo kdo od tukaj tudi to povedal..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Saj drugi ne morejo do UDPXY če nimaš forrwardiranih portov."
+    },
+    {
+        "role": "user",
+        "message": "vem da ne more nihce do njega....zato pa me zanima kaj se nastavi v openwrt...tudi v asus router ne morem preko openvpn....nekje se se mora nekaj nastaviti v openwrt....ajde malo precekirajte uporabniki openwrtja....jaz v enem dnevu nisem uspel razvozlati...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Žal mi tukaj res ni jasno, kaj sploh želiš doseči. Firewall na Asusu že sedaj preprečuje vsem dostop do UDPXY na TpLinku za Asusom, tudi tebi, zato pa ti uporabiš VPN, da ti zadeva dela. Na TpLinku ne rabiš nobenega firewalla, saj ni direktno povezan z zunanjim omrežjem. Firewall se nastavlja samo na Asusu, ker je on tisti, ki skrbi za usmerjanje prometa v internet in iz njega.  Kako to misliš, da ne moreš v Asus čez VPN. Če je VPN pravilno nastavljen ti mora delati dostop do vseh naprav v omrežju, tudi do Asusa in usmerjanje tvojega VPN internetnega prometa skozi Asus spet v internet. Je pa vse to opcijsko, lahko koristiš le eno ali drugo ali pa oboje.  OpenWRT nima tukaj nič z VPN omrežjem. Čisto nič ti tudi ne preprečuje, da si nastaviš VPN strežnik na kakšni drugi napravi v omrežju, vse mora delati. Sam imam denimo L2TP VPN nastavljen na Mikrotiku, OpenVPN pa na RaspberryPI, ki je tudi del lokalnega omrežja(obenem je tudi DNS strežnik). Preko obeh VPNov imam dostop do vseh naprav v omrežju in dostop do interneta preko domačega IP naslova."
+    },
+    {
+        "role": "user",
+        "message": "res ne gre s telefonom z openvpn v router...ne gre tudi v lokalnem domacem omrezju?no, bom(o) ze neko pogruntali zakaj ne gre...najbolj vazna je seveda stabilnost, brez padanja povezave....to si najbolj zelim...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kot že omenjeno nekaj imaš narobe nastavljeno pri OpenVPN konfiguraciji. Imaš označeno opcijo \"Push LAN to clients\" v OpenVPN konfiguraciji?  Če bo še zmeraj padal net sem našel še eno opcijo za poskusiti. In sicer tole:  https://www.snbforums.com/attachments/s...  Torej Tplink-u prestaviš IP na 192.168.20.100, vse ostalo ostane isto. Potem pa v Asusu na tej strani kjer je routing dodaš še subnet 192.168.20.0, 255.255.255.0, 192.168.10.1. Bi pa znalo potem biti spet nekaj težav z delovanjem UDPXY preko VPN, ker bo treba dodati rute v konfiguracijo (predvidevam). S tem bi multicast stream ostal v 192.168.20.0 omrežju, UDPXY pa bi še zmeraj moral delovati tudi v omrežju 192.168.10.0. Tako sem imel sam svojčas nastavljeno ampak med Mikrotikom in TpLinkom."
+    },
+    {
+        "role": "user",
+        "message": "moram napisati, da po dvajsetih urah uptime nisem zasledil padec interneta....vsaj v logih asusa in tp-linka ni nic zabelezeno....bom spremljal se naprej....sedaj se je tudi openvpn nekako pobral in deluje z vseh mrez, katere sem lahko testiral....ce vse skupaj takole ostane bom zelo zadovoljen...."
+    },
+    {
+        "role": "user",
+        "message": "tri dni uptime brez problemov zaenkrat....internet in iptv delujeta stabilno...mogoce pa bo sedaj vse ok, ceprav se mi je tp-link enkrat restartal, ker uptime v njemu je en dan in 18 ur....ne vem pa zakaj se je...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Vroče mu je, ker preveč gledaš TV :)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 30. jan 2017 ob 18:20 izjavil:Vroče mu je, ker preveč gledaš TV :)  hehehe, ne, televizijo se gleda za kak dober nogomet....je pa res da radio preko udpxy igra nonstop....mogoce ne bi bilo slabo da si umislim 1043 tp-link, ker tale mali 841 mogoce res ni sposoben kakih naporov....samo bi mogu dobit v3, ker v4 se nima podpore za openwrt....se najbolje pa bi bilo, da dobim podporo openwrt za moj asus....to bi bila top kombinacija, ampak to verjetno nikoli ne bo mozno...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa tudi malo bolj bi se namučil, ko bi skušal na OpenWRT postaviti OpenVPN. Ni tako avtomatizirano kot na Asusu :)"
+    }
+]

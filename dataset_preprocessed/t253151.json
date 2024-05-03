@@ -1,0 +1,86 @@
+[
+    {
+        "role": "user",
+        "message": "Oj,  gledam kako je urejena el. napeljava za eno luč v hiši, ki se jo regulira s stikalom, pa imam naslednje eksperimentalne podatke:  - Ko je stikalo v \"vklopljeno\" (luč gori), preizkuševalec napetosti gori na samo eni zički pri luči (OK), - Ko je stikalo \"izklopljeno\" (luč ne dela), preizkuševalec gori pri obeh žičkah (namesti pri nobeni)  Stikalo prekinja samo eno žičko (vmesne napeljave ne vidim, ker je v steni).  Kolikor jaz (srednješolsko) razumem elektriko, napetost na eni žici oscilira, na drugi pa je konstantna (0). Jasno mi je, zakaj luč ne gori, če sta živi obe žici (ker ni razlike v potencialih).  Sklepam torej, da sta obe žički pri luči živi, le da je ena prekinjana. Jasno mi je, zakaj luč ne dela, če je stikalo sklenjeno, ni mi pa jasno, kako to da dela, če stikalo ni sklenjeno. Potem je ena žička živa, druga pa je \"odrezan\" kabel samo do stikala?! :/  Zelo bi bil vesel, če bi kakemu ekspertu dalo razložiti zadevo.  lp, Jaka"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Po tem kar si napisal sumim da gre direkt na luč faza. Preko stikala gre pa nula. Probaj odstraniti žarnico."
+    },
+    {
+        "role": "user",
+        "message": "Kako to misliš, da naj probam odstranit žarnico? Saj sem jo, da sem pogledal s preizkuševalcem.  Če gre preko stikala nula, kako potem, da pri enem od stanj stikala preizkuševalec posveti na obeh žicah?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če si prav meril (da se nisi dvakrat pomotoma dotaknil faze) je to res en čudn primer."
+    },
+    {
+        "role": "user",
+        "message": "Ja, meril sem/merim prav..."
+    },
+    {
+        "role": "user",
+        "message": "Dodatna ugotovitev: pri tisti od žičk, na katero vpliva stikalo, preizkuševalec sveti šibkeje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Še bolj čudno? Kolk je pa stara napeljava/hiša."
+    },
+    {
+        "role": "user",
+        "message": "Hiša je stara 20 let :/"
+    },
+    {
+        "role": "assistant_2",
+        "message": "na elektro faksu smo temu rekli indukcija... čisto normalen pojav. Zaradi obsežne instalacije lahko nastane dovolj velik potencial na N vodniku glede na zemljo ( tebe, ki držiš preizkuševalnik) , da tlivka zasveti. Če bi se še z eno roko dotaknil še zidu, bi moral še bolj zasvetit ( manjša upornost=večji tok)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Moje mišljenje: 1. Vse kaže da je stikalo zmontirano na \"nuli\". 2. Hiša je daleč od trafo postaje in \"nula\" ni več nič voltov, ampak je na kakšnih 20+ voltov. 3. Imaš preobčutljivo probirko ki ti teh 20+ voltov pokaže. 4. Preveri kakšno vtičnico. Če ti probirka sveti na nuli in na fazi, je to to."
+    },
+    {
+        "role": "user",
+        "message": "V vtičnici sveti samo pri eni žici, pri drugi popolnoma nič"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Jaz bi tudi glasoval za to, da odklaplja nulo namesto fazo.  Pač ko je stikalo vklopljeno je na eni \"žički\" nula, zato ti tam ne sveti. Ko pa stikalo ni vklopljeno druga žička nima nule in nekje plava.  Zadevo je dobro prevezati (sploh če imaš lučko s kovinskim ohišjem, saj boš v takem primeru verjetno imel fazo na ohišju, jar ni fanj, če menjavaš žarnico in se primeš za ohišje (podoben primer sem imel jaz, s fazo na ohišju, ne s prijemanjem ohišja).  Če ne veš kako tega ne delaj sam. Tukaj nihče ne prevzema odgovornosti, v kolikor se ti kaj zgodi ko boš tam kaj šlatal.   Zadeva bi morala biti vezana tako, da ko je stikalo ugasnjeno ni napetosti da \"faznbrifr\" ne sveti nikjer.  Še enkrat, če nisi vešč, ne delaj tega sam."
+    },
+    {
+        "role": "user",
+        "message": "Ok, ampak kot sem že vprašal, kako to pojasni, da pri enem od stanj stikala preizkuševalec posveti na obeh žicah?  Je lahko vzrok indukcija, kljub temu, da pri vtičnici preizkuševalec posveti samo na eni žici?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vzrok je indukcija! Na luči imaš priklopljeno stalno ''fazo'', ničelni vodnik pa je speljan preko stikala! Ko je stikalo vklopljeno je na tem vodniku zares ničla in luč sveti, ko pa ga izklopiš pa ta vodnik nima določenega potenciala in ker do luči teče ob faznem, se v njem inducira napetost! Zato preizkuševalec toka sicer sveti, ampak če se ga pa z roko dotakneš pa ne bo nič! Razen če se seveda napačnega dotakneš!    V vtičnici pa je ničla zares ničla in ni vezana preko stikala, zato tam preizkuševalec toka nikoli ne sveti!"
+    },
+    {
+        "role": "user",
+        "message": "Ok, makes sense. Najlepša hvala vsem!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Če nisi prepričan, katera žica je pod fazo, je edini pravi način, da to ugotoviš, meritev z voltmetrom, vezanim proti ničli. Tudi preizkuševalci napetosti, kakršnega uporabljaš (izgleda kot izvijač), med električarji niso več v uporabi. Uporabljajo pa se preizkuševalci, ki imajo dva kontakta, od katerih se eden veže na ničlo.   Edino mesto, kjer je navaden fazni preizkuševalec še uporaben, je omarica z varovalkami. Če pa šariš po inštalacijah, ti ga odsvetujem."
+    },
+    {
+        "role": "assistant_7",
+        "message": "1) Fazn prifer ni preizkuševalec toka 2) Indukcija deluje samo ko tečejo toki. Tako da težko govoriš da je to posledica točno tiste kabla v katerem tok takrat sploh ne teče. 3) Ko je žarnica zašraufana notri se preko nje vrne faza do stikala. Nariši si shemo pa bo ti vse jasno. 4) Ko je brez žarnice dobiš uporovni delilnik. Enkart fasunga drugič stikalo. Če je oboje slabo lahko komot na kablu kaj izmeriš z faznpriferom. Pa tudi z unimerom boš izmeril neko napetost. Ko pa boš ga bremenil pa bo šla na 0."
+    },
+    {
+        "role": "assistant_8",
+        "message": "O.K. vidim, da si dobr štromar, a o starih bajtah nimaš pojma!  Tudi sam sem v tem fohu, a so se v tej bajti, kamor smo se preselili, dogajali podobni čudeži.  SLABA INŠTALACIJA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Odkar sem jo menjal po celotni hiši, nimam več teh čudnih pojavov. Iz tega sledi: z leti je inštalacija izgubila svojo upornost in je rahlo začela prebijat. Tu tečejo izjemno majhni tokovi, ki jih \"faznpriferji\" znajo pokazat.  Zdj me bo edn verjetn butast vprašal: \"Inštalacija izgubi upornost?\" Ja! Za hitri prikaz tega, kar se dogaja z inštalacijami v starih hišah:  - izberite izoliran vodnikt - odstranite le na eni strani izolacijo, kamor boste priključili fazo - druga stran naj ostane izolirana ali celo dodatno zaščitena, da vodnik ne pride v stik s čemerkoli - del izoliranega vodnika segrevajte do te meje, da začne spreminjati barvo (proces oglenjenja) - tu gre za prikaz, ko se vodniki med uporabo rahlo segrevajo in z leti pridobivajo na prevodnosti (predvsem velja za starejše tipe vodnikov, ker so današnji narejeni čisto drugače: druge primesi v materialih izolacije, drugačne razporeditve žic,...) - priklopite na fazo v omrežju - izolacija na toplotno obdelanem delu vodnika prebija!!!!!!! kar je možmo preveriti tudi s \"faznpriferjem\"  AMPAK!!!!!!! ODSVETUJEM TA POIZKUS, SAJ JE OPRAVKA Z OMREŽNO NAPETOSTJO, KI JE SMRTNO NEVARNA!!!  Malce še za tiste, ki vedo bolj malo o elektriki:  - z leti je potrebno vso inštalacijo v izredno starih hišah menjat (predavanje 1. letnika elektro šole in mislim, da tudi nekaj zakonov omenja to - slednje nisem prepričan) - s termično obdelavo izolatorjev lahko dosežemo, da izolatorji z izredno visoko upornostjo postanejo polprevodniki ali celo prevodniki - ELEKTRIKA JE KOT KURBA: DRAGA JE, PA ŠE PUSTI SE NE ŠLATAT (osebno sem skusil, ko sem prijel za oslabljeno izolacijo vodnika - zelo boleče izkušnje in HVALA ONEMU GOR, DA SEM ŠE DANES MED ŽIVIMI)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Eno je elektromagnetna indukcija, eno je influenca - elektrostatična indukcija. Kar \"je matralo\" OP-ja, je slednja, ki se pojavi ko se nevtralni prevodnik znajde v zunanjem električnem polju - v tem primeru el. polju faznega vodnika. Na takem prevodniku se prerazporedi naboj, ki je potem posledica napetosti na njem in to je tista majhna napetost, ki jo OP vidi s probirko, amplituda je odvisna od bližine vodnikov in dielektrika (v tem primeru obeh izolacij na žici in nekaj malega zraka vmes). Če hoče kdo biti pameten, si naj pogleda element z imenom kondenzator ali pa da eno žico 3-žilnega kabla v vtičnico in pogleda kaj se dogaja z drugima žicama.  Tega potenciala se seveda znebiš, ko tak vodnik neha \"plavat v luftu\" in ga zvežeš na nulo - v primeru da pa gre za menjalna stikala, pa se bo na enem izmed povezovalnih kablov med stikali to zmeraj dogajalo in je normalno."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Morda res izkljucuje nevtralni vodnik namesto faze. Ce v stikalu to spremeni, potem bi moral problem izginit?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Tako ja. OP preklaplja nulo, tista majhna napetost se mu pa pojavi zaradi polja faznega vodnika, ker je pri stikalu prevodnik kakor rečemo v žargonu \"plava\" - nič ga ne vleče na neki masovni potencial."
+    }
+]

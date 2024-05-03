@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Zakaj če slikaš z digitalnim fotoaparatom pri isti resoluciji, dobiš slike, ki različno veliko zasedejo? Pričakoval bi da bodo enako velike."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zato ker jpeg kompresija deluje različno za različne slike odvisno od kompleksnosti. Temna slika bo manjša kot svetla."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Poleg tega pa lahko ponavadi nastaviš tudi \"kvaliteto\" slike, ki v bistvu spremeni stopnjo kompresije. Velikost datoteke se z nižanjem kvalitete bistveno zmanjša."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če te to moti, pa lahko slikaš v raw mode (brez kompresije) pa bodo vse slike enako velike"
+    },
+    {
+        "role": "assistant_3",
+        "message": "fogi - zato, ker podatek za popolno črno sliko zavzame veliko manj prostora (all piksels = black... seveda je JPEG kompresija izražena v bolj matematičnih funkcijah ), kot če ja vsak piksel druge barve oz. odtenka le te. Se pravi, več podatkov, večja datoteka slike."
+    },
+    {
+        "role": "assistant_4",
+        "message": "kaj črna manj zavzame, kaj serete?  fora je v tem, da če boš recimo slikal nekaj v naravi pa bo dosti neba zraven ali pa ena bela stena, to pomeni da bo nekaj večji makroblokov priblizno enake barve, kar pomeni da boš za vse piksle v tistem makrobloku lahko porabil samo en opis (namesto vsakega piksla posebej), če boš pa imel zelo dinamično/razvejeno sliko, kot je recimo slika kake zelo drobne šaovnice.. takrat pa bo zavzet prostor dosti večji, saj ne moreš več delat tako veliki makroblokov."
+    },
+    {
+        "role": "assistant_5",
+        "message": "...ali povedano po domače: več ko bo pikslov iste barvne vrednosti, manjša bo velikost datoteke (fotografije)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "ali po domače ... bolj kot je črna slika, več je pikslov enake barve ... pri svetlih slikah je ponavadi več razločljivih barv ... zato so temnejše, črne slike običajno krajše kot svetlejše ..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "mogoče bi senitel razložil? njemu bi še najbolj zaupal kar se tega področja tiče.. no mogoče tudi tomas pozna jpeg algoritem."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kako deluje JPEG kompresija?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "na temle linku ne zvem nič novega. še najmanj pa to da bi se črna bolj kompresirala kot pa recimo bela, piše pa da se najbolje jpeg algoritem obnese pri slika narave (normalno, saj ni tolko stohastike)  ta pojav da bi se črna bolj skompresirala kot pa bela, se pojavi pri gifi ki poleg jpeg algoritma vsebujejo še neizgudni stiskalni algorite (aka zip)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Iz zgornjega linka je lepo razvidno kako kompresija JPEG deluje. Glede črne ali bele (pravzaprav katerekoli barve), vzamite poljuben foto program, naredite \"sliko\" v resoluciji 1024x768 enkrat v črni, drugič v beli (še v Red, Green in Blue)... zadevo posnamite v JPEG obliki in kaj dobite? Poleg dobrih testnih slikc za testiranje LCD monitorjev, še 5 skoraj identično velikih datotek. Skoraj zato, ker se razlikuje le definicija barve, vse ostalo je isto. Praktično datoteke na disku zavzamejo enako velikost. Če pa vas zanima razlika v definiciji barve, potem naredite slikco v različnih barvah veliko TOČNO EN SAM PIKSEL.  Keep it simple :)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Problem je v tem, čer če fotoaparan nima optičnega zooma pri največji resoluciji zajame manj pik in slika je manjša. Si probal na najmanjši ?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ja no vprasanje zakaj so nekatere slike skompresirane z JPG vecje druge manjse je lahko odgovorit... recimo zakaj 1 MB teksta skompresiranega z ZIP-om manj zasede kot 1 MB recimo MP3 file-a. Ce gres skozi postopek JPG kompresije vidis, da se kompresira s pomocjo RLL in s pomocjo Huffmanovega algoritma. Ta dva pa dajeta razlicne dolzine glede na kompleksnost podatkov. RLL enostavno zapise podatek glede na razliko od prejsnjega in ce je razlika prevelika podatek tudi vec zasede. Huffman pa glede na statistiko zapise podatek, ki se pojavi veckrat z manj biti kot podatek, ki se pojavi manj krat. Torej slika, ki je bolj kompleksna bo zasedla vec kot slika, ki je manj kompleksna.   Postopek kodiranja JPEG je pa naceloma tak:  - RGB se pretvori v YUV - to je sam po sebi skoraj loseless postopek, ki pretvori iz RGB barvnega prostora v YUV (lahko tudi drugega).. prednost tega formata je, da je Y komponenta prakticno crno bela slika, v ostalih dveh pa je zapisana barvna komponenta (isti algoritem kot pri televiziji, kjer lahko tudi z crno belo televizijo gledamo danasnje TV programe saj ne uposteva barvnih komponent). To pa naredimo zato ker cloveksko oko ni tako obcutljivo na barvne spremembe kot na spremembo luminence in zato lahko barvno komponento bolj skompresiramo in ne bo prislo do velikega popacenja.  - DCT ali Diskretna kosinusna transformacija - Uporablja se po navadi nad 8x8 piksli zato sliko razdelimo na 8x8 kvadrate. DCT prakticno pretvori ta delec slike v frekvencni prostor in je podobna transformacija kot DFT (lahko bi uporabli tudi DFT samo za slike je manj primerna transformacija). Iz 8x8 pikslov dobimo 8x8 frekvenc. Transformacija sama po sebi je tudi loseless.. le da v tem zapisu sedaj lahko bolj skompresiramo... recimo odrezemo nizje frekvence. Glede na to kje bomo rezali frekvence pa doloca ravno kaksno kvaliteto hocemo. DCT pa ze sam po sebi lahko skompresira sliko in sicer pri majhni kompleksnosti bo vecina clenov te DCT 0 in to izkoristimo in lahko kompresiramo z RLL.   - Kvantizacija - Doloca se po navadi kot standardna matrika 8x8. Clene te matrike delimo z cleni dobljene 8x8 DCT matrike. Tukaj se pa doloca ravno kako mocna bo kompresija in je korak, ki je najbolj lossy. Bolj clene zdelimo bolj bo slika manj zasedla.. slabse bo kvalitete. Tukaj tudi clene barvne komponente bolj zdelimo.   Do sem se prakticno ni bilo nic kompresirano.. le pretvarjali smo podatke. V tem koraku pa sedaj lahko dobljene podatke skompresiramo z uporabo RLL in Huffman in to zelo ucinkovito saj po tej pretvorbi bo vecina clenov 0 oz. razlike bodo majhne.   JPEG crno ne skompresira bolj kot belo.. enostaven poskus. V Paintu shransi cisto crno sliko... in cisto belo sliko. Rezultat? Obe sta enake velikosti. Da se pa bolj temna slike bolj skompresira kot bolj svetla je pa pomoje cista pomankljivost fotoaparata (in tudi cloveskega ocesa), ki pri slabsi svetlobi ne zajame tolko detajlov kot pri boljsi. Sam DCT je pa ravno obcutljiv najbolj na detajle oz. ostre robove. Zato se tudi slika na katero spustis kak blur algoritem manj zasede kot pa brez. (to nekateri uporabljajo prav tako pri kompresiji filma v MPEG 1/2/4, ki tudi temeljijo na DCT)  Zdaj se pa se oproscam ce sem slucajno napisal kaj nerazumljivo oz napacno ker sem vse pisal iz glave kolko vem o JPEG-u in kompresijah in nisem nikjer preveril ce je prav ali ne."
+    },
+    {
+        "role": "assistant_6",
+        "message": "ja .. sej to sm reku .. da so temnejše slike bolj enostavne, ker je manj jasno razločljivih barv gor, medtem ko je na normalno osvetljenih slikah več podrobnosti in je slika bolj kompleksna in več zasede ..  temnejše slike bodo pač vedno manj zasedle kot svetlejše .. razen, če gremo spet v skrajnost svetlosti .. kar pa se v običajnem življenju redko zgodi, če slikaš ljudi, stavbe ali naravo ..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "ne tega glede temnejši slik in svetlejši slik še dozdaj ni niče tako dobro razložil kot quikee.  tale tema bi bila za wikipedio.  quikee kaj pa je rll?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "RLL (Run Length Limited) oz znan tudi kot RLE (Run Length Encoding). Deluje pa tak da ce mas zaporedje enakih vrenosti recimo 3, 3, 3 ,3 jih zapise kot 4*3 torej 3 se ponovi 4 krat. To pride pri JPEG-u zelo prav glede na to, da ostane po DCT-ju in kvantizaciji v matriki zelo dosti 0."
+    }
+]

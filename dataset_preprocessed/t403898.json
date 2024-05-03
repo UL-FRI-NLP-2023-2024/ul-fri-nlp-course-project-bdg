@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo!  Imam en problem; furam WDS z dvema WRT54GL, DD-WRT v24 SP1. Strani se odpirajo z zamikom 5-10s, le redko zacne prenašati stran takoj. Prav tako prekine povezavo za kakšno sekundo na vsake 5-10min (balonček se pojavi kao uspešno si se povezal--ja a nisem ze bil povezan, halo?!). Oba routerja sem ze resetiral (30/30/30), probal z enim samim, jih zamenjal med sabo, probal z WEP/WPA2/brez WLAN security, z in brez MAC filtra. Vedno isto. Pomaga za hip, če disable-aš ter ponovno enable-aš wlan na laptopu, vendar kmalu (par minut) spet zacne biksati. Net je obicni siol 1mbit, ADSL. Probal direkt pppoe, dela ko šus. To je začelo srati pred kratkim, sedaj ko sem menjal routerja v WDSju, je bilo kaksen teden dni kul.  Kaksne ideje morda?  Hvala in lep pozdrav!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "poglej dns"
+    },
+    {
+        "role": "user",
+        "message": "DNS je prazen, tako kot je bil zadnje par let. Vpišem SIOLove za hec?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "za hec :) in kaj imas vpisano v notebooku za dns kaj ti rece resolve  pppoe ti lepo to nastavi nastavi tudi ti tako lepo pa bo delalo"
+    },
+    {
+        "role": "user",
+        "message": "Laufa preko DHCPja, nic ne vpisujem, lease je za 5 dni. DNS na laptop(ih) je router, ta pa ima PPPOE servis z modemom. In tako je to delovalo kar lep čas. Tako da dvomim da so DNSji, ker zadeva isto šteka oz. z zakasnitvijo odpira tudi web dostop do routerja (ki je v browser vpisan z IPjem)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "lahko imas dva dhcpja povej kako imas vpisana oba dns-a na obeh routerjih napisi kaj ti napise za dns na notebooku pa recimo se resolve ene adrese za hec :)"
+    },
+    {
+        "role": "user",
+        "message": "Drugi (slave router) v WDSju nema nista, je samo DHCP forwarder. Na obeh ni napisanih DNSov. Na laptopu je pa kot sem ti napisal, DNS nastavljen na primarni router (192.168.2.1). Ravno pingam, prilepim rezultat cez ene 15min, da vidis zadevo kako se obnasa. WAN in (W)LAN nista nic obremenjena, le ping."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kaj pa ce bi probal dat gor novejsi firmware ? Jaz imam sedaj Firmware: DD-WRT v24-sp2 (10/10/09) std"
+    },
+    {
+        "role": "user",
+        "message": "Ping statistics for 89.143.249.33:\n\nPackets: Sent = 748, Received = 727, Lost = 21 (2% loss),\nApproximate round trip times in milli-seconds:\nMinimum = 44ms, Maximum = 712ms, Average = 51ms  Evo statistika..S tem da se te izgubljeni pojavljajo na 30-50 pingov. Lahko probam, jutri če bo čas. Vendar moti me to, da je stvar delovala, sprememb pa ni bilo."
+    },
+    {
+        "role": "user",
+        "message": "Zadeva je tudi po nadgradnji na v24 SP2 (build 13064) enaka. Zamenjal sem še UTP med routerjem in modemom, seveda brez razlike. Kakšne nove ideje morda?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Probaj dat gor Tomatota namest dd-wrt."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Kaj pa če bi probal dat en računalnik direktno na modem in probat ping? Da najprej vidiš da čez modem gre ok."
+    },
+    {
+        "role": "user",
+        "message": "@user je 25. feb 2010 ob 21:15 izjavil:Probal direkt pppoe, dela ko šus.   Lahko probam Tomato, vendar mislim da je problem drugje. Trenutno sem na slave routerju (WDS), preko kabla, ta pa na master preko wifi-ja. In je manj štekanja, pa cca polovico manj neuspešnih pingov."
+    },
+    {
+        "role": "user",
+        "message": "Tomato gor, rabil nekaj časa da je WDS sploh zacel delat. Pa WPA2 ne dela oz. ne pusti uporabljat, using WPA instead. Trenutno dela, bistveno manj zgubljenih paketkov. Dopišem ko bo kaj novega."
+    },
+    {
+        "role": "user",
+        "message": "Pingal google in siol sočasno, izgubljenih 20 paketkov od dobrih 2000. Odprem FF, grem na par strani, se mi disconnecta. Parkratni refresh in izklop ter vklop wifi-ja šele pomaga. Tale tomato je za WDS slabši, wireless bridge mode pa sploh ne dela kot piše."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Preklopi za test na B only način wifija."
+    },
+    {
+        "role": "user",
+        "message": "Tudi to sem ze probaval. Trenutno sem na dd-wrt sp2, repeater bridge mode. Malo komplikacij, ampak končno deluje (bridge, za to kar me dejansko zeza še ne vem). Če si bo kdo delal podobno stvar z dvema ali več routerji, je na wiki-ju od ddwrtja lepo napisano. Edino kar ne boste našli je to, da mixed mode ne dela. Dela ali wpa tkip, ali pa wpa2 aes. WEP niti nisem probaval, ker jo je že povozil cajt. V primeru da nucate MAC filter je potrebno na master routerju vnest MAC naslov repeaterja.  Grem pingat in srfat, sporocim situacijo jutri."
+    },
+    {
+        "role": "user",
+        "message": "Drek. Dogaja se ista zgodba, vsak 20-30 ping je neuspesen, strani se nalagajo z zamikom."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Je kej novega glede rešitve opisanega problema. Namreč tudi sam sem se srečal s tem problemom in ga ne znam rešiti."
+    },
+    {
+        "role": "user",
+        "message": "Malce pozno, pa vseeno;  Master router: AP mode, Mixed (B+G), Bridged, WPA2 Personal AES, Channel 4 (ne default) Slave router: Repeater Bridge mode, ostalo vse enako Master routerju. Pod Virtual Interfaces (Basic zavihek) daš nov SSID(enable, disable, bridged).  Oba imata enak SSID. Dela since then."
+    }
+]

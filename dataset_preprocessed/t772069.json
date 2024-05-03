@@ -1,0 +1,102 @@
+[
+    {
+        "role": "user",
+        "message": "Dober večer,  imam sledeči problem.  Imam ASUS ROG GL752V prenosnik. Danes sem hotel na novo namestiti windows 10 pro(original) ampak je računalnik zelo počasen in laggy. Predtem, čeprav je bil cel zabasan ni bil tako neodziven in počasen. Zdaj sem oba diska ponovno sformatiral, še enkrat namestil windows preko usb, ki je narejen preko MS tool creator, tako da je legit, ni piratska kopija. Ko namestim windows, grem pod windows update, da mi posodobi vse gonilnike, potem še ročno namestim najnovejši gonilnik za grafično, intel hd 530 in gtx 960m in bi moglo bit to to. Tako pa se že po namizju vidi da je zelo počasen, čeprav je na 60hz nastavljen, power plan je na high performance, celo animacije in vse sem izklopil in ne pomaga. Z diskom(m.2) tudi ni nič narobe, sem preveril. Ima kdo kakšno idejo mogoče, kaj bi lahko bilo? Traja par sekund da mi odpre moj računalnik, koš, internet itd, miška ko jo premikaš se vidi kak je laggy da ne gre gladko kot je prej šlo, res sem čisto brez idej že, kaj bi lahko bilo?  hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "preveri frekvenco procesorja in dejansko hitrost ssdja. mogoce ti kaj throttla hitrosti na minimum."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Naloži Core Temp in GPU-Z, da vidiš temperature."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Oba diska? Na katerega si naložil windowse? Gonilniki za chipset?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 26. sep 2020 ob 21:14 izjavil:preveri frekvenco procesorja in dejansko hitrost ssdja. mogoce ti kaj throttla hitrosti na minimum.  hitrost je 3.5ghz, ssd pa je med testom bral 400-500mb/s  @assistant_1 je 26. sep 2020 ob 21:16 izjavil:Naloži Core Temp in GPU-Z, da vidiš temperature.   temperature so normalne pri cpu in gpu, se ne pregreva, tako da throttla tud ne  @assistant_2 je 26. sep 2020 ob 21:37 izjavil:Oba diska? Na katerega si naložil windowse? Gonilniki za chipset?   Normalno da na m.2, ampak prvo nisem formatiral D, potem pa sem si naredil backup in pri drugi inštalaciji oba sformatiral. So naloženi, ti novi, ki jih je same našlo. Na uradni Asus strani so 5 let stari, tako da nisem tistih nalagal. Sedaj sem še naredil defrag C diska, check disk, če bi slučajno kaki error bil da bi popravilo, ampak je vse ok. Tudi z driverpack solution sem probal, je namestilo par stvari, ampak je isto."
+    },
+    {
+        "role": "assistant_3",
+        "message": "BIOS je zadnji in pravilno nastavljen (AHCI)? Memtest je brez napak? Kaj pravi CrystalDiskInfo? Kaj pravi Intel Processor Diagnostic Tool?"
+    },
+    {
+        "role": "user",
+        "message": "naredil sem BIOS reset, je že prej bil nastavljen na uefi in AHCI, memtest je brez napak, intel processor diagnostic tool pravtako vse ok, vsepovsod pass, celega sem tudi razstavil in spihal, menjal termalno za vsak slučaj. HD tune ni našel nič, je vse ok, vsi sektorji ok. To so pa rezultati crystal disk marka, ali bi to znal biti problem?"
+    },
+    {
+        "role": "user",
+        "message": "Sem primerjal s SSDjem, ki je v namiznem. Čeprav je navaden SATA3, nek poceni kitajski shit, je dosti hitrejši od tega m2 sata od Samsunga, očitno problem leži v SSDju"
+    },
+    {
+        "role": "assistant_0",
+        "message": "kaj pa taskmanager, nabija kateri proces 100%?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 27. sep 2020 ob 14:32 izjavil:kaj pa taskmanager, nabija kateri proces 100%?   ne, procesor sedi na 1% v idle, očitno je problem v disku, ga bom menjal zvečer ko bom doma in javim. Vem da ni nvme ampak je sata m2, ampak vseeno, nisem si mislil da je tako slab/počasen in glede na to da je od samsunga."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja, možno res, da ssd crkuje."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 27. sep 2020 ob 13:52 izjavil:... To so pa rezultati crystal disk marka ... CrystalDiskInfo lahko marsikaj pove o stanju diska. Več o tem je na S.M.A.R.T @ Wikipedia."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Sem naletel na podoben primer, Asus prenosnik, ki je bil po posodobitvi na win 10 praktično neuporabljan 2 leti zaradi počasnega diska. Po namestitvi ustreznih chipset driverjev spet vse ok, ampak je treba na proizvajalčevo stran."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 28. sep 2020 ob 08:49 izjavil:Sem naletel na podoben primer, Asus prenosnik, ki je bil po posodobitvi na win 10 praktično neuporabljan 2 leti zaradi počasnega diska. Po namestitvi ustreznih chipset driverjev spet vse ok, ampak je treba na proizvajalčevo stran.   vsi driverji iz Asus strani so nameščeni, zdaj sem dal crucial mx500 noter in da vidim če bo kaj boljše."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz sem imel že ene dvakrat primer, da SSD enostavno ni delal hitro kot bi moral. Format, wipe in nato celo klon podatkov nazaj (torej niti ni bila čista nova inštalacija ampak čisto isti sistem in nastavitve nazaj)... in je spet bilo ok. Firmware je že bil zadnji... tko da... ne vem kaj ga je upočasnilo ampak format in podatki nazaj pa je bilo spet ok."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tudi sam imel nekoč podobne težave. Če se particije na disku ne poravnajo pravilno, je sistem počasen. Pomaga, če ga ponovno formatiraš."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Če se particije na disku ne poravnajo pravilno, je sistem počasen.  To misliš align partition https://www.partitionwizard.com/help/al... feature ?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "To je to.    @assistant_9 je 28. sep 2020 ob 19:59 izjavil:Če se particije na disku ne poravnajo pravilno, je sistem počasen.  To misliš align partition https://www.partitionwizard.com/help/al... feature ?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Po naložitvi windows 10 imaš še cel teden upgrade, dokler to ni dokončno bo zelo počasen"
+    },
+    {
+        "role": "assistant_0",
+        "message": "eh, to je bullshit, če maš ssd."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_10 je 30. sep 2020 ob 19:06 izjavil:Po naložitvi windows 10 imaš še cel teden upgrade, dokler to ni dokončno bo zelo počasen  Ne drži.  Prejšnji teden na 10 let star prenosnik z c2d p8600 (s hdd) naložil zadnji win10 (2004) x86 , iso dobil preko https://www.heidoc.net/joomla/technolog... in posnel na usb z rufusom (mbr). Sama namestitev je trajala 40 minut, nameščanje vseh updejtov cca 2.5 uri (win + office 2010).To je bilo to. Nato je bil prenosnik normalno uporaben."
+    },
+    {
+        "role": "assistant_0",
+        "message": "zakaj to počnete? Originale ISO in tool za peko usbja dobiš na uradni strani microsofta, zastonj."
+    },
+    {
+        "role": "assistant_11",
+        "message": "pa heidoc ima nenormalno velik iso napram originalu. zato tudi jaz raje uporabljam original iso. saj tudi ne vem, odkod razlika (skoraj 1 gb) in če imaš 2004 verzijo, je samih sistemskih updejtov bolj malo, mislim da manj kot deset."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Zadnja gradnja (build) je 19041.508?"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Ali ti je že uspelo rešiti težavo?  So bile težave prisotne že pred namestitvijo grafičnih gonilnikev?  Probaj z DDU odstranit oba grafična gonilnika. Z uradne ASUSove strani namesti samo intelov grafični gonilnik in preveri če deluje kot bi moralo. Če bo delovalo gladko ponovno zaženi računalnik in namesti še zadnji Nvidia gonilnik ter ponovno preveri.  Že večkrat naletel na podobno težavo od Win 7 dalje kjer sta 2 grafični kartici in ni bilo nobenega indikatorja da je z grafičnimi gonilniki kaj narobe."
+    }
+]

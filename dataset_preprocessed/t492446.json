@@ -1,0 +1,146 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  Nameravam narediti web server, kjer bi poskušal narediti (seveda za vajo) nekakšen prostor z bazami, ... kot pri shared hostingu. Imam na voljo starejši dokaj soliden računalnik (2,8 GHz proc., 1,5 GB RAM-a, disk okol 100 GB) in na njem bi vse skupaj postavil, s tem, da bi imel tudi grafično okolje, v primeru da želim kaj pogledati in napisati. Za začetek nameravam namestiti Xubuntu in kasneje nanj namestiti apache in mysql, seveda začasno. Rad bi, da je OS brezplačen in odprtokoden.  Kaj priporočate?  Hvala!  LP, @user"
+    },
+    {
+        "role": "assistant_0",
+        "message": "CentOS 6.0"
+    },
+    {
+        "role": "assistant_1",
+        "message": "+1 CentOS"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Windows 95 :)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ubuntu LTS"
+    },
+    {
+        "role": "user",
+        "message": "Hvala!  Na CentOS-u potem lahko nastavim tudi nek control panel, kot je to znano pri shared hostingu?   @user je 11. nov 2011 ob 15:00 izjavil:... Rad bi, da je OS brezplačen in odprtokoden.    @assistant_2 je 11. nov 2011 ob 15:13 izjavil:Windows 95 :)     LP, @user"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Da. Priporočam DirectAdmin, ki je cenovno ugoden in dovolj zmogljiv."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ubuntu server LTS + ISPConfig3"
+    },
+    {
+        "role": "user",
+        "message": "Hvala   Mislim, da se bom nekako raje odločil za Ubuntu LTS + ISPConfig. Zanima me, če je na server izdajo možno pravtako namestiti XFCE namizje? Zanima me še, če se za vse storitve v zvezi s serverjem da zapreti porte, da ni javno viden? (potreboval bi le za lokalno omrežje)  LP, @user"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Priporočam Debian!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ubuntu LTS ima 5 let supporta za strežnike, Debian pa 3. Ja, tudi na strežniku je možno namestit xfce. Lahko kar cel xubuntu desktop:  sudo apt-get install xubuntu-desktop  Še raje pa administriraj server iz oddaljenega računalnika. Na strežniku namestiš ssh server:  sudo apt-get install openssh-server  Na drugem računalniku pa vpišeš:  ssh -X uporabnik_na_strežniku@ip_strežnika ter vpišeš geslo uporabnika. Prijavljen si na strežnik.  Če bi nato rad, npr. brskal po mapah v grafičnem vmesniku, si naprej namestiš \"raziskovalec\". V ubuntu svetu je to nautilus:  sudo apt-get install nautilus  Nato ga iz oddaljenega računalnika zaženeš:  nautilus & in na oddaljenem računalniku se bo pokazalo okno nautilusa s katerim lahko brskaš po strežniku. *tisti & je tam zato, da se program zažene v ozadju in lahko konzolo še dalje uporabljaš."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zanima me še, če se za vse storitve v zvezi s serverjem da zapreti porte, da ni javno viden? (potreboval bi le za lokalno omrežje)  Se da. Poglej si ufw ukaz (Ubuntu firewall) če boš uporablja Ubuntu."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če te je tok v hlačah, da boš znal sistem skonfigurirat iz nule, potem je Arch super. Vedno imaš najnovejše verzije paketov, kot so PHP, apache ipd..."
+    },
+    {
+        "role": "user",
+        "message": "Ok, hvala za nasvete!  Povezovanje z oddaljenim namizjem sicer ne potrebujem, ker imam računalnik vključno z monitorjem poleg sebe. Je pa seveda dober nasvet, da takrat ko nimam vključenega monitorja.   @assistant_2 je 11. nov 2011 ob 17:52 izjavil:Če te je tok v hlačah, da boš znal sistem skonfigurirat iz nule, potem je Arch super. Vedno imaš najnovejše verzije paketov, kot so PHP, apache ipd...  Arch sem si že malce ogledoval, sicer ne za server ampak za desktop OS. Na \"server\" računalniku mu bom pa seveda dal priložnost, da vidim kako ga sploh namestiti, itd.  LP, @user"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_2 je 11. nov 2011 ob 17:52 izjavil:Če te je tok v hlačah, da boš znal sistem skonfigurirat iz nule, potem je Arch super. Vedno imaš najnovejše verzije paketov, kot so PHP, apache ipd...   Kar se mene tiče je to en velik minus, ker ne moreš samo popravkov namestiti, ampak se ti vedno še verzije posodobijo in ti vedno kakšna stvar potem crkne. Pa config datoteke moraš urejati, česar za security update pač nočeš delati."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Moj glas gre tudi za Arch. Dost boljši kot Ubuntu."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_7 je 11. nov 2011 ob 20:36 izjavil:Moj glas gre tudi za Arch. Dost boljši kot Ubuntu.   Pod pogojem, da je tvoj čas ničvreden.  Da ne bo pomote, se popolnoma strinjam, da je Arch mnogo bolj nastavljiv in prilagodljiv kot Ubuntu, in odlična distribucija GNU/Linuxa - pod pogojem, da je tvoj namen ukvarjati se s sistemom samim, in ne ga uporabljati za resno delo."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Debian + ISPConfig."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Arch sem gnal na 256 MB rama 3-4 mesece brez reboota, gor je bil pa apache + php + mysql + torrent + FTP + SAMBA, vse kar sem mogel naredit v konzoli je bilo praktično samo nameščanje programov."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Windows Server 2008 R2 - bo super če sedaj delaš v okolju Windows... OS za serverje..."
+    },
+    {
+        "role": "user",
+        "message": "Sem naložil Ubuntu 11.10 Server + ISPConfig 3, saj 10.04 nisem mogel, ker mi ni prepoznal tipkovnice. Naredil sem tako kot sem si želel in stvar je delovala, na koncu pa ugotovil, da tega pravzaprav ne potrebujem.   Moj namen je drugačen in sicer potrebujem nek server, kjer bom lahko samo jaz nalagal datoteke in si stvari ogledal kasneje v brskalniku preko ip naslova od serverja. Seveda je to možno tudi preko Ubuntu 11.10 Server + ISPConfig 3, vendar se tu dejansko že začne stvar z domenami, kar pa sam niti ne nameravam uporabljati. Sedaj bi imel rad le webserver brez nastavitev nadzorne plošče (kot pri ISPConfig) in pa neko grafično okolje (katero namizje priporočate za tak računalnik? XFCE mi ni všeč, za GNOME 3 pa nevem, če bo delal). Nujno bi rad, da nima nihče dostopa do tega serverja, le tisti v lokalnem omrežju + da bi bilo ob neuporabi storitve za server možno izklopiti.  Je vse to sploh možno izvesti?  Hvala!  LP, @user"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Vse kar potrebuješ je apache. Pa skonfiguriraš si še ftp ali ssh, da boš gor nalagal datoteke."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ja, jasno. Pogej, kako se naredi datoteka .htpasswd, ki bo v brskalniku zahtevala geslo za dostop do datotek. Če imaš stvar privatno, pa še tega ni treba."
+    },
+    {
+        "role": "user",
+        "message": "Se pravi lahko naložim katerokoli distribucijo iz družine Ubuntu in kasneje namestim še apache, mysql? Glede namestitve FTP nimam pojma, ker tega še nikoli nisem izvajal, niti ne vem kako bi naredil, da bi se lahko kasneje logiral z uporabniškim računom. Omejitev le na lokalno omrežje pa bi rad imel zaradi tega, ker ne želim, da bi ostali uporabniki morali vpisovati geslo ob odprtju strani."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mysql ne rabiš.  V apacheju lahko omejiš v datoteki .htaccess, kateri IPji imajo dostop do datotek prek brskalnika. Lahko pa daš userjem tudi ftp račun, tukaj pa tudi lahko narediš omejitev IPjev."
+    },
+    {
+        "role": "user",
+        "message": "Dostop do FTPja bi imel le jaz. Sem sicer že nekaj gledal, kako bi namestil in naredil FTP račun, vendar dobivam vse zadetke le za server izdajo.   Ali druge možnosti omejitve na lokalno omrežje, kot z omejitvijo na geslo/določanje IPjev ni?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Lažje ti je skonfigurirati openssh kot ftp. V bistvu ga niti ne rabiš skonfigurirati, samo instaliraš in po defaultu misli da dovoli dostop z usrn/pass. Potem pa samo v win instaliraš winscp (predvidevam da imaš na desktopu win).  Glede omejitve na lokalno omrežje, če si za routerjem in ne odpreš portov si avtomatično nedostopen. Če pa že delaš omejitve bi jih pa jaz raje na firewall-u na serverju kot znotraj apache-ja."
+    },
+    {
+        "role": "assistant_11",
+        "message": "1.) Za te potrebe bo ti bo zadostovala kar vsaka Linux distribucija, torej kot novinec uporabljaj tisto, ki jo uporabljaš na namizju. Ostalih XYZ distribucij boš pa obdelal naslednjič! 2.) Strežnik (MAC) s pomočjo usmerjevalnika omeji na lokalno omrežje s pomočjo rezerviranega (lokalnega) IP naslova, kateremu preprečiš dostop do interneta. Se pravi osredotoči se na usmerjevalnik z raznoraznimi nastavitvami na strežniku pa se potem igraj v lokalnem omrežju.  Potem se pa dalje ukvarjaj s čim se boš pač ukvarjal. S tem da ker to počneš prvič raje naredi 10 krat narobe in poskušaj, kot dva dni o tem razmišljat pa še nisi naredil nič! ;)"
+    },
+    {
+        "role": "user",
+        "message": "Verjamem, da je lažje namestiti openssh, kot pa nastavljati vse skupaj za FTP. Iščem pa seveda to, kar uporabljam skoraj vsak dan in če je možnost, bi raje uporabil FTP.  Na desktopu imam Ubuntu, zato sem ga namestil tudi na server. Tokrat sem naložil desktop izdajo, vendar rezultati tako z Unity 3D kot Unity 2D niso kaj preveč zadovoljivi. Se pravi, da imam možnost, da namestim le GNOME 3 ali se poleg njega privzeto naloži tudi GNOME Shell? Bom pa po vsem tem preizkusil še Lubuntu, da primerjam kaj dela hitreje in boljše.  Glede omejitve si bom pogledal nastavitve usmerjevalnika, vendar se s tem nameravam ukvarjati potem, ko bom ostalo že uredil."
+    },
+    {
+        "role": "assistant_12",
+        "message": "mogoče kaj od tega   http://www.turnkeylinux.org/all"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Priporočam ubuntu server. Res da nima grafičnega vmesnika, vendar ima zelo dobro dokumentacijo https://help.ubuntu.com/10.04/servergui..."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Se pravi, da imam možnost, da namestim le GNOME 3 ali se poleg njega privzeto naloži tudi GNOME Shell?  sudo apt-get install gnome-shell"
+    },
+    {
+        "role": "user",
+        "message": "@blackclw, sem si ogledal celotno stvar in izgleda precej vredu. Mogoče je malo bolj namenjena za file server, ampak ima nekako preveč funkcij, ki jih ne bi potreboval.  @assistant_13, danes sem delal z 11.10, ampak kot sem že omenil je takoj potrebno neko delo z domenami, sam pa iščem rešitev z navadnim IP naslovom. Poleg vsega bi kdaj pa kdaj na tem računalniku pogledal kakšne novice/vreme in bi zato potreboval grafični vmesnik. Imam namen poskustiti tudi to možnost, tokrat z LXDE.  Je na Ubuntu 11.10 Server možno namestiti tudi LXDE? Je sploh smiselno tak računalnik uporabljati v namen ogleda drugih spletnih strani? (zanimajo me mnenja) Kako bi bilo glede domen in IP naslova v primeru, da se odločim za server izdajo in (če je možnost) LXDE?  EDIT:  @assistant_11, bom sprobal pred namestitvijo 11.10 Server."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Je na Ubuntu 11.10 Server možno namestiti tudi LXDE?  sudo apt-get install lxde  Je sploh smiselno tak računalnik uporabljati v namen ogleda drugih spletnih strani?  Ne."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Sicer res ne vem, zakaj bi hotel imeti grafični vmesnik na serverju, ampak ... Mogoče bi ti lahko kaj pomagal Webmin? S tem sem se igral 15 min par let nazaj, ampak mogoče bi bilo to zate?"
+    },
+    {
+        "role": "user",
+        "message": "Hvala, sem namestil 11.10 Server in stvar deluje   Sedaj me zanima, kako bi pri vsftpd uporabnikom dovolil nalaganje datotek le v določeno mapo in pa omejil dostop le na to mapo?"
+    }
+]

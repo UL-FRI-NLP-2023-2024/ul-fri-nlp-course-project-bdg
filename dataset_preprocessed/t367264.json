@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  v Excelu sem zbiral kontakte, ker sem jih iskal iz več različnih virov je mogoče, da se kateri ponavljajo oz. podvajajo.   Ali obstaja funkcija v Excelu, ki bi mi poiskala enake vnose ( enake imena, priimke ....)?  Rabim Excel detektiva.  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Enake čemu?  Aja, če se podvajajo?  COUNT ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ne bom preveč pameten in rekel da pojdi v access, ampak v Accessu obstaja duplicates query wizard. Predlagam da tvojo Excel tabelo uvoziš tja in narediš ta query."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Prvi odgovor v Googlu na \"find duplicate entries in excel\":  http://office.microsoft.com/en-us/excel...  Uporablja se sicer za brisanje, toda vseeno sporoči, če pomaga."
+    },
+    {
+        "role": "user",
+        "message": "Sem poizkusil s tvojo varianto @assistant_2, zadeva deluje - izbriše podvojeno. Težava je le v tem če je slučajno pri nazvih, naslovih kakšna razlika (npr presledek, pika..) (razumem namig: poguglaj pol sprašuj)  Če je potrebno preveriti posamezen stolpec (naziv, ime) je to super zadeva vendar, če označiš le en stolpec se potem samo v tem stolpcu (ob brisanju)premaknejo podatki, ostale vrstice pa ostanejo na mestu (če so v eni vrstici nazivi v drugi pa naslovi v nastane zbrka).  Lahko ocenim, da bo ta varianta zmanjšala možnost napake (hvala).  Z Accessom nimam izkušenj tako, da te variante nisem testiral. Če bom se javim (morda komu pomaga).  lp"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mene tudi muči iskanje enakih vrednosti. Moja situacija je taka: imam 100 stolpcev, vsak ima številke v 5 vrstah (npr. da ima prvi stolpec številke od zgoraj dol 5,7,2,1,5) in bi rad našel vse stolpce, ki imajo povsem enako razvrščene vrednosti, da lahko take identične stolpce izbrišem. Imam Office 2007."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Transponiraj tabelo, nato uporabi ukaz Odstrani dvojnike, nato pa spet nazaj transponiraj."
+    },
+    {
+        "role": "assistant_5",
+        "message": "1. dodaš stolpec na konec in zapišeš v prvo vrstico v tem stilu : =Concat(A2;\"_\";A3;\"_\";\"_\";A4;\"_\";A5;\"_\";A6) Formulo potem raztegneš na vse vrstice(dvojni klik na spodnji desni kot celice v katero si zapisal formulo).  2. Sortiraš tabelo po tej formuli Boš takoj videl dvojnike."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 31. jan 2014 ob 10:48 izjavil:Transponiraj tabelo, nato uporabi ukaz Odstrani dvojnike, nato pa spet nazaj transponiraj.   Tako bo najhitreje. navodila: Klik"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_5 je 31. jan 2014 ob 10:52 izjavil:1. dodaš stolpec na konec in zapišeš v prvo vrstico v tem stilu : =Concat(A2;\"_\";A3;\"_\";\"_\";A4;\"_\";A5;\"_\";A6) Formulo potem raztegneš na vse vrstice(dvojni klik na spodnji desni kot celice v katero si zapisal formulo).  2. Sortiraš tabelo po tej formuli Boš takoj videl dvojnike.    sam bi v formuli dodal še na vsaki celici trim(), da se znebimo presledkov na začetku in koncu celice."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hvala, nisem vedel za ta transpose paste. Škoda, da se pri gumbu \"odstrani dvojnike\" ne da izbirati iskanje po vrsticah ali stolpcih. Ima kak novejši office to možnost?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Živijo, primiteven način je, da posortiraš po tej koloni... Potem ti manjko smao še en IF, ki ti preveri, ali je vrednost v sosednji celici enaka v sosednji celici - 1..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Da vprašam še nekaj, kar je v povezavi s tistim prej. Torej, da imam 100 stolpcev s po 5 vrsticami, v katerih so številke. Rad bi, da bi mi preštelo stolpce, ki imajo npr. v prvi vrstici številko 5, v tretji 2 in v četrti 1, v drugi in peti vrsti je pa lahko karkoli."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_3 je 5. feb 2014 ob 08:06 izjavil:Da vprašam še nekaj, kar je v povezavi s tistim prej. Torej, da imam 100 stolpcev s po 5 vrsticami, v katerih so številke. Rad bi, da bi mi preštelo stolpce, ki imajo npr. v prvi vrstici številko 5, v tretji 2 in v četrti 1, v drugi in peti vrsti je pa lahko karkoli.   COUNTIF funkcija"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mi napišeš, kako mora izgledati countif formula za tak moj primer? Pravzaprav je za to COUNTIFS funkcija. Hvala vseeno."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Da še malo bolj težim: kakšno formulo bi moral napisati pri COUNTIFS, če spreminjam, kaj naj išče in v kateri vrsti naj išče? Za primer (ta tabela se dobro vidi samo pri pisanju tega): A B C D E F G I 15 8 20 8 5 3 8 8 15 3 12 11 17 7 2  13 2 5 2 4 3 2 2 19 7 1 18 11 15 8  10 18 2 18 13 6 18 18  V stolpcu I pišem, kaj naj išče, pa tudi, v katerih vrsticah naj išče te številke, torej 8 v prvi vrsti, 2 v tretji in 18 v peti. Če ne spreminjam, v katerih vrstah naj išče, ni več problem, napišem formulo =COUNTIFS(A1:G1;I1;A3:G3;I3;A5:G5;I5), rezultat je 3, ker so te vrednosti v teh vrsticah v stolpcih B, D in G. Ne da se mi vsakič popravljati formule, če hočem iskati v drugih vrstah, zato me zanima, s kakšno formulo se to da narediti, torej, da Excel zazna, katere vrste v I stolpcu vsebujejo številke in tako ve, v katerih vrstah naj išče te kombinacije?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Uporabi fiksiranje celic, naslovi celic morajo imeti $ pred argumentom formule, ki se ne sme spreminjati pri kopiranju formule  npr. =COUNTIFS(A1:G1;$I$1;A3:G3;$I$3;A5:G5;$I$5)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "To ni to, kar rabim, saj vidim v tvoji formuli, da stalno išče v vrstah 1, 3, 5 (a1:g1, a3:g3, a5:g5). Lahko da sem slabo razložil (pri prejšnji moji objavi s tabelo kliknite na \"citiraj\", da boste tabelo prav videli): ne bom stalno iskal samo po 1, 3 in 5 vrsti, ampak včasih tudi po več ali manj vrstah in po drugih vrstah. Npr. če dam naslednjič v celico I4 št. 1 in v I5 št. 2, nočem formule =COUNTIFS(A1:G1;I1;A3:G3;I3;A5:G5;I5) ročno spreminjati v =COUNTIFS(A4:G4;I4;A5:G5;I5), zato bi rad v formulo samo nekaj prvič dodal, da bi excel samodejno vedel, v katere celice I stolpca vnesem iskane številke oz. v katere so prazne, da se po tem ve, v katerih vrstah naj išče. Sem dobil odgovor na mrexcel.com"
+    },
+    {
+        "role": "assistant_10",
+        "message": "=COUNTIFS(IF(I1=\"\";$A$6:$G$6;A1:G1);I1;IF(I2=\"\";$A$6:$G$6;A2:G2);I2;IF(I3=\"\";$A$6:$G$6;A3:G3);I3;IF(I4=\"\";$A$6:$G$6;A4:G4);I4;IF(I5=\"\";$A$6:$G$6;A5:G5);I5)  s tem da v celice od A6 do G6 vpišeš 0"
+    }
+]

@@ -1,0 +1,146 @@
+[
+    {
+        "role": "user",
+        "message": "Spostovani!  Zakaj mi spodnja skripta ne vraca podatkov, stevilo zadetkov je ok (8), vendar dobim same prazne nize: <?php\n        session_start();\n\n        if($_SERVER[\"REQUEST_METHOD\"]==\"POST\")\n        {\n                $hostname_localhost =\"localhost\";\n                $database_localhost =\"localhost\";\n                $username_localhost =\"test\";\n                $password_localhost =\"test\";\n\n                $localhost=mysql_connect($hostname_localhost,\n                                         $username_localhost,\n                                         $password_localhost) or die(mysql_error());\n\n                mysql_select_db($database_localhost) or die(mysql_error());\n\n                $query_user=mysql_query(\"SELECT id_category\n                                         FROM ps_category\n                                         WHERE id_parent =1 AND active=1\");\n                $rows=mysql_num_rows($query_user);\n                if($rows>0)\n                {\n                        $output=mysql_fetch_assoc($query_user);\n                        $query_categories=mysql_query(\"SELECT name\n                                                       FROM ps_category_lang\n                                                       WHERE id_category IN ($output) AND id_lang=1\");\n                        $rows_categories=mysql_num_rows($query_categories);\n                        if($rows_categories>0)\n                        {\n                                $categories=mysql_fetch_assoc($query_categories);\n                                $userdata=array(\"name\" => $output['name']);\n\n                                print(json_encode($userdata));\n                                mysql_close();\n                        }       // if\n                }\n                else\n                {\n                        #echo \"User not found.<br/>\";\n                }       // if\n        }       // if\n?>V php sem zacetnik, vendar mislim, da je problem v drugem SQL stavku, kjer uporabim SELECT * FROM X WHERE Y IN (). Znotraj teh oklepajev je treba lociti vrednosti z vejico, kako to storim v php kodi?  Lp, M."
+    },
+    {
+        "role": "assistant_0",
+        "message": "vse zadetke ki so v $output moraš združit v niz  neki takega recimo:  $niz = \"\";\nwhile ($output=mysql_fetch_assoc($query_user))\n{\n    $niz .= $output . \",\";\n}\n// odrežemo zadnjo vejico\n$niz = substr($niz, 0, strlen($niz)-2);"
+    },
+    {
+        "role": "user",
+        "message": "Fantje, prosim se za malo pomoci! Spodnja skripta mi nikakor noce delovati!!!! Celo noc nisem spal in se zaje.... z to skripto, a kdo vidi kako sintakticno napako: <?php\n\tsession_start();\n\n\tif($_SERVER[\"REQUEST_METHOD\"]==\"POST\")\n\t{\n\t\t$hostname_localhost =\"localhost\";\n\t\t$database_localhost =\"localhost\";\n\t\t$username_localhost =\"test\";\n\t\t$password_localhost =\"test\";\n \n\t\t$localhost=mysql_connect($hostname_localhost,\n\t\t\t\t\t $username_localhost,\n\t\t\t\t\t $password_localhost) or die(mysql_error());\n\n\t\tmysql_select_db($database_localhost) or die(mysql_error());\n\n\t\t$query_categories_id_numbers=mysql_query(\"SELECT id_category\n\t\t\t\t\t \t\t  FROM ps_category\n\t\t  \t\t\t\t\t  WHERE id_parent=1 AND active=1\");\n\t\t$number_of_categories=mysql_num_rows($query_categories_id_numbers);\n\t\tif($number_of_categories>0)\n\t\t{\n\t\t\t$categories_id_numbers=\"\";\n\t\t\t\n\t\t\twhile($category_id_number=mysql_fetch_assoc($query_categories_id_numbers))\n\t\t\t{\n\t\t\t\t$categories_id_numbers.=$category_id_number.\",\";\n\t\t\t}\t// while\n\t\t\t$categories_id_numbers=substr($categories_id_numbers,\n\t\t\t\t\t\t      0,\n\t\t\t\t\t\t      strlen($categories_id_numbers)-2);\n\n\t\t\t$query_categories_names=mysql_query(\"SELECT name\n\t\t\t\t\t\t       \t     FROM ps_category_lang\n\t\t\t\t\t\t             WHERE id_category IN ($categories_id_numbers) AND id_lang=1\");\n\t\t\t$number_of_categories_names=mysql_num_rows($query_categories_names);\n\t\t\tif($number_of_categories_names>0)\n\t\t\t{\n\t\t\t\t$categories=mysql_fetch_assoc($query_categories_names);\n\t\t\t\t$userdata=array(\"name\" => $categories['name']);\n\n\t                        print(json_encode($userdata));\n\t\t\t}\t// if\n\t\t}\n\t\telse\n\t\t{\n\t\t}\t// if\n\t}\t// if\n?>  Lp, M."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kakšno napako ti pa javi PHP? Če še nimaš, potem si za razvijanje vklopi \"error reporting\" v php.ini imaš stikalo display_error, ki mora biti \"on\". Nato pa zopet izvedi tvojo skripto in sporoči napako, ki ti jo javi."
+    },
+    {
+        "role": "user",
+        "message": "Ravno to je, error.log ne javi nobene napake, error reporting je vklopljen!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Za mysql_query() dodaj echo mysql_error(); če nimaš pri nobenem queryu napak dopolni else ... da vidiš koliko vrstic dobiš, če dobiš več kot 0 vrstic lahko daš print_r($category_id_number) v while, da vidiš kakšne podatke dejansko dobiš.  Pa ne rezat zadnje vejice stran...  if($categories_id_numbers == '') { $categories_id_numbers = $category_id_number; } else { $categories_id_numbers.=\",\".$category_id_number; }  oz.  $categories_id_numbers .= ($categories_id_numbers == '' ? '' : ',').$category_id_number;"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user ne rabiš gledati error.log ampak ko nastaviš error reporting se ti error izpiše, ko greš na spletno stran (ta skripta). In tisti error prilepi."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 10. maj 2012 ob 09:18 izjavil:@user ne rabiš gledati error.log ampak ko nastaviš error reporting se ti error izpiše, ko greš na spletno stran (ta skripta). In tisti error prilepi. Vse sem vklopil, se vedno ne dobim nobene napake! Sedaj sem pognal android aplikacijo, ki klice skripto in v rezultatu funkcije dobim sledec string (wtf??):\"Unknown column 'Array' in 'where clause' Warning: mysql_num_rows() expects parameter 1 to be resource, boolean given in /var/www/moja-domena.com/php/getCategories.php on line 41 \"Od kod njemu ime column-a Array?????"
+    },
+    {
+        "role": "assistant_3",
+        "message": "var_dump(\"SELECT name FROM ps_category_lang WHERE id_category IN ($categories_id_numbers) AND id_lang=1\");"
+    },
+    {
+        "role": "user",
+        "message": "Dam tale var_dump, resultat je isti, nikjer nic ne pise matr ... V Netbenasu v aplikaciji pa isti string ..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "In rezultat je ... array?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "$categories_id_numbers.=$category_id_number.\",\"; $category_id_number je array, ti ga pa kar prilepiš k stringu."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 10. maj 2012 ob 11:57 izjavil:$categories_id_numbers.=$category_id_number.\",\"; $category_id_number je array, ti ga pa kar prilepiš k stringu. LOL mas prav zgleda, kako pa naj to potem naredim, da bo ok?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ne vem, ker ne vem kako maš v bazi. Ampak moral boš prebrat vrednost nekega indexa od $category_id_number. Mogoče si mislil $category_id_number['id']?  EDIT: Aja ne, pomoje morš dat $category_id_number['category_id']."
+    },
+    {
+        "role": "user",
+        "message": "Lej v bazi imam dve tabeli (zaenkrat - baza je bazirana na prestashop template-u), ki se nanasata na kategorijo izdelkov. Kategorija, ki ima za parent_id vrednost 1, je vrhnja kategorija (glavna). V php skripti najprej poberem id-je le teh kategorij (z parent_id=1) in nato v drugi tabeli preko dobljenih id-jev (iz prvega mysql stavka) poiscem imena kategorij. Ta imena (in nato se slike, ampak to je drug problem, ker moram najprej nastudirati sistem, kako se slike kategorij shranijo v prestashop template-u) bi rad prenesel v android aplikacijo, da jih prikazem v ImageView-u, da lahko nato pregledujes izdelke v izbrani kategoriji. Torej, v drugem mysql stavku hocem pobrati imena kategorij, jih spraviti v array, ga zakodirati v json in poslati android napravi.  Lp, M."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pomoje morš dat samo namest $category_id_number $category_id_number['id_category']  Če pogledaš kaj ti vrne mysql_fetch_asoc - ti vrne array. Ta array bo imel polja, ki si jih izbral s SELECT stavkom. V tvojem primeru imaš \"SELECT id_category ...\", torej hočeš očitno polje id_category:   $category_id_number['id_category']"
+    },
+    {
+        "role": "user",
+        "message": "Matr, zdele mi pa javlja sledece:\"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND id_lang=1' at line 3 Warning: mysql_num_rows() expects parameter 1 to be resource, boolean given in /var/www/moja-domena.com/php/getCategories.php on line 39 \"Tole je pa malo dodelana skripta sedaj: <?php\n\tsession_start();\n\n\tif($_SERVER[\"REQUEST_METHOD\"]==\"POST\")\n\t{\n\t\t$hostname_localhost =\"localhost\";\n\t\t$database_localhost =\"localhost\";\n\t\t$username_localhost =\"test\";\n\t\t$password_localhost =\"test\";\n \n\t\t$localhost=mysql_connect($hostname_localhost,\n\t\t\t\t\t $username_localhost,\n\t\t\t\t\t $password_localhost) or die(mysql_error());\n\n\t\tmysql_select_db($database_localhost) or die(mysql_error());\n\n\t\t$query_categories_id_numbers=mysql_query(\"SELECT id_category\n\t\t\t\t\t \t\t  FROM ps_category\n\t\t  \t\t\t\t\t  WHERE id_parent=1 AND active=1\");\n\t\techo mysql_error();\t// debug code\n\n\t\t$number_of_categories=mysql_num_rows($query_categories_id_numbers);\n\t\tif($number_of_categories>0)\n\t\t{\n\t\t\t$categories_id_numbers=\"\";\n\t\t\t\n\t\t\twhile($category_id_number=mysql_fetch_assoc($query_categories_id_numbers))\n\t\t\t{\n\t\t\t\t$categories_id_numbers.=$category_id_number['id_category'].\",\";\n\t\t\t}\t// while\n\t\t\tsubstr($categories_id_numbers,0,-1);\n\t\t\t\n\t\t\t$query_categories_names=mysql_query(\"SELECT name\n\t\t\t\t\t\t       \t     FROM ps_category_lang\n\t\t\t\t\t\t             WHERE id_category IN ($categories_id_numbers) AND id_lang=1\");\n\n\t\t\techo mysql_error();\t// debug code\n\n\t\t\t$number_of_categories_names=mysql_num_rows($query_categories_names);\n\t\t\tif($number_of_categories_names>0)\n\t\t\t{\n\t\t\t\t$categories=mysql_fetch_assoc($query_categories_names);\n\t\t\t\t$userdata=array(\"name\" => $categories['name']);\n\n\t                        print(json_encode($userdata));\n\t\t\t}\t// if\n\t\t}\n\t\telse\n\t\t{\n\t\t}\t// if\n\t}\t// if\n?>"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Dej nared en  echo $query_categories_names; Pa prlimi sm kako zgleda SQL."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Raje print_r, če je array"
+    },
+    {
+        "role": "user",
+        "message": "Ma ne eno ne drugo mi nic ne printa v browser!!! PA to je za pozpidit!!! GRRRRRRR"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_5 je 10. maj 2012 ob 13:08 izjavil:Raje print_r, če je array  Aja sm tud jes en bumbar. Ja veš kaj nared, novo spremenljivko za SQL, pa ga še sprinti preden ga pokličeš. Tkole:  ...\n$sql = \"SELECT name FROM ps_category_lang WHERE id_category IN ($categories_id_numbers) AND id_lang=1\";\necho $sql;\n$query_categories_names=mysql_query($sql);\necho mysql_error(); // debug code\n..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Probi zdej  <?php\n\tsession_start();\n\n\tif($_SERVER[\"REQUEST_METHOD\"]==\"POST\")\n\t{\n\t\t$hostname_localhost =\"localhost\";\n\t\t$database_localhost =\"localhost\";\n\t\t$username_localhost =\"test\";\n\t\t$password_localhost =\"test\";\n \n\t\t$localhost=mysql_connect($hostname_localhost,\n\t\t\t\t\t $username_localhost,\n\t\t\t\t\t $password_localhost) or die(mysql_error());\n\n\t\tmysql_select_db($database_localhost) or die(mysql_error());\n\n\t\t$query_categories_id_numbers=mysql_query(\"SELECT id_category\n\t\t\t\t\t \t\t  FROM ps_category\n\t\t  \t\t\t\t\t  WHERE id_parent=1 AND active=1\");\n\t\techo mysql_error();\t// debug code\n\n\t\t$number_of_categories=mysql_num_rows($query_categories_id_numbers);\n\t\tif($number_of_categories>0)\n\t\t{\n\t\t\t$categories_id_numbers=\"\";\n\t\t\t\n\t\t\twhile($category_id_number=mysql_fetch_assoc($query_categories_id_numbers))\n\t\t\t{\n\t\t\t\t$categories_id_numbers.=$category_id_number['id_category'].\",\";\n\t\t\t}\t// while\n\t\t\t$categories_id_numbers = substr($categories_id_numbers,0,strlen($categories_id_numbers)-1);\n\t\t\t\n\t\t\t$query_categories_names=mysql_query(\"SELECT name\n\t\t\t\t\t\t       \t     FROM ps_category_lang\n\t\t\t\t\t\t             WHERE id_category IN ($categories_id_numbers) AND id_lang=1\");\n\n\t\t\techo mysql_error();\t// debug code\n\n\t\t\t$number_of_categories_names=mysql_num_rows($query_categories_names);\n\t\t\tif($number_of_categories_names>0)\n\t\t\t{\n\t\t\t\t$categories=mysql_fetch_assoc($query_categories_names);\n\t\t\t\t$userdata=array(\"name\" => $categories['name']);\n\n\t                        print(json_encode($userdata));\n\t\t\t}\t// if\n\t\t}\n\t\telse\n\t\t{\n\t\t}\t// if\n\t}\t// if\n?>"
+    },
+    {
+        "role": "user",
+        "message": "Takoj bom probal, sedaj sem dobil paket v androida (gledam v debuger watch):\"16,74,75,87,159,199,You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND id_lang=1' at line 3 Warning: mysql_num_rows() expects parameter 1 to be resource, boolean given in /var/www/moja-domena.com/php/getCategories.php on line 43 \"Cifre zdej koncno dobim, samo vejica je na kocnu stringa, moram se je resit! Takoj javim ce bo delalo! Zdele je pa neki zacel migat, ja, hvala, samo se par stvari preverim!"
+    },
+    {
+        "role": "user",
+        "message": "Stvar je zacela migat, koda je sledeca: <?php\n\tsession_start();\n\n\tif($_SERVER[\"REQUEST_METHOD\"]==\"POST\")\n\t{\n\t\t$hostname_localhost =\"localhost\";\n\t\t$database_localhost =\"localhost\";\n\t\t$username_localhost =\"test\";\n\t\t$password_localhost =\"test\";\n \n\t\t$localhost=mysql_connect($hostname_localhost,\n\t\t\t\t\t $username_localhost,\n\t\t\t\t\t $password_localhost) or die(mysql_error());\n\n\t\tmysql_select_db($database_localhost) or die(mysql_error());\n\n\t\t$query_categories_id_numbers=mysql_query(\"SELECT id_category\n\t\t\t\t\t \t\t  FROM ps_category\n\t\t  \t\t\t\t\t  WHERE id_parent=1 AND active=1\");\n\t\t// echo mysql_error();\t// debug code\n\n\t\t$number_of_categories=mysql_num_rows($query_categories_id_numbers);\n\t\tif($number_of_categories>0)\n\t\t{\n\t\t\t$categories_id_numbers=\"\";\n\t\t\t\n\t\t\twhile($category_id_number=mysql_fetch_assoc($query_categories_id_numbers))\n\t\t\t{\n\t\t\t\t$categories_id_numbers.=$category_id_number['id_category'].\",\";\n\t\t\t}\t// while\n\t\t\t$categories_id_numbers = substr($categories_id_numbers,\n\t\t\t\t\t\t\t0,\n\t\t\t\t\t\t\tstrlen($categories_id_numbers)-1);\n\t\t\n\t\t\t// echo $categories_id_numbers;\t// debug code\n\t\t\t\n\t\t\t$query_categories_names=mysql_query(\"SELECT name\n\t\t\t\t\t\t       \t     FROM ps_category_lang\n\t\t\t\t\t\t             WHERE id_category IN ($categories_id_numbers) AND id_lang=1\");\n\n\t\t\tprint_r($query_categories_names);\t// debug code\n\n\t\t\t// echo mysql_error();\t// debug code\n\n\t\t\t$number_of_categories_names=mysql_num_rows($query_categories_names);\n\t\t\tif($number_of_categories_names>0)\n\t\t\t{\n\t\t\t\twhile($categories=mysql_fetch_assoc($query_categories_names))\n\t\t\t\t{\n\t\t\t\t\t$userdata=array(\"name\" => $categories['name']);\n\t\t\t\t}\t// while\n\n\t                        print(json_encode($userdata));\n\t\t\t}\t// if\n\t\t}\n\t\telse\n\t\t{\n\t\t}\t// if\n\t}\t// if\n?>Ampak imam se zadnji problem: Spodnja while zanka se sicer sprehodi po najdenih vrednostih, ampak znotraj nje si zapomnem vsak element in ga prepisem, tako, da ostane samo zadnji. Kako spremenim kodo znotraj druge while zanke, da bom dodajal element v json array?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "if($number_of_categories_names>0)\n            {\n              $userdata = array();\n                while($categories=mysql_fetch_assoc($query_categories_names))\n                {\n                    $userdata[] = array(\"name\" => $categories['name']);\n                }   // while\n \n                            print(json_encode($userdata));\n            }   // if"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Da ne odpiram nove teme.. V čem je finta da koda ne deluje kot bi želel?   $backupname = date(\"d-m-y\");\n\t\t$query_backups = $this->db->get('backups');\n\t\tforeach ($query_backups->result() as $row){\n\t\tif($row->date == $backupname){ // preveri če obstaja že zapis backupa z tem datumom, in začne naprej zapisovat z časom komplet\n\t\t\t$backupname = date(\"d-m-y-G-i-s\"); \t\t\n\t\t} else {     \n\t\t\t$backupname = date(\"d-m-y\"); \n\t\t}  Torej želim da stvar preveri če je datum recimo današnji že vpisan v bazi če je doda datum z uro, da lahko backupe dela kr naprej."
+    },
+    {
+        "role": "assistant_3",
+        "message": "$backupname = date(\"d-m-y\");\n$žeObstaja = false;\n\t\t$query_backups = $this->db->get('backups');\n\t\tforeach ($query_backups->result() as $row){\n\t\tif($row->date == $backupname){ // preveri če obstaja že zapis backupa z tem datumom, in začne naprej zapisovat z časom komplet\n\t\t\t$žeObstaja = true\nbreak;\n\t\t}\n}\n\n$backupname = $žeObstaja ? date(\"d-m-y-G-i-s\") : date(\"d-m-y\");"
+    },
+    {
+        "role": "assistant_8",
+        "message": "lol@$žeObstaja"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Lion: upam da je dovolj grdo, da bo popravil na kaj lepšega ;).  Sicer pa bi v bistvu zadostovalo ...   foreach ($query_backups->result() as $row) {\n  if($row->date == $backupname) {\n    $backupname = date(\"d-m-y-G-i-s\");\n    break;\n  }\n}\n  (Upam da tisti break deluje tako kot si predstavljam - torej, prekine foreach zanko.)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_8 je 11. maj 2012 ob 09:04 izjavil:lol@$žeObstaja Dobra, sam a php res dopusca sumnike in sicnike za imena spremenljivk? :D"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Sičnikov zagotovo ne dopušča! Kam pa pridemo s sičniki v kodi!?! :P"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@user je 11. maj 2012 ob 09:25 izjavil:@assistant_8 je 11. maj 2012 ob 09:04 izjavil:lol@$žeObstaja Dobra, sam a php res dopusca sumnike in sicnike za imena spremenljivk? :D   oh my god...  sej bo, sej bo... le pridno se uci  na netu mas na miljone tutorialov, tako da ce mas voljo, se lahko zlo hitro naucis  srecno"
+    },
+    {
+        "role": "user",
+        "message": "Ma ok, neumno vprasanje, vem, to sem samo tako vprasal, kot zanimivost ..."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@ZihaDolhar hvala zadeva deluje iz nule! Mate mogoče idejo na kakšen način uvozit preko phpja dumpano bazo nazaj? Sepravi da bi restoral bazo?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_7 je 11. maj 2012 ob 09:39 izjavil:@ZihaDolhar hvala zadeva deluje iz nule! Mate mogoče idejo na kakšen način uvozit preko phpja dumpano bazo nazaj? Sepravi da bi restoral bazo?  Ja, z Import gumbom."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ne preko phpmyadmin ampak preko CMS, katerega urejam?"
+    }
+]

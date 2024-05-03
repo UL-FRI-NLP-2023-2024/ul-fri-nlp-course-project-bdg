@@ -1,0 +1,138 @@
+[
+    {
+        "role": "user",
+        "message": "Imam nov Acer laptop. Na njega sem brez problema namestil W10, loadal sem ISO iz microsoftove strani in preko rufusa naložil na USB. Bootal normalno in ga namestil. Zgodbo sem ponovil z windows 7. Tega pa mi ne zazna. Niti v BIOSu niti v boot menu. Je pa enak USB ključ.   Ali je mogoče poškodovan iso windowsa 7? iso je iz travnika :/ imam kodo ampak ne morem snet iz MS strani, ker mi kode ne zazna. Lahko kjer drugje snamem čist iso W7??"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ali si uporabil particijsko shemo MBR ali GPT?"
+    },
+    {
+        "role": "user",
+        "message": "GPT.. tako je default nastavljeno"
+    },
+    {
+        "role": "assistant_0",
+        "message": "GPT je novejša particijska shema za UEFI BIOS in včasih dela probleme. Če imaš probleme uporabi MBR, ki po mojih izkušnjah vedno deluje."
+    },
+    {
+        "role": "user",
+        "message": "Ne gre. Probal obe verziji. Če dam W10 iso nazaj pa dela. WTF"
+    },
+    {
+        "role": "user",
+        "message": "Sedaj mi je nekako uspelo bootat iz usbja... ampak mi vrže tole napako:   Je zanič iso?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Si vključil USB gonilnike v ISO?"
+    },
+    {
+        "role": "user",
+        "message": "Kako pa tole naredim? Zakaj pa windows 10 gre namestit?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Windows 10 že ima vgrajene.  Tole je generičen postopek: http://woshub.com/adding-usb-3-0-contro...  Imajo pa orodja tudi proizvajalci plat. Če se ne motim, sem nekaj let nazaj eno orodje našel tudi na Intelovi strani."
+    },
+    {
+        "role": "user",
+        "message": "Zanimivo. Ali iz usb 2.0 ključka pa bi moralo it?  Po tem takšnem je bolje namestit preko DVDja? - tu pa imam problem. Prenosnik nima pogona :D  Ali bi šlo namestit preko prenosnega dvd pogona ki je na USB, ali bo tam tudi problem?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "USB 2.0 ključek nima veze, če ga vtikaš v USB 3 port (kontroler)."
+    },
+    {
+        "role": "user",
+        "message": "Razumem... kaj pa prenosni dvd rom bi tudi imel problem?  tole recimo? https://www.bigbang.si/bralniki-in-zapi..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Model prenosnika? Možno, da problem nima veze s tem."
+    },
+    {
+        "role": "user",
+        "message": "https://www.mimovrste.com/multimedijski...   Vendar ima tale prenosnik 2 usb 2.0 vhoda in en vhod usb 3.0"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Na večino novih računalnikov lahko namestiš le Windows 10 in Linux, stari sistemi niso več podprti."
+    },
+    {
+        "role": "user",
+        "message": "Hvala..jao.  Vidim da novi procesorji ne podpirajo več W7.fuck it.."
+    },
+    {
+        "role": "assistant_1",
+        "message": "W7 se v začetku naslednjega leta itak izteče podaljšana podpora."
+    },
+    {
+        "role": "user",
+        "message": "Težavo ima kolega, kateri program gre namestit samo na xp visto ali w7. Nov pa stane 1500€. Nek servisni program za mehanike.   Kaj pa v virtual boxu bi tole špilalo?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 13. maj 2019 ob 21:18 izjavil:Težavo ima kolega, kateri program gre namestit samo na xp visto ali w7. Nov pa stane 1500€. Nek servisni program za mehanike.   Kaj pa v virtual boxu bi tole špilalo?  ja"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Poglej, če je v biosu slučajno kak secure boot? Izklopi vse. Pa pri boot options UEFI/AHCI nastavi na both. Mora delat iz ključka, je pa potrebno mal igranja, dvomim da bi ga blokiral. Bootaš lahko karkoli, lahko, da bo problem z driverji. V VB bo špilalo, ampak mu bo pomoje malo nadležno, sploh če program uporablja redno."
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa boot mode, izbira med UEFI in Legacy?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Si probal tole? Open the notebook and press quickly F2 to enter the BIOS. Under the MAIN menu, enable the F12 Boot Menu option. Under the BOOT menu, select Legacy boot and press F10 Save & Exit. While the notebook is rebooting, press F2 again to enter the BIOS."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user: Poskusi še s particijsko shemo MBR in boot mode Legacy.  Mislim da Windows 7 sploh ne podpira UEFI boot mode in GPT particijske sheme, ker je oboje preveč novo."
+    },
+    {
+        "role": "user",
+        "message": "Če dam Legacy boot mode, pa sploh ne gre bootat. Tudi W10 ne gre. Samo črtica utripa levo zgoraj ob črnem zaslonu... Tudi MBR sem izbral pa ne gre.  Nič... bom dal vb gor..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tak BIOS bi moral imeti, a ne?     Si nastavil boot priority, tako da je USB prvi? Mogoče se poskuša zagnati iz diska, vendar če imaš tam GPT particijsko shemo, Legacy boot tega ne razume.  Pa ali program res ne gre inštalirati na Win 10? Ali nam lahko zaupaš kateri program je to?"
+    },
+    {
+        "role": "user",
+        "message": "Ja.. Če sem w10 normalno bootal. Gre za tole..  https://the-best-manuals-online.com/col...   Podpora je le za xp ali w7. Na w10 se pojavi okno, da je install možen le na teh starih os.   Novejši program podpira w10, ampak je cena solidna :D"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sicer dvomim, da bo pomagalo, a lahko vseeno poskusiš z vklopom kompatibilnega načina in z 32 bitnim Win10.  Drugače pa ali starejši prenosnik (do vključno Skylake procesorjev je še 100% Win7 podpora) ali nova verzija omenjenega programa."
+    },
+    {
+        "role": "assistant_6",
+        "message": "na 7 serije procov, kar ma OP, pozabi na win7, ker niti gpu driverja ni vec.  najbolsa opcija bo kaksen starejsi model prenosnika (tega naj vrne) z skylake procom. ali pa tega obdrzis za vse ostalo in kupis kaksno starejso zadevo samo za ta namen"
+    },
+    {
+        "role": "assistant_7",
+        "message": "kot je napisal @assistant_2 - probaj inštalirat program na 32 bitne win 10. podoben problem je z diagnostiko za renaulte, ki sem jo uspel inštalirat na 32 bitno 10-ko."
+    },
+    {
+        "role": "user",
+        "message": "Zanimivo. Bom sprobal namestit 32 bit w10 za test"
+    },
+    {
+        "role": "user",
+        "message": "FUCK IT! 32 bit w10 ne gre bootat. Grem googlat in najdem, da uefi podpira samo 64bit os??!    https://social.technet.microsoft.com/Fo..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "podpira tudi 32 bit.."
+    },
+    {
+        "role": "user",
+        "message": "Ne gre. Bootal sem 32/64 iso w10. Ce izberem 64 gre namestit. Ce pa dam 32 pa vrže napako kot sem postal zgoraj.   Sem namestil VB. Pa da vidimo"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Kaj pa če namestiš win10 v legacy/BIOS načinu?"
+    }
+]

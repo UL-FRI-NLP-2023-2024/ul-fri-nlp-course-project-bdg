@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Lepo prosim rabu bi pomoč če mi lahko kdo pomaga. A mogoče pozna kdo kakšno php scripto al pa kakšen način, da je tvoja internetna stran ne glede na resolucijo ekrana postavljena na sredino, tako da recimo če kdo uporablja večji ekran od tebe ni kr tja nekam v kot porinjeno...  Najlepša hvala za odgovor, Sebastjan"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ojoj joj  jst ne poznam php skripte, znam pa eno skripto ki je mešanica VB.net-a, ASPja pa Perla, dolga je pa samo 15000 vrstic.    Enostavno s pomočjo tabele/CSS-ja nastaviš sredinsko poravnavo, ki jo maš v propertisih v dreamweaverju ipd.  LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tabele oziroma kontejnerje v CSS moraš obravnavat v procentih."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user:  v css file vnesi:  #container{ margin-left: auto; margin-right: auto; }  v html pa  ... < html> < div id=\"container\"> ostala html koda in vsebina strani < /div> < /html> ...  Upam, da se razumeva. Zadeva ti bo vsebino ki je na strani (oz. \"stran\") vedno poravnala v vertikalno sredino (ne bo ti potisnilo strani v levo ali desno stran). Če pa bi želel tudi horizontalno centriranje, pa ne gre tako zlahka.  Če sem narobe razumel kaj rabiš, malo bolje opiši problem."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_2: a to ti dela v IE ok? Jaz to delam tako:   body {\n  text-align: center;\n}\n#container {\n  margin: 0 auto; /* isto kot je @assistant_2 napisal, samo v drugi obliki */\n  text-align: left;\n}\n lp"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Humph. Veš da se ne spomnem več, nisem rabil že nekaj časa, sem bolj na pamet napisal kako bi moralo bit. Se je v IE7 kaj popravilo, al še vedno ne dela?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Jest tut uporabljam kodo podobno @assistant_3 - v IE6 margin: auto sigurno ni delal, na sreco ne vejo kaj pomeni text-align pa velja tudi za ostale elemente  , v IE7 pa tut sam se nisem probu."
+    },
+    {
+        "role": "user",
+        "message": "Najlepša hvala za pomoč...bom zdejle probu če to dela.  da boste pa bolje razumel kako sm mislu pa poglejte na www.@user.com  Mam tole v flashu narjen k tam znam, pa se zdele zmeri na sredino postav ne glede na resolucijo ekrana."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kaj pa če bi poskusil klasično? Vsebuje samo dve napaki (+ doctype manjka, ampak to je malenkost):  < html> < head> < /head> < body bgcolor=\"#333\"> < table width=\"100%\" height=\"100%\"> < tr> < td width=\"130\" height=\"100%\"> < /td> < td width=\"100%\" align=\"center\" valign=\"middle\"> < table> < tr> < td width=\"700\" height=\"500\" bgcolor=\"#FFFFFF\"> < /td> < /tr> < /table> < /td> < td width=\"100%\"> < /td> < /tr> < /table> < /body> < /html>  S tem dobiš sivi kvadrat na sredini, neodvisno od brskalnika. Deluje tudi tam, kjer CSS odpove, oz. CSS ne pozajo (beri: stari brskalniki)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_5: Kot vem, je tabela element za prikaz tabelaričnih podatkov. Kar pa pozicioniranje flasha NI. To ni KLASIČNO, ampak NAPAČNO. Če to dela cela čreda ovac, to še ne pomeni, da je klasično in se lahko po mili volji zlorablja. Kar sem jaz napisal, je podprto od IE4 in NN4 naprej. Zdaj mi pa povej, kdo še uporablja kaj starejšega. lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ljudje uporabljajo Opero in FF"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_3: nekateri moji znanci uporabljajo starejše mašine, oper. sisteme in programe (rang Pentium II 350 Mhz in Windows 95). Ker nimajo denarja, da bi kupili nov računalnik.   O Linuxu pa nočejo slišat."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_5: PII 350 je že zelo spodobna mašina, kolega je brez problemov laufal gor XP-je (pazi - 64MB ram!). Hitrost je seveda bila taka kot je bila, ampak ga to ni motilo. Ne govorim, da mora dat xp-je gor, ampak hočem povedat da je Windows95 čisti nesmisel, če win98 dela ko raketa gor. Na prvi verziji win98 (ne SE) je seveda ie4 že gor in s tem je osnovni css podprt (kar sem opisal definitivno).  Poleg tega me prav zanima, katere strani se mu lepo prikažejo, v kolikor ne lažeš in laufa gor res win95 z IE3 ter vsakodnevno brska. To je tisto, kar se mi zdi sumljivo  lp"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Uporablja Netscape 4 in noče nadgraditi... sicer so ti res čudni tipi. Na delovnem mestu uporabljajo Mac-a in pravijo, da jim je doma ta PC dovolj za osnovno brskanje...  EDIT: zdaj sem opazil tvoje vprašanje -  Poleg tega me prav zanima, katere strani se mu lepo prikažejo, v kolikor ne lažeš in laufa gor res win95 z IE3 ter vsakodnevno brska. To je tisto, kar se mi zdi sumljivo  ogleduje si tipa večer, delo, najdi.si... nič posebnega. Flash mu itak ne deluje, je rekel. Izogiba se Flasha kot hudič križa."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Kaj ima tu veze, za kaj so tabele namenjene. Dejstvo je, da način, katerega je @assistant_5 napisal eden izmed preprostejših načinov postavitve vsebine na sredino in deluje čisto povsod. Dejansko nas ne zanima, zakaj je neka koda tako narejena, zanima nas pa da se v vseh brskalnikih pravilno prikazuje. Ali pač?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zanima nas, da je stvar narejena po standardih, tabele za obliko pa žal niso standard.  Narobe se je učiti tako delati spletne strani."
+    },
+    {
+        "role": "assistant_3",
+        "message": "To ima veliko veze. Zakaj? Očitno ne preživiš v tem področju dovolj časa, da bi si kdaj prebral kakšen članek, zakaj je tako. Očitno si vedno delal samo majhne strani, da se ti tabele zdijo enostavne. Očitno še nisi slišal za to, da tudi slepi prebirajo spletne strani (kar podre tvojo teorijo o \"čisto povsod\"). Očitno še nisi slišal za accessibility tudi pri ljudeh brez problemov z vidom. itd. itd.  Napisanega je ogromno, tako na tem forumu kot na drugih koncih (vpiši recimo \"why tables html bad\" v google).  lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Izhajam preprosto iz tega, da sem prebil mnogo, mnogo ur ukvarjanja s CSSjem, da sem v končni fazi dosegel nekaj kar sem imel s tabelami že zdavnaj rešeno. Compatibility problem z tremi glavnimi brskalniki (IE6, FF, Opera) je ogromno.  Kako vezo imajo tabele s slepimi? Hočeš reči da tekst to speech programi ne znajo brati podatkov iz tabel? Zakaj bi delal po standardih, če to rodi več problem kot jih reši - za IE vsi vemo da se standardov ne drži, uporablja ga pa 70+% ljudi.  In še enkrat vprašam, kaj bi radi? Da je nekaj, kar itak nikogar ne zanima (source koda), narejena lepo in po standardih, ali pa da se zadeva uporabniku pravilno prikazuje."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ne, verjetno hoče reči to, da ti programi navadno berejo:   \"table title ... row1 header, column titles ... ... ... ... row2 column one image ... row3 column two \"Hello world\" ....\"  Zakaj bi delal po standardih, če to rodi več problem kot jih reši - za IE vsi vemo da se standardov ne drži, uporablja ga pa 70+% ljudi.  JA, delajmo strani tako, da so pravilno prikazane v IE6 (ali katera koli verzija). Sej, ko bo prišla nova verzija, ki bo bolj upoštevala standarde, nas ne bo brigalo, če stran ne izgleda več tako kot prej, ker bo itak že čas za novo, ali pa je itak potrebna osvežitve... Najboljše je da delaš tako, da imaš povsod najmanj problemov. Če pač neka stvar ne deluje pravilno, se jo prilagodi tako da bo, ne pa da mora po vsej sili tja in tja tako in tako narejena, malo dinamičnega reševanja problemov.  In še enkrat vprašam, kaj bi radi? Da je nekaj, kar itak nikogar ne zanima (source koda), narejena lepo in po standardih, ali pa da se zadeva uporabniku pravilno prikazuje.  Če se le da oboje skupaj. Drugače pa prilagajanje sourca, da se večini uporabnikov prikazuje kot je treba, ne samo določenemu segmentu. Pomni, če bo koda po standardih, bodo nove verzije brskalnikov najverjetneje take strani prikazale pravilno, kar za strani, ki so ciljane na en sam brskalnik ne moreš reči.  Na M$ in njihovo zanemarjanje standardov, bi morali tisti, ki nekaj štejejo bolj resno pritisniti, sicer že dolgo nazaj, ampak tudi sedaj nekako \"še\" ni prepozno (no, čeprav so morda ravno zamudili vlak)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Se popolnoma strinjam glede IEja in njihovega vsiljevanja svojih standardov, vendar žalostna realnost je da z upoštevanjem modernih smernic in standardov je prekleto težko narediti stran tako, da bo izgled identičen v vseh browserjih. Z old school tabelami se da isto narediti mnogo hitreje z mnogo večjo kompatibilnostjo (tu so še browserji do katerih nima vsak hitrega dostopa ob razvijanju, pa se vendarle uporabljajo - safari, konqueror,...)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "prekleto težko narediti stran tako, da bo izgled identičen v vseh browserjih Aja? Jaz bi rekel da je SAMO učenje težje, ker je razmišljanje drugačno. Sama izdelava strani je pa enkrat, ko obrneš glavo v pravo smer, precej lažja od ubadanja s tabelami, da o vzdrževanju niti ne govorimo. Če ti nimaš časa, da bi si malo pogledal zadeve realno, ne moreš učiti začetnikov na napačen način. To me moti, ker začetnik na vsakega ki ga nekaj nauči, gleda kot na poznavalca, kar pa še zdaleč ni res. Sam se nimam za nekega hudega profesionalca (čeprav sem delal že vse mogoče s css), vendar prekleto dobro vem, kaj pomeni, če se nečesa naučiš na napačen način. Če greš že od začetka po pravilni poti, je razumevanje bistveno lažje, kot če se najprej naučiš razmišljati tabelarično, potem pa ugotoviš da to ne pelje nikamor in poskušaš prešaltat. lp"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Saj se strinjam @assistant_3. Ampak ko imaš klienta ki ima raznorazno programsko in strojno opremo in od tebe zahteva z garancijo, da na vseh delovnih postajah deluje stran isto (!), pazi ne podobno (!) potem boš hudo premislil, ali boš delal za prihodnost, ali pa delaš po \"starih\" metodah. Ne bom pisal standardih, ker to ni to, oz. so tabele v tem smislu že preteklost in ostanki še iz začetka 90-ih.  Pri večini podjetij in javnih zavodih (JSKD območna izpostava itn.), petih občinah, ki jih jaz poznam uporabljajo samo in izključno Windows in Internet Explorer. Pri nekaterih teh imajo zaposlene neke sistemce, ampak si oni pač ne bodo sami sebi delali delo s tem, da bi nalagali Opero, Firefox, Linux ali kaj tretjega. Žvižgajo se na vse to, glavno, da dobijo plačo.  Itak po nekaj letih ponovno razpišejo nadgradnjo/predelavo spletne strani oz. kar postavitev na novo.   Pač, dokler imamo denar, bo situacija taka."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Opeter: glej, noben ne govori o tem, da bi kdo moral kaj upgrade-ati. Čisto lepo se da po standardih stvar urediti da dela na IE5. Brez tabel. Mogoče se najde kje kakšna finta ki jo moraš poznati (NE hack!), ampak nekdo, ki naj bi se za denar ukvarjal s tem, naj bi imel dovolj izkušenj, da to uredi brez problemov. Če ne, ni vreden, da bi se ukvarjal s tem. Lenobe pri poslu ne gre podpirati. Ne vem kaj se css-ja otepate ko vampir svetlobe, pri tem pa zavajte ljudi, ki se nečesa želijo naučiti pravilno. Zelo očitno je, da css poznate premalo, da bi razumeli, kaj vse in s kakšno lahkoto se dajo nekatere stvari postoriti. Če css poznate premalo, je pa to čisto vaš problem in ne vem zakaj morate riniti v drek še vse ostale. Kar vi govorite, je čisto zavajanje zaradi nepoznavanja. To je kot da bi jaz govoril recimo, kako se z delnicami nič ne zasluži, ker pač nimam ne časa ne volje, da bi se s tem ukvarjal. Ali pa kako so zanič Mercedes avti, ker sem že dva videl ob cesti brez koles. Čisto brez osnove oz. z napačno osnovo."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Saj ne zavajam. Tudi sam se čim CSS, meni najljubša stran s tega vidika je CSS Zen Garden. Imaš odlične rešitve in primere, ki so zelo uporabne. Jaz sem pač še čisto na začetku poti. Se eden tistih - kot si ti napisal - ki se želi nekaj naučiti, ampak dobiva od drugih ljudi nasvete, ki niso vedno pravi oz. skladni s standardi. Tisto kodo ki sme jo prilepil zgoraj, sem dobil od enega znanca, ki je v našem kraju priznan web oblikovalec.  Sicer pa imam že nekaj enostavnejših spletnih strani, pri katerih postopoma nadgrajujem sovje znanje CSS (trenutno je večina stvari rešena s pomočjo tabel - ker div-e zaenkrat še ne poznam prav dobro):  1.)  ZKPL 2.)  ZKMN - še vedno v fazi izdelave 3.)  PPI - v razvoju, ampak že delujočem stanju 4.) ena mojih prvih strani -  DOŠ 1  Moraš vedeti, da sem grafični oblikovalec (in ilustrator) in ne programer, zato mi gre logika programiranja težko. HTML sem se že nekako priučil, zdaj se učim CSS in PHP (koliko mi pač čas dopušča)  Se iskreno opravičujem, če sem koga z zgornjimi izjavami zavajal."
+    }
+]

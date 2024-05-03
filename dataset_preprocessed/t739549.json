@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "Morda bo kaksen izkusen programer imel kaksno idejo. Govorimo o embeded sistemu, ki ima racunske operacije omejene (Unity Pro PLC programiranje).   Rad bi racunal na 15 decimalk natancno, real jih ima max sedem, dint je pravtako premajhen, ce pomnozis in hranis.  Pozna kdo kaksen matematicen trik?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Številko lahko zapišeš kot String oz. tabelo in napišeš algoritem za računanje (kdaj se zgodi prenos itd.)  lp, Klemen"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 13. feb 2019 ob 15:17 izjavil:Številko lahko zapišeš kot String oz. tabelo in napišeš algoritem za računanje (kdaj se zgodi prenos itd.)  lp, Klemen   Poznas Unitiy Pro? Jaz nisem nasel kaksne pametne moznosti za pisanje teh algoritmov. Ne najdem niti kaksnega pametnega ukaza za delo s stringi, razen da napises stevilko v string in obratno. Je kje kaj skrito v Structured Tekstu?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če gledam pravo dokumentacijo, je to nek zbirnik (assembly). \"Pametni\" PLC-ji imajo običajno možnost uporabe kakega višje nivojskega jezika (C, C++), tak da jaz bi najprej začel to iskat. Tam se potem lahko najde kaka math knjižnica, ki to že podpira. Če ne, pa vsaj imaš programski jezik, ki ga razumeš. Če te opcije ne boš našel, si lahko pomagaš tako, da sprogramiraš funkcije v C/C++, scompilaš v .exe in z decompilerjem pogledaš assembly kodo. Tisto assembly kodo pol \"prevedeš\" v Unity PRO - če maš srečo samo preimenuješ ukaze in registre."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ma to vsak student dela na vajah. Kako delat 16-bit racunanje z 8-bit registri. Osnove assemblerja, resno."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zakaj pa rabiš 15 decimalk? To se sliši, kot da delaš nekaj narobe."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 13. feb 2019 ob 20:35 izjavil:Ma to vsak student dela na vajah. Kako delat 16-bit racunanje z 8-bit registri. Osnove assemblerja, resno.   Lahko das kaken link?  @assistant_3 je 13. feb 2019 ob 22:03 izjavil:Zakaj pa rabiš 15 decimalk? To se sliši, kot da delaš nekaj narobe.   15 decimalk je zelja nasega matematika s katerim delam projekt. Sicer kode stroja nisem pisal sam, kakor tudi ne algoritmov, za kaksno metodo sprasujem, ker pri nas nihce ni uspel najti neke pametne poti, zato sem se zelel pozanimat se kje drugje in kje je boljse kot na forumu?  Pri simulacijah je bila pri sedmih decimalkah prevelika razlika z mathlabom in bi se poznala.  Pac ne iz prve dvomit, da drugi delajo kaj narobe, ce ne ves niti priblizno kaj delajo."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 13. feb 2019 ob 17:33 izjavil:Če gledam pravo dokumentacijo, je to nek zbirnik (assembly). \"Pametni\" PLC-ji imajo običajno možnost uporabe kakega višje nivojskega jezika (C, C++), tak da jaz bi najprej začel to iskat. Tam se potem lahko najde kaka math knjižnica, ki to že podpira. Če ne, pa vsaj imaš programski jezik, ki ga razumeš. Če te opcije ne boš našel, si lahko pomagaš tako, da sprogramiraš funkcije v C/C++, scompilaš v .exe in z decompilerjem pogledaš assembly kodo. Tisto assembly kodo pol \"prevedeš\" v Unity PRO - če maš srečo samo preimenuješ ukaze in registre.   Je prava ja, se mi pokazes kaj imas v mislih, bi bil zelo vesel. Ce imas v mislih njegov builtin ST \"structured text\" potem bo tezka. Sam nisem nasel kaj pametnega. Zunanjih DLLov, EXE itn. ne bi uporabljal tudi ce je mogoce, ker nihce nima dovolj izkusenj, da bi lahko garantiral absolutno stabilnost. Moras upostevati, da je kar velik sistem napisan v Unity Pro in ne bi predlagal, da se dela nov standard, na novo programira itn. Pri velikih korporacijaj vse skupaj hitro eskalira v milione, ker je treba se testirat, pisat nov standard itn."
+    },
+    {
+        "role": "user",
+        "message": "Morda pomaga podatek, da potrebujem samo mnozenje in sestevanje."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Mnozenje je samo zaporedje (pogojnih) sestevanj.   Sodec po dokumentaciji, ki jo je linkal Smacker, zadeva podpira tako logicne kot aritmeticne operacije. Kje je tezava?"
+    },
+    {
+        "role": "user",
+        "message": "Vrdnosti so na vsak nacin v stingu, kjer je problem, da ne najdem nekih pametnih funkcij za delo z njimi, vse kar sem nasel je, da se pretvori iz stringa v kaksen drug format, kjer je takoj priblizek.  Ne najdem kaksne kombinacije teh relativno preprostih logicnih in arietmeticnih funkcij, ki mi resijo ta problem. Teoreticno lahko vrednosti zapisem drugace in delim na koncu itn.   Skratka, da bo bol jasno, mnozi se z neko konstantno, recimo 1,235468745123587 * \"vrednost\".  Neceloma bi lahko zapisal tudi tako: 1235468745123587 in racunal ali razdelil stevilko na dva dela itn..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pac ne iz prve dvomit, da drugi delajo kaj narobe, ce ne ves niti priblizno kaj delajo.  Vprašal sem zato, ker je vprašanje bilo o PLCju in predvidevam da se uporablja za neke industrijske procese, kjer se obdeluje praktične meritve ali parametre procesa. Jaz ne poznam nobenega resničnega instrumenta, senzorja ali aktuatorja, ki bi kaj izmeril ali nastavil na 15 signifikantnih cifer natančno. To je dinamični obseg 300 dB kar se meni zdi čisto nezaslišano izven simulacij. Ali delaš z neko fantastično merilno tehnologijo ali pa imaš napačen pristop v računanju in brez potrebe nekje v nekem vmesnem koraku potrebuješ tako natančnost. Meni se je zdela druga možnost bolj verjetna, se pa seveda lahko motim."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 14. feb 2019 ob 10:05 izjavil:Pac ne iz prve dvomit, da drugi delajo kaj narobe, ce ne ves niti priblizno kaj delajo.  Vprašal sem zato, ker je vprašanje bilo o PLCju in predvidevam da se uporablja za neke industrijske procese, kjer se obdeluje praktične meritve ali parametre procesa. Jaz ne poznam nobenega resničnega instrumenta, senzorja ali aktuatorja, ki bi kaj izmeril ali nastavil na 15 signifikantnih cifer natančno. To je dinamični obseg 300 dB kar se meni zdi čisto nezaslišano izven simulacij. Ali delaš z neko fantastično merilno tehnologijo ali pa imaš napačen pristop v računanju in brez potrebe nekje v nekem vmesnem koraku potrebuješ tako natančnost. Meni se je zdela druga možnost bolj verjetna, se pa seveda lahko motim.   Sej razumem, da ti ni jasno kaj delam, kakor ne razumem da namesto, da pomagas postavis pod vprasaj delo. V slednjem ne vidim smisla, lahko bi bil hobi projekt in se samo sprasujem ce je mozno, kot hobi.   Skratka matematicno model regulira masinerijo moci nekaj MW. Problem ni klasicen, ki ga srecujes v avtomatizaciji ampak gre za izboljsavo, ki je mozna samo, ko hodis po limitah moznega.   Kakor sem napisal je matematicni model iz mathlaba padel v PLCju, ker izracuni niso bili dovolj natancni. To se vidi skozi simulacije in na projektu dela prevec ljudi, da bi eden lahko bil dovolj pameten, da cez palec sodi o smoternosti. Ajde ce se slucajno najde kaksen doktor matematike in fizike pri regulaciji procesov in se PLC ekspert, potem se lahko pogovarjama bolj celovito o problematiki, drugace ne bo smisla. Pa se potem bi te moral kaksen teden solati najprej matematik potem...."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ja, ali iz tvojih dint-ov narediš fixpoint (odvisno od tega kakšna realna števila v resnici potrebuješ) in implementiraš seštevanje in množenje za to, ali pa uporabiš floate v smislu tegale: https://stackoverflow.com/questions/676..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Žal ne vem kaj instantnega za tvoj PLK. Je pa dejstvo da je to za računalničarje problem z brado in ne bi smelo bit hud problem poiskat. Podobne zadeve so še vedno aktualne pri programiranju FPGA, kjer imajo cenovno ugodne zadeve precej kratke množilnike, ki jih je treba potem sestavljat za \"normalno\" točnost. Če imate Matlab, mogoče poglejte če je kaj tozadevnega v katerem od Coderjev.   Je pa zelo verjetno da se temu lahko izogneš s trikom ustreznega skaliranja spremenljivk."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 14. feb 2019 ob 10:24 izjavil:Ja, ali iz tvojih dint-ov narediš fixpoint (odvisno od tega kakšna realna števila v resnici potrebuješ) in implementiraš seštevanje in množenje za to, ali pa uporabiš floate v smislu tegale: https://stackoverflow.com/questions/676...   Naceloma ni treba, da je float, ce delim koncni rezultat ni sile. Takrat je poracunano in napaka ni vec velika, ko zaokrozis."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Poglej si implementacijo tipa \"REAL2\" v OSCAT knjižnjici (napisano v Structured Text-u), če vam je OK rešitev...  Če je Unity Pro baziran na Codesys-u lahko brez težav uporabiš to knjižnjico.  http://www.oscat.de/images/OSCATBasic/o...  8. Arithmetics with Double Precision 8.1. Introduction Floating point numbers are stored in the format REAL. A common data format according to IEC754 used a 24 bit wide mantissa and an 8-bit exponent. This results in an accuracy of 7-8 digits. Usually this is for applications in control technology more than sufcient, but in certain cases can lead to a problem. A typical case can which be solved with single-precision only inadequate is a consumption meter. If you want to several Mwh (megawatt hours) of total consumption adding up, taking a smallest power of 1 mW (milliwatt) at a distance of 10ms fairs and so you need a resolution of 3.6 * 10^7 (equivalent 10MWs) and it would be a do add up 1* 10^-5 W's. To do this it requires a resolution of 12 digits. The solution implemented by OSCAT is REAL Double precision and has a resolution of about 15 digits. The implemented data type REAL2 consists of R1 and RX, RX is here the value saved the frst 7-8 points as Real and the rest in one real R1. This data type has the advantage that no conversion of REAL2 to REAL is needed, rather, the RX is rather part of single REAL value.   https://raw.githubusercontent.com/simsu... https://raw.githubusercontent.com/simsu... https://raw.githubusercontent.com/simsu... https://raw.githubusercontent.com/simsu...  https://github.com/simsum/oscat"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Problem ni klasicen, ki ga srecujes v avtomatizaciji ampak gre za izboljsavo, ki je mozna samo, ko hodis po limitah moznega.  je kakšna skrivnost, kaj delate to oz. kaj je ta par MW mašinerija, vsaj okvirno."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7 je 14. feb 2019 ob 11:00 izjavil:Poglej si implementacijo tipa \"REAL2\" v OSCAT knjižnjici (napisano v Structured Text-u), če vam je OK rešitev...  Če je Unity Pro baziran na Codesys-u lahko brez težav uporabiš to knjižnjico.    Tnx, bom pogledal. Nisem preprican, ce bo slo ampak na vsak nacin vredno eksperimenta.  @assistant_8 je 14. feb 2019 ob 11:04 izjavil:Problem ni klasicen, ki ga srecujes v avtomatizaciji ampak gre za izboljsavo, ki je mozna samo, ko hodis po limitah moznega.  je kakšna skrivnost, kaj delate to oz. kaj je ta par MW mašinerija, vsaj okvirno.   Nerad govorim o specifikah na javnih forumih, ce ni potrebe."
+    },
+    {
+        "role": "assistant_9",
+        "message": "A se je to rešilo? Tko iz teoretičnega vidika bi bilo računaje stringov zanimivo."
+    }
+]

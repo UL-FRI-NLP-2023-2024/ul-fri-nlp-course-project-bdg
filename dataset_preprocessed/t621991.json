@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "message": "Imam eno čudno težavo pri sveže nameščenih Windows 7.   Konfiguracija: Procesor: Core2Duo E8500 Plošča: Asus P5Q Pro Ram: Corsair 4GB DDR2 8500 Grafika: Sapphire HD4870 Napajalnik: LC8750 750W  Težava je naslednja. Računalnik se ob vsakem predvajanju videa (Avi, divx, h264) restarta - ponovno zažene, brez Bsod ali kake napake. Včasih se je to zgodilo tudi med downloadom v Chrome brskalniku. Poskusil sem z drugo grafiko Nvidia 7900GS, kjer se posnetki predvajajo, ko pa namestim Nvidia gonilnik je stvar enaka. Zamenjal sem tudi že ram (kljub temu, da Memtest86 ni pokazal napak) in stvar je bila ista. Je lahko vzrok napajalnik ali gre samo za programsko težavo ? Temperature so v mejah normale in tudi pri obremenitvi grafike z FurMarkom (ali sistema z Prime95) se sistem ne restarta. Razmišjam še o zamenjavi napajalnika.  Kakšne ideje so dobrodošle."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bootaj v ubuntu live in predvajaj video."
+    },
+    {
+        "role": "assistant_1",
+        "message": "S katerim programom predvajaš videe ? zna biti tut težava antivirus-videoplayer, ki ga zna prepoznat kot kakšen badware.. Svoje čase je bil BSplayer na tapeti pri Antivirusnikih"
+    },
+    {
+        "role": "user",
+        "message": "V Ubuntu - live navaden .avi dela brez težav, bom poskusil še ostalo ko namestim kodeke. Antivirus je Avast, ki pa sem ga odstranil in je stvar ista. Predvajalnik ni pomemben, je isto v VLC, GOM Player, Windows Media Player..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Automatic Restart on System Failure imaš disablan ? http://pcsupport.about.com/od/tipstrick..."
+    },
+    {
+        "role": "user",
+        "message": "Da, to sem ta prvo naredil. Ne prikaže nobenega modrega zaslona ali česarkoli, računalnik se kar restarta, kot da bi pritisnil reset tipko."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bootaj v safe mode in poženi .avi v vlc http://www.videolan.org/vlc/ ."
+    },
+    {
+        "role": "user",
+        "message": "Hmmm, v varnem načinu dela .avi in tudi ostalo v VLC-ju. Torej gre očitno vendar za programsko težavo z gonilniki ali čim drugim. Le slika je nekoliko popačena, vendar se računalnik ne restarta."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Šoferji za grafično so problem.Kateri os ?  Normal boot, control panel, pobriše vse ati/nvidia šiferje. Reboot v safe mode, http://www.guru3d.com/files-details/dis... pobriši ostanke. Normal boot, iz ati/nvida strani namesti zadnje šoferje."
+    },
+    {
+        "role": "user",
+        "message": "Windows 7. Težava je tako z AMD HD4870 kot tudi Nvidia GeForce 7900GS."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Bios imaš na default nastavitvah, je zadnji http://www.guru3d.com/files-details/dri... ?"
+    },
+    {
+        "role": "user",
+        "message": "Tudi BIOS sem posodobil, na zadnjo verzijo iz uradne ASUS strani za ta model (verzija 2102) in je na privzetih nastavitvah, razen pač osnovnih parametrov. Bom še enkrat vse počistil z driver sweeperjem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Driver sweeper je obsolete, uporabi raje DDU, sem prej nalepil napačen link http://www.guru3d.com/files-details/dis... ."
+    },
+    {
+        "role": "user",
+        "message": "Očitno je res težava v samem grafičnem gonilniku. Sedaj po čiščenju grafičnih gonilnikov sem nazaj vstavil Radeona in pustil, da je Windows namestil osnovni gonilnik. In video dela...  Edit: Konec veselja. Po ponovnem zagonu računalnika video spet sam restarta računalnik :("
+    },
+    {
+        "role": "user",
+        "message": "Edit 2: Sem šel na novo nameščat Windows 7 x64 SP1 in se je restartal že po prvem zagonu v Windows, ko namesti osnovni grafični gonilnik. Sedaj bom poskusil zamenjati še napajalnik."
+    },
+    {
+        "role": "assistant_2",
+        "message": "verjetno bo napajalnik... ko daš driver od grafe gor, je avtomatsko lahko bolj izkoriščena (kot pa z vga safe driverjem) in gre poraba gor.."
+    },
+    {
+        "role": "user",
+        "message": "No na koncu se je res izkazalo, da je problem v napajalniku. Sem ga že od vsega začetka sumil, vendar nisem imel primernega za test. Sedaj sem ga zamenjal za en 600W LC-Power in stvar dela, se ne restarta več. Najlepša hvala vsem za pomoč pri razmišljanju :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kako je potem sistem zdržal mučenje z FurMarkom ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "naslednjič pa prste stran od lcpowerja.."
+    },
+    {
+        "role": "user",
+        "message": "Mučenje s FurMarkom je normalno zdržal, sej štos je v tem, da je tudi s starim napajalnikom FurMark delal brez težav ene 15 minut (dokler ga nisem ustavil).  @assistant_2 To glede LC-Powerja že vem, samo če računalnik ni tvoj in se išče najcenejše variante je tako. Poleg tega je pa itak star že 5 let. Vedno se ponavlja, da na napajalniku ni dobro preveč šparat, sploh za boljše mašine."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mučenje s FurMarkom je normalno zdržal, sej štos je v tem, da je tudi s starim napajalnikom FurMark delal brez težav ene 15 minut (dokler ga nisem ustavil). Here is your problem. Vsaj pol ure mora biti zagnan.Si tam označil cpu+gpu stress test ali samo cpu ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sedaj sem ga zamenjal za en 600W LC-Power in stvar dela, se ne restarta več. S tem https://www.mimovrste.com/napajalniki/l... ?  +12V1 - 18 A +12V2 - 18 A  Iz dežja pod kap si šel."
+    },
+    {
+        "role": "user",
+        "message": "Verjetno sem res prehitro obupal, vendar še vedno bi bila dilema ali grafika ali napajalnik po testu. Kje označiš cpu+gpu, samo cpu burner ima posebej gumb ? Ta LC-Power 600W je bil samo za test, za permanentno bo notri en Corsair CX."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tools -> Cpu burner, nato klikneš znotraj FM na \"burn-in test\" (za gpu).  Oz imaš znotraj Fm mape \"cpuburner.exe\" (za cpu) in \"FurMark.exe\" (za gpu)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "sem imel sam podben problem z Ati grafiko. Enostavno ko si npr zagnal video ali ko je startal windows media encoding test, ki je med testi pod windows experiance index se je masina zresetirala.  Problem je bil v encoding cipu na grafiku in sem dobil v garanciji menjano. zamenjaj grafiko za test z drugo pa probaj, ce problem izgine je to to..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Sicer pa pravilno delovanje napajalnika se ne da vedno preverit samo s CPU+GPU obremenitvijo, kdaj se napake pojavijo tudi v drugih okoliščinah. Čeprav ta z videom je kar nenavadna... Samo iz radovednosti: preden si menjal napajalnik, si poskušal PC povsem izklopit iz elektrike za ene pol ure? Meni je enkrat to pomagalo (pri drugačnem problemu).  @assistant_3: to je že bil naredil."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 Seveda je bil izklopljen vsaj pol ure iz elektrike, pa BIOS posodobljen in zresetiran... Tudi sam vem, da CPU+GPU test ni 100% test napajalnika, bolj obremenitve oz. \"če zdrži\". Problem je bil, ker je bil edini sprožitelj restarta predvajanje videa, skoraj nič drugega. Zato mi je bilo zelo čudno. In ja, tudi z drugo grafiko, kot že rečeno, je bila stvar ista."
+    },
+    {
+        "role": "assistant_5",
+        "message": "To se mi zdi zelo čudno, res da CPU+GPU test ni popoln test napajalnika, po mojih izkušnjah pa je furmark in hkrati prime 95 pokazal stabilnost sistema oz. napajlanika v večini primerov, saj sta GPU in CPU obremenjena 100% (sta največja porabnika). Čudno, da se pri zagonu videa takoj restartal, saj ni niti približno enako obremenjen."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kondenzatorji na mobo so ok ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 Sej ravno zato je tudi meni bilo to zelo čudno. Ma očitno je to to, ker sedaj dela ok, obremenjen, neobremenjen, predvajanje videa itd.   @assistant_0 Kondenzatorji so bili prvi pregledani, so \"solid\" varianta, tako da ja."
+    }
+]

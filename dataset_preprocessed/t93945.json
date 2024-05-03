@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Kako popravit spodaj tisti zamik, da tistega (zamika) ne bo. Nastavitve tabele so: border=\"0\" cellpadding=\"0\" cellspacing=\"0\". Celica (kot) je velika 10x10 (slika isto), nato pa imam sliko 1x10 raztegnejeno po celi širini naslednje celice, katere višina je 10 pikslov. Zakaj sploh nastane ta zbrka?  Aja, te celice imajo vklopljen nowrap.      Posebno pa me zanima zakaj mi Dreamweaver pod layout kaže višino 18 pikslov, v sami kodi htmlja pa imam lepo 10 pikslov. Zakaj DW MX ne upošteva navedene višine in jo zamenja z 18 pri prikazu"
+    },
+    {
+        "role": "assistant_0",
+        "message": "DreamWeaver ne pokaže 100% pravilno tako kot Opera ali pa Mozilla. Ampak prikazuje HTML tako da se ga lahko lažje editira.  Raje kot sliko objavi HTML KODO tega artefakta,. pol pa ti bomo lahko pomagali."
+    },
+    {
+        "role": "user",
+        "message": "Nekako mi je uspelo popravit tisto, ampak tudi Mozilla mi je tako prikazala stran??"
+    },
+    {
+        "role": "assistant_0",
+        "message": "kaki presledki so bli zraven slike ali pa celici si določil višino."
+    },
+    {
+        "role": "assistant_1",
+        "message": "tako kot je že PicNiK napisal: nekaj imaš v kodi zraven preveč presledkov (SPACE) ali kak LF (ENTER) ročno poglej v tisti del kode tabele in kake take fore zbriši, pa daj že tisti del objavi, da ti bodo lahko napisali točno kaj je narobe..."
+    },
+    {
+        "role": "user",
+        "message": "Sedaj sem nekaj dopolnil, pa me \"zajebava\" levi del. Prej pa mi je že prav prikazalo . Zgoraj je v redu.  koda:  - Druga tekmovanja</span> </td> <td nowrap><img src=\"image/left_v.gif\" width=\"10\" height=\"100%\" align=\"top\"></td> <td colspan=\"2\" bgcolor=\"#FFFF99\"><!--DWLayoutEmptyCell--> </td> </tr>  Samo ne mi reč, naj prilepim celotno kodo, ker je nepregledno in neberljivo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "nowrap ne rabiš, zbriši.  med span in td zbriši presledek.  Procente v IMG tag ne smeš pisat  Align ni treva da je top pri IMG tagu."
+    },
+    {
+        "role": "user",
+        "message": "Kako pa naj potem naredim, da bi bila slikica raztegnjena po celi dolžini celice? Če dam kot background picture, mi pa sploh nagaja z \"lomljenim\" izgledom."
+    },
+    {
+        "role": "assistant_2",
+        "message": "V photoshopu maš opcijo Slice, tako da probaj slikce razrezat pa ustvari en del ki je enak pa tist je pol lahko za background! Pol slikcam pust originalne dimenzije tist del pa nastavi kot background, da se bo ponavljal."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uploadaj tvojo stran s slikami nekam na internet pa nam pokaži."
+    },
+    {
+        "role": "assistant_3",
+        "message": "backgorund ma ene x in y (no)repeat fore v css."
+    },
+    {
+        "role": "user",
+        "message": "Glede uploadanja: (če je mišljeno name) Presegel sem limit 100MB tako, da za vsaj še teh 4 dni ne bo nič, razen če mi niso računa \"terminirali\". Bo treba naredit še kakšnega.   Največji problem pa imam ravno glede grafične postavitve in oblikovanja, ker nimam pri tem nobene prakse. Recimo,  tole. Kje naj se lotim, da bo spletna stran vsaj kolikor toliko všečna in tudi na pogled pregledna? Sam kolikor toliko znam uporabljati Photoshop, ampak ko pa je treba to prenesti v html in css sem pa mrzel.   Recimo, ko gledam druge strani (Voodoo Extreme, Slo-Tech, Joker, NGEMU, Nforce, Sharereactor, The Emule Project ... ) vidim zelo kompleksno strukturo tabel. In ko potem naložim DW MX ali Mozilla Composer imam že na začetku težave z samo osnovno postavitvijo, ker rata tabela v tabeli, tabela (celica) tam in tam . Na koncu odprem shranjene spletne strani in gledam, koliko tabel in celic je na kupu. Kje je to torej najbolj začeti? Na papir narisat osnovo, potem pa grafični \"prototip\", ali kaj?   Potem sem se malce pozanimal še o CSS1&2. Vidim, da je to kar fajn zadevca. Ko sem šel malce prebirati o prednostih CSS vidim, da je to sploh zelo dobra stvar. Tabele adijo. Ampak, strani, ki sem jih zgoraj napisal, uporabljajo CSS, ampak zakaj se še vedno uporablja tabele, če so pa z prihodom CSS nepotrebne. Samo zaradi združljivosti z starejšimi brskalniki? Na netu, je kar nekaj strani, kjer z CSSjem sploh ne uporabljajo več tabel in je ves izgled striktno narejen le z CSS ukazi in malce grafike.   Kar malce sem zmeden z vsem tem. Tabele, CSS pa še cel kup drobnarij. Nekomu sem celo zaupal grafično oblikovanje ampak sem dobil ven zmazek. Izgled je že v redu, samo tehnično je stran zmazek, ker je stran samo \"neumno\" razrezana slika, ne pa optimizirana glede na tabelo in postavitev.   Pomoč zelo dobrodošla. (Naj naredim raje temo o oblikovanju?)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Najprej najrediš eno osnovno tabelo, ki razdeli [Glavo/naslov/logo], [Menu/Gumbe] in [Vsebino]  |--------------------- | glava - logotip |-------------------- |menu| |____| |____| vsebina |____| |____| -------------------- noga  Tabela 1 vrstica, 1 stoplec: Glava - logotip ime strani  Tabela z dvema stolpcema: levo menu desno vsebina  Spodaj še noga, Copyright ali Copyleft, Creditsi, avtor in ostala solata.   Ne vem kaj je tukaj težkega   Raj pa se niti ne ubadaj brez tabel urejevat (samo CSS). Ker IE ne podpira CSS tako kot je treba boš imel samo prebleme s tem, še posebej ker si začetnik. Pa tudi na starješih browserjih so problemi(Brskalnikov verzije 4 niti ne povohat in niti ne testirat svojo stran na njih). Delaj s tebelami.   Ta tip ti je je verjetno kar iz Photoshopa exportiral zrezane slike v HMTLju, ker seveda je oslarija. Niti za silo ni to dobro."
+    },
+    {
+        "role": "user",
+        "message": "Pa kaj je s tem programom  . Noče in noče naredit tega kar hočem. Višina celice hočem, da je 10 pikslov! Ampak ne! Program mi da višino na 14, včasih 12, na manj pa sploh noče? In to že v začetni celici. Hočem zmanjšat. NE! Napišem višino. Še enkrat, ne prime.    Pa tudi tisto z sliko, da se ponavlja z CSS ukazom, mi prav noben brskalnik ne prikaže (IE6, FireFox 0.8, Mozilla 1.6). Naredi kot, da tam slike sploh ni! Pa sem že imel en primer, kjer mi je to že delalo. Je to sploh prav:  .horizontal { background-repeat: repeat-x; background-image: url(../image/top_h.gif); } .vertical { background-image: url(../image/left_v.gif); background-repeat: repeat-y;   Samo osnovo samo z logom pa imam že narejeno v CSS-ju in dela brez problema. Je pa malce drugačno od te \"tabelne\" , ki mi dela same težave."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Poskusi še v Operi ... najboljšem in najhitrejšem Internet Brskalniku.   Kaj da ti na steno narišemo, da če je pisava v celici velik 14 px bo višina celica 14 px ???? Pa ODSTRANI vse presledke, tabe in enterje V IZVORNI KODI celice!  Če uporabljaš zunanji CSS fajl moraš lokacijo slik napisati glede na ta CSS fajl in ne glede na HTML fajl."
+    },
+    {
+        "role": "user",
+        "message": "Sem sedaj preveril tudi velikost znakov in jih odstranil iz tistih celic. No, sedaj je končno tako, kot hočem sam.   Zanima pa me, ali se splača kombinirati tabele in plasti (layer - CSS) skupaj? Ali je boljše, da tega ne počenem?   In še, kako narediti celico (ali plast/layer) tako, da se mi desni rob ne poveča ko vnašam not besedilo, ki je širše od celice?"
+    },
+    {
+        "role": "user",
+        "message": "Hmm, kako to, da mi ne pusti popravljati mojih prejšnjih sporočil ?   Ena, n00bovso vprašanje: Če je celica \"samonastavljiva\" po širini ali to velja tudi za plast (fiksne dolžine), ki je v tej celici? Ker mi nikakor ne uspe, da bi se mi tekst lepo prelomil na koncu plasti in šel v naslednjo vrstico ampak, mi kar povečuje plast po širini. Jaz bi pa rad, da bi imel fiksno plast (in da bi se tekst prilagajal plasti in ne kontra).   Ko gledam druge strani, ni prav nobenega posebnega znaka za kaj podobnega, ampak prav lepo dela z prehodom v novo vrstico . Meni pa nikakor to ne pali."
+    }
+]

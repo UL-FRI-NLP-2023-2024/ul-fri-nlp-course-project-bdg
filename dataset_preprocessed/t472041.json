@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Danes sem dobil nov modem (by Siol). Zadeva je genexis (velikost pol povprečje garsonjere)... No uglavnem od tistega trenutka naprej preko WLAN-a ne dela internet. Vse je pravilno povezano (ni moja prva izkušnja z omrežji), pa hudič še zdaj ne brca... Probal sem z 2 Tomato firemwaroma, zdaj imam pa še DD-WRT in je povsod isti problem. WAN NE DELUJE. LAN: OK, WLAN: OK. In ja, vse sem že n-krat resetiral,... Najbolje, da priložim slikco kje je problem:     Na netu sem že pobral, da naj bi bil problem z velikostjo TTL.  Kakšna ideja?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Um...mogoče sem narobe razumel kar si napisal ampak WAN != wireless"
+    },
+    {
+        "role": "user",
+        "message": "Razumem ja, ravno zato sem napisal da WLAN dela, WAN pa noče :/"
+    },
+    {
+        "role": "assistant_1",
+        "message": "a nima siol pppoe ?  Če pa si prej imel takod a ti je dobil preko dhcpja ip naslov potem moras modem konfigurirati da se obnasa kot neke vrste router itd itd.."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 16. jun 2011 ob 00:17 izjavil:a nima siol pppoe ?  Če pa si prej imel takod a ti je dobil preko dhcpja ip naslov potem moras modem konfigurirati da se obnasa kot neke vrste router itd itd..  Ta naj bi že \"serijsko\" imel PPoE klicanje v \"sebi\"."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Se mi zdi, da imaš na routerju enak IP kot ga ima modem ponavadi... menjaj. Vem, da nebi smelo imet vpliva LAN na WAN... mogoče se pa pač modem in router ne razumeta. Lahko probaš tudi MAC na routerju menjat. Aja pa še to... prepričaj se, da si vključil kabel v pravi port na modemu."
+    },
+    {
+        "role": "user",
+        "message": "Hmm, glede na to da bi se moral router samodejno konfigurirat (kar tudi se glede na to, da deluje tako WLAN kot LAN bi rekel, da to ni problem)?  Aja pa še to... prepričaj se, da si vključil kabel v pravi port na modemu. Internet na ostalih računalnikih deluje BP, samo preko brezžične ne...."
+    },
+    {
+        "role": "assistant_2",
+        "message": "A ostali so povezani na router in deluje? Ker na teh siolovih modemih imaš DATA samo na enem ali dveh portih privzeto. Drugo je telefonija in tv... se da pa nastavit podatke na vse porte."
+    },
+    {
+        "role": "assistant_3",
+        "message": "genexis?  Ali niso to CPE-ji, ki jih daje Tritel na odprtih širokopasovnih omrežjih?  Bi se morda še pri njih kaj pozanimal..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 16. jun 2011 ob 10:06 izjavil:A ostali so povezani na router in deluje? Ker na teh siolovih modemih imaš DATA samo na enem ali dveh portih privzeto. Drugo je telefonija in tv... se da pa nastavit podatke na vse porte.  Ubistvu imam iz modema na switch in switcha pa naprej na PC-je in preko kabla delujejo vse možne kombinacije (preko switcha, preko routerja...) Uglavnem mreža deluje tako kot mora. In vem, da se da nastavit gor dol, saj pravim edini problem je WAN, vse ostalo dela."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Poizkusi namesto switcha na modem vklopit router, switch pa na prost port na routerju. Ker preku switcha ti siol dodeljuje IP-je napravam in si mogoče prek svojih razpoložljivih."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user:  Internet na ostalih računalnikih deluje BP, samo preko brezžične ne....   In vem, da se da nastavit gor dol, saj pravim edini problem je WAN, vse ostalo dela.  kako zdaj to mislis? meni nekako ne gre skupaj.  1. router na wan ne dobi ipja? potem vse kar priklopis na router nima dostopa do interneta. lahko pa dela lokalno... je to to? 2. brezzicno sploh ne dela? ali prek brezzicno dela samo lokalna mreza?  in se nekaj. ti modem tudi dela kot router? ce router izklopis, potem internet na racunalnikih priklopljenih preko switcha ali direktno na modem se vedno dela?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Možno da ma router 2 WAN naslova, enega za wifi in enega za LAN"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 16. jun 2011 ob 00:49 izjavil:@assistant_1 je 16. jun 2011 ob 00:17 izjavil:a nima siol pppoe ?  Če pa si prej imel takod a ti je dobil preko dhcpja ip naslov potem moras modem konfigurirati da se obnasa kot neke vrste router itd itd..  Ta naj bi že \"serijsko\" imel PPoE klicanje v \"sebi\".  Nastavi na pppoe in vpiši up ime& geslo...  Kaj imaš preko siola ? Dsl, ftth ?  Edit Iz tega sklepam da imaš optiko (nisi nič omenil tipa povezave) http://forum.amis.net/viewtopic.php?t=1...  Vprašaj na siol supportu če imajo vpisan pravilen mac modema, ker naj bi se uporabljal dhcp ?  Edit2 če net s samo genexis modemom deluje, potem moraš na routerju klonirati mac modema za wan port (tomato: Advanced / MAC Address) (kot pri kablaših)."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jao kako si ti napisal, tvoj prvi post bi moral takole zgleda, če sem prav našturidal iz te zmede.  Ti imaš modem v \"router\" načinu in router v \"acces point\" načinu. --> To drugič povej v prvem stavku OMG.  V tem primeru moraš imeti WAN port na routerju PRAZEN. Povezava modem-router mora biti LAN-LAN(če je kak switch vmes je vseeno)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 16. jun 2011 ob 10:15 izjavil:Poizkusi namesto switcha na modem vklopit router, switch pa na prost port na routerju. Ker preku switcha ti siol dodeljuje IP-je napravam in si mogoče prek svojih razpoložljivih.  Sem ravno poskusil, ne pomaga.  1. router na wan ne dobi ipja? potem vse kar priklopis na router nima dostopa do interneta. lahko pa dela lokalno... je to to? Ne, preko kabla VSE deluje tako kot mora (lokalno internet)  2. brezzicno sploh ne dela? ali prek brezzicno dela samo lokalna mreza? Brezžična dela mreža, ne deluje pa internetni dostop.  in se nekaj. ti modem tudi dela kot router? ce router izklopis, potem internet na racunalnikih priklopljenih preko switcha ali direktno na modem se vedno dela? Da modem je ob enem tudi ruter, tako da ne rabim več PPoE povezave imet (samo kabl notri in to je to). Preko kabla se lahko priklopim kamorkoli (modem, ruter, switch) in dela brez problema.  Nastavi na pppoe in vpiši up ime& geslo...  Kaj imaš preko siola ? Dsl, ftth ? Ne morem, ker to že AVTOMATSKO naredi modem. Gre pa se za SIOL optiko (20/20)  Edit2 če net s samo genexis modemom deluje, potem moraš na routerju klonirati mac modema za wan port (tomato: Advanced / MAC Address) (kot pri kablaših). Če prav razumem vpišem MAC od modema vpišem v MAC adress clone? Kako pridem do MAC naslova? Na samem modemu ne piše nikjer...  V tem primeru moraš imeti WAN port na routerju PRAZEN. Povezava modem-router mora biti LAN-LAN(če je kak switch vmes je vseeno). Hmm, saj ni blo tako težko, saj ti je ratalo pogruntat ane^^? Bom probal bolj razumljivo pisat od zdaj naprej! Modem (v mojem primeru tudi ruter), switch ter ruter so vsi med seboj povezani z kabli v LAN \"dozah\", INTERNET \"doza\" je prazna."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Škoda, ker tako kompliciraš. Router bi bil router in je... modem pa ni router, lahko pa vzpostavlja ppoe."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 16. jun 2011 ob 15:44 izjavil:Škoda, ker tako kompliciraš. Router bi bil router in je... modem pa ni router, lahko pa vzpostavlja ppoe.  Saj to je to, ne kompliciram jaz... Tehnik je tako nastavil in rekel, da naj bi modem tako deloval (nisem bil poleg pri montaži), meni pa ne rata dostopat do modema, da bi sploh karkoli spreminjal:( Kot kaže bo treba Siolu malo zatežit..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Predvidevam, da si probal 192.168.1.1 (s tem da dostopaš direkt ne prek kakega routerja ki ma po možnosti isti naslov) usr/usr? Ta je ponavadi pri siolu"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 16. jun 2011 ob 16:31 izjavil:Predvidevam, da si probal 192.168.1.1 (s tem da dostopaš direkt ne prek kakega routerja ki ma po možnosti isti naslov) usr/usr? Ta je ponavadi pri siolu  Seveda... Do ruterja lahko BP dostopam, do modema pa ne... Nič ne odpre..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Moraš bit direkt na modem priključen za to."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 16. jun 2011 ob 16:33 izjavil:Moraš bit direkt na modem priključen za to.  Vem, ne deluje..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mora delat. IP tvojega računalnika mora bit v rangu 192.168.1.x modem je pa 192.168.1.1. Mogoče pa vseeno bolje če pokličeš koga, da ti poštima."
+    },
+    {
+        "role": "user",
+        "message": "Mora delat. IP tvojega računalnika mora bit v rangu 192.168.1.x modem je pa 192.168.1.1. Bi moglo, ne mora :/  Mogoče pa vseeno bolje če pokličeš koga, da ti poštima. Jah, sem že 2 s Cisco certifikatom, pa nista mela pojma... Hmm, bomo vidl kaj bodo Siolovci imeli za povedat."
+    },
+    {
+        "role": "assistant_8",
+        "message": "-IP modema je (ipconfig na mašini na kablu pove kaj)? -IP routerja je 192.168.1.1 -na routerju imaš DHCP vklopljen? -ipconfig na mašini čez WiFi vrne kaj?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Router 192.168.10.1 ?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "za mac Vpiši v konzoli \"arp -a\" (ko boš direkt na modemu).  bi moral pokazati gateway \"ipconfig/all\"  Kot pišejo eni nizozemci naj bi bil genexis modem na 192.168.0.1 ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_8 je 16. jun 2011 ob 17:20 izjavil:-IP modema je (ipconfig na mašini na kablu pove kaj)? -IP routerja je 192.168.1.1 -na routerju imaš DHCP vklopljen? -ipconfig na mašini čez WiFi vrne kaj?  IP modema je: 192.168.0.1, tako da lahko zdaj tudi dostopam do modema (vendar nimam gesla (uporabniško ime je ali admin ali user). Z geslom sem poskusil: admin, user, password, tudi z geslom od interneta in uporabniškim imenom od interneta.  -IP routerja je 192.168.1.1: DA.  DHCP je vklopljen.  Ip config na WIFI-ju vrne (preko ruterja): IP: 192.168.1.138, subnet; 255.255.255.0, gateway: 192.168.1.1 (ruter).  za mac Vpiši v konzoli \"arp -a\" (ko boš direkt na modemu).  bi moral pokazati gateway \"ipconfig/all\" No sem dobil zdaj MAC modema: 00-0f-94-14-93-df (za IP 192.168.0.1- modem) (iz PC-ja, ki je na kablu), gateway pa je: 192.168.0.1, grem zdajle pisat v nastavitve za ruter, če bo kaj pomagalo, takoj poročam.  MAC clone NE pomaga :("
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hmm, jaz bi prvo dal modema v bridge mode (sedaj deluje kot modem+router, zato je jasno da mac clone ne more pomagati), tako da bi wifi router vzpostavil povezavo. user/user kombinacija ne dela (kaj pa samo user ali admin, torej prazno / user, ali prazno / admin ) ? Na genexis/siol strani ni nobene dokumentacije o zadevi . Potem pokliči na siol support in povej naj ga oni dajo v bridge mode.  Nato vpišeš njegov mac v wifi router (skloniraš kot sem pisal prej), tip povezave dhcp in mora delati net preko wifi routerja."
+    },
+    {
+        "role": "user",
+        "message": "user/user kombinacija ne dela (kaj pa samo user ali admin, torej prazno / user, ali prazno / admin ) ? Ha, prav si imel. Dokler ne tipkaš gesla te vrže notri Bedna...    Si lahko s tem kako pomagam?  Hmm, jaz bi prvo dal modema v bridge mode (sedaj deluje kot modem+router, zato je jasno da mac clone ne more pomagati), tako da bi wifi router vzpostavil povezavo. Rečmo, da je to zadnja možnost. Fora je v tem, da ruter ne prenese 20/20 linije:("
+    },
+    {
+        "role": "assistant_8",
+        "message": "Izklopi DHCP na wifi routerju... 192.168.1.1 definitivno ni pravi gateway. Kabel iz modema imaš ziher na LAN del routerja? P.S.: Pa router prestavi v pravi subnet 192.168.0.x."
+    },
+    {
+        "role": "user",
+        "message": "Se opravičujem za pozen odgovor, vendar imam zdaj še drug problem (da po nekje pol dneva pade download na cca 3-4MB tako, da sem zdaj že v drugo prijavil tehnično napako, pa dokler se tega ne poštima, ne bom rinil naprej... (mogoče je pa kaj narobe z modemom, ali kaj podobnega)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 16. jun 2011 ob 15:50 izjavil:@assistant_2 je 16. jun 2011 ob 15:44 izjavil:Škoda, ker tako kompliciraš. Router bi bil router in je... modem pa ni router, lahko pa vzpostavlja ppoe.  Saj to je to, ne kompliciram jaz... Tehnik je tako nastavil in rekel, da naj bi modem tako deloval (nisem bil poleg pri montaži), meni pa ne rata dostopat do modema, da bi sploh karkoli spreminjal:( Kot kaže bo treba Siolu malo zatežit...  Zateži Tritelu, ki ti je to napravo dal. Če ne verjameš, preveri papir, ki si ga podpisal za OŠO pogodbo. Tam lepo piše koliko in komu plačaš za kabel in \"modem\", posebej pa imaš pogodbo preko koga boš imel po tem kablu dostop do interneta"
+    },
+    {
+        "role": "user",
+        "message": "No, se mi danes še nekaj čarali (tako, da je vsaj za sedaj hitrost taprava- kolikor dolgo bo), je pa vse ostalo WTF ratalo...  Wifi: laptop dela, Honeycomb tablet dela (vse iz prvo, brez problema), mobitel se poveže ampak povezava ne dela če se postavim na glavo... Kakšna ideja? Kabl: moj pc dela (tako kot dela že ves čas), če povežem laptop preko kabla NE dela...  Dostop do modema: dela zdaj povsod samo preko mobija ne dostop do ruterja: ne dela nikjer, samo preko mobija  Vse je pa popolnoma isto povezano kot včeraj... WTF zdaj mi pa res ni čisto nič več jasno...  PS: v moji obupanosti dejansko razmišljam že o menjavi ruterja... Pozna kdo kakšno dobro mašinco, da ima 1GB mrežo (po možnosti) in prenese 20/20 povezavo? Ker zdajšni linksys je ne..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Dostop do modema: dela zdaj povsod samo preko mobija ne IP dodelil router zato imaš dostop dostop do ruterja: ne dela nikjer, samo preko mobija IP dodelil modem zato imaš dostop.  Izklopi DHCP na routerju ali vklopi vse na router. Boljši router bi rešil vse tvoje težave ja."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@user je 20. jun 2011 ob 11:26 izjavil:PS: v moji obupanosti dejansko razmišljam že o menjavi ruterja... Pozna kdo kakšno dobro mašinco, da ima 1GB mrežo (po možnosti) in prenese 20/20 povezavo? Ker zdajšni linksys je ne...  Mikrotik RB750G?  Potegne vse kar hočeš."
+    },
+    {
+        "role": "user",
+        "message": "Obvezno mora biti tudi wireless...  http://www.mimovrste.com/artikel/247004... Tale mi zgleda kar zanimiv. Kaj še predlagate?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Bejži stran od te poceni robe, ne bo šlo. Vsaj kaj takega po mojem: http://www.mimovrste.com/artikel/247003..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Do koliko E ciljaš ?  Ajde, malo pojasni novo situacijo...  V kakem načinu je sedaj genexis (ne vem, lahko se logiraš notri in pogledaš nastavitve) ? Katera naprava sedaj vzpostavi net povezavo itd... ? Kam se povežejo wifi naprave ?  Si kaj \"čaral\" z routerjem ? Resetiraj FW na routerju."
+    },
+    {
+        "role": "user",
+        "message": "Haha to ne moreš verjet, zdaj mi je pa mobitel začel delat, pa laptop ne vleče več :D  No nov ruter: kaj pa vem, malo priporočajte kaj se splača. Načelno raje manj kot več (ni potrebe po več kot 1GB mrežni ter wireless), nikakršnih USB-jev in podobnega (ni pa nič hudega če je zraven). Zdajle še enkrat flasham tomatota...  V kakem načinu je sedaj genexis (ne vem, lahko se logiraš notri in pogledaš nastavitve) ? Katera naprava sedaj vzpostavi net povezavo itd... ? Kam se povežejo wifi naprave ? Genexis je tako kot že od začetka: kliče preko PPPoe tako, da je praktično v router mode. Sem pa že vse 10x resetiral,.. nastavljal po občutku, po nasvetih..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@user je 20. jun 2011 ob 14:25 izjavil:Haha to ne moreš verjet, zdaj mi je pa mobitel začel delat, pa laptop ne vleče več :D   A maš mogoče omejen DHCP range?"
+    },
+    {
+        "role": "user",
+        "message": "Sem probal tudi DHCP izklopit, pa nič ne pomaga... Saj pravim, sem že malo obupal nad vsem, tako da zdaj primarno iščem nov ruter :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Verjetno bos imel enak problem ob enakem priklopu kot sedaj tudi z novim routerjem. Probaj vse prek routerja ze sedaj, samo ppoe pusti na modemu."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 20. jun 2011 ob 15:17 izjavil:Verjetno bos imel enak problem ob enakem priklopu kot sedaj tudi z novim routerjem. Probaj vse prek routerja ze sedaj, samo ppoe pusti na modemu.  Zdaj sem probal še originalen firemware in je isto... Vse ostalo dela, laptop noče (samo preko lana).  Ma po pravici povedano mam že kar dost tega (nikoli nisem bil kakšen ljubitelj mrežnih nastavitev...), ravno zato bi najraje poskusil z novim ruterjem. Pa še pod \"novo igračko\" ga bom lahko uvrstil :)"
+    },
+    {
+        "role": "user",
+        "message": "Wow just WOW....  Zdajle sem nesu modem v zgornjo nadstropje in ga priklopil na kabl (toliko da bo mati imela vsaj preko LAN-a internet) in zadeva dela preko žične, preko brezžične povezave, vse... Kar na enkrat ni nobenega problema... Mu moja slaba karma škodi al kaj??"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Hard reboot brez štroma needed ?"
+    },
+    {
+        "role": "user",
+        "message": "Vsaj 10x ven štrom potegnu (od nekaj sekund pa do cele noči...)"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Vse skup se bere kot neko kreganje oz. racing. Maš morda dva DHCP-ja aktivna? Mogoče podvojen MAC naslov kje? Magari pri sosedu,do katerega pricurlja tvoj WiFi signal.  Poskus ugasnit čist vse kar je možno in povezat minimalno število naprav."
+    },
+    {
+        "role": "user",
+        "message": "Saj kot sem rekel, za zdaj vse dela, tako da se ne pipam zadeve :)  Drugače pa ne. V mojo sobo ne vleče nobeden drug signal, sem pa ravno včeraj bil pri sosedu in njegov laptop tudi ni vlekel mojega... Z DHPC pa sem poskusil že vse (clien, server, disable, enable...) pa nič ni pomagalo."
+    },
+    {
+        "role": "user",
+        "message": "Neverjetno: kakor je začelo delat je danes nehalo delat (se pripeljem iz Portoroža in mobitel ne dela več...)   Tako, da sem zdaj nazaj k nakupovanju ruterja: predlagali ste http://www.mimovrste.com/artikel/247003... pa tudi linksys E3000 naj bi bil cool. Kaj pa kaj še cenejšega? Toliko, da si naredim en seznam možnih ruterjev za določene dnarje..."
+    }
+]

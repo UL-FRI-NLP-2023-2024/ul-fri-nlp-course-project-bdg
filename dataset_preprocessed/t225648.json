@@ -1,0 +1,126 @@
+[
+    {
+        "role": "user",
+        "message": "Dva tedna nazaj sem si na Ganymed 822+ nastavil svoje geslo za http dostop, ki je bilo pravzaprav passphrase (uporabil sem stavek iz 20 znakov). Sedaj pa se ne morem prijaviti preko httpja, kot da bi bilo geslo napacno (pa ni)  Ali slucajno obstaja nacin kako bi naredil password reset?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pokliči na 080 1000 in ti bodo pomagali!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mislim sa so te dni nadgrajevali naprave in tako se je geslo najverjetneje tudi spremenilo..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "a ve kdo isto stvar samo ponudnik je volja?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Geslo za dostop preko http?? How??"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3  Omejen managment teh 822p se dela preko http-ja (port 80 ali 8080) ali pa preko telneta. Zacetni uporabnik/geslo je user/user, sem sem spremenil geslo na nekaj zelo dolgega kar povrh vsega vsebuje se presledke (ja saj vem  )...  Ce je ponudnik Siol dostopas do napreve na IPju 192.168.1.1... Se oglasa se na nekaj portih ne samo na zgoraj nastetih... (53 UDP/TCP in 50000, 520, 67, 68 UDP)  Nisem pa se imel casa zvohati kaj je na portu 50000"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Hmm na tem IP-ju ni nič  , mogoče je moj FW (ClarkConnect) kriv, bom jstr še z fotrovim prenosnikom k ne laufa prek FW probu"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Jaz imam isti modem pa mi včasih tud napiše  da je geslo neveljavno, resetiram računalnik in poskusim znova potem pa me prijavi. Jaz mislim da imajo ti komunikacijski prehodi čudn software gor."
+    },
+    {
+        "role": "assistant_5",
+        "message": "probaj te uporabit tvoj password samo do prvega presledka. Zadaj mas eno pikico. Ftakni tam noter nekaj ostrega. Potegni iz stroma pa drzi pritisnjeno. Medtem pa daj modemu spet napajanje in drzi tak dolgo dokler nebo zacela cisto desna lucka rdeco utripat. Po tem se bi mogo resetirat nazaj na user user.  da deluje web vmesnik pa moras met modem direktno prikljucen na racunalnik brez ruterjev in ip mrezne mora bit 192.168.1.2 medtem ko je sam IP modema http://192.168.1.1"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Heh tist reset gumb bi mogu pomagat...  Sicr pa zj sm jst pršu na modem... ampak prek routerja mi pa noče delat    net-->192.168.1.1(modem)-->192.168.0.1(ClarkConnect)-->192.168.0.2(comp)  Sm probu z spreminjanjem IP-ja routerju na 192.168.1.2 ter compu na 192.168.1.3 pa ne potegne"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Nastavi na vseh treh zadevah netmask 255.255.254.0"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mam na vseh teh treh zadevah netmask 255.255.255.0"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Saj pravim, nastavi tako kot sem zgoraj napisal in še enkrat probaj..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Em ja mal sm firbčn... kaka je razlika med 255.255.255.0 ter 255.255.254.0?? A ni fora v tem da maš na vseh napravah isti netmask in se naj bi vidle...?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne. S pomočjo netmaska določiš range oz. 'globino' omrežja, ki se med sabo vidi. Se pravi če nastaviš netmask 255.255.255.0 se lahko vidijo samo IPji znotraj xxx.xxx.xxx.[0-255], če nastaviš netmask 255.255.254.0, imaš lahko omrežje npr. xxx.xxx.[0-1].[0-255] in se bodo vsi med sabo videli..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Aja zj pa kapiram"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hm, mene pa zanima kako pridem na http od tega adapterja od volje:  Ethernet adapter Local Area Connection:  Connection-specific DNS Suffix . : Autoconfiguration IP Address. . . : 169.254.105.43 Subnet Mask . . . . . . . . . . . : 255.255.0.0 Default Gateway . . . . . . . . . :  PPP adapter voljaDSL:  Connection-specific DNS Suffix . : IP Address. . . . . . . . . . . . : 213.172.243.94 Subnet Mask . . . . . . . . . . . : 255.255.255.255 Default Gateway . . . . . . . . . : 213.172.243.94  Sm probavu vse žive IP pa ne pridem gor, tud če vpišem IP na lokal Ethernet kartici v isti subnet 213.172.243.xxx  Zihr se da, sam sem jest mal premal podkovan v tem"
+    },
+    {
+        "role": "assistant_7",
+        "message": "jst mam pa en problem, zdej sm ta modem nastavu za route mam gor 2 kompa, sam zdej mi domena ne dela, mi vrže modem/router kr ma zdej kao IP na kero je domena, a mi loh kdo pove kko to usposobm???"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Na Volji imajo (za razliko od Siola) modeme zaklenjene. To pomeni, da: 1. Nimaš dostopa, da bi karkoli spreminjal 2. Ganymede, ki sicer nudi 4 ethernet izhode, ima blokirane izhode 2x, 3x, 4x ....priklpoiš se lahko samo na 1x"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Živjo!  Mene pa zanima, kakšno je geslo in user za ta isti modem Ganymede, ki sem ga dobil pri Siolu ( Modri Paket), namreč siolovci so začetno geslo spremenili...  Hvala!"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Mene pa zanima kdo upgrajda FW na Ganymede. Telekom ali ponudnik interneta? tnx"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_9  username: user password: user  @assistant_10 ponudnik interneta"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Si bom malo to temo sposodil da nebom nove odpiral... Zanima me če ima kdo mogoče admin (root) password za Ganymede 822 (to ni user:user, ki ga siol določi za user dostop). Username za admin dostop je bilo enostavno dobit preko telnet-a, passworda pa mi nikakor ne uspe, ker me z danim user:user spusti samo v en okleščen shell. Če ima kdo kakšno idejo...?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mogoče kdo ve kater IP si dodeli Ganymede, če je v mreži že obstoječ 192.168.1.1?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "kako se dostopa do ganymede preko telnet... sem poslusil telnet.... potem pa mi napise un znak od iskratela pa dam user, user... pa je login failed... preko weba mi pa dela na user, user ali mogoce kdo ve admin username pa pass? ker baje je na teh modemih linux gor in bi blo fajn mal pokokat gor kaj se v resnici dogaja?1 any ideas?"
+    },
+    {
+        "role": "assistant_13",
+        "message": "@sverde:v IE ali mozillo al kaj pač maš napiši 192.168.1.1 (default gateway v local area connection) pa se ti poveže na modem, geslo pa ti je že itak povedal nekdo prej"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Živijo!  Pa kaj je res tako težko razkriti Admin geslo za Ganymede822p? Pod user uporabnika me normalno spusti not, samo ne morem nastavljat firewall-a, zato bi rad admin pass. Če je težko povedat preko javnega foruma, naj mi nekdo napiše pod zasebno, če ve pass!  Hvala! ... LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mene pa zanima, preko katerega IPja je možno dostopati do tega modema v primeru, če v mreži že imam napravo z IPjem 192.168.1.1? Namreč normalno delujeta obe napravi, torej mora genymade imeti nek drug IP, ki pa mi ga nikakor ne uspe ugotoviti..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Prijavi se pod user/user in nastavi nov ip"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Tudi jaz sem naletel na problem enega porta na Ganymede 822 od Volje. 2.3.4. port so rezervirani za IPTV ali karkoli že. Sem vpraašal na tehnično pomoč Volje in pravijo, da se drugače ne da.  Torej, je do danes že kdo izbrskal geslo za dostop do nastavitev, aktivacije usmerjevalnika v tej napravi. Se mi zdi brez veze dodajat še eno napravo v sistem samo zaradi še enega PC-a...."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Sem prebral vse kar se tiče povezovanja Linksysa WRT54GL in Ganymeda 822+ in vse nastavil pa mi še vedno ne dela.  V prvem primeru dostopa do ganimeda (http://192.168.1.1/) mi je uspelo priti not in izbrisati PPP login info (kot se svetuje zgoraj). Sedaj pa s tem IPjem več ne pridem na modem!?!  Na router pridem b.p.  Lahko kdo lepo prosim natančno po korakih napiše nastavitve modema in nato še routerja, da bom lahko prišel na net tudi skozi router.  Vnaprej hvala"
+    }
+]

@@ -1,0 +1,146 @@
+[
+    {
+        "role": "user",
+        "message": "Pozrdavljeni,  ali kdo ve kje bi se dalo dobiti 12v servo motor 300PRM (ali več - do 500) in navor 500 oz in oziroma kakšnih 30kg/cm.  motor bi se napajal iz 12v akumolatorja, včasih bom potreboval hitro spreminjanje smeri vrtenja, ali bi potreboval kakšno varovalo da ne uničim akumolatorja ?   LP"
+    },
+    {
+        "role": "user",
+        "message": "mogoče bo lažje če kdo ugotovi kakšen motor je uporabljen v videu:    v bistvu delam nekaj podobnega kot je tisti EZ-Steer - ki obrača volan.   trenutno sem uporabil servo motor ( http://www.pololu.com/catalog/product/1... ) vendar sem ga moral rahlo razdreti in omogočiti da se vrti neomejeno."
+    },
+    {
+        "role": "user",
+        "message": "najverjetneje je notri stepper motor.  mi lahko kdo to potrdi   LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zanimiva stvar. Po vsej verjetnosti uporablja rotary encoder za določanje pozicije. Tale na wikipediji na sliki dela po tem pricipu Servomechanism @ Wikipedia. Stepperji bi verjetno bili tudi ok vendar so precej dragi, tako da bi moral malo preverit po spletnih trgovinah kaj se bolj splača."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pravzaprav sploh ne rabiš servomotorja na volanu, bi bil dovolj navaden kratčni motor s krtačnim krmilnikom, s katerim lahko krmiliš motor v obe smeri. Najtežja stvar je narediti napravo, ki vrača feedback smeri vožnje. Za grobo vodenje bi bil dovolj GPS, za natančno pa obvezno nekakšna naprava kot je prikazana na tvojem posnetku. Nato sledi programiranje mikrokontorlerja in cela znanost okoli PID kontrolerjev. Zadeva vsekakor ni enostavna."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 25. feb 2012 ob 14:44 izjavil:Pravzaprav sploh ne rabiš servomotorja na volanu, bi bil dovolj navaden kratčni motor s krtačnim krmilnikom, s katerim lahko krmiliš motor v obe smeri. Najtežja stvar je narediti napravo, ki vrača feedback smeri vožnje. Za grobo vodenje bi bil dovolj GPS, za natančno pa obvezno nekakšna naprava kot je prikazana na tvojem posnetku. Nato sledi programiranje mikrokontorlerja in cela znanost okoli PID kontrolerjev. Zadeva vsekakor ni enostavna.     ok, hvala za predlog, si bom malo še ogledal krtačne motorje.  ja glede vodenja oz. programa imam to že narejeno, najbolj imam problem sedaj, ker ne poznam prav dobro motorjev, sem pa že delal nekaj z krmiljenjem motorjev iz rač."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 25. feb 2012 ob 14:44 izjavil:Pravzaprav sploh ne rabiš servomotorja na volanu, bi bil dovolj navaden kratčni motor s krtačnim krmilnikom, s katerim lahko krmiliš motor v obe smeri. Najtežja stvar je narediti napravo, ki vrača feedback smeri vožnje. Za grobo vodenje bi bil dovolj GPS, za natančno pa obvezno nekakšna naprava kot je prikazana na tvojem posnetku. Nato sledi programiranje mikrokontorlerja in cela znanost okoli PID kontrolerjev. Zadeva vsekakor ni enostavna.  Najlažje je potem uporabit modificiran servo, kakor je že avtor teme poskušal.  Je pa cenovno precej neugodna rešitev."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 25. feb 2012 ob 15:18 izjavil:@assistant_0 je 25. feb 2012 ob 14:44 izjavil:Pravzaprav sploh ne rabiš servomotorja na volanu, bi bil dovolj navaden kratčni motor s krtačnim krmilnikom, s katerim lahko krmiliš motor v obe smeri. Najtežja stvar je narediti napravo, ki vrača feedback smeri vožnje. Za grobo vodenje bi bil dovolj GPS, za natančno pa obvezno nekakšna naprava kot je prikazana na tvojem posnetku. Nato sledi programiranje mikrokontorlerja in cela znanost okoli PID kontrolerjev. Zadeva vsekakor ni enostavna.  Najlažje je potem uporabit modificiran servo, kakor je že avtor teme poskušal.  Je pa cenovno precej neugodna rešitev.    aha, ali bi mi lahko prosim še kdo dodal kakšem link kje kupiti to stvar (npr.: eBay ,...) , da si bom lažje tudi predstavljal razlike v ceni  p.s.: motor naj bo močan in hiter, max. 12 V (kot je prikazano v videu zgoraj)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Koračni motor nebi bila slaba zadeva saj ne rabiš povratne informacije(software ve koliko korakov je prestavil v katero smer..) kontrolerje pa že dobiš narejene ali pa načrt....Za to zadevo kamot posvojiš zadevo iz ene osi cnc stroja oz lahko si pogledaš kako je narejeno..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_2 je 25. feb 2012 ob 15:29 izjavil:Koračni motor nebi bila slaba zadeva saj ne rabiš povratne informacije(software ve koliko korakov je prestavil v katero smer..) kontrolerje pa že dobiš narejene ali pa načrt....Za to zadevo kamot posvojiš zadevo iz ene osi cnc stroja oz lahko si pogledaš kako je narejeno...   Fora je v tem, da tukaj te ne zanima pozicija volana v vozilu, ampak pozicija vozila v prostoru, tako da kakršenkoli informacija o poziciji volana je odveč."
+    },
+    {
+        "role": "user",
+        "message": "s pravi bom potreboval nekaj takega, le da bi bilo le za 12v (ne pa za 500VAC kot je v linku) http://www.ebay.com/itm/CNC-NEMA-23-Ste..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ne vem če se zadevi izključujeta ker če motor zasuče volan oz kolesa za npr 30stopinj, gps pa hoče manj potem volan zasuče malo manj in počaka nekaj časa da vidi če je ok pa potem popravi.. Ni bolje če software točno ve za kakšen kot so obrnjena kolesa in potem software glede na info iz gps točno ve koliko more zmanjšat ta kot da pride do željenega mesta..?"
+    },
+    {
+        "role": "user",
+        "message": "Program je zasnovan tako da mi gps oz program že določa koliko vozilo odstopa od željene linije vodljivosti (vožnje), tako da glede na hitrost vozila program določi za koliko se bo obrnil volan.  Tako da sem imel sedaj narejeno, da je bilo to določeno časovno, se pravi da je program pošiljal ukaz o začetku vrtenja motorja v eno smer toliko časa da je prišlo vozilo nazaj v določeno linijo vožnje.   Zadeva mi je delovala dobro, vendar sem imel preslab motor in tudi sistem katerega sem naredil je bil zgolj poizkusni. (uporabljal sem servo motor, katerega sem rahlo predelal tako da se je vrtel neomejeno - na koncu je izgledal kot navaden dc motor)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_2 je 25. feb 2012 ob 15:58 izjavil:Ni bolje če software točno ve za kakšen kot so obrnjena kolesa in potem software glede na info iz gps točno ve koliko more zmanjšat ta kot da pride do željenega mesta..?   V bistvu imaš prav. Če pride do nenandega zasuka volana bi res bilo boljše, da je servo."
+    },
+    {
+        "role": "user",
+        "message": "aha, a pa mogoče kdo ve kje bi se dalo dubiti / kupiti tak servo (12v hitro obračanje, velik navor + neomejeno vrtenje) vesel bi bil kakšnega linka, sem kar nekaj že pregledal po internetu, vendar so te modelarski bolj slabi, oz. niso dovolj močni."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 25. feb 2012 ob 16:22 izjavil:Zadeva mi je delovala dobro, vendar sem imel preslab motor in tudi sistem katerega sem naredil je bil zgolj poizkusni. (uporabljal sem servo motor, katerega sem rahlo predelal tako da se je vrtel neomejeno - na koncu je izgledal kot navaden dc motor)   Če si ga predelal, da se neomejeno vrti potem ni več servo. Ko ga tako predelaš postane samo navaden krmilnik obratov + motor."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 25. feb 2012 ob 17:01 izjavil:@user je 25. feb 2012 ob 16:22 izjavil:Zadeva mi je delovala dobro, vendar sem imel preslab motor in tudi sistem katerega sem naredil je bil zgolj poizkusni. (uporabljal sem servo motor, katerega sem rahlo predelal tako da se je vrtel neomejeno - na koncu je izgledal kot navaden dc motor)   Če si ga predelal, da se neomejeno vrti potem ni več servo. Ko ga tako predelaš postane samo navaden krmilnik obratov + motor.   res je, vendar nimam izkušenj s tem in ker sem napačnega kupil, sem se moral znajti, za prvo silo je deloval dobro, vendar je bil prepočasen in premalo močan. upam da kdo najde kakšen motor ki bo res močan in hiter motor.  ali koračni motorji ko ne obratujejo držijo svojo lego (zavirajo če jih do hoče premakniti) ali jih hitra sprememba smeri uničuje, oz, če so dovolj \"eksplozivni\"- hitri pri zagonu, oz le rahlem obratu ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Koračni motor se premika po korakih in tja ko ga postaviš tam drži dokler ne dobi komande...So razližne hitrosti ter moči samo glede 12V ti ne vem rečti če delajo.."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 25. feb 2012 ob 17:01 izjavil:@user je 25. feb 2012 ob 16:22 izjavil:Zadeva mi je delovala dobro, vendar sem imel preslab motor in tudi sistem katerega sem naredil je bil zgolj poizkusni. (uporabljal sem servo motor, katerega sem rahlo predelal tako da se je vrtel neomejeno - na koncu je izgledal kot navaden dc motor)   Če si ga predelal, da se neomejeno vrti potem ni več servo. Ko ga tako predelaš postane samo navaden krmilnik obratov + motor.  A bejš bejš, potem so continuous rotation servos čisti nateg al kaj?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 je 25. feb 2012 ob 18:14 izjavil:A bejš bejš, potem so continuous rotation servos čisti nateg al kaj?  Če je tak, da si zapomni pozicijo je druga stvar. Če predelaš servo, tako da vzameš potenciometer ven in narediš voltage divider namesto njega, definitnivno ni več servo."
+    },
+    {
+        "role": "user",
+        "message": "ok, po mojih sklepanjih bi mi najbolj ustrezal koračni motor.   po brskanju po spletu sem ugotovil da bi bil najbolši koračni motor po \"standardu NEMA 23\" (to sem danes prvič videl da so motorji glede na navor razdeljeni po standardih .... ali kakor koli že ....)  se pravi bom potreboval usb krmilnik: http://www.ebay.com/itm/USB-Stepper-Mot...  in koračni motor: http://www.ebay.com/itm/NEMA23-425-oz-i...  mi lahko še nekdo razloži bistveno razliko med bipolarnim in unipolarnimi ? kakšno hitrost dosega tak motor pri 12v, ter ali je moč enaka (425 oz-in ali 28kg/cm pri 12 v) ? ali je izbira usb krmilnika in motorja dobra ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Razlika med unipolarnimi in bipolarnimi je v driverju. Za bipolarne imaš ponavadi 4 žice in potrebuješ double H-bridge za poganjanje, za unipolarne 6 žic ali več pa ne potrebuješ H-bridge.  Razlika je tudi v moči in teži motorjev pa v obnašanju nenapajanega motorja ter zaviranju ampak ne vem točno.  Za 12V ne vem ampak pri nas to prodaja tudi kolektor. RS232 ali 485 ...  Je pa kar drago."
+    },
+    {
+        "role": "user",
+        "message": "aha, ali potem mogoče kdo ve, če je moja izbira (2 posta nazaj so linki) dobra, glede na to po čemer sprašujem že celo temo ?"
+    },
+    {
+        "role": "user",
+        "message": "Mi lahko kdo potrdi oz. me popravi pri moji odločitvi za nakup.  Bipolarni so v startu močnejši (imajo več navora) zato gledam za bipolarnimi motorji in usb krmilniki (mogoče bipolarni motor NEMA 23 425 oz-in ali 28kg/cm pri 12 v) .  motor bi imel max 12V.   krmilnik: http://www.ebay.com/itm/USB-Stepper-Mot... motor: http://www.ebay.com/itm/NEMA23-425-oz-i...  (nevem točno ali je motor - na linku zgoraj bipolarni, mogoče kdo ve ? )"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kaj pa ko bi kupil en poceni vijačni vrtalnik in ga razstavil? Navora kolikor hočeš, dela z 12V, krmiljenje je preprosto."
+    },
+    {
+        "role": "user",
+        "message": "ok, a pa se da na hitro spreminjanje smeri vrtenja, ter kateri motor vsebuje ?   (mi prelagaš kateri usb krmilnik naj uporabim v takem primeru)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ponavadi so noter krtačni motorji. Za krmilit bo pa dobra vsaka stvar, ki ima H bridge. Možno pa tudi, da bi se dalo \"pohekat\" krmilnik, ki je že v vrtalki, da ga krmiliš s par signali."
+    },
+    {
+        "role": "user",
+        "message": "imaš mogoče kakšen link kako to izgleda, ker se ne spoznam ravno na take zadeve"
+    },
+    {
+        "role": "user",
+        "message": "kakšen se vam zdi tale krmilnik, vem da je malce drag, vendar če je kaj bolšega za koračne motorje mi pošljite link  http://www.ebay.com/itm/Arcus-Tech-Perf..."
+    },
+    {
+        "role": "user",
+        "message": "malo se mi že mudi z projektom , zato upam na čimprejšna pojasnila predloga."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Hm, če si lahko privoščiš ta kontroler, potem si poglej tole in tole, pa izbereš dovolj močan stepper, krmilnik z RS232 povezavo in boš imel še najmanj problemov. Zvežeš skupaj, priklopiš na napajalnik, priklopiš na PC in gre. Zadevo dobiš dostavljeno v nekaj tednih, poštnina pride ca. 25 funtov."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Prešli ste na koračne motorje... Samo za v razmislek bi predlagal nek enosmerni motorček z reduktorjem, dovolj močan seveda, in na koncu enkoder.  Absolutne pozicije volanskega obroča ne potrebuješ (mogoče merilna palica na kolesih), kljub temu lahko natančno, hitro in močno vrtiš. Tudi če cukne se prek reduktorja motor nebo preveč obrnil, ga pa tako ali tako potegneš nazaj.  Poglej si na youtube kaj pod dc encoder. Ne potrebuješ dragih delov."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za informacije, ja ta ideja glede enosmernega motorčka reduktorja in enkoderja se mi zdi tudi dobra.  video za predstavo:   vendar pa trenutno na hitro na internetu nisem našel nobenega 12V dovolj močnega in hitrega motorja.  takole naj bi potem izgledal (ta na linku je preslab): http://ttmotor.en.alibaba.com/product/3...  ...kako je z usb krmiljenjem ?  pa če kdo najde dovol močan motor z enkoderjem in reduktorjem, bi ga prosil za link"
+    },
+    {
+        "role": "user",
+        "message": "evo verjetno bi jaz potrebval tak motor (2. slika), vendar ta je brez encoderja: http://www.indiamart.com/tecxtra-nagpur...  samo še vedno nevem kako je z usb krmiljenjem"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Po resnici povedano še nisem nikjer tega uporabljal. Poišči po ebayu, alibaba, ... Na farnellu lahko malo poiščeš tukaj si.farnell.com. Na hitro sem malo pogledal in našel tole pdf -> glej spodaj kaj vse paše gor na motor (poišči še kje kaj cenejšega). Poglej pri izdelkih kere firme so in povprašaj direktno na firmo če ni nikjer nič pametnega.  USB krmilnik boš dobil če boš pripravljen plačat. Drugače pa en FTDI čip in mikrokontroler ter driver za motor bi te prišlo tko na uč max 30€ (materjal)."
+    },
+    {
+        "role": "user",
+        "message": "ogledal sem si te motorje, in me najceneje in še kar zadovorljivo glede delovanja pride motor iz akumulatorskega vrtalnika, vendar je sedaj vprašanje, kje dubiti ali kako narediti usb krmilnik. potrebni je dubiti takega da lahko spreminja pola za vrtenje levo in desno.  ena izmed možnosti je tale: http://www.pc-control.co.uk/motorbee_in... in potem motor priklopim na 2 mesta za motorja, 1 za eno smer in drugi za drugo smer vrtenja"
+    }
+]

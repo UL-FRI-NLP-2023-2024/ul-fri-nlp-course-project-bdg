@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni!  Imam problem,s katerim se že ves dan zejbavam:S  V hoferu sem kupil Wi-fi ojačevalec.  Sedaj mi ga nikakor ne uspe povezati,da bi delovalo..  Navodila so takšna: na kratko:)  1-Priklop ojačevalnika na elektriko(že najde wi fi ) 2-priklop ojačevalnika preko mrežnega kabla na računalnik 3-Vpis na ojačevalnik preko ipja(v brskalnik vpišem IP in se prikaže stran za nastavitev ojačevalca) 4-Vpis Stalnega IPja v ojačevalnik z podmasko omrežja(255.255.255.0)(če se vpišem na router mi piše IP routerja in preko koga je povezan-telekom,telemach) 5-Tale ip in podmasko omrežja moram vpisati v nastavitvah ojačevalnika v katerega sem se prijavil preko ipja. 6-Potem dam išči wifije,in najde moj domači wifi signal,potem vpišem geslo wifi domačega wifi signala,in shranim nastavitve.  Takoj ko shranim nastavitve, izgine ime wifi ojačevalnika,in to je to...  Kaj delam narobe?  Uporabljam pa modem fritzbox:)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hoferjev ojačevalec je zanič kupi Tendo za 40€ dela preverjeno. Ne potrebuješ nobene zajebancije z gesli pa nič."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@nodi ne prodajaj bullshita!  @Lujz tvoj problem je v tem, da nimaš pojma o osnovah TCP/IP.  Ko repeater prvič zaženeš, se ti oglaša s tovarniško prednastavljeno IP adreso. Ko se tvoj računalnik poveže z njim, od njega, preko DHCP dobi IP naslov, ki je v območju tovarniško prednastavljenega na repeaterju - zato se lahko povežeš nanj.  Ko nato spremeniš nastavitve in jih shraniš, je popolnoma logično, da se ti na istem naslovu ne bo več oglašal.  Najbolj preprosto bo, če odklopiš kabel, počakaš da računalnik zazna, da si ga odklopil in ge priključiš nazaj. Tako bo računalnik spremenil svojo IP adreso (so tudi druge možnosti, a je ta najbolj 'trotelziher'). Nova IP adresa bi morala biti iz območja, ki ga dodeljuje tvoj router.  Če si repeaterju vpisal fiksno adreso (priporočljivo), se nanj povežeš podobno kot pri inicializaciji, le da tokrat vpišeš naslov, ki si mu ga ti dodelil - namesto tovarniško prednastavljenega, ki ni več veljaven."
+    },
+    {
+        "role": "assistant_0",
+        "message": "http://www.ceneje.si/Izdelek/3257406/ra...   tole. Meni je Hoferjev stalno prekinjal povezavo, po tem ko je sem vzpostavil pass pa username oz se povezal s pc-jem."
+    },
+    {
+        "role": "user",
+        "message": "@ seminesanja  Ja, pojma nimam:)   Bi mi lahko vse skupaj bolj podrobno opisal, kako naj naredim? Sedaj bom vse resetiral nazaj na tovarniške nastavitve. In potem vse od začetka.  Prosim za pomoč, če bi bil tako dober in mi ponagal? Lo"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če ne veš kaj delaš, bi bilo najbolje, če prosiš kakšnega kolega, ki se vsaj malo spozna, da ti on to zadevo nastavi.  Sicer ni neka raketna znanost, ampak če niti ne veš dobro, kaj pomenijo določeni pojni, ti je teško dati navodila, pri katerih ne moreš zaiti na 'stranska pota'.  Predenj karkoli z repeaterjem čaraš, preveri kako imaš nastavljen svoj router. Zanimajo te podatki nastavitev za LAN. Zapiši si IP naslov, netmasko, naslov DNS strežnika. Nato še preveri kako imaš nastavljen DHCP strežnik. Ugotoviti moraš, kakšno fiksno IP adreso boš lahko dodelil repeaterju. če npr. DHCP strežnik podeljuje naslove od 192.168.110.10 - 100, potem lahko podeliš 192.168.110.110 repeaterju (v kolikor ta naslov nisi že kam drugam podelil).   Tako si si nabral naslednje podatke:  - IP naslov routerja (ta bo na repeaterju default gateway) - netmasko routerja (ta bo na repeaterju netmaska repeaterja) - IP naslov ki ga boš podelil repeaterju - IP naslov DNS strežnika  Ko resetiraš repeater na tovarniške nastavitve in ga ponovno konfiguriraš, mu vneseš podatke, ki si jih predhodno pripravil.  Ko boš shranil novo konfiguracijo na repeaterju, boš do njega dostopal preko novega naslova, ki si mu ga dodelil. Če ne gre 'iz prve', repeater reštartaj (iztakni iz elektrike in vklopi nazaj)."
+    },
+    {
+        "role": "user",
+        "message": "Zanima me še, kako pridem do teh podatkov od modema?  Hvala ti!"
+    },
+    {
+        "role": "assistant_2",
+        "message": "\"Takoj ko shranim nastavitve, izgine ime wifi ojačevalnika,in to je to...\"  Ja to je to. Ko skonfiguriraš Wi-Fi ojačevalec na tvoj domači Wi-Fi potem ojačevalec neha oddajat pod svojim SSID ampak ojačuje tvoj SSID. Kar napačno označuješ za izgine. Ojačevalec še vedno oddaja, samo ne oddaja več svojega SSID pač pa ojačuje tvoj domači signal."
+    },
+    {
+        "role": "user",
+        "message": "Tako sem tudi sam mislil! Ampak ni tako!  Potrebno se je povezati na ta ojačevalec, ne ojačuje obstoječega wifi signala. Nihče ne zna pomagati?"
+    }
+]

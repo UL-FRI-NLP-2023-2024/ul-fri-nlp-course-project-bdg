@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Nimam dovolj znanja iz omrežnih tehnologij, zato vas prosim za pomoč.  Rad bi povezal dve lokalni omrežji (local area network) preko pfsense routerja in laptopa na omrežju 2.  LAN 1: - pfsense router - LAN na 192.168.1.*  Omrežje LAN 2: - povezovalni PC z Windows 7, preko katerega bi se preko VPNja ali na kakšen drugačen povezal na pfsense router - LAN naprave na naslovih 192.168.44.*  Med LAN1 in LAN2 je svetovni splet.  Kaj moram narediti, da bodo naprave na omrežju LAN 1 videle določene izbrane naprave na LAN 2?   Jasno mi je zgolj do tu, da bi preko OpenVPNja naprave na LAN1 videle moj povezovalni PC na \"tunnel network\" naslovu, recimo 10.0.0.0/24.  1) Kako bi za začetek preslikal moj povezovalni PC na naslov omrežja LAN1, recimo 192.168.1.254?  2) Kaj moram namestiti na povezovalnem PCju in/ali pfsense routerju, da bodo IP naslovi določenih naprav na LAN2 vidni kot da bi bili na naslovih LAN1 - vsaj za določene TCP ali UDP porte? Te \"določene naprave\" na LAN2 se ne morejo povezati preko OpenVPNja, ker so to primitivne naprave kot npr. DSPji s specializiranimi vmesniki kot recimo ModbusTCP.  Hvala za pomoč!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na pamet - namesto tunela uporabi bridge mode v Openvpn."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Veliko vprašanj.....  Večinoma se za povezave tipa mreža--mreža uporablja IPSec protokol.  OpenVPN se je prvenstveno bolj uporabljal za povezave tipa PC--mreža, šele zadnja leta se večkrat pojavlja tudi v variantah mreža--mreža - preprosto zato, ker večina routerjev in požarnih pregrad tega načina ne podpira. V principu pa se pri tem eno omrežje razglasi za 'strežnik', ostala pa se povezujejo nanj v obliki zvezde. IPSec za razliko od tega podpira tudi 'mesh' variante povezovanja in usmerjanja prometa.  Za tvoj primer.... če imaš na eni strani pfSense.... bi na drugi strani uporabil router z IPSec podporo in 'tuneliranje' prepustil njemu, ne pa nekemu Windows PC-ju na kateremu na koncu še nekdo dela, pa se stvar bolj podira, kakor 'deluje'.  Drugače, ko naslavljaš 'drugo stran' (npr. se hočeš povezati na PC), se povezuješ na njegov dejanski IP naslov. Če ni neke resne potrebe, naslovov ne prevajaš s pomočjo NAT-a. Optimalno pa je, če imaš interni DNS, ki pozna obe omrežji in se potem lahko povezuješ tudi na osnovi domenskega imena.  Da bi naprave z 'druge strani' videl kot, da so 'tukaj' ne bo šlo preko mreža--mreža VPN povezave, ker je to skregano z logiko mreženja. Če imaš nek naslov, ki je iz območja lokalne mreže, bo TCP/IP skušalo do njega dostopati direktno, saj predvideva, da je na skupni 'žici'. Zato mora imeti oddaljena naprava IP naslov iz drugega podomrežja, da logika omrežja ve, da mora zahtevo posredovati na naslov Gateway-a, ki bo poskrbel, da bo paket prispel tja, kamor mu je namen.  Ne vem, kaj je točno problem z 'primitivnimi' napravami, saj ne poznam njihovih omejitev. Večinoma lahko v še tako primitivni napravi definiraš IP, netmask in gateway. Samo to pa potem že lahko zadošča, da se lahko povežeš na napravo. Če mora naprava pošiljati kakšne podatke na drugo stran VPN omrežja, pa moraš takointako vpisati IP naslov strežnika, na katerega naj pošiljajo te podatke - povsem enako, kot če bi bil ta strežnik na lokalnem omrežju.  Kot rečeno, ne poznam tvojih naprav in zgolj ugibam...."
+    },
+    {
+        "role": "user",
+        "message": "Gre za to, da na LAN2 nimam dostopa do routerja.  Preslikava IPjev iz LAN2 na LAN1 naslovno območje je ključnega pomena, kerr vse skupaj počnem zaradi enega PCja na LAN1, ki je prek Cisco Anyconnect povezan v nek tretji VPN in z vključeno opcijo \"allow LAN access\" lahko dostopa samo do IPjev iz območja LAN1, ostali so zablokirani.  Kaj menite o teh dveh variantah:  1) Povezovalni PC iz LAN2 povežem prek neke VPN opcije na LAN1 in preslikam njegov IP na naslovno območje LAN1. Potem uredim na njem Port Forwarding do želenih naprav v LAN2. Kateri VPN način mi priporočate, pfsense ponuja IPSec, L2TP, OpenVPN?  2) Poskusim vzpostaviti IPsec router na povezovalnem PCju v Windows 7, oz. kot je omenil @assistant_0, poskusim z OpenVPN v bridged načinu. Kako v teh dveh opcijah preslikam IPje iz LAN2 v naslovno območje LAN1?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "In zakaj temu PC z Anyconnect, ki se povezuje na LAN1, ne dodaš še tisti IP na LAN2 v tunele? S tem ti potem kar na enkrat odpadejo vsi ostali umetno ustvarjeni problemi in se lahko držiš klasike, namesto da nekaj improviziraš...  Za kolikšna omrežja se to sploh gre? Domača? Poslovna? Eksperimentalna?  Če se gre za domača omrežja, potem razumem, da imaš poleg tehnike še problem s financami, kar te na koncu sili v dodatno iznajdljivost in improvizacije.  Če se pa gre za poslovno rabo, pa bi se trudil izogibati improvizacijam ter poskusil zagotoviti nekaj denarja, da bi lahko povezljivost v celoti prenesel na ustrezen HW, namesto da vpletaš v to zgodbo še delovni PC z Windows 7."
+    },
+    {
+        "role": "user",
+        "message": "LAN2 je poslovno, LAN1 je domače. Na LAN1 imam PC, ki se z AnyConnect povezuje v poslovno VPN3 (ki nima veze z LAN2).  Na LAN1 ne morem spreminjati PCja z AnyConnect, ker gre za službeni računalnik in nimam dostopa do AnyConnect nastavitev profila. Torej lahko dostopa samo do naslovov na LAN1 in VPN3. Rad pa bi dostopal še do nekaj naslovov z LAN2. Torej moram te naslove prevesti na naslovno območje LAN1.  Na LAN2 nimam dostopa do routerja.   Ne razumem tega stavka: zakaj temu PC z Anyconnect, ki se povezuje na LAN1, ne dodaš še tisti IP na LAN2 v tunele"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zakaj se pa ne povežeš s vpn na služben računalnik, potem pa uporabiš vnc ali kaj podobnega. Bo na koncu delal na službenem računalniku in je rešeno."
+    },
+    {
+        "role": "user",
+        "message": "Ker je problem obraten. Sedel bi rad na službenem računalniku (na LAN1) in imel hkrati dostop do VPN3 in naprav, ki so fizično na LAN2.  Rad bi imel dostop do LAN2 naprav direktno preko prevedenega IP naslova na LAN1, in ne posredno preko Remote Desktop ali VNC povezave na \"povezovalni PC\", ki je fizično na LAN2.  LAN2 naslovi so na službenem PC@LAN1 zablokirani, ker tam uporabljam AnyConnect, ki dovoljuje samo povezave na LAN1 (in VPN3). LAN2 naslovov ne morem dati v VPN3 tunel, ker ne morem upravljati z VPN3 nastavitvami in AnyConnectom na PC@LAN1. Na LAN2 nimam dostopa do routerja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "predvidevam, da bi to rad naredil mimo vaše IT službe.. super, še več takšnih.. :)"
+    },
+    {
+        "role": "user",
+        "message": "Nimamo IT službe za segment LAN2."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Potem pa nimaš problemov. Pokliči vašega IT-jevca pa mu povej kaj bi rad. On bo sicer kontaktiral tvojega šefa, vendar tako da boš dobil uradno odobritev. Ampak se moraš zmenit s IT-jevcem za kako pivo da naloži šefu da to nujno rabiš , bla bla bla.... Tako boš imel uradno narejeno, ne pa mimo vseh. Če boš nekaj po svoje švinglal te lahko stane službe !!!"
+    },
+    {
+        "role": "user",
+        "message": "Oddaljen dostop do LAN2 je omogočen že prek njim lastne Cisco AnyConnect povezave. Torej oddaljen dostop do LAN2 naprav ni problem kršitve pravil.   Je tehnični problem za mene, ki na PCju na LAN1 *že imam* AnyConnect profil za *drugi* VPN3 in ne morem hkrati uporabljat/se povezat na dva VPNja hkrati (tudi če bi bilo tehnično možno; PCja na LAN1 in njegovih AnyConnect profilov ne morem spreminjat).  Zato bi rad določene naprave iz LAN2 prevedel na LAN1 naslove. Ne morem pa celotnega LAN2 priklopiti na domači LAN1 router prek VPNja, ker so gor še drugi uporabniki.   Rešitev problema prek remote desktopa na \"povezovalni PC\" na LAN2 je sicer funkcionalna, a okorna, ker bi na napravah izvajal določene upload/download batch skripte datotek iz PC@LAN1, zato bi rad zadeve naredil dostopne na LAN1 naslovih."
+    },
+    {
+        "role": "assistant_4",
+        "message": "ti bi imel nekakšn \"overlapping subnet vpn\"?    https://cookbook.fortinet.com/site-to-s..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_4 je 28. mar 2019 ob 15:21 izjavil:ti bi imel nekakšn \"overlapping subnet vpn\"?   V tem primeru bi bilo enostavno... vendar NE...  On ima na obeh (pravzaprav vseh treh) straneh različne subnete, tako da sama VPN povezava sploh ni problem.  Problem si ustvarja sam, ker ima utopično zamisel, da bi do naprave na oddaljeni lokaciji dostopal preko povezovanja na lokalni IP naslov, kar pa je skregano z osnovnimi načeli networkinga.  Edini način, kako bi to uspel, bi bila uporaba nekega proxija, aka \"Bouncer\". Da se poveže na njega, on pa potem forwardira povezavo kot proxi. V bistvu si je vse skupaj čisto po nepotrebnem zakompliciral......"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Virtualka na win7 s pfsense routerjem in potem čira-čara z mrežnimi karticami?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_4 je 28. mar 2019 ob 16:46 izjavil:Virtualka na win7 s pfsense routerjem in potem čira-čara z mrežnimi karticami?  To še vedno ne 'preseli' IP naslov z ene strani na drugo stran.  V časih IRC-a so se uporabljali BNC-ji oz. 'Bouncerji', da so uporabniki skrivali svoje prave IP naslove, pa tudi za kakšne malo manj čedne rabote v tzv. \"IRC vojnah\".  Danes se tak software redkeje uporablja, bi pa verjetno OP-u znal (deloma) rešiti njegovo težavo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Imaš verjetno prav."
+    },
+    {
+        "role": "user",
+        "message": "Po dveh dnevih lastnega raziskovanja vam lahko povem, da preslikava VPN klientov na LAN naslovno omrežje dejansko obstaja in je sodeč po zadetkih na iskalnikih precej razširjena tudi v OpenVPN, imenuje pa se TAP bridge.  Sem ga sprobal z mojim pfsensom in lahko rečem samo, da je zadeva katastrofalna. V prvem poskusu mi je uspelo celo preko takega bridgea posredovati nekaj portov na moje željene tretje naprave iz LAN2. Toda zadeva je izredno nestabilna, povezava se prekine že po nekaj pingih, kaj šele po vpostavitvi kakšnega RDPja. Po prekinitvi je za ponovno delovanje treba resetirat tako klienta kot router, ker nikoli več nisem mogel dobiti pingov routerja ali česarkoli na LAN1.  Danes sem tako po izgubljenih dveh dnevih obupal in nastavil običajno tuneliranje. Moj problem sem rešil z dvoskočnim posredovanjem portov najprej preko pfsense routerja na LAN2 \"povezovalni PC\" in iz njega potem na želene tretje naprave na LAN2.  Tudi tu sem večkrat doživel prekinitev povezave in potem več deset sekundno nepovezljivost, vendar se je za razliko od TAP VPNja povezava po večih sekundah vedno pobrala nazaj. Uporabljam standarden UDP Port za OpenVPN.  Pojavila so se mi še naslednja vprašanja:  1) Če imam nastavljene OpenVPN \"concurrent connections\" na več kot 1 in se prijavim iz dveh računalnikov z istim uporabniškim imenom mi server *na obeh* dodeli isti tunnelski IP in mi uniči povezavo na obeh računalnikih do LAN1 subneta (ne deluje več ping). Da spet karkoli deluje, moram resetirati router. Zakaj mi OpenVPN server dodeli isti IP?  2) Ali se da tudi na tunelskem subnetu določati statične IPje, da bi določenemu uporabniku (ali MAC, če je po protokolu znan?) bil določen vedno isti tunelski IP?  3) Uspelo mi je dvojno forwardirati vse želene TCP porte, UDP pa ne. Kako naj na Windows 7 forwardiram UDP porte, ker jih netsh ne podpira? Uporabljal sem \"Simple UDP proxy/pipe\" na http://aluigi.altervista.org/mytoolz.htm, vendar zadeva deluje samo, če forwardam direktno iz tunelskega IPja \"povezovalnega računalnika\" na ciljni LAN1 računalnik (ki ima takrat seveda odklopljen VPN3). Zakaj mi ne dela routanje UDP portov prek pfsense routerja, če mi prek njega dela čisto vsako forwardiranje TCP porta?  4) Imate kakšne nasvete, kako naj nastavim OpenVPN, da bo popačenj in prekinitev povezave čim manj? Naj izklopim enkripcijo?   Hvala za sodelovanje!"
+    }
+]

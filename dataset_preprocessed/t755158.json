@@ -1,0 +1,194 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,   po nakupu novega računalnika, sem iz 240GB ssd diska, kopiral celoten disk na 512GB ssd disk. 240GB disk sem po kloniranju formatiral Sedaj imam težave pri zagonu računalnika.  Ko zaženem preko 512GB diska, mi javi napako za file: \\boot\\bcd - error code: 0x000000f. Popravilo zagona ne gre. Tudi z windowsovim namestitvenim ključem ne.  Ko pa zaženem računalnik preko 240GB diska pa se računalnik normalno zažene.   Problem pa je, da mi je naredilo 2 rezervirana sistema. oz. po enega na vsaki disk:    rezervirani sistem - disk"
+    },
+    {
+        "role": "assistant_0",
+        "message": "S čim si kloniral?  Jaz bi na tvojem mestu zbrisal vse particije na 512 GB disku in poskušal na novo klonirat.  Za delo s particijami imaš na voljo npr. brezplačni GParted (odprtokodni, lahko se zažene iz USB ključka ali DVD-ja), potem za domačo uporabo imaš še brezplačni MiniTool Partition Wizard, EASEUS Partition Master Home Edition itn.  S temi orodji lahko izbrišeš vse ostanke, saj vgrajeno orodje v Windows včasih noče ubogati oz. brisati vse ostanke ..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user, na tvojem mestu bi naredil: 1) zagonski DVD ali ključek z Windows iz uradne Microsoft strani. 2) namestil Windows 10 na particijo C in to zato, da napravi delujoč zagonski sektor. 3) prepisal bi nameščene Windows s kloniranimi Windows na particiji C."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1, vse to, kar si napisal sicer štima, ampak, če mu program za kloniranje ne opravi svojega dela, mu ne bo nič pomagalo.  Zato sem postavil vprašanje, s čim je kloniral."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Možno je, da si kloniral s programom za kloniranje Legacy BIOS in MBR, namesto UEFI/EFI boot in GPT. In zdaj ti išče podatke o boot konfiguraciji, ki je vezana na staro MBR particijo. Pomojem je na trgu zdaj tudi kakšen freeware program za kloniranje GPT particij.  Od komercialnih ti lahko priporočam Paragon."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_0 je 14. nov 2019 ob 09:54 izjavil:... če mu program za kloniranje ne opravi svojega dela, mu ne bo nič pomagalo. Zato sem postavil vprašanje, s čim je kloniral. Free Macrium Reflect backup, ki ga uporabljam, se mi zdi v redu, deluje pa v Win."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Sem še enkrat podrobneje prebral. Torej sistem ti dela če poleg priklopiš star SSD disk, ki pa si ga že formatiral..   A je nov disk Samsung, stari pa ni?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vseeno, kakšen je SSD. Kloniranje mu ni uspelo. Če bi, potem bi sistem laufal.  Če je program \"normalen\", potem bo že v osnovi vedel, če klonira MBR v MBR ali GPT v GPT ... Komercialni program ali ne, tukaj nima veze."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ni vseeno. Če kloniraš na Samsung SSD bo bootalo, če boš uporabil \"Samsung's migration software\" ali pa \"pravi software\" npr. Paragon.  Free Macrium Reflect backup pomojem ne zna nastaviti Samsung SSD v boot mode."
+    },
+    {
+        "role": "assistant_3",
+        "message": "cat /dev/sda > /dev/sdb  Vedno dela.  Za OP-a pa: - backup  - backup - in še enkrat backup, vsaj podatkov, ki jih nočeš izgubiti  Če si originalni SSD pobrisal, potem bo težka.  Če prav razumem, se zažene, če vstaviš (prazen?) stari SSD in se potem zažene z novega?  Zgleda, da je \"preveč pameten\" program za kloniranje kaj pokvaril boot zapise (pa naj bodo legacy ali UEFI). Bi se verjetno dalo rešiti, samo vprašanje, kako preprosto."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Sistem se prenaša direktno na drug disk ali s predhodno narejeno sliko diska, s clone-ranjem noben pameten ne prenaša sistema.  Program za direktno prenašanje - https://www.aomeitech.com/pa/standard-e...  Za izdelavo slike -  https://www.aomeitech.com/ab/standard-e...  Oba sta enostavna in odlično opravita svoje delo, podobno, kot so bile stare verzije Acronis trueimage."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Clonezilla je tud ok. Sicer ce si star disk pobrisal bo se veselo. Sem se prav te dni ubadal z migracijo dual boot sistema z razsiritvijo obeh particij. No po par dneh koncno uspel.   Priporocam da naredis image win z novega diska za vsak slucaj ce je star pobrisan. Nato sele naprej. Vsekakor backup pa probaj kako se ti star disk boota. Ce je ok pozeni se enkrat kloniranje."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 14. nov 2019 ob 18:55 izjavil:Sistem se prenaša direktno na drug disk ali s predhodno narejeno sliko diska, s clone-ranjem noben pameten ne prenaša sistema.  Kaj točno pomeni tale zmešnjava? Česa zdaj ne razumem? Kloniranje diska je točno to: sliko izvornega diska preneseš na ciljni disk."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Izklopi UEFI v biosu in probaj zagnat v legacy načinu. To kar se je tebi naredilo je to, da se UEFI podatki od kje se mora zagnati računalnik niso prepisali. Če še ne bo šlo, pa probaj boot popravit v legacy načinu. Potem bi moralo delat.  V bistvu moraš prvo inštalirat windows na večji disk, potem pa s kloniranjem prenesti samo particijo, kjer imaš sistem in podatke (brez boot particije). To delam namreč vsaj enkrat na teden. Na srečo pa starih diskov ljudje ne formatirajo, tako da to potem lahko naredim."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Komplet naj zopet klonira disk in razsiri particijo znotraj win. Je najlazje ce ima delujoc star disk. Bios nebi smel igrat vloge ce nic ni spreminjal."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Seveda igra bios vlogo pri novih računalnikih, ker je vse zapisano v UEFI."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_7 je 15. nov 2019 ob 11:32 izjavil:Izklopi UEFI v biosu in probaj zagnat v legacy načinu. To kar se je tebi naredilo je to, da se UEFI podatki od kje se mora zagnati računalnik niso prepisali. Če še ne bo šlo, pa probaj boot popravit v legacy načinu. Potem bi moralo delat.   Kot sem razumel, mu zdaj zažene z neko inter-disc-magic, tako da če menja način, vprašanje če bi delalo. Razen če po novem Windows 10 to podpira."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 - Cloniranje ti največkrat nepravilno naredi zagonski sektor, verjetno zaradi zaščite pred kopiranjem OS-a. Cloniran disk redko zažene sistem, zato sem jaz to že pred leti nehal, poleg tega pa je še zelo počasen postopek.  Prenos sistema, ti ravno tako naredi kopijo diska, vendar z vsemi potrebnimi faili in particijami, ki jih windows uporablja, ravno tako pa to naredi Image program in ob razpakiranju, sistem dela b.p..  Pri cloniranju ne deluje noben certifikat in večino zaklenjenih programov je potrebno ponovno registrirat. Cloniranje ni namenjeno sistemskim diskom, za to je image in potem restore ali pa migrate oss s programi, ki to podpirajo. Pri Samsung diskih je ta program del programske opreme.   Te postopki niso cloniranje!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Sem ta mesec nekje kloniral lasten sistem in certifikati ter vse drugo lepo dela."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V zadnjem poldrugem desetletju sem kloniral že ducat diskov, tako za sebe, kot za družino, znance in nikoli ni bilo nobenih problemov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 15. nov 2019 ob 12:59 izjavil:@assistant_6 - Cloniranje ti največkrat nepravilno naredi zagonski sektor, verjetno zaradi zaščite pred kopiranjem OS-a. Cloniran disk redko zažene sistem, zato sem jaz to že pred leti nehal, poleg tega pa je še zelo počasen postopek.  Prenos sistema, ti ravno tako naredi kopijo diska, vendar z vsemi potrebnimi faili in particijami, ki jih windows uporablja, ravno tako pa to naredi Image program in ob razpakiranju, sistem dela b.p..  Pri cloniranju ne deluje noben certifikat in večino zaklenjenih programov je potrebno ponovno registrirat. Cloniranje ni namenjeno sistemskim diskom, za to je image in potem restore ali pa migrate oss s programi, ki to podpirajo. Pri Samsung diskih je ta program del programske opreme.   Te postopki niso cloniranje!  Meni s CloneZillo prav lepo naredi, nobene težave... OK, CloneZilla pač zaenkrat ne zna sama prilagajati velikosti particije, zato mora biti ciljni disk vedno ali identičen ali pa večji od izvornega. Če kloniraš na \"enak\" disk, ki ima morda na koncu sektor ali dva manj prostora na disku, se moraš v naprej pripraviti in pred kloniranjem zmanjšat particije. Sicer pa problemov z golim kloniranjem nisem imel nikoli.  Takisto ne z Acronis TrueImage, le da ta zna še on-the-fly prilagajat velikost particij po kloniranju.   So pa to seveda off-line metode. Kot je tudi edino normalno, da se kloniranje izvaja."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_0 je 15. nov 2019 ob 13:58 izjavil:V zadnjem poldrugem desetletju sem kloniral že ducat diskov, tako za sebe, kot za družino, znance in nikoli ni bilo nobenih problemov.  Jasno - jaz sem jih zaradi narave dela verjetno kloniral že okoli ducat ducatov, pa nikdar ni bilo problema zgolj zaradi kloniranja.  Sem imel probleme nekaj časa s CloneZillo, ker ni podpirala UEFI/GPT... Pa nekaj časa so bili problemi z NVMe diski, sploh v Dell prenosnikih, kjer so se odločili NVMe SSD-je po defaultu postavljat v RAID način, ne v AHCI. Če hočeš to klonirat s Clonezillo, je treba najprej v \"bios\" popravit disk na AHCI način, nato normalno klonirat disk, ga zamenjat in pred zagonom ponovno v \"biosu\" popravit disk v RAID način.  How to clone a Dell Optiplex 7050 M.2 NVME Hard Drive with Clonezilla and an External USB HDD  Skratka, problemi s programi za kloniranje se pojavijo, ampak ne zaradi razlogov, ki jih navaja @assistant_4. Gre za stvari, ki niso nikakor povezane s samim postopkom kloniranja, ampak v navedenih primerih zato, ker CloneZilla live pač nekaj časa ni podpirala UEFI/GPT particij oziroma ker linux distribucija ni podpirala UEFI bootanja... Ali pa zaradi nekih bebavih posebnosti posameznih proizvajalcev, ki diske skrivajo za nekimi proprietary semi-hw raidi..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Orodje Acronis ima programe za Clone disk, image disk in backup diska, zakaj že, če lahko vse rešimo s cloniranjem (prepisom) diska?  Boste strokovnjaki malo razložili to?  Jaz osebno, za prenos sistema na SSD (tega dela je sedaj, ko so se pocenili ssd-ji, največ), uporabljam AOMEI partition asistent pro, je pa free verzija ravno tako polno delujoča za domačo uporabo. Tudi na tem programu je opcija clone particije ali diska, zakaj so potem posebej naredili še migrate OS na ssd ali drugi disk?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 15. nov 2019 ob 18:09 izjavil:Orodje Acronis ima programe za Clone disk, image disk in backup diska, zakaj že, če lahko vse rešimo s cloniranjem (prepisom) diska?  Boste strokovnjaki malo razložili to?  Ne klobasaj preveč. Kloniranje diska razumemo kot izdelavo identične, včasih sektor-by-sektor ali byte-by-byte, kopije oziroma slike diska in prenos te slike na nov disk. Kako zdaj posamezen vendor imenuje svoja orodja, je nepomembno. Vemo, o čem teče beseda. Kamot pa odpreš Google in si poiščeš odgovor na dileme:  Difference between Backup and Disk Clone @ kb.acronis.com  Empirične izkušnje mnogih uporabnikov kažejo, da programi za kloniranje diska delujejo: naj bodo to freeware orodja tipa CloneZilla (v bistvu gre za nabor orodij, zapakiranih v UI), disks ali pa dd na linuxu, ali pa komercialne rešitve tipa Acronis TrueImage. CloneZilla Server je Enterprise grade SW. Zakaj tebi ne deluje, ne vemo. Najbrž se ne znaš lotit. Je pa lepa navada, da vprašaš, namesto da po svoji grdi navadi pametuješ, čeprav očitno ne veš kako se reči streže. Če se imaš seveda željo in veselje naučit. Ali pa tudi ne, kot hočeš.   @assistant_4 je 15. nov 2019 ob 18:09 izjavil:Jaz osebno, za prenos sistema na SSD (tega dela je sedaj, ko so se pocenili ssd-ji, največ), uporabljam AOMEI partition asistent pro, je pa free verzija ravno tako polno delujoča za domačo uporabo. Tudi na tem programu je opcija clone particije ali diska, zakaj so potem posebej naredili še migrate OS na ssd ali drugi disk?  Pojma nimam in me ne zanima. V zadnjih 5-7 letih sem v poslovnih in privat okoljih kloniral že sigurno debelih 100 HDD-jev na SSD-je. Moram reči, da se ne spomnim, da bi bil sam postopek kloniranja, ko so izpolnjeni vsi pogoji, kdaj neuspešen.  Kot rečeno, zgodi se da naletiš pred ali med zagonom postopka od časa do časa na težave: orodje za kloniranje ne podpira strojne opreme, posebnosti matične plošče ali proizvajalca laptopa, pozabiš preverit, ali kloniraš na manjši disk s CloneZillo, ipd. Ko pa je postopek enkrat končan, se pa dejansko ne spomnim, da bi enkrat samkrat imel težave. Ne z zagonskim sektorjem, še manj s kakšnimi certifikati ali programi, ki bi nehali delovat.  Ravno to je fora kloniranja, za božjo voljo: uporabnik sploh ne ve, da se je kaj zgodilo. Dela naprej kot da ni nič: se brez težav prijavi v Active Directory domeno, uporablja programe, prijave na spletne strani državnih agencij (certifikati!) delujejo ... Če ne bi računalnik po zamenjavi HDD-ja z SSD-jem deloval znatno hitreje, uporabnik dejansko ne bi vedel, da je kaj drugače."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tudi jaz sem v 10letih kopiral-kloniral na desetine trdih diskov, pa tudi kar nekaj ssd-jev, imam pa tudi bazo enih 25image-ov, od kar nekaj rač. Za katere se mi je zdelo pametno da to naredim. Te slike diskov potem prenašam tudi na druge računalnike, seveda pa te slike vsebujejo os., libre office, pa druge podporne programe , skratka vse, kar se rabi. In to vse počnem s acronis tih od verzije 8 naprej, predno so prešli na označevanje z letnicami in verzijami. In acronis ni nikoli zatajil, večji ali manjši diski ga ne motijo, dokler podatkov ni več kot je velikost diska. Aja, tudi slike xp-jev in win7 imam tako shranjene, seveda pa so te slike narejene tako, da je bil na računalniku prehodno narejen \"sysprep\"."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jasno - sysprep. Recimo za Win 10 verzijo 1903 imam narejen sysprepan image s CloneZillo: poinštalirane vse osnovne programe, ki jih potrebujemo v poslovnem okolju, sistemske nastavitve, regionalne nastavitve... Image je generaliziran, tako da ga brez težav lahko uporabim na katerem koli HW-ju. (Ko se bo 1909 izkazal za stabilnega, bom image posodobil.)  Ko kupimo nov PC ali je treba na novo postaviti obstoječega, vzamem sysprepan image in ga kloniram na PC. Na koncu je dokončanje inštalacije in predaja PC-ja uporabniku stvar \"nekaj\" klikov: poimenovanje računalnika, dodajanje v domeno, ipd.  Skratka, če štejem še to kot kloniranje, številka iz ocenjenih 100-150 kloniranih diskov še izdatno poskoči. Vse brez problema. Ne predstavljam si več, da bi vsak računalnik inštaliral od začetka, nastavljal regionalne nastavitve, odgovarjal na vrsto vprašanj o vdoru v zasebnost, odinštaliral Windows Store aplikacije, nastavljal VSS, nameščal PDF readerje, Office, AV, ERP... Res je, marsikaj bi se dalo urediti tudi z namestitvijo preko Group Policyja, ampak sysprep ima svoje prednosti: večinoma lahko nameščene aplikacije že pretestiraš, po potrebi tudi posodobiš, še preden predaš uporabniku v uporabo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 - Izdelava slike ni cloniranje. Včasih smo z disk image delali varnostne kopije sistema, danes pa restore point v Windows kar lepo reši težave z virusi in podobno šaro. Cloniranje pa poteka disk by disk z eno operacijo in pri tem postopku, sistem praviloma ne zažene.  Vidim pa, da mešate pojme clone in backup, zato me malo mede, ko berem poste.  Ko vklopim clone mi praviloma zahteva enak ali večji disk, restor image pa mora bit disk tolikšen, da je dovolj prostora za restore vsebine in v tem primeru sistem vedno deluje b.p. z zagonom vred.   Jaz sem imel slike skoraj vseh strank, kjer so glavno besedo imeli mulci in Kaaza, 15 minut fertik delo (uporabljal kupljeno verzijo Acronis trueimage), od viste naprej pa to ni potrebno, samo nastaviš restore point in je v večini primerov problem rešen. Za zamejnavo HDD-jev pa že dolgo uporabljam Aomei-ev partition asistent pro, ki zadevo naredi b.p. v dobrih 20-ih minutah.  Še enkrat Image diska ni clone.  Sem pa malo pogledal tale sysprep. in je pač eno od orodij, ki je v uporabi, sam se držim AOMEI-a. Pa začnite govorit o sliki ne o clonu, da se bomo razumeli, saj vsi govorimo o enaki zadevi."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Solatko, z vsem dolžnim spoštovanjem, ampak Acronis-a nisem nikoli -razen dokler ga nisem dodobra spoznal in ko pride nova verzija , nameščal na noben računalnik. Vedno naredim boot medij in vedno vsak pc zbootam z njim - tudi svoje osebne in naredim image diska na mrežo. Pri novem pc-ju uporabim primeren image, pri zamenjavi trdega diska za ssd pa clon starega diska. Ti pa to lahko imenuješ kakorkoli, tako delam že zelo dolgo brez problemov."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ne se kregat, kater progy je boljsi ker je brez pomena, vsak perferira svojega kjer se pocuti somace.  Op ke naredil ultimativno napako najprej, ker je formatiral 240GB disk PREDNO je sprobal, ce je klon uspel.   Op je zajebal najmanj pei nastavitvah, ker ni kloniral GPT nacinu ampak MBR. Zajeb v nastavitvah ali pa slab program  Resitev: naj zazene win instalacijski ponovno iz dvd usb kljuc, vseeno in ko pride do tocke namesritve bo inasall program nasel ze nekaj in mu bo ponudil popravek, naj bi mu!  Da se bo pa na starih napakah ucil, predno se zajebava s popravljanjem, naj 500GB hdd klonira in se igra na klonu od klona."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jao, tega se moram lotit v več delih.   @assistant_4 je 16. nov 2019 ob 12:04 izjavil:@assistant_6 - Izdelava slike ni cloniranje.  Ne blodi, lepo te prosim. Gre za nepomembno razliko. V obeh primerih, ali z direktnim kloniranjem iz izvornega diska na ciljnega, ali pa z uporabo vmesnega disk imagea, dobiš identično kopijo, t.j.: klon izvornega diska na novem. Izdelava slike diska je isto kot izdelava ISO imagea iz DVD-ja ali CD-ja. Ko ta ISO image zapečeš na nov DVD ali CD, dobiš klon originalnega. Ne vem, zakaj moraš to komplicirat bolj kot je zares potrebno.   @assistant_4 je 16. nov 2019 ob 12:04 izjavil:Včasih smo z disk image delali varnostne kopije sistema, danes pa restore point v Windows kar lepo reši težave z virusi in podobno šaro.  Prosim? Vem, da si že malce v letih, ampak to kar danes razumemo pod imenom \"varnostno kopiranje\", v osnovi nima veze z izdelavo disk imageov. Ja, res je, disk image je lahko del backup procedure, ni pa to sploh nujno. Disk image je pa v resnici bližje tistemu, kar kloniranje je - seveda, ko je ta image spet v delujoči obliki na disku."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 16. nov 2019 ob 12:04 izjavil:Cloniranje pa poteka disk by disk z eno operacijo in pri tem postopku, sistem praviloma ne zažene.   V tej povedi je toliko napak, da boli glava.  Kloniranje je postopek, kjer vsebino diska, njegovo strukturo, velikost particij, indekse (FAT, NTFS, ext ...) v popolnosti zajameš in torej izdelaš image/sliko (direktno na drug disk, ali pa indirektno, v obliki image-a). Včasih se sliko dela sector-by-sector oziroma byte-by-byte, obstajajo pa tudi bolj pametne procedure, ki poleg izpuščanja praznega prostora znajo nad vsebino izvajat tudi kompresijo, tako da je končna velikost imagea/slike lahko znatno manjša, kot če delaš posnetek na način sector-by-sector. In so agnostične glede geometrije diska, IOW, jih lahko restavriraš tudi na disk, ki nima identične geometrije kot originalni. Ali je edini medij pri prenosu teh bytov denimo USB kabel, ko kopiraš to sliko direkt na drugi disk, ali pa je ta slika vmes shranjena na drugem mediju, je nepomembna razlika.  Sistem se praviloma zažene, ko delaš s programom, ki je zmožen postopka, ki mu rečemo kloniranje. Zakaj se tebi ne zažene, je drugo vprašanje. In še enkrat: naj te ne bo sram vprašat, namesto da vlečeš zaključke, čeprav ti tule gor vsaj trije trobimo, da smo KLONIRALI (indirektno, preko imagea in direktno, iz diska na disk) že na desetine diskov.  Da se vlečeš ven na to, kaj ste počeli \"včasih\", je mal smešno. Symantec oz. Norton Ghost je na tržišču že skoraj 20 let, Unix program DD, ki se ravno tako uporablja tudi za kloniranje (ja, tudi za izdelavo disk imagea), je pa star toliko kot zadnja Ustava SFRJ (ja, sem šel pogledat).   @assistant_4 je 16. nov 2019 ob 12:04 izjavil:Za zamejnavo HDD-jev pa že dolgo uporabljam Aomei-ev partition asistent pro, ki zadevo naredi b.p. v dobrih 20-ih minutah.  Vse je odvisno od velikosti in hitrosti diskov, pa hitrosti vodil. Direktni clone 250GB SSD diska na 500GB SSD disk preko npr. SATA vodila traja v CloneZilli zagotovo manj kot 20 minut. Ti bom lahko povedal v ponedeljek bolj točne podatke za konkreten primer, ki me čaka."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 16. nov 2019 ob 12:04 izjavil:Še enkrat Image diska ni clone.  Še enkrat: brez veze dlakocepiš. Kloniranje je, če pač hočeš biti dlakocepski, izdelava identične kopije, t.j. dvojnika diska. Jasno, da pri taki definiciji izdelava imagea diska ni kloniranje. Če pa s CloneZillo narediš sliko diska A, takoj nato pa to sliko \"restoreaš\" na nov disk, si seveda naredil KLON. IOW, si kloniral disk.   @assistant_4 je 16. nov 2019 ob 12:04 izjavil:Sem pa malo pogledal tale sysprep. in je pač eno od orodij, ki je v uporabi, sam se držim AOMEI-a.  Sysprep je brez orodja, ki ti naredi image diska, praktično neuporaben. Z njim lahko na ta način predpripraviš samo en računalnik. Šele, ko narediš image in ta image potem kloniraš na N drugih računalnikov, si nekaj naredil.   @assistant_4 je 16. nov 2019 ob 12:04 izjavil:Pa začnite govorit o sliki ne o clonu, da se bomo razumeli, saj vsi govorimo o enaki zadevi.  Dajva še enkrat: klon diska lahko narediš tudi iz ustrezno pripravljenega disk imagea - torej iz posnetka diska, ki si ga naredil z ustreznim programom. Gre samo za zaporedje ničel in enic, podatke: od MBR, particij, file indexov in samih datotek, pač v specifični obliki. Ker gre za podatke in nič posebej magičnega, to zlahka lahko zapišemo v kakšni drugi obliki. Recimo v datoteke na disku. V disk image.  Disk image je dejansko to, kar je ISO image za CD-je in DVD-je. Iz enega ISO imagea lahko narediš 1000 identičnih kopij (klonov) originalnega CD-ja."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ravno danes sem naredil kopijo 320 GB diska na 500 GB SSD disk s Clonezillo - trajalo je okrog 20 minut, kot je rekel Imagodei. Za distribucijo sistema na več računalnikov pa seveda uporabljam sysprep in in WDS (Windows deployment services). Ravnokar me čaka to delo... Prvi računalnik sem že pripravil, še nekaj testov in distribucija..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6 - Še vedno prepričuješ prepričane brez argumentov. Clone diska je popolna presneta vsebina diska na drug identičen disk in je za prenos sistema na drug disk neuporabna - to je direkten prepis z enega na drugi disk.  Image diska je popolna slika vsebine diska, ki je lahko tudi kompresirana, da ne zavzame toliko prostora, je pa ne moreš direktno uporabit, tako kot clon, temveč moraš z istim programom, preko zagonskega medija, ki ti ga naredi ravno tako ta program, sliko razpakirat na drugi disk, kjer je edina zahtevana stvar, da je dovolj velik za razpakirano vsebino.  Torej, ti delaš s sliko in ne s clonom diska, je pa zelo velika razlika v sami izdelavi in razpakiranju - clone je uporaben takoj, sliko moraš razpakirat.   Ti ne narediš clone diska iz slike, temveč kopijo vsebine, zopet velika razlika, saj vsebino več T velikega diska, spraviš na manjši disk, clone pa pomeni tudi po parametrih identičen disk.  Kako ti v pogovornem jeziku uporabljaš poimenovanja je vseeno, če te sogovornik zastopi, na forumu je pa zaželjeno, če se bobu reče bob in sliki diska, slika in ne clone.  Predvsem zaradi začetnikov, ki se bodo zaman trudili s cloniranjem (ima vsak program za urejanje diska), hoteli narediti uporaben sistemski disk iz starega, no go."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_4 je 17. nov 2019 ob 15:19 izjavil:@assistant_6 - Še vedno prepričuješ prepričane brez argumentov. Clone diska je popolna presneta vsebina diska na drug identičen disk in je za prenos sistema na drug disk neuporabna - to je direkten prepis z enega na drugi disk.   Seveda je uporabna. Pravkar pišem s PC-ja, ki je tako bil prenesen.  Da ne bo nesporazumov: cat /dev/sda > /dev/sdb"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 17. nov 2019 ob 15:19 izjavil:@assistant_6 - Še vedno prepričuješ prepričane brez argumentov.  Yeah, right  Meni se zdi, da boš ti malo moral posodobit znanje in terminologijo. Internetsi se ne strinjajo s tabo glede tvoje terminologije. Kar se pa tiče argumentov, je pa to stvar nekaj tapkov po tipkovnici in dveh klikov z miško. Vzemi si, no, 5 minut časa in res natančno preberi, kar sem ti že napisal. Pa tudi naslednje vrstice.  Tule se, recimo, do zadnje pike strinjajo z mano: Difference Between Disk Cloning & Disk Imaging: Disk cloning and disk imaging are two processes that accomplish the same goal: They copy all of a hard drive's contents. It's possible to clone a disk by using a disk image, but the two are distinctly different in the process they use to copy hard drives. Disk cloning creates a functional one-to-one copy of a hard drive, while disk imaging creates an archive of a hard drive that can be used to make a one-to-one copy.  ...  A cloning program enables you to make a one-to-one copy of one of your computer's hard drives on another hard drive. This second copy of the hard drive is fully operational and can be swapped with the computer's existing hard drive. If you boot to the cloned drive, its data will be identical to the source drive at the time it was created.  ...  However, you can use a disk image to create a copy of the source hard drive on a second hard drive, making it a clone of the original drive.  Še bolj konvencionalni izvor znanja: Disk cloning @ Wikipedia: Disk cloning is the process of creating a 1-to-1 copy of a hard disk drive (HDD) or solid-state drive (SSD), not just its files.[1] Disk cloning may be used for upgrading a disk or replacing an aging disk with a fresh one. In this case, the clone can replace the original disk in its host computer.  Res je, da obstaja razlika med disk imageom in kloniranjem. Prvo predpostavlja, da narediš posnetek stanja diska in ga zapišeš v poseben format, ki je berljiv specifičnemu softwareu, s katerim si se lotil izdelave slike diska. Drugo predpostavlja, da sliko enega diska preneseš na drug disk. Včasih je kloniranje diska treba narediti posredno, z uporabo imagea.  IOW, lahko rečemo, da je Image diska offline klon diska, oziroma kot sem ti že poskušal slikovito prikazat: image diska je v primerjavi z (direktnim) klonom diska enako kot ISO image v primerjavi z direktnim kopiranjem (kloniranjem) CD/DVD. Na oba načina lahko narediš popolnoma funkcionalen CD/DVD in na oba načina (s kloniranjem ali izdelavo disk imagea) lahko narediš popolnoma funkcionalen HDD/SSD."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 17. nov 2019 ob 15:19 izjavil:Clone diska je popolna presneta vsebina diska na drug identičen disk in je za prenos sistema na drug disk neuporabna - to je direkten prepis z enega na drugi disk.  Ne, to ne drži, kot bi si lahko v preteklih dneh razjasnil že sam, če bi le malo pogooglal. Ker tega ti nisi storil, sem ti gor prilimal linke, ki se s tvojo rabo terminov (in razlikovanjem) ne strinjajo.  Še par linkov, ki te demantirajo:  Backing up your entire drive: Cloning vs. imaging: Both cloning and imaging create an exact record of your drive or partition. I'm not just talking about the files, but the master boot record, allocation table, and everything else needed to boot and run your operating system.  ...  When you clone a drive, you copy everything on it onto another drive, so that the two are effectively identical. Normally, you would clone to an internal drive made external via a SATA/USB adapter or enclosure.  But imaging a drive is more like creating a great big .zip file (without the .zip extension). Image backup software copies everything on the drive into a single, compressed, but still very large file. You would probably save the image onto an external hard drive.   Disk Imaging vs Disk Cloning: Key Differences: Both cloning and and imaging create an exact record of your drive. That includes all the files on the drives along with the master boot record and everything else your PC needs to boot in Windows. So how do they differ? Let's get the scoop on disk imaging vs disk cloning.  Disk Imaging: Imaging create a large compressed file of your drive. You can then restore this file to bring your drive back to life. Because the image file itself is large, people often save them to external drives or file shares.  Disk Cloning: Cloning creates an exact, uncompressed replica of your drive. If your hard drive fails, you could remove it and replace it with the cloned drive. And that brings me back to the above example. Cloning can get you up and running quickly, but it doesn't offer as much flexibility as imaging. In the above example, I'd recommend taking an image instead of cloning.  Zdaj, če želiš prit v 21. stoletje in uporabljat terminologijo kot vsi ostali, bi to moralo zadostovat. Če želiš uporabljat neko svojo @assistant_4 terminologijo, be my guest. Samo ni treba begat ljudi.   Še zadnji povzetek, več besed pa nima smisla izgubljat: Kloniranje diska je ustaljen postopek, s katerim v računalniku zamenjaš stari HDD z SSD diskom, ali pa premajhen SSD disk z večjim SSD diskom, pri čemer računalnik deluje naprej, kot da se ni zgodilo nič. Res pa je, da lahko disk kloniraš tudi z uporabo disk imagea. Recimo, če v prenosniku nimaš prostora in nimaš zunanje USB enote za izmenjevanje diskov - imaš pa dovolj velik zunanji USB disk, na katerega lahko stlačiš skompresiran image. Ko narediš tak image, zamenjaš disk v prenosniku in restoraš disk image iz eksternega USB diska na nov disk. Tako si posredno kloniral disk z uporabo disk imagea."
+    },
+    {
+        "role": "assistant_8",
+        "message": "V eni mali majceni in popolnoma nepomebni stvari ima @assistant_4 prav. Pametni programi namenoma pri izdelavi slike diska ne zapišejo izmenjalne datoteke in hibernacijske datoteke, pri kloniranju pa jo verjetno prepišejo na nov disk."
+    },
+    {
+        "role": "assistant_6",
+        "message": "No ja, če pametni programi za izdelavo imagea diska znajo zaznat omenjeni dve stvari, ni razloga, da jih pametni programi za kloniranje ne bi znali. Marsikdaj isti program omogoča izdelavo ali imagea ali pa direktnega kloniranja. V obeh primerih bere iste podatke, razlika je, kako jih potem zapiše: ali v obliki datoteke/datotek kot (offline) image file, ali pa v \"raw\" obliki direktno na disk, s čimer efektivno naredi klon originalnega diska."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če delaš kompletno sliko diska, lahko tudi izmenjalno in hibernacijsko datoteko prepišeš tako v image, kot v klon diska. Ni nič narobe s tem."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_4 je 15. nov 2019 ob 12:59 izjavil:@assistant_6 - Cloniranje ti največkrat nepravilno naredi zagonski sektor, verjetno zaradi zaščite pred kopiranjem OS-a. Cloniran disk redko zažene sistem, zato sem jaz to že pred leti nehal, poleg tega pa je še zelo počasen postopek.     Uporabljam Acronis za kloniranje diskov in v 95% se sistem pravilno prepiše na drug disk (neodvisno od velikosti) in se ob uspešno zaključenem postopku vedno tudi zaženejo Win10 (tudi pri Win8.1 ni bilo težav), brez narejenega sysprep-a. Postopek z nameščenimi Win10 in osnovnimi programi traja približno 10 min."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_6, @assistant_7 Program je pameten, ja. Ko delaš sliko diska potem izmenjalne in hibernacijske datoteke ne shranjuje ker so po defaultu velike (v razredu nekaj GB) in bi izdelana datoteka bila kar velika. Po drugi strani pa, ko kloniraš disk direktno (ena na ena), pa jih prepiše in to iz dveh razlogov. Prvič, od časov XP-jev je bila pozicija obeh datotek v alokacijski tabeli pomembna (zaradi dostopa OS do teh datotek) in drugič, ker bi bile ob prvem zagonu itak ustvarjene, pa tudi da bo target disk sigurno dovolj velik."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_11 Meni Acronis naredi vedno 100% pravilno, če rač. ne boota je to kvečjemu moja napaka, ker nisem pravilno označil boot in/ali sistemske particije. Jaz vedno delam z zunanjim boot medijem (USB). Kar se pa tiče sysprepa, pa ga itak ne uporabljam več (nujno je bilo pri XP-jih in občasno tudi še pri Win 7- preveč različen HardWare). Pri Win 10 pa mi ni bilo treba nikoli delati sysprep-a. Sicer sem pa sysprep omenil že v postu 15.nov 2019, 22:59:17."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sicer to, kar bom napisal nima veze s kloniranjem ...  Najbolj me je presnetilo, da sem en navadni namizni SSD, ki je prej deloval v Core-i5 (Haswell) računalniku priklopil na matično z AMD čipovjem in Ryzen procesorjem, pa se je Windows 10 zagnal brez težav. Kot da sploh ni bilo nobene spremembe.  To se pri Windows 7 ni dalo. Razen, če si res naredil sysrep ali kaj podobnega, vsekakor pa si moral sčistit vse gonilnike."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_0 pozdrav, tudi na win 7 se je dalo, če je bil podoben HW, v vsakem primeru je bilo boljše, če si uporabil ukaz sysprep."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_8 je 19. nov 2019 ob 09:31 izjavil:@assistant_0 pozdrav, tudi na win 7 se je dalo, če je bil podoben HW, v vsakem primeru je bilo boljše, če si uporabil ukaz sysprep.   Hvala, no meni ni uspelo. Pa niti ni bil problem tipa IDE -> AHCI ... slednje praviloma nikoli ne deluje"
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_8 je 19. nov 2019 ob 08:57 izjavil:@assistant_11 Meni Acronis naredi vedno 100% pravilno, če rač. ne boota je to kvečjemu moja napaka, ker nisem pravilno označil boot in/ali sistemske particije. Jaz vedno delam z zunanjim boot medijem (USB). Kar se pa tiče sysprepa, pa ga itak ne uporabljam več (nujno je bilo pri XP-jih in občasno tudi še pri Win 7- preveč različen HardWare). Pri Win 10 pa mi ni bilo treba nikoli delati sysprep-a. Sicer sem pa sysprep omenil že v postu 15.nov 2019, 22:59:17.   Meni se je nekajkrat zgodilo, da postopek ni bil uspešen, sploh pri veliko podatkih (recimo 200GB+). Ko sem ga ponovil, je potem ponavadi šlo skozi."
+    },
+    {
+        "role": "assistant_12",
+        "message": "jst imam prastarega EASEUS-a in sem ene parkrat to delal (vse lepo in ENAKO deluje), ampak mislim da ta program upraša če želiš iz novega diska bootat."
+    }
+]

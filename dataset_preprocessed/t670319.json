@@ -1,0 +1,90 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo fellow geeks eno vprašanje imam glede pythona s katerim zadnje čase nekaj praskam. Zanima me čemu imajo eni objekti dostopne propertije npr object.property drugi pa  object[\"property\"] Rad bi se znebil uporabe [\"property\"], tako da hvala za vse informacije. Sem googlal pod property accessor samo najbrž niti ni pravi keyword glede na to da nisem našel nič pametnega   lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nisem Python expert, ampak menim, da object.property dostopa do propertyja objekta object, object[\"property\"] pa dostopa do vrednosti, ki je shranjena pod ključem \"property\", sam object pa je tipa dictionary."
+    },
+    {
+        "role": "user",
+        "message": "sorry moram popravit vprašanje, ko dam včasih objekt.property pravi da nima tega propertyja in moram dat objekt[\"property\"] lahko to razložiš kaj sm zašuštral in hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lahko priložiš ta delček kode (kako je objekt definiran, in kako dostopaš do propertyja) in točno napako ki ti jo izpiše?"
+    },
+    {
+        "role": "user",
+        "message": "sm na telefonu:) sicer pa javi da dictionary nima tega proeprtija se mi zdi. Po moje to pove vse, da narobe delam objekte, samo google mi se ni pomagal:p"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Potem je težava točno to, kar sem ti napisal v prvem odgovoru.  Če dostopaš do nekega propertyja z object.property1, to pomeni da dostopaš do točno določenega propertyja v objektu object. Katerega tipa je ta object, nima veze, pomembno pa je, da ima property z imenom property1.  Ti pa bi rad dostopal do vrednosti, ki je shranjena pod nekim ključem v objektu tipa dictionary. Preberi si kaj o dictionaryjih v pythonu (podobno kot Map v Javi). Ko pa boš pokazal tisti del kode, pa ti bom lahko bolj točno povedal kaj delaš narobe. Verjetno narediš dictionary, namesto objekta ki ga rabiš."
+    },
+    {
+        "role": "user",
+        "message": "Mislim da se zadeve lotim takole  test = {'barva': 'rdeča', starost: 20 }  očitno je to dict, kako se potem naredi objekt z new? kar pomeni da moram imeti class ipd"
+    },
+    {
+        "role": "assistant_1",
+        "message": "priporocam, da uvedes pythonu primerno terminologijo. property je nekaj posebnega v pythonu. ti hoces dostopati do atributa nekega objekta  v pythonu so vse stvari objekt in jim lahko poljubno dodajas atribute. vendar pazi, built-in tipi imajo onemogoceno dinamicno dodajanje atributov.  en built-in tip je dictionary. ustvaris ga z {'kljuc': 'vrednost'} ali dict(kljuc='vrednost'). dictionary je namenjen shranjevanju parov kljuc - vrednost. z [] sintakso dostopas do kljuca. lahko pa tudi poklices dictionary.get('kljuc')  malo se poigraj z interpreterjem:  >>> d = {'kljuc': 42}\n>>> d.kljuc\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nAttributeError: 'dict' object has no attribute 'kljuc'\n>>> d.kljuc = 'test'\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nAttributeError: 'dict' object has no attribute 'kljuc'\n>>> d['kljuc']\n42\n>>> d.__getitem__('kljuc')\n42\n>>> class MojObjekt(object):\n...     def __getitem__(self, x):\n...             print 'klices getitem'\n... \n>>> o = MojObjekt()\n>>> o.kljuc\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nAttributeError: 'MojObjekt' object has no attribute 'kljuc'\n>>> o.kljuc = 42\n>>> o.kljuc\n42\n>>> o['kljuc']\nklices getitem\n>>> \n  v pythonu ustvarjas svoje classe tako:  class MojObjekt(object):\n    def __init__(self, x):\n        self.x = x\n\n# class instanciras tako\no = MojObjekt('testni objekt')\nprint o.x"
+    },
+    {
+        "role": "user",
+        "message": "Hvala bom malo bolj detajlno prebral ko pridem domov. Imam pa še eno vprašanje, če imam mutiple inheritance v igri c inherita b, ki inherita a. In vsi imajo funkcijo test(), kako bi klical iz cja originalno funkcijo.  Z npr c.test() se bo klical potem še b.test() in še a.test() (ker imam tudi chainan super v funkcijah). Torej kako bi klical c.test() samo a.test()  namest b.test() in še a.test()  Hvala še enkrat lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kako bi to naredil v katerem drugem jeziku?  btw multiple inheritance je izraz, ko C deduje od A in B ( class C(A, B) ) in ne v verigi."
+    },
+    {
+        "role": "user",
+        "message": "Veš da mi zdele na pamet ne pade kako bi za drug jezik naredil. Sem pa malce sem pogledal za python in sem zgooglal MRO (method resolution order) ampak nekako nisem dobil odgovora.  imam tako  order(class1): def test()  order(class1): def test()  order(class1): def test()  Jap vsi so istega imena (tak sistem inheritanca je), zato je tudi malce nerodno točno določenega zahtevat."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 29. mar 2016 ob 19:27 izjavil:Hvala bom malo bolj detajlno prebral ko pridem domov. Imam pa še eno vprašanje, če imam mutiple inheritance v igri c inherita b, ki inherita a. In vsi imajo funkcijo test(), kako bi klical iz cja originalno funkcijo.  Z npr c.test() se bo klical potem še b.test() in še a.test() (ker imam tudi chainan super v funkcijah). Torej kako bi klical c.test() samo a.test()  namest b.test() in še a.test()  Hvala še enkrat lp   http://stackoverflow.com/questions/3810..."
+    },
+    {
+        "role": "user",
+        "message": "Hej @assistant_2, problem se pojavi ker je malce drugačn tip inheritanca, neka čudna zadeve v openerpju, kjer so vsi classi poimenovani isto (oziroma imajo field/property _inherit kjer nakažeš originalni class). MRO se malce drugače odvija tu. V smislu LIFO. Torej naredimo instanco klasa order recimo mu o. kličemo o.test(), kateri ima poleg svoje kode še super(), ta super kliče po LIFO principu cež celo verigo."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Odlicno predavanje na temo MRO-ja in super() v pythonu:"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user vzami si 5 min casa in lepo razumljivo napisi svoj problem in vprasanja, ker tole ne vodi nikamor"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 29. mar 2016 ob 23:35 izjavil:@user vzami si 5 min casa in lepo razumljivo napisi svoj problem in vprasanja, ker tole ne vodi nikamor  Uporabljam Odoo, v modulu a razširjam class order, v modulu b razširjam class order. V obeh sta funkciji test(), od katerih vsaka kliče super(). Sedaj če kličem funkcijo order.test() se kliče sprva b, nato (zaradi super) a.test(), ki posledično zaradi super kliče originalno funkcijo order.test. Kako bi klical torej originalno funkcijo že v osnovi. Upam da je to kaj bolj razumljivo.  Vsem pa res hvala!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "To je spet napisano popolnoma nelogicno, vsaj kakor jaz razumem. Zakaj enostavno ne napises neke skrajsane replike kode na kateri delas? Nekaj kar lahko sami pozenemo in vidimo error, oziroma ti ze takoj povemo v cem je problem."
+    },
+    {
+        "role": "user",
+        "message": "Ker trenutno imam samo remote dostop do virtualke copy/paste ne dela. Ni kaj razumeti, po moje je problem bolj nepoznavanje Odoo okolja.  class pos_order(models.Model):\n        def test(self, cr, uid, orders, context=None):\n                 super(pos_order, self).create_from_ui(cr, uid, orders, context=context)\n                 doSomething()\n  Evo imam več modulov vsak od teh ima class pos_order, ter funkcijo test, vsi imajo doSomething ki naredi pač nekaj.  Inheritance modulov deluje tako namestiš modul A, in potem modul B (z zgoraj omenjenim funkcijam) in se izvedejo prvič B.test ki kliče s super A.test, ki kliče s super originalclass.test. Taka je pač logika, ne vem pa če je to čisto po pythonovsko."
+    },
+    {
+        "role": "assistant_4",
+        "message": "class osnovni(object):\n    def krneki(self):\n        print 'osnovni'\n\n\nclass a(osnovni):\n    def krneki(self):\n        super(a, self).krneki()\n        print 'a'\n\nclass b(a):\n    def krneki(self):\n        super(b, self).krneki()\n        print 'b'\n        osnovni.krneki(self)\n\ninstanca = b()\ninstanca.krneki()\n\n\nIzpis:\n-----------------------------------\n\norkaa$ python slotech.py\nosnovni  <--- to izpise osnovni class, ko ga poklice class a, ko ga poklice class b.\na        <--- to izpise class a, ko ga poklice class b.\nb        <--- to izpise class b direktno.\nosnovni  <--- to izpise osnovni class, ko ga je b poklice direktno, brez super.\n  Ti to odgovori na vprasanje?"
+    },
+    {
+        "role": "user",
+        "message": "Ojla @assistant_4 osnova MRO mi je zdaj nekako jasna samo mislim da je tukaj problem preveč specifičen in bi ti moral poznati Odoo da bi mi lahko naprej pomagal, za enkrat hvala vsem ste odgovorili na vprašanja. Sedaj je na meni da raziščem kako to deluje v Odooju."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vir: Python za programerje, Janez Demšar, FRI"
+    },
+    {
+        "role": "user",
+        "message": "hvala:)"
+    }
+]

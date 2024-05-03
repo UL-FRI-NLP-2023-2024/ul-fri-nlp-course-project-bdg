@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  na siolu sem zahteval statični IP in ga tudi dobil. Statični IP potrebujem zaradi strežnikov. Vpisal sem: IP address: 193.77.153.245 (dodeljen statični od SIOL-a) Subnet mask: 255.255.255.0 Default gateway: 193.77.153.1  Preferred DNS server: 193.189.160.13 Alternate DNS server: 193.189.160.23  Ampak ne deluje.  Poklical sem na siol kjer nimajo seveda pojma kaj delajo gor.  Naslov so so dali lokalni naslov IP ampak če vpišem naslov ki so ga povedali na telefonu sicer deluje, vendar v tem primeru kako lahko uporabim strežnik za IP?  Načeloma bi moral delati IP od siola.  Mi lahko pomagate?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V povezavi modema ne spreminjaš ničesar.  Na routerju moraš odpreti port (recimo 80 za Http) in ga preusmeriš (forward) na interni naslov svojega strežnika: npr. 192.168.1.10 Dodatek: Potem od zunaj samo vpišeš zunanji naslov 193.77.153.245 in bi moralo delati."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 25. okt 2017 ob 12:09 izjavil:na siolu sem zahteval statični IP in ga tudi dobil. Statičen IP je dobil tvoj modem. Kaj potem ti delaš naprej z njim je tvoja stvar. Vsekakor ga ne vpisuješ v svoj server, to zagotovo ne bo delovalo ;)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Vpišeš https://www.whatismyip.com/ in vidiš če so ti ga dodelilo V bistvu router/modem dobi ta IP !"
+    },
+    {
+        "role": "user",
+        "message": "telekomov model: kliknem port triggering in imam ogromno opcij: trigger port start trigger port end trigger protocol - nastavljeno TCP open port start open port end open protocol: TCP  https://www.whatismyip.com/: To dodeli ipv6 tega ne morem uporabit za strežnik vsaj mislim da ne: Your IP Address Is: 2a00:ee2:6703:2300:f9d4:d461:3acd:c90d  potem pa če grem na telekomov server: NAT -- Virtual Servers  Select the service name, and enter the server IP address and click \"Apply/Save\" to forward IP packets for this service to the specified server. NOTE: The \"Internal Port End\" cannot be modified directly. Normally, it is set to the same value as \"External Port End\". However, if you modify \"Internal Port Start\", then \"Internal Port End\" will be set to the same value as \"Internal Port Start\". Remaining number of entries that can be configured:   A moram tukaj kaj spremenit?  Nisem še nikoli uporabljal tega routerja zato ne vem."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri NAT moraš nastaviti, kateri port boš preusmeril na notranji strežnik-server IP address (običajno imaš pri service name napisan tudi port, ki ga uporablja)."
+    },
+    {
+        "role": "user",
+        "message": "siol"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če greš na svojem računalniku na http://192.168.1.2:8081 ti dela? Pa remote host lahko odstraniš."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 25. okt 2017 ob 13:13 izjavil:Če greš na svojem računalniku na http://192.168.1.2:8081 ti dela? Pa remote host lahko odstraniš.   Ne dela.  @user je 25. okt 2017 ob 13:14 izjavil:@assistant_3 je 25. okt 2017 ob 13:13 izjavil:Če greš na svojem računalniku na http://192.168.1.2:8081 ti dela? Pa remote host lahko odstraniš.   Ne dela.   Ta dela: http://192.168.56.1:8081/"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Zakaj pa si potem dodal 192.168.1.2:8081? Dodaj 192.168.56.1:8081 ..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 25. okt 2017 ob 13:18 izjavil:Zakaj pa si potem dodal 192.168.1.2:8081? Dodaj 192.168.56.1:8081 ...   Sem probal že prej pa ni šlo.  Dobim napako:  Internal server IP address \"192.168.56.1\" is invalid (LAN subnet 192.168.1.1/255.255.255.0)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ali imaš med Telekomovim routerjem in tvojim računalnikom priključeno še kakšno škatlo? Glede na to, da imaš lokalni IP .56 mora biti nekaj vmes ..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 25. okt 2017 ob 13:25 izjavil:Ali imaš med Telekomovim routerjem in tvojim računalnikom priključeno še kakšno škatlo? Glede na to, da imaš lokalni IP .56 mora biti nekaj vmes ...   Ne.  Problem je v tem jaz lahko spremenim IP v routerju 192.168.1.99 ali drugega ampak potem ne morem bindat z IIS in zaradi tega ne deluje.  Imam samo dva IP, tretjega ne morem dodat pod dodatno ker uporabljam DHCP.  Slika"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Sicer ne bom nic pomagal, ampak:  >Poklical sem na siol kjer nimajo seveda pojma kaj delajo gor.  Verjamem, da si s svojim znanjem to z lahkoto ocenil."
+    },
+    {
+        "role": "user",
+        "message": "Zdaj je ratalo uredit da lahko dodam katerikoli IP v Windowsih in dela sem mogel narediti takole:     Spletna stran je videna, kako naredit da bo videna tudi na www?  Nisem začetnik v IIS stran dela lokalno kako opravit preusmeritev v IIS.  @assistant_4: oni so mi povedali kar sem jaz že vedel. Nič novega."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V Windows imaš nastavljen ip 192.168.1.10, iz routerja imaš port 8081 preusmerjen na ip 192.168.1.2. Poleg tega imaš nastavljeno, da lahko dostopaš preko porta 8081 samo iz svojega zunanjega ip naslova. Zbriši pri nastavitvi server remote host in preusmeri vse skupaj na pravi notranji IP."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Tole je lahko potencialni recept za disaster in širjenje kakšne navlake po internetu."
+    }
+]

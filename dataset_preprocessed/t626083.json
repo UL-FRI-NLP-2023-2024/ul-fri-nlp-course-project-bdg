@@ -1,0 +1,210 @@
+[
+    {
+        "role": "user",
+        "message": "Ko ugasnem windowse se vse zapre in normalno ugasne, le ventilatorji v kišti še vedno laufajo. Vrtita se tako od procesorja kot tudi oba od grafične (geforce gtx 750). Že prej ko ni bilo te grafične in je bila druga brez ventilatorja, se je od procesorja še vedno vrtel, čeprav je bil računalnik ugasnjen. Pa tudi ko je prižgan, vsi ventilatorji vedno delajo na polno od začetka, tudi ko so samo v stanju pripravljenosti.   Kaj bi se dalo zrihtat? (napajalnik je nov, 600W)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Dvomim v ta scenarij. Povej celotno konfiguracijo in kateri sistem. Izštekaj 220V kabel, vštekaj nazaj in komp štartaj v varni zagon. Ko se naloži namizje, naredi shutdown (zaustavitev sistema). Se sedaj povsem iz klopi ali se ventili še vrtijo?"
+    },
+    {
+        "role": "user",
+        "message": "Intel Core Quad Q6600 2.4GHz 4GB Asus P5K Windows 7, 64bit  Sem probal z varnim načinom, ampak mi med ugašanjem zamrzne win. Če stisnem restart button mi včasih vse ugasne, tut ventilatoji in se nato na novo zažene. Se pa sicer vrti tudi ventilator od napajalnika ne samo grafična in procesor. Zanimivo je tudi da od grafične in verjetno tudi od CPUja ventilatorji delajo skos na polno."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Maš slučajno na napajalniku zadaj kakšno stikalce ki ni ON/OFF in ni za preklop med napetostmi (110/220)?  Tisti gumbek je lahko posledica tega da prepušča tok naprej, zato se posledično vrti tudi ventilator. Tak primer sem imel jaz ampak meni so se vrteli samo ventilatorji od napajalnika.  Torej poglej za dodatni gumb, za vsak slučaj."
+    },
+    {
+        "role": "assistant_2",
+        "message": "če lahko, poizkusi s še enim napajalnikom, neglede na to, da je ta nov če bo isto, potem veš da ni kriv napajalnik ampak je lahko matična plošča lahko poizkusiš it v bios in izvest reset na privzete nastavitve(reset to bios dafaults) lahko poizkusiš tudi z drugo grafično kartico"
+    },
+    {
+        "role": "user",
+        "message": "Napajalnik ima samo glavno ON/OFF stikalo. Grafična je tudi nova, pred par dnevi dodana noter. Bom probal še v BIOSU kaj poštimat. Upam da ni matična kriva :/"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Za kateri napajalnik se gre? Upam da ni kak Intertech."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Tudi nov napajalnik je lahko defekten. Sem ravno enega nesel nazaj včeraj, ker se je kar iskrilo v notranjosti.  Če se izkaže, da ni krivec je pa naslednji osumljenec osnovna plošča. Reset na default nastavitve kot je že svetoval Mind, ali še bolje posodobitev, v kolikor je seveda novejša različica možna."
+    },
+    {
+        "role": "user",
+        "message": "Sem probal dat bios to defaults in ni nič drugače. Sem pa opazil, da vedno ko dam zaustavitev sistema mi na koncu na monitorju napiše entering power save. Ne vem ali je to povezano samo s tem da se monitor ugasne ali je tudi z računalnikom. Monitor se sicer vedno normalno ugasne, vse v računalniku pa dela naprej, ventilatorji na polno kot da je rač. prižgan. Če pritisnem reset tipko, se računalnik zopet zažene. Sicer pa lahko ventilatorje izklopim samo če ugasnem napajalnik. So mogoče kje v nadzorni plošči kakšne nastavitve, ki dovolijo da računalnik dela naprej, čeprav ga dam na zaustavitev sistema?  Sem pa bral o nekih sleep state settings S1 pa S3, ampak sam ne vem kaj to pomeni in kje spreminjat."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Da ti slučajno ne daješ SPAT računalnika...  http://www.dummies.com/how-to/content/h..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_5 je 8. nov 2014 ob 16:58 izjavil:Da ti slučajno ne daješ SPAT računalnika...  http://www.dummies.com/how-to/content/h...  Pri spanju se vse ugasne."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_6 je 8. nov 2014 ob 17:17 izjavil:@assistant_5 je 8. nov 2014 ob 16:58 izjavil:Da ti slučajno ne daješ SPAT računalnika...  http://www.dummies.com/how-to/content/h...  Pri spanju se vse ugasne.  To ne drži. Pri večini res, samo ne pri vseh."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pri moji kišti se dogaja enako... Nisem še natuhtal zakaj točno se gre (najverjetnej nekej z tistimi s1, s2... stanji), ampak se še nisem imel volje s tem ukvarjat, da bi dokončno natuhtal... Pač treba bo it v bios, pa nastavit kaj naj se nardi, ko daš shutdown...    lp"
+    },
+    {
+        "role": "user",
+        "message": "Računalnik sem pustil in je šel v spanje in se je vse ugasnilo. Torej je neka zadeva samo pri zaustavitvi, da se ne izklopi vse."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri zaustavitvi se ti nek program/proces obesi in blokira sistem, grafika se kao ustavi (zato ni slike na zaslonu). Lahko je povezano ravno s kakimi gonilniki za grafiko. Za začetek s programom Msconfig v zavihku Zagon odstrani vse kljukice pred vrsticami, ki se izvedejo ob zagonu. Shrani, restartaj sistem, ki se zdaj naloži brez zagonskih programov, in naredi shutdown (zaustavitev sistema). Če se zdaj sistem normalno ugasne potem te heca ena od zagonskih vrstic, ki si jih prej izklopil."
+    },
+    {
+        "role": "user",
+        "message": "Sem odstranil vse kljukice za programe ki se izvedejo ob zagonu ampak je še vedno isto. Zaustavitev sistema, vse se zapre, na ekranu se pojavi Entering power save, ventilatorji in lučka na matični pa še vedno delajo. Računalnik se prižge nazaj ko pritisnem tipko reset. Grafika ni kriva, ker je pred to katero imam sedaj delalo isto. Mislim da je nekje v nastavitvah nekaj narobe, ampak ne najdem."
+    },
+    {
+        "role": "assistant_9",
+        "message": "start meni (enter) shutdown /s -t 10 (enter) Se stanje ponovi ?   Odklopi vse usb naprave. Bios je zadnji ? https://www.asus.com/Motherboards/P5K/H... P5K BIOS 1201 1. Support new CPUs. Please refer to our website at: http://support.asus.com/cpusupport/cpus... 2. Fix the system sometimes takes about 30 seconds to get into the OS when many USB devices are plugged into the system. http://dlcdnet.asus.com/pub/ASUS/mb/soc..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9 je 9. nov 2014 ob 20:11 izjavil:start meni (enter) shutdown /s -t 10 (enter) Se stanje ponovi ?  Ne zastopim točno?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Klikneš na start meni, vpišeš \"shutdown /s -t 10\" in potrdiš izvajanje ukaza."
+    },
+    {
+        "role": "user",
+        "message": "Isto ostane :/ . Če ga dam v mirovanje ali spanje se pa vse normalno izklopi."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ti slovenski izrazi so ena zmeda.  Če pritisnem reset tipko, se računalnik zopet zažene. S katero tipko ga prižigaš ?   Izklopi Hibernate http://www.sevenforums.com/tutorials/81... powercfg -h off   Nekaj ostalih rešitev: http://superuser.com/questions/648346/f..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 9. nov 2014 ob 19:51 izjavil:Entering power save  Zgleda kot da gre računalnik v spanje in ne v shutdown. Testiraj to: ko ugasneš računalnik, pritisni poljubno tipko na tipkovnici."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@user je 8. nov 2014 ob 16:38 izjavil:Sem probal dat bios to defaults in ni nič drugače. Sem pa opazil, da vedno ko dam zaustavitev sistema mi na koncu na monitorju napiše entering power save. Ne vem ali je to povezano samo s tem da se monitor ugasne ali je tudi z računalnikom. Monitor se sicer vedno normalno ugasne, vse v računalniku pa dela naprej, ventilatorji na polno kot da je rač. prižgan. Če pritisnem reset tipko, se računalnik zopet zažene. Sicer pa lahko ventilatorje izklopim samo če ugasnem napajalnik. So mogoče kje v nadzorni plošči kakšne nastavitve, ki dovolijo da računalnik dela naprej, čeprav ga dam na zaustavitev sistema?  Sem pa bral o nekih sleep state settings S1 pa S3, ampak sam ne vem kaj to pomeni in kje spreminjat.  Instaliraj ACPI driver. Asuske majo to sranje. Dobis ga prav za vsako plato posebej na njihovi strani. Pa v biosu si nastavi na S3. https://www.asus.com/Motherboards/P5K/H... Isci ga v meniju ATK. Ce ni gonilnika za win7 ga daj za visto 64bit."
+    },
+    {
+        "role": "user",
+        "message": "Zaenkrat ne pomaga nič. Če dam shutdown in ventilatorji laufajo, ga lahko prižgem z reset tipko oz. ga ugasnem preko napajalnik in prižgem s tipko za prižiganje. Če gre v spanje al mirovanje ga normalno zbudim s tipkovnico. Izvedel sem vse napisane ukaze za cmd in se nič ne spremeni. ACPI driverja ne morem naložit, ker za Win 7 ga ni, od viste ali XPja pa ne prime. Čist brez idej sem...  Če posodobim bios, lahko pride do kakšnih napak? Nekaj sem bral da je to flashiranje biosa tvegano...ne vem pa zakaj."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Zapeči tole na cd/usb (z rufus ali  yumi ), ko se linux naloži ga ugasni preko vmesnika (tako kot ugasneš winse). Poročaj."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9 je 11. nov 2014 ob 16:00 izjavil:Zapeči tole na cd/usb (z rufus ali  yumi ), ko se linux naloži ga ugasni preko vmesnika (tako kot ugasneš winse). Poročaj.  Se pravi bootam tole zadevo in normalno ugasnem?"
+    },
+    {
+        "role": "user",
+        "message": "Evo ko bootam tale linux mi dela brez problema. Tudi ventilatorji ne vrtijo na polno tako kot pri winsih. Ko dam shutdown se vse normalno ugasne. What now?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Reinstal Winsov  ..."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Potem ni krivec bios nastavitve oz hw, temveč imaš softverski problem.  Za začetek bootaj winse v safe mode, se tam pc ventilatorji ugasnejo ?  Si namestil https://slo-tech.com/forum/t626083/p460... ? Hibernacija je na off https://slo-tech.com/forum/t626083/p460... ?  Winsi imajo težave pri ugašanju če imaš težave pri grafičnih driverjih, čipsetu, mrežni/zvočni kartici (v tem vrstnem redu). Zadnjo verzijo najdeš na asus strani, stankaj si jih na hdd/usb/dvd, nato v control panel/programs and features pobriši stare in ponovno zaženi sistem.  Control Panel\\All Control Panel Items\\Power Options  nastavi na \"high performance\", klik na \"change plan settings\", za oboje daš na never,  klik na change advanced power settings ->  (spremeniš to dvoje) sleep/ sleep after : never power buttons and lid / power button action : setting: shutdown"
+    },
+    {
+        "role": "user",
+        "message": "Če dam v safe mode, se ventilatorji res ne vrtijo na polno, ampak ko dam shutdown mi vedno sred ugašanja zamrzne slika, prav tako se posledično ventilatorji vrtijo naprej, ker ni bilo ugašanje izvedeno do konca. ACPI ni za win7, od viste in xpja ne delajo, sem jih potem drugače posodobil. Hibernacija je na off, prav tako vse ostale zadeve pri power options so naštimane tako kot ste napisali. Nisem pa še pobrisal starih driverjev ampak sem jih samo povozil z novimi, ter preveril nove posodobitve in je vse na mestu. Ne vem kaj še ostane..nov win očitno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "naloži na novo in imaš urejeno..."
+    },
+    {
+        "role": "user",
+        "message": "Sem dal Win na novo gor ine še vedno vrti ventilatorje od grafične na polno. Preden sem naložil driverje od grafične, je delalo normalno, ob inštaliranju gpu tweak pa na polno, tudi ko nič ne delam oz. ko se winsi šele prižgejo."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Na nadzorni plošči imaš ikono možnost porabe energije. Tam izberi delovanje tipk in pri tipki Power označi zaustavitev mašine. Po defaultu ti sistem vse tri načine označi s spanje. V spanju mašina vedno deluje na minimalnih performansah. V hibernaciji se na disk posname zadnja seja in potem se mašina izklopi (morajo vsi sistemi ugasnit). Zaustavitev - shut down ti ustavi celoten PC in se štarta iz bios-a.  Za delovanje ventilatorjev imaš v bios-u možnost dati na silent in ti MB uravnava delovanje ventilatorja CPU-ja, glede na temperaturo. Za grafiko imaš nastavitve ventilatorjev v pogramu za urejanje nastavitev grafične kartice in tam urediš hitrost. Za ostale ventilatorje se uporabljajo regulatorji ali pa se jih priklopi na 5V.  Ker imaš v nastavitvah sistema povsod - spanje, ti pri zausatavitvi iz start gumba, lahko prihaja do sprov in računalnik zamrzne ali pa se ne ustavi."
+    },
+    {
+        "role": "user",
+        "message": "Tako imam že od defaulta vse naštimano, ampak ni nič boljše. Fan speed reguliram kolikor želim, pa se nič ne zgodi. Je možnost, da je kaj narobe priklopljeno?   GPU tweak   Power button"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Če pritisneš power gumb, ti mašina ustavi? V spanju ti bo ventilator delal, če je temperatura procesorja nad določeno za vklop. Spanje pomeni, da ti računalnik dela na najmanjši možni porabi, v primeru zapacanega hladilnika, nedelujočega prenosa (prazna cevka - izparela tekočina), je procesor nad dovoljeno temperaturo in hladilnik ti bo še vedno slišno vrtelo, kljub navidezni ugasnitvi.  Pri knofu za sleep, daj shutdown ali hibernate, da ti sistem ustavi in izklopi."
+    },
+    {
+        "role": "user",
+        "message": "Če pritisnem power gumb mi, gre računalnik v shut down, vendar ventilatorji še naprej delajo (od CPUja, grafike in od napajalnika). Zapacani niso, ker se vrtijo vedno, tudi ko šele prižgem \"mrzel\" računalnik in takoj ugasnem, se vrti na polno."
+    },
+    {
+        "role": "user",
+        "message": "Začuda se sedaj tudi ventilatorji ugasnejo, če držim shutdown gumb, še vedno pa se ne ugasnejo če dam shutdown iz start menija. Ko grem v safe mode, se ne vrtijo na polno, ampak normalno, vendar ko dam shut down v safe mode, mi zamrzne med ugašanjem in posledično se vrtijo naprej. Na screenu je pa freeze od shooting down..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Torej gre za neke ukaze, ki se izvajajo v sistemu. Prečisti sistem in poglej nastavitve, tudi v bios-u.  Si se kaj igral v nastavitvah za OC?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "V biosu moraš spremeniti \"Power Management Setup\" -> \"Soft-Off by PWR-BTN\" opcijo: Pressing the power button for more than 4 seconds forces the system to enter the Soft-Off state when the system has \"hung. The Choices: Delay 4 Sec, Instant-Off (default)."
+    },
+    {
+        "role": "user",
+        "message": "Mogoče kaj spremeni dejstvo, da imam WIN na SSD disku? Res mi je čudno, da do prijave v WIN ventilatorji delajo na zmerni hitrosti potem pa začnejo na polno, tale grafika pa ima še dodatno napajanje, zaradi 2 ventilatorjev. Sicer so pa nastavitve v biosu sledeče:   Bios1   Bios 2   Bios 3   Bios4"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Mogoče kaj spremeni dejstvo, da imam WIN na SSD disku?  ne"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Človek, 65C ima CPU v biosu..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "uff kriza, hitro spucat hladilnik in menjat termalno pasto"
+    },
+    {
+        "role": "assistant_2",
+        "message": "ponovno namestit windows očistit notranjost računalnika in temeljito izpihat prah iz cpu hladilnika pa obvezno ponovno termačlno pasto nanest"
+    },
+    {
+        "role": "assistant_9",
+        "message": "http://www.techpowerup.com/forums/threa... Vklopi funkcijo.  Kateri hladilnik imaš na cpu ?"
+    },
+    {
+        "role": "user",
+        "message": "Winsi so bili ravno zaradi te napake naloženi na novo, ampak ni pomagalo. Sem spucal hladilnik, zamenjal termalno pasto in je sedaj na max 40°C, ampak še vedno ko pridem v WIN se začne na polno vrtet (verjetno samo tista dva od grafike, za CPU se mi zdi da normalno vrti...). Mogoče težava v grafičnih nastavitvah? Grafika je nova z novimi driverji itd.. Cpu ima osnovni hladilnik, ki je že bil zraven od samega začetka."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Si vklopil nastavil ASUS Q-fan ?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user - NAloži MSI afterburner in si nastavi profil za ventilaorje od grafične."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Lep pozdrav imam grafično hd radeon 7790 in semizdi da je crknil ventilator... Ko prižgem računalnik se ventilator zasuče in ugasne ter ponovno zasuče in se spet ugasne, vendar lahko delam na računalniku vse stvari.. Ko igram katero igro če se grafična preveč segreje, tedaj pa se ventilator vklopi da temperatura pade vendar potem vgasne.. je to normalno ?   Lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Naloži MSI afterburner in si nastavi fan profil."
+    },
+    {
+        "role": "assistant_15",
+        "message": "sm narediu ampak če mam pod 70% se mi ventilatorji ugasnejo in nedelajo... Je mogoče tak model grafične da se zalaufajo samo takrat ko se mora uhladiti? http://www.anandtech.com/show/6837/amd-... je pa tale.."
+    },
+    {
+        "role": "user",
+        "message": "Po dolgem cajtu sem se spet spravil rihtat kišto, naložil msi afterburner, ampak kot da ne bi imel vpliva. Nastavitve so pa takšne (mogoče sem kaj narobe naredil)?   Msi afterburner"
+    }
+]

@@ -1,0 +1,402 @@
+[
+    {
+        "role": "user",
+        "message": "Tukaj je približen teoretičen potek odpiranja in forwardanja porta, praksa se razlikuje v tem, da je izgled in besedilo od routerja do routerja drugačno a zelo podobno.  [Dostop do routerja] Če ne poznamo IP naslov routerja, se odpravimo v start -- run -- vpišemo CMD in pritisnemo enter. Odpre se pogovorno okno, vanj napišemo IPCONFIG, dobimo podoben izpis:    Številka pod \"IP ADDRESS\" je naš lokalni IP naslov - ga bomo rabili kasneje, številka pod \"Gateway\" pa je IP našega routerja.  Ta IP vpišemo v brskalnik. Če je vse v redu se nam prikaže stran, ki nas poziva da vstavimo geslo, geslo je lahko prazno ali pa na privzeti vrednosti npr: \"admin\" ali \"password\". V večini primerov je uporabniško ime \"admin\" in geslo prazno. (priporočam da si geslo zaradi varnosti spremenite)  V nasprotnem primeru prebrskajte navodila za router.   [Forwardanje porta]  Nadalje si pogledamo, kje je razdelek \"VIRTUAL SERVER\". Prepoznamo ga lahko po nekaj že vnaprej določenih stvareh, za lažjo predstavo si oglejte spodnjo sličico.    V polju \"LAN IP ADDRESS\" dopolnimo naslov z našim, katerega smo izvedeli malo višje, izberemo tip protokola, ki ga aplikacija zahteva, LAN in PUBLIC port sta ponavadi enaka (kratek seznam portov lahko najdete nižje v tem postu), označimo še \"ENABLE\" in potrdimo nastavitve s klikom na gumb \"Apply\".   Tako zadeva bi morala delati.  [DMZ] V primeru,da vam aplikacija/igra kljub forwardanim portom ne deluje lahko vklopimo DMZ. A tu je primerno podati opozorilo DMZ odpre in preusmeri vse porte na ciljni računalnik, s tem je popolnoma izpostavljen zunanjemu svetu. Kako izgleda DMZ vmesnik si lahko ogledate na spodnji sliki.     Za podrobnejše informacije o določenem tipu routerja lahko pogledate še sledeči link:  PortForward.com - Free Help Setting up Your Router or Firewall  Najbolj pogosto uporabljeni porti za nekatere programe (če imate težave pri povezovanju pri katerem od teh programov, potem mu odprite spodaj napisan port):  ftp: 20 in 21 [TCP] Telnet = 23 default [TCP] http server: 80 [TCP] https server: 443 [TCP] FTP ident (za hitrejsi login) = 113 [TCP] mail server : 25(SMTP), 110(POP3), 143(IMAP) [vsi TCP] E-mule: 4662 [TCP] 4672 [UDP] (default, odvisno od nastavitev) proxy server: 8080 [TCP](najbolj generični port), včasih tudi 3128 [TCP] AIM = 5190 default IRC strežnik: 6666-6668 [TCP] IRC DCC= 6060 default [TCP] (ponavadi večji rang odvisno od nastavitev) BitTorrent: 6881-6999 [Blacklisted] uporabljajte nad 10000+ [TCP] TS = 8767  windows xp remote desktop control: 3389 [TCP,UDP] VNC: 5900, 5800, 5700"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zanima me ktere porte naj odprem za VNC program da bo delal in kako to nardim: (glej sliko)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "v prvo polje vpiši ip s katerega boš @assistant_22njal vnc (to je verjetno tvoj računalnik) v drugi dve polji pa bo pomojem treba vpisat vnc porta.. poglej v help od vncja če piše katere porte uporablja. za iskalni niz uporabi besedico \"port\""
+    },
+    {
+        "role": "assistant_0",
+        "message": "ja VNC uporablja port 5900 da se connecta! A tam k mam PRIVATE port in PUBLIC port upišem 5900 pa je al kva?? (to sem že probal in se še kr nisem mogel povezat? čudn to)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ja pa lokalni ip še vpiši (taki kot ga vidi router) pa preglej če je tisti vnc port tcp al udp (mislim da je tcp)  če ti ne dela še vedno ne pa poglej če maš slučajno xpjev firewall vkloplen. če ja mu odprti port 5900"
+    },
+    {
+        "role": "assistant_1",
+        "message": "v prvi post sem dodal  link, ki ga je v temi  Težava z routerjem podal  boych  hvala."
+    },
+    {
+        "role": "assistant_0",
+        "message": "sam še neki: Kter IP pol vpišem ko se hočem connectat? 192.168.1... al kako se konektam na določen računalnik ker mam na ruterju 3 kompe!!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "tistega ki ga imaš v routerju zapisanega kot WAN IP (torej zunanjega)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "jest ne najdem tega WAN IP (zunanji)?? Imam pa dinamični IP, če ma kaj veze?! help"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kaj maš adsl z dinamičnim ipjem al kaj?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ja, dinamični IP mam! Sej zdej bom naroču statičnega!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "no.. tale dinamični ip morš vpisat"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sem šel na  tole stran pa sem najdu IP!! (men se zdi da je taprav?!)  Kako pa zdej določem na kter računalnik od treh se bom konnectral ker mam sam en IP (torej zuinanji od routerja?). Če napišem sam ta IP (moj IP: 193.77.251.210 ) se noče konnektat!!!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "mogoče moreš še port navest."
+    },
+    {
+        "role": "assistant_0",
+        "message": "a se to tko napiše?? 193.77.251.210:5900   sem probal tko mapak ne dela?!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "fora je da ne delam z vncjem in ti pač tukaj več ne znam ponudit pomoči :) ker sploh nevem kak zgledajo okenca in ker sploh nevem če on kar sam doda port..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "ok mi je ratal   hvala za pomoč..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "pomagajte mi izdelat listo najbolj generičnih portov za aplikacije:  ftp: 21 http server: 80 mail server : 116? proxy server: 8080 (najbolj generični port) irc: 6666-6668 irc dcc: ? emule: 4661-4662 (odvisno od nastavitev) torrent: 6881-6999 (odvisno od nastavitev) windows xp remote desktop control: ? vnc: 5900 (?)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "malo popravkov: mail server : 25(smtp), 110(pop3), 143(imap) irc dcc: poljubno windows xp remote desktop control: 3389  drugace pa za unix sisteme, najboljse da pogledas na kaki kisti tale fajl: /etc/services"
+    },
+    {
+        "role": "user",
+        "message": "hmm tole je pomoje dost brezveze delat :) ker pač v večini programov, ki delajo probleme lahko nastaviš na poljubni port.... Tako imam jest sfukan router in mam lahko samo port 21 in remote desktop fowardiran za vse ostale se mu pa neki zmeša... No uglavnem emule,FTP,Bittorent vsi delajo čez port 21 sicer ne hkrati ampak"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Damn ... men tole res ni nic vec jasn ... prebral kup tutorialov na netu, najdu clo podroben opis nastavitev za tocno moj router, pa zadeva se vedno ne spelje tako kot bi mogla ...  Probu ugasnit SP2 firewall IN firewall na routerju ... test ports v muli ne spelje! Probu zamenjat TCP port v muli iz 4662 na 4661 ... test ports v muli ne spelje! Probu nardit static IP na masini, brez DHCP (nekje pisalo, da je priporocljivo) in forwardal porte (4662 oz. 4661) na ta IP ... test ports v muli ne spelje! Probu restartat Router po vsaki spremembi ... ni razlike! Probu restartat comp po vsaki spremembi ... ni razlike!  Mula se mi sicer skonekta, ampak ma LowID in ne pokaze IPja ...     Nastavitve mam takole:     Na routerju mam porte forwardane tako kot sem prebral na enem pageu, k ste ga objavl tuki not:     in Firewall odprt takole:     in rezultat je isti ... TCP test falira ...     men res ni nix vec jasno, ker se mi zdi, da sm probu vse ... a ma kdo se kake ideje? Drugac mi vse ostalo na netu dela BP (dc++, torrent, icq, irc itd itd itd ...)  tnx lp @assistant_3"
+    },
+    {
+        "role": "assistant_4",
+        "message": "ftp: 21 http server: 80 mail server : 116? proxy server: 8080 (najbolj generični port) irc: 6666-6668 irc dcc: ? emule: 4661-4662 (odvisno od nastavitev) torrent: 6881-6999 (odvisno od nastavitev) windows xp remote desktop control: ? vnc: 5900 (?)   FTP ident (za hitrejsi login) = 113 AIM = 5190 default Telnet = 23 default IRC DCC= 6060 default BitTornado = 10000 - 60000 default (ba strani pise 4661.. napaka) TS = 8767 vnc: 5900, 5800, 5700"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zadna ideja ki mi pride na misel. Probaj brez ruterja ce so porti free in ne blokirani od perfect.si al kaki koli ISP je to. Se prej probaj porte visje kot 10000."
+    },
+    {
+        "role": "assistant_3",
+        "message": "?!? ... prvi post mi ni jasn, kaj si hotu povedat ...  Kako mislis probaj porte visje kot 10000?  lp @assistant_3"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Da nastavis port v muli in port v rutero 10001 for example. In probas. Eni ISPji majo navado blokirati dolocene porte nizje kot kaj te vem. Menda je Triera eden izmed njih nisem pa ziher da pac nehostas serverov na defult portih. Za Perfecttech pa nevem kako politiko majo.  Ce pa to tudi nedela pa odklopi ruter in se priklopi direkt na net. Tak lahko vsej izlocis napako v rutero oz ISP."
+    },
+    {
+        "role": "assistant_3",
+        "message": "se pravi poizkusim recimo:  TCP port na 10001 in UDP port na 10002 ali kaj podobnega?  lp @assistant_3"
+    },
+    {
+        "role": "assistant_4",
+        "message": "jap."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Dela!  tnx man! :)  ko sm nastavu v muli TCP port na 10001 mi je avtomatsko spremenilo na 34465, pol sm pa se UDP port nastavu na 34475 in popravil nastavitve na routerju in zadeva je zlaufala!  Mam lepo High ID, pokaze IP, skonekta se v trenutku itd ...  A to pol pomeni, da moj ISP blokira default porte od mule al kaj? Zakaj?  Hvala za pomoc, mas pivo v dobrem :)  lp @assistant_3"
+    },
+    {
+        "role": "assistant_4",
+        "message": "no problem man ce si te srecni sem jaz tudi    Verjetno to pomeni da tvoj ISP blokira vse porte nizje od 10000 verjetno ne samo mulo. Pac probaj port recimo 4001 in 4002 pac nekaj kaj ni znacilno za mulo ce ces vedet"
+    },
+    {
+        "role": "assistant_3",
+        "message": "ma ja ... nc vec ne bom zele probavu! :) hehe  zej dela, bom pustu na miru!    je pa zanimivo, zakaj mula recimo ni hotla sprejet 10001 in od kje je najdla pol 34465? To je kr samo se napisalo not, potem ko sm vpisal 10001?  lp @assistant_3"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Nevem odkot je iz 10k1 skoclo na tisto ker meni nena."
+    },
+    {
+        "role": "assistant_1",
+        "message": "orlytm lahko preveriš na kolko je ta meja?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "kako bi forwardu vse porte na svojmu linux serverju, ki pridejo iz ip-ja 192.168.0.2?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "na routerju določi da naj bo 192.168.0.2 v DMZju"
+    },
+    {
+        "role": "assistant_0",
+        "message": "sam neki me zanima glede programa VNC. Kdo rab več uploda server al viewer da bi povezava hitrej delala??"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Caqka, kako se pa določi na routerju da bo 192.168.0.2 v DMZ-ju?"
+    },
+    {
+        "role": "user",
+        "message": "Router ti more to omogočat... Če maš kako pocen vrjatno ti vrjetno ne bo... drugače pa isto kot pri fowardiranju naštimaš na DMZ in pote ip od lokalca butneš not"
+    },
+    {
+        "role": "assistant_5",
+        "message": "em... sam js mam za router linux server, ki ima gor linux fedora 1."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Kje se že v windowsih xp pogleda katere porte imaš odprte v računalniku(sem neki kikal pa sem to videl)  Ali je to prov ali narobe da ti napiše da so na ip 50.0.168.192 odprti te pa te porti.  V resnici pa ima računalknik IP na 192.168.0.50  Uporabljam ruter level1."
+    },
+    {
+        "role": "assistant_1",
+        "message": "start > run > cmd > netstat -all  pa pogledaš kaj vse izpljune."
+    },
+    {
+        "role": "assistant_7",
+        "message": "A imajo routerji ze default forwardirane tiste najbolj pogoste porte? Ker jaz razem mule nimam nic forwardirano pa mi WWW, mail pa to vse normalno dela? Najbolj čudno je da mi bittorrent dela. (Router LevelOne FBR 1409TX)"
+    },
+    {
+        "role": "user",
+        "message": "To pomeni da a) imaš na računalniku Virtual server, ki spusti boga in pol skoz ali da maš celo računalnik v DMZ, lahko pa da narobe zastopiš pojem normalno ali pač da imaš torrenta speljanega po istihprotih kot emule. Jest mam vse speljano čez isti port ker itak nemorem oboje uporabljt, tako ftp server, kot emule, kot torrenta"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_7: včasih lahko vrata na eni strani odkleneš na drugi pa ne. (recimo ker nimaš ključa)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj pomen to, da spusti boga in pol skoz? Predvidevam da ga ne, saj ne vem v čem bi bila sicer funkcija Virtual Server.   včasih lahko vrata na eni strani odkleneš na drugi pa ne. (recimo ker nimaš ključa) Ja sam problem je v bittorrentu kjer je povezava v obe smeri. In deluje normalno* - v klientu BitTornado imam green light, kar pomeni OK. Je pa mal čudna nastavitev portov v temu klientu, sicer izbereš port range - trenutno od 10000-60000 in obkljukano \"randomize\".  aja, pa DMZ je izkopljen."
+    },
+    {
+        "role": "assistant_7",
+        "message": "so?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "XRT-401B kako tu odprem porte ua irc ka se nemorem v bota povezat niti dcc pošijlat"
+    },
+    {
+        "role": "assistant_9",
+        "message": "A ima kdo izkusnje pri teh stvareh z routerjem bintec x1200?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Tole mi ni čist jasno. Lahko nekdo pove kaj naj bi ble vse te nastavitve, ki so vidne iz slike na obeh povezavah.   Slika 1   Slika 2  Namreč prek DC++ ne gre nič dol. Povežem se na HUBe to je pa tud vse. Drugi lahko vlečejo od mene dol. Ne morem pa iskat in ne morem vlečt dol. Firewall pa mam izključen na routerju."
+    },
+    {
+        "role": "user",
+        "message": "jah fowardirej še virtual server pa bo vse delalo. Jest nimam nobenga porta fowardiranega pa virtual server naredi vse kar je treba za programčke in serverje da delajo."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Da sem ne vem kaj zadeva ne dela. Lahko pridm na HUB ne morm pa iskat niti dol ne vleče nč. Ne dela sploh. Od mene pa lahko folk vse vleče dol.   Mula pa dela normalno. Kje je tuki point vsega? Prej je DC++ delov normalno, ko ni blo routerja vmes."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Prestavi DC++ v aktivni način, vpiši svoj IP in forwardiraj dva enaka porta na TCP in UDP protokolu na svoj računalnik."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Narejeno vse. Po  temle pa ne pali, da sem ne vem kaj.  Reinstall DC++a?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "pa imaš prov nastavljeno v DC++ Settings? V glavnem, forwardaš port na routerju, pol pa v DC++ Settings vpišeš tvoj WAN (ne local) IP ter port, ki si ga forwardal. Pol pa ma da dela, če pa ne, pol je pa res neki narobe..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Moj local IP je 192.168.62.50. WAN pa je 212.xxx.xxx.xxx. In v DC++ nastavitvah mam vnešen 212.xxx.xxx.xxx in ne lokalni IP in zadeva ne deluje. eMule dela normalno vse. Pr DC++ pa od mene lahko vlečejo vse jz pa ne morm ne iskat ne k seb vlečt. Chatam na hubu pa normalno. Res je neki narobe in me zanima kaj.  Kater port mate v uporabi? Jz mam 1412 k je menda default port."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Jaz imam port 3333 ampak, to sploh nima veze, lahko odpreš praktično katerikoli port, pa bo vse v redu, samo to da ti še zmerom ne dela, je res čudno, saj kolikor vidim maš DC++ nastavljen prav. No, a na routerju maš tut odprt ta port (TCP in UDP)?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ja je odprt. Pod Virtual Server sem uštimal zadevo. Mam pa še Special Application kjer tud lahko porte odpiram. Je vidno na eni sliki nekaj postov nazaj, ko sem dal link do dveh slik. Mogoče je težava tam. Bom se lotil navodil v začetku naslednjega tedna."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Guys!!!!! You saved my life ;)))  Thanx!!!  Mam pa eno vprasanje glede routerjev. Mam dva compa gor in oba sta na internetu, kako in kje bi zdej, ce se sploh da, nastavu da bi se ta dva compa med seboj vidla, kot npr. pri LAN.   Hvala!"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Jaz imam pa drugačen problem. Znam forvardirat porte samo nikjer ni okenca \"Port range\". Zato ne morem imeti odprtih več kot 15 portov.  Router: Hardware Model: FBR-1405TX  Boot Code Version: V1.5  Runtime Code Version: v0.10 (Apr 8 2003 16:42:08)  p.s.:Zakaj mi včasih router odklopi povezavo do računalnika, tako da moram router resetirat?  Hvala za odgovore!"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kako bi v linuxu, ki služi kot router, fordardal porte računalniku, kjer so winxp?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "kako naj forvardiram sistem debian na localni sistem ker mi v linux deluje localni ip 192.168.0.102 lahko z druzga compa pogledam stran nihče pa ne more na ta ip drug kako se naredi da bo lahko šel na localni ip naprimer 193.55.200.11"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Kaj je router in kako odprem porte na njem?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "?"
+    },
+    {
+        "role": "user",
+        "message": "plastična ali kovinska škatlica različnih velikosti mogoče celo cel računalnik. Porte odpreš tako da si prebereš prvi post."
+    },
+    {
+        "role": "assistant_15",
+        "message": "ce je tak napisano da pojma nimam kaj pise ne vem kaj je router, potm morem IP vpisat v brskalnik-kateri brskalnik pojma nimam, VIRTUAL SERVER-pojma nimam kje to najdem, bolj preprosto,ker sem zacetnik in bi rad imel le hitrejsi prenos pri BT-ju"
+    },
+    {
+        "role": "assistant_1",
+        "message": "imaš router?  kje imaš dostop do interneta.. več informacij prosim. ker mi tudi nimamo magične kugle."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Imam kablski internet triera.net"
+    },
+    {
+        "role": "assistant_1",
+        "message": "nisi odgovoril na vsa vprašanja."
+    },
+    {
+        "role": "assistant_15",
+        "message": "ce govorima o tisti skatli(ce je to router),potem ga nimam. Kaj dela router?  Upam,da sem sedaj na vse odgovoril"
+    },
+    {
+        "role": "assistant_1",
+        "message": "če nimaš routera potem lahko edino še firewall zaustavlja prenos. najbolje da greš v bittorent temo in tam povrpašaš."
+    },
+    {
+        "role": "assistant_15",
+        "message": "potem pa hvala za trud"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Mislim, da sem razumel vendar nisem 100%.   Router ima IP aaa.aaa.aaa.aaa in gateway bbb.bbb.bbb.bbb. Računalnikoma povezana na ruoter dodeli IP-ja xxx.xxx.xxx.100 in xxx.xxx.xxx.101. Zato forwardiram ipja xxx.xxx.xxx.100 in xxx.xxx.xxx.101.  Ali je to pravilno?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "pri mojem Level One routerju grem na gerenral setup->nat->virtual server in masm pol ze nastavljeno 192.168.2.* jaz dam namest * 100 ker je pod ipconfig rekl da je to moj ip nasloc.Pol mam za izbrat Private Por in Public port ter TCP in UDP. Ka sta Private port in Publix port enaka al ne smeta bit enaka, ker niti ne vem kaka j erazlik amed njima. Naj mi kdo pove, da bom prov fowardu.  Hvala"
+    },
+    {
+        "role": "assistant_18",
+        "message": "lep pozdrav imam vprašanje: kake porte morem odpret pri TCP in UPD, da mi bo delu DC++?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Kako bi pri levelone FBR_1405TX odprl port range? Ker okenc za to nikjer ne najdem."
+    },
+    {
+        "role": "assistant_19",
+        "message": "Folk mene pa zanima,ali moreš pri forwerdanju portov definirat ali gre za tcp,ali udp port,ali ti ruter to sam prepozna in preprosto vpišeš samo npr.6881.Men se je namreč zgodilo,da mi emula ne dela,tudi če v programu in ruterju preimenujem porte,dela samo če enablam DMZ,kar pa zaradi varnosti ni najbolj priporočljivo."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_18: Odpreš UDP in TCP za dc++ na isti port. Da se razumemo ISTI port oba protokola.  papica:  Ta router nima možnosti odpiranja ranga (no določene verzije majo samo jih je malo)  @assistant_19: Moraš definirat ne prepoznava sam."
+    },
+    {
+        "role": "assistant_14",
+        "message": "@assistant_11: Aha, danke!  Nov router, prihajam ti naproti!"
+    },
+    {
+        "role": "assistant_20",
+        "message": "Jst imam podoben problem....z malo manjšo napako ..in sicer.. Upload imam zmeri v 10s maX kar je 43kb/s za 2Mb ...download pa moram čakat približno 1 dan da se mi povzpne do 5kb/s in potem ne gre več naprej.....TCP in UDP test opravi...vse dela....sam downloada mi ne"
+    },
+    {
+        "role": "assistant_21",
+        "message": "Kaj pa naj pol tam v virtual server upišem v okenca."
+    },
+    {
+        "role": "assistant_21",
+        "message": "kaj naj napišem v description, inbound port, kaj dam pri tipe,privtet ip adres, ter kaj napišem v privat port"
+    },
+    {
+        "role": "assistant_21",
+        "message": "kje izvem moj Inbound port, Private IP address, Private port ter na kaj nastavim Type"
+    },
+    {
+        "role": "assistant_22",
+        "message": "Zivjo! Imam router Cisco 831 (kupljen preko Telekoma oz. Siol-a kaksni 2 leti nazaj) in me zanima ce kdo ve, kako odpreti dolocen port.  Rad bi postavil  Teamspeak server na enega izmed racunalnikov, ki so prikljuceni v mrezo, vendar se s trenutnimi nastavitvami ne morem povezati s Teamspeak klientom na server.  Port ki ga moram odpreti je 8767, interni IP racunalnika pa je 192.168.1.6  Kaj vse moram storiti, da bo Temspeak server deloval? Opdredi port na routerju? narediti port forward na ta racunalnik? Vem da se router konfigurira preko terminala ampak mi ni cisto jasno kako to storiti.   IP je staticni.   Ce ima kdo kaksne izkusnje s tem (oz. Cisco) routerji bo vsaka pomoc dobrodosla.  Lp, PoGa"
+    },
+    {
+        "role": "user",
+        "message": "lolish :) Preberi prvi post :) Terminal je ubistvu kr tvoj računalnik in program ki ga lahko uporabljaš je \"promt vrstica\" ali pa internet brskalniki. Kako odpret port pa še zmeri ostaja isto samo kake besede so drugačne."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Če se hočem konektat na računalnik ki je preko routerja. Ali vpišem zunanji IP kot 193.143.73.1 Ali 193.143.73.1:5555"
+    },
+    {
+        "role": "user",
+        "message": "odvisno od kje se hočeš povezat, če znotraj mreže potem notranjega če od zunaj zunanjega..."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Mogoče sem res vprašanje slabo zapisal.  Povezujem se od zunaj zato zunanji IP, kar me zanima je ali moram zapisati tudi port ki je forvardiran (193.143.73.1:5555) ali samo IP (193.143.73.1)"
+    },
+    {
+        "role": "user",
+        "message": "jah nekako se ne moreš kar priključit in upat da boš padel notr. ČE hočeš recimor remote desktop uporabljat potem moreš fowardirat ta port in programi sami poskrbijo za vse ostalo (oziroma pač napišeš samo IP al pa domeno če jo imaš)"
+    },
+    {
+        "role": "assistant_23",
+        "message": "Kako v Alchemyu odpret določene porte?  Imam Linksys WRT54G in Alchemy pa me zanimajo znalci s konkretnimi rešitvami.  Zakaj Blocked Services ne deluje?  A kdo ve range portov posameznih p2p zadev?"
+    },
+    {
+        "role": "assistant_24",
+        "message": "NoVi PrObLeMi ; Imam planetov ruter xrt-401d in sem vse lepo povezal.. (od začetka nekaj matralo) sedaj pa nemorem pošiljat emailov.. na ircu.. datotek prek dcc in niti na msn mesengerju datotek.. ali je to posledica ruterja in nekakih odpiranje portov.. nekaj sem bral in se igral.. samo negre mi.. prosim pomagajte LP Thief p.s. na ruterju imam 2 compa. pri drugemu compu znam da emaile pošilja za drugo nevem... sicer imam pa jaz SP2 tistale comp. pa SP1 ..."
+    },
+    {
+        "role": "assistant_25",
+        "message": "Meni test v eMule uspe, ampak ne deluje mi Server Razorback2, ki ima port 4661, ki sem ga odprl pa vseeno ne deluje. Kaj moram naredit?"
+    },
+    {
+        "role": "assistant_26",
+        "message": "Se jst z istimi tezavami. A bi mi lahko kdo pomagu odpret porte za Mulo? Mam router LevelOne FBR-1413TX Win XP SP2  Najprej mi povejte kaj morm tukaj izbrat:     Kaj morm pa tukaj nares?    In tukaj?      Enkrat mi je ze ratal,zdej pa ne nikakor ne gre. Pri firewallu od windowsov sm tud ze nastimu,da mi 'ignorira' mulo. Pri antivirusnem tud. Kaj morm se narest? Hvala!"
+    },
+    {
+        "role": "assistant_27",
+        "message": "Jest sem forwardiro porte za namizni računalnik in sem v router vpiso IP od mojga računalnika. Na omrežje je še priklopljen laptop in me sedaj zanima, če je potrebno še za njega vpisat posebej njegov ip in porte, ki bi jih rad forwardiro??"
+    },
+    {
+        "role": "assistant_28",
+        "message": "Lep pozdrav. Mene pa zanima, kako forwardiram porte za drug računalnik, ki je povezan prek routera. Za svoj računalnik sem forwardiral porte :     A sem to prav storil? Ker če probam to storiti še za ta drug računalnik (mimogrede, kak preverim ip ta drugega rač.? je mogoče 192.168.0.1)? Lahko bi storil tudi preko virtual serverja (slika spodaj), ampak se mi je tudi ta način zdel dober (čeprav sem potreboval nekaj časa  )     V muli pri meni tisti port test uspešno naredi, ampak download ni najbolši. Možno da zaradi tega, ker so eni fajli slabo seedani ali kaj takega? Vsakršen predlog za kako izboljšavo pa za usposobitev bi bil zelo dobrodošel .  Hvala za pomoč.  Marko  P.S= Lahko nekdo popravi slike, ker mi nikakor ne rata :D Čeprav sem skopiral iz shrani.si tak ko je tam pisalo za forum. --------- Popravil slike --Omy"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Da najbolj zanesljivo pogledaš ip računalnika pojdiv start-run-cmd in napiši ipconfig, to seveda na tistem računalniku kamor hočeš forwardat. Porte kar preusmerjaj v meniju Virtual servers."
+    },
+    {
+        "role": "assistant_29",
+        "message": "mene pa zanima kje fowardiraš tcp pa udp porte, kje to najdeš pa kaj moraš storiti:(  na routerju ne morm izbirat med tema dvema portoma, imam pa pod virtual server odprt 1412 port"
+    },
+    {
+        "role": "assistant_30",
+        "message": "pa v čem je sploh fora telih portov,.ali kej hitrejš dela meni tud brez teh nastatvitev dela enako"
+    },
+    {
+        "role": "assistant_30",
+        "message": "naštimal sm porte tcp in usd pa še zmeraj teži za usd port"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Kaj ko bi povedal za katero aplikacijo se gre?"
+    },
+    {
+        "role": "assistant_30",
+        "message": "gre za Azureus program na routerju sm naštimal 1 port za tcp in 1 port za usd,pa mi še zmeraj zahteva da enablam usd port .Ali sem sploh pravilno naredil?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "nevem kakšen usd port ti misli mogoče UDP? V routerju moreš fowrardati tisti port kot je nastavljen v samem klientu ne kar enega."
+    }
+]

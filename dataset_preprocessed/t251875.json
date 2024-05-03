@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Ok, zanima me, ali se da (no nekje sm enkrat slišu da se da - mogoče sm sanju, nim veze (: ) da bi jst dostopal do nastavitev modema preko ruterja..  torej mreža je takole  modem > ruter > jst  Naštimat isti ipje kot ruter ni problem, recimo za primer  ruter ima ip 10.5.162.1 dam modemu ip 10.5.162.2 moj komp pa ima 10.5.162.10  Pa me zanima, kaj bi bilo še potrebno naštimat, da bi lahko jst preko ruterja dostopal do modema, da mi ni potrebno kabel fizično preklaplat?  Ma kdo kako idejo ali pa 100% ve, da se tega ne da (torej sm sam sanju)?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Daj modemu IP iz drugega območja, kot tvoje lokalno omrežje (npr. modem 192.168.100.1, lokalna mreža 10.5.162.0/8), potem pa na routerju dovoli paketke iz 192.168.100.1 preko WAN vmesnika."
+    },
+    {
+        "role": "user",
+        "message": "Maš še mogoče idejo, kako točno je treba tle upisat?  edit: tkole mi ne prime"
+    },
+    {
+        "role": "user",
+        "message": "Ok ugotovu sm da lahko edino preko vrat 80 do modema dostopam, ampak kljub spremenjini konf. firewalla to ne pomaga...  Mogoče ima kdo kako idejo??"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mogoče up. ime s katerim se prijaviš v modem ne dopušča drugega dostopa kot preko vrat 80 ? Za kateri modem pa gre ?"
+    },
+    {
+        "role": "user",
+        "message": "Sinope 568+  Sicer pa a nastavitve naj bi bile ok?  edit: modem dovoli vstop preko vrat 80 (preverjeno)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Default Gateway za Sinope 568+ je: 192.168.1.1  Glede na navodila tukaj se lahko ip Sinope 568+ (modem/router) tudi spremeni (stran 34) http://storitve.siol.net/oprema/komunik...   http://forum.portforward.com/YaBB.cgi?b...  Zakaj pa potrebuješ še en router (di-604) poleg Sinopea ?"
+    },
+    {
+        "role": "user",
+        "message": "Modem sm šele dobil 2 tedna nazaj, ruter pa imam že dobre 2 let (in nikoli ni delal težav).  Kar se tiče nastavitev sinopeja ga dobro poznam   edit: pa glede tega forum.portforword... problem je, ker na slikci na kateri je narisno, kakšne naj bi bile nastavitve imam dejansko situacijo katera je označena z \"wrong\".  Ker tisti turtorial opisuje če imaš zaporedno vezana 2 ruterja, jst pa imam ruter za modemom (kateri pa služi tudi kot swich samo - trenutno)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "jaz mam to takole, čeprav mam drug tip modema...  1. Modem ( sagem od siola) mam konfiguriran hkrati kot router in dhcp server. Modemu sem dal IP 192.168.2.1. DHCP sem nastavil tako, da dodeljuje naslove od 192.168.2.2 do 192.168.2.99 2. Router ( ki je wireless, ampak to nima veze) sem povezal z modemom, tako, da sem vtaknil kabel od modema v LAN in NE v WAN vtičnico.Routerju sem izklopil DHCP funkcijo in mu nastavil IP 192.168.2.14.  3. na vseh compih ( imam 3) sem nastavil pridobivanje IP naslova z DHCP.  4. zdaj lahko pingam vse compe med seboj, pa tudi router in modem s katerega koli compa."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sinope 568+ je modem+router obenem  ali daj Sinope 568+ v bridge mode"
+    },
+    {
+        "role": "assistant_3",
+        "message": "vtakni modem v LAN port namesto WAN. Če prav imajo nekateri routerji možnost, da WAN vtičnico spremenijo v LAN v takšnem primeru, kot je tvoj."
+    },
+    {
+        "role": "user",
+        "message": "Ok, sam kako se bo potem ruter povezu na net?  Sice rpa modem ima 4 izhode, tako da lahko še en kabel enostavno utaknem v modem in lan port v ruterju? Bo stvar ista="
+    },
+    {
+        "role": "user",
+        "message": "Zadevo sem rešil takole:  Ker ima sinope 4 LAN porte, sem use na data konf. potem pa iz port1 dal v ruter na WAN, iz ruterja port2 nazaj na Sinope v port2. Sinope spremenil ip na 192.168.0.101, tako da je v isti klasi kot ruter (dhcp ruterja je od 192.168.0.100-199).  Ostali kompi pa so v preostalih portih ruterja in swicha. Kompi ki se pa connectajo na sinope wireless pa dobijo ip range od 192.168.0.100-199, tako da tudi tisti ki se wireless konekta deluje preko ruterja.  Sinope po mi ni glih nevem kaj, da bi ga štimal kot ruter, je le modem in to naj tudi ostane."
+    }
+]

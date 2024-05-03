@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Je že kdo testiral hitrosti USB ključkov ? Kupil sem namreč 1GB Sandick Cruiser, High speed USB 2.0. Teoretična hitrost 480 Mbps (naj bi šlo cca 25 MB /s), meni pa zapisuje na ključek s hitrostjo 1390 KB/s. Je ta hitrost normalna ? Pričakoval sem res več. 700 mb file se tako zapisuje cca 8 min.  LP, Miceni"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če sem pravilno preračunaval številka:  1390 kB/s = 11120 kb/s, kar je pa približno 11-12 Mb/s. To je pa že približno maksimalnemu prenosu USB 1.1. Če tvoj ključek podpira 2.0 USB je očitno problem v USB-ju na matični."
+    },
+    {
+        "role": "user",
+        "message": "Isti ključek sem poskusil na asusovi a7n8x-x plošči in na phoenixovi intel chipset 865 photon seriji. To sta relativno novi plošči, ki obe podpirata USB 2.0, Hitrost pisanja na ključek pa je pri obeh enaka: 1390 KB/s. Mogoče pa je ključek tako počasen. ima kdo \"hitrostne težave\" s Sandisk Cruiser ključki ?  lp. Miceni"
+    },
+    {
+        "role": "assistant_1",
+        "message": "To je zato ker maš FAT sistem na palčki. Sformatiraj na NTFS  . V Xpjih morš dat pri diskih (policies) \"optimize for performance\", da boš lahko sformatiral na NTFS."
+    },
+    {
+        "role": "assistant_2",
+        "message": "USB 2.0 še ne pomeni hitrosti (teoretično) do 480Mb/s. To je samo verzija specifikacije (ki npr. določa zgradbo paketkov, ki se prenašajo po vodilu).  Hitrosti določajo imena: Hi-Speed do 480Mb/s, Full-Speed do 12Mb/s, Low-Speed do 1,5Mb/s. Torej, USB naprava lahko ustreza specifikacijam 2.0 in je Low-Speed. To so recimo miške in tipkovnice. Dejstvo: USB 1.1 ima paketke definirane na tak načim, da je nemogoče dosegati višje hitrosti kot pa 12Mb/s. Mnogi proizvajalci izkoriščajo to \"zmešnjavo\" in zavajajo potrošnike. Torej, če iščeš hitrost išči Hi-Speed naprave in ne številk. Ampak očitno tvoj ključek ni ravno Hi-Speed.  Aja, se nekaj. Nekatere plosce imajo samo dolocene USB porte na Hi-Speed (recimo moja MSI Delta in se nekatere pri ostalih proizvajalcih), poskusi vse luknje in tudi onboard konektorje, ce nimas vseh povezanih (tako ima moja)."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pa namesti si driverje za ploščo, da ti bo podpirala usb 2.0 (vsaj pri gigabyte ga7... je tko)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ravnokar sem stestiral Traveling Disk na USB 2.0. Prenos tak, da bi... ah ne bomo grdo pisal tuki :)  Prenašal sem 202M velik fajl in ga je posnel v dobrih 4 minutah. Na FATu!!! Probam še NTFS, kot je bilo prej opisano in dobim... isto. Da pa ne bo kdo težil glede mojega USBja, naj povem še tole... Prenos v obratni smeri (iz kljucka na disk) je bil cca 4M/s (45 sekund).  toliko o mojih izkušnjah!  lp, T."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Jah... flash diski imajo različne hitrosti, tudi če so vsi 2.0. En  link.  Jaz sem pred kratkim nabavil Lexar JumpDrive 256MB in mi dela še kar v redu. Za posnet iz prenosnika(4200rpm) gor 150MB fajl mi rabi dobrih 10 sekund (FAT32). Mislim, da gre v drugo smer počasneje, nisem pa prepričan, bom še enkrat preizkusil.  Je pa hitrost prenosa preku USBja odvisna tudi od tega koliko programov imaš vklopljenih, koliko je obremenjen procesor itd."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Samo da se popravim: fajl je 80MB in rabi 10 sekund za posnet na USB flash in 5 sekund iz USB flasha na trdi disk. Torej je hitrost 8MB/s zapisovanja in 16MB/s branja, kajne?  Z NTFS rabi lahko ene pol sekunde manj."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Pri večini (beri vseh) flash diskih je tako da berejo hitreje, kot pa pišejo. Tako pač je."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Na flash drive ne boš nikoli pisal hitreje kot toliko, kolikor dosegač zdaj... se pravi realnih 10mbit.  Flash enostavno ne dohaja oz. pač dela s takšno hitrostjo, in to je zaenkrat to.  Jebiga, nategnili so to :)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Tut js imam probleme z Z-Cyber (zoltrix) USB kljucem Q-Stick.  na  njihovi strani pise da zadeva bere s hitrostijo 8MB/s in zapisuje s hitrostijo 7MB/s.  \" With its ultra high speed at 8MB/s reading and 7MB/s writing, you will save your valuable time for other important task.\"  Ne vem v cem je fora da meni zapisuje zelo pocasi (pod 1MB/s, medtem ko bere normalno s hitrostijo 8MB/s."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Sem zrihtal zadevo! Vsa zahvala gre Golden Eye, ki je resitev opisal v  tej temi.  lp"
+    }
+]

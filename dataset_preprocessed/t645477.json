@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo  Od kolega sina učim oz. poskušam naučiti računalništva...mulc ma v sredo maturo ze v 2 al 3 :) Razrede, objekte, tabele, branje iz v datoteke, zbirke mu kar gre..zataknilo se je pri računanju IP naslovov, podomrezij itd..tudi sam sem ze pozabil.   Vse sem si izpisov ampak te metode VLSM ne razumem...    ip    122  Se pravi rabim 3 bite v maski, ker imam 6 podomrezij = 2^3 = 8; in ce to pretvorim dobim 11000000 kar je 192 ce je 11 00000 (7št) je 96 kot v rešitvah. Zdej sem se neki googlov in ce uporabim 3 bite 111 00000 je = 2^5 = 32 kar pa ni dovolj za omrezje B, ki ima 32 naprav...prvi in zadnji naslov sta rezervirana za msg ?    Bi lahko nekdo rešil vsaj za primer A, da skuzim sistem kako se dela."
+    },
+    {
+        "role": "user",
+        "message": "anyone plz ? :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri VLSM imas lahko v razlicnih omrezjih razlicne maske. Prestejes, koliko je kje naprav (itak je napisano na sliki, edino E in F ne pise eksplicitno, ampak iz slike vidis, da sta tam samo po dve napravi - usmerjevalnika). V vsakem omrezju moras imeti se network (host del naslova je, binarno gledano, iz samih nicel) in broadcast (host del naslova, ponovno gledano binarno, iz samih enk). Aja, host del naslova je tisti del, kjer imas v istoleznih bitih pri subnet maski nicle (ce je napisano binarno)...  Tako imas potem minimnalno stevilo naslovov, ki jih potrebujes: A: 14+2=16, B:32+2=34,C:5+2=7,D:30+2=32,E:2+2=4,F:2+2=4  Nekam si zapises vrednosti 1,2,4,8,16,32,64,128,256,512,1024,... (zacnes z 1, vsakic pomnozis z 2).  Isces stevilko, ki je enaka ali prvo, ki je vecja od stevila hostov, ki si jih dobil za posamezno omrezje, torej A:16, B:64, C:8, D:32, E:4, F:4. Pri /24 je vseh naslovov (vkljucno z network in broadcast) 256, pri /25 128, pri /26 64, pri /27 32, pri /28 16, pri /29 8, pri /30 4, pri /31 naceloma 2 (ampak /31 in /32, ce upostevas, da potrebujes v omrezju tudi network in broadcast naslov, ne bos nikoli uporabil, ker nima nobenih IP naslovov za hoste/usmerjevalnike)...  Kolikor vidim, v sami nalogi ni doloceno, kako \"razdrobiti\" 194.249.2.0/24, verjetno je najlazje narediti takole: - 194.249.2.0/24 razdelis v 194.249.2.0/25 in 14.249.2.128/25 Ker nikjer nimas omrezja, kjer bi potreboval (vkljucno z network in broadcast naslovom) 128 naslovov, lahko oba \"drobis\" naprej in dobis: - 194.249.2.0/26, 194.249.2.64/26, 194.249.2.128/26, 194.249.2.192/26  Enega od teh uporabis za omrezje B (ker potrebujes masko, ki zajema 64 naslovov in je /26 ravno prava za to) - (ker naloga ne predpisuje eksplicitno, katerega, si izberes recimo 194.249.2.192/26 - najlazje je, da si tiste z nizjimi stevilkami pustis za \"drobljenje\" naprej, ker je pac lazje racunati z manjsimi stevilkami). Ostale tri lahko delis naprej: 194.249.2.0/27, 194.249.2.32/27, 194.249.2.64/27, 194.249.2.96/27, 194.249.2.128/27, 194.249.2.160/27  Ker imas v omrezju D potrebo po 32 naslovih (vkljucno z network in broadcast naslovom), uporabis enega izmed teh prefixov (npr. 194.249.2.160/27) za omrezje D.  To \"drobljenje\" si je verjetno najlazje \"narisati\" kot neke vrste binarno drevo.  Hitro ugotovis, da vseh naslovov dejansko ne bos rabil, zato ti ni potrebno racunati vsega, ampak samo toliko, kot dejansko potrebujes (recimo \"drobis\" samo 194.249.2.0/27, ce ti zmanjka, ponovis postopek se za 194.249.2.32/27)...  Pretvarjanje med /xx zapisom in desetiskim zapisom je dokaj enostavno.  Maska je oblike AAA.BBB.CCC.DDD: -ce je xx>8, je AAA=255 -ce je xx>16, je BBB=255 -ce je xx>24, je CCC=255  Primer za /27: 255.255.255.DDD (27-24=3 -> 11100000 (ostanejo tri enke, dodas toliko nicel, da prides do osem), pretvoris iz binarnega v desetiski zapis in imas DDD - 224. Pimer za /17: 255.255.CCC.DDD (17-16=1 -> 10000000=128, CCC=128, DDD=0) Primer za /13: 255.BBB.CCC.DDD (13-8=5 - > 11111000 -> BBB=248, CCC=0, DDD=0) Primer za /7: 7 -> 11111110 -> AAA=254, BBB=0, CCC=0, DDD=0  Dejansko je vse skupaj precej enostavno, samo takole napisati je bolj komplicirano... ;)  Prvi uporaben naslov je tisti takoj za network naslovov, zadnji uporaben je tisti tik pred broadcast naslovom. ;) Ce potrebujes pomoc tudi pri tem, sporoci."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne smeš pozabiti tudi na IP subnete za povezave med routerji ."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Katera srednja šola je to? Pa ne da so na srednji računalniški šoli dejansko začeli učiti konkretne vsebine in ne abstraktne pojme o ISO OSI modelu?  Kaj bi dal, da bi naša generacija to poslušala pred dobrimi 15 leti..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1 je 9. jun 2015 ob 14:43 izjavil:Ne smeš pozabiti tudi na IP subnete za povezave med routerji .   Saj to sta omrezji E in F."
+    },
+    {
+        "role": "user",
+        "message": "TŠC Kranj.  Najlepsa hvala. Bom zdej pocekirov."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 9. jun 2015 ob 17:14 izjavil:TŠC Kranj.  Neverjetno... Jaz sem bil tam prva generacija, takrat se je reklo še kar lepo Iskra. Anyway, pri predmetu RSM (Računalniški sistemi in mreže) smo se TCP/IP omrežju še najbolj približali, ko smo ga primerjali z ISO OSI modelom oz. razglabljali, katera plast iz enega modela ustreza kateri plasti iz drugega modela. Res škoda. Delali smo po knjigi Računalniška omrežja in storitve od Vidmarja, ki IMO nikakor ni bila primerna za učenje praktično uporabnega znanja iz področja TCP/IP omrežij.  Mogoče so se takrat \"bali\", da bo TCP/IP šel po gobe zaradi izčrpanja IP naslovov, ali pa da ga bo v LAN omrežjih iz kakega božjastnega razloga zamenjal npr. Novellov IPX/SPX ali pa nemara Windowsov NetBios, pa so želeli, da bi dobili bolj splošen pogled na omrežja...? So pač orenk v kamen brcnili... Tako kot pri predmetu Podatkovne strukture al kaj je že bil, kjer nas niso učili SQL-a, ampak eno bizarno reč, ki se je niti ne spomnim.  Me veseli, da se stvari popravljajo. Mogoče so že vrsto let boljše, kot v naših časih, ampak do zdajle nisem vedel."
+    }
+]

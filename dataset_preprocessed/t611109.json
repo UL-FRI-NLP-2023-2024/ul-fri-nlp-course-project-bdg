@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo  Imam arduino uno, Adafruit Motor Shield in steppper motor (4 žice). Napisl sem kodo, da motor krmilim preko dveh gumbov levo ali desno. Dela vse OK samo motor nima nobene moči. Že rahel dotik ga zaustavi. Kako bi povečal moč motorja oz. bi pomagalo če bi motor priklopil na svoj vir energije ne preko arduinota in KAKO SE TO NAREDI - ZVEŽE? Prosim za pomoč (podrobna navodila).  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jaz uporabljam ločeno napajanje na 12V in ločeni krmilnik: http://www.pololu.com/product/2133"
+    },
+    {
+        "role": "user",
+        "message": "Zdravo  in kak to povežeš z arduinom? Kaj brez tega nena gre?  lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sicer nisem strokovnjak za elektriko ampak, izhodni pini na Arduinu omogočajo izredno nizek tok, ki ni dovolj za to, da bi nekemu motorju dal dovolj moči. Če ga še naprej tako uporabljaš (krmiliš in napajaš direktno preko Arduino), lahko skuriš pin ali pa celoten Arduino.  Kar lahko narediš je, da motor povežeš na ločeno napajanje kot je napisal že @assistant_0, z gumbi pa nato vključiš to napajanje in s tem aktiviraš motor. Za to lahko uporabiš na primer tranzistor (PNP ali NPN) ali kakšen rele, ...  EDIT: Kot lahko vidiš tukaj, ima I/O pin maximalno 40mA toka. Če bi tvoj stepper motor porabil 50mA ali še več, ga lahko skuriš."
+    },
+    {
+        "role": "user",
+        "message": "Ja saj to bi rad. Samo da sem motor pognal preko arduinota in napisal program je trajalo kar nekaj časa, tak da bi rabo neko shemo kak se to poveže da mi spet ne gre meseca ali dva.  hvala"
+    },
+    {
+        "role": "assistant_1",
+        "message": "No, tebi še kar nekaj čistih osnov manjka. Predlagam ti, da narediš po tem navodilu.  Tranzistorje pa lahko dobiš iz kakšnih starih napajalnikov, tiskalnikov, ... Bistvo tranzistorja je, da prevaja samo takrat, ko je sprožen, deluje kot stikalo. Sproži se pa z izhodom iz Arduina."
+    },
+    {
+        "role": "user",
+        "message": "sem pogledal vide in še vedno ne vem kje je motor priklopljen na zunanje napajnje. Ta motor ima 5 žic moj pa 4. komponente katere uporabljam:  Arduino uno   motor shield: http://www.adafruit.com/products/81  gumbi za vodenje motorja: http://www.jeremyblum.com/2011/01/10/ar...   koda:  // Adafruit Motor shield library // copyright Adafruit Industries LLC, 2009 // this code is public domain, enjoy!  #include AFMotor.h (tukaj more bit AFMotor.h v strešičastih oklepajih)  // Connect a stepper motor with 48 steps per revolution (7.5 degree) // to motor port #2 (M3 and M4) AF_Stepper motor(48, 2); int ledpin_L =9; int ledpin_D = 10;  void setup() { Serial.begin(9600); // set up Serial library at 9600 bps Serial.println(\"Stepper test!\"); pinMode(ledpin_L, INPUT); pinMode(ledpin_D, INPUT); motor.setSpeed(180); // 10 rpm    }  void loop() {  if (digitalRead(ledpin_L) == HIGH) { motor.step(96, FORWARD, MICROSTEP); }   if (digitalRead(ledpin_D) == HIGH) { motor.step(96, BACKWARD, MICROSTEP); }  // motor.setSpeed(160); // 10 rpm  // motor.step(96, FORWARD, MICROSTEP);  // delay(500);  }"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tisto, kar sem priporočil je driver za bipolarni koračni motor. Na arduino ga priklopiš preko dveh žic - ena, ki daje \"pulze\" in druga, ki poda smer vrtenja. Ponavadi boš pulze generiral preko PWM in s tem tudi hitrost motorja. Imaš še nekaj pinov za microstepping, te pa lahko priklopiš na mikrokrmilnik ali pa stacionarno priklopiš na maso ali Vcc. Pazi, arduino deluje na 5V, za krmiljenje driverja pa uporabi 12VDC. Pa ne pozabi koračnega motorja tokovno omejiti s pomočjo trimer upora, ki je lociran na driverju. Podatke o koračnem motorju imaš verjetno na nalepki."
+    },
+    {
+        "role": "user",
+        "message": "mam še eno vprašanje. si lahko s tem kaj pomagam http://www.adafruit.com/products/81 kajti s tistim kaj sta napisala ribič in @assistant_1 si nena znam. mogoče čez čas :).  lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Seveda si lahko pomagaš s tem. Ampak se moraš naučiti še API za ta vmesnik. Jaz ti predlagam, da greš počasi in od začetka. Ko boš znal sam, boš tudi razumel zakaj rabiš vmesnik. Ponavadi so narejeni zato, da je lažje upravljati več naprav in pa nekaj dela je ponavadi že narejenega zate.  Z vmesniki nimam izkušenj tako, da ti na tem področju ne morem pomagati. Šele sedaj pa vidim, da na povezavi, ki sem jo prej napisal, ni zunanjega napajanja za motor. Poskusi tako, da vzameš baterijo in motor ter ga zavrti ročno. Nato pa daš med oba pola tranzistor ter sprožaš le-tega. Ko boš to uspel/znal/razumel, pa naredi z Arduinom.  Na koncu vežeš tranzistorje samo na output (poleg uporov). Na druga dva pola pa vežeš povezavo do motorja in baterije."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kakšne tranzistorje ? Vse potrebno je že v Adafruit Motor Shield-u.  sem pogledal vide in še vedno ne vem kje je motor priklopljen na zunanje napajnje. Koračni motor je priključen na X1, ali X2 konektor na shield-u (P1,P2 in P4,P5). Če pogledaš načrt, ima L293D dve napajalni nogici. Eno za logični del (VCC1) in drugo za motorja (VCC2). Če je C7 res samo 16V, si pri višini napetosti VCC2 precej omejen.  Tako na hitro izgleda, da imaš lahko VCC2 povezan na 5V, ali nanj pripelješ zunanjo napetost.  Ni videti, da bi bil shield sposoben delovanja v tokovnem načinu. Na VCC2 moraš pripeljati ustrezno napetost za tvoj koračni motor. In seveda prekinit povezavo z VCC1. Kako to narediš, je opisano v navodilih. Skrajni čas je za izvedbo operacije RTFM.  Kakšen koračni motor imaš?"
+    },
+    {
+        "role": "user",
+        "message": "Zdravo  Sedaj imam eno drugo vprašanje glede te kode. Vse dela ko stisnem en gumb se vrti v eno smer ko stisnem drugega se vrti v drugo smer. Zakaj pa ne morem nastavit da bi se vrtel več kot 3700 korakov \"motor.step(3700, FORWARD, MICROSTEP);\". tudi če nastavim 20000 korakov(100 obratov) ne naredi več kot 3700 korakov (18,5 obratov)?  lp  // Adafruit Motor shield library // copyright Adafruit Industries LLC, 2009 // this code is public domain, enjoy!  #include AFMotor.h (tukaj more bit AFMotor.h v strešičastih oklepajih)  // Connect a stepper motor with 48 steps per revolution (7.5 degree) // to motor port #2 (M3 and M4) AF_Stepper motor(200, 2); int ledpin_L =9; int ledpin_D = 10;  void setup() { Serial.begin(9600); // set up Serial library at 9600 bps Serial.println(\"Stepper test!\"); pinMode(ledpin_L, INPUT); pinMode(ledpin_D, INPUT); motor.setSpeed(500); // 10 rpm    }  void loop() {  if (digitalRead(ledpin_L) == HIGH) { motor.step(3700, FORWARD, MICROSTEP); }   if (digitalRead(ledpin_D) == HIGH) { motor.step(3700, BACKWARD, MICROSTEP); }  // motor.setSpeed(160); // 10 rpm  // motor.step(96, FORWARD, MICROSTEP);  // delay(500);  }"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ena od možnost je: Če je 1 microstep 1/16 koraka, je omejitev v velikosti - tipu spremenljivke. Max vrednost, ki gre v 16 bit, nepredznačen tip je 65535 (0xffff).  65535 / 16 = 4095 polnih korakov + 15 mikro korakov."
+    },
+    {
+        "role": "user",
+        "message": "V spodnji kodi kjer je poudarjeno motor naredi milijon korakov. In se vrti. nisem prevero če res naredi milijon korakov ampak sem ga pustil kar en cajt in se je vrtel. rabo bi konkreten odgovor. To pa to vstavi v kodo in bo delalo.   // MultiStepper // -*- mode: C++ -*- // // Control both Stepper motors at the same time with different speeds // and accelerations.  // Requires the AFMotor library (https://github.com/adafruit/Adafruit-Mo... // And AccelStepper with AFMotor support (https://github.com/adafruit/AccelSteppe... // Public domain!  include AccelStepper.h include AFMotor.h  // two stepper motors one on each port AF_Stepper motor1(200, 1); AF_Stepper motor2(200, 2);  // you can change these to DOUBLE or INTERLEAVE or MICROSTEP! // wrappers for the first motor! void forwardstep1() {  motor1.onestep(FORWARD, SINGLE); } void backwardstep1() {  motor1.onestep(BACKWARD, SINGLE); } // wrappers for the second motor! void forwardstep2() {  motor2.onestep(FORWARD, SINGLE); } void backwardstep2() {  motor2.onestep(BACKWARD, SINGLE); }  // Motor shield has two motor ports, now we'll wrap them in an AccelStepper object AccelStepper stepper1(forwardstep1, backwardstep1); AccelStepper stepper2(forwardstep2, backwardstep2);  void setup() {  stepper1.setMaxSpeed(200.0); stepper1.setAcceleration(100.0); stepper1.moveTo(24);  stepper2.setMaxSpeed(300.0); stepper2.setAcceleration(100.0);  stepper2.moveTo(1000000);   }  void loop() { // Change direction at the limits if (stepper1.distanceToGo() == 0) stepper1.moveTo(-stepper1.currentPosition()); stepper1.run(); stepper2.run(); }"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nekaj načrtov:  https://www.google.si/search?q=stepper+..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Pozdravljeni Imel bi vprašanje okoli tega krmiljenja koračnega motorja. Zanima me kako hitro se lahko MAX vrti koračni motor. Rad bi naredil en projekt pri katerem bi rabil hitre obrate. Imam Arduion Uno in motor schield Rev3.  Peter"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, ali bi mi lahko kdo povedal, zakaj mi računalnik noče normalno zaspat.   Do zdaj je spanje delovalo brez težav, zadnja skoraj dva tedna pa ... enostavno noče. Kako bi opisal. Torej izberem spanje (Windows 7 Home Premium), sliši se, da se diski ustavijo, na ohišju začne utripat lučka (kot je pri tej matični normalno). Skratka kot, da bi se ustavilo/zaspalo v normalnem primeru, a se ne. Ventilatorji delujejo naprej.  BIOS je najnovejši (2.20) gor, to pa je matična: - AsRock H61M-ITX  ostale komponente: - Intel Core i5 3350P - grafična Radeon 5450 256 MB DDR2 - 120 GB A-data SSD - 1 TB Hitachi HDD 7200 RPM - interni 5,25\" DVD pekač - interni bralnik pomnilniških kartic - ohišje Inter-Tech Mini ITX-901 pa ima ta napajalnik  VP-300M µATX 300 Watt - 1 x 20+4 Pin - 1 x P4-connectors - 2 x SATA - 2 x Molex - 80mm fan - (h/w/d): 75/65 x 124 x 100mm  AC ~  Input  Voltage Current Frequency 110-220V 10/6A 50/60Hz DC =  Output  + 3.3V + 5V + 12V 1 + 12V 2 - 12V + 5V SB PS-ON POK COM 16A 20A 13A 16A 0.8A 2.0A REMOTE P.G. RETURN MAX 130W 200W 9.6W 10.0W - - - 280W 20W 300W  * * *  Zanimivo, isti problem je z izklopom računalnika. Moram ga na \"hard\" način, torej izklop z zadnjim gumbom na napajlaniku ali pa potegnit kabel.  Nisem nič nalagal, da bi se kaj spremenilo glede gonilnikov. Res pa je, da je Windows Update nalagal neke popravke, katere so izdali prejšnji in ta teden.  Kaj bi lahko bil problem? Ima kdo kakšno idejo?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "nastavi v biosu sleep na s3,mas verjetno s1"
+    },
+    {
+        "role": "user",
+        "message": "V BIOS-u imam samo opcije Deep Sleep (Disabled / Deep Sleep in S4 & S5 / Deep Sleep in S5) ter še opcijo Suspend to RAM (Auto/Disabled). Označil sem tisto, kar imam privzeto izbrano.  Nič nisem šaril po BIOS-u. Aja, pa Restore AC power on loss je privzeto na OFF (druga opcija je ON). Pa razni Wake on (miška, time itd.) vse je izklopljeno.  Takšne pa imam nastavitve v Windows 7:   W7"
+    },
+    {
+        "role": "assistant_1",
+        "message": "http://windows.microsoft.com/sl-si/wind... Izklopi hibridno spanje.  Če se je stanje začelo po namestitvi win updejtov in nisi vmes nič šaril po biosu potem imaš sw (win7) napako. Daj bios na optimized defaults."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zakaj ga pa ne daš v hibernacijo? V nastavitvah onemogoči termine bujenja, saj ti morda kakšna java ali adobe poizkuša kaj posodobit, tako da sistem ne more zaspat. Preglej z AV programom."
+    },
+    {
+        "role": "user",
+        "message": "Izgleda, da bom moral sistem na novo naložit. Že petkrat sem resetiral BIOS/UEFI in je še vedno isto. Na Windowsu imam vse nastavljeno (glede spanja) na privzeto in je še vedno isto.  Bom v naslednjih dneh poskušal še z enim drugim napajalnikom, če bi slučajno bila v tem težava, ampak po mojem ima @assistant_1 prav in je napaka smao softverska (upam). Če ne, pa je ali napajalnik ali pa matična ..."
+    },
+    {
+        "role": "user",
+        "message": "Zdaj sem še enkrat poskusil ... iz BIOS-a se računalnik normalno izklopi s sprednjim gumbom na ohišju, tako kot se to od njega pričakuje. Torej vse se ustavi. Ko pa grem v Windows, pa je vseeno, če pritisnem na gumb za vklop/izklop na ohišju ali pa izberem START/zastava -> zaustavitev sistema ...  Sindrom je isti kot pri spanju. Diski se ustavijo, LED pa deluje še naprej, isto velja za ventilatorje. Pri spanju (START -> spanje) pa je dejansko isto, s to razliko, da LED začne utripati. A ostalo (delovanje ventilatorjev) je isto."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Bootaj v kašen live linux (ubuntu) in preveri stanje delovanja tam (standby).   Kako ti dela hibernacija (navadna) ?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 20. jul 2013 ob 09:38 izjavil:Bootaj v kašen live linux (ubuntu) in preveri stanje delovanja tam (standby). Kako ti dela hibernacija (navadna) ?   Isto je, isti \"simptomi\". Bom poskusil z Live Linux distribucijo."
+    },
+    {
+        "role": "user",
+        "message": "Sem poskusl z Linux Mint Live USB verzijo ... in glej čudo, spanje in izklop računalniku deluje brez težav. Torej je napaka v Windows 7 oz. v katerem od gonilnikov. Izgleda, da mi razen formata drugo ne ostane. Hja, nič ...   Hvala vsem za nasvete oz. za pomoč."
+    }
+]

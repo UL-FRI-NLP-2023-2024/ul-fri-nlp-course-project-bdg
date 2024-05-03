@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Delam vaje za tekmovanje, in naletel sem na problem, za katerega ne vem, kako se ga lotiti. In sicer smo danes jemali, recurzivne funkcije (proprave za ACSL), toda jaz kot edini prvi letnik med maturanti vse stavi dojamem bolj počasi.  Skratka, naloga, kjer mam podano funkcijo in moram poiskat vrednost mi je jasna.  Problem pa je nastal pri tej nalogi:  Find f(12) given:   {f(x-2,y+2)+2 if x je večji od y f(x,y) = {f(x+1,y-1)-1 if x=y {xy if x je manjši od y  Do zdaj sem imel zmeraj podate vse komponente, ki jih funkcija potrebuje (v tem primeru torej in x in y), toda pri tej nalogi dobim samo x (y), torej 12.  Zaradi tega nimam ideje niti, kako bi nalogo začel. Seveda bom vprašal tudi v šoli, toda če kdo od vas ve, bom zvedel hitreje. Hvaležen sem za vsak odgovor."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Se spomnim da smo mi isto to delali na pripravah ja, samo da je bila enačba in si potem moral malo ugibati kaj vstavit, da si dobil kakšne lepe lastnosti fukcije npr: sodost, lihost, periodičnost itd...  Če prav razumem imaš definirano funkcijo f(x, y) = { f(x-2, y+2) +2 , if x > y f(x+1, y-1) -1 , if x == y x*f , if x < y  tebe pa zanima kako izračunati f(x, 12) ?  Ločiš tri opcije glede na x, pač če je x > 12 računaš po 1. varjanti, če je x == 12 potem računaš po 2. varjanti, če pa je x < 12 je pa rezultat kar 12*x.   Če nisem bil dovolj razumnljiv kar prašaj,  lp @assistant_0"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz bi napisal rešitev:    \nfunction f(x, y: integer):integer;\nbegin\n\nif (x > y) then f:=f(x-2, y-2) + 2\nelse if (x = y) then f:=f(x+1, y-1) - 1\nelse f:=x*y;\nend;\n  To bi šlo za katerokoli vrednost."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz bi ti razložil takole.   Funkcija mora biti rekurzivna, torej mora klicati \"samo sebe\". Slediš navodilom. Če je prvi parameter (v tem primeru x) večji od y, mora funkcija vrnit rezultat: f(x-2, y-2) + 2. Če sta oba parametra enaka, mora funkcija vrnit rezultat: f(x+1, y-1) - 1. Če pa je prvi parameter manjši od drugega (torej, če je drugi parameter večji), mora funkcija vrniti njun produkt (x*y).   Sedaj se posvetimo še zgornji kodi: (jaz sem napisal program v Pascalu, ker mi je najbolj \"domač\").   Najprej preverimo, če je prvi parameter večji od drugega:   if (x > y). In če je, potem izračunamo vrednost:  f:=f(x-2, y-2) + 2. V naslednjem koraku preverjamo, če sta parametra enaka. To preverimo  else if (x = y). Če sta enaka, potem moramo vrniti  f:=f(x-1,y-1)-1. Če oba pogoja padeta (prvi in drugi), potem vemo, da je prvi parameter zagotovo manjši, zato sem napisal tudi  else. V tem primeru mora funkcija vrniti produkt parametrov, kar sem napisal kot  f:=x*y.  Upam, da ti je moja razlaga pomagala k razumevanju naloge!"
+    },
+    {
+        "role": "user",
+        "message": "Mislim, da sem narobe razložil.  Rekruzivno funkcijo kot samo znam rešiti. Dobim funkcijo (f(10,5) ter navodila (parametri: x , y) (z navodili mislim that, that is \"given\".  Zaplete pa se mi samo pri tej funkciji, ki sem vam jo napisal. Parametra sta x in y poiskati pa moram f(12). Ne vem , ali je 12 x ali y. Pomojem sem vam narobe razložil. Na začetku ni f(x,12) ampak samo f(12)..  Prosim za nadaljne razlage, sem bolj trd učenec :)  Vseeno hvala za odgovore."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Si siguren, da si ni v nalogi napake ? Ker še nisem videl funkcije z dvema vhodnima parametroma, kjer lahko podaš samo eno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kaj pa ce fali vejica in je x=1, y=2 (in potemtakem f=2)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0  Ena možnost so parametri z default value, druga pa partial function application. No, maš še currying, ampak tam stvar malo drugače zgleda. Vsaj eno od prvih dveh podpira vsak spodoben moderen jezik (khm... Java... khm )  Katerakoli od naštetih možnosti je seveda nesmisel za podano nalogo, ker nima definiranega obnašanja v primeru \"želje\" po vnosu samo enega parametra.   Pač, napaka v navodilih. Ali pa je OP pozabil kaj dopisati."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_3 je 3. nov 2015 ob 22:35 izjavil:@assistant_0  Ena možnost so parametri z default value, druga pa partial function application. No, maš še currying, ampak tam stvar malo drugače zgleda. Vsaj eno od prvih dveh podpira vsak spodoben moderen jezik (khm... Java... khm )  Katerakoli od naštetih možnosti je seveda nesmisel za podano nalogo, ker nima definiranega obnašanja v primeru \"želje\" po vnosu samo enega parametra.   Pač, napaka v navodilih. Ali pa je OP pozabil kaj dopisati.   Govorimo o matematiki in ne o pogramiranju kjer lahko fukncijo overloadaš kolikor krat hočeš."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ker hodita programiranje in matematika z roko v roki, obstajajo temelji za to seveda tudi v matematiki.  npr. http://www.seas.gwu.edu/~rhyspj/fall05c...  To pa ni snov srednje sole in se ne da uporabiti za nalogo od OP. Samo opozarjam, da to obstaja."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kompozitum funkcij se obravnava v gimnaziji, ampak ce funkcija rabi dva vhodna elementa, jo lahko se tako bozas pa ne bos skozi spravil samo eno."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Preberi najprej vir, pa potem se moj post, pa ti bo verjetno jasno, kaj sem napisal.  Hint: efektivno pravim isto kot ti."
+    },
+    {
+        "role": "assistant_1",
+        "message": "No, seveda, da obstajajo funkcije večih spremenljivk, le da se to obravnava na fakulteti pri Analizi 2 ali pa predmetih kot so Funkcije večih spremenljivk, ali kaj podobnega. Kompozitum funkcij se obravnava v 4. letniku gimnazije za realne funkcije, da dobiš en občutek, kaj kompozitum sploh je."
+    },
+    {
+        "role": "user",
+        "message": "Hvala vam za vse odgovore! (spoznal sem stvari za katere prej nisem verdel da obstajao  )  Kot pa ste že ugotovili, je bila v nalogi napaka. Popravljene naloge na strani ker sem jo snev seveda ni bilo, zaradi tega ves ta kraval. Pa še vseen hvala za odgovore, sem vsaj nekaj novega zvedel."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Seveda, če ima funkcija dva parametra, jo moraš tudi poklicat z dvema parametroma."
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "a je mozno na ADSl-ju s staticnim IP- jem postavit svoj page z neko registrirano domeno: www.imedomene.com. Kako zadevo speljat, ker je treba registratorju podati 2x DNS ja. Imate kaj izkusenj s tem?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Server vsekakor lahko postavis. Pri .com domenah pa bos zagotovo rabil vsaj eden DNs, kateri je naceloma lahko tudi na tvojem ADSL-ju. Mislim pa da je bilo na to temo ze kar dosti povedanega."
+    },
+    {
+        "role": "user",
+        "message": "mas prav, da je blo res kar veliko povedanrega, vendar pravega odgovora ni, ker kot vem ip in dns ni ista stvar."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user: vsak dns ima svoj ip, in dns strežnik lahko postaviš tudi na svojem domačem računalniku -- kakor sem imel sam urejeno nekaj časa.  Uporabi iskanje.  (hint: dns >> maš v strežniških MS produktih, else bind)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tak malo na hitro. 1. Rabis web server, recimo IIS od MS-ja ali pa kar free Apache-ja, slednjega ti bolj priporocam. 2. Rabis DNS server, opet lahko vzames servis od IIS-ja ali pa uporabis zelo razsirejenega bind-a 3. Svojo regisrirano domeno, recimo ime.com 4. Skonfiguriras DNS server da ti ime.com kaze na tvoj fiksni ip od siola, za to uporabis navodila. Stvar ti bo vzela nelkaj cas, ampak samo tako se bos dovolj dobro naucil, da bos vedel za kaj se gre. 5. Vpises ta tvoj DNS server pri tvojem registraturju domene, kod glavni dns serveer za tvoj ime.com domeneo. 6. Ce je vse ok pocakas par dni in od drugod pingas tvojo domeno ime.com in ko zacne delovat, postavis se web server za tvojo domeno. Tudi to je najboljse da gres lepo po navodilih, ker so napisana na dolgo in siroko. 7. Ce ti tvoj regisrator ne bo sprejel tvojega DNS streznika uporabis kaksen zastonj dns streznike, kateri imajo obicajno vso administracijo kar preko weba. Mislim da je bilo v ostalih postih ze navedenih nekaj takih streznikov, jaz jih ne vem, ker jihne uporabljam. 8. Ce zelis se emal na tvoji masini za tvojo domeno, posisci se kaksnen mail streznik, tega je tudi kar nekaj, samo jaz jih ne poznam za windows okolje, ker uporabljam linux kod spletni streznik, na linuxu pa je zanimiv recimo Postfix  To bi bilo na kratko vse"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Drugi DNS ti lahko jast dam!! Samo piši!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "www.zoneedit.com www.mydomain.com  -- bo šlo"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ista situacija je pri meni. ADSL, windows 2000, apache, bind, php, mysql... registriras domeno, registriras name server, ga vneses kot primarnega, kot sekundarca pac enega drugega (lahko ti jaz hostam), pocakas par dni in voila!"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4: Bi mi lahko povedal, kako si instaliral in nastvil bind za W2k. Imam vse enako kot ti samo bind mi pa nikakor noče delati."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ja valda. Najprej moreš napisat v etc/named.conf nekaj takega: options { allow-query { any; }; recursion yes; notify yes; listen-on {1.2.3.4;}; }; Ta IP 1.2.3.4 je tvoj statični IP. Pol pa dodajaš v isti file še za vsako domeno, za katero je tvoj dns primarni: zone \"domena.com\"{ type master; file \"c:\\winnt\\bind\\etc\\domena.com.txt\"; allow-transfer { 1.2.3.4; }; }; Tisti IP pod allow transfer je pa sekundarni DNS, kateremu pustiš prenest zone file.  In pol moreš za vsako domeno, za katero je tvoj dns primarni naredit še en zone file, v tem primeru \"c:\\winnt\\bind\\etc\\domena.com.txt\", v katerega napišeš recimo to: $TTL 86400 @ IN SOA ns1.domena.com. admin.domena.com. ( 2003020310 ; Serial 28800 ; Refresh 7200 ; Retry 604800 ; Expire 86400 ) ; TTL  IN NS ns1.domena.com. IN MX 10 mail.domena.com.   * A 1.2.3.4  ns1.domena.com je ime tvojega serverja, pazi, ker ga moreš registrirat tam kjer si kupu domeno in pol počakat do 72 ur, da se po netu razve admin.domena.com je tvoj mail, s tem da @ spremeniš v . pol une številke mislim da so jasne, serial moreš vsakič ko kaj spremeniš povečat IN NS ns1.domena.com pomeni da je ns1.domena.com nameserver za to domeno IN MX 10 mail.domena.com pomeni da je mail.domena.com mail server za to domeno, 10 je prioriteta ker bi lahko mel še en vnos z prioriteto 20, tako da če prvi ne dela pol pošlje na drugega * A 1.2.3.4 pa zamenjaš s tvojim IPjem, pomeni pa da karkoli pred domena.com bo šlo na ta strežnik, ftp recimo  Upam da bo kaj pomagalo, maš pa polno enih tutorialov na netu, sam mal googlaj."
+    }
+]

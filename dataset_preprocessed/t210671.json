@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Prej sem imel na softverski router na Linuxu in sicer na distribuciji Debian. Sedaj sem kupil se wireless mrezno kartico in zelim deliti internet preko te mrezne kartice. Tezava se pojavi ze takoj, ker mi kartice ne prepozna. Citat lspci: 0000:01:00.0 Ethernet controller: Marvell Technology Group Ltd.: Unknown device 1faa (rev 03)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Najboljše je če bi povedal kateri wireless kartico imaš. Najbolj ti priporočam da ugotoviš kateri chip ima tvoja kartica in poiščeš na netu drajverje za ta čip."
+    },
+    {
+        "role": "user",
+        "message": "Imam mrv8000c. Driverje sem installiral preko ndiswrapper a kartica se vedno noce delat. eth0 no wireless extensions.  lo no wireless extensions.  eth1 no wireless extensions.  sit0 no wireless extensions.  ppp0 no wireless extensions."
+    },
+    {
+        "role": "assistant_0",
+        "message": "A si poskusil to kar kaže na  tej strani?"
+    },
+    {
+        "role": "user",
+        "message": "OK, prisel sem do naslednjega koraka. Mrezno kartico mi lepo prepozna, ampak se moj laptop in mrezna iz streznika ne najdeta. Niti po dhcp niti po static.  wlan0 Link encap:Ethernet HWaddr 00:40:F4:E4:ED:80 inet addr:192.168.0.9 Bcast:192.168.0.255 Mask:255.255.255.0 inet6 addr: fe80::240:f4ff:fee4:ed80/64 Scope:Link UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 RX packets:0 errors:0 dropped:0 overruns:0 frame:0 TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:1000 RX bytes:0 (0.0 b) TX bytes:0 (0.0 b) Interrupt:9 Memory:dc010000-dc020000  Listening on LPF/wlan0/00:40:f4:e4:ed:80 Sending on LPF/wlan0/00:40:f4:e4:ed:80 Sending on Socket/fallback/fallback-net DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 4 DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 5 DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 11 DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 17 DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 13 DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 10 No DHCPOFFERS received. No working leases in persistent database.  Any idea?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "A ti misališ biti kot access point ali client?"
+    },
+    {
+        "role": "user",
+        "message": "Kot access point. Sedaj mi kartico prepozna, se poveze nanjo a interneta se vedno noce deliti preko wlan0"
+    },
+    {
+        "role": "assistant_0",
+        "message": "z ndiswrapperjem ti ne bo uspelo, ker ne podpira AP konfiguracijo. Poglej če ta kartica ima kmake druge driverje, ki podpira AP"
+    },
+    {
+        "role": "user",
+        "message": "Nobenih takih driverjev ne najdem. A se res ne bi dalo nekako drugace access pointa postimat?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Malo pogooglaj kateri chipset ima tvoja kartica in po tem chipsetu išči driverje za linux."
+    },
+    {
+        "role": "user",
+        "message": "Marvell čip je. Povsod je omenjen samo ndiswrapper. Kaj pa ce bi kupil router? bi ga lahko priklopil na Linux in potem oddajal WLAN?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Da."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kupiš en poceni AP s podporo 802.1x za avtentikacijo, pa ti vse skupaj špila stabilno in varno. Seveda moraš v linuxu si dat freeradius da ti deluje kot avtentikator. Če hočeš delat pod linuxom vse sam moraš biti mazohist , ali če imaš res grozno željo po znanjiu in veselju naredit kaj sam."
+    }
+]

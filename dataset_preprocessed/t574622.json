@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  O težavicah, ki sem jih imel na našem družinskem \"praračunalniku\" s smrtjo grafike GeForce 6200 in zamenjavo slednje s GeForce 2 Pro sem pisal v eni drugi temi. Ta naš računalnik je, zraven Oken XP, opremljen tudi z operacijskim sistemom Ubuntu 13.04. Pustimo to, da se je ob zagonu Ubuntu zbudil v neki čudni ločljivosti (jasno, gonilniki za GeForce 6200 so enostavno prenovi za staro GeForce 2 Pro) in da je bilo namizje prazno. Zanima me, katere gonilnike uporabiti za GeFOrce 2 Pro za poganjanje Ubunta (zadnji uradni \"windows\" gonilniki so bili na svetlo dani marca 2005 )? In kje jih iskati?  LP  Jože"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za začetek probaj z brisanjem gonilnika. Predvidevam, da si uporabljal lastniški gonilnik.  http://askubuntu.com/questions/189347/h..."
+    },
+    {
+        "role": "user",
+        "message": "Pozdrav  Nameščeni, oz. v uporabi so gonilniki, ki jih ponudi sam Ubuntu ob namestitvi. Ubuntu ima pri gonilnikih za Nvidiine grafične kartice ene tri, štiri možnosti. Katera od teh možnosti je izbrana v tem trenutku ne vem. Nvidiinih (s spletne strani) nisem nameščal.  LP  Jože"
+    },
+    {
+        "role": "assistant_0",
+        "message": "CTRL+ALT+F1\nsudo service lightdm stop\nsudo nvidia-uninstall\nsudo apt-get install xserver-xorg-video-nouveau\nsudo reboot"
+    },
+    {
+        "role": "user",
+        "message": "Pozdrav  Hvala za tole. Bom preskusil in poročal...  LP  Jože"
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljeni  Sem poskusil vnesti zadeve tako, kot jih je objavil rb750. Že vklop terminala ni šel tako, kot bi moral, a sem se nekako dokopal do terminalskega okna. Po vnosu prve vrstice \"sudo service lightdm stop\" je zaslon samo utripnil in več nisem mogel vnesti nobenega ukaza več. Tipkanje besedila je bilo sicer možno, a pritisk na tipko \"Enter\" je na zaslonu samo izpisal nekaj znakov, zgodilo pa se ni nič. Ubuntu se že prej na bližnjice s tipkovnice ni odzival tako, kot je navedeno v dokumentaciji, sedaj pa je samo izpisal kombinacije znakov brez, da bi se kaj zgodilo, zato se nisem več ukvarjal s tem.  Ubuntu z Unityjem se na tem \"praračunalniku\" ni odzival najbolje, zato sem se že nekaj časa igral z mislijo, da bi prešel na kakšno izvedenko Linuxa, ki zahteva manj dobro strojno opremo. Pa želeno je bilo, da bi bil zasnovan na Ubuntu distribuciji, da bi lahko uporabljal njegov repozitorij programske opreme. Po malo brskanja sem se odločil za dve verziji in sicer za manj znani Zorin in pa Lubuntu. Naredil sem \"dolpoteg\" obeh in si spekel namestitvene DVD-je.  Najprej sem poskusil z Zorinom. Najprej sem poskusil z zagonom z DVD-ja. Tukaj me je motilo izredno dolgo zaganjanje, ko pa je zadeva enkrat \"laufala\", pa je od mene zahtevala uporabniško ime in geslo, ki ga seveda nisem nastavil (me ni nikjer ničesar vprašal). Uporabil sem iste zadeve, kot so bile nastavljene na Ubuntu, vendar brez uspeha, enostavno nisem prišel mimo prijavnega okna. No, to je ta OS:  http://zorin-os.com/index.html  Kljub temu sem se odločil za namestitev. Sem bil kar prijetno presenečen, ko mi je ponudil možnost nadomestitve nameščenega Ubunta. Izbral sem to možnost, zadeva je izvedla namestitev in ponovno zagnala sistem. Grub je bil pravilno spremenjen, namesto Ubunta je bil na voljo Zorin. Po zagonu Zorina pa nič, tema, samo prazen zaslon z miškinim kazalcem. Noben pritisk na tipke tipkovnice ali miške ni naredil ničesar, samo kazalec sem lahko vozil po črnini zaslona. Čez čas se je sicer nepričakovano prikazalo prijavno okno, kamor sem se prijavil z uporabniškim imenom in geslom, ki sem ju določil pri namestitvi, a zgodilo se ni nič. Spet črn zaslon z miškinim kazalcem. Sem potem računalnik \"na trdo\" ugasnil in na novo zagnal.   Nato sem poskusil z Lubuntom. Pri namestitvi mi je ponudil namestitev ob obstoječih OS-ih ali pa namestitev namesto njih. Hotel sem, da bi nadomestil Zorin z Lubuntom, zato sem poskusil naprednejšo varianto, ki je pod možnostjo \"nekaj drugega\". Samo tam nisem bil najbolj siguren, da počnem prave stvari, zato sem šel nazaj na \"živ sistem\" ter z diskovnimi orodji pobrisal particijo z Zorinom in linuxovo menjalno (swap) datoteko oz. particijo. Namestitev je potem potekala povsem normalno in sedaj to pišem v Lubuntu.  P.S. Na Ubuntu sem imel izredne težave s Chromiumom. Ta se je redno sesuval, na koncu že ob samem zagonu. Tukaj, na Lubuntu, je še priden, a bomo videli, kaj bo pokazal čas.  rb750, hvala za pomoč.  LP  Jože"
+    }
+]

@@ -1,0 +1,70 @@
+[
+    {
+        "role": "user",
+        "message": "Snujem lasten API, ki se mora obnašati vljudno do nekje 10k klientov naenkrat. Podatke shranjujem v MySQL, nato pa se do njih dostopa preko PHP skripte, ki potegne potrebne podatke iz baze in jih pošlje nazaj v JSON obliki (nestisnjeno okoli 700kB).   Trenutno sem zadevo zoptimizriral z   * memcached, za zmanjšanje števila dostopov do baze * ob_start('ob_gzhandler'); v PHP skripti, ki poskrbi, da se JSON pred pošiljanjem stisne (v kolikor so prisotni headerji ki to naročijo) - rezultat je velik 100kB   Glede na to, da so samo 3-je možni pathi tega APIja (torej 3 kombinacije podatkov), razmišljam, če ne bi bilo bolje narediti cron skripto, ki mi podatke recimo vsako minuto shrani v stisnjen JSON, klienti pa bi nato dostopali direkt do te datoteke, namesto do PHP skript. V tem primeru bi se rešil ukvarjanja z memchached in gzippanjem json podatkov za vsak zahtevek posebej.  Sliši se super, vendar mi je sumljivo da v divjini ne vidim takšnih pristopov. Morda zato, ker je v večini primerov potrebno imeti token, ki ga je na koncu vseeno fajn zverificirati, preden odpošlješ podatke? No, v mojem primeru to ni potrebno. Je še kakšna druga slabost tega pristopa?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ljudje to avtomatizirajo s kakim varnishom, ki v tvojem primeru nadomesti memcached in cron."
+    },
+    {
+        "role": "assistant_1",
+        "message": "* ob_start('ob_gzhandler'); v PHP skripti, ki poskrbi, da se JSON pred pošiljanjem stisne (v kolikor so prisotni headerji ki to naročijo) - rezultat je velik 100kB   Boljsi pristop bi bil konfiguracija webserverja da to počne avtomatsko s html/text/json..  Glede na to, da so samo 3-je možni pathi tega APIja (torej 3 kombinacije podatkov), razmišljam, če ne bi bilo bolje narediti cron skripto, ki mi podatke recimo vsako minuto shrani v stisnjen JSON, klienti pa bi nato dostopali direkt do te datoteke, namesto do PHP skript. V tem primeru bi se rešil ukvarjanja z memchached in gzippanjem json podatkov za vsak zahtevek posebej.  Sliši se super, vendar mi je sumljivo da v divjini ne vidim takšnih pristopov. Morda zato, ker je v večini primerov potrebno imeti token, ki ga je na koncu vseeno fajn zverificirati, preden odpošlješ podatke? No, v mojem primeru to ni potrebno. Je še kakšna druga slabost tega pristopa?  Pri klasični spletni strani bi se temu reklo \"page cache\", prvi response se generira s phpjem in shrani na disk, naslednji requesti gredo popolnoma mimo phpja in se servira direkt generirana datoteka, dokler cache ne poteče. Praktično loh vidiš takšno implementacijo v wordpress + w3 total cache/wp super cache. To se uporablja kar precej, pohitritev je občutna.."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Nic ni problem s tem pristopom ampak jst bi sploh preskocil datoteko na disku. Prvo kot prvo noces dostopat do diska pogosto, druga stvar je pa da ce to loadas v ram in serviras iz rama potem rabis neko preverjanje kdaj se na disku datoteka spremeni.   Najlazje je da imas nek memory cache ki je HTTP capable (varnish ali kaj podobnega). Pol mas pa zadaj lahko PHP server, ki vraca ta zippan response. Ta server ne rabi bit nic optimiziran. PHP server nej da zraven max-age header za 60 sekund, in bo varnish avtomatsko samo vsakih 60 sekund naredil request za osvezitev svojega cachea. Tako se povsem izognes kakim cronom ipd in je arhitektura zelo simpl in dela. Potem pa lahko valda naredis da je spredaj en kup masin z varnishom ce rabis vec requestov."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Varnish ima specializiran jezik, v katerem lahko spišeš točno tak medpomnilnik, kakršnega potrebuješ (ki razveljavi podatke v medpomnilniku, ko pride do spremembe podatkov v bazi - to lahko načeloma dosežeš tudi z MySQL triggerjem, ki lahko trivialno pošlje unix signal eksternemu procesu, ki potem poskrbi za izgradnjo novih podatkov v medpomnilniku) in vključuje že vse prvine, ki ti bodo pri tem prišle prav."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ni se treba ravno na zobe metat ce mu ustreza refresh na minuto. Varnish ze po defaultu uposteva vse razne http caching headerje (max-age, etag, if modified since), in se z njimi da marsikaj naredit brez da bi neko custom zadevo zganjal."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Vsak pull je slabši od pusha, seveda pa drži, da je lahko dovolj dober, zato (in ker implementacija ni težavna) sem omenil trigger."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Prvo kot prvo noces dostopat do diska pogosto, druga stvar je pa da ce to loadas v ram in serviras iz rama potem rabis neko preverjanje kdaj se na disku datoteka spremeni.    to je rešeno že na os/hw nivoju"
+    },
+    {
+        "role": "assistant_4",
+        "message": "No ja. Mogoče z dodatno konfiguracijo."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kar se tice kompresije, a ni dovolj ze to kar spletni streznik da na voljo?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Tisto je per request (razen če kaki smart cache to naredi le enkrat)."
+    },
+    {
+        "role": "assistant_6",
+        "message": "si predstavljam, da si shrani v slovar tole: key=url. value=zgeneriran html in pol to dela tako hitro kot statične strani. kako pa bi to delovalo s kakšnimi spletnimi trgovinami, kjer je vsebina strani različna za vsakega posameznika (npr košarica). po moje bi tam lahko del strani, ki ni košarica potegnil iz cache-a, košarica pa dinamično zgeneriral. najbrž so že pogruntali rešitev za to, me pa zanima kako, če kdo ve.  @assistant_2 je 1. sep 2018 ob 14:51 izjavil:Prvo kot prvo   Tole besedno zvezo uporabljajo pa samo (stari) težaki."
+    },
+    {
+        "role": "assistant_1",
+        "message": "po moje bi tam lahko del strani, ki ni košarica potegnil iz cache-a, košarica pa dinamično zgeneriral. najbrž so že pogruntali rešitev za to, me pa zanima kako, če kdo ve.  Košarice se ne kešira. Tudi nima smisla pol/pol delat ker bo uporabnik v vsakem primeru cakal da se zgenerira dinamičen del."
+    },
+    {
+        "role": "assistant_6",
+        "message": "itak da se ne. samo kako lahko del strani ne keširaš del pa, to sprašujem."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4 je 2. sep 2018 ob 16:31 izjavil:Tisto je per request (razen če kaki smart cache to naredi le enkrat).   To je po mojem peanuts v primerjavi z vsem drugim kar se dogaja.  Jaz bi stvar naredil tako, da bi cron skripta generirala staticne datoteke, potem bi pa ze nginx-u povedal, da naj servira statiko, tako se php niti ne bi poganjal. Druga varianta je, da bi vse skupaj prepisal v Go in tam naredil nek caching check, ki clienta preusmeri na statiko ali pa na novo zgenerira output in ga servira, ce je cache expired."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_6 je 3. sep 2018 ob 07:19 izjavil:itak da se ne. samo kako lahko del strani ne keširaš del pa, to sprašujem.   Ja tko da preberes predhodno zgenerirano datoteko in jo vkljucis v celoto. Ampak tu lahko da nic ne pridobis ker mora zadeva itak it cez nek php.  Ce ze, je potem boljsa varjanta da je kosarica staticna, nafilas pa jo z ajax podatki"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Že sam PHP je pri tem problematičen. Hitrejši je kakšen .net core ali pa nodejs"
+    }
+]

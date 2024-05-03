@@ -1,0 +1,50 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni, potreboval bi malo pomoči v zvezi s kondenzatorji ... Imam TV, ki ne daje znakov življenja. Čisto nič, kot ne bi bil priklopljen na štrom. Zadevo sem razkopal in na napajalni plošči opazil keramični? kondenzator, ki ima po sredini na obeh straneh razpoko Slika1 in Slika2. Sklepam, da je šel po gobe. Mogoče je samo to razlog, da TV ne deluje. Rad bi ga zamenjal, pa ne znam odbrati podatkov z njega Slika2. Ponavadi na kondenzatorjih piše kapacitivnost (uF), tukaj ni nič. Ali pa je morda \"15i\" kakšen drugačen zapis za xxxuF? Da bom vedel, kakšnega kupiti.  R 15i 1KV    Slika1   Slika2 Poleg zgornjega kondenzatorja pa je pasivni hladilnik, pod katerim je plošča osmojena Slika3. Je to nastalo zaradi počenega kondenzatorja ali se v vsakem premeru zadeva toliko segreje, da plošča potemni?   Slika3"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj je pod hladilnikom ?  In kaj je na spodnjem robu tretje slikce - greatz ali čip ?  Videt je kot kondi, ni pa ravno očitno v kateri vlogi je. Najbrž v snubberju, lahko tudi kaj drugega.  Zelo verjetno je odbilo še kaj zraven, najbrž sam čip, pa še kaj. Kar se tiskanine tiče, sploh teh poceni zadev, baziranih na paprju, rade z leti potemnijo tam, kjer je trajno višja temperatura, torej to verjetno ni zaradi preboja samega.  Če bi bilo, bi videl zoglenele dele."
+    },
+    {
+        "role": "user",
+        "message": "Tako zgleda z obeh strani ...   Zgoraj-spodaj Mi morda znate povedati, kaj pomenijo oznake na kondenzatorju, da bom vedel kaj kupiti?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prvič slišim za Magnachip ( proizvajalec MOSFET-a).  Glede kondija težko rečem. Vsaj meni setako na uč zdi, da bi tale ustrezal:  150pF, 1kV  Ampak to je bolj tako, obupani poskus v sili. Prvič, ni nujno, da gre ravno za tak kondi ( za to bi rabil servisno dokumentacijo), drugič, ni verjetno, da je samo kondi. Zelo verjetno je šel še FET pa še kaj..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mislim, da to ni kondenzator, ampak je varistor."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Ni varistor, oznaka na vezju je CP812, z C se praviloma kondiji začnejo, tisk pod elementom je tudi za kondi (dve vzporedni črti).  Element sam pa sploh zgleda kot kondi. R je -25 do +125stC območje, 151 pomeni 150pF, 1kV pa pač 1kV.  Pa glede na vlogo varistorja bi rekel da je \"normalno\" če pokajo kondiji in ne varistorji."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne glede na to, ali je kondenzator, ali varistor, se ta lahko odstrani. Brez tega mora ravno tako delat. Kasneje, ko se Tv spravi v pogon, se pa vgradi še ta element. To glede vloge varistorja se pa ne morem strinjat s teboj. Poleg tega, zgleda, da se je ta element grel. Varistor se greje ob preseženi napetosti. Kondenzator se nima kaj greti."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ni res.   Ta kondi je v snubberju, med S in D priključkom tranzistorja.   Odgovoren je za brzdanje indukcijskih špic glavnega transformatorja, ki mimogrede uničijo tranzistor.  Če pogledaš podrobneje, lahko vidiš, da je uporabljen samo 600V MOSFET, ki verjetno deluje precej blizu svoji maksimalni napetosti."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja potem bo res kondenzator."
+    },
+    {
+        "role": "user",
+        "message": "Sem dobil podatke: 151 - 15*10^1=150pF=0,15nF=0,00015uF 1KV - 1000V Sem pa videl, da je tudi varovalka pregorela. Bom najprej to dvoje menjal in če ne bo efekta, bom menjal kar celo ploščo. Zanima pa me še, če ima kdo izkušnje z menjavanjem takih varovalk. Verjetno je bolje najprej odciniti varovalko skupaj z nogicami ven iz vezja in jo potem menjati ... al kako se to dela? Nova varovalka je brez nogic.    varovalka Hvala vsem za pomoč"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Odščipni tako da bo malo nogic ostalo in na te nogice prispajkaj novo varovalko.  Če pa želiš vse nardit tako kot bi moralo bit bi pa rabil tako varovalko z nogicami.  Ampak prej zamenjaj kondenzator, varovalka je crknila z razlogom."
+    },
+    {
+        "role": "assistant_0",
+        "message": "To bo verjetno bolj jalova vaja.   Če je odbilo varovalko in kondi, je zelo verjetno crknilo še kaj.  No, upam, da se motim."
+    }
+]

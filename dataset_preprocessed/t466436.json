@@ -1,0 +1,142 @@
+[
+    {
+        "role": "user",
+        "message": "Imam en problem in potrebujem pomoč čim hitreje :D Uglaunem jst bi rad nastavu oddaljen nadzor sm use naredu tudi port forwarding itd. itd... potem da se povežem opazim da ni nikjer nastavitev da dovoljenje dostopa računalnikov. pod(Računalnik\\lastnosti\\oddaljeno) Zdej nevem kje naj najdem to ker bi moglo bit tukaj. Imam pa Windows 7 SP1 Professional 32-bitno verzijo.(Nelegalno  )xD Zgleda pa tako:   slika Naj bi bilo pa tako:   slika2  Fulllll hvala če gdo zna pa pove ;DD PS:Pa ne mi predlagat da grem na kašne druge programe(Teamwiver,VNC,.....) ker rabim prav ta program Tenx ;)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Si sploh v celoti pogledal okno?  Tam daj kljukico pri Omogoči...., klikni Uporabi in spodnje opcije bi se morale pokazati."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Windows Home različice nimajo strežnika za RDP, zato teh opcij nimaš."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Teamviewer"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0  Ja brez skrbi sm provau ne gre :D @assistant_1 Imam isti windows(isti cd) na drugm računalniku pa tam deluje normalno.  @onyx  lih napišem da mi ne predlagat teh programov in ti prav moreš!?!?!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "VNC. Aja, sorry, sem spregledal.  Hmm, zakaj rabiš točno ta program? Ker rabiš nekaj, kar podpira RDP protokol? Po moje obstaja kakšna zadeva, ki razume RDP - pod Linuxom je Terminal Services Client, ziher je tudi kaj za Winse..."
+    },
+    {
+        "role": "user",
+        "message": "Ja rabim prau to :/ Uglaunem da razložim : nam je dau profesor nalogo da ce se lahko iz šolskega računalnika povežemo na svoj domač računalnik nam da u redovalnico 5(kašna 5-ka več mi ne bo škodla xD). In lahko samo u windowsu preko remote desktop(tko da linux odpade) Seveda je tukai problem dinamični ip na mojem ruterju itd itd. (sm že use uredu) samo to še manjka ko sm na koncu ugotovu -.- xD razumeš? v najslabšem primeru bom naredu preusmeritev na uni drugi računalnik(prenosnik) ampak res bi rajše tega ker bi mi rablo tudi za kdaj drugič :D"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Heh, that's easy.  Windows kišta je itak RDP server, ne?  Ti torej rabiš klienta, da se povežeš gor. Torej, uporabiš Ubuntu in Terminal Services Client, ki podpira RDP in RDPv5 protokola. Vpišeš IP oddaljene kište in stisneš \"Connect\". To je to.  Samo rabiš še geslo za dostop do Windows računalnika.  Čist tko, BTW, a Metasploit poznaš?"
+    },
+    {
+        "role": "user",
+        "message": "Sm že prej napisau da Morem bit obvezno windows drugo ne bo šlo :D  Ne nepoznam"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne razumem zakaj mora biti Windows? A to je zahteva profesorja, ali zgolj zato, ker naj bi se na Windows dalo povezati samo iz Windows sistema (slednje namreč ne drži)..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user: Se globoko opravičujem. Nisem prebral posta do konca."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Si probal dat kljukico na opcijo in resitirat računalnik?  Meni namreč če zbrišem kljukico pri naslednjem zagonu zbriše vse v spodnjem delu okna in ob ponovnem zagonu (če obkljukam omogoči povezavo) vrne nazaj vse opcije. Se pa nič ne spremeni če samo brišem/dodajam kljukico brez retarta."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Matthai: njemu na \"listening\" strani ne uspe vklopiti tega."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_4 je 5. maj 2011 ob 13:06 izjavil:Si probal dat kljukico na opcijo in resitirat računalnik?  Meni namreč če zbrišem kljukico pri naslednjem zagonu zbriše vse v spodnjem delu okna in ob ponovnem zagonu (če obkljukam omogoči povezavo) vrne nazaj vse opcije. Se pa nič ne spremeni če samo brišem/dodajam kljukico brez retarta.   Oddaljena pomoč (Remote assistance) ni isto kot oddaljeno namizje (Remote Desktop Connection), in tiste kljukice niso povezane.  @user: Preveri če ti na računalniku teče \"Terminal Services\" pa \"Remote Desktop Services\". To pogledaš tako da pod v \"Run...\" okno vpišeš \"services.msc\" in pritisneš enter. Pri teh storitvah mora pisati \"Started\" pa \"Automatic\"."
+    },
+    {
+        "role": "user",
+        "message": "@onyx ni problema zto pa je treba prebrat do konca xD ;)  Ja tko je reku prof. da morem bit windows-windows :D  Hm ne pomaga resertitrat ker tudi kot je @assistant_1 povedau to niso iste funkcije... :)  @assistant_1 ja sm tudi to že naredu samo ne pomaga(so ble pa te nastavitve preden sm jih vklopu isklopljene) ma bom useeno provau še enkrat  Sm ugotovu še eno možnost: na tem računalniku kjer nemorem nastavit teh opcij imam nameščen SP1. Na unem drugem pa nimam SP1 nameščen pa lahko izbiram opcije za oddaljen nadzor je to možno?? Ki z SP1 je prišla neka nova funkcija za remote desktop pa da ni kaj iskloplo??"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Vem da je malo neumno toda si 100%, da imaš na ciljni mašini pro verzijo windowsov?"
+    },
+    {
+        "role": "user",
+        "message": "hahah ja sm 1000000% prepričan dokaz:   dokaz!"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Glede na to, da je tole po moje mal preveč trivialna naloga za 5-ko, bi rekel da imajo v šoli blokirane porte in tudi če usposobiš ne bo delalo  Lahko pa probaš LogMein, deluje prek web browserja, torej na računalniku iz katerega dostopaš na svoj pc ne rabiš instalirat programa."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Malo googlanja je našlo več forumov z to težavo in je generalno prepričanje, da gre za napako, ki se rada pojavlja pri updajtu. Probaj ročno odpreti file \"SystemPropertiesRemote.exe\" pod Windows/System32/. Če pa tudi tam ne bo teh nastavitev, probaj od delujočega računalnika ta file prekopirat in zamenjat (delaj backup always, k kaj šariš)  Če tudi to ne dela je pa treba pogooglat kir del registra je treba ročno spremeniti.  @assistant_7 nobenih portov ne rabiš na šolskem odprtih, ker IZ šolskega dostopaš DO domačega."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ja, ampak porti so lahko blokirani, npr. Pr nas u knižnc dela samo port 80, vse druga je blokirano"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ma mašina na katero se želiš povezat nastavljeno geslo za prijavo?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Torej \"enkapsiluraš\" promet v port 80, po možnosti ga celo wrapneš v http..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_9, še vedno ne razumeš, blokirane je incoming port. Outcoming pa NAT dinamično določi port, ko se kam povežeš, če bi bil samo port 80 odprt navzven je praktično isto, kot če računalnik nima interneta. Veš kok povezav ima povprečni računalnik z zunanjostjo, vsaka povezava prek enega porta teče. Tut če dve spletni strani odpreš odpreš vsako z drugim portom, torej če je samo port 80 navzven odpret lohk sam po eni spletni strani brskaš, paše to samo v primeru, da ni ta port že zaseden, mislim da si ti nekaj zamešal, nimate tako nastavljeno.  Sicer je pa to Off Topic. Vse kar njega zanima je RDP Server, Client ima že. In pa najbrž ne sme uporabit en program za RDP server, ampak mora kar lepo usposobit vgrajeni RDP server od Windows, to je point njegove naloge. In ima to nesrečo, da ima nekaj narobe z fili/registri v računalniku, zdj pa treba ugotovit kako popravit, če moj nasvet ne bo deloval. Torej @assistant_10 očitno nisi cele teme prebral, nobena fora z gesli ni, dejansko mu iz remote zavihka v system/lastnosti manjkajo zadeve in gre za Error."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Poskusi tako: http://technet.microsoft.com/en-us/libr... http://windowsxp.mvps.org/rdenable.htm  je \"Terminal Services\" services zagnan ?  Poženi: sfc /runnow"
+    },
+    {
+        "role": "user",
+        "message": "Ja Azgard razume kaj jst hočem nardit kar je napisau rabim jst.  @assistant_10  Jst morem prvo omogočit povezovanje potem rabiš komaj geslo.  @amigo no1 bom pogledau zdej samo to sm jst že probavau  samo ni pomagalo"
+    },
+    {
+        "role": "user",
+        "message": "sem pogledal ta drugi link od amigota in sem šel po tisti poti ampak ko  pridem do Windows Components noter ne najdem Terminal services?!?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "@Azgard: potem pa recimo, da je blokiranih veliko portov, ne dela team viewer, igrce prek neta itd. Ja, mislim da sem pretiraval s tem, ko sem rekel, da je samo 80 odprt ;)"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če so incoming porti blokirani pač uporabiš programček, ki bo ven naredil tunel, ti pa se potem povežeš notri preko localhosta..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Uporabi LogMeIn. Dost bolj praktična zadeva. Pa še za dostop lahko uporabiš vsak računalnik na katerem lahko zaženeš iz ključka Firefox Portable. Tudi na non admin sistemih (prteverjeno!) Vse ostalo mi je bilo preveč komplicirano in nepraktično. Sicer mogoče ponuja kakšno opcijo več ampak je vse skupaj preveč leseno. LogMeIn pa pomoje zna naštimat in uporabljat vsak bebec. Dobesedno. Pa še nisi vezan na to kateri OS teče gor in če ima podporo za Remote Desktop."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Kako ne razumete? MORA prek windows remote control! NIČ DRUGAČE!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Btw si logiran kot administrator? Hmmm poskusi še to če nisi: pojdi v computer managment (desni klik in computer in izberi managment). Pojdi pod podstavko users and groups in dodaj tvoj user name v groupo remote desktop users. V najslabšem primeru in če si tesno s časom se zlaži, da je prenoskik tvoj domači PC."
+    },
+    {
+        "role": "assistant_9",
+        "message": "mam idejo :D Nesi laptopa v šolo, na skrivaj ga priklopi v mrežo in skrij. Potem se nanj poveži (seveda gre v omrežju brez problemov) in reci da je ta računalnik doma ;)) Samo ideje, mogoče ti pa rata xDD"
+    },
+    {
+        "role": "user",
+        "message": "Hahahha lahko bi nesu ja xD  Ne sei on ni reku da more it na domač(stacionarni) ampak samo da se povežemo domov. Samo jst bi rajše na tega ker bi to rabu tudi potem ker mam vse na stacionarne(pomembne stvari)  Sej vrjetno bo treba na prenosnik pa bom potem ko bom meu čas naredu na domač. Ampak useeno če bi kdo vedu kai bi lahko blo naj pove ki mam še vedno čas :D"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Poskusi zagnati tale Fix it programček: http://support.microsoft.com/mats/windo... Fix it so programčki na voljo na straneh z Microsoftovo podporo, ki samodejno odpravijo določene težave. Zate mislim, da bo zgoraj omenjeni primeren, sicer pa še malo pobrskaj po strani."
+    },
+    {
+        "role": "user",
+        "message": "Tenx bom provau pa sporočim pozneje ;D Nep ne pomaga ker ponuja samo popravljanje ikon in map in nič drugega :/"
+    }
+]

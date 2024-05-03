@@ -1,0 +1,102 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni  V roke sem od dobil OnePlus One, ki je obtičal pri Cyanogen logotipu. Lastnik telefona pravi da je tisti dan probaval nekaj s LuckyPatcherjem, v glavnem ko je telefon ugasnil, se mu noče več prižgati.  Probal sem priti v recovery mode, pa ne morem priti. Nimam izkušenj s flashanjem OnePlus Ona, sem pa že flashal svojega redmi note 3 pro, tako da nekaj vem na tem področju. Tako da, če bi me vsaj malo napotili, bi bil zelo hvalažen. Se ga bo dalo drugače nazaj flashati v prvotno stanje ali ne?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "če se prižge in kaže samo cyn logotip, je pač v bootloopu.  probaj power+volume down ko je telefon ugasnjen, to bi se moral zbootat v recovery"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Lih dans sem brickal Ace dvojko, pa ni šel v recovery. Rešil me je download mode in potem flash z odinom :)."
+    },
+    {
+        "role": "user",
+        "message": "Na žalost ne. Prikaže se samo tisti android logo, potem pa črn zaslon in nič drugega. V fastboot mode pa lahko pridem. Bi potem lahko takole flashal: http://www.technobuzz.net/fix-bricked-d...  Samo da OPO nima kakšne fore z zakljenjenim bootloaderjem kakor xiaomi."
+    },
+    {
+        "role": "assistant_2",
+        "message": "OPO ima po defaultu zaklenjen bootloader.   odklene se ga v fastbootu z ukazom fastboot oem unlock  flasha se ga pa tudi v bootloaderju.   edit:  Jaz bi probal po odklenjenem bootloaderju naloziti TWRP recovery in flashati z TWRP recovery-jem zip file originala.  Ce to nebi slo, pa v fastboot mode rocno."
+    },
+    {
+        "role": "user",
+        "message": "Pa je ta zgornji vodič vredu?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 4. okt 2016 ob 16:58 izjavil:Pa je ta zgornji vodič vredu?   Vredu je. Da ne prenašaš adbja skupaj z android studijom si prinesi tega iz xda.  Edit: Na netu poglej za kakšno novejšo verzijo CM 11s je že kar star..."
+    },
+    {
+        "role": "user",
+        "message": "Zatakne se mi že pri usb driverjih: http://www.technobuzz.net/install-onepl...  In sicer pod device manager ne najdem adb interface, tudi ko imam telefon povezan z računalnikom. Toolkita pa ne morem povleči, ker ga je mediafire blockal."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Se pravi račnalnik telefona sploh ne prepozna? Niti pod \"other devices\"?"
+    },
+    {
+        "role": "user",
+        "message": "Mislim, da mi ga zazna. Zdaj sem v fastbootu in sem ga povezal z računalnikom in mi ga prepozna kakor Marshall London Device. In tam pod izvrzi naprave mi napiše tudi eject android."
+    },
+    {
+        "role": "assistant_2",
+        "message": "CM13 nalozi ko si ze pri tem.   https://download.cyanogenmod.org/?devic..."
+    },
+    {
+        "role": "user",
+        "message": "No, po temle vodiču poskusil naložiti samsung drivers in adb drivers:   Pa mi pod device manager na najde adb interface (telefon imam povezan v računalnik, samo je pač telefon v bootlopu).   Pod devices mi pa zazna android napravo:   Mogoče kdo ve kaj narobe delam. Toolkita pa ne morem povleči, saj ga je mediafire blockal."
+    },
+    {
+        "role": "user",
+        "message": "Ali je to slučajno moj oneplus one:"
+    },
+    {
+        "role": "user",
+        "message": "Prosim za pomoč. Torej v fastboot mode lahko pridem. A da bi pa potem kar iz fastboota flashal pa ne gre. Moram nujno narediti ta adb devices update?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "rabis google usb driver, ki ga instaliras ko je telefon v fastboot mode.   v fastbootu potem odklenes telefon \"fastboot oem unlock\"  instaliras TWRP recovery in resetiras telefon.   v prvem zagonu gres potem v recovery, ne smes bootat direktno, ker potem prepise twrp recovery."
+    },
+    {
+        "role": "user",
+        "message": "No zdaj sem v twrp-u. Kako pa zdaj naprej? Zdaj je računalnik zaznal OPO in trenutno kopiram pomembne datoteke.  Zdaj pa naredim wipe sistema: Izberite Wipe -> Advanced Wipe Obkljukajte Dalvik/Art Cache, Data, Internal storage in Cache. Slednje vam bo pobrisalo vse podatke na telefonu oziroma celoten notranji pomnilnik.  Potem pa samo install zadnjega cm-ja. Po installu naredim se enkrat wipe.   Je tako?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Naredi full wipe v twrpju, flash zadnjega COS-a, potem flash super su-ja in zadeva rešena ."
+    },
+    {
+        "role": "user",
+        "message": "No sem en vodič za flashanje našel, bo vredu? http://www.technobuzz.net/official-cm13..."
+    },
+    {
+        "role": "user",
+        "message": "@antiani  Torej namesto factory reseta naredim wipe: - Dalvik/Art Cache - Data - Internal storage - Cache  Ali se kako drugače naredi full wipe?  Ne smem pa pozabiti GAppov instalirat, kajne? No, zdaj smo pa že čisto blizu konca. Hvala za pomoč."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Internal Storage NE wipe-aj, ker boš izbrisal vse na telefonu, celoten notranji pomnilnik in ne boš posledično mogel inštalirati OS. Se pravi v twrpju označi vse razen internal storage, ko se to wipea, flashas COS13 in supersu in to je celotna umetnost. Pri inštalaciji COS13 je nepotrebna inštalacija gappsov, ker so že v romu notri. LP"
+    },
+    {
+        "role": "user",
+        "message": "Kje pa dobim ta COS13? Jaz sem mislil instalirati cm13, ki pa očitno nima gappsov. Aja, saj to je isto. Sorry Ni dovolj če samo factory reset naredim? Ah torej obkljukam: - Dalvik/Art Cache - System - Data - Cache"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user je 4. okt 2016 ob 21:18 izjavil:Kje pa dobim ta COS13? Jaz sem mislil instalirati cm13, ki pa očitno nima gappsov. Aja, saj to je isto. Sorry Ni dovolj če samo factory reset naredim?   CM13 in COS13 sta dva popolnoma različna roma!!! Cos13 je uraden stock rom ONePlus-a in vsaj meni veliko bolj tekoče deluje kot cm13.   Downloadaj pa tega na tej strani :   https://www.androidfilehost.com/?fid=24... . Lp  Edit : Predlagam da v bodoče spremljaš to stran na XDA-ju, kjer imaš vse datoteke za One+1 :   http://forum.xda-developers.com/oneplus...  Pravtako imaš spodaj pod prvim prispevkom na prvi strani še linke do zadnjega TWRP-ja in SuperSu.   Lp"
+    },
+    {
+        "role": "user",
+        "message": "Samo še glede wipea, sem še kaj pozabil za odkljukati, potem se pa zares postopka lotim."
+    },
+    {
+        "role": "assistant_2",
+        "message": "jaz sem vedno obkljukal vse, tudi internal storage. gappse se dobi http://opengapps.org/ izberes ARM, 6.0, package po zelji.   ce bos namestil COS13 potem gappsov ne rabis.   Jaz sem imel na OPO vecinoma CM13, mi je bil bolj vsec kot COS."
+    },
+    {
+        "role": "user",
+        "message": "Hvala se enkrat, uspešno flashal rom in se vam zahvaljujem za pomoč."
+    }
+]

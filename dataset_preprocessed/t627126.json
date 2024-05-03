@@ -1,0 +1,166 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo, malce pomoči če vam uspe  pripeljat bi moral kabel do prostora- našel sem(samo) fazo na enem od stikal, od koder bi torej fazo potegnil do končnega kraja. Sedaj pa imam problem glede nule in ozemljitve- ali lahko nulo in ozemljitev povežem na drug kabel, ki že obstaja poleg kraja, kamor moram pripeljat. T aobstoječ kabel je namreč za luč, torej je v njem faza samo, ko je luč prižgana, kar mi ne ustreza, ker rabim fazo 24/7  Tako bi torej: - fazo vezal na obstoječo fazo pred stikalom - nulo in ozemljitev bi vezal na drug obstoječ kabel - faza, nula in ozemljitev bi potem šla skupaj v razdelilnik in naprej v napravo  hvala za pomoč"
+    },
+    {
+        "role": "assistant_0",
+        "message": "S tem ni problema, če sta le faza in nula iz iste omarice. Tam so itak vse nule zvezane skupaj na letvi."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Problem je lahko le v tem, da ne vemo za kakšen porabnik ti vlečeš nove kable. Če gre za eno luč, potem ni problemov, če gre pa za kakšno ogrevanje je pa lahko fazni (tudi ničelni) vodnik lahko premajhnega preseka, ker je očitno trenutno fazni vodnik verjetno dimenzioniran za luč. Naslednji problem je potem tudi pri varovalki."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Nikar ne počni tega.   @assistant_0 je 17. nov 2014 ob 00:27 izjavil:S tem ni problema, če sta le faza in nula iz iste omarice. Tam so itak vse nule zvezane skupaj na letvi.  Za večno si zapomni: faza in nula morata biti vedno iz istega tokokroga in peljani skupaj. Če ti ni jasno zakaj, vprašaj pa bom še pojasnil."
+    },
+    {
+        "role": "assistant_3",
+        "message": "OP: ker boš itak nulo in ozemljitev vlekel od drugje, od tam potegni še fazo.  @assistant_2: a lahko meni pojasniš? Zanima me tudi, kakšne so varovalke za 3-fazne porabnike - ali je v tem primeru ena posebna varovalka ali tri običajne (enake kot pri enodaznih porabnikih)?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zanima me tudi, kakšne so varovalke za 3-fazne porabnike - ali je v tem primeru ena posebna varovalka ali tri običajne (enake kot pri enodaznih porabnikih)?  Pri avtomatskih varovalkah imas tudi 3 fazne avtomatske varovalke. Dejansko gre pa za 3 enofazne, ki so skupaj mehansko povezane. Tako da ko ti izklopi varovalka eno fazo, izklopi tudi druge dve.  Ker pa je 3 fazni sistem namenjen za večje obremenitve se nad 40A toka uporabljajo keramične varovalke. Sicer se uporabljajo keramične varovalke tudi pri nižjih tokovih (predvsem zaradi počasnih karakteristik). Pa še omenit se splača, da se porabljajo večinoma vsaj v industriji ploščate in ne krožne varovalke. Pri večjih tokovih so pa itak vse ploščate."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_3 je 17. nov 2014 ob 09:12 izjavil: @assistant_2: a lahko meni pojasniš? Zanima me tudi, kakšne so varovalke za 3-fazne porabnike - ali je v tem primeru ena posebna varovalka ali tri običajne (enake kot pri enodaznih porabnikih)?  Delno ti je odgovoril že @assistant_1.  Če je sedaj nula iz enega tokokroga s svojo varovalko, faza pa iz drugega ravno tako s svojo varovalko in če sta obe varovalki na isti fazi, potem bo po nuli tekla vsota tokov iz obeh tokokrogov in presek nule bo premajhen. Če boš v enem tokokrogu izklopil varovalko, boš po nuli dobil povratno fazo preko porabnika v drugem tokokrogu in te bo doletela nesreča. Izklop varovalk je za vtičnice dimenzioniran tako, da pri kratkem stiku varovalka pregori v času 0,4 s medtem ko je za razsvetljavo dopusten čas 5 s. Pa še bi se našlo vzrokov, da predpisov sploh ne omenjam. Za trifazne porabnike se montirajo tripolne varovalke oz. inštalacijski odklopniki, ki ob okvari v eni fazi odklopijo vse tri faze"
+    },
+    {
+        "role": "user",
+        "message": "Hvala vsem za inpute, zelo koristno, sem na srečo našel en neuporabljen kabel z vsem skupaj pa bo ta sedaj služil namenu  LP"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Dober dan! Imam en problem, ampak najprej me zanima, kaj vi mislite kam bi moral dati katere kable: Imam črn, moder, in zelen/rumen kabel in vtičnico z stikalom! Slika:     Tista bela plastika je stikalo. Rumeni L je to, kjer piše L in modre črte so samo to, kjer poteka plastika, ampak se na sliki ne vidi.  Kam kateri kabel? Hitro, hvala.  Aja, novo temo ne odpiram, ker ni tko zapletena zadeva."
+    },
+    {
+        "role": "assistant_6",
+        "message": "L = live = faza N = neutral = nula zeleno-rumen = ozemljitev  naj me kdo popravi, če se motim (od leve proti desni): nula | ozemljitev | faza (na stikalo)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "V barvah, ker do zdaj tudi meni štima ??"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Po pravilih so faza vedno temne barve torej črna, rjava, temno siva. Nula pa svetle barve ala modra, bela, rdeča itd. Ozemljitev je vedno rumeno zelena. (skopirano iz ene teme tukaj na forumu)  modra | zeleno-rumen | črna"
+    },
+    {
+        "role": "assistant_5",
+        "message": "In kaj če povem, da sem zvezal tako, kot si rekel: modra | zeleno-rumen | črna -> vrže ven varovalke, glavna included in črna | zeleno-rumen | modra -> in spet vrže ven varovalke  ??"
+    },
+    {
+        "role": "assistant_6",
+        "message": "hmmm...hja, zvezat morš tko, da s stikalom priklapljaš/odklapljaš fazo, ki pelje na desno sponko/vtikač...sredina je ozemljitev, na čisto levi sponki pa more bit gor nula.  s slike se ne vidi, a se kje sklenejo kabli med sabo ko prižgeš stikalo? ker morš s stikalom samo prekinjat fazo, nič drugega"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Skleneta se tisti sredinski in tisti na desni. Ja saj varovalke vrže ven v obeh primerih, ko vklopim stikalo.  Sem še z multimetrom izmeril sledeče: črna-modra = 240 črna-rumena = 240 fazen prufer pa kaže fazo itak samo na črni.  O tem, kakšen in kako je tukaj štrom vezan nevem nič."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Mojih 5 sekund kako bi naj bilo priklopljeno   Lahko daš fazo tudi na zgornji vijak če ne bo delalo"
+    },
+    {
+        "role": "assistant_5",
+        "message": "A se da kako preveriti, kaj je modra in kaj je rumena?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "evo, me je @assistant_7 prehitel pri risanju...sj si tko zvezal, a ne? če si, je pol neki narobe z vtičnico, da ti varovalko ven meče. Če nisi, zveži tako."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Grem jutr po novo, sem se slučajn z rumeno dotaknil faze pa se je pod tisto plastiko nekaj zleplo skupaj, bakreno pa črno je blo, pa sem zdaj probal narazen dobit in je razletelo :) Hvala! Krivda za drugič, ko mi fukne ven je moja očitno."
+    },
+    {
+        "role": "assistant_6",
+        "message": "hmmm, vezanje pod napetostjo je smrtno nevarno. zakaj pa nisi mel izklopljene varovalke, med tem ko si operiral s kabli? tcccccc  pa ko boš v trgovini, nej ti majstr še pokaže kam se kej zveže, da boš zihr."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Hjah, na omarci piše, da so to \"vtičnice kuhinja\" očitno niso bli. Zdaj vem da je ta vtičnica pod \"pečica\" zvezana. Vsak dan se nekaj novega ugotovi.  Oz. vse druge so se res izklopile, tale pa je na pečico. Nimam pojma zakaj. Svašta."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Najbrž je bil kabel v bližini. Se pa načeloma pri kuhinjah za štedilnike/pečice vleče posebej vodnike, ki so na svoji varovalki."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Praviš, da imaš fazni preizkuševalec. Najprej preveri z njim fazo, ko je varovalka notri - sveti! Potem daš varovalko ven in še enkrat preveriš. Bi morala ne svetit. Ker če sveti, si dal napačno varovalko ven."
+    },
+    {
+        "role": "assistant_8",
+        "message": "No, pa sej ni tak bav bav vezanje pod napetostjo. Je pa dobro, če imaš nekaj izkušenj."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_8 je 2. dec 2014 ob 08:51 izjavil:No, pa sej ni tak bav bav vezanje pod napetostjo. Je pa dobro, če imaš nekaj izkušenj.  Kaj je z vami?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Nekateri to res počnejo. Sicer pa, sam ne zaupam varovalkam, vedno se poskusi še z faznim preizkuševalcem, faznpriferjem po domače. Ker doživiš vse živo, tudi fazo na rumeno-zelenem, standardi so za nekatere samo zaradi lepšega."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Točno tako. Sem že omenil zgoraj, dodajam še to: Fazni preizkuševalec je potrebno najprej preveriti v delujoči vtičnici, da veš, da deluje."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_9 je 2. dec 2014 ob 08:54 izjavil:@assistant_8 je 2. dec 2014 ob 08:51 izjavil:No, pa sej ni tak bav bav vezanje pod napetostjo. Je pa dobro, če imaš nekaj izkušenj.  Kaj je z vami?  Zdrava pamet in mirna roka. Kaj pa je 220V? Vsakega štromarja je že parkrat streslo, če je kaj delal."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Danes šel po novo in dela. Ja napačna varovalka je bla izklopljena. Ni mi edino jasno, da so vse vtičnice pod varovalko \"vtičnice\" samo ta ena je vezana na isto varovalko, kot pečica. Kdo ve kaj so imeli v planih. Mogoče pomivalc al nevem."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Ste že slišali za voltmeter instrument ?? S tem zmeriš če je napetost ne pa s preiskuševalcem pa si lahko miren. :D"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_5 je 1. dec 2014 ob 18:16 izjavil:Skleneta se tisti sredinski in tisti na desni. Ja saj varovalke vrže ven v obeh primerih, ko vklopim stikalo.  Sem še z multimetrom izmeril sledeče: črna-modra = 240 črna-rumena = 240 fazen prufer pa kaže fazo itak samo na črni.  O tem, kakšen in kako je tukaj štrom vezan nevem nič.  To misliš?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "To sem bolj za prejšnje komentatorje mislil, ko so veselo razlagali \"faznprefer\" uber ales, ko te lahko fajn zavede kdaj. :)"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_12 je 2. dec 2014 ob 19:59 izjavil:To sem bolj za prejšnje komentatorje mislil, ko so veselo razlagali \"faznprefer\" uber ales, ko te lahko fajn zavede kdaj. :)  Ja celo, če maš doma dva identična in en ne dela, kot jst. :) Vedno pozabim označt, kateri ne dela."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_11 je 2. dec 2014 ob 11:02 izjavil:@assistant_9 je 2. dec 2014 ob 08:54 izjavil:@assistant_8 je 2. dec 2014 ob 08:51 izjavil:No, pa sej ni tak bav bav vezanje pod napetostjo. Je pa dobro, če imaš nekaj izkušenj.  Kaj je z vami?  Zdrava pamet in mirna roka. Kaj pa je 220V? Vsakega štromarja je že parkrat streslo, če je kaj delal.  Al pa enkrat ..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Dejte mi prosim probat odgovorit na tole vprašanje...  Torej imam težave z elektriko in z hišnikom ..... Hišnik sam z svojim kvazi štromarjem vlečeta nove kable in preurejate omarce... Meni sta kar na lepem potegnla vse kable na novo , zakaj koga nevem plačal pa sem... no in na steklokeramični mi vsake tolko skuri releje... Pa sem opazil v štekerju da je tudi nula pod napetostjo preverjeno strese :) Števc mi je začel lagati včasih sploh nedela včasih mi ko smo na dopustu naštepa 900kwh ....  no to ni glavno vprašanje bolj me zanima kaj je z to nulo pod napetostjo in kako to vpliva na porabnike v stanovanju .."
+    },
+    {
+        "role": "assistant_11",
+        "message": "@assistant_13 je 23. mar 2015 ob 14:50 izjavil:Dejte mi prosim probat odgovorit na tole vprašanje...  Torej imam težave z elektriko in z hišnikom ..... Hišnik sam z svojim kvazi štromarjem vlečeta nove kable in preurejate omarce... Meni sta kar na lepem potegnla vse kable na novo , zakaj koga nevem plačal pa sem... no in na steklokeramični mi vsake tolko skuri releje... Pa sem opazil v štekerju da je tudi nula pod napetostjo preverjeno strese :) Števc mi je začel lagati včasih sploh nedela včasih mi ko smo na dopustu naštepa 900kwh ....  no to ni glavno vprašanje bolj me zanima kaj je z to nulo pod napetostjo in kako to vpliva na porabnike v stanovanju ..  Hišnik nima kaj šariti po električnih omarah. Takoj prijavi elektru."
+    },
+    {
+        "role": "assistant_14",
+        "message": "@assistant_13 je 23. mar 2015 ob 14:50 izjavil:Dejte mi prosim probat odgovorit na tole vprašanje...  Torej imam težave z elektriko in z hišnikom ..... Hišnik sam z svojim kvazi štromarjem vlečeta nove kable in preurejate omarce... Meni sta kar na lepem potegnla vse kable na novo , zakaj koga nevem plačal pa sem... no in na steklokeramični mi vsake tolko skuri releje... Pa sem opazil v štekerju da je tudi nula pod napetostjo preverjeno strese :) Števc mi je začel lagati včasih sploh nedela včasih mi ko smo na dopustu naštepa 900kwh ....  no to ni glavno vprašanje bolj me zanima kaj je z to nulo pod napetostjo in kako to vpliva na porabnike v stanovanju ..  Bi rekel, da malo nalagaš...  V kolikor je res, se malce zamisli. Plačaš, nekaj kar ne več čemu in nekaj kar ti dela škodo.  Izgleda, kot slabi spoj na dovodni ničli. Ko bo spoj dokončno prekinjen, bo zaradi medfazne napetosti skurilo lepo število priključenih naprav na eni fazi.  Izklopiš napeljavo. Izvajalca TAKOJ obvestiš o napaki, zahtevaš zapisnik o izvedenem pregledu in meritvah. In zahtevaš povračilo stroškov."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Ne vem na kaj se nanaša nalaganje.. update je trenutno da je tudi sosedu crkno števc in pa tudi neki kar preklaplja med poceni in dragim tokom.  kaj pomeni to da da je slab spoj na dovodni ničli... v cel blok ali pri nas ki imamo odštevalne števce..."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Se opravičujem, če je očitno vse res.  Nihče ti ne more na daljavo določiti napake.  Vsekakor nestrokovno izveden poseg, ki ima za posledico nevarno inštalacijo za uporabnike in naprave.  Izklopiš napeljavo. Izvajalca TAKOJ obvestiš o napaki, zahtevaš zapisnik o izvedenem pregledu in meritvah. In zahtevaš povračilo stroškov."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Strinjam se s tistimi, ki pravijo, da hišnik nima kaj delati z električnimi inštalacijami ne pred meritvami ne po meritvah (se prav ne pred števcem ne za števcem). Če pa si na pozicijo nule v obstoječi inštalaciji po hišnikovi \"intervenciji\" dobil fazo, pa lahko sam ali pa še bolje skupaj s sosedi ovadite hišnika zaradi povzročitve splošnega ogrožanj (ali kakor koli se že temu reče)."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Takoj pokliči Elektro, da ne boš ti nasankal. Okoli števca nima hišnik ali wana be štromar kaj žokat. Odklopi vsaj visoke porabnike, pa popisuj števec, najbolje vsak dan. Če ne pošiljaš stanja vsakega prvega v mesecu, te bo infarkt ko boš dobil poračun."
+    }
+]

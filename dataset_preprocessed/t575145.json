@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "message": "Verjetno je bilo napisanega že precej, vendar meni ne uspe, niti nimam izkušenj: Ponudnik je TELETV, torej imam motorolin modem, nanj priklopljen router (tomato), na vseh računalnikih win7, program pa kar \"remote desktop\" v windows.  Znotraj lan omrežja vse deluje bp, pač kličem ip računalnika 192.168.1.2. Za zunanjo povezavo pa sem v routerju odprl port za omenjen računalnik. Do sem gre. Če sedaj prav zastopim, od zunaj kličem ip routerja (če dam ip modema, mi takoj izpiše connection refused), zraven pa dodam :port - izmišljen primer 34.234.234.1:12345?  To mi ne dela, port sem odprl tudi v win firewallu, brez uspeha. Kaj delam narobe?  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Postopek je pravi samo to mi povej. Ti imaš modem od ponudnika in zraven še router? Torej poizkusi odpreti port na modemu. Tam najprej pride zunanji promet"
+    },
+    {
+        "role": "assistant_1",
+        "message": "odpreti moraš na modemu da ti vse pošlje na ruter"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Uporabi teamviewer, dela skoraj preko vseh \"ovir\". MS RDP se uporablja samo preko ssh/vpn, tista MS enkripcija je joke."
+    },
+    {
+        "role": "user",
+        "message": "Modem je Motorola Surfboard. Namen je, poenostavljeno, da pretvori iz coax na RJ45. Zadeva res ne zna drugega kot to (recimo da zna poleg tega blokirati še MS RDP), zato sem dodal še router da imam wifi ter LAN priključke.  Na teletv so mi razložili, da naj bi modem ne blokiral nikakršnih povezav. To je verjetno res, saj do sedaj z odpiranjem portov za razne programe nisem imel težav.   V motorolo ne pridem. Bom preizkusil še teamviewer."
+    },
+    {
+        "role": "user",
+        "message": "Aha, v motorolo pridem. Čudno, ima drugačen IP kot ga zazna router pod STATUS/OVERVIEW/WAN. Ne vem, se mi skoraj ne da več. V nastavitvah lahko izbereš edino frekvenco kabla ter DHCP server on off."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Pa si odprl pravi port? REmote desktop gre po defoltu preko 3389 porta. Če nisi tega ne bo delalo. Lahko daš tudi drugega sam morš spremenit rdp port v registru."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Še en glas za Teamviewer.  lp"
+    },
+    {
+        "role": "assistant_5",
+        "message": "TeamViewer je jajc.  Praviš, da se lahko povežeš znotraj modema (omrežja)? Recimo iz laptopa na glavni komp... Torej iz zunaj se ne moreš zaradi: požarnega zidu, antivirusnega programa (ki ima tudi lahko posebej požarni zid) ali pa nimaš statičnega IPja? Odprt port 3389 na routerju ne igra vloge, vsaj pri meni ne..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_2 je 27. jul 2013 ob 21:22 izjavil:Uporabi teamviewer, dela skoraj preko vseh \"ovir\". MS RDP se uporablja samo preko ssh/vpn, tista MS enkripcija je joke. Zakaj bi bila MS enkripcija joke (razen če si v Franciji, kjer zaradi zakona mora biti)?  @user: odpri ukazno vrstico (cmd) na enem od računalnikov, poženi tracert 4.2.2.4 in prilepi prve 3 vrstice."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zakaj bi bila MS enkripcija joke (razen če si v Franciji, kjer zaradi zakona mora biti)? Remote Desktop Protocol @ Wikipedia Ob neprimerno boljši alternativi (predvsem algoritmi v ssh), ne vem zakaj bi se kdo sploh hotel ukvarjati MS protokolom."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za nasvete. Na koncu se je izkazalo, da sem pridno odpiral port 3398 in ne 3389. Najbolj čudno pa je, da se mi sedaj poveže brez da bi na koncu IP dodal še port... Malce čudno, vendar sedaj dela.  Še enkrat hvala."
+    },
+    {
+        "role": "assistant_3",
+        "message": ":)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user je 28. jul 2013 ob 22:06 izjavil:Hvala za nasvete. Na koncu se je izkazalo, da sem pridno odpiral port 3398 in ne 3389. Najbolj čudno pa je, da se mi sedaj poveže brez da bi na koncu IP dodal še port... Malce čudno, vendar sedaj dela.  Še enkrat hvala.   Če se povežeš z windows remote, ti avtomatsko da port 3389 in ne rabiš dodat na konec porta."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pozdravljeni.  Zanima me, če si lahko uredim REMOTE RPC na SAMSUNG GALAXY NOTE 10.1?  Če je, bi lepo prosil, če mi lahko kdo da navodila.  Hvala, za pomoč."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Obstaja kak podoben software kot Teamviewer za Linux ? Ke TV mi tam dela samo v smeri linux na win obratno se ne poveže, včasih celo niti z Linux na Linux box ne dela. Mislim nekaj takega da ne rabiš ravno doktorirata iz IT da zadeva zalavfa."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Na Linuxu maš X11 forwarding over SSH"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Samo potem rabi še X11 server na oddaljenem koncu....pa seveda SSH. Glede na vprašanja, ki jih postavlja, se bojim, da jo to previsoka matematika zanj."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Seveda je previsoka, sej pravim, nekaj takega kjer ne rabim doktorirat iz nastavljanja firewall-a   Škoda ker je za linux tako malo podpore oz. jo je ogromno, samo kdo se bo šel prebijat čez nekaj urno branje da nastavi firewall in zadeva verjetno še vedno ne bo delala, recimo sem startal VNC in se probal povezat iz win mašine na Linux, pa mi ne rata. Teamviewer je delal samo v eno smer, Linux-win, obratno pa ne, sedaj ne dela niti to več, sem reinstaliral Linux pa še vedno ne dela. Uglavnem polomijada"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Pojdi po korakih - karkoli boš sprobaval, najprej sprobavaj tako, da boš oba računalnika imel na isti mreži - da izključiš morebitno napačno konfiguracijo firewall-a. Ko ti bo špilalo lokalno, pa se preseli z Win na drugo stran požarne pregrade in to poštimaj, da ti bo delovalo tudi preko nje."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Oba sta v isti mreži, in on začetka je zadeva prvo delala samo med njima, potem je nanenkrat začelo delat tudi na Win mašini, kasneje pa spet nehalo in sedaj ne dela niti niti med Linux mašinami.  btw imaš kak dober vodič po korakih ?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Malo googlaj, prebrskaj Youtube - stavim, da je gor kup 'how-to' posnetkov."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Če sta oba v istem lanu potem fw ponavadi ne deluje http://net.tutsplus.com/tutorials/other... Na linux pcjih odpreš en port za vnc in se mora povezati.Kateri distro imaš nameščen ? Lahko pingaš pcje med sabo?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Imam puppy linux, neko malo zadevo ampak dela OK. Lahko pingam oba linux boxa iz win, obratno pa nit še probal nisem."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Fak šele zdele sem pingal vse z vseh mašin in ugotovil da edino moje ne more pingat noben ?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_2 je 28. jul 2013 ob 10:06 izjavil:Zakaj bi bila MS enkripcija joke (razen če si v Franciji, kjer zaradi zakona mora biti)? Remote Desktop Protocol @ Wikipedia Ob neprimerno boljši alternativi (predvsem algoritmi v ssh), ne vem zakaj bi se kdo sploh hotel ukvarjati MS protokolom.   Od Windows 7 naprej lahko obkljukaš kljukico, da dovoliš samo NLA(Network Level AUthentication) RDP, ter samo 128bit, kar je končno na zadosti spodobnem nivoju, da ne rabiš več SSH uporabljat, če hočeš biti varen. Je bilo pa zelo težko dobiti Android free program, ki podpira NLA, ampak sem ga našel: Jump.  Tak da začetniku teme zelo priporočam, da ima to obkljukano. Poleg tega bi NUJNO priporočal še, da se nastavi potrebne anti-brute force nastavitve, ker je Microsoft zadosti kreten, da po defultu nima nastavljenih omejitev proti brute force. Treba je iti v nastavite uporabnika in naštimati, da se po kake 5-10 napačnih vnosih gesla račun zablokira za kako uro.  Če ti je to odveč raje uporabi TeamViewer, tam mogoče celo imajo po defultu to implmentiran, upam..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Jaz pa uporabljam \"logMeIn\" in zadeva deluje perfektno. Brez kakršnikoli nastavljanj, za delovanje rabiš najprej geslo za prijavo na spletno stran, nato geslo za prijavo v računalnik... in nato še (opcijsko) dodatno geslo (ki pa je narejeno tako, da ga moraš poklikati, in ne tipkati, kar onemogoča vohunljenje na tipkovnici). Program deluje kjerkoli in kadarkoli (pro verzija) ima tudi vklop na daljavo itd. Včasih še z free verzijo lahko vklošiš na daljavo. Zadeva se da povezati tudi z androida oz. ostalih smartphoneov, ter deluje tudi če se določen računalnik nahaja v tujini...itd. Všeč mi je tudi to, da ni potrebo nastavljati nobenih routerjev / portov / karkoli. Samo vpišeš se na stran ter zdownloadaš datoteko ki je narejena izključno za tvoj računalnik.  Kar se varnosti tiče ...naj ti drugi povedo če je to OK, ampak jaz še nisem imel nikakršnih problemov (ne z delovanjem, ne varnostjo)  lp nejc"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Pozdravljeni. Imam probleme z oddaljenim namizjem.  Na laptopu imam win8 in v nastavitvah sem omogočil oddaljen dostop. V sistem sem vpisan z ms računom. Na tablici z winRT sem si inštakiral app Oddaljeno namizje (od MS). Ko ga zaženem in vpišem ime PCja, na katerega bi se rad povezal, pa dobim sporočilo:  You might not have permissions to sign in remotely.  Med računi, ki se lahko povežejo je moj MS račun. Na tablici sem vpisan z istim računom.  Čudno je to, da ko se poizkusim povezati na en drug pc, zadeva deluje (oz. zahteva uime in geslo, ki pa ju tam nisem naštimal).   Če na pc inštaliram pc remote zadeva deluje bp.  Hvala"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Za povezave oddajleno mora račun imeti nastavleno geslo..."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Sej pc zahteva geslo, ko ga prizgem"
+    }
+]

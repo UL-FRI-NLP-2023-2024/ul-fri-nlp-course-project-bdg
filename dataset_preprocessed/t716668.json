@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Pred enim tednom sem ponesreči brickal moj telefon in sedaj je v bootloopu.  Je samsung galaxy s7 in me zanima ali imam še kaj možnosti da rešim podatke iz njega ali pa je konec z njimi  Vsakršna pomoč je v sprejem  Hvala za pomoč."
+    },
+    {
+        "role": "assistant_0",
+        "message": "prek adb mogoce kaj.  https://forum.xda-developers.com/showth... nek starejsi thread ampak mogoce se vedno uporaben.  zdaj na pamet koliko se spombim se mislim da da mountat system v fastboot oz. recovery meniju."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Samo flešaj uraden rom gor in stvar rešena , dobiš ga pa na sammobile.com. Podatke pa ne boš mogel dobiti, ker ti flešanje uradnega roma povozi čisto vse. Poveži se na vse tiste račune, kjer si imel shranjene podatke v oblaku in stvar rešena. Lp"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mislim da je opcija custom recovery, malo pogooglaj. Custom recovery ti načeloma dovoli povezavo z usb in dostopom do podatkov. Vsekakor pa telefon težko čisto brickaš, mislim da je samsungov software sposoben sam popravit vse, vendar podatki grejo.."
+    },
+    {
+        "role": "user",
+        "message": "Problem je ker potrebujem podatke, na telefonu sem imel 2fa authenticator in imam sedaj zaklenjenega enega izmed mojih kripto računov...  Sicer tega najbrš ne moram dobiti dol, a slike in podobno bi pa rad dobil"
+    },
+    {
+        "role": "assistant_2",
+        "message": "outdated, ampak bi moglo delat: http://www.teamandroid.com/2016/03/26/h...  TWRP pa mislim, da dovoljuje brskanje po telefonu prek usbja."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user je 28. jan 2018 ob 10:27 izjavil:Problem je ker potrebujem podatke, na telefonu sem imel 2fa authenticator in imam sedaj zaklenjenega enega izmed mojih kripto računov...  Sicer tega najbrš ne moram dobiti dol, a slike in podobno bi pa rad dobil   S katerim appom si pa naredil vse backup oz. verjetno si imel backup tudi v twrpju narejen ? Za slike in ostalo se pa logiraj v app , kjer si jih imel shranjene v oblaku."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_1 je 28. jan 2018 ob 09:41 izjavil:Samo flešaj uraden rom gor in stvar rešena , dobiš ga pa na sammobile.com. Podatke pa ne boš mogel dobiti, ker ti flešanje uradnega roma povozi čisto vse. Poveži se na vse tiste račune, kjer si imel shranjene podatke v oblaku in stvar rešena. Lp   Mislim da ce flesha samo AP mu ne pobrise nic na storage-u."
+    },
+    {
+        "role": "assistant_4",
+        "message": "najprej mora biti telefon odklenjen. ponavadi je to nekakšen S-OFF ali pa boot unlock. To največkrat narediš kar preko uradnih spletnih strani proizvajalca, kar tudi pomeni, da neke vrste odrežeš garancijo (ampak to ni point te teme). ko imaš bootloader unlockan lahko preko adb in fastboot pushas custom recovey. eden najbolj znanih je TWRP (sigurno se najde tudi za tvoj telefon) - google it.  največkrat so ukazi: adb devices - da preveriš če ti najde device (moraš biti pa v developer mode in pa ADB moraš imeti vključeno v tem meniju) adb reboot bootloader - ukaz te požene v bootloader fastboot flash recovery recovery.img - s tem ukazom pa povoziš recovery img, s TWRP verzijo, ki si jo prej snel iz neta in poimenoval v \"recovery.img\"  ko imaš TWRP naložen pa ni več problema z nalaganjem ostalih aplikaciji (zip, apk, ..) fastboot boot recovery.img - s tem ukazom prideš pa v TWRP custom recovery  ni neka znanost, je pa potrebno kar dosti živcev, saj se dostikrat kaj tudi zacikla. ko iz TWRP flashas nov OS (recimo Lineage ali pa karkoli drugega) bo prvi boot res dolgo trajal, včasih tudi 15-20min. ne ugašaj in ne paničari prehitro"
+    }
+]

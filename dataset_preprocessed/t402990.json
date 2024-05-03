@@ -1,0 +1,602 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo!  Kupujem nov router, ki naj bi podpiral N standard in po možnosti, ni pa nujno, gigabitno hitrost, pa mulcitcast promet naj bi tudi spuščal skozi. Trenutno imam od tp-linka enega starega pa moram reči, da je dolgo delal, sedaj pa počasi umira...  Po nekajdnevnem raziskovanju sem ugotovil, da očitno od WRT54GL ni bilo dobrega routerja. Sicer sem se omejil samo na tri firme (D-Link, Linksys, TP-Link) vendar sem za vsak router, ki mi je bil po karakeristikah všeč (D-Link DIR-655, Linksys WRT160NL, Linksys WRT160N, Linksys WRT610N) našel nekje nekoga, ki je imel z njim super slabe izkušnje, da me je odvrnilo od nakupa. No, sedaj sem se zagledal v TP-Link TL-WR1043ND, ki ima dobre karakteristike in relativno zelo ugodno ceno. Podpira ga tudi dd-wrt in zaenkrat začuda nisem našel še nobene negativne kritike. Ima kdo kakšne izkušnje ?  No na slo tech tema za ta router še ni odprta zato prosim, skritizirajte ga, drugače ga bom kupil in, če ne bo vredu za to krivil vas :)  p.s. na tem forumu https://forum.openwrt.org/viewtopic.php..., nekaj govorijo, da bi lahko postal naslednji WRT54GL:)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Z netgearovim wndr3700 (ista platforma, vec rama, hitrejsi procesor, dvojna cena) so se na nekih testih pritozeval o neenakomernih hitrostih wirelessa, ceprav na smallnetbuilderju ni videt kakih vecjih anomalij."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Imam TP-WR741ND in TL-WR1043ND na testiranju...  Kaj te sploh zanima sedaj realno, ker romanov ti ne bom pisal. ;)"
+    },
+    {
+        "role": "user",
+        "message": "Hja, zanima me.. če dela :) Pa spušča multicast promet skozi ne ? Ga je bilo treba v času testiranja kaj resetirat?   Jaz bi ga uporabljal predvsem za p2p promet pa t2 tv bi rad tudi skozi Xtreamer shekal in spravil na tv, če sem čisto specifičen. Trenutno imam enga starega tp-link in mi HD filme nikakor ne špila preko wirelessa, vesel bi bil, če bi jih ta zmogel. En client bo imel wireless ključ z N standardom, Xtreamer bo pa itak na žici k je pa giga. Če bo to vse delalo in je zadeva stabilna je to to :)  Si mogoče sprobal tudi dd-wrt (ali kak drug?) firmware ?"
+    },
+    {
+        "role": "user",
+        "message": "Aaj USB priključek ima ? Kako se obnese kot \"NAS\"?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pomanjkanje časa za odgovor...  Nisem imel tega ruterja na testiranju za vse to kar sprašuješ, ampak glede stabilnosti, saj je je telemach odločal med prvim in drugim, kateri bo šel v pakete.  Tako da multicast ni bil stestiran. 1043 je bil precej bolj stabilen, glede funkcij identičen kot mlajši bratec. Med 3 tedenskim testiranjem ni bilo potrebnega reseta zaradi katerekoli anomalije v njegovem delovanju. Medtem ko mlajši bratec pa je potreboval.  Glede hitrosti prenosa si za manjšega kar odpiši neko stabilno povezavo. Ruter je sposoben realnih 70/12 na peak, dolgoročno pa 40-55. Kar je velika izguba če imaš paket 120/10.  Ta večji bratec pa je sposoben 145/20 na peak, dolgoročno pa 75-90/10. Velik plus.  Testiran je bil tudi kot NAS(pogojno) saj USB ima sam velik bratec. DMZ za zunanjo linijo pa je bil potreben, ker drugače ga je \"medlo\" kot FTP server. Prenos in delovanje zadovoljivo. Če hočeš rentabilno povezavo si omisli obvezno CAT6 kabel, saj pri CAT5 so prevelika nihanja.  dd-wrt ni bil stestiran, saj za normalne uporabnike keteri so pri omenjenenm ponudniku tega sploh ne vedo in niti nikoli ne bodo potrebovali."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Torej- sem bolj laik, kar se tiče PC-ov...   Za svoj PC sem nabavila TP-LINK WN322G USB adapter... vse lepo poinštalirala. Povezava je vzpostaljena, mož izvrstna.. vse OK.. ampak na net pa še vseeno ne morem. Ko grem gledati moje brezžično omrćeje imam na povezavi med PC-om in routerjem narisano ključavnico?! Prvič vidim...  Kaj oziroma kje se nastavi, da lahko dostopaš na net?!"
+    },
+    {
+        "role": "assistant_3",
+        "message": "ze kdo sprobal dd-wrt na TL-WR1043ND? kako v realnosti deluje 1G mreza?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "malenksot bom ukradel temo.. imam tl-wr1043nd in bi rad gor priklopi usb disk. všaltam usb od diska v router pol pa se nič ne zgodi, navodila ki sem jih dobil zraven so pa samo kako router priklopit na internet in wi-fi , ne pa kako ga uporabit tud kot hub..kaj naj naredim da bo disk delilo tudi v laptop?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Je že kdo ugotovil če dela multicast al ne? :) Seveda z dd-wrt software-om :) Tnx!"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Deluje, ampak imam majhen problem.  Stvar je takšna: danes sem dobil ta router in se takoj zapodil v delo. Doma imamo t-2. Na modemu imam dva izhoda (LAN 2,3) konfigurirana za dva STBja, enega (LAN1) pa za internetno povezavo. Iz tega LAN1 imam povezavo v novi WR1043, kamor sem nasnel dd-wrt. Iz routerja gre potem povezava prek kabla do sestre in prek wifi do mene. Dd-wrt mi je uspelo nastaviti da je sestri deloval iptv in lan. Meni preko wifi ni delovalo nič. Zadevo sem raziskal na dd-wrt forumu in prišel do nekih nastavitev. Šel sem po tem navodilih in prišel do ''Setup an additional VLAN '', kjer se mi je ustavilo. Namreč pri meni dd-wrt nima istaga menija kot v navodilih. Nakaj sem poiskušal in mi je uspelo ustvariti nov VLAN, prek katerega mi deluje internet prek wifi. IPTV prek wifi pa še vedno ne.  Še malo podatkov o nastavitvah ath0: Network Configuration - unbridged multicast forwarding - disabled ip adress - 192.168.3.1 in subnet mask 255...  ath0.1 (virtual interface - VLAN) network Configuration - bridged  Kakor koli spremenim ah0.1 v unbridged mi internet prek wifi ne dela več. Kako nastaviti zadevo da bo internet in iptv delovala tako prek kabla kot prek wifi?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Sedaj sem router resetiral. Sestrin računalnik lahko kar pozabite, sem ga vključil v switch, ki sem ga našel v omari. Iz switcha gre naprej v WR1043. Sedaj bi pa rabil pomoč, kako nastavit dd-wrt za wireless iptv in wireless internet? Wireless internet mi deluje, iptv pa ne"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_6 je 9. nov 2010 ob 15:57 izjavil:Sedaj sem router resetiral. Sestrin računalnik lahko kar pozabite, sem ga vključil v switch, ki sem ga našel v omari. Iz switcha gre naprej v WR1043. Sedaj bi pa rabil pomoč, kako nastavit dd-wrt za wireless iptv in wireless internet? Wireless internet mi deluje, iptv pa ne   Sedaj mi je pa uspelo skoz nekako spravit iptv. Vse kar sem naredil je to, da sem na firewall izklopil filter za multicast. Network konfiguration sem pustil na bridged. Je pa zdej drug problem. Sliko pokaže, vendar slika zelo kocka in hkrati mi poplavi wlan (vsaj mislim - zasledil na forumu)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Torej po današnjem ''servisiranju'' mi je uspelo ustaviti poplavljanje (uporabil vodnik dd-wrt - http://www.dd-wrt.com/wiki/index.php/Se..., vendar iptv prek wifi še vedno ne deluje. Kakšna ideja?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Probaj program udpxy (multicast to unicast converter). Drugače pa IPTV preko kabla deluje bp oz. brez kockanja?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "IPTV preko kabla deluje bp, tudi net zravn nič ne šteka. Vsak dan zvem kaj novega in tudi z udpxy sem že poizkusil. Po Seekerjevih navodilih,vendar on uporablja tomato firmware. Če si pripravljen težavo rešiti, si lahko v isti temi prebereš tudi moj post na 8. strani. Udpxy sem že namestil, samo mi ga nikakor ne požene (vsaj mislim). Njegova statusna stran mi ne vrne odgovora"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Hvala za odg. ;) Tale program (udpxy) je odpravil težave (kockanje) IPTV preko wirelessa pri WNDR3700, če bi ti mogoče kaj pomagalo."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Hm, meni udpxy kot kaže sploh ne zažene. V JFFS mi ga naloži, ker se pomnilnik zmanjša. Lahko je problem pri ukazu v telnet programčku PuTTy (chmod 770 udpxy), ker po tem vpisu mi nič ne javi, kot da ga je sprejelo (mogoče ima dd-wrt drug ukaz). Ali pa mi pri skriptah nekaj ne štima.  Administration -> Scripts -> Init -> v to okno copy-pastamo naslednjo skripto in shranimo: Koda: Izberi vse sleep 10 /jffs/udpxy -p 1234  4. Administration -> Scripts -> Firewall -> v to okno copy-pastamo naslednjo skripto in shranimo:  Koda: Izberi vse iptables -A INPUT -p udp -m udp -d 224.0.0.0/4 -j ACCEPT  Spet možno, da ima dd-wrt kak drug ukaz???"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Udpxy mi ne zažene. Ukaz ''ps'' mi ne izpiše udpxy pod zagnanimi zadevami na routerju. Za Atheros based devices baje rabim mips verzijo programa udpxy in ne mipsel. Mips verzija  Problem je sedaj, ker je struktura drugačna od mipsel. Imamo kdo izkušnje s tem?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Uspelo usposobiti udpxy. Kot kaže je za Atheros based devices druga verzija udpxy. Po vsem tem nastavljanju izklopim samo še SPI firewall na dd-wrt in zadeva deluje.   @assistant_5: Kako imaš nastavljeno skripto za zagon? Meni nekateri programi še vedno kockajo (SLO1, SLO2, POPTV, KanalA, SportTV, SportTV2... in vsi HDji), medtem ko nekateri delajo super (tv3, sportklub, sportklub+, discovery science, eurosport, eurosport2, hbo...).   Se mogoče da, kako dodatno nastavit udpxy? CPU clock routerja imam 400MHz že serijsko. Je smiselno overclockat in na koliko?  Še ena slikca grafa uporabe omrežja. Opazite, kako POPTV 10s dela normalno na 12%, potem ko pa začne kockati pa pade uporaba na 8-9%. Discovery Science deluje povsem normalno, niti malo kockanja - uporaba 4-6%. Poizkusil tudi HD, kocka da sploh ni gledljivo - uporaba 8-9%  ..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Žal ti nemorem pomagat kaj se tega tiče, saj vse informacije ki sem ti jih posredoval sem zasledil na forumih, saj sem še v fazi nakupa routerja in mi je multicast obvezen (t-2). Kot vse kaze bom verjetno v kratkem kupil tegale TP-linka in se pol malce poigral, ce mi bo uspelo itak da sporocim ;)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz imam ta router pa me zanima kako priklopit in nastavit tiskalnik ali trdi dik preko routerja v skupno rabo."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pozdravljeni.  Ker živim v dvonastropni hiši imam problem z dosego interneta na računalnik (wireless). Sedanji router TL-WR642G imam namreč v prvem štuku, računalnik pa v drugem. Ker sem že kupil zmogljivejšo anteno in ni niti malo boljše me zanima ali je potem ptoblem v routerju. Bi bilo s TL-WR1043ND kaj boljše? Hvala za odgovor."
+    },
+    {
+        "role": "assistant_9",
+        "message": "da, problem je v ruterju. Moraš nastavit mu v nastavitvah TxMode na B-only in brzino (txRate) fixno na prvo večjo kot imaš iNet brzino priključka ..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_7 je 3. dec 2010 ob 20:32 izjavil:Jaz imam ta router pa me zanima kako priklopit in nastavit tiskalnik ali trdi dik preko routerja v skupno rabo.   Sam uporabljam omenjeni router približno 3 mesece in morem rečt da dela brez kakršnih koli težav. Signal je zelo močen, prav tako je router zelo stabilen, mi ga bilo potrebno do sedaj niti enkrat resetirati. uglavnem postopek za priklop in nastavitev tdega diska v skupno rabo gre takole:  1. vklopis disk v usb port zadaj na routerju 2. pojdi na network sharing v nastavitvah routerja, tukaj slediš navodilom na desni strani 3. se pravi, pritisnes rescan da najde disk, pod edit lahko nastavis koliksen del diska bo v skupni rabi, nastavis ime diska... 4. prav tako mores nastaviti še user accounts, kjer vstavis upor. in geslo 5. za dostopanje do vsebin na disku enostavno v windows explorerju napišeš \\\\192.168.1.1\\in ime diska ki si ga nastavil pod točko 3  to je to, aja še to; isti takšen router imam tudi doma v sloveniji, kjer lahko gledam t2 tv (z uporabo t2tv.m3u datoteke) brez dodatne namestitve dd-wrt na router, original firmware deluje čisto lepo.   Me pa ob tem zanima ena stvar, če mi lahko kdo pomaga? Kot sem že dejal mi router dela brez problema, vendar pa vseeno imam težave z dostopom do wireless interneta preko laptopa (ACER Aspire 7735Z), po nekaj trenutkih vedno zgubim dostop in mi napiše le krajevno. druga dva ASUS laptopa delujeta čisto vredu na istem omrežju istega routerja. Reinštaliral sem že vse driverje, tako da res ne vem kaj narediti. Bral sem tukaj na forumu nekaj o statičnih IP-jih s strani t2?!   Prosim za pomoč, hvala! lp"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Ali tiskalniki delujejo prek USB-ja na originalnem firmwaru? Meni ga namreč ne zazna."
+    },
+    {
+        "role": "assistant_12",
+        "message": "A ve mogoče kdo če na TP Link TL-WR741ND deluje IPTV??"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Kupu danes router TL-WR1043ND, samo sporočam da gre hitrost preko mreže konstantno 65MB/s ( prenos fajla velik 30GB )"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Neda se popravlat mojega odgovora, zato pišem na novo.... Hitrost preko mreže gre konstantno 75 MB/s... Sedaj me pa zanima zakaj je hitrost wireless padla iz 12,5 MB/s na samo 8MB/s. Inštaliral sem DD-WRT, maksimalna hitrost kanal je 20 MHz, ta router naj bi deloval na 40 Mhz, je morda to krivda ?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Probaj s kakšno drugo verzijo dd-wrt. Določene imajo res težave z 40MHz kanalom in to na večih routerjih."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Eno vprašanje za lastnike:  A se da nastavit, da deluje kot 4-port gigabit switch+wireless AP?  Router že imam."
+    },
+    {
+        "role": "assistant_15",
+        "message": "hej, js se pa odločam za nakup med TP-Link TL-WR1043ND in TP-Link TL-WR941ND. razlika je le v tem, da ima prvi gigabitno mrežo in usb, drugi pa ne. zanima me kakšen je padec internetne hitrosti na kablu, če sploh je pri enem in pri drugem. imam 100Mb optiko in ne bi rad izgub hitrosti. Sama hitrost prenašanja iz računalnika na računalnik mi ni toliko pomembna, ker jo redko uporabljam. Wireless, mi pa ni toliko pomemben, ker ga bom uporabljal samo na telefonu.  hvala in lp."
+    },
+    {
+        "role": "assistant_13",
+        "message": "TL-WR1043ND kupš in si brez skrbi :-)  Preko mreže mi gre konstantnih 80MB/s +"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Mene pa zanima, če je že kdo (tu) za WAN pri tem routerju uporabil kakšen USB 3G/HSPA modem? Rad bi namreč zadevo uporabil kot 3G/HSPA router, WAN RJ45 port pa uporabil kot dodaten port za switch.  Aja pa zanima me še, če je kdo že pomeril njegovo porabo štroma?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "@assistant_16 je 8. avg 2011 ob 09:01 izjavil:  Aja pa zanima me še, če je kdo že pomeril njegovo porabo štroma?   evo tuki je vse o rutrju in poraba http://wiki.openwrt.org/toh/tp-link/tl-..."
+    },
+    {
+        "role": "assistant_18",
+        "message": "@assistant_16 je 8. avg 2011 ob 09:01 izjavil:Mene pa zanima, če je že kdo (tu) za WAN pri tem routerju uporabil kakšen USB 3G/HSPA modem? Rad bi namreč zadevo uporabil kot 3G/HSPA router, WAN RJ45 port pa uporabil kot dodaten port za switch.   naj bi se dalo ja, tu malo poglej > http://www.dd-wrt.com/phpBB2/"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Fantje, to vse sem že prečekiral preden sem tukaj stisnil \"send\". Obe vprašanji še vedno ostajata...  Mene pa zanima, če je že kdo (tu) za WAN pri tem routerju uporabil kakšen USB 3G/HSPA modem?  Aja pa zanima me še, če je kdo že pomeril njegovo porabo štroma?"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Da ne odpiram nove teme... Imam ta router in včeraj sem nadgradil firmware na dd-wrt.  Vse dela stabilno. Nisem sicer še velik testiral a imam občutek, da deluje bolj stabilno kot je na original firmwareu.   Problem pa je USB. Ker imam na router priklopljen zunanji WD 2GB disk (NTFS) in ga nucam dnevno preko wireless je nuja, da dela. Problem pa je, da ga ne znam mountat. Napiše mi, da NTFS sistem ni podprt...  Kako nasnet gonilnike oziroma omogočit podporo NTFS in seveda mountat ta USB disk, da bo zadeva delala?  Če ima kdo izkušnje..."
+    },
+    {
+        "role": "assistant_16",
+        "message": "@assistant_16 je 18. avg 2011 ob 08:47 izjavil:Fantje, to vse sem že prečekiral preden sem tukaj stisnil \"send\". Obe vprašanji še vedno ostajata...  Mene pa zanima, če je že kdo (tu) za WAN pri tem routerju uporabil kakšen USB 3G/HSPA modem?  Aja pa zanima me še, če je kdo že pomeril njegovo porabo štroma?  Si bom kar sam odgovoril... žre od 5 do 7 W, 3G/HSPA USB modemi pa tudi delujejo (večinoma)."
+    },
+    {
+        "role": "assistant_16",
+        "message": "@assistant_19 je 24. avg 2011 ob 11:13 izjavil: Problem pa je USB. Ker imam na router priklopljen zunanji WD 2GB disk (NTFS) in ga nucam dnevno preko wireless je nuja, da dela. Problem pa je, da ga ne znam mountat. Napiše mi, da NTFS sistem ni podprt...  Kako nasnet gonilnike oziroma omogočit podporo NTFS in seveda mountat ta USB disk, da bo zadeva delala?  Če ima kdo izkušnje...  Nisem še probaval tega, vem pa da na Linuxu rabiš fuse kernel support in pa ntfs-3g paket. Vem da oboje obstaja tudi za MIPS platforme... vendar je odvisno kateri bild FW-ja si naložil. Kernel modul fuse.ko je na dd-wrt ftpju vendar samo za verzijo 2.6.24.111 (ustreza v24 preSP2 bildu 14896), ntfs-3g pa dobiš na OpenWRT sajtu. Boš pa nucal jffs2 particijo za tole..."
+    },
+    {
+        "role": "assistant_16",
+        "message": "V zadnjem bildu (17201) je že ntfs-3g ter fuse.ko modul. Sem si naredil en NTFS image file in ga zmountal. Deluje. Torej:   insmod fuse\nntfs-3g /dev/<ntfs_particija> /mnt"
+    },
+    {
+        "role": "assistant_20",
+        "message": "A se da tukaj gor priključit printer? Kako zadeva deluje z P2P, NAS?  Hvala za vaše izkušnje!"
+    },
+    {
+        "role": "assistant_21",
+        "message": "Ta zadeva mi ne zmore routat 20/20 optike, če zadeva pride čez 1MB/s in je aktivnih veliko povezav. Se še komu to dogaja?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "@assistant_20 je 15. nov 2011 ob 14:08 izjavil:A se da tukaj gor priključit printer? Kako zadeva deluje z P2P, NAS?  Hvala za vaše izkušnje!   Printer gre verjetno z ddwrt, original firmware pa ne podpira. Nas deluje, ni pa to na nivoju za resno uporabo ker router ni dovolj zmogljiv."
+    },
+    {
+        "role": "assistant_22",
+        "message": "@assistant_21 je 15. nov 2011 ob 14:14 izjavil:Ta zadeva mi ne zmore routat 20/20 optike, če zadeva pride čez 1MB/s in je aktivnih veliko povezav. Se še komu to dogaja?  Meni pri 4/1 povezavi po parih urah torrentov (omejenih na max 100 povezav) postane nedosegljiv web vmesnik ruterja (192.168.1.1), torrenti sicer delajo normalno naprej... Imam predzadnjo verzijo firmware. Na dd-wrt pa je sicer ogromna tema za ta ruter, ampak gre večina raje nazaj na tovarniški firmware zaradi različnih težav/nestabilnosti pri dd-wrt."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Meni se zdi ddwrt ok, edino brezžična zmogljivost - hitrost je malo manjša"
+    },
+    {
+        "role": "assistant_23",
+        "message": "@assistant_22 je 15. nov 2011 ob 18:16 izjavil:@assistant_21 je 15. nov 2011 ob 14:14 izjavil:Ta zadeva mi ne zmore routat 20/20 optike, če zadeva pride čez 1MB/s in je aktivnih veliko povezav. Se še komu to dogaja?  Meni pri 4/1 povezavi po parih urah torrentov (omejenih na max 100 povezav) postane nedosegljiv web vmesnik ruterja (192.168.1.1), torrenti sicer delajo normalno naprej... Imam predzadnjo verzijo firmware. Na dd-wrt pa je sicer ogromna tema za ta ruter, ampak gre večina raje nazaj na tovarniški firmware zaradi različnih težav/nestabilnosti pri dd-wrt.   Če slučajno 192.168.1.1 ne dela probi tole \"tplinklogin.net\""
+    },
+    {
+        "role": "assistant_20",
+        "message": "OK hvala.. vidim, da ne bo nič s tem. Mogoče kaj v smeri DIR-825 ali pa DIR-655"
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_20 je 16. nov 2011 ob 09:26 izjavil:OK hvala.. vidim, da ne bo nič s tem. Mogoče kaj v smeri DIR-825 ali pa DIR-655   Meni je zanimiv novi DIR-645 (sicer je samo en test zunaj sam ta ga zelo hvali). Če ne rabiš 5Ghz seveda."
+    },
+    {
+        "role": "assistant_20",
+        "message": "Sej če prav razumem bo tudi višja hitrost lahko dosežena brez 5Ghz - imam namreč NAT, ki ga 2 prenosnika koristita večinoma preko wirelessa.. če temu ni tako, bi vzel 5Ghz...."
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_20 je 16. nov 2011 ob 10:06 izjavil:Sej če prav razumem bo tudi višja hitrost lahko dosežena brez 5Ghz - imam namreč NAT, ki ga 2 prenosnika koristita večinoma preko wirelessa.. če temu ni tako, bi vzel 5Ghz....   Če si v hiši in znotraj le te ni veliko signalov drugih wi-fijev, potem po moje 5gHZ ne rabiš. Če pa si v bloku in je veliko wi-fijev sosedov je pa drugače. Ampak za 5Ghz boš verjetno moral dokupiti usb dongle, tudi najnovejši prenosniki namreč nimajo vgrajenega 5ghz wi-fija."
+    },
+    {
+        "role": "assistant_20",
+        "message": "imam se mi zdi, Intel 5300AGN. Sem pa v bloku, ampak to se mi zdi tako-tako. Cez 1-2 leti bodo vsi meli ghz in pol je vseeno ali mas 2 ali 5. ali pac ne?"
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_20 je 16. nov 2011 ob 10:25 izjavil:imam se mi zdi, Intel 5300AGN. Sem pa v bloku, ampak to se mi zdi tako-tako. Cez 1-2 leti bodo vsi meli ghz in pol je vseeno ali mas 2 ali 5. ali pac ne?   Vseeno ne bo, saj ima 5ghz manjši doseg, se težje prebije čez zidove..."
+    },
+    {
+        "role": "assistant_25",
+        "message": "p3228355]V zadnjem bildu (17201) je že ntfs-3g ter fuse.ko modul. Sem si naredil en NTFS image file in ga zmountal. Deluje. Torej:   Ker firmware je to? Jz mam v. 1.8 piše na routeru Na spletnem vmesniku pa piše tole: Firmware Version:  3.13.4 Build 110429 Rel.36959n Hardware Version:  WR1043ND v1 00000000  Ne bi rad zaflešal routerja"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Meni pri 4/1 povezavi po parih urah torrentov (omejenih na max 100 povezav) postane nedosegljiv web vmesnik ruterja (192.168.1.1),  čudno, meni se to nikoli ni še zgodilo"
+    },
+    {
+        "role": "assistant_26",
+        "message": "Razmišljam o nakupu te zadeve, da bi zamenjal Buffalo WHR-HP-G54 (tomato), ki sicer dela odlično in stabilno (torrent 24/7, multicast), pogrešam pa gigalan in hitrejši wlan. Poceni sicer je, ampak je zadeva zdaj končno stabilna (stock ali dd-wrt) ali so še zmeraj razne težave z wlan ipd?  Mutlicast dela?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Meni se zdita oba firmwera stabilna. Wlan včleče cca optimalno nekje 7-8 mega, ddwrt mislim da malenkost manj."
+    },
+    {
+        "role": "assistant_27",
+        "message": "Omenjeni router si lastim dva tedna in stalno se mi dogaja, da vsake 3 dni povezava pade. Po izklopu routerja iz štroma se spet postavi, za tri dni in spet znova... Zaenkrat je naložen zadnji uradni FW. Bi prehod na DD-WRT pomanjkljivost odpravil?"
+    },
+    {
+        "role": "assistant_28",
+        "message": "Zanimivo, jaz ga imam na stock FW in sem ravno včeraj gledal je online že 189 ur. Resitirat z potegom iz elektrike ga pa nisem rabil niti enkrat v pol leta. Za razliko od belkina ki je to rabil 3x na dan."
+    },
+    {
+        "role": "assistant_25",
+        "message": "@assistant_27 meni se enako dogaja"
+    },
+    {
+        "role": "assistant_27",
+        "message": "@assistant_25 je 24. nov 2011 ob 11:11 izjavil:@assistant_27 meni se enako dogaja   Sem razmišljal, da bom fleshal na DD, samo je postopek za vrnitev nazaj na original FW zapleten baje."
+    },
+    {
+        "role": "assistant_25",
+        "message": "Zakaj bi biu zapleten?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Ni zapleten, je pa nek postopek.  original na ddwrt: 1) najprej narest inital flash s posebnim firmwerom..ker original fw ima neko bedno zaščito. 2) flash na ddwrt  iz ddwrt na original pa tole: 1) http://www.dd-wrt.com/phpBB2/viewtopic.... 2) po tem pa še na najnovejši fw z original strani"
+    },
+    {
+        "role": "assistant_25",
+        "message": "@assistant_18 je 24. nov 2011 ob 19:51 izjavil:Ni zapleten, je pa nek postopek.  original na ddwrt: 1) najprej narest inital flash s posebnim firmwerom..ker original fw ima neko bedno zaščito. 2) flash na ddwrt  iz ddwrt na original pa tole: 1) http://www.dd-wrt.com/phpBB2/viewtopic.... 2) po tem pa še na najnovejši fw z original strani   U mater ta mi je pa prva. Jz sem mislu, kar direkt flešnit kot na starem linksysu"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Jest sem direkt flešal na ddwrt pa ne dela nobenih problemov. Zadeva je stabilna, omogoča ful stvari, tiskalnika še nisem probal na usb prključit. Sfriziral sem ga z dvema večjima antenama ob strani in eno usmerjeno na sredini ter nastavitvami za usmerjevalnik. Prenos signala iz 1 nadstropja v klet je ok. Čeprav roko na srce prejšnjemu Linksys 54GL ni nč manjkal."
+    },
+    {
+        "role": "assistant_27",
+        "message": "@assistant_29 je 25. nov 2011 ob 10:55 izjavil:Jest sem direkt flešal na ddwrt pa ne dela nobenih problemov. Zadeva je stabilna, omogoča ful stvari, tiskalnika še nisem probal na usb prključit. Sfriziral sem ga z dvema večjima antenama ob strani in eno usmerjeno na sredini ter nastavitvami za usmerjevalnik. Prenos signala iz 1 nadstropja v klet je ok. Čeprav roko na srce prejšnjemu Linksys 54GL ni nč manjkal.   Katero verzijo FW pa imaš? Mogoče 17201?"
+    },
+    {
+        "role": "assistant_30",
+        "message": "@assistant_27 je 24. nov 2011 ob 11:48 izjavil:@assistant_25 je 24. nov 2011 ob 11:11 izjavil:@assistant_27 meni se enako dogaja   Sem razmišljal, da bom fleshal na DD, samo je postopek za vrnitev nazaj na original FW zapleten baje.   Saj iz DDWrt gre redko kdo nazaj , mogoče le za kako garancijo..."
+    },
+    {
+        "role": "assistant_26",
+        "message": "Kolikor berem razne forume, ljudje kar monožično flashajo nazaj na stock, če ga prej niso slučajno brickal seveda. :) Tale router je očitno en kinderjajček, nekaterim dela super, nekaterim pa pada wireless na 3 minute itd."
+    },
+    {
+        "role": "assistant_27",
+        "message": "@assistant_26 je 25. nov 2011 ob 13:24 izjavil:Kolikor berem razne forume, ljudje kar monožično flashajo nazaj na stock, če ga prej niso slučajno brickal seveda. :) Tale router je očitno en kinderjajček, nekaterim dela super, nekaterim pa pada wireless na 3 minute itd.  Ravno zato se še nisem opogumil in ga fleshal. A se splača nest nazaj v trgovino in zatežit, da mi pada povezava? Samo kaj ko bom potem 2 meseca brez in še vprašanje ko ga vrnejo če bo zadeva štimala"
+    },
+    {
+        "role": "assistant_30",
+        "message": "@assistant_26 je 25. nov 2011 ob 13:24 izjavil:Kolikor berem razne forume, ljudje kar monožično flashajo nazaj na stock, če ga prej niso slučajno brickal seveda. :) Tale router je očitno en kinderjajček, nekaterim dela super, nekaterim pa pada wireless na 3 minute itd.  Zanimivo. Kolegu se je v nekaj urah na stock-u 2x zresetiral, potem pa je dal na DDWRT in je rekel, da od takrat še ni nikoli \"padel\". Je pa res, da ni preveril, a ima zadnji stock gor, ker je kar na DDWRT šel. Kupil pa ga je kak mesec in pol nazaj."
+    },
+    {
+        "role": "assistant_31",
+        "message": "Ali lahko tale router poganja torrent clienta z ddwrt-jem?"
+    },
+    {
+        "role": "assistant_21",
+        "message": "@assistant_21 je 15. nov 2011 ob 14:14 izjavil:Ta zadeva mi ne zmore routat 20/20 optike, če zadeva pride čez 1MB/s in je aktivnih veliko povezav. Se še komu to dogaja?  Sem izključil \"DOS at@assistant_47k\" opcijo v router firewallu, dela fino zdj."
+    },
+    {
+        "role": "assistant_32",
+        "message": "sam sem ga tudi takoj sflešal in imam gor: DD-WRT v24-sp2 (08/07/10) std (SVN revision 14896)  Dela bp že od samega začetka."
+    },
+    {
+        "role": "assistant_25",
+        "message": "@assistant_32 je 29. nov 2011 ob 09:50 izjavil:sam sem ga tudi takoj sflešal in imam gor: DD-WRT v24-sp2 (08/07/10) std (SVN revision 14896)  Dela bp že od samega začetka.   Katero verzijo routerja maš? Jz mam v. 1.8"
+    },
+    {
+        "role": "assistant_33",
+        "message": "@assistant_18 je 24. nov 2011 ob 19:51 izjavil:Ni zapleten, je pa nek postopek.  original na ddwrt: 1) najprej narest inital flash s posebnim firmwerom..ker original fw ima neko bedno zaščito. 2) flash na ddwrt  iz ddwrt na original pa tole: 1) http://www.dd-wrt.com/phpBB2/viewtopic.... 2) po tem pa še na najnovejši fw z original strani   Jaz sem dal gor prvo: factory-to-ddwrt VSE OK  nato je potrebno dat gor: tl-wr1043nd-webflash to pa mi ne gre gor...napise time out...  Kje je fora?  Lahko kdo pomaga?  Lp"
+    },
+    {
+        "role": "assistant_27",
+        "message": "Jaz sem naložil gor samo \"factory-to-ddwrt\" (prvič naložil DD-WRT) in zadeva deluje stabilno že dober teden."
+    },
+    {
+        "role": "assistant_31",
+        "message": "Jaz sem pa naložil gor Open WRT priklopil zunanji disk in naložil transmission in zaenkrat ni pripomb, če bo čas dopuščal upam da še priklopim tiskalnik, zaenkrat zadovoljen.  lp"
+    },
+    {
+        "role": "assistant_34",
+        "message": "@assistant_31: ti torrenti potem laufajo gor 24/7?"
+    },
+    {
+        "role": "assistant_31",
+        "message": "to načeloma zdaj testiram, kako se kaj obnaša, zaenkrat ni težav ... ampak konkretno bom lahko to potrdil po parih dneh!"
+    },
+    {
+        "role": "assistant_35",
+        "message": "@assistant_6 je 12. nov 2010 ob 17:28 izjavil:IPTV preko kabla deluje bp, tudi net zravn nič ne šteka.  Lepo lepo prosim, da bi bil tako prijazen in napisal en vodič kako si usposobil net in siol iptv preko tega routerja.  Prej sem imel samo siolov modem in mi je vse delalo, sedaj pa sem priklopil ta router, pa mi iptv ne dela:(  HVALA!!!"
+    },
+    {
+        "role": "assistant_36",
+        "message": "Na ruter priklopi samo net, iptv naj bo še vedno priklopljen na siolov modem."
+    },
+    {
+        "role": "assistant_35",
+        "message": "sem imel, pa ni delalo. (dela samo, če disejblam mrežno za internet. oboje skupaj pa ne dela)  sem probal oba kabla preko routerja pa ne dela. nikjer ne najdem kako se omogoči multicast na tem routerju"
+    },
+    {
+        "role": "assistant_23",
+        "message": "http://www.dd-wrt.com/wiki/index.php/IP...  Poglej če to pomaga!!!"
+    },
+    {
+        "role": "assistant_35",
+        "message": "hvala, vendar žal ne. Najprej bi rad usposobil z original FW. To naj bi ta router omogočal. Če bodo težave pa bom zamenjal. Kljub temu pa si s tvojim linkom nisem znal pomagat.  Morda sem pozabil omenit, da bi rad preko kabla imel iptv."
+    },
+    {
+        "role": "assistant_37",
+        "message": "Če orginalni firmware to omogoča ftaknes Data v WAN. Video v LAN1,2,3 ali 4.  Ter z drugim lan portom povezes PC. Z orginal fimwerom nevem ce deluje, z DDWRT pa mora out of box."
+    },
+    {
+        "role": "assistant_38",
+        "message": "Pozdravljeni!  Jaz sem pa okoli zasledil na rewievih, da temu routerju pada hitrost na wifi z razdaljo. Nikjer pa ne piše na kakšni razdalji začne zadeva drastično padati. A ma kdo s tem kakšne izkušnje? sem tik pred nabavo routerja, pa me zanima, če bi bilo bol pametno kaj \"dražjega\" kupit ali bi bila ta zadeva dovolj dobra za cca 20-30m radius?"
+    },
+    {
+        "role": "assistant_31",
+        "message": "Če sem jaz to prav razumel se to ne dogaja vsem, če bi se mojemu ga nesem nazaj in naj zamenjajo."
+    },
+    {
+        "role": "assistant_39",
+        "message": "@assistant_32 je 29. nov 2011 ob 09:50 izjavil:sam sem ga tudi takoj sflešal in imam gor: DD-WRT v24-sp2 (08/07/10) std (SVN revision 14896)  Dela bp že od samega začetka.  Lahko malce bolj podrobno opišeš postopek in kje si našel potreben fajl. lp"
+    },
+    {
+        "role": "assistant_40",
+        "message": "@assistant_38: To da routerju pada hitrost z razdaljo ni nič novega in se dogaja pri vseh. Glede radiusa je pa odvisno od vmesni ovir (zidovi,...).   Sam sem svojega 1043ND v1.8 nadgradil na OpenWrt Backfire 10.03.1-RC6 (klik za navodila).in zaenkrat deluje brez problema. Res pa je da nisem sprobaval USB portov."
+    },
+    {
+        "role": "assistant_38",
+        "message": "Ja glede ovir je tak...v vsako smer je cca 4-5 zidov iz ciglov. Nič betona. Načeloma me niti hitrost prenosa tolko ne moti, ker je internet mislim da 2/512 in ni neke sile zaradi tega."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Če je tako švoh internet, nastavi na B-Only in 5,5Mbit max (lahko celo na 2Mbit) ... bo neslo daleč in skozi vse te tvoje zidove BP ..."
+    },
+    {
+        "role": "assistant_32",
+        "message": "fajl je tu: http://www.dd-wrt.com/site/support/rout... in iščeš wr1043 pa takoj najdeš. navodila pa ne vem več, kje sem našel. sigurno pa mi je pomagal google :)"
+    },
+    {
+        "role": "assistant_38",
+        "message": "A je kdo probal uporabit tega TPlinka kot wireless repeater z tovarniškim firmwarom? A je sploh možno? Ali je bolše kr namenski repeater nabavit?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "841ND in 741ND mi dobro delata v tej funkciji(741 je brezžično obešen na 841). Ne vem, zakaj potem 1043 ne bi delal"
+    },
+    {
+        "role": "assistant_41",
+        "message": "@assistant_22 je 15. nov 2011 ob 18:16 izjavil:Meni pri 4/1 povezavi po parih urah torrentov (omejenih na max 100 povezav) postane nedosegljiv web vmesnik ruterja (192.168.1.1), torrenti sicer delajo normalno naprej... Imam predzadnjo verzijo firmware. Na dd-wrt pa je sicer ogromna tema za ta ruter, ampak gre večina raje nazaj na tovarniški firmware zaradi različnih težav/nestabilnosti pri dd-wrt.   Imel sem enak problem - na routerju je po nekaj urah ali dneh prenehala utripat SYSTEM lučka, kar je pomenilo, da je nekaj narobe. Ali se ga ni dalo več priklicat prek 192.168.1.1 (tudi tplinklogin.net ni zagrabil) ali pa je povsem zmrznil.  Ker je TP-Link podpora (support) neodzivna, sem ga flešnil na DD-WRT. Od takrat deluje brezhibno! Celo na LAN 1 priključku imam zdaj signal (plata ima dva gigabit LAN priključka), ki ga na originalnem firmwaru ni bilo.  Originalni firmware sicer izgleda všečen in preprost, a hroščev mrgoli! Najbolj mi je šlo na živce, da se je moral router re-bootat, če si spreminjal wireless nastavitve."
+    },
+    {
+        "role": "assistant_42",
+        "message": "Zdravo!  odločam se za nakup routerja TP-Link TL-WR1043ND  Glede na ceno je skoraj 2x ugodnejši od podobnih Linksysov alla E4200, E3000 z istimi funkcijami.  zanima me ali ste obstoječi lastniki teh routerjev z njimi zadovoljni ali vam je žal da niste raje malce več investirali v npr kakšnega linksysa?  Hvala LP!"
+    },
+    {
+        "role": "assistant_43",
+        "message": "Sam imam 20/20 ter omenjeni ruter in kapo dol. Nobenih problemov, vse dela, ne prekinja, odlična hitrost. Vse!"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Router je ok za današnje razmere, dobiš največ za ta denar. Edina stvar omembe vredna je ta da ne podpira 5ghz frekvenčnega pasu (zato verjetno tudi nižja cena)."
+    },
+    {
+        "role": "assistant_44",
+        "message": "Zdravo!  Kako pa bodo \"strici\" vedeli,da ni originalni FW,če router ne dela?????Če enkrat zaflešaš router,bo težko dokazat,da ni originalnega FW,ker v bistvu ni nobenega gor... Je pa to OK router in bil sem kar presenečen, kaj zmore,seveda z DD-WRT!"
+    },
+    {
+        "role": "assistant_45",
+        "message": "Pozdravljeni, a lahko dostopate do IPTV preko wirelessa? Sam ne morem, čeprav mi je pri prvi uporabi to uspelo. Potem sem se igral z nastavitvami, zdaj pa nič. Sem naredil tudi že factory reset, pa nič. Je pa priključen samo kot switch, oz. ne preko wan-a, ker je pred tem že en router. A je kaj posebnega za naredit?"
+    },
+    {
+        "role": "assistant_46",
+        "message": "Treba je vklopit t.i. bridge mode. Jaz imam TPLinka pa nisem mogel naredit tega ker ne podpira firmware,pa je blo treba nekej drugače naredit(pogooglaj)."
+    },
+    {
+        "role": "assistant_45",
+        "message": "ja, zdele sem ugotovil, da če dovod priklopim na wan, dela IPTV, internet pa ne. In seveda obratno, če dam na dovod na lan, dela internet, IPTV pa ne."
+    },
+    {
+        "role": "assistant_45",
+        "message": "a tole mogoče? če da, pojma nimam kaj vpisat v vse te rubrike spodaj."
+    },
+    {
+        "role": "assistant_45",
+        "message": "@assistant_46: a tole spodaj???  http://www.tp-link.com/en/article/?id=1..."
+    },
+    {
+        "role": "assistant_47",
+        "message": "meni je s tovarniškim fw iptv od t2 takoj deloval. zdaj mam ddwrt pa nič cajta da bi sprobal še kaj več :)"
+    },
+    {
+        "role": "assistant_45",
+        "message": "sem probal s povezavo direkt na T2 linijo (na njihov modem) in ugotovil: - dela vse , internet in IPTV, če je netbook povezan s statičnim IP na wirelessu  -če pa je netbook povezan wireless z DHCP na router, potem internet ne dela.  Zasledil nekaj, da naj bi bil problem v windowsih, ker ne najdejo IP naslova (http://forums.techarena.in/networking-s..., nisem pa prepričan, da je to moj problem.  Čudno!"
+    },
+    {
+        "role": "assistant_48",
+        "message": "Lastniki TP linkov, kako ste zadovoljni z mrežno opremo?"
+    },
+    {
+        "role": "assistant_42",
+        "message": "Nimam problema za ta denar super reč ..."
+    },
+    {
+        "role": "assistant_25",
+        "message": "Imam v mreži 2 routerja. Prvi je zalip prek katerega dobim 3g internet. Drugi pa tp-link wr1043nd. Nikakor ga ne morem skonfigurirat, da deluje kot router in ne kot gateway. Kakšna ideja? V preteklosti sem imel linksys-a na položaju tp-linka in je vse delovalo odlično"
+    },
+    {
+        "role": "assistant_41",
+        "message": "Če imaš na tp-linku tovarniški firmware, ga zamenjaj za DD ali Open WRT..."
+    },
+    {
+        "role": "assistant_25",
+        "message": "Probal zamenjat na open wrt in sem zaflešal router Vse zgleda normalno sam ne morem do nastavitev na 192.168.1.1"
+    },
+    {
+        "role": "assistant_49",
+        "message": "Itak, da ne moreš! OpenWRT v osnovi nima spletnega vmesnika!!! Jaoo RTFM!  http://wiki.openwrt.org/doc/howto/first..."
+    },
+    {
+        "role": "assistant_25",
+        "message": "@assistant_49 je 30. jan 2012 ob 14:19 izjavil:Itak, da ne moreš! OpenWRT v osnovi nima spletnega vmesnika!!! Jaoo RTFM!  http://wiki.openwrt.org/doc/howto/first...   Omg, ker idiot sem Sem že mislil v kanto vrčt :) zrihtano"
+    },
+    {
+        "role": "assistant_47",
+        "message": "@assistant_41 je 27. jan 2012 ob 10:19 izjavil:Če imaš na tp-linku tovarniški firmware, ga zamenjaj za DD ali Open WRT...   Sem probal tovarniški fw (1043), čisto ok, motilo me je samo da sem ga enkrat moral resetirati v parih dneh. Dam gor open wrt, čista tema, po zabrkanju nastavitev sem ene par ur rabil da sem ga nastavil nazaj na failsafe... probal iptv - ne dela hkrati z wlan...bral, probaval...zmanjkal časa in šel na dd wrt robal iptv - ne dela hkrati z wlan...bral, probaval...zmanjkal časa in šel nazaj na original. Dela lepo, nobenih problemov več, mi pa očitno primanjkuje časa, ker bi se rad še igral s temi igračami..."
+    },
+    {
+        "role": "assistant_50",
+        "message": "mi lahko kdo s tem ruterjem pove dejansko hitrost kopiranja datotek iz USB diska, ki je prikljucen na ruter na PC (preko giga mreze in wifi N?) Razmisljam tudi o menjavi routerja, trenutno imam buffalo z tomatom, ki deluje super, ampak je 54mb postalo malo prepocasi ob kopiranju HD filmov preko mreze na PC/zunanji disk.  Za test N standarda wifi sem sprobal kolegov asus wl500w (z dd-wrt) in je kar razlika - kopira mi preko mreze (ki je naprej 100Mb) z nekje 6Mb/s, moj buffalo pa s komaj 2,5Mb. Preko kabla gre pa tako v obeh primerih z dobrih 8Mb. Ni mi pa jasno zakaj preko ftp kopira samo s 4Mb (iz usb kljucka vklopljenega na kolegov router). Po logiki bi moralo iti direktno z USB po N standardu na prenosnik, torej z vec kot prejsnih 6Mb? problem v dd-wrt? In ce bi kupil tplinka, bi prestavil disk direktno na router, pa da ne bi potem tudi s 4Mb kopiralo (ostale mreze pa ne mislim na giga nadgrajevati)."
+    },
+    {
+        "role": "assistant_50",
+        "message": "kaj noben nima diska priklopljenega na ta router?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Je prepočasno, hitosti so nekaj mega. Omisli si NAS."
+    },
+    {
+        "role": "assistant_50",
+        "message": "ok, se mi je zdelo...bo treba nasparat za boljsi NAS, cheap so tud pocasni..  edino ce si omislim ta router da dosezem skoraj enak prenos kot po kablu 100mb"
+    },
+    {
+        "role": "assistant_51",
+        "message": "ma kdo kakšne izkušnje z uporabo printerja oziroma multifunkcijske naprave na tem routerju? zanima me če potem lahko normalno tudi skeniraš in printaš al je kakšna omejitev? pa zanima me še to...kaj se splača namestit gor dd-wrt ali openwrt?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Ni podpore za printer, usb je samo za disk. Razen če ti z ddwrt uspe kej sčarat."
+    },
+    {
+        "role": "assistant_51",
+        "message": "to vem da ni podpore... zanima me če deluje z dd-wrt?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Dela. Tazadnji v24 preSP2 si daj gor in inštaliraj paket p910nd (print daemon). Saj imaš na dd-wrt forumu cel guide kako zrihtati print server.  Jaz imam ps s tem routerjem (dd-wrt) sledeč problem. WAN port sem si dal v VLAN z ostalimi switch porti tako da imam zdaj v bistvu 5-portni Gbit switch (za WAN uporabljam 3G USB dongle). Problem se zgodi (router se vsuje/zmrzne, da ga morem resetirati), če kaj velikega pretakam na tem portu. Kot workaround sem na ta port priheftal printer na katerega gre malo prometa ampak me vseeno matra v čem je fora če kdo ve."
+    },
+    {
+        "role": "assistant_52",
+        "message": "Hej! Pa kaj na dd-wrt ne izdajajo nič novih verzij za tp-linke? Vidim da je zadnja iz leta 2010?  Imam pa eno vprašanje. Naročen imam še tp-link wr741nd in bi ga rad povezal kot client bridge na osnovni router (ta pa je tp-link wr1043nd). Torej rad bi imel drugi router (wr741nd) v \"WDS\" in obenem da mi oddaja internetno povezavo na ethernet porte. Je to izvedljivo že na originalnem firmwaru, ali je potrebno iti na dd-wrt?  Hvala!"
+    },
+    {
+        "role": "assistant_23",
+        "message": "So novejši buildi. Moraš na forum it."
+    },
+    {
+        "role": "assistant_53",
+        "message": "Imam pa eno vprašanje. Naročen imam še tp-link wr741nd in bi ga rad povezal kot client bridge na osnovni router (ta pa je tp-link wr1043nd). Torej rad bi imel drugi router (wr741nd) v \"WDS\" in obenem da mi oddaja internetno povezavo na ethernet porte. Je to izvedljivo že na originalnem firmwaru, ali je potrebno iti na dd-wrt?  Z dvema 1043 dela bp (z originalnim fw). Za druge kombinacije ne bi vedel. Če se ne motim sem nekje zasledil, da dela tudi 1043 z 941.  Glede printanja na USB: originalni fw im že dobro leto to podporo. Nisem pa sam preskušal..."
+    },
+    {
+        "role": "assistant_16",
+        "message": "@assistant_52 je 30. avg 2012 ob 19:49 izjavil: Pa kaj na dd-wrt ne izdajajo nič novih verzij za tp-linke? Vidim da je zadnja iz leta 2010?   Kaj je pa tole potem?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "@assistant_53 je 30. avg 2012 ob 20:50 izjavil: Glede printanja na USB: originalni fw ima že dobro leto to podporo. Nisem pa sam preskušal...  Za dd-wrt je tukaj več ali manj vse razloženo. BTW, p9100d print daemon je notri že dve leti."
+    },
+    {
+        "role": "assistant_53",
+        "message": "Ja pa kaj potem? op je spraševal za uradni fw."
+    },
+    {
+        "role": "assistant_16",
+        "message": "OP je to spraševal dve leti in pol nazaj. In ti si to njemu odgovarjal al kaj"
+    },
+    {
+        "role": "assistant_53",
+        "message": "No, ni bil OP, je bil pa odgovor na vprašanje dan nazaj.   Kaj te moti?"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Vprašanje je, kaj je tebe zmotilo?"
+    },
+    {
+        "role": "assistant_54",
+        "message": "Pozdravljeni Zanima me če ima kdo nastavljeno na wr1043nd na static IP od internetnega ponudnika. Namreč imam ogiginal FW in če dam na Dinamyc IP mi internet dela, če pa nastavim na static, pa ne. Iste nastavitve imam na Bufalo routerju pa deluje na static. Tako da so nastavitve prave. DD-WRT sem že imel naložen, vendar sem imel velike težave z Wirelass, zato sem šel nazaj na original FW. LP"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Seveda dela static..mogoče je pri ispju kakšen hakeljc. V tem primeru bi jaz probal tole, vzami buffalo in si zapiši njegov MAC naslov.....nato vzami tplink in mu nastavi zapisan mac naslov. Naštimaj static in povej če dela."
+    },
+    {
+        "role": "assistant_54",
+        "message": "Sem kopiral MAC, pa je isto. Smo se mi zdi da se router poveže na internet in da samo interneta ne spušča naprej v omrežje. Namreč ko prižgem router se v Traffic statistics začne štetje prometa pod točko Sent, ko pa priključim WAN kabel v router začne šteti še Received. Vendar je na računalnikih možna samo notranja mreža.  LP"
+    },
+    {
+        "role": "assistant_55",
+        "message": "Zdravo, sam imam isti router in posodobljen najnovejši firmware. No danes sem naložil dd-wrt pa mi internet ni deloval oz. je pisalo omejen dostop. Ta Ppoe se ni hotel connectat. Sem šel nazaj na original firmware.  Ampak bi pa rad imel ddd-wrt. Ima kdo kak nasvet kako zadevo usposobit. da bi delovala?!"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Daj namesto PPOE dinamični IP"
+    },
+    {
+        "role": "assistant_32",
+        "message": "@polde: če ma ppoe, ne more kar dati dinamični. No, lahko, samo delalo ne bo. Mogoče pa nima T-2, ki ima static/dynamic IP, ampak mogoče Amis, ki ima ppoe ;)  @Čokoldako: znan bug: http://www.dd-wrt.com/phpBB2/viewtopic.... - če imaš serisjko 12xxx ali zadnji original FW, potem ne bo delal WAN port. Rešitev pa je v prejšnjem linku"
+    },
+    {
+        "role": "assistant_52",
+        "message": "Hja, jaz imam siol (pa statični ip) in imam tudi na ppoe, z static/dynamic se nisem imel še časa ukvarjati. Drugače pa glede bridganja router-jev kar sem spraševal malo nazaj. Z openwrt se skoraj dela čudeže :)"
+    },
+    {
+        "role": "assistant_56",
+        "message": "Doma maš statičnega?"
+    },
+    {
+        "role": "assistant_52",
+        "message": "Ja."
+    },
+    {
+        "role": "assistant_57",
+        "message": "sepravi ta german firmware reši problem z nekativnim wanom ? Ker mam namen v kratkem nabavit ta ruter in če dd-wrt ne misli delat, si nimam kej z njim počet"
+    },
+    {
+        "role": "assistant_23",
+        "message": "Jup. Ampak fantje pri DD-WRT se trudijo narediti firmware, da se izognejo temu problemu."
+    },
+    {
+        "role": "assistant_57",
+        "message": "Še nekaj; kak je wireless performance pri dd-wrt v primerjavi z stock fw ? Je zadevac počasnejša al hitrejša ?  Še kaki haklci, ki pridejo z dd-wrt na temo routerju ?"
+    },
+    {
+        "role": "assistant_23",
+        "message": "Bolj se gre zaradi stabilnosti in dodatnih funkcij."
+    },
+    {
+        "role": "assistant_58",
+        "message": "@assistant_57 je 13. jan 2013 ob 22:42 izjavil:Še nekaj; kak je wireless performance pri dd-wrt v primerjavi z stock fw ? Je zadevac počasnejša al hitrejša ?  Še kaki haklci, ki pridejo z dd-wrt na temo routerju ?   Imam stock firmware, pač updejtan z najnovejšim na TP link strani. Vse tri antene imam na low loss 1m kablih, nalimane so na betonski zid. Za betonskim zidom po nekje 3 metrih mi preko wifi torrenti gredo z nekje 9.2 MB/s (upam da enota prav piše) na 100mbit liniji. Torej v mojem primeru ni razlike če dam na kabl ali wifi, stvar deluje super.  Edino ne znam odpreti porta, da bi lahko dostopal preko puttyja na rpi s ssh. Ne vem kje kakšen port pa ip vpišem:)"
+    },
+    {
+        "role": "assistant_57",
+        "message": "No dokler ni prevelikih odstopanj med dd-wrt in stock fw, kar se tiče wireless-a, potem bo kul... Itk nebi sploh zamenju good ol' asusa 520gc, sam mi gre že 100M mrežna, g wireless in premalo rama pošteno na organ (glede na to da ostale naprave, ki jim mam podpirajo novejše standarde).  @assistant_58 je 14. jan 2013 ob 09:19 izjavil:@assistant_57 je 13. jan 2013 ob 22:42 izjavil:Še nekaj; kak je wireless performance pri dd-wrt v primerjavi z stock fw ? Je zadevac počasnejša al hitrejša ?  Še kaki haklci, ki pridejo z dd-wrt na temo routerju ?   Imam stock firmware, pač updejtan z najnovejšim na TP link strani. Vse tri antene imam na low loss 1m kablih, nalimane so na betonski zid. Za betonskim zidom po nekje 3 metrih mi preko wifi torrenti gredo z nekje 9.2 MB/s (upam da enota prav piše) na 100mbit liniji. Torej v mojem primeru ni razlike če dam na kabl ali wifi, stvar deluje super.  Edino ne znam odpreti porta, da bi lahko dostopal preko puttyja na rpi s ssh. Ne vem kje kakšen port pa ip vpišem:)  dodeliš piju static ip, odpreš port 22 (al karkoli maš za ssh) in je zadevarešena ;)"
+    },
+    {
+        "role": "assistant_59",
+        "message": "katero verzijo dd-wrtja zdj priporočate  mislim da so še vse tele v \"beta\" fazi    verzije  nekaj sem še zasledil da je problem z novejšimi verzijami po flashanju dd-wrtja moja verzija je 1.9"
+    },
+    {
+        "role": "assistant_32",
+        "message": "ja, to je fix: http://nearlydeaf.com/?p=1109 je pa res, da ga nisem probal...  Drugače pa so vsi novejši FX v kao beta fazi. Delajo pa čist ok..."
+    },
+    {
+        "role": "assistant_59",
+        "message": "Kiro verzijo pol priporočate 14896  ? Ka pa je brainslayer Baje reš zadevo"
+    },
+    {
+        "role": "assistant_57",
+        "message": "18777"
+    }
+]

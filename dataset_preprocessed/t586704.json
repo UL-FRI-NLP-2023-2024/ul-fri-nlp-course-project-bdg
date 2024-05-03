@@ -1,0 +1,46 @@
+[
+    {
+        "role": "user",
+        "message": "Na žalost večino časa preživim v AT in bi si želel usposobiti T2 tv2go, saj v sloveniji super deluje. Imam naslednje elemente v teamu ki ne deluje 100% sinhronizirano.  t2 optiko in naj priključen router TP link TL-WR1043ND. Na njem sem sforwardiral porte za vpn 1701, 554, 1723, 47, 500, 50, 51, 4500, 1000 na lokalni IP na katerem se fizično nahaja server 2008 R2. Server ima poinstalirano rolo za VPN in le ta tudi deluje, saj sem jo preizkusil lokalno z še ene windows mašine, s tem da kličem VPN direktno preko lokalnega IP....Zadeva Špila!!!!  Sedaj pa želim klicat VPN preko fixnega IP, ki ga imam od T2....zadeva pade dol....  kakšna ideja?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kateri tip VPNja uporabljaš (porte vidim, da si poskušal forwardat kar za vse)? Kakšno napako ti javi?  Drugače pa 47 ni port, ampak protokol. Če ga ne forwardaš kot protokol, ti PPTP ne bo deloval."
+    },
+    {
+        "role": "user",
+        "message": "torej na klient strani uporabljam navaden WIN7 dostop....vidim da se povezuje kot PPTP...javlja mi napako 800....47 protokol....uf kje pa se to forwardira....jaz sem ga kot port...mogoče je to problem?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Reče se Remot FX : http://support.microsoft.com/kb/2592687. Potem lahko BP gledaš preko RDP-ja na Serverju 2008 R2.  A si prepričan da tv2go deluje na PC-jih ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 6. nov 2013 ob 11:21 izjavil:torej na klient strani uporabljam navaden WIN7 dostop....vidim da se povezuje kot PPTP...javlja mi napako 800....47 protokol....uf kje pa se to forwardira....jaz sem ga kot port...mogoče je to problem? Verjetno tvoj router ne podpira forwardanja protokola GRE (47), vsaj ne z uradnim firmware-om. Če naložiš drug firmware, bi verjetno šlo.  Morda bi šlo tudi, če narediš DMZ na IP od serverja. V tem primeru bo šlo na server vse, kar ni eksplicitno definirano drugače."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Saj lahko namestiš vpn na router in uporabiš na client strani OpenVPN, zakaj bi imel na server strani prižgan potraten pc ? http://www.matthewmilcic.com/blogs/?p=13"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 6. nov 2013 ob 13:34 izjavil:Reče se Remot FX : http://support.microsoft.com/kb/2592687. Potem lahko BP gledaš preko RDP-ja na Serverju 2008 R2.  A si prepričan da tv2go deluje na PC-jih ?   hvala za dobro rešitev....da tv2go deluje na tablici ali androidu....ko mu uspe VPN vzpostavit....sicer pa dobra rešitev...he he ;)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@user, vem sem potem dojel. Vprašnje seveda je point to point VPN. res pa je da je GW napačno nastavljen."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 6. nov 2013 ob 13:51 izjavil:@user je 6. nov 2013 ob 11:21 izjavil:torej na klient strani uporabljam navaden WIN7 dostop....vidim da se povezuje kot PPTP...javlja mi napako 800....47 protokol....uf kje pa se to forwardira....jaz sem ga kot port...mogoče je to problem? Verjetno tvoj router ne podpira forwardanja protokola GRE (47), vsaj ne z uradnim firmware-om. Če naložiš drug firmware, bi verjetno šlo.  Morda bi šlo tudi, če narediš DMZ na IP od serverja. V tem primeru bo šlo na server vse, kar ni eksplicitno definirano drugače.   sem poizkusil z DD-WRT pa ne omogoča forward protokola 47...omogoča sicer VPN...ampak to še vedno ni tisto....še kaka ideja?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na DD-WRT probaj forwardat TCP 1723 in pod Security -> VPN vklopit VPN Passthrough (če to vklopiš naj bi avtomatsko še GRE/47 forwardalo). Če ne pa se da zagotovo v iptables."
+    },
+    {
+        "role": "user",
+        "message": "no vsi recepti so odpovedali razen da sem poinstaliral DD-WRT....in naredil VPN po tem receptu:  Sedaj čakam remote na moj PC v avstriji, da poizkusim ali televizija sedaj deluje.... VPN pa sem poizkusil preko android telefona in zadeva dela b.p.!!!"
+    }
+]

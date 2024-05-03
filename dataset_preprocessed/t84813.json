@@ -1,0 +1,94 @@
+[
+    {
+        "role": "user",
+        "message": "Na podjetju imajo IPCop-a na katerem laufa tudi VPN server. V prvi varianti mi je uspelo vzpostaviti VPN tunel preko dialup povezave. Pomagal sem si   Faq od www.ipcop.org  Zdaj bi rad zadevo usposobil preko ADSL povezave, ki se je vzpostavljena preko routerja. Na moji masini sem probal z istimi nastavitvami, kot v prejsnjem primeru in še z raznimi drugimi variantami, vendar stvar noče delovat. Na router podpira VPN (Level one 1402TX) in zadeve imam enable-ane. Probaval sem tudi odpirat port TCP 1723 in TCP/UDP 9550 ter UDP 500 pa ni nič pomagalo. Kaj delam narobe? Še najmanj se mi sanja kako moram v tem primeru nastavit ipsec.conf datoteko.  Zelooo bi bil hvaležen vsake pomoči. Lp, Solata"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če uporabljate IPSec, potem kar pozabi, ker(kolikor sem seznanjen) noben NAT ne zna premetavat tega protokola... Če gre za PPTP pa bi moral delovati, seveda če router spušča skozi GRE paketke"
+    },
+    {
+        "role": "user",
+        "message": "Moj router podpira vse protokole IPsec, PPTP in tudi L2TP in so tudi omogočeni. Imam informacijo da naj bi to delovalo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Preveri naslednjo stvar: - ali je router client VPN ali samo podpira VPN. Če je klient VPN ti bo zadeva delovala in ti bo on kriptiral povezavo z naslednjo točko. Če pa samo podpira VPN potem moraš na PCmašini začet kriptiranje in ti bo on to samo spustil skozi. Pa še problem bo, ker PCji ponavad ne podpirajo IPsec."
+    },
+    {
+        "role": "user",
+        "message": "To je pod tehničnimi specifikacijami: Security: Natural firewall, local password, PPTP for VPN, IPSec Pass-thru for VPN, access control, attack alert (E-mail) log, stateful packet inspection firewall for DoS (Denial of Service) attacks, URL filter, access control by group  Sklepam da samo podpira VPN, ker tudi ni kakšnih posebnih nastavitev za VPN samo izključiš lahko podporo ta IPsec ali PPTP ali L2TP.  Kako da PC ne podpira IPsec?! Z Win2k mi je stvar delovala preko dialup povezave. Kako sem to nastavil je napisano na linku, ki sem ga omenil na začetku.  Kako bi zgledal drugi postopek, kriptiranje na PC in me potem spusti router skozi? @assistant_1: Mi lahko svetuješ?"
+    },
+    {
+        "role": "user",
+        "message": "Kaj res nihče nima kakšnega nasveta?   LP, Solata"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Porte forwardiraš na pravi IP ? L2TP\\IPSec moraš definirati end pointe ter enkripcijo med klientom ki se povezuje na tvor ruter, ker je NAT nekompatibilen z IPSec. Tako da moraš najprej konfigurirati povezavo server na router, ter router na server, ter seveda ipsec policy. Glede nato da ti je prej to delalo, je težava vrjetno samo narobe forwardiranje portov."
+    },
+    {
+        "role": "user",
+        "message": "Najprej hvala @assistant_2 za odziv    Pod forwardiranje portov najbrž ne misliš odpiranje portow na routerju ali pač? Katere porte odprem? Preko modema sem imel situacijo client-internet-server in sem skonfiguriral samo ipsec.conf na clientu. Zdel mam situacijo client-router-internet-server. Pustim isti ipsec.conf(?) vključim podporo za VPN na routerju in odprem porte(?). A je to to?  Lp, Solata"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pod forwardiranje portov preveri, če ti jih tvoj VPN router pošilja na pravi IP. Torej tam kjer je tvoj VPN server. Zadeva bi morala delati po protokolu PPTP. Forward porti so mišljeni predvsem 1723(PPTP) in 47(GRE). Tedva porta mora tudi Firewal spuščati naprej do tvojega VPN serverja. L2TP\\IPSec je zadeva kar malo uakomplicerano nastaviti, prej sem zgolj na hitro napisal, tako da ne vrjamem da tvoj router podpira IPSec, podpira zgolj VPN preko PPTP."
+    },
+    {
+        "role": "user",
+        "message": "Vklopil sem port TCP 1723 in TCP 47. Žal stvar še zmeri ne deluje.   V nastavitvah pod Security mam pa obkljukane nasl. stvari: Respond to ICMP (ping) on WAN interface, Allow IPsec, Allow PPTP in Allow L2TP. To pa je tudi vse kar lahko na routerju nastavljam v povezavi z VPN."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Port si na pravo IP forwardiral ?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "hm, a ni fora da to ni port 47 ampak port 1723 preko protokola 47? Tako sm vsaj jst razumel, ko sem poskusal podoben problem razresit (a nespesno, ker mi router omogoca samo tcp in udp port forwarding)."
+    },
+    {
+        "role": "user",
+        "message": "Itak imaš samo TCP in UDP. Za protokol 47 pa še nisem slišal. Še kakšna ideja?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Za VPN rabiš GRE protokol!!!!"
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa je GRE protokol? Tega na www.ipcop.org nic ne omenjajo. A sem pa spregledal."
+    },
+    {
+        "role": "assistant_3",
+        "message": "ne nimas samo tcp in udp. hm, ene par linkov:  http://support.microsoft.com/?kbid=241251  http://www.geocrawler.com/mail/thread.php3?subject=+Re%3A+Protocol+47&list=90  in se :  Google"
+    },
+    {
+        "role": "user",
+        "message": "ASPmaster, @assistant_2 prav imata. GRE je v bistvu zakodiran PPTP. Kaj to pomeni zame? A pol preko mojga ADSL routerja ni mpgpče spraviti VPN povezave?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Preko katerega koli routerja gre PPTP, sem testiral na več kot leto starem routerju NN, brez katerekoli VPN omembe zanga. Ti moraš dovoliti da fre notri in ven GRE + PPTP. Ter port forwarding nastaviti na notranjo IP od VPN serverja.  Za IPSEC pa je uprašanje ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "boste toplo vodo odkril?"
+    },
+    {
+        "role": "user",
+        "message": "Uau @assistant_0 ti imaš pa zelo konstruktiven komentar  Glede da omenjaš toplo vodo pa ti povej rešitev!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "[edit] pozab....."
+    },
+    {
+        "role": "assistant_3",
+        "message": "hm, mogoce ena resitev (nisem sprobal, samo ideja): Na routerju das server v DMZ (Demiritalized Zone al neki tazga) - kar pomeni, da router preusmeri ves promet, za keterega ne ve kam z njim na IP, ki ga ti vpises."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Router avtomatično ne pošlje promet v DMZ zono, če to ni definirano v port forwardingu. Po defoltu vse neznane porte oz. povezave, ki hočejo poslati od zunaj notri na defoult gatvay routerjeve tabele. Seveda če se zgodi da mu na LAN-u pošlje nekdo odgovor je lahko to huda težava."
+    }
+]

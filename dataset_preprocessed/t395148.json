@@ -1,0 +1,162 @@
+[
+    {
+        "role": "user",
+        "message": "Torej najprej bom opisal hardware, ki mi povzroča težave: napajalnik: ATX power supply max. 400 W http://cgi.ebay.co.uk/ws/eBayISAPI.dll?... matična plošča MS-7267 ver: 4.2  Torej: tipka power ne deluje. LED dioda za power ne deluje LED dioda za branje HDD ne deluje.  Ce zazenem napajalnik preko stikala na zadnji strani (ON/OFF stikalo) se zazene samo ventilator na procesorju, ter ventilator v napajalniku. na zacetku se za kaksne 2 sekunde tudi pokaze LED dioda na CD-romu. nato se ga pa ne da več odpreti.  ce prilkjucim 1 ali 2 CD-rom enoti je napetost na 4 pinskem molex konektorju: rumena=7,45 V rdeca=3.17 V  Ce ni nic prikljuceno na napajalnik je napetost na rumeni=10V, na rdeci=4 V  Torej, kaj je sedaj pokvarjeno, matična plošča ali napajalnik?  Predvidevam da je nekaj narobe z napajalnikom, ali je mogoce tudi kaj z maticno plosco? Zakaj takoj na zacetku lahko odprem CD-ROM enoto, nato je pa ne morem, ....? Ali se da kako preverim ce je maticna plosca skurjena?  Za odgovor se vam v naprej zahvalujem!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pejt po vrsti.Najprej zamenjaj napajalnik,če maš rezervnega.Če bo kazalo enake težave bo najverjetneje plošča v okvari..."
+    },
+    {
+        "role": "user",
+        "message": "sej fora je v tem k nimam nadomestnega napajalnika.  kaj naj sedaj?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hmm...bojim se da brez drugega napajalnika ne boš mogel...probaj nekje dobit rabljenega...Kakšno ploščo pa imaš,s kakšnim socketom? Socket A, AM2....  Če maš starejše verzije plošč bo dost tud 300-350W napajalnik...  Ker drugače ne moreš vedet...če ne bo napajalnik,je pa potem sigurno kaj z matično ploščo narobe..."
+    },
+    {
+        "role": "user",
+        "message": "maticna plosca je matična plošča MS-7267 ver: 4.2  problem je v tem k ima maticna plosca 24 pinski napajalni molex, takega napajalnika pa nimam nikjer, pa bojim se, da nebi bila slucajno maticna plosca v stiku, da nebi kej zjebala se drug napajalnik.  men samo to ni jasno. ce bi bilo z napajalnikom vse vredu, bi se moral CD-ROM normalno zagnat, a ne? A se lahko zgodi da na odpiranje CD-ROMa vpliva kako matična plošča. le je skurjena ? A so napetosti v napajalniku vredu, ce so tok nizke?  Bom ju3 odprl napajalnik pa da vidm ce je ksno kondenzator namenjen rakom zvizgat"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Aja ti maš tole Intelovo 775 podnožje.Hm,dj probaj samo napajalnik zagnat sam brez ostalih komponent (vse drugo izklopi) pa da vidiš a se bo CD-ROM zaganjal...  Glih da na odpiranje vpliva matična plošča NE,ampak če je v povezavi z napajalnikom ko komunicirata in če je problem v njej pa seveda LAHKO ONEMOGOČA napajalniku da zaganja CD-ROM kao \"stik\".  No probj samo napajalnik zalaufat s cd-rom-om,da vidiš kako bo..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pa sposodi si nek drug psu ali pa nesi v trgovino naj ti oni preverijo (in zaračunajo). V 24PIN ATX konektor gre tudi navadni atx.  Verjetno ti je PSU kriv, lahko pa tudi plata."
+    },
+    {
+        "role": "user",
+        "message": "V 24PIN ATX konektor gre tudi navadni atx. potem lahko BP prkljucim 20 pinski ATX na 24 pinsko plato. Si sigurn?  @assistant_1: A se da kako z multimetrom preverit, ce je plata skurjena?  @assistant_0: a ni dandanes pr napajalnikih tako, da brez maticne plosce se ne bo zalavfal. Oz. napajalnik more bit prkljucen na maticno plosco ce sploh hoces da bo zalavfal. Ker kot se mi zdi eden izmed prkljuckov na maticni plosci predstavlja stanje napajalnika PSU_ON."
+    },
+    {
+        "role": "assistant_1",
+        "message": "potem lahko BP prkljucim 20 pinski ATX na 24 pinsko plato. Si sigurn? Ja. Samo da ne boš na silo rinil noter. Konektor gre na dno 24 pinskega in se lepo zatakne notri, tisti 4 pini so samo dodatno napajanje, nič posebnega.  A se da kako z multimetrom preverit, ce je plata skurjena? Da se, samo v takih primerih prej vidiš kakor premeriš. V ostalih primerih ti multimeter ne pomaga.  Ker kot se mi zdi eden izmed prkljuckov na maticni plosci predstavlja stanje napajalnika PSU_ON. Ja, PS_ON povežeš z maso in zadeva se zažene. Čisto simpl."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kar sem do zdej sprobaval od starih 250W do novih 550W laufajo tudi BREZ komponent oz.v tvojem primeru brez matične plošče.Ti ga vklopi v elektriko in priklopi nanj samo CD-ROM pa se bo videlo če se cd-rom zaganja,mislim da bi se mogel (razen če je z napajalnikom kaj narobe)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "No, to pa ni res. ATX PSU nujno rabi PW-ON signal za vklop."
+    },
+    {
+        "role": "user",
+        "message": "se pravi, ce hocem jst napajalnik zagnat brez maticne plosce. dam zicko iz PW-On na maso, in napajalnik se bo zalavfal, OK.  Ce hocem preverit z napajalnikom ki ima 20 pinskim molex, a pustim: na levi strani 4 kontakte prazne, na desni strani 4 kontakte prazne, al rajsi pogledam v manual za maticno plosco da vidm kako ima prkljucke za napajanje?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja. PW_on na maso, lahko tudi na ohišje.  Za konektor pa glej samo to da bo šel zlahka notri. Ni nič posebnega in nekako ga ne moreš narobe obrniti."
+    },
+    {
+        "role": "user",
+        "message": "ok, bom probal, ju3 sporocim rezultate, kaj in kako ...."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Aja, odklopi vsaj diske, če ne drugega. Če se bo kaj pokadilo boš imel vsaj podatke na varnem."
+    },
+    {
+        "role": "user",
+        "message": "ja, disk je ze zdavnej udzunej. torej, vezal sm PS_ON direkt na maso, napajalnik se je vzgal brez problema, CD-romi so se tudi odpirali brez problema.   Torej po temu sledeče je skurjena matična plošča. Zakaj napajalnik ne odpira CD-ROMa ko je matična plošča priključena na napajalnik. Vrjetno zato ker matična plošča predstavlja kratek stik..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ali pa je PSU postal prešvoh."
+    },
+    {
+        "role": "user",
+        "message": "sm prklucu 2 CD-ROMa. to spremeni zdej kej ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "No, to pa ni res. ATX PSU nujno rabi PW-ON signal za vklop. Ne vem če smo se najbolje razumeli,ampak jaz hočem reči da VSE napajalnike kar sem jih sprobal od 250 do 550W jst priključim samo na elektriko in ko odzad stisnem stikalo 0/1 oz.ON/OFF se ventilator lepo zažene v napajalnuiku (če je vse v redu z njim)  Nato pa naj priključi samo CD-Rom če hoče videt ali se bo odpiral ali ne...ker ga je to zanimalo kot se mi zdi...  @user: Za 2 CD-Roma moraš nastavit Master Slave mostičke ki jih maš na zadnji strani CD-Romov... Zdj maš komponente povezane ali si šele pri napajalniku in testiranju CD-Roma če odpira predal ali ne?"
+    },
+    {
+        "role": "user",
+        "message": "ne ne, jst sm hotu preverit, ce sploh napajalnik dela, in kot zgleda dela. ker sem prikljucil 2 CD-roma gor in sta normalno delala. medtem ko se sm prikljucil gor plato dela vse skupi par sekund, nato pa dela samo se venitlator od CPU in napajalnik. Vrjetno je maticna plosca v stiku, predvidevam..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "ja matična je 99% v stiku.Mam en tak problem z eno starejšo ploščo socket A pa isto to dela..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0: Noben napajalnik ne dela, če ne dobi signala PW-ON! Ne pametuj! Če jih priključiš samo na elektriko in priklopiš stikalo, ne dela noben! Smo razumeli, da ti ne razumeš..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kako ne dela,če pri meni dela?? Vklopim napajalnik V ELEKTRIKO, vklopim od zadaj 0/1 stikalo in LAUFA VENTILATOR v njem!  Halo?  Normalno pa da moraš poj priklopit še druge komponente ker če ne ga imaš lahko samo za hlajenje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tako funkcijo imajo samo HP strežniški napajalniki. Le ti pa nimajo stikala za vklop/izklop.  AT napajalniki so delovali nemudoma, ko si ga vklopil v omrežje.  ATX napajalniki lahko za sekundo ali dve obrnejo vente in to je to."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Upam stavit 30 Eur da dokažem da lahko napajalnik od npr.350W ko ga vklopim v elektriko in pritisnem od zadaj na njem stikalo 0/1 oziroma ON/OFF se prižge oz.vrti ventilator."
+    },
+    {
+        "role": "assistant_3",
+        "message": "AT ja. ATX ne. Razen če je zjeban. Tisti sunek ob samem vklopu, ko se ventilator zavrti za par obratov pa ni ravno delovanje"
+    },
+    {
+        "role": "user",
+        "message": "ne ne, ventilator na napajalniku in ventilator na CPU skos delata..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0: Lahko da se kje dobi kakšen napajalnik iz \"tvoje dežele\" kjer vežejo kar vse povprek in je ventilator nekak ločeno povezan na napajanje kot preostal del napajalnika. Ziher kakšno kitajsko jajce."
+    },
+    {
+        "role": "assistant_0",
+        "message": "RONIN,zdj pa že blefiraš.Kakšne \"moje dežele\"? Prvo ni to nobeno CHINA jajce ampak slovensko jajce ker je kupljeno tukaj.In še povrh tega v trgovini zaračunalniškim ohišjem.Rekel sem fino in upam, stavit za 30 Eur da drži moja trditev kar sem preveril večkrat.In ni pokvarjeno ali kaj podobnega ker ne bi niti delalo.  Vaša stvar pa je ali verjamete ali ne,ne mislim se pa zdaj dopisovat o teh stvareh,ker imam pomembnejših stvari.  Pozdrav"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Prvo ni to nobeno CHINA jajce ampak slovensko jajce ker je kupljeno tukaj V SLO delajo napajalnike? Kje?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ma kaj se sploh obremenjujete s takimi pacienti kot je @assistant_0, vidite da nima pojma o pojmu, niti napajalnika ne zna priklopit na ploščo... @assistant_0: pejt se še mal računalniško izobraževat, ko boš prišu za vsaj 2-3 nivoje višje kot si zdaj, pridi delit nasvete, da boš dejansko vedel o čem sploh govoriš... 24-pin KONEKTOR na matični plošči in 20-pin na napajalniku"
+    },
+    {
+        "role": "user",
+        "message": "V glavnem moj ATX napajalnik ne dela, ce ne staknem skupaj PS_ON in maso.  Zdej kako in kaj z napajalniki, najboljs da poslejete ksnmu proizvajalcu, vam strokovna sluzba odgovori in je konc debate. pa nehte pluvat en po drugmu, k ste brezvezni...  ATX @ Wikipedia PS_ON# or \"Power On\" is a signal from the motherboard to the power supply. When the line is connected to GND (by the motherboard), the power supply turns on. It is internally pulled up to +5 V inside the power supply.  V glavnem nazaj na temo, predvidevam da maticna plosca povzroca kratek stik in zato ne more napajalnik dovajati dovolj velike napetosti komponentam ki so prikljucene preko maticne plosce."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Lahko je napajalnik tudi tako ošvohnel da ne zmore bremena."
+    },
+    {
+        "role": "user",
+        "message": "ceprav sm prkljucil 2 CD-ROMA? al naj use molex-e zasedem pa pozenem?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Raje naredi obratno. Priključi samo matično s procesorjem. Ven vzemi tudi grafično in ram.  Matična bi v tem primeru morala začet piskat da manjka ram ali grafična."
+    },
+    {
+        "role": "user",
+        "message": "sm tud to naredu. bil je gor prkljucen samo procesor. graficne ne morem dat ven, ker je integrirana. ram sm dal tud ven, in je blo isto, nc piskanja v pogonu sta bila samo CPE ventilator in ventilator od napajalnika"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Upam stavit 30 Eur da dokažem da lahko napajalnik od npr.350W ko ga vklopim v elektriko in pritisnem od zadaj na njem stikalo 0/1 oziroma ON/OFF se prižge oz.vrti ventilator.  em ne vem kolikokrat bi tako izgubil stavo, si imel že odprt kdaj napajalnik oz si ga popravljal? ker običajno je ventilator priključen na drugo napajalno vejo kot pa ostali priključki v napajalniku, oz. ima sam switcer različne odcepe napajanja in se sam ne vklopi če ni obremenjen. kako deluje swither ne bom razlagal si lahko prebereš na kakšni wikipediji. sem pa pozabil dodati da imajo starejši napajalniki ločilni transformator, ki deluje tudi ko ostali del vezja ne in na ta transformator je priključen ventilator, ki deluje zmeraj ko ima napajanje od zunaj. s tem sem hotel povedat da je ventilator neodvisen od vezja, ki je lahko tudi skurjeno oz. ni obremenjeno.  lp"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user, menjaj napajalnik ! Zgoraj si napisal napetosti, ki so precej pod mejo toleranc !   \" ... ce prilkjucim 1 ali 2 CD-rom enoti je napetost na 4 pinskem molex konektorju: rumena=7,45 V , rdeca=3.17 V . Ce ni nic prikljuceno na napajalnik je napetost na rumeni=10V, na rdeci=4 V... \"  Na rumeni bi moralo biti 12V, na rdeči pa 5V +/- 5% !"
+    },
+    {
+        "role": "user",
+        "message": "ja prov, bom prikljucil 20 pinki napajalnik, pa da vidm ce se bo zagnala maticna plosca."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_6, tudi tebi ni treba mimo sekati."
+    }
+]

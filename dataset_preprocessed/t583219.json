@@ -1,0 +1,202 @@
+[
+    {
+        "role": "user",
+        "message": "Jutri se mislim javit en predmet, znam vse a to mi ni jasno. Mi lahko kdo to razloži? Vem da to izvemo ko pretvorimo IP naslov v binarni sistem..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "malo si poglej, če je kaj koristnega"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kako je šlo? si se javil oz razumel?"
+    },
+    {
+        "role": "user",
+        "message": "Za B razred zadnjih 16 bitov predstavlja IP omrežja, za C pa zadnjih 8 bitov ---> v binarnem(0000110101) sistemu!  Dobil sem seveda 5"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ja k maš več razredov (5 razredov) ... A, B, C, D in E  več: tukajle   ker predmet pa maš to? računalniške komunikacije?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Pa kdo še vedno razrede uči? CIDR je zunaj že od 1993, lepo prosim ...  Kaj ko bi raje ipv6 učili po šolah?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "v študijskem letu 2010/2011 sem poslušal in opravljal izpit iz računalniških komunikacij ... za IPv6 smo si samo pogledali, kako se naslavlja in poenostavi ... še zmeraj pa smo se učili razrede oz. za IPv4 ..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0, upravljanje s informacijsko komunikacijskimi sistemi"
+    },
+    {
+        "role": "assistant_0",
+        "message": "meni zelo zanimivo področje pri računalništvu ;) @user,  potem ti bo verjeten v veliko pomoč knjiga Tone Vidmar, Informacijsko-komunikacijski sistemi, ki si jo sposodi v knjižnc .."
+    },
+    {
+        "role": "user",
+        "message": "Lepo Vas prosim, da mi nekdo pove kako se rešijo naslednje naloge:"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Za take stvari so pridni sošolci. Forum je zato, da ti pomaga rešiti problem z razumevanjem."
+    },
+    {
+        "role": "user",
+        "message": "Seveda, hočem sam znati, da bom lahko dobro test pisal. Hočem, da mi pomagate razumeti."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Haha, dobra fora ;). No, bom še konstruktiven. Če hočeš, da ti \"pomagamo razumeti\", boš najprej moral razodeti svoje razumevanje. Jasno pokazati, kako razumeš problem, kako si pristopil k njegovemu reševanju, in nasploh opisati svoj miselni tok.  Po tem bomo videli, kje si se zmotil ali kje se zatakne. In ti pojasnili točno tisto, česar ne razumeš.  Izpitov nam pa ni treba reševati."
+    },
+    {
+        "role": "user",
+        "message": "Pri 10. nalogi, IP naslove za router(privzeti prehod?), računalnik in strežnik samo nadaljujem zaporedno?  Tak:  a) 192.168.20.25  b) 192.168.20.26 192.168.20.27"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 26. okt 2013 ob 10:43 izjavil:Pri 10. nalogi, IP naslove za router(privzeti prehod?), računalnik in strežnik samo nadaljujem zaporedno?  Ne, narobe."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 26. okt 2013 ob 11:49 izjavil:@user je 26. okt 2013 ob 10:43 izjavil:Pri 10. nalogi, IP naslove za router(privzeti prehod?), računalnik in strežnik samo nadaljujem zaporedno?  Ne, narobe.   Kako bi blo pa pravilno?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "preberi si malo tole in tole"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 26. okt 2013 ob 12:01 izjavil:@assistant_5 je 26. okt 2013 ob 11:49 izjavil:@user je 26. okt 2013 ob 10:43 izjavil:Pri 10. nalogi, IP naslove za router(privzeti prehod?), računalnik in strežnik samo nadaljujem zaporedno?  Ne, narobe.   Kako bi blo pa pravilno?  Ne, sej maš prov. Moja napaka"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@user je 26. okt 2013 ob 10:43 izjavil:Pri 10. nalogi, IP naslove za router(privzeti prehod?), računalnik in strežnik samo nadaljujem zaporedno?  Tak:  a) 192.168.20.25  b) 192.168.20.26 192.168.20.27   192.168.20.24/29  Maska ima lahko največ 32bitov, v tem primeru jih ima maska 29 bitov. Da dobiš max. število hostov v subnetu enostavno odštej 32-29bitov in dobiš 3. To številko potem uporabiš za exponent: 2^3 kar ti da 2*2*2=8-2 = 6 hostov .   /29 = 255.255.255.248 (odštej 256-2^3=248)  Host range je potem od .25-.30 medtem ko je .24 network id, .31 pa broadcast naslov."
+    },
+    {
+        "role": "user",
+        "message": "Hvala super ste!  Vse sem se nauču razen tega, da nevem kako zapisati obseg gostiteljskih naslovov?   npr. 200.35.192.192/27  To moram podomrežno masko zapisat, pa potem zmnožit tiste bite?  /27 = 255.255.255.224   Obseg potem pride 225-255 a ne? Mam prav?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ne, to si zamešal z masko verjetno.  Obseg za tisto nalogo, kjer imaš po 18 hostov/subnet:  200.35.192.1 - 200.35.192.30/27 200.35.192.33 - 200.35.192.62/27 200.35.192.65 - 200.35.192.94/27 200.35.192.97 - 200.35.192.126/27 200.35.192.129 - 200.35.192.158/27 200.35.192.161 - 200.35.192.190/27 200.35.192.192 - 200.35.192.222/27 200.35.192.225 - 200.35.192.254/27"
+    },
+    {
+        "role": "user",
+        "message": "7. Naloga  Imamo IP naslov 172.16.1.1 standardnega B razreda.  a) Obrazloži IP naslov glede na gostitelje in omrežja.  Zadnjih 16 bitov predstavlja ID gostitelja. Vsi preostali biti pa ID omrežja.  b) Zapiši podomrežno masko za to številko.  255.255.0.0  c) Koliko podomrežij in koliko gostiteljev omogoče maska 255.255.192.0, če smo z njo razdelili v podomrežja B razred IP naslovov?  2 Podomrežja in 2 gostitelja. 10. Naloga  Omrežju na sliki z IP naslovom 192.168.20.24/29 statično določi.  a) IP naslov za privzeti prehod.  192.168.20.25  b) Računalnik: 192.168.20.26 Strežnik: 192.168.20.27  c) Maska podomrežja je: 255.255.255.248"
+    },
+    {
+        "role": "user",
+        "message": "11. Naloga  Predpostavi, da ti je bil dodeljen omrežni segment 200.35.192.0/24.  a) Definiraj podomrežno masko za 18 rač. : 255.255.255.224  b) Število neizkoriščenih IP naslovov: 30-18 = 12  c) Kakšno je maks. št. podomrežij, ki jih lahko definiramo v 200.35.192.0/24.  6  č) Zapiši podomrežja v omrežju 200.35.192.0/24 v desetiškem formatu ter s CIDR končnico.  200.35.192.32 / 64 / 96 / 128 / 160 / 192  d) Zapiši obseg gostiteljskih naslovov, ki jih še lahko damo v podomrežje 200.35.192.192/27.  200.235.192.193 - 200.35.192.222  e) Razpršeni broadcast naslov podomrežja 200.35.192.160/27 je: 200.35.192.223  Upam, da se bo komu dalu preverit vse"
+    },
+    {
+        "role": "assistant_6",
+        "message": "7. c) mi je sumljiva.  11. c) bi rekel, da je max 8, preveri na http://www.vlsm-calc.net/   Subnet Name \tNeeded Size \tAllocated Size \tAddress \tMask \tDec Mask \tAssignable Range \tBroadcast\nA \t30 \t30 \t200.35.192.0 \t/27 \t255.255.255.224 \t200.35.192.1 - 200.35.192.30 \t200.35.192.31\nB \t30 \t30 \t200.35.192.32 \t/27 \t255.255.255.224 \t200.35.192.33 - 200.35.192.62 \t200.35.192.63\nC \t30 \t30 \t200.35.192.64 \t/27 \t255.255.255.224 \t200.35.192.65 - 200.35.192.94 \t200.35.192.95\nD \t30 \t30 \t200.35.192.96 \t/27 \t255.255.255.224 \t200.35.192.97 - 200.35.192.126 \t200.35.192.127\nE \t30 \t30 \t200.35.192.128 \t/27 \t255.255.255.224 \t200.35.192.129 - 200.35.192.158 \t200.35.192.159\nF \t30 \t30 \t200.35.192.160 \t/27 \t255.255.255.224 \t200.35.192.161 - 200.35.192.190 \t200.35.192.191\nG \t30 \t30 \t200.35.192.192 \t/27 \t255.255.255.224 \t200.35.192.193 - 200.35.192.222 \t200.35.192.223\nH \t30 \t30 \t200.35.192.224 \t/27 \t255.255.255.224 \t200.35.192.225 - 200.35.192.254 \t200.35.192.255 11. e) 200.35.192.191"
+    },
+    {
+        "role": "user",
+        "message": "Lahko še pri 7 nalogi .c preveri?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "7. c) Torej imamo B razred (/16) naslovov. Subnetamo z masko /18. Dva bita prineseta 4 podomrežja. Vsako /18 podomrežje ima lahko 2^14-2=16382 hostov.  Major Network: 172.16.0.0/16 Available IP addresses in major network: 65534 Number of IP addresses needed: 65528 Available IP addresses in allocated subnets: 65528 About 100% of available major network address space is used About 100% of subnetted network address space is used   Subnet Name\tNeeded Size\tAllocated Size\tAddress\tMask\tDec Mask\tAssignable Range\tBroadcast\nA\t16382\t16382\t172.16.0.0\t/18\t255.255.192.0\t172.16.0.1 - 172.16.63.254\t172.16.63.255\nB\t16382\t16382\t172.16.64.0\t/18\t255.255.192.0\t172.16.64.1 - 172.16.127.254\t172.16.127.255\nC\t16382\t16382\t172.16.128.0\t/18\t255.255.192.0\t172.16.128.1 - 172.16.191.254\t172.16.191.255\nD\t16382\t16382\t172.16.192.0\t/18\t255.255.192.0\t172.16.192.1 - 172.16.255.254\t172.16.255.255"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7, naslov je 172.16.1.1, od kje ti pa /16? Maska je pa /18."
+    },
+    {
+        "role": "user",
+        "message": "Aha že vem, samo kako pa zračunaš btie gostitelja?  http://www.weird.com/~woods/classb.html"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če je maska /18 (255.255.192.0), pomeni to 18 bitov za omrežje in 32-18=14 bitov za gostitelje (glup prevod btw). Število gostiteljev je tako 2^14-2."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Ker je maska /18, ti preostane 14 bitov. Kaj točno ti ni jasno?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_5 je 27. okt 2013 ob 12:51 izjavil:Ker je maska /18, ti preostane 14 bitov. Kaj točno ti ni jasno?   Kam gre ostalih 4 bitov?  @assistant_7 je 27. okt 2013 ob 12:48 izjavil:Če je maska /18 (255.255.192.0), pomeni to 18 bitov za omrežje in 32-18=14 bitov za gostitelje (glup prevod btw). Število gostiteljev je tako 2^14-   To pomeni da gre na to masko lahko 14 računalnikov?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user je 27. okt 2013 ob 12:51 izjavil:@assistant_5 je 27. okt 2013 ob 12:51 izjavil:Ker je maska /18, ti preostane 14 bitov. Kaj točno ti ni jasno?   Kam gre ostalih 4 bitov?   Katerih ostalih 4 bitov? Sej imaš 18 bitov + 14 bitov, kar je 32 bitov. V Ipv4 imaš narazpolago 4x8 bitov, kar je 32.  Torej če pretvoriš masko v dvojški sistem, te pride 11111111.11111111.11000000.00000000(255.255.192.0)  Torej prva dva sklopa po 8 bitov(/16) sta v B klasi namenjena ID omrežju, iz maske tukaj vidimo da sta dva bita namenjena podomrežjem, torej iz preostalih bitov izračunamo hoste."
+    },
+    {
+        "role": "user",
+        "message": "aja  hvala super ste!  A 11 naloga je pravilna povsem? 2 bita prineseta 2 podomrežja je tak?  2^n-2"
+    },
+    {
+        "role": "user",
+        "message": "Še me znaima samo še, kako določiš naslove podomrežij pa IP-je v podomrežju."
+    },
+    {
+        "role": "user",
+        "message": "Aha, tudi to že znam!  Zanima me še samo kaj tu: http://colos1.fri.uni-lj.si/eri/rac_sis... pomeni IP naslov poplavljanja? A obstaja kak lepši izraz. A je to broadcast nasov je tak?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "mislim, da gre tle kar za broadcast naslov ..."
+    },
+    {
+        "role": "user",
+        "message": "Vse znam!  Upam na petko :)"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Pridn"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Oh, mi mamo letos pri enem predmetu tudi ipv4 in razrede ;)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "saj to ni spet tako težka snov, da se je ne bi dalo naučit in predvsem razumet ;)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ne, če razumeš je popolnoma enostavno."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9 je 31. okt 2013 ob 11:27 izjavil:Ne, če razumeš je popolnoma enostavno.   Kater letnik pa si?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_6 je 26. okt 2013 ob 19:41 izjavil: 11. e) 200.35.192.191   Zna še tole kdo pojasnt?  Zakaj ni 200.35.192.222 ?"
+    },
+    {
+        "role": "user",
+        "message": "Mi lahko še pri tej pove kaj je pravilno:  Predvidevaj, da ti je bil dodeljen 132.45.0.0/16 omrežni blok. Vzpostaviti moraš 6 podomrežij.  1. __3__ binarnih digitov je potrebnih za definiranje šestih podomoežij  2. Zapiši masko, ki omogoča dodelitev šestih podomrežij.  Al je tuki prov 255.255.248, al je 255.255.0 ?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "255.255.224.0  Mimogrede, ipv4 je sestavljen iz 4x8bitnih oktetov. Naslov je 32 bitni. Če zapišeš samo 3 oktete je naslov 24 bitni, kar ni kul."
+    },
+    {
+        "role": "assistant_10",
+        "message": ""
+    },
+    {
+        "role": "assistant_9",
+        "message": "Pardon, narobe sem se izrazil, skratka mislil sem da nesmeš spuščati oktetov."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_9 je 1. nov 2013 ob 17:55 izjavil:255.255.224.0  Mimogrede, ipv4 je sestavljen iz 4x8bitnih oktetov. Naslov je 32 bitni. Če zapišeš samo 3 oktete je naslov 24 bitni, kar ni kul.   Od kje si to dobil, če je bitov gostitelja 3?  @assistant_9 je 1. nov 2013 ob 18:11 izjavil:Pardon, narobe sem se izrazil, skratka mislil sem da nesmeš spuščati oktetov.   Hvala."
+    },
+    {
+        "role": "assistant_9",
+        "message": "@user je 1. nov 2013 ob 17:32 izjavil:  1. __3__ binarnih digitov je potrebnih za definiranje šestih podomoežij    Tukaj si napisal za podomrežja.   132.45.0.0 10000100.00101101.00000000.00000000 11111111.11111111.11100000.00000000 255.255.224.0"
+    },
+    {
+        "role": "user",
+        "message": "Da...  Kako si dobil tiste 3 bite, pri predzadnji okteti?  Js to delam po formuli 2^n-2=  Se prav 2^3-2=6, kar pomen 3 bite gostiteljevega ID?"
+    }
+]

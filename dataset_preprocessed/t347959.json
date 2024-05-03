@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Delam en program za izpis študentov in nato vnos ocen (izpis iz baze in vnos ocen v bazo) Pa me zanima, kako se napiše poizvedba, ki točno izpiše iz katerega predmeta so se študenti prijavili: string ukaz = \"SELECT Prijava.IdPrijava, Prijava.Ime FROM Prijava, Predmeti WHERE Predmeti.IDPredmeta='INF' \"; - je to prav? tukaj je cela koda programa Form 1: using System; using System.Collections.Generic; using System.ComponentModel; using System.Data; using System.Drawing; using System.Linq; using System.Text; using System.Windows.Forms; using System.Data.SqlClient;   namespace informatikaNet01 { public partial class Form1 : Form { SqlConnection povezava; public Form1() { InitializeComponent(); } private void Form1_Load(object sender, EventArgs e) { string p = @\"Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\Informatika\\PRO2\\Seminarska2\\informatikaNET.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True\"; povezava = new SqlConnection(p); }  private void buttonInf_CheckedChanged(object sender, EventArgs e) { txtTeorija.Visible = true; txtPraksa.Visible = true; txtBonus.Visible = false; lblBonus.Visible = false; lblBonus1.Visible = false; txtVnesiŠtudenta.Visible = false; buttonVnesi.Visible = false; groupBox3.Text = \"Vnesi ocene za Informatiko\"; groupBox2.Text = \"Prijave za Informatiko\"; lblTeorija1.Text = \"0 in 40\"; lblPraksa1.Text = \"0 in 60\"; Izprazni();  }  private void buttonPro1_CheckedChanged(object sender, EventArgs e) { txtTeorija.Visible = true; txtPraksa.Visible = true; txtBonus.Visible = true; lblBonus.Visible = true; lblBonus1.Visible = true; txtVnesiŠtudenta.Visible = false; buttonVnesi.Visible = false; groupBox3.Text = \"Vnesi ocene za Programiranje 1\"; groupBox2.Text = \"Prijave za Programiranje 1\"; lblTeorija1.Text = \"0 in 50\"; lblPraksa1.Text = \"0 in 50\"; lblBonus1.Text = \"0 in 20\"; Izprazni(); }  private void buttonPro2_CheckedChanged(object sender, EventArgs e) { txtTeorija.Visible = true; txtPraksa.Visible = true; txtBonus.Visible = true; lblBonus.Visible = true; lblBonus1.Visible = true; txtVnesiŠtudenta.Visible = false; buttonVnesi.Visible = false; groupBox3.Text = \"Vnesi ocene za Programiranje 2\"; groupBox2.Text = \"Prijave za Programiranje 2\"; lblTeorija1.Text = \"0 in 50\"; lblPraksa1.Text = \"0 in 50\"; lblBonus1.Text = \"0 in 25\"; Izprazni(); }  private void buttonMul_CheckedChanged(object sender, EventArgs e) { txtTeorija.Visible = true; txtPraksa.Visible = true; txtBonus.Visible = false; lblBonus.Visible = false; lblBonus1.Visible = false; txtVnesiŠtudenta.Visible = false; buttonVnesi.Visible = false; groupBox3.Text = \"Vnesi ocene za Multimediji\"; groupBox2.Text = \"Prijave za Multimediji\"; lblTeorija1.Text = \"0 in 50\"; lblPraksa1.Text = \"0 in 50\"; Izprazni(); } private void Izprazni() { txtTeorija.Clear(); txtPraksa.Clear(); txtBonus.Clear(); }  private void buttonPonovi_Click(object sender, EventArgs e) { Izprazni(); }  private void buttonPrijavljeni_Click(object sender, EventArgs e)  { if (buttonInf.Checked) { string ukaz = \"SELECT Prijava.IdPrijava, Prijava.Ime FROM Prijava, Predmeti WHERE Predmeti.IDPredmeta='INF'\"; SqlCommand u = new SqlCommand(); u.Connection = povezava; u.CommandText = ukaz; u.CommandType = CommandType.Text; povezava.Open(); //--------------------------------------------> Tukaj mi javi napako: Object reference not set to an instance of an object. Imam bazo in je konektana SqlDataReader bralec = u.ExecuteReader();  Kaj je narobe? lblPrijavljeni.Text = \"Prijavljeni študenti\\r\\n\"; while (bralec.Read()) { lblPrijavljeni.Text += bralec[0] + \" \" + bralec[1] + \"\\r\\n\"; } bralec.Close(); povezava.Close(); } } } }"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Najprej imaš napako v SQL-u tabeli Prijava, Predmeti nimaš povezan: npr. \"SELECT Prijava.IdPrijava, Prijava.Ime FROM Prijava, Predmeti WHERE Predmeti.IDPredmeta='INF' and Prijava.IDPREDMET = Predmeti.IDPREDMET \""
+    },
+    {
+        "role": "user",
+        "message": "Ja, ok, ampak meni javi napako pri povezava.Open(); nekaj je z povezavo z bazo narobe. Pa sem use naredil kot more biti - vsaj mislim."
+    },
+    {
+        "role": "user",
+        "message": "Ne, imaš narobe, jaz nimam tujega kluča IdPredmeta v mapi Prijava. Zatorej zadnje izenačenje ključev je odveč!"
+    },
+    {
+        "role": "user",
+        "message": "btw.. kdo ve to: imam textBox, kamor se vnaša točke (samo številke) in da se jih omeji od 0 do 50! Kako se to izvede?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Že želiš, da se uporabijo le številke uporabi regular expression, kot npr tole http://www.c-sharpcorner.com/UploadFile... , če imaš web aplikcijo lahko preverjaš od-do število z javascriptom."
+    },
+    {
+        "role": "user",
+        "message": "vnosOcen Kdo mi zna pomagati, tukaj vidite da imam eno okensko aplikaicjo, ki pobere Študente, ki so se prijavili na izpit ( imena v Prijave za informatiko - v tem primeru). Potem sem naredu kodo za izračun ocene, in končna ocena je 7. Sedaj pa morem to oceno vnesti v bazo, in sicer za določenega študenta.  Tako sem si zamislil: V okence \"Vnesi ime študenta\" se vnese Ime, ki je že v bazi \"Prijava\" in ime skupaj z oceno (7 v tem primeru) vnese v bazo \"Ocene\" - z novim Id-jem ( enim večjim od zadnjega) in oceno. Mi lahko to kdo pomaga?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Znaš uporabljati Debugger? Če ja, potem preveri, če v vrstici \"povezava.Open();\" povezava ni null. V vsakem primeru poskusi spodnjo zadevo:  Vrstici ...: string p = @\"Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\Informatika\\PRO2\\Seminarska2\\informatikaNET.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True\"; povezava = new SqlConnection(p);  ... prestaviti pred vrstico povezava.Open(); Če ti še vedno vrže napako imaš po vsej verjetnosti napačen connection string. Naredi povezavo na bazo v Server Explorerju, tam pa potem lahko pogledaš kakšen ConnectionString VS uporablja.  LpG"
+    },
+    {
+        "role": "user",
+        "message": "Vse mi dela... sej z debuggerjem sem odkril napako. Sedaj morem samo še zadnjo kodo dodati... kar piše v prejšnjem postu! Bi prosil za majceno pomoč!"
+    }
+]

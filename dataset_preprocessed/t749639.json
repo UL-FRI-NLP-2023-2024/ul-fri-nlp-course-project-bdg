@@ -1,0 +1,110 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,   Trenutno uporabljam google drive, vendar bi se rad malce ločil od velikega brata in dveh evrov na mesec, kolikor mi vzamejo za 100 GB.   Zanima me, neka relativno lahka (taka da programiranje ni potrebno) rešitev za avtomatski backup Android telefona (slik) in PCja (mape ali dveh) ko bom na wifiju.  Doma se mi valja en 265 GB disk (že v ohišju z USBjem), katerega bi rad priklopil v to škatlo katero iščem in da se izvaja backup ob priključitvi ali urniku.   Kaj kupiti?  -Nov wifi router s usb in funkcijo backupa?  -Raspberry + nextcloud (ali kaj drugega)? -Drugo?  Želje: relativno nizka poraba električne energije, nizka cena (~50EUR) in pa zanesljivost.   Hvala  Edit: price range"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Si siguren, da hočeš imeti podatke namesto na varnem - za 24€ na leto - na enem starem disku? Ne delaj si tega in požri 2€.. Če ti google ni všeč, je ponudnikov malo morje."
+    },
+    {
+        "role": "user",
+        "message": "Razlogi zakaj: -teh 24€/leto se vleče že kar nekaj let -google -rad se igram  Disk ni niti tolko star SSD. Lahko dodam redundantnega v zahteve."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kaj če bi se spravil k stvari resno in kupil kak NAS - praktično vsaka znamka ti ponudi tak servis. Ker to kar ti tu pišeš ti bo samo zgubilo vse slike ali pa jih uploadalo scammerjem.  Če pa vztrajaš pri igranju - kupi sistem, ki lahko laufa nextcloud in uporabi njihovo aplikacijo za autobackup."
+    },
+    {
+        "role": "assistant_2",
+        "message": "rapsberry pi4 in nextcloud. pride ravno v budget, ce vzames 1gb verzijo.  ce ti ni toliko do hitrosti, lahko tudi kaksno cenejso orange pi varjanto.   si pa kupi kaksen obicajn hdd (ali 2). SSDji, sploh kaki ceneni 2d tlcji niso glih fina stvar za storage."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1: Sem razmišljal o NASu, vendar se vedno raje prej prepričam če obstaja kakšna DIY varjanta. Drugače pa se strinjam s tvojim argumentom.  @assistant_2: budget ni problem, ker če hočem dodaten disk za redundanco ga moram povečati za 2x :) Trenunti disk je pa Crucial BX300."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ssd zamenjaj za kaksen disk ali dva, si nastavi softwareski raid1, pa si dober za nekaj casa."
+    },
+    {
+        "role": "assistant_3",
+        "message": "A se ti doma kje vala kaksna star kista, c2d recimo pa 4GB rama itd?  Ce ja, potem se zacni igrat s Freenas"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_3 je 12. avg 2019 ob 10:53 izjavil:A se ti doma kje vala kaksna star kista, c2d recimo pa 4GB rama itd?  Ce ja, potem se zacni igrat s Freenas   Se ne splača, ker zadeva požre preveč elektrike."
+    },
+    {
+        "role": "assistant_5",
+        "message": "DIY in \"programiranje ni potrebno\" sta kontradiktorni zahtevi. Odloči se katero od teh dveh boš črtal in izbira ti bo precej lažja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_4 je 12. avg 2019 ob 11:06 izjavil:@assistant_3 je 12. avg 2019 ob 10:53 izjavil:A se ti doma kje vala kaksna star kista, c2d recimo pa 4GB rama itd?  Ce ja, potem se zacni igrat s Freenas   Se ne splača, ker zadeva požre preveč elektrike.   Ce se ze misli backup delat, naj nekaj priblizno kulturnega si naredi, ker se mu da igrat, ne pa en disk priklaplat na nekam in temu rect backup no.  In potem \"se ne splaca, pozre prevrc elektrike\",...  V nasprotju naj pol Mega placuje pa bo stran od googla pa se vec placa, nic zajebancije, dostop od povsoc in kriptirano,...  https://mega.nz/ Pa ima 200giga placa pa ne pozre nic elektrike.  Edit: typo+dodatek"
+    },
+    {
+        "role": "assistant_4",
+        "message": "V nasprotju naj pol Mega placuje pa bo stran od googla pa se vec placa, nic zajebancije, dostop od povsoc in kriptirano,...  https://mega.nz/ Pa ima 200giga placa pa ne pozre nic elektrike.   In potem plačuješ eni firmi namesto drugi."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_4 je 12. avg 2019 ob 14:22 izjavil:V nasprotju naj pol Mega placuje pa bo stran od googla pa se vec placa, nic zajebancije, dostop od povsoc in kriptirano,...  https://mega.nz/ Pa ima 200giga placa pa ne pozre nic elektrike.   In potem plačuješ eni firmi namesto drugi.   Probaj iz sebe spustit kaj vec kot negativno usmerjen stavek. Potrudi se, najbrz bo bolelo ampak kaksen bolj konkreten predlog pa lahko podas."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Eno mikroatx platko s kakim atomčkom gor, pa DVA diska v Raid 1 in Openmediavault 4 gor. Imaš super plugin kateri se imenuje Urbackup in ti naredi komplet image računalnika. Če se kaj sesuje samo njihov rescue cd not, najde na mreži server in si nazaj naložiš sistem kot je bil na dan backupa. Sicer nekaj časa dela ta backup ampak preverjeno deluje. Sam uporabljam že kar nekaj časa. Poleg tega imaš lahko download server na isti mašini, ftp ...... Ni da ni."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3, preveč elektrike požre en tak star komp. 1W 24/7 je cca. 1€.  @assistant_5, \"programiranje ni potrebno\" če je to copy paste s kakšnega tutoriala ne vidim problema. Kaj več se pa nebi šel.   @assistant_4 and @assistant_3, druga firma za isti denar ni rešitev katero iščem :)  @assistant_6, to je že kar napredna rešitev če prav razumem, bom pogledal malo okoli za stvari katere si omenil. Hvala. Sicer pa predvidevam da \"ni poceni\"."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Moj predlog je bil, da se igras, glede na to, da si napisal, da je to opcija. Peobaj, postavi naredi test in ce ti ugaja, potrm vso zadevo simply migriras na nekaj manj potratnega.   Ce te pa strom skrbi, bo pac sel na en pir manj na mesec."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Jaz sem imel tako rPI z nextcloudom kot server z owncloudom, zdaj sem pa na NAS Synology prešaltal. Ogromno enih opcij gor, pa set and forget... ne boli glava, postavi se nazaj če tako hočeš, wake on lan in podobne fore, skratka če hočeš kolikor toliko varnost je to to. Recimo rPI - backup boš delal na SD kartico na rPI, na USB ključ ali boš priklopil zunanji disk gor? Nič od tega ni ravno uporabno. Server - preveč štroma, četudi sem ga imel v kleti da ga nisem slišal. NAS pa porabi mislim da 18W, lahko narediš celo da se izklaplja. Skratka precej neboleča zadeva, če bi se rad igral je pa enih aplikacij in možnosti gor morje, od Dockerja dalje... Svetujem to, če so ti ljubi podatki. Je pa dražje kot 24EUR na leto, ampak so podatki samo tvoji, in s tem vse kar je vezano na njihovo varnost in zaščito seveda."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_3 je 12. avg 2019 ob 16:19 izjavil:@assistant_4 je 12. avg 2019 ob 14:22 izjavil:V nasprotju naj pol Mega placuje pa bo stran od googla pa se vec placa, nic zajebancije, dostop od povsoc in kriptirano,...  https://mega.nz/ Pa ima 200giga placa pa ne pozre nic elektrike.   In potem plačuješ eni firmi namesto drugi.   Probaj iz sebe spustit kaj vec kot negativno usmerjen stavek. Potrudi se, najbrz bo bolelo ampak kaksen bolj konkreten predlog pa lahko podas.   @assistant_4 and @assistant_3, druga firma za isti denar ni rešitev katero iščem :)  Dodatek: Doma imam DIY NAS, na katerem tecejo Plex Media Server, piHole, Time Machine na Debianu v kombinaciji z ZFS-jem (RAIDZ). Celotna postavitev mi je vzela kar nekaj casa in denarja. Naslednji korak bo NextCloud in verjetno bom scasoma vse servise zmetal v Docker container-je.  tl;dr: Najcenejsi Synology z dvema diskom bo brzkone zadostil vsem potrebam OP-ja, obenem bo lahko spoznal drobovje in servise, ki so potrebni za poganjanje lastnega oblaka. Slabost Synology-je, da je bistveno drazji od tistih 24 EUR/leto, ki jih zdaj placuje."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_3 je 12. avg 2019 ob 16:19 izjavil:@assistant_4 je 12. avg 2019 ob 14:22 izjavil:V nasprotju naj pol Mega placuje pa bo stran od googla pa se vec placa, nic zajebancije, dostop od povsoc in kriptirano,...  https://mega.nz/ Pa ima 200giga placa pa ne pozre nic elektrike.   In potem plačuješ eni firmi namesto drugi.   Probaj iz sebe spustit kaj vec kot negativno usmerjen stavek. Potrudi se, najbrz bo bolelo ampak kaksen bolj konkreten predlog pa lahko podas.   Vpn + par accountov pa maš free;)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "@assistant_4 je 13. avg 2019 ob 05:28 izjavil: tl;dr: Najcenejsi Synology z dvema diskom bo brzkone zadostil vsem potrebam OP-ja, obenem bo lahko spoznal drobovje in servise, ki so potrebni za poganjanje lastnega oblaka. Slabost Synology-je, da je bistveno drazji od tistih 24 EUR/leto, ki jih zdaj placuje.   Trenutno najcenejši NAS z raid v Slo - Iskratelov Nettop + eSATA zunanje ohišje - total = 41,50EUR: http://www.bolha.com/telefonija/stacion... http://comstrok.si/Shranjevanje-podatko...  Hitreje kot vsi rPIji in podobne škatle, SATA2 podora, standardni PC, HDMI out, Giga mrežna.  Nikoli nisem sicer gor postavljal FreeNAS, ampak CentOS in OpenBSD delata gor super. Uporabljamo jih za svašta, tudi za mini SAMBA serverje =)  Pri tej ceni/zmogljivosti in porabi elektrike ni boljšega =)"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_9: tole je kot kaže res top deal. Pohvale tebi za tole. Človek bi si želel še več takih idej na forumu."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_9 je 13. avg 2019 ob 08:15 izjavil:@assistant_4 je 13. avg 2019 ob 05:28 izjavil: tl;dr: Najcenejsi Synology z dvema diskom bo brzkone zadostil vsem potrebam OP-ja, obenem bo lahko spoznal drobovje in servise, ki so potrebni za poganjanje lastnega oblaka. Slabost Synology-je, da je bistveno drazji od tistih 24 EUR/leto, ki jih zdaj placuje.   Trenutno najcenejši NAS z raid v Slo - Iskratelov Nettop + eSATA zunanje ohišje - total = 41,50EUR: http://www.bolha.com/telefonija/stacion... http://comstrok.si/Shranjevanje-podatko...  Hitreje kot vsi rPIji in podobne škatle, SATA2 podora, standardni PC, HDMI out, Giga mrežna.  Nikoli nisem sicer gor postavljal FreeNAS, ampak CentOS in OpenBSD delata gor super. Uporabljamo jih za svašta, tudi za mini SAMBA serverje =)  Pri tej ceni/zmogljivosti in porabi elektrike ni boljšega =)    Sam si tudi lastim enga tega nettopa in moram potrditi da je res ok. Deluje kolikor toliko tiho ( moram zamenjat vent ) v kotu. Gor imam par programčkov. Drugače pa je tukaj ena taka alternativa, mičkeno močnejš  Imam enega naročenega za test de vidmo.  https://www.banggood.com/XCY-X30-Mini-P..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Sam sem za NAS uporabil rabljeni HP MicroServer N54L. Na relativno majhen ohišju je prostora za 4 diske, sistem je pa na usb ključku. Trenutno uporablja https://www.openmediavault.org/, razmišljam pa o pure centos sistemu / samba / DLNA...."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_10 je 13. avg 2019 ob 10:53 izjavil:Sam sem za NAS uporabil rabljeni HP MicroServer N54L. Na relativno majhen ohišju je prostora za 4 diske, sistem je pa na usb ključku. Trenutno uporablja https://www.openmediavault.org/, razmišljam pa o pure centos sistemu / samba / DLNA....   O tej opciji sem razmišljal tudi sam, vendar sem šel potem v Supermicro vode. Povezava."
+    },
+    {
+        "role": "assistant_11",
+        "message": "OMV sem laufal cca 6-7 let na C2D kišti z 4-7 diski ... Bilo je super! Zaradi prostorke stiske (selitev), sem sedaj migriral na qnap z 4 diski (trenutno uporabljam samo 3), pa moram reči, da ne čutim, da bi mi kaj manjkalo... U bistvu je sem z nasom celo bolj zadovoljen..."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Predlagam ti, da si malo pogledaš tale prispevek :D"
+    },
+    {
+        "role": "assistant_13",
+        "message": "A je kdo probal AiCloud, ki jo ponuja ASUS zraven svoj routerjev?"
+    }
+]

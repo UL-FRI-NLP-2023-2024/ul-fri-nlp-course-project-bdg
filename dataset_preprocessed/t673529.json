@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "Imam eno super idejo, ki je napol že uresničena. Ustavilo pa se mi je pri ključnem delu - prenosu podatkov, vendar sem prepričan, da je tudi to izvedljivo.  Razlaga je čisto preprosta: S telefonom bi rad upravljal nek program na računalniku (program sem sam razvil). Ko bo na telefon prispelo SMS sporočilo, bi ga rad najprej shranil v neko datoteko. Moj program pa bi prebral vsebino datoteke in na podlagi vsebine datoteke nekaj naredil. Ne vem pa, kako točno se tega izziva lotiti.  Če bo kaj pomagalo, imam mobilni telefon (skupaj s sim kartico), ki ga ne potrebujem oz. bi ga porabil za izvedbo svoje ideje. Telefon je že malo starejši (nokia s symbianom), vendar ga lahko priklopim na računalnik. Nokia ima tudi neko programsko opremo, ki omogoča pregledovanje SMS sporočil na računalniku. Vendar tu je ena težava: sporočilo je vidno samo znotraj nokiine programske opreme, ne morem ga enostavno shraniti v datoteko.  Obstaja kakšna enostavna rešitev, da SMS sporočilo iz telefona spravim v datoteko na računalniku?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "http://smsenabler.com/ https://www.google.si/search?q=pc+sms+r..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Mms se bp posilja na email"
+    },
+    {
+        "role": "user",
+        "message": "Pozabil sem dodati, da zadeva ne sme biti vezana na internet. Delovati mora tudi, če računalnik ni povezan z omrežjem.  Zdaj sem raziskoval in odkril, da se na telefon lahko povežem s pomočjo putty-ja, preko bluetooth povezave. To se mi zdi obetavna možnost, vendar jo moram še malo raziskati, kako priti do sporočil."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Vsi telefoni podpirajo AT komande (kot vcasih modemi), ki jih lahko izvajas preko serijskega porta.  https://www.diafaan.com/sms-tutorials/g..."
+    },
+    {
+        "role": "user",
+        "message": "Danes sem imel časa in sem malo testiral stvari. Z bluetooth sem se povezal s telefonom in preko puttyja probal vnesti nekaj ukazov. Za testiranje sem uporabil 2 različna telefona (samsung in nokia 7230), vendar sporočil nisem uspel dobiti. Vnos ukazov pri povezavi z nokio:  AT+CMGF=1 ----> OK AT+CMEE=1 ----> OK AT+CMSP? ----> +CSMP:17,167,0,0 AT+CMGR=1 ----> ERROR AT+CMGL=\"ALL\" ----> ERROR AT+CMPS=? ----> ERROR  Zanima me zakaj sem dobil te errorje oz. zakaj ne morem priti do sporočil? Sem naredil kaj narobe ali telefon pač ne podpira?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Google is your friend, lohk je karkol. telefon interno ne uporablja AT komand za SMS-e pridobit. Drgac sm ti pa en link prpopu (ne poznam APP) ampak jih je en kup, ki podpirajo komunikacijo s telefonom in imas ti kontrolo nad tem (se prav ni aplikacija sama seb namenjena in ne mors avtomatike delat). Spet google :)  Mozn da mors s kako AT komando nastavt, od kod ti vlece SMS-e (sim, memory...)"
+    },
+    {
+        "role": "user",
+        "message": "Google pravi, da moj telefon ni podprt. Torej bo moja super ideja morala počakati, da zamenjam telefon, saj ključnega dela s trenutnimi telefoni (ki jih imam na razpolago) ni možno dostopati do sporočil."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Al pa nabavis en usb sim, pomoje vec k 20 eur ne bi smeu bit."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@assistant_0 je 15. maj 2016 ob 22:43 izjavil:Al pa nabavis en usb sim, pomoje vec k 20 eur ne bi smeu bit.   Najbolj simpl solucija bi bila usb modem. Potrjeno dela BP."
+    }
+]

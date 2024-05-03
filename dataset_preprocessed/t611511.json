@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Mi lahko kdo pomaga pri nalogi Dana je premica r x (4,-3.1) = (0,-4,-12) in ravnina r . (3,5,-1) = 16. Poišči njuno presečišče."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Lahko si pomagaš s formulami:   Zapis ravnine, premice   Presečišče premice in ravnine  Ta primer lahko preprosto rešiš tudi kot reševanje sistemov enačb:  (x,y,z) x (4,-3,1) = (0,-4,-12) y + 3z = 0 => y = -3z 4z - x = -4 => x = 4 + 4z -3x - 4y = -12  (x,y,z) * (3,5,-1) = 16 3x + 5y - z = 16  vstaviš x in y: 3*(4 + 4z) + 5*(-3z) - z = 16 12 + 12z -15z - z = 16 -4z = 4 => z = -1  Vstaviš nazaj: y = -3z = -3*(-1) = 3 x = 4 + 4z = 4 + 4*(-1) = 0  Dobiš točko T(x,y,z) = (0,3,-1)  Preveriš rešitev: 1.) Ta točka leži na premici: (0,3,-1)x(4,-3,1) = (3*1-(-1)*(-3),-1*4-(0*1),0*(-3)-3*4) = (0,-4,-12)  2.) Ta točka leži na ravnini: < (0,3,-1),(3,5,-1) > = 0*3 + 3*5 + (-1)*(-1) = 15 + 1 = 16"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Hmm, ne bo šlo tako preprosto, pomota.  Če greš po danih formulah, pa dobiš - najprej preurediš malo enačbe:  RAVNINA * r = (x,y,z) * r0 = (x0,y0,z0) = (3,5,-1)  < r,(3,5,-1) > = 16 < (x,y,z),(3,5,-1) > = 16 Splošna oblika ravnine: Ax + By + Cz + D = 0 V našem primeru: 3x + 5y - z - 16 = 0  PREMICA * r = (x,y,z) * r0 = (x0,y0,z0) = (0,-4,-12) * n = (a,b,c) = (4,-3,1) Kanonična oblika premice: (x-x0)/a = (y-y0)/b = (z-z0)/c  V našem primeru: (x-0)/4 = (y+4)/(-3) = (z+12)/1  najprej izračunamo p po formuli: p = (A*x0 + B*y0 + C*z0 + D)/(A*a + B*b + C*c) = (3*0 + 5*(-4) (-1)*(-12) - 16)/(3*4 + 5*(-3) -1*1) = = (-24)/(-4) = 6  presečišče se pa izračuna kot: xp = x0 - a*p = 0 - 4*6 = -24 yp = y0 - b*p = -4 + 3*6 = 14 zp = z0 - c*p = -12 - 1*6 = -18  Torej imamo točko T(-24,14,-18)  Ker imaš r x n namesto n x r v obliki premice bo verjetno še minus pred temi koordinatami.  Premica: < (-24,14,-18),(3,5,-1) > = -72 + 70 + 18 = 16  Ravnina: (-24-0)/4 = (14+4)/(-3) = (-18+12)/1 = -6"
+    },
+    {
+        "role": "user",
+        "message": "te lahko vprašam še kaj pomeni, če imam pri diferencialni enačbi podan začetni pogoj."
+    },
+    {
+        "role": "assistant_1",
+        "message": "da jo lahko izracunas (dejansko končno enacbo), ne pa samo splošno rešitev - ovojnico vrednosti al kako se ze rece."
+    },
+    {
+        "role": "user",
+        "message": "kako se potem reši ta y'+y^4cosx=0 pogoj: y(pi)=1  in tale naloga z ekstremi f(x,y)=x^2+xy+y^2-3ax-3by rešitev je (2a-b,2b-a) lokalni minimum zanima me postopek"
+    },
+    {
+        "role": "assistant_1",
+        "message": "odvod, pogledaš, kje je 0."
+    },
+    {
+        "role": "assistant_2",
+        "message": "f(x,y) = x2 + xy + y2 -3ax - 3by Izračunaš oba parcialna odvoda po obeh spremenljivkah:  - najprej po x: 2x + y - 3a - potem po y: x + 2y - 3b  sedaj pa zahtevaš, da je parcialni odvod po x = 0 in parcialni odvod po y = 0.  Dobiš dva sistema linearnih enačb:  2x + y = 3a x + 2y = 3b Ta sistem rešiš, in dobiš x = 2a - b ter y = 2b - a.  Gre za lokalni ekstrem v točki (2a - b, 2b - a).  Za ugotovitev, ali je to minimum ali maksimum, pa moraš izračunati še determinanto Hessejeve matrike.  Sedaj moraš izračunati še drugi parcialni odvod po x, drugi parcialni odvod po y, ter odvajat prvi parcialni odvod po x še po y.   - drugi parcialni odvod po x: 2 - drugi parcialni odvod po y: 2 - prvi parcialni odvod po x po y: 1 Koeficienti Hessejeve matrike so: [2, 1;  1, 2] Determinanta te HM je 2*2 - 1*1 = 4 - 1 = 3 =) v točki T(2a -b, 2b -a) je LOKALNI MINIMUM."
+    },
+    {
+        "role": "assistant_0",
+        "message": "y'+y^4cosx=0 pogoj: y(pi)=1  To je diferencialna enačba prvega reda in se rešuje tako:  dy/dx = -cosx * y^4 dy/(y^4) = -cos(x) * dx Integral((y^-4) * dy) = Integral(-cos(x) * dx) (y^-3)/-3 = -sin(x) + C .../*(-3) (y(x))^-3 = 3*sin(x) + D  Vstaviš še začetni pogoj: y(pi)=1 (1)^-3 = 3*sin(pi) + D 1 - 3*sin(pi) = D 1 - 3*0 = D D = 1  Vstaviš nazaj v prvotno rešitev: (y(x))^-3 = 3*sin(x) + 1  Voila, konstanta izgine.  ------------------------ Še čisto zgornja naloga: r x (4,-3.1) = (0,-4,-12) r x n = r0  Po navadi piše n x r in ne r x n. Za vektorje velja pravilo, če obrneš vrstni red vektorskega množenja: r x n = - n x r. Potem računaš normalno naprej, kot je bil prikazan postopek."
+    }
+]

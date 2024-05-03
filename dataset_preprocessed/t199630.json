@@ -1,0 +1,138 @@
+[
+    {
+        "role": "user",
+        "message": "Ok! Vem, da je bilo verjetno že 10 podobnih vprašanj, ampak, kolikor sem uspel preleteti vseh 11 strani, čisto takega primera le nisem zasledil: v windows xp pod uvodno predstavitvijo, sem prebral, da je možno in skoraj najugodneje vzpostaviti domače omrežje, brez routerja oz. Access pointa. Ne bodi ga len, sem nabavil wlan kartico in jo vgradil v comp, ki je direktno povezan na adsl. Drugi comp, notesnik ima wlan že vgrajen. Sledil sem navodilom in s čarovniki (ja, ja, saj vem j**eš čarovnika) konfiguriral povezavo. Krasno! Compa sta se takoj prepoznala, povezava je odlična, a tu nastopi problem: z notesnikom se ne morem povezat na internet, čeprav sem poskusil že vse živo: samodejne nastavitve, ročne nastavitve po navodilih, ki sem jih zasledil v tem forumu, pa nič. Na omrežni kartici imam internet connection sharing odkljukan.  Pa še en problem: z notesnikom ne morem opreti diska c v comp1, čeprav je le ta da v skupno uporabo vsem.  Pomagajte, ker že obupujem.  tnx!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "kartice na notesniku ali kjer pač imaš net poveži v bridge..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "ICS mora biti vklopljen na ikoni \"SiOL\" ali kak imaš pač poimenovano PPPoE povezavo.  (pujska pa kar ignoriraj, ker piše, ne da bi prebral vprašanje )"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Na tapravi kartici moras obkljukat \"allow ICS\", t.j. na tisti kartici ki se povezuje na internet."
+    },
+    {
+        "role": "user",
+        "message": "ICS (domnevam da to pomeni Internet Conection Sharing) na PPPoE (ki je mimogrede Sinfonika) :dovoli drugim uporabnikom omre~ja vzpostavitev vzpostavljanje povezave prek internetne povezave tega racunalnika -ODKLJUKANO, spodaj sta se opciji: vzpostavi klicno povezavo, kadarkoli poskusa racunbalnik v omrezju priti v internet - ODKLJUKANO, pa se: dovoli drugim uporabnikom omrezja nadzor ali onemogocanje skupne rabe internetne povezave-ODKLJUKANO. Pa kaj zaboga hoce se od mene? Ali sem se kaj pozabil?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Internet Connection Sharing v Win XP: V kompjuterju sta dve kartici: LAN1 in LAN2. LAN1 se povezuje na internet in dobi IP preko DHCPja (najveckrat, lahko tudi rocno nastevljen IP). Ko ta povezava deluje, oznacis \"Allow other computers to access internet through this connection\" (ICS). Pred tem nic ne nastavljas IPja na LAN2 (pustis na default vrednost \"get IP automaticaly\"). Ko enkrat na LAN1 oznacis \"allow ICS\" ti XPji na LAN2 nastavijo IP na 192.168.0.1 (DNSjev in ostalega ti ni treba vpisovat). Ce pustis vse pri miru pol zadeva dela (vsaj meni). Ce spremenis IP na LAN2 zadeva ne dela (vsaj meni).  Mel sem pa v desktopu LAN in WLAN kartico; LAN na internet, WLAN pa Ad-Hoc na laptopa."
+    },
+    {
+        "role": "assistant_1",
+        "message": "A ne dela ?  Pol nam tu napiši izpis ukaza \"ipconfig /all\" z obeh PC-jev."
+    },
+    {
+        "role": "user",
+        "message": "Evo, celoten izpis obeh ipconfigov!  NA PC-JU, KI JE POVEZAN NA ADSL: IP konfiguracija za Windows  Ime gostitelja . . . . . . . . . . . . : bojan-069p5fuhj Primarna Dns pripona . . . . . . . . . : Vrsta vozlišča . . . . . . . . . . . . : Nepoznano Usmerjanje IP omogočeno. . . . . . . . : Da WINS Proxy omogočen. . . . . . . . . . : Ne  Ethernet kartica Local Area Connection:  S povezavo določena DNS pripona . . : Opis. . . . . . . . . . . . . . . . : Realtek RTL8139 Family PCI Fast Et hernet NIC Fizični naslov. . . . . . . . . . . : 00-0E-2E-65-3C-B6 DHCP omogočen . . . . . . . . . . . : Ne IP naslov . . . . . . . . . . . . . : 192.168.1.2 Maska podomrežja. . . . . . . . . . : 255.255.255.0 Privzeti prehod . . . . . . . . . . :  Ethernet kartica Brezžična omrežna povezava:  S povezavo določena DNS pripona . . : Opis. . . . . . . . . . . . . . . . : ASUS 802.11b/g Network Adapter Fizični naslov. . . . . . . . . . . : 00-15-F2-24-3F-44 DHCP omogočen . . . . . . . . . . . : Ne IP naslov . . . . . . . . . . . . . : 192.168.0.1 Maska podomrežja. . . . . . . . . . : 255.255.255.0 Privzeti prehod . . . . . . . . . . :  PPP kartica Sinfonika:  S povezavo določena DNS pripona . . : Opis. . . . . . . . . . . . . . . . : WAN (PPP/SLIP) Interface Fizični naslov. . . . . . . . . . . : 00-53-45-00-00-00 DHCP omogočen . . . . . . . . . . . : Ne IP naslov . . . . . . . . . . . . . : 212.93.237.230 Maska podomrežja. . . . . . . . . . : 255.255.255.255 Privzeti prehod . . . . . . . . . . : 212.93.237.230 DNS strežniki . . . . . . . . . . . : 212.93.226.5 212.93.226.6 Primarni WINS strežnik. . . . . . . : 127.0.0.1 NetBIOS preko Tcpip . . . . . . . . : Onemogočeno  NA NOTESNIKU: IP konfiguracija za Windows  Ime gostitelja . . . . . . . . . . . . : vesna-c52r5vrfb Primarna Dns pripona . . . . . . . . . : Vrsta vozlišča . . . . . . . . . . . . : Mešano Usmerjanje IP omogočeno. . . . . . . . : Ne WINS Proxy omogočen. . . . . . . . . . : Ne  Ethernet kartica Brezžična omrežna povezava:  S povezavo določena DNS pripona . . : Opis. . . . . . . . . . . . . . . . : Omrežni adapter Broadcom 802.11g Fizični naslov. . . . . . . . . . . : 00-14-A4-38-7F-E7 DHCP omogočen . . . . . . . . . . . : Ne IP naslov . . . . . . . . . . . . . : 192.168.0.2 Maska podomrežja. . . . . . . . . . : 255.255.255.0 Privzeti prehod . . . . . . . . . . :  Ethernet kartica Local Area Connection:  Stanje medija . . . . . . . . . . . : Medij je odklopljen Opis. . . . . . . . . . . . . . . . : Realtek RTL8139/810x Family Fast thernet NIC Fizični naslov. . . . . . . . . . . : 00-0A-E4-E8-70-C5  Ne vem, zakaj mi ne pokaže opcije, kjer bi izbral kartico, na katero omogočim sharing. če ustvarim npr, dia-up povezavo, je v lastnostih ta možnost vidna. A kaj, ko pa ima ADSL."
+    },
+    {
+        "role": "assistant_2",
+        "message": "A pa tebi sploh dela internet? Ker mas na PPP kartici isti gateway kot mas IP (212.93.237.230). Probaj se na prenosniku za gateway napisat WLAN kartico iz PPP PCja."
+    },
+    {
+        "role": "user",
+        "message": "Internet mi seveda dela. Nastavitve na PPPoE imam na avtomatsko zaznavanje. Ne spomnim se točno, se mi pa dozdeva da sem tudi to že poskušal. Ti javim popoldne, sedaj sem v službi.   Imam pa še en problem. Iz nobenega compa ne vorem v drugega. Omrežje je sicer vzpostavljeno, vidim C disk drugega računalnika, vendar mi pravi, da nimam dovoljenja za odpiranje, čeprav imam na obeh odkljukano skupno uporabo diska C, pa tudi printerjev. Imaš kak pameten predlog?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "PPP kartica Sinfonika:  S povezavo določena DNS pripona . . : Opis. . . . . . . . . . . . . . . . : WAN (PPP/SLIP) Interface Fizični naslov. . . . . . . . . . . : 00-53-45-00-00-00 DHCP omogočen . . . . . . . . . . . : Ne IP naslov . . . . . . . . . . . . . : 212.93.237.230 Maska podomrežja. . . . . . . . . . : 255.255.255.255 Privzeti prehod . . . . . . . . . . : 212.93.237.230 DNS strežniki . . . . . . . . . . . : 212.93.226.5 212.93.226.6 Primarni WINS strežnik. . . . . . . : 127.0.0.1 NetBIOS preko Tcpip . . . . . . . . : Onemogočeno  Podatke si vpisoval sam in jih ne dobis avtomatsko (DHCP off). Tud sam nisem 100% siguren ampak pomojem gateway ne sme bit isti kot IP kartice.  Jst bi probal od zacetka; Ce nimas staticnega IPja nastavi da bo DHCP vklopljen (prenosnika se ne povezovat na PC). Ko mas enkrat link v svet, oznaci na PPP kartici \"Allow ICS\". Ko to nardis, te bo vprasalo na kateri kartici bojo klienti ki se bojo povezovali v svet in izberes WLAN kartico (v PC si napisal da mas 3 kartice, PPP, LAN in WLAN). V winXP lahko izberes samo eno kartico za ICS (vsaj meni se ni ratalo usposobit vecih hkrati). Ko si izral na PPP \"allow ICS\" in kot drugo kartico WLAN, pol ti xpji sami nastimajo IP na WLAN kartici na 192.168.0.1. Ko to nardis pa povezes laptopa na PC. Na laptopu lahko na zacetku pustis DHCK vklopljen (da dobi IP avtomatsko od tvojega PCja), pol pa ce dela nastimas enega ki je v tapravem rangu glede na mask in gateway."
+    },
+    {
+        "role": "user",
+        "message": "V bistvu imam le dve kartici LAN in WLAN, imam pa seveda virtualno kartico PPPoE (to je PPP over Ethernet), ki je v bistvu LAN, ki je sicer stalno povezan, če hočem v internet pa moram vzpostaviti povezavo z geslom - PPPoE protokolom. Mislim, da ima tako nastavljeno večina uporabnikov ADSL. Zato imam PPPoE kartico na avtomatsko zaznavanje, čeprav v ip config piše, da je DHCP off (hm, čudno, tudi NetBIOS preko Tcpip imam omogočeno, pa piše, da je off...). Ostale naszavitve pa sem res ročno nastavil (LAN, WLAN na PC in WLAN na notebooku), kakor so mi svetovali. Mogoče bo res najbolje, da še enkrat začnem vse znova, kot že večkrat. Čudi me le, da me ne vpraša, ko omogočim ICS, na katero kartico naj deli povezavo. Bom poskusil po vrsntem redu, kot pišeš."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jst delam na xpjih zmeri po tem postopku (sicer mam staticen IP ampak dela samo ce mam dhcp vklopljen):  Vse kartice na PCju nastimam na dhcp on (avtomatske nastavitve). Pol se stvar connecta na internet in nastavim ICS. Takrat se na WLAN kartici nastavi IP na 192.168.0.1 (avtomatsko ga xpji nastavijo). Ko to dela vklopim WLAN na laptopu in se povezen na PC (spet dhcp vklopljen). Ko enkrat vse dela pa na laptopu izberen en ustrezen IP (recimo 192.168.0.10 ce je mask nastavljen na 255.255.255.0) in zadeva nacelno dela. Pol moras samo se oba kompjuterja met v istem workgroupu (ce nimas domene) in omogocis sharanje folderjev/diskov in je to to. Doska C pa jaz nebi sheral (mogoce ti ga celo xpji ne bojo pustil) ker so gor sistemski fajli in ni dobro da so javno na mrezi (cetudi je mreza zasebna)."
+    },
+    {
+        "role": "user",
+        "message": "V bistvu sem tudi jaz tako delal. S carovnikom sem vzpostavil omrežje na obeh compih, in mislim, da je čarovnik dal take nastavitve kot praviš. Bom danes še enkrat probal od začetka, čisto ročno - z avtomatskimi nastavitvami, pa ti javim, kako je. Zaenkrat hvala."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Točno tak: pusti vse avtomatsko.  Jaz bi prej vzpostavil WLAN povezavo in šele nato vklopil ICS, ker je ta ICS ful občutljiv na relativno vlažnost in temperaturo zraka.  Torej : na PC1: - izbriši PPPoE (ni obvezno ampak ziher je ziher) - na LAN izklopi vse mrežne protokole (TCP/IP, drugi bodo pol itak avtomatsko šli na off) - na WLAN omogoči TCP/IP in daj na avtomatsko  na prenosniku : - WLAN , TCP/IP avtomatsko - vzpostavi WLAN povezavo - dela ? (preveri s ping, pusti zanenkrat deljenje map)  na PC1: - vzpostavi PPPoE povezavo - na PPPoE povezavi vklopi ICS - preveri, da WLAN zdaj fiksno nastavljen na 192.168.0.1 , če ni je nekaj narobe  na prenosniku: - daj Repair na WLAN povezavi (da dobi novi IP naslov) - preveri če dela internet"
+    },
+    {
+        "role": "user",
+        "message": "TNX! Komaj čakam, da pridem domov, ker če pa zdaj ne bo, letita oba (laptop & PC ;op-pr) skozi okno."
+    },
+    {
+        "role": "user",
+        "message": "Daj, povej mi še , prosim, če veš, zakaj v tem domačem omrežju nimam dostopa do diskov oz. map, ki sem jih označil za skupno rabo!?!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ker si izklopil \"Simple Folder Sharing\" ? (Control Panel / Folder Options / View)"
+    },
+    {
+        "role": "user",
+        "message": "Hm. Ra unalnika se pove~eta, iz notebooka vidim intermetno povezavo, ki jo lahko vzpostavim ali prekinem (internetni prehod) na mojoPPPoE kartico. Super. Ampak, v internet se vedno ne morem"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Poizkusi se tole:  Na prenosniku pejt v Control Panel, Internet Options. Tam v zavihku Connections klikni LAN settings. Tam noter OBKLJUKAJ \"Use automatic configuration script\" in vpisi noter IP 192.168.0.1. Potem disableaj in ponovno enableaj povezavo na prenosniku."
+    },
+    {
+        "role": "user",
+        "message": "Samo 192.168.0.1 ali IP 192.168.0.1 ?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Samo IP naslov, brez crk \"IP\"."
+    },
+    {
+        "role": "user",
+        "message": ""
+    },
+    {
+        "role": "user",
+        "message": "PA saj ne more biti res. NIC od zgoraj svetovanega ne pomaga. Se vec. Ugotovil sem, da vedno, ko prekinem brezzicno povezavo (in ce hocem sparati baterijo, ko sem s prenosnikom na terenu) skoci IP WLANA na 169.254.224.221, gatawey 225.225.0.0!!!, koji mu K***c??? Pa ne morem vsak dan x krat to nastavljati. Pa tale Gates ni resen. Kaj res ne gre to enkrat za vselej nastavit, pa basta. Mislim, jezen sem ko hudic. Em ne morem v internet, em ne morem serat datotek v mrezi...Jaz se ne grem vec"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nekaj ocitno delas narobe. 169.254.x.x dodelijo winsi mrezni povezavi, kadar od DHCP streznika ne dobijo IP naslova. To pride v postev, kadar imas na povezavi nastavljeno Obtain an IP adress automaticaly. Ce imas nastavljeno \"Use the following IP adress\" in vpisano 192.168.0.10 in za masko 255.255.255.0, default gateway = 192.168.0.1, potem ti winsi ne bi smeli devati 169.254.x.x naslova."
+    },
+    {
+        "role": "user",
+        "message": "Cakaj; vpisati moram IP 192.168.0.10?? Jaz sem imel vpisano 192.168.0.2, in mi nikoli ni uspelo vzpostaviti povezave, razen,  e sem imel na avtomatsko. A vsakic, ko sem brezzicno povezavo prekinil, je slo vse po zlu... Vedno vse nastavljati od zacetka, saj se mi drugace ni vzpostavil prehod. Bom poskusil se to..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Nacelno lahko vpises katerikoli 192.168.0.XXX IP, vse dokler celoten IP ni isti kot pri kateri drugi mrezni kartici.  Drugac sm pa jst mel tud probleme z asusovo WLAN kartico (vsakic ko sem prekinu sm mogu se enkrat nastimat vse), pa sm probu druge driverje, 3rd party zadeve.... pa ni nic delalo. Pol sm pa kupu en wirelles router za 40 EUR in ga uporabljam kot access point in dela ko raketa!"
+    },
+    {
+        "role": "user",
+        "message": "Dobro, kupim router, pa je.. Ampak, a imas pol tudi omrezno povezavo med racunalniki ali pa samo access (dostop do i-neta?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tudi med računalniki."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jst mam en racunalnik z dvema mreznima karticama; ena je za povezavo v svet (modem), druga pa za povezavo na router (WAN port). Pol je pa se laptop povezan z routerjem po luftu."
+    },
+    {
+        "role": "assistant_4",
+        "message": "A lahko povežem 3 računalnike med sabo s cross-kabli zaporedno na način, da ima srednji dve mrežni kartici in se vsi trije vidijo med sabo?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ja.   Najbolj simpl je, da na PC-ju ki ima dve mrežni, vklopiš na njih \"bridge\" funkcijo."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jst sm biu pa zmeri preprican da \"bridge\" pomeni to, da computer zdruzi dve mrezni kartici in naredi eno uber povezavo iz njih. Recimo da mas kabel in ADSL pa jih \"bridgeas\" in mas ubernet Sam sem se zgleda zmotil..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ne, tisto bi bilo \"bonding\" ali podbno..."
+    }
+]

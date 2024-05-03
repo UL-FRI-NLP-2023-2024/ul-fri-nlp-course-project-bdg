@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Imam en problem z enim programom predvidevam da je problem z potjo  Namreč ko program zaženem v direktoriju, kjer je shranjen zadeva dela ok. če ga pa zaženem z bat fajlom ali izven direktorija, pa javlja, da mu manjkajo ene datoteke, kako lahko to popravim, da bo zadeva delovala, ko ga zaženem z bat datoteko?  probal sem s set path=c:\\imedirektorija\\ime\\ime"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sicer ugibam, vendar verjetno program išče datoteke glede na trenutni deloven direktorij, probi v batch fajlu preden zaženeš program zamenjat direktorij z \"cd /d c:\\imedirektorija\\ime\\ime\" oz. z \"pushd/popd\" ukazi"
+    },
+    {
+        "role": "user",
+        "message": "sem probal z cd /d c:\\imedirektorija\\ime\\ime in potem program.exe pa ne gre že če bi šlo bi moral program.exe delat brez poti naprimer c:\\direktorij\\ime\\ime\\program.exe pa napiše, da ga ne najde  tisto z push/popd pa nisem razumel, ker se na programiranje ne spoznam :)"
+    },
+    {
+        "role": "user",
+        "message": "našel sem za pushd ukaz, ampak ko ga dam mi še vedno napiše pri zagonnu program.exe windows ne more najti datoteke program.exe"
+    },
+    {
+        "role": "assistant_0",
+        "message": "pushd \"c:\\windows\"\nnotepad\npopd\n  En simpl primer batcha, spremeni delovni direktorij v c:\\windows, zažene notepad, in na koncu obnovi original delovni direktorij, s koder si pač klical batch. Zakaj v tvojem primeru ne dela nevem, prlep batch kodo če lahko, drugače lahko le ugibamo."
+    },
+    {
+        "role": "user",
+        "message": "Mam not neke zadeve ko ne bi rad javno. Tale stvar z notepad dela in če na roke vtipka pri moji zadvi v command prompt tudi dela  Če pa poženem bat fajl pa naredi tako, da mi pri popd odpre novo okno command prompt in v prejšnjem zažene program.exe kako naredim, da mi zažene popd in potem v tem novem oknu od popd, ki se odpre zažene program.exe"
+    },
+    {
+        "role": "assistant_0",
+        "message": "A mogoče znotraj tega batcha poganjaš drug batch z \"start\" al pa \"cmd /c\" ukazi?"
+    },
+    {
+        "role": "user",
+        "message": "%SystemRoot%\\system32\\cmd.exe /c echo off \"cd /d C:\\Users\\Admin\\AppData\\Local\\syst\" ja tudi s start in brez pa ne dela"
+    },
+    {
+        "role": "user",
+        "message": "sem našel napako :) v naslednji vrstici sem moral dat ven tole %SystemRoot%\\system32\\cmd.exe zdaj dela super, hvala za pomnoč in usmerjanje :)"
+    }
+]

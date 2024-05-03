@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni mojstri !  Naredil sem si logotip in ga exportiral v JPG, da ga sedaj uvažam v druge programe. Logotip je okrogel in rumene barve. Vse je OK ko ga dodajam na beo ozadje. KO pa dodam na npr. rdeče ozadje pa se okoli kroga vidi belo kvadratno ozadje od logotipa.  Kako in v katerem programu naj to spremenim, da bo logotip samo okrogel brez tega belega ozadja.  Upam, da sem vredu razložil  Hvala in lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Photoshop, Magic Wand."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Hmm... V katerem programu si pa izdelal logotip? Mogoce lahko iz njega exportiras tudi s transparentnim ozadjem..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Transparenco omogočajo samo nekateri zapisi datotek, med njimi sta *.tiff, *.psd (photoshop format), *.ai (illustrator) in podobni. Problem pri transparenci je ta, da te zapise potem ne prepoznajo razni powerpointi itd, no za tiff nevem"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Bayte ... malo si pomesal bitne in vektorske zapise zgresil pa nisi dosti- ce bi rad imel \"izrezan\" okrogli logo mu tako ne preostane drugega kot transparentno ozadje, ker so vse bitne slike pravokotne ali pa vektorski format, ki ce se ne motim lahko nastopa tudi v pisarniskih aplikacijah..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "joj, @user ne jih poslušat ker so zmešali hruške in jabolka: evo instant način: če delaš z bitmapi (JPEG, BMP,...), potem ti samo PNG in GIF podpirata transparency. Seveda prej v photoshopu (ali v tvojem najljubšem urejevalniku bitnih slik) z background eraser toolom zbrišeš belo ozadje (tako da je tam, kjer želiš imeti transparenco, kockasto ozadje). Mimogrede, TIFF, kot nekateri sugerirajo ne podpira dejanske transparence, je uporaben za rastre in se nečeloma uporablja v 4-barvenm tisku. Še opomba glede GIF-a; ker GIF indexira barve, jih zmanjša iz naprimer 16mio na 256. Če imaš monokromatski, ali največ 256-barvni logotip, potem ne bo težav, težava nastane, če boš hotel prikazati lepe barvne prehode (prelive, aka gradiente). Tam se najbolje odreže JPEG, ampak ta ne prikazuje transparence...  Da pa še na hitro pripomnim, da upam, da ne boš teh reči tiskal, kajti tisk manjših bitmap objektov pride strašno grd, zelo se vidijo AA robovi (veliko bolj, kot ti na zaslonu). Zato se ponavadi za tisk natančnih reči (logotipi, risbe, fonti,..) uporablja vektorsko grafiko. Razlika pa je v tem, da vektor definira objekt na podlagi matematičnih izrazov (boolean,...) in ne pixlov. Tako da se ti veliko bolj splača delat logotipe v vektorskem načinu.  ok upam da te nisem preveč zmedel, uporabi GIF format in vse bo kul. Če bo še kaj težav pa kar odpiši.  lp"
+    },
+    {
+        "role": "user",
+        "message": "to je pravi odgovor. Tak da še amater zastopi kak se to dela ;)  HVALA TI !  ker pa bom ta logotip tiskal na različnih publikacijah in brošurah pa si rekel, da ta GIF ni primeren. A to pomeni, da je potrebno logotip ponovno narisat v vektorskem načinu ? Spet vse od začetka ? Ali se da obstoječi JPG kako importirat oz konvertirat v vektorski način in potem pobrisat ozadje ?   Hvala za pomoč.  LP @user"
+    },
+    {
+        "role": "assistant_2",
+        "message": "ne nisem pomesal, vem kaj so eni in drugi:)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "ja pa dej v PNG"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user: po mojem se to z Raytracingom počne, sam jst nimam pojma o tem, sm samo slišal da obstaja - bo kdo drug več vedel"
+    },
+    {
+        "role": "user",
+        "message": "To se čist enostavno naredit tudi z Photo Paint. samo pogledat je treba pa prebrat kaj piše ;)  je pa res, da robovi niso čisto ostri.  Bo treba it še enkrat risat celo zadevo v vektorskem načinu. Spet se bomo učili ;) Kateri program priporočate za tako delo ? pa da je kolko tolko enostavno..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Prvo moraš vedet da logotipi (ponavadi) ne nastajajo v vektorjih ! zato da kasneje ni (tudi tvojih) težav, da jih lahko povečuješ in zmanjšuješ kolko ti paše pa oblika ne bo nič kockasta beri-stopničke okoli kroga.  Logo za tisk nima nekih hudih gradientov slik ipd. ampak je (ponavadi) eno do tro barven + bela  Če ga delaš v Photoshopu, ga izvoziš v EPS format, ki ga lahko limaš ali konvertaš v karkoli, (text v krivulje)  Za web je (dosti bolj enostavno) pa ga naredi v PS in potem lahko delaš z njim kar ti paše, če hočeš transparenco izvoziš v GIF ali PNG, ostali formati JPG, BMP tega ne podpirajo.  LP"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Po moje je @assistant_6 mislil, da logotipi nastajajo v vektorjih, ne obratno.  Pa ray tracing je remdering prostorskih scen. Tracing je pa vektoriziranje bitne slike.  Najbolje je, da v ilustratorju še enkrat narišeš logotip. Zagotovo se ti to bolj splača, kot pacanje s tracerjem."
+    },
+    {
+        "role": "assistant_6",
+        "message": "LOL Ja res je, kako mi je ratal se tkole zatipkat  damm GSM.  aja ima adobe tud en program, za trace (streamline) al pa Corel Trace, pa s flashom gre tud, pač pol izvoziš PNG, pa verjetno je še 100 podobnih programčičev.  LP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Res ne se mantrat v tem, da bi svojo sliko spremenil v vektorsko ampak vzemi program za vektorsko grafiko (karkoli- Illustrator, Corel, Freehand, pa se brezplacni obstajajo) svoj sedanji logo daj kot podlogo in riši preko... Ce bos tiskal v tiskarni misli tudi na to, da bo v CMYK barvni paleti ali pa doloci posebne barve (ce noces predrago 2 ali 3)..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user: ja, žal za tisk so take reči nujne, logotip mora bit v krivuljah, sicer ni to noben bavbav, vzameš tisti JPG ali PNG ali karkoli bitnega že pač; v Corelu in illustratorju lahko tak bitmap \"zakleneš\" na papir kot ozadje in potem na njem rišeš- prerisuješ dejansko. Raytracing nima veze z tovrstno grafiko, ampak je, kot je že nekdo prej omenil metoda rendiranja 3d objektov (Flamingo renderer u glavnem), Tracing pa je že bliže temu, kar bi rad naredil, samo ti jaz osebno tega ne priporočam, saj mora bit ponavadi izhodiščni bitmap zelo visokih resolucij, ker Trace, ... trejsa  bitmap po nejgovih robovih in skuša dojet kako je sestavljen...največkrat grdo fali, tako da je res najbolje, predvsem pa najbolj ziher in uporabno da sam prerišeš. Ker tak objekt, ki je narjen z vektorji lahko poljubno večaš, tudi na velikosti n-jumbo plakatov in bo še vedno obdržal čisto linijo na robovih, povrh pa še vsak element pobarvaš ali rekonstruiraš tako kot narekuje CGP (celostna grafična podoba, na podlagi katere je definirana uporaba in raba logotipa, ki je pnavadi podvržena zehtevnim standardom - to sicer bl pri velikih korporacijah)...."
+    },
+    {
+        "role": "assistant_3",
+        "message": "..in ja, like @assistant_1 said: pazi na CMYK barvno paleto (ne sme bit RGB), in če logotip vsebuje črno barvo, naj bo to definirano samo kot \"K\" in sicer 100%. Upam da si že videl kako CMYK model deluje. Princip 4-barvnega mešanja barv, in ker programi kot so illustrator radi ponagajajo, definirajo črno barvo kot naprimer 80% Cyan-a, 90% Magente, 73% Rumene in 80% črne.. to ni dobro pri tisku, zato pazi , da bojo vsi tvoji črni objekti na logotipu pobarvani SAMO na K (100%). Ostale barve so lahko namešane s njim določenemi CMYK vrednostmi."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Mimogrede, TIFF, kot nekateri sugerirajo ne podpira dejanske transparence  TIFF ima tudi Alpha kanal"
+    }
+]

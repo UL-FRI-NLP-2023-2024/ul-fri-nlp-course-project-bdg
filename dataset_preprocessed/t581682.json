@@ -1,0 +1,94 @@
+[
+    {
+        "role": "user",
+        "message": "Ok, so prišli napelat optiko danes in mi pustili modem InnBox, ki je tudi ruter. Po navodilih sem pustil privzet IP 192.168.1.1., pri starem ruterju Linksisu sem ga zato prestavil (spet po navodilih) z 192.68.1.1 na 192.168.5.1 in ga žično priklopil v modem/ruter. Do tukaj sedaj vse mreža dela, tako kot po starem. Težava je s strežnikom, po starem edini s fiksnim lokalnim IP-jem 192.168.1.10. Gateway nastavljen kontra nazaj na 192.168.1.1. V Linksisu pa nastavil še port forwarding za določena vrata (80, 81, 83, itd) na 192.168.1.10 in Static Routing na ta IP. In je delalo ko bog. Strežniku sem nastavil nov IP 192.168.5.10, tako da v mreži je dostopen. Kaj moram še vse narest, da bo delalo tako kot prej in bo dostopen tudi od zunaj? Težava je tudi, da pri InnBoxu ne najdem možnosti Static Routing. Se da to kako zaobit?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "ammm... najlažje bi vse skupaj uredil tako, da pokličeš na T-2 in ti dajo port na innboxu v bridge mode (torej da deluje kot switch in ne kot router) in ti router pridobi zunanji IP (privzeto sta tako nastavljena eth3 in eth4 na innboxu). Potem pa bi pustil router skonfiguriran, kot je bil prej, in ga ne bi bilo potrebno nič na novo nastavljat. Na tak način boš imel tudi najmanj zafrkavanja, tako da to sta my 2 cents :)"
+    },
+    {
+        "role": "user",
+        "message": "Jah, ne bi, malo večja wi-fi pokritost še nikoli ni škodovala. :) Pa Telemach je in ne T2"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Potem moraš oba spraviti v wds mode, vprašanje če InnBox to sploh podpira, in če da, kako dobro/slabo deluje."
+    },
+    {
+        "role": "user",
+        "message": "Ah budalo od mene. So mi dali tudi nov statični IP, ni čudno da nič ne dela."
+    },
+    {
+        "role": "user",
+        "message": "Eh, ne bo išlo. Kot prvič so mi dali dinamični IP, pravijo da statičnega se tu ne da naštimat. Da pa DHCP-ja nikoli ne osvežujejo razen ob večjih delih. A me tu kdo zafrkava. Voham težave z DNS-ji. Kot drugič ta model (G2427) ne podpira statičnega IP-routinga. Nočejo zamenjat za takega, ki to bi (bi bil dražji, kombinacija terminatorja Innbox C30 in routerja Innbox F60). Bridge mode, kot je predlagal @assistant_0 tudi tu ni opcija, pravijo. Še kakšna ideja kako imeti delujoči strežnik z dostopon na WAN na tem takšnem sistemu (nekdo je predlagal switch - bi to delalo?), ali bom moral počasi gledat za zunanjimi ponudniki gostovanja?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Imaš kak poseben razlog za dva routerja? Zakaj ne bi imel Linksys kot access point, povezan preko LAN porta (namesto WAN) z IP npr. 192.168.1.2. Strežnik bi obdržal isti IP, t.j. .1.10?  Pri dveh routerjih rabiš ruto na InnBox - 192.168.5.0/24 next-hop 192.168.1.X(naslov Linksysa v 192.168.1.0 omrežju)."
+    },
+    {
+        "role": "user",
+        "message": "Ker ne morem mimo prvega, tja gre not optika fiksno, in ta ima samo dva uporabna eth-ja in nobeden noče sodelevat s serverjem (tudi če direktno priklopim), v WAN načinu, tako kot je do sedaj stari (ker nima možnosti IP-rutinga). Zato predvsem iščem sedaj možnost kako bi to zaobšel. Preko primarnega modem/bruterja ali sekundarnega ruterja. Vseeno.   Če te prav razumem predlagaš, da lahko skonfiguriram potem Linksys, da bo deloval nekako tako kot switch? Ok, bom probal. Še kakšna ideja, če ta ne prime?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@assistant_0 je 23. sep 2013 ob 17:19 izjavil:ammm... najlažje bi vse skupaj uredil tako, da pokličeš na T-2 in ti dajo port na innboxu v bridge mode (torej da deluje kot switch in ne kot router) in ti router pridobi zunanji IP (privzeto sta tako nastavljena eth3 in eth4 na innboxu). Potem pa bi pustil router skonfiguriran, kot je bil prej, in ga ne bi bilo potrebno nič na novo nastavljat. Na tak način boš imel tudi najmanj zafrkavanja, tako da to sta my 2 cents :)   Tole je prava rešitev. CPE naj bo bridge (defincija switcha je multiport bridge), Linksys naj dobi javni IP.  Če pa ima ta CPE tudi tudi WLAN (in, če prav štekam, bi rad uporabil tako tega kot WLAN na linksysu), potem naj CPE deluje kot router (in nato CPE dobi javni IP), na WLANu in LAN portih pa dodelujuje lokalne IP naslove. Nato LAN port tvojega Linksysa vštekaš v LAN port CPEja in to je vse. (Pri WLAN nastavitvah Linksysa pazi še na to, da se 802.11g kanali med CPEjem in Linksysom ne bodo prekrivali.)  Strežnik vštekaš v LAN porte od Linksysa, prav tako vanje poštekaš vse računalnike."
+    },
+    {
+        "role": "user",
+        "message": "Saj to je ravno problem. Innbox nima WLAN nastavitev in na Telemachu trdijo, da se tega modela ne da prenastavit v bridge mode. Kar je bulshit, ampak tu nič ne morem. Tale Innbox je sposoben samo sprejemat DHCP IP in naprej v lokalno mrežo oddajat DHCP. Nič statičnega mu ni moč določit razen lastnega IP-ja in port forwardinga. Vsaj tako izgleda. Perfektno za trotlzihr upokojenske familije, ne pa zame. Zato tudi, če priklopim direktno vanj samo strežnik ne deluje. Če bi, mi ne bi bilo problema usposobit tudi Linksysa. To vem sedaj, ne ko sem odpiral temo.  Nekje sem izbrskal še neki stari switch in vse priklopil potem nanj, vse isto. Mogoče je treba kaj potem na strežniku prenastavit?  Torej. Še kakšna ideja?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Hmmm ... izklopiš prvi router in ga vržeš v omaro? Predvidevam, da pride do tebe po UTP kablu net?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 3. okt 2013 ob 11:38 izjavil:Saj to je ravno problem. Innbox nima WLAN nastavitev in na Telemachu trdijo, da se tega modela ne da prenastavit v bridge mode.   Tega skoradjda ne verjamem (čeprav: svašta pička rodi, ampak vsak router *ima* tudi fukcionalnost stikala), in po moje so v tehnični pomoči preprosto zarukani. (Ravno z njihovo mularijo in vaškimi posebneži, ki na s.p.ju prodajajo pakete imam zelo slabe izkušnje.) Poskusi jih večkrat poklicati, če boš dobil enega normalnega človeka na telefon.   Lahko probaš tudi popizditi in rečeš človeku na drugi strani naj ti da nekoga kompetentnega, ali pa naj ti prinesejo drugo CPE.  Čakaj, pojasni mi še tole: ima CPE WLAN ali ne?  Glede možnosti, ki jo je navedel Primus: prva CPE enota je verjetno nujna, ker ima za WAN port koaksialni kabel."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Izklopiš DHCP na Innboxu in ga nastaviš na Linksysu? Vmesnik tega Innboxa mi ni ravno poznan, tako da težko ugibam kake nastavitve vse ima a dvomim, da se ga ne bi dalo nastaviti kot Gateway."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Strežnik ne dela, če ga priklopiš direktno na Innbox?  Fiksno nastavi IP naslov in forwardiraj potrebne porte nanj."
+    },
+    {
+        "role": "user",
+        "message": "Alo, še enkrat ta prvi Innbox ruter je optični all in one čudo modem/bridge/router penzionerska rešitev od Iskratela, ki ga montirajo tu vsem po soseski, ki prehajajo na optiko (praktično vsi, ker je to zastonj in bo račun manjši). Tisti z največjo cifro. Datasheet desno. Ne pride po UTP ju ampak po dveh ko las tankih žičkah, ki jih boh ne dej prepogibat. Ne da se ga izklopit tak kot UTP, brez da razšraufaš bodisi modem, bodisi terminator. CPE-ja očitno nima. Tak da lahko zelo omejeno sploh govorimo o WAN napravi.  Če izklopim DHCP server ne dela nič sploh. Ne morem niti v konzolo. Factory reset. Ne da se nastavlja fiksnih IP-jev, ker ne premore te funkcije. Reče se ji sicer static IP routing in vem da je pogoj za LAN/WAN mrežo, kot sem jo imel po starem zrihtano.   Še en pomenek po telefonu danes in... To je bilo to. Bridge mode je očitno mogoč, ampak to v primeru tega ruterja pomeni (ali naj bi), da ne bi delal tv in telefon (trojček itak). Kar ni sprejemljivo. Sicer pa \"naj si najdem računalničarja, ker da sem si sam kriv, da ne znam nastavit strežnika.\" Ne izključujem tega, ampak rešiteve 080 tehnika v smislu odpri vse porte in bo zihr delalo pač kažejo na določeno ignoranco.  Če bi to vedel, bi definitivno še nekaj časa okleval in iskal drugo rešitev, ne da sedaj zajebavem s tem že 10 dni in skoraj diplomiral in mi ta čas biznis škoda narašča. Kozarec je lahko tudi pol polen. Če ima kdo podobne probleme, sedaj morda obvladam dovolj, da pridem na dom pomagat.    Tak izgleda konzola btw:    1   2   3   4"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Nastavitve Innboxa izgledajo ok. Private porta se ne da nastaviti? (na screenshotu je prazno)  Napiši še IP nastavitve Linksysa in strežnika."
+    },
+    {
+        "role": "assistant_6",
+        "message": "IP range DHCP-ja na innboxu se začne z IP-jem *.10 - kot imaš nastavljeno statiko na serverju. Možno da zaradi tega ne dela. Nimam izkušenj samo po moji logiki se tukaj nekaj tepe. Statičnih IP-jev pač ne bi nikoli pobiral iz range-a za DHCP.  Dejansko pa za takšno mrežo rabiš samo povezat linksys-ov port1 z inboxx-om, nastaviš linksys kot switch/ap, pa je. Vse naprave so tako v 192.168.1.0 in to mora delat, tudi s tem podhranjenim routerjem."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Če izklopim DHCP server ne dela nič sploh. Ne morem niti v konzolo. Factory reset. Ne da se nastavlja fiksnih IP-jev, ker ne premore te funkcije. Reče se ji sicer static IP routing in vem da je pogoj za LAN/WAN mrežo, kot sem jo imel po starem zrihtano.   Uf, temu pa se ne reče static routing. Mislim da mešaš pojme in so zaradi tega potem tvoji posti težko berljivi.  Morda narobe razumem, ampak to kar o čemu pišeš je preprosto statični DHCP, oziroma statični lokalni ip naslov.   Static routing bi bil, da sam nastaviš usmerjevalno tabelo. To je tabela, katero usmerjevalniki uporabljajo za odločanje na kateri vmesnik bojo poslali kakšen paket. A res potrebuješ spreminjat usmerjevalno tabelo?  Če prav razumem, bi jaz samo priklopil kabel iz Innboxa v Linksysov WAN, ta pa bi nato računal NAT (ves port forwarding nato nastaviš na Linksysu). Vse PC-je pa daš v IP range od Linksysa, morajo pa tudi biti priklopljeni direkt na Linksys.  Pa še en request A lahko prosim izvedeš kak trace route, pa ga prilepiš (recimo do www.arnes.si, www.amis.net, www.telemach.si). Sem tudi sam verjetno na istem OŠO in se zanimam za Telemach."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Na prvi sliki je objavljen tvoj javni ip naslov in na njemu je dostopna spletna stran, tako da je strežnik že dostopen z interneta (čestitke).  Če ti preko LAN-a ne dela (preko javnega IP-ja), je morda kriv hairpin nat.  http://wiki.mikrotik.com/wiki/Hairpin_N..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala @assistant_7. Točno to je bil problem ja. Sem šel do soseda in tam vse dela. Hairpin NAT, nikad čul prej. Bogsigavedi kdaj je začelo delat, morda že povsem na začetku, ampak se nisem spomnil preverit iz zunanjih virov. Vidim se tega ne da zaobiti. Itak da zdaj dela, če so strežnik in ruterja v switch modu in še DMZ načinu. Grem počasi nazaj zapirat porte. Je še kakšen drug način, da preverjam stanje, kot da gnjavim sosede?  Se opravičujem za zmedeno pisanje, ampak res nisem vedel pri čem sem. Ne delam tega vsak dan. Pri starem sem imel nastavljeno usmerjevalno tabelo za statičen routing ja. Lahko da ni bila nujna, ampak ko je enkrat začelo delat, sem pustil pri miru.     traceroute"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Lahko preveriš, če je port odprt. Ni sicer idealna rešitev. http://www.yougetsignal.com/tools/open-...  Traceroute pa je zelo dober, Amis ima 2ms do Ljubljane, t-2 4-5.."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@user je 4. okt 2013 ob 11:08 izjavil:Je še kakšen drug način, da preverjam stanje, kot da gnjavim sosede?   Bilo kaki proxy, recimo http://anonymouse.org/anonwww.html Ali Tor. Ali eden od milijon drugih možnosti. Sicer je tvoj problem navaden dvojni port forwarding. Na prvem ruter forwardaš porte na drugi ruter, na drugem pa na tvoj server. Nič bridge in DMZ in bog ve kaj še ne rabiš."
+    },
+    {
+        "role": "user",
+        "message": "Evo epiloga in zadeva ni bila tako enostavna. Če bo še kdo kdaj v podobnem problemu, ko mu podturijo intetnet z neizogibnim NAT hairpin efektom. Kolega s ClearOS foundation (uporabljam njihovo enterprise home strežniško rešitev) si je vzel malo časa z zmedeno komunikacijo z mano in sva načeloma prišla do rešitve. Najbrž ni edina, najbrž ne idealna, kot pravim, tudi ne enostavna, ampak deluje. Tristransko dopisovanje je tu.  Povzetek: NAT hairpin resno ovira delovanje normalne WAN - LAN povezave v nekoliko bolj kompleksnih oblikah le-te. Veliko običajnih adhoc rešitev sploh ne bo delalo (oziroma bo, samo ne bo to dovolj). Se da zadevo obiti predvsem v smeri načrtnega kombiniranja DHCP nastavitev in lokalnega DNS mreženja. Če ima še kdo kakšno idejo, kako zadevo še izboljšat in poenostavit (potem ko je prebral dopisovanje s povezave), se priporočam."
+    }
+]

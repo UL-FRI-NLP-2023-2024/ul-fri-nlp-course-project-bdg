@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Helow!!  Mam en velk problem – winsi se mi sesuvajo usakih 5 min!!  Komp: Abit nf7-s 1700xp 512 rama (2x256) 160gb maxtor SATA 40gb ibm – prek ide-ja Gf ti4200 350w napajalnik – je biu že zamenan iz 300w pa ni blo nč razlike (blo na servisu :>)  Winsi so ravno na frišn naloženi – driverji najnovejši...  Error, ki se pojavlja je zard win32k.sys (tko piše u blu skrinu), errorja sta: IRQL_NOT_LESS_OR_EQUAL ali PAGE_FAULT_IN_NONPAGED_AREA Stop pa 0x0000008E ali 0x00000050.  Zakaj je to? In kaj lahko naredim?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "To je delalo tudi meni pa je kar samo od sebe zginlo  Sam sem zarad tega formateru disk ene 10x"
+    },
+    {
+        "role": "user",
+        "message": "a si mogu celotn disk al sam particijo z winsi?  k mam tko ene 100GB zelo uporabnih podatkov in jih ne bi rd zgubu... ;)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Stop 0x0000000A or IRQL_NOT_LESS_OR_EQUAL  The Stop 0xA message indicates that a kernel-mode process or driver attempted to access a memory location to which it did not have permission, or at a kernel interrupt request level (IRQL) that was too high. A kernel-mode process can access only other processes that have an IRQL lower than, or equal to, its own. This Stop message is typically due to faulty or incompatible hardware or software.  vec o tem + namigi za resitev:  Klik!   Stop 0x00000050 or PAGE_FAULT_IN_NONPAGED_AREA  The Stop 0x50 message indicates that requested data was not in memory. The system generates an exception error when using a reference to an invalid system memory address. Defective memory (including main memory, L2 RAM cache, video RAM) or incompatible software (including remote control and antivirus software) might cause Stop 0x50 messages.  vec o tem + namigi za resitev:  Klik!  lp @assistant_1"
+    },
+    {
+        "role": "user",
+        "message": "hvala, orly  Zj bi meu pa še eno prošnjo! Tm sm prebral, pa nč tko specifičnga ne piše...  jz pa dobivam naslednje errorje:  -PAGE_FAULT_IN_NONPAGED_AREA 1. stop: 0x00000050 (0xE680D5E2, 0X00000001, 0XBF85EA8A, 0X00000002) win32k.sys - Address BF85EA81 base at BF800000, DateStamp 41107f7a)  2. Stop: 0x00000050 ( 0x57796929, 0x00000001, 0x804ED539, 0x00000000) enak win32k.sys kot zgorej :)  3. stop: 0x00000050 (0X830B8E04, 0X00000001, 0XBF85EA81, 0X00000000) (tale se je pojavu v safemodu)  -IRQL_NOT_LESS_OR_EQUAL 1. stop: 0x0000008E (0xC0000005, 0XE16AA1D4, 0XF81DF6EC, 0X00000000) (safemode!!!)  2. stop: 0x0000008E (0XC0000005, 0XBF85EA81, 0XF44308A4, 0X00000000)   naložene mam sp2, vse popravke, tut antivirus updejtan, firewall na routerju...  Kater driver nj ne bi bil v redu? (not certified je edinole ATA driver od nvidie za nf2) Kaj sploh lahko naredim? Servis odpade - ni več garancije&stuffa... Nimam tud nobene mašine doma, da bi lahko preskusil drug hardware.  lepo prosm za pomoč :)"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Fictionel jaz mam isti primer, vendar da mi poleg tega kot tebi včasih napiše še MEMORY MANAGEMENT. Najprej sem mislil da imam virus zato sem zaradi previdnosti formatirov disk vendar je bilo isto. Zdaj pa xp-jev sploh ne morem naložit, ker se mi to zgodi med namestitvijo. Zamenjal sem poleg diska že vse. Čeprav ko sem zamenjal procesor je vse delalo, vendar sumim da procesor ni kriv. Ali si kaj navijal?   lp Tilen"
+    },
+    {
+        "role": "user",
+        "message": "jeh... men se sesuva komp usakih 10 min, pol pa morm za neki cajta izštekat štrom da ga sploh loh nazaj pržgem...  dons sm pa za foro uzeu vn pol rama (eno palčko) in zj dela že ene 3 ure brezproblema    upam da je ram kriv in da če ga bom zamenov (pare mankajo!!!) da bi pol delal...  any suggs?    tilc, si poskusu tko? test rama? (z memtest86) al pa drug ram? jz nimam nobenga da bi testirov, sam dons bo vrjetn ponoč usaka palčka posebi stestirana z memtestom..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "dejte vse odviti najprej ce imate navite masine, pol pa pozenite memtest86 programicic, da vam stestira memorijo. Najdetega preko googla.   IRQL not less or equal je to al prevec navito, pa je voltaza prenizka za CPU ali RAM ali pa hin ram. Najpogosteje je to vzrok. Lahko je seveda se kaj. lp, D."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Testerat ne morem, ker windowsev ni več gor in jih tut ne morem posnet. Sem pa zamenjal z drugim ramom pa je bilo isto. Nič nimam navito.   lp Tilen"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Memtest86 ne potrebuje windows-ev Če imaš dostop do neta in v tej mašini disketar, potem ni problemov. z linka si dol potegni memtest86, image posnameš na disketo in v tvoji kišti nastaviš boot na disketar. Nato se avtomatično zažene memtest."
+    },
+    {
+        "role": "user",
+        "message": "hehe.. ne, nč nimam navito, tut če sm kej naviju je blo to ene 50mhz (2dni) pa je delal prbližn isto, če ne še clo mal bl stabiln..  mašina je na default settingsih, ram timingi tut (če se kj igram, se ponavad tut boota ne..), probov sm pa ram in proc in 133 na 100 mhz fsbja dat, in ni blo čist nč bolš..  ponoč sm laufov memtest, pa ne znam kej preveč povedat, k mi je mami izklopla računalnik zjutri..(preveč je treskal :p)  sam vem da je blo po 4. testu cca 580000 (!!!!!) errorjev.. pa številke se nism kej preveč zmotu (mogoče za par tisoč v plus!)   BADRAM pattern je bla 0xFEC00000, 0xFEC00000 (pa še ene singl errorje mi je dau, k še ni blo badrama - nastavitve - u glavnnem UNEXPECTED INTERRUPT - HALTING)  kej blage kaj je? če bi kje mogoče dobu (oz. če bom loh) bom poskusu še z drugmu ramom...  djte še kej predlagat :))  lp in tnx"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Žal boš moral menjat ram Ne sme biti nobenga errorja.  Če imaš več ploščic poskusi eno po eno, ker verjetno je zanič le en ram."
+    },
+    {
+        "role": "user",
+        "message": "pazi to zj... pred kratkim sm preskusu še enkrt isto ploščico (odkar mam sam eno, dela ful bolš računalnik ) in ni najdu nobenga errorja  uni prej so se pa dogajal na 4078,ŠeEnaMalenkost M (megabajtih?!?!)  bom še mal potestirov ponoč s to palčko...pa pol še z drugo in upam da kmal menjov..  kaj pa nj nardim s temu ramom?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če imaš še garancijo, nesi nazaj. Drugač pa ga spravi, pa ga boš kazal vnukom, da se bodo mal smejal"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tudi men program pokaže okoli 200 napak. zanima pa me koliko časa mora delati program, da konča in ali je mogoče z njim odpraviti napake.   lp Tilen"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Še to, napake imam na vseh 3 ramih in to čez 100 napak.   lp Tilen"
+    },
+    {
+        "role": "assistant_5",
+        "message": "prvo tko...Če so napake na ramih potem veš kje je napaka. e sme biti nobene napake, ker če je potem je računalnik nestabilen in se dogaja to kar se.  Zdej ni rečeno, da je ram fuč. Lahko je šlo kaj na matični. jaz bi ti predlagu, a probaš nardit memtest pti kakem frendu. In če bo šlo tam čez je napaka drugje.   Čemsi slučajno testiral ram in maš mal navitga potem je tukaj napaka....uporabi opcijo by spd in testiraj.   če maš visok fsb dodaj malo voltaže na NB ali pa uporabi defolt fsb ter testiraj.   Predvsem test 5 je tak, ki rad pokaže napake,če je karkoli preveč navito."
+    },
+    {
+        "role": "user",
+        "message": "nimam NIČ navito, vse na default (prow zard sesuvanja ;))  sam fora je pa, da ko dam testirat SPD ram (ena opcija tm) ni najdu errorjev - res pa je, da je po 36 min zaključil s testi in ni šel več naprej - zadnji test na 99% (laufal celo noč)...  če pa imam tm pr ramu naštiman BIOS - mi pa najde teh pol miljona napak...   ko sem pa zamenjal ploščici in prižgal računalnik mi je pa začel piskati (dolgi zaporedni piski - ram), šele k sm zamenjal mesto rama je delal.. tisti default testi (SPD) niso pokazal napak, bios pa isto - halting pri polovici 4. testa.  any ideas?"
+    },
+    {
+        "role": "user",
+        "message": "evo par fotk iz memtesta  testirov sm ves ram - double channel  če sm imel memory naštiman na \"BIOS - Std\" ali \"PROBE\" je prešel standard test brez napak, če pa sem imel \"BIOS - All\" pa napake kar mrgolijo.         lp"
+    }
+]

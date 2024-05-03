@@ -1,0 +1,30 @@
+[
+    {
+        "role": "user",
+        "message": "Včeraj sem naredil novo pratricijo. Pri koncu se je pojavilo okno ki ga nisem prebral in kliklin DA. Po tem je pod vsemi pratricijami pisalo Dinamični disk. Ugasnil šem računalnik. Danes sem prižgal računalnik in ko sem izbral Windows 7 (na računalniku imam nameščena dva operacijska sistema (Windows 8, 7)) se mi je pokazalo da moram ustaviti CD za namestitev Windowsa in znova zaženem računalnik. Ko sem to naredil se je težave še pojavljala. Po mongih poskusih sem probal Windows 8, ki se je zagnal brez napak. Kaj je težava? (mislim, da je dinamični disk) Kako jo odpravim?  Že vnaprej hvala za pomoč. Jure"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mogoče so AHCI drverji vklopljeni? Poglej v Bios kakšno je stanje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zdravo. Imam težave z nekim diskom. Se potim že kar nekaj časa pa ne najdem rešitve. Problem je ta, da ko vstavim ta disk v rač. se konstantno vnovično zaganja. V bistvu pridem v menu kjer lahko izbiraš - Start windows normally, safe mode, safe mode with networking,... In vsaka možnost ki jo izberem vodi v ponovni zagon.  Kakšna ideja?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Po vsej verjetnosti gre za neko okvaro, lahko tudi slab sektor, na katerem je vitalni del OS-a, ki se sesuva vedno znova na isti točki. Boot s CDja, Recovery Conzola (Command prompt) in odtipkaj: chkdsk C: /R počakaj do konca, ki zna trajati lahko tudi uro in več, odvisno od kapacitete diska. C: =particija boot sistema  Če to ne pomaga poizkusi z enim od mnogo HDD testov, recimo s HDD Regeneratorjem, MHDD itd."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Aha to je dobra ideja ampak ta računalnik je imel samo domenskega user-ja, tako da ne vem kakšno ima lokalno administratorsko geslo za dostop do diska. To me namreč vpraša, ko bootam iz cd-ja in kliknem repair disk. Pogovarjamo se o Win XP. Z HDD Regeneratorjem sem poizkusil ampak ne najde nobenega poškodovanega sekotrja. Mogoče kdo ve, kako se dejansko shekat geslo za log in?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Mogoče gesla niti ni nastavljenega. Tam samo stisni Enter in gre naprej. Na Hiren's boot cdju imaš orodje za reset passworda."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Enter sem že probal pa ne gre. To izgleda zanimivo, bom poizkusil. Mogoče vredno omeniti to, da kom sem ga priključil na delujoči računalnik, sem šel normalno v win7, kjer sem pod pogon (D:) videl ta moj pokvarjen disk. Disk zazna, imam dostop do vseh datotek in map ampak jaz potrebujem ta disk za neki program kar ni glavna vloga pri tej zgodbi. Ko sem v cmd-ju zagnal bootdir ali bootcfg je napisalo, da nima dostopa do boot.ini. Sem pogledal fizično na ta disk, če obstaja ta mapa in je res ni. Mogoče je to težava ali je ta mapa hidden?"
+    }
+]

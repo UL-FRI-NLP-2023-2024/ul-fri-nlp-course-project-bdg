@@ -1,0 +1,230 @@
+[
+    {
+        "role": "user",
+        "message": "Poizkušam namestiti windows 10. Na novejšem HP-ju gre namestitev brez težav. Na 7 let starem asusu x50sl pa mi že na začetku javi napako da je prišlo do težave in da se mora ponovno zagnati. Sem pogledal za novejše biose vendar imam najnovejšo različico 308 iz leta 2010. Imel kdo podobno izkušnjo oziroma ve kaj bi lahko bilo narobe? Enkrat mi je napisalo napako 0xC1900101 - 0x20017 Nekaj sem bral po angleških straneh d bi lahko bil vzrok \"unlocated space\" v particijah"
+    },
+    {
+        "role": "user",
+        "message": "Sem še zdaj poizkusil inštalirati 8.1 in mi javi napako na enak način. Zanimivo je to da sem pred časom že imel inštalirano osmico na tem asusu."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj imaš pa sedaj inštalirano na Asusu?"
+    },
+    {
+        "role": "user",
+        "message": "Sedaj imam sedmico."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Problem s HDDjem, ce mene vprasas. Imas narjene particije, al ga lahko celega pocistis? Prvo moras vse particije pocistit da ostane ena, nato formatiraj in poskusi. Ce 10ka dela na moje 8 let starem krsu s Turionom bp, mora tudi na tem Asusu."
+    },
+    {
+        "role": "user",
+        "message": "Bom poskusil, vendar me zdaj čaka prenašanje podatkov na prenosni disk."
+    },
+    {
+        "role": "user",
+        "message": "Sem pobrisal vse particije s pomočjo w7 usb in mi je nardilo zraven še\"sistemske\" particije a težava ostaja ista."
+    },
+    {
+        "role": "assistant_1",
+        "message": "To naredi z Win 10 usb instalacijo, ce hoces 10ko gor dajat."
+    },
+    {
+        "role": "user",
+        "message": "Bi nardil to z veseljem a mene vrže ven iz instalacije še predno se kaj začne. Nardi blue screen z smajlijom in napiše da je prišlo do napake in da se mora ponovno zagnati."
+    },
+    {
+        "role": "assistant_2",
+        "message": "lahk pridš do recovery v cmd pač prek usb ključka? če da v cmd napiši:  Diskpart  se ti odpre Diskpart v diskpart vpiši -list disk -select disk # (namesto # vstaviš številko diska ki ti jo pokaže pri prejšni komandi) -clean -create partition primary  -select partition 1  - format fs=ntfs quick exit  potem probaš namestiti"
+    },
+    {
+        "role": "user",
+        "message": "V cmd lahko pridem z le z w7 instalacijo na usb ključku. Z w8 ali w10 pa ne. Bom jutri poskusil in poročam. Nekaj je sigurno z diskom. Sem v cmd pisal že po enih drugih navodilih in ni šlo. Nekaj takega \"Set bootmenupolicy legacy\""
+    },
+    {
+        "role": "assistant_0",
+        "message": "V kakšnem načinu pa imaš posnet ključek ali v GPT particijska shema za UEFI ali MBR particijska shema za BIOS ali UEFI.  Probaj posnet ključek z Rufus 2.2 programom enkrat posnemi za UEFI drugič za BIOS in poskusi naložit.  Ker če imaš v biosu nastavljen UEFI boot usb ključka z bios bootom ne boš mogel naložit ali obratno.  Če se spoznaš na bios lahko tudi tam spremeniš.  Na disku pred namestitvijo novega sistema pobriši vse particije,ker si sistem potem sam namesti kar potrebuje."
+    },
+    {
+        "role": "assistant_3",
+        "message": "gpt je uporaben če je zagonski hdd/sys particija večji/a od 2.2 tb.Za vse ostalo je dovolj mbr način."
+    },
+    {
+        "role": "user",
+        "message": "Se še kar mučim pa ne pogruntam. Meni gre w7 namestit brez težav le 8 in 10 mi ne uspe spravit že skozi začetek."
+    },
+    {
+        "role": "user",
+        "message": "Sem nardil po navodilih od fx6300b in od krepkega. Uporabil pa nisem gpt načina ampak tistega za bios/uefi. Mi ne gre nič kaj dalje kot prej."
+    },
+    {
+        "role": "user",
+        "message": "Danes po dolgem času prižgem malega acerja na katerem sem imel nameščen w10 technical prewiew in pojavi se enak blue screen z enakim napisom\" system thread exception not handled\". A je možno da so ti winsi kaj zaklenili npr v biosu ali kaj podobnega?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 15. avg 2015 ob 23:01 izjavil:Sem nardil po navodilih od fx6300b in od krepkega. Uporabil pa nisem gpt načina ampak tistega za bios/uefi. Mi ne gre nič kaj dalje kot prej.  In zakaj ne poskusiš ključka posnet v GPT načinu in probat saj zgubit nimaš kaj,lahko pa da ti disk crkuje in sem mel eno par primerov ko ni šlo naložit windowsov prišlo je le do tam ko izbereš jezik in potem naprej ni šlo več."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Disk, ram preveri.."
+    },
+    {
+        "role": "user",
+        "message": "Bom poskusil še gpt. Zanimivo pa to da w7 gre normalno instalacija skoz. Konspirator. Na kakšen način misliš da bi preveril komponente? S kakšnim programom?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "hdd Diagnostična orodja in reševanje podatkov s trdih diskov  ram http://www.memtest.org/"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 bom poskusil s tem. Krepki tudi z gpt je isto. Nekaj slik z računalnika če kaj pomaga ta je iz windows manager   ta iz biosa   takšen ekran dobim ko poizkusim z inštalacijo W8 ali W10   to napako pa javi če poizkusim zagnati posodobitev na w10 iz W7 kar v windows okolju."
+    },
+    {
+        "role": "assistant_4",
+        "message": "bomber11, a ti slučajno instaliraš Win 10 Technical Preview? Tako bi lahko sklepal iz tvojih priloženih screenshootov.  Si probal s končno verzijo win 10.  LP @assistant_4"
+    },
+    {
+        "role": "user",
+        "message": "Na zacetku sem poizkušal tudi s to. Sem pa zdaj poizkusal z tremi razlicnimi verzijami iz partisa."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Probaj uradno verzijo iz Microsofta in poročaj. Še  Link.  LP @assistant_4"
+    },
+    {
+        "role": "user",
+        "message": "Probal vse mogoče. Enostavno ne gre."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Z original programjem bi šlo brez problema."
+    },
+    {
+        "role": "assistant_6",
+        "message": "nardi prvi del instalacije na drugem kompu, prenesi disk v tega in koncaj install"
+    },
+    {
+        "role": "user",
+        "message": "Solatko tudi z uradno verzijo iz microsoftove strani je isto. Kot da bi zaklenilo nekaj v biosu. Je to možno?"
+    },
+    {
+        "role": "user",
+        "message": "Asus je prenosnik tako da bo ta težka z menjavanjem diskov."
+    },
+    {
+        "role": "assistant_6",
+        "message": "zakaj bi blo težko ?  Jaz sem naredil enako na starem hpju in je šlo BP"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jst kljucke delam z UltraISO in do sedaj vedno delalo. Rufus , pa uni tool od MSa sta me pa vedno nekaj jebala. Poskusi, pa bos vidu, obvezno pa uradni ISO. Zazeni kot admin... Odpri iso od winsew, nato jezicek bootable->write disk image"
+    },
+    {
+        "role": "user",
+        "message": "V glavnem do danes mi ni uspelo spravit instalacije skozi z w10, zato sem instaliral nazaj w7 in se sprijaznil da bom še nekaj časa na sedmici. Sumim da bi lahko bil problem s sistemsko particijo ki jo nardi v velikosti 100 MB. Ko sem W10 na novo instliral na malem acerju sem opazil da je nardil 350 MB sistemsko particijo. Je lahko problem v tem? Kako pa povečati sistemsko particijo?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "enak model Asusa nalagam in identičen problem, windows 7 in 8 delujeta brezhibno, windows 8.1 in windows 10 pa takoj ko se hoče zagnat v windowse pokaže moder zaslon in nič ne moreš naredit, tako da dvomim da bi bil kriv trdi disk"
+    },
+    {
+        "role": "assistant_7",
+        "message": "tudi ostali imajo enak problem https://www.google.si/search?hl=sl&sour.....0i22i30l2.1079.4188.0.4938.13.11.0.0.0.0.688.2016.3-2j0j2.4.0....0...1ac.1.34.heirloom-hp..9.4.2016.dgzvgq1q_a0 še iščem če je kdo ugotovil rešitev"
+    },
+    {
+        "role": "assistant_5",
+        "message": "@user - Problem je v UEFI bios-u in postavljanju particij na trdem disku. Osnovni podatki OS se namreč zapišejo v UEFI in ta ne pusti neregistrirane in neoriginalne programske opreme, da bi se namestila. Če je Windows 7, 8 ali 8,1 prednaložen (OEM), potem z nadgradnjo, praviloma ni problemov. Ravno tako ni problemov, če sistem namestiš po stari metodi Legacy in RMA sistem particij.   Računalnik enostavno ne zna prebrati GPT diska, če je v UEFI načinu in obratno, če je na Legacy, disk pa ni RMA.  Vsi sistemi, ki so crack-ani imajo težave pri instalu 10-ke.   Kolega si lasti enak model prenosnika in je imel enake probleme, potem pa si je z M$ orodjem naredil DVD in pognal instal iz zunanje DVD enote (USB 2.0) in je šla instalacija in registracija normalno skozi. Dokler je poizkušal z USB ključkom ali direktno nadgradnjo, ni šlo. Sistem je imel Windows 7 home edition, sedaj pa ima 10 home. Instaliral je preko UEFI z obstoječo 7-ico. Ko mu je vse naložilo in registriralo je sistem še enkrat namestil na čisto, obrisal disk v namestitvi, ustvaril nove particije - 4 in po končanem nalaganju, z upraviteljem diskov, C particijo prepolovil za dokumente in tisto kar ni sistemskega.   Naknadno je še skrčil C particijo na 120GB (Windows dovoli samo prepolovitev in ne moreš skrčit sistemsko particijo na željeno velikost - če imaš 4TB disk, ti sistemsko naredi 2TB, ostalo pa lahko spreminjaš po želji). Uporabil je AOMEI-evo orodje za delo z diski.  Problem je torej v bios-u in različnih verzijah OS-a.  Pri legacy načinu, teh problemov ni, vendar je potrebno disk pripraviti na RMA, pri nalaganju sistema se ne da."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Računalnik enostavno ne zna prebrati GPT diska, če je v UEFI načinu in obratno, če je na Legacy, disk pa ni RMA. Kakšen rma ?  Vsi sistemi, ki so crack-ani imajo težave pri instalu 10-ke.  Tu sem nehal brati."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_3 - Lapsus MBR. Človek pač na hitro piše. Lahko nehaš brati, vendar sem videl veliko mašin, ki so imele nalepke s kodo, na sami mašini pa so se bohotile verzije ultimate, enterprice,.... z dodano media centrom.  Lepo registrirani s KMS orodjem.  V takih primerih je pač potrebno namestiti original in prenesti vse popravke, pa bo šla instalacija normalno skozi."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Saj fora je v tem, da windows .iso je enak original ali kopija, saj se \"aktivira\" šele ko je inštaliran in to je ali je z original ključem ali KMS orodjem, verjetno je potem fora samo, da mora biti inštaliran preko usb windows toolkit (http://www.microsoft.com/en-us/download... ali preko dvd zgoščenke (original ISO fajl) in ne preko rufus (https://rufus.akeo.ie/) programa, če prav razumem??  Dragače pa naj povem, da je na \"mojem\" asusu x50sl bila inštalirana windows 8 (aktivirano preko microsoft podpore skype) in ko je prišel ven 8.1 je javilo posodobitev in po podobitvi windows ni več zagnalo, enako je bilo potem pri fresh install windows 8.1"
+    },
+    {
+        "role": "user",
+        "message": "Saj jaz sem probal tudi preko DVD-ja. Sicer preko vgrajenega. A ima to kakšno vezo če bi preko zunanjega pogona instaliral?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tudi z usb ključkom gre tako kot je predlagal @assistant_5 pojdi na  https://www.microsoft.com/en-us/softwar...  Zaženi download tool odvisno katero različico imaš 64 ali 32 bitno nato izberi ustvari namestitveni medij za drug računalnik izberi različico windowsa home ,jezik nato usb pogon vsatavi formatiran usb ključek in počakaj da dokonča. Če ti uspe prit do namestitve izbriši vse pogone tako da bo ostala samo ena particija,iz te potem lahko ustvariš drugo particijo in sistem ti bo sam naredil sistemsko particijo."
+    },
+    {
+        "role": "user",
+        "message": "Krepki meni že v samem startu po parih sekundah javi napako. Nimaš sploh možnosti da bi kaj izbral."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pa si poskusil z original kot sem ti dal link."
+    },
+    {
+        "role": "user",
+        "message": "Seveda."
+    },
+    {
+        "role": "assistant_7",
+        "message": "tudi sam sem pred časom obupal, ko sem enak model Asusa nalagal,zakaj dela windows 8 normalno 8.1 pa ne, pa četudi je bila serijska originalna, tako da kopija da je kriva je larifari, je pa res da lahko zajebava če ni original (nepredelan)ISo fajl ..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_0 - Nekateri UEFI bios-i ne pustijo instalacije s ključka. Ne vem zakaj ampak iz DVD-ja pa do sedaj še čisto vsi. Sploh ni važno s katerim orodjem je narejeno, enostavno ne gre in pika. Gre pa na čisto vseh računalnikih z UEFI, na legacy način instalacija skozi in tudi deluje vse normalno, samo bombončki večih particij in večji disi od 2TB potem ne delajo v redu.  Tudi en od HP-jev PRO serije, se mi je zadnjič preseraval s ključkom, DVD je pa šel normalno skozi, tudi nov firmware za UEFI, ni hotel namestiti."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Srž problema je, da ti programi za USB ključke včasih delajo legacy ključek, včasih UEFI ključek, včasih pa celo tak, ki je boje hkrat. Microsoftovi ISOji in USBji so oboje hkrati recimo zato delajo vedno povsod, kaj dela rufus pa je odvisno od tega kaj klikneš."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Windows, ki ga potegneš za upgrade, ti ponudi izdelavo ISO na ključek ali DVD. Hec je v tem, da na večini prenosnikov teče instal na UEFI brez problema, so pa nekateri prenosniki, ki iz ključka ne sprejmejo OS-a, iz DVD-ja pa gre b.p. Enako se je dogajalo tudi s 7-ico in 8-ico."
+    },
+    {
+        "role": "user",
+        "message": "Predvidevam da če bi bilo z mojimi 4 ključki kaj narobe ne bi mogel normalno namestiti sedmice. In enak problem se je pojavil ko sem hotel zagnati instalacijo z dvd-jem. Tako da po moje ni težava z gpr-ji, MBR-ji in UEFI-ji in ostalimi meni neznanimi kraticami"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@user je 21. avg 2015 ob 18:40 izjavil:Predvidevam da če bi bilo z mojimi 4 ključki kaj narobe ne bi mogel normalno namestiti sedmice. In enak problem se je pojavil ko sem hotel zagnati instalacijo z dvd-jem. Tako da po moje ni težava z gpr-ji, MBR-ji in UEFI-ji in ostalimi meni neznanimi kraticami    točno tako, tudi sam mislim da ni problem tukaj z bootable zadevami, enostavno zadeva se naloži, ampak ko je je le-ta že naložen se ob zagonu v windows pojavi moder zaslon v kolikor se spomnem ko sem nalagal, zakaj gre windows 8, windows 8.1 pa ne gre mi ni logično"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7 je 21. avg 2015 ob 23:37 izjavil:@user je 21. avg 2015 ob 18:40 izjavil:Predvidevam da če bi bilo z mojimi 4 ključki kaj narobe ne bi mogel normalno namestiti sedmice. In enak problem se je pojavil ko sem hotel zagnati instalacijo z dvd-jem. Tako da po moje ni težava z gpr-ji, MBR-ji in UEFI-ji in ostalimi meni neznanimi kraticami    točno tako, tudi sam mislim da ni problem tukaj z bootable zadevami, enostavno zadeva se naloži, ampak ko je je le-ta že naložen se ob zagonu v windows pojavi moder zaslon v kolikor se spomnem ko sem nalagal, zakaj gre windows 8, windows 8.1 pa ne gre mi ni logično   W8.1 in W10 se ne naloži ampak že po nekaj sekundah vrže blue screen z smajlijom in napako."
+    },
+    {
+        "role": "assistant_7",
+        "message": "A tako torej, sem že pozabil, vglavnem meni takrat nikakor ni uspelo, pa ni važno kako zaženeš setup, vglavnem če ti bo oz komurkoli uspelo kako naložit 8.1 ali windows 10 na ta model Asusa, naj tukaj javi kaj je naredil ;), thx"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Kaj mislite se splača uporabljati windows 8 (in ne windows 8.1), še kdo tu uporabljam prvotni windows 8 ter da je nekako izklopil da ne opozarja nadgradnje na 8.1?"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Se samo zaradi varnosti se splaca uporabljati Wibdows 8.1 ..."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@user je 16. avg 2015 ob 10:42 izjavil:Danes po dolgem času prižgem malega acerja na katerem sem imel nameščen w10 technical prewiew in pojavi se enak blue screen z enakim napisom\" system thread exception not handled\". A je možno da so ti winsi kaj zaklenili npr v biosu ali kaj podobnega?   Hm, očitno nisem edini s to težavo. Včeraj hočem v virtualbox-u zagnat technical preview in glej ti zlomka, moder ekran... !??!? Časovna bomba ;-)?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Jao kaki teretiki zarot ste. Pac na preview se na veliko testira tudi manj stabilne driverji. Blue screen je skoraj vedno posledica hardwerja ali driverja. Izjemoma kaj drugega."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_8 je 22. avg 2015 ob 09:11 izjavil:Jao kaki teretiki zarot ste. Pac na preview se na veliko testira tudi manj stabilne driverji. Blue screen je skoraj vedno posledica hardwerja ali driverja. Izjemoma kaj drugega.   No, če bi se to zgodilo množici ljudi še pred izdajo dokončne verzije, bi metalo slabo luč. Morda pa se je ms sedaj sprostil, pa malce bolj eksperimentira. Bogve kaj se je spremenilo od zadnjič, da sedaj dobivam modri zaslon.."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če se pokaže moder zaslon s smeškotom in napako, je znak, da je s HW nekaj narobe - HDD, napaka v račualniku,..... Če se izklopi oziroma obstane instalacija, je nekaj narobe z namestitvenim medijem.  Sicer pa je lahko še nepravilna nastavitev bios-a - izklopit je potrebno varnostno preverjanje, za UEFI je najbolje, da je SSD, HDD prazen, brez particij.  Ni mi uspelo še narediti ključka, ki bi pognal instalacijo v UEFI načinu, DVD (zunanji na USB) pa gre brez problema na vsako mašino. DVD je narejen z M$ orodjem za nadgradnjo - izdelava ISO faila in ne takojšnja namestitev."
+    }
+]

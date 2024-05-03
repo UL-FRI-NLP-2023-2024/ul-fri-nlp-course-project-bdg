@@ -1,0 +1,110 @@
+[
+    {
+        "role": "user",
+        "message": "Bom zelo specifičen. Imam phpBB forum. Forum je del neke strani. Imam tudi že izdelan web portal, ki bazira na NutPort portalu napisan, da deluje skupaj s phpBB forumom. Do tu, vse lepo in prav.  Sedaj je pa prišel čas, ko bomo originalno stran preselili na nov strežnik/nova domena, torej tja kjer je sedaj lociran forum. Glede vnosa novic ne bo težav, ker NutPort forum to odlično izdela. Preprosto administrator naredi novo temo v specifičnem forumu, kjer lahko vpisuje samo on. Topici v tistem forumu se prikažejo na glavni strani kot novice. To nam zelo odgovarja, sam lahko vnašamo vse možne BB code in HTML tage v novice.  Problem pa nastane, ko hočem prenesti vse tiste sekcije, kjer so povezave do datotek v ta Portal. Predelal sem vse možne variante kako naj naredim več kategorjsko ter več modelni prenos 100+ povezav do datotek, ki se NE nahajano na strežniku ampak drugje. Vrgel sem oko na skripto pafileDB, ki jo uporablja veliko strani, ampak se ne da delati podkategorij. Danes sem obupal in sem se spravil modificirati portal, tako da ne bo jemal podatke samo iz foruma za novice, ampak tudi podatke iz posebnih tabel, ki ji bom naredil sam.  Naredil sem sledeče. Tri nove tabele. Prva je DOWNLOAD_CATEGORY. V njej ima dva polja. CATEGORY_ID in CATEGORY_NAME. Naslednja tabela je DOWNLOAD_MANUFACTURER. Ta ima tri polja in sicer MANUF_ID, CATEGORY_ID, MANUF_NAME. Tretja je glavna v kateri so vsi ID-ji od prejšnih dveh ter glavna polja s opisi in povezavami.  Vse deluje! Podatke dobim iz te zadnje tabele in mi jih namesto novic prikaže na strani. Sedaj se mi je pa ustavilo. HTML je moja šibka točka in nikakor se ga ne morem naučit, medtem, ko s PHP-jem nimam težav, ker sem sam programer.  Sedaj moram narediti sledeče. Prebrati moram iz baze podatke katere vse kategorije imam in jih ponuditi uporabniku za izbiro. Ko izbere kategorjo naj ga še vpraša za model ampak ne vse ampak samo za tiste modele, ki so v predhodni izbrani kategoriji. Ko izbere obe opciji naj pokliče nek php file s tem dvema parametroma in izpiše podatke iz glave datoteke.  Kateri je najboljši način, da to naredim in kako?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "In kje se zi zatakne? Ne razumem dobro težave."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0: kot kaže nisem bil dovolj specifičen... Še enkrat. Imam tri tabele. Preko HTML-ja in PHP-ja moram iz prve tabele prebrati vse zapise iz polja CATEGORY_NAME nekam nafilati, da bo vse kategorje prikazal uporabniku (jumpbox?). Ko uporabnik izbere moram narediti še en querry po drugi tabele, da prikaže zapise MODEL_NAME, ampak samo tiste, ki imajo polje CATEGORY_INDEX enak izbiri iz prvega.  Torej če nekdo izbere kategorijo DVD-ROM, mi mora pokazati vse modele pod to kategorijo in šele ko izbere model, prikaže podatke po predlogi, ki jo že imam narejeno s tem da glavno datoteko filtriram na podlagi prejšnih dveh podatkov.  Še to izbiro bi rad naredil. Pa ne vem kako.   V HTML-ju sem pravi idiot."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Aha... sepravi kar ti potrebuješ je samo ideja za izvedbo?  Jaz bi kategorije in ostale stvari izpisoval vse v tabelah in sicer tako, da bi najprej preveril, kaj želi uporabnik pregledati.  if ($ID) {  //prikaže informacije o specifičnem izdelku  } elseif ($kategorija) {  //prikaže samo izdelke iz določene kategorije  } else {  //izpiše vse kategorije  }  $ID in $kategorija seveda prihajata iz GET parametrov v URL-ju.   Upam, da je to tisto kar te je zanimalo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Temu se pravi zdruzevanje tabel (join table) v SQL. Predvidevam, da imas te podatke shranjene v bazi. En primercek:  SELECT m.MANUF_NAME FROM DOWNLOAD_MANUFACTURER m, DOWNLOAD_CATEGORY c WHERE c.CATEGORY_ID = m.CATEGORY_ID AND c.CATEGORY_ID = '$id_ki_se_izbere'  Nekaj v tem stilu. Poglej si joinanje v MySQL dokumentaciji."
+    },
+    {
+        "role": "user",
+        "message": "OK... Še vedno nisem bil dovolj jasen. PHP, kot jezik in MySQL poznam. Podatke mi ni težko dobiti iz baze. To je še najlažje.  Težave je, ker sem budala, ko pride do dela s HTML-jem. Ne vem, kako naj te podatke prikažem in jih uporabniku dam na izbiro. Vse kar potrebujem sta dva parametra, k ijih bo uporabnik nekako izbral iz strani. Prvo izbere kategorijo in na podlagi kategorije še iz druge tabele proizvajalce.  Ko dobim oba parametra ju pošljem php datoteki, ki potem naredi vse potrebne poizvedbe na glavni datoteki in preko phpBB šablone prikažem na zaslon. Ta drugi del, torej prikaz na zaslon že imam narejen in deluje, če ročno pošljem parametra. Ne vem pa kako narediti, da jih bo uporabnik izbral."
+    },
+    {
+        "role": "user",
+        "message": "OK. Bom zelo praktično prikazal:  http://forum.firmware-flash.com/dl_firm...  Pošljem dva parametra in mi na podlagi le-teh prikaže podatke. Trenutno imam samo en zapis v bazi in sicer za kategorijo 1 in znamko 1.  Sedaj bi pa rad naredi frontend, ki bi mi pridobil te dve ID številke iz baze ter na koncu klical to datoteko s temi parametrami. Tu se mi pa ustavi, ker ne vem kako to naredit.  Upam, da je sedaj jasno..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Hmm, naredis html formo noter pa dve select opciji (dropdown) ki se dinamicno prebereta iz baze. Ko klikne uporabnik na submit \"if(isset($submit))\" dobis obe vrednosti, ki jih je izbral."
+    },
+    {
+        "role": "user",
+        "message": "To mi pa pove čisto vse. Mi lahko bolj podrobno razložiš?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_1: problem je v tem, da je vsebina drugega drop-down menija odvisna od izbire na prvem.  Hijacker: če bi rad delal z drop-down meniji potem je najbolje da daš na izbiro prvo proizvajalca in šele nato izdelek. HTML koda za drop-down pa izgleda takole:  < SELECT name=\"imeMenija\" > < OPTION>Izberite proizvajalca...< /OPTION >  //ZANKA  printf(\"< OPTION value=\\\"%s\\\" >%s< /OPTION >\", $id_proizvajalca, $ime_proizvajalca);  //KONEC ZANKE  < /SELECT >"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Logo. Najprej prva forma, po kliku na submit pa se izpise druga forma glede na izbiro prve. Ob kliku na drug submit pa se zadeva pac obdela. Lahko tudi javascript uporabis, da se takoj spremeni vrednost druge forme, glede na prvo."
+    },
+    {
+        "role": "user",
+        "message": "To da najprej povprašam za proizvajalca ni mogoče, ker bi moral našteti čisto vse iz kategorij, ki pa jih potem., če izbere enega proizvajaca, ki ne obstaja v kategoriji, ne bo izpisal.  Ta ideja, da mi ne bi osveževal strani ko bi izbral iz prvaga stolpca mi bolj odgovarja, saj pričakujem 10.000 uporabnikov na dan, kaj s php/mysql/phpBB pomeni približno 500MB bandwidth uporabe.  Mi lahko kdo napiše konkretni primer, kako bi naredil, da mi glede na prvi dropdown menu, ki bi ga napolnil preko php branja iz baze, ozvežuje drugi drop down meni, ki mi ga glede na vrednost prvega enako osvežuje iz neke druge tabele. Če mi kdo to pove imam problem rešen!  Hvala!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Razumem o čem sprašuješ... ampak nisem razumel - ali bi rad oba drop-down menija na isti strani ali ne?"
+    },
+    {
+        "role": "user",
+        "message": "Oba dropdowna na eni strani. S enim gumbom."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za to opcijo mi na pamet ni prišla nobena druga izvedba razen te:  Najprej v prvi dropdown meni nafilaš vse manufacturerje. Nato pa za vsakega manufactureja narediš en DIV layer, v layerju pa naj bo drop-down meni. Nato samo spreminjaš lastnost .visible (boolean). Izbrani manufacturer je TRUE, vsi ostali pa false.   Kasneje lahko uploadam en primerček, če želiš.  Zna se zgoditi, da bo stvar delovala zelo počasi če bo preveč manufacturerjev. IMO je boljša izvedba z ločenima menijema."
+    },
+    {
+        "role": "user",
+        "message": "Primer bo dobrodošel. Proizvajalcev je največ 33 za eno kategorijo, kategorij je pa skupaj 5."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zelo na hitro sem spisal en grob primer. Če bi rad delal v tej smeri naprej, potem boš moral optimizirati JavaScript kodo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Resitev z hidden layerji je dobra, ampak na zalost ne dela na netscapu (netscape 4.6+ se vsi layerji pokazejo, netscape 6+ pa se po izbiri ne prikaze drugi menu).  Malce poglej po googlu za kak primer javascript kode, jaz trenutno ne najdem tega primera ."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jao... sem prav pozabil malo pogledat v drugih browserjih.  Hijacker: še vedno ti svetujem drugo možnost."
+    },
+    {
+        "role": "assistant_1",
+        "message": "http://tr0n.org/test.html  Morda nekaj v tem stilu. Da se priredit, da bo samo en gumb, ceprav ne vidim problema s tem, ker se stran itaq ne refresha."
+    },
+    {
+        "role": "user",
+        "message": "TrOn in @assistant_0: Obema lepa hvala. Vsekakor uporabna informacija. Takoj ko tole vržem v phpBB javim kako mi je uspelo.  TrOn: Pomembno je da dela na vseh browserjih in ne samo na IE. Tvoj primer je res dober, saj me ne moti, da mi pokaže oba dropdowna, s tem da je drugi že poln s vrednostmi. Edino kar me moti je da moram dvakrat pritisniti na gumb. Lahko prvi gumb odstraniš? Sam sem poskusil pa mi ni uspelo."
+    },
+    {
+        "role": "user",
+        "message": "Če to ni za pop****. Od zjutraj do sedaj sem se matral s tem drop downi pa mi ni uspelo. Prvi listbox nimam težav zapolniti s kategorijami. Problem je, da bi zapolnil še drugega glede na vrednost prvega. Kolikor sem videl, se NE da polniti JavaScript tabel dinamično preko PHP.  Primer lahko vidite tu: http://www.firmware-flash.com/test2.php  Venomer javlja ene napake. Izvorna koda je http://www.firmware-flash.com/test2.zip tu...  Sovražim HTML in Javascript!   Kakšen nasvet, kaj bi bilo lahko narobe?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "kaj ko bi naredil iframe velikosti 1*1 px ter podatke izmenjal preko tega iframea.   V iframeu bi imel eno formo, v katero bi postavil id, ter jo nato submital.  nazaj pa bi dobil podatke, ki jih moras zapisati v list."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Drgač pa je najbolj, da to testiraš v mozilli k ima odličen DOM & javascript debugger"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Hijacker: finta je v tem, da ko bos ti izbral nekaj iz prve forme, se ti bo morala stran refreshat, saj mora php dinamicno prebrat glede na prvo izbiro in to ne gre kr v real-time.  Edino ce ze na zacetku cisto vse kategorije preberes ven in jih nekako locis. Drugace ne bo slo brez enega refresha.  @assistant_2: saj tisti moj primercek uporablja iframe, drugace tak ne mores dobit novih vrednosti, brez refresha"
+    },
+    {
+        "role": "user",
+        "message": "TrOn: Saj jih vse prej preberem in hočem zapisati v JavaScript tabelo, kar pa kot kaže ne deluje. Poglej si kodo."
+    },
+    {
+        "role": "user",
+        "message": "Milsim... Kaj zaboga sem komliciral?!?   Končna 1.0 verzija te strani sedaj izgleda sledeče.  Vse vidim naenkrat posortirano po modelu in ne po kategorijah. Poleg tega ne kreiram stran vsakokrat ampak samo enkrat, rezultat zapišem v bazo in potem uporabiku prikažem vsebino tabele. Če se mi pa podatki v bazi spremenijo (nova kategorija ipd.), preprosto kličem php datoteko s parametrom in mi skreira ta zapis ponovno.  Vseeno hvala za pomoč. Sem se vsaj nekaj novega naučil."
+    }
+]

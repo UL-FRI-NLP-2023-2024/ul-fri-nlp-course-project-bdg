@@ -1,0 +1,402 @@
+[
+    {
+        "role": "user",
+        "message": "Ta thread je namenjen vsem, ki imate kabelski ali adsl internet in bi radi delili internet z vsemi racunalniki v vasem omrezju. To je zelo pogosto vprašanje v forumu zato bom poskusil tu združit vse te threade. --- 2 mrežni kartici ali hub/switch?   ADSL ? --- 1. Postavitev domačega omrežja Torej za zacetek imamo na slo-techu odlicen clanek o postavitvi domacega omrezja:  http://www.slo-tech.com/clanki/net01/ne... (HW del)  Kako ga konfigurirati je pa govora v tem thread in  Računalnika fizično povezana > Kaj pa zdej?  -- Nastavitve za domači LAN z deljenim dostopom do interneta (Internet Connection Sharing) najdete v  Kako nastaviti LAN? -temle SaS-ovem postu Kombinacija: ADSL, Win2000   še en uporaben link za vse... sharing, How To..., troubleshooting,... za Win98SE, WinME, Win2000, Win XP http://www.practicallynetworked.com/ tnx to @assistant_13  -- Dobra stran je tudi http://cable-dsl.home.att.net kjer najdte odgovore in informacije povezane z DSLom in kablom.  -- Linux?   Shoreline Firewall (Shorewall)  Basic Two-Interface Firewall"
+    },
+    {
+        "role": "assistant_0",
+        "message": "napiši še da se ne da v winsih naredit da bi naredil vsakemu uporabniku svoj BW ker pač to nekak ne gre... vsaj na forumu še tega ni noben omenil čeprav je že marsikdo vprašal. verjetno bo @assistant_1 spet tiho in nebo niti z besedico omenil QoS."
+    },
+    {
+        "role": "assistant_1",
+        "message": "QoS"
+    },
+    {
+        "role": "assistant_0",
+        "message": "as i sad :) ne gre torej."
+    },
+    {
+        "role": "assistant_2",
+        "message": "To ni vprašanje sam na tem forumu ampak na vseh drugih (tudi na krepko večjih-tujih) in še nikjer nisem zasledil kako deliti BW v winsih. Za linux pa nihče noče povedat točno katero distribucijo,itd... Kak vodič bi bil zelo uporaben."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2: ne mores .. vsaj ne poceni. Nasel sem eno resitev, ki pa stane 1500$ za 10 licenc, MS ima nek QoS na nekem msdn cdju, ki ga seveda tudi nimam.  Navadnemu smrtniku pomojem nedosegljivo. Ampak bomo seveda raziskovali naprej. Kar se pa tega pod linuxom tice pa tale howto: http://lartc.org/"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Mene zanima, kako se da na ADSL priklopit en racunalnik, ki bo kao server, prizgan vedno in more met staticni IP. Pol pa mam se tri PCe, ki bodo vzgani po potrebi, tej majo lahko tudi dinamicne IPje. Ena moznost je, da gre ADSL direkt na server, ta ma dve mrezni in iz druge mrezne gre preko huba in ICS internet povezava na druge racunalnike. Kar je tle slabo je, da rabim dve mrezni na serverju. Druga moznost pa je, (ce ma asdl dva prikljucka), da gre en kabel iz adsla na server, drugi pa v hub, in iz huba naprej do ostalih treh racunalnikov. Tle ma vsak svojo mrezno, samo ni mi jasno, kaj je treba pol na teh treh nastimat, da net dela.  Komentarji dobrodosli..."
+    },
+    {
+        "role": "user",
+        "message": "Jzt mam tko narejeno:  Adsl gre v switch v uplink lukno. Potem so pa vsi rac. v omrezju povezani na ta switch. Eden je streznik, ki ima pognan DHCP pa ICS/masq - ta potem skrbi da imajo vsi ostali rac. na mrezi se internet.  V serverju tako potrebujes samo eno mrezno."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Aha. Sej ce mam hub z uplinkom bo isto. Itak mislim da ne bo tolko prometa po mrezi, da bi rabu switch. Kaj pa je tisti DHCP, oz. za kaj ga rabis. Ker si napisal ICS, pol sklepam da ima server intrnet connesction sharing, a to pomeni gre pol v bistvu povezava na net vedno preko serverja? In kaj je masq?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Bandwidth Limiting HOWTO"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Naj mi nekdo pove kaj zaboga je moji mašini, da vrže pri ukazu /ping localhost (v cmd) - Errorje.   Jao, kako naj jest vzpostavim lokalno mrežo, če PC sam sebe neče pingat."
+    },
+    {
+        "role": "user",
+        "message": "Element: ukaz je samo ping brez /"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Gandalf: Seveda!  Saj če napišeš /ping localhost vrže ven info o napačnem vpisu komande   Ampak, pingat se mi pa še vedno noče."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Kaj pa ping tvojega lokalnega ip-ja pa dela ok? Ali pa recimo ip-ja od tvoje internet povezave?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pajo: Lokalni ping (192.168.0.1) ne štima!¨  IP ISPja pa niti ne morem pingat, ker nisem v mreži :("
+    },
+    {
+        "role": "user",
+        "message": "Element: kaj pa 127.0.0.1"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Torej niti lokalnega ip-ja nemres pingat??  Kaj mas ti kaki tak hudi firewall da ti celoten ICMP promet blokira???? Pac samo to bi sel bil predlog, ker drugace sploh cudno da se lahko na internet prides"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Uf, na tole sem pa čisto pozabil.  Tole pa štima, Gandalf.  Sam zdej samo kroge delam, mreže mi pa ne uspe vzpostavit.  Dobro, sej se bom še malo poigral. Problem je, da imam vse 100% prav uštimano pa ne pali. In sumim ta ping. Na vseh ostalih mašinah mi pinga, na tej pa ne."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pajo: Nič firewalla, nič  V bistvu je ta mašina poleg mene. (ni omrežena - sej to je problem )"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Potem ti pa predlagam da na novo namestis mrezno karto in protokole, se pravi idi v safe mod, pobris ven vse kar mas v network nastavitvah in pod computer managerju od mreze, resartni masino in instaliraj vse od nule, pa potem porocaj ce bo delav ping"
+    },
+    {
+        "role": "assistant_5",
+        "message": "To je dobra ideja Pajo.  Čeprav si bom moral vzet cajt in sem na to možnost že pomislil.  Bom poročal. Hvala za zdej :)   btw: A na ta IP kej vpliva mrežna kartica? Verjetno ne?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "127.0.0.1 ti mora dela ze brez mrezne karte."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Potemtakem je verjetno z mrežno nekaj narobe.  Ta IP mi, kot sem rekel trza."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Pred tednom ali dvema sem dobil ADSL.Telekomov monter mi je potegnil utp kabel(8 žilni) po cevi in pritličja v 1.nad. 2 žici je porabil za ADSL in 6 žic(ali 3 pare) pustil za mrežno povezavo, rekoč, da bodo 4 žice zadoščale. No, zdej sem pregledal vse poste na to temo, si sposodil klešče za krimpanje,nabavil konektorje in.....ostal pred problemom.... Delal bom varianto A kot je razložil @user (2 računalnika s 3 mrežnimi karticami) in potemtakem cross-over kabel...sam povsod na slikah vidim, da je 8 žil(oz.4 pari), jst mam pa 6 žil(3 pare)...vprašanje: Ali lahko potem žice razpletem in operiram s 4 \"single\" žilami...bo potem tudi v redu delovalo? Ali bom moral še 1x vleči utp oz še 2 žili nekako potegnit Prosim za čimprejšnji odgovor, ker moram vrnit klešče v ponedeljek:)- thnx @assistant_7"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Žice lahko razpleteš le toliko, da lahko operiraš z njimi. Za mrežo so potrebne samo štiri žice, zato ti ni treba vleči dodatnega kabla. Vsako posamezno žico naštimaj na pravilen pin v konektorju in to je to. Pazi le, da uporabiš en prepleten par žic za pin 1 in pin 2 ter drugi par za pin 3 in 6 oz. pri cross-over kablu en par za pin 1 in 2, ter drugi za pin 3 in 6, ki se na drugi strani kabla ravno zamenjata. Slikovno si stvar lahko ogledaš tu www.gadgettech.org/rj45/"
+    },
+    {
+        "role": "assistant_7",
+        "message": "thnx @assistant_8....se pravi, če sem vkapiral (pri mojem primeru - crossover način:  1 -> 3 2 -> 6 3 -> 1 6 -> 2  a je to to?  lp in thnx @assistant_7"
+    },
+    {
+        "role": "assistant_9",
+        "message": "jzst mam dva compa...dobim pa po novem letu  tud adsl 4mbit....a je možno da bi na obeh compih na enkrat igral? mislim ...igral bi ra2 v štiri...jzst na novem..brat na starem..pa še dva druga...prek gamespyja...se da to kak zvezat?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Maš v Red Alert vgrajen klient za igranje preko neta preko Westwood Online.  Deluje."
+    },
+    {
+        "role": "assistant_9",
+        "message": "nerazumeš...jaz bi rad da bi lahk na obeh compih istočasno igral..da bi lahk šel v mrežo z obema računalnikoma hkrati..se to da?"
+    },
+    {
+        "role": "user",
+        "message": "Jebediah: PREBERI SI SE ENKRAT O CEM GRE TEMA.  To je specificno vprasanje v zvezi z RA2 programom in ga prosi zastavi na primernem delu foruma -> Igre.  Ker sem pa tako dober ti bom ze vnaprej odgovoril: vsak racunalnik potrebuje svoj izvod RA2 z svojim cdkeyem - potem ni tezav s tem.  Iskanje kakrsnihkoli drugih resitev je v nasprotju z pravili foruma in licencnimi pravili RA2 in bomo moderatorji temu primerno ukrepali."
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_7:  To je to."
+    },
+    {
+        "role": "assistant_11",
+        "message": "Jebediah, odvisno... če bosta imeli obe kišti vsaka svoj zunanji IP (kolko vem siol omogoča do štiri dinamične IPje na enem adsl priključki?), potem bo delalo. če pa je ena kišta server in se druga povezuje preko nje, potem pa verjetno ne bo šlo. enak problem smo s kolegi skušali rešit pri Age of Empires II, pa nikakor ne gre. nekje sem prebral, da directplay tega preprosto ne podpira."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Karma mene samo zanima kako ti je potegnil kable, po kakšnih ceveh? Ker imam en rač. v pritličju drugega pa v 1. nadstropju in še študiram kako bi jih speljal."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Cevi namenjene el. napeljavi (oranžne, rebraste, premer ok. 15mm); po teh ceveh se ne da vlečt že narejenih kablov, ker se konektor zatakne v cevi (lahko ti celo ostane v cevi - prava mala katastrofa!! pomaga samo še majzl + macola); če bo UTP kabel v cevi skupaj z električnimi kabli, mora nujno bit ozemljen!!!  Če pa nimaš kake proste cevi v steni, lahko kupiš nadometne \"kanale\" - prodajajo take za prišraufat al pa za nalepit na steno. Poglej pri Merkurju, Metalki, BauMax, Bauhaus, Obi...."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Aha te cevi torej, nisem vedel da se da dodatne kable noter spravit."
+    },
+    {
+        "role": "assistant_14",
+        "message": "Jest pa bi se rad na ADSL net priklopu (prvi komp) preko drugega kompa, ampak, da bi bila mreža preko serial /com/ null modem kabla in NE preko mrežnih kartic! A bi to delalo (vem samo simetrično 115kb/s) normalno kot mreža preko mrežnih, al je kle kakšna dodatna caka? Igre in prenos podatkov kot vem deluje tudi tako; a je že kdo probal tako Web sherat?"
+    },
+    {
+        "role": "assistant_15",
+        "message": "Mene pa zanima če se da narest tko, da se med dvema kištama povezava na 2Mb ADSL ne razdeli na dva dela?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tale odgovor ti ne bo všeč.Menda se to da v linuxu,za winse sem pa 80% prepričan da se ne da,če pa že,ni tisto pravo,pa tudi za linux nisem prepričan da dela kot je treba.Rešitev so routerji,vendar ne tisti poceni,ampak tisti,ki so tako dragi,da se ti skoraj bolj splača kupit dva paketa.Tako je vsaj za kabelski internet,za ADSL pa ne vem,večinoma velja isto."
+    },
+    {
+        "role": "assistant_15",
+        "message": "A to pomen da ne bo nč od tega? A če mam dva paketa pomeni to dve linije in dve naročnine? Ker ne mislim dajat 26k za internet"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tist za dva paketa sm reku bolj za foro.Zdej pa ne vem, a ti bi se rad z enim kompom povezu na net preko drugega al bi rad prav razdelil povezavo?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tako kod si ze dobil odogovor. Stvar glede razdelitve pasovne sirine se zankrat na windowsih ni pametne(poceni) resitve, ostane ti le linux in njegov traffic shaping ali pa kaksne drag router. Malo pobrskaj po arhivu, bilo je ze nekaj debat na to temo"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Hm..zanimiva tema. Sem malo razmišljal in prišel do zaključka, da bom svojih 5 računal na ADSL povezal preko routerja (ADSL). Imam pa tudi 8 portni switch v katerega bom preko uplinka povezal ADSL router in tako omrežil celotno mrežo. Poraja se vprašanje ali vezati router in switc s navadnim ali crossover kablom."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Glede na cene, me je rahlo minilo. Bom probal uporabit 2 mrežni kartici v serverju. Zanima me samo: Preffered DNS server moram vpisati IP svojega ISP-ja. Ali mora biti ta ip vedno enak oziroma statičniali se lahko spreminja??   Alternate DNS server Kaj vpišem tukaj??   ...tnx že vnaprej..."
+    },
+    {
+        "role": "assistant_17",
+        "message": "Tudi jaz mam problem s pingom. Mam na enem compu win2k SP3 na drugem pa RH8.0 in win98. Problem je v tem da iz linuxa lahko pingam w2k masino. Iz w2k pa ne morem pingat linux masine. Vem da ni kriva kaka nastavitev v linuxi, ker se mi isto dogaja ce poskusim pingat win98. Preden sem namestil SP3 tega problema ni blo in ping je lepo delal. Ma kdo kako idejo, kako postimat da bo pingal tudi iz win2k?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_16: pod DNS serverje vpsi oba Siolova dns serverja, zdaj na pamet jih ne vem, zagotovo jih pa imas v navodilih, ki si jih dobil zraven. Glede ip-ja DNS serverja, pa je ta obicajno fixen, drugace bi se stvar po svetu malo tezko razumele, brez znanih DNS serverjev"
+    },
+    {
+        "role": "assistant_18",
+        "message": "V vasi hočemo postaviti brezžično mrežo?  kako to gre, koliko stane??"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Pajo>>tnx za odgovor. Sem že mislil, da bom moral vlogo za statični IP noter dat. sedaj pa mislim, da bo šlo brez tega, ali se pa motim??"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_16>> Ce zelis pri sebi doma imet DNS server vsekakor rabis fixni ip, ce pa zelis samo web ali ftp server pa ti zadeva popolnoma komot lahko laufa na dinamicnem ip-ju. Rabis le program ki ti iz tvojega dinaicnega ip-ja zmeraj naredi hostname. Te programe lahko najdes pod temi isklnimi nizi: dns2go, dynip in tako naprej   robibrk>> Kar se tice postavitve brezzicne mreze pa so stvari, kar potrebna dosti testiranja in vlozenega denaraj. Vso stvar lahko zgradis s samimi obicajnimi brezzicnimi mreznimi kartami, gledat le moras tolko da niso razdalje prevelike( okoli 100 do 200m vidnega polja bi se slo, odvisno od proizvajlca). Pa tudi na to temo je bilo ze nkaj povedanega, poisci po forumo pod geslmom WLAN."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Pajo>> Jaz želim imeti možnost, da bi preko 1. računalnika dostopali še trije drugi računalniki na internet. Kupil sem že 2 mrežni kartici za v server, prav tako pa imam tudi že naročen ADSl. Prepral sem si post. Tukaj! Sedaj pa me zanima, ali za točno to možnost moram vložiti pri telekomu prošnjo za statični IP ali ne?? BTW: to naj bi delalo v firmi in seveda si ne moremo privoščiti kakšnih nelicenčnih programov.. Tnx za vse in še za vnaprej.."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Še to...Server ne bo prižgan ves čas."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Glede opreme mas torej vse, za tvoje potrebe ne rabis staticnega ip-ja. Edino vedet moras to, da ko ne bo server prizgan, nihce od racunlnikov ne bo mogel na internet. Ce zelis kako drugace imet zadevo speljano povej, ker obstaja se resitev da se vsak od clientov poveze sam na internet, ne preko serverja. V tem primeru pa sploh ne mores imet staticnega ip-j, ker vsaka od povezanih masin namrec dobi svoj dinamicni ip."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Pajo>> Sam sem mislil prvo kupit router, pa sem poklapan ugotovil, da to cenovno ne znese. Torej mi je ostala še ta varianta, katero sem zgoraj opisal. Namen jo imam narediti jutri, tako, da...staj turned...  Drugače pa v bistvu se bo internet potreboval samo za plačila in nekakšno poslovanje, takrat pa bo server itak vkloplen že zaradi računovodskega programa... Nič dolvleke.  Hvala vsem, ki ste mi pomagali, tudi tebi Pajo! Se priporočam.."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ni blema, pa kar se tice tvoje povezave bo preko serverja kar cool, ker bos imel eneo centralno tocko, ker bos rabil skbet za varnost, se pravi dober firewall in mogoce se kaki skner mailov pa ti je zadeva kar dobra zascita, pa seved redni popravki windowsov"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Pajo>> Še nekaj me mantra (kot ponavadi). Bom najprej razložil problem in situacijo. Server se bo po delovnem času izklapljal. Delavci pa ga bodo vklopili v bistvu vsak deloven dan znova. Ker jim ne zaupam gesla od serverja, jim pustim samo, da oni pridejo do \"Login-on\" in nato se s svojimi računali prijavljajo v server, kar pomeni, da ljudje sploh ne morejo šarit po disku... Ker pa je potrebno ADSl ob vsakem izklopu vedno znova vklopit oz. povezat, me zanima, kako bi ti rešil ta problem??  Kako ga ljudje sploh imajo rešenega??   Ali naj jim skopiram bližnjico na namizje in se potem povežejo?? ali kako??  Že vnaprej vsem tnx..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "bližnjico skopiraj v Startup; nastavi da si zapomne ADSL geslo... tako se bo vsak računalnik avtomatsko prijavil v ADSL ob zagonu."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Ali3n>>sem bral tisti tvoj post, pa imam sam čisto drugače vse..bom že..  Ali obstajajo kakšna navodila, za win 98 kot drugi računalnik??"
+    },
+    {
+        "role": "assistant_16",
+        "message": "ali je mogoče gateway=prehod??  Slovenski winsi..."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_16 - probi še tukile mal pobrskat: http://www.practicallynetworked.com oz ics_troubleshoot.htm ;"
+    },
+    {
+        "role": "assistant_19",
+        "message": "Ko teče tema o sharanju inet povezave. Zanima me kako naredim to stvar z adsljem na linuxu. Doma sicer imam router, vendar je preslab za moje zahteve. ADSL je ppp0, mrežna za localca eth0, za dsl pa eth1. Prek localne mreže hočem dostopati preko linux PCja. Poleg tega pa hočem še port forwarding za ene 20 portov, podporo IPv6 routingu na pope, blokado določenih ICMP paketkov, blokado port scanerjev.... Večino se da poštimat z iptables več pa ne vem ker sm nov v linuxu. Hvala."
+    },
+    {
+        "role": "user",
+        "message": "hudo, dej odpri eno novo temo, ker imam obcutek da je ta problem tolk kompleksen, da bomo rabl neki poskusov preden bo tole tebi delovalo.. :]"
+    },
+    {
+        "role": "assistant_20",
+        "message": "Hi!  Jaz mam pa en problem! Doma imam dva racunalnika (ki pa cez vikende gostita se veliko drugih) ze lep cas v mrezi z switchem, ki pa nima Uplinka. V kratkem dobim ADSL, pa me zanima, ce priklopim ADSL na ta switch, ce bo delal, oz. kaksno resitev predlagate.   Vsekakor switch mora ostati;!!! Predvsem me zanima, ali lahko ADSL priklopim na ta switch ali ne??!?!?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Za priklop ADSL modema na switch uporabi cross kabel."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Kaj pa če mam kablski net? Je možna uporaba huba? Slišal sem, da ne, ker je samo en IP. Hub sem sicer že kupil takrat, kasneje pa izvedel za to.  Je slučajno možno delit povezavo prek HUB-a ce imam kabl net?  LP"
+    },
+    {
+        "role": "assistant_22",
+        "message": "a je kje kak vodič za postavitev omrežja in connection sharing v winxp? sem probal na isti način kot v 98 vendar ne dela niti omrežje adsl je povezan z računalnikom(win xp media center), potem pa gre iz tega compa še en kabel v drugi comp(win xp pro). sem nastavil tcpje, dnsje in drugo vendar niti ne pinga drugega compa. kot da ne bi bila vredu povezana. ledice na mrežnih pa svetijo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "svetijo al utripajo? upam da imaš crossover kabel."
+    },
+    {
+        "role": "assistant_23",
+        "message": "Meni pa bi rabila samo ena \"kmečka\" razlaga razlike med hubom, switchem in routerjem.... In katero od teh 3 bi potreboval za na ADSL(študentski paket) priklopit 8 računalnikov."
+    },
+    {
+        "role": "assistant_24",
+        "message": "@assistant_23: hub/switch podobna zadeva samo switch je boljši. Router pa je kot nek mini pc ki deli povezavo na več pcejev. Kupi 8 portni router ali si narediš en linux router in dodaš še zraven en 8portni switch"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Torej: Če 8 računal človek prikopi na router imajo vsi ti računalniki internet in lahko med seboj delajo v mreži?? Torej ne potrebuje switcha?? Kako pa je potrebno potem takem nastavit IP (statični ali dinamični)?? ali je potrebno med fiksen IP??  to me samo zanima, ker bom sedaj tudi jaz kupil router pa morajo imet pisarne internet in še delat morajo preko mreže zaradi računovodskega programa...  Hvala za opis...mislim, da bo odgovor pomagal tudi osebku zgoraj..."
+    },
+    {
+        "role": "assistant_25",
+        "message": "Če imaš (boš kupil) router ki ima že integriran Swich/HUB pol ne rabiš dodatnega Swich/HUB in bo vsak komp neodvisno od drugega dostopal do neta, pravtako ti bo lokana mreža laufala brez problema. V kolikor pa boš nabavil router brez \"razdelilnega dela\" pa potrebuješ dodatno komponento - Swich/HUB.  Glede IP-je lahko imaš interno statične ali dinamične (nekaj daljši zagon kompa), in enako velja za zunanji ip (ki ti ga dodeli tvoj ISP) ki je pravtako lahko dinamičen (ADSL) ali statičen (Kabl, ADSL)."
+    },
+    {
+        "role": "assistant_26",
+        "message": "Imam naslednji problem: imam 2 racunalnika na racunalniku 1 mam gor XPje na racunalniku 2 linuxe red hat 8.0 in hocem postavit server ker imam ADSL... zdej pa imam ze 3 mrezne 2 mam v racunalniku 2 (v linuxu) eno pa v racunalniku 1 (Win XP) zdej pa kako naj to povezem??!??!???!? @user kot sem videl imas ti vEliK pojem o tem in bi te prosil ce mi razlozis kaj naj naredim v racunalniku 1 (Win XP) in kaj v racunalniku 2 (linuxi)... Btw: Nimam kaksnega koli rooterja ipd.. samo kabel med karticama."
+    },
+    {
+        "role": "user",
+        "message": "http://www.e-infomax.com/ipmasq/howto/m..."
+    },
+    {
+        "role": "assistant_27",
+        "message": "jaz sem podoben problemcek resil z hubom, se mi zdi da se ga da dobit ze za kake 5k sit, pa nimas problemov vsaj ne s konfiguriranjem mreznih kartic. poizkusi"
+    },
+    {
+        "role": "assistant_26",
+        "message": "@user da vem za to stran a ni Win XP pa ni lepo razlozeno. a ti neves razlozit... hmm z hubom @assistant_27 pa kaj ko ga kupim sam saltam z modema (ADSL) v racunalnik 1 pa iz racunalnika 1 v hub pa pol iz huba v racunalnika 2 ? pa @assistant_27 ti mas tk kot jaz racunalnik 1 je (linux rh 8.0) racunalnik 2 (Win XP)"
+    },
+    {
+        "role": "assistant_27",
+        "message": "no jaz mam tkole 2x masina na eni nalozeno xp ona je skoz zalavfana. ta druga ma pa xp in red hat 80, ta pa je samo ko jo rabim. zadeva je silno enostavna v hub vstekas adsl pa obe masini pa je. nastavis une cifre pa bi mogl delat."
+    },
+    {
+        "role": "assistant_26",
+        "message": "hmm ja sj to je easy a nimam vec kesa da bi se kupoval hub.. ;) Ker pa vem da gre to kr tk brez huba, pa ce ima mogoce kdo isti primer in ve to bi ga prosil ce mi lahko razjasni zadevo.. ;)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_26: jzt sem ti dal navodila kako narest, da je linux router.. navodila kako narest da so winsi router imas pa cisto na prvi strani tega threada.."
+    },
+    {
+        "role": "assistant_26",
+        "message": "aaa @user jst hocem met linux router! sam brez routerja sam tk da bo imel 2 kartici not linux ;).. tko da kje mas to napisano?!"
+    },
+    {
+        "role": "user",
+        "message": "v HOWTOju, ki sem ti ga dal par postov visje"
+    },
+    {
+        "role": "assistant_28",
+        "message": "jst pa mam en problem sm kupu switch pa nanj priklopu crossover kabel ter še dva računalnika pa se mi prvi poveže, drugi pa ne. A ve kdo zakaj k se mi zdi res čudn namreč switch zazna vse tri kable."
+    },
+    {
+        "role": "assistant_16",
+        "message": "ne zmeš imet crossover kabel na switch. Crossover je samo za neposredno povezavo med dvema mrežnima karticama."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ni res. Če priklopiš na switch recimo ADSL modem potem rabis cross kabel."
+    },
+    {
+        "role": "assistant_16",
+        "message": "Govorim o primeru, ki ga je zanima. Seveda, samo pol mora switch imeti tudi up-link."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_16 kak da ne če pa mam jaz tak nareto? pa štiri mašine preko crossover gor... king kaj če pingaš se vidita mašini? če ne potem probaj naštelat na obeh isto workgroupo"
+    },
+    {
+        "role": "assistant_16",
+        "message": "jaz pa na switch nimam cross over pa mi dela OK."
+    },
+    {
+        "role": "assistant_28",
+        "message": "no se opravicujem ker nisem povedal da mam adsl pa sem dal crossover kabel ki gre z adsl modema v switch pol pa sem v switch priklopu 1. in 2. racunalnik pa se mi 1. poveze, drugi pa ne, uporabu pa sem isto geslo pri obeh. pa se to o pinganju ne vem natancno kako se to dela oz. kaj moram pingat da bom vidu 2. mašino  hvala za odgovore   LP king"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Mam dve masini na obeh win xp, povezani v mrezo ter deljeno adsl povezavo. Zanima me kaj je bolje za drugo masino: da ji dodelim ip addres ali da ga dobi sama ( obtain ip addres automaticaly )?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "king: To da se ti ena masina poveze druga pa ne je malo cdno, obe bi namrec morale delovat popolnoma brez problema. Tak da poglej ce imas na dugi masini kaksno curno nasatavitev.  @assistant_29:druga masina lahko dobi ip avtomaticno, samo so potem zmeraj kaksni problemi z mreznimi povezavami in tako naprej, tako da je najboljse da ji dodelis fixni ip, recimo ce imas na prvi masini ICS potem daj tej drugi masini tale ip:192.168.0.2, kod prehod in dns pa 192.168.0.1 in bi stvar moral spilat kod sus"
+    },
+    {
+        "role": "assistant_30",
+        "message": "Ti ji kr določ en IP. POmoje drgač ni velik razlike, sam mislm da ti bo hitrej v winse pršlo če boš meu določen IP na mašini. Lahko pa tud da se motim    Mene pa zanima kuko je pri študentskem paketu ADSL, kolk se jih lahko naenkrat poveže na ADSL. A je tako kt pri paketu za fizične uporabnike da se lahko 4 naenkrat povežejo, a sta lahko samo 2? Ker zaenkrat mam ICS naštiman, pa mi ni preveč ušeč da mi skoz mašina laufa. Pa še to, a lahko SiOL kej zateži če bi nam ratal da bi se 4 povezal? Sicer mamo router sam ga morem še nakak skonfugurirat da bo eMula delal normaln  ne znam še nekak najbol portov odpirat"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Tudi na studenstskem paketu delujejo 4 povezave, no najvec kar sem probal so bile 3 pa je delalo normlno, tako da bi 4 po moje tudi morale  Nima pa ti siol kaj tezit ce se 4x povezes, tak si vsi delite pasovno sirino med sabo in to siol ne stane parav nic vec, kot pa da imas ti samo eno aktivno povezavo  Kar se pa tice routerja, pa se bos ze moral malo igrat, ampak nobena zadeva ni tako hudo tezka, da se je ne bi dalo opravit"
+    },
+    {
+        "role": "assistant_30",
+        "message": "NO hvala,sej predvsem je mojga soseda skrbelo da ne bomo pol dobil kakšne \"čudne\" račune na dom  pa sem mu jest takoj reku da jih ne bi smel. Rajš preverm tkole.  To vem da ni nč tako težko da se ne bi dal uštimat, sam sem biu kr mal razočaran k sem dal IP od moje mašine na dmz zone, se prav da bi mogu bit odprt za vse, pa sem še zmerej dobivou low ID na eMuli. Se bo treba še enkrat mal igrat. Pa najnovejš firmware je tud gor. Router je pa D linkov DL614+ Če pa koga zanima kuko se stvar nastavlja, je pa tuki link DL614+"
+    },
+    {
+        "role": "assistant_29",
+        "message": "To z ip naslovi sem postimal, zdej je pa tuki se en problem. Upload mi namrec ne deluje. Poskusal sem poslat datoteko preko messengerja pa ne gre...   plus... (zdej pa ze tezim...) Se to. Mrezo imam povezano v half duplexu (100 Mbit). Lahko deluje v Full duplex nacinu???"
+    },
+    {
+        "role": "assistant_6",
+        "message": "panter:Za tvoj router pa bi jaz tisto tvoj DMZ ugasnil dol in raje naredil samo en virtual server pod advance settingsi in sicer to naredi po musterju kod je ze za ostale servise ze pripravljeno, le da tu rabis vklopit port 4662 za emulo, pa stvar ziher mora spilat. Upam da ti bo ratalo.  @assistant_29: Za tvoj problem si preberi tole temo."
+    },
+    {
+        "role": "assistant_29",
+        "message": "kaj pa duplex ali full duplex? Pa se to. zakaj ne dela dcc na ircu?? (firewali vsi izklopleni)"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Full in half duplex na mrezni karti je odvisen od swicha/huba obicajno, ker ce mas dokaj novo mrezno karto zagotovo ta podpira full duplex, tak da poglej kaki hub oziroma swich mas  Kar se pa tice DCC-j na ircu pa je lahko blem na drugi strani ali pa ti Mirc blokira kake fajle, ker po defaltu ne gre posiljat kakih .exe ali podobnih datotek preko DCC-ja, poglej si malo nastavitve"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Dodal bi samo da hub ne podpira full duplex. To pa zato, ker hub ne ve nič o prometu, ki teče skozi. Torej, ko pride paket iz ene mrežne v hub gre naprej na vse porte. Zato morajo ostali čakati kar pomeni da poteka promet samo v eno smer - half duplex. Za razliko od huba zna switch usmerjati promet - ve kam so paketi namenjeni in jih pošilja samo na tisti port tako da se lahko ostali vzporedno pogovarjajo. Tako nekako."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Jop, mas prav ja  No torej moras imeti swich in ti bo delalo full dupex, vsaj moralo bi  Sploh pa saj tega tako in tako ne rabis doma, za domaco rabo je 10Mbit mrezica vec kot dovolj"
+    },
+    {
+        "role": "assistant_31",
+        "message": "zio. eno (mogoce malce) cudno vprasanje imam. V vasi kjer zivim, sva dva ki imava ADSL, se stirje ostali pa bi tudi radi imeli ADSL, a bi to vse skup prislo prevec drago. A je kaka moznost, da se naredi omrezje v vasi...ne samo povezava med racunalniki v hisi (se pravi tistih par metrov kabla)? tko recimo, da bi imeli samo en ADSL (npr. 8Mbit) pa bi ga pol razdelili na 6 uporabnikov po vasi. maksimalne razdalje so priblizno 250m. a bo za to potrebno brezzicno omrezje (ce je sploh mozno in da ni hudo drago) ali kako drugace?  hvala za nasvete!  LP"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Ojla eno vprasanje! Ce mam ADSL modem prikljucen na switch ali pa hub, nanj pa dva racunalnika, mora biti vedno eden prizgan, ali lahko laufam internet na obeh neodvisno??? ajaaaa pa et to: kaksen kabel je od ADSL modema do switcha/huba in kaksen od switcha/huba do compov???"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_29: lahko laufas neodvisno"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_31: pobrskaj stare teme... mislim da smo podobno že načeli. 250 metrov bo sicer kakšna težava. 100 mbit vam verjetno nebo vredi pičlo. lahko pa 10 mbit naredi z kakim fajnim koaksialcem. navsezadnje 1 mega prenosa tudi ni tak slabo. najboljše pa bo če se posvetiš v kaki računalniški trgovini kjer se kaj spoznajo na omrežja ali pa kar v kakem takem podjetju. aja. wireless bi vas verjetno preveč koštal.. samo za info. rajši fuknite tiste dnare za dober kabl."
+    }
+]

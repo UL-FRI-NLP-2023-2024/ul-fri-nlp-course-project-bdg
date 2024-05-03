@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "Naltel sem na problem. Namreč v prešnjem stanovanju sem imel internet povezavo vezano na router (na katerem je tudi omrežni tiskalnik). Sedaj pa te možnosti nimam več, zato sem nabavil mobilni modem pri Simobilu. Modem priključim na USB in zadeva deluje, ampak samo ko imam wireless povezavo onemogočeno. Če v trenutkui, ko sem povezan na internet, omogočim wireless do routerja, na katerega je priklopljen tiskalnik, mi internet neha delovati. Povezava na router pa deluje, in računalnik kaže kot da išče internetno povezavo preko routerja.  Torej rad bi, da imam dostop do interneta preko modema, istočasno pa sem povezan preko wirelessa na router, zaradi tiskalnika in nenazadnje tudi drugega računalnika. Mimogrede, tudi če povežem računalnik in router s kablom, se ista zgodba ponovi.  Prosim za rešitev problema. Hvala Danilo"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kolikor mi je znano je lahko v Windowsih aktivna le ena internetna povezava..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Normalno je to kar se dogaja, potrebuješ router ki ti bo omogočal priklop USB modema na ruter in le tako boš lahko uporabljal oboje hkrati."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Morda ima pa modem že RJ45 konektor in ne rabi novega routerja. Poglej, če ima kje modem konektor za mrežni kabel in ga poveži z routerjem (v WAN port)..."
+    },
+    {
+        "role": "user",
+        "message": "Modem nima nobenih dodatnih priklopov. To je tisti modem, ki je kot ključek in je mobilni. Routerja pa ne potrebujem za internet, ampak samo za omrežje s tiskalnikom in drugim računalnikom.  Sam sicer uporabljam Windows XP, punca pa ima na prenosnem računalniku Windows 7 in pri njej ni težav s tem. Istočasno, ko je priklopljena na internet preko modema, lahko tudi tiska na omrežni tiskanlnik."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Router najbrž brezžični kartici v tvojem PCju avtomatsko dodeli IP številko in ta je najbrž globalna. Probaj v Nadzorni plošči pod Omrežje/Network dodeliti brezžični kartici lokalni IP (npr. 192.168.1.102). Pa omrežno soseščino imaš najbrž vklopljeno in tudi ustrezne protokole? Če ne je pa treba ročno vzpostavit \"LAN to WAN Bridge\". To Windowsi drugače avtomatsko storijo..."
+    },
+    {
+        "role": "user",
+        "message": "Bom poiskusil spremeniti IP. Sedaj imam vse protokole nastavljene na avtomatsko in predvidevam, da se avtomatsko \"zrine\" naprej router, ko ga vklopim."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Takole probaj nastavit brezžično kartico: IP address: 192.168.1.102 Mask: 255.255.255.0 Gateway address: lokalni naslov routerja (poglej v nastavitve, običajno 192.168.1.1) DNSje pustiš prazne..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "To se da enostavno rešit.  LAN pusti na samodejnem dodeljevanju IPja.  WLAN, tukaj vpiši statične nastavitve ampak samo na IP, ta naj bo seveda lokalen 192.168.1.xxx oz. 192.168.100.000 (koliko pač imaš lokalne IPje), vpiši tudi masko, ponavadi je ta 255.255.255.0. Vse ostale nastavitve pusti prazne.  V tem primeru prideš preko LAN na internet - preko modema, ker imaš tam tudi vpisan IP gateway, po WLANu pa prideš na svojo lokano mrežo. Delovalo bo, ker tukaj ne boš imel vpisanega IP gatewaya, DNSa tako ali tako ne potrebuješ.  ;)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ja pod Gateway raje pusti prazno..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala za informacije. Sem naredil tako kot ste predlagali in zadeva deluje.  Super in še enkrat hvala. Danilo"
+    },
+    {
+        "role": "user",
+        "message": "No sedaj pa imam nov problem. Rad bi puncin prenosnik povezal na moj deljen internet. Podatki: moj prenosnik, Windows xp, deljena internetna povezava IP 192.168.0.1 preko wireless na router puncin prenosnik, Windows 7, ima dodeljen IP preko routerja IP 192.168.0.2 Router ima IP 192.168.0.1 in tiskalnik priklopljen na router ima IP 192.168.0.3  To je vse naštimano, vendar pri punci internetna povezava ne deluje, ZAKAJ?  LP Danilo"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Roko na srce, sploh ne vem kako imaš to sedaj priklopljeno.  Ne vem zakaj kompliciraš s temi dvojnimi povezavami. Poveži modem na router (WAN) priklopi, nastavi vse potrebno da ti bo delal internet. Ko je to storjeno bo enako, ali boš povezan preko kabla ali preko WiFija na router. Ker bodo vse naprave na enakem LANu, se bodo tudi videle in seveda pingale. Bodi pozoren, da bodo PCji v enaki work groupi, več nimaš kaj šarit in izumljat ...  Lp Še nekaj mi je čudno, PC in router imata enak IP?  Ti ne javi napako, da imaš v omrećju podvojen IP?"
+    },
+    {
+        "role": "user",
+        "message": "Moja napaka. Router ima IP 192.168.0.100. Modem ne moram priklopiti na router, ker je to USB modem od simobila (torej nima drugega priklopa kot USB). Ravno zaradi tega moram imeti deljeno povezavo na računalniku in ne na routerju."
+    },
+    {
+        "role": "assistant_0",
+        "message": "V primeru tvojih IPjev mora bit omrežna maska 255.255.255.0. Na tvojem PCju mora biti vklopljena funkcija Deljenje internetne povezave (Internet Connection Sharing) in na puncinem računalniku mora biti obvezno vklopljeno avtomatsko dodeljevanje IPja ker tako pač deluje ICS (Internet Connection Sharing). Torej njen ročno dodeljen IP (192.168.0.2) tukaj odpade. Pa tudi izklopit moraš DHCP na routerju, če ne mu bo ta dodelil svoj IP..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kot je lepo povedal @assistant_0, ICS moraš \"skonfigurirat\".   Bi še nekaj opomnil, ker dvomim, da bo zadeva delovala v trenutni konfiguraciji.  Imava 2 načina ureditve LAN omrežja in IPjev. Lahko imaš statične IP ali dodeljevanje preko DHCP.   Osebno ti priporočam, da se držiš DHCP variante, da boš imel v prihodnosti \"avtomatizirano\" zadevo in ne bo težav.  1. Uredi ICS, kot je rekel @assistant_0 2. Na Routerju pusti lokalni IP 192.168.0.100 3. WAN nastavitve na routerju pusti prazne, ker jih ne potrebuješ. Router ti bo koristil samo kot DHCP server in nič drugega! 4. Na routerju pusti DHCP \"on\" in vpiši v router pod Gateway, IP tvojega Gatewaya v LAN omrežju. Ta ni 192.168.0.100, kot je to standardno, temveč IP tvojega PCja, ker je ta tvoj vhod na internet. Torej vpiši pod Gateway IP 192.168.0.1 .  5. Masko pusti 255.255.255.0 6. V router vpiši še IP za DNS strežnik (lahko provajderjev IP ali pa kar Googlovega 8.8.8.8) 7. Nastavitve IPjev itd. v tvojem PCju ne spreminjaj. 8. IP tiskalnika tudi pusti nespremenjene 9. Na puncinem PCju nastavi dodeljevanje IPjev preko DHCP. Če si vse prav skonfiguriral bi moral na njen PC dobiti naslednje IPje.  Greš pod start - run - CMD, napišeš \"ipconfig/all\"  IP: 192.168.0.2 (lahko tudi keri drugi IP) maska: 255.255.255.0 IP GW: 192.168.0.1 (IP tvojega PCja)  DNS: pač en IP DNS serverja (8.8.8.8 itd...)  Tako bi ti tudi morali delovati vsi PCji, ki jih na novo priklopiš.  Lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "V tem primeru kot ga je zgoraj opisal @assistant_2 bo potrebno po mojem mišljenju nastaviti router tako, da bo ta dobil IP od tvojega PCja z modemom. Se pravi, da router ne sme imeti statičen IP (192.168.0.100) ampak ga mora preko DHCPja pridobiti od tvojega PCja... Gre za neke omejitve ICSja, kateri lahko dodeljuje le dinamične (lokalne) naslove. To velja za Windows XP, za Visto oz. Sedmico pa ne vem kako je tam zrihtano..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Jaz še nisem videl niti 1 primer, ko je PC DHCP server, pa nisem malo časa v networku (serverji ne štejejo).   Če se motim, me prosim popravi.  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tukaj sem našel par omejitev glede ICSja v Windows XP...  \"However, XP ICS is missing some features of those earlier versions. You can't disable the DHCP server, change the server computer's IP address, or change the range of addresses allocated by the DHCP server.\""
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pozabil sem še omenit, da bo treba ustvariti še Omrežni most, ker sta tukaj dve različni omrežji (wireless in pa USB modem). Preden vklopiš ICS izberi v Omrežnih povezavah (Network Connections) obe omrežji (Wireless in USB) in v kontekstnem meniju (desni miškin gumb) izberi Omrežni most/Network bridge. Potem na novo dobljeni povezavi vklopi ICS in nastavi parametre tako kot smo ti prej povedali..."
+    }
+]

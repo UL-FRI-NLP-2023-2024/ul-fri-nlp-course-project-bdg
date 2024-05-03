@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Rada bi naredila izvir toka (z amplitudo vsaj desetino ampera, še raje amper) žagaste in/ali sinusoidne oblike z zelo dobro določeno frekvenco (frekvenca nekje med 0.2 in 0.005 Hz). Želela bi si precizen timing in bi si pomagala s PPS signalom ter verjetno z Arduinom. Dovolj enostavno se mi zdi združiti Arduino, GPS modul, DAC. Ampak DAC mi sam po sebi ne pomaga, ker z njim ne morem generirati dovolj močnega toka.  S tokom moram napajati samo malo tuljavico (R=1 Ohm) oz. kvečjemu še en uporček, na katerem bi lahko z osciloskopom spremljala potek.  Kako zapleten je takšen projekt? Škatlasto (ON/OFF) funkcijo bi se verjetno dalo enostavno narediti. Kaj pa poljubne funkcije? Kako zapleteno se je lotiti tega? Kakšne odzivne čase se lahko pričakuje (rada bi ciljala pod 1 ms)."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Naredi tisto kar si napisala z DAC vred, potem pa dodaj voltage to current conversion za operacijca pa vzameš nek \"high current\" opamp: LT TI"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Hitrost je odvisna od izbranega DAC-a in programa.  Z AVR uC @ 16MHz, paralelnim DAC-om in uporabo tabele vrednosti je brez večjih problemov možno doseči nekaj 10k pretvorb / s. Z dobrim HW in SW verjetno blizu 100k.  Ne vem, kakšno natančnost potrebuješ. Moj GPS modul z Ebay-a generira 99% pps impulzov z napako manjšo od 60nS. Max. napake mi v specifikacijah na hitro ni uspelo najti.  Če hočeš izmenični generator, potrebuješ +- napajanje, ali izhod v t.i. bridge vezavi.  Časovno konstanto izračunaš kot L/R, kjer je L induktivnost in R ohmska upornost tuljave + upornost merilnega upora."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 28. jan 2016 ob 22:06 izjavil:Želela bi si precizen timing   @user je 28. jan 2016 ob 22:06 izjavil:frekvenca nekje med 0.2 in 0.005 Hz   Lahko malo bolj opišeš kaj smatraš kot precizen timing? Če imaš periodo 200 s potem ti neka huda časovna natančnost prinese zelo malo (rang milisekund je tukaj že zelo zanemarljiv). Jaz nebi kaj dosti kompliciral z GPS referenco - raje uporabi zunanji kristal pri mikrokontrolerju (recimo 16 MHz kristal ima kamot manj kot 20 ppm napake).  Kakšen korak toka pa pričakuješ/želiš (najmanjša sprememba toka)? Če je DAC 8 bitni in je največji tok 1 A potem je najmanjši korak 1 A/2^8 = 3,9 mA.   Načeloma potrebuješ dva modula - generator signalov (funkcijski generator) in pretvornik napetosti v tok. Mogoče premisli o uporabi namenskega integriranega vezja za generator signalov, ali pa kar uporaba funkcijskega generatorja."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0: Hvala za specifične linke. Bom kupila svoj prvi operacijski ojačevalnik iz linka, se poigrala ter upala na najboljše.  @assistant_1: Kako si testiral točnost PPS signala? Jaz imam tri module (oz. dva od Adafruit-a in enega sposojenega) in razlika med dvema je nekje 50-150 ns. Za mojo konkretno aplikacijo je to čez glavo dovolj, ni mi pa jasno, kako je možna 150 ns razlika, saj to pomeni cca. 45 metrov napake pri določanju položaja.  Glede (časovne konstante) spremembe magnetnega polja v tuljavi: čisto sem pozabila na upor, ko sem razmišljala o tem, kako spraviti induktivnost na minimum. Ampak hiter izračun pravi, da bi morala s 100 Ohmi in cca. 10 uH dobiti časovno konstanto 100 ns, kar ni prepočasi.  @assistant_2: kot precizen timing smatram absolutno točnost časa, ki je boljša od 1 ms (bonus, če je to 1 us, ampak preveč zahtevna ne smem biti). Kako točno naj zunanjemu kristalu in mikrokontrolerju brez GPS-a dopovem, naj mi sproži signal točno jutri ob 12:00:00.000 (z manj kot milisekundno napako) in to počne še naslednjih 24 ur, ne da bi se zmotil za eno samo milisekundo?  Glede zahtevanega koraka še nisem razmišljala. Načeloma bi rada na enem koncu generirala tok in digitalizirala, daleč stran pa na prebrane podatke fitala sinus, žagasto oz. škatlasto funkcijo na daljšem časovnem intervalu ter določila, kako \"počasi\" deluje zajem in prenos podatkov. Ne verjamem, da bo korak preveč diskreten, če pa bo, lahko verjetno dodam en hiter RC člen, da malo zgladi funkcijo. Adafruit prodaja 12-biten DAC, ne vem pa, kako počasi dela (njihov ADC s priloženimi gonilniki daje 10 ms zamik na branje enega kanala). Če točno vem časovni zamik DAC-ja, ga verjetno z nekaj spretnosti lahko tudi kompenziram v softveru.  PS: zakaj ne dela grška črka mu?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "1ms na 24ur je utopija, razen ce imas cezijevo uro na razpolago :D  rabis zelo precizen vir ure. RTC se ponavadi uporablja v povezavi z zunanjim virom, da se vsake toliko sinhronizirajo nazaj na tocen cas. Enostavni RTC moduli bodo kljub temu falili za vsaj sekundo na 24 ur. Ponavadi se vec. Torej ti ostane gradnja preciznega oscilatorja, kar v praksi pomeni da ga moras segreti na temparaturo, ki je nad sobno in potem cim bolj natancno vzdrzevati to temparaturo. Ko ti to funkcionira lahko umeris oscilator da tik-taka z tocno doloceno frekvenco ponavadi se uporablja 32Khz kristal ampak v tem primeru bi izbral visjo frekvenco, ki jo potem zdelis da dobis takt ene sekunde ali manj  nagradno vprasanje. zakaj pa rabis 1ms na 24 ur? je to specificna zahteva projekta al te firbec matra ce je mozno izvest?"
+    },
+    {
+        "role": "user",
+        "message": "Nagradno vprašanje št. 2: zakaj mi odsvetujete uporabo GPS-a, ki lahko (če ne ravno izpade signal) brez težav vzdržuje tja do mikrosekunde točen čas? (OK, znotraj sekunde utegne sicer biti še vedno manjši problem, če nimaš kristalčka.)  Ne, ne matra me samo firbec. Saj sem že zgoraj napisala, da potrebujem točen čas in ne samo dobro določene frekvence signala. In ne, ne potrebujem ga samo 24 ur. Točen čas bi bilo idealno vzdrževati več let.  V konkretni (pod)aplikaciji sicer potrebujem samo dobro usklajene ure na dveh oddaljenih lokacijah (brez internetne povezave). Ne bom sicer merila hitrosti nevtrinov, tako da ni pomembno, da merim na femtosekundo točno, še vedno pa bi rada merila čas potovanja med dvema lokacijama in se mi niti slučajno ne sanja, v čem je GPS problematičen."
+    },
+    {
+        "role": "assistant_3",
+        "message": "GPS ni problematicen ce imas ustrezno opremo. Naceloma ti hobby moduli ne zagotavljajo natancnosti, ki jo potrebujes. Poleg tega se ti lahko zgodi, da izgubis signal. Torej rabis nek RTC, ki ti to nadomesti. Drazji in boljsi moduli imajo pa tudi izhod zelo stabilne frekvence. Ubistvu je tako kot GPS sinhorniziran oscilator (kar dejansko rabis), ki je tudi zelo tocen. Samo vseeno glej za moduli z zunanjo anteno, da zagotovis GPS signal 100% casa.  Sem delal podobno zadevo z DCF urami. Tiste so izredno tocne a je problem s signalom podnevi ker je prevec elektromagnetnih motenj. Ce pa imas dovolj kvaliteten sprejemnik, da zagotovis 100% odcitavanje casa je pa to najbolj natancna ura, ki jo lahko imas saj jo poganja cezijeva ura.  Se ena prednost DCFja je, da ne rabis nobene sinhronizacije. Obe napravi dobivata signal iz istega vira. Verjetno je sla tehnika kaj naprej pa se danes dobijo morda kaksne vecje zunanje antene za DCF, ki bi to zadevo resile  Na koncu bo verjetno stvar denarja za katero pot se odlocis.... https://www.google.co.uk/search?sourcei...  natancnost manj kot 10ns napram UTC ko je sistem sinhroniziran ;) Tole gleda nekaj takega kot ti rabis, mogoce ti pomaga dalje: http://www.diyphysics.com/2012/02/19/d-..."
+    },
+    {
+        "role": "user",
+        "message": "Morda je vredno stestirati DCF. Sicer ni prenosljivo v druge konce sveta, ampak vredno bi bilo poskusiti. (Ne vem, ali kaj pomaga, če sprejemnik postaviš na mesto, kjer nizkofrekvenčnih elektromagnetnih motenj skorajda ni.)  GPS sprejemnik mi sicer brez težav dela tudi znotraj lesene barake.  Prvi zadetek na iskanju tole. Še večja zabava kot na drugem linku.  Hvala za linke. Bom pa šla lepo povrsti in začela s tumpastimi manj natančnimi off-the-shelf kristali, preden me prvi procent dela in gretje kristalov zaposli za nekaj mesecev. Tako da najprej generiranje toka, šele potem bolj precizno usklajevanje ure s kristalom ..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "to je res, DCF je pokrit po evropi, ZDA in japonska imasta pa svojega ki dela na 60kHz namesto 77.5kHz  ce se ti kje zatakne pa pocukaj za rokav"
+    },
+    {
+        "role": "assistant_1",
+        "message": "GPS modula nisem testiral. Podatki so iz specifikacij, kjer med drugim piše: \"If relative time accuracy between multiple receivers is required, do not mix receivers of different product families. If this is required, the receivers must be calibrated by accordingly setting cable delay and user delay.\"  Za 1A skozi 100ohm potrebuješ min 100V. 1A*100V = 100W. (moč, ki se troši na bremenu). Če je oblika toka: sinus, potrebuješ napajanje min 100V * sqrt(2) = cca (+-)141V. trikot 100V * sqrt(3) = (+-)173V. Temu je potrebno dodati še padec napetosti na izhodnih tranzistorjih (2 - 4 V) in nekaj rezerve, če naj se pri max. toku vir obnaša kot tokovni generator.   Npr. max napetost za OPA548 je 60V (+-30V). Verzija v TO220 ohišju s hladilnikom (Rthja 16,7K/W) in temperaturi okolice 50 stopinj C, glede na pdf prenese max. 6W disipacije.  edit: Kako točno naj zunanjemu kristalu in mikrokontrolerju brez GPS-a dopovem, naj mi sproži signal točno jutri ob 12:00:00.000 (z manj kot milisekundno napako) in to počne še naslednjih 24 ur, ne da bi se zmotil za eno samo milisekundo? Za to bi bil verjetno GPS modul najbolj primeren."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 2. feb 2016 ob 09:58 izjavil:Glede (časovne konstante) spremembe magnetnega polja v tuljavi: čisto sem pozabila na upor, ko sem razmišljala o tem, kako spraviti induktivnost na minimum.  Zakaj rabiš upor?"
+    },
+    {
+        "role": "user",
+        "message": "Upor potrebujem delno zato, ker ne vem, kako narediti idealno tuljavo, delno pa je koristen kot zaporedno vezan k tuljavi za spremljanje napetosti (oz. posredno toka skozi tuljavo). Ne potrebujem pa 100 Ohmskega.  Imam dva GPS-a istega proizvajalca (Adafruit), pa dajeta 100 ns razlike. Za to konkretno aplikacijo ni pomembno, me pa vseeno čudi."
+    },
+    {
+        "role": "assistant_2",
+        "message": "V kolikor moraš imeti absolutno točen čas, potem kamot lahko uporabiš GPS kot vir ure (če seveda imaš dober signal - priporočam zunanje antene). Si mogoče razmišljala v smeri uporabe računalnika in DAQ (vse ti krmili računalnik)? Verjetno si boš s tem olajšala zadeve."
+    },
+    {
+        "role": "assistant_3",
+        "message": "@user je 2. feb 2016 ob 23:07 izjavil:Upor potrebujem delno zato, ker ne vem, kako narediti idealno tuljavo, delno pa je koristen kot zaporedno vezan k tuljavi za spremljanje napetosti (oz. posredno toka skozi tuljavo). Ne potrebujem pa 100 Ohmskega.  Imam dva GPS-a istega proizvajalca (Adafruit), pa dajeta 100 ns razlike. Za to konkretno aplikacijo ni pomembno, me pa vseeno čudi.   odvisno kako natacno rabis merit tok, lahko za ta namen uporabis tudi namenski cip: http://uk.farnell.com/allegro-microsyst..."
+    }
+]

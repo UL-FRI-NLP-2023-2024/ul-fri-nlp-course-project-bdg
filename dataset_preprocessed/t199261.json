@@ -1,0 +1,50 @@
+[
+    {
+        "role": "user",
+        "message": "Ok.  Zadnje tri dni se ukvarjam s postavitvijo Tyan Transport GT24 strežnika, ki temelji na nVidia čipsetu (NVIDIA nForce Professional 2200). Imel sem 4 250gb Maxtor DiamondMax 10 diske (sodeč po storagereview.com dobra izbira za strežnik, če ne moreš dobiti novih WD 400gb RaidEdition2), ki sem jih imel namen goniti na vgrajenem SATA kontorlerju v postavitvi RAID1+0.  Stvar ne dela - že ob prvem bootu in poskusu nastavitve polja v NVRAID se zadeva sesuje. Poflasham nov BIOS na Tyan K8SRE matično ploščo in razmere se ne spremenijo. Po čudnem naključju poskusim ponovno in nastavim Cluster size na 8K - zadeva začuda dela. Poskusim inštalirat W2003 SBS in se inštalacija sesuje pri kreiranju particij.  Ob naslednjem bootu sploh ne morem mimo POSTa, ker se NVRAID obesi pri \"Detecting array\". Reset biosa pomaga dokler ne vklopim NVRAID nazaj, potem se spet sistem obesi. Kupili smo še en 250gb Maxtor DM10 za rezervo, če eden odpove. Odstranim štiri diske iz računala in vgradim tega rezervnega. Tokrat se odločim da ne bom riskiral in probam bootat brez da vklopim NVRAID. No dejansko mi uspe naložit prvo stopnjo strežnika, pri vsakem naslednjem bootu se sesuje.  Besnim nad nekvalitetnim strežnikom (verjemite mi, ko enkrat odrineš 700k sit za računalnik, HOČEŠ DA DELA!) in pripišem vse težave Tyan matični plošči. Zgolj za hec preizkusim 320gb WD 3200JB disk, ki je rezerva za nek drug strežnik. Glej ga zlomka - nobenih težav z NVRAID, stvar lavfa tip top!  Googlanje odkrije da ima Maxtor z DiamondMax10 serijo in nvidia nforce čipseti resne težave, ki se jih včasih da rešiti s flašanjem firmware-a - v večini primerov pa so težave še vedno tam.  Moj nasvet - ne kupujte Maxtorjevih trdih diskov, priporočam Seagate ali WD."
+    },
+    {
+        "role": "assistant_0",
+        "message": "ali lahko napises tocni model diska??"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Imam 2* Maxtor DiamondMax 10 v RAID0 na nForce4... dela k pesmica... prenosi na zacetku 140MB/s in okoli 85MB/s na koncu.  LP  @assistant_1"
+    },
+    {
+        "role": "user",
+        "message": "Kaj naj ti rečem - potem imaš pa srečo, meni na strežniški matični plošči stvar ne dela (in to ni osamljen primer, pogooglaj). Btw: uporabljaš siliconimage raid ali raid v southbridgu?  Nimam pojma kaj točno zaen model je bil - 250gb, SATAII vmesnik."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Uporabljam RAID v southbridgeu, sej če bi uporabljal silicon image ne bi prisel do 140MB/s... Omejitev PCI vodila je 133MB/s v teoriji in mogoce 120MB/s v praksi. Mam pa plato DFI Infinity Ultra NF4.  Mogoče je Professionalni chipset od nVidie manj profesionalen kot bi človek pričakoval :)  Mam pa en drug problem z DiamondMaxi... ne morem izklopiti Automatic Acoustic Managementa. Diska sta prisla z vklopljenim AAM, izklopit se jih pa ne da z nobenim softwareom...  LP  @assistant_1"
+    },
+    {
+        "role": "assistant_2",
+        "message": "silicon image kontrolerji so ze tako bolj slabi.... na plati mam sil 3132, 2x hitachi T7k250 v raid 0, ampak hitrost tok zelo niha, da tut dvdja na 8x ne morem normalno zapect. prej sm meu raid na 8237 in je delal brez problema. zdej sicer doseze max hitrost 130-140 in povprecno 100MB/s (hdtach), ampak parkrat pade tut na 20-30MB/s. tko da, ob prvi priliki se selim na nvraid. upam, da bo kej boljs."
+    },
+    {
+        "role": "assistant_0",
+        "message": "daj probaj nastaviti jumper na disku tako da bo delal kot SATA1 in ne kot sata2. imas eden jumper."
+    },
+    {
+        "role": "assistant_2",
+        "message": "ma sej to sm premisljeval ze, ampak mislm, da to ni problem."
+    },
+    {
+        "role": "user",
+        "message": "@tribes: Jah kaj naj ti rečem, maš srečo, gledal sem en kup reportov ljudi z nf4 ploščami ki jim nvRaid ne dela. Jst vem da maxtorja ne kupim več, ker tole mi je požrlo tri mač živcev."
+    },
+    {
+        "role": "assistant_3",
+        "message": "KUPU DONES TA DISK,IN REČEM DA JE RES SUXS,Dal na asus p4c800 deluxe in nikakor ne dela,šele na promis kontrolerju dela.jajce"
+    },
+    {
+        "role": "assistant_4",
+        "message": "lp!  no pa povrsti: - stvar je stara že cca. 1let (ker sem imel tudi sam probleme)  razlaga/rešitev: - bug v firmware-u diskov - bug v nVidia IDE gonilnikih - \"nateg\" poizvajalca da je disk SATA||, in pol vsi uklopjo NCQ (ki ga SATA|| stand. ne zahteva) - nameščen DVD/CD pogon na Primary IDE kanalu  tako, da: - prestavi morebitne CD/DVD pogone na Secondary IDE kanal - firmware diskov so \"že\" OK (če ši kupoval od decembra naprej) - problem pa je še VEDNO \"nVidia IDE/SATA Drivers\" + NCQ, tko, da če že nameščate le-te gonilnike potem po reboot-u v \"SafeMode\" in v \"System->Hardware->Device Manager->IDE ATA/ATAPI Contrl.->NVIDIA nForce4 Serial ATA contr->\" odstrante klukco \"Enable command queuing\" na vseh kanalih na katerih so fizično diski"
+    },
+    {
+        "role": "user",
+        "message": "Gledal sem po Maxtorjevi spletni strani in piše da so diski SATA2. Sploh pa se mi ni ratalo prebit do windowsov da bi izklopil NCQ in probal če drži tvoja trditev.  Sploh pa - zadeva se bo nucala v strežniku,kjer se NCQ pozna, sploh v raid 0+1 postavitvah. Lepo bom prešaltal na WD RE2 pa je."
+    }
+]

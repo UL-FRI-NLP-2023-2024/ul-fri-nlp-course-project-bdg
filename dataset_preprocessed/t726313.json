@@ -1,0 +1,78 @@
+[
+    {
+        "role": "user",
+        "message": "Zanima me kako bi si zastavil videonadzorni sistem in pa katere komponente bi zato potreboval.  Na osnovi tega kar sem prebral dosedaj bi verjetno delal nekaj takega:  1. sistem bi bil sestavljen iz ip kamer, verjetno pa ločen od ostalega omrežja (prosim tudi za kake komentarje v tej smeri) 2. napajanje bi tudi bilo verjetno najbolj smiselno preko mrežnega kabla (PoE) 3. vzeti navaden switch + poe injektorje, ali raje raje switch, ki že ima poe? Kak konkreten namig? 4. potrebovalo bi se 3-5 kamer za zunanjo uporabo (od tega bi 2 bile pod nadstreškom, ostale pa na goli steni/drogu), pokrivale bi glavni vhod, vhod do garaže + dovoz, zadnja stran hiše, kjer so otroška igrala in \"piknik plac\" 5. par kamer za bolj izpostavljene notranje prostore: dnevna soba z jedilnico, ki ima velika steklena vrata na teraso, stopnišče+hodnik, \"pisarna\", kjer je dejansko največ vrednih stvari. Prosim tudi za kak konkreten predlog kaj kupiti. 6. vse skupaj bi rad tudi snemal - se splača namenski snemalnik, ali je bolje nek NAS?  7. Če je mogoče bi imel tudi neko vrsto obveščanja o dogodkih: sms? email? mogoče celo oddaljen dostop? Oddaljen dostop je sicer \"skregan\" s prvo točko, tako da spet prosim za kako pametno usmeritev... 8. vse skupaj bi potem želel naknadno nadgraditi v nekakšno pametno hišo, oz. povezati z \"centralno pametjo\" - spet se tepe z prvo točko, ampak se mi pa zdi mogoče spet priročno, da če kamera zazna neko nepredvideno gibanje, da mogoče sproti še luči prižge v hiši in dvigne rolete?  Malo sem veliko napisal, pa upam, da se bote vseeno prebili čez in mi lahko kaj pametnega svetovali...  Hvala!"
+    },
+    {
+        "role": "assistant_0",
+        "message": "kar se tiče zunanjih kamer, bi moral imeti ohišje z ogrevanjem, to pomeni kabli tudi za napetost 220V, ker ohišje brez grelca bi se v različnih vremenskih pogojih nabiral kondenz ter ne bi imel profesionalnega 24urnega video nadzora, kar se tiče softverja, je pa na razpolago več zastonjskih rešitev, kateri omogočajo time laps, zaznavanje gibanja ter poročanje alarmov na poljubni način: Camera Viewer Pro, ContaCam, Genius Vision NVR Community Edition (CmE), iSpy, Netcam Studio, Rear View Mirror, SecureCam2, ..."
+    },
+    {
+        "role": "user",
+        "message": "Aja, še nekaj: zadevo imamo namen zmontirati 3x - oz, z videonadzorom opremiti 3 precej enake hiše (najprej mojo, potem pa še od dveh kolegov), zato bi najraje vzeli enako robo in pri istem dobavitelju, da bi mogoče zaradi količine dobili še kak euro popusta. Katerega dobavitelja predlagate?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Coting d.o.o. ima v redu robo, lahko pa tudi DIY roba iz Conrada, sicer več dela, ampak se nekaj prišpara"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Aliexpress, hikvision 4MP kamere po 50$, smešna cena. Direktno na dež jih sicer ne bi dajal. SW imajo lasten free, kamere pa podpirajo ONVIF."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Namesto POE raje napelji 3x1,5 mm^2 kable za napajanje in še UTP za povezavo. PoE delaj v skrajni sili. Internet in kamere, pozabi. Obvestila na sms/mail, pozabi.   Kamere Dahua ali Hikvision. Prodajajo pri nas za zmerno ceno, lahko vzameš iz tujine, če želiš.  Kaj je namen snemanja? Če je to kvazi varnost, kar pozabi na to. Ker če ti odpeljejo avto iz dvorišča ali garaže ali če ti vlomijo in pokradejo vse, potem ti kamere zagotavljajo samo začudenje nad sposobnostjo ali nesposobnostjo vlomilca.  Kamere lahko blindiraš z laserjem za 2 eur, če te zanima."
+    },
+    {
+        "role": "assistant_3",
+        "message": "To kar ti želiš je v rangu profi robe, cenovno ugodni firmi sta Hikvision in Dahua, stem da ima Dahua daleč najbolšo nočno sliko za male denarje, kar je za moje pojme prioriteta ker dnevna slika je pri vsaki kameri solidna. Kamere naj seveda bojo Poe z h.265 protokolom in vsaj Full HD in po možnosti še kaki vhodni kanal NC/NO za priklop alarmnega senzorja da imaš popolnoma realne gibalne posnetke. Vsekakor more biti namenski snemalnik z relejski izhodi, da se lahko igraš pol z dolečenimi stvarmi (recimo luči, garažna vrata, roloje oz. kaj koli v tej smeri.) in nikoli ne mešaj različnih proizvajalcev med sabo, če želiš imeti stabilni in zanesliv sistem, razen če boš imel PC oz. Qnap, Synlogic,.. za NVR, samo ti tega ne priporočam."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kaj takega? https://www.amazon.de/Überwachungskamer... https://www.amazon.de/Überwachungskamer..."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 in egii - dajta prosim pojasnit zakaj PoE ja, ozirama zakaj ne?  Moje mnenje je, da je bolj elegantno PoE, kot vlačit dva kabla (utp in elektriko). Oz. a vlečeš en kabl, ali dva je dejansko skoraj vseeno - bolj me moti, da moraš potem še na koncu pri kameri dat vtičnico, kamor štekaš napajalnik od kamere. Je več navlake, ne zgleda toliko elegantno, pa še ena točka, kjer lahko kaj crkne je zraven...  Po drugi strani, pa za PoE rabiš namenski switch, ali pa power injektorje in imaš potem an drugi strani štalo :D"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če imaš daljšo razdaljo (nad 100 metrov), potem potegni 3x1.5+FTP za kamero, ker boš sicer moral dajati vmes ojačevalce, ki so dražji kot pa če sedaj potegneš poleg FTP kabla še elektriko. Če imaš krajšo razdaljo od 100 m, potem ti bo FTP kabel dovolj za signal+napajanje.. Ne reskiraj z UTP kablom, raje potegni FTP kabel, ki ima dodatno zaščito za motnje iz okolice... Res pa je, da radbiš posebej POE switch, s POE injektorji se jaz ne bi igral... doma imam POE switch z 4 izhodi za kamere, ki je priklopljen na LAN port od ruterja, napajanje pa ima seveda svoje, saj mora oskrbovati kamere. Kamere DAhua so super, imaš jih pri nas, lahko pa tudi iz aliexpresa, jaz sem jih kupil tam, malo nižja cena po plačilu carine, vendar jih ne moreš nadgrajevati tako enostavno kot pri nas kupljene, pa seveda garancije nimaš pri nas, res pa se mi še ni nobena pokvarila v času več kot 1 leto...  lp"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Ali prav razumem: POE kamero vštekaš v POE switch, potem pa switch povežeš na PC in preko namenskega software gledaš/snemaš video? In preko tega softwera imaš tudi dostop preko GSM za obvestila in gledanje videa? Ali je še kaj vmes?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "POE switch moraš povezati z ruterjem, da imajo kamere povezavo v omrežje, poleg tega imaš tudi napajane zanj, ki pošilja kameram tudi potrebno napetost za delovanje, seveda vse po FTP kablu. Potem pa se preko ruterja povežeš ali na posamezno kamero preko internetnega brskalnika ali pa uporabiš kakšen namenski program za dostop do kamer preko omrežja ali pa pametni telefon z namensko aplikacijo.... lahko pa imaš tudi posebej snemalnik na svojem omrežju, ki mu določiš kdaj snema posamezne kamere in preko tega snemalnika iz interneta od kjerkoli dostopaš do svojih kamer in tudi posnetkov, če pa imaš snemalnik pri TV ali pa posebej računalniški monitor, pa lahko spremljaš kamere tudi tam in tudi gledaš posnetke za nazaj.... Priporočljivo je, da imaš snemalnik istega proizvajalca kot kamere, da potem nimaš težav, pa seveda vse kamere tudi iste firme...  lp"
+    },
+    {
+        "role": "assistant_4",
+        "message": "hm, moji linki iz mobilnega telefona očitno niso delali...   mogoče kaj takega: SW 8 CH NVR integrierter PoE Sicherheit System - 8 x 1080p 2.0 MP HD Onvif Outdoor  mogoče kaj takega.. tudi sam iščem... mnenje?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zakaj ne PoE? Ker komunikacijski kabel pač ni namenjen prenosu električne energije. Je namenjen signalom z nizko energijo. Izgube pri PoE so kar velike, vse na račun enostavnosti. Če ti crkne en napajalnik, ga enostavno zamenjaš. Pri PoE moraš menjati cel switch, pa še ta mora biti PoE ready, namesto, da bi bil tisti za par eur."
+    },
+    {
+        "role": "assistant_1",
+        "message": "5 let bp s PoE, ena kamera porabi cca. 5W."
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_2 je 19. jul 2018 ob 14:09 izjavil:Zakaj ne PoE? Ker komunikacijski kabel pač ni namenjen prenosu električne energije. Je namenjen signalom z nizko energijo. Izgube pri PoE so kar velike, vse na račun enostavnosti. Če ti crkne en napajalnik, ga enostavno zamenjaš. Pri PoE moraš menjati cel switch, pa še ta mora biti PoE ready, namesto, da bi bil tisti za par eur.   Čisti BS."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Prvo se resno vprašat o potrebnosti takega kao pro sistema. Kolega v AT je dal skoraj 10kEUR za varnostni sistem hiše, kje so šele vse XY super super varna vrata itd. Sedaj v dobrih 2 letih mu še enkrat ni prišlo prav. Še 1x ni ničesar pogledal, še 1x ni remote preveril kaj se dogaja okrog baje, še 1x se ni odzval na notification, kjer je navedeno kje okrog hiše je kakšno gibanje itd. Skratka pravi, da je zaradi takratne brezglavosti češ varnost na 101 način vrgel vstran 10kEUR. Ima pa od kamer do ločenih senzorjev gibanja.. Vse kamere omogočejo tudi dvosmerno komunikacijo itd. Aja pa toliko je dal kljub DYI, ma tudi skrito \"varno\" sobo z ločenim napajanjem itd. No jaz sem iskal po bajti kje bi lahko to mel.. Nisem našel, je moral pokazat haha."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Kolega v AT zasluži veliko in zato razmetava z denarjem. To dobi noter v parih mesecih."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4 je 19. jul 2018 ob 13:36 izjavil:hm, moji linki iz mobilnega telefona očitno niso delali...   mogoče kaj takega: SW 8 CH NVR integrierter PoE Sicherheit System - 8 x 1080p 2.0 MP HD Onvif Outdoor  mogoče kaj takega.. tudi sam iščem... mnenje?   Jaz uporabljam samo Dahua, sem probal in videl razne sisteme, Dahua ima za zmerno ceno 4M kamere (na Aliexpress so sedaj že 6M za zmerno ceno+ima kovinsko ohišje), na katerih vidiš kar je potrebno, kar je tudi smisel kamere.... pa da veš, da ni bil \"domač\" tat ali kakšen sosed...  lp"
+    }
+]

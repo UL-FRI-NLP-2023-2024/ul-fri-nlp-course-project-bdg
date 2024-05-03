@@ -1,0 +1,166 @@
+[
+    {
+        "role": "user",
+        "message": "Naložil sem win 10. Po instalaciji ne dela internet: The DNS server isnt respondig. Spomnil sem se da me med instalacijo ni vprašalo za ponudnika-SIOL. Če se ne motim me je do zdaj še v vseh win. Kaj moram naredit da bo internet spet delal?  Čudno se mi zdi tudi da ko sem med instalacijo označil da mi naj C particijo formatira, ni bilo videt tistega naraščanja procentov med formatiranjem. Sem pa sigurno označil da mi ne osveži windowsov ampak drugo varianto s katero win postavim na novo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "start meni, run, cmd: nslookup ipconfig /all  Kaj javita ukaza ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Če imaš siol moreš nardit novo PPoE povezavo z uporabniškim imenom in geslom (če nimaš med modemom in PCjem routerja)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mora biti njegova TK \"škatlica\" precej stara, da ni hkrati modem+router.  Siola že dolgo ni več. https://www.dnevnik.si/73750/magazin/zn..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Sej dokler ti ne crkne ne menjajo..."
+    },
+    {
+        "role": "user",
+        "message": "PC je s kablom direktno povezan na ta modem - http://www.telekom.si/zasebni-uporabnik...  PPoe? Kje to naštimam tam pri ethernet?  za tisti ipconfig pa nisem našel kako pridem do njega ker v win10 je vse drugače."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Desni klik na Start - Ukazni poziv (skrbnik)...  Je v google pretežko odtipkat Windows 10 PPPoE?"
+    },
+    {
+        "role": "user",
+        "message": "Pri vzpostavljanju povezave je prišlo do napake številka 6  Ali uporabniško in geslo nista prava, or the selected authentication protocol is not permitted on the remote access server. uporabniško in geslo nisem nič spreminjal"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sinope 568 je privzeto modem+router. Logiraj se na 192.168.1.1 (user / user) in poglej s koliko se poveže, če sploh.  Na moje vprašanje zgoraj nisi odgovoril. Imaš nameščene vse driverje (chipset, mrežna itd) ?"
+    },
+    {
+        "role": "user",
+        "message": "Nič se ne poveže ker je desno dol ob povezavi rumen klicaj: ni omrežja Če se hočem povezat na 192.168.1.1 in vpišem uporabniško in geslo, napiše da uporabniško ali geslo ni pravo.  WIFI sem rekel že predlani na SIOL da izklopijo, ker laufam samo preko žice. Če prav vem to pomeni da je rutar izklopljen in laufa samo modem.  Driverje imam te ki so se naložili z win10. Pogledal sem v Upravitelj naprav in sta klicaja pri CIF single Chip kar je verjetno samo kamera. Druga stvar je poimenovana Neznana naprava-pod Splošno je to LPC Controller.   run, cmd: nslookup bom prepisal samo par stvari, da ne bom vsega. Če še kaj rabiš pa povej.  Default server Gateway. Home Adress: 192.168.1.1   ipconfig/all ETHERNET ADAPTER ETHERNET Connection: specific DNS Suffix: HOME Description: Atheros L1 Gigabit Ethernet 10/100/1000.. DHCP: Enabled Autoconfiguration Enabled  TUNNELADAPTER ISATAP HOME MediaState:Media disconnected Connection: specific DNS Suffix: Home DHCP Enabled: No Autoconfiguration Enabled: Yes"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Control Panel - System and Security - Security and Maintenance - Troubleshoot common computer problems - Network and Internet - Internet Connection (Network Adapter)"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_3 je 22. jan 2017 ob 11:46 izjavil:Control Panel - System and Security - Security and Maintenance - Troubleshoot common computer problems - Network and Internet - Internet Connection (Network Adapter)   The DNS server isnt responding.  Na modem je na drugem izhodu priklopljen drug PC in tam dela internet brez problema. Tudi če zamenjam kabla-izhoda."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če se hočem povezat na 192.168.1.1 in vpišem uporabniško in geslo, napiše da uporabniško ali geslo ni pravo. user / user ne prime ?   run, cmd: nslookup bom prepisal samo par stvari, da ne bom vsega. Če še kaj rabiš pa povej. Desni klik v cmd, select all, copy.  Prilepi celoten izpisek za ipconfig/all ."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@user - ti si pokuril vse IP naslove. Verjetno imaš staticni IP - ta ti je ostal na drugem PC-ju. Dinamične si pa pokuril. Najboljša rešitev je, da priklopiš svoj router in nanj priključiš vse naprave (žično in brezžično), pa ne boš imel teh težav."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Pri TK imaš lahko hkrati vzpostavljene 3 (4?) pppoe seje. Močno dvomim da ima statični wan ip. Niti ne vemo, kako ima postavljeno domače omrežje."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Za statični IP rabiš podat prošnjo, in ti zaračunavajo dodatek na statični IP (imel statični IP pri TK)"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Če nekdo želi vse naprave priključiti direktno na modem, ima lahko hitro take probleme, ker porabi IP naslove. V tem primeru si mora sprostiti IP, da lahko priključi PC na internet (tudi ob novi namestitvi operacijskega sistema). Zato pa je rešitev z routerjem in navzven porabiš samo en IP naslov. Naj se odpiratelj teme malo bolj izjasni a ima statični ali dinamični IP. Mislim, da tudi TK prehaja na normalni dinamični IP namesti PPPoE povezave."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Pri Telekomu ne zaračunavajo statičnega IP. (Vsaj meni ga ne.)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Jaz ko sem bil še pri TKju so mi zaračunavali par €."
+    },
+    {
+        "role": "user",
+        "message": "TK je Telekom? Kako lahko vidim če imam statični ali dinamični IP?  Na dva izhoda Telekomovega modema imam priklopljena dva računalnika. Na enem je win, na drugega pa sem dal linux. Na nobenem od njiju ne dela internet. Na tretji izhod imam priklopljen router (wi fi) . Internet na računalniku priklopljenem na ta wi-fi dela.  Kakšne so prednosti dinamičnega in statičnega? Če se prav spomnim je bil na začetku statični. Potem je prišel dinamični in vsakdo je hotel imet dinamičnega ker ko si surfal po chatih, se zaradi spreminjanja IP ni vedlo kdo si. Ali nekaj takega.  Nekdo omenja da je treba sprostiti IP naslove. Kako se to naredi? Pokličem Telekom?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_1 je 23. jan 2017 ob 14:03 izjavil:Jaz ko sem bil še pri TKju so mi zaračunavali par €.   Meni ga niso zaračunavali nikoli. Tudi sedaj ga imam, in ga ne računajo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ok, ti imaš en router priključen na tale Sinope modem. Vsi, ki se priključijo na ta router jim internet deluje, in vsi, ki so direktno povezani na modem jim internet ne deluje. Tole izgleda, da imaš PPPoE povezavo do TS vzpostavljeno na svojem routerju, medtem ko imaš zadevo disablano na modemu. Sinope ti je dodelil čist legalne podatke, ampak sam nima WAN povezave naprej. Očitno si imel pred installom Win10 povezavo vzpostavljeno na PC, sedaj je pa nimaš več. Pokliči na njihov helpdesk in naj ti pomagajo: a) narediti novo PPPoE povezavo na Win10 b) skonfigurirajo PPPoE na modem (ti pa svoj router postavi v DHCP mode na WAN strani in glej da boš dodeljeval na LAN/WiFi strani drug network segment kot 192.168.1.0/24)  Statike TS ne zaračunava - enkratno ti pa zaračunajo spremembo iz statičnega nazaj na dinamičnega oz. sedaj mogoče tudi iz dinamičnega na statičnega ampak ne obremenjujte ga s temi informacijami.   Dej ta stavek posprav nekam za future lulz :): Prehod na normalni dinamični IP namesto PPPoE"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Potem se je zgodilo obratno, deloval je router (WIFi) , na sinope modem direktno z žico povezani PCji pa niso.  Trenutno je obratno, wifi na routerju ne dela, kablovje na modemu pa da.  Tehnična pomoč je rekla naj v routerju izklopim pppoe in vklopim dhcp. Rečeno storjeno. Sedaj laptop res kaže znak da sem povezan na internet, ko pa odprem browser pa reče da ni omrežja. Kaj zdaj?  Če kaj pomaga:"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ta output si dobil ko si bil povezan na router?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "ja"
+    },
+    {
+        "role": "assistant_9",
+        "message": "A ste že probal resetirat modem?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Jaz sem imel podobne probleme na lepem z enim od popravkov za MS windows 10. Povzročitelj je bil katerikoli protivirusni program, razen MSovega."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Router sem dal na restore in spremenil samo na dhcp. Na router se ne povezat z ničemer: win, linux, telefon Modem je bil poštiman iz ponudnikove strani in pravi da je na njem vse ok."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Dej poglej, da nimaš isti subnet na router LAN strani kot ga dobi na WAN strani od modema in ga spremeni."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Modem naj da TK helpdesk v bridge mode, nato na routerju (priklopiš iz modema v router wan port) nastavi pppoe za tip povezave in vklopiš dhcp za lan."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Kaj pomeni če se v routerju onemogoči oboje: pppoe in dhcp. Potem na routerju deluje samo wi-fi, LAN izhodi pa ne?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Potem bo router deloval kot wifi AP ter switch - glavno bo v tem primeru TK sinope, kjer mora delati pppoe/dhcp in tako dalje."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Modemu ne spreminjam nastavitev. V omrežja se ne spoznam dobro. Samo moj router spreminjam. Lahko pa vprašam če rabite kako informacijo o nastavitvah modema.  Poskusil sem tudi z drugim routerjem. Dal sem na restore in spremenil samo v DHCP. Pri obeh routerjih je enako -wifi kaže povezavo, ko odprem browser pa napiše da ni omrežja.  Klical sem telekom in so rekli da imam IPv6 še vedno vključen. In da če bom router priklopil na drug izhod Lan naj to sporočim ker zdaj so naštimali LAN1 za moj router) Sprašujejo če želim da IPv6 izklopijo ker bi tako lahko naredili sejo na mojem routerju.  Ta IPv6 so mi verjetno vklopili pred kratkim ko sem podaljšal naročnino in so se začele te težave. Kakšna je sploh prednost IPv6?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Poleg tega sem opazil da se lahko na nastavitve routerja 192.168.1.1 povežem kar brezžično.  Lahko kdo ki ima vklopljen IPv6 pofotka nastavitve ki so pomembne da vidim kaj imam narobe nastavljeno?"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Router kot WLAN točka:  1. Kabel priklopi v LAN port. 2. Izklopi DHCP 3. Nastavi WLAN parametre po želji.  To je to...  Če se dodatni routerček priklaplja preko WLAN, guglaj WDS..."
+    },
+    {
+        "role": "assistant_8",
+        "message": "1. kabel na modemu gre v Lan, na routerju pa v Wan. 2. DHCP izklopljen (sedaj je disable) 3. wlan pustil kot je  Kako to misliš če se priklaplja preko wlan? Router je na modem povezan preko kabla. Laptop pa internet vleče iz routerja brezžično."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Kak si pa objavo to če nimaš interneta?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Ker na modemu je iternet delal. Sedaj sem pa tudi na routerju spedenal."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Bom kar tukaj vprašal...  Situacija je sledeča: Sosed ima 2x računalnika (namizni in prenosni). Namizni je brez interneta, prenosni ima internet preko kabla. Sedaj me je prosil, če mu usposobim ruter za wifi.   Kabel za internet sem iztaknil iz prenosnega računalnika in ga dal v ruter, iz ruterja pa sem potegnil kabel v namizni računalnik, kjer sem s pomočjo priloženega cd-ja od ruterja nastavil geslo za ruter. Wifi deluje! Nato sem kabel iztaknil iz namiznega računalnika in ga vtaknil v prenosni računalnik. Internet ne deluje na prenosnem računalniku, Wifi pa še vedno deluje (preskusil na prenosnem telefonu). Ker sem sumil, da je kaj narobe z ruterjem, sem ruter odstranil in direktno zvezal modem in prenosni računanik. Internet še vedno ne deluje, oz. povezava se sicer vzpostavi, vendar brskalnik ne nalaga strani, čez nekaj časa pa se tudi povezava prekine.  Kaj bi bilo lahko narobe? Kaj storiti?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Na prenosniku se disconectaj iz wifi-ja, potem mora delati preko kabla. Oboje hkrati ne dela.  Tukaj nastavi oboje na automatic, če ni  25s"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Hvala, bom poizkusil.  Samo IPv4 nastavim na automatic?"
+    }
+]

@@ -1,0 +1,54 @@
+[
+    {
+        "role": "user",
+        "message": "Živjo.  Mene pa zanima če obstaja v ACAD-u funkcija, ki ti sama zmeri ploščino določenega lika.  Hvala za pomoč   lp M"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Označiš lik in napišeš list. Najbolj simpl in trotlziher metoda.  Drugače pa se poigraj z ukazom field."
+    },
+    {
+        "role": "user",
+        "message": "Označiš lik in napišeš list. Najbolj simpl in trotlziher metoda.  Drugače pa se poigraj z ukazom field.   Hvala za odgovor.   Ukaza FIELD ne najdem.   Jst sm mel v mislih, da to deluje kot recimo ukaz za šrafure, ko sam označiš meje ali prostor pa ti pol sam šrafira znotraj mej (izračune površino). Kvadrature dovoznih poti, prostorov, ... mi bi prav prišle pri načrtih, saj je tut zamudno računati kvadrate če maš polno nekih krivulj.   lp M"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pozdrav  Se trenutno spomnim samo old-style/hardcore metode, ki je delovala ze v \"praverzijah\" ACAD-a in deluje se danes:  -Lik, kterega kvadraturo hoces, mora biti orisan s sklenjeno polilinijo (PLINE) -Izberes >Inquiry>Area (ali odtipkas \"area\" + Enter) -Vtipkas o (od \"Object\") -Kliknes na prej omenjeno polilinijo in dobis povrsino ter obseg lika  Je pa metoda v osnovi PITA, ce moras izmeriti veliko povrsin.  Samo tako, na hitro....  LP"
+    },
+    {
+        "role": "user",
+        "message": "Pozdrav  Se trenutno spomnim samo old-style/hardcore metode, ki je delovala ze v \"praverzijah\" ACAD-a in deluje se danes:  -Lik, kterega kvadraturo hoces, mora biti orisan s sklenjeno polilinijo (PLINE) -Izberes >Inquiry>Area (ali odtipkas \"area\" + Enter) -Vtipkas o (od \"Object\") -Kliknes na prej omenjeno polilinijo in dobis povrsino ter obseg lika  Je pa metoda v osnovi PITA, ce moras izmeriti veliko povrsin.  Samo tako, na hitro....  LP Hvala za pomoč. To je to ja. Zdej mi je pa ta odgovor dal pa še eno novo uprašanje.   Ka se da navadno črto spremenit v Pline, kr mi povzroča težave ko rišem z pline, sploh ko treba narisar kake loke, mi vedno prekine pline.  hvala"
+    },
+    {
+        "role": "assistant_2",
+        "message": "obstaja veliko načinov:  - ukaz area: preberi si v helpu kako dela - ukaz list: ti izpiše podatke za 1 ali več objektov - klik na objekt, pa prebereš v properties okvirčku  Drugače obstaja precej lisp-ov, ki se ukvarjajo s tem. Jaz sem si enega priredil, da mi je linkal površine objektov na bloke z atributi in jih popravil glede na spremembo objekta. Žal mi je s prihodom ACAD 2009 ta lisp nehal delat in ker sem hud amater ga ne znam več usposobit   glede line v pline: ukaz pedit (PE), še hitreje pa je z ukazom pljoin (ki tudi ni več v novih verzijah, ampak se ga da z lispom usposobit)"
+    },
+    {
+        "role": "user",
+        "message": "Hvala, pa spet nekaj novga vem  lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "> Ukaza FIELD ne najdem.   f i e l d  To vtipkaš in pritisneš < enter >"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če se ne motim ima autocad že privzeto vklopljeno eno orodje za merjenje površine. Narisano je eno ravnilo, pa lahko izbereš tudi drugo funkcijo. Če ni, imaš možnost izbrat ikonico če greš dodat toolbar. Malo pobrskaj po standardnih toolbarih. Ni tako težko najti."
+    },
+    {
+        "role": "user",
+        "message": "Sm našu ja, sam mora biti narisano v pline da deluje  lp"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Pozdrav  Linijo ali krivuljo spremeniš v pline tako, da uporabiš ukaz \"Pedit\" in klikneš linijo, ki jo želiš pretvoriti v pline. Takoj ti ponudi, ali naj linijo pretvori v pline. Nato lahko znotraj ukaza pedit s podukazom \"join\" pliniji dodaš nove segmente. Nujno je le, da se konci segmentov stikajo. Na koncu lahko pline zaključiš z ukazom \"close\", če pa je pline že zaključen, bo pa tam ukaz \"open\". Problem se pojavi, če se konci segmentov ne pokrivajo povsem, potem je potrebno uporabljati \"edit vertex\" opcijo.  Nekoč, ko ACAD še ni imel algoritma za šrafiranje s potapljanjem, je bil izdelava plinije edina pametna možnost za \"neboleče\" šrafiranje prerezov....  LP  Jože"
+    },
+    {
+        "role": "assistant_4",
+        "message": "je že cajt da prešaltate na solidworks. autocad postaja skoraj neuporabna zadeva in ga uporabljajo samo tam kjer je preveč stare tehnične dokumentacije ki je še narejena v autocadu."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zdravo  Verjetno si prebral, v drugem @userjevem postu, da ga zanimajo kvadrature dovoznih poti, prostorov in podobnega....Za to je SolidWorks verjetno najboljše možno orodje ka-li?.  LP  Jože"
+    }
+]

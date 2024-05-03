@@ -1,0 +1,110 @@
+[
+    {
+        "role": "user",
+        "message": "Zadnje čase vidim vedno več joomla spletnih strani na internetu, pa sem rekel, da pogledam kaj je to.  Sem šel na njihovo stran, pa sem prebral zadeve, pa mi še vedno ni jasno kako zadeva funkcionira. Če prav razumem, moram jest apache, php in mysql predhodno naložit na server (to itak že imam), potem pa naložim še joomlo, ki naredi samo en grafični UI, kjer lahko enostavno s klikanjem generiram spletno stran?  Zdej me pa zanima, a mora biti ta joomla na serverju? A lahko z joomla generiram html/php kodo, ki jo potem naložim na server (tako kot to delam s php)?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Joomla je  CMS in jo namestiš na strežnik (php + mysql). Po instalaciji lahko dodajaš/brišeš komponente in module (npr. anketa, login, forum, galerija, random picture...). S pomočjo sistema, lahko določaš postavitve menijev, bannerjev, vsebine, headerja in podobno. Vsebino tudi dodajaš kar tam (statično in dinamično). Ker je vsebina in ostalo ločeno od designa, lahko design spremeniš takoj (template, ki ga samo dodaš na strežnik in applyaš). Strani generiraš kar v prijaznem UIju in jih samo povežeš z menijem, za vse ostalo poskrbi Joomla.  Aja pa namestitev je zelo preprosta. Po downlaodu jo odpakiraš v root direktorij od strežnika, in stvar zaženeš v browserju. Po namestitvi in konfiguraciji pa samo odstraniš install folder in je to to.  Če jo boš uporabljal on-line podi pozoren na varnostne luknje in jo redno posodabljaj ter delaj backupe baze, da se ti ne zgodi kaj  takega. Ker je Joomla zelo razširjena, je pač velika tarča hackerskih napadov.  No pa še to. Veliko stavri najdeš  tukaj... Če te kaj zanima, vprašaj"
+    },
+    {
+        "role": "user",
+        "message": "Sem naredil to, ampak imam že problem. Pri instalaciji mi javi  napako. Sem malo pogooglal, in našel, da je težava, ker nimam php5-pcre. Sem inštaliral, pa mi javi, da imam že inštalirano.  Imam pa freebsd, php5.2.4, mysql51."
+    },
+    {
+        "role": "user",
+        "message": "Zgornji problem sem rešil - poterbno je bilo deinštalirat in ponovno inštalirat php5-pcre.  Zdej imam pa eno drugo vprašanje: Kje so vse te strani, ki sem jih naredil s joomlo? Nikjer jih ne najdem. Rad bi na neko stran dodal še malo php kode, kako naj to naredim?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "hehe :) Misliš da ti kr file, generira ? Te strani vse obstajajo samo kot baza. Določen file (recimor news.php) pa potem kliče določeno kategorijo in določen ID prispevka.   Dodajanje php kode pa je vrjetno dost enostavno če si kak pameten vtičnik naštimaš, mogoče ma tud že osnovni editor možnost (no vsaj to da vidiš HTML pogled ma)"
+    },
+    {
+        "role": "user",
+        "message": "Potem je pa vseeno, če kar sam naredim stran, brez joomle. Joomla itak ful mele, ker skoz neki brska po bazi."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Baze so načeloma hitre in kar rabi joomla dobi sigurno v kake 0.01s"
+    },
+    {
+        "role": "assistant_3",
+        "message": "A nujno rabiš, da je joomla? Po mojih izkušnjah je proti drugimi cms nadpovprečno obremenjujoča... Imaš veliko boljših, kar pogooglaj in se odloči"
+    },
+    {
+        "role": "user",
+        "message": "Sem gledal da obstaja tudi Drupal. Ampak je baje podobna zadeva, tako da sem mislil, da bi kar nadaljeval z joomlo.   Nastavil sem joomlo, vendar pa zadeva deluje ekstremno počasi ko stran gledam preko interneta (stran se nalaga več kot 30 sekund, določene zadeve na strani manjkajo), ko pa se na server povežem preko LAN, pa zadeva deluje normalno. Mogoče kdo ve, kaj bi lahko bilo narobe? Če postavim neko drugo stran, brez joomle, pa dela brez problemov.  Zadeva teče na serverju - freebsd, procesor je Celeron 2800MHz, povezava je siol adsl."
+    },
+    {
+        "role": "assistant_4",
+        "message": "ko pa se na server povežem preko LAN, pa zadeva deluje normalno Se pravi problem je nekje na liniji in ne serverju, če ti v tem primeru dela ok. Kje gostuješ? Kje se nahaja ta server in od kje dostopaš do njega? lp"
+    },
+    {
+        "role": "user",
+        "message": "Nikjer ne gostujem. Zadeva je lepo doma na mojem serverju. Do njega dostopam iz knjižnice. Vse ostale strani na tem serverju se prikazujejo normalno in hitro. Ko pa se povežem na stran narejeno z joomlo, pa se zadeva ustavi. V brskalniku mi piše \"Prenašam podatke iz IP...\" in potem lahko čakam.  A joomla podatke pošilja še kako drugače kot preko http in porta 80, ker imam na firewallu omogočeno samo to?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Nek firefox plugin Jspeed al neki takega je ki ti izmeri hitrosti in ti pove kaj je vse narobe na strani da se tako počasi nalaga."
+    },
+    {
+        "role": "user",
+        "message": "A misliš  tole - tale test testira povezavo clienta, ne serverja - meni pokaže 30Mbps....tako da moj download je več kot zadosten."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Vedu sem da je neki z hitrostjo :)   Yahoo Developer Network"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Definitivno imaš težave z nastavitvami in svojim serverjem. Joomla če je pravilno instalirana in optimizirana se nalaga ravno tako hitro kot vse ostale strani, pač odvisno od vsebine. Za preizkušanje (kar se mi zdi da trenutno počneš) pa ti priporočam enostavno instaliranje kakega easyphp ali xampp na localhost in tam gor laufat joomlo."
+    },
+    {
+        "role": "user",
+        "message": "Php, apache in mysql delujejo ok. phpinfo() mi pokaže vse. Za test sem poskusil tudi nekaj, kar šari po mysql, in zadeva deluje.  YSlov mi javi dve napaki: uncaught exception: Dovoljenje zavrnjeno za nastavitev lastnosti Window.status uncaught exception: Dovoljenje zavrnjeno za nastavitev lastnosti Window.status  Ni mi jasno kaj bi lahko bilo s serverjem, ker po LAN deluje brez problema (za lan nimam firewalla). Zgleda je nekaj s firewallom, ampak kaj, to mi pa ni jasno?"
+    },
+    {
+        "role": "user",
+        "message": "A res nihče nima ideje kaj bi lahko bilo narobe?  Takole počas se nalaga..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "To pa nima veze z joomlo. Že sam http request traje celo večnost. To hostaš doma? Nebi raje dal na kakšen namenski strežnik? Prihranili bi si marsikatero muko."
+    },
+    {
+        "role": "user",
+        "message": "To imam doma. Ne more biti problem v povezavi.  Poglej si  enostaven html z malo večjo sliko, ki teče na istem strežniku. Kaj praviš na to?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Ja, ni čudno da ne dela. Poglej source tvoje strani!  http://192.168.0.10/jo_test2/index.php?... ...  192.168.0.10 !!!!"
+    },
+    {
+        "role": "user",
+        "message": "Ja vidim, ampak to je naredila joomla, ne jaz. Kako pa je prišlo do tega? Kaj moram nastavit da tega ne bo več?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Ping in tracert na tvojo mašino tud ne delata :) Al maš supersecure strežnik al pa te baše kje drugje kaj druzga :)  Za foro probaj kako drugo CMS aplikacijo, al pa kak php v povezavi z bazo... Mislim da ti normalen HTML dela, ko pa gre po kakih requestih sem in tja mal bolj komplicirano pa..."
+    },
+    {
+        "role": "user",
+        "message": "Tudi ta primer, ki sem ga dal, ima zadaj povezavo na bazo, in ta dela (sem že pisal zgoraj).  Ping imam pa zaprt, saj ni potreben za web server, ali pač?"
+    },
+    {
+        "role": "user",
+        "message": "Sem spremenil nastavitev \"Live Site:\" na zunanji ip. Zdej pa dela.  Samo ni mi pa jasno, kako potem zadeva dela, če imaš dinamičen ip..."
+    },
+    {
+        "role": "user",
+        "message": "Zdej imam pa nov problem. Kako se v joomli naredi, da ima neka stran znotraj joomle lep URL, npr. \"www.joomla.com/primerlepegalinka\"? Zdej je tako, da imajo vse strani, ki se mi prikažejo, same čudne URL-je."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Global configuration --> sever oz tam zavihek proti koncu --> Use frendly urls...  Samo mislim da more bit za to apache rewrite modul nisem pa šur..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Slovencl dej preberi vsaj osnovna navodila za joomlo. Drugače pa slojoomla in joomla.org ima že vse odgovore na tvoja vprašanja."
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Rad bi nekako uporabil naslednje :  Slidebar ProgressBar Status Bar ToolBar TreeView Tabstrip List view.  Res bi vam bil hvaležen, če mi odgovorite. Vsaj približno   Hvala  LP"
+    },
+    {
+        "role": "assistant_0",
+        "message": "stari dvomim da ti bo kdo to povedu  (preobsežno vprašanje). Predlagam da si kako knjigo sposodiš na temo VB6 (v Lj. v CTK jih majo tulk da jih posojajo  ) pa si v miru pogledaš. Lahko pa tud mal po netu počekiraš za kakimi navodili za začetnike"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Poglej v help. Imas vse tako lepo razlozeno."
+    },
+    {
+        "role": "assistant_2",
+        "message": "No pa dajmo probat...   Na formo postaviš gumb. Nato v komponentni vrstici z desnim klikom pokličeš Add components in izbereš (upam) Microsoft Windows Common Controls 6.0 SPx.  Sedaj imaš med komponentami vse kontrole, ki si jih hotel...  Kar se StatusBar tiče, ni nobena umetnost... Vstaviš na obrazec in z desnim klikom prikličeš Properities in se nato igraš... Vanjo lahko izpisuješ, kaj se trenutno dogaja, datum, uro, Aktivni tiskalnik, itd.  Če na formo postaviš še Timer kontrolo, lahko sprobaš še kako malenkost...   Recimo, ta timer kontroli nastaviš na začetku lastnost Interval na 1000.  Sedaj postaviš na obrazec Slider in ProgressBar. ProgressBaru nastaviš lastnost Scrooling na ccScrollingSmooth. Ob kliku na gumb naj se zgodi sledeče:   Private Sub Command1_Click() If Not mblnStratProgress Then Command1.Caption = \"Končaj\" mblnStartProgress = True ProgressBar1.Value = 1 Slider1.Value = Timer1.Interval Else Command1.Caption = \"Začni\" mblnStartProgress = False End If End Sub   Na vrhu v modulu s kodo obrazca zapišeš:  Option Explicit Private mblnStartProgress As Boolean   Ob dvokliku na Timer se ti odpre edina odzivna procedura kontrole timer:  Private Sub Timer_Timer() If ProgressBar1.Value > 99 Then ProgressBar1.Value = 1 If mblnStartProgress Then ProgressBar1.Value = ProgressBarValue + 1 End Sub   Sedaj vstavim še kontrolo Slider in nastavimo njene lastnosti (Desni klik - Properities): Min = 0 Max = 1000 Ostale pustimo na privzetih vrednostih, kontrolo pa razširimo čez cel obrazec...  Sedaj še izberemo odzivno proceduro:  Private Sub Slider1_Scroll() Timer1.Interval = Slider1.Value End Sub   Sedaj premikaš drsnik in opazuješ, kaj se dogaja s prikazovalnikom napredka...  Uf, upam, da je prav, ker pišem na pamet..."
+    },
+    {
+        "role": "assistant_3",
+        "message": "lih ki je tema vb: kja ima kdo kakšen link o povezavi med vb in flashom?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 problem je tak. Slide bar se premika in se nad njim kaže tooltiptext. samo pri progressbar pa ni učinka , ko premikam slidebar. Bi lahko to pregledal svojo formulo še enkrat, pa napisal, če si kej pozabil.???   Hvala   LP"
+    },
+    {
+        "role": "user",
+        "message": "Opravičil bi se, če sem siten ampak kaj čmo tako je. Zdej ko ne morem popravit prejšnega odgovora, pa bom napisal tukaj:  Že ki smo pri slidebaru in podobno. Bi se dalo narediti naslednje.  Narediti en slidebar, en progressbar. Vsi veste kaj je volume control v Windowsih. Kako bi se dalo narediti, da ko premikam slidebar, da se miglasnost povečuje in zniuje in da se mi to kaže na Progressbaru. In zraven pa še kako mutirati zvok(mute).???   Hvala  LP"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Hja... v moji kodi je kar nekaj hroščev...  Med drugim moraš proceduro Timer_Timer() preimenovati v Timer1_Timer() (Ali kontrolo Timer1 preimenovati v Timer), saj drugače procedura žal ne služi ničemur. Pa tudi imena spremenljivk ... nekje sem zapisal mblnStratProgress namesto mblnStartProgress, pa namesto ProgressBarValue je treba napisati ProgressBar1.Value, pa morda še kaj...    Kar se zvoka tiče, bi pa moral malo poznati Win32 API...  Drugače pa mešalne mize niti ni tako težko narediti..."
+    },
+    {
+        "role": "user",
+        "message": "Prosim povej, če je že tako preprosto, tiste napake pa bom najdel in jih spremenil.Hvala"
+    }
+]

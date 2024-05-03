@@ -1,0 +1,98 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo, potrebujem pomoč. Telefon je imel unlocked bootloader, twrp in custom rom (kitkat). Nakar sem se ''odpravil'' posodobiti ''custom rom''-nova verzija, v navodilih je pisalo da moram met zaklenjen bootloader (- sem naredil), da moram preko fastboota posodobiti na lolipop(fastboot flash zip firmware.zip), sem naredil..sedaj pa imam problem, telefon se prižge, logo se prikaže, po nekaj časa se mi odpre črn ekran z rdečim klicajem na sredini. In potem je tako dokler se avtomatsko ne resetira in isto...kaksna pomoč? hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Če lahko prideš v download mode, namesti original firmware z računalnika."
+    },
+    {
+        "role": "user",
+        "message": "PC mi ga ne zazna, če si s tem mislim na download mode...hvala"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kajpa nazaj v bootloader mode (fastboot) ?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "To sem mislil- Način s katerim lahko z računalnika naložiš original firmware. Nevem kako je to pri tvojem htc-ju. Kaj pa v twrp zdaj lahko prideš?"
+    },
+    {
+        "role": "user",
+        "message": "download mode ne funkcionira..v bootloader tudi ne gre ker fastboot ne zazna naprave..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "drugače pa če je pisalo da mora biti zaklenjen bootloader je malo čudno ker če je zaklenjen se ne more preko fastboota naložiti nič @ @assistant_0 HTC mislim da nima download moda ne me pa držat za besedo XD pa bootloader sigurno @user če ti rata priti v bootloader si teoretično rešen XD v skrajnem primeru je opcija tudi JTAG , če nebo nič uspelo"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kaj pa v TWRP lahko prideš?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "če ga ugasneš in samo priklopiš se v device managerju pojavi kaj? in pa daj link od \"custom\" roma"
+    },
+    {
+        "role": "user",
+        "message": "- Make sure that you have adb / naked adb driver installed in your computer - Lock / relock the bootloader (re-unlock before rom installation) - Boot the device in Bootloader and flash firmware.zip Code: fastboot oem rebootRUU fastboot flash zip firmware.zip fastboot reboot - Now, flash TWRP recovery - Reboot into TWRP recovery  vse je slo ok do - fastboot reboot..in potem omenjen problem...  twrp ne deluje..  device manager mi ne pokaže nič http://forum.xda-developers.com/desire-..."
+    },
+    {
+        "role": "assistant_1",
+        "message": "lahko daš kakšno slikco klicaja? kaj če ko prideš do klicaja pritisneš vol up + power (samo pritisneš ne držiš)se kaj pojavi"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 7. dec 2015 ob 21:17 izjavil:- Make sure that you have adb / naked adb driver installed in your computer - Lock / relock the bootloader (re-unlock before rom installation) - Boot the device in Bootloader and flash firmware.zip Code: fastboot oem rebootRUU fastboot flash zip firmware.zip fastboot reboot - Now, flash TWRP recovery - Reboot into TWRP recovery  vse je slo ok do - fastboot reboot..in potem omenjen problem...  twrp ne deluje..  device manager mi ne pokaže nič http://forum.xda-developers.com/desire-...    Tukaj piše, da moraš flash-ad firmware.zip pred TWRP-jem. Če si ime TWRP že prej, je to mogoče napaka."
+    },
+    {
+        "role": "assistant_1",
+        "message": "možno če ne bo delovalo probaj še vzami ven baterijo počakaj par s daj baterijo noter pa holdej vol_down pol pa še power pol pa samo spusti power vol_down še drži, počakaj če se kaj prikaže"
+    },
+    {
+        "role": "user",
+        "message": "Zadeva je sledeča:)..prej mi je čist spraznilo baterijo ker sem pustil kako uro da vidim kaj se bo zgodilo (boot screen in nato klicaj)...sedaj imam na 10%..in mi prikaze v device managerju tole:  Portable devices:   - F:\\ - HTC MTP DEVICE"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ko imaš samo priklopljenega? čudno sem pričakoval kaj drugega ker MTP je tisto ko ti brskaš po napravi po prostoru dodenjenemu uporabniku kaj pa če greš pod F:\\ pač preko moj računalnik pa tam je kaj not itd."
+    },
+    {
+        "role": "user",
+        "message": "ja telefon se je polnil (bil ugasnjen)...odklopim, priklopim v pc in mi pokaze tisto...preko moj računalnik nimam opcije F:\\ fastboot še vedno ne zazna nič... Še slika klicaja (pozor: ekstra kvaliteta)"
+    },
+    {
+        "role": "user",
+        "message": "Poročam sledeče..odklopil iz PC, logo se prikaže, tel se resetira, logo se prikaže..tema kakih 20 sekund..in potem dobim spet klicaj."
+    },
+    {
+        "role": "user",
+        "message": "Aha še tole...telefona ne morem izklopit, če držim power knof se ne zgodi nič, če držim power in vol up se resetira. power vol down se ne zgodi nič."
+    },
+    {
+        "role": "user",
+        "message": "plus tole: ko je tel prizgan mi ga ne zazna v PC..ko je ugasnjen mi ga zazna kot sem napisal prej...sedaj imam problem ker ga ne morem ugasnit..prej sem dal baterijo ven in ga nisem nič prizigal, vklopil v pc..in ga je zaznalo..čudno čudno."
+    },
+    {
+        "role": "user",
+        "message": "Javljam..uspelo mi je prit do recoverya!!!...sicer nevem kako (možno da je bla vzrok preprazna baterija?)"
+    },
+    {
+        "role": "user",
+        "message": "Ko pritisnem na recovery, mi telefon resetira in spet ista zgodba...do recovery menija pridem brez p z vol - in power..torej..ni recoverya?"
+    },
+    {
+        "role": "user",
+        "message": "Ok še rešitev če bo kdo rabil kdaj, potrebno je ponovno odklenit bootloader (ker sem ga zaklenil), nalozit twrp in to je to.hvala vseen"
+    },
+    {
+        "role": "assistant_2",
+        "message": "V izogib za naslednjič.. A ne piše v drugi alineji \" (re-unlock before rom installation)\"?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "BTW kako pa si ga odklenil če nisi imel dostopa do bootloaderja?"
+    }
+]

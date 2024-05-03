@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  prosim za pomoč, ker imam stalno težave z delovanjem interneta. Imam ponudnika T2 in router Asus RT AC 51u. Na drugi strani stanovanja imam RP AC 56 wireless AC1200, ki ga imam nastavljenega kot Access Point. Omrežja (2,4 ghz in 5 ghz) imam nastavljena v obeh na enako ime. Ne vem kako moram imeti nastavljene dnsje, gatewaye itd.., da bi dosegel stabilno delovanje. Access point sem nastavil na 192.168.1.2 , router pa na 192.168.1.1 . Prosim za pomoč, kaj moram vse nastavit, da bi imel enaka imena in da bi komunikacija med njima potekala nemoteno. Hvala za pomoč."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prvo kot prvo moraš uporabljati samo EN DHCP strežnik. A routerju imej dhcp in če imaš rang od 192.168.1.1 do 192.168.1.254 je na drugem za nastaviti gateway in dns kot 192.168.1.1 . In če je kabel vmes bi moralo delovati b.p. Poglej pa še za nadgradnje routerja in RP AC da bosta imela zadnji firmware. Sploh ti ojačevalci so kar tečni z kakim starim FW. Pa na prvem routerju imej razliko v kanalih vsaj 3 kanale gor ali dol glede na drugega. Ne smeta se prekrivati signala na istem kanalu. Sploh pa poskeniraj kaj ti tolče v stanovanje od zunaj glede WIFI in nato prilagodi svojega."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 27. jun 2019 ob 08:24 izjavil:Prvo kot prvo moraš uporabljati samo EN DHCP strežnik. A routerju imej dhcp in če imaš rang od 192.168.1.1 do 192.168.1.254 je na drugem za nastaviti gateway in dns kot 192.168.1.1 . In če je kabel vmes bi moralo delovati b.p. Poglej pa še za nadgradnje routerja in RP AC da bosta imela zadnji firmware. Sploh ti ojačevalci so kar tečni z kakim starim FW. Pa na prvem routerju imej razliko v kanalih vsaj 3 kanale gor ali dol glede na drugega. Ne smeta se prekrivati signala na istem kanalu. Sploh pa poskeniraj kaj ti tolče v stanovanje od zunaj glede WIFI in nato prilagodi svojega.   Hvala za odgovor. Torej samo na routerju dhcp vklopljen,na access point pa disable..kaj pa na access pointu dns1 in dns2? Ip accesspointa pa je lahko fiksen na 192.168.1.2 ker na 1.1 je router.. ? Kaj pa subnet mask na obeh je potrebno kaj spreminjat? Upam da bo. Hvala."
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa na routerju dns in wins nastavim? A na routerju nastavim od 1.1 do 254 in ne od 1.2. do 1.254 ? Prosim se za to pomoc. Hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Range za DHCP daj na : 192.168.1.5-192.168.1.254 DNS na ojačevalcu daj na 192.168.1.1 in drugega recimo od googla : 8.8.8.8 in isto gateway na 192.168.1.1 Subnet mask pusti na 255.255.255.0 na obeh napravah. Wins pusti ker dvomim da boš kaj rabiš.  Ipje jaz ponavadi na DHCP zaklenem od višje številke kot imam fiksne naprave ( switche, RPI-je, printer ..... )  Tako da slučajno ne dobi katera od naprav teh ip-jev.  Se pravi imaš router in ta stoji na 192.168.1.1 Repetitor stoji na 192.168.1.2 RPI recimo na 192.168.1.3 Printer 192.168.1.4  Ostale naprave dobijo ipje od 192.168.1.6 - 192.168.1.254   tako se izogneš problemom na mreži že v štartu."
+    },
+    {
+        "role": "user",
+        "message": "Odlicno,hvala. Bom napravil tako. Super!"
+    },
+    {
+        "role": "assistant_1",
+        "message": "DNSjev in gatewaya na access pointu ni treba nastavljati.  Router: 192.168.1.1 (DHCP Range od 192.168.1.5 naprej) Kabel iz kateregakoli porta na routerju v access point na enega izmed (verjetno) 4h portov (NE V INTERNET, torej v enega od (verjetno) rumenih)! DHCP na \"access pointu\" izklopiš in ip nastaviš na 192.168.1.2. To je to.  Ostale nastavitve so po želji, DNSi na \"access pointu\" bodo imeli vpliv na delovanje samo, če je pride kabel v \"internet port\" (črn/moder)."
+    },
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  hvala. Sedaj dela internet veliko bolje in stabilno. Hvala obema za pomoč !!!"
+    }
+]

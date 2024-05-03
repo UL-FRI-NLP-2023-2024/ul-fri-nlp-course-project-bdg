@@ -1,0 +1,106 @@
+[
+    {
+        "role": "user",
+        "message": "Zdravo!  Srečujem se s problemom, kako sprintat 200+ dokumentov. problem ni v tem da ne moreš naenkrat dat natisnih več kot 15 dokumnetov na enkrat ker sem to v registru rešil, problem je ker je v mapi 500 pdfjev, od katerih bi želel sprintati 200 kom ki jih imam na seznamu v exelu.   Da bi pohitril proces, iščem program, ki bi mi presortiral načrte v dve mapi ali pa da bi program zral sprintat datoteke ki jih imam na seznamu? kakšnen predlog?  lp, boris"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Prvi zadetek na Googlu...  https://gregcaporale.wordpress.com/2012...  Napiši skripto ."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Takisto prvi zadetek na googlu: https://stackoverflow.com/questions/367..."
+    },
+    {
+        "role": "assistant_2",
+        "message": "združi jih (combine), če imaš kakšen program za to (oz. sam sprogramiraj s kakšnim API) in daj printat vse skupaj."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če bi šel \"ročno\" printat namesto na forum in Google bi bil zdele že vsaj na polovici"
+    },
+    {
+        "role": "user",
+        "message": "nism programer, mi je jasno kako bi izgledal algoritem, ne vem pa kako to sptravit v en BAT spravit da bo to delal  BAT mora narediti: ustvarit novo mapo v mapi, v kateri bo ta bat zagnan z imenom  za vsako datoteko preverit, če je njeno ime na seznamu \"seznam za print.txt\" ali \"seznam za print.xls\" če je \"print\" če ne poglej nasledno.  @ISO in bellzmet, Lahko označim vse in sprintam, potem pa imam 200 listov preveč in jih moram a roke ven sortirat... se mi pa zadeva ponavlja, in gre vedno po enakem principu..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Lahko plačaš programerju 1 uro pa ti bo naredil skripto namesto tebe"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ja itak, če se ponavlja je pa drugače."
+    },
+    {
+        "role": "assistant_5",
+        "message": "50€"
+    },
+    {
+        "role": "assistant_6",
+        "message": "https://www.naps2.com/  Samo namečeš not pdf-e , in shraniš kot enega in daš print. Enostavno in preverjeno."
+    },
+    {
+        "role": "user",
+        "message": "ja, bom očitno poklical programerja in mu pojasnil  @žakelj ni si prebral prvega sporočila? ni mi problem sprintat 500pdfjev z dvema klikoma, problem je v mapi kjer je 1000pdfjev sprintat 200 pdfjev, katere imam v elektronskem sezmanu. poimenovani so pa v stilu 300-xxxxx do 300-yyyyy."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_2 ti je tud dal dober nasvet. Mislim, da ti PDF Creator (PDF Architect) omogoča združevanje obstoječih PDF-jev v enega. Pač poklikaš, kaj naj združi in to daš printat kot en ogromen PDF dokument."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Tole shrani v kopiraj.bat datoteko. V seznam.txt pa daj spisek datotek, ki jih želiš naprintati. Skripta kopiraj.bat bo vse datoteke, ki so hkrati na seznamu in v trenutni mapi, skopirala v podmapo natisni. Uporaba na lastno odgovornost! (Imej backup datotek)  @ECHO OFF\n\nIF NOT EXIST natisni\\NUL (\n    MKDIR natisni\n)\n\nFOR /F %%G IN (seznam.txt) DO (\n    IF EXIST %%G (\n        @COPY %%G natisni > NUL\n    )\n)  Edit: MOVE zamenjal s COPY"
+    },
+    {
+        "role": "assistant_8",
+        "message": "@assistant_7 je 26. apr 2019 ob 12:55 izjavil:Tole shrani v premakni.bat datoteko. V seznam.txt pa daj spisek datotek, ki jih želiš naprintati. Skripta premakni.bat bo vse datoteke iz trenutne mape premaknila v podmapo natisni. Uporaba na lastno odgovornost! (Imej backup datotek) @ECHO OFF  IF NOT EXIST natisni\\NUL ( MKDIR natisni )  FOR /F %%G IN (seznam.txt) DO ( IF EXIST %%G ( @MOVE %%G natisni > NUL ) )  Mogoče bi bil copy bolj varen, kot move. Na koncu pa lahko izprazniš direktorij natisni, če je problem plac na disku. Poleg tega imaš ob ponovni uporabi vedno prazno mapo na disku, tako da nimaš problemov s starimi fajli, ki niso za sprintat ali pa imajo enako ime."
+    },
+    {
+        "role": "user",
+        "message": "hvala za usmeritev, sem probal in ugotovil da moram preverjati samo prvih devet znakov v imenu datotek, saj imam na seznamu v stilu x00-xxxxx dejansko pa imam datoteke x00-xxxxx.idw.pdf  sedaj gledam po temle vodiču in še nisem našel komande za to ampak še enkrat hvala  http://steve-jansen.github.io/guides/wi...  lp, Boris"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@ECHO OFF\n\nSETLOCAL ENABLEDELAYEDEXPANSION\n\nIF NOT EXIST natisni\\NUL (\n    MKDIR natisni\n)\n\nFOR /F %%G IN (seznam.txt) DO (\n    SET datoteka=\"%%G.idw.pdf\"\n    IF EXIST !datoteka! (\n        @COPY !datoteka! natisni > NUL\n    ) ELSE (\n        ECHO Datoteka !datoteka! manjka\n    )\n)"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Ali brez scripte. Nastavis default printer V gonilniku nastavis, da se tiska enostransko, cb, barni, obojestransko,... In skranis kot default settings Potem pa izberes pdf-e, jih markitas in desni klik, dropdown menu, print Aja, sorry, mali narobe sem prebral OP post. Odstopam od predloga :)"
+    },
+    {
+        "role": "assistant_10",
+        "message": "za merge pdfjev   https://pdfsam.org/"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Napol ročni način z manj kot 5 min dela, če ti ni uspelo s skriptami:  1. Skopiraj vse pdf-je v drugo mapo 2. V Excelu odpri nov spreadsheet in: - v stolpca B in D skopiraj obstoječ seznam 200 pdf-jev - v stolpec A s pomočjo autofilla 200x rename - v stolpec C s pomočjo autofilla 200x xyz oz. drugo kombinacijo, ki se ne pojavlja v imenih pdf-jev 3. Rezultat, ki izgleda podobno temu shrani kot csv (ignoriraj tečnarjenje Excela, da je xlsx boljši) 4. Csv file odpri v Notepadu in: - Edit -> Replace -> Find what: xyz; Replace with: _ -> Replace All (rezultat) - Edit -> Replace -> Find what: ; Replace with: presledek -> Replace All (rezultat) 5. Zadevo shrani, ji spremeni končnico iz csv v bat, jo premakni v mapo s skopiranimi pdf-ji in zaženi  Potem samo mapo sortiraš po imenu in tistih 200 pdf-jev bo na vrhu."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Sem si rekel, da naredim sample v Pythonu 3.5, po možnosti one-liner. In je uspelo. Vključno z uporabo podpičji na koncu stavkov.   Tako, da če gre namesto BAT namestit Python interpreter, lahko spodnjo skripto uporabiš za kopiranje pdf-jev v drug folder.  - filter.txt morajo biti imena fajlov (100-12345), vsak v svoji vrstici - lengthindex je za preverjanje prvih x znakov imena   #!/usr/bin/python3.5\n\n# import\nimport os;\nimport time;\nimport shutil;\nimport traceback;\n\n# path\npdfdir = \"/home/user1/Documents/pdf\";\npdfout = \"/home/user1/Documents/pdf/out\";\ntxtfile = \"/home/user1/Documents/pdf/filter.txt\";\n\n# lengthindex i.e string[0:x] to comapre to filename\nlengthindex = 9;\n\n# delay\ndelaybig = 1; # delay big\ndelaysmall = 0.2; #  delay small\n\n# write txtfile input to output\nshowtxtfilter = True;\n\n# counter\ncounttxt = 0;\ncountfiles =0;\ncountcopy = 0;\n\n# define color string\nclr_darkgray = \"\\033[90m\";\nclr_red = \"\\033[91m\";\nclr_green = \"\\033[92m\";\nclr_yellow = \"\\033[93m\";\nclr_blue = \"\\033[94m\";\nclr_magenta = \"\\033[95m\";\nclr_azure = \"\\033[96m\";\nclr_lightgray = \"\\033[97m\";\nclr_eoc = \"\\033[0m\";\n\ntry:\n\n    print(\"\");\n\n    print(clr_yellow + \"Hello my master.\" + clr_eoc);\n    print(clr_blue + \"This is fakin PDF printer super mage tripple duper 99.999 version.\" + clr_eoc)\n    print(clr_red + \"Let's check if dirs and filter file exist...\" + clr_eoc);\n    print(\"\");\n\n    time.sleep(delaybig);\n\n    pd = False;\n    pu = False;\n    tf = False;\n\n    if not os.path.exists(pdfdir):\n        print(clr_magenta + \"Path \" + str(pdfdir) + \" does not exist.\" + clr_eoc);\n    else:\n        pd = True;\n\n    if not os.path.exists(pdfout):\n        print(clr_magenta + \"Path \" + str(pdfout) + \" does not exist.\"+ clr_eoc);\n    else:\n        pu = True;\n\n    if not os.path.exists(txtfile):\n        print(clr_magenta + \"File \" + str(txtfile) + \" does not exist.\" + clr_eoc);\n    else:\n        tf = True;\n\n    if pd and pu and tf:\n        print(clr_yellow + \"Looks all good\" + clr_eoc);\n        print(clr_green + \"Let's continue ...\" + clr_eoc);\n        print(\"\");\n\n        movepdfs = [];\n\n        file = open(txtfile);\n        for item in file.read().split(\"\\n\"):\n            if len(item) > 0:\n                movepdfs.append(item);\n                counttxt = int(counttxt) + 1;\n        file.close();\n\n        if showtxtfilter:\n\n            print(clr_blue + \"List of file names to search for:\" + clr_eoc);\n            for movepdf in movepdfs:\n                print(clr_green + str(movepdf) + clr_eoc);\n                time.sleep(delaysmall);\n            print(\"\");\n\n        for item in os.listdir(pdfdir):\n\n            if os.path.isfile(pdfdir + \"/\" + item):\n\n                countfiles = int(countfiles) + 1;\n\n                for movepdf in movepdfs:\n\n                    if movepdf == item[0:lengthindex]:\n\n                        print(\"This \" + clr_green + str(movepdf) + clr_eoc + \" match to \" + clr_blue + str(item) + clr_eoc);\n\n                        print(\" Copy \" + clr_yellow + str(item) + clr_eoc);\n\n                        shutil.copy(pdfdir + \"/\" + item, pdfout + \"/\" + item);\n\n                        countcopy = int(countcopy) + 1;\n\n                        print(\"\");\n\n                        time.sleep(delaybig);\n\n        print(clr_green + \"How about some counters, eh?\" + clr_eoc);\n\n        print(\"\");\n        print(clr_azure + \".\" + clr_eoc);\n        print(clr_azure + \". .\" + clr_eoc);\n        print(clr_azure + \". . .\" + clr_eoc);\n        print(\"\");\n\n        print(clr_azure + \"counttxt=\" + clr_eoc + clr_green + str(counttxt) + clr_eoc);\n        print(clr_azure + \"countfiles=\" + clr_eoc + clr_blue + str(countfiles) + clr_eoc);\n        print(clr_azure + \"countcopy=\" + clr_eoc + clr_magenta + str(countcopy) + clr_eoc);\n\n        print(\"\");\n        print(clr_azure + \". . .\" + clr_eoc);\n        print(clr_azure + \". .\" + clr_eoc);\n        print(clr_azure + \".\" + clr_eoc);\n        print(\"\");\n\n        print(clr_azure + \"That's it. Gut luck with printing...\" + clr_eoc);\n        print(\"\");\n\n    else:\n        print(clr_azure + \"Nope, something isn't okey\" + clr_eoc);\n\nexcept Exception as exc:\n\n    error = traceback.format_exc();\n    print(error);\n     pdf-searcher"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_7 je 26. apr 2019 ob 13:50 izjavil:@ECHO OFF  SETLOCAL ENABLEDELAYEDEXPANSION  IF NOT EXIST natisni\\NUL ( MKDIR natisni )  FOR /F %%G IN (seznam.txt) DO ( SET datoteka=\"%%G.idw.pdf\" IF EXIST !datoteka! ( @COPY !datoteka! natisni > NUL ) ELSE ( ECHO Datoteka !datoteka! manjka ) )   Zdravo!  Zadeva deluje, večina je že sprintana, res pa se čez vikend nisem oglasil.   sem pa opazil da imam nekaj nekaj datotek z revizijo, kar pomeni da imajo ime 000-00000.idw_x.pdf med tem ko imajo ostali tako kot je bilo zgoraj in na njih je delovalo.   lahko v tvojo kodo vstavil nekaj kar v tisti maski za ime vsebuje možen wildcard (če sem prav razumel je v widovs skriptah to vprašaj?   SET datoteka=\"%%G.idw??.pdf\""
+    },
+    {
+        "role": "assistant_7",
+        "message": "@ECHO OFF\n\nSETLOCAL ENABLEDELAYEDEXPANSION\n\nIF NOT EXIST natisni\\NUL (\n    MKDIR natisni\n)\n\nFOR /F %%G IN (seznam.txt) DO (\n    SET pattern=\"%%G.idw??.pdf\"\n    SET /A count=0\n    FOR /F %%F IN ('DIR /B !pattern! 2^> NUL') DO (\n        @COPY %%F natisni > NUL\n        SET /A count+=1\n    )\n    IF !count! EQU 0 (\n        @ECHO Nobena datoteka ne ustreza vzorcu !pattern!\n    )\n)\n\nENDLOCAL"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Še malo drugače: @ECHO OFF\n\nSETLOCAL ENABLEDELAYEDEXPANSION\n\nIF NOT EXIST natisni\\NUL (\n    MKDIR natisni\n)\n\nFOR /F %%G IN (seznam.txt) DO (\n    SET pattern=\"%%G.idw??.pdf\"\n    FOR /F %%I IN ('DIR /B !pattern! 2^> NUL ^| FIND /C \".\"') DO SET count=%%I\n    IF !count! GTR 0 (\n        COPY !pattern! natisni > NUL\n    ) ELSE (\n        @ECHO Nobena datoteka ne ustreza vzorcu !pattern!\n    )\n)\n\nENDLOCAL"
+    },
+    {
+        "role": "user",
+        "message": "Hvala, @assistant_7   zadeva deluje!!  Lahko še kdo kaj priporoča glede gradiva glede BAT skript."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Hm, zakaj bi človek uporabljal BAT/CMD skripto dolžine 20 vrstic, če lahko namesto tega uporabi Python skripto v dolžini 140 vrstic"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Deset lajner :)    #!/usr/bin/python3.5\nimport os; import shutil; path = \"/home/user1/Documents/pdf\";\nif not os.path.exists(path + \"/out\"): os.makedirs(path + \"/out\");\nfor object in os.listdir(path):\n    if os.path.isfile(path + \"/\" + object):\n        file = open(path + \"/filter.txt\", \"r\");\n        for searchterm in file.read().split(\"\\n\"):\n            if searchterm == object[0:9] and len(searchterm) > 0:\n                shutil.copy(path + \"/\" + object, path + \"/out\"); print(str(object)); break;\n        file.close();"
+    }
+]

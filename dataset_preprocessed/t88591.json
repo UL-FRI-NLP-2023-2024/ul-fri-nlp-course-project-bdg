@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "message": "Rabil bi eno pomoč. Recimo, da imam excel datoteko v katero vpisujem podatke. Ko jih vpišem bi rad imel gumb, in ko bi kliknil na gumb bi se izvedla opcija save as... s tem da bi določu path kam naj se shrani, datoteka pa bi se poimenovala po vsebini od enega enega kvadratka naprimer C3. Bi mi lahko prosim kdo to naredil ali pa vsaj razlozil, kako to narediti?"
+    },
+    {
+        "role": "user",
+        "message": "Uspelo mi je narediti macro, ki shrani datoteko:  Sub Button() ' ' Button Macro '  ' ChDir \"C:\\Documents and Settings\\Desktop\" ActiveWorkbook.SaveAs Filename:= _ \"C:\\Documents and Settings\\Desktop\\File.xls\", FileFormat:= _ xlNormal, Password:=\"\", WriteResPassword:=\"\", ReadOnlyRecommended:=False _ , CreateBackup:=False End Sub  Zanima me samo, kako naredim, da namesto da mi datoteko vedno shranjuje kot File.xls, da mi jo poimenujo po vsebini kvadratka C3?"
+    },
+    {
+        "role": "user",
+        "message": "Evo sem tudi ugotovil kako shranim: Public Sub SaveAsC3() ChDir \"C:\\Documents and Settings\\Desktop\" ThisFile = Range(\"C3\").Value ActiveWorkbook.SaveAs Filename:=ThisFile End Sub Problem mam samo še ta, da mi noče shraniti na napisani path, ampak mi vedno shrani pod my documents. Pa še to sedaj mi shrani ime iz C3, kako bi naredil, da bi shranil iz C3 in C4?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "seštej c3 in c4 v c5 in upoštevaj c5 :)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "stringe sestavljas z: FileName = \"nekaj\" & \"se nekaj\" torej, FileName = Range(\"C3\").Value & Range(\"C4\").Value potem pa lahko naredis se: Path \"C:\\Documents and Settings\\Desktop\" FileName = Path & FileName ActiveWorkbook.SaveAs Filename ..."
+    },
+    {
+        "role": "user",
+        "message": "Hvala samo še eno uprašanje. Namesto C4 polja bi rad bral:  Declare Function Get_User_Name Lib \"advapi32.dll\" Alias _ \"GetUserNameA\" (ByVal lpBuffer As String, _ nSize As Long) As Long Function GetUserName() As String Dim lpBuff As String * 25  Get_User_Name lpBuff, 25 GetUserName = Left(lpBuff, InStr(lpBuff, Chr(0)) - 1) End Function  Network login user name. Samo nevem kako bi sestavil stavek, da bi mi poimenoval file namesto iz C3 in C4 polja iz C3 in user name."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Kwa?!"
+    },
+    {
+        "role": "user",
+        "message": "S to kodo k sm ti jo nazadnje pastal, se prebere user name trenutno logiranega uporabnika. Sedaj bi namesto, da shranim file pod ime, ki se nahaja v C4, rad shranil kot je njegov user name. Zahtevam preveč a ne"
+    },
+    {
+        "role": "assistant_1",
+        "message": "jaoooo paoooo... to bos pa zdej ze mal sam pomislu in postekal kako naredis.... mislim halo!!! sej samo namesto Range(\"C4\").Value zamnjas z tisto spr. kjer je username shranjen..."
+    }
+]

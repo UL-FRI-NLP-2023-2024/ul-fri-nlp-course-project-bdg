@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "message": "Kolikor sem gledal je Iskratelov Innbox v50 bolj tako-tako. Konkretno imam težave z wi-fijem, kjer trije pingi pridejo čez, trije ne, itd.   Povezava je trenutno taka:   Innbox V50-u    <---- wi-fi ---->   WRT610n  <---kabel---> mrežni printer\n |   |\n |   |\n |   ---> PC1\n |\n |---->  PC2  Namesto, da bi iskal vzrok in težavo rešil, bi Innbox in ruter povezal kar s kablom med sabo. Wi-fi na innboxu bi ukinil in ga raje omogočil na ruterju. Vse ostalo (dhcp) bi pustil pri miru. Tako računalniki kot naprave se morajo med sabo videti. Naprava je lahko povezana žično ali brezžično na ruter, lahko je ali na modemu ali na ruterju. Kaj moram nastaviti na ruterju? Je to sploh možno?  Bo tako v redu: bridge mode, dhcp izključen, IP ruterja recimo 192.168.0.1 ? Kaj pa wireless na ruterju?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za (WAN) Connection Type nastavi disabled ali pa bridge mode (odvisno od FW). Na routerju izključi DHCP (obvezno!). Če boš na Innboxu pustil privzete nastavitve (IP 192.168.1.1), potem na routerju nastavi IP na 192.168.1.254 (da boš lahko dostopal do routerja brez dodatnih sprememb). Innbox DHCP dodeljuje lokalne IP naslove 192.168.1.2-254 (po vrsti, od .2 naprej). Kabel med Innboxom in routerjem pa priključi: v Innbox v ETH1 ali 2, v router pa v katerikoli LAN port (NE WAN ali Internet port!). Wireless nastavi po želji (ni nekih posebnih nastavitev), saj bo router deloval kot Access Point za WiFi."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Zakaj vse naprave ne obesiš na wifi router, ter daš siolova jajca (Innbox) v bridge ? Innbox in router povežeš med seboj (v routerjev wan port), od lan portov dalje preko kabla."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Tudi t2 ima innboxe, ne samo siol."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1, zato ker imam računalnike v enem prostoru, tiskalnik in še kaj se bo našlo pa v drugem. Na innboxu se nahaja še telefon, ki ga nisem narisal. Telefon je v istem prostoru kot innbox.  @assistant_0, zakaj ravno porta ETH1 ali ETH2 na modemu? ETH3, ETH4 ali GE niso v redu? Je mogoče bolje ponucati GE port na modemu za povezavo z ruterjem - glede na to, da bo na ruterju lahko več naprav priklopljenih?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tovarniško so porti nastavljeni: ETH1 - data ETH2 - data ETH3 - video ETH4 - video GE - data  Važno je, da je router priključen na data port. ETH1 in 2 sem predlagal, ker sta tovarniško nastavljena na data. Razlike med priklopom na ETH ali GE port ne boš opazil (kar se hitrosti tiče)."
+    },
+    {
+        "role": "user",
+        "message": "IP ruterja je teoretično lahko kjerkoli v tem subnetu? Od 192.168.1.2 - 192.168.1.254 ? IP range na innboxu pa lahko nastavim tudi manjši, ip ruterja pa izven tega range v istem subnetu?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Glej da ne bo isti kot pri WRT610n."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1, jaz sem spraševal kateri ip nastaviti na ruterju WRT610n. DHCP server bo še naprej Innbox V50. Ali sem narobe razumel odgovor?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Prvo povej, kako misliš torej vse skupaj povezati."
+    },
+    {
+        "role": "user",
+        "message": "Želeno stanje je tako:   Innbox V50-u    <---- UTP-kabel ---->   WRT610n  ---kabel---> mrežni printer\n| |  |                                     | |\n| |  |                                     | |-----kabel---> PC3 ali katera druga naprava\n| |  |---> PC1                             |\n| |                                        |---- wi-fi ----> Prenosnik 4, Prenosnik 5 itd.\n| |---->  PC2\n|\n|---> Tel1\n\n  Wi-fi na Innboxu V50 bi onemogočil, saj imam z njim težave. Omogočil bi ga na WRT610n. Če wi-fi na WRT610n nastavim enako kot je bil na Innboxu (enkripcija, SSID ime, password, kanal), potem bi zadeva morala delovati brez rekonfiguracije wi-fi klientov (obstoječi prenosniki) ?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Bi šlo če pustiš Innbox v modem+router načinu, izklopiš na njem wifi, ter priklopiš WRT610n s kablom v lan port, tako kot je napisal @assistant_0 (Access Point za WiFi + switch).Enako velja za ip-je. Velja tudi na routerju izključiš DHCP.  Wi-fi bo deloval."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 12. apr 2013 ob 17:34 izjavil:IP ruterja je teoretično lahko kjerkoli v tem subnetu? Od 192.168.1.2 - 192.168.1.254 ? IP range na innboxu pa lahko nastavim tudi manjši, ip ruterja pa izven tega range v istem subnetu?   IP routerja je dejansko lahko karkoli od 192.168.1.1 do 192.168.1.254. Važno je, da 2 (ali več) napravi nimata istočasno istega IP naslova.  Po mojem mnenju boš najbolje naredil, če modemu pustiš 192.168.1.1, routerju pa dodeliš: 1.: 192.168.1.254 - kot rečeno Innbox po tovarniških nastavitvah IP-je dodeljuje od 192.168.1.2 do 192.168.1.254 (prva priključena naprava dobi .2; druga .3, itd; da bi imel priključenih 253 naprav istočasno in bi 253. naprava morala dobiti IP 192.168.1.254 (kateri bi v tem primeru pripadal routerju), je malo verjetno)  2.: 192.168.1.2 - kot rečeno, prva priključena naprava na modem dobi IP 192.168.1.2. Če boš routerju dodelil omenjeni IP naslov, potem je najbolje da IP range na modemu nastaviš od 192.168.1.3 (ali več) do 192.168.1.254.  Če uporabiš 1. možnost, se izogneš sitnostim ob morebitni menjavi modema. Če boš uporabil 2. možnost, bo ob morebitni menjavi modema potrebno popraviti IP range + če pride do menjave modema je dobro da si prisoten, ko se bo menjava izvajala, saj marsikateremu tehniku verjetno ne bo jasno, zakaj internet na napravah priključenih na router internet ne deluje, če bo najprej priključil naprave vezane direktno na modem.  Jaz bi uporabil 1. možnost, je najbolj enostavno in najmanj sitnosti."
+    },
+    {
+        "role": "user",
+        "message": "Zdaj mi je vse bolj jasno. Bom upošteval vaše nasvete. Hvala!  Moderatorja prosim, naj ne zaklepa teme, če se slučajno pojavijo dodatna vprašanja."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Razvoj Innboxa je ukinjen, tako da bodo problemi izginili ."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Dhcp pool je ponavadi od 192.168.1.100-200.  192.168.1.254 imajo privzeto Thomson speedtocuh škatle pri Amisu , raje nastavi 192.168.1.250."
+    },
+    {
+        "role": "user",
+        "message": "Evo, pa se je res pojavilo vprašanje :)  Če nastavim na Innboxu static lease list - rezervacija IP naslova za izbrane MAC naslove, ali je bolje da so to IP naslovi izven DHCP samodejnega dodeljevanja ali je vseeno? Recimo da je IP range 192.168.1.100 - 192.168.1.150."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Za static lease je najbolje, da so izven DHCP pool-a."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Če hočeš vedno iti IP, narediš DHCP rezervacije."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ok, sem ravnokar izgubil živce glede T-2 in Innboxa...  Prejšnji teden so nadgradili FW, da se lahko tudi Štrudli (in Win8) priklaplja na WiFi, pa da ne rabim routerja, da so na kabel priklopljene gajbice v LANu. V petek nabavljen router sem danes vrnil v štacuni, ker je v nedeljo WiFi delal (gajbice so bile pa še vedno na javnih IPjih...). In danes mi trije(!) tumbajo, da naj vnesem statičen IP, da bo za škatko v NATu. In vsem je bilo jasno, kaj je javni IP in kaj lokalni. Pa vsi so mi rekli, naj v IP konfig vnesem 89.nekaj. WTF!?!   Torej, a to zna ali ne biti kot Sinopeti pa ostala jajca od Iskre i šire, kar tala Telekom, ali je T-2 tako poseben, da pa njihova oprema tega ne zmore (ampak pripravljajo, da bodo uporabniki sami lahko nastavljali port fwd in podobno). Pa ista kišta, jebomast!   A se sme vdirat v opremo od ISPja? Potem pa z nastavljeno razbijat zobe šalabajzbkom? Tko, čist iz firbca?"
+    }
+]

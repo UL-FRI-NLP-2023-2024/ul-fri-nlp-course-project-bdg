@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "message": "mogoče bi bolj spadalo v programiranje ampak ok.  torej problem imam pri pridobivanju title-a neke strani, če je v samem naslovu strani linebreak. Trenutno uporabljam tega:  /\\<title\\>(.*)\\<\\/title\\>/ poiskusil sem tudi s tem (kateri bi naj ignoriral linebreaks) ampak ne deluje:  /\\<title\\>(.* | \\s)\\<\\/title\\>/  še to, prvega sem prekopiral iz http://regexlib.com/, pri drugem mi je pomagal prijatelj, ker sam nimam kaj veliko pojma o regularnih :(  gre se pa za PHP skripto."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Čisto na koncu po / dodaj črko s  http://www.php.net/manual/en/reference...."
+    },
+    {
+        "role": "user",
+        "message": "dodal in še vedno mi ne uspe iz youtuba dobit title strani. še je kak drugi problem? ali bolje da iz youtuba pobiram tako: http://gdata.youtube.com/feeds/api/vide... ki vrne xml datoteko in tudi title."
+    },
+    {
+        "role": "assistant_1",
+        "message": "valda je bolje iz YT pobirati xml datoteko"
+    },
+    {
+        "role": "user",
+        "message": "saj ne gre se samo za youtube linke, youtube je edini pri katerem sem opazil da ne pobere."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Dj tole probi no   $reg = \"#\\s?<title>(.*)</title>\\s?/s#\";"
+    },
+    {
+        "role": "user",
+        "message": "spet brez uspeha xD"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Ne vem sicer kako je to v PHP fairy landu, ampak na Pythonu greš uporabit Beautiful Soup in se ne sekiraš - predvidevam, da obstaja kaj podobnega tudi za PHP?  EDIT: Meh pa lenoba.... itak da je: http://stackoverflow.com/questions/2929..."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Cuentame todo lo que paso ...   evo nekaj na hitro:   <?php\npreg_match('/<title>(.*?)<\\/title>/si', file_get_contents('http://www.youtube.com/watch?v=FAqoqxTs53w'), $a);\necho str_replace(array(\"\\n\", \"\\t\"), '', $a[1]);  Output:  YouTube- Becoming Insane (Fight Club)"
+    },
+    {
+        "role": "user",
+        "message": "super, hvala ti"
+    }
+]

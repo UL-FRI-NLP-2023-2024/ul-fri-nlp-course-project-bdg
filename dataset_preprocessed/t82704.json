@@ -1,0 +1,802 @@
+[
+    {
+        "role": "user",
+        "message": "Ker še nikoli nisem ustvaril noben topic moram enega. Ne more škoditi saj je komaj prvi ... razen če sem kje spregledal podoben topic.   Ker so diski dandanes zelo hitri in ne veš več med katerim izbrati, me zanima katere hddje imate in kako se obnesejo pri različnih testih. Najpreprosteje ga je stestirati kar z  HD-Tach programom. Seveda me zanima tudi kateri diski na svetu so najhitrejši WD, Maxtor, Seagate, IBM morda celo kateri tretji ...   -Upam da vas bo sodelovalo čim več, ter da bo vsak pripisal še ime svojega diska. -Naj ne izpade tudi podatek o vašem povprečnem dostopnem času diska.  -Lahko pripišete tudi druge programe za teste hddjev.   Veselo pisanje ..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Trenutno imam IBM 123,5GB ATA100 7.200rpm, nisem ga še testiral, z njim pa sem zelo zadovoljen, da se nebi kdaj pregrel pa sem nanj pritdil še en HDD cooler !"
+    },
+    {
+        "role": "user",
+        "message": "Moj test: Imam wd caviarja 1200jb z 8mb cacha priklopljenga na sata. Slika pa pove več kot 1000 besed"
+    },
+    {
+        "role": "assistant_1",
+        "message": "kako majo teli novejsi diski tok slabe dostopne case??"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Evo moj test:     WD300 30GB, star 3 leta. Fino."
+    },
+    {
+        "role": "assistant_3",
+        "message": "WD 600BB     Hitachi Deskstar 60GB"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Ker prej omenjenega programa verjetno ni za linux, si bom dovolil prilimat test hdparm-a  [@workstation:]# hdparm -tT /dev/hda && hdparm -tT /dev/hdc  /dev/hda: Timing buffer-cache reads: 596 MB in 2.01 seconds = 296.52 MB/sec Timing buffered disk reads: 168 MB in 3.03 seconds = 55.45 MB/sec   /dev/hdc: Timing buffer-cache reads: 596 MB in 2.00 seconds = 298.00 MB/sec Timing buffered disk reads: 92 MB in 3.03 seconds = 30.36 MB/sec   /dev/hda Seagate Baraccuda 120G, 8MB cache, PATA  /dev/hdc IBM, 40GB, 5400rpm"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Random access time: 13.8s Read Burst Speed: 103.2MB/s Read speed maximum: 64.5MB/s Read speed minimum: 6.2MB/s average: 46.6MB/s  Maxtor 80GB, 7200 rpm, 8MB buffer, ata133"
+    },
+    {
+        "role": "user",
+        "message": "Jaz mam sicer proc 1200Mhz možno da imam zaradi tega tako počasen disk pa tako nizek burst rate ... tako da kdo bi vedel ..."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Evo pa še jst Hitachi 120GB 7200 Ata100 priklopljen na SATA. Random access time: 13.5s Read Burst Speed: 89.5MB/s Read speed maximum: 56.8MB/s Read speed minimum: 29MB/s average: 46.7MB/s CPU ulitization 20.7% Merjeno pa je z HD Tach ver. 2,7"
+    },
+    {
+        "role": "assistant_7",
+        "message": "Še moj, WD 80 giga,7.200 rpm, 8mb cacha ATA133"
+    },
+    {
+        "role": "assistant_8",
+        "message": "ATA133, Maxtor 80GB (3 particije), 7200rpm..."
+    },
+    {
+        "role": "assistant_5",
+        "message": "hmm..a če maš več partici gre počasnej??.k jst mam tut 3"
+    },
+    {
+        "role": "assistant_9",
+        "message": "Maxtor 40GB 7200 rpm ATA100  Access time: 12.2ms CPU utilization: 24.6% Burst speed: 124.7MB/s Average read speed: 36"
+    },
+    {
+        "role": "assistant_10",
+        "message": "imam 6 particij na MAXTOR 80 GB 7200 rpm disku in je rezultat HUDO NENAVADEN! Random Access time: od 30-160 ms Read burst speed: 30 MB/s CPU utilization: 12,7 %.  procesor P3 650 mhz (tiči problem tle?)  576 MB SD-Rama ostala šara"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Haj ! Pa še jaz. Imam dve particiji, disk IBM excelstor 60Gb 2Mb cash, 7200 obratov, ATA 100  Random acces 9,5 ms Read Burst speed 93,0 MB/s Read speed maximum 62,3 MB/s Read speed minimum 38,9 MB/S Average 55,3 MB/S Cpu utilization 15.7% Merjeno z HD-TACH 2,7"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_11 tole z dostopnim časom ti pa ne verjamem dokler ne vidim slike. Ker mam doma Hitachija 120GB 8Mb, ki je eden od diskov z najboljšim dostopnim časom (pri tej kapaciteti in obratih) in mi v HDTachu da okoli 11.5ms.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Hoj! @assistant_12 > danes sem 10 delal test in mi je zmeraj vrgu ven 9, 4 ali pa 9,5 ms, hmmmm, nevem kako to, sem tud jaz pri ostalih videl kakšni so časi, tak da res nevem zakaj tako mali dostopni čas, pač dober disk PODATEK JE RESNIČEN in stojim za tem!!! Nimam pa digitalca, da bi to poslikal, bom pa probal to shranit in nakaj naštudirat, da pošljem frame....."
+    },
+    {
+        "role": "assistant_12",
+        "message": "No vse verjamem, če vidim sliko. Sam sem zdele še enkrat gledal te tvoje rezultate pa vidim, da maš tudi zelo visoko read speed minimum 38MB/s je ogromno, da ne omenjam 55MB/s average, kar je nekje v rangu novega 74GB raptorja, ki ma 10000 obratov. Sicer obstaja razlaga, ki bi bila lahko celo možna. Disk ma recimo 80GB na plato, ker je tvoj disk samo 60GB so preprosto \"odrezali\" površino diska nad mejo 60GB in je disk ne uporablja, Potem bi bla pa možno met take transferje, saj je hitrost najmanjša na koncu diska, pa tud dostopni časi bi bli precej boljši... Sam to je zlo redko da naredijo kej tazga, edini disk ki sem ga videl da je bil tak je bil WD 100GB, ki je mel 3 plate po 40GB in so mu 20GB na koncu odrezal.... Enivey naredi printscreen pa mi ga pošlji na mejl v profilu, pol ga pa jest lahko na svoj server vržem da še drugi vidjo.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Ok sem dal enostavno control c in v word shrano! Kako pa sedaj to sliko prenesem na strežnik???? to je sedaj vprašanje???  Edit : majl sem ti poslal z sliko! kare mirne vole jo napopaj gor !!!  Neka se vidi IBM ExcelStor Tecnology ata 100, 60Gb na Matsonic ms8137c+ plati"
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_11,  - naredis PrintScreen (tipka na desni strani tipkovnice nad Insert in Home tipkami)  - zazenes Paint (ali slikarja) iz Program Files-> Accessories (programi-> Pripomocki)  - Paste (prilepi)  - File -> Save As (Datoteka-> Shrani kot)  - poimenuj iz izberi JPG kot tip datoteke (po defaultu ti bo najbrz ponudilo BMP).  --- Ker bos zajel cel zaslon lahko z orodjem za oznacevanje zarises samo okoli dela, ki bi ga zelel imeti. To spet kopiras, naredis novo datoteko (stare ni potrebno shraniti) in spet pejstas --> tokrat samo oznaceni del. ----  In ne rabis nobenega Worda za shranjevanje slik :)  b."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Tole je @assistant_11-ova slika HDtacha:     Za tiste ki še niste ugotovil, kaj je narobe s tem testom, namig. Poglejte X os grafa.  @assistant_11 ti maš neki narobe nastavljeno zdej nevem al si sam taprvo particijo testiral, al ti pa BIOS zazna sam 8GB diska... Počekiraj. Uglavnm men je zdej jasno kaj je narobe zdej pa ti porihtaj tako kot je treba.  K bom domov prišel bom še jaz postal svoj printscreen.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Tle mate še mojga službenga WD 400     LP  @assistant_12"
+    },
+    {
+        "role": "assistant_13",
+        "message": "Evo mojga (Maxtor 80Gb prikljucen preko Serilell adapterja)"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Haj! Ja pa res !! Hvala @assistant_12 za opozorilo, saj veš, že itak nosim očala, ampak zgleda da še zmeraj ne vidim dobro     V menuju od HD-TACH-a mi ne ponudi kakšniih nastavitev, tak da nemorem nič nastavljat!!!! V biosu mam nastavljeno na auto. Any ideas?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Evo tle je še moj Hitachi 120GB 8Mb 7200:     Ful čudno mi je, ker prejšnje verzije HDTacha so dale boljši rezultat pri access timeu. No enivej važn da je hiter v aplakacijah ne pa v testih.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Hmm zanimivo, tale hitachi je pa boljši kot bi si človek mislil... Se mi zdi da je kar najhitrejši od vseh zdej postanih, še najbližje mu je Maxtor, ki ga je objavil @assistant_13.  A bi lahko kdo z Raptorjem postal svoje rezultate? Morph maybe?  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Še moja 2 IBMčka, 40GB Deskstar, 7200RPM. Moram omenit, da sta precej fragmentirana, ampak kaj čem. Tale 2 grafa kažeta stanje, ko sta diska neobremenjena, takoj po zagonu:      Ko so zagnani razni programi, ki berejo z diska (DCC sendi prek IRCa, eMule, f@h...):"
+    },
+    {
+        "role": "assistant_15",
+        "message": "E pa ni  moj   Read speed Maximum 64.1MB/s min 30,9MB/s, average 49.4MB/s RA 14.6ms"
+    },
+    {
+        "role": "assistant_16",
+        "message": "Kaj mislite je to dobro?  Imam RAID 2 x 80 GB Maxtor diska in imam občutek kot da tale rezultat ni bleščeči"
+    },
+    {
+        "role": "assistant_15",
+        "message": "to si neki delu ko si testiru"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Maxtor 80GB,7200rpm,8MB buffer, ata133...je vredu?"
+    },
+    {
+        "role": "assistant_17",
+        "message": "HITACHI Deskstar 180GXP 120GB ATA"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_15: Kir disk to? Pecej švoh Access time. Drgač kul. Predvidevam da maxtor.  @assistant_16:  Ljuba duša kaj maš ti to? A maš prek Serillel adapterja al maš kak ATA66 RAID krmilnik. Uglavnm se mi zdi da bi blo bolje če ne bi uporabljal RAIDa, definitivno bi blo hitreje, da ne govorim o varnosti.  zigam:  dober tale maxtor sam CPU utilisation maš noro visoko (100%)  , pa access time bl švoh.  @assistant_17:  Isti disk kot moj, isti rezultat...  Lepo da se udejstvujete v tej temi, bo vsaj manj vprašanj \"kir disk kupiti\". Ampk še vedno bi rad vidu Raptorja v akciji...  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Evo ti raptoja v raidu (2x37Gb,10000rpm,sata raid)"
+    },
+    {
+        "role": "assistant_1",
+        "message": "IBM 20gb 7200rpm  Random acces 12,9 ms Read Burst speed 53,4 MB/s Read speed maximum 24,0 MB/s Read speed minimum 13,9 MB/S Average 20,4 MB/S Cpu utilization 25%  Maxtor 60gb 5400rpm  Random acces 16,5 ms Read Burst speed 72,2 MB/s Read speed maximum 35,5 MB/s Read speed minimum 18 MB/S Average 28,5 MB/S Cpu utilization 21,9%"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Kaj sploh je CPU Utilization?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "zigam:  To je koliko disk obremenjuje procesor med delovanjem (prenašanjem podatkov, iskanjem, pisanjem...)  @assistant_18:  Tole mora bit prav noro, divji dostopni časi in 90mb/s povprečnega prenosa... awesome. Pa še ful majhna obremenjenost procesorja... zanimivo. Na kateri plati oziroma kontrolerju ti to furaš?  LP"
+    },
+    {
+        "role": "assistant_16",
+        "message": "OK torej vidim da tole ni najboljse. Imam Promise-ov RAID controler ki je vgrajen na plati. Mislim pa da sem jaz pri nastavitvi RAIDA nekaj pošteno zaj... Ampak problem je v tem da lahko nastavis samo pri instaliciji windowsov.  Recimo v  prirocniku od plate je za pol knjige pise samo o RAID-u! Imam v planu reinstal windowsov in upam da bo mi zdaj uspelo dobit ven optimalne nastavitve."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_11:  Ne vem od kod, pa kako ti taka hitrost ....   @assistant_18:  bomba sta tale raptorja  .... ma kdo mogoče 74 gigabajtnega    Nima nihče WDja 120GB da bi še lahko jaz primerjal teste ??? A je možno da imam tako nizke prenose zaradi proca - 1200mhz ???"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Tad3j:  sej tvoj disk je čist vredu. Več boš s tem diskom težko dosegel, ker tvoj disk ma še 40GB na eno plato in ima notri 3. Kar pa je v primerjavi z Hitachijem ki ima notri 2 plošči po 60GB počasneje, saj večja gostota zapisa pomeni hitrejše prenose.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_19",
+        "message": "WD600BB  Random Access Time 13,4ms Read Burst Speed 85.7 MB/s Read speed - maximum 50.5MB/s, minimum 28.2MB/s,average 41.7MB/s CPU utilization: 8.1%  LP,  @assistant_19"
+    },
+    {
+        "role": "assistant_18",
+        "message": "@assistant_12: Kontroler je na plati Asus a7n8x Deluxe. Sm pa tud jst zadovoljen"
+    },
+    {
+        "role": "assistant_20",
+        "message": "maxtor 80GB ATA133 8MB  random access time 13.6ms Read Burst Speed 109.5MB/s Read speed - maximum 64.2MB/s, minimum 30.7MB/s,average 49.0MB/s CPU utilization: 23.1%"
+    },
+    {
+        "role": "assistant_21",
+        "message": "Še en serverski disk v mirrorju 72GB IBM 10krpm"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_21:  To pa je pravi SCSI POWAH! Nori dostopni časi. Kaj moaš to sam server al uporabljaš za normalno delo."
+    },
+    {
+        "role": "assistant_21",
+        "message": "Sam kot server. Tle na laptopu EVO800w mam pa en toshibin disk 50GB 7200 rpm (prvič da vidm 7200 v laptopu, zato sem tud tega uzel hehe)"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Nej še kdo sam z enim raptojem rezultate gor da, da vidmo razliko med raid in ne-raid"
+    },
+    {
+        "role": "assistant_22",
+        "message": "IBM Deathstar 40GB"
+    },
+    {
+        "role": "assistant_5",
+        "message": "heh..a ti še dela..men je že zdavni crknu  pa dobi v bistvu zlo velke pospeške..do 10m/s▲2 ..seveda takrat k leti skoz okn..k se razjezim..drgač povprečna hitrost diska je pa tm nekje okol 30m/s  odvisn kje sm..če sm v bloku na vrhu gre tut hitrej  joke"
+    },
+    {
+        "role": "assistant_22",
+        "message": "zanimivo da je tale moj deathstar dosegel isti rezultat kot HITACHI Deskstar 180GXP 120GB ATA"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Frenk poglej še enkrat. Pa če ne vidiš razlike glej toliko časa da je ne opaziš...  Več ti ne morem pomagat.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_22",
+        "message": "jest sm ciljal bl na acess time"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ah tok ma ze moj ibm...pa je se mal starejsi  sam so mel IBMi vedno najbolse dostopne case"
+    },
+    {
+        "role": "assistant_23",
+        "message": "Tko, danes sem dobil SCSI kontroler, še adapter rabim in zaženem zadevo (Baracuda SCSI UW2)."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_12: tnx za pojasnilo  sam nisem točno vedel kolko so plate not  ja pa ne pregledujem redno foruma tak da sorry za zakasnitev    A ve mogoče kdo zakaj moj disk ful piska oziroma kot bi bli lagerji znucani (zaj še samo čakam kdaj se bo skadilo ven, saj mam 3 leta garancije) in če ti ga za to piskanje menjajo na garanciji. Primer glasnejši je od vseh 7ih ventilatorjev v kišti ??? Aja pa je možno, da je to zato ker je star ravno eno leto pa se lagerji znucajo, ker hladim ga dovol dobro"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Problem je v tem, ker tvoj disk nima tekočinskih ležajev, ampak ma standardne kroglične, ki so od začetka čist good, po par tednih pa začnejo piskat... nič kritičnega, ampak zoprno za ušesa...  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_24",
+        "message": "ExcelStor J240    WD 1200JB"
+    },
+    {
+        "role": "user",
+        "message": "Se mi je zdelo... hm... bo treba drug disk nabavt"
+    },
+    {
+        "role": "user",
+        "message": "Mogoče ve kdo zakaj imajo diski z majhno kapaciteto (kar nekaj je takih) večji burst rate kot tisti z večjimi?"
+    },
+    {
+        "role": "assistant_25",
+        "message": "Mene pa zanima, ce ima kdo na abitki NF7-S na SATA disk in TV tuner in kako mu dela zajem slike pri polni PAL resoluciji na SATA disk.  Namrec na enem forumu smo ugotovili, da NForce2 plate z SATA resitvijo v obliki dodatnega cipa, ki se prikljuci preko vodila PCI smrdijo. Zakaj? Zato, ker je vodilo zmozno 133MB/s teoreticno, prakticno je to nekje 120MB/s (izmerjeno) in potem ne ostane kaj dosti bandwidtha za ostale operacije med pisanjem in branjem na disk. Glih zajem videa pa rabi veliko prepustnost in tu pride do problema.  Zakaj sploh na take plate dajati gor RAID 0 polja diskov? Zato da se lahko hvalisate z benchmarki? Pomoje ja, ostalo je neuporabno. Meni se zdi nesmiselno dajati na te plate RAID 0 polja kao za video obdelavo, ker sistem tega enostavno ne zmore. Jezen sem na proizvajalce, da tak zavajajo folk, no ko sem sam kupil NF7-S, sem ta problem spregledal, zdaj pa mi para zivce:   povezava do teme na abitovem forumu"
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_25: ma dobr...sej za 2 diska se nekak gre, pr 4+ rata tak problem."
+    },
+    {
+        "role": "assistant_25",
+        "message": "pri meni je ze pri enem disku problem  capture uncompress flow je 20MB/s pri polni PAL resoluciji, potem poteka kompresija npr z huffyuv kodekom in je tok 10MB/s, te pa to na disk leti pa se vse skupaj popaci. grrrr  SATA na teh plataah pac ni uporaben. ce delam capture na IDE disk pa dela brez problemov, ker IDE ni priklopljen preko PCI vodila pa mam IDE disk 2x pocasnejsi kot SATA disk."
+    },
+    {
+        "role": "assistant_23",
+        "message": "Ja bogovsko... Upam, da bo boljo z SATA kontrolerjem vgrajenim v MCP-S-"
+    },
+    {
+        "role": "assistant_1",
+        "message": "ja tko nekak bi mogl nardit, kot je intel naredu z giga lanom."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Ja bolj je potrebno razmišljat v smeri RAIDa, kot gledat tiste min. razlike med novimi diski. Prednost zame so tudi fluidni tečaji.  Tale test za RAID zame ni legitimen, ker občutki kažejo na bistveno večjo hitrost."
+    },
+    {
+        "role": "assistant_25",
+        "message": "jaz pa pravim, v cem je smisel RAID 0 na teh platah, ko majo SATA kontroler priklopljen na PCI vodilo? res, da je sistem se vedno hiter, samo je pac potem PCI vodilo rezervirano samo za diske in odpade npr. zajemanje videa kot v mojem primeru   hitro RAID 0 polje samo sebi nic ne nuca..."
+    },
+    {
+        "role": "assistant_15",
+        "message": "samo že dva diska v RAID-u  kopiranje 1.4 GB podatku....30sek.   probaj ti  instalacije z diska...indikator sploh ne zmore.."
+    },
+    {
+        "role": "assistant_22",
+        "message": "če je 113MB/s vse kar premore raptor v raid polju je to še vedno manj kot 120MB/s...in če imaš preko pci le to nebi smelo bit problemov...right?"
+    },
+    {
+        "role": "assistant_26",
+        "message": "No, slika ne dela  WD800JB - zelo fragmentiran Random acces time - 13,2ms Read Burst speed - 89.7MB/s Read speed - maximum 50.7 MB/s, minimum 26.9MB/s, average 41,8MB/s  Predator - počakaj na NF3 PRO250 - SATA in tudi Giga LAN (pri GL verziji) native v SBju"
+    },
+    {
+        "role": "assistant_22",
+        "message": "ali pa mogoče raptor v raidu dosega večje prenose kot113MB/s, le da zaradi zgornje omejitve 120MB/s ne pride višje...do koliko pa pride pata raid?"
+    },
+    {
+        "role": "assistant_26",
+        "message": "Uh, 113MB/s   Anyway, verjetno je nad 110MB/s že konec zmogljivosti Raptorjev, učinkovitost RAIDa pa po mojem ni takšna da bi se hitrost kar podvojila. Mogoče bo pa z native SATA Raid-om kaj drugače, samo po mojem je že dosežena najvišja hitrost"
+    },
+    {
+        "role": "assistant_27",
+        "message": "Maxtor 80GB, 7200obr., 8MB predpomnilnika  Result: Random Acess Time: 14.5 ms Read Burst Speed: 115,7 MB/s Read Speed: max - 62,7 MB/s, min - 32,4 MB/s, average - 49,0 MB/s CPU utilization: 26,6%  se mi zdi da je dostopni cas mau visok. a bi kdo vedu zakaj?"
+    },
+    {
+        "role": "assistant_10",
+        "message": "člowk, jst mam Maxtorja 80 GB (se mi zdi, da ma 2 MB pomnilnika) in je dostopni čas 30 ms, hitrost pa 30 MB/S! nimam pojma , kva nj nardim..."
+    },
+    {
+        "role": "user",
+        "message": "bmw-f1: daj še naštej kakšno konfiguracijo maš da bomo vedli kaj bi lahko blo narobe ..."
+    },
+    {
+        "role": "assistant_28",
+        "message": "Moja dva Maxtorja 40GB ATA133, 7200 rpm., 2MB predpomnilnika:  Prvi disk C: (gor je sistem): Random Access Time: 14,4 ms Read Burst Speed: 103,0 MB/s Read Speed: max - 64,2 MB/s; min - 27,5 MB/s; average - 52,0 MB/s CPU utilization: 8,4%    Drugi disk D: (data, špili,...precej fragmentiran): Random Access Time: 15 ms Read Burst Speed: 100,8 MB/s Read Speed: max - 64,2 MB/s; min - 29,1 MB/s; average - 52,0 MB/s CPU utilization: 9,7%"
+    },
+    {
+        "role": "assistant_10",
+        "message": "Tad3j: osnovna plata VIA DFI (mam naložen Service pack, oz. Hyperion 4in1), PIII 650 mhz (nenavit), 576 MB SD-RAMa, GF 2 MX 400, zvočna in ostara šara.."
+    },
+    {
+        "role": "user",
+        "message": "Recimo (ugibam) da maš ti plato DFI CA64-TC s VIInim čipovjem .... ta plata še ni podpirala ata 133, kar podpira tvoj disk za optimalno laufanje .... možno da maš zato takšno hitrost"
+    },
+    {
+        "role": "assistant_10",
+        "message": "točno tako - imam VIA Plato CA61 Rev.A+ - mogoče je to vzrok ja.  A pomagat se pol (razen z menjavo plate) ne da?"
+    },
+    {
+        "role": "user",
+        "message": "Ja ne vidim drugega načina, za ta disk bi potreboval večji pretok podatkov ..."
+    },
+    {
+        "role": "assistant_15",
+        "message": "Dokler sta bila dva diska v RAIDu je bil moj oltar.  sedaj sem probal z štirimi diski v RAID0 in je nekaj norobi  nastavljeno na 16KB: average 36.4 CPU utilization od 0- 1.9%  kaj je kontroler?  bojim se, da ni vse zlato kar se sveti    bi dal slikco sam mam podrt server"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Evo še moj Maxtor 120Gb!     Kaj pravte, mam ga možnost menjat za kakšen drug 120 ali 160 giga disk."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Ja menjaj za Hitachi 7K250. Precej bolj divja reč. Ampak vprašanje kje ga imajo.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Ja je potem je Hitachi 7K250 dobra zamenjava, kolk pa je to 120 al 160giga? Kaj pa Segate?"
+    },
+    {
+        "role": "assistant_12",
+        "message": "To je 250GB, nevem ampak manjših kapacitet še nisem videl. Lahko da obstajajo.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Seagate je prepočasen. Maxtor ali Hitachi. Maxtorja boš veliko lažje dobil pa tudi sam bi ga skoraj raje kupil kot Hitachija."
+    },
+    {
+        "role": "assistant_30",
+        "message": "jaz mam pa problem:  disk je maxtor 80gb 7200 2mb 3 particije proc je d750 :) win xp teac 40x kt133 z ata66 kontrolerom. 80 zilni kabel, ki sem ga porezal in oblikoval v kroznega.  1. disk priklopljen na primary kot master, cd-rom kot slave     cd-rom se v nero cd-speed pride do 40x lepo, kot mora. zvezno narasca  2. disk priklopljen na na primary master, cd-rom secondary master  disk enako hiter cd-rom pride do 22x  3. samo disk primary master, cd-rom izklopljen        disk je udma4 mode vkloplen. cd-rom pa se je le smesen:D ce je kot primary slave na 80 zilnem kablu kot disk, dela udma 2 mode.  ce ga dam na 40 zilni kabl kot secondary master dela only pio, verjetno zato sploh noce vec kot 22x delat. dma vklopim in cd-rom ne dela spljoh.  kaj bi blo narobe???  se dobro da mam roj. dan jutri, sem dobil ze nekaj dnarja, ocitno si bom kar po maticno novo sou."
+    },
+    {
+        "role": "assistant_10",
+        "message": "@assistant_30: imam isti disk kot ti in tudi enako gnile hitrosti   problem je pa seveda matična - DFI CA61. Rev.A+ - a bi se dal kje ugodno dobit kšno ki bi bla za moj proc - P3 650 mhz?"
+    },
+    {
+        "role": "assistant_30",
+        "message": "jaz tudi nekako sumim maticno ja:( kt133 cipovje in ata66."
+    },
+    {
+        "role": "assistant_10",
+        "message": "no sj fora je ravno v tem - omogoča le ATA 66 - disk je pa ATA 133. Kje boš ti kupu plato?"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Kera je bol dobra 120 ali 160giga zamenjava za mojga Maxtorja 120, če je sploh kakšna?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Tribesman:  klik"
+    },
+    {
+        "role": "assistant_30",
+        "message": "ne vem se kje bom kupil. upam da bo na nf7-s boljse delal disk. grr, ce ne pa v jok pa na drevo:("
+    },
+    {
+        "role": "assistant_31",
+        "message": "Evo mojega Samsung 160GB 8 MB."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Dobri prenosi, sam mal švoh dostopni časi...  Kolk pa pride tale disk?  LP  @assistant_12"
+    },
+    {
+        "role": "user",
+        "message": "V čem je finta Read Burst Speeda ??? Somebody know ..."
+    },
+    {
+        "role": "assistant_29",
+        "message": "Ja to je podatek ki nam pove kolk MB disk lahko zapiše v eni sekundi, to je recmo ko kopiraš iz diska na disk, saj pomoje je to to"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Napača.  Burst Speed je podatek, ki pove s kolikšno maksimalno hitrostjo sta sposobna komunicirat disk in krmilnik na plati. Ubistvu sploh ne gre za branje/pisanje na diske, ampak samo branje/pisanje v predpomnilnik na disku...  Tako nekako je to.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_29",
+        "message": "Ok, hvala za popravek"
+    },
+    {
+        "role": "user",
+        "message": "Ja tnx sn vedel da bo @assistant_12 to vedo"
+    },
+    {
+        "role": "assistant_32",
+        "message": "Malo trajalo ampak evo še moje podatke (hdtach 2.7):   Hitachi Deathstar 40:  12,9 91,9  64,2 21,2 47,4  27,3%  Maxtor 2x120 SATA RAID 64kb clustri  14,1 108,0  100,1 22,4 83,7  36%  Evo direktno primerjava: vidi se da je sata raid res v povprečju okrog 80% hitrejši od navadnega ide diska (predzadnji podatek).  Kdo ve zakaj imam tako veliko cpu utilizacijo (barton 2500)?"
+    },
+    {
+        "role": "assistant_33",
+        "message": "jaz sem pa danes naredu test,sam se mi zdi mal nemogoče:read speed maximum 989.5MB/s ,minimum 34.9MB/s,average 78.5MB/s ,cpu utilization 3 % .Mam 2*160 wd 7200obratov 8Mbcache Sata v raid na promise 20378"
+    },
+    {
+        "role": "assistant_32",
+        "message": "Mnja. Pri max si verjetno malo se zatipkal sicer pa se mi zdijo rezultati v redu... Samo ta cpu utilization mi v tvojem in v mojem primeru ne štima..."
+    },
+    {
+        "role": "assistant_33",
+        "message": "nisem se zatipku ,ker sem večkrat ponovil test ,pa dobim max read zmeraj okoli 1000MB/s ."
+    },
+    {
+        "role": "assistant_32",
+        "message": "SATA ima max prenos 150 Mbit/s. Ja.   Če se nisi zatipkal je očitno nekaj drugega zmedlo meritve."
+    },
+    {
+        "role": "assistant_34",
+        "message": "Jst mam maxtorja 80 giga 8Mb cache 7200 rpm, razdeljenega na 2 particiji.  Minimalni dostopni čas sem mel 12.1 ms     Maximalni Read burst speed pa 113.9 Mb/s     Ti testi so kar dobri, plata je A7N8X-X kar ni bogvekaj, proc pa Athlon XP barton 3200+  proc je navit iz 2500+"
+    },
+    {
+        "role": "assistant_35",
+        "message": "Moji rezultati..  Maxtor 80GB 7200   Maxtor 40GB 7200    Pa me ful zanima zakaj mam tako obremenitev procesorja? Še nekaj časa nazaj je blo okol 26%..zdaj pa kar čez 60%.. sej se opaz k kaj kopiram, da računalnik šteka..prej pa ni. Sistem (winxp) je na sveže naložen.. Ostali podatki o računalniku so v podpisu.."
+    },
+    {
+        "role": "assistant_35",
+        "message": "A nbeden ne ve zakaj je tko?"
+    },
+    {
+        "role": "assistant_36",
+        "message": "Ganzi, imas zadnje porivace za nVidio instalirane?  Podatki za moje sisteme za kar nekaj razlicnih diskov so pa  Tukaj - diski so IBM 180G PATA, Maxtor 120G/8mb PATA, Maxtor 120G SATA, Seagate 80G PATA, Maxtor 80G PATA, pa se firewire pa USB2.0 variante, na treh racunalnikih (en p4 2.8/800, Asus P4C800-E Deluxe, drugi Athlon 2100+, Gigabyte 7VAXP, tretji dual opteron 240, Tyan Tiger K8W). Rezlutati so kar zanimivi.  LP A."
+    },
+    {
+        "role": "assistant_35",
+        "message": "Imam zadnje driverje pa probal sem tut s prejšnjimi pa nič ne pomaga..  A je to isto kakor če dam kopirat en file iz ene particije na drugo oz na drug disk in pogledam kašn je cpu usage?"
+    },
+    {
+        "role": "assistant_37",
+        "message": "IBM jupiter 80G 7200rpm:  -max:65 -min:30 -avg:50 -access time: 12ms burst:86 cpu: 3.5  WD raptor 36G 10.000rpm:  -max:60 -min:37 -avg:50 -access time: 8ms burst:100 cpu: 3.2%"
+    },
+    {
+        "role": "assistant_37",
+        "message": "VASKO,  sem prebral, da imaš težave s kontrolerjem in prepustnostjo. Sam tudi sumim, da imam bolj švohn kontroler in da je le-ta kriv za nižje prenose diskovja. Si mogoče razmišljal kaj o nakupu dodatnega kontrolerja. Če bi mogoče to rešilo problem, al je celotna zasnova PCI vodila na plati zgrešena?"
+    },
+    {
+        "role": "assistant_37",
+        "message": "Gledajoč HD Tach graf opažam, da imam dosti spikesov (špičk) in to žal DOL, zaradi česar mi minimalno read hitrost takoj zmanjša.  Ve kdo kaj je vzrok za te spikese? Mogoče slabo formatiranje? Format? Fragmentacija?"
+    },
+    {
+        "role": "assistant_38",
+        "message": "WD 1200JB (8mb)    Maxtor 20gb"
+    },
+    {
+        "role": "assistant_12",
+        "message": "Evo tle je en hitr test Hitachija 7K250 40GB 8MB ATA 100:     Zadeva je prav nehumano tiha... še med iskanjem je ne slišiš prov dosti. Tišji od 180GXP serije!  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_39",
+        "message": "Testi Maxtor 80 GB 8MB"
+    },
+    {
+        "role": "assistant_39",
+        "message": "Testi"
+    },
+    {
+        "role": "assistant_40",
+        "message": "@assistant_39: Daj slike na kak drugi server, ker  http://www.geocities.com/ ne omogoča linkanja na slike..."
+    },
+    {
+        "role": "assistant_41",
+        "message": "Pa še moj WD800BB"
+    },
+    {
+        "role": "assistant_42",
+        "message": "Ene dva vprašanja:  Zakaj je na enih grafih prenos na začetku majhen, potem pa hitro skoči na maximum (je začetek diska res pošasnejši, ali je to zato, ker je ram na disku še neuporabljen)?  Če naredim C particijo 5GB (recimo od 5GB do 10GB glede na zadnji graf) - a to pomeni, da bo to particija ustvarjena na začetku (glede na graf) diska in bo zato hitrejša od ostalih particij na disku (ali recimo od tiste med 50GB in 80GB)?"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Po mojem se graf na začetku tako strmo vzpenja, ker se plošče v disku še ne vrtijo s polno hitrostjo in je zato bralna hitrost manjša."
+    },
+    {
+        "role": "assistant_12",
+        "message": "To je zgleda napaka v programu, saj računa povprečno hitrost na nekem intervalu, zgeda da pa pri prvem intervalu nekaj narobe vzame in je rezultat tam nizek.  Drgač pa sam tok za info, disk se vrti z konstanto hitrostjo in je praviloma prav na začetku najhitrejši.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_43",
+        "message": "Plošče se stalno vrtijo s polno hitrostjo! Razen če imaš uštiman izklop diska po xy minutah"
+    },
+    {
+        "role": "assistant_44",
+        "message": "Jaz imam tudi eno vprasanje. V Sandri mi pokaze warning, da nastavitve za disk niso najvisje mozne. Mene pa zanima kje se pogleda oz. spremeni nastavitve za disk, imam XP-je ali to pise slucajno kje v BIOS-u, ker jaz nisem nic takega zasledil."
+    },
+    {
+        "role": "assistant_30",
+        "message": "evo se moje, zdaj ko mam novo platko dela super. Maxtor 80gb 7200 2MB"
+    },
+    {
+        "role": "assistant_45",
+        "message": "Maxtor 120 gb 8mb 7200 6Y120P0"
+    },
+    {
+        "role": "assistant_46",
+        "message": "WD740gd:  Random access time: 8.8 ms Read Burst Speed: 117.7 Mb/s  Read speed: max:73.4 Mb/s min:39.7 Mb/s average:63.7 Mb/s  cpu utilization: 3.6 %"
+    },
+    {
+        "role": "assistant_30",
+        "message": "8,8ms dostopnega casa?   spet kaksna napaka v programu al je to res mozno?"
+    },
+    {
+        "role": "assistant_47",
+        "message": "Maxtor 80 Gb / 7200 obr / 2Mb cache / 2 particiji"
+    },
+    {
+        "role": "assistant_12",
+        "message": "@assistant_30: Ni napaka. To je Raptor 74GB... pač ultimativni killing machine... Lepo bi ga bilo imeti, vendar ne za to ceno.  LP  @assistant_12"
+    },
+    {
+        "role": "assistant_48",
+        "message": "Seagate 120GB, 8MB (ST3120026A) Particija 1: 12GB, NTFS Particija 2: 100GB, NTFS        Maxtor 60GB, 2MB (6Y060L0) Particija 1: 7GB, NTFS Particija 2: 50GB, NTFS"
+    },
+    {
+        "role": "assistant_30",
+        "message": "@assistant_47: vidim da mas enak disk kot jaz pa popolnoma enake hitrosti:) dostopni casi pa itak malo variirajo.   btw, tile maxtorji 80gb 7200 so hitri ko satan kot vidim v primerjavi z drugimi diski."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Aja, pozabu sem povedat, da imam pri Maxtorju Acoustic Management nastavljen na off."
+    },
+    {
+        "role": "assistant_47",
+        "message": "@assistant_30 - ja res so kr hitri ti Maxtorji...pa vsi dajejo zelooooo podobne rezultate...mislim, odstopanja so majhna"
+    },
+    {
+        "role": "assistant_49",
+        "message": "1. Disk:  Maxtor 120GB 8MB Access Time: 14ms Read Burst Speed: 30,7 MB/s Read Speed: 30.2 MB/s MAX, 7.2 MB/s MIN, 27.2 MB/s average CPU: 68%  2. Disk: Maxtor 60GB Access Time: 15.4 ms Read Burst Speed: 31 MB/s Read Speed: 30.2 MB/s MAX, 7.9 MB/s MIN, 27.2 MB/s average CPU: 65%  Oba grafa sta skoraj ravna črta na 30MB/s s 4imi padci na 7MB.  Procesor: AMD 1800+ XP (nenavit), 512 MB DDR (333mhz), Matična plata: K7VTA3  Zanima me, zakaj ni boljših rezultatov (oz. zakaj sta oba diska čisto izenačena) glede na to, da nekateri zgornji testi Maxtorjev 80GB presežejo 50MB/s ???  10x"
+    },
+    {
+        "role": "assistant_1",
+        "message": "odgovor je: K7VTA3 in tist kar bi mogl bit se pred tem."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Preveri, ce mas vklopljen UDMA5 (ali 6 za maxtorja). Js sm mel enkrat gnile prenose in ravno crto, ko sem mel v biosu na UDMA2 nastiman."
+    },
+    {
+        "role": "assistant_50",
+        "message": "Pozdravljeni!  Sicer nimam testa svojega diska, mam pa vprasanje za mojega bodocega: WD ali Seagate?  Oba imata 8 mb cacheja, 120 GB kapacitete in kroglicne lezaje.  Kaj so WDji res toliko hitrejsi od Seagateov, da se splaca trpet glasnost? Kaj pa rok trajanja?  Najlepsa hvala za odgovore, pa ce bi lahko napisali tocno ime modela, da me v trgovini ne bi zafrknili.  Andrej"
+    },
+    {
+        "role": "assistant_30",
+        "message": "dva maxtorja 80gb z 2 ali 8mb cacheja:)  ta 2 pa 8 je itak bolj za sminko kot ne:>"
+    },
+    {
+        "role": "assistant_42",
+        "message": "Primerjava dveh  diskov z 8MB in 2MB spomina.  Pri HD-Tachu cache ni pomemben ... ker konstantno bere z maksimalno hitrostjo."
+    },
+    {
+        "role": "assistant_50",
+        "message": "No ja, problem je v tem, da se mi je WD 80GB 8mb pokvaril in je se v garanciji, in namesto da mi dajo istega, sem se zmenil, da doplacam par jurjev za kakega od 120GB. In tam prodajajo samo WDje in Barracude...  Vprasanje ostaja: WD ali MorskeSpodnjice?  Andrej"
+    },
+    {
+        "role": "assistant_48",
+        "message": "Moja teorija je, da gre pri diskih bolj za sreco, kot za kaj drugega.  Meni so od iste firme doloceni diski crknili, doloceni pa delajo se danes. Vzemimo za primer Maxtorja. Moj 40GB model dela BP. 60GB je po pol leta crknil. Dobil sem zamenjavo, ki je crknila cez 2 meseca. Better believe it! Druga zamenjava pa dela se danes.  Z mojim 120GB seagatom se nisem imel problemov in upam (ne, preprican sem ), da bo tako tudi ostalo."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Z mojim 120GB seagatom se nisem imel problemov in upam (ne, preprican sem )  jest bi na tvojem mestu usak nad 5x naredu backup. seagate-i so prava loterija. dela ali pa ne dela. najveckrat ne. moj je tut neki casa lepo delu in se je kr enga lepga soncnega dne odlocu, da ne bo vec. in kaj mi je ostalo? u smeti sm ga nesu."
+    },
+    {
+        "role": "assistant_50",
+        "message": "AAAAAAAAA pa saj jaz bom se znoru  Najprej me prodajalci in en kolega (ki ve kaj govori) prepricujejo, da je seagate pojem nepokvarljivosti. In zdej to. A bi znal povedati katera serija je ta, ki rada crkne?"
+    },
+    {
+        "role": "assistant_42",
+        "message": "Tud Mercedes pa Ferrari crkneta. Prijav se na www.storagereview.com in boš vidu statistike. Najbole se je po mojem odrezal Seagate."
+    },
+    {
+        "role": "assistant_50",
+        "message": "Hja, pol je pa se drugi vidik:  zdej se mi je 80GB disk pokvaril, doplacam maksimalno 4 jurje in mam cisto novega 120GB. Pol se mi cez recimo leto al pa dve pokvari 120GB, spet doplacam par jurjev, in mam cisto novega 160 ali 200 GB.  Ampak zdej sem mel sreco, ker se je samo lezaj zjebal, tako da disk dela, ampak mi vrta po mozganih.  Hm hm, decisions decisions..."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Tkole ti bom reku: Seagate ali WD, pri nobeni firmi ne mores zgresit."
+    },
+    {
+        "role": "assistant_51",
+        "message": "Samo besedico o cpu utilization: zadeva ti gleda, kolk je CPU trenutno zaseden...pri meni, če laufa SETI, je obremenjenost 100%, kar pa nekako ni ravno logično... Drugače moji rezultati: HDTACH 2.70 WD800JB 8 MB 7200 13,5 ms 88,5 mb/sec burst speed max read 53,9 mb/sec min read 27,5 mb/sec avg read 41,7 mb/sec"
+    },
+    {
+        "role": "assistant_43",
+        "message": "Še moj WD80GB BB: MAX:58,4MB/s MIN:28,1MB/s POVPREČJE:47,2MB/s RBS:68,7MB/s dostop:13,6ms"
+    },
+    {
+        "role": "assistant_52",
+        "message": "@ @assistant_50: rešitev za tvoje živce na moji strani pod komp/modifik. :-)  Dejte fantje že enkrat skapirat, da je Burst speed najmanj pomembna lastnost diska! Najbolj pomembno za primerjavo med diski za hitrost je povprečje pri praktičnem delu, to pa pokaže v globalu povprečno najhitreje in najbolje Sandra (ista verzija!) Disk bench in sicer število točk pri grafu, ker uporablja algoritem s par sto Mb fajlom in delčki najbolj razširjenih aplikacij, ki intenzivno piše/riše/kraca/bere po disku. To pomeni npr. če je index 20.000 in drugi disk ima 30.000, da je drugi 50° hitrejši od prvega in le tako lahko realno primerjate svoje diske med seboj! vse drugo je izguba časa in placa na Slo-tech serverju IMHO ... Instalirajte si vsi zadnjo Sandro in pol postajte index tle; po moje bo tko vrstni red hitrosti: 2xRaid Raptor, manj 2x7,2k ostali Raid; malo manj en Raptor; pol pa več odzadi vsi ostali, bolj naprej tisti z več Gb po plati ..."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Potem pa lahko zacnes s postanjem sandra score-ov, ce imas ze toliko idej."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Dva raptorja v raid0 polju"
+    },
+    {
+        "role": "assistant_53",
+        "message": "Z dvema exelstore 80Gb diskoma dobim average 82Mb/s Raptor ni glih dosti boljši?  David"
+    },
+    {
+        "role": "assistant_22",
+        "message": "raptor nažalost ne more zadihat zarad tega k****** počasnga pci-ja...mogoče bom pa kmalu presedlal na P4"
+    },
+    {
+        "role": "assistant_1",
+        "message": "in kaj bos pridobil na p4??"
+    },
+    {
+        "role": "assistant_54",
+        "message": "Kaj veliko z ICH5R ne pridobiš, še posebaj ne, če nimaš drugih naprav, ki bi opbremenjevale PCI vodilo (največja teoretična prepustnost je 132 MB/s)."
+    },
+    {
+        "role": "assistant_46",
+        "message": "@assistant_22, slikce se ne vidi! (Ali je pa problem obstojen le pri meni)."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Js vidim eno lepo slikco z x-om v zgornjem levem vogalu"
+    },
+    {
+        "role": "assistant_46",
+        "message": "Bom kar jaz pomagal! Torej Frenkova dva raptorja v raid0:"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Ja, ampak če pravte da ga PCI vodilo bremza zakaj je pa 74Gb raptor tolk hitrejši?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "a misls da ne obstaja se ksno drugo vodilo kot 32 bitni pci??"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Če delajo vzporedni test raptorjev 34 in 74 Gb pol domnevam, da nej bi bla na enakem PCI vodilu drugač ni fore a ne?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "mogoce pa delajo na 64 bitnem pci vodilu?? si kdaj na to moznost pomislu?"
+    },
+    {
+        "role": "assistant_18",
+        "message": "Zakaj mata pa pol on omenjenem testu 34 Gb raptorja isti rezultat kot jst na 32 bitnem vodilu?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "a je kdo reku da mata ona2 64 bitni pci? sm samo reku da obstaja moznost. sicer pa @assistant_22a ne bremza pci vodilo, prej sata kontroler, ampak to je pac meja raptorjev."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Se strinjam da je to meja raptorja in sem s to mejo v praksi več kot zadovoljen  ."
+    },
+    {
+        "role": "assistant_46",
+        "message": "Kje je pa tolk očitna razlika med 36 raptorjema, meni se zdita totalno enaka."
+    },
+    {
+        "role": "assistant_1",
+        "message": "nc posebnega niso teli raptorji... mam ze raj velik vec placa, kot pa mal boljsi dostopni cas..."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Jst sem govoril o razliki med 36 in 74 Gb, če to misliš."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Vsak svoje hvali"
+    },
+    {
+        "role": "assistant_46",
+        "message": "Aha, razlika med raptorjema 36 (v raid0) in 74 (ne raid0) . Morda je potrebno upoštevati dejstvo, da je 74 novejši, torej so ga malo izboljšali... Taka moja razlaga po domače.  Raptorji so zelo dobri diski!!! Samo problem je ker so dragi. Glede prostora, shit happens!"
+    },
+    {
+        "role": "assistant_22",
+        "message": "kdo pa rab več kot 70GB diska?...jest mam raj hitr disk in čiščenje na nekaj mesecev...sicer imam pa cdrw za arhiviranje, če mi pa še to ne bo dost bom pa dvd+rw kupu ane   kojot: tnx da si prilimal slikco...tale siol zgleda mal zajebava  p.s.: fajn je met hitr disk, da se ti winsi hitrej naložijo...takrat ko navijaš pač velikokrat bootaš"
+    },
+    {
+        "role": "assistant_1",
+        "message": "men je premal. zdele mam skupno 80gb in se ze precej casa oziram za 160gb, ali se raje 2x 160gb... umret se mi pa tut se ne mudi. mam se precej zivljenja pred sabo.  na svetu sta 2 vrsti ljudi. normalni in tisti ki dajo 70k sit za to, da se jim windowsi hitrej nalozijo.  Govoril Sem."
+    },
+    {
+        "role": "assistant_48",
+        "message": "70GB je zame premalo. Trenutno mam 180GB na teli masini in mi ni cist nc prevec, kvecjem bi se mi prileglo 240GB. Raptorja bi si kupil samo zato, da bi nanj nalozil sistem in spile. Ostale stvari bi mel pa na navadnih diskih."
+    },
+    {
+        "role": "assistant_18",
+        "message": "Sej mam jst tud 2 raptorja po 36Gb za sistem in programe, za shrambo pa mam ibm 120Gb pa še dvd pečico."
+    },
+    {
+        "role": "assistant_46",
+        "message": "Sej mam jst tud 2 raptorja po 36Gb za sistem in programe, za shrambo pa mam ibm 120Gb pa še dvd pečico.  To je še najboljše, pa še podpisujem se pod ta post glede komentarjev o pomanjkanju prostora."
+    },
+    {
+        "role": "assistant_22",
+        "message": "Sej mam jst tud 2 raptorja po 36Gb za sistem in programe, za shrambo pa mam ibm 120Gb pa še dvd pečico.   semle se tud jest podpišem...placa mi pa zaenkrat še ne manjka, tko da ne mislm nabavlat dodatnih diskov...tako kot je 500MHz za nekatere dost je tud 70GB zame dost  ...sicer ne vem al je tale tema namenjena tud debati, al samo copy-pastanju rezulatov, tko da..."
+    },
+    {
+        "role": "assistant_55",
+        "message": "Cao.. Imam HD Maxtor, 120 GB/8, pri katerem test z \" HD Tach\"version 2.70 pokaze priblizno taksne rezultate: Random Access Time : cca 14 ms Read Burst Speed: : cca 31 MB/s Read speed - max 30,8 MB/s min 20,8 MB/s Average 29,8 MB/s CPU utilization 17 %  Glede na rezultate katere vidim na slikcah, se mi zdi da je z mojim diskom nekaj narobe, oziroma da je prepocasen, posebej pa \"Read Burst Speed: 31,4 MB/s\" Prosim, ce mi lahko nekdo odgovori ali je to normalno pri teh diskih, ker sem na eni sliki videl pri enakem disku..priblizno enake rezultate, ali pa je napaka drugje. V kisti je samo ta disk. Imam plato Epox 8RDA + in proc. Athlon 2100 XP+ (nenavit) L.P."
+    },
+    {
+        "role": "assistant_37",
+        "message": "Kaj govoričite o nekih PCI vodilih in še ne vem česu?  Transfer rate je eden najbolj zavajajočih podatkov, ki jih lahko podajo testi.  Tale HD tach je tudi bolj amaterski kot karkoli drugega. Predlagam branje www.anandtech.com, kjer imajo nekakšen real time test.   Najmočnejše orodje ratporja je še vedno dostopni čas. Četudi ima prenos isti kot 7200diski bo veliko prej naložil aplikacije, ki potrebujejo več manjših datotek. Medtem ko pa ne bo videt tako ogromne razlike pri kopiranju filmov.  Oglejte si še http://www.steelbytes.com/ Disk Util. Kjer se meri prenos podatkov. HD tach meri samo senkvečen prenos. Če ima kateri (single disk) kaj dosti več kot 50mb/sec AVERAGE potem dam za pivo.  Bi me pa zanimalo kakšne rezultate bo dobil @assistant_22."
+    },
+    {
+        "role": "assistant_22",
+        "message": "HD Speed mi nameri cca. 105MB/s pri blocksize 16MB, pri blocksize 4kB pa cca. 40MB/s"
+    },
+    {
+        "role": "assistant_56",
+        "message": "@assistant_55: nastavitev imaš ATA33... imaš tvoj disk slučajno na 40 žilnem kablu?! ker potem je samo to, drugače bo potrebno nastavit drugo stvar. javi!  lp, T."
+    },
+    {
+        "role": "assistant_55",
+        "message": "@assistant_56, disk je priklopljen preko okroglega IDE kabla...kupljen je bil pri powerpluso...koliko zilni je, pa ne bi vedel.. . Na ta kabel je priklopljen samo trdi disk. L.P."
+    },
+    {
+        "role": "assistant_56",
+        "message": "Če imaš možnost vzami drug 80 žilni kabel. Od kolega, znanca, nekoga pač, ki ti bo posodil in boš videl, če je problem v kablu. Drugače pa poglej če imaš disk nastavljen na UDMA 5! Po mojem bi mogl bit, ampak če kabel ni 80 žilen, potem ti ne bo delal na UDMA5, ampak na UDMA2. To je pa 33MB/s. In smo tuki, kjer smo :)  lp, T."
+    },
+    {
+        "role": "assistant_55",
+        "message": "Cao, @assistant_56... Hvala za pomoc..naredil sem kot si reko, zamenjel okrogli kabl z 80 zilnim..(imel sem ga na \"zalogi\") in so rezultati testa popolnoma drugacji, in sicer.. (v oklepaju je test s prejsnjim, okroglim kablom)  Random Access Time : 13,5 ms (cca 14 ms) Read Burst Speed: : 106.1 MB/s (cca 31 MB/s) Read speed - max 63,6 MB/s (30,8 MB/s) Read speed - min 30,5 MB/s (20,8 MB/s) Average 49.5 MB/s (29,8 MB/s) CPU utilization 12,7% ( 17 %)  L.P."
+    },
+    {
+        "role": "assistant_57",
+        "message": "Jest imam CPU utilization več kot 30%  Kaj biti problem?  Imam dve particiji an WD 80GB 7200RPM..."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Jest imam CPU utilization več kot 30% Si mogoce se kaj drugega laufal v ozadju? Ce nic drugega ne delam razen testiram imam CPU utilization okol 3% (+/- 0,5%).    Se rezultati s HD speedom za Seagate 120GB Vse ostale nastavitve so default (se pravi brez burst, read, physicaldrive0)  4kB block: 24.1 512kB: avg 53.5 16MB: avg 52.8"
+    },
+    {
+        "role": "assistant_37",
+        "message": "Single raptor:  4kB block: 30 512kB: avg 53 16MB: avg 53   Za manjše bloke se takoj vidi koliko boljši je prenos glede na 7200rpm diske in to samo zaradi access time."
+    },
+    {
+        "role": "assistant_56",
+        "message": "Elemen T: najprej nam mal več zaupaj o tvojem hardwareu! Katera matična, čipovje, če slučajno veš. Pa mal o softwareu: katere driverje imaš naložene za čipovje (matično)?  @assistant_48: 3%... najbrž zato, ker imaš Intelovo plato. Kolk sm zgrešil?  lp, T."
+    },
+    {
+        "role": "assistant_48",
+        "message": "Cca. 0%"
+    },
+    {
+        "role": "assistant_56",
+        "message": "No, me veseli :) Jst imam 8rda+ in dobim 20-30% obremenjenost. Če ima kdo kakršenkoli nasvet kako dobit tole nižjo vrednost, prosim nasvet čimprej sem :) driverji: 3.13 ali pa 2.45. tudi starejše sem že probal, ampak ni bilo uspeha. Vedno je podoben score.  lp, T."
+    },
+    {
+        "role": "assistant_58",
+        "message": "Živjo!  Vidim, da ste se preselili v drugo debato, kar se tiče RAID0 in hitrosti... enak post sem že objavil pod temo \"2x MAXTOR v RAID0 - noro...\".   Nekateri se spomnete, da sem imel na začetku 2x MAXTOR 120 GB 7200 8 MB SATA zvezana v RAID0 na Intelovem kontrolerju in striping size na Default (64 KB) in sem bil rahlo razočaran. Nato po parih mesecih zasledim vašo debato in poskusim znova, tokrat vse isto, le da striping size nastavim na 16 KB. In zadeva je začela leteti (ne samo HDTach, tudi ostali bench programi ter odpiranje aplikacij na splošno se je poznalo in bilo hitrejše).  No, vmes pa zamenjam še ohišje za Sonato ter ventilator procesorja za Zalmana 7000A Cu, na grafični (9000 AIW) sem ventilatorček kar izključil, saj sem predvidel, da če ga 9600 nima, bo tudi ta delal in dela že kakšen mesec brez problema, vroč pa tudi ni toliko, da ne bi mogel prsta gor držat, tako da ni krize. Skratka, delam na tem, da bi bil računalnik dokaj neslišen. Malo me je razočaralo, ker sta bila Maxtorja tako glasna (ker je vse ostalo utihnilo), da sem začel poizvedbo o kakšnem tišjem disku. In direktno priletim na debato o Hitachi 7k250 diskih na slo-techu, kjer so jih nenormalno hvalili pa si rečem, oki, pa gremo probat:) Tako da od danes ponoči naprej prebivata notri 2x HITACHI 160 GB 7200 8 MB SATA, da pa nisem imel preveč dela z ponovno inštalacijo celega sistema, sem ga priključil kar v SATA RAID0 na Promise in cel večer porabil, da bi pa klju temu prebral kakšno debato, ali je boljši Intel ali Promise. Vendar so se mnenja od foruma do foruma zelo razlikovala, pa sem si rekel, pa poskusimo Promise. Testiral sem ga na 64KB in 16KB in moram reči, da sem pričakoval, da kot sem slišal tukaj gor, da Intel hitro deluje na 16 KB, Promise pa na 64 KB, ampak so moji testi to zanikali... v prid 16 KB na Promisu (torej identično kot imam na Intelu). Ugotovil sem da HDTach ni ravno najbolj idealen program, zato sem testiral tudi z Winbench99 – po mnenju tujih forumov kar dober za praktično testiranje malo bolj realnih rezultatov. Pa kljub vsemu, je HDTach bolj domač, in ker sem že vse slikce teste MAXTORja objavil iz HDTach, prilagam sedaj še teste HITACHIjevih diskov. Skratka, zadeva tudi v praksi (kliketanje/odpiranje programov) dobesedno leti. Kar pa se mi zdi tudi pomembno – diska sta neslišna v primerjavi z Maxtorji (tako v idle kot v busy mode-u).  HITACHI SATA RAID0 64kb stripe size – PROMISE (popolnoma prazen disk)    HITACHI SATA RAID0 16kb stripe size – PROMISE (naložen sistem in programi)     Pa še en članek na temo striping size: http://www.pcguide.com/ref/hdd/perf/rai...  LP Uroš"
+    },
+    {
+        "role": "assistant_48",
+        "message": "Ja, samo tko za info - vsi Maxtorjevi diski imajo vgrajen accoustic manager, ki ima tri stopnje delovanja, ki jih potem lahko po zelji sam spreminjas. Na najhitrejsi je disk glasen ko pra****, na najtisji pa ga komaj ves, da ga imas. Moj 60GB maxtor je bil ob nakupu nastavljen na najhitrejso nastavitev (for obvious reasons :)."
+    },
+    {
+        "role": "assistant_59",
+        "message": "Maxtor 120 Gb 7200 rpm EIDE 8 mega rama  RAT: 15.8ms  RBS: 84.4 Mb/s  Read speed: max: 59.Mb/s; min: 5.0Mb/s; average: 42.6Mb/s  CPU utilization: 12.7%   Če bo kdo dal na server fotko, loh pošlem."
+    },
+    {
+        "role": "assistant_60",
+        "message": "Test mojega diska IBM/Hitachi 120 gb 7200 8 mb sata. S kolegi smo testirali še Maxtor 120 sata, Seagate 120 sata, in od vseh se je najbolj pokazal IBM. Je tudi precej tišji od ostalih naštetih. Po mojem je najhitrejši 120 sata 7200 8 mb disk."
+    },
+    {
+        "role": "assistant_61",
+        "message": "Mi lahko kdo prosim pomaga. Imam disk maxtor 80 gb, 2mb predpomnilnika in je izjemno pocasn. Zadnje case prav steka ze tak da bom znorel pa tui glasn je postal.  Moji casi: Random acces time: 17,5 ms ????? A ni to svinjsko pocasi. JE mogoce krivo da ga nisem odkar sn kupil lani se nic formatiral. Torej disk je star 1,5 leta skoraj in se ni bil razn na zacetku nic formatiran. Mam celi cas ze win2k gor in ker se niso nic zrusli pac nisn nic menjaval;))  Read speed: maximum 53,4 , minumum 5,4 , average 39,9 Cpu utilitization 19%   Je pa res da laufam kr nekaj programov v ozadju, net limiter, asybov6, norton,..  Samo disk je pa pocasn res ze za znoret. Aja disk je 7200, nastavljen na udma 6, 133 !   Zaj edino ce so kabli problem kot sn zasledil. JAs mam to na normalnem kablu takem kot je za cd-rom in ostalo, stirikotni kabl :))  Kolko pa ma zil pa to al je 40 al 80 pa nevem bom pa pogledal ce mi kdo pove kak:)  Hvala"
+    },
+    {
+        "role": "assistant_14",
+        "message": "Po mojem bi defragmentacija rešila vsaj del tvojih problemov."
+    },
+    {
+        "role": "assistant_30",
+        "message": "heh...  4kB - 43 MB/s drugo 56-57 MB/s...   hd speed to..  mislim da mam pive v dobrem, pa lahko se veckrat ponovim, al pa kaki scrnsht nardim... :)  maxtor 80gb 7200 2MB :)  @assistant_37, kaj pa bo zdaj raptor dejal? se je splacal demar ?:)"
+    },
+    {
+        "role": "assistant_22",
+        "message": "jrko: mhm...še podatki o dostopnem času"
+    },
+    {
+        "role": "assistant_62",
+        "message": "da še jaz malo prilepim: sys: IC1300@1600 - 125MHz FSB, Abit Bx6 v2.0, 512MB, Ti4200 /64,  disk: Maxtor 120GB 6Y120P0 - 8MB /7200"
+    },
+    {
+        "role": "assistant_62",
+        "message": "če smem mogoče dodat še eno zanimivo  HDD temperature  Navaja: The regular version is intended for home users who have only single hard-drive and is totally free. Using S.M.A.R.T. technology included in all modern HDDs, HDD Temperature checks and monitors the temperature of your hard drives; you can also set the maximum value of drive temperature so that you will be warned should this temperature be exceeded."
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "role": "user",
+        "message": "Laptop: Acer E5-771G Procesor: Intel i5 4210U Ram: 8GB Disk: Samsung SSD Evo 250GB OS: Win 10 EDU  V originalu je bil v laptopu 1TB HDD. Ko je ta ribnil, sem menjal z ssd, na novo namestil windowse, vse driverje itd itd. Prej je vse delalo ok. Sedaj, ko recimo pritisnem tipko za sleep.. Ekran ugasne (tema), računalnik pa tudi po doooolgem času ne gre v sleep (gori modra lučka, kot da je prižgan). Enako za ugašanje. Nikakor ne najdem napake. Zelo čudni simptomi, kakšne ideje?   Popravek: Če se prav spomnim, je bil disk kloniran, potem pa win 10 refresh. Lp"
+    },
+    {
+        "role": "assistant_0",
+        "message": "nastavitve baterije so?  Kaj imaš nastavljeno, da naredi sleep button, ko ga pritisneš?  Power plan settings"
+    },
+    {
+        "role": "user",
+        "message": "Sleeep. Tudi na defaultu ni razlike. Nisem amater ampak tu pa res nimam vec idej."
+    },
+    {
+        "role": "assistant_1",
+        "message": "bios in gpu driverje updejtaj."
+    },
+    {
+        "role": "user",
+        "message": "Vse updajtano, nic se ni spremenjeno od refresha"
+    },
+    {
+        "role": "assistant_2",
+        "message": "CMOS baterijo ven za 30 min si probal? Men se je 1x zasustral laptop tak hudo, da sploh ssd-ja ni prepoznal (probal v biosih VSE - nic pomagal). No, na koncu je hard reset (z izvzetjem cmos baterije) pomagal.  Probi, nima ti kej skodit.  P.S. Sej ves, pr tehnicni podpori je vedno prvo vprasanje (have you tried turning it off and on again). No, bolj \"off and on\" k to ne gre xD"
+    },
+    {
+        "role": "user",
+        "message": "Vse to je res... to se ze vlece par mescov in dejansko morem laptopa ugasvat z drzanjem tipke za ugasnat.. Ampak.. vcasih se zgodi, da se ugasne normalno oz. gre v sleep normalno.. zato res ne verjamem da je bios... Js res nimam vec idej.."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tole si že kaj sprobal: http://www.tomsguide.com/answers/id-322...   to je čisto ugibanje, ampak tale odgovor se mi zdi zanimiv:  Solution: It's the boot order. Set \"Windows Boot Manager\" as the 1st boot device. BEFORE your HDD. If you do not do this, Windows will not properly send the shutdown signal- and the laptop will not truly shut off."
+    },
+    {
+        "role": "assistant_4",
+        "message": "A imaš slučajno disk nameščen v HDD Caddy namesto DVD pekača?  Jaz sem imel identične simptome na mojem prenosniku enkrat. Win10, fresh, clean install, usi driverji nameščeni, BIOS posodobljen, skratka prenosnik formatiran in urihtan u nulo, ampak ko sem ga dal v sleep je use ugasnilo (disk se nehal vrtet, ventilatorji tišina, ekran črn, kot da bi bil laptop ugasnjen, ampak lučka za power je še vedno gorela. Isto za shutdown. Rihtal sem že malo morje prenosnikov in po navadi mi rata pinpointat težavo, ampak tule nisem mogel ugotovit zakaj zaboga se ne ugasne. Spreminjal power plane, formatiral ene 3x, probal use živo, na koncu se je pa izkazalo da je bil kriv kitajski HDD Caddy, ki ni pustil laptopu da se ugasne. Zamenjal zadevo in problem je bil rešen.   EDIT: Tudi meni se je vsake toliko naključno računalnik normalno izklopil. Pa sem si mislil \"Yes, problem rešen\", pa ga prižgem in probam spet zapret, nakar vidim da problem ostaja. Tako da simptomi so presenetljivo podobni tvojim, lahko da je kaj v tej smeri!"
+    },
+    {
+        "role": "assistant_5",
+        "message": "nastavitve so prave?"
+    },
+    {
+        "role": "assistant_6",
+        "message": "Po mojih izkušnjah računalnik ne gre v spanje, če mu to preprečuje nek proces, ki teče v ozadju. Ni nujno, da je to res v tvojem primeru, lahko pa pogledaš z ukazom \"powercfg -requests\", ki ga vneseš v CMD ali PowerShell (zaženeš z admin pravicami, drugače ne deluje). Če ti ta ukaz izpiše kakšen proces, ga nekako ugasni. Morda bo delalo."
+    },
+    {
+        "role": "assistant_7",
+        "message": "Z W10 sem imel čudno zabavo, ko je bil na istem disku nameščen skupaj z linuxom, pod katerim nisem vedno videl ene particiji, do katere sta dostopala oba sistema. Med brskanjem po medmrežju sem zasledil, da se desetka NIKOLI ne ugasne DO KONCA, ampak ostane v nekem čudnem stanju \"zapohanosti\"  Včasih je dobro, da ko izbereš ShutDown opcijo, DRŽIŠ gumb shift pritisnjen (dvigalka). Torej, pritisneš gumb, ga držiš, medtem izbereš šitdavn in spustiš gumb..."
+    },
+    {
+        "role": "user",
+        "message": "Še to.. ventilator ostane prižgan. In ga še vedno kontrolira bios (ni stuck na nekih obratih). Nameščen je samo Windows 10, ni dual boota.   @assistant_4 je 10. feb 2018 ob 01:34 izjavil:A imaš slučajno disk nameščen v HDD Caddy namesto DVD pekača?  Jaz sem imel identične simptome na mojem prenosniku enkrat. Win10, fresh, clean install, usi driverji nameščeni, BIOS posodobljen, skratka prenosnik formatiran in urihtan u nulo, ampak ko sem ga dal v sleep je use ugasnilo (disk se nehal vrtet, ventilatorji tišina, ekran črn, kot da bi bil laptop ugasnjen, ampak lučka za power je še vedno gorela. Isto za shutdown. Rihtal sem že malo morje prenosnikov in po navadi mi rata pinpointat težavo, ampak tule nisem mogel ugotovit zakaj zaboga se ne ugasne. Spreminjal power plane, formatiral ene 3x, probal use živo, na koncu se je pa izkazalo da je bil kriv kitajski HDD Caddy, ki ni pustil laptopu da se ugasne. Zamenjal zadevo in problem je bil rešen.   EDIT: Tudi meni se je vsake toliko naključno računalnik normalno izklopil. Pa sem si mislil \"Yes, problem rešen\", pa ga prižgem in probam spet zapret, nakar vidim da problem ostaja. Tako da simptomi so presenetljivo podobni tvojim, lahko da je kaj v tej smeri!   Nimam.. Žal še vedno brez idej..  @assistant_3 je 10. feb 2018 ob 00:20 izjavil:Tole si že kaj sprobal: http://www.tomsguide.com/answers/id-322...   to je čisto ugibanje, ampak tale odgovor se mi zdi zanimiv:  Solution: It's the boot order. Set \"Windows Boot Manager\" as the 1st boot device. BEFORE your HDD. If you do not do this, Windows will not properly send the shutdown signal- and the laptop will not truly shut off.   Bom preveril, čeprav malo dvomim da nebi imel hddja na prvem."
+    },
+    {
+        "role": "user",
+        "message": "Izklopil hitri zagon, trenutno zadeva dela, ampak je bil hard restart vmes, nevem kako bo čez nekaj časa.."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Tisto kar sem ti napisal zgoraj ta moment sicer ne morem preverit, ker pri sebi nimam računalnika z UEFIjem. Sem pa kar siguren da je v \"Windows boot managerju\" praktično v biosu definirano kam kaže - torej kateri disk in katero particijo naj uporabi za boot. (delam v ITju sicer, ampak tega nikoli ne urejam, ker itak sistem sam naredi \"da je prav\")."
+    },
+    {
+        "role": "user",
+        "message": "No ja... Tudi z izklopljenim hitrim zagonom zadeva ni nič drugačna.. Izgleda da bo kriv kateri izmed programov, čeprav je powercfg -requests clear. Še kdo kakšen predlog?"
+    },
+    {
+        "role": "assistant_8",
+        "message": "Sam imam sicer PC, ampak bo morda kak hint se za koga. Opazil sem, da Windowsi 10 ne sprozijo ScreenSaverja, niti ne gredo v sleep. Sem raziskoval in ugotovil, da je to bilo povezano z Joystickom, ki je prikljucen preko USB. Dosti folka je to porocalo za najrazlicnejse HID naprave. Ce joystick izkljucim iz USB porta, sleep deluje in tudi screensaver se je starta se prej. Isto sem nato ugotovil, da se dogaja tudi pod Windows 7. Vem, da se slednje ni dogajala pred cca 1 mesecem nazaj. Tako, da je moralo priti s kaksno Windows posodobitvijo. Ugibam, morda pri tebi katera druga naprava na USB preprecuje to spanje? Preizkusi iztaknit, ce je kej naveseno nanj."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_5 je 10. feb 2018 ob 08:54 izjavil:nastavitve so prave?   se vedno sem mnenja da imaš narobe nastavljeno v power options planu....  sem prepričan, da imaš nekaj v advance nastavitvah narobe....  Lahko to postaš?  Nekoč je imel sodelavec podoben problem in je bila smešna malenkost v nastavitvah. Zato sem takega mnenja."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 11. feb 2018 ob 11:06 izjavil:@assistant_5 je 10. feb 2018 ob 08:54 izjavil:nastavitve so prave?   se vedno sem mnenja da imaš narobe nastavljeno v power options planu....  sem prepričan, da imaš nekaj v advance nastavitvah narobe....  Lahko to postaš?  Nekoč je imel sodelavec podoben problem in je bila smešna malenkost v nastavitvah. Zato sem takega mnenja.   http://prntscr.com/id4i53  Kaj bi sploh lahko tukaj bilo narobe?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Dej za foro, ob pritisku na POWER gumb nastimi, da se laptop ugasne, ne pa da ne naredi nicesar.  Cist trivialna stvar, ki naceloma nima veze, ce ti \"softwearsko\" ugasnes gumb (WIN-PWR-SHUTDOWN), sam vseeno. Vcasih so trivialne stvari najbolj efektivne.  P.S. nastavi tako, da bo v obeh primerih (na bateriji in na napajanju) laptop reagiral enako, ne pa razlicno (ob zapiranju pokrova). Obstaja moznost, da ga tudi to mede mogoce. Shit can get wierd sometimes."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 11. feb 2018 ob 11:30 izjavil:@assistant_0 je 11. feb 2018 ob 11:06 izjavil:@assistant_5 je 10. feb 2018 ob 08:54 izjavil:nastavitve so prave?   se vedno sem mnenja da imaš narobe nastavljeno v power options planu....  sem prepričan, da imaš nekaj v advance nastavitvah narobe....  Lahko to postaš?  Nekoč je imel sodelavec podoben problem in je bila smešna malenkost v nastavitvah. Zato sem takega mnenja.   http://prntscr.com/id4i53  Kaj bi sploh lahko tukaj bilo narobe?   Vidim, da ne razumes, o katerem meniju te sprasujem.  Pojdiva tako  control panel-power options-advance settings-power plan setting.... tistega profila, ki ga uporabljas....  Ti mi pa stalno vracas osnovne button settings....a me sedaj razumes? nastavi v vseh profilih enako"
+    },
+    {
+        "role": "assistant_5",
+        "message": "poizkusi v cmd ali powershell z: %windir%\\System32\\shutdown.exe -s -f -t 00  če se ne ugasne popolnoma, je najbrž problem z win ali kakšnim programom, ki se ne zaustavi ali slabi sektorji na disku.  1. avast, ccleaner, izklopiš nepotrebne zagonske programe v ccleanerju. potem poizkusiš če se ugasne 2. malwarebytes anti-malware. 3. potem še chkdsk v cmdju ali powershellu (chkdsk /f /r C:) 4. preveri vse windows fajle cmd ali powershell (sfc /scannow)  oboje z admin pristopom"
+    }
+]

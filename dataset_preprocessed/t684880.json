@@ -1,0 +1,130 @@
+[
+    {
+        "role": "user",
+        "message": "Pozdravljeni,  pred nekaj dnevi so nam vdrli oziroma smo dobili virus, ki nam je na strežniku izbrisal oziroma zakriptiral zadnjih 30 dni našega dela...Po pregledu in neuspešnem reševanju smo se odločili, da naredimo clean install strežnika in seveda s tem izgubimo zadnjih 30 dni vseh podatkov. Tudi na enem izmed računalnikov smo naredili format in vse naložili na novo.  Zdaj bi me zanimalo kolikšna je še možnost, da lahko pridemo do vzroka vdora glede na to, da smo vse naložili na novo? Je sploh še smiselno zadevo prijaviti si-cert ali pa policiji, lahko sploh še kako pomagajo in izsledijo zaradi česa je sploh prišlo do tega?  hvala"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Odvisno od vašega informacijskega sistema, sledi dostopov nepooblaščenih oseb lahko da še so.  Ali je v tem trenutku še smiselno prijavljati dogodek z namenom izslediti storilce pa težko, da kdo lahko pove kar tako na pamet. Mogoče lahko odločitev o tem, ali bodo dokaze še zbirali in v kakem obsegu, prepustite policiji po tem, ko zadevo prijavite."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Verjetno je kdo brihtno kliknil kako priponko v mailu.."
+    },
+    {
+        "role": "user",
+        "message": "Še eno vprašanje, je možno da se je zadeva prenesla preko oddaljenega dostopa, malce je sicer nelogično? Sicer na oddaljenem računalniku ni nobenih sledi virusa in tudi dostop do računalnika ni bil preprečen, medtem ko je strežnik zakriptiralo."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne vemo niti za kateri konkretno virus gre, ne vemo nič o vašem omrežju in nič o varnostni politiki. Noben živ bog ti ne more povedati, kako je virus prišel k vam.  Oz. z drugimi besedami, je možno, da se je prenesel tudi preko oddaljenega dostopa, ampak to ti še nič ne pove. Tudi če je ena pot okužbe malo manj verjetna kot druga in še manj kot tretja ter veliko bolj verjetna, kot neka četrta, ne moreš vedeti po kateri od teh poti se je virus dejansko naselil. Šele če bi se izkazalo, da se po eni od teh štirih poti ni mogel iz nekega konkretnega razloga, bi jo lahko odpisal. Skratka, iskati je potrebno konkretne indice in sledi, ne verjetnosti."
+    },
+    {
+        "role": "assistant_2",
+        "message": "danes je najmanjsi problem komu podtaknit kako tako zadevo  od tega da kdo odpre kak mail do tega da kdo utakne usb kljucek pa do tega da se kdo poveze v vase omrezje (wlan je itak slabo zasciten, ampak tud ce je samo po kablih ni tolk varno kot bi si mislil) in tko naprej"
+    },
+    {
+        "role": "assistant_3",
+        "message": "Dnevni backup na trak in dolociti potrebne dostopne pravice do raznih sharov in map. Potem ti tak virus niti ne more narediti kaksne vecje skode."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Dnevni backup, vsekakor. Na trak pa res ni treba, da je. Komot je tudi snapshot vsako uro, če datotečni sistem na strežniku to omogoča."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Če je zakriptiralo podatke, bi bilo najprej dobro ugotoviti, katere pasme je tisti virus - morda celo obstaja možnost dekripcije (majhna, a vendarle tudi to ni za zanemariti).  Običajno ti aktualni izsiljevalski virusi najprej okužijo nek PC in preko njega potem zakriptirajo še ostale razpoložljive vire na omrežju. Ker omenjaš še nek PC, katerega bi 'resetirali', predpostavljam, da je tudi na njemu zakriptiralo datoteke? Če je to edini tak na omrežju (poleg strežnika), ki ima zakriptirane datoteke, potem je čisto možno, da je ta PC oz. njegov uporabnik izvor težav. Lahko je kliknil na kakšno priponko v mailu, ali pa zadevo snel s kakšne spletne strani.  Bi pa na tem PC pričakoval kakšno sporočilo izsiljevalcev, ki velikodušno ponuja odkup ključa za dekripcijo datotek. Če se vam takšno sporočilo prikazuje, imate možnost pretehtati, ali vam je tistih 30 dni podatkov vrednih toliko kot odkupnina. Žal pa vam nihče ne jamči, da boste po plačani odkupnini tudi dejansko prejeli ustrezen ključ za dekripcijo."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_4 je 19. okt 2016 ob 06:37 izjavil:Dnevni backup, vsekakor. Na trak pa res ni treba, da je. Komot je tudi snapshot vsako uro, če datotečni sistem na strežniku to omogoča.  ... ter snapshoti morajo biti read only za omrežne uporabnike, sicer so tudi ti izpostavljeni."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_6> ... ter snapshoti morajo biti read only za omrežne uporabnike, sicer so tudi ti izpostavljeni.  Jasno."
+    },
+    {
+        "role": "assistant_5",
+        "message": "Vidva v 9. mesecu nosečnosti razglabljata o koristnosti kontracepcije?"
+    },
+    {
+        "role": "assistant_7",
+        "message": "@assistant_1 je 18. okt 2016 ob 23:59 izjavil:Verjetno je kdo brihtno kliknil kako priponko v mailu..   Tako je bilo pri nas, da. Ker je imel read/write dostop do samba sharov, se je zadeva razpasla po mreži. Cryptolockerji ne rabijo admin pravic niti (uporabnik jih ni imel), rabijo samo write dostop do datotek.  Ko enkrat pobrišeš vse je težko izslediti kaj je dejansko bilo, razen če greš pogledat nazaj po priponkah v emaile."
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_5> Vidva v 9. mesecu nosečnosti razglabljata o koristnosti kontracepcije?   Seveda, ker bo sicer kmalu spet zanosil."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_4 je 19. okt 2016 ob 11:25 izjavil:@assistant_5> Vidva v 9. mesecu nosečnosti razglabljata o koristnosti kontracepcije?   Seveda, ker bo sicer kmalu spet zanosil.  Že že - ampak trenutno mislim, da ga bolj zanima očetovstvo in priprave na porod.  Z očetovstvom pa je križ, kadar imaš več partnerjev - če si ne zabeležiš, s kom si se onegavil, ti kasneje tudi DNA testi ne bodo pomagali.  Tako bo verjetno hočeš nočeš treba v rojstni list vpisati 'oče neznan'.  Kar se pa tiče preprečevanja ponovne nosečnosti, pa sem še vedno mnenja, da je backup ene toliko kontracepcija, kot pilula za 'potem'. Dobro je, da jo imaš, če se slučajno kondom strga. Ampak brez kondoma ga nikar sračkat z neznanci!"
+    },
+    {
+        "role": "assistant_4",
+        "message": "@assistant_5> Kar se pa tiče preprečevanja ponovne nosečnosti, pa sem še vedno mnenja, da je backup ene toliko kontracepcija, kot pilula za 'potem'. Dobro je, da jo imaš, če se slučajno kondom strga. Ampak brez kondoma ga nikar sračkat z neznanci!  Tega v praksi ne moreš zagotoviti drugače, kot da uporabnikom prepoveš poganjanje kakršnihkoli nepodpisanih programov, kar zna biti združeno s težavami pri izvajanju delovnih procesov."
+    },
+    {
+        "role": "assistant_8",
+        "message": "Za 30 dni dela se morda splača plačat tisti BTC, ali kar pač zahtevajo.  Za v bodoče pa dnevni backup, ali pa vsaj vklopit volume shadow copy na particiji in schedulat, da obdrži par kopij, oz. delat lvm snapshote, če gre za linux."
+    },
+    {
+        "role": "assistant_9",
+        "message": "Bolje, da resno razmislite o vaši varnostni strategiji na splošno, ker že samo dejstvo, da ste povozili 30 dni dela (30 dni brez backupa?!), preden ste pomislili na analizo, ne da bi pred izbrisom naredili posnetek ali vsaj ugotovili, za kateri virus gre, kaže, da imate veliko bolj resne težave, kot da ne veste, kako se je zgodila okužba. Ker vseh vektorjev za okužbo ne moreš preprečiti, posledice pa se v večini primerov da vsaj omiliti.  Tega noče nihče slišati, ampak zajebali ste, ne iščite zdaj podganjih drekcev, ampak preprečite ponovitev te šlamase."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Predvsem pa preiti na bolj varna gesla... Iz izkušenj: nekemu podjetju so pred kratkim naredili enako. Preprosto so \"uganili\" (ne bi tukaj o načinih) geslo, enega od treh zunanjih izvajalcev, ki so imeli dostop do strežnika. In zjutraj je bil ves strežnik kriptiran. In ja, iz logov se je celo dalo razbrati IP s katerega se je po-hekani uporabnik ob dveh ponoči povezal na strežnik in namestil crypto virus. Ampak ti to nič ne pomaga. Torej, gesla naj bodo kompleksna in dolga! To je najceneje... vse ostalo stane. ;)"
+    },
+    {
+        "role": "assistant_11",
+        "message": "Glede na opisano gre po vsej verjetnosti za tak ali drugačen ransomware, ki nima popolnoma, ampak res popolnoma nič z kompleksnotjo gesel. Ima pa toliko več z uporabniki, ki klikajo na 1001 link v emalih.  Kar se pa kompleksti gesel tiče, pa čisto empirična izkušnja iz podjetja z 30 zaposlenimi. V okviru večje varnosti se je implementiralo vsaj 12 mestna gesla, ki morajo imet veliko črko, poseben znak in številko. Gesla je potrebno osveževat na 60 dni, pri čemer se gesla ne smejo ponavaljati ali si biti preveč podobna. Rezultat po enem letu: 28 od 30 zaposlenih ima geslo napisano pod tipkovnico, na namiznem koledarju ali v predalu."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Nima veze s kompleksnostjo gesel. Ima pa z varnostno politiko. Uporabniki naj bi imeli dostop samo do svojih stvari in svojega podrocja. Torej v najslabsem primeru izgubis podatke za en oddelek. Ce se dela se dnevni backup, pa se to ne.  Ne mores prepreciti klikanja in prenasanja USB kljucel, lahko pa omejis doseg virusa, saj virus tece s pravicami uporabnika - razen, ce je to uspicil admin, ko je delal z domain admin pravicami."
+    },
+    {
+        "role": "assistant_12",
+        "message": "Je sploh še smiselno zadevo prijaviti si-cert ali pa policiji, lahko sploh še kako pomagajo in izsledijo zaradi česa je sploh prišlo do tega?  Če ni skrivnost kaj konkretno se pa zgodi če prijaviš tak incident na policijo ali si-cert? Reševal podatke ali aktivno preganjal zlikovce po moje ne bo nobeden od teh dveh."
+    },
+    {
+        "role": "assistant_6",
+        "message": "@assistant_12 je 19. okt 2016 ob 13:42 izjavil:Je sploh še smiselno zadevo prijaviti si-cert ali pa policiji, lahko sploh še kako pomagajo in izsledijo zaradi česa je sploh prišlo do tega?  Če ni skrivnost kaj konkretno se pa zgodi če prijaviš tak incident na policijo ali si-cert? Reševal podatke ali aktivno preganjal zlikovce po moje ne bo nobeden od teh dveh.  Storilca KZ napad na informacijski sistem se preganja po uradni dolžnosti. Zato bo policija, če bo sumila to kaznivo dejanje, po prijavi naredila kar pač lahko. Poslala bo zahteve oz. prošnje odgovornim oz. vpletenim (tako v podjetju kot izven, npr. ISP, hosting ponudnik, odvisno od situacije), da naj podajo čim več informacij ter naj pošljejo kakšne loge, če jih imajo. Potem pa odvisno od motivacije in povzročene škode. Lahko ostane pri tem, lahko pa pridejo tudi v podjetje iskat morebitne dokaze. Če uspejo zbrati dovolj dokazov, podajo ovadbo na tožilstvo, sicer pa pač ne."
+    },
+    {
+        "role": "assistant_10",
+        "message": "Ne vem, ali sem samo jaz prebral kaj je OP napisal? Zakriptiralo jim je strežnik, ne pa delovnih postaj. Če bi kdo kliknil na priponko, bi najprej kriptiralo njegov računalnik da nebi mogel kaj kliknit in nato ostale mrežne resurse. Predvsem pa samo tiste, do katerih ima uporabnik pravico.  In točno enako zgodbo kot jo je imel OP sem že videl. Uporabniki pa tam nimajo dostopa povprek na server ampak samo na določeni fileshare oz. sql bazo. In nihče nima serveradmin ali rdp dostopa do serverja. In nobena od del. postaj ni bila okužena (vem sem jih vse skeniral) niti zakriptirana. Se je pa z legalnim administratorskim uporabnikom nekdo ponoči skonektal na server in zagnal nek ransoware, ki je zakriptiral kompleten server in na namizju \"pohekanega\" zunanjega administratorja pustil obvestilo za kontakt za plačilo. Nek indijski mail. K sreči je bil tu backup..  In ne mi govoriti, da nima veze z gesli. Ima, ker sem kasneje zvedel, da je omenjeni zunanji skrbnik imel enostavno geslo sestavljeno iz svojega imena, imena stranke in letnice. Simpl ko pasulj za ugotovit...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "@assistant_10 je 19. okt 2016 ob 14:51 izjavil:... Če bi kdo kliknil na priponko, bi najprej kriptiralo njegov računalnik da nebi mogel kaj kliknit in nato ostale mrežne resurse. Predvsem pa samo tiste, do katerih ima uporabnik pravico.  Niso vsi virusi narejeni kar tako, na prvo žogo. Razglabljaš o domnevni situaciji, pri čemer še ne veš nič ne o virusu, ne o inf. sistemu stranke.   In točno enako zgodbo kot jo je imel OP sem že videl.  Nisi, samo na pamet domnevaš, da si. Kakor sem napisal že prej, pa ti nisi prebral:  ...je možno, da se je prenesel tudi preko oddaljenega dostopa, ampak to ti še nič ne pove. Tudi če je ena pot okužbe malo manj verjetna kot druga in še manj kot tretja ter veliko bolj verjetna, kot neka četrta, ne moreš vedeti po kateri od teh poti se je virus dejansko naselil. Šele če bi se izkazalo, da se po eni od teh štirih poti ni mogel iz nekega konkretnega razloga, bi jo lahko odpisal. Skratka, iskati je potrebno konkretne indice in sledi, ne verjetnosti."
+    },
+    {
+        "role": "assistant_13",
+        "message": "Vi sami zihr ne. Lahko pa koga najamete."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_13 je 19. okt 2016 ob 16:54 izjavil:Vi sami zihr ne. Lahko pa koga najamete.  Tudi če nekoga najamejo, ta verjetno ne bo imel delujoče kristalne krogle, katera bi jim povedala, od kje je prišla prvotna okužena datoteka.  Pa tudi če bi imeli VSE logirano, dobiš nek IP naslov na internetu, kateri je malware datoteko skladiščil - ta IP naslov pa je po vsej verjetnosti nek kompromitiran spletni strežnik, čigar lastnik še sanja ne, da trosi nesnago po internetu.  Edino, kar načeloma lahko najdejo brez kristalne krogle, bi bil računalnik, kateri se je v omrežju okužil in v nadaljevanju zaklenil datoteke na strežniku."
+    },
+    {
+        "role": "assistant_14",
+        "message": "@assistant_7 je 19. okt 2016 ob 11:25 izjavil:@assistant_1 je 18. okt 2016 ob 23:59 izjavil:Verjetno je kdo brihtno kliknil kako priponko v mailu..   Tako je bilo pri nas, da. Ker je imel read/write dostop do samba sharov, se je zadeva razpasla po mreži. Cryptolockerji ne rabijo admin pravic niti (uporabnik jih ni imel), rabijo samo write dostop do datotek.  Ko enkrat pobrišeš vse je težko izslediti kaj je dejansko bilo, razen če greš pogledat nazaj po priponkah v emaile.   Pri nas smo imeli relativno omejen primer. Storilca je bilo enostavno najti - vzel sem eno datoteko in pod zavihkom Details pogledal kdo je Owner."
+    },
+    {
+        "role": "assistant_5",
+        "message": "@assistant_14 je 19. okt 2016 ob 20:44 izjavil:Pri nas smo imeli relativno omejen primer. Storilca je bilo enostavno najti - vzel sem eno datoteko in pod zavihkom Details pogledal kdo je Owner.   To ni storilec, temveč naivna žrtev."
+    },
+    {
+        "role": "assistant_13",
+        "message": "@assistant_5 je 19. okt 2016 ob 17:03 izjavil:@assistant_13 je 19. okt 2016 ob 16:54 izjavil:Vi sami zihr ne. Lahko pa koga najamete.  Tudi če nekoga najamejo, ta verjetno ne bo imel delujoče kristalne krogle, katera bi jim povedala, od kje je prišla prvotna okužena datoteka.  Pa tudi če bi imeli VSE logirano, dobiš nek IP naslov na internetu, kateri je malware datoteko skladiščil - ta IP naslov pa je po vsej verjetnosti nek kompromitiran spletni strežnik, čigar lastnik še sanja ne, da trosi nesnago po internetu.  Edino, kar načeloma lahko najdejo brez kristalne krogle, bi bil računalnik, kateri se je v omrežju okužil in v nadaljevanju zaklenil datoteke na strežniku.  Lahko bodo odkrili vzrok , najti storilca je pa druga reč."
+    },
+    {
+        "role": "assistant_1",
+        "message": "@assistant_5 je 19. okt 2016 ob 20:49 izjavil:@assistant_14 je 19. okt 2016 ob 20:44 izjavil:Pri nas smo imeli relativno omejen primer. Storilca je bilo enostavno najti - vzel sem eno datoteko in pod zavihkom Details pogledal kdo je Owner.   To ni storilec, temveč naivna žrtev.  Ali pa nekdo, ki bi mu pasal teden dni dopusta."
+    },
+    {
+        "role": "assistant_14",
+        "message": "@assistant_1 je 20. okt 2016 ob 11:12 izjavil:@assistant_5 je 19. okt 2016 ob 20:49 izjavil:@assistant_14 je 19. okt 2016 ob 20:44 izjavil:Pri nas smo imeli relativno omejen primer. Storilca je bilo enostavno najti - vzel sem eno datoteko in pod zavihkom Details pogledal kdo je Owner.   To ni storilec, temveč naivna žrtev.  Ali pa nekdo, ki bi mu pasal teden dni dopusta.   Ni storilec je pa izhodišče za nadaljno raziskovanje. Ni ti treba preiskovati 10, 100, 1000+ mašin ter njihove akcije in promet ampak samo eno (oz nekaj, če je več ljudi odprlo to priponko)."
+    }
+]

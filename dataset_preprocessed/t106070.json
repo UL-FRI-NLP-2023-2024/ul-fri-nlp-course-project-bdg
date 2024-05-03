@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "message": "Lep pozdrav. Lastim si ADSL prikljucek z staticnim Ip naslovom. Danes sem nabavil router ker imam doma dva racunalnika, staticn ip pa potrebujem za postavitev kaksnega serverja.  Vse sem lepo nastavil na routerju (vklopil sem tudi firewall) imam pa vprasanje, kako forwardati porte oz narediti virtual server? V cem je sploh razlika med port forward/virtual server?  1. Primer: Npr. zelim postaviti server za Call Of Duty, da se mi prijatelji lahko joinajo. Grem v nastavitve routerja in poiscem port forward oz virtual server (ne vem katero od tega je treba). 2. Kaj pa potem naprej? Private ip vpisem tisti ki ga imam na lokalni mrezi ali tistega ki je za ADSL? 3. Kaj vpisem za private port? (port od igre mogoce? Kako sploh ves kateri oprt uporablja katera igra)? 4. Kaj vpisem za public port? 5. Comment vpisem npr Call Of Duty?   Aja se eno vprasanje? A za Bittorent je potrebno tudi kaj nastavljati? Za emule?  Prosim za cimprejsne odgovore. Najlepsa hvala vsem."
+    },
+    {
+        "role": "user",
+        "message": "Ok, zdaj sem npr postudiral par stvari.  1. Katere porte uoprablja igra sem videl ko sen naredil dedicated server. Npr MOHA: Breakthrough 12203. Potem sem odprl porte npr do 12213. To pomeni da se jih lahko 10 joina? Imam prav?  2. Porte za bittorent sem tudi postudiral.  3.Kako najlazje ugotoviti katere porte uporablja kateri program?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Kako najlazje ugotoviti katere porte uporablja kateri program?  - Use google!  To pomeni da se jih lahko 10 joina? Imam prav? - ne, tudi 1 port je dovol.  Virtual server narediš z DHCPjem.  Forwardaš tako, da naštimaš kateri računalnik bo poslišal na katerem portu. Drugače rečeno, da kar bo prišlo po po tem odprtem portu se bo preosmerilo na izbran računalnik. that's all!"
+    },
+    {
+        "role": "user",
+        "message": "Hvala, sm popravil porte.  Nekaj me se zanima, baje da routerji radi steknejo pri P2P programih. Jaz poganjam hkrati samo enega (npr. samo Bittorrent++) in sedaj ko en cas uporabljam program, vidim da imam 102 connections in se vse dela vredu? Pri koliko povezavah se navadno zacno problemi?  Samo kako bos varen pred vdori, ce pa ima vsak odprte porte npr. za p2p programe?  V cem je sploh razlika med Virtual server in port forward?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Virtual server = DHCP ki ti poišče vse kompjutre, ki so priklopljeni na router in jim dodeli notranji IP (192.168.0.x)  Port forward = Ko ti uporablaš nek P2P program, podatki prihajajo skozi določen port. Ker pridejo ti podatki najprej do routerja, ta ne ve kateremu kompjutru v tvoji mreži jih mora poslat. Zato preko Port forwarda poveš, da če neki podatki pridejo na nek xxxx port, naj jih pošlje na izbran računalnik. Tako da lahko vsi kompjutri v mreži uporabljajo isti P2P program, samo za vsak kompjuter more biti odprt svoj port, da potem router ve ko dobi iz WAN na nek port paket na kateri kompjuter v LAN mora poslati ta paket.  Problem naj bi se pri Muli začel pri 256 povezavah, zdaj pa odvisno od routerja, ne vem pa točno, ker ne uporabljam Mule."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Virtualni serverji omogočajo, da se dohodni promet do routerja preusmiri na željen računalnik v notranjem omrežju.  Zunanji IP naslov routerja je npr. 193.77.xxx.xxx, v notranjem omrežju pa imaš tri strežnike; mail, ftp in web z IP naslovi 192.168.1.1:110 prihajajoča pošta, 192.168.1.2:21 ftp in 192.168.1.3:80 www. Ko pride zahteva za ftp strežnik (ftp://193.77.xxx.xxx:21 (če ima ftp privzet port, :21 ni potrebno pisat, ker je že predpona ftp://)) ga router (usmirjevalnik) preusmiri na PC, kjer je nameščen FTP strežnik. Ta podatek (port forwarding) vpišeš ponavdi pod virtual servers.  FTP(ime servisa) dohodni port 21 na notranji port 21 IP 192.168.xxx.xxx   DHCP Dynamic Host Configuration Protocol (protokol za dinamično konfiguracijo gostitejev). Storitveni protokol TCP/IP, ki ponuja dinamično konfiguracijo gostujočih IP-naslovov in razpošlje druge konfiguracijske parametre primernim omrežnim odjemalcem. DHCP omogoča varno, preprosto in zaneslijivo konfiguriranje omrežij TCP/IP, prepreči spore naslovov in pomaga varčevati s porabo odjemalskih IP naslovov v omrežju.  DHCP nima nikakršne veze z port forwardingom oz. virtualnim serverjem. Če imaš vklopljen port forwarding morajo imeti naprave (PC-ji) stalene naslove in ne ob vsakem ponovnem vklopu nov IP-naslov. DHCP ob vsakem ponovnem priklopu naprave v omrežje dodeli najnižji naslov, ki je na voljo.  Katere porte uporabljata edonkey oz emule si lahko prebereš na  edonkey FAQ"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "message": "Zanimam se za nakup ADSLja, pa bi rad 3 računalnike spravil v mrežo in da bi imeli vsi trije dostop do interneta kadarkoli se jih zahoče (uporabnikom). Slišal sem da je še najbolj preprosta varianta, da bi vse 3 računalnike povezal preko routerja, vendar imam na to nekaj vprašanj:  1. En računalnik ima frend v drugi hiši. Rabu bi ca. 70m kabla. Katerega? Crossover? A bi mrežna kartica in router zmogla to dolžino, brez izgube podatkov in hitrosti prenašanja le teh z interneta?  2. Kateri router bi blo dobro kupit? Cena naj bo do 20ksit. Opazil sem da imajo LevelOne routerji nekaj težav, ali je to samo zaradi p2p programov?   3. Hardwarski firewall v routerju da ali ne?  4. Statični IP. Se ga splača imeti ali ne? V čemu so prednosti in slabosti?  5. Mislim da bo za sedaj to vse. Najlepša hvala za odgovore"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jz mam trenutno to opcijo, pa sm kupu Dlinkov ruter DI-604 iz mimovrste nimam nobenih problemov, se je lepo nastimal use pa tko... ma tut firewall, ampak z nekaj odprtimi porti deluje supr.. Priporočam ta rutr..  1. rabš navadn kabl (ne crossovr), ostalo nevem    2. glej gor :)  3.gor again   4. ?? pomoje ni fore, če nočš kšnih serverjov..  lp"
+    },
+    {
+        "role": "user",
+        "message": "Kakšna je razlika med UTP in Crossover kabli, če sploh je? Kej bi se dalo dobiti kabel za mrežo poljubne dolžine?"
+    },
+    {
+        "role": "assistant_1",
+        "message": "Takole:  UTP pomeni Unshielded Twisted Pair. Imaš pa dve vrsti kablov, če ti razložim na najbolj simple način kar jih poznam. Imaš UTP iz njega lahko narediš Straight kabelj, kar pomeni da so povezave na obeh straneh enake od 1 do 8. Če imaš Router uporabiš ponavadi takega. Druga opcija pa je Crossover kabelj, če imaš povezavo samo med dvema računalnikoma, pri temu kablju pa je rstni red nekoliko obrnjen. Za podrobnosti poglej na spletu vpiši nekaj takega \"RJ45 wiring standards\".  1. Če bi rad se povezal s prijateljem 70 m stran v drugi hiši ti svetujem da prvo uposrabi STP (Shielded Twisted Pair) in ne UTP kabelj, ker je STP ščiten pred motnjami, UTP pa ne. Druga stvar pa je razdalja, zadeve funkcionirajo relativno dobbro(če so kabli prov narjeni) tja do 100m, potem pa pride do upada hitrosti in izgube podatkov. Tako da bi 70 m načeloma moralo delovati brez večjih problemov. Če boš pridno naredil kable in uporabil STP, drugače pa zna zezati. Ne pozabit, da je pri STP kablu treba zaščitno folijo ozemljiti (ohišje računalnika ponavadi).  2. Routerji ponavadi imajo FW in tudi deluje zelo dobro za tvoje potrebe.  3. Za cca 12k SIT dobiš kakšnega D-Linka, ki je tudi že čis soliden za ta denar.  4. Statičen IP, če misliš imeti strežnik ali kaj podobnega, se statičnemu IPju ne izogneš, drugače ga pa več ali manj ne rebiš.  Upam, da so stvari bolj jasne. LP"
+    },
+    {
+        "role": "user",
+        "message": "aha, zdaj mi je vse jasno.  Jaz bom kupil sedaj kabel na meter, samo unega STP pa ne najdem (vsaj na netu v Sloveniji ne). Kako pa lahko dam une konektorje gor? A une klešče na mimovrsti so prave?"
+    },
+    {
+        "role": "assistant_2",
+        "message": "kable med drugim prodajajo tudi v  http://www.techtrade.si/ - imajo tud STP in pripadajoce konektorje; lahko ti jih stisnejo kar oni, ali pa jih sam (sposod si klešče).  Kako nardit kabel:  preberi tole"
+    },
+    {
+        "role": "user",
+        "message": "Kaj pa FTP kabli? Kaj so pa to? Kako se pa obnesejo brezžična omrežja? A stene močno ovirajo signal?"
+    },
+    {
+        "role": "assistant_3",
+        "message": "jz mam level one switcha in mislim da sta odlicna. http://www.level1.com/products3.php?skl... problem je v tem da se greje prevec. drgac je pa zlo poceni. avtomaticno zazna crossover ali pa straight through kabel. tko da dela na obeh brez problema. ce misls kabel zuni napelat, pol kupi stp (zasciten z dodatno plasicno maso), za notri pa cenejsega utp. oba sta twisted pair, kar pomeni da sta enako zascitena pred motnjami (@assistant_1, to pomeni da je ozemljitev ovita okrog tx in rcv niti). ce mislis uporabljat notebook, je wireless odlicna resitev. sicer ne vem ce nese 70m dalec prek his..."
+    },
+    {
+        "role": "user",
+        "message": "jah, ugotovil sem da ni razlike med FTP in STP kabli.  Torej, za v notranjosti hiše navaden UTP kabel, za prehod od mene do frenda pa STP oz. FTP kabel. Za wireless pa je tako. Oden od drugega sva oddaljena ca. 20-30m, s tem da so stene vmes (ca. 6 sten je vmes, pa 10m prostega prehoda)  V članku nisem nikjer zasledil kako priklopiti router. A se priklopi enako kot switch? S kabli pa je enako, a ne (crossover-direkt med PCjema, Straight Throught pa za več računalnikoc preko routerja)?"
+    },
+    {
+        "role": "user",
+        "message": "Še nekaj bi vprašal. Temeljne razlike med Switchom in Routerjem?  Kaj bi mi svetovali Switch ali Router? A pri switchu moraš imeti en računalnik non stop prižgan in da je povezan na net, da drugi lahko delajo? Pri routerju pa ne?  Hvala"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Router lahko smatraš kot računalnik ki je 24 ur prižgan (če ima elektriko) in je zaradi tega non-stop povezan na net. Router ima zato en posebaj port namenjen povezavi na internet in nekaj ostalih portov (ponavadi 4 - cenejše izvedbe) na katerega priključiš odjemalce (računalnike) . Routerji imajo tudi nastavitve za ADSL kjer nastaviš username in password.   Switch deli promet med odjemalci in nima logike da se poveže direkt na ADSL. Zdaj ne vem točno kako je pri SIOL-ADSL, govori pa se da je tako , če imaš dinamični IP lahko naenkrat povežeš 4 računalnike. Se pravi da je za tvoj primer dovolj switch (če to drži glede povezav) Problem se pojavi pri statičnem IPju ki ti ga SIOL dodeli , le enega.   Poenostavljeno povedano. Če imaš router potem le ta skrbi za povezavo s SIOLom, če pa imaš switch pa more vsak računalnik se sam povezat na SIOL.  Priporočam ti router s firewallom."
+    },
+    {
+        "role": "user",
+        "message": "nice. Pol sem še pravilno sklepal. Kateri router pa bi bil najboljši? Da bi bil v sloveniji dobavljiv, cena pa do 15k sit?"
+    },
+    {
+        "role": "assistant_5",
+        "message": "Jaz mam naslednje:  Internet: ADSL 2 megabit Ruter: Wireless Dlink 614+ mrezne: 2 od dlinka brezicni vse deluje normalno, oba racunalnika se lahko povezeta kadarkoli na net brez problemov, kul je ce vklopim kodiranje paketkov :)  za ruter in mrezni sem odstel cca 55.000sit, vse sem kupu v BigBangu v kopru."
+    },
+    {
+        "role": "assistant_6",
+        "message": "Najboljši router? En star P166 + clarconnect (al pa kak drug linux). Cena 3k sit za mašino pa nekaj časa za nastavit Plus dve mrežne pa en switch. Za ostalo pa ne vem"
+    },
+    {
+        "role": "user",
+        "message": "Hja. Tako pridem na ceno routerja.  Keri so boljši Dlink ali LevelOne?"
+    }
+]

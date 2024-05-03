@@ -1,0 +1,266 @@
+[
+    {
+        "role": "user",
+        "message": "Glede na to, da se mučim že nekaj časa z arhiviranjem, bi tokrat probal z bat fajlom na drugačen način. Samo ne vem kako? Uspel sem pač narediti en txt log fajl, kjer si zapomni zadnjega logiranega uporabnika.  echo \"Logon Date:%date%,Logon Time:%time%,Computer Name:%computername%,User Name:%username%,Server Name:%logonserver%\" >> c:\\LOGON.TXT Zdaj pa bi rabil, batch datoteko, da mi iz tega LOGON.TXT fajla prebere User Name:Janko in ga uporabi v naslednji vrstici  robocopy c:\\users\\Janko\\Desktop Z:\\users\\Janko\\Desktop /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt  iskal sem na netu rešitve samo mi nekak ne deluje zadeva. Hvala za pomoč"
+    },
+    {
+        "role": "assistant_0",
+        "message": "En simpl primer ki ti izpiše username:   SET filename=LOGON.TXT\n\nFOR /f \"delims=, tokens=4\" %%a in (%filename%) do (\n\tFOR /f \"delims=: tokens=2\" %%b in (\"%%a\") do (\n\t\techo %%b\n\t)\n)\n  Greš čez vse vrstice v fajlu, ter vrstico splitaš na tokene po vejici, v tvojem primeru rabiš samo četrti token (User Name:%username%). Potem splitaš token po : in vzameš samo drugi token, kar je tvoj username."
+    },
+    {
+        "role": "user",
+        "message": "Hvala to mi je ravnokar uspelo narediti. Zdaj rabim samo še, da mi pobriše iz tega LOGON.txt vse razen zadnje vrstice, kako to naredim. če je vrstica amo ena ne zbriše nič."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Neki podobno temu:   SET filename=LOGON.TXT\nSET newfilename=%filename%.bak\nSET count=0\n\nFOR /f \"delims=, tokens=4\" %%a in (%filename%) do (\n\tSET /a count += 1\n    FOR /f \"delims=: tokens=2\" %%b in (\"%%a\") do (\n        echo %%b\n    )\n)\n\nSET /a count -= 1\n\nIF %count% GTR 1 (\n\techo Count:%count%\n\tmore +%count% %filename% > %newfilename%\n\tmove /Y %newfilename% %filename%\n)"
+    },
+    {
+        "role": "user",
+        "message": "dela super, hvala zdaj še samo ugotavlajm, zakaj se zadeve na izvrši ob zagonu sistema :/ oz. ob določeni uri.."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mislm da je najbol simpl da si nardiš en Scheduled Tasks ki ti bo poganjal tvoj batch file."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 22. maj 2013 ob 14:57 izjavil:Mislm da je najbol simpl da si nardiš en Scheduled Tasks ki ti bo poganjal tvoj batch file.   saj sem pa ne dela, ni mi jasno zakaj ga task scheduler ne požene, ker na roke dela vedno"
+    },
+    {
+        "role": "assistant_1",
+        "message": "OS?  Če je to Win7 nastavi \"Run only when user is logged on\" in triggers \"at log on\" in \"any user\""
+    },
+    {
+        "role": "user",
+        "message": "@assistant_1 je 22. maj 2013 ob 15:06 izjavil:OS?  Če je to Win7 nastavi \"Run only when user is logged on\" in triggers \"at log on\" in \"any user\"  ravno v tem je poanta da mora delat, ko ni user logged in pač pa ob system startup, nastavljeno imam pa da poganja batch file system je pa windows 7  @assistant_0 je 22. maj 2013 ob 14:57 izjavil:Mislm da je najbol simpl da si nardiš en Scheduled Tasks ki ti bo poganjal tvoj batch file.  v bistvu ne dela, ker sem ravno opazil, da dodaja nove vrstice v txt fajl."
+    },
+    {
+        "role": "assistant_1",
+        "message": "Po moje brez uporabnika ti ne bo delalo kot si ti želiš, ker brez prijave ne boš imel določenih info."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Zdej da ti Schedular ne zažene batcha so lahko krive pravice od userja, s katerim Schedular poganja batch. Glede same batch skripte sm jo pa sprobu in mene dela brez problema. Če lahko prlep skripto da bomo vidli kod je problem."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 22. maj 2013 ob 16:46 izjavil:Zdej da ti Schedular ne zažene batcha so lahko krive pravice od userja, s katerim Schedular poganja batch. Glede same batch skripte sm jo pa sprobu in mene dela brez problema. Če lahko prlep skripto da bomo vidli kod je problem.  A to skripto zgoraj si probal? Da zapiše zadnjega logiranega userja v LOGON.txt in vedno je samo en user not v tej txt datoteki? Bom še enkrat preizkusil.  Kar se tiče zaganjanja batch datoteke, vse drugo dela, pa se mi zaganja ene 5 batch datotek, pa vse dela BP. Samo robocopy pa ne dela, pa lahko na galvo skačem ko ne dela. v task schedulerju zaganja zadevo system uporabnik in sem probal tudi z administratorjem pa ne dela. Sicer sam bat fajl dela super, če ga poženem na roke. Moram probat še zadnjo možnost za tole, da se robocopy zažene ob startu in potem je z robocopy nastavljeno kdaj se začne arhiviranje, mogoče bo to delovalo.... Sicer dvomim, ker sem nastavil v schedulerju, da se požene at startup, pa tudi ne dela.  Sicer pa je tole moj bat fajl, za kopiranje, ki bi se moral pognati s task schedulerjem pa ne dela. Z dvojim klikom pa dela ok.   FOR /F \"delims=~\" %%f in (c:\\LOGON.txt) DO net use Z:\\ \\\\mojserver\\Uporabniki\\%%f\nFOR /F \"delims=~\" %%f in (c:\\LOGON.txt) DO cd c:\\Users\\%%f\nrobocopy Documents Z:\\Users\\Documents /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt\nFOR /F \"delims=~\" %%f in (c:\\LOGON.txt) DO cd c:\\Users\\%%f\nrobocopy Desktop Z:\\Users\\Desktop /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt\nFOR /F \"delims=~\" %%f in (c:\\LOGON.txt) DO cd c:\\Users\\%%f\nrobocopy AppData\\Local\\Microsoft\\Outlook Z:\\Users\\AppData\\Local\\Microsoft\\Outlook /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jst sm sprobu funkcjonalnost da ti iz LOGON.txt pobriše vse razn zadnje vrstice (more + move ukaz) in mene dela skripta uredu. Probi pri robocopy uporabit /LOG opcijo, mogoče se bo iz loga dalo razbrat kje je problem."
+    },
+    {
+        "role": "user",
+        "message": "bom probal še z log om. pri skripti sem dodal samo tole na začetek, se pravi, bi moralo v txt fajl zapisat uporabniško ime, potem pa tvoja skripta pobriše vse razen zadnje. echo %username% >> c:\\LOGON.TXT"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Arhiviranje lahko delaš takrat, ko se user odjavi (poglej group policy - gpedit.msc pod shutdown/logoff scripts) oz. izklaplja računalnik."
+    },
+    {
+        "role": "assistant_3",
+        "message": "Glede task schedulerja in nedelovanja: googlaj \"run process as service\"."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 22. maj 2013 ob 20:42 izjavil:Arhiviranje lahko delaš takrat, ko se user odjavi (poglej group policy - gpedit.msc pod shutdown/logoff scripts) oz. izklaplja računalnik.  tudi to sem probal pa ne dela, sicer za silo je funkcija ok, ampak problem postane pri laptopih, ne more user čakat 20 minut, naprimer da se naredi backup, da lahko potem vzame laptop in gre domov. robocopy ne dela v nobene primeru, ko ga požene sistem windowsa, samo, ko ga poženem z dvojnim klikom."
+    },
+    {
+        "role": "assistant_2",
+        "message": "xcopy /e /d /y \"x:\" \"y:\"  robocopy moraš dodatno namestit, ker mislim, da ni po defaultu? Pa uporabi full path do vseh datotek, ki jih maš v batch fajlu.  C:\\windows\\system32\\robocopy.exe c:\\users\\Janko\\Desktop Z:\\users\\Janko\\Desktop /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt  Za laptope boš verjetno dodal kakšn pogoj, da se zažene samo takrat, ko je priključen na mrežo v službi oziroma kjerkoli že imaš to."
+    },
+    {
+        "role": "user",
+        "message": "Kako čem uporabit full path, če ne vem imena uporabnika? robocopy je po defoltu na windowsih 7. Sem pa našel napako piše v logih, samo ne vem zakaj to ne dela. ERROR 3 (0x000000003) Creating destination directory Z:\\Users Navedene poti ni bilo mogoče najti. Očitno mapiranje na Z ne deluje FOR /F \"delims=~\" %%f in (c:\\LOGON.txt) DO net use Z:\\ \\\\mojserver\\Uporabniki\\%%f"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Glede na to, da se ti Z mapira normalno če batch poganjaš v okvirju trenutnega userja, ne dela pa če poganjaš iz schedulerja, potem sklepam da more bit problem s pravicami. Probi zraven mapiranja dodat opcijo /USER:domena\\uporabnik oz. izpiš return code od \"net use\" komande, mogoče se bo dalo ki iz tega pogruntat."
+    },
+    {
+        "role": "user",
+        "message": "Če dam tole /USER:domena\\uporabnik mi napiše napačen parameter. Sicer pa ja ugotavljam, da je problem s pravicami. Kakšna ideja kaj bi moral nastaviti v task schedulerju, da bi bile pravice prave in bi delovalo."
+    },
+    {
+        "role": "user",
+        "message": "Mislim da zdaj bo delalo, ker sem dal kot uporabnika v task schedulerju \"Users\""
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jst upam da bo delalo, čeprov sem bral da \"net use\" izvede mapiranje v kontekstu trenutno prijavljenega uporabnika če mu specifično ne določiš uporabnika preko /user opcije. Tko da načeloma bo reč delala če bo user logiran, če pa ne bo je pa vprašanje, tud če batch poganjaš kot uporabnik skupine \"Users\"."
+    },
+    {
+        "role": "user",
+        "message": "Zadevo poizkušam narediti takole. v logon.txt se zapiše zadnji prijavljen uporabnik. bat fajl prebere tega uporabnika in zmapira Z: disk na tega uporabnika. robocopy pa se zažene z administratorskim uporabnikom in kopira datoteke iz uporabnika, ki je zadnji v logon.txt na zmapiran disk.  Sicer načeloma sem prišel do polovice, če ma kdo kako idejo pa prosim...."
+    },
+    {
+        "role": "user",
+        "message": "skušam najprej zmapirat disk z uporabnikom iz logon.txt pa mi napiše napako FOR /F \"delims=~\" %%f in (c:\\LOGON.txt) DO net use Z:\\ \\\\mojserver\\Uporabniki\\%%f  napaka %%f was unexpected at this time  kaj delam narobe?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jst v tej vrstici ne vidm napake, mogoče jo maš v prejšnih pa interpreter zateži šele pri tej, poglej par vrstic višje."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 24. maj 2013 ob 15:17 izjavil:Jst v tej vrstici ne vidm napake, mogoče jo maš v prejšnih pa interpreter zateži šele pri tej, poglej par vrstic višje.  sem preveril, pa sem samo to vrstico pognal v cmdju in se je pojavila napaka"
+    },
+    {
+        "role": "assistant_4",
+        "message": "Zakaj se sploh matraš s parsanjem usernamea iz fajla? Na logoff daš skripto, ki ji dodaš parameter %username% pa je."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_4 je 24. maj 2013 ob 17:03 izjavil:Zakaj se sploh matraš s parsanjem usernamea iz fajla? Na logoff daš skripto, ki ji dodaš parameter %username% pa je.  ker bi rad, da se arhivira ponoči in ne ob logoff, ker so nekateri nestrpni in ne počakajo, da se zadeva zarhivira do konca in vzamejo laptop in grejo."
+    },
+    {
+        "role": "assistant_4",
+        "message": "Kako pa arhiviraš ponoči, če je odnesel laptopa? Imaš pa tudi možnost v rt kreirati jobe v scheduler. Ob logoffu pač kreiraš job, ki se zažene ob določeni uri. Lahko bi tudi tako naredil, da poganjaš skripte v nekem folderju. Ko jo naredi, jo briše (logoff skripta pa jo spet naredi). Nekako tako imam narejen restart spoolerja za navadne userje. Vsak user lahko pobriše nek faajl. Scheduler pa zažene restarz servisa, če fajla ni in po startu tja vrže fajl nazaj. Tako ni nekih zajebancij s pravicami."
+    },
+    {
+        "role": "user",
+        "message": "to je pa dobra ideja, da sproti dela skripto. Samo pridem dejansko do istega problema kot zdaj ko to delam prek task schedulerja. problem je, če poženem task scheduler kot \"users\" zadeva deluje, če ga poženem kot \"system\" ne deluje. Ne morem pa preko GPO poslat uporabnikom, task scheduler, če je nastavljen uporabnik \"users\" kot tisti, ki zaganja task scheduler. Če je kot system potem pa gre. Bom še malo experimentiral, če ma kdo kako idejo, pa naj sporoči.  Zaenkrat imam tako narejeno, da se arhiv naredi na logoff."
+    },
+    {
+        "role": "user",
+        "message": "Ok, če mi lahko kdo pomaga pri skripti mi nikakor ne gre. Rad bi, da mi iz logon.txt datoteke prebere USER in ga da v skripto na tale mesta pri robocopy. USER se mi že zapiše v logon.txt ob odjavi.  c:\\windows\\system32\\cmd.exe /c \"robocopy C:\\Users\\USER\\Documents \\\\mojserver\\Arhiv\\Users\\USER\\Documents /e /fft /w:1 /r:1 /ns /nc /nfl /ndl /np /copy:dt /log:c:\\backup.txt\"  Sicer ponavadi vse skripte tudi na lokalnem računalniku poganjam iz \\\\mojserver\\skupno\\skripta.bat in stvar za ostale zadeve deluje.  zdaj če je boilje, da se ta skripta poganja iz lokalnega pcja, kam jo dam da bo to delovalo tako, da bo lahko uporabnik SYSTEm pognal ta bat fajl?"
+    },
+    {
+        "role": "assistant_4",
+        "message": "V %systemroot%\\temp (ali pa naredi folder Skripte). Pravice daj Everyone FullAccess. Ali pa na serverju preveri pravice za spodaj opisano metodo.  Za scehduler, naredi novega userja (jaz servisne accounte kreiram po principu svc.opravilo; torej, svc.sql, svc.backup). S tem accountom potem poganjaj task. Pa ne pozabi imeti nastavljeno, da se zaganja Run whatever logged on..."
+    },
+    {
+        "role": "user",
+        "message": "delati mora z USER NOT LOGGED IN. :)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Jst bi pač naredu eno mapo, kjer bi v acl-u nastavu pravice za SYSTEM account in iz njega poganju batch skripto. Drugač pa je tko kot je @assistant_4 reku, %systemroot% mislm da ma po defaultu SYSTEM account nastavljen v aclu, vse podmape pa majo po defaultu dedovan acl, tko da bi zadeva mogla delat pod %systemroot%."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 27. maj 2013 ob 10:03 izjavil:Jst bi pač naredu eno mapo, kjer bi v acl-u nastavu pravice za SYSTEM account in iz njega poganju batch skripto. Drugač pa je tko kot je @assistant_4 reku, %systemroot% mislm da ma po defaultu SYSTEM account nastavljen v aclu, vse podmape pa majo po defaultu dedovan acl, tko da bi zadeva mogla delat pod %systemroot%.  gledal sem pravice na mapah in vse imajo pravice tudi uporabnika SYSTEM.  sysstemroot misliš uporabnka?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ne, %systemroot% je root mapa od sistema (recimo c:\\windows), tam ma SYSTEM user po defaultu pravice če se ne motm. Tko da če boš skripto poganju iz tle oz. iz poddirektorijev (c:\\windows\\temp, c:\\windows\\Skripte, ...) nebi smel met problemov s pravicami za SYSTEM uporabnika."
+    },
+    {
+        "role": "user",
+        "message": "saj to sem naredil, batch fajl sem dal v c:\\windows\\setup pa ni delovalo prav tako, da se poganja v c:\\windows\\system32 pa tudi ni delovalo. problem je samo, ker nekak ne znam urediti, da mi bere uporabnika iz txt fajla in ga namesti na vse poti za kopiranje."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Mislm da nimaš ti problema s samim zagonom batch fajla s SYSTEM userjem (mogoče se motm), ampak z mapiranjem Z diska. Mislm da po defaultu \"net use\" vzame trenuten username, se proba avtenticirat z serverjem in če je vse uredu zmapira share. Zato tebe use normalno dela če ti zaganjaš batch iz cmd-ja (uporab se tvoj username za avtentikacijo), ko pa zaganjaš job pa se SYSTEM account ne avtenticira s serverjem in tud mapiranje pade (kar verjetno vidš tud iz logov da robocopy ne dobi poti do Z:\\... oz kšna podobna napaka). Ker branje iz txt-ja nebi smelo bit problem ker SYSTEM ma pravice branja pod c:\\windows."
+    },
+    {
+        "role": "user",
+        "message": "V bistvu je problem z source ker javi napako 0003 sour path not found pa potem napiše c:\\users\\miha \\Desktop tudi ko poženem zadevo iz cmdja, zdaj ne vem ali ga moti ker naredi tist presledek vmes ali kaj je narobe? FOR /F \"tokens=1 delims=,\" %f in (c:\\LOGON.txt) DO robocopy \"c:\\Users\\%f\\Desktop\" \"\\\\mojserver\\%f\\Arhiva\\Users\\Desktop /e /w:1 /r:1 /ns /nc /nfl /ndl /np /COPYALL /log:c:\\backup.txt  pa ne mapiram diska, ker robocopy ne podpira mapiranih diskov, zato sem dal celo pot. pa uporabnik administrator, če poženem iz cmdja kot on ima vse pravice tudi system uporabnik"
+    },
+    {
+        "role": "assistant_2",
+        "message": "Presledek ne more bit, če ne obstaja. Poglej kakšn encoding ima LOGON.txt, mogoče vsebuje kakšne čudne znake. Sicer pa testiraj še z ntbackup ali pa vbs skripte ali pa xcopy:   xcopy /E /D /Y \"c:\\\" \"\\\\1.1.1.1\\_%COMPUTERNAME%\\\"   set strSource=C:\\User\\XXY\nset strDestination=\\\\10.10.10.10\\backup\nset BackupName=XXY\nset FullMonthly=01 \n\nFOR /f \"tokens=1-4 delims=/-. \" %%G IN ('date /t') DO (call :s_fixdate %%G %%H %%I %%J)\n   goto :s_print_the_date\n   \n:s_fixdate\n   if \"%1:~0,1%\" GTR \"9\" shift\n   FOR /f \"skip=1 tokens=2-4 delims=(-)\" %%G IN ('echo.^|date') DO (\n       set %%G=%1&set %%H=%2&set %%I=%3)\n   goto :eof\n\n:s_print_the_date\nset monthday=%dd%\n\nset BackupPlan=Daily\nif %monthday%==%FullMonthly% set BackupPlan=Monthly\n\n\nset backuptype=INCREMENTAL\nif %monthday%==%FullMonthly% set backuptype=INCREMENTAL\n\n\n#zbrisi stare backupe\n#wscript deleteDaily.vbs\n#wscript deleteMonthly.vbs\n\nfor /f \"tokens=2-4 delims= \" %%a in (\"%date%\") do set today=%%c-%%b-%%a\n\nEcho Date                     : %today%\nEcho Time                     : %time%\n\nif not exist %strDestination%\\%BackupPlan%\\%BackupName% md %strDestination%\\%backupplan%\\%BackupName%\n\nC:\\WINDOWS\\system32\\ntbackup.exe backup \"@%strSource%\\Backup_%BackupName%.bks\" /n \"Backup %backupplan% (%BackupName%).bkf\" /d \"Backup %BackupPlan% (%BackupName%)\" /v:yes /r:no /rs:no /hc:off /m %backuptype% /j \"Backup %BackupPlan% (%backupmame%)\" /l:s /f \"%strDestination%\\%BackupPlan%\\%BackupName%\\%today%_%BackupName%.bkf"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Aja si spremenu skripto, ja prou možno da ga zajebava presledk. Probi trimmat username prej ku zaženeš robocopy."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_2 je 27. maj 2013 ob 14:22 izjavil:Presledek ne more bit, če ne obstaja. Poglej kakšn encoding ima LOGON.txt, mogoče vsebuje kakšne čudne znake. Sicer pa testiraj še z ntbackup ali pa vbs skripte ali pa xcopy:  xcopy /E /D /Y \"c:\\\" \"\\\\1.1.1.1\\_%COMPUTERNAME%\\\"  set strSource=C:\\User\\XXY set strDestination=\\\\10.10.10.10\\backup set BackupName=XXY set FullMonthly=01   FOR /f \"tokens=1-4 delims=/-. \" %%G IN ('date /t') DO (call :s_fixdate %%G %%H %%I %%J) goto :s_print_the_date  :s_fixdate if \"%1:~0,1%\" GTR \"9\" shift FOR /f \"skip=1 tokens=2-4 delims=(-)\" %%G IN ('echo.^|date') DO ( set %%G=%1&set %%H=%2&set %%I=%3) goto :eof  :s_print_the_date set monthday=%dd%  set BackupPlan=Daily if %monthday%==%FullMonthly% set BackupPlan=Monthly   set backuptype=INCREMENTAL if %monthday%==%FullMonthly% set backuptype=INCREMENTAL   #zbrisi stare backupe #wscript deleteDaily.vbs #wscript deleteMonthly.vbs  for /f \"tokens=2-4 delims= \" %%a in (\"%date%\") do set today=%%c-%%b-%%a  Echo Date : %today% Echo Time : %time%  if not exist %strDestination%\\%BackupPlan%\\%BackupName% md %strDestination%\\%backupplan%\\%BackupName%  C:\\WINDOWS\\system32\\ntbackup.exe backup \"@%strSource%\\Backup_%BackupName%.bks\" /n \"Backup %backupplan% (%BackupName%).bkf\" /d \"Backup %BackupPlan% (%BackupName%)\" /v:yes /r:no /rs:no /hc:off /m %backuptype% /j \"Backup %BackupPlan% (%backupmame%)\" /l:s /f \"%strDestination%\\%BackupPlan%\\%BackupName%\\%today%_%BackupName%.bkf     ja res je šele zdaj sem opazil, da mi v logon.txt naredi po Uporabniku še presledek za logon.txt imam tole v skripti in naredi presledek echo %username% >> c:\\LOGON.TXT"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uporab brez presledka pri echo:   echo %username%>> c:\\LOGON.TXT"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 27. maj 2013 ob 14:43 izjavil:Uporab brez presledka pri echo:   echo %username%>> c:\\LOGON.TXT   sem spremenil zdaj ni več presledka, samo še vedno nekaj ne dela, ker tudi log fajn od robocopa je prazen  samo da je pa zdaj problem, ker imena shranjuje enega zraven drugega v log faj. naprimer MihaMihaMiha čeprav naj bi brisal vse stare s tole skripto echo %username%>> c:\\LOGON.TXT  SET filename=c:\\LOGON.TXT SET newfilename=%filename%.bak SET count=0  FOR /f \"delims=, tokens=4\" %%a in (%filename%) do ( SET /a count += 1 FOR /f \"delims=: tokens=2\" %%b in (\"%%a\") do ( echo %%b ) )  SET /a count -= 1  IF %count% GTR 1 ( echo Count:%count% more +%count% %filename% > %newfilename% move /Y %newfilename% %filename% )"
+    },
+    {
+        "role": "user",
+        "message": "no uspel sem nekak prit do tja, da če zadevo poženem pobere zadnjega userja iz txt fajla in začne kopirat, sam zdaj pa vidim pod logfajlom od robocopy, da je našel fajle, ampak da nič ni kopiral vse je skipped......"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Skripta je spisana za tvoj prvi primer ko si ga nevedu na začetku:  echo \"Logon Date:%date%,Logon Time:%time%,Computer Name:%computername%,User Name:%username%,Server Name:%logonserver%\" >> c:\\LOGON.TXT\n  Če maš samo %username% v fajlu, potem uporab samo:   FOR /f %%a in (%filename%) do (\n\tSET /a count += 1\n)\n\nSET /a count -= 1\n\nIF %count% GTR 1 (\n\tmore +%count% %filename% > %newfilename%\n\tmove /Y %newfilename% %filename%\n)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "@user je 27. maj 2013 ob 15:15 izjavil:no uspel sem nekak prit do tja, da če zadevo poženem pobere zadnjega userja iz txt fajla in začne kopirat, sam zdaj pa vidim pod logfajlom od robocopy, da je našel fajle, ampak da nič ni kopiral vse je skipped......   Glede tega ti pa ne znam glih svetovat ker se nism nkol igral z njim. Tu piše, da po defaultu kopira fajle ki so različnih velikosti al pa imajo različn timestamp. Probi uporabit različne opcije, kkr vidm jih maš ceu kup."
+    },
+    {
+        "role": "user",
+        "message": "V bistvu zadeva zdaj deluje. Računalnik se prižge se zarhivira in se ugasne. Stvar je v tem, da se mora ta batch fajl poganjat kot glavni administrator, da ima dostop do vseh lokalnih map in map na serverju. Da je treba temu administratorju omogočit, da lahko poganja batch fajle v GPO na serverju. se pravi z zgornjim batch fajlom se naredi na Cju txt datoteka z zadnjim uporabnikom in potem se tale batch fajl nastavi v task schedulerju, da se poganja kot glavni administrator %SystemRoot%\\system32\\cmd.exe /c \"FOR /F \"tokens=1 delims=,\" %%f in (c:\\LOGON.txt) DO robocopy \"C:\\Users\\%%f\\Documents\" \"\\\\mojserver\\Arhiva\\%%f\\Users\\Documents\" /e /w:1 /r:1 /ns /nc /nfl /ndl /np /FFT /COPY:DT /log:c:\\backup.txt\"  @assistant_0 je 27. maj 2013 ob 15:19 izjavil:Skripta je spisana za tvoj prvi primer ko si ga nevedu na začetku:  echo \"Logon Date:%date%,Logon Time:%time%,Computer Name:%computername%,User Name:%username%,Server Name:%logonserver%\" >> c:\\LOGON.TXT   Če maš samo %username% v fajlu, potem uporab samo:   FOR /f %%a in (%filename%) do ( SET /a count += 1 )  SET /a count -= 1  IF %count% GTR 1 ( more +%count% %filename% > %newfilename% move /Y %newfilename% %filename% )    tole pa na žalsot še vedno ne dela...."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Nevem točno kšno funkcjonalnost rabiš. Ta koda ka sm ti jo napisu pobriše use userje iz fajla razn zadnjega, ob predpostavki da maš userje brez presledkov in vsakega v svoji vrstici. Kako točno maš txt fajl narejen?"
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 28. maj 2013 ob 10:31 izjavil:Nevem točno kšno funkcjonalnost rabiš. Ta koda ka sm ti jo napisu pobriše use userje iz fajla razn zadnjega, ob predpostavki da maš userje brez presledkov in vsakega v svoji vrstici. Kako točno maš txt fajl narejen?  točno tako kot si napisal. uzerji so eden za drugim v stolpcu. samo da jih ne briše, verjetno je problem v pravicah skripte, ki jih rabi za kreiranje začasne datoteke"
+    },
+    {
+        "role": "assistant_0",
+        "message": "To se mi zdi malo verjetno če poganjaš skripto kot admin da nebi meu pravic delanja začasnih fajlov. Je pa res da morš met full path do LOGON.txt in temp fajla za more in move ukaze, če batch in LOGON.txt nista v istem direktoriju, čene ti zadeva sigurno nebo delala ker iščeta fajle v trenutnem delovnem direktoriju."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 28. maj 2013 ob 11:09 izjavil:To se mi zdi malo verjetno če poganjaš skripto kot admin da nebi meu pravic delanja začasnih fajlov. Je pa res da morš met full path do LOGON.txt in temp fajla za more in move ukaze, če batch in LOGON.txt nista v istem direktoriju, čene ti zadeva sigurno nebo delala ker iščeta fajle v trenutnem delovnem direktoriju.  ne to poganjam kot system user, ampak ni panike, sem nastavil, da se ob nedeljah briše ta txt fajl."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Tud to je opcija, drugač pa pač nastavš samo absolutno pot do LOGON.txt pa bi reč mogla delat iz bilokje. Primer:  ::absolutna pot do txt-ja\nSET filename=c:\\LOGON.txt\nSET newfilename=%filename%.bak\nSET count=0\n\nFOR /f %%a in (%filename%) do (\n\tSET /a count += 1\n)\n\nSET /a count -= 1\n\nIF %count% GTR 1 (\n\tmore +%count% %filename% > %newfilename%\n\tmove /Y %newfilename% %filename%\n)"
+    },
+    {
+        "role": "user",
+        "message": "saj kolikor vidim je zadeva identična....   echo %username%>> c:\\LOGON.TXT\nFOR /f %%a in (%filename%) do (\n    SET /a count += 1\n)\n \nSET /a count -= 1\n \nIF %count% GTR 1 (\n    more +%count% %filename% > %newfilename%\n    move /Y %newfilename% %filename%\n)"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sej koda je identična, fora je samo v setanju filename-a:  SET filename=c:\\LOGON.txt\nSET newfilename=%filename%.bak\n Če setiraš absolutno pot do LOGON.txt potem lahko poganjaš batch iz katerega koli direktorija, pa bosta more in move ukaza delala ker bosta pač vzela absolutno pot do fajla. Če pa boš meu setano samo ime fajla, potem pa bosta more in move ukaz probala operirat nad fajlom v trenutnem delovnem direktoriju. Evo primer: maš fajl c:\\LOGON.txt, recimo pa da batch skripto poganjaš iz c:\\skripta. Reč bo lepo delovala dokler ne bo prišla do more in move ukaza. Če boš meu absolutno pot nastavljeno za filename, potem se bo izvedlo to:  more +%count% c:\\LOGON.txt > c:\\LOGON.txt.bak\nmove /Y c:\\LOGON.txt.bak c:\\LOGON.txt\n Če boš imel samo ime datoteke nastavljeno se bo izvedlo to:  more +%count% c:\\skripta\\LOGON.txt > c:\\skripta\\LOGON.txt.bak\nmove /Y c:\\skripta\\LOGON.txt.bak c:\\skripta\\LOGON.txt"
+    },
+    {
+        "role": "user",
+        "message": "ok hvala bom stestiral"
+    },
+    {
+        "role": "user",
+        "message": "Ali mogoče kdo ve, kako naredim naprimer, da če najde določena imena v txt datoteki, ki se ujemajo z imeni direktorijev, potem naredi to in to?"
+    },
+    {
+        "role": "assistant_0",
+        "message": "Uporabiš dir z opcijami ki ti vrne samo imena direktorijev, potem pa jih primerjaš z imeni:  dir /B /AD"
+    },
+    {
+        "role": "user",
+        "message": "to pa ne razumem kako?  naprimer v tct datoteki imam napisana imena map jaka miha janko  in če mi batch fajl najde to ime v mapi mi požene notepad, naprimer..."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Ah pozab, jst sm te narobe razumel, mislil sem da morš imena map brat iz diska ne iz fajla . Najprej bereš userje iz txt-ja (kar že delaš), potem za vsakega userja bereš imena map iz drugega txt-ja ter jih primerjaš z userjem."
+    },
+    {
+        "role": "user",
+        "message": "@assistant_0 je 29. maj 2013 ob 14:14 izjavil:Ah pozab, jst sm te narobe razumel, mislil sem da morš imena map brat iz diska ne iz fajla . Najprej bereš userje iz txt-ja (kar že delaš), potem za vsakega userja bereš imena map iz drugega txt-ja ter jih primerjaš z userjem.   v bistvu berem več userjev iz ene txt datoteke in če najdem userja se mi zažene naprimer notepad.   %SystemRoot%\\system32\\cmd.exe /c \"FOR /F \"tokens=1 delims=,\" %%f in (\\\\mojserver\\Arhiva\\log.txt) DO if exist \"C:\\Users\\%%f\\Documents\" (End) else (goto A)\"\n:A\nNotepad.exe\npause\n\n:End\nExit  Problem je, ker tole ne dela, če bi bil samo en uporabnik bi delalo tako jih je pa več in ko primerja s prvim, ki ne ustreza pogoju, se notepad zažene. tale batch fajl naredi tolikokrat ukaz kot je userjev v txt datoteki. Jaz pa bi rabil, da prebere vse userje in če najde ustreznega v txt datoteki in njegovo mapo, da požene določeno zadevo."
+    },
+    {
+        "role": "assistant_2",
+        "message": "Zakaj pa ne uporabiš vbs/powershell skripte? Imaš že ogromno examplov narejenih, samo sestavljaš skupaj.   Sub ShowFolderList(folderspec)\n    Dim fs, f, f1, fc, s\n    Set fs = CreateObject(\"Scripting.FileSystemObject\")\n    Set f = fs.GetFolder(folderspec)\n    Set fc = f.SubFolders\n    For Each f1 in fc\n        s = s & f1.name \n        s = s &  vbCrLf\n    Next\n    MsgBox s\nEnd Sub   Dim objShell\nSet objShell = WScript.CreateObject( \"WScript.Shell\" )\nobjShell.Run(\"\"\"c:\\Program Files\\Mozilla Firefox\\firefox.exe\"\"\")\nSet objShell = Nothing   Set objNet = CreateObject(\"WScript.NetWork\") \n\nstrInfo = \"User Name is     \" & objNet.UserName & vbCRLF & _\n          \"Computer Name is \" & objNet.ComputerName & vbCRLF & _\n          \"Domain Name is   \" & objNet.UserDomain\n\nMsgBox strInfo"
+    },
+    {
+        "role": "user",
+        "message": "Ker se ne spoznam na programiranje in vbs skripte še tole z batch fajli komaj skupaj sklamfam, vbsa pa ne razumem nič :)  Tak da tole kar si mi dal mi ni nič jasno."
+    },
+    {
+        "role": "assistant_0",
+        "message": "Sigurno se ti splača naštudirat vbs kot je reku rb750, splih če boš delal bolj komplicirane skripte ker se ti reči poenostavijo. Če pa se misleš z batchom zajebavat potem pa probi tko da greš čez vse userje in primerjaš če obstaja mapa, če ne obstaja ga daš v eno lokalno spremenljivko. Na koncu greš čez use userje v tej lokalni spremenljivki ter za posameznega odpreš notepad.   Setlocal EnableDelayedExpansion\nFOR /F \"tokens=1 delims=,\" %%f in (\\\\mojserver\\Arhiva\\log.txt) DO (\n    if not exist \"C:\\Users\\%%f\\Documents\" (\n        SET users=!users!%%f,\n    )\n)\n\nFOR %%b in (%users%) do (\n    ::notepad,...\n)\n  Nevem a rabiš za usakega userja pognat notepad al ne."
+    },
+    {
+        "role": "assistant_2",
+        "message": "@user je 22. maj 2013 ob 15:02 izjavil:@assistant_0 je 22. maj 2013 ob 14:57 izjavil:Mislm da je najbol simpl da si nardiš en Scheduled Tasks ki ti bo poganjal tvoj batch file.   saj sem pa ne dela, ni mi jasno zakaj ga task scheduler ne požene, ker na roke dela vedno    Za test: na smb/cifs serverju (\\\\mojserver) kreiraj folder z full pravicami za vse (everyone) in potem bi skoraj moralo delat... A ti kakšn error prikaže? npr. 0x1?"
+    }
+]
