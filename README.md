@@ -12,5 +12,5 @@ Folder `./report` includes all the files needed for our report and the report it
 Folder `./code` includes all our runnable code to reproduce our reported results.  
 Folder `./model` has weights of our reported model that can be downloaded and used.  
 
-SUBMISSION1 REPORT: [Report1](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report1.pdf)
+SUBMISSION1 REPORT: [Report1](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report1.pdf)  
 SUBMISSION2 REPORT: [Report1](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report2.pdf)
