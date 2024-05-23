@@ -1,0 +1,92 @@
+[
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Živjo!\n\nSaj ne vem, če sem prav napisal...\nTorej, rad bi svoj wireless router Linksys WRT54GL vključil v obstoječo mrežo tako, da bi lahko koristil njegov wireless signal. V obstojeæi mreži je že en router, ki deluje kot gateway (je priklopljen na ADSL modem).\nMoja ideja je, da kabel, ki gre s tega gatewaya priklopim na WAN port mojega routerja. Iz LAN porta mojega routerja moram nato speljati kabel v en obstoječ računalnik, WLAN bi pa koristil jaz z notebookom.\nKako torej nastavit moj wireless router, da bi to delovalo?\n\nlp",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "To bo 99% delalo brez bilokakih nastavitev.\nMogoče moraš WLAN vklopiti če je slučajno izklopljen.\n\nJe pa brez veze imeti še en NAT prehod na lokalni mreži, tak da jaz to drugače nastavil :\n - WAN ne uporabiš\n - dodelitev IP naslova iz obstoječega LAN-a\n - izklop DHCP serverja\n - priklop na obstoječi LAN z LAN portom",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Iz tega routerja maš samo en kabel ven? Do Linksysa? Če ja, potem lahko ta obstoječi router odklopiš in uporabiš samo Linksysa ... drugače pa naredi tako, kot je rekel stein.",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Živjo!\n\nZdaj sem nastavil tako:\n1.Router sem nastavil, da dela kot router (ne kot gateway)\n2. Internet connection type sem nastavil \"Automatic configuration - DHCP\", prej je bilo nastavljeno PPPoE, ker sem ga uporabljal kot gateway.\n3. Local IP address sem mu nastavil na neko prosto lokacijo v obstoječi mreži, 192.168.1.1 je že rezervirano za obstoječi gateway.\n4. DHCP server je enabled\n5. Pod \"Advanced routing\" sem dal dynamic routing (RIP) na disabled\n6. Default gateway sem vpisal IP od obstoječega routerja (192.168.1.1)\n\nin zadeva deluje. \n...čeprav ne zastopim listo kaj sem nastavil...\n\nlp",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "glede na to, da imaš L verzijo se da tud obstoječi wan port 'priključit' v switch, da je vseh pet vtičev enakovrednih.\nne vem, če z uradnim firmwarom, z dd-wrt-jem vsekakor.\n\nče ti dodaten port kaj pomeni...\n\nlpm",
+    "author": "martin",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Jst mam doma podobno konfiguracijo in na brezžičnem routerju (Buffalo) nisem uporabil WAN porta. Buffalo sem nastavil kot access point (s primernimi varnostnimi nastavitvami), v port št.1 sem vtaknil kabel, ki pride od primary routerja (prehod) in zadeva deluje BP.",
+    "author": "BigBoss",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Imam podoben problem. V zgornjem nadstropju imam kabelski modem in wireless router Asus WL-500g. Ker signal v spodnje nadstropje ni bil zadovoljiv, se dol potegnil kabel, ki sem ga priklopil v LAN port na routerju. Do tu je vse delovalo kot mora, toda sestra si je namislila, da hoče bit hkrati (spodaj) še z laptopom na netu, zato sem ji spodaj dodal še en Canyon (žični) router. Zdaj mi pa nikakor ne uspe nastavit, da bi le-ta deloval kot switch in bi IPje ter vse ostalo dodeljeval Asus. Kakorkoli nastavljam, se računalnika na Canyonu vidita med sabo, na net pa ne more noben. Kaj moram pravzaprav nastavit?",
+    "author": "monaco",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Sem že ugotovil napako. Kabel iz Asusa je bilo potrebno priklopit v Lan port in ne Wan.",
+    "author": "monaco",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "KSZ in ker je že odprta tema. \n\nJaz imam podobno \"bolezen\", kot merdzo. mi pa niakor ne uspe zadeve poštimat.\n\nSituacija pri meni je naslednja: Router A (Linksys-osv BFSR41), je priključen na ADSL modem in najnjega 2 računalnika. Eno nadstropje nižje poskušam k življenju spraviti še en wireles router B (BUFFALO WHR-HP-G54), ki ga želim priključiti v en LAN izhod routerja A. Poskusil sem že vse kombinacije, ki so se mi zdele možne, povezava iz routerja A WAN port routerja B, potem še v LAN port. Nobena kombinacija ni takšna, da bi mi zadeva funkcionirala. \nPoskusil sem že tudi trike iz te teme.\n\nSumim, da je nekaj narobe z IP-ji in gateawayi.\n\nŠe podatki:\nRouter A:\n- IP 192.168.1.1 (tovarniška nastavitev)\n- protokol je nastavljen na PPoE\n- IP-je dodeljuje preko DHCP-ja \n\nRouter B:\n-IP: 192.168.11.1\nVse ostalo ne vem kako naj nastavim, da bo zadeva zafunkcionirala.\nPoskusil sem dodelit routerju B statični IP in ga seveda rezervirati na Routerju A, pa tudi to ni pomagalo.\n\nNajbolje bi bilo (moje mnenje), da bi router B deloval kot switch.\n\nRouter B po navodilih lahko deluje tudi kot bridge ali pa tudi kot acess point.\n\nIma kdo kako idejo kaj delam narobe \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Meni jih namreč zmanjkuje.",
+    "author": "Slovenet",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Nastavi kot Access point.",
+    "author": "monaco",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "In en nerabljen IP iz območja prvega ruterja, recimo 192.168.1.2",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Meni še zmeraj zadeva ne deluje.\nPa gremo po vrsti.\n-V LAN 1 wireless routerja vtaknem kabel iz \"master\" routerja\n-V LAN 2 wireless routerja vtaknem kabel iz računalnika\n- Na wireless routerju nastavim AP(Acess Point) mode\n-na wireless routerju posveti ledica \"BRIDGE\", kar po mojem razumevanju navodilc pomeni, da router deluje kot AP\n-wireless routerju nastavim IP (LAN Side Ethernet Settings) na 192.168.1.2 (glavni router ima 192.168.1.1)\n-wireless routerju nastavim subnet mask na 255.255.255.0\n-Polja Default Gateway in DNS Server Adresses pustim prazna \n- Na AP (wireless router) se priključim preko wirelessa z drugim računalnikom, ki sem mu nastavil fiksni IP, s tem pridem samo do web nastavitev AP-ja ne pa do neta.\n- Iz AP-ja probam pingam primarni router in compe direktno priključene na primarni router, vendar brez uspeha.\n- AP zazna  3 cliente priključene preko kabla (domnevam, da 1 desktop priključen direktno na AP, router in desktop priključen na router) in enega wireless.\n\nŠe to. Primarni router dodeljuje IP-je avtomatsko (DHCP), ko na računalnikih priključenih na AP, dam to nastavitev se ne povežejo oziroma, dobijo IP 16x.x.x.x, skratka nekaj čisto mimo.\n\nPovezavo do neta imam preko PPPoE protokola z dinamičnim IP-jem.\n\n\nKaj delam narobe \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Morda ima to kaj veze. S kabli po mojem ni nič narobe, ko ga priključim direktno na dektopa deluje net brez problema.",
+    "author": "Slovenet",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "1.) master ruter LAN povezan z LAN drugega ruterja, LAN drugega v LAN PC-ja (ki naj ima ročno nastavlje IP iz območja glavnega ruterja, torej 192.168.1.x)\nDela ali ne ? Če ne , niti po resetu nastavitev drugega ruterja ?\nŠe vedno ne ? Pol je ta ruter zrel za odpad.\n\n2.) resetiraj nastavitve drugega rutetrja, LAN side na  192.168.1.2 , izklopi DHCP server, poveži kot v prvi točki. Če ne dela razmisli o drugem modelu ruterja. Škoda časa.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "Sem že ugotovil, da ni problem v routerju oziroma AP-ju, ampak v kablu za povezavo med AP-jem in primarnim routerjem. Ta kabel se precej čudno obnaša. Ko ga priklopim na AP zadeva ne deluje, ko pa ga priklopim direktno v desktopa pa mreža deluje. Kabel je preverjeno straight in ne crossover. Izgleda, de je problem dolžina kabla cca 15. Ga bom jutri skrajšal in zamenjal konektorje. Potem zna biti boljše.",
+    "author": "Slovenet",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Wireless router to wireless switch",
+    "content": "domaizdelankabel.press",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

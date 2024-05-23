@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "imam starega wrt54gl, da reši en prostor z wifijem. Omrežje je z statičnimi ip-ji. Torej v vsaki napravi, ga nastavlaš ročno. \nKak za vraga naj naredim, da se ddwrt povežeš z statičnim ip-jem v omrežje in potem dalje sam svoje preko svojega DHCP-ja ureja. Saj bi mu dal neki range npr 200-250, samo so vsi ostali računalniki tak raztroseni, po celem razponov IP-jev. Ni mi pa najbolj it zaj vse spreminjat, da bi bli po vrsti. Torej posledično vedno pride do konfliktov. Recimo da je gateway 123.456.789.100 ddwrt je 123.456.789.130, to kaj se pa na njega povezuje bi pa bilo 192.168.1.1 in dalje.\nNaprave se ne rabijo videt med samo. Važna je samo internetna povezava da dela.\nJe to kaka opcija? Nekaj sem čaral ampak mi ni ratalo.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "Iz routerja 123.456.789.100 pelji utp kabel na router 123.456.789.130 v wan port. Na tem routerju naredis internetno povezavo s staticnim ip naslovom 123.456.789.130, maska mreze pazi da bo pravilna, verjetno 255.255.255.0 in vpisat moras se gateway, ki pa je ip naslov prvega routerja, to je 123.456.789.100. V resnici pustis lahko tudi na avtomatsko dodelitev naslova oz dhcp. Na.drugem routerju moras nato nareditidrugo mrezo, kot pravis 192.168.1.0/24 bo v redu in vklopis dhcp server. To je pa tudi vse. Glede na.to da imas ddwrt, imas med opcijami tudi bridge. Sta naredi to, da wan port je enak ostalim stirim lan portom in izklopi dhcp servis na lan portih, ker ti bo naslove dodeljeval prvi router, tako bodo vsi povezani klienti na oba routerja med sabo vidni.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "glih v tem je problem, da nočem da mi naslove dodeljuje prvi router. Oziroma tako mi ni problem naštimat. Ampak bi blo preveč dela, da nek range spucam in rezerviram za wifi.\nTo me zanima če je možno da prvi router da naslov samo temu drugemu ki skrbi za wifi. Vse ostale svoje naslove ločene pa dodeljuje ta drugi za svoje \"uporabnike\"",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "Sej je napisal da na drugem routerju oz. APju kot ga najbrž tehnično rabiš postaviš svoje omrežje z drugo netmasko. Potem na tem omrežju omogočiš DHCP v range kot ga želiš. Bistveno je kako rešiš povezavo med obema napravama in omrežjema, tu je ena opcija kot je omenjeno zgoraj da furaš \"router mode\" preko WAN omrežja (opcija \"static oz DHCP\").",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tglih v tem je problem, da nočem da mi naslove dodeljuje prvi router. Oziroma tako mi ni problem naštimat. Ampak bi blo preveč dela, da nek range spucam in rezerviram za wifi.\nTo me zanima če je možno da prvi router da naslov samo temu drugemu ki skrbi za wifi. Vse ostale svoje naslove ločene pa dodeljuje ta drugi za svoje \"uporabnike\"\n\t\t\n\t\tKlikni za razširitev\n\t\nJe mozno, ce je tvoj prvi router kak bolj sofisticiran, drugace pac s temi home routerji ne bo slo, ze tako le redki sploh kaksno guest wifi mrezo imajo, kar bi bilo nekako tudi za tvoj primer uporabno.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "Routerjema nastavi statične IP-je 192.168.1.1 in 192.168.1.2. Routerja poveži preko lan portov. Se ne spomnim več, če to wrt54gl gre, samo na nekaterih routerji lahko nastaviš, da wan port dela kot še en ekstra lan port. Potem lahko povežeš tudi na wan port. Skratka drugi routr bo delal kot switch/wifi acce point. Potem nastaviš DHCP na prvem rouerju, da dodeljuje naslove v rangu 192.168.1.10 - 100, drugi pa 192.168.1.101-200. Ali kaj podobnega. Tako ne bo konfliktov. DHCP pookol deluje tako, da se poveže na prvi strežnik, ki je fizično dostopen. Tako bodo vsi klienti dobili IP od naprave na katero se bodo povezali. Default gw pa nastaviš IP od routeja, ki je povezan v inernet.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "vidim da je rahlo nejasno. \nNi dveh routerjev, ki bi jil lahko nastavljal. Nastavljam lahko samo tega wrt-ja.\nSem včeraj še neke zapletene nastavitve zguglal pa da vidim če bo. \nDrugače pa pač vse ostale naprave na roko nastavit, da bo 200-250 range fraj in na wrt-ju nardim ta range.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "Na prvem nastavi DHCP za LAN, drugega daj pri opciji Connection type (WAN oz. internet mode) na DHCP,  pri LAN nastavitvah drugega routerja lahko nastaviš subnet po želji in temu primerno tudi svoj DHCP.",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tvidim da je rahlo nejasno.\nNi dveh routerjev, ki bi jil lahko nastavljal. Nastavljam lahko samo tega wrt-ja.\nSem včeraj še neke zapletene nastavitve zguglal pa da vidim če bo.\nDrugače pa pač vse ostale naprave na roko nastavit, da bo 200-250 range fraj in na wrt-ju nardim ta range.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe rabiš ni zapletenega. Če je tako kot pišeš, potem kabel iz prvega routerja vtakni v WAN port drugega routerja. Nastavi mu internetno povezavo pridobitev naslova DHCP (ni ne potrebuješ statičnega naslova nastavljat, da ne boš slučajno nastavil nek naslov, ki bi ga potem uproabila druga naprava na prvem routerju). Nato na drugem routerju obvezno nastavi nov subnet, ki bo različen od subneta na prvem routerju in vklopi DHPC. To je vse.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DDWRT dhcp vprašanje",
+    "content": "To sem že včeraj probal in ni šlo, ni bilo povezave. Ip in vse je dal samo skozi ni šlo. Zato sem tudi vprašal kje je trik. Sem pol resil tak, da sem nastavil da wrt daje range 231-254.  Tistih 6, ki je bilo tu not sem jim dal nov ip in reseno zaenkrat. V tem trenutku najhitreje. Ko bo več časa se lotim še enkrat od začetka.",
+    "author": "luka51",
+    "author_level": "Guru"
+  }
+]

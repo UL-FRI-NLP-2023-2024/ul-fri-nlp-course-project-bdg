@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "Pozdravljeni,\n\nimam 4G LTE hub  (Alcatel LinkHub Cat7 LTE), ki v redu opravlja svoje delo, vendar bi rad nanj dodal še dodaten router, predvsem za boljšo WiFi pokritost. Sedaj moram vedno izbrati kompromis med dobrim 4G sprejemom in dobro pokritostjo WiFi omrežja znotraj objekta.\n\nProblem, na katerega sem naletel je, da hub v nastavitvah ne omogoča bridge mode-a, bi pa rad, da poleg WiFi-ja tudi DHCP upravlja novi router. \n\nKaj mi svetujete? Naj nov router dam zgolj v access point ali kaj drugega?\n\nSpodaj povezava do huba.\n\nAlcatel LinkHub HH71",
+    "author": "d3esaly",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "Če te ne moti dvojni NAT potem pač samo priklopi router s kablom pa bo. To je čisto tvoja odločitev v odvisnosti od tega kar pač rabiš. Na mobilnem omrežju si tako ali tako večinoma za operaterjevim NATom.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "Hvala. Torej DHCP na off na hubu, pa static IP na routerju pa gateway IP od huba?\n\nTorej gre za pocitniski objekt, ko nikogar ni tam je naceloma priklopljenih 11 naprav (klime, termostati, kamera, …). Ko smo tam so porabniki se telefoni, tablice, racunalniki in potem TV z netflixom, hbo, … predvidevam da double NAT ne bo prevelik problem za to?",
+    "author": "d3esaly",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik d3esaly je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tHvala. Torej DHCP na off na hubu, pa static IP na routerju pa gateway IP od huba?\n\nTorej gre za pocitniski objekt, ko nikogar ni tam je naceloma priklopljenih 11 naprav (klime, termostati, kamera, …). Ko smo tam so porabniki se telefoni, tablice, racunalniki in potem TV z netflixom, hbo, … predvidevam da double NAT ne bo prevelik problem za to?\n\t\t\n\t\tKlikni za razširitev\n\t\nNe. Pustiš tako kot je. Hub bo preko svojega dhcpja dal IP tvojemu routerju, ta pa svoje IP naslove porabnikom. Edino paziti moraš, da sta IP naslova obeh routerjev na različnih segmentih. Dovolj je npr. da je eden na 192.168.8.1, drugi pa npr. na 192.168.1.1\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "Jaz imam podobno, samo imam Huawei B535-300 (pa tudi termostate, NAS na UTP-ju, kamera...). Če hočeš večji coverage je smiselno, da 2 routerja povežeš s kablom, ne vem če tvoj Alcatel sploh ima ethernete. Če boš postavil na drugi konec in bo link slab med njima, boš sicer dobil extender signala, ampak hitrost bo omejena. Jaz imam trenutno na pol narejeno, imam en 4g Huawei in UTP kabel na lokacijo kamor pride drug enak Huawei. Tako da bo en glavni, povezan s 4G pa imel DHCP (dodeljevanje IP-jev), drugi bo pa služil pokrivanju signala. Ker bo med njima kabel bo to bolj ali manj to. Zdaj če ti obstoječi router ne omogoča kaj pametnega, potem na bolhi dobiš 2 taka kot sta napisana za 50EUR po kosu. 100 EUR če lahko daš UTP vmes si zmagal.\nSeveda se najde še kaj vmes, samo če obeh naprav ne boš povezoval žično bi ju jaz dal tako, da bi bil med njima še dober signal - tako boš dobil extension, če boš postavil vsakega v svoj kot, da se bosta komaj videla, nisi naredil skoraj nič.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik jernejd je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe. Pustiš tako kot je. Hub bo preko svojega dhcpja dal IP tvojemu routerju, ta pa svoje IP naslove porabnikom. Edino paziti moraš, da sta IP naslova obeh routerjev na različnih segmentih. Dovolj je npr. da je eden na 192.168.8.1, drugi pa npr. na 192.168.1.1\n\nJernej\n\t\t\n\t\tKlikni za razširitev\n\t\nOk, hvala. Torej bo tukaj edini problem, da mi alcatel app na telefonu ne bo zaznal huba, ker bom na drugem segmentu kot hub? Pac v kolikor bi potreboval kaj nastavljati, naceloma je to redko…",
+    "author": "d3esaly",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik KarEn je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz imam podobno, samo imam Huawei B535-300 (pa tudi termostate, NAS na UTP-ju, kamera...). Če hočeš večji coverage je smiselno, da 2 routerja povežeš s kablom, ne vem če tvoj Alcatel sploh ima ethernete. Če boš postavil na drugi konec in bo link slab med njima, boš sicer dobil extender signala, ampak hitrost bo omejena. Jaz imam trenutno na pol narejeno, imam en 4g Huawei in UTP kabel na lokacijo kamor pride drug enak Huawei. Tako da bo en glavni, povezan s 4G pa imel DHCP (dodeljevanje IP-jev), drugi bo pa služil pokrivanju signala. Ker bo med njima kabel bo to bolj ali manj to. Zdaj če ti obstoječi router ne omogoča kaj pametnega, potem na bolhi dobiš 2 taka kot sta napisana za 50EUR po kosu. 100 EUR če lahko daš UTP vmes si zmagal.\nSeveda se najde še kaj vmes, samo če obeh naprav ne boš povezoval žično bi ju jaz dal tako, da bi bil med njima še dober signal - tako boš dobil extension, če boš postavil vsakega v svoj kot, da se bosta komaj videla, nisi naredil skoraj nič.\n\t\t\n\t\tKlikni za razširitev\n\t\nAlcatel ima ethernet port in router bo nanj povezan prek njega. Wifi na alcatelu bom izklopil, nanj bo povezan zgolj router preko kabla. Vse druge naprave bodo povezane na router in njegov DHCP. Nekako je plan, da alcatel lovi signal in dostop do interneta, ves ostali promet pa usmerja router.",
+    "author": "d3esaly",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "Sem razumel da si napisal da bi rad Wifi pokritost izboljšal, oz. kak mesh naredil. Tako kot si napisal boš imel brezžično povezavo samo do tadrugega routerja, res pa je, da se wifi AP-ji ne razumejo ravno dobro če niso enaki/iste firme, da se naredi mesh povezava večih wifi točk. Se pravi 4g routerju s slabšim pokrivanjem boš izključil wifi (torej ga boš imel samo za 4g - drugače so antene za 4g lovljenje in za wifi druge oz. zaradi samega lovljenja 4g ne deluje wifi nič slabše, problem je sam performance take naprave ponavadi) in ga vključil na \"boljšem\" routerju. Če ti zadošča je to ok, jaz bom uporabil drugo napravo za extension coverage.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "4G LTE hub + dodatni router",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik KarEn je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSem razumel da si napisal da bi rad Wifi pokritost izboljšal, oz. kak mesh naredil. Tako kot si napisal boš imel brezžično povezavo samo do tadrugega routerja, res pa je, da se wifi AP-ji ne razumejo ravno dobro če niso enaki/iste firme, da se naredi mesh povezava večih wifi točk. Se pravi 4g routerju s slabšim pokrivanjem boš izključil wifi (torej ga boš imel samo za 4g - drugače so antene za 4g lovljenje in za wifi druge oz. zaradi samega lovljenja 4g ne deluje wifi nič slabše, problem je sam performance take naprave ponavadi) in ga vključil na \"boljšem\" routerju. Če ti zadošča je to ok, jaz bom uporabil drugo napravo za extension coverage.\n\t\t\n\t\tKlikni za razširitev\n\t\nTako je, 4g hub bo šel čim bližje oknu in njegova primarna naloga bo uloviti čim boljši 4G signal, WIFi router (Archer C2300) pa v dnevno sobo... 4G hub nima niti zunanjih anten, drugi router pa tri tako, da že tukaj vidim plus v boljšem dometu. Router se mi valja doma, ker sem kupil novejšega s podporo WiFi 6 tako, da me nič ne stane če poizkusim zgolj s tem.",
+    "author": "d3esaly",
+    "author_level": "Fizikalc"
+  }
+]

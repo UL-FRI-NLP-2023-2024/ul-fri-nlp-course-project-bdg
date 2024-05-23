@@ -1,0 +1,218 @@
+[
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Po kar nekaj letih zvestega služenja mi je zadnja nevihta odnesla Asus RT-N66U (odneslo je WAN port) in sem primoran nabaviti novega. Ker nisem ravno na tekočem s temi zadevami bi mi kakšen nasvet ali namig prišel prav.\nImam telemach 200Mb linijo, na kablih sta moj računalnik in WDTVLive box v dnevni sobi, ostalo je brezžično (2 prenosnika, par telefonov). Na Asusu sem imel priklopljen USB disk, na katerega sem dostopal iz WDTVlive ali računalnika.\nŽe prej sem imel problem z WiFijem v zadnjih dveh sobah (hiša je pritlična), ca 15-20 m daleč, 3-4 stene (klasična gradnja) vmes.\nIzbrati moram dovolj močen router, da mi bo pokril zadnje sobe ali pa morda varianta bolj \"navaden\" router in pa ojačevalec WiFI signala. Ne vem pa kako se ta druga varianta obnese v praksi?",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "pri novem routerju ne pozabi na prenapetostno zaščito",
+    "author": "Narodnjak",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Glede \"moči\" routerja je težko kaj narediti, ta Asus skoraj gotovo ni med tistimi \"tašvoh\". Ker v Evropi so vsi omejeni z 20dBm (100mW) EIRP. Delno izboljšanje je pri routerjih, ki sicer zmorejo 30dBm EIRP, ampak tudi ti imajo za Evropo omejeno na 20, vendar pače regijo nastaviš na USA, pri nekaterih dobiš 30. Spet je to skupno 30 z vsemi antenami.\nPrevedeno drugače, če imaš 2 anteni, je na anteno potem samo še 27, če so tri, je na eno samo še 25 itd... Spet, tudi če kupiš takega z eno anteno in ta zarees seva na 30dBm, bo naprava v tistih dveh sobah router že \"slišala\", vendar pa bo naprava nazaj oddajala z 20dBm in ker je komunikacija dvosmerna, se ne naprava z routerjem, kljub 30dBm na njegovi anteni, ne bo mogla \"pogovarjati\".\n\nČe ti nikakor ni do vlečenja kablov, potem bi jaz bolj kot z Wifi \"ojačevalcem\" (zniža hitrost vsaj za polovico) raje reševal s power line adapterji, posebej če je napeljava v dobrem stanju in je enofazna elektrika ali pa je elektrika v tistih sobah na isti fazi.\n\nRouter, jaz bi vzel TP-Link archer C7, nanj mislim da se splača namestiti Openwrt. Domet v tistih sobah bi pa probal povečati z TL-WR741ND, ki stane drobiž, ima pa eno anteno in bi z \"USA\" nastavitvijo seval polno moč (ampak na tak način kršiš predpise o radiofuziji). Če ne pa usmerjeno anteno v tisto smer kjer so sobe. Mislim da če je sedaj bil signal na meji, bi potem bil zadosten. Usmerjena antena ti bo seveda kazila \"krasila\" prostor kjer bo router. Taka antena pa ne samo da oddaja močneje v tisto smer, ampak tudi ojačuje signal iz tiste smeri. Torej, dvosmerni \"ojačevalnik\".\nRecept torej Archer C7, dodaš mu še TL-WR741ND + usmerjeno anteno. Pa biti mora na drugem wifi kanalu kot bo C7 na 2,4GHz področju. Da pa bi v tisto sobo pošiljal 5GHz pa pozabi.\nHitrost preko te antene bi dosegla do 30Mbps.\n\nLP",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "klik",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tHitrost preko te antene bi dosegla do 30Mbps.\n\nLP\n\t\t\n\t\tKlikni za razširitev\n\t\n\nbom tebe vprašal, ker vidim da si iz foha....\nkoliko pa drugače dosegajo hitrosti teh naprav. sam imam optiko telekom, njihov nek modem bele barve in enga fritza- ojačevalnik  na drugi strani stanovanja\nin imam hitrost porazno, recimo zdaj kaže 10,53 Mbps download in 20,80 upload? A je to ok?",
+    "author": "zino",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Ne vem, ker ne poveš, koliko je kvaliteta signala, tip signala, pasovna širina signala, koliko motenj, vmesnih členov itd... Ampak načeloma N-tip realno do 30Mbps, če je na 40MHz je x2, torej do 60, če dodaš še eno anteno, spet x2, seveda pa mora tudi sprejemnik imeti dve anteni. Pa spet porti routerja Gbit in ti gre lahko nad 100 Mbps.\nImaš potem na N lako celo tri antene in gre nad 150, ampak mora imeti tudi naprava tri. To je max. So bili sicer neki poizkusi MIMO 4 anten in je šlo 200. Za več je pa enostavno potreben AC standard, ki pa nima tolikšnega dometa",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "hvala za izčrpen odgovor. nimam pa pojma kakšna je kvaliteta signala in nimam pojma nič okoli tega.\nvseeno pa hvala.",
+    "author": "zino",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Malenkost. Lahko poveš, kateri modem je in se bo videlo tip signala na osnovi specifikacij. VENDAR če ta modem do tistega fritza, ki naj bi bil ojačevalnik, pošilja že slab signal, Fritz ga pa še razpolovi, potem je to to. Saj najbrž ne more drugače kot preko ene antene, pa na 20 MHz pasu, max je itak 30 če je signal tam nad -67dBm. Bolje -60dBm. Tako da bi imel do 15Mbits. Ni veliko slabše. Za kaj več bo potreben kabel ali pa vsaj PowerLine.\nLahko probaš še s spremembo na bolj prosti kanal, morda na 40MHz, če ni motečih sosedov, ampak blizu 100 ali 200 ali koliko je že Telekom optika, boš z WiFi težko dosegel.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "kot sem rekel, o tem nimam pojma. telekom je prišo, zmontiral zadevo, meni je bilo pa glavno da je računalnik delal. Kaj pa je PowerLine?\nČe te prav razumem, če je navaden modem je ta hitrost 10-15 download in okoli 20 upload, potem normalna?",
+    "author": "zino",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Hvala Bajkman in WeWatchingYou \nmoram sedaj naštudirati Openwrt, če bi se ga upal lotiti\nin pa Mesh tehnologijo kot alternativno rešitev\nse vrnem z dodatnimi vprašanji, če bosta pri volji za odgovore ",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Openwrt je prehudo zame, sem bolj za plugnplay varianto\npri Meshu če prav razumem rabiš tako ali tako router in postane stvar kar draga\n\nBajkman \nKako lahko ugotovim, če imam vtičnice na isti fazi? In ali je to pogoj za powerline adapterje?\nTL-WR741ND je discontinued. Kateri je najprimernejši eno antenski nadomestek? Predvidevam da bo priključen kot wifi repeator?\nKakšno usmerjeno anteno za notranje prostore si imel v mislih?",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Morda si gledal kak stari Openwrt. Glej 18.06.4 ki pa je plug&play, lep enostaven, pregleden vmesnik. Res je 741 iz mode ampak gotovo dobiš kakega delujočega na bolhi. In ne kot repeater ampak kar poleg Archer C7 daš še tega. Pa morda se ti zdi smešno, a po mojih informacijah ima tisti stari pravokotni največji TX-power ker je imel 2dB švohnejšo anteno, EIRP pa enak.\nDobi se take \"kvadratne\" notranje antene.\nVtičnice na isti fazi pa, ugotovi na varovalkah. Saj pač puli jih ven, dokler ne odklopiš od prostora kjer bo router in sob. Ko boš videl, kateri dve sta in če sta na isti liniji v omarici, sta skoraj gotovo na isti fazi. Ne, ni pogoj, je pa pogoj, da dela z dobro hitrostjo in dovolj stabilno, dobro. Če je faza različna, komunicira samo preko ničelnega vodnika.\nAmpak sedaj ko si malo opisal svoje stanje, želje in potrebe, povej samo še, če bi tja v tiste sobe lahko napeljal mrežni kabel. Na ta način imaš vse rešeno.\nSicer pa ista faza ali ne...\nDA -> Powerline za 40€ par + dodatni router v sobi.\nNE -> Hm, tukaj bi pa jaz raje si sposodil in preveril s testom. Če se ne izkaže, potem pač usmerjeno anteno.\n\nEDIT: obstajajo take panelne antene. Sicer not imaš potem odboje itd. tukaj sicer ni garancije, da bo potem v tisti sobi super ob uporabi usmerjene antene, ker WiFi signal je včasih res misteriozen. Ampak mislim da bi bilo OK",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Ker ne morem biti brez routerja bom za začetek po nasvetu nabavil https://www.mimovrste.com/usmerjevalniki-routerji/tp-link-brezzicni-router-tp-link-archer-c7-ac1750 in še enkrat poskusil priti s kabli do zadnjih sob. \nPoskusil si bom sposoditi https://www.mimovrste.com/ojacevaln...ink-ojacevalec-wifi-signala-re450?tab=reviews da preverim to rešitev.\nČe ne bo šlo po eni ali drugi varianti potem se bom verjetno vrgel v projekt Openwrt + 741 (čeprav mi ni jasno kako ga priključiš) + usmerjena antena ali morda Mesh.\n\nAli lahko kako uporabim moj delujoč Asus RT-N66U brez WAN porta?",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Lahko. Kot router preko lan porta, ali kot AP",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Zapomnite si, želja po \"bitni hitrosti\" ubija domet !!! Bitna hitrost v Datastreamu še ne pomeni hitrejšega DL/UL !!! Razlika med najnižjo in najvišjo je lahko tudi 10x !!! (20dB) zaradi sprejemne občutljivosti pri različnih bitnih hitrostih ...\n\nUporabljajte v OS driverje proizvajalca wifi chipseta, ki ima ponavadi zraven tudi programček (User Client), s katerim se manualno priključujte na AP in ne pustite npr.WIN, da sam \"manevrira\" s povezavo, posebej, če gre signal čez ovire ... v istem prostoru pa lahko pustite na \"Default\" vse ...\n\nSeveda pa je treba v nastavitvah wifi-ruterja znat nastavit tudi nastavitve (owners manual, ki ga noben ne bere), če se gre čez ovire  ... povečevanje moči in razne dodatne antene znajo bit tudi kontraproduktivne (smetenje spektra) ...\n\n ... res pa je, da je zadnje ćase \"roba\" narejena za hitrost in ne domet (za folk, ki pada na cifre, da prodajo) ... samo moje mnenje ...\n-----------------------------\n\"Bluzim na forumu, torej sem !\" (še živ ) ...",
+    "author": "Spajky",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Postavil sem TP-LINK Archer C7 AC1750 V5, zaenkrat zadovoljivo pokriva tudi oddaljeni sobi.\nČe bo kriza bom poskusil z mojim Asus RT-N66U kot repeaterjem, v nasprotnem se še dodatno poigram s katero od predlaganih variant. \n\nHvala vsem za pomoč in nasvete.",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Ojačevalnika wifi signala, jaz ne bi kupoval, ker še z vsemi so bile težave.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Da malo obudim temo. Kateri router mi priporočate za neko normalno ceno. Pomembno mi je, da ima dober domet, ker je hiša kar velika. Nekaj mesecev imam sedaj Xiaomi Mi AX1800 s katerim pa nisem zadovoljen saj je zelo slab signal v malo bolj oddaljenih kotih, na vrtu pa sploh ni signala. Za orientacijo, prej sem imel Linksys WRT 54GL, ki je imel precej boljši signal tako v hiši kot na vrtu.",
+    "author": "Sokol",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "stari signal 2.4 ima veliko večji domet kot pa zdajšnji 5ghz signal. to pač moraš vedeti. če nočeš prakticirati z kakimi powerline podaljški z dodatnim routerjem (v oddaljenih kotičkih), si raje omisli mesh zadevo. za podoben denar dobiš 2 do 3 antene namesto enega super duper routerja, ki NE bo pokril celotne bajte...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\t\n\t\t\thttps://www.amazon.fr/dp/B07GVNH2V8/?smid=AMOTOP2RXDRQV&tag=idealocom-mp-21&linkCode=asn&creative=6742&camp=1638&creativeASIN=B07GVNH2V8&ascsubtag=2022-06-23_0be4a352f3b3890cfabda3f3b8908b43c95fa5134f5632c7361467dbeaf0fb8f&th=1\n\t\t\n\t",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Ubiquiti UniFi je zmaga,res pa je malo dražje.",
+    "author": "GStar",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Iščem en navaden router z malo boljšim dosegom, ne rabim nekaj ekstremnega. Do nekje 100 EUR.",
+    "author": "Sokol",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Za 100€ imaš kar nekaj mesh rešitev. Mesh res zmaga pri pokritosti,  ni primerjave z samo enim wifi routerjem, kjer čudežev ni za pričakovati z zamenjavo za drug router. \n\nTole je kr ok zadeva preverjeno: https://www.mimovrste.com/usmerjeva...sh-usmerjevalnik-ac1200-3-kosi?src=sug&s=mesh",
+    "author": "first1",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Sokol je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tIščem en navaden router z malo boljšim dosegom, ne rabim nekaj ekstremnega. Do nekje 100 EUR.\n\t\t\n\t\tKlikni za razširitev\n\t\nhttps://www.bigbang.si/router-rt-ac1200g-plus-asus-crn-izdelek-34361/   tega mam jaz...super zadevca",
+    "author": "visek_izobrazbe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik visek_izobrazbe je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\thttps://www.bigbang.si/router-rt-ac1200g-plus-asus-crn-izdelek-34361/   tega mam jaz...super zadevca\n\t\t\n\t\tKlikni za razširitev\n\t\nPa to pokriva kaj več kot stanovanje v bloku? Pa tudi nikjer ga nimajo več na zalogi.",
+    "author": "Sokol",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "asus ac86u, je pa treba malo iskat in spremljat,  da ga za okoli stotaka odneseš",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Sokol je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPa to pokriva kaj več kot stanovanje v bloku? Pa tudi nikjer ga nimajo več na zalogi.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nuf preveč  prašaš...jaz ga mam v enem štuku (stanovanje)  pokriva 80 m2, če rabš grem lahk mal po stavbi sprobat če potegne kak štuk višje/nižje",
+    "author": "visek_izobrazbe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik visek_izobrazbe je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tuf preveč  prašaš...jaz ga mam v enem štuku (stanovanje)  pokriva 80 m2, če rabš grem lahk mal po stavbi sprobat če potegne kak štuk višje/nižje\n\t\t\n\t\tKlikni za razširitev\n\t\nPodobnega imam tudi jaz sedaj Xiaomi Mi AX1800 . Dela odlično v srednjem nadstropju, zgoraj in v kleti, ter na vrtu pa ni signala, ne 2,4 ne 5 GHz.",
+    "author": "Sokol",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Jaz tudi mislim, da čez Ubiquiti ga ni. Če se gre za WiFi, stabilnost in zanesljivost, je to to.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tUbiquiti dostopna točka U6-Lite - Krajnik\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tUbiquiti dostopna točka U6-Lite, Dostopna točka Wi-Fi 6 z dvopasovnim 2x2 MIMO v kompaktni izvedbi za nizkoprofilno namestitev.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tkrajnik.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nAli pa Long range:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tUbiquiti dostopna točka velikega dometa U6-LR - Krajnik\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tUbiquiti dostopna točka velikega dometa U6-LR, U6-LR je visoko zmogljiva dostopna točka, ki z napredno tehnologijo WiFi 6 zagotavlja močno ...\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tkrajnik.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nmislim pa, da glede pokritosti ni razlike, povsod po svetu je lahko EIRP MAX 20dBm, razen v USA je EIRP lahko 30dBm",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Za 100€ se vzame mesh. P/P",
+    "author": "Valhalla",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Mesh ima slabosti, predvsem pa ne predstavlja prednosti v vseh pogojih in je nesmiseln, kadar se lahko vse dostopne točke poveže z mrežnim kablom. Tudi kadar se ne da, je tehnično boljša rešitev powerline, drugo vprašanje ob tem je seveda cena.\nAli pa, kadar sta dovolj dve točki, bo na enakih napravah WDS enakovredno opravil nalogo, samo še fast roaming je treba aktivirati. \n\nSkratka, če se gre v več dostopnih točk in jih je možno povezati s kablom, je to najboljši način, vsaka ima isto ime WiFi-ja, ki ga oddaja, vsaka oddaja na drugem kanalu tako v 2,4GHz, kot tudi 5GHz, na njih pa se aktivira 802.11r - fast roaming. V tem primeru je zadovoljstvo z WiFi zagotovljeno",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Zato vzameš ubiquiti AP, ki ima bodisi kabel, bodisi wifi za uplink in dela vse avtomatsko, brez nekega velikega napora konfiguriranja.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik damirj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZato vzameš ubiquiti AP, ki ima bodisi kabel, bodisi wifi za uplink in dela vse avtomatsko, brez nekega velikega napora konfiguriranja.\n\t\t\n\t\tKlikni za razširitev\n\t\nUnifi je res zakon, imam tudi sam doma 3x U6-Lite po bajtih in garaži. Povsod dela super, tudi roaming je neopazen.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Sokol je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPa to pokriva kaj več kot stanovanje v bloku? Pa tudi nikjer ga nimajo več na zalogi.\n\t\t\n\t\tKlikni za razširitev\n\t\nVsi routerji bolj ali majn enako pokrivajo. Ni zaj tak, da draži router močneje oddaja. Ker so moči oddajanja zakonsko omejene. Če je problem pokritost signala se z AP-ji rešuje ali pa nodi v meshu.\nČe gledaš Asusa (to kaj ti je herman predlagal je za svoj dnar super izbira) glej takega, ki podpira AiMesh al kak že rečejo oni temu. Takrat dodaš kompatibilno napravo v sistem in se same nastavijo v mesh.\nJaz mam recimo ac-RT66u in 3x lyra node (na kablu), in mam pokrita 2 štoka v bajti in delavnico. Stvar preprosto izvedljiva za laika tudi če nimaš pojma o teh zadevah.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "No enako zadovoljstvo je tudi z Decoti, pa še free dobiš zraven antivirus.\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kateri router za hišne potrebe?",
+    "content": "Vsem toplo priporočam branje tega članka: https://arstechnica.com/gadgets/202...ntific-guide-to-wi-fi-access-point-placement/\n\nČe povzamem njihova \"zlata\" pravila:\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tRule 1: No more than two rooms and two walls\nRule 2: Too much transmit power is a bug\nRule 3: Use spectrum wisely\nRule 4: Central placement is best\nRule 5: Above head height, please\nRule 6: Cut distances in halves\nRule 7: Route around obstacles\nRule 8: It's all about the backhaul\nRule 9: It's (usually) not about throughput, it's about latency\nRule 10: Your Wi-Fi network is only as fast as its slowest connected device\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

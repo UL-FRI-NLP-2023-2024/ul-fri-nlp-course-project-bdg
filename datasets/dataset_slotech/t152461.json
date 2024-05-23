@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Recimo da imamo LEDice, napetost in tok ki sta največ dovoljena je 2.5V in 20mA če prav vem, in če gremo po formuli U=R×I dobimo upornost ene LEDice 2.5V/0.02A=125 Ohmov in ko pol vežemo zaporedno dve LEDici na 5V(molex) je upornost obeh LEDic skupaj125 Ohm×2=250 Ohm  Kako zdej jest zračunam da vem kakšen upornik je treba vezat da bo v tokokrogu z 2 LEDicami na 5V res 20mA??? Danes sem tko povezu direkt pa sta obe pregoreli, če jih mam pa 6 na 12V pa je kul in ne pregorijo??!? ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "jst ponavad tak nardim d težem 1K trimer pa merm tok in k je 20mA pol pa zmerm trimer kakšno upornost ma take upore kupm. brez računanja. L.P. ",
+    "user": "profii"
+  },
+  {
+    "message": "2.5V je maksimum, ampak takrat je tok že precej večji kot še varnih in dovoljenih 20mA, zato sedaj tvoje ledike svetijo temo... Računaj raje z 1.7 -2V po lediki, aja če bi pogledal  FAQ elekto oddelka, je notri tudi link na kalkulator, ki te zanima.  LP, Azrael ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Upornost diod se močno zmanjša (in tako bo tekel večji tok, zato je treba dati zraven še upor), ko doseže kolensko napetost (v tem primeru 2.5V). Če hočeš eno priklopiti, moraš računat da je padec napetosti na uporu 12V-2.5V = 9.5V Iz tega lahko potem izračunaš, da mora imeti upor upornost 475 (rajš mal več) Ohm ",
+    "user": "TEDY"
+  },
+  {
+    "message": "Čaki, sam neki, če mam 5v in hočem vezat samo 1 ledico-kako vem kolk velik upor dodat, povej mi sam formulo, tko da bom meu univerzalno, tm je en LED calc pa mi vrže neke čudne sheme vn... Pa a nimajo vse ledice enake voltaže? ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "Un = napajalna napetost Ud = napetost diode Ur = padec napetosti na uporu Id = tok diode (ponavadi 20mA)  \"Če imaš napajanje 12V in je napetost diode 3V, potem mora biti padec napetosti na uporu 9V\" Ur = Un - Ud Ur = 5V - 2.5V Ur = 2.5V  \"Za padec napetosti na uporu moraš vedet, kakšen tok bo tekel skozi diodo in iz tega izračunaš  upornost upora\" R = Ur / Id R = 2.5V / 20mA R = 125 Ohm ",
+    "user": "TEDY"
+  },
+  {
+    "message": "Torej lohk eno samo LED vežem na 5 ali pa 12V? ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "Ja, s preduporom! ",
+    "user": "zlabo"
+  },
+  {
+    "message": "Lahko tudi več, samo vedno s preduporom. Bilo že velikokrat napisano, pa naj bo še enkrat:  Delovna napetost za rdeče, rumene in zelene LED je 1.7 - 2V, za plave 3V po primerku. Tok skoznje je 10 (3mm) do 20mA (5mm), oziroma preglej specifikacije ali vprašaj prodajalca.   In še to LEDike niso žarnice na žarilno nitko, vleči neko analogijo z navadnimi žarnicami je nesmiselno, princip delovanja je povsem drugačen.   Žarnica sveti v precej širokem razponu napetosti in ne odpove, LED dioda rabi neko minimalno napetost (npr 1.7V), da sploh začne svetiti in šele takrat začne teči tok skoznjo, pri nižji napetosti tok sploh ne teče. Nasprotno pri 2V pa je LED že preobremenjena, tok skoznjo preseže dovoljene meje. Teh 0.3V, ki sploh niso fiksni, odvisni od temperature, starosti in izvedbe LED, je vse kar se lahko igraš, zato je predupor nujen, da vsaj ta omeji tok na znosno raven  Še slikca.  Če je napetost LED v obkroženem delu, ki predstavlja tistih 0,3V, je vse OK, če je manj ne dela, če je več crkne... ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Aha,no pol je pa kul, jest sm vs čas računal na 2,5V, pa vidm da je bolše da sm zvezu 6 zaporedno na 12V-brez upora, pa vseeno delajo! Sam mi smo neki u šoli računali-sošolc je štromar-jest računalničar in je neki zmutu da če jih je 6 zaporedno na 12v ne rabi upora, zračunal je da pride na vsako 19mA ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "dimniburekova računica je že v osnovi zgrešena, ker je dioda nelinearen element! ",
+    "user": "rfmw"
+  },
+  {
+    "message": "Če bi bila LED linearni element bi se ji tok spreminjal kot kaže zelena črta, v resnici pa njeno karakteristiko prikazuje črna črta...   Res ne vem, zakaj te tako fino šparat pri enem uporu za par tolarjev in tvegati okvaro elementov in morebiten elektro mrk ... ",
+    "user": "Azrael"
+  },
+  {
+    "message": "p.s. Višje gor sem napisal še varnih 0.3V, samo v že v omenjenih najslabših možnih primerih je ta sprememba napetosti, ki jo LED še prenese, lahko manj kot 0.1V. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Ja zdej se mi je zgodila tragedija, 6 LEDic je crknlo, 6 sem jih rešu Ble so zvezane 2× po 6 direkt na 12V brez predupora, sej mi je un LED calc izračunu en Ohm, kar se mi je zdelo nesmiselno....  No uglavnm LEDice so na koncu zelo slabo svetle, in sem jih takoj sklopu-prej niti nism vidu! In so ble kr tople, zdej pa jih dela sam 6, une pa ne svetjo! A je to to da so se pregrele al je kej druzga, na vsaki je blo 2V in 20mA, je morda vse skup preveč? ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "[ CENZURIRANO ], saj smo ti napisali kakšne so priporočljive napetosti za LEDike in da ne priklapljaj LEDik brez predupora.   Ja prekuhal si jih, sedaj pa izvoli prebrati, kar sem napisal in ko boš preštudirat graf, ki sem ti ga narisal, ti bo jasno zakaj si imel mrk. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "ja0 sej sm prebral sam a nej dam upor 1 Ohm? ne ker verjetno niti ne obstaja, LEDice so pa 4000 milikandelske, prodajalc u HTE mi je reku da ja da bo na 2.5V/20mA delalo uredu!! Kaj mu čem jest, pa še je blo 2V in ne 2.5V kot mi je un jape reku! ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "Včasih ni dobro verjeti vse na besedo... Povedali so ti maksimalne vrednosti, ki jih morajo zdržati pri testu, za trajno obratovanje pa to ni.  Šestim ledikam na 12V privošči en 56 Ω upor pa bo.  LP, Azrael ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Ledice so primerne za tokovno krmiljenje. To z napetostjo je pa bolj problematično. Problem je, da nimalo vse ledice iste karekteristike(krivulje) in pri zaporedni vezavi več teh na napetosten vir lahko skuri tisto, ki ima \"najneugodnejšo\" karakteristiko. Predupor pa vse skupaj malo omili. ",
+    "user": "egomez"
+  },
+  {
+    "message": ">>ja0 sej sm prebral sam a nej dam upor 1 Ohm? ne ker verjetno niti ne obstaja, ...  seveda obstaja 1 ohm upor... tudi pod 1 ohm obstajajo. in ne obstajajo zaradi lepsega, verjemi mi ",
+    "user": "gumby"
+  },
+  {
+    "message": "Ej dimni, a si jih mogoče vzporedno vezal? ",
+    "user": "zlabo"
+  },
+  {
+    "message": "Vezal sem 12 LEDic, po 6 zaporedno, in pol vzporedno u bistvu 2×6LED ",
+    "user": "DimmniBurek"
+  },
+  {
+    "message": "DimmniBurek : Raje zveži tako da bo vsaka ledica imela svoj upor, ali pa po dve skupaj in upor. Boš dal verjetno celih 100sit več. Azrael : Zanimam me kako si zračunal tistih 56ohma. ",
+    "user": "Tihi-s"
+  },
+  {
+    "message": "Še glede predupora : Če imaš npr U=12V, obratovalni tok diode 20mA in padec na njej cca2V => ostane za upor 10V, R=U/I=10V/20mA=500ohma, Pupora=I2*R=0,2W =>vzameš 1/4W upor. ",
+    "user": "Tihi-s"
+  },
+  {
+    "message": "tihi: preberi se enktat kar je azrael napisal in si poglej obe slikici... u=i*r ze drzi, problem je v tem, da karakteristika diode (ali njena \"upornost\" ce hoces) ni linearna ",
+    "user": "gumby"
+  },
+  {
+    "message": "Brez skrbi sem pogledal, zato pa vzameš DELOVNI tok diode za izračun. Ki je podan oz ti ga povejo v trgovini, če vprašaš. ",
+    "user": "Tihi-s"
+  }
+]

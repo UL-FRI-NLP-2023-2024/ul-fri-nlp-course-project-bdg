@@ -1,0 +1,92 @@
+[
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "Sem pri Telemachu in imam modem ubee EVW32C. Na njega je priključen tp-link AC 1750 kot access point (povezan je v enega od LAN portov in ne v WAN port). To mi je svetoval Telemachov tehnik, ker se mi je modem vsakodnevno sam od sebe večkrat resetiral.\nDo ubeeja lahko dostopam z IP 192.168.0.1, nikakor pa ne najdem načina oz.IP naslova da bi dostopil do tp-linka (ves wifi promet gre preko tp-linka). Neuspešno sem probaval vse IPje, kateri so priključeni na ubeeja in nimam več ideje kaj naj naredim.\nČe ima kdo kakšno idejo ali nasvet bi bil zelo hvaležen.\n\nedit: povezujem se preko namiznega računalnika, ki je žično povezan na tp-link.",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "poglej na tplink na nalepko, če so kaki ipji napisani, potem nastavi svoj ip za tisto domeno in se poveži. ali probaj 0.1, 1.1 ali 1.254 za login na tplink",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "hvala za odgovore ampak to je že vse parkrat preverjeno ... brez uspeha. in nisem popoln zelenec na tem področju.\nngc2392 nalepke kjer bi kaj pametnega pisalo na tplinku ni. IPje sem pa tudi že parkrat preigral\ndarkstar66 IP od default gatewaya mi odpre ubee modem",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "Ja sej pol sem zbrisal k sem se enkrat prebral tvoj post in ugotovil da sem svetoval narobe.\nA na TP Linku maš Wi-Fi ?  Če ja dej na telefon Network Analyzer pa poskeniraj mrežo.",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "običajno je VEDNO nalepka, kjer je napisano default geslo in up .ime za dostop ter tudi naslov (tplinknet...Ipd). ali, običajno pri starejših napravah, dejanski ip naprave.\nker tukaj je tplink le klient, ki dobi ip od modema. ima pa vseeno svoj drugačen ip naslov, na katerega lahko prideš, če tudi svoji napravi določiš podoben ip  (tplink ima recimo 1.1, ti nastaviš ip svojemu računalniku 1.10). če ne drugače...izklopi kabel iz modema in potem išči ip tplinka (ipconfig ali pa podoben program, ki pokaže vse ipje v mreži)",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "lahko tudi probas v  CMD-ju\n\nFOR /L %i IN (1, 1, 254) DO ping -a -n 1 192.168.0.%i | FIND /i “Reply”>> c:\\ipaddresses.txt\n\nin pol pogledas v fajlu kateri IP ji so zivi pa probas.  Zalaufaj,  pol pa mal traja da nardi.",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "Imas bilj napredne rešitve, ip scan tool ipd.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "darkstar66 ves wifi promet v hiši gre preko tplinka, ubee je samo v funkciji modema (no, še EON box je žično povezan direktno na ubee). Z network analyzerjem mi tudi ni uspelo kaj bistvenega ugotoviti. Sem s CMDjem izpisal žive IP naslove, isto vidim če se logiram v ubee in pogledam \"connected devices\". Nobeden od živih IPjev ne odpira tplinka.\nngc2392 sem nastavil IP na mojem računalniku na 1.10 in z 1.1 se lahko prijavim v tplink.\ndamirj  sem poskusil z Advanced IP Scannerjem. Vidi vse IPje dodeljene  od ubeeja (0.10 do 0.254). Če mu daš skenirat bazen 1.1 vsaj vidi IP tplinka (1.1), še vedno ostane vprašanje kako se logirati na tplink.\nKot  razumem stvar potem tplink sploh ne dobi IPja od ubeeja, v bistvu je tplink samo neke vrste hub in ubee vidi samo naprave, ki so priključene na tplink?\nGlavno je, da se lahko logiram na tplink. In spet sem se nekaj novega naučil!\nTole je bilo hitro rešeno, hvala vsem!",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "odv kak je skonfiguriran. \nČe se povezuješ na tp-link moreš met lan kabl v tp linku in ne ubeeju ali bit na wifiju od tp linka. in more delat 100% z tistim naslovom, ki je na routerju napisan, Če ne dela narediš factory reset in bo delalo. Samo v tem primeru boš mogo na novo nastavlat (če je sploh kaj nastavleno).",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "seveda dobi tplink ip od modema, drugače sploh ne bi delovala mreža. ampak to je dodeljen ip, ne njegov lastni ip. ki ga pa lahko izbereš le, če si v istem ip bazenu. modem vidi vse naprave, saj je tplink samo wifi \"podaljšek\" njegovega omrežja, oziroma le še ena naprava.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "Tplink, ki je v tvojem primeru access point  sploh ni treba da se nahaja v istem subnetu, kot tvoja osnovna mreza prek modema. Access point bo vse kar bo dobil po mrežnem priključku, poslal dalje, ne glede na njegove nastavitve. Njegove nastavitve so pomembne samo zato, da lahko dostopas do tplink management konzole oz gui. Tako kot si ze ugotovil sam, tplink dobis na naslovu 192.168.1.1. ce ne deluje nobeno standardno geslo, ali geslo za tplink : \" SBR-AC1750 configuration menu, the router prompts for a username and password. By default, the username is admin, and the password is password.\" potem žal nimaš kaj dosti naredit, kot resetirat. Ob tej priliki mu seveda nastavi IP naslov dobljen prek dhcp ali pa mu rocno nastavi nek naslov iz tvoje osnovne mreže 192.168.0.0/24",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tseveda dobi tplink ip od modema, drugače sploh ne bi delovala mreža. ampak to je dodeljen ip, ne njegov lastni ip. ki ga pa lahko izbereš le, če si v istem ip bazenu. modem vidi vse naprave, saj je tplink samo wifi \"podaljšek\" njegovega omrežja, oziroma le še ena naprava.\n\t\t\n\t\tKlikni za razširitev\n\t\nTo seveda ne drži. TP-Link ima lahko nastavljen statičen IP, ki je lahko celo v drugem omrežju in bo zadeva še vedno delovala.\n\nNačeloma moraš na TP-Linku nastaviti enako omrežje, mu nastaviti drug IP (ker privzeto bo dobil .1 na koncu kar bo povzročilo kolizijo z modemom) in izklopiti DHCP. Najlažje je to narediti če začasno prekineš povezavo med routerjem in modemom.\n\nPredlagam da TP-Linku dodeliš 192.168.0.2 IP naslov, da bo vse \"na kupu\", čeprav ta del nima ravno veze (dokler se ne prekriva z naslovi, ki jih dodeljuje DHCP - praviloma nad .100, seveda odvisno od naprave).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "TP-Link je imel sicer izklopljen DHCP server, bil pa je v operation mode-u nastavljen kot ruter. Sem  to spremenil v access point in mu dodelil IP naslov 192.168.0.2. Sem pa kasneje preverjal in mu je ubee modem dodelil svoj IP, kar pa me ne moti preveč, razen če bi bilo bolje, da ima statičen IP?\nKar je najbolj važno je, da TP-Link sedaj vidim v 192.168.0.1 omrežju in lahko dostopam  do njega.",
+    "author": "dukimen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTo seveda ne drži. TP-Link ima lahko nastavljen statičen IP, ki je lahko celo v drugem omrežju in bo zadeva še vedno delovala.\n\nNačeloma moraš na TP-Linku nastaviti enako omrežje, mu nastaviti drug IP (ker privzeto bo dobil .1 na koncu kar bo povzročilo kolizijo z modemom) in izklopiti DHCP. Najlažje je to narediti če začasno prekineš povezavo med routerjem in modemom.\n\nPredlagam da TP-Linku dodeliš 192.168.0.2 IP naslov, da bo vse \"na kupu\", čeprav ta del nima ravno veze (dokler se ne prekriva z naslovi, ki jih dodeljuje DHCP - praviloma nad .100, seveda odvisno od naprave).\n\t\t\n\t\tKlikni za razširitev\n\t\nma ja, sem morda čudno napisal...drži, kar si napisal.\ndvomim pa, da mu modem \"privzeto\" da kar .1 naslov-dodeljuje ga namreč iz območja dhcp-ja. in ene naprave imajo kar celoten range od .2 do .254.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako dostopiti do wifi ruterja povezanega kot access point",
+    "content": "Nastavi  modem - da ti bo dinamicne IPje delil od .10 naprej do.254\nNastavi tplink na .2\nSlej al prej bos imel kaksen printer, mrezni disk.. tem bos nastavil .3 do .10\n\nce pustis da ti modem nastavlja ipje nanj prikljucenim “fiksnim” napravam - bos potem stalno nekaj iskal..",
+    "author": "ncnifrej",
+    "author_level": "Guru"
+  }
+]

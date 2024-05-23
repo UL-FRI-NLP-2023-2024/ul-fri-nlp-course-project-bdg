@@ -1,0 +1,344 @@
+[
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Torej - nameravam graditi novo hišo, trenutno sem tik pred fazo izdelave PZI elektro instalacij. Sicer nimam namena v osnovi zadeve načrtovati kot pametni dom, ker bo (vsaj na začetku) denar šel drugam. Zanima pa me, tisti ki ste gradili (pa tudi tisti, ki ste obstoječo gradnjo transformirali), kaj svetujete glede same infrastrukture elektrike / UTP po hiši. Kje ste to najbolj pogrešali oziroma kam bi pripeljali vode, če bi gradili še enkrat?\n\nNačeloma imam zamišljen razvod UTP do vsake sobe, zunaj do določenih točk bi ravno tako pripeljal UTP za nadzorne kamere (PoE), mogoče še do vhodnih vrat za domofon/odklepanje. \n\nZanima me, kako imate kvalitetno rešen WiFi po hiši. Sam sem si zamislil, da bi dal mogoče dva AP-ja na vsako stran hiše (Ubiquiti / Mikrotik). Vidim, da te firme ponujajo centralni sistem ki že ima PoE switch, na katerega vežeš APje samo preko UTPja, pa verjetno se da enako povezati gor tudi PoE kamere? Ali je mogoče bolje ta sistem ločiti? Kaj pa recimo NAS, kako imate to rešeno? \n\nNajlepša hvala za odgovore.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "UTP je v vsaki sobi, vkljucno s kletnimi (je pa klet v celoti bivalna). Obvezno v kurilnico, na vsak vogel hise za zunanjo kamero, eventuelno polnilnico za EV, SE, vhodna vrata... Tega se nabere, v fazi gradnje je zadeva poceni...\n\nWifi... Se ne spoznam najbolje in se ne bom, dokler ne bo treba. Trenutno je pa router v kleti in v pritlicju in se vsi lahko gor priklopimo in gledamo netflix/youtube. Je pa res, da racunalniki, razen mojega laptopa, so vsi na utp. Prav tako printer in vse, kar mi je prej na misel prišlo. V garaži je inverter od SE porabil en kabel, ne lovi pa wifi iz bajte. Tukaj mi je zal, da ni se eden nekje na rezervi. Za polnilnico... To se bom pol hecala. Magari se en routercek, ce me bo šlo drugače.\n\nKar se pa cevi tiče...\nNa streho ene sve ali pa tri (SE, se kaj se najde, mi smo potem za klimo pod stresnoki vlekli, da nismo stemali), ven v vsak kot hise (razne razsbetljave, zunanje kuhinje, crpalke za bazene, dvoriscna vrata ipd), da pol od tam dalje vleces, ne iz hise...",
+    "author": "Jabe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Kar opažam pri večini, da si ne dajo dovolj prostora za komunikacijsko omarico. Potem pa v navadno zidno elektro omaro tiščijo switchu in modeme - to pač ne gre več ko imaš 20+ UTP razvodov po hiši.\n\nJaz imam 60x60x90cm komunikacijsko omarico, montirano pod strop, pod njo pa je še prostor za pralni stroj. Not imam 2 patch panela, Unifi 24-portni PoE switch, Unifi router (UDM-Pro), recorder za kamere, UPS, NAS in modem.\n\nZa WIFI imam v vsaki etaži po en AP (Unifi U6-Lite), enega sem dal še v garažo ker je bil slab signal - tam imam dosti IoT naprav.\n\nImam še 2x UTP do vrat zunaj na ograji zaradi domofona pa v vsak kot hiše za kamero. Pri kamerah si vnaprej malo poglej kako jih boš postavil da ti razni žlebovi ne bodo napoti ipd.\n\nV vsako sobo sta 2 UTP-ja, edino dnevna in kabinet sem dal po 4 komade. Planiraj še tudi v dnevni nekje na zidu za razne domofon monitorje ipd.\n\nPa v tej fazi razmišljaj še o alarmu - tam je namreč drugi kabel. Pa obvezno zunanja sirena nekje visoko na fasadi.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTorej - nameravam graditi novo hišo, trenutno sem tik pred fazo izdelave PZI elektro instalacij. Sicer nimam namena v osnovi zadeve načrtovati kot pametni dom, ker bo (vsaj na začetku) denar šel drugam. Zanima pa me, tisti ki ste gradili (pa tudi tisti, ki ste obstoječo gradnjo transformirali), kaj svetujete glede same infrastrukture elektrike / UTP po hiši. Kje ste to najbolj pogrešali oziroma kam bi pripeljali vode, če bi gradili še enkrat?\n\nNačeloma imam zamišljen razvod UTP do vsake sobe, zunaj do določenih točk bi ravno tako pripeljal UTP za nadzorne kamere (PoE), mogoče še do vhodnih vrat za domofon/odklepanje.\n\nZanima me, kako imate kvalitetno rešen WiFi po hiši. Sam sem si zamislil, da bi dal mogoče dva AP-ja na vsako stran hiše (Ubiquiti / Mikrotik). Vidim, da te firme ponujajo centralni sistem ki že ima PoE switch, na katerega vežeš APje samo preko UTPja, pa verjetno se da enako povezati gor tudi PoE kamere? Ali je mogoče bolje ta sistem ločiti? Kaj pa recimo NAS, kako imate to rešeno?\n\nNajlepša hvala za odgovore.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMoje mnenje. UTP v vsako sobo je danes bedarija, z dobrim mesh wifi sistemom si pokrit za vse potrebe že danes brez da bi rabil kablovje. Gledaš da imaš v vsakem nadstropju UTP nekje v sredini, da pokriješ z wifijem, pa mogoče zunanjost če rabiš. Čez 10 let pa najbrž niti UTP ne bo aktualen ampak optična vlakna, tako da investirat v baker če ne veš zakaj bi rabil je bedarija. Ne škodi pa če imaš v instalaciji vseeno položene proste cevi/kanalčke za TK/elektriko, ker ti bodo nekoč prišli zagotovo prav.\n\nZa kamere je itak tako da rabiš napajanje in je PoE kar ok rešitev, ni pa to nujna stvar, ker wifi pa DC adapter sta danes čisto legit opcija. Torej spet, položen kanalček/cev do mesta kjer bo kamera, potem pa izbereš katera opcija ti je ljubše.\n\nSam sem imel po hiši položenih 300m UTPja (dejansko polno zaseden 16 portni switch), v zadnjih 3h letih ga povsod mečem ven. Kar je iotja je itak na zigbee protokolu, za net imam wifi, dejansko fizično UTP rabim samo še za dva komunikatorja za TV, pa še tam bo najbrž čez par let to obsolete.\n\nPod črto. Če ne veš da boš rabil ne polagaj fizično UTP kablov nikjer, ne šparaj pa z instalacijskimi kanalčki/cevmi in \"vozlišči\" na čimveč mestih.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Utisevalec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMoje mnenje. UTP v vsako sobo je danes bedarija, z dobrim mesh wifi sistemom si pokrit za vse potrebe že danes brez da bi rabil kablovje. Gledaš da imaš v vsakem nadstropju UTP nekje v sredini, da pokriješ z wifijem, pa mogoče zunanjost če rabiš. Čez 10 let pa najbrž niti UTP ne bo aktualen ampak optična vlakna, tako da investirat v baker če ne veš zakaj bi rabil je bedarija. Ne škodi pa če imaš v instalaciji vseeno položene proste cevi/kanalčke za TK/elektriko, ker ti bodo nekoč prišli zagotovo prav.\n\nZa kamere je itak tako da rabiš napajanje in je PoE kar ok rešitev, ni pa to nujna stvar, ker wifi pa DC adapter sta danes čisto legit opcija. Torej spet, položen kanalček/cev do mesta kjer bo kamera, potem pa izbereš katera opcija ti je ljubše.\n\nSam sem imel po hiši položenih 300m UTPja (dejansko polno zaseden 16 portni switch), v zadnjih 3h letih ga povsod mečem ven. Kar je iotja je itak na zigbee protokolu, za net imam wifi, dejansko fizično UTP rabim samo še za dva komunikatorja za TV, pa še tam bo najbrž čez par let to obsolete.\n\nPod črto. Če ne veš da boš rabil ne polagaj fizično UTP kablov nikjer, ne šparaj pa z instalacijskimi kanalčki/cevmi in \"vozlišči\" na čimveč mestih.\n\t\t\n\t\tKlikni za razširitev\n\t\nTu se pa ne strinjam, WIFI ni za resno rabo in pika. Sploh ko boš imel gor 10+ naprav ki bodo po možnosti še streamale video. Za domačo instalacijo je UTP vrh glave za naslednjh par desetletij, saj lahko preko njega furaš tudi 10Gbps. Trenutno pa bo še lep čas 1Gbps dovolj za neko normalno uporabo. Nekatere naprave - tudi Smart TVji, pa so še vedno na 100Mbps, kar je že rahlo žalostno.\n\nPrav tako te vleka kablov v fazi gradnje ne stane toliko, kot kasneje ko moraš to naknadno delati.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Kabel je še vedno zakon. WiFi ga nikoli ne bo nadomestil (ga samo dopolnjuje). Sicer se pa strinjam... položi cevi. UTP samo tam, kjer veš, da ga boš takoj potreboval.",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Jabe je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tWifi... Se ne spoznam najbolje in se ne bom, dokler ne bo treba. Trenutno je pa router v kleti in v pritlicju in se vsi lahko gor priklopimo in gledamo netflix/youtube. Je pa res, da racunalniki, razen mojega laptopa, so vsi na utp. Prav tako printer in vse, kar mi je prej na misel prišlo. V garaži je inverter od SE porabil en kabel, ne lovi pa wifi iz bajte. Tukaj mi je zal, da ni se eden nekje na rezervi. Za polnilnico... To se bom pol hecala. Magari se en routercek, ce me bo šlo drugače.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe rabiš routerja, switch reši vse probleme, ker elektriko imaš itak zraven.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Za wifi pač moraš it rang višje in ne v home sceno z enim APjem za 50 eur. Sam imam recimo 3 ločena wifi omrežja na polprofi opremi, pa nimam težav. Oz. povejte mi kaj je problem wifija, ki ga imate? Hitrost, latenca, zanesljivost .. sam nimam nobene težave s tem pa sem recimo temu nadpovprečni uporabnik ITja.\n\nPa ja kot je bilo že omenjeno, za tole mrežno opremo naj bo v vsakem nadstropju konkretna omarica. Tudi za wifi AP jo recimo rabiš, če daješ pa lan switche pa razne poe injektorje je placa vedno premalo.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKar opažam pri večini, da si ne dajo dovolj prostora za komunikacijsko omarico. Potem pa v navadno zidno elektro omaro tiščijo switchu in modeme - to pač ne gre več ko imaš 20+ UTP razvodov po hiši.\n\n...\n\nPa v tej fazi razmišljaj še o alarmu - tam je namreč drugi kabel. Pa obvezno zunanja sirena nekje visoko na fasadi.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nProstor za komunikacijsko omarico bo tudi pri meni izziv, ampak vseeno bo to ločena omarica, ki bo v tehničnem prostoru. Bo pa verjetno pod stopnicami\n\nHvala ker si me spomnil glede alarma.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTu se pa ne strinjam, WIFI ni za resno rabo in pika. Sploh ko boš imel gor 10+ naprav ki bodo po možnosti še streamale video. Za domačo instalacijo je UTP vrh glave za naslednjh par desetletij, saj lahko preko njega furaš tudi 10Gbps. Trenutno pa bo še lep čas 1Gbps dovolj za neko normalno uporabo. Nekatere naprave - tudi Smart TVji, pa so še vedno na 100Mbps, kar je že rahlo žalostno.\n\nPrav tako te vleka kablov v fazi gradnje ne stane toliko, kot kasneje ko moraš to naknadno delati.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSe popolnoma strinjam. UTP bo povsod, tu ni dileme, sploh glede na strošek, ki je ob gradnji zanemarljiv. Optika definitivno ni potrebna po hiši.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz imam 60x60x90cm komunikacijsko omarico, montirano pod strop, pod njo pa je še prostor za pralni stroj. Not imam 2 patch panela, Unifi 24-portni PoE switch, Unifi router (UDM-Pro), recorder za kamere, UPS, NAS in modem.\n\nZa WIFI imam v vsaki etaži po en AP (Unifi U6-Lite), enega sem dal še v garažo ker je bil slab signal - tam imam dosti IoT naprav.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nŠe to sem te hotel vprašati - kako se ti obnese Unifi oprema - switch, router ter AP-ji? U6-Lite vidim da je posodobljen na U6+ sedaj.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPa v tej fazi razmišljaj še o alarmu - tam je namreč drugi kabel. Pa obvezno zunanja sirena nekje visoko na fasadi.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJa seveda, tudi... \n\n\n\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe rabiš routerja, switch reši vse probleme, ker elektriko imaš itak zraven.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSaj pravim... Tole pojma nimam. Sam da dela. Ko bo prvi problem, bom pa gruntala...\n\n\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Utisevalec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPa ja kot je bilo že omenjeno, za tole mrežno opremo naj bo v vsakem nadstropju konkretna omarica. Tudi za wifi AP jo recimo rabiš, če daješ pa lan switche pa razne poe injektorje je placa vedno premalo.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTole pa ne vem... Jaz imam vse, kar je omaric v kevdru v kurilnici. Pac ne standardne. Je stromar po meri naročil. Necem gledat teh vratc povsod po bajti. Rabis prakticno itak ne.",
+    "author": "Jabe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tŠe to sem te hotel vprašati - kako se ti obnese Unifi oprema - switch, router ter AP-ji? U6-Lite vidim da je posodobljen na U6+ sedaj.\n\t\t\n\t\tKlikni za razširitev\n\t\nJe kar ok, raje sem šel v cenejše AP-je in 3 komade kot pa recimo eno LR varianto, kjer mobilni klienti ne bi veliko imeli od tega, ker imajo prešibek upstream.\n\nTudi okrog hiše vleče lepo, je pa res da je montažna in so stene manj zahtevne plus železa ni nikjer.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Jaz sem nabavil boljsi wifi mesh in mi vsepovsod po hisi dela najmanj 400mbps.\n\nZdaj ce delas na novo, mogoce ni noro potegnit kable. Nikoli neves, kaj prinese prihodnost.",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Utisevalec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZa wifi pač moraš it rang višje in ne v home sceno z enim APjem za 50 eur. Sam imam recimo 3 ločena wifi omrežja na polprofi opremi, pa nimam težav. Oz. povejte mi kaj je problem wifija, ki ga imate? Hitrost, latenca, zanesljivost .. sam nimam nobene težave s tem pa sem recimo temu nadpovprečni uporabnik ITja.\n\nPa ja kot je bilo že omenjeno, za tole mrežno opremo naj bo v vsakem nadstropju konkretna omarica. Tudi za wifi AP jo recimo rabiš, če daješ pa lan switche pa razne poe injektorje je placa vedno premalo.\n\t\t\n\t\tKlikni za razširitev\n\t\nNoben wifi AP te ne reši fizičnih omejitev, torej kolizije in omejen bandwidth. Real-time zadeve bodo pač trpele.\n\nSam imam 3 Unifi AP-je in so gor obešeni samo IoT in mobilne naprave. Vse kar ima konektor je na kablu. Imam pa tudi 3 wifi omrežja in ene 5 VLANov še potem interno na switchu.\n\nZa network je dovolj ena omarica, kamor je vse speljano, sicer rabiš dva switcha pa vmes nek malo jači backbone. Jaz imam med \"routerjem\" in switchem kar 10Gbps DAC link ker je vse v isti omari.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKar opažam pri večini, da si ne dajo dovolj prostora za komunikacijsko omarico. Potem pa v navadno zidno elektro omaro tiščijo switchu in modeme - to pač ne gre več ko imaš 20+ UTP razvodov po hiši.\n\nJaz imam 60x60x90cm komunikacijsko omarico, montirano pod strop, pod njo pa je še prostor za pralni stroj. Not imam 2 patch panela, Unifi 24-portni PoE switch, Unifi router (UDM-Pro), recorder za kamere, UPS, NAS in modem.\n\nZa WIFI imam v vsaki etaži po en AP (Unifi U6-Lite), enega sem dal še v garažo ker je bil slab signal - tam imam dosti IoT naprav.\n\nImam še 2x UTP do vrat zunaj na ograji zaradi domofona pa v vsak kot hiše za kamero. Pri kamerah si vnaprej malo poglej kako jih boš postavil da ti razni žlebovi ne bodo napoti ipd.\n\nV vsako sobo sta 2 UTP-ja, edino dnevna in kabinet sem dal po 4 komade. Planiraj še tudi v dnevni nekje na zidu za razne domofon monitorje ipd.\n\nPa v tej fazi razmišljaj še o alarmu - tam je namreč drugi kabel. Pa obvezno zunanja sirena nekje visoko na fasadi.\n\t\t\n\t\tKlikni za razširitev\n\t\nČe se bo tega držal, nima kaj zgrešit.\nRazen če je hiša zelo armirana ali čudnih oblik, potem naj računa za kakšen Wifi AP več, tudi zunaj nad teraso",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tProstor za komunikacijsko omarico bo tudi pri meni izziv, ampak vseeno bo to ločena omarica, ki bo v tehničnem prostoru. Bo pa verjetno pod stopnicami\n\nHvala ker si me spomnil glede alarma.\n\t\t\n\t\tKlikni za razširitev\n\t\nPazi da ne bo vse skup v premajhnem \"pajzlu\" ker če boš imel not še kak NAS se bo zadeva zelo grela. Meni recimo celoten rack kuri ~130W glede na UPS in se v utility pozna da je daleč najtoplejši prostor.\n\nGlede alarma pa razmisli tudi o lokacijah šifratorjev - meni so recimo svetovali da bi imel še v nadstropju en šifrator da lahko ponoči vklopim alarm za spodnjo etažo. Ampak to je bilo žal na koncu in potem nismo šli več vleči tistega kabla.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tGlede alarma pa razmisli tudi o lokacijah šifratorjev - meni so recimo svetovali da bi imel še v nadstropju en šifrator da lahko ponoči vklopim alarm za spodnjo etažo. Ampak to je bilo žal na koncu in potem nismo šli več vleči tistega kabla.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTole je pri nas rešilo hudo nesrečo... V pritlicju in mansardi svoj sifrator, mansardo se lahko pusti izven alarma, medtem ko P+M sta pod alarmom.\n\npa se garaži je eden. Slednja ima tudi svojo \"slave\" kodo, a lahko se reče. Je locena od hiše in recimo imajo to kodo sosedje ipd, če si želijo kako orodje sposoditi in je lahko pod alarmom ali ne neodvisnonod hise. Master pa deaktivira tudi garazo seveda.",
+    "author": "Jabe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tGlede alarma pa razmisli tudi o lokacijah šifratorjev - meni so recimo svetovali da bi imel še v nadstropju en šifrator da lahko ponoči vklopim alarm za spodnjo etažo. Ampak to je bilo žal na koncu in potem nismo šli več vleči tistega kabla.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nŠifrator/tipkovnico imaš lahko tudi brezžično, v kolikor ti centrala alarma to omogoča seveda. V primeru da je mesto namestitve zgornji štuk pa se mi to sploh ne zdi problematično z vidika kakšnega jamminga itd?\n\nPa tudi sicer, ali imaš vse senzorje žične? Za kamere, PIR senzorje in sireno razumem varnostni vidik, ampak kakšen detektor dima / vode itd pa lahko brezžično gor obesiš? Je pa res da je potem menjava baterij potem hassle, ki ga pri žičnem sistemu nimaš.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tŠifrator/tipkovnico imaš lahko tudi brezžično, v kolikor ti centrala alarma to omogoča seveda. V primeru da je mesto namestitve zgornji štuk pa se mi to sploh ne zdi problematično z vidika kakšnega jamminga itd?\n\nPa tudi sicer, ali imaš vse senzorje žične? Za kamere, PIR senzorje in sireno razumem varnostni vidik, ampak kakšen detektor dima / vode itd pa lahko brezžično gor obesiš? Je pa res da je potem menjava baterij potem hassle, ki ga pri žičnem sistemu nimaš.\n\t\t\n\t\tKlikni za razširitev\n\t\nTa dodatni šifrator bi res lahko imel brezžični, ker centrala to podpira. Isto bi recimo lahko senzorje dodajal v lopo in garažo. Trenutno je sicer vse na kabl.\n\nGlede jamminga šifratorja ni problema, ker nima neke funkcije ko je enkrat vklopljeno. Problem so senzorji ampak ti se tudi pingajo in če izgubi signal se mislim da sproži alarm.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Pri nas so vsi žični, razen dimnega detektorja, ki pac pride v kompletu, rabim ga pa ne. Posebej kupila ga sigurno nisem. Zdaj je nekje v kurilnici, ker recimo, da je tam najverjetneje, da se kaj zgodi v tej smeri, pa da je od oci otrok in da se ga ne isce vsakic ko zacne tezit, da je treba baterijo menjati.\n\nBrezžični je se en senzor na stengah, ker smo pozabili kabel pripeljati k enemu, sicer malo visjemu oknu, ampak dosegljivem, ostali vsi žični.\n\nMenjava baterij je jako nadlezna, utruja durh na durh in ko snames senzor z ležišča, ceprav je alarm izklopljen, piska. Moj si vse pristima vnaprej (lojtra, odvije baterijo in pripravi, pogleda najprej z vseh zornih kotov, kako je to ze gor nataknjeno ipd, ce rabi se kako orodje, po vrstnem redu, da ne izgublja casa z brskanjem), da je cimhitreje fertik, ker se mu tisto dere v ksiht.",
+    "author": "Jabe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "KSZ:\nPrej sem pozabil:\n\nZunanji priključek za agregat (vtičnica in kabel (napajalni in krmilni, če bo kdaj naprednejši agregat) do glavne elektro omarice)",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Matko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKSZ:\nPrej sem pozabil:\n\nZunanji priključek za agregat (vtičnica in kabel (napajalni in krmilni, če bo kdaj naprednejši agregat) do glavne elektro omarice)\n\t\t\n\t\tKlikni za razširitev\n\t\nPa na 1-0-2 stikalo ne pozabit.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Matko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKSZ:\nPrej sem pozabil:\n\nZunanji priključek za agregat (vtičnica in kabel (napajalni in krmilni, če bo kdaj naprednejši agregat) do glavne elektro omarice)\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPa na 1-0-2 stikalo ne pozabit.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nOboje je planirano, ampak to nekako ne smatran pod neke \"pametne\" zadeve, ampak pod klasične elektro instalacije.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKar opažam pri večini, da si ne dajo dovolj prostora za komunikacijsko omarico. Potem pa v navadno zidno elektro omaro tiščijo switchu in modeme - to pač ne gre več ko imaš 20+ UTP razvodov po hiši.\n\nJaz imam 60x60x90cm komunikacijsko omarico, montirano pod strop, pod njo pa je še prostor za pralni stroj. Not imam 2 patch panela, Unifi 24-portni PoE switch, Unifi router (UDM-Pro), recorder za kamere, UPS, NAS in modem.\n\nZa WIFI imam v vsaki etaži po en AP (Unifi U6-Lite), enega sem dal še v garažo ker je bil slab signal - tam imam dosti IoT naprav.\n\nImam še 2x UTP do vrat zunaj na ograji zaradi domofona pa v vsak kot hiše za kamero. Pri kamerah si vnaprej malo poglej kako jih boš postavil da ti razni žlebovi ne bodo napoti ipd.\n\nV vsako sobo sta 2 UTP-ja, edino dnevna in kabinet sem dal po 4 komade. Planiraj še tudi v dnevni nekje na zidu za razne domofon monitorje ipd.\n\nPa v tej fazi razmišljaj še o alarmu - tam je namreč drugi kabel. Pa obvezno zunanja sirena nekje visoko na fasadi.\n\t\t\n\t\tKlikni za razširitev\n\t\n\ncrashednburnt \n\nEdino kar je za dodati, da zraven vsake UTP vtičnice še vsaj eno 220 V schuko - dvomim, da boš imel vse Poe končne stvari - pa tudi če, je vprašanje ali boš preko UTP lahko dovolj za vse naprave.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tŠe to sem te hotel vprašati - kako se ti obnese Unifi oprema - switch, router ter AP-ji? U6-Lite vidim da je posodobljen na U6+ sedaj.\n\t\t\n\t\tKlikni za razširitev\n\t\nUbiquiti u6 je boljši kot prejšnji ac, se pa vidi da ga se razvijajo ker včasih kak obupen firmware dajo ven. Če delaš na novo itak daj zraven še eno cev za UTP, neke realne potrebe pa za vsak prostor ni. Preko wifi mi delajo čisto normalno 4x TV, 4 streaming boxi t2, 2x igralni konzoli, kamere, nekaj wifi senzorjev, ki niso še šli na zigbee, kosilnica, 4 prenosniki, tablice, telefoni, hladilnik, pa mogoče še kaj. Kabel UTP ne vem kdaj sem nazadnje rabil za končne naprave, niti prenosniki nimajo žične mrežne kartice. Aja lažem, en domofon pa dvoriščna vrata grejo na UTP..",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Še mojih 5 centov:\n\n\n centraliziraj vso elektriko - to pomeni vse luči, vsa stikala, vse vtičnice v eno veliko omarico z varovalkami.\n ne veži luči na križna/menjalna stikala ampak v omarici vse skupaj veži na impulzna stikala\n    Prednosti:      \nče boš šel kdaj na smart house samo menjaš z releji in jih enostavno krmiliš s PLC kontrolerjem\nstikala (pravzaprav tipkala) so vedno v isti poziciji (žena bo vesela, ker lepo in fancy izgleda)\nenostavno dodaš dodatno tipko za luč, ki se pozneje v praksi pokaže za boljšo pozicijo \n\n potegni dovolj cevi, veliko rezerve, pretiravaj, to je poceni in pozneje pride zelo prav\nne pretiravaj z vtičnicami (jaz sem), daj jih veliko samo tam, kjer se dejansko rabi (soba kjer je comp, za TVjem...) Tisto 1/2 metra od tal v vsako sobo je brezveze, sesalcev na kabel skoraj noben več ne uporablja. Pomisli kje boš imel novoletne lučke zunaj/noter. Sliši se smešno, dejansko pa večina folka vlači neke podaljške vsako leto, ker ravno v tistem kotu ni vtičnice.\nne vleci FTP kablov na zalogo. Samo poskrbi da imaš dovolj rezerve pri ceveh. Boš potegnil po potrebi.\npredvidi 19\" patch omaro za IT zadeve (modem, router, switch, NAS, videonadzor, server...) \nZa wifi priporočam Ubiquiti Unifi\nokna in zunanja vrata naroči s senzorji odprtosti (reed relay), ki jih lahko potem vežeš na alarmni sistem\ntipkala za rolete/žaluzije naj bodo pri vratih ter v spalnici pri postelji in ne pri oknu, kot nekateri montirajo\nzmanjšaj razvodne doze na minimum, če že morajo biti, naj bo samo ena na prostor (jest nimam nobene)\n...\n",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Jaz bi dodal, da pomisli še na:\n- zunanjo (pametno) osvetlitev\n- napeljave za motorno gnana vrtna vrata\n- napeljave oz. predpriprave za sončno elektrarno in hranilnik (baterije)\n- napeljave oz. predpriprave za polnilnico za električni avto\n- nekatere toplotne črpalke in klime se da priključiti na mrežo (krmiljenje; ali je smiselno, presodi sam)\n- napeljave oz. predpriprave za bazen (ne samo elektrika, temveč tudi voda in odtok)\n- pomisli, če boš kdaj imel pametni vrt (pametno zalivanje, senčenje... - zopet pomisli tudi na vodo)\n- če boš imel zunaj tende, se lahko ob možnem vetru same zapirajo (senzorji, motorji)\n- nekatere kamine se da upravljati prek telefona\n- senzorji dima, vode, CO se lahko tudi povezujejo med seboj\n\n- in pa še (nima veze z elektro), ampak - nujno voda in odtok zunaj (imam znanca, ki ni naredil pipe zunaj in zdaj kolne, ko toči vodo v otroki bazenček)",
+    "author": "b_t",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Jabe je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tUTP je v vsaki sobi, vkljucno s kletnimi (je pa klet v celoti bivalna). Obvezno v kurilnico, na vsak vogel hise za zunanjo kamero, eventuelno polnilnico za EV, SE, vhodna vrata... Tega se nabere, v fazi gradnje je zadeva poceni...\n\nWifi... Se ne spoznam najbolje in se ne bom, dokler ne bo treba. Trenutno je pa router v kleti in v pritlicju in se vsi lahko gor priklopimo in gledamo netflix/youtube. Je pa res, da racunalniki, razen mojega laptopa, so vsi na utp. Prav tako printer in vse, kar mi je prej na misel prišlo. V garaži je inverter od SE porabil en kabel, ne lovi pa wifi iz bajte. Tukaj mi je zal, da ni se eden nekje na rezervi. Za polnilnico... To se bom pol hecala. Magari se en routercek, ce me bo šlo drugače.\n\nKar se pa cevi tiče...\nNa streho ene sve ali pa tri (SE, se kaj se najde, mi smo potem za klimo pod stresnoki vlekli, da nismo stemali), ven v vsak kot hise (razne razsbetljave, zunanje kuhinje, crpalke za bazene, dvoriscna vrata ipd), da pol od tam dalje vleces, ne iz hise...\n\t\t\n\t\tKlikni za razširitev\n\t\nPoleg vsega tega pa še kar tako en zvezda sistem po celi hiši, center pa TK omara.",
+    "author": "kalbo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Mirko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tŠe mojih 5 centov:\n\n\ncentraliziraj vso elektriko - to pomeni vse luči, vsa stikala, vse vtičnice v eno veliko omarico z varovalkami.\nne veži luči na križna/menjalna stikala ampak v omarici vse skupaj veži na impulzna stikala\nPrednosti:  \nče boš šel kdaj na smart house samo menjaš z releji in jih enostavno krmiliš s PLC kontrolerjem\nstikala (pravzaprav tipkala) so vedno v isti poziciji (žena bo vesela, ker lepo in fancy izgleda)\nenostavno dodaš dodatno tipko za luč, ki se pozneje v praksi pokaže za boljšo pozicijo\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\nhvala za toke. Glih delam elektriko in še nimam stikal. Jutri gre not nova omarica in ta impulzna stikala. To ce prav razumem vežeš poljubno število stikal in ko mu nulo pa fazo brikaš on vklopi ali izklopi, odv v kerem stanju je?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Fadil",
+    "author_level": "pimpL"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\thvala za toke. Glih delam elektriko in še nimam stikal. Jutri gre not nova omarica in ta impulzna stikala. To ce prav razumem vežeš poljubno število stikal in ko mu nulo pa fazo brikaš on vklopi ali izklopi, odv v kerem stanju je?\n\t\t\n\t\tKlikni za razširitev\n\t\nTako je. Jest bi raje vzel 24V kot 230V impulzna stikala in potem do tipkal potegnil FTP kable. Z enim FTP kablom (8 žil) lahko potem vklapaš do 7 luči.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Aja, pa vzemi varianto z 2 kontaktoma, če boš rabil vzporedno vklapat še lučko v stikalu npr. WC, zunaj...",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Mah mam narejeno že vse za križna in menjalna, samo še nimam gipsa po nekaterih stenah in stropu, tak da še lahko spremenim do neke mere, ne pa tolko, da grem na 24v.\nGlavno omarico mam fertik in polno, tak da 230V mi še gre skozi, za ostalo bi bilo preveč dela v tistem delu napeljave, ki je že sfiniširana in v stenah, ki so že zaprte.\n\nJe opcija, da šivam tipke skupaj vzporedno za tole? Recimo, da uporabim to kaj mam za menjalno in križno pripravljeno.\n\nČe bo bo samo osnova, tipka. Nimam volje za kaj več spreminjat obstoječih zadev.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJe opcija, da šivam tipke skupaj vzporedno za tole? Recimo, da uporabim to kaj mam za menjalno in križno pripravljeno.\n\nČe bo bo samo osnova, tipka. Nimam volje za kaj več spreminjat obstoječih zadev.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSeveda lahko vzporedno vežeš, saj na to impulzno stikalo preko tipke samo fazo pošiljaš. Ničelni vodnik je združen v omarici in vezan npr. na A1 kontakte.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Zelo zanimivo branje. Tri banalne zadeve:\n- luč nad npr jedilno mizo naj bo točno nad njo. Ne da kabel visi tam nekje pod stropom in potem ne veš, kako bi kamufliral odvečen kabel.\n- razmisliti o pozicijah klim ter pripraviti preboj ter odtok.\n- Elektro omarica naj bo dovolj velika ter skrita v nekem kotu. Ne pa da je obeh nadstropjih na  najbolj \"prestižnem\" in vidnem mestu.\n\nMogoče še to. Ne potrebuješ vtičnic na hodnikih in za vsakim vogalom. Saj je kabel sesalca dovolj dolg.",
+    "author": "ptice",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Za klimo je bolje razmislit o centralni v novogradnji. jaz bom spustil strop na hodniku in bojo letele cevi do prostorov.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Mirko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTako je. Jest bi raje vzel 24V kot 230V impulzna stikala in potem do tipkal potegnil FTP kable. Z enim FTP kablom (8 žil) lahko potem vklapaš do 7 luči.\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala za vse nasvete. Zakaj pa 24V, da imaš potem enostavnejše krmiljenje? Je pa za razmisliti, koliko to podraži zadeve.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Aja, pa še to ... je morda kdo za kopalnice pretiraval z varnostjo in vgradil ločilne transformatorje?",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Ja, 24V zaradi morebitnega krmiljenja v prihodnosti pa zaradi ne-nevarnih nizkih napetosti. Do tipkal lahko vlečeš FTP kabel, ki je tanek in poceni ter z enim kablom lahko pokriješ do 7 tipk (7x 24+ in 1x minus). En dober meanwell-ov 120w 24V napajalnik pride cca. 50€.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Hmm, tole s FTPjem mi ni najbolj jasno (cenovno). Že res, da lahko krmiliš 7 zadev, ampak to pomeni 7 zadev iz enega mesta, če ne lupiš kabla vmes in delaš odcepov? Ne razumem kako je cenovno ugodno, da bi do vsakega stikala vlekel FTP, pa tudi tanjši ravno ni od posameznih par žilnih kablov? Hvala za odgovor.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Utp je malenkost tanjši in dosti mehkejši od 3x1.5. Tudi dosti lažje ga cukneš v cev. \nVerjemi dosti lažje vlečeš to kot trdega 3x1.5. In še v stikalih imaš manjšo gužvo. \n\nJaz sem za hodnike prepozen, jedilnica kuhna dnevna ( skupni odprt prostor) pa gre vse na to.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Se strinjam, ampak 3x1.5 je močnosten del do porabnikov, za signalni del do tipkal je to konkreten overkill. Že 0.75 je vrh glave za to.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tHmm, tole s FTPjem mi ni najbolj jasno (cenovno). Že res, da lahko krmiliš 7 zadev, ampak to pomeni 7 zadev iz enega mesta, če ne lupiš kabla vmes in delaš odcepov? Ne razumem kako je cenovno ugodno, da bi do vsakega stikala vlekel FTP, pa tudi tanjši ravno ni od posameznih par žilnih kablov? Hvala za odgovor.\n\t\t\n\t\tKlikni za razširitev\n\t\nAja sorry, sem imel v glavi centraliziran sistem kot ga imam sam. Ja po en FTP do vsake modularne doze, menda ne boš dajal okroglih doz, saj je redko kje samo eno stikalo. Sam sem sicer takrat vlekel 8x 0,75mm2 kabel pa je full debel. Če bi delal danes, bi vlekel FTP.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Ja, centraliziran sistem. V primeru, da povlečeš FTP do modularne doze ... kako spajaš naprej in kakšen kabel vlečeš do posameznih stikal?",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Verjetno misliš do razdelilne doze od tam pa do modularnih doz, kjer so montirana tipkala? V tem primeru bi potegnil FTP kabel ali dva do razdelilne doze, potem pa FTPje do vsake modularne doze s tipkali. Saj je vseeno, če je uporabljena samo ena parica od FTPja. Spajam pa ponavadi signalne kable tako, da jih olupim, zavijem, zalotam in dam čez božirko.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Pardon, do razdelilnih doz, seveda. Glede spajanja pa - tako bi jaz naredil po \"avtoelektričarsko\", pa sem mislil, da ustrelim preveč mimo. Good to know. ",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Mirko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJa, 24V zaradi morebitnega krmiljenja v prihodnosti pa zaradi ne-nevarnih nizkih napetosti. Do tipkal lahko vlečeš FTP kabel, ki je tanek in poceni ter z enim kablom lahko pokriješ do 7 tipk (7x 24+ in 1x minus). En dober meanwell-ov 120w 24V napajalnik pride cca. 50€.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nObujam malo temo, ampak kakšne releje pa imaš (ni mi jasno zakaj bi do tipkal vlekel minus recimo)? Sam razmišljam da bi dal kar bistabilne releje, v tem primeru povlečeš (stalen) +24V do tipkal, ostalih 7 žil porabiš da spraviš teh +24V nazaj do relejev.\n\nHkrati me zanima, s čim ti potem prožiš te releje, glede na to, da so 24V? Hvala.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "To je mislil 24v impulzna stikala, vsaj tak si jaz predstavljam. Da pač ne leti 230v do tipk ampak 24v.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tni mi jasno zakaj bi do tipkal vlekel minus recimo)?\n\t\t\n\t\tKlikni za razširitev\n\t\nLedice na tipkah",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Matko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tLedice na tipkah\n\t\t\n\t\tKlikni za razširitev\n\t\nAja, to pa je možno, ja. Samo potem pa ne moreš z enim UTPjem krmilit 7 stikal, ampak 6?",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crashednburnt je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tObujam malo temo, ampak kakšne releje pa imaš (ni mi jasno zakaj bi do tipkal vlekel minus recimo)? Sam razmišljam da bi dal kar bistabilne releje, v tem primeru povlečeš (stalen) +24V do tipkal, ostalih 7 žil porabiš da spraviš teh +24V nazaj do relejev.\n\nHkrati me zanima, s čim ti potem prožiš te releje, glede na to, da so 24V? Hvala.\n\t\t\n\t\tKlikni za razširitev\n\t\nMišljeno je bilo za proženje impulznih stikal. Za proženje on/off potrebuješ 24VDC. Pri meni sicer gredo signali na PLC, kateri potem proži releje.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Razumem, sej to je v bistvu to, bistabilni rele.  A1 in A2 predstavljata tuljavo. Torej, recimo, da imaš vse A1 na 0V ... posledično imaš (preko tipkal) do A2 pripeljanih +24V.  Ampak če imaš še ledice (za kar potrebuješ pri tipkalih tudi 0V, sicer ne), to pomeni, da je pri 8-žilnem kablu na voljo 6 žil za krmiljenje (eno si porabil za stalnih +24V, eno pa za stalnih 0V).",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Aha, pri tebi dobi PLC signal s tipkala in potem on proži rele. Jaz bi ubral nekoliko drugačen pristop, tipkala bi prožila neposredno releje, bi pa vzel taka, ki imajo poleg navadnega vhoda še vhoda S (set) ter R (reset), te bi nato prožil z elektroniko (po potrebi). Prednost vidim v tem, da je to v osnovi neumna instalacija in ob odpovedi elektronike deluje vse kot običajno. Slabost je da potrebujem po dva krmilna signala (ločen vklop in izklop).",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Ja, tisto z minusom sem nekaj zatupil  minus rabiš samo, če imaš ledico v tipki. Sem v štartu tudi sam imel idejo z impulznimi stikali in potem branje stanja ravno zaradi bulletproof pa so mi pol odsvetovali, da se zadeva preveč zakomplicira.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "Če hočeš krmilit še ledice v tipkah, potem rabiš povratni signal za ledico, se pravi na en utp/ftp kabel so to tri tipke in 3 ledice, razen pri ftp lahko uporabiš za maso oklop in so to potem 4 tipke in 4 ledice. Če je to premalo, potem pač vzameš enostavno signalne kable, od 2x0.14mm2 do 25x0.14mm2 (awg26) so enostavo dobavljivi, če želiš še manj pa 0.08mm2 (awg28), ampak so težje dobavljivi.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Gradnja nove hiše - na kaj biti pozoren?",
+    "content": "No, jaz sem mislil samo za osvetlitev tipke, ne za krmiljenje, tako da bi to vzelo samo 1 žico od 8. Potem bi pa imel centralno v omarici recimo timer, ki bi osvetlitev vključil ponoči al kaj takega. Kakorkoli, jaz tega ne rabim.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  }
+]

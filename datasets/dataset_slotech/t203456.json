@@ -1,0 +1,54 @@
+[
+  {
+    "message": "Kupil sem nov SATA disk in me zanima, kako morajo biti nasatavljene nastavitve v biosu, da mi bo bootalo sistem s tega SATA diska?  Hvala za odgovore. ",
+    "user": "jELKO"
+  },
+  {
+    "message": "V biosu greš pod\"advanced bios features\", nato izbereš \"hard disk boot priority\" in nastaviš sata na prvo mesto ter ata na drugo, premikaš pa s tipkama page up in page down. ",
+    "user": "Jakka"
+  },
+  {
+    "message": "Sem poskusu že z vsemi varisantami, ma mi diska še vedno ne zazna. Ko inštaliram winse-prva faza: formatiranje,kopiranje, mi disk zazna, potem pa za drugo fazo: inštalacija,registracija... , mi diska ne zazna in mi začne ponovno bootat iz CD-ja. Če zamenjam nastavitve v biosu, da mi za drugo fazo boota iz SATA napiše, da je DISK FAILURE. Mogoče so problemi zaradi BIOS-a, ker ni originalen? ",
+    "user": "jELKO"
+  },
+  {
+    "message": "Takrat, ko si napisal, da ti ponovno boota s cd-ja pred bootanjem odstrani cd in ga nato, ko ga bo inštalacija zahtrevala spet vstavi. Mora ti bootat z diska.  V biosu si naštimaš, da najprej boota s cd-roma, in nato z diska, tako pustiš in nič več ne spreminjaš.  Povej še, če imaš v računalniku še kakšen disk, poleg tega sata. ",
+    "user": "Jakka"
+  },
+  {
+    "message": "Sem proval tudi to varianto, da prvo buta iz cd-ja nato iz diska, pa napiše: DISK BOOT FAILURE. Jaz v svojih nastavitvah nimam na izbiro prov SATA ampak imam Serial ATA. Trenutno imam še stari disk noter, ma pri inštalaciji in bootanju sem ga odklopi iz el. napajanja iz IDE pa ne. Kaj je mogoče potrebno kak IDE1 ali IDE2 Controller izklopit v biosu, če priklopim gor SATA disk?   Hundey: Katri bios ti uporabljaš?  Jaz imam Phoenix-Award BIOS v6.00PG ",
+    "user": "jELKO"
+  },
+  {
+    "message": "Nobenega ide kontrolerja ni potrebno izklopit, mora delat, če imaš v računalniku sata in ata disk. V biosu MORA biti nastavljeno pod first boot device cd-rom, in pod second boot device hard disk. Tega ne spreminjat. Če pa misliš imeti v računalniku poleg sata tudi ata disk in na sata disku sistem, pa nastavi še tisto, kar sem ti napisal v mojem prvem postu. Sata je serial ata  Ti bom napisal postopek, kako mora delat. - odklopiš ata disk, da je priklopljen samo sata disk in noben drug, prižgeš comp, daš not winxp boot cd - ko se začne bootat s cd-ja, začneš pritiskat f6 ko to želi in vstaviš disketo s sata driverji - naložiš primerne driverje, nato urediš particije na disku ter jih formatiraš in poženeš inštalacijo - ko reboota vzameš ven cd, da si ne bo slučajno zaželel bootat z njega - sistem mora bootat z sata diska, vstaviš winxp cd, ko ga rabi, in nadaljuješ z inštalacijo - ko je sistem inštaliran in vse deluje, priklopiš še ata disk, mogoče bo potrebno tudi spremeniti nastavitve v biosu, kot sem napisal v 1. postu  Če še vedno ne bo delalo, v biosu poženi \"load optimized defaults\" in poskusi znova.  Nimam nf7-s ampak an7 z zadnjim biosom od Abit-a. ",
+    "user": "Jakka"
+  },
+  {
+    "message": "Najprej me zanima,ta SATA disk ali ima operacijski sitem instaliran na njem ali ne.Če ga nima je treba windowse instalirat na ta disk.Če pa je potem mora biti v biosu boot na SERIAL ATA in na plati mora biti priklopljen na SATA1 ker z SATA2 ne boota.Poglej v navodila (na moji plati je levi prilkuček SATA1)  AHA sedaj sem še prebral da hočeš instalirati winse na ta disk,ja tle je pa zafrkancija.Drugače je priložena disketa z driverji za SATA SIL3112 neki zazga.In ko se začenja istalacija winsov te na dnu ekrana sprašuje če hočeš instalirati kake dodatne driverje da pritisneš F6.Pritisneš in te po vprašalo podisketi ki jo daš not in izbereš driver.Sam vem da pr nekaterih verzijah winsow tut to ne dela tko kot treba.Zato boš moral najbž narediti \"slipstream\" teh driverjev že v instalacijo winsov na CD.Poglej na googlu slipstreaming sil3112 driver windows, al neki tazga. ",
+    "user": "brane01"
+  },
+  {
+    "message": "@Hundey  - odklopiš ata disk, da je priklopljen samo sata disk in noben drug, prižgeš comp, daš not winxp boot cd - ko se začne bootat s cd-ja, začneš pritiskat f6 ko to želi in vstaviš disketo s sata driverji - naložiš primerne driverje, nato urediš particije na disku ter jih formatiraš in poženeš inštalacijo  Do tukaj je že prej delalo vse normalno, problem pride tukaj:   - ko reboota vzameš ven cd, da si ne bo slučajno zaželel bootat z njega - sistem mora bootat z sata diska, vstaviš winxp cd, ko ga rabi, in nadaljuješ z inštalacijo  No tu pa mi diska ne zazna več, napiše: DISK BOOT FAILURE  V BIOSU mam nastavitve nastavljene kot si sam napisal in stvar ne zazna diska. Tudi v tistem seznamu, ki ga pokaže na začetku, IDE1, IDE2... so IDE1(master,slave) prazna, ker sem odklopil stari disk, IDE2(master slave) sta CD-ROM in CD-RW. O sata disku pa nikjer nič ne piše.  @brane01  Winse je sigurno gor inštaliralo, ker pri primarni inštalaciji mi disk zazna-to ni prvi disk SATA ki ga inptaliram, ma je pa prvi na tej plati. Jaz mam na plati napisno SATA1 na desni strani. Bom proval na levi SATA2. ",
+    "user": "jELKO"
+  },
+  {
+    "message": "Sorry ja SATA1 je na desni,mal sem faliu.Veš kaj je še lahko,da driver za SATA kontroler ni v resnici kopirana na disk,to se je tut menzodil na prejšnih instalacijah. Sam zdej je taka zadeva.Važno je da imaš instalacijo winsov na starem IDE disku. Zaštarti z tega IDE diska winse in imej vkloplen tudi sata disk.ALi vidiš oba diska v windowsih? Če jih skopiraj fajle z diskete ,če manjkajo v windows instalaciji na ta mesta na SATA disku: windows/system32/drivers/SI3112r.sys in SilSupp.cpl in SiWinAcc.sys ,če jih ni na disketi pač od teh kar imaš skopiraj tu. in potem sprobaj bootat z SATA diska.  Ampak mislim da je definitivno to da ne skopira potrebnih fajov (driverjev) na na disk in zato disk ko ga resetiraš za nadaljevanja instalacije, ne najde.MIslim da boš moral naerditi slipstream Tko mam jaz in dela BP. ",
+    "user": "brane01"
+  },
+  {
+    "message": "Evo našel težavo. Ena nastavitev v biosu.  V biosu pojdi pod \"integrated peripherals\", nato \"onboard pci device\". Obe nastavitve moraš imeti na enabled, da dela. Ti imaš pa drugo \"sata raid rom\" na disabled, zato dobiš tisti error. ",
+    "user": "Jakka"
+  },
+  {
+    "message": "@Hundey: Sem tudi sam prišel do iste ugotovitve, da mora bit tisto na enable. Zdaj dela vse OK. Hvala obema za čas in trud.  Lp ",
+    "user": "jELKO"
+  },
+  {
+    "message": "Samo da dela.   Pa zanimivo je, da je tisto po defaultu na enable. ",
+    "user": "Jakka"
+  },
+  {
+    "message": "Tisto sem jaz enkrat spremenu, ker sem mislu, da se nuca samo za RAID način. Zdaj vem!   Se enkrat hvala.  LP ",
+    "user": "jELKO"
+  }
+]

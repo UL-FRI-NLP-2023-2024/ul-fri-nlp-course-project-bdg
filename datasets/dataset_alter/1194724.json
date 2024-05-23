@@ -1,0 +1,332 @@
+[
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Pozdravljeni!\nImam eno težavo ker ne vem povezat dveh brezžičnih routerjev katera sta različne firme. Prvi je tp-link TL-WR741ND kateri je povezan z internetom, drugi pa je Linksys WRT54GL kateri bi bil brezžično povezan z tp-linkom in z ip camero. Za odgovore in informacije se vam že v naprej zahvaljujem.\nLep pozdrav.",
+    "author": "alinko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Poglej če oba recimo podpirata DD-WRT, s tem bi znal rešiti kakšne softwarske omejitve, ker bi oba tekla na enakem firmwaru",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Kolikor sem na hitro pogledal, oba podpirata DD-WRT, tako da to ne bi smelo biti problem.\nZdaj je samo še vprašanje, na kak način bi on to rad uporabil.\n\n@prvi:\nIP kamera je povezana žično ali brezžično? Bo na linksysu sploh kak wireless odjemalec?\nČe bodo na linksysu samo žični odjemalci, potem lahko razmisliš tudi o \"client mode\".\nV nasprotnem primeru pa je verjetno najboljše narediti WDS ali repeater.\n\nPrimerjavo (in tutoriale) najdeš tukaj: http://www.dd-wrt.com/wiki/index.php/Repeating_Mode_Comparisons",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "IP kamera bo povezana samo brezžično ker od tp-linka pa do ip camere ne dobim signala in bi med njiju dal linksysa",
+    "author": "alinko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Najlažja rešitev je verjetno repetitor. Tam moraš namreč samo na linksysa naložiti DD-WRT. Mogoče ti zna delati težave, ker kamera ne bo v istem omrežju kot TP-link router, ampak to tudi rešiti.\n\nLahko pa pogledaš tudi za WDS. Tam delujeta oba routerja kot eno veliko povezano omrežje, tako da če boš s kakšnimi prenosnimi napravami hodil naokrog, bodo same preklopile na router z močnejšim signalom.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Hvala za pomoč. Kako pa nastavim ta WDS ker sem se nekaj poigral in mi ni uspelo.",
+    "author": "alinko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "V obeh napravah:\n - izbereš način WDS\n - vpišeš MAC naslov nasprotnega ruterja v za to predvideno polje (prvo, ker jih je ponavadi več)\n\nPoskrbi, da ima vsak ruter svoj lasten, drugačen IP naslov.\nPa da laufa samo en od njih DHCP server (torej ga na drugem izklopi).",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Uspelo mi je povezati oba routerja vendar ne morem spremljati ip kamere preko teh dveh routerjev pa me zanima če je še kakšna druga nastavitev da tisti vmesni router pusti oziroma pojača signal do prvega kateri je povezan na net. Hvala.",
+    "author": "alinko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "ne to pa ne gre,hitrost se deli,ker kljub temu da imas 2 routerja,je to dejansko samo eden in pol ne moreš imeti 2x hitrosti,kolikor sem jaz testiral,sem kljub temu imel max hitrost,kjub temu da je kazalo samo 50%.Lahko pa uporabiš na prenosniku usb wireless apadter in bo net tudi delal hitreje,kot če loviš signal preko vgrajenega wirelessa.\nZaščita in geslo mora biti v obeh routerjih tudi enako nastavljeno,pa multicat moras še omogočiti,priporočam WPA zaščito,ker je mene včasih WPA2 mal zafrkavalo.\n\nlp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik alinko pravi:\n Uspelo mi je povezati oba routerja vendar ne morem spremljati ip kamere preko teh dveh routerjev pa me zanima če je še kakšna druga nastavitev da tisti vmesni router pusti oziroma pojača signal do prvega kateri je povezan na net. Hvala.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTole je bolj počasen ping pong \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n, ki bo težko pripeljal do rešitve...\n\n1. Če delaš WDS, potem začni takole:\n\n- originalni router pusti na IP naslovu, kjer je (ponavadi je 192.168.1.1)\n- drugi router daj na naslov v istem omrežju, po možnosti izven dosega DHCPja. Če imaš dd-wrt, potem daš nekje spodaj, npr. 192.168.1.11\n- na drugem routerju izklopi DHCP\n- na obeh routerjih izklopi wireless zaščito, izberi isti kanal, isti SSID in isti način\n- v prvi router v Wireless/WDS v prvi vrstici izberi LAN,  vpiši MAC naslov wireless dela drugega routerja\n- v drugi router v Wireless/WDS v prvi vrstici izberi LAN, vpiši MAC naslov wireless dela prvega routerja (vidiš v status-u)\n\ndelaš pa enostavno tako, da imaš PC ožičen s prvim routerjem, drugega pa s kablom povezanega na prvega (recimo luknja 4 na 4) in ko se ti zdi, da že lahko dela brezžično, prekineš povezavo in \"popingaš\" drugi router. Če že vse dela, ugasneš obe škatli in prižgeš nazaj. Če po dobri minuti ping spet dela, si na dobri poti in se lahko začneš igrati z nastavitvami WEP, WPA ali WPA2 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKo ti začne delati, se vsa mreža obnaša kot ena in morajo vse naprave biti vidne enako, kot da so fizično priključene na prvi router. Zato moraš izključiti DHCP na drugem, ker vse nadzoruje prvi. V tem primeru daš kamero na npr. 192.168.1.49 ali jo pustiš na avtomatiki in poskeniraš naslov, ki ga dobi.\n\n2. Če se greš pa Wireless repeater mode, potem mora pa drugi router imeti svoje omrežje in ima seveda lahko tudi svoj DHCP. Ampak v tem primeru moraš pa narediti še port forwarding na IP kamero, ker je po teh shemi za svojim požarnim zidom. \n\nDa bo bolj razumljivo: v tem načinu se drugi router obnaša kot škatlica, ki se priklaplja na eno brezžično omrežje (ki je na 192.168.1.xx), svojo lokalno mrežo pa daje na drugem naslovu in drugem wireless-u, npr. 192.168.2.xx. Zato mora tudi drugi router imeti IP naslov npr. 192.168.2.1, sam pa se kot DHCP klient priklopi na prvi router. Če torej pustiš vse tako kot je, bo drugi router na prvem routerju viden verjetno nekje blizu 192.168.1.110 (se mi zdi, da dd-wrt po defaultu meče IP tukaj okoli), vsi PCji, ki jih boš dal pa na drugi router žično ali brezžično, bodo pa na npr. 192.168.2.101, 102, ... Kar pomeni, da moraš na drugem routerju odpreti port 80, 554 in še kaj, da boš videl kamero iz prvega.\nSe pravi v tem primeru daš kamero na 192.168.2.49 in odpreš porte na ta IP, iz ostale mreže je pa potem vidna na IP naslovu routerja, torej 192.168.1.113 v mojem primeru.\n\nPa spet začni brez zaščit in šele ko stvari delajo, začni zapirati nazaj...\n\n\nZa eno IP kamero bi te hitrosti vsekakor morale zadoščati...\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Dva različna subneta pri repeater načinu se lahko razrešita tudi brez port forwardinga.\n\nRouter 1:\nWAN IP: od internetnega ponudnika\nLAN IP: 192.168.1.1 (omrežje 192.168.1.0/24)\nDHCP: vklopljen\nNAT: vklopljen\nStatic route: 192.168.2.0/24 gre na 192.168.1.2\n\nRouter 2:\nWAN IP: 192.168.1.2\nLAN IP: 192.168.2.1 (omrežje 192.168.2.0/24)\nDHCP: vklopljen\nNAT: izklopljen\nStatic router: ni potreben\n\nPomembno je, da se nastavi static route na prvem routerju in da se izklopi NAT na drugem.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "kam pa bi vpisal čitalec prstnih odtisov(montiran pred vstopom v pisarno) v router,mu določiš tudisam IP,kaj pa porti,je kdo to delal ali ve kako narediti\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik dejvi pravi:\n kam pa bi vpisal čitalec prstnih odtisov(montiran pred vstopom v pisarno) v router,mu določiš tudisam IP,kaj pa porti,je kdo to delal ali ve kako narediti\n\nhvala in lp\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKo imaš enkrat omrežje poštimano da deluje kot ena celota, potem je čisto vseeno kam ga priklopiš - priklopiš tja, kamor ti je lažje.\nIP pa kar pustiš na avtomatsko, bo mu ga že DHCP določil (razen če iz kakršnega koli razloga potrebuješ statični IP - potem itak nimaš izbire).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Wireless repeater mode ne rabiš nastaviti na drugi subnet. Jaz sem imel na istem subnetu, pa je delalo BP. Delalo je isto kot wds, le da sta bila različna SSID-ja, dhcp pa na primarnem. Tako posledično tudi NAT in port forwarding ni bil potreben.\n\nSedaj imam potegnjen kabel, ker za streamanje videa ni bilo dovolj bandwith-a.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "kakšna je sploh razlika med dvema routerjema v načinu\n\n1.WDS\n2.REPEATER MODE\n3.CLIENT BRIDGE\n4.še kaj\n\nPROSIM ZA KRATEK PRAKTIČEN OPIS IN smiselno uporabe ter kako nastaviti mode router1 in router2\n\nlp\n\nhvala",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "WDS - ruterja se povežeta v eno veliko omrežje. Klienti , ki se priklapljajo van video samo eno omrežje in ne vejo na rateri ruter so dejansko priklopljeni. Mobilni klienti lahko avtomatično prekljapljajo med ruterji, ko se fizično premikajo po prostoru. Oba ruterja morata biti na istem kanalu (frekvenci), zato je hitrost prenosa v najboljšem primeru razpolovljena, kadar cilj ni na ruterju, na katerega si povezan. \n\nWDS se izvaja na HW nivoju in ga ima vsak proizvajalec chipseta narejenega malo po svoje. Zato posledično ponavadi wds med različnimi chipseti ne deluje. Tudi če oba ruterja uporabljata isti  SW (dd-wrt npr.)\n\nRepeater bridge -  skoraj isto kot wds, le da imaš sedaj primarno omrezje, ki je povezano v internet. Sekundarni ruter pa se poveže v to omrežje kot klient. Na tem ruterju pa potem kreiraš navidezno omrežje, ki ima praviloma drugačno ime, ni pa nujno. Klienti na drugi lokaciji se morajo povezati v to novo omrežje. Posledično ni več avtomatičnega preklapljanja med omrežji. V tem načinu tudi ni potreben noben poseg v primarni ruter, tudi omejitve chipsetov ni, če le imaš firmware, ki omogoča ta način. Bandwith se tudi razpolovi, kot pri WDS.\n\nClient bridge - v tem načinu se sekundarni ruter priklopi na primarnega kot klient, kot pri repeater bridge-u. Edina razlika je, da se na njega klienti ne morejo priklopiti brezžično, ampak le preko kabla. To se uporablja, če želiš povezati dve fizični omrežji brezžično.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Da si malo sposodim temo...\nv eni prejšnji sem bral okoli povezave dveh routerjev...WDS...pa mi nikakor ni uspelo zadeve usposobiti. Imam sledeča routerja:\n\nGlavni router je: Linksys WRT54GL (Firmware: DD-WRT v24-sp2 (10/10/09) mini)\nSekundarni router je: Linksys WRV200, ki ima opcijo WDS\n\nGlavni je nastavljen takole:\nLocal IP: 192.168.2.2\nSub mask: 255.255.255.0\ngateway: 0.0.0.0.\nlocal DNS: 0.0.0.0.\nDHCP: enable\nstart IP: 192.168.2.10\nmax.DHCP us.: 10\n\nWireless mode: AP\nWireless network mode: mixed\nSSID: HOME\nnetwork config.: Bridged\n\nvarnost je zaenkrat isklopljena.\n\nZanima me, kako moram skonfigurirati sekundarnega, da se mi bo povezal z prvim...ter da bom s tem povečal pokritost wifi-ja doma.\n\nHvala že v naprej za vse odgovore.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Najbolje kaka pripravljena navodila na webu poiskat, ker ko se tak piše, se komot kaka malenkost pozabi.\nTorej:\nNa sekundarnem nastaviš:\n - izklop DHCP serverja\n - izklop NAT oz. routing-a (ni nujno, ker v resnici ne moti, ampak da vse pokrijemo)\n - lasten IP naslov 192.168.2.9  - (da je izven DHCP območja primarnega, pa da ni isti kot od prvega naslov)\n - WLAN nastavitve enake (kanal, hitrost, standard.  SSID (ime mreže) ni nujno isto, razen za WPA enkripcijo, tam pa mora biti)\n - vlop WDS opcije ,  potrebno je vpisat MAC naslov primarnega ruterja\n\nPotem pa na primarnem ruterju tudi WDS vklopiš in vpišeš MAC naslov drugega (WLAN MAC, ne žični!).\n\n\nČe nisem kaj pozabil, je to to.\nVčasih rabi malo časa, da se vzpostavi WDS povezava, tako da ne takoj paniko zganjat. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Sm kr neki časa čaku...pa nimam dostopa do interneta.\nsekundarni ima opcijo pri wds-u, da sam poišče mac adreso od drugega routerja...torej on vidi moj primarni router. MAC je vpisan in v prvem tudi od dugega. DHCP na drugem imam isklopljen...ip je pa: 192.168.2.9\nzaščito sem isklopil...\nIsti ssid je vpisan...prenosnik vidi drugi router, kas se vidi iz moči signala vendar prek njega ni dostopa do interneta.\nŠe kakšen nasvet, kje bi ga lahko \"pihnil\"?\n\nAha...še nekaj...prva nastavitev v routerju je zmeraj izbira WAN connection type. Jaz imam prek ponudnika statični ip in kot tako je tudi primarni router nastavljen...kako pa mora biti drugi???\n\nPa še nekaj..ta drugič:\nprimarni ima tudi opcijo, da wireless dela kot: AP, Client, Client bridge,adhoc,  repetitor, repetitor bridge...kaj more bit pa tuki? AP predvidevam, ane?",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Primarni naj ostane kot je.\n\nDrugi pa če ima možnost, AP. Sicer pa default (ruter).",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Za iskanje rešitev:\n(lahko daš različna SSID, da lažje ločiš mreže in 100% veš, na katerega si povezan)\ns prenosnika, ko je povezan na drugi ruter:\n - ping naslova (192.168.2.9) sekundarnega ruterja dela ?\n - ping naslova sekundarnega ruterja dela?\n - kaj vrne tracert -d 8.8.8.8 ? (prvih nekaj vrstic je pomembnih)\n\n\nČe je prenosnik povezan na prvi ruter, potem dela dostop do interneta?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "1. dela\n2. dela\n3. vsi so dostopni in pingi...v mojem omrežju 1-2ms....kar gre ven pa 18-22ms\n4. jče je povezan na prvi router dela BP\n\nNe vem, če sva se razumela...zanima me, kako naj bo nastavljen drugi router...SETUP...BASIC SETUP...CONNECTION TYPE:\n\nSTATIC IP\nDHCP\nPPPoE\nPPTP\nL2TP\nkaj od tega, glede na to, da je prvi nastavljen na STATIC IP",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Anddrej pravi:\nNe vem, če sva se razumela...zanima me, kako naj bo nastavljen drugi router...SETUP...BASIC SETUP...CONNECTION TYPE:\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\nDrugi pa če ima možnost, AP. Sicer pa default (ruter).\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Anddrej pravi:\n 1. dela\n2. dela\n3. vsi so dostopni in pingi...v mojem omrežju 1-2ms....kar gre ven pa 18-22ms\n4. jče je povezan na prvi router dela BP\n\t\t\n\t\tKlikni za razširitev\n\t\nTorej v bistvu ti vse dela?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "ja...vendar ne morem prek drugega na net...sam še smeraj ne vem, kako naj dela drugi router...Statični ip ali dhcp...ostalo itak ne verjamem da se v tem primeru lahko nastavi. Sem nastavil in statični ip in kot dhcp...pa ni bilo nobene razlike.\nZa boljšo predstavitev kaj sprašujem...sem na netu našel eno sliko routerja...tam se vidi, kaj sprašujem...na sliki je izbran dhcp:\nhttp://www.diy-networks.com/config/images/wrt54gl-basic-setup-large.jpg",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Kaj zdaj dela ali ne dela?\nEnkrat pišeš, da vsi pingi delajo, potem pa kao da ne dela?\nKatero zdaj?\n\n\nZa ono pa sem rekel, da ne igra vloge. Ponavljam: najbolje je AP način, če pa ga ni, pač ni. Ne igra vloge.\nOziroma, da ne boš kaj zamučkal, nastavi na tej sliki tako, kot je že bilo omenjeno:\nLocal IP address : 192.168.2.9\nDHCP Server: Disable",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "pingi delajo...vendar na net pa ne morem.\n\nGlede AP...Nobeden router nima na osnovnih nastavitvah za povezavo z internetom možnosti AP. Da deluje kot AP se nastavi v nastavitvah za wifi.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Torej če je prenosnik brezžično povezan na drugi ruter, potem vsi našteti pingi delajo?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Na sliki zgoran na vrhu je nastavljen kot:\nAutomatic configuration-DHCP\nIMA PA ŠE MOŽNOSTI.\nSTATIC IP\nIN TAKO NAPREJ...",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\n Torej če je prenosnik brezžično povezan na drugi ruter, potem vsi našteti pingi delajo?\n\t\t\n\t\tKlikni za razširitev\n\t\n\ntako je",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Kaj potem ne dela? DNS?\n\nEvo, še par testov:\n\nnslookup 8.8.8.8\n\nipconfig/all\n(to najboljše pripni sem)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "jest mam problem pri \ntendah\nin sicer W311R router\nin AP W54A \ndela samo na client mode\n\nko hočem preko WDS repeator mode pa niakor noče se skonetkat... v router vpišeš mac od access pointa v AP pa od routerja... in ne dela???  V čem je štos pojma nimam...\n\nupam, da moram oba konfigurirat u načinu WDS repeator mode?\n\n\nsploh se nočeta skonetkat........ Če prav razumem morš met na obeh nastavljen\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "reality",
+    "author_level": "Vudu lešinar"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Da obudim temo:\n\nDva Linksysa WRT54GL z Tomato firmwarem:\n\nA lahko en napiše kako se jih nastavi, da wifi na obeh deluje kot eno omrežje brez kakršnih koli preklaplanj na wifi napravah(laptop, tablica, gsm,...).",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Evo, pa popolnoma isti firmware daj gor:\n\nhttp://www.howtogeek.com/104007/how-to-extend-your-wireless-network-with-tomato-powered-routers/\n\nSvetujem ti ta firmware:\nhttp://victek.is-a-geek.com/Repositorios/TomatoRAF/Tomato_RAF_1.28.121006a.zip\n\nKer če ga prav nastaviš, dobiš najboljši domet.\n\n\nKo naložiš firmware, potem obvezno najprej naredi hard reset",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Anddrej pravi:\n Da obudim temo:\n\nDva Linksysa WRT54GL z Tomato firmwarem:\n\nA lahko en napiše kako se jih nastavi, da wifi na obeh deluje kot eno omrežje brez kakršnih koli preklaplanj na wifi napravah(laptop, tablica, gsm,...).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV  tej temi je bilo kar precej govora o tem.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Ups...hvala lepa za informacijo.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "zrihtal...dela k šus",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Anddrej pravi:\n zrihtal...dela k šus\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKo si že pri stvari...\n\nV tisti temi ko sem jo prej polinkal smo se na veliko pregovarjali kako je glede preklaplanje naprav med večimi routerji.\nTi naprave preklopijo med routerjema brez prekinitve (seamless) ali ti prekine povezavo za kratek čas?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Tezko ti recem...nisem to nic probaval, lahko pa to povem, da sem sprobal ajfona, ajpeda, galaxija in laptopa na enem koncu hise ter prenesel na drugi konec in so vse naprave bile priklopljene na omrezje in onlajn.\nAli je med preklopom prekinitev ali ne mi osebno nic ne pomeni...vazno da se naprava sama poveze na mocnejsi signal.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "No, onim tam je to pomembno, tako da če se ti da, bi prosili, da probaš.\n\nPredlagam ta test:\n - zaženeš nek velik download (da traja ves čas testa, recimo vsaj 30 sekund). Najbolje kaki ISO velikosti 4 GB (linux imajo tega polno). Preko HTTP.\n\n - zaženeš neki pogovor, recimo preko Skype. Drugi naj ves čas nekaj govori (ali predvaja muziko) in poslušaj, če pride do prekinitve zvoka\n\nNajlažje je to na laptopu. Tam še lahko odpreš status povezave in vidiš, kdaj preklopi (sicer če je isto ime omrežja, verjento ne bo vidna razlika).",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Zadeva dela brez prekinitev tako na prenosnilu kot na ajpedu. Sem pa dl in ul film velik 4gb",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Andrej, a lahko  samo na hitro poveš katere nastavitve si nastavil na katerem routerju ? In kako imaš povezane med seboj, z kabli, wifi ? Pač zanima me cela konfiguracija... Bi bil zelo hvaležen \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Seveda...evo tukaj je:\n\n\nTomato : How to Set Up WDS \n1st Router (Main Router with Internet Access)\n- WAN port of this router is connected to the Internet.\nWAN\n(configure normally)\n\nLAN\nIP Address = 192.168.1.1\nDHCP Server = enabled\n\nWireless\nWireless Mode = Access Point + WDS\nSSID = samessid\nChannel = 6\nSecurity = WPA Personal\nEncryption = AES\nShared Key = samesharedkey\nWDS = Link With\nMAC Address = *wireless* MAC address of the 2nd router)\n\n2nd Router ( The repeater Router, No internet access on the router)\n-The WAN port of this router is not used.\nWAN\nType = Disabled\n\nLAN\nIP Address = 192.168.1.2\nDefault Gateway = 192.168.1.1 (the 1st router's IP address)\nStatic DNS = 192.168.1.1 (the 1st router's IP address or any DNS server)\nDHCP Server = Disabled (the 1st router handles DHCP)\n\nWireless\nWireless Mode = Access Point + WDS\nSSID = samessid\nChannel = 6\nSecurity = WPA Personal\nEncryption = AES\nShared Key = samesharedkey\nWDS = Link With\nMAC Address = (the *wireless* MAC address of the 1st router)",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Pa še ena zanimiva zadeva...ssid je na obeh routerjih isti, kanal isti, enkripcija ista, geslo isto...u glavnem popolnoma isto sta nastavljena...vidim pa dva ssid...ampak to samo z iphonom/ipadom...laptop pa vidi samo en ssid",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Torej imaš konfiguriran WDS. Imaš možnost potegniti kabel do drugega routerja?\nDa pa ti ene naprave pokažejo več enakih omrežij pa je odvisno zgolj od programa, ki ti to prikazuje. Meni na androidu recimo pri seznamu wifi omrežij kaže samo eno eduroam omrežje, če pa grem v aplikacijo wifi analyzer pa mi pokaže tudi posamezne dostopne točke za to omrežje.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Nimam moznosti potegniti kabl.\nTocke pa pokaze stock applov prog za omrezja.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "A lahko obudim temo? Imam dva tplink routerja, glavni je 941, sekundarni je 741. Rad bi jih zvezal v wds in po navodilih v tej temi sem prišel do stopnje, ko jih povežem. Takoj, ko sekundarnega nastavim na wpa2 zaščito (ki jo ima glavni), se vse skupaj sesede in interneta ni več (na glavnem). Sekundarni ima drug ip naslov, dhcp izklopljen. Po več poskusih sem lahko prišel do stopnje, ko sta bila oba nastavljena, kot bi morala biti (ista zaščita, isti kanal itd), sama povezava pa je čakala (assoc) da se prepoznata. Koliko časa naj bi ta prepoznava trajala? Seveda v tem času ni deloval internet...In se vse skupaj zacikla \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nA je kaj pomembno, če prvi dela s 300 mb, drugi pa z 150mb hitrostjo? Ni moral prvega nastaviti na 150?\n\nHvala",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "WDS in WPA ne gresta skup na nekaterih ruterjih.\nStvar ni najbolj standardizirana in vsak proizvajalec štrika po svoje.\n\nTorej:\n\"Takoj, ko sekundarnega nastavim na wpa2 zaščito (ki jo ima glavni), se vse skupaj sesede in interneta ni več (na glavnem). \"\nA sploh dela WDS brez enkripcije?\nNa drugem ruterju spremeniš zaščito in na prvem neha delat internet?\nInternet je priklopljen na prvega (glavnega) ?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Mah, saj sem že obupal (po drugem poizkusu \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nKot sem rekel, imam 2 tplinka, le različna modela.\nSedaj sem poizkusil še na drug način, pa me isto vrže ven...\nDa malo podrobim...na drugem nastavim vse potrebno, pri key type (kjer moram nastaviti tip zaščite pri prvem), pustim prazno.\nPri prvem (na katerem je priklopljen internet), nastavim isto, tudi tukaj pustim key na miru. Ko grem gledat na status, mi pod wds piše run (se pravi povezan z drugim), na drugemu pa scan (ne najde nič-išče).\nTorej; takoj, ko spremenim key type ali na prvem ali drugem, se vse skupaj obesi-ne morem več priti na internet (na prvem). Četudi vidim omrežje, se ne morem povezati. Če resetiram router, je potem ok, vendar wds ne deluje.\nMogoče je krivo to, da ne izklopim zaščite (na prvem) in nastavljam, dokler ne deluje. Ampak, kot sem rekel, se mi ne da več...mam preveč naprav, da bi se sedaj hecal in jih ponovno nastavljal.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\n WDS in WPA ne gresta skup na nekaterih ruterjih.\n\t\t\n\t\tKlikni za razširitev\n\t\nPri Tp-Linkih laufa tudi WDS in WPA2 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Prva napaka. Ne povezuj routerjev navskrižno \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nNa \"glavnega\" obesiš pomožnega. Nastavitev na glavnem se ne dotikaš! Tudi ssid ne rabi biti enak(tudi poizkusi z različnim). Zaščite ne rabiš izklaplat.\n\n\nVse kar je potrebno nastaviti na 741(poleg jasno izklopa DHCP)\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "OK, wds na glavnem pa menda ja vklopiš, ane???\nPrav; to, kar si pokazal, sem naredil. Ampak takoj, ko sem v polje key type vnesel tip zaščite in dal save, je na glavnem odfrčal internet. ne vem zakaj, ampak je.Ok, kot sem tukaj prebral, sem imel enak ssid kot na glavnem, ker naj bi moral biti.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Ne, na glavnem WDS ne vklaplaš. WDS imaš samo na dodatnem.\nRes probej na dodatnem nastaviti drug ssid",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik jest5 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\n WDS in WPA ne gresta skup na nekaterih ruterjih.\n\t\t\n\t\tKlikni za razširitev\n\t\nPri Tp-Linkih laufa tudi WDS in WPA2 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nWPA/WPA2 načeloma dela na WDSju, ker to standard (čeprav ohlapen) omogoča.\n\nImaš pa starejše routerje (osebno imam enega starejšega TP-Linka), ki imajo \"Wireless Bridge\" oz. kako drugače poimenovano funkcijo, ki ni po standardu WDS, deluje pa podobno ... ta pa ne podpira WPA/WPA2 kodiranja zaradi kriptiranja MAC naslovov klientov.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Brezžična povezava dveh routerjev",
+    "content": "Zadnje case se mi je zacel pojavljat sledeci problem:\n\nPrenosnik povezan v omrezje prek wifi\nPrenos datotek z interneta z max. Hitrostjo do 1Mb download(omejeno iz 2.5Mb kolikor sem imel max download)\nV tem trenutku je wifi omrezje nedostopno za ostale mobilne naprave...vidi se ga vendar se ne da povezati na njega.\nEnako se dogaja, ce z racunalnika, ki je zicnopovezan v omrezje prenasam datoteke z neta...vendar v temprieru neha wifi delat ko so download hitrosti vecje od 4Mb.\n\nKake ideje razen da zaenjam routerja? Namrec z Fritz-om zadeva dela BP.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  }
+]

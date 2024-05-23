@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "Pozdrav, \n\nImam zanimivo zahtevo od potencialne stranke : za detektiranje prisotnosti (nima veze z evidenco delovnega časa) bi želeli uporabiti kar bluetooth telefona zaposlenih. \nGre se torej samo za to, da ko se zaposlen približa lokaciji na 5-10m, da se zabeleži prisotnost osebe, ki je povezana s tem telefonom (MAC, UUID, karkoli se pač da dobit, samo da je unikatno). \n\nNašel sem polno opcij za detekcijo BLE naprav, ampak nobena ne ustreza temu, da bi zaznal telefon - vsaj ne brez aplikacije.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tThe Ultimate BLE Presence Detector\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tThe Ultimate BLE Presence Detector: Hi there, In this instructable I will show how I made a really simple Bluetooth Low Energy presence detector, using my smart wristband and a relay I was able to control the ligths of my room;  Everytime I go in, turn the light on and if I left the r…\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.instructables.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nSicer nimam težav z buildom aplikacij za android/ios, ampak če je le mogoče, bi se rad temu izognil. Če je BT na telefonu vklopljen predvidevam, da periodično išče uparjene naprave v dosegu. Vprašanje pa je, ali se to da uporabiti namesto BT beacona. \n\nKak predlog ?",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "Ne vem če prav razumem, ampak sam bi obrnil stvar in bi psotavil server (PC/rpi z BT) in potem s komando ki searcha BT naprave delal checking. Je pa BT v fazi konekcije oz. ping beacona bolj počasen, tako da če misliš tole kot evidenco prisotnosti na recimo vhodu v fiirmo je no-go (velika verjetnost da gre človek prej mimo kot pa da telefon odda svoj signal).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "ESP32 in Esphome...",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "Ali pa kaj takšnega.\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tDarsov odziv: vse je anonimno!\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tKako izgledajo podatki, ki jih Dars prek bluetootha zbira od voznikov.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.zurnal24.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "Da napišem malo bolj konkretno : šofer se s kamionom pripelje na vago. In zabeležili se bo dogodek da je UUID \"nekaj\" bil tam prisoten, seveda ob pogoju, da je ta ID registriran in povezan s šoferjem. Če se tam pojavi naprava, ki v sistemu ni registrirana, me niti malo ne zanima. Seveda pa moram ta podatek spraviti nekam v ERP...",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik WeWatchingYou je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tAli pa kaj takšnega.\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tDarsov odziv: vse je anonimno!\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tKako izgledajo podatki, ki jih Dars prek bluetootha zbira od voznikov.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.zurnal24.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\t\n\t\tKlikni za razširitev\n\t\nJa, verjetno bi se potrebovalo nekaj takega. Ampak vprašanje če ni over budget...",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tESP32 Bluetooth Low Energy Tracker Hub\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tInstructions for setting up ESP32 bluetooth low energy device trackers using ESPHome.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tesphome.io\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nCena: 10€\n\nV ERP bi verjetno lahko spravil preko MQTT",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "In če BT na telefonu Ni vključen? (tega še Izraelci niso rešil! ",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "Če je govora o kamijonih, zakaj enostavno ne daš nekega BT beacona v kamijon not? Trackanje telefonov preko BT je bolj kot ne no-go, saj naprave randomizirajo MAC napravo zaradi zagotavljanja zasebnosti. Enako velja tudi za WIFI MAC.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Detekcija prisotnosti telefona",
+    "content": "Jap, ni tako enostavno, drugače bi vsak lahko sledil vsakemu telefonu.",
+    "author": "Numy",
+    "author_level": "Majstr"
+  }
+]

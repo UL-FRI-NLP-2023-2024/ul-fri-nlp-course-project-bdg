@@ -1,0 +1,140 @@
+[
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Imam datoteko s podatki v dveh stolpcih. V stolpcih so zapisani skoraj enaki podatki, vendar so pomešani med seboj, torej vrstni red po vrsticah ni enak. Tudi podatki v vsaki celici niso nujno identični (na koncu celice se lahko razlikujejo), vendar se vsaka posamezna celica unikatno določa po prvih dvajsetih znakih v celici.\nObstaja kakšen ukaz, ki bi ga pognal čez datoteko in bi vrstice razporedil po nekem ključu, tako da bi bile v isti vrstici celici z identičnimi unikatnimi prvimi 20-imi znaki?\nZadevo še dodatno zakomplicira dejstvo, da ni nujno, da so vse celice v prvem stolpcu tudi v drugem ali obratno...\nPrimer datoteke je v priponki.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Daaaaa?\nPodatki ostanejo v prvih 2 celicah!\nSortirajo se po prvih 20 znakih!\nCelice iz prvotne - nessortirane - vrstice morajo ostati po sortiranju v isti vrstici!\n\nNov stolpev prvih 20 znakov prvega podatkov stolpca.\nŠe en nov stolpec, prvih 20 znakov drugega stolpca podatkov.\nSortiraš po teh dveh NOVIH stolpcih in pogledaš, katere celice z po 20 znaki so enake.",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "=COUNTIF(B1:B100;LEFT(A1;20)&\"*\")\n\nče je 0 potem nimaš ujemanja v nobeni vrstici",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "S katerim ukazom pa prestavim prvih 20 znakov v nov stolpec? Namreč ročno zadeva ni možna, ker je tega preveč.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "=LEFT(A1;20)",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik onlyme pravi:\n =COUNTIF(B1:B100;LEFT(A1;20)&\"*\")\n\nče je 0 potem nimaš ujemanja v nobeni vrstici\n\t\t\n\t\tKlikni za razširitev\n\t\ntole ne velja. odgovor dan ob 01:29.",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Hvala obema. Sedaj imam sortirano po obeh stolpcih. Kako bi pa lahko izenačil, da bi bile celice z istim identifikatorjem v isti vrstici?",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Si dodal \"countif\" v svoj stolpec? Sortiraj prvo po tem stolpcu - padajoče.\n\nSeveda je treba celotno tabelo zajeti v sortiranje.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Ne razumem čisto kaj bi dosegel z tem. Ne zanima me namreč število neujemanj, temveč bi imel rad poravnano po istem identifikatorji v vrstici...\n\nDo tukaj sem prišel (glej priponko).",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Sortiranje po \"countif\" ti bo \"izločilo\" vsa neujemanja, sortiranje v drugi ravni po \"prvem\" \"očiščenemu\" stolpcu bo naredilo red, sortiranje v tretji ravni, pa bo \"združilo\" ujemajoče. \n\nTole je sicer taka precej \"simple\" rešitev - če bom imel popoldan čas se bom poigral in ti zložil, vkolikor te ta ne bo pripeljala kamor hočeš.\n\nA to imaš za enkratno rabo ali se bo ponavljalo na več dokumentih?\n\nEDIT: pa upam, da bom lahko odprl v svojem Excelu - nisem namreč ziher ali podpira tvoj Excell format   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "ali je vsaka vrstica svoj ID - en zapis? Potem NE smeš to ločevati.\nKaj naj bi bilo poravnano? Kaj sedaj ni poravnano - opiši to na priloženem primeru\ntorej, če označš vse(!) podatke in razvrsti po prvem A stolpcu, se ti naredi en vrstni red - po prvem stolpcu. Podatki naprej po drugih stolpcih niso sortirani.\nKaj je sedaj narobe oz. ni v redu?\np.s. gre za to, da razumemo problem in ti svetujemo rešitev.",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Uf - najhitreje boš rešil pa s VLOOKUP - dodaj stolpec s formulo. =vlookup(A1;C;2;false), kjer je:\n\nA1 polje kar iščeš (očiščeno - prvih 20)\nC stolpca s drugo serijo podatkov, C očiščeni, kjer je ujemanje z A stolpcem, D pa osnovni podatek\n2 - zaporedni stolpec iz C, kjer je rezultat iskanja (če želiš samo \"očiščen\" pač namesto 2 vpišeš)\nFalse - pozabi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n (parameter)\n\nSintaxo si lahko pogledaš tudi  tu.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik gr69 pravi:\nA to imaš za enkratno rabo ali se bo ponavljalo na več dokumentih?\n\t\t\n\t\tKlikni za razširitev\n\t\nV več dokumentih. Če bi imel za enkratno rabo, bi se ročno prebil skozi tistih 1000+ vrstic.\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik gr69 pravi:\nEDIT: pa upam, da bom lahko odprl v svojem Excelu - nisem namreč ziher ali podpira tvoj Excell format   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.\nEvo, nov dopolnjen primer z več podatki (različnimi med stolpci) in v drugem zavihku je to, do kamor sem ''prilezel''... Sortiranje po A in C stolpcu, ampak se vrstice zaradi različnih podatkov po stolpcih ne ujemajo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "OK, najbrz sem narobe razumel kaj bi rad naredil, vseen sn na hiter probu pomagat, poglej priponko\n\nV bistvu sem nardil samo en seznam (en stolpec kopiral pod drugega), ga sortiral po unikatni kodi.\nPotem sem naredil novo tabelo brez podvojenih kod, stolpec F (Data-&gt; Remove duplicats) in potem zapisal formulo, ki v sosednjih vrsticah izpisuje kaj vse se za to kodo ponovi na koncu celice.",
+    "author": "Evrokrat",
+    "author_level": "mX's brotherPEPČEK 08"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "3. list - sivi so stolpci, ki jih je potrebno \"vrinti\" na ustrezno mesto - ko aktviraš filter in prikažeš samo \"match\" (v stolpcu E \"Data 1/ Data 2 match\"), ter skriješ \"grupažo\" (klikni na \"minus\" nad stolpcem F), ti ostane \"čisti pregled\".\n\nSI56 3245 556 15244 22 569 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Hm, kolikor vidim je to, skoraj to kar bi potreboval \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. Edino kar je izpadlo so celice v drugem stolpcu, ki pa jih NI v prvem...\nTorej v tem primeru tile dve:\n11211111112511111111 - avto\n14411113111122811111 - kolo2\nJe kakšna možnost, da še tole dodaš noter? Lahko kar na konec ali pa po identifikatorju, pa je potem prazno v stolpcu 1.\n\nPS: Ena številke v TR-ju se mi zdi, da manjka \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n...",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Ne kužim - kako \"izpadlo\"? Aja - sedaj v \"čistem\" izpisu ne vidiš več \"Data2 brez matcha v Data1\". \n\nDaj ti napiši kaj točno bi ti rad ovrednotil ozr. kaj hočeš doseči - se bom potem lotil čiščenja. \n\nPS: Damn - se je baba zdaj odpeljala in vzela kartico s sabo ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Ovrednotil nič, rad bi, da sta oba stolpca ''poravnana'' po identifikatorju (prvih 20 znakov v celici), hkrati pa tudi, da so izpisane tiste celice, ki jih ni v drugem stolpcu (torej so le v prvem ali le v drugem).\nPraktično to, kar si že napravil, manjkajo le tiste, ki so samo v drugem stolpcu. In le te so lahko izpisane recimo na koncu drugega stolpca. Tiste samo v prvem, pa so že izpisane in je v drugem stolpcu le ''no match''.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "To brez makra ne bo šlo. Koliko je tega?\n\nTu ena \"ročna\" rešitev z dvea dodatnima stolpcema - kjer \"izfiltriraš\" le Data 2 brez Data 1 match - potem pač c/p na konec tabele.\n\nDodan list Data (2) - dodana stolpca na koncu - rezultati do teh dveh stolpcev ob aktivne filtru v G so seveda \"nepopolno prikazani\".\n\nDrek - zaardi filtra \"prevelika\" datotek (svaka čast Billu) - evo linka:  Google Drive \n\nPS: Babe še kar ni nazaj - da jo ni mogoče vročinska kje po poti??   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Hvala za trud. Bom proti večeru pregledal zadevo...\n\nA žena je že prišla nazaj ali je kartico v kakšni trgovini ''pozabila''  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n?",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Žena se je vrnila že dva dni nazaj - ne vam pa ali ti tisti Excel kaj hasne ali ne? Toliko, da vem ali naj tisto manjkajočo cifro javim ali ne.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Mi hasne in se ukvarjam z njim, ampak mi je očitno 40 stopinj zaustavilo možgane. \nSem že skoraj prišel do načrta rešitve, samo moram še par zadev skupaj spravit. Samo da se mi možgani shladijo... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nNo, pol boš pa na pm javil cifro, da ti ne bodo še ostali preveč nakazovali \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n...",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri Excellu",
+    "content": "Je že vredu - sam, da ti hasne.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Long story short in pustimo dejstvo da sem idiot prve klase...po nesreči oz lastni neumnosti sem pobrisal celoten HDD ko sem v cmd-ju konvertiral GPT v MBR (razlog je bil, da sem uporabniku win10 zamenjal z 7 in še to mi ni ratalo ampak to je že druga zgodba). Torej v CMD-ju z win10 install diskom sem gpt konvertiral v mbr in ukaz \"clean\" je naredil svoje..OK, zdaj to nima več nobene veze, zdaj je prioriteta, da dobim čim več podatkov nazaj ampak tu sem uspešen točno 0%. Sem vzel disk ven, da bi ga priklopil na svoj PC ampak problem - gre za M.2 SSD 512 GB disk za katerega seveda nimam konektorja, da bi ga lahko priklopil na PC. Mi pač ni preostalo drugega, kot da sem dal disk nazaj in instaliral win10 z zavedanjem, da bo verjetno marsikaj prepisano in izgubljeno in bom rešil kar se pač rešit da. Zdaj pa sranje, noben program namreč ne najde popolnoma nič. Preiszkusil sem EaseUS in Recuvo. Noben ne najde popolnoma nič, kot da na disku nikoli ni nič obstajalo. Sem dal tudi deep scan vendar nič, našlo mi je samo cel kup nekih particij, vendar na nobeni nič podatkov. Kateri program še lahko preizkusim oz kaj še lakho naredim? Predvsem je problem ker je izgubljeno veliko dokumentov (xls, doc, pdf..).FAAAAAK! ",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Tole bi rabil najprej klik",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Prva napaka je bila da sploh pišeš karkoli na dotični disk/pogon. Če nisi imel M.2 priklopa bi enostavno bootal nek live USB z recovery programom na tarčnem računalniku in poskušal reševat podatke na sekudnardni HDD. \n\nVprašanje če winsi ne poženejo ob namestitvi malo \"trimčkanja\" na SSDju in so podatki vsaj na programskem nivoju popolnoma izgubljeni!",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "To vse razumem kje sem naredil napako, tu ni dileme, da se razumemo. Ni mi jasno samo kako to, da se ne da nič najti kar je bilo pobrisano. Jaz lahko na svojih diskih brišem partcije, datoteke, whatewer, a bodo programi za obnovo datotek v vsakem primeru našli skoraj vse kar je izgubljenega (z izjemo kar je bilo prepisanega). Na tem disku pač to ni možno očitno.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Malo pobrskaj za SSD TRIM funkcijo in kaj povzroči če se izvede.\n\nNa kratko pri klasičnem disku lahko glava enako hitro prepisuje prazne ali polne sektorje in je vseeno ali podatek v njih obstoji ali ne. Zato po brisanju vsi podatki ostanejo, samo \"povezave\" do njih se pobrišejo. Pri SSDju je to drugače ker SSD porabi za brisanje in zapis eno operacijo več kar ga upočasnuje. Zato imajo sodobni diski interno ali pa na nivoju sistema omogočeno TRIManje. SSD TRIM ob izvedbi pobriše \"prazne sektorje/bloke\" na 0 zaradi hitrejšega dostopa/zapisa ob morebitni prihodnji rabi oz. pri določenih sistemih/kontrolerjih TRIM sektorje, ki niso zapisani z linkanimi podatki gredo prvi v izbris ko diska \"primankuje\" (tako da so na 0 ko pride do zapisa v njih).\n\nTRIM se sicer izvede ponavadi nad sektorji ki so neposredno aktivni. Torej če pobrišeše nek podatek se TRIMa samo tiste sektorje s dotičnimi podatki. Se pa zna zgodit da ti recimo pri postavitvi particije win izvede TRIM nad celo particijo = uniči vse podatke.\n\nProblem je da je s TRIMom en kup specifik in ne deluje na vseh SSDjih oz. kontrolerjih enako. Ker problem TRIMa je tudi pretirana \"obraba\" celic (imajo omejeno št. zapisov) in je tako pri določenih kombinacijah sploh onemogočen, pri novejših low-budget SSDjih ki uporabljajo cenejše tehnologije shranjevanja pa se TRIM izvaja samo pod določenimi pogoji. Skratka en kup ČEjev je v igri, ampak če ti programi za reševanje ne najdejo nič potem je najbrž problem da podatkov ni. Ti pa priporočam da vseeno poskušaš pognat nek \"live USB\" in pregledaš pogon še v \"pasivnem\" načinu (torej da ne furaš z istega diska še sistema).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Thx za obrazložitev. Jebiga, bomo že preživeli to izgubo. Dobra šola za naprej, druge tolažbe nimam ",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "a kakšen \"plačljiv\" program ne bi sprobal? običajno vsaj v demo načinu, ki ti pokaže, kaj je uspel najti? no, saj easeus naj bi bil dober...ampak, free proti plačljivemu...slednji verjetno zmaga.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "A to si ti nekomu drugemu pobrisal al sebi? Drugače pa, če so fajli toliko pomembni, bi bilo kot zadnjo rešitev za probat, da neseš kaki firmi, ki se s tem ukvarja, saj ima pomoje več izkušenj in ima profi programe.\nTu imaš še review ta boljših https://www.pcmag.com/roundup/353756/the-best-data-recovery-software",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Kar sem sprobal je bilo v polni verziji (skrekano jebiga), noben program ni našel popolnoma nič tudi v deep scanu. Podatki sicer niso življensko pomembni, šlo je predvsem za dokumente, ki pa so itak več ali manj na mailu. Problem je samo vse to iskat za 2 leti ali več nazaj. In ne, ni bil moj računalnik.. \n\nDrugače pa je Utisevalec obrazložil zakaj ni možno dobit podatke iz SSD in to prav tako piše tudi na tvojem linku:\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tOne failing that bothered us in all these apps—including our top picks—is that they didn't even warn us that we couldn't recover files from an SSD. It's easy for an app to tell whether a drive uses spinning-platter or SSD technology, and easy to tell whether TRIM technology is active in a drive. All of the software we reviewed, both on the Mac and PC, misleadingly told us that they were able to recover deleted files from SSDs—and then disappointed us by providing corrupt and unusable files instead of the ones we wanted. We hope that the next generation of data recovery software is redesigned to make it clear that we can't hope for file recovery on SSDs unless the deleted files are safely in the Recycle Bin—where, of course, they're easy to find without using recovery software.\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Aha, nisem niti bral... ",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Janch je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tThx za obrazložitev. Jebiga, bomo že preživeli to izgubo. Dobra šola za naprej, druge tolažbe nimam \n\t\t\n\t\tKlikni za razširitev\n\t\nV prvem stavku prvega posta si vse povedal...",
+    "author": "Car",
+    "author_level": "POSTman"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "No od tebe itak nisem pričakoval konstruktivnega doprinosa v tej (oz kateri koli) temi..",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Super da si dojel, potem pa le nisi idiot prve klase...",
+    "author": "Car",
+    "author_level": "POSTman"
+  },
+  {
+    "ctx": "Povrnitev podatkov iz pobrisanih particij (SSD)",
+    "content": "Ja na SSD žal ni rešitve ponavadi. Nobeno dobro delo ne ostane nekaznovano, raje se jih izogibaj. ",
+    "author": "Numy",
+    "author_level": "Majstr"
+  }
+]

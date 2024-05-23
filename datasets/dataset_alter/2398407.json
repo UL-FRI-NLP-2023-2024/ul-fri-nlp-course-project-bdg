@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Živjo vsem,\n\nstari router sem zamenjal s tp-link 1043 z namenom, da pohitrim domače omrežje, vendar mi wifi kljub temu deluje le na 54Mb. Ker sem tu totalni laik, prosim za par odgovorov:\n\n- ali se omrežje vzpostavi na hitrost, ki jo diktira najpočasnejša naprava v omrežju?\n- ali se lahko hitrost samodejno prilagaja perifernim napravam?\n\nKot sem rekel, router je tplink 1043, naložen dd-wrt.\n\nNa wifi je priključeno:\n- printer HP6500a+ (podpira b,g,n)\n- notebook Fujitsu N532 (podpira b,g,n)\n- notebook Lenovo (ne vem oznake, ampak je novejši I5, wifi podpira b,g,n)\n- tablica Acer A510 (podpira b,g,n)\n\nNa routerju imam nastavljeno:\n- wireless mode: AP\n- Wireless Network Mode: NG mixed\n- Channel Width: Dynamic 20/40MHz\n- Wireless Channel: Auto\n- Extension Channel: Auto\n\nKriptiranje je WPA/TKIP. Kanal je 1. Signal je 3 od 5 črtic. Ostala 2 soseda sta na kanalu 6.\n\nAli sem z menjavo WRT-54GL na TPlink 1043 šel iz konja na osla (kar se tiče dosega itd)?",
+    "author": "damo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Kako daleč imaš naprave ?\n\nČe odjemalec podpira N in je jakost signlaa dobra, potem se mora povezati z N.\nTotal Commander, kakšen prenos dosegaš pri +300 mb datoteki / ali speedtest ?\n\n\nNa routerju imaš vklopljen N način za wifi ? Firmware je tovarniški ?\n\nZakaj ne uporabljaš  wpa2/aes ? Kakšne hitrosti dosegaš brez zaščite ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Vse naprave ti torej podpirajo N, daj ruter samo na N.",
+    "author": "Numy",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Router je na podstrešju mansardne hiše, naprave so v pritličju. Signal je 4 črtice od 5. Na routerju imam DD-wrt. \n\nČe izključim zaščito, niha hitrost med 54 - 104.\n \nNumy: Če sem router nastavil na \"N only\", ni bil več dosegljiv (razen preko kabla).",
+    "author": "damo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Za doseganje N standarda boš moral nastaviti zaščito na WPA2-AES.",
+    "author": "Naabo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Sem dal na WPA2-AES, pa ne gre hitreje od 72Mb.",
+    "author": "damo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik damo pravi:\n Router je na podstrešju mansardne hiše, naprave so v pritličju. Signal je 4 črtice od 5. Na routerju imam DD-wrt. \n\nČe izključim zaščito, niha hitrost med 54 - 104.\n \nNumy: Če sem router nastavil na \"N only\", ni bil več dosegljiv (razen preko kabla).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nČe router več ni bil dosegljiv, potem ti naprava ne podpira N. Sem imel že primer, ko je bil N po defaultu izklopljen. Idi v device manager pa pod advanced lastnosti wifi kartice in preveri ali je N vklopljen.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Sem pogledal, nastavitve so:\n\n802.11 n mode:    Enabled\n\nwireless mode:   3.  802.11. b/g    - tu mi je čudno, da nikjer ne morem izbrati \"n\". So samo variante: b, g, b/g. Tako je na obeh računalnikih.\n\n\nHitrosti so sedaj do 110Mb.",
+    "author": "damo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Naabo pravi:\n Za doseganje N standarda boš moral nastaviti zaščito na WPA2-AES.\n\t\t\n\t\tKlikni za razširitev\n\t\nGlede na razdaljo dosegaš še dobre hitrosti.\nMeni iz drugega nadstropja v pritličje lovi samo preko starega B 11 mbit protokola, v G/N. ne",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Če povezuješ b in g naprave na mixed n ruter boš poslabšal hitrost n napravam.\n\nZato je dobra praksa, da pustiš stari ruter in ga uporabljaš za b in g, novega dodaš in ga imaš samo na n standardu.",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Kako ti pa kaj deluje DD-WRT na tem routerju? Nekje sem zasledil da se naj ne bi obnesel najbolje.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik damo pravi:\n Sem dal na WPA2-AES, pa ne gre hitreje od 72Mb.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik damo pravi:\n- Channel Width: Dynamic 20/40MHz\n\t\t\n\t\tKlikni za razširitev\n\t\nKer imaš samo 20 MHz pasovno širino. Fiksirej na 40 MHz",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "wifi ne gre hitreje od 54Mb",
+    "content": "Sem dal na 40mhz, zdaj deluje v dnevni na 135, v delavnici pa včasih celo do 215MB\nBom po potrebi dodal nazaj še starega linksysa, ki bo šibal na 54.\n\nHvala vsem za pomoč!",
+    "author": "damo",
+    "author_level": "Majstr"
+  }
+]

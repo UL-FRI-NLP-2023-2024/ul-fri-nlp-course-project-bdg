@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "Pozdravljeni, skratka nisem domač pri teh omrežjih. Imam situacijo (vse je prek UTP): T2 Innbox, ki je razcepljen na dva routerja. Poleg tega imam (zaradi velikega števila naprav) še iz T2 innbox-a na switch razcepljeno za TV (STB), media box in android box. Prva dva se vedno povežeta na mrežo, android box pa samo na \"vsake kvatre\", ostalo pa prek wi-fi. Tudi če izključim wi-fi ni nič bolje, tudi če box resetiram ni nič bolje. Skratka, iz katerega razloga se noče povezati na mrežo, kljub temu, da je normalno prek UTP priključeno. A je možno, da je preveč IP-jev (upam, da prav razumem?). Kako ugotoviti, zakaj se ne poveže? Hvala za kak nasvet!",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "Tole preko foruma ugotovit nemogoče. \nZakaj gre iz t2 boxa v dva routerja in switch? \nV štartu daj en router in preko tega vse ostalo povezuj. Ni potrebe po dveh routerjih. Razen če hočeš dva ločena omrežja in kompket druge nastavitve. \nKatera od teh naprav ti je dhcp server? \nTi javlja kake konflikte kdaj?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTole preko foruma ugotovit nemogoče.\nZakaj gre iz t2 boxa v dva routerja in switch?\nV štartu daj en router in preko tega vse ostalo povezuj. Ni potrebe po dveh routerjih. Razen če hočeš dva ločena omrežja in kompket druge nastavitve.\nKatera od teh naprav ti je dhcp server?\nTi javlja kake konflikte kdaj?\n\t\t\n\t\tKlikni za razširitev\n\t\nDurgi router je za zgornje stanovanje in načeloma nima nobene zveze z napisanim (razen če je preveč IP-jev?).  Gre torej povezava direktno iz T2 routerja (INNBOX) na switch, potem pa na drugi switch. In na tem, delajta dve napravi, Android Box pa ne?",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "Ja tole zna biti komplicirano pa predvsem ker ne znaš točno opisati kompletno konfiguracijo. Ki je lahko pomembna pa spet ne. Pa enkrat pišeš da se ti android ne poveže drugič pa na vsake kvatre. Drugače pa ti (za začetek) svetujem. Odklopi z mreže in ugasni media box, isto z androidom. Zapomni si kateri kabel je šel kam. Ugasni innbox za 30 sekund. Prižgi innbox, počakaj 5 minut, priklopi nazaj mrežni kabel na android in vklopi android. Če ne dela poskusi s kablom ki je bil na media boxu. Preveri nastavitve na androidu, da je nastavljen na wired in hitrost mrežne. IP jev je dovolj, saj za wifi ravno tako rabi IP.  Toliko zaenkrat. Poskusi.\ndarkstar\nEdit : hm, za IP je nisem več prepričan, kaj pa če se ti konekta na kakšen router. Veš ip-je na vseh škatlah in napravah ?",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "Ok prva stvar za zgornje nadstropje nerabiš routerja ampak AP. Torej en router skonfiguriraš kot router in dhcp server, če ima T2 možnost 2 IP-jev naredi, da se ta router sam za sebe povezuje v splet. Drugega priklopiš v prvega in nastaviš kot AP, switch priklopiš v prvega. Vse naprave na auto dhcp in jih vklaplaš ali v switch ali v prvi router. Router wifi in AP wifi na isti ssid in geslo. To je prva opcija če hočeš da nek vredu router prevzame kontrolo nad napravami.\n\nDruga varjanta pa je da je innbox glavni in sta oba routerja nastavljena kot AP-ja in je vse povezano v Innbox. Meni se to ni obneslo. Se mi je stvar prevečkrat sesula oziroma je bil prevečkrat potreben reset.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tOk prva stvar za zgornje nadstropje nerabiš routerja ampak AP. Torej en router skonfiguriraš kot router in dhcp server, če ima T2 možnost 2 IP-jev naredi, da se ta router sam za sebe povezuje v splet. Drugega priklopiš v prvega in nastaviš kot AP, switch priklopiš v prvega. Vse naprave na auto dhcp in jih vklaplaš ali v switch ali v prvi router. Router wifi in AP wifi na isti ssid in geslo. To je prva opcija če hočeš da nek vredu router prevzame kontrolo nad napravami.\n\nDruga varjanta pa je da je innbox glavni in sta oba routerja nastavljena kot AP-ja in je vse povezano v Innbox. Meni se to ni obneslo. Se mi je stvar prevečkrat sesula oziroma je bil prevečkrat potreben reset.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nHvala za tako izčrpno pomoč. Žal teh znanj nimam. Znam samo kupiti in priklopiti, kaj dosti več, razen minimalnega znanja routerja pa žal nimam.    Skratka, sedaj sem to uredil na način, da sem potegnil nov kabel do Android Box-a in sedaj dela! Pa še tega sem kar prek 220v mrežnega adapterja, tako da nisem imel preveč dela s tem. Še vedno pa mi ni jasno, kaj bi bilo lahko narobe, ampak me to sedaj nekaj časa niti ne zanima več! ",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "če si nov kabl potegnil in dela je lahko samo ena stvar \nStari kabl je bil hin.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tče si nov kabl potegnil in dela je lahko samo ena stvar \nStari kabl je bil hin.\n\t\t\n\t\tKlikni za razširitev\n\t\nJa, samo potem ne bi delali dve drugi napravi na tem switch-u. A je možno, da na 5 portnem switch-u lahko istočasno delata npr. samo dve napravi?",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako ugotoviti, zakaj se ne poveže na mrežo",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik kingo je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJa, samo potem ne bi delali dve drugi napravi na tem switch-u. A je možno, da na 5 portnem switch-u lahko istočasno delata npr. samo dve napravi?\n\t\t\n\t\tKlikni za razširitev\n\t\nT2 dovoli samo nekaj javnih IPjev in ko presezes to stevilo (govorimo o 2 ali 3), novih naprav ne spusti na inet oziroma jim ne dodeli IP naslova. Inbox ima porte nastavljene razlicno, ponavadi sta vsaj prva dva in wan v router nacinu (192.168.64,xx). Tja lahko priklopis vse računalnike in ostalo saro, ki potrebuje zgolj inet. Ce zmanjka lukenj, dodas switch ali router.\n\nNa javne porte (kjer dela tv in telefonija) pa lahko priklopis tv in telefone ter seveda dodas mrezno stikalo ali vec. Ampak ko bos tja priklopil pc ali kaj podobnega(android box je tudi ene vrste pc), bo ta dobil javni naslov. Naslednji pc bo dobil prav tako svoj javni IP naslov. Nato pa be bo slo vec. Tretji pc bo dobil svoj javni IP naslov sele 24 ur po tistem, ko bos odklopil prvi ali drugi pc z mreze. Ali pa naredil rocno sprostitev ip naslova (ipconfig /release). Ce ugasnes modem, ne pomaga nic. \n\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  }
+]

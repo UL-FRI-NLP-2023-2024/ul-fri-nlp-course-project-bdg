@@ -1,0 +1,70 @@
+[
+  {
+    "message": "Uspešno sem inštaliral Linux Red Hat 7.3. Na disku imam tudi dve particiji z FAT sistemom. A je možno v linuxu brati datoteke, ki jih imam na teh particijah. Če je mi lahko razložite kako? ",
+    "user": "Fella"
+  },
+  {
+    "message": "Najprej nared en direktorij kjer boš mountal FAT particijo. Recimo /mnt/win. Pol pa odpreš fajl /etc/fstab z enmu tekstovnmu editorjam in dodaš vrstico: /dev/hda1 /mnt/win vfat umask=0,quiet 0 0 /dev/hda1 spremen tko da bo odgovarjal tvojmu sistemu. Če maš FAT particijo na prumu disku na prvi particiji pol je to tko kt sm napisov. če maš na drugmu disku na drugi particiji pol je pa to /dev/hdb2. Pa še mal si preber manual page od fstab (napipšeš \"man fstab\" u konzoli). ",
+    "user": "JLP"
+  },
+  {
+    "message": "Če imaš instaliran KDE desktop, potem bi že moral imeti ikono  Windows na namizju. Če je nimaš, se prijavi kot root in poglej datoteko etc/fstab.  Moja izgleda takole:  /dev/hda4 / reiserfs defaults 1 2 /dev/hda2 /boot ext2 defaults 1 2 /dev/cdrecorder /media/cdrecorder auto ro,noauto,user,exec 0 0 /dev/cdrom /media/cdrom auto ro,noauto,user,exec 0 0 devpts /dev/pts devpts defaults 0 0 proc /proc proc defaults 0 0 usbdevfs /proc/bus/usb usbdevfs noauto 0 0 /dev/hda1 /windows/C vfat rw,noauto,user 0 0 /dev/hda3 swap swap pri=42 0 0  Poglej vrstico, kjer piše /dev/hda1, to je moja prva particija na disku, kjer imam FAT32 particijo. Na tvojem disku mora v Linuxu obstajati tudi direktorij, kamor boš paqrticijo priključil (mount). Pri meni je to direktorij /windows/C  vfat pomeni nič drugega kot fat sistem, rw pa pomeni, da lahko tudi pišem nanjo, ne samo berem.  Ko boš imel to vrstico urejeno, v terminalu vpiši:  mount /dev/hda1  Pojdi nato s KDE file managerjem v direktorij /windows/C in tam bi moral videti svojo particijo s FAT sistemom...  ",
+    "user": "suse80"
+  },
+  {
+    "message": "Ni nujno da je prva particija na prvem disku hda2, ampak je lahjo tudi hda1, ker sem tudi sam imel takšen priemr... ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Ja bastadu sej more bit /dev/hda1. Sm se jest mal zmotu. ",
+    "user": "JLP"
+  },
+  {
+    "message": "Hvala! Mi je uspelo! Samo ni šans, da bi to sam pogruntal. Bo treba kako knjigo uzet v roke. Kaj priporočate kako? ",
+    "user": "Fella"
+  },
+  {
+    "message": "A to deluje tudi pod Mandrake Linux 8.2 z KDE namizjem, al so tam druge nastavitve ?!? ",
+    "user": "madviper"
+  },
+  {
+    "message": "Hvala! Mi je uspelo! Samo ni šans, da bi to sam pogruntal. Bo treba kako knjigo uzet v roke. Kaj priporočate kako?  No, to so besede ljudje! BRAVO! knjige so drage, lahko greš na internet in boš na strani glavnega založnika Linux literature (O'Reilly) našel par online knjig (za djabe), lahko greš http://www.linuxdoc.org in si Dolpotegneš kakšne HOWTO-je.... možnosti je ogromno...  ",
+    "user": "Gh0st"
+  },
+  {
+    "message": "Tapravi link za stran k jo je Gh0st napisu je tale: The Linux Documentation Project. Pa kr dost HOW-TOjev pomebnih je prevedeno tud v slovenščino, dobi se jih pa pr LUGOSu. Pa ne sme se pozabt tud na dokumentacijo k pride zravn distribucije če jo kupš. Če pa Linux z neta podljaš je pa možn to dokumentacijo tud na strani avtorja distribucije dobit v elektronski obliki.  madviper: ja to tud pod Mandrake dela. Drugač je pa pr Mandrake tud en tool za mountanje particij. Nahaja se pa v Mandrake Control Centru. ",
+    "user": "JLP"
+  },
+  {
+    "message": "Kaj narediš če maš pa drugi dve particije manesto FAT3 NTFS ?!? ",
+    "user": "madviper"
+  },
+  {
+    "message": "Lahk uporabš un tool u MCC k ti bo vse avtomatsk prov naštelov. Drugač se pa zej spremeni tip datotečnga sistema tko da namest vfat pišeš ntfs. ",
+    "user": "JLP"
+  },
+  {
+    "message": "Če ti seveda kernel podpira NTFS filesystem. Nekateri kerneli ga podpirajo samo read-only, drugi read-write, tretje pa moraš skompajlat ali pa naložit module ali patche.. ",
+    "user": "Gh0st"
+  },
+  {
+    "message": "Kje se dobi patch za ntfs? ",
+    "user": "gojc1"
+  },
+  {
+    "message": "red hat ma že ntfs modul. ti ga moraš sam aktivirat pa zrekompajlat kernel. ",
+    "user": "napsy"
+  },
+  {
+    "message": "octo_viii. Ne nori. Če ima RH za ntfs že modul ne rabiš nobenga kompajlanja kernela. Insmod (ntfs?) bo povsem zadosti. Altrnativa (pri Debianu) je modconf.   Kolikor je meni znano v NOBENI verziji kernela ni podpore za branje NTFSa. Read only...  by!  ",
+    "user": "roscha"
+  },
+  {
+    "message": "Zdravo.  Zanima me, kje bi lahko dobil Linux Red Hat. Namreč sem začetnik in sem ga na enem izobraževanju instaliral in mi je strašno všeč. ",
+    "user": "venci"
+  },
+  {
+    "message": "Možnosti je veliko. Če imaš hitro povezavo na internet potem je priporočljiva stran Linux ISO kjer so ISO slike za zapečt na CD.  Lahko jo kupiš v keterikoli bolje založeni štacuni, folk ti na LUGOS-u preko oglasov lahko pošlje kopije... ali pa na kateri izmed slovenskih Internet trgovin... ",
+    "user": "Gh0st"
+  }
+]

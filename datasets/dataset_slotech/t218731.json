@@ -1,0 +1,130 @@
+[
+  {
+    "message": "torej, imam neko vrednost v celici, za katero bi rad, da je njena vrednsot enaka imenu dokumenta ;  recimo naslov dokumenta je 450, kar pomeni da je to račun št. 450  se to da narediti?  am, ka ja pa to ; v celici je številka, recimo 12. je kje v excelu možnost, da sm klikneš pa ti poveča vrednost? KLIK in nastane 13? ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "=CELL(\"filename\")  Samo malo še sparsaš pa maš! ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "tole ti vrne tole : E:\\Moji dokumenti\\[Dokument.xls]List1   ker nisem najbolj vešč v excelu prosim naprej    kako bi ven dobil SAMO in čisto zares SAMO tisti del Dokument?  ne Dokument.xls, _SAMO_ Dokument  se da? ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "S funkcijo FIND() poiščeš .xls], vrne št, kjer se začne iskani niz. Potem poiščeš [. Potem pa z MID() izrežeš ta del niza. Lahko tudi združiš vse to eno formulo. (ne, ne bom ti kode napisal, razmigaj sive celice;) ",
+    "user": "veteran"
+  },
+  {
+    "message": "no grem probat.  kaj naredim ker ne bom znal?  ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "jeeeeee  =MID(CELL(\"filename\");FIND(\"[\";CELL(\"filename\"))+1;2)      torej, iščem knof za povečanje vrednosti za +1 in pa če je kakšen knof, da rečeš, preračunaj vse vrednosti (formule) še enkrat? ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "kak naredit kodo ki se sama za sabo zbriše?  torej, nej v eno celico zapiše to vrednost, potem pa naj se ta koda izbriše  zakaj?   namreč, vsakič ko zaženem excel dokument, kjer je taka koda (da najde ime dokumenta), zapiše ponovno to vrednost....in potem me vsakič ko hočem jiti ven sprašuje če želim shraniti spremembe  potem dam pa natisnit 100 dokumentov...pa stojim ob compu pa klikam DA  torej, kako izbrisati to kodo, potem ko se izvede?  ideje? ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "To sem prepisal iz excxelovega helpa za Visual Basic   This example closes the workbook that contains the example code and discards any changes to the workbook by setting the Saved property to True.  ThisWorkbook.Saved = True ThisWorkbook.Close ",
+    "user": "smetko"
+  },
+  {
+    "message": "še malo navodil iz helpa  Preračunavanje delovnega lista ali delovnega zvezka  Pritisnite F9 Preračuna formule, ki so se spremenile od zadnjega računanja, in formule odvisne od njih, v vseh delovnih zvezkih. Če je delovni zvezek nastavljen na samodejno računanje, vam ni potrebno pritisniti F9 za izračun.  Pritisnite SHIFT+F9 Preračuna formule, ki so se spremenile od zadnjega računanja, in formule odvisne od njih, v aktivnem delovnem zvezku.  Pritisnite CTRL+ALT+F9 Preračuna vse formule v vseh odprtih delovnih zvezkih, ne glede na to, ali so bile spremenjene, ali ne.  Pritisnite CTRL+SHIFT+ALT+F9 Pregleda odvisne formule in potem preračuna vse formule v vseh odprtih delovnih zvezkih, ne glede na to, ali so bile spremenjene, ali ne.  če hočeš prišteti neko vreddnost nekemu obsegu, potem v neko celico vpiši to vrednost (v tvojem primeru 1) in izvedi kopiraj (ctrl C), nakar izberi obseg v katerem hočeš to vrednost prišteti in izberi posebno leplenje in pod operacija izbereš dodaj. ",
+    "user": "smetko"
+  },
+  {
+    "message": "to z preračunavanjem mi ful pride....  k mam dokument, pa je več polji odvisnih eno od drugih. pa včasih kej spremenim, pa računam da se bodo tut druge cifre posledično spremenile, pa jih kr ne preračuna :=)  tisto z  ThisWorkbook.Saved = True ThisWorkbook.Close  ..pa ostalo...  pa ne razumem :) ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "*bump*  če bi mi kdo lahko pojasnil..kaj pa kako naj naredim s tem ThisWorkbook.Saved = True  ?  lp, tenx :) ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "Narediš makro OnClose, pa noter zapišeš ThisWorkbook.Saved=True (Orodja - Makro ...) ",
+    "user": "veteran"
+  },
+  {
+    "message": "še malo bolj podrobno pomoč...prosim  ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "Torej da ne odpiram nove teme bi še jaz prosil za pomoč. Dobivam Excel file v katerih so nanizane številke produktov npr. 912293-2344 kako bi bilo možno da mi excel te številke prevede v točno ime produkta.   Hvala za pomoč! ",
+    "user": "tt1024"
+  },
+  {
+    "message": "klemen: V meniju izbereš [Orodja ][Makro>][Makri] in v polja [Ime Makra] vpišeš \"OnClose\" in pritisneš gumb [Ustari]. nato pa med  Sub OnClose() in End Sub vpišeš ukaze. Za tvoj primer bi to izgledalo takole:  Sub OnClose()  ThisWorkbook.Saved = True End Sub  Ta makro se bo izvedel vsakič, ko boš zaprl delovni zvezek zato se imenuje OnClose in ukaz ThisWorkbook.Saved = True bo pač rekel excelu, da je vsebina že shranjena (čeprav v resnici ni nujno da bo), in ti zato ne bo več težil za shranjevanje. Da pa lahko uporabljaš makroje, moraš v varnostnih nastavitvah za Excel omogočiti makre.  [Orodja],[Možnosti],jeziček[Varnost],gumb[Varnostna nastavitev za makre], in izbereš sredjo varnost. (Če pri odpiranju dokumenta nato izbereš da se makri ne bodo izvajali, se ta makro ne bo izedel). ",
+    "user": "smetko"
+  },
+  {
+    "message": "tt1024: Funkcija Vlookup (Hlookup-->vloga vrstic in stolpcov so zamenjane) lahko pomaga: Nekje morate imeti tabelo, kjer bo v prvi koloni številka v neki drugi koloni pa ime produkta. Polem lahko z funkcijo Vlookup iščete podatek po prvi koloni tabele in kot rezultat vrne podatek iz n-te kolone. Sintaksa: Vlookup(vrednost ki jo iščete; tabela po kateri iščete; kolono iz katere vrnete podatek, način iskanja)  \"kolono katero vrnete\" se začne z 1 (to je stolpec, po katerem tudi iščemo). Ta vrednost mora biti manjša kot je širina tabele.  Če je \" način iskanja\" True(privzeto) potem najde približno vrednost. To je lahko vzrok za glavobole!!. Priporočam uporabo False, saj bo v tem primeru, če ne najde vrednost vrnil napako. ",
+    "user": "smetko"
+  },
+  {
+    "message": "@Klemen  tole funkcijo daj v modul Function SheetName() Application.Volatile SheetName = Sheets(Application.Caller.Parent.Index).Name End Function  v celico kjer želiš ime vpiši =SheetName() ",
+    "user": "BoO"
+  },
+  {
+    "message": "smetko hvala za odgovor ampak se ne znajdem najbolje v excelu pa bi te prosil če lahko naredis bolj step by step za dummyje  Ne vem kje sploh najdem to lookup funkcijo npr. Aja pa se to v enem excel filu imam v enem stolpcu številko v drugem pa ime tega produkta, po mailu pa dobim drug excel file v katerem je samo številka produktov brez imen. Torej jaz bi rad da mi avtomatsko zamenja v novem filu te številke z imeni.  Hvala za pomoč! ",
+    "user": "tt1024"
+  },
+  {
+    "message": "predpostavimo da imaš v excelovem fajlu z imenom \"Sifrant.xls\" na List1 v koloni A številke, v koloni B pa imena artiklov V drugi datoteki pa v celici A1 številko produkta. potem v celico B1 vpiši sledeče : =VLOOKUP(A1;[Sifrant.xls]List1!$A:$B;2;FALSE) in bos v tej celici zagledal ime produkta. S tem res ne zamenjaš številke z imenom, dobiš pa v drugi celici ime produkta.  funkcije v excelu poleg tega da jih napišeš (obvezno se začnejo z =), ali iz menija izbereš [vstavljanje][funkcija] lahko izbereš tudi tz orodne vrstice (poleg znaka za vsoto najdeš poščico navzdol in izbereš [več funkcij] ",
+    "user": "smetko"
+  },
+  {
+    "message": "Smetko najlepša ti dala res 100x hvala. Sam še ena prošnja ker vidim da obvladaš. Torej sedaj moram vsako številko v tej formuli: =VLOOKUP(A1;[A1.xls]Sheet1!$A:$B;2;FALSE za črko A tam ko j prvič A1 ročno spreminjat ko se premaknem na celico A2 npr. moram tudi vtipkati A2. Ali je mozno da on to avtomatsko naenkrat vse spremeni.   Hvala še enkrat  ",
+    "user": "tt1024"
+  },
+  {
+    "message": "če kopiraš formulo iz celice B1 v B2 bo tudi po formula v celici B2 vzela podatek iz celice A2 Če bi hotel po kopiranju vzeti iz iste celice bi moral napisati $A$1 za fiksiranje tako po X kakor Y osi. Torej če povzamem: če kopiraš formulo po osi X (oziroma Y) se tudi celice iz katerih vzemaš podatke premikajo po osi X (oziroma Y) razen če jih ne fiksiraš z $ pred številko(črko). ",
+    "user": "smetko"
+  },
+  {
+    "message": "novo vprašanje :   mam excelov dokument...kak naredit da se bo v enem polju vnesno datum, v drugem pa recimo avtomatsko vnešeno polje (kjer je datum) + 1?  torej vnesel bom nekje 25, pa bo se nekje drugje direkt avtomatsko popravilo na 26 ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "Recimo da imas v A stolpcu datume. Das potem v B stolpec (za 1. vrstico, se pravi smo v B1): =A1+1.  Potem samo klikneš na B1 in se ti pokaže kvadratek na robu celice. Držiš kvadratek in potegneš do 25. vrstice oz. kolkor pač hpčeš met. ",
+    "user": "steev"
+  },
+  {
+    "message": "v List1 polje G6 imam datum, ki bi ga rad v drugem listu povečal  poskusil sem tole : 8dobesedno skopirano)  =DATE(YEAR(DATEVALUE(List1!G6));MONTH(DATEVALUE(List1!G6)); DAY(DATEVALUE(List1!G6))+1)  pa nekako ne dela :) ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "ne ti dobesedno skopirat tega. Ti dej v tisot celic kjer hoces met datum povecan tole =List1!G6+1 ",
+    "user": "steev"
+  },
+  {
+    "message": "Auto spreminjanje številk:  Private Sub Workbook_Open() Range(\"A1\").Value = Range(\"A1\").Value + 1 End Sub   Auto shranjevanje :  Sub Auto_Close() If ThisWorkbook.Saved = False Then SaveName = ActiveSheet.Range(\"A1\").Text ActiveWorkbook.SaveAs Filename:=\"E:\\tvoja pot\\naziv dokumenta\" & _ SaveName & \".xls\" ThisWorkbook.Save End If End Sub ",
+    "user": "srd"
+  },
+  {
+    "message": "kak pa narediš, da bi meu v funkciji tut besedilo, recimo tkole :  =\"Danes je pa \" + DATE()..  p.s..: DATE() je tm sm za primer pač... ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "Za združevanje nizov uporabi \"&\" =\"Danes je pa \" & DATE().. ",
+    "user": "smetko"
+  },
+  {
+    "message": "nov problem :)  Z funkcijo VLOOKUP si pač vlečem neke podatke. in pri nekaterih vrne nazaj #N/V. s tem sicer ni nič narobe ker pač funkcija tega ne najde. Problem je, ko moram v tej tabeli namesto #N/V tam napisati 0(nič). Kako bi to naredil? Nekej sem se ukvarjal z posebnim lepljenjem...pa to tudi ne gre. Torej? Moram pa to narediti zato, ker hočem potem s temi podatki nekaj delati in recimo SUM ne morem narediti med polji kjer je noter #N/V  help! ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "=IF(TEXT(G9;\"dd\") = 1;  zakaj mi excel vrne ta pogoj kot false, ko imam pa v celici G9 vpisano : 1.1.2006, oblikovanje celice pa Datum in primer : 14.3.2001  kaj delam narobe? ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "Pri tem sta narobe dve stvari in sicer 1. Funkcija TEXT vrne text torej bi moralo biti =\"1\" 2. ti bi rad odgovor glede na prvi znak torej moraš dodati še funkcijo LEFT(text,št.mest).  Za tvoj primer se funkcija naj bi glasila: =IF(LEFT(TEXT(G9;\"dd\");1)=\"1\";  Za točko dva sem spregledal da je datum enoštevilčen.(zamenjal z formatom) torej upoštevaj samo točko 1. ",
+    "user": "smetko"
+  },
+  {
+    "message": "Uff, vidva pa sta komplikatorja. ;)  text(g9;\"dd\") pretvori število v string - ker si izbral format \"dd\", vrne dvomestni niz, torej dobiš \"01\"  uporabi raje funkcijo day()  =if(day(g9)=1;...)  BTW, čisto vseeno je, kako je oblikovana celica, datum je dejansko zapisan kot število. Če hočeš iz tega dobit dneve, mesece; uporabljaj day(), month(), year()... ",
+    "user": "veteran"
+  }
+]

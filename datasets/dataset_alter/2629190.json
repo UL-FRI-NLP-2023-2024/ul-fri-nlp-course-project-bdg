@@ -1,0 +1,14 @@
+[
+  {
+    "ctx": "Nastavitve zunanje IP kamere APTI-14C2-36W",
+    "content": "Celo popoldne se že matram s TOLE kamero. Priklopil sem jo na router preko UTP kabla. Kamera sicer deluje vendar nikakor ne uspem zrihtat najbolj pomembne funkcije in sicer snemanja po meri. Kamera ima (vsaj tako piše v specifikaciji) motion detektor in želim nastaviti tako, da kamera začne snemat, če zazna premikanje. Vse lepo in prav, izberem točno tako kot želim in sicer, da začne snemat vsakič ko zazna premikanje in snema 3 min. Privzete mape za shranjevanje sem pustil tako kot so.\n\n\n\t\n\n\n\n\n\t\n\n\n\nŽal pa konfiguracija ne deluje, saj lahko maham pred kamero, kolikor hočem, pa le ta ne začne snemat \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nČe pa v klientu za nadzor kamere ročno kliknem na snemanje, pa normalno snema in shranjuje v mapo. Ne vem kaj delam narobe, zato prosim, če ima kdo izkušnje s to ali podobno kamero in nastavitvami, da se javi s kakršnim koli nasvetom. Seveda omogočim tudi team viewer dostop za lažjo predstavo.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Nastavitve zunanje IP kamere APTI-14C2-36W",
+    "content": "Sem rešil..delno. Očitno se ta program (Herospeed VMS client), ki je za konfiguracijo kamere in monitoring ne razume najbolje s kamero, saj se nekatere nastavitve niso aplicirale. To sem videl, ko sem se potem povezal direkt na kamero preko web vmesnika in so bile vse nastavitve še vedno v privzetem stanju, med drugim tudi izklopljena funkcija motion detection. Mapa za shranjevanje je bila prav tako privzeta in ne tista, ki sem jo nastavil v programu..Skratka ta kamera očitno nima svojega programa za monitoring, zato pa prihaja do teh anomalij. Zdaj sem vse nastavil preko web vmesnika, kljub ožjemu spektru funkcij.\n\nNi mi tudi všeč, da kamera snema v nek čuden format (.idx/.vdo) in sem moral v vlc-ju nastaviti demuxer za ta format. Ampak v ta format snema samo takrat, ko snema samodejno, če pa ročno vklopim snemanje pa snema v normalen .avi format.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  }
+]

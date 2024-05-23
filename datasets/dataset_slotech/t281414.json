@@ -1,0 +1,30 @@
+[
+  {
+    "message": "Js mam en problem. Sem v študentu, ki ima ruter pa ma veliko portov zaprtih. Rad bi da bi igrav igrco age of empires 2 v programu the all seeing eye. ko naredim server mi napiše, da nimam odprtega porta 27244. Vodstvo smo prosl naj ga odprejo pa nočjo. Je kakšna možnost, da bi se rešo problem na mojem kompu, ne da bi spreminjav nastavitve na ruterju (ilegalno) :) Hvala ",
+    "user": "moongo"
+  },
+  {
+    "message": "Če folk poznaš, se zmeni, da si inštalirate hamachi, nardite \"lan\" in špilate brez problemov  ",
+    "user": "Steinkauz"
+  },
+  {
+    "message": "hja glih to je problem. Če poznam folk:) Ka to ne gre da bi \"promet\" preusmero čez kak drug port, rečmo preko porta ki ga ma messenger? Še enkrat hvala ",
+    "user": "moongo"
+  },
+  {
+    "message": "To pa ne. Vsak port ma svoj namen za določene aplikacije, protokle,..Ne morš recimo prek porta 23, ki je rezerviran za Telnet odjemlaca. Tko pač je. ",
+    "user": "primzx"
+  },
+  {
+    "message": "No ja... To ne bo popolnoma res... Ni namreč res, da ima vsak port točno določen namen in pika. Dokler določen port ni zaseden ga lahko uporabi katerikoli program. Obstaja pa neke vrste dogovor katere aplikacije bi naj uporabljale določene porte. To ureja  IANA, ki pa tudi ne vsiljuje te ureditve, jo pa priporoča. Za seznam aplikacij, ki uporabljajo porte poglej  tukaj.  Glede samega problema. Če program omogoča spreminjanje porta, ga spremeni na enega, ki ga imate odprtega in pač povej ostalim, da se povežejo na ta določen port. Sicer nevem kako the all seeing eye deluje, tako da ni nujno da bo delovalo tole.  EDIT: Tak BTW, iz kerega doma pa si? ",
+    "user": "Atos"
+  },
+  {
+    "message": "Sn iz enga študentskega doma vincencij. Pa nimajo pojma kk bi še nas zajebaval zarad neta :) Majo odprt sam port 22 za SSH.Pol gre promet sam skos ta port notr pa ven, s tem pa opočasnjuje delovanje neta. Slišo sn že za proxy server, sam nwm kk ga naj naštimam v tem programu. LP ",
+    "user": "moongo"
+  },
+  {
+    "message": "Problem ni ravno tako preprost, kot ste si ga zastavili.   Nažalost ne najdem informacij (pa tudi ne bom sedaj 1h iskal, prepuščam to tebi) ali ta program potrebuje, da se drugi povežejo nate preko nastavljenega porta (torej, da so oni inicializatorji povezave) ali zgolj da komunikacija, ki jo ti sprožaš, poteka preko tega porta.  Razlika zate pa je ogromna. V primeru da program zgolj potrebuje vzpostavljati povezavo na nek strežnik preko nastavljenega porta, bi verjetno delovalo če ga nastaviš npr. na port 80 (seveda, če vam dela http in pri tem ne uporabljate proxyja). Ampak spet pogojno, ker če se server oglaša na vratih XXX in imate zelo restriktivno požarno steno, je šansa da se bodo vzratni paketki izgubljali.  V kolikor pa morajo biti vrata odprta zaradi lokalnega servisa in bodo inicializatorji povezav drugi (torej ne tvoj računalnik) potem brez sodelovanja vašega oskrbnika omrežja verjetno ne bo šlo, razen če nima vsak interni IP v vašem omrežju svoj externi IP (kar pa močno dvomim, možno pa je saj je tako nastavljeno na mnogih šolah). Če dejansko ima vsak interni IP svoj externi IP in je na routerju nastavljeno da preusmerja ves promet, potem pa požarna stena na njem filtrira nedovoljene porte, zna zadeva ponovno delovati če preklopite s kolegi na odprti port (če sploh je kak port odprt). Če pa imate en ali zgolj par externih IPjev, preko katerih dostopate do interneta, potem pozabi na celo zadevo - brez da se router zaveda da mora za določena odrpta vrata pošiljati paketke na tvoj interni IP ne bo šlo.  To, da imajo oni odprt port 22 za SSH, namiguje na to da imate NAT in da je ta SSH za enega izmed strežnikov/router - tako da potem kar pozabi na zadevo. Router preko porta 22 pošilja podatke točno določenemu računalniku (ali pa se sam oglaša nanj), tako da tvoj računalnik ne pride v upoštev.  Sicer pa si lahko relativno preprosto odgovoriš na vprašanje, kako je zadeva postavljena. Na dveh računalnikih v domu odpri stran  http://whatsmyip.org/. Če je zadnja številka na obeh računalnikih enaka, potem uporabljate NAT in ne bo dovolj, da najdeš odprta vrata. Drugo kar moraš ugotoviti je, ali je težava v zelo restriktivnem filtriranju podatkov ali zgolj v tem, da rabiš odprt vhodni port. Najlažje to ugotoviš tako, da najdeš kakšno online igrico, ki se poveže neposredno na strežnik (torej je igrica sprožitelj komunikacije). Verjetno ti kdo lahko predlaga kako tako igrico, verjetno kak FPS. Za WOW vem, da deluje tako. Če ti torej zadeva deluje, potem je težava v tem, da rabiš odprta vhodna vrata. Če zadeva ne deluje, je verjetno težava v zelo restriktivnem filtriranju vseh izhodnih in posledično vhodnih povezav. ",
+    "user": "[SkA]"
+  }
+]

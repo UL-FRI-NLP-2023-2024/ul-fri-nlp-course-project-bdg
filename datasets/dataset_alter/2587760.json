@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "Torej - v mansardo prihaja Innbox router. V sobi je zraven pač računalnik, telefon in TV. \nNa drugo stran hiše (po diagonali) bi rad spravil drug tak paketek storitev: ethernet, TV in telefon.\nV cevi je prostor samo za en UTP kabel (upam  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n) in sem načrtoval vtakniti UTP v Innbox, port nastaviti na Trunk, UTP v steno, na drugi strani pa stikalo (switch). \nSedaj pa nisem prepričan, če bo vse delovalo. Kaj menite? Ok, internet in TV bi načeloma morala, za IP telefonijo pa nisem čisto prepričan. Po prebranem je namreč potrebno port na Innboxu nastaviti na Voice, ampak potem verjetno ne gre zraven tudi internet in TV. Ali pač?\nZagotovo ima kdo takšno kombinacijo ...  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "krava",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "Iz Trunka lahko potegneš vse ven, tudi VOIP (menda vlan 3998). Na drugi strani bi rabil nek smart switch, ki ve delati z VLANi in pa najbolje bi bilo IP telefon, tega bi najbrž še najlažje skonfiguriral. Če bi imel svoj vmesnik iz VOIP na navadno linijo bi ga še zmeraj moral skonfigurirati z geslom, ki ti ga sicer lahko povejo na Telekomu. \n\nTorej če poenostavim, v kabel lahko daš vse skupaj a rabiš na drugi strani opremo, ki bo vedela to tudi razpakirati in poslati na ustrezne porte.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "Sem imel namen itak kupiti brezžični VoIP telefon za tja. Tako, da bo telefon IP. Torej Trunk na portu, kjer je tisti UTP, na drugi strani pa ustrezen switch, da razdeli na tri različne dele?\n\nKateri pa je tak smart switch, ki je cenovno ugoden? Vidim samo drage kot pes.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "krava",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "kaj pa kakšen mikrotik switch?",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "Npr. http://www.tp-link.com/us/products/details/cat-41_TL-SG108E.html\n\nObstaja tudi v 5 portni varianti. Mislim, da bi s tem šlo. Ali pa kot že omenjeno kakšen Mikrotikov, čeprav mi njihov SwOS ni poznan.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Daniel pravi:\n Npr. http://www.tp-link.com/us/products/details/cat-41_TL-SG108E.html\n\nObstaja tudi v 5 portni varianti. Mislim, da bi s tem šlo. Ali pa kot že omenjeno kakšen Mikrotikov, čeprav mi njihov SwOS ni poznan.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTega ne priporočam, sem imel in vrnil nazaj. VLAN 1 je nastavljen kot default in se portov iz tega VLAN-a ne da niti odstranit, niti ga ne moreš uporabit kot tagged na nobenem portu (posledično tega VLANa ne moreš uporabit za trunk, hkrati ti pa preko njega leaka določen (broadcast) promet med porti, ki so sicer v različnih izoliranih VLANih). Poleg tega je managment interface dosegljiv kar na vseh portih ne glede na to v katerm VLANu so, samo dostopat moraš iz pravega naslova IP (isti subnet kot je management interface). V mojem primeru je šel čez switch tudi public VLAN, kjer si lahko z nastavitvijo pravega IPja še vedno prišel do nastavitev switcha. No za konec je še trunk do serverja deloval nestabilno (okvarjeni framei), medtem ko je prej z 10 let startim el cheapo switchem delal BP in tudi sedaj z drugim switchem ni težav. Na koncu sem na Amazonu za dobrih 80€ vzel 24 portni Zyxel GS1900-24E in zaenkrat vse BP.\n\n\nČe že je po mojem Mikrotik boljša izbira, vendar ne podpira IGMP snoopinga. Kolegu sem na Telekom optiki nastavil RB260GS in mu deluje BP za IPTV in net po enem kablu.\n\nEDIT: Opcija je še kak \"router\" ala 1043NDv2 z Open-WRT.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "da se tudi na mikrotiku nastavit da multicast leti samo na dolocene porte.",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik KrNeki99 pravi:\n da se tudi na mikrotiku nastavit da multicast leti samo na dolocene porte.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZ ACL lahko omejiš, da na določene porte multicast ne leti, ampak to itak dosežeš že s tem, da IPTV VLAN nastaviš samo na portih, kjer rabiš TV na ostalih pač ne (vsaj za IPTV multicast, v celoti filtrirat multicast pa tako ali tako ni najboljša ideja, ker ubiješ tudi IPv6). IGMP snooping dinamično poskrbi, da leti samo na tiste porte, ki so v določeni MC skupini. Tega se kot vem, ne da dosečt (lahko se pa motim). Za tistih par portov v praksi ne bo panike (če bo za TV samo en port pa itak ne bo razlike), tako da ni deal breaker, sem samo omenil, da ne podpira.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "Ja, iz tega stališča so ti EasySMART switchi kar malo problematični. No, ker sam nisem imel nekih varnostnih težav z njim zaradi VLAN-a 1 na vseh portih ga kljub temu uporabljam, na eni lokaciji sem ga imel zgolj za IGMP snooping, na drugi pa, da sem iz VLANa 3999 dobil ven VIDEO port za Sagema. Dela povsem OK. Za naprednejše konfiguracije se je pa treba malce finančno prilagoditi.\n\nTudi na že omenjenem TpLinku 1043 se da narediti marsikaj, težava je le, da se da kupiti bolj ali manj zgolj v4, ki še ni pretirano dobro podprta v OpenWRT in LEDE a za silo že deluje.\n\nNa eni lokaciji imam npr. iz Innbox trunk porta v WAN na 1043ND v1 in potem na vseh portih nastavljen VLAN 3999, da lahko na kabel priklopiš ali BOX, računalnik, navaden Switch ali pa smart Switch. Če je IP telefon sposoben delanja z VLANi se da nastaviti marsikaj. \n\n------------------------------------------------------------------\nNajbolje pa, da se pozanimaš na Telekom, kako je z IP telefoni, ali so priklopljeni na VOICE port ali so lahko morda kar direktno v internet. Ker če so direktno priklopljeni, ti je na drugi strani dovolj tudi povsem navaden switch, ker BOX tako ve, kje mora iskati multicast, internet je tako povsod, telefon pa, če dela preko interneta ne rabi VLANa.\n\nEDIT:\n\nGlede na zapisano tukaj:\n\nhttp://www.telekom.si/pomoc-in-podpora/teme-pomoci/telefonija/telefonija-siol/uporaba/ip-telefon\n\nMoraš najprej iz kabla dobiti VOICE VLAN, da nanj priklopiš telefon.\n\nMožno je tudi, da telefon sam podpira VLANe, vendar teh detajlov ne poznam ravno npr.:\n\nhttps://www.manualslib.com/manual/975876/Gigaset-C530-Ip.html?page=119#manual",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom Innbox in UTP na drugo stran hiše",
+    "content": "Napovedali so se za torek, pa bom takrat povprašal, kaj svetujejo za prenos a drugo stran hiše (torej druga telefonska številka, internet in drugi TV).\nPotem pa se bom poglobil, prav veliko izkušenj s tem nimam. Že s kablom bo veselica (najprej ga spraviti skozi poškodovane cevi, potem pa še gor narediti konektorje).",
+    "author": "krava",
+    "author_level": "Majstr"
+  }
+]

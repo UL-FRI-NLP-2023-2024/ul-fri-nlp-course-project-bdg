@@ -1,0 +1,74 @@
+[
+  {
+    "message": "Dobil sem Linksysov range extender in si ga zelo enostavno postavil v nekaj minutah, s tem pa pokril en del hiše z wifi omrežjem, ki do zdaj ni bil pokrit. En del hiše pa ostaja nepokrit.  Ker se mi v omari valjata še en Linksys WRT54GL (z dd-wrt fw) in TP-Link WR740N (original fw), me zanima ali lahko kako nastavim katerega izmed teh dveh ruterjev tako, da bosta delovala kakor ta \"range extender\", ki sem ga ravnokar nastavil.   Kako bi moral nastaviti nastavitve, da bi lahko funkcionirala kot range extender? ",
+    "user": "pisco"
+  },
+  {
+    "message": "Navodilo za dd-wrt. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Ta navodila so defektna, ker vsake 24 ur izgubi drugi router povezavo in kok se spomnim moraš vse spet na novo nastavit, ne obdrži te nastavitve al pa jest nisem znal nastavit. ",
+    "user": "#000000"
+  },
+  {
+    "message": "Sam sem nastavil WRT54GL po teh navodilih in dela že leta.... ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Prodaj TP-Link WR740N in ga zamenjaj z WRT54GL. Nato oba flashaj na tomato fw uporabi wds. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "@kospirator: raje tomato fw kakor dd-wrt? ",
+    "user": "pisco"
+  },
+  {
+    "message": "Eno ali drugo. Kar se mene tiče, je Tomato bolj user-friendly. ",
+    "user": "bluefish"
+  },
+  {
+    "message": "sprašujem zato, ker pri dd-wrt sem opazil, da imam težave, če se hočem brezžično povezati na linksysa (tistega ki naj bi bil range extender), v kolikor ta ruter nima povezave z internetom (recimo, če pade povezava z AP).  V čem je štos tega? ",
+    "user": "pisco"
+  },
+  {
+    "message": "Zadnji WRT54GL fw za dd-wrt je iz 10/10/2009 (v24 presp2 b13064) http://www.dd-wrt.com/site/support/rout... .  tomato: http://www.polarcloud.com/tomato http://victek.is-a-geek.com/downloads.h... http://tomato.groov.pl  Zadnji se še razvija (K24 in K26), glej da velikost ne presega 3.7 MB. Če se odločiš za K26, prava verzija za WRT54GL ima v imenu \"MIPSR1\", velikost 3.6 oz 3.7 MB.  Zadnje štiri verzije K26:  http://tomato.groov.pl/download/K26/build5x-132-EN/tomato-K26-1.28.RT-MIPSR1-132-MiniIPv6.zip\nhttp://tomato.groov.pl/download/K26/build5x-136-EN-MultiWAN/tomato-K26-1.28.RT-MIPSR1-136-MiniIPv6.zip\nhttp://tomato.groov.pl/download/K26/build5x-137-EN-MultiWAN/tomato-K26-1.28.RT-MIPSR1-137-MiniIPv6.zip\nhttp://tomato.groov.pl/download/K26/build5x-138-MultiWAN/tomato-K26-1.28.RT-MIPSR1-138-MiniIPv6.zip  K24  http://tomato.groov.pl/download/K24/build5x-124-EN/tomato-ND-1.28.5x-124-VPN.trx  http://www.linksysinfo.org/index.php?th... The maximum image size for 4MB routers is 3866624 bytes or 3776KB. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Jaz sem tole naredil za moj stari netgear, ki sploh ni mišljen kot AP, pa dela b.p.  1. Cover Router B's WAN (Internet) port with a piece of tape. You'll want to avoid using the port as doing so would prevent you from converting the router into an AP.  2. Find out what router A's range of IP addresses is. For example, if Router A's IP adress is 192.168.1.1 then we can safely assume its IP pool ranges from 192.168.1.2 to 192.168.1.254.  3. Manually set Router B's IP address to an unused IP within Router A's IP range. For example, you can make it 192.168.1.2. Just make sure you haven't and will not manually use this IP for any other device.  4. Turn off Router B's DHCP function.  And you're done. Now if you connect Router B (which is no longer a router) to Router A using a network cable (from LAN port to LAN port), it will function as an Access Point giving you better Wi-Fi range for your devices. ",
+    "user": "Furbo"
+  },
+  {
+    "message": "To je primerno v primeru, če lahko oba povežeš s kablom. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Kar je nekaj kar res hočeš storiti če bi rad imel hiter in zanesljiv wifi. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": " konspirator je 30. jan 2017 ob 14:40 izjavil:To je primerno v primeru, če lahko oba povežeš s kablom.   Tako je, in v mojem primeru ju ne morem povezati s kablom. ",
+    "user": "pisco"
+  },
+  {
+    "message": "Jaz sem se tudi zezal z extenderji, na koncu sem moral potegniti kabel, ostalo je krš. ",
+    "user": "Furbo"
+  },
+  {
+    "message": " ToniT je 30. jan 2017 ob 12:09 izjavil:Sam sem nastavil WRT54GL po teh navodilih in dela že leta....   Toni, ampak po teh navodilih, ki si mi jih ti dal, sekundarni ruter ne deluje kot \"extender\", ki bi imel identični SSID kot primarni ruter? V tej navodilih moraš nastaviti sekundarnemu ruterju neko drugačno ime kakor ima primarni ruter.   Ker \"range extender\" drugače deluje tako, da prevzame isti SSID od primarnega ruterja in razširi s tem signal. ",
+    "user": "pisco"
+  },
+  {
+    "message": "Novo vprašanje, ker se je pojavil problem pri moji zaporedni povezavi treh ruterjev.   Imam Asusa, ki deluje kot AP. Recimo, da mu je ime AP1, ker je prvi v verigi.  Potem sem postavil Linksysa ddwrt, ki deluje kot Repeater Bridge. Povezan je z AP1. Ime mu je AP2. Če se klient poveže na AP2, internet in vse deluje kot mora.   Nato sem pa postavil še enega Linksysa, ddwrt, ki sem mu prav tako nastavil, da deluje kot Repeater Bridge, ime mu je AP3. Povezan je na AP2. Ta zadnji AP3 pa nikakor ni sposoben dodeliti IP naslova svojim klientom. V čem je štos?  Če nastavim laptop na fiksni IP in se povežem na AP3, potem še nekako lahko zlezem na AP3 in dostopam do ruterja, nikakor pa ne dobim interneta.  Oba zadnja ruterja sta \"Bridged\" in tudi povezana med sabo.  Kaj delam narobe? ",
+    "user": "pisco"
+  },
+  {
+    "message": "Za AP2 & AP3 nastavi default gateway ip AP1, dhpc izklopi na AP2 in AP3. ",
+    "user": "konspirator"
+  },
+  {
+    "message": " konspirator je 7. feb 2017 ob 21:01 izjavil:Za AP2 & AP3 nastavi default gateway ip AP1, dhpc izklopi na AP2 in AP3.    Gateway imam že nastavljen, pa ni pomagalo.  Dhcp pa je itak že izklopljen, ker ga nikjer v nastavitvah ne najdem.   ",
+    "user": "pisco"
+  }
+]

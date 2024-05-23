@@ -1,0 +1,34 @@
+[
+  {
+    "message": "Spostovani!  Do nedavnega sem imel zakupljen hosting z domeno pri Domenca d.o.o.. Gostovanja nisem podasljal, sem pa podaljsal lastnistvo domene in me sedaj zanima, kako naj prenesem domeno na google, da bom lahko uporabljal elektronsko posto z domenskim emailom na gmail.com? Oz, kaj vse mi mora Domenca d.o.o. pripraviti, da lahko to storim, ker probal sem ze, ampak mi ni ratalo. Je treba ns1.domenca.com ter ns2.domenca.com spraviti pod google?  S spostovanjem, M. ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "https://gsuite.google.com/ ",
+    "user": "srus"
+  },
+  {
+    "message": " srus je 3. mar 2017 ob 22:15 izjavil:https://gsuite.google.com/  Hvala, samo kaj sedaj naredim, ker spletne strani (se) nimam, imam pa kupljeno domeno (lastnisko):   ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "http://www.melyssagriffin.com/use-gmail...  Za preverjanje, pa uporabiš eno brezplačno gostovanje. Celo pri domenci ponujajo BREZPLAČNO gostovanje za spletne strani do 25MB. To bo dovolj da narediš google preverjanje domene. ",
+    "user": "Letalec"
+  },
+  {
+    "message": "Aha, sedaj sem sele videl, no sem postavil stvari (recorde), sedaj pa da vidimo, javim ... HVALA! ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "Upam, da si opazil da je gsuite plačljiv... min 5€/osebo/mesec. ",
+    "user": "sajko"
+  },
+  {
+    "message": " KernelPanic je 2. mar 2017 ob 09:15 izjavil:Spostovani! Je treba ns1.domenca.com ter ns2.domenca.com spraviti pod google?    A domenca omogoča zastonjske nameserverje in DNS nastavitve za tvojo domeno? Če je odgovor DA, potem tega na tvojem mestu zaenkrat ne bi spreminjal, je pa potrebno vvsakem primeru urediti potem znotraj domence oz. DNS nastavitev \"MX record\" za tvojo domeno, in sicer:  https://support.google.com/a/answer/174...  Name/Host/Alias Time to Live (TTL*) Record Type Priority Value/Answer/Destination Blank or @ 3600 MX 1 ASPMX.L.GOOGLE.COM Blank or @ 3600 MX 5 ALT1.ASPMX.L.GOOGLE.COM Blank or @ 3600 MX 5 ALT2.ASPMX.L.GOOGLE.COM Blank or @ 3600 MX 10 ALT3.ASPMX.L.GOOGLE.COM Blank or @ 3600 MX 10 ALT4.ASPMX.L.GOOGLE.COM  Btw. google ne omogoča več odprtja zastonjskega google apps / g suite računa, ki bi omogočal brezplačno storitev, ki jo želiš. Kot je že nekdo omenil, to stane 5$/mesec. Je pa nekaj drugih solidnih ponudnikov kot napr. Zoho, kjer lahko zastonj gostiš email na svojo domeno. ",
+    "user": "Samael"
+  },
+  {
+    "message": "V osnovi sta dva koraka.   1. Odpreš G suite (nekdanji google apps račun) - lahko preizkusno (trial) eno-mesečno verzijo ali pač plačniško ($5/mesec). In potem slediš navodilu verifikacije (potrditve lastništva) domene. To je prvi korak - na strani googla.  2. Na strani tvoje domene (torej znotraj DNS nastavitev pri Domenci) če to omogoča, pa nastaviš googlov MX record (tisto, kar sem ti linkal že zgoraj). In to je to.   V primeru, da Domenca ne omogoča DNS nastavitev za tvojo domeno, tu priporočam kakšen soliden brezplačen DNS hosting kot sta naprimer https://dns.he.net/ in pa CloudFlare) in znoraj njihove kontrolne plošče nastaviš MX record za googlove strežnike. ",
+    "user": "Samael"
+  }
+]

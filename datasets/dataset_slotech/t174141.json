@@ -1,0 +1,50 @@
+[
+  {
+    "message": "Question:  Kako bi naredu da bi program a.exe zagnal program b.exe in potem v bju izvršil določen ukaz (npr. kao pritisnil tipko Y in potem še enter). Problem je v tem da za b program nimam sourca, in tudi ne morš narediti npr. b < ukaz >. Torej če obstaja kakšna fora, ki bi to naredila? ",
+    "user": "W3by"
+  },
+  {
+    "message": "Sam prožiš ustrezne dogodke. Malo si poglej win32 API, predvsem delo s procesi in sporočili (PostMessage in podobno). ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Ok sem probal z \"SendMessage(okno, WM_KEYDOWN, 0x5A, 1L)\" pa mi ne dela. Možen problem je v tem ker je program narejen v dosu, in ga nisem napisal jaz. Še kaka ideja?  ",
+    "user": "W3by"
+  },
+  {
+    "message": "Uf, a DOS-ovski je? Zoperno. Lahko poskusiš kakšno packarijo s prekinitvami, ampak dan danes to ni več tako preprosto, ker ti OS gleda pod prste. ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Tako daleč pa spet ne grem  . Pač sem naredil po drugi poti, vseeno hvala! ",
+    "user": "W3by"
+  },
+  {
+    "message": "Si siguren da si našel pravo okno, za mu poslat message? Mislim da če je program napisan izvorno za Windows in uporablja njegove bazne standardne kontrole, potem bi se moral dat prit do vsakega njegovega okna, če ga le uspeš najt po window textu ipd. Sam sem enkrat uporabljal en \"debugger/hacker\" tool, s katerim si lahko na ta način attachal katerikoli Windows program in prišel do vseh oken na njemu (sem spadaju tudi gumbi in vse kontrole), ter jim spreminjal osnovne lastnosti (te ki so skupne razredu CWnd - ostale kontrole izhajajo iz njega), npr. tekst, vidnost, enabled/disabled ipd.  Če se ne motim obstaja nek API FindWindow. Si to že uporabil? ",
+    "user": "Mmm'Aah"
+  },
+  {
+    "message": "Koda je bila sledeča:  WinExec(\"program.exe\", SW_SHOW);\nHWND okno;\n// počaka na program\nSleep(100);\nokno = FindWindow(NULL,\"Program - Title\");\n   if (okno==NULL){\n    MessageBox(NULL, \"Ne najdem okna\", \"Error\", MB_OK);                \n    }\nSendMessage(okno, WM_KEYDOWN, 0x5A, 1L); \n  Torej okno najde, problem pa je v tem, ker ne vem če je WM_KEYDOWN prav, ker se to uporablja pri API ne pa pri dosu. Možno bi bilo (morda ), če bi kao simuliral, da si pritisnil tipko, čeprav jo nisi. ",
+    "user": "W3by"
+  },
+  {
+    "message": "A je tisti 0x5A, ali mogoče 1L kakšen ID od gumba? Ker če ni, se mi bolj zdi, da je problem v tem, da ti pošiljaš message glavnemu oknu, namesto gumbu. Ali ti mogoče pošiljaš ukaz, da je stisnjen \"enter\" in je to default gumb na oknu?  Poleg tega...a nisi ti reku da moraš gumb kliknit? Kaj ne bi blo pol lažje če bi poslal event WM_LBUTTONDOWN s parametrom točke tam, kjer naj bi bil gumb? ",
+    "user": "Mmm'Aah"
+  },
+  {
+    "message": "ups. sori, sem totalno zamešal, sem prej nahitro prebral tvoj prvi post, pa sem mislu da gre za gumb....jah, v tem primeru bo pa to malo bolj zapleteno. Kako sploh zgleda ta program? A sploh odpre kakšno standardno Windows okno? Ali deluje popolnoma v konzoli?  Če ima kakšno Windows okno, potem to okno mora zagotovo bit registrirano in mora imet svojo \"Window procedure\" ki procesira sporočila o dogodkih. ",
+    "user": "Mmm'Aah"
+  },
+  {
+    "message": "Ce je to program, ki dela v konzoli z stdio potem je najlazje uporabiti expect. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Da malo natančneje razložim:  Program je napisan v konzoli in je verjetno narejen z stdio.h. Primer:    Izbereš opcijo in program se zapre. Full na easy. Sedaj pa predlogi  ",
+    "user": "W3by"
+  },
+  {
+    "message": "Za zacetek lahko probas simpl unix way:  _popen. Poskusi odpret v read (\"r\") mode-u in prebrat izpis od programa. Ce rata, si ze na dobri poti :). No, mogoce ne rabis izpisa od programa, pa lahko odpres tudi v write mode-u in samo poknes notri zazeljen input. Zal s _popen ne mores brat in pisat naenkrat...  Se pa da branje in pisanje v winsih naenkrat narest s createprocess, ce bos prezivel sok ob branju win32 dokumentacije, evo link:  CreateProcess - s tem pozenes program. Potem pa moras se kot pradzadnji parameter podat pravilno skonstruiran  STARTUPINFO, kjer nastavis hStdInput in hStdOutput od pognanga procesa. Ta dva tolovaja pa ustvaris s  CreatePipe. Read konec od prvega pipe-a das na hStdInput, write konec od drugega pipe-a pa na hStdOutput. Na sreco lahko za vecino parametrov das kar NULL :) ",
+    "user": "64202"
+  }
+]

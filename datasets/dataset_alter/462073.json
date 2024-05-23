@@ -1,0 +1,74 @@
+[
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Imam siol adsl internet in naletel sem na sledečo povezavo. Če kabel iz modema priklopim direkt na računalnik in naredim povezavo na klic, se stvar poveže in internet deluje. Če pa grem preko routerja, se noče povezat. V logu piše nekaj v stilu \"request timeout.\"\n\nRouter se je pred to težavo lepo povezal in mreža ter internet sta lepo delala. Potem je pa router kar naenkrat (nihče ni nič stikal po nastavitvah itd) ostal brez povezave in tudi poveže se ne več. Pri \"direkt\" povezavi sem ugotovil tudi to, da se je povezava pred to težavo vzpostavila mnogo prej, kot se sedaj (prej v trenutu, zdaj rabi kakih 20s). \n\nV čem bi lahko bil problem? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n očitno težava ni v routerju.",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Ni mogoče Ziol med tem časom posodabljal kaj na modemu?",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Ja ne vem. Čudno se mi zdi, da se router ne poveže, računalnik pa, ampak občutno bolj počasi, kot pred to težavo. In to se je zgodilo kar naenkrat, nihče ni nič štimal.",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Mogoče ruter znova posodablja IP številko. Poglej v meniju za ruter, kako imaš nastavljeno za pridobivanje IP-ja",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Vse je tako, kot je bilo nastavljeno prej, ko je lepo delalo (dynamic IP).",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "90% je to: prijava traja predolgo in ruter obupa.\n\nŠe parkrat preveri z direktno povezavo na PC-ju in če še vedno traja pol minute, pokliči na SiOL, da popravijo.\nOmeni da se ti zaradi predolgega odziva ruter ne poveže.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Jao. Zdaj sem klical na siol in so rekli, da deluje vse v redu in da je njihova skrb le to, da računalnik direktno prek modema dobi povezavo in da njih ne zanimajo routerji ipd. Torej če mi pošljejo serviserja in če ugotovi, da se računalnik direktno poveže prek modema, mi bo izstavil račun za 30e, ker je prišel brezveze. Omg... pa sem mu rekel, da če ne drugega, je njihova dolžnost to, da se v hitrem času poveže, pa mi je rekel, da to ni važno :S\n\nJe pa to 99% res, kar si rekel, ker v logu router javi request timeout.. A obstaja kak wifi router, ki se mu da štimat timeout? Kak drug predlog?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "moj predlog: skensli pppoe v modemu in našitmaj podatke v routerju. se pravi naj router vzpostavlja pppoe povezavo...",
+    "author": "MAKY_",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "A na routerju ne moreš povečati timeouta?",
+    "author": "Jiggler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik MAKY_ pravi:\n moj predlog: skensli pppoe v modemu in našitmaj podatke v routerju. se pravi naj router vzpostavlja pppoe povezavo...\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nKako pa naj router opravlja funkcijo modema \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Jiggler pravi:\n A na routerju ne moreš povečati timeouta?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe.. sem se že zavzel in temeljito preiskal, pa se ne da naštimat večjega..",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Računalnik vzpostavi povezavo, router pa ne(PPPoE)",
+    "content": "Zdej sem pogruntal, da je tale modem v bistvu tudi router, zato sem naštimal, da že modem sam po sebi vedno drži povezavo gor, speljal povezavo do LAN porta wifi routerja, mu dodelil drug ip, izklopil dhcp in zadeva končno deluje. Bemuboga  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  }
+]

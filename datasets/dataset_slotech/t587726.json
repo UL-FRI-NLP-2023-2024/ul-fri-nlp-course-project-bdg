@@ -1,0 +1,150 @@
+[
+  {
+    "message": "Imam težavo in sicer prenosnik s prednameščenim windows 8 pro. Ta prenosnik bi rad ponovno naložil. Če v BIOSU izklopim UEFI je vse OK, poženem z DVD-ja, pobrišem particije in gre namestiti kot smo to vajeni.  Sedaj se mi pa postavlja vprašanje kako se pa naloži, če je UEFI vklopljen. Pri vklopu računalnika v BIOS itak ne morem, tako da je treba v Windows in nato ponovni zagon, da prime tipka F2 za BIOS, da lahko nastavim boot iz dvd-ja. Do sem še nekako pridem, težava pa je pri brisanju particij, saj lahko vse particije pobrišem in ko kreiram novo prazno, mi kar neke particije zraven nameče. Kaj delam narobe, kako namestiti Win8 na novo z vključenim UEFI in da bom lahko particije po svoje ustvaril brez da mi jih on nameče zraven.  Hvala in lp Matjaž ",
+    "user": "solatjek"
+  },
+  {
+    "message": "Kolikor je meni znano UEFI dela drugače kot navaden boot preko MBR. Pri UEFI imaš eno particijo veliko mislim da 200MB, kjer imaš notri zagonske fajle, ki poskrbijo za zagon sistema.  Mislim pa da UEFI ne mora bootat direktno iz MBRparticije ampak samo iz protective MBR in GPT. Fora je, da GPT particije omogočajo da lahko na disku narediš particijo večjo od 2TB in da imaš lahko gor 128 primarnih particij, medtem ko MBR omogoča samo 3 primarne particije (ostalo gre potem v extended particijo in logične pogone lahko).   Nekje na internetu je tutorial, kako narediti boot particijo na disku za win7 in 8. Rabiš DVD oz. pač boot datoteke, in jih potem skopiraš na to 200MB particijo. BIOS mora biti tudi seveda UEFI compatible. ",
+    "user": "Nummy"
+  },
+  {
+    "message": "Kako pa gre namestitev, če je nastavljen UEFI in imam prazen disk? Se zadeva namesti po običajnem postopku ali je treba na karkoli paziti. Naložil sem že vsaj 200 računalnikov in vse brez težav a tale UEFI mi je pa res uganka in ga ne razumem četudi berem o njem... :( Rabim laično razlogo... ",
+    "user": "solatjek"
+  },
+  {
+    "message": "Ob inštalaciji narediš GPT particijo, kako točno malo poguglaj. Mislim da se da z utility-ji naredit, ki so na DVD-ju. Potem inštaliraš na to particijo. Ob končani inštalaciji greš še enkrat na DVD, kjer greš v shell in skopiraš iz DVD-ja EFI file na boot particijo. Ob ponovnem zagonu bo moral delat. Nisem še nikol tega delal razen na hackintoshu, tak da za winse nisem 100% kak točno je postopek. 100% pa google ve :) ",
+    "user": "Nummy"
+  },
+  {
+    "message": "Sem googlal. JE mišljen ta link s postopkom namestitve?   Sedaj me pa zanima ko namestič windows, če lahko z acronisom narediš image diska in potem obnoviš na drug računalnik, tako kot je to šlo prej (če imaš več enakih računalnikov)? Ali je tudi tu poseben postopek?  Hvala za vse odgovore, sedaj mi postaja zadeva že malo bolj jasna, čeprav prednosti UEFI-ja mi pa še vedno niso jasne.  lp ",
+    "user": "solatjek"
+  },
+  {
+    "message": "Jaz sem iz USB-ja windows 7 nalagal preko UEFI-ja. Tam pri boot opciji imaš možnost, da izbereš disk iz katerega bootaš. Ne izberi (le) boot iz DVD-ja, ampak še iz točno določenega diska. Malo boš moral raziskovati tam okrog, da boš najdel. ",
+    "user": "mihibo5"
+  },
+  {
+    "message": " solatjek je 14. nov 2013 ob 13:58 izjavil:Sem googlal. JE mišljen ta link s postopkom namestitve?   Sedaj me pa zanima ko namestič windows, če lahko z acronisom narediš image diska in potem obnoviš na drug računalnik, tako kot je to šlo prej (če imaš več enakih računalnikov)? Ali je tudi tu poseben postopek?  Hvala za vse odgovore, sedaj mi postaja zadeva že malo bolj jasna, čeprav prednosti UEFI-ja mi pa še vedno niso jasne.  lp  Ja to je to.  Kar se tiče izdelave image diskov je pa 100% možno narediti, ker recimo na mac-u lahko narediš image sistemskega diska in ga preneseš na drug disk. Ampak kot že napisano tudi na tem linku, ne moreš narediti sector-by-sector kopije, ampak samo kopijo vsebine. Program mora imeti podporo za kopirati GPT particije oz. njihovih vsebin.   Prednosti UEFI-ja so predvsem to, da lahko imaš naložene driverje v \"BIOS-u\", torej imaš podporo za marikaj že tam. V bistvu je to nekak zelo mini OS, ki nadomesti stari BIOS. Nadgradnja, po domače povedano.  Ker UEFI podpira GPT particije, računaj da bo čedalje več računalnikov z UEFI BIOS-om v prodaji. Prednost GPT particije sem pa že napisal. Lahko imaš več particij in večjo kot 2TB.  UEFI oz EFI naj bi prav tako odpravil vse pomanjkljivosti starega BIOS-a, kar se tiče omejitev pri RAM-u, diskih,...   wiki ;) ",
+    "user": "Nummy"
+  },
+  {
+    "message": "UEFI oz EFI naj bi prav tako odpravil vse pomanjkljivosti starega BIOS-a, kar se tiče omejitev pri RAM-u, diskih,...   Časi, ko si imel po 10 particij so minili. Kako naj bi uefi pripomogel glede omejitve rama, če gra za limit arhitekture osja ? ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": " Hayabusa je 14. nov 2013 ob 20:11 izjavil:UEFI oz EFI naj bi prav tako odpravil vse pomanjkljivosti starega BIOS-a, kar se tiče omejitev pri RAM-u, diskih,...   Časi, ko si imel po 10 particij so minili. Kako naj bi uefi pripomogel glede omejitve rama, če gra za limit arhitekture osja ?   A normal PC BIOS is limited to a 16-bit processor mode and 1 MB of addressable space due to the design being based on the IBM 5150, which used the 16-bit Intel 8088.[6][16] In comparison, the UEFI processor mode can be either 32-bit (x86-32, ARM) or 64-bit (x86-64 and Itanium).[6][17] 64-bit UEFI understands long mode, which allows applications in the pre-boot execution environment to have direct access to all of the memory using 64-bit addressing. ",
+    "user": "Nummy"
+  },
+  {
+    "message": "Da se še jaz pridružim temi.   Imam prednameščeni sistem Win 8, vse kar je, bi rad zdaj sistem preselil iz HDD na SSD.   Lahko kdo napiše postopek kako narediti clean install in potem naložit vse skupaj ob vklopljene UEFI, da bo vse tako kot mora biti oziroma, da bo tako nameščeno kot je nameščen prvotni sistem ob nakupu računalnika. ",
+    "user": "brkac"
+  },
+  {
+    "message": "A normal PC BIOS is limited to a 16-bit processor mode and 1 MB of addressable space due to the design being based on the IBM 5150, which used the 16-bit Intel 8088.[6][16] In comparison, the UEFI processor mode can be either 32-bit (x86-32, ARM) or 64-bit (x86-64 and Itanium).[6][17] 64-bit UEFI understands long mode, which allows applications in the pre-boot execution environment to have direct access to all of the memory using 64-bit addressing. V biosu ne potrebuješ 8 gb rama. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": " Hayabusa je 16. nov 2013 ob 09:37 izjavil:A normal PC BIOS is limited to a 16-bit processor mode and 1 MB of addressable space due to the design being based on the IBM 5150, which used the 16-bit Intel 8088.[6][16] In comparison, the UEFI processor mode can be either 32-bit (x86-32, ARM) or 64-bit (x86-64 and Itanium).[6][17] 64-bit UEFI understands long mode, which allows applications in the pre-boot execution environment to have direct access to all of the memory using 64-bit addressing. V biosu ne potrebuješ 8 gb rama.  UEFI ti da možnost, da lahko naložiš driverje in aplikacije in recimo lahko laufaš že v samem \"BIOS-u\" programe kot so recimo za particije, formatirat, internet browser,... ne da bi imel gor sploh karkoli inštaliran od sistema. Vsekakor prednost pred navadnim BIOS-em.  Če ti ne rabiš, še ne pomeni da drugi tudi ne... ",
+    "user": "Nummy"
+  },
+  {
+    "message": "Kako se pa v UEFI naloži gonilnike in programe? A je UEFI vmesnik kaj drugačen od BIOS-a? Ker jaz druga ne znam kot v BIOSU vklopiti pri BOOT da zažene UEFI BOOT, druga se mi pa ne sanja.... ",
+    "user": "solatjek"
+  },
+  {
+    "message": " solatjek je 17. nov 2013 ob 17:01 izjavil:Kako se pa v UEFI naloži gonilnike in programe? A je UEFI vmesnik kaj drugačen od BIOS-a? Ker jaz druga ne znam kot v BIOSU vklopiti pri BOOT da zažene UEFI BOOT, druga se mi pa ne sanja....   Read my son, read... ",
+    "user": "Nummy"
+  },
+  {
+    "message": "A je možno, ko so windows 8.1 že nameščeni spremeniti na UEFI boot? ",
+    "user": "gregyk"
+  },
+  {
+    "message": " gregyk je 17. nov 2013 ob 18:28 izjavil:A je možno, ko so windows 8.1 že nameščeni spremeniti na UEFI boot?  Bom kar sam sebi odgovoril: https://social.technet.microsoft.com/wi... ",
+    "user": "gregyk"
+  },
+  {
+    "message": "Hvala za odgovore, sedaj so mi zadeve bolj jasne in naložil sem že nekaj računalnikov z UEFI. Sedaj me pa zanima samo še nekaj, zakaj na računalniku, ki ima UEFI in mu menjam disk z novim, imam ponavadi težave da poženem računalnik s CD_ja (tipka DEL oz F2) velikokrat ne prime. Enako se dogaja tudi če računalnik v Windowsih ugasnem in ponovno vklopim, gre zadeva nekako mimo BIOS-a (UEFI-ja) - tipke ne primejo in moram v samem Win poiskati na nastavitvah, da me vrže v BIOS (UEFI). Tipki F2 in DEL pa primeta, če grem v Win na ponovni zagon, torej ob vklopu najprej v Win in nato ponovni zagon, da pridem v Boot menu.  LP ",
+    "user": "solatjek"
+  },
+  {
+    "message": "Če se zadeva vleče še iz časa BIOS-a, potem v UEFI-ju poišči opcijo za USB podporo tipkovnice/miške. ",
+    "user": "bluefish"
+  },
+  {
+    "message": "Sem prebral te teme ampak mi ni jasno nič,imam prenosnik hp 655,kjer je bil nameščen windows 8,ker je zadeva postala tako počasna da rabi 15 minut do zagona sem se odločil na novo naložit windows 8 ampak tu nastane problem,če zaobidem UEFi in normalno naložim sistem mi po ponovnem zagonu ne zazna windowsov.  Spet moram v bios in tam prestavit ampak to se nonstop ponavlja. Zdaj bi rad naložil sistem z UEFI bootom ampak mi ne uspe. Kako naj se zadeve lotim,kaj priporočate? LP ",
+    "user": "krepki"
+  },
+  {
+    "message": "bi rad naložil prednaložen sistem ali clean ms iso ? Če drugo, potem z rufus orodjem naredi uefi bootable usb kjluček (potreboval boš win8 iso). ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Sistem sem že pobrisal,tudi vse particije,ki so bile narejene sem pobrisal,tako da bi sistem naložil,tako kot da bi nalagal na nov disk. Z rufusom sem tudi že naredil bootable usb ključek ampak ko izberem da bere z usb mi napiše da ne najde boota zato ker je uefi boot,če označim uefi boot se ne dogaja nič samo. Če vstavim original windows7 dvd in dam ponovni zagon mi napiše da ni pravi medij,zanima me če bi vsatvil dvd z windows 8 ali bi lahko naložil sistem uefi ali ne . Probat ne morem ker nimam posnetega dvdja z windows 8. ",
+    "user": "krepki"
+  },
+  {
+    "message": "V biosu imaš vklopljen secure boot ? ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Če hočeš clean inštalacijo, boš moral v biosu pod Boot Mode nastavit iz UEFI na Legacy, potem pa boš lahko normalno naložil. ",
+    "user": "Assassub"
+  },
+  {
+    "message": "V biosu sem probal z vklopljenim secure boot in izklopljenim je enako.  Boot mode sem nastavil na Legacy in windows lahko začnem nalagat,vendar ko se računalnik restarta legacy avtomatsko spet nastavi na disable in po vnovičnem zagonu ne najde diska z windowsi,ko grem spet v bios nastavim legacy na enable lahko pridem v windows vendar se po restartu zgodba ponovi. ",
+    "user": "krepki"
+  },
+  {
+    "message": " krepki je 17. maj 2015 ob 19:07 izjavil:V biosu sem probal z vklopljenim secure boot in izklopljenim je enako.  Boot mode sem nastavil na Legacy in windows lahko začnem nalagat,vendar ko se računalnik restarta legacy avtomatsko spet nastavi na disable in po vnovičnem zagonu ne najde diska z windowsi,ko grem spet v bios nastavim legacy na enable lahko pridem v windows vendar se po restartu zgodba ponovi.  To bi bil pa nek jako čuden Bios da resetira nastavitve, pomoje nekaj narobe klikaš in si namesto Legacy mode označil kak \"temporary legacy mode\", zato ti pa nazaj v UEFI daje. Oziroma khm, ali je možno da ti baterija na matični plošči crkuje in se ti BIOS nastavitve kar naprej resetirajo? Preveri še druge nastavitve, če se vse resetirajo. Ne vem kaj naj še drugega predlagam.  Drugače pa nehajte uporabljat programe, ki ne znajo UEFI boota naredit Zotac naredi tako kot se šika z BIOS IN UEFI bootloaderjem hkrati ključke in potem inštalira v tistem načinu v katerem zaženeš USB ključ. Ni več razloga da ne bi UEFI uporabljali, tudi programi kot je CloneZilla ga podpirajo. Uradni WIndows ISO, če ga zapačeš direkt na DVD prav tako podpira tako BIOS kot UEFI boot. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "Poglej ko pridem v bios imam pod boot options sledeče možnosti.  CD rom boot Enabled Internal netvork Adapter Disabled Netvork boot protokol IPV4 UEFI Legacy Support Disabled Secure boot Enabled  Torej če povzamem,če pri teh nastavitvah posnamem usb ključek z programom rufos za navadni boot ,ki ga uporabljam za vse računalnike,windowsa ne morem naložit ker ko dam f9 nimam možnosti izbire ali naj nalagam z sd enote usb ali kaj drugega.  Če spremenim legacy support na enable te možnosti imam ampak ko se med nalaganjem računalnik ponovno zažene se Legacy spet povrne v tovarniške nastavitve torej Disabled in nalagnmje naprej je onemogočeno dokler ga spet ne spremenim v Enable.  Z tem načinom windowse naložim do konca ampak pri vsakem ponovnem zagonu se windows ne zažene,ker ne najde boot datoteke ali diska kaj pa vem.  Če kluček posnamem v GPT particijska shema za UEFI windowsow sploh ne morem naložit,ker če izberem da začne nalagt z USB hard drive  mi napiše boot mgr is mising,če izberem boot from Efi file mi odpre stran kje rna frhu piše File Exsplorer in pri tem ostane. ",
+    "user": "krepki"
+  },
+  {
+    "message": "Uporabi drug ključek, priklopi ga NE v usb3 (modri port).  hp tema: http://h30434.www3.hp.com/t5/Notebook-O... http://h30499.www3.hp.com/t5/Business-P...   http://www.linlap.com/hp_655 2013/06/18 16:16 HP 655 has build-in MS lockdown technology called UEFI. To boot from external DVD you have to disable UEFI first:  * Press Start-button and keep ESC pressed down until you see a menu.  * Press F10 to get into \"BIOS Setup\" * Navigate to \"System Configuration\" > \"Boot Options\" and  * Change: \"Legacy Support\" to \"Enabled\". Ignore all the warnings.  * Change \"Secure Boot\" to \"Disabled\". Ignore all the warnings, because with Linux we are making this computer more safe.  * In \"Legacy Boot Order\" make \"Internal CD/DVD ROM Drive\" first.  * Exit Saving Changes and keep ESC pressed down until you see the menu again.  The computer may still try to boot Windows 8, but that will eventually fail, and you can try again.  * Insert Linux DVD and press F9 for \"Boot Device Options\". Select \"Internal CD/DVD ROM Drive\". Install Linux as usual.  Tried \"Mint Maya 13 Cinnamon 64bit\". Everything seemed ok except WLAN, that needs compiled drivers or a recent kernel. WLAN should work out-of-the box with 3.8 kernels (Mint 15, Ubuntu 13.04).  Today I installed Mint 15 Cinnamon 64bit. Now WLAN works out-of-the box. Still problems with suspend and hibernation. Will keep this for a while. If this turns out to be unstable I may try Mint 15 MATE 64bit. ",
+    "user": "GTX970"
+  },
+  {
+    "message": "@GTX970, dokler se mu bios resetira v UEFI enabled mu legacy rešitve ne bodo nič pomagale.  @krepki, Lahko probaš še inštalirat preko UEFI nastavitve v BIOSu in preko MBR USB ključka. UEFI namreč podpira oboje, ne samo GPT, tvoj laptop pa ima nek falvast bios, mogoče rata...  Naslednja stvar, ki bi jo naredil je posodobil bios, če obstaja kaka novejša verzija, oziroma pogooglal glede težav, če jih imajo tudi drugi pri tem laptopu. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "Ta prenosnik nima USB porta 3.0 ima samo tri USB porte 2.0 ",
+    "user": "krepki"
+  },
+  {
+    "message": "Zanimivo pa je če dam original windows 7 v dvd enoto in vse nastavim tako da izklopim legacy in secure boot bottam z možnostjo cd dvd uefi mi začne delat ampak mi izda opozorilo Selected boot image did not authenticate.  to pomeni da usb klučki za uefi niso primerno posneti,ker jih ne najde,boj jutri probal nasnet windows 8 na dvd in upam da mi uspe, Ali pa če kdo pozna kak drug program za usb boot kot rufus zotac sem probal ampak nekaj zajebava . ",
+    "user": "krepki"
+  },
+  {
+    "message": "Si delal tako ? http://www.eightforums.com/tutorials/15...  ZOTAC WinUSB Maker http://joshcellsoftwares.com/products/z... ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Sedaj sem še enkrat posnel usb ključek z rufosom z drugim windows8 označil enako gpt particijo uefi prvič sem pozabil nastavit na FAT32 sedaj mi ključek najde in ne rabim več kaj nastavljat v biosu tudi boot se zažene,jutri probam naložit sam mislim da bo sedaj šlo. Hvala vsem za pomoč jutri javim če mi je uspelo. LP ",
+    "user": "krepki"
+  },
+  {
+    "message": " krepki je 17. maj 2015 ob 19:07 izjavil:V biosu sem probal z vklopljenim secure boot in izklopljenim je enako.  Boot mode sem nastavil na Legacy in windows lahko začnem nalagat,vendar ko se računalnik restarta legacy avtomatsko spet nastavi na disable in po vnovičnem zagonu ne najde diska z windowsi,ko grem spet v bios nastavim legacy na enable lahko pridem v windows vendar se po restartu zgodba ponovi.  Disk mora biti nastavljen na AHCI mode, če boot-aš UEFI. ",
+    "user": "Nummy"
+  },
+  {
+    "message": "Hvala še enkrat vsem ki ste pomagali z nasveti računalnik je naložen deluje bp imel sem probleme že z lanom,ker mrežne ni hotelo naložit ampak sem posodobil še bios in zdaj dela tako kot mora. Zanima me še samo nekaj,kaj pridobiš če windows naložiš v Uefi načinu,imam namreč še lenovo e 535 kjer je možnost,da v biosu nastavim uefi boot. LP ",
+    "user": "krepki"
+  },
+  {
+    "message": "http://download.lenovo.com/ibmdl/pub/pc... Beri od 100 dalje. ",
+    "user": "GTX970"
+  },
+  {
+    "message": " krepki je 18. maj 2015 ob 17:32 izjavil:Hvala še enkrat vsem ki ste pomagali z nasveti računalnik je naložen deluje bp imel sem probleme že z lanom,ker mrežne ni hotelo naložit ampak sem posodobil še bios in zdaj dela tako kot mora. Zanima me še samo nekaj,kaj pridobiš če windows naložiš v Uefi načinu,imam namreč še lenovo e 535 kjer je možnost,da v biosu nastavim uefi boot. LP  UEFI je nadgradnja legacy BIOS-a. Stari dobri BIOS je bil bolj kot ne sposoben samo tekstovnega prikazovanja oz. DOS-mode grafike, UEFI je sposoben pravega grafičnega prikaza, tudi ponuja uporabo miške, in ostalih stvari. Glavna razlika je predvsem v tem, da EFI že v samem štartu naloži določene driverje, s katerimi lahko potem narediš malo bolj \"bogat BIOS\" hkrati pa dosežeš tudi veliko hitrejši zagon, saj v UEFI mode praktično nekaj driverjev že naložiš med samim BIOS start-u. Sedaj če imaš SSD, se ne pozna več toliko, če pa imaš prenosnik z 5400rpm diskom, pa se precej pozna pri zagonu. Recimo meni se na jajčastem službenem prenosniku (ja 5400 disk) zaganjajo winsi 8.1 dobrih 5 sekund v UEFI mode, če dam v legacy pa se mi nalagajo malo več kot pol minute (to je od BIOS-a, do login screen-a). Loadanje desktop-a je potem poglavje zase, ki traja potem par minut.  Skratka, UEFI oz. EFI omogoča tudi nalaganje več stvari v paraleli, tako da zagon sistema ni tak, da se ena stvar dogaja za drugo, ampak ti lahko nalagaš več driverjev hkrati in če recimo čakaš na mrežno, da dobi IP, ti lepo vmes nalagaš driver za grafiko, matično,... Lep primer tega je Apple-ov OS X, ki uporablja eno interno verzijo EFI sistema. Vsakič ko zaženeš sistem, se sistem zažene malce drugače, ker se stvari dogajajo hkrati in včasih pač mrežna dobi prej IP, včasih traja kako sekundo dlje,...   EFI oz. UEFI deluje samo v AHCI mode (možno tudi RAID, samo mora podpirati AHCI disk mode) in če imaš na disku GPT particijsko tabelo. Prav tako imaš na začetku diska (ja na začetku, mora biti tam!!!) eno skrito particijo velikosti 100-300MB (tipično nekje okoli 200MB), kjer imaš notri shranjen celoten boot del in nekaj driverjev za svoj sistem (ali več sistemov). Ta particija je vedno v FAT formatu (tudi na mac-ih), ostale particije pa so potem v formatu sistema, ki ga uporabljaš (HFS+, NTFS,...).Tistih cca. 200MB driverjev in programja, ti omogoča, da lahko uporabljaš miško, tipkovnico, mrežno in grafiko z dokaj dobro resolucijo brez samega sistema. Primer recimo windows setup program, ali pa možnost brskanja po spletu iz samega BIOS-a, ali pa recimo recovery mode na mac-ih,... itd. Včasih to ni bilo možno (razen če si fural kako mini distribucijo linux-a) , s prihodom EFI-ja pa so se stvari precej izboljšale. Ima EFI še par dodatnih stvari (target boot mode, boot console,...) ampak to verjetno že presega mojo razlago. Če te zanima več, skoči na wiki.   GPT pa je izboljšana particijska tabela proti MBR. Podpira več stvari, večje diske (in particije) in gor imaš lahko večje število posameznih particij. MBR je dokaj omejen pri določenih stvareh. Vem da ima MBR tudi omejitev pri maksimalni velikosti particije in mislim da 4TB diska ne moreš formatirati v MBR tabeli če želiš imeti eno particijo čez celoten disk (kolikor vem iz glave mislim da podpira nekje 2TB max., točno se mi zdele ne da gledat). ",
+    "user": "Nummy"
+  },
+  {
+    "message": "Hvala Nummy za izčrpno razlago,sedaj razumem zakaj Uefi boot. LP ",
+    "user": "krepki"
+  }
+]

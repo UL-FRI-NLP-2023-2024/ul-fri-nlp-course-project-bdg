@@ -1,0 +1,320 @@
+[
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Večina vas najbrž že ve, da če hočeš da se HomeAssistant pogovarja z vsemi zigbee senzorji neglede na proizvajalca potem rabiš nek neodvisni zigbee koordinator.\n\nDosti nas je uporabljalo Conbee II ali pa Raspbee II, ki sta preizkušeno ok čeprav mogoče že malo zastarela in nimata zunanje antene.\n\nNo lani je Sonoff, ki dela dobre zigbee senzorje dal ven \"SONOFF DONGLE PLUS\" za 11$.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSONOFF Zigbee 3.0 USB Dongle Plus-P | SONOFF Official\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tsonoff.tech\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nGlede na to da ima gor čip od TexasInstruments CC2652P in eksterno anteno so bila pričakovanja zelo velika ampak je Sonoff naredil slab firmware in posledično je bil ta koordinator zelo slabo sprejet...\n\nNo zdaj je community naredi svoj firmware za ta dongle in zadeva deluje super:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tZ-Stack-firmware/coordinator/Z-Stack_3.x.0/bin at develop · Koenkk/Z-Stack-firmware\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tCompilation instructions and hex files for Z-Stack firmwares - Koenkk/Z-Stack-firmware\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tgithub.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nJaz sem kak mesec nazaj dobil ta dongle in ga zdaj že en čas testiram in dela bp, tako da bom preklopil iz Raspbee II + Deconz na Sonoff dongle plus + ZHA za vse moje zigbee naprave.\n\nBom kmalu napisal še vodič kako se lotiti flashanja tega dongla z novim firmwareom...\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Mene utegne zanimati. Ampak moram najprej razčistiti katera pametna senčila bom vzel in kako bodo povezana. Kot zanimivost, Ikea Fyrtur se poveže preko Zigbee.",
+    "author": "ales85",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ales85 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMene utegne zanimati. Ampak moram najprej razčistiti katera pametna senčila bom vzel in kako bodo povezana. Kot zanimivost, Ikea Fyrtur se poveže preko Zigbee.\n\t\t\n\t\tKlikni za razširitev\n\t\nBom napisal...\nTe dni sem tudi testiral dva Ikejina zigbee daljinca:\n\nNajprej sem nabavil Styrbar:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSTYRBAR daljinski upravljalnik, pametno bela - IKEA\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tSTYRBAR daljinski upravljalnik, pametno bela Zdaj vsak zlahka uporablja pametno osvetlitev. S STRYBAR daljinskim upravljalnikom lahko upravljaš več svetlobnih virov – luči lahko zatemniš in ustvariš prijetno vzdušje ali prilagodiš barvo in temperaturo osvetlitve.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.ikea.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nPa sem obupal, ker tako na random daje različne evente da sem šel raje po starejši model, ki se ga da dobit samo skupaj z žarnico za 20€:\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tIzdelki\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tIzdelki\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.ikea.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nNo ta pa deluje super.\n\nSem našel tale blueprint: https://community.home-assistant.io/t/zha-ikea-five-button-remote/255120\n\nIn zdaj imam žaluzijo v pisarni na ta daljinc zvezano takole:\nPuščica gor -> žaluzija začne potovati gor\nPuščica dol -> žaluzija začne potovati dol\nOn/Off gumb -> ustavi premikanje žaluzije\nVelik sonček -> postavi letvice žaluzije vodoravno da je max svetlo\nMali sonček -> postavi letvice navpično da je tema\n\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Navodila za flashanje:\n\nNajprej je na računalnik potrebno intštalirati driver za Usb2serial čip, ki je na tem donglu:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tCH341SER.EXE - 南京沁恒微电子股份有限公司\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tUSB转串口Windows一键式安装驱动程序，支持CH340和CH341，支持32/64位Windows 11/10/8.1/8/7/VISTA/XP，SERVER 2022/2019/2016/2012/2008/2003，2000/ME/98，通过微软数字签名认证，支持USB转UART的3线和9线SERIAL串口等，用于随产品发行到最终用户。\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.wch.cn\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nPotem iz TI strani zdownloadaš in inštaliraš program za flashanje (moraš narest account na TI strani):\n\n\t\n\t\t\n\t\t\thttps://www.ti.com/tool/FLASH-PROGRAMMER\n\t\t\n\t\n\nPotem snameš najnovejši firmware:\nMaster branch:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tZ-Stack-firmware/coordinator/Z-Stack_3.x.0/bin at master · Koenkk/Z-Stack-firmware\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tCompilation instructions and hex files for Z-Stack firmwares - Koenkk/Z-Stack-firmware\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tgithub.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\nDev branch:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tZ-Stack-firmware/coordinator/Z-Stack_3.x.0/bin at develop · Koenkk/Z-Stack-firmware\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tCompilation instructions and hex files for Z-Stack firmwares - Koenkk/Z-Stack-firmware\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tgithub.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nPravilen je tisti file ki ima ime v stilu:\nCC1352P2_CC2652P_launchpad_coordinator_YYYYMMDD.zip\n\nShraniš zip na disk in ga razširiš da dobiš file CC1352P2_CC2652P_launchpad_coordinator_YYYYMMDD.hex\n\nZaženeš program \"Smart Programmer 2\", ki si ga dobil na TI strani.\n\nPotem pa odpreš dongle, da prideš do gumbov ki so noter skriti:\n\n\n\t\t\n\t\nMedtem ko držiš gumb \"boot\" vtakneš dongle v računalnik, počakaš par sekund in izpustiš gumb \"boot\".\n\nKo bo program zaznal da je dongle priklopljen se bo levo zgoraj pod \"Connected devices\" pokazal novi zapis, ki ga klikneš:\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nPotem nižje spodaj (kjer je na sliki rdeča 1-ka) izbereš CC2652P (in ne CC2652R kot je na zgornji sliki).\n\nPotem na mestu \"2\" daš browse in izbereš hex file, ki si ga prej odzipal.\nNato označiš checkboxe Erase, Program, Verify in klikneš gumbek s puščico na mestu \"6\".\n\nKo se spodaj izpiše z zeleno \"Success!\" si fertik.\n\nDongle zdaj vštekaš v PI in ga reštartaš, dodaš še ZHA integracijo:\nConfiguration -> Devices and Services -> Add integration -> poiščeš \"Zigbee Home Automation\" in jo klikneš.\nV naslednjem koraku ti reče \"Select port for Zigbee radio\" in poiščeš na seznamu ta dongle. (Na spodnji sliki je en drug model)\n\n\n\t\t\n\t\nIzbereš ta dongle in Submit ter Finish.\n\nPotem lahko začneš dodajati naprave takole:\n\nConfiguration -> Devices and Services -> Klikneš Configure link pri ZHA\n\n\t\t\n\t\nPotem pa boš videl desno spodaj \"Add device\":\n\n\t\t\n\t\nKo dobiš tale screen:\n\n\t\t\n\t\nResetiraš senzor/modul (vsak modul se drugače resetira; poguglaš kako) in se bo ta naprava pokazala na seznamu na novo najdenih naprav...\n\n\t\t\n\t\nPočakaš da naredi svoje do konca in je to to.\nNova naprava se bo pokazala med Configuration -> Devices and Services in lahko upravljaš z njo ali pa bereš vrednosti z nje, če je senzor...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Cool - maš pivo al dva v dobrem.\n\nVčeraj poštar ravno prinesel tole čudo domov. Jutri še jaz pridem in že vem kaj bom te dni delal. ",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Flashal, zalaufal, razočaran …\n\nEwelinkov temp/hidro sensor čez noč zgubil povezavo - “vmes” “samo” eno nadstropje - kontroler postavljen centralno v hiši, eno nadstropje nad omenjeni senzor. Moram še malo “testirati” in v bistvu čakam še nekaj Zigbee vtičnic - eno od njih gre na podstrešje in upam, da bo s mesh potem dovolj stabilno.\nNato počasi Tuyin gateway vstran in vse preko  HA.\nMimogrede … — ne vprašanje gre v drugi del foruma.\n\nEvo pitanja … - klikenzi \n\nedit: typo in link do vprašanja",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Čudno meni ni pa še nič \"izginilo\" .Si dal gor main ali dev verzijo. Jaz imam dev...\nPa baterija je ok v napravi ki jo spremljaš?",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Bom pa v roku tedna dni odstranil Deconz integracijo in z  nule dodal vse v ZHA. Pa bom potem videl ali je vse ok ali ni...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "jaz sem iz ZHA šel nazaj na Zigbee 2 MQTT konfiguracijo, imam tale nov slaeshov usb stick:\n\n\n\t\n\t\t\n\t\t\thttps://ewelinkstore.com/product/cc2652rb-zigbee-usb-development-stick/?v=ce774d9cab3a\n\t\t\n\t\n\nin je prav neverjetno kako daleč vleče, + aqara/Sonoff  senzorji, ki so na prejšnjem sticku vsake toliko dol padli, so sedaj aktivni od prvega dne, torej 3 mesece.",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik mcn je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tjaz sem iz ZHA šel nazaj na Zigbee 2 MQTT konfiguracijo, imam tale nov slaeshov usb stick:\n\n\n\t\n\t\t\n\t\t\thttps://ewelinkstore.com/product/cc2652rb-zigbee-usb-development-stick/?v=ce774d9cab3a\n\t\t\n\t\n\nin je prav neverjetno kako daleč vleče, + aqara/Sonoff  senzorji, ki so na prejšnjem sticku vsake toliko dol padli, so sedaj aktivni od prvega dne, torej 3 mesece.\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala za info. Če se mi sonoff dolgoročno ne bo obnesel bom razkiral še za tega...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "prvo poskusi brez ZHA, mogoče ni kriv ključek.",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČudno meni ni pa še nič \"izginilo\" .Si dal gor main ali dev verzijo. Jaz imam dev...\nPa baterija je ok v napravi ki jo spremljaš?\n\t\t\n\t\tKlikni za razširitev\n\t\nMaster (DEV se bojim ko hudiča križa, ker vem kaj mojim vse na DEV pobegne - no celo ma Master včasih ). \nBaterija senzorja je OK - nova. \nJe pa res da mi dongle “visi” na nekem čudnem USB podaljšku in da je napajalnik PIja bil neki čuden. Bom videl nocoj kaj bo.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Par dni nazaj sem odstranil Deconz integracijo in dodal zigbee2mqtt.\nSem imel nekaj težav s pravicami, ker ni sprejelo mqtt userja, ko sem pa dal brez userja definiranega v configu je pa začelo delat.\n\nV galvnem dodajanje naprav je šlo brez težav in tudi nobena naprava ni izginila v teh dneh kar testiram.\n\n\t\t\n\t\nPoleg tega zigbee2mqtt podpira OTA update z enim klikom kar npr Deconz ni imel, tako da za enkrat sem zelo zadovoljen. \n\n\t\t\n\t\n\nMe pa zanima če se da kako nekem senzorju naknadno dopovedat, da naj se povezuje na router (Ikea vtičnica) namesto na koordinatror?\nTo bi bil res dober feature.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Celoten postopek od flashanja dongla, pa do zigbee2mqtt integracije:\n\n\t\n\t\t\n\t\n",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Sem pa tudi ugotovil zakaj sem imel težave z mqtt userjem v zigbee2mqtt konfiguraciji...\nImel sem napisano \"pass:\" namesto \"password:\".  \n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMe pa zanima če se da kako nekem senzorju naknadno dopovedat, da naj se povezuje na router (Ikea vtičnica) namesto na koordinatror?\nTo bi bil res dober feature.\n\t\t\n\t\tKlikni za razširitev\n\t\nMi je uspelo in je zelo enostavno.\nV zigbee2mqtt sem dal Permit join (All) in resetiral senzor, pa ga je takoj proklopilo na najbližjo Ikea vtičnico, ki deluje kot router.\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Conbee II - A mogoče kdo ve kaj je \"Activate OTAU\" v advanced settings in kako se to uporabi?\nPrej se mi zdi, da tega ni bilo, pa tudi v njihovi dokumentaciji nič ne piše:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tPhoscon App\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tphoscon.de\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\n\n\n\t\n",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Prvič vidim. Malo sem pobrskal in je to ZigBee Over-the-Air-Upgrade (OTAU) server https://github.com/dresden-elektronik/deconz-ota-plugin.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Se je mogoče kdo lotil hekanje Lidlovega Zigbee gatewaya? Silvercrest Ta mi je zanimiv, ker ima mrežno kartico in ga lahko postavim dlje kot USB varijanto.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Po dveh tednih še vedno vse deluje brezhibno (Sonof Dongle Plus  & Zigbee2mqtt).\nSe je pa par senzorjev avtomatično povezalo z najbližnjim routerjem (brez, da bi jih moral resetirati), kar je super.  \n\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Samo kako pa je potem z avtomatiko v HA, ker jaz imam tudi ročno preimenovane nazive naprav in entitet, da za vse vem kaj pomenijo. \nKo se dodaja naprave v zigbee2mqtt, se verjetno zopet privzeto poimenujejo tako naprave kot tudi entitete in jih bom moral tam in v HA preimenovati čisto enako kot so trenutno v deconz in HA, da mi bojo avtomatike še vedno delovale.",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Jaz sem enostavno štartal iz nule, hkrati sem RPI zamenjal s PCjem in zdaj zadeva leti... pa ni skrbi da bi kdaj SD kartica odletela...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Jaz imam SSD na rpi4 in mi dobro dela. \nA imaš prav svoj PC za HA ali imaš virtualko?",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Za HA je VM narejen in vzdrževan, so vsi updejti in vse integracije na voljo. Zato drugega kot VM nima smisla. Malo je noerodno, če imaš zigbee koordinator na USB, ampak se da rešit na več načinov. V HA je nativen ZHA in ne Z2M, kolikor vem.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik damirj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZa HA je VM narejen in vzdrževan, so vsi updejti in vse integracije na voljo. Zato drugega kot VM nima smisla. Malo je noerodno, če imaš zigbee koordinator na USB, ampak se da rešit na več načinov. V HA je nativen ZHA in ne Z2M, kolikor vem.\n\t\t\n\t\tKlikni za razširitev\n\t\nHA uradno podpira in vzdržuje tudi Docker inštalacijo, ki je bolj lightweight kot pa VM. Sam jo laufam že 3 leta in mi normalno deluje tudi USB bluetooth vmesnik.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik LjuboB je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz imam SSD na rpi4 in mi dobro dela.\nA imaš prav svoj PC za HA ali imaš virtualko?\n\t\t\n\t\tKlikni za razširitev\n\t\nCel PC je namenjen HA. Delal sem po tem postopku:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tGeneric x86-64\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tInstall Home Assistant on Generic x86-64 systems (e.g. Intel NUC)\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.home-assistant.io\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "VM je v bistvu docker v osnovi, tako da rihtajo dobesedno samo eno distribucijo. HA v dockerju je sicer plus, da nima težav z USB zigbee sticki.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "A so lahko kakšni problemi, če imaš hkrati MQTT in deCONZ integracijo in vsako napravo samo v eni integraciji?\nImam npr en senzor gibanja, ki še ni podprt v deCONZ, za MQTT  pa vidim, da je.",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Kdo ve kje pri nas se da dobit sonoff dongle-p? Povsod imajo samo dongle-e, za katerega nisem preveč ziher, da ne bo problemov v zigbee2mqtt. Kitajski cc2351 mi je shodil po parih mesecih (itak je bil nabavljen za firbec) in ne bi čakal še en mesec+, da pride sonoff s kitajske.",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik hermann je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKdo ve kje pri nas se da dobit sonoff dongle-p? Povsod imajo samo dongle-e, za katerega nisem preveč ziher, da ne bo problemov v zigbee2mqtt. Kitajski cc2351 mi je shodil po parih mesecih (itak je bil nabavljen za firbec) in ne bi čakal še en mesec+, da pride sonoff s kitajske.\n\t\t\n\t\tKlikni za razširitev\n\t\nne vem če imajo kar iščeš, so pa uvozniki za Sonoff: https://www.rexel.si/",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "No na koncu je dongle-p prišel od Kitajca, ker ga pri nas ni več dobiti... flešnil sem zStack firmware in dela ko puška v zigbee2mqtt na qnap nasu. Je prav zanimivo kako bolj zanesljivo dela in koliko večji domet ima kot cc2531. No pa zigbee naprav nisem rabil niti ponovno pairat - samo baterije not in dela kot prej.",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "A dongle-p je boljši kot dongle-e?\n\nTrenutno imam conbee II in sem načeloma zadovoljen z njim, sem pa tja se kaj ne proži, ampak preživim. Mi gre pa totalno na živce, ker imajo ogromne probleme z Home Assistant deCONZ add-on-om , ki ga zaradi tega že pol leta niso posodobili. Samo zaradi tega bi šaltal na kaj drugega npr dongle-P in bi uporabljal ZHA.\n\nKaj pomeni tole?\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSONOFF Zigbee 3.0 USB Dongle Plus-P | SONOFF Official\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tsonoff.tech\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Dongle-e je novejši in z drugim čipsetom kot dongle-p. Dongle-p je dobro podprt, medtem ko je dongle-e v zigbee2mqtt označen kot beta. Jaz sem šel na absolutno ziher, verjetno pa tudi z e ni posebnih problemov.\n\nTole kar sprašuješ... nimam pojma.",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik AndrejSk je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPozdravljeni,\n\nJaz bi tudi imel eno vprašanje; in sicer razmišljam da bi obstoječi SmartThings hub zamenjal z HA. Doma imam Pi4 na katerega bi naložil HA; me pa zanima kateri Z-Wave USB stick nabavit; imam namreč kar nekaj naprav na Z-Wave in mi je škoda vse menjati na Zigbee.\n\nHvala\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJaz imam Z-Stick Gen5+.\nDeluje že leta brez problemov.",
+    "author": "maxhh",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Poganja kdo HA iz dockerja na qnap nasu? Načeloma dela precej OK edino čakam še kitajski CC2531 dongle, da še to sprobam.",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "jaz poganjam HA docker varjanto (ne na qnapu, na rpi4, ne bi smelo met veze, docker je docker), ampak se cakam ostalo periferijo, da lahko kaj vec povem.",
+    "author": "alexx_",
+    "author_level": "nekaj v tem stilu"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik alexx_ je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tlahko razložiš ta zvok? en bi namreč prišel tudi v spalnico. na kakšno frekvenco se to oglaša, kako dolgo? načeloma pa sem razmišljal, da bi preverjal temperaturo vsakih n minut in pač takrat po potrebi prilagodil.\n\t\t\n\t\tKlikni za razširitev\n\t\nZvok je zvok zobnikov in motorčka, ki krmili ventil. Odprtost ventila regulira nekajkrat na noč, saj v spalnici ni nekih oscilacij temperature. V dnevnih prostorih zvoka običajno sploh ne zaznaš, ponoči v spalnici pa je tisti 2-3 sekunde dolg zvok lahko kar nadležen.",
+    "author": "atrij",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "hvala za odgovor!",
+    "author": "alexx_",
+    "author_level": "nekaj v tem stilu"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik maxhh je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz imam Z-Stick Gen5+.\nDeluje že leta brez problemov.\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala!",
+    "author": "AndrejSk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Pozdravljeni,\n\nodgovor na temo koordinatorja za ZigBee.\nNajprej sem imel Silicon Labs EFR32MG21. Deloval je brez problemov, ampak USB... .\n\nSedaj pa imam tole kot je opisano na tej strani.  \n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tHacking the Silvercrest (Lidl) Smart Home Gateway\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tLiberating your Silvercrest (Lidl) Smart Home Gateway from the cloud\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tpaulbanks.org\n\t\t\t\t\n\t\t\t\n\t\t\n\t\nDeluje kot mora.\n\nLP T",
+    "author": "Tauri",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Kakšne zigbee senzorje kupujete? Recimo za temperaturo in vlago.\n\nJaz sem se na \"grd\" način naučil, da baterijski tuya iz aliexpressa normalno delajo samo dokler so direktno povezani na koordinator. Prek ruterja so povezani samo par ur nakar izgubijo povezavo in jih je potrebno ponovno pairat. In tako v neskončnost. Tuya zigbbe naprave na napajanju (routerji) delajo normalno.\n\nPa dodatno, nad senzorji na cr2450 baterije nisem preveč navdušen.",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Xiaomi aquara senzorji delajo ok kamorkoli povezani, baterija traja kako leto.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "glede na to koliko sem o aquara senzorjih in njihovih problemih s povezovanjem prebral jih bom preskočil...",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Kakšni problemi pa? Jaz imam večino aqara senzorjev za temperaturo, vrata, okna, motion, poplava pa mislim, da kar ok delajo.",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik LjuboB je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKakšni problemi pa? Jaz imam večino aqara senzorjev za temperaturo, vrata, okna, motion, poplava pa mislim, da kar ok delajo.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\n\n\n\n\t\n\t\thttps://www.reddit.com/r/homeassistant/comments/za8i9j\n\nne vem, ampak ko sem googlal za rešitev svojega problema so karnaprej letele ven te aqara zadeve z enakimi problemi",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Jaz jih imam kakih 5 let. Na začetku na aqara gatewayu in je bilo dosti težav, dolgi odzivni časi, izpadanje. Na conbee ii pa mi deluje vredu.\nZadnje čase pa bolj tuya kupujem sem in tja, ker je ceneje.\n\nMi je pa tale zanimiv:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSONOFF Zigbee Temperature and Humidity Sensor | SNZB-02P\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t【High Accuracy & Fast Refresh】 With the Swiss-made smart hygrometer sensor, the temperature is accurate up to ±0.2°C/±0.4°F while the humidity is ±2%RH, data measurements are updated every 5 se…\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\titead.cc\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Jaz imam tudi \n\n\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik LjuboB je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz jih imam kakih 5 let. Na začetku na aqara gatewayu in je bilo dosti težav, dolgi odzivni časi, izpadanje. Na conbee ii pa mi deluje vredu.\nZadnje čase pa bolj tuya kupujem sem in tja, ker je ceneje.\n\nMi je pa tale zanimiv:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSONOFF Zigbee Temperature and Humidity Sensor | SNZB-02P\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t【High Accuracy & Fast Refresh】 With the Swiss-made smart hygrometer sensor, the temperature is accurate up to ±0.2°C/±0.4°F while the humidity is ±2%RH, data measurements are updated every 5 se…\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\titead.cc\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\t\n\t\tKlikni za razširitev\n\t\nJaz imam doma enih 10 komadov SONOF SNZB-02 (kvadratni).\nDelujejo brezhibno že par let...\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Ko pravite “delajo …”, še dodajte na čem ste.\nNe - na koka, heroin .. ampak HA ali kaj drugega.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik gr69 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKo pravite “delajo …”, še dodajte na čem ste.\nNe - na koka, heroin .. ampak HA ali kaj drugega.\n\t\t\n\t\tKlikni za razširitev\n\t\nHomeAssistant (Zigbee2Mqtt), SONOFF USB Dongle Plus koordinator z Z-Stack-firmware.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Zame relevantno je ali so senzorji, \"ki že leta delujejo brezhibno\" povezani direktno prek koordinatorja ali prek routerjev. Se vidi na mapi v zigbee2mqtt. Dokler je direktno tudi sam nimam težav.\n\nAja, pri meni je HA + zigbee2mqtt + usb CC2531. CC2531 ni biser, ampak mislim, da so moje težave vseeno pri senzorjih. Ikeja roba nima težav recimo.",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Jaz jih imam preko routerja tudi, od Ikea Tradfri oni za v vtičnico ne vem kateri model že.. Se pa včasih poveže tudi na koordinator, odvisno od kvalitete povezave, ker jih sem in tja tudi premikam.. Vse dela BP.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPar dni nazaj sem odstranil Deconz integracijo in dodal zigbee2mqtt.\nSem imel nekaj težav s pravicami, ker ni sprejelo mqtt userja, ko sem pa dal brez userja definiranega v configu je pa začelo delat.\n\nV galvnem dodajanje naprav je šlo brez težav in tudi nobena naprava ni izginila v teh dneh kar testiram.\nPoglej priponko 52546\nPoleg tega zigbee2mqtt podpira OTA update z enim klikom kar npr Deconz ni imel, tako da za enkrat sem zelo zadovoljen. \nPoglej priponko 52548\n\nMe pa zanima če se da kako nekem senzorju naknadno dopovedat, da naj se povezuje na router (Ikea vtičnica) namesto na koordinatror?\nTo bi bil res dober feature.\n\t\t\n\t\tKlikni za razširitev\n\t\n\"Par dni nazaj sem odstranil Deconz integracijo in dodal zigbee2mqtt.\" \n\nSe da mogoče na kak način prenesti naprave iz Deconz v zigbee2mqtt ali je treba vse ročno ponovno dodajat? \nTi je zigbee2mqtt boljše napram deconz?",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Poceni in dober zigbee koordinator",
+    "content": "Mislim da se ne da prenest naprav...\nMi je pa zigbee2mqtt veliko boljši, ker je bolje integriran v HA, ker ga community razvija in ne ena privat firma...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Pozdravljeni,\n\nImam kitajsko navi napravo v avtu, katera sicer dela super, samo en bug ima ta moja verzija Primo 2.0.\n\nKo pridem na cilj me vpraša, če sem prispel na cilj ali ne; Pritisnem na da, nakar se pojavi ogromen gumb EXIT.\n\nNačeloma jaz exit funkcije ne potrebujem, ker program stalno laufa, samo tokrat sem za foro pritisnil na ta exit in mi je crashal aplikacijo tako, da sem moral narest hard reset naprave (štrom ven).\n\nSe da ta exit gumb na arrival meniju zbrisat/umaknit? Sem gledal sys.txt konfigurator pa nisem nič uporabnega zasledil.",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "To maš original Primo verzijo, ki je prišel zraven naprave, ali si sam nalagal? Sicer pa dodaj tole v sys:\n\n[power] \npower_off_mode = 1\n\n[interface]\nshow_exit=0\nshow_minimize=0\nshutdown_time=0",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Ne, sem potegnil z neta.\n\nHvala, bom probal.",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Isto. Se da modificirat ta arrival meni?",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Si probal pobrisat mapo save?\nPredhodno seveda naredi backup te mape za vsak slučaj.\n\nProbaj takole:\n\n[power]\npower_off_mode = 0\n\n[interface]\nshow_exit=0\nshow_minimize=0\nshutdown_time=0",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Sem pobrisal mapo save, dal power_off_mode na nič in je še vedno isto. Moral bi nastavit, da je tam namesto tega exit gumba meni gumb.",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Vpiši tole v google \" igo sys.txt commands \"  našel boš vse komande, ki delujejo v sys.\n\nČe bi pa rad namesto tega exit gumba meni gumb, boš pa moral v data zip drugače sprogramirat in s tem je ogromno dela.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Probaj tole:\n\n[power]\npower_off_mode = 0\nskip_resume_process=1\nskip_suspend_process=1\npowermgm_state=0\n\n[interface]\nshow_exit=0\nshow_minimize=0\nshutdown_time=0",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Če se ne motim mi je uspelo najt komando, ki te bo rešila tega menija  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nTole vpiši v sys:\n\n\n[itiner]\nremove_reached_destination=1\n\nSedaj, ko boš prišel na cilj ti ne bi smelo več javit opozorila za yes or no.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Imam Dynavin DVN-VW, notri je novada GPS board...\n\nMah sem mislil, da se da vsaj z extra settingsi kaj nares. Če ne bo šlo drugače, bom dal nazaj 1.2 verzijo gor, samo je 2.0 meni precej bolj všečna...\n\nTo je moj sys.txt:\n\n[power] \npower_off_mode = 0\n\n[gps]\nset_messages=\"0\"\n\n[interface]\nshow_musicplayer=\"0\"\nshow_pictureviewer=\"0\"\nshow_exit=0\nshow_minimize=0\nshutdown_time=0 \nshow_tutorial=\"0\"\nextra_settings=1\nexit_on_restart_0\n\n[lua]\ntmcwaspresented=\"1\"\n\n\n[tmc]\nport=\"3\"\nbaud=\"19200\"\nsource=\"royaltek\"\nauto_band_search_up=\"1\"\nauto_tuning=\"1\"",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Tole daj v sys in javi, če bo rešlo tvoj problem:\n \n [itiner] \n remove_reached_destination=1 \n\np.s.\nPa tole lahko daš v sys:\n\n[debug]\nexperimental_features=1\n\nNekje sem zasledil, da bi potem v extra settings moral imeti na voljo gumb za destination menu.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Sem probal, še vedno isto.\n\nSem pa ugotovil, da nimam 2.0 ampak 2.4. Nekje sem zgooglal, da ti settignsi ne delajo več, ker v extra settingsih ni destination menuja, se pa spomnim da je v 1.2 bil.",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Aja pa dejansko ne gre za crash; Ta exit gum naj bi poslal sleep mode signal, vendar potem ne moreš nikakor \"zbuditi\" winceja (razen da narediš reset).",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "V Primo 2.4 ta komanda tudi deluje:\n\n[itiner]\nremove_reached_destination=1\n\nVpiši tole v sys in potem izbriši mapo save in bi moralo delat.\n\nTorej tvoja sys more izgledat takole:\n\n[power]\npower_off_mode = 0\n\n[gps]\nset_messages=\"0\"\n\n[interface]\nshow_musicplayer=\"0\"\nshow_pictureviewer=\"0\"\nshow_exit=0\nshow_minimize=0\nshutdown_time=0\nshow_tutorial=\"0\"\nextra_settings=1\nexit_on_restart_0\n\n[lua]\ntmcwaspresented=\"1\"\n\n[tmc]\nport=\"3\"\nbaud=\"19200\"\nsource=\"royaltek\"\nauto_band_search_up=\"1\"\nauto_tuning=\"1\" \n\n[debug]\nexperimental_features=1\n\n[itiner]\nremove_reached_destination=1",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Bom točno tako skopiral, kot si dal. Sem imel ta itiner vmes nekje skopiran, pa ni delalo, danes probam še 1x.",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Evo, sem poskusil, skopiral tole vse, torej itiner na koncu, pobrisal save mapo (kar sem naredil tudi prej) in je še vedno isto.",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Potem je edina rešitev, da programu dodaš GjAk skin s katerim lahko med drugim določiš tudi dejanje, kaj naj se zgodi, ko prideš na cilj -  tudi to, da se ne zgodi nič, se pravi točno to, kar ti želiš.\n\n Tukaj je GjAk skin za verzijo 2.0\n Tukaj pa GjAk skin za verzijo 2.4\n\nzip datoteko kopiraš v mapo Content\\skin\\ nato v nastavitvah --&gt;videz--&gt; za dnevno in nočno preobleko izbereš GjAk skin, nato reštartaš Prima. Zdaj imaš aktiviran skin in greš v nastavitve preobleke --&gt;nastavitve prihoda na cilj in izbereš \"Brez dejanja\"\n\nTukaj pa je SLO lang file s katerim skin tudi posloveniš (velja za obe verziji). File skopiraš v mapo Content\\Lang\\ zamenjaš obstoječega.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "iGo Primo 2.0 - Exit Crash",
+    "content": "Tole je rešitev! Hvala ti!",
+    "author": "rafko",
+    "author_level": "Pripravnik"
+  }
+]

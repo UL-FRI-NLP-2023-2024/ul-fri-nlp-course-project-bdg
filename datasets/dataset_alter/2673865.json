@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Zdravo,\nče se še kdo spomni, se priporočam \n\nKolegu je nečak spravil virus gor, polno nekih novih nepoznanih fajlov (seveda pr0n, kaj pa drugega) in se zdaj ne zažene (10 let star računalnik z WIN 7), med zagonom napiše, da ni diska. V Biosu disk normalno je in kaže, da bi vse moralo štimat.\n\nWindows repair ne naredi nič. V bistvu noben korak ne naredi nič. Pri safemode se ustavi, ker ne more naložit ene datoteke, ki je AVASTov file.\n\nNa usbju imam že od prej Windows repair file gor in zdaj me zanima:\nko pridem v repairu v CMD in grem na C: (disk) in F: (USB s fajli), kakšen je ukaz, da nesem MBR iz F: USBja komplet na C: disk?\n\nukaze bootrec /fixmbr, /fixbcd, /scanos in /rebuildbcd sem že pognal, vse je kao ok, ampak \"diska pa še vedno ni\", ko končam in resetiram. Aja disk dela, se sliši, vse je ok.\n\nBi se nov rač kupil, ampak gre bolj za Bitstamp in Bittrex  \n\nHvala",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Maš namenske boot diske za popravit te zadeve. To si že probaval kaj?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Ne se. Sicer bi disk priklopil na mojega in popravil MBR v programu, ampak enostavno ne upam priklopit ",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Kako si videl \"nove neprepoznane fajle\"? Izgleda, kot da bi disk zakriptirali?\n\nČe ga priklopiš na USB, se podatki na njem vidijo? Kar se tiče MBR bi bootrec rešil, ampak očitno je narobe nekaj drugega.",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Datoteke so ok, se vidijo v CMDju in repairu, ko greš iskat Image disk, le neke čudne nove zraven, verjetno je prepisalo MBR. Zanimivo pa ko sem imel identičen primer, je bila kriva crknjena grafična kartica in ko sem dal novo noter, je blo vse ok, kot da nič ni bilo.\n\nRad bi torej prepisal MBR komplet iz usbja na disk.",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Denis je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZdravo,\nče se še kdo spomni, se priporočam \n\nKolegu je nečak spravil virus gor, polno nekih novih nepoznanih fajlov (seveda pr0n, kaj pa drugega) in se zdaj ne zažene (10 let star računalnik z WIN 7), med zagonom napiše, da ni diska. V Biosu disk normalno je in kaže, da bi vse moralo štimat.\n\nWindows repair ne naredi nič. V bistvu noben korak ne naredi nič. Pri safemode se ustavi, ker ne more naložit ene datoteke, ki je AVASTov file.\n\nNa usbju imam že od prej Windows repair file gor in zdaj me zanima:\nko pridem v repairu v CMD in grem na C: (disk) in F: (USB s fajli), kakšen je ukaz, da nesem MBR iz F: USBja komplet na C: disk?\n\nukaze bootrec /fixmbr, /fixbcd, /scanos in /rebuildbcd sem že pognal, vse je kao ok, ampak \"diska pa še vedno ni\", ko končam in resetiram. Aja disk dela, se sliši, vse je ok.\n\nBi se nov rač kupil, ampak gre bolj za Bitstamp in Bittrex  \n\nHvala\n\t\t\n\t\tKlikni za razširitev\n\t\nTo si poskusil:\n\nHow to move MBR to another drive in Windows 10/8/7?\n\nClick Start and type command prompt in the search box. Right click the Command Prompt program from the given list and select Run as administrator.\nAt the prompt type bcdboot c:\\windows /s c: and press Enter. ...\nCheck if you've successfully copied MBR to another disk.\n",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bizi je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTo si poskusil:\n\nHow to move MBR to another drive in Windows 10/8/7?\n\nClick Start and type command prompt in the search box. Right click the Command Prompt program from the given list and select Run as administrator.\nAt the prompt type bcdboot c:\\windows /s c: and press Enter. ...\nCheck if you've successfully copied MBR to another disk.\n\n\t\t\n\t\tKlikni za razširitev\n\t\nNisem še, 10x za idejo.",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Particijska tabela se je vsula ... treba bo najprej reševati pomembne podatke, kar lahko zelo dolgo traja (uporabit kak Live Resque CD/DVD). Podatki so na najrazličnejših mestih in moraš vedeti, kateri so ti pomembni, filmčki pač to niso ... nato ponovna instalacija OS ... IMHO ne bo druge. To se rado zgodi, če pogonov ne odstraniš preko Safe remove oz. za kratek čas mrkne štrom (niti ne opaziš!) ali če imaš vklopljeno indeksiranje in to ravno takrat ko zapisuje na disk in naredi \"fuzl\" ... Rezultat je lahko tudi brdo fajlov, ki se jih ne da odpret s kakimi čudnimi imeni ... Sicer nekje bi morala bit kopija Part.tabele, ma za win10 ne vem kje je. Samo vračanje MBR ipd. ne bo pomagalo IMHO ... na žalost ... lahko pa se zgodi čudež, a malo verjetno.",
+    "author": "Spajky",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tRedo Rescue: Backup and Recovery Made Easy | Bare metal restore\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tredorescue.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Kamele0N",
+    "author_level": "YUGOslovanski mehanik       Dmitri Mendeleev"
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Kako bi ta problem in rešitve povezali z izdelavo ING SYS - c: - particije?",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "MBR iz USB na HDD",
+    "content": "Evo, v dveh dneh sem poskusil vse opcije (vsaj mislim, hvala za predloge.\n\nNa koncu sem na novo nalozil windowse, ker je to cisto prevec casa ze slo za to...\nNo pa sem povezal v mrezo ta racunalnik in moj (v router) in sem zagonske datoteke programov prenasal tja, tam instaliral itd...\nJa zdaj pa imam jaz tezavo na mojem\n\nJe mogoce, da bi virus ostal na onem racunalniku? Ni bilo formata, le prepis, vsaj jaz nisem videl, da bi formatiralo, windows.old map pa tudi ni nikjer.\n\nTo je zdaj meni mbr prepisalo?",
+    "author": "B81",
+    "author_level": ""
+  }
+]

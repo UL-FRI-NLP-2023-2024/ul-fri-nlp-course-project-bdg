@@ -1,0 +1,34 @@
+[
+  {
+    "message": "Hi,  učim se programirat v javi (beginner mode) in bi rad še rešil kakšno vašo vajo, tako da če imate kakšna besedila vaj kar prilepite. Rešitve ali dele teh bom postal.   Lp. ",
+    "user": "epicVoid"
+  },
+  {
+    "message": "Naredi program za rešit sudoku (rabiš znat, if stavke, for zanke, rekurzijo) ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Nekaj nalog: (sicer so za prog. jezik C, ampak mislim, da bi bilo tudi za javo, saj je tudi pri javi podobna sintaksa)  1. Napišite program, ki rekurzivno izračuna in vrne vrednost n! (n fakulteta), kjer je n naravno število.   2. Napišite program, ki za naravno število n rekurzivno izračuna in izpiše njegovo predstavitev v dvojiškem številskem sistemu.  Primer 77(10) = 01001101(2)  3. Napišite program, ki rekurzivno izračuna potenco nenegativnega števila s ponavljajočim kvadriranjem, tj.  x2n = (x2)n in x2n+1 = x * x2n in podprogram vrne rezultat izračuna. Podprogram naj prejme dva parametra:  - prvi parameter predstavlja število, ki ga želimo potencirati  - drugi parameter tega podprograma predstavlja potenco tega števila Primer: 27 = 2 * 22*3 = 2 * (23)2 ... ",
+    "user": "lebdim"
+  },
+  {
+    "message": "Hvala.  Sudoku še malo razmišljam... Je pametno uporabiti bruteforce za števila? Se pravi, da bi tako dolgo premetaval števila, dokler ne bi tabela ustrezala pogojem (če je to dejanski bruteforce ne vem). Pri tem ne mislim, da bi vsa števiila naenkrat premetaval, ampak samo števila v vrsticah naprimer, dokler niso vsa različna in ko so vsa različna bi šel v naslednjo vrstico in pogledal če so vsa različna... potem bii šel pregledat vsak stolpec posebej in na koncu še notranje matrike 2×2, da vsebujejo različna števila. Nevem, če je ideja primerna....  1. naloga od lebdim:    public fakulteta() {\n\t\tsetDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n\t\tsetBounds(100, 100, 361, 67);\n\t\tcontentPane = new JPanel();\n\t\tcontentPane.setBorder(new EmptyBorder(5, 5, 5, 5));\n\t\tsetContentPane(contentPane);\n\t\tcontentPane.setLayout(null);\n\t\t\n\t\tfinal JLabel lblVpiiN = new JLabel(\"Vpiši n :\");\n\t\tlblVpiiN.setBounds(12, 12, 94, 15);\n\t\tcontentPane.add(lblVpiiN);\n\t\t\n\t\ttextField = new JTextField();\n\t\ttextField.setBounds(76, 10, 140, 19);\n\t\tcontentPane.add(textField);\n\t\ttextField.setColumns(10);\n\t\t\n\t\tfinal JButton btnNewButton = new JButton(\"Izračunaj\");\n\t\tbtnNewButton.addActionListener(new ActionListener() {\n\t\t\tpublic void actionPerformed(ActionEvent arg0) {\n\t\t\t\t\n\t\t\t\ttry {\n\t\t\t\t\tint num = Integer.parseInt(textField.getText());\n\t\t\t\t\t// JOptionPane.showMessageDialog(null, \"Hello World\");\n\t\t\t\t\tint rezultat = fak(num);\n\t\t\t\t\tJOptionPane.showMessageDialog(null, rezultat);\n\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tcatch(Exception ex)\n\t\t\t\t{\n\t\t\t\t\tJOptionPane.showMessageDialog(null, \"Napaka\");\n\t\t\t\t}\t\n\t\t\t}\n\t\t});\n\t\t\n\t\tbtnNewButton.setBounds(228, 7, 117, 25);\n\t\tcontentPane.add(btnNewButton);\t\n\t\t\n\t}\n\t\n\tpublic int fak(int n) {\n\t\t\n\t\tint rezultat;\n\t\t\n\t\tif(n == 1) {\n\t\t\treturn 1;\n\t\t}\n\t\t\n\t\telse {\n\t\t\trezultat = n * fak(n-1);\n\t\t\treturn rezultat;\n\t\t}\n\t} Tisto moje mišljenje se ne bo izšlo preveč dobro, ker se ob spremembi vrstice spremeni tudi število v stolpcu in je to potem začaran krog.... ",
+    "user": "epicVoid"
+  },
+  {
+    "message": "malo sem še popravil 1 nalogo, da če ni naravno število izpiše napako.   try {\n\t\t\t\t\tint num = Integer.parseInt(textField.getText());\n\t\t\t\t\t// JOptionPane.showMessageDialog(null, \"Hello World\");\n\t\t\t\t\tif(num > 0) {\n\t\t\t\t\t\tint rezultat = fak(num);\n\t\t\t\t\t\tJOptionPane.showMessageDialog(null, rezultat);\n\t\t\t\t\t}\t\t\n\t\t\t\t\telse {\n\t\t\t\t\t\tJOptionPane.showMessageDialog(null, \"Vnešeno število ni naravno število\");\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tcatch(Exception ex)\n\t\t\t\t{\n\t\t\t\t\tJOptionPane.showMessageDialog(null, \"Napaka, napačen vnos\");\n\t\t\t\t}\t ",
+    "user": "epicVoid"
+  },
+  {
+    "message": "Za začetek za sudoku preglej preseke manjkajočih cifer za posamezne polja. S tem boš rešil lažje sudokuje. Nato nadgradiš. Jaz imam sudoku solver rešen v 500 vrsticah. Če rabiš ti lahko pošljem source. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Hvala, bom najprej poskušal narediti po svoje in bom potem z veseljem pogledal tvojo kodo. Radi bi naredil tudi GUI, samo ne vem kakšne gradnike točno naj bi uporabil za 9×9 matriko? 81 gumbov oz text fieldov?  rešitev druge naloge od lebdim :    public rekursionNumer2() {\n\t\tsetDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n\t\tsetBounds(100, 100, 418, 96);\n\t\tcontentPane = new JPanel();\n\t\tcontentPane.setBorder(new EmptyBorder(5, 5, 5, 5));\n\t\tsetContentPane(contentPane);\n\t\tcontentPane.setLayout(null);\n\t\t\n\t\tJLabel lblVpiiDesetikotevilo = new JLabel(\"Vpi\\u0161i deseti\\u0161ko \\u0161tevilo :\");\n\t\tlblVpiiDesetikotevilo.setBounds(10, 21, 120, 14);\n\t\tcontentPane.add(lblVpiiDesetikotevilo);\n\t\t\n\t\ttextField = new JTextField();\n\t\ttextField.setBounds(143, 18, 86, 20);\n\t\tcontentPane.add(textField);\n\t\ttextField.setColumns(10);\n\t\t\n\t\tJButton btnPretvori = new JButton(\"Pretvori v binarno\");\n\t\tbtnPretvori.addActionListener(new ActionListener() {\n\t\t\tpublic void actionPerformed(ActionEvent arg0) {\n\t\t\t\t\n\t\t\t\ttry {\n\t\t\t\t\tint num = Integer.parseInt(textField.getText());\n\t\t\t\t\tif(num >= 1) {\n\t\t\t\t\t\tJOptionPane.showMessageDialog(null, pretvoriVBinarno(num));\n\t\t\t\t\t}\n\t\t\t\t\telse {\n\t\t\t\t\t\tJOptionPane.showMessageDialog(null, \"Stevilo ni naravno stevilo\");\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tcatch(Exception ex) {\n\t\t\t\t\tJOptionPane.showMessageDialog(null, \"Napačen vnos\");\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\t\tbtnPretvori.setBounds(245, 17, 120, 23);\n\t\tcontentPane.add(btnPretvori);\n\t}\n\t\n\tpublic int pretvoriVBinarno(int stevilo) {\n\t\tif(stevilo <= 1) {\n\t\t\treturn 1;\n\t\t}\n\t\t\n\t\telse {\n\t\t\treturn (stevilo % 2 + 10 * pretvoriVBinarno(stevilo / 2));\n\t\t}\n\t}\n ",
+    "user": "epicVoid"
+  },
+  {
+    "message": "Jaz imam narejeno v terminalu. Če se ti bo zataknilo kar sporoči. ",
+    "user": "Yacked2"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Pozdravljeni\n\nV Excelu imam naslednji primer:  V prvem stolpcu imam vpisan dan v tednu, naprimer Nedelja. V drugem stolpcu pa imam vpisan datum v obliki 18.03.2018 .\nSedaj pa bi rad, da bi mi Excel v tretjem stolpcu združeval vsebino celice v prvem stolpcu in vsebino celice v drugem stolpcu.\nTorej v celici v tretjem stolpcu naj bi Excel izpisal naslednje:   Nedelja, 18.03.2018\nA mi to nikakor ne uspe, ker mi  datum spremeni v številko  43177. Prosim za pomoč.\n\nLep pozdrav,",
+    "author": "Izbrisan uporabnik 20610",
+    "author_level": ""
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Concatenate funkcija:\nhttps://support.office.com/sl-si/ar...catenate-8f8ae884-2ca8-4f7a-b093-75d702bea31d",
+    "author": "dijo_porko",
+    "author_level": "mona"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Prvi stolpec je nepotreben, saj zna excel izračunati dan iz datuma\noblikovanje, po meri, \"[$-424]dddd, d. mmmm yyyy;@\"",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik dijo_porko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tConcatenate funkcija:\nhttps://support.office.com/sl-si/ar...catenate-8f8ae884-2ca8-4f7a-b093-75d702bea31d\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nTole ne deluje tako, kot bi želel. V tretjo celico Excel izpise naslednje: Nedelja,43117 .  Jaz bi pa želel, da izpiše naslednje:  Nedelja, 18.03.2018",
+    "author": "Izbrisan uporabnik 20610",
+    "author_level": ""
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Mi je uspelo najti rešitev. Tole pa je sedaj delujoča funkcija v tretjem stolpcu. Tako sedaj dobim natančno takšen izpis, kot sem želel:  Nedelja, 18.03.2018\n\n\"=A2&\", \"&TEXT(B2;\"dd.mm.yyyy\")\"\n\nLep pozdrav,",
+    "author": "Izbrisan uporabnik 20610",
+    "author_level": ""
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "brez veze, dovolj bo, če si  oblikuješ izgled celice kjer je datum, tako, da ti kaže \"nedelja, 18.3.2018\". Desni klik na celici ali bloku celic, potem pa \"oblikuj celice\" in izbereš Po meri, pod Vrsta pa dodaš tole: dddd, dd.mm.yyyy",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik mcn je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tbrez veze, dovolj bo, če si  oblikuješ izgled celice kjer je datum, tako, da ti kaže \"nedelja, 18.3.2018\". Desni klik na celici ali bloku celic, potem pa \"oblikuj celice\" in izbereš Po meri, pod Vrsta pa dodaš tole: dddd, dd.mm.yyyy\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo bi sicer šlo, vendar se mora dan avtomatsko izpisati z veliko začetnico. Tega mi pa na ta način, kot si napisal, ne uspe naredit.",
+    "author": "Izbrisan uporabnik 20610",
+    "author_level": ""
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Bi poizkusil z Dddd - velika prva črka - v formuli datuma?",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Ni razlike.",
+    "author": "Izbrisan uporabnik 20610",
+    "author_level": ""
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "p.s. v slovenščini se dan v tednu piše z malo začetnico...",
+    "author": "peter_nn",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "no ja, razen če je v začetku stavka, drugače pa, meni tudi ni uspelo, tako da je potem formula \"=proper(A2)&\", \"&TEXT(B2;\"dd.mm.yyyy\")\" ustrezna.",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Pozdravljeni\n\nTole bi pa sedaj bila enostavna in delujoča rešitev:\nV celico 2A vpišemo samo datum v obliki:   18.03.2018\nV celico 2C pa vpišemo formulo:     =PROPER(TEXT(A2;\"dddd\"))&\", \"&TEXT(A2;\"dd.mm.yyyy\")\nin tako dobimo željeni izpis, ki se začne z veliko začetnico, imenom dneva, presledkom in datumom:   Nedelja, 18.03.2018\nHvala vsem za pomoč in koristne informacije, nekaj pa sem dodal še sam. Mogoče bo pa še komu tole prišlo kdaj prav.\n\nLep pozdrav,",
+    "author": "Izbrisan uporabnik 20610",
+    "author_level": ""
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Tole gre pri meni v arhivo \nPotem je ta novi datum besedilo, in z njim ne moreš računat!",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Pozdravljeni\nBom kar to temo izkoristil za excel vprašanje.\nNa excell 2013 mi vedno, ko odprem nov dokument in začnem vnašati formule nastavi na možnosti računanja ročno. Sem bil nekaj mesecev odsoten v službi-bolniška, tako, da nisem kaj prestavljal. Kako naj nastavim nazaj na avtomatsko preračunavanje.\nV prilogi je slika, kako je ko odprem nov dokument. Potem pa moram sam klikniti na samodejno, da deluje.\nProsim za pomoč in hvala.\nhttp://shrani.si/f/3H/rf/1Uu0JUpa/excel2013.jpg",
+    "author": "kapadimul",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Torej, ko odpreš novo prazno tabelo, je avtomatsko - vedno - nastavljeno nazaj(!) na ročno kalkuliranje?",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik brane_new je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTorej, ko odpreš novo prazno tabelo, je avtomatsko - vedno - nastavljeno nazaj(!) na ročno kalkuliranje?\n\t\t\n\t\tKlikni za razširitev\n\t\n Da. Ne vem kako naj nastavim, da bo vedno privzeto nastavljeno na samodejno",
+    "author": "kapadimul",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik kapadimul je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPozdravljeni\nBom kar to temo izkoristil za excel vprašanje.\nNa excell 2013 mi vedno, ko odprem nov dokument in začnem vnašati formule nastavi na možnosti računanja ročno. Sem bil nekaj mesecev odsoten v službi-bolniška, tako, da nisem kaj prestavljal. Kako naj nastavim nazaj na avtomatsko preračunavanje.\nV prilogi je slika, kako je ko odprem nov dokument. Potem pa moram sam klikniti na samodejno, da deluje.\nProsim za pomoč in hvala.\nhttp://shrani.si/f/3H/rf/1Uu0JUpa/excel2013.jpg\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPoglej v XLSTART mapo, če ni tam kak dokument, ki je shranjen v manual modu.",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bizi je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPoglej v XLSTART mapo, če ni tam kak dokument, ki je shranjen v manual modu.\n\t\t\n\t\tKlikni za razširitev\n\t\nMapa je prazna.\nNe vem več kaj naj še poskusim.",
+    "author": "kapadimul",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Mogoče tu najdeš rešitev\nPovezava",
+    "author": "_jfk_",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik _jfk_ je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMogoče tu najdeš rešitev\nPovezava\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala.\nUspelo in deluje.",
+    "author": "kapadimul",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "Kaj je bilo?",
+    "author": "Jason",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - združevanje dneva v tednu in datuma",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Jason je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKaj je bilo?\n\t\t\n\t\tKlikni za razširitev\n\t\nPo tem navodilu sem naredil",
+    "author": "kapadimul",
+    "author_level": "Fizikalc"
+  }
+]

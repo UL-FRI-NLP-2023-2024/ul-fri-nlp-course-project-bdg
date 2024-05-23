@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Torej imam težavo pri vzpoztavljanju VPN povezave med dvema oddaljenima lokacijama, na vsaki je router Draytek, povezavo sem uspel nastaviti do mere, da se poveže in povezava deluje nekaj časa, včasih nekaj sekund, včasih nekaj minut, potem pa povezava pade. Kaj bi lahko bil vzrok za prekinjanje VPN povezave? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Imaš kake loge? Si na obeh koncih pravilno nastavil vse parametre? ",
+    "user": "Maximus"
+  },
+  {
+    "message": "Torej na lokaciji A imam subnet 192.168.0.0/255.255.254.0, na lokaciji B pa 192.168.1.0/255.255.254.0. Iz lokacije B kličem na lokacijo A, povezava se vzpostavi, pingam lahko preko VPNja računalnike na drugi lokaciji, tako da parametri naj bi bili vredu, muči me le neka malenkost, zaradi katere mi potem povezavo naključno meče dol. Razmišljal sem, kako je z DHCP serverji, namreč na obeh lokacijah teče DHCP server, kar bi znal biti problem, namreč več kot en DHCP server v isti mreži, kar bi VPN naj nekako bil, je lahko težava ... Kaj menite? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Kolikor vidim, imaš overlaping subnet na drugem koncu. Priporočajo, da pri IPSec VPN-u uporabiš dva različna subneta na lokacijah.  V primeru da pa to ni mogoče, si pa potem pomagaš s kakim NAT-om ipd. ",
+    "user": "Maximus"
+  },
+  {
+    "message": "Torej kako bi potem naj izgledala ob subneta, da ne bosta overlapala, pa da bosta med sabo vidna? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Na obeh straneh uporabi subnet 255.255.255.0 in na eni strani 192.168.0.0, na drugi pa 192.168.1.0, pa bo delalo. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Samo če dam na obeh koncih subnet 255.255.255.0, potem se obe omrežji med sabo ne bodo videli/pingali? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "dejansko se bodo lahko pingali, saj se bo promet routal preko vpn tunela. vzpostavi layer3 povezljivost, ne trudi se vzpostavljati layer2... 192.168.0.0/24 in 192.168.1.0/24 is the way to go... ",
+    "user": "NoName"
+  },
+  {
+    "message": "Ali moram imeti subnet 255.255.255.0 tudi na obeh lokalnih mrežah ali samo v nastavitvah VPNja? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "-na obeh lokalnih mrežah, seveda -DHCP strežnik iz enega konca ne bo dosegljiv na drugem, ker imaš vzpostavljen Layer 3 VPN, torej se promet v tunel zrouta. DHCP requesti klientov pa so broadcast promet, ki se na Layer 3 napravi po pravilu ustavi. ",
+    "user": "tony1"
+  },
+  {
+    "message": "Zadeva sedaj deluje, hvala za pomoč! ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Hmm, sem mislil da je že vredu, ampak se mi še vedno pojavljajo prekinitve, sedaj mi je nekajkrat povezava obstala za par minut, potem je pa zopet padla ... Kaj bi še lahko bil problem? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "VPN tunele imajo različni vendorji različno implementirane, nekateri so narejeni tako da se vzpostavijo šele, ko na enem od koncem pošlješ v tunel \"zanimiv\" promet (tj. promet, ki mora iti (je bil zroutan/se je ujel v access listo, ki določa, kaj gre v tunel) v mrežo na drugi strani tunela.  Nekateri pa so vzpostavljeni ves čas in se ugasnejo po določenem času, če zanimiviega prometa ni več. Ko se ta spet pojavi se tunel spet sam vzpostavi (pri tem lahko uporabnik vidi manjšo zakasnitev, pri pingu se recimo prvi ping izgubi, ampak ker se ponavadi podatke prenaša s TCP protokolom ne pride do izgube uporabniškega prometa).  Običajno pa je nekje tudi opcija, s katero usmerjevalnik sam drži povezavo vzpostavljeno ves čas, poišči jo.  Je pa tako, da ima boljša (običajno tudi dražja) oprema vse funkcionalnosti boljše implementirane kot slabša. Osebno se VPN tunelov ne bi lotil postavljati s SOHO opremo, ker je škoda živcev... :P ",
+    "user": "tony1"
+  },
+  {
+    "message": "Si nastavil \"Always-ON\" ? ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "Jap, always on je že on začetka na vklopljen. Ko pridem domov bom prilepil še skrinšote obeh nastavitev, če bo kdo mogoče opazil še kakšno nastavitev, ki ni prav nastavljena ... ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Evo nastavitve na obeh lokacijah. Lokacija A:     Lokacija B:    ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Mislim da sem našel problem, subnet na enem računalniku sem pozabil spremeniti v 255.255.255.0 in se je zgleda nekaj teplo ... Pa zgleda da je tudi res tako narejeno, da če nekaj časa ni čisto nič prometa vrže VPN povezavo dol. Sedaj mi VPN povezava deluje že več kot 20 minut skupaj (še nikoli tako dolgo), pingam lahko iz lokacije B na računalnike na lokaciji A, težava pa imam sedaj, da nekako ne morem dostopati do mrežnih sredstev iz lokacije B na lokacijo A, računalnike vidim v My network places, ampaker ne morem dostopati do njihovih šerov ... Pa še ena zadeva, kadar imam prižgano VPN povezavo ne morem dostopat do nobenega serverja iz lokacije B na lokacijo A mimo VPNja, torej direktno tako, kot sem do sedaj. Na primer: na lokaciji A sem imel omogočen remote desktop (pač na ruterju preusmerjene porte na določen računalnik), na katerega se ne morem povezati, če imam prižgan VPN, pravtako se ne morem povezati na njega preko VPN-ja z vpisom lokalnik IPjev ... Takoj ko izklopim VPN se spet lahko povežem. Kakšna ideja v čem je fora? ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Nastavitve je brez poznavanja naprav (oz. pregleda dokumentacije le-teh) težko konkretneje komentirati.  Do sharov ne moreš dostopati z netbios resolvanjem imen, ker je to zastarel protokol, ki uporablja broadcast, ki se, kot že napisano, ustavi na layer 3 napravi.  Rešitev je uporaba DNS strežnikov, ampak za tako majhno okolje bo prava tudi zasilna rešitev: do sharov dostopaj prek IPja strežnika, ne preko njegovega imena.  Ne vem zakaj port forward na lokaciji B sedaj ne bi več deloval, je pa ta (za dostopanje na lokacijo B iz A) sedaj nepotreben. Do lokacije B dostopaj čez VPN tunel (kjer je povezava tudi kriptirana). ",
+    "user": "tony1"
+  },
+  {
+    "message": "Sedaj sem na obeh straneh spremenil vrsto povezave iz \"L2TP with IPSec Policy\" v \"IPSec Tunnel\" in ne opazim več problemov z nezmožnostjo dostopanja do strežnikov na lokaciji A mimo VPNja ... Sem poskusil do šera dostopati preko IPja pa tudi ne gre, pingam ga pa lahko ... ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Draytek-a ne poznam najbolje, vendar ponavadi je želja da se lahko inicira VPN iz obeh strani.  Našel sem en tutorial na to temo, poglej če ti kaj pomaga.  http://www.imprezablog.co.uk/2011/7/11/...   lp, ",
+    "user": "Maximus"
+  },
+  {
+    "message": " bastadu je 9. jan 2014 ob 22:03 izjavil: Sem poskusil do šera dostopati preko IPja pa tudi ne gre, pingam ga pa lahko ...  Našel težavo, v windows firewall-u na cilnjem računalniku je bilo potrebno še nastaviti, da 'File and printer sharing' ni odblokiran samo za lokalni subnet, ampak še za onega drugega, sedaj špila, me happy :) Hvala za pomoč! ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Jaz bi tudi rabil pomoč glede VPN povezave, ki pa jo delam med dvema računalnikoma, ki imaza Windows 8.1 Pro.   Eden je (server) in ima IP 192.168.1.2 drugi dostopa do njega in njegov IP 192.168.1.192  vmes med njima je \"tunle\", ki naredi 2 IP-ja server dobi IP 192.168.1.10 client pa 192.168.1.11  dela mi vse OK...ampak me po nekaj sekundah dela kar prekine in potem moram spet zaštartat povezavo.... Prosim pomoč, če bi kdo znal. Gledal sem že na tujih forumih, ampak mi nič ne pomaga :/ ",
+    "user": "ircr"
+  }
+]

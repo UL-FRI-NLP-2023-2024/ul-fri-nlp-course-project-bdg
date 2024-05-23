@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Premaknjeno iz  RockYou tožen zaradi izgube gesel ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "Kje so sploh dobili PHP programerje brez znanja o nevarnosti SQL injection?Velika večina je takih; to je tudi največja prednost PHPja - odpreš notepad, neki nakucaš in že \"dela\" ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Kje so sploh dobili PHP programerje brez znanja o nevarnosti SQL injection?Velika večina je takih; to je tudi največja prednost PHPja - odpreš notepad, neki nakucaš in že \"dela\" In pri classic ASP je kaj drugače? Še pri ASP.Net lahko brez težav napišeš spletno aplikacijo, ki je polna lukenj. No seveda lahko uporabiš tiste zapletene stvari, ki ti otežujejo delo in ti mogoče odpravijo pomanjkljivosti. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "In pri classic ASP je kaj drugače? Ne, ampak se manj uporablja  Še pri ASP.Net lahko brez težav napišeš spletno aplikacijo, ki je polna lukenj.No lahko že, samo vseeno precej težje... ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Še pri ASP.Net lahko brez težav napišeš spletno aplikacijo, ki je polna lukenj.No lahko že, samo vseeno precej težje... Če hočeš na hitro napisati boš v vseh primerih imel luknje. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Razlika je predvsem v tem, kako hitro lahko _začneš_ producirat pokvarjene zadeve. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Razlika je predvsem v tem, kako hitro lahko _začneš_ producirat pokvarjene zadeve. Oprosti, pri ASP.Netu se moraš še za produciranje sranja potruditi ... kje je še potem tisto koristno.  Vse možnosti so ranljive, pomembno je samo to, da probaš čimbolj zavarovati aplikacijo. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "What is your problem?  A si že prvo vprašanje postavu z namenom, da boš naprej provociral? To v tvojem zadnjem postu ni čisto nič povezano s prejšnjimi. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Štor je štor. Pa ni važno kje stoji.  Na žalost so moje izkušnje takšne, da vsak jezik, ki omogoča enostavno sestavljanje nizov (string concatenation) v aplikaciji na spletne tehnologije neizogibno povzorči, da bodo amaterji pisali stavke v smislu \"select * from XXX WHERE a=\" + nekaj_kar_vpiše_uporabnik. To pa so danes praktično vsi programski jeziki.  Dodaten zaplet pa je, da nekatere knjižnice (recimo, da sam jezik tega še ni kriv) sploh ne omogočajo varnega posredovanja parametrov. Tam pa ne samo, da potrebuješ programerja, ki pozna lastnosti platforme, ampak tudi programerja, ki se ne boji unit testov.  Recimo, da je takšen stil dela z RDBMS lakmusov test sposobnosti programerja. Če v kodi (Java, C#, VBScript, PHP, Python, ...) najdeš sestavljanje nizov brez kontrole vnosa, potem takšnega postaviš nazaj na cesto, preden bo postavil na cesto celo firmo. Če je kaj potenciala, se bo že naučil kako se dela prav, ampak tega se res ne rabi učiti v podjetju na produkcijskih izdelkih.  Izbira jezika tukaj le redko pomaga.... Pa prosil bi, da okolij in razvojnih skeletov (ASP, ASP.NET) ne mešate s programskimi jeziki. Zmogljivosti posameznih knjižnic za interakcijo z RDBMS sistemu pa tudi ne. Če knjižnica slaba, potem moraš njeno delo pač opraviti sam, ni pa to povezano s programskim jezikom. ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "Na žalost so moje izkušnje takšne, da vsak jezik, ki omogoča enostavno sestavljanje nizov (string concatenation) v aplikaciji na spletne tehnologije neizogibno povzorči, da bodo amaterji pisali stavke v smislu \"select * from XXX WHERE a=\" + nekaj_kar_vpiše_uporabnik. To pa so danes praktično vsi programski jeziki. To je verjetno prej pomanjkanje enostavnosti s strani classov/frameworkov. Vsak začetnik bo raje napisal preprost SQL stavek v 1 vrstici, kot pa uporabil solato, ki jo nekateri frameworki ponujajo, kjer rabiš za nekaj enostavnega 5 vrstic kode, ki si jo težko zapomniš. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Bolj pomanjkanje razumevanja. Ne razumejo nekaterih osnovnih konceptov programiranja, bi pa takoj začeli delat stvari z bazami podatkov. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Bolj pomanjkanje razumevanja. Ne razumejo nekaterih osnovnih konceptov programiranja, bi pa takoj začeli delat stvari z bazami podatkov. Aha, torej dejstvo, da morajo napisati 5-10x več kode ne šteje? ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Sej jim ni treba. Morda samo kakšen enkraten korak vmes. Potem je pa vse nekajkrat (no, bolj nekaj desetkrat) enostavneje. Ampak ta dodaten korak jim zamegli um, ker bi radi en output imeli TAKOJ ZDAJ ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Vsak začetnik bo raje napisal preprost SQL stavek v 1 vrstici, kot pa uporabil solato, ki jo nekateri frameworki ponujajo, kjer rabiš za nekaj enostavnega 5 vrstic kode, ki si jo težko zapomniš Mislim, da si v tej povedi v celoti povzel edini razlog za vse zlo, ki ga programerji povzročajo s svojimi \"preprostimi\" rešitvami. Disciplina, disciplina, disciplina. Na žalost pa imamo zaradi pomankanja discipline tudi takšne ne-začetnike Janeze, ki delajo kar so se kot Janezki naučili. No, tem lahko rečem amaterji, ker niso niti pod razno dorasli odgovornosti izbranega poklica.  Velikokrat pa je solata tam zato, da za nekaj poskrbi in nadomesti 100+ vrstic solate iz lastnega vrta. Oh, recimo tipičen vzorec za ADO.Net   SqlCommand cmd = \"SELECT * FROM prvi = @prvi, drugi = @drugi, tretji = @tretji\"\ncmd.Parameters[\"@prvi\"].Value = prvi\ncmd.Parameters[\"@drugi\"].Value = drugi\ncmd.Parameters[\"@tretji\"].Value = tretji\ncmd.Execute\n   SqlCommand cmd = \"SELECT * FROM prvi = '\" + prvi + \"', drugi = \" + drugi + \", tretji = '\" + tretji + \"'\"\ncmd.Execute\n  Torej 5 vrstic namesto dveh. V čemu je razlika? V temu, da pri prvem pristopu nimaš nevarnosti za SQL injection, pri drugem pa moraš sam zagotoviti preventivo. Amater, ki uporabi drugo rešitev pa je amater tudi zato, ker za preventivo ne zna ali pa ne zmore posrkbeti. Če pa poskrbi, pa je lahko nepopolna ali celo napačna - kako neki bi lahko poznal vse cake izbranega RDBMS, če se mu niti 4 vrstice več ne da napisati. ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "Pri tem tvojem primeru je še precej zanimivo to, da imajo praktično vsi začetniki huronske težave, ko morajo (pri drugi varjanti) paziti na narekovaje in escapanje stringov. Tako da v bistvu druga rešitev sploh ni enostavnejša.  Tako kot sem rekel v prejšnjem postu - tisti \"dodaten\" korak se jim zdi v začetku čisto odveč in se potem raje (seveda nekajkrat več časa) ukvarjajo z malenkostmi, s katerimi se jim drugače ne bi bilo potrebno... ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Na žalost so moje izkušnje takšne, da vsak jezik, ki omogoča enostavno sestavljanje nizov (string concatenation) v aplikaciji na spletne tehnologije neizogibno povzorči, da bodo amaterji pisali stavke v smislu \"select * from XXX WHERE a=\" + nekaj_kar_vpiše_uporabnik. To pa so danes praktično vsi programski jeziki. To je verjetno prej pomanjkanje enostavnosti s strani classov/frameworkov. Vsak začetnik bo raje napisal preprost SQL stavek v 1 vrstici, kot pa uporabil solato, ki jo nekateri frameworki ponujajo, kjer rabiš za nekaj enostavnega 5 vrstic kode, ki si jo težko zapomniš.  dejansko jde najlažje potem da strankam potalaš en sql klijent pa si rešen dela.   šalo na stran , fxcop recimo že z statično analizo polovi kar precej neumosti. če ponucaš linq(katerega ne maram) pa je so možnosti za sranje že zelo majhne. v kombinacijo pa IIRC fxcop popzori na executequery v linq tako , da nevem če imaš povsem prav glede tega , da je problem v frameworku.  se bi pa dalo statično analizo za znani framework pri statično tipiziranih jezikih vključit v sam kompajler, ampak to te nezanima ker je potem preveč dela , kajne? ",
+    "user": "noraguta"
+  },
+  {
+    "message": "fxcopMimogrede, visual studio (team system) ima že vključeno to funkcionalnost ",
+    "user": "darkolord"
+  },
+  {
+    "message": " SqlCommand cmd = \"SELECT * FROM prvi = @prvi, drugi = @drugi, tretji = @tretji\"\ncmd.Parameters[\"@prvi\"].Value = prvi\ncmd.Parameters[\"@drugi\"].Value = drugi\ncmd.Parameters[\"@tretji\"].Value = tretji\ncmd.Execute\n   SqlCommand cmd = \"SELECT * FROM prvi = '\" + prvi + \"', drugi = \" + drugi + \", tretji = '\" + tretji + \"'\"\ncmd.Execute\n  Ne vidiš razlike? Kaj če imaš več parametrov? Poleg tega si moraš zapomniti Parameters in Value.  Primer v PHPju:  $result = $mysql->Query(\"SELECT * FROM tabela WHERE prvi = @prvi AND drugi = @drugi AND tretji = @tretji\", array(\n\"prvi\" => $prvi,\n\"drugi\" => $drugi,\n\"tretji\" => $tretji\n));  Moraš samo poznati $mysql->Query in kako deluje. Pa še veliko lepše zgleda. Brez nekih Parameters pa [] pa Value pa še kaj. BTW tebi niti ADO.Net ne pomaga, če neznaš SQLa pisati (pri SELECT FROM je nekako logično, da navedeš tabelo in pa WHERE si pozabil ter vejce moraš z AND zamenjati. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Na koga je letelo to, da ne vidi razlike? ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "Na tebe: V čemu je razlika? ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "fxcopMimogrede, visual studio (team system) ima že vključeno to funkcionalnost ssaj najbrž je teh orodij več , tko kot žajf. sem sam omenil s čim sam skrbim za higeno.   itak pa če bi blo po moje, bi  http://code.google.com/p/nemerle/source...  blo treba spimpat tale makro u nulo pa vržt nevarne klijentelne knjižnice pod ključ dostopne samo za drage novce. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Joj DejanL15... Si že kdaj slišal za retorično vprašanje in uspel prebrati vse, kar piše tam? Naj se citiram: V čemu je razlika? V temu, da pri prvem pristopu nimaš nevarnosti za SQL injection, pri drugem pa moraš sam zagotoviti preventivo. ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "Joj DejanL15... Si že kdaj slišal za retorično vprašanje in uspel prebrati vse, kar piše tam? Naj se citiram: V čemu je razlika? V temu, da pri prvem pristopu nimaš nevarnosti za SQL injection, pri drugem pa moraš sam zagotoviti preventivo. sej pravm iz framworkov pometet ven vse kar ni parametriziran. pa obdavčit, drugač bo skos štala. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Oberon?  ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "matr če priznam sm tist izpit kr v cju spisu , pa je viljhejm mal zamižu, tko da oberona glih ne poznam. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Joj DejanL15... Si že kdaj slišal za retorično vprašanje in uspel prebrati vse, kar piše tam? Naj se citiram: V čemu je razlika? V temu, da pri prvem pristopu nimaš nevarnosti za SQL injection, pri drugem pa moraš sam zagotoviti preventivo. Ja, ampak razlika je predvsem v kodi. Če moraš 10x več kode napisati za isto stvar, potem je nekaj z jezikom narobe. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Joj DejanL15... Si že kdaj slišal za retorično vprašanje in uspel prebrati vse, kar piše tam? Naj se citiram: V čemu je razlika? V temu, da pri prvem pristopu nimaš nevarnosti za SQL injection, pri drugem pa moraš sam zagotoviti preventivo. Ja, ampak razlika je predvsem v kodi. Če moraš 10x več kode napisati za isto stvar, potem je nekaj z jezikom narobe. sej ti pravm , odpri bazo na net pa razdeli sql kliente med stranke bo najmanj dela. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Primer v PHPju:Jah, helper class si lahko tudi drugje napišeš.   connector.Execute(\"SELECT * FROM tabela WHERE neki = @bla1 AND neki2 = @bla2\", \"bla\", \"blabla\")  Ni pa taka rešitev univerzalna... ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Ja, ampak razlika je predvsem v kodi. Če moraš 10x več kode napisati za isto stvar, potem je nekaj z jezikom narobe. Aha... ti bi zamenjal temo in se raje kregal o temu kdo ima daljši (kung) Fu.  Naj ti dam primer za C#: var dejani = from s in Stranke where s.Ime == \"Dejan\" select s; Ali pa za VB.Net: Dim dejani = From s In Stranke Where s.Ime = \"Dejan\" Select s Ali pa za Python: cursor.execute('select * from stranka where ime = ?', ['dejan'])  Pa, da ne bo slučajno kakšne pomote: tvoja PHP in moji LINQ rešitvi so enako zanič. To pa samo zato, ker podpirajo samo en RDBMS. V tvojem primeru samo mySQL preko mySQLi knjižnice, v LINQ primeru pa iz škatle samo MSSQL. Tisti trenutek pa, ko moraš uporabiti nek tretji RDBMS, pa padeš v nazaj v isti stari vzorec.  Kajti pravilen način v PHP za doseči isto stvar je takšen:  $stmt = $dbh->prepare(\"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)\");\n$stmt->bindParam(':name', $name);\n$stmt->bindParam(':value', $value);\n  Hmm... izgleda znano, mar ne? Zakaj menim, da je to pravilen način dela v PHP-ju? Zato, ker ti na zgornji povezavi piše dve stvari: - Prepared statements are so useful that they are the only feature that PDO will emulate for drivers that don't support them. This ensures that an application will be able to use the same data access paradigm regardless of the capabilities of the database. - The parameters to prepared statements don't need to be quoted; the driver automatically handles this. If an application exclusively uses prepared statements, the developer can be sure that no SQL injection will occur (however, if other portions of the query are being built up with unescaped input, SQL injection is still possible).  Kot jezik je PHP pač kot vsak drugi, ki je začel proceduralno, sedaj pa se uči objektov. Njegov nabor standardnih knjižnic, ki predstavljajo skelet za razvoj aplikacij ni ne boljši, ne slabši od alternativ - vzorci so bolj ali manj podobni. Seveda, če uporabljaš specifične knjižnice, si lahko tudi kaj olajšaš. Ni pa to standarden pristop.  Kar se tiče tistega \"moraš poznati samo $mysql->\", pa je moj odgovor zelo enostaven in premočrten: dober programer pozna vse, ker nikoli ne ve kaj bo najboljša rešitev za naslednji projekt.  Kot dober programer boš verjetno znal našteti vsaj tri razloge zakaj tvoj prvi primer v PHP ni tako dober kot \"posvečen\", ki ga predlagam jaz. ;) ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "Naj ti dam primer za C#: var dejani = from s in Stranke where s.Ime == \"Dejan\" select s;var dejani = Stranke.Where(s => s.Ime == \"Dejan\");   v LINQ primeru pa iz škatle samo MSSQLHm, no to ni čisto res... ;) ",
+    "user": "darkolord"
+  },
+  {
+    "message": "A zdaj si mi pa še functorje pred nos pomolil? You are so evil   Za LINQ vem, da \"iz škatle\" dobiš LINQ to SQL, ki podpira MSSQL, ne vem pa za podporo drugim RDBMS-jem. Vsaj ne v 3.5 EF in s strani MS-ja - kar je moja definicija pojma \"iz škatle\". Vem pa, da lahko dobiš komercialne Oracle in DB2 EF knjižnice. Ravno tako vem za obstoj DbLinq, čeprav ne vem v kakšnem stanju je trenutno. Ampak to so že dodatki in ne del jedra. Pa tudi poklicno več nisem programer, da bi moral vedeti čisto vse do zadnjega podatka...  V splošnem menim, da je ADO.Net trenutno bolj(e) podprta tehnologija, kot pa LINQ za alternativne RDBMS-je. Seveda pa se stvari vsakodnevno spreminjajo. ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "Za LINQ vem, da \"iz škatle\" dobiš LINQ to SQL, ki podpira MSSQL, ne vem pa za podporo drugim RDBMS-jem.  linq provider se da obesit praktično na vse , celo na grafično(btw ja obstaja za mysql). ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Za LINQ vem, da \"iz škatle\" dobiš LINQ to SQL, ki podpira MSSQL, ne vem pa za podporo drugim RDBMS-jem.  linq provider se da obesit praktično na vse , celo na grafično(btw ja obstaja za mysql). Še vseeno LINQ deluje samo z katastrofalnimi jeziki (C#, VB, F#, ...), ki so omejeni samo na eno platformo (Windows).  Katastrofali zaradi kode (veliko več je potrebno napisati za isti efekt kot pri alternativah, koda je katastrofa na pogled in za progrmairanje). ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Za LINQ vem, da \"iz škatle\" dobiš LINQ to SQL, ki podpira MSSQL, ne vem pa za podporo drugim RDBMS-jem.  linq provider se da obesit praktično na vse , celo na grafično(btw ja obstaja za mysql). Še vseeno LINQ deluje samo z katastrofalnimi jeziki (C#, VB, F#, ...), ki so omejeni samo na eno platformo (Windows).  Katastrofali zaradi kode (veliko več je potrebno napisati za isti efekt kot pri alternativah, koda je katastrofa na pogled in za progrmairanje). gor sem ti podaal makro v nemerlu , ki ti vrši avtomatično parametrizacijo db stringa v compile timu, če nisi opazil in niti ne gre za linq. v ostalem pa nevarno programiranje me ne zanima.sploh pa ne za ceno dostopa do baze. v osttalem pa omenjeni jeziki dandanes podpirajo type inferencing.malo kode pa še vedno ostane serializacija objektov relativno neboleča procedura, za razliko od tvojih dinamikov kjer naknadno anotiramo zadeve. nadalje kje ima php kakšen patern matching(f# ima) , bog nedaj , da omenimo algebrajsko tipizacijo not-mutable spremenljivke , ...  skratka jezik sicer sam ni ničesar kriv ampak ceno zastarelega jezika plačuješ vseeno ti , če ne direkt pa za ceno varnosti. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Super, F# je superioren, ampak grd je pa še vseeno.  (mislim da smo malo offtopic) ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Za LINQ vem, da \"iz škatle\" dobiš LINQ to SQL, ki podpira MSSQL, ne vem pa za podporo drugim RDBMS-jem.  linq provider se da obesit praktično na vse , celo na grafično(btw ja obstaja za mysql). Poudaril to, kar sem rekel. 3rd party ni iz škatle. jaz nisem ničesar povdaril , bi pa mogoče moral povdarit , da imaš mehanizem , ki ti omogoča nek soliden code coverage. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Super, F# je superioren, ampak grd je pa še vseeno.  (mislim da smo malo offtopic) grd v kakem pomenu besede? ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Ja koda je grda. Še slabše od Pythona.  C/C++ je recimo primer lepe in lepo urejene kode. C#/F#/VB imajo tako vse skupaj nekaj nametano, da nobeden ne razume. Python/Ruby/... so pač neke dodatne katastrofe, ki pa so vseeno boljše od MSjevih izmečkov PHP/Perl sta veliko boljša, ampak še vseeno slabša od C/C++. Java je dober, pa še OO je. Objective C je totalna katastrofa. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Katastrofali zaradi kode (veliko več je potrebno napisati za isti efekt kot pri alternativah, koda je katastrofa na pogled in za progrmairanje). Dajmo tole razčleniti...  veliko več je potrebno napisati za isti efekt kot pri alternativah Ni res, smo pokazali zgoraj.  koda je katastrofa na pogled Vsak uč ima svojega malarja. Meni gre recimo PHP koda z vsemi svojimi dolarčki na spremenljivkah na bruhanje, ker me spominja na BASIC iz konca '80 let prejšnjega tisočletja. Pa samo zaradi tega ne morem reči, da je jezik kot takšen zanič.  koda je katastrofa ... za progrmairanje Pri PHP pa očitno res, za razliko od alternativ, ki jih tako zelo ne maraš. Recimo tako: 1) PHP je šele z verzijo 5 dobil obravnavo izjem, pa ta še vedno ni narejena tako kompletno kot v \"slabših\" alternativah. Kje je \"finally\"? 2) API je zgaga od zgage. To pa zato, ker imena funkcij včasih imajo prefix (str_split), včasih pa ga nimajo (split), spet tretjič pa imajo prefiks, vendar ne ločen od imena (bcsqrt). Največja cvetka pa je prefiks, ki nima zveze z imenom knjižnice (sql_regcase). Včasih so metode napisane_razbito (mysqli::character_set_name), spet drugič jih najdeš maloMešanoNaŽaru (PDO::beginTransaction), spet trejič pa karvseskupaj (stripslashes). Ni kaj, sami lepi zgledi lepega in konsistentnega programiranja. Če obstaja pojem neberljivosti, in nametanosti v kodi, je PHP iz teh razlogov njegova definicija. 3) Dokumentacija je pogosto nepopolna (calculhmac, calcul_hmac, dbplus_info, ...) , občasno pa tudi napačna. Če smo že pri varnosti je lep primer za napačno dokumentacijo na tej strani. Po razglabljanju kaj SQL injection sploh je, je na koncu napačen recept, pravilna rešitev pa sploh ni omenjena. Potem pa naj se znajde začetnik. Aha. Morda pa to pojasni zakaj dober programer na prvi pogled izgleda kot guru. Morda zato, ker se je tako kot generacije pred njim moral učiti na lastnih napakah namesto napakah drugih, svojo superiornost pa dokazuje s tem, da pozna cel API na pamet, namesto, da bi imel v glavi kaj drugega. Oh, recimo arhitekturo in podpobno. 4) Kje je ekvivalent \"Option Explicit\"? Včasih se človek zatipka, programska koda je subtilno uničena, vsega pa je kriva razlika med $l1 in $ll. Pri alternativah se da to lastnost nadzorovati in glej ga zlomka, le zakaj je to pomembno, ko na aplikaciji dela več kot en človek. Še Perl ima to bolje urejeno. Boš uporabil E_ALL? Yay. Dobrodošel v svet produkcije, ki v celoti deluje kot razvojno okolje samo zato, ker jezik nima za razvoj in nadzor kontrole pomembne lastnosti. 5) Delo s polji/slovarčki je polomljeno, ker je PHP pri delu s tipi preveč \"pameten\". Na primer tole, $a = array( 1 => \"foo\", \"1\" => \"bar\" );. Kaj potem vrne $a[1] in kaj vrne $a[\"1\"]. Pa ne velja goljufati in pognati kodo. Poganjanje kode samo zato, da se išče napake, je znak amaterja in/ali začetnika. 6) Okolje za izvajanje je namenoma okrnjeno - Zend pa je komercialna rešitev. Toliko glede svobode in cene. 7) Večnitost - je v praksi še vedno ni. 8) Unicode - v prihodnosti 9) Enakosti imajo čudovite lastnosti, kar se tiče uporabe: \"1 dva 3\" == 1 vrne True in 1.0 === 1 vrne False. S konstantami še gre nekako, kaj pa, ko to postanejo spremenljivke brez vidnih tipov? OSebno bi raje videl eno enakost, ta pa bi lahko bila recimo matematično pravilna (na pamet mi pade recimo tranzitivnost). 10) Nasilno pretvarjanje nizov v številke, samo zato, ker je to možno, pripelje do bizarnih situacij: \"11111111111111111111\" == \"11111111111111111112\" vrne True samo zato, ker PHP najprej na silo naredi pretvorbo v številski tip. Za namenček pa naredi naredi pri pretvorbi napako. Juhuhu. Me zanima kakšen feature je to, da ga še niso prekrstili v hrošča.  Torej je v mojih očeh ta \"lepota\" PHP-ja kot jezika in okolja, sestavljena iz tega, da tudi objektivno gledano koda pisana v PHP ne more biti označena s pridevnikom estetsko (gl. tč. 2), kot jezik PHP še ni nedorasel alternativam (tč. 1, 4, 7 in 8), nekatere njegove lastnosti povzročajo napake in celo pri starih mačkih povečujejo možnost katastrofalnih napak, ki jih je težko odkriti (tč. 5, 9 in 10), obravnava teh potencialnih napak pa je glede na konkurenco funkcionalno omejena (tč. 1).  Iz angleščine si bom parafraziral stavek, da je PHP v svoji trenutni inkaraciji smrdeč kravjek na cvetličnem vrtu. Sicer bodo rožice zaradi njega lepše rasle, vendar pa to ne spremeni njegove narave.  Za tiste, ki običajno ne razumejo metafor (DejanL15: to je namenjeno predvsem tebi), pa še bolj neposredno povedano: navkljub vsem pomankljivostim ima PHP tudi dobre lastnosti, ki se jih da dobro izkoristiti. Čeprav to ni jezik, kjer bi lahko začetnik nekaj naredil brez napak, še starim mačkom se te dogajajo, pa je to še vedno jezik, ki ti lahko da kruh na mizo in, če obvladaš svoje delo, tega kruha ni malo. Na žalost pa te slabe lastnosti jezika povzročajo napake, ki velikokrat pripeljejo do zlorab, kakršna se je pripetila pri RockYou. ",
+    "user": "BlueRunner"
+  },
+  {
+    "message": "C#/F#/VB imajo tako vse skupaj nekaj nametano, da nobeden ne razume. Java je dober, pa še OO je. Lahko da bom mimo usekal in sem kaj zamešal, ker z nobenim izmed teh dveh nisem preživel dovolj intimnega časa, ampak ali ni C# Microsoftov kvazi-fejk Jave in je njuna koda pogosto enaka (na pogled)?  Kar se tiče pa PHP-ja... BlueRunner +1. ",
+    "user": "root987"
+  },
+  {
+    "message": "ASP.Net je pa framework in ga ne moreš direktno primerjati z golim PHPjem. Prej lahko primerjaš PHP z ASP. ASP.Net pa lahko primerjaš z zelo veliko frameworkov, ki obstajajo. Recimo CodeIgniter, CakePHP, symfony, Zend, ... In v teh frameworkih je poskrbljeno za sql injection.  Ti pa očitno pozabljaš, da ima C# eno veliko pomanjkljivost. Deluje samo na Windows, PHP pa deluje povsod. In zaenkrat je *nix v prednosti pri trgu operacijskih sistemov na serverjih.  Ker primerjaš ASP z PHPjem, poznaš kakšno veliko spletno aplikacijo napisano v ASPju (lahko tudi frameworku kot je .NET)? Če se prav spomnem, je največje socialno omrežje - Facebook napisano v PHPju.  Edit: Urejeno. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "2.) Bolje to, kot pa System.Abcd.Something.AgainSomething.SthElse.Random.žnj(a, b);Ne, nikakor ni bolje. Namespace-i obstajajo z dobrim razlogom.   4.) Debugger lahko to reši. Zend ima enega fajnega, pa tudi open source alternative so.Debugger te ne reši pred tem, da takšne napake ostanejo neopažene do izvajanja.  Ti pa očitno pozabljaš, da ima C# eno veliko pomanjkljivost. Deluje samo na najbolj nezanesljivi platformi - Windows.Windows je daleč od najbolj nezanesljive platforme, poleg tega pa C# dela povsod - še na papirju. Programi, napisani v C#, prav tako delajo na več platformah (Windows, Linux, OS X, ...).  poznaš kakšno veliko spletno aplikacijo napisano v ASPju (lahko tudi frameworku kot je .NET)?MySpace, MSN, Bing ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Sem že spremenil post preden si ti odgovoril ... ampak vseeno: Programi, napisani v C#, prav tako delajo na več platformah (Windows, Linux, OS X, ...). Minimalna podpora v Linuxu.  Windows je daleč od najbolj nezanesljive platforme, poleg tega pa C# dela povsod - še na papirju. In katera je manj zanesljiva?  Ne, nikakor ni bolje. Namespace-i obstajajo z dobrim razlogom. Kakšnim? Da otežijo delo?  MySpace, MSN, Bing Mogoče še kakšno, ki nima veze z MSjem? (Če jaz naredim Ž# bom tudi vse aplikacije napisal v tem jeziku). ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "dejan nehi no http://www.mono-project.com/Software ",
+    "user": "noraguta"
+  },
+  {
+    "message": "dejan nehi no http://www.mono-project.com/Software Ampak PHP ima 100% kompatibilnost. Mono pa vsekakor manj. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Ne, nikakor ni bolje. Namespace-i obstajajo z dobrim razlogom. Kakšnim? Da otežijo delo?  Če nečesa ne poznaš, še ne pomeni, da je neuporabno ali slabo.  @BlueRunner: Odlicno spisano! ",
+    "user": "McAjvar"
+  },
+  {
+    "message": "@BlueRunner: Odlicno spisano! Ampak ni vse pravilno in kaj če pogledamo slabosti C#? Več jih bo, ampak ta debata ni primerna za to novico. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "@BlueRunner: Odlicno spisano! Ampak ni vse pravilno in kaj če pogledamo slabosti C#? Veliko več jih bo, ampak ta debata ni primerna za to novico.  BlueRunner je lepo argumentiral vse, kar je napisal. Kje so tvoji argumenti o nasprotnem? ",
+    "user": "McAjvar"
+  },
+  {
+    "message": "dejan nehi no http://www.mono-project.com/Software Ampak PHP ima 100% kompatibilnost. Mono pa vsekakor manj.  Ko sem se šele učil PHPja, sem pisal nek del kode, ki je vseboval deljenje dveh števil. Ker nisem znal drugače, sem \"problem rešil\" tako, da sem preveril, če je delitelj enak 0 ali 0.0 in v tem primeru opozoril uporabnika. Glej zlomka, kodo sem testiral doma na enem sistemu, preizkus v praksi pa je potekal na drugem. Nekje je delovalo, kot sem pričakoval, drugje ne, ob popolnoma enakih vhodnih parametrih. 100% kompatibilno ...  Ampak tole je že globoko off-topic. ",
+    "user": "McAjvar"
+  },
+  {
+    "message": "Nekompatibilnost z drugimi OSi? Mono pa podpira 1/4 vsega, kar je pri .NET. In zaenkrat je PHP še vseeno hitrejši od Mono.  Cena: Za poganjanje ASP.Net boš v večini primerov potreboval Windows Server.  Uporaben IDE je zaenkrat samo na Windowsu.  Delo s tipi je precej težje, ker ne moreš na hitro napisati $a = 33; $a += \"test\";  Glej zlomka, kodo sem testiral doma na enem sistemu, preizkus v praksi pa je potekal na drugem. Nekje je delovalo, kot sem pričakoval, drugje ne, ob popolnoma enakih vhodnih parametrih. 100% kompatibilno ... Si preizkusil isto verzijo in enako konfiguracijo? Ne bi smelo biti razlik. In poleg tega ima PHP 99% kompatibilnost, še zdaj vsebuje veliko crapa iz 4.0 verzije.  ASP.Net pa nima backward compatibility. Za vsak nov framework je potrebno aplikacijo ponovno napisati.  Edit: ASP.Net/C# je popularen tudi zaradi preproste vključitve dodatnih knjižnic (kar je bilo impossible pri classic ASPju) in tega pri Monotu ni, ker jih enostavno ne podpira. ",
+    "user": "techfreak :)"
+  }
+]

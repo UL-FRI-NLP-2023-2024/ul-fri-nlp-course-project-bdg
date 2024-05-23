@@ -1,0 +1,98 @@
+[
+  {
+    "message": "Torej enmu frendu bomo mal skuter poštimal čez zimo, tako da mu bomo zadnjo luč zamenjal z LED diodami. Pri ic elektroniki sem gledal LED diode s svetilnostjo 1,8cd. BI bile to dovolj svetle za \"štop lampo\"? Računam da bi jih uporabli tam okol 30-40. Kakšna je možnost da led diode prekuri zaradi neenakomernega napajanja? Sicer bi vezal brez uporov (vec vzporedno vezanih skupin, v vsaki skupini bi bile diode vezane zaporedno). Druga stvar je pa da bi se nad gume dal led diode. Te bi bile druge barve, samo me zanima ce mi kdo lahko razlozi koliko je to 18 cd?  ",
+    "user": "smilyxx"
+  },
+  {
+    "message": " Candela   definicije osnvnih pojmov  Ker je zavorna luč verjetno 21W to pomeni ~300lm, bi 30-40 ledik več kot zadostovalo, ampak brez regulacije toka ali preduporov raje ne poskušaj, ker utegne lučka crkniti ob najbolj neugodnem trenutku. Ledike niso žarnice na žarilno nitko in zanje veljajo čisto druga pravila igre. Na njihove lastnosti zelo vpliva že majhna sprememba napajalne napetosti, temperatura in tudi starost ledik samih.  In samo opozorilo, na tehničnem pregledu utegnejo težiti, homologacija in take stvari. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "           ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Sadida, si pri tej vezavi uporabil kakšne upore, al si jih zaporedno vezal dirket na napeljavo skuterja? Sam planiram žmigovce pustit kar originalne (Gilera Stalker), samo glavno in zavorno luč bi zamenjal. ",
+    "user": "smilyxx"
+  },
+  {
+    "message": "LED diod se nikoli ne uporablja brez preduporov. Ni problem toliko v majhnih nihanjih napetosto bolj problematičen je povišan tok, ki ga led diode ne prenesejo prav dobro, oziroma da pravilno delujejo morajo dobivati pravo dozo le-tega (odvisno od barve, giblje se med 10mA in 25 mA).  Vezava led-diode na baterijo brez predupora pomeni smrt za LED diodo, če ne takojšnjo, pa zelo kmalno. ",
+    "user": "BluPhenix"
+  },
+  {
+    "message": "    Zanima me če je to dobra vezava? In kakšen usmernik in kondenzator rabim? ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Nekaj smo omenjali predupore za LED, ne ignoriraj nasveta, če nočeš dati 3k za nov komplet ledic.  Zakaj imaš pa usmerniški mostiček? A nima scooter baterije in tako enosmernih 12v? ",
+    "user": "BluPhenix"
+  },
+  {
+    "message": "Ne to je za moj motor, ki nima akumulatorja.Kuko naj pa pol vežem use upore, vse vzporedno z predupori? A pol je uredu tist usmernik in kondenzator? ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Vse diode morajo biti tokovno krmiljene, ker imajo NTC. To pomeni, da ko se segrejejo, se upornost zmanjša, potegnejo še več toka in enkrat je veselja konec. Tok moraš nujno omejiti z uporom. Razen če nimaš tokovnega vira, tam to ni potrebno. ",
+    "user": "rasta"
+  },
+  {
+    "message": "Sploh pa se mi taka vzava, kot jo je na shemi podal Sadida problematična, ker boš z enim uporom zelo težko dosegel stabilno svetenje LEDic in se hkrati izognil temperaturnemu pobegu. Jaz ne bi vezal več kot dveh v serijo. Razen če bi te serije LEDic vezal na kolektor tranzistorja. Samo to zakomplicira vezje. ",
+    "user": "rasta"
+  },
+  {
+    "message": "> In kakšen usmernik in kondenzator rabim? Vzameš navaden 5A Graetz, za kondenzator pa si poglej tole. ",
+    "user": "rasta"
+  },
+  {
+    "message": "A mi lahko potem nekdo naredi vezavo, za izmenično napetost. In lahko je manj ledic(npr.10) ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Še nikoli nisem naredil nobene take luči z LED-icami in ti kakšnih osebnih praktičnih napotkov ne morem dat. Za prvo vezavo (z uporčkom) si poglej  tole stran Za tokovni vir s tranzistorjem, pa si poglej  tole, zadnji primer, kjer gre za polnjenje NiCd baterije. Ti seveda namesto baterije vežeš LED-ice.  Pa pogooglej kaj sam. ",
+    "user": "rasta"
+  },
+  {
+    "message": "No zelo dober podatek za nadaljno debatiranje, bi bilo če bi povedal kako napetost imaš na skuterju in ali imaš akumolator. V mojih časih so imel moredi 6V in to enosmern napetost ker se je le ta proizvajala z dinamom. V sedanjem času pa verjetno uporabljajo alternatorje z reglerjem ki proizvaja 12 V.  Verjetno je najenostavneje narediti napetostno regulacijo z napetostnim regulatorjem LM 78XX (XX napetost ki se regulira npr. 05=5V ali 12=12V), ti so uporabni za vhodne napetosti od 7,5V do 20V. V primeru da je pa vhodna napetost večja kot 20 V pa priporočam LM317, ti pa vem da prenesejo napetosti tudi večje od 24 V, kar pa mislim da v tvojem primeru ne bo potrebno.  Podatki za LM317 InputMax Voltage (Volt) 40, 37  Output Current (mA) 1000, 1500, 500  Output Min (Volt) 1.20  Output Max (Volt) 37  Na izhod regulatorja pa se LED diode enostavno vežejo zaporedno, število diod je odvisno od barve in seveda tipa, ker vsaka ima svojo napajalno napetost, to je pač pri kupovanju le teh tudi povprašati ali pogledati po tabelah lastnosti. Primer vezja Priporočal bi ti da vzameš super svetilna diode, rabil jih boš manj in s tem tudi dosti manj prostora, efekt je pa nepreminljivo boljši. Obstajajo že narejeni moduli ki so prav za tak namen, kahko pa uporabiš tudi zadeve ki so namenjene za razsvetljavo. Naprimer  vse možne barve napetost napajanja 12 V   dodatna oprema za avtomobile (Peguet meglenka)    ali pa že prav zato namenjene luči ki se jih da nabaviti kot tunig opremo Če pa boš izdeloval lučke sam ti pa priporočam da jih zaliješ v plastiko, ker bodo tako zdržale veliko dlje in ne bo prišlo do napak. Vsa vezja pa je potrebno dobro izolirazi da se ne začnejo pritiskati na ohišje motorja. LP in veliko uspehov  P.S.  Skoraj nekaj pozabil če nimaš akumolatorja ali pa če imaš izmenično napajanje je potrebno pred vezje še dodati usmerniški člen (gretz) 5-10A in pa kondenzator (vrednost nekje med 470-2200 mikroF) ",
+    "user": "ZetaNeo"
+  },
+  {
+    "message": "Torej za skuter z 12V akumulatojrem bi bil dost predupor ali bi moral uporabiti še regulator? Gre za zadnjo in zavorno luč, tako da bi ble ene konstantno prižgane, druge bi se pa vklapljale in izklapljale po potrebi. ",
+    "user": "smilyxx"
+  },
+  {
+    "message": "Upor bo dovolj, saj je napetost dovolj konstantna.   Problem vse elektronike na vozilih so vibracije in je potrebno poskrbeti, da se elementi ne premikajo, ker drugače hitro pride, do tega da stvar enkrat dela, drugič ne ali pa se dogajajo zanimive stvari. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "no bom nekaj rekel....ne vem zakaj vsi omenjate te predupore, saj ne vežete samo ene diode na 12V. zvežite jih zaporedno tako da jih lahko priključite na 12V pa je zadeva rešena, naprimer če je dioda za 2V vežeš 6kom zaproredno (6kom x 2V =12V), pa ne rabiš predupora.Tako so narejene tudi diode ki sem jih prikazal na prvi sliki. Važno je samo da je napetost konstantna. V primeru da pa napetost ni konstantna pa priporočam regulacijo napetosti, ker s tem se bo tudi življenska doba ledik povečala, svetilnost bo vedno enaka, v nasprotnem primeru pa lahkopride do uničenja ledic... sama vezava zadnje luči in zavorne luči in seveda ostalik luči( šminka po potrebi)pa je menda jasna. če jih zoptimiziraš na 12V lahko uporabiš obstoječo napeljavo, če pa ne pa moreš narediti novo napeljavo. Že gor sem omenil da vse dele je pa potrebno zaliti v plastiko da je odporna na tresljaje, vodo in druge uplive.  P.S. lahko mi pa pošlješ po pošti staro luč in ti jo proti nagradi predelam....he he he ",
+    "user": "ZetaNeo"
+  },
+  {
+    "message": "Za diode ni noben problem nihajoča napetost. Problem je termični pobeg. In temu so tudi namenjeni predupori. ",
+    "user": "rasta"
+  },
+  {
+    "message": "ok...kaj pa pomeni termični pobeg????? razložil bom po šolsko, tako kot smo se učili v šoli, termični pobeg se zgodi zaradi segrevanja samega elementa, to pa je v polprevodniški tehnologiji itak največji problem. S segrevanjem elemeta se zmanšuje upornost elementa in posledično dviguje tok, s tem pa se posledično spet poveča temperatura in tako naprej in tako naprej...dokler ni puffff...in konec pa nič več ne dela. Osnove si lahko prebereš  tukaj. to so osnove ki jih moreš vedeti.  ja predupor preprečuje da bi ledice crknile, zakaj??? ker na njem nastane padec napetosti razmerno na njegovo upornost. Laično povedano če imaš lediko ki ima nazivno napetostno vrednost 3V, mora biti na preduporu padec napetosti 9V, če hočeš leto prikljopiti na 12V....OK? Če pa imaš 4 ledice vezane zaporedno vsaka po 3V se to sešteje in dobiš 12 V...OK? zakaj sedaj rabiš predupor??? seveda pa mora biti napetost KONSTANTNA!!! Tok steče pa čez vse ledice isti se pravi približno 20mA, odvisno od tipa. Že primerjamo žarnico z lediko je pa tako, žarnica ni tako občutljiva na nihanja kot Led dioda, to je razvidno že iz same karakteristike, pri led diodi se krivulja grafa začne pri določeni napetosti strmo vzpenjati, z drugimi besedami, sprememba napetosti za 10% uniči diodo. Naprimer sprememba napetosti 12V za 10% to je 1,2V = 13,2V, sedaj mi pa za ta primer zračunaj optimalni predupor! S preduporom zmanjšaš napetost na diodi lahko na tako mejo da ne more presežti njenega kritičnega praga, to pa povzroči slabšo svetilnost diode, kar pa potegne za sabo vse druge stvari. Zato se mi zdi nesmiselna uporaba preuporov v tem določenem primeru.  No sedaj še ti pa potrdim mojo teorijo, naprimer nastavek za halogenko z vdelanimi led diodami  ima delovno temparaturo nekje 20-25 stopin celzija. Če bi le ta imela predupore bi bila temeratura zaradi segrevanja uporov precej večja. Prav to pa je ena izmed prednosti LED diod, da porabijo zelo malo energije, da se ne segrevajo itd. Sicer pa lahko vse to kar sem napisal tudi praktično preizkusiš vse skupaj te bo stalo 200sit. pa uspešne eksperimente ",
+    "user": "ZetaNeo"
+  },
+  {
+    "message": "Če se vrnemo k osnovam elektrotehnike, po Ohmovem zakonu se pri konstantni napetosti in manjšajoči upornosti veča tok: I = U/R. Po Joulovem zakonu pa vemo, da je moč, ki se troši na uporu R.I2.  Poleg tega, pa ima še vsaka dioda poleg nominalne napetosti še toleranco v karakteristiki.  Sicer pa kot si navedel, na samih diodah se troši majhna moč in ne pride do kar ekplozije od vklopu. Kdaj pride do pregretja je odvisno tudi od režima obratovanja, toplotne upornosti med ohišjem in okoljem ipd. Ampak v glavnem je to tako kakor s slabo privitim vijakom, nikoli ne veš koliko bo še držal. To je ne varno vezje. Pa vsak komplet LED-ic drugače dela.  Pa ni nujno, da dodaš upore, lahko jih tudi tokovno krmiliš s tranzistorjem.  Koliko je bila tvoja luč neprekinjeno na napajanju? ",
+    "user": "rasta"
+  },
+  {
+    "message": "OK sm zvezal 1x 3 modre LED diode pa vezal okoli 130ohmski upor direkt na akumulator in enkrt 2 modri LED diodi pred kateri sm dau okoli 220 ohmski upor. Pa mi je prekurl pri vsaki eno LED diodo. Se vam kej sanja ker so sm priklopil je delal, ko se je skuter zalaufal je tut še delal šez en cajt pa sta crknili ( ne naenkrat) Če ima kdo kakšno idejo... ",
+    "user": "smilyxx"
+  },
+  {
+    "message": "Premajhen upor, v opisanem primeru mora biti upor vsaj 1k, še bolje 1.5k.  Pri 130 Ω je tekel skoznje tok ~100mA, kar je vsaj 5 do 10x preveč. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Sej so ble diode vezane zaporedno tako da kot sm jst računal je blo čist dost. ",
+    "user": "smilyxx"
+  },
+  {
+    "message": "Mislim, da se tok pri zaporedni vezavi ne razporedi, ampak samo napetost ",
+    "user": "Sadida"
+  }
+]

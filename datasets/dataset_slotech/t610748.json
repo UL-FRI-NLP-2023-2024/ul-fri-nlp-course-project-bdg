@@ -1,0 +1,22 @@
+[
+  {
+    "message": "Povzetek problema: Na laptopu so naenkrat nehali delati driverji za zvok (Realtek). V Device managerju je zraven ikone klicaj, če kliknem Properties pa piše; Windows cannot verify the digital signature for the drivers required for this device. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. (Code 52)  Naredil sem uninstall ter ponovni install driverjev in problem je še vedno ostal. Nato sem ponovno zagnal računalnik in šel v Advanced boot options (F8 menu), ter tam izbral Disable driver signature enforcement. To je rešilo težavo in zvok je delal že takoj ob zagonu. Torej sedaj vem v čem je problem (driver signature). Ampak to je začasna rešitev, ker bi sicer moral ob vsakem zagonu pritiskati F8 in izbrati to opcijo.  Pozna kdo rešitev, ki bi trajno rešila problem? Gledal sem že po netu in nikjer ni napisane neke zagotove rešitve. ",
+    "user": "dr.Akula"
+  },
+  {
+    "message": "Najdeš podpisane šoferje ?  ali http://social.technet.microsoft.com/For... bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS  bcdedit -set TESTSIGNING ON   Preveri tudi stanje diska z orodjem proizvajalca. sfc /scannow si pognal ? ",
+    "user": "s6c-gEL"
+  },
+  {
+    "message": "Najdeš podpisane šoferje? Ko sem naredil uninstall in install driverjev, sem najprej poizkusil namestiti iste kot sem jih imel prej (bili so shranjeni na kompu). Ko ti niso delovali, sem šel na proizvajalčevo stran in od tam pobral driverje; novejša verzija. Rezultat je bil isti, zato sem potem poizkusil že opisani Disable driver signature enforecement, ki je deloval.  ali http://social.technet.microsoft.com/For... bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS  bcdedit -set TESTSIGNING ON Tudi preizkusil potem, ko sem videl da je problem v driver signature. Vpisal sem vsako komando posebej, ob vsaki je bilo zapisano da je bila uspešna, potem sem naredil restart, pa ni bilo učinka.  Preveri tudi stanje diska z orodjem proizvajalca. sfc /scannow si pognal ? Tega še nisem naredil. Sistemski disk je SSD (840 EVO), naložen pa je Windows 7 64-bit. To sem pozabil omeniti v prvem postu. ",
+    "user": "dr.Akula"
+  },
+  {
+    "message": "Ko sem naredil uninstall in install driverjev, sem najprej poizkusil namestiti iste kot sem jih imel prej (bili so shranjeni na kompu). Ko ti niso delovali, sem šel na proizvajalčevo stran in od tam pobral driverje; novejša verzija. Rezultat je bil isti, zato sem potem poizkusil že opisani Disable driver signature enforecement, ki je deloval. Opcija je tudi, da se je zvočna iz nekega razloga pokvarila.  Preveri v ubuntu live seji, če tam dela. ",
+    "user": "s6c-gEL"
+  },
+  {
+    "message": "Preveril zdajle oboje:  - sfc /scannow vrne da je vse OK.  - V Ubuntu live zvok dela. Poizkusil sem sicer samo mute/unmute in tam je pri unmute bil zvok. ",
+    "user": "dr.Akula"
+  }
+]

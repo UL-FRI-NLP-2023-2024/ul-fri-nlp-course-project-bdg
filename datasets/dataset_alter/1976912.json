@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Malo sem že iz programiranja, pa mi ni več čisto jasno, kam ta zadeva spada?\n\nNarejeno imam windows aplikacijo v VS 2010. Sedaj pa ne vem, ali bo to na tem operacijskem sistemu delovala, ali ne.\nPonekod piše, da če deluje na Win XP, bo tudi na Win XP embedded.\n\nVčasih sem v VS 2008 za winCE posebej razvijal aplikacije (Win mobile 6.5). Žal VS 2010 tega ne podpira več.\n\nIma kdo izkušnje s tem? Kako je z ostalimi USB napravami (tiskalniki, čitalci črtne kode)? Če imajo navedene samo običajne operacijske sisteme (Win XP, Win 7, Win8), bodo delovali na tem sistemu ali ne?\n\nHvala za odgovor \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Mato",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Mi imamo v službi na robotih KUKA Win XP embedded, kateri potem zaganja kukino aplikacijo. Mislim, da je to industrijska varianta.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Sem po včerajšnjem daljšem googlanju prišel do bolj točnih informacij. Malo je zmede, ker so različna pojmovanja za enake stvari. \nWin XP embedded in kasneje Win  7 embedded je nadaljevanje mobile 5 in mobile 6.\nŽal razvoj takih aplikacij ni podprt v VS 2010. \n\nMe pa čudi, da ni kakšnega konkretnega odgovora tukaj. Pred leti bi jih bilo polno. Očitno se  je zamenjala struktura obiskovalcev foruma. Škoda.",
+    "author": "Mato",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Windows XP embeded lahko zaganja \"navadne\" aplikacije. Razlika do \"celih\" XPjev je v tem da so lahko oskubljeni s strani integratorja. Najveckrat se uporabljajo v industriji, bancni avtomati, ...\n\nobstaja pa WindowsCE ki pa je sel v Windows7 compact, ...",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Kolikor sem prebral, ni zagotovila, da to drži.\nhttp://en.wikipedia.org/wiki/Windows_Embedded\n\nPo spletu krožijo nasprotujoče informacije.",
+    "author": "Mato",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Drzi vedno... \nTvoj link govori na splošno o Windows embedded, tema pa je o Windows XP Embedded.\n\niz tvojega linka:\nWindows XP Embedded, commonly abbreviated \"XPe\", is a componentized version of the Professional edition of Windows XP. An original equipment manufacturer is free to choose only the components needed thereby reducing operating system footprint and also reducing attack area as compared with XP Professional. Unlike Windows CE, Microsoft's operating system for portable devices and consumer electronics, XP Embedded provides the full Windows API, and support for the full range of applications and device drivers written for Microsoft Windows. The system requirements state that XPe can run on devices with at least 32 MB Compact Flash, 32 MB RAM and a P-200 microprocessor. XPe was released on November 28, 2001. As of October 2008, the newest release is Windows XP Embedded Service Pack 3.",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Windows XP embedded = i586 oz. x86\n\nV VS10 lahko razvijaš IMO za XP brez problema.\nhttp://stackoverflow.com/questions/8902523/targeting-windows-xp-sp2-with-visual-c-2010-vs2010-sp1\nhttp://social.msdn.microsoft.c...rget-windows-xp",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Windows Embedded pomeni, da si instalacijo Windowsev sam zbildaš. To pomeni, da določene komponente, ki jih potrebuje tvoja aplikacija, morda niso naložene. Naknadno naložit jih tudi ne boš mogel, ker je taka instalacija običajno zapečena brez pravic pisanja.\n\nlp",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Ok. \nČe prav razumem imamo sedaj (če gledam za OS 7):\n- windows embedded compakt 7 (izhaja iz WinCE)\n- windows embedded standard 7 (namenska verzija Win7)\n\nJe to pravilno?",
+    "author": "Mato",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "Mislim, da je tako ja. \n\nS tem, da obstaja tudi: Windows Embedded Standard (2009) is the updated version of Windows XP Embedded, the fully componentized version of Windows XP Professional and the successor to Windows NT 4.0 Embedded",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows XP embedded",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik merdzo pravi:Windows Embedded pomeni, da si instalacijo Windowsev sam zbildaš. To pomeni, da določene komponente, ki jih potrebuje tvoja aplikacija, morda niso naložene. Naknadno naložit jih tudi ne boš mogel, ker je taka instalacija običajno zapečena brez pravic pisanja.\n\t\t\n\t\tKlikni za razširitev\n\t\nTočno tako. Na NT konferenci sem enkrat pred verjetno skoraj 10-imi leti šel na delavnico, kjer smo si naredili svoj build. Načeloma si lahko zbiral podporo za vse zunanje enote in si lahko denimo rekel, da tvoj build nima podpore za display ali miško ali tipkovnico ali tiskalnike, itd... Tisto kar izbereš, pa ima podpora samo za konkreten HW (npr gonilnik za točno določeno grafično kartico in ni neke nadgradnje potem).\nČe piše program v Visual Studio 2010 to verjetno pomeni, da dela nekaj za .NET Framework. To bi moral imeti tisti, ki je build Windows XP Embeded delal v mislih. Če .NET Frameworka gor ni, bo to resen problem.\nEnkrat sem videl, da imajo XP embedded mercatorjeve blagajne v lokalni štacuni.",
+    "author": "Pepe",
+    "author_level": "Guru"
+  }
+]

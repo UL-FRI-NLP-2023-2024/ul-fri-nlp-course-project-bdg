@@ -1,0 +1,174 @@
+[
+  {
+    "message": "Zanima me, kam je shranjen? Uporabljal sem ga na firefoxu enega laptopa. To pomeni, da je shranjen na disku tega laptopa? ",
+    "user": "hmm23"
+  },
+  {
+    "message": "Načeloma je lahko tudi na pametni kartici, ampak to je bolj malo verjetno (sicer bi to vedel).  Tako da ja, najverjetneje je v uporabniškem profilu http://kb.mozillazine.org/Profile_folde...  konkreto v datoteki cert8.db http://superuser.com/questions/136535/w... ",
+    "user": "stb"
+  },
+  {
+    "message": "Firefox-> Orodja-> Možnosti-> Napredno-> Digitalna potrdila-< Preglej digitalna potrdila. Če pokaže na seznamu potrdilo Sigenca, lahko narediš varnostno kopijo in jo shraniš v želen folder.  S tem ne rešiš vprašanje, kje je originalni file (če je namen brisanje ali kaj podobnega). ",
+    "user": "otago"
+  },
+  {
+    "message": "Da, zanima me, kje je originalni file, ker se je laptop pokvaril in če bi šel stran, kako vem, da nekdo ne bi dostopal do tega certifikata, tudi če dam disk ven? ",
+    "user": "hmm23"
+  },
+  {
+    "message": "Išči po .crt datoteki na disku. Če je laptop pokvarjen, bo pa moral do drug pomagat // v kolikor ni bil to že captain obvious moment. ",
+    "user": "otago"
+  },
+  {
+    "message": "Sem disk dal ven. Torej .crt datoteka, če je na disku? ",
+    "user": "hmm23"
+  },
+  {
+    "message": "Hja, če ti je laptop crknil in ne moreš v Winse kot user ne vidim možnosti reprodukcije certifikata, če je bil shranjen samo v IE, Chrome ali Firefox. Ravno tako izvoz ni mogoč, če nisi zraven uvozil private key-a (veliko ljudi ga pobiksa pri tej zadevi).  Vprašanje za stručkote:  Ali lahko izvozim certifikat, ki je uvožen v IE s private key-em, tako da skopiram podatke iz diska (ne zaženem računalnika s profilom uporabnika)? ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Na novem računalnik skopiraj celotno profilno mapo od starega firefoxa na novega in boš imel noter vse, tudi certifikat. Potem ga pa lahko izvoziš in ustvariš backup, da ne bo drugič spet problemov. ",
+    "user": "fosil"
+  },
+  {
+    "message": " fosil je 7. dec 2015 ob 12:40 izjavil:Na novem računalnik skopiraj celotno profilno mapo od starega firefoxa na novega in boš imel noter vse, tudi certifikat. Potem ga pa lahko izvoziš in ustvariš backup, da ne bo drugič spet problemov.   Tole dejansko deluje? Se pravi, če imam uvožen certifikat brez private key-a, lahko takole poljubno kopiram certifikate? Malo mi je sumljivo. Moram poskusit. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Dajte si tole v bookmarke: MS IE https://slo-tech.com/forum/t277843/p183...  firefox http://superuser.com/questions/136535/w...  jailbreak za izvor neizvozljivega certifikata: https://github.com/iSECPartners/jailbre... ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "lokacija MS IE certifikata od viste dalje  X:\\Users\\ up.ime \\AppData\\Roaming\\Microsoft\\SystemCertificates\\My\\Certificates\\    Tole dejansko deluje? Se pravi, če imam uvožen certifikat brez private key-a, lahko takole poljubno kopiram certifikate?  Uvožen certifikat brez private key je uporaben za kaj ? ",
+    "user": "AC_DC"
+  },
+  {
+    "message": " AC_DC je 7. dec 2015 ob 13:10 izjavil:lokacija MS IE certifikata od viste dalje  X:\\Users\\ up.ime \\AppData\\Roaming\\Microsoft\\SystemCertificates\\My\\Certificates\\    Tole dejansko deluje? Se pravi, če imam uvožen certifikat brez private key-a, lahko takole poljubno kopiram certifikate?  Uvožen certifikat brez private key je uporaben za kaj ?   Za prijavo praktično kamorkoli, ne da pa se ga izvozit?  EDIT: delam v firmi, kjer se exportable certifikati hranijo v sefu in na zaklenjenem ključku. Uporabniki imajo izključno non-exportable certifikate. Če se kaj podre, prinesem ključek nastavim certifikat in je. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Chuapoiz Eno je, če je ključ uvožen in označen kot non-exportable, drugo je, če je uvožen brez private key - glede na rsa način šifriranja je tak certifikat neuporaben. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": " 111111111111 je 7. dec 2015 ob 12:40 izjavil:Hja, če ti je laptop crknil in ne moreš v Winse kot user ne vidim možnosti reprodukcije certifikata, če je bil shranjen samo v IE, Chrome ali Firefox. Ravno tako izvoz ni mogoč, če nisi zraven uvozil private key-a (veliko ljudi ga pobiksa pri tej zadevi).  Vprašanje za stručkote:  Ali lahko izvozim certifikat, ki je uvožen v IE s private key-em, tako da skopiram podatke iz diska (ne zaženem računalnika s profilom uporabnika)?   Sem že reproduciral certifikat, samo me zanima, če nekdo dobi ta laptop brez diska in ga popravi, ali bo lahko uporabljal moj certifikat (če je shranjen na FF)? ",
+    "user": "hmm23"
+  },
+  {
+    "message": "Ne, ker certifikat ni magično vezan na ta laptop preko 11 dimenzije, temveč je na disku. Če diska ni, dalje izpelji sam. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "Nujno potrebujem pomoč glede Sigence! Upam, da bo kdo to vedel  Imam Sigenco, vezano na podjetje, za NLB Proklik. Le-ta je na usb ključku. Ko se logiram v banko, računalnik prepozna certifikat (ko je vstavljen v usb) in deluje.  Ko pa želim taisti certifikat uporabiti na Zavodu za zaposlovanje, kot firma, pa mi ga ne najde. Pred tednom dni mi ga je normalno našel in je vse delalo. Danes pa nič. Ko želim izbrati avtomatsko prijavo s certifikatom, mi najde samo osebnega, od NLB banke. Vendar z njim ne morem vstopati na portal za delodajalce.  Med tem časom se mi je WIN 10 upgrejdal. Je morda tu problem?   Čudno mi je, ker za spletno banko mi ga najde, za Zavod za zaposlovanje pa ne. Kljub temu, da mi ga je pred mesecem dni še normalno našel.  Kje tiči problem? Hvalaaa, če lahko kdo pomaga. ",
+    "user": "lolipop2"
+  },
+  {
+    "message": "@lolipop2: kaj pa če je pred tem updatom bil certifikat tudi na disku, ne samo na USB ključku, in se je od tam nalagal v browserju?  L.p., Kloko ",
+    "user": "kloko"
+  },
+  {
+    "message": "Hmm...to pa ne vem. Ampak v vsakem primeru bi mi moral ključek s certifikatom najti. ali pač ne? :-/ Imam naložen tisti SETCCE xSign, ko mora bit, pa mi tudi tam ne najde tega certifikata.   Najbolj čudno pa mi je, da proKlik deluje in gga lepo najde na ključku. Obup je tole. Mi požira živce, ko ne najdem rešitve ",
+    "user": "lolipop2"
+  },
+  {
+    "message": "Uhh, uspelo mi je. V programu Nexus Porfessional (nekaj v zvezi s sigenco) je bilo neodkljukano \"enable token search on floppy disc\". Očitno se je spremenilo, ko so se WIN10 updatali.   V pomoč, če bo kdaj še komu nagajalo. Nekaj ur tuhtanja pa je šlo :-/ ",
+    "user": "lolipop2"
+  },
+  {
+    "message": " lolipop2 je 3. okt 2016 ob 19:16 izjavil:Uhh, uspelo mi je. V programu Nexus Porfessional (nekaj v zvezi s sigenco) je bilo neodkljukano \"enable token search on floppy disc\". Očitno se je spremenilo, ko so se WIN10 updatali.   V pomoč, če bo kdaj še komu nagajalo. Nekaj ur tuhtanja pa je šlo :-/    Nexus Personal je program, ki je namenjen Prokliku, nima povezave s Sigenco. Katerakoli druga postavka, razen 'Electronic ID' ne sme biti v Nexusu oz. ni mišljeno, da je.  lolipop2 je 3. okt 2016 ob 13:33 izjavil:Nujno potrebujem pomoč glede Sigence! Upam, da bo kdo to vedel  Imam Sigenco, vezano na podjetje, za NLB Proklik. Le-ta je na usb ključku. Ko se logiram v banko, računalnik prepozna certifikat (ko je vstavljen v usb) in deluje.  Ko pa želim taisti certifikat uporabiti na Zavodu za zaposlovanje, kot firma, pa mi ga ne najde. Pred tednom dni mi ga je normalno našel in je vse delalo. Danes pa nič. Ko želim izbrati avtomatsko prijavo s certifikatom, mi najde samo osebnega, od NLB banke. Vendar z njim ne morem vstopati na portal za delodajalce.  Med tem časom se mi je WIN 10 upgrejdal. Je morda tu problem?   Čudno mi je, ker za spletno banko mi ga najde, za Zavod za zaposlovanje pa ne. Kljub temu, da mi ga je pred mesecem dni še normalno našel.  Kje tiči problem? Hvalaaa, če lahko kdo pomaga.    Wrong, NLB Proklik aka. Personal Ebank uporablja Halcomovo digitalno potrdilo. ",
+    "user": "branc"
+  },
+  {
+    "message": "Pozdravljeni, A ima kdo težave z portalom e-Davki? Nameščen veljaven certifikat Sigen-ca. Uporabljam Firefox, zadnjo verzijo 58.0 in certifikat prikazan v brskalniku (možnosti-zasebnost in varnost-digitalna potrdila-uravitelj potrdil) Enako je tudi z Opero, zadnja verzija 50.0.2762.67.  V sistem e-Davki se lahko normalno prijaviš, saj sistem prepozna nameščen certifikat. Problem je pri oddaji dokumenta, oz. podpisovanje le tega. Dokument izbereš - potrdiš \"oddaj vlogo\" sedaj \"Podpis\" in sledi naslednje:  Firefox: manjka vtičnik \"Comtrade DigSig\" - imam nameščenega in sem namestil ponovno ali vedno znova javlja enako podpisovalna aplikacija - tudi nameščeno in še ponovno enkrat vse namestil  Opera: če želiš podpisati oddano vlogo sistem čaka \"prosim počakajte, preverjanje nameščenih komponent\" in ne naredi ničesar ... piše samo da mora biti omogočen vtičnik Java in nameščena Java (vse je to poštimano)  Zanimivo je to kar piše na strani e-Davki: https://edavki.durs.si/OpenPortal/Pages...  Žal ne vem kako je bilo pri Firefox, verziji 57 (ko smo prešli na Quantum pogon), saj tedaj nisem rabil sistema e-Davki, sedaj bi ga.  Očitno v naši preljubi javni upravi ni opravil svojega dela ali pač ... Vem samo, da so v preteklosti svetovali, da je potrebno narediti \"Downgrade Browsers\", kar je velika neumnost, saj se zadeve morajo posodabljati ne zastarati.  Za vsak nasvet se lepo zahvaljujem! A je kdo preizkusil še z Vivaldi brskalnikom? ",
+    "user": "minicooper"
+  },
+  {
+    "message": "Začasno lahko uporabiš starejšo portable ne_quantum verzijo (56.0.2) ... https://sourceforge.net/projects/portab... ",
+    "user": "nsa_ag3nt"
+  },
+  {
+    "message": "Kako spremeniti geslo digitalnega potrdila? Zanima me za certifikat NLB in Sigenca.  na sigen-ca.si omenjajo neko orodje Entrust v nekem starem predpotopnem sistemu (w95?): https://www.sigen-ca.si/osebni/opcijeEE... ",
+    "user": "Uporabnix"
+  },
+  {
+    "message": "Aha, že ugotovil. Iz brskalnika izvozim ključ, ob izvozu določim (novo) geslo, star certifikat izbrišem in uvozim tega novega, z novim geslom. Je to edini oz. pravilen način? ",
+    "user": "Uporabnix"
+  },
+  {
+    "message": "To kar si napisal, velja za datoteko, v kateri imaš shranjen ključ. Ko uvažaš certifikat na novo, določiš močno zaščito ključa in določiš geslo za dostop do certifikata. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Aha, torej sta dve gesli. Eno za datoteko v kateri je ključ in drugo za uvožen certifikat. Do sedaj sem imel na Srednjo zaščito. ",
+    "user": "Uporabnix"
+  },
+  {
+    "message": "Srednja zaščita pomeni, da moraš potrditi uporabo certifikata, ne vpraša pa te za geslo za dostop le-tega. Se pravi, da lahko vsakdo, ki ima dostop do uporabniškega profila, uporabi certifikat. Če pa imaš visoko zaščito, pa moraš vsakokrat vpisati geslo, če želiš uporabiti certifikat. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Se lahko certifikat z srednjo zaščito izvozi in uvozi še enkrat tako, da za vsako uporabo potrebuješ geslo (močna zaščita)? Ali je nemogoče? ",
+    "user": "azislo"
+  },
+  {
+    "message": "Če ob uvozu ne nastaviš certifikata kot exportable, potem ne .  Veliko folka se tukaj zafrkne, ko ga prvič inštalirajo. ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Certifikat je exportable. Vendar se potem, če se ponovno uvozi, ne da nastaviti da vsakih vpraša za geslo? (prej certifikat ni imel tega, saj je bila nastavljena \"medium\" zaščita) ",
+    "user": "azislo"
+  },
+  {
+    "message": "Seveda se da... ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Mene pa zanima nekaj: na računalnik sem nastavil sigen-co. Hčerka (njen račun) bo jo potrebovala pri vpisu na faks. Kako naj ugotovim, če je sigen-ca res pravilno naložena? ",
+    "user": "Yossarian"
+  },
+  {
+    "message": "Prijavi se v npr. E-upravo ali E-davke in bo hitro jasno, če dela ali ne.  L.p., Kloko ",
+    "user": "kloko"
+  },
+  {
+    "message": "Na stacionarnem računalniku sem si pred nekaj meseci uspešno naložil SIgenco, zdaj bi jo pa rad imel še na prenosniku. Kako naj to izpeljem? Če nimam več referenčne številke in avtorizacijske kode, je to sploh izvedljivo? ",
+    "user": "Yossarian"
+  },
+  {
+    "message": "Odvisno kako si uvozil certifikat. Če si označil, da imaš možnost izvoziti privatni ključ, potem bo šlo - drugače pa ne. Postopek: guglaj export certificate from windows ",
+    "user": "DamijanD"
+  },
+  {
+    "message": "Imam štiri potrdila. Dve mi je uspelo izvozit, dve pa ne (govorim za vse brskalnike, kjer so potrdila nameščena). Ustavi se pri: Nastavitve > Zasebnost in varnost > Varnost > Upravljanje certifikatov > Kliknem na moje potrdilo > Izvozi > Dobrodošli v čarovniku za izvažanje potrdil. Tu kliknem \"Naprej\" in nato mi ne ponudi možnosti \"Da, izvozi zasebni ključ\", saj se obarva svetlo sivo, temveč lahko kliknem samo na \"Ne, ne izvozi zasebnega ključa\". ",
+    "user": "Yossarian"
+  },
+  {
+    "message": "To verjetno pomeni, da je bil certifikat na tak način uvožen in ne vem če lahko na preprost način prideš do privatnega ključa... ",
+    "user": "DamijanD"
+  },
+  {
+    "message": " DamijanD je 28. feb 2021 ob 12:07 izjavil:To verjetno pomeni, da je bil certifikat na tak način uvožen in ne vem če lahko na preprost način prideš do privatnega ključa...   Seveda se da. Pogooglaj za mimikatz orodjem. ",
+    "user": "secops"
+  },
+  {
+    "message": "Ne vem, če bi jaz to znal; nisem najbolj vešč, razen če imam dobra navodila. ",
+    "user": "Yossarian"
+  },
+  {
+    "message": "V  tej temi imaš link do programa za izvoz takih certifikatov. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Hvala, bom poskusil ",
+    "user": "Yossarian"
+  },
+  {
+    "message": "Sem uredil s pomočjo zaposlenih na Sigenci. Me pa še zanima, kako bi Sigenco namestil na mobilni telefon (android)? ",
+    "user": "Yossarian"
+  },
+  {
+    "message": "Sem že rešil. ",
+    "user": "Yossarian"
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "message": "Pozdravljeni,  ker sem zadnje čase precej službeno na poti, bi si želel urediti doma VPN server, da bi se lahko iz različnih lokacij nanj priključil ter potem dostopal do službenega omrežja, privat spletne banke, in podobno. Doma imam srečo, da imam precej dobro linijo 50/50 in sedaj me zanima, kaj naj uporabim? Naj kupim računalnik, nanj naložim Linux in ga ustrezno konfiguriram ALI malo bolj zmogljiv router (mikrotik? cisco?). Vprašanje je tudi, kaj se najbolj splača uporabiti: IPSec / SSL VPN / PPTP / L2TP?  Hvala za vse nasvete! ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Jaz sem uzel asusov router, nastavil openvpn ter povezal dve lokaciji in 3 obcasne uporabnike. Sepravi site to site in road warrior. Malce nastavitev okol \"routinga\", win, android app, use dela bp.  Lp ",
+    "user": "espacious"
+  },
+  {
+    "message": "Kakšne hitrosti pa dosegaš? (in kakšno imaš linijo?) ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Pozabi PPTP - ta že dolgo ne velja več za 'priporočljivega'. Se pa (žal) še vedno marsikje uporablja, ker ni druge alternative (ali pa ljudje ne vedo, da ni priporočljiv).  IPSec in L2TP pa imata isti problem: maksikje z njim ne prideš 'ven', ker nimajo odprtih ustreznih portov.  Jaz običajno najprej probam, če bo šlo z IPSec in če ne gre, uporabim OpenVPN oz. SSL VPN na portu 443/tcp, ki ga večinoma omrežja prepuščajo brez težav.  Drugače pa je definitivno najbolj preprosto, če tvoj router lahko posluži kot gateway, saj nisi odvisen od tega, če je še en računalnik nekje prižgan ali ne. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "jaz uporabljam Windows 10 build in VPN server. Povezava je 300/40Mbit in dosegam brez problema 40Mbit, Razne ruter variannte precej obremenjujejo te bol cenejske ruterje. Netgear 3500l je dosegal je cirka 8Mbit z openVPN. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Predlagam en star PC ali laptop in pfsense fw ;) ",
+    "user": "18Jerry18"
+  },
+  {
+    "message": "Tudi moj glas gre za OpenVPN na TCP portu 443, saj po mojih izkušnjah deluje super, pravilno nastavljen je načeloma veren (za razliko od recimo PPTP), poleg tega pa promet izgleda podobno kot običajen HTTPs in ti bo delalo praktično povsod (Z deep packet inspection se da sicer zaznat, da ne gre za HTTPs, saj spodaj ni čisti TLS/SSL. Če se nekdo res potrudi, lahko blokira, ampak načeloma ne boš imel problemov).  Sem imel postavljeno na eni Linux kišti, trenutno imam kar na pfSense, ki mi sicer laufa kot virtualka na ESXi strežniku in služi kot GW, FW in VPN server, lahko pa seveda pfSense goniš tudi na namenski fizični kišti.   Običajni usmerjevalniki bodo vrjetno prešvoh (Ubiquiti EdgeRouter Lite naj bi prek IPSec spravil cca 100Mb/s, ampak z OpenVPN baje ne gre več kot 10Mb/s, na cenejših varjantah bo še slabše). Če nimaš kište, ki bi jo lahko uporabil v ta namen, lahko mogoče pogledaš za kakšnim Intel NUC. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": " mobisux9 je 20. jun 2016 ob 00:01 izjavil:Kakšne hitrosti pa dosegaš? (in kakšno imaš linijo?)   Server leži na liniji 100/50, nekih večjih padcev prenosa nisem opazil, sicer se pa povezujem vecinoma z klientom ki leži na liniji 10/5 (tu gre hitrost do max) tko da ti konkretno nemorem odg. V praksi pa je tako kot sta fanta tud zgoraj lepo razlozila, cenen router bo kaj kmalu pokleknil. Je pa tu bistveno katero vrsto enkripcije uporabljas. Sam tudi uporabljam pfsense kot openvpn server, na eni drugi lokaciji tam koristim sicer samo site to site, ena linija je 100/50 druga 20/20, zadeva gre zopet bp do max. Aja sem pozabil da pfsense poganja nek star single core... tko da je od enkripcije res dosti odvisno koliko bo obremenilo cpu.  LP ",
+    "user": "espacious"
+  },
+  {
+    "message": "Jaz imam drugace doma Windows 10 pro desktop PC, kateri kot sem ze omenil poganja Windows 10 nativni VPN. Potem pa se na isti masini poganjam Ubuntu Server skoz HyperV. Ta pa izkljucno poganja IPTV server udpxy, saj tudi tega odkar so HD kanali zelo tesko ta netgear 3500l prebavi. Lahko bi tudi OpenVPN namestil v tam ubuntu sever, samo sem zaenrkat vec kot zadovoljen z Win10 variantno. VPN vec ali majn uporabljam za Steam Inhouse streaming kjer poganjam 30Mbit link sliko, ter popcorntime kjer pravtako obremenjen na max 40Mbit brez nihanj. udpxy pa moram poganjat ker edini bere rtsp protokol, odkar je telekom spreminjal zadeve, dobena druga windows varianta serverja to ne zmore. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Sem še malo potestiral z iPerf3, koliko spravim čez VPN v trenutni konfiguraciji med 1 virtualko v lokalni mreži in drugo virtualko, ki jo povezana preko OpenVPN iz druge mreže (drug interface [network] na pfSense, ki drugače nima dostopa do lokalne mreže, za simulacijo WANa, ki je sicer bottleneck).   Ugotovil sem, da gre v trenutni konfiguraciji čez VPN cca. 550Mb/s, pri čemer fizična mašina niti ni polno obremenjena, ker ima pfSense virtualka nastavljen 1vCPU in 512MB RAM (od sicer 4 jeder/8 threadov na Xeon E3-1230v3 procu in 32GB RAM). V praksi me itak obremenjuje 120/10 linija. Kar se tiče enkripcije je uporabljen AES-256-CBC in SHA1 digest.   Imam pa poleg remote access VPNja nastavljen tudi Site2Site VPN (OpenVPN preko UDP) z drugo lokacijo pri punci, kjer je navaden TP-Link 1043ND v2 in gor OpenWRT CHAOS CALMER (15.05.1). Nazadnje, ko sem testiral, je šlo čez teh 10Mb/s, kolikor imam uploada na primarni lokaciji. Pri tem CPU na TP-Linku sicer ni bil na 100%, tako da kak mbps več bi mogoče še šlo, kaj dosti več pa tudi ne. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": "Okay, bom na računalnik naložil linux in ga uporabljal za \"router\". OpenVPN (SSL VPN) torej :) Ali mislite, da bo Intel Atom N270 z 1GB RAM dovolj ali potrebujem kaj boljšega? Linija je, kot rečeno 50/50, želel bi jo čimbolj izkoristiti. ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Zadnje verzije OpenVPN podpirajo tudi AES-256-GCM, ki ga lahko precej pohitriš z ustrezno HW podporo (AES-NI), tako da če že kupuješ, bi mogoče gledal kak proc, ki podpira AES-NI. Tale N270 je že kar stara zadeva, tako da boš moral malo pogooglati, če je kdo objavil kake rezultate, kak novejši Atom pa bo skoraj sigurno dovolj. No edino, če imaš N270 že doma, potem najboljše da naložiš in sprobaš. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": "Tako je, imam doma. Bom poskusil, pa sporočim, če deluje :) Hvala zaenkrat! ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Jaz osebno bi sicer izbral IKEv2 za VPN. Gre za edini VPN, ki ima reconnection poštiman kot se šika tako kot mobilni operaterji, ko se premikaš med towerji pa klic ne prekine. Podprt je nativno v večino napravah in preko aplikacij v drugih.  Ta izbira ima sicer edino pomankljivost, da je težje postavit na server strani in sicer je praktično edina izbira odprtokodni strongSvan na linuxu, ampak če bodo tudi mobilne naprave med klienti je to edina res profi rešitev. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "IKEv2 sam po sebi ni VPN ampak samo protokol (RFC7296), ki se uporablja za vzpostavitev SAjev pri IPSec. StrongSwan pa je implementacija IPSeca za Linux. Delček tega je seveda tudi implementacija IKEv2, ki se uporablja v fazi vzpostavitve povezave.  Kar se tiče IPSeca, smo pa že debatirali, kje so težave in se mi za omenjen primer ne zdi najbolj praktičen. Da se sicer poskrbeti, da IPSec deluje tudi čez NAT, je pa še vedno problem z odprtimi porti, če se bo dostopalo iz različnih neznanih lokacij. Ravno za to se danes v ta namen uporabljajo večinoma takšni in drugačni SSL VPNji.  Ne rečem za Site2Site tunele, tam je IPSec praktično de facto standard in ga podpira večino mrežne opreme. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": "Nekaj je kaj tehnično striktno pomeni IKEv2, nekaj pa za kaj se ta ime uporablja v vmesnikih pri končnih uporabnikih.  Če odpreš Windows 10 nastavitev za dodajanje VPNja(desktop ali mobile) imaš med možnosti tudi IKEv2. Dodatnega pojasnila ni, gre pa v bistvu za implementacijo \"IKEv2 + MOBIKE + IPsec\". In ta implementacija je standard, načeloma pri vseh napravah ko vidiš IKEv2 v nastavtvah gre v bistvu za \"IKEv2 + MOBIKE + IPsec\", nikoli za kakšno drugo implementacijo IKEv2.  Ta dotična implementacija vedno podpira NAT, deluje na dveh portih(500 in 4500) in podpira menjavo postaj(MOBIKE). Port 4500 je blokiran dokaj redko, komaj kaj bolj pogosto kot OpenSSL na portu 443 preko packet inspectiona.  Nativna podpora v Windows, Mac in iOS sistemih je identična tej implementaciji(za Android imaš pa strongSwan). Skratka zadeva je res pro, na nivoju kako imajo operaterji zrihtano mobilno telefonijo, zahteva pa zaradi tega malo več konfiguracije na strani serverja. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "V bistvu se zadevi reče L2TP VPN.  IKEv2 je zavajajoča oznaka za moje pojme. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 22. jun 2016 ob 17:55 izjavil:V bistvu se zadevi reče L2TP VPN.  IKEv2 je zavajajoča oznaka za moje pojme.  Ne zdaj mešat zadev L2TP/IPsec != IKEv2! Popolnoma različni zadevi, edina skupna točka je, da obe za enkripcijo uporabljata IPsec.  Obstaja sicer še drugo ime za L2TP/IPsec in sicer IKEv1. Skratka številka na koncu spremeni zadevo totalno.  Še najbolj pravilno bi bilo če bi nastavitvah pisalo IKEv1/IPsec ter IKEv2/IPsec/MOBIKE. Ampak gleda na to, da se v širšem trgu uporablja zgolj ena implementacija IKEv2 je načeloma čisto OK poenostavitev za navadne uporabnike da piše v nastavitvah kar preprosto \"IKEv2\". ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "Sorry - prav imaš, L2TP je spet druga reč (me je zmedla ena slika, ki sem jo gledal....). Šel pogledat nastavitve 'native VPN klienta' na Win 10 in res je ločeno L2TP in IKEv2 pod izbiro tipa VPN-a. Se vidi, da ne uporabljam native klienta....  Ampak.... ko gledaš naokoli, vsi proizvajalci požarnih pregrad in malo boljših routerjev podpirajo skoraj izključno SSL, IPSec in L2TP. Tisti IKEv2 (whatever it is - however you call it), pa bo po moje bolj default izbira, kadar boš kot prehod uporabljal Windows sistem. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Očitno imaš drugačne izkušnje, sam sem pa že večkrat doživel, da je bilo na raznoraznih free WiFijih po tujini zaprto bolj kot ne vse razen 80/443 ter DNS in me je rešil ravno SSL VPN na portu 443. Drugače pa tudi strongSwan ni tak bav bav skonfigurirati, če ima kdo željo, saj imajo relativno dobro dokumentacijo, samo razumet je treba zadeve. Sam pa še vedno preferiram OpenVPN za ta namen.  Drugače pa tudi IKEv1 ni nujno L2TP/IPSec. Lahko imaš L2TP/IPSec z IKEv1 ali IKEv2, kakor tudi IPSec z IKEv1 ali IKEv2. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": "Hm, a lahko na istem računalniku postavim strežnik za IKEv2 in SSL VPN? ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Načeloma lahko, saj uporabljata različne porte.  Vsekakor si daj SSL VPN na 443/tcp, da imaš na voljo 'trotlziher' opcijo, ki skoraj vedno deluje (nekatere namestitve uporabljajo druge default porte).  Pa na port forwarding na routerju ne pozabiti.... Za SSL VPN rabiš samo enega, za IPSec jih pa potrebuješ ene par (preveri dokumentacijo). ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Zdravo, po dolgem času se spet oglašam ... kupil sem Mikrotika in deluje odlično, le z VPN (IKEv2) imam težavo, ker mi tega nikakor ne uspe pripraviti do delovanja. Od zunaj se brez težav povežem na VPN, tudi pingam Mikrotika (192.168.1.1 ali 192.168.64.101), vendar pa ne morem uporabljati interneta / pingati drugih računalnikov. Mogoče kdo ve kaj bi bila rešitev za to težavo?   [admin@MikroTik] > export \n# jul/17/2017 18:52:38 by RouterOS 6.39.1\n#\n/interface bridge\nadd admin-mac=X auto-mac=no comment=defconf name=bridge\n/interface ethernet\nset [ find default-name=ether2 ] name=ether2-master\nset [ find default-name=ether3 ] master-port=ether2-master\nset [ find default-name=ether4 ] master-port=ether2-master\nset [ find default-name=ether5 ] master-port=ether2-master\n/ip neighbor discovery\nset ether1 discover=no\n/ip hotspot profile\nset [ find default=yes ] html-directory=flash/hotspot\n/ip ipsec proposal\nset [ find default=yes ] auth-algorithms=sha256 enc-algorithms=aes-256-cbc pfs-group=modp2048\n/ip pool\nadd name=dhcp ranges=192.168.1.3-192.168.1.200\nadd name=rw-pool ranges=192.168.1.201-192.168.1.250\n/ip dhcp-server\nadd address-pool=dhcp disabled=no interface=bridge name=defconf\n/ip ipsec mode-config\nadd address-pool=rw-pool name=cfg1\n/interface bridge port\nadd bridge=bridge comment=defconf interface=ether2-master\nadd bridge=bridge comment=defconf interface=sfp1\n/interface l2tp-server server\nset caller-id-type=ip-address\n/ip address\nadd address=192.168.1.1/24 comment=defconf interface=ether2-master network=192.168.1.0\nadd address=192.168.64.101/24 interface=ether1 network=192.168.64.0\n/ip dhcp-client\nadd comment=defconf dhcp-options=hostname,clientid interface=ether1\n/ip dhcp-server network\nadd address=192.168.1.0/24 comment=defconf gateway=192.168.1.1 netmask=24\n/ip dns\nset allow-remote-requests=yes servers=8.8.8.8,8.8.4.4\n/ip dns static\nadd address=192.168.1.1 name=router\n/ip firewall filter\nadd action=accept chain=input\nadd action=accept chain=input comment=\"defconf: accept ICMP\" protocol=icmp\nadd action=accept chain=input comment=\"Webfig\" dst-port=80 protocol=tcp\nadd action=accept chain=input comment=\"VPN\" dst-port=500 protocol=udp\nadd action=accept chain=input dst-port=4500 protocol=udp\nadd action=accept chain=input comment=\"defconf: accept established,related\" connection-state=established,related\nadd action=drop chain=input comment=\"defconf: drop all from WAN\" in-interface=ether1\nadd action=fasttrack-connection chain=forward comment=\"defconf: fasttrack\" connection-state=established,related\nadd action=accept chain=forward comment=\"defconf: accept established,related\" connection-state=established,related\nadd action=drop chain=forward comment=\"defconf: drop invalid\" connection-state=invalid\nadd action=drop chain=forward comment=\"defconf:  drop all from WAN not DSTNATed\" connection-nat-state=!dstnat connection-state=new in-interface=ether1\n/ip firewall nat\nadd action=masquerade chain=srcnat comment=\"defconf: masquerade\" out-interface=ether1\n/ip ipsec peer\nadd address=0.0.0.0/0 auth-method=rsa-signature certificate=server dh-group=modp2048 enc-algorithm=aes-256 exchange-mode=ike2 generate-policy=port-strict \\\n    hash-algorithm=sha256 mode-config=cfg1 passive=yes\n/ip ipsec policy\nset 0 dst-address=192.168.1.0/24 src-address=0.0.0.0/0\n/ip route\nadd distance=1 gateway=192.168.64.1\n/system clock\nset time-zone-name=Europe/Ljubljana\n/system ntp client\nset enabled=yes primary-ntp=193.2.1.117 secondary-ntp=193.2.1.92\n/tool mac-server\nset [ find default=yes ] disabled=yes\nadd interface=bridge\n/tool mac-server mac-winbox\nset [ find default=yes ] disabled=yes\nadd interface=bridge\n   [admin@MikroTik] > ip route print \nFlags: X - disabled, A - active, D - dynamic, C - connect, S - static, r - rip, b - bgp, o - ospf, m - mme, B - blackhole, U - unreachable, P - prohibit \n #      DST-ADDRESS        PREF-SRC        GATEWAY            DISTANCE\n 0 A S  0.0.0.0/0                          192.168.64.1             1\n 1 ADC  192.168.1.0/24     192.168.1.1     bridge                    0\n 2 ADC  192.168.64.0/24    192.168.64.101  ether1                    0\n   [admin@MikroTik] > ip address print \nFlags: X - disabled, I - invalid, D - dynamic \n #   ADDRESS            NETWORK         INTERFACE\n 0   ;;; defconf\n     192.168.1.1/24     192.168.1.0     ether2-master\n 1   192.168.64.101/24  192.168.64.0    ether1\n ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Sam bi sicer za VPN uporabil npr. 192.168.2.X  Mogoče zna biti kaj s firewallom?  Poskusi onemogočiti spodnji pravili ...  add action=fasttrack-connection chain=forward comment=\"defconf: fasttrack\" connection-state=established,related\nadd action=drop chain=forward comment=\"defconf:  drop all from WAN not DSTNATed\" connection-nat-state=!dstnat connection-state=new in-interface=ether1\n ",
+    "user": "Ice-Heki"
+  },
+  {
+    "message": "nastavi da je vpn v bridgu... in bridgu nastavi proxy-arp ",
+    "user": "wini"
+  },
+  {
+    "message": "Hvala za odgovore. Sem dodal nov bridge (imenovan bridge-vpn) in mu nastavil proxy-arp, vendar ne znam sedaj \"vpn\" obesiti na ta bridge. Privzeto je bil že narejen \"bridge\", na katerega so dodani ether2-master, ether3, ether4 in ether5. Kje oz. kaj naj torej dodam na bridge-vpn? ",
+    "user": "mobisux9"
+  },
+  {
+    "message": "Imam wrt54gl in nameravam namestiti vpn, da bom na javnih omrežjih dostopal na net preko vpn-ja. Trenutno imam nameščen OpenWrt Backfire 10.03.1 in me zanima preden se podam v te zadeve ali je bolje, da namestim DD-wrt, kateri izgleda da je precej bolj popularen za vpn pri navadnih smrtnikih. Predvsem zaradi težavnosti, saj sem popoln noob glede tega. Pri dd-wrtu izgleda je openvpn že nameščen, medtem ko pri openwrt-ju je že namestitev openvpn-ja cela znanost. ",
+    "user": "BCSman"
+  },
+  {
+    "message": " BCSman je 10. nov 2017 ob 01:36 izjavil:Imam wrt54gl in nameravam namestiti vpn, da bom na javnih omrežjih dostopal na net preko vpn-ja. Trenutno imam nameščen OpenWrt Backfire 10.03.1 in me zanima preden se podam v te zadeve ali je bolje, da namestim DD-wrt, kateri izgleda da je precej bolj popularen za vpn pri navadnih smrtnikih. Predvsem zaradi težavnosti, saj sem popoln noob glede tega. Pri dd-wrtu izgleda je openvpn že nameščen, medtem ko pri openwrt-ju je že namestitev openvpn-ja cela znanost.   http://www.linksysinfo.org/index.php?ta... Najprej preveri če ti je ultra počasna hitrost dovolj. Strojna oprema tega routerja je za v muzej. Zamenjaj ali postavi VPN strežnik na recimo Orangepi zero, ki bo to nalogo opravil z lahkoto. ",
+    "user": "igorpec"
+  },
+  {
+    "message": "Wrt54gl? Ze btez vpn je to poooocasno za sedanje potrebe. Nabavi nov hw in bo vsem lažje ",
+    "user": "Bakunin"
+  },
+  {
+    "message": " SeMiNeSanja je 20. jun 2016 ob 02:38 izjavil:Pozabi PPTP - ta že dolgo ne velja več za 'priporočljivega'. Se pa (žal) še vedno marsikje uporablja, ker ni druge alternative (ali pa ljudje ne vedo, da ni priporočljiv).  IPSec in L2TP pa imata isti problem: maksikje z njim ne prideš 'ven', ker nimajo odprtih ustreznih portov.  Jaz običajno najprej probam, če bo šlo z IPSec in če ne gre, uporabim OpenVPN oz. SSL VPN na portu 443/tcp, ki ga večinoma omrežja prepuščajo brez težav.    Kaj je torej sedaj najboljsa povezava za VPN, ce omenjas da tezave z PPTP, L2TP, IPSec... se lahk mal razpises? Hvala. ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": " SmeskoSnezak je 10. nov 2017 ob 08:46 izjavil:SeMiNeSanja je 20. jun 2016 ob 02:38 izjavil:Pozabi PPTP - ta že dolgo ne velja več za 'priporočljivega'. Se pa (žal) še vedno marsikje uporablja, ker ni druge alternative (ali pa ljudje ne vedo, da ni priporočljiv).  IPSec in L2TP pa imata isti problem: maksikje z njim ne prideš 'ven', ker nimajo odprtih ustreznih portov.  Jaz običajno najprej probam, če bo šlo z IPSec in če ne gre, uporabim OpenVPN oz. SSL VPN na portu 443/tcp, ki ga večinoma omrežja prepuščajo brez težav.   Kaj je torej sedaj najboljsa povezava za VPN, ce omenjas da tezave z PPTP, L2TP, IPSec... se lahk mal razpises? Hvala.  PPTP je stvar preteklosti, čim prej pozabi nanj.  IPSec je meni na problematičnih mobilnih omrežjih (HR otoki, velika gostota mobilnih uporabnikov, nihajoč signal,..) deloval nekoliko bolje kot SSL VPN.  Ampak še vedno velja, da marsikje ne moreš uporablajti IPSec (in L2TP), celo v hotelih imaš lahko težave, da ne bo deloval. Takrat je dejansko zlata vredno, da imaš na voljo tudi SSL VPN opcijo na portu 443/tcp.  Drugače se pa lahko zadeve razlikujejo od implementacije do implementacije. Jaz za IPSec uporabljam NCP-jev odjemalec, za SSL VPN pa standardni OpenVPN odjemalec. Kakšne druge implementacije se lahko obnašajo tudi kaj drugače (mislim na performanse, zanesljivost zveze). Dodatno pa seveda stvar tudi zavisi od gateway strani.  Torej, če nekaj na novo postavljaš, bi vsekakor najprej vzpostavil SSL VPN povezljivost, ker je enostavno najbolj univerzalno uporabna. Če ti gateway rešitev to omogoča, pa potem skonfiguriraš še IPSec in/ali L2TP in testiraš, kaj se ti najbolje obnese v tvoji kombinaciji naprave/odjemalca/omrežja/strežnika. To potem uporabljaš kot primarno opcijo, drugo pa si prihraniš kot backup varianto, če prva kdaj 'nagaja'.  Če pa tvoj gateway podpira zgolj eno varianto, pa takointako nimaš izbire... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Ustvaril bi vse tako , da deluje SSL VPN s IPSEC , backup pa L2TP. Kaksno strojno opremo to zahteva? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Za domačo rabo se bojm, da boš moral biti malo bolj skromen pri izbiri VPN standardov. Sploh pa se mi zdi, da za domačo rabo povsem zadošča SSL VPN oz. OpenVPN opcija. To pa lahko najdeš na kar precejšnem številu consumer routerjev, če ne že v osnovnem firmware, pa preko alternativnih firmware-ov. Opcijsko pa si nekateri OpenVPN poganjajo na kakšnem PC-ju, najdejo se pa tudi taki, ki so si to namestili na kakšen Raspberry.  IPSec in L2TP pa sta nekako bolj 'premium' zadeva in ju najdeš implementirana v poslovnih rešitvah oz. routerjih in požarnih pregradah. Žal ne vem, če kje obstaja kakšen resnejši pregled, katere VPN opcije kdo ponuja na svoji rešitvi. Dodatno se lahko pojavi težava z licenciranjem - nekateri proizvajalci ponudijo eno varianto kot osnovno, ostalo pa moraš dokupovati licence. Tretji pa to spet rešujejo s plačljivimi odjemalci. Kar precej zmešnjave na tem delu.  Imaš pa tudi gateway variante na PC-jih. L2TP bi moral iti tudi preko Windows serverja. Imaš pa tudi hibridne software rešitve. NCP npr. ponuja strežnik, ki ti z njihovim odjemalcem najprej poskusi vzpostaviti povezavo preko IPSec. Če to ne uspe, pa samodejno preide na SSL VPN varianto. Idealno za velika podjetja z dummy userji, da jim ne rabiš razlagat kaj naj delajo, če jim ne uspeva vzpostaviti eno ali drugo vrsto povezave, predvsem pa potrebujejo le enega odjemalca. Edina pomanjkljivost - cena.... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Mikrotik podpira en kup VPN protokolov, med drugim tudi L2TP. Sam imam na Mikrotiku postavljen L2TP VPN, za OpenVPN pa koristim DietPi na RaspberryPi. Deluje odlično in tam nekje do 25 Mbit (OpenVPN). ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Če potrebuješ vse žive protokole in rabiš še preprosto nastavljanje, potem je morda opcija še Softether VPN. Sam uporabljam tega, hardware pa je Nanopi Neo 256Mb in Armbian, kernel 4.11 ... zraven teče še TVheadend pa še bitcoine bi lahko zraven iskal :) ",
+    "user": "igorpec"
+  },
+  {
+    "message": "Odpiram staro temo. Potreboval bom VPN doma, za občasno laufanje IPTV-ja na drugo lokacijo. Glede tega sem čisti laik. Najrajši bi kupil router ki bi bil to zmožen, ne da laufam kišto. Kje naj se lotim? ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": "aja, se to, na clientu bo tv aplikacija, ne kaksen set-top box. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": "Ubiquiti Edgerouter X + wireguard ",
+    "user": "sgdjkdlsugi4"
+  },
+  {
+    "message": "ZeroTierOne... deluje na vseh možnih OSih, tudi na android tV boxih. ",
+    "user": "damirj79"
+  },
+  {
+    "message": " radmannsdorf je 24. okt 2019 ob 20:52 izjavil:Odpiram staro temo. Potreboval bom VPN doma, za občasno laufanje IPTV-ja na drugo lokacijo. Glede tega sem čisti laik. Najrajši bi kupil router ki bi bil to zmožen, ne da laufam kišto. Kje naj se lotim?  Ne vem, zakaj ti fantje vsiljujejo čisto egzotiko (Wireguard & ZeroTierOne), še je danes najbolj pogosto uporabljen protokol OpenVPN oz. SSLVPN, katerega podpira marsikateri router (tudi od nekoga predlagani Edgerouter) out of the box.  Problem raznoraznih VPN inkarnacij je, da bi se z njim rad uspel prebiti do svojega domačega omrežja. SSL VPN si ljudje običajno nastacijo na port 443/tcp, tako da ga cse malenkost bolj butaste naprave, kamorkoli greš, vidijo kot običajni https web browsing in posledično ne ovirajo.  KARKOLI drugega uporabljaš za VPN protokol, boš VEDNO imel tombolo. Lahko te spustijo ven, lahko te blokirajo. Najmanj pa si želiš, da bi moral v tujini preklopiti na mobilno omrežje, da bi lahko dostopal do domačega omrežja.  Tudi SSL VPN ne bo garantirano deloval vsepovsod. Ponekod imajo še za stopnjo bolj inteligentne filtre, ki zaznajo, da promet na portu 443 ni legitimno https brskanje po spletu in posledično zablokirajo, če jim ne ustreza, da ima nekdo preko VPN 'obvoz' okoli predpisane varnosti lokalnega omrežja. V hotelih in podobnih javnih ustanovah je to sicer bedastoča, a se vseeno dogaja.  Drugače pa nikoli ni slabo imeti še dodatno alternativo, kakšen drugi STANDARDNI VPN protokol, npr. IPSec ali danes vse bolj priljubljeni L2TP ali celo IKEv2. Za slednja dva je VPN odjemalec že integriran v marsikateri operacijski sistem, tako da ne rabiš nameščati posebnega odjemalca, kot je to v primeru SSL VPN-a.  V principu najprej poskusiš, če ti deluje IPSec/L2TP/IKEv2 (- karkoli od tega že imaš možnost si skombinirati). Kjerkoli jih VPN-i ne motijo (ali pa nič ne filtrirajo) bo to delovalo. Če ne gre, potem preklopiš na SSL VPN, ki potem v večini primerov deluje.  Egzotiko pa... ne vem... če si eksperimentator in se sam znajdeš...ok... če pa hočeš tudi kdaj koga vprašat 'kako pa naj...?', potem zagotovo egzotika ne bo najboljša opcija. Ampak , če bi bil 'eksperimentator', potem najbrž nebi tukaj spraševal? ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Super! Hvala vsem za odgovore, hehe. Se bom poglobil! In ja, bolj enostavne rešitve so mi bolj všeč. :) ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": "Ekzotika je toliko, kolikor si upaš. Tudi OpenVPN še vedno lahko razumeš kot ekzotika, ali pa tudi že kar nekaj standarnega, kot vzameš. fajn pa je imet alternativo, sem že večkrat naletel na oviro tudi pri OpenVPNju. ",
+    "user": "damirj79"
+  },
+  {
+    "message": " damirj79 je 25. okt 2019 ob 13:58 izjavil:Ekzotika je toliko, kolikor si upaš. Tudi OpenVPN še vedno lahko razumeš kot ekzotika, ali pa tudi že kar nekaj standarnega, kot vzameš. fajn pa je imet alternativo, sem že večkrat naletel na oviro tudi pri OpenVPNju.  Če si prebral kar sem napisal, sem tudi jaz zagovornik tega, da imač plan B, neko alternativo.  Pod vprašaj sem postavil, če je dobro, da imaš alternativo, za katero se nimaš na koga obrniti, ko boš potreboval pomoč - ali pa boš uporabil nekaj, kar bolj ali manj vsakdo pozna, ki je že kdaj kaj čačkal na tem področju. Bolj kot si 'novinec' manj ti je za priporočat ekzotiko - ne glede na to, kako 'tehnično dovršena' bi lahko bila. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "No saj to se strinjam, ampak dober razlog zakaj uporabit ekzotiko, je točno v tem, da je ekzotika in kot taka manjša verjetnost, da so jo recimo hotelski admini dali na block listo. ",
+    "user": "damirj79"
+  },
+  {
+    "message": "App bi uporabljal v bistvu pri punci, na drugi lokaciji, na drugem omrežju. Za dopust pa na privat lokaciji, ne v hotelu. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": " damirj79 je 25. okt 2019 ob 14:11 izjavil:No saj to se strinjam, ampak dober razlog zakaj uporabit ekzotiko, je točno v tem, da je ekzotika in kot taka manjša verjetnost, da so jo recimo hotelski admini dali na block listo.  Hotelski admin je butast... zapre vse porte in odpre port 53,80 in 443. Kao več takointako ne potrebuješ. Tako ti potem bolj ali manj vse odpove, kar ne gre preko 443 (recimo, da DNS rešuje na lokalnem strežniku in ravno tako onemogoči zlorabo za kaj drugega kot DNS). ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "raspberry pi + https://github.com/Nyr/openvpn-install ",
+    "user": "ranko123"
+  },
+  {
+    "message": " ranko123 je 25. okt 2019 ob 20:27 izjavil:raspberry pi + https://github.com/Nyr/openvpn-install   al pa   http://www.pivpn.io/ ",
+    "user": "mzakelj"
+  },
+  {
+    "message": " ranko123 je 25. okt 2019 ob 20:27 izjavil:raspberry pi + https://github.com/Nyr/openvpn-install   Mnogo bolje (in bolj sexy) kakšen  https://www.armbian.com/nanopi-neo-2 Sam sem poganjal VPN in TVheadend (še NAS opravila so mnogo hitrejša od RPi pod v4, ker ima gigabit mrežo z možnostjo polne utilizacije. Gigabit = gigabit) kako leto, preden sem prestavil VPN servis direktno na router (RB4011). ",
+    "user": "igorpec"
+  },
+  {
+    "message": " igorpec je 30. okt 2019 ob 11:09 izjavil:ranko123 je 25. okt 2019 ob 20:27 izjavil:raspberry pi + https://github.com/Nyr/openvpn-install   Mnogo bolje (in bolj sexy) kakšen  https://www.armbian.com/nanopi-neo-2 Sam sem poganjal VPN in TVheadend (še NAS opravila so mnogo hitrejša od RPi pod v4, ker ima gigabit mrežo z možnostjo polne utilizacije. Gigabit = gigabit) kako leto, preden sem prestavil VPN servis direktno na router (RB4011).  Pa lahko nahecaš to igračo, da po enem VLAN sprejema kriptirane povezave, na drugem VLAN pa potem posreduje dalje nekriptiran promet? Ali se vse skupaj meša in godlja na istem omrežju (ni tako zelo lepo...)?  Pri routerju kot GW je vedno kriptirani promet izključno na zumanji strani. Tako nikakor ni noben paket prepuščen na notranjo stran omrežja, dokler se VPN ne vzpostavi. Čim imaš nek RPI ali kakšno drugo varianto GW na notranji strani omrežja in to po možnosti še izza routerja, ki ne podpira niti VLAN-ov, pa dejansko ves promet, tudi tistega, ki ga potencialno ne želiš, moraš spustiti do VPN GW, ki se potem s tem prometom spopada kakor ve in zna. Ni nujno, da vedno uspešno... (DOS&Co) ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 30. okt 2019 ob 11:58 izjavil:Pa lahko nahecaš to igračo, da po enem VLAN sprejema kriptirane povezave, na drugem VLAN pa potem posreduje dalje nekriptiran promet?  Ne vidim razloga zakaj ne bi mogel narediti VLAN-ov. Zna pa seveda biti problem z routerjem in userjem, če to omogoča oz. zna.  Sicer še vedno lahko upgrejdaš na tole  https://www.armbian.com/nanopi-r1/ in ločiš interfejse fizično :) ",
+    "user": "igorpec"
+  },
+  {
+    "message": "sam si pa v tem primeru omejen na 100m mrezo ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " hojnikb je 30. okt 2019 ob 12:31 izjavil:sam si pa v tem primeru omejen na 100m mrezo   ... za VPN rabiš več kot 100m? ",
+    "user": "igorpec"
+  },
+  {
+    "message": " igorpec je 30. okt 2019 ob 12:29 izjavil:SeMiNeSanja je 30. okt 2019 ob 11:58 izjavil:Pa lahko nahecaš to igračo, da po enem VLAN sprejema kriptirane povezave, na drugem VLAN pa potem posreduje dalje nekriptiran promet?  Ne vidim razloga zakaj ne bi mogel narediti VLAN-ov. Zna pa seveda biti problem z routerjem in userjem, če to omogoča oz. zna.  Sicer še vedno lahko upgrejdaš na tole  https://www.armbian.com/nanopi-r1/ in ločiš interfejse fizično :)  Že bolj privlačno izgleda... odpira nekaj dodatnih opcij. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " igorpec je 30. okt 2019 ob 12:47 izjavil:hojnikb je 30. okt 2019 ob 12:31 izjavil:sam si pa v tem primeru omejen na 100m mrezo   ... za VPN rabiš več kot 100m?  Marsikdo bi bil vesel, če bi mu VPN na routerju delal z več kot 10Mbps...  Vprašanje, koliko dejansko zmorejo taki RPi in Arm gadget-i. Bi bilo zanimivo, če bi kdo tudi ta podatek dal na mizo, koliko NJEMU zadeva v PRAKSI prepušča. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " igorpec je 30. okt 2019 ob 11:09 izjavil:ranko123 je 25. okt 2019 ob 20:27 izjavil:raspberry pi + https://github.com/Nyr/openvpn-install   Mnogo bolje (in bolj sexy) kakšen  https://www.armbian.com/nanopi-neo-2 Sam sem poganjal VPN in TVheadend (še NAS opravila so mnogo hitrejša od RPi pod v4, ker ima gigabit mrežo z možnostjo polne utilizacije. Gigabit = gigabit) kako leto, preden sem prestavil VPN servis direktno na router (RB4011).  Zanimiva, ampak neuporabna škatlica.  Kdo danes še daje 100Mbit Ethernet na plate? ",
+    "user": "Invictus"
+  },
+  {
+    "message": " Invictus je 30. okt 2019 ob 13:54 izjavil: Zanimiva, ampak neuporabna škatlica.  Kdo danes še daje 100Mbit Ethernet na plate?  Odvisno, za kaj jo misliš uporabiti. Takointako se je treba zavedati, da je to nivo 'gadget-a' ne pa neke high-end rešitve. Če imaš 10-20Mbps internet, je tudi 100Mbps mrežni vmesnik dovolj.  Če boš pa hotel postaviti VPN gateway za 50 WiFi uporabnikov (če npr. ne dovoliš po WiFi drugega, kot kriptiran VPN promet), potem bo tak gadget seveda po vseh kriterijih neuporaben. Tudi če boš imel gigabitno internetno povezavo in več uporabnikov, te tak gadget ne bo osrečil.  Drugače pa je pri teh igračkah še ta problem, da bi jih dejansko moral obravnavati kot IoT naprave in posledično praktično nebi smele komunicirati z internetom (oz. komunicirati v skrajno omejenem obsegu). Problem je... tako kot vedno v posodabljanju. Še 'delovni' računalnik marsikdo 'pozabi' posodabljati, kaj šele take gadget-e - če se sploh še dobi kakšne posodobitve za določeno platformo. Tudi če se dobijo, je vedno vprašanje, kako ažurno se posodabljajo repozitoriji, kdo to počne, ali mu je za zaupat,....  Ampak za domačo rabo... če na en uč zamižiš, namesto da kupiš nov router.... glavno, da se vsaj približno zavedaš senčnih plati. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " Invictus je 30. okt 2019 ob 13:54 izjavil:igorpec je 30. okt 2019 ob 11:09 izjavil:ranko123 je 25. okt 2019 ob 20:27 izjavil:raspberry pi + https://github.com/Nyr/openvpn-install   Mnogo bolje (in bolj sexy) kakšen  https://www.armbian.com/nanopi-neo-2 Sam sem poganjal VPN in TVheadend (še NAS opravila so mnogo hitrejša od RPi pod v4, ker ima gigabit mrežo z možnostjo polne utilizacije. Gigabit = gigabit) kako leto, preden sem prestavil VPN servis direktno na router (RB4011).  Zanimiva, ampak neuporabna škatlica.  Kdo danes še daje 100Mbit Ethernet na plate?   To je kakšni 2 leti star device in ima gigabit mrežo. ",
+    "user": "igorpec"
+  },
+  {
+    "message": "ja, ena mreza je gigabit. druga pa na usb vezana 100mbit. Tisti grdi usb, ki se je vedno ocital rpiju.  sj drugace nemore bit. chipset pri tem boardu ima samo en gigabit mac, tako da je druga mreza lahko samo preko usb. sele z kaksnim allwinner h6 bi lahko mel 2 mrezi preko pcie.  dejansko 100m mreza dost pokvari to igracko. z 2 mrezim in taksno ceno, kot jo ima, bi lahko kamot nadomestila router v domaci mrezi. hitra jedra in velik rama so vec kot dobrodosla.  100m mreza je pac passe danes, ko tudi osnovni paket internetov dosegajo ali celo presegajo take hitrosti. ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " hojnikb je 30. okt 2019 ob 20:33 izjavil:Tisti grdi usb, ki se je vedno ocital rpiju.  (starinski) Allwinner H3 ima 3 x dedicated USB2.0 in posebej mrežo. Rpi (pod v4) se s tem sploh ne more primerjat.   hojnikb je 30. okt 2019 ob 20:33 izjavil:sele z kaksnim allwinner h6 bi lahko mel 2 mrezi preko pcie.   Tukaj je pa Allwinner zaj... nič ne bo s PCI. :( Mainline podpore za to ne bo, custom kernel pa ne pride v poštev.   hojnikb je 30. okt 2019 ob 20:33 izjavil:z 2 mrezim in taksno ceno, kot jo ima, bi lahko kamot nadomestila router v domaci mrezi.   Za domačo mrežo ne. Za vikend ali hotelski plug and play VPN gateway pa povsem dovolj.   hojnikb je 30. okt 2019 ob 20:33 izjavil: 100m mreza je pac passe danes, ko tudi osnovni paket internetov dosegajo ali celo presegajo take hitrosti.  Za prej omenjen case, za backup, za industrijsko uporabo, ...? ",
+    "user": "igorpec"
+  },
+  {
+    "message": "za backup ni uporabno imo, hočeš naredit backup kakega filma in čakaj celo večnost ",
+    "user": "rabelj5"
+  },
+  {
+    "message": " rabelj5 je 31. okt 2019 ob 01:20 izjavil:za backup ni uporabno imo, hočeš naredit backup kakega filma in čakaj celo večnost  Ena mrežna je gigabit. Seveda hitrosti pravega NAS-a ne boš dosegel, lahko pa pričakuješ samba hitrosti tam okoli 40-50Mb/,s kar je precej precej manjša večnost kot če za to uporabiš igračo tipa RPi3. Še profesionalno izvedene meritve (iz leta 2016) https://forum.armbian.com/topic/1440-h3... ",
+    "user": "igorpec"
+  },
+  {
+    "message": "odvisno od velikosti datotek, pogostosti prenašanja, tvojih živcev, .. ",
+    "user": "rabelj5"
+  },
+  {
+    "message": "za industrijsko uporabo, ...? hell no. za industrijsko rabo noben nebo pri zdravi pameti uporabljal kitajske boarde z vprasljivo dokumentacijo in taksnim temp. rejtingom ki ga ima.  ce delas za industrijski namen, hoces zanesljivost, dobavljivost tut cez 10 let in seveda primerno dokumentacijo. za kaksno resno idustrijo se rpi ne pride vec v postev.  Tukaj je pa Allwinner zaj... nič ne bo s PCI. :( Mainline podpore za to ne bo, custom kernel pa ne pride v poštev.   tole je pol res zajeb, ce se tisto addresanje ne da porihtat. pa glih pcie je najbolj zanimiv del tega socja. ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " hojnikb je 31. okt 2019 ob 13:13 izjavil:za industrijsko uporabo, ...? hell no. za industrijsko rabo noben nebo pri zdravi pameti  RPi ni niti blizu industrial grade hardweru pa ga folk vseeno uporablja tudi v te namene. Ljudje so recimo tudi Trumpa in Hitlerja gor postavili ...   Zdrava pamet je izjemna redkost.   hojnikb je 31. okt 2019 ob 13:13 izjavil:za industrijski namen, hoces zanesljivost, dobavljivost tut cez 10 let in seveda primerno dokumentacijo. za kaksno resno idustrijo se rpi ne pride vec v postev.   RPi je toy grade hardware in pika. Tudi kitajci imajo naprave v tem segmentu (OrangePi zero, Pine64, ..), ampak imajo tudi pro grade naprave, ki seveda niso poceni, ker mora na plati biti še kaj več kot SoC in ethernet da prideš na industrial nivo. In mogoče še z boljšimi komponentami, kot to počne Olimex in ki so fokusirani za industrijsko uporabo. Z Allwinner SoCi. Saj si najbrž slišal za tole https://olimex.wordpress.com/2014/11/27... in če ne ravno forever pa zelo zelo dolgo.   RPi čipa sploh kupit ne moreš, še manj pridobit dokumentacijo. ",
+    "user": "igorpec"
+  },
+  {
+    "message": "Kaj pa router za VPN server s čimmanj nastavljanja? za IPTV app. :) ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": " radmannsdorf je 31. okt 2019 ob 14:50 izjavil:Kaj pa router za VPN server s čimmanj nastavljanja? za IPTV app. :)   Sej je bilo že rečeno. Karkoli da lavfa Debian/Armbian/Ubuntu + http://www.pivpn.io/ in podobne wonder skripte.  Morda še https://www.softether.org/  Nekaj časa in energije pa bo vsekakor treba vložit v to ali ono varianto ... ",
+    "user": "igorpec"
+  },
+  {
+    "message": " radmannsdorf je 31. okt 2019 ob 14:50 izjavil:Kaj pa router za VPN server s čimmanj nastavljanja? za IPTV app. :)   \"router\" sem prej spregledal. Gotovo gre, nimam pa veliko izkušenj glede user friendliness in performans raznih popolarnih consumer grade modelov. Kateri bi zmogli furat tudi HD/4K IPTV stream? Ne vem.  Uporabljam RB4011 ki pa ni v kategoriji \"čimmanj nastavljanja\". ",
+    "user": "igorpec"
+  },
+  {
+    "message": " hojnikb je 31. okt 2019 ob 13:13 izjavil:za industrijsko uporabo, ...? hell no. za industrijsko rabo noben nebo pri zdravi pameti uporabljal kitajske boarde z vprasljivo dokumentacijo in taksnim temp. rejtingom ki ga ima.  ce delas za industrijski namen, hoces zanesljivost, dobavljivost tut cez 10 let in seveda primerno dokumentacijo. za kaksno resno idustrijo se rpi ne pride vec v postev.      Za industrijsko rabo vzameš BBB industrial. Stvar dela rock solid. Imamo več postavitev z BBBji tam, kjer temperaturna območja to zahtevajo.  Prodajajo pa RPije v oranžnih DIN rail ohišjih za kao indrustrijsko uporabo. Ne vem kako se obnesejo, smo pa RPije za prototipe uporabljali so bili OK na območjih od ene -5 do +35°C. Ne vem pa če bi se še kdaj zbudili če bi jih izklopili =) ",
+    "user": "jukoz"
+  },
+  {
+    "message": "Pri RPi temperatura ni takšen problem, bolj to, da radi corruptajo boot disk (SD kartico), se napajajo preko flimsy USB, IO porti niso zaščiteni itd ... ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Maš pol tudi takele:  https://www.reichelt.com/si/en/revpi-co...  Tole tudi izgleda primerno za industrijo =) ",
+    "user": "jukoz"
+  },
+  {
+    "message": " jukoz je 31. okt 2019 ob 17:54 izjavil:Maš pol tudi takele:  https://www.reichelt.com/si/en/revpi-co...  Tole tudi izgleda primerno za industrijo =)   Zgleda že, ampak je za star RPi design.  Kaj pa tole?    https://www.friendlyarm.com/index.php?r... 28 USD + 70 USD za Nanopi M4v2 = 4G, NvME SSD, RTC, 4 x USB 3.0, CPU hitrejši od RPI4, porabi manj, ... ",
+    "user": "igorpec"
+  },
+  {
+    "message": "Ja, tole pa NE zgleda primerno za industrijo =) ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Sophos XG Firewall Home Edition mi je videt OK, če bi sestavljal. Seveda dela tudi VPN. Sam me začne glava bolet, če pomislim, da bi doma delal še zase. ",
+    "user": "Mercier"
+  },
+  {
+    "message": " mobisux9 je 19. jun 2016 ob 22:51 izjavil:Pozdravljeni,  ker sem zadnje čase precej službeno na poti, bi si želel urediti doma VPN server, da bi se lahko iz različnih lokacij nanj priključil ter potem dostopal do službenega omrežja, privat spletne banke, in podobno. Doma imam srečo, da imam precej dobro linijo 50/50 in sedaj me zanima, kaj naj uporabim? Naj kupim računalnik, nanj naložim Linux in ga ustrezno konfiguriram ALI malo bolj zmogljiv router (mikrotik? cisco?). Vprašanje je tudi, kaj se najbolj splača uporabiti: IPSec / SSL VPN / PPTP / L2TP?  Hvala za vse nasvete!   Ista stvar zanima tudi mene, z izjemo če bi se dalo to narditi z NASom in openVPNom? ",
+    "user": "Bo3z"
+  },
+  {
+    "message": "Ne vem, če bova sedaj o isti stvari, ampak Synology-jevi NAS-i imajo VPN server (OpenVPN). ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Synology-jevi NAS-i imajo tudi IP Sec VPN, vsaj jaz ga imam. Porte 500, 1701 in 4500 moraš preforwardat iz routerja do Synology-ja (na teh dela IP_Sec - domnevam da ga imaš za routerjem postavljenega), pa v Synology-ju nastaviš VPN server aplikacijo (ene 5 klikov), in je to to, sploh če imaš statično IP številko. ",
+    "user": "Karen"
+  },
+  {
+    "message": "Friendly ARM je upgrejdal Nanopi R1 na 2 x gigabit mrežo. Ker je konekcija WAN-a še vedno preko USB2.0 je hitrost omejena na malo čez 300Mbit/s.  https://www.cnx-software.com/2019/11/11... ",
+    "user": "igorpec"
+  },
+  {
+    "message": "Gledam te Asus. Ima VPN server podporo. Kaj menite, je čisto prešvoh za tv stream? Cena je noro dobra. :) RT-AC53 - 45€ https://www.asus.com/Networking/RT-AC53/ ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": " radmannsdorf je 14. nov 2019 ob 06:49 izjavil:Cena je noro dobra. :)   Ker je obsolete. Kot kaže podpira le PPTP VPN, kjer brzina sicer ne bo problem, varnost pa. Če ni mogoče namestiti OpenWRT, pozabi.  PPTP is insecure but it works on most Operating Systems/devices by default using the OS built-in VPN features. It is very fast in our implementation, but since it's not as secure as other protocols, we recommend to use it only for activities that are not too sensitive (i.e. only to unblock geo-restricted content). https://vpn.ac/knowledgebase/36/PPTP-vs... ",
+    "user": "igorpec"
+  },
+  {
+    "message": "Hvala za info! Torej se bom verjetno stegnil do 130€ in vzel ASUS RT-AC68U. Tale pa bo ok ane? Sem ga šel kar iskat. Hvala vsem. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": "Ne, VPN server je le PPTP. ",
+    "user": "Mercier"
+  },
+  {
+    "message": "IPsec z L2TP in PSK ali OpenVPN. Vse ostalo so bolj smeti. ",
+    "user": "starfotr"
+  },
+  {
+    "message": "RT-AC68U ima PPTP in OpenVPN. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": " radmannsdorf je 15. nov 2019 ob 14:54 izjavil:RT-AC68U ima PPTP in OpenVPN. My bad, pogledal napačen link. Res ima. ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Ampak je počasen. Jaz ti priporočam nekaj kar ima storjno pospeševanje.. Recimo kakšen ac86u :) če bo za VPN veliko uporabljen, pa še usb ima porihtane.. ",
+    "user": "seminal"
+  },
+  {
+    "message": "Jah, kupil sem AC68U, 86 mi je predrag zaenkrat. Če ga bom potreboval, pa tudi nekoč.  V glavnem router sem nastavil, vse dela kot urca (tudi VPN, DLNA preko wifi), omrežni HDD. Interface je super enostaven. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": " mobisux9 je 19. jun 2016 ob 22:51 izjavil:Pozdravljeni,  ker sem zadnje čase precej službeno na poti, bi si želel urediti doma VPN server, da bi se lahko iz različnih lokacij nanj priključil ter potem dostopal do službenega omrežja, privat spletne banke, in podobno. Doma imam srečo, da imam precej dobro linijo 50/50 in sedaj me zanima, kaj naj uporabim? Naj kupim računalnik, nanj naložim Linux in ga ustrezno konfiguriram ALI malo bolj zmogljiv router (mikrotik? cisco?). Vprašanje je tudi, kaj se najbolj splača uporabiti: IPSec / SSL VPN / PPTP / L2TP?  Hvala za vse nasvete!   Pozdravljeni, sicer je tema že malo bolj mrzla, ampak...so kakšni novi priporočljivi ruterji na trgu in dosegljivi tam do recim o 150€ za domačo uporabo, torej, tudi za SLO IPTV v tujini? Lahko tudi kakšne drugačne opcije (razni RPi ipd), s čim manj nastavljanjem in predvsem \"nastavi in pozabi\"...seveda ne dobesedno ampak čimboljši približek temu?  Doma imam optiko in static IP, omejen bi bil torej le s hitrostjo s strani, s kjer dostopam. ",
+    "user": "moho"
+  },
+  {
+    "message": "moho, jaz že 9 mesecev uporabljam RT-AC68U za iptv v tujini. Vse dela super. Par dni nazaj, sem prvič klical domov v Slovenijo, da so ga starši izklopili iz elektrike za minuto, da se je restartal, ker se ni hotel povezat do mene. Uporabljam dnevno za pridobitev slo ip-ja za iptv. V Sloveniji ga imam priklopljenega na optiko(100/20), statičen IP, tukaj pa imam LTE internet(30/8). Tukaj ga imaš trenutno za 95 €. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": "Kakšen IPTV hočeš? STB iz Slovenije uporabljat v tujini? V tem primeru boš potreboval L2 tunel.   Ali samo dostop do SI IP naslova?  Vse to se da naredit z mikrotikom, najbolje na obeh straneh, vendar je treba vedet kaj delaš. To lahko daš nekomu naredit konfiguracijo. ",
+    "user": "starfotr"
+  },
+  {
+    "message": "Uporabi Wireguard. Je enostaven, hiter. 1.Vsak *wrt router bos nastavil izredno hitro. Z udpxy bos se bolj poenostavil stvar. 2.Gl.inet router ima OOB ze vgrajen wg. 3.Port fwd nekam znotraj(rpi,...) je tudi dokaj enostavno.  Mikrotik se nekaj casa ne bo imel podpore za wg (razen če si upaš iti z v7 beta) Edgeos oz Edge router X dobis zelo ugodno, mislim, da podpira wireguard. Nisem se sprobal,mogoce kaksen uporabnik kaj vec pove o tem. ",
+    "user": "xandros"
+  },
+  {
+    "message": "Nisem pomislil na to, da lahko uporabljaš STB, kar pa je logično in verjetno najlažje, čeprav, ko berem kar si napisal, je očitno malo bolj komplicirano. Sicer pa je opcija tudi samo statični IP in T2togo. Bolj me matra stabilnost in zanesljivost ter seveda stroškovno za HW in pa same nastavitve? ",
+    "user": "moho"
+  },
+  {
+    "message": "Če gledas T2, imas smart tv aplikacijo(smarttv.t-2.net) (andorid tv, samsungtv, andorid box). Pozanimaj se, ce lahko to uporabljas znotraj EU. ",
+    "user": "xandros"
+  },
+  {
+    "message": "Nisem v EU, tako, da odpade ta varianta. ",
+    "user": "moho"
+  },
+  {
+    "message": "Tako zelo komplicirano spet ni, ane.   Lahko pa uporabiš EOIP, vendar spet, to ima samo mikrotik.  https://mum.mikrotik.com/presentations/...  https://mum.mikrotik.com/presentations/... ",
+    "user": "starfotr"
+  },
+  {
+    "message": ">Lahko pa uporabiš EOIP Tudi to je varianta, mikrotik hex(2/4 880Mhz, 256M), dobis za cca 50eur Skoda, da mikrotik še ni podprl wireguard, ki je postal že standard. ",
+    "user": "xandros"
+  },
+  {
+    "message": "Ni namen samo uporaba IPTV, tudi uporaba interneta s SLO IP. Malo sem se poglabljal v OpenVPN, v WireGuard pa ne. ",
+    "user": "moho"
+  },
+  {
+    "message": "Za brskanje je čisto dovolj že SOCKS v5 proxy. ",
+    "user": "Ales"
+  },
+  {
+    "message": " moho je 22. nov 2020 ob 18:18 izjavil:Ni namen samo uporaba IPTV, tudi uporaba interneta s SLO IP. Malo sem se poglabljal v OpenVPN, v WireGuard pa ne.   Poglej še za SoftEther VPN. Meni deluje odlično. Gre mi pa skozi 100 mega b.p.  Za TV pa EOIP kanal s 2x mikrotik pa imaš rešeno vse skupaj. Sam EOIP uporabljam na lokalni mreži za TV-je naprej pošiljat ker se mi ne ljubi s Vlani dajat ... ",
+    "user": "mzakelj"
+  },
+  {
+    "message": " mzakelj je 22. nov 2020 ob 20:05 izjavil:moho je 22. nov 2020 ob 18:18 izjavil:Ni namen samo uporaba IPTV, tudi uporaba interneta s SLO IP. Malo sem se poglabljal v OpenVPN, v WireGuard pa ne.   Poglej še za SoftEther VPN. Meni deluje odlično. Gre mi pa skozi 100 mega b.p.  Za TV pa EOIP kanal s 2x mikrotik pa imaš rešeno vse skupaj. Sam EOIP uporabljam na lokalni mreži za TV-je naprej pošiljat ker se mi ne ljubi s Vlani dajat ...   A mi lahko bolj podrobno razložiš, kaj si mislil z 2xMikrotik? ",
+    "user": "moho"
+  }
+]

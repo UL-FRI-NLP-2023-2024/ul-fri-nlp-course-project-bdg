@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "batch.bat  file se mi ne odpre z hyperlinkom v excelu",
+    "content": "V exelu imam spisek pesmi, bi pa rad, da se mi s klikom na ime hkrati odpre mp3 in besedilo. Za probo sem kreiral na disku D mapo test, v katerem je excelova dateteka in podmape mp3 in text, v katere sem shranil mp3 in besedila, ter podmapo batch, v katero sem  shranil datoteko batch1.bat z naslednjo vsebino:\n%SystemRoot%\\explorer.exe   ..\\tekst\\text1.doc\n%SystemRoot%\\explorer.exe   ..\\mp3\\pesem1.mp3\nČe 2x kliknem na ta batch1.bat se mi lepo odpre text1 in štarta mp3,  tudi če mapo test skopiram drugam na drug disk ali lokacijo, mi dela ok.\nČe pa v excelu ustvarim hyperlink na batch1.bat,  mi pa na klik v excelu odpre samo explorer, Computer>dokuments  najbrž datoteke mp3 in tekst  program išče tam, pa ne najde.\nKako rešit ta problem?\nČe spremenim  batch1.bat tako, da dam direktne povezave do datotek, \n%SystemRoot%\\explorer.exe   \"D:\\test\\tekst\\text1.doc\n%SystemRoot%\\explorer.exe   \"D:\\test\\mp3\\pesem1.mp3\nto mi sicer dela, ampak ker nameravam mapo kopirat na druge lokacije, to ni prava rešitev, ker po prestavitvi drugam datotek pač ni več na istem mestu, oziroma po kopiranju ne dela\n\nKaj je narobe, da ko batch1.bat odprem z dvoklikom je uredu, mi odpre obe datoteki,  ko pa batch1.bat odprem preko excelove hiperpovezave pa ne ?",
+    "author": "membrain",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "batch.bat  file se mi ne odpre z hyperlinkom v excelu",
+    "content": "napiši vsebino bat datotek semkaj\nmogoče bi moral uporabljati \ncall %SystemRoot%\\explorer.exe   \"D:\\test\\tekst\\text1.doc\ncall %SystemRoot%\\explorer.exe   \"D:\\test\\mp3\\pesem1.mp3",
+    "author": "hitcher",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "batch.bat  file se mi ne odpre z hyperlinkom v excelu",
+    "content": "A se hecate?\n\nA res ne vidite težave v tem, da bi lahko kar tako brez težav zaganjal *.bat fajle s krnekih hyperlinkov?",
+    "author": "crnobog",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "batch.bat  file se mi ne odpre z hyperlinkom v excelu",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik crnobog je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tA se hecate?\n\nA res ne vidite težave v tem, da bi lahko kar tako brez težav zaganjal *.bat fajle s krnekih hyperlinkov?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJa in kje je težava, da ne bi mogel odpirati .bat datotek iz excela, saj jih lahko tudi iz ms-SQL-a, pa še kje drugje.\n\nLahko pa, da bo avtor moral napisati kakšne vba skript nekaj v stilu:\n\nSub test()\n   Call Shell(Environ$(\"COMSPEC\") & \" /c C:\\Path.bat\", vbNormalFocus)\nEnd Sub",
+    "author": "hitcher",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "batch.bat  file se mi ne odpre z hyperlinkom v excelu",
+    "content": "Sem zadovoljivo rešil težavo.  Sem naredil še eno mapo shortcuts, in vanjo postavil bližnjice do .bat datotek,  excelov hyperlink pa naredil do bližnjice.  In lepo sedaj odpira  .bat file - enako kot z dvoklikom na .bat.\nMajhna težava se je pojavila pri kopiranju na drugo lokacijo - bližnjice niso delale,   ampak ustvarit nove  bližnjice ni problem.",
+    "author": "membrain",
+    "author_level": "Majstr"
+  }
+]

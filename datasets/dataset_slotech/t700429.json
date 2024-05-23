@@ -1,0 +1,70 @@
+[
+  {
+    "message": "Želja je, da bi usposobil delovanje IPTVja na računalnik/android TV box. Na računalnik mi je sicer uspelo usposobit z VLANom na kartici.  Vem, da je o tem bilo napisanega že ogromno, ampak bi rad izvedel, kako je to izvedljivo na najlažji/najcenejši način.  Nakup opreme? Bi se dalo tole urediti enostavno z managed switchom (TP Link TL-SG108E) in dodatno Router/AP preko njega? Ali je boljši nakup Mikrotik routerja - katerega (mogoče RB750GR3 ali RB951G-2HND) in spet priklop dodatnega APja nanj, da bi zadeva delovala tudi brezžično?  Če je najboljši nakup Mikrotik routerja, se skonfigurira na naslednji način  ?  Imam Innbox V60. Poizkušal sem preko Routerja TP Link WR841ND v9 z naloženim DD-WRTjem, ampak ima zapleten VLAN tagging (ima takšen tagging  in ne takšnega  ). Atheros čipi naj ne bi podpirali VLANov?  Želja je tudi spraviti VLAN 3999 brezžično, za ogled TVja preko Androida. Trenutno imam to rešeno z IPTVjem in UDProxyjem na računalniku. Problem je, ker mi velika večina kanalov kocka. ",
+    "user": "dejimmy"
+  },
+  {
+    "message": "sploh ti ni potrebno nekaj vec investirati....recimo tp-link 1043nd router z openwrt firmwarejem gor ti bi vse zelje izpolnil....namrec je izredno lahek za nastavljanje dodatnih VLAN-ov....ti pa seveda svetujem povezavo z racunalnikom ali televizorjem preko kabla.....preko kabla ni kockanja, ker se signal ne izgublja.....pri wifi-ju pa se lahko zgodi da tu in tam zakocka....tudi meni se je to dogajalo na racunalniku preko wi-fi....potem me je pa dopizdilo in sem testiral s kablom.....na kablu ne skocka niti enkrat....tako da sedaj imam na racunalniku kabel, na tablici in telefonu pa preko wi-fi....je pa zanimivo da mi na tablici in telefonu skoraj nic ne kocka.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Mi je ratalo sicer z obstojecim routerjem WR841ND z dvema kabloma usposobit in z namescenim OpenWRTjem, ampak mi ni vsec 1. ker morata biti povezana 2 kabla in 2. ker je router potem v drugem subnetu. Rad bi imel v istem subnetu kot ostale naprave povezane preko Innboxa.. Delal sem po teh navodilih: https://www.ubuntu.si/forum/discussion/...  Da dela prek Wifija sploh ni nujno. Tisto se vedno lahko resujem preko UDProxyja. ",
+    "user": "dejimmy"
+  },
+  {
+    "message": "z tp-link 1043nd deluje samo z enim kablom...to da je vlan 3999 na drugem subnetu je povsem razumljivo in prav tako innbox.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Kaj je potrebno nastaviti, da deluje preko enega kabla? Se da to usposobiti tudi na wrt54gl? ",
+    "user": "Yoni"
+  },
+  {
+    "message": "Take so nastavitve v tomato firmwaru na wrt54gl:    Slika 1    Slika 2  Kaj je potrebno tu nastaviti, da vse skupaj dela preko enega kabla? Kaj pa potem še udpxy? ",
+    "user": "Yoni"
+  },
+  {
+    "message": "WRT54G ne podpira ustreznega VLAN tagginga.  http://www.linksysinfo.org/index.php?th...  @dejimmy: Če želiš vse v istem subnetu si spusti VIDEO port iz Innboxa v omrežje (sicer ni najbolj praktično zaradi varnosti in multicasta po celotnem omrežju) in potem lahko TpLink z OpenWRT priklopiš samo na LAN in mu določiš lokalni IP. V nastavitvah UDPXY nastaviš, da posluša na \"br-lan\" (bridge lan). Meni sicer taka rešitev ni čisto všeč, dela pa, če nimaš preveč naprav v omrežju. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "@vinkop  WR1043nd sem imel pred casom pa sem ga prodal.. Razmisljam o nakupu routerja TP-link Archer AC1200 ali C7. Openwrt naj bi bil podprt. Ta router bi potem nadomestil Innboxa in je lahko v drugem subnetu (recimo 192.168.2.1). Ali mi lahko poves, kako bi primerno nastavil taksen router z dodatnimi VLANi in preko Trunk porta Innboxa? Ce ne bo slo drugace, bom nastavil preko dveh kablov iz Innboxa (VIDEO in TRUNK), kot sem ze imel nastavljeno na WR841nd-ju.  @Daniel  Ne vem, ce je to najboljsa resitev? Smatram, da se da zadeva da resiti z VLAN tagom. Ne vem pa kako to storiti. Je kaksna boljsa alternativa v tem cenovnem razredu kot Archer AC1200 ali C7? ",
+    "user": "dejimmy"
+  },
+  {
+    "message": "http://www.tp-link.dk/faq-1585.html  Bi delovalo to kar preko uradnega FWja? Podobno stvar sem ze preizkusal z ASUS RT-N18U, vendar dela samo video, internet pa ne.. Nanj nisem nalagal drugega FWja. VLAN ID za internet na telekomu bi naj bil 1, ampak za internet lahko nastavlas samo od 2-4096? ",
+    "user": "dejimmy"
+  },
+  {
+    "message": "ce je tp-link archer 1200 podprt z openwrt potem ne bi smelo biti tezav z delovanjem preko enega kabla in trunk porta...vlan tagging za iptv se lepo nastavi na vlan 3999...z tp-link 1043nd lepo deluje...zakaj pa si prodal 1043nd? ta router tudi ni tako slab....drugace imam tudi jaz asusa ac3200, zelo dober router, ampak nastavljanje vlanov je pa tako zakomplicirano in le malokaterim je to uspelo....vsaj kolikor sem bral na njihovem forumu.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Za C7 sem izvedel, da lahko dobim V2, na katerem je Openwrt se podprt: https://wiki.openwrt.org/toh/tp-link/tl...  Ima pa router zelo slabe ocene direktno na strani proizvajalca in sem malo skepticen: http://www.tp-link.com/us/products/deta...  Za podoben denar bi bil primeren tudi ASUS RT-AC1200G+. Mogoce kaksni nasveti (AC, locen SSID za 2,4ghz in 5ghz, giga porti, VLAN da bi izpolnil moje zelje :), do 100€..?  WR1043ND sem prodal ze kaksni dobri 2 leti nazaj.. enostavno takrat nisem imel potrebe po njem. Wifi signal innboxa je enako mocen ali celo boljsi. ",
+    "user": "dejimmy"
+  },
+  {
+    "message": "Asusovi routerji so odlicni...to lahko potrdim saj ga uporabljam ze nekaj let...najprej sem imel ac68, sedaj pa imam ac3200....edina pomanjklivost so vlani...sedaj ne vem tocno kako je s tomato firmwarejem...skoda da ni openwrt podprt za asus....potem bi bilo to sanjsko... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Ali se na 1043nd v stock firmwaru lahko nastavi, da sioltv laufa preko enega kabla? ali mora biti instaliran openwrt/lede? 1043nd se pri nas dobi samo se v4 in za to verzijo ni openwrt podpore ampak samo lede... kako pa je z udpxy na stock firmwaru? ",
+    "user": "Yoni"
+  },
+  {
+    "message": "Na tovarniškem firmwaru ne boš usposobil nič od tega. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "vceraj sem opazil da istocasno gledanje dveh kanalov v domacem omrezju mocno kockata....povezava je po enem kablu iz trunk porta inboxa na tp-link 1043...racunalnik je potem iz tp-linka povezan s kablom, tablica pa preko wi-fi....ce dva kanala startam iz zunanjega omrezja potem je vse v redu...je ze kdo imel tak primer? ce pa prenastavim in povezem z dvema kabloma, en video port in en trunk potem pa ni tega problema... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "EDIT: sem nasel resitev.....jaz sem imel kreiran vlan na eth0.3999 in sem ga sedaj nastavil na eth1.3999.....zdaj deluje tako kot mora..... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Vprašam kar tule. Ima kdo modem Comtrend (VDSL2), nastavil bi ga v bridge način, tako da bi potem Asus-ov ac68 prevzel vlogo za net in siol tv. ",
+    "user": "Tiash"
+  }
+]

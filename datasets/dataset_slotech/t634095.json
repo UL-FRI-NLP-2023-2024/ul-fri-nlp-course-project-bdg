@@ -1,0 +1,54 @@
+[
+  {
+    "message": "Dober dan  Ali morda veste kateri brezplačen program je najboljši za dostop do oddaljenega računalnika.  Iščem program, ki se lahko brezplačno uporablja tudi v podjetju, torej ni brezplačen samo za domaču uporabo.  Hvala  LP ",
+    "user": "kumer"
+  },
+  {
+    "message": "Najboljši je OpenSSH, popolnoma zastonj...  L.p., Kloko ",
+    "user": "kloko"
+  },
+  {
+    "message": "kaj to je za oddaljen dostop, nikjer ne piše o tem iščem uporabniku prijazen program, ta mi ne deluje tako...  LP ",
+    "user": "kumer"
+  },
+  {
+    "message": "Comparison of remote desktop software @ Wikipedia filter: Free for commercial use YES ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Odvisno od tega, kaj razumeš pod 'dostop' in kateri OS imaš na računalnikih, do katerih želiš dostopati.  Jaz za 'dostop' uporabljam OpenSSL in IPSec VPN, potem pa RDP ali SSH za upravljanje posameznega računalnika.  Pri tem je 'dostop' v bistvu v prvi fazi le dostop do meže (VPN), šele nato pa do posameznega računalnika. Ker s pomočjo VPN pristaneš v 'notranjem omrežju' lahko uporabiš vsa orodja za upravljanje, kot bi jih znotraj omrežja in nisi odvisen od tretjih rešitev, kot npr. GoTo MyPC, TeamViewer,......... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "shell: openssh win desktop: rdp/teamviewer *nix desktop: x2go ",
+    "user": "terryww"
+  },
+  {
+    "message": "Ce so Windowsi, tak mas Remote Desktop Connection. :) ",
+    "user": "Tr0n"
+  },
+  {
+    "message": " Tr0n je 26. jan 2015 ob 13:52 izjavil:Ce so Windowsi, tak mas Remote Desktop Connection. :)  Ni ravno priporočljivo imeti direktno odprt port za RDP. Če imaš več računalnikov, do katerih želiš dostopati, se zadeva začne komplicirati še pri portih. Temu se lepo izogneš, če uporabljaš VPN povezavo. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 26. jan 2015 ob 14:46 izjavil:Tr0n je 26. jan 2015 ob 13:52 izjavil:Ce so Windowsi, tak mas Remote Desktop Connection. :)  Ni ravno priporočljivo imeti direktno odprt port za RDP. Če imaš več računalnikov, do katerih želiš dostopati, se zadeva začne komplicirati še pri portih. Temu se lepo izogneš, če uporabljaš VPN povezavo.   ne vem sicer v kako velikem podjetju delaš, ampak ali imaš še druge uporabnike v VPNju? Se oni povezujejo, do svojega računalnika in od tam naprej na strežnike ali se povezujejo direktno iz prenosnika od doma na strežnike? zanima me, kako je najbolši oz. najbolj varen pristop k implementaciji te rešitve. Hvala za odgovor ",
+    "user": "A_A"
+  },
+  {
+    "message": "V podjetjih imaš tzv. \"VPN Gateway\".   Odvisno od VPN variante, ki se uporablja, je ta prehod lahko na routerju, požarni pregradi, namenskem VPN strežniku ali nekem Windows serverju.  O tem, katera varianta in implementacija je najboljša se lahko prepiraš do onemoglosti - vsak ima pač nekega svojega favorita.   Glede na to, da prodajam in postavljam požarne pregrade, zagovarjam implementacijo na požarni pregradi, ki s tem postane vstopna točka, kjer lahko istočasno tudi nadziraš, kaj bo lahko kdo dostopal preko VPN povezave.  Ima pa kakšna druga implementacija lahko spet neke druge prednosti.  V glavnem je ves 'štos' VPN povezave v tem, da oddaljeni računalnik navidezno postane del notranjega omrežja podjetja in s tem dobi možnost dostopa do vseh resursov, ki bi mu bili na voljo, če bi se fizično priključil na omrežje podjetja. Ker je to za oddaljene računalnike nekoliko tvegano, se potem omejuje resurse (IP naslove, porte, aplikacija,...) katerim sme oddaljeni uporabnik preko te povezave dostopati. Običajno se za to uporabnike preko njihove avtentikacije razdeli v skupine in pravice ureja na nivoju skupin, možno pa je tudi nastaviti individualne pravice določenemu uporabniku.  Avtentikacija, ki se uporablja za vspostavitev VPN povezave pa je spet odvisna od implementacije. Lahko imaš čisto samostojno bazo uporabnikov in gesel, lahko je zadeva integrirana z ActiveDirectory, nekim LDAP, Radius ali drugim avtentikacijskim sistemom, ki se uporablja v podjetju. Takšna integracija zopet poenostavlja upravljanje, saj tako lahko uporabniki za vspostavitev povezave uporabljajo uporabniška imena in gesla, katera se uporabljajo tudi sicer v podjetju. Kjer gredo še en korak naprej, pa se zadevo integrira z dvofaktorsko avtentikacijo (nek token, sms,...).  Skratka, vsi zunanji uporabniki se povezujejo na isti VPN prehod in tako postanejo del omrežja - kot če bi se priključili na switch v podjetju. Ker si 'notri', pa potem tudi odpadejo vse težave, ki jih sicer NAT prinaša s seboj (port forwarding in ostala krama). ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 7. avg 2015 ob 14:36 izjavil:V podjetjih imaš tzv. \"VPN Gateway\".   Odvisno od VPN variante, ki se uporablja, je ta prehod lahko na routerju, požarni pregradi, namenskem VPN strežniku ali nekem Windows serverju.  O tem, katera varianta in implementacija je najboljša se lahko prepiraš do onemoglosti - vsak ima pač nekega svojega favorita.   Glede na to, da prodajam in postavljam požarne pregrade, zagovarjam implementacijo na požarni pregradi, ki s tem postane vstopna točka, kjer lahko istočasno tudi nadziraš, kaj bo lahko kdo dostopal preko VPN povezave.  Ima pa kakšna druga implementacija lahko spet neke druge prednosti.  V glavnem je ves 'štos' VPN povezave v tem, da oddaljeni računalnik navidezno postane del notranjega omrežja podjetja in s tem dobi možnost dostopa do vseh resursov, ki bi mu bili na voljo, če bi se fizično priključil na omrežje podjetja. Ker je to za oddaljene računalnike nekoliko tvegano, se potem omejuje resurse (IP naslove, porte, aplikacija,...) katerim sme oddaljeni uporabnik preko te povezave dostopati. Običajno se za to uporabnike preko njihove avtentikacije razdeli v skupine in pravice ureja na nivoju skupin, možno pa je tudi nastaviti individualne pravice določenemu uporabniku.  Avtentikacija, ki se uporablja za vspostavitev VPN povezave pa je spet odvisna od implementacije. Lahko imaš čisto samostojno bazo uporabnikov in gesel, lahko je zadeva integrirana z ActiveDirectory, nekim LDAP, Radius ali drugim avtentikacijskim sistemom, ki se uporablja v podjetju. Takšna integracija zopet poenostavlja upravljanje, saj tako lahko uporabniki za vspostavitev povezave uporabljajo uporabniška imena in gesla, katera se uporabljajo tudi sicer v podjetju. Kjer gredo še en korak naprej, pa se zadevo integrira z dvofaktorsko avtentikacijo (nek token, sms,...).  Skratka, vsi zunanji uporabniki se povezujejo na isti VPN prehod in tako postanejo del omrežja - kot če bi se priključili na switch v podjetju. Ker si 'notri', pa potem tudi odpadejo vse težave, ki jih sicer NAT prinaša s seboj (port forwarding in ostala krama).    Hvala za izčrpen odgovor. Če te prav razumem jim omogočiš direkten vstop do strežnikov in ostalih zadev? Kar je tudi najbolj smiselno. Samo sem mislil, da bi mogoče kaj na varnosti pridobil še s tisto avtentikacijo na računalniku v podjetju. ",
+    "user": "A_A"
+  },
+  {
+    "message": "Ne glede na to, ali se priključiš s prenosnikom direktno na switch ali pa iz daljave preko VPN povezave, se mora uporabnik še vedno avtenticirat za RDP dostp do svojega računalnika, izvesti prijavo v Windows domeno, avtenticirati na mail serverju,...., če želi dostopati do teh resursov. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Hvala   SeMiNeSanja je 17. avg 2015 ob 13:11 izjavil:Ne glede na to, ali se priključiš s prenosnikom direktno na switch ali pa iz daljave preko VPN povezave, se mora uporabnik še vedno avtenticirat za RDP dostp do svojega računalnika, izvesti prijavo v Windows domeno, avtenticirati na mail serverju,...., če želi dostopati do teh resursov.  ",
+    "user": "A_A"
+  }
+]

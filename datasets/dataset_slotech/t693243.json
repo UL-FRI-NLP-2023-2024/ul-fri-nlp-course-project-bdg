@@ -1,0 +1,14 @@
+[
+  {
+    "message": "Zdravo. Za urediti imam wifi za uporabnike in goste na obeh napravah, in me zanima, če bi spodnje delovalo. Wifi signala obeh usmerjevalnikov se delno prekrivata, zato so preklopi uporabnikov pogosti.   Usmerjevalnik z wifi kartico Mikrotik1 (192.168.10.1, DHCP server itd ...): port 1: Wan port. Priključen v net port 2-5: dodani v bridge.  Usmerjevalnik z wifi kartico Mikrotik wAP (192.168.10.3): port 1: priključen v Mikrotik1.  Težava mi predstavlja predvsem wAP. Zamislil sem si tako, da naredim \"virtual AP\" in mu dodelim subnet 192.168.5.0/24, ter nanj DHCP server 192.168.5.2-50. Potem pa naredim NAT(iz virtual AP v port1) in dodam v firewall zaporo za dostop do 192.168.10/0 omrežja. To mi deluje. Kako pa narediti na prvem usmerjevalniku? Verjetno isto, vendar moram dati DHCP pool drugačen npr. 192.168.5.51-100. Med roamingom bi verjetno lahko prišlo do podvajanja IP naslovov. Ali bi roaming med napravama sploh deloval v taki konfiguraciji. Med usmerjevalnikoma sta tudi dva stara switcha, ki ne podpirata VLANa (vsaj tako predvidevam, ker nista L3). Kako bi drugače to lahko rešil oz. kaj naj naredim? Že vnaprej hvala. ",
+    "user": "mrsmoke"
+  },
+  {
+    "message": "Sem pozabil dodati oz. predpostavljam. Če sem povezan na Mikrotik1, potem bo source ip naslov npr. 192.168.5.88->WAN. Pri wAP pa 192.168.5.40 -> NAT v 192.168.10.60 -> WAN. Kaj se bo naredil med roamingom? GW bo v obeh primerih 192.168.5.1. ",
+    "user": "mrsmoke"
+  },
+  {
+    "message": "Naredil sem prek EOIP-a in trenutno lepo deluje. Tudi med roamingom. Če je pa to najboljša izbira, pa ne vem.  lp ",
+    "user": "mrsmoke"
+  }
+]

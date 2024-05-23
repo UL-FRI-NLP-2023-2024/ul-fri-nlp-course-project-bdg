@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Doma imam server, proklopljen direkno na internet. Do serverja dostopam iz svojega prenosnika preko WLAN-a. Problem je, da VPN povezavo naredim iz serverja brez problemov, iz prenosnika pa se nikakor ne morem priklopit. Uporabljam pa Cisco VPN client. Sem pa izklopil vse firewall-e.  Ve kdo mogoče kaj bi bilo?  LP ",
+    "user": "Yeznick"
+  },
+  {
+    "message": "Ali slučajno uporabljaš internet connection sharing za dostop do neta z laptopa? Ali laptop dobi svoj zunanji IP? Uporabljaš access point s switchem pri strežniku? ",
+    "user": "Matej_"
+  },
+  {
+    "message": "Ce poizkusis naredit VPN povezavo (govorim o IPSec) preko NAT-a (se pravi da si ti na domacem omrezju, pred tabo pa je nek router), potem se \"klasicna\" IPSec povezava ne more vzpostavit, ker so podatki o source in destination IP-ju navedeni tudi v IPSec paketih, in se zaradi NAT-a razlikujejo od dejanskih, ki jih vidi tvoj IPSec peer.  V tem primeru morata obe strani IPSec povezave podpirati IPSec NAT-Traversal (namesto IP tip 50 in 51 se IPSec povezava vzpostavi kar preko UDP-ja), router na poti pa se mora oglasevati (na skatli pa to :-) kot IPSec Pass-Through capable. Potem ti stvar dela. Kaj od nastetega pri tebi ni v redu pa jaz ne vem. ",
+    "user": "b"
+  },
+  {
+    "message": "wow ",
+    "user": "Wox"
+  },
+  {
+    "message": "Matej, na serverju uporabljam Internet COnnection Sharing, tako da se na laptopu lahko priklopim na net. Kakega routerja nimam, saj je v bistvu kar server mašina router. B, ali mi lahko malo bolj po domače razložiš, kako bi lahko v mojem primeru vzpostavil VPN?  Tenx, LP ",
+    "user": "Yeznick"
+  },
+  {
+    "message": "Ker L2TP + IPSec naj ne bi sel skozi NAT, bi naj bila alternativa za taskne stvari PPTP.   by Miha ",
+    "user": "Microsoft"
+  },
+  {
+    "message": "Aja, pozabil sem povedat, da uporabljam Cisco VPN Client. ",
+    "user": "Yeznick"
+  },
+  {
+    "message": "Jaz bi tudi nekaj vprasal, ko vidim da imamo tukaj eksperta (b), ki dejansko ve o cem govori    Rad bi postavil VPN, do katerega bi lahko dostopal preko GPRS (Si.mobil) - ko si povezan na GPRS si v bistvu za NATom. Platforma bo Linux na serverju, Windows na clientih. Po moznosti naj bi bilo cim lazje izvedljivo ;)  Pa se nekaj, rad bi prenasal vse protokole, torej tudi \"Windows file sharing\" (samba, wins, whatever...), kar pa kolikor vem PPTP (ali pa samo PoPToP server) ne podpira.  Tako da pomoje je moja resitev IPSec, cesar se kar rahlo bojim ;) Vem tudi da obstaja vec \"forkov\" sedaj mrtvega FreeS/WAN projekta. Katerega mi priporacate? ",
+    "user": "|SNap|"
+  },
+  {
+    "message": "Na Windows Server lahko nastavis, kater port (stevilka in TCP/UDP) bo uporabljal IPSec. Lahko nastavis tudi vse TCP, ali vse UDP porte.   Potem pa pozenes Ipsecmon in pogledas, kaj se dogaja. :)   by Miha ",
+    "user": "Microsoft"
+  },
+  {
+    "message": "|SNap|: Preko poptopa laufa samba čisto lepo...načeloma naj ne bi smelo bit razlik z ipsecom, ker je to samo način povezave in ne vpliva na protokole...ima pa pptp pač dobre in slabe lastnosti - deluje out-of-the-box z win9x clienti, dočim je mppe kriptiranje malček slabše od ipsecovega 3des (ali pač karkoli uporabljaš). če boš šel na pptp ti priporočam tole stranco, kjer dobiš patch za mppe/mppc podporo za kernel. ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Jaz z windows ipsec nisem nikoli nisem imel neke srece z interoperabilnostjo (govorim o w2k).  yeznick: Na zalost nisem nikoli uporabljal ICS, tako da ne vem, ali ti ne dela zaradi tega. Kaj pa imas na drugi strani IPSec povezave? Kaksnega Ciscota (sklepam, ker uporabljas Cisco VPN client). Vsekakor bi potreboval vec podatkov, ampak ce je to za sluzbo, bos ze moral najti nekoga, ki ti bo pomagal. Zal ne vem, ce Cisco podpira NAT-T, ampak sklepam da ga. Mogoce bo treba le omogocit to opcijo, ce je morda izkljucena.  Izkusnja izpred dveh tednov: moja stranka tezi in tezi, ker si ne more vzpostavit VPN-ja v enaki situaciji (NAT). Na koncu ugotoviva, da NetScreen VPN client v8, ki ga uporablja, tega ne podpira. V verziji 9 pa zadeva dela. Seveda je trajalo par dni, da sva ugotovila, da meni dela, ker imam novejso verzijo :-)  |snap|: Vzpostavi si lepo IPSec, potem lahko tam cez furas taksen promet kot hoces. Windowsom moras sicer dopovedat, kje je WINS streznik, se mi zdi. Ne vem, pri windowsih sem bolj lesen.  Za Linux 2.6 jaz uporabljam kar  ipsec-tools, ki so (vsaj meni) neprimerno bolj intuitivni kot razni labodi. Definitivno priporocam 2.6, ker ga ni treba posebej patchat za IPSec podporo, ampak je ze vkljucena. Poglej si  IPSec HOWTO ",
+    "user": "b"
+  },
+  {
+    "message": "En lep pozdrav vsem skupaj. Mam eno težavico... Rad bi vzpostavil VPn preko dveh ADSL. No da razložim. Imam rač z winxp kot strežnik in rač z win98 kot odjemalec. Tisti rač. z win98 je direktno prek Callisto modema povazan na net. Če WINXP računalnik povežem tudi direktno preko Callisto modema na net zadeva VPN gladko deluje. Če dam na strani WINXP strežnika zadeve na hub/switch in potem uporabil lokalne IP (192.168.*.*.) ter če Callisto uporabim kot modem (torej vzpostavim povezavo tako da kliknem na SIOL povezavo, potem VPN še vedno gladko dela in tudi povežem se lahko iz WIN)( rač. na WINXP server. Če pa Callisto skonfiguriram kot ruter (tako da vsi rač v lanu na strani strežnika lahko dostopajo na internt in se povezavo vzpostavi takoj ko se zažene prvi brskalnik) pol VPN noče več delat. Sem prebral da moraš omogočit translacijo portov, kar sem tudi naredil. No enkrat sem potem uspel vzpostavit povezavo, ko pa smo vse skupaj resetirali, da poskusimo kaj bo ni šlo več.  Ma kdo kako idejo????  Že vnaprej se vam zahvaljujem za pomoč (jasno piva ali dve po uspešni rešitvi) ",
+    "user": "jopler"
+  },
+  {
+    "message": "Forwardat moraš port 1723 na notranji IP od XPjev (192....). Priklapljaš se seveda na zunanji IP ki ga dobi Calisto. Ako Calisto sam podpira VPN passthrough bi moralo delati. ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Bom kar tule dopisal. Imam velike probleme pri uporabi VPNja. Ko se povežem na službeno omrežje dela vse BP, če kopiram datoteke dosegam zadovoljive hitrosti (~200k/s). Problem je z neverjetno dolgimi delayi pri brskanju po sharih (tudi po pol minutni delayi) in pa delayi pri shranjevanju in odpiranju datotek (tudi po 5 sek.). VPN server je na Windows serverju (ali je 2k al 2k3 ne vem natančno), do delayev prihaja ne glede na to ali delam z datotekami preko sharov ki so na Win ali Linux platformi. Povezava tudi nima nekega faktorja tu, ker je pri eksperimentiranju z VPNjem direktno preko 100mbit lana prišlo do enakih problemov. ",
+    "user": "darh"
+  },
+  {
+    "message": "Brskanje po sharih predstavlja poseben problem. Namreč celoten protokol temelji na broadcastih (broadcast u subnet na port 137 da zveš naslov od master browserja) in pa \"čudnem\" sistemu izbiranja računalnikov ki držijo listo mašin v workgroupu. Broadcasti se prek PPP povezav po defaultu NE širijo. Stvar lahko rešiš na 2 načina - eden je t.i. broadcast repeater ki ponovi broadcast preko PPP povezave, in druga IMO boljša možnost je postavitev WINS serverja (ki mora biti hkrati tudi master browser) ki skrbi za listo mašin. S tako konfiguracijo (seveda da vse klapa) delayev ne bi smelo bit. ",
+    "user": "SasoS"
+  },
+  {
+    "message": "kiše so v službi v domeni (in to je med drugim tudi wins server -- or am i wrong?) Na kateri strani bi broadcast repeater moral biti postavljen?  Če je to rešitev za browsanje, kaj pa loading/saving datotek? Ali je to povezano? ",
+    "user": "darh"
+  },
+  {
+    "message": "Ej saso najlepša hvala za odgovor. Ma ravno v tem je težava ker ne vem kako to naredit oz. če to lahko sploh naredim na tem callistu. Je kakšna varianta, da mi kako priskočiš na pomoč (urediva remote dostop) proti plačilu seveda.  LP  prosim piši mi na mail jople15@yahoo.com, pol ti že dam druge podatke ",
+    "user": "jopler"
+  },
+  {
+    "message": "@xbite: verjetno da je wins, preveri nastavitve računalnikov ki so v omrežju. Preveri tudi če ti VPN server da tapravo adreso wins serverja (ipconfig /all) če ne jo ročno vpiši v TCP/IP nastavitve. Drugače pa...5s ni neka ne vem kako velika zakasnitev. Če imaš veliko omrežje, ali pa je računalnik v dveh omrežjih hkrati (recimo domače omrežje in službeno preko VPN) včasih traja da najde vse...  edit: broadcast repeater če laufa mora seveda teči na VPN serverju...  @jopler: Nastavitev od Calistota ne poznam. A predvidevam da je podoben vmesnik kot pri ostalih routerjih...išči port forwarding, virtual server ali kaj podobnega... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "SasoS: 5sek je ogromno če delaš na web projktih (save,refresh,fix,save,refresh,fix :>)  ipconfig /all za vpn connection ne vrne nič podobnega wins, samo dhcp off, ip, subnet, def. gateway in dns server.. ",
+    "user": "darh"
+  },
+  {
+    "message": "Moja konfiguracija: ADSL-Calisto-Coyote Linux router-AP~~AP Client-wifi router~~notebook. Cisco VPN client na notebooku špila ko šus, povezujem se v Nemčijo.  Opomba: - drat povezava, ~ luft  Jani ",
+    "user": "janezl"
+  },
+  {
+    "message": "@xbite: 2 stvari...ponavadi če delaš na kakem resnem projetku imaš urejen recimo cvs - check out, popravi, check in. Kaj bi se zgodilo če bi ponesreči zbrisal vse?  Druga stvar je da imam občutek da dela vse večalimanj tako kot je treba. Če ne bi ti računalnike iskal tudi pol minute ali več...moraš imeti vedno v mislih da delaš preko mreže in ne lokalno. Lahko pa vseeno preveriš kaj je z winsom. Preden se pa lotiš tega...a ti shranjuješ datoteke direktno na share? Kaj če bi probal pogon mapirat na eno črko. Tako bo povezava vedno aktivna in delaya ne bi smelo bit pri shranjevanju... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Share je mapiran.  cvs je, brezskrbi :), samo je na remote mašini, da bi checkoutal vse lokalno si ne morem privoščit, ker rabim v 50% konstantno preverjat če je vse ok takoj ko popravim - rešitev bi blo da bi si lokalno tudi server postavil...   sicer pa... zdejle me je tole mučlo kak mesec in pol ko sem bil na bolniški, zdej bom itak direktno delal. ",
+    "user": "darh"
+  }
+]

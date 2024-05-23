@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Pozdravljeni!  V naslednjem polletju imam namen zgraditi vezje (termometer za merjenje v nizkih temperaturah->v mraziščih).  Za senzor mislim da bi bilo najbolj pametno za vzet DS18B20, ker ima razpon meritev od -55°C navzgor.   Samo vezje bi za prikaz temperature uporabljalo 4 7segment display-e (minus predznak+temperatura prikazana na eno decimalko, npr. -38.7). Vedno pa bi bila na teh displejčkih prikazana le minimalna izmerjena temperatura (Tlow), ker trenutna in maxmalna za meritve v mraziščih ni potrebna. To minimalno temperaturo bi po potrebi resetiral s kako tipko. Da bi še kaj več prišparal pri elektriki sem si zamislil da v odstostnosti bi bili displejčki ugasnjeni, ob prisotnosti pa bi z tipko oz. stikalcem na skupni anodi oz. katodi prižgal displejčke. Vezje bi v odsotnosti (kljub nedelovanju displejčkov) v ozadju še vedno medtem delovalo.  Za napajanje bi bila vredu kaka 9 block baterija, katera zdrži v tako nizkih temperaturah. 5V pa bi ven dobil z 7805 stabilizatorjem.  Torej še malo drugače povedano. Recimo da danes postavim vezje v mrazišče in pridem npr. 31.7.2008 nazaj, se mi ob sklenitvi stikalca zasvetijo LED displejčki ter prikažejo najnižjo izmerjeno temperaturo v tem obdobju. Temperaturo resetiram, ter pridem spet 20.10.2008 nazaj ter ob pritisku na gumb zagledam najnižjo izmerjeno temperaturo v obdobju od kar sem jo nazadje resetiral (torej od 31.7).  Se vam zdi projekt močno zahteven?  Hvaležen bom vsakih predlogov ter mnenj.  Najlepša hvala!  /dodano Po dokumentaciji sem razbral da je stab. 7805 neprimeren za tako nizke temperature, torej bo potrebno dobit ustrezno napajnje direkt iz baterij ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Uporabi raje tri 1,5V baterije v serijo zvezane in napajaj vezje z 4,5V, odpraviš potrebo po regulatorju. Sam projekt je relativno preprost, odvisno od tvoje pripravljenosti se naučit programirat. Če imaš prenosnik in znaš kaj programirat, lahko namesto LED displayev narediš programček, ki ti bo prek serijskega vmesnika bral podatke iz mikrokontrolerja. Uporabi uC z vgrajenim EEPROMom in lahko shranjuješ npr. vsakodnevno najnižjo temperaturo. V glavnem za vezje rabiš uC, MAX232 za RS232 komunikacijo, temperaturni senzor, baterije in par kondenzatorjev na napajalnih pinih. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Tudi o priklopu na PC sem že razmišljal, a zaradi ne preveč znanja iz programiranja bi bilo to precej težko z moje strani. Zaenkrat bi torej bilo dovolj le prikaz na LED displejčkih, morda kasneje ko bo kaj več znanja iz programiranja pa dodam še priklop na PC.  lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Potem IMO najbolje, če si začetnik, da si dobiš uC z dovolj izhodi (recimo 40pin PIC) in zaslončke za cifre priklopiš direkt na tri porte - odpade multipleksiranje in imaš prihranjenega precej programiranja.  Drugače pa IMO tudi rešitev, kot sem ti jo predlagal, ni preveč za začetnika - če imaš dovolj volje in dovolj logike v glavi. Sliši se mogoče zahtevnejše, ampak ni. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Recimo gledam za PIC 16F8477, ampak kakor obrneš je problem delovna temperatura čipov pa vsega skup.   V mojem primeru bi šlo recimo do nekje max -45°C, zelo redko pa pod -40°C.  Verjetno spet obstaja kaka posebna vrsta PIC-ov za tako nizke temperature?   lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Večina PICev gre do -40°C, kako se obnesejo pod tem pa ne vem - koneckoncev lahko narediš škatlico iz 10cm stiropora in en upor za ogrevat, če ne bo delovalo, ampak ne vem, kako bi se s tem strinjala baterija:). Če si še študent in imaš arnesov email, lahko naročiš vzorce direkt od Microchipa in jih pošljejo zastonj, tako da jaz bi si na tvojem mestu ogledal kak PIC18f***, ker jih lahko v Cju programiraš v MPLABu. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Če začenja in ne pozna še uC, je 18 serija kar zahtevna z vsemi svojimi registri. Tudi 16f serijo se da programirati v C-ju (CCS compiler).  V C-ju je še bolj preprosto kot segmentne LED prikazovalnike mogoče uporabiti en 16x2 LCD. Porabiš 7 pinov, pa še manj kuri, ko je prižgan. Cena tudi ni pretirano višja. Ker bi se lahko zgodilo, da se ti vse skupaj sesede, ko se zaženejo LED prikazovalniki z že rahlo izmučenimi baterijami.  Moja izbira bi bil 16f648a (sample), na katerega bi priklopil 2x16 LCD (5EUR) in ds18b20 (sample). Napajal bi s tremi AA baterijami.   Je pa to taka zadeva, da ne bi bilo fino, da so baterije prazne, ko prideš. Če je mraz pa so baterije tudi precej bolj boge. Tako da bi bilo vredno premisliti o rezervi pri baterijah in dati morda celo večje.   Le moje mnenje... ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Jaz bi stvar zasnoval iz dveh delov.  Prvi je tisti, ki bo čepel na mrazu. Vanj bi dal poleg samega termometra še mikrokontroler. Enkrat ko imaš v vezju mikrokrmilnik pa ni več tako zelo važno koliko je pameten senzor.  Če se prav spomnim, je cela fora DS1820 v tem da je v osnovi samozadosten in da se ga da napajati skozi signalno linijo, brez posebnega napajanja.  Nobena od teh lastnosti pa tu ni bistvena za tvojo aplikacijo, ker itak rabiš mikrokrmilnik.  Razen če je mogoče kak čip v tej seriji, ki zna sam zabeležiti minimum temperature, ampak jaz tega ne najdem.  Ta del bi torej jaz realiziral s čimmanjšim mikrokrmilnikom s čimnižjo porabo in s čimnaprednejšim procesom.  Po moje pri teh zadevah nizke temperature niso tako velik problem kot so visoke in če lahko na hitrostnih rekordih nek Core2Duo zalivajo s tekočim dušikom, bi moral tudi ubogi PIC ali kaj podobnega preživeti. Je pa vprašanje, kaj bodo na to rekle določene analogne stvari v čipu in izven njega in predvsem baterija, a to je treba itak probat, baterijo pa izbrat tako, ki najbolje tolerira nizke temperature in jo ustrezno predimenzionirat.   Drugi del zadeve bi bil že bolj klasičen in bi vseboval pač displej in kar rabiš, da dobiš odčitek.   Lahko je to tudi samo šteker na COMportu na tvoje prenosniku, s katerim zajemaš podatke.   Koneckoncev, če aplikacija to dovoljuje, lahko potegneš kabel in imaš na njem kup senzorjev v nekih razmakih in iih čitaš remote... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Oj,  poglej si  tole povezavo, kjer smo obdelali tudi merjenje temperature z DS1820, prikaz je bil na LCD-ju, brez hujšega problema pa to prikažeš na štirih 7 seg. LED prikazovalniku.  DS1820 ne potrebuje uC-ja ob sebi, ker pošilja signale po 1Wire vodilu, ki je lahko dolgo do nekaj metrov, na bivšem Dallasu so pred leti trdili, da je lahko povezava preko 200m, ampak tega ni nihče preveril... Vsekakor parazitivno napajanje ne pride v poštev če želiš prejemati zanesljive podatke pri razdaljah več kot cca. 5m. ",
+    "user": "Jure_M"
+  },
+  {
+    "message": "Super fantje!  Hvala za vse vaše predloge oz. pomoč!  Medtem ko sem bil odsoten sem se pogovoril še z enim kolegom. On je predlagal malo drugačen načrt, kateri mislim da vsaj s strani napajanja ne bi bil tako zahteven.  Torej vezje ne bi imelo nobenega prikazovalnika, ampak bi samo zapisovalo temperaturo v EEPROM vsakih 5 minut (nastavljivo v programu na PC-ju ob priklopu vezja).  Za EEPROM sem nekaj gledal okrog 24C256. Po velikosti bi bil ravno pravšnji. Sicer nevem če je potrebno, ampak sem nekaj gledal tudi okoli real time clock čipov (zapis temperature + ura in datum). Se morda poleg še enega čipa posebej še kako drugače porihtat zapis datuma poleg temperature? Ima morda že mikrokrmilnik to funkcijo?  Zadevo sem torej morda nekoliko poenostavil. Termometer naj bi imel le funkcijo merjenja temperature s pomočjo tipala DS18B20 ter zapisovanja v EEPROM (čas-nastavljiv). Ob priklopu na računalnik pa bi se vsi zapisi iz EEPROMA prenesli na PC, torej bi bil potreben še nek ustrezen program na PC-ju, ter čip npr. MAX232.  Baterija bi bila OK recimo tale: http://shrani.si/f/36/3X/2e67wKQW/65095...  Hvala! Lp! ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Za shranjevanje v EEPROM najprej poglej, če ti ustreza kak mikrokontroler, ki ga ima že vgrajenega - glede prostih mest za zapisovat. Uro realnega časa dobiš posebej čip, s katerim komuniciraš prek I2C protokola. Mogoče se sliši zapleteno, ampak ima večina uCjev že vgrajen hardwer za I2C in rabiš samo še neke vrste gonilnik, ki ti bo pošiljal in prejemal podatke po tem vodilu.   Za povezavo z PCjem rabiš MAX232 vezje, ja. Za program na računalniku imaš pa več možnosti - lahko tudi uporabiš terminal in spišeš program za uC tako, da ti ob prejemu določenega bajta izvede ukaz - recimo po vrsti pošlje rezultate meritev, ki jih potem lahko skopiraš v razpredelnico npr. in potem tam obdeluješ naprej. Lahko pa se naučiš še kaj kakega Cja in spišeš namenski program - z današnjimi orodji ni problema spisat en tak programčič. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Pozabi na razne PIC mikrokontrolerje - Poglej si malo MSP340 serijo od Texas Instruments. So dosti bolj low power, kot Microchip. Za baterijske aplikacije bolj primerni. ",
+    "user": "icek"
+  },
+  {
+    "message": "Hm...nevem če bo ravno preprosto najti vezje s tako velikim EEPROM-om. Kot rečeno bi mi najbolj ustrezal EEPROM velikosti 256kbit.  Bom v naslednjih dneh poskušal naročiti nabrane čipe sample.  Sicer je tudi priklop na COM port OK (MAX232), ampak problem je v tem da jih počasi na prenosnike ne vgrajujejo več, kar bi v tem primeru povzročalo kar velik problem. Kateri bi bil najbolj primeren za USB komunikacijo? ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "USB komunikacije se IMO raje še ne lotevaj, ker je veliko zapletenejša od serijske. Dobiš pa danes poceni USB na RS232 konverterje.  Za EEPROM lahko uporabiš zunanjega, lahko na I2C vodilu - jih lahko naročiš na Microchipovi strani kot sample, zraven pa še mikrokontroler. Sicer je največja velikost 128kB, ampak lahko daš na vodilo dva in je. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Ok, tukaj ste sedaj kar veliko sporočil napisali. Moram si kar vzet nekaj časa ter preštudirati kako pa kaj   Torej, glede mikrokontrolerjev bi raje jaz videl da bi se šlo za PIC kot ATMEL ali kaj drugega. Serija 16F verjetno bo najlažja za tole? Recimo vzamem 16F877A, katerega nekoliko že poznam.  Glede tipala in PC komunikacije je torej rešeno (DS18B20 ter MAX232). Glede EEPROMA pa še vedno iščem. Sicer še vedno gledam za 24c256, venndar ni I2C. Lahko kdo kar direktno iz rokava strese primeren EEPROM zgoraj navedene velikosti?   Mal pa me matra glede tistega z uro (real time clock). Nevem kako izvest...  Verjetno druge čiparije potem ne nucam več.  Hvala, lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Za uro ima Maxim čip na I2C vodilu (recimo  tole, pošiljajo vzorce. EEPROM lahko vzameš dva na I2C vodilu, 128kB, jih lahko kot vzorce naročiš pri microchipu. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Uro lahko naročiš tudi pri Maximu. Kaj na i2c ali celo one wire.  16f877 je po mojem mnenju v redu izbira. Pri naročanju vzemi 16LF877, ki deluje tudi na nižjih napetostih.  edit: predolgo pisal :) ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Hm..glede real clock time, bi bila pomojem le boljša izbira DS1678, saj porabi nekoliko manj toka, pa še ohišje, samega čipa mi je bolj domače (DIP). Ravno tako pa se zadevo dobi sample, deluje pa tudi na I2C.  Bom jaz še malo v prihodnjih dneh mal preštudiral okrog mikrokontrolerja. 16F877 bi že bil OK, ampak se mi zdi da bi potem pol pinov (nogic) v luftu viselo.  Se torej oglasim čez par dni, ko bom še mal preštudiral.  Če ima pa še kdo kake predloge, mnenja, kar na dan z njimi   Najlepša hvala! ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Sej ni panike, če imaš nogice v luftu. Mogoče ti bodo kdaj v prihodnosti še prav prišle:). ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Po možganih popolnoma identičen 16f877 je 16f876, le da ima 28 pinov namesto 40.  Manj kot 28 pinskega pa boš z I2C (master) in USART težko našel. ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Takole  V zadnjih dneh sem mal prebiral strani po internetu, ter se še kaj pozanimal naokrog in prišel do nekega bolj podrobnega načrta.  Glede PIC-a se bolj odločam za PIC16F876, ker se mi zdi da bi bilo čisto brezveze da bi vzel 877A, saj bi bilo pol pinov v luftu. Glede RS232 komunikacije vzamem nekaj podobnega MAX232->MAX3232. Deluje na nižji napetosti, kar bom jaz verjetno tudi potreboval, pa tudi manj toka ponuca.  Glede velikosti EEPROMA pa sem se takrat ko sem sem iskal primernega, brezveze zafrkaval. Torej če imam DS18B20 in mi podaja temp. v 12bitni resoluciji, mi pri 20.000 zapisih ponuca 30K, torej bi bil že 24LC32A primeren, ampak ker bi poleg temperature zapisoval še datum in uro izmerka, bi torej moral vzeti nekoli večji-24LC64. Takrat pa sem gledal zaradi napačnega preračuna 4x večji EEPROM. No upam da sem sedaj prav preračunal?  Še vedno pa je vprašanje real time clock čip-ampak a je sploh potreben, ker se mi nekakako zdi da sem nekje bral da to mikrokontrolerji že imajo?  Hvala, lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Živjo,  mi je že ratalo shemo za tole stvarco naredit. Bi pa prosil nekoga če lahko mal pogleda, če so kje kake napake, pa če bi kdo kako drugače kaj naredil, dodal      Predvsem nevem kam povezati MCLR PIC-a (na shemi povezan preko upora na Vcc). Na DS1307 bom dodal še baterijo. SCL in SDA EEPROMA in RTC sem povezal skup, nato pa preko 4.7k upora na VCC (vrednost nevem če je pravilna). Nekje moram pa vrednosti še napisat.  Vezje sem le naredil za 5V napajanje. Bom se že potem nekako znašel.  PS: uff...nikakor mi ni sliko uspelo notr dat  Hvala, lp! ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "DB9 konektor za COM port imaš narobe povezan na MAX232 - pin3 na konektorju moraš povezat na pin13 na MAX232 čipu. Na RTC pa poveži na VBAT še ali eno litijevo baterijo ali en supercap, ki se bo polnil z glavnega napajanja prek diode in upora. VBAT je tam zato, da ob prekinitvi napajanja (zmanjka baterije) ura še vedno deluje in če ne drugega, ti ne bo treba vedno znova ure ponovno nastavljat.  MCLR je povezan OK, potrebuješ ga samo, kadar programiraš mikrokontroler.  In še en nasvet - zraven vsakega čipa daj en 100nF keramičen kondenzatorček, čim bližje napajalnim pinom, napajanje pa poveži tako, da gre najprej do kondenzatorja, potem pa naprej do ICja. In povezave, ki grejo \"ven\", naj nikoli ne napajajo še česa drugega. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "DS18b20 lahko napajaš parazitno (deluje popolnoma v redu). Tako sta pin 1 in 3 ozemljena, pin 2 pa gre na mikrokontroler in nanj je vezan še pullup upor 4k7 (torej iz pina 2 na maso). Ker trenutno mi okrog DS18b20 nekaj ni ravno v redu. Kaj je tisti upor iz data linije na eno od nogic? Kje je napajanje? ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Takole, popravil sem stvari na shemi za katere ste me opozorili da bi moralo biti drugače,...  Hm...edino me morda zanima še nekaj glede MAX232 čipa. Po nekaterih spletnih straneh berem da se za baterijsko napajanje vezja bolj priporoča tiste MAX čipe ki se postavijo v shutdown ali nekaj podobnega?!  Mogoče MAX242 bi bil torej bolj primeren?  lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Verjetno bi šlo, jaz še nisem delal s temi čipi. Potrebuješ pa potem še način, dva signala, kako čip \"zbudit\", ko hočeš kaj pošiljat. Enega iz mikrokontrolerja in drugega iz računalnika, s katerim boš bral podatke. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Pišuka! Pullup gre iz pin2 DS18b20 na VDD (+5V)... Kakšen lapsus keyboarde... Se opravičujem. ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Takole, upam da se vas prav razumel ter vse prav popravil.  Prosim še za en pregled sheme.   Datalogger termometer  Če pa bi še kdo kaj po njegovem dodal, popravil bi pa prosil da se oglasi :)  Čez vikend se, vkolikor je zadeva prav narejena lotim izdelovanja boarda za tole:)  Hvala, lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Na DS1307 poveži Vcc napajanje, na MAX232 vezju tudi preveri napajanje - v shemi ga ne vidim? ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Napajanje na DS1307 sem res pozabil narisat, na MAX232 pa je napajanje preko kondenzatorja (levo gor-V+). Dodana še baterija na DS1307  Popravljena shema:    lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Kje imaš pa pin 15 in 16 na maxu? Tam je napajanje. Poglej datasheet max232. Prek kondenzatorja ne teče nič toka... ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Pa res  V bistvu gre za neko \"lepotno\" napako Eagla. No, sedaj sem z funkcijo Invoke tudi ta dva pina prikazal.  Mislim da sedaj kar bo vse skupaj OK. Tiste kondenzatorja na MAX-u, kjer piše V+ in V- sem oba na koncu povezal na GND (prej je bil eden na +5V)  Hm...a je DS18B20 na zadnji shemi pravilno povezan? Na internetu namreč najdeš veliko različnih kombinacij priklopa, tako da sploh nevem kaj je pravilno. Doma sem senzor priklopil na PC priklopil, tako da sem 1 in 3 pin povezal na maso, 2 pa direkt na PC (1-Wire) brez pull-up upora na +5V, pa je ravno tako delovalo.  lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Tisti pullup kar pusti. Ni potreben, če pin uC dajež na visok in nizek nivo. Pin uC pa ima lahko tudi stanje visoke impedance (ne teče tok niti noter niti ven, le zaznava napetostni nivo) in takrat teče tok skozi upor. In ta tok naj bi dvignil nivo data linije na +5V tedaj, ko podatke pošilja DS18b20. ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Glede napajanja sem se zaenkrat prišel že kar do 9V block baterije. Razmišljal sem da bi uporabil 7805 regulator za potrebno napetost, a me skrbi da bi kasneje napetost baterije padla pod 8V, kar ne bi zadostovalo za regulator (vhodna napestost minimalno 8V). Verjetno bi bilo potemtakem bolj pametno uporabit eno 5.1V zenerco?  Hm...pa še nekaj...verjetno bo OK če povežem A0, A1, A2 in WP na EEPROM-u na maso?  lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Raje poveži zaporedno par 1,5V AA baterij, 9V baterije imajo dokaj nizko kapaciteto. EEPROM bo vredu tko, kot si napisal. Edino lahko povežeš prek uporov, torej vsak od teh pinov najprej na upor, potem pa na maso. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Takole, mislim da je delo s shemo počasi že proti koncu.    null (zadnja verzija sheme)  A0-A2 je preko 4.7k povezan na maso, prav tako WP. Sicer se na internetu najde mnogo kombinacij povezav. Ena od njih je tudi da ta so pini A0-A2 direkt povezani ma maso, WP pa kar na data line, ena pa tudi taka da so vsi pini povezani direkt na maso. Od česa je torej odvisno kako povezat te pine?  SQW pin na DS1307 ostaja nepovezan, verjetno bo tako OK.  Na tistem mestu, kjer je bil prej konektor za povezavo na PC(DB9) sem sedaj dal navaden trojni konektor, tako da mi bo lažje pri priklopu zadeve na PC.  Drugo pa mislim da je OK  Hvala! ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "A0-A2 je preko 4.7k povezan na maso, prav tako WP. Sicer se na internetu najde mnogo kombinacij povezav. Ena od njih je tudi da ta so pini A0-A2 direkt povezani ma maso, WP pa kar na data line, ena pa tudi taka da so vsi pini povezani direkt na maso. Od česa je torej odvisno kako povezat te pine?  si vsaj bezno preletel datasheet? poglavji 2.1 in 2.4 imata odgovore na tvoja vprasanja  ",
+    "user": "gumby"
+  },
+  {
+    "message": "Sem preletel, a kot pravim precej različnih kombinacij najdeš po spletu.  No, se bom v prihodnje držal datasheetov ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Meni zgleda OK. A0 - A2 so naslovni pini, od njih je odvisno, kaj moreš dat v naslovni bajt, ko začneš komunikacijo. WP je write protect, z njim zaščitiš EEPROM pred pisanjem, če je povezan na napajanje. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "No, super!  Še enkrat hvala vsem, za tole.  Morda za v prihodnje me zanima, če bi bilo možno namesto 16F876 vzeti tudi 16F88. Sprašujem zato, ker sem danes mimogrede nekje na spletu med iskanjem raznih shem našel tudi razpored pinov za 16F88. Ima RX, TX, SCL, SDA priklope kot 16F876. Tudi malo bolj podroben pregled datasheeta pokaže da bi bil tudi ta čip uporaben.   Za razliko od 16F876 ima notranji kvarz, da se pa z njim tudi prišparati na prostoru (velikost samega mikrokontrolerja) ter denarju (cena mikrokontrolerja) glede na 876.  Hvala še za tole! ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "16f88 je v redu, če ne rabiš pinov (za LCD ali LED prikazovalnik, recimo). Notranji oscilator je tudi bolj ekonomična izbira (tudi kar se porabe tiče).  16f876 pa je en tak multipraktik. In res je ena glavnih pomanjkljivosti, da nima notranjega oscilatorja. ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "16f88 je v redu, če ne rabiš pinov (za LCD ali LED prikazovalnik, recimo). Notranji oscilator je tudi bolj ekonomična izbira (tudi kar se porabe tiče).  16f876 pa je en tak multipraktik. In res je ena glavnih pomanjkljivosti, da nima notranjega oscilatorja.  Notranji oscilator je uporabna zadeva, če ne potrebuješ natančnega clocka. Že sama raba serijskega porta zna delati probleme pri rabi internega oscilatorja. Napisano s prakse.   lp Silvo ",
+    "user": "16F84"
+  },
+  {
+    "message": "Notranji oscilator se da kalibrirati. Za real time clock se priklopi 32KHz na TMR1. Ampak on bo tako ali tako uporabljal MAX. Imaš pa vse res :) ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Notranji oscilator se da kalibrirati. Za real time clock se priklopi 32KHz na TMR1. Ampak on bo tako ali tako uporabljal MAX. Imaš pa vse res :)  Žal ne pri vseh mikrokontrolerjih. Recimo 16F628 tega ne omogoča. Ima pa USART. Ravno to kombinacijo sem zaradi pomanjkanja pinov skušal uporabit sam. Zaključek je bil - večji mikrokontroler ter kristal. Še en primerek rabe internega oscilatorja, ki se v mojem primeru ni obnesel. Pred leti sem si naredil daljinsko centralno zaklepanje za avtomobil. Na sprejemnem delu je bil uporabljen eden iz med malčkov serije 12X (uporabljena je bila tovarniška kalibrirna vrednost oscilatorja) Zadeva je v \"normalnih\" okoliščinah delala kot je treba, odpovedala pa je pri temperaturaj pod 10°C ter pri zelo visoki temperaturi. Pri iskanju vzroka sem najprej zamenjal sam mikrokontroler. Težava je ostala. Na kar je sledila menjava mikrokontrolerja ter uporaba kristala. Zadeva še danes deluje brez težav. Pri kasnejšem testiranju vezja v delavnici - hlajenje z ledolom sem ugotovil, da se clock glede na temperaturo kar močno spremenil.  Zaključek: Rabi internega oscilatorja v koliko je vezje izpostavljeno močnejšemu nihanju temperatur se izogibam. Prav tako se ga izogibam tam, kjer gre za rabo časovno odvisih rutin. Z 16F88 sem naredil kar nekaj aplikacij - simpatičen manjši mikrokontroler z AD vhodi. Koliko se spomnim sem v večini uporabil interni oscilator, a nikoli ni šlo za kako časovno odvisno aplikacijo tako, da točnosti le tega ne morem komentirati.  lp Silvo ",
+    "user": "16F84"
+  },
+  {
+    "message": "Torej, po prebranih sporočilih sem spoznal da mi PIC z notranjim kvarcem ne bi ustrezal, saj bi šlo pri meni tudi za večje spremembe temperature v kratkem času. Bom se torej le odločil za 16F876A z zunajim kristalom.  Hm...kakšna je pa razlika če so pini A0-A2, WP povezani preko uporov na maso, ali kar direktno na maso? (tega si še vedno neznam pojasniti )  lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Hm...v prejšnjem sporočilu sem poabil zapisat vprašanje glede SQW/OUT DS1307. Po datasheetu naj bi bil priklopljen preko pull-up na Vcc, jaz pa imam trenutno pin \"v luftu\". Bo vseeno tko OK?  hvala, lp ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Preko uporov zaradi varnosti, da ne pride slučajno čez kak prevelik tokec. Ziher je ziher, pravijo.   SQW je open drain output, kar pomeni, da ima čip noter samo en tranzistor, ki ti lahko sklene izhod na maso. To pomeni dve stvari, na izhodu imaš lahko tako napetost, kot hočeš (omejeno z maksimalno, ki jo čip lahko prenese, seveda) ne glede na napajalno napetost čipa, \"slaba\" stran je pa, da za delovanje izhoda potrebuješ pull - up upor. Torej izhod ti na 1 postavi tale zunanji upor, na 0 ga pa postavi čip z internim OD tranzistorjem. Odgovor - ne bo problema, če bo ostal nepovezan. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Našel sem eno napako na vezalni shemi. Pin 2 na MAX232-u je bil narobe povezan; V+ je bil preko kondenzatorja povezan na maso, namesto na Vcc.  Napaka:     Sedaj je popravljeno:    ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Preden še dokončno izdelam TIV...me zanima ali je priporočljivo na vhod postavit kakšno diodo (npr. 1N4002). To sprašujem ker opažam da je pri veliko vezij na vhod postavljena dioda, verjetno proti \"povratnemu toku\". ",
+    "user": "SLOMETEO"
+  },
+  {
+    "message": "Preden še dokončno izdelam TIV...me zanima ali je priporočljivo na vhod postavit kakšno diodo (npr. 1N4002). To sprašujem ker opažam da je pri veliko vezij na vhod postavljena dioda, verjetno proti \"povratnemu toku\".   Moj nasvet- vse skupaj sestavi na protobord ter začni pisati program. Hardwera v obliki tiskanine se loti potem ko ti bo še vse \"špilalo\" na protobordu. ",
+    "user": "16F84"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "message": "Spoštovani!  Imam sledeč query: SELECT weblife.bwFacilities.Id, weblife.bwFacilities.Name,\n\t\t\t\t\t\t\t\t\t\t\t\t weblife.bwFacilities.Address, weblife.bwCities.ZipCode,\n\t\t\t\t\t\t\t\t\t\t\t\t weblife.bwCities.Name, weblife.bwCities.IdCountry,\n\t\t\t\t\t\t\t\t\t\t\t\t weblife.bwCountries.Name, weblife.bwCountries.Id,\n\t\t\t\t\t\t\t\t\t\t\t\t weblife.bwCountries.IdContinent, weblife.bwContinents.Id,\n\t\t\t\t\t\t\t\t\t\t\t\t weblife.bwContinents.Name\n\t\t\t\t\t\t\t\t\t\t  FROM weblife.bwFacilities, weblife.rlResortsHaveFacilities,\n\t\t\t\t\t\t\t\t\t\t  \t   weblife.bwCities, weblife.bwCountries,\n\t\t\t\t\t\t\t\t\t\t\t   weblife.bwContinents, weblife.bwResorts\n\t\t\t\t\t\t\t\t\t\t  WHERE weblife.bwFacilities.Id=weblife.rlResortsHaveFacilities.IdFacility\n\t\t\t\t\t\t\t\t\t\t  \t\tAND weblife.bwFacilities.IdCity=weblife.bwCities.Id\n\t\t\t\t\t\t\t\t\t\t\t\tAND weblife.bwCities.IdCountry=weblife.bwCountries.Id\n\t\t\t\t\t\t\t\t\t\t\t\tAND weblife.bwCountries.IdContinent=weblife.bwContinents.Id\n\t\t\t\t\t\t\t\t\t\t  ORDER BY weblife.bwFacilities.Id;ki mi vrne naslednje rezultate:   000001 Pizzerija Dobra Vila, Vodnikova 8, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000001 Pizzerija Dobra Vila, Vodnikova 8, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000001 Pizzerija Dobra Vila, Vodnikova 8, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000002 Grand Hotel Union Executive, Miklo?i?eva 1, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000002 Grand Hotel Union Executive, Miklo?i?eva 1, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000002 Grand Hotel Union Executive, Miklo?i?eva 1, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000003 Grand Hotel Union Business, Miklo?i?eva 3, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000003 Grand Hotel Union Business, Miklo?i?eva 3, 1000 Ljubljana, Slovenia-Europe (FACILITY)\n  000003 Grand Hotel Union Business, Miklo?i?eva 3, 1000 Ljubljana, Slovenia-Europe (FACILITY)Zakaj mi vsak record izpiše 3x. Vem, da mora biti kretenska napaka, ampak je ne najdem in ne najdem, prosim za pomoč! ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "distinct ali pa group by? ",
+    "user": "keworkian"
+  },
+  {
+    "message": "hmm, ne razumem, cak, bom poguglu!! ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "Lol, to kr dela, knight, hvala!  ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "Tabelo bwResorts nimaš v joinu. ",
+    "user": "zavajon"
+  },
+  {
+    "message": "Ja čak, zdej pa jst neki ne štekam. Če v db designerju narišeš relacije itd..., in pol daš na podlagi sheme kreirat bazo, a ti avtomatično joina al ne? ",
+    "user": "KernelPanic"
+  },
+  {
+    "message": "Tega orodja žal ne poznam, poznam pa SQL. In tvoj SQL ti vrne kartezični produkt na bwResorts, ker ni joina za to tabelo. ",
+    "user": "zavajon"
+  },
+  {
+    "message": "Človek začni uporabljat alias, ker tole klobaso komaj prebereš... ",
+    "user": "keworkian"
+  },
+  {
+    "message": "jao, seveda, sj je logično!! tkoj grem probat, hvala!!!!!!!! ",
+    "user": "KernelPanic"
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Lepo pozdravljeni.  Nekaj se igram z SQL stavki in sem naletel na problem imam sledečo tabelo imenovano testna.    TAbela1  Prosim zavedajte se da nimam tabele v excelu ampak v MySql in bi rad naredil sledečo Querry poizvedbo. Prvi stolpec vsebuje ID ki je unikaten za vsako uporabo templatea, vsak uporabnik lahko izbere poljubno število kartic za novo leto. S querryem bi rad iz tabele ven dobil rezultat katere unikatne template je uporabil vsak uporabnik. Npr. Pričakovan rezultat zgornje tabele je:    Tabela2  DISTINCT sem že našel a ga ne znam uporabit v kontekstu. Hvala za vso pomoč. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "tole bo kak GROUP BY template ",
+    "user": "čuhalev"
+  },
+  {
+    "message": " SELECT DISTINCT oseba, template FROM TABELA1;\n  To bo vrnilo številko osebe in ID template. Če rabiš zraven še ostale stolpce, povej. ",
+    "user": "MrStein"
+  },
+  {
+    "message": " MrStein je 22. nov 2013 ob 02:31 izjavil: SELECT DISTINCT oseba, template FROM TABELA1;   To bo vrnilo številko osebe in ID template. Če rabiš zraven še ostale stolpce, povej.   Hvala takoj, ko pridem domov bom testiral. Rabim pa stolpce oseba template in opis. Ali bo OK če preprosto napišem:  SELECT DISTINCT oseba, template, opis FROM TABELA1;\n ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Mislim da distinct dela na VSEH stolpcih ki jih navedeš. Če bo torej opis na templejtih iste osebe različen boš dobil 2 zapisa. za to osebo in ta template. ",
+    "user": "klemenSLO"
+  },
+  {
+    "message": "Ja, če ni garantirano, da je opis vedno enak za isti template, potem se ta logika \"podere\".  Če ne prej, se tu zaveš, zakaj je dobro imeti tabele v normalni obliki.   Stolpec \"opis\" ti izgleda, da je odvisen od vrednosti stolpca \"template\", po pravilu pa naj bi bil odvisen le od primarnega ključa (ki ga tudi nimaš, razen če je to stolpec ID). ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Uff... Opis je vedno enak za isti template, se pa strinjam da ni normalna oblika. Vsaj to so pazili, da je res vedno identičen opis templata.   Tole moram res probat če deluje. Bom še potem imel cel kup vprašanj. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "jst ti predlagam da selektiras samo 2 stolpca brez opisa in potem opis zraven s kodo prineses po ID templejta, kar ti garantira konsistentne opise.  Alternativno ce te boli kita:   SELECT DISTINCT OSEBA, TEMPLATE, MIN(OPIS) FROM TABELA1 GROUP BY OSEBA, TEMPLATE ",
+    "user": "Spura"
+  },
+  {
+    "message": "Tabelo bom razstavil na prafaktorje, ker je sestavljena iz 2 ali 3 queerjev, ki so bili že prej v sistemu. Sem šel malo na trotl ziher vrjanto. Drugače imata tamplate in opis svojo tabelo in ni panike da bi pri tamplate ID prišel kak drugačen opis. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Aja pol pa OK. Ce imas aplikacijo najprej zloadaj sifrant templateov, pol pa selektiri brez opisa in sam dodaj iz sifrantov vrednost opisa. ",
+    "user": "Spura"
+  },
+  {
+    "message": "Sem uporabil DISTINCT na začetku in deluje kot urca. Hvala vsem za pomoč pridem še nazaj. :) ",
+    "user": "111111111111"
+  },
+  {
+    "message": "LEpo pozdravljeni spet. :)  Naletel sem na sledečo težavo, ki ji v querrju nisem kos.  Imam sledečo tabelo:    TAbela1  Rad bi našel za katero kartico je bila dosežena najnižja cena. Moj beden poskus:  SELECT MAX(id), DISTINCT (kartica), cena FROM TAbela1  Željeni rezultat:   Tabela2 ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Sedaj sem se že dokopal do:  SELECT max(id), kartica\nFROM TAbela1 GROUP BY kartica ;  Dobim pravilna prva dva stolpca.  Če naredim pa:  SELECT max(id), kartica, cena\nFROM TAbela1 GROUP BY kartica ;  Dobim pa error. :( Any ideas? ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Kaj pa ...   SELECT id, kartica, \"cena(EUR)\"\nFROM TAbela1 GROUP BY kartica\nORDER BY id; ",
+    "user": "Math Freak"
+  },
+  {
+    "message": "V glavnem, kolikor vidim nimaš stolpec cena ampak cena(€). ",
+    "user": "Math Freak"
+  },
+  {
+    "message": "Cena sem napisal samo kot referenco, da dam stolpec. Imena polj so pravilna, samo javi mi napako v SQL-u.  You tried to execute a query taht does not include the specified expression 'id' as part of an aggregate function. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Eh, sqlite to požre brez problema =p.  Probi potem neki v tem smislu:   SELECT max(id), kartica, min(cena)\nFROM Tabela1 GROUP BY kartica ; To ti verjetno javlja napako, ker se id in cena ne pojavite v grupirnem stavku, in program ne ve katero vrednost vzeti. Samo to ti pa ne bo pravilne id-je dal. ",
+    "user": "Math Freak"
+  },
+  {
+    "message": "Lahko probaš nekaj takega: Napišeš poizvedbo za kartico in ceno in ji na koncu prilimaš še id. Drugo mi ne pade trenutno na pamet, pozno je že =p.   SELECT tab1.id,\n              tab1.kartica,\n              tab1.cena\nFROM TAbela1 tab1,\n            (SELECT tab2.kartica       k2,\n                           min(tab2.cena) c2\n             FROM   TAbela1 tab2\n             GROUP BY tab2.kartica)\nWHERE tab1.cena = c2\nAND      tab1.kartica = k2\nORDER BY tab1.id ASC ",
+    "user": "Math Freak"
+  },
+  {
+    "message": " Math Freak je 14. dec 2013 ob 01:32 izjavil:Lahko probaš nekaj takega: Napišeš poizvedbo za kartico in ceno in ji na koncu prilimaš še id. Drugo mi ne pade trenutno na pamet, pozno je že =p.  SELECT tab1.id, tab1.kartica, tab1.cena FROM TAbela1 tab1, (SELECT tab2.kartica k2, min(tab2.cena) c2 FROM TAbela1 tab2 GROUP BY tab2.kartica) WHERE tab1.cena = c2 AND tab1.kartica = k2 ORDER BY tab1.id ASC   Hvala ti sem potem kar izvozil tabele v php in jih tam pomergal. :)  Imam pa že naslednje vprašanje:  tabela1  id|datum|stanje_kartic_na_dan| 1|30.12.2013|23 1|31.12.2013|25 1|1.1.2014|35 1|2.1.2014|12 2|30.12.2013|34 2|31.12.2013|65 2|1.1.2014|43  tabela2 id|datum|letna_kvota| 1|31.12.2013|100 1|31.12.2014|150 2|31.12.2013|200 2|31.12.2014|300  Željen rezultat: tabela3 id|datum|stanje_kartic_na_dan|letna_kvota| 1|30.12.2013|23|100 1|31.12.2013|25|100 1|1.1.2014|35|150 1|2.1.2014|12|150 2|30.12.2013|34|200 2|31.12.2013|65|200 2|1.1.2014|43|300  Problem je ker se mi vsi JOIN stavki sem jih testiral in preganjal zalomijo? Ima kdo kakšno idejo?  Hvala v naprej za pomoč. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "V SQLite-u bi šlo nekako tako:   SELECT tabela1.id \n,      tabela1.datum\n,      tabela1.stanje_kartic_na_dan\n,      tabela2.letna_kvota\nFROM   tabela1 INNER JOIN\n,      tabela2\nON     tabela1.id = tabela2.id \nAND    SUBSTR(tabela1.datum,7,4) =  SUBSTR(tabela2.datum,7,4) \n  Tu bi moral paziti, da je datum oblike dd.mm.yyyy, sepravi 01.01.2013 in ne 1.1.2013.  V MySQL pa odvisno, kakšen tip podatka maš za datum. Če je date/time probaj dobiti leto s funkcijo YEAR(datum) ali kaj podobnega namesto SUBSTR. (mislim, da je ime funkcije v MySQL-u SUBSTRING) ",
+    "user": "Math Freak"
+  },
+  {
+    "message": "Po INNER JOINU ni vejice, verjetno sem jo pridelal, ko sem oblikoval kodo. ",
+    "user": "Math Freak"
+  },
+  {
+    "message": "Hvala za pomoč sem še malo dodatno brskal po spletu in si na koncu izdelal tole. :)   SELECT id,datum,stanje_kartic_na_dan,\n(\n  SELECT TOP 1 letna_kvota\n    FROM tabela2\n   WHERE id = t.id\n     AND datum >= t.datum\n   ORDER BY datum\n) AS letna_kvota\n  FROM tabela1 t  Si mi dal pa ideje. Tako kot prejšnjič hvala ti.  Sedaj me pa zanima če mogoče veš kako bi naredil sledeči izpis: Imam: tabela3 id|datum|stanje_kartic_na_dan|letna_kvota| 1|30.12.2013|23|100 1|31.12.2013|25|100 1|1.1.2014|35|150 1|2.1.2014|12|150 2|30.12.2013|34|200 2|31.12.2013|65|200 2|1.1.2014|43|300  Hočem dobiti: tabela4 id|datum|stanje_kartic_na_dan|letna_kvota| 1|30.12.2013|23|100|23 1|31.12.2013|25|100|25-23 1|1.1.2014|35|150|35-25 1|2.1.2014|12|150|12-35 2|30.12.2013|34|200|34 2|31.12.2013|65|200|65-34 2|1.1.2014|43|300|43-65  Se pravi imam različne ID-je in najnižji datum se prepiše, potem pa se v naslednji celici vzame vrednost in se ji odšteje vrednost prejšnje (glej tabelo 4). Kakšna ideja? ",
+    "user": "111111111111"
+  }
+]

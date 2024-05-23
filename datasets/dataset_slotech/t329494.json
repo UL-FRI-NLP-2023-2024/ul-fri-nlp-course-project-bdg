@@ -1,0 +1,106 @@
+[
+  {
+    "message": "Lep večer vsem.  Prosim za pomoč. WinXP SP3 se ne zažene v normalnem načinu, v varnem pa brez težav. Zagnal sem antivirus, uporabil Restore system na 1 teden nazaj... Ne gre. Se pojavi tista zagonska slika WIN XP, potem pa črn ekran in samo kazalec miške (izredno velik) in ne gre dalje.  Kaj še lahko storim?  Hvala za pomoč. Lahko noč. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Ena opcija je, da vkljčiš op zagonu XP Boot logging in potem pogledaš datoteko c:\\windows\\ntbootlog.txt, kjer morda razbereš, kaj povzroča težave.  Ali si pred težavo kaj spreminjal sistem, inštaliral kakšne programe ali strojno opremo oziroma počel karkoli takega, kar bi lahko vplivalo na težavo ob zagonu? ",
+    "user": "dronyx"
+  },
+  {
+    "message": "Halo onyx.  Glede sprememb... Nič. Včeraj in danes zjutraj delal normal. Zdaj ne deluje. Zadnja sprememba (v smislu gonilnikov itd) dva meseca nazaj - na novo naložil vse. Zadnja sprememba glede programov cca 14 dni nazaj.  Boot logging; ime datoteke, ki jo je ustvaril je \"ntbtlog.txt\". Glede na to, da je beseda precej podobna tvoji, predvidevam, da gledam pravo.  Piše \"loaded driver\" in ogromno primerov. Prvi, kjer piše \"did not load driver\" je ACPI Uniprocessor PC. Nato je ogromno \"did not load\", pa potem nekaj vrstic z \"loaded driver\".  Mogoče vprašanje mimo, ampak: je lahko kriv napajalnik? Normal mode porabi preveč E? Sistem star 2 leti: AMD 64 3000 +, GeForce 6600, 2x1 GB Ram Geil Dual Channel, Zvočna Audigy. Napajalnik LC 420 W (ne vem natančno). Na procesorju imam Big Typhoona, na GeForce tudi neko tiho varianto z ventilatorjem, imam tudi 2 tiha ventilatorja v škatli.  Preveril sem temperaturo (v Biosu, po zastoju) - je ok. Mislim da so v Biosu navedene 3 ali 4... So pa med 30 in 40 stopinj C.  Hm... Ideje?  Dodatek:  eventvwr.msc pokaže naslednje:  Napaka; Vir: Service Control Manager; ID dogodka: 7026;   Ti zagonski ali sistemski gonilniki se niso uspeli naložiti:  Aavmker4 AmdK8 aswSP Fips  Našel podobno zadevo na: http://forums.pcpitstop.com/index.php?s...  Ne vem kaj naj si mislim... A bo to delovalo?  Hvala. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Napajalnik po moje ni kriv, saj ti je računalnik do danes delal s tem napajalnikom brez težav.  Jaz bi na tvojem mesti zagnal v varni zagon PC in pregledal z antivirusnim in antispyware programom, če ne gre za kakšno okužbo. Podobnih primerov sem videl kar nekaj, samo v večini primerov se je izkazalo, da če ni šlo za okužbo, se je iz meni neznanega razloga pokvarila kakšna datoteka, ki jo potrebujejo Windowsi ob zagonu. Nekajkrat sem sicer delal \"repair\" namestitev XPjev, samo če to nisi še nikdar počel, so lahko težave. Takšna namestitev ohrani vse, samo zamenja sistemske datoteke s tistimi iz CDja.  Morda lahko poizkusiš še z ukazom, ki pregleda, če obstaja kakšen pokvarjen dll. To narediš tako, da greš v START - RUN in vtipkaš CMD plus klik na OK. Tako prideš v ukazno vrstico, kjer vpišeš ( + enter):  sfc /scannow  V DVD enoti moraš imeti CD z XP namestitvijo. Več o tem si lahko prebereš tule.  Edit: Glede na zapis v Event Viewerju je možno, da je kaj narobe tudi z Avastom (prva datoteka je od njega). Morda ga poizkusi odinštalirati v varnem zagonu in poglej, če to reši težavo. Še ena opcija je,da zaženeš hjackthis, skopiraš rezultat v clipboard in greš potem na spletno stran in ga analiziraš. Če je veliko zadev Nasty ali Very nasty si v težavah, ker gre za okužbo. ",
+    "user": "dronyx"
+  },
+  {
+    "message": "Imam Avast, sem skeniral. Nič. Antispyware. Nič.  sfc /scannow pa ne dela. Pravi:\"Zaščita datotek programa Windows ni mogla inicializirati preiskovanja zaščitenih sistemskih datotek. Koda določene napake je 0x000006ba [Strežnik za RPC ni na voljo.]\"  Je kriv avast?  Zdajle grem... Pridem nazaj jutri zjutraj. Hvala za pomoč. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Avasta imam tudi na svojem računalniku, tako da to brez škode narediš uninstall in ga še enkrat namestiš. ",
+    "user": "dronyx"
+  },
+  {
+    "message": "Zadnji podatek...  Oprosti za tole, nekaj nenavadnega se je zgodilo. Še enkrat sem restartal računalnik, kar tako, za hec in si šel umit zobe... Pridem nazaj - sistem je vzpostavljen...  Ne znam pojasniti. Zgoraj je napisano vse, kar sem počel. Spremenjeno ni nič... Pa deluje. Čudno. Morda je to primer za X-Files...  Onyx hvala za trud. Upam, da bo jutri delal. Vseeno - imaš kako idejo, kaj bi lahko bilo?  Lahko noč. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "V računalništvu je polovica čista črna magija. Jaz sem enkrat naletel na računalnik, ki se je reštartal že takoj po nekaj sekundah zagona XP. Edino kar sem naredil je bilo, da sem ga zagnal iz CDja, kot bi štartal nov setup, prišel do izbire, kako želim namestiti Windowse in ga samo ponovno zagnal. To je rešilo problem ... kako, zakaj, nimam pojma... ",
+    "user": "dronyx"
+  },
+  {
+    "message": "Tea Time, preveri na plati kako je s kondenzatorji :) ",
+    "user": "crniangeo"
+  },
+  {
+    "message": "Sem nazaj. :)  Kaj naj rečem. Kišto bom zagnal skozi okno. Računalo se je odločilo in vklopilo funkcijo RANDOM. Včeraj zvečer je delal v normal načinu, danes zjutraj ne...   Kondenzatorje sem preveril. Napajalnik in plata. Vzel ven rame, grafično, zvočno... in dal nazaj... Vizualno zgleda ok.   Moje zadnje vprašanje se glasi: a je kriv hardware ali software. Mislim naložit sistem na novo. Sem bolj ljubiteljski računalničar, kaj ekstra znanja o tem nimam. Razmišljam, da če se v Event Viewerju pokaže napaka pri nalaganju nekih gonilnikov pokaže napaka, da je to bolj SW finta. Kaže vse v to smer ali je moje razmišljanje napačno?  A lahko kdo predlaga kateri drugi antivirus. Po možnosti free. Je AVG v redu? (sem prebral komentarje 2 meseca nazaj in se takrat odločil za Avast. Samo kak komentar me zanima s strani uporabnika AVG-ja, če je zadovoljen). ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "IMO je tole skoraj gotovo hardware. ",
+    "user": "perci"
+  },
+  {
+    "message": "Če se sistem zažene brez težav v varnem načinu potem ne more biti kriv hardware. Po mojem mnenju je kriva kakšna pokvarjena datoteka.  Najprej preglej disk za morebitnimi napakami z opcijo, naj jih avtomatsko popravi. To lahko počneš iz konzole z ukazom \"chkdsk C:/f\" Če pa uspeš priti v Windows pa kar iz Raziskovalca z desnim klikom na disk in izbereš \"Lastnosti\" in nato \"Orodja\" in tam imaš pregled diska. Če ti je Slovenščina v računalniku bolj tuja potem začni z Windows Explorerjem, desni klik na disk in izbira \"Properties\" in \"Tools\" in tam najdeš \"Error-checking\". Pregleda ne more opraviti, dokler je OS v uporabi zato je potreben reset in ob zagonu se izvrši pregled diska.  Drugače pa imaš tukaj še vse podrobno razloženo: Kako v operacijskem sistemu Windows XP izvesti preverjanje diska ",
+    "user": "Izi"
+  },
+  {
+    "message": "Hmm. Da bi bil disk? Bom poskusil. Upam, da dela chkdisk v varnem načinu. Danes poskusim, bolj proti večeru. Še vprašanje. Glede na to, da se ne mislim več zajebavati s popravilom sistema in ga mislim na novo postaviti - ali je chkdisk potreben, ali lahko kar formatiram (temeljito in počasno seveda).  Disk načeloma ni kazal znakov utrujenosti... Sistem imam na Hitachi 160 GB SATA. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Nisem mislil, da je kaj narobe z diskom. Disk je lahko povsem v redu, pa se kakšna datoteka vseeno pokvari. Predvsem se to pogosto zgodi, če ti računalnik med delom zmrzne, če zmanjka elektrike ali če med delom pritisneš tipko reset. Vse datoteke katere računalnik ravno takrat zapisuje bodo pokvarjene, nekateri podatki so takrat v RAMU in se ne uspejo zapisati na disk in sploh manjkajo, pa tudi disk uporablja svoj cache, ki se ob prekinitvi delovanja izgubi, brez da bi se do konca zapisal na disk. Tako skoraj pri vsakem nepravilnem ugašanju računalnika pride do poškodbe kakšne datoteke ali do manjka kakšnih podatkov in pravilno bi bilo po vsaki nepravilni zaustavitvi sistema narediti pregled in avtomatsko popravilo datotek.  Če pa formatiraš potem pa jasno ni treba nič pregledovati, saj bo disk čisto prazen in se bodo prav vse datoteke nanj zapisale nanovo. ",
+    "user": "Izi"
+  },
+  {
+    "message": "V varnem načinu vtipkaj start/zaženi/msconfig ter v startupu odkljukaj zagon aplikacij za grafično kartico, ter restartaj računalnik.  Če ti bo to delalo, deinštaliraj ter ponovno namesti grafične gonilnike  lp ",
+    "user": "knesz"
+  },
+  {
+    "message": "Ko gre BIOS zaslon mimo tipkaj na F8 in izberi Enable VGA mode ter 2x stisni Enter. Drugače pa tudi kot je knesz dejal, msconfig. Defenitivno imaš problem z gonilniki. Kdaj je bil zadnji Windows Update? Lahko pogledaš v C:\\Windows\\WindowsUpdate.log datoteko.  PS: Če boš šel delat repair Windows-ev najprej v Safe mode odstrani Slovenski jezikovni vmesnik. Lahko samo poženeš C:\\Windows\\mui\\muisetup.exe , sprejmeš licenco in pri Slovenian odstraniš kljukico ter dokončaš. Po repair-u jezikovni vmesnik namestiš nazaj iz CD-ja ali pa, če imaš datoteke na disku. ",
+    "user": "SkIDiver"
+  },
+  {
+    "message": "A si mogoče vmes kakšno grafo al pa drugo strojno opremo zamenjal al pa dal notr. Enkrat sem imel podobno težavo ker sem zamenjal grafo prej nvidio,potem dal atijevo in se mi je podobno dogajal kot tebi. Sem spucal prejšnih gonilnikov ven,inštaliral novih,pa še enkrat inštaliral gonilnikov za čipset in je potem blo vse ok ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Zadnje novice.  Zdaj se mi je že drugič zagnal v normal načinu. Traja izredno dolgo. Pri prvem zagonu je napisal: \"Aplikacija ali dll knjižnica c:\\windows\\system32\\nvddi.dll ni veljavnja slika programa Windows. Preverite z namestitveno deisketo.\"  Potem sem v msconfig, storitve odkljukal NVIDIA Display Driver Service in resetiral računalnik. Spet je trajalo dolgo, ampak opombe več ni. So krivi driverji za nVidio? ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Da.  Če sem prav razumel, sedaj prideš v navadni način.  Sedaj pa v navadnem načinu snemi z nvidia.com zadnje gonilnike za tvojo grafiko, v msconfig vklopi nvidia gonilnike, NE reštartaj računalnika temveč ponovno namesti (popravi) gonilnike.  Potem bi to moralo delati.  lp ",
+    "user": "knesz"
+  },
+  {
+    "message": "Lep pozdrav...  No, včeraj več nisem pisal iz enega preprostega razloga. Stvar je crknila. Zanimivo. Uredil sem nvidia gonilnike, zamenjal z novimi. Lepo delalo, sistem se postavil v malo več kot pol minute. No, internet pa ni delal. Saj ni res, pa je. No in nekaj poskušam, restartam računalo in... Tema. Nič. Rami se preštejejo, slike na monitorju ni, tistega piska ob začetku zagona ni, lučka (pri stikalu za vklop) enakomerno utripa (ponavadi je svetila brez utripanja).  To je to. Pravijo, da je fajn obdržati smisel za humor v takih situacijah. Meni pa ni do smeha.  Kakšna ideja? ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Odpri stranico kište. Mal razmigaj grafo levo desno in jo fajna pritisni notr. Enako velja tut za rame. Lahka da je kakšn slab stik. Al pa grafo ven poberi pa je nazaj zmontiraj. V biosu matične če prideš do njega nastavi LOAD DEFAULTS al pa LOAD FAILSAFE DEFAULT, nekaj takega je zihr pa sprobaj. Mogoče pa je da grafa počas crkuje. Če se prav spomnim pred 3-ma letoma je podobno crknila sosedova 9800pro, ta pa je normalno delala v 2d k pa si zalaufu 3d oz igerco tema. Potem pa kar naenkrat crknila total in smo mogl zamenjat. Upam da ni tako v tvojem primeru Pa razmigaj tut napajalne konektorje vsepovsod kjer so in ATA al pa SATA konektorje tut kjer so.Na matično,disk,dvd-rw itn ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Poskusim takoj, ko pridem domov...   Kakšna ideja, zakaj je po tem, ko sem odstranil nvidia gonilnike, nehal delati internet? (sem pa odstranil vse nvidia gonilinike (bili so 4 napisani) - a je to bila tudi mrežna?) ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Ja to pa je Verjetn da si vse nvidiine gonilnike odstranil tut za mrežno in čipset. Teh inštalirat na novo spet pa bo kar se interneta tiče. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Hja, pač sem rekel - dajmo vse raje, da ne bo kaj narobe... :) Začetnik pač. Hvala. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Lep pozdrav še enkrat.  Zadevo sem urihtal - z vašo pomočjo seveda. Hvala vsem. No, naredil pa sem to, da sem vzel vse narazen, vse kontakte dal narazen, pa nazaj skupaj, grafo, zvočno vzel iz ohišja, spihal in dal nazaj, prav tako rame... V bistvu isto, kot sem naredil takrat, ko me je začel zajebavat. Glej čudo: začel je delat. Ne razumem sicer zakaj in kako (očitno je bila grafična), če sem en dan prej naredil isto in isto pazljivo vstavil med drugim tudi grafično... No, kakorkoli. Potem sem naložil nove nvidia gonilnike (tudi za mrežno; hvala Valvoline), zagnal \"sfc /scannow\" (po spremembi parametra v registru; hvala Onyx) in mislim, da je to to. Zdaj dela. Porabi 50 s za zagon, ma potem je priden.  Hvala tudi ostalim za pomoč. Lep dan vsem želim. ",
+    "user": "Tea Time"
+  },
+  {
+    "message": "Še enkrat lep pozdrav.  No, zadeva je zgledala rešena, ma ni bila čisto. Se mi je po nekaj časa pokazal blue screen, pa še enkrat se je prekinilo in je pisalo nekaj v zvezi z nvatabus.sys. Sem ugotovil, da sem pri nalaganju gonilnikov plate naložil tudi nvidia gonilnike za diske. Kasneje sem na forumih prebral, da je z le-temi kar precej težav in da so slabši kot original WinXP. No, sem razveljavil spremembe teh gonilnikov nazaj na Xp-jeve in stvar popolnoma deluje...  Najverjetneje bi lahko bil to vzrok težav že od vsega začetka. Žal se ne spomnim, kaj sem počel pred dvema mesecema, ko sem nalagal sistem in ali sem takrat tudi naložil te gonilnike...  Kakorkoli - še enkrat hvala vsem za pomoč.  Lahko noč. ",
+    "user": "Tea Time"
+  }
+]

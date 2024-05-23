@@ -1,0 +1,158 @@
+[
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Imam zanimiv problemček, ki ga ne znam rešiti. Imam 2 dvr snemalnika, vsak na svojem ip naslovu (statičnem). V prostoru sem imel najprej 4g router, prek katerega sem lahko dostopal do obeh snemalnikov. Potem sem zamenjal router (potegnil kabel iz drugega prostora) z tplinkom 841. Tudi tokrat sem še lahko dostopal do kamer (preko internet explorerja seveda). No, tplinku je crknil wan port in sem ga zamenjal z drugim, enakim modelom. In tukaj se zaplete...ne morem več dostopati do web naslova kamer. Pingam jih lahko, mreža jih vidi. Sem ponastavil router, če sem morda kaj zamočil, a isto. Ne gre. Iz drugega prostora pride ip 192.168.1.x, jaz imam preko wan porta in svoj dhcp na 0.x naslove. Ne spomnim se, kaj bi lahko spremeninjal, da bi si tako onemogočil dostop. Nekaj sem čaral za zunanji dostop do kamer, a obupal (dnymic dns pri različnih ponudnikih), a to sem čaral že pri prvem routerju.\nRes sem rahlo utrujen, pa mi morda ideja ne pade takoj  v glavo...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "A si ziher da si dal v WAN port? Če imaš iz drugega routerja ki je 192.168.1.X domnevam, da slednji deluje kot DHCP server, kar pomeni, da ostalim dodeljuje IP številke. Če boš torej na tem, na katerega imaš snemalnike vključene, izključil DHCP, bo dobil IP številko iz drugega v scope-u 192.168.1.X, enako pa snemalnika, če sta priklopljena nanj. Ko potem pogledaš katere IPje dobita snemalnika se lahko nanju priključiš.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "hm. snemalnika imata 0.50 in 0.60 naslov (ki ga lahko spremenim le, če grem direkt na snemalnik...) in če izključim moj router (dhcp), jih v teoriji nikakor ne morem videti.\nin ja, kabel iz prvega dhcp routerja imam v mojem wan portu.\npingam povsem normalno oba naslova, torej nista \"nekje\", le preko browserja ne morem priti do njiju.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Dvojni NAT imaš, če sem prav razbral, ker je malce zapleteno napisano. V takem primeru boš težko omogočil dostop do snemalnika iz zunanjega IPja, ker bi moral popravljati pravila požarnega zidu in preusmeritve portov. Prej, ko si imel na 4G si imel statični IP, da si lahko dostopal od zunaj?\n\nDrugače se take zadeve najlažje reši s kakšnim Zerotier ali pa Mikrotik z VPN klientom, ki iz te notranje mreže kliče k tebi domov na tvoj router in tako dobiš dostop do te mreže. Tole skonfigurirati je pa nekaj povsem drugega. Morda bi bila Zerotier res najboljša opcija (Dela na TpLinkih, ki podpirajo OpenWRT).",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Jaz bi snemalnika dal da dobita dhcp iz routerja, pa router na katerega sta priključena tudi, tudi izklopil dhcp (aja, pa iz zunanjega routerja v tega s snemalnikoma v LAN in en v WAN), pa boš imel vse na 192.168.1.X. Potem boš lahko videl v omrežju vse, pa tudi do zunaj boš lažje nastavil zadeve.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "akhm, dodatne informacije so potrebne...NE nucam zunanjega dostopa do kamer v prostoru (ni življenjsko pomembno...in ne, ne bom povedal lokacije . in, v drugem prostoru je druga firma (ki so nam dovolili uporabljati njihov internet-ker preko našega 4g je bilo prepočasi).\ntorej, prvi ruter ni moj in ima 1.x omrežje in dhcp. drugi ruter (moj) ima 0.x omrežje in dhcp. in ne morem dostopati do web naslova kamer. kar sem prej lahko (in edina znana sprememba je bila menjava ruterja). \nbom očitno moral ročno pogledati, kaj se dogaja z snemalniki...samo če ga hudiča pingam ok, zakaj se ne morem povezati?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Priklopljen si čez WiFi na ta tvoj router? Mogoče kje kljukica pri Client isolation?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Ne, kabel.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe, kabel.\n\t\t\n\t\tKlikni za razširitev\n\t\nPa si zagotovo na istih IPjih z računalnikom, kot snemalniki? Naredi IP scan s kakšnim programom. Ker to je res čudno, da lokalno ne bi imel dostopa. Reset snemalnikov si poskusil?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Če uporabljaš IE za dostop do kamer, pomeni da le te imajo še zelo stare vtičnike (activex), katere moraš omogočiti v nastavitvah. Lahko, da požarni zid v novem ruterju ne spusti več tega prometa skozi oz. se ti je računalnik posodobil. Imajo kamere, katere uporabljaš kak namenski software?",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "maiden: ja, vem za te vtičnike, sem jih tudi vmes posodabljal (pač del reševanja problema). pa tudi firefox bi moral videti zadevo, ker jo je prej tudi. zaradi vtičnikov ni pokazal slike, a dostop se mi je vseeno prikazal. pc ima nameščeno sedmico. kamere imajo namenski software, a je veliko lažje preko web vmesnika (in preprosteje). \ndaniel: pingam jih na na istih naslovih. tudi z networkview oba snemalnika vidim na teh naslovih. reset ne, ker moram priklopit monitor in mišona, da pogledam zadeve. to je pač zadnja šansa...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Mislim izklop iz elektrike, ne factory reset. Dejansko sem brez, da vidim nastavitve routerja praktično brez neke pametne ideje.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "no, reset / izklop iz elektrike snemalnika naredil. nič. spremenil ip naslov snemalnika. nič. izklopi antivirus. nič. kamere delajo, ko jih gledam na snemalniku. res se mi popolnoma nič ne sanja, kaj bi lahko še bilo.\nedino, če dam kabel iz druge firme na lan, izklopim dhcp  na moji strani in nastavim ipje na snemalnikih na njihov ip. itak brez gesla ne morejo gledati kamere...\n\nedit: nope, tudi zadnja opcija ne deluje.\nedit2: tudi če dam snemalnik na dhcp opcijo, mi router vidi njegov ip, le konektat se ne morem nanj. sem probal v starejšem firefoxu (50), če je kaka fora, a isto. nekaj preprečuje dostop do web začetne strani snemalnika. edino še factory reset na snemalniku...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Imaš IP naprave s katero se poskušaš povezati zagotovo na istem omrežju kot so kamere? Ker včasih, če se uporablja kak zunanji dostop ali pa kake čudne kombinacije nekatere naprave blokirajo dostop. Torej delajo samo med napravami, ki so na popolnoma istem LANu, recimo 192.168.1.0/24.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "hja...če ti pravim, da jih lahko pingam. in z drugim programom jih normalno vidim na njihovem naslovu. samo tisti trenutek, ko vpišem naslov v brskalnik, mi javi, da ni povezave, da se ne more povezati ipd. \nsaj bi ti dal dostop da bi pogledal router recimo, pa nisem tam. ker saj pravim...edina sprememba je bila menjava routerja.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "O katerem programu je tukaj govora, s katerim jih normalno vidiš? Možno je, da kamere blokirajo dostop na portu 80, če niso povsem zadovoljne z IPjem, ki si želi ogled streama. Program gre morda mimo tega.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "program je od nirsofta (netwatcher)-ta prikaže le aktivne naprave v omrežju. torej NE odpre dejansko strani, če sem morda narobe napisal ali se izrazil. kamere so na svojem ipju, a imajo pa http port 9000 in 8000 (to sem sam določil). a bi to moral dodati v router (sicer ne vem zakaj, ker ne dostopam od zunaj).",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Moja napaka, mislil sem, da imaš delujoč program, ki se uspešno poveže na kamere. Daj poskusi še s kakim programom kot je Advanced Port Scanner ali kaj podobnega pregledati porte na teh kamerah, če jih program vidi kot odprte.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tAdvanced Port Scanner – free and fast port scanner\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tAdvanced Port Scanner is a free port scanner allowing you to quickly find open ports on network computers and retrieve versions of programs running on the detected ports\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.advanced-port-scanner.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Karkoli?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "sorry. nisem ravno postavil navišjo prioriteto za te kamere...se lotim, ko bo čas. poročam",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "evo, bottom line...tovarniške nastavitve na obeh snemalnikih in zadeva brca. kaj je bilo, pojma nimam. pa me niti ne matra preveč. dokler se zadeva ne bo ponovila ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Rešitev pa pol, nimaš kaj.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "torej menjal si en ruter vmes.. resetiral si pa snemalnika.. in zadeva špila\n\nčudna so pota tehnologije..\nlepo da si uštimal ",
+    "author": "ncnifrej",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ncnifrej je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\ttorej menjal si en ruter vmes.. resetiral si pa snemalnika.. in zadeva špila\n\nčudna so pota tehnologije..\nlepo da si uštimal \n\t\t\n\t\tKlikni za razširitev\n\t\nhehe. ja lej...kva nej rečem. zdej dela. in dokler nisem menjal routerja (in verjetno zagotovo nekaj okoli portov čačkal...) je tudi delalo. torej...če maš cajt, lahko marsikaj narediš. če se ti da itak.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "Torej med menjavo routerja sploh nisi resetiral opreme? To je pa ja praktično pravilo, da se zadeve resetirajo in se ponastavijo rute na nove nastavitve. Zanimivo.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Ne morem dostopat do kamer",
+    "content": "No, router sem itak resetiral. samo kamere pa res nisem resetiral, saj so pred menjavo routerja delovale. No, vsaj vem za drugič.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "message": "Pred kratkim sem kupil nov PC, sestavljen po komponentah..  Problem je naslednji. Računalnik sicer dela ok, pojavi pa se problem v npr. raznoraznih 3D aplikacijah. Po malo igračkanja, bi ga opisal kar takole:  Prižgem PC, zaženem \"heaven benchmark\" da malo obremenim grafo..in zadeva deluje normalno recimo 5-10 min, nato prekinem program. Zaženem Half Life 2 EP 1/2.. Zadeva deluje nekje 10 min, nakar zašteka, zvok preskakuje, ekran potemni, čez par sekund me vrže nazaj v igro in spet lahko kake 2 minute igram in zadeva se ponovi.. Grem ven iz igre, zopet zaženem benchmark, tokrat deluje nekje minutko (včasih malo več ali malo manj.., nakar me vrže ven in izpiše nek \"fatal error\".  Ker mi ni jasno kje je problem, sem pognal še MEMTEST, ki pa pokaže napako.. \"memory error detected! Copying between daa91c5 and daa8f4c did not result in accurate copy. memtest has detected that your computer cannot store data in ram..\"  Sistem:  ASUS P7H55-M i5 750 ATI powercolor HD 5770 RAM patriot DDD3 2x2GB 1333 Mhz  Gre torej za okvarjen RAM, in ali lahko kaj poskušam sam popravit, ali naj zadeva roma na servis..?  Vnaprej hvala za pomoč, če bo kdo kaj vedel..  Lp ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Hm sem dal ven pa nazaj notri rame, pa sedaj kaže kar dobro, zaenkrat brez napak, upam da je šlo le za \"slab kontakt\" :). ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Eh prehitro sem upal.. Sem pustil memtest teči malo dlje in mi spet tisto napako ven vrže.. Kakršen nasvet torej? ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Saj veš. Nazaj kamor si kupil pc, pada ti zamenjajo ram. ",
+    "user": "knesz"
+  },
+  {
+    "message": "Samo sedaj ne vem, a je plata kriva ali ram ali pa celo kaka nastavitev v BIOS-u.. Sem probal s posamezno palčko, pa gredo skozi memtest očitno ok (probal sem tam do 500%). Tudi \"coverage\" raste orecej hitreje, če je notri le ena palčka (ne vem ali je relevantno). Če so notri obe, pa pride do problemov.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "V mojem primeru je bil problem prenizka napetost, ki jo je bios sam izbral za ram. Rešitev je bil dvig napetosti na delovne napetosti, ki so zapisane na deklaraciji ram modulov- podhranjenost pač pušča posledice. Za začetek poglej, kakšne so napetosti na ram modulih s kakšnim programom(CPUZ recimo) Poglej, če je tudi v tvojem primeru tako(v biosu lahko tudi nastaviš drugačne vrednosti, verjetno pod chipset ali pa pri kakšnih cpu clockih bi moral met tudi voltage control)- očitno niso vse plate sposobne pravilno prebrat default nastavitve od raznih modulov(pri vsej tej ponudbi niti ni presenetljivo) ",
+    "user": "mr1two"
+  },
+  {
+    "message": "Definitivno podhranjen ram. Zvišaj na tovarniščo priporočene vrednosti. ASUS ima nek sistem za avtomatsko nastavljanje rama s profili poglej še tam. ",
+    "user": "Garibaldi"
+  },
+  {
+    "message": "Hvala za nasvete. Mislim da je napetost nastavljena na pravilnih 1,65 (bom še preveril), vendar me je serviser trgovine, kjer sem zadevo kupil, opozoril še na \"IMC voltage\" (krmilnik za pomninik), ki pa bi lahko bila prenizka.. Je varno to zadevo malo zvišati iz 1,1V..? Možen razpon v BIOS-u je od 1,1 do 1,45, nisem pa prepričan, kako varno je dvigovati le ta parameter. Kaj menite?  Poskusil sem tudi z XMP nastavitvijo v BIOS-u, pa mi potem windowsi zamrznejo..  ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Sem ročno na 1,65V nastavil, bom sedaj pognal memtest pa poročam kako bo:) ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Raje ne tikaj tega IMC. Bios si resetiral na defaults? ",
+    "user": "Garibaldi"
+  },
+  {
+    "message": "Ga bom sedaj, ker zadeva je sadaj ko sem napetost na RAM-in dal na 1,65 že takoj po začetku memtsta vrgla ven najman 10 errorjev  ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Sem updatu BIOS, sedaj testiram z memtestom na deafult nastavitvah, upam da bo dau kaj od sebe.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Se je obneslo? ",
+    "user": "Garibaldi"
+  },
+  {
+    "message": "Bomo videli.. Memtest je sedaj šele na 20% coverage..  Ne vem pa, zakaj gre zadeva tako počasi.. Ko sem probal le s posamezno palčko RAM-a je šla zadeva 5x hitreje.. Eh spet error, tole mi bo živce požrlo.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Za foro sem IMC voltage za malenkost zvišal (toliko da je še varno..) pa se mi zdi, da nekako bolj deluje vse skupaj..mislm memtest je vsaj do 40% prišel (upam da bo še dlje..), sicer pa ne pride čez 20%.. Ma je to zapleteno, taki specifični problemi za popent..  Sicer bo šel pa na servis. Problem je, ker je zadeva kupljena po komponentah in mi bodo očitno zaračunali ugotavljanje napake.. Ali kdo ve, koliko to okvirno pride? Servis je pri akordu-92.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Če prav berem, ti posamezna palčka ne povzroča problemov, zajeb je le, ko sta obe skupaj na plati? In mislim, da ti napake ne morejo prav nič zaračunavat, če je zadeva v garanciji... ",
+    "user": "mr1two"
+  },
+  {
+    "message": "Ja, problem se pojavi le, ko imam obe palčki notri.  Je pa res, da je sedaj, ko sem IMC voltage malce zvišal, memtest brez napak prišel že do 270%, prej pa kvečemu tam do 20%..morda je bil problem v tem..  Še vedno pa ne vem, ali je problem, ker %coverage rastejo precej počasi.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Kljub vsemu mi je do 500% našlo en error, je pa razlika kar občutna.. Očitno je fora v nekih bios nastavitvah, s katerimi se pa ne upam kaj preveč igračkat..ampak bom očitno moral.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Lej folk, brez veze razglabljate kaj je problem, ker vem da nam je vsem techno-freakom rajcanje brskanje po hardwaru, ampak če se gre za tvoj dnar, pošlj na servis naj ga oni testirajo!!! ",
+    "user": "phenom"
+  },
+  {
+    "message": "Idealno bi bilo probat z enakim ramom. Pol je jasno ali zeza board ali pomnilnik. Alternativno z drugim pomnilnikom in če dual channel nagaja pol je najbrž board. Si morda poskusil single channel oba če deluje prav? Vse v biosu na default razen voltaže rama. ",
+    "user": "Garibaldi"
+  },
+  {
+    "message": "Pa probaj na slotih zamenjat,kako maš zdej.Jaz recimo na Gigabytki če dam v 1 in 3 ne dela mi meče blue skrine.Probaj tud ti ",
+    "user": "TOP"
+  },
+  {
+    "message": "Hja s servisom je problem, na katerega prej nisem ravno pomislil. Zadeva je kupljena po komponentah in s tem je tudi garancija na komponente in moram vedet katera je okvarjena, če je katera.. Sicer mi zaračunajo kdo ve kaj vse, pa še različne komponente imajo servis na različnih mestih..  Bom probal še s sloti..  Sicer pa sem probal posamezne pa delujo (bom probal še 1x na daljši časovni rok..)..  Ma je frustrirajoče ko ne vem kaj je problem.. Zgleda pa tudi da se te rami in ta plošča ne razumejo ravno dobro..  Rami so 1333 Hz, a mi delujejo na 1066, če jih nastavim na 1333 je zadeva porazna na kakšnem memtestu, ali pa se pojavi bsod oz. winsi totalno zaštekajo.. Prav tako če dam voltažo na takšno, kakršna naj bi bila (1,65)..  Nekoliko bolj deluje če zvišam IMC voltage, še vedno pa ni to to, pa tudi nočem kaj skurit..  Človek si po 10ih letih nabavi nov pc potem pa to uh uh :) ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Sicer pa berem da ima kar nekja ljudi probleme s temi patriot rami-i ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Smola, ni kaj. Morda več sreče z drugimi proizvajalci rama. Poskisi corsair sicer ga preplačaš ampak niso ravno znani kot dobri po naključju. ",
+    "user": "Garibaldi"
+  },
+  {
+    "message": "Thompic... Napaka je v ramu, ampak morda ram celo ni zanič... Namreč: Intel po specifikacijah zahteva 1,5 V rame. Žal nisem opazil teme prej, da bi ti to napisal. Sem imel identični problem. Rešitev je bila, da sem 1,65 V rame vrgel v AMD sistem, za Intel pa kupil 1,5 V. Oboji zdaj delujejo bp...  Eto: What are the Intel(R) Core™ i7 processor and the Intel(R) Core™ i5 processor DDR3 memory voltage limitations? Intel(R) recommends using memory that adheres to the Jedec memory specification for DDR3 memory which is 1.5 volts, plus or minus 5%. Anything over this voltage can either damage the processor or significantly reduce the processor life span.   LP. ",
+    "user": "Blindeye"
+  },
+  {
+    "message": "Še tole:  Eto: What are the Intel(R) Core™ i7 processor and the Intel(R) Core™ i5 processor DDR3 memory voltage limitations? Intel(R) recommends using memory that adheres to the Jedec memory specification for DDR3 memory which is 1.5 volts, plus or minus 5%. Anything over this voltage can either damage the processor or significantly reduce the processor life span.   http://download.intel.com/design/proces... (stran 11, spodaj).  LP ",
+    "user": "Blindeye"
+  },
+  {
+    "message": "Že res koliko ramov dd3 pa se da kupi ki delujejo na 1.5V 1333? Malo zelo malo. ",
+    "user": "Garibaldi"
+  },
+  {
+    "message": "Res je. Ampak gre. Meni, dvema kolegoma, v službi... in to na 1333 in 1600... ",
+    "user": "Blindeye"
+  },
+  {
+    "message": "Hvala za odgovore.. Očitno bom moral kupiti nove rame, za te pa najti kupca.. Bom poiskal nekaj z tiste liste proizvajalcev, ki jih priporočajo za to matično pa da bodo na 1,5V.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": " Thompic je 24. maj 2010 ob 12:09 izjavil:Hvala za odgovore.. Očitno bom moral kupiti nove rame, za te pa najti kupca.. Bom poiskal nekaj z tiste liste proizvajalcev, ki jih priporočajo za to matično pa da bodo na 1,5V..   No, jaz tega ne razumem. Zakaj ne neseš v servis, po možnosti še z zaslonsko sliko memtesta?   Sicer pa poizkusi kupit rame od proizvajalca (ala Crucial, Samsung), vsi ostali so generiki. Vse je sicer stvar masovne proizvodnje ampak certificirani \"upgrade\" rami imajo RMA do max 1%, generiki pa med 4% in 6%, torej manj možnosti, da se spet srečaš s težavami. ",
+    "user": "3man"
+  },
+  {
+    "message": "Ma po vsej verjetnosti gre za nekompatibilnost.. Se pravi da mi bodo zaračunali ugotavljanje napake, naredili pa nič.. Najboljša rešitev bi bila sicer najti nekoga, da preizkusi moje RAM-e na drugi matični ali pa nekoga, da posodi svoje, drugačne rame..ampak danes imajo skoraj vsi prenosnike, pa ta nalogi ni ravno lahka:)  Kako je sicer s KINGSTON..? Recimo tole je kompatibilno z mojo osnovno ploščo.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "pa dej, če si pred kratkim to kupu, jim pač povej, da niso kompatibilni s tvojim sistemom in bi jih rad zamenjal za druge module(drugi proizvajalec)...nebi smelo bit problemov, vse se da zment ",
+    "user": "mr1two"
+  },
+  {
+    "message": "Sem poslal mail, bom videl kakšen bo odgovor.. ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Imel podoben problem - z RAM-i. Ker ima OCZ doživljensko garancijo, nesel RAM-e nazaj in so jih dali v testiranje (rekli so mi, da bom to plačal, če bo z RAM-i vse v redu). Izkazalo se je, da je bil RAM fuč, zamenjali so ga z novim/drugim in zadeva sedaj deluje kot mora. Brez kakršnegakoli plačila - če je stvar v garanciji, jo lahko vrneš kadarkoli, saj mora testiranje opraviti uvoznik, ki zagotavlja servis in garancijo. ",
+    "user": "sloxl8"
+  },
+  {
+    "message": "Thompic...  A res ne poznaš nobenega, ki ima DDR3 rame (kolegi, sodelavci, sorodniki)? Za dodaten memtest namreč... Očitno (kot si že povedal) pride do napake v dual načinu delovanja. A si kupil rame kot dual ch. kit, ali vsako palčko posebej? V kolikor si kupil kit - vrni v garancijo! V kolikor pa si kupil dve posamezni palčki pa garancije verjetno ne moreš uveljavljati, ker (kot si omenil) posamezna palčka deluje ok...  Če ni skrivnost - kje si kupil komponente (predvsem ram)?   LP ",
+    "user": "Blindeye"
+  },
+  {
+    "message": "Kupil sem kot dual ch. kit.. Tile so, kupljeni prav pri tej trgovini, tako kot vse ostale komponente..  Ma zadeva je malo čudna, ker prvo kot prvo je recimo za ram-e servis na enem, za osnovne plošče pa na drugem servisu. Ne vem pa niti, ali gre le za nekompatibilnost, ali pa morda okvaro kake komponente.. Sem bral o nekompatibilnostih in so simptomi nekako podobni in v tem primeru bom na servisu plačal le za ugotavljanje napake popravil pa nič.. Tako da sem jim poslal mail za zamenjavo z RAM-i drugega proizvajalca, tako bi vsaj vedel, ali je problem v matični in bi lahko zadeva brez skrbi romala na servis..  Sicer pa bom probal najti nekoga za test ram-ov, ampak kot pravim, danes vsi \"furajo\" laptope :) ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Jih pa moram pohvalit, da so se hitro odzvali in mi lahko zamenjajo RAM-e :) ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Super. Pohvala za to trgovino (shranjeno v spomin :) ). Prosim sporoči o rezultatu po menjavi rama.  LP. ",
+    "user": "Blindeye"
+  },
+  {
+    "message": "Važi   Lp ",
+    "user": "Thompic"
+  },
+  {
+    "message": "Očitno je šlo za nekompatibilnost, vsaj za zdaj tako kaže. One ram-e sem prodal (kupec pravi da delajo brez napak) in kupil nove, kompatibilne.. Zaenkrat dela 1A.. ",
+    "user": "Thompic"
+  }
+]

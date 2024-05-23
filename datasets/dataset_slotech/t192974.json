@@ -1,0 +1,82 @@
+[
+  {
+    "message": "Hum, zadeva je takšna. V službi imam eno mašino, ki ima winse s kodo, ki mi je šef, kakopak ne da. Ker je na njej zelo hitra internet pipica, bi rad surfal na tej mašini. Nočem brskati po spletu iz teh oken, četudi bi imel kodo, zato si za to mašino vedno v cd vržem plošček z slo-tech linux cdjem in laufam os iz cdja, ker je fino priročno. Problem pa je eden. Mašina ima Dell LCD ekran in enostavno mi ta linux ne dela na drugačni resoluciji kot 640 x 480. S tako resolucijo pa je težko delat. Kar koli dam drugega, tam na začetku, mi restarta mašino ko javi napako. Skopiral sem še Slax, bootal iz cdja, pa javi ekran da te resolucije ne more prebaviti. Kako bi in s katerim live cdjem (linux ki teče iz cdja) bi delal ekran vsaj s 1024 x 768, oz. v čem je problem, da lcdja ne prebavi, ker včasih je bil na tej mašini CRT monitor, pa je slo-tech linux delal bp, sedaj ko je gor LCD pa ne dela ne slo-tech linux, ne slax v normalni resoluciji? Prosim za pomoč, katero varijanto linux-a še naj probam in ali je rešitev mogoča tudi v kateri izmed teh verzij ki jih imam, torej s-t linux ali slax? Hvala lepa za pomoč. ",
+    "user": "V-i-p"
+  },
+  {
+    "message": "Kako je priklopljen ta LCD na box ? Z navadnim VGA kablom ?  Možno, da Xi ne znajo dol potegniti EDID informacije in se nastavijo na varno vrednost.  Treba je temu ustrezno nastaviti /etc/X11/xorg.conf in ga posneti na CD... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Ne vem, če katera od tvojih distribucij ima xrandr, ampak če ima potem narediš tako:  $ xrandr -q   To ti pokaže vse možne resolucije, ki jih lahko nastaviš  $ xrandr -s 640x480  S opcijo -s (kar pomeni size), si lahko nastaviš poljubno velikost (če jo monitor podpira).  Pri meni dela (Gentoo)  ",
+    "user": "karafeka"
+  },
+  {
+    "message": "Kewl tole z xrandrom.  Samo meni stvar zaznava samo ločljivosti, ki sem jih izrecno postavil v config fileu.  Če mu EDID ni aktiven, je vprašanje katere ločljivosti bo našel xrandr... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Jaz imam EDID na off, pa mi najde tele:  SZ: Pixels Physical Refresh *0 1024 x 768 ( 321mm x 241mm ) *90  1 800 x 600 ( 321mm x 241mm ) 85 75 72 60 56  2 640 x 480 ( 321mm x 241mm ) 92  3 832 x 624 ( 321mm x 241mm ) 75  4 720 x 400 ( 321mm x 241mm ) 85  5 640 x 400 ( 321mm x 241mm ) 85  6 640 x 350 ( 321mm x 241mm ) 85   Mam pa crt, bomo videli kako bo pri njem.  Aja, v xorg.conf mam pa definiran modeline za 1024x768 in 640x480, v delu za screen pa 1024x768, 800x600 in 640x480 ",
+    "user": "karafeka"
+  },
+  {
+    "message": "Najprej hvala za pomoč, ampak prav nič od tega ne pomaga. Joj, kje ste zdaj zagrizeni linuxaši, ko win user rabi pomoč. Ali res ni nobene live cd linux verzije ki bi imel normalno resolucijo? Ta dellov lcd je priključen preko navadnega vga kabla, ni dvi. Sem probal obe tile verziji še doma, na mojem 19 LCD ekranu, isto. S-t verzija dela samo v 640 x 480, pri slaxu se pa isto monitor izključi. Torej je očitno problem to, da delam na lcdjih. Live cd linuxa pa ni nobenega, ki garantirano dela bp tudi na lcdjih, po možnosti v normalni resoluciji? Hvala za nasvete! ",
+    "user": "V-i-p"
+  },
+  {
+    "message": "si poskusil z Ubuntujem Live CDjem? ",
+    "user": "zee"
+  },
+  {
+    "message": "Najprej si poglej, kaj piše v /var/log/...   Eden od filetkov je tam od Xov. Poglej, kaj si X-i momljajo v brado med štartom.  Nato nastavi ustrezne stvari v /etc/X11/xorg.conf in probaj znova.   Če ti kaj pomaga, ti lahko postam config file z ene od svojih mašin, ki ima Dellov LCD. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Vip - pri slaxu maš opcijo ob zagonu, takoj po prijavi, da mu z ukazom dopoveš, da naj preskenira hw, odgovoren za sliko. Si to probal? Meni na LCD-ju ni htel sam iti preko 1024, ko sem pognal ukaz (ne spomnim se točno, sej piše, pod startx), se mi je avtomatsko poštimal na 1240*1024@60Hz... Probaj še to. ",
+    "user": "Daedalus"
+  },
+  {
+    "message": "Ano to nekaj v stilu \"X --configure\" ali \"Xconfigure\" ? ",
+    "user": "Brane2"
+  },
+  {
+    "message": "IIRC je xconf... ",
+    "user": "Daedalus"
+  },
+  {
+    "message": "V-i-p, meni je Ubuntu Live delal na lcd-ju na 1280x1024, ne da bi jaz kaj nastavljal. ",
+    "user": "veteran"
+  },
+  {
+    "message": "Hum, zdaj je zadeva taka. Na st verziji menjavam resolucije ob zagonu ali pa v nastavitvah, pa ne zagrabi nobene, vedno ostane na 640 x 480, pri slaxu sem pa tam po prijavi dal xconf, da poskenira hw, potem zaženem, takoj potem pa zmanjka slike in lcd javi tisto, da ne more prikazati slike, se pravi da je izven dosega njegovih zmožnosti. Hvala za pomoč vsem, zdej mi edino še preostane, da jutri probam ta ubuntu live cd. Thnx! ",
+    "user": "V-i-p"
+  },
+  {
+    "message": "logfiles are your friend.  Prechekiraj v /var/log, kaj muči Xe ob zagonu in temu ustrezno popravi /etc/X11/xorg.conf ter stvar zapeci nazaj na CD... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Brane, sem gledal zdaj to mapo /var/log, notri je dosti datotek, mi poveš prosim, katero odprem, da ti lahko napišem kaj pokaže? Hvala. ",
+    "user": "V-i-p"
+  },
+  {
+    "message": "N e gledat mape. Glej logfile, ki je v njej. Različni programi not puščajo logfileje s svojimi opazkami, ki si jih lahko ogledaš če te zanima kaj je program naredi, kdaj in zakaj. Ponavadi so ti filetki ali v svoji podmapi z imenom progrma ali kar v /var/log.  Pri meni si X-i cahnejo opazke v /var/log/Xorg.0.log  Pri tebi bo najbrž nekaj podobnega. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Bom probal najti, če je kje napisano, zakaj so problemi pri zaslonu, če pa obupam, bom pa jutri probal še ta ubuntu live cd, upajoč da bo delal bp na višji resoluciji. Hvala! ",
+    "user": "V-i-p"
+  },
+  {
+    "message": "Eh, ni ti treba zdaj DLjat terabajte iso fajlov.   Cel štos je samo v tem enem filetku: /etc/X11/xorg.conf.  ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Hum, sedaj sem si naredil še live cd Ubuntu in moram rečt, da so prvi vtisi fascinantni. Prej mi s-t verzija in slax niti na domačem lcdju nista delala, ubuntu pa mi doma bp dela na 1280 x 1024. Pa še veliko lepši mi je, boljši, ima boljši browser in vse. Skratka super zadeva, res sem presenečen, ker nikoli nisem uporabljal teh vrst OS-a. Samo da še prestane test v službi, poročam v petek. Hvala vsem! ",
+    "user": "V-i-p"
+  },
+  {
+    "message": "Mogoče bo ta  link dal kakšno idejo, ker sem ravno pred kratkim imel podoben problem. ",
+    "user": "G-man"
+  }
+]

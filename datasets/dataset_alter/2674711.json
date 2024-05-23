@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "V Outlook-u imam 3 račune A, B in C.  Rad naredil pravilo, da ko pošljem mail in računa A se istočasno pošlje kopija maila na X naslov..\nProblem mi nastane, ker ko naredim pravilo, mi pošlje kopijo maila na X naslov tudi ko pošiljam maile iz računov B in C, kar pa ne sme biti.\n\nTo sem že imel nastavljeno vendar pa po zamenjavi računalnika nikakor ne morem narediti.\n\nPS: tudi prej sem imel Office 2019.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "A si naredil pravilo iz vzorca ali na roke ?  Ko izbereš pravila za sent mail  si dodal pogoj \"če je v polju pošiljatelj  x.y  ...\"\n\nTo je samo predlog, outlooka že dolgo ne uporabljam ",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "Novo pravilo sem naredil...drugače pa pogoja, ki ga omenjaš ne najdem",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "Probaj si pomagat s tem : https://www.lifewire.com/auto-cc-all-mail-outlook-1173769  (9,10)",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "Sem rešil zadevo...samo \"malo\" bolj je treba pogledat in prebrat, pa zadeva dela...ja, skoraj zmeraj je posredi človeški faktor \nHvala vsem.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "Kako si vklopim slovar, kot je na sliki? (slika je iz worda)\n\nSedaj pišem v wordu, pregledam in potem lepim v oultook. \n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "smrkec",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smrkec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKako si vklopim slovar, kot je na sliki? (slika je iz worda)\n\nSedaj pišem v wordu, pregledam in potem lepim v oultook. \n\nPoglej priponko 62848\n\t\t\n\t\tKlikni za razširitev\n\t\n\nnew mail => review => language",
+    "author": "Fonzl",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Fonzl je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tnew mail => review => language\n\t\t\n\t\tKlikni za razširitev\n\t\n  Hvala! Sem še malo poklial in si kar naredil svoj zavihek \"JEZIK\"  ker če odgovarjaš je drugače, kot če odpreš nov email...",
+    "author": "smrkec",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "če bo komu v pomoč, jaz sem naredil VBA makroje, ki izberejo celotno besedilo maila ter mu aktivirajo črkovanje v izbranem jeziku (slovenščina, angleščina....) ter jih dal v Quick Access Toolbar, tako da z enim klikom na izbrani gumb hitro spremenim jezik črkovanja:\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\tSub ProofEnglish()\n    Dim olEmail As Outlook.MailItem\n    Dim olInsp As Outlook.Inspector\n    Dim wdDoc As Object\n    Dim oRng As Object\n        On Error Resume Next\n        Set olEmail = ActiveInspector.CurrentItem\n            With olEmail\n            Set olInsp = .GetInspector\n            Set wdDoc = olInsp.WordEditor\n            Set oRng = wdDoc.Range\n            'oRng.LanguageID = 1060 'Slovenian\n            'oRng.LanguageID = 1033 'English US\n            oRng.LanguageID = 2057 'English UK\n            'oRng.LanguageID = 0007 'German\n            'oRng.LanguageID = 4122 'Bosnian\n            oRng.NoProofing = False\n            .Display\n        End With\nEnd Sub\n\t\n",
+    "author": "sass",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Outlook 2019 in pravila",
+    "content": "Ali pa dodaš v Quick Access Toolbar opcijo Set Proofing Language\n\n\n\t\t\n\t",
+    "author": "johan_blond",
+    "author_level": "Guru"
+  }
+]

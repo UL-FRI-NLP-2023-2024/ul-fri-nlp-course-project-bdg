@@ -1,0 +1,30 @@
+[
+  {
+    "message": "Živjo,  Namestil sem Windows 2003 server enterprise. V mašini imam 2 LAN kartici. Na (A)eno je povezan ADSL modem (imam fiksni IP), (B)druga pa je za domači LAN.  Na kartici A (LocalAreaConnection) sem nastavil IP 192.168.0.5 (maska 255.255.255.0), Prehod 192.168.0.1 (Če pustim da naj samodejno poišče nastavitve mi javi neko napako, da je lan omejen in mi da na ikono rumeni trikotnih z klicajem)  Na kartici B (LocalAreaConnection2) sem nastavil IP 192.168.0.2 (maska 255.255.255.0), Prehod 192.168.0.1  Kartico B sem vključil v switch (LevelOne 801)  Nato sem kreiral ADSL povezavo in jo v lastnostih (advance) vklopil kot ICS in tam izbral domače omrežje LocalAreaConnection2. Klienta Win98se pa sem namestil IP 192.168.0.3 (maska 255.255.255.0) Prehod 192.168.0.2  Klient ne more surfat po netu. Zanima me kako naj drugače konfiguriram IP-je, prehode, da mi bo ICS deloval. A je za uporabo lan switch vredu ali pa je boljše router. Router pa nisem priklopil, saj mi ni čisto jasno kako naj tam konfiguriram LAN.  Hvala za vsak odgovor.  LP Lali ",
+    "user": "Laly79"
+  },
+  {
+    "message": "glej: ti rabiš nastavitve nardit samo za tisto mrežno, ki je v LAN-u. tam nastaviš ip na 192.168.0.1, subnetmask 255.255.255.0, in pa dnsje (siolove?). Potem na drugi mrežni naštimaš ics (internet connection share). Na klientu nastaviš ip naslov med 192.168.0.2 in 192.168.0.254, za subnetmask 255.255.255.0, gateway je 192.168.0.1, dnsji so pa od tvojega ISPja (siol? :P). to bi moralo delati, je pa možnost da ti kak firewall blokira kaj. za poskus ga izklopi in testiraj. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Hvala za hiter reply.  Se pravi da tam ko je ADSL priklopljen ne štimam nič? pač pa na drugi kartici naštimam IP 192.160.0.1  Za dns-je pa verjetno moram napisat moje, saj poganjam tudi DNS server. Po vsej verjetnosti moram napisat moj fiksni IP za dns???  Bom poskusil pa javim kaj bo ratalo!  Lali ",
+    "user": "Laly79"
+  },
+  {
+    "message": "ja, če maš dns na svoji mašini, pol lahko za dns pišeš 127.0.0.1, sam moreš met delujoč dns server ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Kolker se jst spomnem tega ICSja gre takole:  Na tisti LAN kartici, ki je priklucena na internet (adsl/kabel modem), enejblas ICS. Ta LAN kartica bo dobila IP 192.168.0.1. DNS od SiOLa sta 193.189.160.11(12). Na klijent masinah pa vklopis DHCP, ker je ICS neke vrste DHCP in bo sam poskrbel za kliente, da dobijo, kar rabijo.  Aja, pa se en  clanek obstaja. Bi blo dobro, da ga preletis.   by Miha ",
+    "user": "Microsoft"
+  },
+  {
+    "message": "Jaz bi pa zmotil z eno svojo težavico. Ni ravno povezana z ICS, saj mi internet dela na vseh klientih bp. Gre za težavico z dostopom do resursov na strežniku. Win2003 Ent. imam priklopljen direktno na internet (kabel), z drugo mrežno kartico pa sem naredil NAT povezavo (ICS baje ne dela z AD), tako da internet dela tudi na klientih. Ta, druga, mrežna kartica je vezana na wireless router, od routerja naprej pa zadeva teče do enega stacionarca prek žice ter do enega notesnika prek wifi. Kot rečeno, internet šiba, dostop do resursov pa ne najbolje - tudi ko se povežem v AD. notranji ip serverja je 192.168.0.1, dhcp vklopljen zunanji ip wireless routerja je 192.168.0.20 notranji ip wireless routerja je 192.168.2.1, dhcp vklopljen ip stacionarnega klienta je ponavadi 192.168.2.4 ip wireless notesnika pa 192.168.2.3  problem imam z dostopom do file serverja na 192.168.0.1. Načeloma je stvar taka, da ko se vklopim z notesnikom v AD, lahko dostopam do file serverja enostavno z \\\\ < ime serverja>, dočim da bi ga explorer sam videl na mreži pa običajno ni šans.  Stacionarc dela bp.  Pregledal sem tudi wireless network policies, dodal CSID pod preffered networks ter tam poenotil nastavitve, ki so uporabljene tudi na routerju. Ima kdo idejo v čem je lahko problem? ",
+    "user": "damjanster"
+  },
+  {
+    "message": "Ko imas WLAN in network so zmeraj malo blemi okoli vidnosti klientov, probaj zadevo resit tako da na tvojem win2003 serverju zalufa se WINS server, mogoce bo potem delalo kaj boljse, ni pa nujno. Drugace pa kake druge generic resitve ne poznam,( ",
+    "user": "PaJo"
+  }
+]

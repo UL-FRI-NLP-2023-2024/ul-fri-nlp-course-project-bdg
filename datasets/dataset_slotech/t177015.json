@@ -1,0 +1,114 @@
+[
+  {
+    "message": "Pozdravljeni! Imam en problem, ki se mi je pojavil in ga ne znam rešiti. Povezujem se na oddaljen račualnik preko interneta, ki ima statičen IP ter vezan v omrežje(intranet) preko remote desktopa. V programu, ki je zravem windowsov Xp v polje domena vpišem IP od neta, v polje računalnik pa IP od računalnika, ki ga ima v intranetu. Sedaj pa se mi vedno pojavi naslednje sporočilo:  Odjemalec ni mogel vzpostaviti povezave. S konzolo tega računalnika ste že povezani. Nove konzolne seje ni mogoče vzpostaviti.  Ali mi lahko vekdo pove, kaj naj naredim. Poskušal sem z resetom obeh računalnikov, z log off, poizkušal sem se povezati z drugim računalnikm, pa mi vedno zavrača password, ki pa je pravi. Kaj naj naredim? ",
+    "user": "LeonVeliki"
+  },
+  {
+    "message": "Imaš windowse ? Če imaš intranet in internet , potem si verjetno povezan preko routerja. Vpiše se samo en IP, in to je IP interneta. Na routerju pa nastaviš port forward na ta tvoj računalnik. Mislim da je 3389! ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "Oprosti, sem pozabu napisat. Ja imam windowse. Sam tezava je v tem, da imam doma omrežje preko routerja. Povezujem se pa iz mojega računalnika na računalik, ki je ravnotako v omrežju intranet in vse skupaj je s5 preko routerja na internetu. Gre pa za dva različna internetna računa. Torej a ni potem potrebno najprej povedati, kam naj se poveže, potem pa še na kateri računalnik? ",
+    "user": "LeonVeliki"
+  },
+  {
+    "message": "Ne ni treba. V tistem omrežju kjer je računalnik na katerega se povezuješ, je potrebno forwardat port 3389 na svojem nič ne upisuješ. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "A takole je v redu?   ",
+    "user": "LeonVeliki"
+  },
+  {
+    "message": "Ne ni v redu. Nastavi virtual server ! Daš pa public in privat port na 3389, potem pa vpišeš IP na intranetu - se pravi na kateri rač. ga forwardira ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "Sem ti popravil sliko. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Se bom kar tukaj vrinil.  Dinamični IP, router 24/7 , 2 compa žično in en brezžično vezana na router, adsl. Kako nastaviti router, da bi lahko od zunaj dostopal na prvi ali drugi ali tretji comp v mreži.  Prvič - kako najti trenutni IP priključka (ne MyIP, ker bi distopal od drugod), drugič kako nastaviti router da bo skonektal ravno pravi comp ...(192.168.1.2, ...1.3,...1.9.)  Tudi linki mi bodo pomagali.   Pri iskanju sem čisto obupal ...  Pa še to. Ali mi kateri program omogoča, da izklopim ikono v trayu, tako, da se ne bi videlo, da remote server dela, niti ko bi bil konektan, niti ko ne. Torej, da uporabnik sploh ne bi videl, da mu nekdo snifa po compu.  nezaupamzaposlenim.press  LP Igor ",
+    "user": "Igor0"
+  },
+  {
+    "message": "Daš različne porte na public privat port pa ostane 3389.Samo še nisem probal ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "> Prvič - kako najti trenutni IP priključka (ne MyIP, ker bi distopal od drugod), drugič kako nastaviti router da bo skonektal ravno pravi comp ...(192.168.1.2, ...1.3,...1.9.)  Najboljše je uporabiti rezervacije IP naslovov za pos. računalnik. Za dostop od zunaj pa uporabiš različne porte. Npr.: Zunaj Interni 3389->3389 192.168.0.1 3390->3389 192.168.0.2 itd.... Na tak način ti ni potrebno spreminjati serverjev, do računalnikov pa dostopaš z ZunanjiIP:StPorta. Npr: 212.18.38.100:3390 in tvoj router te bo preusmeril na računalnik z ip naslovom 192.168.0.2. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "AndrejS kako pa nastavim virtual server.  Ne mi zamerit, računalniki mi niso tuji, ampak omrežja so pa španska vas za mene.  A to moram na routerju vse štimat?    OmegaBlue hvala za slikco. ",
+    "user": "LeonVeliki"
+  },
+  {
+    "message": "Malo poglej sliko, ki so jo dal na forum... tam maš v podmeniju virtual server, 2 opcoji nižje kot port trigger ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "  Ok, kam naj zdej kej vpisem. Pa ce je mozno malo razlage, zakaj vpisati kar bom vpisal oz. čemu to služi. Enkrat se je treba naučiti ",
+    "user": "LeonVeliki"
+  },
+  {
+    "message": "Port range: 3389 - To je port ki ga uporablja Rdesktop Local IP: Lokalni ip računalnika na katerega se hočeš povezati, ponavadi se začne na 192.168.*.* Local port: 3389 - ker se pač povezuješ na isti port Protokol: pusti na TCP - UDP uporablja za zvok Protocol No.: pusti prazno ker uporabljaš TCP Description: tukaj napišeš opis - ni potreben ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "ToniT tvoj odgovor je več kot odličen.   Hvala.  Dostop z Remote Admonistratorjem deluje brez pripomb, dostopam točno tja, kamor želim.  Le še eno vprašanje - kateri program mi priporočate za dostop z PPC . Preko wlan-a direktno v mreži ali gprs če me ni blizu. Pa še to - če je mogoče, da lahko na opazovanih kompih izklopim ikono serverja v trayu. Razlog je naveden zgoraj.  LP Igor ",
+    "user": "Igor0"
+  },
+  {
+    "message": "Da se odstraniti ikono, imaš kljukco v nastavitvah strežnika. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Res je, samo da se po naslednjem zagonu compa vsaj pri Remote Administratorju 2.2 ponovno pojavi. Nikakor mi je ni uspelo za dalj časa disablat.  LP Igor ",
+    "user": "Igor0"
+  },
+  {
+    "message": "Bi mogla izginit - vsaj jaz imam tako narejeno je pa res da poganjam 2.1 različico. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "meni se ne da povezat na drug računalnik če ko ta nima gesla (uo. ime je brez gesla)! Mora nujno bit geslo al je drugje problem??? ",
+    "user": "tedo"
+  },
+  {
+    "message": "@tedo: Kaj doma tudi skoz puščaš vrata odklenjena ali zaklepaš ? ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "pa to zaj mima veze :)! Mene zanima zakaj to ne gre  ",
+    "user": "tedo"
+  },
+  {
+    "message": "Zato, ker je privzeto tako nastavljeno. In to, da bi lahka prisel remote gor bres gesla, je res najvisji nivo varnosti.   by Miha ",
+    "user": "Microsoft"
+  },
+  {
+    "message": "Mogoče kdo ve kako se v xpjih omeji remote desktop na določen IP ? Torej da do pcja lahko dostopa samo oseba z določenim Ipjem?  Al se to nastavlja na routerju? ",
+    "user": "K0K0"
+  },
+  {
+    "message": "v firewallu, na racunalniku, filtriraj ta port samo na dolocene ipje, iz katerega se bos konektal.. ",
+    "user": "kklemenss"
+  },
+  {
+    "message": "Ma sej sm tud bumbar da se nism sam tega spomnu  Hvala ",
+    "user": "K0K0"
+  },
+  {
+    "message": "Mene pa zanima zakaj lahko dostopam samo prekom porta 3389 in ne tudi preko 3390, dotopal bi rad namreč do 2-eh PC jev. Poveže se mi pa samo na tistega pri katerem v routerju nastavim port 3389...pa tud v firewallu sem odpru port 3390???  What iz I doing wrong? ",
+    "user": "eprasnikar"
+  },
+  {
+    "message": " KB306759   by Miha ",
+    "user": "Microsoft"
+  },
+  {
+    "message": "Hvala lepa! ",
+    "user": "eprasnikar"
+  }
+]

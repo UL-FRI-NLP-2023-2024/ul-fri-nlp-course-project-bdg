@@ -1,0 +1,34 @@
+[
+  {
+    "message": "Pozdravljeni.Na vas se obračam zaradi nalog ki jih ne razumem oz. ne znam rešiti. Če kdo zna bilokatero izmed teh bi ga prosil za pomoč!  1.) V firmi imajo 172 računalnikov. Določite privatni ip naslovni prostor tako da bo v omrežje možno dodati še najmanj 45 računalnikov in ne več kot 80. Firma ima na voljo samo en globalni ip naslov. Narišite shemo. Vsi računalniki so v istem LAN-u.  2.) Internetni ponudnik nam je dodelil statični IP naslov 194.249.252.130, z omrežno masko 255.255.255.192 (predpona je /26). Ugotovi kako veliko je omrežje (koliko ip naslovov je v omrežju), zapiši omrežni in razpršeni naslov omrežja kateremu pripada zgoraj navedeni naslov.  Hvala še enkrat!! :) ",
+    "user": "slusalka123"
+  },
+  {
+    "message": "in kaj pravijo tvoji zapiski? Kje se ti ustavi? ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "Prve ne razumem,razen tega da je potrebno dodeliti toliko bitov da bo najbližje željeni številki,dalje ne znam. Pri drugi pa vem da je odjemalcev v omrežju 2^6=64, in če odšteješ 1 bit dobiš 63,tako da omrežni naslov bi potem bil 194.249.252.130,broadcast pa dodamo zadnjemu +63? : 194.249.252.193 , in pa kako bi zgledala shema? Nevem pa kaj predstavlja maska pri tej nalogi? Zakaj jo je potrebno gledati? hvala! ",
+    "user": "slusalka123"
+  },
+  {
+    "message": "Pri prvi nalogi resitev, ki bi ustrezala vsem zahtevam, ne obstaja (ce si nalogo pravilno prepisal). Pri drugi nalogi je omrezni naslov 194.249.252.128, razprseni pa 194.249.252.191. Zadnji oktet si napisi binarno, pa bo lazje (pri /26 maski mora zadnjih 6 (32-26) bitov za omrezni naslov biti 0, za razprseni pa 1, ostali (se pravi prvih 26 bitov) so pa enaki kot pri IP naslovu). ",
+    "user": "rokp"
+  },
+  {
+    "message": "Pri prvi daš 192.168.0.0/24, pa je. Usmerjevalnik, strežnik (pač ga imajo, da je naloga rešljiva, pa še smiselno je), 172 obstočejih računalnikov, pa je prostor še točno za 80 računal.  Čeprav pri 170 delovnih postajah bi bilo bolj pametno imeti več kot en strežnik... ",
+    "user": "Jakka"
+  },
+  {
+    "message": "Se dobro, da strezniki niso racunalniki, da so potem te naloge resljive... Pa dejansko jim potem en IP zmanjka, ker imajo verjetno tudi mrezni tiskalnik. ;) ",
+    "user": "rokp"
+  },
+  {
+    "message": "1.) Potrebuješ naslovni prostor za 172 + 80 = 252 računalnikov. 2^7 = 128 ne bo dovolj 2^8 = 256 pa bo, saj nudi 254 (-1 za network in -1 za broadcast) uporabnih naslovov  8 bitov bo torej ravno prav, ker je vseh skupaj pri IPv4 naslovu 32, bo maska podomrežja 11111111.11111111.11111111.00000000, oz. 32 - 8, torej /24  Naslov omrežja lahko izbereš izmed naslovov, ki so določeni za privatna omrežja, npr. 192.168.1.0/24.  2.) Maska 255.255.255.192 (predpona je /26) je le na dva načina zapisan isti podatek. 255.255.255.192 binarno je 11111111.11111111.11111111.11000000, enic je 26, torej /26.  Ugotovil si že, da je v omrežju 2^6 = 64 naslovov. 194.249.252.0/24 se lahko razdeli na 4 /26 segmente po 64 naslovov:  194.249.252.0-63 (194.249.252.0/26) 194.249.252.64-127 (194.249.252.64/26) 194.249.252.128-195 (194.249.252.128/26) 194.249.252.196-255 (194.249.252.196/26)  IP 194.249.252.130 pade torej v segment 194.249.252.128/26 v katerem je 64 naslovov. Ker je prvi naslov (194.249.252.128) naslov omrežja, zadnji naslov (194.249.252.195) pa broadcast naslov, je za uporabi na voljo še 62 naslovov med 194.249.252.129 in 194.249.252.194. ",
+    "user": "680x0"
+  },
+  {
+    "message": "128+64=192 ",
+    "user": "rokp"
+  }
+]

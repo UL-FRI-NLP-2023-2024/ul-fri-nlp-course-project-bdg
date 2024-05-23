@@ -1,0 +1,30 @@
+[
+  {
+    "message": "Pozdravljeni.  Odpiram novo temo, ker nikjer nisem zasledil konkretnega odgovora za moj primer vezave dveh routarjev in njunih nastavitev. Za lažje razumevanje sem zrisal tudi strukturo omrežja v hiši(priponka), da si boste lažje predstavljali kaj bi rad.  V hiši, ki ima tri nadstropja imam sedaj v I.nad. modem (optika T2 10/10) in primarni router (Linksys WRT54GL 1.) - povezano v WAN port. Iz primarnega routarja (port 1 in 2) imam v zgornja nadstropja preko utp kabla povezani dve vtičnici (v II. nad. je priključen PC v III.nad pa bi rad priključil sekundarni router) . Sedaj me pa predvsem zanima III. nadstropje, kje bi rad vezal nov router (Linksys WRT54GL 2) - sekundarni kateri bi imel funkcijo switcha (torej da lahko uporabljam porte) + dostopna točka. Predvsem pa bi rad da sta oba WLANA enaka (Linksys WRT54GL 1. in 2.), torej ko bi se sprehajal iz nadstopja v nadstropje, da bi prenosnik samodejno preklapljal na tisti signal ki bi bil močnejši. Torej da bi bila WLANA povezana (isti SSID in geslo in kanal predvidevam). Na koncu bi rad da bi bilo povezano tako da, primarni router dodeljuje IP vsem (pc, prenosnik, router), da neglede na to ali sem povezan brezično ali žično na kateri koli router (v I ali III nad.) da vidim vse (mrežni disk ali mrežni printer v III nadstropju ali šerano mapo na pc-ju v II.nad.))  Na vse to kar sem prebral sedaj mi ni jasno sledeče: - glede nato da sta routerja povezana s kablom (port1 1. routerja na port1 drugega routerja) ali je potrebno narediti WDS (vezava routarjev brezžično) ali moram narediti Wireless Access Point na drugem routerju ali bridge ali repetitor. Tle sem popolnoma bos :D. Po eni strani bi rad ojačal signal po celi hiši, po drugi strrani pa bi rad tudi da je vse skupaj en WLAN, torej da ko se prijaviš in se premikaš po hiši z prenosnikom niti ne opaziš ali sem priklopljen na zgornji router ali na spodnji (ta problem imam v II.nadstropju) - kateri firmware mi priporočate za moj primer (tomato, tomato victek, dd wrt ali orginal linksys) - kako vem kateri kanal za WLAN je najprimernejši oziroma najmočnejši - katera je najbolšja zaščita WLANA (WEP, WAP...??)  http://file.si/public/view/full/172462  Hvala vam za odgovore oziroma za kakršno koli pomoč pri mojem problemu.  Lp, Đon ",
+    "user": "johan9"
+  },
+  {
+    "message": "-Isti SSID, isto geslo, drug kanal. -Na drugem routerju izklopiš DHCP in WAN port software-sko spraviš na LAN stran, oziroma (odvisno koliko kablov hočeš) pač vtakneš kabel do prvega routerja v LAN del. -Ker imaš routerja povezana s kablom, jasno ne rabiš WDS. -Firmware tule nima dosti veze, ker ni nič kompliciranega, vsi znajo to kar hočeš. -Pogledaš okolico, kaj router vidi. Vedet je pa treba, da se kanali prekrivajo. Povsem neodvisni so samo 1, 6 in 12, oziroma če dobiš falota recimo na 5 kanalu in je signal dost močan, da te moti, moraš it 5 kanalov višje. -WPA2 + AES. ",
+    "user": "Senitel"
+  },
+  {
+    "message": "Uff...hiter odgovor.........thx  Še par vprašanj:  - torej, če prav razumem bi bil kanal na router I naprimer 11 na routerju II pa 12 in prenosnik bo vedno videl samo en WLAN ne glede na različna MAC-a routarjev in različna kanala, v ozadju pa bo samodejno povezan na tistega, ki bo močnejši? - ok to razumem...bom software-sko WAN spravil na LAN (to z orginalnim firmwerom sicer ne morem narediti, tako da bom šel na tomato) - super, kar se tiče WDS :) - hm tole pa mi ni čisto jasno kako to narediš....ali to pomeni da dam scan po kanalih in kaj naj naredim ko jih poskenira....tam vidim da ob določene kanala zapiše 6. 2.437GHz 1Ap - strongest_ - 86 dBm ... torej ali to pomeni, da tak kanal izberem ali moram katerga drugega in isto verjeno na zgornjem routerju.....sedaj sem imel na spodnjem routerju nastavljeno samodejno....   Hvala ",
+    "user": "johan9"
+  },
+  {
+    "message": " johan9 je 6. maj 2011 ob 10:26 izjavil: - torej, če prav razumem bi bil kanal na router I naprimer 11 na routerju II pa 12   Načeloma ja, ampak preberi si še enkrat o prekrivanju. Boljše je imet recimo router 1 na 1 kanalu in router 2 na 6 kanalu.   johan9 je 6. maj 2011 ob 10:26 izjavil: in prenosnik bo vedno videl samo en WLAN ne glede na različna MAC-a routarjev in različna kanala, v ozadju pa bo samodejno povezan na tistega, ki bo močnejši?   Prenosnik bo videl dve dostopni točki. Neglede nato na katero se bo povezal bo dobil DHCP nastavitve od prvega routerja.   johan9 je 6. maj 2011 ob 10:26 izjavil: - hm tole pa mi ni čisto jasno kako to narediš....ali to pomeni da dam scan po kanalih in kaj naj naredim ko jih poskenira....tam vidim da ob določene kanala zapiše 6. 2.437GHz 1Ap - strongest_ - 86 dBm ... torej ali to pomeni, da tak kanal izberem ali moram katerga drugega in isto verjeno na zgornjem routerju.....sedaj sem imel na spodnjem routerju nastavljeno samodejno....    Ne! Narediš scan in izbereš kanal, ki je najdlje stran od tistih, ki ti jih router najde. V konkretnem primeru imaš na 6. kanalu kot kaže enega soseda. Torej izbereš nekaj drugega. ",
+    "user": "Senitel"
+  },
+  {
+    "message": "Senitel... full hvala  še nekaj.....torej bo prenosnik videl dve dostopni točki z istim imenom recimo \"Wlan_net\" ..... in bo samodejno izbiral med njima ?? Upam da res? ...... torej če imam na 6 soseda naj dam spodnji router na kanal 1 in zgorni router na kanal 11 ???  Samo še to....potem pa neham težit. :)   Hvala ",
+    "user": "johan9"
+  },
+  {
+    "message": "Prenostnik bo dejansko dostopne točke pogrupiral po SSID-jih. Torej boš videl \"Wlan_net\", potem bo pa izbral tisti router (MAC) do katerega ima \"boljšo linijo\". Glede kanalov bo pa sedaj prav ja.  ",
+    "user": "Senitel"
+  },
+  {
+    "message": "Senitel hvala še enkrat..... carsko....  ",
+    "user": "johan9"
+  }
+]

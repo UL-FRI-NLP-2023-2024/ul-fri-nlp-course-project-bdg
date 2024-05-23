@@ -1,0 +1,62 @@
+[
+  {
+    "message": "Lastim si Amilo Pi 2515. Odkar sem odstranil trdi disk in ga zamenjal z drugim (da bi ga formatiral - ni uspelo) se mi pojavlja sledeč problem: Kadarkoli želim na originalni disk (WD2500EVS) namestiti operacijski sistem (windows, ubuntu, karkoli) mi \"namestiteveni program\" javi, da ne najde nobene particije?? Enako se je zgodilo pri tistem disku, ki sem ga prvič hotel formatirati. Ampak disk je bil notri in ubuntu je delal brez problema. No, potem sem se (brez znanja) igral s programom TestDisk (neumno, vem) in od takrat se mi ob zagonu na zaslonu izpiše le: 1234F (??) Zdaj sem pa že čisto obupan in upam, da mi bo znal kdo pomagat :) ",
+    "user": "luksorzi"
+  },
+  {
+    "message": "http://ubuntuforums.org/showthread.php?... http://www.bleepingcomputer.com/forums/... http://www.cgsecurity.org/wiki/Menu_MBR...  win xp je verjetno prestar, da bi imel dodano podporo za tvoj sata kontroler, z nlite integriras dirverje v win xp install cd oz uporabi usb floppy, druga opcija so win7, kjer bi disk moralo zaznati, tretja da spremeniš v biosu iz sata mode \"ahci\" v \"ide\", če seveda opcija obstaja.  Ubuntu 12/13 ti ne zazna diska ? ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Snemi si GParted in celoten disk formatiraj v eno particijo v NTFS. Če še vendo ne bo prepoznalo pa disk skeniraj s proizvajalčevim diagnostičnim orodjem. Zna biti, da so gor slabi sektorji. V takem primeru pride v poštev samo menjava diska.  Samo se mi pa zdi čudno da niti Ubuntu nič ne prepozna. Četudi bi bil recimo formatiran v ext4 bi ga mogel ta operacijski sistem prepoznati. Lahko probaš kot je že Hayabusa omenil iz AHCI-ja prestavit v IDE, samo to dvomim da je problem. To že leta podpirajo nativno vsi sodobni operacijski sistemi (v Windows-ih je podprt od začetka leta 2007 naprej - Viste). Vsekakor precej bolj priporočam, da se ostane na AHCI načinu. ",
+    "user": "Qushaak"
+  },
+  {
+    "message": "Na koncu sem težavo rešil tako, da sem uporabil recovery cd-je ki sem jih ustvaril, ko sem kupil računalnik. Zdaj si pa ne upam spet poskusit s formatiranjem drugega diska :/ ",
+    "user": "luksorzi"
+  },
+  {
+    "message": "Tu nekaj hudo ne štima. Dobro skeniraj/obremeni ves hardware z diagnostiko. Ko si formatiral, ali je disk zaznalo ali tudi to ne? (Če kake particije ne prepozna je to že zaradi prej omenjenih vzrokov.) ",
+    "user": "Qushaak"
+  },
+  {
+    "message": "V laptopu imam prostor za samo en trdi disk. Zato sem, da bi formatiral drugega, dal ven original in zamenjal z drugim. Računalnik sem prižgal normalno in pokazal se mi je windows xp (nalaganje), ko pa je z nalaganjem končal, se je resetiral.  Nato sem vzel cd od win xp in z postopkom namestitve prišel do točke, kjer urejaš particije. No, karkoli sem naredil tam, mi je javil, da ne najde nobene. Pa sem vzel še cd od ubuntu (starejša verzija), in ta mi je prav tako, ko sem želel urediti particije, javil, da ni nobene. Spet sem vstavil originalni disk, ubuntu se mi je normalno zagnal in vse je delalo, zato sem zaključil, da mora biti nekaj narobe s trdim diskom. Vse je delalo ok, nato pa sem si zraven ubuntu zaželel win xp. Normalno bootam s cd-ja, spet pa se zatekne pri particijah ... Poskušal sem vse živo in prišlo je do tistega 1234F.  Ker nisem imel praznega cd-ja, sem poskušal najnovejšo verzijo ubuntu bootat iz usb ključa, kar mi nikakor ni uspelo (spravit ubuntu na ključ), zato sem vzel recovery cd-je in ponastavil sistem, tako da imam sedaj win vista ( :/ )... zdaj vse deluje, kot mora.  Kako mi priporočaš, da testiram hardware? Tega še nisem počel. ",
+    "user": "luksorzi"
+  },
+  {
+    "message": "Sej ni neke znanosti. Poženeš diagnostiko/stress in pustiš laufat. Če izpisuje napake je pač nekaj narobe.  Pa probaj z originalnimi (ni treba vpisat serijske za začetek, pusti trial) novejše Windows-e (al pa novejši Ubuntu 12.04 LTS) recimo. Ubuntu se trivialno spravi na USB ključ. Pač imaš ISO image in potem recimo to narediš s programom UNetbootin. ",
+    "user": "Qushaak"
+  },
+  {
+    "message": "Zdaj mam naloženo visto, ki naj bi bla original. aja, pa ne vem, kaj naj zaženem xD  Sem poskušal z UNetBootin, pa mi je nek error vn metalo ... Potem sem pa rekel, kur* gleda vse skup, pa sem vzel recovery diske :D ",
+    "user": "luksorzi"
+  },
+  {
+    "message": "Zelo čudno se ti vse skup tole obnaša. V Windows-ih poženi OCCT, IntelBurn Test in Furmark.  Iz Hiren's Boot CD pa memtest86+ in diagnostiko za disk od tvojega proizvajalca diska. ",
+    "user": "Qushaak"
+  },
+  {
+    "message": "Bom pognal jutri dopoldne, pa sporočim rezultate. ",
+    "user": "luksorzi"
+  },
+  {
+    "message": "V bios-u moraš dati diske na IDE način. AHCI ti prepoznajo samo instalacije od viste naprej - w7, w8. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Če bi bil problem samo v IDE / SATA bi mu že takoj na začetku inštalacije XP vrglo ven blue screen, razen če je dal dodatni gonilnik za SATA, potem tudi starejši OS čisto lepo delajo. ",
+    "user": "MIHAc27"
+  },
+  {
+    "message": "V tem primeru je problem lahko slab instalacijski medij ali napačna nastavitev načina delovanja diska - sata - ide, glede na to, da mu vista dela brez problema. Tudi če imaš instalirane gonilnike za sata, bo linux ali xp redko instaliral brez problemov, zaradi prepoznavanja diska. OS se pač ne more instalirat, če diska ne zazna. V IDE načinu zazna disk vsak sistem. ",
+    "user": "solatko"
+  },
+  {
+    "message": " solatko je 24. sep 2013 ob 22:56 izjavil:V bios-u moraš dati diske na IDE način. AHCI ti prepoznajo samo instalacije od viste naprej - w7, w8.  Mal preber kaj si napisu. Šele od Viste naprej. To je že več kot 6.5 let nazaj. Ne vem kaj imate to v sebi, da greste danes dajat v IDE način. XP-ji bodo od aprila prihodnjega leta nepodprti in se jih ne bo nikakor splačalo več inštalirat. Viste praktično ni, Sedmica je trenutno že/še glavnina.  @solatko: Tudi take reči sem doživel že. Zato raje sedaj naredim bootable USB ključ. :) Pa še bistveno hitreje se inštalira sistem. ",
+    "user": "Qushaak"
+  },
+  {
+    "message": "Qushaak - Napisal sem odgovor na vprašanje. OP hoče inštalirat xp ali manjzahtevno verzijo linux-a. Za to pa rabi IDE kontroler, da bo sistem med nastavitvijo sploh zaznal disk.  Jaz imam vse na USB ključkih, DVD enoto pa za primere, kjer ne gre boot iz USB (tudi kakšna toliko stara mašina se občasno najde na mizi). ",
+    "user": "solatko"
+  }
+]

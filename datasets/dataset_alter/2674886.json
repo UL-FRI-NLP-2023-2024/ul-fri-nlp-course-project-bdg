@@ -1,0 +1,26 @@
+[
+  {
+    "ctx": "Vodič: Obvestilo na pametni telefon ko npr pralni stroj zaključi",
+    "content": "Dosti uporabna in enostavna zadeva je da dobiš na telefon push obvestilo ko npr pralni stroj zaključi...\nSeveda spodnja avtomatizacija deluje za kakršno koli napravo, ne samo za pralne stroje.  \n\nPredpostavljam da že imamo pametno vtičnico vštekano med pralni stroj in steno in da vidimo podatke o trenutni moči v HA takole:\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\nPrvi korak je da v HD dodamo \"blueprint\". V HA klikamo:\n\nConfiguration -> Blueprint -> Import blueprint -> Vneseš url:\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\thttps://gist.githubusercontent.com/sbyx/6d8344d3575c9865657ac51915684696/raw/bee984ec236a7e4c1481e8a66b426597fcbc3899/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml\n\t\nNato \"Preview blueprint\" in \"Import blueprint\".\n\nNato greš: Configuration -> Automations -> Add automation in izbereš blueprint \"Appliance has finished\".\n\nPokaže se ti takšno okno v katerega vneseš naslov avtomatizacije, id senzorja (vtičnice) ki meri moč naprave, ter ostale podatke ki jih imam jaz nastavljene takole:\n(Finishing power threshold dam na 1W ostalo pustim kot je v štartu definirano.)\n\n\n\t\t\n\t\n\nNato klikneš ADD action in izbereš takole (poiščeš svoj telefon, ki je prikazan če imaš na telefonu HA app inštaliran)\n\n\t\t\n\t\nDesno spodaj klikneš še SAVE in to je to.\n\nKo bo pralni stoj končal boš dobil push notification na telefon.  ",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Obvestilo na pametni telefon ko npr pralni stroj zaključi",
+    "content": "Ali pa bolj easy varijanta, kdor ne uporablja HA, ampak GAssistent , Alexa ali SmartThings.\n\nPreko aplikacije na telefonu SmartLife ali Tuya, dobiš pravtako sporočilo, da je pralni, ipd..stroj  končal z delovanjem.\n\nNabaviš wi-fi vtičnico na AE ali podobno, vstaviš med obstoječo vtičnico in strojem ter preko zgoraj  omenjene aplikacije nastaviš v razdelku -Smart, kaj želiš da naredi, deluje po principu aplikacije IFTTT.\n\nNa koncu seveda dobiš sporočilo na telefon, da je stroj končal z delovanjem.\n\np.s. Omenjena zadeva seveda deluje preko zunanjih China serverjev, če koga to moti.",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Obvestilo na pametni telefon ko npr pralni stroj zaključi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik WeWatchingYou je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tAli pa bolj easy varijanta, kdor ne uporablja HA, ampak GAssistent , Alexa ali SmartThings.\n\nPreko aplikacije na telefonu SmartLife ali Tuya, dobiš pravtako sporočilo, da je pralni, ipd..stroj  končal z delovanjem.\n\nNabaviš wi-fi vtičnico na AE ali podobno, vstaviš med obstoječo vtičnico in strojem ter preko zgoraj  omenjene aplikacije nastaviš v razdelku -Smart, kaj želiš da naredi, deluje po principu aplikacije IFTTT.\n\nNa koncu seveda dobiš sporočilo na telefon, da je stroj končal z delovanjem.\n\np.s. Omenjena zadeva seveda deluje preko zunanjih China serverjev, če koga to moti.\n\t\t\n\t\tKlikni za razširitev\n\t\nJa dosti stvari se da narediti z Wifi moduli + app na telefonu.\nEnim bo tak sistem zadoščal, drugim pa ne in za te je potem HomeAssistant bolj univerzalna rešitev, ker nisi vezan na točno določen app in senzorje...\n\nBom poskusil v prihodnjih dneh narest povzetek vseh ugodnih pametnih sistemov (Ikea, Lidl, Tuya, Xiaomi...)",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Obvestilo na pametni telefon ko npr pralni stroj zaključi",
+    "content": "Pri sušilnem stroju sem moral malo spremeniti nastavitve in sicer da pošlje sporočilo ko je pol minute moč nižja od 3W.\nSušilni stroj namreč tudi ko je konec ves čas malo premetava oblačila, da se ne zmečkajo in moč nikoli ne pade pod 2W.\nNa splošno je pametno pogledati graf moči preden nastaviš vse 4 vrednosti...\n\n\t\t\n\t\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  }
+]

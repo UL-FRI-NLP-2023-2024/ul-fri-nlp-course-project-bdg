@@ -1,0 +1,44 @@
+[
+  {
+    "ctx": "router kot ap",
+    "content": "Imam wrt54gl in nek vigor router. Na vigorju je ip 192.168.2.2 in dhcp enabled. Na linksysu pa je ip 192.168.2.3 in dhcp (avtomatska konfiguracija). Routerja sta med sabo povezana preko cat5 na LAN - LAN portu. Na lokalno mrezo pridem na internet pa ne. Ce pingam iz linksysa dobim network is unreachable. \nProbal sem tudi povezavo WAN - LAN, tko da je linksys povezan preko WAN porta in da je na drugem subnetu 192.168.3.1, rocno nastavil gateway in ip, ampak potem pa ne dela nic.\n\nKje sem se ustel?\n\nhvala",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router kot ap",
+    "content": "Čakaj, če imaš tako vezano, mora delat: MODEM na LINKSYS povezan na WAN port, pač nastaviš net, da ti dela. Potem pa iz recimo LAN1, daš na VIGOR tudi v WAN in spet nastaviš avtomatsko ali kakorkoli pač, pa mora delat...",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router kot ap",
+    "content": "- kaj imaš ?\n - kaj bi rad ?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router kot ap",
+    "content": "Imam router vigor, ki se sedaj uporablja za net. Zraven hocem dat se wlan router, ki naj bi deloval kot ap, torej imam zraven kabla se wlan.\n\nPinga se med sabo vse, tudi vigor vidi, da je linksys povezan na njega. Vigor vidi tudi wlan kliente, ki so preko linksys gor. Ampak ping ven pa ne dela iz linksysa",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router kot ap",
+    "content": "LinkSys ima opcijo \"Acces Point mode\" ?\n\nSicer pa :\n - povezat preko LAN portov\n - izklopit DHCP server na LinkSys-u\n - LinkSys-u dat IP naslov, ki je na območju LAN-a (pazi na prekrivanje z DHCP intervalom Vigorja)\n\nČe ima Vigor kaki pameten Firewall, ga obvestiti o novi opremi.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router kot ap",
+    "content": "Eh...zadevo sem hitro resil, ko sem flashal na DD-WRT. Drugace pa WRT54GL nima moznosti, da dela kot AP. Vse ostalo sem nastavil vsaj 10x in nikakor ni slo. Na mojem starem wrt54g, ki zal ni opensource, pa laufa brez tezav.",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router kot ap",
+    "content": "se nekaj me zanima. a bi spravil skupaj v point to point povezavo dva wrt54gl routerja, s tem da bi poleg povezave med sabo, oba oddajala signal se za kliente iz ene in druge strani. Torej da bi oba delala kot ap.\n\neno anteno bi zamenjal za yagi usmerjeno za point to point, drugo pa pustil default, da bi imel signal se okoli routerjev.\n\nhvala",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "Nabavil sem nov HP probook 450 na katerem so bili naloženi win8. Poleg je bilo treba zaradi uporabe določenih programov naložiti se Linux(Ubuntu). Problem je ker mi zdaj ne deluje internet. Ne deluje wlan, niti preko kabla. Nisem pa zihr kdaj točno se je težava pojavila. Poveže pa se mi na router ne pa v internet. Poleg tega pa ne morem vklopit pozarnega zidu. Javi mi neko napako. Je možno da je to povezano? Drugače pa sem imel laptopa že na servisu pa ne vedo kaj bi naredili. Najprej hočejo ponovno nalozit sistem ampak to zaradi nalozenih programov zaenkrat ni opcija. Ima kdo se kakšen predlog kaj je za naredit? Vesel bi bil vsakega predloga...",
+    "author": "dejk0",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "Ni tukaj nobenega majstra? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "dejk0",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "Kako to misliš, da se ti poveže na router, na internet pa ne? Imaš vpisan statičen ip / gateway?\n\nPoizkusi odpreti ukazno vrstico v administrativnem načinu in po vrsti poganjaj ukaze (vmes pa probaj, če ti na kablu dela):\n\nnetsh advfirewall reset\nnetsh branchcache reset\nnetsh int ip reset\nnetsh winsock reset",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "Poveze se mi z omejeno povezavo in ne morem dostopati do interneta. Nimam vpisanega staticnega ipja. \nSem probal kar si mi predlagal in ne deluje... :-/",
+    "author": "dejk0",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "here's a wild thought: kaj pa če ni težava v računalniku?\n\nrouter ima povezavo?",
+    "author": "blazko",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "Router ima povezavo. Na ostalih napravam mi internet deluje normalno... Saj pravim, da sem imel laptop že na servisu pa tudi tam ni delovalo. Oni pa bi to rešili z ponovnim nalaganjem sistema ampak jaz še vedno upam na enostavnejšo rešitev...",
+    "author": "dejk0",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "meni je tudi to nagajalo, sicer na totalno drugem kompjuterju, ampak enkrat sem se igral z nastavljanjem nekega wifi modema na fotiču, pa mi je ta wifi pobrkljal internetne nastavitve.\n\npojdi na Control Panel, Network and Internet, Network and Sharing Center.\n\npotem na levi strani izbereš Change adapter settings. Potem pa desni klik na Local Area Connection (verjetno lahko tudi na Wireless Network Connection) in izbereš Properties, se odpre okence, kjer izbereš Internet Protocol Version 6 ali 4, zdaj se ne spomnim točno, in se ti omogoči pod okencem še enkrat Properties (do takrat je \"zatemnjena\" izbira). in se ti odpre dodatno okno in vidiš, kaj ti čara, meni tisti modemček sam od sebe obkljukal \"Use the following IPv4/6 adress\" in se seveda komp ni mogel povezati v internete ...\n\nupam, da sem vsaj malo pomagal ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "Gonilnike si posodobil? Praviš, da imaš omejeno povezavo - kaj če vseeno poizkusiš vpisati statični IP?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik erikson pravi:\n Gonilnike si posodobil? Praviš, da imaš omejeno povezavo - kaj če vseeno poizkusiš vpisati statični IP?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nGonilnike sem posodobil in ni pomagalo. Tudi statični IP sm že vpisal pa je bilo isto...\nSumim da je nekaj povezano z Firewallom ampak ne vem kaj naj naredim. Glede na to da ga ne morem vklopit.. Je možno da kaj nagaja tist HP security in blokira povezave?",
+    "author": "dejk0",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nov HP prenosnik in tezave z povezavo v internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik DizzyReed pravi:\n meni je tudi to nagajalo, sicer na totalno drugem kompjuterju, ampak enkrat sem se igral z nastavljanjem nekega wifi modema na fotiču, pa mi je ta wifi pobrkljal internetne nastavitve.\n\npojdi na Control Panel, Network and Internet, Network and Sharing Center.\n\npotem na levi strani izbereš Change adapter settings. Potem pa desni klik na Local Area Connection (verjetno lahko tudi na Wireless Network Connection) in izbereš Properties, se odpre okence, kjer izbereš Internet Protocol Version 6 ali 4, zdaj se ne spomnim točno, in se ti omogoči pod okencem še enkrat Properties (do takrat je \"zatemnjena\" izbira). in se ti odpre dodatno okno in vidiš, kaj ti čara, meni tisti modemček sam od sebe obkljukal \"Use the following IPv4/6 adress\" in se seveda komp ni mogel povezati v internete ...\n\nupam, da sem vsaj malo pomagal ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPri meni očitno ni tak problem. Sem pogledal in imam vse kot je treba. Nastavljeno na samodejno...",
+    "author": "dejk0",
+    "author_level": "Pripravnik"
+  }
+]

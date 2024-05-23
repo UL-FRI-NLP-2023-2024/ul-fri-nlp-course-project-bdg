@@ -1,0 +1,146 @@
+[
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Hej vsem... \n\nSpet vas prosim za pomoč... In sicer, bratranec me je prosil, če bi mu lahko spojil UTP kabel in priklopil kamere...  V hlevu bi rad zmontiral en router (ki bi ga povezal z routerjem iz hiše) in nanj povezal 4 kamere. \n\nGlede UTP kabla: med hišo in hlevom ima položena 2 UTP kabla, ki bi ju moral spojit nekje na sredini... Mislim, da je na vsako stran nekje 40m UTP kabla.. Zanima me, ali bi zadostovala neka spojna nadometna doza ali bi bilo pametno kabla povezat s kakim ojačevalnikom? Sicer ne vem, če ima kje blizu elektriko.. Bo pa spojeno na prostem, sicer pod streho (na enem lesenem stebru)... Torej, kako bi bilo najboljše spojit ta 2 kabla?\n\nGlede kamer, že zmontirani ima ti 2 kameri : https://www.hikvision.com/en/produc...as/Network-Dome-HiLook-Series/PTZ-N2204I-DE3/, 2 pa še misli kupit..\n\nDo kamer ima potegnjene UTP kable, tako da bodo na router povezani preko UTP kabla, torej mora router/switch podpirat POE standard. Sedaj me zanima, ali se za povezavo 4 kamer uporablja router ali switch? Fino bi bilo, če bi ta router/switch podpiral tudi wifi... Ne rabi pa bit ne vem kako nobel, pač neka osnova, da vse deluje...  Pa da je na zalogi v Slo, ker bi verjetno jutri montirala... ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "v hlevu rabiš POE SWITCH (ne router). \n\nKabel lahko spojiš na več načinov. Ali stisneš na njega konektorje in daš vmes RJ45 I člen, ali pa recimo nekaj takšnega https://www.techtrade.si/rj45-i-clen-za-zakljucitev-toolless-cat6-delock-9060001\n\nNa razdalji 80 m ne rabiš nobenih \"ojačevalnikov\".",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Google pravi, da \"gre\" UTP do 100m - torej 80 ne bi smel biti problem. Če imata možnost in voljo  - jaz bi zamenjal 2x40m kabel za 1x80 in se izognil \"podaljsevanju\" (ena točka manj, kjer gre lahko kaj narobe). Za končno točko rabiš pa POE switch, kot je že igi povedal",
+    "author": "ncnifrej",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Oba \"40m\" kabla pa še vseeno lahko ponucaš za kamere kasneje....",
+    "author": "Kamele0N",
+    "author_level": "YUGOslovanski mehanik       Dmitri Mendeleev"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Rabiš PoE stikalo, samo pazi, da je isti standard kot kamere. Nekatera stikala imajo recimo samo passive PoE, malo bolj resne kamere pa vse več ali manj proper 802.3af PoE. Glede na to, da za kamere ne rabiš giga portov, bo najceneje kaj takšnega (sem ga pri fotru ponucal ravno v ta namen), ampak vidim da trenutno nimajo na zalogi. Imajo pa nekatere večje/dražje modele. Za spojit kable, pa to kar je že igi predlagal. Če hočeš še wifi, bo treba pa vzet še nek WiFI AP. All-in-one škatla z večinimi PoE porti bo malo problem.\n\nTeoretično lahko vzameš tudi all-in-one (stikalo/usmerjevalnik/požarna pregrada/DHCP/wi-fi AP/...) škatlo (to kar si ti vrjetno predstavljaš pod \"router\"), izklopiš vse funkcije (DHCP server/FW/...) razen WiFi (oziroma ga daš v AP mode če to podpira) in kamere priklopiš preko PoE injectorjev, ampak bi sam raje uporabil PoE stikalo. \n\nJaz osebno kamere poleg tega rajši ločim v svojo mrežo oziroma VLAN, rabiš pa potem managed stikala (vsaj tam kjer so skupaj priklopljene kamere poleg drugih naprav) in ustrezno konfiguracijo VLANov. Ampak to je že druga zgodba.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Če gre kabel kjerkoli po \"luftu\", je treba paziti še na ozemljitev kabla med hlevom in hišo, sicer ti lahko ob grmenju statična elektrika uniči omrežno opremo.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Najboljša varianta za spojit kabla, bo verjetno lotanje in termo skrčke, ter primerna dodatna izolacija na tem mestu, ali menjava kabla za novega v enem kosu. V hlevu pa obvezno PoE switch kot predlagajo zgoraj.",
+    "author": "bluub",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Tista spojka, ki jo predlaga Igi je čisto v redu.",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bluub je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNajboljša varianta za spojit kabla, bo verjetno lotanje in termo skrčke, ter primerna dodatna izolacija na tem mestu, ali menjava kabla za novega v enem kosu. V hlevu pa obvezno PoE switch kot predlagajo zgoraj.\n\t\t\n\t\tKlikni za razširitev\n\t\nUTP kabel in lotanje ne gre skupaj - nikakor !! Sem popravljal že preveč takih packarij, ki so \"odlično\" delovale v času ADSL 1/.256.\nLAN omrežje deluje po sistemu paric - kjer boš ti lotal boš te parice \"razparil\" in napravil močen slabilni člen in izvor motenj.\nOlupi enkrat kos UTP-ja in preštej število zasukov vsakega para na meter ter se čudi zakaj so razločno gosto sukani.",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bluub je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNajboljša varianta za spojit kabla, bo verjetno lotanje in termo skrčke, ter primerna dodatna izolacija na tem mestu, ali menjava kabla za novega v enem kosu. V hlevu pa obvezno PoE switch kot predlagajo zgoraj.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nslabih 20 let sem bil v informatiki in verjemi da bo konektor in i člen  brez tezav opravil nalogo. Tudi menjava kabla ni potrebna seveda dokler govorimo o nekih “Hišnih” hitrostih prenosa.",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Jaz imam do hleva potegnjenih 130 metrov Cat6 kabla. Dela BP z gigabitno hitrostjo.\n\nKo sem zadevo sestavljal sem imel najprej samo direktno priklopljeno v LAN porte na vsaki strani pa so mi atmosferske razelektritve par 100 metrov stran vsako leto skurile kakšen port na stikalu. Nato sem dodal na eno stran ( https://www.ui.com/accessories/ethernet-surge-protector ), čeprav bi načeloma bilo bolje dodati na vsako stran enega in zaenkrat je ok.\n\nPri hlevu je potem ena omarica v kateri sta dve 5 portni TpLink POE stikali, zunaj na omarici (kupil premajhno) pa je še en star router, ki ima izklopljen DHCP in deluje kot dostopna točka. Iz stikal imam potem kable do 4 kamer Reolink RLC-410 in ene Reolink C1 pro (PT), ki sem jo ravnotako priklopil na POE preko ( https://www.amazon.com/TP-Link-Comp...d=1&keywords=tl-sg1005p&qid=1602928266&sr=8-3 ). Zadeva deluje odlično, v prihodnosti imam namen dodati še 2 ali 3 kamere.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik XSIDE je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tRabiš PoE stikalo, samo pazi, da je isti standard kot kamere. Nekatera stikala imajo recimo samo passive PoE, malo bolj resne kamere pa vse več ali manj proper 802.3af PoE. Glede na to, da za kamere ne rabiš giga portov, bo najceneje kaj takšnega (sem ga pri fotru ponucal ravno v ta namen), ampak vidim da trenutno nimajo na zalogi. Imajo pa nekatere večje/dražje modele. Za spojit kable, pa to kar je že igi predlagal. Če hočeš še wifi, bo treba pa vzet še nek WiFI AP. All-in-one škatla z večinimi PoE porti bo malo problem.\n\nTeoretično lahko vzameš tudi all-in-one (stikalo/usmerjevalnik/požarna pregrada/DHCP/wi-fi AP/...) škatlo (to kar si ti vrjetno predstavljaš pod \"router\"), izklopiš vse funkcije (DHCP server/FW/...) razen WiFi (oziroma ga daš v AP mode če to podpira) in kamere priklopiš preko PoE injectorjev, ampak bi sam raje uporabil PoE stikalo.\n\nJaz osebno kamere poleg tega rajši ločim v svojo mrežo oziroma VLAN, rabiš pa potem managed stikala (vsaj tam kjer so skupaj priklopljene kamere poleg drugih naprav) in ustrezno konfiguracijo VLANov. Ampak to je že druga zgodba.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPa naj ne pozabi da morajo vse te zadeve podpirati tudi dot1x in ga skonfigurirati.\nSaj nikoli ne veš kdaj bo kakšna domača žival prišla do prenosnika, ga priklopla v mrežo\nin se s tem povezala na internet, postala neodvisna ter zakuhala revolucijo.",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Robert je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tUTP kabel in lotanje ne gre skupaj - nikakor !! Sem popravljal že preveč takih packarij, ki so \"odlično\" delovale v času ADSL 1/.256.\nLAN omrežje deluje po sistemu paric - kjer boš ti lotal boš te parice \"razparil\" in napravil močen slabilni člen in izvor motenj.\nOlupi enkrat kos UTP-ja in preštej število zasukov vsakega para na meter ter se čudi zakaj so razločno gosto sukani.\n\t\t\n\t\tKlikni za razširitev\n\t\nDobro ajde za 100Mb/s gre tudi z lotanjem. Samo treba je čimmajn odvijat. Neko kamero bo lahko tak priklopo. Mam tri kable tak rešene , en uporabik po polovici paric, drugi po drugi. Pač jebat ga 30 let stara bajta kjer ni cevi na rezervo. Vse kaj sem lahko je bilo cuknit ven koax in dat not UTP.\nČe pa hočem gigabit pa ni šanse, da se poveže.\nDefinitivno je pa bolje dat namenske spojke če je možnost in prostor.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Glede POE switcha. Imam kamere na dveh lokacijah. Na eni ne rabim VLAN-ov, tako da imam tam dva \"neumna\" poe switcha od Dahua (isti kot na povezavi zgoraj). Delata OK.\n\nNa drugi lokaciji pa imam tole: https://www.senetic.si/product/TL-SG108PE (SG1005P je tudi dobra in poceni rešitev)\nJe pametnejši switch, omogoča tudi nastavljanje VLAN - če je to potreba. Sem zadovoljen, deluje v redu. Poleg kamer, mi napaja tudi zunanjo mesh ap enoto od Ubiquitija.",
+    "author": "OldSkul",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Evo, hvala vsem za odgovore..  Sma zrihtala s switchom https://www.conrad.si/tp-link-tl-sf1005p-omrezni-switch-5-vrat-poe-funkcija in stvar deluje... Utp kabel sma spojila s tem: https://www.techtrade.si/rj45-i-clen-11-plastik-digitus-9060004 (kaj drugega v petek nisem dobil) in ta spojnik dala v nadometno dozo (podobni tej: https://www.ideo.si/elektro_omarice/nadometna_razdelilna_doza_EC410C7_EC_DOZE).\n\nProsil bi vas še za eno pomoč. Ker bi rad imel v hlevu tudi wifi, me sedaj zanima, katero WIFI AP bi moral kupit (čim bolj enostavno in poceni). \n\nSe dobi kaj takega (kot nek wifi extender), da se celota naprava samo vtakne v el. vtičnico, v katero vtakneš 2 UTP kabla (en, ki pride iz routerja in drugi, ki bi šel naprej na switch)? Torej kot nek vmesnik... ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Zakaj pa bi potreboval WIFI AP s passthrough povezavo? Načeloma AP povežeš direktno kar na switch v hlevu in je to to.\n\nGlede na to, da že imaš POE switch v hlevu, razmišljaj o POE AP-ju - boš rabil do njega vleči en kabel manj. Če pa je razlika v ceni prevelika pa seveda idi kar na klasiko ",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "s passtrough zato, ker bodo vsi porti zasedeni s kamerami...  \n\nTorej gledat moram WIFI AP s passtrough.. Ker ko gledaš malo na spletnih trgovinah, se kar zgubiš... Pa še filtrov si ne moreš vredu nastavit...",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Unifi AP-ji imajo večinoma to funkcionalnost, ampak tam menda rabiš tudi kontroler da zadeva deluje (lahko pa me kdo popravi če se motim).\n\nŠe ena opcija pa je, da kupiš dodaten switch, ki ga daš pred tega POE switch. Na ta nov switch je torej priklopljen uplink do hiše, wifi AP in POE switch.\n\nEDIT: ne vem kaj sem študiral... navadni WIFI router ti lahko deluje kot AP in ima hkrati vgrajen tudi switch, ki ti bo zagotavljal to pass-through funkcionalnost.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Če prav razumem, bo ta naprava vredu? https://www.techtrade.si/brezzicni-usmerjevalnik-300mb-n301-2x-antena-tenda-9116045\n\nKolikor razumem, bi to napravo (Tenda N301)  dal vmes med hišnim routerjem in POE switchem v hlevu (obstoječ hišni router bi povezal na WAN port na Tendi N301 in potem npr.: port1 povezal z POE switchem v hlevu...) Ta Tenda N301 pa bo oddajala WIFI signal... \n\nSe da potem to napravo tako skonfigurirat, da je v istem omrežju (npr.: 192.168.1.1) in da ima enake wifi nastavitve (isto ime in geslo, kot hišni router)? Da se v bistvu obnaša kot AP in switch...",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Jaz bi sicer tudi predlagal UniFi AP, ker se mi z drugimi niti ne da več ukvarjat pa razne Lite verzije niti niso drage, ampak passthorugh imajo AFAIK samo dražje verzije (npr AP AC Pro in pa In Wall varjante), ki so vrjetno malo overkill. Kontroller je fajn, če imaš več APjev, načeloma ga pa ne rabiš.\n\nNajceneje bo verjetno res nek all-in-one (\"WiFi router\"), ki ima itak vgrajen switch in mu pač izklopiš ostale funkcije.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe prav razumem, bo ta naprava vredu? https://www.techtrade.si/brezzicni-usmerjevalnik-300mb-n301-2x-antena-tenda-9116045\n\nKolikor razumem, bi to napravo (Tenda N301)  dal vmes med hišnim routerjem in POE switchem v hlevu (obstoječ hišni router bi povezal na WAN port na Tendi N301 in potem npr.: port1 povezal z POE switchem v hlevu...) Ta Tenda N301 pa bo oddajala WIFI signal...\n\nSe da potem to napravo tako skonfigurirat, da je v istem omrežju (npr.: 192.168.1.1) in da ima enake wifi nastavitve (isto ime in geslo, kot hišni router)? Da se v bistvu obnaša kot AP in switch...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNačeloma bo vsak router OK, ampak najcenejši znajo bit nestabilni in mogoče za njih nikoli ne boš dobil FW updatov.\n\nWAN porta v tem primeru ne uporabljaš, vse priklapljaš na LAN porte. Izklopi tudi DHCP in router daj na enak subnet ter mu nastavi tudi drug IP (recimo .2 na koncu). Sicer ne boš mogel dostopati do njegovega admin panela.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Mogoče kakšen Archer C6, da ne greš ravno z najcenejšim (drugače pa nekdo mislim da tudi rabljenega prodaja tukaj na alterju med oglasi).",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "Spet jaz...  \n\nBratranec se je odločil, da bi na posestvu dal ta wifi extender: https://www.mimovrste.com/ojacevaln...a-ojacevalec-brezzicnega-wifi-signala-a9-n300, ki bi ojačal wifi signal.\n\nKaj mislite, bi bilo fejst narobe, če bi bil ta wifi extender v kakšni neogrevani garaži? Ali pa pod streho v ne-obiti lopi (ki stoji na stebrih, kjer ima parkirane stroje)?\n\nTak na hitro ne najdem nekih zunanjih wifi ojačevalnikov (ko iščem zunanji wifi ojačevalnik, google ponudi zadetke za te notranje, ker najdejo zunanja antena  ), ampak si predstavljam, da so precej dražji..",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje UTP kabla in priklop kamer",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSpet jaz...  \n\nBratranec se je odločil, da bi na posestvu dal ta wifi extender: https://www.mimovrste.com/ojacevaln...a-ojacevalec-brezzicnega-wifi-signala-a9-n300, ki bi ojačal wifi signal.\n\nKaj mislite, bi bilo fejst narobe, če bi bil ta wifi extender v kakšni neogrevani garaži? Ali pa pod streho v ne-obiti lopi (ki stoji na stebrih, kjer ima parkirane stroje)?\n\nTak na hitro ne najdem nekih zunanjih wifi ojačevalnikov (ko iščem zunanji wifi ojačevalnik, google ponudi zadetke za te notranje, ker najdejo zunanja antena  ), ampak si predstavljam, da so precej dražji..\n\t\t\n\t\tKlikni za razširitev\n\t\n\nnič ne bo narobe, če ne bo deževalo po njem. Sicer ni narejen za to, ampak tudi če crkne ni nek znesek, da bi se sekiral. Imam tudi sam kak switch in kamero \"zunaj\" in dela že več let...",
+    "author": "igi",
+    "author_level": "Guru"
+  }
+]

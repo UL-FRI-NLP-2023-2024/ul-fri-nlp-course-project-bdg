@@ -1,0 +1,26 @@
+[
+  {
+    "ctx": "Excel 2010 - ali je ta formula sploh možna?",
+    "content": "Ali je možno ustvariti tako formulo, da v tabeli kaže, koliko slik je v določeni mapi na računalniku z istim imenom, kot je posamezna celica v tabeli.\n\nPrimer: Tabela ima polje, kjer je šifra artikla (1230)  in ta šifra je tudi ime slike v neki mapi (c:/mapa/1230.jpg). Če excel zazna, da je enako ime v neki mapi, bi se v polju tabele poleg pojavila številka 1 (če ga ne zazna pa 0). Upam da je dovolj razumljivo.",
+    "author": "scorpion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel 2010 - ali je ta formula sploh možna?",
+    "content": "Takole na brzino:\n1.Odpreš CMD se premakneš v to mapo in vpišeš:\nDIR /O:N /B&gt;SEZNAM.TXT\n\n2.Sedaj imaš v tej mapi še eno txt datoteko, ki vsebuje abecedni seznam vseh fajlov v mapi\nvsebino te datoteke prekopiraš v nov zavihek v Excelovi datoteki.\n\n3. Greš v tvojo datoteko s šiframi in uporabiš funkcijo vlookup,....\n\nČe pa se ti da pa najprej na netu najdeš VBA kodo ki ti naredi točko 1 in 2.\nRecimo:\nhttp://software-solutions-online.com/2014/03/05/list-files-and-folders-in-a-directory/",
+    "author": "NeBluzi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel 2010 - ali je ta formula sploh možna?",
+    "content": "Hvala. Bom malo počekiral.",
+    "author": "scorpion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel 2010 - ali je ta formula sploh možna?",
+    "content": "http://www.excelhowto.com/macros/determine-if-a-file-exists-in-a-directory/\n\npotem pa:\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t=IF(FileExists(\"C:/NekaMapa/\"&A1&\".jpg\");1;0)\n\t\n",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  }
+]

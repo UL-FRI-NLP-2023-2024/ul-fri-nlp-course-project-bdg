@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Zdravo!  Imam problem in sicer, ko preko DVI v VGA adapterja povežem monitor z glavno grafično kartico le ta ne deluje (no signal). Dobil sem namig, da v BIOS-u spremenim nastavitve (izklop integrirane grafične kartice-DVI) ampak nevem kako to narediti, če je sploh možno.  Hvala lepa za pomoč! ",
+    "user": "thexfale"
+  },
+  {
+    "message": "A maš tud integrirano grafo? Ker plato maš? ",
+    "user": "reeves"
+  },
+  {
+    "message": "Ma integrirano eno grafo na plati + dodatno grafično kartico z dvema DVI izhodoma: Plata je Foxconn 915G7MC, težava pa je v tem, ker naj bi tale BIOS kr sam zaznal, da se je na DVI (seprav na grafično kartico) prklopu monitor in v tistem trenutku izklopu integrirano kartico (kr se men zdi mal čudno, ker je dosedaj za to vedno obstajal v BIOSu en ukaz).  Je mogoče problem to, da je monitor na DVI grafično kartico priključen preko vmesnika? V BIOSu je sicer en način, kjer se preklapla med grafičnimi - AUTO, VGA, XXX opcija, vendar ko se izbere XXX opcija ne deluje noben ekran več (pomaga le slepo iskanje opcije Restore BIOS  )  // Mogoče se zdi čudno, zakaj vse to pišem :) S \"thexfale\" se poznava in mi je zadnč govoru o tem problemu ... ",
+    "user": "Ice-Heki"
+  },
+  {
+    "message": "Monitor maš prkloplen na dodatno grafo, bios je to kao zaznau in izklopu integrirano? Če ti piše no signal, pol očitno ni nč prekloplen. V bios-u izklopiš integrirano. Greš v Advanced -> Onboard Device Configuration, pol pa najd integrirano in jo izklop. V Primary Display Adapter si lohk nastavlaš kero grafo boš uporablu. ",
+    "user": "reeves"
+  },
+  {
+    "message": "Problem je, da nimava enakega bios-a kajti te nastavitne pri meni ne obstajajo. Je pa možen izklop v nadzorni pločši in sta mi grafična in monitor včeraj brezhibno delovala, danes pa spet ne . ",
+    "user": "thexfale"
+  },
+  {
+    "message": "Določeni BIOSi (predvsem na ploščah z Intelovim čipovjem in integrirano grafiko) samodejno izklopijo integrirano kartico ko priklopiš dodatno. Sicer pa to lahko takoj vidiš tako, da pustiš dodatno kartico v računalniku, monitor pa priklopi na integrirano - če dobiš sliko, se integrirana grafika ni izklopila. To vseeno ne bi smel biti problem, vse kar moraš narediti je, da najdeš v BIOSu možnost \"Primary VGA\" ali nekaj podobnega - trenutno je verjetno nastavljena na On-board, prestaviti pa jo moraš na PCIe ali AGP (ne pa PCI, razen če imaš slučajno PCI grafično kartico).  Če po tem še vedno prikaz ne deluje, preveri, da grafična kartica deluje na drugem računalniku (in po možnosti z drugim monitorjem). Problem je lahko tudi v DVI->VGA adapterju - določeni morajo biti trdno priviti da delujejo (pa, ker imaš 2 DVI izhoda, poizkusi drugega). ",
+    "user": "ender"
+  },
+  {
+    "message": "Problem je, da v BIOS-u ni te opcije. Vse ker je v zvezi z grafiko v mojem BIOS-u je: Standard CMOS features: (nastavljeno na EGA/VGA) -EGA/VGA -CGA 40 -CGA 80 -MONO  Video BOIS cacheable: Disabled/Enabled (nastavljeno na disabled)  VGA SETTINGS 2.0 Chip frame buffer size: 1MB/8MB  PEG/Onchip VGA control: (nastavljeno na auto) -AUTO -PEG PORT -ON CHIP VGA  DVMT mode: -FIXED -DVMT BOTH  P.S. V naslovu sem napisal, da imam težave s priklopom na VGA vhod vendar imam težave pri DVI vhodu. Tudi adapter in grafična kartica sta OK.  Hvala, lp ",
+    "user": "thexfale"
+  },
+  {
+    "message": "PEG/Onchip VGA control <- nastavi na PEG. ",
+    "user": "ender"
+  },
+  {
+    "message": "Če izberem to opcijo, monitor ne deluje ne na eni in ne na drugi grafični kartici ",
+    "user": "thexfale"
+  },
+  {
+    "message": "A imaš najnovejši BIOS? Ta nastavitev je tista, ki določa, katera kartica je privzeta (PEG = PCI Express Graphics). ",
+    "user": "ender"
+  }
+]

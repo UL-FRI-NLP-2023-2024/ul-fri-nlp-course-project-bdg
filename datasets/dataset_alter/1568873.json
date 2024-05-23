@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "Sprememba particij",
+    "content": "Nov računalnik, na njem so štiri particije:\n1 GB (OEM)\n100 MB NTFS\nc: disk 500 GB\nd: disk 70 GB recovery\n\nRad bi zmanjšal C: particijo na 400 GB in za njo naredil 100 GB veliko novo particijo za podatke. Problem je v tem, da mi nobeno orodje noče naredit nove particije. C: particijo mi je še uspelo zmanjšat nove naredit pa nikakor ne gre.  Eno od orodij mi je javilo, da ni prostih MBR slotov na disku . Kje je problem? Kako to lahko rešim?",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "Na PCjih imaš lahko zaradi omejitev particijske tabele, ki jo pozna BIOS, ki se skriva v prvem sektorju diska (512B) samo 4 particije. Vsebino tiste zadnje (recovery) particije bo potrebno prepisati na neko drugo napravo in jo pobrisati. Potem boš lahko namesto te zadnje naredil novo &#187;extended&#171; particijo do konca diska, ki jo boš lahko razrezal na &#187;logične particije&#171;. Boš pač naredil 70GB za recovery in 100 GB za tvoje potrebe.",
+    "author": "der_Alte",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "Napredna particijska orodja znajo spremeniti tip particija kar na licu mesta.\n\n(je pa ta razpored res glup, moj PC ima podobno)\n\n\nPredlagam, da narediš backup vseh particij, razen C: (da ni preveliki, tidti D: je pol 70 GB ? malo preveč se zdi).\nNato spremeni tip Recovery D: particije na logično. Ali pa od C:, windows to prebavi... (preveri, kje je datoteka BOOTMGR, ocenjujem da je na tisti 100 MB particiji. Če ni, raje tip C: pusti pri miru.)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "Znajo že. Samo potem se podatki izgubijo. Lahko pa ti zapišeš kje vse se nahaja &#187;particijska tabela&#171; extended particije. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "der_Alte",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "Hvala za hiter in uporaben nasvet.\nRešeno.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik der_Alte pravi:\n Znajo že. Samo potem se podatki izgubijo.\n\t\t\n\t\tKlikni za razširitev\n\t\nPol so zanič programi. Uporabi drugega. Recimo  EaseUS&#174; Partition Master 9.1.1 Home Edition",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "Gparted (http://gparted.sourceforge.net/) sigurno zmore to in marsikaj drugega, je pa res, da moras vedeti, kaj pocnes (backup pred akcijo je definitivno priporocljiv \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ).",
+    "author": "Commodore",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sprememba particij",
+    "content": "Sem prej pregledal opis, pa tega ne omenjajo. Pri EaseUS imajo samo o tej funkciji lastno spletni stran.\n\nNe rečem, da ne gre, ker nisem probal, ampak toliko, da se ne bo kdo zaletel, potem pa ne bo šlo.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

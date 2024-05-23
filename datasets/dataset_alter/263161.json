@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "m:stik ne dela",
+    "content": "Pozdravljeni!\n\nImam probleme z uporabo m:stika. V Ljubljani je zadeva normalno delovala, sedaj, ko sem v Franciji pa zadeva ne \ndeluje več.\n\nKo zaženem program se mi najprej izpiše \"Odkrivam omrežje\" kar traja kakšno minuto, nato pol minute piše \n\"Prijavljam\" nato pa dobim \"Napaka pri prijavi: 503 - Service Unavaible\". Večkrat sem že klical na Mobitel, vendar \ns(m)o obupali. Problem naj bi bil v tem, da program nazaj ne dobi informacij od DNS-sov (kot da so nekje blokirane \nna poti do mene). Log sem dodal v priponkko.\n\n\nŠe podatki o računalniku: Windows SP2, windows firewall vklopljen, dodane izjeme za porta 5060 in 5061 (oba TCP in \nUDP). Računalnik je brezžično povezan na modem Sagem F@ast 3202 LiveBox (internetni ponudnik Orange France). Na modemu sem dodal port forwarding (Lan servers) na moj računalnik za oba porta (5060 in 5061, oba TCP in UDP). Na modemu so vneseni tudi podatki za DNS:\nprimarni: 81.253.149.1\nsekundarni: 80.10.246.3\nPasserelle par défaut: 193.253.160.3 (tole pravzaprav ne vem kaj pomeni, moja francoščina je še bolj boga)\n\nNa mojem računalniku imam vnešena tudi zgornja DNS-a. Probal sem zamenjati dns-e (z OpenDNS serverji), vendar ni \npomagalo.\n\nVglavnem pojma nimam kako naj raziščem kaj je narobe - ali je kaj narobe v nastavitvah routerja, ali je kaj narobe z \ndns-i, ponudnikom..., zato mi bo kakršnakoli informacija prav prišla - tale m:stik mi bo namreč kar precej znižal \nračun, zato bi ga rad usposobil...\n\nHvala!\n\nLp, Rok",
+    "author": "blspider",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "m:stik ne dela",
+    "content": "Tisti passarelle je verjetno default gateway.",
+    "author": "NavadniNimda",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "m:stik ne dela",
+    "content": "Connection error Timeout while contacting DNS servers for spr.mobitel.si\" | \n[08-03-12]21:35:51.136 | Info | RESIP:TRANSACTION | \"Ran out of dns entries for spr.mobitel.si. Send 503\" | \n\nKar se tiče tega strežnika spr.mobitel.si daš lahko njegov IP direktno v HOSTS datoteko. Pogooglaj kako se to naredi.\n\nDrugače pa probaj drugi računalnik/ISP, pa izklopi vse firewalle, če ne deluje tako kot treba.",
+    "author": "Zenaj4",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "m:stik ne dela",
+    "content": "Hoj, dal v hosts, izklopil firewalle. Nic bolje (na istem racunalniku ter drug isp (doma telemach) deluje).\n\nSem pa recimo zamenjal dns-e z telemachovimi in je zanimivo da na zacetku dobim response (glej sliko), kasneje pa nic vec (queryi na spr.mobitel.si, _sips._tcp.spr.mobitel.si, _sips._udp.spr.mobitel.si) - tega sicer ni vec na sliki (lahko dam pa zvecer gor log/trace).\n\nAli je mozno, da ISP kaj blokira? Se kaksna ideja?\n\nLp,\nRok\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "blspider",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "m:stik ne dela",
+    "content": "Zakaj se preprosto ne obrneš na mobitelov customer support? Saj so tudi s tujine brezplačni klici...",
+    "author": "AfterEight",
+    "author_level": "Fizikalc"
+  }
+]

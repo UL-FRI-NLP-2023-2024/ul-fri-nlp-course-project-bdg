@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Backup imam narejen tako;\nIz diska A se vsak dan kopira na disk B (oba sta v istem pc-ju)\nIz diska B se kopira na drug pc na disk C. Ta kopija se dela 1x na teden*.\nPogram je SyncBackFree.\n\n Problem; \nda, če dobim un ta zaj... virus, kater zaklene vse fajle in zahteva odkupnino.\nKer potem bo SyncBack program prepisal in zamenjal z zaklenjenimi tudi vse fajle na obeh drugih backup diskih B in C. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n*na disk C se dela backup 1x na teden ravno zato, da imam par dni fore, če ugotovim, da je šlo nekaj narobe in lahko un disk oz pc enostavno izklopim in imam tako v najslabšem primeru, en teden star backup.\n\nRazmišljam, da bi tudi na disk B delal backup na par dni \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\nKakšne ideje, predlogi... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Rabiš kak bolj sofisticiran backup sistem, ki zna verzionirati datoteke. Bacula je en tak open source. Ali pa vzameš kak online bacup sistem kot je http://backblaze.com, ki ima neomejen backup za 5$ na mesec. Nudijo ti eno verzijo datoteke na uro za zadnjih 24 ur, 1 verzijo na dan za zadnjih 7 dni in eno verzijo na teden za zadnje 4 tedne.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Program zakriptira datoteke na vseh diskih, ki jih vidi s svojo črko. Torej v tvojem primeru verjetno tudi disk B.\n\nDisk C imaš nastavljen na črko ali kot share?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Zelo kvaliteten brezplačen program je FreeFileSync. Uporabljam ga za mirroring, deluje brez napak. \n\nhttps://www.freefilesync.org/\n\n\nFeatures\n\n    Synchronize network shares and local disks\n    Synchronize MTP devices (Android, iPhone, tablet, digital camera)\n    Detect moved and renamed files and folders\n    Copy locked files (Volume Shadow Copy Service)\n    Detect conflicts and propagate deletions\n    Binary file comparison\n    Configure handling of Symbolic Links\n    Automate sync as a batch job\n    Process multiple folder pairs\n    Comprehensive and detailed error reporting\n    Copy NTFS security permissions\n    Copy NTFS extended attributes (compressed, encrypted, sparse)\n    Copy HFS+ extended attributes and ACLs\n    Support long file paths with more than 260 characters\n    Fail-safe file copy prevents data corruption\n    Cross-platform: Windows, Linux, Mac OS X\n    Expand environment variables like %UserProfile%\n    Access variable drive letters by volume name (USB sticks)\n    Native 64-bit support\n    Keep versions of deleted/updated files\n    Prevent disc space bottlenecks via optimal sync sequence\n    Full Unicode support\n    Highly optimized runtime performance\n    Include/exclude files via filter\n    FreeFileSync portable and local installation available\n    Handle daylight saving time changes on FAT/FAT32\n    Use macros %time%, %date%, et al. for recurring backups\n    Case-sensitive synchronization\n    Built-in locking serializes multiple users synchronizing the same network folder\n    ... download and use for free!\n\nhttp://sourceforge.net/projects/freefilesync/\nhttp://download.cnet.com/FreeFileSync/3000-2248_4-75300470.html",
+    "author": "wildude",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Če prov razumem, tudi moj program zna verzionirat - glej sliko\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nOb vseh teh diskih doma, nekak upam, na brezplačen backup.",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik erikson pravi:\n Program zakriptira datoteke na vseh diskih, ki jih vidi s svojo črko. Torej v tvojem primeru verjetno tudi disk B.\n\nDisk C imaš nastavljen na črko ali kot share?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nA in B sta s črko ja.\n\nC je pa kot share -&gt; network + ime pc-ja + ime diska(C)",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Fusion, jaz delam podobno\n\nNamesto enega dnevnega profila imam synback profile \"ponedeljek, torek\" .. in vsak arhivira na svoj imenik.\nPoleg tega so še profili \"januar, februar ...\".\n\nZa backup uporabljam dva zunanja, 3.0, 1 TB diska. Za mojo količino podatkov to zadostuje.\nPotem ko je prvi ciklus dni mimo se vse skupaj, kljub količini opravi hitro.\n\nPo končanem kopiranju se disk iztakne.",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "hmm, tvojga načina ne razumem najbolj, a potem imaš veliko enakih datotek, ali imaš samo spremenjene datoteke po full različnih mapah?\n\nKer jst imam vbistvu \"mirror\". Tko kot je na delovnem disku, tko je na backup diskih. V primeru frke, enostavno copy/paste celga folderja nazaj na delovni disk in živimo dalje\n\nGlede zunanjega diska tudi razmišljam ja... Vendar sem najprej porabil že obstoječe diske)",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Ti imaš npr. kopiranje c:\\vseživo na X:\\vseživo\njaz pa kopiram\n\nv ponedeljek : c:\\vseživo na X:\\ponedeljek\\vseživo\n\nrecimo da imam 2X7 (pa še nekaj ... ) mirrorjev.\n\nDanes imam recimo spravljena stanja za vsak posamičen dan v tednu.\nPa še pet stanj zadnjega v mesecu letos,  dodatno pa še sedem lanskih",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "To pa je veliko overheada  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nZakaj ne narediš inkrementalnih updatov? Na Linux z rsync gre to z lahkoto, kjer so vse inkrementalne kopije dejansko celotne, ampak se nespremenljeni fajli \"povežejo\" preko hard-linkov.\n\nTe zadeve so načeloma podprte tudi na NTFS, ampak vprašanje če zna to kateri backup program izkoristiti.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Načeloma zna to rešiti vsak backup SW, ki ima v ozadju bazo... Nekateri backup SW delujajo po principu \"incremental forewer\" in naredijo full samo enkrat, na začetku...",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "ksz\n\nkakšne enostavne zadeve si najenostavneje spišeš v batch file (xcopy tralala), uporabiš še /d , da prepiše le spremenjene fajle (delto). Vse skupaj nastaviš v task scheduler pa je.",
+    "author": "Generik",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Backup ideje in pomoč",
+    "content": "Jaz sem pa nagruntal da je najbolši dual incremental backup. Torej iz A na B in nato iz B na C. V idealnem primeru da sta oba forever, tako si varen ne samo pred izbrisom ampak tudi prek korupcijo podaktov na Backup B. Za dodatno varnost pa recimo rukneš iz C še en mirror na D, sploh v primerih, kjer sta B in C isti računalnik, pomožnosti v isti hiši kot A.\n\nRecimo osebno imam več A klientov na katerih je seafile inštaliran, ki backupira inkrementalno na B, čisto mimogrede pa ponuja še sihronizacijo. Iz B na C imam kar stari lokalni inkrementalni Windows Server backup. Za D mirror imam pa Onedrive.",
+    "author": "Azgard",
+    "author_level": "Pripravnik"
+  }
+]

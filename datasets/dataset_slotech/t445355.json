@@ -1,0 +1,114 @@
+[
+  {
+    "message": "Da bom lažje razložil situacijo sem na hitro skiciral tole sliko.   shema  Na zgorjni sliki je skicirano kakšno povezavo imam sedaj.  Na spodnji sliki je skicirano kaj sploh želim doseči.  Internet imam trenutno preko antene, ki gre na router1, do katerega nimam dostopa. Imam določen statičen IP. Sedaj bi pa rad zraven dodal še en router - Linksys WRT54GL, da bi imel po stanovanju še wireless povezavo do intrneta. Ko sem priklopil linksys router po spodnji shemi, mi napiše da je povezava vzpostavljena, vendar brskalnik ne odpre nič. Verjetno routerja med seboj ne komunicirata. Tole sem našel na spletu, je mogoče to rešitev? Ali predlagate kaj drugega.  http://www.dd-wrt.com/wiki/index.php/Wi...  hvala, lp ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Pomojem je treba nastavit tist statičen IP še na WRT54GL (sepravi ne DHCP in ne PPPoE povezovanja)... In ne pozabi zaščitit še wirelessa, če si zgolj vzel mašino iz škatle in jo priključil... ",
+    "user": "Vili_vanili"
+  },
+  {
+    "message": "To sem tudi storil, ampak ne funkcionira. ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Ce je tisto z anteno res router in ne AP, potem na WRTju nastavi DHCP, zmisli se nov subnet (recimo 192.168.42.0/24) pa bi moralo delat. Pa wirelessa ne dat na isti kanal, kot je obstojeci :) ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "Na žalost ne deluje. ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Kak IP pa dobi WRT54GL? In kak IP dobijo racunalniki, prikljuceni nanj? ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "Uporabi WRT54GL kot router, na wan nastavi statični IP, prehod in DNS-je, na LAN strani pa izberi svoj IP naslovni prostor, ki bo drugačen od Wan strani, vklopi DHCP in stvar mora delati. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Se oproščam za mojo nevednost, ampak mi ne uspe tega nastaviti. Kam moram napisat kaj.  Operating mode sem nastavil na Router. Kaj nastavim pri dynamic routing ter interface? Če pod destination LAN ip napišem svoj ip naslov, mi napiše da je napačen. Če spremenim Router IP prav tako ne dela.    router ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Zresetiraj wrt54gl na tovarniške nastavitve in potem vklopi kabel od ROUTER1 v WAN port na tvojem. Računalnike pa v LAN porte.   ČE stvar še vedno ne bo funkcionirala potem ima ROUTER1 verjetno kakšne posebne nastavitve/filtriranje..  -----  Lahko pa svoj router uporabiš kot switch. Izklopiš DHCP server in spremeniš local ip address na 192.168.1.x (x je poljubna cifra nekje med 1 in 254). Vse kable vklopiš v LAN porte. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Kar očitno je da noben na celem slo-tech.com ne ve nastaviti router na drugo kot automatic in niti ni potrebno, eden je DHCP server, drugi pa ne in vsak ima različni IP in nastavi se pred tem ko priklopiš. ",
+    "user": "revvs"
+  },
+  {
+    "message": "Spremeni local IP address na 192.168.42.0 ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "Tale ideja, da uporabim router kot switch se je izkazala za dobro. Intrnet deluje! Na prenosniku tudi dobim signal, le povezati se noče. Nevem zakaj? Pa še nekaj vprašanj imam glede wirelessa in nastavitev le tega.  Wireless Network Mode: B-only, G-only, mixed , kaj naj izberem? Wireless Channel: Tukaj je 13 kanalov z različnimi frekvencami, moram to kaj spreminjati? Wireless SSID Broadcast: enable, disable? Ter kakšno zaščito naj uporabim? ",
+    "user": "Sadida"
+  },
+  {
+    "message": " Sadida je 14. dec 2010 ob 18:10 izjavil:Tale ideja, da uporabim router kot switch se je izkazala za dobro. Intrnet deluje! Na prenosniku tudi dobim signal, le povezati se noče. Nevem zakaj? Pa še nekaj vprašanj imam glede wirelessa in nastavitev le tega.  Wireless Network Mode: B-only, G-only, mixed , kaj naj izberem? Wireless Channel: Tukaj je 13 kanalov z različnimi frekvencami, moram to kaj spreminjati? Wireless SSID Broadcast: enable, disable? Ter kakšno zaščito naj uporabim?    Mixed ali G En kanal, ki se ni zaseden SSID Broadcast enable WPA2-PSK  Samo nisem cisto preprican, ce bo wireless deloval ce uporabljas router kot switch. Ce ne bo delalo poglej, ce imas kak AP mode (access point) v nastavitvah in ga vklopi. ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "V advanced nastavitvah sem našel AP Isolation, je mogoče to? Sem dal na on, vendar se prenosnik noče povezati, napiše da omrežje računalniku ni dodelilo omrežnega naslova. ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Ne, AP isolation mora biti na off. ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "No potem sem pa na istem kot na začetku. Imam wireless signal, intrnet pa ne dela.  Malo sem že zbegan. Kaj naj sploh storim. ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Mogoce ti to pomaga. ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "Kaj pa ce laptopa na kabel priklopis? Dobi mrezne nastavitve oz deluje net? ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Evo, pišem iz prenosnika. Wireless dela Na prenosniku sem nastavil IP ki ga uporabljam na pc-ju. Ampak sedaj ne morem uporabjlati intrneta na pc-ju :) Hitrost pa 54Mbps. Zakaj je manjša? ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Pa nastavi malo drugacen IP. Na zadnjem mestu spremeni malo stevilko. To, da si moral nastavit IP je znak da DHCP streznik ne dela. Hitrost 802.11g standarda je maksimalno 54Mbps, hitreje ne gre. Za vec rabis opremo, kompaktibilno s standardom 802.11n (WRT54GL je ze zelo star router, ampak ce ne rabis 802.11n je stvar se vedno super) ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "Če nastavim drugačen ip ne dela, verjetno zato ker mi je lastnik omrežja določil samo 2 ip-ja, katera imam na pc-jih. Hvala za pomoč! ",
+    "user": "Sadida"
+  },
+  {
+    "message": "No če se ti da še malo komplicirat.. Lahko routerju potem nastaviš tip povezave STATIC IP in enega od teh ipjev (glej da vneses tudi dns nastavitve), vklopiš dhcp server, kabel iz router1 v WAN, na racunalnikih pa nastimas da dobijo avtomatsko ipje..in bi mogl laufat. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Zelo zanimivo. Sem naredil tako, pa je celo delovalo. Odprlo je samo eno stran, potem pa ni delovalo več. Potem sem ponovno shranil nastavitve ruterja in je spet odprlo eno stran. Je treba nastaviti še kaj? Kakšen operating mode je treba nastaviti. Ne glede na to kaj dam je isto. Pri dhcp nastavitvah je še tole : Client Lease Time in pa WINS.  Je bil pa najprej problem, ker če sem kabel iz routerja1 povezal na WAN nisem mogel dostopati do nastavitev. Zato sem najprej povezal kakor switch in nastavil, potem pa dal kabel v WAN. To bi bilo zaenkrat to. Kaj storiti zdaj? ",
+    "user": "Sadida"
+  },
+  {
+    "message": "dj nared screenshot od basic setupa se enkat ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Evo. Ip-ja in dnsjev nisem napisal, ker imam trenutno zvezano kot switch.   setup ",
+    "user": "Sadida"
+  },
+  {
+    "message": "probaj local ip address spremenit 192.168.x.1 (x je cifra med 2-254) ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Če dam recimo 192.168.24.1 se tudi povezati ne morem več na ruter. ",
+    "user": "Sadida"
+  },
+  {
+    "message": "Na routerju 1 vtakni kabel za internet (modem, optika,..) v WAN, kabel od routerja WRT54GL pa v enega od LAN vhodov.  na routerju 1 vnesi: - svoj zunanji IP, subnet mask, gateway, zunanje DNS serverje - vse to dobiš na strani ponudnika neta. - lokalni IP nastavi v eno od območij (npr. 192.168.1.1)  na linksys vpiši: - lokalni IP - mora biti v istem sklopu kot router1 (npr. 192.168.1.2) - pod gateway vpiši lokalni IP router1 - 192.168.1.1 - vnesi zunanje DNSje (enake kot zgoraj) - vklopi DHCP; starting IP je lahko 1.100; tudi ostalo imaš ok; WINS pusti prazen. - vklopi wireless, Wireless Network Mode: mixed, SSID - izmisli si ga (ime brezžičnega omrežja); kanal katerikoli (npr. 10), SSID broadcast - jaz ga imam izklopljenega (da drugi ne vidijo omrežja), security WPA2 personal, algoritem TKIP+AES, shared key - vpiši geslo (mislim da najmanj 10 znakov), renewal pusti (3600 sec je default); MAC filter lahko pustiš off, advanced wireless - lahko enablaš frame burst; ostalo pust pri miru.  kot si lahko opazil, so vse lokalne mašine na omrežju 192.168.1.x - če spremeniš v 192.168.24.1 bo router sam,... in ga ostali ne vidijo.  hujše je mimo.  zalaufaj laptopa; mrežna lahko vse na auto (IP, DNS...); če nisi izklopil oddajanja SSID, poišči svoje omrežje; če si ga izklopil - vtipkaj ime svoje WiFi mreže (pazi na velike in male črke..), izberi WPA2 personal, vtipkaj password...   ostalim mašinam (statičnim) nastavi IP: - ena recimo na 192.168.1.5, subnet 255.255.255.0, gateway 192.168.1.1 (naslov routerja1, ki vodi v širni svet) - druga recimo na 192.168.1.6, ostalo enako kot zgoraj.  lahko daš tudi notebook na fiksni IP (če to potrebuješ) - princip je isti kot za statični mašini.   srečno. ",
+    "user": "ali3n"
+  }
+]

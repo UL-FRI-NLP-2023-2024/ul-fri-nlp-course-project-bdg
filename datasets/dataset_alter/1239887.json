@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Macro v excelu",
+    "content": "V celico N3 bi rad zapisal stran x od xx strani.\nZapisal sem macro :\n\nSub pagenumbers()\nDim MyR As Range\nDim PageNumber As Long\n\n\nSet Mysheet = ActiveSheet\nPageNumber = 1\nSet MyR = Range(\"N3\") \nMyR.Value = \"Stran \" & PageNumber\n\nDo While Not Intersect(MyR, ActiveSheet.UsedRange) Is Nothing\nIf MyR.EntireRow.PageBreak = xlPageBreakAutomatic Then\nMyR.Value = \"Stran \" & PageNumber \nPageNumber = PageNumber + 1\n\nEnd If\nSet MyR = MyR.Offset(1, 0) \nLoop\nEnd Sub\n\nKaj imam narobe oziroma kaj moram dodati, da bo stvar delovala.\nSedaj mi na vsako stran napiše \"stran 1\", macro moram ročno zagnati.\nAli je možno, da se macro samodejno zažene vsakič ko dam predogled tiskanja ali tiskanje.",
+    "author": "steni",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "A nujno rabiš v tabeli? Ker to kar \"rabiš\" gre dosti bolj enostavno preko - Priprava strani - glava/noga.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "Nujno mora biti v tabeli.\nGlava/noga ne pride v poštev",
+    "author": "steni",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "Tukaj en  hint.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "Tvoj makro (Excel 2010) na 1. *in drugo* stran zapiše \"Stran 1\". Za pravilno oštevilčenje zamenjaj vrstici:\nMyR.Value = \"Stran \" & PageNumber\nPageNumber = PageNumber + 1\n\nČe pa želiš izpis \"stran x od xx strani\" pa namesto 1. vrstice kode zgoraj uporabi\nMyR.Value = \"Stran \" & PageNumber & \" od \" & ActiveSheet.HPageBreaks.Count + 1\n\n&gt;Ali je možno, da se macro samodejno zažene vsakič ko dam predogled tiskanja ali tiskanje. \nDefinirat moraš odziv na  dogodek :\nPrivate Sub Workbook_BeforePrint(Cancel As Boolean)\n     pagenumbers\nEnd Sub",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "Hvala za pomoč moj macro sedaj izgleda takole :\n\nSub pagenumbers()\nDim MyR As Range\nDim PageNumber As Long\nSet Mysheet = ActiveSheet\nPageNumber = 1\nSet MyR = Range(\"M3\")\nMyR.Value = \"Stran \" & PageNumber & \" od \" & ActiveSheet.HPageBreaks.Count + 1\nDo While Not Intersect(MyR, ActiveSheet.UsedRange) Is Nothing\nIf MyR.EntireRow.PageBreak = xlPageBreakAutomatic Then\nPageNumber = PageNumber + 1\nMyR.Value = \"Stran \" & PageNumber & \" od \" & ActiveSheet.HPageBreaks.Count + 1\nEnd If\nSet MyR = MyR.Offset(1, 0)\nLoop\nEnd Sub\nPrivate Sub Workbook_BeforePrint(Cancel As Boolean)\npagenumbers\nEnd Sub\n\nOštevilčenje strani deluje kot sem želel,vendar ga še vedno ročno poganjam.\nImam pa še eno vprašanje:\nkaj spremeniti v macru, če želim, da se mi na začetku vsake strani ponovi x vrstic(to nastavimriprava strani,list,....), številka strani pa je v celici, ki je v eni izmed teh x vrstic?",
+    "author": "steni",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik steni pravi:\nOštevilčenje strani deluje kot sem želel,vendar ga še vedno ročno poganjam.\n\t\t\n\t\tKlikni za razširitev\n\t\nOčitno nisi prebral, kaj piše na linku, ki sem ti ga prilepil zgoraj: \"Unlike standard macros which are installed in standard modules, Workbook Events are installed in ThisWorkBook in the following manner:  F11 (Visual Basic Editor), Get into your project library (name of your workbook) with Ctrl+R (View, Project Explorer), under the name of your workbook you see Microsoft Excel Objects, then before Modules you see ThisWorkBook, doubleclick and paste the code into the code window (F7).\"\n...\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik steni pravi:Imam pa še eno vprašanje:\nkaj spremeniti v macru, če želim, da se mi na začetku vsake strani ponovi x vrstic(to nastavimriprava strani,list,....), številka strani pa je v celici, ki je v eni izmed teh x vrstic?\n\t\t\n\t\tKlikni za razširitev\n\t\nDvomim, da je kakšna enostavna rešitev za tole (bi se pa verjetno našla kakšna, ki bi ti dala enak rezultat). \"Vrstice, ponovljene na vrhu\" so - domnevam - vedno enake. Če bi jih hotel spreminjati *med* tiskanjem vsake strani, pa bi moral imeti na to vezan dogodek, ki pa ga ni.",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "mi lahko kdo odgovori kaj se to napiše/definira vedno na začetku makra\nnpr: \nDim MyR As Range\nDim PageNumber As Long\n\nsem sam tudi nekaj makrov napisal  in vedno brez teh vrstic pa je bilo vse ok\n\nkdaj in zakaj se to uporablja?\n\nhvala",
+    "author": "jgfd",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "Tako se dela pravilno. S tem definiraš spremenljivko in ji določiš tip. Če tega ni prevajalnik avtomatsko kreira spremenljivko in ji dodeli tip, ko ji prvič dodeliš vrednost.   V VBscriptu drugače obstaja ukaz, s katerim lahko od prevajalnika zahtevaš, da v primeru, če spremenljivke ne definiraš javi napako. Samo privzeto je to izklopljeno. Pravilno je zaradi tega, ker lahko pride do situacije, če nisi pazljiv, da spremenlivko uporabiš v kakšnem pogoju, ko še ni definirana. Ali pa ji dodliš vrednost različnih tipov, npr številka, ali niz znakov. \n\nPrimer:\n\nIf a Then \n' naredi nekaj\nEnd If\n\na ima tu nedefinirano vrednost\n\nali\n\na = \"alter.si\"\nIf a = 1 Then\n' naredi nekaj\nEnd If\n\na ima tu tip string, v pogoju ga pa primerjaš z integer.\n\nČe imaš striktno preverjanje, te na take napake opozori prvajalnik.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Macro v excelu",
+    "content": "aha... mogoče pride kdaj prav ...hvala",
+    "author": "jgfd",
+    "author_level": "Pripravnik"
+  }
+]

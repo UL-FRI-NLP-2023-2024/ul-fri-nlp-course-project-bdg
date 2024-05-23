@@ -1,0 +1,42 @@
+[
+  {
+    "message": "imam tezavo.  <div id=\"main\">\n\t\t<div id=\"mainleft\"></div>\n\t\t<div id=\"mainright\">\n\t\t\t<center>\n                        <div id=\"r_include\">to je testno besedilo!</div>\n                        </center>\n\t\t</div>\n</div>\n  inkludano stran mi v ie poravna kot je treba, torej mi div r_include poravna sredinsko glede na div mainright. firefox mi stran poravna drugace, in sicer div r_include poravna sredinsko glede na div main.  vsaja obrazlozitev zakaj je tako ali kako naredi, da bo rezulatat v firefoxu enak kot v ie-je, je dobrodosla:) ",
+    "user": "alum"
+  },
+  {
+    "message": "IE ima svoj način box modela kot FF in sodobni brskalniki to pokažejo OK... inžinirji MS so se iz nam neznanega razloga odločili da bodo sledili \"drugim\" standardom kot w3. Tako da moraš uporablajt hacke za IE. Ker glede na splošno uporabo w3 standardov FF pokaže prav in IE ne, baje je to popravljeno v 7 izdaji IE. ",
+    "user": "Tody"
+  },
+  {
+    "message": "center tag poravna samo text, oz inline-level elemente ne pa tudi block-level elementov kot je div.  torej premakni center tag znotraj diva r_include, ali pa se loti stvari z uporabo cssja in text-align.  upam da sem prav razumel kaj hočeš narediti. drugače block-level element poravnaš na sredino s tem da daš levi in desni margin na \"auto\" (torej: margin-left:auto; margin-right:auto;) ampak dvomim da govoriš o tem glede na to da nikjer ne podajaš širine elementom ",
+    "user": "Road Runner"
+  },
+  {
+    "message": "rad bi poravnal celoten block element (r_include), na sredino njegovega vsebnika, torej blocka mainright.  kaksen je pravilen(oz. cim bolj standarden) postopek za to? ",
+    "user": "alum"
+  },
+  {
+    "message": " <style>\n#main {\nborder: 1px black solid;\npadding: 5px;\nfloat:left;\n}\n\n#mainleft {\nborder: 1px red solid;\npadding: 5px;\nfloat: left;\nmargin-left:15px;\n}\n\n#mainright {\nborder: 1px blue solid;\npadding: 5px;\nfloat:right;\nmargin-right:15px;\n}\n\n#include {\nborder: 2px gray dotted;\npadding: 5px;\nmargin-left:auto;\nmargin-right:auto;\nfloat:left;\nclear:left;\nwidth: 200px;\nmargin-bottom:5px;\n}\n</style>\n\n\n<body>\n<div id=\"main\">\n\t\t<div id=\"mainleft\">\n\t\t\t<div id=\"include\">to je testno besedilo!</div>\n\t\t\t<div id=\"include\">to je testno besedilo! 2</div>\n\t\t\t<div id=\"include\">to je testno besedilo! 3</div>\n\t\t</div>\n\t\t<div id=\"mainright\">\n\t\t\t<div id=\"include\">to je testno besedilo!</div>\n\t\t\t<div id=\"include\">to je testno besedilo! 2</div>\n\t\t\t<div id=\"include\">to je testno besedilo! 3</div>\n\t\t</div>\n</div>\n\n</body>\n</html>\n  Si si takole zamislil?  [edit] ubistvu je pomembno tole: margin-left:auto; margin-right:auto; v include divu ;) ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "wtf.  html:  <div id=\"main\"> <div id=\"mainleft\"></div> <div id=\"mainright\"> <div id=\"r_include\">to je testno besedilo!</div> </div> </div>   css:  #mainright { text-align:center; } #r_include { margin:0 auto; width:[nekej]; }  ",
+    "user": "Road Runner"
+  },
+  {
+    "message": "btw, overlord_tm, tej margin auto res da delajo, ne delajo pa povsod. ie5.5 in nižji (za 6 nism zihr, možno da tud) pa rabijo še text-align:center v parent divu ",
+    "user": "Road Runner"
+  },
+  {
+    "message": "Racer, meni tale text-align dela, ampak ne če hočem narediti stran s tremi stolpci (levi menu/vsebina/desni menu). Če uporabim float, potem mi ne poravna sredinsko r_include diva.  Auto margini delajo v IE6, vsaj meni  ",
+    "user": "overlord_tm"
+  },
+  {
+    "message": "overlord_tm, da ne bom dolgovezil,  klik :) ",
+    "user": "Road Runner"
+  },
+  {
+    "message": "hvala ",
+    "user": "alum"
+  }
+]

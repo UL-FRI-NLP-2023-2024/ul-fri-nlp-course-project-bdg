@@ -1,0 +1,116 @@
+[
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Hej vsem..\n\nKolega je dobil rabljen zunanji AP Cisco AIR-AP1562I-E-K9 in me je prosil, če bi skonfiguriral to škatlo za zunanji AP. In sem rekel, da ni problema, ampak so nastali problemi...\n\nTorej, iz te AP je že napeljan UTP kabel, ki omogoča POE priklop. Ker ima doma switch s POE, pri povezavi ni problema in AP se lepo vklopi. Na routerju sem pogledal, kateri IP mu je dodelil in potem poskušal odpret ta URL za konfiguracijo AP. Vendar preko brskalnika nisem mogel dostopat do konfiguracijske strani (ping pa je delal).\n\nNo, in sem pomislil, da je mogoče že skonfiguriran tako, da ne pusti spletne konfiguracije in sma naredila factory reset. No, in izkazalo se je, da tudi po factory reset ne moram dostopat do konfuguracijske strani preko IP naslova (pingam pa ga lahko). Je pa se izvedel factory reset ker se je spremenilo ime tega AP na nek default.\n\nOčitno so to bolj profi zadeve (nekje sem zasledil ceno okoli 1500 eur) in spletna konfiguracija po defaultu ni omogočena - tako si vsaj jaz razlagam... \n\nIma pa ta AP tudi nek \"Console\" vhod (UTP kabel) in na spletu sem videl en primer, ko je s putty-jem nekaj konfiguriral ta AP, da je dobil spletno konzolo, vendar on v videu je imel kabel UTP<->SERIAL, jaz pa tega kabla nimam. In četudi sem z UTP kablom priklopil laptop na ta \"Console\" port, mrežna niti trznila ni (kot da nisem nič priklopil)..\n\nSe spozna kdo na me malo bolj napredne AP? Moraš najprej omogočit dostop do spletne konzole preko IP?\n\nSicer se kar dosti pogooglal in našel neke svtari za podobne cisco AP, samo ker so bili drugačni modeli in neki nerazumljivi komentarji, se obračam na vas, če je že kdo konfiguriral kaj podobnega...\n\nV osnovi ima idejo, da bi imel ta AP priklopljen preko POE na switch in bi ta AP konfiguriral tako, da bi oddajal wireless signal po njegovi posesti..",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Npr.: na tej srani: https://www.cisco.com/c/en/us/td/do...configuration/guide/cg_book/cg-chap2-gui.html govori o spletnem dostopu, vendar če sem odprl IP od AP v brskalniku, mi je po parih sekundah javilo, kot da na tem IP ni ničesar..\n\nNa tej povezavi: https://www.cisco.com/c/en/us/td/do...nfiguration/guide/cg_book/cg-chap4-first.html pa so informacije o prvi konfiguraciji... Ampak je spet nekam zapleteno vse skupaj; od različnih modelov do vsega skupaj...\n\nVglavnem, nikakor mi ne prikaže spletne konzole, ko če odprem IP od AP v browserju...",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Ne vem če ima web vmesnik, tale Cisco roba ima ponavadi samo ssh konzolo in to je to, vso konfiguracijo narediš s tipkanjem.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Pa bi naj sploh omogočal priklop na nek switch in potem deloval kot WIFI AP?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Ja, pač dela kot samostojni AP. Enako kot npr Ubiquiti AP. Sicer si pa že sam našel navodila kam bi naj ga priklopil, da ga lahko upravljaš prek web vmesnika.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Poskusi prek putty se prijavit nanj, ip poznaš, port je 22, up ime in geslo pa je tudi zelo verjetno nekje na njem napisnao ali pa kakšno default.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Mogoče najde kdo kak tutorial, kako usposobit spletno konzolo za nastavitev tega Cisco AP? Ker pri Cisco navodilih sploh ne veš, za katero napravo točno so navodila; oziroma če so neka navodila sploh za ta model....\n\nMogoče pozna kdo koga, ki je takšne AP že konfigugiral?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Takšni APji od Ciscota (pa še od marsikaterega drugega) ne poznajo samostojnega načina dela ampak potrebujejo kontroler (fizično škatlo ali virtualni strežnik) kjer nastaviš vse želene parametre, nastavitve, wifi omrežja, ipd. \nPred par leti sem sicer našel en firmware za starejši tip Cisco APja, ki omogča samostojno delovanje in ima web vmesnik za konfiguracijo. Vsekakor boš rabil nekoga, da pogleda če se kaj takega dobi tudi za tip, ki si ga navedel. Cisco ima namreč vse to zaklenjeno v svojih portalih in lahko potegneš dol samo, če imaš veljavno licenco / subscription.",
+    "author": "majoneza",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "majoneza , sicer ni nemogoče, da ta škatla ne more delovati samostojno, vendar nekak dvomim... Verjetno jo pač moraš skonfigurirat tako... Zato ima verjetno \"Console\" port... \n\nKaj menite ostali?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Izgleda da ima tudi web gui:\n\n\t\n\n\thttps://content.cisco.com/chapter.sjs?uri=/searchable/chapter/www.cisco.com/content/en/us/td/docs/wireless/access_point/12-3_8_JA/configuration/guide/1238jasc/s38frst.html.xml\n\nPoskusi opcije ki so tu opisane",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tCisco Aironet 1560 Series\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tCisco Aironet 1560 Series - Technical support documentation, downloads, tools and resources\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.cisco.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nDownloads:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tCisco Aironet 1560 Series\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tCisco Aironet 1560 Series - Technical support documentation, downloads, tools and resources\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.cisco.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nZa 1562I\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSoftware Download - Cisco Systems\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tsoftware.cisco.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Pa to popizdiš, e.... \n\nMejduš Cisco... \n\nPa nič ne dela... Ne SSH, ne telnet, ne nič...  (probaval s Putty-jem).. Nekje sem tudi zasledil, da je SSH po defaultu onemogočen..\n\nSem si prinesel domov POE switch in ta Cisco AP 1562 in nič ne deluje...  Zanimivo da tudi ping ne deluje vedno - včasih ni odziva od AP..\n\nKolikor se pregledal net, se mi zdi mogoče, da moraš za konfiguracijo najprej imet še neko konzolo (neko elektronsko napravo).. Ker ko gledaš Cisco dokumentacijo...  Koliko nekih novih kratic sem zasledil... Adijo, e.... \n\nPozna kdo kakega strokovnjaka, ki je že konfigurural podobne AP?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "tony",
+    "author": "dTi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Rekel si da kabla za konzolo nimaš … UTP -> COM. Tudi če bi ga imel bi po moje potem potreboval tudi klasično napajanje. Tega imaš? Ker drugače stvar sploh ni živa. Takrat bi vidu če stvar sploh dela. Zdaj ne vem zakaj je kolega to sploh dobil, mogoče pa niti ni 100% brezhiben, če so ga zamenjali … v najboljšem primeru so nadgradili sistem, pa v tem primeru bi firma ki je nadgrajevala tole odkupila nazaj in prodala drugemu po neki skonto ceni. Kot si rekel, tole ni nekaj poceni da kar šenkaš.\n\nConsole port je nekaj drugega kot Ethernet, ne bo delalo prek mreze.\n\nEdit : pa vsa navodila govorijo o nekem controlerju. Tako da sumim da potrebuješ še neko centralno enoto na katero navežeš ta AP ali več njih. Ni nujno direktno, ampak nekje v omrežju. Tako da mislim da sploh nimaš vsega kar potrebuješ.",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Kako mi je nekdo lepo popravil grde besede v prejšnjem mojem prispevku... \n\ndarkstar66 , stvar je \"živa\", ker ga lahko ping-am in tudi po resetu sem videl, da se je spremenilo ime.. Kolega je v avstriji \"prevzel\" obnavljanje nekega hotela in so te \"zastarele\" stvari vrgli dol (pač menjal se je lastnik in delajo vse na novo).. In naj bi vsi AP delali... Seveda pa ne morem vedet 100%.. Mogoče res kaj ne dela...\n\nBolj verjetno mi je, da mi manjka nek del \"sestavljanke\" pri konfiguraciji tega AP... Zato pa sprašujem, če ima kdo prakso s takimi AP... ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Uporabnik tony \nNe vem kako se označi uporabnika v postu.",
+    "author": "dTi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Sem ga že kontaktiral in čakam na odziv... \n\nDrugače pa se uporabnika označi z znakom @ pred imenom.. ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSem ga že kontaktiral in čakam na odziv...\n\nDrugače pa se uporabnika označi z znakom @ pred imenom.. \n\t\t\n\t\tKlikni za razširitev\n\t\nA si pol kej zrihtal? Javi, da se še drugi kaj naučimo.",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Cisco AP Aironet 1560 - osnovna konfiguracija???",
+    "content": "Heh, odgovor ni bil nič kaj prida v pomoč..\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tŽivjo,\nžal se s Cisco WIFIjem ne ukvarjam že dobrih 5 let točno iz razloga, ki si ga pogruntal sam: nesorazmerno komplicirane so za upravljanje. To je bilo čisto sprejemljivo kakšnih 20 let nazaj, ampak problem je, da so ostale v letu 2000, čisto vsa druga konkurenca jih je pa prehitela.\n\nOpozarjam tudi, da je povsem možno, kar je nekdo navedel: za te APje obstajata 2 tipa softvera: eden je standalone (podoben npr. Linksysovemu APju iz Mercatorja) eden pa je namenjen centraliziranemu upravljanju z ločenim WIFI kontrolerjem (Cisco WLC). Hardversko gre za eno vrsto APja, drugačen softver pa ti proda/zrihta Cisco partner.\n\nZa bolj človeško delo (tudi v profesionalne namene) priporočam npr. Ubiquity.\n\nSrečno!\n\t\t\n\t\tKlikni za razširitev\n\t\nSicer imam ta cisco AP še vedno doma, vendar še vedno nisem prišel nič kaj dalje..\n\nŠe pozna kdo koga, ki bi znal upravljat ta Cisco AP?",
+    "author": "raners",
+    "author_level": "Majstr"
+  }
+]

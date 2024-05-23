@@ -1,0 +1,70 @@
+[
+  {
+    "message": "Živjo! Z JavaScriptom sem definiral, da ko greš z miško čez določen link, se zraven pojavi balonček, ki ima napisano par besed o linku... Moti me to, da se ta balonček pojavi kar tako, naenkrat. uporabljal sem: document.getElementById('fbaloon').style.visibility='visible';  Kako bi lahko naredil \"fade in\" tega balončka?  Lp, Andrej ",
+    "user": "d'Regi"
+  },
+  {
+    "message": "Recimo nekaj takega:  http://brainerror.net/scripts/javascript/blendtrans/ ",
+    "user": "mte"
+  },
+  {
+    "message": "uporabi naprimer jquery, ali kakšno drugo js knjižico ",
+    "user": "arjan_t"
+  },
+  {
+    "message": "jquery:  $('fballon').fadeIn() ",
+    "user": "snow"
+  },
+  {
+    "message": "pa predlagam se intention plugin za jquery ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "Si mislil mogoče interface? ",
+    "user": "snow"
+  },
+  {
+    "message": "ne, obstaja en plugin, k \"ve\" ali je user sel ponesreci cez element al namerno.    hoverIntent jQuery Plug-in ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "jQuery je pa res lepa zadevica.  Še eno vprašanje...: Imam div1 in v njemu div2. hočem narest, da ko kliknem na div2, se div1 zbriše. Ker imam več takih parov, se mi ne izplača vsakega posebaj štimat. Obstaja neka parent(), vendar ga ne znam uporabljat...  jQuery:  $(\"div2\").click(function () {  $(\"div1\").fadeOut(\"slow\"); });  ...tako bi lahko definiral za vsak par posebaj...  Kje naj uvedem tisti parent()?  Lp, Andrej  [edit] Aja, še nekaj... kako v jQuery dobim dolžino niza, ki je bil vtipkan v form input (navadno: document.getElementById('string').value.length) ",
+    "user": "d'Regi"
+  },
+  {
+    "message": " $(\"div2\").click(function () { \n  $(this).parent().fadeOut(\"slow\");\n});\n  razmisljaj pa tudi v smer:   $('.skupni-class').each(){function(\n $(this).click(function () { \n  $(this).parent().fadeOut(\"slow\");\n };\n});\n  (nisem preveril pa mogoce so zaklepjai narobe)  Uglavnem point druge kode je da z .class selectorjem najdes vse svoje objekte in potem vsakemu priredis tole funkcijo, ki jo zelis. ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "kako v jQuery dobim dolžino niza, ki je bil vtipkan v form input (navadno: document.getElementById('string').value.length)   Vedno lahko naredis:  $('#foo').val().length ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "O hvala!  Bi se pa lahko zaklel, da sem to že probal, pa ni delalo... je bila že kje sintaksa napačna... :S  Ko smo že pri jQuery... v FireFoxu mi dela vse normalno v IE in Operi pa ne. Zakaj je temu tako?  Lp, A ",
+    "user": "d'Regi"
+  },
+  {
+    "message": "daj povej kaj ti ne dela, kateri error, katere verzije itd. ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "Hmm.... ne vem kako naj definiram problem... Uporabljam FireFox 2.0.0.12, Ie 7.0 in Opera 9.25  V FF mi jQuery dela normalno, v ostalih dveh pa pač ne... nobenih errorjev. (to velja tudi za ostale .js-je)  Lp, A. ",
+    "user": "d'Regi"
+  },
+  {
+    "message": "še zmerom nisi napisal kaj en dela ... ",
+    "user": "arjan_t"
+  },
+  {
+    "message": "verjetno misli na to, da ob potovanju miške čez link ne dobi nobenega oblačka. ",
+    "user": "bluefish"
+  },
+  {
+    "message": "Hm... problem je širši.... noben javascript mi ne dela :S kr neki... ampak na firefoxu pa dela use normalno... ",
+    "user": "d'Regi"
+  },
+  {
+    "message": "potem je že nekaj s tvojim IE-jem narobe ... ",
+    "user": "arjan_t"
+  }
+]

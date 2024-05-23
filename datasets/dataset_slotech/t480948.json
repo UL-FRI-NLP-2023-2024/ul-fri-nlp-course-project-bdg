@@ -1,0 +1,54 @@
+[
+  {
+    "message": "Pozdravljeni!  Z nakupom prenosnika sem se začel zanimati za VPN. iTunes kolekcijo že sedaj poslušam na drugi strani Ljubljane (uporabljam Hamachi), tudi brez težav brskam po lokalnih sharih, potem pa sem se enkrat za foro povezal preko RDP na lokalni IP računalnika (domača mreža), ne pa na IP VPN povezave, in se je tudi povezalo.  Torej lahko iz druge strani sveta napišem lokalni IP (recimo 192.168.0.100) računalnika doma, in se bo odprl brez težav?  Vprašanje se tudi pojavi: kaj če sem na drugi strani sveta povezan na omrežje z istim subnetom in na omrežju tudi obstaja naprava z istim IP-jem, kam se bo potem računalnik povezal?  Hvala za odgovor ",
+    "user": "axee"
+  },
+  {
+    "message": "Torej lahko iz druge strani sveta napišem lokalni IP (recimo 192.168.0.100) računalnika doma, in se bo odprl brez težav?  Ne moreš, ker te bodo routerji sfiltrirali kakor hitro prideš z omrežja. Naslovi s tega območja se ne usmerjajo in tudi računalniki na ta dostop od zunaj niso vidni ali dostopni - vse kar vidijo odzunaj je tvoj IP dodeljen od ISPja.  Vprašanje se tudi pojavi: kaj če sem na drugi strani sveta povezan na omrežje z istim subnetom in na omrežju tudi obstaja naprava z istim IP-jem, kam se bo potem računalnik povezal?  Kot sem že povedal - ne bo se.   Z nakupom prenosnika sem se začel zanimati za VPN. iTunes kolekcijo že sedaj poslušam na drugi strani Ljubljane (uporabljam Hamachi), tudi brez težav brskam po lokalnih sharih, potem pa sem se enkrat za foro povezal preko RDP na lokalni IP računalnika (domača mreža), ne pa na IP VPN povezave, in se je tudi povezalo.   Skoraj gotovo je promet potekal čez VPN. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "Se strinjam, tudi sam sem tako razmišljal, dokler nisem iz službe vpisal IP domačega računalnika v RDP in se je brez težav povezal.   Nisem namigoval, da iz druge strani sveta lahko vpišem lokalni IP, ko pa se je povezalo k meni domov, sem seveda pomislil na to, da se stvar zrouta preko VPN, zato tudi vprašanje - je to mogoče. ",
+    "user": "axee"
+  },
+  {
+    "message": "Ja je mogoče - je tvoj sistem pogruntal da leži tisti IP na drugi strani VPN \"mrežne kartice\" in preprosto tiste IPje preusmeril tja. Ne bo pa to jasno delalo brez vzpostavljene VPN povezave :) ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "Seveda :)  Ko smo ravno pri temu: kako se sistem odloči, katero povezavo uporablja? Nekaj že berem po netu, rad pa bi torej zroutal internetno povezavo preko VPN tunela, ko sem na tujem omrežju, še bolje pa: postavil bi pravilo, da ko sem na nezaščitenem open omrežju računalnik uporablja VPN tunel za internetni gateway. Imam prezahtevne želje? ",
+    "user": "axee"
+  },
+  {
+    "message": "Zroutati celoten networking preko VPN tunela je (kot vidim) kar veliko dela, še težje pa nahitro zamenjati. Če upoštevam, da bi na odprtih omrežjih rad uporabljal VPN samo zaradi varnosti med srfanjem, v upoštev pride tudi proxy.  Ima kdo še izkušnje z tem? ",
+    "user": "axee"
+  },
+  {
+    "message": "Raje si usposobi ssh.  SSH + Tunel ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Team viewer je tudi sposoben VPN vzpostavit iz računalnika na računalnik in še free je, ter remote control deluje boljse kot logmein. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Uporabljam teamviewer vsak dan, njegov VPN pa tudi še nisem uporabljal. Bom poskusil, hvala za opozorilo.  Glede SSH-ja bom še prebral, sedaj sem prepričan, da potrebujem čimbolj preprosto rešitev, ki jo bom uporabljal na prenosniku in telefonu.  LP ",
+    "user": "axee"
+  },
+  {
+    "message": " axee je 22. avg 2011 ob 01:33 izjavil:Seveda :)  Ko smo ravno pri temu: kako se sistem odloči, katero povezavo uporablja? Nekaj že berem po netu, rad pa bi torej zroutal internetno povezavo preko VPN tunela, ko sem na tujem omrežju, še bolje pa: postavil bi pravilo, da ko sem na nezaščitenem open omrežju računalnik uporablja VPN tunel za internetni gateway. Imam prezahtevne želje?   Em, to je čudno. Na vseh VPN sistemih do sedaj sem se namreč moral potrudit da ves internetni promet NI šao čez VPN tunel.  Vse kar moraš narediti je, da v internetnih nastavitvah nastaviš svoj privzeti prehod (default gateway) na mašino (router), ki je na drugi strani VPN tunela - v tvojem primeru router v službi v območju 192.168.100.x. Tako bo ves promet, ki ne pripada lokalnim mrežam šao čez VPN do usmerjevalnika v službi in od tam dalje.  Večina VPN softwara spremeni gateway avtomatsko.  Kar se pa tiče kako OS \"ve\" kam gre promet: to se pa dela glede na zapomnjene poti (routes), na Windows jih izpišeš v CMD z ukazom \"route print\". Tam boš videl seznam naslovov (oz. omrežij) ter mrežnih kartic. Tiste poti določajo na katero mrežno kartico se pošilja promet, ki je naslovljen na določene IPje. Med njimi boš pa videl tudi enega \"0.0.0.0\" ki ima nameso \"On-link\" gatewaya nastavljen IP. To je \"default route\" na katero se pa usmerja ves promet, ki ne pripada ostalim - v tvojem primeru je to ves internetni promet.  Če je tisti gateway mašina na drugi strani VPNja, potem to pomeni da gre ves internetni promet najprej čez VPN tunel do drugega konca, se tam preda gatewayu, ki potem usmerja promet naprej. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": " Mavrik je 22. avg 2011 ob 13:28 izjavil:axee je 22. avg 2011 ob 01:33 izjavil:Seveda :)  Ko smo ravno pri temu: kako se sistem odloči, katero povezavo uporablja? Nekaj že berem po netu, rad pa bi torej zroutal internetno povezavo preko VPN tunela, ko sem na tujem omrežju, še bolje pa: postavil bi pravilo, da ko sem na nezaščitenem open omrežju računalnik uporablja VPN tunel za internetni gateway. Imam prezahtevne želje?  Vse kar moraš narediti je, da v internetnih nastavitvah nastaviš svoj privzeti prehod (default gateway) na mašino (router), ki je na drugi strani VPN tunela - v tvojem primeru router v službi v območju 192.168.100.x. Tako bo ves promet, ki ne pripada lokalnim mrežam šao čez VPN do usmerjevalnika v službi in od tam dalje.    Res hvala za izčrpen odgovor. Nevem če sem prav razumel zgoraj napisanega: gateway naj napišem domači IP routerja? In če ima gostujoči router (v lokalu itd) enak IP, kako vem, da za gateway ne bo uporabljal njega? ",
+    "user": "axee"
+  },
+  {
+    "message": " axee je 22. avg 2011 ob 13:37 izjavil: Res hvala za izčrpen odgovor. Nevem če sem prav razumel zgoraj napisanega: gateway naj napišem domači IP routerja? In če ima gostujoči router (v lokalu itd) enak IP, kako vem, da za gateway ne bo uporabljal njega?   Če imata oba iste IPje (kar se sicer ne bi smelo zgoditi) se bo izbrala pot (route), ki ima nižjo metriko. Tako da daj domače omrežje na tak IP range, da ne bo prišlo do prekrivanj (to je ponavadi ZELO dobra praksa za VPN).  Boš pa imel en resen problem: če boš imel vpisan gateway od doma, ti internet ne bo delal dokler nimaš vzpostavljene VPN povezave... kar pomeni da tudi VPN povezave ne boš mogel vzpostaviti ;) Kot sem napisal, praktično vsi VPN softwari znajo avtomatsko spremenit gateway na oddaljenega pri vzpostavitvi povezave (Ponavadi je opcija skrita pod imenom \"push remote gateway\"), kar ti bo rešilo to dilemo. Koliko gledam sicer Hamachi tega ne podpira, tak ra razmisli a ne bi raje uporabljal kak \"resnejši\" VPN, recimo OpenVPN. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "Res je, premišljeval sem že o OpenVPN, a je kot vidim stvar malce bolj resna in potrebna malo več branja za kar ta trenutek nimam ravno veliko časa, bom pa se poglobil, ko bo.  Hvala za pomoč, če praviš, da ko se povežem na nezavarovano omrežje in se nato povežem na openvpn sam zrihta gateway lepo nazaj domov, bo to rešitev zame. ",
+    "user": "axee"
+  }
+]

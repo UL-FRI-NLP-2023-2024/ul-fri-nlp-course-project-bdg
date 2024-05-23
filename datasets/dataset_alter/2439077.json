@@ -1,0 +1,218 @@
+[
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "pozdravljeni!\n\nnačeloma sem do Synologyja dostopal preko wifi povezave (port forwarding), ampak je povezava okej, če imaš kakšno zadevo sem ter tja za premaknit, trenutno pa se mi je nabralo kar nekaj robe za preložit in bi preko wifi povezave trajalo predolgo. zato sem želel NAS (Synology DS212j) in MacBook Pro Retina 15\" želel povezati direktno preko UTP kabla. seveda sem najprej probal kar direktno en konec kabla v NAS, drugega v lan port (sicer je thunderbolt port preko lan adapterja), ampak mi je hitro postalo jasno, da nekaj ne bo štimalo, čeprav so led lučke pokazale, da je povezava vzpostavljena.\n\npotem sem wifi poskusil uporabiti kot switch, pa tudi ni šlo - pač, en kabel od kompa do routerja, drug od routerja do nasa - tudi ni delalo?\n\ntorej, kako potem lahko vzpostavim direktno povezavo? je sploh možna? na netu sem našel eno zadevo, ki se vleče praktično čez vse forume, ampak pri meni ni delovala - mogoče zato, ker sem wifi router uporabil kot switch - bi potreboval pravi gigabitni switch?\n\nbi prosil za kak nasvet, bi bilo super, če bi lahko tole sparili ... ",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "aja, če pa ne bo šlo direktno, pa bi prosil, kakšne so ponavadi Port Forwarding nastavitve, vem, da mi je enkrat zadeva že špilala, ampak sem pozabil, kako je bilo takrat nastavljeno ... ",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Čaki... kaj ti poskušaš in kako imaš kaj nastavljeno? \n\nTo bi moral biti \"basic networking\", s tem da, ga moraš setupat na roke... synologyja postaviš na fiksni IP, recimo 192.168.1.10, na kompu nastaviš ročno na 192.168.1.11 in ni hudič da ne dela. Lahko sicer doma sprobam, če najdem na katerem kablu ga imam (nekaj telovadbe, ker je pospravljen nekje za omaro), ampak ne vem čemu ne bi šlo. \n\nČE pa imaš oba, komp in nas v DHCP načinu pa seveda ne dela, ker ti vmes manjka router (z vklopljenim DHCP), ki bi enemu in drugemu dodelil IP \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKaj ima port forwarding veze tu, boš moral objasnit...?",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Port Forwarding ma veze, če dostopaš preko wifi-ja, torej preko \"zraka\". \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n potem mora router vedeti, kam bi ti kao rad šel.\n\ndanes sem nabavil še crossover utp kabel, upam, da bo pomagal.\n\nkako pa nastavim te IP naslove? ker problem je v tem, da Synologija na noben način ne vidim in ne vem, kako mu dodelim naslov ...\n\nkaj je v bistvu DHCP način? ker včeraj sem se ravno okoli DHCP-ja lovil, nekaj sem dajal na manual in točno to štimal, kot si rekel ... ampak sem nastavljal zgolj samo en naslov - kje pa potem določim še drug naslov?",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "jaz dostopam do nas-a preko wifi in nimam nič port forwarda. seveda pa imam nas na fiksnem ip naslovu in laufa bp. če ga ne najdeš, pojdi na router pod dhcp naprave in ga boš tam (verjetno) našel...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Če si priklopljen preko kabla na router ali preko WIFI-ja ni nobenih razlik. Vedno si enako prisoten v lokalni mreži, tako da ne bi smelo biti razlik.\n\nRazen če misliš z UTP kablom direktno povezati NAS in MacBook? Tam je načeloma tudi vseeno ali je patch ali crossover kabel. Edino IPje boš moral ročno skonfigurirati (na obeh napravah).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "okej, to zadnje - kako to skonfiguriram? predvsem me zanima, kako nastavim za Synologyija, za Maca mi je približno jasno.\n\nkar se tiče dostopanja preko \"zraka\", pa sem na Linksysu vedno moral nastavljat port forwarding ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\ntudi včeraj, ko sem čaral s pomočjo routerja, ga ni pokazalo, oz. ker gre po določenem času v sleep mode in ga zbudi samo, če probaš dostopat do njega, ga ni niti zbudilo (prej ga je).",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Da razčistimo po vrsti. Port forwading, ki ga lahko nastavljaš na teh domačih usmerjevalnikih, je v resnici dNAT oziroma destination Network Address Translation. Ker naslovov IPv4 primankuje in od operaterja tipično dobiš 1 javni naslov IPv4, doma pa imaš običjno več kot eno napravo, se v lokalnih omrežjih uporabljajo privatni naslovi (RFC1918) v kombinaciji s takšno ali drugačno obliko preslikave naslovov (NAT), da lahko komuniciraš z zunanjim svetom. Domači usmerjavalniki so že privzeto nastavljeni tako, da na WAN strani pridobijo javni naslov preko DHCP (ali pa se ga nastavi ročno), na LAN strani pa imaš vmesnik v lokalnem omrežju in med obema omrežjema izvajajo NAT. Privzeto samo source NAT, torej ko želiš dostopati do neke zunanje storitve dinamično preslika tvoj privatni naslov (recimo 192.168.1.X) za določen izvorni port, v nek drug izvorni port in tvoj javni naslov IP, ki ga pridobiš od ponudnika, tako da sledi vsem povezavam in vzdržuje tabelo preslikav (da lahko pakete, ki pridejo nazaj usmeri na taprav privatni IP). Tako lahko vse tvoje naprave dostopajo do zunanjih storitev iz istega javnega naslova IP. Težava se pojavi, ko želiš od zunaj dostopati do storitev v lokalnem omrežju, saj imaš 1 javni naslov IP in N računalnikov v lokalnem omrežju do katerih bi lahko potencialno dostopal preko tega javnega naslova IP. Tu pride v upoštev dNAT oziroma port forwarding, kjer usmerjevalniku poveš, naj promet, ki pride na javni naslov IP na določen port  npr. port 80 (HTTP) usmeri na točno določen računalnik v lokalnem omrežju (recimo HTTP strežnik). Če si nastavil port forwarding za porte, ki jih potrebuješ za dostop do NASa, si pravzaprav svoj NAS odprl na ven celotnemu spletu (poleg samega forwarding običjano usmerjevalniki s to nastavitvijo nastavljen port odprejo tudi na integrirani požarni pregradi). \n\nV samem lokalnem omrežju port forwarding torej nima popolnoma nobene veze, pravzaprav promet ne gre niti čez usmerjevalnik ampak zgolj čez stikalo, ki je sicer vgrajeno v isto škatlo. Brezžično omrežje je običajno transparento bridgeano v isto lokalno omrežje in ne bi smelo biti razlik, če si priklopljen s kablom ali brezžično (razen, če imaš brezžično omrežje namerno ločeno s svojim podomrežjem, pa še tu bi delal kvečemu usmerjanje in ne preslikavo naslovov oziroma port forwarding). \n\nVse naprave v tvojem lokalnem omrežju imajo torej nastavljen nek naslov IP (privatni), masko omrežja, ki ti pove kater del naslova predstavlja omrežje in kater del je namenjen identifikaciji posamezne naprave znotraj omrežja, privzeti prehod (usmerjevalnik kateremu se pošiljajo paketi, ki niso namenjeni za naprave v lokalnem omrežju, torej to kar gre ven) in strežnike DNS za razreševanje domenskih imen. Vse to lahko nastaviš ročno, običajno pa imaš na tem domačem usmerjevalniku tudi strežnik DHCP, ki poskrbi za avtomatsko konfiguracijo prej omenjenih nastavitev, ko napravo priključiš v omrežje. Na Macu te nastavitve najhitreje preveriš z ukazom ifconfig v terminalu.  Zdaj če boš Maca priklopil direktno v NAS, seveda teh nastavitev ne boš avtomatsko dobil od strežnika DHCP, ker ga v tem primeru nimaš. Naslove lahko ročno nastaviš na Macu v System Preferences -&gt; Network in potem imaš na Adapterju pod Advanced zavihek TCP/IP, na Synologyju pa pod Control Panel -&gt; Netowork in zavihek Network Interface, kjer lahko editiraš nastavitve posameznih mrežnih vemsnikov (če jih ima več). Pomembno je le, da sta obe napravi v istem lokalnem omrežju, torej, da je del naslova IP, ki določa omrežje enak (naprimer NASu daš naslov 192.168.1.10, računalniku pa 192.168.1.11).\n\nJaz sicer ne bi kompliciral in bi računalnik priklopil na stikalo na usmerjevalniku, tako ne boš rabil komplicirat z nastavitvami. Kako točno sploh dostopaš do NAS in katere storitve imaš vklopljene? Se povezuješ direktno iz Finderja preko AFP/SMB/NFS ali čakaš, da ti ga samodejno zazna med omrežnimi napravi? Kaj torej pomeni, da ga ne pokaže (se ne moreš nanj sploh povezati recimo preko AFP/SMB/NFS/preko spletnega vmesnika ali ti ga samo ne zazna avtomatsko med omrežnimi napravami)? \n\nJaz bi sicer NASu v vsakem primeru nastavil nek statičen naslov IP (če imaš omrežje 192.168.1.X npr. 192.168.1.10, moreš pa preverit, da je izven območja iz katerega se dodeljujejo naslovi klientom prek DHCP) in potem lepo dostopaš direktno preko naslova tudi če ga avtomatski discovery kaj serje. No vrjetno je na usmerjevalniku tudi nek strežnik DNS, kjer lahko za lokalne naprave dodaš zapise in lahko dostopaš preko imena namesto naslova, tako da se v Finderju recimo povežeš na smb://nas, če uporabljaš smb.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Kaj pa si nastavljal v port forwardingu?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nNa MACu torej menda znas rocno nastaviti IP... Za nastavljati na Synologyju pa se bos moral najprej povezati nanj... in potem ko se odpre DSM... tam rocno nastavis IP stevilko ...\n\nKer nimam nobenega Synologyja sem sel preko Live DEMO &gt;&gt; https://www.synology.com/en-us/dsm/live_demo ... \n\nOdpres Control Panel in nato Network\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nnato kliknes na Network interface in nato LAN ter nato EDIT\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nTukaj sedaj lahko rocno vpises podatke omrezja ... \n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nCe ti je vse to tuje, bo verjetno bolje, ce poisces nekoga in mu das za pivo ali dve in ti to nastavi... \n\nZa dostopanje do NAS-a v isti mrezi ne potrebujes nobenih port forwardingov ... Samo pravilno nastavljeno mrezo ...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Če ne poznaš ip-ja synologya si naloži synology assistant, ti ga sam poišče v omrežju... Seveda, če je nastavljen na dhcp in nisi kaj spreminjal mrežnih nastavitev.",
+    "author": "BigPoppa",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "v načinu, kot bi jaz rad povezal zadeve, Synology Assistant ne deluje.\n\nproblem je, ker v Synologyja ne morem nikakor prit. skratka, kakorkoli ga povežem, ga ne zazna, ne vidi, ni ga. ponavadi je tako, da ko se želim povezat s Synologyjem, se zbudi iz spanja, zdaj ne mrdne sploh. nastavitve so točno take, kot so bile pred selitvijo, edino router sem resetiral, ampak kot berem tu, to sploh ne bi smel biti problem. ne vem, zakaj mi ga potem preko kablov, se pravi, kabel iz Maca v router (Linksys WRT16nl) in potem kabel iz routerja v Synology. Mac mi pokaže IP-je, ampak povezat se pa nikakor ne morem ...\n\nzdaj delam na tem, da bi nastavil statični IP, očitno je to prvi korak do tega, da ju povežem.\n\nčudno mi je predvsem to, da preko routerja ne morem narediti ničesar, ker preko routerja oz. wifija mi je pred selitvijo vse delalo kot mora ... je pa res, da sem tam imel port forwarding, ne vem zakaj, ampak brez tega mi zadeva ni delala, s port forwardingom je zadeva delala kot mora.",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Torej imaš probleme samo po določenem času, ko naj bi šel v system hibernation, ali nasploh? Ker na začetku, ko ga vklopiš, bi itak moral delat, ga nima kaj budit. \n\nNapiši, kako točno imaš sploh priklopljeno (katero napravo na katerih portih) in kakšne naslove dobiš na kateri napravi. Imaš slučajno še kak usmerjevalnik recimo od opereterja in kako je priklopljen? Da nimaš slučajno računalnika v drugi mreži na WAN strani?\n\nMogoče bo res najhitreje, če daš nekomu za pivo, da ti porihta. Jaz nebi na blef nastavljal nekaj in odpiral lokalnega NASa na ven po nepotrebnem.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Si preveril na routerju če je dodelil NASu kak drug IP?\n\nhttp://ui.linksys.com/WRT160NL/1.00.01-B11/Status_Lan.htm - DHCP Client table",
+    "author": "Jiggler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik DizzyReed pravi:\nv načinu, kot bi jaz rad povezal zadeve, Synology Assistant ne deluje.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nHmmm... in kaksen je ta nacin? To, da je ocitno cuden, ze vemo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ... Samo naceloma bi to moralo vse delovati brez nekih problemov, ce si v isti mrezi... na istem routerju... \n\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik DizzyReed pravi:\n... je pa res, da sem tam imel port forwarding, ne vem zakaj, ampak brez tega mi zadeva ni delala, s port forwardingom je zadeva delala kot mora.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nKako imas (oz. si imel) nastavljen port forwarding?  Nakako se mi zdi, da imas \"štalo\" in zato nic ne dela \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Port forwarding ima nastavljen za zunanji dostop... 5000/5001 za web dostop, 6000 in nekaj za DSM cloud station... Očitno je OT hodil na Synology preko zunanje povezave (fqdn).\nČe imaš pravilno nastavljeno omrežje, je v lokalnem omrežju zadeva vidna preko CIFS/SMB, MAC file share, NFS... kar pač že nastaviš. In za tak dostop moraš imeti račun na napravi...\nImam Synology DS214, imam mekico in nekaj windows mašin v LANu (kjer dela super) in imam CloudStation, videostation in photostation omogočen.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Cela znanost bo ratala iz tega  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nSynologya nič ne briga ali dostopaš preko wifi ali kabla ampak samo kateri user je.\nČe je povezan z routerjem poglej kateri IP mu je dodelilo- lahko pogledaš na samemu routerju ali z androidom +  Fing .\nPoveži se na njega z IP:5000 ali http://diskstation:5000\nPortforward tu nima nobene veze če delaš v lokalnemu omrežju.\nČe pa delaš od zunaj pa mu je pametno dodeliti statični IP (192.168.x.y) in imeti statični IP pri ponudniku (89.212.x.y)",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "po vrsti, najprej odgovarjam tebi:\n\n- port forwarding sem imel nastavljen tudi zaradi zunanjega dostopanja, se pravi, če sem na terenu potreboval fotko, da sem imel v bistvu FTP. nastavil mi ga je kolega, IT-jevec. ko sem potem zaradi vdora v Synology sistem zaprl dostop, mi je ta kolega v bistvu spet nastavil port forwarding, ker drugače se Synologyja v mreži ni videlo, pač odstanila sva možnost, da se da dostopat od zunaj in da sem lahko dostopal znotraj mreže normalno.\n\nzdaj, ker rabim velik prenost in bo preko wifi povezave vse skupaj predolgo trajalo, pa sem hotel narediti povezavo direktno preko kabla, ampak iz meni neznanega razloga ne rata sparit tega. kolega kontaktiram danes zvečer, če bo lahko pomagal, vse kar lahko trenutno pokažem je, kaj mi pokaže Synology Assistant, ker v soboto nekaj je ratalo, ampak vseeno nisem moral dostopat do fotk.\n\nko se mi je v Assistantu le pokazal, sem imel sledeče nastavitve:\n\n\n\t\n\n\n\nSyn Assistant pa mi je pokazal tole:\n\n\n\t\n\n\n\nko sem hotel malo spremeniti nastavitve, da bi se tudi \"funkcionalno\" povezala, pa je ratalo tole:\n\n\n\t\n\n\n\nna prvotnem print screenu pa je bil nek čuden IP naslov v obliki 162.xxx.xxx.xxz\n\nzaenkrat mi je to vse uspelo preko crossover kabla (kar je tudi želja, ker bo prenos tako najhitrejši, pa tudi ne rabim več oddaljenega dostopa).",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "aja, še to - port forwarding je zajemal, če se prav spomnim, eno vrstico - FTP Port In=80, Port Out=21/22 (se ne spomnim) in potem tipičen IP naslov, mislim, da je bil 192.168.0.104. zdaj pa mislim, da mi stalno tiši naslov 192.168.1.100 ... in se skrega zaradi tiste 0 in 1 ...",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Napiši ti najprej, katere naprave imaš doma in kako je povezano. Če imaš modem, ki je hkrati tudi ruter in potem še en ruter, imaš lahko štalo, če ne povežeš pravilno skupaj.\n\nČe imaš vse povezano na isti LAN, potem  192.168.0.104 ne bo dosegljiv z 192.168.1.100, ker sta na različnih segmentih. Vse mora biti na 192.168.1.x, ali 192.168.0.x",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Ne zafrkavaj se s crossover kablom, ker itak ne bo delalo, ker je NAS verjetno nastavljen na DHCP. Pa tudi na compu bi moral imeti vpisan statični IP. Vtakni LAN kabel od compa in NASa vsakega posebej v router, da dobita vsak svoj IP pa ga boš potem našel.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Poleg tega zna crossover kabel na gigabit ethernetu kvečemu povzročati težave, ker pri GbE ni več ločenih diferenicalnih parov za Tx in Rx, ki bi jih moral prevezat kot pri 10/100MbE (pa še tam zna praktično vsa novejša oprema avtomatsko zaznat konfiguracijo), temveč se po vseh 4 paricah prenašajo signali v obe smeri hkrati. \n\nČe so porti na usmerjevalniku gigabitni, res ne bi kompliciral in bi priklopil preko stikala na usmerjevalniku. Sicer lahko tudi direktno ampak najboljše z običajnim straight kablom.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Še enkrat... port forwarding nima veze. Ne s kompom, ne s synologyjem. Res ne. \"Port forwarding\" je navodilo routerju, da ko ga nekdo (ti ali heker) \"pokliče\" od zunaj, da ve kam ga preusmerit na \"notranjo\" stran. Povsem drugotnega pomena, dokler ti znotraj mreže ne vidiš NASa. \n\nDaj, za foro, nariši kaj in kako ti poskušaš te zadeve sparit med sabo da ne dela? Ker, nekaj počneš narobe \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nSplošno, topologija domačega omrežja:\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\ns tem da velja da computer1 in 2 sta lahko povezana na switch. Tvoj synology == HTPC. S stališča mreže je vseeno, ali ti dostopaš preko \"computer1\" ali preko \"laptop\", ker, ni važno ali je fizična povezava po luftu ali preko kabla. Iz tega sledi, da vse naprave se povezujejo na switch, nikoli direktno kabel na kabel. Razen če res veš, kaj delaš. In veš da moraš stvari delati peš. Torej, Synologyja na veke vekov pusti priklopljenega v switch (upam da imaš gigabitnega, če ne, kupi. Tistih 15€ boš že reskiral...).\n\nDalje, ti \"moraš\" vedeti, kateri subnet imaš nastavljen v domači mreži in na kateri IP imaš postavljen synology. To ugotoviš tako, da se s kompom priklopi na internet in ko ti internet \"deluje\" poglej nastavitve (vidim da imaš jabko: network preferences, klik na \"zeleno\" kartico (wifi) in poglej, kateri IP je dobil preko routerjevega DHCPja). Subnet je vse razen zadnje številke, torej recimo 192.168.1.XX\n\nVerjetno, če drži tisto s tvoje prejšnje slike, imaš router na 192.168.1.1 in torej naprave dobivajo IPje v rangu 192.168.1.100 - 192.168.1.254. Tvoj laptop dobi neko številko tu vmes...\n\nKer verjetno želiš do svojega synologyja dostopat vedno preko istega naslova, si že naredil traparijo, ko si ga postavil na DHCP. Sicer, tudi prejšnja nastavitev .107 ni bila OK, ker je bila znotraj ranga, ki ga sicer dodeljuje DHCP (.100-.254) - ker lahko pride do IP konflikta in zadeve začnejo čudno delat, odkrivanje napake pa je lahko precej boleče. Za to priporočam, da se statično naslovljene naprave postavijo izven DHCP območja, če še nimaš nič drugega takega, si je najlažje zapomnit recimo 192.168.1.10\n\nKo boš imel enkrat nastavljen statični ip na synologyju, ti bo delalo, bodisi če bo računalnik povezan preko wifija, ali pa s kablom (navadnim, ne vem kje si sploh našel cross \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )  na switch. Pa, ko daš komp na kabel, ugasni wifi. Načeloma bi morala mreža to sicer \"vedet\", ampak, ni pa nujno in si lahko narediš problem...\n\np.s.: glej Thomasova navodila in nastavi na synologyju ustrezne nastavitve za IPje, če je torej tvoj subnet tega ranga, boš dal:\nIP: 192.168.1.10\nMASK: 255.255.255.0\nGW: 192.168.1.1\nDNS: 192.168.1.1",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "nič od tega nisem probal. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nmoje povezave so bile takšne:\n\n1) preko lana, direktno MacBook -&gt; NAS, ni delovalo\n2) preko lana, preko routerja -&gt; kabel od MacBooka do routerja (Linksys WRT16NL), kabel od routerja do NAS-a\n3) preko wifija -&gt; wifi od MacBooka do routerja, kabel od routerja do NAS-a\n4) preko crossover kabla, direktno MacBook -&gt; NAS, ni delovalo\n\nkje te IP nastavitve na koncu lahko vpišem - ker jaz NE MOREM NIKAKOR do Synologyjevih nastavitev ... če pa to lahko v kompu nastavim, pa z veseljem poskusim.",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "1) saj ni moglo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n2) to je cilj A, ki mora delat\n3) to je cilj B, ki mora delat\n4) enako kot točka 1)\n\nVpišeš jih v sinology; tvoja osnovna težava torej je, da do njega ne moreš (?). Zdaj ko si ga preko assistanta nastavil na DHCP mi je čudno da ti ne napiše IPja. Si probal vse zadeve malo rebootat, cel network? Ker tole mi je malo čudno vse skup, nekako po občutku, en popoldah hecanja in prepucavanja pa ti bo ratalo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Morda imaš v NAS vpisan statični IP na kakem drugem subnetu. Probaj resetirat network nastavitve: https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/How_to_reset_your_Synology_NAS#t2",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "najbrz res to... to pa ker ljudje raje nastavijo na napravi static IP, kot pa da bi DCHP reservation na ruterju",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Mirko pravi:\n Morda imaš v NAS vpisan statični IP na kakem drugem subnetu. Probaj resetirat network nastavitve: https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/How_to_reset_your_Synology_NAS#t2\n\t\t\n\t\tKlikni za razširitev\n\t\n\nstrela jasna, a veš, koliko sem tole preiskal, pa nisem našel, hvala! ima kdo izkušnje kako je s podatki na diskih - ni kakšne variante da kam pobegnejo? mislim, saj, načeloma sta že skoraj polna diska not, tako da eventuelno lahko tudi dva nova diska dam not, pa tole izvedem, ampak to spet podaljša stvari ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik KrNeki99 pravi:\n najbrz res to... to pa ker ljudje raje nastavijo na napravi static IP, kot pa da bi DCHP reservation na ruterju\n\t\t\n\t\tKlikni za razširitev\n\t\n\nko se je prvič nastavljal, je bil problem v tem, da je bil Synology uporabljan tudi kot FTP oz. za oddaljen dostop in je edino tako zadeva funkcionirala ...\n\nzdaj, ko tega dela ne potrebujem več, in bi rad dostopal do Synologyja samo \"direktno\" znotraj mreže, verjamem, da tega ne potrebujemo več ...",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Podatki naj bi ostali nedotaknjeni, vendar vseeno naredi backup za vsak slučaj.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "tudi za oddaljen dostop \"od zunaj\" ne rabis static IPja, v DHCP nastavitvah naredis Reserved IPs glede na MAC in tvoj synology bo dobil vedno isti IP \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \nPotem pa port forwarding nastavis na ta IP.\n\nDrugace ce se ves stari IP. Nastavi tvoj racunalnik na IP v isti maski in se povezi na njega, pa spremeni na nove omrezne nastavitve",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "[seveda, ker je znano da ti \"home\" router ne bo nikoli crknil, sploh če ti ga je prodal telco, ki včasih tudi ob upgradu dropa celotno tabelo, zdej se pa ti jhebi in še enkrat nastavljaj vse rezervacije ki si jih imel. Dosti hudo je že, če ti forwarding gre, da boš pa rezervacije še enkrat delal je pa \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n statični ip in listek papirja na napravo, najbolj zihr dolgoročno]",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "settings backup ?",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "včeraj sem končno našel čas in se ponovno lotil povezovanja Synologyja in kompa. resetiral sem network nastavitve, povezal s cross kablom in zadeva je dejansko funkcionirala. zdaj pa imam novo vprašanje - glede na to, da sta diska polna - lahko zdaj disk iz Synologyja dam v navadno ohišje za 3.5 diske in preko usb kabla priklopim na komp ali so kakšne druge mučke? bom moral vsakič znova dat potem diske nazaj not v kištico, ker to zna biti potem precej zamudno ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nše eno vprašanje - ker je bila hitrost še vseeno malo prenizka (za 150 GB materiala sem potreboval skoraj 6 ur), bi imel rešitev, ki ima povezavo USB 3.0, našel sem tole zadevo -  WD My Book Duo - kako je z diski tu, ko so enkrat polni? je pa res, da je tu sistem malce bolj enostavno narejen in je lažje menjati diske ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "Dvomim da boš lahko na PC priklopil, ker je verjetno drug datotečni sistem. Morda če ga priklošiš na USB port na NAS-u.",
+    "author": "milos621",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "hm, ja, smiselno ... kaj pa recimo disk dock? pa kadar delam back up, priklopim pač direktno na komp, pa imam disk notri, kadar pa pač rabim pogledati disk iz Synologyja, pa dock priklopim na Synology in na ta način dostopim do podatkov - verjetno Synology \"ne ve\" v kaj je zapakiran disk ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  },
+  {
+    "ctx": "Povezava Synology NAS in MacBook, preko utp kabla",
+    "content": "ok - trenutno se najbolj nagibam k disk docku - na mimovrste je tale  IcyBox Disk Dock ki izgleda precej solidno. not bi dal dva različna diska (najverjetneje celo 3.5 in 2.5, slednjega predvsem zaradi kasnejše uporabnosti, daš v zunanje ohišje in ne rabiš elektrike za priklop, 3.5 pa na varno v hrambo) - ima kdo kak predlog za dober software, s katerim bi potem lahko kopiral na oba diska, oz. bi on namesto mene \"opravil\" backup?",
+    "author": "DizzyReed",
+    "author_level": "Shmoo"
+  }
+]

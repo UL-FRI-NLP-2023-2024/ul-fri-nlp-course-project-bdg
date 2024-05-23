@@ -1,0 +1,26 @@
+[
+  {
+    "ctx": "Andorid na PCu- bootable iz USB ključka",
+    "content": "Zdravo, \n\nZaradi EMŠA se k stvarem, ki jih bom opisal v nadaljevanju, spravim malo manj pogosto kot sem se včasih, zato se potem pojavijo težave.\n \nTorej. Rad bi si naredil instalacijo zadnje verzije Androida na USB ključku. V procesu naštudiram zadeve:\n Z UNetbootin-om si na USB zapečem zadnji ISO. \nReštartam PC in zaženem sistem iz USB ključka. \nČe izberem možnost &#187;Run Android &#8211;x86 without installation\" se Android sicer zažene, vendar se ob izhodu nobena uporabniška nastavitev ne shrani in je ob ponovnem zagonu z isto opcijo potrebno vse nastavljati na novo. Skoraj neuporabno.\n \nNo, v naslednji iteraciji sem izbral opcijo &#187;Install Android -x86 on hard disk&#171;, za mesto namestitve pa izbral drugi USB ključek. Instalacija se lepo izvede. Med potekom namestitve je potrebno izbrati še &#187;Install GRUB bootloader&#171;, ki se namesti/nasmeti na osnovno WIN particijo. Če se ne motim, to pomeni, da je ta USB ključek &#187;dual bootable&#171; samo na tako opremljeni mašini.\n \nKar želim jaz je, da bi se &#187;GRUB bootloader&#171; namestil poleg  Android instalacije na USB ključek in bi bil tako bootable preko nastavitve v BIOSu, na vsaki mašini. \n\nTorej. Kako izvesti instalacijo na USB ključek, vključno z GRUB bootloaderjem, brez da bi ob tem nasmetil še PC? Standardni postopek to ni, zato se tukaj moja raziskava konča. PS. O Linuxu nimam pojma. \n\nUpam, da sem napisal dovolj razločno. Če nisem, lahko še pojasnim \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. \nVnaprej hvala za vsak nasvet.\n\nLPM;",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Andorid na PCu- bootable iz USB ključka",
+    "content": "Pri GRUBu lahko izbiraš, kam se bo namestil - vsaj običajno.\nZa te stvari jaz ponavadi pustim cca 100 mb particijo, ki je priklopljena na /boot, tja se potem namesti grub.\nŽal specifične namestitve pri temu, kar počneš, ne poznam, tako da bo moral še kdo drug kaj dodati v vezi s tem.",
+    "author": "trigga",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Andorid na PCu- bootable iz USB ključka",
+    "content": "Aja, pozabil sem napisati - če imaš možnost, to particijo ustvari na usb ključku in potem nanjo namesti grub.",
+    "author": "trigga",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Andorid na PCu- bootable iz USB ključka",
+    "content": "Grub in /boot folder ne rabita biti nujno na ločeni particiji.",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

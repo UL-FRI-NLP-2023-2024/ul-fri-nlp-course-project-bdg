@@ -1,0 +1,106 @@
+[
+  {
+    "message": "V našem mladinskem društvu bi radi postavli wifi javno dostopno točko, z dosegom recimo vsaj 100m okoli pisarne. Ker nihče od nas nima lih veliko znanja o postavljanju ene take zadeve, me zanima, kakšno opremo bi nabavili.  Potrebuje se pač wifi router s priklopom na zunanjo anteno, nujen je qos/traffic shaper, pa ena (neusmerjena) antena. Kaj predlagate?  Pa prosil bi še za predloge o sami izvedbi - je potrebno na kaj posebej pazit, na kolko omejiti promet za posameznega uporabnika, zapiranje portov... ",
+    "user": "Daedalus"
+  },
+  {
+    "message": "Naceloma za osnovno postavitev wifi tocke ne rabis kaj dosti. Zadostuje ti recimo kaksen Linksys-ov wlan router in ene zunanja antena, ki deluje v kroku 360 stopinj. Obe zadevi povezes s primernim kablom ter pravilnimi konktorji. Katere natancno potrebujes je odvisno od modela routerja, ker pac menjas njegovo orignalno anteno z zunanjo ojacano (imam celo eno taksno zunanjo anteno viska, ce ta zanima). Celoten strosek tega je cca 30 do 40k SIT .  Ker osnovni softwer na routerju ne omogoca nekih omejitev prometa in podobnih zadev, bos potreboval kaksen open linux na tej zadevi, recimo  Openwrt. Od tukaj naprej je pa stvar lastnega igranja ",
+    "user": "PaJo"
+  },
+  {
+    "message": "ali pa  dd-wrt, ki se mi osebno zdi dosti bolj \"stabilen\". ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "A lahko kaj poves o tej \"stabilnosti\"? Mislim, kako se pokaze, da je bolj \"stabilen\", meni namrec openwrt deluje povsem \"stabilno\" :) ",
+    "user": "b"
+  },
+  {
+    "message": "imel openwrt na wrt54gl in vsake toliko sem moral router resetirati, ker je enostavno \"zmrznil\". potem sem nalozil dd-wrt in teh problemov (na istem hw) nimam vec.  kolikor vidim je razvoj na openwrt malce zamrl ; zadnji firmware je iz marca letos, medtem pa je dd-wrt uspelo priti celo na wrt54-GS V5.* model. ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Routerboard + Mikrotik = Zmagovilna konfiguracija, ne cenovno ampak v stabilnosti in v konfiguraciji. Če pa je za domačo uporabo pa so ti že prej odgovorili. ",
+    "user": "shock"
+  },
+  {
+    "message": "y0! Tudi jaz bi rad ustvaril nekaj podobnega le da ne bil signal na 360 stopinj ampak usmerjeno v eno stran. Edina težava ki je je ta da bi rad da bi antena lovila cca 25km, seveda z pomocjo satelitskih kroznikov in podobnih reci. Zaenkrat sem nasel le tole http://www.unwiredadventures.com/unwire... zdaj pa potrebujem vas, da mi poveste ali je to sploh mogoce, koliko stane in kaj treba naredit ter kako to naredit. LP ",
+    "user": "krenx"
+  },
+  {
+    "message": " Klik. To je antena z 27dBi dobitkom, kar pomeni, da je snop te antene 200 krat ožji kot snop navadne domače antence (to resno mislim). Lahko vidiš, da so take antence dokaj drage. To kar si želiš ti, da bi si kupil satelitski krožnik in dal gor WiFi žarilec, bi imel eno anteno s 20dBi dobitka, skratka ima 5krat večji snop kot 27 dBi antena oziroma za faktor 25 pri povezav obeh enakih anten. Take rešitve (s sat. krožnikom) so poceni (4k sat antena + 4k material + kabel) delajo brez problema tam pri 10 km za 25 km pa nisem siguren. Aja pa še ena stvar je pomembna pri takih povezavah, moraš skrbet, da ni ovir v fresnelovi coni. Več o fresnelovi coni dobiš  tukaj. ",
+    "user": "shock"
+  },
+  {
+    "message": "hvala shock sej je manj kot 25km vbistvu je 16km oz tja cca 10 km zracne linije (ne vem natacno bom jutri izmeril na kaksnem zemljevidu) ampak ker je 10km gozda in 100m razlike v nadmorski visini sem predvideval da bi potreboval nekoliko mocnejsi signal. Ali se motim? Ima se kdo drug kako idejo? (vecji satelitski kroznik ;) ) pa se to kater router mi priporocate- kolikor sem nasel na forumih je za take zadeve dober za svoj denar Linksys WRT54GL. Kaj pa mrezna kartica na drugi strani? Ali je celo boljse da je na vsaki strani en router? ",
+    "user": "krenx"
+  },
+  {
+    "message": "v vsakem primeru če želiš delujočo povezavo se morata anteni videti optično (pomeni da ne sme biti nobene ovire med antenema) niti enega grma, sicer povezave ne boš imel. Drugo z navadnim wi-fi routerjem a-la Linksys ipd. ne bš naredil povezave na 16Km, ne glede na anteno. Oddajna moč je premajhna za to.S kakšnim CISCO-tom bi že šlo, drugače pa je to \"waste of time and money\". ",
+    "user": "Stratus"
+  },
+  {
+    "message": "kakor jaz vem mora oprema oddajati max 18dBm z G standard in 20 dBm za B sdtandard na evropskih tleh, to velja za vse tudi če je ime opreme \"superduper air el condor passa CISCO\". ",
+    "user": "shock"
+  },
+  {
+    "message": "Ja, v praksi pa se noben ne drži tega.  Namesto golega povečevanja oddajne moči se splača za daljše linke uporabit kakšen malo boljši radio, kot je broadcom v wrt54g in podobnih škatlicah. Morda kakšen Wistron CM9 ali kaj drugega z atheros chipsetom. Ampak potem rabiš še škatlico, v katero to vtakneš in cena je takoj 3x wrt54g. Bo pa zanesljivost linka bistveno boljša.  Z dobrim radiem lahko prišparaš par dB ojačanja antene, ampak žal je tako, da ne boš niti slučajno videl 25km ob dovoljeni jakosti signala, ne glede na anteno. Treba bo čez zakonske omejitve, in zato rabiš anteno s čimožjim snopom (parabola), da ne sevaš na vse konce in boš težje koga zmotil. Če te dobijo kazen ni majhna in je treba dobro premislit, a se to splača.  shock: dražja oprema navadno omogoča večjo moč (vsaj do 100mW), je pa res (kot praviš) da se tega legalno pri nas ne da uporabit. ",
+    "user": "b"
+  },
+  {
+    "message": "Naj me kdo popravi če se motim, ampak pas ki je med 2400-2500MhHz je nelicenčen in tukaj notri lahko daš kakrkoli ti paše. Kar se tiče omejitvah mislim da je 100mW (oz 63mW) omejeno na standard 802.11 ne pa moč na tem pasu, skratka nisem siguren da bi dobil kazen za to. ",
+    "user": "shock"
+  },
+  {
+    "message": "Frekvenčni pas 2400 - 2500 MHz (središčna frekvenca 2450 MHz) je določen za industrijsko, znanstveno in medicinsko uporabo.  Še enkrat povem 1.) ANTENI SE MORATA VIDETI MED SABO (pomeni če bi vzel teleskop in pogledal od ene antene moraš videti krožnik druge antene) 2.) ODDAJNA MOČ ROUTERJEV JE PREMAJHNA ZA TAKO RAZDALJO (radioamaterji ki vzpostavljajo digitalne povezave na razdaljah več kilometrov uporabljajo oddajno moč več 10 watt-ov) Poleg vsega tga tudi če premagaš vse ovire in dobiš močnejši oddajnik (rabiš seveda dva) bo povezava delala dobro samo v primernih atmosferskih pogojih, se pravi ko bo gosta megla, dež ali sneženje lahko pozabiš na povezavo. Govorim iz radioamaterskih in računalniških izkušenj. ",
+    "user": "Stratus"
+  },
+  {
+    "message": "Stratus:  No za doseganje 10km nisem rabil lih 10W oddajnik, dovolj mi je zadostovalo 100mW oddajne moči. Ko je padal dež se je signal poslabšal za celih 6 dB (ni bil lih naliv). Sprejeti signal pa je bil na taki razdalji -65 dBm z domačo narejeno antenco + parabola. Kar se tiče prisotnost snega pa ne vem, kajti na primorskem bolj malo pada sneg . ",
+    "user": "shock"
+  },
+  {
+    "message": "Ne, sej ne rabiš 10W. Ampak EIRP se poveča z dobro anteno, tako da če maš ti 20dB anteno, bi moral zmanjšati moč oddajnika za 20dB od najvisje dovoljene, da boš znotraj omejitev. Pol pa že ne bo več prav blazno velikega dosega...  Kot rečeno, v praksi tega nihče ne počne, ampak ponavadi nabijejo kolikor jim oprema zmore + usmerjene antene, pa se da delat konkretne linke. Ni pa to legit. ",
+    "user": "b"
+  },
+  {
+    "message": "@shock  Frekvenčno območje od 2400-2500 MHz je zelo natančno določeno in je tudi določeno s kakšno močjo lahko kdo KAJ dela. Radioamaterjem je res tam dovoljena moč 300W ERP (od 2400-2450 MHz - sateliti). Če pa uporabljaš wlan, pa NE SMEŠ uporabljati večje moči, kot 100mW.  Splošni akt o načrtu uporabe radijskih frekvenc ",
+    "user": "ToniT"
+  },
+  {
+    "message": "\"radioamaterji ki vzpostavljajo digitalne povezave na razdaljah več kilometrov uporabljajo oddajno moč več 10 watt-ov\"  bull**khmm**shit   ni čudno, kam gre radioamaterstvo... ",
+    "user": "rfmw"
+  },
+  {
+    "message": "ToniT  Kaj pa sem napisal drugače od tebe? Saj sem napisal da pri standardu 802.11 ne smeš dajat 100m in več. ",
+    "user": "shock"
+  },
+  {
+    "message": "@shock Napisal si: Naj me kdo popravi če se motim, ampak pas ki je med 2400-2500MhHz je nelicenčen in tukaj notri lahko daš kakrkoli ti paše. Kar se tiče omejitvah mislim da je 100mW (oz 63mW) omejeno na standard 802.11 ne pa moč na tem pasu, skratka nisem siguren da bi dobil kazen za to.  Na tem področju NE SMEŠ delati, kar ti paše! ",
+    "user": "ToniT"
+  },
+  {
+    "message": "No to ja, samo to mi ni jasno kar se tiče nelicenčnih pasov. Kako je lahko nekaj definirano če ni licenčno. In če si jaz naredim neko svojo napravo, ki dela na tem pasu, spet me ne morejo kaznovat?? ",
+    "user": "shock"
+  },
+  {
+    "message": "Nekaj je lahko definirano : uporablja se npr. zastonj in kdorkoli, vendar pod določenimi pogoji in načini npr. oddajna moč za 2,45GHz (wifi pas) pod določeno mejo... Licenčno pa pomeni, da določen pas pod določenimi pogoji lahko uporablja vsak, ki plača licenčnino (tako bo z WiMAX! ponudniki) ...  Kot vidim iz prejšnjih tvojih postov shock  si tudi ti uradno  bil malo več (za 20dBi!)  iz normativov za wifi (parabola & stuff za 10km link), ma če si zadevo prav naredil, si imel zelo ozek snop na linku in tako velik domet, poleg tega pa je malo dlje taki link, če nisi glih na liniji ali blizu težko odkrit \"s strani\"  in praktično ponavadi ostalih ne moti. Torej, uporabil si \"guerilla tactic\"    kot večina folka s podobnimi nameni  , pa nikome ništa ponavadi, v stilu: \"še nobenega niso zaprli, ker je kradel, ampak zato ker so ga dobili !\"    ... torej ti bi uradno lahko delal (za stalno) samo z 1mW (1dBm) na kartici/ruterju z ono parabolo, da bi bil v mejah \"zakona\"  ...  Saj te razumem,  mam tudi sam včasih kake kratkotrajne gverilske eksperimentalne  wifi-link POPADKE v \"<b><i>GodZilla</i></b>\" stilu ...    ",
+    "user": "Spajky"
+  },
+  {
+    "message": "@ Shock: \"No za doseganje 10km nisem rabil lih 10W oddajnik, dovolj mi je zadostovalo 100mW oddajne moči. Ko je padal dež se je signal poslabšal za celih 6 dB (ni bil lih naliv). Sprejeti signal pa je bil na taki razdalji -65 dBm z domačo narejeno antenco + parabola\"  Kakšna pa je bila kvaliteta signala ? (predvidevam da govoriva o WLAN povezavi) in koliko je bila stabilna.  @ rfmv:  Predvidevam da radioamaterja nisi še srečal, niti nimas pojma o njihovi predanosti experimentiranju na področju brezžičnih prenosov podatkov pa naj bo to analogno ali digitalno.   Ok priznam malce sem petiraval z \"nekaj 10W\", dejansko se uporabljajo oddajne moči do 10W, nekateri redki pa experimentirajo z višjimi močmi. Dejstvo ostaja, kvalitetno WI-FI povezavo na razdalji več kilometrov, s katero boš lahko dosegal normalne hitrosti prenosa je izredno drago vzpostaviti, vsekakor pa ne z navadnimi routerji. ",
+    "user": "Stratus"
+  },
+  {
+    "message": "Stratus:  Stabilna, 75-80% kvaliteta ",
+    "user": "shock"
+  },
+  {
+    "message": "Čar radioamaterstva je, da z čim manjšo močjo vzpostaviš čim daljšo zvezo! ",
+    "user": "ELEKTROLJUB"
+  },
+  {
+    "message": "Čar amaterstva je pa, da obudiš 4 leta staro temo. :D ",
+    "user": "Tarzan"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "message": "Mam ceu kup nekih programov za probat, ko bi naj laufali v VB in klicali neke funkcije za Win. Primer: Odpem standard EXE (v VB) in napisem kodo:  Private Sub Form_Load() Declare Function GetFreeSpace& Lib \"KERNEL\" (ByVal wFlags%) End Sub Private Sub Command1_Click() Print Int(GetFreeSpace&(0)/1024): \"KB Free\" End Sub  Ko bi pritisnil gumb(Command1) bi se mi naj izpisalo koliko svobodnega spomina še imam.  Pa nič. Sledita le dva Compile errora.  Si moram poleg VB najt še kak drug program, da mi to vse skup poveže al kaj?  Saj sm vedu da mi API nebo šou     ",
+    "user": "alkimist"
+  },
+  {
+    "message": "A si res napisal tako: 'Print... (mislim z ono zabevo ' ) ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Ohoho... Zadevo si deklariral znotraj odzivne procedure dogodka Load, in tako funkciji (oz. referenci na funkcijo) dal lokalno (proceduralno) vidnost. Torej, ko se funkcija, oz. procedura izteče, preneha obstajati tudi referenca...  Poskusi npr. to kodo (Potrebuješ prazno formo):  Option Explicit  Public Declare Function GetUserName Lib \"advapi32.dll\" Alias \"GetUserNameA\" (ByVal lpBuffer As String, nSize As Long) As Long  Private Sub Form_Load() Dim strBuffer As String Dim lngSize As Long  lngSize = 255 strBuffer = String(lngSize, Chr(0))  GetUserName strBuffer, lngSize  MsgBox strBuffer  End Sub  Ta primer ti pokaže VSO umetnost API funkcij...  - Funkcijo deklariraš na ravni MODULA (NIKOLI ZNOTRAJ KAKE FUNKCIJE ALI PROCEDURE)!!! - Ob nekem dogodku pokličeš deklarirano funkcijo, vendar pred tem INICIALIZIRAŠ VSE PARAMETRE, ki jih prejme  Win32 API je namreč pisan v C-ju, kjer so programerji mahnjeni na uporabo kazalcev... O tem kaj so kazalci, kdaj drugič - važno pa je da so vse spremenljivke inicializirane...   itd.  P.S.: Imam se za dokaj dobrega poznavalca Win32 API in tale tvoja funkcija mi ni bila ravno znana, zato sem malo pobrskal po dokumentaciji in našel sledečo razlago:  The GetFreeSpace function is obsolete. It is provided to simplify porting of 16-bit Windows-based applications. Win32-based applications should use the GlobalMemoryStatus function.   Takoj sem bil potolažen...   Zadevo bi torej moral zastaviti takole:  Option explicit  Public Type MEMORYSTATUS dwLength As Long dwMemoryLoad As Long dwTotalPhys As Long dwAvailPhys As Long dwTotalPageFile As Long dwAvailPageFile As Long dwTotalVirtual As Long dwAvailVirtual As Long End Type   Public Declare Sub GlobalMemoryStatus Lib \"kernel32\" Alias \"GlobalMemoryStatus\" (lpBuffer As MEMORYSTATUS)  Public Sub Command1_Click() Dim msBuffer As MEMORYSTATUS  msBuffer.dwLength = Len(msBuffer)  GlobalMemorystatus msBuffer  With msBuffer MsgBox \"Na voljo je še: \" & CStr(CInt(.dwAvailPhys / 1024) ) & \" kB pomnilnika od skupno: \" & CStr(CInt(.dwAvailPhys / 1024) ) & \" kB.\" End With  End Sub  Tole bi moglo delat... Sem pa pisal na pamet, tako da vseeno malo preveri sintaxo...  Potem pa lahko na formo postaviš še npr. prikazovalnik napredka in timer kontrolo in že imaš monitoring za pomnilnik... Simple...   Samo brez skrbi, pa mirne živce...   Mirne duše lahko postaviš še kako vprašanje...   ",
+    "user": "webblod"
+  },
+  {
+    "message": "Naj dodam še misel Daniela Applemana, avtorja knjige Win32 API for Vizual Basic Developers Guide...  Najtežje pri API funkcija ni to, kako uporabiti kako funkcijo, pač pa, katero funkcijo izbrati ... Računalnik nam bo vedno vrnil nek rezultat - vprašanje pa je ali pričakovanega. Ko se spoprimete z API funkcijami, naredite svoj prvi korak k razumevanju C-ja in sedaj boste dojeli, kaj imajo v mislih tisti, ki pravijo, da računalnik stori natanko tisto, kar mu naložimo naj stori... ",
+    "user": "webblod"
+  },
+  {
+    "message": "Aj lajk! Tole pokže isti rezultat kot ono v Task Managerju, pa še iz excela (VBA) dela. Škoda da ne rabim, bi šel kar malo preštudirat tele APIje.  Spomina je malo več ko inteđer: MsgBox \"Na voljo je še: \" & CStr(.dwAvailPhys / 1024) & \" kB pomnilnika od skupno: \" & CStr(.dwTotalPhys / 1024) & \" kB.\" ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Se opravičujem ...   Namesto CStr(CInt(bla bla bla)) uporabi CStr(CLng(bla bla bla))...  Na splošno je pametno v primeru API jev uporabljati podatkovni tip Long, saj VB ne pozna nepredznačenih števil, ki jih API funkcije pogosto vračajo...  VEDNO pa uporabljajte eksplicitno pretvorbo tipov... Tako točno veste kaj bo rezultat... V VB-ju se to morda res ne zdi pomembno, ampak če boste kdaj kaj \"spacali\" v drugem jeziku (npr. kako namestitev,...) pa boste videli, da drugi jeziki lahko vrnejo tisto, kar ste zapisali, kar pa nikakor ne bo tisto kar ste pričakovali..  ",
+    "user": "webblod"
+  },
+  {
+    "message": "Zakaj? Saj si že definiral vse v Type MEMORYSTATUS kot Long. Si to zdaj spregledal, ali meni ni kaj jasno?  Zakaj mi sistemski zvočnik zapiska vsakič, ko kliknem komandbatn? A to naredi tudi v VB? ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Količnik dveh števil (tipa Long) je lahko tudi Single, oz. Double. npr. :  Dim x as Long, y as Long, r As Long  x = 10 : y = 30 r = CLng(x / y) ' x / y vrne stevilo s plavajoco vejico!!! Ker je r tipa Long, lahko v nadaljnih izračunih pride do napake...   Gre torej za samodisciplino, ki te obvaruje raznih nepredvidenih rezultatov..., ki ti lahko požrejo kar nekaj živcev...    ",
+    "user": "webblod"
+  },
+  {
+    "message": "Nadvse koristno, hvala! ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Bolj poglobljeno razlago si lahko ogledaš tukaj.  Da boš natančno razumel, o čem govorim...  Za Alkimista pa... Enkrat sva že govorila o API funkcijah. Poglej zopet sem, saj imaš tukaj tistih nekaj v VB največkrat uporabljenih API funkcij... ",
+    "user": "webblod"
+  },
+  {
+    "message": "Dovolil si bom še en doooooooooooolg post...   Predstavljam si, da vem, kako hudo je, ko se nekdo začne ubadati z Win32 API funkcijami... Zadeve kar nočejo delati, stvar je nadvse čudna in oh in sploh nerazumljiva...  Človeka prime, da bi kar obupal... Pa ni čisto tako...   Predstavil vam bom preizkušeno delujoč model uporabe Win32 API z izvorno kodo vred...  Pri tem bi rad povdaril, da s kodo lahko počnete karkoli, jouporabljate in modificirate po mili volji, no copyright at all...  Naj bo to prispevek vsem začetnikom...   Najprej prekopirajte spodnjo kodo vsak razred v svoj razredni modul:  '************************************************************************ 'Class CSystem:  Option Explicit  'Lastnostim priredimo njihove lokalne kopije Private mOS As String Private mVersion As String Private mCSD As String Private mBuild As String Private mWindowsPath As String Private mWindowsSystemPath As String Private mComputerName As String Private mUserName As String  'Deklariramo AIP funkcije Private Declare Function GetWindowsDirectory _ Lib \"kernel32\" Alias \"GetWindowsDirectoryA\" _ (ByVal lpBuffer As String, _ ByVal nSize As Long) As Long Private Declare Function GetSystemDirectory _ Lib \"kernel32\" Alias \"GetSystemDirectoryA\" _ (ByVal lpBuffer As String, _ ByVal nSize As Long) As Long Private Declare Function GetVersionEx _ Lib \"kernel32\" Alias \"GetVersionExA\" _ (lpVersionInformation _ As OSVERSIONINFO) As Long Private Declare Function GetComputerName _ Lib \"kernel32\" Alias \"GetComputerNameA\" _ (ByVal lpBuffer As String, _ nSize As Long) As Long Private Declare Function GetUserName _ Lib \"advapi32.dll\" Alias \"GetUserNameA\" _ (ByVal lpBuffer As String, _ nSize As Long) As Long Private Declare Function ExitWindowsEx _ Lib \"user32\" _ (ByVal uFlags As Long, _ ByVal dwReserved As Long) As Long Private Declare Function GetCurrentProcess _ Lib \"kernel32\" () As Long Private Declare Function OpenProcessToken _ Lib \"advapi32\" _ (ByVal ProcessHandle As Long, _ ByVal DesiredAccess As Long, _ TokenHandle As Long) As Long Private Declare Function LookupPrivilegeValue _ Lib \"advapi32\" Alias \"LookupPrivilegeValueA\" _ (ByVal lpSystemName As String, _ ByVal lpName As String, _ lpLuid As LUID) As Long Private Declare Function AdjustTokenPrivileges _ Lib \"advapi32\" _ (ByVal TokenHandle As Long, _ ByVal DisableAllPrivileges As Long, _ NewState As TOKEN_PRIVILEGES, _ ByVal BufferLength As Long, _ PreviousState As TOKEN_PRIVILEGES, _ ReturnLength As Long) As Long  'Konstante Private Const TOKEN_ADJUST_PRIVILEGES = &H20 Private Const TOKEN_QUERY = &H8 Private Const SE_PRIVILEGE_ENABLED = &H2  Private Const EWX_LOGOFF = 0 Private Const EWX_SHUTDOWN = 1 Private Const EWX_REBOOT = 2 Private Const EWX_FORCE = 4  Private Const VER_PLATFORM_WIN32_WINDOWS = 1 Private Const VER_PLATFORM_WIN32_NT = 2  'Struktura za zbiranje podatkov o OS Private Type OSVERSIONINFO dwOSVersionInfoSize As Long dwMajorVersion As Long dwMinorVersion As Long dwBuildNumber As Long dwPlatformId As Long szCSDVersion As String * 128 End Type  'Struktura varnostne sheme Private Type LUID LowPart As Long HighPart As Long End Type  Private Type TOKEN_PRIVILEGES PrivilegeCount As Long mLuid As LUID Attributes As Long End Type  Private Sub AllowTokenShutdown() Dim hProcessHandle As Long Dim hTokenHandle As Long Dim tmpLuid As LUID Dim tkp As TOKEN_PRIVILEGES Dim tkpNewButIgnored As TOKEN_PRIVILEGES Dim lBuffer As Long  'Ugotovimo rocico trenutnega procesa hProcessHandle = GetCurrentProcess()  'Ugotovimo prioriteto OpenProcessToken hProcessHandle, _ (TOKEN_ADJUST_PRIVILEGES Or TOKEN_QUERY), _ hTokenHandle  'Preberemo LUID za \"ShutDown\" LookupPrivilegeValue \"\", \"SeShutdownPrivilege\", tmpLuid tkp.PrivilegeCount = 1 tkp.mLuid = tmpLuid tkp.Attributes = SE_PRIVILEGE_ENABLED  'Omogocimo moznost izklopa AdjustTokenPrivileges hTokenHandle, _ False, _ tkp, _ Len(tkpNewButIgnored), _ tkpNewButIgnored, _ lBuffer End Sub   Public Property Get Build() As String Build = mBuild End Property   Private Sub GetNetworkInfo() Dim rc As Long Dim lpBuffer As String Dim nSize As Long  'Kreiramo medpomnilnik nSize = 255 lpBuffer = Space$(nSize)  'Poklicemo API rc = GetComputerName(lpBuffer, nSize)  If rc <> 0 Then 'vpisemo ime racunalnika mComputerName = Left$(lpBuffer, _ InStr(lpBuffer, Chr$(0)) - 1) Else mComputerName = \"\" End If  'izpraznimo medpomnilnik lpBuffer = Space$(nSize)  'Poklicemo API rc = GetUserName(lpBuffer, nSize) If rc <> 0 Then 'vpisemo ime uporabnika mUserName = Left$(lpBuffer, _ InStr(lpBuffer, Chr$(0)) - 1) Else mUserName = \"\" End If End Sub  Public Sub Logoff() Dim rc As Long  'Poklicemo API rc = ExitWindowsEx(EWX_LOGOFF, 0&) End Sub  Public Property Get OperatingSystem() As String OperatingSystem = mOS End Property  Public Sub Reboot() Dim rc As Long  'omogocimo shutdown AllowTokenShutdown  'Poklicemo API rc = ExitWindowsEx(EWX_REBOOT, 0&) End Sub  Public Property Get ServicePack() As String ServicePack = mCSD End Property  Public Sub Shutdown() Dim rc As Long  'omogocimo shutdown AllowTokenShutdown  'Poklicemo API rc = ExitWindowsEx(EWX_SHUTDOWN, 0&) End Sub  Public Property Get Version() As String Version = mVersion End Property   Private Sub GetWindowsInfo() Dim rc As Long Dim lpBuffer As String Dim nSize As Long  'Kreiramo medpomnilnik nSize = 255 lpBuffer = Space$(nSize)  'Poklicemo API rc = GetWindowsDirectory(lpBuffer, nSize)  If rc <> 0 Then 'vpisemo pot mWindowsPath = Left$(lpBuffer, _ InStr(lpBuffer, Chr$(0)) - 1) Else mWindowsPath = \"\" End If  'resetiramo medpomnilnik lpBuffer = Space$(nSize)  'poklicemo API rc = GetSystemDirectory(lpBuffer, nSize)  If rc <> 0 Then 'vpisemo pot mWindowsSystemPath = Left$(lpBuffer, _ InStr(lpBuffer, Chr$(0)) - 1) Else mWindowsSystemPath = \"\" End If End Sub  Public Property Get WindowsPath() As String WindowsPath = mWindowsPath End Property  Public Property Get WindowsSystemPath() As String WindowsSystemPath = mWindowsSystemPath End Property   Public Property Get ComputerName() As String ComputerName = mComputerName End Property  Public Property Get UserName() As String UserName = mUserName End Property  Private Sub Class_Initialize() Dim osvi As OSVERSIONINFO  osvi.dwOSVersionInfoSize = Len(osvi) If GetVersionEx(osvi) <> 0 Then If osvi.dwPlatformId = VER_PLATFORM_WIN32_WINDOWS Then mOS = \"Windows 95\" End If  If osvi.dwPlatformId = VER_PLATFORM_WIN32_NT Then mOS = \"Windows NT\" End If  mVersion = Trim$(CStr(osvi.dwMajorVersion)) & _ \".\" & Trim$(CStr(osvi.dwMinorVersion)) mBuild = Trim$(CStr(osvi.dwBuildNumber And &HFFFF&)) mCSD = Trim$(CStr(osvi.szCSDVersion)) Else mOS = \"\" mVersion = \"\" mBuild = \"\" mCSD = \"\" End If  GetWindowsInfo  GetNetworkInfo  End Sub   '************************************************************************ 'Class CProcessor  Option Explicit  Private mProcessors As Integer Private mProcessor As String  Private Const PROCESSOR_INTEL_386 = 386 Private Const PROCESSOR_INTEL_486 = 486 Private Const PROCESSOR_INTEL_PENTIUM = 586 Private Const PROCESSOR_MIPS_R4000 = 4000 Private Const PROCESSOR_ALPHA_21064 = 21064  Private Type SYSTEM_INFO dwOemID As Long dwPageSize As Long lpMinimumApplicationAddress As Long lpMaximumApplicationAddress As Long dwActiveProcessorMask As Long dwNumberOfProcessors As Long dwProcessorType As Long dwAllocationGranularity As Long dwReserved As Long End Type  Private Declare Sub GetSystemInfo Lib \"kernel32\" _ (lpSystemInfo As SYSTEM_INFO) Public Property Get Processor() As String Processor = mProcessor End Property Public Property Get Processors() As Integer Processors = mProcessors End Property  Private Sub Class_Initialize() Dim lpSystemInfo As SYSTEM_INFO  GetSystemInfo lpSystemInfo  mProcessors = lpSystemInfo.dwNumberOfProcessors  Select Case lpSystemInfo.dwProcessorType Case PROCESSOR_INTEL_386 mProcessor = \"Intel 386\" Case PROCESSOR_INTEL_486 mProcessor = \"Intel 486\" Case PROCESSOR_INTEL_PENTIUM mProcessor = \"Intel Pentium\" Case PROCESSOR_MIPS_R4000 mProcessor = \"MIPS R4000\" Case PROCESSOR_ALPHA_21064 mProcessor = \"Alpha 21064\" Case Else mProcessor = \"586\" End Select End Sub   '************************************************************************ 'Class CMemory  Option Explicit  Private mMemory As Long Private mAvailableMemory As Long Private mVirtualMemory As Long  Private Type MEMORYSTATUS dwLength As Long dwMemoryLoad As Long dwTotalPhys As Long dwAvailPhys As Long dwTotalPageFile As Long dwAvailPageFile As Long dwTotalVirtual As Long dwAvailVirtual As Long End Type  Private Declare Sub GlobalMemoryStatus Lib \"kernel32\" _ (lpBuffer As MEMORYSTATUS)  Public Property Get VirtualMemory() As Long VirtualMemory = mVirtualMemory End Property  Public Property Get AvailableMemory() As Long AvailableMemory = mAvailableMemory End Property  Public Property Get Memory() As Long Memory = mMemory End Property Private Sub Class_Initialize() Dim lpmstMemStat As MEMORYSTATUS  GlobalMemoryStatus lpmstMemStat  mMemory = lpmstMemStat.dwTotalPhys mAvailableMemory = lpmstMemStat.dwAvailPhys mVirtualMemory = lpmstMemStat.dwTotalPageFile End Sub  Nato pa na obrazec postavite 12 tekstovnih polj, jih opremite z ustreznimi oznakami (Label) in timer kontrolo, ter dodajte menije, nato obrazcu priredite spodnjo kodo:  '************************************************************************ 'Obrazec  Option Explicit  Private s As clsSystem Private m As clsMemory Private p As clsProcessor Private Sub Form_Load() Set s = New clsSystem Set p = New clsProcessor Set m = New clsMemory  With s Text1.Text = \"\\\\\" & .ComputerName Text2.Text = .UserName End With  With m ' Polja RAM Text3.Text = Format$(.Memory, \"###,###\") text4.Text = Format$(.AvailableMemory, \"###,###\") Text5.Text = Format$(.VirtualMemory, \"###,###\") End With  With p 'Polja procesor Text6.Text = .Processor Text7.Text = .Processors End With  With s 'Polja OS  Text8.Text = .OperatingSystem Text9.Text = .Version & \" Build \" & .Build Text10.Text = .ServicePack Text11.Text = .WindowsPath Text12.Text = .WindowsSystemPath End With End Sub Private Sub Form_Unload(Cancel As Integer) Set s = Nothing Set p = Nothing Set m = Nothing End Sub    Private Sub mnuFileExit_Click() Unload Me End Sub   Private Sub mnuFileLogoff_Click() s.Logoff End Sub   Private Sub mnuFileReboot_Click() s.Reboot End Sub   Private Sub mnuFileShutdown_Click() s.Shutdown End Sub   Private Sub Timer1_Timer() Set m = New clsMemory  txtRAMAvail.Text = Format$(m.AvailableMemory, \"###,###\")  End Sub  Vse kar morate še postoriti, je ustrezno oblikovati obrazec in nikar ne pozabite timer kontroli nastaviti lastnosti Interval (priporočam 1000).  Tisti, ki bi radi zadevo sprobali v VBA, morajo textovna pola (Text) preimenovati v TextBox, če se prav spomnim...  Tako, sedaj pa čakam odzive...  Upam da ne boste kar tiho... Potem bom mislil, da je ves moj trud zaman...  There must be a reason, why I'm an API Guru...       ",
+    "user": "webblod"
+  },
+  {
+    "message": "Hvala bogu za copy - paste in webblodu za kodo  Vidi, radi! Radi! Mogoče objavim siko, ko bom imel priložnost.  Če še koga razen mene zanima, za VBA: TextBox namesto Text UserForm_Initialize namesto Form_Load  ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Hja res.Tega pa je za kar nekaj za preštudirat. Hvala Webblod bom se probau spopast s to rečjo. Upam ,da se vrnem živ in zdrav    ",
+    "user": "alkimist"
+  },
+  {
+    "message": "...in nikar ne pozabite timer kontroli nastaviti lastnosti Interval (priporočam 1000).   A to VB diskriminira VBA? Mislim, je to kaj le VBju lastnega? ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Med kontrolami, tam kjer so Text, Label, ... je tudi ena Ura (Timer).  Med tistimi nekaj malo Lastnostmi ima Interval...  Ali VBA nima Timer Kontrole??? ",
+    "user": "webblod"
+  },
+  {
+    "message": "Ni! Saj, če je to mišljeno za apdejtanje podatkov, ki se dobijo s pomočjo clsMemory, bom probal drugače. Če nič drugega si bom omislil kakšen ročni refreš. ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Sem tudi sam preveril in res je ni...   Je blo pa mišljeno zaradi \"refresha\", ja...  Se mi zdi pa zanimivo, da sta (poleg mene) tukaj samo dva VB-jaša... Glede na število obiskov posameznih tem, bi mislil, da nas je precej več...   Morda si bom še premislil in bom prenehal z razvojem moje strani, ki naj bi bila namenjena VB programerjem.  Če ne bo obiska in postov, se mi poraja vprašanje smiselnosti...  ",
+    "user": "webblod"
+  },
+  {
+    "message": "Čemu malodušje, dobra slovenska VB stran bo imela velik obisk in odziv, več glav več ve in več ljudi daje prednost slovenščini (predvsem slovenci). Opustiš pa lahko projekt tudi kasneje, ako se ne prime. Število obiskov tem tudi nekaj pove.  Evo, še nekaj spodbudnih: Prihaja .net z dobro podporo razvoja ThinClientov, novo področje za VB programerje (celo za VBA – iFixova SCADA). V VBA je povezovanje ofis aplikacij iz različice v različico bolje podprto, koristna zadeva, kar bi moralo pritegniti vsaj hobi pol-programerje kot sem jaz (tisti A gor ali dol, name lahko računaš).  Glede APIjev: Jaz sem sicer tvojo kodo spravil v življenje, za študij bo pa potrebno več časa. Zarad mene, lahko bi bil virus, pa bi ga kopi-pejstal in pognal (tako širjenje so najbrž mokre sanje vsakega virusa). Sam praviš da so APIji zahtevni. To je bilo sploh prvič, da sem uporabil klas modul. Saj sem se pozanimal kaj je, ampak le teoretično.  ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Uf... Kaj ni nihče opazil sporočila o napaki???  Naslednjič me o kaki čudni napaki na strani nemudoma obvestite !!!  Prosim!!!  LP. ",
+    "user": "webblod"
+  },
+  {
+    "message": "Men se zdi ful super.Predvsem to, da lahko začneš takoj delat (se učit). Pa da so osnovne finte jasno razložene (HTML). Fali še sam VB.   Kar tako naprej P.S. Kolega mi je reku, da se da v VB klicat programe s stavkom execute.Iskal sem v MSDN pa mi ni nic jasno več.Mogoce ves kaj o tem Webblod? ",
+    "user": "alkimist"
+  },
+  {
+    "message": "Poskusi tole kodo:  Obrazec, gumb in nič drugega...  Private Sub Command1_Click() Dim ProgID As Long  ProgID = Shell(\"C:\\WINDOWS\\CALC.EXE\", vbNormalFocus)   End Sub ",
+    "user": "webblod"
+  },
+  {
+    "message": "O.K., firbec je zmagal. Kaj je velika napaka na strani? Jaz ne najdem razen mrtvega linka Home (mimigrede, zakaj ga ne posloveniš?) nič takega.  Kako pa je z uokvirjanjem tujih strani, je to O.K.? ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Napaka je bila v zvezi s komuniciranjem z bazo...  Mrtvi link HOME kaže na home.htm (ki je bil najprej), sedaj pa je default.asp... Bom popravil...  Niti pod razno ni OK uokvirjati tuje strani... I'm ashamed   Ampak gre za mojo lenobo... Copy-Paste vrstice kode, pa maš namesto TARGET=_blank kodo TARGET=_main   Mislim pa, da bom danes uspel objaviti forum in  bom tudi to odpravil... Upam, da se boš včlanil...   HVALA za opozorilo...  ALKIMIST: Ti je uspelo pognati kalkulator???  LP ",
+    "user": "webblod"
+  },
+  {
+    "message": "Webblod ne bos verjel. Ni slo.  Tukaj na tem rac. imam sicer instaliran VB5, ne vem ce ma kaj veze s tem. Vrze pa error:  Run-time error '53': File not found  Bom se probal z mojim bolsim rac. v pondeljek, tam mam VB6.Toda dvomim, da je finta v tem. ",
+    "user": "alkimist"
+  },
+  {
+    "message": "A pot si napisal prav? ",
+    "user": "Mercier"
+  },
+  {
+    "message": "Ježešmarijana!  Pa res Nekolme.Ko ze mislim,dami ne more bit vec bolj nerodno me moja površnost vednoznova preseneti.  Na tem rac sem mel windowse namreč kot 'window' instalirane.  Kakorkoli ze hvala.  Ja koncno. Moj prvi VB program,ki klice nek exe fail...juhuuu ",
+    "user": "alkimist"
+  },
+  {
+    "message": "ALKIMIST:   Sicer ti pa %WINDIR% vrne API funkcija GetWindowsDirectory   Sicer pa te pričakujem na WEBblod.net med prvimi člani.   Ugani, kdo bo moderator foruma Win32 API ?!?  No... morda pa ti čez kako leto odstopim to mesto...  ",
+    "user": "webblod"
+  }
+]

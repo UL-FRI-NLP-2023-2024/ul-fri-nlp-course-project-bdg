@@ -1,0 +1,38 @@
+[
+  {
+    "ctx": "IGO Primo / Nextgen in bluetooth zvočnik",
+    "content": "Pozdravljeni\n\nKer ima moj telefon bolj bogi zvočnik in se glasovno vodenje ne sliši prav dobro, sem si nabavil bluetooth zvočnik. Problem pa je, ker se pri Primotu in Nextgenu zvok predvaja na telefonu in BT zvočniku hkrati in to z majhnim časovnim zamikom, kar je zelo moteče. Če zmanjšam glasnost telefona se zmanjša tudi glasnost na zvočniku.\nPri ostalih navigacijah (Sygic, StreetPilot, Here) se zvok prenaša samo na BT zvočnik, telefon pa je lepo tiho.\n\nSe da to nastavit kje v \"sys\" datoteki ali je potrebna kakšna večja predelava ?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nHvala",
+    "author": "tomyy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "IGO Primo / Nextgen in bluetooth zvočnik",
+    "content": "Probaj v sys spremeniti vrednosti:\n\n[android]\nnavigation_audio_stream=4\n\ntestiraj vse vrednosti od 1 - 5.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "IGO Primo / Nextgen in bluetooth zvočnik",
+    "content": "Probal vse možnosti - brez uspeha. Še vedno kričita eden čez drugega\n\nŠe kakšna ideja ?",
+    "author": "tomyy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "IGO Primo / Nextgen in bluetooth zvočnik",
+    "content": "Da ti ne bom dal ravno na pladnju, se boš moral malo potrudit, da boš našel rešitev.\n\nZa vsako spremembo v sys daj vsiljeno zapiranje apk in nato zaženi nextgen.\n\nTo so komande od 0-5:\n\n0-VOICE_CALL\n1-SYSTEM\n2-RING\n3-MUSIC\n4-ALARM\n5-NOTIFICATION\n\nhint 1: preveri jakost zvoka za zgornje\nhint 2: če je nastavljen zvok na eno stran, ga premakni na drugo ( priporočam ti, da uporabiš v sys stream=3)\n\nTo je vse iz moje strani in verjamem, če boš dobro prečital, boš takoj ugotovil kaj moraš narediti, da se ne bo drlo eno čez drugo.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "IGO Primo / Nextgen in bluetooth zvočnik",
+    "content": "Hvala Janchu in Popotniku za namige.\n\nPri Nextgenu zadeva lepo funkcionira z nastavitvijo \"navigation_audio_stream=3\". Pri Primotu, ki ima zelo podobno sys datoteko pa še vedno ne vem kje se skriva zajec. Ne glede na vnešen popravek je zvok vedno povezan z alarmom in ne z mediji.\n\nKot kaže se bo treba počasi navadit na Nexgena.",
+    "author": "tomyy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "IGO Primo / Nextgen in bluetooth zvočnik",
+    "content": "Kot prvo cenim, da si vložil malo truda, si eden redkih, ki se je dejansko potrudil razbrati namige, zato kapo dol  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nNavaden iGO bi moral isto sprejet novo komando za zvok.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  }
+]

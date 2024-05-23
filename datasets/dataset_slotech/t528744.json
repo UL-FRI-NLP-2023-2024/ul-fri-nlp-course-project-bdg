@@ -1,0 +1,14 @@
+[
+  {
+    "message": "Živjo,  Kot vidite v spodnjem primeru za vsakega člana razreda Test izpišem razliko med kazalcem objekta in člana razreda. Tako dobim nekakšen odmik vsakega člana razreda. Ideja je ta da bi na podlagi tega odmika lahko za posameznega člana razreda Test shranil kakšno dodatno informacijo.  std::map<ptrdiff_t /*offset*/, std::string/*dodatna info*/> in tako bi lahko za vsak objekt razreda Test, za poljubnega člana glede na \"odmik\" hitro dobil to dodatno informacijo.   Problem je v tem, ker ne smem spreminjati obstoječih razredov, na volji imam samo kazalec na objekt in pa kazalec na člana tega razreda. Zanima me samo ali je imajo lahko objekti razreda Test različen \"memory layout\"... Torej da bi bil lahko odmik za npr. prvega člana razreda Test pri n primerkih različen. Kaj pa pravi standard o memory layoutu razredov...   Upam da se razumemo, kaj mislim...   #include <iostream>\n\nclass Test\n{\n    public:\n        int intMember;\n        double doubleMember;\n        std::string strMember;\n        std::string strMember2;\n};\n\nvoid printMembersOffsets(const Test& t)\n{\n    double Test::*p = &Test::doubleMember;\n\n    std::cout << \"intMember offset: \" << (ptrdiff_t)&t.intMember - (ptrdiff_t)&t << std::endl;\n\n    std::cout << \"doubleMember offset: \" << (ptrdiff_t)&t.doubleMember - (ptrdiff_t)&t << std::endl;\n    std::cout << \"doubleMember (pointer to member example) offset: \" << (ptrdiff_t)&(t.*p) - (ptrdiff_t)&t << std::endl;\n\n    std::cout << \"strMember offset: \" << (ptrdiff_t)&t.strMember - (ptrdiff_t)&t << std::endl;\n    std::cout << \"strMember2 offset: \" << (ptrdiff_t)&t.strMember2 - (ptrdiff_t)&t << std::endl << std::endl;\n}\n\nint main()\n{\n    Test test;\n    test.strMember = \"Anže je kreten na kvadrat!\";\n    printMembersOffsets(test);\n\n    Test* test2 = new Test();\n    printMembersOffsets(*test2);\n    delete test2;\n\n    return 0;\n}\n ",
+    "user": "zhigatsey"
+  },
+  {
+    "message": "Memberji enega tipa objekta imajo isti layout ne glede na stevilo instanc.  kwa pa hekas? :) ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Mah že nekaj časa v prostem času za hobi delam tole in rabim malo  optimizirati (PropertyNameVisitor)... ",
+    "user": "zhigatsey"
+  }
+]

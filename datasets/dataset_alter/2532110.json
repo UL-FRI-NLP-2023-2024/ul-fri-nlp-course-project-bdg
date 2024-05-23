@@ -1,0 +1,38 @@
+[
+  {
+    "ctx": "program za arhiviranje NAS -&gt; NAS",
+    "content": "Torej imam en NAS, na katerem je en shared folder, full access za več uporabnikov.\nIn uporabniki na tem folderju pišejo, spreminjajo,... datoteke.\n\nZdaj bi pa ta shared foler rad arhiviral na ISTI NAS v eno drugo mapo, do katere navaden uporabnik nima dostopa.\nZa dostop potrebuje userass.\n\nS katerim backup programom lahko to naredim?\nNAS ne omogoča arhiviranja ene mape v drugo mapo na ISTEM NASu.\n\nZ vgrajenim v win10 ne morem izbrati \\\\server\\share\\ kot izvora.\nPrav tako Veeam free ne omogoča, da izberem mrežni disk kot izvor za arhiviranje.\n\nKak drug predlog?\nProgram bi tekel na delovni postaji, mora pa omogočat arhiviranje IZ mrežnega diska NA mrežni disk (v drugo mapo) z drugim uporabnniškim imenom.",
+    "author": "jurek1973",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "program za arhiviranje NAS -&gt; NAS",
+    "content": "Cobian backup",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "program za arhiviranje NAS -&gt; NAS",
+    "content": "Zakaj bi delal arhiviranje preko mreže z drugega računalnika, če pa je source in target isti. Zadeva je počasna, saj po nepotrebnem 2x prenašaš podatke po mreži.\n\nZakaj enostavno ne zaženeš komande na NAS-u, ki bo kopirala en folder v drugega. Uporabiš \"cp -a\" ali \"rsync\", pravice za dostop z drugim uporabnikom pa lahko spremeniš naknadno s \"chown\" (oz. v primeru rsync tudi v času samega kopiranja).\n\nKakšen OS imaš na NASu in kakšen dostop imaš do njega (SSH, web vmesnik ipd.)?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "program za arhiviranje NAS -&gt; NAS",
+    "content": "NAS je  Linkstation 420D .\n\nNačeloma sem administrato na škatli, tako da če poveš, kako izvedem te ukaze, se bom že znašel.\nJe pa želja, da se ta ukaz izvede vsako noč.\nSe pa na linux spoznam ko svinja na boben. Nazadnje sem ga inštaliral leta 1995.\nLahko tudi kaka skripta, ki se bo na PCju zagnala ponoči, pa sprožila proces na NASu.\n\nČe ne bom pa uporabil \n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t  wbadmin start backup\n\t\nna windows mašini, pa naj switch trpi.",
+    "author": "jurek1973",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "program za arhiviranje NAS -&gt; NAS",
+    "content": "Navodila za to škatlo, stran 48?",
+    "author": "giovanotti",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "program za arhiviranje NAS -&gt; NAS",
+    "content": "\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nVem, sem uporabljal kar ene stare folderje, ki pa niso imeli obkljukane opcije backup.\nZato mi ni pokazalo destinacije.",
+    "author": "jurek1973",
+    "author_level": "Guru"
+  }
+]

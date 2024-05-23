@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "A mamo na forumu kakšenga stručkota za routerje. \nPROBLEM:\nImam dva routerja A in B. router A je priključen v internet in na njega so na lan porte prključeni trije PCji in router B, ki ima seveda isto subnet masko kot PCji. \nRouter B je preko WAN porta povezan na router A na LAN port. Router B je v svojem subnetu in nanga je priuključenih nekaj PCjev z subnetom od routerja B. Vsi te PCji seveda lahko grejo na internet preko routerja B in nato še preko routerja A. \nVsi PCji na routerju B tudi seveda vidijo vse PC na routerju A (obratno seveda ne).\n\nKako lahko na routerju A skonfiguriram route tabele, da bo ves promet iz IPja routerja B preusmerjen direktno na internet? Če mi zna to kdo razložit mu pošljem še slikco, če je treba.\n\n\nlp",
+    "author": "Ateis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "Ti bi rad onemogočil dostop računalnikov, ki so priključeni na router B, do računalnikov, ki so priključeni na router A ?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "tako je. no vsaj en je razumel. Sedaj imam dva različna subneta (router A ima 192.168.0.* in router B ima 10.0.0.*). Internet deluje, ampak računalniki na routerju B vidijo računalnike na routerju A, kar ni prav.\n\nJst bi to rešu z dvema povezavama adsl, ampak problem je ker je statičen IP.\n\nlp",
+    "author": "Ateis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "\"Ti bi rad onemogočil dostop računalnikov...\"\n\"no vsaj en je razumel.\"\n\nČe bi tak napisal, bi vsak takoj razumel \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nNa ruter B spremeni nastavitev WAN porta z \n192.168.0.X/255.255.255.0\nna\n192.168.0.2/255.255.255.252\n\nPrvi ruter pa naj bo 192.168.0.1 (kar najbrž že je).\n\nPol še prokrbi, da noben PC nima naslova 192.168.0.3",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "Ups, to najbrž ne bo dovolj. Bo še treba malo firewall-e tudi naštimat.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\n \"Ti bi rad onemogočil dostop računalnikov...\"\n\"no vsaj en je razumel.\"\n\nČe bi tak napisal, bi vsak takoj razumel \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nNa ruter B spremeni nastavitev WAN porta z \n192.168.0.X/255.255.255.0\nna\n192.168.0.2/255.255.255.252\n\nPrvi ruter pa naj bo 192.168.0.1 (kar najbrž že je).\n\nPol še prokrbi, da noben PC nima naslova 192.168.0.3\n\t\t\n\t\tKlikni za razširitev\n\t\n\ntole men ni glih razumljivo in ko sem nastavil ni bilo nobene spremembe.\n\nZakaj mora bit router B 192.168.0.2 in maska .252 ? Zakaj noben PC ne sme bit .3 ?\n\nlp",
+    "author": "Ateis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "Zato, da ruter B potem \"ne vidi\" ostalih PC-jev na segmentu, ampak bo vse pošiljal ruterju A.\n... ki bo veselo podal paketke naslovljenemu PC-ju, če ne daš še omenjena firewall pravila.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "kako konfigurirat router?",
+    "content": "imaš pa tudi usmerjevalnike, na katerih lahko v setupu že kar določiš, \nv katerem lanu bo eden ali več PC-jev. Med seboj se ne vidijo, če tega ne želiš, na internet pa gredo, \nče tako želiš. Na vsak tako določen port daš pa switch s poljubnim številom PC-jev.\n\nRecimo takole:\n\n\t\t\n\t",
+    "author": "mihagr",
+    "author_level": "Pripravnik"
+  }
+]

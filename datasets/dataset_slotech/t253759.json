@@ -1,0 +1,30 @@
+[
+  {
+    "message": "Imam trdi disk WD 250GB sata, na njem inštaliran os win xp, problem pa je v tem da mi v področju za obvestila (desna stran orodne vrstice, poleg ure) neprestano kaže ikono \"varno odstranjevanje strojne opreme\" za ta disk, ki pa ga seveda ne morem niti ne želim odstraniti ker je moj primaren disk! mi lahko kdo pove kako se znebim te nadležne ikone oziroma tega obvestila? lp,  nejc ",
+    "user": "nejko8"
+  },
+  {
+    "message": "Mogoče imaš disk skonfiguriran (Policies) za \"Quick removal\", lahko ga skonfiguriraš za \"Performance\" preko diskmgmt.msc vendar ti ta servis (del PnP & Logical Disk Management servisa) pokaže VSE naprave ki so skonfiguriranje za hotplug/unplug za hitro vstavitev/odstranitev preko ATA/SATA/USB.  Kako se znebiš le te ikonce :  V notification area (desna stran pri uri ) klikni z desno miškino tipko (Properties). Okljukaj \"Hide inactive icons\", potem pa kostumiziraj \"Custumize\". Izberi \"Safely remove hardware\" ikonco in jo skrij.   Lahko pa callback notification ugasneš ( za nForce chipsete ): Dodaš v registru (v HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\nvata) DWORD DisableRemovable in naštimaj na 1. Rebootaj. Deluje zopet samo za hotplug diskov preko IDE,SATA kontrolerjev in ne preko USB-ja. 64-bit sistemi uporabljajo nvata64, ostali chipseti pa imajo nvatabus.  Ne deluje na VIA chipsetih (driver vide or videX64), ostali chipseti pa ne upoštevajo/podirajo SATA hotpluga ",
+    "user": "StratOS"
+  },
+  {
+    "message": "nejko8, SATA diski se lahko priklapljajo in izklapljajo med delovanjem in zato dajo NVidia driverji za vse SATA diske možnost varnega odstranjevanja. V bistvu je to pravilno. Microsoftovi driverji pa ne, ker niso tako napredni in sploh ne predvidevajo, da lahko SATA diske izklapljaš med delovanjem.  Če te res toliko moti tista ikonca potem namesto NVidia driverjev za trde diske uporabljaj originalne Mocrosoftove driverje, ki so že v samih Windows. Razlike v hitrosti ne bo nobene. Razen nekaterih naprednih funkcij MS driverji ne podpirajo.  V večini novejših računalnikov je tista ikonca za varno odstranjevanje tako ali tako vedno tam, ker skoraj vsi vsebujejo raznorazne bralnike spominskih kartic, če ne v računalniku jih ima pa večina novejših LCD zaslonov ob strani, potem so tu USB ključki, ki jih je nekaj vedno vtaknjenih v računalnik i.t.d. Tako, da ikonca je ponavadi vedno tam, ali je notri več ali manj enot pa ni ravno pomembno. Res je, da sistemskega diska nihče ne odklaplja med delovanjem, ampak driverji še niso tako napredni, da bi ločili sistemski disk od ostalih diskov. ",
+    "user": "Izi"
+  },
+  {
+    "message": "Pri meni tudi kaže pri obvestilih, da lahko izvržem vse diske, poleg USB zunanjega diska tudi notranji SATA disk in sistemski SSD oz. lokalni disk C. To kaže odkar sem menjal matično, pa imam enako kot je bila prejšnja in tudi enake nastavitve. V BIOS-u je pri SATA mode nastavljeno na AHCI, sem nakej bral da to omogoča nek hot swapping, nekateri pišejo da določeni driverji in chipset niso posodobljeni itd.  Tudi, če je to normalno, se mi zdi moteče, pa me zanima kako se znebit tega, lahko tudi prek registra, če mogoče kdo ve... ",
+    "user": "Mendos"
+  },
+  {
+    "message": "Odskrolaj do dna! http://www.tomshardware.co.uk/forum/157... ",
+    "user": "feryz"
+  },
+  {
+    "message": "to se da tudi rešit tako, da izklopiš sata hotswap v biosu ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Sem našel v BIOSU in izklopil, hvala! ",
+    "user": "Mendos"
+  }
+]

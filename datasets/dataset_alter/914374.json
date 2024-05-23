@@ -1,0 +1,164 @@
+[
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Kar naenkrat mi na tem sranju ne dela več povezava na internet. Poveže se normalno z routerjem (WAP in MAC zaščita), vendar net ne dela. Enostavno ne dobi dodeljenega IP naslova (to je pomoč od sedmice javila). Torej, na omrežje se normalno poveže, vendar piše, da je omejen dostop in pa namesto imena omrežja je Unidenfied network. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nipconfig mi pravi, da je neki zunanji IP naslov (169.... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n) in v oklepaju (Preffered). Mislim, wtf? Nobenih prenastavitev ni bilo in sedaj sranje ne dela. Dal 100x popravi povezavo, resetiral računalnik, prenastavil router in ga resetiral in nula. Ostali računalniki normalno delajo isto kot prej. Router je Siolov za optiko, problematičen prenosnik pa Lenovo. A se da to kaj poštimat ali naj vse skupaj treščim v zid.\n\nPodoben problem sem imel sicer tudi na Visti na enem Dellu, ko je kar en dan nehal delat. Potem sem počil gor XP-je in o teh težavah nisem več niti sanjal, kaj šele razmišljal ali da bi jih imel.\n\nPovezava problematičnega prenosnika preko Joiku Spota (wlan od Nokie) šiba normalno.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "\nSedemka ima enotno ikono za žične in brezžične povezave. Tudi meni na WIFI-ju piše unidentified in brez povezave, vendar mora nad tem biti še ime brezžične povezave in status. \n\nSi prepričan, da se prenosnik poveže z routerjem? Lahko na routerju dejansko vidiš aktivno povezavo? Lahko pingaš druge računalnike v mreži ali pa sam router (verjetno 192.168.1.1 )?\n\nPo mojih izkušnjah so Lenovoti povsem neproblematični kar se tiče 7ke. Ob inštalaciji je pri meni sama našla popolnoma vse driverje in lahko sem samo vpisal geslo ter bil povezan na router ter internet.\n\nImaš morda default inštalacijo od Lenova s kakšnimi neumnimi prednastavljenimi firewalli ali je popolnoma sveža Sedmica? Je v safe-modeu isti problem?\n\nKaj se zgodi, če poizkusiš bootat z live-Linux CD-ja?\n\n\n... potem mi pa počasi zmanjka idej. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Jernej",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "\nAja... saj vem, da je bedno vprašanje... ampak a si vklopil gumb za WIFI na prenosniku?",
+    "author": "Jernej",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik sad pravi:\nipconfig mi pravi, da je neki zunanji IP naslov (169.... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n)\n\t\t\n\t\tKlikni za razširitev\n\t\n\n169.254.0.0/16 ni javen obseg naslovov - namenjen je specificno za lokalni promet izkljucno do naslednje tocke (torej ce naprava uporablja naslov iz tega obsega, internetna povezava ne more delovati, ker router prometa od teh naslovov ne bo spravljal naprej).",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Na routerju mi kaže, da je povezan.\nPing ne šiba tudi lokalno in ne do routerja. Nastavitve za IP so dinamične, tako da bi moral mu router dodeliti svoj IP. Vendar do tega ne pride. \nČe nastavim statičen IP zadeva pinga brez problema in tudi na net šiba ok (nastavim kot DNS strežnik IP od routerja). In vse to ob ISTI povezavi, kar pomeni, da težava ni na avtentikaciji WLAN. Vsaj tako sklepam.\nKaj lahko naredim? Namreč statičen IP ne morem imeti, ker uporabljam kar nekaj Wlan omrežij. Sedaj sem sicer nastavil fiksen IP na alternativno konfiguracijo, vendar sploh ne preklopi. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Temveč ostane kar omejen dostop.\nPoleg tega je zadeva sedaj kakšen mesec delovala normalno, potem pa kar iz lepega miru to sranje. Očitno pride do kratkega stika pri dodeljevanju DHCP naslova.\n\nKako zdefiniram v command promptu spremembo IP naslova iz DHCP na fiksen (tudi DNS strežnik) in obratno. Si potem začasno naredim bat datoteke in s tem rešim zadevo. Čeprav je vse skupaj en poden.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Updajte jmaš vse zadnje ? (za Windows in gonilnike)\n\nZa \"ročno\" menjavanje (s skripto) je tu že bilo omenjeno enkrat. So tudi namenski programi.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "169.254.x.x dobi mrežna kartica, ko je nastavljena na avtomatsko pridobivanje ip nslova preko DHCP strežnika, a ga ne najde v nekem časovnem obdobju.. verjetno imaš pokvarjen gonilnik za tcp/ip. verjetno pomaga odstranitev gonilnikov za mrežno kartico in naložiti nove, lahko poskusiš samo tcp/ip gonilnik ponovno namestit, lahko pa uporabiš programček winsockfix, ki naredi vse to in še nekaj več..",
+    "author": "airj",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Lahko pa ruter trokira in ne dela več DHCP... Tukaj je ogromno predpostavk... Kadar na mojem domačem WiFiju ne dobim IPja obvezno sledi reboot škatlice-routerja in  - voila - IP je dodeljen.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Večkrat rebotal vse in ni pomagalo. Poleg tega pri drugih računalnikih zadeva deluje normalno. Bom preveril malo gonilnike.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Winsoc fix žal ni pomagal.\nVse posodobitve (Lenovo in Windows) so narejene.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "si se v zadnjih dneh priključil z več različnimi računalniki na modem?\nImel podoben problem, obnašalo se je zelo čudno, včasih delalo včasih ne, enkrat delalo preko žične povezave enkrat preko wirelessa.\nProblem je bil v tem, da, v mojem primeru, T-2 dopušča do 2 MAC adresi na enem naročniškem računu.\nImaš dve rešitvi. Počakaš 2 dni, da se zbriše MAC tabela na T-2 oz. SiOLu ali pa skopiraš MAC adreso od računalnika v router (da se router navzven predstavlja kot tvoj računalnik).\n\nlp",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Modem je hkrati router, tako da to ne more biti to.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Ruter ima tudi zadnji FW?\n\nČe je od ponudnika, tudi njih vprašaj.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Imaš firewall na pcju vključen? DHCP dela na udp portu 67 (odgovor serverja) in 68 (zahteva klienta), tako da to moraš spustit skozi.",
+    "author": "airj",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Za win 7 mogoče boljše deluje lspfix\n\n http://www.cexx.org/lspfix.htm",
+    "author": "airj",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Glede na to, da z ročno nastavljenim IP-jem zadeva deluje, poglej še če imaš na DHCP omejeno število (scope) adres, ki jih dodeljuje, in si s tem računalnikom prebil število.  v prašanje je tudi, kako imaš nastavljen DHCP lease (časovno okno, v katerem DHCP IP-ja ne dodeli drugi napravi) na routerju. Ta bi lahko omejeval dodelitev (trenutno proste) IP- številke, če lease še ni potekel.\n\nGlede na to, da je modem hkrati tudi router, ali sploh imaš dostop do nastavitev? Če ga imaš preveri Wireless nastavitve (št. dovoljenih hkratnih povezav  ipd.)",
+    "author": "JustOne",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Tudi mene so se začele pojavljat enake težave. Za enkrat še nisem imel časa da bi prevero kaj je narobe, ampak ko resetiram router azdeva deluje normalno.",
+    "author": "D_K",
+    "author_level": "Duplek"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Ti imaš problem s firmwareom routerja, pomaga ti edino nadgradnja le-tega, če obstaja. Sicer pa zamenjava z drugim.",
+    "author": "airj",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik JustOne pravi:\n Glede na to, da z ročno nastavljenim IP-jem zadeva deluje, poglej še če imaš na DHCP omejeno število (scope) adres, ki jih dodeljuje, in si s tem računalnikom prebil število.  v prašanje je tudi, kako imaš nastavljen DHCP lease (časovno okno, v katerem DHCP IP-ja ne dodeli drugi napravi) na routerju. Ta bi lahko omejeval dodelitev (trenutno proste) IP- številke, če lease še ni potekel.\n\nGlede na to, da je modem hkrati tudi router, ali sploh imaš dostop do nastavitev? Če ga imaš preveri Wireless nastavitve (št. dovoljenih hkratnih povezav  ipd.)\n\t\t\n\t\tKlikni za razširitev\n\t\nImam dostop do nastavitev. Ni preveliko število DHCP-jev, ker je le 5 zadevc gor priključenih, pa še to ne hkrati. Kolikor pa vem za DHCP lease nimam nastavitev.\n\nISPfix ne pomaga.\n\nMi lahko kdo priporoči simpl programček za preklapljanje med fix in DHCP, po možnosti brezplačen, ker je prenosnik služben in ne bi rad kakšnih težav s licencami. Bom očitno tako najmanj živcev izgubil. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Kaj imaš to za en prenosnik? Lenovo ima Access Connections (del IBM programja), je super, zastonj.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "a na siol si že klical?\n\nlp",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik airj pravi:\n Ti imaš problem s firmwareom routerja, pomaga ti edino nadgradnja le-tega, če obstaja. Sicer pa zamenjava z drugim.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nHvala. Se mi je zdelo, bom updejtal ob priliki. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "D_K",
+    "author_level": "Duplek"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "V tej temi je tudi nekaj predlogov: https://www.alter.si/tabla/showflat.php/Cat/0/Number/601763",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Super, hvala vsem za predloge.\n\nSicer pa evo, presenečenje, presenečenje, danes se mi je konektal normalno z DHCP-jem. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "2 dneva sta mimo...",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Mah, ne bi smelo biti to, ker so bile vmes tudi 4 zadeve hkrati priključene gor in je delovalo.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 in  Wlan - živci...",
+    "content": "Imam atheros wireless v prenosniku in z njihovimi driverji me je tud prekinjalo, ni se hotel povezat....pol sem pa hotel gonilnike na novo naložit in sem opazil da imam dva na izbiro od Atherosa in od Microsofta. Sem izbral Microsoftovega in od takrat dela brez problema.",
+    "author": "stilo",
+    "author_level": "Fizikalc"
+  }
+]

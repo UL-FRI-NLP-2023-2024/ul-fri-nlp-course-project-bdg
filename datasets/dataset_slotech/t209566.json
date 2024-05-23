@@ -1,0 +1,94 @@
+[
+  {
+    "message": "Sem začetnik v programiranju PICov. Za nalogo sem si postavil utripanje ledice, ampak mi preprosto ne rata. Ne vem, kje je napaka zato prilagam kodo.    list p=16f84a #include p16f84a.inc  __CONFIG _WDT_OFF & _CP_OFF & _PWRTE_ON & _XT_OSC  ;set I/O ports bsf STATUS,RP0 movlw b'00000000' movwf TRISB bcf STATUS,RP0   ;set values PROGRAM   movlw b'00000000' movwf PORTB   call PAVZA call PAVZA   movlw b'00000001' movwf PORTB  call PAVZA call PAVZA  goto PROGRAM     ;podprogram PAVZA STEVEC EQU 0x0C movlw 255 movwf STEVEC  ZANKA decfsz STEVEC,1 goto ZANKA  return   END ",
+    "user": "upirna"
+  },
+  {
+    "message": "call ZANKA traja nekje 1 ms na 4MHz oscilatorju. ",
+    "user": "snow"
+  },
+  {
+    "message": "snow, kaj hočeš povedat... call ZANKA namreč ni nikjer v kodi ",
+    "user": "upirna"
+  },
+  {
+    "message": "Pozkusi takole: Koda: PROCESSOR 16f84A #include \"p16f84A.inc\" __CONFIG _CP_OFF & _WDT_OFF & _PWRTE_ON & _XT_OSC Cblock 0X0C ; Začetek RAM-a HIcnt ; višji bajt argumenta makrota LOcnt ; nižji bajt argumenta makrota LOOPcnt ; spremenljivka makrota Temp endc ; konec spemenljivk  ORG 0x00 ; reset vektor goto Main ; skok na Main ORG 0x04 ; interupt vektor goto Main ; skok na Main include \"pause.inc\" ; Asembler ob pretvarjanju doda kodo makrota pause.inc  Main banksel TRISA ; izbira banke kjer se nahaja register TRISA clrf TRISA ; register TRISA je napolnjen z 00000000 -> A=output banksel PORTA ; izbira banke, kjer se nahaja register PORTA Loop movlw b'00001000' ; 00001000->W Loop1 movwf PORTA ; W ->PORTA movwf Temp ; W -> temp  rrf Temp, 1 ; Rotate right through carry ; prižge in počaka 0.5s pausems .1000 ; klic makrota z parametrom -> hočemo 0.5s zamika movlw 0x00 ; 0 -> W movwf PORTA ; W -> PORTA  pausems .1000 ; klic makrota z parametrom -> hočemo 0.5s zamika movf Temp, 0 ; Temp -> W goto Loop1 ; skok nazaj na Loop  End konec kode. Rabiš še pause.inc datoteko v isti mapi:  Koda: ; Za 1 minuto (59,904sekund) mora biti argument arg1 = .59904 (to je decimalno)  ;  ;  pausems macro arg1 local Loop1 local dechi local Delay1ms local Loop2 local Konec movlw high arg1 ; Move literal to W register Višji bajt argumenta arg1 gre v HIcnt movwf HIcnt ; Move W register to HIcnt  movlw low arg1 ; Move literal to W register Nižji bajt argumenta arg1 gre v LOcnt movwf LOcnt ; Move W register to LOcnt Loop1 ;Zmanjšuje HIcnt in LOcnt za določeno število ;in nato pokliči podprogram Delay1ms movf LOcnt, f ; Move conents of Locnt  btfsc STATUS, Z ; Bittest skip if clear testira bit Z status registra Z = 1 če je rezultat računske operacije 0 goto dechi ; če rezultat operacije ni 0 skoči sem kar pomeni, da še ni prišel na 0 (v tem primeru) call Delay1ms ; Call ->kliče podprogram Delay1ms ko podprogram zaključi se izvrši naslednja vrstica decf LOcnt, f ; Decrement LOcnt register rezultat shrani v LOcnt goto Loop1 ; skok nazaj  dechi movf HIcnt, f btfsc STATUS, Z goto Konec call Delay1ms decf HIcnt, f decf LOcnt, f goto Loop1 Delay1ms: movlw .100 ; Move literal to W 100->W (0xFA) movwf LOOPcnt ; Move W to LOOPcnt Loop2: nop ; nooperation nop ; nooperation nop ; nooperation nop ; nooperation nop ; nooperation nop ; nooperation nop ; nooperation decfsz LOOPcnt, f ; Decrement LOOPcnt skip if zero LOOPcnt=LOOPcnt-1 odšteje 1 od vrednosti registra LOOPcnt goto Loop2 ; Če je LOOPcnt=0 potem ta stavek spusti saj je 1ms minila return ; skok nazaj na vrstico 18  Konec endm Konec kode. ",
+    "user": "Highlag"
+  },
+  {
+    "message": "Ali bi ga rad že sedaj odvrnil od programiranja? Kakšne komplikacije...  Že nekaj časa sem sicer izven assemblerja, ampak poišči funkcijo stopwatch v MPlabu in poštopaj, koliko časa ti traja en utrip. Kajti meni se zdi, da ti vse skupaj traja odločno premalo, da bi kaj opazil. (od oka sem na hitro računal precej manj kot 1ms, da bi kaj videl pa rabiš kakih 100ms recimo).  Kakšen oscilator imaš? ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "Highlag, ti pa znaš zakomplicirat. Je pa že snow lepo povedal, prehitro ti preklaplja, tam z ene 2kHz, če imaš 4 MHz oscilator, torej ledika bi že utripala, samo vidiš tega ne:). Da bi delalo, kot more, moreš podaljšat pavzo - recimo narediš še podprogram, npr. PAVZA1, ki ti 255 - krat požene PAVZA, potem pa še tretji podprogram, PAVZA2, ki ti bo tam ene 16 - krat poklical PAVZA1 in ti bo naredilo ~1sec zakasnitve. V glavnem programu potem pokličeš PAVZA2. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "hm, sam zdej pa dobim error ker nimam pause.inc. A bi mi lahko lepo prosm poslal na mail  uros.pirnat{afna}gmail.com ",
+    "user": "upirna"
+  },
+  {
+    "message": "Uf, dva posta v 7 sekundah.  ",
+    "user": "upirna"
+  },
+  {
+    "message": "Lej, pusti ti že napisane programčke nekje. Lepo malo pomodificiraj svojo PAVZA podrutino, pa bo lepo utripalo. Sej lahko si sam zračunaš, koliko časa bo zakasnitev: - za strojni cikel deliš frekv. oscilatorja z 4 (recimo 4 MHz osc ti da 1 us za en strojni cikel) - koliko ciklov porabi kak ukaz, ti pa v datasheetu piše - večina jih traja en cikel, vejitveni ukazi dva. Drugače pa evo tle ena koda, ki mi dela cirka 1s pavzo spremenljivke so   longdelayc1 longdelayc2 longdelayc3  ti samo skopiraj to kodo v svoj program, definiraj te tri spremenljivke in namesto call PAVZA dej call longdelay enkrat.  longdelay  movlw 0x08 movwf longdelayc1 ldelay1  movlw 0xFF movwf longdelayc2 ldelay2  movlw 0xFF movwf longdelayc3 ldelay3 decfsz longdelayc3,f goto ldelay3 decfsz longdelayc2,f goto ldelay2 decfsz longdelayc1,f goto ldelay1 return  p.s.:pa pazi, kje deklariraš spremenljivke...se mi je zgodilo, da sem deklariral spremenljivko in jo potem počistil...problem je bil, ker je imela naslov programskega števca, jaz pa potem gledam, zakaj za vraga se mi PIC resetira. ",
+    "user": "TESKAn"
+  },
+  {
+    "message": "Tokrat hvala kolikor je mikrosekund potrebnik za tole :D ",
+    "user": "upirna"
+  },
+  {
+    "message": "Drugače si lahko pa tudi z MPLABom pomagaš, da ugotoviš koliko časa traja kakšen del tvoje kode. Dobro si je tudi pogledati (mislim da v simulator listing) koliko ciklov porabi določena koda (kar lahko preračunaš v čas).   Kako pa peš oceniš: Vsak cikel se izvede v 4ih taktih, se pravi če imaš 4MHz kvarc, traja en cikel 1 mikrosekundo. Vsi ukazi trajajo 1 cikel, razen kakšnih skokov (call, goto, return).  Tvoja delay koda pa naredi 255x goto in decfsz (2 + 1) ~ 755 mikrosekund. Ker kličeš zadevo 2x je to nekje 1,5 milisekunde.  Če pa imaš dvojno zanko pa ta porabi nekje 255x255x3 mikrosekund (groba ocena!). ",
+    "user": "snow"
+  },
+  {
+    "message": "Ne vem kaj je tako kompleksnega v moji kodi.    Pausems dobi argument, ga razdeli in odšteje tiste cikle. Ko konča zaključi. Ker sprejme zakasnitev dolgo tudi 1s izgleda malo bolj kompleksno samo ko kodo preštudiraš ni noben bav-bav.  ",
+    "user": "Highlag"
+  },
+  {
+    "message": "Za začetek s PICi in asm programiranja je mal dolga... sploh če se še učiš ukazov. ",
+    "user": "snow"
+  },
+  {
+    "message": "Kok velik kode :). Zakaj pa ne napises zakasnitvene rutine s pomocjo Timer0. Pa se kej lahko umes delas. Pa koda bo veliiiiiik krajša. ",
+    "user": "Tutankhamun"
+  },
+  {
+    "message": "Ni slaba ideja, ampak moraš prvo vedet kaj so interrupti. In ti niso ravno lekcija 1. ",
+    "user": "snow"
+  },
+  {
+    "message": "V MPlabu je funkcija stopwatch. V kodo postaviš z mišakom breakpoints in poženeš simulator. Na prvem breakpointu se ti ustavi, daš štoparico na nič in poženeš simulator naprej, pride do druge (ali prve. če je narejen loop) in odčitaš čas trajanje. Zelo uporabna reč.   Bi pa rad opozoril, da ti oscilatorji niso primerni za uro, saj so kar pošteno netočni... ",
+    "user": "zcetrt"
+  },
+  {
+    "message": "evo za približn 1 sekundo.  #include <p16f84a.inc>\n\nDelay \tequ\t  0x0C ;//Memory Location\n\n        ;//Reset Vector\n\torg \t0\n\tgoto \tInitPrg\n\n\t;//Interrupt Vector\n\torg \t4\n\tbcf\tINTCON, T0IF\n\n\tdecf\tDelay, F\n\tbtfss\tSTATUS, Z ;//if Delay is 0\n\tretfie\t\t;//No, return from Interrupt\n\tmovlw\td'16' \t;//Yes, set Delay\n\tmovwf\tDelay\t\n\n\tmovlw\t1\n\txorwf\tPORTB, F ;//toggle bit 0 on portB\n\n\tretfie\t;//return from Interrupt\n\nInitPrg\n        movlw\td'16'\t;//set Delay\n        movwf\tDelay\t\n\n        clrf\tPORTB\t;//clear PortB\n\n        bsf\tSTATUS, RP0\t;//Bank 1 (TRISB REGISTER, OPTION REGISTER)\n        clrf\tTRISB\t;//output pins\n\n        ;//Enable Timer0 Interrupt\n        bsf\tINTCON, T0IE\t;//timer0\n        bsf\tINTCON, GIE\t\t;//global interrupt\n\n        ;//enable Timer0, prescaler is 1:256\n        bcf\tOPTION_REG, T0CS\t;//Fosc\n        bcf\tOPTION_REG, PSA\t\t;//prescaler\n     \n        bcf\tSTATUS, RP0\t;//Bank 0 (PORTB REGISTER)\n\nLoop\n\tgoto    Loop\t;//endless loop\n\t\n\tend\n  Sam ne me sprasvt zakaj so umes prazne vrstice pol pa zgleda tko velik ",
+    "user": "Tutankhamun"
+  },
+  {
+    "message": "C-jevska varianta (CCS PIC C Compiler):   #include <pic16f84>\n#use delay(clock=4000000)\n\n\nvoid main()\n{\n\n {\n   output_low(RB0); // ce je ledika na B0\n   delay_ms(500);\n   output_high(RB0);\n } while(TRUE);\n\n}\n\n   Samo v razmislek! ",
+    "user": "ql000"
+  },
+  {
+    "message": "ql000 tole pa ne bo lih delal :). Še en delay ti manjka ko nastavš RB0 na high. Edin če bi namest output_high in output_low, samo spremenu v  RB0 ^= 1. Mislm da je ^ v Cju XOR, da samo spreminjaš zadnji bit. ",
+    "user": "Tutankhamun"
+  },
+  {
+    "message": "@Tutankhamun: a si spregledal     delay_ms(500);\n  ?  Drugače se pa strinjam z XOR, samo zakaj komplicirat že pri lediki? ",
+    "user": "ql000"
+  },
+  {
+    "message": "ql000 nism spregledu, ampak ti edn še manka. Tvoj program se tkole izvaja.  output_low(RB0); delay_ms(500); output_high(RB0); output_low(RB0); delay_ms(500); output_high(RB0); output_low(RB0); delay_ms(500); output_high(RB0);  Med Output High pa output low ni nobene pauze. Ce bo upirna gledu LEDico, ne bo nič utripala, ker bo na izhodu samo en kratek impulzek.  XOR ni kompliciranje. Kompliciranje je tole, koje use podvojen.  ;set values PROGRAM  movlw b'00000000' movwf PORTB  call PAVZA call PAVZA  movlw b'00000001' movwf PORTB  call PAVZA call PAVZA  goto PROGRAM  Tko se pa znebiš polovico kode  ;set values PROGRAM  movlw 1 xorwf PORTB, F ;//toggle bit 0 on portB  call PAVZA call PAVZA  goto PROGRAM ",
+    "user": "Tutankhamun"
+  },
+  {
+    "message": "utripanje ledice je super primer za pokazat delovanje xor.  in ja... tam zgoraj manjka en delay. ",
+    "user": "snow"
+  },
+  {
+    "message": "OK vdam se! Močni argumenti! Another Pause it is! ",
+    "user": "ql000"
+  }
+]

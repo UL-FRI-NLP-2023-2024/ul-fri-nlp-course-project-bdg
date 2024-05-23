@@ -1,0 +1,38 @@
+[
+  {
+    "ctx": "Windows Installer ne dela",
+    "content": "Ko sem hotel inštalirati program (katerikoli, ki uporablja Windows Installer rutine) w WIndows XP, me zavrne z:\n\"Dostop do storitve Windows Installer ni mogoč. Do tega lahko pride, če storitev Windows Installer ni pravilno nameščena. Za pomoč se obrnite na osebje za podporo.\"\n\nNa MS straneh sem poiskal namestitev za Windows Installer, inštaliral (vse teklo v redu), resetiral računalnik, a vseeno še vedno ne dela inštalacija MSI paketov. Dejansko je tako, da že pri vsakem zagonu praktično kateregakoli programa (Office, Windows Explorer) se za trenutek pokaže okence, da Windows Installer namešča ta program, vendar potem teče normalno.\n\nSedaj se obračam na osebje za podporo, torej na vas: kako naj inštaliram katerikoli program? Poskusil sem s kreiranjem drugega uporabnika s skrbniškimi pravicami, pa je bilo še slabše, saj pol drugih stvari ne dela.",
+    "author": "keber",
+    "author_level": "majski hrošč"
+  },
+  {
+    "ctx": "Windows Installer ne dela",
+    "content": "Reinstall ? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nRazvirusovanje?\n\nJe kaka koda napake? Če drugje ne v Event log-u (Control Panel / Administrative tools / Event Viewer /  pod Application in tudi System (glej takoj ko se zgodi napaka, da ne boš med vsemi vnosi iskal)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows Installer ne dela",
+    "content": "Reinstall zaenkrat ne bi, ker potem ne bom mogel delati na službenem računalniku vsaj en dan, kar pa ni ravno sprejemljivo.\n\nVirusov ni, mašina je dokaj čista in po 3,5 letih brez reinštalala zelo hitra. Pač na službenem nočem inštalirati raznoraznega sranja.\n\nApplication event log je poln zapisov o MsiInstaller-ju. Recimo zalaufam Excel (ki sicer normalno dela) in se pojavi 9 dogodkov v dveh sekundah. Variante so natančno in točno samo tri:\n\nID dogodka 1001:\nOpisa ID dogodka ( 1001 ) ni mogoče najti v viru ( MsiInstaller ). V lokalnem računalniku morda ni potrebnih registrskih informacij oz. sporočilnih DLL datotek za prikaz sporočil iz oddaljenega računalnika. Morda boste za pridobitev tega opisa lahko uporabili zastavico /AUXSOURCE=; za podrobnosti glejte pomoč in podporo. Naslednji podatki so del dogodka: {AC76BA86-1033-0000-7760-000000000002}; PDFMaker; {F6E87254-6779-4F6F-972F-1BE4FA0DE315}; (NULL); (NULL); ; .\n\nID dogodka 1004:\nOpisa ID dogodka ( 1004 ) ni mogoče najti v viru ( MsiInstaller ). V lokalnem računalniku morda ni potrebnih registrskih informacij oz. sporočilnih DLL datotek za prikaz sporočil iz oddaljenega računalnika. Morda boste za pridobitev tega opisa lahko uporabili zastavico /AUXSOURCE=; za podrobnosti glejte pomoč in podporo. Naslednji podatki so del dogodka: {AC76BA86-1033-0000-7760-000000000002}; Distiller; {4E57287A-4975-48CC-9DAF-5D93F4AB88C2}; C:\\WINDOWS\\system32\\spool\\Drivers\\W32X86\\PSCRIPT5.DLL; (NULL); ; .\n\nID dogodka 1015:\nOpisa ID dogodka ( 1015 ) ni mogoče najti v viru ( MsiInstaller ). V lokalnem računalniku morda ni potrebnih registrskih informacij oz. sporočilnih DLL datotek za prikaz sporočil iz oddaljenega računalnika. Morda boste za pridobitev tega opisa lahko uporabili zastavico /AUXSOURCE=; za podrobnosti glejte pomoč in podporo. Naslednji podatki so del dogodka: 0x80070424; (NULL); (NULL); (NULL); (NULL); ; .\n\nPri poskusu namestitve kateregakoli programa se pojavi samo Dogodek 1015. Vse tiste kode so popolnoma enake pri vseh pojavitvah, tudi več dni nazaj.",
+    "author": "keber",
+    "author_level": "majski hrošč"
+  },
+  {
+    "ctx": "Windows Installer ne dela",
+    "content": "Sem malo poguglal in dobil tole: http://support.microsoft.com/default.aspx?scid=kb;en-us;319624\nČe ne pomaga, pa mogoče to: http://support.microsoft.com/kb/911682",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows Installer ne dela",
+    "content": "Najlepša hvala, delovalo je naslednje:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n# Click Start, click Run, type MSIEXEC /UNREGISTER, and then click OK. Even if you do this correctly, it may look like nothing occurs.\n# Click Start, click Run, type MSIEXEC /REGSERVER, and then click OK. Even if you do this correctly, it may look like nothing occurs, or you may briefly see an hourglass. After you run this command, the operation is complete.\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "keber",
+    "author_level": "majski hrošč"
+  },
+  {
+    "ctx": "Windows Installer ne dela",
+    "content": "\n\t\t\n\t\n\n\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

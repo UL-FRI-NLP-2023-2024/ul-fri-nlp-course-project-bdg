@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Ker se sam nerazumem preveč bi vas prosil za pomoč.  Kupil sem router D-Link 4G DWR 921na mobitelu in v njega vstavil SIM kartico. Tako sem si vstvaril wi-fi po hiši.Ta router imam v spodnjem nadstropju, zato mi v zgornjem v nekaterih sobah ne delujem, ker ni signala. Sedaj bi rad postavil v zgornje nastropje router Linkys WRT54GL (katerega imam že doma) in sicer v sobo kjer omrežje je, da bi razširil signal še tam kjer ga ni.  Pojma nima kako se tega lotit. Kaj mi lahko nekdo svetuje kako naj to storim? Lepo prosim po korakih, da bom razumel.  Upam, da sem bil razumljiv kaj želim povedat in da mi boste pomagali. Hvala. Robert ",
+    "user": "primorec70"
+  },
+  {
+    "message": "gor naloži dd-wrt in nato v nastavitvah za wifi izbereš mode: repeater http://www.dd-wrt.com/wiki/index.php/Re... ",
+    "user": "dukedl"
+  },
+  {
+    "message": "D-Link ne omogoča qwds, tako da potrebuješ Range Extender. ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Kaj mi lahko bolj podrobno napišete, ker (očitno sem analfabet na tem področju ) ker ne razumem kaj naj naredim.  Hvala ",
+    "user": "primorec70"
+  },
+  {
+    "message": "Mah, Repeater in Range Extender funkcije na starih (poceni) routerjih običajno delujejo precej slabo. Navadno pri postavitvi repeaterja že delaš kompromis glede lokacije in ga ne postaviš tja, kjer imaš še izvrsten signal od prvega routerja - postaviš ga nekam, kjer je še \"dokaj dober\" signal, ampak tako, da ti bo pokril nepokriti del hiše. Nima namreč smisla, da bi jih postavil 5m narazen. Ampak to ponavadi pomeni, da ti povezava med obema že v štartu niti približno ne dela s polno brzino. Poleg tega ti WiFi frekvence svinjajo še sosedje s svojim WiFi-jem, mobiteli, mikrovalovke, itd... Nakar moraš računat, da se ti hitrost na poceni routerju/repeaterju še prepolovi, ker uporablja isti radio najprej za sprejem, nato pa še za ponovno oddajo paketov.  Že v samem štartu je treba vedet, da so številke, ki jih navajajo proizvajalci, največkrat zavajajoče - oz. veljajo v idealnih razmerah. Če gre za stare routerje, ki ne podpirajo MIMO tehnologije, če router \"servisira\" več kot eno napravo hkrati, se v praksi niti približno ne boš približal 54 Mbit/s (če govorimo npr za WRT54GL). Seveda, razen, če boš sedel 3m proč od routerja in bo to edina naprava, ki bo komunicirala z njim. Takoj ko imaš praktičen primer, da je tak starejši router nekje na hodniku, ti na kvaču v dnevni, vmes pa 1-2 steni, ni nobeno presenečenje, če je praktični goodput že krepko pod 10 Mbit/s; če se hkrati gor povezuje še več naprav, bo rezultat še slabši.  Vse to se ti v primeru centralnega routerja in repeaterja množi. Rezultat je lahko porazen: stalno izpadanje povezave, blazno počasna povezava, ali pa nestabilna povezava takoj, ko se gor poveže več kot ena naprava.  Ne vem, kako je v praksi z novejšimi MU-MIMO routerji, ali pa s poceni robo (okoli 50 EUR), ampak jaz imam s starimi WRT54GL zelo slabe izkušnje. Sem poskusil postavit par takih \"repeaterjev\", ampak se nikoli ni obneslo. V zadnjih nekaj primerih sem naročnike opozoril, pa so vseeno silili z glavo skozi zid, češ da so na forumu prebrali, kako krasen izdelek je WRT54GL, sploh če gor daš Tomato al pa DD-WRT. No, po nekaj tednih konstantnih težav so se odločili za kabel.   Skratka, jaz predlagam, da s kablom povežeš oba routerja, na drugem pač nastaviš Access Point mode, izklopiš DHCP in določiš enak SSID kot ga imaš na prvem. V tem primeru se tudi WRT54GL čisto v redu obnese. ",
+    "user": "imagodei"
+  },
+  {
+    "message": " imagodei je 8. jun 2015 ob 14:02 izjavil:Skratka, jaz predlagam, da s kablom povežeš oba routerja, na drugem pač nastaviš Access Point mode, izklopiš DHCP in določiš enak SSID kot ga imaš na prvem. V tem primeru se tudo WRT54GL čisto v redu obnese.   jz osebno določim drug ime SSIDja, ker tako točno vem kam sem povezan. Tko boš pa ugibal zakaj maš samo pol črtice(hec) pri signalu :) ",
+    "user": "dukedl"
+  },
+  {
+    "message": "Če imaš samo \"pol črtice\" signala, potem je nekaj narobe z nastavitvami. Morda roaming na mrežni kartici? Jaz pri smartphonih nisem nikoli opazil težave, izbere AP, ki ima pač največ signala na določenem mestu. Pri prenosnikih pa lahko, vsaj pri nekaterih modelih wifi mrežne, nastavljaš tudi roaming aggressiveness, tako da se to načeloma da zrihtat. ",
+    "user": "imagodei"
+  },
+  {
+    "message": "wifi mi dela povsod tako kot mora (poln signal).  poanta mojga posta je bila, da jz osebno raje točno vem na kater AP sm povezan..in ni potrebno met istega SSIDja (niti istega gesla) če imaš več APjev ",
+    "user": "dukedl"
+  },
+  {
+    "message": "Ste se razpisali, ampak meni pa še vedno niste pomagali z nastavitvijo. Prosim za pomoč!!! ",
+    "user": "primorec70"
+  },
+  {
+    "message": "@dukedl: brez dvoma ni treba imeti istega SSID-ja in gesla; je pa prikladno. Če imaš pokritost ustrezno in nimaš težav z izpadanjem signala, ne vidim nobenega pomembnega razloga zakaj bi imel dva SSID-ja. Kvečjemu je bolj pomembno, da vsak router postaviš na popolnoma ločen kanal, da se ne motijo med sabo - kar pa pri npr. 802.11ac routerjih sploh ni vedno mogoče. Kam se ti povezuje naprava, lahko kamot vidiš na Status page na samem routerju.  @primorec70: v bistvu smo ti že pomagali - omenjeno je bilo, da naloži na router dd-wrt in ga daj v repeater mode; jaz sem ti to odsvetoval in predlagal povezavo s kablom in postavitvijo v Access Point mode, ter izklop DHCP-ja. A se boš odločil za isti ali drug SSID tukaj niti ni važno. Če iz povedanega znaš pogooglat in najti navodila, potem je opravilo na tvojem nivoju. Če se ne znajdeš, ni nič sramotnega, če za pomoč poprosiš kakšnega \"računalniško pismenega\" prijatelja, ki je to že počel, ali pa kar \"sosedovega mulca\". ",
+    "user": "imagodei"
+  }
+]

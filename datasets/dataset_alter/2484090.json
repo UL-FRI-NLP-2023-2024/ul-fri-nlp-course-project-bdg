@@ -1,0 +1,38 @@
+[
+  {
+    "ctx": "excel povprečje celic gor in dol",
+    "content": "Torej, imam stolpec A, kjer so vnešene neke vrednosti, ki ves čas malo skačejo gor ali dol. Ko jaz to povežem v graf, dobim zelo žagasto krivulji, ki bi jorad zgladil. Zato sem naredil stolpec B, kjer je v vsaki celici povprečje ustreznih treh celic v stolpcu A (ena vrstica višje, ista vrstca in ena vrstica nižje). Rad pa bi to malo avtomatiziral. Torej če bi nekam vpisal številko 5, bi mi potem vzel povprečje 5 sosednjih celic iz stolpca A. Ali 7, 9, 11 itd celic, pač dokler ne bi bila krivulja dovolj zglajena. Torej rad bi neko formulo, s katero bi določil povprečje N-tih sosednjih celic, s tem da bi N lahko prosto izbiral. Verjetno bo kaj s funkcijo row(), vendar me zanima, če že ima kdo kaj podobnega narejeno.",
+    "author": "sass",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "excel povprečje celic gor in dol",
+    "content": "Za glajenje lahko uporabiš Moving Average. Na grafu z desnim gumbom klikni krivuljo, izberi  Add Trendline...  in pod  Trendline Options  izberi  Moving Average . Za stopnjo glajenja spreminjaj parameter  Period .",
+    "author": "Zardoz",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "excel povprečje celic gor in dol",
+    "content": "poglej tole\n moving average",
+    "author": "Sulc",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "excel povprečje celic gor in dol",
+    "content": "Jst bi v sosednji stolpec naredil malo daljši if stavek, ki bi se skliceval na celico kamor bi vpisoval številko od npr. 3-10. \n\nIf stavek pa bi se glasil IF($A2$=2;average(B1:B2);IF($A2$=3;average(B1:B3);if($A2$=4;average(B2:B4).......\n\nTako bo v sosednjem stolpcu vzeto povprečje celic, ki ga boš vpisval v celico A2.",
+    "author": "Robbit",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "excel povprečje celic gor in dol",
+    "content": "sem rešil tako, da sem uporabil formulo, recimo za B5:\n=AVERAGE(OFFSET(A5;2;0;5;1))\nta torej vzaem popvrečje od RANGE, ki se začne 2 vrstici višje in 0 stolpcev levo od celice A5  in je veliko 5 vrstic ter 1 stolpec. Potem pa številki 2 ter 5 poljubno popravljam.",
+    "author": "sass",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "excel povprečje celic gor in dol",
+    "content": "Super",
+    "author": "Robbit",
+    "author_level": "Fizikalc"
+  }
+]

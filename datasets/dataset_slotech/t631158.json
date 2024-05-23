@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Zdravo.  Imam novi-rabljeni printer. Na računalnik sem ga priključil brez problema, v Lastnostih naprave piše, da \"Naprava deluje pravilno\", glede gonilnikov pa, da \"Za to napravo ni bilo prenesenih gonilnikov in ti tudi niso potrebni\". Imam Windows 8.1, ki je komaptibilen s to vrsto printerja. Problem pa je: ko hočem printati dokument, mi računalnik ne pokaže mojega printerja (na seznamu sta samo neki dve privzeti napravi, ki ju torej nimam). Nekaj sem probaval z vklopom skupne rabe, da bi našel printer, ampak mi ne rata. V Nadzorni plošči > ... > Naprave in tiskalniki pa je stanje sledeče: novega printerja ni ne pod \"Napravami\" ne pod \"Tiskalniki\", pač pa se nahaja pod \"Ni navedeno\". Računalnik ne prepozna te naprave kot tiskalnika. Zakaj in kako lahko to rešim? V Nadzorni plošči sem poskusil npr. z gumbom Dodaj tiskalnik, kjer je več opcij: 1. Izberi tiskalnik v skupni rabi po imenu ..._____ - ne uspe 2. Dodaj tiskalnik z naslovom TCP/IP ali imenom gostitelja - na to se ne spoznam in niti nisem probaval 3. Dodaj tiskalnik Bluetooth, brezžični tiskalnik ali tiskalnik, ki ga je mogoče odkriti v omrežju - ne najde mi nobene naprave 4. Dodaj lokalni ali omrežni tiskalnik z ročnimi nastavitvami - tu sem tudi poskušal, dobim dolg seznam tiskalnikov, ampak \"ravno\" mojega modela ni ...  Če ima kdo kakšno konkretno idejo, hvala. Lp ",
+    "user": "Miro-Slav"
+  },
+  {
+    "message": "Poišči gonilnik na spletni strani proizvajalca in ga namesti. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Model tiskalnika ? ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Hvala.  Canon Laser Shot LBP-1120  Samo vprašam; zakaj gonilnik? Kaj potem pomeni tisto v Lastnostih naprave, da gonilniki niso potrebni?  Sicer pa sem jih tudi iskal na spletni strani Canona, ampak ga za Windows 8.1 ne najdem? ",
+    "user": "Miro-Slav"
+  },
+  {
+    "message": "Saj to bo problem, ker ni gonilnikov za novejši sistem. Če gre, inštaliraj za starejši sistem, recimo za w7 ali visto.   Sicer pa prodaj in kupi nov tiskalnik. Tako je to danes. ",
+    "user": "...:TOMI:..."
+  },
+  {
+    "message": "Uporabi one za win7 http://www.canon-europe.com/Support/Con... ali poglej če jih najde windows update (tiskalnik naj bo priklopljen in prižgan).  V control panel, printers ga vidiš http://www.howtogeek.com/116382/how-to-... ? ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Ok, zdownloadal sem gonilnik za Windows 7 oz. Wisto. Tu je problem, da se ne spoznam dobro, ampak poskusimo vseeno. Sklepam, da se mi gonilnik s prenosom ni avtomatsko tudi instaliral, zato sem po teh navodilih: http://windows.microsoft.com/en-us/wind... skušal namestiti ročno v Upravitelju naprav -> Posodobi gonilnik. Tu sta potem spet opciji: 1. Samodejno poišči posodobljeno programsko opremo 2. Prebrskaj računalnik in poišči programsko opremo S prvo opcijo mi pravi, da Windows na spletu ne najde programske opreme za mojo napravo in naj grem na spletno stran proizvajalca ter tam poiščem programsko opemo (to sem že naredil). Z drugo opcijo pa naj bi poiskal dotični zloadani gonilnik v računalniku - ampak ga ne znam. Mi lahko poveste, kako naj pridem do tistega, kar sem si zloadal in to inštaliram, znotraj Upravitelja naprav.  Oziroma; tudi na namizju imam to, kar je bilo zloadano: LBP-1120_R110_V110_Win_x32_DA_7.exe in pa mapo LBP-1120_R110_V110_Win_x32_DA_7 Kako pa lahko grem od tu naprej?  Ha, saj vem, da kompliciram in po češko pišem vse te zadeve in postopke na dolgo, ampak drugače ne znam. ",
+    "user": "Miro-Slav"
+  },
+  {
+    "message": "Imaš 32 ali 64-bitni Windows? Gornilniki so namreč za 32-bitnega. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "ja, 64. ",
+    "user": "Miro-Slav"
+  },
+  {
+    "message": "Izgleda, da ne obstajajo 64-bitni gonilniki za ta tiskalnik.  Rešitev je VM (virtual machine), da sharaš tiskalnik na računalniku z 32-bitnim OSjem, ali pa ... da ga upokojiš. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Ja.  O tej možnosti (VM) berem tudi tukaj: http://www.microsoft.com/en-us/windows/... - spodaj pri Community Discussions, prvi vnos. Človek lepo opiše zadevo: For the record: I did it. It is in fact possible to connect a lasershot 1120 to a Windows 7 x64 machine. It should work for win8, didn't test that but this guide might still be usefull. Not for the faint of heart though, you have to be comfortable with your os. Here goes: You need virtual machines for this running win xp. Get the integration modules going for the printer.  the usb section should list it as shared. Change that to connect, disabling it in Windows 7. Install the winxp drivers in the virtual machine through devices>new printer. Copy those from your original download to the virtual disk before running them. Note that the winspool service crashes. Restart it from services everytime it does. Also check the usb device reverting to shared. Reconnect if it fails. It does that a lot it seems. There is a known bug in canon's CAPT driver crashing the spooler service through UMBus enumerator. Because of the virtual machine you can't fix that. sorry.  Make sure to get the canon dep prevention solution and install that as well. It's an exe that can be found at the canon driver site. It'll only work when printspooler is up. At this point I made a link to the desktop for system services. Saves the trouble of going to config. When everything is installed you should shutdown and restart. With the printer connected and running start win XP virtual. Spooler will crash, nevermind. Go to startmenu>programs>startup and remove the statusthingy from canon. change the usb devices settings to connected. check the printer devices, it should show the lbp1120. Opening it will fail, no spooler. restart the printspooler once more. Check again, opening the lbp printer should now produce the windows printer box with it's status \"ready\" Note that the canon tray printerthingy wont report normally, but you should now be able to print stuff to it.   Note: this took me a long time fiddling with win xp, printspooler, restarts, re-installing drivers etc.... You'd have to be pretty determined to make this work as virtual machine is slow, restaring it takes forever and the end result is still flawed, you have to do the whole routine of restarting printspooler after starting the winxp virtual everytime you need it.  Now, once you have liftoff the printing procedure is:  -connect the printer -start virtual machine win XP -USB>Canon CAPS device>connect -Restart printer spooler in: Config>System Management>System Services>printspooler>start -Open document and print  Complicated way of doing it, but I use this printer for making toner-transfer method custom circuit boards and this way I don't have to put my designs on usb sticks and start up ye olde win XP on another pc. Still I had some good fun breaking the problem :-)  Je pa glede mojega problema v tem istem linku, spodaj, še nekaj neoptimističnih odgovorov, zdaj vidim.  Glede upokojitve - after I've come this far? Škoda, no, ampak če ne gre drugače, potem res. Edino še to z VM. Ampak po postopku, citiranem zgoraj, in z mojimi spretnostmi, ne vem, če uspem naštudirat.  Vgl. najlepša hvala vsem za pomoč! ",
+    "user": "Miro-Slav"
+  }
+]

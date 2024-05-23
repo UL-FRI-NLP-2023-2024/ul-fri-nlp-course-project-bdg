@@ -1,0 +1,86 @@
+[
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "V pritličju je telekomov model, v mansardo imam kabel do telekomovega boxa. Ker je wifi signal dokaj slab in imam odvečen router syslink e1200, sem pomislil, če bi se dalo urediti, da bi v mansardi med modem in box priklopil tale ruter. \nZadeva je delovala, a kaj ko mi potem iz tega ruterja ni delala televizija. \n\nKlic na telekom, moral bi izklopit nek dhcp, predvsem pa bi moral tale ruter nastaviti tako, da bi delal kot switch. Tu se izgubim. \n\nKako to naredim?",
+    "author": "mobifrik99",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Kabel priklopiš v enega izmed LAN portov. In ne v WAN port. DHCP pa izklopiš v nastavitvah ruterja.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Router nastavi kot dostopno točko. Izklopiš DHCP, IP naslov mu daš npr. 1 številko višje kot jo ima modem, da bo normalno dosegljiv v omrežju, nastaviš WiFi in je to bolj ali manj to.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Ja, tu se pojavi težava. Ne znam nastaviti kot dostopne točke...dejansko wifi mi dela, a ne dela tv.",
+    "author": "mobifrik99",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "AFAIK gre Telekomov IPTV po ločenem VLANu.\n\nRabiš torej napravo, ki podpira VLANe in jih tudi ustrezno skonfigurirat.\n\nOut of the box težko vrjamem, da boš to lahko nastavil na tem Linksysu. Če sam chipset to podpira, se da vrjetno rešit z alternativnim firmwareom, kot je LEDE. \n\nKolegu sem nastavil podoben setup na TP-Linku 1043NDv2 z OpenWRT, se pa ne spomnim več na pamet katere VLAN IDje uporabljajo. Njegov box vem, da je rabil untagged DATA VLAN + tagged VIDEO VLAN, nekateri starejši boxi pa samo untagged VIDEO VLAN.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "1. poveži se na router (najbolje prek kabla)\n2. v nastavitvah poišči polje dhcp settings in ga izklopi\n3. kabel vtakni v lan1\nin to je to načeloma. lahko nastaviš recimo statični ip, da boš lahko vedno takoj prišel v router (in ne da boš iskal, na katerem ip naslovu je...)\nin hm...ne vem, če prav razmišljam...tv signal in internet načeloma ne smeta biti na istem kablu. ali pa se motim????\n\nno, evo...xside je isto razmišljal...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\t1. poveži se na router (najbolje prek kabla)\n2. v nastavitvah poišči polje dhcp settings in ga izklopi\n3. kabel vtakni v lan1\nin to je to načeloma. lahko nastaviš recimo statični ip, da boš lahko vedno takoj prišel v router (in ne da boš iskal, na katerem ip naslovu je...)\nin hm...ne vem, če prav razmišljam...tv signal in internet načeloma ne smeta biti na istem kablu. ali pa se motim????\n\nno, evo...xside je isto razmišljal...\n\t\t\n\t\tKlikni za razširitev\n\t\nSeveda sta na istem kablu, sam na različnih VLANih....",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "ja, razumem. da bi pa oboje letelo po istem kablu, to pa ne bo delovalo.\nbi predlagal, da naredi z powerline povezavo modem-tv, z kablom in linksysom pa izboljša wifi.\nja, ali pa najde firmware ali switch/router, ki zna delati s temi vlani...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Če priklopi LAN - LAN in zadeva dela tako ni težav. Če pa zadeva ob tej konfiguraciji ne spusti skozi VLANa za IPTV (3999) bo pa treba kaj drugega . Ampak načeloma bi moralo iti, ko je to preverjeno, da ne gre, se išče dalje.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "ja, najlažje bi bilo samo kabel potegnit iz modema za iptv, tega obstoječega pa uporabim za izboljšanje signala. Verjetno bo kar tako, upam, da imamo dovolj prostora v požirki. \n\nHvala vsem za nasvete...",
+    "author": "mobifrik99",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Imam podobno situacijo kot OP\n- na kabel box-modem sem dodal en čisto navaden in neumen 8 portni switch\n- vklopil box na switch\n- router nastavil kot access point, preklop preko lan porta na switch\n\nIn zadeve delajo BP. Moram pa poudariti, da v konfiguraciji\n- kabel iz modema do lan porta routerja,\n- box na router (jasno da na lan port)\n\nZadeva ni delovala. Ampak se nisem poglabljal, ker konfiguracija zgoraj deluje.",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Delovalo bi, če bi imel router, ki dovoli tagat promet. Tako pa na LAN portih dobiš samo untaggan promet, kar pomeni da live TV ne bo deloval (ta rabi VLAN3999). Deloval pa bi ti recimo ogled nazaj, kajti ta deluje na untagged. Zato ponavadi čisto vsak router ni dober, ker moraš imet opcijo na istem LAN portu tako untagged, kot tudi tagged VID3999. Tudi ne koristi dd-wrt kaj veliko, ker zna VLANe samo od 1-15 naredit (skozi GUI govorim, ker če se ti da hekat po linuksaško, potem lahko delaš mapping IDjev). Zato je veliko boljši OpenWRT ali LeDe. Tvoja rešitev je pač OK, po domače narejeno in nič narobe, dokler se ti ne zahoče malo bolj sofisticirane rešitve in/ali imaš težave napeljat kable.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "S sofisticiranimi rešitvami se bom pričel ukvarjati šele takrat, ko enostavne ne bodo delovale. Do takrat pa ... ;-)",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izboljšanje wifi-ja v mansardi",
+    "content": "Ja no saj veš... če bi si ne želeli olajšati dela, bi imeli še zdaj kvadratna kolesa ",
+    "author": "damirj",
+    "author_level": "Guru"
+  }
+]

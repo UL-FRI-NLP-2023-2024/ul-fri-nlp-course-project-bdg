@@ -1,0 +1,206 @@
+[
+  {
+    "message": "Če koga zanima: - RubyMotion compiler razvoj native iOS (iPhone/iPad) aplikacij v Rubyju - mRuby interpreter za embedanje, kot skriptni jezik v drugih aplikacijah (igre, industrija). (teče lahko tudi v BIOSu) - JRuby interpreter na JVM, dostop do vseh Java knjižnic, uporaba enterprise Java strežnikov (JBoss, GlassFish) - 2D gaming - Glasba  Kaj pa vi mislite ali ima Ruby prihodnost izven Rails-ov? ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "ima napram pitonu pa phpju je prou fletna. vsaj mene osebno pa me mot, da je zgolj dinamična(rad imam tipizacijo). ampak to je spet religijozen predsodek.RL izkušenj pa nimam kaj perveč. eden od razlogov je tudi da dokumentacija ni ravno na nivoju. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Dokumentacija ni tako slaba, pa tudi v obliki screencastov in interaktivnih tutorialov. Če bi rad imel tipizacijo pa si poglej jezik Scala (tega uporabljajo npr. tudi pri Twitterju). ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Prepocasen za karkoli izven web pageov, pa se tam bi raje kaj hitrejsega. Zadeva mi tudi idejno ni vsec.  Izredno pomembno za prihodnost jezika je tudi obstoj pravih toolov in knjiznjic. ",
+    "user": "Spura"
+  },
+  {
+    "message": "No, sigurno se po performansah ne more primerjat s kakšno Javo ali Cjem (razen na iOS kjer je compilan, tam bi moral biti performančno blizu). Temu pač ne gre oporekat pri nobenem interpretiranem jeziku.  Po drugi strani pa npr. v primerjavi s Pythonom, ima performance vsaj podoben, če ne celo malo boljši (pri novejših interpreterjih - YARV, Rubinius, JRuby). Tudi v primerjavi z LUA si upam ugibat da velikih razlik verjetno ni, že zdaj. Sicer pa performance nima toliko veze z samim jezikom. Sploh pri Rubyju težko govoriš o performancu ker obstaja toliko različnih interpreterjev. Sicer ga pa z LUA trenutno še ni smiselno primerjat, ker se kot neposredna konkurenca LUA razvija mRuby, ki pa je še v alfa različici. mRuby je posebej optimiziran za embedded okolja, še posebej performančno (npr. uporablja čisto drugačen garbage collector, ki je dosti bolj primeren za uporabo v igrah kot pa tisti ki je v YARV interpreterju).  Knjižnic je pa za Ruby ogromno, ne samo za Web. Edino kjer ima Python verjetno prednost je v znanstveno raziskovalnem delu. Vendar če upoštevaš da lahko pri JRuby uporabljaš vse Javanske knjižnice, potem postane primerljiv tudi v tem primeru. JRuby v celoti podpira tako 1.8 kot 1.9 specifikacije jezika tako da je sicer popolnoma kompatibilen z vso Ruby kodo. Performančno sicer iz glave ne vem kako se odreže napram Pythonu, sem pa že večkrat slišal da performance JRubyja ni slab. Po drugi strani pa lahko vedno napišeš še en Java class za kakšne hardcore zadeve, in ga potem kličeš iz Rubyja. Tukaj pa stavim da kakšen Python nima za burek (proti Javi).  Idejno pa ne vem zakaj ti ni všeč  Če ne maraš samega jezika potem je razumljivo, ampak to je potem čisto subjektivno. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "od enega programerja, ki je delal z njo (rl projekte oz. za siht) sem slisal predvsem, da ima dokumentacijo v kurcu in da je veckrat moral iti gledat izvorno kodo, ker se zadeve niso obnasale tako, kot je mislil, da se bodo in ni nic pisalo v doc... ",
+    "user": "Isotropic"
+  },
+  {
+    "message": "Z njo? Nevem meni je dokumentacija cisto ok (zdej ne vem, na kero dokumentacijo mislis, za standard library, za rails, ali za kake 3rd party projekte?). Je pa res da bi standard library pri dolocenih zadevah lahko bil boljsi. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Glede na to, da ruby podpira duck typing, obstaja kaksno orodje, ki ti analizira kodo in preveri tipe? ",
+    "user": "napsy"
+  },
+  {
+    "message": "Dvomim - ker to bi lahko dosegel samo če bi kodo dejansko poganjal in šel po vseh možnih poteh. Se pa pravilnost obnašanja metod v kolikor jim daš napačne parametre seveda preverja s testi (npr. unit testi). V Rubyju se spremenljivke smatrajo kot container, v katerega lahko spraviš spremenljivko poljubnega tipa. Torej spremenljivka ima tip, container pa nima tipa. Ker so vse spremenljivke objektnega tipa imaš seveda lahko več containerjev ki vsebujejo isto spremenljivko (imajo referenco na isti objekt). Načeloma pa ni nič narobe če menjaš tip spremenljivke ki ga spraviš v nek container. Sicer pa če bi potreboval tak check ga je precej enostavno implementirat v kolikor uporabljaš getter/setter. Npr. če hočeš da je lahko samo string:  def spr=(vrednost)\n  raise \"Vrednost napačnega tipa...\" if !vrednost.kind_of?(String)\n  @spr = vrednost\nend\nspr = 1234 # => Exception: Vrednost napačnega tipa...\n Če bi to pogosto rabil bi si lahko z uporabo metaprogramiranja naredil metodo v smislu:  attr_has_type :spr, String Sicer glede na to da imamo duck-typing se pogosto namesto tega preverja \"če rega potem je žaba...\":  raise \"Vrednost ni žaba...\" if !vrednost.respond_to?(:rega)\nvrednost.rega # => \"rega rega :)\"\n Kar ima svoje prednosti kot tudi slabosti. Je pa dobro ker imaš v Ruby obe možnosti, lahko pa se sam odločiš kaj hočeš. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": " MrBrdo je 1. jun 2012 ob 22:55 izjavil:Dokumentacija ni tako slaba, pa tudi v obliki screencastov in interaktivnih tutorialov. Če bi rad imel tipizacijo pa si poglej jezik Scala (tega uporabljajo npr. tudi pri Twitterju).  Glede dokumentacije je izgublena sama pri sebi. Podobno kot php ali python. Vcasih v std spacu stvari ne delajo ko je deklarirano. Potem je pa se najbolje poiskat dselujoc primer na internetu pa gruntat. Ampak to je bolj ali manj kronicen pproblem domacih dinamicnih jezikov. Zavoljo tega tudi nekako bolj ljubim trd pristop k jeziku. Ne da so tipi na koncu zgolj okraski k manipulacijam z stringi.  Eh scala... Njen problem je da probajo v std vključit vsako main stream novotarijo. Počas po premoru spet mal šlatam kodo pa nekak sta vsaj zame C in nemerle še vedno nekaj korakov pred drugimi če ne gre za zelo spacifične rešitve. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Ni mi jasno kaj manjka dokumentaciji? Toliko poseben jezik spet ni, da bi rabil cel manual kako ga uporabljat. O metaprogramiranju se pa tudi ni treba že prvi dan učit. Tud nisem mel lih kdaj primera da bi se kdaj kaj obnašalo drugače kot pa je pisalo v dokumentaciji. Edina stvar ki deluje drugače kot bi jaz pričakoval je ^ in $ v regularnih izrazih, ker če se prav spomnim v PHPju lahko z modifierji nastaviš da matchata samo začetek in konec stringa, v Ruby pa vedno matchata na vrstice... Ampak res ne štekam, kje je problem v dokumentaciji. Jaz vse takoj najdem kar rabim, prve pol leta pa dokumentacije od samega jezika sploh rabil nisem. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "napsy: za foro sem spisal proof-of-concept za preverjanje tipov: https://gist.github.com/2880057 (glej spodnji del, kako bi potem zgledalo definiranje metode) dost je hackish, ampak Ruby je tok cool da se to sploh da  verjetno bi se dal tud dost bolj optimalno narest... ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "@Spura: Malo glede hitrosti http://www.unlimitednovelty.com/2012/06...  @napsy: pa tole tudi omogoča nekaj podobnega: https://github.com/t6d/smart_properties... ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Zakaj taka fascinacija s temi jeziki, ki so nekako skupaj nametan kup stvari, ki so bile avtorju vsec. Brez moznosti za kakrsnokoli smiselno formalno semantiko in posledicno brez moznosti biti siguren v karkoli. Pa se trivialnih stvari, kot so vsote in produkti ne podpira prav.  Zelim si, da bi ljudje uporabljali jezike, ki uporabljajo vsaj nekaj stvari iz zadnjih trideset let teorije programskih jezikov, ne pa spake. ",
+    "user": "sherman"
+  },
+  {
+    "message": "Pač tvoje mnenje, očitno si omejen na ne-dinamične jezike... In več kot očitno nisi nobenega dinamičnega prav veliko uporabljal. Ti kr kucaj v Javi naprej pa good luck  Upam da te ne bodo preveč zmotile novosti 7ke. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Ruby all the way! ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " sherman je 7. jun 2012 ob 20:00 izjavil:Zakaj taka fascinacija s temi jeziki, ki so nekako skupaj nametan kup stvari, ki so bile avtorju vsec. Brez moznosti za kakrsnokoli smiselno formalno semantiko in posledicno brez moznosti biti siguren v karkoli. Pa se trivialnih stvari, kot so vsote in produkti ne podpira prav.  Zelim si, da bi ljudje uporabljali jezike, ki uporabljajo vsaj nekaj stvari iz zadnjih trideset let teorije programskih jezikov, ne pa spake.  če gre zgolj za manipulacijo stringov in se ti zdi koda v perlu rahlo neberljiva, so ti jeziki povsem dobra opcija. Ker staticni prek reflekctiona so enostavno presmotani za omenjeno opravilo. En kup castanja brezveznega castanja in klicanja tostring metod. Sej z frameworki se da kaj rešit ampak brez resne podpore meta programiranju je vse skupaj še vedno precej okorno. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Ja no za kakšno hardcore procesiranje in backend se strinjam da so strongly typed jeziki bolj primerni. Sam tako za nekaj na hitro poskriptirat, pa za frontend so pa dinamični jeziki res bomba. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Nekako se ponavadi nočem mešat v take razprave vendar vsake toliko je potrebno.  Dinamični jeziki so dobra ideja in bi bili uporabni, vsaj za mene, če bi imeli takšno podporo v orodjih kot jih imajo statični. Recimo sem na sebi testiral, da kodo v Groovy in Java napišem približno v enakem času, ker mi za javo večino orodje ponudi za Groovy pa moram sam na pamet vedet. Potem meni osebno ni všeč da lahko na 1001 način nardiš isto stvar, to nekako ubija produktivnost v ekipi. še posebej če ni nekih točnih dogovorov kako pa kaj. Profesionalno razvijam v Javi in se mi še ni zgodilo, da bi se kadar koli ubadal z limitacijami jezika, ker je statični. Ponavadi porabim 60% časa zaradi idiotskih orodij in limitacijami strežnika. Se pa strinjam da za neko hitro skriptanje, ki nima neke dolge življenske dobe so dinamični jeziki najbolša možna izbira. Nekako ta pregovor drži: Use the right tool for the right job. Glede Ruby jezika pa mam občutek da bo ta hype enkrat splahnel in se bo pojavil neki novi podobni jezik, ki bo vzel najboljše od Ruby-ja in še kakšnega jezika. Aja pa še to pri nobenem jeziku še nisem našel dobro strukturirane dokumentacije javadoc je še nekako najbljižje in najbolj pregledno.  @naraguta če castaš tipe v statičnih jezikih delaš nekaj narobe. Osebno se mi skoraj nikoli ne zgodi, da moram castat kar koli. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "@naraguta če castaš tipe v statičnih jezikih delaš nekaj narobe. Osebno se mi skoraj nikoli ne zgodi, da moram castat kar koli. tedaj če delaš v javo nevem zakaj se sploh trudiš. in če je cel sistem tipizacije bazeran na principu boli me kurac kaj je class, kaj ti le to doprinese v kodi? prekleto da mi ni jasno. class-i oz tipi so tvoji prijatelji in ravno v javi je celo vsa mineštra strogo classificirana. različni patterni in frameworki ne delajo nič drugega kot silijo programerje v neko predivevanje kopulacije tipov med seboj. vsaj pri webu gre tipično za string manipulacije. backend je pa v ejb dosti bolj resno napisan, ampak načrtovan zopet z dobršno mero pretvorb med tipi v mislih. res da ideji včasi zgenerirajo vse interface on the fly, in sam mislim da je to večji del celo pravilen pristop ni pa edini. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "@naraguta nevem točno kaj si hotel z zadnjim postom povedati? Ampak kolkor sem razumel se ti zdijo razredi nepotrebni? Če je to res se nebi strinjal, ker ti razredi doprinesejo neko mero dokumentacije in ko pogledam razred v javi točno vem kakšne metode lahko na njem kličem in kateri tip mi bodo vrnile. Nekako je že dovolj, da vidim katere metode ima razred in si lahko predstavljam kaj razred dela. Potem rabim še samo nekaj malega dokumentacije in vem točno kaj dela. Pri dinamičnih jezikih pa se lahko zgodi, da pogledam razred, ki ima v kodi 2 metodi v določenih pogojih med izvajanjem 3 spet pod drugimi pa 4. Pa še kolker sem delal z dinamičnimi jeziki če sem pogledal metodo nisem vedel a vrača kaj ali nič. In kolker jaz delam z javo pa web se ne ubadam z stringi ampak z objekti, ker mi framework pretvori vse v potrebne objekte in sem mnenja, da uporabiš string ko je res nujno pa še takrat maš mogoče razred ki je bolj expresiven kaj se nahaja v njem kot pa string. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "če delaš zolj z relacijskimi modeli tvoje razmišljanje še niti ni povsem retardirano. pa še tu primerjava dveh objektov zahteva cast. ali lušćenje lastnosti iz objektov. niti efektno še manj pa elegantno. na kakem noSql torišču pa večinoma precej nerodno. (da se ne daješ s stringi je utvara, objekt ni nič vreden dokler ni neke klasifikacije in java ponuja samo eno vrsto dedovanja, pod naslednje je pa tud štorasta kar se tiče opratorjev, ekvivalenc , etc...) za samo konstrukcijo html + vsebine je to rahlo zamudno. pa če imaš čas in denar niti ne nepremagljiva ovira. to dapa niso konsistentni pa dokler aplikacija dela niti ni problem.  MVC(in različni frameworki) v javi je le mastrubiranje jave na vzorec RoR(ruby on rails). ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Oprosti ampak očitno še nisi delal z Spring MVC ali JSF2. Meni osebno sta superiorna oba napram RoR, mogoče zato ker se v obeh znajdem zelo dobro. Nevem kje ti uporabljaš cast za primerjavo 2 objektov, če si s tem ciljal na equals paradigmo v javi je to prednost, ker lahko primerjaš katera koli 2 objekta. Nevem pa kaj si mislil z luščenjem lastnosti iz objektov? Omenjal si tudi operatorje to mislim, da te moti da nemoreš overloadat operatorje, kar je tudi prednost ne slabost, ker + vedno pomeni seštevek 2 števil in << vedno pomeni bit shift itd. Nevem kako ti konstruiraš html vendar jaz za to uporabljal template engine kot je recimo freemarker ali thymeleaf, ki pa mata z Javo skupno samo to da sta v njej spisana. Glede dedovanja moram priznat da poznam samo 1 vrsto tako, da nemorem komentirati. S stringi pa se samo ukvarjam ko jih konvertam v primerni tip in sem po večini zaključil z njimi. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "castaš ne ket te mvc sili v monotono implementacijo. glede operatorjev pa pri kompleksnih štavilih smo kje? če delamo z matrikami(bog neday tabelami)...za 2+2 ne rabim jave ampak kalkulator, matemathico postimo potem ob strani. glede primerjave objektov pa preglej en graf z javo in bruhaj če zadeva ni sestavljena na začetku kot mora bit(razen če spišeš svoj mali db engine in uporabiš nek novi jezik(dsl)). pa še tu svet se spreminja ravno tako pa vzorci in paterni. spring napram ror je pa tako tako... en ta sili delat po nekem vzorcu ror pa vljkučevat stvari v nek zelo preprost layer kateri je hudimana prilagodljiv. spet stvar izbire. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Ne delam toliko z kompleksnimi števili in matrikami tako da tega nemorem komentirati ampak očitno java ni primerna za ta 2 primera. Ja to če zadeva na začetku ni vredu sestavljena je vedno problem, če pa je zadeva od začetka lepo sestavljena pa mi je v javi koda ena najbolj berljivih. Glede Spring in RoR bi rekel da je stvar preferenc meni je Spring definitivno bolj všeč, ker je bil spisan od developerjev za developerje ne pa kot neki akademski projekt. Aja pa še to vsi javi očitajo veliko xml-a in konfiguracije, kar je velikokrat tudi res, še posebej pri kakem EJB 2, ampak se to kar hitro spreminja. In razumem tudi, da verjetno prihajava iz zelo različnih projektov ter mama zato tudi drugačna mnenja o tem kaj je boljše. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "ma spring napram ror je fajn, če delaš vse po vzorcu. ampak ror je simpl spring pa kompleksen, je pa res da spring se smodejno realizera v ideju ravno zato ker je zgolj framework. ror je pa lahek framework kateri manipulera z stringi brez slabe vesti.pa sploh me ne tunakj med dinamike ker me web kot tak ne zanima(itak ne koderam več). ampak dinamični jeziki in sam koncept ima svoje prednosti. katerih pa jaz \"na žalost\" nisem hotel konzumirat, no ja svoj čas sem spisal povsem funkcionalen portal z gdjem in perlom. za kodirat super(saj ne veš amšak zdelo se mi je boljše kot vsak-a cgi, java in c# kasneje) ampak po dveh letih odsotnosti je bila zadeva zame neberljiva. o javi pa spet ne morem sodit prav iz prve roke, tiste dni ko sem komercialno delal z njo je bil eclipse še visal age developer preview, Together je bila pa še vsaj za moj okus najprimernejši ide(ideje še ni bilo). ma bluzim a se da odpret kako temo o novostih v javi? ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Točno tako spring je tudi mišljen tako, da delaj tako kot mi narekujemo pa se boš mel lepo delaj po svoje pa nebo tako lepo je pa možno. Nekako bi rekel da po vseh teh letih se je ekosistem jave spremenilo na veliko boljše(jaz sem začel z javo 1.5). ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Sej nočem težit samo se mi ne zdi primerna tako široka razprava o Javi v tej temi  Že smrdi malo po flamewaru. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": " MrBrdo je 8. jun 2012 ob 01:49 izjavil:Pač tvoje mnenje, očitno si omejen na ne-dinamične jezike... In več kot očitno nisi nobenega dinamičnega prav veliko uporabljal. Ti kr kucaj v Javi naprej pa good luck  Upam da te ne bodo preveč zmotile novosti 7ke.  No ja, ta zakljucek ne temelji na znanih dejstvih. Posledicno je napacen. Od kje si na Javo skocil je tudi misterij. Obstaja kup drugih jezikov z boljsimi sistemi tipov. Jaz le povem, da ne razumem fascinacije z Rubyem in nasploh fascinacije z jeziki, katerih definicija je bolj ali manj \"koda je veljavna cee jo prevajalnik/tolmac sprejme\". Posledicno je tezko karkoli resnega povedati o programih napisanih v takih jezikih. In meni so tudi nekateri dinamicni jeziki vsec, a to nista Ruby in Python. ",
+    "user": "sherman"
+  },
+  {
+    "message": " sherman je 8. jun 2012 ob 22:07 izjavil:MrBrdo je 8. jun 2012 ob 01:49 izjavil:Pač tvoje mnenje, očitno si omejen na ne-dinamične jezike... In več kot očitno nisi nobenega dinamičnega prav veliko uporabljal. Ti kr kucaj v Javi naprej pa good luck  Upam da te ne bodo preveč zmotile novosti 7ke.  No ja, ta zakljucek ne temelji na znanih dejstvih. Posledicno je napacen. Od kje si na Javo skocil je tudi misterij. Obstaja kup drugih jezikov z boljsimi sistemi tipov.   Jaz le povem, da ne razumem fascinacije z Rubyem in nasploh fascinacije z jeziki, katerih definicija je bolj ali manj \"koda je veljavna cee jo prevajalnik/tolmac sprejme\". Posledicno je tezko karkoli resnega povedati o programih napisanih v takih jezikih.  In meni so tudi nekateri dinamicni jeziki vsec, a to nista Ruby in Python.  ma ja pol gremo lohk tud do theorem proverjev , pa pi(join) algebr, sam mislm da je bilo prej vprašanje mišljeno kolk se pa vam zdi rubi kot tak,onkraj taga lahko mi per žulmo neki sitov pa očitno dela. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Pač Ruby ti omogoča res veliko svobode pri kodiranju. Zdaj če imaš bolj slabega developerja ali pa če se folk ne drži nekih dogovorov, potem je vse skupaj lahko nepregledno, zmedeno... V nasprotnem primeru pa je lahko zelo fino. Pač with great power comes great consequence  Ne rečem pa da ne obstaja tudi slaba stran Rubyja. Sicer se bo pa ta \"zmešnjava\" z monkey patchanjem vsaj delno rešila v 2.0, kjer bodo uvedli refinements http://timelessrepo.com/refinements-in-... (nisem ziher če se še vedno temu tko reče). ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Ma NASM ti omogoca veliko svobode pri kodiranju. Zdaj ce imas bolj slabega developerja ali pa ce se folk ne drzi nekih dogovorov, potem je vse skupaj nepregledno, zmedeno ... V nasprotnem primeru pa je lahko zelo fino. Pac, with great power comes great responsiblity. Ne recem da ne obstaja slaba stran NASMa.  Hocem reci, da naloga jezika je, da omogoca pisanje netrivialnih programov IN preprecuje napake, ki jih _vsi_ programerji zagresijo in jih znamo ze desetletja lepo kanonicno resit. Ruby kolikor vidim omogoca le nek nabor trikov, ki se zdijo kul, ne preprecuje pa programerjem delati bedastih napak. In vsi programerji delamo bedaste napake, ce jih jezik dovoljuje.  Sej mogoce je v redu za neka specificna podrocja. Ce premetujes nize potem je itak vse bolj ali manj izgubljeno, ker so stringi pac po konstrukciji nestrukturirani. ",
+    "user": "sherman"
+  },
+  {
+    "message": "Ko se je že našlo nekaj mandlcev, ki obvladajo ROR. Delam z rubyjem, vendar še nič nisem naredil v ROR, niti ga nisem inštaliral na mašino.   Ali ima kdo kak dober vodiš, kako začeti z ROR, pa nastavitve in podobno? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "nebivedu: http://railsforzombies.com/ http://railscasts.com/ http://ruby.railstutorial.org/ (osebno nisem uporabljal) knjiga http://pragprog.com/book/rails4/agile-w... jo imam in je super, sem jo bral na WCju  (js sm jo naročil iz amazon UK pa ni blo preveč drago, pa če boš kupval pazi da je zadnja izdaja)  also https://rvm.io/rvm/install/ http://tryruby.org/ ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "sherman: No jaz sem že kar nekaj časa v developmentu in osebno raje zamenjam varnost striktnih jezikov s fleksibilnostjo, ki mi jo Ruby ponuja (seveda odvisno kaj delam, včasih tudi uporabljam C in tudi IA32 asm). Ker pač naredim stvari veliko hitreje in poleg tega mi je v veselje programirat v Rubyju, kar za C ne morem trdit. Z assemblerjem še imam nekaj veselja vendar tam je pač tako da delaš dolgo in narediš malo (v primerjavi). Mogoče sta mi ravno oba ekstrema zanimiva, sredina pa ne toliko. Treba se je pač zavedat kje je performance sploh važen in tam kjer ni važen veliko raje uporabim kakšen dinamični jezik. Seveda pa ne bom šel neke hardcore matematike in računanja programirat v Rubyju. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": " MrBrdo je 9. jun 2012 ob 21:35 izjavil:Treba se je pač zavedat kje je performance sploh važen in tam kjer ni važen veliko raje uporabim kakšen dinamični jezik. Seveda pa ne bom šel neke hardcore matematike in računanja programirat v Rubyju.   Pa saj se ne gre za hitrost izvajanja (ceprav moram priznati, da mi je smesno koliko truda je vlozenega v hitro izvajanje skropucala od jezika, ki je javascript). Gre se za to, da ko imas mogocen sistem tipov in vse skupaj lepo zastavis, tezko napises legalen program, ki ne dela prav. Seveda je potem vprasanje, ce je tvoja specifikacija (torej tipi) smiselna, samo to je vprasanje tudi ce nimas tipov, oziroma imas poor-man's sistem z enim tipom. Zdaj, ce je vecina tvojih tipov osnovnih (torej stevila, znaki, tabele in podobni), potem mogoce ne profitiras veliko, z visjimi tipi pa hitro postane vse skupaj veliko lepse, ce imas na razpolago prevajalnik, ki dokazuje dolocene lastnosti tvojih programov in boljsi sistem tipov imas, bolj netrivialne so te lastnosti. ",
+    "user": "sherman"
+  },
+  {
+    "message": "Sej Ruby ima tipe... Samo nima spremenljivk v klasičnem smislu ampak ima containerje, kamor lahko spraviš poljubno spremenljivko, zato container nima tipa. Z malo metaprogramiranja si lahko narediš tudi striktne tipe, če hočeš. Primer: https://github.com/t6d/smart_properties  Sicer se pa jaz raje zanašam na teste in delam po TDD metodologiji, tako da ne rabim compiler errorjev da testiram kodo. Toliko več časa kot ti porabiš v statičnem jeziku nekaj spisat si jaz komot privoščim napisat še teste pa še kak refactor narest. Logike ti pa compiler itak ne zna preverit. Drugače pa ne vem kdaj sem imel nazadnje problem da bi eni spremenljivki priredil drugačen tip kot pa sem mislil, tko da mi tisto preverjanje tipov sploh nič ne koristi, razen tega da mam več za pisat, česar pa osebno ne štejem kot prednost. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": " MrBrdo je 9. jun 2012 ob 22:19 izjavil:Sej Ruby ima tipe... Samo nima spremenljivk v klasičnem smislu ampak ima containerje, kamor lahko spraviš poljubno spremenljivko, zato container nima tipa. Z malo metaprogramiranja si lahko narediš tudi striktne tipe, če hočeš. Primer: https://github.com/t6d/smart_properties    Ruby seveda je tipiziran jezik (v kolikor to lahko trdimo, ker je izgleda edina specifikacija v obliki interpreterja), le da se tipi preverjajo ko kodo pozenes. Zato moras vec testirat.   MrBrdo je 9. jun 2012 ob 22:19 izjavil: Sicer se pa jaz raje zanašam na teste in delam po TDD metodologiji, tako da ne rabim compiler errorjev da testiram kodo. Toliko več časa kot ti porabiš v statičnem jeziku nekaj spisat si jaz komot privoščim napisat še teste pa še kak refactor narest.   Staticni tipi so ultimativna stvar v tvojem TDD. S staticnimi tipi prevajalnik _dokaze_ dolocene lastnosti (v logiki, ki ustreza sistemu tipov, ce je le ta smiseln), medtem ko jih ti s testiranjem ponavadi ne, saj testiranje (ponavadi) ni izcrpno. Torej lahko smatras, da ti specifikacija jezika in tipi enostavno predstavljajo teste, ki bi jih sicer moral (povrsno) napisat. To seveda ne pomeni, da testiranje ni potrebno, le da se ga uporabi za stvari, ki se jih ne da specificirat s tipi (kar so mogoce vse stvari, v dolocenih primerih, in potem res ne profitiras nicesar).   MrBrdo je 9. jun 2012 ob 22:19 izjavil: Drugače pa ne vem kdaj sem imel nazadnje problem da bi eni spremenljivki priredil drugačen tip kot pa sem mislil, tko da mi tisto preverjanje tipov sploh nič ne koristi, razen tega da mam več za pisat, česar pa osebno ne štejem kot prednost.   No, type inference je ze prastara stvar, tako da tisto s pisanjem je malo bosa. Pa zopet se ne gre za to, da bi spremenljivki priredil drugacen tip (mimogrede, s staticnimi tipi imas mirno lahko reference, ki spreminjajo tipe med izvajanjem (v literaturi ljudje temu iz nekega razloga recejo \"strong references\")). Gre se za to, da ce imas nekaj tipa, recimo, A+B in hoces to uporabit, ne mores to narediti drugace, kot da upostevas obe moznosti (torej inl in inr). Ne gre.   MrBrdo je 9. jun 2012 ob 22:19 izjavil: Logike ti pa compiler itak ne zna preverit.   No ja, tudi to zna. Ce imas specifikacijo programa napisano v neki logiki/formalnem jeziku, tudi to lahko. Res pa je, da to (zaenkrat) ni realisticno za vecje programe, sploh ker ljudje ne vedo kaj hocejo. Lahko pa, recimo, prevajalnik preveri specifikacijo za take elementarne funkcije kot so obracanje seznamov, sortiranje seznamov, kake numericne funkcije ..., ce je le sistem tipov dovolj izrazen. ",
+    "user": "sherman"
+  },
+  {
+    "message": " sherman je 9. jun 2012 ob 23:50 izjavil: Ruby seveda je tipiziran jezik (v kolikor to lahko trdimo, ker je izgleda edina specifikacija v obliki interpreterja)   Am, ne. http://www.ipa.go.jp/osc/english/ruby/r...  sherman je 9. jun 2012 ob 23:50 izjavil: Staticni tipi so ultimativna stvar v tvojem TDD. S staticnimi tipi prevajalnik _dokaze_ dolocene lastnosti (v logiki, ki ustreza sistemu tipov, ce je le ta smiseln), medtem ko jih ti s testiranjem ponavadi ne, saj testiranje (ponavadi) ni izcrpno. Torej lahko smatras, da ti specifikacija jezika in tipi enostavno predstavljajo teste, ki bi jih sicer moral (povrsno) napisat.   V testih pravzaprav ni potrebe da bi testiral tipe, važno je da je delovanje pravilno, tudi če si dobil drug tip kot bi pričakoval, če je rezultat pravilen potem je OK. Če ti misliš da mi ki uporabljamo dinamične jezike potem pišemo teste \"if x.class == String\" potem ti lahko rečem samo lol. Če pa nekdo v metodo za katero piše v dokumentaciji da sprejme string rine noter integer si je pa pač sam kriv, da se mu stvar potem sesuje. Sam take napake so v primerjavi z dejanskimi bugi v kodi (ki jih pa odkriješ s testi ne pa z nekimi banalnimi compiler checki) nepomembne. S strongly-typed pridobiš tako malo v primerjavi s tem koliko več dela imaš z njim da če ne bi bilo performančne razlike se to skoraj nikoli nebi splačalo. Da ne začnem o raznih buffer overflow exploitih ki so v managed jezikih praktično nemogoči, C program ima pa skoraj vsak kakšen tak vulnerability. V managed jeziku imaš lahko samo napako v logiki, ki jo pa imaš lahko čisto isto v C. Če maš dober code coverage v testih ne rabiš strongly-typed, sploh. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Staticni tipi so ultimativna stvar v tvojem TDD. S staticnimi tipi prevajalnik _dokaze_ dolocene lastnosti (v logiki, ki ustreza sistemu tipov, ce je le ta smiseln), medtem ko jih ti s testiranjem ponavadi ne, saj testiranje (ponavadi) ni izcrpno. Torej lahko smatras, da ti specifikacija jezika in tipi enostavno predstavljajo teste, ki bi jih sicer moral (povrsno) napisat. To seveda ne pomeni, da testiranje ni potrebno, le da se ga uporabi za stvari, ki se jih ne da specificirat s tipi (kar so mogoce vse stvari, v dolocenih primerih, in potem res ne profitiras nicesar). me pa prov zanimajo te kompajlerji. rad bi jih videl. razen redkih izjem so redki kot bele miši v naravi. pa še tam moraš spisat specifikacije. ",
+    "user": "noraguta"
+  },
+  {
+    "message": " MrBrdo je 10. jun 2012 ob 01:30 izjavil: Am, ne. http://www.ipa.go.jp/osc/english/ruby/r...   Se opravicujem.   MrBrdo je 10. jun 2012 ob 01:30 izjavil: V testih pravzaprav ni potrebe da bi testiral tipe, važno je da je delovanje pravilno, tudi če si dobil drug tip kot bi pričakoval, če je rezultat pravilen potem je OK. Če ti misliš da mi ki uporabljamo dinamične jezike potem pišemo teste \"if x.class == String\" potem ti lahko rečem samo lol.   No, ti le pusti sosedom spati. Ne razumem pa, kako je lahko rezultat pravilen, ce dobis nekaj drugega tipa, kot si pricakoval (razen v primeru podtipov? (subtype)). Potem ocitno rezultat ni pravilen?   MrBrdo je 10. jun 2012 ob 01:30 izjavil: Če pa nekdo v metodo za katero piše v dokumentaciji da sprejme string rine noter integer si je pa pač sam kriv, da se mu stvar potem sesuje. Sam take napake so v primerjavi z dejanskimi bugi v kodi (ki jih pa odkriješ s testi ne pa z nekimi banalnimi compiler checki) nepomembne.    Problem je, da dokumentacija zivi vzporedno s kodo in se jo programerju ne da/pozabi/je povrsen pri popravljanju. In seveda je vedno programer kriv, kdo drug bi le bil.   MrBrdo je 10. jun 2012 ob 01:30 izjavil: S strongly-typed pridobiš tako malo v primerjavi s tem koliko več dela imaš z njim da če ne bi bilo performančne razlike se to skoraj nikoli nebi splačalo. Da ne začnem o raznih buffer overflow exploitih ki so v managed jezikih praktično nemogoči, C program ima pa skoraj vsak kakšen tak vulnerability. V managed jeziku imaš lahko samo napako v logiki, ki jo pa imaš lahko čisto isto v C.   Pusti ti C pri miru in si mogoce poglej kak jezik s spodobnim, modernim sistemom tipov in kaj vse omogoca specificirat. Mogoce zacni s SML ali pa Haskell 98 pa nadaljuj do Haskell 2010 in Clean.   MrBrdo je 10. jun 2012 ob 01:30 izjavil: Če maš dober code coverage v testih ne rabiš strongly-typed, sploh.   Famous last words? In se enkrat, tudi s staticnimi jeziki seveda potrebujes testiranje, a je to lahko bolj osredotoceno na mesta, kjer ne mores s tipi zagotoviti pravilnosti delovanja. Mogoce je to povsod, ce tvoji programi premetujejo nize, klicejo zunanje programe ipd. in je resne vsebine programa bolj malo, in takrat ne bos profitiral, mogoce bos na slabsem. ",
+    "user": "sherman"
+  },
+  {
+    "message": " noraguta je 10. jun 2012 ob 09:41 izjavil:me pa prov zanimajo te kompajlerji. rad bi jih videl. razen redkih izjem so redki kot bele miši v naravi. pa še tam moraš spisat specifikacije.  No, seveda moras pisati specifikacije, kaj drugega so pa tipi. So pa redki, se strinjam. V Haskellu (bolje receno v GHC z dovolj vkljucenimi -Xdodatki :)) se da marsikaj narediti. Potem je Dependent ML oziroma zdaj ATS, pa Epigram. Coq je po svoje zanimiv, saj lahko pises kriticne dele kode, ki dejansko pocnejo resne stvari in dokazes lastnosti, potem pa iz tega zgeneriras kodo, recimo v Scheme, ki deluje tako kot mora. ",
+    "user": "sherman"
+  },
+  {
+    "message": "ma jst zase vem, da sem delal točno na enem projektu kjer smo verificeral kodo, vsa zadeva je pa stala približno toliko kot cel razvoj. pa pozab da potem stvar kar tako na hitro lahko modificiraš. kak smt solverji(Satisfiability Modulo Theories) so še za silo uporabni scier je pa vse skup precejšna revščina in napor. za neko aplikacijo kjer še naročniku ni povsem jasno kaj bi počel ter zakaj bi sploh to počel je pa vse skupaj NOGO. z algebrajskimi tipi vsaj domeno lepo razdeliš v distjunktne podprostore ampak že to je velika redkost v divjini. sam sem enkrat bolj za šalo kot zares spisal del nekega IDEja na ta princip, zabavno ampak možgane parajoče, ker prav nikjer nimaš enega samega exampla kako se stvari lotit. glede tipov pa dandanes jih večina dojema kot se pojalvljajo v objektno orientiranem programiranju, torej kot kontekstno navezavo metode na objekt(kake pa prav nič več). glede haskla pa kljub nevrotični tipizaciji ti ne prepreči zafilat stack, bognedaj da bi ti še pomagal. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "@sherman: Haskella ne poznam tako da se ne bi rad samo na podlagi prvega vtisa opredelil... Lahko da mu delam krivico. Problem je, da dokumentacija zivi vzporedno s kodo in se jo programerju ne da/pozabi/je povrsen pri popravljanju. In seveda je vedno programer kriv, kdo drug bi le bil. V Rubyju je z dokumentacijo kar vredu urejeno, RDoc ti generira dokumentacijo iz komentarjev v kodi, ki jo potem lahko lokalno bereš ali z ukazom \"ri class#method\" ali z gem server, ki ti lokalno postavi web server na katerem imaš vso dokumentacijo v HTML obliki (tako od stdliba kot tudi od svojega projekta). Npr. \"ri Array#join\" v terminalu:  ------------------------------------------------------------------------------\n  ary.join(sep=$,)    -> str\n\n------------------------------------------------------------------------------\n\nReturns a string created by converting each element of the array to a string,\nseparated by sep.\n\n  [ \"a\", \"b\", \"c\" ].join        #=> \"abc\"\n  [ \"a\", \"b\", \"c\" ].join(\"-\")   #=> \"a-b-c\" Ne razumem pa, kako je lahko rezultat pravilen, ce dobis nekaj drugega tipa, kot si pricakoval (razen v primeru podtipov? (subtype)). Zato ker v Rubyju pogosto v kodi namesto da testiramo tip spremenljivke, testiramo samo če ustreza nekem obnašanju ki ga želimo. Npr. če ti dam bolj umeten primer, če imam neko metodo, ki vse kar hoče naredit je da psu reče naj laja, namesto da preverjam ali sem dobil kot parameter objekt tipa Pes, preverim samo če zna ta objekt lajat:  if obj.respond_to?(:bark) Zdaj tak pristop ima tako prednosti (ne rabiš se drkat z interfejsi) kot slabosti (nimaš tako formalno definirano zahtev), to je potem stvar posameznika ali se mu zdi to dobro ali slabo. Lahko seveda tudi class preverjaš če hočeš, ampak včasih enostavno tega ne rabiš. Seveda če imaš projekt kjer imaš zelo formalno definirane zahteve potem tak pristop mogoče ni primeren. Samo v Rubyju veliko developerjev dela po agile metodologiji kjer načeloma ni tako. Sicer je pa efekt podoben, če bi se zdaj odločil da poleg bark rabim še jump, ali dodam v interfejs metodo jump (in bi dobil potem compiler error), ali pa dodam še check za respond_to?(:jump) in sicer vržem exception - če ima programer teste, bo isto dobil ta exception, edina realna razlika je da namesto da požene compiler požene teste. Pa še praksa je taka da se take spremembe dokumentira in še v changelog doda, pa pri večjih projektih se take spremembe uvajajo postopno prek deprecation warningov, kjer še nekaj verzij hendlaš staro obnašanje, potem pa ga kasneje odstraniš in vržeš exception. Tako da recimo ko dodaš tako spremembo imajo ostali developerji nekaj časa da lahko updejtajo svojo kodo - če pa spremeniš interfejs pa te svobode načeloma nimaš. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "MrBrdo, hvala. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "@sherman en dober talk na temo ki si jo odprl mogoče se ti bo zdelo zanimivo  na začetku govori o ducktypingu in kako ga on uporablja... ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Fantje, punce, ono...se komu sanja, zakaj na Code School Ruby panelu ne prime/prikaže znaka [? Pa verjetno se bo še kak znak našel.  Poleg tega pa me zanima tudi, čemu vedno, ko pridem s tipkanjem in potrjevanjem ukazov do dna okna, vrže drsnik na začetek (vrh) okna? Tako mi potlej ostane, da ali uporabim clear ali pa ročno povlečem drsnik na dno. ",
+    "user": "slitkx"
+  },
+  {
+    "message": "Pa tole - ko pritisnem kombinacijo alt gr + B, da bi dobil znak {, mi ga ne izpiše, temveč me pomakne za en presledek v levo. Ko pa pritisnem kombinacijo alt gr + N, da bi dobil }, mi prikaže ukaz clear. ",
+    "user": "slitkx"
+  },
+  {
+    "message": "S katerim ide-jem pa delaš? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " slitkx je 17. jun 2012 ob 01:50 izjavil:Fantje, punce, ono...se komu sanja, zakaj na Code School Ruby panelu ne prime/prikaže znaka [? Pa verjetno se bo še kak znak našel.  Poleg tega pa me zanima tudi, čemu vedno, ko pridem s tipkanjem in potrjevanjem ukazov do dna okna, vrže drsnik na začetek (vrh) okna? Tako mi potlej ostane, da ali uporabim clear ali pa ročno povlečem drsnik na dno.  Preklop na angleško tipkovnico. Key bindinge na web pagetu boš bolj težko prilagodil ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Ja mislim da ima tista stran težave s slovensko tipkovnico, tako da bo verjetno treba tam naštimat angleško. Drugače imajo tudi nekateri IDEji težave z default keybindingi, jaz se spomnim da je Visual Studio pri altgr+f ([) odpiral neko okence včasih, zdej mislim da ne več.  Sej glede na to, da je CodeSchool tudi plačljiv (mislim da lahko dokupiš neke bolj podrobne stvari), bi mu lahko poslal mail, če bi lahko ponudil neko rešitev za uporabnike ki imajo drugačne tipkovnice. ",
+    "user": "MrBrdo"
+  }
+]

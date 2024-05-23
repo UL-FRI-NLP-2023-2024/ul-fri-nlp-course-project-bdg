@@ -1,0 +1,38 @@
+[
+  {
+    "message": "Že nekaj dni sem se odločal, da prestopim na alternativne sisteme, saj me je Windows nehal zadovoljevati  Live bootable cd se je prvič lepo zavrtel in net je delal super že ob zagonu. Medtem, ko sem brskal preko neta se je stvar nekako namestila, ob naslednjem zagonu pa je GUI mrknil oz. se ni več hotel naložiti. No, poskusil sem še enkrat z live namestitvijo, vendar tokrat net delal ni več. Ob zagonu je bilo isto. Pa sem probal namestitev še iz Winov, kjer net dela BP, tokrat se je vse lepo namestilo, GUI postavljen, net pa še vedno ni hotel delovati. Enablanje/disablanje ne pomaga, pravtako ročna dodelitev dns-jev ne. Ko se povezava končno 'vzpostavi', ni podatkov o nobenem dns-ju, ne dodeljenem ip-ju, net pa še vedno dela ne.  Kakšni nasveti? ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Ponudnik? Način povezovanja? Karkoli? ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Aja, ups :)  Optika, T-2, direktno. Nf4 integrirana mrežna. ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "sam sicer še vedno uporabljam siol, upam pa, da bo tole kaj pomagalo pri rešitvi problema,  klik oziroma  klik1 ",
+    "user": "c0ck4m0u53"
+  },
+  {
+    "message": "T-2 uporablja DHCP - IP bi mogel dobiti avtomatično. Sprehodi se v konzolo in vtipkaj \"ifconfig\" pa prilepi sem. Drugače lahko forsiraš renew - \"dhclient\" in počakaš. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Včasih pomaga tudi kak sudo ifdown eth0 in za tem sudo ifup eth0.  Drugače se pa spravi v nastavitve mreže (System/admin/network) in naštimaj dhcp.  Še en tak čuden način (ki ga uproabljamo neznalci v takih primerih) je pa ta, da zbudiš računalnik brez mreže (izštekaš kabel) in ga rebootaš spet z vkljopljeno mrežo. :) ",
+    "user": "Roadkill"
+  },
+  {
+    "message": "gubi@ubuntu:~$ ifconfig eth0 Link encap:Ethernet HWaddr 00:17:31:37:F9:11  inet6 addr: fe80::217:31ff:fe37:f911/64 Scope:Link UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 RX packets:10 errors:0 dropped:0 overruns:0 frame:0 TX packets:443 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:1000  RX bytes:622 (622.0 b) TX bytes:23414 (22.8 KiB) Interrupt:18 Base address:0x2000   eth0:avah Link encap:Ethernet HWaddr 00:17:31:37:F9:11  inet addr:169.254.5.88 Bcast:169.254.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:18 Base address:0x2000   lo Link encap:Local Loopback  inet addr:127.0.0.1 Mask:255.0.0.0 inet6 addr: ::1/128 Scope:Host UP LOOPBACK RUNNING MTU:16436 Metric:1 RX packets:239 errors:0 dropped:0 overruns:0 frame:0 TX packets:239 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:0  RX bytes:21556 (21.0 KiB) TX bytes:21556 (21.0 KiB) ___________ In pa dalje   gubi@ubuntu:~$ sudo ifup eth0 There is already a pid file /var/run/dhclient.eth0.pid with pid 134993416 Internet Systems Consortium DHCP Client V3.0.4 Copyright 2004-2006 Internet Systems Consortium. All rights reserved. For info, please visit http://www.isc.org/sw/dhcp/  Listening on LPF/eth0/00:17:31:37:f9:11 Sending on LPF/eth0/00:17:31:37:f9:11 Sending on Socket/fallback DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 3 DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 6 DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 6 DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 13 DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 3 No DHCPOFFERS received. No working leases in persistent database - sleeping. .... You are now connected to the wired network ... ____  gubi@ubuntu:~$ sudo dhclient Internet Systems Consortium DHCP Client V3.0.4 Copyright 2004-2006 Internet Systems Consortium. All rights reserved. For info, please visit http://www.isc.org/sw/dhcp/  Listening on LPF/eth0/00:17:31:37:f9:11 Sending on LPF/eth0/00:17:31:37:f9:11 Sending on Socket/fallback DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 7 DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 15 DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 9 No DHCPOFFERS received. No working leases in persistent database - sleeping. ____  Torej, net še vedno dela ne. Pingat ne morem pa nič drugega kot 127.1 Ce staknem kabljot ven se aplikacije odzovejo na pomanjkanje mreže in takoj vržejo, da se ne morejo povezati, kar je logično po svoje. V kolikor pa je stvar vklopljena pa lahko čakaš in čakaš pa delalo še vedno ne bo. ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Hehehe, Net zdaj dela pa še sam ne vem zakaj  Nekako sem počakal, da se je 'nalagala' stvar in takoj po logon oknu, ko sem zagledal namizje, sem priklopil net in tako tukaj zdaj pišem   Lp in hvala za pomoč ! :) ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Torej, stvar je med tem časom crknila še enkrat. Po teženju na helpdesk mi tipo pove, da imam lahko hkrati največ 2 računalnika na optiki ... Očitno 4 in še wlan ruterček res ni moglo prebaviti  ",
+    "user": "Pyr0Beast"
+  }
+]

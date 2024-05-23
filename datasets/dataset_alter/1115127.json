@@ -1,0 +1,206 @@
+[
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Ob na kupu novega TV sprejemnika (Sharp LC-32LE320E), se mi je pojavila težava:\nPri nekaterih programih je slika 'snežena', pri večini pa brez motenj. Signal je kabelski, Telemach in na prejšnjem sprejemniku LG Flatron tega problema ni bilo.\nKo sem poskušal ugotavljati, kje je problem, sem slučajno premaknil vhodni kabel in slika na 'sneženem' programu se je popravila do kristalne, na večini ostalih pa pokvarila.\nKer sem sumil na kabel, sem podaljšek iz razcepnika zamenjal z drugim, pa to težave ni odpravilo.\nV neki zelo natančni točki, ko vtikač ni sestavljen z vtičnico, je slika sprejemljivo dobra povsod, vendar mislim, da to ni rešitev.\nNaj zapišem še to, da je Sharp tretji TV, kabli pa so priklopljeni na ojačevalnik, iz katerega gre ena veja h glavnemu (ki nima problemov s sliko), druga pa se razcepi na vhod v TV kartico računala (kjer je sprejem prav tako BP) in k Sharpu. Odklapljanje katerega koli porabnika ne pomaga.\n\nProšnja strokovnjakom in ostalim, ki so se morda že srečali s tem problemom:  kaj je zdravilo, če sploh je?",
+    "author": "oriolus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Poskusi direktno zvezat , brez vtikača in vtičnice.  Če je ta razdelilnik z ojačanjem, preveri če dobi napajanje. Kaj se zgodi, če zamenjaš med seboj izhode na razdelilniku? Ali so potem težave na drugem TV? Ali ima ojačevalnik napajanje? Če bi malo narisal, kako je vse skupaj zvezano , bi ti bilo veliko laže svetovati.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Najlepša hvala za pripravljenost pomagati, bpfc!\n\nNapako sem odkril, vsaj tako je videti. \nOjačevalec je bil nastavljen na previsoko stopnjo ojačanja, kar mi sicer ni logično, vendar deluje.\n\nLP",
+    "author": "oriolus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Seveda preveč ojačevanja škodi, če imaš močan ojačevalnik (jaz imam do +30dB) lahko pošlješ v sprejemnik močnejši signal kot je po standardih in sprejemnik to interpretira kot motnje.\n\nSam imam recimo problem s ojačevalnikom ker je najbližji TV 5m stran, najbolj oddaljen pa 20m stran. Je bilo kar nekaj nastavljanja, da sem našel pravo stopnjo, da na obeh dela ok. Če je bilo preveč, je na prvem TV pisalo na vseh programih signal 100% (DVB-C), a slika je preskakovala, zmrzovala...",
+    "author": "SouthPark",
+    "author_level": "Jas da nea vem?!  Ka te je..."
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "30dB pojačanje je potrebno  za padec signala na cca 150 m kabla. Če je jakost signala večja od cca 100dB,  se pojavijo motnje, ki TV zablokirajo.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Mi imamo že pri dovodu v hišo slab signal, zdaj imam ojačano na nekje 15 dB in deluje na vseh TV OK.",
+    "author": "SouthPark",
+    "author_level": "Jas da nea vem?!  Ka te je..."
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Torej potrditev, da sem našel pravilno rešitev !\nSicer je ojačevalec 'le' 20db, pa vendar sem ga moral omejiti na približno petino jakosti (oziroma da sem odvil trimer do petine) , da sem dosegel solidno sliko na vseh programih.\nGlede na to, da so  bile motnje le na kanalih, ki so nad 600MHz, me zanima, če je tudi to povezano z močjo ojačevalca, ali me kje čaka še kakšen problem?\n\nHvala!",
+    "author": "oriolus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Morda ni dovolj linearen skozi celotno podrocje delovanja (nic posebnega pri RF ojacevalnikih). Problem previsokega ojacanja je v tem, da lahko signal ojaca toliko, da pride do clippinga, kar pomeni, da se izgubi informacijo o (relativni) amplitudi signala, torej polovica informacije, ki jo QAM signal nosi. To je enako slabo kot motnje.\n\nZavedati se je tudi potrebno, da ojacevalnik - ce bi bil idealen, kar v praksi nobeden ni - ojaca enako tudi vse motnje na vhodu, torej ostane SNR enak, le amplituda je visja. Ce k temu pristejes se motnje, ki jih dopda ojacevalnik, pa napacno (previsoko) nastavitev, si lahko precej na slabsem, kot ce bi bil brez.",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Problem je lahko v zastareli infrastukturi - ojačevalnikov v omarici kabelskega ponudnika in kablov.",
+    "author": "SouthPark",
+    "author_level": "Jas da nea vem?!  Ka te je..."
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Bi rekel, da je problem v ponudniku, njihovih nastavitvah ojačevalnikov in/ali kablih. Pri meni je identičen problem (analogna TV nad 600MHz je bolj kot ne boga, spodnji frekvenčni del tam nekje do 325 MHz je majka). Je pa tudi vprašanje, ali gre vse čez eno škatlo v centrali ali je več ločenih (po frekvenčnih območjih) ojačevalnikov.",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Če ti nekdo kriči na uho, ga tudi ne razumeš tako dobro, kot če govori z normalno glasnostjo. Tu je isti princip.\n\nRešitev teh težav je nakup distribucijskega ojačevalnika.\n\nNekaj takšnega:\n \n\t\n\n\n\nIzvorni signal lahko tudi prej razcepiš, potem pa jačaš vsako frekvenčno območje posebej (V, IV, III, I+FM).\n\nKontakt v SLO: http://www.golar.tv/",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SouthPark pravi:\n Mi imamo že pri dovodu v hišo slab signal, zdaj imam ojačano na nekje 15 dB in deluje na vseh TV OK.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPonavadi, naj bi tudi veljalo, da tehniki od Telemacha nastavijo to moč do največ 15 dB  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n .\n\nLp.",
+    "author": "1980",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Nevem, zakaj bi nabavljal razne ojačevalce, če ti je pa ponudnik dolžan zagotoviti kvaliteten signal na vseh kanalih. Kolikor je meni poznano je minimalni signal cca 50dB. Izpod te meje se pri analognem signalu začne pojavljati sneg.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Za crt je optimalen signal 50 - 60 db .Za lcd ki rabi malo več pa 60 - 70 db . Potem pa samo še odvisno koliko tv -jev imaš gor priklopljeno na kabel",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Ni pomembno, ali je CRT, LCD ali plazma. Važno je kako kvaliteten kanalnik ima vgrajen.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Še kako je važno kakšen signal ima noter v bajto in kakšen tv ima gor priključen .",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Drugače pa kot si že napisal največ problemov je tam .",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Kdo pa je rekel, da ni važno. Normalno, če imaš TV  ki ima slabši kanalnik, potem rabiš boljši signal. Samo, hvala lepa za tak LCD, ki rabi za dobro sliko  60-70dB.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik bpfc pravi:\n Ni pomembno, ali je CRT, LCD ali plazma. Važno je kako kvaliteten kanalnik ima vgrajen.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNi čisto tako.\nPonudnik ti je dolžan zagotoviti dovolj kvaliteten (močan če hočeš) signal, pred leti so zagotavljali oz. je bilo uradno možno na njihov kabel obesit dva TV-ja (samo preko delilnika, brez ojačevalcev). Marsikje je še direkt za en TV prešvoh signal, kaj šele kaj več. Žal.",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Sej ti pravim da crt rabi manj signala kot pa lcd .Naj ti  kabelski operater poveča signal pa bo boljše ,razen če ni kje kakšen slab spoj  na kablih .Kakšni so kabli novi , stari . 50 ohm - 75 ohm ? Pritisni na njih naj popravijo in zrihtajo kakor vejo in znajo , sej plačuješ naročnino .",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Romzi , dovolj kvaliteten signal, ali dovolj močen signal  sta dva različna pojma. Lahko imaš ti signal naprimer 60dB ki je kvaliteten in tudi dovolj močan. Lahko pa imaš signal ravno tako 60 dB, ki pa ni kvaliteten, čeprav je tudi dovolj močen. Največkrat je vzrok temu, da je nekje na liniji signal padel pod dovoljeno mero in  potem močno pojačan na višji nivo. Posledica tega je pojavljanje snega. Toda četudi ti signal spraviš na višji nivo, se tega snega ne boš več rešil. \nČe dobiš ti v hišo že slab signal, potem ni pravilno, da se signal v hiši pojača, ampak bi se moral pojačat že tam, kjer je  kabel ki vodi do tvoje hiše priklopljen na omarico. Žal se to običajno ne dogaja.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Rešitev teh težav je nakup distribucijskega ojačevalnika.\n\nNekaj takšnega:\n \n\t\n\n\n\nIzvorni signal lahko tudi prej razcepiš, potem pa jačaš vsako frekvenčno območje posebej (V, IV, III, I+FM).\n\nKontakt v SLO: http://www.golar.tv/",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik TUPLI pravi:\nKakšni so kabli novi , stari . 50 ohm - 75 ohm ? Pritisni na njih naj popravijo in zrihtajo kakor vejo in znajo , sej plačuješ naročnino .\n\t\t\n\t\tKlikni za razširitev\n\t\nNajvečkrat so krivi slabi kontakti. Razdri, na novo namontiraj F konektorje, uporabi F delilnik signala; za vhod v TV pa pretvornik iz F v običajen RF moški konektor.\n\nČe en TV dela dobro, ostali pa slabo, se zagotovo da popraviti situacijo z ojačevalnikom v hiši. Seveda se lahko obrneš na kabelskega operaterja, da ti izboljša signal, ki pride do tebe. Ampak za interno instalacijo, kjer so najbrž težave, je odgovoren sam uporabnik. Ojačevalnik daš čim bližje operaterjevemu kablu, vsekakor pa pred delilnik  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Lej se ne bom spuščal v pregloboko debato, ni bil to moj namen. Ampak, če imaš že na vhodu pri omarici prešibek signal, ti noben oječevalnik ne bo pomagal. Ker če je nivo signala npr. samo 30dB, to še ne pomeni, da je tudi nivo šuma nizek (razmerje signal/šum je gnilo) in pri ojačanju tudi šum ojačuješ - posledično imaš pikasto/sneženo sliko. Kolikor vem imajo tudi TV-ji oz. njihovi kanalniki sistem ojačevanja, je pa vprašanje, kaj ojačuješ, če je signal prenizek. Osnovno načelo je, da če prikolopiš TV direkt na linijo (čimkrajšo) iz omarice mora biti slika odlična. Naprej je pa tvoja stvar kako boš vlačil po bajti in kakšne delilce, ojačevalce in prehodne vtičnice imaš. Še to: LCD in plazma rabita močnejši in kvalitetnejši signal zato, ker veliko bolj detajlno prikazujeta tisto kar dobita po kablu - tudi šume (delno tudi zato ker so LCD-ji/plazme praviloma večjih dimenzij). CRT-ji marsikaj \"skrijejo\" - kar poglej si kakšen slab DivX na CRT-ju (kjer je lahk očisto spodobno za videt) in na LCD/Plazmi (nikakva slika). Razni sistemi TV-jev za zmanjšanje ostrine in odsranjevanje šuma so pa itak tako-tako (bolj za silo, da kao dobiš bolj \"čisto\" sliko\"). Sicer pa ti zanjo svetovati npr. tukaj: http://www.antene-zupancic.si/",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Bush Ta ojačevalec zgoraj ki ga ti omenjaš sicer lahko uporabiš tudi za ojačanje kabelskega signala, ni pa namenjen za to. Veliko bolj primeren  in tudi trikrat cenejši je   naprimer tale.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Saj (zdaj) oba govorita o isti stvari, mozak ti je isto napisal o SNR \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik bpfc pravi:\n  Bush Ta ojačevalec zgoraj ki ga ti omenjaš sicer lahko uporabiš tudi za ojačanje kabelskega signala, ni pa namenjen za to. Veliko bolj primeren  in tudi trikrat cenejši je   naprimer tale.\n\t\t\n\t\tKlikni za razširitev\n\t\nTa ojačevalec jača celotno frekvenčno območje isto. Jaz sem MA014 priporočal, če je eno frekvečno območje v redu, drugo pa ne:\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Romzi pravi:\nPri meni je identičen problem (analogna TV nad 600MHz je bolj kot ne boga, spodnji frekvenčni del tam nekje do 325 MHz je majka). Je pa tudi vprašanje, ali gre vse čez eno škatlo v centrali ali je več ločenih (po frekvenčnih območjih) ojačevalnikov.\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n Bush pravi\nIzvorni signal lahko tudi prej razcepiš, potem pa jačaš vsako frekvenčno območje posebej (V, IV, III, I+FM).\n\t\t\n\t\tKlikni za razširitev\n\t\nTa ojačevalec , ki ga ti predlagaš je namenjen za pojačanje antenskega signala. \nTudi to ni logično, da boš že tako oslabele signale najprej razcepil, kjer bo prišlo še do nadaljne oslabitve, potem pa ojačal vsako frekvenčno področje posebej. \nČe je jakost signalov na višjem področju slabša, se uporabi tak ojačevalec, ki omogoča večje ojačanje na višjem področju.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik bpfc pravi:\n  \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n Bush pravi\nIzvorni signal lahko tudi prej razcepiš, potem pa jačaš vsako frekvenčno območje posebej (V, IV, III, I+FM).\n\t\t\n\t\tKlikni za razširitev\n\t\nTa ojačevalec , ki ga ti predlagaš je namenjen za pojačanje antenskega signala. \nTudi to ni logično, da boš že tako oslabele signale najprej razcepil, kjer bo prišlo še do nadaljne oslabitve, potem pa ojačal vsako frekvenčno področje posebej. \nČe je jakost signalov na višjem področju slabša, se uporabi tak ojačevalec, ki omogoča večje ojačanje na višjem področju.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe drži  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nKar on predlaga je, da jih razcepiš po frekvencah (v bistvu je to potem kretnica), kjer so izgube minimalne.\nImaš pa na voljo tudi ojačevalnike, ki so namenjeni ravno za take primere, in bi verjetno tudi zadoščal:\nhttp://antene-zupancic.si/trgovina/catalog/product_info.php/cPath/65_84/products_id/757",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Romzi vsaka nadaljna izguba, pa če tudi samo za par dB močno oslabi kvaliteto signala. In zakaj bi to počel, če to ni potrebno. Ta ojačevalec, za katerega si ti dal link ima ravno tako, kot tisti, ki sem ga jaz predlagal možnost, da višje frekvenčno področje bolj pojača kot nižje, samo pri tem tvojem je to možno v območju 10dB, pri   tem  pa v območju 17dB.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Ne gre za par dB, ampak je to reda do 1dB.\nMaš prav glede ojačevalca, sem spregledal  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nJe pa \"tvojga\" treba naročit iz tujine  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nA čva nehat?   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Romzi pravi:\n Ne gre za par dB, ampak je to reda do 1dB.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nReda do 1dB ? Sta oba na istem planetu ? Za enega imam obcutek, da ni ... za koga \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Tole sem videl: http://antene-zupancic.si/trgovina/catalog/product_info.php/cPath/65_85/products_id/366\nNi ravno to kar je bilo zgoraj omenjeno.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nEdit: našel še  tole , je pa že tam-tam.\nSicer ni bila moja ideja, da bi najprej \"cepil\" in potem združeval ker je brezveze, če maš namenske ojačevalnike z nagibom.",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Različna kvaliteta sprejema",
+    "content": "Kako si kaj zadovoljen s tem LCD LED Sharp LC-32LE320E je vreden denarja,dela vredu ,kakšne podrobnosti , težave ? je 100 Hz .  kakšna je slika ,lepa , se kaj zatika pri gledanju kakšnih boljših video .Mislim ga kupiti za nekoga  - DARILO .Ima pa optika T-2 SD iptv",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "ctx": "JavaScript - cookies ne delajo!",
+    "content": "Živjo,\n\nimam en zelo čuden problem... v preteklosti sem si sicer že sam spisal kodo za nastavljanje in retrievanje kukijev, vendar stvar kar naenkrat ne deluje več! Nato sem šel skopirat kodo iz več tutorialov (vsaj petih ali več) in stvar še kar ne deluje - cookie se sploh ne nastavi ob klicu JS funkcije  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Probavam s chrome-om in IE, vendar nikjer se stvar ne spravi v pogon. Tudi če pri kakšnem tutorialu (kjer je s formami prikazano delovanje cookijev) skopiram celoten source na disk v html datoteko, se cookie ne nastavi oz. stvar ne funkcionira.\n\nV æem bi lahko bil problem? \n\nPrilagam eno simpl kodo, pobrano iz nekega tutoriala, vendar stvar pri meni \"ne dela pa da se jebeš  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \"\n\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t&lt;html&gt; \n&lt;head&gt; \n&lt;script type=\"JavaScript\"&gt; \n \nfunction createCookie(name,value,days) {\n    if (days) {\n        var date = new Date();\n        date.setTime(date.getTime()+(days*24*60*60*1000));\n        var expires = \"; expires=\"+date.toGMTString();\n    }\n    else var expires = \"\";\n    document.cookie = name+\"=\"+value+expires+\"; path=/\";\n}\n \nfunction readCookie(name) {\n    var nameEQ = name + \"=\";\n    var ca = document.cookie.split(';');\n    for(var i=0;i &lt;ca.length;i++) {\n        var c = ca[i];\n        while (c.charAt(0)==' ') c = c.substring(1,c.length);\n        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);\n    }\n    return null;\n}\n   \n&lt;/script&gt; \n&lt;/head&gt; \n \n&lt;body&gt; \n \n \n&lt;form&gt; \n&lt;input type=\"button\" value=\"Set a Cookie\" onClick=\"createCookie('testCookie','crunchy', 1)\"&gt; \n&lt;/form&gt; \n \n&lt;form&gt; \n&lt;input type=\"button\" value=\"Get Cookie Value\" onClick=\"this.form.tf.value = readCookie('testCookie')\"&gt; \n&lt;input type=\"text\" name=\"tf\" size=\"30\"&gt; \n&lt;/form&gt; \n \n&lt;/body&gt; \n \n&lt;/html&gt;\n\t\n",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "JavaScript - cookies ne delajo!",
+    "content": "Script tag nimaš pravilno nastavljen type. Pravilno je &lt;script type=\"text/javascript\"&gt; ...&lt;/script&gt;",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "JavaScript - cookies ne delajo!",
+    "content": "Še vedno ne deluje. Ko v formi kliknem \"Set a cookie\", ga ne shrani.\n\n\nEDIT: hmm.. zdaj ko sem pa reč zagnal s serverja, pa dela! Lokalno pa ni delalo, samo kaj ima to sploh veze, saj je JS client-side? Drugače pa hvala doto, me vedno rešuješ ko zajadram v programerske vode  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "matix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "JavaScript - cookies ne delajo!",
+    "content": "Cookiji so vezani na domeno, zato posledično ne delujejo, če imaš odprt html z diska.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  }
+]

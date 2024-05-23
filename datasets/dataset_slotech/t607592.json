@@ -1,0 +1,122 @@
+[
+  {
+    "message": "Meni je bilo receno, da ima ta router VPN moznost ze prek uradnega fw-ja.   TP-Link TL-WR740N 4.x, fw: 3.16.3 Build 130104 Rel.55864n  Samo koliko raziskujem in berem, vedno bolj dvomim.  Trenutno do njega dostopam od dalec.  Ravno berem dd wrt in ocitno za tale router ne obstaja vpn verzija. Mi lahko kako pomagate vzpostaviti vpn z oddaljenim dostopom? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Ja, OpenVPN si postavi. Pa ne na TP-Linku, da nebo pomote. Za par userjev maš 10 let staro kišto za 10eur z bolhe dost. ",
+    "user": "Mesar"
+  },
+  {
+    "message": "Nucam za sebe in kot receno do te linije imam oddaljen dostop.. pa tud kmalu ne morem na lokacijo. ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Od kod ti ideja, da TL-WR740 podpira VPN? Če piše 'VPN Passtrough' to zgolj pomeni, da dovoli VPN povezavo preko njega, da jo ne bo prekinil - ne bo pa sam igral vlogo VPN Endpoint-a oz. Gateway-a. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Kak dd-wrt bi znal imeti vpn server ",
+    "user": "pviran3"
+  },
+  {
+    "message": "http://www.dd-wrt.com/site/support/othe... Pod beta mapo se dobi aktualne verzije.  Imam TP-Link TL-WR741ND v1 (tako piše v ddwrt info) in ima pptp server ki celo preverjeno deluje.   Drugače pa zakaj bi sploh rabil VPN, če imaš samo en računalnik, raje forwardiraj porte. ",
+    "user": "pviran3"
+  },
+  {
+    "message": "Če ima zdaj remote access pa si naflasha nov FW na TP-Linka se bo itak ven zaprl... ker mu bo dalo default settingse, razen če ma kakšno možnost dostopa za katero ne rabi fwdjat porte... ",
+    "user": "Mesar"
+  },
+  {
+    "message": "od zuni ga ne moreš flashat logično. ",
+    "user": "pviran3"
+  },
+  {
+    "message": "V skrajni sili bo treba nekoga poklicat. Nujno pa morm uredit VPN povezavo...  Torej, dd wrt  factory-to-ddwrt.bin ali tl-wr740nv4-webflash.bin   imata dejansko VPN opcijo?   Vem da je WRT54GL imel posebej vpn dd-wrt. Za ta router pa nimam pojma. Lahko kdo potrdi, kako je s tem tocno. ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Gargolye daj raje gor, boljše dela kot dd-wrt, vendar za vpn je mogoče malo švoh zadeva. ",
+    "user": "mzakelj"
+  },
+  {
+    "message": "WR740N nima dovolj flash pommilnika, da bi gor namestil OpenVPN. Ena možnost, ki jo imaš je, da routerju dodaš USB port, druga pa je, da OpenVPN server poganjaš v RAM pomnilniku, vendar se takrat mora server ob ponovnem zagonu vedno znova naložiti.  EDIT: Zgleda, da obstaja verzija OpenWRT za ta router (samo za v4.23 in v4.24 verzijo routerja, preveri kaj imaš), ki ima vgrajen OpenVPN server. Poglej pod Customized OpenWRT firmware: http://webcache.googleusercontent.com/s... ",
+    "user": "n0pin"
+  },
+  {
+    "message": "Tukaj poišči pravo verzijo DD-WRT za svojo verzijo routerja  http://www.dd-wrt.com/dd-wrtv2/down.php...  Meni sicer PPTP VPN dela OK, z OpenVPN pa imam težave, ker povezava sicer dela, vendar ne spusti interneta klientom. Tole vse skupaj na TpLink 1043ND ",
+    "user": "Daniel"
+  },
+  {
+    "message": " pviran3 je 25. apr 2014 ob 23:43 izjavil:http://www.dd-wrt.com/site/support/othe... Pod beta mapo se dobi aktualne verzije.  Imam TP-Link TL-WR741ND v1 (tako piše v ddwrt info) in ima pptp server ki celo preverjeno deluje.   Drugače pa zakaj bi sploh rabil VPN, če imaš samo en računalnik, raje forwardiraj porte.   pviran, a lahko odgovoris na zgornje vprasanje o dd-wrt verziji? Ali pa kdo drug?  Danes se rahlo mudi, sploh ker imam eno osebo, ki lahk gre tja, ampak mu morm povedat korake, kaj mi naj spremeni, da dobim zatem spet oddaljen dostop. A je se vedno za dd-wrt default root, admin in 192.168.1.1 ? Ali so kaj spreminjali? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "http://www.informatione.gmxhome.de/DDWR...  Tukaj sem nasel virtualni dd-wrt, ampak tukaj pise da je VPN verzija.   Ne vem, zakaj imam v spominu, da je bilo to na WRT54GL dosti bolj enostavneje...  Saj potrebujem to samo, da lahk gledajo dolocene osebe kanal slovenije 1. ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Za prvo namestitev uporabi factory to ddwrt verzijo. Če ima ddwrt na tem routerju VPN boš moral probat sam, razen če se javi kdo, ki ima to nameščeno. Z original firmwarem ima sicer 842ND 5 VPN tunelov.  Ko namestiš DDWRT spremeniš geslo, vpišeš podatke za dinamični dns in dovoliš dostop do routerja od zunaj v administrativnem delu. Potem se povežeš na ta naslov in urediš VPN. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Ok, VPN PPTP je mogoc.  Wish me luck :) ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Sreča je odvisna od znanja tistega, ki bo to urejal :-) ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Malo se lovim s temi PPTP nastavitvami.  A te ja vodic okay?  http://blakegardner.co/2009/05/12/pptp-... ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "http://www.dd-wrt.com/wiki/index.php/PP...  Ta gre bolj v detajle. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "V osnovi samo omogočiš server, nastaviš user:pass in pri server ip vpišeš ip, ki ni routerjev, torej npr. Ip routerja+1 pri zadnji številki, pri client ip naslovih pa daš par naslovov, ki niso v DHCP rangu.  Jaz imam omogočen še Broadcast, ker drugače ne vidim računalnikov v oddaljeni mreži. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Client IP? A je to kak racunalnik? Ali so vsi ti IP bolj kot ne teoreticni? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Ne, to so naslovi, ki jih dodeli router VPN klientom,ko se povežejo nanj.  Je uspelo? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Ce je router v najemu od operaterja, so kake komplikacije? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "remote nekaj noce delat... so kake nastavitve potrebne? port forwardirat?  tam je vklopo remote access in nastavo port... ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Okej, koncno postimano... so ble komplikacije...  Ceprav pa me sedaj zanima, zakaj skor na nobeno stran ne poveze preko tega. google in facebook strani ne odpre, poskusil sem tudi rtvslo.si   Je treba kaj nastavlat v brskalnikih? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Imaš od T-2, tam so imeli podobne routerje? Ne bo komplikacij, če ga boš ob vračilu postavil nazaj na tovarniški firmware, kar zna biti spet svojevrstna zabava, ker ne gre kar tako nazaj.   Jaz imam še TCP port 1723 in 1792 in 47 forwardiran na lokalni ip naslov routerja, mislim pa, da bi moralo delati tudi brez tega. Pazi tudi, da ne boš imel na modemu in routerju istega IP naslova. Nič ni treba nastavljati v brskalniku. A do routerja lahko dostopaš preko VPN, strani pa ti ne odpre nobene? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Sem poskusil odpreti /forwardirat en port, pa ko kliknem Dodaj, doda prazno vrstico?!?  Imam backup fw-ja, ce bo treba kaj nazaj nastavlat. Sicer pa bi morali oni tam brez tezav urediti to dosti bolje, ko dobijo router nazaj, ce mene kdo vprasa :)  Bom poskusil. Vspostavim vpn in ko to laufa, odprem routerjevo stran... to mislis, ne? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Ko vpišeš vse podatke za port forrwarding klinkneš \"Save\" in na koncu še \"Apply settings\". Z \"Add(dodaj)\" zgolj dodajaš vrstice kolikor jih rabiš, da urediš vse preusmeritve. Ne pozabi na kljukico pri enable.  Lahko pa, da ti bodo sitnarili, ker opreme nisi vrnil v takem stanju kot si jo dobil.  Da, to mislim. Seveda moraš biti na router povezan \"od zunaj\" da lahko zagotovo preveriš če vse deluje. Jaz to ponavadi rešujem z 3G dostopom preko telefona, da preizkusim ali vse deluje. ",
+    "user": "Daniel"
+  },
+  {
+    "message": " Daniel je 30. apr 2014 ob 09:17 izjavil:Ko vpišeš vse podatke za port forrwarding klinkneš \"Save\" in na koncu še \"Apply settings\". Z \"Add(dodaj)\" zgolj dodajaš vrstice kolikor jih rabiš, da urediš vse preusmeritve. Ne pozabi na kljukico pri enable.   No, saj to bi naredil. Ampak ko vpisem podatke in kliknem ADD, mi doda prazno vrstico. Sele kasneje stisnes, Save in Apply Settings. ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Save lahko stisneš za vsako spremembo, na koncu pa Apply settings. Obstaja tudi remove gumb, če te moti prazna vrstica. Dela ali ne dela? ",
+    "user": "Daniel"
+  }
+]

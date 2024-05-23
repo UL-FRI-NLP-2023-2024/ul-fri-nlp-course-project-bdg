@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Imam standardni Lego Duplo vlak, ki ga poganjajo 4 AA baterije, se pravi 4.8V.  Imam ledico, ki zasveti na 3V. Vlaku bi rad dodal to ledico, da bi svetila, ko bi vlak peljal.  Matematika se verjetno ne izide? Vlak je narejen za 4.5V (3.6V sicer zadostuje, da normalno pelje), pa še diodica, ki rabi 3 V = 7.5 V. Mogoče bi sicer lahko zraven stlačil še 5. baterijo in tako dobil 6V. To bi bilo pogojno zadosti.  Pa ne vem niti, kako vezat diodico... direkt na baterijo vzporedno, ali na obstoječ tokokrog zaporedno? Pa kaj vežem prej, diodo ali vlak?  Hvala za nasvete! ",
+    "user": "chavlji"
+  },
+  {
+    "message": "Sklepam, da imaš običajno LED diodo, torej je 3,3V in 20mA. Ker je izvorovih 4,8V več od njene voltaže, rabiš predupor:  Ubat = 4,8V ULED = 3,3V ILED = 20*10-3A   R = (Ubat - ULED) / ILED R = (4,8V - 3,3V) / 20*10-3A R = 1,5V / 0.02A R = 75Ω  Ker 75Ω upor ne obstaja, vzameš najbližjega večjega - 82Ω. Vse skupaj vežeš vzporedno k motorju; najprej upor na +, potem daljši pin diode na njega in na koncu krajši pin na -.  To bo seveda delovalo samo, če ima igrača čisto enostavno vezavo tipa baterija-stikalo-motor...za kaj bolj kompliciranega bi že potreboval meritve. ",
+    "user": "_Denny_"
+  },
+  {
+    "message": "Ledico moraš skupaj z uporom zvezati na priključke motorja. Torej vzporedno z motorjem. Svetila ti pa bo samo v eno smer vrtenja motorja. Če hočeš, da sveti v obe smeri moraš zvezati 2 diodi vzporedno obrnjeni različno, upor je lahko en.  -----M------\nI          I\n---R---D----\nI          I\nI          I\n+          -\n  M-motor R-upor D-dioda ",
+    "user": "Highlag"
+  },
+  {
+    "message": "Aha točno to sem rabil!  Danny, včeraj sem zvezal po tvojem nasvetu (z 68 ohm uporom... nisem imel drugega). Vse je delalo super, samo potem sem hotel vezat izza stikala. Tega pa nisem znal, ker je stikalo na enem malem vezju.  Highlang, to je to! Dela ko šus. Mali bojo navdušeni, ko se vrnejo iz vrtca :D ",
+    "user": "chavlji"
+  },
+  {
+    "message": "...edin problem, ki ga še imam je, da je ledica precej močna. A se da ledice enostavno zadimat z večjim uporom spredaj? (Guess not..) Se jih da dimmat kako drugače? ",
+    "user": "chavlji"
+  },
+  {
+    "message": "Gre z večjim uporom; poskušaš z različnimi in vzameš tistega, kjer ti svetilnost diode najbolj odgovarja. Najslabše kar se lahko zgodi je, da sploh ne bo svetila, če daš prevelik upor (LED rabi določeno min. voltažo, da sploh prevaja)...da ne boš izgubljal časa s prevelikimi, poskušaj recimo do max. 120 ohmov. ",
+    "user": "_Denny_"
+  },
+  {
+    "message": "Hm. Probal sem zaporedno vezat 68 + 100, pa se ni nič kaj zmanjšala svetilnost. A imam pol kako čudno ledico? Bom probal kasneje s še večjim uporom, pa bomo videli... ",
+    "user": "chavlji"
+  },
+  {
+    "message": "Si ti siguren, da si to pravilno vezal? to je 170 ohmov, ledica nebi smela svetit.. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "Od + kontakta motorja na + ledice, vmes pa 170 ohm. Pol pa iz ledice minus na minus baterijskega sklopa. To je ok? ",
+    "user": "chavlji"
+  },
+  {
+    "message": "Načeloma je to ok. Potem poskusi še z večjim uporom. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "33k ohmov je glih ok. Pri 100k ohmih je svetila že zelo švoh. Ledica je iz enega RC lights kita. ",
+    "user": "chavlji"
+  }
+]

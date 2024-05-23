@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "V roke sem dobil Mustek GP-440 GPS navigacijo.\nZadeva se zažene vendar ko skušam zagnati navigacijo mi napiše da ni programa.\nNa SD kartici je mapa GpsShell in  dve datoteki GpsShell.ini in Shell.ini, v njej sta bljižnici do SDMMC/GpsShell/IGO.exe .\n\nVerjetno se je nekdo igral in ni prav nastavil bljižnic za zagon programa. Zanima me če kdo ve kaj kliče Mustek? Ker o tej zadevi na netu ni skoraj nič. Glede na ruske strani naj bi bil gor WIN CE 5,0.\n\nHvala\n\nSpecifikacije Mustek GP-440 \nOsrednja procesor 372 MHz, AT640 \nZaslon 4,3 '' TFT LCD zaslon na dotik \nFunkcija GPS: hladni zagon: približno 45 sekund, topli začetek: približno 38 sekund Vroči zagon. približno 5 sekund Hitrost posodabljanja: 100 ms \nGPS modul: GPS Napetost: 1575,42 MHz Število kanalov 22 Natančnost in hitrost &lt;10 meter, 0,1 M / y \nVgrajen zemljevid vzhodni Evropi \nBaterija 3.7V 800 mAh Li-ionska baterija \nVhodna moč 12V - 5V / 2A avto polnilec 5V napajalni adapter (ni vključen) \nInterfeyc zaslon na dotik / pisalo, pomnilniška reža za kartice SD / MMC, mini USB, priključek za stereo slušalke \nOS Windows CE.NET5.0 Core Version",
+    "author": "errhec",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "Če naprava nikjer v nastavitvah v osnovnem meniju nima opcije, da preko explorerja pokažeš pot do .exe datoteke same navigacije, potem to načeloma na takih fosilih laufa preko shell.ini ali GpsShell.ini datoteke, kjer je vpisana pot. Torej hipotetično - če si dal na SD kartico iGO8 mapo z iGO8.exe zagonsko datoteko, potem mora biti GpsShell.ini urejen takole:\n\n[Navi0]\nstart=\\SDMMC\\iGO8\\iGO8.exe\nhandle=iGO8.exe\n\noz Shell.ini:\n\\SDMMC\\iGO8\\iGO8.exe\n\nsta pa še tu dva pogojnika in sicer pri teh starih napravah je tudi verjetnost, da ne bere SD HC standarda ali kartic večjih od 2 Gb, zato je najbolje, da najprej poskusiš z kartico, ki je bila v napravi že tovarniško (če še seveda je). Drugi pogoj pa je, da naprava SD vidi kot \"SDMMC\" in ne recimo \"Storage Card\" kot imajo nekatere wince navigacije. Če je ta druga opcija, potem je potrebno seveda poti v ini datotekah ustrezno popraviti. Sicer pa po vsej verjetnosti je kar SDMMC, tako je vsaj pri večini starejših kitajcev.\n\nPazi da bosta datoteki Gpsshell.ini in Shell.ini na rootu kartice in ne v mapi, kot si navedel, da je trenutno. To je zelo pomembno!",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "Malce sem nejasno napisal in se tudi zmotil.\n\nMapa je bila ena in to IGO8, datoteki pa dve v rootu kartice GpsShell.ini in Shell.ini\n\nBilo je kakor si ti napisal, vendar mi javi da ni programa za navigacijo.\n\nZ active sync sem uspešno prišel do sistema in tam ne vidim SDkartice (bi moral videti vsebino SD kartice preko activsynca? ) Kartica je 2Gb in deluje z drugo navigacijo (mygudie 3000) .\n Je pa v enem direktoriju na napravi GpsShell.ini datoteka v kateri je:\n\n;[Navi0]\nstart=\\Windows\\Explorer.exe\nhandle=Explorer\nstop=\nnowait=1\n\n[Navi0]\nstart=\\SDMMC\\MobileNavigator\\MobileNavigator.exe\nhandle=MobileNavigator\nstop=MobileNavigator.exe\nnowait=\n\n[Navi1]\nstart=\\SDMMC\\NaviOne\\NaviOne.exe\nhandle=NaviOne\nstop=NaviOne.exe\nnowait=\n\n[Navi2]\nstart=\\SDMMC\\InfoGation Odyssey Mobile\\Bin\\Odyssey.exe\nhandle=\nstop=Adeona.OdysseyCore\nnowait=1\n\n[Navi3]\nstart=\\SDMMC\\Destinator\\Navi.exe\nhandle=Destinator\nstop=Navi.exe\nnowait=\n\n[Navi4]\nstart=\\SDMMC\\RTNavigation\\RtNavi.exe\nhandle=&#181;&#192;&#181;&#192;Íš\nstop=RtNavi.exe\nnowait=\n\n[Navi5]\nstart=\\SDMMC\\NaviMate\\NaviMate.exe\nhandle=Navicon\nstop=NaviMate.exe\nnowait=1\n\n[Navi6]\nstart=\\ResidentFlash\\Navigation\\Destinator\\Destinator.exe\nhandle=Destinator\nstop=Destinator.exe\nnowait=\n\n[Navi7]\nstart=\\DataStorage\\NaviOne\\NaviOne.exe\nhandle=NaviOne\nstop=NaviOne.exe\nnowait=\n\n[Navi8]\nstart=\\DataStorage\\InfoGation Odyssey Mobile\\Bin\\Odyssey.exe\nhandle=\nstop=Adeona.OdysseyCore\nnowait=1\n\n[Navi9]\nstart=\\DataStorage\\Destinator\\Navi.exe\nhandle=Destinator\nstop=Navi.exe\nnowait=\n\n[Navi10]\nstart=\\DataStorage\\RTNavigation\\RtNavi.exe\nhandle=\nstop=RtNavi.exe\nnowait=1\n\n[Navi11]\nstart=\\DataStorage\\NaviMate\\NaviMate.exe\nhandle=Navicon\nstop=NaviMate.exe\nnowait=1\n\n[Navi12]\nstart=\\ResidentFlash\\MobileNavigator\\MobileNavigator.exe\nhandle=MobileNavigator\nstop=MobileNavigator.exe\nnowait=\n\n[Navi13]\nstart=\\ResidentFlash\\NaviOne\\NaviOne.exe\nhandle=NaviOne\nstop=NaviOne.exe\nnowait=\n\n[Navi14]\nstart=\\ResidentFlash\\InfoGation Odyssey Mobile\\Bin\\Odyssey.exe\nhandle=\nstop=Adeona.OdysseyCore\nnowait=1\n\n[Navi15]\nstart=\\ResidentFlash\\Destinator\\Navi.exe\nhandle=Destinator\nstop=Navi.exe\nnowait=\n\n[Navi16]\nstart=\\ResidentFlash\\RTNavigation\\RtNavi.exe\nhandle=\nstop=RtNavi.exe\nnowait=1\n\n[Navi17]\nstart=\\ResidentFlash\\NaviMate\\NaviMate.exe\nhandle=Navicon\nstop=NaviMate.exe\nnowait=1\n\n[Navi18]\nstart=\\DataStorage\\MobileNavigator\\MobileNavigator.exe\nhandle=MobileNavigator\nstop=MobileNavigator.exe\nnowait=",
+    "author": "errhec",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "Ce je gpsshell ini na napravi tista ki klice navigacijo, potem je jasno kaj hoce videt za zagon. Torej spremeni mapo iGO8 v MobileNavigator in iGO8.exe v MobileNavigator.exe in bi moralo delat. Potemtakem na sd ne potrebujes dodatnih ini datotek, temvec samo mapo MobileNavigator z istoimenskim exe filejem.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "Janch, Hvala za predloge. \n\n\nMi je uspelo namestiti TOTAL COMMANDER na WINCE, žal pa SD kartica ni vidna, spomina pa je na sami zadevi le 64Mb.\nŠe kako sem namestil TTOTAL COMMANDER na zadevo:\n\nNa PCju z XPji sem namestil activesync ter se povezal na napravo, poiskal sem DATA STORAGE in v mapi EBOOK zamenjal EBook.exe z total comanderjem, ki sem ga seveda preimenoval v EBook.exe \nTako sem se samo prepričal da SD kartica ni vidna, kajti ni je bilo tudi v raziskovalcu direktno iz activsynca\n.\nJe pa zanimivo da sem strukturo za to zadevo windows datoteke našel le na Alter linku :\nhttps://www.alter.si/tabla/files/839325-dirWinCE.txt",
+    "author": "errhec",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "hja potem boš moral nekje staknit kakšno staro kartico, druge ni. Jaz sem imel vedno kakšno na zalogi, vendar so mi pošle vse..",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Janch pravi:\n hja potem boš moral nekje staknit kakšno staro kartico, druge ni. Jaz sem imel vedno kakšno na zalogi, vendar so mi pošle vse..\n\t\t\n\t\tKlikni za razširitev\n\t\nkakšne kartice vam manjkajo?",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "2-4 GB SD (brez HC oznake), torej stare nekje 8-10 let \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "MUSTEK GP-440 bljižmica do GPS programa manjka",
+    "content": "Ni problem v kartici, kartic imam več, ki delujejo na starejših navigacijah. Problem je ker ne deluje slot za kartico.\nSama navigacija pa ima le 64Mb spomina.",
+    "author": "errhec",
+    "author_level": "Pripravnik"
+  }
+]

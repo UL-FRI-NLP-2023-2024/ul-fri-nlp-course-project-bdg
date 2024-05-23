@@ -1,0 +1,78 @@
+[
+  {
+    "message": "Torej, ker v kratkem nameravam nabaviti mikrokontroler oziroma arduino sem se odločil, da si bom poleg nabavil še en LCd displeyček za malo igračkanja. Vendar sem se spomnil, da imam nekje še en LCD iz starega ISDN telefona. LCD sem našel vendar pa ni nikjer nobenih informacij o njemu. Zato me zanima, če ima kdo slučajno informacijo kako so razporejeni pini na tej stvari.  Slikca:    ",
+    "user": "roli"
+  },
+  {
+    "message": "A google nič ne najde? Išči GX240IO. ",
+    "user": "Highlag"
+  },
+  {
+    "message": "Ne! Tisto kar si ti napisal je sicer napačna oznaka! PRavilno bi bilo tole : gx2402i0  Drugače pod iskanjem pravilne oznake pa najdem tole (edini zadetek): http://www.telefon-treff.de/showthread....  Iskal sem tudi ETL-328d. To sicer najde kar nekaj zadetkov vendar so večinoma v ruščini ali drugih čudnih jezikih. Ponekod pa se celo govori o LCDju. Samo nikjer informacij o pinih. ",
+    "user": "roli"
+  },
+  {
+    "message": "pri znakovnih lcdjih velja nek standard... tako da poskusi s standardnimi signali za te lcdje... pini so pa več ali manj v enakem vrstnem redu. ",
+    "user": "korenje_ver2"
+  },
+  {
+    "message": "Za Arduina se pri nuelectronics.com dobi dva odlična shielda:    http://www.nuelectronics.com/estore/ind...    http://www.nuelectronics.com/estore/ind...  Pa še cena je zelo ugodna :) ",
+    "user": "KoMar-"
+  },
+  {
+    "message": "Brez datasheeta za LCD tako ali tako ne boš prišel daleč, saj je potrebno ekranček pred izpisom zinicializirati z zaporedjem posebnih ukazov. ",
+    "user": "tempoFlow"
+  },
+  {
+    "message": "A res? Ker kolikor sem gledal sample iz arduinove spletne strani ni potrebno nič kaj posebnega. Za ta LCD pa naj bi bila samo ta koda:   #include <LCD4Bit.h> \n\n//create object to control an LCD.  \n//number of lines in display=2\nLCD4Bit lcd = LCD4Bit(2); \n\n\nvoid setup() { \n  lcd.init();\n}\n\nvoid loop() {  \n  \n  lcd.clear();                      // Clear display\n  lcd.printIn(\"4 bit LCD demo\");    // Dislay text on first line\n}  @marko_stamcar: Zanimivo ter izredno poceni samo kolikor vidim to blokira vse ostale pine - vsaj iz slik je tako videti.   Sicer pa bi prosil, če ima kdo link do kake britanke trgovine kjer bi bilo mogoče nabaviti arduino čimceneje + kak LCDjček ter ostale malenkosti. Sem gledal SKpang electronics kjer bom verjeto nabavil samo, če obstaja kaj cenejšega se priporočam.  Drugače pa en LCD bom sigurno nabavil samo nič ni narobe, če lahko tudi tega usposobim. Še nekaj - a se slučajno, da vezati dva LCDja na en vhod? Torej bi imel dva LCDja z enakim izpisom? ",
+    "user": "roli"
+  },
+  {
+    "message": "Odgovor na tvojo repliko: vmes daš še en \"ProtoShield Kit V1.0 for Arduino, Stackable\" in ni problema. ",
+    "user": "KoMar-"
+  },
+  {
+    "message": "To kodo, ki si jo napisal je verjetno za kakšen standardni LCD zaslonček, ki ga dobiš v vsaki elektro trgovini.  Za kaj bolj specifičnega boš potreboval datasheet ali pa kakšne tutoriale, nasvete itd. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Je ja za standardno zadevico - link je tam v postu skrit.  Sem mislil, da je to bolj standarizirano. ",
+    "user": "roli"
+  },
+  {
+    "message": "Še nekaj - a se slučajno, da vezati dva LCDja na en vhod? Torej bi imel dva LCDja z enakim izpisom?  Načeloma bi lahko vzporedno vezal dva LCD-ja, a morata biti praktično enaka, saj je mora biti enaka inicializacija. Npr za nek LCD je inicializacija sledeča: INIT_LCD:  CLR RS MOV DATA,#38h SETB EN CLR EN LCALL WAIT_LCD CLR RS MOV DATA,#0Eh SETB EN CLR EN LCALL WAIT_LCD CLR RS MOV DATA,#06h SETB EN CLR EN LCALL WAIT_LCD RET  Ne vem, kako pa je s C-jem, ker sem vedno programiral le v asemblerju. ",
+    "user": "tempoFlow"
+  },
+  {
+    "message": "Če imata približno enak pinout, vežeš zadevi vzporedno, nato pa z chipenable-i preklapljaš softwaresko med njima. Po principu vodil pač. Ampak za vzporedne priklope potrebuješ opendrain oz. opencollector pine ter ustrezne pull-upe ali pull-downe.  Ustrezno lahko spišeš tudi različni inicializaciji, saj se glede na CE zavedaš, kateri je trenutno aktiven. ",
+    "user": "20sdfj093f"
+  },
+  {
+    "message": "A si usposobil ta lcd ker jaz imam enakega pa bi ga probal za atmega8. ",
+    "user": "atech"
+  },
+  {
+    "message": "je bil telefon eurit33 ? ",
+    "user": "VolkD"
+  },
+  {
+    "message": "stric google me je pripeljal do te teme medtem, ko sem iskal datasheet za ta lcd. pinout lcdja sicer vem in sem datasheet iskal čisto informativno :)  če bo kdo drug potreboval pinout:  1. gnd 2. vcc 3. kontrast 4. rs 5. rw 6. e 7. d4 8. d5 9. d6 10. d7  vbistvu je priklop isti kot na ostalih hd44780 lcdjih le, da so izpustil d0-d3 in lahko lcd deluje samo v 4bit nacinu. lp ",
+    "user": "VooDooX"
+  },
+  {
+    "message": "Sicer je od kar sem tole temo minilo ze dolgo casa in sem vmes nabavil ze veliko takih in drugacnih lcdjev se pinouta za tegale hudicka nebi branil. Ce se prav spomnim se mi se valja nekje po predalu. ",
+    "user": "roli"
+  },
+  {
+    "message": "Vzemi ga iz predala. Je dober LCD. Ima izjemen kontrast in je res uporaben ne glede na to da nima osvetlitve. ",
+    "user": "VolkD"
+  },
+  {
+    "message": " VolkD je 8. jan 2012 ob 23:20 izjavil:Vzemi ga iz predala. Je dober LCD. Ima izjemen kontrast in je res uporaben ne glede na to da nima osvetlitve.   osvetlitev ima tudi. na pin 11 in 12 pripelješ + in dela :) je pa res,da sem do sedaj zasledil 2 varianti tega lcd-ja in sicer eno z 10 in eno z 12 pini. lp ",
+    "user": "VooDooX"
+  },
+  {
+    "message": "Danes sem ga vzel iz predala in uzposobil. Dela ko urca. Mogoče je blo treba nekaj j*** z lotanjem žic na tist mikroskopski konektor ampak je šlo. Malenkost čudna sta pina za osvetlitev - zakaj je potrebno za osvetlitev oba pina povezat na + mi ni jasno. Ponavadi gre en na GND pa drug na +. ",
+    "user": "roli"
+  }
+]

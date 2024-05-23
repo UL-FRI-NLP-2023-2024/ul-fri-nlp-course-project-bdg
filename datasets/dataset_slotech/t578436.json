@@ -1,0 +1,74 @@
+[
+  {
+    "message": "pozdravljeni, Mi zna mogoče kdo pomagati kako priklopiti ta rele: kupljen je bil na e-bayu: https://www.google.si/search?q=2-Channe...  zanima me kako sploh priklopiti led diodo da mi utripa, sprogramirano je da preklaplja vsake 3 sekunde na ardoinotu, levi pini me zanimajo kako so po vrsti od spodaj zgoraj navzdol, če se omejimo samo za en kanal: najbolj zgornji je normal open, srednji je com, zadnji pa normaly closed? ali je drugi normaly closed pa zadnji com? pa kako dodam diodo not s preduporom da mi bo preklapljalo? ",
+    "user": "cefizl88"
+  },
+  {
+    "message": "Zgornji je normaly open, srednji com in zadnji normaly closed.  Pri led diodi pa recimo 5V das na COM, na normally open pa das diodo, za njo upor ter upor priklopis se na GND. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "klik - tako je narejena vezava releja.  Da pa bi preklapljal LEDico z relejem, pa je nesmiselno. Drugače pa, na COM daš napetost, na NO ali NC upor, za uporom porabnik, ki ga povežeš na GND. NO ali NC izbereš glede na to, kako želiš uporabljati vezje. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Vem da je nesmiselno, ampak treba nekak logiko pogruntat, kasneje mislim gor priklopit 9v motorček pa še en kolega bi rad črpalko s tem krmilo:)  Ja sem gledo tisto vezavo, a mi ni blo jasno če še rabim npn tranzistor ali ne, ko sem malo boljše pogledal sem videl, da je ob robu napisan neki mali q:) hvala vama. imam še samo eno vprašanje. če priključim na 220 V, potem morem oni mali jumper prestavit v eno mesto v levo/ desno? vem da je pisalo na eni izmed 1000 strani ko sem gledal za to, da če se ne gre za usb napajanje treba jumper prestaviti, sedaj pa me zanima če ve kdo kaj o tem:) ",
+    "user": "cefizl88"
+  },
+  {
+    "message": "Načeloma sam rele nima veze s tem, kakšno napajanje pelješ ti čez njega, dokler je znotraj deklariranih mej. Napajati relejnega vezja pa z drugim kot enosmerno napetostjo ne rabiš (koliko V, pa preveri na samem vezju), definitivno pa ne z 220V.  Drugače pa ti že imaš narejeno takšno relejno vezje, kot sem ti ga dal na povezavi, tako da nanj samo priključiš VCC (napajalno napetost - za vezje!), GND in seveda IN (trigger port pač, lahko se mu reče kakorkoli), na katerega direktno priključiš digitalni pin iz arduina. Če boš preklapljal 220V breme, pač na COM sponko priključiš fazo (P), na NC ali NO eno sponko bremena, na drugo sponko bremena pa nulo (nevtralni vodnik, N). Čemu pa so namenjeni tisti pini z jumperji, pa žal ne vem. Poglej v dokumentacijo releja, ali pa dobro preveri, če ne piše morda na spodnji strani ploščice. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "hvala vam:) poskusil sem priklopit diodo na vezje, ter 9v motorček in stvar dela:) trenutno se še morem neke učit, ko pa se bom spravljal na 220V prikljapljat pa bom narisal vezje pa vas še 1x vprašal:) nebi rad kake pizdarije doma naredo:)  Vprašal bi še nekaj, sicer je iz konteksta releja. Delam si doma neko zalivalnico za rože:) (počasi) sedaj imam pač temperaturni senzor pa senzor za vlago, motorček sprogramiran da zaliva vsak dan po deci ob istem času, nabavil sem še neke wifi module, da nekak komunikacijo vzpostavim( to me še čaka) :)... vendar bi rad zalival več rož:) Problem ki se pojavi je, da lahko z enim motorčkom zalivam eno rožo, ali pa več tako, da pač v cev naredim npr 3 luknje, na koncu zamašim, ko se cev napolni z vodo, pol pa bi naj zalivalo npr 3 rože, ko bi curljalo iz vsake luknje posebej. Problem je, da to nebi zalivalo vsake rože isto.  Obstaja kaka pumpica ko ma EN vhod za vodo pa VEČ izhodov? iskal sem, pa nisem nikjer naletel na kaj takega. ali pa kaka druga varianta? ker mislim da bi samo tako zadostil, da bi vsako rožo isto zalivalo.  Hvala ",
+    "user": "cefizl88"
+  },
+  {
+    "message": "Daš na cev razdelilec z 1 na 3 samo seveda najbolj zaliva tisto kjer je najmanj upora na liniji. Moraš imeti vse 3 cevke enako dolge in enako ukrivljene, ali pa najdaljšo z večjim premerom...  Drugače ne verjamem da lahko za spodobno ceno dobiš pumpo s tremi posamičnimi izhodi (1 motorček- 3 pumpe). Lahko bi dal 3 pumpice? ",
+    "user": "first_line"
+  },
+  {
+    "message": "Če bi rad, da vse tri rastline dobijo približno enako vode, lahko uporabiš kapalnike za kapljično namakanje. Obstajajo tudi izvedbe, ki niso tako občutljive na različne tlake. Za večje količine se splača pogledat na ebay. 3 kose, bo verjetno ceneje nabaviti v Sloveniji.   Vzami tiste jih je enostavno razstaviti in očistiti. Kljub temu uporabljaj čisto vodo. Cevke in rezervar za vodo naj bodo neprozorne. Če bodo v vodi začele rasti alge, bodo zamašile šobe. ",
+    "user": "int47"
+  },
+  {
+    "message": "hvala, bom kar 2 rastlini zalival, pa se bom še čemu drugemu posvetil. Ko se bodo res alge nabrale pa bom vrgo vse stran:) ",
+    "user": "cefizl88"
+  },
+  {
+    "message": "no vseeno pa me zanima. Kakšen motorček oz pumpo bi potreboval da bi zalival 8 rož na balkonu? razdalja med vsemi rožami 8 m, rezervoar bi bil na najnižji točki 1,2 m nižji od rastlin. Se da to kak zračunat? ",
+    "user": "cefizl88"
+  },
+  {
+    "message": "Se da zračunat, sam se ne spomnim enačb. Za dimenzije in tlake ki bi tam nastajali, pa mislim da ena katerikoli črpalka za akvarij bi bila v redu (mislim da če pridejo do 5-watov in par litrov/minuta je to dosti) ",
+    "user": "tumare"
+  },
+  {
+    "message": "pri tej piše da dvigne vodo do 180cm, mislim da to bi že bilo: http://www.ebay.com/itm/DC6-12V-Mini-Mi...  ta je malce cenejša pa piše da max od 0,4 do 1,5 m dvigne vodo. http://www.ebay.com/itm/New-DC-3W-5-5V-... ",
+    "user": "cefizl88"
+  },
+  {
+    "message": " cefizl88 je 29. avg 2013 ob 14:19 izjavil:hvala, bom kar 2 rastlini zalival, pa se bom še čemu drugemu posvetil. Ko se bodo res alge nabrale pa bom vrgo vse stran:)   Dodaj še kaj takega, pa bo set and forget stvarca in alg ne bo: http://www.ebay.com/itm/Soil-Humidity-H... ",
+    "user": "tumare"
+  },
+  {
+    "message": " cefizl88 je 30. avg 2013 ob 11:50 izjavil: razdalja med vsemi rožami 8 m, rezervoar bi bil na najnižji točki 1,2 m nižji od rastlin. Se da to kak zračunat?  Rabiš cca 0,1Bar (0,0981) za vsak meter višinske razlike + min potrebni tlak za kapalnike - pršilnike npr. 0,3Bar. Pri daljših ceveh moraš upoštevat še padec tlaka v ceveh.   Podatki za črpalke se podajajo nekako tako: -Pretok je (skoraj) max. pretok, podan pri minimalni tlačni razliki. -Tlak je (skoraj) max. tlak, podan pri minimalnem pretoku.  Rabiš torej min 0,12+0,3 0 => 0,42Bar pri željenem pretoku !!  Ta črpalka bi morala narediti dovolj tlaka. Lahko bo problem pretok, če boš uporabil samo cevi, brez šob / kapalnikov. ",
+    "user": "int47"
+  },
+  {
+    "message": "tumare, tisto je samo neke vrste prevodnost, pikne se v tegl noter, ko so rože in zaznava če vode not med tačkama ali ne:)  int47, sem nabavil ta motorček, mislim da ravno po tvojem priporočilu, samo nisem prepričan da bo dovolj, sem nabavil 3 m cevi pa je stalo 5e, zdaj da bi šel kopovat še cca 10m, da bi pol ugotovil da je motorček preslab, pa potem novo črpalko pa nove cevi pa drugačne debeline kapalnike:) sami dodatni stroški, zato sem prišel na idejo da bi močnejšo črpalko nabavil, da bi vsaj tu bil ziher, pa da nebi rabil še 1x cevi pa nevem česa še kupovat:) me je pa stvar s kapalniki navdušila, da bom dejansko to naredil za zalivanje celega balkona, ne samo 2 rastlin. tu pa bom rabil 8 teh kapalnikov, vse skupaj cca 10 m ali kaki meter več cevi, pa če sem iskren mi ta motorček ne deluje, da bi poganjal vodo čez vse to.  Polek tega, kolikor jaz mislim, večja je črpalka, večji je pretok, manjša je možnost da se šobe zamašijo? kajti če bi stala voda v nekem sodu bi se alge začele delat po nekem času. Sicer za prostor z vodo mislim kar uporabit kako vedro od barve npr... al kaj podobnega, da bo vode vsaj za kaki teden. ",
+    "user": "cefizl88"
+  },
+  {
+    "message": "A se da kje v Sloveniji dobiti tole? http://www.dx.com/p/produino-diy-pc817-... ",
+    "user": "4ever"
+  },
+  {
+    "message": "Imam....Koliko ponujaš? ",
+    "user": "KraitPay"
+  },
+  {
+    "message": " KraitPay je 30. jan 2016 ob 14:58 izjavil:Imam....Koliko ponujaš?  Sedaj še ne potrebujem. Ko bom potreboval pa ti bom napisal zs. ",
+    "user": "4ever"
+  }
+]

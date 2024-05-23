@@ -1,0 +1,62 @@
+[
+  {
+    "message": "Pozdravljeni!  Mene zanima, kako iz posameznih črt, razporejenih po porostoru, narediti 3dpolyline. Sem propal z ukazom pedit, pa mi jih noče združit. Črte se med seboj dotikajo.  Hvala za pomoč, LP ",
+    "user": "gzibret"
+  },
+  {
+    "message": "ravno prevajam AutoCAD Bible 2008, bom malo polistal po knjigi ;) ",
+    "user": "nodrim"
+  },
+  {
+    "message": "ql, bi bil zelo vesel, če bi našel, ker drugače bom moral uporabiti bruteforce (tm) za cca 2000 takih črt. ",
+    "user": "gzibret"
+  },
+  {
+    "message": "samo razloži mi kaj točno rabiš ...  če te prav razumem, imaš v 3D razmetane črte, ki se dotikajo in bi jih rad združil v en predmet, v eno lomljenko (polyline) .. ? ",
+    "user": "nodrim"
+  },
+  {
+    "message": "no, tole mi zgleda za tvoj problem .. bom kr pretipkal iz knjige ...  To edit multiple polylines at one time, follow these steps:  1. Start the PEDIT command. 2. Choose the Multiple option (type m or right-click and choose Multiple from the shortcut menu) at the first prompt. 3. At the Select objects: prompt, select the polylines. 4. You then see the Enter an option [Close/Open/Join/Width/Fit/Spline/Decurve/Ltype gen/Undo] : prompt. 5. Choose the option you want.  You can also join two polylines that aren't touching, if you use the Multiple option first. Select the polylines and then choose the Join option. You then need to specify two suboptions.  Fuzz distance: The maximum distance that the endpoints of the polylines can be from each other. In other words, in order for the join to work, the fuzz distance must be greater than the distance of the endpoints. If you want to join the endpoints regardless, type in a very large number.  Jointype: The method of joining polylines. You can use the Extend method, which extends (or trims) the segments to the nearest endpoints, or the Add method, which adds a straight segment between the two nearest endpoints. You can choose the Both suboption, which tries to extend or trim; if it can't, it adds a segment.  - poskusi, pa poročaj, če je to to ;) ",
+    "user": "nodrim"
+  },
+  {
+    "message": "> če te prav razumem, imaš v 3D razmetane črte, ki se dotikajo in bi jih rad združil v en predmet, v eno lomljenko (polyline) .. ?  Točno to! Združil bi jih rad v 3dpolyline.  Uff, hvala za nasvet, samo pedit komanda ne deluje. Deluje zgolj, če so črte v isti ravnini, pri meni pa ni takšna situacija. ",
+    "user": "gzibret"
+  },
+  {
+    "message": "ah, sorry .. maš res .. sm gledal v 2D .. check back later ... ",
+    "user": "nodrim"
+  },
+  {
+    "message": "V acad se tako ne riše. Vedno vzameš nek kos in ga potem \"obdeluješ\", kot da bi vanj vrtal itd. Uporabljaš funkcije kot so substract, extrude... (presek, unija).  To da bi črtice risal v 3d je prezapleteno in zamudno. ",
+    "user": "-=Tomaz=-"
+  },
+  {
+    "message": "Pozdrav  -=Tomaz=-. To, kar si napisal, velja mogoče za prizmatične kose. So pa področja dela, kjer je potrebno točno to, kar išče gzibret. Tak primer je ti. \"Harness design\" oziroma \"Cabling\", kjer je potrebno definirati pot žice oz. kabla v 3D. Druga takšna zadeva so kosi, ki vsebujejo gradnike, katerih definicija mora slediti prostorski krivulji.  Gzibret, če se ne motim, ACAD loči med 2D polilinijo in 3D polilinijo. Slednjo tvoriš z ukazopm 3DPOLY. Le to lahko nato \"peglaš\" s pomočjo PEDIT.  LP  Jože ",
+    "user": "barbarpapa1"
+  },
+  {
+    "message": "> To da bi črtice risal v 3d je prezapleteno in zamudno.  Ne, rabim 3dpolyline, ker gre za geodetske posnetke in ne za 3d telesa. Sicer sem vso stvar rešil že z bruteforce metodo (ukaz 3dpoly in poklikal vsa stičišča linij), samo me vseeno zanima, za drugič oz. za primer, če bom imel recimo 10.000 črt.  Kot sem že povedal, ukaz pedit NE deluje. Vse daljice bi morale ležati na isti ravnini, pri meni pa ne ležijo v isti ravnini, ampak je ta \"polyline\" pač takšen, kot je (recimo kot rudniški rovi, za lažjo predstavo). ",
+    "user": "gzibret"
+  },
+  {
+    "message": "Pozdrav  Izberi ukaz PEDIT in klikni 3D Polyline, ki si ga prej naredil prej. Sedaj lahko ta 3D polyline spremeniš v spline in podobno....(ne vem če to potrebuješ). Sem poskusil na ACAD Mechanical 2006 in dela. Če me spomin ne vara, je to način dela in ukazi, ki so v ACAD-u vsaj od verzije 12 (v vsakem primeru še iz časov, predno so v ACAD namestili ACIS kernel). Sam sem nekje leta 1995 s \"tvojim\" načinu \"modeliral\" lopatice ventilatorja. V excelu sem izračunal točke profila na plašču valja, izdelal 3Dpolyline in ga s Pedit \"popeglal\" v spline. Iz tako izdelanih robnih krivulj sem nato tvoril robne površine lopatice....  LP  Jože ",
+    "user": "barbarpapa1"
+  },
+  {
+    "message": "Hvala za vaš trud, samo... No, še enkrat:  Jaz ne rabim 3dspline in podobno. Jaz bi rad združil črte (line), ki ležijo v prostoru, krajišča pa se stikajo, v 3dpolyline. Ukaz pedit NE deluje. ",
+    "user": "gzibret"
+  },
+  {
+    "message": "Univerzalne rešitve za tvoj problem znotraj autocada ni.  Imaš pa lisp skripto s funkcijo PEDIT3D, ki jo potrebuješ  tukaj. ",
+    "user": "vuego"
+  },
+  {
+    "message": "Vuego, hvala. Točno to sem iskal.  ",
+    "user": "gzibret"
+  },
+  {
+    "message": "huh, dobro, da včeraj nisem imel več časa iskat po knjigi  ",
+    "user": "nodrim"
+  }
+]

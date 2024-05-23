@@ -1,0 +1,94 @@
+[
+  {
+    "message": "A lahko jaz doma postavim dns strežnik, ki bo deloval za vse, ne samo z lan?  Predvidevam, da ga moram pri ostalih dns-jih prijavit...kako, za koliko? ",
+    "user": "slovencl"
+  },
+  {
+    "message": "Nič ti ni treba prijavljati, zakaj ga pa rabiš? Če želiš za gostovanje svoje domene, ni problema ampak je priporočljivo da imaš še sekundarni strežnik, ki ni pri tebi. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Kako ne, kako pa bo npr. siolov DNS vedel, da mora posredovat povpraševanje na moj strežnik? ",
+    "user": "slovencl"
+  },
+  {
+    "message": "Ker bo vprašal DNS server, ki je authorative za domeno, to pa je zapisano pri registrarju. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Nč jasn, kakšen registrar? ",
+    "user": "slovencl"
+  },
+  {
+    "message": "Firma, pri kateri registriraš domeno, je registrar. ",
+    "user": "Gwanaroth"
+  },
+  {
+    "message": "Najprej povej kakšen DNS hočeš imeti. Takega, ki bo avtoritativen za določeno domeno, takega, ki bo resolval tuje domene ali oboje? Če rabiš samo resolvanje, ne rabiš nobene registracije in nobenega registrarja, če rabiš avtoritativen strežnik za neko (tvojo) domeno, ga moraš pa najprej registrirat pod nekim imenom npr. ns1.tvojadomena.com. ",
+    "user": "DMouse"
+  },
+  {
+    "message": "Če prav razumem, avtoritativen stržnik naredi to, da če imam jaz npr. registrirano domeno www.slovencl.si, si lahko potem sam zmislim eno poddomeno, npr. www.xyz.slovencl.si? To ni slabo, ampak nisem imel tega v mislih. Da bo resolval tuje domene ne rabim...to misliš npr. www.yahoo.com...takih je že dovolj in lahko te uporabim.  Jaz bi rad tak dns, da bi si sam izmislil ime neke domene, npr. www.slo-tech2.com in mi ne bo treba za to nebnmu plačat. Se to da, oz. kaj moram za to naredit? ",
+    "user": "slovencl"
+  },
+  {
+    "message": "Domene moraš plačat _VEDNO_. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Zakaj pa, zakaj pa ne bi drugi meni plačevali? ",
+    "user": "slovencl"
+  },
+  {
+    "message": "Ker si se se prepozno spomnu in so te že prehiteli. ",
+    "user": "matter"
+  },
+  {
+    "message": "Če bi rad da drugi tebi plačujejo, moraš postati registrar.. za kar se pa ti niti približno ne kvalificiraš. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "slovencl -> domeno registriraš pri registrarju in registrarju moraš potem sporočiti naslov primarnega in sekundarnega domenskega strežnika kjer se bo domena gostila.   Če se motim naj me nekdo popravi, ker namreč tudi mene zanima če domeno imam(example.com). In imam tudi dva domenska strežnika  1. XXX.XXX.XXX.XX1 (statični IP)  2. XXX.XXX.XXX.XX2 (statični IP) kako torej nastavim zadeve da lahko ustvarim poddomene... Ali je dosti če vnesem domeno(example.com) v DNS zapise in nato sporočim IPje strežnikov registrarju. Oziroma, če domena ni zaisana na nobenem dns strežniku registraju ne morem sporočiti ns1.example.com in ns2.example.com ker registrarjev strežnik ne bo mogle vedeti kje je ta domena...  Upam, da bo kdo nama s >slovencl< malce razjasnil zadeve. Ker trenutno gostim dns pri ponudniku in je ustvarjanje poddomen in spreminjane zapisov otžen.  Hvala ",
+    "user": "Self-Defence"
+  },
+  {
+    "message": "Registrarju vpišeš dns strežnike, ki so pač kjer so. Vse poizvedbe se potem izvajajo na tistih strežnikih. Če rabiš/hočeš poddomeno jo enostavno vpišeš v dns strežnik.. to je to - registrarja ne zanima kam določena domena kaže samo kje so dns-i, ki to vedo. ",
+    "user": "OmegaBlue"
+  },
+  {
+    "message": "Ja to mi je jasno. Ampak če jaz želim imeti svoj DNS strežnik in želim imeti svojo domeno zapisano v DNSu (npr example.com) kaj morem potem registrarju sporočiti? Ker trenutno na ta dva strežnika, ki naj bi bila domenska strežnika(kjer bi rad imel vpisano domeno) kažeta samo dva različna statična IP naslova in seveda revers le teh. Torej če želim imeti na teh dveh(en primarni, drug sekundarni) strežnikih vpisano mojo domeno(example.com) kaj moram sporočiti oz. vnesti pri registraju? Ali je potrebno zadevo rešiti drugače?  Hvala za pojasnilo.  LP ",
+    "user": "Self-Defence"
+  },
+  {
+    "message": "Ko pri domeni nastavljaš dns1 in dns2, notri ne moreš vpisat kar ip-jev ampak registrirane domenske strežnike ns1.domena.si in ns2.domena.si...  Če pogledaš whois domene domenca.com, boš videl da majo notr vpisane strežnike:  Domain servers in listed order: NS3.DOMENCA.COM  NS1.DOMENCA.COM  NS2.DOMENCA.COM  Ko recimo v browser vpišeš www.domenca.com, bo tvoj dns pogledal v root serverje vpis za to domeno in dobi ven te tri strežnike... ampak če strežniki niso registrirani, tvoj dns nima variante, da dobi ven ip od www.domenca.com, ker niti ne ve katere ip-je predstavljajo ns1 in ns2... registracija poveže ns1.domenca.com z ip-jem dns strežnika, oboje se pa vpiše v ROOT strežnike.  Če narediš trace, vidiš da za ns1 dobiš ip že od gtld strežnika:  ns1.domenca.com. 172800 IN A 213.250.2.45 domenca.com. 172800 IN NS ns1.domenca.com. domenca.com. 172800 IN NS ns2.domenca.com. domenca.com. 172800 IN NS ns3.domenca.com. ;; Received 147 bytes from 192.48.79.30#53(J.GTLD-SERVERS.NET) in 312 ms  ... medtem ko za www dobiš ip šele od ns1:  domenca.com. 172800 IN NS ns1.domenca.com. domenca.com. 172800 IN NS ns2.domenca.com. domenca.com. 172800 IN NS ns3.domenca.com. ;; Received 135 bytes from 192.12.94.30#53(E.GTLD-SERVERS.NET) in 203 ms  www.domenca.com. 3600 IN A 213.250.2.80 domenca.com. 3600 IN NS ns2.domenca.com. domenca.com. 3600 IN NS ns3.domenca.com. domenca.com. 3600 IN NS ns1.domenca.com. ;; Received 151 bytes from 213.250.2.45#53(ns1.domenca.com) in 15 ms   Registracije domenskih strežnikov ne ponujajo vsi registrarji. Jest to delam preko Domence, kjer zadevo lahko nastaviš preko vmesnika na nastavitve.domenca.com. ",
+    "user": "DMouse"
+  },
+  {
+    "message": "Torej če jaz prav razumem moram nastaviti takole. V svoj primarni dns strežnik vpišem root domeno mojadomena.com in nastavim na kater naslov naj kaže nastavim tudi zapisn npr. ns1.mojadomena.com ki kaže na IP kjer teče moj prvi DNS strežnik in ns2.mojadomena.com na IP kjer teče moj drugi DNS strežnik. Enako naredim na drugem strežniku oz. uredim da se zapis prenese avtomatsko kakorkoli že. Grem na stran svojega registrarja(tudi v mojem primeru je to domenca) in pod primarni dns vpišem ns1.mojadomena.com in pod sekundarni dns vpišem ns2.mojadomena.com. Počakam 2-3 dni da se DNS zapisi osvežijo in če še na svojih strežnikih nastavim razne zapisen za www, ftp, mail, MX, ipd.. bo potem ko vpišem v nek browser www.mojadomena.com ali mojadomena,com se povezalo s strežnikom, ki je nastavljen v dns zapisu na mojem dns strežniku(ns1.mojadomena.com in ns2.mojadomena.com)?  Sem prav razumel?   Ker ni mi jasno to, če jaz v svoj DNS strežnik(teče pri meni) zapišem ns1.mojadomena.com ki kaže na IP na katerem sem nastavil ta zapis, kako hudiča bo potem rigistrarjev strežnik našel ns1.mojadomena.com oz. IP na katerem je ta dns zapis... Mislim iz zgornjih postov še vedno nisem na čistem kako to poteka...  Res hvala za pomoč in potrpežljivost. ",
+    "user": "Self-Defence"
+  },
+  {
+    "message": "DNS deluje hierahicno. Ko recimo resolvas \"www.slo-tech.com.\" to poteka takole (nekako od desne proti levi oz. od bolj splosnega do manj splosnega): ti najprej vprasas tvoj default nameserver - recimo da ta se ne pozna odgovora in zato zacne (rekurzivno) sprasevati naprej: Najprej vprasa streznike, ki so odgovorni za \".\": bash-2.05b$ host -t NS . . name server A.ROOT-SERVERS.NET. . name server B.ROOT-SERVERS.NET. . name server C.ROOT-SERVERS.NET. itd. To so tako imenovani root serverji (imena teh so standardna in \"hard coded\" skupaj z njihovimi IP-ji na vsakem DNS strezniku v datoteki root.hints) Pri tem je treba omeniti, da poleg teh standardnih, ki jih upravlja ICANN obstajajo se alternativni  Open Root Server Network. Nas privzeti DNS server sedaj recimo vprasa B.ROOT-SERVERS.NET. kateri streznik je odgovoren za  COM. in dobi odgovor: com name server m.gtld-servers.net. com name server a.gtld-servers.net. com name server b.gtld-servers.net.  Sedaj za \"slo-tech.com\" vprasa m.gtld-servers.net, ki mu odgovori, da je za \"slo-tech.com\" zone odgovoren \"ns.moj.net\", na koncu pa se ns.moj.net vrne IP, ki se skriva za www.slo-tech.com.  Ti vedno lahko na svojem DNS strezniku dodas DNS zone \"local\" - tako da potem poimenujes racunalnike pc1.local. itd. ampak to je seveda vidno samo za ljudi, ki uporabljajo ta tvoj DNS streznik. Pri vseh ostalih, bo odgovor z \"root serverjev\", da \"local\" sploh ne obstaja. Na isti nacin lahko vracas tudi \"fake\" odgovore za dolocene resnicne domene, ampak to ni ravno priporocljivo.  Registrarji skrbijo za bazo o domenah (ki vsebujejo recimo kdo je administrativni, kdo tehnicni kontakt) in tudi, da se zapis o tem, da je tvoj DNS streznik avtoritativen za domeno, ki si jo kupil prenese na streznik \"ki ga bodo ljudje vedno vprasali\". Lahko imas recimo cisto vredu skonfiguriran streznik za mojadomena.net, ampak ce na strezniku, ki je odgovoren za net tld, ne pise, da za mojadomena.net je pa treba vprasati ns.mojadomena.net, potem za ostale ljudi mojadomena.net ne bo \"delala\". Pac zaradi administrativnih stroskov, ki pri vsem tem nastanejo, je potrebno placevati (ceprav je res, da se je sedaj iz domen razvil kar velik biznis). Dejansko bi lahko rekli, da sploh ne kupis domene, ampak samo to, da je ta domena tudi za vse \"vidna\".  Tukaj se kot je povedal Self-Defence, skriva se en problem: streznik odgovoren za net. ve da je za mojadomena.net. odgovoren ns.mojadomena.net. - ampak ns.mojadomena.net pa ne more resolvati, saj je za to odgovoren ns.mojadomena.net. Ponavadi je zato na DNS strezniku za net. poleg NS recorda, ki kaze na ns.mojadomena.net se A record v stilu ns.mojadomena.net IN A 192.168.0.1 - tako da sploh ni treba sprasevati ns.mojadomena.net o ns.mojadomena.net. Ta zadeva se ponavadi nastavlja preko webinterfaca od registrarja (ki potem na kakrsnkoli ze nacin poskrbi da se te spremembe po dolocenem casu poznajo tudi na strezniku odgvornem za dolocen TLD). ",
+    "user": "fiction"
+  },
+  {
+    "message": "Če ti niti približno ni jasn kaj počne DNS potem se nikar ne spuščaj v to. Nevem zakaj bi nekdo mel doma svoj lasten dns server... raje uporabi mašino za kaj bol koristnega. lp ",
+    "user": "AntiFriz"
+  },
+  {
+    "message": "Mogoče zato da se nauči? ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "Če ti niti približno ni jasn kaj počne DNS potem se nikar ne spuščaj v to. Si predstavlaš kaj bi bilo, če bi vsi tako mislili...še danes bi bili v kameni dobi... ",
+    "user": "slovencl"
+  },
+  {
+    "message": "to je res :) ",
+    "user": "AntiFriz"
+  },
+  {
+    "message": "fiction> Ponavadi je zato na DNS strezniku za net. poleg NS recorda, ki kaze na ns.mojadomena.net se A record v stilu ns.mojadomena.net IN A 192.168.0.1 - tako da sploh ni treba sprasevati ns.mojadomena.net o ns.mojadomena.net.  Temu se reče \"glue\" zapis.  Mimogrede, vedno obstaja samo en primarni strežnik, ki je napisam v SOA zapisu (pravzaprav je to prvi element SOA zapisa).  Vsi ostali so sekundarni in jih je načeloma lahko poljubno mnogo. ",
+    "user": "jype"
+  }
+]

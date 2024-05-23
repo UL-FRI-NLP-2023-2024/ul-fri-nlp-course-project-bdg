@@ -1,0 +1,86 @@
+[
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Rabim pomoč.\n\nPoskušam v excelu izračuniati komplet amortizacijski načrt za kredit. \nNašel sem tale file, kjer mi je povsem jasen, samo izračun EOM me bega:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nTorej imam glavnico: 100.000€\nprvi obrok (za poplačilo): 100k€/120 = 833€\nobresti so: 100k€*0,0371/12 = 309€\nanuiteta pa je: obrok+obresti= 1142€\ndrugi mesec je manjša anuiteta, ker se je glavnica zmanjšala itd...\nNo v tukaj mi ni jasno kako izračunati EOM. \nIn ne vem kako hitro izračunati seštevek obresti za celotno obdobje da bi hitro prišel do zneska: glavnica + obresti (v tem primeru 118.707€)\n\n\n\nNo potem imam pa še en izračun od volksbank, ki mi je še manj jasen, saj je anuiteta ves čas enaka. Spreminja se samo znesek za poplačilo kredita in seveda obresti:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \nIma kdo idejo kako se da tukaj iz podanih podatkov priti do anuitete in do dejanske vsoto ki jo v 10letih plačaš banki?\n\nHVALA! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "anuiteta pri volksbank je skozi celotno obdobje ista, \n\npac pr vsakem kreditu na zacetku placas vec obresti, ki se nato zmanjsujejo, ker se zmanjsuje tudi tvoj dolg in pr enaki anuiteti odlplacas vec dolga",
+    "author": "Minister",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Ja to razumem, samo kako jo na hitro izračunati iz danih podatkov? \nA je treba po prvi metodi izračunati vse obroke, jih sešteti in deliti s številom obrokov ali obstaja hitrejši/boljši način?",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Mogoče sem kaj spregledal, ampak anuiteto imaš napisano in je 988,77 EUR. Skupaj bi torej plačal 120x988,77EUR kredita.",
+    "author": "geronimo",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "EOM (Efektivna obrstna mera) ali EAR (Effective Annual Rate) \nAPR (Annual Percentage Rate) \nm = število obdobij v letu (12 mesecev.. 12 obdobij)\n\nEAR = (1 + APR / m )^m -1 \nEAR = (1 + 0,0371 / 12)^12 - 1 \nEAR = 3,77% (tam pa je napisano 3,86%  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )\n\nTo velja v primeru, da se APR obračunava enkrat letno, v primeru večje frekvence pripisa obresti je primerjava med obrestnimi merami težja.",
+    "author": "Infernus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik geronimo pravi:\n Mogoče sem kaj spregledal, ampak anuiteto imaš napisano in je 988,77 EUR. Skupaj bi torej plačal 120x988,77EUR kredita.\n\t\t\n\t\tKlikni za razširitev\n\t\nJa prebrati ni problem, sam jaz bi rad iz zgornjih podatkov (OSNOVNI POGOJI KREDITA) to izračunal. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Evo ti za Volksbank izračun, ker imam lih malo časa... Mislim, da je izračun pravilen.\nAja, obdobni obrok je računan letno, ker je manj za računat in pa podana je letna obrestna mera. \nKer ni računano po mesecih je na koncu \"ostanek\" pri glavnici, namesto 0. Zanemarljivo odstopanje pri cifri za plačane obresti. \n\n \n\t\n\n",
+    "author": "Infernus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "To je ql. Ampak ugibam da ti si anuiteto prebral iz izračuna in jo pomnožil s 12.\nKako bi pa prišel do letne ali mesečne anuitete, če imaš samo tele podatke:\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Ker mene najbolj zanima to, kako iz zneska kredita, št. obrokov in skupne letne obrestne mere izračunati fiksno mesečno anuiteto. V zgornjem primeru 998,77€.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik futuristic pravi:\n To je ql. Ampak ugibam da ti si anuiteto prebral iz izračuna in jo pomnožil s 12.\nKako bi pa prišel do letne ali mesečne anuitete, če imaš samo tele podatke:\n\t\t\n\t\tKlikni za razširitev\n\t\n\nImaš prav, anuiteto sem prebral iz računa in jo množil z 12.\n\n\nKako dobiš letno ali mesečno anuiteto? Pa poglejva.. \n\nPMT (enakomerni obdobni čisti denarni tok)\ni (obrestna mera)\nn (število obdobij)\nPV (Present Value ; sedanja vrednost)\n\nPMT = PV * ( i / 1-(1+i)^-n)\nPMT = 100 000 * (0,03711 / 1-(1+0,03711)^-10)\nPMT =  12152,47 / leto = 1012,70€ / mesečno",
+    "author": "Infernus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Načeloma obstajata dva načina odplačevanja.\nObročni - plačuješ enak znesek glavnice in različno obresti. Izračun relativno preprost. Glavnico deliš z številom obrokov in potem od preostanka vedno računaš obresti. Vsakič plačaš vse obresti, zato je znesek odplačil različen (se manjša) čez obdobje. Temu načeloma ne rečemo anuitetni način nikoli.\nAnuitetni - plačuješ (teoretično, ob nespremenjenih pogojih vedno enak celotni znesek). In ime pove, da je včasih veljalo letno odplačilo. V excelu lahko računaš takole: http://www.wikihow.com/Create-a-Mortgage-Calculator-With-Microsoft-Excel\nEOM - najlaže izračunaš v Excelu z uporabo funkcije IRR ali XIRR. Upoštevati pa moraš tudi stroške, ki jih imaš z najemom kredita.\n\nŠe opombe.\n1. nespremenjeni pogoji so hudič. Leto in meseci imajo različno število dni. (vendar je ponavado 30/360, ni pa nujno!)\n2. ponavadi je obrestna mera sestavljena.\n\nŠe ena pomoč morda. Bussines function - free addon za excel. Med drugim podpira tudi mortgage izračune, kar to pravzaprav je.\nhttp://www.businessfunctions.com/download.php",
+    "author": "ferdo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik ferdo pravi:\n Načeloma obstajata dva načina odplačevanja.\nObročni - plačuješ enak znesek glavnice in različno obresti. Izračun relativno preprost. Glavnico deliš z številom obrokov in potem od preostanka vedno računaš obresti. Vsakič plačaš vse obresti, zato je znesek odplačil različen (se manjša) čez obdobje. Temu načeloma ne rečemo anuitetni način nikoli.\nAnuitetni - plačuješ (teoretično, ob nespremenjenih pogojih vedno enak celotni znesek). In ime pove, da je včasih veljalo letno odplačilo. V excelu lahko računaš takole: http://www.wikihow.com/Create-a-Mortgage-Calculator-With-Microsoft-Excel\nEOM - najlaže izračunaš v Excelu z uporabo funkcije IRR ali XIRR.  Upoštevati pa moraš tudi stroške, ki jih imaš z najemom kredita.\n \nŠe opombe.\n1. nespremenjeni pogoji so hudič. Leto in meseci imajo različno število dni. (vendar je ponavado 30/360, ni pa nujno!)\n2. ponavadi je obrestna mera sestavljena.\n\nŠe ena pomoč morda. Bussines function - free addon za excel. Med drugim podpira tudi mortgage izračune, kar to pravzaprav je.\nhttp://www.businessfunctions.com/download.php\n\t\t\n\t\tKlikni za razširitev\n\t\nTočno to. Pri EOM je potrebno upoštevati vse stroške (stroški odobritve, če je notar ali pa cenilec nepremičnine, itd....)",
+    "author": "Rikolus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Najlepša hvala vsem, mi je veliko bolj jasno vse skupaj. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Izračun amortizacijskega načrta za kredit",
+    "content": "Če se še nisi preveč matral te pridne točno takole, seveda ob predpostavki da je euribor 10let enak (kar nikakor ne more niti) tako da se anuiteta spreminja, ali četrtletno,polletno ali letno, odvisno od banke in tega kar ti piše v pogodbi.\nZa 100t eur plačaš skupno po navedeni obrestni meri 20.213,12 EUR obresti + glavnica 100t eur.\nlp",
+    "author": "feler",
+    "author_level": "Fizikalc"
+  }
+]

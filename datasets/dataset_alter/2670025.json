@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Pred kakimi dvemi tedni smo imeli obsežen izpad v celem naselju (Telemach pond optika Al kako že). \n\nImam telemachov modem, ki vodi do mojega routerja na katerem so vse naprave. \n\nOd takrat naprej vsak dan na cca 24ur izgubimo povezavo. Pomaga le če resetiram modem in router. \n\nPrijavil napako na Telemach, po enem tednu so mi poslali SMS da je napaka odpravljena. Povezavo se vedno prekinja. \n\nKaj mislite da je problem? Kako bi ugotovil? Jezi me, ker imam klimo in smart home na wifi vezan in potem nič ne dela, me ni doma. Hvala.",
+    "author": "ynos",
+    "author_level": "Vremenko"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Živjo, jaz bi za začetek pingal router s PCja, nato modem, nato server. Da vidiš na kateri stopnji se takrat ko guzne, pojavi napaka.\nPotem je iskanje težave lažje.\n\nPa morda bi bilo vredno že na routerju pogledati koliko časa je online in koliko časa je njegova povezava z modemom  online. Seveda če ti prikazuje",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Ok kul, hvala! A so kakšna kratka navodila kako kaj pingniti?  Pogledam se za router log.",
+    "author": "ynos",
+    "author_level": "Vremenko"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Nekoč se je to dogajalo, ko so bile težave z DHCP strežnikom.",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Živjo, vpiši:\nping 192.168.1.1 -t\n\n192.168.1.1 zamenjaj s številko tvojega routerja, nato čakaj dokler se ne pojavi problem.\nČe ob problemu router normalno naprej pinga, dobi \"respone\", pa tudi če gledaš za nazaj vse do malo pred dolgodkom, potem je povezava roter-PC oz router-naprave OK\n\nNato 192.168.1.1 zamenjaj s cifro modema. Spet počakaš dogodek. Če ping OK, je tudi povezava modem-router OK. \nPingaš na isti način še telemach server, recimo da namesto 192.168.1.1 vpišeš telemach.net in če se tam pojavi napaka pinga pri dogodku, je ali modem ali nekaj na liniji ali pa port na centrali. Takrat veš da se moraš obrniti na njih",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "telemach.net host ne obstaja, tako da se da\n\nping 213.143.65.11 -t",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "A ni bolj enostaven trace?\n\ntracert google.com\n\nin točno vidiš, kje se zadeva ustavi",
+    "author": "prjatu",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Q\n\n\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik erikson je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\ttelemach.net host ne obstaja, tako da se da\n\nping 213.143.65.11 -t\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPing routerja dela. Ping ipv4 dela, ping te zadeve zgoraj ne dela. \n\nTracert Google.com pravi, unable to resolve target system name. Google.com\n\nKaj je torej problem?",
+    "author": "ynos",
+    "author_level": "Vremenko"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "dns",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "In kaj naredim?",
+    "author": "ynos",
+    "author_level": "Vremenko"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Pingati bi moral dologo dolgo, recimo čez noč in po potrebi še cel dan, DOKLER se povezava ne izgubi.  ŠELE takrat preveriš, kaj je bilo s Pingom. \nTracert ne vem če dela lahko unlimited time. \n\nDNS pa preveri v modemu katere je privzel oz. je nastavil.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ynos je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tQ\n\n\nPing routerja dela. Ping ipv4 dela, ping te zadeve zgoraj ne dela.\n\nTracert Google.com pravi, unable to resolve target system name. Google.com\n\nKaj je torej problem?\n\t\t\n\t\tKlikni za razširitev\n\t\nMeni je tudi za Google.com to napisal. Ponavadi winzi napišejo vzrok \"dns server se ne odziva\" \nModem je bil Calix Giga center. Napačni softver so naložili pri (nepotrebni) posodobitvi in so ga zaflešali. Po tej posodobitvi so bile stalne težave. Kako so kaj posodabljali, je modem šteknil. V večini lažjih primerov je pomagal restart. Ko to več ne,  sem imel zadosti in zahteval serviserja. \nMojster je ugotovil, da se modem s težavo povezuje in ga je zamenjal. \nMontiral je Calix giga hub in zaenkrat dela brez težav in restartov. Ja, pa optika je GPON. \nYinos, napiši kateri modem imaš? Ostali v ulici imajo podobno težavo z enakim modemom.? V nastavitve modema se lahko prijaviš prek PC-ja.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Težave z routerjem, modemom ali povezavo?",
+    "content": "Poglej če ima modem tole:\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tKakšni so podatki Telemachovih strežnikov DNS?\n           \n                \nPrimarni strežnik DNS:\n ns1.clients.telemach.net\n 217.72.64.222\n\n Sekundarni strežnik DNS:\n ns2.clients.telemach.net\n 31.15.131.11\n\t\t\n\t\tKlikni za razširitev\n\t\nVir:\nhttps://telemach.si/a16790/Pomoc/St...i-so-podatki-Telemachovih-streznikov-DNS.html\n\nPa če kljub temu ne dela OK, lahko preveriš še z google DNS:\n8.8.8.8\n8.8.4.4\n\ntracert google.com pa vsekakor mora delati. Nujno moraš priti do te faze. Tudi sam sem pri enem kolegu s Telemach internetom zasledil, da ni delalo, a se nisem obremenjeval, niti on. Testiral sem slučajno in mislil, da je tudi napaka slučajna. Prosim javi kako boš rešil, mislim da bo tudi za mojega kolega koristna informacija, pa kot kaže še za kakega forumaša. \nTudi tole bi moralo delat iping 213.143.65.11 -t . Pa lepo bi bilo če bi še kaj Telemach uporabnik potrdil delovanje",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  }
+]

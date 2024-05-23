@@ -1,0 +1,42 @@
+[
+  {
+    "message": "LP  Delam anketo, ki jo lahko registritan uporabnik izpolni samo enkrat. Kako naredim, da lahko anketo izpolni samo uporabnik (iz mambo baze) in to samo enkrat!  Mislil sem, da bi na mambo stran, dostopno samo registriranim dal URL do ankete, katere submit, bi vnesel podatke samo enkrat. Na netu sem bral kako se to teoretično naredi (z uporabo GET namesto POST), praktično pa mi z googlanjem ni uspelo najti rešitve!  Če ima kdo kašno idejo, ve za kašn kos kode, al pa samo za dober vir informacij na spletu, se piporočam!!!  Hvala ",
+    "user": "Container"
+  },
+  {
+    "message": "Če lahko volijo le uporabniki imaš tako in tako njihov id, zraven moraš imeti še eno tabelco, v katero boš zapisoval id-je anket in id-je uporabnikov...   vsakič ko nek uporabnik hoče glasovat najprej pogledaš v tabelco če obstaja par (id ankete in id uporabnika). v primeru, da obstaja samo prikažeš rezultate... ",
+    "user": "dolegar"
+  },
+  {
+    "message": "huda fora!  zdej pa rabim samo še kodo...  Lahko jo sam napišem - kar bo trajalo, al pa mi kdo kašn zanimiv \"source\" pove.    hvala! ",
+    "user": "Container"
+  },
+  {
+    "message": "emm, samo, kako pa vem kakšen je id od uporabnika? ",
+    "user": "Container"
+  },
+  {
+    "message": "Saj imaš username uporabnika? ;) ",
+    "user": "veteran"
+  },
+  {
+    "message": "imaš tako in tako njihov id imaš username uporabnika?  Že, to je oboje v bazi. Mogoče sem pozabu povedat, da gre za Mambo CMS sistem.  Torej uporabniki se logirajo v sistem in kaj potem? Če dam URL nekam na Mambo stran ki je dostopna samo uporabnikom, ga lahko še vedno aktivira nekdo izven sistema! (je to res?)   Zdej torej rebim košček kode, ki mi bo generiral id ankete in jo skupaj z id-jem uporabnika (kjerkoli ga že bom dobil) vstavi v novo tabelo sql. Sam nism sposobn tega napisat, gotovo pa taka stavvr že obstaja - če ve kdo kje jo najdem???   hvala ",
+    "user": "Container"
+  },
+  {
+    "message": "to je lamerska stvar...  če imaš eno anketo, ne rabiš nove tabele. enostavno dodaš nov stolpec v tabelo uporabnikov (mos_user) in ga daš po defaultu na 0. ko je registriran uporabnik izpolnil anketo, enostavno prebereš njegov id iz sessiona in updejtaš njegove podatke (0 spremeniš v 1). seveda moraš ob zagonu ankete preveriti, če uporabnik slučajno nima vpisane enke - v tem primeru mu ne dovoliš izpolnjevati anketo, v nasprotnem ja. ",
+    "user": "Zzzzzzz"
+  },
+  {
+    "message": "Kaj pa ce mas miljon anket? ",
+    "user": "Sergio"
+  },
+  {
+    "message": "Citiram: \"Delam anketo, ...\"  ce pa imas milijon anket pac uporabis se eno tabelo. ampak glede na to, da je bilo napisano, da rabi ya anketO... ",
+    "user": "Zzzzzzz"
+  },
+  {
+    "message": "hehe, zihr nimaš miljon anket na enkrat, kvečjemu se menjajo. ko se anketa zamenja, se pač da usem userjem tist atribut na 0, pa spet jovo na novo ;) ",
+    "user": "KrCbelca"
+  }
+]

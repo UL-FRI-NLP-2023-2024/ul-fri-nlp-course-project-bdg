@@ -1,0 +1,206 @@
+[
+  {
+    "message": "Poslušam kako se narod hvali da svoje wolfiče bp navijejo na 4 Ghz pri tem pa ima na zraku še vedno dostojno temperaturo. No sam sem si kupil nekaj komponent, v želji da bi jih med drugim tudi navil, ampak enostavno ne pridem čez 3,6 Ghz (in takrat je temperatura okol 47, obremenjen do 68 stopinj). Je pa res da sem še začetnik.  Skratka zanima ma, kaj naj še nardim da zadevo spravim še kak Mhz višje. Poleg tega me zanima, kakšne temperature so še sprejemljive, da mu po nepotrebnem ne krajšam življenske dobe? Imam pa CPU Intel E8400, ASUS Maximus Formula (skrbi me malo temperatura NB, ki je okol 60-70 stopinj, ko je obremenjen na ful), 2x2GB Crucial Red tracer DDR2, (8800GTS G92), in hladilnik od Noctue z 92mm ventilatorjem. No čim pridem čez 3,7 mi ORTHOS vrne tole napako:        Z drugimi programi pa ne testiram. Nastavil sem FSB, in rame na tovarniških 4-4-4-12, vse ostalo sem obdržal na auto - zaenkrat, razen če imate kakšen nasvet za kako specifično vrednost? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Koliko imaš voltažo cpu, fsb terminal voltage, ramov, nb? ",
+    "user": "Veron"
+  },
+  {
+    "message": "Sej pravim da imam nastavljeno na auto. Sem gledal kolikšna je poraba CPU-ja z CPU-Z, in je bla okol 1,28V. Nisem pa tega nič spreminjal, ker nisem dobil nobenih konkretnih vrednosti, sam pa nisem želel da nebi bla kaka lukna v plati =) ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Postopoma zvišuj voltažo CPU, Nb ter VDIMM. ",
+    "user": "Shark-357"
+  },
+  {
+    "message": "Koliko pa je nekje zgornja zdrava meja za CPU, NB in VDIMM voltaža? Ali se lahko žene PC recimo na 4GHz navit za 24/7? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Poglej, nima veze če imajo rami tovarniško 4-4-4-12, meja pri teh timingih je okol 410MHz, praviš da ti ne gre čez 3700MHz, 3700/9=411, tko da ti zarad tega ne gre višje. Timingi 5-5-5-15, to je mislim da glavna stvar katero moraš pazit, z auto voltažami sem jest prišel komot do 9x480=4320, samo na CPU-ju sem jo ročno nastavil, in sicer 1.55V kar je seveda preveč, samo za kakšen kratek bench.  Drgač pa lahko probaš tut ročno nastavit, meni rab plata za 445 FSB: NB 1.39V, SB 1.20V, FSB 1.20V, Clock overcharging 0.70V  467FSB: NB 1.41V, SB 1.20V, FSB 1.20V, Clock 0.70V  480FSB: NB 1.43V, SB 1.20V, FSB 1.24V, Clock 0.70V ",
+    "user": "GrimReaper"
+  },
+  {
+    "message": "Odvisno od temperature... za cpu 1.4-1.45V bo že kar dosti, NB 1.5-1.6V za ram je pa privzeta voltaža 2.2V (probaj tudi malo bolj ohlapne timinge 5-5-5-15, morda te pomnilnik drži nazaj). ",
+    "user": "Shark-357"
+  },
+  {
+    "message": "Probal nekaj kombinacij, pri vseh mi po 3 sekundah orthos vrže napako. Ko sem vse nastavil na auto (tut rame), samo FSB sem nastavil na 420, se pravi 3,78Ghz, mi orthos zaenkrat laufa lepo. ",
+    "user": "Glodko"
+  },
+  {
+    "message": "3,87 Ghz že pol ure brez napake. Kaj pravte so avtomatske nastavitve kul? Čim grem kej spremenit vrne pa napako. =( ",
+    "user": "Glodko"
+  },
+  {
+    "message": "malo poglej kakšne so kaj voltaže ",
+    "user": "dejansan"
+  },
+  {
+    "message": "Preveri nastavitve pomnilnika z memset ali podobnim programom, kateri ti prikaže vse nastavitve pomnilnika. ",
+    "user": "Shark-357"
+  },
+  {
+    "message": "Na 3,87 mi je po pol ure izstavil napako =(, na 3,78 mi laufa lepo že uro in pol (vmes sem imal sicer nek problem-vista je javla da je superfetch nehal delat, pa ne vem če je to povezan z navitjem??). Ram imam 5-5-5-18 in frekvenco 420 Mhz, se pravi 840 Mhz!? Cpu kot že rečeno 3780 Mhz, bus speed 420 in FSB 1680 Mhz (kaj dejansko pomeni ta FSB?), voltaža 1,344 V. Temperature mi pa vsak program po svoje kaže, RealTemp mi pokaže 56-59 stopinj, HW Monitor pa od 65-70 stopinj. ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Pa si dal rame na predpisanih 2,2V? Ker če daš \"auto\" ti jih da na 1,8V, kar je absolutno premalo. ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Super! Procesor teče že uro in pol v ORTHOSU na 3,8Ghz bp. Rame pa sem dal na 2,2V. Voltaža CPU 1,34-1,35V. RealTemp kaže temperature max. 60 stopinj, rami so vroči da se jih še prjet ne da =). Če mi kakih 6 ur zdrži tko, bom obdržal te nastavitve, zaenkrat sem zadovoljen.  Povejte mi še kok tole kej porablja električnega soka, ker sem prvič v 2 mescih videl da se je moj Corsair 620W segrel? Obstaja kakšen program ki pokaže kok je trenutna poraba W? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Rame lahko probaš spustiti na 2-2,1V, glede na to da nimaš tako visoke frekvence. Meni recimo moji Geil Ultra lepo delajo na 500(1000) pri 2,1V, za 450mhz je pa dovolj tudi 2V. Dobro bi bilo tudi poskrbeti za hlajenje ramov (kakšen tih 80mm ventilator bi rešil zadevo) ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Proc laufam stalno na 4000MHz (445X9). Voltažo rama imam za 0.1V višjo, procesor pa laufam na 1.38V. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Ne moreš da verjameš, po treh urah je javu napako. Očitno je 3,7GHz betonski zid al kaj. Sej se ne bi čudil če bi imel pocen robo, sam ko sem nalašč dal malo več da bo ja šel vsaj do 4Ghz. Kaj pa še kakšni drugi testni programi? Ker če ga dam magari na 4,3Ghz se mi lepo požene samo ORTHOS se pa takoj pritožuje =) ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Zalaufaj crysis. Sam sem ga špilal 3 ure brez problemov, orthosa sploh nisem štartal, ker menim, da je 3 ure crysisa vse na high dost hud test. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "pomoje te RAM zajebava. za testiranje CPU stabilnosti laufaj smallFFT test ne pa blend testa ",
+    "user": "VASkO"
+  },
+  {
+    "message": "smallFFT se ustavi že po 1 sekundi. Ne vem kaj je, dost ga že mam =) Na ubogih 4Ghz se ne pusti nastavt. ",
+    "user": "Glodko"
+  },
+  {
+    "message": "OK, prosim če mi lahko nekdo razloži kaj moram nardit da bo vse to stabilno in da ne bom \"skrajšal\" življenske dobe procesorja in/ali ostalih delov . Ker sedaj je napaka že pri 3,6 Ghz. Torej sam sem šel v BIOS in nastavil sledeče:  AI Overclock Tuner=manual FSB Frequency=recimo 400 DRAM Voltage=2.2V   In to je vse! Zdej eni pravijo da bi mogu naštelat še voltažo NB - sploh temepratura 70 stopinj pri 3,6GHz CPU se mi zdi ubijalska, SB, CPU, pa še par stvari, samo nimam pojma kje in kako naj to nastavim =( Prebral sem tudi že kup vodičev, samo nisme našel takega, ki bi bil za moj BIOS. Sprašujem se tudi ali je OK da je temperatura pri 3,6 Ghz na 100% obremenitvi okol 57 stopinj? Vsi ostali imajo manj. Prosim kogarkoli za pomoč. HELP!! ",
+    "user": "Glodko"
+  },
+  {
+    "message": "FSB 400MHZ CPU voltahe 1.380V dram voltage 2.1V ventilator, da se pri 50 stopinjah vrti z 80% hitrosti in pri 60 stopinjah pri 100% hitrosti  Sam imam vse to naštimano, samo ram imam na auto, pa FSB imam 445 MHZ stalno in zadeva deluje brezhibno 24/7. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "1,38V za 3,6Ghz, pri 3,0Ghz pa mi rabi 1,2V, je to treba res tok dvignt? No sej ne vem če jo to velik dvig? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Kr pošten dvig je ja... ",
+    "user": "Meizu"
+  },
+  {
+    "message": "Sm nastavil na 1,3V CPU, še BIOS sem posodobu prej na tega k je pršou vn pred kratkim. Zdej pa držim pesti. Sm pa prebral na tujih forumih da maximus formula ne mara glih crucial ramov, po tujih izkušnjah sodeč. ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Stvari ki jih je treba nastavit pri navijanju:  1. FSB (pač glede na to koliko želiš da je navit) 2. Napetost procesorja (najnižja kjer je še stabilen) 3. Množilnik za Ram (pri teh fsb-jih je itak edina varianta 2:1) 4. Napetost Rama (po specifikaciji ali največ za 0,1V več) 5. Timinge pri ramih (ne pustit na AUTO ker zna kaj narobe nastavit, dokler ne ugotoviš meja ostalih komponent je najbolje pustiti malo višje, recimo 5-5-5-18 ali kaj podobnega)  6. Napetost NB (+0,1V bo dovolj) 7. Preveriti da so ostale frekvnce ostale tako kot morajo biti (PCI-E itd...) 8. Izklopiti razne \"turbo\" in podobne \"overclocking\" funkcije 9. Nastaviti ventilator da res dela s polno močjo, najbolje tako kot je napisal Nebivedu  Če imaš v sistemu navito grafično jo \"odvij\" vsaj za čas ko iščeš meje sistema. Meni je z upoštevanjem zgornjih navodil uspelo priti iz sistema ki je nestabilen pri vsaki frekvenci na 3ghz na sistem ki deluje 24/7 na 3,5 ghz (kar je kar dosti za ta procesor)  P.S.:hladilni (in pasto) si namestil tako kot je treba? ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Jst bi rad da mi sistem dela 24/7! Zato sem kupoval tudi obloge za stišanje, hladilnik za disk.... tko da z navijenjem spet ne bi pretiraval, 1x sm želel dat na 4Ghz, drugače sem si pa zadal za cilj nekje 3,6 Ghz (sedaj mi pri 1,300V laufa OK že uro in pol). To predvidevam da je kul frekvenca in voltaža za neprekinjeno delovanje (moje mnenje)? Hladilnik sem zmontiral kot je v navodilih proizvajalca. Dal sem tudi silver 5 termalno pasto, Realtemp mi pri 3,6G kaže max. CPU1 50 in CPU2 54 stopinj (vsi ostali programi mi kažejo po 10 stopinj več na jedro, zakaj ne vem). Malo slabši stik in hlajenje naj bi že tko bilo zaradi same konveksnosti teh procesorjev. To je hlajeno z Noctuo NH-U9F in enim 92mm ventom. Bi velik pridobil če zamenjam z večjim modelom ki ima enega 120mm vent oz. opcijsko dva - seveda tudi večja hladilna rebra? Zdej pa bi rabil da mi podrobneje razložiš kje nastavim zadeve pod točko 3. in 9. In pa kako naj vem koliko je stock napetost NB? Hvala ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Očitno imaš nekaj narobe nastavljeno, ker jaz imam box hladilnik, pa mi na 4000MHZ (445X9) v idle prvo jedro dela na 40 stopinjah, drugo pa na 33, v obremenitvi pa pride prvo na max 61 stopinj, drugo pa na max 54 in to po treh urah igranja crysisa. Grafika inno3d 8800gt navita na 700/1000 pa pride max do 49 stopinj (tudi s serijskim hladilnikom), je pa podobno naštimano kot proc, le da 10 stopinj prej vklopi vent na 100%, torej, ko pride do 50 stopinj se vent vklopi 100%.  Ventilator naštimaš v biosu (vsaj jaz ga lahko) in tam imaš recimo 5 stopnej (jaz imam na izbiro od 3 do 15 stopenj) in si naštimaš temperature in stopnje. Sam imam naštimano da je prva stopnja do 20 stopinj, druga do 30, tretja 40, četrta 50 in peta 60 stopinj, kar je pa že 100% hitrost venta. Ne ve4m sicer za tvojo plato, vendar moja ima z modanim biosom (ni original, ampak predelan pri Rebels Heaven) kr ogromno nastavitev v biosu, ki jih v osnovi nimaš. Plata je pa biostarova TP35AD2-7, ki jo večina pljuva, meni je pa všeč, pa dela brez problemov. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " Zdej pa bi rabil da mi podrobneje razložiš kje nastavim zadeve pod točko 3. in 9. In pa kako naj vem koliko je stock napetost NB? Hvala  Kako nastaviš množilnik rama je precej odvisno od tega katero plato imaš, pri Gigabytu je to takoj zraven nastavitve za fsb (in ti tudi računa frekvenco rama avtomatsko ko ga spreminjaš)  Ventilator se nastavi ali v biosu, kot je napisla nekdo pred mano, v večini primerov dobiš zraven plate nek program ki omogoča te nastavitve, dobijo pa se tudi drugi... ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Imam tut sam Maximus Formulo in če kdo ve kje je ta množilnik in nastavitve ventov se priporočam. ",
+    "user": "charlotte"
+  },
+  {
+    "message": "V idle imam tut jst 33 stopinj, po biosu sodeč, samo ob obremenitvi mi pa grejo tja do 58 stopinj +/-2. Za hladilnik sem še učeri preveru in je prov nameščen, razen če sem dal preveč paste (manjše grahovo zrno =). ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Če že kupiš tako drago plato bi človek pričakoval da prebereš vsaj navodila...  Množilnik rama nastavljaš v \"extreme tweaker\" meniju v Biosu in sicer pod \"Dram Frequency\" Pri nenavitem sistemu mora biti nastavljeno na ddr2-800, ko pa višaš fsb pa zmanjšaš na recimo ddr2-666 (za 400fsb) ali celo manj.   Obnašanje ventilatorje nastavljaš v meniju \"hardvare monitor\" in sicer daš Q-fan/enable in nastaviš na performance. Za bolj natančno nastavitev pa instaliraš program Q-fan iz priloženega CD-ja. ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Navodila sm nekam založu ^^   Drugače pa hvala, samo zakaj se ga niža? A ni tko da se pr navijanju frekvenco viša? In kako jst to zračunam glede na FSB kok mora bit DRAM? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Če imaš ti frekvenco procesorja 333, pa imaš ram na 400 in ko naviješ proc na 400, se ti ram navije na 466 (za ddr2 pomeni to 932MHZ), ker pa ni nujno da tvoj ram podpira tok visoko frekvenco, ti potem ne pusti it na tak FSB.  Torej spustiš frekvenco rama na 333 in naviješ procesor, pa se ti hkrati z njim navija še ram. Kar pomeni, da boš pri procu na 400 imel tudi ram na 400 MHZ, če pa daš proc na 333, ram pa na 266 in potem naviješ, pa boš mogoče prišel še višje, ker ko bo proc na 466, bo ram šele na 400.  Mislim, da pri tebi ram ne dela več kot na 800MHZ in zato prideš samo do 400FSB-ja!!! ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Teli 266/333/400 dividerji so zlo skromni, Maximus Formula ma mal več izbire.  Tole sem gledal po manualu, sem skoraj siguren da tam piše za 266FSB, čudno pa da v manualu za mojo plato piše za 333FSB, če povečaš FSB so pač druge številke, sam vrstni red množilnikov je vseeno isti, pri Gigabyte platah maš to vsaj zraven napisano. DDR2-533MHz - 1:1, 2x FSB DDR2-639MHz - 5:6, 2,4x FSB DDR2-667MHz - 4:5, 2,5x FSB DDR2-709MHz - 6:8, 2,66x FSB, men sicer ne boota pri nobenem FSB-ju DDR2-800MHz - 2:3, 3x FSB DDR2-852MHz - 5:8, 3,2x FSB DDR2-887MHz - 3:5, 3,3x FSB DDR2-1066MHz - 1:2, 4x FSB  Za 1200 pa ne morm rečt, ker ga moja plata nima, najbrž je 4,5x FSB, sicer če maš FSB nad 400 so itak sam prvi trije uporabni. Zdej če hočeš čimveč navit CPU, pusti kar na prvem množilniku. Noben ti pa ne more povedat kolko ti gre ram, boš moral sam sprobat.  Drgač me pa prov zanima zakaj tolk ljudi kupuje tole plato, mislim kaj sploh pridobiš z njo, jest bi rekel da te pri navijanju itak ovirata RAM in CPU, in oba se navijeta enako na plati za 100€ kot na plati za 200€. Ne rečem za M-XXXX-a, on vsaj rabi za Crossfire kar je še največji plus te plate, za ostale tukej pa mislim da je tale plata overkill. ",
+    "user": "GrimReaper"
+  },
+  {
+    "message": "Grim brez zamere, ampak ste že kr rahlo bedni s tem! Ko folk kupuje avtomobile z 200+ KM se tut noben ne sprav jamrat da je to overkill, da tega itk nikol ne bo izkoristu.   Drugač pa zdej je OK na 3,6Ghz, ram je sam skočil na 800Mhz, timinge sm dal 4-4-4-12, voltaža CPU 1,3V in rama 2,1V. Zadeva je stabilna, temperature 45 stopinj, čim je vent na performance. ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Dražje plate se splačajo tistim entuziastom ki preštudirajo vse nastavitve in z dosti vloženega znanja, nastavljanjem razni \"eksotičnih\" nastavitev in z dosti preizkušanja potegnejo iz sistema še nekaj dodatnih mhz. Začetnik pa se bo v množici nastavitev samo izgubil in po možnosti še kaj nastavil narobe in s tem dosegel morda še slabši rezultat kot na kakšni bolj enostavni plati. Spmomnim se kako je bilo ko sem prodal takrat eno boljših plat, DFI Ultra-D (ki je imela res podrobne nastavitve) nekemu začetniku. Še par mesecev mi je težil glede teh nastavitev, dokler ni zadeve prodal... :)  Pri P35 in novejši platah je pa itak tako, da že praktično vse zmorejo preko 450mhz FSB-ja, pa tudi 500mhz večinoma ni problem in to je dovolj za praktično vse procesorje. Imajo pa dražje plate seveda še druge prednosti, recimo razne dodatne kontrolerje (FW, e-sata, Raid), možnost uporabe Crossfire in podobno... ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Tole ti zna pomagat, spodaj imaš tut nastavitve od uporabnikov. http://www.xtremesystems.org/forums/sho... ",
+    "user": "GrimReaper"
+  },
+  {
+    "message": "Hvala za link, grem takoj na delo ko bo čas =) ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Poslušam kako se narod hvali da svoje wolfiče bp navijejo na 4 Ghz pri tem pa ima na zraku še vedno dostojno temperaturo. Kaj pa je to kaj takega 4ghz? To vse skupej ni nič za tak procesor. ",
+    "user": "tilinho20"
+  },
+  {
+    "message": "Poglej si ga kerlca, včeraj še amater, danes že take samozavestne izjave ven meče =) (brez zamere, ni mišljeno slabonamerno =) ",
+    "user": "Glodko"
+  },
+  {
+    "message": "4000MHz, seveda pri 9x445 bi moral it res vsak E8400, za kratke benche tut s tistim malim priloženim hladilnikom, seveda od primerka odvisno kolko voltaže rab, sem zasledil že vse od 1.2V-1.45V. Tale ram bi tut moral it 450MHz 4-4-4-15 2.15V, 500MHz 5-5-5-15 2.05V, 550MHz 5-5-5-15 2.15V 60 tRFC. Tut tRAS je dost važn pri 2x2GB kitih, tale gre 575MHz 5-5-5-18-60.  http://www.xtremesystems.org/forums/sho... They key to 4GB RAM stability appears to be in tRAS and tRFC.  Morm rečt da se tut sam še nism igral s tem, bi blo zanimivo probat do kolk gre s tRAS 18 in tRFC 60 ali celo višjim. ",
+    "user": "GrimReaper"
+  },
+  {
+    "message": "Zalaufaj crysis. Sam sem ga špilal 3 ure brez problemov, orthosa sploh nisem štartal, ker menim, da je 3 ure crysisa vse na high dost hud test.  Poglej obremenitev procesorja med igranjem in ti bo jasno da crysis ni noben stres za CPU. ",
+    "user": "TechStreme"
+  },
+  {
+    "message": "No ker rabim za brezkompromisno 24/7 poganjanje, sem se odloču kar ostat na 3,6Ghz, sem pa med vikendom ostal brez interneta (izpad =(, tko da sem se malo igral z nastavitvami in prišel do sledečega:  FSB:400Mhz Dram:400Mhz // je skoču avtomatsko, na 400, ko sem prišel z fsb na 400 Cpu V: 1,28750 // to je spodnja meja, pod to ne gre, vsaj tako trdi orthos Dram V: 1,8 pri 4-4-4-12 NB V: 1,33 // spodnja meja SB: 1,050 // nižje nastavitve ne obstaja v biosu  V glavnem to je to, če kaj prestavim še nižje je izid znan =) Procesor ima na teh nastavitvah od 43-47 +-2 stopinje (ali se da kako \"resetirat\" senzorje, ker je od programa do programa drugačna temperatura), NB mi je padel iz 70 na 50 stopinj pod obremenitviji (isto SB), rami ne vemm temperature, so pa precej vroči. To je to, ima kdo še kakšno idejo, predlog kaj izboljšat, popravt? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Res nobenega predloga? A je to sploh dobr tok znižat voltaže, a je potem manj zmoglivo vse skupaj, al je vseeno? ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Če dela stabilno, zakaj pa ne?  Višje napetosti od potrebnih za stabilno delovanje, samo brez potrebe kuhajo vse skupaj. Zmogljivosti so odvisne od MHz-jev, ne od Voltov. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Jest dam na najnižje dokler dela še Orthos, sam včeri mi je blue screen vrglo pa dela proc stestirano 9 ur z Orthosom small ffts, tko da če te kej zafrkava daš raje eno stopnjo več. ",
+    "user": "GrimReaper"
+  },
+  {
+    "message": "Z zgornjimi nastavitvami mi orthos laufa že 6 ur. Je pa precej manjša produkcija toplote, kot je bila ko so bile nastavitve na auto =) ",
+    "user": "Glodko"
+  },
+  {
+    "message": "Nikako ne najdem oziroma mi ne rata multiplier nastavit na 8x mam asus p5q pro kje to nastavim v biosih kako se reče tej nastavitvi ",
+    "user": "oberskitona"
+  },
+  {
+    "message": "To nastavitev maš takoj na začetki kjer nastaviš kolk češ FSB pa ena vrstica prej,sam moraš dat overclock na manuel ",
+    "user": "TOP"
+  },
+  {
+    "message": "Glodko nekam visok temp maš za 3,6 mhz,še moj Q6600 je imel nižji temp pri 3,6mhz pa 1,45V sam sem mel bolši hladilnik,kolk pa si dal za Noctue ker ti slabo hladi. ",
+    "user": "TOP"
+  }
+]

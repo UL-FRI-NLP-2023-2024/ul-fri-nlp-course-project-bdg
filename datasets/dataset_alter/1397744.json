@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Excel filter",
+    "content": "Imam eno vprasanje za profije,na listu1 sem naredil tabelo z podatki,katere izbiram z filtrom,spodaj sem uporabil funkcijo subtotal,ki\nmi v oknu SKUPAJ vedno prikaže vrednost glede na različen filter(vrstice niso vedno iste) ,sedaj bi isto tabelo rad spravil na list2,kar ni problem,je pa problem,ko na listu1 iz filtra izberem npr. vrednost film,mi je na listu2 ne prikaže samodejno,moram še 1x izbrati iz filtra vrednost film,torej tisto kar iz filtra na listu1 izberem bi rad da pokaže tudi na listu2,\nIN še nekaj,na listu spodaj nad nogo imam sliko,če v filtru izberem več opcij,se mi nato slika premakne za isto vrstic navzdol,kar pa ne želim,se da kako sliko fiksno pripeti\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "Zakaj za vsak problem v excelu odpres novo temo? Imas ze 5 excel tem. Pisi vsak problem v isto temo in je. So ti pa ze odgovoril v sosednj itemi...EdZedov post.\n\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "na ta post še nisem dobil odgovora od nikogar,če kdo ve kako in kaj,ga prosim za odgovor\n\nlp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "Če želiš odgovore za svoje probleme, moraš svoj problem, dovolj natančno opisati, pomaga pa tudi, če se vidi, da je tvoj problem smiseln.\nPri tvojem postu ne opazim nič od tega. Občutek imam, da bi rad nekaj naredil (ne vem sicer točno kaj \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n, vendar se tega lotevaš na napačen način (z nekimi subtotali in filtri ...).\nTorej, morda bi pomagalo, če najprej poveš, kaj sploh želiš, drugim pa prepustiš, da ti svetujejo, na kakšen način do rešitve.\nIn priloži primer datoteke, morda bomo potem lažje razumeti tvoj problem.",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "Da uporabim to temo:\n\nKako doseči da lahko uporabnik prilepi (paste) v določene celice samo neformatiran tekst. Ko uporabi Ctr+V ali prilepi mu vnese tekst v neformatirani obliki kot plain tekst.\n\nMora pa to biti lastnost dokumenta ne pa Excel programa (nekaterim se ne da dopovedat kaj lahko delajo na skupnem dokumentu, kaj pa ne).\n\nSem poskusil zaklenit celice, samo ni pametne opcije za dovoljene opracije.",
+    "author": "johan_blond",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "Imam eno vprasanje za profije,na listu1 sem naredil tabelo z podatki,katere izbiram z filtrom,to kar je vidno na listu1 ,bi rad imel tudi na listu2,torej duplikat lista1,problem pa se pojavi,da vse kar izbiral iz filtra na listu1 se ne prikaže na listu2 in moram še 1x izbrati iz filtra iste vrednosti\nIN še nekaj,na listu1 spodaj pod to tabelo imam 10 vrstic nižje sliko,če v filtru izberem 5 vrstic se mi slika tudi premakne navzdol za 5 vrstic,čeprav je dovolj prostora,da se slika ne bi rabila premakni in bi lahko ostala na isti strani,sedaj pa se mi premakne na stran2 in je nato na natisnjenem listu ni,se da kako sliko fiksno pripeti\n\nhvala in lp\n\n\t\t\n\t",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "bah.. pozabil stisnit citat... Tole je odgovor za Johana\n\nLahko v nastavitvah worksheeta nastaviš, da bodo določene celice možno prilepiti samo določen format (paste special).\n\nDesni klik na sheet in view code. Tam dodaš kodo (modificiraj za svoje potrebe).\n\nprimer:\n\nPrivate Sub Worksheet_SelectionChange(ByVal Target As Range) \n     \n    With Sheets(\"MyFormat\") \n        .Visible = xlVeryHidden \n        .Range(\"B2:C2\").Copy \n    End With \n     \n    Me.Range(\"B2\").PasteSpecial xlPasteFormats \n    Application.CutCopyMode = False \n     \nEnd Sub",
+    "author": "vedko",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "kaj nihče ne ve kako rešiti problem višje z filtrom,sedaj imam še eno vprasanje\n\nV celici B1 imam zapisano ceno 10,vB2 20,v stolpec A pa vnesem količnik 0,1 ali 2.\nV stolpcu C1 pa bi rad da mi zmnoži sedaj A1 in B1,vem da bi lahko šel v stolpec C1 in vpisal =A1*B1,vendar je problem,ker imam čez 400 vrstic,vem tudi,da na prvo celico B1 kliknem in spodaj se pojavi križec in povlečeš navzdol,to res dela,samo mi vse celike ,kjer sem v stolpcu B imel različne vrednosti,mi sedaj na vse nastavi 10*B1,nato 10*B2,celice lepo povečuje,vrednost-cene pa bi morale tudi ostati enake(v vsaki vrstici stolpca B so različne) in ne takšne kot so v prvi\n\nHvala in lep pozdrav",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "&gt;da na prvo celico B1 kliknem in spodaj se pojavi križec in povlečeš navzdol\n\nKopirat moraš *formulo* za zmnožek, torej povleči navzdol \"križec\" v celici *C1*.",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "zapis v B1 ne deluje torej =A1*B1*,še 1x bom napisal \n---A  B\n1    1     11\n2    1     22\n\ntorej v B1 je sedaj le vrednost 11,ne =11\nrad bi,da bi sedaj v celici B1 bila formula =A1*11,v B2 pa A2*22,\nče vnesem v B1=A1*11 in povlecem navzodol s križcem dobim v B2=A2*11,število 11 ostane pri vseh celicah v stolpcu B,črke se pa pravilno prištevajo,če me razumeš\n\nlp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "A da probas z =A1*C1  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nedit:\nPardon: = A1*B1  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n  V celici B1 imam zapisano ceno 10,vB2 20,v stolpec A pa vnesem količnik 0,1 ali 2.\nV stolpcu C1 pa bi rad da mi zmnoži sedaj A1 in B1,vem da bi lahko šel v stolpec C1 in vpisal =A1*B1,vendar je problem,ker imam čez 400 vrstic,vem tudi,da na prvo celico B1 kliknem in spodaj se pojavi križec in povlečeš navzdol,to res dela,samo mi vse celike ,kjer sem v stolpcu B imel različne vrednosti,mi sedaj na vse nastavi 10*B1,nato 10*B2,celice lepo povečuje,vrednost-cene pa bi morale tudi ostati enake(v vsaki vrstici stolpca B so različne) in ne takšne kot so v prvi\n\t\t\n\t\tKlikni za razširitev\n\t\n\nkar nekaj zmede je v tem vprašanju, najprej podaš sam sebi odgovor, ampak je problem ker je treba označiti 400 celic, v naslednjem stavku trdiš da ni problem kopirati formulo iz celice B1  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n, in obenem pričakuješ da bo program vedel, da bi rad znotraj celice, ki že vsebuje podatek rad imel formulo, katera bo vsebovala podatek iz te celice. To žal ne gre saj ti program javi napako krožnega sklica (=A1*B1) oziroma je tista vrednost, ki si jo napisal (11) pač številka in  ne vrednost iz B1 . Tako da ti kar lepo v celico C1 napiši =A1*B1 in označi tistih 400 celic (z miško, tipkovnico ali križcem odvisno od tebe) in prekopiraš formulo. Vzelo pa ti bo cca 1 minuto časa, za ves postopek, če se recimo enkrat vmes zmotiš.\nlp",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel filter",
+    "content": "sem tako tudi naredil,zanimalo me je pač,če obstaja kakšna varianta\n\nhvala za odgovor",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  }
+]

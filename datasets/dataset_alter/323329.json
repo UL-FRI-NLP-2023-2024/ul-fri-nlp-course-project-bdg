@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "Public Class Form1\n\n    Dim a, b, c As Single\n\n    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click\n\n        a = TextBox1.Text\n        b = TextBox2.Text\n\n        c = a + b\n\n        TextBox3.Text = c\n\n    End Sub\nEnd Class\n\nImam ta preprost programček za Windows Application.\n\nZanima me kaj moram v kodo napisati, da v primeru če uporabnik vpiše črke v polja namesto številk, ne zablokira, ampak sporoči da je prišlo do napake?",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "pomagaj si s to funkcijo\n\nPrivate Function isDigit(dig As String) As Boolean\nisDigit = (Asc(dig) &gt;= Asc(0) And Asc(dig) &lt;= Asc(9))\nEnd Function",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "Ne rabiš pisat svoje funkcije ker VB že ima IsNumeric funkcijo:\nhttp://msdn.microsoft.com/en-us/library/6cd3f6w1(VS.80).aspx",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "Se mi je kar zdelo da mora nekaj obstajati samo včasih je hitreje da jo sam napišeš \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "Sej tvoja funkcija ne deluje pravilno \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. Funkcija asc vrne ascii kodo enega znaka, ti ji pa podaš celi string. V funkcij  bi se moral v zanki sprehoditi čez celi niz in testirati vsak posamezen znak v nizu.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "vem, zato sem pa napisal naj si pomaga s to funkcijo. Nekaj pa mora tudi sam narediti \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "Lahko si pomagaš z error handlerjem. To pomeni, da bo program ob napaki pač napisal nekaj. Recimo takole:\n\nPublic Class Form1\n\nDim a, b, c As Single\n\nPrivate Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click\n\n   on error goto errormsg  \n\na = TextBox1.Text\nb = TextBox2.Text\n\nc = a + b\n\nTextBox3.Text = c\n\n  errormsg:\nmsgbox(\"Nekaj ne štima!\")  \nEnd Sub\nEnd Class",
+    "author": "cbb",
+    "author_level": "Chef"
+  },
+  {
+    "ctx": "Visual Basic - pomoč",
+    "content": "Še rešitev tvojega problema. Ne garantiram, da je optimalna, dela pa 100%:\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t        Dim tb1, tb2 As String\n        Dim a, b, c As Single\n\n        tb1 = TextBox1.Text\n        tb2 = TextBox2.Text\n\n        If (IsNumeric(tb1) And IsNumeric(tb2)) Then\n            a = tb1\n            b = tb2\n            c = a + b\n            TextBox3.Text = c\n        Else\n            MsgBox(\"Seštevaš lahko samo števila!\")\n        End If\n\t\n",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  }
+]

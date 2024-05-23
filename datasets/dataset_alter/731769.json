@@ -1,0 +1,128 @@
+[
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Imam star prenosnik Toshiba Satellite Pro 4300 series. Notri je 700MHz procesor. Zdaj pa sem dobil procesor od Toshibe Satellite Pro 4600 ki je 900MHz. Sem ga vgradil, toda prenosnik ga prepozna še zmeraj kot 700MHz procesor. Računalnik lepo deluje, le ne na 900Mhz. Ali je štos v hitrosti vodil? Ali je treba kaj nastavit?\n\nTukaj so specifikacije obeh procesorjev:\n\n\nPrvi procesor: 700/256\n\nManufacturer: Intel\nType: Microprocessor\nIntroduced: April 2000\nName (codename): Mobile Pentium III 700MHz (Geyserville)\nCode (Copyright): KP 700/256 (Intel '00)\nSpecification number: SL3Z8\nCore speed: 700MHz (550MHz SpeedStep)\nBUS: 100MHz, 32-bit\nTransistors (Die size): 28 000 000 (105mm square)\nTechnology: 0.18-micron\nL1/L2 cache: 16kB+16kB / 256kB (on die, full speed)\nCan address: 4GB of physical and 64TB of virtual memory\nFPU: Integrated\nWhetstone FPU: ? MFLOPS\nDrystone ALU: ? MIPS\nV core (speedstep/typical/max.): 1.35V - 1.6V(1.485V~1.64V) - 2.1V\nPower dissipation (min./max.): ?W - 23W\nOperating temperature (min./max.): 0 - 100°C\nPackage (Socket): Micro PGA2 475-pin (Socket 475)\nDimensions: 31.2 x 28.3 x 4.5mm\n\n\nDrugi procesor: 900/256\n\nManufacturer: Intel\nType: Microprocessor\nIntroduced: March 2001\nName (codename): Mobile Pentium III 900MHz (Geyserville)\nCode (Copyright): KP 900/256 (Intel '00)\nSpecification number: SL53T\nCore speed: 900MHz (700MHz SpeedStep)\nBUS: 100MHz, 32-bit\nTransistors (Die size): 28 000 000 (105mm square)\nTechnology: 0.18-micron\nL1/L2 cache: 16kB+16kB / 256kB (on die, full speed)\nCan address: 4GB of physical and 64TB of virtual memory\nFPU: Integrated\nWhetstone FPU: ? MFLOPS\nDrystone ALU: ? MIPS\nV core (speedstep/typical/max.): 1.35V - 1.7V(1.62V~1.825V) - 2.1V\nPower dissipation (min./max.): 16W - 30.7W\nOperating temperature (min./max.): 0 - 100°C\nPackage (Socket): Micro PGA2 475-pin (Socket 475)\nDimensions: 31.2 x 28.3 x 4.5mm\n\nHvala.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Hm, vodili sta pri obeh 100MHz. Kaj pa množilnik frekvence v BIOSu, si pogledal in pravilno nastavil?\nJe pa velika verjetnost, da tega parametra tvoj BIOS sploh ne da na vpogled/nastavitev.\n\nlp",
+    "author": "merdzo",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "verjetno potrebuješ tisti utility program od toshibe, ki je za štelat HW parametre",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Ma ima tak čuden bios. Iz prve svetovne. Sem že malo gledal. Ne vem kaj bi točno pregledoval. Bom malo napisal kakšne so možnosti nastavitev v biosu za CPE.\n\nPower-up mode = Boot (ali Resume)\nCPU Cache = Enabled (ali Disabled) (pod enabled je option še White Policy = Write-Back (ali Write-Through)\nLevel 2 Cache = Enabled (ali Disabled)\nProcessor Serial Number = Disabled (ali Enabled)\n\nCONFIGURATION\nDevice Config. = All Devices (ali Setup by OS)\n\nNi najti kaj glede nastavitve frekvence. Mogoče bi bilo če bi se dalo vpisati serijsko številko procesorja ampak je amo enabled ali disabled. \n\nKaka ideja?",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Misliš da obstaja ta utility program za tako star prenosnik? Malo iščem pa ga še nisem našel.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Uporabi en \"univerzalni\" util. Verjetno ti pač bios ne prestavi multiplikatorja, ker je obsolete.",
+    "author": "darjan",
+    "author_level": "Vulkanizer"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Bi lahko prosil za kaj pomoči? Mogoče celo link do tega programa?",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Core speed: 900MHz (700MHz SpeedStep) --&gt; to pomeni, da je na 900MHz pri polni obremenitvi in na 700MHz, ko ni obremenjen (šparanje z energijo). Potegni CPU-Z in zaženi kak film pa boš videl, če se bo frekvenca dvignila...",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "poglej tu : \n\nhttp://www.csd.toshiba.com/cgi...mily=1073768667",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Vgrajen imam procesor 900mhz v kontrolni plošči pod system pa piše da je vgrajen 700mhz. Mislim da to ne bo rešilo težave.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Uporabnik ceedevita: potegnil in namestil sem vse utility dodatke ampak mi ni glih jasno kaj zdaj z njimi. Namestili so se, stvar se ni pa nikamor premaknila.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Tisto kar piše v Nadrozni plošči pod System ni refrenčno... naloži CPU-Z in nekaj, kar bo obremenilo procesor (npr. prime95) pa boš videl, če se hitrost dvigne na 900MHz.",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Čudne stvari se dogajajo. sem naložil program CPU-Z. Ko ga zaženem lahko vidim le da zazna procesor 700mhz in za tem se računalnik ugasne, brez zaustavitve. To sem probar dvakrat in obakrat se je ugasnil.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "malo sem še pogledal specifikacije kište  in piše :\n\nProduct Specification\nProcessor\nMobile Intel&#174; Pentium&#174; III processor featuring\nIntel SpeedStep&#8482; Technology 700MHz,\n650MHZ, or 600MHz\n256KB Level 2 cache integrated on die\nIntegrated co-processor\n32KB internal cache\nData/Address Bus Width: 64-bit/32-bit\n100MHz Front Side Bus\nMemory\n64Mbit SDRAM, expandable to 320MB\n\ntako, da ne vem, če bo šel 900. \nimaš neki speedstep nekje pa tistega izklopi, če gre. bo se treba mao pošpilati. \nveč ali manj, vse kar rabiš najdeš na onem linku. vse prečitaj kaj tam najdeš. če česa ni potem skoraj ziher ne gre\nže dolgo nisem nič \"šraufal\" teh kišt , imam pa še eno s 650 mhz piii  pa še danes čisto solidno dela",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Sej zato je nočem stran vršt ker xp čist lepo laufajo gor.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Sem kar slikal moj bios:\n\n\n\t\n\n\n\n\n\t\n\n\n\nBolj malo možnosti je za nastavitev procesorja, če sploh.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "tu nimaš kaj\nzato one utilitiy programe poglej, če je kje kaka opcija da kaj nastaviš. vem, da se je nekaj dalo, samo se ne spomnim več kaj vse\nje pa tudi vprašanje če je za ta model sploh podprt 900 Mhz procesor\nko je kišta bila narejena takih procesorskih hitrosti  za notebooke še ni bilo. saj veš, mašina je že enih 10 let stara",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Se bom zgleda sprijaznil da se ne da. V Control Pannel sem našel nameščen HW utility program. In v njem ni nič drugega kot okenska različica biosa. Isto se štima kot tam (Enabled, Disabled). Kaj čem.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Možno da matična plošča ne podpira te hitrosti. Lahko edino še updejtaš bios.",
+    "author": "Stupo",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Biosu sem naredil update. In ni bilo razlike. Se probam sprijaznit, da je bil procesor narejen kasneje. Samo mi ne da mira zakaj vseeno ne deluje, če je hitrost vodila ista. Kaj je tisto, kar ne prepozna. Mislim da bi lahko delovalo.",
+    "author": "Hazler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Menjava procesorja (Toshiba Satellite Pro)",
+    "content": "Edina možnost je še, da poskusiš updejtati CPU / DMI, čeprav dvomim da bo pomagalo.",
+    "author": "Stupo",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "message": "Upam da vam bo z naslova že malo več jasno o čem je govora. Torej imam ogromno bazo cca 30k+ različnih trgovin in večina podatkov o njih(ime,naslov,delavnik,web,telefon,podatki itd. itd.) in kar je sedaj ideja je da izdelam portal, ki bi predstavil vse te trgovine, ampak ne vem na kakšen način bi izvedel ves ta izpis tolikih trgovin. Imam dve možnosti: 1. običajni php, glede na url dobi iz baze vse podatke in izpiše na strani 2. vsebino iz baze izvozi v običajni html fajel(kar pomeni da bo na serverju 30k+ fajlov...) Po moji logiki bi bila 2. varianta dokaj hitrejša, kar se tiče nalaganja strani, glede na to da za vsako posamezno stran ne bo potrebno obremenjevat strežnika... Kaj pa predlagate vi? Nimam točno še razjasnjeno kako bi se stvari lotil. Če bi delal na 2. možnosti bi potem preko cron joba na recimo vsake toliko časa izdelal nekaj html strani, da se ne zamerim googlu če na hitro vn ruknem vse, samo nimam pa tu ideje kako bi potem logično strukturiral bazo, ker bi se v vsakem primeru morala povezovat da bi vsaj pridobila url do neke novo nastale trgovine, plus neki dodani updati recimo neke trgovine, bi bilo potrebno zopet fajel popravljat... ",
+    "user": "petzup"
+  },
+  {
+    "message": "Vso sreco queryjat 30k recordov in vseh FK povezav v enem queryju ter jih prikazat na strani.  Tabela z paginacijo z N stevilom vrstic na stran.   Lazy loading.  Google saves. ",
+    "user": "kr?en"
+  },
+  {
+    "message": "Obvezno querry search in sestava temporary tabel. Nekako takole:  Teh 30k trgovin razdeliš v manjše sklope ( drugače 30k niti ni tako veliko). Sedaj pa odvisno po čem boš iskal. Če bodo to vrste trgovin, sestaviš tabele za vsako vrsto in je. Če bo abecesno iskanje, sestaviš za vsako črko in dobiš precej na hitrosti, je pa precej dela, da bo to delalo kot bi moralo.   Morda ti priporočam Ruby on Rails, ki je v velikih tabelah odličen za iskanje. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Ja to bom pokategoriziral itak po krajih, tako da bom zmanjšal posamezno kategorijo recimo na kake 2000-3000 insertov.  Nekaj sem bral glede Memcached, baje naj bi tudi pripomogel pri manjšem obremenjevanju serverja.. Ve kdo kaj o tem? ",
+    "user": "petzup"
+  },
+  {
+    "message": "Pozabi na optimizacijo! Optimiziraj ko boš videl, da je strežnik obremenjen... oz. je potrebno in tisto kar je potrebno. ",
+    "user": "blue"
+  },
+  {
+    "message": "ce so zadeve bolj ali manj staticne, je brezveze, da jih za vsak page view klices iz baze. zaenkrat naredi to sicer ja, potem se pa napiflaj, kako magar generiras staticno stran in jo updatas samo, ko se spremeni record v bazi. ",
+    "user": "Isotropic"
+  },
+  {
+    "message": "30k zapisov je pljunek... To ti bo delalo hitro tudi brez optimizacije :) ",
+    "user": "Apple"
+  },
+  {
+    "message": "Gruntam da bi kar en tpl spisal z nekimi php tagi in potem samo te tage zamenjal z vsebino iz baze ter izpisal.. ",
+    "user": "petzup"
+  }
+]

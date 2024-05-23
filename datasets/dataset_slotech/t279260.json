@@ -1,0 +1,82 @@
+[
+  {
+    "message": "Pozdrav!  Na Dell prenosniku (centrino) imam OpenSuse 10.2; toliko za informacijo.  Danes, preden sem šel spat okoli enih, sem na internetu pogledal Odmeve. Prenosnik sem si dal na posteljo, normalno pogledal, nato sem OSu rekel, naj se ugasne. Medtem, ko je bil \"shutdown in progress\", sem prenosnik pomotoma zaprl, preden je imel čas se izklopiti. Po parih minutah sem opazil, da se ni ugasnil, zato sem ga odprl. A ekran je ostal črn. Zato sem držal gumb za izklop nekaj sekund, kolikor je bilo potrebno, da se je prenosnik ugasnil. Danes pa lepo priklopim prenosnik na elektriko, ga hočem vžgati in namesto Grub liste operacijskih sistemov, kjer imam za izbrati openSuse ali pa failsafe, se mi pokaže tole:    GNU GRUB version 0.97 (636K lower / ....)  [ Minumal BASH-like line editing is supported. For the first word, TAB lists possible command completitions. Anywhere else TAB lists possible completitions of a device/filename. ]  grub>      Prej, ko mi je vse normalno delalo, sem imel en problem, ki pa niti ne vem, če bi bil kaj s tem povezan. Če je bil OS zagnan in sem prenosnik zaprl, je bila možnost, da se ni zbudil: ekran ostal črn. To se mi je tudi zgodilo s standby oz sleep - a tukaj vedno. A če sem ga ugasnil na zgoraj opisan način, se mi je potem normalno zbudil. To sem v preteklosti rešil z spremembo ACPI konfiguracije. Potem mi tale opisana težava ni delala problemov. To je bilo v suse 9.X, katerega sem imel prej, preden sem nadgradil na openSuse 10.2. A sem bil len - no, tudi nisem nikoli uporabljal sleep - in tole nisem spreminjal. Ne vem, če bi bilo tole kaj povezano, ampak vseeno sem opisal, za vsak slučaj.    Ali bi kdo vedel zakaj se mi je tole pripetilo? V kakšnem primeru se to zgodi?  Kaj bi bilo najbolje da storim? Še enkrat inštaliram GRUB? (to bi moralo delovati) Kaj se iz te minimalne konzole da narediti?   Hvala za kakršnokoli pomoč. ",
+    "user": "Jst"
+  },
+  {
+    "message": "I'll be damned. Ko se mi je včerej zgodilo opisano, sem si rekel: \"Itak bo jutri dež, bom danes frej.\"   Danes pa vžgem prenosnika, da bom šel na delo in opensuse se mi normalno naloži. Nič jasno. Zakaj se mi je to zgodilo, nisem ugotovil. Bi pa res rad zvedel.  Če bom, bom tu opisal težavo. Čeprav dvomim, ker ne vem kje bi gledal, v logih ni nič, na internetu pa tudi nisem našel kakšne pametne razlage.   Največji problem pri iskanju je, da meni ni zaštekalo nalaganje OSa, ampak še preden se pojavi menu z izbiro operacijskih sistemov. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Tisto se zgodi če ne najde particije z seznamom. Ponavadi taki nenadni izklopi povzročijo da se grub le nekoliko počasnjeje naloži, nisem pa videl da bi te vrglo v bash konzolo. Čudno. ",
+    "user": "kriko1"
+  },
+  {
+    "message": "Jaz imam izkušnje, da pri takih nenavadnih izklopih, dlje časa nalaga OS, ker FS popravlja razne stvari. GRUB se mi nikoli ni nalagal več kot tisti trenutek.  Kar je meni čudno je to, da se mi ni nič hotelo naložiti. Potem je pa \"puf\", meni nič, tebi nič, danes zjutraj delalo, kot da se ne bi nič zgodilo.  Včerej potem nisem hotel še enkrat naložiti GRUB, ker tole še nikoli nisem videl, in me je zanimalo, kaj se da iz tistega narediti. Pa to ni bil BASH, ampak nekaj tako minimalnega, da se nisem spomnil nobenega pametnega ukaza, ki bi kaj povedal. Recimo fsck ni bil dosegljiv. Saj to je logično, ker ni bila mountana nobena particija. Res ne vem, kaj bi lahko iz tistega dosegel. Mi je pa žal, da nisem zvedel nič novega, ob tako \"lepi\"/nenavadni priložnosti. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Lahko si nekam prepišeš tvoj odsek in ob naslednjem primeru ga vneseš v tisto konzolo, npr:  root (hd0,0) kernel /boot/vmlinuz-2.6.22-kamikaze5 root=/dev/sda1 vga=0x31a resume=/dev/sdb1 splash=verbose showopts elevator=cfq reboot=b initrd /boot/initrd-2.6.22-kamikaze5  In bi ti moralo sistem bootat. Razen če ni iz ne vem kakega razloga particija dosegljiva. Če imaš ext3 ti priporočam da spremeniš journaling na journal_data (polno), zelo odporno na take izpade. ",
+    "user": "kriko1"
+  },
+  {
+    "message": "Imam reiser FS. Pri temu nisem prepričan, če imaš možnost nastavitve stopnje journalinga.  Sicer pa linux večinoma uporabljam na prenosniku, kjer je takšnih in podobnih izpadov bore malo.   --  Hja, grem še sleep poštimat (ACPI konfiguracija, I think) in mogoče se bodo rešite težave, da zaprtje ekrana zmoti shutdown proces. ",
+    "user": "Jst"
+  },
+  {
+    "message": "GRUB sux. LInux LOader FTW! :) ",
+    "user": "'FireSTORM'"
+  },
+  {
+    "message": "A lilo še sploh obstaja?  ",
+    "user": "karafeka"
+  },
+  {
+    "message": "To IMHO nima nobene veze z GRUBom.   Nekaj se je zaglupilo in grub ni uspel pobrati config fajla na prvi particiji in se je počil v nek poseben režim.  Po moje se je disk toliko zaglupil, da je pozabil, kjoliko cilindrov ima ali kaj podobnega. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Jaz se strinjam z Branetom. To je najverjetnejša razlaga. Ker imam prenosnika prižganega večino časa, je možno, da je lastna logika diska sporočila BIOSu kakšno neumnost/napako, ravno po WarmUp-u. Tako se je lahko prebral samo MBR.  Je pa tudi res, da po SMART sistemu, mi ta disk sploh ne bi smel več delovati. To sem opazil po kakšnem mesecu uporabe. Pa čeprav mi je do sedaj vse normalno delovalo in tudi performanse so takšne, kakršne morajo biti.  Je zelo možno, da je to dvoje povezano. ",
+    "user": "Jst"
+  },
+  {
+    "message": "ČE se prav spomnim ATA specifikacij ( in SATA bi moral biti enak) je tako, da po resetu lahko dostopaš samo prvemu cilindru in izvedeš več ali manj samo setup in ID diska- ukaz,s katerim prebereš njegove kritične podatke ( število sektorjev, cilindrov in glav itd).  Če se je disk kakorkoli resetiral ali kako drugače pozabil svoje nastavitve, potem ta tvoja posledica ni tako neverjetna. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Aha, disk bo treba v prenosniku pošasi zamenjati. Danes sem namreč doživeč kernel panic na temo not sync (0,2) - nekaj podobnega.   Heh, SMART je po letu dni izpolnil svojo obljubo: smrt diska. Vendar do nedavnega brez kakršnih predhodnih znakov. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Nekaj bi vas prosil. Če se kdo spozna na SMART, naj mi razloži naslednje.  openSuse, smartmontools.   linux-4thv:/home/matej # smartctl --all /dev/hda smartctl version 5.37 [i686-suse-linux-gnu] Copyright (C) 2002-6 Bruce Allen Home page is http://smartmontools.sourceforge.net/  === START OF INFORMATION SECTION === Model Family: Fujitsu MHT series Device Model: FUJITSU MHT2040AH Serial Number: NP0ET543RUYL Firmware Version: 006C User Capacity: 40,007,761,920 bytes Device is: In smartctl database [for details use: -P show] ATA Version is: 6 ATA Standard is: ATA/ATAPI-6 T13 1410D revision 3a Local Time is: Thu Aug 23 06:35:13 2007 CEST SMART support is: Available - device has SMART capability. SMART support is: Enabled  === START OF READ SMART DATA SECTION === SMART overall-health self-assessment test result: PASSED  General SMART Values: Offline data collection status: (0x00) Offline data collection activity was never started. Auto Offline Data Collection: Disabled. Self-test execution status: ( 0) The previous self-test routine completed without error or no self-test has ever been run. Total time to complete Offline data collection: ( 293) seconds. Offline data collection capabilities: (0x7b) SMART execute Offline immediate. Auto Offline data collection on/off support. Suspend Offline collection upon new command. Offline surface scan supported. Self-test supported. Conveyance Self-test supported. Selective Self-test supported. SMART capabilities: (0x0003) Saves SMART data before entering power-saving mode. Supports SMART auto save timer. Error logging capability: (0x01) Error logging supported. No General Purpose Logging support. Short self-test routine recommended polling time: ( 2) minutes. Extended self-test routine recommended polling time: ( 40) minutes. Conveyance self-test routine recommended polling time: ( 2) minutes.  SMART Attributes Data Structure revision number: 16 Vendor Specific SMART Attributes with Thresholds: ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE 1 Raw_Read_Error_Rate 0x000f 100 100 046 Pre-fail Always - 235513 2 Throughput_Performance 0x0005 100 100 030 Pre-fail Offline - 11927552 3 Spin_Up_Time 0x0003 100 100 025 Pre-fail Always - 1 4 Start_Stop_Count 0x0032 099 099 000 Old_age Always - 689 5 Reallocated_Sector_Ct 0x0033 100 100 024 Pre-fail Always - 8589934592000 7 Seek_Error_Rate 0x000f 100 100 047 Pre-fail Always - 3132 8 Seek_Time_Performance 0x0005 100 100 019 Pre-fail Offline - 0 9 Power_On_Seconds 0x0032 072 072 000 Old_age Always - 14103h+26m+43s 10 Spin_Retry_Count 0x0013 100 100 020 Pre-fail Always - 0 12 Power_Cycle_Count 0x0032 100 100 000 Old_age Always - 560 192 Power-Off_Retract_Count 0x0032 100 100 000 Old_age Always - 10 193 Load_Cycle_Count 0x0032 099 099 000 Old_age Always - 11378 194 Temperature_Celsius 0x0022 100 095 000 Old_age Always - 45 (Lifetime Min/Max 15/61) 195 Hardware_ECC_Recovered 0x001a 100 100 000 Old_age Always - 25574 196 Reallocated_Event_Count 0x0032 100 100 000 Old_age Always - 285671424 197 Current_Pending_Sector 0x0012 100 100 000 Old_age Always - 0 198 Offline_Uncorrectable 0x0010 100 100 000 Old_age Offline - 0 199 UDMA_CRC_Error_Count 0x003e 200 200 000 Old_age Always - 1 200 Multi_Zone_Error_Rate 0x000f 100 097 060 Pre-fail Always - 13143 203 Run_Out_Cancel 0x0002 100 100 000 Old_age Always - 1533286940896  SMART Error Log Version: 1 ATA Error Count: 1 CR = Command Register [HEX] FR = Features Register [HEX] SC = Sector Count Register [HEX] SN = Sector Number Register [HEX] CL = Cylinder Low Register [HEX] CH = Cylinder High Register [HEX] DH = Device/Head Register [HEX] DC = Device Command Register [HEX] ER = Error register [HEX] ST = Status register [HEX] Powered_Up_Time is measured from power on, and printed as DDd+hh:mm:SS.sss where DD=days, hh=hours, mm=minutes, SS=sec, and sss=millisec. It \"wraps\" after 49.710 days.  Error 1 occurred at disk power-on lifetime: 13324 hours (555 days + 4 hours) When the command that caused the error occurred, the device was active or idle.  After command completion occurred, registers were: ER ST SC SN CL CH DH -- -- -- -- -- -- -- 84 51 00 88 88 ed e3 Error: ICRC, ABRT at LBA = 0x03ed8888 = 65898632  Commands leading to the command that caused the error were: CR FR SC SN CL CH DH DC Powered_Up_Time Command/Feature_Name -- -- -- -- -- -- -- -- ---------------- -------------------- c8 00 08 81 88 ed e3 00 6d+01:56:13.149 READ DMA c8 00 08 d1 7b 41 e4 00 6d+01:55:13.391 READ DMA c8 00 08 81 81 41 e4 00 6d+01:55:13.370 READ DMA c8 00 08 e9 35 4f e3 00 6d+01:55:13.317 READ DMA c8 00 08 71 76 61 e4 00 6d+01:55:13.294 READ DMA  SMART Self-test log structure revision number 1 Num Test_Description Status Remaining LifeTime(hours) LBA_of_first_error # 1 Extended offline Completed without error 00% 14095 - # 2 Short offline Completed without error 00% 14092 -  SMART Selective self-test log data structure revision number 1 SPAN MIN_LBA MAX_LBA CURRENT_TEST_STATUS 1 0 0 Not_testing 2 0 0 Not_testing 3 0 0 Not_testing 4 0 0 Not_testing 5 0 0 Not_testing Selective self-test flags (0x0): After scanning selected spans, do NOT read-scan remainder of disk. If Selective self-test is pending on power-up, resume after 0 minute delay.   (dal sem subscript text, da bo vse, upam da, prišlo lepo, kar spada, v vrstico)  ---  Torej, kaj mi smart sporoca? (poleg my opiniton, hocem slisati se koga)  Hvala. ",
+    "user": "Jst"
+  },
+  {
+    "message": " S.M.A.R.T. ",
+    "user": "kriko1"
+  },
+  {
+    "message": "Če jaz prav razumem tiste atribute, potem bi ta disk mogel kmalu umreti?  ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE  Raw_Read_Error_Rate 0x000f 100 100 046 Pre-fail Always - 235513   To pomeni, da je disk že čisto zmatran, a ne?  A fora vsega je, da mi je takšne vrednosti javljal smart pogram v XPjih že prvič, ko sem pogledal omenjeni program. Mesec dni ali še kakšen teden manj, po nakupu. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Raw read error imaš že hudo, dosti nad Treshold. Naj ne bi bilo ravno v redu. Jaz imam na starem disku 32, na novejšem še vedno 0. ",
+    "user": "kriko1"
+  },
+  {
+    "message": "Lej, enaki rezultati so bili že pri novem disku. Pa mi je delal več kot leto super. Sedaj pa se mi je pojavil problem, opisan v naslovu, ter en kernel panic. Od tedaj mi spet pronosnik dela bp. 24/7 almost.  Zato mi je čudno vseskupaj. Bom pa vsekakor kupil nov disk - itak so tako smešno poceni, da bi kupil dva, če bi jih imel kam dati. ",
+    "user": "Jst"
+  },
+  {
+    "message": "S smartom se nisem kaj dosti ukvarjal, tako da 100% odsgovora nimam.  Vsekakor je videti, da se je nabralo nekaj slabih, relociranih sektorjev.  Koliko, tega tako na hitro ne vidim in ni nujno, da gre za trenutno kritično napako.  Čisto možno je, da je kje škripnil kak sektor, ki ga je disk zamenjal za praznega \"iz skladišča\", vendar če si imel kak executable gor in ga zagnal takega \"z luknjo\" je seveda padel in pobral še kaj s sabo... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Interesting.   Sposodil sem si nov, zapakiran, neuporebljen disk od kolega, ki se ukvarja z dobavo fujitsu diskov v Slo. To je 2,5\" trdi disk Fujitsu 120GB, 5400rpm, 8MB, IDE. (Najbrž bom kupil kar tega, saj stane samo 60EU.)  Pa mi na prenosniku \"#smartctl --all /dev/hda\" kaže podobne rezultate, kot pri prej opisanemu. Je možno, da je kaj narobe z biosom? Kontrolerjem na plati?  Ker jaz tega sploh več ne razumem. Ali pa je mogoče čas, za kakšen nov prenosnik z core 2 duo procesorjem.... hm... ",
+    "user": "Jst"
+  },
+  {
+    "message": "Poišči malo če ima tvoje čipovje kake znane težave, poleg tega preveri da imaš najnovejši bios. ",
+    "user": "kriko1"
+  }
+]

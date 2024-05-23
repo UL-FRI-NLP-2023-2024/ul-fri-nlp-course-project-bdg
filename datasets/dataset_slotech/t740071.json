@@ -1,0 +1,74 @@
+[
+  {
+    "message": "Imam en bat fajl kateri zažene drug bat fajl, sicer zadeva deluje, ampak problem je ker se ta drugi bat fajl požene tudi po 6x v razmaku ene sekunde, kar je narobe. Ne vem kako naj preprečim to, da se bo drugi bat fajl pognal samo 1x. probal sem z start /b batch.bat call batch.bat start cmd /c \"batch.bat\"  probal sem dati tudi v drugi bat timeout /t 20 da bi videl, če se bo zdaj pognal v razmaku 20 sekund, pa se ne še vedno je isto. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "V prvem bat fajlu popravi vsebino tako, da ne bo pognala tega drugega 6x.To ni stvar, ki bi jo popravljal v drugem fajlu, saj ni on nic kriv, da ga tisti prvi 6x zazene. ",
+    "user": "Ahim"
+  },
+  {
+    "message": " Ahim je 22. feb 2019 ob 16:11 izjavil:V prvem bat fajlu popravi vsebino tako, da ne bo pognala tega drugega 6x.To ni stvar, ki bi jo popravljal v drugem fajlu, saj ni on nic kriv, da ga tisti prvi 6x zazene.  ne vem kaj naj popravim v prvem bat fajlu, le ta se enkrat požene vmes zažene drugega in to je to.. Imam več skript in pri vseh je enako. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Potem se drugi zazene samo enkrat in nimas tezave, kajne?   Racunalniki so (na tako visokem nivoju) precej predvidljive zadeve, ki pocnejo to, kar jim narocis. Ce pozenejo neko stvar 6x, je ne zaradi nekaksne lastne volje oziroma samozavedanja, ampak zato, ker si ti tako ukazal v prvi skripti. ",
+    "user": "Ahim"
+  },
+  {
+    "message": "Večkrat se ti izvede samo če ga večkrat kličeš. A imaš kak for stavek v prvi datoteki?   Iz enega bat fajla kličeš drugega brez problema samo z call file2.bat  start.bat:  @echo off\ncall test.cmd\necho napaka: %napaka_RC%\n  test.bat:  @echo off\nset napaka_RC=123\n    Imaš kaj takega v programu?  FOR /r %%X IN (*.txt) DO CALL :Delaj %%X\n\n:Delaj\ncall test.bat\n ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "V prvem bat fajlu je tole %SystemRoot%\\system32\\cmd.exe /c \"for /f \"delims=\" %%a in (first.txt) do %%a\"  v drugem bat fajlu, ki se pa prevećkrat izvaja je pa tole, s tem da je to ven pobrano vmes je še koda for %%x in (C:\\syslog\\Logle.txt) do if %%~zx==0 (goto start) else (goto ABC)  for %%X in (C:\\syslog\\Logle.txt) do if %%~zX GTR 8000 (goto LAC) else (goto JAC)  for /f %%i in ('find /v /c \"\" ^< C:\\syslog\\LogleRH.txt') do set /a lines=%%i set /a startLine=%lines% - 70 ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Stavek \"for /f \"delims=\" %%a in (first.txt) do %%a\"  v datoteki first.txt išče ukaze. Toliko kot jih najde, tolikokrat se izvede.  Če jaz napišem v first.txt 6 vrstic in v vsako dam napis test.bat, se bo test.bat izvedel 6x.  Kaj bi sploh rad naredil? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 23. feb 2019 ob 21:50 izjavil:Stavek \"for /f \"delims=\" %%a in (first.txt) do %%a\"  v datoteki first.txt išče ukaze. Toliko kot jih najde, tolikokrat se izvede.  Če jaz napišem v first.txt 6 vrstic in v vsako dam napis test.bat, se bo test.bat izvedel 6x.  Kaj bi sploh rad naredil?    v datoteki frist.txt je samo en ukaz, ena vrstica. in ne poganja bat fajla, pač pa nek program.  Rad bi samo, da se mi drugi bat fajl zažene samo 1x in ne kar naprej, kot da pride v nek loop ",
+    "user": "Blisk"
+  },
+  {
+    "message": "kje v programu kličeš drugi bat?  A lahko vsebino prvega bat fajla prilimaš tam kjer kličeš drugi fajl?  Zakaj rabiš datoteko first.txt, če kličeš samo en program? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "kot je nebivedu napisal: kaj sploh poskusas naredit? lahko das celotna batch fajla? tezko je nekaj iskat, ce nimas vseh informacij... ",
+    "user": "prowb"
+  },
+  {
+    "message": "Ok tukajle je cela skripta https://pastebin.com/gs7p8NyG tam kjer so bat fajli so druge skripte, ki jih ta kliče. največji problem je log.bat ta se poganja kar tako random, po kakem ključu mi ni jasno. Je pa res, da je log.bat narejena v loop, ko se enkrat požene stalno laufa tole je pa ta batch https://pastebin.com/r5FZwu5s ",
+    "user": "Blisk"
+  },
+  {
+    "message": "zakaj kličeš cmd.bat? Imaš ta file narejen? Ker je v sistemu cmd.exe Daj še cmd.bat poglej, kaj dela.  Kaj se ti v tej skripti sedaj 6x ponovi? Kater ukaz? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 24. feb 2019 ob 11:22 izjavil:zakaj kličeš cmd.bat? Imaš ta file narejen? Ker je v sistemu cmd.exe Daj še cmd.bat poglej, kaj dela.  Kaj se ti v tej skripti sedaj 6x ponovi? Kater ukaz?   nimam cmd.bat v tej skripti se nič ne požene 6x ",
+    "user": "Blisk"
+  },
+  {
+    "message": "zakaj potem to limaš? Če hočeš, da ti pomagamo, daj tisto kodo, ki 6x izvede nek drug program.  Imam en bat fajl kateri zažene drug bat fajl, sicer zadeva deluje, ampak problem je ker se ta drugi bat fajl požene tudi po 6x v razmaku ene sekunde, kar je narobe.  Kje torej kličeš iz bat fajla drugi bat fajl, ki se 6x izvede? Kako nimaš cmd.bat?  %SystemRoot%\\system32\\cmd.bat /c \"copy /y nul C:\\syslog\\deltmesL.txt\" ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "aja to ta samo naredi kontrolni fajl katerega deltmesL.txt potem druga skripta preverja če obstaja. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Ali lahko napišeš kateri del se ti sedaj 6x štarta in daš tisti del kode sem gor? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Saj sem že dal. tale koda se 6x požene https://pastebin.com/r5FZwu5s  zažene se pa iz prvega bat fajla. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Narobe sva se razumela. Rad bi videl v kodi kje kličeš tisti drugi bat fajl. ",
+    "user": "krneki0001"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "message": "Pred kratkim sem nabavil Ruckus MediaFlex 7000 serijo (7811 access point in 7111 adapter) za prenos brezžični prenos IPTV signala iz modema do STB na T-2. Zadeva deluje več kot odlično, signal je brezhiben, tako kot preko kabla.  Ker mi je pa osnovni modem za WLAN crknil bi rad uporabil7811 - poleg že vzpostavljenega IPTV prenosa - tudi kot WiFi router za data/internet prenos  do vseh laptopov/ipadov/telefonov v stanovanju?   Sem slišal, da se to sicer da, tudi vse Ruckusove prodajne sheme/animacije/grafi vključujejo to kot možnost, vendar je zadeva malce komplicirana, pa me zanima, če je to komu že mogoče ratalo oz. če ima kdo kako idejo kako zadevo vzpostaviti? ",
+    "user": "bj_slo"
+  },
+  {
+    "message": "Koliko ETH priključkov ima 7811? Če 4 LAN + 1 WAN, potem priključi: modem video port -- Ruckus WAN port + modem data port -- Ruckus 1-4 LAN port (katerikoli) Pred priklopom se poveži s PC na Ruckus LAN port in nastavi WiFi (ime, pass, ...) --> za za primer vem da dela.  Če ima samo WAN priključek (1 ETH), potem je možnost priklopa preko trunk porta na modemu (data+video signal) --> za ta primer nisem še preizkušal če dela. ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "Ja sej to je to, ker je samo 1 WAN. Prejšnja serija 2825/2811 ima WAN+4 LAN... ampak brez n protokola in brez 5 GHz... sem predvideval oz. so trdili da je serija 7000 samo nadgradnja, v bistvu gre pa za samo izboljšan prenos IPTV (do 5 HDTV signalov), nažalost so pa kr gladko ukinili LAN porte in očitno enostavno nastavitev data transferja. ",
+    "user": "bj_slo"
+  },
+  {
+    "message": "Če boš imel še en kup naprav s slabim signalom na Ruckusu, bo po vsej verjetnosti začela kockati TV. Zato je boljša opcija AP namenjen samo za računalnike/smartphone/itd. ",
+    "user": "ZGI"
+  },
+  {
+    "message": "Ne vem kako je pri T2, tako da govorim na pamet... Če STB-ji podpirajo trunk priklop, potem lahko nastaviš port kamor je priključen 7811 na trunk in boš dobival data+video podatke. Če boš na WiFi od 7811 povezal PC, bi ta moral dobivati data podatke.  Za SiOL vem, da če PC priključiš na data port (direktna povezava s kablom, modem - PC), dobi IP in tudi net dela, tako da bi v teoriji tudi preko Ruckusov delalo... Vprašanje je samo kako bo z WiFi - če boš spreminjal nastavitve WiFi-ja (ime, pass, ...) bo verjetno potrebno ponovo uparit 7811 in 7111. ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "VDSL2 modem od T-2 ima pomoje že združene porte, ker TV dela v katerikoli port ga vklopim. Pri prejšnjem modemu vem, da sem moral TV vklopit v točno določen port.  Data signal pa pomoje že pošilja, ker če iz 7111 - ki je wireless povezan z AP 7811 - kabel potegnem iz STB in ga dam v laptop, dela internet normalno... ",
+    "user": "bj_slo"
+  },
+  {
+    "message": "bj_slo: \"Data signal pa pomoje že pošilja, ker če iz 7111 - ki je wireless povezan z AP 7811 - kabel potegnem iz STB in ga dam v laptop, dela internet normalno...\"  Če ti ta priklop na PC omogoči internetni dostop, potem poglej na 7811, če kaj piše kateri IP uporablja in se s PC (PC - UTP - 7811) poveži v vmesnik od 7811. Preveri če imaš možnost nastavljat WiFi (ime, pass, ...). Če imaš možnost, potem nastavi in preveri če ti PC zazna WiFi od 7811 in se poveži nanj. Če to deluje bo najverjetneje potrebno narediti uparitev 7811 in 7111 - preden delaš uparitev preveri če STB dobi signal. Če ni signala potem naredi uparitev: z UTP kablom poveži 7811 in 7111 med seboj, potem daj oba v el. napajanje. Po ~1min, ko se lučke na Ruckusih umirijo, pa na 7111 pritisni RST tipko in zadrži za ~30sek, da antena in roka začneta istočasno utripati 1x na 2sek. Potem tipko spusti in počakaj ~2min da se Rukusa uparita.  Poročaj... ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "Problem je ker ko se povežem z 7811 vmesnikom ima sicer en Video WLAN SSID z wpa2 aek zaščito, ki jo npr Ipad tudi najde.  Ampak se nobena od naprav noče povezati nanj, tudi če jo odprem brez zaščite. Verjetno je namenjena Video WLAN transferju in ne Data WLAN.... samo ne vem kaj/zakaj bi bila razlika. ",
+    "user": "bj_slo"
+  },
+  {
+    "message": "Imaš v WEB interface-u od 7811 možnost vzpostavit dodatno WiFi povezavo? Kot neke vrste guest WiFi povezavo, za katero določiš ime omrežja in password? Gledal sem navodila za 7811 in 7111 in ne vidim možnosti za dodatno WiFi povezavo, a vseeno preveri.  Poglej kako imaš nastavljeno na: Configuration - Wireless - Video WLAN (navodila, stran 23, slika pod besedilom Figure 12—Configuration :: Wireless :: Video WLAN tab). Poglej če imaš nastavljeno Passphrase in če vpisuješ pravilno v PC. Mogoče poizkusi z Encryption method WPA (ne WPA2) in WPA Algorithm AES - če že ni tako nastavljeno... Preveri tudi, če ni WiFi povezava zaklenjena na MAC naslove: Configuration - Access Control Video WLAN (navodila, stran 35, slika pod besedilom Figure 21—Configuring Access Control main page). ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "LP.  jz mam pa en drug problem in sicer sm naročnik Siola in bi mev rad wireless povezavo. dobiv sem pa oddajnik in sprejemnik comtrend (amis ponudba) in ne rucus ki ga ponujajo na siolu. prklopu sem ga ze prav in dela prav, slike pa ni. ko sm klicov na siol mi je reku, da ne zazna na tem portu (3), nobene prave naprave (mislu je na rucus) in potem je reku, da oni te wireless naprav ne podpirajo...... dobr, kaj jz mam lahk ta wireless oddajnik in sprejemnik in kaj bi mogu nastavt, če gdo ve??? ",
+    "user": "dreamer22"
+  },
+  {
+    "message": "@dreamer22 Povej bolj točne podatke o napravi Comtrend - oznaka, model... Kateri STB boš imel priključen? Kako je nastavljen ETH3 port - video/trunk?  Če Comtrend oddajnik priključiš na data port na modemu (ponavadi ETH1 in ETH2) in sprejemnik na PC, dobiš signal/odpira internetne strani? ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "comtrend sistem je takle: http://www.amis.net/web3/zasebni-uporab...  dobu sm ga pa od kolega in nisem dobu zdraven nobenih navodil. modem je Genexis, za premikanje programov pa siolov box-S port1,2 sta internet, porta 3,4 pa iptv.... probov tud prklučt oddajnik na port1 kot si reku Vaseer, takat ni blo več interneta! a treba kake seriske številke vnest od oddajnika in sprejemnika? in če je to potrebno, kak se to nardi???  LP :) ",
+    "user": "dreamer22"
+  },
+  {
+    "message": "S Comtrend-om nimam izkušenj, vendar po mojem mnenju, ta sistem samo nadomešča kabel, tako da je vse odvisno samo od pravilnega priklopa in da se oddajnik in sprejemnik \"vidita\" in tudi komunicirata.  Preveri, kako imaš nastavljen Genexis modem. Imaš PPPoE na modemu, ali imaš router? Če imaš PPPoE na modemu, priključi oddjanik na ETH1, sprejemink pa na PC v mrežno kartico (isto kot da bi imel priključen preko kabla, samo da bo namesto kabla, vmes Comtrend sistem). Če imaš router, pa priključi oddajnik na router, sprejemnik pa isto na PC. Če ti na tak način internet deluje, potem pomeni, da sta oddajnik in sprejemnik povezana med seboj in poteka prenos podatkov.  Če ti internet po zgornjem postopku deluje, potem preveri sledeče (če ne deluje, preveri če sta oddajnik in sprejemnik povezana med seboj - postopka na žalost ne poznam; vprašaj kolega, ki ti je sistem dal oz. kliči na Amis, bi moral imet navodila): - preveri, kako so nastavljeni ETH porti na modemu (data, video, trunk, voice, nothing, ...) - ETH1 in 2 sta najverjetneje nastavljena na data, 3 in 4 pa na video ali trunk - preveri, kako imaš nastavljen priklop BOX S-a na Servisnih straneh SiOL (posredni ali standardni priklop)  Kako so nastavljeni ETH porti na modemu, boš najlažje preveril, če se povežeš v GUI od modema. Na ETH1 (nujno ETH1!) priključi PC, odpri brskalnik in vpiši IP naslov 192.168.1.1 ; ko te vpraša za username in password: username: user ; password: user Porem poiščeš Port configuration (nekaj v tem smislu) in točno povej, kako sta nastavljena ETH3 in 4. ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "Pozdravljeni, zadeva je sledeča. Če povežem na eth1 in z pcjem internet dela, pomeni da se sporazumevata. Ko povežem z eth3 ali 4 kjer je video signal in sprejemnik z boxom (tega sem sedaj na servisnih straneh premaknil iz standardnega v posredni priklop) še vedno zadeva ne deluje. kje bi lahko še bila težava? ",
+    "user": "dreamer22"
+  },
+  {
+    "message": "SIOL preko vrat TRUNK oddaja podatkovni signal kot VLAN 0 in video signal kot VLAN 3999. SIOL Box je programiran, da lahko izlušči ločen podatkovni in video signal, vse ostale naprave pa ta vrata zaznajo kot podatkovni signal. Torej moraš vrata nastaviti na TRUNK in bi ti moral delati brezžični internet na prenosniku in SIOL TV na Box-u. Pa na servisnih straneh in v Box-u nastavi nazaj na standardni priklop, da ti slike na bo vsakih nekaj minut prekinjalo za kakšno sekundo.  PS- kateri SIOL modem pa imaš? Običajno že sem modem omogoča brezžično podatkovno povezavo. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "@telexdell: Modem ima Genexis, kateri ne podpira WiFi povezave. Načeloma dobiš priloženo Edimax WiFi access point za WiFi (če si na SiOL omrežju dobiš AP 100%, če si na OŠO omrežju in je modem od OŠO ponudnika (predvsem Tritel), je pa od njih odvisno).  Za Comtrent sistem ne vem, če podpira trunk priklop, zato ti svetujem, da uporabiš video prilop (ETH3 in 4 na video) in posredni priklop na Servisnih. Ko imaš tako povezano in priključeno na BOX S, naredi reset BOX S-a na tovarniške nastavitve (hitro 5x pritisk tipke na BOX S). Potem potrdi nastavitve in če ti obkljuka omrežno povezavo, bi moralo delat. V primeru da ne dela, pokliči na SiOL in naj preverijo, če se na modemu \"vidi\" BOX S-a, ko je priključen preko Comtrend sistema. ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "Mene pa zanima, koliko izhodov ima Ruckus VF2111.  A samo 1 ali več (2)?  Sprašujem zato, ker me zanima, če bi lahko na 1 rukus priklopil 1 STB in en LAN na komputadorju.  Hvala, F ",
+    "user": "flukturr"
+  },
+  {
+    "message": "Stanje: sem razmišljal da bi na Ruckus 7811, ker je samo bridge, lahko priklopil naprave preko routerja z DHCP. Ko namesto v modem, vklopim 7811 v router port in dobi local IP /192.168.0.xx, dobim na routerju zaznane vse naprave, tudi STB. Težava je sedaj samo, da STB ne dobiva video signala preko router porta, temveč samo če je vklopljen v modem. Data signal pa deluje čisto ok... je to povezano samo z trunkingom na router portu in nezmožnostjo posredovanja video/data signala naenkrat? ",
+    "user": "bj_slo"
+  },
+  {
+    "message": "@flukturr VF2111 je sprejemnik in ima samo 1 ETH priključek. VF2811 je oddjanik in če se ne motim, ima 5 ETH priključkov (1 WAN in 4 LAN).  @bj_slo Če boš router priključil na trunk port na modemu, bo dobival samo data podatke. Če bi želel, da bi preko routerja pošiljal data+video istočasno, bi moral ločit VLAN-e za data in video (predvidevam, nisem 100%), pa tudi če bi jih, je vprašanje kako bi STB to zaznal ...  Poskusi tako: modem data port --- router WAN port modem video port --- router LAN1 port (2 kabla med modemom in routerjem), na routerju vzpostavi PPPoE za internetno povezavo in blokiraj Multicast (Filter Multicast) - DD-WRT in Tomato vem da podpirata, če imaš stock FW od routerja, pa preveri (preden priklopiš oba kabla v router, obvezno vključi blokado za Multicast, drugače se bo modem obesil!). Nisem 100% če bo delalo, je pa za poizkusit ... ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "Jaz sem včeraj dobil to zadevo in dela BP. Po defaultu ne deli SSID in moraš vklopit da ga naprave vidijo ali pa pač dodaš manualno. Da vidiš geslo za omrežje se moraš prijavit v web admin kot super in ne kot admin. Tam potem lahko nstaviš enkripcijo, gesla, ime omrežja itd. Seveda, če spreminjaš geslo ga moraš potem tudi spremeniti na adapterju pri set-top boxu. Mi pa nexus 4 recimo zelo slabo dela na tem omrežju (moraš biti čisto blizu,če hočeš da kaj dela). Vse ostale naprave delajo BP. ",
+    "user": "CyberDuck"
+  }
+]

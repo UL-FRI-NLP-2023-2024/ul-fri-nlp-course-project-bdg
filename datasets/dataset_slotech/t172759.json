@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Torej imam hitachijev t7k250 160GB disk, vsi se hvalijo da je ncq fajna stvar, noben pa mi ni do zdaj povedal kje se vklopi NCQ, na zalost sam ne najdem. Mam pa DFi-jevo plato.  lp jenej ",
+    "user": "Jenej01"
+  },
+  {
+    "message": "- najprej moraš zadevo opriklopit na SATA II - mislim, da moraš instalirat NCQ gonilnike (če se prav spomnim je še celo nekdo kurcal da ni OK, razen če jih naložiš pred instalacijo polken v Setup screenu) ",
+    "user": "krho"
+  },
+  {
+    "message": "potemtakem, tak skoraj nobeden nima ncq-ja omogocenega.  No jaz se bom probal igrat se naprej. Samo tukaj se nisme nic nasel, ko so vsi govorili da bi najblo na hitachijevi strani...  http://www.hitachigst.com/hdd/support/d...  lp jenej ",
+    "user": "Jenej01"
+  },
+  {
+    "message": "ce se ne motim, mors pri hitachijih najprej v firmwareu uklopit sata2 podporo, sele potem dela. uklopis pa ga z Feature Tool. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "sata 2 vklopljen, pa oni spectrum streaming se mi zdi tudi. kak naprej. Dr M ce slucajno ves.  lp jenej ",
+    "user": "Jenej01"
+  },
+  {
+    "message": "S tem NCQjem znajo biti problemi. Forumi so polni grozljivk, kjer v glavnih vlogah nastopajo nForce4, SATA (II) in NCQ. Rezultat je velikokrat data corruption.  Kupil sem kompjuter v katerem sta med drugim Asus A8N-E (nForce4 Ultra) in Hitachi T7K250 (SATAII). Naložim Windowse (še prej sem dal na plato zadnji uradni ne-beta BIOS 1005), in nForce4 driverje (6.66). S posebnim Hitachijevim orodjem omogočim SATA II (po defaultu je naštiman na SATA I) in stvar bi morala biti urejena.   Tu so se začeli problemi. V Event Viewerju so se začela pojavljati opozorila:  Event ID: 51 - An error was detected on device \\Device\\Harddisk0\\D during a paging operation  To pa ni več šala. Opozorilo, ki se ponavadi pojavlja na diskih ki so tik pred umrtjem, se je pojavilo pri popolnoma novem disku! In glede na to, kar sem pozneje prebral na raznih forumih (recimo nforcersHQ), sem jo še poceni odnesel. Marsikje so rezultati variirali od BSODov, nezagona sistema do popolne izgube vseh podatkov.  Pri meni je bila ''rešitev'' na srečo preprosta. V Device Managerju je treba izklopiti NCQ. Težav sedaj ni več (če odštejem zoprno ikono ''Safely Remove Hardware'' v trayu, ki je verjetno posledica buga v nForce driverjih).  Res super. Če želim, da računalnik deluje brezhibno, moram izklopiti eno od zelo oglaševanih in hvaljenih funkcij, (tudi) zaradi katere sem pravzaprav kupil to plato in ta disk!   Rečem še kakšno o veleslavnem hardwerskem firewallu, ki je eden od najbolj oglaševanih adutov nForce4 Ultra čipseta? Če na kompjuter naložim programje za njega upravljanje (v nForce driverjih), se kompjuter resetira vsakič ko čem iti na internet. Zaženeš Firefox/Explorer - bum, že gledaš modri ekran. Tudi to je znana težava in na večini forumov sploh odsvetujejo uporabo tega firewalla.  Sicer bo morda težave odpravil eden od naslednjih bios updateov za plato. Ali pa novi nForce driverji. Če bomo imeli smolo, pa šele nForce5. Glede na to, da je nForce4 zunaj že kar dolgo in da je od takrat izšlo že kar nekaj paketov driverjev zanj, je tole zadnje še najbolj verjetno...  Ni treba posebej poudarjati, da o teh težavah s SATA in firewallom ne vedo nič ne nVidia, ne Hitachi, ne Asus, ne katerikoli drugi proizvajalec plat in diskov. Čeprav so problemi splošno znani, pogosti in razširjeni. Oni raje prodajajo harware v beta fazi in ga potem, če je možno, pokrpajo skozi bios update in driverje. Probleme in pritožbe preprosto ignorirajo, kar je v tej industriji splošna praksa, ki večinoma ostane nekaznovana.  Skratka - ne morem si pomagati da ne bi bil malce žalosten in zagrenjen, ko vidim da tudi imena kot sta Asus in nVidia prevzemajo Viine poslovne prakse. ",
+    "user": "TheJack"
+  },
+  {
+    "message": "TheJack: To ni edini bug v nForce 3,4, še eden je tudi povezan s mrežno kartico in to je Checksum Offload. (Hardversko računanje CRC-ja v IP paketku). Pogruntal sem šele, ko se je siolov mail server spuntal in ni hotel sprejeti nobenega maila od mene. No Ethereal in spremljanje prometa na portu 25 je pomagalo. ",
+    "user": "krho"
+  },
+  {
+    "message": "potemtakem, NCQ-ja sploh ni priporocljivo vklopiti. Potem sem se res malo nasral ker sem kupil ta disk izjemoma zaradi tega, da vidim kaksna je razlika, drugace bi vzel wd-ja.  aja, da vseeno probam, bom si backup naredo, pa da si vklopim tale ncq, the Jack, kje tocno sem zdaj ponovno iskal pa ga nisem nasel, kje v nastavitvah to vklopim... hvala,  lp jenej ",
+    "user": "Jenej01"
+  },
+  {
+    "message": "aja, da vseeno probam, bom si backup naredo, pa da si vklopim tale ncq, the Jack, kje tocno sem zdaj ponovno iskal pa ga nisem nasel, kje v nastavitvah to vklopim... hvala,  Če si inštaliral najnovejše nForce4 driverje (in si inštaliral tudi nVidiin IDE driver, ki pride zraven), imaš NCQ tako ali tako že vklopljen, saj ga driverji sami vklopijo.  Drugače opcijo NCQ najdeš tule:  Control Panel->System->Hardware->Device Manager->IDE ATA/ATAPI Controllers->NVIDIA nForce4 Serial ATA Controller->Primary/Secondary Controller (odvisno kje imaš disk)->enable command queuing.  Če opcije ''Nvidia nForce4 Serial ATA Controller'' ne najdeš, imaš verjetno inštaliran Microsoftov IDE driver, kaj je po mojem celo boljše.  TheJack: To ni edini bug v nForce 3,4, še eden je tudi povezan s mrežno kartico in to je Checksum Offload. (Hardversko računanje CRC-ja v IP paketku). Pogruntal sem šele, ko se je siolov mail server spuntal in ni hotel sprejeti nobenega maila od mene. No Ethereal in spremljanje prometa na portu 25 je pomagalo.  Na ta bug hvalabogu še nisem naletel. Držim pesti. ",
+    "user": "TheJack"
+  },
+  {
+    "message": "Če opcije ''Nvidia nForce4 Serial ATA Controller'' ne najdeš, imaš verjetno inštaliran Microsoftov IDE driver, kaj je po mojem celo boljše.  Ja tole imam, bom kr tak pusto, pa sata2 mam vklopljeno...  hvala.  lp jenej ",
+    "user": "Jenej01"
+  },
+  {
+    "message": "ali lahko priklopiš SATA 2 disk na Epox Rda3+ ? ",
+    "user": "Jochaan"
+  },
+  {
+    "message": "Če ima SATA priključek, da. Vsaj kolikor jaz vem, je SATA II za nazaj združljiv. Bo pa deloval s 150 MB/s, ne 300 MB/s. ",
+    "user": "TheJack"
+  },
+  {
+    "message": "a za sata2 pa more prav plata podpirat ? ",
+    "user": "Jochaan"
+  },
+  {
+    "message": "Res je. ",
+    "user": "TheJack"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Domene in poddomene",
+    "content": "Imam težavco. Spletni strežnik www.domena.si je usmerjen na strežnik v DMZ (npr: 192.168.10.10) - na routerju sem ves promet ki pride po portu 80 preusmeril na ta IP in zadeva deluje bp. Sedaj bi pa želel na drugem strežniku, prav tako v DMZju (npr: 192.168.10.11), da bi delovala poddomena razvoj.domena.si in bila dosegljiva od zunaj. Kako to urediti na routerju/požarnem zidu, da bo poddomena usmerjena na ta IP 192.168.10.11. Pri providerju sem uredil, da je v DNS-u naredil novi  zapis razvoj.domena.si in jo usmeril na moj zunanji IP. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "asko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Domene in poddomene",
+    "content": "En port lahko forwardiraš samo na en notranji IP. Če želiš imeti zadaj več strežnikov pa obstaja več rešitev. Najbolj enostavna je da uporabiš proxy. Ideja je, da od zunaj pride zahtevek na proxy. Ta ga pa potem posreduje na ustrezni strežnik. \n\nVariant kako to narediti imaš več. Apache ima dodatek mod_proxy. Verjetno boljša rešitev je pa nginx, ki žere manj resourcev.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Domene in poddomene",
+    "content": "Ne vem sicer kaksen router imas, ampak najlazje bo, ce na drugem strezniku odpres http port na 8080 (recimo).",
+    "author": "DJ_Beat",
+    "author_level": "Dacar"
+  },
+  {
+    "ctx": "Domene in poddomene",
+    "content": "Bo res verjetno najlažje, da na drugem serverju spletna stran dela na drugem portu npr 8080. Potem ni težko usmeriti prometa...vse kar pride po 8080 se usmeri na drugi strežnik.",
+    "author": "asko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Domene in poddomene",
+    "content": "Najlazje... ce bo samo testno, se nimas kaj obremenjevati. Lahko pa malo zakompliciras in naredis se eno poddomeno, obstojeco preusmeris na prvi streznik, naredis http redirect na drugo poddomeno @8080 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "DJ_Beat",
+    "author_level": "Dacar"
+  }
+]

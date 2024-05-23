@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Imam: - netbook z bluetooth čipom - Ubuntu 10.10 - avtoradio z bluetooth podporo  Stanje: povezava med avtoradijem in netbookom deluje: zvok iz netbooka se predvaja na avtomobilskem ozvočenju  Problem:  Da se povezava vzpostavi je potrebno kup klikanja po netbooku: - vklopi BT - poveži se z avtoradijem - zamenjaj izbrano napravo iz vgrajene na to BT - še ena zadeva, katere se točno ne spomnem  Želja: vse zgornje se spelje samodejno, takoj ko netbook vklopim in ta zazna avtoradio (povezava z izmenjanim PINom je shranjena, le aktivirat se noče samodejno).  Kaka ideja? Verjamem, da za vse tole nucam skripto a se mi niti ne sanja, kje naj začnem iskat.  Cel luksus je ko z obvolanskimi komandami menjaš komade, ki se ti špilajo v VLCju - žal podpira le časovno playlisto, greš lahko na prej odšpilan komad pa nazaj - ne morš preskočt na naslednjega, ki še čaka na špilanje.   Če zna tule kdo kej pomagat, mu plačam pivo! ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Kaj maš zaen bluetooth stack? Gnomov bt-applet? ",
+    "user": "jype"
+  },
+  {
+    "message": "Da.  Zgleda je blo dovolj že samo to da sem tuki pojamral. Prej se usedem v avto, dam kontakt,vklomm BT in voila - špila preko avtoradija, obvolanske komadne delajo (v Totemu, v VLC nism probaval). Zanimiva je komanda Mute, ki ob prvem pritisku zmuta radio, ob drugem odmuta radio in pavzira Totem, ob tretjem muta radio in odpavzira Totem in ob četrtem odmuta radio da zopet špila. S tem lahk živim.  No, stvar mi je veselo špilala kake pol ure nato vse ugasnem, ko pride kolega in mu hočem pokazat zadevo. 10 minut sm se matral da je končno BT povezava uspela. WTF?  Enkart iz prve vse dela, drugič noče delat da se ubiješ :| ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Hja, če naj ti karkoli uporabnega svetujem, potem bi moral prebrati /var/log/debug, /var/log/messages, /var/log/daemon.log in vse to verjetno šele po tem, ko vključiš sporočila za razhroščevanje.  Mene je moj stack hecal samo enkrat, ko sem imel teslo fizični \"wireless\" switch premaknjen na off, pa nisem opazil. ",
+    "user": "jype"
+  },
+  {
+    "message": "V daemon.log je razvidno da povezava ne steče gladko - notr so Connection refused. V messages pa ni videt česa posebnega. v debug pa sploh nič zanimivga, sam kernel se neki oglaša ob štartu mašine.  Ob pol osmih mi je stvar začela delat praktično takoj, četrt čez osem pa se nikakor nista hotla povezat. Tut avtoradijo mi je občasno javil Connection refused. ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Ne tega javno talat, ker so v datotekah podatki, ki bi morali bit skriti (ne da je kakšna resna nevarnost, samo dobra praksa).  Če lahko, naloži gor še hci packet dump datoteko, ki jo bo sproduciral ukaz  hcidump -w datoteka  Reč pusti da teče skozi celoten \"dela - ne dela\" cikel, da lahko potem vidiš razliko med enim in drugim primerom. Če ne drugega, je potem zelo očitno, katera naprava se znajde v napačnem stanju za uspešno komunikacijo.  Aja, če nimaš hcidump, potem namestiš bluez-hcidump. ",
+    "user": "jype"
+  }
+]

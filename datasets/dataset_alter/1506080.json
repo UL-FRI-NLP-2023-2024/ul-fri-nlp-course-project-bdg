@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "program za izračun kredita -excel",
+    "content": "A ima kdo program za izdelavo načrta vračanja dolgoročnega kredita s fiksno obrestno mero. \nSe pravi vtipkaš znesek kredita, obrestno mero in število obrokov (če je še opcija da niso obroki mesečni je sploh super)  in ti program ven izračuna za vsak mesec stanje kredita in znesek vračila (glavnica in obresti) ti samo\nNekaj sem iskal po netu, samo vsi najdeni na prvih straneh googla ti ponudijo svojo obrestno mero razen http://www.cpr.si/racunovodstvo/pripomocki/ ki ti pa ne izpiše po mesecih in recimo po treh letih odplačila 10 letnega kredita ne veš koliko je še glavnice. \n\nNI ga čez lenobo.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nza pridnost pa zvezdice, alti, mogoče še kaj več \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "program za izračun kredita -excel",
+    "content": "Prilagam excel datoteko v kateri si lahko izračunaš kar te zanima.\n\n1. V jezičku \"Spremenljiva anuiteta\" imaš možnost, da narediš izračun za mesečno vračanje enakega dela glavnice, obresti se posledično manjšajo, zaradi česar se ti zmanjša obrok. V glavi vneseš vse parametre (višino, dobo vračanja in OM) ter skopiraš (ali brišeš) primerno število vrstic spodaj, da zajameš celotno dobo vračanja.\n\n2. V jezičku \"Fiksna anuiteta\" imaš možnost izračunati višino fiksne anuitete. V glavi prav tako vneseš parametre (višino, dobo vračanja in OM), skopiraš (ali brišeš) primerno število vrstic, da zajameš celotno dobo vračanja. Nato z orodjem \"Iskanje cilja\" poiščeš takšno vrednost celice F1, da je vrednost na dnu stolpca F (ob koncu vračanja) enaka 0.\n\nlp\n\nPS: Vem, da verjetno ni najelegantnejša rešitev in v exelu obstajajo namenske formule za to, ampak tole že dolgo uporabljm in mi je tako najlažje \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Mladinec",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "program za izračun kredita -excel",
+    "content": "Tule je razloženo po korakih\nhttp://www.wikihow.com/Create-a-Mortgage-Calculator-With-Microsoft-Excel",
+    "author": "ferdo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "program za izračun kredita -excel",
+    "content": "noben ni šel bolj med zvezde. Oba jih imata še vedno 3.\ntnx\nrabita tudi alte",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "program za izračun kredita -excel",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Hanzi pravi:\n A ima kdo program za izdelavo načrta vračanja dolgoročnega kredita s fiksno obrestno mero. \nSe pravi vtipkaš znesek kredita, obrestno mero in število obrokov (če je še opcija da niso obroki mesečni je sploh super)  in ti program ven izračuna za vsak mesec stanje kredita in znesek vračila (glavnica in obresti) ti samo\n\t\t\n\t\tKlikni za razširitev\n\t\nZ uporabo vgrajenih funkcij takole: če imaš v celicah A1:A3 višino kredita, dobo varčevanja v letih in letno obrestno mero (ter obroke plačuješ na koncu meseca) potem mesečni obrok zveš z:\n=PMT(A3/12;A2;A1)\nvrnjeno glavnico do npr. 20. meseca z:\n=CUMPRINC(A3/12;A2;A1;1;20;0)\n(trenutno stanje glavnice zveš, če zgornje odšteješ od višine kredita)\nobresti, plačane v 20. mesecu, z:\n=CUMIPMT(A3/12;A2;A1;20;20;0)\nkumulativne obresti do vključno 20. meseca pa z:\n=CUMIPMT(A3/12;A2;A1;1;20;0)",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  }
+]

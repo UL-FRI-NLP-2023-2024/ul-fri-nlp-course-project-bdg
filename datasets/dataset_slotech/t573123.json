@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Uporablja kdo OPENVPN, uspel sem ga namestiti, povezava deluje vendar ne morem pingati lokalne mreže kamor sem povezan. Zdaj ne vem ali je problem v firewallu ali v openvpn. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Za dosegljivost lokalne mreže moraš na OpenVPN strežniku in na računalnikih v lokalni mreži OpenVPN strežnika imeti nastavljene pravilne \"route\". Samo računalniki, ki imajo vpisan route do OpenVPN strežnika za IP naslove, ki jih uporablja (ponavadi 10.*) so lahko dosegljivi iz strani klienta.  Primer (192.168.100.64 je OpenVPN strežnik): Linux client: route add -net 192.168.100.0 netmask 255.255.255.0 gw 10.8.0.9 Windows člani LAN: route add 10.8.0.0 mask 255.255.255.0 192.168.100.64 ",
+    "user": "ales85"
+  },
+  {
+    "message": "hvala bom probal ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Samo ena opomba. Napisano velja, če NE uporabljaš \"bridge\" načina. ",
+    "user": "ales85"
+  },
+  {
+    "message": " ales85 je 8. jul 2013 ob 10:52 izjavil:Samo ena opomba. Napisano velja, če NE uporabljaš \"bridge\" načina.  nimam bridge načina ker je še extra zakompliciran. sicer sem pa tok dolgo neki prčkal, da mi preprosto mrežnih kartic ne zazna pravilno, tako da ponovno nameščam gor centos. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "tole men ne gre nikakor ne glede na to kaj dam v firewall... ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Ok. Moja konfiguracijska datoteka na strežniku je na primer: http://pastebin.com/UkWksZn0  Konfiguracija klienta: http://pastebin.com/XFWLjNm9  Kaj pa SSL datoteke? Te si naredil pravilno? Jaz sem sledil tem: http://openvpn.net/index.php/open-sourc... ",
+    "user": "ales85"
+  },
+  {
+    "message": "V bistvu moja konfiguracija je nekak taka ja. Če bi bil problem v certifikatih potem se ne bi mogel povezati, tako pa klient se poveže na VPN, samo ne morem se pa povezati v lokalno mrežo za VPNom. Mislim da je problem s firewallom. Mogoče bi moral narediti VPN z bridgindg. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Kot si že sam ugotovil, je bridge še bolj kompleksen in če tega ne uspeš vzpostaviti boš tudi tistega težko. Še ena stvar, ki sem jo pozabil napisati je, da moraš na strežniku uporabiti tale ukaz:  sysctl -w net.ipv4.ip_forward=1 ",
+    "user": "ales85"
+  },
+  {
+    "message": " ales85 je 9. jul 2013 ob 07:35 izjavil:Kot si že sam ugotovil, je bridge še bolj kompleksen in če tega ne uspeš vzpostaviti boš tudi tistega težko. Še ena stvar, ki sem jo pozabil napisati je, da moraš na strežniku uporabiti tale ukaz: sysctl -w net.ipv4.ip_forward=1  to sem že naredil ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Pa sigurno imaš \"push route\" v server konfiguraciji? In pa različna omrežja kjer je strežnik ter kjer je klient? Na primer, da nimata oba 192.168.1.x?  EDIT: Še nekaj sem se spomnil. V kolikor se s klientom povezuješ iz Windows potem je v nekaterih primerih potrebno OpenVPN Client zagnati kot administrator. To izkušnjo sem imel že sam. ",
+    "user": "ales85"
+  },
+  {
+    "message": "Open VPN client mora biti zagnan kot administrator v Windows Vista in višje, ker drugače ne more nastaviti kartice. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "Imam push rute v konfiguraciji, samo ne vem točno iz kje na kam za VPN serverjem je omrežje 192.168.0.0 server VPN prav tako dodeli ip naslov klientom 192.168.0.0 zunanje omrežje VPN serverja je 194.344.31.10 Doma je zunanje omrežje od ruterja 84.123.322.20 Interno omrežje doma pa je 192.168.1.0  Tudi to sem probal ja, da poženem kot administrator, čeprav že imam vse administratorske pravice na svojem pcju. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "za VPN serverjem je omrežje 192.168.0.0 server VPN prav tako dodeli ip naslov klientom 192.168.0.0 Ip naslov klientom mora biti izven naslovnega prostora 192.168.0.0 ",
+    "user": "ToniT"
+  },
+  {
+    "message": " ToniT je 9. jul 2013 ob 09:10 izjavil:za VPN serverjem je omrežje 192.168.0.0 server VPN prav tako dodeli ip naslov klientom 192.168.0.0 Ip naslov klientom mora biti izven naslovnega prostora 192.168.0.0   se pravi ne sme biti isto omrežje kot je lokalno omrežje za VPNom. niti ne sme biti isto omrežje kot je moje lokalno doma?  če nastavim da VPN dodeli IPje v omeržju 192.168.5.0 bo ok? ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Stestiraj, ne  ",
+    "user": "imagodei"
+  },
+  {
+    "message": "če nastavim da VPN dodeli IPje v omeržju 192.168.5.0 bo ok?   Moralo bi biti OK! ",
+    "user": "ToniT"
+  },
+  {
+    "message": "še vedno ni ok. ping 192.168.0.1 Reply from 192.168.3.6: Destination host unreachable. 192.68.3.0 je ip, ki ga podeli VPN server ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Nekatere naprave ne marajo IP naslovov, ki se končajo z 0, daj začni svoj DHCP prostor z 1 no :) ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "vpn server ne pusti drugega IPja kot 192.168.3.0 se pravi je nič na koncu naslova, ki jih potem deli povezanim na vpn server ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Lahko conf fajle objaviš? ",
+    "user": "MrStein"
+  },
+  {
+    "message": "0_o  192.168.3.0 je vendar omrežje, ne pa IP. ",
+    "user": "imagodei"
+  },
+  {
+    "message": "Komot je lahko IP naslov. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Na začetku je navedena /24 maska. S tako masko nikoli. Razen, če izvajate kakšne obskurne privat eksperimente. ",
+    "user": "imagodei"
+  },
+  {
+    "message": " Blisk je 10. jul 2013 ob 19:03 izjavil:še vedno ni ok. ping 192.168.0.1 Reply from 192.168.3.6: Destination host unreachable. 192.68.3.0 je ip, ki ga podeli VPN server   vzpostavi vpn in poženi ukaz: route -n oz. ip route show in prilepi na forum. ",
+    "user": "b3D_950"
+  },
+  {
+    "message": "http://www.techrepublic.com/blog/openso... ",
+    "user": "b3D_950"
+  },
+  {
+    "message": " b3D_950 je 15. jul 2013 ob 07:23 izjavil:Blisk je 10. jul 2013 ob 19:03 izjavil:še vedno ni ok. ping 192.168.0.1 Reply from 192.168.3.6: Destination host unreachable. 192.68.3.0 je ip, ki ga podeli VPN server   vzpostavi vpn in poženi ukaz: route -n oz. ip route show in prilepi na forum.  to misliš na klientu, ko se povežem z VPN serverjem? route -n ne deluje IP ropute whow tudi ne mogoče route PRINT?  imagodei je 15. jul 2013 ob 00:47 izjavil:Na začetku je navedena /24 maska. S tako masko nikoli. Razen, če izvajate kakšne obskurne privat eksperimente.  Glede VPNa nimam pojma in šele študiram zadeve! ",
+    "user": "Blisk"
+  },
+  {
+    "message": "IPv4 Route Table =========================================================================== Active Routes: Network Destination Netmask Gateway Interface Metric 0.0.0.0 0.0.0.0 84.123.322.20 192.168.1.11 276 0.0.0.0 128.0.0.0 10.8.0.1 10.8.0.2 31 10.8.0.0 255.255.255.0 On-link 10.8.0.2 286 10.8.0.2 255.255.255.255 On-link 10.8.0.2 286 10.8.0.255 255.255.255.255 On-link 10.8.0.2 286 127.0.0.0 255.0.0.0 On-link 127.0.0.1 306 127.0.0.1 255.255.255.255 On-link 127.0.0.1 306 127.255.255.255 255.255.255.255 On-link 127.0.0.1 306 128.0.0.0 128.0.0.0 10.8.0.1 10.8.0.2 31 192.168.0.0 255.255.255.0 10.8.0.1 10.8.0.2 31 192.168.1.0 255.255.255.0 10.8.0.1 10.8.0.2 31 194.334.31.0 255.255.255.0 On-link 192.168.1.11 276 194.334.31.10 255.255.255.255 84.123.322.20 192.168.1.11 21 192.168.1.11 255.255.255.255 On-link 192.168.1.11 276 194.334.31.255 255.255.255.255 On-link 192.168.1.11 276 224.0.0.0 240.0.0.0 On-link 127.0.0.1 306 224.0.0.0 240.0.0.0 On-link 192.168.1.11 276 224.0.0.0 240.0.0.0 On-link 10.8.0.2 286 255.255.255.255 255.255.255.255 On-link 127.0.0.1 306 255.255.255.255 255.255.255.255 On-link 192.168.1.11 276 255.255.255.255 255.255.255.255 On-link 10.8.0.2 286 =========================================================================== Persistent Routes: Network Address Netmask Gateway Address Metric 192.168.211.0 255.255.255.0 192.168.0.207 1 0.0.0.0 0.0.0.0 84.123.322.20 Default =========================================================================== ",
+    "user": "Blisk"
+  },
+  {
+    "message": " Blisk je 15. jul 2013 ob 11:16 izjavil: imagodei je 15. jul 2013 ob 00:47 izjavil:Na začetku je navedena /24 maska. S tako masko nikoli. Razen, če izvajate kakšne obskurne privat eksperimente.  Glede VPNa nimam pojma in šele študiram zadeve!  Ne da bi ti hotel pametovati, ampak zgolj v vednost: to ni povezano z vpn-jem, ampak je splošna zahteva IP protokola. Naprava na omrežju ne more imeti host dela IP naslova iz samih ničel, kot tudi ne iz samih enic (binarno). Prva adresa je rezervirana kot identifikator omrežja, druga je broadcast naslov za to omrežje. ",
+    "user": "imagodei"
+  },
+  {
+    "message": "zadeve sem delal po receptu z neta in tako tudi kopiral dol. Sicer je to jasno. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Probal sem tudi tole in ne dela https://community.openvpn.net/openvpn/w... ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Preveč skopariš s podatki.  Torej klient je Windows? Kateri? Kaj pa server?  Najbolje kar config fajle s serverja in klienta prilepit, pa še kako jih zaženeš. (prej zasebne podatke izbriši, kot so gesla , enkripcijski ključi, javni IP naslovi) Pa seveda katera verzija OpenVPN je? ",
+    "user": "MrStein"
+  },
+  {
+    "message": "server port 1194 proto udp dev tun0 ca keys/vpn/ca.crt cert keys/vpn/server.crt key keys/vpn/server.key dh keys/vpn/dh2048.pem server 10.8.0.0 255.255.255.0 crl-verify keys/cpivpn/crl.pem cipher BF-CBC user nobody group nobody status servers/vpn/logs/openvpn-status.log log-append servers/vpn/logs/openvpn.log verb 3 mute 20 max-clients 100 tun-mtu 1500 mssfix 1450 management 127.0.0.1 8080 keepalive 10 120 client-config-dir /etc/openvpn/servers/vpn/ccd tls-server client-to-client comp-lzo persist-key persist-tun float ccd-exclusive tun-mtu-extra 32 reneg-sec 0 push \"dhcp-option DNS 193.2.1.66\" push \"dhcp-option DNS 208.67.220.220\" push \"redirect-gateway def1\" mute-replay-warnings ping-timer-rem topology subnet route 10.8.0.0 255.255.255.0 push \"route 10.8.0.0 255.255.255.0\"   client   client proto udp dev tun ca ca.crt dh dh2048.pem cert client1.crt key client1.key remote 194.344.31.10 1194 cipher BF-CBC user nobody group nobody verb 2 mute 20 tun-mtu 1500 mssfix 1450 keepalive 10 120 comp-lzo persist-key persist-tun float resolv-retry infinite nobind pull route-method exe route-delay 2 script-security 2 redirect-gateway def1 bypass-dhcp tun-mtu-extra 32 ping-timer-rem mute-replay-warnings explicit-exit-notify 2   OpenVPN version 2.0_rc16,  na cetos OS 6.4  klient na windows 7 zadnja verzija https://openvpn.net/index.php?option=co... ",
+    "user": "Blisk"
+  },
+  {
+    "message": "v ccd mapi imaš kaj? ( client-config-dir /etc/openvpn/servers/vpn/ccd ) ",
+    "user": "MrStein"
+  },
+  {
+    "message": " MrStein je 15. jul 2013 ob 13:38 izjavil:v ccd mapi imaš kaj? ( client-config-dir /etc/openvpn/servers/vpn/ccd )  Sicer nisem imel nič vendar sem tole dodal zdaj nazadnje, kljub temu ne dela ifconfig-push 192.168.0.206 255.255.255.0 iroute 192.168.0.0 255.255.255.0 ",
+    "user": "Blisk"
+  },
+  {
+    "message": " Blisk je 7. jul 2013 ob 10:46 izjavil:Uporablja kdo OPENVPN, uspel sem ga namestiti, povezava deluje vendar ne morem pingati lokalne mreže kamor sem povezan.   1.) Kaj ne gre pingat? Iz Windows klienta nek PC na drugi strani?  2.) Kaj točno bi sploh rad dosegel? Da klient ima dostop do oddaljenega LAN-a? Samo to? Istočasno ima dostop do interneta? Nima? Ima, a preko tunela?  3.) Prvi komentar na tvoje konfiguracije je: daleč preveč komplicirano. Recimo \"server 10.8.0.0 255.255.255.0\" že podrazumeva ukaz \"route 10.8.0.0 255.255.255.0\" pa ga imaš potem še enkrat (na serverju).  (je pa res, da včasih ta navodila, help in HOWTO-ji uporabnika še bolj zmedejo, ker sami preveč komplicirajo, recimo en moj klient config - še iz časa OpenVPN 1.x - ima 10 vrstic, od tega trije \"nepotrebni\": ping 10 verb 1 mute 5  proti tvojim 31 )  Blisk je 15. jul 2013 ob 13:35 izjavil: klient na windows 7 zadnja verzija https://openvpn.net/index.php?option=co...  To je verzija 2.3? (sem pogledal, pa nikjer ne piše, niti v fajlu, niti v setupu, ko ga poženeš, instalirat pa ne mislim) ",
+    "user": "MrStein"
+  },
+  {
+    "message": " Blisk je 9. jul 2013 ob 08:39 izjavil:Imam push rute v konfiguraciji, samo ne vem točno iz kje na kam za VPN serverjem je omrežje 192.168.0.0 server VPN prav tako dodeli ip naslov klientom 192.168.0.0   Hopla konopla!  Kako pa naj PC-ji na oddaljenem LAN-u vedo, da je naslov 192.168.karkoli.si.pač.nastavil.vpn.klientu dosegljiv preko VPN serverja? Tako, da jim nekdo to pove (DHCP ali administrator ročno)!  Izjema je, če je VPN server istočasno gateway za tisti LAN in je že prav nastavljeno kot je.  To je nekje v njihovem FAQ, kako se nastavi in uredi. ",
+    "user": "MrStein"
+  },
+  {
+    "message": " MrStein je 15. jul 2013 ob 13:52 izjavil:Blisk je 7. jul 2013 ob 10:46 izjavil:Uporablja kdo OPENVPN, uspel sem ga namestiti, povezava deluje vendar ne morem pingati lokalne mreže kamor sem povezan.  1.) Kaj ne gre pingat? Iz Windows klienta nek PC na drugi strani?  2.) Kaj točno bi sploh rad dosegel? Da klient ima dostop do oddaljenega LAN-a? Samo to? Istočasno ima dostop do interneta? Nima? Ima, a preko tunela?  3.) Prvi komentar na tvoje konfiguracije je: daleč preveč komplicirano. Recimo \"server 10.8.0.0 255.255.255.0\" že podrazumeva ukaz \"route 10.8.0.0 255.255.255.0\" pa ga imaš potem še enkrat (na serverju).  (je pa res, da včasih ta navodila, help in HOWTO-ji uporabnika še bolj zmedejo, ker sami preveč komplicirajo, recimo en moj klient config - še iz časa OpenVPN 1.x - ima 10 vrstic, od tega trije \"nepotrebni\": ping 10 verb 1 mute 5  proti tvojim 31 ) Blisk je 15. jul 2013 ob 13:35 izjavil: klient na windows 7 zadnja verzija https://openvpn.net/index.php?option=co...  To je verzija 2.3? (sem pogledal, pa nikjer ne piše, niti v fajlu, niti v setupu, ko ga poženeš, instalirat pa ne mislim)   Ne morem pingat omrežja, ki je za VPNom, se pravi lokalno omrežje 192.168.0.0  Uspel sem sicer na firewall nardit to, da ko se povežem na VPN, da je dostop do interneta ampak preko VPN serverja, sicer to mi ni toliko pomembno, kot dostop do serverja 192.168.0.1  Na tretje vprašanje ne razumem, v čem je poanta.  Klient je zadnja verzija pa nikjer ne piše katere na v namestitivi ne v setup.exe fajlu mislim da je 2.3  MrStein je 15. jul 2013 ob 14:01 izjavil:Blisk je 9. jul 2013 ob 08:39 izjavil:Imam push rute v konfiguraciji, samo ne vem točno iz kje na kam za VPN serverjem je omrežje 192.168.0.0 server VPN prav tako dodeli ip naslov klientom 192.168.0.0  Hopla konopla!  Kako pa naj PC-ji na oddaljenem LAN-u vedo, da je naslov 192.168.karkoli.si.pač.nastavil.vpn.klientu dosegljiv preko VPN serverja? Tako, da jim nekdo to pove (DHCP ali administrator ročno)!  Izjema je, če je VPN server istočasno gateway za tisti LAN in je že prav nastavljeno kot je.  To je nekje v njihovem FAQ, kako se nastavi in uredi.   Ne VPN server ni istočasno gateway. Saj s tem se mučim že precej časa, kako dopovedati, VPN klientu, da najde 192.168.0.0 probal sem z route add in x možnosti na klientu pa ne dela ",
+    "user": "Blisk"
+  },
+  {
+    "message": "> Ne morem pingat omrežja, ki je za VPNom, se pravi lokalno omrežje 192.168.0.0  Saj mrež ni mogoče pingat, samo konkretne naslove. Kot 192.168.0.1 , 0.2 ipd...  > kako dopovedati, VPN klientu, da najde 192.168.0.0 push \"route 192.168.0.0 255.255.255.0\" -- na serverju ali na klientu: route 192.168.0.0 255.255.255.0 ampak je bolje na serverju.  tisto cdd briši.  Moraš pa še serverski strani tudi dopovedat, kje najde tvojega klienta. Evo omenjeno FAQ za to vprašanje: http://openvpn.net/index.php/open-sourc... ",
+    "user": "MrStein"
+  },
+  {
+    "message": "saj je jasno, da se ne da pingat mreže, pač pa je bilo mišljeno, da nič, nobenega računalnika ali strežnika na 192.168.0.0 omrežju. > kako dopovedati, VPN klientu, da najde 192.168.0.0 push \"route 192.168.0.0 255.255.255.0\" -- na serverju to sem probal in ne dela IP forwarding je vključeno  Ta link, ravno to je problem, kaj in kam in kako? ",
+    "user": "Blisk"
+  },
+  {
+    "message": "tudi tole imam v fireweallu iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE iptables -A FORWARD -i eth0 -o tun0 -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -i tun0 -o eth0 -j ACCEPT ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Za namen \"klient naj ima dostop do oddaljenega\" je v bistvi bridge način preprostejši.  Torej povej, kaj dejansko hočeš. ",
+    "user": "MrStein"
+  },
+  {
+    "message": " MrStein je 15. jul 2013 ob 20:17 izjavil:Za namen \"klient naj ima dostop do oddaljenega\" je v bistvi bridge način preprostejši.  Torej povej, kaj dejansko hočeš.   Točno to, da se povežem od doma na VPN server in imam dostop do sheranih map in ostalih zadev, ki so v mreži za VPNom. In rabim enostavno zadevo za skupi spravit, ker se s temle že zaje... skor dva tedna pa ne dela.  Tako, da bom verjetno probal z bridge varianto, samo moram najt kak pameten recept za centos, neki kar res dela. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Lahko spreminjaš gateway router na tistem LAN? ",
+    "user": "MrStein"
+  },
+  {
+    "message": " MrStein je 16. jul 2013 ob 00:35 izjavil:Lahko spreminjaš gateway router na tistem LAN?  lahko, vse kar je, imam jaz pod kontrolo ",
+    "user": "Blisk"
+  },
+  {
+    "message": "No, potem bo šlo brez bridge. Ampak kot pvo, moraš poenostaviti config falje , ali še najbolje začet iz nule (ali iz nekega minimuma).  Recimo push \"redirect-gateway def1\" in push \"route 10.8.0.0 255.255.255.0\"  sta redundantni.  V glavnem, narediš podobno kot že je, potem pa na gateway dodaš \"route 10.8.0.0 255.255.255.0 <interni_naslov_vpn_serverja>\", da paketi iz LAN namenjeni tvojemu klientu najdejo pot do njega. ",
+    "user": "MrStein"
+  },
+  {
+    "message": " MrStein je 16. jul 2013 ob 10:32 izjavil:No, potem bo šlo brez bridge. Ampak kot pvo, moraš poenostaviti config falje , ali še najbolje začet iz nule (ali iz nekega minimuma).  Recimo push \"redirect-gateway def1\" in push \"route 10.8.0.0 255.255.255.0\"  sta redundantni.  V glavnem, narediš podobno kot že je, potem pa na gateway dodaš \"route 10.8.0.0 255.255.255.0 <interni_naslov_vpn_serverja>\", da paketi iz LAN namenjeni tvojemu klientu najdejo pot do njega.  se pravi, če dobro razumem moram jaz na svoj ruter doma dodat ruto za vpn server oz. lokalni ip vpn serverja narpimer \"route 10.8.0.0 255.255.255.0 192.168.0.206\" 206 je mrežna VPN strežnika na lokalni mreži. ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee   Če misliš doma==klient, potem tam NIČ ne rabiš. push \"redirect-gateway def1\" na serverju je vse kar je potrebno. (in spet imaš to podvojeno v client config-u !!!)  Uredit treba na \"firmini\" strani. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "to sem že imel narejeno pa ni delalo. Zdaj se sicer trudim z bridging, pa bomo vidl če bo to delalo ",
+    "user": "Blisk"
+  },
+  {
+    "message": "Tale VPN je res katastrofa. Zdaj sem naredil bridge varianto, pa mi javlja tole napako Path to Bridge-Start or path to Bridge-End or path to Plugin not found ",
+    "user": "Blisk"
+  }
+]

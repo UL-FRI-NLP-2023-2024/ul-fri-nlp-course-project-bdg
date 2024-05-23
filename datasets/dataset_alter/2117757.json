@@ -1,0 +1,146 @@
+[
+  {
+    "ctx": "Router se dela norca",
+    "content": "Kot že naslov teme pove, se moj TP-Link TL-WR1043ND dela norca. Leto dni je deloval normalno, sedaj pa so se začele težave. Na njem je bil nameščen DD-WRT, ki se je najmanj 1-2x na teden odločil, da čez sebe ne bo več spuščal prometa. Lokalna mreža OK, povezava v svet pa crkuje. Potreben je restart in potem zopet deluje nekaj dni.\n\nKer sem imel dovolj resetiravanja, sem zamenjal DD-WRT z original TP-Link firmwarom. Nastavil, delovalo kot mora nekih 12 ur, potem pa je spet mrknil. Niti restart ni več pomagal, narediti sem moral 3 factory resete.\n\nNo, sedaj sicer z originalnim FWjem deluje, a počasi. Speedtest.net mi pokaže polno internetno hitrost, medtem ko je pa odpiranje strani zelo zelo počasno. Reset routerja ne pomaga. Menjal sem že DNS strežnike, a težava ostaja. V računalniku ni krivda, ker če ga povežem direktno na modem, deluje normalno. Vglavnem, prek routerja pa po polžje.\n\nKaj še lahko naredim s tem routerjem? Resno razmišljam o menjavi, ker če ne, bo kmalu poletel skozi okno.",
+    "author": "Desty",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Imam eno izkušnjo s tem ruterjem, simptomi so bili podobni tvojim: internet preko wifi je začel štrajkat, strani so se odpirale zelo počasi, če sploh. Vzrok je bil v izbiri wifi kanalov, ki je bila nastavljena na *samodejno*. Okoliška omrežja so enkrat bila aktivna, enkrat ne... in očitno se je zaradi zasičenosti etra z okoliškimi omrežji ruter prestavil na *kanal 1*. Na tem kanalu je stvar delovala porazno, ročna nastavitev (6 ali 11, pozabil) je rešila težave.\n\nVse to na fabriškem fw.",
+    "author": "blazko",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Poskusi s firmwarom openwrt http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/\nali pa gargoyle http://www.gargoyle-router.com/download.php\nPoglej za pravo verzijo+factory bin...",
+    "author": "cas8",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Sicer pri nas okoli praktično ni WiFi omrežij, tako da kanal ne bi smel imeti veze. Sem pa preveril in je bil res na kanalu 1, tako da sem ga sedaj menjal in zaenkrat je OK. Sem pa prej pozabil omenit, da tudi po žici deluje zelo počasi. Bom spremljal sedaj kaj bo.\n\nPoskusim tudi z OpenWRT in Gargoylom.\n\nHvala obema!",
+    "author": "Desty",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Evo, poskusil z menjavo kanala in menjavo na OpenWRT. Nič od tega ne zaleže. HW težava mogoče?",
+    "author": "Desty",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "menjaj napajalnik",
+    "author": "john",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Imaš morda kakšen napajalnik z enako napetostjo in lahko večjim tokom ?",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Hmm, dobra ideja, tole sem pa čisto pozabil. Bom menjal napajalnik in da vidimo.",
+    "author": "Desty",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Desty pravi:\n Bom menjal napajalnik in da vidimo.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTakole. Sem menjal napajalnik za enega starega, ki ima enako voltažo in amperažo in sedaj deluje normalno. Očitno je bil res napajalnik kriv. Hvala vsem za pomoč! Pivce je na poti. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Desty",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Sem bil prehiter. Væeraj je delovalo še OK, danes je pa spet počasnejši. Reboot ne pomaga. Mi preostane le še menjava routerja?",
+    "author": "Desty",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Na TP-LINK 841N pri WAN nastavitvah je bolje imeti static ali dynamic IP. Opažam, da mi pri static internet dela hitreje. Sedaj sem malo v dvomih, ker privzeto je dynamic.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Imaš pri operaterju naročen statični IP ?",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Mah to je potrošni material; recimo tole poguglaj v eni znani spletni štacuni (TP-LINK TL-WR841N), recimo košta 17,90 EUR... že na času ki si ga porabil za testiranje tega kar imaš si izgubil več denarja... zamenjaj pa je.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Imam statični IP saj pri telemachu verjetno nima nobeden dinamičnega. Čudno mi je, da če dam detected potem mi izbere dinamičnega. @KarEn  zakaj bi pa iskal novega??? Z njim ni nič narobe samo ta nastavitev me zanima.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Potem pusti statičnega  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Pustit ga ne morem, ampak ga moram nastavit ker mi router sam da na dynamic. Hvala.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik zakon pravi:\n Na TP-LINK 841N pri WAN nastavitvah je bolje imeti static ali dynamic IP. Opažam, da mi pri static internet dela hitreje. Sedaj sem malo v dvomih, ker privzeto je dynamic.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo ne bi smelo vplivati na hitrost. Kakšne pa imaš DNSje izbrane? Ker pri statičnem si verjetno moral določiti nekaj, pri dinamičnem pa ti jih samo določi. To bi še edino kar lahko vpliva, ampak se tudi ne bi smelo poznati, saj se posamezne domene enkrat resolvajo, potem pa se itak lokalno cachirajo.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Primarnega imam 213.161.0.10 secundarnega, pa 8.8.4.4",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "ma jaz imam podobne težave.\ndo nabave novega sem \"Rešil tako\", da sem dal na vtičnico časovno uro, ki vzame štrom za minuto enkrat ponoči..\npač resetiram dnevno..\n\nin dela.. zaenkrat..",
+    "author": "japke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Če gre za +3 leta staro robo, zamenjajte napajalnik oz router odprite in preglejte kondenzatorje.",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik zakon pravi:\n Imam statični IP saj pri telemachu verjetno nima nobeden dinamičnega.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV bistvu je to vseeno dinamicni IP.. Ampak dobis vsakic istega.",
+    "author": "DJ_Beat",
+    "author_level": "Dacar"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik japke pravi:\n ma jaz imam podobne težave.\ndo nabave novega sem \"Rešil tako\", da sem dal na vtičnico časovno uro, ki vzame štrom za minuto enkrat ponoči..\npač resetiram dnevno..\n\nin dela.. zaenkrat..\n\t\t\n\t\tKlikni za razširitev\n\t\nZa te brezvezne tplinke je to edina rešitev. Jaz sem nad njimi obupal (so ga isto sral različni modeli, je pomakal samo izklop iz štroma). Kolk dnarja tolk muske v tem primeru še kako drži.",
+    "author": "BigPoppa",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Tp-Link so odlični ruterji, sploh za ta denar. Samo Openwrt jim je treba naložiti.",
+    "author": "Alioth",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Router se dela norca",
+    "content": "Ne vem no, jaz s TP linki še nisem imel nekih večjih težav, razen teh manualnih nastavitvah, ko ne veš kako bi kaj nastavil.",
+    "author": "zakon",
+    "author_level": "Guru"
+  }
+]

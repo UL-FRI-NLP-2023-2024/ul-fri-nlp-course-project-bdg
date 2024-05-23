@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "Pozdravljeni,\n\nv omarici imam dva sfja z optiko in bi ju rad priklopil preko routerja, ki bo priključen na arnesovo pipo (1G/1G) in bi to hitrost radi kar najbolj izkoristili. Obstaja kaj v normalnem cenovnem obsegu ali je bolje dati vmes še en optični switch in potem en dovolj močen router? Je kaj takšnega za dobiti pri unifi, da bi združil unifi točke s kontrolerjem in usmerjevalnikom?\n\nRecimo tole se mi zdi najbolj blizu...\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tUbiquiti usmerjevalnik 10-port Giga rack 2xSFP UniFi UDM-PRO\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tUbiquiti Router UDM-Pro vsebuje 9x gigabitnih izhodov in 2x SFP+ priključka. Usmerjevalnik ima vgrajen požarni zid, ki učinkovito varuje omrežje in podatke.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.techtrade.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\nHvala za odgovore,\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "mogoče malo več pojasnila za kaj sta namenjena SFP priklopa. Ali sta SFP (1G) ali SFP+ (10G)? Ali sta SFPja priklop za inernet?\n\nOsebno nimam izkušenj z Unifi ruterji, Tale UDM pro iz linka vidim da ima vse komponenete, ki jih rabiš v eni škatli (usmerjevalnik, unifi controller).\n\nUsmerjevalniki / firewalli ki imajo 2x SFP port se že smatrajo kot business / advanced oprema in je cena temu ustrezna. \n\nMikrotik ima ziher kakšen primerno škatlo, ampak če še nisi delal z njihovim OS-om zna bit krivulja učenja kar strma.\n\nOd nizkocenovnih rešitev ti ne ostane kaj dosti drugega, potem so tu že next generation firewalli z vsaj 4 mestnimi cenami. \n\nOpcija ti je tudi, da sestaviš svoj strežnik / PC, nabaviš Intel X710D-DA2 mrežno kartico in gor namestiš PFsense.",
+    "author": "majoneza",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "Vprašaj na Arnes katere Juniperje so dajali za eduroam. Oziroma lahko ti pogledam naslednji teden. Pa daj tisto not.\n380 je bila subvencionirana cena če se prav spomnim. Kolk je oolna nevem. \nDela tudi na 10g liniji.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik majoneza je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tmogoče malo več pojasnila za kaj sta namenjena SFP priklopa. Ali sta SFP (1G) ali SFP+ (10G)? Ali sta SFPja priklop za inernet?\n\nOsebno nimam izkušenj z Unifi ruterji, Tale UDM pro iz linka vidim da ima vse komponenete, ki jih rabiš v eni škatli (usmerjevalnik, unifi controller).\n\nUsmerjevalniki / firewalli ki imajo 2x SFP port se že smatrajo kot business / advanced oprema in je cena temu ustrezna.\n\nMikrotik ima ziher kakšen primerno škatlo, ampak če še nisi delal z njihovim OS-om zna bit krivulja učenja kar strma.\n\nOd nizkocenovnih rešitev ti ne ostane kaj dosti drugega, potem so tu že next generation firewalli z vsaj 4 mestnimi cenami.\n\nOpcija ti je tudi, da sestaviš svoj strežnik / PC, nabaviš Intel X710D-DA2 mrežno kartico in gor namestiš PFsense.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nSFP je navaden oziroma 1,25G, na vsakem koncu je 5 portno giga stikalo, kamor bo priključen pc in 1 unifi točka. In obe optiki prideta v glavno omaro.\n\nInternet je pa na cisco stikalu, imajo 1G/1G linijo in nabor 32+32 statičnih IP naslovov. Ampak to sem zvedel šele potem, ko sem videl omarico oziroma dhcp ni hotel prijeti .\n\nKer nisem pomislil (priznam, ne delam velikokrat s takšnimi hitrostmi), da bo tukaj en navaden router premalo, sem najprej dal mikrotik CRS106-1C-5S in ga spremenil v router. In je neslo 25/25... Potem sem pa začel razmišljati .\n\nTako da če ostanem pri tem mikrotiku, ga lahko dam nazaj v switch mode in bo potem šlo skozi, moram pa dodati še en router, ki bo to nesel, recimo da je to kakšen Mikrotik hEX, ki ima dvojedrni procesor na 800GHz. Ali pa CRS305-1G-4S+IN , ki pa spet piše, da je stikalo, kombinirano z usmerjevalnikom (samo 1 jedro na 800GHz), ampak ne vem, če bo to šlo na polno.\n\nPa rad bi rešil na takšen način, da je čimmanj škatel v omari. Sedaj imajo notri ciscota, pa 24portni giga switch, pa en mikrotik za wifi, pa en mikrotik (hEX) za VPN, pa še eni ISDN vmesniki so notri (?!), tako da je vse skupaj ena groza. Omarica pa nekih 12U.\n\nMorebiti bodo pa poslušali in bomo vse wifije dali na unifi. Potem bo pa tudi cena \"dreammachine\" šla skozi...\n\nluka51: Kakšna je politika Arnesa pri raznih kulturnih državnih ustanovah glede internih routerjev? Smejo (smemo) dati vse računalnike in tiskalnike za svoj fw ali morajo imeti javne IPje na računalnikih? Pa še sumljivo se mi zdi vse skupaj, ko sem dal en statični IP na mikrotika, sem že videl neuspešne prijave v router, torej znajo imeti te IPje res javne in je to nevarno tako ali tako (pa še windows 7 je povsod) ?!.\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "Giga/giga rutat danes ni nek problem, že kak hexS bo to zmogel, ima pa samo en SFP port. CRSji so večinoma procesorsko prošvoh za kaj več kot par 100Mb/s pri > L2 featurejih. Mogoče kakašna 309ka z dual core ARMom, ampak spet odvsno kaj vse hočeš vklopit. Na svojem CRS309 nisem nikoli probaval, ga imam samo za 10G switch. Za karkoli več na L3+ je treba potem že CCRje gledat. Ampak moreš vedet, da so to še vedno zgolj usmerjevalniki, ki sicer onogočajo tudi statefull firewall. Če rabiš kakšne bolj napredne varnostne reštive, za to obstajajo druge škatle.\n\nKar se public IPjev in firewalla tiče, se pa to nikakor ne izključuje. Žal pa ne vem kakšne imate politike glede dodeljavanje IPjev, uporabe NAT in varovanja omrežja. Vem edinl da je Arnes ponavadi tlačil public (IPv4) naslove vsepovsod, še na eduroam za vse kliente.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik XSIDE je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tGiga/giga rutat danes ni nek problem, že kak hexS bo to zmogel, ima pa samo en SFP port. CRSji so večinoma procesorsko prošvoh za kaj več kot par 100Mb/s pri > L2 featurejih. Mogoče kakašna 309ka z dual core ARMom, ampak spet odvsno kaj vse hočeš vklopit. Na svojem CRS309 nisem nikoli probaval, ga imam samo za 10G switch. Za karkoli več na L3+ je treba potem že CCRje gledat. Ampak moreš vedet, da so to še vedno zgolj usmerjevalniki, ki sicer onogočajo tudi statefull firewall. Če rabiš kakšne bolj napredne varnostne reštive, za to obstajajo druge škatle.\n\nKar se public IPjev in firewalla tiče, se pa to nikakor ne izključuje. Žal pa ne vem kakšne imate politike glede dodeljavanje IPjev, uporabe NAT in varovanja omrežja. Vem edinl da je Arnes ponavadi tlačil public (IPv4) naslove vsepovsod, še na eduroam za vse kliente.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTukaj se ta inet potrebuje za wifi dostop za razne telefone in pa internet za občasni prenos v živo. Ampak glavni pri projektu prenove mreže pravi, da bi naredili tako, da se lahko izkoristi polna hitrost interneta. Tako da se nagibamo na DM. Ko bomo dodali še nekaj unifi točk in bo videl, kako to dela, bo verjetno zadovoljen. Sploh ker še vedno obstaja nekaj wrt54GL škatel za wifi, torej bo napredek očiten :\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "\"Kar se public IPjev in firewalla tiče, se pa to nikakor ne izključuje. Žal pa ne vem kakšne imate politike glede dodeljavanje IPjev, uporabe NAT in varovanja omrežja. Vem edinl da je Arnes ponavadi tlačil public (IPv4) naslove vsepovsod, še na eduroam za vse kliente.\"\n\nDelal sem z nekaj javnimi ustanovami, ki so po njihovem zgledu vztrajale pri tej brezvezni (brezvezni zato, ker je ti bo kdaj kaj pomagala izključno, če ustanova sama logira promet in v logih povezuje svoje uporabnike z javnimi IPji - nameni za kaj se sme to početi, pa so po naši zakonodaji precej omejeni. Poleg tega pa: če takšen logging imaš (in, mimogrede, stavim levo jajce, da ga *nobena* slo javna izobraževalno-kulturna ustanova sploh nima), bo popolnoma enako uporaben tudi, če imaš v LANu svoje ustanove vse privatne IPje).\n\nTukaj so akademiki ostali kakšnih 15, 20 let v preteklosti, ko je bilo Ipv4 naslovnega prostora še dovolj. (Tega, da za takšno postavitev rabiš resne firewalle, in da smo v preteklosti zato že našli njihove Windows mašine z javnim naslovom brez vsakega firewalla na netu, ne bom niti omenjal.)\n\nSkratka, pred nekaj leti so menda začeli razmišljati, da bi to norost opustili. (Dopuščam tudi možnost, da je ARNES prišel k pameti že pred desetletjem, le javnosektorašem se to še ni dalo dopovedati  .)\n\nPoleg tega pa: kako bodo pa vedeli, če imaš ves svoj LAN zanatan za en javni IP? Tega po Slo zakonodaji ne smejo niti spremljati. (Lahko pa začnejo mahati s kakšnimi pravilniki uporabe ARNESovega omrežja. Ampak do tja je še dolga pot.)",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik jernejd je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tluka51: Kakšna je politika Arnesa pri raznih kulturnih državnih ustanovah glede internih routerjev? Smejo (smemo) dati vse računalnike in tiskalnike za svoj fw ali morajo imeti javne IPje na računalnikih? Pa še sumljivo se mi zdi vse skupaj, ko sem dal en statični IP na mikrotika, sem že videl neuspešne prijave v router, torej znajo imeti te IPje res javne in je to nevarno tako ali tako (pa še windows 7 je povsod) ?!.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPojma nimam. Pokliči in vprašaj ",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "Če hočeš vse skupaj čimbolj poenotit in poenostavit upravljanje za neko zmerno ceno, lahko vzameš UDM Pro in 48 porten UniFi PoE Switch, pa lahko verjetno nadomestiš večino opreme. Povežeš ju s SFP+ twinax kablom, potem ti pa ostanejo še trije prosti SFP(+) porti na stikalu (in 48 RJ45 PoE portov za vse obstoječe naprave ter nove dostopne točke). Cenejša varianta je 24 portno stikalo (če npr zadostuje namesto obstoječega 24 portnega stikala), ampak ima samo 2 SFP porta (lahko pa za uplink porabiš en copper giga port). Edino zna bit tale UDM malo omejene glede kakšne napredne konfiguracije kar se tiče usmerjanja smegmenta naslovov, odvisno kaj hočeš dosečt.\n\nBTW A ni pred leti Arnes na veliko izobraževalnim ustanovam nadgrajeval povezave na 10G in tudi priklapljal ustrezno (Cisco) opremo?",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik XSIDE je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe hočeš vse skupaj čimbolj poenotit in poenostavit upravljanje za neko zmerno ceno, lahko vzameš UDM Pro in 48 porten UniFi PoE Switch, pa lahko verjetno nadomestiš večino opreme. Povežeš ju s SFP+ twinax kablom, potem ti pa ostanejo še trije prosti SFP(+) porti na stikalu (in 48 RJ45 PoE portov za vse obstoječe naprave ter nove dostopne točke). Cenejša varianta je 24 portno stikalo (če npr zadostuje namesto obstoječega 24 portnega stikala), ampak ima samo 2 SFP porta (lahko pa za uplink porabiš en copper giga port). Edino zna bit tale UDM malo omejene glede kakšne napredne konfiguracije kar se tiče usmerjanja smegmenta naslovov, odvisno kaj hočeš dosečt.\n\nBTW A ni pred leti Arnes na veliko izobraževalnim ustanovam nadgrajeval povezave na 10G in tudi priklapljal ustrezno (Cisco) opremo?\n\t\t\n\t\tKlikni za razširitev\n\t\n? Tukaj govorimo o povsem normalni uporabi omrežja in wifija. Torej 10+ računalnikov in nekaj tiskalnikov ter nekaj wifi točk. Če so bili sedaj WRTji, potem se strinjamo, da več kot giga omrežja ne potrebujejo. Recimo da bi internet 20/20 M povsem zadoščal . Imajo pa giga, kar tudi ni slabo.\n\nBomo preverili, kakšna je politika Arnesa. Od odgovornih ne ve nihče, kaj in kako, razen da imajo deset let star spisek statičnih IP naslovov po računalnikih. Ah ja, tako pač je.\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik z dvema SFP in giga internetom",
+    "content": "Vrjamem da je za njihove potrebe že giga čez glavo. Vprašanje je bilo bol iz firbca, ker se spomnim, da so bivši sodelavci enega izmed podizvajalcev takrat prikpljali ponekod, kjer še 10 računalnikov ni bilo zadaj.... Možno, pa da so manjše ustanove res dobile giga.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  }
+]

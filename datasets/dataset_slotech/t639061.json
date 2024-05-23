@@ -1,0 +1,222 @@
+[
+  {
+    "message": "Trenutno imamo zakupljen VPS strežnik (4 jedra 2.5, 256GB disk, 12GB ram, win2012+terminal server), ki znese na leto dobre 3 tisočake. Odločili smo se da gostovanje ukinemo in delo preselimo na lokalni nov server. Zanima me kakšen predlog kaj kupiti. Sistemske potrebe: - RDP max 50 uporabnikov istočasno - WWW aplikacija 100 povezav preko TCP - prostor vsaj 512 GB v RAIDU + dodaten backup disk - dodaten UPS + linija bo 100/100  Gledal sem kaj v smislu ML350, kakšen predlog? ",
+    "user": "gio000"
+  },
+  {
+    "message": "90 ogledov, hvala vseeno :) ",
+    "user": "gio000"
+  },
+  {
+    "message": "zakaj se pa Hetznerja branite? glede na specs, entry level xeon s ssd + xTB + backup. ",
+    "user": "terryww"
+  },
+  {
+    "message": "Počasi je začelo delati in konstantno zmanjkuje prostora tako da moramo konstantno doplačevati prostor. Glavni razlog bi bilo hitrejše delovanje in možnost nadgradnje (prostora) + backup. VPS trenutno sicer deluje samo če bo uporabnikov več bo vsem delovalo prepočasi najbolj je na udaru sas disk in pa procesor ker aktivno dela med delavniki 10-20 ljudi na svojih rdp namizjih. Trenutno je VPS zakupljen v sloveniji res da je hetzner polovico cenejši vendar v primeru težav je morda vseeno lažje če imaš gostovanje 'pri roki'.. ",
+    "user": "gio000"
+  },
+  {
+    "message": "Ramisli o svojem strežniku, ki ga daš gostovat nekam v datacenter ...  Če res plačuješ 3k/leto za gostovanje, potem je cenej kupit zadevo. Samo preveri Windows licence ... Pa več RAMa. Ne šparaj tukaj ...  Izbire pa dovolj. Zna biti Lenovo kar O.K. Saj več kot 2 diska ne boš imel ... ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Pošten enoprocesorski server nebi smel bit dražji kot 2K, kar je nad so ponavadi že dvoprocesorski. Definitivno se ne splača plačevat letno 3K ",
+    "user": "MStrix"
+  },
+  {
+    "message": "Uh, je tudi razlika, ali greš na opensource ali ostaneš na win ... Če ostaneš na win, za 50 uporabnikov rezerviraj kar globok žep. Hitr gugl pravi blizu pol tvojega proračuna. Tudi v tem primeru, ti ostane kaj rabljenega, tam nekje v rangu, kot sam iščeš. ",
+    "user": "Yohan del Sud"
+  },
+  {
+    "message": "Supermicro te bo najcenejš pršu. ",
+    "user": "mitja73"
+  },
+  {
+    "message": "Gledam ThinkServer TS140 (in njemu podobne Dell, HP, Fujitsu), ki bi načeloma moral zadoščat za ca. 10 nezahtevnih odjemalcev, vendar izgleda katastrofalno, poleg tega ima napajalnik z nestandardnim priklopom.  Zato razmišljam v smeri lastne sestave, npr.: dobra H97 plata, Xeon E3-1246v3, 4x8 GB RAM, 250 GB SSD za OS, 2x1TB Constellation HDD (RAID 1) za SQL in ostale podatke, primeren Seasonic PSU. Hot swap ne rabim, če odleti disk, ga pač zamenjaš z drugim, ki je praktično takoj dobavljiv, če odpove napajalnik, imaš novega na voljo na vsakem vogalu... Ima kdo tehten razlog proti? ",
+    "user": "Han"
+  },
+  {
+    "message": "Ohišje vzami z 2 redudantnima napajalnikoma, ker če 10 ljudi ne more delati 1 uro kolikor boš rabil za nakup novega ali za zamenjavo če ti bo ležala rezerva zraven stane več kot pa ta prekinitev dela. Če greš na desktop ploščo, bi vsaj jaz kupil 2 in eno imel vedno zraven, ker Čez leto ali dve zna bit nov socket, ..... ",
+    "user": "mitja73"
+  },
+  {
+    "message": "V bistvu ni potrebe po redundanci, ker bo med menjavo stalo le delo, vezano na SQL, kar si zaenkrat (še) lahko privoščimo. Rezervna plata je ok (+100 eur). ",
+    "user": "Han"
+  },
+  {
+    "message": "Če že jemlješ Xeona, vzemi vsaj še ECC ram in recimo kakšno tako plato:  http://www.asrockrack.com/general/produ... ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Hvala, na prvi pogled super plata! ",
+    "user": "Han"
+  },
+  {
+    "message": "kakšen je lahko izpad, kartko backup disk pač ni dovolj. če kaj pade lahko mine teden preden boš spet online. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Če bi se rad zavaroval pred izpadi, si sestavi 2 poceni serverja, ki delujeta v load balancingu.  Če bo eden crknil, lahko še vedno uporabniki delajo na drugem, čeprav počasneje. ",
+    "user": "Invictus"
+  },
+  {
+    "message": "sej sene serverjev so smešne ampak hitr naklapaš ceno sedanje storitve. nared neko shemo redundance, nevarnosti in potreb. pa magar objau. sem delal tud z enim serverjem pa imel backup plan ampak hudič redko dela ravno tak kot si zamisliš dokler ne sprobaš. neki pa vsen lohk predvidmo. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Če boš edino ti odgovoren za menjavo potem se zavedaj da poleti kor ado grmi (napajalnik) ne bo dopusta. Zarad tega se prodajajo redudantni napajalniki in podobno.  Če imaš pa osebni backup v podjetju potem ni panike, večinoma pa v tak malih podjetjih ne obstaja. ",
+    "user": "mitja73"
+  },
+  {
+    "message": "Koder pride štrom. Pa ups je umes ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Kako je za 4k € ceneje imeti Server pri sebi : Stroški elektrike + stroški lajenja na letni ravni niso poceni. Backup ? kako si si zamislil ? Upam da ne uporabljaš kak plačljiv MS SQL, to tudi ni ravno poceni... Praviš da je SAS disk na udaru ? verjetno posledica premalo rama : 12 GB -2 GB za os 10GB/20 uporabniki = to znese 512 MB na uporabnika in v istih stavkih omenjaš WEB aplikacijo. OK RAM je resda poceni, in ne smeš računati kot velik strošek. Torej si vse izračunal, koliko te stane sama investicija, ker ponudnik ti nudi spla licence, ti pa te opcije ne boš imel.... Ker če vzameš 3k€/12 mesecev je to 250€ na mesec, čstega rečunovodskega stroška. Ko boš imel mašinerijo pri sebi, temi ravno ne bo tako... ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "root hosting (xeon, 32gb rama, ssd in 3tb) za 50€/mesec je očitno preenostavno. če vam bo kišta v pisarni stala vas bo samo štrom prišel 40, kje je še linija itd. ok, firmi gre dobro. kul ",
+    "user": "terryww"
+  },
+  {
+    "message": "Poleti bo prej odletel modem ali router kot napajalnik, pred katerim je UPS... Hosting odpade, ker ni optike, poleg tega vodstvo temu in oblačnim storitvam (še) ne zaupa. ",
+    "user": "Han"
+  },
+  {
+    "message": " Han je 24. maj 2015 ob 22:35 izjavil:Poleti bo prej odletel modem ali router kot napajalnik, pred katerim je UPS... Hosting odpade, ker ni optike, poleg tega vodstvo temu in oblačnim storitvam (še) ne zaupa.  200/100 maš garantiran bandwidth, v praksi je nekje 800/100. oblačna rešitev je aws. tukaj se pogovarjamo o dedicated hw hostingu. ",
+    "user": "terryww"
+  },
+  {
+    "message": "Kaj ti pomaga bandwidth na strežniku, če nimaš bandwidtha DO strežnika? ",
+    "user": "darkolord"
+  },
+  {
+    "message": " darkolord je 25. maj 2015 ob 00:22 izjavil:Kaj ti pomaga bandwidth na strežniku, če nimaš bandwidtha DO strežnika?  to _je_ bandwidth do strežnika (od zunaj data centra). na strežniku pa se z ostalimi strežniki v istem data centru pogovarjaš kolko nese bandwidth _na_ strežniku. ",
+    "user": "terryww"
+  },
+  {
+    "message": "Je bandwidth do strežnika, ampak ne od vseh \"dostopnih točk\" v internet. Če oni ne morejo zakupiti, za normalno ceno, takšnih kapacitet pri svojem ISP-ju, je njihov bandwidth do strežnika tako omejen. ",
+    "user": "ales85"
+  },
+  {
+    "message": "Se bo večina smejala, vendar...  Vzameš navadno HP mašino Z400 (grafična postaja) s šestjedrnim procom in 12GB rama. V mašini je serverska plata in je kvalitetna. Zmeniš se da dajo quadro 2000 ven, pa namesto tega še par GB rama in navadno grafiko (NVS290 je že čisto dovolj). Plata v tem sistemu ima podporo za 8 diskov (raid za vse skupaj - podpira tudi raid 5 in 6). Mašino dobiš že zelo poceni in z garancijo (comstrok, bbt.si, teal), diske pa kupiš nove, da jih imaš v garanciji. Gor naložim hyperV in 2 ali 3 virtualke, odvisno kaj hočejo. Ponavadi pa je pa gor SQL server in trenutni backup (zadnja verzija), ki pa je tudi na backup mašini).   Eni izmed firm sem pa celo terminal server postavil poleg SQL serverja in file serverja (ampak na HP Z800 mašini - 2x 6 jedrni xeon in 14 portov za diske) in imajo stare mašine z XP-ji samo za remote dostop do svojih terminalov. Je prišlo ceneje, kot da bi kupovali še 6 novih pc-jev poleg serverja (njihovi pc-ji imajo P4 2.8GHZ in 1GB ram - dell optiplex 320).    Na tak način jaz rešujem probleme s serverji v manjših firmah, kjer denarja ponavadi ni (ali pa je doma in dajo za wc školjko in umivalnik 8000 evrov, za službeni PC, ki jim pa denar nosi, pa nebi dali niti 100 evrov). In ker hočejo podatke imeti vedno pri sebi pa se jih ne da prepričat, da prestavijo vse skupaj na najet server ali v oblak, jim pač poceni zrihtam vse skupaj. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " gio000 je 17. mar 2015 ob 11:59 izjavil:Trenutno imamo zakupljen VPS strežnik (4 jedra 2.5, 256GB disk, 12GB ram, win2012+terminal server), ki znese na leto dobre 3 tisočake. Odločili smo se da gostovanje ukinemo in delo preselimo na lokalni nov server. Zanima me kakšen predlog kaj kupiti. Sistemske potrebe: - RDP max 50 uporabnikov istočasno - WWW aplikacija 100 povezav preko TCP - prostor vsaj 512 GB v RAIDU + dodaten backup disk - dodaten UPS + linija bo 100/100  Gledal sem kaj v smislu ML350, kakšen predlog?   Te dobre tisočake pride vse skupaj z licencami al so licence vaše oz. dodatno na ta znesek ?  Sprašujem, ker samo 50 RDS CAL-ov te pride več kot 3000€ na leto, če boš seveda licenčen.   Sicer pa dobrih 3000€ na leto pomeni 250€ do 300€ mesečnih stroškov kar je za strežnik ki zagotavlja okolje za 50 ljudi drobiž in z lastno rešitvijo ne boš prišel ceneje na dolgi rok.  Če zaupaš ponudniku kjer ste, potem ne bi razmišljal o menjavi. ",
+    "user": "l0g1t3ch"
+  },
+  {
+    "message": "Zakaj pa ne ponucate AWS EC2? Zakupiš strežnik po potrebi, tam nekje do 0.4 USD/uro bi vam mogl nudt vse kar rabite. Pol pa cez kaksen mesec preveris statistiko in se odlocis ce je resourcov prevec in zadevo zmanjsas.   Ce WWW ne rabi biti na isti masini in je od zunaj dosegljiv, potem predlagam locen server za le to, pri EC2 pa streznik zjutri zalaufas, zvecer ugasnes in imas naenkrat zelo zmogljiv stroj, kadar se v firmi kej dela.   Mi smo uzeli sicer eno micro verzijo na EC2 (windows + sql web server - licenca ukljucena v uro) ker ne potrebujemo za tok ljudi, ampak zadeva se prizge ob 7h, laufa do 18h, cez vikende off in placamo vsega skupaj 15-20 EUR. Ker potrebujemo 1 teden na mesec mocnejse delovanje, vklopimo na mocnejso instanco in za tisti teden placamo se 20 EUR (prav tako laufa samo za delovnik). Skupno porabimo na leto 500 EUR za 5 userjev.  Pravtako omogoca nakup rezervacij, kjer je mogoce pridobiti vsaj 25% popusta na to (mi bomo priceli s tem tekom poletja, tako da bi moral biti strosek se nizji).   Nekako ne poznam veliko firm, ki bi potrebovale 24/7 polno silo svojih lokalnih strežnikov, tako da, zakaj metat dnar stran? ",
+    "user": "sumoborac"
+  },
+  {
+    "message": "En tak Z800 bi si še jaz omislil..... pa nimam WC školjke in umivalnika za 8.000€  Strežniki v oblakih so cool zadeve, če na njih nudiš storitve za xy uporabnikov z vseh koncev in krajev, skratka, če ponujaš 'cloud servis' (od spletne trgovine, do spletne videoteke). Čim se pa gre za tvoje lastne uporabnike znotraj tvoje mreže, pa oblak že sam po sebi poveča odzivni čas, pa če imaš še tako hitro internetno povezavo.   Potem imaš še vprašanje redundance - če je sql baza pomembna za poslovanje (predvidevam, da je), potem si ne moreš privoščiti, da ti zaradi težav pri povezavi z ISP-jem zadeva ni dostopna za kakšno urico ali dve. Torej potrebuješ še enega ISP-ja, skratka dvojno povezavo, dvojne stroške.  Potem potrebuješ še router, ki to bo znal handlat dva ISP-ja, pa verjetno boš želel imeti še VPN do svojega strežnika v oblaku, ne pa da 'kar tako po domače' komuniciraš tja.  Skratka, stvari niso tako preproste, kot jih nekateri želijo prikazati tu.  Predvidevam, da je tudi OP prišel do te ugotovitve in zato razmišlja o selitvi strežnika iz VPS gostovanja na svojo lokacijo.  Slaba stran selitve na lokalno mrežo pa je potem servisiranje 'spletnih storitev' - moraš sam poskrbeti, da boš dostopen za zunanje uporabnike in se s tem izpostavljaš kot tarča za vse tiste internetne pridaniče. Hkrati se ti spet pojavi vprašanje redundance, vprašanje, če je zdravo interne in externe zadeve poganjat na istem strežniku,.....  Idealno je poiskati eno uravnoteženo varianto med AWS/Azure in lokalnim strežnikom - uporabljaš oba svetova in iz obeh potegneš tisto, za kar je eden in drugi boljši. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Eeej, dajte malo datume postov pogledat - tema je razdeljena na dva dela. ",
+    "user": "darkolord"
+  },
+  {
+    "message": " SeMiNeSanja je 25. maj 2015 ob 11:11 izjavil:En tak Z800 bi si še jaz omislil..... pa nimam WC školjke in umivalnika za 8.000€  Strežniki v oblakih so cool zadeve, če na njih nudiš storitve za xy uporabnikov z vseh koncev in krajev, skratka, če ponujaš 'cloud servis' (od spletne trgovine, do spletne videoteke). Čim se pa gre za tvoje lastne uporabnike znotraj tvoje mreže, pa oblak že sam po sebi poveča odzivni čas, pa če imaš še tako hitro internetno povezavo.   Potem imaš še vprašanje redundance - če je sql baza pomembna za poslovanje (predvidevam, da je), potem si ne moreš privoščiti, da ti zaradi težav pri povezavi z ISP-jem zadeva ni dostopna za kakšno urico ali dve. Torej potrebuješ še enega ISP-ja, skratka dvojno povezavo, dvojne stroške.  Potem potrebuješ še router, ki to bo znal handlat dva ISP-ja, pa verjetno boš želel imeti še VPN do svojega strežnika v oblaku, ne pa da 'kar tako po domače' komuniciraš tja.  Skratka, stvari niso tako preproste, kot jih nekateri želijo prikazati tu.  Predvidevam, da je tudi OP prišel do te ugotovitve in zato razmišlja o selitvi strežnika iz VPS gostovanja na svojo lokacijo.  Slaba stran selitve na lokalno mrežo pa je potem servisiranje 'spletnih storitev' - moraš sam poskrbeti, da boš dostopen za zunanje uporabnike in se s tem izpostavljaš kot tarča za vse tiste internetne pridaniče. Hkrati se ti spet pojavi vprašanje redundance, vprašanje, če je zdravo interne in externe zadeve poganjat na istem strežniku,.....  Idealno je poiskati eno uravnoteženo varianto med AWS/Azure in lokalnim strežnikom - uporabljaš oba svetova in iz obeh potegneš tisto, za kar je eden in drugi boljši.    Fritz router in usb 3G\\LTE modem vklopljen v usb. Tako sem do sedaj še v vsaki firmi naredil. Če pade linija, se takoj router priklopi na LTE ali 3G in delajo naprej brez problemov.  Z800 je malo preveč, čeprav mi stoji na mizi in jo pripravljam za v render farmo. Imam pa za osnovno mašino HP Z400, 1x XEON X5650, 24GB rama, 250GB SSD za sistem in 6X500GB v raidu, pa 2x quadro 2000. Je ravno dovolj za vse. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Če je zelo tight budget, je pa prostor za tapravi strežnik, jaz priporočim kar rabljen strežnik prejšnji generacij - npr. DL360 G5 ali DL380 G5. Dobiš še zmeraj vse bombončke (2 quad xeona, redundanco, ecc, iLO, ...), stane pa recimo 200-400 eur (ali pa G6 za pod jurja). Je čisto resen stroj in overkill za večino podjetij. Nadomestni deli in nadgradnje so pa smešno poceni. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Ravno zaradi rama so ti serverji in grafične postaje tako poceni prodajajo. ECC ram je dost drag (tudi rabljen). 1GB je približno 10 evrov, govorimo o rabljenem ramu, nov je parkrat dražji. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Gledam še SUPERMICRO 5038A-iL, ki si ga lahko po svoje opremiš. Kakšen glas za?  ",
+    "user": "Han"
+  },
+  {
+    "message": " SeMiNeSanja je 25. maj 2015 ob 11:11 izjavil:En tak Z800 bi si še jaz omislil..... pa nimam WC školjke in umivalnika za 8.000€   Ni zavno HP Z800, je pa dell T5500 - zelo podobna zadeva 600 evrov - refurbished (2x x5650 proc, 12GB ram,...) http://www.bolha.com/racunalnistvo/nami... ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 25. maj 2015 ob 12:09 izjavil: Fritz router in usb 3G\\LTE modem vklopljen v usb. Tako sem do sedaj še v vsaki firmi naredil. Če pade linija, se takoj router priklopi na LTE ali 3G in delajo naprej brez problemov.   Fritz je 'home networking' rešitev. Jaz bi ga uporabil kvečjemu kot 'modem', ki vzpostavlja povezavo, ne pa kot 'poslovno rešitev'. Za 'samo modem' špilat, je pa po drugi strani spet malo predrag in dobiš ugodnejše variante.  Večina malo resnejših firm pa se ne špila z 3G/4G backupom na centralni lokaciji ampak z dodatno optiko ali xDSL povezavo. 3G/4G pa je bolj backup za kakšne oddaljene lokacije.  Saj ne rečem, Fritz ti lepo vzpostavi povezavo, ampak ker je home networking rešitev, ti manjka vsa tista napredna varnost, ki bi jo moralo imeti vsako podjetje. V bistvu smo spet pri tistih WC školjkah za 5.000€.... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Večino stvari se res da kar poceni imeti v oblaku, sta pa dve izjemi. Eno je plac, ki ni poceni, ni pa zdaj ekstremno drag. Potem pa je tukaj prenos podatkov, ta pa je EKSTREMNO drag v oblaku, po mojih izračunih blizu faktorrja 10. Tak da en simple data server se vsekakor splača imeti lasten, če le malo več podatkov šiba sem in tja. DR backup se pa dobi zdaj zelo poceni za redundanco vseh teh podatkov recimo. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": " SeMiNeSanja je 25. maj 2015 ob 13:21 izjavil:krneki0001 je 25. maj 2015 ob 12:09 izjavil: Fritz router in usb 3G\\LTE modem vklopljen v usb. Tako sem do sedaj še v vsaki firmi naredil. Če pade linija, se takoj router priklopi na LTE ali 3G in delajo naprej brez problemov.  Fritz je 'home networking' rešitev. Jaz bi ga uporabil kvečjemu kot 'modem', ki vzpostavlja povezavo, ne pa kot 'poslovno rešitev'. Za 'samo modem' špilat, je pa po drugi strani spet malo predrag in dobiš ugodnejše variante.  Večina malo resnejših firm pa se ne špila z 3G/4G backupom na centralni lokaciji ampak z dodatno optiko ali xDSL povezavo. 3G/4G pa je bolj backup za kakšne oddaljene lokacije.  Saj ne rečem, Fritz ti lepo vzpostavi povezavo, ampak ker je home networking rešitev, ti manjka vsa tista napredna varnost, ki bi jo moralo imeti vsako podjetje. V bistvu smo spet pri tistih WC školjkah za 5.000€....   Hmm, ne vem zakaj potem ponuja telekom fritza kot rešitev v manjših podjetjih? Sej tukaj govorimo o manjpih podjetjih, ne?  Fritz je rešitev kot modem za dostop do neta, router jasno rabiš večji. Ampak kot samo modem in z dodatkom 3G reši marsikateri problem. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 25. maj 2015 ob 12:33 izjavil:Ravno zaradi rama so ti serverji in grafične postaje tako poceni prodajajo. ECC ram je dost drag (tudi rabljen). 1GB je približno 10 evrov, govorimo o rabljenem ramu, nov je parkrat dražji. 4 GB FB-DIMM (včasih daleč najdražji ram) je 15 eur. 120 eur (z ddvjem) za 32 GB. ",
+    "user": "darkolord"
+  },
+  {
+    "message": " darkolord je 25. maj 2015 ob 14:47 izjavil:krneki0001 je 25. maj 2015 ob 12:33 izjavil:Ravno zaradi rama so ti serverji in grafične postaje tako poceni prodajajo. ECC ram je dost drag (tudi rabljen). 1GB je približno 10 evrov, govorimo o rabljenem ramu, nov je parkrat dražji. 4 GB FB-DIMM (najdražji ram) je 15 eur. 120 eur (z ddvjem) za 32 GB.   Kje ga dobiš za to ceno? DDR3? Kaj pa samo ECC unbuffered DDR3?  Ker v sloveniji ga za tak drobiž nisem nikjer zasledil. Rabim 6X 8GB DDR3 ECC unbuffered ram. Se pravi bi dal zato potem nekje 180 evrov? Jih dam takoj, samo povej kam naj pridem iskat. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "FB-DIMM je DDR2 (tega ima G5 serija od HP).  DDR3 je malenkost dražji (spet ne nevem kako), kupujem pa vse tukaj. ",
+    "user": "darkolord"
+  },
+  {
+    "message": "@nebivedu - problem je v tem, da ljudje v malih podjetjih ne ločijo, kaj so komunikacijske naprave, kaj pa varnostne naprave/rešitve.   Če greš na AVM stran, ne boš nikjer videl zapisano, da je Fritzbox rešitev za podjetja, ampak ga oglašujejo in prodajajo kot 'Home Networking' rešitev - kar tudi je in to ne slaba.  Problem potem pride, ko v malih podjetjih tuhtajo 'tako imam to narejeno doma... koštalo je 250€, doma sem zadovoljen, torej bo dobro tudi v podjetju'. Žal pa se ne ustavi pri spodnji meji 250€ ampak se ta meja pomika celo navzdol proti 30-40€, kar ljudje še smatrajo za čisto sprejemljivo za podjetje.  Saj koneckoncev tudi je pogosto sprejemljivo - za vzpostavitev komunikacije. Tu se pa potem tudi konča vsa zgodba - tehnično gledano.  Komercialno gledano, pa ni ravno veliko domačih uporabnikov, ki bi jim lahko prodal Fritzbox, ker je vendarle za en cenovni razred višje pozicioniran od tiste robe, ki si jo lahko povprečni slovenec privošči za doma. Pa se pametni komercialist (ki ga zanima samo prodaja) odloči, da te Fritzbox-e porine podjetjem, ki pa le imajo malo več denarja, hkrati pa zaradi malo višje cene ustvarja navidezen občutek, da jim je prodal 'nekaj več'.  Vse to pa nima veze z zaščito omrežja. Če hočeš imeti kolikor toliko spodobno zaščito, moraš poseči po varnostnih rešitvah, ne pa po komunikacijskih. Ene in druge rešitve imajo marsikaj skupnega, še več pa je lastnosti po katerih se ločijo med seboj. Žal marsikje to razliko ugotovijo šele takrat, ko je že prepozno (ali pa še takrat ne). ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " darkolord je 25. maj 2015 ob 14:54 izjavil:FB-DIMM je DDR2 (tega ima G5 serija od HP).  DDR3 je malenkost dražji (spet ne nevem kako), kupujem pa vse tukaj.   Samo ECC REG imajo v ponudbi. Ta v moji mašini na žalost ne dela. Rabim samo ECC brez REG. Pa 8GB modul je najcenejši 60€ (59.99) tako da bi dal samo za ram 360 evrov, če bi hotel 48GB, kolikor potrebujem. Torej je 1GB nekje 7.5 evra. Še vedno ceneje kot pri nas, vendar še kar visoka cena. Upam, da se bo še kej pocenil.  SeMiNeSanja je 25. maj 2015 ob 15:01 izjavil:@nebivedu - problem je v tem, da ljudje v malih podjetjih ne ločijo, kaj so komunikacijske naprave, kaj pa varnostne naprave/rešitve.   Če greš na AVM stran, ne boš nikjer videl zapisano, da je Fritzbox rešitev za podjetja, ampak ga oglašujejo in prodajajo kot 'Home Networking' rešitev - kar tudi je in to ne slaba.  Problem potem pride, ko v malih podjetjih tuhtajo 'tako imam to narejeno doma... koštalo je 250€, doma sem zadovoljen, torej bo dobro tudi v podjetju'. Žal pa se ne ustavi pri spodnji meji 250€ ampak se ta meja pomika celo navzdol proti 30-40€, kar ljudje še smatrajo za čisto sprejemljivo za podjetje.  Saj koneckoncev tudi je pogosto sprejemljivo - za vzpostavitev komunikacije. Tu se pa potem tudi konča vsa zgodba - tehnično gledano.  Komercialno gledano, pa ni ravno veliko domačih uporabnikov, ki bi jim lahko prodal Fritzbox, ker je vendarle za en cenovni razred višje pozicioniran od tiste robe, ki si jo lahko povprečni slovenec privošči za doma. Pa se pametni komercialist (ki ga zanima samo prodaja) odloči, da te Fritzbox-e porine podjetjem, ki pa le imajo malo več denarja, hkrati pa zaradi malo višje cene ustvarja navidezen občutek, da jim je prodal 'nekaj več'.  Vse to pa nima veze z zaščito omrežja. Če hočeš imeti kolikor toliko spodobno zaščito, moraš poseči po varnostnih rešitvah, ne pa po komunikacijskih. Ene in druge rešitve imajo marsikaj skupnega, še več pa je lastnosti po katerih se ločijo med seboj. Žal marsikje to razliko ugotovijo šele takrat, ko je že prepozno (ali pa še takrat ne).   Se čisto strnijam.  Sem pa en izmed home userjev, ki imajo Fritza 7390 doma za home networking. Tudi če je malo dražji. Odkar ga imam ni več problemov, ki sem jih prej z vigorjem ali ostalim iskrinim šrotom imel stalno. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 25. maj 2015 ob 12:33 izjavil:Ravno zaradi rama so ti serverji in grafične postaje tako poceni prodajajo. ECC ram je dost drag (tudi rabljen). 1GB je približno 10 evrov, govorimo o rabljenem ramu, nov je parkrat dražji.  G5 imajo DDR2-5300F. Pred časom sem gledal eBay in je bilo 32 GB vsekakor pod 100€. Pri ramu te še najdražje pride nakup napačnega.  Tako da nabavna cena + nadgradnje oz. rezervni deli so še vedno tako ugodni, da se splača kljub preveliki porabi elektrike. ",
+    "user": "shadow7"
+  },
+  {
+    "message": "Potem pa je tukaj prenos podatkov, ta pa je EKSTREMNO drag v oblaku, po mojih izračunih blizu faktorrja 10.   jp, cel sistem ti dajo poceni, pri bandwidthu pa te udarijo s prav bolanimi zneski.. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": " shadow7 je 25. maj 2015 ob 16:48 izjavil:krneki0001 je 25. maj 2015 ob 12:33 izjavil:Ravno zaradi rama so ti serverji in grafične postaje tako poceni prodajajo. ECC ram je dost drag (tudi rabljen). 1GB je približno 10 evrov, govorimo o rabljenem ramu, nov je parkrat dražji.  G5 imajo DDR2-5300F. Pred časom sem gledal eBay in je bilo 32 GB vsekakor pod 100€. Pri ramu te še najdražje pride nakup napačnega.  Tako da nabavna cena + nadgradnje oz. rezervni deli so še vedno tako ugodni, da se splača kljub preveliki porabi elektrike.   Smo že ugotovili, da jaz govorim za DDR3, ti pa za DDR2. G5 so C2D xeoni na 771 podnožju in DDR2, jaz sem že generacijo naprej. Xeoni na 1366 podnožju in DDR3 ECC ram. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Glede na cene licenc se smotrnost imeti svoj server manjša iz dneva v dan. Konec je cajtov SBS, ko si za bagatelo dobil ekosistem. ML350 ali pa 380. Drugega ne gledam. Razen če je samo za odlagališče, potem pa karkoli, samo da je HP. Pri IBM so se mi že SCSI kabli topili.  Delovne postaje so ok, ampak ne moreš si privoščiti tja obesiti poslovanja. Server dela 24/7, delovne postaje pa 8 ur. Tako so tudi komponente in hardver dizajnirani. Seveda se bo hizro našel nekdo, ki mi bo zatrjeval, da konfiguracija za 200 eur dela že petnajst let.  Sam ne vidim več nobene prednosti imeti lasten strežnik. Poleg igrače, pa \"ne maram, da mi NSA gleda\". ",
+    "user": "Malajlo"
+  },
+  {
+    "message": " Malajlo je 26. maj 2015 ob 07:07 izjavil:Delovne postaje so ok, ampak ne moreš si privoščiti tja obesiti poslovanja. Server dela 24/7, delovne postaje pa 8 ur. Tako so tudi komponente in hardver dizajnirani.    Grafične delovne postaje delajo 24/7. Renderiranja trajajo dolgo časa in če si kupil tako postajo jo moraš izkoristit. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Pri delovnih postajah je vseeno nek kompromis zaradi: - glasnosti - velikosti - uporabe (določenih) standardnih komponent ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Server dela 24/7, delovne postaje pa 8 ur. Tako so tudi komponente in hardver dizajnirani.  Vsak spodoben racunalnik v normalnih pogojih lahko dela 24/7. Komponente so pa tut vec al manj iste (ce odstejemo neke specialne primere) , imajo samo pac onemogocene featurje - da segmentirajo trg z minimalnimi stroski,tak to je :p ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Server dela 24/7, delovne postaje pa 8 ur V nobenem podjetju nisem še videl da se delovne postaje ugaša... razen tam kjer uporabljajo prenosnike. ",
+    "user": "dxx"
+  },
+  {
+    "message": "Idlanje ni enako 24/7. Razen če pod server šteješ simpl file storage. Ta pa čez noč res nima kaj delati, res. Najbrž so serverji dražji zaradi bolj kakovostnih in vzdržljivih komponent, ne zaradi imena ali pa velikosti. Ali misliš, da nas samo nategujejo ko male otroke? ",
+    "user": "Malajlo"
+  },
+  {
+    "message": "Ko dosezes dolocen budget, kakovost ne raste vec drasticno.. Placujes samo bonboncke. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": " Malajlo je 26. maj 2015 ob 13:57 izjavil:Idlanje ni enako 24/7. Razen če pod server šteješ simpl file storage. Ta pa čez noč res nima kaj delati, res.   Večina serverjev tako ali tako 95% časa čačka muda. Se pravi, ne dela nič.  Problem so samo špice, ki jih moraš pokriti in zagotoviti normalen odziv. Pa ne zdaj bluzit s kakimi render farmami, govorim o normalni uporabi serverjev.  Samo ker jih nihče ne nadzoruje in gleda njihove obremenitve, potem lahko pač vsak šalabajzer reče da rabijo nekega dragega. Čeprav bi bil poceni hosting, ali pa nek KVM v redundanci dovolj za večino uporabnikov.  Kot je recimo nekdo omenil Amazon Cloud. V špicah pač najameš več CPU ... ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Če izbiram med hostingom in delovno postajo, slednja pač ni najboljša izbira. Za večino firm v Sloveniji niti server ni. ",
+    "user": "Malajlo"
+  }
+]

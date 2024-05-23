@@ -1,0 +1,104 @@
+[
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Imam eno prošnjo.\nPreiskal sem že kar nekaj strani, vendar se mi zdijo vlookup ipd funkcije nepotrebne za moj problem.\n\nStvar je sledeča. \n\nPrimerjati moram vrednosti stolpcev med sabo - če so enake.\nZadeva je čisto preprosta in funkcionira, če primerjam med sabo samo 2 stolpca.\nNpr: If(a1=b1;\"\";1) \nSe pravi, če je podatek v a1 enak v b1, potem mi ne napiše nič, drugače vrže ven 1. To dela super.\n\nJaz pa imam za primerjat ogromno stolpcev. Zakomplicira se že če hočem primerjati če je A = B in C=D.\n\nV IF stavkih mi sugerira, da vmes dam znak +. In če tako naredim, mi vse tretira kot da je enako/pravilno. Sem zanalašč spremenil podatke v C celici, da ni enaka z D in mi javlja, kot da je vse OK.\n\nKako bi nastavil enačbo - bom tako poenostavljeno napisal - if(a=b,c=d,e=f,\"0\",1)\nUpam, da sem jasno vprašal.\n\nAli je sploh možno kaj takega, ali bom moral za vsako primerjavo posebej pisat formulo? Namreč rad bi, da imam rezultate samo v enem stolpcu za vse, ne pa za vsako primerjavo svoj stolpec...",
+    "author": "upiwaly",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Če je pogojev več in vsi morajo biti resnični potem uporabi funkcijo AND.\n \n=IF(AND(a1=b1;c1=d1;...);\"\";1)",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Milijonkrat hvala \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nNe vem kako naj se ti še zahvalim poleg zvezdic, ki sem ti jih dal.\n\nRes hvala lepa. Si mi ene 10ur dela prišparal \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "upiwaly",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "me veseli, da sem ti pomagal rešiti problem, hvala za zvezdice  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Jaz imam podoben primer. Imam dva stolpca, kjer moram primerjati podatke med seboj. V prvem stolpcu imam cca. 500 vrstic, v drugem stolpcu pa cca. 300 vrstic. Kako naj naredim formulo, da mi primerja vse podatke v prvem stolpcu s podatki v drugem in če mi najde zadetek mi izpiše da, drugače ne?\n\nlp,\nTolsy",
+    "author": "tolsy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "poskusi z VLOOKUP funkcijo",
+    "author": "AndrejK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Sem začetnik ali mi lahko nastaviš celotno formulo?\n\nlp,",
+    "author": "tolsy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "lahko tudi s COUNTIF, ki izpise kolikokrat se iskani podatek ponovi \n\nce so podatki v prvem stolpcu v A in v drugem v B,\npotem v C1 zapisi:\n=COUNTIF($A$1:$A$500,\"=\"&B1)\nin kopiraj navzdol",
+    "author": "Evrokrat",
+    "author_level": "mX's brotherPEPČEK 08"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Imaš funkcijo match. Sicer pa za lookup narediš formulo takole (poišče vrednost celice b1 v stolpcu c in ji vrne pripadajočo vrednost iz stolpca d, če je ne najde vrne xxx):\n\n=+IF(ISERROR(MATCH(B1;C:C;0));\"xxx\";LOOKUP(B1;C:C;D))",
+    "author": "jello",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Prekomplicirano \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nČe @tolsy res rabi, da mu izpiše \"da\", če najde vrednost...\nPredpostavimo, da je 500 podatkov v stolpcu A, 300 pa v stolpcu C. V stolpec D poleg vrednosti vneseš \"da\"\n\nV stolpec B vpišeš:\n=VLOOKUP(A1;C;2;0)\nPoišče vrednost celice A1 v stolpcu C in pripiše vrednost iz stolpca D - se pravi \"da\". Če ne najde, vrne #NV. \nFormulo potem kopiraš do zadnje vrednosti.",
+    "author": "AndrejK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Ali pa označi oba stolpca pa izbere conditional formating in izbere, da označi duplikate/unikate.",
+    "author": "ynos",
+    "author_level": "Vremenko"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Imam spet eno željo. V excelu imam dva zavihka. V zavihku 1 v stolpcu A imam 100 nekih kod, v stolpcu B pa prostor, kjer morajo biti opisi teh kod, v zavihku dve imam pa v stolpcu A prav tako kode v stolpcu B pa opise kod. Rad bi imel formulo, ki bi jo vnesel v prvem zavihku v stolpec B, ki bi bi poiskala v zavihku 2 kodo in ko bi jo najdla bi prekopirala iz stolpca B ta opis kode.\n\nlp,\ntolsy",
+    "author": "tolsy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Poglej dva posta nazaj kjer sem ti formulo že napisal. Če ti je to prekomplicirano napiši samo zadnji del, se pravi v celico b1 na prvem listu napišeš formulo =+LOOKUP(A1;List2!A:A;List2!B:B). Da pa bo delala pravilno moraš podatke na drugem stolpcu razvrstiti po vrednosti v stolpcu A naraščajoče.",
+    "author": "jello",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Meni osebno spet VLOOKUP bolj \"šmeka\" \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n=VLOOKUP(A1;List2!A:B;2;0)",
+    "author": "AndrejK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "hvala",
+    "author": "tolsy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Še eno pitanjce. Ali podpira ukaz VLOOKUP da bere podatke iz druge datoteke in jih primerja in ali daš v formulo, da išče po barvi celice in ne po podatku ki je v celici?\n\nlp,",
+    "author": "tolsy",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Excel in primerjanje podatkov z IF stavkom",
+    "content": "Da. \n\nNe direktno. \n\nA \"help\"a tvoj Excel ne podpira?",
+    "author": "gr69",
+    "author_level": "Guru"
+  }
+]

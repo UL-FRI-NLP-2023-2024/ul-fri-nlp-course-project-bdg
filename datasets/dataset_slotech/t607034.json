@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Katero kodo (brez javascripta) uporabite, da vam npr. php strani ne nalaga iz cache ampak jo vedno znova naloži s serverja? ",
+    "user": "sebavet"
+  },
+  {
+    "message": "making-sure-a-web-page-is-not-cached-across-all-browsers ",
+    "user": "Netrunner"
+  },
+  {
+    "message": "hvala, če je stran kombinirana html/php in s php-jem berem in spreminjam mysql bazo, prikazujem tabele itd, a je vseeno al na začetku strani dam v meta tags:   <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n<meta http-equiv=\"Expires\" content=\"0\" />\n  al moram v začetek php kode vpisat:   header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.\nheader('Pragma: no-cache'); // HTTP 1.0.\nheader('Expires: 0'); // Proxies.\n  al je to vseeno kje se ta koda pojavi? ",
+    "user": "sebavet"
+  },
+  {
+    "message": "Vprašanje zakaj bi to delala.  Dobra praksa je, da ob menjavi verzije zamenjaš verzijo JS Pri nas je site.js?version=1.1.0, ko se menja verzija in je nov deploy site.js?version=1.1.1  Drugače je pa cache nastavljen na max, da je google srečen in seveda obiskovalci ",
+    "user": "DC-"
+  },
+  {
+    "message": "Za development se da v Chrome nastavit \"Disable cache (while DevTools is open)\". To nastaviš tako da odpreš DevTools in klikneš \"zobnik\" in potem če razvijaš imaš verjetno DevTools e odprte in ob refreshu dobiš popolnoma svežo verzijo js in css.  Verjetno tako FF kot IE ponujata nekaj enakega, Opera pa itak ko je zdaj na istem pogonu s Chromom. ",
+    "user": "alexa-lol"
+  },
+  {
+    "message": " DC- je 20. apr 2014 ob 10:32 izjavil:Dobra praksa je, da ob menjavi verzije zamenjaš verzijo JS Pri nas je site.js?version=1.1.0, ko se menja verzija in je nov deploy site.js?version=1.1.1  Drugače je pa cache nastavljen na max, da je google srečen in seveda obiskovalci   Ne pozabi tudi na css, če ga spreminjaš site.css?version=  Sicer je to še bolj elegantno rešeno z rewrite rules:  site-1.1.js -> site.js site-1.1.css -> site.css /layout-1.1/ -> /layout/  in tako naprej do nezavesti za stvari, ki jih menjavaš pri deployu. ",
+    "user": "msjr"
+  }
+]

@@ -1,0 +1,150 @@
+[
+  {
+    "message": "Na nforce plato imam priključen LCD monitor. gonilnik je nv, tudi vesa sem probal nastaviti v xorg.conf datoteki. Ko zalaufam X -config xorg.conf se mi sistem obesi. Sicer preklopi na resolucijo in refresh rate, ampak to je tudi vse. No nekako bi rad zalaufal grafični del, ampak le?  S kakšnim ukazom lahko preverim kateri je dejanskikernel na računalniku? ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "uname -a, točneje uname -r  Poženi raje xorgconfig in potem nadaljuj s 4. točko v Gentoojevem Xorg howto-ju. ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "Še bolje pa bi bilo, če bi naredil xorgconfig, začel z Gentoojevim Nvidia guide-om in potem nadaljeval s 4. točko Xorg howtoja. ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "ja tako kot ti je reku ze moj_nick uporabi nvidia gonilnik, preber si pa vse tule  http://www.gentoo.org/doc/en/nvidia-gui... ",
+    "user": "Senzacionale"
+  },
+  {
+    "message": "Če vpišem emerge nvidia-glx, mi javi : there are no ebuilds to satisfy \"nividia-glx\", isto za nividia-kernel.  Torej još jedan put skozi konfiguracijo kenrla, pa odkljukat ostalo. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "emerge sync si naredil? ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "Emerge sync sem naredil. Sem mislil da bo pomagalo tudi config sem updejtiral... ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "nvidia ni nIvidia! ",
+    "user": "borchi"
+  },
+  {
+    "message": "Jp, imaš prav. Tisi I je bil težavica. Drugo uprašanje, kako lahko iz ms računalnika vsaj v konzolnem načinu prko mreže na linuxu delam, ker mi manualni copy paste, ravno ni všeč ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "ssh oziroma putty za win ",
+    "user": "roscha"
+  },
+  {
+    "message": "Ko dam nvidia-glx and nvidia-kernel , dobim sledeči error : ERROR: media-video/nvidia-kernel-1.0.6111-r3 failed. Functionsrv_compile, line 150, Exitcode 2 Failed to build module. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "------------------------------------------------------------------------------ Your kernel was configured to include rivafb support!  The rivafb driver conflicts with the NVIDIA driver, please reconfigure your kernel and *disable* rivafb support, then try installing the NVIDIA kernel module again.  *** Failed rivafb sanity check. Bailing out! ***  make[1]: *** [rivafb-sanity-check] Error 1 make: *** [module] Error 2  !!! ERROR: media-video/nvidia-kernel-1.0.6111-r3 failed. !!! Function src_compile, Line 150, Exitcode 2 !!! Failed to build module !!! If you need support, post the topmost build error, NOT this status message.  --------------------------------------------------------------------------------  Ko dam # emerge unmerge rivafb  --- Couldn't find rivafb to unmerge.  >>> unmerge: No packages selected for removal. ---------------------------------------------------------------------------------- Jutri dalje grem spat. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "Your kernel was configured to include rivafb support!  tole pomeni, da je rivafb v kernelu! torej bo treba skompajlat kernel tako (oz. preverit, če tako že je), da rivafb ne bo vključen v kernel (Y) oz. da je vsaj vključen kot modul (M), ki pa ga pač ne boš loadal! ",
+    "user": "borchi"
+  },
+  {
+    "message": "jedru dodaš parameter \"video=riva:off\" ",
+    "user": "der_Alte"
+  },
+  {
+    "message": "Torej rekompajliranje. Enostavneje ne gre sklepam. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "ne enostavneje ne gre.  Boš mogu v kernel it, odstranit riva ker pač ne gre da bi imel riva in nvidia kernel.  To odtstrani, obkljukaj pa vesa-fb za splasimage ce ga bos kdaj hotu met na zacetku zagona, da se ti slike prikazejo.  pol pa normalno skompajlaj kernel make && make modules_install in rebootaj ter stvar bi morala delovat! ",
+    "user": "Senzacionale"
+  },
+  {
+    "message": "Pa ne pozabi novega kernela prekopirati na potrebno mesto . ",
+    "user": "MasterMind"
+  },
+  {
+    "message": "Ali je kdo sploh prebral moj odgovor? Ste sami nepismeni tu? Rivafb se da izkopit brez ponovnega prevajanja jedra. Pa ne samo \"riva\", tudi \"vesa\" itd. ",
+    "user": "der_Alte"
+  },
+  {
+    "message": "Jup, ne dela. Grem v kernel prekompajliram, prekopiram, itd  modprobe nvidia FATAL: Error inserting nvidia (/lib/modules/2.6.9-gentoo-r1/video/nvidia.ko): No such device  emerge nvidia-glx Calculating dependencies ...done! . . ...   modprobe nvidia FATAL: Error inserting nvidia (/lib/modules/2.6.9-gentoo-r1/video/nvidia.ko): No such device   opengl-update nvidia * Switching to nvidia OpenGL interface... ln: creating symbolic link `/usr/lib/opengl/nvidia/lib/tls' to `/usr/lib/opengl/nvidia/tls': No such file or directory   Reštart itd ne pomaga. sSeveda X -config xorg.config.nv , javi da ni glx-a ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "po tem ko si rekompajlal kernel si seveda še enkrat emergal nvidia-kernel in nvidia-glx? ",
+    "user": "borchi"
+  },
+  {
+    "message": "# mount /dev/hda3 /mnt/gentoo # mount /dev/hda1 /mnt/gentoo/boot # swapon /dev/hda2 # mount -t proc none /mnt/gentoo/proc # chroot /mnt/gentoo /bin/bash # env-update && source /etc/profile # cd /usr/src/linux # make menuconfig # make && make modules_install # cp arch/i386/boot/bzImage /boot # emerge nvidia-glx # modprobe nvidia - TU MI DA ŽE ERROR, pa sem rekel restart. nadalujem # exit # umount /mnt/gentoo/proc /mnt/gentoo/boot /mnt/gentoo # reboot  V glavnem po restatur probam : # modprobe nvidia , error, seveda tudi X , error brže ven , tudi po # emerge nvidia-glx ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "mount /dev/hda3 /mnt/gentoo mount /dev/hda1 /mnt/gentoo/boot swapon /dev/hda2 mount -t proc none /mnt/gentoo/proc chroot /mnt/gentoo /bin/bash env-update && source /etc/profile cd /usr/src/linux make menuconfig make && make modules_install cp arch/i386/boot/bzImage /boot emerge nvidia-glx nvidia kernel exit umount /mnt/gentoo/proc /mnt/gentoo/boot /mnt/gentoo reboot  Tako naj bo. ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "# emerge nvidia-glx nvidia kernel Calculating dependencies - emerge: there are no ebuilds to satisfy \"nvidia\". Ne radi. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "Pardon, emerge nvidia-glx nvidia-kernel ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "nvidia-glx je dependent od nvidia-kernel, tako da je isto ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "Vsakič, ko zamenjaš kernel, moraš pognati emerge nvidia-kernel ;) ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "DerAlte: Ali je kdo sploh prebral moj odgovor? Ste sami nepismeni tu? Rivafb se da izkopit brez ponovnega prevajanja jedra. Pa ne samo \"riva\", tudi \"vesa\" itd.  jp sem ga samo men se nikoli ni pomagalo ce sem sam izklopu karkoli, sem mogu it rocno prekompajlat?  pismen pa sem hvala, zaenkrat se, brat se znam kar na faski predavatali pisejo  ",
+    "user": "Senzacionale"
+  },
+  {
+    "message": "[OT] kar na faski predavatali Samo še pisat se moraš naučiti >;) [/OT] ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "Naredil po navodilh, ne pomaga: # X -config xorg.conf.new1 --------------------------------------------------------------- (EE) NVIDIA(0): Failed to initialize the NVIDIA kernel module! (EE) NVIDIA(0): *** Aborting *** (EE) Screen(s) found, but none have a usable configuration. Fatal server error: no screens found  Please consult the The X.Org Foundation support at http://wiki.X.Org for help. Please also check the log file at \"/var/log/Xorg.0.log\" for additional information. -------------------------------------------------------------- Iz loga : #nano -w /var/log/Xorg.0.log  (II) Loading sub module \"vgahw\" (II) LoadModule: \"vgahw\" (II) Loading /usr/X11R6/lib/modules/libvgahw.a (II) Module vgahw: vendor=\"X.Org Foundation\" compiled for 6.8.0, module version = 0.1.0 ABI class: X.Org Video Driver, version 0.7 (**) NVIDIA(0): Depth 24, (--) framebuffer bpp 32 (==) NVIDIA(0): RGB weight 888 (==) NVIDIA(0): Default visual is TrueColor (==) NVIDIA(0): Using gamma correction (1.0, 1.0, 1.0) (--) NVIDIA(0): Linear framebuffer at 0xF0000000 (--) NVIDIA(0): MMIO registers at 0xF9000000 (EE) NVIDIA(0): Failed to initialize the NVIDIA kernel module! (EE) NVIDIA(0): *** Aborting *** (II) UnloadModule: \"nvidia\" (II) UnloadModule: \"vgahw\" (II) Unloading /usr/X11R6/lib/modules/libvgahw.a (EE) Screen(s) found, but none have a usable configuration.   # nano -w xorg.conf.new1 ------------------------------------------------------- Section \"Monitor\" #DisplaySize 304 228 # mm Identifier \"Monitor0\" VendorName \"SNY\" ModelName \"SDM-HS53\" HorizSync 28.0 - 61.0 VertRefresh 48.0 - 75.0 Option \"DPMS\" EndSection  Section \"Device\" ### Available Driver options are:- Tu manka vrsta zaradi foruma, in skript    Identifier \"Card0\" Driver \"nvidia\" VendorName \"nVidia Corporation\" BoardName \"NVCrush11 [GeForce2 MX Integrated Graphics]\" BusID \"PCI:1:0:0\" EndSection  Section \"Screen\" Identifier \"Screen0\" Device \"Card0\" Monitor \"Monitor0\" DefaultDepth 24  SubSection \"Display\"  SubSection \"Display\" Identifier \"Screen0\" Device \"Card0\" Monitor \"Monitor0\" DefaultDepth 24  SubSection \"Display\" Viewport 0 0 Depth 24 Modes \"800x600\" EndSubSection EndSection ------------------------------------------------------------------ # modprobe nvidia FATAL: Error inserting nvidia (/lib/modules/2.6.9-gentoo-r1/video/nvidia.ko): No such devicefor help. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "Še lukne foruma ali pa varnostne blokade :  Uporabili ste neveljavno / nedovoljeno HTML oznako: +++ Values: >i>: integer, >f>: float, >bool>: \"True\"/\"False\", +++ >string>: \"String\", >freq>: \">f> Hz/kHz/MHz\" + [>bool>]  + zamenjaj z # < zamenjaj z > ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "Zakaj ne uporabljaš xorgconfig in pišeš direkt v /etc/X11/xorg.conf? ",
+    "user": "moj_nick"
+  },
+  {
+    "message": "Ma sej konfguracijski fail je narejen iz xorconfig, javi mi sicer da ni mišek, pa dodam in popravim, in to je vse...Vse ostalo pa se giblje okoli grafike ki seveda ne deluje. Bom moral res eno vanto vtakniti notri da bo proradilo. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "jojojoj.... nvidia driverji že dolgo niso več problematični. napaka je očitno nekje med tipkovnico in stolom.  a maš fajl \"nvidia.ko\" v direktoriju \"lib/modules/tvoja_verzija_kernela/video/\"?  a loadaš pravi kernel? pripopej sem vsebino \"/boot/grub/grub.conf\". pa dej \"ls -la /boot/\" in \"ls -la /usr/src\" in tu pripopej.  a z \"nv\" driverjem ti pa delajo X-i? ",
+    "user": "borchi"
+  },
+  {
+    "message": "Prvotno so bili driverji nv. Ni delalo, sedaj so nvidia. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "# modprobe nvidia (--- preveri, ce je res nvidia ime modula! ... ce ne uspe # dmesg pa poglej zadnjih nekaj vrstic?   Ko si prevajal jedro, si vklopil podporo za AGPGART? ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "čaki mal. ni ti delalo z nv driverjem, zdej te pa čudi, ker ti ne dela z nvidia? a ne bi blo pametno iskat napako kje drugje? ",
+    "user": "borchi"
+  },
+  {
+    "message": "Linux agpgart interface v0.100 (c) Dave Jones agpgart: Detected NVIDIA nForce chipset agpgart: Maximum main memory to use for agp memory: 409M agpgart: AGP aperture is 64M @ 0xec000000 rivafb_setup START rivafb_probe START ACPI: PCI interrupt 0000:01:00.0[A] -> GSI 10 (level, low) -> IRQ 10 rivafb: nVidia device/chipset 10DE01A0 rivafb: nVidia Corporation NVCrush11 [GeForce2 MX Integrated Graphics] rivafb: RIVA MTRR set to ON riva_get_EDID START riva_get_EDID_i2c START riva_get_EDID_i2c END rivafb: could not retrieve EDID from DDC/I2C riva_get_EDID END riva_update_default_var START riva_update_default_var END riva_set_fbinfo START riva_set_fbinfo END rivafb_check_var START rivafb_do_maximize START rivafb: setting virtual Y resolution to 52428 rivafb_do_maximize END rivafb_check_var END rivafb: PCI nVidia NV1a framebuffer ver 0.9.5b (32MB @ 0xF0000000) rivafb_probe END   nvidia: module license 'NVIDIA' taints kernel. NVRM: the NVIDIA probe routine was not called for 1 device(s)!! NVRM: no devices probed, aborting! NVRM: this often occurs when rivafb is loaded and claims the device's resources. NVRM: try removing the rivafb module (or reconfiguring your kernel to remove NVRM: rivafb support) and then try loading the NVIDIA kernel module again  Grem skozi kernel još jedan put. ne vem kako da se rivafb, pojavlja. ",
+    "user": "Mr.B"
+  }
+]

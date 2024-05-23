@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Malo sem primerjal kondenzatorje na svoji matični plošči (Asus P4C800-E) z drugimi in ugotovil, da je bil Asus topogledno precej varčen.  Nameravam podvojiti kapacitivnost vseh kondenzatorjev v napajalnih sklopih (tako za CPU, kot tudi RAM-e in NB). Da bi si prihranil nekaj dela, bi raje le dodal kondenzatorje, namesto da trenutne najprej odstranim. Je to smiselno (malo me skrbi impedanca)? Poleg tega, bi zraven vsakega vezal še en foliski kondenzator (0,1  μF). Lahko kljub temu tako velika porast kapacitivnosti škodi? Vem, da potrebujem kondenzatorje s kar se da majhnim karakterističnim časom (torej notranjo upornostjo). Je še kaj, na kar velja paziti? Kaka priporočila? Je možnost, da bi dandanes še vedno uporabljali kondenzatorje za kakšno merjenje časa ali filtriranje in za povrh še ne-SMD? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Ker boš kondenzatorje dodajal vsporedno z obstoječimi bo impedanca manjša. Posledično bo tudi tok ob vklopu naprave večji (dokler se ne napolnijo)  Kondenzatorji na vseh matičnih ploščah morajo zdržati konstantno velike praznilne tokove. Zato niso za nalogo, ki jo opravljajo vsi enako dobri. Sigurno si bral na tem forumu o napihnjenih kondenzatorjih. To je rezultat uporabe kondenzatorjev, ki so se zaradi prevelikih tokov pregrevali. Točno kateri tipi bili najprimernejši ne vem, ker jih še nikoli nisem iskal. Najbolje da poiščeš podatke pri proizvajalcih kondenzatorjev. Vprašanje pa je kje boš ustrezne dobil. ",
+    "user": "Highlag"
+  },
+  {
+    "message": "Prevelike kapacitivnosti ponavadi skodijo napajalniku (diode in transformator) ... hitro polnjenje kondenzatorjev potegne za sabo tokovne konice. Še posebej pri kondenzatorjih z nizko notranjo upornostjo (ESR), ki sicer zmanjša valovitost in notranje izgube (segrevanje -> napihovanje -> puscanje). Torejl elektroliti z nizko ESR (ni nujno da je velika kapacitivnost), visoko delovno temperaturo in dolgim zivljenskim casom (za foro si lahko malce pogledas stran  Rubycon)   Da bi kaj zaosciliralo ob tokovnih praznitvah (zaradi induktivnost zic) je malo verjetno, vendar pa ne nemogoče (zato je pač bolje če je SMD, pa še direktno na luknje lahko prispajkaš). Če imaš možnost opazovati napetost na osciloskopu malce poeksperimentiraj. Velikokrat je zaloga kapacitivnosti dovolj velika, problem predstavljajo hitri preklopi. Včasih je \"ringanje\" kar moteče. Rešitev si že podal (hitri folijski oz. keramični kondenzatorji). Rubycon ",
+    "user": "slawc"
+  },
+  {
+    "message": "Ko je Asus za THG zmodificiral takšno ploščo so zamenjali kondenzatorje iz takšnih:  vir: Tom's Hardware v takšne:  vir: Tom's Hardware S podobnimi (po izgledu) se ponašajo tudi novejše grafične kartice. Imajo (ali vsaj ohišje) kakšno posebno ime?  Kondenzatorji na vseh matičnih ploščah morajo zdržati konstantno velike praznilne tokove. Zato niso za nalogo, ki jo opravljajo vsi enako dobri. Sigurno si bral na tem forumu o napihnjenih kondenzatorjih. To je rezultat uporabe kondenzatorjev, ki so se zaradi prevelikih tokov pregrevali. Amapk, ker vežm vzporedno, se bodo tudi tokovi porazdelili, mar ne? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "A ni tok povsod enak? ",
+    "user": "PrimozR"
+  },
+  {
+    "message": "Amapk, ker vežm vzporedno, se bodo tudi tokovi porazdelili, mar ne?  Pomojem da ne. Pomojem smo več toka (recimo šeenkrat več če daš istega vzporedno) potegneta iz napajalnika. Tako da so tokovne špice še večje in je obremenitev napajalnika večja, stari kondenzator pa isto \"trpi\" kot prej.  Če je tisto, kar sem zgoraj napisal res, je najbolše da samo kakovostne kondenzatorje daš namesto starih.  Pomoje gre tko: Zaporedno: R=R1+R1, 1/C=1/C1+1/C2 Vzporedno: glih obratno od zgoraj  Tko da če hočeš razbremenit moreš prvo vezat temu kondentazotju še enega zaporadno da ga razbremeniš in potem še en tak par enake kapacitivnosti vezat vzporedno, da povečaš kapacitivnost.  Samo kot sem reku ... ne mi verjet na besedo. ",
+    "user": "DSmidgy"
+  },
+  {
+    "message": "Kaj pa 1. Kirchoffov zakon (vsota tokov, ki priteče v razvejišče je enaka vsoti tokov, ki iz njega odteče)? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Folijski kondenzator je dovolj eden za vsako skupino elektrolitskih kondenzatorjev (Pri CPU, pri RAMu itd), on samo požira visokofrekvenčne motnje, ki slabo vplivajo na stabilnost napajalnih regulatorjev oz. bi bilo bolje pogledati ali so že na napetostnih regulatorjih in jih po potrebi dodati čimbližje vhodu regulatorjev. Če obstaja več vzporedno vezanih regulatorjev potrebuješ samo en folijc za celo skupino, sicer so ravno iz tega razloga navadno že montirani (v SMD obliki).  Večja kapaciteta načeloma ne škoduje, pretiravati ravno ni treba, sicer je danes toleranca elektrolitskih kondenzatorjev (nadalje elko) standardno -10% +50% in tudi iz tega razloga so rezultati pri ekstremnem OCju zelo odvisni od plošče do plošče. Iz razloga velikih toleranc se elko ne uporablja za kakšne meritve, vsaj na matičnih ploščah ne.  Če je prostor za dodatne elko že pripravljen in je to 100%, potem jih kar dodaj, ne škoduje, pa še obstojoče boš precej razbremenil. Precej matičnih plošč in grafik je takih, s praznimi mesti za te kondenzatorje, proizvajalci skoparijo na vsakem koraku.  Če pa jih misliš dodajati tako, da bi jih nekako prikopil na obstojoče pa je to bolj slaba rešitev. Problema sta upornost(impedanca) in induktivnost dovodnih žic, oboje pa narašča z dolžino žic. Najbolj enostavno rečeno zaradi teh dveh problemov se taka dodatna baterija elko obnaša leno, ne uspe dovajati energijo v polni meri ampak samo del, pa še to z majhno zamudo.  LP, Azrael ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Prav, potem folijske črtam, prazna mesta pa bom zapolnil.  Če pa jih misliš dodajati tako, da bi jih nekako prikopil na obstojoče pa je to bolj slaba rešitev. Problema sta upornost(impedanca) in induktivnost dovodnih žic, oboje pa narašča z dolžino žic. Najbolj enostavno rečeno zaradi teh dveh problemov se taka dodatna baterija elko obnaša leno, ne uspe dovajati energijo v polni meri ampak samo del, pa še to z majhno zamudo. To sem imel predvsm v mislih. Bi se vseeno splačalo obstojče zamenjati z kvalitetnejšimi, ki imajo hkrati tudi večjo kapacitivnost? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Še to, ima smisel dodati kondenzatorje na prazna mesta širom plošče, ali samo v okolici pri navijanju kritičnih zadevščin (CPU; NB ...)? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "O.K. ŠE jaz pristavim lonček.    Kar se kondijev tiče, uporabljaj low-esr elektrolite. Se pravi elelktrolitske kondije, ki so optimizirani za visoke tokkove in imajo temu primerno nizko notranjo induktivnost in upornost. Poelg tega, pomaga če vežeš nekaj manjših kondijev vzporedno anmesto enega večjega, če to lahkko storiš, vendar morajo biti žice debele in kratke, da ne bo več škode kot koristi.  Lahko bi tudi vzpredno s takim kondije zvezal še en ekxtra multilayer SMD, ki bi požrl najhitrejše trenziente in najvišje frekvence, vendar bi za to moral uporabiti prav namenski kondi. Mislim, da nekaj voodilnih proizvajalcev že nekaj casa ponuja multilayerje, ki so vec kot dovolj hitri in pri katerih je ozko grlo induktivnost zic. Vzames pav najvecjega, ki ga lahko dobis (recimo 100 uF/6.3V, kar je za keramicni multilazer ogormno) in to je to.   Multilayerji se ob lekotih uporabalčjao zato, ker so veliko hitrejsi (ceprav imajo veliko manjso kapacitivnost v istem volumnu) in zagotavljajo energijo za cas, dokler lelektrolit ne \"prime\". Zato jih bos nasel denimo med pini CPUja, ob RAM cipih na modulu itd. So tako hitri, da se poznajo induktivnosti vsakega milimetra vezi, zato so tesno ob cipih.  Ne vem, zakaj so ti svetovali uporabo foliskih kondijev. Kot jaz vem slednji sploh niso namenjeni temu, sploh pa ob napacni izbiri so lahko povsem brez ucinka. Induktivnost folijskega kondija je odvisn od nacina navijanja in metalizacije in je lahko ogromna. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Glede na to, da mi eni priporočate vzporedno vezavo večih manjših, drugi pa ne, sem bodisi pre slabo opisal kako to nameravam naresti, bodisi se nekdo moti.   Da odpravim prvi pomislek. Za priklop sem mislil uporabiti kar kondenzatorjeve nožice, dolgo pribljižno toliko kot je polmer kondenzatorja (zato, da lahko ta \"leži\" na zanji strani vzporedno s ploščo). Obstaja kak boljši način (brez kakšne posebne opreme)? Kondenzatorji bi imeli najnižji ESR, ki ga lahko dobim (bo HTE vredu, ali so še kakšne bolj specializirane trgovine?). ",
+    "user": "OwcA"
+  },
+  {
+    "message": " Glede na to, da mi eni priporočate vzporedno vezavo večih manjših, drugi pa ne, sem bodisi pre slabo opisal kako to nameravam naresti, bodisi se nekdo moti.    Ni panike. Tam, kjer imas recimo 3300 uf/10V lahko postavi denimo vzporedno 2x1600 uF, lahko pa celo k obstojecemu 3300 uF pripopas se enega. Tudi ce je treba zato malenkost podaljsati zice, nic hudega. Le pretanke naj ne bodo.  S tem sicer dodas nekaj induktivnosti, kar naceloma ni dobro, a to je minimalno, pa tudi elektrolitski kondiji so pocasni in prehitrih sprememb itak ne zgladijo- temu niso namenjeni. Za to je potem ob takem full hitrem bremenu (CPU)itak se ena baterija multilayerjev.   Da odpravim prvi pomislek. Za priklop sem mislil uporabiti kar kondenzatorjeve nožice, dolgo pribljižno toliko kot je polmer kondenzatorja (zato, da lahko ta \"leži\" na zanji strani vzporedno s ploščo). Obstaja kak boljši način (brez kakšne posebne opreme)? Kondenzatorji bi imeli najnižji ESR, ki ga lahko dobim (bo HTE vredu, ali so še kakšne bolj specializirane trgovine?).   To, kar si se naumil, lahko naredis. Robo lahko dobis v HTEju, razn ce bi rad narocil kaj posebnega- kar bi lahko naredili zato pri ICju denimo ali v Elbacompu.  Ce bi se sam spuscal v to, se ne bi ustavil samo pri elkotiuh, ampak bi dodal tudi na obstojece multilayerje full dobre dodatne multilayerje. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Ce bi se sam spuscal v to, se ne bi ustavil samo pri elkotiuh, ampak bi dodal tudi na obstojece multilayerje full dobre dodatne multilayerje. Z veseljem.   Kateri bi bili ključni. Znotraj socketa je recimo kar nekaj neporabljenih mest za SMD kondije (te so zapolnili tudi pri Asusu, ko so modificirali ploščo za THG), kam še? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Poglej v blizino CPUja, NorthBridgea in SOuthbridgea. Potem so mogocce na vrsti se RAMi, ceprav oni nimajo ponavadi multilazerjev na plati ampak ob vsakem cipu na modulih samih.  Tja lahko probas dodat se enega na obstojec kondi. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Dejansko se podam na lov za praznimi mesti, ali naskakujem obstoje?e SMD kondije? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Eno in drugo.  ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Hehe, česa vse se boš še spomnil?    In kaj misliš da boš pridobil?   poročaj....  ",
+    "user": "T0RN4D0"
+  },
+  {
+    "message": "Pridobil bo na stabilnosti napajalnih napetosti, kar bi mu lahko omogocilo stopnicko ali dve vecje navitje in stabilnejse delo. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Ja, v teoriji.    V praksi pa če je problem stabilnost (in da bi bili za to krivi kondenzatorji  ) je to ziher že tak hard OC, da bo pridobil recimo 1 (mogoče 5) %...   Lažje delo? Menda ja ne, da folk dela s tako navitimi compi... a explorer bol leti al kaj?      No ja, sicer pa zanimiva ideja in projekt, samo se mi zdi da re bolj za veselje pri uresničevanju kot pridobitve...    ln ",
+    "user": "T0RN4D0"
+  },
+  {
+    "message": "1. Pa saj gre za ljubiteljski projekt.  2. Zadnje case prihaja s tvoje strani vse vec smiselnih, premisljenih komentarjev. Da nisi zbolel za cim neozdravljivim ?  ",
+    "user": "Brane2"
+  },
+  {
+    "message": "LOL, ta je dobra, čeprav na moj račun!  ",
+    "user": "T0RN4D0"
+  },
+  {
+    "message": "Medtem, ko iščem ustrezne kondije, še eno vprašanje. Na plošči imam več praznih mest za MOSFET-e. Zgledajo funkcionalni, (na vseh nožicah je napetost). Kako je kaj z dodajanjem teh? Ob predpostavki, da se to da naresti, kakšni bodo vredu. Kolikor sem gledal niso vsi enaki, ali bolje rečeno, niso napetosti na njih nožicah enake. Lahko kljub temu, za vse uporabim en sam tip? Na  xtremesystems takisto teče debata o tem. Nekdo pravi, da ima na plošči  60T03H. Sam prav tega modela nimam, še več, kot že rečeno imam dvojne različne. Je torej dovolj, da si najdem nekaj po specifikacijah podbnega tem (predpostavljam, da boljše pomeni, včeji tok, oziroma moč in majnša upornost, za napetosti je vse kar je nad 12 V dovolj) in bo za pravilne napetosti poskrbel napetostni regulator? ",
+    "user": "OwcA"
+  },
+  {
+    "message": "Ta tip je pa fajn navil prescotta. ",
+    "user": "PrimozR"
+  },
+  {
+    "message": "Pri MOSFETih se stvari malce zakomplicirajo.  Lahko jih das vec v paralelo, a ni niujno, a bo to izboljsalo stvari.  MOSFET je namrec solidno kapacitivno breme za cip, ki ga krmili, njegova kapacitivnost vhoda je pa med drugim priblizno sorazmerna najvecjemu toku, za katrega je ratean trazistor. Tako da ni nujno, da ti povecevanje tokovne zmogljivost tranzistorja/jev vedno koristi, saj s tem lahko povzrocis pocsasnejsi vklop/izklop tranzistorja in s tem sicer mogoce manjse ohmske izgube, vendar vecje izgube preklopa.  Poleg tega ni ugodno, ce skupaj vezes razlicne FETe, temvec je bolje, ce gre za skupino istih tranzistorjev, od katerih je vsak sposoben prenesti enak tok, kokt tranzistor, ki je bil prvotno v plosci.   Kar se tipiv tice, mislim da niso vsi iistega tipa tam. CE se prav spomnim, je vsaj en tranzistort P-kanalni MOSFET, ostali so N-kanalni.  Pri MOSFETu pazi na:  -polariteto, torej ali gre za P-kanalni FET ali N-kanalni FET -napetost vrat za polni kklop in najvisjo dovoljeno napetost na vratih. Pri navadnem FETu je to v rangu 10V, \"logic level\" FET dela ze z manj, npr 5V. Pomembno je, da FET pravilno izkrmilis in da mu signlal povsem zadosca da se popolnoma odpre ali zapre, da mu pa ne prebije izolacije vrat.  -maximalno dovoljeno napetost med ponorom in izvorom (Udsmax). Ko proizvajalci optimizirajo tranzistorje za take uporabe, optimizirajo sirino kanala za visoke tokove in je zato kanal kratek, to pa pomeni nizko prebojno napetost. Dobro je, da ima novi tranzistor primerljivo, vendar ne veliko visjo prebojno napetost od starega. Tranzistorji za visje napetosti imajo pocasnejsi preklop, to pa pomeni vecje izgube in gretje.   -maximalen trajni tik skozi izvor ali ponor (Id) in maximalni trenutni tok.  -deklarirano najnizjo uporanost kanala. Od nje so odvisne izgube v prevajanju tranzistorja. CImnizja upornost, temmanj se bo grel v vklopljenem stanju.  -efektivno (Millerjevo) kapacitivnost vhoda, torej vrat. Pri tej kapacitivnosti igra doloceno vlogo tudi dejanjska napetost na ponoru v trenutku preklopa, ki je pac odvisna od aplikacije, vendar ti podatek člahko sluzi za primerjavo. Ce bo tranzistor ali skupina tranzistorjev imaela bistveno visjo vhodno kapacitivinost od starega tranzistorja, se ti znajo izgube pri preklopu skkokovito povecati, ker generator signala ne bo uspel tako hitro vklopiti ali izklopiti skupne,kot je to naredil z enim tranzistorjem.  Je se en kup drugih malenkkosti a ce bos ujel te O.K., si mislim da na varnem.  Bi se pa jaz pri tem se zamislil nad duslikami. Ce gras na vecje tokove, lahko racunas na visje gretje dusilk. Mogoce bi kazalo prenaviti te obrocke z licnasto zico in sicer tako, ki ima vse licne med seboj izolirane. Izenicni tok visjih frekvenc se namrec v zici razporedi po njeni povrsini in po sredini prakticno ne tece. Efekt je z narascanjem frekvence vse bolj izrazit pri debelejsih zicah.   Poleg tega lahkko prihaja do zasicenja jeder v dusilkah, zato bi mogoce kazalo odviti kak ovoj ali dva. KAr tako na pamet je tezkko reci. Stvar bi moral pogledati na scopeu in v skladu s tem ukrepati. Take zadeve lahko nevarno zamajejo stabilnost usmernika in ti denimo vsake toliko skurijo kak CPU itd. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Owca, jst nebi bil rad tvoja plata.  ",
+    "user": "T0RN4D0"
+  },
+  {
+    "message": "Sprehodi se malo po straneh proizvajalcev in poglej.   Sam sem denimo skocil na www.st.com in si pogledal ponudbo. Gor imeajo fajn iskalnik, kjer vpises zeljene parametre in stvar ti vrne zadetke.  Poglej si denimo tole:   QUERY  in na njem prvega kandidata:   STB100NF03L  Videti je, da ima 5x nizjo upornost kanala od starega tranzistorja. Ce so ostale lastnosti primerljive, si zmagal.  ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Na  Xtreme Systems forumu je tale tema, sicer je namenjena DFI platam za AMD-je ampak je tudi nekaj o tem kakšne kondenzatorje je tip nalotal na plato, da se le ta sedaj odlično navija.  ",
+    "user": "GUFY"
+  },
+  {
+    "message": "@Brane2: hvala za vso tvojo pomoč, ko se prvič vidiva, ti pir ali dva ne uideta.   Sedaj pa k stvari. Kako ugotovim ali potrebujem n-tip ali p-tip samo iz praznega mesta na plošči. Ali lahko predpostavim, da je v vsaki napajalni fazi že p-tip, tako da so ostali n-tip?    Ali kaj pomaga dilemi z Millerjevo kapacitivnostjo dejstvo, da je kot prvo Asus očitno spočetka ploščo zasnoval z temi dodatnimi FET-i in jih kasneje odstranil in to, da so v reviziji 2 na sestrski plošči (P4P800-E) v vsako fazo dodali še en FET? Kolikor vem pa tudi po tem še niso zapolnjena vsa mesta. Sam jih imam še 5 na spodnji strani plošče in enega med AGP režo in frekvenčnim generatorjem. Potem sta še dve mesti, za kateri pa se mi močno dozdeva, da sta namenjeni izključno napajanju ventilatorjev (glede na to, da sta obe v neposredni bližini konektorja, pri tretjem konektorju, namenjenm napajanju ventilatorja za CPU, pa že je FET), tako pri teh dveh nima smisla kaj praskati.  Poleg tega lahkko prihaja do zasicenja jeder v dusilkah, zato bi mogoce kazalo odviti kak ovoj ali dva. KAr tako na pamet je tezkko reci. Stvar bi moral pogledati na scopeu in v skladu s tem ukrepati. Si pripravljen priskočiti na pomoč?  STB100NF03L  Videti je, da ima 5x nizjo upornost kanala od starega tranzistorja. Ce so ostale lastnosti primerljive, si zmagal.  Razen Millerjeve kapacitivnosti za katero nimam podatkov za obstoječe se ujemajo ali jih prekašajo. ",
+    "user": "OwcA"
+  },
+  {
+    "message": " @Brane2: hvala za vso tvojo pomoč, ko se prvič vidiva, ti pir ali dva ne uideta.    Union TEMNO toceno. Just so you know ...     Sedaj pa k stvari. Kako ugotovim ali potrebujem n-tip ali p-tip samo iz praznega mesta na plošči. Ali lahko predpostavim, da je v vsaki napajalni fazi že p-tip, tako da so ostali n-tip?   Samo iz terga bi to tezko ugotovil. Prej bi moral imeti oznako cipa in vseh tranzistorjev in mamaplato na mizi, da bi lahko pomeril stvari..   Ali kaj pomaga dilemi z Millerjevo kapacitivnostjo dejstvo, da je kot prvo Asus očitno spočetka ploščo zasnoval z temi dodatnimi FET-i in jih kasneje odstranil in to, da so v reviziji 2 na sestrski plošči (P4P800-E) v vsako fazo dodali še en FET? Kolikor vem pa tudi po tem še niso zapolnjena vsa mesta. Sam jih imam še 5 na spodnji strani plošče in enega med AGP režo in frekvenčnim generatorjem. Potem sta še dve mesti, za kateri pa se mi močno dozdeva, da sta namenjeni izključno napajanju ventilatorjev (glede na to, da sta obe v neposredni bližini konektorja, pri tretjem konektorju, namenjenm napajanju ventilatorja za CPU, pa že je FET), tako pri teh dveh nima smisla kaj praskati.   Ceprav ne igrajo vsi nasteti tranzistorji vlogo v tem, saj niso vezani vzporedno, to dejstvo verjetno pomaga. To pomeni, da lahko cip krmili tudi bistveno vecja bremena in da z dodajanjem vecjih tranzistorjev ne vi smelo biti tezav. Kljub temu bi si bilo dobro ogledati lastnosti cipa...   Poleg tega lahkko prihaja do zasicenja jeder v dusilkah, zato bi mogoce kazalo odviti kak ovoj ali dva. KAr tako na pamet je tezkko reci. Stvar bi moral pogledati na scopeu in v skladu s tem ukrepati.  Si pripravljen priskočiti na pomoč?   Sem, samo zavedaj se, datole lahko skuri plato ali procesor ali celo kaj tretjega. V tem primeru se lahko odrecem piru, ne bom ti pa pokril nastale skode.   Razen Millerjeve kapacitivnosti za katero nimam podatkov za obstoječe se ujemajo ali jih prekašajo.   Ja, videti je res lepo. Si bom to se podrobneje ogeldal. Sedaj ej bplj sli msnj dsmo se vprassanje, kej dobiti tak tranzistor, ali se raje- palico takih trnazistorjev.  Lahko poklices v HTE in se obrnes na Daniela (povej, da sem te jaz poslal) in ga povrasaj malo o ustreznem ekvivalentu. Mogoce pa imajo kaj na zalogi. Daniel se je zadnje case kar precej zabaval s MOSFETi in bi zanl imeti kako idejo... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "V glavne je nasplošno takole: Folije v taki in drugačni obliki imajo dobro frekvenčno karakteristiko, toda kapacitete ki jih rabiš bi zapolnil celo ohišje. Elektroliti so seveda bojša izbira,so sicer počasnejši, toda kapaciteto v mikrofaradih imajo tisto kar rabiš. Še boljši os tantali, ampak kljub visoki tokovni sposobnosti, so temu primerno dražji oz. veliko dražji. Trnzistorjev oz. Mos fetov ne bi dodajal ker ponavadi potegne še modifikacije kakšnih uporov in tuljav itd. Glede na to da plata podpira prescote si ki so kakih 50W bolj požrešni si omisli raje hlajenje Fetov ter dodajanje kondenzatorej.  1. Izberi konkretni spjkalnik, ki bo sposoben vsaj 340°C ali več, ko sem se jaz spravil kondiče dodajati mi petka ali je bila sedemka, tista 2mm konica welerjeva prešvoh!!!!! Tako da sem samo tantale uspel dolotati. 2. Pri procesorskem socketu je prosto vsaj na moji asuski štiri mesta za kondenzatorje, GOr sicer na tensno ali pa malo bolj narazen spraviš še kakšne 2200uF16V. Problem bi bil le hladilnik. Priporočam raje 1000uF.Žal vam bo vsak štromal povedal da je potrebno za dobro glajenje imeti na oko 2000uF na 1A toko, žal tu to ne bo možno. 3.Na tranzistorje prilimaj hladilnike, to bi bila edina modifikacija . 4.Pkoli ramov imaš tiri kondiče, obvezno jih povečaj če lahko drugače tako kot jaz sem od spodaj prispajkal na kondiče 100ufTantale.   2x1000uf vzporedno je bolje kot 1x2200uf! Zato ker je notranja upornost manjša pri vzporedni vezavi, torej lahko da kondenzator več toka.  Jaz imam na vsak štrom od diska po 2200uf enga za 5V ter enega za 12V, skupaj jih imam tako 20000uf, poleg tega ne pozabi dodati kondiče na dodatno +12V napajanje od plate.  Pa tisto navito okoli fetov niso dušilek ampak del napajalnega sklopa, s katerim če bi dovijal ali odvijal bi sprmenil izhodne napetosti.... ",
+    "user": "Mr.B"
+  },
+  {
+    "message": " V glavne je nasplošno takole: Folije v taki in drugačni obliki imajo dobro frekvenčno karakteristiko, toda kapacitete ki jih rabiš bi zapolnil celo ohišje.   Ze, amapk, kre so ti kondiji namenjeni glajenju ultrahitrhis sprememb, bi bili prepocasni ze zaradi svoje velikosti. Hitrost sirjenja signala skozi plato jim narekuje nek horizont, cez katerega niso sposobni \"videti\".   Elektroliti so seveda bojša izbira,so sicer počasnejši, toda kapaciteto v mikrofaradih imajo tisto kar rabiš.    Elektroliti so namenjeni glajenju POCASNIH sprememb v plati. ZAto pa imas ob njih baterije keramicnih multilayerjev.    Še boljši os tantali, ampak kljub visoki tokovni sposobnosti, so temu primerno dražji oz. veliko dražji.   Tantali so za te uporabe poovsem nepprimerni zato, ker jih visoke tokovne spice ubijejo. Zato se prodajajo vse manj. Vcasih, ko so bili elektroliti se bistveno slabsi, so tantali veljali kot premium kondenzatorji. Sedaj so jih moderni elektroliti ze marsikje ujeli, obenem pa nimajo slabih lastnosti tantalov- preobcutljivosti na tokovne spice in visoke cene.   Danes ze dobis keramicni multilayer do pardeset ali celo 100 uF, ki je priimerljivih dimenzij in bistveno, bistveno hitrejsi od tantala...   Trnzistorjev oz. Mos fetov ne bi dodajal ker ponavadi potegne še modifikacije kakšnih uporov in tuljav itd. Glede na to da plata podpira prescote si ki so kakih 50W bolj požrešni si omisli raje hlajenje Fetov ter dodajanje kondenzatorej.   Ne verjamem, da bi bile potrebne sploh kake modifikacije, mogoce kje kaka zamenjava kakega upora, pa se to bi bil bolj lepotni tweak. MOSFETi so trdozive zadev, sploh pa so si te zadeve, ki jih vdelujejo v plate, zelo podobne, saj zelijo proizvajalcem plat namenoma olajsti prehod na novi tranzistor. Zamenjava se zdi boljsa pooteze od hlajenja, saj zmanjsa gretje napajalnika, poveca njegovo zmogljivost, zaradi gretja zmanjsa moznost okvar in podaljsa zivljenjsko dobo okolisnjih elektrolitov in zmanjsa porabo stroma- torej razbremeni napajalnik.  Je tudi logicni korak pri friziranju. Ce navijes en sklop, se ti pojavi lahko ozko grlo drugje in logicno je da pac poruseno ravnotezje popravis z uprgradeom drugih sklopov. Saj tako delajo tudi pri predelavah avtomobilskih motorjev. Ko imas mocnejsi motor, potrebujes (med drugim) tudi boljse bremze, ne pa dodatnih ventilatorjev na diskih koles...  ",
+    "user": "Brane2"
+  },
+  {
+    "message": " Pa tisto navito okoli fetov niso dušilek ampak del napajalnega sklopa, s katerim če bi dovijal ali odvijal bi sprmenil izhodne napetosti....   Tisto SO dušilke, ki služijo kot rezervoarji energije v switcherju. Poglej si oznako na obliznejm cipu in pogooglaj za Application notesom.  S spremembo stevila ovojev bi spremenil precej stvari, ne pa izhodne napetosti- dokler ne bi zasel v skrajnost in bi se napajalniku strgalo, jasno... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Sem, samo zavedaj se, datole lahko skuri plato ali procesor ali celo kaj tretjega. V tem primeru se lahko odrecem piru, ne bom ti pa pokril nastale skode. Na kaj takega ne bi niti pomislil, takisto pir ostane neglede na vse. Se mi pa zdi, da imam recimo s tvojo pomočjo manj možnosti za kakšno večjo škodo.  Ko že ravno govorimo o tantalih. Tudi za te je še neakj praznih mest okoli CPU socketa. Je tja bolj smiselno dati multilayer ali naj \"spoštujem\" Asusovo odločitev. ",
+    "user": "OwcA"
+  },
+  {
+    "message": "hmm, ne bi bilo bolje ce se ti in brane dobita ob sodcku crnega ter skupaj nariseta novo plato?    tako z vsaj sest faznim napajanjem  ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": " Na kaj takega ne bi niti pomislil, takisto pir ostane neglede na vse. Se mi pa zdi, da imam recimo s tvojo pomočjo manj možnosti za kakšno večjo škodo.   O.K. prej dobi material in se pozanimaj o tem, kaj splo je na voljo    Ko že ravno govorimo o tantalih. Tudi za te je še neakj praznih mest okoli CPU socketa. Je tja bolj smiselno dati multilayer ali naj \"spoštujem\" Asusovo odločitev.   Pa si ziher, da je Asus dal tja tantale ?   Lahko pasteas sliko plate ? ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Bom nabral material.  Če se ti da malo poglej  tole. Nemška izpostava Asusa je modificirala eno izmed plošč prav posebaj za THG, da so se lahko potem ti igrali z 5 GHz procesorji. Od tu mi tudi ideja o tantalih. ",
+    "user": "OwcA"
+  },
+  {
+    "message": "TIsto bi lahko bil tantal ali pa kak poseben elektrolit. Tantali so ponavadi rumenooranzne barve, ni pa to 100% pravilo.  Ce gre az majhne kapacitete, bi jaz vsekako raje dal tja kak ultra turbo big_ass multilayer, pa tudi na tamale kondije bi nalotal se eno vrsto novih... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Brane2: Še jest bi malo moril... kaj misliš če bi na zadnjo stran plate med vsako napajalno nožico in \"maso\" procesorja nalotal en tak \"big_azz\" multilayer... to sem razmišljal v časih ko sem maltretiral Celerona 700 na BH6... tam si mel lepo Slotket pa si gor počel kar si hotu... zjebat itaq nisi mel kaj, če pa si že si pa slotket zamenjal... no tle je bolj jebena. Ker mi je kljub temu da sem modifikatorska žilica kar malo hudo začet cinit po skoraj novi plati za 30kSIT... no zanima me predvsem ali bi lahko tako enormno povečanje kapacitivnosti v okolici procesorja kaj škodovalo samemu napajalnemu delu plate (mosfeti in tuljave)... ker recimo Socket A ima pomojem vsaj 50 napajalnih nožic... zdej pa če maš tam 100uF, pa 50 kondijev, pa poleg tega bi lahko zafilal še 20 praznih mest ki so namenjeni multilayerjem že po deafultu, pa jih niso nalotal. Pa če bi mogoče dodal še kakšen dodaten elektrolitek... recimo na koncu ene 20mF dodatne kapacitivnosti na območju CPUja...  Sej kokr sem jest gledal tele datasheete, napetostni regulatorji CPUja podpirajo \"soft-start\" sam mene vseeno zanima ali ne bi mogoče po taki modifikaciji soft start postal bolj hard varijante...  LP  TribesMan ",
+    "user": "TribesMan"
+  },
+  {
+    "message": "Mislim, da te nevarnosti ni. Ozkko grlo je pri hitrih danasnjih cipih v zagotavljanju zadostne kapacitivnosti in cimmanjse induktivnosti.  Ze pri bistveo boljpohlevnih cipih je kriza z napajanjem in kakovsotjo signalov. Tista prazna mesta so nezapoljnjena zaradi sparanja. Proizvajalec je predvidel N kondijev, vendar je pozneje z meritvami ugotovil, da pac zaenkrat ni potrebno montirati vseh.   S tem je prisparal denar za same kondije in denar za montazo in lotanje teh na plato.   Res je sicer, da bi verjetno z dodajanjem kondijev na neprava mesta kar tako povprek lahko porusil stvari, a ce jih dodajas po pameti in na predvidena mesta ne bi smelo biti nic narobe. Predvsem pa je treba uporabljati kakovostno robo in ne kar nekaj... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Aha, kaj pa se pojmuje kot kvalitetna roba?  Torej rabil bi \"fat_ass\" multilayerje in recimo ene elektrolite v rangu 4700uF z 5V... kje prodajajo \"kvalitetne\"... ker multilayerje sem dosedaj videl samo v ICju... kok so tisti kej kvalitetni... Aja pa kaj misliš, se splača rinit kondije direktno na zadnjo stran socketa, ali bi bilo mogoče bolj pametno da bi jih dodal več enega na drugega na že predvidena mesta (na štuparamo... :))  Po pameti pa vedno...  LP  TribesMan ",
+    "user": "TribesMan"
+  },
+  {
+    "message": " ha, kaj pa se pojmuje kot kvalitetna roba?   Tisto, za kar imas podatke o izdelku in o proizvajalcu in kar ima solidne lastnosti.   Torej rabil bi \"fat_ass\" multilayerje   Svojcas je imel denimo Elbacomp v ponudbi te zadeve s strani specializiranega proizvajalca, ki je ponujal modele z do parsto mikrofaradov  pri nekaj voltih. Natanko to, kar rabis torej.. Pa se nekaj. Vsaj po podatkih sodec, so bile tiste zadeve noro hitre, prakticno toliko, da so bile vecji porblem vezi do kondija kot sam kondi.  V glavnem, se bom pozanimal. Elbacomp se je hvalil z zastopanjem 100+ priyvajalcev in zagotovo se ne bodo spustili v iskanje na osnovi tega, da jaz hocem nek kondi. Bomo nasli proizvajalca in model...   in recimo ene elektrolite v rangu 4700uF z 5V...   Velja enako kot za multilayerje. Bo treba najt specialce za tole..   Aja pa kaj misliš, se splača rinit kondije direktno na zadnjo stran socketa, ali bi bilo mogoče bolj pametno da bi jih dodal več enega na drugega na že predvidena mesta (na štuparamo... :))   Odvisno. A dobicki so bolj majhni, poleg tega so raydalje med pini res majhne in tja bos tezko spravil kak bistven kondi, poleg tega je realna sansa da kaj nenamerno zaslusas... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Multilayerje ti ne bodo dali špice toka za čas ki ga rabiš.  Dva in več ektloritov ti da isto velik tok dalj časa kot en multilayer, drugače pa preračunaj koliko toka rabi racimo pri 80W 1.5A. Multileyersi so dobri samo za glajene visokofrekvečnih motenj, to pomeni 100khz kjer pa elektrolit sploh ne funkcjonira, je bolje da ga ni , kot pa da bremeni linijo.  Seveda pa nikar ne dodajati kondezatorjev na napajalnik ki je že tako polno obremenjen, ker ne bo oz. ni sposoben še tokovni potreb sistema, kaj še le kondenzatorjev zadovoljiti.  Diode oz. dioda ki usmerja napatost v napajalniki, je poleg svojega nazivnega toka spsobna dati tudi faktor 100 in še več max toka, le da je dovolj hlajena, vse velja tudi za vse ostale polprevodnike, lastnosti polprevodnika pri nižjih temperaturah so bistveno boljše kot pa pri temeraturah ki bi jih imel, recimo pri polni obremenitvi nehlajen.  DRugače pa pazi z spajkalnikom, ker rabiš nujno močan spajkalnik, drugače boš samo plato grel, sej je pod zgornjo in spodnjo stranjo kar nekaj nivojev bara, zat tudi nimajo feti hladilnikov.  V socketu pa so notri dodan en SMD elektrolit ostalo je folija. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": "Seveda pa nikar ne dodajati kondezatorjev na napajalnik ki je že tako polno obremenjen, ker ne bo oz. ni sposoben še tokovni potreb sistema, kaj še le kondenzatorjev zadovoljiti.  OK sam tle si pa zabluzil. Sej kondenzator ni porabnik... Kondenzator bo bremenil napajalnik samo ob vklopu računalnika, dokler se ne \"napolni\". Potem pa samo še ubija visokofrekvenčne motnje, ki pa so pri napajalniku procesorja še kako prisotne, saj je frekvenca switcherja ponavadi v rangu nekaj 100kHz. Elektroliti sami ne bi bili nikoli dovolj hitri za kaj takega, je res da glede na volumen ima elektrolit precej večjo kapacitivnost, sam po hitrosti pa še zdaleč ne dohajajo multilayerjev.  Spajkanje plat mi ni nikakršen problem, saj mam na tem področju že precej izkušenj. Pa tudi spajkalnik imam konkreten... Aja v socketu jest nisem videl nobenega elektrolita, samo multilayerje... vsaj pri NF7 je tako...  LP  TribesMan ",
+    "user": "TribesMan"
+  },
+  {
+    "message": "Kondenzator je porabnik, saj mora prvič vsako nihanje napetosti kompenziratim ter se na to napolniti z elektrončki, kar so pa Amperi. Zelo zanimiv je graf toka ko gledaš na osciloskopu špice ko se kondič polni. ",
+    "user": "Mr.B"
+  },
+  {
+    "message": " Multilayerje ti ne bodo dali špice toka za čas ki ga rabiš.    Seveda ga bodo. Ravno multilayerji ga bodo dali. Elektroliti so učinnkoviti d frekvenčnih kokmponent mogoče 10 MHz, tam so pa valovne dolžine od nekaj deset metrov in sam položaj kondija na plati načeloma ne igra vloge. Teoretično bi bilil lahko zadosti tudikondiji, ki so že v napajalniku.  Na plati je kriza sunkovita sprememba porabe, ko denimo CPU v  eni nanosekundi spremeni porabo za pardeset Amperov, napetost pa mora ostati v okvirih 2%. Tam ti pomagajo samo multilayerji, ki dajo od sebe tokovni šus za tistih par do pardeset mikrosekund, dokler ne vskočijo elektroliti.  Ravno zaradi tega boš multilayerje našel že kar na keramičnem ohišju CPUja, ker ne glede na svojo hitrost morajo biti čimblližje porabniku.   Elektroliti so posejani po plati samo zato, da se zmanjšajo elektromagnenta sevanja v rangu pardeset do recimo 100 MHz in ohmske izgube v tem območju.  To če ne štejemo elektrolitov v nizkonapetostnem napajalniku, ki je pač na plati. Brez njega bi bilo gor veliko manj elektrolitskih kondijev. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Mr.B: Ma spet si bluznil... kondenzator sam za sebe ne kuri nobenega toka... vse kar gre noter, gre tudi ven (no ja skoraj vse, ker pač nimamo idealnih kondenzatorjev) to ni tako kot recimo pri uporu, ki troši energijo... V kondenzatorju se samo \"prečrpava\", ob tokovnih špicah pomaga napajalnemu vezju, ko pa se zadeve umirijo pa se spet napolni na nazivno napetost in čaka na naslednji šus. Tako da če dodaš kondenzator v vezje se poraba ne bo nič zvečala (mogoče minimalno, zaradi serijskih in paralelnih upornosti v kondenzatorju). Problem je edino ob zagonu sistema, saj takrat ko vžgeš mašino in so kondenzatorji prazi potem steče ogromen tok...  LP  TribesMan ",
+    "user": "TribesMan"
+  },
+  {
+    "message": "Nič ni bluzniu! Kondenzator res ne kuri skoraj nič toka. Vendar pa polnenju nastanejo konice toka. Večja kot je kapaciteta večje so. Tako da je to trenutna zelo velika obremeniteu za napajalnik. ",
+    "user": "jest10"
+  },
+  {
+    "message": "Samo za zelo slabo narejen napajalnik.   Kakrsenkoli ne-bolgarski PSU ima relativno mehak vklop, tako da do tega ne pride. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Fantej, dejte malo se umeriti en se pozanimajte kaj je kondenzator, in ne samo folija in ne samo elektrolit in ne samo tantal.  Kondenzator shrani elektrone med dvema povržinama, umes pa je dielektrik. Po domače da boste vsi razumeli. Kondenzator je kot posoda z vodo imam tako kapacitivnost, torej lahko shrani toliko vode! Vodo si predstavljate kot naboj, torej na eni strani + na drugi pa -. Ko switcher napajalnik preklaplja iz ene napetosti v drugo ne glede na frekvenco se zgododi da nekaj časa ne drži pritiska oziroma toka , sedaj si predstavljajte da enakomerno on off stikalo vkljaplate. V tem času ko je OFF, voda iz kondenzatorja drži pritisk, sicer se prazni oz, potencijal počasi pada, toda še vedno bolje kot nič.Kondenzator daje tok.Sedaj ko se vklopi ON stikalo je potencial večji kot je v loncu z vodo, sedaj mora napajalnik, hkrati napolniti lonec z vodo ter dati potencial oziro govorim tok napravam ki so na liniji, torej je tok ki teče iz napajalnika seđtevek toka ki polni kondenzator ter toka ki ga porabi naprava ki je nanj priključena.....Če vam ni kaj jasno vam lahko še bolj poenostavim, samo mislim da so to OE1 na tehnični gimnaziji.   KAr se tiče pa lastnosti kondičev, frekvenčno so najboljši res folijski, pač varirajo od izvedbe, toda kapacitvinost je pramala da zadosti potrebe procesorja, kaj pa se zgodi z večanjem frekvence . Če je bila impedanca elektrolita pri 50Hz-jih pri napetosti 12V rečmo 10 mOhmov, je pri 100khz-jih recimo 1 Ohmov(vrednosti govorim kar tako počes). Ta kondenzator je pri bremenu 1Ohm pri frekvenci 50Hz lahko dal cca 12A za čas ki ga definira njegova kapacitivnost, pri frekvenci 100khz pa je dober 1AMper toka !, če pa bi jih vezal sedaj deset vzporedno, bi lahko imel pri premenu 1 Ohm ponovno 12A, s časom, ki ga določa njegova kapacitivnost. Okej tukaj se vse dogaja dinamično, ker v trenutku ko priklopiš ima kondič 12V potenciala, samo pa takoj začne padati napatost ker elektroni težejo iz plusa na misu, kolikšna je pa ta krivulja pa je odvisno od upora.... Pri foliji je pri 50Hz upornst praktično nič, pri 100khz je nekam večja, samo kar ne razumete je to da kapaciteta , ki je nekaj nF redko 1uF, samo je za SMD tehnologijo kar velik zalogaj, je špica prekratka, kar dela je le to da nihanja napetosti, oziroma šum zaradi lastnosti folije, ki ima še relativno nizko upornost pa samo kratkostiči motnje.  Tantale pa se ne uporablja več v računalništvu, ker imajo pri tako velikih frekvencah že slabše lastnosti kot folija, se pa še vedno uporabljajo pri regulacijah, ker je potrebna velika dinamika toka, kar pa iz praktičnih razlogov, elektrolit zavzame preveč prostora.  Tako imajo inštrumentalni switcer napajalniki, kar cele vrste kondičev na izhodu za gladiti, saj so le tako sposobni dati dovolj toka ven, folije pa so za ničenje visokofrekvenčnih motenj! ",
+    "user": "Mr.B"
+  }
+]

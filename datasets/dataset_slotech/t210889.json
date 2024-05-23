@@ -1,0 +1,122 @@
+[
+  {
+    "message": "Imam par bistvenih vprasanj z RAID1, ker sem imel probleme in katerih se hocem v prihodnje izogniti.  RAID1 polje, zrcali, podatki se zapisejujejo na dva diska. Ce crkne en disk naceloma ni problemov. Kako pa je ce crkne zunanji RAID controler? Ce potem priklopimo en disk na en kanal na maticni ali se bo potem WIN XP bootal? Verjetno, da ne. Podatki torej veeno ostanejo vendar, bi zelel cim hitereje vpozstavit PC v delovno stanje.  Ker zna tudi RAID polje delat probleme razmsiljam ali ni bolje met dva diska locena na vsakem kanalu, potem pa delat slike systemskega diska na un ta drug disk?  Hvala za vasa mnenja in resitve.  LP ",
+    "user": "alex32"
+  },
+  {
+    "message": "1. če ti crkne raid hardware je raid polje sesuto. Rešitev bi bla nov controler. 2. RAID sistemi so dejankso zlo dobra rešitev za backup podatkov. Predlagam ti implementacijo raid sistema višjega razreda, recimo raid 3 al pa celo 5.  Hja, lahko bi delal tudi klone glavnega diska vsak dan na ločen disk, zakaj pa ne. Če imaš čas in voljo... ",
+    "user": "~Speed"
+  },
+  {
+    "message": " Info on RAID 1 >> ",
+    "user": "~Speed"
+  },
+  {
+    "message": "Če vzameš en disk iz RAID1 polja in ga priklopiš ko samostojen disk (mimo RAID kontrolerja) bi načeloma moralo delovati brez problemov, saj ravno RAID hardware skrbi, da so podatki na obeh diskih identični... ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Naceloma ... bom poskusal dobit en disk pa poskusat, da pridem enkrat do konca ... potem pa porocam ...  Ker ce ti crkne rkontroler pa potem ne dobis enakega oziroma da imas kontroler na plosci pa ne dobis vec take plosce na trgu ... hipoteticno razmisljam ...  Ali z izbrisom RAID polja ter vzpostavitev novega polja izgubis podatke na disku? ",
+    "user": "alex32"
+  },
+  {
+    "message": "Ali z izbrisom RAID polja ter vzpostavitev novega polja izgubis podatke na disku?Seveda. ",
+    "user": "bastadu"
+  },
+  {
+    "message": "Ker ce ti crkne rkontroler pa potem ne dobis enakega oziroma da imas kontroler na plosci pa ne dobis vec take plosce na trgu ... hipoteticno razmisljam ...  Plošče z dobrimi raid kontrolerji se prodajajo še vedno, pa tudi če so 5 ali več let stare. Jaz za mojo IBM netfinity kišto dobim še vedno plato na IBM-ju, pa je letnik 1999. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Ali z izbrisoam RAID polja ter vzpostavitev novega polja izgubis podatke na disku?  Sistem ti ne bo več kazal prejšnje postavitve, podatke pa prav zares ne izgubiš, dokler niso fizično prepisani oz. drugače trajno izbirsani. ",
+    "user": "~Speed"
+  },
+  {
+    "message": "Evo končal preizkus.  Instaliral na novo XP (drug PC). Postavil RAID1 in mi je delalo kopije v RAID setupu kr neki casa.  Bios je kar zaznal da je HD postal RAID polje in potem obratno, ko sem samo en disk priklopil brez RAID (PCI) kontolera dirket na plato se je sistem normalno dvignil.  Se prav tudi ce crkne kontroler (zunanji) ali pa en disk ni panike ... sistem se dvigne.  Great.  Hvala za support ",
+    "user": "alex32"
+  },
+  {
+    "message": "Ok mene v zvezi z RAID 0 zanima par stvari:  Ce mam disk z instalacijo XPjev na eni in pac kramo na drugi particiji in kupim se en enak disk in bi rad dal v RAID 0. A bo treba disk formatirat? Tudi D? Kaj se zgodi s particijami pri prehodu na RAID?  Bojda lahko z ghostom tudi naredim image trenutne instalacije in jo potem vrzem na RAID brez tezav.   Skratka kaj izgubim oz katere podatke z prvega diska si moram shranit kam, ce hocem dat ta disk v raid?  Morata imeti oba diska kake particije gor oz kaj podobnega? Kako se pac preide na RAID..... ce bi rad prvemu disku, ki ga ze uporabljas dodal se enega. Kaka je razlika v hitrosti RAID 0 glede na en sam disk? Pa a bo potem raid tudi imel particije? Oz je potem vse enako kot pri enem disku?  Take noobovske oslarije me zanimajo. ",
+    "user": "Calligula"
+  },
+  {
+    "message": "Sej ni panike, vsak po svoje, ma jst ti iz srca odsvetujem implementacijo RAID 0 sistema, vsaj za res pomembne podatke in sisteme.  Ta razred RAID ti podatke stripa na oba diska in če ti gre en disk k vragu nimaš druge kot da se greš slikat al pa da daš lepe dnarce za reševanje podatkov.  Ne razumem sicer, zakaj se ta raid razred sploh imenuje RAID, sej ne nudi prav nobene \"rendundance\". Hmm.  good luck anyway.  ",
+    "user": "~Speed"
+  },
+  {
+    "message": "0 je tam zato, ker to pomeni 0 redundancyja.  Pri RAID level 1 je vsebina diska odvisna od kontrolerja. Vecina \"onboard\" kontrolerjev so v bistvu navadni IDE/ATAPI kontrolerji, ki pridejo z driverjem, ki potem napise vsako rec na dva diska. V bistvu to niso RAID kontrolerji.  Areca, 3ware in Adaptec hw raid kontrolerji diske tako skrijejo pred OSom, da odpovedi diska OS ne zazna. Tudi ce se bus na katerega je vstekan disk obesi (ce to ni shared scsi bus) sistem normalno deluje. Obicajno (vsaj pri SATA in SCSI) omogoca tudi hotpluganje naprav. ",
+    "user": "jype"
+  },
+  {
+    "message": "Za izgubo podatkov me ne zanima, ker mam vedno backup bistvenih.  Kako je s particijami. Morata biti celotna diska v RAID polju ali samo particija,... skratka take osnovne tvari me zanimajo. RAID 1 me ne zanima, ker je zabijanje placa na disku s podvajanjem,.. ",
+    "user": "Calligula"
+  },
+  {
+    "message": "Level 0 -- Striped Disk Array without Fault Tolerance: Provides data striping (spreading out blocks of each file across multiple disk drives) but no redundancy. This improves performance but does not deliver fault tolerance. If one drive fails then all data in the array is lost.  Level 1 -- Mirroring and Duplexing: Provides disk mirroring. Level 1 provides twice the read transaction rate of single disks and the same write transaction rate as single disks.  Level 2 -- Error-Correcting Coding: Not a typical implementation and rarely used, Level 2 stripes data at the bit level rather than the block level.  Level 3 -- Bit-Interleaved Parity: Provides byte-level striping with a dedicated parity disk. Level 3, which cannot service simultaneous multiple requests, also is rarely used.  Level 4 -- Dedicated Parity Drive: A commonly used implementation of RAID, Level 4 provides block-level striping (like Level 0) with a parity disk. If a data disk fails, the parity data is used to create a replacement disk. A disadvantage to Level 4 is that the parity disk can create write bottlenecks.  Level 5 -- Block Interleaved Distributed Parity: Provides data striping at the byte level and also stripe error correction information. This results in excellent performance and good fault tolerance. Level 5 is one of the most popular implementations of RAID.  Level 6 -- Independent Data Disks with Double Parity: Provides block-level striping with parity data distributed across all disks.  Level 0+1 – A Mirror of Stripes: Not one of the original RAID levels, two RAID 0 stripes are created, and a RAID 1 mirror is created over them. Used for both replicating and sharing data among disks.  Level 10 – A Stripe of Mirrors: Not one of the original RAID levels, multiple RAID 1 mirrors are created, and a RAID 0 stripe is created over these.  Level 7: A trademark of Storage Computer Corporation that adds caching to Levels 3 or 4.  RAID S: EMC Corporation's proprietary striped parity RAID system used in its Symmetrix storage systems. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "ko delaš raid, se posloviš od VSEH podatkov in particij, ki so bili prej na diskih. Ustvariš raid polje, formatiraš in od takrat nadalje, se zadeva obnaša kot normalni disk. Se pravi da normalno lahko particije ustvarjaš itd... ",
+    "user": "eDDi"
+  },
+  {
+    "message": "ko delaš raid, se posloviš od VSEH podatkov in particij, ki so bili prej na diskih. Ustvariš raid polje, formatiraš in od takrat nadalje, se zadeva obnaša kot normalni disk. Se pravi da normalno lahko particije ustvarjaš itd...  Si 100% prepričan? Imam 200Gb disk, 150Gb zasedenega - torej nimam možnosti, da bi te podatke ohranil in imel 2x200Gb v raid 1... se mi zdi kar muka 150Gb presnemavati po drugih medijih... ",
+    "user": "Poldy"
+  },
+  {
+    "message": "RAID sistem se vzpostavi kako? Je to samo 2 diska + softvearska zadeva? Govora je namreč tudi o nekem kontrolerju? Kaj točno je to? ",
+    "user": "YZFGeorge"
+  },
+  {
+    "message": "Hmmm... Če sem sedaj pravilno razumel, RAID sistem omogočajo že nekatere matične plošče. Kako je z ASUS P5Q pro?? ",
+    "user": "YZFGeorge"
+  },
+  {
+    "message": "Hmmm... Če sem sedaj pravilno razumel, RAID sistem omogočajo že nekatere matične plošče. Kako je z ASUS P5Q pro??  Omogoča ti RAID 100%. Jaz imam ASUS P5Q Deluxe in sem si postavil diske v Raid 1, brez problema.  lp. ",
+    "user": "luky"
+  },
+  {
+    "message": "Pri softwerskem raidu lahko daš tudi particijo v raid in ne celega diska. To zmore tako Windows kot Linux. S tem, da jez na Win ne bi poskušal tega naredit brez backupa podatkov oz. bi odsvetoval uporabo Win softwerskega raida. Na Linuxu pa zadeva deluje boljše od večine \"kvazi\" raid kontrolerjev, ki jih danes najdemo na večini plošč.  Ni pa raid 100% rešitev. Če so vaši podatki pomembni zraven nujno potrebujete še backup. Če zbrišete ali spremenite nek dokument vam ga raid ne bo vrnil, medtem ko backup bo, v kolikor je dokument obstajal pri zadnjem backupu.  Za tiste, ki želijo postavit raid0 pa razen če potrebujejo res za kako zelo zahtevno aplikacijo e.g. video obdelave ... toplo odsvetujem. V igrah se zadeva sploh ne pozna. ",
+    "user": "Tomay"
+  },
+  {
+    "message": "Eno amatersko vpršanje glede RAID na matičnih ploščah:  ali je ta RAID (0,1,5,JBOD še ponavadi) nastavljiv v BIOSu ali pa je potrebno namestiti gonilnike in polje vzpostavit v Windowsih?  Namreč mene malo matra zadeva, ampak nisem imel še prilike to sprobat. Najraje bi videl, da se Windowsom (ali Linuxu) predstavi polje  kot en sam disk. Okvare diska pa potem monitoriraš preko softwera.  LP I. ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Eno amatersko vpršanje glede RAID na matičnih ploščah:  ali je ta RAID (0,1,5,JBOD še ponavadi) nastavljiv v BIOSu ali pa je potrebno namestiti gonilnike in polje vzpostavit v Windowsih?  Namreč mene malo matra zadeva, ampak nisem imel še prilike to sprobat. Najraje bi videl, da se Windowsom (ali Linuxu) predstavi polje  kot en sam disk. Okvare diska pa potem monitoriraš preko softwera.  LP I. Vse nastaviš v Biosu..... ",
+    "user": "luky"
+  },
+  {
+    "message": "Kaj pa Raid 5? lahko kdo po slovensko razloži kako gre stvar tukaj. hvala. Imam Foxconn Mars, ki podpira RAID 0, 1, 5, 10, JBOD. Rad pa bi poskusil naredit raid 0 ali 5, ker imam 4 diske oz bi uporabil 2x250GB samo da sta različni firmi (WD in Seagate ES) ",
+    "user": "Vuli"
+  },
+  {
+    "message": "Za RAID 5 rabiš vsaj 3 diske, 2 sta v RAID 0 in eden je za kopijo podatkov. Zna delat počasi na pteh integriranih kontrolerjih... Če imaš 4 diske se ti splača naredit RAID 10, s tem da potem imaš kapaciteto samo dveh diskov, ker sta 2 za mirror. Firma diskov ne igra vloge, lahko daš tudi 4 različne... ",
+    "user": "Dead_Eye"
+  },
+  {
+    "message": "to vem da daš lahko različne, ker sem enkrat poskušal na pci kontrolerju Sil3512 samo je pa samo SATA I, je pa fora, da če imaš recimo 160gb in 250gb pol ti nardi oba 160gb. Raid 10 se mi ne splača, ker imam 80gb(OS) in 2x250gb in 400gb. Bom vidu, verjetno bom kar Raid 0 uporabil in bom mel gor kar downloadam in igre pa take zadeve. Sej lih kake velike panike ni, glede izgube podatkov, ker diski pa spet ne crkavajo čez noč ali je še kaka druga nevarnost?. ",
+    "user": "Vuli"
+  },
+  {
+    "message": "Dead_Eye> \"Za RAID 5 rabiš vsaj 3 diske, 2 sta v RAID 0 in eden je za kopijo podatkov\"  Tole tudi približno ne bo držalo. Raid 5 je pač Raid 5 in ni nobena kombinacija drugih Raid polj.  Raid 5 razbije podatke na dele in te dele zapiše na več diskov, s tem da na enega zapiše tudi nekakšen checksum iz katerega je možno ob izgubi podatkov izračunati original podatek. Za pariteto/checksum nima namenjenega posebnega diska, ampak ga zapisuje izmenoma na vse diske. Npr:  Disk1 Disk2 Disk3 A1 A2 AP B1 BP B2 CP C1 C2  Prednost RAID 5 polja je (tudi) v tem, da pri celotni kapaciteti vseh diskov skupaj izgubiš le kapaciteto enega diska. Torej, če imaš v RAID5 polju 4 diske po 250 GB, je skupna kapaciteta 1 TB, vendar je kapaciteta enega diska namenjena za pariteto in je velikost polja \"le\" 750 GB. Enak izračun velja tudi za tri diske (izgubiš tretjino diskovnega prostora), 5 diskov, oz. N diskov (izgubiš 1/N diskovnega prostora).  Takšno polje preživi odpoved kateregakoli diska - do podatkov lahko brez večjih problemov dostopaš tudi s crknjenim enim diskom ter celo potem, ko disk odstraniš iz kište (dostop je nekoliko počasnejši). Potem, ko disk zamenjaš, lahko raid polje obnoviš in zadeva teče naprej kot namazana.  Slabost polja je v tem, da ne preživi simultane odpovedi dveh diskov. Diski pač odpovedujejo neodvisno drug od drugega, tako da če v kratkem času odpovesta dva diska (npr. preko noči, preden pogruntaš, da je odpovedal en disk), so podatki šli v maloro. S povečevanjem števila diskov v tem polju pa seveda narašča verjetnost, da se bo kaj takšnega tudi dejansko pripetilo. Delna rešitev za to je RAID 6, ki parity zapisuje na dva diska, vendar pa je potem \"izguba\" prostora toliko večja (2/N, kjer je N število diskov).  Vsekakor je RAID 5 zelo fajn varianta. Z npr. tremi diski (minimum za raid 5) je sicer izguba prostora kar 1/3 vseh GB, je pa bistveno bolj varna zadeva, kot RAID 0 ob ne bistveno slabših dostopnih časih za branje ter ob enem boljša varianta od RAID 1 glede na potrato prostora - pri RAID 1 je komplet diskovni prostor omejen na velikost najmanjšega diska v polju. ",
+    "user": "imagodei"
+  },
+  {
+    "message": "sepravi performance je kaj hitrejši, kot če bi imel samo en disk. Samo za RAID 5 pol rabiš vse diske iste kapacitete. In ali je večja možnost, da ti disk crkne, če je v RAID ,kot pa če ga uporabljaš navadno (sata/ata) ",
+    "user": "Vuli"
+  },
+  {
+    "message": "Performance je hitrejši, ja. Sploh pri zapisovanju, ker podatke pobira iz več diskov. Pri branju se v bistvu RAID 5 obnaša zelo podobno, kot RAID 0, če gre za primerljivo število diskov (npr. 3 v RAID5 in 2 v RAID0, ali pa 4 v RAID5 in 3 v RAID0: čeprav so podatki v RAID5 porazdeljeni po vseh diskih in ni posebnega diska za pariteto, lahko za približek rečemo, da ima RAID5 s tremi diski 2 diska v vlogi RAID0, 1 disk pa za pariteto - V RESNICI GRE ZA POPOLNOMA DRUGAČNO IMPLEMENTACIJO!)  Pri pisanju je zgodba povsem drugačna, saj se mora ob vsakem zapisu izračunati tudi pariteta/chacksum. Če je sistem zelo obremenjen s pisanjem kratkih blokov podatkov, lahko performance krepko pade.  Za RAID5 ne rabiš vseh diskov enake kapacitete, ti pa za izhodišče vzame najmanjši disk. Se pravi, če imaš 2 diska po 250 GB, enega 120GB, enega pa 80GB, boš iz štirih diskov dobil 4x80GB - 80GB za pariteto = 240GB prostora. Tudi na 250GB diskih ti bo torej na voljo samo 80GB.   Kolikšna je verjetnost, da ti crkne disk, ni neposredno odvisno od tega, ali je standalone oz. v RAID polju. Diski imajo pač neko stopnjo pokvarljivosti, ki variira od diska do diska, v povprečju pa jo lahko izraziš na več načinov. Npr. kot verjetnost, da se disk pokvari v naslednjih 5 letih. Bolj pogosto pa kot MTTF oz. MTBF (Mean Time To Failure in Mean Time Between Failures). Za bolj natančno razlago kar malo Pogooglaj; zelo na hitro povedano pa gre za povprečni pričakovani čas do napake (oz. med napakami), ki je najpogosteje izražen v urah. Če ima nek disk MTTF npr. 30.000 ur, to pomeni, da statistično na velikem številu ponovitev in velikem vzorcu diskov tovrstni diski odpovedo po 30.000 urah DELOVANJA (torej ne ležanja v omari, ampak delovanja - tudi v prižganem računalniku lahko disk dejansko dela npr. samo 75% časa).  Seveda lahko na dejanski MTTF vplivajo tudi zunanji dejavniki, npr. vročina, vlaga, vibracije, konstantna obremenjenost. Mogoče bi nek disk z MTTB 30.000 ur dejansko zdržal 50.000 ur, če bi bil obremenjen samo 16 ur na dan (8 let in pol!), če pa je obremenjen 24 ur na dan, pa bo odpovedal še prej. Ali pa ravno obratno - disk v računalniku, ki je prižgan samo 5 ur na teden, bo morda crknil že po 1300 urah uporabe (5 let), medtem ko bi ob bolj konstantni obremenjenosti 25 ur na teden zdržal tudi 7 ali več let (9100 ur).  Skratka, okoliščine lahko vplivajo, ampak ne pa neposredno to, ali ga imaš v RAID polju ali ne. Tudi v RAID polju je vsak disk enota zase in lahko odleti že v prvem tednu uporabe, ali pa ti bo 10 let delal brez problema. ",
+    "user": "imagodei"
+  },
+  {
+    "message": "lepo razloženo, nimam kaj rečt. Zaenkrat se pravi se mi splača samo RAID 0 naredit. Jaz imam neko opcijo med kontrolejrem AHCI, kaj je to? Ker če naštimam na to mi sploh noče prit v Windows. ",
+    "user": "Vuli"
+  },
+  {
+    "message": "AHCI je vmesnik po katerem teče komunikacija s SATA napravami in podpira recimo hot plugging in NCQ. Po defaultu je v BIOSu vklopljeno, da se SATA naprave obnašajo kot PATA, brez nove SATA funkcionalnosti. Če vklopiš AHCI, moraš imet na sistemu driverje za kontroler. Vista ga po defaultu podpira. XP-je pa skisa, če prestaviš. ",
+    "user": "element"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Ne najdem, če sploh je možno, nastaviti, da lahko do routerja dostopam samo z LAN in ne tudi WAN recimo. Mogoče kdo ve? Hvala. V tovraniškem firmware je možnost, da je dostop do routerja samo z določenega MAC naslova. ",
+    "user": "radmannsdorf"
+  },
+  {
+    "message": "Blokiraj porte (tcp 22, 80 and 443) v smeri WAN>LAN Izbereš ustrezno možnost za ssh dostop preko dropbeara pod System>Administration tab, pa izbriši vse dropbear instance (nekaj takega: http://prnt.sc/cd16ai ) in ustvari novo, samo za LAN, z nestandardnim ssh portom. Vse ostalo odkljukaj.  Prav tako onemogoči dostop z geslom in uporabi Public Key Authentication Lahko tudi namesto http protokola uporabljaš https. Več pa tudi https://wiki.openwrt.org/doc/howto/secu... ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": "ISP mi je dodelil statiko, v OpenWRTju pa nikjer ne najdem, kje bi se vneslo ip mojega routerja. Če tukaj vnesem podatke od statike (statičen zunanji ip namesto 10.10.10.1, maska, gateway, dns-ji...kam bom vnesel torej lokalni gateway ip za dostop do routerja? (trenutno 10.10.10.1)   wrt1 ",
+    "user": "BCSman"
+  },
+  {
+    "message": " BCSman je 10. nov 2017 ob 11:53 izjavil:ISP mi je dodelil statiko, v OpenWRTju pa nikjer ne najdem, kje bi se vneslo ip mojega routerja. Če tukaj vnesem podatke od statike (statičen zunanji ip namesto 10.10.10.1, maska, gateway, dns-ji...kam bom vnesel torej lokalni gateway ip za dostop do routerja? (trenutno 10.10.10.1)   wrt1  To so nastavitve za LAN vmesnik, torej vmesnik, ki je povezan v tvojo lokalno mrežo. Zgoraj levo imaš tab, kjer nastavljaš WAN vmesnik. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": " BivšiUser2 je 1. sep 2016 ob 21:02 izjavil:Blokiraj porte (tcp 22, 80 and 443) v smeri WAN>LAN Izbereš ustrezno možnost za ssh dostop preko dropbeara pod System>Administration tab, pa izbriši vse dropbear instance (nekaj takega: http://prnt.sc/cd16ai ) in ustvari novo, samo za LAN, z nestandardnim ssh portom. Vse ostalo odkljukaj.  Prav tako onemogoči dostop z geslom in uporabi Public Key Authentication Lahko tudi namesto http protokola uporabljaš https. Več pa tudi https://wiki.openwrt.org/doc/howto/secu...  Kaj se ne da blokirat kar generalno vse incoming porte, potem pa eksplicitno odpirati zgolj tiste, katere nujno potrebuješ? Nekako mi je nelogično, da to ne dela že po defaultu...ampak bog pomagaj. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 11. nov 2017 ob 00:24 izjavil:BivšiUser2 je 1. sep 2016 ob 21:02 izjavil:Blokiraj porte (tcp 22, 80 and 443) v smeri WAN>LAN Izbereš ustrezno možnost za ssh dostop preko dropbeara pod System>Administration tab, pa izbriši vse dropbear instance (nekaj takega: http://prnt.sc/cd16ai ) in ustvari novo, samo za LAN, z nestandardnim ssh portom. Vse ostalo odkljukaj.  Prav tako onemogoči dostop z geslom in uporabi Public Key Authentication Lahko tudi namesto http protokola uporabljaš https. Več pa tudi https://wiki.openwrt.org/doc/howto/secu...  Kaj se ne da blokirat kar generalno vse incoming porte, potem pa eksplicitno odpirati zgolj tiste, katere nujno potrebuješ? Nekako mi je nelogično, da to ne dela že po defaultu...ampak bog pomagaj.  Seveda se da in tudi po defaultu je iz WANa vse blokirano (tako input kot forward chain) razen established/ralated povezav.   Sicer pa tudi WAN->LAN pravila nimajo nobene veze pri dostopu do samega usmerjevalnika. Če že bi moral nastavljat input chain iz WAN, ampak je tako ali tako default policy reject + izjeme za DHCP in ICMP ping. Pa tudi dropbear instanca bi morala biti že po defaultu samo ena. In če imaš SSH dostopen samo iz interne mreže (kar po defaultu tudi je), ne vidim potrebe po uporabi alternativnih portov in omejevanju avtentikacije, sploh ker imaš web interface še vedno dostopen z geslom. Ne rečem, če bi želel SSH dejansko odpret na ven, potem je jasno, da se onemogič avtentikacijo z geslom itd. ",
+    "user": "XS!D3"
+  }
+]

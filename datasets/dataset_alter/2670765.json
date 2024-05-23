@@ -1,0 +1,20 @@
+[
+  {
+    "ctx": "Windows 10, Raid 5, Storage spaces",
+    "content": "Pozdravljeni,\n\nmalce se igram na eni stari mašini in skušam postaviti raid 5 tako da ne bi bilo potrebno formatirati obstoječega diska z OS in programi(seveda če je to možno). Dodam dva diska (eden identičen obstoječemu, drug malce manjši (WD Caviar blue in black). Torej imam tri diske, na enem je os, druga dva sta prazna. Ko skušam v disk managementu postaviti raid 5 mi te opcije ne ponudi, lahko pa naredim 0 ali 1.\n\nAli je sploh možno postaviti raid 5 na tak način oz. kako naj se tega lotim? Cilj je postavit raid 5 na treh diskih in potem naložiti image/clon diska če bi  bilo potrebnoprvi disk v procesu pobrisati?\n\nHvala za pomoč",
+    "author": "lemar",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 10, Raid 5, Storage spaces",
+    "content": "To lahko narediš samo pri mirroringu (RAID1). Vsi ostali RAIDi imajo podatke razporejene čez več diskov, kar pomeni da moraš tudi obstoječe podatke delno premakniti na druge diske - to pa praviloma ne gre brez da nardiš clean particijo in nato skopiraš gor podatke.\n\nDrugače pa RAID5 močno odsvetujem za domačo rabo, saj brez ustreznega kontrolerja ne bo nič hitrejši kot mirror.\n\nJaz bi na tvojem mestu uporabil en disk in ga vzel kot mirror sistemskemu disku, tretji disk pa imaš za nepomembne podatke.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 10, Raid 5, Storage spaces",
+    "content": "Gre tudi live migracija iz katerega koli RAIDa (ali pa tudi ne RAID) v katerikoli RAID, če imaš dovolj nov RAID kontroler (ki ima pa res praviloma cache nekaj GB velik). In kakorkoli obračaš, RAID5 je že davno passe. Ali RAID1 ali 10, ostale opcije so samo nišne in za special case.",
+    "author": "damirj",
+    "author_level": "Guru"
+  }
+]

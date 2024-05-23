@@ -1,0 +1,74 @@
+[
+  {
+    "message": "Zdravo!  Imam laptop Fujitsu Siemens Lifebook E4010. Kar naprej se mi pojavlja Blue screen (brez kakršnih koli podobnosti. Enkrat takoj ko se laptop zažene, kdaj pa dela po 4 ure in potem crkne.)  Napaka je pa tale:  \"irql_not_less_or_equal\"  Z gonilniki sigurno ni nič narobe, ker sem že 4x namestil windowse, pa nisem s tem nič rešil. Nekje sem prebral da je možno, da je ram fuč, pa sem testiral ram z memtest86 pa mi ni nobene napake pokazal.  Ima mogoče kdo kakšno idejo, kako locirati napako?  Lp, Grega ",
+    "user": "GregaST"
+  },
+  {
+    "message": "Lahko je memory leak v gonilniku. Sem ze imel podoben problem - random sesuvanje.  Napako lahko lociras z analizo memory dumpa ki ga OS naredi pri blue screenu. ",
+    "user": "McMallar"
+  },
+  {
+    "message": "In kako naj analiziram memory dump? Pravkar se mi je comp sesul ko sem vklopil wireless. Ne vem če je povezano... Mogoče je bilo ravno slučajno. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "Ne vem, če bo ravno dovolj samo ponovna inštalacija tvoje neznane verzije Windows sistema. Kaj pa gonilniki od SF za ta model notebooka ? Zakaj jih že delajo ? ",
+    "user": "Duhec"
+  },
+  {
+    "message": "Duhec...  1. Zgoraj sem že napisal, da ponovna inštalacija windowsov ne reši moje težave, torej verjetno ni problem v gonilnikih, ker sploh nisem dal nobenih gor. 2. V eni od prejšnjih inštalacij windowsov sem namestil vse gonilnike za ta laptop iz uradne strani. Ne vem kaj si s tem mislil... ",
+    "user": "GregaST"
+  },
+  {
+    "message": "1. Še vedno ne vem(o) katere Windows uporabljaš ! 2. Sama inštalacija Windows sistema ne naloži gonilnikov, ki jih je za vezno čipovje naredil proizvajalec FS za recimo chipset. 3. Šele pod svojo točko 2 si povedal, da si naložil tudi vse gonilnike iz uradne strani. Če tega ne napišeš še ne pomeni, da je to samo po sebi logično. Zate mogoče že, za nas ne. 4. BSOD v smislu \"irql_not_less_or_equal\" je malo premalo in je lahko marsikaj. Če izpiše še kake druge številke v smislu Stop 0x000000xx (blablabla,blablabla,....) napiši. Mogoče bo potem lažje iskat napako. 5. Ne vem, če ima FS stran tudi podatke o biosu, vseeno malo preveri, če je že kak novejši bios za tvoj prenosnik. 6. Imaš kako usb enoto (tv usb?), ki nima podpisanih gonilnikov za Windows sistem, da te to ne heca. 7. Preveri hlajenje (so ventilatorji videti ok-brez prahu) ? 8. Če imaš spomin slučajno v dveh ploščicah vzemi eno ven in testiraj. Če se napaka ponovi jih medsebojno zamenjaj in zopet testiraj. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "1. Uporabljam windows xp 2. Ne vem, kje si prebral da sem naložil gonilnike. Napisal sem da napaka očitno ni softwareska, ker NISEM naložil gonilnikov, pa se napaka vseeno ponavlja. 5. BIOS sem že posodobil na najnovejšo verzijo. 6. Sem že 2x napisal, da na novo inštalacijo windowsov xp nisem namestil nobenih gonilnikov (verjetno ne more biti problem v gonilnikih, če jih sploh nimam nameščenih kajne?) 7. Preveril hlajenje (Razdrl laptop, vzel stran hladilnik od procesorja očistil procesor in hladilnik, ter nanesel novo termalno pasto - Artic silver 5). Preveril sem tudi ventilator na procesorju, ki dela normalno. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "možno da imaš kak problem na matični plošči. ",
+    "user": "Pentium"
+  },
+  {
+    "message": "Po namestitvi linuxa računalnik dela. Sumim driverje od Wireless kartice (Intel(R) PRO/Wireless LAN 2100 3B), saj so to edini driverji, ki sem jih namestil, takoj po sveži inštalaciji windowsov xp. Je kakšna alternativa za te driverje? Driverje sem potegnil dol iz uradne strani Fujitsu Siemensa. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "MS na MS Update nima gonilnikov za ta HW? Ce ima, uporabi tiste za test. ",
+    "user": "McMallar"
+  },
+  {
+    "message": "Sem že iskal na MS update, pa mi ni nič našlo. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "1. OS XP imaš SP3 ? 2. Če še nisi razbral smisla mojih postov za nazaj ti še 1x povem, da je hudo priporočljivo, da takoj po končani osnovni inštalaciji XPjev najprej namestiš chipset furmane za tvojo osn.ploščo, ki jih je naredil proizvajalec in šele nato ostale gonilnike za wireless, grafiko, lan, sound, ... Chipset gonilniki so vmesni člen med OS-om (ki že vključuje tiste osnovne gonilnike za vezno čipovje) in chipsetom na plati, da se OS zna pravilno pogovarjat z njo ter kasnejšimi gonilniki za katere pa ni rečeno, da se bodo ujeli z OS-om in HW brez teh vmesnih chipset gonilnikov. Lahko se, lahko pa imaš vseskozi težave v obliki BSOD-ov ali počasnejših performans. 4. ? 8. ? ",
+    "user": "Duhec"
+  },
+  {
+    "message": "1. OS XP so bili najprej SP3, potem sem dal gor SP3 z zadnjimi popravki, potem sem dal gor še SP2 2. Z uradne strani sem najprej potegnil dol gonilnike za chipset (od intela). V kasnejših inštalacij windowsov pa tega nisem več inštaliral, ker sem mislil da je ravno v tem problem. 4.   8. Že poskusil. Nič uspeha. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "Torej dobiš BSOD ne glede na verzijo XPjev ali so SP2 ali SP3 ? Ob katerem opravilu se ta BSOD pojavi ? Ko sistem stoji na miru (če nič ne delaš) ali ko brskaš po internetu ... ? Štartaj ga v varni zagon in nekaj časa delaj z njim, da vidiš, če se tudi tam BSOD-a. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "BSOD je pojavlja različno. Včasih ko sistem stoji, včasih ko gledam film, včasih med predvajanjem glasbe, včasih ko brskam po internetu.  Poskusil sem tudi varni zagon, pa se tudi tam sesuva. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "Če so BSOD-i različni(in ne vedno enaki), s tem mislim na različne kode napak tako v tekstu kot tisti cifri pri STOP 0x000000xx, potem stavim na slab spomin. Če si že sprobal vse kombinacije, kot sem jih menil pod točko 8, potem ni več kaj dosti za naredit in je lahko mem. kontroler na plati. Ob predpostavki, da si že flešal bios kot praviš na zadnjo verzijo (čeprav ga jaz nisem našel na Fujitsu strani za ta model) in tudi memtest ne pokaže napak. Lahko narediš samo še test diska (saj to je še ide?), če že slušajno ne odpoveduje poslušnost. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "Ja, disk je IDE. Bom poskusil še disk testirat. To je mislim da še edina stvar, ki je nisem poskusil. Kode napake so pa velikrat drugačne ja. Tekst je sicer vedno isti, samo cifre pri STOP 0x0000xx so drugačne. ",
+    "user": "GregaST"
+  },
+  {
+    "message": "- Omogoči \"Small memory dump\", če še nisi: KLIK  - Analiziraj nekaj .DMP fajlov (najdeš jih v MINIDMP direktoriju): KLIK. Če se bug check pojavlja v random modulih potem gre najverjetneje za hardware issue. - Check drivers: KLIK ",
+    "user": "denial"
+  }
+]

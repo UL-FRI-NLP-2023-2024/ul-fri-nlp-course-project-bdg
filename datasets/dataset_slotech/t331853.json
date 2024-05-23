@@ -1,0 +1,58 @@
+[
+  {
+    "message": "LP  Torej imam problem s Tomato firmwarom, problem pa je da mi ne dela Portforward tako kot bi moral. Ne dela mi pri uporabi utorrenta, port closed ko opravim test za open port in kasneje se pokaže rdeč klicaj v utorrentu. Recimo Call of Duty mp mi pa dela bp in xfire pravtako. utorrent mi dela samo ko uporabim upnp, ... na tomato firmweru. V nasprotju s Tomatom pa mi pri DD WRTju dela portforward brez problema a mi nekako ne dopušča večjega uploada kot 14Mb/s, TCP in UDP timeouts na 120s. Sem na Siolovi optiki 20/20 in imam dinamični IP. Moja konfiguracija omrežja je sledeča :  1.modem Iskratel Prospero (funkcija modem)  ..> xxx.xxx.1.1 2.Router Linksy WRT54GL v1.1 (trenutno DD WRT) ki vzpostavlja PPoe  DHCP izkjučen, IPji računalnikou dodeljeni ročno,QOS izključen, Wifi izključen, ... ..> xxx.xxx.2.1 3.3je računalniki priključeni na router vsem pravilno ročno dodeljen IP xxx.xxx.xxx.20/22 ------------------------------------------------------------------------------------ test z DD WRTjem : (nič uploadanja, vsi taki programi izklopljeni) Inicializacija . . . . . . . . . . . . . . . . . . . . . . . . . . . OK izvajam 10s upload test (v smeri k internetu) 10.97Mb/s izvajam 10s download test (v smeri k vam) 18.43Mb/s  Kako lahko izboljšam Upload z uporabo DD WRTja, in kaj je z Tomatom in Utorrentom? ",
+    "user": "Domini"
+  },
+  {
+    "message": "Sam imam iste probleme- samo da imam upload limt okoli 15Mb/s ",
+    "user": "M-XXXX"
+  },
+  {
+    "message": "/edit pišem traparije ... ",
+    "user": "kihc"
+  },
+  {
+    "message": "Probaj s odličnim tomato MOD  http://victek.is-a-geek.com/tomato.html -ne pozabi narediti hard reset(tiščiš rerset 30s, da res vse prejšne nastavitve zbriše... ",
+    "user": "jan01"
+  },
+  {
+    "message": "Sem že probal tudi ta zelo dobri speedmod, pa mi ne use portforadirat porta. Nisem nikoli imel kakih velikih težav s portforadingom, dokler nisem naletel na Tomato :). Samo z UPNPjem mi portforward dela. S Tomatom kerimkoli sem dosegel polni upload brez problema, samo ta portforward mi ne dela.  kihc --> ne, če mam linijo 20/20 ne? ",
+    "user": "Domini"
+  },
+  {
+    "message": "Pri uTorrentu mores najverjetnje sklopit nekaj nastavitev - nevem kaj je vse.. jst sem sklopu uPnP in se drugo NAT nastavitev. dela bp. imam pa nek star tomato, mogoce je vmes kej se zalomilo. :) ",
+    "user": "crush"
+  },
+  {
+    "message": "UPNP mel izklopljen NAT ne. Mogoče je to problem, bom poizkusil ...  LP ",
+    "user": "Domini"
+  },
+  {
+    "message": "Da nisi slučajno pri nastavljanju port forwardinga spodaj pozabil klikniti gumb Save. Meni se to kar dostikrat naredi..:) ",
+    "user": "buneech"
+  },
+  {
+    "message": "ne ne :D.  Ekolo vrgel na Linksya Tomatospeedmod by Victek a lej ga zlomka, portforward za utorrent ne dela. Call of Duty dela bp. V utorrentu izklopu dht, upnp, nat, ..., v routerju forwardiral samo TCP za utorrent ker UDPja ne rabim (DHT). Zgleda tudi da se upload ni nič popravil z Tomato firmwerom :  Inicializacija . . . . . . . . . . . . . . . . . . . . . . . . . . . OK izvajam 10s upload test (v smeri k internetu) 10.91Mb/s izvajam 10s download test (v smeri k vam) 20.14Mb/s  Upload kakor da noče it preko 10-12MB. Bom se pozanimal pri Siolu glede tega mogoče je kaj s sinhronizacijo. Kaj pa lahko nardim še glede utorrenta? ",
+    "user": "Domini"
+  },
+  {
+    "message": "si poskusil preklopit brez routerja (torej direkt v modem) in potem zagnat kak speed test (speedtest.si), al kej podobnega? ",
+    "user": "crush"
+  },
+  {
+    "message": "jan01: Pa kaj težiš s tem Tomato modom, ki ne bo čisto nič bolje forwardiral portov od original Tomata.  Domini, ti bi pa lahko malo bolje opisal svoj problem. Ker trenutno me bega cel kup stvari, recimo naštel si 3 točke v prvem postu in iz tega je videt, kot da imaš vezavo modem - router - router, kar se sliši malo čudno, je pa seveda dober vzrok, zakaj ti ne dela forwarding.  Poleg tega se upload ne bo čisto nič popravil samo zaradi menjave firmwarea, bistvena je sinhronizacija modema, ki očitno ni dovoljšnja. Pokliči na 080 1000 in teži, dokler ti zadeve ne zrihtajo :) ",
+    "user": "KoMar-"
+  },
+  {
+    "message": "crush --> ne, ker se mi zdi da ni potrebno ... marko --> Mam vezavo modem -- router -- in za njim 3je računalniki ... sem jim že zatežil, bom videl kaj bo iz te moke ;).   lp ",
+    "user": "Domini"
+  },
+  {
+    "message": "Probaj se brez routerja na modem povezati in prvo tam nastaviti port forwarding, ker te prosperoti znajo delovati kot routerji..poglej, če je kakšna DMZ nastavitev na prosperotu, da spusti vse skozi, pa potem na routerju nastavljaš port forwarding in firewall. ",
+    "user": "buneech"
+  },
+  {
+    "message": "lp  Torej Prospero modem sem naštimal kot router in naredu tko kot je tilnn napisal v enmi temi:  ------------------------------------------------------------------- DMZ Za Prosperota  192.168.1.1 - login: user/user 1. greš na \"advanced security\", izbereš \"Create and configure custom applications here...\", potem na \"Add a new custom application here...\" izbereš neko ime za aplikacijo in daš Transport: ALL. Next in confirm changes.  2. greš na \"advanced security\", izbereš \"Configure named PCs here...\", daš \"Add a new PC name here...\", izbereš neko ime in vneseš IP naslov ruterja (verjetno 192.168.1.2). Next in confirm changes.  3. greš na \"advanced security\", \"Configure Internet applications here...\", daš \"Enable an application here...\", izbereš application name, ki si ga določil v 1. koraku ter destination PC, ki si ga določil v 2. koraku. Next in confirm changes.  Zadeva je urejena. Enak postopek je za vsak drug port forwarding- nastavitve veljajo le, če je modem nastavljen kot ruter, sicer je avtomatsko v način \"bridge\" in port forwarding nima pomena. -------------------------------------------------------------------------------- Ni pa mi popolnoma jsano kako potem nadaljujem z nastavitvami na Linksy routerju, če pppoe sejo uzpostavlja Prospero \"router\". edino mi dela če pppoe sejo vzpostavlja tudi linksy router, kar mi je pa malo hecno, da se dvakrat uzpostavlja pppoe seja ... če dam Linksya v getaway mode ali pa v router mode zadeva ne deluje. ",
+    "user": "Domini"
+  }
+]

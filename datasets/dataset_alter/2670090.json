@@ -1,0 +1,188 @@
+[
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Zdravo,\n\nali mi lahko kdo pomaga kako narediti kalkulator v excelu primer: Ko vneseš v celico npr. X1 številko in je ta manjša od 25 mi pomnoži iz stolpca 1, in če je večja od 25 iz stolpca 2 in še če je večja od 100 is stolpca 3 in rezultai izpiše v celici npr. x3  oziroma vseeno.\n\nhvala",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "=IF(X1<25;X1*A1;IF(AND(X1>=25;X1<=100);X1*A2;X1*A3))",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "=X1*IF(X1<25;A1;IF(x1<100;X2;X3))\n(Tu sem upošteval, da je bil OP nenatančen, ker rezultat za 25 ni definiran)",
+    "author": "jekleni",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik jekleni je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\t=X1*IF(X1<25;A1;IF(x1<100;X2;X3))\n(Tu sem upošteval, da je bil OP nenatančen, ker rezultat za 25 ni definiran)\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nOdlično hvala kako pa recimo sedaj še dodam dodatno opcije če je še večje od 100 in od 150 in od 200 in od 250",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Dodajaš IF stavke z AND - glej mojo formulo zgoraj.",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Se pravi nekako takole dodam še četrto spremenljivko\n\n=X1*IF(X1<25;A1;IF(x1<100;X2;X3);IF(x1<250;X2;X3;X4))\n\nSamo meni javi too many arguments ...",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "IF() ima tri argumente (lahko samo dva). Jih moraš gezdit enega v drugega\n=X1*IF(X1<25;A1;IF(X1<100;X2;IF(X1<150;X3;IF(X1<200;X4;IF(X1<250;X5;X6)))))",
+    "author": "jekleni",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Takole bi moja formula izgledala (B8 zamenjaj z X1):\n=IF(B8<25;B8*B7;IF(AND(B8>=25;B8<=100);B8*C7;IF(AND(B8>100;B8<=150);B8*D7;IF(AND(B8>150;B8<=200);B8*E7;IF(AND(B8>200;B8<=250);B8*F7;B8*G7)))))",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Takole bo mogoče bolj jasno kako izgleda kombiniran if stavek:\n\nEn IF: IF(pogoj;prav;narobe)\nDva IFA: IF(pogoj;prav;IF(pogoj;prav;narobe))\nTrije IFI: IF(pogoj;prav;IF(pogoj;prav;IF(pogoj;prav;narobe)))\n....",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Sedaj sem priedil in naredil takole\n\n=IF(B6<10;B6*M3;IF(AND(B6>=11;B6<=25);B6*M4;IF(AND(B6>26;B8<=49);B6*M5;IF(AND(B6>50;B6<=99);B6*M6;IF(AND(B6>100;B8<=249);B6*M7;IF(AND(B6>250;B8<=499);B6*M8;IF(AND(B6>500;B8<=999);B6*M9)))))))\n\nVendar imam težave ko dam količina 10 mi vrže FALSE in prav tako 26 FALSE pri 50 je ok  in pri ostalih ?!?!?!!?\n\nHvala za odgovor",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Kaj bi hotel pri 10 in 26? Za ti dve številki namreč nimaš definirane “funkcije” (B6<10 in naslednji pogoj B6>=11 - torej za čisto desetko nimaš “nič”).\nEdit - popravek v formuli",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik gr69 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKaj bi hotel pri 10 in 26? Za ti dve številki namreč nimaš definirane “funkcije” (B6<10 in naslednji pogoj B6>=11 - torej za čisto desetko nimaš “nič”).\nEdit - popravek v formuli\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nHvala za namig sedaj sem popravil in dodal >=10 in dela. Mii pa ni jasno zakaj pa število 50 izračuna in nima >=50 ?!?  \n\n=IF(B6<10;B6*M3;IF(AND(B6>=10;B6<=25);B6*M4;IF(AND(B6>=26;B8<=49);B6*M5;IF(AND(B6>50;B6<=99);B6*M6;IF(AND(B6>100;B8<=249);B6*M7;IF(AND(B6>250;B8<=499);B6*M8;IF(AND(B6>500;B8<=999);B6*M9)))))))\n\n\nhvala",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Ne da se mi čarunalnika za to se daj vžigat - jaz bi vsepovsod, kjer formula ni čista dodal enačaj ali popravil v smislu B6<=10 in naslednji pogoji B6>10. Pa še “lepše” izgleda (bolj čisto).",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Ravny je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tHvala za namig sedaj sem popravil in dodal >=10 in dela. Mii pa ni jasno zakaj pa število 50 izračuna in nima >=50 ?!?\n\n=IF(B6<10;B6*M3;IF(AND(B6>=10;B6<=25);B6*M4;IF(AND(B6>=26;B8<=49);B6*M5;IF(AND(B6>50;B6<=99);B6*M6;IF(AND(B6>100;B8<=249);B6*M7;IF(AND(B6>250;B8<=499);B6*M8;IF(AND(B6>500;B8<=999);B6*M9)))))))\n\n\nhvala\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMaš več kot 50 in manj ali enako 49.... Logično, da ti 50 ne pokaže. Tudi pri 100 imaš problem pa pri 250, pa 500... ",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "=IF(B6<10;B6*M3;IF(AND(B6>=10;B6<=25);B6*M4;IF(AND(B6>=25;B8<=49);B6*M5;IF(AND(B6>49;B6<=99);B6*M6;IF(AND(B6>99;B8<=249);B6*M7;IF(AND(B6>249;B8<=499);B6*M8;IF(AND(B6>499;B8<=999);B6*M9)))))))\n\nTakole probaj. Odvisno kaj želiš da ti s številko 50 (100, 250,...) naredi. \nAli boš imel številke cele, ali bodo tudi decimalke?",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Fantje.\nIF(pogoj;če-res;če-ni-res)\nTorej, IF(B6<10;B6*M3;IF(AND(B6>=10;B6<=25);...\nČe je B6 manj od 10, je nekaj. Drugače mora biti več ali enako 10. Je brez veze testirat v če-ni-res delu. To je kot bi masturbiral s kondomom.",
+    "author": "jekleni",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Ne računa mi prav se pravi za št 10 je OK ko pa dam 100 mi pa vzame razred 50-99 ? Ampak kolikor vidim je formula recimo za 100 B6*M7\nni mi jasno zakaj jemlje\n\n=IF(B6<=10;B6*M3;IF(AND(B6>10;B6<=25);B6*M4;IF(AND(B6>=26;B8<=49);B6*M6;IF(AND(B6>=50;B6<=99);B6*M7;IF(AND(B6>=100;B8<=249);B6*M8;IF(AND(B6>250;B8<=499);B6*M9;IF(AND(B6>=500;B8<=999);B6*M9)))))))\n\n\n \nrazredi npr:\n\nrazred    > cena\n----------------------------\n5-10        | 0,08\n11-25      | 0,07\n26-49      | 0,06\n50-99      | 0,55\n100-249 | 0,5\n250-499 | 0,4\n500-999 | 0,45",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Kaj je s tistim, kar je manj kot 5 in tistim, kar je več kot 999?\n\nUrejena formula:\n=IF(B6<11;B6*M3;IF(B6<26;B6*M4;IF(B6<50;B6*M5;IF(B6<100;B6*M6;IF(B6<250;B6*M7;IF(B6<500;B6*M8;B6*M9))))))\n\nTa formula deluje takole:\nmanj kot 11 | 0,08\n11-25 | 0,07\n26-49 | 0,06\n50-99 | 0,55\n100-249 | 0,5\n250-499 | 0,4\nveč kot 499 | 0,45",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Malo OT :\nTako jaz to delam, s temi \"IF\"i. Da se včasih že skoraj izgubim notri... A kake bolj elegantne rešitve ni",
+    "author": "Jabe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Res mi ni jasno zakaj mi stalno jemlje za št. 50,100,250,500 jemlje polje M5. Recimo za 50 bi moral vzeti M6(0,55) mi pa vzame polje M5 in je potem napačen izračun ....  IF(AND(B6>=50;B6<=99);B6*M6 \n\n\n=IF(B6<=10;B6*M3;IF(AND(B6>=11;B6<=25);B6*M4;IF(AND(B6>=26;B8<=49);B6*M5;IF(AND(B6>=50;B6<=99);B6*M6;IF(AND(B6>=100;B8<=249);B6*M7;IF(AND(B6>=250;B8<=499);B6*M8;IF(AND(B6>=500;B8<=999);B6*M9)))))))",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Ravny je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tRes mi ni jasno zakaj mi stalno jemlje za št. 50,100,250,500 jemlje polje M5. Recimo za 50 bi moral vzeti M6(0,55) mi pa vzame polje M5 in je potem napačen izračun ....  IF(AND(B6>=50;B6<=99);B6*M6 \n\n\n=IF(B6<=10;B6*M3;IF(AND(B6>=11;B6<=25);B6*M4;IF(AND(B6>=26;B8<=49);B6*M5;IF(AND(B6>=50;B6<=99);B6*M6;IF(AND(B6>=100;B8<=249);B6*M7;IF(AND(B6>=250;B8<=499);B6*M8;IF(AND(B6>=500;B8<=999);B6*M9)))))))\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNisi vseh B8 zamenjal z B6 - to je prvo kar sem ugotovil.\nVzemi formulo zgoraj, bo lažje.",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Jabe je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMalo OT :\nTako jaz to delam, s temi \"IF\"i. Da se včasih že skoraj izgubim notri... A kake bolj elegantne rešitve ni\n\t\t\n\t\tKlikni za razširitev\n\t\n\nRešitev je več, odvisno od primera in znanja uporabnika.\nRecimo vlookup je veliko bolj pregleden v zgornjem primeru.\nV B2 vnašaš količino.\nV B3 vneseš formulo =B2*VLOOKUP(B2;$E$3:$F$9;2).\nV E3 do E9 vneseš količine (0 / 10 / 25 / 50 / 100 / 250 / 500).\nV F3 do F9 vneseš cene (0,08 / 0,07 / 0,06 / 0,55 / 0,5 / 0,4 / 0,45). \n\nPa se lahko zmišljuješ potem po mili volji.",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Ja to tudi poznam in tudi uporabim... Hvala",
+    "author": "Jabe",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bucko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKaj je s tistim, kar je manj kot 5 in tistim, kar je več kot 999?\n\nUrejena formula:\n=IF(B6<11;B6*M3;IF(B6<26;B6*M4;IF(B6<50;B6*M5;IF(B6<100;B6*M6;IF(B6<250;B6*M7;IF(B6<500;B6*M8;B6*M9))))))\n\nTa formula deluje takole:\nmanj kot 11 | 0,08\n11-25 | 0,07\n26-49 | 0,06\n50-99 | 0,55\n100-249 | 0,5\n250-499 | 0,4\nveč kot 499 | 0,45\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nTNX sedaj deluje (Y) z številom +999 bi moral pa napisati tekst napaka ",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bucko je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNisi vseh B8 zamenjal z B6 - to je prvo kar sem ugotovil.\nVzemi formulo zgoraj, bo lažje.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMejduš a veš da sem gledal pa nisem videl tega uffff ... \nsicer sem sedaj uporavil drugo krajšo formulo in deluje bp   hvala Bucko",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "=IF(B6<11;B6*M3;IF(B6<26;B6*M4;IF(B6<50;B6*M5;IF(B6<100;B6*M6;IF(B6<250;B6*M7;IF(B6<500;B6*M8;IF(B6<=999;B6*M9;\"NAPAKA\")))))))",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Ravny je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe računa mi prav se pravi za št 10 je OK ko pa dam 100 mi pa vzame razred 50-99 ? Ampak kolikor vidim je formula recimo za 100 B6*M7\nni mi jasno zakaj jemlje\n\n=IF(B6<=10;B6*M3;IF(AND(B6>10;B6<=25);B6*M4;IF(AND(B6>=26;B8<=49);B6*M6;IF(AND(B6>=50;B6<=99);B6*M7;IF(AND(B6>=100;B8<=249);B6*M8;IF(AND(B6>250;B8<=499);B6*M9;IF(AND(B6>=500;B8<=999);B6*M9)))))))\n\n\n\nrazredi npr:\n\nrazred    > cena\n----------------------------\n5-10        | 0,08\n11-25      | 0,07\n26-49      | 0,06\n50-99      | 0,55\n100-249 | 0,5\n250-499 | 0,4\n500-999 | 0,45\n\t\t\n\t\tKlikni za razširitev\n\t\n\nUpam, da si si tale cenik izmislil, ker ne vidim nobenega ekonomskega razloga, da bi pri tebi kupil več od 49 kosov, pri 50 se namreč cena/kos dvigne za faktor 9, ali pa ti manjka ena 0 za decimalno vejico",
+    "author": "JustOne",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik JustOne je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tUpam, da si si tale cenik izmislil, ker ne vidim nobenega ekonomskega razloga, da bi pri tebi kupil več od 49 kosov, pri 50 se namreč cena/kos dvigne za faktor 9, ali pa ti manjka ena 0 za decimalno vejico\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo je bil samo primer cene si izmisljene tako, da nimajo veze z realmostjo  \n\nLp",
+    "author": "Ravny",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Imam list s spodnjimi podatki, prvih 7 številk v koloni je %,  8. in 9. številka sta povprečje in število, zadnji dve številki v koloni sta minimum in maximum (8 in 11, ter 5 in 7). Želel bi, da se mi v rdeče pobarva, če je % višji kot maximum oz. v modro, če je manjši. Nisem našel nikjer te funkcije sedaj v EXCEL 2016, potreboval bi pa čimprej, any idea? \n\n10,58,005,008,008,508,008,4020,009,93781155,009,005,005,005,005,005,005,00757\n",
+    "author": "moho",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Katera številka želiš, da se ti obarva? Prvih 7? Drugače je to pod Pogojnim oblikovanjem -> novo pravilo ->  oblikuj samo celice, ki vsebujejo\n\nČe imaš 10,5 v A1 celici, potem pogojno oblikovanje izgleda takole, kot je na pripeti sliki.",
+    "author": "Bucko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel kalkulator",
+    "content": "Prvih 7 ja, seveda.",
+    "author": "moho",
+    "author_level": "Pripravnik"
+  }
+]

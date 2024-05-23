@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Nekako mi je v roke prišla pasivna 9250. Testiranje (mal opečeni prsti) je pokazalo, da je odpovedal FET, ki je v kratkem stiku. Sliši se na ime APM3055L in glede na to, da je na netu kar nekaj tem o tem, predvidevam, da njegova zanesljivost ni največja. Zaenkrat še prebiva v To-252 ohišju, bi pa potreboval njegovo zamenjavo.  PDF  Lep pozdrav in vnaprej hvala za odgovore ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "A je sploh vredno ker je kartica vredna okrog 15 EUR. ",
+    "user": "Šimpanz"
+  },
+  {
+    "message": "Če se da? Zakaj pa ne? ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Torej, grafa je bila uspešno oživljena z krajo feta iz ene 'mrtve' epox plate. Čas, ki je bil potreben; 5 min.  Lep pozdrav ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Se pridružujem mnenju, da je APM3055L precej nezanesljiva reč. Enak MOS-Fet, za napajanje GPU je odpovedal tudi na R9200SE Sapphire Atlantis.  Zamenjal sem ga z  PHD3055E, odmontiran iz skurjene matične Abit VA6. Grafa spet dela, samo nisem ziher ali je vse v redu, zamenjani MOS-Fet se segreje za ~ 60°C nad okolico pri loop testu 3D mark 2001. Sicer še zdaleč nič kritičnega, element ima maksimalno dovoljeno temperaturo 175°C, ampak samo vprašam, ali naj iščem kakšen drug MOS-Fet, ali je tako gretje kar normalno? ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Očitno se temu (brez dodatnih modifikacij) res ne da izogniti.  Ti je požegnalo Fet na 'Low-Side' ali na 'High-side'? Meni ga je izdihnil Low-side Fet in to tako, da ni bil čisto v stiku. Ko se je grafa malce obremenila (oz. takoj po namestitvi gonilnikov) je lepo napetost padla iz enih 1.7V (presenetljivo visoka) na nizkih 0.7V, fet pa je skoraj zažarel na mojem prstu. *ouch*  Po menjavi sem sicer pričakoval izboljšanje stanja in odpust bolnika, vendar me je še enkrat presnetilo. Stvar se je v parih sekundah v igrici skoraj uplinila. Oh ti šment, kaj pa zdaj? Prva rešitev ja bila montiranje hladilnika. Ok, saj mi ni problem odpiliti en hladilniček, ampak kaj, ko se je Fet-ek, ki je napajal GPU grel še bolj kot on sam. (pasivna grafa, ViVo) Iz tega se ni izcimilo nič, Fet pa se je naprej grel in skušal razsvetliti sobo.  Rešitev nr. 2. Nižanje napetosti. Tukaj pa so se pokazali malenkost boljši rezultati. Standardni postopek .. iskanje PDF-ja o čipku, multimeter, svinčnik. PDF-ja raje sploh nisem iskal, namesto tega pa sem sledil potkam na drugo stran PCB-ja, kjer me je presnetil prav tako vroč DC-DC kontroler. Nč, pa multimeter v roke. Iščem, ... iščem .. aha! na ekrančku se je pokazalo nekaj, kar je spominjalo na referenčno voltažo (1.25V, načeloma je to najnižja napetost od vseh nogic (razen mase)ampak to najbrž že veš). Pogledam še druge nogice .. 12V in še nekaj neuporabnih napetosti. To bo to .. pogledam, kam vodijo potke, ko zagledam sklad 2 uporčkov kot 'standardni' napetostni delilnik: V roke vzamem tehnični svinčnik in počrnim enega od uporčkov .. 1.9V ups to ne bo prav .. brišem *ouch, ouch* vroče ... merim, 1.6V, 'pišem', 1,535V, 1,5V, 1,465V, 1,39V. Lepo. Dam malce 'benčat' in stvar se še vedno (vendar dosti manj) greje. To bo to, zadnja rešitev bi bila odstranitev enega uporčka, ki vodi na maso, vendar se tega takrat nisem spomnil. :P  Vzamemo v inšpekcijo ter bolj podrobno pogledamo. Kje so pa R(gate) upori? No, temu se pa reče izjemno šparanje. Sicer se s tem nisem kaj dosti ubadal, bi pa uporčki nujno morali biti tam. Še posebej, če krmilimo s 12V kakšen ohm ali dva ne škodita, dela pa tudi z nekaj kohmskim uporčkom. Vsa odvečna energija na vratih gre v gretje, ni izjem tukaj.  Pa bomo zdaj še odgovorili na vprašanja *hehe* S kakšnim drugim Fet-om ne boš kaj dosti profitiral, mogoče, če bi vzel kakšnega v večjem ohišju, samo ga 1. najbrž nimaš kam nalotati, 2. greje se približno enako, 3. če boš vzel kakšen 'novejši' Fet, bo lahko le-ta imel boljše karakteristike, ki pa bodo še vedno ranga par %, tako da tukaj tudi ni veliko možnosti. Mogoče bi bilo še najbolje (če se res hudo greje tudi z znižanjem voltaže) da nalotaš še enega zraven, pa signal z uporčki razdeliš.  Med drugim sem se igral tudi z nižanjem napetosti na ramih, rezultati so taki, da je stvar malce hladnejša, DDR1 rami pa lahko delujejo na neverjetnih 1.6V 8P  Aja, gretje ... hmm. . sigurno kakšnih 80°C ni preveč normalno, vsaj ne za tako elektroniko, v sami 'sredici' so najbž T še malenkost višje, kar pa bo slej kot prej pripeljalo do odpovedi elementa. Poleg tega pa so na udaru še komponente v okolici, ki jim pretirano gretje ne koristi kaj dosti. Kondenzatorji pa tudi kajkmalu 'zašvicajo' če jim je prevroče. ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Pri meni je bilo malo drugače.  Pri tej R9200SE je bil FET za GPU napol prekinjen (brez vidnih poškodb), imel je ~100 Ω med Drain in Source. Posledično je imel GPU ~0.5V, kar je bilo ravno dovolj, da se s tako grafo ni uspela pobrati nobena matična - vse mrtvo, tudi piskov ni bilo. Napetost za RAM je bila 2.53V. Nobenega gretja komponent na kartici.  Po menjavi FETa je napetost GPU zrasla na 1.63V, ki je nespremenjena, ne glede ali je grafa v DOS ali v 3D aplikaciji. Vhodna napetost za FET je 3.3V  Razlika je samo v gretju. V DOS, BIOSu in Linux (DSL) je vse na kartici hladno, v Win XP namizju hladilnik GPU (pasivno hlajenje) in FET za RAM mlačna, FET za GPU 55°C, v loop testu 3D Mark 2001, pa so bile temperature po 3. urah delovanja (ustalile so se že verjetno že dosti prej) GPU in FET za RAM - originalni, zloglasni APM3055L 60°C, FET za GPU 83°C (okolica 23°C). Ko je bilo 3D mučenja konec, in je grafa risala samo Windows namizje se je vse skupaj ohladilo v nekaj minutah. Merjeno z Metex ME 32.  Ampak, ko gledam to grafo, vedno bolj ugibam ali je regulator napetosti sploh pravi switcher, saj velikih dušilk na katici ni, miniaturne SMD dušilke, pa dvomim, da so sposobne streči switcherju in je potemtakem gretje regulatorjev neizbežen pojav.   Ni kaj, bo treba težiti po forumu lastnikom teh kartic, koliko se jim kaj grejejo pri 3D aplikacijah. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Zdaj sem si v roke vzel to kartico, in ja, predvidena so mesta za namestitev dušilk, vendar so jih najbrš pozabili. Se mi pa zdi, da je na grafi plac namenjen prav za IOR 3037.  A čmo stvarco mal predelat ? ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Se opravičujem za pozen odgovor, grafa je taka, kot si je zamislil proizvajalec neprekinjeno dobrih 36 ur delovala na polno, nobenih težav. Nisem imel pravega časa in volje za ukvarjanja z njo in sem neko malenkost spremenil šele danes.  >A čmo stvarco mal predelat ?  Malo sem pogledal po pdfju o uporabljenem MOS-FETu in tam pišethermal resistance from junction to ambient  SOT428 minimum footprint; mounted on a PCB 50K/W Torej, se na elemetu kuha ~1.2W (greje se za 60°C nad okolico). Da gre za minimum footprint, se čuti, ko se potipa kartico na drugi strani, pod tem MOS-FETom - vroča točka, manj kot 1cm2, kjer v bližini sploh ni elementov, očitno z razlogom.  Ker bo najbrž ta grafa prišla v mlinček z LC420 napajalnikom, ki je zaradi starega pravovernega ATX ohišja montiran direktno nad procesorejem, sem na bakreni jeziček MOS-FETa prilotal bakren U profil iz 2mm bakrene pločevine, visok ~6mm. Limanje hladilnih reber na plastiko elementa ima IMHO samo placebo učinek (na tistega, ki je limal), saj plastika vsekakor ni dober prevodnik toplote in prilimana rebra na plastično ohišje MOS- FETe ne koristijo pretirano hlajenju le teh.  Za simulacijo, koliko taka modifikacija hladi, sem na zgornji rob grafe in CPU hladilnik položil 36V 6x6 ventilatorček (ravno paše vmes), priklopljen na 12V in temperatura MOS- FETa ne gre čež 58°C, torej samo še 25K nad okolico, tudi druga stran tiskanine pod MOS FETom je sedaj samo še mlačna. Mislim, da bo to kar v redu. Brez ventilatorja je bila temperatura MOS- FETa nižja samo za 5K, kot v originalni izvedbi.  Kar pričakovani rezultati, pasivno hlajenje lahko deluje samo, če so temperaturne razlike velike. ",
+    "user": "Azrael"
+  },
+  {
+    "message": "Ni panike.  No, vidim, da nekaj uspeha je. Jst sem sicer na eni platki res hladilnike limal na ohišje, vendar so se dokaj velika rebrca še vedno fajn segrela. Boljš kot nič :P Placebo je pa tut kr močan    Sem pa prvotno mislil, da bi montiral dušilke ne hladilničke XD ",
+    "user": "Pyr0Beast"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "message": "Zdravo! Imam težave z trdim diskom ker mi je malo ponagajal. Na tem trdem disku sem imel naložen Win XP in ko se je računalnik zagnal se je zataknilo na \"loading screenu\" in se ni nič zgodilo. Poskusil sem ga bootat u safe mode a mi je vrglo ven da mi manjkata dve datoteki. Pravtako sem poskusil naložiti na novo windowse pa mi ponovno ni hotelo bootati v CD. Pa sem priklopil trdi disk na drug računalnik in sem ugotovil da so nekatere datoteke v windows mapi pokvarjene. Zato sem formatiral disk in ga priklopil nazaj v stari računalnik in poskusil naložiti Windows, a mi je vrglo ven da manjka datoteka \"Bootmgr\". Pa me zanima ali lahko priklopim trdi disk na drug računalnik in naložim windows ter ga poženem v starem računalniku?? ",
+    "user": "daBunks23"
+  },
+  {
+    "message": "Ne nebo slo. Cd je ziher ok, ni piskodovan. Win 7 ni opcija? ",
+    "user": "m0LN4r"
+  },
+  {
+    "message": " m0LN4r je 26. avg 2014 ob 23:21 izjavil:Ne nebo slo. Cd je ziher ok, ni piskodovan. Win 7 ni opcija?  Sej sem naložil win7... a imaš mogoče kakšno rešitev pa za ta \"bootmgr\"?? ",
+    "user": "daBunks23"
+  },
+  {
+    "message": "Si poskusil preko USBja? Pa maš bootable DVD? ",
+    "user": "m0LN4r"
+  },
+  {
+    "message": "Tak hdd je za v kanto. End of story.  Če imaš preveč časa, uporabi orodje proizvajalca. Diagnostična orodja in reševanje podatkov s trdih diskov  ali v winsih:  chkdsk /f /r X:  kjer je X črka pogona. ",
+    "user": "s6c-gEL"
+  },
+  {
+    "message": "eno je slabo narjen bootable iso oz. nek missing bootmgr, drugo je pa dejankso fuč disk, poglej s crystal disk info kakšno je sploh stanje  kakšen cd je to, original? če ne skopiraj win iso in naredi usb bootable in probaj še enkrat naložit + to, da ti napiše že prej missing bootmgr je tud mal čuden, če sistema sploh ni gor ",
+    "user": "gddr85"
+  },
+  {
+    "message": "Ko je formatiral, ni pobrisal mbr dela, zato mu to javi.  Sistme ti še vedno ne boota iz cd-ja. ",
+    "user": "s6c-gEL"
+  },
+  {
+    "message": "Najbolje, da ta disk prestavi v drug računalnik in ga tam formatira v NTFS. Če ima samo eno particijo, bo v redu. Če pa je več particij, bo pa spet zgubljen. Ga vrne v računalnik in na novo naloži Winse, seveda če ima pravi bootable CD/DVD ali pravilno pripravljen USB. ",
+    "user": "Frenckie"
+  },
+  {
+    "message": "Ok... sem naredil bootable usb z rufus-om in je lepo zagnalo setup in mi že kmalu na začetku to vn vrže:   Tukaj  Sem poskusil tudi z enim drugim trdim diskom in mi prav tako isto vrže... Bi kdo vedel kaj je narobe?? ",
+    "user": "daBunks23"
+  },
+  {
+    "message": "Resetiraj bios. Pa meni še vedno ni jasno kaj nalagaš. XP ali 7 ? Al si se igral z SATA/AHCI in IDE nastavitvami? ",
+    "user": "m0LN4r"
+  },
+  {
+    "message": "Pokliči sosedovega mulca pa ti bo postavil sistem. Lahko je instalacijski medij zanič lahko je trdi disk zanič nastavitve v bios-u ....... ",
+    "user": "solatko"
+  },
+  {
+    "message": " m0LN4r je 28. avg 2014 ob 14:18 izjavil:Resetiraj bios. Pa meni še vedno ni jasno kaj nalagaš. XP ali 7 ? Al si se igral z SATA/AHCI in IDE nastavitvami?  Sem resertiral biose... isto sranje...  Nalagam Windows XP. Ne se nisem nič igral z temi nastavitmami. In solatko, jaz sem sosedov mulc :D ampak še nikoli nism prišel do takega problema.. Biosi so bili resertirani in zagonski disk je na usb-ju... Če vam kaj pomaga diski so z priključkom IDE. ",
+    "user": "daBunks23"
+  },
+  {
+    "message": "V biosu poglej, če imaš diske v IDE oz. PATA načinu? USB si preveril, če je bootable tudi v kakem druge pcju? Ti komp sploh podpira USB bootanje?  Dej za foro probaj v drugem kompu iz tega usbja na tale disk naložit xpje. Če tam dela bo nekje drugje problem. Nekatere starejše matična imajo tudi problem, če zamenjaš boot order. ",
+    "user": "m0LN4r"
+  },
+  {
+    "message": " m0LN4r je 28. avg 2014 ob 18:07 izjavil:V biosu poglej, če imaš diske v IDE oz. PATA načinu? USB si preveril, če je bootable tudi v kakem druge pcju? Ti komp sploh podpira USB bootanje?  Dej za foro probaj v drugem kompu iz tega usbja na tale disk naložit xpje. Če tam dela bo nekje drugje problem. Nekatere starejše matična imajo tudi problem, če zamenjaš boot order.    To so edine nastavitve za trdi disk kar sem jih dobil u biosu... Sej boota mi u setup in potem mi to vn vrže... Nimam lih kakega kompa da bi poskusu naložit... Boot order imam pa 1.usb 2. Hdd 3. Internet ",
+    "user": "daBunks23"
+  },
+  {
+    "message": "Uff, to pa je starešina (sredina 90tih). Boš moral počakat enga starega mačka, da ti pomaga. Sem malo pozabil te finte. Jaz sicer sumim, da je problem drugje. ",
+    "user": "m0LN4r"
+  },
+  {
+    "message": "Problem je v tem, ker v win xp install nimaš dodanega sta driverja 0x000007B. Spremeni v biosu sata na ide (iz ahci) ali z nlite dodaš šoferje v win xp install. Če imaš še disketnik, lahko posnameš šoferje gor in pritisneš F6  . ",
+    "user": "s6c-gEL"
+  },
+  {
+    "message": " s6c-gEL je 28. avg 2014 ob 18:40 izjavil:Problem je v tem, ker v win xp install nimaš dodanega sta driverja 0x000007B. Spremeni v biosu sata na ide (iz ahci) ali z nlite dodaš šoferje v win xp install. Če imaš še disketnik, lahko posnameš šoferje gor in pritisneš F6  .  Kakega \"sta\" driverja??? Nevem a bo kej to pomagalo ampak to mi je vn vrglo nekajkrat:    Aja... matična plošča nima SATA priključka. ",
+    "user": "daBunks23"
+  },
+  {
+    "message": "Instalacija xp iz nepravilno konfiguriranega ključka je misija nemogoče. Vzemi CD in iz njega instaliraj sistem. Če ti bo počelo enako imaš slabo kopijo xp-ja. Z rufus-om mi nikoli ni uspel instal xp-jev na PC.  Če hočeš xp bootat in naložit, moraš uporabit postopek, ki je opisan na netu. Ključek pravilno obdelati in posneti gor win cd.   http://www.oxhow.com/install-windows-xp...  http://www.ic.ims.hr/xp/install_xp_from...  http://www.racunalniska-pomoc.si/namest... ",
+    "user": "solatko"
+  },
+  {
+    "message": "Koncno sem prišel do zaključka, da so krivi trdi diski... so stari in s tem pride tudi problem, kako dobiti driverje zanje... oprostite ker sem vas gnjavil in hvala za vašo pomoč :D ",
+    "user": "daBunks23"
+  }
+]

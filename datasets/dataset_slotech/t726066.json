@@ -1,0 +1,106 @@
+[
+  {
+    "message": "Imam Tp-link router. Rad bi ga povrnil na tovarniške nastavitve. Navodila za to imam: https://stackoverflow.com/questions/122...  Problem je, da ip naslov routerja ni 192.168.1.1 Bil je spremenjen, pa ne vem na katerega... Če ga priklopim se izpiše le neprepoznano omrežje. ",
+    "user": "lebang1"
+  },
+  {
+    "message": "a reset knofa pa nima ta tvoj router? ",
+    "user": "oyoy69"
+  },
+  {
+    "message": "reset \"knof\" ne dela, ker ni več original ampak openwrt software. ",
+    "user": "lebang1"
+  },
+  {
+    "message": "zakaj nebi delal reset knof če je openwrt ? https://openwrt.org/docs/guide-user/tro... ",
+    "user": "Nikonja"
+  },
+  {
+    "message": "ti ga kar pritisni in drži, dokler ledike ne začnejo utripat. ",
+    "user": "oyoy69"
+  },
+  {
+    "message": "Začne hitro utripati, vendar tisti standardni ip ne deluje... ",
+    "user": "lebang1"
+  },
+  {
+    "message": "Kaj pa je torej default gateway? ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": " BivšiUser2 je 9. jul 2018 ob 21:10 izjavil:Kaj pa je torej default gateway?   Nobenega standardnega gatewaya ni, ker ni nobenega routinga tukej.  Poveži kabel direkt iz tvoje mrežne na računalniku na prvi LAN port, na svojmu interfacu naštimej maska 255.255.255.0, ip pa  a) 192.168.0.20 b) 192.168.1.20 c) 192.168.2.20 Ostale stvari ala default gateway, dns nastavitve pusti prazno, ker jih ne rabiš. Nato odpri puttyja in se probej sshjat/telnetat na: a) 192.168.0.1 b) 192.168.1.1 c) 192.168.2.1 ",
+    "user": "LaTrinity"
+  },
+  {
+    "message": "Na tovarniških nastavitvah bi moral DHCP delovati, zato le priklopiš svoj PC na enega izmed LAN portov, pa bi se stvar morala povezati in pridobiti IP naslov. Nato pa v brskalniku odpreš nastavitve routerja tako, da vpišeš njegov IP naslov v URL vrstico. Po reset-u bi ta moral biti 192.168.X.1 - mislim, da je X enak 1, sicer pa 0. Za 2 še nisem slišal. Username je \"root\", geslo pa je \"admin\". ",
+    "user": "Ribič"
+  },
+  {
+    "message": "Sm open wrt nima web vmesnika po defaultu;) ",
+    "user": "krop"
+  },
+  {
+    "message": " LaTrinity je 9. jul 2018 ob 22:08 izjavil:BivšiUser2 je 9. jul 2018 ob 21:10 izjavil:Kaj pa je torej default gateway?   Nobenega standardnega gatewaya ni, ker ni nobenega routinga tukej.  Poveži kabel direkt iz tvoje mrežne na računalniku na prvi LAN port, na svojmu interfacu naštimej maska 255.255.255.0, ip pa  a) 192.168.0.20 b) 192.168.1.20 c) 192.168.2.20 Ostale stvari ala default gateway, dns nastavitve pusti prazno, ker jih ne rabiš. Nato odpri puttyja in se probej sshjat/telnetat na: a) 192.168.0.1 b) 192.168.1.1 c) 192.168.2.1   Tukaj je verjetno mislil, kateri default gateway pridobi računalnik preko dhcp. Ta naj bi bil od routerja verjetno. ",
+    "user": "steev"
+  },
+  {
+    "message": "http://www.advanced-ip-scanner.com/ ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Pač povežeš se na http(s)://default_gateway kjer je default gateway ip \"routerja\" in ga na Windows dobiš z ukazom ipconfig /all. ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": " krop je 10. jul 2018 ob 11:27 izjavil:Sm open wrt nima web vmesnika po defaultu;)   Novejše verzije imajo ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "IP naslov je bil spremenjen, na ne vem kakšnega... Tudi router je mislim da v bridge načinu...  Prilagam slike:    slika1     slika2 ",
+    "user": "lebang1"
+  },
+  {
+    "message": " LaTrinity je 9. jul 2018 ob 22:08 izjavil:BivšiUser2 je 9. jul 2018 ob 21:10 izjavil:Kaj pa je torej default gateway?   Nobenega standardnega gatewaya ni, ker ni nobenega routinga tukej.  Poveži kabel direkt iz tvoje mrežne na računalniku na prvi LAN port, na svojmu interfacu naštimej maska 255.255.255.0, ip pa  a) 192.168.0.20 b) 192.168.1.20 c) 192.168.2.20 Ostale stvari ala default gateway, dns nastavitve pusti prazno, ker jih ne rabiš. Nato odpri puttyja in se probej sshjat/telnetat na: a) 192.168.0.1 b) 192.168.1.1 c) 192.168.2.1   Ne deluje. ",
+    "user": "lebang1"
+  },
+  {
+    "message": "Napiši kaj pravi ukaz: tracert 8.8.8.8 ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": " BivšiUser2 je 10. jul 2018 ob 16:22 izjavil:Napiši kaj pravi ukaz: tracert 8.8.8.8  Tracing route to 8.8.8.8 over a maximum of 30 hops  1 192.168.1.8 reports: Destination host unreachable.  Trace complete.  Edit: če se povežem preko wifi: 1 Transmit error: code 1231. ",
+    "user": "lebang1"
+  },
+  {
+    "message": " SmeskoSnezak je 10. jul 2018 ob 11:32 izjavil:http://www.advanced-ip-scanner.com/  Sprobaj tale scanner, pa direkt iz laptopa na router se priklopi (vse tcp/ip pobrisi iz racunalnika, ce imas statiko). ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": " krop je 10. jul 2018 ob 11:27 izjavil:Sm open wrt nima web vmesnika po defaultu;)  Ima ga, imenuje se LuCi. Vse uradne izdaje ga imajo in po privzetem teče na portu 80. Če pa napraviš svojo lastno sliko OpenWRT, ga pa ne bo imela, če ga ne omogočiš v nastavitvah pri gradnji slike. ",
+    "user": "Ribič"
+  },
+  {
+    "message": " SmeskoSnezak je 11. jul 2018 ob 13:24 izjavil:SmeskoSnezak je 10. jul 2018 ob 11:32 izjavil:http://www.advanced-ip-scanner.com/  Sprobaj tale scanner, pa direkt iz laptopa na router se priklopi (vse tcp/ip pobrisi iz racunalnika, ce imas statiko).   Nič ne najde. A ima kdo kak predlog katere ip-je naj poskeniram, ker skeniranje kar terja svoj čas.. ",
+    "user": "lebang1"
+  },
+  {
+    "message": " lebang1 je 9. jul 2018 ob 18:27 izjavil:Imam Tp-link router. Rad bi ga povrnil na tovarniške nastavitve. Navodila za to imam: https://stackoverflow.com/questions/122...  Problem je, da ip naslov routerja ni 192.168.1.1 Bil je spremenjen, pa ne vem na katerega... Če ga priklopim se izpiše le neprepoznano omrežje.   Imam te na sumu, da si probal flešat tp-link nazaj na stock, pa nam te informacije ne razkriješ. To je taka znana napaka, ki jo marsikdo naredi ko želi nazaj na stock. Skratka Tp-link če direkt flešneš iz open-wrt z tovarniškim vmesnikom gre v tak čuden loop...si naredil to? ",
+    "user": "greatdrakon"
+  },
+  {
+    "message": "Kaj če bi OP najprej recimo povedal za kateri TP-LINK router gre ter katera verzija OpenWRT domnevno teče na njem. ",
+    "user": "BlaY0"
+  },
+  {
+    "message": "jaz tudi mislim, da bo potrebno preko TFTP flashati nov firmware gor.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Da nisi to pozabil: An example of an image file with the word \"boot\" in it is wr1043nv1_en_3_9_17_up_boot(091118).bin.  Cut the first 0x20200 (that is 131,584 = 257*512) Bytes from original firmware:   dd if=orig.bin of=tplink.bin skip=257 bs=512Sicer pa povej več, kot je nekdo,zgoraj že omenil. ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": "Zanimivo, ko sem že skoraj obupal, sem ga priklopil na telekomov modem, kateri mu je dodelil naslov: 192.168.1.10 :) Slika Problem je le, ker sem geslo zamenjal in ga pozabil.  OpenWrt | OpenWrt Attitude Adjustment 12.09 | Load: 0.02 0.05 0.05  Powered by LuCI 0.11.1 Release (0.11.1) Router Tp-link TL-WR941ND ",
+    "user": "lebang1"
+  }
+]

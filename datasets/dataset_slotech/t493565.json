@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Torej, zanima me, kako do Domino serverja dostopati s pomočjo Thunderbird (namesto z LotusNotes odjemalcem). Trenutno je nastavljeno tako, da Lotus Nots za dostop uporablja identity datoteko, kar je, če prav razumem v bistvu private key... ",
+    "user": "poweroff"
+  },
+  {
+    "message": "Nastaviš POP protokol na Domino serverju ...  Drugače je pa Lotus Notes klient zastonj ...  In niti ne tako slab od verzije 8 naprej ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Samo na Linuxu so težave z njim. Pa hudo glup je za delat... ",
+    "user": "poweroff"
+  },
+  {
+    "message": "Jaz bi raje uporabil IMAP namesto POP. ID datoteka je private key, ja. ",
+    "user": "videc"
+  },
+  {
+    "message": "Secure IMAP je po moje najboljša varianta. Seveda če jo administrator strežnika podpira.  Vendar lahko glede na izkušnje rečem, da če ima kakšnega iPhone navdušenca na tem LNju, je to že omogočeno ;) ",
+    "user": "Majkl"
+  },
+  {
+    "message": " Invictus je 18. nov 2011 ob 22:38 izjavil:Nastaviš POP protokol na Domino serverju ...  Drugače je pa Lotus Notes klient zastonj ...  In niti ne tako slab od verzije 8 naprej   Kje imaš LN Client zastojn ? ",
+    "user": "luky"
+  },
+  {
+    "message": "Samo en problem je potem. Kolikor vem, je šifriranje izvedeno preko LN ID datoteke. Se pravi če dostopam do odjemalca preko POP3/IMAP, LN šifriranje ne deluje.  In pa - kako je s šifriranjem baze na serverju potem? ",
+    "user": "poweroff"
+  },
+  {
+    "message": "@Invictus:  Bolj točno je, da je z verzijo 8 IBM za Domino prešel na CAL model. To pomeni, da je IBM prav vseeno s katerim odjemalcem dostopaš (LN klient, Browser, Thunderbird, Outlook,...) dokler imaš CAL licenco.  Zastonj je pa od 8.5 naprej Domino Designer, to je pa del poskusa da IBM malo bolj aktivira OSS community.  @Matthai: ID datoteka je private key, ID datoteka se uporablja samo za LND native (protokol NRPC) komunikacije. Drugi protokoli imajo security urejen po svoje. Ponavadi se v teh primerih avtenticiraš z uporabniškim imenom in geslom. Tu LND ne more nič kaj storit na transportnem nivoju (fino je uporabljat TLS protokole).  Kar se tiče enkripcije na serverju - LND security model je povsem identičen ne glede na to kako dostopaš do strežnika/baze. Torej enkripcija na strežniku nima nobene veze z transportnim protokolom. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "Matthai, a ne delaš ti v JU? ;) Na takšna vprašanja bi ti morali na MJU odgovoriti, oziroma na SRC-u, ki vzdržuje Lotus Notes strežnike. Če IMAP/POP ni odprt, ne bo delalo nič. Kolikor je meni znano je ID datoteka samo za dostop z Lotus Notes. Za ostale protokole se ne rabi (ne bom pa trdil). Če imaš VPN dostop do omrežja (SecureID), pa lahko brez skrbi uporabiš/uporabljaš Lotus Notes, razen, če ti je Thunderbird bolj všeč. Do Lotus Domino strežnika mora biti odprt dostop po pop (110) in/ali IMAP (143) portih, kar pa, mislim da, v JU-HKOM omrežju ni. Konec koncev lahko poskusiš z navodili na tejle strani http://www-10.lotus.com/ldd/nd6forum.ns... in http://forums.mozillazine.org/viewtopic... če bo kaj pomagalo. ",
+    "user": "videc"
+  },
+  {
+    "message": "@videc: Ne upravlja SRC vseh strežnikov - samo tiste, ki so v SVN domeni. Tako je po organih precej strežnikov in odjemalcev, ki so na LND pa nimajo nič s SRC.  Ja Matthai, najbolje da se obrneš na administratorje. A smem vprašat, zakaj ne uporabljaš lepo LN klienta? Boš imel precej manj težav s securityjem, POP in IMAP sta včasih malo čudna,...  Ja vem, da boš dejal da je klient hroščat in počasen (verjetno je na Linuxu še slabši), res je da Eclipse SUX major balls (1GB memorije za mail klient - ORLY?). ampak jaz do Domino serverja ne bi dostopal s tako inferiornimi protokoli kot je IMAP ali POP. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "@Zaphod: vem, da SRC upravlja SVN domeno in bila tudi mišljena, čeprav ni bila eksplicitno omenjena. Se pa strinjam s tabo glede dostopa do Domina. ",
+    "user": "videc"
+  },
+  {
+    "message": "Na strežniku Lotus Domino potrebuješ imet kot prvo nameščen iNotes. Ta ti omogoča, da prek kateregakoli spletnega brskalnika dostopaš do tvoje Lotus pošte podobno, kot recimo do Gmaila. Mislim da uporabnik ne potrebuje nujno na računalniku ID datoteke, ampak se prijavi z uporabniškim imenom in geslom, ki je shranjeno v imeniku (meni so razlagali tudi o nekem password vaultu, ampak sem pozabil za kaj točno gre).   Moraš pa po moje imeti v primeru uporabe iNotes v vsakem primeru nastavljen policy, da morajo uporabniki gesla periodično menjati, kajti ko uporablaš klasičnega klienta, potrebuješ za dostop ID datoteko + geslo, prek spleta je dovolj uporabniško ime in geslo, kar je lahko varnostno precejšnja težava. ",
+    "user": "dronyx"
+  },
+  {
+    "message": "onyx: Hvala za tvoj prispevek vendar si zgolj na netočen način povzel že povedano. iNotes se nič ne namešča, ker je že nameščen (dejansko je iNotes - mail baza :D). ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "Nisem bral cele niti (govora je bilo nekaj o POP in IMAP, kar sta klasična poštna protokola). Vem da Lotus Domino strežniki že zelo dolgo podpirajo spletne storitve in se obnašajo tudi kot spletni strežnik (zaženeš http task na dominu), poštne baze pa so tudi že nekaj časa prirejene za dostop prek splete. Kaj točno iNotes naredi se nisem poglabljal, dejstvo je, da sedaj pošta prek spleta izgleda bistveno lepše. Za dostop do pošte prek mobilnih naprav (podobno kot Blackberry) pa mislim da potrebuješ še Travelerja.  Tule pa še Red Book od IBM na to temo (iNotes Web Access). Definitivno ne gre samo za design poštne baze. ",
+    "user": "dronyx"
+  },
+  {
+    "message": " ZaphodBB je 19. nov 2011 ob 10:32 izjavil:Ja Matthai, najbolje da se obrneš na administratorje. A smem vprašat, zakaj ne uporabljaš lepo LN klienta? Boš imel precej manj težav s securityjem, POP in IMAP sta včasih malo čudna,...  Ja vem, da boš dejal da je klient hroščat in počasen (verjetno je na Linuxu še slabši), res je da Eclipse SUX major balls (1GB memorije za mail klient - ORLY?). ampak jaz do Domino serverja ne bi dostopal s tako inferiornimi protokoli kot je IMAP ali POP.   Problemov je več.  Prvi problem je, da LN za Windowse res sux. A lot. Za Linux sicer imam neko verzijo, ki pa se mi v Ubuntu ni hotela iz prve inštalirat, torej voham težave...  Drugi problem je, da je LN odjemalec glup za popizdit. Iskanje po pošti je izredno glupo izvedeno iz stališča končnega uporabnika. Tudi delo z mapami, itd. je obupno. Celoten klient je videti kot bi prišel iz prejšnjega stoletja...  Tretji problem je, da je security v Lotusu tako-tako. Saj če poklikaš tiste zadeve v zvezi z varnostjo, je recimo to OK, pa je enostavno uprarbljat (samo kljukica, pa je pošta šifrirana), ampak to deluje samo strogo med LN odjemalci. Čim imaš enega BlackBerry uporabnika so že težave. Poleg tega jaz IBM securityu ne zaupam. Zelo dobro poznam zgodbe okrog razvoja DES protokola.  Idealno se mi zdi end-to-end enkripcija, torej Thunderbird, ki dostopa do mailboxa preko POP3s, IMAPs in secure SMTP protokola, pri čemer se vsa pošta samodejno šifrira z Enigmail. To se mi zdi bistveno boljša rešitev kot slepo zaupanje IBM-u. Res je sicer, da se pri IBM dobi zadeve lepo zapakirane, ampak z odprtokodnimi rešivami se da doseči isto, le malenkost več dela je za administratorja ob konfiguraciji. In seveda so odprtokodne rešitve bistveno cenejše...  Predvsem pa je stvar v tem, da je IBM počasen. Danes gre razvoj hito, imaš uporabnike, ii imajo Windows, Mac, Linux, Android, W7, webOS, iPhone, pa še kaj se bo našlo. Pri odprtokodnih rešitvah so razni klienti hitro dostopni, IBM je pa treba čakat. TUdi leto ali več. In potem še mastno plačat. KEr včasih nov klient za sabo potegne tudi novo server aplikacijo, ta pa mimogrede še nov hardwer. IBM pa lepo služi... ",
+    "user": "poweroff"
+  },
+  {
+    "message": "Pa še nekaj. Jasno mi je, da Lotus ponuja več kot pošto. Samo uporabniki večinoma uporabljajo ZGOLJ pošto. Morda še koledar - za kar so dobre alternativne rešitve (iCal). In seveda zadnji IBM-ov \"hit\" - Sametime, ki je, če prav razumem malce napimpan XMMP.  Tako realno ne vidim kje je IBM-ova glavna prednost pred npr. Microsoftom ali odprtokodnimi rešitvami... ",
+    "user": "poweroff"
+  },
+  {
+    "message": "Matthai,  glede securityja elektronske pošte je Domino daleč pred vsem. Security model ni od IBMa temveč od Lotusa (Ray Ozzie in kompanija).  Če hočeš bullet proof security in zanesljivost, uporabljaj striktno Domino in naprave, ki podpirajo native Domino.  Če hočeš praktičnost, uporabljaj web mail ali kaj drugega.  Če hočeš fensi mail klient, uporabljaj Outlook.  Krivit Domino, da stvari ne grejo najboljš skupaj, je nepošteno. Tukaj tako IBM, kot MS kot BB vsak močno vlečejo na svojo stran, ker želijo drugim speljat stranke. Blame the free market.  To da pa je security v Dominu \"tako tako\" kot ti praviš, je pa lovska. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": " poweroff je 19. nov 2011 ob 12:02 izjavil:Pa še nekaj. Jasno mi je, da Lotus ponuja več kot pošto...  Uporabniki uporabljajo to, kar jim IT omogoča. Lotus domino strežnik je mnogo več kot samo pošta. Omogoča ti razvoj zelo širokega spektra aplikacij in to bistveno hitreje, kot v marsikaterem drugem okolju. Deploy aplikacij največkrat pomeni samo da pošlješ uporabniki bližnjico prek maila, če gre za spletno aplikacijo pa URL itd.   Je pa res, da JU preprost ne zna izkoristiti tega, kar nudi pogodba z IBM. Lastnih razvijalcev večinoma nima nihče, pa čeprav je razvoj enostavnejših programov, ki lahko veliko olajšajo delo, skoraj trivialen, na trgu pa seveda vsaka malenkost stane par tisoč €, kar se zdi večini ogromno in odločno preveč. A isti so za Oracle aplikacijo takoj pripravljeni podpisati pogodbo za nekaj sto tisoč €.  Kar se tiče varnosti uporabljajo Lotus Notes organizacije, kot je FBI, tako da si lahko prepričan, da gre za dober produkt. Je pa res, da če se stvari lotiš amatersko, bodo rezultati tudi taki. Jaz sem bil priča v neki zavarovalnici (leta 99), ko je nekdo registriral uporabnike v Lotus Notes tako, da se je ID datoteka shranila v imenik za vsakega zaposlenega. Ko so v IT ugotovil, kakšna gesla je izbral, so lahko brali pošto praktično vsem zaposlenim. Ampak tu gre kot rečeno za amaterizem, ne problem IBM (takrat je bil to še Lotus). ",
+    "user": "dronyx"
+  },
+  {
+    "message": "To da uporabniki večinoma uproalbljajo zgolj pošto je predvsem IBMova krivda.  Domino je tako močna in fleksibilna aplikacijska platforma, da bi s tem odžirala kruh preostalim IBM produktom, zato IBM Domino oglašuje \"zgolj\" kot komunikacijsko platformo.  @Matthai: Sklepam, da je tvoj primary pain LN klient 8.0 > x < 8.5.2 na Win platformi? Če to drži, potem vedi, da lahko 8.x kliente goniš tudi v \"classic\" modu (izgleda kot 7.x), ki je precej stabilnejši in hitrejši.  Glede iskanja, pa res ne vem kakšne težave imaš. Meni se je Domino iskanje vedno zdelo odlično, če boš dal več informacij ti bom z veseljem pomagal.  Sicer se nekaj trudijo, ampak ne vejo čist kaj bi z Dominom. IBM se že 15 let trudi, da bi uničil Domino, pa jim nikakor ne rata. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": " ZaphodBB je 19. nov 2011 ob 12:17 izjavil:To da uporabniki večinoma uproalbljajo zgolj pošto je predvsem IBMova krivda.  Globalno morda res, v naši JU pa nihče nikomur ne brani, da platformo uporablja tudi za aplikacije. Je pa res, da nekateri preprosto ne razumejo, da Lotus Domino ni SQL strežnik, kjer bi lahko razvijal neke računovodske aplikacije. Čudovito pa se obnese na področju upravljanja z dokumenti, sodelovanja itd. Kadar potrebuješ kakšno obdelavo tako zbranih podatkov, pa je enostavno narediti tudi izvoz v Excel.  Edino kar me je pri Lotus Notesu res negativno presenetilo je, da so slovenski črkovalnik v verziji 8 umaknili iz odjemalca na strežnik, pri čemur moraš baje za delovanje namestiti fat odjemalca (standard, ne basic), torej skupaj z eclipse. ",
+    "user": "dronyx"
+  },
+  {
+    "message": "onyx: IBM pri vsakem poslu močno lobira za posamične platforme. In primarne informacije o produktih (komu, zakaj, kako) prihajajo od proizvajalca. In če proizvajalec nekaj trži kot lupilnik za krompir, potem je to lupilnik za krompir.  Za organizacije kot je JU - to drži še toliko bolj. V takih organizacijah se vsi držijo pravil kot pijanec plota, za kar imajo nešteto dobrih razlogov. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "Saj, kot pravim, je problem v tem, da te IBM sili v vendor lock-in. In to ima posledice pri varnosti. Če uporabljaš IZKLJUČNO njihove produkte, potem vse špila. (Razen v državni upravi, ampak to je druga zgodba).  Čim pa hočeš uporabiti kaj drugega - in ja, problem so danes zlasti telefoni - pa njihov silni security model pade. Ker ni standardiziran in ne zna sodelovat z rešitvami neodvisnih razvijalcev.  Res je sicer, da IBM po dveh letih pride in ponosno najavi, da imajo sedaj odjemalca za Androida, ampak to je natanko dve leti prepozno.  V primeru odprtokodnih rešitev sem lahko jaz na Androidu, Linuxu, Macu ali čem tretjem uporabljal šifriranje e-pošte praktično od začetka. OpenGPG je pač standard in je zato tudi široko podprt.  Da mi pa leta 2010 ali 2011 IBM marketing reklamira Sametime kot vrhunec tehnologije, pri čemer XMMP odjemalci to podpirajo že leta, prav tako Skype - je pa čisti nateg.  Ravno na tem primeru sem spoznal, kako zajeban je vendor lock-in. In ja, Microsoft ima sicer tudi podobno taktiko, ampak niso največji bad guy.   Kar se tiče iskanja po pošti. Saj deluje. Ampak ko kliknem tisti search gumb, me takoj prestavi v prejšnje stoletje. Thunderbird ali boh-ne-daj Outlook ima to veliko lepše izvedeno.  Mislim, kar res ne razumem je, zakaj je državna uprava šla na LotusNotes, pri čemer ga uporablja izključno za mail odjemalca (OK, SPIS je dokumentni sistem, ampak tisto je posebno \"veselje\")? Pa še to ne cela. Ministrstvo za finance je recimo šlo na Exchange... skratka, že tukaj ti pade \"enotno okolje\" in s tem silni security... ",
+    "user": "poweroff"
+  },
+  {
+    "message": "Matthai, na scalu kot je javna uprava so z Exchangom same težave. Zanimivo pa, da nikogar ne moti izginjanje mailov, korupcije baz,... Samo da je lep vmesnik.  Saj bojo Spis spravil ven, ker tako želi trg (tudi SRC se je odpovedal Dominu), pa boš potem videl kakšen zakon je bil Domino (in Spis).  Jaz sem kar nekaj časa preživel v SPISih (ter dokumentnih sistemih), videl sem tudi razne poskuse idelave dokumentnega sistema na JAVA in .NET, no kot sem rekel boste že videli kaj se pravi jajca in stroški.  Zanimivo mi je pa, da ti Matthai kot ne totalen analfabet ne vidiš dlje od svojega nosu. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "Se strinjam, Exchange v takem obsegu je fail. Takisto Active Directory (ki se uvaja v CELOTNO Univerzo v Ljubljani). Pravim pa, da že sedaj v državni upravi ni poenotenega sistema. Zato odpadejo razni miti o silni varnosti.  Tudi si drznem trditi, a HKOM ni tako varen, kot bi marsikdo želel prikazati, ampak to je druga zgodba.  Zanimivo pa, da nikogar ne moti izginjanje mailov, korupcije baz,... Samo da je lep vmesnik. Mene to zelo moti. Na OBSTOJEČEM sistemu. ",
+    "user": "poweroff"
+  },
+  {
+    "message": " poweroff je 19. nov 2011 ob 13:39 izjavil:Mislim, kar res ne razumem je, zakaj je državna uprava šla na LotusNotes, pri čemer ga uporablja izključno za mail odjemalca (OK, SPIS je dokumentni sistem, ampak tisto je posebno \"veselje\")? Pa še to ne cela. Ministrstvo za finance je recimo šlo na Exchange... skratka, že tukaj ti pade \"enotno okolje\" in s tem silni security...  Po moje je razlog za Lotus Notes v JU prav aplikacija SPIS (mislim da začetki segajo nekam v 94 ali 96), ker sicer sem trdno prepričan, da bi Lotus Notes že zdavnaj vsi vrgli ven, ker bi Microsoft tako hotel. Zanesljivo bi se pojavila neka drago plačana študija, kjer bi pisalo črno na belem, da je MS toliko cenejši od IBM in vseh ostalih rešitev. ",
+    "user": "dronyx"
+  },
+  {
+    "message": "Spis je v na Dominu zgolj zaradi tega, ker je bil v letu 94 verjetno daleč najprimernejša platforma za tovrstne aplikacije. Na marsikaterem področju to velja še danes (Domino Directory je svetlobna leta pred AD).  Težav SPISa je pa več: 1. Vsebina - to je splošen problem vseh informacijskih sistemov po svetu. Tako so informatizirani procesi, praviloma zgolj mirror obstoječih fizičnih procesov, kar pogosto nima smisla in povzroča nepotrebne stroške v implementaciji. Pri pisanju zakonodaje se ne upošteva informacijskih sistemov, prav tako se masrikatera zakonodaja zaradi banalnosti spreminja prepogosto in v prevelikem obsegu, kar povzroča ogromne težave razvijalcem in vzdrževalcem teh sistemov. Za nameček se naši birokrati ne pogovarjajo med seboj, še posebaj kadar več organov sodeluje na istem projektu. 2. Tehnologija - SPIS je narejen na objekti bazi, kar omogoča hiter in poceni razvoj. To je dvorezen meč, ker vpleteni dobijo previsoka pričakovanja. Ravno tako razni tehnokrati v dobri veri želijo analitike, ki so povsem neprimerne za tovrsten tip baze[1], ti tehnokrati imajo ravno dovolj znanja da znajo razmišljati na relacijski način. A vendarle premalo, da bi bili sposobni doumeti omejitve tega pristopa. 3. Legacy: Spis je star 18 let, v tem času je šel skozi stotine iteracij, pogosto na horuk. Poleg tega organi ne upoštevajo napotkov o arhiviranju dokumentov in vztrajajo, da želijo celotno zgodovino v operativnih bazah. Tako, da se količina zapisov v aktivnih bazah gomili. 4. Zaščitna Shema: Zaščitna shema je hierarhičen ACL (šef vidi vse kar vidijo njegovi podrejeni, obratno pa ne). Hec je, da je zadeva pisana na kožo Dominu in laufa super dokler je dokumentov v bazi malo, ko začne zahteva rasti pa se pojavljajo težave (tovrstna preračunavanja so prekleto računsko zahtevna). Nahujši scenarij je, ko je v bazi miljone dokumentov, uporabnik pa jih vidi samo par ducat. Za povrh se zadevo zlorablja in se dostope drobi bolj kot bi bilo potrebno. Prištej še drugi del točke 3.  Spis še zelo dolgo ne bo šel nikamor (beri vsaj 10 let), bo pa v tem času 100% nekaj poskusov, da bi ga zamenjali z nečim na SQL serverju ali Oraclu. Projekti bodo delno implementirani klavrno propadli in povzročili večjo razdrobljenost ter enormne stroške.  Razlogov za mojo črnogledost je mnogo, od zgoraj navedenih težav, bodo vsi tekmeci soočeni z vsemi. V točki 2. pa se bo odprla povsem nova sfera agonije. Na to temo smo s kolegi svojčas izvedli celo serijo tehnoloških testov, ki so dali zelo zanimive rezultate.  [1]: ORM The Vietnam of Computer Science, če koga problematika podrobneje zanima.  Poleg SPIS je na Dominu recimo še VIZIS (VIZumski Informacijski Sistem), ki na Domino paše kot ata na mamo in spada med state of the art tovrstne sisteme na svetu. Potem so pa še kaki manjše aplikacije.  Sam ne delam več na Dominu, vendar je od vseh RAD platform katere sem videl, dejansko najbolje zamišljena in delujoča. Posledično pa ljudje od nje pričakujejo preveč. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "No, no. To, da je Domino directory svetlobna leta pred AD-jem si ne bi upal trditi. SPIS aplikacija je zastarela, o tem, zakaj so te zadeve na Dominu, bi lahko tudi kakšno rekli v smeri lobiranja, itd.  Če prav razumem (oziroma se mi zdi, ker še nisem zadeve videl v praksi, predvsem ne v JU), je iNotes enako kot Outlook Web Access pri Exchange-u? Replikacija baz v Dominu je težava, verjetno vsi poznamo zadevo z repliciranjem imenika, npr. SVN imenika ali kaj podobnega in ostale zadeve z replikacijo baz. O VIZIS-u ne bom nič rekel, me ni prepričal, prav tako ne Lotus Notes. Ko si enkrat na takšni platformi boš na njej bolj ali manj ostal. In tu lahko potem govorimo o vendor lockinu. SPIS in ostale rešitve na Dominu bodo ostale, maili pa izginjajo tudi na Dominu, ne samo v Exchange-u. IBM-ov nakup Lotusa ni slednjemu prav nič koristil, žal. Microsoft ne more nič kaj narediti, če Domino rešitve uporabljajo glavne inštitucije, tudi če bi hotel. Je IBM kar dobro lobiral oziroma je kar močan tu. :) Glede črnogledosti... Eh, javna uprava se premika počasi. Enkrat bo že... Kakršnakoli rešitev že bo, naj bo vsaj dobra in uporabna. O varnosti HKOM-a bodo pa verjetno v tem trenutku največ vedeli na Astecu. ;) ",
+    "user": "videc"
+  },
+  {
+    "message": " ZaphodBB je 19. nov 2011 ob 16:54 izjavil:Spis še zelo dolgo ne bo šel nikamor (beri vsaj 10 let), bo pa v tem času 100% nekaj poskusov, da bi ga zamenjali z nečim na SQL serverju ali Oraclu. Projekti bodo delno implementirani klavrno propadli in povzročili večjo razdrobljenost ter enormne stroške.  Uporaba Oracla je pa itak fail. Oracle je pač buzzword in v javni upravi (pa še marsikje drugje) navadno postanejo vsi mehki, ko slišijo to besedo. Zares bi bila pa upravičena uporaba v morda dveh organih.  Mar se pa tiče recimo DB2 rešitev... spet imaš problem priklenjenosti na IBM. Novih stvari ne moreš implementirati dokler jih veliki modri ne ponudi. In jih seveda drago kupiš.  Jaz sem recimo na MNZ serverjih oz. bazah odkril neko precej resno varnostno ranljivost. Gre v bistvu za cel class ranljivosti, ki se pojavlja povsod. Problem je v tem, da bo odprava stala enormno. Ker imajo v ozadju neko staro DB2 tehnologijo, ki ne omogoča enostavnega popravka. Možnosti imajo dve: da upogrejdajo IBM software (kar stane), ali pa da čarajo z nekimi dodatki in Oraclom, kar pa spet stane. Če bi imeli isto ranljivost in uporabljali odprtokodne rešitve, bi bil popravek skoraj trivialen.  Problem SPIS-a je seveda zastarelost. In to, da država nima strategije na tem področju. Obstajajo pa že dobre alternativne rešitve. Recimo ministrstvo za obrambo ima eno tako zanimivo rešitev, pa urad za preprečevanje pranja denarja. Pa tudi sistem od SOVE ni slab.  videc je 19. nov 2011 ob 17:36 izjavil:O varnosti HKOM-a bodo pa verjetno v tem trenutku največ vedeli na Astecu. ;)  Se bojim da ne. Ko sem jim pred časom razlagal kje so težave so precej debelo gledali.   No, je pa res, da oni kot podizvajalec v resnici več kot toliko ne morejo narediti, čeprav bi pričakoval nekoliko večjo profesionalno skrbnost. Glavni problem so verjetno ljudje na MJU in v državni upravi, oziroma odsotnost kakršnekoli resne strategije na tem področju.  PRav zanimivo mi je bilo, ko sem pred kakšnim mesecem enemu izmed top varnostnih strokovnjakov enega tim. \"državotvornega\" organa demonstriral da fizični dostop do omrežja ne pomeni, da moram nujno v njihove prostore vstopiti...  ",
+    "user": "poweroff"
+  },
+  {
+    "message": "@videc: Domino Directory JE svetlobna leta pred AD. AD še hierarhije ne zna modelirat. Poleg tega AD NI LDAP compliant, tukaj sta Novell in Domino edina, ki delata pravilno. Kar se replikacij tiče, pa delujejo. Ko ravno omenjaš replikacije imenikov - to je bil povsem človeški faktor, tehnologija je tukaj naredila samo tisto kar ji je bilo naročeno.  Glede VIZIS - kaj te ima za prepričat? Da sistem deluje po 50 lokacijah širom sveta 24/7 ne glede na izpade komunikacij? Da ga v vsakem danem trenutku vzdržujeta maksimalno 2 inženirja? Kaj si pa ti pričakoval sploh?  @Matthai: Res ni fer, da primerjaš rešitev, ki teče na enem organu z rešitvijo, ki ima implementiran celoten ZUP za ministrstva (SPIS4) ali UE (SPIS1.45). Takoj, ko bojo hotel enega od teh sistemov prenest oz. razširit se bo začelo: \"To pa ono hočemo drugače.\" dokler ne bo od originalne vizije ostalo nič.  Skratka stranke nočejo SPIS, drugega pa tudi ne :).  Sicer pa vsak od modrecev, ki je prepričan da zna bolje, lahko pošlje prošnjo za zaposlitev na SRC ali MJU, pa naj proba sam. Z zornega kota enega ITjevca na enem organu (videc?) imaš pa preveč omejen pogled na to \"kako se delajo hrenovke\".   Večino stvari, ki jih vi predlagate so bile že bodisi preizkušene ali pa že na nivoju miselnega eksperimenta pogorijo, ko enkrat malo več veš o problematiki. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "@ZaphodBB: o hrenovkah si malo falil, pa pustimo. Ti pa verjetno delaš na SRC-u ali si delal tam. :)  Debata je bila o dostopu do Domino strežnika z Thunderbird odjemalcem. Ja, ne, kako... ",
+    "user": "videc"
+  },
+  {
+    "message": "Se opravičujem, ker tole res ni tema te niti, vendar kar se tiče spisa ali katerekoli podobne rešitve v JU je problem tudi v tem, da očitno nekateri ali ne razumejo, kaj pomeni elektronsko poslovanje, ali pa zadevo namerno blokirajo. meni se uporabniki dostikrat pritožujejo, da pošljejo digitalno podpisan dokument na nek uradni poštni naslov neke ustanove, odgovora pa ni cel mesec. Če ga pošljejo po pošti, dobijo odgovor v parih dneh, kar je absurdno, saj je elektronska pošta dostavljena v par sekundah. Ampak nekaterim se zdi tak način dela \"neresen\", čeprav je v skladu z zakonodajo in nihče jim očitno nič ne more. V JU žal veliko ljudi ne razume, da je IT investicija, ki mora na drugi strani prinašati neke koristi in povrniti velika vložena sredstva. V gospodarstvu imajo te pojme se mi zdi dosti bolj razčiščene. ",
+    "user": "dronyx"
+  },
+  {
+    "message": " dronyx je 19. nov 2011 ob 18:26 izjavil:V gospodarstvu imajo te pojme se mi zdi dosti bolj razčiščene.  Zelo, ja. Sploh ko pošlješ par mailov, da bi rad kupil nek pošten server in je treba potem te privat firme po telefonu in po kolenih prosit, da ti vsaj blagovolijo poslat ponudbo. Na maile pa itak ni odgovora (brez klica).  Pač, Slovenija...  ",
+    "user": "poweroff"
+  },
+  {
+    "message": "(Domino Directory je svetlobna leta pred AD). povečini nebo držalo, niti nista ekvivalentna.  4. Zaščitna Shema: Zaščitna shema je hierarhičen ACL (šef vidi vse kar vidijo njegovi podrejeni, obratno pa ne). Hec je, da je zadeva pisana na kožo Dominu in laufa super dokler je dokumentov v bazi malo, ko začne zahteva rasti pa se pojavljajo težave (tovrstna preračunavanja so prekleto računsko zahtevna). Nahujši scenarij je, ko je v bazi miljone dokumentov, uporabnik pa jih vidi samo par ducat. Za povrh se zadevo zlorablja in se dostope drobi bolj kot bi bilo potrebno. Prištej še drugi del točke 3. ja jeba , če se hirarhijo tlač v dokumentno bazo. kar govori o omejitvah le te.  Sam ne delam več na Dominu, vendar je od vseh RAD platform katere sem videl, dejansko najbolje zamišljena in delujoča.  predvsem ni delujoča , mogoče za admina pa še to ne , za razvijalca še nekak , že 10 let ali več pa nisem videl zadovoljnega uporabnika.   to da AD poklekne na scalu JU tudi ni res , je bilo res nekje 15 let nazaj dandanes pa ne. pa obstajajo tudi druge rešitve. so pa rešitve katere ponujajo exchange sevcices integarcijo vsaj pomojem mnenju trenutno korak pred ostalimi(pa tudi dobiš jih v vseh okusih in cenah).   Ln je preživet , domino pa ravno tako na trgu vstrajata zaradi inercije. Ampak stvar je obupna. pa ne rečem , da je treba na vrat na nos letet na exchane - sharepoint , documentum , caouchdb ali kaj drugega.  poweroff je 19. nov 2011 ob 19:10 izjavil:dronyx je 19. nov 2011 ob 18:26 izjavil:V gospodarstvu imajo te pojme se mi zdi dosti bolj razčiščene.  Zelo, ja. Sploh ko pošlješ par mailov, da bi rad kupil nek pošten server in je treba potem te privat firme po telefonu in po kolenih prosit, da ti vsaj blagovolijo poslat ponudbo. Na maile pa itak ni odgovora (brez klica).  Pač, Slovenija...   nikol nebi poklical dobavitelja več kot enkrat. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "[1]: ORM The Vietnam of Computer Science, če koga problematika podrobneje zanima. tole se pa strinjam. Ampak orm ima svoj prostor pod soncem ni pa univerzalna rešitev in tu so krivi precej programerji ker ga avtomatično tlačijo povsod kamor paše in kamor ne. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "Se strinjam, Exchange v takem obsegu je fail. Takisto Active Directory (ki se uvaja v CELOTNO Univerzo v Ljubljani). Pravim pa, da že sedaj v državni upravi ni poenotenega sistema. Zato odpadejo razni miti o silni varnosti. nič od tega ni fail , oboje izvedljivo in dela dobro tudi na takem številu uporanikov. Je pa res , da migracija ni trivialna , niti poizkušnjah povsem neboleča. ker je pri takšnem številu uporabnikov težko predvideti vse parametre že vnaprej.Sosledno se mariskje tudi spremeni način komunikacije in fine tuning celega sistema traja nekaj mesecev.  P.S. Je pa to le ena od možnih alternativ. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "noraguta: Ali pa v relacijsko? Vseeno je v dokumentni bazi lažje modelirat hierarhijo kot v relacijski.  Glede RAD: kdo je govoril kaj o klientu? LN klient je zločin proti človeštvu po mojem mnenju. Ampak Domino Designer je pa zelo fajn orodje - če ostanemo na nivoju koncepta, ker hroščev raznih neumnih ima res dovolj. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": " ZaphodBB je 19. nov 2011 ob 20:34 izjavil:noraguta: Ali pa v relacijsko? Vseeno je v dokumentni bazi lažje modelirat hierarhijo kot v relacijski.  pa težje kot v grafu. saj sem napisal ni univerzalnega odgovora. na žalost. so pa kakeršnikoli grafi na dokumentnih bazah vseeno večja jeba kot na relacijskih. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "@noraguta: Sej se mi je zdelo da imaš graf baze v mislih :)  Ampak poglej kakšen je domet povprečnega arhitekta/razvojnika na takih projektih :)  Če zna relacijsko bazo uporabit je že kr kralj. Kamoli, da bi žongliral tri različne paradigme :). ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": " noraguta je 19. nov 2011 ob 20:00 izjavil:nikol nebi poklical dobavitelja več kot enkrat.  Well, poslano je bilo VSEM dobaviteljem (10-15 komadov). Naj neham kupovat?   Kar se tiče AD na uni-lj.si - tisto je bil fail (ko sem bil še tam, ne vem kako sedaj dela). OK, morda zaradi implementacije, ampak imam občutek, da bi se dalo stvar bolje in ceneje rešiti s kakšno alternativo. Recimo z LDAP avtentikacijo, ki celo že deluje (Eduroam) - celo na nivoju celotne EU! ",
+    "user": "poweroff"
+  },
+  {
+    "message": " ZaphodBB je 19. nov 2011 ob 20:42 izjavil:@noraguta: Sej se mi je zdelo da imaš graf baze v mislih :)  Ampak poglej kakšen je domet povprečnega arhitekta/razvojnika na takih projektih :)  Če zna relacijsko bazo uporabit je že kr kralj. Kamoli, da bi žongliral tri različne paradigme :).  matr sej to so študiran ljudje. al še vedno velja na naših faxih u šolo hod da ti nav treba delat , pa mi te nebomo nič naučil samo preverl bomo kolk dreka lohk poješ.  pa saj načeloma bi morala platforma ponujat lahkotno integracijo različnih konceptov. .net-u manjka prav soliden graphdb. z jsonom štrikat je fajn za manjše projekte potem se ti pa zagabi fleksibilnost, ko vidiš, da si tipi nimaš kaj pomagat ,ko dobiš tujo kodo. Z javo se da marsikaj , ampak nima pod sabo kaj podobnega kot sta AD, Exchange , Sharepoint kateri vsak na svojem koncu ponujajo soliden paket funkcionalnosti sploh če upoštevamo še integracijo z desktop device-i(pri mobilnih pa še ti šepajo).  Couchdb je sicer dober documentstore ampak to in samo to,ok za offline sinhronizacijo je super.   Sam sem nakoncu dojel , da drobljenje produktov niti ni tako napačno je pa potem jeba integracija. ",
+    "user": "noraguta"
+  },
+  {
+    "message": " poweroff je 19. nov 2011 ob 21:17 izjavil:noraguta je 19. nov 2011 ob 20:00 izjavil:nikol nebi poklical dobavitelja več kot enkrat.  Well, poslano je bilo VSEM dobaviteljem (10-15 komadov). Naj neham kupovat?   Kar se tiče AD na uni-lj.si - tisto je bil fail (ko sem bil še tam, ne vem kako sedaj dela). OK, morda zaradi implementacije, ampak imam občutek, da bi se dalo stvar bolje in ceneje rešiti s kakšno alternativo. Recimo z LDAP avtentikacijo, ki celo že deluje (Eduroam) - celo na nivoju celotne EU!  ti nevem kaj so sploh probal dosečt? mogoče exchange-sharepoint integracija? al samo avtentikacijo , terminal services ,..   Ja marskej se da z oprto kodo sam na voljo imaš nek nabor razvojnikov , če to dela nekdo naveliko kot sta ibm al pa ms se nakoncu lahko izkaže da sta cenejša , ker sta šla ene 3krat čez uvajanje platforme na velikem številu uporabnikov. ni pa nujno.   mah LDAP je pa tko , enkrat bi se moral tile veliki in mali skup vsest pa dosečt nek dogovor kaj je standard in kako se ga krpa , ker sedaj je LDAP neka papirnata specifikacija , kjer se vsak pogovarja z drugim z prevajalcem. Al pa povsemna novo uredit zadeve. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "noraguta: A ti sploh veš, da 90% stvari o katerih govoriš ni obstajal deset let nazaj?  Kar se pa LDAP tiče, zadeva je bla čisto tko zastavljena kot ti predlagaš. Vsi so se držal dogovora razen MS. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "Samo zakaj pa potem slišim, da so neke specialne implementacije IBM LDAP-a...? ",
+    "user": "poweroff"
+  },
+  {
+    "message": " ZaphodBB je 19. nov 2011 ob 21:58 izjavil:noraguta: A ti sploh veš, da 90% stvari o katerih govoriš ni obstajal deset let nazaj?  Kar se pa LDAP tiče, zadeva je bla čisto tko zastavljena kot ti predlagaš. Vsi so se držal dogovora razen MS.  vem ampak to ni razlog za vztrajanje na LN dan danes, po drugi strani ja vse znanje kateri je danes zdrušeno pod noSql staro 20 do 30 let sybase je imel pa še takrat precj napredne rešitvee samo v corporate sektor ga niso spustili.   glede ldapa , pa ni glih tko simpl , tud ob pametnih predlogih so MS blokiral pri pripombah, na konc so pač nardil stvar katera je vsaj zasilo sprejemljiva ni pa pravoverna. na koncu zadeva še vedno izvira iz x500-ke pa bi bila potrebna poštene prevetritve. ",
+    "user": "noraguta"
+  },
+  {
+    "message": "@noraguta: Zamenjava enega sistema kot je Spis tud ni trivialno početje. Poleg tega, ko bo do zamenjave prišlo - se definitvno ne bo delalo na CouchDB, Mongu ali čem podobnem. Vzelo se bo SQLServer, DB2 ali pa Oracle - kar bo katastrofa.  Sharepoint vs Domino - glede uporabnosti in fleksibilnosti Domino zmaga po celi črti, SP pa zmaga glede integracije v MS okolje in bolj intuitivnega vmesnika.   Ampak recimo ustvarit en SPIS na SP je pa znanstvena fantastika. In katerakoli rešitev, ki jo bojo šli delat bo bolj podobna SP kot Dominu, po sili razmer.  Ko bojo fantje postavil sistem v produkcijo in bo vseskup začelo kašljat s par sto tisoč dokumenti in par deset uporabniki, šele tedaj bo prišlo spoznanje da iz te moke ne bo kruha. Potem bo pa spet treba 10 ali 15 let živeti s takim sistemom.  Aja, pozabil sem omenit, da so MOREQ2, ZVDAGA in ETZ smrtna obsodba za vsak dokumentni sistem na relacijski bazi.  p.s.: Noraguta zakaj ne vztrajati na LN? Mislim, da v želji po napredku pozabljaš, da ta sistem deluje, da je okrog njega akumuliranega mnogo know-howa in da so oportunitetni stroški tovrstne zamenjave enormni. Precej lažje je naredit face-lift na obstoječem sistemu. Preberi ta članek, če ga še nisi (http://www.joelonsoftware.com/articles/.... Zelo lahko je videt stvari, ki jih Domino in SPIS nista naredila prav. Težko je pa videt stvari, ki sta jih naredila prav. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": " ZaphodBB je 20. nov 2011 ob 08:38 izjavil:@noraguta: Zamenjava enega sistema kot je Spis tud ni trivialno početje. Poleg tega, ko bo do zamenjave prišlo - se definitvno ne bo delalo na CouchDB, Mongu ali čem podobnem. Vzelo se bo SQLServer, DB2 ali pa Oracle - kar bo katastrofa.  Saj obstaja rešitev, ki je konkurenca SPIS in sicer GovernmentConnect firme Marg, ki za shranjevanje podatkov uporablja relacijsko bazo (mislim da MS SQL) in uporablja spletni vmesnik za dostop. Uporabljajo jo pa na Ustavnem sodišču in tudi na MORS, kjer je več tisoč uporabnikov (baje). ",
+    "user": "dronyx"
+  },
+  {
+    "message": "onyx: Garantiram ti, da zadeva ni niti blizu SPIS. ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": "Ravnno to zadevo od Marga sem hotel omeniti. Ne vem, ampak bo treba več obarazložitve kot zgolj \"Garantiram ti, da zadeva ni niti blizu SPIS\".  Kar se tiče SPIS-a... res je, včasih se bolj splača face lifting. Ampak če je stvar zgrešena že v osnovi se najbolj splača narediti (boleč a nujen) rez. SPIS je pač aplikacija izpred 10 let. Into se ji konkretno pozna. ",
+    "user": "poweroff"
+  },
+  {
+    "message": "@Matthai: Pa kako si tako prepričan, da je stvar \"zgrešena\", a lahko ti malo bolj utemeljiš? Zgrešena je edino v smislu user interfacea, ki je pa odvisen od odjemalca - pa tudi tukaj grejo zadeve počasi na WEB. Kar se pa tiče tvojega komentarja, da je SPIS aplikacije izpred 10 let - to bi pa težko bolj mimo udaril. Spis je totalno up-to date, današnji SPIS ima s tistim izpred 10 let skupnega samo to, da se uporablja v JU in da teče na Domino platformi.  Preden bi v Morg stlačil vse, kar JU zahteva - bo minilo 3 leta, v tem času pa bo zadeva aplikacija izpred 10 let :D.  Res si informatiko malo preveč enostavno predstavljate, pa ste profiji :). ",
+    "user": "ZaphodBB"
+  },
+  {
+    "message": " poweroff je 20. nov 2011 ob 16:05 izjavil:Kar se tiče SPIS-a... res je, včasih se bolj splača face lifting. Ampak če je stvar zgrešena že v osnovi se najbolj splača narediti (boleč a nujen) rez. SPIS je pač aplikacija izpred 10 let. Into se ji konkretno pozna.  Jaz zadevo s SPISom kar dobro poznam, ker sem dvakrat sodeloval pri uvedbi te rešitev. Največji problem pa po moje sploh ni SPIS kot tak. Uvedba take rešitve je predvsem velik organizacijski zalogaj, ki bi moral spremeniti način dela, kar pa naleti dostikrat na velik odpor. Taka rešitev, ki ti dejansko omogoča elektronsko - brezpapirno poslovanje, je podobna sprememba, kot ko so računalniki zamenjali po ministrstvih t.i. strojepisnice (sobe, kjer je bilo nekaj pisalnih strojev in so hodili ljudje narekovat strojepiskam dopise). Takrat je tudi marsikateri zaposleni debelo pogledal, češ, kaj bom sedaj sam tipkal dopise? Druga težava pa je v nerazumevanju, da vsaka taka informacijska rešitev zahteva tudi izobraževanje zaposlenih, za kar pa mislim da je denarja čedalje manj, oziroma ga sploh ni več. ",
+    "user": "dronyx"
+  }
+]

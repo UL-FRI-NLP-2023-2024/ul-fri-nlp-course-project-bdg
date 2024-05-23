@@ -1,0 +1,206 @@
+[
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Robot CryptoHopper samodejno opravlja trgovanje na podlagi strategij in/ali signalov, ki jih lahko nastavljate samo ali pa kopirate od obstoječih uporabnikov.\nDeluje v oblaku in ne lokalno, kar pomeni da ne potrebujete svojega strežnika oz imeti prižganega računalnika.\n\nZa delovanje ga morate povezati z vašo menjalnico, tu bi toplo priporočil Binance.com, ker ima največ dnevnega prometa, na voljo je velika večina kripto valut in seveda direktna nakazila in dvigovanja na TRR. Povežete ga z dodajanje API ključa, kateri ima pravice za trgovanje in brez pravic dvigovanja tako, da brez skrbi noben vam ne more »ukrasti« vaših kripto valut.\n\nSistem omogoča tudi demo način, brez povezave na menjalnico in trguje z navideznim denarjem, kar je super za testiranje različnih strategij.\n\nPrimaren način trgovanje je tehnična analiza, kjer je na voljo zelo veliko različnih indikatorjev na podlagi katerih se bodo izvajali nakupi in/ali prodaje.\nIma zelo razvito skupnost, kjer si uporabniki delijo različne strategije, omogoča pa tudi signale katere dobiva direktno iz TradingView.\n\nTrgovanje je kompletno avtomatizirano in imate možnost nastavljati različne strategije prodaje, kot tudi Stop Loss, Trailing Stop Loss, DCA itd..\n\nCryptoHopper povezava\n\nUradni discord strežnik, ki ima tudi slovenščina kanal.\n\nV kolikor rabite pomoč mi lahko pišete tu oz se pridružite na naš Kripto Slovenija discord.\nPrilagam tudi template in strategijo, ki mi v trenutnem marketu odlično deluje.\n\n1. Po registraciji, uporabite možnost paper trading ( demo brez povezave na menjalnico )\n2. Dodajte novo strategijo in v sekcijo <code> prilepite spodnjo kodo:\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t[{\"id\":\"1\",\"name\":\"Relative Strength Index (RSI)\",\"type\":\"buy\",\"params\":{\"candle_value\":{\"type\":\"select\",\"name\":\"OHLCV Value\",\"options\":[\"open\",\"close\",\"high\",\"low\",\"volume\"],\"default\":\"close\"},\"period\":{\"type\":\"number\",\"step\":1,\"min\":1,\"max\":500,\"name\":\"RSI Period\",\"default\":14,\"value\":\"9\"},\"signal_when\":{\"type\":\"value\",\"defaults\":{\"buy\":{\"signal_when\":\"<=\",\"signal_when_value\":20},\"sell\":{\"signal_when\":\">=\",\"signal_when_value\":80}},\"signal_when_value\":\"40\",\"signal_when\":\">=\"}},\"chartperiod\":\"300\",\"candle_pattern\":0,\"necessary\":1,\"keep_signal\":\"1\"},{\"id\":\"23\",\"name\":\"Absolute Price Oscillator\",\"type\":\"buy\",\"params\":{\"candle_value\":{\"type\":\"select\",\"name\":\"OHLCV Value\",\"options\":[\"open\",\"close\",\"high\",\"low\",\"volume\"],\"default\":\"close\"},\"fast_period\":{\"type\":\"number\",\"step\":1,\"min\":1,\"max\":500,\"name\":\"Fast Period\",\"default\":10,\"value\":\"12\"},\"slow_period\":{\"type\":\"number\",\"step\":1,\"min\":1,\"max\":500,\"name\":\"Slow Period\",\"default\":21,\"value\":\"26\"},\"matype\":{\"type\":\"matype\",\"name\":\"MA-type\",\"default\":\"1\"}},\"chartperiod\":\"300\",\"candle_pattern\":0,\"necessary\":1,\"keep_signal\":\"1\"},{\"id\":\"23\",\"name\":\"Absolute Price Oscillator\",\"type\":\"sell\",\"params\":{\"candle_value\":{\"type\":\"select\",\"name\":\"OHLCV Value\",\"options\":[\"open\",\"close\",\"high\",\"low\",\"volume\"],\"default\":\"close\"},\"fast_period\":{\"type\":\"number\",\"step\":1,\"min\":1,\"max\":500,\"name\":\"Fast Period\",\"default\":10,\"value\":\"12\"},\"slow_period\":{\"type\":\"number\",\"step\":1,\"min\":1,\"max\":500,\"name\":\"Slow Period\",\"default\":21,\"value\":\"26\"},\"matype\":{\"type\":\"matype\",\"name\":\"MA-type\",\"default\":\"1\"}},\"chartperiod\":\"900\",\"candle_pattern\":0,\"necessary\":1,\"keep_signal\":\"1\"},{\"id\":\"1\",\"name\":\"Relative Strength Index (RSI)\",\"type\":\"sell\",\"params\":{\"candle_value\":{\"type\":\"select\",\"name\":\"OHLCV Value\",\"options\":[\"open\",\"close\",\"high\",\"low\",\"volume\"],\"default\":\"close\"},\"period\":{\"type\":\"number\",\"step\":1,\"min\":1,\"max\":500,\"name\":\"RSI Period\",\"default\":14},\"signal_when\":{\"type\":\"value\",\"defaults\":{\"buy\":{\"signal_when\":\"<=\",\"signal_when_value\":20},\"sell\":{\"signal_when\":\">=\",\"signal_when_value\":80}},\"signal_when_value\":\"70\"}},\"chartperiod\":\"3600\",\"candle_pattern\":0,\"necessary\":1,\"keep_signal\":\"4\"}]\n\t\n( ne se ustrašit vse zgornje se da lepo naklikati v uporabniškem vmesniku, ki se vam bo pokazal po dodajanju te kode. )\nZa ime določite RSI&APO ter shranite. \n\n3. Naredite novega hopperja s sledečimi nastavitvami ( tu žal ne omogočajo izvoza v <code> tako da sledite screenshotom ):\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Še trenutno stanje v zadnjih 30 dneh \n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Daj screenshot od stats , USDT invested USDT returns. Tvoj screenshot zavaja",
+    "author": "totimaribor",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik totimaribor je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tDaj screenshot od stats , USDT invested USDT returns. Tvoj screenshot zavaja\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nUSDT INVESTED: Podatek koliko je bilo največ investiranega denarja v odprtih pozicijah\nTOTAL USDT RETURNS: Stanje v trenutno odprtih pozicijah\nTOTAL USDT in ASSETS: Trenutno stanje če bi vse odprte pozicije prodal\nSTARTBALANCE. Koliko denarja je bilo vloženo.\n\nKar mi je malo porušilo rezultat je da sem ročno DCAjal pozicijo XRP en dan predenj je prišel SEC ven da jih tožijo in je XRP padel za skoraj 60%.",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Spisal sem še malo bolj podrobna navodila glede nastavitev: https://ajki.medium.com/cryptohopper-avtomatizirano-trgovanje-s-kriptovalutami-93155ac85d73",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Kateri paket priporočaš na hopperju? Vidim, da majo 7 dni free trial paket Explorer. Bi bilo dovolj?\n\nTa app se kupi, strategije pa iščeš po netu ali narediš sam?",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Miikech je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKateri paket priporočaš na hopperju? Vidim, da majo 7 dni free trial paket Explorer. Bi bilo dovolj?\n\nTa app se kupi, strategije pa iščeš po netu ali narediš sam?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPriporočam da na začetku ne kupiš nič, naredi si demo Paper račun in uporabi zgornje nastavitve.\nJaz si startegije delam sam, imaš jih pa zelo veliko na njihovem Marketplace eno so zastojn ene plačljive ( 5 do 10$ ekratno).\n\nGlede paketa je pa tako, če misliš obračati manj kot 1.000€ potem vzemi najcenejšega v nasprotnem srednjega.\nNa 1.000€ boš v trenutnem marketu delal najmanj 20% kar je 200€ na mesec.\n\n\nPredlagam da se pridružiš Kripto Slovenija discord v kolikor boš rabil kakršnokoli pomoč pri nastavljanju.",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Kaj pomeni, da mislim obracati. Da zacnem z banko 1000*?",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Miikech je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKaj pomeni, da mislim obracati. Da zacnem z banko 1000*?\n\t\t\n\t\tKlikni za razširitev\n\t\nJa s kakšnim vložkom boš začel.",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "To je že staro, sem mislu da je kaj novega.... Drugače pa za par jurjev pogamblat, bi verjetno bilo. \n\n\n\t\n\t\t\n\t\n",
+    "author": "jtfc",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Want more features? Order a subscription for this hopper now and start trading automatically. \n\nVeč stvari pod baseconfigom ne morem štelat..",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Miikech je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tWant more features? Order a subscription for this hopper now and start trading automatically.\n\nVeč stvari pod baseconfigom ne morem štelat..\n\t\t\n\t\tKlikni za razširitev\n\t\nPri View all your hoppers, pritisni subscriptions in ga nastavi v dropdownu. Z trial oz eno naročnino imaš lahko aktiven le 1 live in 1 paper hopper. \n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\np.s. Ali ti je potekel 7 dnevni trial ?",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Sem probal za hec to strategijo v prvem postu. Včeraj zvečer sem štartal. Do zdaj se ni zgodilo na binance še nič. Je to normalno da tako dolgo traja?",
+    "author": "Steve",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Steve je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSem probal za hec to strategijo v prvem postu. Včeraj zvečer sem štartal. Do zdaj se ni zgodilo na binance še nič. Je to normalno da tako dolgo traja?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKaj piše v Output oknu, spodaj zadnjih nekaj tradov\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Output ni nič, eno okno nižje pa je to\n\t\t\n\t",
+    "author": "Steve",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Jaz sem si tudi to naštimal. Ne vem, če to prav kaže. V 2 dneh mi je naredil 120€ . Ne vem pa zakaj ne proda in zasigura dobiček. Je pa res, da iz  včeraj n danes je šel trg gor še posebej ETH in se dobiček spreminja. Zato tudi lep % v +.",
+    "author": "totimaribor",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Če ne prodaja, ti ni naredil ničesar in imaš srečo, da je bull market.",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Hmm...samo fantje, ne pozabit, da je to že trejdanje in da se v primeru več prodaj/nakupov to mora pol sporočit FURSu, če se ne motim...",
+    "author": "SHTF",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Steve je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tOutput ni nič, eno okno nižje pa je toPoglej priponko 41162\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTesting to piše ker v configu -> Basic settings nisi dal LIVE BOT ON. to naredi in shrani.. če ni Live lahko vidiš kaj bi delal z prefixom testing. \n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik totimaribor je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz sem si tudi to naštimal. Ne vem, če to prav kaže. V 2 dneh mi je naredil 120€ . Ne vem pa zakaj ne proda in zasigura dobiček. Je pa res, da iz  včeraj n danes je šel trg gor še posebej ETH in se dobiček spreminja. Zato tudi lep % v +.\n\t\t\n\t\tKlikni za razširitev\n\t\nMogoče zaradi tega?\nDisable take profit percentage?\n\n\n\t\t\n\t",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Denis je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMogoče zaradi tega?\nDisable take profit percentage?\n\nPoglej priponko 41197\n\t\t\n\t\tKlikni za razširitev\n\t\nuporabljam tvojo konfiguracijo in tvoje nastavitve in imam narejeno kot si ti opisal. Zdaj naprimer mi piše da imam 60$ returns in pa 86$ v pozicijah (prej sem se zmotil sem pisal v €). Mene samo zanima zakaj teh 86$ v pozicij ne zapre, vzame denar in odpre nove tarče.",
+    "author": "totimaribor",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Denis je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMogoče zaradi tega?\nDisable take profit percentage?\n\nPoglej priponko 41197\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo zgoraj ni OK nastavljeno .Trailing Stop Loss percentage mora bit manjši kot ARM percentage.\nARM: Kdaj naj se trailing stop loss vključi da bot začne slediti ceni in ko le ta pade za kar je nastavljeno v Trailing Stop loss percentage bo prodal.\nti si nastavil 3.5 kar pomeni da če cena pade za 5% ( kar bi bilo 1.5% minusa) bi on prodal ampak ne bo ker je vklopljen Only Sell with profit.\n\nZa trenutni market predlagam kar:\nTrailing Stop loss percentage: 0.5\nArm: 3\nSe pravi v najslabšem primeru bo prodal z okoli 2.5% dobička",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "aja jaz nisem gledaj kdo mi je odgovarjal...jaz imam nastavljeno kot je opisal Ajki",
+    "author": "totimaribor",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik totimaribor je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMene samo zanima zakaj teh 86 pozicij ne zapre, vzame denar in odpre nove tarče.\n\t\t\n\t\tKlikni za razširitev\n\t\nPozicij ne zapre, ko so v minusu oz niso dosegle nastavitev kot jih imaš nastavljene v Traling Stop Loss sellu.\nČe pozicija raste v plus in je že dosegla nastavitev ATM jo ne bo zaprl toliko časa dokler ne pade za procente nastavljene v Trailing Stop loss percentage",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Ajki je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTo zgoraj ni OK nastavljeno .Trailing Stop Loss percentage mora bit manjši kot ARM percentage.\nARM: Kdaj naj se trailing stop loss vključi da bot začne slediti ceni in ko le ta pade za kar je nastavljeno v Trailing Stop loss percentage bo prodal.\nti si nastavil 3.5 kar pomeni da če cena pade za 5% ( kar bi bilo 1.5% minusa) bi on prodal ampak ne bo ker je vklopljen Only Sell with profit.\n\nZa trenutni market predlagam kar:\nTrailing Stop loss percentage: 0.5\nArm: 3\nSe pravi v najslabšem primeru bo prodal z okoli 2.5% dobička\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala za to. Jaz sem imel res 5 in 3. Sem zdaj spremenil na 0.5 in 3",
+    "author": "totimaribor",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Če vložim jurja in s temi vašimi nastavitvami grem lahko v minus?\nČe se mi s tem ne da ukvarjat in samo uporabim neke nastavitve, koliko realno mi prinese na mesec? \n\nHvala.\nTe stvari me vedno malo privlačijo, vendar jih niti malo ne razumem",
+    "author": "smrkec",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Haha ne, pri trgovanju gres izkljucno v plus. Banke ne izgubis nikoli.",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "To je meni včeraj zvečer začelo minus delat in to kar konkreten sem še samo 10$ v plusu.",
+    "author": "totimaribor",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smrkec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe vložim jurja in s temi vašimi nastavitvami grem lahko v minus?\nČe se mi s tem ne da ukvarjat in samo uporabim neke nastavitve, koliko realno mi prinese na mesec?\n\nHvala.\nTe stvari me vedno malo privlačijo, vendar jih niti malo ne razumem\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJaz sem včeraj zvečer za foro naredil račun in uporabil omenjeno skripto, na Paper trading naložil 5000 USDT kapitala in pognal. Do zdaj je investiral za 1800 USDT v različne kovance in \"pridelal\" za skoraj 100 UDT čiste izgube... Jeba ",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Prej je bil bull market 2 meseca. Zdaj pa vse pada. Drugo okolje.",
+    "author": "PHOBiA",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Miikech je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPrej je bil bull market 2 meseca. Zdaj pa vse pada. Drugo okolje.\n\t\t\n\t\tKlikni za razširitev\n\t\nDejstvo je da v bullmarketu so dnevi ko so 20% do 30% padci in nato ponovna rast.\nV omenjenih 2 mesecih bulla je BTC zrastel na 42k in padel na 30k in še vedno je bull market",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smrkec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe vložim jurja in s temi vašimi nastavitvami grem lahko v minus?\nČe se mi s tem ne da ukvarjat in samo uporabim neke nastavitve, koliko realno mi prinese na mesec?\n\nHvala.\nTe stvari me vedno malo privlačijo, vendar jih niti malo ne razumem\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV kolikor nimaš nastavljen STOP LOSS  ( prodaja v minusu ) boš vedno prodal ko si v plusu z USDT, če/ko trg začne padati imaš npr 0.5 ETH ki je padel za 50% bot ti ga nebi prodal ampak bo čakal na pnovno rast.",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Sedaj je že kar nekaj cryptohopper uporabnikov na https://discord.me/kriptoslovenija\nTukaj so objavljene zadnje config spremembe: https://github.com/Ajki-GH/cryptohopper/edit/main/README.md",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Avtomatizirano trgovanje s kriptovalutami",
+    "content": "Dnevna poročila uporabnikov: https://kriptoslovenija.si/threads/cryptohopper-porocila-uporabnikov-februar-2021.19/",
+    "author": "Ajki",
+    "author_level": "Zelenc'"
+  }
+]

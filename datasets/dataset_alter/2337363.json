@@ -1,0 +1,98 @@
+[
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Rad bi ustvaril zgoraj omenjeni USB ključek. Imam Win 7 USB stick edition, pa ga po priloženih navodilih ne uspe namestit na USB. Delal sem po tem postopku:  WIN 7 USB \nKolegov HP je zopet crknil, ustavi se na začetnem logu od HP-ja in nekaj melje tista urca, potem pa nastane samo črn ekran in konec, lučka za disk pa dela na polno. Poskušal sem z Recovery (F11) pa je enako (urca dela nekaj časa, potem pa izgine in črn ekran). Zadnjič sem prišel tolk daleč da sem mu lahko zbrisal vse programe in dokumente, postavil na novo, sedaj pa ne pridem več tako daleč. Naredil sem diagnostiko s HP-jevim internim programom in kaže težave na trdi disk, in zato bi rad preko tega ključa pregled. Al je bolje, da vzamem ven disk in ga priključim na moj računalnik in tako iščem težave?",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Priporočam ti fresh install najprej. Jaz za ta namene uporabljam tale MS-jev tool:\n\nhttps://www.microsoft.com/en-us/download/windows-usb-dvd-download-tool\n\nwinze poberem iz pašnika in to je to. Eden podobnih programčkov za instalacijo win iz USB-ja je tudi rufus (po navadi ga uploaderji že dodajo zraven .iso img windowsa)",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Rufus je boljši (odpre nekatere .iso, katere windows tool noče) in hitrejši. Priporočam\n\nhttps://rufus.akeo.ie/",
+    "author": "rawr",
+    "author_level": "PDA maher"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Zakaj se zajebavate z rufus in mstool, saj so pa zunanji pekači že tako smešno poceni, da si ga nabaviš in normalno inštaliraš iz dvd-ja.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Windowsov ne bi menjal, ker ma original 8.1 gor. V bios lahko pridem, naštimam zaporedje bootanja (UEFI), vendar ko potem pritisnem za spremembo bootanja (F9) imam na razpolago samo Os boot manager in Boot from EFI file.",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Hdd je še na 45%, torej disk ni kriv oz. zanič. Sicer ima nekaj napak ampak niso kritične, vsaj tako pravi HD Sentinel.\nDo recovery particije pridem z drugim PC-jem, kako lahko to uporabim za recovery dotičnega prenosnika, ker mi ne ponuja bootanja iz zunanjih virov?",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik popotnik pravi:\n Zakaj se zajebavate z rufus in mstool, saj so pa zunanji pekači že tako smešno poceni, da si ga nabaviš in normalno inštaliraš iz dvd-ja.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKer je inštall z usb-ja dosti hitrejši, sploh če imaš ssd in usb 3.0.\n\n\n45% zdravje pomeni da crkuje, če ima slabe sektorje bi ga uporabljal le še za shrambo nepomembnih stvari (filmov z neta, karkoli za kar ti ne bo žal če izgubiš...)",
+    "author": "amacar",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Ja, ampak zalavfat bi pa še moral al ne?",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Leon2007 pravi:\n Windowsov ne bi menjal, ker ma original 8.1 gor. V bios lahko pridem, naštimam zaporedje bootanja (UEFI), vendar ko potem pritisnem za spremembo bootanja (F9) imam na razpolago samo Os boot manager in Boot from EFI file.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV BIOSu nastavi iz kje vse se lahko boota....HDD prvi.....pol daš USB pol ostalo...save and exit v(F10)\n\nPol boš pa lahko bootal iz USB z F9",
+    "author": "Kamele0N",
+    "author_level": "YUGOslovanski mehanik       Dmitri Mendeleev"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Najprej bo moral v biosu disablat security boot, šele na to lahko izbere druge pogone.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Kolkr se mi zdi je security boot diseblan. Bom pa vseeno še enkrat pogledal. Al mora bit USB ključ formatiran v UEFI al je lahko tud v NTFS?",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Leon2007 pravi:\n Kolkr se mi zdi je security boot diseblan. Bom pa vseeno še enkrat pogledal. Al mora bit USB ključ formatiran v UEFI al je lahko tud v NTFS?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTi samo uporabi uraden Microsoftov tool za kreiranje bootable USB in se ne sekiraj glede načina formatiranja.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Secure boot je diseblan, diseblan je tudi Legacy boot.\nIn pri izbiri boot-a (F9) mi še vedno ne ponuja oz. vidi drugega kot OS manager in boot iz EFI (sistem windows).\nJe to kaj z BIOS-om narobe?",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "probaj tu razdelek Boot Device Options - Desktop",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Hvala za vse. Sem se obrnil na HP podporo in dobil odgovor (na podane moje teste), da je potrebno zamenjati disk.\nKako je potem z windowsi? Koda je skrita verjetno v BIOS-u, kateri winsi so bli gor pa nisem čisto prepričan. Po vsej verjetnosti Home verzija (glede na to da ga je dobil ob sklenitvi Siol paketa), ampak nisem sigurn. Dobim samo nekje Win8, inštaliram, kodo prepiše iz BIOS-a. Če pa ne pa si naj sam pomagam.\nAja, kje pa dobim podatke o matični?",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7 USB stick",
+    "content": "Uspelo mo je zrihtat brez bootable ključka. Najprej sem disablov Secure boot, enablov Legacy boot, da sem lahko pognal HDD Regenerator CD. Znjim sem našel in popravil 64 bad sektorjev. Potem je kazalo malo bolje ampak se še vedno ni zagnal. Potem sem z Hirens boot Cd-jem inštaliral Linux, pregledal sem file, če kaj manjka. Na C particiji sem opazil, da ni Bootmgr fila, sem ga potem skopiral iz Recovery particije in glejga zlomka se je začel oglašat oz. prebujat. Opazil sem da se je Health dvignil iz 45% na 70%.\nOpazim, da je sam začel nameščati posodobitve, jih je bilo 161, sedaj pa še HP namešča posodobitve. Upam, da bo potem zopet kolikor toliko deloval. Sam, da mi ni bilo treba delat Recovery-ja. Sem še disk Defragmentiral in počistil nesnago, ki je sicer ni bilo nevem kaj. Moram še ključe mal prečekirat.\nZaenkrat toliko.",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  }
+]

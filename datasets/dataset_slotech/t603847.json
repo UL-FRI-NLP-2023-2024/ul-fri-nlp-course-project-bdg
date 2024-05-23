@@ -1,0 +1,78 @@
+[
+  {
+    "message": "Na starem računalniku z XPji sem zamenjal matično.   Skušal sem se izogniti ponovni ištalaciji winsow in zadevo naredil po tem postopku http://errorsolutions.blogspot.com/2012... (uporabil sem drug način, torej s Hiren boot cdjem). Ko sem potem bootal s HDja sem dobil tale bluescreen:  Ok, bom pa ponovno inštaliral.  Butnil sem z windows xp inšatalacijskim diskom, zagnal se je setup, pisalo je, da nalaga to in ono, potem je prišel do tistega \"Setup Is Starting Windows\" in spet isti blue screen.   Sem mislil, da so problem kakšni stari gonilniki na disku, zato sem butnil s Hiren CDjem, pognal mini windows XP (windowsi so delali normalno, plus pognal sem nekaj diagnostike, pa ni nobene napake) in disk formatiral.   Po ponovnem zagonu setupa in butu s HDja, isti blue screen.   Sem rekel, verjetno so Xpji, zastareli in to, pa sem poskusil inštalirati win8, v trenutku, ko se je napisalo, da setup zaganja windowse, se je zgodilo isto (no, ker so win8 ful napredni, se ni pokazal blue screen ampak samo sporočilo, da se setup ne more nadaljevati).  Potem sem zamenjal disk in skušal XPje inštalirat na tega, neuspešno, spet isti blue screen. Verjetno je nekaj narobe z driverji za disk, ampak ne vem, kako naj to zrihtam. Namreč ko butnem s hiren cdjem in grem v mini winse ne kaže napak, disk normalno laufa, ko skušam inštalirati Xpje pa vsakič dobim isti blue screen.  Plata je:ASRock 960GC-GS FX (crknjena je bila Asrock N68C-GS FX) Ram je dve palčki po 2 giga Samsung, DDR3 1.333 M, CL 9, 2 Dual Channel procesor AMD Phenom II X4 925 ",
+    "user": "nejclp"
+  },
+  {
+    "message": "AHCI gonilnik ti fali... v XP na začetku pritiskaš F6 in mu ga daš...(najdeš ga za tvojo plato, pod AHCI ali RAID gonilniki)  Drugs rešitev.. v BIOSU iz AHCI spremeniš na IDE Mode pod opcijo Disk mode (najdeš tam nekje, kot je boot meni). Gonilnika potem ne rabiš. ",
+    "user": "MIHAc27"
+  },
+  {
+    "message": "Najlepša hvala, bom poskusil, sam šele popoldan, zdaj sem v službi. Se ne spozanm najbolje na to, ampak disk je sata Western Digital WD15EARS (sem pozabil napisat) ne ide- v čem je finta,da daš na ide v biosu? ",
+    "user": "nejclp"
+  },
+  {
+    "message": "v BIOSU iz AHCI spremeniš na IDE Mode pod opcijo Disk mode (najdeš tam nekje, kot je boot meni). Tako \"prepričaš\" winse da imaš ide disk. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Bom poskusil in poročal. Če prav razumem, jih prepričaš le toliko, da gre zadeva skoz inštalacijo, potem pa daš v windovsih taprave gonilnike in v biosu spremeniš nazaj v AHCI? ",
+    "user": "nejclp"
+  },
+  {
+    "message": "Lahko pustiš na ide mode...WD Caviar Green so itak bolj za data storage kot za OS...  http://www.neowin.net/news/neowin-guide... ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "No, mi je ratal, če bo mogoče komu pomagal: V BIOSU nisem nič spreminjal, pustil sem AHCI. Enostavno sem originalne winse s temle http://www.nliteos.com/ prepekel na DVD in dodal servis pack in gonilnike za SATA ( piše sicer, da je za RAID , ampak je delovalo), pri inštalaciji je zagrabil in je šlo lepo skoz. ",
+    "user": "nejclp"
+  },
+  {
+    "message": "Ja, naredil si \"slipstreaming\", kar je po svoje ok, ker imaš tako eno install verzijo za to konfiguracijo v primeru reinstalla XPjev. Drugače bi rabil samo sata furmane, ki jih na začetku inštalacije s tipko F6 dodaš v sistem preko, khm , floppy diska. Če tega ni, jih lahko dodaš preko usb flopi diska, če tudi tega ni je edina varianta slipstreaming, torej združitev sata gonilnikov+service packa z originalnim cdjem. Da bi se izognil vsej zgornji kolobociji bi moral narediti sledeče: Na starem sistemu v Upravitelju naprav odstraniti ide ata/atapi kontroler, deinštalirati morebiten chipset gonilnik, grafiko, mrežno, zvočno (kar navadno pride na plati integrirano); vse to brez vmesnega restarta ! Potem pa obvezno zaustavitev (NE restart!) sistema, menjava plate in ponovni vklop kompa, XPji bi našli nove komponente strojne opreme, plato, grafiko, zvočno, mrežno... poinštaliraš na novo in to bi bilo to, brez izgube podatkov in programov. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "Tisto prvo pač ni šlo, pritisnil sem f6, pa itak nisem imel floppya- za USB ali pa CD pa ni bilo, kolikor se spomnim, nobene opcije, da bi jo izbral. Tisto drugo, da bi v starem sistemu čistil, pa tudi ne bi šlo, saj mi je stara plata crknila, kot sem napisal v prvem postu.  Itak so tile XPji prava muka (sem že kar pozabil), v primerjavi s 7 kaj šele 8 (ja, sem eden tistih, ki menijo, da je osmica boljša). Ampak ker mam legalne XPje, zakaj jih ne bi uporabil, zadevo mam priklopljeno na TV, zgolj za filme gledat in internet. ",
+    "user": "nejclp"
+  },
+  {
+    "message": "Za vse, ki menjajo ploščo na starejših računalnikih, z xp. Z neta potegneš vse gonilnike za MB, jih zapečeš na CD, disk daš v napravo, potem pa poženeš xp. Ob boot-u ti xp potegne iz CD-ja potrebne gonilnike (potem jih moraš vseeno instalirat) in zadeva po navadi deluje tudi z win iz prejšnje plošče. Ne gre pa, če je na prejšnji AMD na novi pa INTEL in obratno. Z Visto, 7 in 8 ni nobenih problemov. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Lahko tole malo elaboriraš dalje?  Kaj je tukaj disk, trdi disk ali plošček?  Če winsem na disku manjkajo IDE driverji, kako si bodo znali pomagati z driverji na IDE CR-ROMu? Kako se bodo zagnali z IDE diska? ",
+    "user": "tony1"
+  },
+  {
+    "message": "Če hočeš xp iz prejšnje plošče laufat naprej, moraš seveda v bios-u najprej dopovedat mašini, da imaš IDE disk - native sistem, potem vstaviš CD z razpakiranimi šoferji za novo ploščo in startaš xp s pritiskom na CTRL-ALT-DEL.  Lahko pa ponovno instaliraš in v novo instalacijo vložiš tako, kot je opisano zgoraj. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Zanimivo, moram probat, bi prišlo prav... ",
+    "user": "tony1"
+  },
+  {
+    "message": "tony1 - Ko so bili XP še večinski OS, je velikokrat prišlo do situacij, da je bilo potreno zamenjat MB, sistem pa je vseboval stvari, zaradi katerih ni prišla v upoštev nova instalacija.  Vedno je na istem proizvajalcu procesorja AMD ali INTEL, stari sistem zagnalo, nekaj krat vrglo ven (BS), ko pa je WIN dobil potrebno podatke iz CD-ja z gonilniki nove matične, pa se je sistem postavil, potrebno pa je bilo naložiti nove gonilike in odstranit stare.  Menjava med različnima procesorjema pa po navadi ni šla skozi (so se pač podatki za zagon preveč razlikovali).   Z Visto in naprej, sistem vedno zažene b.p., je pa potem dobro zbrisat stare gonilnike. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Vedno je na istem proizvajalcu procesorja AMD ali INTEL, stari sistem zagnalo, nekaj krat vrglo ven (BS), ko pa je WIN dobil potrebno podatke iz CD-ja z gonilniki nove matične, pa se je sistem postavil Tale del mi ni jasen. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "BSD nastane zaradi nezmožnosti izvršitve določenega algoritma. Ko menjaš ploščo, so določene opreacije programsko nezdružljive s starim sistemom. XP določene resurse dopolni sam iz podatkov, ki so na cd mediju, ne naloži pa celotnega gonilnika.  Dokler vsi spori niso poštimani se dogaja BSD (lahko tudi večkrat), ko pa se to dopolni, pa sistem zažene in lahko nadgradiš oziroma naložiš nove šoferje.  Pri novejših OS pa se šoferji naložijo sami, če le prepozna mrežno kartico ali pa jih ima že sistem vgrajene.   Praviloma se je ob menjavi matične (razen če je bila enaka), tudi sistem naložilo na novo. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Sem že menjal platformo iz intela na mad, kjer je bilo potrebno izklopiti par zadev, predvsem intelpp, drugače bi dobil takoj na začetku bsod http://daywalkerfl.hubpages.com/hub/How... ter prestaviti sata/ide šoferje na \"generic windows\", vendar kako si predstavljaš to updejtanje iz cdja, preden se sistem postavi ? ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Enostavno, sistem ob boot-anju preveri vse resurse, če se kaj ne ujema, poizkuša sistem napako popravit, če ne gre je sledi BS. Ker pri zagonu pregleduje vse naprave, tudi na CD-ju najde manjkajoče podatke in jih vpiše v zagonske podatke. Če nimaš možnosti na drugem računalniku popravit zagonske resurse, na novi MB, sistem ne bo zagnalo in boš imel stalni restart. Brez medija z gonilniki, se sistem ne bo pobral (govorim izključno za XP). Kadar veš, da boš ploščo menjal, pred menjavo odstraniš vse gonilnike in pustiš samo tiste, ki so nujno potrebni za zagon, potem pa daš pač repair in sistem naloži, kar rabi za delovanje brez uradnih gonilnikov proizvajalca, kadar pa to ne moreš, prihaja pri nalaganju, do sporov med tistim, kar rabi sistem in tem, kar je dejansko na HDD-ju.  Deset let ukvarjanja z mašinami z XP-ji, prinese tudi razne načine reševanja problemov s tem sistemom (za 8-ico se še učimo).  In nikjer nisem napisal, da updejtaš sistem iz CD-ja, temveč sistem sam poišče na CD-ju kar rabi. Ob dveh enotah pa je šlo b.p. če si v eno vstavil OS v drugo pa gonilnike in si pritisnil repair ob instalu. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Samo šoferji so ponavadi v sfx exe obliki, moraš pravo pognati fajl, razpakirati nekam na hdd in od tam pognati. ",
+    "user": "Hayabusa"
+  }
+]

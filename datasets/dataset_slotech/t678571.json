@@ -1,0 +1,98 @@
+[
+  {
+    "message": "Iščem delujoči 5m USB podaljšek za Arduino Mega. Prišel sem do parih spoznanj, ki bodo komu morda prav prišla.  Nekdaj sem imel 12m dolg kabel z neko elektroniko na koncu https://www.mimovrste.com/usb-kabli/tre... Uspešno sem ga uporabljal za WiFi adapter Alfa AWUS036H priključen direktno na zunanji usmerjeni anteni. Ta rešitev mi je fina, saj elektronika lahko kompenzira tudi padec napajalne napetosti. Takrat nisem imel USB monitorja, da bi preveril.  Po teoriji je maksimalna razdalja brez ojačevalnika 5m, česar se drži proizvajalec tegale, ki sem ga par dni nazaj nabavil, ojačevalnik je na sredini kabla. V bistvu gre verjetno za USB Hub (podaljšek se v Winsih pojavi kot USB naprava), definitivno pa se ne ukvarja z napajanjem, zato je po 10m na voljo sila malo toka. Mimogrede poleg habčka bom dal tale StepUp DC-DC in zadevo deloma saniral. Ko sem nanj priključil Arduino Mega, je bilo veselja konec, Winsi7 Arduinota (lokalno napajanega) prek kabla niso prepoznali, na silo naloženi driverji pa so zrušili že obstoječe driverje in Winsi Arduino Mega niso več prepoznal niti brez podaljška. Z Alfa AWUS036H pa ni bilo nobenega problema, vsaj z defoltno močjo. Navaden 5m podaljšek, kolikor je z 1,5m USB kabla pri Arduinu, ravno zadosti od moje računalniške sobe do kurilnice, kjer vzpostavljam avtomatizacijo, ne deluje, Winsi najdejo Arduina, programirati se pa ne da. Morda bi stvar delovala z debelejšimi vodniki v kablu, ampak dvomim, da je to vzrok, ena žica v omenjenem 5m podaljšku ima namreč samo ~1,15 ohmov, mimogrede, vse 4 so AWG28, čeprav oznaka na kablu govori o AWG24 za napajanje. Zaenkrat sem našel zasilno rešitev, 5m podaljšek dela z Mego s čipom CH340G, ki pa je ne morem programirati z mojo Android tablico, med tem ko z original Mego Rev3 nima problemov. ",
+    "user": "Oldi"
+  },
+  {
+    "message": "Poiskusi priklopiti Arduina na zunanje napajanje. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Saj sem napisal, da je Arduino lokalno napajan. ",
+    "user": "Oldi"
+  },
+  {
+    "message": "Če ima dovolj toka, ga zezajo motnje na data priključkih ... ",
+    "user": "Spajky"
+  },
+  {
+    "message": "Vsi ti 5m aktivni podaljški so v bistvu kabli z enoportnim hubom. Lahko priklopiš na USB3? Napetost bo še vedno le 5V, a jakost bo višja.  Jaz USB na 10+ metrov implementiram tako, da poleg aktivnik 5m podaljškov vlečem še 12V DC. Zadnji kabel je navadni 5m A-B, na katerega priključim USB hub z zunanjim napajanjem. Slednjega priključim na 12->5V.  5m A-A + 1,5m je v teoriji no-go. Lahko dela, smelo pa ne bi. Maksimalna dolžina za USB 2 je 30 m (5x5m aktivni podaljški +5m do naprave).   Pa pri uporabi 7-portni hubov je potrebno paziti pri priklopu, ker sta interno dva 4-portna huba zaporedno. Pri nepazljivem priklopu podaljška na takšen hub lahko presežeš omejitev 5-ih hubov en za drugim. ",
+    "user": "shadow7"
+  },
+  {
+    "message": " shadow7 je 26. jul 2016 ob 09:53 izjavil: 5m A-A + 1,5m je v teoriji no-go. Lahko dela, smelo pa ne bi.   Morda je tudi 1,2m, ga nisem meril, vsekakor pa je z Alfo delal tale podaljšek z 12m kabla Z ELEKTRONIKO SAMO NA KONCU. https://www.mimovrste.com/usb-kabli/tre... kar mi je po prebranem vse bolj čudno.  Sicer sem pa pravkar ugotovil, da se Arduino Mega Rev3 lepo programira prek 5m pasivnega in 10m aktivnega podaljška, le na njej ne sme biti (delujočegaga) W5100 ethernet shielda. Napajanje je čez glavo dovolj močno, brez W5100 se programira z napajanjem proca na MEGI od 3,3 do 5V, Svašta ",
+    "user": "Oldi"
+  },
+  {
+    "message": "Poizkusi zmanjšati baud rate pri programiranju arduina na 9600 ali po potrebi manj. ",
+    "user": "         "
+  },
+  {
+    "message": "To je pa standard s tem shieldom. Meni na nobenem arduinu ne dela (ne Uno, ne Mega). ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "priklopi 10uF kondenzator na arduinota ... verjetno shield preveč motenj proizvaja ",
+    "user": "nixons"
+  },
+  {
+    "message": " SaXsIm je 26. jul 2016 ob 13:57 izjavil:To je pa standard s tem shieldom. Meni na nobenem arduinu ne dela (ne Uno, ne Mega).  Kaj ti ne dela, programiranje? Sam do sedaj (s kratkimi USB kabli) nisem imel nikoli problemov. ",
+    "user": "Oldi"
+  },
+  {
+    "message": "rabis verjetno 20AWG usb kabel  https://www.google.co.uk/search?q=20awg... ",
+    "user": "Red_Mamba"
+  },
+  {
+    "message": " Oldi je 26. jul 2016 ob 16:22 izjavil:SaXsIm je 26. jul 2016 ob 13:57 izjavil:To je pa standard s tem shieldom. Meni na nobenem arduinu ne dela (ne Uno, ne Mega).  Kaj ti ne dela, programiranje? Sam do sedaj (s kratkimi USB kabli) nisem imel nikoli problemov.   Isti problem sem imel kot op. Ko je bil shield priključen, mi USB ni prepoznal Arduinota. Javljal napake, vse možno. Ko sem dal shield dol in priklopil ponovno je delalo brez problema. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Lahko da shield uporablja iste pine, kot čip za USB? ",
+    "user": "         "
+  },
+  {
+    "message": "Ne, povsem druge. Murphy je pa res legenda, 2 dni po tem, ko sem po pošti dobil omenjena podaljška, sem našel 12m podaljšek https://www.mimovrste.com/usb-kabli/tre... z elektroniko na koncu kabla in ta podaljšek dela tudi z W5100 shieldom  Podaljšek se v Winse prijavi kot Generic USB Hub, v njem je čip z napisom FE1.18 USB2.0 HUB. Na en star 8G ključek je 85M fajl prenašal ~12s, kar je več kot 50Mb/s, torej Hi-speed USB 2.0. Torej to o Hubu na 5m je definitivno mit. Mimogrede sem še preveril napajanje, kabel je sicer precej močan, a ima vseeno 0,5V padca pri 180mA toka, torej v elektroniki ni step-up DC-DC napajalnika, ki bi restoriral tudi napajanje. ",
+    "user": "Oldi"
+  },
+  {
+    "message": "Našel sem 5m podaljšek z restoranjem napajanja http://www.ebay.com/itm/ALFA-5m-16-feet... ",
+    "user": "Oldi"
+  },
+  {
+    "message": "step-up na koncu kabla je slaba opcija BTW ",
+    "user": "Red_Mamba"
+  },
+  {
+    "message": "Zakaj, če dela do 2,5V, boš lahko vlekel iz njega vsaj dvakrat več toka. Seveda bi bil boljši step-up z negativno upornostjo na začetku, pri kablu z ojačevalnikom na sredini, bom probal to varianto. Da ne omenjam dviga napetosti na kakih 20V in step-dovn na koncu. ",
+    "user": "Oldi"
+  },
+  {
+    "message": "boljsa opcija je poslati 24 ali visjo napetost po kablu. se bolje izmenicno. in uporabit stepdown na koncu. manjsi tok pri visji napetosti, pomeni manjse izgube v vodniku. zato so napetosti v dalnovodih visoke ;)  step-up je slab zato ker imas velike izgube v bakru. moras vedet da ce da step up 1A 5V izhoda, da so tokovne konice v napajanju okoli 2-3A :) sem delal na projektu kjer smo uporabili navadni mrezni kabel. dve parici za napajanje. 2 pa za rs485 mrezo.   z napajanjem smo imeli probleme. najbolje se je obnesel kabel z polnimi bakrenimi zicami. pletenica je pozrla veliko toka zaradi mnogo visje upornosti. Na koncu smo po kablu poslali 48V izmenicne napetosti in nismo imeli vec problemov. ",
+    "user": "Red_Mamba"
+  },
+  {
+    "message": "Sem dobil linkani stepup modulček in ga vgradil v 12m podaljšek. Telefon se lepo polni s 410mA, za 1W WiFi adapter (Alfa) je pa stvar neuporabna, ker se modulčku (zaradi impulznega bremena) povsem strena in Alfa sploh ne dela, med tem ko na omenjeni bogi 5m kabel dela!! ",
+    "user": "Oldi"
+  },
+  {
+    "message": " Oldi je 12. avg 2016 ob 09:57 izjavil:Sem dobil linkani stepup modulček in ga vgradil v 12m podaljšek. Telefon se lepo polni s 410mA, za 1W WiFi adapter (Alfa) je pa stvar neuporabna, ker se modulčku (zaradi impulznega bremena) povsem strena in Alfa sploh ne dela, med tem ko na omenjeni bogi 5m kabel dela!!   sem ti rekel da je zaradi upornosti zic step up neuporaben pa ne poslusas pogojno bi delovalo edino z kabelom, ki ima debelejse napajalne zice ",
+    "user": "Red_Mamba"
+  },
+  {
+    "message": "Ta modulček z Alfo ne bi deloval z nobenimi žicami, sicer pa krasno dela s statičnim bremenom, tako da si zgrešil point. ",
+    "user": "Oldi"
+  },
+  {
+    "message": "Mogoče bi bilo boljše, da opišeš kaj bi rad naredil. Kolikor razumem, bi ti rad točko A in B povezal. Na obeh lokacijah imaš možnost napajanja. USB (kot opažaš) ima težave na takih razdaljah. Ker ni bil zasnovan s takšnimi razdaljami v mislih. Za take razdalje je boljše uporabiti kaj najmenskega. Recimo RS-485. ",
+    "user": "mujek"
+  },
+  {
+    "message": " Oldi je 15. avg 2016 ob 14:19 izjavil:Ta modulček z Alfo ne bi deloval z nobenimi žicami, sicer pa krasno dela s statičnim bremenom, tako da si zgrešil point.   dvomim, but what ever floats your boat bro ",
+    "user": "Red_Mamba"
+  },
+  {
+    "message": "Ker bo moj naslednji hišno-avtomatizacijski projekt od PC-ja oddaljen več kot 12m, sem probal Mego s CH340 in W5100 priklopiti preko obeh aktivnih podaljškov, ki jih imam (12 in 10m). PC je naredil nov COM port, programiranje je pa delovalo od prve. Najprej sem dal 10m kabel z ojačevalnikom na sredini, nato 12m z ojačevalnikom na koncu in na koncu Mego. Torej USB dela brez vmesne elektronike tudi na 17m. No ja, verjetno se vse dogaja v low speed načinu. ",
+    "user": "Oldi"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "message": "Lep pozdrav,   ker želim mojega RPija prosto premikati po sobi, sem se odločil, da ga napajam iz baterije. Za to uporabljam 12V baterijo od akumulacijskega vrtalnika. Baterija poleg tega napaja še 2 L293D čipa za kontrolo stepper motorjema. Iz baterije mislim speljati na converter: http://www.ebay.com/itm/Hot-LM2596-DC-B... da dobim izhodno napetost 5V. Sedaj pa nevem ali naj naprej zvežem na:  a) odrežem konec polnilca ter povežem z ter konverterjem   b) odrežem konec USB kabla, ter črno in rdečo žico povežem na konverter, drugi konec pa enostavno uklopim v USB na Raspberryju.  Osebno mi bi bilo bolje če bi uporabil USB kabel, ker se mi polnilca zdi malo škoda. Me pa zanima ali je to varno, priporočlivo itd.  Hvala za nasvete.! Yacked2 ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "https://slo-tech.com/forum/t508421/p394...  kopijo slike imaš tudi tu:    usb polnilec: http://www.ebay.com/itm/AC-100-240V-0-3... ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Ja vidim, tukaj napaja preko microUSB-ja mene bolj zanima za navaden USB ? Polnilec bi sam naredil, ker napajam iz akumulatorja. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Na polnilcu je navaden računalniški usb priklop, na r pi micro usb.  Zadnja slika iz jypetovega \"oglasa\" http://www.intl-outdoor.com/ml102-usb-c...  http://www.gsmarena.com/nokia_n97-2615.... USB Yes, microUSB v2.0 ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "nene...mene zanima če bo RPi nestabilen ali če ga bom skuril če ga bom napajal tako da bi napajanje priklopil na USB port NA Raspberryju ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Kaj misliš vse gor obesiti ? Če ničesar, potem bo delalo ok (omejitev max toka na usb v1-2 je 0.5A).  Koliko imata porabe dva L293D čipa ?  jype ima tako, da ima navadno napajanje in hkrati tudi preko usb.Kakor razumem r pi sam prestavi napajanje, če zmanjka navadnega. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Aha potem ne bo šlo, ker imam gor priklopljeno še wifi USB kartico. Nekaj sem gledal da se da tudi na GPIOte priklopit, a je tudi tukaj kakšna omejitev ? tale moj konverter oddaja 3A ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Wifi je qurba, če nima vsaj 1A džusa znajo biti težave. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Potem upam, da na GPIOtih in omejitve, jaz bi kar tako priklopil + na 5v, ter - na GRD pa bi delalo. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "V pomoč: http://www.raspberrypi-spy.co.uk/2012/0... Power Pins  The header provides 5V on Pin 2 and 3.3V on Pin 1. The 3.3V supply is limited to 50mA. The 5V supply draws current directly from your microUSB supply so can use whatever is left over after the board has taken its share. A 1A power supply could supply up to 300mA once the board has drawn 700mA. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Aha videm ja. To pomen da bo delal. Mislem, bo isto če napajam prek GPIO kot če dam preko microUSBja. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Preko GPIO pinov se da vendar pazi, ker nimajo zaščite. ",
+    "user": "Rias Gremory"
+  },
+  {
+    "message": " Rias Gremory je 15. sep 2013 ob 10:43 izjavil:Preko GPIO pinov se da vendar pazi, ker nimajo zaščite.   Aha ok. a to pomeni, da moram paziti samo da ne spustim skozi več kot 5V a je še kakšna druga past ? ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "@yacked2  Ja, lahko priklopiš iz baterije na tisti konverter in iz konverterja na usb kabel, ki ga potem vtakneš v usb na rpi-ju. ",
+    "user": "einstein :P"
+  },
+  {
+    "message": " Yacked2 je 15. sep 2013 ob 13:50 izjavil:Rias Gremory je 15. sep 2013 ob 10:43 izjavil:Preko GPIO pinov se da vendar pazi, ker nimajo zaščite.   Aha ok. a to pomeni, da moram paziti samo da ne spustim skozi več kot 5V a je še kakšna druga past ?  Ja. As the 5V rail is brought out in the GPIO pins, you can power the Rpi from there too. You should mind however, that those are behind the power protection circuitry, so you should provide your own. vir: http://elinux.org/RPi_Hardware#Power  Micro USB ima te zaščite: The board provides a polarity protection diode, a voltage clamp, and a self-resetting semiconductor fuse.  ",
+    "user": "Rias Gremory"
+  },
+  {
+    "message": "Aha..potem bom rajš preko micro USBja naredil, a samo konec polnilna odrežem ter zvežem z virom napajanja 5V 3A, a je v polnilcu po barvah rdeča je + a je kako drugače označeno ? ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Ja + je ponavadi rdeča. Naj še kdo potrdi. ",
+    "user": "Rias Gremory"
+  },
+  {
+    "message": "Aha hwala. Bom sestavil, ko dobim paket iz kitajske. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "Rdeca je +, crna je -. Se vseeno pa se vedno splaca preveriti s kaksnim multimetrom (ali pa LED diodo in upor), ker ti to vzame par sekund. ",
+    "user": "techfreak :)"
+  },
+  {
+    "message": "Ok, sedaj sem dobil moj converter ter nastavil da iz 12 V dobim 5V, Ledica dela. Je pa tok kar velik in sicer 4,5 A a je to varno priklopit na Raspberry Pija, convereter se tudi precej segreva. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "toka je lahko 100A, pi si bo vzel le toliko, kolikor rabi... torej več kot ~1A skoraj da ne... ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "O super :) Hvala ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "itk ma pa pI glavno varovalko, ki tripne pr ~700mA (razn če maš preko gpio napajanje), tak da zarad prevelik toka ni panike. ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Aha ok, a polnenje telefona bi tudi šlo ? Samsung ",
+    "user": "Yacked2"
+  }
+]

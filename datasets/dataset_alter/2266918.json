@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Doma imam narejeno povezavo takole:\n- modem - router - switch - računalniki\n\nIz modema gre kabel na wifi router, ki je nadstropje višje, potem gre nov kabel iz routerja v switch nazaj dol (switch je pri modemu). Nato pa so na switch priklopljeni računalniki oz. trenutno le eden.\n\nVse deluje kot mora, imam tako wifi net, kot kabelski net. Problem nastane, ko priklopim Synology disk postajo na switch. Pade dol mreža in net. Synology ima nastavljen DHCP, router tudi. Bi moral synology priklopit na router ali je problem v kaki nastavitvi kje?",
+    "author": "sumica",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Ugasni DHCP na disku.",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Načeloma bi moglo delat  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nLahko pa pozkusiš priključiti Synology direkt na kabel iz routerja (brez switcha) in poizkusiš dostopati preko WiFi.\nPa še mrežni kabel do Synology preveri.\n\nBDW: Za iskanje IP preko WiFi ti prav prišel tale programček:  FING",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Prej ko nisem imel switcha, sem imel priključen Synology na wifi router in dostop je deloval brez težav. Težave so se začele sedaj ko sem nabavil switch in želim dostopat do vseh mašin preko kabla, prej sem imel le Wifi in Synology preko kabla na router.\nČe vklopim Synology na switch, ne dela ne LAN, ne wifi, vse pade dol.",
+    "author": "sumica",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Potem pa preizkusi priključiti na switch samo router in kasneje še Synology.\nMorda je kaj narobe z switchem ??\nLahko si napravil kakšen \"loop\" z ostalimi UTPji ?",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Switch je sicer nov. In računalniki, povezani na switch delujejo. Ko dam pa tja Synology je pa konec veselja.",
+    "author": "sumica",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Morda je kaj s kablom, ki gre do Synology-a? Lahko probaš vanj vnest statični IP izven DHCP območja.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "odgovor je preprost imaš dhcp servis na synology in na stikalu in oba v istem lanu........ normalno da ti ne dela\n\nnajprej disable dhcp na synlogy, potem pa priklopi v taisti lan.",
+    "author": "gloglo",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Disk postaja in mreža",
+    "content": "Hja... malo več informacij. Kateri switch? če ima slučajno layer2 podporo in sta switch in synology na istem IPju, po tem se začnejo dogajat čudne stvari... \n\nMoj nasvet: kar je fiksnega, nastavi ročno! Torej fiksiraj IP na synologyju. Fiksiraj IP na stacionarcu, po možnosti izven DHCP območja, primer:\n192.168.1.1  router\n(192.168.1.2 switch)\n192.168.1.10 synology - da je easy za zapomnit\n192.168.1.11-100 ostale hiši statične naprave, stacionarc, mediaplayer, ip kamere,...\n\n192.168.1.100-200 dhcp range\n\np.s.: od kje vam podatek, da ima synology vgrajen dhcp STREŽNIK? Če se zna sam preko dhcpja umestit v mrežo, to ni nujno narobe. Ni vredu za ta tip naprave, ni pa narobe.",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  }
+]

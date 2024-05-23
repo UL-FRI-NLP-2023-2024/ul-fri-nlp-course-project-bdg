@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Hočem hostati server za minecraft pocket edition, ki potrebuje port 19132. Sem se prijavil na usmerjevalnik, vnesel starting port in isti ending port, in dal TCP in UDP na lokalni IP mojega računalnika. Grem na net preverit, če je port odprt, in je bil... za ene pet minut, zdaj je pa skos zaprt, in ga nikakor ne uspem odpreti. Potem sem odkril, da mam dinamičen IP in, da je to verjetno težava. Sem pisal Amisu, in so mi dodelili statičnega. Probam ponovno, in port je še vedno blokiran. Sem klical na amis, da preverim ali oni blokirajo port, in so rekli, da ne, in, da je to lahko kvečjemu težava pri meni. Potem grem dodelit računalniku nov lokalni IP preko DHCP client seznama in omogočim opcijo statičnega lokalnega IP-ja za vsak slučaj. Še vedno nič. Vklopim DMZ na moj računalnik in še vedno zaprt port... Reštartam usmerjevalnik, in za hec dodam še nov port, in ta se isto ne odpre. V \"properties\" mrežnega adapterja sem tudi vnesel podatke, za vsak slučaj, in tudi to ni pomagalo. Port sem tudi večkrat zbrisal in ponovno dodajal, in probaval razne druge nastavitve, ki sem jih že pozabil, in še vedno nič in nič. Ob tej točki ne vem več kaj je možno narediti, se mi zdi pa zelo čudno, da se port nikakor ne odpre. ",
+    "user": "salex"
+  },
+  {
+    "message": "windows fw ? :) ",
+    "user": "crniangeo"
+  },
+  {
+    "message": "Pomojem je problem res na strani tvojega računalnika ampak recimo, da ni. Mogoče ima amis isto logiko kot T2. Pri T2 usmerjevalniku(vsaj na optiki) je tako, da tudi če imaš paket brez varnosti(nizka varnost al kako temu rečejo) je dejansko odprt samo en fizičen port(vhod kamor gre mrežni kabel), vsi ostali so še zmeraj zavarovani(blokirani) s strani T2-ja. Če si sveto prepričan, da je pri tebi vse odprto(predlagam, da preveriš tako, da na svoj računalnik obesiš še enega in poskusiš z direktno povezavo med njima) jih pokliči in vprašaj če je vseeno kam v njihov usmerjevalnik si vtaknil kabel. Spet...samo ugibam, ker ne vem kakšen hardware in logiko blokiranja ima amis :) ",
+    "user": "Looooooka"
+  },
+  {
+    "message": " crniangeo je 8. nov 2015 ob 22:07 izjavil:windows fw ? :)  Windows 10 Home Internet pa Amis optika 15/15 Mbps ",
+    "user": "salex"
+  },
+  {
+    "message": "Najprej se poizkusi na računalnik povezat lokalno. Ko ti to deluje je na vrsti odpiranje portov in forwardiranje na routerju. ",
+    "user": "Highlag"
+  },
+  {
+    "message": "HUAWEI router 593s-22 (na netu sem bral da ima kar nekaj ljudi tezave s tem routerjem) router je updejtan tudi jaz imam težave s port forwardingom.sicer o networkingu nimam pojma ampak se učim počasi. hočem odpreti port 9 ali 7 za wake on lan. preko wol-a lahko računalnik s telefonom prižgem ko sem na wifiju, sepravi na istem omrezju kot router/računalnik. čim probam zadevo iz zunanjega omrezja 3G zadeva ne deluje. pregledal sem ze cel internet in vsi pravijo kako simple je to ampak jaz ne morem niti porta odpret. ko grem v routerju na port forwarding moram izpolnit 3 zadeve in sicer  REMOTE PORT RANGE (sploh ne vem kaj to je. pogledal sem ze po netu in nic ne najdem. kolega mi je rekel naj vpišem 4010 - port se vedno ni odprt) LOCAL HOST (vzamem iz cmd ipconfig ipv4) LOCAL PORT (9 ali 7)  nato na netu najdem kaksno stran da pogleda če je port odprt in seveda port ni odprt pa če probam vse možno probal sem tudi ze s tistimi programi simple port forwarding pa ko preverim tudi noben port ni odprt tudi v windows firewalu sem ze napisal pravila da ne blokira tega ampak nič. tudi če te zadeve ne rešimo me pa zanima če ve kdo kak drug načim kako lahko iz 3g-ja prizgem komp ko je ugasnjen (hibernate opcija mi ni všeč) čisto sem ze obupan, prosim če nekdo pomaga. lp ps. če bi mi nekdo povedal kako na slo techu odprem novo temo tudi nebi bilo slabo. ne vem ali sem slep ali pač ne morem odpreti teme ",
+    "user": "skap"
+  },
+  {
+    "message": "Čist basic in neumno vprašanje ob vsem tem. A maš kak antivirus nameščen? Če ja in nisi nič delal na njem, je velika verjetnost, da vrata ostajajo zaprta ker jih AV blokira. ",
+    "user": "shadeX"
+  },
+  {
+    "message": "skap Če si so mobilnem omrežju si že na nat-om operaterja in je odpiranje portov malce \"težje\".  Creating a reverse tunnel - Use for creating your own VPN to a network behind firewall with no incoming ports open http://tech.snathan.org/tech/linux/reve...  Ko imaš 1x dostop do lokalne mreže bi moral wol delati znotraj tunela. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "WOL preko port forwardinga potrebuje malo drugačne pogoje za delovanje, kot forwardiranje kakih bolj običajnih servisov (npr. HTTP prometa na portu 80, itd.).  Za začetek si preberite to dvoje, pa vam bodo stvari postale malo jasnejše:  http://superuser.com/questions/889249/d... http://www.dd-wrt.com/wiki/index.php/WO... ",
+    "user": "Ales"
+  },
+  {
+    "message": "Hvala za vse odgovore toda nisem se resil zadeve. Glede na moj pozen odgovor lahko vidite, da sem vmes malo obupal. Zdaj pa mi to spet jemlje spanec. Ne gre se toliko za sam Wake On Lan kakor za navadno odpiranje portov.  Skratka ne morem odpreti nobenega porta, ni vazno katerega. Napisal sem pravila v windows firewallu, tudi izkljucil sem ze komplet firewall. Uninstalliral vse antivirus programe. Porti ostajajo zaprti pa ne glede kaksno stevilko porta probam.  Se enkrat, ko grem na port forwarding moram izpolnit naslednje zadeve. Zanima me ce jih sploh izpolnim pravilno.  PROTOCOL: izpolnim TCP/UDP (probal sem tudi ze samo TCP in samo UDP) REMOTE PORT RANGE: ne vem tocno kaj je to vendar izpolnim s stevilko ki je enkata stevilki porta ki ga hocem odpret. npr. 9 (probal sem tudi kaj drugega) LOCAL HOST: vzamem iz cmd/ipconfig/ipv4 -> 192.168.1.3 ampak ko odprem router mi napise da je ip **.***.***.107 ne vem kaj je razlika toda ko uporabim tega zadnjega mi napise invalid. (sklepam da je tisti prvi ta pravi) LOCAL PORT: vedno vpisem enako kot remote port range zgoraj ^^ se pravi 9 (probal sem tudi ze ostale toda niti en se ne odpre) STATUS: kliknem ENABLED  Da preverim ce je port odprt uporabim http://www.yougetsignal.com/tools/open-... (tudi na tej strani mi po defaultu zazna isti ip kot ga zazna toda tega ipja ne morem vpisati pod LOCAL HOST -> invalid)(sem tudi zamenjal na 192.168.1.3) Nisem siguren, morda tudi ta stran kaj narobe zazna, toda dvomim.   Hvala za odgovore in res upam, se zadeva resi. Lp ",
+    "user": "skap"
+  },
+  {
+    "message": "Za začetek na ruterju naredi takole: protocol: TCP remote port range: 8080 local host: 192.168.1.3 local port: 8080 status: enabled  Ne vem, ali tvoj ruter zahteva reboot po spremembi nastavitev ali ne, preveri in po potrebi rebootaj router.  Preveri, da windows firewall na mašini na 192.168.1.3 dovoljuje promet preko 8080 in nastavi, da dovoli.  Potem pa za testiranje na mašini 192.168.1.3 zaženi TCP Listen. To je čisto preprost program, ki posluša za vhodnimi povezavami: https://www.allscoop.com/tcp-listen.php  Nastavi, da TCP Listen posluša na TCP portu 8080. Nastavitve so trotl zihr, ne moreš falit.  Potem se poskusi recimo z browserjem ali telnetom iz nekega drugega omrežja povezati na **.***.***.107:8080 in poročaj, ali se kaj pojavi v TCP Listen. Poveži se recimo preko telefona, ki na splet ne gre preko zgoraj omenjenega ruterja, temveč preko UMTS/LTS povezave.  Edit: ali pa testiraj z omenjenim http://www.yougetsignal.com/tools/open-... če že hočeš, na **.***.***.107 in port 8080. Ista stvar. ",
+    "user": "Ales"
+  },
+  {
+    "message": "Kako tocno se odpre port je napisano TU :) ",
+    "user": "ghost13xc"
+  },
+  {
+    "message": "Hvala za odgovore. Ales, sem probal vse in vsakic napise An error occurred, the port may be in use. Na tistem mojem online port checkerju pa se kar pise da je port zaprt. ghost12xc hvala toda tudi to zem ze nasel ampak tukaj nazalost ni mojega routerja. Huawei B593s-22 je moj. Tam je najblizji huawei B593-zain ki mi nic ne pomaga :/ Morda se kaksna ideja? ",
+    "user": "skap"
+  },
+  {
+    "message": " skap je 1. mar 2016 ob 04:30 izjavil:... sem probal vse in vsakic napise An error occurred, the port may be in use. ... Kaj točno si kliknil/storil/vpisal da ti vrne to napako in kje točno ti jo vrne? V TCP List..? Na ruterju..?  No, mogoče se tepe s kakim obstoječim portom od ruterja, port 8080 je dokaj običajen alternativen port za http promet. Povsod nadomesti 8080 z 18080 in poskusi ponovno. ",
+    "user": "Ales"
+  },
+  {
+    "message": "skap cmd/ipconfig/ipv4  kakšen ip dobiš (zakrij zadnje 3 številke) ? Če nisi poslovni uporabnik si v telekom/simobil/telemach 2/3/4g omrežju že za nat-om. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": " AC_DC je 1. mar 2016 ob 09:51 izjavil:skap cmd/ipconfig/ipv4  kakšen ip dobiš (zakrij zadnje 3 številke) ? Če nisi poslovni uporabnik si v telekom/simobil/telemach 2/3/4g omrežju že za nat-om.  Kar odpira vprašanje, če je že kdo probal zaobiti ta NAT s pomočjo IPv6?  Vsaj na LTE naj bi dobil IPv6 naslov, če kaj razumem govorjenje. Je ta potem tudi routan na internet ali je samo 'lokalen' in potem v javno omrežje naprej preko 6-to-4 po IPv4? ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "cmd/ipconfig/ipv4 dobim 192.168.*** ˝ Če nisi poslovni uporabnik si v telekom/simobil/telemach 2/3/4g omrežju že za nat-om.˝ Kaj točno to pomeni? Do zdaj nisem vedel kaj je NAT in tudi zdaj bol slabo vem, razen definicije, ki sem jo poguglal. Sem pa uporabnik simobila na 4g omrežju. ",
+    "user": "skap"
+  },
+  {
+    "message": "Na tvojem računalniku za ruterjem seveda dobiš interni IP. 192.168.1.3 ne, kot si že napisal prej zgoraj in bi AC_DC vedel, če bi kaj prebral?  Kaj pa dobiš za zunanji IP na ruterju? **.***.***.107, pri čemer to ni interni IP? Napiši še prve **.*** sem, če nisi siguren.  Potem ostaja le še vprašanje, ali Simobil blokira porte na 4g omrežju.  Si probal z 18080? ",
+    "user": "Ales"
+  },
+  {
+    "message": "Tako. Saj ne vem zakaj sem zakril :p drugje sem videl da to delajo ampak sam ni vazno  46.122.251.107 Probal, ravnokar. Zaprto. Tudi kolega mi je rekel isto, da je možnost da simobil blokira. Če je tekmu tako ali je možno, da se da kaj zrihtat, če jih kontaktiram. ",
+    "user": "skap"
+  },
+  {
+    "message": "Wan ip: simobil, nat. Sem ti prej napisal, da so porti odprti samo za poslovne uporabnike.Kjer imajo ip v4 je enako (naslovov je zmanjkalo). Nat pomeni da ima več uporabnikov enak wan ip.Tipičen primer je domače omrežje, kjer imaš na router priklopljenih več kišt.  Ti si preko 4g priklopljen na simobilov router, dostopa do nastavitev nimaš.   Če bi rad od drugod dostopal do svojega pcja na simobilov 4g, potem googlaj \"reverse ssh tunneling\". ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "WAN IP 46.122.xxx.xxx je javen IP, čisto običajen IPv4, ki pripada Simobilu. Ali ga na kak \"kreativen\" način dodeljujejo več uporabnikom hkrati se na daljavo ne vidi, ampak dvomim, da bi počeli kaj tako neumnega. Ni pa to \"nat\" IP, karkoli naj bi to pomenilo.  V glavnem, za tvoj lokalni ruter imaš dodeljen javen IP. Za ruterjem imaš privatne IP-je. Do tukaj je vse normalno.  Če si na svojem ruterju pravilno nastavil forwarding za 18080, če ti ne javi nobene napake pri vnosu ali kjerkoli drugje, in če ti še zdaj ne dela, potem so porti blokirani s strani Simobila. Nič te ne stane, da jih vprašaš zakaj in ali se to lahko odpravi. Najbrž bo negativen odgovor. Če nič drugega, te teko ne more kdo DOS-at oz. DDOS-at in ti povzročit enormne stroške s prenosom podatkov, tako da bodo najbrž kaj takega navedli kot razlog.  Sicer pa ja, rešitev bi bila tudi reverse SSH tunneling... ki pa ne bo delal, če sta obe napravi na omrežjih z blokiranimi porti. Za to boš rabil vmes neko tretjo napravo, do katere boš lahko dostopal preko kakega porta in nad katero boš imel toliko nadzora, da boš lahko nastavil SSH. ",
+    "user": "Ales"
+  },
+  {
+    "message": "Blokirani dohodni porti na mobilnih omrežjih ",
+    "user": "AC_DC"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Zdravo. Nujno rabim pomoč. Imam 14\" prenosnik od Samsunga (i5, 8GB RAM, 500+ HDD...) model NP530U4C, ki ima HDD in 20 GB nekega SSD on board, ki ne vem čemu služi. V osnovi so bili gor windows 8. Ugradan je bil na windows 10. Računalnik je prej deloval zelooo počasi z windows 10, zato sem poskusil z novo čisto instalacijo. Vse particije so zbrisane in moram nainstalirat Windows 10.\nProbal sem windowse naložit na tisto flash (SSD) praticijo, pa po instalaciji javi da zmanjkuje prostora. Poskusi sem tudi z instalacijo na HDD, pa instalacija pride sicer do konca, nato pa komp zmrzne. Moraš ga potem na hard ugasnit, potem se pa ne pobere več. ker med ponovnim zagonom spet zmrzne. To sem poskusil že 2x pa je bilo obakrat isto. Windows 10 instalacijski USB je originalen in bi moralo biti z njim vse OK!\nAli ima kdo izkušnje s takimi zadevami?",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Za drugič pa win10 na take zadeve ne nalagaš na novo ampak greš na obnovitev sistema in se sam popuca na factory stanje\n\nČe ti kaj pomaga?\nirst, some background. This laptop comes with a 1TB HDD and an 8GB iSSD, which is used as a cache to speed up Windows and apps. Samsung uses Diskeeper's ExpressCache software for that purpose. This SSD causes a rather large problem to the Windows installer. For whatever reason, Windows refuses to install its \"System Reserved\" partition on the HDD, downright refusing to proceed with the installation if the SSD is already partitioned for ExpressCache. But, repartioning the SSD and just letting Windows install itself, doesn't make things easier. In fact, it causes major troubles. It appears that the BIOS really doesn't want to boot off the SSD, which is where Windows decided to install its boot partition. So, here's the thing- how to get the HDD into a state where both Windows and Samsung's BIOS were happy, and the SSD free for ExpressCache use.\n\n\nBefore installing Windows and things to keep in mind​\n\nFor your convenience, you might need to print this guide and read once before proceeding.\nBackup your drivers to an External Flash Drive or DVD, using Samsung Recovery Solution. (Bear in mind that you don't have any network connection after a clean install and neither a backup partition at your pc)\nMake sure your BIOS are set to boot from DVD or USB Drive, by changing priority. If you choose to use a USB, you have to disable \"Fast BIOS Boot\" as well.\nIn case of using a bootable USB for the installation, a message might emerge, implying that drivers are not installed and cannot proceed further. Just click \"Cancel\". Then, you will be brought back to the welcome screen. At that moment, remove the USB drive and plug it back in, to a different USB port this time. Click \"Install Now\" again. The installation should proceed as usual.\n\nInstalling Windows​\n\nInsert the istallation media on your laptop.\nAt the Windows Setup Wizard, select \"Custom Install\" to view all disks.\nAt the \"Advanced\" option, choose to format all disks and delete the SSD.\nPress \"Shift+F10\" to launch cmd. Otherwise, reboot into the Windows Setup wizard and choose the \"Repair\" option, in the bottom left corner, and in the tools menu choose cmd.\nType in diskpart to get into the partition tool.\nUse the commands list disk and list part to determine which disk is what (check size parameters). For me, Disk 0 was the HDD and Disk 1 was the SSD. The following instructions assume this.\nSelect the HDD: sel disk 0\nDelete all partitions on it: clean\nCreate a 100MB partition for Windows 7 (or 350MB for Windows 8): create part primary size=100 (or size=350)\nFormat it: format fs=ntfs quick\nAssign it a letter: assign letter=f (if F: is in use, pick another one. Use the list vol command to see all volumes and their letters)\nCreate a partition that fills the rest of the disk: create part primary\nFormat the large partition: format fs=ntfs quick\nAssign it the letter C: assign letter=c\nExit both Diskpart and cmd.\nReboot back to Windows Setup Wizard to install Windows into the large partition that was just created. !!CAUTION!! When Windows restarts your machine to complete the installation, do NOT change priority at the BIOS menu as usual, but instead boot from the installation media, once more, and choose the \"Custom Install\" option.\nThere is a great chance that Windows installed its System Reserved partition on the SSD, so choose the \"Advanced\" option and delete the SSD. Launch cmd (Shift+F10) and type diskpart.\nUse the commands list vol and assign to ensure that both the system (F and the boot partition (C still have drive letters.\nSelect the system partition (sel vol f) and mark it as active: active\nExit diskpart and at cmd type the command: bcdboot c:\\windows /s f:\nReboot and you're good to go.\n\nAfter the installation​\n\nThe easiest way to have Samsung's Easy Settings and ExpressCache installed to your machine is through the backup created by Samsung Recovery Solution, since you don't have an internet connection after the clean install. (Even when you get to have one, do not connect during this proccess (because of Windows Update interference) and wait till it finishes)\nBrowse the DVD or External USB Drive to find the \"SystemSoftware\" file and launch the \"SecSWMgrGuide.exe\".\nInstall \"Easy Software Manager\".\nInstall everything from the \"Drivers\" tab.\nFrom the \"Miscellaneous\" tab, install \"Windows 7 SP1 Critical Updates\" and \"Windows 7 SP1 common patches\".\nFrom the \"Utility\" tab, install \"Easy Settings\" and ExpressCache\".\nFinally, choose any other software you might need.\nYou are ready to connect the internet and install Windows Updates.\n\nIn case you didn't backup your drivers using Samsung Recovery Solution, you need to manually download and install these drivers from the Samsung's website.\nTo find out if ExpressCache is working, run cmd as administrator and type ECCmd -INFO. If it's marked as mounted and gives you the application's information then you're fine.\n",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "I fixed this problem, so follow my guide:\n\n\nBIOS Options:\n\n\n\nFast BIOS Disabled\nSecure BOOT Disabled\nCMS BIOS Seleceted\n\nYou need Hirens Boot CD (It must have Norton Ghost and Mini WinXP. Check versions 11.X or 15.1 Rebuild edition) on a USB Disk.\n\n\n\nStart Windows 7 install from USB Windows 7 Disk.\nRemove all partitions from iSSD and Sata HDD.\nInstall Windows 7 to 24GB iSSD.\nOn first restart Windows 7 setup (system is stuck normaly on this section), remove Windows 7 USB and use Hirens Boot USB. Start Mini Windows XP.\nIf you can successfully boot Mini Windows XP, Start Norton Ghost 32 from Hirens Tool\nOn Norton Ghost, select Copy Disk to Disk and copy iSSD to Sata HDD. After copying, don't restart the system. Only quit Norton from the menu.\nUse Partition Wizard from Hirens Tools. Check your new copy SATA HDD status. You must have 100MB System Partiton Active and Primary position, and a second partition for Windows Setup with Primary status.\nIf all is OK, restart your PC and remove Hirens Boot disk, Windows 7 setup should resume.\n",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Uff, super! Hvala za izčrpna navodila.",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Zrihtal?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Zdravo\nVstavil sem kar SSD disk, ki sem ga slučajno dobil na posodo. Nainstaliral sem windows 10, pa ni v redu. Instalacija je prišla do konca, potem pa je komp kar na lepem zmrznil. Po Hard resetu pride le do logina, nato pa spet zmrzne. Se mi zdi da niso problem particije ampak mora biti s kompom nekaj narobe. Ena stvar se pregreva preveč. Imaš ti kaj izkušenj s tem? Je to za v servis?",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Izkušnje mam kaj sem kopiral v prvi post \nSi nardl po tistih korakih?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Se bom dosledno držal navodil in probal še to. Ko sem menjal disk, sem opazil, da je ena od komponent svinjsko vroča, pa ni procesor.",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Vse je šlo gladko, a zataknilo se je pri točki 20\n20. Exit diskpart and at cmd type the command: bcdboot c:\\windows /s f: (Tu se ni zgodilo nič!)\n21. Reboot and you're good to go. (Če rebootam, kam naj potem naložim windowse?)\n\nv možnostih namestitve Windows mi pokaže:\nPogon 0 Particija 1                            500.0 MB    483 MB   Primarna\nPogon 0 Particija 2                            465.3 GB    465.2 GB   Primarna\nNedodeljeno prostor na pogonu 1   22.4 GB    22.5 GB",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Samsung Ultrabook 14\" upgrade na windows 10",
+    "content": "Na koncu je problem rešil pooblaščeni servis z odstranitvijo flash diska na matični in naložitvijo W8.1, saj je komp praktično nekompatibilen z W10. Sploh je problem grafika!!!\nW10 je možno deloma naložit (nekaterih driverjev pač ni za W10), ko pa se priključi na net in se začne komp posodabljat (grafična) se vse konča.\nRešitev je v ponovni namestitvi originalnega OS in driverjev s strani proizvajalca.",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  }
+]

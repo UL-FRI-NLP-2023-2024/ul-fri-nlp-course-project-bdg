@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Imam sledeč problem. Naredil sem nek app, ki uporablja za pošiljanje smsov mobitelov wsdl. V eclipse sem uvozil wsdl ki mi generira classe, katere potem uporabljam za pošiljanje smsov. V eclipse vse deluje ok, problem imam kako potem to zagnati v cmdju.  Struktura je sledeča. Projekt ______|- src __________|- Test.java __________|- MojObjekt.java __________|- si ____________|- mobitel ________________|- MobiDesktop (tu noter so potem java classi od wsdlja) __________|- Md (še ostali del classov od mobitela)  Spodaj sem dodal še dele kode. Zdaj pa bi jaz to rad preselil na nek drug računalnik, kjer bi zadeva tekla. Se že nekaj časa zajebavam samo še nisem uspel pognati iz cmdja. Vem da je dokaj trivialno samo ne gre :( Če ima kdo 1 min časa bi ga lepo prosil za pomoč.    Koda   public class MojObjekt{\n\t\n\tprivate String _opis;\n    private String _ime;\n\n// sledijo geterji pa seterji\n}\n   import si.mobitel.MobiDesktop.ArrayOfString;\nimport si.mobitel.MobiDesktop.MDFServiceSoapProxy;\n\n\npublic class Test {\n\n// tu noter uporabljam nekje MojObjekt\n\n\tprivate static void sendSMS(String sms)\n\t{\n\t\ttry\n\t\t{\n\t\t\tString[] recip = SMS_RECIPIENTS.split(\",\");\n\t\t\tArrayOfString recipients = new ArrayOfString();\n\t\t\trecipients.setString(recip);\n\t\t\t\n\t\t\tMDFServiceSoapProxy proxy = new MDFServiceSoapProxy();\n\t\t\tproxy.authenticateUser(SMS_USERNAME, SMS_PASSWORD);\n\t\t\tboolean smsDelivered = proxy.sendSMS(SMS_USERNAME, SMS_PASSWORD, recipients, sms);\n\t\t\t\n\t\t\t//boolean smsDelivered = true;\n\t\t\tSystem.out.println();\n\t\t\tSystem.out.println(CLASS_NAME + \"> SMS delivered: \" + smsDelivered + \" SMS: \" + sms.replace(\"\\n\", \" \"));\n\t\t\twriteSMSLog(\"SMS delivered: \" + smsDelivered + \" SMS: \" + sms.replace(\"\\n\", \" \"));\n\n\t\t\t\n\t\t} catch(Exception e) {\n\t\t\twriteError(\"sendSMS: \" + getStackTrace(e));\n\t\t\tSystem.out.println(CLASS_NAME + \"> sendSMS method excecption.\");\n\t\t\te.printStackTrace();\n\t\t }\n\t\t\n\t}\n}\n ",
+    "user": "mmaestro"
+  },
+  {
+    "message": "v eclipsu desni klik na projekt in export  potem izbereš \"runnable jar file\"  izbereš da ti vse zapakira v .jar ",
+    "user": "blue"
+  },
+  {
+    "message": "Hvala za ta odgovor mi je pomagal. Čeprav sem že prej iskal nekaj v tej smeri pa nisem bil dost pozoren kaj ponuja Export. ",
+    "user": "mmaestro"
+  },
+  {
+    "message": "Kje dobis te mobitel APIje?  in obstaja kaj podobnega za simobil? ",
+    "user": "ragezor"
+  },
+  {
+    "message": "Tu imaš njihov wsdl: https://moj.mobitel.si/mobidesktop-v2/w... Tu pa imaš navodila kako narediš klienta iz tega: http://www.eclipse.org/webtools/communi...  Potem pa samo se preko proxy userja povežeš na njihov ws strežnik in pošiljaš sporočila. Mislim pa da simobil tega ne omogoča. ",
+    "user": "mmaestro"
+  },
+  {
+    "message": "wsdl sem nasel ampak kolikor vidim uporabljas  import si.mobitel.  kar nakazuje na to, da je to neka njihova koda? ",
+    "user": "ragezor"
+  },
+  {
+    "message": "Ta dva package-a ti zgenerira ta import wsdlja avtomatsko. ",
+    "user": "mmaestro"
+  },
+  {
+    "message": "ja ok, kje si nasel tele package, ker ne najdem nikjer na mobitelovi strani ",
+    "user": "ragezor"
+  },
+  {
+    "message": "nikjer ga ni našel... eclipse mu je na podlagi podanega wdsl-ja zgeneriral razrede (proxy pattern). ",
+    "user": "Greg91"
+  },
+  {
+    "message": "aaa, ok. hvala :) ",
+    "user": "ragezor"
+  }
+]

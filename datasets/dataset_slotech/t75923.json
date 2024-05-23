@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Instaliral sem Gentoo Linux. Pri prvem bootanju se mi je pojavil naslednji problem po začetni inicializaciji. read_super_block: can't find a reiserfs filesystem on (dev 01:00, block 64, size 1024) read_super_block: can't find a reiserfs filesystem on (dev 01:00, block 8, size 1024) VFS: Kernel panic: Unable to mount reiserfs on......  In tu se vse skupaj ustavi. Najprej sem uporabljal GRUB, sedaj imam LILO. Tudi GRUB ni delal. Boot particija je ext3 /dev/hda2, particija s podatki pa reiserfs /dev/hda3.  LILO-ta še nikoli nisem nastavljal peš. Katera opcija v lilo.conf je najverjetneje razlog za napako?  image=, root=, initrd=, ali append=??  Ali je kaj čisto drugega?  Pri tem me čudi tudi, da sem v fstab spremenil za /dev/hda3 iz reiserfs v ext3, pa v napaki še vedno piše Unable to mount reiserfs... Očitno tu nekaj ne razumem vredu...  To je bilo napisano na hitro in upam da vsaj za silo razumljivo  ",
+    "user": "Fletcher"
+  },
+  {
+    "message": "V kernel si vključil reiserfs podporo? ",
+    "user": "mile"
+  },
+  {
+    "message": "V kernel sem vključil reiserfs podporo z genkernel --config. ",
+    "user": "Fletcher"
+  },
+  {
+    "message": "pol pa daj izpis fdiska, datoteke /etc/fstab in /etc/lilo.conf ",
+    "user": "mile"
+  },
+  {
+    "message": "Fdisk vrne naslednje (Start, End in Blocks postavke sem izpustil):  Device Boot Id System /dev/hda1 * c Win95 FAT32 (LBA) /dev/hda2 * 83 Linux /dev/hda3 83 Linux /dev/hda4 f Win95 Ext'd (LBA) /dev/hda5 82 Linux swap   /etc/lilo.conf izgleda takole:  boot=/dev/hda map=/boot/map install=/boot/boot.b prompt timeout=50 lba32 default=winxp vga=792  image=/boot/kernel-2.4.20-gentoo-r7 label=gk_linux root=/dev/hda3 initrd=/boot/initrd-2.4.20-gentoo-r7 append=\"root=/dev/hda3 init=/linuxrc\"  other=/dev/hda1 label=winxp   /etc/fstab vsebina:  /dev/hda2 /boot ext3 noauto,noatime 1 2 /dev/hda3 / reiserfs noatime 0 1 /dev/hda5 none swap sw 0 0 /dev/cdroms/cdrom0 /mnt/cdrom iso9660 noauto,ro 0 0 proc /proc proc defaults 0 0 none /dev/shm tmpfs defaults 0 0 ",
+    "user": "Fletcher"
+  },
+  {
+    "message": "Ima kdo kako idejo, kaj bi lahko bilo narobe v zgoraj navedeni konfiguraciji? Pri prvem postu nisem prav napisal zadnje vrstice pri opisu katere napake vrne kernel. Glasi se tako: Kernel panic: VFS: Unable to mount root fs on 03:03 Čudi me to, da tudi če spremenim root= v npr. /dev/hda4 ali /dev/hdc3, je napaka, ki jo izpiše vedno enaka (03:03). Kako je to mogoče?  V lilo.conf imam v vrstici append= tudi init=/linuxrc (povzeto po tutorialu). Ali je ta vrstica prav napisana? Kaj to sploh pomeni? ",
+    "user": "Fletcher"
+  },
+  {
+    "message": "Potegni z www.kernel.org tazadnjo 2.4ko in jo prevedi. Lahko da ima tekoča verzija težave z IDE kontrolerjem na tvoji plati.  In BTW: jaz na tvojem mestu ne bi uporabljal LILO ampak GRUB. Vsaj ko sem presaltal nanj je bil veliko boljsi...  Drugace pa se mi je tisti crap ob montaži vfs-a pojavljal ob strejsih 2.4kah, ce sem odklikal opcijo \"mount devfs at boot\". Zadnje 24-ke delajo b.p...  Ce ti stvar prijavi, da reiserfs-a ne najde, potem lahko poskusis rocno.  Najprej zbootas stvar z Gentoo CDja, nato v mapi /mnt naredis podmapo old, v njej pa recimo hda3  nato reces nekaj v stilu:  mount -t reiserfs /dev/hda3 /mnt/old/hda3  Nato pa pogledas vsebino mape /mnt/old/hda3  Ce je vse O.K., potem je s to particijo vse v redu in ga serje kernel ali LILO... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Zdravo! map=/boot/System.map install=/boot/boot-menu.b  append je pomoje samo za onboard hardware (zvočna na plati, modem integriran v plati....), če nimaš nč onboard ...dej append preč  Ka ti je pa rekll potem ko si mel napisan lilo.conf in si ga poganal tako kot v install navodilih pise z /sbin/lilo (ozirom tud samo lilo prome) a je vse štimal ?   Aja pa vsi k uporabljate Gentoo: na www.gentoo.org se je dal POLL .. pa 20 se nas more nabrat, da bomo imel gor slovenski Gentoo forum.   http://forums.gentoo.org/viewtopic.php?...  LP ",
+    "user": "jaBo"
+  },
+  {
+    "message": "Sem rešil problem. Najprej sem uporabil gentoo-source za kernel. S prehodom na vanilla-source več ni težav. Hvala za pomoč! ",
+    "user": "Fletcher"
+  },
+  {
+    "message": " Aja pa vsi k uporabljate Gentoo: na www.gentoo.org se je dal POLL .. pa 20 se nas more nabrat, da bomo imel gor slovenski Gentoo forum.   Ne bi rad tezil, a ne vidim ravno smisla v tem. Ce te muci kako vprasanje, verjetno hoces da bo tvoj mail prebralo tam cimvec ljudi. Tega pa ne bo, ce bos tja postal v slovenscini. Za tiste ki ne znajo anglesko bo pa verjetno tudi ST dober..  ",
+    "user": "Brane2"
+  },
+  {
+    "message": "No sej res ti ni treba težit, če ti ne sede ideja klikneš v POLL-u \" NO/NE \"   Brez zamere  LP ",
+    "user": "jaBo"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Pozdravljeni!\n\nV bližnji prihodnosti se bo v poslu odprla še ena lokacija. Sedaj imamo v MB, odpiramo še v LJ. \n\nV MB imamo internet 10/1, ruter, strežnik, 5 klientov, ter MFN napravo. V LJ bosta 2-3 klienta, ter MFN naprava. Na strežniku teče program, kateri se bo uporabljal tudi v LJ, ter tudi vsi potrebni dokumenti.\n\nV LJ so nam že tudi priklopili internet 10/1. \n\nKako je najbolje urediti - seveda z čim manj stroški, pa seveda varno, da bo vse to laufalo.\n\nNekako sem si predstavljal naslednje:\n\nMB\nruter s Tomatom ali DD-WRT, ter podporo za openVPN - server\n\nLJ\nruter s Tomatom ali DD-WRT, podpora za openVPN - client\n\nUporaba VPN-a mi je znana, ampak samo kot client, kako sedaj to vse nastaviti, da bo to delalo. Prav tako mislim, da bi na lokaciji MB zvišal upload na vsaj 5MB (optike žal ni).\n\nHvala vsem za ideje.\n\nLp,",
+    "author": "plexix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Povišat upload na obeh lokacijah, VPN server nastavi na samem serverju, kakšen server maš Linux win Mac os??",
+    "author": "bluub",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Zdravo!\n\nZa upload, sem tudi sam razmišljal, zaenkrat verjetno samo MB, bomo videli, če bo potrebo, v LJ bi naj mogoče celo v cca 3 mesecih bila optika.\n\nServer je MS Windows Server 2012, zaradi 2 programov, katera delata samo v Win okolju. A na Windowsih se tudi da VPN server uredit?\n\nlp,",
+    "author": "plexix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Z lahkoto. Ali celo direct acces. Boš dela site2site VPN?",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Zdravo!\n\nHuh, nisem v teh vodah.\n\nDa razložim, če bo bolj jasno:\n\nv LJ bi rabil povezavo do MB samo do strežnika, kjer sta bazi za programa, ter do podatkov (share), ostalo mail in internet bi pa šel direkt ven, da ne obremenjujem linije od MB-ja.\n\nLp,",
+    "author": "plexix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Varianta z openvpn na routerjih bo delala  točno to, kar želiš.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Zdravo.\n\nJa, to sem mislil.\n\nNekaj sem ze poskusal, pa mi ne gre skupaj.\n\nA je kje kaj enostavno napisano oz. kak muster, da potem samo moje nastavitve vpusem noter?\n\nLp. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "plexix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Tole je zelo step by step. Najbolj zapleten del je, da generiraš samopodpisane certifikate z openss.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik doto pravi:\n  Tole je zelo step by step. Najbolj zapleten del je, da generiraš samopodpisane certifikate z openss.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSamo to je povezava individualnih klientov s strežnikom. A ni bolj smiselno da en router poveže z drugim, na računalnikih pa ni potrebno nič nastavljati?\n\nEdino če bo ogromno prometa se bojim, da CPUji na routerjih ne bodo zdržali. Pa na kako kompresijo lahko menda tudi pozabiš (kar bi pri počasni povezavi prišlo še kar prav).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Ja za testiranje serverja  moraš najprej to narediti. Potem ko dela povezava iz PC-ja na server,  pa  lahko klienta prestaviš na router. Debugiranje na routerju je težje kot na PC-ju. Sam princip delovanja je pa enak.\n\nPa še to. Nujno je, da sta oba omrežja na ločenih IP segmentih. Se pravi ena lokacija ima npr. 192.168.1.x, druga pa 192.168.2.x. Če tega nimaš, routanje ne bo delovalo pravilno.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Jest bi to rešil z dvema RB951G. Težko boš našel boljšo price/performance varianto za dovolj zmogljivo (in varno) VPN povezavo za tvoje potrebe.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Jaz bi to uredil z RDS servisi. Odpade strežnik v Ljubljani (oz. tam kjer je slaba linija). Ni potrebe po VPN. Ni potrebe po dvojnem upravljanju aplikacije, ker je vse na eni lokaciji. Premišlujte o tem kakšno pasovna širina je potrebna za prenos podatkov med lokacijama (VPN) ali prenosom slike in klikov.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Tudi jaz sem zadevo rešil z dvema mikrotik routerjema. Med dvema lokacijama imam EoIP tunnel preko VPN Server&lt;&gt;Client , tako da imam na obeh lokacijah isti LAN+broadcast promet, da mi najde vse naprave v obeh mrežaj brez problema.",
+    "author": "tagelind",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Sam sem navajen to početi tako, da imaš na vsaki lokaciji router (oz. firewall), med njima pa vzpostaviš VPN (OpenVPN ali IPsec). S tomato fwjem imam v okoljih \"za doma\" odlične izkušnje. Mikrotik prav tako odlično dela, v vseh okoljih.\n\nZadevo lahko rešuješ tudi s samimi strežniki, ampak sam se držim načela, naj mrežkoti delajo svoje, serveraši pa svoje. In šifriranje komunikacijskega kanala je naloga omrežne opreme. (Zakaj? Ker se je en bog pač tako izmislil...  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Zdravo!\n\nHvala vsem. Zaenkrat je takole, na vsaki strani Tomato z VPN-om,  zadeva v testnem okolju laufa, jutri grem še v LJ postaviti opremo.\n\nAplikacije, katere potrebujejo več podatkov, bodo delali preko RDP-ja na sam strežnik, tako da bodo v LJ dejansko samo goli clienti.\n\nLp,",
+    "author": "plexix",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Tole z RDPjem je sicer običajen primer štrikanja, ampak ok  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKo vam bo dopizdilo vse skupaj, enkrat dajte razvijalce za ušesa oz. zamenjajte program za normalnega, ki bo imel aplikacijo za klienta, ki se bo sama povezovala na ustrezen strežnik...  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava dveh lokacij - MB - LJ",
+    "content": "Se strinjam glede razvijalcev, samo tukaj verjetno ne bo šlo.\n\nGre za SW za risanje notranjega pohištva, ker pa še razvijalci oz. nekdo ni uredil pravilne licence, smo primorani delati tako.\n\nPotem bo dejansko program delal offline, zvečer oz. čez noč pa se naredi sinhronizacija z bazo. Trenutno bi moral celotno bazo vleči preko 5MB, kar no go.\n\nDAnes še uredil v LJ, OpenVPN dela ko šus, tako da zaenkrat dela vse kot treba.\n\nLp,",
+    "author": "plexix",
+    "author_level": "Fizikalc"
+  }
+]

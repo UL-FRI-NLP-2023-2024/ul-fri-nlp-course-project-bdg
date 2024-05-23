@@ -1,0 +1,98 @@
+[
+  {
+    "message": "Pozdravljeni!  Že nekaj časa se ubadam z nastavitvami za siol tv preko openwrt/lede routerja asus rt-n16. Trenutno imam innbox V60U, ki deluje kot usmerjevalnik in rt-n16 wan se poveže preko DHCP. Port na innbox ima dodeljen TRUNK. Na rt-n16 imam nameščen udpxy in lahko dostopam do status strani. Ko vspostavim sejo z udpxy preko vlc je na status strani vidna seja ampak nimam slike. Upam da mi lahko kdo pomaga. Dodajam še nekaj screenshotov če bo komu v pomoč.   trenutno stanje vmestnikov   Firewall ima izjemo za igmp   vlan 3999 je nastavljen ampak je box povezan direktno v innbox. Če določen port spremenim v tagged potem mi box deluje preko usmerjevalnika ampak so nekateri programi bili črni zato sem ga preklopil nazaj na innbox   konfiguracija na udpxy   status stran dostopna ",
+    "user": "ZEROBLUE"
+  },
+  {
+    "message": "Ustvari nov interface, ki naj posluša na eth0.3999 VLANU, določi mu nek IP, npr. 192.168.20.5, ostalega ni treba vpisovat. DHCP izklopljen.  V udpxy v sourceIP/interface vpiši eth0.3999  Prilagodi si playlisto, klienti načeloma lahko dostopajo tudi preko IPja 192.168.10.5  Taka konfiguracija dela, če PPPoE povezavo vzpostavlja router a bi načeloma morala delati tudi v DHCP konfiguraciji. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "jaz imam pa problem da mi na opticnem naslovu nekega kanala slika enkrat do dvakrat v minuti zakocka v spodnji polovici ekrana? se pravi ce uporabim /udp/232.2.3.141:5002 imam tak problem.....ce pa uporabim naslov za bakrene povezave, /udp/232.4.3.141:5002 pa je vse ok....seveda bi rajsi gledal na naslovih za optiko, ker je tudi bitna hitrost enkrat vecja in je tudi sama slika malo boljsa....kaj bi to lahko bilo? ze vse zivo sem testiral, poskusal, pa je bilo vedno enako.....zdej ce poklicem na helpdesk mi bojo rekli, da nimajo podpore za motnje, ce se gleda zunaj boxa.....blabla... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Če si na UDPXY ti najbrž router ne zmore tolikšne obremenitve. ",
+    "user": "Daniel"
+  },
+  {
+    "message": " Daniel je 1. nov 2017 ob 07:22 izjavil:Če si na UDPXY ti najbrž router ne zmore tolikšne obremenitve.  ne verjamem da je do routerja, ker sem zaradi omejene hitrosti openvpn-ja,1043nd zamenjal za archer C2600....mora biti nekaj da ne stima na opticnih naslovih na mojem narocniskem prikljucku....ker pa ne uporabljam boxa mi pa tudi na helpdesku ne morejo nic pomagati, ker pravijo da nimajo podpore, ce se gleda mimo boxa.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Če ti na BOXu dela ok in imaš tam Playlisto za optiko druga ne more biti kot UDPXY ali pa OpenVPN, če si na drugi lokaciji (doma si preveril?). Enostavno je pasovna širina pri optični playlisti previsoka za te routerje. A je res toliko huje gledat Mpeg4? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Sam sem sedaj poskusil brez OpenVPN streamati iz lokacije kjer je 50/20 internet in 1043ND z UDPXY in mi dela stream s tistim tvojim IP naslovom tekoče, brez zatikanja. Poraba pasovne širine okrog 14 Mbit. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "sej to sem testiral v domaci mrezi brez openvpn.....na 232.2. enostavno ne deluje tekoce, slika se malenkostno skocka nekako dvakrat do trikrat na minuto...preko openvpn z sosedovega wifi pa deluje brez problemov.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Torej zunaj ti deluje normalno iz tvojega IP, v lokalnem omrežju pa ne? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "vinko to ga tvoj router biksa oz. ta lede fw... ",
+    "user": "oyoy69"
+  },
+  {
+    "message": " oyoy69 je 1. nov 2017 ob 13:51 izjavil:vinko to ga tvoj router biksa oz. ta lede fw...   ali nimam druge moznosti kot pa lede openwrt? ne razumem zakaj bi bil kriv firmware ali router? ce z 232.4. deluje brez ene napakice dve uri skupaj, nevem zakaj nebi prebavilo tudi 232.2....sej router je dovolj mocan in hitrost interneta ni sporna....ne vem, tudi ne morem testirati z drugim firmwarejem, da bi videl ce je res do firmwareja? ",
+    "user": "vinkop"
+  },
+  {
+    "message": "hardware, razen če ni slučajno defekten, itak ni sporen ... meni leti na tvojem bivšem rt-ac68u brez problemov po par hd streamov hkrati + cela lokalna mreža z več napravami, pa je tvoj router po specifikaciji kar konkretno bolšji. z \"navadnim\" openwrt-jem si probal? ",
+    "user": "oyoy69"
+  },
+  {
+    "message": "pri meni more vedno nekaj skripat, najprej sem imel probleme s ponorelimi innboxi pri vezavi z dvema kabloma potem tp-link 1043 s premalo zmoglivostjo interneta preko openvpn in sedaj kockanje na opticnih udp naslovih.....brezveze vse skupaj....noce in noce biti tako kot mora biti.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "A že ko gledaš UDP stream direktno ti kocka? Kako pa dela na BOXih? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "na boxu je ok in na udp/232.4. je ok...kocka na udp/232.2....sem malo prej testiral tudi stari openwrt 15.05.1 in tudi tam je slika obcasno skockala pri gledanju z udp/232.2....izgleda da je to potem nekaj narobe na relaciji centrala in jaz? ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Če ti na Boxu dela ok na optičnem streamu je praktično nemogoče, da bi bilo kaj narobe med centralo in modemom. Razen če imaš na BOXu Mpeg4 stream. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Hvala Daniel. Torej trenutno sem usposobil ta udpxy ampak imam iste probleme kot vinkop. Na optičnem naslovu mi slika ali zaostaja ali pa je skockana :D ",
+    "user": "ZEROBLUE"
+  },
+  {
+    "message": "Prevelik stream za router. Uporabi Mpeg4, kaj druga se težko svetuje, saj nihče od nas ne uporablja profesionalne opreme :) Če oprema ne zmore pač ne zmore. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Evo sedaj mi pa dela tudi na 232.2. naslovih tv. Vse kaj sem spremenil je da sem v /etc/sysctl.conf dodal  net.ipv4.conf.all.force_igmp_version=2 Upam da to komu pomaga. Ali je še kdo uporabljal IGMPproxy mogoče? tam lahko gledaš direktno udp://@232.2. povezave ampak mi ne rata nastavit pravilno. ",
+    "user": "ZEROBLUE"
+  },
+  {
+    "message": "očitno niti to ne pomaga. Če je wifi izklopljen potem dela lepo dokler se nekdo ne poveže potem pa kockanje in slaba sinhronizacija zvoka in slike. ",
+    "user": "ZEROBLUE"
+  },
+  {
+    "message": "Kako je pa z obremenitvijo CPUja takrat ko ti šteka? ",
+    "user": "XS!D3"
+  },
+  {
+    "message": "ne verjamem da je to prevelik stream za router.....potem bi mi moralo na nemskih skyih pri 20Mb/s zelo kockati pa mi deluje zelo dobro....bolje kot pri siol kanalih 232.2....in tudi precej uporabnikov ima sigurno slabso opremo od mene pa nima teh tezav z 232.2. udp streami siola..... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "evo trenutno mi dela normalno. Če gledam grafe na usmerjevalniku potem zašteka. sam udpxy ma 53% procesorja zasedenega. mogoče bi bilo bolše če se nebi multicast spreminjal v http, ampak da ga direktno gledaš. ",
+    "user": "ZEROBLUE"
+  },
+  {
+    "message": "Sej lahko VLAN3999 spustiš do PCja in gledaš multicast direktno, da ne boš routerja obremenjeval z udpxy. Ali pa updxy laufaš na kakšni drugi kišti.  Treba je vedet, da to kar počne updxy ni enako običajnemu posredovanju paketov. Če čez router lahko spraviš X Mb/s, še zdaleč ne pomeni, da bo šlo toliko tudi čez udpxy. Koliko je zadeva dejansko požrešna, ne vem, ker je ne uporabljam. Je pa dejstvo, da CPUji v teh domačih usmerjevalnikih niso ne vem kaj in da skrbijo za cel kup stvari hkrati od samega forwadiranja paketov (LAN-WAN, če ni hw pospeševanja), statefull firewalla, spletnega vmesnika za config do kontrolnih funkcij WiFI dostopne točke in bridganja WiFi prometa. Potem mu gor obesiš še kak VPN server pa udpxy in ga zna hitro zmanjkat. ",
+    "user": "XS!D3"
+  }
+]

@@ -1,0 +1,968 @@
+[
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Stalna povezava do zadnje verzije GmapToolGui:\nhttp://freeweb.siol.net/akralj9/gmaptool/GMapToolGUI.zip\n\n \n\t\n\n\n\nNaj kar takoj povem, da imam vse mape s katerimi v tem vodiču operiram legalno kupljene. Garmin nuvi 360 sem dobil poleg nakupa Citroen avtomobila z AdriaRoute. Na njemu je tudi že bila nameščena NT 9 mapa, ki sem jo nadgradil na 2008. Ravno tako sem kupil še AdriaTopo karto.\n\nMalce sem se poglobil v program GMapTool poljskega avtorja in mi zelo prav pride pri združevanju map v eno samo datoteko, ki jo potem samo še skopiram preko čitalca SD kartic (9MB/s vs. 300k, če kopiram preko Garmina vezanega na PC).\n\nČeprav imam legalne kode sem za tale vodiš uporabil kg program, to pa zato, ker sem preizkušal ročno dodajanje različnih kod v IMG datoteke, ter odstranjevanje kod iz IMG datotek.\n\nNajhujše seveda je, ko pride nova verzija in jo treba preko mapsourca posodobit in potem sledi mučno ponovno generiranje IMG datoteke. Sam sem se zadeve lotil takole.\n\nZa vsak zemljevid sem izdelal lastno IMG datoteko z državami ki menim, da jih bom potreboval. V mapsourcu sem označil naj mi pošlje mape na SD kartico, ki sem jo imel priklopljeno na čitalec kartic (zaradi hitrosti kopiranja). Dobljeno gmapsupp.img datoteko sem preimenoval sledeče:\n\n- CN NT 2008 (Avstrija, Italija, Madžarska, Irska in Anglija) -&gt; 284_Evropa_AU_H_IR_IT_UK_2008.img\n- AdriaRoute 2.00 (Slovenija in Hrvaška) -&gt; 708_AdriaRoute_SLO_CRO_2.00.img\n- AdriaTopo 2.11 (Slovenija in Hrvaška) -&gt; 844_AdriaTopo_SLO_CRO_2.11.img\n\nPač zdi se mi smiselno, da si naredim zemljevide za samo države, kamor bom morda v bližnji prihodnosti odpotoval.\n\nTako dobljene tri IMG datoteke sem skopiral v mapo \\MAPE.\n\nPotem sem snel program GMapTool iz strani:\n\nhttp://www.anpo.republika.pl/download.html#gmaptool\n\nin ga odzipal v direktorij \\MAPE\\GMAPTOOL.\n\nČe uporabljaš v Mapsourcu več kot eno kodo za isti zemljevid, se ob keriranju IMG datoteke vse skopirajo vanjo. Sam imam rad, da so IMG datoteke čisto torej brez kod in jih potem sam dodam vanje. Na žalost GMapTool ne zna odstrani kode iz IMG datoteke tako enostavno ko jih zna vanj dodati. Potrebno je ponovno kopiranje IMG datoteke v neko novo s parametrom -r, ki ob kopiranju odstrani kode.\n\nKreiral sem datoteko _remove.bat v mapi \\MAPE in vanjo vpisal sledeči text:\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n\n@echo off\nREM %1 = NOVO IME\nREM %2 = STARO IME\nREM %3 = NAZIV MAPE\n.\\gmaptool\\gmaptool -m %3 -j -r -o %1 %2\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPrimer uporabe: _remove.bat test.img 708_AdriaRoute_SLO_CRO_2.00.img \"SLO+CRO mape\"\n\nKot se vidi _remove.bat potrebuje tri parametre. Prvi je novo ime IMG datoteke, drugi je trenutna IMG datoteka iz katere želite odstraniti vse kode in tretji parameter v narekovajih ime mapseta (poljubno, pač kakor želite zadevo videti v nuviju ali pa Garmin XT-ju). Ko se bat datoteka zaključi preprosto preimenuješ test.img nazaj v originalno ime. In tako dobiš IMG datoteko v kateri ni vnešena nobena koda za odklep mape.\n\nStanje IMG datoteke lahko vedno pogledam s sledečo BAT datoteko: _info.bat\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n.\\gmaptool\\gmaptool -i %1\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPrimer uporabe: _info.bat 708_AdriaRoute_SLO_CRO_2.00.img\n\nIn izpis:\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n\nGmapTool v0.28   (C) AP\n\nFile:           708_AdriaRoute_SLO_CRO_2.00.img, length 58707968\nHeader:         28.04.2008 17:51:06, DSKIMG, xor 00h\nMapset:         SLO+CRO mape\n\nMap              length s-f  CP    prio  PID  FID  name\n 00000708 IDX   2308110  2\n I00002C4 TYP       874  1\n I0668000 MPC   4042402  5  1252   24 L    1  708  8 HR\n I0668001 MPC   8191426  5  1252   24 L    1  708  9 HR\n I0668002 MPC   3141582  5  1252   24 L    1  708  10 HR\n I0668003 MPC   4109319  5  1252   24 L    1  708  11 HR\n I0668006 MPC   5749778  5  1252   24 L    1  708  1 SLO\n I0668007 MPC   5106519  5  1252   24 L    1  708  2 SLO\n I0668008 MPC   6060346  5  1252   24 L    1  708  3 SLO\n I0668009 MPC   5556124  5  1252   24 L    1  708  4 SLO\n I066800A MPC   2391854  5  1252   24 L    1  708  5 SLO\n I066800B MPC   5758661  5  1252   24 L    1  708  6 SLO\n I066800C MPC   6150831  5  1252   24 L    1  708  7 SLO\n MAPSOURC MPS       672  1\n\nData MPS\n V: SLO+CRO mape\n F: PID 1, FID 708, AdriaROUTE 2.00\n\t\t\n\t\tKlikni za razširitev\n\t\n\nRočni vpis kode pa z bat datoteko: _koda.bat:\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n.\\gmaptool\\gmaptool -U %1 %2\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPrimer uporabe: _koda.bat 1234567890123456789012345 844_AdriaTopo_SLO_CRO_2.11.img\n\nTorej prvi parameter je koda, drugi pa ime IMG datoteke.\n\nPOZOR: Ko enkrat dodaš kodo v IMG datoteko jo ne moreš direktno izbrisat iz nje. Potrebno je kopiranje IMG datoteke v novo datoteko za kar skrbi že prej omenjena BAT datoteka _remove.bat, ki med kopiranje odstrani kodo.\n\nKo imaš IMG datoteke pripravljene krairaj direktorij \\MAPE\\JOIN in premakni mape katere želiš združiti v to mapo. Potem pa zaženeš datoteko _join.bat:\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n.\\gmaptool\\gmaptool -jo gmapsupp.img .\\Join\\*.img\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVen dobimo datoteko gmapsupp.img v kateri so vse mape združene v eno s ključi. Torej odpade potreba po datoteki gmapsupp.unl, ker so pravilni ključi že v IMG datoteki.\n\nCelotna struktura map izgleda sledeče:\n\n\n\t\n\n\n\nNo. Če komu prav pride...",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Hijacker pravi:\nV mapsourcu sem označil naj mi pošlje mape na SD kartico, ki sem jo imel priklopljeno na čitalec kartic (zaradi hitrosti kopiranja). Dobljeno gmapsupp.img datoteko sem preimenoval sledeče:\n\t\t\n\t\tKlikni za razširitev\n\t\npred časom sem tu objavil popravljen mapsource, ki pusti shraniti kar na HDD \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Oprosti ampak ne razumem zakaj bi sel \"okoli riti v žep\", ali pač samo ne vem kaj si hotel narediti z tem kar si naredil. Z mapsourco lepo vse zrdužiš kar hočeš združit in karte v mapsourcu odkleneš z pravo kodo za tvojo napravo in jih potem izvoziš v napravo in ravno tako ne rabiš imet gmapsupp.unl datoteke za odklep karte. Če pa je poanta tvojega dela to da je prenos hitrejši... ne vem se mi zdi preveč zakomplicirano raje počakam tistih 15 minut in vmes kaj drugega delam. Če želiš odtraniti ključe iz kart potem tudi to lahko narediš z maspourcom, ampak spet ne vem zakaj bi to počel saj me ne motijo če so notri.\n\nNe vem, saj pravim mogoče samo nisem poštekal kaj si hotel povedati.",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Doma imam Nuvi 360T in pa fotrov Edge za na kolo. Edge ima malo spomina tako da sem primoran večje zemljevide spravit na kartico. Na žalost je na kartici lahko samo ena IMG datoteke (gmapsup2.img in ostale mi ne delujejo). Torej če želim posodobit karte moram v mapsourcu združit vse zemljevide, tako da dobim eno IMG datoteko. To pa na moje 1.5Ghz PC-ju traja več kot eno uro. Če uporabljam metodo z GMapTool programom pa naredim samo IMG datoteko za posodobljeno karto (8 minut za AdriaRoute) in jo združim poleg ostalih (par minut).\n\nTorej prišparam na času. Poleg tega je bil namen razložiti kaj se s programom da naredit, če bo komu prav prišlo.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Ajaaa, toj sem imel v bistvu prav. Bistvo je prišparanje časa. Fino.\nPa pohvale za fajn napisano navodilo.",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Lahko bi malo drugače oblikoval(kako narediti, ne kako ti narediš) in bi lahko potem to bil sticky.",
+    "author": "matejdro",
+    "author_level": "HACKER 08"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem se lotil izdelave GUI vmesnika. Upam, da bo do konca tedna na voljo prva javna verzija, če bo koga zanimalo.\n\n\n\t\n\n\n\nZnal bo združevati mape, brisanje/dodajanje ključev,... Pač karkolit GMapTool omogoča.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Vse bo zanimalo.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Seveda me zanima in ti bom zelo hvaležen. Če pa boš naslednji teden slučajno na NTjih v Portorožu, pa to hvaležnost lahko izkažem tudi s kakšno rundo.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Tudi mene zanima!",
+    "author": "steni",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem našel nekaj minut prostega časa v službi in sem na quick&dirty način spacal verzijo, ki omogoča prikaz podatkov IMG datotek, združevanja IMG datotek v eno in dodajanja ključev. Za odstranjevanje ključev bi pa potreboval malce več časa in bo dodano v naslednji verziji. Če je kdo toliko pogumen, da bi lahko probal in mi javil če kaj od tega ne deluje, ter dal nasvet kako naj kaj popravim, bom zelo hvaležen.\n\nVerzija 0.1\n\n\t\n\n\n\nGUI bom polepšal. Delo z GMapTool.exe bom dal v svojo nit, tako da ne bo program \"zmrznil\", ko se v ozadju zaganja program. Ostalo so želje vas kot uporabnikov. Natančna navodila za delo tudi sledijo v naslednjih dneh. Hitra navodila pa so tu:\n\nBrskaj -&gt; Izberi IMG datoteke (lahko seveda več različnih), kar jih doda na seznam. Posamezne datoteke na seznamu se izbere z CTRL tipko ali pa SHIFT tipko za izbiro več zaporednih.\n\nInfo o mapi -&gt; Pokaže informacijo o mapi (regije, ključi, ID mape,...). Če imaš na seznamu več hkrati izbranih map, bo pokazal informacije o vsaki posebej.\n\nZdruži v eno -&gt; Obvezno izberi vsaj dve mapi. Vpraša te za opis (viden v informaciji o novo nastali IMG datoteki) in pa za novo lokacijo datoteke.\n\nDodaj ključ -&gt; Izberi eno ali več map in jim dodaj nov ključ (z vezaji ali brez).\n\nPS: GMapToolGUI.exe skopiraj v direktorij kjer se nahaja GMapTool.exe",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Že ta verzija mi precej olajša delo z GMapTool orodjem. Seveda bo še lažje ko bo delovala tudi funkcija: Odstrani ključ.\nSem na hitro potestiral:\n- info o eni ali več mapah deluje\n- združevanje dveh ali treh map v eno deluje\n- dodajanje ključev s presledki ali brez deluje\n- info, združi in dodaj ključ ne deluje na datotekah, ki so v imenikih, katerih imena   se začnejo z \"_\"\n\nŽelje:\n- odstranjevanje map iz liste\n- dodajanje novih map v listo ko so le te v različnih imenikih\n- drag & drop v listo\n\nŠe enkrat hvala za trud!",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Vse našteto se da naredit in bo tudi v naslednjih verzijah. Res škoda da nimam več časa. Služba in še popoldanski študij mi popolnoma zasedeta dan. Sem na hitro dodal še odstranjevanje kode iz IMG datoteke (samo iz ene hkrati). Žal GMapTool tega ne zna tako elegantno kot je dodajanje novih kod, ampak mora obstoječo IMG datoteko skopirati v novo s tem da ob procesu kopiranja odstrani kode.\n\nSam sem to rešil tako, da ko označiš datoteko iz seznama in izbereš, da želiš kodo odstraniti, dovolim tudi da je novo ime datoteke enako kot izbrano. In sicer najprej kreiram začasno datoteko in potem originalno pobrišem in začasno preimenujem pod starim imenom.\n\nPopravil sem tudi (vsaj upam da) bug z znakom _ v direktoriju.\n\nPripeta je verzija 0.2. Za danes je to vse ker moram v šolo.\n\nPrimus: Hvala za namige in če še kaj najdeš se priporočam.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Primus pravi:\n Seveda me zanima in ti bom zelo hvaležen. Če pa boš naslednji teden slučajno na NTjih v Portorožu, pa to hvaležnost lahko izkažem tudi s kakšno rundo.\n\t\t\n\t\tKlikni za razširitev\n\t\nČe pa ga ne bo, pa lahko meni plačaš rundo ker sem prebral post \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nTam bom od pon. naprej, končamo v četrtek.",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Mene na NT ne bo. Nimam časa. Mi pa ni dalo miru in sem dodal dve izmed želja. Vse razen drag in drop. Pripenjam v0.3.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Si bil pa hiter. Vse kar si dodal dela OK, le datotek, ki so na primer na imeniku \"e:\\__C D W__\\Garmin Karte\\gmapsupp.img\" še vedno ne zna \"obdelati\", jih pa prikaže v oknu \"Vhodne datoteke\". Tudi editiranje \"ukazne vrstice\" ne bi bilo odveč (se pa že malo izmišljujem \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )\n\nSicer pa stvar DELAAAAAAAAAAA!",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Še vsakemu kolegu s foruma, ki sem ga osebno spoznal, sem plačal pijačo. Samo povej kako te bom spoznal!",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem pa združil npr. Grčijo in Turčijo, ki sta samostojni nonmapsource karti in program združi obe karti, vendar pa sta karti prikazani defektno v Nuviju.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Če program GMapTool ne deluje z vsemi IMG datotekami tega ne morem popravit, ker ni moj program. Tole kar jaz delam je samo GUI zanj. Meni deluje odlično s IMG datotekami, ki sem jih naredil v mapsourcu (AdriaRoute, AdriaTopo, CN 2008, Navi Hungary, GPMapa,...). Testirano na Nuvi 360T in pa na fotrovem Edgu.\n\nSnecer: Lahko definiraš \"defektno\" in kaj dobiš ven kot output ko zaženeš preko GUI programa? Tisto s kompliciranimi direktoriji bom pa pogledal ko pridem domov. Meni je s direktorijem \"c:\\__ mape _ za___ garmin čæžđščæ\" delovalo brez težav.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Da ne bo pomote. Tvoj GUI je ok, saj je podlaga program gmaptool.exe (verzija 0.28 npr).\n\nZdružil sem karti turčije in grčije, ki obstajato samo na SD karticah, obstajata tudi mapsource verziji ampak neuradni, kjer ne dela iskanje (nepopoln uvoz v mapsource).\n\nGmaptool takšni dve karti lepo združi v eno datoteko in jih vidiš tudi v Nuviju 760 normalno odklenjeni.\n\nVendar pa manjka npr pri Grčiji če izbereš kak otok pol otoka, si kar v morju \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKo naložiš samo eno mapo je seveda vse ok.\n\nBom probal narediti kaki screen...",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "GmapTool v0.28   (C) AP\n\nWrong priority D:\\temp\\gmaptool\\Gmapsup1.img\n***************************************************\n\nLe katero cifro je treba dati \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nprimer:\nGMapTool.exe -p23 \"D:\\temp\\gmaptool\\Gmapsup1.img\"\n\nNe pusti spremeniti pa če probaš karkoli od od 1 naprej \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "presledek !\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t gmaptool -w -p 20 gmapprom.img\n\t\n\ngmaptool -i gmapprom.img\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n GmapTool v0.28   (C) AP\n\n\n\nFile:           gmapprom.img, length 37357568\nHeader:         28.03.2008 10:41:18, DSKIMG, xor 00h\nMapset:         [1] Greece v 1.30 (Latin) (c) Skordilis-Geodata\n\nMap              length s-f  CP    prio  PID  FID  name\n 00000821 IDX   3119601  2\n I0000335 TYP      2110  1\n I06A0800 MPC   3993360  5  1252   20 L    1  821  makedonia\n I06A0801 MPC   2557229  5  1252   20 L    1  821  thraki_aigaio\n I06A0802 MPC   4435212  5  1252   20 L    1  821  ipiros_thessalia\n I06A0803 MPC  10996979  5  1252   20 L    1  821  Attiki\n I06A0804 MPC   5118671  5  1252   20 L    1  821  kriti_aigaio\n I06A0805 MPC   4843413  5  1252   20 L    1  821  pelop_ionio\n I06A0806 MPC   2194606  5  1252   20 L    1  821  sterea\n MAPSOURC MPS       614  1\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Ja, sedaj je šlo spremeniti priority Grčije na 20, Turčije pa na 24, vendar je še vedno isto. Karta je ob prekrivanju še vedno \"defektna\".",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Takole. v0.6. Dodal sem:\n\n- izklop transparentnosti (če izberete Yes/Da bo označil vse mape kot transparentne, če pa izberete No/Ne pa transparentnost izključi)\n- prioriteta (izberite IMG datoteko in vnesite številko (privzeto imajo mape prioriteto 24, kolikor sem videl pri mojih mapah)\n- MapSource (ne deluje čisto do konca torej brez tistega dela z registri, v direktorij kjer je gmaptool.exe skopiraj še cgpsmapper.exe, potem pa lahko s MapSetToolKit.exe dodate zadevo dokončno v MapSource. Tole potrebuje še precej testiranja, ker sem našel samo AdriaRoute IMG za Mobile XT za testiranje in bi rabil še kaj drugega, da bi videl kaj vse dobim ven s -S parametrom in če je povsod enako. če je potem se tudi ta del da avtomatizirat v GUI-ju)\n- večjezični vmesnik (vse še ni prevedeno(error sporočila). prevedeni v angleški jezik je samo tekst na gumbih. bo v naslednji verziji.)\n- INI datoteka (v njej hranim tekst za posamezne jezike in pa zadnje direktorije (ne dela še v celoti), morda v nadaljnih verzijah še kaj drugega)\n- dodelano delo z nitmi (omogoča zaganjanje več ukazov zaporedno-ko se en konča se v novi niti zažene naslednji)\n\nOstalo je nespremenjeno. Lepo prosim, če lahko kdo stestira to novo verzijo. Sem odprt za kakršenkoli predlog.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Vse kar je delalo prej, dela tudi sedaj. Novih stvari še nisem utegnil preizkusiti (in jih žal do četrtka ne bom uspel - NTkonferenca), razen MapSource ukaza. Stvar dela, vendar bi bilo mogoče dobro, da bi novo kreirane datoteke naredil v nov imenik, da ne bo potrebno iskat novih datotek po imeniku, kjer so programi.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Primus pravi:\nStvar dela, vendar bi bilo mogoče dobro, da bi novo kreirane datoteke naredil v nov imenik, da ne bo potrebno iskat novih datotek po imeniku, kjer so programi.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJa sem pozabil napisati pod navodila. IMG datoteko, ki jo želimo odpakirati in priraviti za MapSource uvoz priporočam, da je v svoji mapi. GMapTool na žalost ne pozna parametra, ki bi se vezal s parametrom -S in bi mu lahko povedal v kateri direktorij naj odpakira IMG datoteko. Vsaj jaz ga nisem našel. \n\nČe ima kdo kakšno drugo idejo kot da se da IMG datoteka v svoj direktorij, kar na plano z njim. Programsko bi tole rešil tako, da ko izbereš IMG datoteko bi program vprašal v kateri direktorij naj jo odpakiram. Potem bi IMG datoteko kopiral v ta direktorij in jo tam odpakiral in potem izvirno datoteko v tem novem direktoriju izbrisal. Kaj pravite na to idejo?",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Lepo napreduješ  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n* transparentnost - poleg DA, NE, naj bo še gumb prekliči (vam, da je zgoraj desno križec)\n* Mapsource - tvoja spodnja ideja o kopiranju in brisanju je OK, kot samo SD verzija obstaja še Grčija, Turčija (videl, da se že prodaja tudi CD), Malta, Brazilija, Mehika,...\n\nedit:\nželel bi povečat okno,\nimam veliko praznega ekrana, a moram uporabljat drsnik \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "verzija 0.29\nhttp://www.anpo.republika.pl/files/gmaptool029.zip\n\nNimam časa za prevod\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n11.5.2008 - v0.29\n\t- wyswietlanie informacji o danych typ, trf\n\t- opcja -q\n\t- zmiana sposobu obs³ugi podzbioru SRT\n\t- wyliczenie numeru mapy pogladowej\n\t\t\n\t\tKlikni za razširitev\n\t\n\n-q - map without autorouting and DEM data",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Google translate pravi:\n\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\tTranslation: Polish &#187; English\n-- Display information about the type of data, trf\n-- The option-q\n-- How to handle the change subset of SRT\n-- Calculate the number of maps pogladowej\n\t\n\nNi mi čisto jasno kaj naj bi -q parameter naredil. Res škoda, da ni avtor napisal čisto vse možne primere uporabe parametrov.\n\nNo, delam že na verziji 0.7. Omogoča povečanje okna. Dodal sem tisti postopek za mapsource, ko skopiram IMG v nov direktorij in ga tam odpakiram, ter potem IMG pobrišem. Uvoz v register mi pa žal še ni uspelo naredit. Nimam časa, da bi dodobra pretestiral ta del. Spremenil sem tudi izbiro operacij. Nič več knofov, ker jih je bilo že preveč. Upeljal sem izbiro iz seznama. Če ima kdo boljšo idejo kar na plano z njo.\n\nPoleg tega moram poskrbet še za prevod vsega živega teksta, tako da bo verzija delovala tudi v angleškem jeziku. Zato tudi oznaka Beta. V prilogi. Komentarji dobrodošli...",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "V prilogi je nova v0.7a verzija. Dodal sem popolno večjezičnost. Vsak tekst je sedaj preveden tudi v angleščino tudi napake in se enostavno preklaplja z izbiro v meniju. Zadeva je dinamična, torej lahko vsak na novo prevede v nek drug jezik npr.:\n\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t[Lang_Latvian]\nVrednost=Tekst\n...\n\t\n\nŠe izgled:\n\n\t\n\n\n\nKončno sem rešil beleženje zadnje poti pri shranjevanju in odpiranju datotek. Sedaj si obe poti zapomne zapomni in tako ob odpiranju/shranjevanju odpre iz zadnje lokacije.\n\nProgram sem poslal tudi avtorju GMapToola in ga prosil, če mi lahko konkretno s primeri obrazloži kako se uporablja še ostale parametre. Zaenkrat brez odziva. Če ima kdo dostop do kakšnih tujih forumov z GPS vsebino, bi prosil če lahko objavi še tam.\n\nTo do lista:\n- ureditev uvoza v register pri MapSource uvozu\n- iskanje in odpravljanje bugov\n- ??? &lt;- vaši predlogi, zatorej na plano z njim\n\nEDIT: Se globoko posipam s pepelom. Po pomoti sem objavil mojo debug verzijo. Sem na novo priložil 0.7a.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nGood Work!",
+    "author": "matejdro",
+    "author_level": "HACKER 08"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Mislim, da je to uradna tema za GMapTool:\nhttp://www.garniak.pl/viewtopic.php?t=1314",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem objavil še tam. Mislim da je uporabnik POPEJ avtor tega programa.\n\nhttp://www.garniak.pl/viewtopic.php?t=2817\n\nLahko kdo od adminov prosim doda tole povezavo v prvo sporočilo te teme:\n\nhttp://freeweb.siol.net/akralj9/gmaptool/GMapToolGUI.zip\n\nNa tem naslovu bo vedno zadnja verzija programa.\n\nIn še zadnja slika programa:\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t[url=http://shrani.si/?n/ua/4n74VCLC/gmaptool.png][img]http://shrani.si/t/n/ua/4n74VCLC/gmaptool.jpg[/img][/url]\n\t\n",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Dodano.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Poiskusil sem z odstranitvijo ključev iz mape\n\ndela, dela in potem se na koncu (nov) file izbriše, naenkrat ga ni",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Drugače ga moraš preimenovati kingo, ne enako kot izvor.\nTo sem tudi jaz opazil.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Vem, drugače tako ali tako povozim source. Samo sem probal s parimi preimenovanji, pa vedno isto. Enostavno izgine ?",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Hmm. Še posebno sem se potrudil pri tem delu, da bi lahko shranjeval pod enakim imenom, ker GMapTool tega ne zmore. Presnami si zadnjo 0.7c verzijo iz povezave v prvem postu in poskusi s tisto. Meni deluje brez težav.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Hijacker pravi:\n Hmm. Še posebno sem se potrudil pri tem delu, da bi lahko shranjeval pod enakim imenom, ker GMapTool tega ne zmore. Presnami si zadnjo 0.7c verzijo iz povezave v prvem postu in poskusi s tisto. Meni deluje brez težav.\n\t\t\n\t\tKlikni za razširitev\n\t\nDela!!!  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zanimivo zakaj prej ni, ker tega dela nisem spreminjal odkar sem ga implementiral. Se morda spomniš katero verzijo si prej imel gor?",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Primer ko je naložena samo Grčija.\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nPrimer ko sem naložil oz. združil obe.\nIskanje lepo dela a zanimo pri karti defekt \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Najbrž se karti prekrivata a ne. Ma Turčija tam morje in gre \"preko\".\n\nHecno ne. Ker drugje ko niso tako mejni je karta ok.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Si poskusil odkljukati eno karto in izbrati samo eno? Res ne vem zakaj ne bi delovalo. GMapTool.exe ima tudi parameter -p - map priority. Ampak nisem čisto prepričan kako naj bi deloval. Morda bi se dalo nastavit prioriteto določeni karti v IMG datoteki. Če ga kdo naštudira in mi napiše pravilno ukazno vrstico s tem parametrom, bom še to dodal v program.\n\nPrimus: Prosim napiši mi celotno ukazno vrstico, ki se ti zažene če imaš \"komplicirane\" direktorije. Bom poskusil pri sebi. Kot sem že napisal meni deluje ne glede na direktorij, ker itak pošljem vse poti in imena IMG datotek v dvojnem narekovaju.\n\nPrilagam novo 0.4 verzijo. Malce sem popravil izgled. Omogočil sem tudi ročno urejanje ukazne vrstice (ne priporočam), ter ročno zaganjanje ukazov iz nje (recimo ping, ipd.). Dodal sem tudi opcijo drag&drop IMG datotek v program, ter preverjanje duplikatov. Seznam datotek je sedaj tudi posortiran po abecedi (direktorij+ime), tako da se lažje najde. Brisanje iz seznama je možno tudi s DELETE tipko. Ob pritisku tipke ESCAPE pa se program zapre, tako da ni treba klikat na Zapri gumb ali na X.\n\nPreostane mi samo še dodajanje celotne procedure izvajanja DOS ukazov v svojo nit, tako da program ne bo izgledal kot da je \"zmrznil\". Ter seveda Vaše želje in popravilo vseh novo odkritih hroščev. Vse to v naslednjih verzijah. Hvala vsem, ki pomagate pri testiranju.\n\nŠe slikca kako izgleda:\n\n\n\t\n\n",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem pravkar z najnovejšo verzijo 4 preizkusil in dela tudi v imenikih z \"_\" in \" \" (GMapTool.exe -i \"E:\\__C D W__\\Garmin Karte\\2.(AR+SLO_el+SCG+BCjadran+ATopo)gmapsupp.img\")\n\nDanes imam namen preizkusiti združene karte še na Nuviju, da vidim če bom imel enake probleme kot Snecer.\n\nTako da ugotavljam, da tvoj GUI dela korektno in je nad pričakovanji udoben za uporabo, GMapTool v0.25 pa dela kot pač dela.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zadnji Gmaptool je v.0.28.\n\nHijacker? Samo ene karte pa potem nisem odkljukal v tej kompilaciji. Samo kolikor vidim, se ravno tam prekrivata na tem otoku. Bom poskusil.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Hijacker pravi:\nGMapTool.exe ima tudi parameter -p - map priority. Ampak nisem čisto prepričan kako naj bi deloval.\n\t\t\n\t\tKlikni za razširitev\n\t\nZ njim določiš kateri zemljevid se vidi, če sta naložena dva zemljevida z istim področjem.\n\nObstaja tudi \"prozorni zemljevid\", kar pomeni, da se na praznem prostoru izriše tudi zemljevid, ki je pod njim.\nAli Gmaptool podpira pretvorbo prozorni &lt;&gt; neprozorni zdaj na pamet ne vem.\n\nGUI še nisem poskusil, a vse pohvale.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nPriporočam le, da je v prvem sporočilu vedno link do zadnje verzije. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Tole s -p se sliši zelo zanimivo in rade volje imlementiram v GUI. Problem je samo kako se ta parameter uporablja. Predvidevam, da pride prav v primeru ko imaš recimo AdriaTopo+AdriaRoute v isti IMG datoteki in se tem parametrom določih katera izmed teh dveh map ima prioriteto, torej da ti jo kaže pod zemljevid. Bom se pozabaval čez vikend. Če pa kdo prej naštudira pa kar na plano s ukazno vrstico. Enako je z ostalimi parametri.\n\nGlede prvega sporočila in linka do zadnje verzije. Na žalost mi ne pusti urejati mojega prvega sporočila, ker pravi da je preteklo preveč časa, da bi ga popravil. Morda bi lahko kdo od adminov samo napisal, da je na voljo tudi GUI in da naj se pobrska naprej po temi za prenos zadnje verzije.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "sem preveril:\ntransparentnost je stikalo -t in nato zapis v novo datoteko ali z -w v obstoječo\n\nSam GUI je odličen  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nželje:\n* podrobne informacije o datoteki -i -v\n* brisanje log okenca\n* poravnane kolone v log (imam občutek, da je namesto tabulatorja presledek)\n\nče boš imel æas\n* polavtomatski uvoz v mapsource (karte, ki obstajajo samo kot SD variante), potrebuje se še cgpsmapper in Mapsettoolkit (opcija)\n\nNarediš ga tako:\nPrimer batch datoteke\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t gmaptool -S gmapsupp.img\ncgpsmapper mapset00.mp\nMapSetToolkit\n\t\nV MapsetToolkit uporabiš gumb \"Install existing mapset\"\n\nLahko pa greš mimo, če znaš s pomočjo Gmaptool direktno nastavit spodnje stvari v registru.\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Garmin\\Mapsource\\Families\\FAMILY_708]\n\"ID\"=hex:c4,02\n\"IDX\"=\"C:\\\\Garmin\\\\FAM_708\\\\product.mdx\"  [COLOR=red] Te vrstice ne sme biti [/COLOR] \n\"MDR\"=\"C:\\\\Garmin\\\\FAM_708\\\\MDRMAP.img\"\n\"TYP\"=\"C:\\\\Garmin\\\\FAM_708\\\\I00002C4.TYP\"  [COLOR=red]opcija[/COLOR] \n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Garmin\\Mapsource\\Families\\FAMILY_708\\1]\n\"Bmap\"=\"C:\\\\Garmin\\\\FAM_708\\\\basemap.img\"\n\"Loc\"=\"C:\\\\Garmin\\\\FAM_708\\\\\"\n\"Tdb\"=\"C:\\\\Garmin\\\\FAM_708\\\\product.tdb\"\n\t\n\nČe ti bo slučajno dolgčas.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem preizkusil na N250 in N760 naložiti karto narejeno v celoti v MapSourceu in  narejeno z GUI in GMapTool (seveda z enako vsebino), pa nisem opazil nobene razlike v prikazih in delovanju.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Matko: V četrtek imam izpit tako da bom na tesnem s časom. Bom pa upošteval navodila in dodal kar si napisal. Če te prav razumem je za transparentnost čisto isti ukaz kot za odstranitev kode (torej kopiranje v novo datoteko s novim -t stikalom). Lahko potrdiš? Glede uvoza v MapSource bi se tudi dalo, saj lahko brez problema dodajam ključe tudi v register (problem zna biti samo s AV programi, ker take programe radi označujejo kot viruse). Se bom pozabaval še s tem v naslednjih dnevih.\n\nPrimus: Odlično. Potem samo še rabim potrditev od Snecerja, kaj točno bi lahko bilo narobe, da se njemu prekriva. Po moje bi tu prišel v poštev -p parameter, da se določi prioriteta map... Hmm...",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "-t naredi transparentnost \n-n ukine transparentnost\n\n-p 1 je najpomembnejši zemljevid , 31 - najmanj\ntransparetni zemljevidi so nad njimi\n\n@snecer\n100% je problem, da je na eni mapi morje, na drugi pa otok.\nuvozi v Mapsource in preveri",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Ja, saj je zadeva logična. To je isto kot če bi Slovenci pa Hrvati delali dve ločeni karti, pa bi se Piranski zaliv prekrival \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDokaz da se karti prekrivata.\n\nKo je Grčija vklopljena je ok.\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKo je pa Turčija se pa vidi da otoka \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKo sta oa obe vklopljeni je pa tak..\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nTako da bi bilo fajn po moje da se kot default doda opcija \"transparentna karta\"?\nKar seveda ne vpliva na prioriteto.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Eno popoldne dela in na voljo je nova 0.5 verzija. Precej novosti v jedru programa, tako da niso vidne (delo z nitmi). Program ne \"zmrzne\" več ko se zaganjajo ukazi. Upošteval sem precej želj. Ostalo v naslednjih dnevih. V seznamu datotek sem dodal bližnjice INSERT (open dialog), DELETE (izbris označene mape iz sezname) in CTRL+A (označi vse mape). Brisati se da tudi vsebino loga ali pa celoten tekst s eno tipko skopirati v odložišče. Zagon programa lahko po novem tudi prekinete (v ozadju naredi KILL procesa).\n\nNov je detajlni pregled IMG datoteke. Ter seveda nova možnost pretvorbo mape kot transparentno.\n\nPrej:\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t I0668800 TRE   5C00h     25057\n\tMap 668800 (6719488), FID 709, PID 1, Region 1,1\n\tDate 14.09.2007 12:39:38, Priority 24, Locked\n\n I0668800 MPC   2507280  6  1252   24 L    1  709  Bács-Kiskun megye  &gt;NaviGuide Hungary 4.61\n\t\n\nPotem:\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t I0668800 TRE   5C00h     25057\n\tMap 668800 (6719488), FID 709, PID 1, Region 1,1\n\tDate 14.09.2007 12:39:38, Priority 24, Locked, Transparent\n\nI0668800 MPC   2507280  6  1252   24 LT   1  709  Bács-Kiskun megye  &gt;NaviGuide Hungary 4.61\n\t\n\nDeluje samo na eni IMG datoteki hkrati. Lahko se uporabi na že združeni IMG datoteki, kar bo vsa področja pretvorilo v transparentna. Kaj to pomeni za samo napravo in prikaz zemljevidov ne vem. Fotr je na dopustu in je vzel oba Garmina s seboj. Snecer, če boš le utegnil prosim poskusi.\n\nPa ne pozabit. Ukazno vrstico se lahko tudi ročno ureja (enter zažene ukaz), ter tako testira razne parametre. Poskusite napisati ukaz: ping localhost -t\n\nČe kdo še kakšen upraben parameter GMapTool-a naštudira kar na plano z njim in ga bom dodal. \n\nLep vikend...",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Odlično napreduje  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem probal pa je še vedno isto. Sem skupno datoteko dal transparnetno (to itak po logiki ne sme delat), potem pa sem 1x dal eno mapo transparentno, pa 1x drugo mapo in združeval.\n\nŽal ni prijelo, zgleda je kak drug ukaz?",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zdaj bi bil pa že čas, da začneš razmišljat tudi o angleški različici programa in predvsem, da dodaš About in skratka nekaj \"reklame\" zase. GUI se bo slej ko prej na netu razširil med vsemi navdušenci, ki se ukvarjajo s kartografijami.\n\nIn čisto smo pozabili na zvezdice! Popravljam! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Snecer pravi:\nŽal ni prijelo, zgleda je kak drug ukaz?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nUkaz za transparentnost dela, saj doda transparenti flag posameznim regijam. Samo učinka ni \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. Morda bo tista prioriteta pomagala. Bo v naslednjih verzijah. Tudi možnost izvoza iz IMG v MapSource bo dodano.\n\nBom naredil tudi angleško verzijo oziroma SLO/ANG, ker dva programa je že hudič vzdrževat. Samo ne vem kje bi to lahko objavil, da si bo folk to lahko snel dol. Sicer pa reklame ne rabim. Ta program sem napisal zato da obnovim programiranje in pa da mi ni treba ga srat s BAT datotekam. Nima pa smisla, da bi ga skrival.\n\nHvala za zvezdice in pa ALT-e. Sem že nabavil prvo srečko v Alteriji \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zares super zadeva. Alt-i za še eno srečko nakazani \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "steni",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Snecer pravi:\n Sem probal pa je še vedno isto. Sem skupno datoteko dal transparnetno (to itak po logiki ne sme delat), potem pa sem 1x dal eno mapo transparentno, pa 1x drugo mapo in združeval.\n\nŽal ni prijelo, zgleda je kak drug ukaz?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTransparentnost te ne bo rešila, ker imaš layer morje.\nObnese se pri TOPO kartah, če le nimajo gozda.\nAli kakšnih dodatnih, ki vsebujejo samo POI,\nali dopolnjuje sicer prazno ozemlje.\n\nRešitev je le ta:\nTisti karti (tu verjetno Grčija), ki ne sega čez mejo, dodeli višjo pomembnost (manjša številka prioritete).\n\n\nedit: pobil grdega tiskarskega škrata  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Pri obeh vidim priority 24.\nBomo hijackerja prosili da to naredi kasneje po izpitu v novi verziji.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Njupalo pravi:\n Z GmapTool puskušam razdružiti CNE in na koncu dobim tole obvestilo:\n\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\tZapisovanje unl gmaptool101.unl, kode 1\nVeč produktov v img, ustvarjanje TDB prekinjeno, poskusi opcijo -f.\n\nAktivne so napake, rezultat napačen,\nKonec\n\t\nJe napaka v img datoteki ali jaz kaj delam narobe? Kje bi naj dodal opcijo -f?\nKer ni narejen TDB datoteka zadeve seveda ne morem uvoziti v MS.\n\t\t\n\t\tKlikni za razširitev\n\t\nIsta zadeva. Ampak ker gre za gozdarsko mapo nimam kje dobiti MS varijante. Kaj bi moral narediti?",
+    "author": "s_samotar",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Hijacker pravi:\n Zanimivo zakaj prej ni, ker tega dela nisem spreminjal odkar sem ga implementiral. Se morda spomniš katero verzijo si prej imel gor?\n\t\t\n\t\tKlikni za razširitev\n\t\nJa, B",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "parameter -q odstrani podatke o reliefu (DEM) in vodenje (isto, kot kljukica spodaj levo v Mapsourcu)\nSmiselna se mi zdi tudi pripomba Poljakov, da najprej izbereš operacijo in jo nato potrdiš z RUN.\n\nGlede registra:\nglej samo zadnjo vrstico izpisa parametra -i:\n\nrecimo za AdriaRoute v2.0\n  F: PID 1, FID 708, AdriaROUTE 2.00\n\nNajprej preveriš, če imaš pod Data MPS, samo eno vrstico z F:\nSicer javiš napako. \"V img je več različnih zemljevidov.\"\n*************************************************************\nWindows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Garmin\\Mapsource\\Families\\FAMILY_708]  namesto FAMILY_708 vstavi vsebino po drugi vejici, AdriaROUTE 2.00, sicer je lahko tu karkoli samo da bo pregledno \n\"ID\"=hex:c4,02   številko za FID pretvoriš v HEX in zamenjaš dvojici  708(dec) = 02C4(hex) iz tega sledi c4,02  \n\"IDX\"=\"C:\\\\Garmin\\\\FAM_708\\\\product.mdx\"   Te vrstice ne sme biti, ker index ne dela!!!  \n\"MDR\"=\"C:\\\\Garmin\\\\FAM_708\\\\MDRMAP.img\"  mapa z zemljevidi (pazi na podvojene \\) + datoteka, ki ima v imenu mdr in se konča na .img  \n\"TYP\"=\"C:\\\\Garmin\\\\FAM_708\\\\I00002C4.TYP\"  mapa z zemljevidi + datoteka, ki se konča na .typ, če obstaja sicer tega NI  \n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Garmin\\Mapsource\\Families\\FAMILY_708\\1]\n\"Bmap\"=\"C:\\\\Garmin\\\\FAM_708\\\\basemap.img\"   mapa z zemljevidi + mapset00.img  \n\"Loc\"=\"C:\\\\Garmin\\\\FAM_708\\\\\"  mapa z zemljevidi \n\"Tdb\"=\"C:\\\\Garmin\\\\FAM_708\\\\product.tdb\"  mapa z zemljevidi + mapset00.tdb  \n\n***********************\nUpam, da je postopek dovolj razumljiv.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\nEdit: Gumba zgoraj levo bi preimenoval v dodaj, odstrani in izberi vse zgoraj nad vsemi naj piše seznam.\n\nIzhod iz programa bi dal nekam drugam, mogoče spodaj desno.",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zelo razumljivo in tudi izvedljivo. Se bom pozabaval naslednji teden. Ta vikend grem končno lahko na en krajši dopust.\n\nPS: Gumbi zgoraj desno si verjetno mislil?",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Gmaptool v0.30\nhttp://www.anpo.republika.pl/files/gmaptool030.zip\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n 21.5.2008 - v0.30\n\t- poprawki odczytu pozbioru TRE\n\t- poprawka tworzenia rekordu L\n\t- poprawka w tworzeniu nazwy mapy w TDB\n\t- opcja -o w komendach -s i -S\n\t- opcja -e\n\t- poprawki dokumentacji\n\t- porz±dkowanie kodu\n\t\t\n\t\tKlikni za razširitev\n\t\n\ngoogle translate\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n \t\n21.5.2008 - v0.30\n-- Amendments to read pozbioru TRE\n-- Amendment creating a record L\n-- Amendment in the name of creating maps in TDB\n-- Tier things up-to-s and S -\n-- E-option\n-- Amendments documentation\n-- Organizing code\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Kul. Problem je edino čas \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. Bom probal čez vikend kaj na programu delat. Mam to-do listo že pripravljeno.",
+    "author": "Hijacker",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Gmaptool v0.31\nhttp://www.anpo.republika.pl/files/gmaptool031.zip\n\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n 22.5.2008 - v0.31\n\t- poprawki opcji -we (thanks E_I)\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Gmaptool v0.32 (windows verzija)\nhttp://www.anpo.republika.pl/files/wgmaptool032.zip",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.33\nhttp://www.anpo.republika.pl/files/wgmaptool033.zip",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.35\nhttp://www.anpo.republika.pl/files/wgmaptool035.zip",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.36\nhttp://www.anpo.republika.pl/files/wgmaptool036.zip",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Na Navigo-sistemu (izdelujejo AR) so mi povedali, da več kart lahko pošiljaš tudi tako, da najprej označiš vse karte za pošiljanje in nato vse skupaj pošlješ v napravo.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "zakon: \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nTo orodje je za karte, ki so že narejene po postopku iz Mapsourca ali pa jih ni mogoče označiti v Mapsourcu (prednaložene karte na SD karticah).",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Tole si pa ZAKON odkril VAAAOOOOUU in to si prav na navigo zvedel huuuddoooo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Nisem spremljal cele teme, me pa zanima nekaj.\nSe da s tem orodjem zmanjšati \"kocke\" iz karte?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDa razložim. Imam GPS V. od Garmina, ki ima komaj 19MB pomnilnika. Nekatere kocke iz AR in AT pa že skoraj presegajo to velikost. Včasih pa je kakšno področje, ki ga pokrivata dve kocki in takoj prebijem mejo 19MB. \n\nlp.- \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Zgaga",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Forum ja namenjen temu, da se pač pomaga reševati probleme, ne pa temu, da se eni delate HUUDOOO pametne. Lahko bi tudi ti posredoval kakšno pametno informacijo. Kje sem jaz kaj  \"zvedu\" kot praviš ti sploh ni pomembno, važno je, da je uporabnik dobil eno informacijo več, kako naložiti  več kart skupaj. Eni na forumu pač imamo legalne karte in nimamo teh problemov, pa se vseeno trudimo pomagati tistim, ki le teh nimate.\n\nLP\nP.S. Tema zaključena",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik zakon pravi:\n Forum ja namenjen temu, da se pač pomaga reševati probleme, ne pa temu, da se eni delate HUUDOOO pametne. Lahko bi tudi ti posredoval kakšno pametno informacijo. Kje sem jaz kaj  \"zvedu\" kot praviš ti sploh ni pomembno, važno je, da je uporabnik dobil eno informacijo več, kako naložiti  več kart skupaj. Eni na forumu pač imamo legalne karte in nimamo teh problemov, pa se vseeno trudimo pomagati tistim, ki le teh nimate.\n\nLP\nP.S. Tema zaključena\n\t\t\n\t\tKlikni za razširitev\n\t\n\na?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Zgaga",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik leni pravi:\n Tole si pa ZAKON odkril VAAAOOOOUU in to si prav na navigo zvedel huuuddoooo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nForum ja namenjen temu, da se pač pomaga reševati probleme, ne pa temu, da se eni delate HUUDOOO pametne. Lahko bi tudi ti posredoval kakšno pametno informacijo. Kje sem jaz kaj \"zvedu\" kot praviš ti sploh ni pomembno, važno je, da je uporabnik dobil eno informacijo več, kako naložiti več kart skupaj. Eni na forumu pač imamo legalne karte in nimamo teh problemov, pa se vseeno trudimo pomagati tistim, ki le teh nimate.\n\nLP\nP.S. Tema zaključena",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Tebi zgaga se opravičujem. Moj odgovor je bil namenjen leniju.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zakon tole. Če boš verjel ali ne, sem napisal kar nekaj bolj koristnih informacij kot ti in če boš verjel je tudi tale tvoja huuudoooo dobra informacija večkrat napisana, seveda v zato primernih temah, recimo, če bi si prebral navodila \"mapsource za telebane\" potem sploh ne bi rabil kontaktirat na navigo. \nZato se mi zdi,oprosti, neumno da si šel spraševati na navigo nekaj kar ti piše v vseh navodilih in tudi na našem forumu to piše večkrat in kot član foruma z nekaj malega kilometrine bi to lahko zasledil. Pri vsaki stvari je pametno najprej navodila prebrat.\nUpam da mi nisi preveč zameril direktnosti.\nSicer tole najino prerekanje nima nobene veze z temo, ampak je pa sedaj tale gmaptool sedaj že kar v osnovi narejen tako kot ga je naš uporabnik naredil.",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Zgaga pravi:\n Nisem spremljal cele teme, me pa zanima nekaj.\nSe da s tem orodjem zmanjšati \"kocke\" iz karte?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDa razložim. Imam GPS V. od Garmina, ki ima komaj 19MB pomnilnika. Nekatere kocke iz AR in AT pa že skoraj presegajo to velikost. Včasih pa je kakšno področje, ki ga pokrivata dve kocki in takoj prebijem mejo 19MB. \n\nlp.- \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nkocke ne moreš zmanjšat, lahko le odstraniš routabilne in višinske (DEM) podatke",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Ali obstaja program s katreim poi .gpi spremeniš v poi .gpx",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Obstaja. Klikni na link pa ga downloadej, jaz uporabljam tega\nhttp://www.softpedia.com/downloadTag/GPI2GPs",
+    "author": "inaj",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik zakon pravi:\n Ali obstaja program s katreim poi .gpi spremeniš v poi .gpx\n\t\t\n\t\tKlikni za razširitev\n\t\nGPSbabel",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "S katero verzijo dela gui ki sem ga dobil s prve strani? Potegnil sem si gmaptool 0.38 pa mi javi napako? A je treba morda kaj popravit v ini datoteki.\nŽe vnaprej hvala",
+    "author": "tic",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Poleg gmaptoolGUI moraš imeti tudi datoteko gmaptool.exe, ki jo GMapToolGUI uporablja. GUI je namreč samo prijazen uporabniški vmesnik za gmaptool.exe, ki pa je poljskega izvora.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "pozdravljeni, ker sem nov na foromu in tudi v navigacijah se obračam na vas. \nKupil sem si Garmin nüvi 205. Ta navigacija naj bi imela že nekaj map naloženih, in sicer City navigator europe NT 2008 [1]Alps, vendar pa podrobne slovenije ni med njimi. Sam sem si tudi naložil program za mape (MapSource) in ko izberem tam mapo jo lepo shranim na SD kartico. potem pa ko na novo zaženem garmina mi pa sploh noter ne pride napiše nekaj povezano s kodo, DEMO. \nmi zna kdo pomagati pri tem problemu?\nsem tudi prebral te poste in mi nekako še ni vse jadno.\n\nhvala za pomoč.",
+    "author": "jure1985",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Moral boš iti vsaj čez tole:\n\nhttps://www.alter.si/tabla/showflat.php/Cat/0/Number/209908/an/0/page/0#209908\npa tole\nhttps://www.alter.si/tabla/showflat.php/Cat/0/Number/205477/an/0/page/0/gonew/1#UNREAD.\n\nCity Navigator NT rabiš, pa mogoče še AdriaRoute pa AdriaTopo.",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "no sedaj pa mi je končno uspelo. hvala za pomoč",
+    "author": "jure1985",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zdravo, mene pa zanima če se da mapa ki je na sd kartici v obliki gmapsupp.img spraviti v Mapsource, tako da bi jo lahko tak naložil na napravo, npr samo del kot samo Slovenijo npr. od Adriarouta. Hvala za odogvor, Matej",
+    "author": "Mato82",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Da se, samo če si začetnik je prezakomplicirano, raje si dolpotegni AR in jo odkleni in potem z mapsourcom naloži kar potrebuješ.",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Pravkar sem z neta pobral eno mapo (IMG datoteko) in sem jo skusal z GMAPTOOLom nalozit na mapsource. Pomagal sem si s Hijackerjevim uporabniskim vmesnikom kjer sem izbral \"Odpiranje mape in prenes v Mapsource\" . No program melje in melje, vendar je zaenkrat izpisalo le to:\n\nætevilo prekopiranih datotek:         1\n***************************************************\n\nSedaj pa cakam ze vec kot uro in ni videti konca. Velikost datoteke je 150MB. \nJe to normalno da je treba tok casa cakat?\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "V čem je fora da uz neta pobiraš .img datoteko??? in potem to datoteko želiš vnašati v mapsource???\nA ni vseeno če si dol potegneš komplete zemljevid recimo AR in lepo inštaliraš odkleneš in to je to. Itaq moraš tudi tisto mapo odkleniti potem.",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Fora je da se ni instalacijske mape na netu ampak samo IMG datoteka mape Land Navigatorja Italije. No usaj jaz je nisem zasledil.\n\nAli je nekaj narobe s to IMG datoteko ali pa jaz delam kaj narobe.\n",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Nato še zaženeš program MapSetToolKit.exe s katerim vneseš karto v register...",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "A tako... A da bi pa celo karto na navigacijo naložil pa ne gre.. Ja sej vem sa je pa najbolj simpel \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "@Snecer\nNe morem ker jo MapSetToolKit ne zazna nove mape\n\n@Leni\nSem tudi to probal, pa je mapa zaklenjena. Bom probal z GMapToolom odstranit kljuc in pol ponovit vajo z navigacijo.\n\nDrgac pa lahko posredujem link do mape, pa naj proba se kdo ce ma voljo\nLP\n\n   http://www.megaupload.com/?d=EEZ5E5ZH ",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Mapa ima verjetno svoj mapID preko katerega lahko generiraš ključ, ki ga potem dodaš v unl datoteko in bi moralo delat, a si to že probal.",
+    "author": "leni",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Smo ugotovil da ni mapa Land Navigator Italia, ampak CN2008 zemljevidi Italije. Tako da sem opustil nadaljno \"zaje*avanje\".\n\nHvala za vse info\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "kaj ima kdo dejansko Land Navigator Italia?? .. to bi se melo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "TeMpL",
+    "author_level": "2000. registrirani uporabnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Mislim da zadeve se ni na crnem trgu. Drugace bi se naslo z iskanjem. \nBi bilo pa lepo imet ja  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zadnjo verzijo Norton Internet Security 2013. Že leta ga  imam namesto psa  v bajti.",
+    "author": "QBR",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Pojdi še enkrat na stran za prenos in boš na levi strani videl \" Previous release \" in klikni na to in prenesi staro verzijo, da vidiš, če bo tudi tukaj kaj gnjavil protivirusni.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Naredil tako. Tudi tega mi skensla. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "QBR",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Poskusil tudi tretjo opcijo - Non Unicode version, ki pa jo tudi zavrne.\n \nTakole to zgleda:\n \n\t\n\n",
+    "author": "QBR",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Men ESET NOD32 nič ne jambra.",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Osebno uporabljam:\n\n- Windows Defender (Win 8 PRO)\n- SUPERAntiSpyware Professional\n- Malwarebytes Anti-Malware (PRO)\n\nin pri meni deluje vse OK ...\n\nPredlagam, da preizkusite \"VirusTotal\" - Brezplačen spletni pregledovalnik virusov in ostalih zlonamernih programov\nhttp://www.virustotal.com/\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nFree Online Virus Scan Using Multiple Anti-Virus Tools\nVirus scan result for: GMapToolSetup08159b.exe[/COLOR]\n\n\nP.S.:\nPrevious release\nFile name: GMapToolSetup08143d.exe\nVirus scan result",
+    "author": "Genius3",
+    "author_level": "GPS dopisovalec"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Norton ga je vedno skenslal ker ga zazna kot fals positive. Poznam iz lastnih izkušenj. Enostavno ga dodaj pod izjeme in imel boš mir.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "GMapTool 0.8.186  of 16.1.2014\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n--Changelog-----\n16.1.2014 - v0.8.186\nclarification of copyright info in TDB-\n\nGerman translation by Doc_Koordinate.\n\nMore Infos\n\nWindows Setup download\n\n\nCaty, thank you.",
+    "author": "Genius3",
+    "author_level": "GPS dopisovalec"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "GMapTool 0.8.186a \nof 30.1.2014\n\nChangelog:\nCzech translation by thomasino007 from\n\nInfo\n\nDownload Windows setup (GMapToolSetup08186a.exe): Here",
+    "author": "Genius3",
+    "author_level": "GPS dopisovalec"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Imam vprašanje, ki mogoče ne spada ravno sem. Imam KMZ datoteko v Google Earthu s točkami in iz nje bi rad naredil GPx za v Garmina, da bi se teh točk lahko peljem.\nPretvorbo mi je enkrat že uspelo naredit online (na neki spletni strani), vendar bi to rad naredil lokalno.",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Poskusi z RouteConverter.",
+    "author": "janezpesec",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "odlično! dela!",
+    "author": "gig",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Točke ti je preneslo v Garmin, kako bi se dalo pa prenesti pot?\n\nNarisal bi neko pot izven cest in bi jo potem rad prenesel v Garmin.\nTorej rad bi dodal ali zamenjal to mojo narisano pot na Garmin tako, da bi mi garmin potem kazal črtice kot že prehojena pot.\n\nTega mi nikakor ne uspe narediti.\nDatoteke current.gpx mi niti pod razno ne uspe zamenjat s spremenjeno datoteko.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "S tem GMaptoolom sem razdružil datoteki, da bi mi naredil mapsource verzijo pa mi nikakor ne uspe.\nVedno napiše, da manjka neka mapset.img datoteka, ko sem jo dodal kar sam, mi jo je pa naložilo vendar prikaza zemljevidov v mapsourceu še vedno ni.\n\nKaj delam narobe?\nRad bi imel neke karte iz img datoteke v mapsourceu, da vidim kakšne so.\n\nA delujočo karto po želji se pa naredi tako, da .img datoteko najprej razdružiš, nato ven pomečeš karte, ki ti niso všeč, nekatere dodaš in nato spet to zbirko različnih kart združiš?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sporočilo je zbrisal(-a) Genius3",
+    "author": "Genius3",
+    "author_level": "GPS dopisovalec"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "GmapTool v.0.8.220 of 24.7.2015\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n--Changelog-----\n\nchanges in FAT parsing\nbasic support for SID files\nsplit to empty maps creates list for OSM splitter\ndetects Garmin signature\nAlbanian language update by Korabi\n\nMore info:\nhttp://www.gmaptool.eu/en\n\nWindows Setup download:\nhttp://www.gmaptool.eu/sites/default/files/GMapToolSetup08220.exe\n\n\nThanks to Caty",
+    "author": "Genius3",
+    "author_level": "GPS dopisovalec"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "GMapTool v.0.8.220a\n(17.08.2015)\n\nPosodobljeni nekateri prevodi:\n\nhttp://www.gmaptool.eu/en/content/windows-setup\n\nhttp://www.gmaptool.eu/sites/default/files/GMapToolSetup08220a.exe",
+    "author": "Genius3",
+    "author_level": "GPS dopisovalec"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Z GmapTool puskušam razdružiti CNE in na koncu dobim tole obvestilo:\n\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\tZapisovanje unl gmaptool101.unl, kode 1\nVeč produktov v img, ustvarjanje TDB prekinjeno, poskusi opcijo -f.\n\nAktivne so napake, rezultat napačen,\nKonec\n\t\nJe napaka v img datoteki ali jaz kaj delam narobe? Kje bi naj dodal opcijo -f?\nKer ni narejen TDB datoteka zadeve seveda ne morem uvoziti v MS.",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Če boš razdružil CNE ti potem NE bo delovalo iskanje, če boš tako karto dal nazaj na napravo.\n\nPoišči mapsource verzijo CNE in si naredi img po svoje.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik popotnik pravi:\n Če boš razdružil CNE ti potem NE bo delovalo iskanje, če boš tako karto dal nazaj na napravo.\nPoišči mapsource verzijo CNE in si naredi img po svoje.\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala za opozorilo! Sem danes cel dan porabil, da bi zadevo uredil in na koncu v MS nisem videl ozadnja CNE in tako nisem mogel izbrati kaj bi rad v img datoteki.\nBom se držal nasveta!",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "KSZ:\n\nIzšel je GmapTool v0.39:\nmed drugim je dodana opcija za spremembo datuma zemljevida",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "10x",
+    "author": "Jado",
+    "author_level": "SCANIA, na uro ziher 140"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "A mi lahko en na ZS pove, kako se nek image karte pošlje na Garmina?",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "GmapTool je program, GmapToolGui pa je vmesnik za ta program. Zakaj ko hočem vstaviti šifro na GmapTool mi to stori v eni sekundi, pri GmapToolGui, pa traja... ker potem raje prekinem? Gre za isti img. A je treba še kaj narediti pri vmesniku?",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.40\n\nhttp://www.anpo.republika.pl/files/wgmaptool040.zip",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Hm morda eno začetniško vprašanje...\nImam prenešeno zadnjo verzijo GMapTool-a (0.4.0) in zadnjo verzijo GMapToolGUI-ja (0.7c).\n\nV vrhnjem oknu izberem neko mapo, ki sem jo naredil v MapSource-ju (*.img).\nČe izberem katerokoli izmed operacij iz spustnega seznama, mi tisti zeleni drsnik (ki kaže napredovanje operacije), samo skače gor in dol, rezultata pa pri nobenem izmed ukazov ni. Pustil sem tudi da dela 5 min, pa v Log oknu ni ničesar, tako da moram operacijo prekiniti z gumbom Prekini.\n\nIma kdo morda podobne težave?",
+    "author": "Citam",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.40 ima že original GUI, zato ne rabiš tega dodatnega, ki ga je naredil uporabnik tega foruma",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Hvala Matko!\n\nNisem prej nikoli videl uradne verzije pa nisem vedel, kako je/mora izgledati. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Citam",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "jaz ima težavo z delovanjem tega GUI.\nželim odstraniti ključ iz gmapprom.img \n\nV GmaptoolGUI izberem vhodni .img, izberem \"odstranitev ključa iz mape\" me vpraša za ime ter pot do nove .img.\nko to potrdim, se ne zgodi nič. Slider teče naprej in naprej vendar se ne zgodi nič.\n\nČe kreiram .bat datoteko v kateri je zapis [GMapTool.exe -m \"Grcija\" -j -r -o \"D:\\Mape\\gmapprom1.img\" \"D:\\Mape\\gmapprom.img\" ] se odpre GmapTool in naredi kot je prikazano na sliki\n\n\t\t\n\t",
+    "author": "japke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "2 slika\n\n\t\t\n\t",
+    "author": "japke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Dva posta višje imaš odgovor od Matka.",
+    "author": "bojch",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "ja, ampak v originalnem ni funkcije odstrani ključ\" ali pač?\n\nlp",
+    "author": "japke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Mislim, da pri Grčiji ne gre odstraniti ključa, tako da samo dodaj in je zadeva rešena, še vedno pa obstaja rešitev z unl, če ne bi šlo. No dodati sigurno gre.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "sem kliknil pod \"join jeziček\" remove unlock codes in jih je res (se vidi pod info)\nVendar ko posnamem ta gmapsupp.img na  Nuvija še vedno piše \"ne morem odkleniti kart\"\n\nKako torej spravim Hellas na Nuvija?\n\nlp",
+    "author": "japke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Z lahkoto. Ali vstaviš ustrezno kodo v img file ali kreiraš unl file.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "A mi lahko nekdo pošlje neko starejšo verzijo GMapTool-a katera je delala z GUI-jem? Bolj se mi GUI dopade na videz \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Swiper",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.42\n\nhttp://www.anpo.republika.pl/files/wgmaptool042.zip",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Živjo,\n\nmeni na tem linku poljaki sporočajo nekaj v smislu, da datoteka ni dosegljiva. Mi lahko kdo pomaga, prosim?",
+    "author": "Sulc",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Prehiter sem bil, tule ga dobim\nhttp://www.anpo.republika.pl/download.html\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Sulc",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sam raje uporabljam Hijackerjev GUI za GMapTool, kot pa poljskega.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "A je s tem poljskim GMapTool-om, kaj narobe. Antivirus sporoča, da je notri trojanc.\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "m_k",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "jaz sem ga dans dol potegnu čez dan, pa nism mel obenih težav, tud antivirus mi ni nč kompliciral, lp",
+    "author": "nuvi",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Izgleda da ima AVG antivirus težave, ker NOD32 in Kaspesky ne javljata nobenih virusov.",
+    "author": "m_k",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Jest se pa že cel dan hecam, da bi združu dve img datoteki ( VEU452S - Adriatic Sea, North Coast (MapID 312) + VEU453S - Adriatic Sea, South Coast (MapID 234)...pa mi javi tole:\n\nGmapTool v0.32   (C) AP\n\nRead error, file C:\\Documents and Settings\\Andrej\\Desktop\\1\\GMAPSUPP.IMG.\nRead error, file C:\\Documents and Settings\\Andrej\\Desktop\\1\\GMAPSUPP.IMG.\n***************************************************\n\npa še slika:\n\n\n\t\n\n\n\nimam dve img datoteki...vsaka v svoji mapi...imata emako ime; gmapsupp.img...označim obe, izberem\"zfruži\" dodam opis in končno ime img datoteke (gmapsupp)...ter javi zgornjo napako.",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "To sta karti G2 in meni ju je pred časom nekako uspelo združiti, vendar pa mi potem na Garminu 525 stvar ni delovala. Zato imam sedaj vsako karto na svoji microSD kartici (vmes se geografsko kar precej prekrivata) pa je.",
+    "author": "Primus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Hvala za odgovor...bom pol kr na dveh karticah ostal",
+    "author": "CDS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Če kdo želi SLO jezik in help za GMapTool (trenutna verzija 5.2). Razzipaj v mapo GmapTool in nato po zagonu GMapTool v zavihku \"Options\" izbereš language Slovenski.",
+    "author": "Africa2010",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.55\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n --Changelog-----\n19.8.2010 - v0.5.5\n        corrected rounding of positions data for preview map\n        changed detection of 64-bit OS in install/unistall batches\n11.8.2010 - v0.5.4\n        corrected conversion to quasi-NT\n        Mapsource flag in header\n        display MPS records D, M\n        corrected write mapset option\n19.6.2010 - v0.5.3\n\tright click copy/paste/search\n\tSlovenian translation by David Poppy\n\tcreating split.lst for \"Split\"\n3.5.2010 - v0.5.2\n\tcorrected SRT handling\n\tadded choice of color for GUI\n\ttdb for marine map\n\tmap version in header\n5.4.2010 - v0.5.1\n\tdon't write to *.lang files\n\tbasic support for *.md2 files\n19.03.2010 - v0.5.0\n\tfully portable mode\n\timproved FAT sorting (thanks E_I)\n\tFrench translation by catymag\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nhttp://www.anpo.republika.pl/files/GmapToolSetup055.exe",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v.057a\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n --Changelog-----\n13.12.2010 - v0.5.7a\n        updated Slovenian translation\n12.12.2010 - v0.5.7\n        recognize subfile types ISM and QSI\n        new tab \"Change\"\n        change MID in MPS record M\n        new action - write header date\n        new split mode - TYP files only\n        new action - replace TYP file\n        changed block size optimization\n        changed header data display\n        fixed action - correct TYP file\n11.11.2010 - v0.5.6b\n        corrections of translations\n3.11.2010 - v0.5.6a\n        corrections of translations\n4.10.2010 - v0.5.6\n        corrected creation of install/uninstall batches for 64 bit systems\n        corrected error when displaying img copyright text\n        ignored some FAT errors in img\n\t\t\n\t\tKlikni za razširitev\n\t\nhttp://www.anpo.republika.pl/files/GmapToolSetup057a.exe",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "v0.58\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n --Changelog-----\n2.2.2011 - v0.5.8\n        ignored some FAT errors in img\n        Brazilian Portuguese translation by Quinca\n\t\t\n\t\tKlikni za razširitev\n\t\nhttp://www.anpo.republika.pl/files/GmapToolSetup058.exe\n\n\nMislim, da ni več potrebe, da je ta in še kakšna tema sticky.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Nikakor mi ne uspe kreirati mapset.img datoteke iz obstoječih datotek. Kaj bi lahko bilo narobe?\ncGPSmapper poženem s parametrom mapset.mp vendar se nič ne zgodi! Posledično ne morem dodati cn 2011 v MapSource \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nLP",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Za CN raje poišči verzijo za Mapsource.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Snecer pravi:\n Za CN raje poišči verzijo za Mapsource.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo sem rešil. \n\nZdaj bi pa rad uvozil Adria Topo 2.30.\n\nLP",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem malo testiral GMapTool v0.5.9 in mi dela kot bi moral.\nPoskusil sem združiti AR 3.20 in SCG2.30 v Gmapsupp.img in Adriatopo 2.31 v Gmapprom.img. Vse skupaj sem naložil na nuvi 350.\nPo pregledu naloženih kart sem imel na Nuviju tri karte AdriaRoute. Torej nisem vedel katera je AR, SCG ali ATopo.\n\nKaj je lahko narobe?",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Zdravo!\n\nMi lahko kdo razloži kako izbrati datoteke/države za delo z GmapTool-om! \nProblem:\nCNE 2011 sem dvakrat poskusil narediti z MS in obakrat za malo preveliko za mojo 2Gb (v resnici je 1,85Gb) SD kartico. Postopek traja več kot štiri ure, medtem ko GMapTool isto datoteko naredi v treh minutah! \n\nRad bi del zemljevidov naložil na napravo kot gmapprom.img ostanek pa na kartico!",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Sem videl vse , Sorry",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Njupalo pravi:\n Zdravo!\n\nMi lahko kdo razloži kako izbrati datoteke/države za delo z GmapTool-om! \nProblem:\nCNE 2011 sem dvakrat poskusil narediti z MS in obakrat za malo preveliko za mojo 2Gb (v resnici je 1,85Gb) SD kartico. Postopek traja več kot štiri ure, medtem ko GMapTool isto datoteko naredi v treh minutah! \n\nRad bi del zemljevidov naložil na napravo kot gmapprom.img ostanek pa na kartico!\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe bo šlo, rabiš Mapsource, ker ne gre samo za img fajle.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Snecer pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Njupalo pravi:\n Zdravo!\n\nMi lahko kdo razloži kako izbrati datoteke/države za delo z GmapTool-om! \nProblem:\nCNE 2011 sem dvakrat poskusil narediti z MS in obakrat za malo preveliko za mojo 2Gb (v resnici je 1,85Gb) SD kartico. Postopek traja več kot štiri ure, medtem ko GMapTool isto datoteko naredi v treh minutah! \n\nRad bi del zemljevidov naložil na napravo kot gmapprom.img ostanek pa na kartico!\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe bo šlo, rabiš Mapsource, ker ne gre samo za img fajle.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSem si mislil, da bo tako  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nZanima me še kako bo nuvi 350 videl zemljevide, če del CNE naložim na napravo del pa na kartico?",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Brez težav bo.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "GMapTool - program za delo z Garmin mapami",
+    "content": "Hvala za hiter odgovor!\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n Sem malo testiral GMapTool v0.5.9 in mi dela kot bi moral.\nPoskusil sem združiti AR 3.20 in SCG2.30 v Gmapsupp.img in Adriatopo 2.31 v Gmapprom.img. Vse skupaj sem naložil na nuvi 350.\nPo pregledu naloženih kart sem imel na Nuviju tri karte AdriaRoute. Torej nisem vedel katera je AR, SCG ali ATopo.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMi lahko še malo posvetiš v tej mračni zadevi ?    \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Njupalo",
+    "author_level": "Pripravnik"
+  }
+]

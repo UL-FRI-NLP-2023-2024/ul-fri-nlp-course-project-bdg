@@ -1,0 +1,250 @@
+[
+  {
+    "message": "Ali ima kdo izkušnje z Amis TV in komunikatorjem za ne-Amis usmerjevalnikom?   Na usmerjevalniku OPNSense imam urejen IGMP proxy, ki ima za upstream port, ki gre na TV port na modemu. Omrežja za upstream so 224.0.0.0/4, 232.0.0.0/8 in 239.0.0.0/8, ker sem opazil, da STB komunicira tudi s slednjima v Amis omrežju.  Požarni zid dovoljuje z LANa IGMP promet skupaj z 'IP options', usmerjevalnik s porta TV prepošilja UDP 224.0.0.0/4.   STB kljub vsemu ne vzpostavi zveze. Ali je še kaj drugega, kar bi moral upoštevati? ",
+    "user": "tomič"
+  },
+  {
+    "message": "a nima zakodiran stream? ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Usmerjevalnik naj bi le prepošiljal stream, na drugi strani je še vedno Amisov STB. Usmerjevalnik pridobi IP od Amisa preko DHCP na TV portu čisto normalno. Rad bi le prestavil STB na drugo mesto v stanovanju, da ne napeljujem še enega kabla. ",
+    "user": "tomič"
+  },
+  {
+    "message": "Ravno prej sem klical na Amis in so mi rekli da STB mora bit na modem priključen. Drugače ne dela. ",
+    "user": "Redorange"
+  },
+  {
+    "message": "Hvala obema. Po mojem je to splošen odgovor operaterja, ker bi radi imeli mir pred strankami, ki brkljajo same (recimo kot jaz ), tako da ne bi imeli dela z njimi kar se tiče pomoči, po drugi strani pa da ne spuščamo kaj čudnega po omrežju.  Gledam navodila za Albis Scenegate Micro 9090 in ne najdem nobenih čudnih protokolov, ki ne bi šli skozi moj setup (RTSP, NTP, HLS, RTP; IGMPv2/v3, HTTP(S), UDP). No, se bom še malo igral, mogoče mi uspe. ",
+    "user": "tomič"
+  },
+  {
+    "message": " Redorange je 30. nov 2015 ob 21:11 izjavil:Ravno prej sem klical na Amis in so mi rekli da STB mora bit na modem priključen. Drugače ne dela.  pred dvema letoma so omogočali video in data preko istega porta, to pomeni, da sem lahko imel v sobi kjer je STB tudi dodatem wifi router. Takrat sem govoril s tehnikom in ni bilo problema nastavit, npr port1, na data in video. Letos pred poletjem pa se STB ni vec vspostavil... premlevamo zakaj in na koncu pridemo do ugotovitve da oni tega ne podpirajo in da ni možno, da sem lahko imel STB in wifi router na istem portu iz modema...  tomič, če kaj ugotoviš, javi  ",
+    "user": "TgT"
+  },
+  {
+    "message": "Mac adreso si kloniral? ",
+    "user": "d4vid"
+  },
+  {
+    "message": "Zadeva bi morda delovala z uporabo dveh stikal, ki podpirata vlane in trunk preko enega kabla in jih potem na drugi strani spet razdruži. Imam tudi sam v mislih eno podobno konfiguracijo a je moje znanje o omrežjih še precej pomanjkljivo, da bi vedel postaviti tako konfiguracijo (v mojem primeru bi moral TRUNK poslati 3,5km po WIFI WDS povezavi na drug switch, kjer je nanj priklopljen komunikator). ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Ja, sem pravkar testiral s \"čistim\" pfSense (ki ni imel na sebi nič drugega, le IPTV port na eni strani in STB na drugi), pa ne pride skozi. Sicer je pfSense lepo zaznal nekaj subnetov, ki sem jih nastavil v upstream IGMP proksiju, pa ni pomagalo.   Tako da tudi jaz razmišljam v isti smeri - VLAN ali celo EoIP, čeprav je slednja varianta malo kavbojska   Če bom kaj pogruntal, poročam. ",
+    "user": "tomič"
+  },
+  {
+    "message": "Končno sem imel nekaj časa za testiranje. Preikusil sem rešitev z VLANi, na strani pri modemu sem s pfSense napravil dva VLANa, ki sem ju povezal na isti fizični port (trunk) do Linksys E2000 z DD-WRT, kjer sem ju razdružil na dva porta. Na pfSense sem napravil bridge med enim od obeh VLANov ter portom z IPTV, na E2000 pa na port s TV signalom priključil STB.  Rezultati: slika in zvok brezhiben, edino tv vodič in ostali vtičniki (ala VoD) niso delovali. Sicer sem na pfSense in E2000 ukinil požarni zid, NAT ..., lahko pa da moti še kaj drugega in bi navadna stikala, ki podpirajo VLAN, bolje delala. Drugi VLAN je deloval brez problemov.   Očitno bo treba iti na stikala, edino omrežje imam kar razvejano, tako da bo treba dobro splanirati :) ",
+    "user": "tomič"
+  },
+  {
+    "message": "Ko si že ravno tako daleč: se da ugotovit IP naslove programov s kakšnim snifferjem ali kako drugače? ",
+    "user": "d4vid"
+  },
+  {
+    "message": "Javi potem kako konfiguracijo boš postavil in katera stikala boš uporabil, ker imam tudi sam precej razvejano omrežje. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "@d4vid: MPEG-TS za SLO1 prihaja iz 95.176.246.71 - vsaj mislim da, nisem pa še naredil popolnega pregleda, niti nisem še ugotavljal maske omrežja. Lahko da je tudi še kako drugo. Ta omrežja ponavadi nimajo \"klasičnih\" mask ala /8, /24 ipd.  @Danijel, zaenkrat sem imel čas le za to, da sem spravil IPTV po VLAN-u čez svoj usmerjevalnik in nekaj stikal do STB, za test, ali bo funkcioniralo, in deluje zelo dobro. Nagibam se k VLAN-om, se bom pa prej poigral še s kakimi drugimi idejami, npr. EoIP, GRE, igmpproxy - prvi dve varianti namreč zahtevata le začetno in končno mašino (dva konca tunela), pri VLAN-ih pa si je treba omisliti več stikal, ki to podpirajo, če imaš razvejano omrežje. Zaenkrat sem nabavil par Mikrotekovih mašinc (usm. RB951G-2HnD, stikalo RB260GSP); so razmeroma poceni, majhne, nekatere imajo še PoE porte, da se lahko napajajo po omrežju, če ni prostora za to, le prave kombinacije lastnosti moraš najti. Za glavni usm. pa imam PC. ",
+    "user": "tomič"
+  },
+  {
+    "message": "Zanimiva konfiguracija omrežja. To so že malce naprednejše konfiguracije. Mikrotik je malce problematičen ker ne podpira IGMP snoopinga, drugače pa dela OK (Imam RB2011 za glavni router). ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Če komu pride prav - IPTV se da lepo \"skanalizirati\" v svoj VLAN. Na Amisovem modemu imam namreč ločen internet, IPTV in stacionarno telefonijo. Internet in IPTV nato \"združim\" v trunk port s prej omenjenim Mikrotik RB951 in peljem naprej po hiši - imam še par RB951 in eno stikalo RB260. Modeli RB951G-2HnD imajo vgrajeno stikalo, ki se ga da posebej nastavljati za upravljanje VLAN-ov, tako da se podatki prenašajo zelo hitro brez obdelave procesorja.  Prenos IPTV deluje tudi preko WiFi, najbolj elegantno je med dva AP-ja vzpostaviti WDS-link. Zadeva funkcionira že kar preko WDS (če je gor le IPTV), v moji topologiji pa sem preko WDS postavil dva VLANa (kot rečeno LAN/internet in IPTV).  Ob priliki se moram poigrati še z Amisovim modemom; imam en predpotopni model. Očitno po optiki pridejo trije VLANi in je zdaj malo hecno oz. neoptimalno, da se najprej razdružijo in jih potem nazaj združujem.  IGMP snoopinga na stikalih ne rabiš, če imaš IPTV ločen od ostalega omrežja z VLAN-om. Po razmisleku sem se namreč odločil, da IPTV prometa ne bom miksal z ostalim prometom, je bolj enostavno za upravljanje. Če imaš v PC dobro LAN kartico, ki podpira VLAN, ga itak lahko priklopiš na trunk. ",
+    "user": "tomič"
+  },
+  {
+    "message": "Torej dva linksysa v WDS, pa mora delat iptv? Dude you just saved me $150  ",
+    "user": "d4vid"
+  },
+  {
+    "message": "Ne vem če bo ravno tako enostavno. Siol TV dela preko WDS, ker ni tako občutljiv na to ali je v svojem lastnem omrežju ali ne. Pri T2 ne dela čez router, Amis pa tudi nisem ravno prepričan. Mora pa iti preko VLANov, kot je skonfiguriral @tomič  Žal moje znanje o VLANih in omrežjih na splošno še ni na tako visokem nivoju, da bi uspel tole, kar je opisal @tomič skonfigurirati, zato bi prosil za kakšne printscreene nastavitev mikrotika (ali pa zgolj opcija \"print\" v Mikrotikovem terminalu. Lahko tudi na ZS, da ne bo predolg post. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Pri VLANih se tudi jaz zgubim.  A gre s dvema wrt54gl s ddwrt? Samo iptv? ",
+    "user": "d4vid"
+  },
+  {
+    "message": "Po mojem bi šlo tudi z dd-wrt, edino priporočam enake mašine in povsod isto verzijo sistema. Sem se matral povezati E2000/dd-wrt in en MikroTik pa mi že WDS-ja ni uspelo vzpostaviti, po UTP pa so VLAN-i z IPTV delovali.   Če delaš te povezave preko wifi, potem se zelo splača prej preveriti, ali je \"zrak čist\" na 2,4 ali 5 GHz (pred morebitnim kupovanjem opreme), ker lahko že nekaj naprav na podobnih frekvencah vpliva na prenos in pride do zatikanja slike, kot če imaš bolj švoh tel. parico ali seveda še huje.  @Danijel, bom poskusil napraviti povzetek, edino čas me baše - no itak moram prej ali slej napraviti backup skripte pa bo to stranski produkt  ",
+    "user": "tomič"
+  },
+  {
+    "message": "Prosim lepo, kakor boš utegnil. Saj je že sedaj kar dobro opisano a žal ne vem spraviti dveh VLAN-ov v TRUNK. Drugače imam RB2011, tako da bi moralo iti.  Če prav razumem ti deluje TRUNK tudi preko WDS povezave med dvema dostopnima točkama? Katere dostopne točke si uporabil in ali jih je potrebno kaj dodatno konfigurirati? Ali je dovolj, da se zgolj na Mikrotiku ustvari TRUNK in na drugi strani razdruži? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Ja, trunk je preko WDS. V ta namen imam dva RB951G-2HnD. Pogoj je, da sta oba AP-ja nastavljena na isti frekvenci (ne oba na auto, ampak na točno določeni frekvenci), z istim ssid, istim kodiranjem, gesli ... (npr. WPA2, aes ...). Sledje se nastavlja pod security profiles.  Spodaj kratek opis osnovnih ukazov, načeloma nastaviš obe AP na enak način. Poleg osnovnih zadev sem pustil še nekaj stvari, ki so se mi dobro obnesle (npr. hw-protection-mode=rts-cts). Če neka nastavitev manjka, pomeni, da sem jo pustil na privzeti (default).   Pozor, s spodnji konfiguraciji se trunk nadaljuje na ethernet portu ether1; ether2 rabim za priklop naprav na LAN, ether5 pa za STB ali IPTV izhod na modemu. VLAN-e je treba razumeti predvsem kot \"virtualne\" porte, ki so vezani na nek drug port, ki je lahko nosilni (trunk), če so paketki v njem označeni z ID-jem vlana. Te \"virtualne\" porte potem z bridgi povežemo skupaj z drugimi porti (virtualnimi ali pa fizičnimi).  Spodnje ni kar prepisano iz mašinc, sem malo poenostavil, upam, da je osnovna ideja razvidna.   Najprej urediš dostopno točko, povezava med AP-jema je static mesh:  set wlan1 mode=ap-bridge ssid=<ti določiš> wds-mode=static-mesh \\\n    security-profile=default default-forwarding=no hw-protection-mode=rts-cts\n Opredelitev wds linka:  /interface wireless wds\nadd master-interface=wlan1 name=wds1-mtR02-mtR03-link wds-address=<mac naslov wlan1 na drugi AP>\n Z naslednjim dovoliš priklop le tvoji drugi ap, ostalim napravam prepoveš  /interface wireless access-list\nadd mac-address=<mac naslov wlan1 na drugi AP> interface=wlan1 forwarding=no   \nadd authentication=no forwarding=no\n S tem poveš, naj se ap poveže s sosednjo in nobeno drugo  /interface wireless connect-list\nadd mac-address=<mac naslov wlan1 na drugi AP> interface=wlan1 security-profile=default\nadd connect=no interface=wlan1 security-profile=default\n Ureditev vlanov:  /interface vlan\n#opredelitev dveh vlanov preko wds linka\nadd interface=wds1-mtR02-mtR03-link name=vlan100-wds-lan vlan-id=100\nadd interface=wds1-mtR02-mtR03-link name=vlan200-wds-iptv vlan-id=200\n\n#opredelitev istih vlanov preko trunk etherneta\nadd interface=ether1-master-local name=vlan100-master-local-lan vlan-id=100\nadd interface=ether1-master-local name=vlan200-master-local-iptv vlan-id=200\n Ureditev dveh bridgov, preko katerih združiš zgornje vlane in ethernet fizične porte  /interface bridge\nadd name=bridge-iptv\nadd name=bridge-local\n V zgornja bridga dodaš vlan porte (lan+lan, iptv+iptv):  /interface bridge port\nadd bridge=bridge-local interface=vlan100-master-local-lan\nadd bridge=bridge-local interface=vlan100-wds-lan\nadd bridge=bridge-iptv interface=vlan200-master-local-iptv\nadd bridge=bridge-iptv interface=vlan200-wds-iptv\n V bridge-iptv dodaš še ethernet port, nanj se fizično priključi STB ali IPTV na modemu  add bridge=bridge-iptv interface=ether5-local\n Podobno še za lan, kjer se priključi PCje:  add bridge=bridge-local interface=ether2-slave-local\n To je to. Priporočam natančno branje navodil RouterOS ... Aja, pa delaj postopoma - najprej vzpostavi wds, ko ta dela, se loti vlanov ... ",
+    "user": "tomič"
+  },
+  {
+    "message": "Najlepša ti hvala, to mi bo v veliko pomoč.  Če prav razumem lahko pri tej konfiguraciji izberem ali VLAN preko TRUNK WDS ali VLAN preko TRUNK na ETH1 lahko pa tudi oboje? ",
+    "user": "Daniel"
+  },
+  {
+    "message": " tomič je 30. dec 2015 ob 22:07 izjavil:Po mojem bi šlo tudi z dd-wrt, edino priporočam enake mašine in povsod isto verzijo sistema. Sem se matral povezati E2000/dd-wrt in en MikroTik pa mi že WDS-ja ni uspelo vzpostaviti, po UTP pa so VLAN-i z IPTV delovali.   Če delaš te povezave preko wifi, potem se zelo splača prej preveriti, ali je \"zrak čist\" na 2,4 ali 5 GHz (pred morebitnim kupovanjem opreme), ker lahko že nekaj naprav na podobnih frekvencah vpliva na prenos in pride do zatikanja slike, kot če imaš bolj švoh tel. parico ali seveda še huje.  @Danijel, bom poskusil napraviti povzetek, edino čas me baše - no itak moram prej ali slej napraviti backup skripte pa bo to stranski produkt    Zrak je, kar se WiFi povezav tiče, čist. Modem ter moj usmerjevalnik, drugega ni.   Kaj pa če bi poskusil s temi wifi extenderji? Bi to šlo, glede na to da majo AP/Router/Client/Repetiter možnosti? ",
+    "user": "d4vid"
+  },
+  {
+    "message": "@Danijel, moja topologija je:  ----<ether-trunk>----[Mikrotik]- - - <wds-trunk>- - - [Mikrotik]----<ether-trunk>----\n                      |      |                         |      |       \n                     LAN    IPTV                      LAN     IPTV\n Lahko bi sicer vodil oba trunka paralelno, npr enega ali drugega ali pa celo oba hkrati (v tem primeru ti je narejena zanka na data link nivoju (L2), kar načeloma ni dobro). Vse to lahko v nastavitvi reguliraš s tem, katere porte daš v bridge, ki deluje kot kretnica, to je z vrsticami  /interface bridge port\n#ethernet trunk\nadd bridge=bridge-local interface=vlan100-master-local-lan\nadd bridge=bridge-iptv interface=vlan200-master-local-iptv\n#wds trunk\nadd bridge=bridge-local interface=vlan100-wds-lan\nadd bridge=bridge-iptv interface=vlan200-wds-iptv\n#lokalni ethernet porti za posamezni wlan\nadd bridge=bridge-iptv interface=ether5-local\nadd bridge=bridge-local interface=ether2-slave-local\n @d4vid, wifi extenderji bi mogoče delali, se pa bojim, da bi lahko multicast kaj nagajal. Za Mikrotik routerje sem se odločil, ker so cenovno ugodni in hkrati zelo prilagodljivi glede na ostale variante (eth preko elektrike, wifi extenderji ...) ",
+    "user": "tomič"
+  },
+  {
+    "message": "naj še jaz opišem svoj primer - torej kot veliko uporabnikov imam tv na \"oddaljeni\" lokaciji, in bi rad amisov modem povezal s tv box-om brezžično.  uporabljam dodatni router v \"client bridge mode\" (dd wrt firmware). vse naprave, ki jih priključujem na lan porte tega routerja (preko kabla) delujejo normalno.  če priklopim tv box od amisa, zadeva ne deluje (direktno na modemu deluje normalno)  bi takšna konfiguracija lahko delovala in če, kje bi lahko bil problem? ",
+    "user": "trek@s"
+  },
+  {
+    "message": "Moral boš uporabiti Vlan-e, kot je opisano zgoraj. Nekateri TV komunikatorji pač nočejo delati, če niso v svojem omrežju. Lahko pa še poskusiš z DHCP ignore opcijo na MAC naslov komunikatorja.   Nekako takole:  DD-wrt, use DNSMasq as dhcp server, under 'additional DNS options' add this line:  dhcp-host=11:22:33:44:55:66,ignore ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Mogoče še to: RouterOS podpira vzpostavitev več WDS linkov med dvema napravama. Če je na nekem WDS linku le IPTV, tudi deluje, tako da ni treba vzpostavljati vlanov (je pa treba WDS linke ustrezno pobridgati, podobno kot sem opisal zgoraj, da se ne meša LAN promet z IPTV). Ne vem, če dd-wrt podpira vzpostavitev več WDS linkov med dvema napravama, tako da bi ločil en promet od drugega.  Težave s STB-ji so predvsem v dvojem - kako urejati multicast in da ta ne bi motil drugih naprav (predvsem tistih, ki se priklapljajo na wifi), ter kako STB prepričati, da komunicira do operaterjevega omrežja preko nekega drugega gatewaya kot ostale naprave na domačem omrežju (od tam dobi svoj IP, možno je tudi, da tam dobi druge meta podatke). ",
+    "user": "tomič"
+  },
+  {
+    "message": "hvala za odgovor, vendar cisto prevec za moje znanje okrog omrezij.   obstaja kaksen vodic za taksne zadeve? ",
+    "user": "trek@s"
+  },
+  {
+    "message": "Prav temu namenjenih navodil ni za najti (saj kolikor sem jaz utegnil iskati), je pa za posamične stvari: - generalno o dd-wrt (http://www.dd-wrt.com/wiki/index.php/Tu... - wds (http://www.dd-wrt.si/wiki/index.php/WDS... - vlan (http://www.dd-wrt.com/wiki/index.php/Sw..., http://www.flashrouters.com/blog/2015/0..., http://www.vspecialist.co.uk/creating-v... - splošen primer, ki bi lahko bil primeren (http://www.coertvonk.com/technology/net...  Sicer pa bi moral tudi svoj modem ustrezno nastaviti za podporo vlanov.   Najprej pa poskusi tisto, kar predlaga Daniel, mogoče pa uspe ... ",
+    "user": "tomič"
+  },
+  {
+    "message": "PS: za zadnji primer sem nekoliko prehitro napisal, da je primeren. ",
+    "user": "tomič"
+  },
+  {
+    "message": "Si preizkusil tisto opcijo z blokiranjem MAC naslova če deluje? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Sem preizkusil, ne deluje. Tehnična podpora Amis pravi, da je edina varianta z VLAN-i...  Bom poizkusil kar s tistim vmesnikom preko elektro omrežja, če bo šlo, bom manj časa zgubil. ",
+    "user": "trek@s"
+  },
+  {
+    "message": "   ",
+    "user": "black ice"
+  },
+  {
+    "message": "Živjo ;) A je mogoče kdo že ugotovil na katerih VLANIh ima Amis TV in LAN ? Moja trenutna konfiguracija je taka( podobna @Tomič-evi)      Če bi Amis hotel dati podatek na katerih vlanih so storitve za IPTV in LAN, bi se zadevo dalo urediti samo z enim routerjem ki podpira VLAN-e oz. IEEE 802.1Q protokol.. Pa še dodatno, lahko bi razširil omrežje na več kot 3 TV vmesnike. Najbrž pa ravno iz tega razloga Amis noče na plan s temi podatki.. Damn :) ",
+    "user": "BlackCore"
+  },
+  {
+    "message": " BlackCore je 21. jan 2017 ob 12:18 izjavil:Če bi Amis hotel dati podatek na katerih vlanih so storitve za IPTV in LAN, bi se zadevo dalo urediti samo z enim routerjem ki podpira VLAN-e oz. IEEE 802.1Q protokol..    Si klical na tehnično podporo in ti niso hoteli posredovali tega podatka ali samo napačno sklepaš? ",
+    "user": "Tilen"
+  },
+  {
+    "message": "Ja klical sem jih, ampak njihov odgovor je tak: Da je na posamezni ethernert port na modemu mogoče priključiti samo eno napravo ali IPTV ali LAN.. Vprašal sem tudi po mailu in jim razložil kaj bi rad naredil, a je odgovor isti. Ima mogoče kdo kakšno idejo, kako do podatka ? ",
+    "user": "BlackCore"
+  },
+  {
+    "message": "Zanimivo pri TS tega ni. Sem jih prosil, naj mi na en port OŠO terminala dajo data in TV, pa so mi to naredili brez problema in stvar dela. Me pa čudi odnos AMISA. So bili moj ISP kar nekaj let in sem imel z njihovo tehnično podporo same dobre izkušnje. ",
+    "user": "Cervantes"
+  },
+  {
+    "message": "Podatek, ki ga je BlackCore dobil, ni točen. ",
+    "user": "Tilen"
+  },
+  {
+    "message": "In ti imaš točnega, vendar ga ne smeš povedati? :)  Pri Siolu zadeva z VLANom 3999 lepo deluje ja, moraš pa znati nastaviti, če gre čez router. To mi še dela malce težave. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Si.mobil (Amis) uporablja več različnih vlanov za IPTV. Odvisno od omrežja, na katerem se uporabnik nahaja. OŠO, WS, LLU, ... Kdor potrebuje pomoč, mi lahko piše na ZS. ",
+    "user": "Tilen"
+  },
+  {
+    "message": "A pri Amisu se tv že da gledati na računalniku ali se zadeva še zmeraj uspešno blokira? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Se vedno uspesno blokirajo. Zakaj ne uporabis mobie? ",
+    "user": "d4vid"
+  },
+  {
+    "message": "A ni to presenetljivo, da si radi ustvarjajo delo. Lahko bi podatke javno objavili in potem bi vsak sčaral kar koli že hoče, ne pa da izgubljamo živce zaradi nepodkovane podpore. To je bil tudi razlog, da sem odšel operaterju, ki me zna razumeti. ",
+    "user": "čuhalev"
+  },
+  {
+    "message": "Zakaj bi jih javno izpostavili? Da si naredijo samo sranje. Vsak mulc bi potem nekaj caral. ",
+    "user": "d4vid"
+  },
+  {
+    "message": "Nimam Amis-a, zgolj radoveden sem, ker sem enkrat skušal usposobiti zadevo pri sorodnikih, ki ga imajo, pa ni šlo. No sedaj se oni selijo na Siol, ker imajo tam možnost OŠO optike, tako, da zaenkrat odpadejo tudi ti problemi. ",
+    "user": "Daniel"
+  },
+  {
+    "message": " d4vid je 22. jan 2017 ob 20:48 izjavil:Zakaj bi jih javno izpostavili? Da si naredijo samo sranje. Vsak mulc bi potem nekaj caral.  Ne ga lomit, kajti praviš, da je ključ od vhodnih vrat pod predpražnikom?  Še sreča, da ostali znajo stvari postaviti, kot jih je treba.  ",
+    "user": "čuhalev"
+  },
+  {
+    "message": "En UTP kabl v dnevno sobo za IPTV in WIFI je skoraj nuja. Pri Amisu mi tega več ne omogočijo, čeprav je bilo že možno ampak so potem spremenili logiko na \"tega pri nas ne omogočamo\" Je situacija danes drugačna? ",
+    "user": "TgT"
+  },
+  {
+    "message": "Česa ne omogočajo? Prosim napiši bolj jasno, ker ne razumem. Lahko tudi preko ZS. ",
+    "user": "Tilen"
+  },
+  {
+    "message": "Ko sem postal naročnik 3 leta nazaj, sem lahko imel preko enega UTP kabla v dnevni sobi switch, na njega pa priklopljen wifi-router ter IPTV box. Oboje je delovalo. Sedaj ,cca leto in pol, mi tega ne dovolijo in imam lahko samo IPTV box ",
+    "user": "TgT"
+  },
+  {
+    "message": "Kdo ne dovoljuje? Kaj se je vmes spremenilo? Si dobil novo opremo? ",
+    "user": "Tilen"
+  },
+  {
+    "message": "Kdo? Amis. Kaj se je v mes spremenilo, nic, na vsem lepem je enkrat sredi poletja TV nehal delovat. Sem takrat klical tja in njihov odgovor je bil \"mi tega ne omogočamo\" in moj odziv \"hvala lepa, adijo\" Od takrat se nisem več spuščal v to, tako da ne vem, kako je trenutno. ",
+    "user": "TgT"
+  },
+  {
+    "message": "Spremenilo se ni nič. Preveri svojo opremo. ",
+    "user": "Tilen"
+  },
+  {
+    "message": "Od Amisa modem (router) je nameščen v omarici, zaradi prekratkega optičnega kabla. Zaradi tega je stanovanje slabo pokrito z wifi omrežjem.  Od modema je potem speljan en kabel UTP v dnevno, kjer je priklopljena TV. Doma imamo router Linksys WRT1200AC. Povezal sem ga z Amisovim modemom in poskusil na njega povezati TV. Zadeva ni uspela, ker tv komunikator javi, da ni internetnega signala (mogoče nisem prav nastavil). Torej, če sedaj nabavimo switch in v dnevni priklopimo tv in router zadeva dela?  Prilagam tudi sliko.    slika ",
+    "user": "jocko"
+  },
+  {
+    "message": "Tako, nisi prav nastavil.  Modem mora biti v bridge mode. Da bo povezavo vzpovstavljal tvoj router. Kar pa se tiče da bi potem naprej iz lastnega routerja peljal iptv in internet pa je odvisno od routerja če omogoča TRUNK, in VLANE :)   jaz imam to rešeno na telekomu, ki ima video vlan na 3999 če se ne motim. in sem routerju povedal kako in kaj in deluje. ",
+    "user": "neooo"
+  },
+  {
+    "message": " Tilen je 1. feb 2017 ob 21:07 izjavil:Spremenilo se ni nič. Preveri svojo opremo.  Sem preveril, če dam switch pred IPTVbox, TV deluje, interneta ni, vrjetno sta porta 3 in 4 nastavljena na VIDEO. ",
+    "user": "TgT"
+  },
+  {
+    "message": "Access konfiguracija se uredi samo na zahtevo in to ni privzeta konfiguracija. ",
+    "user": "Tilen"
+  },
+  {
+    "message": "Hvala neooo, stvar dela preko routera ",
+    "user": "jocko"
+  },
+  {
+    "message": " tomič je 30. nov 2015 ob 20:01 izjavil:Ali ima kdo izkušnje z Amis TV in komunikatorjem za ne-Amis usmerjevalnikom?  Na usmerjevalniku OPNSense imam urejen IGMP proxy, ki ima za upstream port, ki gre na TV port na modemu. Omrežja za upstream so 224.0.0.0/4, 232.0.0.0/8 in 239.0.0.0/8, ker sem opazil, da STB komunicira tudi s slednjima v Amis omrežju. Požarni zid dovoljuje z LANa IGMP promet skupaj z 'IP options', usmerjevalnik s porta TV prepošilja UDP 224.0.0.0/4.  STB kljub vsemu ne vzpostavi zveze. Ali je še kaj drugega, kar bi moral upoštevati?   Vem da je ze stara tale tema a me zanima, če si uspel nastavit IGMP proxy na OPNSense-u? Imam namreč nastavljeno, kot si napisal: - T-2 preko Telekomove optike - če računalnik vklopim direktno na modem potem dobim zunanji IP in IPTV dela - OPNSense 17.7.12 - IGMP Proxy z nastvljenim: upstream 224.0.0.0/4, 232.0.0.0/8 in 239.0.0.0/8 in downstream 192.168.1.0/24 - Na LAN FW IPv4 any proto, source LAN Net, Port any, dest any, port any, gw any + allow options v advanced - WAN FW IPv4 UDP, source (224.0.0.0/4;232.0.0.0/8;239.0.0.0/8), port any, dest any, port any, gw any IPv4 IGMP, source any, port any, dest any, port any, gw any  Za karkšno koli pomoč bom zelo hvaležen. Poskušam namreč prekinit pogodbo s Telemach-om, ker so sedaj kriptirali vse programe in mi HD Homerun, ki sem ga kupil, da se lahko streamal TV na vse TV-je v hiši ne pride več v upoštev, ker nima CI reže. Tisti HDHome Prime pa je samo za Ameriški trg. ",
+    "user": "khartahk"
+  },
+  {
+    "message": "Ne, s tako konfiruracijo sem obupal, ker žal nisem imel časa brkljati z wiresharkom, kaj se dogaja po omrežju in kje so serverji. Zadevo sem rešil z VLANi, kot sem razložil v enem od kasnejših sporočil. LAN in IP-TV promet sem popolnoma ločil, tako da imam komunikator povezan na isti fizični LAN, vendar ločen VLAN in dela odlično.  Me pa še vedno zanima, če se da PC s kakim odjemalcem prepričati, da bi delal kot komunikator, pa čeprav je v svojem VLANu  ",
+    "user": "tomič"
+  },
+  {
+    "message": "Mislim, da mi je uspelo: - OPNsense 18.1.r2-i386 - T-2 preko Telekom optike - IGMP Proxy - upstream: 224.0.0.0/4, 232.0.0.0/8, 239.0.0.0/8, 172.17.0.0/16, downstream: 192.168.1.0/24 - WAN firewall -- odstranil block private networks -- naredil alias za private networks (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) -- dodal PASS 172.17.0.0/16, 224.0.0.0/4, 232.0.0.0/8, 239.0.0.0/8 za UDP -- dodal block za alias za private networks -- dodal pass za IGMP  Alias, odstranitev block private networks, dodati pass za 172.17/16 in nato block za alias za private networks je zato, ker firewall dela tako, da prvo pravilo, ki match-a se uporabi  Sedaj mi dela na kablu. Na wifi-ju pa še preverim kako kaže, ker kolikor vem bi potreboval IGMP snooping, to pa ne vem ali je v IGMPProxy-ju ali je to kaj posebnega.  Če ima kdo še kakšno idejo ali bi moral nastavit še kaj na FW-ju da bi blokiram pa prosim za feedback. Za pomoč pri nastavitvi sem tudi na voljo, bom pa poskusil pripravit nek how to :)  LP ",
+    "user": "khartahk"
+  },
+  {
+    "message": "Dobra tema...  Da delim in vprašam ker se namenjam že lep čas.  Sam imam Si0L tako speljan: Na routerju (vzpostavi pppoe) imam na eth1 Dmz, nastavljen na določen notranji ip, ki gre v pfsense wan.  Eth2 imam na video, vezan na pfsense opt1, kjer teče igmp proxy ter udpxy.  V lan-u deluje oboje tako Multicast, rtsp... (prek igmp proxy-ja), kot Unicast, https stream prek udpxy.  Prav tako deluje udpxy prek wi-fi, ath0 v pfsense, kot prek dodatnega Ap-ja v Lanu.  Pfsense je povezan prek openvpn na dve oddaljeni lokaciji. Iptv dela BP prek udpxy. Tud na Elanu.  Na eth3,4 pa imam potem box in boxS.  Takole zadeva deluje že več let...  Pred kratkim pa je šel rakom žvižgati pfsense HDD, zato sem se odločil se nadgraditi na zadnji pfsense. Tu sem naletel na par ovir, kot namestitev udpxy. Igmp proxy je dostopen kot paket, na srečo, ter namestitev dodatnega www strežnika (za hranjenje m3u, logo-tov, ter epg, v starejših ver. je tudi to bilo del paketa vhosts... No kakorkoli lahko kaj povem o tem. Pfsense,ddwrt,openvpn...itd  Do tu vse ok, zanima ne pa:  Vlan-i, timeshift, izdelava liste, ter se kaj... :)  Konkretno, zelo ne moti da box-i niso v \"lan-u\", vezani so na trunk direkt na v60, ker če jih vezem v lan dobivam v igmp proxy nek error glede v3 mode not supported. To sicer na starem pf, na novem po resnici nisem še pretaknil. Berem da opensense imajo igmp v3 snooping podporo ???  Zakaj? Ker bi koristil dlna oz sambo na boxih za predvajanje, ter se izognil kakšnemu kablu. Si pa ne lastim manager switcha, še!? Tu bi lahko uporabil namesto igmp proxy-ja vlane, za boxe met na Lan-u, a mi nikakor ni uspelo. Zato bi rad kakšen poduk glede vlan-ov. Problemi? Pppoe se dela na v60, večina how to je pppoe vzpostavljen na pfsense Wan-u. Tega ne bi želel ker potem ne morem koristit v60 kot wifi ap. Če pa je nuja za vlane prebolim ter damm router v bridge/modem/izklopim Dmz...kakorkoli že.. kaj sem spackal... eth2 sem spremenil iz video v trunk, nastavil vlan3999 tagged, ter vlan1. Smešno da mi ni dovolilo izbrati vlan0, kaj šele untagged... Ne duha ne sluha o tej opciji.  ...tu moje znanje peha. Če bi recimo pravilno nastavil vlan3999 ter vlan0 untagged ali na Wan-u ali na opt1 kot imam..., a lahko potem brez managed stikala na lan (navaden dumb switcha) dam boxs ki bo znal tolmačiti te vlane? Če ne, kaj pa če dam boxs direkt v opt2 npr v pfsense in vsaj en box speljem v lan?  Potem ne zanima ali je mogoče vlane speljati prek openvpn, da bi lahko box koristil na remote lokaciji. Oz kakšne so tu opcije.  Nato me zanima zakaj ne dela več playlistaizservisnistrani.exe :) hvala Urošu... Rad bi nove ipje:) ter vrstni red z boxa:) rad bi...  Zadeva za skeniranje kanalov sicer dela a moram imet PC direkt na video port, prek igmp proxy se sesuva. Tudi na video je dolgoročen proces sicer vemo neke določene range... A iskanje novih kanalov je mučno. To sicer prebolim pač ip po ip prepisati z boxa pa pozabiti na njihove testne/skrite/kriptane... Pa še mpeg2 ftth m3u rabim za lokalne mpeg4 pa za vpnjevce/wifijevce. Tako da to je mučno ja za enkrat to počnem na roko. Notepad. Sem poskusil neke editorje pa mi je težje kot it vrstico po vrstico.  Skratka pogrešam playlistaizservisnih.exe grabber:) Pogrešam autoupdate m3u v MulticastTv kot je bil. Just a taught. Za epg sicer hvala koorr-u, a kaj ko je potrebno usklajevati id-je, nekaterih epgjev ni itd..  Kateri Multicast sploh naj namestim kot NE t-2 user.. sem se stalno spraševal/iskal, epg, m3u, bila bila bila.. Oni cerkvena gospoda pa majo zrihtano u nulo žena ejga. Brez zamere:)  No za konec bi pa se poleg boxa prek vpn-ja in ogleda nazaj oz namesto tega leta, vsaj koristil se stari dobri rtsp Link creator za posnete oddaje, ki sicer nekam deluje a ne pravilno kar sem preizkusil :) btw a je kaj takega na kodi/openelec bilo mogoče? Ena verzija MulticastTv je imela tudi to, ali se slabo spominjam ali je bilo mogoče za t-2?  Upam da nisem bil predolg.  Heh se to a, stari komunikatorja od skola(obožujem sugestije na tipkovnici mamine tablice) se delujejo? Kaj to se kdo neka v nočnih urah?  A kdo ve te reči al naj raje na podporo pokličem? Joke.  Lep večer. Hvala. ",
+    "user": "espacious"
+  },
+  {
+    "message": " d4vid je 22. jan 2017 ob 20:21 izjavil:Se vedno uspesno blokirajo. Zakaj ne uporabis mobie?   Kolikor sem preverjal mobio (5 minut - prijavil se malo sprehajal po kanalih in izklopil) je porazna - samo 60 kanalov, pa se noben od teh ni HD. Sem skoraj kozlal ko sem videl sliko. ",
+    "user": "Master_Yoda"
+  }
+]

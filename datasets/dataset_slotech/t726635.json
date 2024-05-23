@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Pozdravljeni,  razvijam nek sistem podoben klicanju natakarjev s pomočjo gumbov (link, link, link). Princip je zelo podoben, a bo šlo za uporabo na drugem področju (žal še ne smem točno povedati kje).  Vsi taki sistemi, ki sem jih do sedaj našel s pomočjo radijskega signala sporočajo informacijo o naročilu na nek display ali uro. Moja zahteva pa je, da bi te signale \"lovil\" z računalnikom (laptop/rasberry pi ali kaj podobnega), te podatke malenkost obdelal in prikazoval neke statistike na zaslonu.  najbolj idealno bi bilo, če bi lahko to delovalo vse preko enega računalnika. Možna pa je tudi uporaba serverja, ker je po celotnem področju uporabe na vojo WiFi. Mi lahko kdo pomaga, da kakšen nasvet kako zajeti, brati te signale oz. kje se o tem naučiti več?  Vsakršna pomoč bo dobrodošla! :) ",
+    "user": "i33a"
+  },
+  {
+    "message": "Raspberry pi, ki prejema te signale in jih pošilja na strežnik, nato pa jih z računalnikom bereš, obdeluješ in prikazuješ. Recimo, to je ena izmed opcij kako postaviti infrastrukturo, kako prebereš radijski signal z Raspberry pi-jom pa ne vem, ampak mislim da je na netu dovolj tutorialov in examplov, tako da ne bi smelo biti problema. ",
+    "user": "LoveKvothe"
+  },
+  {
+    "message": "Mal poišči za RTL-SDR  To je USB TV tuner, ki pa lahko posluša na frekvencah od 20MHz do 1700MHz (nekateri imajo tudi večje območje). Stane 5-10 EUR iz kitajske.  Mi ga uporabljamo kot frekvenčni analizator, ko se pojavi še kakšna naprava na ISM frekvencah in povzroča motnje, sem pa eksperimentiral s prestrezanjem 433MHz signala iz poceni daljinskih vtičnic.  S tem bi lahko (če signal ni kriptiran), poslušal kaj si sporočajo naprave in potem podatke prikazoval na nekem strežniku/karkoližepač. ",
+    "user": "jukoz"
+  },
+  {
+    "message": "gnuradio bi sicer res znal pomagat, samo ze chart naredit in iz njega pridobivat podatke ni cisto trivialno. Ali sam nacrtujes oddajnike ali bi kar lovil vse povprek? ",
+    "user": "link_up"
+  },
+  {
+    "message": "@LoveKvothe: Hvala za pomoč. Si imel v mislih nekaj takega kot je na tem linku (s tem da tu on tudi oddaja signal).  @jukoz: Pa se take USB TV tunerje da kolkor toliko enostavno uporabljati za sprejemanje iz predvsem razbiranje 433 MHz signalov?   @link_up: Najbrž bi lovil kar vse povprek (in potem v software-u določal kaj je res tisto kar sem želel slišati). Trenutna ideja je nekako taka, da bi kupil neke te kitajske gumbe, ki oddajajo 433 MHz in z Rasberry Pi lovil te signale. (Seveda sem povsem odprt tudi za druge ideje). Če prav razumem te sisteme, kot so prikazani na Aliexpressu vsak gumb pošlje malo drugačno sporočilo in tako lahko veš kateri je bil pritisnjen. Torej bi jaz poslušal vse in potem glede na sporočilo vedel, če je bil kateri od mojih pritisnjen in kateri.  Imam pa tu še nekaj težav oz. vprašanj: - Na kakšno razdaljo lahko s takimi gumbi in RasberryPi uspešno lovim te signale? Uporaba bo namreč v prostoru, kjer so tudi stene, hodijo ljudje itd.  Koliko bi se dalo izboljšati sprejem z anteno, če kakšne take v ta namen seveda obstajajo? - Ima kdo kakšno idejo kaj narediti, če se kakšen oddajnih pokvari. Cilj je, da bi ga lahko hitro (tudi nekdo ki ni zelo tehničen) zamenial z novim.  Na pamet mi pride podvajanje oddajnikov. Eden je na položaju in če crkne iz predela vzameš njegovega \"dvojnika\". Je pa res, da vedno potrebuješ 2*n oddajnikov, kar ni ravno racionalno. - Če se bi se ostale probleme kolikor toliko rešilo. Kateri Rasberry Pi, sprejemnik predlagate tisti, ki imate s tem več izkušenj? ",
+    "user": "i33a"
+  },
+  {
+    "message": " Ima kdo kakšno idejo kaj narediti, če se kakšen oddajnih pokvari. Cilj je, da bi ga lahko hitro (tudi nekdo ki ni zelo tehničen) zamenial z novim.  \"Podpise\" oz. kode imaš v bazi, potem pa imaš nekje v management prostorih eno ločeno postajo preko katere, dodaš nov gumbek/podpis v bazo. ",
+    "user": "DamijanD"
+  },
+  {
+    "message": "Dej mal povej koliko je budget. Ker obstajajo WiFi gumbi/zadeve ki ti to lahko delajo, so odporni na udarce/vodo/... Veliko je tudi LoRa naprav, ki imajo potem tudi konkreten domet. Hitro se zna zgoditi, da je taka rešitev potem cenejša in bolj trajna. ",
+    "user": "jukoz"
+  },
+  {
+    "message": "Če pa želiš uporabiti TV Tuner pa ja, se jih da precej enostavno uporabiti. Primerov boš našel na netu neskončno. Oddajniki so bolj problematični =) ",
+    "user": "jukoz"
+  },
+  {
+    "message": "@jukoz: Ni točno določenga budgeta oz. vsaj jaz ne vem točne številke. Lahko okvirno poveš ceno ostalih možnih oddajnikov (WiFi gumbi, LoRa, ...)? Se bom moral potem o tem pogovoriti še z nadrejenim. ",
+    "user": "i33a"
+  },
+  {
+    "message": "Taki oddajniki/gumbi se verjetno gibljejo nekje 20-100 EUR. Pri LoRa/ZigBee boš rabil še koncentrator.  Fora pri teh je samo v tem, da so res odporni na udarce in podobno. Če so tiste zadeve iz prvega linka tudi odporne, potem ni težav in ni potrebe po WiFi/LoRa napravah.  Če boš delal na 433 je tudi veliko vezij že narejenih za priklop na rPI ali arduino. Lahko bi dal več rPIjev 2 433 sprejemnikom/oddajnikom po prostoru in jih povezal na strežnik. Tisti ki prvi sprejme signal ga tudi posreduje, ostalo se pa ignorira.  Sicer pa, moje kontakte imaš (oz pošlji ZS), pa se oglasi pri nas in se pomenimo. ",
+    "user": "jukoz"
+  },
+  {
+    "message": "Mora zadeva delovati preko radia ali hi lahko preko wifi oz LoRa? Slednje je zelo enostavno implementirat na Arduino/RPi.  Če rabiš pa večje dosege pa si poglej POCSAG. In pa tole temo: https://s5tech.net/viewtopic.php?f=24&t... ",
+    "user": "poweroff"
+  },
+  {
+    "message": "Ne pozabi, da je potrebno vse kar se prodaja tudi certificirati. Zato mogoče kitajski gumbeki ne pridejo v poštev. ",
+    "user": "mujek"
+  },
+  {
+    "message": "Če delajo na ISM frekvencah bodo OK. Drugače se jih tako ali tako ne bo dalo uvozit =) ",
+    "user": "jukoz"
+  },
+  {
+    "message": "Točno tako. Konec koncev se najbolj splača certificiran radio modul uporabiti, ne pa razvijati svojega. ",
+    "user": "poweroff"
+  }
+]

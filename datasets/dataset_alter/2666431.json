@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "Od leta 2012 imam Synology DS413j (DSM 5.2). Od takrat uporabljam na njemu tudi Download station za torrente. Sem naročnik Telekoma in sem imel vsa ta leta modem/router Gennet Oxygen in na njemu nastavljen Port forwarding. Vse je delalo super.\nPred 10 dnevi je odpovedal Gennet Oxygen , na Telekomu so mi dali novega Innbox V45_B10. Imam statičen IP.\n\nZdaj pa mi ne dela več Download station, \"ne morem več vlečti filmov dol\". V nastavitvah od Download station piše TCP port=16881  in tega sem na routerju odprl.\nDodatno sem odprl še: 5000, 5001, 6890-6999, 16881  (TCP/UDP)\n\nNa tem linku tudi piše:\nhttps://www.synology.com/en-us/know...t_network_ports_are_used_by_Synology_services\n\n \"What network ports are used by Synology services?\"   Download BT= 16881 (for models with DSM v2.0.1 and onward)\n\nA je med vami kateri uporabnik ki uporablja podobne zadeve oz. bi mi znal svetovati, kaj naj še probam, nastavim?\n\nDanes sem bil skoraj 2 uri na liniji s Telekom tehnična pomoč , a mi ni znal pomagati.",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "Imam podoben modem, prav tako Synology DS214. Prvo kot prvo je moj posodobljen na zadnje verzije DSMja. Kot drugo, imam od zunaj odprt samo https dostop (5001), DS cloud in DS station (audio, video). Download station deluje b.p. ves čas. Imam nameščen plugin za Chrom in lahko z desnim klikom na torrent datoteko le-to preusmerim da se izvaja na Synologyju. Nobenih 16881 portov nimam spuščenih v notranjost.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "Če modem hkrati deluje kot routher, DHCP server, firewall, probaj samo vklopiti NAT rules, bo verjetno NAS sam odprl potrebni port",
+    "author": "bluub",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Roberto je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tImam podoben modem, prav tako Synology DS214. Prvo kot prvo je moj posodobljen na zadnje verzije DSMja. Kot drugo, imam od zunaj odprt samo https dostop (5001), DS cloud in DS station (audio, video). Download station deluje b.p. ves čas. Imam nameščen plugin za Chrom in lahko z desnim klikom na torrent datoteko le-to preusmerim da se izvaja na Synologyju. Nobenih 16881 portov nimam spuščenih v notranjost.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJaz večino torrentov vzamem iz Partis, file se skopira v mapo, ki nastavljena v Download station. Takoj, ko se torrent znajde v tej mapi se ta torrent za dotični film pojavi v Downlaod station. Status ima \"Downloading\" pri Upload speed in Download speed pa je 0.00 kb/s. Skratka se nič ne prenaša.\n\nA imaš ti tudi Telekomov modem/router? Tega \"Innbox V45_B10.\" ? A dejansko nimaš nobenih portov odprtih za Synology?",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bluub je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe modem hkrati deluje kot routher, DHCP server, firewall, probaj samo vklopiti NAT rules, bo verjetno NAS sam odprl potrebni port\n\t\t\n\t\tKlikni za razširitev\n\t\nsamo vklopiti NAT rules  - kako se to naredi?",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik nadebudnez je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz večino torrentov vzamem iz Partis, file se skopira v mapo, ki nastavljena v Download station. Takoj, ko se torrent znajde v tej mapi se ta torrent za dotični film pojavi v Downlaod station. Status ima \"Downloading\" pri Upload speed in Download speed pa je 0.00 kb/s. Skratka se nič ne prenaša.\n\nA imaš ti tudi Telekomov modem/router? Tega \"Innbox V45_B10.\" ? A dejansko nimaš nobenih portov odprtih za Synology?\n\t\t\n\t\tKlikni za razširitev\n\t\nZa ven ne. Iz neta pa za DSCloud in DSStation",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "Malo sem dal to temo na stran, ampak Download station v okviru Synology  mi še vedno ne deluje. Kot sem napisal v uvodu mi je to delalo brez problema več kot 5 let. Odkar pa imam novi telekomov modem/router pa mi ne deluje več. In nič drugega se ni spremenilo. Glede na vaše odgovore niti nisem več prepričan, da sem imel za te namene kakšen \"port forwarding\".  \n\nGlede na nasvete na tujih forumih sem danes odstranil Download station in sem ga hotel pod \"Package center\" ponovno namestiti. Ampak ko sem ga iskal (npr. pod All, Recommended, Multimedia, ...) mi je po nekem času napisalo \"Connection failed. Please check your network settings\". \n\nPotem sem šel na Synology pod Control Panel - Network  , a tu ne vem, kako naj nastavim. Pod Default gateway je sicer en IP, menda statični od routerja.\nA imate kljukico pod \"Manually configure DNS server\" in kaj potem vnesti pod \"Preferred DNS Server\" in pod \"Alternative DNS Server\" ?\n\nProsim za pomoč, v teh mrežnih zadevah nisem ravno doma.",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "Jaz imam z innboxom zelo slabe izkušnje. V hiši imamo okoli 30 naprav in je vse delovalo na pol. Tudi na supportu so mi rekli naj raje nabavim namenski router ker za moje potrebe innbox ne bo ok. Kupil sem mikrotika, se nekaj časa hecal z nastavitvami, ampak sedaj ze leto in pol deluje vse cisto brez problema, brez kakersnegakoli izpada",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Download station na Synology NAS-ne dela več",
+    "content": "ksz.\n\nImam sinology ds414\nRedno posodobljen, do sedaj nobenih težav\n\nkonec aprila pa sem opazil, da se mi NAs ni več izklapljal. Imam nastavljen power on in power off time,\nprav tako mi ne izvaja več rednih (scheduled) backupov. za vsakega mi napiše, da je waiting. in kot da bi se obesil.\nNAS drugače deluje ok in nisem opazil drugih težav. restart nič ne pomaga.\nIma mogoče kdo kakšno idejo, kaj narediti...",
+    "author": "Lonck",
+    "author_level": "Pripravnik"
+  }
+]

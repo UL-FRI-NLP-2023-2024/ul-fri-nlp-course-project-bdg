@@ -1,0 +1,140 @@
+[
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "V HomeAssistant so pred kratkim dodali Energy sekcijo ki je namenjena spremljanju porabe.\nLahko kupiš npr Shelly 3EM ga povežeš s HA in spremljaš porabo za celo hišo.\nJaz sem želel dodati v ta Enery tab pametne vtičnice, kar pa ni bilo povsem trivialno zato bom tukaj opisal pravilen postopek.\n\nV HA gremo \"File editor\" -> odpreš \"config/configuration.yaml\" in dodaš noter:\nhomeassistant:\n  customize: !include customize.yaml\n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\nPod sensors dodaš tole sekcijo:\n\n\t\t\n\t\n\nStem da zamenjaš \"pomivalnistroj_wattage\" s imenom tvojega senzorja ki sporoča moč.\nIn polje \"name\" prilagodiš po potrebi.\n\nPotem to shraniš in odpreš file \"config/customize.yaml\"\nV njega vnešeš tole in shraniš:\n\n\t\t\n\t\n\nSedaj samo še reštartaš HA, priklopiš vtičnico na nek porabnik, da začne vračati porabo in potem klikneš:\nConfiguration->Energy->Add consumption->v dropdownu izbereš npr \"energy_pomivalniStroj\" in si fertik.\nV Energy sekciji vidiš takole:\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Mogoče neumno vprašanje, ampak kako veš da je pametna vtičnica zmožna meriti porabo? Sklepam da so tiste najcenejše samo on/off varianta brez neke povratne informacije.\n\nJe za bremena z znano porabo situacija kaj boljša? Recimo 1kW stenski radiator v garaži.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Ko kupuješ vtičnico, bo vedno pisalo da lahko meri porabo (če jo lahko..., npr Ikejine jo ne merijo, delujejo samo kot stikala).\n\nLahko jo pa probaš najdit tudi tukaj:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tESPHome — ESPHome\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tESPHome Homepage - Reimagining DIY Home Automation. ESPHome is a framework that tries to provide the best possible use experience for using IoT microcontrollers for Home Automation. Just write a simple YAML configuration file and get your own customized firmware.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tesphome.io\n\t\t\t\t\n\t\t\t\n\t\t\n\t\nali tukaj (wifi):\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tPlugs and Sockets\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tConfigure your smart  to work with Tasmota open source firmware.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ttemplates.blakadder.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\nali tukaj (zigbee):\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tDatabase of Zigbee devices compatible with ZHA, Tasmota, Zigbee2MQTT, deCONZ, ZiGate and ioBroker\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tDatabase of Zigbee devices compatible with ZHA, Tasmota, Zigbee2MQTT, deCONZ, ZiGate and ioBroker\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tzigbee.blakadder.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t| Zigbee2MQTT\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tZigbee to MQTT bridge, get rid of your proprietary Zigbee bridges\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.zigbee2mqtt.io\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nAli pa poguglaš \"model vtičnice home assistant\" pa boš videl kaj pravijo drugi...\n\n\"Je za bremena z znano porabo situacija kaj boljša? Recimo 1kW stenski radiator v garaži.\"\nTole pa ne razumem?",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "hvala za vodič.\n\nlahko zaupaš katero pametno vtičnico ki spremlja porabo imaš ti in kje si jo kupil?",
+    "author": "cappy",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik cappy je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\thvala za vodič.\n\nlahko zaupaš katero pametno vtičnico ki spremlja porabo imaš ti in kje si jo kupil?\n\t\t\n\t\tKlikni za razširitev\n\t\nUporabljam tele vtičnice (BW-SHP2):\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tVodič: Kako predelati BlitzWolf BW-SHP2 vtičnico na ESPHome da deluje lokalno brez Tuya app-a\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tNaj poudarim da deloten postopek delamo z vtičnico ki NE SME BITI VKLOPLJENA V OMREŽJE!   Ko odšravfaš 4 vijake s trikotnim izvijačem vidiš tole:   Vse krogce povežemo s Usb2Serial adapterjem in sicer takole:  BW-SHP2 -> Usb2Serial 3.3V -> 3.3V GND -> GND RX -> TX TX -> RX GPIO0 -> GND  Potem v...\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.alter.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nKupil sem jih pa na banggood-u 5kom za 58€ iz CZ skladišča.\n\nMinus teh vtičnic je da, so zelo velike in ne moreš npr dveh vštekat vštric v stenske vtičnice ali v razdelilec...\nPoleg tega merjenje toka ne deluje pravilno (vsaj preko ESPHome). (Pravilno pa deluje merjenje napetosti in moči).\nZa integracije dejansko rabiš samo podatek o trenutni moči...\n\nBoljša opcija je verjetno Shelly Plug S (samo je nimam in ne morem podati mnenja):\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tShelly Cloud\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tshop.shelly.cloud\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "vidm da shelly ni tako draga, poštnina pa dejansko ful poceni. ews, standalone pa še meri tok? \npreverim še malo popoldne ko bom imel več časa ampak zgleda supr\n\nhvala",
+    "author": "cappy",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Če ima kdo izkušnje s tem Shelly Plug S bi se tudi jaz priporočal, izgleda kul. Tisti \"embedded webserver\" verjetno pomeni da lahko deluje povsem offline, torej brez clouda?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe ima kdo izkušnje s tem Shelly Plug S bi se tudi jaz priporočal, izgleda kul. Tisti \"embedded webserver\" verjetno pomeni da lahko deluje povsem offline, torej brez clouda?\n\t\t\n\t\tKlikni za razširitev\n\t\nLani je imel Shelly 20% dol na vse za black friday, tako da jaz bom počakal še en teden in kupil eno \"Plug S\" za test, da vidim kako in kaj...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "evo sem si shranil pa počakam na black friday če bo kaj ceneje. mudi se mi ne.\n\nše kak predlog za black friday ko si ravno omenil oz če še kje čakaš? avtomatizacija/home assistance, diski, mrežne zadeve... kaj v tem rangu?",
+    "author": "cappy",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Mogoče od shelly-a 3EM modul...  https://shop.shelly.cloud/shelly-3em-wifi-smart-home-automation\nJaz ga sicer še vedno nisem zmontiral in ker bom v kratkem dal na streho SE, ki ima zraven SolarEdge energy meter; ga najbrž ne bom nikoli... \nSicer bom pa probal čimmanj zapravit za blackfriday, ker bo že SE zadosti velika investicija...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Jest sem pa BlitzWolf BW-SHP6 Pro 4 komade vzel, ko je bil flash deal https://www.banggood.com/BlitzWolf-...p-1608132.html?rmmds=myorder&cur_warehouse=CZ\n\nZanimivo je, da se jih da flashat po tuya convert hacku brez problema. Seveda sem to šele potem ugotovil, ko sem vse razšravbal in prvo že flashal z USB to TTL adapterjem . Aja, po flashanju je seveda treba naredit kalibracijo.",
+    "author": "monsi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tLani je imel Shelly 20% dol na vse za black friday, tako da jaz bom počakal še en teden in kupil eno \"Plug S\" za test, da vidim kako in kaj...\n\t\t\n\t\tKlikni za razširitev\n\t\nAmpak Zigbee-ja pa, če prav vidim, ta zadeva nima... ?!?",
+    "author": "Navid",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Ne, pametne vtičnice (in ostali modduli & senzorji) so ali na zigbee protokolu ali pa na wifi. Ne vem za nobeno ki bi imela oboje ker nima smisla.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe, pametne vtičnice (in ostali modduli & senzorji) so ali na zigbee protokolu ali pa na wifi. Ne vem za nobeno ki bi imela oboje ker nima smisla.\n\t\t\n\t\tKlikni za razširitev\n\t\nJa ja. Razumem. Ampak za to, konkretno z linka - Shelly Plug S, ta ima wifi.",
+    "author": "Navid",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Ja. Če bi rad zigbee vtičnico je tale najbrž ok glede na količino prodanih:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t2.41€ 66% OFF|Smart Plug Wifi|smart Plug 16a/20a Eu Zigbee 3.0 With Power Meter - Tuya & Alexa Compatible\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tSmarter Shopping, Better Living!  Aliexpress.com\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ta.aliexpress.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Kako se pa kaj poberejo te vtičnice po izpadu elektrike? Upam da je default stanje ON, ker ne bi rad da mi zaradi tega gre celotna zamrzovalna skrinja robe  ",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKako se pa kaj poberejo te vtičnice po izpadu elektrike? Upam da je default stanje ON, ker ne bi rad da mi zaradi tega gre celotna zamrzovalna skrinja robe  \n\t\t\n\t\tKlikni za razširitev\n\t\n\nNačeloma jih lahko nastaviš, kaj naj naredijo ob izpadu elektrike - vse moje vtičnice imajo to možnost (Sonoff, Zwave - Fibaro, Xiaomi, Shelly) - Default ON, Default OFF ali Last Status",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKako se pa kaj poberejo te vtičnice po izpadu elektrike? Upam da je default stanje ON, ker ne bi rad da mi zaradi tega gre celotna zamrzovalna skrinja robe  \n\t\t\n\t\tKlikni za razširitev\n\t\nZa shelly vem, da ostane prejšno stanje.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJa. Če bi rad zigbee vtičnico je tale najbrž ok glede na količino prodanih:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t2.41€ 66% OFF|Smart Plug Wifi|smart Plug 16a/20a Eu Zigbee 3.0 With Power Meter - Tuya & Alexa Compatible\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tSmarter Shopping, Better Living!  Aliexpress.com\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ta.aliexpress.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\t\n\t\tKlikni za razširitev\n\t\nJih imam nekaj pa se mi dve od treh izklapljata, tudi če nimata porabnika vklopljenega. Zaenkrat sem najbolj zadovoljen s tisto od Aqare, a je relativno draga in težko jo je zadobit.",
+    "author": "Navid",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "Eno vprašanje, gledam ta obični Shelly EM z 2x 50A clampami: https://shop.shelly.cloud/shelly-em-50a-clamp-wifi-smart-home-automation-1#140\n\nCenovno je pol cenejši od Shelly 3EM, meri pa \"samo\" eno fazo manj. Zdaj pa me zanima ali lahko dam sponko tudi čez dve fazi in bo vseeno merilo ok porabo? Vem da bi delovalo čez več žic na isti fazi, pri različnih fazah pa ne vem kako je zaradi faznega zamika.\n\nEDIT: en Shelly EM z dvema objemkama že imam, ampak tam merim pri vsaki samo eno varovalko (dve različni pumpi) in zadeva deluje ok - meri ločeno porabo vsake objemke posebej.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEno vprašanje, gledam ta obični Shelly EM z 2x 50A clampami: https://shop.shelly.cloud/shelly-em-50a-clamp-wifi-smart-home-automation-1#140\n\nCenovno je pol cenejši od Shelly 3EM, meri pa \"samo\" eno fazo manj. Zdaj pa me zanima ali lahko dam sponko tudi čez dve fazi in bo vseeno merilo ok porabo? Vem da bi delovalo čez več žic na isti fazi, pri različnih fazah pa ne vem kako je zaradi faznega zamika.\n\t\t\n\t\tKlikni za razširitev\n\t\nseveda NE",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEno vprašanje, gledam ta obični Shelly EM z 2x 50A clampami: https://shop.shelly.cloud/shelly-em-50a-clamp-wifi-smart-home-automation-1#140\n\nCenovno je pol cenejši od Shelly 3EM, meri pa \"samo\" eno fazo manj. Zdaj pa me zanima ali lahko dam sponko tudi čez dve fazi in bo vseeno merilo ok porabo? Vem da bi delovalo čez več žic na isti fazi, pri različnih fazah pa ne vem kako je zaradi faznega zamika.\n\nEDIT: en Shelly EM z dvema objemkama že imam, ampak tam merim pri vsaki samo eno varovalko (dve različni pumpi) in zadeva deluje ok - meri ločeno porabo vsake objemke posebej.\n\t\t\n\t\tKlikni za razširitev\n\t\nJa različni fazi ne bo šlo... Če bi imel Shelly 3EM nerabljen, ti jaz prodam mojega za 70€ (nov je 140€ z DDV in poštnino). Sem ga nabavil in nikoli zmontiral...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Dodajanje energije pametne vtičnice na Energy sekcijo v HA",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJa različni fazi ne bo šlo... Če bi imel Shelly 3EM nerabljen, ti jaz prodam mojega za 70€ (nov je 140€ z DDV in poštnino). Sem ga nabavil in nikoli zmontiral...\n\t\t\n\t\tKlikni za razširitev\n\t\nMorem prvo sploh preveriti če se pri toplotni sploh uporabljajo vse tri faze, ker uradna specifikacija zahteva samo dve fazi (+ seveda možnost priklopa na eno).",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

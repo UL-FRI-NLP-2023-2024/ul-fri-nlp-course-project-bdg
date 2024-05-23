@@ -1,0 +1,38 @@
+[
+  {
+    "ctx": "Računalnik se zbudi iz spanja in naredi printscreen",
+    "content": "Windows 7\n\nTorej rač. dam v sleep ob 18:18:28 in potem čez nekaj minut pogledam Event Viewer, ker se je rač. zbudil iz spanja sam od sebe.\n\nStoritev »TCP/IP NetBIOS Helper« je prešla v stanje »ustavljeno«. 18:22:37\n\nPotem neki Error\nPri čakanju na odziv ?? transakcije storitve lmhosts ?? je bila dosežena časovna omejitev (30000 milisekund). 18:22:37\nKaj je sploh to?\n\nIn potem WTF\nStoritev »Zajem slik sistema Windows« je prešla v stanje »se izvaja«. 18:22:39\n\nMrežna zbudi računalnik:\nSistem se je vrnil iz spanja.\nČas spanja: ‎2022‎-‎11‎-‎13T17:18:27.032949300Z\nČas bujenja: ‎2022‎-‎11‎-‎13T17:22:39.027087300Z\nVir bujenja: Naprava –Realtek PCIe GbE Family Controller\n\ntorej najbolj me zanima, kdo ali kaj je naredil printscreen in zakaj mrežna zbudi računalnik? (moram to izklopit, ampak zakaj bi mrežna to naredila?)\nPonavadi jo onemogočim, predem dam v spanje, zdaj pa nisem.\n\nJe mogoče, da se mi kdo sprehaja po računalniku? Imam sicer plačljiv Total360 in Malwarebytes in seveda geslo ob vstopu v Windows.\nLani enkrat sem imel vdor v Facebook Ads račun, nisem formatiral, ampak očistil, kolikor se je dalo.\n\nHvala",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "Računalnik se zbudi iz spanja in naredi printscreen",
+    "content": "W BIOS-u izklopi začasno WakeUp on LAN, potem spremljaj.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Računalnik se zbudi iz spanja in naredi printscreen",
+    "content": "Kaj ti izpiše \"powercfg -lastwake\" (poženeš s pravicami administratorja)? Tudi Realtek?\n\nPoglej tudi nastavitve gonilnika mrežne kartice, ali lahko kartica zbudi računalnik:\n\nAllow this device to wake up the computer - izklopi\n\nČe zbujaš računalnik preko mreže, pa to pusti vklopljeno in vklopi še:\n\nOnly Allow a Magic Package to Wake Your Computer",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Računalnik se zbudi iz spanja in naredi printscreen",
+    "content": "Sem izklopil, da mrezna zbudi.\n\nKaj je s tistim printscreenom, mi ni jasno.",
+    "author": "B81",
+    "author_level": ""
+  },
+  {
+    "ctx": "Računalnik se zbudi iz spanja in naredi printscreen",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik B81 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSem izklopil, da mrezna zbudi.\n\nKaj je s tistim printscreenom, mi ni jasno.\n\t\t\n\t\tKlikni za razširitev\n\t\nNe bi rekel da je to print screen, zgolj slab prevod+interpretacija.\n\nČe bi ugibal, bi rekel da gre za shadow copy service.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Računalnik se zbudi iz spanja in naredi printscreen",
+    "content": "Hvala za odgovore. Sem še bolj pozoren ker sem pred 2 dnevoma dobil račun za 449$ na paypal in imam svoj TRR direkt s PP povezan.",
+    "author": "B81",
+    "author_level": ""
+  }
+]

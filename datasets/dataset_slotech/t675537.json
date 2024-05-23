@@ -1,0 +1,118 @@
+[
+  {
+    "message": "Pri svojem delu sem esencialno odvisen od računalnika in na njem delujočega softwara. Hočem imeti rešitev, ki bo pomenila minimalno dela za ponovno vzpostavitev v primeru sesutja sistema ali HW failure. Zato bi rad imel tako rešitev, ki jo bo čim lažje backupirat (v smislu celotnega sistema) npr. tedensko. Razmišljam, da bi cel sistem konvertiral v virtualko. Da pa ne bi po nepotrebnem laufal dveh OS-ov, bi šel na Vmware ESXi. Potem lahko enostavno samo kopiram virtualko in jo po potrebi zaženem na kateremkoli računalniku. Kako se vam zdi ta pristop? Bi se tega lotili kako drugače? ",
+    "user": "Osprey"
+  },
+  {
+    "message": "Qubes OS. Ti tedenske kopije zadoščajo ? Diski so poceni. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "Z virtualizacijo zgubiš performance. Jaz bi se lotil z dvojnimi diski v RAID 1 načinu - vsi podatki se avtomatsko pišejo na oba diska, če en odpove, maš rezervo berz izgub. Software sesutje je redko, če ne nameščaš čudnih programov, za vsak slučaj pa še tedenski backup. Če crkne kaj poleg diskov, pa diske prešraufaš v drug PC. ",
+    "user": "smacker"
+  },
+  {
+    "message": "Z virtualizacijo nič prav dost ne izgubiš na performacah. Če imaš hardwersko podporo, to ni več problem. Potem pa samo vsak večer snapšot celega sistema in je to rešitev. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Vmware Player ali VirtualBox mašina na Linuxu, pa imaš mir.  Plus dnevni backup snapshota. Malo ročnega dela, ampak najceneje. ",
+    "user": "Invictus"
+  },
+  {
+    "message": " Osprey je 8. jun 2016 ob 13:28 izjavil:bi šel na Vmware ESXi.  ne vem kako si si sedaj točno to predstavljal, ampak če boš šel na vmware ESXI rabiš namensko mašino (server), za to poganjat. Potem pa rabiš še enga klienta, s katerim se boš gor povezoval preko RDP-ja, konzole, w/e. V vsakem primeru pa boš za to potreboval 2 računalnika (esxi - server, pc - client), z enim ne bo šlo. ",
+    "user": "broken/link"
+  },
+  {
+    "message": "Aha, ja nisem še toliko raziskoval tega esxi in sem si očitno narobe predstavljal. Rad bi imel v osnovi na računalniku nekaj, kar je čim bolj lightweight za poganjanje client os-a. Obstaja kaka host varianta, ki ni full-blown OS, ampak samo toliko da lahko zaženeš klienta? ",
+    "user": "Osprey"
+  },
+  {
+    "message": "Kupiš neko thin klient mašino in monitor. Pa imaš minimum, ostalo je na virtualki. Ampak to je za domačega uporabnika precejšen nesmisel in zapravljanje resursov. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "windows od 8 naprej ima hyperV v jedru. Samo vklopiš zadevo in postaviš virtualko na hyperV-ju, pa zadeva deluje. Snapshote dela pa brez problemov dnevno lahko. Edino core procesor mora biti (I3, I5, I7 ali pa xeon (od 1156 podnožja naprej)), ker drugače ne laufa hyperV na windows 8 , 8.1 in 10 ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Uporabljam podobno varjanto, le da namesto ESXI uporabljam KVM. Za lokalni dostop do virtualk pač uporabljam linux host, za remote pa kombinacijo rpitc + raspberry. ",
+    "user": "sas084"
+  },
+  {
+    "message": "Vseeno bi rad, da vse skupaj laufa lokalno na prenosniku in da nisem odvisen od internetne povezave, tako da variante povezovanja na server ne pridejo v poštev. windows od 8 naprej ima hyperV v jedru. Samo vklopiš zadevo in postaviš virtualko na hyperV-ju, pa zadeva deluje. Snapshote dela pa brez problemov dnevno lahko.  To pomeni, da imaš še vedno full-blown hosta, npr. windows 8, in potem še full-blown client os? ",
+    "user": "Osprey"
+  },
+  {
+    "message": "POtem pa virtualizacija ni rešitev.  Delaš vsak večer snapshot sistema, za to rabiš nek NAS in kakšen primeren software in je to to. ",
+    "user": "111111111111"
+  },
+  {
+    "message": "Virtualke je predvsem zelo enostavno backupirati in tudi hitro zagnati na drugi mašini če je treba. Moram pa povedati, da kolikor sem testiral software s katerimi bi backupiral celoten sistem, ni bilo ravno neke enostavne variante. Nič niti približno tako enostavnega kot je skopirati virtualko. Lahko pa kdo predlaga kako učinkovito in enostavno rešitev. ",
+    "user": "Osprey"
+  },
+  {
+    "message": "Acronis True image? ",
+    "user": "BorutK-73"
+  },
+  {
+    "message": "Za cel sistem se strinjam da boš z virtualko imel veliko manj dela.  Če za vsakdanjo uporabo uporabljaš Windows potem ni razloga da bi kaj drugega uporabil kot kar integrirani HyperV, če imaš namen kdaj tudi na Linuxu potem pač kaka druga rešitev.  Ti pa zelo priporočam da imaš posebaj še backup podatkov in se NE zanašaš na backup sistema. Če namreč to dvoje ločiš potem lahko komot 1 mesec staro virtualko naložiš da imaš vse inštalacije, podatke pa restoraš z programom, ki je za to namenjen. Nek zanesljiv inkrementalni backup podatkov torej. Noben backup virtualke namreč ne bo dosegel sprotnega backupa, ki ga lahko dokaj enostavno dobiš za podatke, vsaj ne brez precej mučenja:) ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": " Osprey je 8. jun 2016 ob 16:19 izjavil:Virtualke je predvsem zelo enostavno backupirati in tudi hitro zagnati na drugi mašini če je treba. Moram pa povedati, da kolikor sem testiral software s katerimi bi backupiral celoten sistem, ni bilo ravno neke enostavne variante. Nič niti približno tako enostavnega kot je skopirati virtualko. Lahko pa kdo predlaga kako učinkovito in enostavno rešitev.   EaseUS Todo Backup Free je super, zastonj in preprost za uporabo. Se pa strinjam da je virtualka hitrejša za skopirat, ampak pač rabiš dodaten hardware. ",
+    "user": "111111111111"
+  },
+  {
+    "message": " Osprey je 8. jun 2016 ob 15:13 izjavil:Vseeno bi rad, da vse skupaj laufa lokalno na prenosniku in da nisem odvisen od internetne povezave, tako da variante povezovanja na server ne pridejo v poštev. windows od 8 naprej ima hyperV v jedru. Samo vklopiš zadevo in postaviš virtualko na hyperV-ju, pa zadeva deluje. Snapshote dela pa brez problemov dnevno lahko.  To pomeni, da imaš še vedno full-blown hosta, npr. windows 8, in potem še full-blown client os?   Jap. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Načeloma so podatki ločeni ja, tako da mi backup na teden ali 14 dni je čisto dovolj. Še ena ideja, ki je sicer mogoče malo nenavadna, pa vseeno vprašam za mnenje. Kaj če bi namesto teh backup softwareov na teden ali 14 dni pač zagnal vCenter Converter in shranil image računalnika v virtualko? Kolikor sem testiral, sicer traja nekaj ur, ampak dvomim, da bodo drugi software-i, ki niso inkrementalni, bistveno hitrejši. In vsake toliko mi to sploh ni problem pustit čez noč da zlaufa. Prednost je, da potem imaš kar virtualko, ki jo v primeru odpovedi sistema lahko zaženeš na drugem fizičnem HW, če je treba. Vidi kdo kako bistveno slabost te metode? ",
+    "user": "Osprey"
+  },
+  {
+    "message": "Pri konvertiranju živega sistema v virtualko že voham probleme z driverji:) Ampak dobro, kak safe mode pa par driverjev popucat pa zna zalavfat, če imaš srečo celo direkt, so kar odporni ti novi sistemi. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "disk2vhd zalaufaš vsake 2 tedna in si kreiraš virtualko. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 8. jun 2016 ob 22:46 izjavil:disk2vhd zalaufaš vsake 2 tedna in si kreiraš virtualko.  ... ki pa lahko dela ali pa ne. Lastne izkušnje ...  Potem je bolje narediti image sistema z npr. Acronis True Image. ",
+    "user": "Miha 333"
+  },
+  {
+    "message": " Miha 333 je 9. jun 2016 ob 00:03 izjavil:krneki0001 je 8. jun 2016 ob 22:46 izjavil:disk2vhd zalaufaš vsake 2 tedna in si kreiraš virtualko.  ... ki pa lahko dela ali pa ne. Lastne izkušnje ...    Kaj pa ne dela? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Sam bi šel raje v varianto inkrementalnega backupa celotnega sistema. Na začetku pa bi z live distribucijo naredil sliko diska. Ali pa druga varianta, da bi reševal to na FSju. Snapshot in potem backupiranje le-tega. Zadržke, ki jih vidim pri tvoji ideji so: - še vedno boš moral na vsak sistem naložit virtualko, v primeru praznega sistem pa še OS, ki jo bo poganjal - velikost backupov in prenos (hitro lahko prideš na več TB podatkov v nekaj mesecih) - delati backup na živi virtualki?! (ali lahko pride do težav?) - ročni backupi so bolj tako tako - se pozabi in se ne naredi, to pa se ugotovi takrat ko je prepozno ",
+    "user": "johnnyyy"
+  },
+  {
+    "message": " Lonsarg je 8. jun 2016 ob 21:16 izjavil:Pri konvertiranju živega sistema v virtualko že voham probleme z driverji:)   a to si že kdaj poskusil ali govoriš na pamet? Ker sam teh težav še nisem imel. Pa sem zvirtualiziral že kar nekaj sistemov. Če pa si imel težave bi te prosil, da poveš kdaj/kje so bile težave, ker mi bo v prihodnosti še prav prišlo. ",
+    "user": "broken/link"
+  },
+  {
+    "message": "A brezplačen Esxi Vmware sploh omogoča live backup virtualke? ",
+    "user": "111111111111"
+  },
+  {
+    "message": "brezplačen hyperV to omogoča. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": " krneki0001 je 8. jun 2016 ob 13:43 izjavil:Z virtualizacijo nič prav dost ne izgubiš na performacah. Če imaš hardwersko podporo, to ni več problem. Potem pa samo vsak večer snapšot celega sistema in je to rešitev.  no, odvisno  gpu dodelit virtualki dela al pa ne, kokr maš buggy matično pa če ti to procesor sploh podpir in tko naprej, to je še največji problem pri performancu  op, postavi normalno sistem, naredi backup, in potem sproti delaš nove in nove, vsake toliko enega od njih shraniš na ločeni lokaciji, če uporabljaš sodoben filesystem se itak shranjujejo samo spremembe tako da ni problema s porabo prostora, tud če imaš ogromno backupov (smiselno za važne file ki se pogosto spreminjajo, za razne loge začasne datoteke ni smiselno)........ dobiš še celo en lep timeline kako se je datoteka spreminjala skozi čas, daš narediš še snapshot pred vsakim upgradom in po njemu pa je  zfs/btrfs se najbolje obneseta, izbira je odvisna od tega a meniš da bo btrfs pobrisal tvojo mačko in pojedel podatke ali ne + od tega kateri os imaš raje  johnnyyy je 9. jun 2016 ob 09:09 izjavil:Sam bi šel raje v varianto inkrementalnega backupa celotnega sistema. Na začetku pa bi z live distribucijo naredil sliko diska. Ali pa druga varianta, da bi reševal to na FSju. Snapshot in potem backupiranje le-tega. Zadržke, ki jih vidim pri tvoji ideji so: - še vedno boš moral na vsak sistem naložit virtualko, v primeru praznega sistem pa še OS, ki jo bo poganjal - velikost backupov in prenos (hitro lahko prideš na več TB podatkov v nekaj mesecih) - delati backup na živi virtualki?! (ali lahko pride do težav?) - ročni backupi so bolj tako tako - se pozabi in se ne naredi, to pa se ugotovi takrat ko je prepozno  z normalnim filesystemom delaš bp snapshote vsako minuto na živem sistemu, poraba prostora pa je majhna ker se kopija bloka naredi šele ko pišeš vanj ",
+    "user": "peko_deko"
+  },
+  {
+    "message": "GPU varinata deluje ampak z remoteFX. je tudi kr dobra zadeva.  Performančno pa na \"core\" mašinah nebi smelo biti problemov. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "če maš plato in procesor ki podpirata vt-ne vem kaj (tistega za iommu) + plata ni buggy, dejansko lahko daš guestu direkt dostop do grafične  host je pol ne more uporabljat, je pa native hitrost, normalni driverji, vse dela, .... če hočeš imet linux in igrat igre je to to ",
+    "user": "peko_deko"
+  }
+]

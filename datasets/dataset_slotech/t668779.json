@@ -1,0 +1,66 @@
+[
+  {
+    "message": "Zdravo,  Moja matična ima precej slabo narejeno uravnavanje hitrost ventilatorjev, na enem pa je očitno sploh ni (vsi so 3pin priklopi). Ker imam namen poiskati dokončno rešitev bi vzel en malo boljši eksterni kontroler.  Zanima pa me: -ali so te 5.25\" kontrolerji tudi softwersko podprti? -kako merijo temperaturo, preko lastnih tipal ali preko tistih vgrajenih v PC komponentah? (kako dobijo informacijo-USB?)  Ima kdo kakšno pametno idejo katerega vzeti? poganjati bi moral vsaj 4x 12cm, slišim da so sedaj \"in\" PWM, lahko tudi tistega še za CPU, ampak ponavadi je dost dobro reguliran iz strani matične.  Rabim zgolj tako dobrega da bo lahko spravil obrate v neko neslišno stanje če ne bo potrebe po hlajenju in da se mu lahko zatemni LCD ekran/lučke oziroma karkoli že ima da sveti. Lahko je tudi brez gumbov in se ga nastavlja zgolj sofwersko. ",
+    "user": "matobeli"
+  },
+  {
+    "message": "Jaz imam starega touchscreen za 4 ventilatorje, vzame 3 ali 4 pin. Napaja se preko molexa, tipalo za temp pa ima na žički, vsak svojega. Ima osvetlitev vendar če se ne motim se lahko ugasne. Poglej po bolhi jaz sem to kupil za 5€. ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "Pa to se obnese dobro, glede na to da tipal verjetno ne gre ravno čisto k procesorju/grafični vtaknit?   Bi raje imel takega ki se ga da še malo softwersko kontrolirat in bi znal sam najti temperature iz MB/HD/GPU/CPU ",
+    "user": "matobeli"
+  },
+  {
+    "message": "Nebi vedel kako se obnese preko teh tipal, ker sem imel to za bench mašino in sem uporabljal vedno na minimum obratih. Je bolj tako-tako, te tipala ne bo šlo nastavit blizu procesorja brez hujših modifikacij hladilnika.  Če imaš kakšno starejšo matično bi bilo mogoče bolj smotrno nadgratiti njo za kakšno višje serije pa boš imel vso kontrolo, ker ne vem če obstaja kakšen tak kateri bi se povezal z matično in iz nje potegnil temperature. ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "Imam relativno novo (1050 socket) matično, je bila sicer poceni, ampak ima vse priključke ki jih potrebujem. Bi raje vzel en malo boljši kontroler kot pa da samo zaradi tega kupujem matično ki stane 50-100€ več. Poleg tega bom verjetnov roku 1-2let menjal matično in proc na nekaj novejšega.  Problem je v tem da imam notri 280x ki pod obremenitvijo kar pogreje kišto in bi res imel avtomatično prižiganje in ugašanje. ",
+    "user": "matobeli"
+  },
+  {
+    "message": "Jaz mam nekaj takega https://www.ekwb.com/shop/ek-cable-spli...  3(lahko daš do 4) 12cm vente mam na isti pwm signal iz cpuFan headerja, ta je ziher pwm na plati in bo prov delala regulacija. Pa ne rabiš dodatnega kontrolerja. ",
+    "user": "dolenc"
+  },
+  {
+    "message": "Mogoče to kaj pomaga, neko univerzalno zagotovilo da stvar dela z random ohišjem in komponentami: zračne filtre na intake ventilatorje in konstanten minimalen/neslišen pretok, s tem zagotoviš da se bo CPU in GPU ventilator vrtel z minimalnimi obrati v idle, zmanjšaš nihanje temperature in posledično nihanje obratov ventilatorjev, manjši vpliv zunanje temperature. Na to pa potem dodajaš večje obrate po potrebi, v tvojem primeru bi bilo najbolje v odvisnosti temperature na GPU, Še bolje 2 senzorja, cpu + gpu, oba vezana na isti regulator.  Tvoj primer je skoraj sigurno rešljiv z počasnimi ventilatorji brez pametnega regulatorja, ker 4x 12 cm je veliko pretoka. ",
+    "user": "Napajalc"
+  },
+  {
+    "message": "Hvala vsem, bom vzel kar varjanto od EKWB -razdelilec iz enega PWM na 4 PWM. To bi moglo špilat super.  Pa še eno vprašanje, ker sem ugotovil da nimam niti enega PWM ventilatorja (vsi so samo 3pin), bom vzel nove, prostora je za 120, 140 ali 180mm.  Sem gledal na EKWB strani cene in je 180mm zelo poceni (13€) proti ostalima dvema dimenzijama, so toliko slabši/neprimerni za PCje ali kaj je problem?  120mm 140mm 180mm ",
+    "user": "matobeli"
+  },
+  {
+    "message": "180 je že kar velik in v večino ohišij ne paše. ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "Če smo čist iskreni tud 140mm v moje ohišje ne paše. Torej, not per se.  Ohišje je ravno 200mm široko, 10mm na vsaki strani poberejo zgibi in vodila za stranice, torej ni nobene hude panike da ne bo pasalo notri.   Zanima me bolj performance 180mm, zaenkrat mislim montirat 1x 180mm na dno in 1x 180mm na vrh. na vrhu je tudi PSU (ventilator bo takoj za PSUjem), ki bo še dodatno vlekel zrak iz ohišja. Na dnu pa bi mogoče dal kar 2x 180mm, da ustvarim nekaj nadtlaka.  Pa mogoče imam tudi problem, ker na ebayu je za 120&140mm ogromno filtrov ipd. za 180mm pa bolj bogo vse skupaj, niti ene kulturne mrežice ni.  3.5 kletka se odstrani, 5.25 kletka pa bo gostila 2x 3.5HDD in 1x2.5 SSD. Direktnega hlajenja HDD ne rabim saj sta arhivska in se praktično ne prižigata. ",
+    "user": "matobeli"
+  },
+  {
+    "message": "Kaj pa tako: spodaj 1x 14 cm ventilator z filtrom konstantno dela z minimalnimi obrati (zagotovi prefiltriran zrak), napajalec vleče topel zrak vn (idle). Pri obremenitvi pa se dodatno vklopita čez PWM spodni in zgornji 18 cm ventilator. ",
+    "user": "Napajalc"
+  },
+  {
+    "message": "Tudi o tem sem razmišljal. Je pa 180 vent cenejši od 140.   Sicer pa, vsi venti bodo na istem PWM, kar pomeni da se v resnici ne bodo nikoli izklopili (CPU ventilator se mi pomojem nikoli ne ugasne)?  Največji build up vročine bo ravno nekje v okolici CPUja ker bo diretkni dotok svežega zraka ovirala tista ladja od grafične, a se to sliši legit? ",
+    "user": "matobeli"
+  },
+  {
+    "message": " matobeli je 14. mar 2016 ob 12:58 izjavil:Tudi o tem sem razmišljal. Je pa 180 vent cenejši od 140.   Sicer pa, vsi venti bodo na istem PWM, kar pomeni da se v resnici ne bodo nikoli izklopili (CPU ventilator se mi pomojem nikoli ne ugasne)?  Največji build up vročine bo ravno nekje v okolici CPUja ker bo diretkni dotok svežega zraka ovirala tista ladja od grafične, a se to sliši legit?   Zakaj je 180mm cenej od 140.. ker ma verjento slabše ležaje - sleve.. SAm osebno ne kupim če niso FDB, SSO ali pa double bearing.. preferiram zadnje zaradi izkušenj, samo je ventilator malo bolj glasen. ",
+    "user": "OZZY"
+  },
+  {
+    "message": "Mogoče pa naroči kar iz SLO?   Fluid dynamic bearing  Dual ball bearing   Btw, gre se za novejše modele Arctica... ",
+    "user": "Hk416"
+  },
+  {
+    "message": "Jaz mam 2 tabela, pa sta tko tko, mal se sliši motorček ventilatorja, kar se pri noctui ali fractal venturi recimo ne. Je pa res, da so poceni in opravijo svojo nalogo. ",
+    "user": "dolenc"
+  },
+  {
+    "message": "Jaz pa imam problem, da mi ob odprtju firefoxa ali pa določenih preprostih zadev mi temp. cpu iz 30 dvigne na 45 ali več manj (različno)torej je nihanje in preide nazaj na normal po sekundi...spremljam na Asus oc panel 2..moteče je zato, ker mi ob enem dviguje rpm ventilatorjev!Drugače nimam dobenega problema z pregravanjem..  Obstaja kakšna opcija v biosu, da spremenim core ali kaj podobnega, da ni \"nihanja\" matična je Asus maximus extreme viii  lp ",
+    "user": "taddeo"
+  }
+]

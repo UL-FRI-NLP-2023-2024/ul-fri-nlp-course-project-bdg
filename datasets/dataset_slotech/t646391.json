@@ -1,0 +1,50 @@
+[
+  {
+    "message": "Pozdravljeni,  kolega kupuje čisto nov računalnik, sestavljen po komponentah, imel bo SSD (240 GB), HDD (1 TB) in DVD-RW drive. Gor bodo Windows 8.1.  Glede na velikosti diskov (vse manjše od 2 TB), kaj priporočate iz izkušenj: MBR ali GPT?  Če se odloči, da bo šel po MBR poti, lahko kasneje ob morebitnem nakupu večjega diska tistega formatira v GPT in ima potem kombinacijo MBR in GPT diskov?  Kaj pa CSM, secure boot, fast boot... Kaj se priporoča v praksi, da ni nobenih težav in da so hitrosti optimalne?  Zanima me še kako je potem z backupom (system image z brezplačnim Macriumom), kako je potem pri shranjevanju, kloniranju, obnavljanju... med GPT in MBR diski, gre vse brez težav?  Hvala! ",
+    "user": "He-Man"
+  },
+  {
+    "message": " He-Man je 20. jun 2015 ob 22:31 izjavil: Če se odloči, da bo šel po MBR poti, lahko kasneje ob morebitnem nakupu večjega diska tistega formatira v GPT in ima potem kombinacijo MBR in GPT diskov?   Ja, vsak disk je neodvisen glede tega. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Hvala za informacijo. Še kakšno mnenje oz. odgovor prosim, če kdo ve. ",
+    "user": "He-Man"
+  },
+  {
+    "message": "Nagibam se k temu, da mu priporočim kar MBR, zaradi kompatibilnosti. Edina zanimiva stvar pri GPT se mi zdi to, da nima omejitve 2 TB, kolega pa ima itak manjše diske.  Kaj mora narediti v UEFI, da bo lahko imel MBR diske? Je potrebno vklopiti CSM in izklopiti secure boot? Zaradi tega bodo diski še vedno v AHCI mode in delovali z optimalno hitrostjo, ne?  Glede backupa nihče ne ve kako je s prehajanjem MBR v GPT in obratno? Ali Windows 8.1 vse diske formatirajo v GPT že privzeto? Npr. notranji disk ali pa nov zunanji disk, ko ga priklopiš preko USB, je ta disk v MBR ali GPT? ",
+    "user": "He-Man"
+  },
+  {
+    "message": "Kolikor vem MBR in GPT nima nobene povezave z BIOS-om ampak samo z op. sistemom. Recimo jabolčni računalniki in njihov sistem (OS X) že nekaj let uporabljajo GPT način formatiranja diskov.  Mogoče pa se motim.  Moderni računalniki/matične itak uporabljajo (U)EFI namesto starega BIOS-a in bi jaz na tvojem mestu uporabil GPT, sploh za večji disk.  * * *  EDIT: našel sem en članek, kjer je res solidno razloženo: http://www.howtogeek.com/193669/whats-t...  Windows can only boot from GPT on UEFI-based computers running 64-bit versions of Windows 8.1, 8, 7, Vista, and corresponding server versions. All versions of Windows 8.1, 8, 7, and Vista can read GPT drives and use them for data -- they just can't boot from them.  Other modern operating systems can also use GPT. Linux has built-in support for GPT. Apple's Intel Macs no longer use Apple's APT (Apple Partition Table) scheme and use GPT instead. ",
+    "user": "opeter"
+  },
+  {
+    "message": "Sam imam MBR, Win8.1 in stiri diske, vecje kot 2TB in nikoli nobenih problemov. Mislim, da imajo samo starejsi diski s tem probleme, ker imajo velikost sektorja 512 bytov. V GPT lahko formatiras v Disk Managementu, brez Biosa. ",
+    "user": "user-pass"
+  },
+  {
+    "message": "To že, ampak če hočeš v Win8.1 imeti MBR disk za boot disk moraš v UEFI vklopit legacy mode, ne? Torej izgubiš funkcije kot so secure boot, fast boot itd. Ali se motim? Kako to potem vpliva na hitrost? ",
+    "user": "He-Man"
+  },
+  {
+    "message": "fast boot dela tut na legacy načinu ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Ce se ti da brati, imas tukaj vse informacije in se vec: http://www.rodsbooks.com/gdisk/index.ht... Bottom line, ce nic ne govori proti GPT, potem GPT. ",
+    "user": "user-pass"
+  },
+  {
+    "message": "Hm, vsak reče drugače, tudi na tujih forumih. Rad bi kompatibilnos, v primeru da se kaj slabega zgodi, da lahko vzamem diske ven in jih priklopim na drug PC, ki ima MBR disk. Po drugi strani pa se mi zdi dobro izbrati GPT zaradi dodatnih funkcij v UEFI (secure boot itd.). Eh... Hvala vsem za komentarje! :) ",
+    "user": "He-Man"
+  },
+  {
+    "message": "Se en glas za GPT. Kompatibilnost ni problem. Disk ti bo prebral katerikoli sodoben operacijski sistem (>XP). ",
+    "user": "zee"
+  },
+  {
+    "message": "GPT is it torej. :) ",
+    "user": "He-Man"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "ctx": "BSOD :D",
+    "content": "Torej, kaj ali kateri driver je problematičen? Ne znam izluščiti iz teh podatkov:\n\n\nCrash Dump Analysis provided by OSR Open Systems Resources, Inc. (http://www.osr.com)\nOnline Crash Dump Analysis Service\nSee http://www.osronline.com for more information\nWindows 7 Kernel Version 7601 (Service Pack 1) MP (4 procs) Free x64\nProduct: WinNt, suite: TerminalServer SingleUserTS\nBuilt by: 7601.18526.amd64fre.win7sp1_gdr.140706-1506\nMachine Name:\nKernel base = 0xfffff800`02e15000 PsLoadedModuleList = 0xfffff800`03058890\nDebug session time: Sat Nov 22 14:16:10.828 2014 (UTC - 5:00)\nSystem Uptime: 0 days 0:03:05.280\n*******************************************************************************\n*                                                                             *\n*                        Bugcheck Analysis                                    *\n*                                                                             *\n*******************************************************************************\n\nATTEMPTED_SWITCH_FROM_DPC (b8)\nA wait operation, attach process, or yield was attempted from a DPC routine.\nThis is an illegal operation and the stack track will lead to the offending\ncode and original DPC routine.\nArguments:\nArg1: fffff80003013cc0, Original thread which is the cause of the failure\nArg2: fffffa80072cc280, New thread\nArg3: 0000000000000000, Stack address of the original thread\nArg4: 0000000000000000\n\nDebugging Details:\n------------------\n\nTRIAGER: Could not open triage file : e:\\dump_analysis\\program\\triage\\modclass.ini, error 2\n\nFAULTING_THREAD:  fffff80003013cc0\n\nCUSTOMER_CRASH_COUNT:  1\n\nDEFAULT_BUCKET_ID:  WIN7_DRIVER_FAULT\n\nBUGCHECK_STR:  0xB8\n\nPROCESS_NAME:  System\n\nCURRENT_IRQL:  2\n\nLAST_CONTROL_TRANSFER:  from fffff80002e805f2 to fffff80002e8da8a\n\nSTACK_TEXT:  \nfffff800`00b9a360 fffff800`02e805f2 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiSwapContext+0x7a\nfffff800`00b9a4a0 fffff800`02e9199f : 00000000`40710089 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiCommitThreadWait+0x1d2\nfffff800`00b9a530 fffff880`014ebf6e : ffff0005`a674c600 00000000`00000000 00000000`00000000 fffff800`03409a00 : nt!KeWaitForSingleObject+0x19f\nfffff800`00b9a5d0 fffff880`08648b35 : fffff880`0888af76 00000000`0001020c ffff0005`a674c5de fffff880`08729c16 : ndis!NdisMSleep+0x5e\nfffff800`00b9a650 fffff880`0888af76 : 00000000`0001020c ffff0005`a674c5de fffff880`08729c16 00000000`000000c8 : netr28x+0x9b35\nfffff800`00b9a658 00000000`0001020c : ffff0005`a674c5de fffff880`08729c16 00000000`000000c8 fffff800`03409a7b : netr28x+0x24bf76\nfffff800`00b9a660 ffff0005`a674c5de : fffff880`08729c16 00000000`000000c8 fffff800`03409a7b 00000000`00000000 : 0x1020c\nfffff800`00b9a668 fffff880`08729c16 : 00000000`000000c8 fffff800`03409a7b 00000000`00000000 fffff880`08831050 : 0xffff0005`a674c5de\nfffff800`00b9a670 00000000`000000c8 : fffff800`03409a7b 00000000`00000000 fffff880`08831050 00000000`00000000 : netr28x+0xeac16\nfffff800`00b9a678 fffff800`03409a7b : 00000000`00000000 fffff880`08831050 00000000`00000000 00000000`00000000 : 0xc8\nfffff800`00b9a680 00000000`00000080 : 00000000`00000000 00000000`00000002 00000000`00002710 00000000`00000003 : hal!KeStallExecutionProcessor+0x183\nfffff800`00b9a6b0 00000000`00000000 : 00000000`00000002 00000000`00002710 00000000`00000003 00000000`00000001 : 0x80\n\n\nSTACK_COMMAND:  .thread 0xfffff80003013cc0 ; kb\n\nFOLLOWUP_IP: \nnetr28x+9b35\nfffff880`08648b35 ??              ???\n\nSYMBOL_STACK_INDEX:  4\n\nSYMBOL_NAME:  netr28x+9b35\n\nFOLLOWUP_NAME:  MachineOwner\n\nMODULE_NAME: netr28x\n\nIMAGE_NAME:  netr28x.sys\n\nDEBUG_FLR_IMAGE_TIMESTAMP:  5167edfc\n\nFAILURE_BUCKET_ID:  X64_0xB8_netr28x+9b35\n\nBUCKET_ID:  X64_0xB8_netr28x+9b35\n\nFollowup: MachineOwner\n---------\n\n\nThis free analysis is provided by OSR Open Systems Resources, Inc.\nWant a deeper understanding of crash dump analysis? Check out our Windows Kernel Debugging and Crash Dump Analysis Seminar (opens in new tab/window)\nShow DivCrash Code Links\nShow DivLoaded Module List\nShow DivRaw Stack Contents\nShow DivDump Header Information\nShow DivStrings\n\nHvala \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nEDIT: Morda še to, gre se za prenosnik ASUS X552CL",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "BSOD :D",
+    "content": "Ralink WiFi",
+    "author": "Clueless",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "BSOD :D",
+    "content": "Mi prosim samo zaupaš, iz česa se to vidi? Da bom vedel naslednjič.\n\nseveda hvala!",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "BSOD :D",
+    "content": "Po metodi ostrega očesa opaziš da gre za datoteko  netr28x.sys, nato pa googlaš \"ASUS X552CL  netr28x.sys\"  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  }
+]

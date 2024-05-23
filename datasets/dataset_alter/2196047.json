@@ -1,0 +1,116 @@
+[
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Določeni programi mi ne delajo več OK oz. sploh ne delajo. Spodaj so opisani simptomi.\nSumim, da je kriva punca, ki je vklopila računalnik. Ker se je dolgo prižigal in je bila nestrpna, je še enkrat pritisnila na gumb za vklop in po moje mal pokvarila cel računalnik.\n\nACDSee sem že odstranil in namestil še enkrat pa ne pomaga.\nNa C disku sem izvedel : Tools-Error checking in Defragmentation\n\nImam Windows 7 Ultimate 64 b, MS Office 2007.\n\nSeveda sem če iskal na Google, kjer je kar nekaj zapisov o teh težavah, vendar večina govoril o različnih načinih reševanja, nekaj sem jih sprobal, a ne pomaga.\n\nA bi kdo imel kakšno idejo, kaj naj še sprobam?\n\n\nExcel: \nKo odprem dokument ga ne pokaže, javi pa \"Not enough system resources to display completely.\"\n\nWord: \nTakoj ko ga zaženem javi:\"There is insufficent memory or disk space. Word cannot display the requested font.\"\nKo odprem določen dokument ga sicer odpre, vendar ni tako, kot bi moral biti (drugačna ureditev, določen del teksta je z drugimi fonti...): \n\"There is not enough memory or disk space to complete the operation.\n\nACDSee Photo Manager 12 : \nGa ne odpre, javi le v sporočilnem  okencu:\"ACDSee is unable to connect to the database, and will now close. \nPlease make sure that following database is accessible from this computer, and then restart ACDSee:\nC:\\Users\\Toni_i7\\AppData\\Local\\ACDSystems\\Catalogs\\120\\Default\"",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Naredi prostor na disku?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Na C disku imaš verjetno samo še 200Mb prostora.",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Ni tako enostavno, na C disku imam 28 GB prostora - prostega",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Win 7 resource monitor, koliko rama imaš ?\n\nhttps://support.microsoft.com/en-us/kb/929833\n\nCrystal Disk Info, prilepi screen stanja diska.\n\nWord v safe modu dela ? http://answers.microsoft.com/e...5b-522e1b4892f0 \n\n\n\nACDSee\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nC:\\Users\\Toni_i7\\AppData\\Local\\ACDSystems\\Catalogs\\120\\Default\n\t\t\n\t\tKlikni za razširitev\n\t\nImaš to mapo ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "\n\n1- rama imam 8GB, na voljo okrog 5 GB\n2- šel sem v CMD in zagnal:\nC:\\Users\\Toni_i7&gt;sfc /scannow\n\nYou must be an administrator running a console session in order to\nuse the sfc utility.\n\nPa sem administrator na računalniku - kaj naj storim?\n\n3-Crystal disk info (slika od SSD diska, na katerem je C\n\n\n\t\n\n</a>&lt;/a&gt;\n\n\n4. Sem zagnal  - Word se vklopi, a so vsi meniji sivi - ne dajo se vklopit. Edino klikanje po zavihkih deluje (Home, Insert, Page Layout, ...)\n \n\n\n5. Imam mapo:\nC:\\Users\\Toni_i7\\AppData\\Local\\ACDSystems\\Catalogs\\120\\Default",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "2 - sem zagnal  sfc /scannow, dela zdaj",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "rezultat:\n\nVerification 100% complete.\nWindows Resource Protection found corrupt files but was unable to fix some of them.\nDetails are included in the CBS.Log windir\\Logs\\CBS\\CBS.log. For example\nC:\\Windows\\Logs\\CBS\\CBS.log\n\nThe system file repair changes will take effect after the next reboot.\n\nC:\\Windows\\Logs\\CBS\\CBS.log   ne morem odpreti , javi \"Access is denied.\" Je pa velik 851 KB in je od danes.",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "V cmd poženi (zna trajati kako uro):\nchkdsk c: /f /r\n\nKer gre za sistemsko particijo te bo sistem vprašal, če naj operacijo izvede ob ponovnem zagonu.\nIzberi YES ter ponovno zaženi sistem.\n\nTvoj ssd je ocz vertex, sandforce kontroler (ne ravno preveč zanesljiva roba).Nekateri dobivajo modre zaslone, drugim kvari podatke, spet onim srečnim dela bp.",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "sem zagnal\nchkdsk c: /f /r\n\nna koncu je napisalo \"The volume is clean\"\n\nA žal težav ni odpravilo.\n\nIma še kdo kakšno idejo?",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Če narediš nov uporabniški račun v win, se vanj prijaviš, poženeš omenjena problematična programa,  je kaj drugače ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Format C in nova inštalacija WIn ter ostalih programov bo še najboljša varianta, če je s hardwerom vse OK.... še prej pa si na varno shrani vse dokumente, slike in podobno...",
+    "author": "scorpion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik scorpion pravi:\n Format C in nova inštalacija WIn ter ostalih programov bo še najboljša varianta, če je s hardwerom vse OK.... še prej pa si na varno shrani vse dokumente, slike in podobno...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nuf, ravno temu bi se rad izognil, ker je zamudno delo",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Sem na začetku pozabil omeniti, \ntudi vsi piškotki oz. samoprijave na straneh, forumih.... so se mi izbrisale",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Ytbnd pravi:\n Če narediš nov uporabniški račun v win, se vanj prijaviš, poženeš omenjena problematična programa,  je kaj drugače ?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nsem naredil nov račun\n\nprobam \nACDSee Photo Manager 12 in dela\n\nuf, sem mislil, super, to je to...\n\nprobam Excel, še vedno enaka težava, ne dela\n\nprobam Word, še vedno enaka težava, ne dela\n\nje pa res, da sem pred  dnevi \nACDSee Photo Manager 12  odstranil in ponovno namestil\n\nMogoče bi tudi Office delal, če bi ga ponovno namestil, probam jutri...\n\nA si lahko vse nastavitve iz starega userja uvozim v novega userja? Npr. bližnjice na Namizju, ....",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Za Office  uporabi opcijo repair.",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik nadebudnez pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik scorpion pravi:\n Format C in nova inštalacija WIn ter ostalih programov bo še najboljša varianta, če je s hardwerom vse OK.... še prej pa si na varno shrani vse dokumente, slike in podobno...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nuf, ravno temu bi se rad izognil, ker je zamudno delo\n\t\t\n\t\tKlikni za razširitev\n\t\n\nkolk ur in truda si pa že do sedaj porabil \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "Hvala vsem za nasvete predvsem pa Ytbnd, čigar 2 nasveta sta dejansko pomagala :\n1. Naredil sem novi uporabniški račun v Windows in pod njim je ACDSee delal.\nPod novim računom Office Word in Excell še vedno nista delala.\n\n2. Pod starim up. računom sem naredil Repair (Control panel-Programs-MS Office - desni klik (Change) in potem Repair)\nTraja cca. minuto in potem je Word in Excell začel prav delati.\n\n3. Ker pa sem hotel naprej delati pod starim up. računom, kjer sem imel urejeno Namizje in marsikaj - delal pa ni ACDSee, sem iz novega userja \"toni\"  oz. mape\n\nC:\\Users\\toni\\AppData\\Local\\ACD Systems\\Catalogs\\120\n\nza ta program vse datoteke (112 komadov) skopiral v mapo za ta program za starega userja Toni_i7\n\nC:\\Users\\Toni_i7\\AppData\\Local\\ACD Systems\\Catalogs\\120\\Default\n\nIn sedaj pod starim userjem Toni_i7 dela vse.\n\nHvala še enkrat",
+    "author": "nadebudnez",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Določeni programi ne delajo več",
+    "content": "No v 4-ih dneh, kolikor si se matral s tem, bi tudi že formatiral in naložil vse na novo... pa ne samo enkrat. Sploh če se uporablja kakšen kakovosten back up program.\nVažno pa je, da si uspel porihtati.",
+    "author": "scorpion",
+    "author_level": "Fizikalc"
+  }
+]

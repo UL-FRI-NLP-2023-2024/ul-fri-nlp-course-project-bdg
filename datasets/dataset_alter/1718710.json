@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "VPN IPsec",
+    "content": "Na eni strani imam M0n0wall na subnetu 192.168.1.0, na drugi pa Linksys rv042 na 192.168.2.0. IPSec deluje normalno iz Linksysa do M0n0walla, lahko pingam vse in se povezujem na PCje. Ko pa se poskusam povezat iz m0n0wall strani na Linksys, pa sicer lahko pingam PC za Linksysem, ne morem pa se povezat na noben PC. Ne morem niti pingat Linksysa preko VPNja ali se na njega povezat. Imam tudi par IP kamer na obeh straneh in te normalno delujejo iz Linksys strani na m0n0wall, ne morem pa se povezat na njih iz m0n0walla na Linksys. Sicer jih pingam lahko, ampak preko browserja pa ne gre nic. Firewall na linksysu je disabled.\n\nKaksna ideja kaj bi lahko bil problem?\n\nAja, vmes je se siolov modem, med linksysom in m0n0wallom, ki se poveze na net. A bi moral na njemu kaksne porte odpret, da bi spustil promet skozi? Ker cudno je, da gre v eno smer, v drugo pa ne.\n\nHvala",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Firewall deluje tudi na VPNju. Na monowallu imaš ločen network adapter (katerega nastaviš na * [dovoliš ves promet]), kako deluje to v Linksysu pa ne vem.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Nastavi subnet obeh mrežnih kartic na 255.255.0.0 .",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Ytbnd pravi:\n Nastavi subnet obeh mrežnih kartic na 255.255.0.0 .\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo sta dva ločena subneta, verjetno celo z vmesnim NAT. Ne moreš kar spremeniti na class B in pričakovati da bo še delovalo.\nTukaj se morejo popraviti firewall pravila in routing tabele, morebitni vmesni NAT-i pa se naj izklopijo (razen tisti glavni, ki zunanji IP naslov translata na lokalne).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Ja, to imam nastavljeno. Monowall ima allow all in tako tudi deluje. Na njega pridem brez tezav oz. na vse naprave za njim. Problem je, ker ne morem pridet do nobene naprave, ki je za Linksysom, ceprav ping deluje. Rekel, bi da je problem v firewallu na Linksysu, ki ne spusti prometa v omrezje. Ampak fw sem popolnoma izklopil in tudi vpn rule je narejen da dovoli vse.\n\nNe razumem tocno tega VPNja. A ni tako, da ko je tunel postavljen se smatra, da je ves promet legit in bi ga zato moral spustit naprej? Portov verjetno ne rabim mapirat, ne? Ker kamere so na 77 portu.\n\nHvala",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "tcptraceroute bi ti znal povedati do kam pride \"signal\" in kje se \"neha\"",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Sem probal tcptraceroute in ne pride nikamor oz. napise Interface not opened.\n\n\nA mi zna kdo povedat, če je v nastavitvah kakšen problem?\n\n\n\t\n\n\n\n\n\t\n\n\n\n\n\t\n\n\n\nHvala",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Aja, še tole. Če pingam iz monowalla direktno na linksys preko LAN interfacea in preko lokalnega IPja, potem ping deluje normalno. \n\nJe torej problem pri Linksysu ali pri Soekrisu (monowall)?",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Izklopi za začetek DPD in pa keepalive na obeh straneh.\n\nPA tam ko imaš izkjučen firewall za VPN ga vključi edino nastavitve naj bodo \"allow all\".\n\nEdit: pa z izkjučenim keepalive boš moral najprej pingat drugo stran oz. poslati nek inacializacijski paket da se bo tunel postavil. Torej prvi ping (zahtevek) gre v prazno, potem se pa tunel odpre.\n\nEdit 2: a povezavo (xDSL?) drži siolov modem? Torej deluje kot router in v tem primeru mora podpirat VPN (ipsec) passthrough. Veliko slabših routerjev tega ne podpira, za siol škatlo je odvisno od verzije/tipa.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Sem izklopil DPD in Keepalive na Linksysu, na Monowallu sem imel vrednosti prazne. Dodal sem fw rule na Linksysu, da na wan1 in lan spusti naprej vse od kjerkoli, kamorkoli. Resetiral  VPN povezavo in še vedno isto.",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Edit2\nJa, povezavo drži siolov modem, na katerega je vezan Linksys, ki mu modem da IP 192.168.1.3. Ampak to ni problem, ker obratno mi gre, torej iz Linksysa na Monowall. V to smer vse deluje, samo obratno ne gre.",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik disco pravi:\n Edit2\nJa, povezavo drži siolov modem, na katerega je vezan Linksys, ki mu modem da IP 192.168.1.3. Ampak to ni problem, ker obratno mi gre, torej iz Linksysa na Monowall. V to smer vse deluje, samo obratno ne gre.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKateri siol modem imaš?\n\nV monowallu kaže obe smeri povezave za aktivno? (v pfsensu ki je itak bsd verzija monowall je tole vidno pod status-&gt;ipsec-&gt;zavihek SPD)",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN IPsec",
+    "content": "Modem je callisto, modela pa ne vem. Ne morem dostopat do njega, če nisem fizično v firmi, tko da ne morem pogledat.\n\nJa, obe smeri sta aktivne pod SPD\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "disco",
+    "author_level": "Fizikalc"
+  }
+]

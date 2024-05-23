@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Sicer imam že nekaj znanja in izkušenj pri urejanju oz bolj pri razumevnju pomena ukazov v skriptah, ampak sedaj sem naletel na neznanko katere ne znam razvozlat. Nekdo, ki se spozna na skripte mu bo verjetno hitro jasno in mi bo znal pojasnit \n\nTorej tole je ukaz v eni skripti:\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tver_file = \"\\Storage card\\System\\Version_Info.txt\" \n        If(FileExists(ver_file))\n        version = SubStr(ReadFile(ver_file), 1, 5) \nEndIf\n\nIf(( version = \"5.2.7\") OR ( version = \"5.2.8\"))\n    Message(\"Not for your Version !\",\"*** ERROR ***\"),\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZadevo razumem in tudi preverjeno deluje tako kot mora. Se pravi sistem iz SD kartice\\System\\ prebere datoteko Version_info.txt in če je v njej zapis 5.2.7 ali 5.2.8, potem logično vrže napako \"Not for your Version!\"\n\nČe pa  je v datoteki Version_Info.txt recimo zapis 4.0.6 seveda napake ne javi in skripta dela dalje po nareku.. Torej vse lepo in prav.\n\nne razumem pa zakaj ta ukaz ne deluje več, če dodam recimo več varint, npr:\n\nIf(( version = \"5.2.7\") OR ( version = \"5.2.8\") OR ( version = \"5.2.9\") OR ( version = \"6.1.0\") OR ( version = \"6.1.2\"))\n\nv Version_Info.txt pa je recimo zapis 4.0.6  potem skripta kjub temu vrže napako  \"Not for your Version!\",  čeprav je po moji logiki nebi smelo saj tega zapisa ni v Version_Info.txt. Torej takoj, ko dodam več verzij, potem skripta vsakič javi napako ne glede na zapis v Version_Info.tx. Mislim, da je fora v teh dveh (1, 5) številkah spodaj, ki pa ne vem kaj točno pomenita..Verjetno bi ju moral po neki logiki spremeniti, če dodajam več opcij v preverbo.\n\n version = SubStr(ReadFile(ver_file), 1, 5) \n\nMi zna kdo pomagat rešit tole uganko? Upam, da je razumljivo kaj želim.. \n\naja, še ta podatek - v Version_Info.txt datoteki je vedno samo ena izmed navedenih verzij, torej samo 1 vrstica,  5 znakov ( npr: 5.2.7). Prilagam v post..",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Ne spoznam se točno na wince skripte, ampak ti dve številki pomenita ponavadi od katerega znaka začne (torej od prvega) in ali koliko znakov gleda (torej 5) ali pa do katerega znaka (torej do petega).\nZa malo debuga probaj pred tem izpisati: Message(version) , kar bo upam da izpisalo kaj je predtem sparsalo iz imena datoteke.\n\nVseskupaj pa seveda ugibam, grem malo pogooglat.",
+    "author": "amacar",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Ta uploadan file je zanalašč Version_Info.t.txt?",
+    "author": "wd40",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Ups,  res je, napaka pri uploadu..Tam kjer mora biti je pravilen, tako da to ne vpliva na skrtipo. Sem sedaj pripel pravilno.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Daj si Message(version) pred pogoj, da vidiš, kaj ti funkcija prebere. Pa kolikor vidim, želiš, da ni novejša verzija. V tem primeru bi gledal samo prvo številko in preverjal, če ni večja od 4.",
+    "author": "Mato",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Ne razumem kam točno moram vrinit ta ukaz Message(version). Želim pa tako kot sem napisal - sistem mora gledat celotno številko ki je v Version_info.txt (vseh 5 znakov, npr 4.1.0) in potem to številko primerjat z 5 možnimi različicami (ali po potrebi še z večimi), ki bodo navedene v skripti, npr:\n\nIf(( version = \"5.2.7\") OR ( version = \"5.2.8\") OR ( version = \"5.2.9\") OR ( version = \"6.1.0\") OR ( version = \"6.1.2\")) \n\nMislim da bom obupal nad tem, saj niti ni ključno pri izvedbi in lahko to preverjanje izločim iz skripte. Namen tega je samo, da se samodejno prepreči nekompatibilna posodobitev. Itak bo skripta na začetku pred potrditvijo sporočila s katerimi verzijami je update kompatibilen.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Daj ga pred if((version.... da ti bo izpisalo spremenljivko.\nMogoče ima kakšno omejitev zaporednih ORov, v tem primeru bi pač dal več if stavkov v tem smislu:\n\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\tIf(version = \"5.2.7\")\nMessage(\"Not for your Version !\",\"*** ERROR ***\"),\nEndIf\n\nIf(version = \"5.2.8\")\nMessage(\"Not for your Version !\",\"*** ERROR ***\"),\nEndIf\n\nIf(version = \"6.1.0\")\nMessage(\"Not for your Version !\",\"*** ERROR ***\"),\nEndIf\n.\n.\n.\n\t\nLahko bi rešil tudi z elseIf, ampak ne vem niti kateri jezik se uporablja in kaj sploh omogoča",
+    "author": "amacar",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Dobra ideja tole s preverjanjem vsakega posebej (ali po 2 naenkrat, kar sigurno deluje). To mi sploh ni padlo na pamet  Javim! Hvala.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "In? Ratalo?",
+    "author": "Kamele0N",
+    "author_level": "YUGOslovanski mehanik       Dmitri Mendeleev"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Ups sem pozabil javit. Žal ni šlo, tako da sem potem obupal. Ta fičer na srečo ni bil tako pomemben zato sem idejo opustil. Zdej pa je tako ali tako že passe ",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Obujam projekt. Kako naj s skripto (ki je že narejena in lepo opravi svoje delo), ukažem, da na koncu pobriše vsebino USB ključka (vidi ga kot \"MD\").\n\ntole sem dodal na konec a enostavno ignorira oz se nič ne zgodi:\n\ndelete \\MD\\*.*\n\nkje ga biksam?",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "Verjetno \"del /s /q \\MD\\\" (/s - tudi podimeniki, /q - da ne sprašuje za potrditev)?\n\nAli ti \"dir \\MD\\\" sicer prikaže vsebino?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Pomoč pri urejanju WinCE skripte",
+    "content": "ne pobriše...verjetno zato, ker se tudi ta skripta, ki narekuje ukaze nahaja na istem volumu \"MD\"\n\nsem sedaj šel po daljšnjici in sicer z ločenim ukazom za vsako datoteko, ki jo želim pobrisat iz MD\n\ndelete \"\\MD\\xxx.exe\"\ndelete \"\\MD\\yyy.exe\"\ndelete \"\\MD\\zzz\"\n...\n..\n.\n\nmi je pa ostal še en imenik katerega mi noče pobrisat..primer:\n\ndeltree \"MD\\Utilities\n\nsklepam da ravno zato, ker se v njem nahaja zagosnka datoteka ki poganja skripto. Ni panike, lahko ostane, dejansko je iz nje pobrisalo vse, razen .exe datoteke.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  }
+]

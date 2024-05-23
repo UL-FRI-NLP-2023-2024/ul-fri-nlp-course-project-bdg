@@ -1,0 +1,98 @@
+[
+  {
+    "message": "imam naslednjo težavo: Sem podnajemnik in imam od lastnice dol kabel za internet. če vklopim kabel mi hitrost interneta omogoča download 900kb/S... torej kabel dela! potem ta kabel vklopim v (nov) wifi router (linkys wrt54gl) ki mi oddaja (zaklenjen) signal, na katerega se lepo priklopim z računalnikom/telefonom/tablico. Internet dela! Vendar dela ZELO ZELO počasi... govorim o prenosu 0.1-6kb/s z torentom ki ima 1500 sejalcev in strani se odpirajo 20s ali 30s. Hitrost pade tudi če se priklopim z računalnik preko kabla na wifi router.  KJE JE SEDAJ TEŽAVA!?  po kablu pride internet... wifi router dela, sem ga tudi 3x resetiral, sprobal doma (na drugem omrežju/lokaciji... računalnik dela... signal je zaklenjen... na Telemachu pa tudi pravijo, da je signalom vse vredu predvidevam da pride dol kabel od wifi routerja od lastnice (vendar ta signal ne pri do mene) in ga njen router nekako blokira/upočasni ko ugotovi, da je na njega priklopljen še eden wifi router. Bi moral resetirati njen router?  LEPO PROSIM ZA POMOČ! ",
+    "user": "WIngs"
+  },
+  {
+    "message": "Predvidevam, da si kabel, ki ga imaš napeljanega, vklopil v WAN port na tvojem routerju in potem še nekaj v konfiguraciji 'zakompliciral'.  Načeloma bi zadeva morala vseeno delovati, tudi če si vklopil v WAN port, vendar moraš biti potem bistveno bolj pazljiv pri definiranju WAN in LAN konfiguracije na routerju.  Kaj če bi poskusil napisati kakšne malo bolj konkretne podatke IP naslovov, ki jih imaš v omrežju (začenši od najemodajalkinega routerja)? Tako lahko vsaj ugibamo, kaj bi dejansko lahko bilo narobe nastavljeno, saj (kolikor meni znano) nihče od nas ni jasnoviden. ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Mogoče si pa ta dva WI-FI ruterja motita signal ker delata na isti frekvenci?  Samo razmiščjam ne me držat za besedo :) ",
+    "user": "malini"
+  },
+  {
+    "message": "Če prav razumem si wrt54gl priklopil po kablu od lastnice in potem dalje ? Priklopi kabel v lan port tvojega routerja. Kateri firmware imaš naložen ?  Koliko je razdalja med wifi routerjem in odjemalcem in koliko signala (dbm) imaš ?  Verjetno je zasmeten spekter, prestavi router na kanal 1,6, ali 11. V katerem načinu dela wifi (b/g), hitrost wifi povezave ?  Kje si izmeril hitrost 0.1-6kb/s ?  Hitrost pade tudi če se priklopim z računalnik preko kabla na wifi router. Tu leži problem, sploh če je prej, ko si priklopil pc direktno na kabel, delalo ok.  Njen router pusti pri miru, resetiraj svojega.   Pišeš o zaklenjenem (wifi) signalu, kodiranje je wep ali wpa 1/2 (aes, tkip) ? ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Po moje ni problem v WiFi nastavitvah, ker je nekje omenil, da je isti problem, če se priklopi preko kabla na router. Sicer pa to lahko hitro ugotovi, če izmeri pretočnost med dvema računalnikoma, ki ju istočasno priklopi na svoj WiFi.  Če ima isti problem na kablu mora biti nekaj zakvačkano na IP konfiguraciji, kar pa brez podatkov ne bomo ugotovili ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Porta nimaš odprtega ",
+    "user": "AndyS"
+  },
+  {
+    "message": "Router ima samo 5 vhodov... eden je čisto ločen in piše nad njim Internet, v tega dam kabel od \"lastnice\" potem pa je skupina štirih vhodov, nad katerimi piše 1, 2, 3, 4... predvidevam iz prakse, da so to izhodi. Firmware mam najnovejši, razdalja je pol metra... zaščito imam WPA personal TKIP, resetiral sem ga že trikrat, router deluje normalno pri meni doma, na drugi lokaciji, vse to sem že naredil z drugim routerjem, isti model... channel imam 11: 2,46GHZ, Firmware Version: v4.30.7, Jun. 20, 2006  Current Time: Tue, 16 Oct 2012 06:49:17  MAC Address: C8:D7:19:60:8D:A0  Router Name: WRT54GL  Host Name:  Domain Name:  Internet   Configuration Type  Login Type: Automatic Configuration - DHCP  IP Address: 192.168.0.18  Subnet Mask: 255.255.255.0  Default Gateway: 192.168.0.1  DNS 1: 84.20.224.66  DNS 2: 193.189.160.11  DNS 3: 193.189.160.12  MTU: 1500   MAC Address: C8:D7:19:60:8D:A1  Mode: Mixed  SSID: linksys  DHCP Server: Enabled  Channel: 11  Encryption Function: Enabled ",
+    "user": "WIngs"
+  },
+  {
+    "message": "\"Internet\" je WAN port. Daj lan port, tako bo router deloval kot switch + wifi AP.  Na pol metra wifi ne more delati optimalno, si ravno v luknji.  Testiraj wifi prvo brez kodiranja.  Si sam nastavil router na 192.168.0.X, ker privzeto je na 192.168.1.1 ?   Siol že dolgo nima več 193.189.160.11 in 12 za dns serverja, temveč sta 193.189.160.13 in 23. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Kateri je lan port? Je samo ta internet/WAN port in potem tisti štirje 1, 2, 3, 4... drugega ni (razen za napajanje)  Isto je ali sem na pol metra ali 5 metrih  Vedno ko sem resetiral že x-krat sem prvo probal z vsemi reset nastavitvami, šele potem sem zakodiral...  sam nisem nič nastavljal, ker se ne spoznam na to. Smo pa na Telemachu v LJ. Ko doma vklopim in resetiram (ali pa ne) mi takoj deluje normalno z vso hitrostjo  hitrost pa gledam po utorrentu, kjer imam 3 torente, ki se prenašajo z max sejalci... in tako bi mogl skočit na max hitrost. pardon, kateri je lan port? ",
+    "user": "WIngs"
+  },
+  {
+    "message": "Nekje med nastavitvami bi moral najti opcije za kaj je namenjen ruter, se pravi da sta 2 opcije: kot gateway ali kot razdelilec....v tvojem primeru uklopi razdelilec ker je predteboj še en ruter. ",
+    "user": "Yacked2"
+  },
+  {
+    "message": "dal sem router RIP: disabled select set number: 1 ? Destination LAN IP: . . .  Subnet Mask: . . .  Default Gateway: . . .  Interface: tu imam WAN (internet) ali pa LAN& WIRELESS  A bi mogoče bilo pod firewall ko je opcija filter multicast, to potrebno izključiti pri lastnici? da to \"filtrira\" moj wifi? Ker mislim, da bi bilo pri lastnici treba resetirati ali kaj narediti... ",
+    "user": "WIngs"
+  },
+  {
+    "message": "Žal si od celotne konfiguracije navedel le 1/3 podatkov, da bi si lahko ustvarili celovito sliko. Kot prvo dejmo razčistiti, da imaš na voljo DVA scenarija: routed in bridged/switched Routed - svoj router konfiguriraš, kot da je stanodajalka tvoj ISP. Pri tem MORA imeti njeno omrežje drugo IP območje, kot tvoje 'zasebno' omrežje. Bridged/Switched - tvoj router konfiguriraš kot sestavni del stanodajalkinega omrežja in uporabljaš isti naslovni prostor, kot ona - zasebnega omrežja nimaš  S tem, ko si stanodajalkin kabel vključil v WAN port si izbral Routed varianto in moraš router temu ustrezno skonfigurirati.  Ko govorimo o LAN portih, so to 'ostali' porti, ki niso označeni kot WAN port.  Da bi zadeva pravilno delovala v Routed načinu, moraš postaviti konfiguracijo, ki je podobna spodaj navedeni:(R1= router stanodajalke, R2= tvoj router)  Provider: Siol / Telemach ? - od tega zavisi, kateri DNS uporabljati - uporabljaj DNS SVOJEGA providerja - ti imaš namreč mešano Siol in Telemach strežnike Če je provider Siol, vpiši 193.189.160.13, 193.189.160.23 Če je provider Telemach, vpiši 84.20.224.66, 213.143.65.40  R1 LAN adresa: 192.168.0.1  R1 Subnet Mask: 255.255.255.0 ------------ R2 WAN type: DHCP ali Static ? Če uporabljaš statične nastavitve, nastavi IP naslov izven dhco območja, ki ga streže R1!  R2 WAN IP: 192.168.0.180 (recimo, da je to že izven tega območja) R2 Subnet Mask: 255.255.255.0 R2 Default Gateway: 192.168.0.1   R2 LAN IP address: 10.10.10.1 (namerno sem prestavil IP območje tvojega zasebnega omrežja v popolnoma drugo območje, da ne more priti do kakršnihkoli zamenjav z naslovnim prostorom in napravami v stanodajalkinem omrežju) R2 LAN Subnet Mask: 255.255.255.0 R2 DHCP Server: ON R2 DHCP Range: 10.10.10.10 - 10.10.10.25 (območje naslovov, ki se bo dodeljevalo tvojim računalnikom)  Ko router s temi nastavitvami aktiviraš in izvedeš dhcp release/renew na svojih računalnikih, bi moralo omrežje normalno delovati. Pri tem bi morali tvoji računalniki dobiti dodeljene IP adrese iz omrežja 10.10.10.xxx, default gateway za računalnike mora biti 10.10.10.1, DNS pa odvisno od providerja Siolovi ali Telemachovi strežniki (ponavadi se tuji strežniki ne odzivajo, kar povzroča nepotrebne zamude in otežen dostop). ------------------------------------------------------ Če bi hotel ubrati Bridged/Switched metodo konfiguracije, moraš stvaro postaviti popolnoma drugače. Zato ne mešaj zgornjo konfiguracijo s tem, kar sledi!  Kot prvo mora stanodajalkin kabel biti vključen v enega od LAN portov.  R1 LAN adresa: 192.168.0.1  R1 Subnet Mask: 255.255.255.0 ------------ R2 WAN IP: Ne nastavljaš - prazno / disabled R2 Subnet Mask: Ne nastavljaš - prazno R2 Default Gateway: 192.168.0.1   R2 LAN IP address: 192.168.0.180 (namerno sem prestavil IP adreso v območje izven stanodajalkinega dhcp območja) R2 LAN Subnet Mask: 255.255.255.0 R2 DHCP Server: OFF R2 DHCP Range: disabled/prazno (tvoji računalniki bodo dobili IP preko stanodajalkinega routerja)  Načeloma bi tudi lahko imel vključen DHCP strežnik na R2, vendar bi moral v tem slučaju obvezno biti nastavljen na dodeljevanje adres iz območja, ki ga NE streže že stanodajalkin router. Zato je enostavneje, če ga preprosto izklopiš.  Ko boš aktiviral nastavitve na routerju in izvedeš dhcp release/renew na računalnikih, bodo ti dobili IP naslov iz območja, ki jim ga bo dodeli stanodajalkin R1. Default gateway bo moral biti 192.168.0.1, dns pa odvisno od providerja ustrezni zgoraj navedeni par za Siol ali Telemach. ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Pa ti samo torrent zelo počasi dela, al net na splošno?  edit: Spregledal v prvem postu, da ti tudi strani počasi odpira. sorč ",
+    "user": "radiokills"
+  },
+  {
+    "message": "Zdravo!  Na Telemachovem omrežju je v tem primeru poterbno biti pozoren na sledeče:  Prvi ruter ki je priključen na modem mora biti nastavljen na DHCP konfiguracijo in kabel mora biti vanj vključen na WAN port. Prav tako ne sme giti na ruterju vključene clone-mac ali port-forwarding.  Drugi ruter mora biti priključen preko enega od LAN vhodov in na ruterju mora biti nastavljeno da se obnaša kot switch in ne kot ruter. Prvi ruter namreč ustvari notranje omrežje in dodeljuje IP naslove, drugi ruter pa mora linijo samo pošiljat naprej.  Kar se omrežja samega tiče je to to... ",
+    "user": "TheCableGuy"
+  },
+  {
+    "message": " TheCableGuy je 16. okt 2012 ob 19:43 izjavil:Drugi ruter mora biti priključen preko enega od LAN vhodov in na ruterju mora biti nastavljeno da se obnaša kot switch in ne kot ruter. Prvi ruter namreč ustvari notranje omrežje in dodeljuje IP naslove, drugi ruter pa mora linijo samo pošiljat naprej.   Problem pri postavitvi drugega routerja kot router je običajno v tem, da ljudje ne poznajo osnovnih načel mreženja in routinga, pa ne postavijo pravilne konfiguracije, ki bi imela najmanjšo možnost, da bi pravilno delovala.  Zato se večinoma stvar poenostavi na 'trotelziher' nivo in reče 'dej postavi ta drugi router kot switch'.  TCP/IP ima svoje zakonitosti in če jih pravilno upoštevamo, ni nobene ovire, da bi postavili deset routerjev enega za drugim. ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Jaz imam takole zvezano: Modem od Siol-a mi preko WiFija oddaja signal, ki ga lovim s prenosnim računalikom. Tega sem priklopiv v linksysov ruter kot \"internet\", od tega naprej na spet namizni računalnik. Konfiruacija: Modem-tako kot prej, prenostnik: 192.168.1.X (ip wlana) deljenje Brežičnega omrežja preko local connection--> ruter: gateway(moj ip od lana):192.168.0.1 ruter naprej oddaja kot 192.168.0.100....na namiznem računalniku pa local connection na samodejno pa stvar deluje. Poiskusi s tako varjanto, samo da namesto laptopa uporabiš ruter ",
+    "user": "Yacked2"
+  },
+  {
+    "message": " Yacked2 je 16. okt 2012 ob 20:06 izjavil:Jaz imam takole zvezano: Modem od Siol-a mi preko WiFija oddaja signal, ki ga lovim s prenosnim računalikom. Tega sem priklopiv v linksysov ruter kot \"internet\", od tega naprej na spet namizni računalnik. Konfiruacija: Modem-tako kot prej, prenostnik: 192.168.1.X (ip wlana) deljenje Brežičnega omrežja preko local connection--> ruter: gateway(moj ip od lana):192.168.0.1 ruter naprej oddaja kot 192.168.0.100....na namiznem računalniku pa local connection na samodejno pa stvar deluje. Poiskusi s tako varjanto, samo da namesto laptopa uporabiš ruter  Ne zdaj reveža, ki se že tako ne znajde najbolje še dodatno mešati z nekimi improvizacijami, ki pri vas delujejo. Zgoraj ima lepo napisani dve konfiguraciji za način A in B postavitve in ko bo zadevo pravilno nastavil, mu bo delalo tako, kot on to potrebuje v svojem primeru. Če zdaj pridete vsak z neko svojo varianto, ki pri vas po nekem čudežu deluje, ne bo vedel, kje se ga glava drži in kaj je že probal in kaj ni. ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Včeraj sem bil gorih pri lastniku da bi pogledal ali ima on nastavljeno kot router ali gateway. Ker mi ni pustil šariti po nastavitvah, sva se zmenila, da bo on poklical strokovnjake in bodo porihtal ali njegov ali moj router... Vsem hvala za pomoč! ",
+    "user": "WIngs"
+  },
+  {
+    "message": "Hmmm...saj si rabil samo svojega prav nastaviti - lastnikov, je čisto ok in ne rabi NOBENIH sprememb. ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Ja baje mi mojega blokira, če ima on nastavljen kot router, ne kot gateway. ",
+    "user": "WIngs"
+  },
+  {
+    "message": "larifari - nastavil bi svojega tako, kot sem ti napisal - varianto A ali B, obe bi delovali. ",
+    "user": "NeMeTko"
+  },
+  {
+    "message": "Da povem rešitev: nastaviti je bilo potrebno njen router, ker je blokiral mojega, oz. bi blokiral vsakega nadalnjega.  LP ",
+    "user": "WIngs"
+  },
+  {
+    "message": "Kaj točno nastaviti ? ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "To pa tudi mene zanima.  Edino, kar se lahko domislim, bi bilo to, da bi imel nastavljen ARP filter, pa da je bilo potrebno dodati ARP adreso routerja. Samo potem se sprašujem, kako crappy tisti filter deluje, ker nekaj je pa vendarle prepuščal. ",
+    "user": "NeMeTko"
+  }
+]

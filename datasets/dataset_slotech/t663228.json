@@ -1,0 +1,50 @@
+[
+  {
+    "message": "Za eno aplikacijo bi rad Arduina napajal na baterije. Glede na kapaciteto bi mi najbolje ustrezalo napajanje preko dveh (ali treh) baterij 16850. Zadevo bi rad naredil tako, da bi bile baterije zaščitene pred izpraznitvijo ter da bi lahko v aplikaciji odčital stanje (napetost) baterije. Namesto Arduina bom mogoče uporabil NodeMCU ploščico z ESP8266 ESP-12E modulom, ki deluje na 3v3, kjer bi berjetno zadoščala že ena 16850 baterija.  Zanima me, če obstaja že kakšno narejeno vezje, ki bi znalo delati s takimi baterijami? Opcija je tudi, da podrem kak powerbank in tam zreguliram napetost na 3v3. Ali ima kdo kaj izkušenj s tovrstnimi zadevami? ",
+    "user": "         "
+  },
+  {
+    "message": "voltažo lahko čitaš preko analogRead, samp problem bi mogoče bil pri programu , bi ker li ion baterije nimajo sorazmerne voltaže in napolnjenost. če prav zastopim ti potrebuješ arduino z baterijo npr v primeru izpada el. energije? ",
+    "user": "FX6300B"
+  },
+  {
+    "message": "mogoče kaj na to foro http://www.aliexpress.com/store/product... ",
+    "user": "FX6300B"
+  },
+  {
+    "message": "1. Nabavi protected baterije, ki že imajo v sebi en mali PCB z zaščitno elektroniko, ki preprečuje izpraznjenje pod neko napetost in prevelik izhodni tok (glavni problem pri litijevih baterijah).  2. Če imaš 3V3 Arduino, ga lahko napajaš s stepdownom iz ene baterije (ali več vezanih paralelno, če rabiš večjo kapaciteto), če imaš pa 5V, pa s step-up regulatorjem.  3. AnalogRead je uporaben samo, če Arduino napajaš prek Vin/USB in si 100%, da bo napetost ostala znotraj specifikacij on-board regulatorja (mislim da je minimum 7V, preveri za dotični Arduino, ki ga boš uporabljal). Če napajaš preko 5V, potem rabiš vmes nek dovolj zanesljiv regulator (recimo pri step-upu bi moral imeti v tvojem primeru spodnjo mejo nižjo od cutoff napetosti na zaščiti od baterije), ki daje od sebe res konstantno 5V.  Še najbolj zanimiva ideja je merjenje preko interne 1.1V reference: http://provideyourown.com/2012/secret-a... ",
+    "user": "PandaFlow2"
+  },
+  {
+    "message": "Baterij imam nekaj takih z začito, tako bi da bi lahko uporabljal tudi tiste. Ali bi bilo za znižanje napetosti primerno kaj takega? Edini problem, ki ga vidim pri tem vezju je, da mora biti vhodna napetost za 1,5V višja od izhodne, torej bi potreboval dve zaporedno vezani bateriji.   @FX6300B, tisto kar si linkal na aliexpress bi znalo biti zanimivo. Če prav razumem vezje, imaš na levi strani vhod bodisi USB ali pa preko kontaktov na ploščici, na drugo stran pa priključiš baterijo in breme. Vezja naj bi imelo tudi vse potrebne zaščite. Ker je cena nizka, sem naročil nekaj komadov za preizkus. ",
+    "user": "         "
+  },
+  {
+    "message": "Uporabi kaj takega, je bolj učinkovito, pa še št. baterij (zaporedno vezanih) je po želji: http://www.ebay.com/itm/DC-DC-Boost-Con... ",
+    "user": "PandaFlow2"
+  },
+  {
+    "message": " PandaFlow2 je 8. jan 2016 ob 08:42 izjavil:Uporabi kaj takega, je bolj učinkovito, pa še št. baterij (zaporedno vezanih) je po želji: http://www.ebay.com/itm/DC-DC-Boost-Con...   Zaporedno vezanih? Vhod je 1-5V, izhod 5V. Bom verjetno preizkusil tudi tole, hvala. Aja, če na tako napravo vzporedno vežem dve ali več baterij, ali je potrebno pred vsako baterijo dati diodo, da slučajno zaradi različne napetosti na baterijah ne bi praznil ene baterije skozi drugo? ",
+    "user": "         "
+  },
+  {
+    "message": "Vzporedno, sorry. ",
+    "user": "PandaFlow2"
+  },
+  {
+    "message": "           je 8. jan 2016 ob 08:11 izjavil:linkal na aliexpress bi znalo biti zanimivo. Če prav razumem vezje, imaš na levi strani vhod bodisi USB ali pa preko kontaktov na ploščici, na drugo stran pa priključiš baterijo in breme. Vezja naj bi imelo tudi vse potrebne zaščite. Ker je cena nizka, sem naročil nekaj komadov za preizkus.   potem pa prosim sporoči kako bo , če bo ok bom tudi sam vzel par komadov, samo vevem ker nafila baterijo baje samo do 4.2V, bo dovolj za arduino? lahko pošlješ link točno katere si naročil? ",
+    "user": "FX6300B"
+  },
+  {
+    "message": "Če uporabiš NiCd akumulatorje, te ne rabi skrbeti, da bi se preveč izpraznili, tako in tako pa arduino pod neko mejo ne deluje več, tako da jih itak ne bi na 0V izpraznilo.  LP ",
+    "user": "negotiator"
+  },
+  {
+    "message": "da, vendar mora narediti vezje za polnenje :D v vsakem primeru , potem se mu vrjetno bolj splača kupiti neko vezje + li ion ker imajo večje kapacitivnosti itd ",
+    "user": "FX6300B"
+  },
+  {
+    "message": "Jaz sem naročil tole vezje za polnjenje. Podatka o izhodni napetosti nisem našel, sem pa med opisi zasledil, da ko je baterija polna, vezje daje na izhod vhodno napetost (5V), torej sklepam da deluje izhod na 5V. Raje kot za NiMh sem se odločil za LiIon baterije, ker se mi je od že kar nekaj prenosnikov napbralo zadosti baterij 18650. Seveda so vse brez zaščite, zato potrebujem zaščito v zunanjem vezju. Namesto Arduinota pa nameravam uporabiti NodeMCU ploščico (programirano preko Arduino IDEja), ki potrebuje nekoliko nižjo napajalno napetost. ",
+    "user": "         "
+  }
+]

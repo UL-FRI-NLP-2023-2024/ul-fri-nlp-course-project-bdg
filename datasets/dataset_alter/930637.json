@@ -1,0 +1,170 @@
+[
+  {
+    "ctx": "Excel funkcija",
+    "content": "Potrebujem pomoč, na prvi sliki imam več različnih stolpcev. Stolpec številka 2 in 3 imata možnost različnih vrednosti, v mojem primeru od 1-4. V stolpcu pod številko 4 potrebujem funkcijo, ki mi bo vrgla ime iz lista 2 (2. slika). Poskušal sem z IF funkcijo, vendar je problem v tem, ker je lahko v prvem stolpcu vrednost 1, v drugem pa 3 in potrebujem, da mi Excel izpiše besedo SREDNJA B, ki se nahaja na listu 2. Če je v prvem stolpcu vrednost 4 in v drugem 3 želim, da mi v tretji stoplpec vstavi besedo VISOKA A.\n Se pravi potrebujem funkcijo, ki bo znala razlikovati vrednosti iz prvega in drugega stolpca, rezultat pa vnesti v tretji stolpec. Upam, da je razumljivo napisano, meni se meša počasi. Se komu sanja kako to narediti. \n\nHvala za vsakršno pomoč\n\n\n\t\n\n \n\n \n\t\n\n",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Malo imaš zakomplicirano... funkcije VLOOKUP in HLOOKUP ti lahko pridejo zelo prav. To si poglej. Samo, da ti bo to dobro delalo, boš moral kar dobro razmisliti. Več se pa da narediti, če pošlješ datoteke, da se proba na istem primeru.",
+    "author": "ales85",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Sem dal v priponko, hvala za vso pomoč, ker so podatki zaupne narave sem jih moral pobrisati, upam, da bo šlo.",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "če ti ni po častjo tabelo na drugi strani \"obrniti\" tako, da boš začel od zanemarljiv 1 pa potem do visoka 4 (velja za stolpce in vrstice), te bo formula \n\n=OFFSET(List2!$F$3;B11;C11)\n\npripeljala na cilj\n\n(F3 je seveda celica \"levo nad\" poljem 1;1, če gledamo tabelo kot matriko)\n\ndrugače pa tudi offset - samo potem še vgnezditi IF ali VLOOKUP, ki bo \"spremenil\" 4 v 1, 3 v 2, 2 v 3 in 1 v 4 (zgledalo bo navzgravžno - šlo pa bo)",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Ni mi nič pod častjo, če si to mislil, vendar nekako ne pridem do rešitve, ki mi jo ponujaš.\n\nNe vem, če si me pravilno razumel, bom še enkrat napisal za vsak primer. Se pravi, želim, da na podlagi Lista1, Excel avtomatično poišče v Listu2 in sicer, da ga vodi na način koordinat. Se pravi številka 1 iz prvega stolpca in številka 3 iz drugega stolpca naj bi Excel pripeljalo do rešitve, ki se nahaja v List2, da mi izpiše SREDNJA B.",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "mah - nisem mel kaj delat - tu imaš s formulami in brez da bi obrnil tabelo na drugi strani (se pravi spreminjam 1 v 4 itd)  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "razumel, razumel  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nbo tisto zdaj pravo?\n\npa nasvet (za vse) - dajte tabele vedno postavljati \"naraščajoče\" - je dost lažje pol kaj delat naprej  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Pa ti si genij, stokrat ti hvala, maš zvezdice. Formula je adijo, se je ne bi sam spomnil Če ti alti kaj pomenijo, jih nakažem brez problema. Zdej bom še malo nesramen, kako naredim, da mi pobarva celico?",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "ne gre zdaj - mam kosilo\n\nkateri celice, barve, pogoje? gre pa z pogojnim oblikovanjem - v 2003 lahko 3 različne \"pogoje\", za 2007 nisem ziher koliko (vsaj 3 pa sigurno)",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Se ne mudi, v miru.\n\nZadeva je v tem, da imam sedaj v List1 stoplec F5 na voljo rang 0-2, v List2 sem dodal barvno tabelo. Sedaj bi znal sam, da mi prikaže željeno koordinato, ne vem pa za barvo.\n\nHvala za trud. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "ne kužim?? kaj bi z \"barvo\"? a bi hotel da ti na Listu1 v stolpcu 5 obarva celico glede na rezultat (skladno s barvno shemo \"druge\" tabele na Listu2)?\n\nče ja - potem mi povej kateri excel uporabljaš -. v 2003 ne bo šlo - imaš namreč 4 različne barve (in s tem pogoje) - 2003 pa \"prežveka\" le 3 (no - sicer bi šlo - bi se pa moral odločiti kateri \"pogoj\" bi bil bel (npr. če vpisano nizka = potem bela barva, zanemarljiva = zelena itd)\n\nv 2007 pa iščem pogojno oblikovanje - pa ne najdem  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Verjemi, da se tudi meni meša, sem vesel, da se ti da ukvarjati z mano.\n\nEvo, bom še enkrat opisal. Se pravi potrebujem enako zadevo kot v prvem primer, s to razliko, da sedaj potrebujem koordinate iz E11 in F12 (tukaj je na voljo vrednost 0-2), da zopet Excel poišče koordinate v List2, tam v drugi tabeli (je barvna) in da mi izpiše ime celice in pobarva na enak način kot so barve na List2 (se pravi tam imam rumeno, oranžno, zeleno, rdečo). Vse to mi mora izpisati in pobarvati v celico G11 iz List2.\n\nSej vem. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nImam Office 2010",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "vpiši mi \"koordinatne\" vrednosti v List1 - \"ročno\" vpiši rezuzltat (da bom dojel logiko - malo me bega, ker pišeš, da želiš \"koordinate\" jemati iz različnih vrstic  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )\n\nOFF: zdaj pa na kolo za zdravo telo  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n je prelepo zunaj da bi za PCjom sedel",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "dodan stolpec \"G\" - zaradi formule - je to to kar si rabil? ali je dejansko treba vrednosti jemati iz različnih vrstic?\n\nlp\n\n edit: kot že prej povedano - zaradi omejitve pogojev lahko le 3 barve ",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Hvala.",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "vrž uč - reklmacije sprejemam samo do danes 15:01:23   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nmal sem še \"zakompliciral\" z IF zankami - samo zato, da ne \"barva\" ko je prazno ozr. de \"preperčuje\" napčne rezultate - dalo bi se še polepšati, da omejiš dovoljene vnešen vrednosti (\"prvi\" 1 do 4, \"drugi\" 0 do 2)\n\njavi če OK",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "reklamacije sprejemam samo še danes do 15:03 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nsem \"zakompliciral\" še z IF zankami - samo zato da omejim \"napačne\" rezultate ozr. prikaze\n\nbi še lahko naredil bolj userfriendly - omeji dovoljene vrednosti vnosih polj - za prve vnose od 1 do 4, za druge pa od 0 do 2\n\njavi če je OK",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Priponka mi ne dela. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "??\n\nmi je prej linija \"padla\" - evo še enkrat\n(upam, da ni kaj z moji službenim firewallom - če ja potem boš moral počakati do večera, da ti od \"doma\" pošljem)\n\n (dodana priponka )   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n  ",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "No go, ni panike, lahko zvečer.",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "evo - upam, da bo zdaj šlo",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "ne bo šlo - file prevelik  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n - zdaj zazipan",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Nea gre  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "pa u pi..... mat.....   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nmod - daj alte za nalaganje nazaj - sicer  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n (a lahko nekdo prosim pogleda kaj zajebem z nalaganjem - hvala)\n\n@davidoff: evo - pošiljam po mailu",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "gmail  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Legenda, dela u nulo. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik gr69 pravi:\n(a lahko nekdo prosim pogleda kaj zajebem z nalaganjem - hvala)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nne rabte gledat - 22 MB file se enostavno ne da naložiti   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nALTi so pa šli kot davek na neumnost  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel funkcija",
+    "content": "Evo, če koga zanima kako zgleda funkcija.\n\n\t\t\n\t",
+    "author": "Davidoff",
+    "author_level": "Bumbar"
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Nikoli se nisem kaj dosti igral z WOL, sedaj bi mi pa prav prisel na dveh PC-jih.\n\nPrvi ima plato: Asus P8P67 Pro Rev 3.1 v navezi z routerjem Asus RT-N16 (stock firmware)\n\nDrugi je: Asus P7P55D v navezi z routerjem Linksys WRT54GL z DD-WRT firmwarom.\n\nOba z W7 x64\n\n\nSkratka, na routerjih odprem port (baje je po zelji, sem pa tudi 9 odprl za zbujat PC-je preko portalov na spletu), dolocim host na no-ip (dinamicni IP-ji), dolocim se MAC addresso PC-jev, pri Power managementu v Win7 vklopim sprejem paketkov in... ce prav razumem, naj bi to v praksi zbudilo PC? \n\nNo pa ga ne, nobenega. Potrebujem kaksen poseben software (za posiljanje pravih paketkov) za zbudit drugo kisto? \n\nIma kdo pozitivne izkusnje s tem?",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Mrežna kartica mora podpirati WOL (to najbrž podpira), potem je WOL potrebno vklopiti v biosu, če gre za integrirano mrežno kartico oz. pri nastavitvah napajanja kartice, če gre za ločeno kartico.\nJaz za pošiljanje paketa uporabljam  tale program.\nSam nisem odpiral nobenih portov, a to potrebuješ za WOL preko interneta?",
+    "author": "pinkobalinko",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik pinkobalinko pravi:\n Mrežna kartica mora podpirati WOL (to najbrž podpira), potem je WOL potrebno vklopiti v biosu, če gre za integrirano mrežno kartico oz. pri nastavitvah napajanja kartice, če gre za ločeno kartico.\nJaz za pošiljanje paketa uporabljam  tale program.\nSam nisem odpiral nobenih portov, a to potrebuješ za WOL preko interneta?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJa.. Preko mreze ne rabim, preko interneta bi mi prav prislo za zagon druge kiste..",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "prvo probaj če ti dela preko mreže (LAN) .. če ti imaš problem z firewallom drugače pa na PC-jih",
+    "author": "KLuka",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Dokler je le en računalnik na modem je zadeva enostavna, zakomplicira pa zadevo router. \nPri Linksysu je rešitev, da se lahko povežeš nanj (router) in preko njega budiš računalnike v lokalni mreži. Torej pakete za bujenje pošiljaš direk iz menija routerja.",
+    "author": "Morphey",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Preko LAN-a dela BP.. Preko WAN-a mi pa ne uspe.\n\nNa RT-N16 sem odprl porte 9, 8080 pa se nic ne zgodi.",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Broadcast boš čez router težko spravil oz. mora to router posebej podpirati.\n\nNajenostavneje bo tako kot so ti napisali: prijaviš se na Linksysa in od tam zbujaš kište v lokalni mreži.",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "http://windows7-issues.blogspot.com/2011/03/wake-on-lan-wol-for-windows-7-made-easy.html\n\nSem sel po tem tutorialu pa dela.. \n\n\nObstaja ta fora, da se na router prijavis tudi za asuse?",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Uh. Tole pa mene tudi čaka porihtat, če se kako da. Sem pa totalen zelenc še okoli teh zadev. Kako logično zgoščeno čtivo prioročeno v branje bi bilo tudi dobrodošlo.\n\nAli je  kdo pri volji in za telebana napiše. Step by step če se seveda da iz interneta UMTS budit PC.\n\nImam router Linksis WRT610n. Gor sta prek kabla 2 računalnika, in 3 druge napravce, + brezžično cca, 6 napravic. IP-ji trenutno niso določeni in naprave dobijo pač po vrsti kot pridejo (DHCP).\nRad bi pa z android tablico iz interneta (največkrat UMTS ali iz drugega lokalnega omrežja; verjetno ni razlike) budil potrebni PC na kablu (enega li drugega), da se konektam nanj. Iz androida uporabljam za remote Splashdestop HD. \nOd operaterja pa imam trenutno dinamični IP.",
+    "author": "roCkY",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Saj imas gor link..\n\ndinamicn ip.. no-ip se registriri, snami programcek in si izberi en hostname namest ip-ja..",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Update:\n\nPreko LAN dela OK. Preko WAN in (http://wakeonlan.me) pa se zbudi, le nekaj sekund po shutdownu. Minute kasneje ga ne pripravim vec, da bi se zbudil.",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik MViper pravi:\n Update:\n\nPreko LAN dela OK. Preko WAN in (http://wakeonlan.me) pa se zbudi, le nekaj sekund po shutdownu. Minute kasneje ga ne pripravim vec, da bi se zbudil.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKaj pa lokalno? Tam verjetno deluje tudi dalj časa po shutdownu, ne ?\nTežava je verjetno v ARP cache. Port forwarding deluje na podlagi IP naslovov, promet pa se na layer 2 prenaša na podlagi MAC naslovov. ARP daje preslikavo med IP naslovom in MAC naslovom. To je prva stvar, ki se lahko \"izgubi\" in zaradi katere zadeva ne bi delovala.\n\nPotem pa ima še interni switch na routerju svojo tabelo, kjer ima zapisano na katerem portu (fizični priključek) je kateri klient (MAC naslov). To pa je druga stvar, zaradi katere lahko zadeva pade.\n\nRešitev je, da port forwarding ne deluje direktno na notranji IP, ampak na broadcast naslov. Sem testiral pri svojem routerju in mi žal niti ne pusti forwardati porta na .255 naslov. Če ti bo tvoj router to prebavil, bi zadeva lahko delovala. Če ne pa ti ostane le še, da si na routerju odpreš admin panel za zunanji svet in preko njega prožiš WOL (v kolikor router to sploh omogoča).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik MViper pravi:\n Update:\n\nPreko LAN dela OK. Preko WAN in (http://wakeonlan.me) pa se zbudi, le nekaj sekund po shutdownu. Minute kasneje ga ne pripravim vec, da bi se zbudil.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKaj pa lokalno? Tam verjetno deluje tudi dalj časa po shutdownu, ne ?\nTežava je verjetno v ARP cache. Port forwarding deluje na podlagi IP naslovov, promet pa se na layer 2 prenaša na podlagi MAC naslovov. ARP daje preslikavo med IP naslovom in MAC naslovom. To je prva stvar, ki se lahko \"izgubi\" in zaradi katere zadeva ne bi delovala.\n\nPotem pa ima še interni switch na routerju svojo tabelo, kjer ima zapisano na katerem portu (fizični priključek) je kateri klient (MAC naslov). To pa je druga stvar, zaradi katere lahko zadeva pade.\n\nRešitev je, da port forwarding ne deluje direktno na notranji IP, ampak na broadcast naslov. Sem testiral pri svojem routerju in mi žal niti ne pusti forwardati porta na .255 naslov. Če ti bo tvoj router to prebavil, bi zadeva lahko delovala. Če ne pa ti ostane le še, da si na routerju odpreš admin panel za zunanji svet in preko njega prožiš WOL (v kolikor router to sploh omogoča).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nLokalno deluje BP. Kadar ces.\n\nHja, ker hec je v tem, da imam dinamicni ip. V routerju lahko pri DDNS nastavitvah ze na default firmwaru vpisem zazeleni host (http://klseet.com/index.php?option=com_content&view=article&id=112&Itemid=103) in prek tega hosta se preko WANa zazene gajba. Ampak samo 1x, max 2x. Pa se to v roku parih sekund po shutdownu. Tega hosta pa pri forwardiranju ne morem vpisat, lahko samo ip. \n\nNe najdem pa nikjer, da bi lahko zagnal ostale PC-je preko Asusa.",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Kaki model routerja pa imaš? Mogoče gre gor DD-WRT - tam imaš precej več opcij na voljo.\nSi probal forwardat port na .255 IP naslov?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n Kaki model routerja pa imaš? Mogoče gre gor DD-WRT - tam imaš precej več opcij na voljo.\nSi probal forwardat port na .255 IP naslov?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nAsus RT-N16\n\nDa se gor stlacit DD-WRT. \n\n\nCe te prav razumem, naj za test sprobam forwardirat port kar na dinamicen ip?",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Ti si odprl port 9 na interni naslov od računalnika (recimo: 192.168.1.100). Probaj odpreti port 9 na naslov 192.168.1.255, v kolikor ti bo router to pustil.\nČe ne pa daš gor DD-WRT, dovoliš da je admin panel dostopen tudi navzven in preko admin panela vklapljaš računalnike. Za dinamičen IP pa si skonfiguriraj DDNS.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Ne dela.. tudi tisto kar je se prej delalo, ne dela vec  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik MViper pravi:\n Update:\n\nPreko LAN dela OK. Preko WAN in (http://wakeonlan.me) pa se zbudi, le nekaj sekund po shutdownu. Minute kasneje ga ne pripravim vec, da bi se zbudil.\n\t\t\n\t\tKlikni za razširitev\n\t\nTo pa je zato, ker v tem času timeouta vnos v ARP tabeli in ruter več ne pozna povezave med IP in MAC naslovom.\n\nKot rečeno, paket pošlji z ruterja. Če ne podpira, ne bo šlo.\n\n(hmm, so že večino drugi povedali, hecno, da nisem prej te teme opazil)\n\nPovzetek je, da če ruter to ne podpira (poženeš program na ruterju), potem ne bo šlo. Pika.\nOziroma obstaja en protokol, ki omogoča pošiljanje WOL paketa (znan tudi kot Magic Packet, noben še ni omenil) tudi izven lokalne mreže, samo po mojem razen avtorjevega omrežja to nobena oprema ne podpira... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nWOL = Wake on LAN, pač...",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Probaj s statičnim vnosom IPja in MACa v ARP tabelo, če bo šlo...  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Hvala vsem za odgovore.\n\nSem nalozil DD-WRT na router, usposobil web access. Tako da zdaj ni blema vec prizigat PC na daljavo.",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Obujam staro temo..\n\nNa P7P55D imam tezave. Router je 54GL z DD-WRT in WOL deluje OK. Par dni. Potem pa ne zbudim kiste, po bogu ne.. kaj bi lahko bila fora?",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Nimam kakšne pametne ideje, ampak, si prepričan, da v prvem primeru kišta ni bila samo v stand-byju? (hm, sploh ne vem, če ti WOL kišto zbudi iz stand byja?)\n\nPreglej nastavitve BIOSa, da nimaš kje kakšnega strašnega varčevanja, ki bi kišto čez nekaj dni dal v totalni off mode (bi bilo čudno, ampak, hej, možno je marsikaj). Zadnjič sem gledal plato, ki je imela v BIOSU opcijo, kjer je pisalo: poraba ugasnjene kišt &lt; 1W, in zraven opomba: WOL ne bo več delal. Ampak to je potem stalna zadeva.\n\nCelo tako je, da običajno WOL dela 100%, da bi jaz morda celo prej sumil router kot kišto... Probaj še s kakšnim drugim računalnikom...  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Sigurno ne. Vedno jo kompletno ugasnem. Ker, WOL mi komot zbuja ostali dve kisti z P8P67PRO in P5QL-VM EPU platami. Razen, ce ima P7P55D kaj drugace narejen WOL in gre po shutdownu po dolocenem casu na nek nacin, ki ga WOL ne zbudi. \n\nBom pogledal se 1x. Pa na router bom installal najnovejsi DD-WRT, pa da vidimo..\n\nTnx!",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Da še sam malo obudim temo. Ni mi jasno, zakaj se računalnik ne zbudi... Torej. Imam Imam programčka WakeOnLanGui in WakeOnLanMonitor... Preko GUI vpišem podatke in z njim pošljem Magic Packet. Na drugem računalniku vključim Monitor, kateri dejansko paketek dobi. Torej, zadeva pride do računalnika. Za začetek želim le interno vključiti računalnik, potem pa še od zunaj, če bo slučajno to delovalo.\n\nWOL je vključen v BIOS-u, Windowsih, port 9 odprt in na routerju preusmerjen... Ampak ko dam računalnik v standby ga razen tipke ne zbudi nobena stvar. Router je RT-N16 (naložen original firmware), sta pa vmes še dva čisto navadna D-link 8 portna gigabit switcha. Mogoče je težava v tem?",
+    "author": "Omelo",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Ko pa je računalnik ugasnjen pa se zbudi? Ker jaz sem imel podoben problem. Idi v device manager in lastnosti na mrežno kartico (kabel) in pod Advanced zavihek nastavi opcijo \"Wake on setting\" na OS controlled (ta opcija je mislim da odvisna od mrežne kartice in možno da boš imel nekoliko drugače). Potem pa še idi na zavihek Power management in poklukaj obe kljukici ki se tičeta bujenja računalnika.\n\nAja, pa za lokalno bujenje iz drugega računalnika ne rabiš imeti noben port odprt na routerju, tudi switchi ne vplivajo. Ko boš pa hotel še remote bujenje pa se ponovno oglasi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Lahko je računalnik ugasnjen ali pa v pripravljenosti, nikoli se ne zbudi. WakeOnLanMonitor paket zazna, vendar ko je računalnik prižgan.\nDrugače pa, vse kar se tiče wake on lana sem vključil. Naložil sem celo en service - navodila našel na strani Wake-on-Lan (WOL) for Windows 7 Made Easy!, nastavil požarni zid v windowsih, same nastavitve v mrežni, vse omogočeno. Na routerju sem port sicer preusmeril, vendar zato, ker sem predvideval da bo to kar brez problema delovalo. Pa ne gre in ne gre.",
+    "author": "Omelo",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Razni požarni zidovi in drugi servici nimajo nobene  veze, saj je računalnik itak ugasnjen/v standby in ti itak ne morejo delati. Operacijski sistem in nastavitve na mrežni kartici morajo biti pravilno nastavljene, drugače zadeva ne more delati. Tisti dve nastavitvi, ki sem jih prej napisal, si preveril?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "Druga opcija mora biti vklopljena, tretja pa ne, saj omejuje delovanje.\n\n \n\t\n\n",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Wake-on Lan (remote) za trote",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik MViper pravi:\n Sigurno ne. Vedno jo kompletno ugasnem. Ker, WOL mi komot zbuja ostali dve kisti z P8P67PRO in P5QL-VM EPU platami. Razen, ce ima P7P55D kaj drugace narejen WOL in gre po shutdownu po dolocenem casu na nek nacin, ki ga WOL ne zbudi. \n\nBom pogledal se 1x. Pa na router bom installal najnovejsi DD-WRT, pa da vidimo..\n\nTnx!\n\t\t\n\t\tKlikni za razširitev\n\t\n\nUpdate: Ocitno novejsi DD-WRT firmware pomaga na WRT54GL, ker vse trenutno OK spila.",
+    "author": "MViper",
+    "author_level": "Fizikalc"
+  }
+]

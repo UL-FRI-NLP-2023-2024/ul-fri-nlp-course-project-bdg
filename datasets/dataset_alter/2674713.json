@@ -1,0 +1,128 @@
+[
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Pozdravljeni!\n\nKer T2 ne omogoča dostopa do nastavitev njihovega Innbox V60 modema (razen tistih na Horizontu) razmišljam o nakupu ločenega routerja. Najverjetneje bo to Ubiquiti Edgerouter Lite.\n\nGlavni namen je, da bi Edgerouter poleg drugega skrbel tudi za DHCP na lokalenm omrežju namesto modema - tu bi vsaj imel dostop do nastavitev.\n\nPri T2 mi na modemu lahko omogočijo bridge mode, obenem bi na njem tudi izklopil DHCP.\n\nMorebitna težava je, da imam na modem priključena tudi dva T2 TV boxa. Če bo DHCP na modemu izklopljen, se bojim, da TV ne bo deloval.\nČe prav vem, bi lahko problem rešil tako, da tudi TV priključim na novi router in na njem nastavim pravilne VLANe.\n\nIma kdo več izkušenj z bridge mode pri T2? Oziroma, ali obstaja še kakšna možnost, da bo TV deloval, če je povezan na modem, ta pa ima izklopljen DHCP?",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Narocis hkrati na T2, da ti TV premakne v HLS in nato ne potrebujes vec nobenih vlanov urejat. TV boxe priklopis na tvoj router in ne vec preko T2 modema. Plus je, da rabis samo en kabel kamorkoli zelis, ce nimas kabla pa lahko tudi TV preko wifija speljes. Minus je, da bo TV imel cca pol minute zamude. Manjsi minus je tudi nekaj slabsa kvaliteta slike, ampak ti ne znam povedati koliko, jaz je ne opazim.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Torej, če mi na modemu izklopijo DHCP, moram v vsakem primeru TV povezati na router.\nČe mi omogočijo še HLS, bi stvar morala delovati.\nČe mi HLS ne omogočijo, moram na routerju sam nastaviti VLAN za TV. V tem primeru mora tudi router podpirati protokol, prek katerega gre povezava do TV.\nMožnost, da bi na modemu pustil DHCP samo za TV pa verjetno ne obstaja? \nOziroma verjetno tudi ne bi bilo mogoče, da bi oba, modem in router imela hkrati vključen DHCP.\n\nAli prav razumem?",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "A nima T2 TV sprejemnikov priklopljenih direktno v njihovo omrežje (torej neke sorte bridge varianta), za domačo mrežo pa dobiš čisto ločeno omrežje? Pač varianta, da sta na modemu 2 porta v bridge, dva pa preko NATa na modemu. Vsaj tako se mi zdi, da je pri tastu nastavljeno, je pa minilo že precej časa odkar sem to nastavljal.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Možno, da je res tako. Vem sicer samo, da sta dva porta na modemu rezevirana za TV (port 3 in 4 v tem primeru).",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Ponavadi je tako, lahko se pa tudi zmeniš drugače. V resnici je najboljše HLS, ker deluje kot mora in kot bi pričakoval.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Sem ravno klical na T2. Ker ima modem statičen IP niti ne morejo omogočiti bridge mode. Namesto tega naj bi router priključil prek data porta. Enako tudi ne morejo izklopiti DHCP. Vsaj tako sem izvedel.",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Po moje nakladanje. Načeloma lahko imaš 1 statiko in 1 ali 2 dinamiki. Razen če se je vmes kaj drastično spremenilo na slabše.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik BrZiX je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSem ravno klical na T2. Ker ima modem statičen IP niti ne morejo omogočiti bridge mode. Namesto tega naj bi router priključil prek data porta. Enako tudi ne morejo izklopiti DHCP. Vsaj tako sem izvedel.\n\t\t\n\t\tKlikni za razširitev\n\t\nOčitno si na Telekomovem omrežju in imaš pred Innboxom še eno škatlico.\nNaročiš statični IP oziroma dodatni statični IP (1,83€). En port ti dajo v bridge vendar moraš ob tem sporočiti MAC naslov tvojega routerja saj se IP-je ročno dodaja - tvoj router moraš nastaviti na DHCP. Mikrotik 2011 tako že dolgo služi svojemu namenu ",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Robert je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tOčitno si na Telekomovem omrežju in imaš pred Innboxom še eno škatlico.\nNaročiš statični IP oziroma dodatni statični IP (1,83€). En port ti dajo v bridge vendar moraš ob tem sporočiti MAC naslov tvojega routerja saj se IP-je ročno dodaja - tvoj router moraš nastaviti na DHCP. Mikrotik 2011 tako že dolgo služi svojemu namenu \n\t\t\n\t\tKlikni za razširitev\n\t\nJa, res je. Tudi ko sem klical je omenil telekomovo omrežje.\nNajlepša hvala, to mi bo pomagalo.\n\nSvetovalec mi je sicer rekel, naj priklopim svoj router na data channel in bo router dobil svoj LAN IP. Ampak to verjetno ni tisto, kar želim doseči.\n\nKako pa to deluje, če imam dva statična javna IP naslova?",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Ni cisto isto, ker potem imas dva routerja zaporedoma, imas zato tudi 2x NAT, pa se doloceni porti so zasedeni, ker jih T2 rabi zase za dostop do opreme, npr 8443. 2x public IP pa ni nic takega, enega bos rabil za svoj router, drugi bo pa itak za T2 modem in ga v bistvu ne bos rabil.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Če je res tako, da mi na enem portu lahko omogočijo bridge, kakor je omenil Robert , potem verjetno ne bom imel dual NAT.",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Na modemu preko Horizonta izklopiš Wi-fi. TV box imam žično na modemu in seveda deluje, vse drugo pa na routerju.",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Torej če bom imel vse naprave vezane na svoj router, ne bo problema z dual NAT?\n\nNekako tako:\n\nTV <- [modem] -> router -> vse ostalo",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Ce te ne moti dual nat, potem je ok. Ce pa ves kaj to pomeni in ves, da te lahko ovira, potem si uredis bridge",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik damirj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tCe te ne moti dual nat, potem je ok. Ce pa ves kaj to pomeni in ves, da te lahko ovira, potem si uredis bridge\n\t\t\n\t\tKlikni za razširitev\n\t\nBom probal najprej brez bridga, da vidim kako bo stvar delovala. V skrajnem primeru lahko verjetno tudi v celoti zamenjam modem z nekim svojim. Slišal sem že, da tudi to počnejo.",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "En moj znanec je zamenjal komplet modem z stikalom s SFP portom ampak je direkt na T2 optiki. Dvojnega NATa bi se jaz osebno izogibal.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEn moj znanec je zamenjal komplet modem z stikalom s SFP portom ampak je direkt na T2 optiki. Dvojnega NATa bi se jaz osebno izogibal.\n\t\t\n\t\tKlikni za razširitev\n\t\nTo je najboljša opcija in dokaj simpl, če si na P2P ethernetu. Na GPONu se pa rahlo zakomplicira, ker rabiš ONT četudi v obliki SFP modula (ki spet ne dela ravno v vsaki opremi in naprej itak \"fejka\" ethernet interface) z nastavljeno pravo serijsko številko, itd..\n\nGlede na napisano, predvidevam, da je na GPONu in ima (Hauwei?) ONT od Telekoma ter Innbox od T-2ja. Jaz bi odklopil Innbox in svoj router priklopil direktno na  Telekomov ONT, samo skonfigurirat je treba pravilno VLANe, če jih uporabljajo. Magari najprej pirklopiš gor komp in pogledaš z wiresharkom kaj se dogaja, če na netu ne najdeš pravilne konfiguracije za svojo situacijo/priključek.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Ja, pred modemom je še ONT.\nHvala za odgovore. Ko dobim router, bom probal najprej vezavo na modem in nato lahko še popolno menjavo. Bom napisal, kako je šlo.",
+    "author": "BrZiX",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Ne bo delalo, če ne bo pravega MAC - lahko pa popraviš v svojemu routerju WAN MAC na tistega od Innbox \nVse TV lahko priključiš na svoj router brez nastavitev VLAN,... in deluje OK. Moj Innbox se praši na omari ",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "[T2] Innbox V60 in Edgerouter Lite + TV box",
+    "content": "Med T2 modem in linksys router dodaš switch in bi načeloma moralo delati, ker lahko modem brez težav da ven več zunanjih IPjev na 1 port. Pa seveda se moraš zmeniti za še en IP.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "ctx": "Koda",
+    "content": "Nisem ravno preveč vešč programiranja, zato bi prosil za majhno pomoč. Spodaj je koda, kjer naj bi se nek BEL tekst prikazoval na PROZORNEM ozadju. V FF in CHromu deluje brez problema, v IE 9 pa namesto prozornega ozadja prikaže belo ozadje. Kako to spremeniti?\n\n&lt;script language=\"JavaScript1.2\"&gt;\n&lt;!--\n\n/*\nTyping Scroller\nSubmitted by http://www.angelfire.com/nt/bengaliboy/)\nWith modifications by Dynamicdrive.com\nFor full source code, usage terms, and 100s more scripts, visit http://dynamicdrive.com\n*/\n\n//Secify scroller contents\nvar line=new Array()\nline[1]=\"Teks 1\"\nline[2]=\"Teks 2\"\nline[3]=\"Teks 3\"\nline[4]=\"Teks 4\"\nline[5]=\"Teks 5\"\n\n//Specify font size for scoller\nvar ts_fontsize=\"10px\"\n\n//--Don't edit below this line\n\nvar longestmessage=1\nfor (i=2;i&lt;line.length;i++){\nif (line.length&gt;line[longestmessage].length)\nlongestmessage=i\n}\n\n//Auto set scroller width\nvar tscroller_width=line[longestmessage].length\n\nlines=line.length-1 //--Number of lines\n\n//if IE 4+ or NS6\nif (document.all||document.getElementById){\ndocument.write('&lt;form name=\"bannerform\"&gt;')\ndocument.write('&lt;input type=\"text\" name=\"banner\" size=\"'+tscroller_width+'\"')\ndocument.write('  style=\"background-color: transparent '+document.bgColor+'; color: white '+document.body.text+'; font-family: tahoma; font-size: 10 '+ts_fontsize+'; font-weight:normal; border: medium none\" onfocus=\"blur()\"&gt;')\ndocument.write('&lt;/form&gt;')\n}\n\ntemp=\"\"\nnextchar=-1;\nnextline=1;\ncursor=\"\\\\\"\nfunction animate(){\nif (temp==line[nextline] & temp.length==line[nextline].length & nextline!=lines){\nnextline++;\nnextchar=-1;\ndocument.bannerform.banner.value=temp;\ntemp=\"\";\nsetTimeout(\"nextstep()\",3000)}\nelse if (nextline==lines & temp==line[nextline] & temp.length==line[nextline].length){\nnextline=1;\nnextchar=-1;\ndocument.bannerform.banner.value=temp;\ntemp=\"\";\nsetTimeout(\"nextstep()\",3000)}\nelse{\nnextstep()}}\n\nfunction nextstep(){\n\nif (cursor==\"\\\\\"){\ncursor=\"|\"}\nelse if (cursor==\"|\"){\ncursor=\"/\"}\nelse if (cursor==\"/\"){\ncursor=\"-\"}\nelse if (cursor==\"-\"){\ncursor=\"\\\\\"}\n\n\nnextchar++;\ntemp+=line[nextline].charAt(nextchar);\ndocument.bannerform.banner.value=temp+cursor\nsetTimeout(\"animate()\",50)}\n\n//if IE 4+ or NS6\nif (document.all||document.getElementById)\nwindow.onload=animate\n// --&gt;\n&lt;/script&gt;",
+    "author": "scorpion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Koda",
+    "content": "V spodnji vrstici odstrani boldan del:\n\ndocument.write(' style=\"background-color: transparent '+document.bgColor+'; color: white ...\n\nOdstrani samo del med vključno z  enojnima narekovajema  .",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Koda",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik doto pravi:\n V spodnji vrstici odstrani boldan del:\n\ndocument.write(' style=\"background-color: transparent '+document.bgColor+'; color: white ...\n\nOdstrani samo del med vključno z  enojnima narekovajema  .\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNajlepša hvala... zdaj pa deluje.",
+    "author": "scorpion",
+    "author_level": "Fizikalc"
+  }
+]

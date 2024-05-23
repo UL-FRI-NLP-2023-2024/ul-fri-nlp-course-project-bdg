@@ -1,0 +1,842 @@
+[
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Popolnoma na novo sem na SSD disk(sata priklop) naložil originalno sedmico in vse programe, ki jih rabim.\n\nVse dela normalno dokler dodatno na drug sata priklop, ne priklopim navadnega starega diska, ko ga priklopim se mi računalnik začne sesuvati, stalni modri zasloni...\n\n\nOba stara diska sta v starem računalniku z XPji delala brezhibno, v tem pa noben(so pa na njih samo moji podatki, brez kakšnega operacijskega sistema), takoj ko priklopim kateregakoli od njih mi vse začne crkavati(modri zaslon, po ponovnem zagonu mi ne dela več raziskovalec, včasih celo ne več obnovitev sistema...)\nŽe dvakrat sem vse na novo naložil in zdaj res ne vem več kaj naj naredim, rabim pa dodatna diska za shranitev vseh mojih podatkov.\n\nKaj naj še naredim da bo delalo?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\"navaden stari disk\" pomeni še ata ali že sata priklop? jaz bi gledal v smeri gonilnikov. četudi ti sedmica prepozna vse naprave, bi jaz namestil originalne gonilnike od proizvajalca. kakšen ahci driver, chipset driver, usb3 driver ipd fore. mi je  napačen (ahci) driver že sesul sistem...\nv varnem načinu se zažene?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Imam tri diske vse s sata priklopom.\nNa SSD sem naložil sistem in vse programe in vse dela brezhibno.\n\nTakoj, ko priklopim drugi ali tretji disk(oba samo s podatki, brez kakšnega naloženega sistema) pa se mi začne sesuvati sistem z modrim ekranom in stalnim ponovnim zaganjanjem sistema.\n\nZdaj sem z obnovitvijo sistema spet vse naložil na novo in res ne vem kaj naj naredim, da ne bo po priklopu že sata(ne ssd) diskov spet prišlo do sesutja sitema?\n\nŠe nikoli nisem nalagal driverja za disk(pa sem jih zamenjal že precej), še vedno doslej mi jih je sistem sam zaznal in naložil-res pa, da v odličnih starih XPjih.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "hmm. drug kabel? drug port? imaš morda intelov in dodaten marvelov sata port in za tega nimaš driverjev (pravih)? izklopi dvd in priklopi disk na ta kabel?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Računalnik je nov s šestimi sata vhodi, namesto dvdja sem priklopil prvič, ko mi je manjkal en sata kabel in se je vse sesulo in sem mislil, da ravno zato, ker sem ga priklopil s kablom, ki je med nalaganjem sistema bil priklopljen na dvd.\n\nPri računalniku piše ACPI x64-based PC.\n\nJe mogoče treba kaj v biosu spremeniti ali pa morda diske iz XPjev prej sformatirati?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "če imaš priklopljeno dodatno grafično, poskusi brez nje, mogoče imaš slab napajalnik.",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Imam vgrajeno grafično Intel(R) HD Graphics 530\n\nNapajalnik sem pa celo dodatno naročil boljšega in tišjega HKC 580W, ki bi moral krepko zadoščati saj so mi trije diski nekoč delali tudi z 250w napajalnikom.\n\nRačunalnik je popolnoma nov ampak nalagam ga pa že več kot en mesec, ker me vseskozi zajebava pa sem naložil vse od sedmice do desetke, ki je sploh popolna katastrofa in sem se takoj vrnil na sedmico, še raje bi se pa na XPje pa žal ne podpirajo 8GB rama in cel kup programov...\n\nStestiral sem rame, vse diske, cel sistem in povsod je vse brezhibno brez napak, ko pa priklopim drugi disk pa vse crkne in napiše, da je nekaj narobe s fizičnim spominom.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Matična plošča je MSI b250m pro, procesor pa i5 6500 3,2GHz skylake, ki sem ga vzel ravno zato, da imam lahko še naloženo sedmico, ker osmice in desetke res ne prenašam s tistimi ogabnimi kvadratki.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Delo tako pozno da samo računalnik ☺",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "ok...torej diagnostika: ssd z sedmico, osmico in desetko \"crkne\" ob priklopu dodatnega diska?\nimaš slučajno še kak disk in namestiš sistem na drugi disk (ali pa na enega izmed obstoječih-pač particioniraš nekaj placa za sistem) BREZ ssdja?\nbios si verjetno že posodobil?\nsicer je lahko kaka finta tudi v biosu, a diske bi moral sistem prepoznati četudi so v fat32.\naja, kako si testiral diske in rame? memdisk in crystal disk ali kaj drugega?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Dokler imam samo ssd dela vse brezhibno, takoj, ko priklopim navadni disk pa začne vse crkavati.\nTestiral sem z memdisk ter s tem originalnim pregledovalnikom pri winsih pa s pregledovalnikom wd pregledovalnikom data lifeguard diagnostic in povsod je bilo vse ok.\n\nEvo tole mi napiše po vnovičnem zagonu(pa chkdisk mi je iskal napake in je nekaj pisalo, da je narobe z indexiranjem):\nPodpis težave:\n  Ime težave:    BlueScreen\n  Različica operacijskega sistema:    6.1.7601.2.1.0.256.48\n  Področne nastavitve:    1060\n\nDodatne informacije o težavi:\n  BCCode:    19\n  BCP1:    0000000000000003\n  BCP2:    FFFFFA800756F530\n  BCP3:    FFFFFA800756F530\n  BCP4:    FF7FFA800756F530\n  OS Version:    6_1_7601\n  Service Pack:    1_0\n  Product:    256_1\n\nDatoteke, v katerih je opisana težava:\n  C:\\Windows\\Minidump\\052218-6739-01.dmp",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "kaj naredi, če greš v varni način z priklopljenim diskom?\nlahko pa probaš z enim live cdjem in narediš checkdisk (ali pa kakšen acronis disk manager) na tem težavnem disku in potem vidiš, kaj bo. a upaš ta diska komu posodit za test ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "V čem misliš, da je problem? Je disk v okvari ali kaj?\n\nSafeboot dela normalno.\n\nBom naredil varnostno kopijo vsega na disku, potem pa disk sformatiral.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "nekaj je definitivno z diskom(a). in če v varnem načinu deluje...potem je kakšen gonilnik ali nekaj, kar trzne na \"poškodovani\" disk. probaj format in ntfs.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Bom poskusil še in upam, da bo ok.\n\nJe bilo pa v XPjih s tema diskoma vse brezhibno(v desetih letih ne vem, če sem v XPjih videl en moder zaslon), zdaj, ko sem pa jih samo prestavil v nov računalnik s sedmico pa že vsaj sto modrih zaslonov.\n\nCel mesec sem rabil, da sem ugotovil, da je očitno z diskom nekaj narobe in ne z winsi, sem jih naložil vsaj desetkrat od sedmice pa do desetke pa povsod vse narobe",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Preveri vse stare hdd  z orodjem proizvajalca v dosu (wd , seagate)\nhttps://slo-tech.com/forum/t229395#crta\n\nwd\nhttps://support.wdc.com/downloads.aspx?p=2\n\nseagate\nhttps://www.seagate.com/gb/en/support/downloads/seatools/seatools-legacy-support-master/\n\n\nAli najdi nekje \"Hiren's Boot DVD 15.2 Restored Edition\", kjer so taka orodja že vključena.\nOz staro vezijo 9.9   \"Hirens.BootCD.9.9.zip\"\nhttp://www.filewatcher.com/m/Hirens.BootCD.9.9.zip.186002950-0.html\nnotri je iso, ki ga zapečeš za cd/usb ključek.\n\n\nKater ssd imaš ? Prilepi sliko iz CrystalDiskInfo.\nBios na plati je zadnji ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Najlepša hvala za res obsežen odgovor.\nBom naredil še vse to kar si napisal.\n\nDanes sem skušal delati varnostno kopijo dokumentov iz starega diska na zunanji usb disk in takoj, ko se je disk malo obremenil je vse crknilo.\nVedno bolj mi vse crkuje, še malo pa bom na nov računalnik naložil XPje s katerimi desetletje nisem imel nobenega problema, zdaj pa se cel mesec je bem že s samo naložitvijo sedmice, ki jo nujno rabim, ker na xpjih žal cel kup stvari ni več podprtih. ;(\n\nTudi obnovitev sistema s posnetkom sistema v winsih, ne dela več in bom moral še desetič očitno nalagati winse.\n\nPri modrem zaslonu mi običajno napiše dump physical memory ali pa manage memory???\nTole je pa slika ssd diska.\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Na novo škatlo XPjev ne boš naložil.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "to pa je zanimivo  no, se oproščam, tebi ne ravno...bi najraje rekel, da bi prišel pogledat, kaj je na stvari...ker to, da obremeniš sistem in crkne...hm, disk, plošča, napajalnik...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Vsekakor ni prepisal vseh podatkov v BSOD. BSOD zmeraj pove tudi kateri gonilnik je povzročil sesutje in vzrok (IRQ_NOT_LESS_OR_EQUAL ali podobno...)\nPotem se lažje diagnosticira. bi pa sumil da je napajalnik premalo zmogljiv, posebej če je kakšen brand iz nižje cenovne klase... Sem imel iste težave ko sem nabutal v našino 3 diske, 2 DVD pekača, grafo z zunanjim napajanjem... Se je vse skupaj sesedlo in kreširalo.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPonavadi pridem do safe mode, včasih pa niti do tja ne.\nObičajno mi mrzel računalnik dela, ko se pa diski segrejejo nad 30 stopinj pa začne vse crkavati, še vedno mi je vse delalo, dokler sem imel priklopljen samo nov ssd disk, po priklopu dodatnih diskov(že samo enega) pa se začnejo problemi, ki se ne nehajo tudi po odklopu dodatnih diskov.\nJe možno, da imam na teh dodatnih diskih kak virus, ki mi takoj sesuje računalnik?\nAmpak potem bi mi moralo sesuti tudi prenosnik(pa ga ne), ne pa samo navadnega???\n\nDrugega ssd diska pa trenutno žal nimam, da bi testiral(prenosnika pa tudi ne bi rad uničil, ker en računalnik pa res rabim delujoč)\n\nNa omenjeno stran mi računalnik ne pusti naložiti dmp datotek, ker piše, da so zaščitene in rabim dovoljenje lastnika datotek, nastavil sem poln nadzor pa še vedno ne razumem zakaj jih ne morem dodati na to stran.\n(Kako nastavim računalnik, da bom imel neomejen dostop do vseh datotek tako kot v XPjih, ker res ne razumem zakaj bi imel na svojem računalniku, ki ga sam uporabljam kar zablokiran dostop do nekaterih map in datotek(če ne drugega bi že iz firbca rad videl kaj je v kateri mapi.)\n\nMi pa v teh minidump datotekah piše, da je povzročitelj ntoskrnl.exe+a44a0.\n\n26.5.2018 16:29:25    BAD_SYSTEM_CONFIG_INFO    0x00000074    00000000`00000002    fffff880`02ea79e0    00000000`00000002    ffffffff`c000009a    ntoskrnl.exe    ntoskrnl.exe+a44a0    NT Kernel & System    Microsoft® Windows® Operating System    Microsoft Corporation    6.1.7601.24117 (win7sp1_ldr_escrow.180422-1430)    x64    ntoskrnl.exe+a44a0                    C:\\Windows\\Minidump\\052718-9048-01.dmp    4    15    7601    262.144    27.5.2018 0:20:34\n\t\t\n\t\tKlikni za razširitev\n\t\nA ti to priklapljaš neposredno na SaTA krmilnik? Si razmislil da bi priklopil disk preko    zunaj napajanega UsB/eSata ohišja?",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Roberto je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tA ti to priklapljaš neposredno na SaTA krmilnik? Si razmislil da bi priklopil disk preko    zunaj napajanega UsB/eSata ohišja?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMatična ima šest sata priklopov, napajalnik tudi ene šest električnih priklopov, zakaj bi jaz vse to priklapljal zunaj računalnika in imel še zunaj polno kablov?\n\nTak sistem s tako matično sem kupil ravno zato, da bo vse lepo spravljeno v škatli.\n\nČe je deset let stara škatla z XPji in s 350W napajalnikom zmogla vse to brezhibno prenašati znotraj škatle, res ne vidim razloga, zakaj tega nova ne zmore.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Še enkrat posodobil BIOS, verzija BIOSa je tudi napisana nova, vse po navodilih nastavil na w7 in zdaj že pol urce zadeva dela.\nBom videl koliko časa bo. Sploh, ko bom spet začel prenašati podatke na stari navadni disk.\n\nKater program pa imate za obnovitev sistema?\nTa obnovitev sistema v winsih je zanič, ker ob zrušitvi sistema nikjer ne ponudi obnovitev sistema in je nisem mogel narediti tudi iz safe mode.\n\nAcronis true image je pa naredil varnostno kopijo sistema, ki sem jo lahko obnovil,  vendar sem ob naložitvi te imel vse spet neaktivirano???",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "EaseUS Todo Backup Free 10.6",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "No, če sedaj dela, pa si vzemi nekaj časa in poskrbi, da namestiš najnovejše driveje za kompletno strojno opremo.\nChipset, grafično in dalje vse, kar je možno. Pa ne jemlji gonilnikov s strani proizvajalca plošče, pač pa s strani proizvajalcev za posamično napravo. Če se le da.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik zakon je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEaseUS Todo Backup Free 10.6\n\t\t\n\t\tKlikni za razširitev\n\t\nPa to preverjeno res deluje in ti res vse ostane enako z aktivacijo vred?\n\nBaje naj bi bil najboljši Acronis true image ampak moj sistem po Acronis obnovitvi še zdaleč ni bil tako delujoč kot bi moral biti.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Če ne bi delovalo. ti ga ne bi predlagal.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Hvala bom poskusil s tem programom EaseUS, ker res ne bi rad še enkrat nalagal celega sistema z vsemi posodobitvami vred...",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNo, če sedaj dela, pa si vzemi nekaj časa in poskrbi, da namestiš najnovejše driveje za kompletno strojno opremo.\nChipset, grafično in dalje vse, kar je možno. Pa ne jemlji gonilnikov s strani proizvajalca plošče, pač pa s strani proizvajalcev za posamično napravo. Če se le da.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nImam nov bios z nastavljeno sedmico a sem že doživel nov moder ekran \nNapaka NTFS.sys\n\nNtfs.sys    Ntfs.sys+195d3    fffff880`0120d000    fffff880`013b4000    0x001a7000    0x5a4991dc    1.1.2018 3:41:48    NT File System Driver    6.1.7600.16385 (win7_rtm.090713-1255)    Microsoft Corporation    C:\\Windows\\system32\\drivers\\Ntfs.sys",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Resno, naloži minidump na tisto stran...",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Nato tele driverje\n\n1. Chipset:\nhttps://downloadcenter.intel.com/do...ce-Software-INF-Update-Utility-?product=98086\n\n2.) Management Engine:\nhttps://downloadcenter.intel.com/do...or-Windows-7-8-1-and-Windows-10?product=98086\n\n3.) Onboard Grafična:\nhttps://downloadcenter.intel.com/do...phics-Driver-for-Windows-15-45-?product=97502\n\n4.) USB 3.0:\nhttps://downloadcenter.intel.com/do...-Intel-C220-C610-Chipset-Family?product=65855\n\n\nZa Mrežno tukaj izberi za Win7:\nhttp://www.realtek.com/downloads/do...d=5&Level=5&Conn=4&DownTypeID=3&GetDown=false\n\nZvočna isto WIN7 64-bit:\nhttp://www.realtek.com/downloads/do...=24&Level=4&Conn=3&DownTypeID=3&GetDown=false",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Lahko slikaš še Print/Screen ali sliko \"Device manager-ja\"?",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tResno, naloži minidump na tisto stran...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV pripeti datoteki so rezultati.\nV čem je torej problem?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tLahko slikaš še Print/Screen ali sliko \"Device manager-ja\"?\n\t\t\n\t\tKlikni za razširitev\n\t\nTudi tu je vse ok.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Vsaj jaz ne znam iz tistega zapisa takole na hitro z gotovostjo razbrati, kaj bi bilo. ker ntfs.sys, kot vidim, je lahko zaradi večih vzrokov.\n\nV device manager mi je v oči padel tisti standardni driver za AHCI. Posodobi ga na verzijo 15.5.2.1054, driver dobiš tukaj:\nhttps://mega.nz/#!kYt0iDAa!b6jRFkI5RwMlhOzoVVtsKBOqrYkP6tAwjMUhW8Ncyjw\n\nRavno tako tudi namesti vse ostale driverje s zgornjih povezav.\n\nJaz sem imel tudi primer, ko so kontakti na med banjico in RAM ploščico povzročali težave. Memtest delal neštetokrat, večkrat skozi nač, pa je vedno bilo vse OK. Vendar pa sem proti koncu začel opažati, če RAM ven vzamem in nazaj vložim, je nekaj časa bolje.\nNakar sem z obeh strani RAM ploščice poradiral kontakte, v banjici pa sem jih našprical s kontakt sprejem. Na hitro še nekaj kontakt spreja na kontakte ploščic in ko je bilo oboje še mokro, sem RAM zabil v pripadajoče banjice.\nTega je sedaj že dobri dve leti BSOD pa se več ne pojavlja.\nSkratka, včasih je res lahko kaj misterioznega.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNato tele driverje\n\n1. Chipset:\nhttps://downloadcenter.intel.com/do...ce-Software-INF-Update-Utility-?product=98086\n\n2.) Management Engine:\nhttps://downloadcenter.intel.com/do...or-Windows-7-8-1-and-Windows-10?product=98086\n\n3.) Onboard Grafična:\nhttps://downloadcenter.intel.com/do...phics-Driver-for-Windows-15-45-?product=97502\n\n4.) USB 3.0:\nhttps://downloadcenter.intel.com/do...-Intel-C220-C610-Chipset-Family?product=65855\n\n\nZa Mrežno tukaj izberi za Win7:\nhttp://www.realtek.com/downloads/do...d=5&Level=5&Conn=4&DownTypeID=3&GetDown=false\n\nZvočna isto WIN7 64-bit:\nhttp://www.realtek.com/downloads/do...=24&Level=4&Conn=3&DownTypeID=3&GetDown=false\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNajlepša hvala za vso tole in vso drugo pomoč, tebi in vsem ostalim. \nUpam, da se kdaj vidimo, da dam vsaj za kakšno \n\nVzrok vsega za dva meseca zaje bavanja, je bil očitno Bios+gonilniki.\nZdajle mi že spet kakšno uro dela brezhibno, kljub prelaganju z diska na disk.\n\nRes upam, da tako ostane tudi jutri, ko priklopim še tretji disk.\n\nKaj pa vi, ki računalnike res obvladate uporabljate za antivirusno/antispyware zaščito?\nJe brezplačni Avast ok ali pa MS essential?\n\nPa nek program, ki bi podobno kot Bitdefender stalno spremljal s kakšno hitrostjo se mi kaj prenaša prek neta in kater program to dela, ter me opozarja, če se kdo želi povezati z mojim računalnikom(in to blokira), bi si še želel.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Ker vsak berač svojo malho hvali bi ti rekel takole... naj ti ne bo žal plačati tiste evre za naročnino in kupiti renomiranega proizvajalca. Zastonjske verzije so z namenom zastonjske. Za osnovo je dovolj, kaj bolj sofisticiranega pa ne. Kaj boš izbral pa lahko najprej malo pobrskaš po netu... katera rešitev najmanj obremenjuje sistem, ima hiter odziv ob izbruhu nove grožnje, nudi še kaj več kot osnovno AV zaščito... \njaz uporabljam Norton Security, nekateri prisegajo na Avast, ESet NOD 32... vsekakor pa ti ne bi priporočal nabave plačljivih verzij preko pašnikov od sumljivih ljudi. Saj se vendar hočeš braniti ne pa dobiti trojanskega konja.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Tu imaš dobrega in poceni: https://www.ebay.co.uk/sch/i.html?_...nkw=kaspersky+internet+security+2018&_sacat=0",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tRes upam, da tako ostane tudi jutri, ko priklopim še tretji disk.\n\nKaj pa vi, ki računalnike res obvladate uporabljate za antivirusno/antispyware zaščito?\nJe brezplačni Avast ok ali pa MS essential?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNi problema, z veseljem.\n\nAHCI driver si posodobil s predlaganim? Za tole napravo:\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nNo, tudi če si, sem na netu ugotovil, da bi v15.7.6.1027 moral biti še stabilnejši. Tako da ti priporočam, da še tega zamenjaš. Snameš ga tukaj:\nhttps://www.dropbox.com/s/qr3gv8ika62hsyj/x64.rar?dl=0\n\nMoraš pa ga posodobiti ročno, ni zaženljive datoteke. Verjamem, da to znaš, vseeno pa: Device Manager > Desno tipko miške na AHCI Controller > Update driver software > Browse my computer for driver software in tam potem izbereš lokacijo, kamor si ekstrahiral x64 mapo iz arhiva moje povezave.\nSamo še next in počakaj, da naredi, ter ponovni zagon mašine. Takole:\n\n\t\n\t\t\n\t\nGlede Antivirusov pa tudi jaz za profi preferiram Kaspersky.\n\nVendar pa imam za domačo uporabo obratno mišljenje @Robertovemu. Free AV-ji se mi zdijo čisto zadosti in dobri. Za Windows7 je nekako Avira najboljša, vendar pa je, kot večina ostalih, nekoliko vsiljiva z obvestili, predlogi za posodobitev na plačljivo verzijo itd... Zato sam za sebe uporabljam MSE.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Kaki problemi, samo za to ker rineš z glavo skozi zid s 9 let starimi windowsi. Windows 10 ima tako pošlihtane update driverjev, da se ne spomnim, kdaj sem nazadnje rabil karkoli instalirati. Enostavno naložiš windowse in ponavadi vse že dela. Če ti kocke niso všeč jih pač ne uporabljaš. Jaz sem se z 8-ko navadil, da sploh ne uporabljam start menija. V Taskbaru imam najbolj pogoste aplikacije. Za ostalo pa Win+S in vtipkam, kaj iščem.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "A je možno, da sem dva meseca nalagal winse in si pulil še tisto malo las, samo zato, ker ni bil posodobljen BIOS na novi matični plošči?\n\n580W HKC napajalnik bi zagotovo moral zadoščati za tri diske saj drugega dejansko nimam priklopljenega, pa vzel sem celo tistega za katerega je prodajalec rekel, da je zelo dober in zelo tih.\n\nModri zaslon je vedno izpisal kaj takega: Non manage disk, dump physical disk, page fault in nonpaged area\n***STOP: 0x00000050(0xfffff88000800048....)\n\nBCCode:    19\nError BCP1:    0000000000000003  BCP2:    FFFFFA800756F530  BCP3:    FFFFFA800756F530  BCP4:    FF7FFA800756F530\n \nBiosa še nisem nikoli pri nobenem računalniku posodabljal, pa ni bilo nikoli nikjer nobenega problema, včeraj sem ga prvič posodobil in danes že skoraj eno uro dela vse brezhibno, kar je rekord od kar imam ta računalnik\n\nCrystal disk mi pri enem disku pokaže tole kar je na sliki, je to kaj hudega narobe?\n\nMe pa zanima ali je bolje nastaviti, da se te dodatne diske, ki jih rabim samo za nalaganje mojih podatkov, ugaša po recimo 10-15 minutah neuporabe ali je bolje, da so kar ves čas zagnani?\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Ni panike. če vrednost miruje.\n\nJaz hdd ne ugašam.\n\nTole raje prodaj in daj notri 1x 3tb, oz kolikor imaš sedaj skupne kapacitete.\n\n\nbtw, kvaliteten 580W ne stane 32 eur, temveč 60, čeprav tale hkc kao zmore 30A na +12V.\nhttps://edigital.si/pasiven/hkc-580w-usp-5580-pfc-14cm-ventilator-p47822\n\nSuper flower, xfx, seasonic, evga...\n\n\n\n\n\n\t\n\n\n\n\t\n",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "no ja, ko je enkrat opozorilo, moraš vedeti, da bo počasi (včasih lahko tudi leto...) disk odšel. jaz kaj pomembnega ne bi več shranjeval na ta disk...\nin ja, odgovor na prvo vprašanje...načeloma jaz vedno posodobim bios. na novi plošči. izjemoma in res izjemoma se mi je zgodilo, da je bios po posodobitvi dejansko štekal zadevo. do nove verzije seveda, ko so ugotovili napako  skratka, posodabljati na navadnih mašinah ni greh. ko gre za serverje ipd, pa je bolje počakati ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Koliko pa ti imaš posodobljeno mašino?\nTole preberi... https://support.microsoft.com/en-us...ror-in-windows-7-or-in-windows-server-2008-r2",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "a to name leti?\njest mam w10pro drugače...pa vklopljeno \"zamudo\" pri updajtih ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Očitno je bil res samo bios kriv za vse crkavanje. Še na kraj pameti mi ni padlo, da bi zaradi biosa lahko cel sistem crkaval in to šele po priklopu dodatnih diskov..\n\nZdaj mi že štiri ure vse dela in lahko vse na polno prenašam z diska na disk\n\nMe je pa prav strah ponovnega zagona, da ne bo potem spet vse crknilo.\n\nVse pomembnejše datoteke imam vsaj na dveh mestih, najbolj pomembne pa na treh.\nA disk ponavadi crkne naenkrat ali postopoma z vedno večjimi problemi?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Evo pa imam že spet problem.\nHotel sem naložiti posnetek sistema iz Acronis true image in zdaj se mi winsi ne prižgejo več niti v safe mode???\n\nWinsi hočejo, da naložim popravek sistema, kjer pa mi napiše, da imam na računalniku drugo verzijo winsov kot je na dvdju???\nRazen morja posodobitev je to ista verzija, pa mi vseeno ne dovoli popravka.\n\nA je možno na kak način priti vsaj do varnostne kopije celega sistema narejenega v winsih, ki jo imam narejeno in obnoviti cel sistem?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "če si imel lepo delujoč sistem, zakaj si hotel naložiti posnetek sistema? si pa daješ enega dela \na drugače tole misliš?\nhttps://www.acronis.com/en-us/articles/how-to-restore-individual-files/",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Ni čisto tako.\n\nImel sem lepo delujoč sistem že ene petkrat, pa se je vse sesulo, ko sem priklopil dodatni disk.\n\nPotem sem pa spet naložil cel sistem z vsemi programi vred in naredil popolno kopijo diska tako z Winsi, kot z Acronis True image.\nKo se je sistem spet sesul sem ga s kopijo winsov lepo obnovil a se je spet sesul.\n\nPotem sem še enkrat naložil samo sistem in se je spet vse sesulo ob priklopu diskov.\nPotem ste mi pa povedali za posodobitev biosa in se že na pol sesut računalnik, ni več sesuval ob priklopu diskov.\n\nZdaj mi je z Acronis true imageom sicer uspelo obnoviti sistem ampak ni več aktiviran in se bojim, da ga še petič v enem mesecu ne bom več mogel aktivirati.\n\n Toliko časa mi je že to požrlo, da bi se pa zdaj spotoma rad naučil še te popolne obnovitve sistema, če slučajno kdaj kasneje kaj crkne.\n\nS katerim programom sami obnovite sistem(verjetno ne nalagate vedno vse znova)?\nPa zanima me, če winsi+office in vse ostalo po obnovitvi ostanejo aktivirani ali je po obnovitvi spet treba vse na novo aktivirati?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNi čisto tako.\n\nImel sem lepo delujoč sistem že ene petkrat, pa se je vse sesulo, ko sem priklopil dodatni disk.\n\nPotem sem pa spet naložil cel sistem z vsemi programi vred in naredil popolno kopijo diska tako z Winsi, kot z Acronis True image.\nKo se je sistem spet sesul sem ga s kopijo winsov lepo obnovil a se je spet sesul.\n\nPotem sem še enkrat naložil samo sistem in se je spet vse sesulo ob priklopu diskov.\nPotem ste mi pa povedali za posodobitev biosa in se že na pol sesut računalnik, ni več sesuval ob priklopu diskov.\n\nZdaj mi je z Acronis true imageom sicer uspelo obnoviti sistem ampak ni več aktiviran in se bojim, da ga še petič v enem mesecu ne bom več mogel aktivirati.\n\nToliko časa mi je že to požrlo, da bi se pa zdaj spotoma rad naučil še te popolne obnovitve sistema, če slučajno kdaj kasneje kaj crkne.\n\nS katerim programom sami obnovite sistem(verjetno ne nalagate vedno vse znova)?\nPa zanima me, če winsi+office in vse ostalo po obnovitvi ostanejo aktivirani ali je po obnovitvi spet treba vse na novo aktivirati?\n\t\t\n\t\tKlikni za razširitev\n\t\nIskreno povedano po enem letu ali več postavim vse na novo z zadnjim buildom. Ker eno leto staro sliko (image) varnostne kopije traja še cel dan da ga do konca posodobim na zadfnje stanje. Ni računice. \nRešitev, my friend, je da so podatki v oblaku. Sistem je pa up and running v 2 urah ali ga na novo postaviš na stari kišti ali pa kupiš novo kišto... \nTvoj postopek pa zahteva obnovo slike (varnostna kopija) vsaj 1x tedensko če ne dnevno. Pa da si ziher da ne bo zadnja kopija že pokvarjena moraš imeti vsaj 2 kopiji, pa sistem 3-2-1 itd itd...\nOblak je rešitev.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "kot je že roberto rekel...sistem se mi ne sesuva tako pogosto, da bi bila kopija aktualna. imam vse na nasu, sistem na ssd pride v dveh treh urcah z vsemi programi. \ndrugače pa ja, windows in office je po obnovitvi aktiviran.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Sistem v dveh urcah na novo naložen \nDva meseca se že je bem z novim računalnikom pa mi še vedno ni uspelo naložiti originalne sedmice(pa sem mislil, da se kar dobro spoznam na računalnike saj sem jih naložil že čez sto, vsem domačim, znancem in prijateljem).\n\nSem želel vse skupaj na novo naložiti, da bi res vse imel tako kot je treba pa kljub posodobitvi biosa(napiše bios uspešno posodobljen a še vseeno piše verzija 2, namesto 5 ali šest) in spet vse spet crkuje s stalnimi modrimi zasloni.\n\nImam originalno sedmico, kje naj dobim originalno novo z vsemi posodobitvami zraven, da mi ne bo treba dva dni delati posodobitev-potem pa priklopim disk in spet vse crkne;(\n\nTukaj so slike modrih ekranov, kako naj ugotovim v čem je problem-ne bi rad nosil računalnika na servis, če ni z njim nič narobe, da se mi bodo smejali kako ne znam naložiti niti ene sedmice.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Enostavno, v Windows/minidump imaš poročila o BSOD. Naloži jih sem:\nhttp://www.osronline.com/page.cfm?name=Analyze\n\nDa boš videl, kaj jih povzroča. Če je vsakič nek drug razlog, je neka motnja (RAM, disk, Sata priklop, kabel,...).\nV Safe mode, kot sem razbral, je vse OK. Za moj občutek si preveč prepričan v disk. Jaz bi šel po tem postopku, ki morda ni najhitrejši, a pri kakem drugem, če ne rata, se lahko še bolj zavleče.\n\n1.) USPEŠNO posodobi BIOS\n2.) Naloži vse file iz minidump na zgornjo stran. Morda se bo tukaj že videl odgovor, čeprav na osnovi slik mislim, da ne.\n3.) Odklopi čisto vso periferijo (DVD, sprednji avdio vhod/izhod, sprednje USB-je, vse kartice zadaj, če so. Razen grafične, če ni interne. Prižgi. Če se ponovi, potem ni to, če se ne, pa postopoma vse priklapljaj nazaj. Boš videl, pri čemu guzne. Jaz bi ta korak sicer naredil šele za točko 4, a ti si nekako siguren v svoj disk.\n4.) Tukaj pa pač moraš križati. Drugi SATA kabel, testiraš. Potem pa pač priklopiš disk v drugo mašino, disk druge mašine pa v tvojo. Boš vsaj vedel, če iskati vzrok v disku ali v ostalih komponentah.\n\nSam enostavno stavim na disk...",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Jaz pa ne... preveč različnih vzrokov v BSOD. Preje bi rekel da OS oz. gonilniki. Oz. če je novo računalo nezdržljivost sedmice s strojno opremo.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus\nTočen model tvoje plate je\nB250M PRO-VDH  https://www.msi.com/Motherboard/B250M-PRO-VDH/Overview\nB250M PRO-VD  https://www.msi.com/Motherboard/B250M-PRO-VD/Overview\n\nKaj tretjega ?\n\nRoberto\nZa oboje so driverji za w7, ded tudi pravi da je testiral delovanje na win8.1 in 10, kjer se zgodba ponovi, ko priklopi stare hdd.\n\nQ:\nSi testiral stare hdd, in sicer vsakega posebej  z orodjem proizvajalca, kot sem napisal v postu #16  ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Zgodilo se mi je že, da je Data Lifeguard Diagnostic za DOS, po popolnem testu trdil, da je z diskom vse OK. Pa ni bilo. Na vsakem računalniku je za=ebaval.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Brez navadnih diskov računalnik dela brezhibno, če priklopim kateregakoli od obeh(WD+Hitachi) pa vse crkne in potem ne dela normalno tudi, če jih odklopim.\n\nV starem računalniku sta oba diska delala brezhibno, močno dvomim, da bi bila kar oba zanič.\nBom poskusil narediti še test z data lifeguard diagnostic.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Ytbnd je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tfikus\nTočen model tvoje plate je\nB250M PRO-VDH  https://www.msi.com/Motherboard/B250M-PRO-VDH/Overview\nB250M PRO-VD  https://www.msi.com/Motherboard/B250M-PRO-VD/Overview\n\nKaj tretjega ?\n\nRoberto\nZa oboje so driverji za w7, ded tudi pravi da je testiral delovanje na win8.1 in 10, kjer se zgodba ponovi, ko priklopi stare hdd.\n\nQ:\nSi testiral stare hdd, in sicer vsakega posebej  z orodjem proizvajalca, kot sem napisal v postu #16  ?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTočen model plate je b250m pro vdh, ki mora podpirati procesorje šeste generacije kot je moj i5 6500 in rame 2133MHz, kot je moj 8GB inteso ram 2133.\n\nVse dela brezhibno dokler ne priklopim enega ali drugega ali bognedaj kar obeh navadnih trdih diskov, potem prejkoslej vse začne crkavati in ne dela brezhibno tudi, če diske odklopim.\nCrystal disk mi kaže, da je vse ok.\nBom poskusil še vse stestirati v dosu samo ne bi rad izgubil podatkov. V starem računalniku sta oba diska delala brezhibno.\n\nPoskušal sem tudi z nameščanjem neoriginalne 10 in originalne Viste, pa me je že zafrkavalo pri inštalaciji in sem raje naložil originalno sedmico, da me ne bodo potem še winsi jebali, da kaj ni originalno-sploh pa desetke tudi videti ne morem, ker se ne mislim pol leta navajati na glupe kvadratke.\n\nKako lahko preverim ali je bios res posodobljen?\nNapiše mi, da je bios uspešno posodobljen a takoj spodaj pod DMI mi še vedno piše verzija 2, čeprav razumem številko pri posodobitveni datoteki bi morala biti pa verzija 7.\nJe kaj važno v katerem slotu so rami, piše, da morajo biti najprej zapolnjena mesta A2, B1, B2 in šele na to A1, zato jih imam v prostoru A2.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEnostavno, v Windows/minidump imaš poročila o BSOD. Naloži jih sem:\nhttp://www.osronline.com/page.cfm?name=Analyze\n\nDa boš videl, kaj jih povzroča. Če je vsakič nek drug razlog, je neka motnja (RAM, disk, Sata priklop, kabel,...).\nV Safe mode, kot sem razbral, je vse OK. Za moj občutek si preveč prepričan v disk. Jaz bi šel po tem postopku, ki morda ni najhitrejši, a pri kakem drugem, če ne rata, se lahko še bolj zavleče.\n\n1.) USPEŠNO posodobi BIOS\n2.) Naloži vse file iz minidump na zgornjo stran. Morda se bo tukaj že videl odgovor, čeprav na osnovi slik mislim, da ne.\n3.) Odklopi čisto vso periferijo (DVD, sprednji avdio vhod/izhod, sprednje USB-je, vse kartice zadaj, če so. Razen grafične, če ni interne. Prižgi. Če se ponovi, potem ni to, če se ne, pa postopoma vse priklapljaj nazaj. Boš videl, pri čemu guzne. Jaz bi ta korak sicer naredil šele za točko 4, a ti si nekako siguren v svoj disk.\n4.) Tukaj pa pač moraš križati. Drugi SATA kabel, testiraš. Potem pa pač priklopiš disk v drugo mašino, disk druge mašine pa v tvojo. Boš vsaj vedel, če iskati vzrok v disku ali v ostalih komponentah.\n\nSam enostavno stavim na disk...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPonavadi pridem do safe mode, včasih pa niti do tja ne.\nObičajno mi mrzel računalnik dela, ko se pa diski segrejejo nad 30 stopinj pa začne vse crkavati, še vedno mi je vse delalo, dokler sem imel priklopljen samo nov ssd disk, po priklopu dodatnih diskov(že samo enega) pa se začnejo problemi, ki se ne nehajo tudi po odklopu dodatnih diskov. \nJe možno, da imam na teh dodatnih diskih kak virus, ki mi takoj sesuje računalnik?\nAmpak potem bi mi moralo sesuti tudi prenosnik(pa ga ne), ne pa samo navadnega???\n\nDrugega ssd diska pa trenutno žal nimam, da bi testiral(prenosnika pa tudi ne bi rad uničil, ker en računalnik pa res rabim delujoč)\n\nNa omenjeno stran mi računalnik ne pusti naložiti dmp datotek, ker piše, da so zaščitene in rabim dovoljenje lastnika datotek, nastavil sem poln nadzor pa še vedno ne razumem zakaj jih ne morem dodati na to stran.\n(Kako nastavim računalnik, da bom imel neomejen dostop do vseh datotek tako kot v XPjih, ker res ne razumem zakaj bi imel na svojem računalniku, ki ga sam uporabljam kar zablokiran dostop do nekaterih map in datotek(če ne drugega bi že iz firbca rad videl kaj je v kateri mapi.)\n\nMi pa v teh minidump datotekah piše, da je povzročitelj ntoskrnl.exe+a44a0.\n\n 26.5.2018 16:29:25    BAD_SYSTEM_CONFIG_INFO    0x00000074    00000000`00000002    fffff880`02ea79e0    00000000`00000002    ffffffff`c000009a    ntoskrnl.exe    ntoskrnl.exe+a44a0    NT Kernel & System    Microsoft® Windows® Operating System    Microsoft Corporation    6.1.7601.24117 (win7sp1_ldr_escrow.180422-1430)    x64    ntoskrnl.exe+a44a0                    C:\\Windows\\Minidump\\052718-9048-01.dmp    4    15    7601    262.144    27.5.2018 0:20:34",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "1.) Mimidump datoteke boš lahko naložil na tisto stran, ko jih boš najprej iz Windows/minidump mape kopiral (ne prenesel) nekam drugam. Kamorkoli, lahko v namizje. Morda boš moral še enkrat omogočiti poln nadzor.\n\n2.) Si odklopil čisto vso periferijo?\n\n3.) a) BIOS posodobi na verzijo 7A70vA7:\ndownload.msi.com/bos_exe/mb/7A70vA7.zip\n\nTakole:\n\n\t\n\t\t\n\t\nb) Po posodobitvi se bo sistem resetiral. Pojdi nazaj v BIOS in se prepričaj da  JE 7A70vA7.\nc) OB tem ne pozabi pritisniti F6 in potrditi \"load optimized defaults\". <-------------- Tale korak bi pravzaprav lahko vse rešil.\nd) Pa, ker praviš, da boš imel Win7, je na osnovi navodil v biosu potrebno še tole:\n\nFor Windows 7, access the BIOS menu > Advanced > Windows OS Configuration > Windows 7 Installation and set the itemto enabled, save changes and restart.\n\nRes potrdi novo verzijo, optimized defaults, nastavi za Win7, shrani...\n\n4.) Z DOS Data Lifeguard Diagnostic lahko testiraš samo WD disk:\nhttps://support.wdc.com/downloads.aspx?p=2\nNaredi extended test.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Classic Shell se očitno lahko namesti tudi v Windows 10 in imaš start isti kot od Windows 7.\nhttp://www.classicshell.net/",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Verjetno so težava rami. Fikus ima samo eno ploščico in ne more preveriti \nSposoditi rame od kakšnega soseda ",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Jaz sem že večkrat začel pisati, da RAM. Ampak ker je vse novo, sem se zadržal. A za RAM je res tipično, da so napake čisto random, tako časovno, kot vzročno. Saj morda, to ni redkost, je pravzaprav težava samo na kontaktih.\nfikus, vzemi vse RAM ploščice ven ter z radirko natančno poradiraj pozlačene kontakte z obeh strani. na koncu jih še očisti z izopropilnim ali pa kakim drugim alkoholom s pomočjo palčk za ušesa. Po možnosti na te kontakte našpricaj še kontakt sprej, kot tudi v banjico in ko je še oboje mokro od spraja, na mokro zabij do konca not. Naj se res pravilno usedejo na tak način vse ploščice.\nLahko pa celo, da se samo kaka od ploščic pri nameščanju ni pravilno usedla.\n\nSem imel točno tak problem. BSOD se je pojavljal. Memtest pa ni javil nobene napake. Očistil konktakte po zgornjem postopku in vse OK.\n\nDruga zanimivost pa pokvarjena RAM ploščica prenosnika. Prenosnik se z njo ni niti prižgal.  Dal ploščico v pečico na 230 stopinj za 10 minut in od takrat že slabi dve leti prenosnik deluje brezhibno.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Kje si dobil idejo, da daš ram v pečico?",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Ker so sedaj spajke brez svinca. Pa tudi če bile s svincem, spajka pač poči. Če je svinčena, se tali pri 183 stopinjah, če je nesvinčena, pa od 210 do 230. Ko segreješ, se spet zalijejo nazaj in kontakt se vzpostavi...",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus, katero znamko rama imaš in model? Poglej, na netu, če so kake serijske težave. Pa ob zamenjavi (če se boš spustil v to) bi bilo smiselno dati drugega proizvajalca, da izključiš serijsko napako... Najprej pa si instaliraj WIN10",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Zdaj mi sedmica spet tri dni dela brezhibno-imam pa desetko že naloženo na ključku za namestitev in prvič ko mi sedmica crkne jo bom naložil s temi popravki, ki jih svetuje Cash, dvomim pa, da bo ključ od sedmice delal.\nPri desetki ne prenašam kvadratkov,  pa niti tega ne, da ima baje Microsoft stalen popoln nadzor nad računalnikom pa celo MS račun baje rabiš za polno delovanje.\n\nPri sedmici pa ne smem nič šariti s kakšnimi driverji ali prikljapljati novih naprav pa dela, takoj, ko začnem kaj na novo prikljapljati pa spet vse crkne\n\nIRST oziroma Intel rapid storage pa nikjer ne najdem, očitno tega sploh nimam naloženega.\nSem pa driverje naložil po navodilih iz priloženega originalnega DVDja, potem pa jih še v celoti posodobil s tvojimi driverji in še vse preko windows preverjanja posodobitev. \nOdkar imam tvoj AHCI driver je sistem krepko bolj stabilen ampak nekaj še vedno ni v redu.\n\nA za RAMe obstoja kak dober RAMtest, RAM je popolnoma nov, ena ploščica Inteso 8GB in bi po mojem morali biti brezhibni.\n\nPa še nekaj me zanima, imam več priklopljenih diskov-se slučajno da kje nastaviti tako, da bi bila dva diska stalno ugasnjena(ker mi gre na živce ropotanje starih trdih diskov in bi se vklopila samo kadar bi jih v raziskovalcu iskal?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "RAMov imam poln predal ampak nobenih pa novih DDR4;( \n\nRAM pa je firme Inteso CL15 single 1x8GB DDR4 2133Mhz.\nA je slučajno možno, da ti RAMi ne prebavljajo sedmice tako kot jo ne novi procesorji(zato sem posebej vzel starega generacije 6 skylake)?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZdaj mi sedmica spet tri dni dela brezhibno-imam pa desetko že naloženo na ključku za namestitev in prvič ko mi sedmica crkne jo bom naložil s temi popravki, ki jih svetuje Cash, dvomim pa, da bo ključ od sedmice delal.\nPri desetki ne prenašam kvadratkov,  pa niti tega ne, da ima baje Microsoft stalen popoln nadzor nad računalnikom pa celo MS račun baje rabiš za polno delovanje.\n\nPri sedmici pa ne smem nič šariti s kakšnimi driverji ali prikljapljati novih naprav pa dela, takoj, ko začnem kaj na novo prikljapljati pa spet vse crkne\n\nIRST oziroma Intel rapid storage pa nikjer ne najdem, očitno tega sploh nimam naloženega.\nSem pa driverje naložil po navodilih iz priloženega originalnega DVDja, potem pa jih še v celoti posodobil s tvojimi driverji in še vse preko windows preverjanja posodobitev.\nOdkar imam tvoj AHCI driver je sistem krepko bolj stabilen ampak nekaj še vedno ni v redu.\n\nA za RAMe obstoja kak dober RAMtest, RAM je popolnoma nov, ena ploščica Inteso 8GB in bi po mojem morali biti brezhibni.\n\nPa še nekaj me zanima, imam več priklopljenih diskov-se slučajno da kje nastaviti tako, da bi bila dva diska stalno ugasnjena(ker mi gre na živce ropotanje starih trdih diskov in bi se vklopila samo kadar bi jih v raziskovalcu iskal?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nnope, ni treba da imaš račun (seveda mali mehki to hoče), še bolje dela, brez vsega dodatnega preverjanja \nin, kvadratke lahko skriješ no, pa jih nimaš več. res ni tak hud problem...\nja, nekje je skrit ta irst, ker ti javlja napako (blue screen). torej je naložen. včasih je najboljše imeti najnovejšo verzijo, včasih pa raje originalno od proizvajalca (četudi starejšo). vem, ker mi je že hecal na enih mašinah.\nz ustavitvijo diskov se lahko hecaš pod nastavitvami za porabo...čisto ugasnjena pa ne moreta biti. razen, če jih imaš v zunanjem oz. notranjem ohišju kot rack.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Zdaj, ko se že en teden nič ne igram z računalnikom ampak samo brskam po netu z Avast browserjem, mi pa sedmica dela brezhibno-ko pa naložim chrome, firefox, nalagam kakšne driverje pa crkuje???\nBom verjetno ta vikend poskusil naložiti desetko, da vidim kako bo delala.\n\nKater je pa najbolj enostaven program, kjer bi imel naložene virtualne XPje za skener?\n\nDiske bi pa rad imel izklopljene/vklopljene po želji-tako kot se enostavno lahko onemogoči/omogoči mrežno kartico in računalnik ni več povezan z netom.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Če boš gor naložil desetico kar Hyper-V vloga. Pa glej da boš v BIOSu vklopil podporo za virtualizacijo.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZdaj, ko se že en teden nič ne igram z računalnikom ampak samo brskam po netu z Avast browserjem, mi pa sedmica dela brezhibno-ko pa naložim chrome, firefox, nalagam kakšne driverje pa crkuje???\nBom verjetno ta vikend poskusil naložiti desetko, da vidim kako bo delala.\n\nKater je pa najbolj enostaven program, kjer bi imel naložene virtualne XPje za skener?\n\nDiske bi pa rad imel izklopljene/vklopljene po želji-tako kot se enostavno lahko onemogoči/omogoči mrežno kartico in računalnik ni več povezan z netom.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nmah, avast browser je ok, ostali pa ne?!!? ne gre mi tole v glavo...potem se očitno premalo igraš s tem browserjem...ker bi se morala napaka ponoviti tudi pri tem. \nče imaš original, lahko originalne xp mode (ne vem če obstaja za desetko), drugače pa virtual box. \nglede diskov pa...emmm, ne vem če to obstaja takle \"switch\". znotraj device managerja in klik na disk ter disable device? sem pa tole zbrskal...(pa ne sprobal-kar ti daj  - http://disablehddapm.blogspot.com/2011/12/disabling-hard-disk-drive-advanced.html",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "VirtualBox je paravirtualizacija na nivoju OSa in marsikaj ne deluje, Hyper-V in VmWorkstation sta L1 hypervisorja na nivoju strojne opreme.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "VirtualBox tudi zna uporabiti VT-x, ali amd ekvivalent. Mislim, da 64bitni hosti sploh ne delajo brez tega. Sem ga moral nehat uporabljatii ravno zaradi tega, ker docker na windowsih uporablja hyper-v in oba istočasno ne delata.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "roberto: ja, verjetno res, če se greš \"resen\" biznis. za navadne uporabnike pa naj bi bil dovolj, kajne? večkrat že uporabil in bolj ali manj brez težav...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Hyper-V je vgrajen v Windows 10 PRO naprej... Torej se ne rabimo it biznisa... Če iam Win7 PRO potem je ekvivalent Win10 PRO... Drugače pa VirtualBox. Sam ta ima slab šo podporo za strojno opremo kot Hyper-V.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Roberto je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tHyper-V je vgrajen v Windows 10 PRO naprej... Torej se ne rabimo it biznisa... Če iam Win7 PRO potem je ekvivalent Win10 PRO... Drugače pa VirtualBox. Sam ta ima slab šo podporo za strojno opremo kot Hyper-V.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nOd kar sem desetko pripravil na ključek, da jo naložim ob prvem modrem zaslonu, mi sedmica še ni crknila, zdaj pa ne vem več ali naj jo naložim ali ne???\n\nVirtualpc rabim praktično samo(pa, če se že za kak program slučajno pokaže potreba-recimo odlični stari MC tarok ne dela drugje kot v XPjih) za to, da bi lahko s skenerjem-Mustek 1200 UB plus občasno preskeniral dokumente in jih potem čimlažje prenesel na disk s podatki.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tmah, avast browser je ok, ostali pa ne?!!? ne gre mi tole v glavo...potem se očitno premalo igraš s tem browserjem...ker bi se morala napaka ponoviti tudi pri tem.\nče imaš original, lahko originalne xp mode (ne vem če obstaja za desetko), drugače pa virtual box.\nglede diskov pa...emmm, ne vem če to obstaja takle \"switch\". znotraj device managerja in klik na disk ter disable device? sem pa tole zbrskal...(pa ne sprobal-kar ti daj  - http://disablehddapm.blogspot.com/2011/12/disabling-hard-disk-drive-advanced.html\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZdaj mi tudi s chromom vse dela, samo, da se čisto nič ne dotikam driverjev  in kakšnih posodobitev, pa očitno vse dela na sedmici???\nSamo še za skener rabim neko rešitev.\n\nA lahko kaj uničim s tem programom HDDapm?\nPo prebranem se mi zdi odličen saj dva navadna diska rabim res samo občasno(recimo enkrat na teden) in je brezveze, da stalno lavfata in kar me še najbolj moti stalno ropotata, če je pa samo ssd je pa računalnik praktično popolnoma neslišen.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "hm, načeloma...če stvar dela, jo pustiš na miru  torej, v tvojem primeru, ne pacaj več okoli gonilnikov. posodobitev pa...hja, če imaš vsaj zadnje, je ok. če maš pa še kak gb za prenesti, je pa malo nerodno.\nnačeloma naj NE bi uničil. lahko pa, kot rečeno, storiš ročno in v device managerju disablaš diske.\nza skener pa ne vem, probaj virtualko. imaš ssd in se bo hitro zagnala.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Naredi si z enim programom backup driverjev in v primeru nedelovanja daš samo restore.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "dune: desetka ti včasih tako razsuje sistem ravno zaradi \"posodobljenih\" gonilnikov. če tebi deluje, še ne pomeni, da vsem deluje.\nfikus: kaspersky obstaja tudi v free varianti, resda le v osnovni verziji, brez kake hude doatne zaščite (ransomware ipd...). sam sicer prisegam na kaspersky, drugače pa avast (z ročno izbranimi moduli) in pa panda free (oblačna storitev). popolne zaščite pa žal (še) ni.\nin fikus...če bi že na začetku posodobil vse gonilnike....",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Bo fikus vedel za drugič.\nZa mene, ker sem stare šole, je to sveto pravilo, da po prvem vstopu v naložen Windows najprej namestim najnovejše driveje za vse naprave, katere poiščem na strani proizvajalca ne pa kar s strani osnovne plošče.\nIn na klasičnih HDD to tudi, s ciljem čim manj fragmentiranosti, pozitivno vpliva na performanse.\nDefragmentiranosti na račun driverjev ni več moč odpraviti.\nNajprej Chipset, AHCI, RAID, nato vse ostalo.\nPri SSD, kot razumem, to sicer več ne igra vloge (ali pač?), a jaz se tega še vedno držim.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "bajkman: misliš defragmentacija? ja, od osemke naprej je v bistvu že tista \"optimizacija\" povsem dovolj. sicer pa, za boljše firme ssdjev obstajajo namenski (tovarniški) programi kot samsungov magician, ki skrbijo za zdravje diska.\nsicer pa, jaz sicer spremljam station drivers, kjer so običajno najnovejše zadeve glede driverjev. vendar, je treba malo z rezervo jemati vse te nove verzije...včasih jih nima niti originalni proizvajalec ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Ne, v mislih imam fragmentacijo (razdrobljenost) ene datoteke na večih lokacijah diska. Zato pa se to defragmentira, da so isti podatki tudi fizično skupaj. Vse lepo in prav, vendar pa se podatkov, v katerih so na disku shranjeni driverji, ne da defragmentirati. Pa verjetno še česa sistemskega, to ne vem. Vem pač za driverje. Zato jih je treba takoj namestiti, da jih ne zabiješ med podatke, ker potem je branje sistema z diska počasnejše. Tako da za optimum delovanja obstoječe kište s HDD je vrstni red:\n- Brisanje vseh particij (še najboljši je \"Erase disk\" z orodjem proizvajalca diska (primer DLG diagnostic za WD)\n- Kreiranje particij + formatiranje\n- Nalaganje WIN in že med inštalacijo, tam pri formatu tudi izbrati AHCI ali RAID driver. Včasih je bila to F6 metoda\n- Namestitev Chipset driverjev\n- Namestitev vseh ostalih driverjev\n- Nato vse ostalo\n\nStation drivers poznam, vendar pa imam večje zaupanje v strani proizvajalcev.\n\nIn res je, včasih nova verzija ne pomeni nujno napredka. Tako Win10 ni za vse načine in vse pogoje ter cilje boljši od WIN7. Seveda je lahko isto tudi z driverji. Pa vendar je večja verjetnost, da z novim driverjem pridobiš, kot izgubiš.\nZ novim win pa lahko izgubiš na kompatibilnosti.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Bajkman: jaz tistega f6 že dolgo ne uporabljam. imam w7 z kolikor tolikor slipstreamanimi popravki (vsaj do 2017), tako da vsaj te driverje že namesti ob namestitvi. seveda, takoj zatem namestim 5 microsoftovih namestitev za hitrejši update (ker drugače čakaš do penzije), net framework 4.52 (ker na sedmici je večinoma ta pogoj za kakšen program) in potem še driverje...chipset, ahci (intelov rst) ipd. in potem kresnem še update za tistih 500 mega  \nna desetki pa tudi raje posodobim vse,  kar lahko, preden zadevo sploh priklopim na net.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Sedmica bo počasi odšla v pozabo... skupaj z osmico in njenimi derivati. Kot tudi desetica pred 1709 buildom.\nKdor ima rad ezoteriko in vintage OS naj ostaja na tem... meni komp dela super na Win 10 1803 build. Imaš polno 3rd party orodij za nadomestiti START meni...\nMeni najljubši (in kupljen) pa je Stardock Fences...",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "ja, roberto...bo odšla. kot je tudi xp. ampak...če veš, kako lahko sistem lepo (kakor se to čudno sliši) deluje kot sedmica in sedaj gledaš, kake butaste (bom rekel še vedno poporodne) težave ima včasih desetka...se mi kolca po sedmici. saj deluje, ampak ko okoli strank skačeš in vidiš, kake probleme jim včasih naredi. nekaj je resda povsem lahkih...nekaj pa, no, živjo format \npa nimam kaj, mali mehki nas \"sili\" da uporabljamo njegov sistem in njegov sistem nadgrajevanja...vsak build ima rok trajanja le kako leto. bo že...start meni niti ne pogrešam več, se pač drugače znajdem. skratka, sistem deluje, le včasih malce stisnjenih zob odpravljam napake pri nadgradnji ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Mikromehki že skrbi da bo šlo vse do desetice na smetišče. Seveda se bo najprej lotil biznisa (poslovna okolja) nato zabave (privat)... Najprej korenček v obliki Azure AD kot SaaS, kjer ne potrebuješ več on-prem strežnika, domene, licenc... samo mesečni fee in gasa. Pa Intune zraven za MDM, pa RMS... Je pa hudič v detajlu... Win 10 only, from build 1709...",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik zakon je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEaseUS Todo Backup Free 10.6\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVčeraj mi je EaseUS že prišel prav.\n\nČe nič drugega me bo to zajebavanje računalnika vsaj zares naučilo kako narediti varnostne kopije sistema in vseh podatkov\n\nIma pa tudi EaseUS tako neumnost, da glava boli.\nKo sem hotel obnoviti sistem, mi je napisal, da na disku kjer hočem narediti obnovo sistema ni dovolj prostora in zato obnova sistema ni možna\n\nIma sicer možnost wipe, ki je c disk pobrisala, ne pa tistih 100MB, ki jih winsi hočejo za ne vem kaj in, ker tega z wipe nisem mogel poradirati sistema nisem mogel obnoviti.\n\nTako sem moral najprej spet začeti z nalaganjem sedmice in tam poradirati kompleten disk tudi s tistimi zaščitenimi 100 MB in potem je obnovo sistema lahko naredil.\nJe pa takoj po obnovitvi sistema, se računalnik spet dvakrat sesul, v tretje je pa zahteval CHKdisk in potem je ta vsaj kakšno uro brisal, popravljal in indexiral datoteke in zdaj računalnik spet že par ur dela.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Roberto je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKer vsak berač svojo malho hvali bi ti rekel takole... naj ti ne bo žal plačati tiste evre za naročnino in kupiti renomiranega proizvajalca. Zastonjske verzije so z namenom zastonjske. Za osnovo je dovolj, kaj bolj sofisticiranega pa ne. Kaj boš izbral pa lahko najprej malo pobrskaš po netu... katera rešitev najmanj obremenjuje sistem, ima hiter odziv ob izbruhu nove grožnje, nudi še kaj več kot osnovno AV zaščito...\njaz uporabljam Norton Security, nekateri prisegajo na Avast, ESet NOD 32... vsekakor pa ti ne bi priporočal nabave plačljivih verzij preko pašnikov od sumljivih ljudi. Saj se vendar hočeš braniti ne pa dobiti trojanskega konja.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZaenkrat sem naložil brezplačni Avast, ki se mi zdi, da še najmanj obremenjuje sistem.\nSicer pa noben antivirus ne pomaga, če človek stalno nalaga piratske stvari s pašnikov in zaganja morje raznoraznih keygenov....\n\nMe pa zanima kako je najbolj varno se igrati s sumljivimi zadevami?\nJe dovolj Ramdisk, ki se po ugasnitvi računalnika izbriše z vso vsebino ali bi bilo bolje uporabljati kaj drugega?\nJe recimo varno Office aktivirati s tistim priloženim toolkitom, ki ga aktivira",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik dune je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKaki problemi, samo za to ker rineš z glavo skozi zid s 9 let starimi windowsi. Windows 10 ima tako pošlihtane update driverjev, da se ne spomnim, kdaj sem nazadnje rabil karkoli instalirati. Enostavno naložiš windowse in ponavadi vse že dela. Če ti kocke niso všeč jih pač ne uporabljaš. Jaz sem se z 8-ko navadil, da sploh ne uporabljam start menija. V Taskbaru imam najbolj pogoste aplikacije. Za ostalo pa Win+S in vtipkam, kaj iščem.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSedmico imam originalno, osmice in desetke pa ne.\nNe bi rad imel piratskih winsov, ki imajo že v osnovi bogvekaj naloženo zraven, pa še po vsaki deseti posodobitvi bi mi naredili črn zaslon in bi še s tem imel stalne probleme.\n\nSe pa zgrozim, ko vidim tiste kvadratke...\nRes ne vem za kerga kur.a bi se moral pol leta navajati na nek nov glup sistem, če pa naj bi zaenkrat delal odlično še star sistem?\n\nŠe sedmica se po enostavnosti in zanesljivosti uporabe lahko skrije pred odličnimi XPji, kjer sploh ne vem, če sem kdaj videl moder zaslon, vse je delalo brezhibno-žal pa ne podpirajo več kot 3GB rama, kar je za novejše stvari že res krepko premalo.\nPa ogromno programov žal nima več podpore za XPje in sem se zato moral nujno prestaviti na sedmico, ki jo že dva meseca spravljam k sebi in po nekaj ur mi že lepo dela, potem se pa spet kaj najde, da moram zadevo nalagati na novo ",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Naredi partition backup",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tBo fikus vedel za drugič.\nZa mene, ker sem stare šole, je to sveto pravilo, da po prvem vstopu v naložen Windows najprej namestim najnovejše driveje za vse naprave, katere poiščem na strani proizvajalca ne pa kar s strani osnovne plošče.\nIn na klasičnih HDD to tudi, s ciljem čim manj fragmentiranosti, pozitivno vpliva na performanse.\nDefragmentiranosti na račun driverjev ni več moč odpraviti.\nNajprej Chipset, AHCI, RAID, nato vse ostalo.\nPri SSD, kot razumem, to sicer več ne igra vloge (ali pač?), a jaz se tega še vedno držim.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZadnjič mi je računalnik celo dva dni delal, potem sem si pa vzel čas in po tvojih navodilih lepo posodabljal prav vse gonilnike, ko pa namestim še zadnjega za zvočno kartico pa vse spet crkne in tudi, če sem te nove driverje zbrisal ni nobena stvar več delovala kot bi morala, spet deset novih modrih ekranov, obnovitev sistema ni pomagala, po ene desetih modrih ekranih pa niti do safe mode nisem mogel več...\nPotem sem skušal obnoviti sistem z Windowsovo obnovo sistema, dam obnovitveni cd v računalnik, mi naloži programčke za naložitev sistema, potem pa ne dovoli, da bi lahko nastavil, da imam obnovitev sistema na drugem disku in obnoviti računalnik nisem mogel na noben način-torej popolnoma neuporabna zadeva.\nAcronis true image, mi je že zadnjič delal probleme in je sistem obnovil samo nekaj na pol torej spet popolnoma neuporabna zadeva.\n\nEaseUS todo pa mi je z obilo problemi kako zbrisat C-disk, da bo lahko tja naložil obnovitveno kopijo, potem le uspelo obnovit sistem in zdaj spet dela kot nov.\n\nZakaj sploh rabim nalagat driver za zvočno kartico, če pa zvok dela že z drajverji iz windowsov???\n\nZakaj naj sploh posodabljam driverje, če s starimi lepo dela? Ko mi bo enkrat sistem lepo delal, se ne bom več dotikal nobene posodobitve driverjev. Še posodobitev windowsov bi najraje onemogočil.\nA imate vi vključene vse posodobitve ali le tiste najbolj pomembne???\n\nSamo tvoj AHCI driver bom naložil, da bo računalnik delal še z več diski.\n\nSe bom pa zdaj zares odlično navadil delati varnostne kopije vsega, s sistemom vred.\nTo pa je tudi zelo koristna zadeva, sploh danes, ko je vsak dan več ransomwara-ko dobiš na zaslon obvestilo, da plačaj za odklep, samo vložiš usb ključek, naložiš EaseUS obnovitev sistema in varnostne kopije podatkov in imaš v par urah vse naloženo povsem na novo.\n\nSem pa vsem Vam izjemno hvaležen za vso pomoč. \nPo dveh mesecih zajebavanja enostavno nisem več vedel kaj naj z novim računalnikom naredim.\nNaložil sem čez sto računalnikov pa Biosa nisem doslej še nikoli posodabljal, ker je vedno vse delalo brezhibno.\n\nTudi za nastavitev kater sistem boš uporabljal in moraš to nastaviti v BIOSU sem prvič videl.\nDriverji so večkrat delali probleme ampak modrih ekranov in popolnega sesutja sistema pa tudi še nisem nikoli videl.\n\nTo dvoje in nepravi gonilniki so očitno povzročali stalne probleme.\nŠe ene par dni igranja pa bom očitno imel lepo delujoč sistem.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "hehe, še sreča da ne služiš s tem računalnikom. drugače gre firma v stečaj \nglavno, da ti vsaj dela tako kot mora (ali upaš da mora...)",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Gonilnik čisto komot povzroča BSOD. Novejši kot gonilnik je, manjša je verjetnost za BSOD, saj je obenem večja verjetnost, da so, poleg optimizacije, odpravili tudi napako.\nRes je, novejši gonilnik ni nujno najboljši v vseh pogledih, je pa verjetno.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tGonilnik čisto komot povzroča BSOD. Novejši kot gonilnik je, manjša je verjetnost za BSOD, saj je obenem večja verjetnost, da so, poleg optimizacije, odpravili tudi napako.\nRes je, novejši gonilnik ni nujno najboljši v vseh pogledih, je pa verjetno.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nBistvo je, da zdaj vem, da s strojno opremo očitno ni nič narobe in, da imam Bios najnovejši in v Biosu nastavljeno sedmico samo še z gonilniki se moram toliko časa igrati, da bo računalnik delal brezhibno.\n\nTorej, če mi rata računalnik zrihtati, da bo lepo deloval, potem je najbolje, da se gonilnikov ne dotikam več?\n\nZakaj bi nalagal posodobitve za gonilnike, ki mi ne povzročajo problemov?\nA moram recimo nalagati gonilnike za zvočno kartico Realtek HD avdio(zaradi katere se mi je včeraj sesul računalnik), če mi pa zvok lepo dela že s temi gonilniki, ki jih winsi naložijo sami?\n\nKaj pa posodobitve Winsov ali nalagate vse ali samo nujne?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\thehe, še sreča da ne služiš s tem računalnikom. drugače gre firma v stečaj \nglavno, da ti vsaj dela tako kot mora (ali upaš da mora...)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTale računalnik imam za domače potrebe in zato se lahko že dva meseca igram z njim ampak mi je pa počasi že načenjal živce, ker vse teste, ki sem jih delal je povsod kazalo, da je s strojno opremo vse ok, a je kljub temu vseskozi vse crkavalo in res nisem več vedel zaradi česa.\n\nŠe kak dan igranja z gonilniki pa očitno bo zrihtan.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tGonilnik čisto komot povzroča BSOD. Novejši kot gonilnik je, manjša je verjetnost za BSOD, saj je obenem večja verjetnost, da so, poleg optimizacije, odpravili tudi napako.\nRes je, novejši gonilnik ni nujno najboljši v vseh pogledih, je pa verjetno.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVse gonilnike sem včeraj lepo naložil po tvojih navodilih, potem še dodatno preko windowsovega preverjanja preveril in posodobil še par gonilnikov, ko je bilo pa videti, da dela vse brezhibno, mi je pa računalnik spet začel nameščati neke pomembne posodobitve in je spet vse crknilo-vzrok ntfs.sys in ntoskrnl.exe.\n\nKaj naj še naredim, da bi računalnik delal dlje kot en dan?\nA gonilnike za zvočno rabim imeti nameščene dvoje(navadne avdio in hd avdio), da imam potem spodaj ob uri dve ikoni za zvok?\n\nSicer pa počasi res razmišljam, da bi obupal s sedmico in raje naložil desetko-a je še na kak način možna brezplačna posodobitev na desetko(sedmico imam originalno, desetke pa ne)?\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Poskusi še linux. Lahko z usb ključka.tako da vidiš, da ni HW napaka.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "To se pravi, dam Ubuntu ključek v računalnik in en ali dva dni računalnik uporabljam in, če nič ne crkne potem je očitno z računalnikom vse ok?\n\nNekaj mora biti še narobe ali z driverji ali s posodobitvami.\nDva dni mi lahko lepo dela, ko pa začnem nalagati še posodobitve pa vse spet crkne.\n\nZdajle dobil spet tri modre zaslone(deset starih je pa računalnik kar lepo pobrisal \n\nSpet vedno vzrok ntoskrnl.exe-kaj je to za ena stvar???\n",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Jaz osebno še nisem doživel  prolemov z driverji za disk. Ponavadi je vedno bila HW napaka. Po zamenjavi diska je vse delovalo ok. Zato sem predlagal linux, da vzameš windows driverje ven iz enačbe. Samo bi moral spremlati loge. Lahko da napaka še vedno je, samo linux ne prekine celega sistema tako kot windows, ko pride do napake.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "mnja, osebno bi raje sedmico uporabljal  desetka še ni ravno biser...no, nekaj, kar bi res lahko hvalil.\nne vem, kako imaš lahko dve zvočne kartici??? običajno sistem naloži le eno...ikono. morda imaš še hdmi izhod na grafični, ki je tudi lahko izbirno na sami ikoni.\nntos....pa običajno (vsaj glede na hiter pregled odgovorov na guglu) pomeni nekaj hardverskega. med posodobitvami ne vklopi gonilnikov oziroma jih skrij. in načeloma tudi malce starejši gonilniki delujejo čisto ok (če so morda krivi zadnje verzije le-teh)",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tmnja, osebno bi raje sedmico uporabljal  desetka še ni ravno biser...no, nekaj, kar bi res lahko hvalil.\nne vem, kako imaš lahko dve zvočne kartici??? običajno sistem naloži le eno...ikono. morda imaš še hdmi izhod na grafični, ki je tudi lahko izbirno na sami ikoni.\nntos....pa običajno (vsaj glede na hiter pregled odgovorov na guglu) pomeni nekaj hardverskega. med posodobitvami ne vklopi gonilnikov oziroma jih skrij. in načeloma tudi malce starejši gonilniki delujejo čisto ok (če so morda krivi zadnje verzije le-teh)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKako naj ne vklopim gonilnikov???\nA naj vsako napravo v upravljanju sistema onemogočim ali kako naj onemogočim delovanje gonilnikov?\n\nBom pa šel še enkrat vse gonilnike naložiti(jaz mislim, da je nekaj narobe s tem), a naj najprej vse gonilnike odstranim ali naj nove naložim kar čez stare?\n\nZvočno kartico imam integrirano na matični(tri vhode zadaj(sl., mik., linija) in dva spredaj(slušalke z mikrofonom)) in na matični tudi hdmi ter tudi grafiko.\n\nNe piše pa vedno vzrok ntoskrnl, velikokrat je tudi vzrok tudi ntfs.sys pa win32k.sys...",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik dune je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz osebno še nisem doživel  prolemov z driverji za disk. Ponavadi je vedno bila HW napaka. Po zamenjavi diska je vse delovalo ok. Zato sem predlagal linux, da vzameš windows driverje ven iz enačbe. Samo bi moral spremlati loge. Lahko da napaka še vedno je, samo linux ne prekine celega sistema tako kot windows, ko pride do napake.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV linuxu preko ključka, mi v več urah ni uspelo sesuti računalnika.\nKaj naj bi pa sploh lahko bilo narobe pri popolnoma novem računalniku? \n\nDela že veliko bolje kot je ampak pri posodobitvah mi običajno še crkne... Ali ta računalnik ne zna več delati s sedmico(čeprav sem jim posebej naročil, da hočem imeti konfiguracijo na kateri bo delala sedmica in so mi zato dali starejši skylake procesor šeste generacije in ne sedme na katerih sedmica baje ne dela več), najverjetneje pa mora biti narobe nekaj s sedmico s posodobitvami in driverji.\nSveže naložena nikoli ne crkava, vedno začne crkavati, ko naložim posodobitve(pa dokler nisem imel ahci driverja pri priklopu dodatnih diskov, kar zdaj dela)\nPa še to so neke stare posodobitve izdane leta 2013(Posodobitev za Windows 7 za sisteme s procesorji x64 (KB2798162)+ (KB2846960)+(KB2868116)).",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "jaz zadnje čase uporabljam to finto tudi za desetko (ja, še vedno ga pihnejo mimo s temi driverji...)\nhttps://support.microsoft.com/en-us...op-windows-7-automatically-installing-drivers\npa nekako dvomim, da bi zadnje posodobitve (ki so itak bolj kot ne vse namenjene telemetriji...) bile vzrok crkavanju sistema. lahko pa probaš, kot si rekel, na desetko in vneseš ključ od sedmice. tistih 30 dni jo lahko tudi v trial načinu stestiraš in vidiš, če je res sedmica kriva. pa predlog...če boš šel nameščat desetko, četudi ti najde driver za mrežo, jo ne spusti na internet ampak poprej vse gonilnike posodobi...pa še update v ozadju ti bo zabil vso pasovno širino interneta ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tV linuxu preko ključka, mi v več urah ni uspelo sesuti računalnika.\nKaj naj bi pa sploh lahko bilo narobe pri popolnoma novem računalniku?\n\nDela že veliko bolje kot je ampak pri posodobitvah mi običajno še crkne... Ali ta računalnik ne zna več delati s sedmico(čeprav sem jim posebej naročil, da hočem imeti konfiguracijo na kateri bo delala sedmica in so mi zato dali starejši skylake procesor šeste generacije in ne sedme na katerih sedmica baje ne dela več), najverjetneje pa mora biti narobe nekaj s sedmico s posodobitvami in driverji.\nSveže naložena nikoli ne crkava, vedno začne crkavati, ko naložim posodobitve(pa dokler nisem imel ahci driverja pri priklopu dodatnih diskov, kar zdaj dela)\nPa še to so neke stare posodobitve izdane leta 2013(Posodobitev za Windows 7 za sisteme s procesorji x64 (KB2798162)+ (KB2846960)+(KB2868116)).\n\t\t\n\t\tKlikni za razširitev\n\t\nIn nato primerjaš 8 let star OS (Win 7) z zadnjo distribucijo Linuxa. Pravilno bi bilo da bi našel Win 10 build 1803 (live) in potem primerjal z zadnjim Linuxom (live). Potem lahko primerjaš in preverjaš ali je napaka v strojni opremi, gonilnikih...",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Roberto je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tIn nato primerjaš 8 let star OS (Win 7) z zadnjo distribucijo Linuxa. Pravilno bi bilo da bi našel Win 10 build 1803 (live) in potem primerjal z zadnjim Linuxom (live). Potem lahko primerjaš in preverjaš ali je napaka v strojni opremi, gonilnikih...\n\t\t\n\t\tKlikni za razširitev\n\t\nKje pa naj dobim desetko live, da stestiram?\n\nZakaj pri Xpjih nisem nikoli videl modrega ekrana, pa nisem nikoli posodabljal biosa, niti driverjev.\nSedmica mi bo pa požrla živce še preden jo bom sploh usposobil.\nOsmica in desetka sta mi pa težili z nekimi gonilniki še preden sem jih sploh lahko začel nameščati? Pa zgrozim se ko vidim same kvadratke.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tjaz zadnje čase uporabljam to finto tudi za desetko (ja, še vedno ga pihnejo mimo s temi driverji...)\nhttps://support.microsoft.com/en-us...op-windows-7-automatically-installing-drivers\npa nekako dvomim, da bi zadnje posodobitve (ki so itak bolj kot ne vse namenjene telemetriji...) bile vzrok crkavanju sistema. lahko pa probaš, kot si rekel, na desetko in vneseš ključ od sedmice. tistih 30 dni jo lahko tudi v trial načinu stestiraš in vidiš, če je res sedmica kriva. pa predlog...če boš šel nameščat desetko, četudi ti najde driver za mrežo, jo ne spusti na internet ampak poprej vse gonilnike posodobi...pa še update v ozadju ti bo zabil vso pasovno širino interneta \n\t\t\n\t\tKlikni za razširitev\n\t\n\nTakoj ko sedmico naložim prav lepo dela.\nKo ga pa začnem srati s posodobitvami, driverji, av programom pa začne vse crkavati.\n\nNo zdaj je očitno še sedmica ugotovila, da so posodobitve strup zanjo in mi sploh noče več posodabljati računalnika\nA lahko vse te posodobitve vsaj skrijem, da mi ne bo stalno težilo, da so na voljo pomembne posodobitve, ki pa se ne dajo naložiti?\n\n\n\t\t\n\t\t\n\t\n\n\t",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "izklopi jih. tam na levi imaš nastavitve in izberi nikoli ne preveri...(ali nekaj takega-nimam pri roki sedmice). ali pa pejt brisat mapo z updati. ampak...če je za tole kriv sistem....vedno bolj sumim, da je nekaj drugega, strojnega...ne vem, občutek ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus. Zraven matične plošče od MSI-ja si dobil tlačenko, na kateri so gonilniki.?\nASUS mamaplato in procesor Phenom 2 X4 imam staro čez šest let. Gor so naloženi Winzi 7 ..64.\nPro nalaganju sistema vstavil priloženi CD z gonilniki od Asusa in zadeva dela še danes. Edino sem posodobil gonilnik pri menjavi grafične kartice, skener in printer.. Za Realteka zvočno ni treba nič, ker je vse zrihtal Asus. \nBIOS sem enkrat posodobil, vendar to ni nujno, če v opisu posodobitve ni nič pomembnega. Zakaj ti Winzi posodabljajo gonilnike, ki dobro delajo? Zato, ker tako imaš nastavljeno. ",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus.\nPredvčeraj sem sosedu vstavil PCIe razširitveno kartico, ki ima dva dodatna sata priklopa. Njegova matična MSI NF 520 za Phenom 2  je basic izvedbe in ima samo dva priklopa za diske. Na enem je novi SSD, na drugem pekač. Stari disk je hotel obdržati, vendar je zmanjkalo priklopov.\nKartica je StLab in ima čip od Silicon Imageja. Cena sitnica , 21€.  Ni bilo gonilnikov, zato sem potegnil z interneta na strani StLab-a. Dela zaenkrat v redu. Ima W7 . Računalnik je star kot moj letnik 2008.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "ja, ok...saj dokler je vsaj sata3, se nima česa bati. pa tudi navaden disk težko izkoristi vso prepustnost sata vodila. \na zdej tvoja prda deluje ali ima še vedno veselje do kravlžljanja tvojih živcev?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tja, ok...saj dokler je vsaj sata3, se nima česa bati. pa tudi navaden disk težko izkoristi vso prepustnost sata vodila.\na zdej tvoja prda deluje ali ima še vedno veselje do kravlžljanja tvojih živcev?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPar dni je lepo delalo, danes pa že spet osem modrih zaslonov.\nNapaki Ntkernel pa ntfs-prilagam sliko.\n\nOčitno je zdaj sistem zjebal skener Mustek 1200UB plus, za katerega za sedmico ni gonilnikov in ga zgleda lahko z računalnikom vred vržem stran.\nPol leta star računalnik mi še vedno ne dela \n\nŽivci mi že res popuščajo a naj nesem na servis?\nEn teden bodo preverjali potem pa rekli, da je vse ok in, da očitno ne znam naložiti sedmice... Čez sto sem jih že naložil, pa me še noben računalnik ni niti približno tako zajebaval.\n\nNajraje bi naložil XPje, samo kaj ko mi zaznajo samo 3gb rama in že kar nekaj programov ne dela.\n\nA slučajno še obstoja kak način, da bi mojo originalno sedmico posodobil v obupno desetko, da bom videl, če bo vsaj desetka delala?\n\n",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Gonzo je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tfikus.\nPredvčeraj sem sosedu vstavil PCIe razširitveno kartico, ki ima dva dodatna sata priklopa. Njegova matična MSI NF 520 za Phenom 2  je basic izvedbe in ima samo dva priklopa za diske. Na enem je novi SSD, na drugem pekač. Stari disk je hotel obdržati, vendar je zmanjkalo priklopov.\nKartica je StLab in ima čip od Silicon Imageja. Cena sitnica , 21€.  Ni bilo gonilnikov, zato sem potegnil z interneta na strani StLab-a. Dela zaenkrat v redu. Ima W7 . Računalnik je star kot moj letnik 2008.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZakaj bi dodatno kupoval razširitveno kartico, če imam pa kar 6 SATA priklopov, rabim pa samo štiri?\n\nGonilnike sem seveda naložil tiste originalne s priloženega DVDja ampak ker je vse crkavalo sem naložil še posodobitve-pa mi še vedno crkuje.\n\nKo bi vsaj vedel v čem je problem, da nesem na servis in bi vsaj znal povedati kaj ne dela, pa mi sedmica krasno dela dokler nič ne posodabljam in nič novega ne nalagam, tudi Linux dela brezhibno.\n\nZdaj bom pač moral naložiti še glupo desetko, da stestiram še to.\nOriginalne sedmice očitno ne morem posodobiti ali lahko kje dobim desetko samo za test?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPar dni je lepo delalo, danes pa že spet osem modrih zaslonov.\nNapaki Ntkernel pa ntfs-prilagam sliko.\n\nOčitno je zdaj sistem zjebal skener Mustek 1200UB plus, za katerega za sedmico ni gonilnikov in ga zgleda lahko z računalnikom vred vržem stran.\nPol leta star računalnik mi še vedno ne dela\n\nŽivci mi že res popuščajo a naj nesem na servis?\nEn teden bodo preverjali potem pa rekli, da je vse ok in, da očitno ne znam naložiti sedmice... Čez sto sem jih že naložil, pa me še noben računalnik ni niti približno tako zajebaval.\n\nNajraje bi naložil XPje, samo kaj ko mi zaznajo samo 3gb rama in že kar nekaj programov ne dela.\n\nA slučajno še obstoja kak način, da bi mojo originalno sedmico posodobil v obupno desetko, da bom videl, če bo vsaj desetka delala?\n\nPoglej priponko 22528\n\t\t\n\t\tKlikni za razširitev\n\t\nnajraje bi ti rekel, da prinesi, pa se bom še jaz malo hecal \ndrugače pa desetka...\"naj\" bi delovala licenca še vedno, ne me pa držat za besedo. sicer sam sistem ni tako grozen in obupen, a posodobitve in ostalo je obup ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus\nKaj ti napiše Event Viewer od W7 o napaki",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tnajraje bi ti rekel, da prinesi, pa se bom še jaz malo hecal \ndrugače pa desetka...\"naj\" bi delovala licenca še vedno, ne me pa držat za besedo. sicer sam sistem ni tako grozen in obupen, a posodobitve in ostalo je obup \n\t\t\n\t\tKlikni za razširitev\n\t\nBom res stestiral še desetko, da vidim, če slučajno dela.\nAnytime update pri sedmici ne dela in hoče nov ključ za nadgradnjo.\n\nMorda veš, če bi se na kakšen način dalo dobiti kak delujoč driver za skener Mustek 1200 UB plus?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Gonzo je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tfikus\nKaj ti napiše Event Viewer od W7 o napaki\n\t\t\n\t\tKlikni za razširitev\n\t\n\nA misliš tole na tej strani, ki razloži napake?\nČe tole prav razumem je vse narobe z driverji.\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\nPrimary Analysis\nCrash Dump Analysis provided by OSR Open Systems Resources, Inc. (http://www.osr.com)\nOnline Crash Dump Analysis Service\nSee http://www.osronline.com for more information\nWindows 7 Kernel Version 7601 (Service Pack 1) MP (4 procs) Free x64\nProduct: WinNt, suite: TerminalServer SingleUserTS\nBuilt by: 7601.23677.amd64fre.win7sp1_ldr.170209-0600\nMachine Name:\nKernel base = 0xfffff800`02e09000 PsLoadedModuleList = 0xfffff800`0304b730\nDebug session time: Wed Jun 13 17:11:51.800 2018 (UTC - 4:00)\nSystem Uptime: 0 days 0:00:08.659\n*******************************************************************************\n*                                                                             *\n*                        Bugcheck Analysis                                    *\n*                                                                             *\n*******************************************************************************\n\nCONFIG_LIST_FAILED (73)\nIndicates that one of the core system hives cannot be linked in the\nregistry tree. The hive is valid, it was loaded OK. Examine the 2nd\nbugcheck argument to see why the hive could not be linked in the\nregistry tree.\nThis can be either SAM, SECURITY, SOFTWARE or DEFAULT. One common reason\nfor this to happen is if you are out of disk space on the system drive\n(in which case param 2 is 0xC000017D - STATUS_NO_LOG_SPACE) or an attempt\nto allocate pool has failed (in which case param 2 is 0xC000009A -\nSTATUS_INSUFFICIENT_RESOURCES). Other status codes must be individually\ninvestigated.\nArguments:\nArg1: 0000000000000001, 1\nArg2: ffffffffc000009a, Indicates the NT status code that tripped Windows into\nthinking that it had failed to load the hive.\nArg3: 0000000000000001, Index of hive in hivelist\nArg4: fffff8800431d778, Pointer to UNICODE_STRING containing filename of hive\n\nDebugging Details:\n------------------\n\nTRIAGER: Could not open triage file : e:\\dump_analysis\\program\\triage\\modclass.ini, error 2\n\nCUSTOMER_CRASH_COUNT:  1\n\nDEFAULT_BUCKET_ID:  WIN7_DRIVER_FAULT\n\nBUGCHECK_STR:  0x73\n\nPROCESS_NAME:  smss.exe\n\nCURRENT_IRQL:  0\n\nLAST_CONTROL_TRANSFER:  from fffff800032d6b2e to fffff80002e78440\n\nSTACK_TEXT:  \nfffff880`0431d718 fffff800`032d6b2e : 00000000`00000073 00000000`00000001 ffffffff`c000009a 00000000`00000001 : nt!KeBugCheckEx\nfffff880`0431d720 fffff800`030d6631 : 00000000`00000000 00000000`00000002 00000000`00000001 00000000`00000000 : nt!CmpFinishSystemHivesLoad+0x54e\nfffff880`0431d8a0 fffff800`02e776d3 : fffffa80`0bbeab50 fffff800`033f6b7f fffff880`0431d970 00000000`00000001 : nt!NtInitializeRegistry+0x191\nfffff880`0431d8f0 fffff800`02e73c90 : fffff800`030d650f 0000007f`fffffff8 00000000`00000000 00000000`0000006c : nt!KiSystemServiceCopyEnd+0x13\nfffff880`0431da88 fffff800`030d650f : 0000007f`fffffff8 00000000`00000000 00000000`0000006c 00000000`47ecc160 : nt!KiServiceLinkage\nfffff880`0431da90 fffff800`02e776d3 : fffffa80`0bbeab50 00000000`76e84de0 fffff880`0431db60 00000000`00000044 : nt!NtInitializeRegistry+0x6f\nfffff880`0431dae0 00000000`76ebcada : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiSystemServiceCopyEnd+0x13\n00000000`000cf2d8 00000000`00000000 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : 0x76ebcada\n\n\nSTACK_COMMAND:  kb\n\nFOLLOWUP_IP:\nnt!CmpFinishSystemHivesLoad+54e\nfffff800`032d6b2e cc              int     3\n\nSYMBOL_STACK_INDEX:  1\n\nSYMBOL_NAME:  nt!CmpFinishSystemHivesLoad+54e\n\nFOLLOWUP_NAME:  MachineOwner\n\nMODULE_NAME: nt\n\nIMAGE_NAME:  ntkrnlmp.exe\n\nDEBUG_FLR_IMAGE_TIMESTAMP:  589c915d\n\nFAILURE_BUCKET_ID:  X64_0x73_nt!CmpFinishSystemHivesLoad+54e\n\nBUCKET_ID:  X64_0x73_nt!CmpFinishSystemHivesLoad+54e\n\nFollowup: MachineOwner",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Bajkman je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEnostavno, v Windows/minidump imaš poročila o BSOD. Naloži jih sem:\nhttp://www.osronline.com/page.cfm?name=Analyze\n\nDa boš videl, kaj jih povzroča. Če je vsakič nek drug razlog, je neka motnja (RAM, disk, Sata priklop, kabel,...).\nV Safe mode, kot sem razbral, je vse OK. Za moj občutek si preveč prepričan v disk. Jaz bi šel po tem postopku, ki morda ni najhitrejši, a pri kakem drugem, če ne rata, se lahko še bolj zavleče.\n\n1.) USPEŠNO posodobi BIOS\n2.) Naloži vse file iz minidump na zgornjo stran. Morda se bo tukaj že videl odgovor, čeprav na osnovi slik mislim, da ne.\n3.) Odklopi čisto vso periferijo (DVD, sprednji avdio vhod/izhod, sprednje USB-je, vse kartice zadaj, če so. Razen grafične, če ni interne. Prižgi. Če se ponovi, potem ni to, če se ne, pa postopoma vse priklapljaj nazaj. Boš videl, pri čemu guzne. Jaz bi ta korak sicer naredil šele za točko 4, a ti si nekako siguren v svoj disk.\n4.) Tukaj pa pač moraš križati. Drugi SATA kabel, testiraš. Potem pa pač priklopiš disk v drugo mašino, disk druge mašine pa v tvojo. Boš vsaj vedel, če iskati vzrok v disku ali v ostalih komponentah.\n\nSam enostavno stavim na disk...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSSD disk itak rabim že za en drug računalnik, tako, da ga bom res naročil in stestiral, če z drugim ssd diskom dela.\n\nEvo tole mi je pravkar napisalo na osronline.\n\nCrash Dump Analysis provided by OSR Open Systems Resources, Inc. (http://www.osr.com)\nOnline Crash Dump Analysis Service\nSee http://www.osronline.com for more information\nWindows 7 Kernel Version 7601 (Service Pack 1) MP (4 procs) Free x64\nProduct: WinNt, suite: TerminalServer SingleUserTS\nBuilt by: 7601.23677.amd64fre.win7sp1_ldr.170209-0600\nMachine Name:\nKernel base = 0xfffff800`02e67000 PsLoadedModuleList = 0xfffff800`030a9730\nDebug session time: Wed Jun 13 17:39:41.268 2018 (UTC - 4:00)\nSystem Uptime: 0 days 0:26:45.501\n*******************************************************************************\n*                                                                             *\n*                        Bugcheck Analysis                                    *\n*                                                                             *\n*******************************************************************************\n\nMEMORY_MANAGEMENT (1a)\n    # Any other values for parameter 1 must be individually examined.\nArguments:\nArg1: 0000000000005002, The subtype of the bugcheck.\nArg2: fffff70001080000\nArg3: 000000000000060d\nArg4: 000805f9fffffffe\n\nDebugging Details:\n------------------\n\nTRIAGER: Could not open triage file : e:\\dump_analysis\\program\\triage\\modclass.ini, error 2\n\nBUGCHECK_STR:  0x1a_5002\n\nCUSTOMER_CRASH_COUNT:  1\n\nDEFAULT_BUCKET_ID:  WIN7_DRIVER_FAULT\n\nPROCESS_NAME:  iexplore.exe\n\nCURRENT_IRQL:  0\n\nLAST_CONTROL_TRANSFER:  from fffff80002f4d7ac to fffff80002ed6440\n\nSTACK_TEXT:  \nfffff880`09e85868 fffff800`02f4d7ac : 00000000`0000001a 00000000`00005002 fffff700`01080000 00000000`0000060d : nt!KeBugCheckEx\nfffff880`09e85870 fffff800`02ee3779 : 00000000`00000000 fffffa80`0bf68330 00000000`00002000 00000000`00000000 : nt! ?? ::FNODOBFM::`string'+0x32b6e\nfffff880`09e85980 fffff800`02ed456e : 00000000`00000000 00000000`02d10000 00000000`00000001 00000000`00000000 : nt!MmAccessFault+0x359\nfffff880`09e85ae0 00000000`76caf998 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiPageFault+0x16e\n00000000`0042f04c 00000000`00000000 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : 0x76caf998\n\n\nSTACK_COMMAND:  kb\n\nFOLLOWUP_IP: \nnt! ?? ::FNODOBFM::`string'+32b6e\nfffff800`02f4d7ac cc              int     3\n\nSYMBOL_STACK_INDEX:  1\n\nSYMBOL_NAME:  nt! ?? ::FNODOBFM::`string'+32b6e\n\nFOLLOWUP_NAME:  MachineOwner\n\nMODULE_NAME: nt\n\nIMAGE_NAME:  ntkrnlmp.exe\n\nDEBUG_FLR_IMAGE_TIMESTAMP:  589c915d\n\nFAILURE_BUCKET_ID:  X64_0x1a_5002_nt!_??_::FNODOBFM::_string_+32b6e\n\nBUCKET_ID:  X64_0x1a_5002_nt!_??_::FNODOBFM::_string_+32b6e\n\nFollowup: MachineOwner",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tBom res stestiral še desetko, da vidim, če slučajno dela.\nAnytime update pri sedmici ne dela in hoče nov ključ za nadgradnjo.\n\nMorda veš, če bi se na kakšen način dalo dobiti kak delujoč driver za skener Mustek 1200 UB plus?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNaloži w10 in uporabi ključ od w7. Deluje, no vsaj meni je.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Bom res poskusil še z desetko ampak dvomim, da bo koda od sedmice delala, ker potem bi najbrž delala že pri anytime update.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Res me zanima zakaj mi je včeraj sedmica naredila deset modrih zaslonov, danes pa niti enega?\n\nNič nisem spreminjal, nič novega nalagal, pa danes vse dela, včeraj pa ni delalo nič?\nA je to vpliv vremena ali kaj?\n\nSamo, da začnem iskati desetko, že mi začne delati sedmica \n\nJe varno uporabljati piratsko desetko, ki jo registriraš s tistim Microsoft tool generatorjem?\n\nIma slučajno kdo kakšno zamisel, kako bi lahko še naprej uporabljal skener Mustek 1200 UB plus, za katerega očitno ni driverjev za sedmico?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Gugl najde dosti rešitev za tvojega Musteka in W7. Na primer..\nhttps://answers.microsoft.com/en-us...-scanner/ea9226d7-267d-4a0b-b468-636eeb6e7694.\nGlede SATA razširitvene kartice. Sosedu sem dodal, ker matična ima samo dva SATA konektorja. V prvem je disk, v drugem DVD. Stari disk je hotel obdržati po montaži SSD-ja, zato sam vstavil v PCI vodilo kartico ki ima še dva priklopa.\nKarica je čisto poceni, in glej ga zlomka, diska delata brezhibno. Iz prve..tok, tok (na les) \nPa še kartica je neka čisto leva.. ne nima veze s politiko.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tRes me zanima zakaj mi je včeraj sedmica naredila deset modrih zaslonov, danes pa niti enega?\n\nNič nisem spreminjal, nič novega nalagal, pa danes vse dela, včeraj pa ni delalo nič?\nA je to vpliv vremena ali kaj?\n\nSamo, da začnem iskati desetko, že mi začne delati sedmica \n\nJe varno uporabljati piratsko desetko, ki jo registriraš s tistim Microsoft tool generatorjem?\n\nIma slučajno kdo kakšno zamisel, kako bi lahko še naprej uporabljal skener Mustek 1200 UB plus, za katerega očitno ni driverjev za sedmico?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZa mustek skener poskusi s programom Vuescan.",
+    "author": "asaki",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik fikus je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tRes me zanima zakaj mi je včeraj sedmica naredila deset modrih zaslonov, danes pa niti enega?\n\nNič nisem spreminjal, nič novega nalagal, pa danes vse dela, včeraj pa ni delalo nič?\nA je to vpliv vremena ali kaj?\n\nSamo, da začnem iskati desetko, že mi začne delati sedmica \n\nJe varno uporabljati piratsko desetko, ki jo registriraš s tistim Microsoft tool generatorjem?\n\nIma slučajno kdo kakšno zamisel, kako bi lahko še naprej uporabljal skener Mustek 1200 UB plus, za katerega očitno ni driverjev za sedmico?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nhm ja, a si veliko delal danes na mašini ali si bolj kot ne pustil mašino na miru? ker je to lahko posledica napake na ramu...\nza začetek lahko tudi generator probaš, ne bo škodilo. ali pa pustiš neaktivirano-delovala bo normalno nekaj dni (90). dovolj za testirat.\nkaj pa je tako pommebnega, da po vsej sili (tako razberem iz tvojih postov...) hočeš uporabljati ta skener?\nanytime update mislim da deluje le v primeru home - pro nadgradnje. ne pa w7 na w10. ker običjano je tudi downgrade šel le na eno verzijo navzdol (w7-vista, vista-xp)",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\thm ja, a si veliko delal danes na mašini ali si bolj kot ne pustil mašino na miru? ker je to lahko posledica napake na ramu...\nza začetek lahko tudi generator probaš, ne bo škodilo. ali pa pustiš neaktivirano-delovala bo normalno nekaj dni (90). dovolj za testirat.\nkaj pa je tako pommebnega, da po vsej sili (tako razberem iz tvojih postov...) hočeš uporabljati ta skener?\nanytime update mislim da deluje le v primeru home - pro nadgradnje. ne pa w7 na w10. ker običjano je tudi downgrade šel le na eno verzijo navzdol (w7-vista, vista-xp)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nCelo popoldne sem uporabljal sedmico pa mi niti enkrat ni crknila, včeraj pa stalno modri ekrani že skoraj takoj ob začetku.\nTrenutno vse bolj sklepam, da ga Avast nekaj serje.\nČe uporabljam Avast browser lepo dela, včeraj, ko sem uporabljal chrome in pa ie je pa vse crkavalo.\n\nNe vem pa kaj je s tem Windows update, večino posodobitev namesti, teh mesečnih za maj in junij mi pa na noben način noče naložiti-napiše napaka koda 80073712.\n\nTa Mustek skener pa imam in bi ga seveda rad še uporabljal, ker moram večkrat kaj preskenirat-samo zaradi novega operacijskega sistema pa ja ne bom metal stran skenerja-potem bom raje naložil wmware in ga uporabljal na tak način ",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "in, desetka že laufa?\navast browser je bolj kot ne firefox inkognito mode, dvomim, da bi ta štekal. chrome je porabnik rama, kar spet namiguje na problem z ramom...???\nhja, ko je enkrat skener toliko star, da ga noben sistem več ne prepozna (hote ali nehote ...bo treba razmislit o novem. ali pa bolha za malo mlajšega.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Koliko ploscic rama imas noter?",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tin, desetka že laufa?\navast browser je bolj kot ne firefox inkognito mode, dvomim, da bi ta štekal. chrome je porabnik rama, kar spet namiguje na problem z ramom...???\nhja, ko je enkrat skener toliko star, da ga noben sistem več ne prepozna (hote ali nehote ...bo treba razmislit o novem. ali pa bolha za malo mlajšega.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZdaj sedmica spet dela, zato piratske desetke nisem nalagal, ker tam bodo pa potem spet drugi problemi. \nZgleda, da crkne takoj, ko se začnem igrati s kakšnimi gonilniki, zadnjič sem preiskušal cel kup gonilnikov za skener in potem je dva dni vse crkavalo.\n\nNe Avast browser, ampak Avast antivirus imam tudi na sumu, da včasih sesuje sistem-je to možno?\nAvast AV tudi hoče v vsak brskalnik vgraditi neko zaščito pred nevarnostmi iz neta in tam se očitno \"skrega s chromom\" in potem vse crkne.\n\nSkener je pa v XPjih kasno delal in kak programček, da bi ga zaznal bi pa tudi moral obstojati?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Cash je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKoliko ploscic rama imas noter?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nEno Inteso RAM 8GB.\nJe kaj važno v katerem slotu je vstavljen ram? Na matični piše(če prav razumem), da je treba najprej zapolniti slote A2, B1, B2 in šele potem A1.\n\nMemory test ni našel nobene napake.",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik asaki je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZa mustek skener poskusi s programom Vuescan.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVuescan mi je naložil Mustek bearpaw gonilnik za skener, ki pa ga ne požene;(\nZgleda, da Vuescan ima skoraj vse gonilnike razen za 1200 UB plus:\nhttps://www.hamrick.com/vuescan/mustek.html#scanner-drivers\n\nObstoja še kaj podobnega?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Ne vem zakaj bi nalagal piratsko W10, če pa na njej prime koda od W7. Anytime upgrade, je pa druga zgodba.",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus, odstrani eno ploščico in 1 obdrzi v slotu A2...če ti bo crkovalo, daj uno drugo ploščico, ki jo imaš na mizi v isti slot, torej A2...če bo isto crkovalo, probaj potem isti postopek še na B1 slotu...pa preden boš šaril po kišti, zadaj stikalo na OFF in ene parkrat vžgi spredaj stikalo, da pobere elektriko, kar jo je ostalo v kišti + razelektri se...oslini prst in primi na kišti za kak vijak",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Hvala za nasvet, predvsem glede tega kako se najlažje razelektri računalnik-jaz sem to ponavadi delal tako, da sem po izklopu računalnika prijel računalnik in ozemljitev na elektro vtičnici.\nŽal imam samo eno ploščico rama 8GB, če bi imel dve, potem bi že zdavnaj testiral en in drug ram. Slote sem pa že menjal od A1 do B2, pa ni učinka, računalnik mi očitno sesuvajo taki in drugačni gonilniki-še v življenju nisem imel toliko problemov z računalnikom.\n\nPar dni dela potem pa spet modri zasloni(prilagam sliko, očitno nekaj z driverji-napake: IastoreF, NTFS, ntoskrnl).\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik zakon je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe vem zakaj bi nalagal piratsko W10, če pa na njej prime koda od W7. Anytime upgrade, je pa druga zgodba.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nA na tej strani dol potegnem originalno desetko?\nhttps://www.microsoft.com/sl-si/software-download/windows10\n\nA obstoja kak program, ki vsaj približno naredi desetko, podobno sedmici?",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "prenesi orodje iz te strani",
+    "author": "zakon",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "Pardon, Fikus, ne vem, kako sem prebral, da imaš 2 ploščici rama...Sem pa budalo, ni kej... \n\nTukaj sem na hitro nekaj našel, kako videz na Win 10 spremeniti na Win 7\n\n\t\n\t\t\n\t\n",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\n",
+    "author": "Cash",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Cash je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPardon, Fikus, ne vem, kako sem prebral, da imaš 2 ploščici rama...Sem pa budalo, ni kej... \n\nTukaj sem na hitro nekaj našel, kako videz na Win 10 spremeniti na Win 7\n\n\t\n\t\t\n\t\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nHvala za pomoč.\n\nBom naložil, čeprav mi zdaj sedmica že spet dva dni dela.\nSamo jaz bi rad stabilen sistem, ne pa tak, ki tri dni dela potem pa spet en dan nič ne dela....",
+    "author": "fikus",
+    "author_level": "kaktus"
+  },
+  {
+    "ctx": "Sesutje računalnika po vklopu dodatnega diska???",
+    "content": "fikus, start od sedmice tudi jaz močno pogrešam (predvsem prilagodljivost) ampak se navadiš. pač na desni del menija namečeš ikone tistih programov, ki jih res potrebuješ, pa spodaj v opravilno in si zmagal. ne nucaš met namizja nametanega z ikonami (jaz imam le tri \nše vedno sicer mislim, da tvoj problem izhaja nekje iz ramov...hm hm. aja, kateri driver za irst pa namestiš? tistega od proizvajalca plošče ali direktno iz intela?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  }
+]

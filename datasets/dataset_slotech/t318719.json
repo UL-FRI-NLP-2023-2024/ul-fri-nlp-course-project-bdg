@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Ravno sem si omislil 4x 1TB SATA diske (Seagate 7200.11) in si poskusam sestaviti sistem, kjer bi imel redundanco in pa vsaj priblizno hitrost branja, pisanja.  Racunalnik bom uporabljal predvsem za shranjevanje podatkov, za streamamje filmov z njega preko mreze in obcasno kot delovni comp. (torej je zazeljeno da bi bili gor Winsi).  Imam relativno ok masino za ta namen, ampak se zatakne pri hitrosti RAID5 polja.  AMD Athlon 64, 3,5Ghz 2GB RAM Asus A8N-SLI Deluxe (nForce4 SLI Chipset in SiI 3114 chip na maticni za hardware assisted RAID)  Trenutno sem poskusil 2 kombinaciji. 1. Prikljucil vse 4 diske na SiI 3114 kontroler (sistemski disk je na PATA, torej locen od RAIDa). Branje je hitro, pisanje pa mi ne disi ravno najbolj. Tu so rezultati testa s HD Tune:      2. Prikljucil vse 4 diske na nForce4 kontroler (sistemski disk je na PATA - tudi na nforce4 kontrolerju) in vkljucil software raid5 v Windows 2003. HD Tune tu ne zna testirat hitrosti polja, tako da sem skopiral datoteko na in z polja in meril cas (ce ima kdo kaksen boljsi nacin za meritev se priporocam). Nameril sem ~44MB/s povprecno branje z polja (mozno da vec, verjetno PATA disk ni zdrzal vec?) in ~9,6MB/s povprecno pisanje na polje.  Pri pisanju na polje sem opazil cuden pojav (ce se prav spomnim v obeh primerih). Zacetna hitrost je bila cca 40-50MB/s, nakar je po nekaj sekundah padlo na 500kB-1,5MB/s in ostalo tako kaksno minuto, nakar se cikel ponovi. Mogoce kaksen buffering podatkov ki jih potem pocasi pise na polje? Nebi vedel, je pa nadlezno. Mogoce kdo ve kako bi to \"izklopil\"?   Torej v obeh primerih je hitrost pisanja na polje porazna. Saj ne da hitrost pisanja rabim za kaksne posebne namene, ampak vseeno bi bilo zazeljeno vsaj 20MB/s pisanje na polje ce ne vec... Sploh ker je sam procesor takoreceno neobremenjen pri pisanju, torej tu ni problem. Zanima pa me kje je? Ima kdo kaksno boljso resitev (tudi hardware RAID5 pride v postev, da je le poceni)?  Lp, AgiZ ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Prijatelj me je preprical da sem poskusil se eno malo bolj noro implementacijo.   ZFS v VMWare-u. Torej na obstojece Windows 2003 sem nalozil VMWare, vanj importal  NexentaStor image in attachal vse 4 diske. NexentaStor je nekaksna celotna resitev za ZFS raid sistem. Upravlja se ga preko web-interfaca in je dosti enostaven za uporabo. Te 4 diske sem potem uporabil za izgradnjo ZFS datotečnega sistema. Sicer sem moral kar nekajkrat reinstalirat zaradi razlicnih razlogov (enkrat ni diskov hotel prepoznati, drugic sem izbral https managiranje kjer je vsak klik trajal obupno dolgo,...), a mi je na koncu uspelo usposobit sistem.  In hitrost? Poudariti moram da je postal procesor v obeh primerih 100% obremenjen (to je, med prenasanjem datotek), tako da rezultati niso realni. Povedo pa to, da sistem v VMWareu-u niso primerni za tak nacin uporabe. Pisanje na polje: ~9,8MB/s Branje s polja: ~17MB/s  Se kaksna ideja? ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "ja ce je sistemski disk na pata vodilu, ti tist raid nic ne pomaga pri hitrosti tega diska   kontroler ki je motherboardu, je softwarski. elegantne resitve ni, razen te da si kupis hardwerski raid kontroler. ob tem pa bi tud opazil vecjo razliko pri prenosu podatkov. seveda tudi odvisno od kontrolerja... ",
+    "user": "t3hn0"
+  },
+  {
+    "message": "A pol je tko slab kontroler, ki je na matični ali kaj. si nisem mislil. ",
+    "user": "Vuli"
+  },
+  {
+    "message": "Mah, SW RAId bi moral delat, če je SW napisan zadosti dobro.  Evo ti rezultatov mojega RAID-6 polja, kjer je obenem tudi sistem:  1. Pisanje:  time dd if=/dev/zero of=/krneki.bin bs=1073741824 count=1 oflag=direct 1+0 zapisov na vhodu 1+0 zapisov na izhodu 1073741824 bajtov (1,1 GB) prepisanih, 5,50528 s, 195 MB/s  2. Branje:  time dd of=/dev/null if=/krneki.bin bs=1073741824 count=1 iflag=direct 1+0 zapisov na vhodu 1+0 zapisov na izhodu 1073741824 bajtov (1,1 GB) prepisanih, 3,62857 s, 296 MB/s  Zadeva je:  AMD X2 6000+ Plata nek FOxxcon džabakelj 4GB RAM Dodana je extra PCI kartica z dvema SATA štekerjema gor je 8 x 500GB Hitachi mislim v RAID6  Plata ima 6 + SATA konektor, extra disk je pa vštekan v kartico OS: Gentoo linux kernel: 2.6.24-hardened-r2  Suma sumarrum : 300MB/s pri branju in 200MB/s pri pisanju. ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Skoraj nenormalno semi zdi da ti žre 100% cpu. Sam imam RAID5 s 3x500GB hdd in ne glede na to koliko prenašam je CPU (2gigs celly) relativno nezaseden! Linux. ",
+    "user": "Phoebus"
+  },
+  {
+    "message": "Mogoče mu pa žre CPU zato, ker je RAID5 komajda vzpostavil in mora mašina preračunat kontrolne vsote za disk ?  Ampak tudi to ne bi smelo žreti kaj dosti CPU časa, kvečjemu disk bandwidth... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Posodobil sem se firmware maticne plosce (hacked one, kjer je not veliko novejsi firmware za SiI 3114 in Nforce cipovje), tako da bom poskusil se par testov.  ja ce je sistemski disk na pata vodilu, ti tist raid nic ne pomaga pri hitrosti tega diska  Ja, imas prav. Sem kloniral sistemski disk na sata in ponovno testiral. Torej 4x 1TB na Nforce kontrolerju, 1x 120GB na SiI 3114 kontrolerju in software RAID5 v Windows 2003. Rezultat: 9,4MB/s write 45MB/s read Skratka, enako...  Samo za primerjavo sem naredil (pred firmware nadgradnjo) se test hitrosti diska:      Se za hec sem naredil 4x 20GB particije na vseh stirih diskih da preverim kaksno hitrost dobim z simultanim branjem z dveh in simultanim pisanjem na druga dva diska. CPU mi je potegnilo tja do 95% zasedenosti, ampak je bilo presnemavanje vsake instance cca. 100MB/s, tako da taka prepustnost nikakor ni problem. Ampak kaj je?!  Mah, SW RAId bi moral delat, če je SW napisan zadosti dobro.  @brane2 Mja... linux ma to bolje urejeno. Windowsi me zanimajo. The OS we all love so much  Sam vseeno, tole mas pa res zelo hitro. Sam bi bil ze desetino te hitrosti zadovoljen.   Skoraj nenormalno semi zdi da ti žre 100% cpu  Moras upostevat da celoten ZFS sistem tece na virtualizaciji, tako da se mi ne zdi tako nemogoce.  Testiram se enkrat SiI 3114 raid na maticni, da vidim ce je firmware kaj popravil zadevo ceprav ne pricakujem prevec. Potem pa sem pocasi ze brez idej. Ok, da zacnem razmisljati se malo drugace, katero raid5 kartico predlagate (pa da ne bom primoran prodati ledvic zanjo bi bilo tudi lepo)? ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Poskusil sem se dva testa: 2 diska na SiI, 2 na nForce kontrolerju. Software RAID5 v Win2003. Rezultat: Read: 50MB/s Write: 8,5MB/s Torej enako porazno.  In pa se vsi 4 diski na SiI3114, RAID5 od maticne plosce:      Tako da od vseh dosedanjih testov je tale z nadgrajenim BIOSom maticne plosce in narejenim RAID5 s pomocjo maticne se najboljsi (15MB/s write).  Bom zaenkrat naredil kar tako polje, med tem pa me zanima kot sem ze zadnjic vprasal, katero raid5 kartico bi predlagali? ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Ne kompliciraj z RAID kartico, ker boš za pest drobiža dobil spet nek krš.  Zmontiraj gor Linux, inicialziraj SW RAID in poglej kako ti tam špila.  Saj bi rad imel samo strežnik, če sem prav razumel.   Če je tako, bi definitvno poskusil z Linuxom - če ne drugega pa vsaj toliko do vidiš za kaj gre.   Mogoče pa imaš kak HW flaw in bi ti tudi na Linuxu delalo podobno slabo... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Zakaj pa ne postaviš diskov v raid 0+1? Tam ni treba kontrolerju nič računat, le podatke hkrati zapisuje na dva diska in dela še 1:1 backup tega... ",
+    "user": "Cveto"
+  },
+  {
+    "message": "Bom poskusil se z linuxom, yup.  Masina ne bo samo kot server, ampak tudi kot workstation (uporabniki ne poznajo drugega kot win, bodo pa restriktirani, tako da ne morejo cesa sesut). Drugace bi ze dal neko verzijo nix sistema gor pa zfs in to je to. Me pa zanima ce bodo enaki problemi z linuxovim raid5/nekim zfsjem, zato bom poskusil... enkrat.  Kartica bi bila uporabna, a kaj ko so relativno dobre drage.  Raid 0+1 mi \"poje\" polovico diskov. Hitrost pa tu ni tako pomembna. Je pa res, da je 15MB/s res malo. ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Jah, če Linuxa ne moreš videt, pa zmontiraj diske v kako staro pixno, ziher maš kje kak star P3 Athlon XP ali P4... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Ok, sem instaliral Ubuntu in postavil gor RAID5 in priredil tvoji vrstici (saj sem ok naredu? md0 je raid5). 2x hdd sta na SiI 3114 kontrolerju, 2x hdd sta na nForce kontrolerju, system hdd je na SiI kontrolerju (bom tole se mal premetaval da vidim kaksni so rezultati).  Tole sem dobil ven:  Write: time dd if=/dev/md0 of=/krneki.bin bs=1073741824 count=1 oflag=direct 1+0 records in 1+0 records out 1073741824 bytes (1.1 GB) copied, 31.2442 s, 34.4 MB/s  Read: time dd of=/dev/null if=/krneki.bin bs=1073741824 count=1 iflag=direct 1+0 records in 1+0 records out 1073741824 bytes (1.1 GB) copied, 20.2159 s, 53.1 MB/s ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Ok, obviously sem zabluzil s prejsnjim primerom.  Write: time dd if=/dev/md0 of=/var/media/krneki.bin bs=1073741824 count=1 oflag=direct 1+0 records in 1+0 records out 1073741824 bytes (1.1 GB) copied, 24.4789 s, 43.9 MB/s  Read: time dd of=/dev/null if=/var/media/krneki.bin bs=1073741824 count=1 iflag=direct 1+0 records in 1+0 records out 1073741824 bytes (1.1 GB) copied, 6.09719 s, 176 MB/s  Upam da sem sedaj ok naredu.  V glavnem lepe stevilke. 176MB/s read in 43.9MB/s write. Will keep on testing. ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Hm, ja načeloma O.K.  Pa kaj maš to za en HW ? Povej kaj več o mašini... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Da se se jaz malo pohvalim. RAID5 na dedicated HW:  read: 1073741824 bytes (1.1 GB) copied, 8.12722 s, 132 MB/s  write: 1073741824 bytes (1.1 GB) copied, 4.49888 s, 239 MB/s ",
+    "user": "zee"
+  },
+  {
+    "message": "Kakšen RAID maš - kolk diskov ?  In kako veš,da stvar tu ne slepari z buferriranjem in cachiranjem ? ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Ok, obviously sem zabluzil s prejsnjim primerom.   Malo manj obviosuly, ampak zabluzil si tudi s tem. Ko testiraš pisanje, kopiraš iz /dev/zero ( virtualna \"naprava\" iz katere dobiš samo ničle) na svoj disk, torej:  Write:  time dd if=/dev/zero of=/dev/md0 bs=1073741824 count=1 oflag=direct   Read:  time dd of=/dev/null if=/dev/md0 bs=1073741824 count=1 iflag=direct    Slednje velja, če je RAID prazen in ga nisi še nikamor mountal.  Tisto kar sem jaz pisal je bilo na dodobra nafilanem in zmountanem disku.  Takrat sem vedel da bo nek fajl končal na RAIDu, če ga bom vpisal v mapo X in če sem hotel testirati branje, sem ga pač prebral nazaj.  Taki testi skozi filesystem praviloma kažejo slabše številke, kot ti jih dajo razni RAID tester testi.  Tako da je bolje iti na zgoraj prikazano varianto, VENDAR RAID NE SME BITI ZMOUNTAN IN GOR NE SMEJO BITI KAKI PODATKI KI JIH RABIŠ !  Poleg tega si v primeru z writeom zabluzil in je bil write bandwidth omejen s tvojim diskom, kjer imaš sistem, ne pa z RAIDom ( kopiral si z RAID na svoj system disk ) -kot je videti na prvi uč... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Okie, malo popravil write. Upam da je sedaj to pravi rezultat. RAID5 sem imel mountan v /var/media/, zato sem dal kar to pot in zapisal v krneki.bin. Ok, se enkrat:  Write: time dd if=/dev/zero of=/dev/md0 bs=1073741824 count=1 oflag=direct 1+0 records in 1+0 records out 1073741824 bytes (1.1 GB) copied, 9.9023 s, 108 MB/s  Read: time dd of=/dev/null if=/dev/md0 bs=1073741824 count=1 iflag=direct 1+0 records in 1+0 records out 1073741824 bytes (1.1 GB) copied, 4.57809 s, 235 MB/s  Se lepsi rezultati :)   Masina je: Asus A8N SLI Deluxe 2x 1GB rama Athlon 64 3500+ Neka osnovna graficna, diski. ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Ja, to je cool.  Pravzaprav megacool.  Kaj bi še rad ;o) ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Razen takih rezultatov v Winsih? Nic ;) Tam stvari postimam z zaprtimi ocmi (recimo). Tu pa so stalno neke stvari ki preprecujejo da bi vse delalo kot zelis.  No, sem se ze lotil instalacije sambe (ravno berem naj uporabim cifs, kar zaenkrat se ne vem kako, ampak bo ze), pol pride ftp, pol kksn p2p, pa kaksen apache etc... sam gre pocaaaaaasi... miljon stvari za prebrat. Preden najdes kkasen dober tutorial pa tudi traja.  Poleg vsega bom pa kasneje poskusil se kaj se dogaja v vseh moznih scenarijih da hardware odpove in kako resiti podatke. V glavnem, i have a long way to go...  Aja, kot se vidi sem obupal nad server/workstation masino bazirano na winsih. Teli RAID5 rezultati so predobri da bi diske tako degradiral in jih uporabljal z bednimi read/write rezultati.  P.S.: Kaksni dobri linki za namestitev zgoraj omenjenih proggijev (daemonov ;)) bi bili zelo dobrodosli. Pa tudi kak link glede resevanja+testiranja redundance raida pls.  Lp, AgiZ ",
+    "user": "AgiZ"
+  },
+  {
+    "message": "Ja, ampak potem pa dela. CIFS mi dela hitreje na Linuxu kot na Winsih, p2p pa lahko tako uštimaš, da ko padeš gor boš mislu da pršu v Leclerca ;o)  Sedaj se igram z btg. Komaj sem ga inštaliral, ne pa še skonfiguriral, je pa stvar videti strupeno dobro.  kkar se raida tiče, na linuxu vse opraviš z mdadm, torej zanj dobiš navodila z info mdadm oziroma man mdadm.  kratka varianta plonkceglca ob vsakem ukazu pade ven z ime_ukaza --help, torej mdadm --help, samo ne se igrat s tem, dokeler ne prebereš navodil.  Če te zanima stanje raida, ga dobiš z mdadm ( mislim, da opcija --query , ne vem točno, poglej ). Lahko pa tudi pogledaš, kaj si kernel misli o njem s cat /proc/mdstat ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Kar se dobrih linkov tiče, pojma nimam. jaz vse najdem z Googlom, ko rabim in potem pozabim.  Sicer pa mislim da ima Samba SWAT - ki je http vmesnik. Padeš nanjo z browserjem in jo uštimaš s klikanjem, namesto da bi se zaj* config fajlom.  Mislim pa da moraš imeti za to psnove postavljene ( dodane userje itd), da lahko zaštartaš server in greš odtod dalje.  Kar se smb/cifs tiče, CIFS je nova, SMB pa stara verzija protokola. Če se le da, uporablja CIFS, ker je hitrejši in boljši. Ene stare Win mašine delajo boljše na SMB... ",
+    "user": "Brane2"
+  },
+  {
+    "message": "Pravkar sem nastavil DELL Inspiron 1720 z dvema diskoma ( prenosnik) da dela direkt z RAID-a.  Je blo enkaj trikov za to, ampak dela ko mina. Če imaš sistemski disk drugje, je problemov manj.  Če rabiš nasvet/pomoč, povej. Lahko ti pošljem tudi scompilan kernel in ostalo. ",
+    "user": "Brane2"
+  }
+]

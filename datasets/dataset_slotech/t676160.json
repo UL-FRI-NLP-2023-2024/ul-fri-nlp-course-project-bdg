@@ -1,0 +1,50 @@
+[
+  {
+    "message": "Pozdravljeni,   Na nov Asus-ov L502SA laptop sem po večjih težavah namestil Win7 (seveda nisem bil pozoren, da ni podpore glede gonilnikov za ta win7). Trenutno imam na laptopu nameščene win7 a so zaradi manjka gonilnikov neuporabni, nato sem preko usb kljuca poizkusil namestiti win10. (CD-rom-a nima.)  Pred začetkom namestitve mi enostavno javi Memory_Management napako, nakar se ciklično zaganja. Preko win7 sem uspešno pognal program sfc/scannow. Napak ni pokazal nobenih, kasneje sem poizkusil z nadgradnjo biosa (iz verzije 204 na 209). Nekaterim je to pomagalo rešit težavo.   A kot sem kasneje ugotovil, da mi EasyFlash (Bios-ov program za ugrade) ne prepozna upgrade \"fajla\", ki je na ključku. Enostavno ga ne pokaže, tako da niti posodobitev Biosa ni mogoča. :( Preko bootable usb Freedos-a ne morem dostopati do diska, da bi ga ponovno formatiral. Disk je \"formatiran\" MBR načinu.  Zagon memtesta ni pokazal nikakrčnih napak (rač. je nov!)   Nikakor ne morem naprej od tu? Napaka na disku, usb ključu, ... ?  Vsakršna ideja dobrodošla. ",
+    "user": "[DrAc0]"
+  },
+  {
+    "message": "Napaka je v tem, da se ti računalnik zažene v UEFI. Če boš iz M$-jeve strani potegnil windows 10 in orodje za izdelavo ISO slike, ter to prenesel na ključ, boš win 10 nemoteno zagnal.  Pogoj je seveda prednaložen win 10 OEM. Če pa si imel freedos, pa se boš moral malo potruditi na piratskih forumih, ker boš tu, težko dobil uporaben odgovor, zaradi pravil S-T. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Hvala za odgovor. Se bom lotil težave s tega vidika.  Hvala. ",
+    "user": "[DrAc0]"
+  },
+  {
+    "message": "Rešitev:   Nazadnje sem bil primoran uporabiti externi CD-rom, preko katerega sem naložil OS (8), nakar ga nadgradil na zadnjo različico OS(10).  Dokončni razlog za pojavljanje Memory_management pri namestitvi M-OS ni znan. Domnevam da je bila težava v ISO formatu OS-a ali v splošni težavi kompatibilnosti USB-ključev in prenosnika.  LP ",
+    "user": "[DrAc0]"
+  },
+  {
+    "message": "Verjetno ne bi imel nobenih težav, če bi Windows 10 ISO zapisal na USB ključ z Rufus v UEFI GPT načinu. ",
+    "user": "Han"
+  },
+  {
+    "message": "Kar se tiče posodobitve biosa. Se najdejo plate pri katerih moraš imeti ključek formatiran v fat/fat32, da ga zna prebrati. ",
+    "user": "jest10"
+  },
+  {
+    "message": "@Han: Sem poizkusil, večrat z različnimi verzijami Rufus-a in OS-ov z nastavitvami UEFI GPT. Vedno ista napaka - Memory_Management.  @jest10: Sem poizkusil s FAT32 in FAT z različnimi ključki različnih velikost, ne prebira nobenih \"fajlov\" prepozna samo \"direktorije\" - mape. Čudna reč.. ",
+    "user": "[DrAc0]"
+  },
+  {
+    "message": "A secure boot imaš vključen? ",
+    "user": "Zheegec"
+  },
+  {
+    "message": " [DrAc0] je 19. jun 2016 ob 19:55 izjavil:Sem poizkusil s FAT32 in FAT z različnimi ključki različnih velikost, ne prebira nobenih \"fajlov\" prepozna samo \"direktorije\" - mape. Čudna reč.. Banalno ampak si odzipal downloadan file? na ključku bi mogla bit datoteka E502SAF1.209 brez drugih končnic ",
+    "user": "boogie_xlr"
+  },
+  {
+    "message": "@Zheegec: Secure boot : Disabled  @ boogie_xlr: Točno tako, DL-jal bios update iz uradne Asus strani in kot si zapisal je bil \"fajl\" točno tako poimenovan. Brez izjeme. Še vedno ni prepoznave. ",
+    "user": "[DrAc0]"
+  },
+  {
+    "message": "Bios update iz uradne Asus strani je v zip formatu. http://www.asus.com/support/Download/3/...  E502SAF1209.zip   S katerim orodjem si spravil win10 iso na usb ?  https://www.microsoft.com/en-us/downloa... https://www.microsoft.com/en-us/softwar... ",
+    "user": "AC_DC"
+  },
+  {
+    "message": " [DrAc0] je 21. jun 2016 ob 19:48 izjavil:@Zheegec: Secure boot : Disabled  @ boogie_xlr: Točno tako, DL-jal bios update iz uradne Asus strani in kot si zapisal je bil \"fajl\" točno tako poimenovan. Brez izjeme. Še vedno ni prepoznave.  Vključi secure boot za Win10. ",
+    "user": "Zheegec"
+  }
+]

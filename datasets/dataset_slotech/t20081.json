@@ -1,0 +1,18 @@
+[
+  {
+    "message": "ok..imam bazo ..recimo da je sestavljena iz id in name...  izpis zgleda takole:  id name  --------  5 borut  4 jure  3 mateja  2 ana  1 jože   problem je v tem da bi rd izbrisal jureta..to storim brez problemov...a ko hocem dodati nov zapis torej 6 janja recimo...mi to izpise takole:   5 borut  6 janja  3 mateja  2 ana  1 jože   torej ne da jo na vrh ampak nadomesti jureta..zakaj? kako to popraviti?   drugo vprasanje:  recimo da izbrisem vec zapisov v bazi in ker ima vsak zapis svojo id stevilko, nastanejo med id-ji lukne....a obstaja kaksen ukaz ki bi id-je \"skrcil\", da ne bi bilo vmes lukn..primer:   namesto  5 borut  3 mateja  2 ana  1 jože   bi bilo  4 borut  3 mateja  2 ana  1 jože   hvala za odgovore  ",
+    "user": "sifu"
+  },
+  {
+    "message": "zgoraj naštetega ne moreš popravit, ker uporabljaš primary key! določi si še eno polje, ki naj bo integer, pa s tistim delaj, primary key pa pust pri miru ... ",
+    "user": "rasta"
+  },
+  {
+    "message": "1. Na koncu izpisa daj ORDER BY id DESC 2. Najverjetneje bi moral za to sam spisat eno malo skriptico, ki bi ti potem vpisala noter cifre brez lukenj vmes ",
+    "user": "rc-car"
+  },
+  {
+    "message": "poglej:   $index = 0; $emptyID = 0; $result = @mysql_query(\"SELECT id FROM tbl\"); while ( list( $id ) = mysql_fetch_row( $result )) { $index++; if ( $id != $index ) { $emptyID = $index; break; } }  if ( !$emptyID ) $emptyID = $index + 1;     tole bi mogl delat tko kr ti rabs.. zdj mas v $emptyID taprav ID k ga rabs......    ",
+    "user": "darh"
+  }
+]

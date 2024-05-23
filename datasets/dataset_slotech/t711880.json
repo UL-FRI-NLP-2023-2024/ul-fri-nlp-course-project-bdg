@@ -1,0 +1,138 @@
+[
+  {
+    "message": "Živjo,  Imam naslednji problem, in se že cel dan ukvarjam s tem. :(  Sam sem sestavil računalnik, in ko sem hotel inštalirati Win10 mi je napisalo da nimam trdega diska. Disk dela, saj ga moj stari racunalnik zazna, tudi nov racunalnik ga zalaufa :) Nevem kaj naj naredim.  Slike: https://m.imgur.com/a/kI0iM Maticna: Gigabyte b250m d2v Procesor: intel pentium g4560 HDD: WD3200AVJS Na trdem disku piše slave/master jumper not required. Če ki pomaga.  Hvala LP ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Probaj nastavit v biosu na AHCI ali IDE. Velikost diska je sumljivo majhna. ",
+    "user": "mailer"
+  },
+  {
+    "message": "V biosih imam samo dve moznosti AHCI in se eno drugo(se ne spomnem). Ko sem bral manual, nisem nikjer zaslediu kako spremenit v IDE, tko da mi moras prou tocno povedat kaj spremenit :)  Tisti disk je pa pomoje USB s katerim instaliram Windowse. Drugace bi moral bit 320GB ce se prav spomnem ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Ok, sedajsem dal v nou računalnik star trdi disk, in ga zazna. Obstaja kakšna možnost da na starem racunalniku kaj naredim da bo pomagalo na novem? Kakšno formatiranje ali aj podobnega ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Bios je F6 https://www.gigabyte.com/Motherboard/GA... ? Si ga ponastavil na privzete nastavitve ? Drug sata kabel ?  Če bios disk zazna, potem ti manjkajo šoferji za čipset win10 instalaciji (Intel INF installation http://download.gigabyte.eu/FileList/Dr... ).  Kje je ssd ?  mailer  Velikost hdd je 320 gb. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Disk daj v star računalnik in ga formatiraj na prvotno stanje.   Odpri CMD kot administrator in vpiši najprej ukaz diskpart. Nato napiši še ukaze, ki so podčrtani rdeče. Na drugem koraku pazi, da vneseš pravilno številko diska.  Formatiraj z ukazom: format fs=ntfs quick (ne na fat32, kot piše na sliki)     ",
+    "user": "Xequerin"
+  },
+  {
+    "message": "Nimam SSD, nameraval dokupiti to :) Nisem ponastavil, bom poiskusil najprej to. Kako pa instaliram, driajverje.  Sedaj imam priklucen disk na star racunalnik, bom formatiral :)  Hvala, se oglasim ko to opravim :) Hmm, v cmd list disk, mi ne pokaže tega novega trdega diska, ko pa se računalnik zaganja, pa je autodetect in dobi 2 sata ide trda diska. ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Ta disk je verjetno zanič, saj ti ga bi drugače sistem našel takoj, ne glede na gonilnike.  Na čem imaš instalacijski Windows, na ključku ali DVD? Ob instalaciji izbereš boot iz enote, kjer imaš posnet sistem za instalacijo, potem pa ti sama instalacija najde potrebne naprave, tam pa potem urediš particije, formatiraš,.....  Če je disk zanič, ga instalacija ne bo našla. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Windowse inštaliram z USB, ampak sem gledal imajo ljudje probleme z tem(prebral veliko na forumih). Problemov je pa 100 različnih.   Je kak način da testiram 100% če je trdi disk zanič? ",
+    "user": "Koljik"
+  },
+  {
+    "message": "https://support.wdc.com/downloads.aspx?...  https://support.wdc.com/downloads.aspx?... ",
+    "user": "Han"
+  },
+  {
+    "message": "Na Microsoftovi strani dobiš orodje, ki ti potegne program za obdelavo ključka in željeni OS.  https://www.microsoft.com/en-us/downloa...  To orodje imamo vsi, ki se poklicno ukvarjamo z računalniki. Rufus in podobna sranja odpadejo.  Za obdelavo diskov imaš zastonj orodje Aomei disk  https://www.disk-partition.com/free-par...  Na drugem računalniku si naredi boot ključ in poženi boot iz ključka. Če je disk v redu, ga s tem orodjem urediš, pobrišeš vsebino in na novo postaviš particije v željeni velikosti (za sistem do 150GB). Ko boš isntaliral pa izbereš v menijo brisanje narejene particije in postavitev nove, instalacijski program ti bo naredil najmanj dve iz prve, ostalo pa pustiš.  https://www.disk-partition.com/free-par... ",
+    "user": "solatko"
+  },
+  {
+    "message": "Poizkusi sledeče: - zamenjaj SATA kabel, priklopi disk na kateri drugi SATA port na matični plošči in kateri drugi napajalni kabel, dobro stisni stisni vse konektorje - upgradiraj UEFI/BIOS plošče - kot so svetovali zgoraj poizkusi spremeniti SATA nastavitve v UEFI (AHCI, LPM) - poizkusi še bootati z live USB ključka z kakšno Linux distribucijo in poglej če morda Linux prepozna disk, kar je sicer malo verjetno, a vseeno   Razmišljanje: \"Tisti disk je pa pomoje USB s katerim instaliram Windowse. Drugace bi moral bit 320GB ce se prav spomnem\"  je napačno. USB ni na SATA, na SATA je tvoj disk, ki ga BIOS nepravilno prepozna (0.0GB). ",
+    "user": "srus"
+  },
+  {
+    "message": "-Sedaj bom testiral z tistim kar je Han predlagal, windows varianto.  \"Na drugem računalniku si naredi boot ključ in poženi boot iz ključka. Če je disk v redu, ga s tem orodjem urediš, pobrišeš vsebino in na novo postaviš particije v željeni velikosti (za sistem do 150GB). Ko boš isntaliral pa izbereš v menijo brisanje narejene particije in postavitev nove, instalacijski program ti bo naredil najmanj dve iz prve, ostalo pa pustiš.\"  -je to mišljeno da poiskusim inštalirat windowse na ta trdi disk na drugem računalniku, da vidim če prepozna?  -kable priključke in to sm preveril, vse dela. -kako lahko updejtam UEFI/BIOS plošče če nimam trdega diska? žal ne znam tega. - kaj so te SATA nastavitve, trenutno imam nastavljeno na AHCI, LPM pa nimam na izbiro  hvala za popravek o mojem razmišljanju :D bom poiskusil navedene stvari kar se da dobro  LP ",
+    "user": "Koljik"
+  },
+  {
+    "message": "- ",
+    "user": "solatko"
+  },
+  {
+    "message": "- ",
+    "user": "solatko"
+  },
+  {
+    "message": "- BIOS lahko upgradiraš direktno z USB ključka, za to ne potrebuješ OS, ali trdega diska - SATA nastavitve so v BIOS, tam kjer si nam poslal sliko ;-). Poglej sliko še enkrat pa boš videl kaj in kje je LPM. ",
+    "user": "srus"
+  },
+  {
+    "message": "srus - Bios lahko nadgradiš iz ključka, če znaš, drugače se ti pa zgodi da bios uničiš in, če nimaš prijatelja, ki zna to popravit, uničiš matično. Ne dajaj takih predlogov človeku, ki ni vešč običajne instalacije OS-a. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Tisti WD Data LifeGuard Diagnostics, ne zazna novega trdega diska :( Prav tako ga ni v Administrator tools > Computer Management > Disk Management.  Na tem starem računalniku niti v BIOS ne morem it, mi neke napake čudne meta vn(ampak ta problem imam že nekaj časa, tudi stari trdi disk je neki corruptan(baje ima neke slabe dela al neki podobnega))  če karkoli pomaga sem poslikal : https://imgur.com/a/kI0iM (označil vrstni red first > second > third) Tukaj piše da sta dva. kako je to mogoče?  Sem že nekajkrat inštalirau Windowse nisem povsem nevešč, nimam pa veliko pojma o teh stvareh, imaš prav. :D Ampak takih čudnih problemov še nikoli nisem ime, in neznam popraviti.  Moja naboljša ideja do sedaj je da uporabim star trdi disk namesto novega in kupim nov nov trdi disk :S Nevem ali sem to omenil, ampak na novem računalniku mi zazna stari trdi disk kot možnost pri inštalaciji novega Windosa ",
+    "user": "Koljik"
+  },
+  {
+    "message": "https://support.wdc.com/download/notes/... ",
+    "user": "Han"
+  },
+  {
+    "message": "Ali je kakšna razlika ali sem v DOS ali v Windowsih to pognal, kot sem omenil zgoraj, nekako ne morem v BIOSe na starem računalniku (vem same probleme imam :S)  Hvala za vse komentarje vseeno, da se ukvarjate s tem :D ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Seveda je razlika. Če BIOS disk vidi, bi ga moral tudi DLG za DOS. ",
+    "user": "Han"
+  },
+  {
+    "message": "Poiskusim to sedaj, čeprav imam probleme z BIOSi :D Je mogoče še kje spremeniti boot-option? ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Nova uganka, zakaj bi mi BIOS delal, če nimam priklopljenga novega trdega diska gor? če imam samo star trdi disk mi pride u BIOS.  Kako je to možno? počasi zgubljam živce -.- :D  LP ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Na starem računalniku si naredi boot ključek iz AOMEI - link imaš zgoraj - potegneš program dol, vstaviš ključek in pritisneš make boot usb in boš dobil celoten program, ki se bo zagnal iz boot-a.   disk priklopi in to orodje ti bo pokazalo če ga zazna, lahko ga formatiraš, postaviš particije, zbrišeš particije, skratka, disk moraš usposobit, da ga računalnik lahko prebere.  Bios se ne more postavit, če je sporna naprava.  Glede na zadni post, je ta disk zanič. ",
+    "user": "solatko"
+  },
+  {
+    "message": " Koljik je 23. nov 2017 ob 22:23 izjavil:Nova uganka, zakaj bi mi BIOS delal, če nimam priklopljenga novega trdega diska gor? če imam samo star trdi disk mi pride u BIOS.  Kako je to možno? počasi zgubljam živce -.- :D  LP   Novi disk ti preobremeni napajalnik, hehe. Šalo na stran, mogoče ti bo tole pomagalo. Glede na to, da ti drugi računalnik disk zazna, je morda problem v jumperjih.  https://community.wd.com/t/wd3200avjs-n... ",
+    "user": "srus"
+  },
+  {
+    "message": "srus - Bios bi se v takem primeru vseeno postavil, njemu se ne postavi, ker se sesuje test računalnika. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Ok poiskušam orodje AOMEI. sledim navodilom tukaj: https://technet.microsoft.com/en-us/lib...  korak \"12 = When you finish preparing your custom image, save it to the root of the USB flash drive.\" ne razumem točno kaj hoče. A to samo kopiram .exe file na USB.  Rufus orodje mi da napako \"Drive not ready\", \"The drive is not ready for use;its door may bo open\", kar na žalost ne vem kaj pomeni, in nekaj hitrih stvari kar sem pogledal na netu mi ni pojasnilo napake. Če klikam continue, mi dejansko zažene program. In tudi ko hočem naredit bootable USB ista napaka, isto continue konča in naredi bootable.  Se opravičujem ker toliko pišem, hočem samo natančno povedat kaj me matra. :D ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Ok spet en updejt z mooje strani.  Sm pobral dol program Windows 7 USB DVD Download Tool, ki si ga predlagal za bootable usb. imam .exe file programa AOMEI, ki sem ga z ImgBurn pretvoril v .iso (kar sem potreboval za bootable usb, razn če jaz to narobe razumem). In seveda mi ni hotelo naredit bootable usb s tem .iso-tom.  Kaj sem spregledal? Tudi Rufus ne more narediti bootable USB s tem .iso-tom.  LP ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Koljik - Če delaš z windows tool-om, potegneš orodje in potem označiš kateri sistem, te pa zna pri 7-ci vprašat za key, če ga nimaš, pač ne boš mogel naprej. Če delaš s programi iz partis-a, si poglej navodila, vendar boš z legalnimi orodji, težko naredil iso boot ključek, razen po teh navodilih  http://bootableusb.net/install-windows-... ",
+    "user": "solatko"
+  },
+  {
+    "message": "Koljik - Če delaš z windows tool-om, potegneš orodje in potem označiš kateri sistem, te pa zna pri 7-ci vprašat za key, če ga nimaš, pač ne boš mogel naprej. Če delaš s programi iz partis-a, si poglej navodila, vendar boš z legalnimi orodji, težko naredil iso boot ključek, razen po teh navodilih  http://bootableusb.net/install-windows-... ",
+    "user": "solatko"
+  },
+  {
+    "message": "Ko sem poiskušal naložit Win10 mi ni zaznalo diska. Takrat sem tudi opazil to napako/problem. Nevem kaj je drugače če poiskušam naložit Win7, kot si dal navodila. Je za bootable USB vedno potreben .iso?  LP ",
+    "user": "Koljik"
+  },
+  {
+    "message": "Koljik - Če boš iz microsoftove strani izbral OS, ki ga imaš in je legalen, ti bo postopek naredil iso ključek, potegneš dol orodje, ko te vpraša za instalacijo ali za poznejšo namestitev, izbereš pozneje, potem ti pa ponudi na izbiro DVD ali USB ključek, izbereš ključek in ti bo orodje samo naredilo ključek za namestitev.  Če pa hočeš drug sistem, pa moraš imeti registracijski ključ, če hočeš nadaljevati, oziroma ti bo to zahteval ob instalaciji, brez možnosti poznejšega registriranja.  Če imaš na novi plošči UEFI, si poglej, kakšen je postopek za legacy instal na tvoji matični. ",
+    "user": "solatko"
+  },
+  {
+    "message": "bi si sposodil tole temo  kupil disk prek bolhe, ga danes priklopim preko USB-ja, windowsi inštalirajo gonilnike, a disk ni zaznan. Grem pod disk management, je prazen.  Priklopim disk na SATA vodilo na matični, disk prepozna, a ko želim inštalirati windowse, le ta pravi, da ni nobenega diska na voljo. Potem kliknem nekaj in najdem disk z oznako X, ampak tisto kar sem kliknil ni namenjeno inštalaciji (ne spomnim se točno čemu, ampak neke vrste trobleshootingu).  Potem sem priklopil boot disk in ga tudi takrat nisem videl, poleg tega pa je sistem zelo počasi delal, čeprav je sistem naložen na SSD in se boota zelo hitro.  Je možno, da je disk mrtev? Malo čudno se mi zdi ne izključujem pa te možnosti. Pred nakupom sem tudi zahteval stanje iz crystaldisk info-ta, tako, da sklepam, da je disk delal.  Diska žal pred nakupom nisem sprobal, kar je tudi moja krivda in se zavedam, da sm ga biksal (se posujem s pepelom).  skratka, se komu kaj sanja?  Ko priklopim diske na staro stanje, spet dela tako kot mora. Problem je samo takrat ko priklopim nov disk.  Disk pa je WD caviar 320 GB ",
+    "user": "The Player"
+  },
+  {
+    "message": "Kaj pa kupujete tako robo:  https://www.liveleak.com/view?i=e87_151...  ;-) ",
+    "user": "srus"
+  }
+]

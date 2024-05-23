@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Ja, vem da je polno tem o tem... ampak nobena pretirano koristna.  Torej. Rabim bootable ključek za instal win8. In se s tem 'jajcam' že ene 2 dni.  Na razpolago imam winxp comp, pa linux comp. In, seveda, 8gb ključek (2 kom) pa iso.  Ne štekam pa ne štekam kje točno gre vse po zlu. Probala sem z winusb (linux) pa v cca 10ih urah ni napravil nič (niti zbrisal ni vsebine ključka). Pa z gparted... no go. Na winxp pa z IsoToUsb (takoj javi da ne more bootable ključka nardit), Windows 7 USB DVD Download Tool (gre do konca, in pol javi da ne gre bootable ključka narest) in YUMI (ne javi nobene napake, lepo nardi vse... ampak ključek se ne boot-a - črn ekran pa kurzor blinka gor). Diskpart ključkov niti ne vidi kot 'disk' ampak kot 'volume'... tko da tam tud nimam kaj žokat. Probala sem tudi na linux ključek v NTFS formatirat z bootable flag... pa na roke iso gor spravit (tako v linux kot v winxp) pa je bil rezultat tak kot z YUMI.  Any ideas? ",
+    "user": "Pithlit"
+  },
+  {
+    "message": "probaj z rufus. Še nikol meu težave s tem programom. ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Hmmm... zdej mi je kapnilo... a je možno da plata ne more NTFS ključka boot-at? Probam s FAT32 zdej. ",
+    "user": "Pithlit"
+  },
+  {
+    "message": "nope, ni to problem. naredi lepo z rufusom in bo delal. Če ne dela, imaš plato z buggy biosom. ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " hojnikb je 14. okt 2014 ob 17:24 izjavil:probaj z rufus. Še nikol meu težave s tem programom.  Hvala, bom... takoj ko Universal USB Installer konča s FAT32 ključkom (torej čez ene 45min... ja, class4 -_-). ",
+    "user": "Pithlit"
+  },
+  {
+    "message": "OK, z rufus je šlo skozi... pol pa \"disk error\" ampak nima veze, važno da je šlo. Hvala še enkrat. ",
+    "user": "Pithlit"
+  },
+  {
+    "message": "da te tale kjuček ne heca kej :) ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Kaj ni to najbolj enostavno, da spremeniš flag na ključku v boot in direkt prekopiraš iz iso na ključ? ",
+    "user": "Aston_11"
+  },
+  {
+    "message": "to nebo delal :) ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Meni je vedno? (no, z xp iso ni, od 7 dalje pa) ",
+    "user": "Aston_11"
+  },
+  {
+    "message": "z windowsi ? :) ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "As he said: http://rufus.akeo.ie/ If that doesn't help. You can use dd to wipe boot sector (plenty of tutorials, [1]), then format to ntfs, copy files from iso and mark partition as bootable.  [1] http://www.plop.at/en/winusbinstall.html ",
+    "user": "dz0ny"
+  },
+  {
+    "message": " Aston_11 je 14. okt 2014 ob 18:04 izjavil:Kaj ni to najbolj enostavno, da spremeniš flag na ključku v boot in direkt prekopiraš iz iso na ključ?  Ja. Še bolj enostavno je pa prvi post prebrat v katerem razložim da sem to že probala. Pa ne samo enkrat.  Pa nima veze, hojnik je rešu zadevo tko da nadaljnja debata nekako odpade... vsaj kar se mene tiče :P ",
+    "user": "Pithlit"
+  },
+  {
+    "message": "Postopek za naredit Windows Vista ali novejši bootable USB ključek je preprost: ključek formatiraš v FAT32če si ga formatiral na XPjih, poženeš x:\\boot\\bootsect.exe /nt60 y: /force (kjer je X: pogon, kjer imaš vpet ISO, Y: pa ključek; na Visti in novejših ta korak ni potreben)na ključek skopiraš vsebino ISO datotekeče se ključek slučajno ne boota, poženeš še x:\\boot\\bootsect.exe /nt60 y: /force /mbr (ta ukaz lahko poženeš že v 2. koraku, vendar lahko uniči datotečni sistem na ključku, če le-ta nima particijske tabele - če se to zgodi, preprosto še enkart formatiraš ključek) ",
+    "user": "ender"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Živijo!  Kateri router z multicast podporo priporočate? Rad bi Siol TV usposobil, da deluje preko WLANa.  Kakšne imate kaj izkušnje?  lp P ",
+    "user": "smejko"
+  },
+  {
+    "message": "Netgear 3500L na katerega vrzeš tomato in udpxy. Deluje stabilno, saj uporabljam sam. Je ga pa pri nas drazji kot v tujini.  Jutri bom sicer probal usposobiti cheap TP-link 1043 z DD-WRT in udpxy. Vendar nisme preveč optimistični za delovanje preko Wlana, ker frendu na starem wrt54 linksysu ne deluje preko wlana oz še hujše. Wlan kompletno onemogoči za ostale uporabnike v hiši, kdar TV vklopi.   Drugi kandidatio so drugače tudi 0 in E3000 od Linksys z tem firmwerom, vendar ne preverjeni od mene, vendar verjamem da delujejo z tomatom. http://tomatousb.org/download  Zavedat se moraš da če vzameš ruter z broadband chipsetom imaš na razpolago tomato, DDWRt ter ostalo. Če pa atheros chipset kot tp-link 1043Nd pa tomato odpade. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Kaj pa tole?  http://www.mimovrste.com/artikel/247000...  oz.  http://www.enaa.com/oddelki/racunalnist...  Kako je potrebno povezati router in modem? Je potrebno do routerja pripeljati 2 kabla, se pravi internet in tv?  lp ",
+    "user": "smejko"
+  },
+  {
+    "message": "Zavedat se moraš da če vzameš ruter z broadband chipsetom imaš na razpolago tomato, DDWRt ter ostalo.  @Pesimist: broadcom chipset ",
+    "user": "Gapi"
+  },
+  {
+    "message": "jeh broadcom.  Netgear 3700 ima atheros. Tak da ne reje. Samo za 3500L ti lahko trenutno garantiram da deluje kombinacija siol TV. Ostalo so le predvidevanja.  Asus pa ima broadcom tak da bi teoretično moralo delovati tako dobro ko na Liksysih, ampak spet predvidevanje.  Fora je da na Netgearl 3500L z DDWRT mi ne uspe sploh vzpostaviti udpxy, medtek ko z tomato easy. tp-link 1043ND pa mi je uspelo z DDWRT vzpostavit updxy in je delovalo. Wlana pa takrat nisem sprobal.  Tak da ni niti garantirano da vse kobinacije delujejo. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Oz kupi, probaj, če ti v 14 dneh ne uspe pošli nazaj. :) Čisto možno da gre z vsemi takimi ruteri, če prave nastavitve najdeš. hehe  če pogledaš sem http://www.dd-wrt.com/demo/Wireless_Bas...  network configuration > unbridged > multicast forwarding disabled, bi teoretično moralo delovati, ter blokirat multicast, da ne pride v wifi, isto ko na tomato. Tam se pač reče smart multicast filtering al nekaj takega, To bom jutri probal. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Ok sprobal zdaj tp-link 1043ND. Lahko spraivm TV skozi wifi kamot, vendar v tem primeru nimam interneta. Če pa imam internet pa nimam TVja, kar je neugodno.  http://www.dd-wrt.com/wiki/index.php/IP... Tu so navodila kak bi nej oboje usposobo, vendar se tu že zgubim Setup an additional VLAN ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Kupiš asus RT-N16 nimaš kaj falit ",
+    "user": "Vanadium"
+  },
+  {
+    "message": "RT-N16 nima UPnP media serverja. Kaj to dejansko pomeni? Pa če se ne motim ni dualband. Sicer je hardversko raketa...  Kaj pa recimo Netgear WNDR3700, v primerjavi z zgornjim? ",
+    "user": "MadMax"
+  },
+  {
+    "message": "Zanima če ima vsak router na katerega lahko upgrejdaš v DDRWT software potem omogočen multicast, da lahko streama preko VLCja na prenosniku...in če je dandanes še vedno dovolj močan rouret za multicast navaden roter brez N podpore, hvala!! ",
+    "user": "KTr1sk"
+  },
+  {
+    "message": "sem naročil tale modem z N podporo http://www.ebay.com/itm/251165073240?ss... ki gre tomato ali ddrwt gor in bom probal če bo šlo preko wifija http://www.silol.si/01/11/2012/t-2-ip-t... ",
+    "user": "KTr1sk"
+  },
+  {
+    "message": "Zanima če ima vsak router na katerega lahko upgrejdaš v DDRWT software potem omogočen multicast, da lahko streama preko VLCja na prenosniku  fino je da imaš dovolj močen router..jaz imam tplink 1043nd + openwrt, deluje ok..v mojem primeru z ddwrt ni šlo  ...in če je dandanes še vedno dovolj močan rouret za multicast navaden roter brez N podpore, hvala!!   navadna slika pokuri 600-800 KB/s oz hd okoli 1600-1800 KB/s tako da je navaden router dovolj.. v bistvu jaz si moram fiksno nastavit wifi na 24mbit, ker drugače se kocka slika / ven meče ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Men se ni dal zezat z upgrejdom linksysa. Za par eurov switch nabavu pa dela oboje. ",
+    "user": "kunigunda"
+  },
+  {
+    "message": "Porkadio!  Ko imam comp priključen preko routerja WRT160N (verzija 2), IPTV na compu včasih dela, včasih pa ne (bitni pretok je 0, slika je tema).  Port forwarding je na routerju pravilno nastavljen, omejitve prometa izklopljene. Tudi ko sem izklopil SP1 firewall, ni bilo razlike. Fiksen IP naslov mrežne kartice, preko katere laufa multicast, sem na routerju celo rezerviral v DHCP nastavitvah, da ne bi bil kaki drugi napravi, priključeni na lokalno omrežje. Da bi odpravil težavo, sem danes prosil T-2-jevega tehnika, da mi je na INNBOXu bridgal vse porte in tako router spremenil v switch.  Ima kdo idejo, kaj bi lahko bil vzrok občasnega nedelovanja?  V Windows Firewallu so nastavljene potrebne izjeme. TCP, UDP in IGMP so omogočeni. ",
+    "user": "slitkx"
+  }
+]

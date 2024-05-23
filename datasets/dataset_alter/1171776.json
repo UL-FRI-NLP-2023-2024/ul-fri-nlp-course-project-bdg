@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Prosim za pomoč, ker mi nič več ni jasno. Situacija:\n\n1. modem internetnega ponudnika, na katerega je obešen WRT54GL z DD-WRT (router 1), nastavljen na navaden AP mode, automatic configuration (+DHCP). Preko njega brez težav dostopam do interneta preko LAN in WLAN\n\n2. WRT54GL z DD-WRT nastavljen kot \"Client bridge\" (router 2) in brezžično povezan na (router 1) (+DHCP). Preko njega brez težav dostopam do interneta preko LAN (WLAN v tem načinu ne oddaja, niti ga ne potrebujem).\n\n3. WRT54GL z DD-WRT (router 3) nastavljen kot navaden AP in preko LAN povezan na (router 2). Nastavljen automatic configuration. Nastavljeno vse enako kot na (router 1), toda do interneta nimam dostopa ne preko LAN ne preko WLAN. Če na ta kabel priklopim laptopa, dostopa do interneta brez težav. Oziroma če direkt LAN kabel iz modema, ki gre drugače v (router 1) priklopim na tega, prav tako dostopam do interneta brez težav preko LAN in WLAN.\n\n4. WRT54GL z DD-WRT (router 4) nastavljen kot \"Repeater bridge\" in brezžično povezan na (router 3). Če imam modem priklopljen direkt v (router 3) dostopam do interneta brez težav, če pa imam modem priklopljen na (router 1), dostopa do interneta seveda ni.\n\nNikakor mi ni jasno, kje je problem. Glede na to, da \"internet preverjeno pride\" v wan port v (router 3) ne bi smela bit razlika ali je na drugem koncu tega kabla (router 2) ali modem.\n\nAli sem kaj zgrešil??",
+    "author": "monaco",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Predlagam, da greš TOČNO po teh navodilih:\n http://www.dd-wrt.com/wiki/index.php/Linking_Routers\n \nZadeva MORA delat. Preverjeno 3x v praksi z različnimi routerji. Obvezno TOČNO po navodilih.\n\nPa pri meni je bila enkrat težava v nedelovanju, ker sta bila routerja predaleč, čeprav sta se povezala. Tako da, prestavi router bližje in preveri, če deluje.",
+    "author": "sad",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Tole z večimi dhcp strežniki ni vredu, oz je recept za težave. Glede na napisano je problemov lahko precej. Načeloma rabiš primarni ruter, ki ima dhcp in dela nat na modem. Ta je povezan preko wan porta. Vsi ostali so povezani pa brezžično ali preko wifi. Na vseh , razen na prvem je priporočljivo, da izklopiš dhcp in onemogočiš wan, tako da samo primarni ruter dodeljuje IP-je. IP-ji ruterjev naj bodo na istem LAN segmentu.\n\nRačunalnik, ki bi se rad povezal na internet mora najprej od primarnega ruterja pridobiti IP na nastavljenem LAN segmentu, plus privzeti prehod (default gateway) mora biti IP od primarnega ruterja. S tega računalnika mora delati ping na ip od primarnega ruterja. To so osnovni pogoji, da bo delal internet. Za uspešno povezavo na internet rabiš še vpisana DNS strežnika, do katerih mora seveda delati ping. Če je to izpolnjeno, bo delal internet.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Routerji so trenutno še v isti sobi (ne bom postavil dokler zadeva ne bo delovala), tako da razdalja ni problem. Delal sem dejansko na tak način kot je v navodili.\n\nSituacija je takšna, da je/bo (router 1) v prvi hiši, (router 2) in (router 3) sta oba v drugi hiši, toda vsak na svoji strani, vmes je kabelska povezava, da nimam izgube signala med stenami. Iz (router 3) se vidi (router 4), ki je v tretji hiši.\n\nV prvi hiši se bodo preko wi-fi povezovali na (router 1), v drugi hiši preko wi-fi na (router 3) in v tretji hiši preko wi-fi in preko lan na (router 4).\n\nIpji routerjev:\n(1) 192.168.2.10 AP mode\n(2) 192.168.2.20 Client bridge\n(3) 192.168.2.30 AP mode\n(4) 192.168.2.40 Repeater bridge\n\nČe priklopim modem (oziroma sploh ni modem ampak Amisov Thomson gateway, ki sicer že deluje kot router in vanj ne morem posegat) direkt v (router 3), do interneta dostopam brez težav preko 3 in preko 4 (ki sta med sabo brezžično povezana).\n\nLogika v ozadju je: če preko wan porta v (1) pripeljem internet, lahko dostopam do njega preki (1) in (2). Enako potem če preko wan porta v (3) pripeljem internet, lahko do njega dostopam preko (3) in (4). Težava je zdaj v tem, da če v (3) pripeljem internet direkt od Thomsona, zadeva deluje, če ga pa na enak način pripeljem iz (2) pa zadeva ne deluje (če pa ta isti kabel priklopim direkt v laptopa pa deluje).\n\nVmes sem tudi (2) nastavil kot Repeater brige, pa sem še preko njega lahko dostopal do interneta preko wi-fi, toda iz (3) še vedno ni šlo.\n\nPred časom sem imel že doma podobno povezavo. Najprej Sinope gw, potem WRT54GL z dd-wrt kot AP, nato (skoraj 1km zračne razdalje, brez dodatnih anten!) WRT54G z dd-wrt kot Repeater Bridge in nanj preko kabla priklopljenega še Asusa 500g (Oleg) kot AP, vse ostalo avtomatsko, pa je delovalo brez težav, preko wi-fi sem se povezal na tistega, od katerega sem imel boljši signal (namerno različen SSID).\n\nBom probal še izklopit DHCP na vseh razen na (1). Default gateway vpišem na vseh 192.168.2.10? Kaj pa DNS enako?",
+    "author": "monaco",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "2 in 3 poveži samo preko LAN porta (ne WAN) in na obeh izklopi  DHCP. Vse notranje žične poezave naj bodo preko LAN portov. Logika je naslednja. Internet ima samo 1, vsi ostali pa morajo biti v lokalni mreži in se videti med sabo (ping). Vsak računalnik potem dobi IP od DHCP na 1. Se pravi dodeleni IP je v tvojem lokalnem segmentu, GW pa je IP od 1. DNS je lahko IP od 1, če imaš vklopljen lokalni DNS cache, drugače pa kar od providerja.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Imaš več DHCP serverjev?\n\nKej imaš NAT?\nJih imaš več?\n\nNisem vse odgovore prebral.\n\n - na prvi ruter daš NAT in DHCP (standardna konfiguracija ruterja, verjetno je dovolj, da resetiraš nastavitve na tovarniške, pa bo OK)\n - druga daj v AP mode (ne vem, kako DD-WRT temu točno pravi. Torej brez NAT in DHCP serverja.\n - ruterjem vsem (prvi ima itak po defoltu), nastavi ročne IP naslove, pa tako, da niso v DHCP območju\n - WLAN bridging pa boljkone kot si imel do zdaj.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Sem že ugotovil napako in zadeva deluje. \n\nV (3) sem moral priklopit v LAN1 in ne WAN port, pa DHCP sem pustil samo na (1). Na (2) in (4) je tako ali tako Repeater bridge in DHCPja ni, na (3) pa sem nastavil DNS Forwarder in vpisal IP od (1).\n\nHvala vsem za pomoč.",
+    "author": "monaco",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "dd-wrt in zaporedni routerji",
+    "content": "Če je bridge, potem nobenih IP storitev (kot DNS forwarder) ne rabiš.\n\nAmpak če dela... ne popravljat.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "message": "takle css mam in v IE lepo nardi glow efekt s filtri zdej bi pa rd se v FF neki podobnga spacal lahko enostavna odebelitev borderja, ampak potem morm povecat tut width, height za tisto razliko css:  body { behavior:url(\"cssfocusandhover.htc\"); }  input.text, input.button, textarea.memo { border: solid 1px #7489B8; }  input.button { background: #ebeaee; border-width: 2px;  filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#ffe4e3ee, GradientType=0) progid:DXImageTransform.Microsoft.Shadow(Color=#ff919899, Strength=1, Direction=135);  }  input.button:hover { margin: -1px -1px; filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#ffe4e3ee, GradientType=0) progid:DXImageTransform.Microsoft.Glow(color = blue, enabled = true, strength = 1);  }  input[type=button].button:hover { border-width: 3px; /* tuki pa neki like: width: width + 2px; height: height + 2px; v IE so propertiji lahko doloceni z: expression(nekJSexpr); */ }  tnx ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "... tolk o allmighty FF in CSS podpori ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": " tolko o tvojem allmighty cssju ",
+    "user": "SeTAr"
+  },
+  {
+    "message": "ja dej pametvat zdej invalid je manjkajoc htc fajl in pa filtri .. ja wow res rajs povej kako tist narest al dej pa gmah ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": " # Line: 0 Context : body  Property behavior doesn't exist : url(\"cssfocusandhover.htc\") # Line: 0 Context : input.button  attempt to find a semi-colon before the property name. add it # Line: 0 Context : input.button  Property progid doesn't exist : DXImageTransform # Line: 0 Context : input.button  Parse Error - DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#ffe4e3ee, GradientType=0) progid:DXImageTransform.Microsoft.Shadow(Color=#ff919899, Strength=1, Direction=135);    Očitno ne ti IE ne omogoča povečave besedila, zato naj ti razložim.   Property behavior doesn't exist : url(\"cssfocusandhover.htc\") Property progid doesn't exist : DXImageTransform  To pomeni da to ni standarden CSS. Pravzaprav mislim da je filter celo ActiveX, kar pomeni da bo stvar delovala le v Oknih (po možnosti čim novejših) in v IE. Če se ti splača delati stran le za samega sebe pa presodi sam. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "v IE5.5+ mi bo lepo naredu glow efekt, za ostalo bi pa rad alternativo -kar sm tut napisu nikjer nism napisu, da prcakujem, da mi bo tist filtr drgje delu  na kratko: narest CSS stil, ki bo v :hover naredu: premaknu element levo-gor za 1px (to je ze), odebelil rob za 1px (tut ze), povecu element za 2px - kompenzacija za tist premik tko, da zgleda kot, da se je naredla obroba na zunanji strani ali pa na nek drug nacin narest obrobo OKOL elementa ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "na kratko: narest CSS stil, ki bo v :hover naredu: premaknu element levo-gor za 1px (to je ze), odebelil rob za 1px (tut ze), povecu element za 2px - kompenzacija za tist premik tko, da zgleda kot, da se je naredla obroba na zunanji strani ali pa na nek drug nacin narest obrobo OKOL elementa  Tole je standardni CSS samo ti ne bo delal v IE.  Predvidevam da imaš tukaj neko tabelo za navigacijo. #navBar { vse lastnosti position: top: left: }  #navbar td { vse lastnosti text-size: width: height: border: margin: padding: }  #navbar td:hover { vse lastnosti za takrat ko bo miškin kazalec nad celico od tabele text-size: width: height: border: margin: padding: }  Morda imaš samo slike namesto tabele, ampak psevdorazred :hover dela tudi pri slikah (pravzaprav če ti uspe skombinirati z a:hover ti bo delalo v IE in v FF ter ostalih brskljalnikih).  Če ti gre za posebne efekte bi lahko uporabil tudi slike v celicah tabele za ozadje in samo zamenjal ozadje pri :hover. Skratka možnosti imaš veliko, samo pazi, ker IE podpira :hover samo pri sidrih (a). ",
+    "user": "CCfly"
+  },
+  {
+    "message": "hvala ... ampak:  kar si napisu mi je vse jasno ... za IE ze mam narjen ! kaj naj vpisem za width in height property stila ? seveda ne sme bit fiksen, ker niso vsi elementi tega tipa enak velki obnasanje morjo met pa enako  mislm tok simpl zadeva pa se je ne da narest s state-of-the-art browserjem  answer this and win yourself a drink ... samo css, ki me zanima:   input.button { border: solid 1px #7489B8; }  input.button { background: #ebeaee; border-width: 2px; }  input.button:hover { margin: -1px -1px; }  input[type=button].button:hover { border-width: 3px; /* tuki pa dinamicno povecat sirino in visino elementa za 1px */ }   in ocitno je ta stil samo za: < input style=\"button\" class=\"button\" ...>   se 1x hvala ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "PA folk dejte dati linke do vaših dejanskih strani in ne da krneki na pamet tle pišemo css!! Tako vam bodo lažje pomagali. Mislim, da IE ne podpira pseudo:classa :hover na nobenem elementu razen <A href=\"\"> (link)   BTW, to je narobe: style=\"button\" V atribut style se piše dejansko CSS kodo, npr: style=\"background: #ebeaee; border-width: 2px;\" ",
+    "user": "pivmik"
+  },
+  {
+    "message": "k bi usaj outline delu pa se to ne .. groza ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "Jaz bi enostavno določil širino in višino input gumbov, potem bi ga bi jo v :hover povečal.  input.button { border: solid 1px #7489B8; background: #ebeaee; border-width: 2px; width: 8em; height: 4em; }  input.button:hover { margin: -1px -1px; border-width: 3px; width: 9em; height: 5em; }  Lahko poskusiš tudi podati width: 105%; v :hover, če deluje ne da bi določil prvotno velikost v .button.   Aja pa ne uporabljal px, ker se ti bo stran ob različnih velikostih fontov oblikovno sesula. em je relativna enota glede na velikost fonta in je nekako najboljša izbira. Kakšna je podpora za em v IE pa ne bi vedel. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "outline dela. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "fiksne vrednosti sirine/visine ne pridejo v postev, procentualne velikosti tut ne glede em bom pa se pogledu  outline ti dela v FF 0.9.1 ? meni ne  (za vsak slucaj se posebi navedeni propertiji)  input { outline: blue solid 5px; outline-color: blue; outline-style: solid; outline-width: 5px; }  clo pise, da ni podprt:  w3schools css reference  bo zgleda res edini 'efekt' v :hover gumba boldanje fonta .. yipee ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "Aja ups tist je bil outset pri border. Moral bi probati za outline, samo na žalost nimam kaj dosti časa (Poslovne funkcije ). Res ne vem zakaj ne bi določil ustrezne začetne širine z relativnimi enotami. Ponavadi je uporabniški vmesnik lepši če so gumbi podobnih velikosti. Če se boš s tem ukvarjal naslednji teden po torku mi lahko pošlješ link ali pa podrobnejši opis problema, pa se bom malo pozabaval s tem. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "se tole o  outline na eni strani bojo taki gumbi, na drugi drugacni, pa tut razlicni na eni strani - obnasanje mora bit pa za vse enako za vsak gumb pa ne mislm pisat stila - ubije smisel css-ja  aja pa tist \"-moz-outline\" tut ne dela v FF mogoce dela za 'a' al pa kak drug element .. za input ne dela ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "Imaš prav outline ne dela.  Našel sem pa tudi tole: IE6 SP1 does not support the following at all: - child selectors - adjacent sibling selectors - attribute selectors - :first-child psuedo class - :lang psuedo class - :before and :after pseudo classes - inherit - min-width - max-width - min-height (is supported but way too crappily) - max-height - content - quotes - counter-reset - counter-increment - marker-offset - background-attachment - font-size-adjust - caption-side - outline - outline-width - outline-style - outline-color To seveda samo uradno, ker je v W3C test suite zadeva rahlo hujša.  Se vidimo po torku. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "v Operi mi lepo dela  tole ma zeljen efekt:  input.button:hover { margin: -1px -1px; }  input[type=button].button:hover { border-width: 3px; } ",
+    "user": "Lee_Nover"
+  },
+  {
+    "message": "Zakaj sploh rabiš type=button, saj tako uporabljaš class-e. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "\"css hack\" zato, da se tist stil uporab v mozz in ostalih browserjih, v IE bo pa itak glow filter ",
+    "user": "Lee_Nover"
+  }
+]

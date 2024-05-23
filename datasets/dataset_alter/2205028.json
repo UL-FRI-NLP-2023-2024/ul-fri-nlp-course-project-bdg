@@ -1,0 +1,20 @@
+[
+  {
+    "ctx": "VPN na dd-wrt - kaj sem spregledal?",
+    "content": "Router z dd-wrt v službi (T-2), VPN dela normalno. Doma isti router z istim dd-wrt (Telemach), praktično enake nastavitve, VPN dela samo znotraj omrežja (torej ko sem na LAN se poveže), izven pa ne.\nVPN mislim da je nastavljen pravilno (dela z LAN omrežja), torej router ima 192.168.1.1, dhcp je nastavljen npr. na 192.168.1.2 do 49, vpn serverju sem dal cifro 50 v istem subnetu, vpn klienti gredo pa od 51-55  (max 5). Tudi user geslo je ok, recimo \"test * test123 *\", s presledki, brez posebnih znakov in velikih črk.\nPo branju raznih tutorialov sem naletel na dve možnosti:\n1. port forward na router, port 1723 (dal forward na 192.168.1.1 in na 192.168.1.50), pa ne pali\n2. kabelski modem Thomson Thg-540 ne spusti porta skozi, ampak se ne da nič štelat (ali pa provider blokira).\nKaj sem spregledal?",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "VPN na dd-wrt - kaj sem spregledal?",
+    "content": "Če sem prav razumel se od doma povezuješ v firmo ?\nNe razumem kaj misliš z tem \"VPN dela samo znotraj omrežja (torej ko sem na LAN se poveže), izven pa ne.\"\nČe mal streljam na slepo:\nNajvečkrat je težava da je port 1723 zaprt, in posledično vpn ne deluje.\nKakšen imaš IP range v firmi in doma, da ni isti ?  (ne sme biti isti).",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN na dd-wrt - kaj sem spregledal?",
+    "content": "A pod Security/VPN Passthrough imaš vse na enable?\nPa kot je rekel Wild, Port Forwarding za port 1723.",
+    "author": "Alioth",
+    "author_level": "Pripravnik"
+  }
+]

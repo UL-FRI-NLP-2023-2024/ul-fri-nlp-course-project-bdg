@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Lep pozdrav ! Spet rabim malo pomoči ...  Rad bi spravu PROGRESS Bar v eno od polj STATUS BAR-a , kadar se kaj dalj časa dogaja( berem neke EXCELOVE tabele, ali prenos podatkov med mdb .....  A se to spolh da PROSIM .... ",
+    "user": "strel"
+  },
+  {
+    "message": "A ja še to, fajn bi blo če bi progress bar zgledal nekako tako kot v internet explorerju, sploh lahko čist tak. ",
+    "user": "strel"
+  },
+  {
+    "message": "Zveš v četrtek... ko pridem domov ",
+    "user": "Lunik"
+  },
+  {
+    "message": "maš eno finto dej vse statuse v picturebox, pol pa delaj normalno!!   PS. ne pozab na doevent komando ",
+    "user": "Monster"
+  },
+  {
+    "message": "Če koga to zanima sem našu točno to kar rabim sam mi ni jasn tole z hwnd pa še kej.Zna gdo tole mal bol razložit.   This tip was written by Chris Eastwood (www.codeguru.com/vb/) To use this tip add a form with a progress bar, a status bar and a command button on. Copy the following code into the form's General Declarations procedure:  'Declarations ' ' API Declarations ' Private Declare Function SetParent Lib \"user32\" (ByVal hWndChild As _ Long, ByVal hWndNewParent As Long) As Long Private Declare Function SendMessageAny Lib \"user32\" Alias \"SendMessageA\" _ (ByVal hwnd As Long, ByVal msg As Long, ByVal wParam As Long, lParam _ As Any) As Long  ' ' API Types ' ' RECT is used to get the size of the panel we're inserting into ' Private Type RECT Left As Long Top As Long Right As Long Bottom As Long End Type  ' ' API Messages ' Private Const WM_USER As Long = &H400 Private Const SB_GETRECT As Long = (WM_USER + 10)   Private Sub ShowProgressInStatusBar(ByVal bShowProgressBar As Boolean)   Dim tRC As RECT  If bShowProgressBar Then ' ' Get the size of the Panel (2) Rectangle from the status bar ' remember that Indexes in the API are always 0 based (well, ' nearly always) - therefore Panel(2) = Panel(1) to the api ' ' SendMessageAny StatusBar1.hwnd, SB_GETRECT, 1, tRC ' ' and convert it to twips.... ' With tRC .Top = (.Top * Screen.TwipsPerPixelY) .Left = (.Left * Screen.TwipsPerPixelX) .Bottom = (.Bottom * Screen.TwipsPerPixelY) - .Top .Right = (.Right * Screen.TwipsPerPixelX) - .Left End With ' ' Now Reparent the ProgressBar to the statusbar ' With ProgressBar1 SetParent .hwnd, StatusBar1.hwnd .Move tRC.Left, tRC.Top, tRC.Right, tRC.Bottom .Visible = True .Value = 0 End With  Else ' ' Reparent the progress bar back to the form and hide it ' SetParent ProgressBar1.hwnd, Me.hwnd ProgressBar1.Visible = False End If  End Sub  Private Sub Command1_Click() 'Call the function Call ShowProgressInStatusBar(True)  'Do something in the progress bar For i = 1 To ProgressBar1.Max ProgressBar1.Value = i Next i  End Sub   ",
+    "user": "strel"
+  },
+  {
+    "message": "jah tole so pa API funkcije. o tem (ža) nimam pojma  ",
+    "user": "Lunik"
+  }
+]

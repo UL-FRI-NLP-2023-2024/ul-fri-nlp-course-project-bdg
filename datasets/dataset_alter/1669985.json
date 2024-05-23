@@ -1,0 +1,224 @@
+[
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Prosim za pomoč. V kratkem dobim SSD disk 2,5\" SSD Kingston V+200 7 mm 60 GB, na katerega bi rad preselil operacijski sistem Win7. Kako se naj lotim zadeve, ker ne morem delati celotne kopije diska. Vgrajen imam namreč 500 GB disk, razdeljen na tri particije in na particiji C: se nahaja operacijski sistem ter nekateri programi, kar skupaj zaseda cca 240 GB.\nHvala vnaprej!",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Najprej pobriši čimveč zadev iz C particije oziroma naredi tako da bo zasedenih največ 40-45 GB\n\nNato greš desni klik na my computer in izbereš manage in nato disk management.\n\nNajdi disk \"C\" in nato izberi \"shrink\" volume. Kot novo velikost vpiši 60GB oziroma raje še malo manj.\n\nKo bo gotovo lahko z priloženim programom (dobiš zraven kingstona in dela dobro) narediš clone diska. \n\nZamenjaš diska in to je to.\n\nMislim da bi se dalo tudi enostavneje, saj naj bi ta program od kingstona znal tudi sam skrčiti nosilec. V vsakem primeru mora biti korak krčenje osnovne (c) particije (pa ne točno na 60GB, saj rabi obvezno nekaj praznega prostora).\n\nŠe bolj pa priporočam novo instalacijo in pravilno kofiguracijo windows za uporabo z SSD-jem.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Hvala za navodilo! Ko dobim disk in se lotim zadeve, bom poročal o rezultatu. Lahko pa da bom kaj \"zaštrikal\"-takrat se priporočam za nadaljnjo pomoč. Še tole: obstoječi disk ostane vgrajen in bo namenjen v glavnem multimediji in raznim programom ter podatkom.\nPa še nekaj me zanima: obstaja možnost, da iz sedanjega diska C:, kjer je razen operacijskega sistema še množica drugih stvari, preselim na novi SSD disk le operacijski sistem? S tem bi si namreč prihranil veliko dela. Ali pa naslednja varianta: Na novi SSD disk instaliram WIN 7 32, nato pa pobrišem dosedanji WIN 7 32 na starem disku. Je to izvedljivo?",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Še najboljša verzija je, da na ssd namestiš na frišno sistem. In potem s starega sistema vlečeš podatke, ki jih potrebuješ, nato pa še stari disk formatiraš oz. pripraviš, da bo namenjen samo podatkom.\nŠe prej pa poskrbi, da bo ahci vklopljen v biosu, ker kasneje bo malce težje (ne pa nemogoče) nastaviti, ko je sistem že nameščen...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Pri 7-ki gre to (AHCI) dokaj gladko. \n\nVseeno pa tudi jaz priporočam novo nastavitev in prenos samo potrebnih podatkov. 7-ka se namreč ob instalaciji na SSD že sama skonfigurira malo drugače.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Ja, gre...ampak, ročno pa sedmica ne nastavi biosa, ga moraš sam.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Najboljše je frišna inštalacija, da se Winsi pravilno nastavijo za SSD... Recimo TRIM je zelo pomembna stvar. Če boš kloniral obvezno ročno preveri, da če je TRIM vklopljen.",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik ngc2392 pravi:\n Ja, gre...ampak, ročno pa sedmica ne nastavi biosa, ga moraš sam.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nItak da ne, govorim o tem da se sistem normalno zažene če prestaviš na ahci način. Pri XP-jih je namreč to malo težje.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Še nekaj vprašanj se mi poraja: v katerem trenutku prestavim BIOS na AHCI mode? V trenutku, ko priključim SSD disk ali šele ko nanj instaliram WIN 7? Kakšna je pravzaprav funkcija AHCI?\nHvala za odgovore.",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "AHCI obvezno vključi pred inštalacijo Windowsev. Če ga vključiš kasneje je velika možnost da ob zagonu dobiš BSOD in da se sistem sploh ne bo naložil (razen če spet nazaj izklopiš). Je pa to potrebno za razne advanced funkcije, kot na primer TRIM (za SSD) in native command queueing (za HDD).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Poskusil sem vklopiti AHCI opcijo v Biosu, vendar mi je računalnik javil nekakšno napako (nisem uspel videti), nakar je v SAFE modu predlagal popravilo (repair), ki pa ni prineslo nobene spremembe. Tik preden bi se naj štiri raznobarvne pikice združile v logo, sistem zablokira, nakar se resetira in zadeva se ponovi. Sem mogoče kaj spregledal, kar še bi moral nastaviti v Biosu? SSD diska sicer še nimam priključenega.",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Saj sem lepo napisal, da če na obstoječem Windows sistemu naknadno vklopiš AHCI, da se ti najverjetneje sistem ne bo zagnal.\nTo nima nobene veze s tem, ali že imaš vgrajen SSD ali ne, saj ta nastavitev velja za vse SATA naprave - torej tudi za trenutni HDD disk.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Hvala, sedaj mi je \"potegnilo\"! Upam, da jutri dobim SSD, nakar se bom pozabaval z namestitvijo.",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Uspelo mi je brez večjih težav zmanjšati particijo C: na velikost 50GB, nato sem tudi brez težav spravil vsebino C:-ja na novi SSD. Pri tem sem uporabljal program Aomei Partition Assistant. Nakar sem pred ponovnim zagonom računalnika v Biosu nastavil AHCI mode, nisem pa ugotovil, kje se nastavi TRIM. Toda ko sem z F10 shranil nastavitve in spustil zagon naprej, se je tik pred pojavom logota računalnik za trenutek ustavil, nakar je za cca pol sekunde pokazal modri zaslon (ni se dalo prebrati, kaj je pisalo) in nato je sledilo obvestilo, da Bios podpira le HDD diske in CD pogone (oziroma nekaj podobnega). Ni mi jasno, kaj to pomeni, saj je vendar opcija AHCI na razpolago.\nMoja konfiguracija je naslednja: grafična-ATI Radeon HD 4670, Matična je Gigabite GA-EP45 UD3LR s štirijedrnim Intel procesorjem. Windovsi 7 so legalni! Na plošči je 6 SATA2 priključkov.\nHvala vnaprej!",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Torej naredil si točno to kar so ti svetovali da ne naredi. Ti si najprej dal winse gor in vse ostalo šele potem si omogočil AHCI.",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Poskusil sem prestaviti Bios še preden sem naložil Winse na SSD, vendar to tudi ni bilo možno, ker se mi ravno tako računalnik ni zagnal.",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Uspelo mi je zagnati Winse tako, da sem vz ukazom regedit spremenil nastavitev v sachi na 0, nato pa restartal računalnik ter v Biosu nastavil AHCI. In zadeva je \"zalaufala\"! Muči me le še nastavitev TRIM. Mi lahko kdo pomaga???",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "How do I know if TRIM is working in Windows 7?\n\nIn the Elevated command Prompt windows, type the following:\n\nfsutil behavior query disabledeletenotify\n\n\nResults explained below:\nDisableDeleteNotify = 1 (Windows TRIM commands are disabled)\nDisableDeleteNotify = 0 (Windows TRIM commands are enabled)\n\nEvo;\nhttp://forum.corsair.com/forums/showthread.php?t=86403\n\nPoglej tudi, če je avtomatski defrag izključen!",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Najlepša hvala! Zadeva je uspela! Test učinkovitosti delovanja diska je narasel iz 5,8 na 7,4. Pagefile sem izklopil, tako da mislim, da bo zaenkrat vse funkcioniralo. Pozdrav vsem, ki ste pomagali!",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Našel sem po moji oceni zelo uporabne napotke v hrvaščini za nastavitve pri instalaciji SSD diska. Če bo komu prišlo prav, bom vesel. LINK",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Si preveril, če so particije po kloniranju  poravnane?\n\nhttp://www.softpedia.com/get/System/Hard-Disk-Utils/Disk-Alignment-Test.shtml",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Ja-preveril sem in so poravnane, čeprav mi ni najbolj jasno, kaj to pomeni.",
+    "author": "Janez_Krajnski",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Js se vseen ne znajdem, mi lahko kdo to nardi? Imam pa asus zenbook ux32vd, ki ima noter oba diska",
+    "author": "jaka6",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Janez_Krajnski pravi:\n Ja-preveril sem in so poravnane, čeprav mi ni najbolj jasno, kaj to pomeni.\n\t\t\n\t\tKlikni za razširitev\n\t\nhttp://superuser.com/questions/225936/what-does-it-mean-to-align-partitions",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Pozdravljeni, prosim za pomoc pri instalaciji SSD diska.\n\nImam sistem i7 z maticno Gigabyte EX58 UD4 in prikljucenimi tremi diski (en sistemski WD Raptor in 2 WD black). V koncni fazi, bi rad imel sistem z dual bootom - bootal bi po eni strani na novo instalirane win 7 homepremium in po drugi strani na stari win7 homepremium. Do sedaj sem sistem laufal brez AHCI modea, saj so bili vsi diski navadni in so mi taksen sistem postavili ze v trgovini.\nAli je mozno, da bi laufal dualboot in kako naj to cimbolj enostavno izpeljem? Rad bi, da mi treh diskov ne bi bilo potrebno formatirati.",
+    "author": "picero",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Najenostavneje je da spraviš vse na AHCI. Microsoft je v ta namen pripravil posebno orodje: link: http://go.microsoft.com/?linkid=9741862\n\nZaženi sistem iz starega diska in klikni zgornji link. Odpri datoteko, počakaj da naredi, restartaj računalnik in v biosu prestavi na AHCI.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Hvala lepa, uspelo... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n  Srecno 2015!\n\nSedaj moram pa se malo sistem zoptimizirat, a ne? Izklopit defrag in index creating, se kaj drugega?",
+    "author": "picero",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Z defragom ni nič narobe, saj imaš navadne HDDje. Defrag je problematičen na SSDjih.\n\nDefiniraj kaj je za tebe optimizirat. Če boš izklopil index, bo kvečjemu slabše (pri iskanju). Če bi pa rad pridobil na prostoru, potem pa zraven indeksiranja izklopi še naslednje stvari: hibernate, paging in system restore.\n\nEDIT: sem površno prebral tvoj prejšnji post, dejansko greš na SSD. Jaz imam tudi SSD in imam vklopljeno vse kar sem zgoraj naštel (razen defrag, katerega mi je že OS samodejno izklopil). Če imaš veliko RAMa, lahko z izklopom hibernate veliko pridobiš (na prostoru). Če uporabljaš hibernate, potem ga seveda pusti vklopljenega. Skrb da bi \"izrabil\" SSD s preveč pisanja po njem je odveč, so v praksi SSDji _zelo_ vzdržljivi: https://slo-tech.com/novice/t629088",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Saj piše da seli na SSD. Glede na to da bo sistem na novo instaliran niti ne bo potrebno kaj dosti dela. Paging bi pa jaz pustil, saj zna v kašni situaciji biti problem. Hibernate stran, restore pa po želji. marsikomu pride prav (jaz ga imam sicer izklopljenega).\n\nZakaj sploh dual boot? Če je na starem sistemu kaj takega kar se ne da preselit, je boljša varianta da se mounta stari disk na virtualca.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Glede na to, da ima več diskov, lahko paging izklopi na SSDju in ga vključi na enem izmed HDDju (recimo najhitrejšem). Pri hibernate pa tega žal ne gre narediti, mora obvezno biti na primarnem sistemskem disku.\n\nPa z virtualcem se tudi strinjam, bom verjetno tudi jaz to storil, ko bom nabavil nov PC.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Skoraj 4 leta star hoferjev laptop je postal počasen kot kak... \nDisk je 750gb in 4 rama ter sedmica 64 gor. Disk ni niti polovico zadesen\nZato bi zadevo poskušal narediti hitrejšo z dodatnim SSD ki bi ga dal na mesto DVD enote. \nMoram kupiti še kaj posebenega poleg že priloženega 9,5mm adapter\nKupil bi recimo tole: \nhttps://www.mimovrste.com/ssd-diski/crucial-25-ssd-trdi-disk-256-gb-mx100-25-sata3-7-mm?v=665500\nPredlagate kaj boljšega? Več kot 256 zaenkrat zagotovo ne rabim...\nNajbrž bi tudi večino \"arhiva\" (ki bi ga uredil da bi pobrisal du/triplikate) lahko spravil na 256.\n\nKako potem prenesti licenčni W7 in programe na SSD. Sedaj so najbrž(vsaj OS oziroma  večina) na D particiji.",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "MX100 je zelo dobra izbira. Jaz sem nedolgo nazaj prenesel sistem iz Samunga 840 na točno tak disk kot ga navajaš in dela, po testih pa tudi opazno hitreje (v živo je razliko težko opaziti).\n\nGlede prenosa imaš dve opciji: \n\n-kloniranje diska: dobiš nekje program, ki omogoča kloniranje (recimo Acronis True Image), priklopiš oba diska, poskrbiš da na starem ni zasedno več kot 200GB (ker seliš na 256gb disk), poženeš kloniranje, ko konča odstraniš stari disk in preveriš če dela in če je vse ok. Stari disk nato formatiraj, saj se boš sicer lovil kateri je kateri.\n\n-reinstalacija sistema. Če se ne motim imajo hoferjevi laptopi recovery datoteke na ločni particiji. Lahko narediš enako kot zgoraj, samo da potem še na novem disku zaženeš recovery, kar ti bo postavilo sistem v tako stanje, kot je bil ob nakupu. Starega seveda ne pobrišeš, saj boš rabil podatke, ki so gor.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Ja, D particija je recover, velika je 16,4 Gb.\nPotem bi rad samo še nekako poskrbel da certifikata uporabniška imena in gesla nekako brez večjih komplikacij pridejo na SSD. \nZaznamki pa bodo najbrž se že našli (glede na to da so se sami  znašli na novem GSM) \nNajbolj me moti, ko računalnik zbudim, da včasih traja minuto da chrome kaj zmelje. Tudi včasih med preklopi office chrome melje da lahko kavo skuham vmes.\nMilisekunde katere merijo na testih me ne ganejo",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Jaz bi najprej probal klon obstoječega sistema na ssd.  Če ne bo ok, lahko še vedno daš recover.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Potrebuješ še SATA HD enclosure, da boš lahko disk ustavil noter. Priporočam še en navadni DVD USB external enclosure, kamor spraviš DVD enoto in jo priklopiš preko USB, ko jo potrebuješ (1-2x na leto). \n\nPriporočal bi ti, glede na to da si že pri temu delu, da Windows 7 naložiš na novo. Ob enem moraš v BIOSu spremeniti metodo delovanja SATA bus-a v AHCI.\n\nPa še premisli o zamenjavi diska HDD v DVD enoto SSD pa kamor je bil sedaj HDD (saj ne da igra kak pomen, bolj zaradi estetike \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n)\n\nLP\nTorus",
+    "author": "Torus",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Hvala vsem za odgovore.\n\nEvo, sem preselil, po mojem dokaj uspesno. Instalacija Winsow je sla na novo, priporocam vsem, ker se tako iznebite stare sare. Dual boot bom pa pustil iz razloga, ker sem se vedno kaj nasel, kar sem morda pobrisal. Stari disk torej ostane v masini tak kot je. Ni pa to klasicen dualboot, kjer winsi venomer tezijo kaj hoces bootat. Moja plata GB EX58 UD4 namrec podpira, da lahko, ce to zelim, izberem s katerega diska se racunalnik boota. Pa stari disk bo sluzil v skrajnih primerih za kaksen test nove programske opreme.\nSicer pa me zanima kaj pravite na izmerjene hitrosti diska (Crucial MX100 256 GB), je to OK, ali je potrebno se kaj zoptimizirat:\n-----------------------------------------------------------------------\nCrystalDiskMark 3.0.3 x64 (C) 2007-2013 hiyohiyo\n                           Crystal Dew World : http://crystalmark.info/\n-----------------------------------------------------------------------\n* MB/s = 1,000,000 byte/s [SATA/300 = 300,000,000 byte/s]\n\n           Sequential Read :   273.780 MB/s\n          Sequential Write :   267.767 MB/s\n         Random Read 512KB :   260.581 MB/s\n        Random Write 512KB :   265.353 MB/s\n    Random Read 4KB (QD=1) :    28.233 MB/s [  6892.9 IOPS]\n   Random Write 4KB (QD=1) :    75.883 MB/s [ 18526.0 IOPS]\n   Random Read 4KB (QD=32) :   184.521 MB/s [ 45049.2 IOPS]\n  Random Write 4KB (QD=32) :   196.232 MB/s [ 47908.2 IOPS]\n\n  Test : 1000 MB [C: 15.6% (37.1/238.4 GB)] (x5)\n  Date : 2015/01/07 14:21:57\n    OS : Windows 7 Home Premium [6.1 Build 7600] (x64)",
+    "author": "picero",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "SSD disk-preselitev operacijskega sistema",
+    "content": "Nimaš kaj optimizirat, pač SATA 2 je ozko grlo (300 MB/s). Če bi imel SATA 3 bi šlo malo hitreje. V vsakem primeru pa je precej hitreje kot prej  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

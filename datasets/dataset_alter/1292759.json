@@ -1,0 +1,44 @@
+[
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "Rad bi zvezal 4 enake diske po 2 v Raid 0. Ob tem imam še sistemski disk ter še enega za druge zadeve. Ostane še dvd-rw.\n\nKer tega še nisem počel, me kakopak zadeva zafrkava.\n\nNa matično sem te 4 diske priklopil na 4 sata 6gb/s porte, ostale 3 zadeve (2 diska ter dvd-rw) pa na 3 od preostalih 4 sata 3gb/s porte.\n\nKo skočim v Bios, vidim le 2 od 4 diskov na sata 6gb/s priključkih ter ostale 3 naprave. Ko se windowsi zaženejo, sploh ne vidim teh 2 diskov, ki sta na sata 6gb/s.\n\nKolikor sem pregledal navodila matične, 2 6gb/s priključka pripadata Marvell kontrolerju, 2 pa Intel. \n\nNačeloma mi je vseeno na katere priključke (3 ali 6gb/s) je kaj priklopljeno (vsaj kolikor sem brskal po internetu, ne-SSD diski tako ali tako ne dosegajo teh hitrosti), rad bi samo, da zadeva dela.\n\nObenem v navodilih piše, da naj držim CTRL+I ob zagonu za neke nastavitve (setup) raid-a vendar se ne zgodi nič\n\nKje ga lomim?",
+    "author": "sergio",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "V BIOS je nastvitev načina kontroleja (verjetno ločeno za Intel in Marvell kontroller).\nTam mora biti \"RAID\".\n\nČe prej ni bil, to 99 Windows ne bo več delal. (torej če če spremeniš način na kontrolerju, kjer je sistemski disk).\n\nPovej dejansko stanje (ako, ki deluje, torej da se Windows zažene), pa ti bomo dalje svetovali.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "Preden se začnemo še bolj poglabljati v zadeve, specifikacije matične so tukaj:\n\nhttp://uk.asus.com/Motherboards/Intel_Socket_1155/SABERTOOTH_P67/#specifications\n\nKjer piše:\n\nIntel&#174; P67(B3) chipset :\n2 x SATA 6Gb/s port(s), brown\n1 x eSATA 3Gb/s port(s), black\nSupport Raid 0, 1, 5, 10\nMarvell&#174; PCIe SATA 6Gb/s controller : *1\n2 x SATA 6Gb/s port(s), gray\nJMicron&#174; JMB362 controller :\n1 x Power eSATA 3Gb/s port(s), green\n1 x eSATA 3Gb/s port(s), red\n\nJe možno, da potem lahko samo 3 diske uporabim za raid in moja želja s to ploščo sploh ni izvedljiva?",
+    "author": "sergio",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik sergio pravi:\nSupport Raid 0, 1, 5, 10\n\t\t\n\t\tKlikni za razširitev\n\t\n\nČe podpira RAID 10 (1+0) potem mora delovat v načinu 4h diskov. Če ti niti v windowsih ne prikaže vseh diskov potem je nekje nekaj \"onemogočeno\". Poglej v BIOS najprej koliko kanalov naj bi bilo omogočenih oz. vključi vse porte.\n\nEdit: preveri kako delujejo eSATA ker to so vhodi namenjeni zunanjim napravam, sicer načeloma bi moralo dleovat ni pa nujno. \n\nEdit2: z internim kontrolerjem verjetno lahko povežeš samo 3 diske (načeloma 1+0 lahko furaš tudi s 3 diski) ker ima samo 3 porte. Načeloma če ti uspe vse diske prikazat v windoesih lahko rešuješ s software RAIDOm (isto sranje oz. mogoče celo bolje kot tile poceni kotntrolerji).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "To imajo čudno napisano. Malo nižje namreč piše:\n4 x SATA 6Gb/s connector(s)\n4 x SATA 3Gb/s connector(s)\n\nTorej, fakeRAID (tako pravijo RAID funkciji osnovne plošče) deluje (razen redkih izjem) le v okvirju istega kontrolerja.\n\nTorej:\nRAID diske daj v črne porte (4 so, če pravo sliko gledam).\nSistemskega daj v rjavega.\nDVD daj v rjavega (v sivem baje ne dela).\nPreostali disk v sivega.\n\nSe Windows zažene? Če ne, je brezveze dalje it, ampak prvo treba to rešiti.\nČe Windows dela, treba v BIOS-u način za 4 črne porte spremeniti v \"RAID\".\nKje točno je to v BIOS nastavitvah ne vem, pač preglej vse menije. Naenkrat spremeni samo eno stvar!\n\nZa pivo pa ti preberem navodila, pa povem kje se nastavi. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "Kot je rekel Utiševalec, lahko tudi Windows RAID finkcijo uporabiš, ki ima prednosti:\n - deluje na vseh kontrolerjih in diskih\n - lahko diske na drug PC preneseš in bo delalo (zaradi prve točke) - to je pomenbno, če ti matična crkne ali kaj podobnega, pa nimaš backupa podatkov nikjer drugje, le na RAID diskih\n\nSlabosti:\n - vse verzije Windows ne podpirajo vse možnosti\n - mislim da ne podpira RAID 1+0 (ponekod znano kot RAID 10)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Sabertooth P67 in raid 0",
+    "content": "Ok, hvala zaenkrat, bom sprobal tole, če pa še ne bo šlo, bomo pa naprej ob pivu govorili ",
+    "author": "sergio",
+    "author_level": "Fizikalc"
+  }
+]

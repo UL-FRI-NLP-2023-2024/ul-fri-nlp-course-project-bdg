@@ -1,0 +1,114 @@
+[
+  {
+    "message": "Na prenosnik (160GB disk, 4GB ram) želim namestiti tako Ubuntu kot Win7. Zanima me, na kak način priporočate, da si razporedim prostor. Ubuntu bi uporabljal kot primaren OS, Win7 bi ostal še le za .net programiranje, poganjanje officeov ipd (igre odpadejo). Podatki (filmi, slike, dokumenti in ostala šara) želim, da so dostopni iz obeh OSov. Katere vrste particij torej naj uporabim in v kakšnem količinskem razmerju? Nisem toliko sistemc, me pa zanimajo vaša mnenja. ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Offici 2007 delajo na Ubuntu...  Predlog: 50 GB - Ubuntu (EXT4) 30 GB - Windows (NTFS) 80 GB - Podatki (FAT32) ",
+    "user": "technolog"
+  },
+  {
+    "message": "Storage brez fajlov čez 4 GB?  The maximum possible size for a file on a FAT32 volume is 4 GB minus 1 byte or 4 294 967 295 (232-1) bytes ",
+    "user": "Tilen"
+  },
+  {
+    "message": "Okna po MSovih priporočilih potrebujejo vsaj 40GB, osebno pa bi rekel da je najbolje da jim dodeliš vsaj 50GB.  ----------------------  Če Oken ne boš uporabljal jih nima smisla nameščati - uporabi raje navidezni stroj.  ----------------------  In ja, FAT32, leta 2011, je Epic Fail™ ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Ja, bodo zato porabila kaj manj prostora? Če bo programiral na oknih, potem naj jih pa le ima kot dual boot.  Cold1, to so priporočila za aktiven sistem, kamor nameščaš vse stvari, zato je priporočilo tako velikodušno. Če pa bo samo enkrat namestil okna in .net je 30GB vrh glave.  @Tilen: Lahko da shared particijo tudi kot NTFS, če bo šel čez te omejitve. Lahko celo združi WIN in data particijo. ",
+    "user": "technolog"
+  },
+  {
+    "message": "Hja, če bo res kaj ustvarjal z Okni, se mu lahko zgodi, da bo tudi 50GB premalo.  Če pa želi predvsem MS-ovo Pisarno, za vsak slučaj, če OOo nebi odprl kake datoteke, je rešitev z navideznim strojem v bistvu najlažja. ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Sem imel pred časom identično težavo. Rešitev, ki stane 60€, je bila nakup 500 GB diska in namestitev 50-50. Windows particija se nastavi v /etc/fstab in potem symlinka C:\\Users\\ImeUporabnika\\Dokumenti (in ostale mape)... na /home/imeuporabnika/Dokumenti (in ostale mape)... imam pač veliko linux specifičnih podatkov v /home/imeuporabnika, tako da razdelitev 50-50. Je pa tako, da /usr in /var redko presežeta skupaj 20 GB pri namizni uporabi, tako da predlagam za osnovno Ubuntu rabo na 160 GB disku naslednjo razdelitev:  120MB /boot (particija 1 oz /dev/sda1) (ext2) 110 GB Windows C: (particiji 2 in 3 - /dev/sda2 in /dev/sda3) (NTFS) - 1 dodatno particijo ustvari Win7 inštalacija avtomatično, reče se ji \"System Reserved\" in je nekakšen ekvivalent /boot particiji 46GB / (Ubuntu) (ext4) (dev/sda5) (razširjena particija) 4,2GB swap (particija 4 oz /dev/sda6 - tudi razširjena particija)  Kratka navodila: Računalnik zaženi z Ubuntu Live CD-ja in poženi gparted, ustvari novo particijsko tabelo ter ustvari 120MB particijo tipa ext2 na začetku diska. Ponovno zaženi računalnik. Namesti Windows 7 z DVD-ja. Izberi namestitev po meri in ustvari novo particijo v praznem prostoru velikosti 110 GB (ali manj). Namesti Windows na novo ustvarjeno particijo. Inštalacija bo avtomatsko pred to novo particijo vrinila ~100MB \"System Reserver\" particijo. Po uspešni namestitvi Windows sistema ponovno zaženi računalnik. Namesti Ubuntu z Ubuntu Live CD-ja. med namestitvijo, ko se izbere tip namestitve (Nadomesti Windows 7 z Ubuntu, ... etc) se izbere možnost \"nekaj drugega\". Prvo particijo (dev/sda1) se formatira in \"priklopi kot\" /boot . Doda se še 46GB particija / in 4.2GB swap.  Sedaj je potrebno samo za stalno priklopiti C: particijo v linuxu ) (priporočam priklopno točko /windows), kar se lahko naredi (delno) tudi med inštalacijo, potem pa se samo popravi (doda) opcije uid,git,umask,... (google ali pa bom kasneje kaj več napisal ....)  Sedaj je potrebno symlinkati ustrezne Direktorije iz windows v linux. primer ukaza v terminalu, ostali ukazi logično sledijo imenom direktorijev in map: cd ~ mv Dokumenti Dokumenti.bak ln -s /windows/Users/ImeUporabnika/Documents Dokumenti (in tako dalje za Slike, Video,...)  Če slučajno zmanjka prostora za Ubuntu (ali Windows+podatke) naknadno, se računalnik zažene z Ubuntu live CD-ja in s programom gparted spremeni velikost particij. Ker bootloader išče particijo /boot na fiksni poziciji, smo jo postavili kot prvo na disku in pri spreminjanju velikosti particij ni potrebno \"čarati\" z ponovnim nalaganjem bootloaderja. Tudi \"System Reserved\" in C: morata biti (za lažje spreminjanje velikosti - da se Win7 nalagalnik ne pokvari) na fiksno določenem mestu, kar je tudi izpolnjeno. Spreminja se le konec C: in začetek / particije, kar je v redu. Seveda pred uporabo programa gparted za spreminjanje velikosti particij priporočam izdelavo varnostne kopije podatkov v mapi C:\\Users\\ImeUporabnika\\. Se nikoli ne ve ...  Pa še nekaj. odsvetujem hibernacijo (mirovanje) v enem sistemu in potem zagon drugega sistema. Zaradi deljenih podatkov. Pametna uporaba ali pa googlaj, kako se hibernacija onemogoči v obeh sistemih in uporabljaj suspend-to-ram. ",
+    "user": "ano-nimen"
+  },
+  {
+    "message": "Office 2007 dela preko WINE-a. Že vsaj kako leto... ",
+    "user": "technolog"
+  },
+  {
+    "message": "js nebi dal 50GB za ubuntu. Sej tista reč po namestitvi zasede 3-4 GB. + programi pa kaki home folder, ne pride velik. Pa tut kej hitrej bi moralo delovat če daš manj placa za ubuntu, ker disk na začetku(zunanji del diska) dela hitreje(zaporedni dostopi). ",
+    "user": "Blinder"
+  },
+  {
+    "message": "Za Ubuntu je 20GB vrh glave. Jaz imam trenutno 11GB zasedenih in imam en up razvojnih paketov namescenih, ki jih ponavadi ne potrebujes. Sicer je pa najbolje da najprej namestis Windows 7, potem pa Ubuntu. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Hvala za odgovore. Predvsem uporabniku ano-nimen za dodatna pojasnila. Zanima me še, katero verzijo Ubuntu in Win7 predlagate: 32bit ali 64bit? ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Windows 7: 64-bit, da se lahko izkoristi celotne 4GB RAMa.  Ubuntu: ni tako pomembno, ker podpira v 32-bitni PAE in tako lahko izkoristi vseh 4GB RAMa. Omejitev je le 2GB (vsaj mislim, lahko da je 3GB - opcija med kompilanjem jedra, ki se potem ne spreminja. Lahko, da ima Ubuntu nastavljeno na 3GB) na proces za \"uporabne podatke\"(+ 2GB za jedro linux(ali 1GB - če je za userspace na voljo 3GB) -tako proces vidi svoj pomnilnik), vendar več procesov hkrati lahko \"izkoristi\" celoten pomnilniški prostor. Tisti \"recommended\" za 32-bitno različico pri na strani za prenos od Ubuntu je pa bolj narave odvračanja namestitve 64-bitne različice na 32-bitne računalnike za neznalce. Sam nimam težav s 64-bitno različico, ki lahko v enem procesu naslovi celoten RAM računalnika ob morebitni nadgradnji pomnilnika. ",
+    "user": "ano-nimen"
+  },
+  {
+    "message": "Če imaš 64 bitni procesor, se ti (skoraj) vedno splača dat na računalnik še 64 bitni operacijski sistem. ",
+    "user": "technolog"
+  },
+  {
+    "message": "Za Ubuntu je 20GB vrh glave.  js nebi dal 50GB za ubuntu. Sej tista reč po namestitvi zasede 3-4 GB. + programi pa kaki home folder, ne pride velik.  Ah, imam za kar nekajkrat več podatkov v /home. Seveda, bi lahko to imel kje drugje, ampak zakaj. ;) ",
+    "user": "Icematxyz"
+  },
+  {
+    "message": "Morda celo je v tem primeru najboljša opcija \"navidezni stroj\" za Windows OS? Glede na zahteve bi rekel, da je. Lahko tudi uporabljaš oba OS sočasno, saj naloge za katere bi se uporabljal Windows OS navidezni stroj zmore. Deljenja podatkov ni problem vzpostaviti, sistemskega pomnilnika je dovolj. ",
+    "user": "Icematxyz"
+  },
+  {
+    "message": "No, jst pravim, da za programiranje .net more bit pravo okolje :) ",
+    "user": "technolog"
+  },
+  {
+    "message": "Zdaj sem sistem namestil po zgornjih navodilih. Pri zagonu računalnika se mi ne izpiše opcija za izbiro OSa (direktno gre v Windowse). Pri inštalaciji sistema sem najprej na začetku diska ustvaril 120MB particijo tipa Ext2 (/dev/sda1). Nato sem pred namestitvijo Ubuntuja to particijo formatiral in jo priklopil kot /boot. Zanima me, kaj je še potrebno storiti, da se bo izbira prikazala. ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Zakaj sploh ločen /boot? Ne vidim neke potrebe po tem. Drugače pa to ne igra tukaj vloge. Namestil si najprej Ubuntu in šele na to Windows 7? Je tako?  Ker Windows 7 \"ne zna\" zaganjati drugih OS, kot Windows, mora biti vrstni red drugačen. Najprej moraš namestiti Windows OS šele potem Ubuntu OS. Če nisi vešč z LiveCD in ročnim nameščanjem Grub 2 in ker gre za svežo namestitev preprosto vstavi še enkrat Ubuntu LiveCD in znova namesti Ubuntu. ",
+    "user": "Icematxyz"
+  },
+  {
+    "message": "Glej zgornja navodila uporabnika ano-nimen. Najprej sem namestil Win7 in nato Ubuntu (po navodilih). Pred namestitvijo Ubuntuja pa sem tisto prvo kreirano particijo /dev/sda1 formatiral kot /boot. Kljub temu se okno za izbiro ob zagonu računalnika ne pojavi. Kaj sem spregledal? ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Kaj sem spregledal?  Verjetno si namestil Grub 2 (first stage) na razdelek in ne v MBR podatkovnega nosilca. Torej si najverjetneje izbral /sda1 namesto /sda. Vstavi LiveCD in če ne boš uporabljal kakšnega šifriranja pozabi na ločen /boot in imej kvečjemu ločen /home. Pri nastavitvi, kam se naj namesti Grub 2 (first stage) pa izberi namesto oznake razdelka oznako za podatkovni nosilec. Najverjetneje sda. ",
+    "user": "Icematxyz"
+  },
+  {
+    "message": "Kaj tocno naj zdaj naredim? Zazenem ubuntu iz live cd-ja in potem gparted?  Pri nastavitvi, kam se naj namesti Grub 2 (first stage) pa izberi namesto oznake razdelka oznako za podatkovni nosilec. Kje pridem do te nastavitve? Takole trenutno izgleda moja razdelitev:    gparted ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Naredi navadno namestitev, tako kot sem ti jaz napisal, sploh če se ne spoznaš 100% na stvar in sploh če ne veš zakaj je ločen boot sploh koristen. ",
+    "user": "technolog"
+  },
+  {
+    "message": "Glede na to, da je sistem v celoti namescen in je edina stvar, ki jo ne prikaze boot menu, ne vem zakaj bi zdaj stvari spreminjal. Ce mi lahko kdo razlozi, kako usposobiti to zadevo, bom vesel. ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Verjetno si namestil Grub 2 (first stage) na razdelek in ne v MBR podatkovnega nosilca. Torej si najverjetneje izbral /sda1 namesto /sda.  To je bilo krivo ja. Sicer zadeve nisem znal popraviti drugače kot s ponovno inštalacijo Ubuntuja. Hvala za namig. Okno za izbiro OSa se zdaj prikaže. ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Pa še nekaj. odsvetujem hibernacijo (mirovanje) v enem sistemu in potem zagon drugega sistema. Zaradi deljenih podatkov. Pametna uporaba ali pa googlaj, kako se hibernacija onemogoči v obeh sistemih in uporabljaj suspend-to-ram.  Predvidevam, da sem ga polomil, ko sem dal Windows v sleep mode. Ubuntu se mi zdaj noče zagnat oziroma pridem samo do login okna, kamor se prijavim, naprej pa ne gre več. Zanima me, na kak način naj naredim recovery, da nazaj usposobim sistem. ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "To je bilo krivo ja. Sicer zadeve nisem znal popraviti drugače kot s ponovno inštalacijo Ubuntuja. Hvala za namig. Okno za izbiro OSa se zdaj prikaže.   Super.  Predvidevam, da sem ga polomil, ko sem dal Windows v sleep mode. Ubuntu se mi zdaj noče zagnat oziroma pridem samo do login okna, kamor se prijavim, naprej pa ne gre več. Zanima me, na kak način naj naredim recovery, da nazaj usposobim sistem.  Katere podatke pa deliš? Saj verjetno ne deliš nič takšnega, kaj bi vplivalo na to težavo. Verjetno imaš kakšno drugo težavo, ki se je pojavila morda po namestitvi gonilnika za grafično kartico? Če pri vpisu v sejo spodaj izbereš Ubuntu (varni način) se pa zažene normalno in prideš do (klasičnega) namizja? ",
+    "user": "Icematxyz"
+  },
+  {
+    "message": "Očitno bodo res gonilniki za grafično kartici krivi. Namestil sem lastniške (proprietary) in jih zdaj sicer spet deaktiviral, vendar mi še vedno noče priti v 3D unity. Klasični pa dela. ",
+    "user": "N-E-O"
+  },
+  {
+    "message": "Tako gre to da. Se pravi tam, kjer gonilnik za grafično kartico ne omogoča dobre Unity 3D podpore tam je potrebno uporabiti \"fallback\" mode, ki bo v Ubuntu 11.10 Unity 2D v Ubuntu 11.04 pa je to še klasičen Gnome 2.  Lahko se išče razlog, zakaj na tvoji strojni opremi ne deluje Unity 3D in če se da kaj glede tega urediti. Lahko pa preprosto počakaš na Ubuntu 11.10 in poskusiš še tam, če bo kaj drugače na tem področju ali ne. ",
+    "user": "Icematxyz"
+  }
+]

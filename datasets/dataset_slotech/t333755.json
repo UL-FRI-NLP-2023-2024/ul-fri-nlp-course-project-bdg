@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Torej imam katerokoli USB napravo (ključek, zunanji disk), ki jo izklopim z opcijo \"Safely Remove Hardware\", vendar je fizično ne odklopim. Obstaja kakšna možnost v WinXP/Vista, da to napravo ponovno aktiviram brez fizičnega izklopa in ponovnega priklopa v USB? ",
+    "user": "JanBrezov"
+  },
+  {
+    "message": "Reset ",
+    "user": "gumby"
+  },
+  {
+    "message": "Ne razumem odgovora. Naprava nima reset tipke, po varni odstranitvi pa je uradno ni več, zato ni možnosti akcij npr. reset.  Trenutno se igram s programčkom DevCon (command-line device manager), mogoče mi uspe preko tega. ",
+    "user": "JanBrezov"
+  },
+  {
+    "message": "Se mi zdi, da je gumby mislil na reset compa ",
+    "user": "reeves"
+  },
+  {
+    "message": "On je mislil reset sistema. ",
+    "user": "_Dejan_"
+  },
+  {
+    "message": "Disable/enable v device managerju ? ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Reset računalnika nima smisla, prej mi rata USB kabel ven potegnit.  Disable/enable ne deluje (preverjeno na USB ključu). Pri enable zahteva restart, spet mi prej rata USB ven potegnit. ",
+    "user": "JanBrezov"
+  },
+  {
+    "message": "Ne vidim logike pri deaktivaciji \"safety removable\" hardware, ce ga potem ne odstranis. Ga pac ne ejectas, dokler ga rabis. ",
+    "user": "Tr0n"
+  },
+  {
+    "message": "Gre za zunanji trdi disk (WD My Book Essential), ki je backup disk in se rabi 1x tedensko. Disk sam nima guma za izklop, ker pa se rabi samo 1x tedensko, pa nima smisla, da ves čas deluje. Opazil sem, da je disk možno ugasnit z varno odstranitvijo, rad bi pa dosegel, da ga lahko ponovno zaženem brez fizičnega posredovanja. Disk sicer gre sam v stand-by, vendar bi rad preprečil vklop \"po nesreči\", tj. nočem ga v seznamu diskov. ",
+    "user": "JanBrezov"
+  },
+  {
+    "message": "Sicer pa če ga 1x na tedn rabiš pol bi res lahko ročno potegnil ven in dal potem zazaj noter usb kabel.  Kaj pa odjava in pol prijava v sistem? ",
+    "user": "Rotaidal"
+  },
+  {
+    "message": "Kaj pa če mu v managerju samo odvzameš črko pogona? Tako ti bo izginil iz mojega računalnika in ko ga potrebuješ mu jo samo nazaj dodeliš? ",
+    "user": "_Dejan_"
+  },
+  {
+    "message": "Vprašanje sploh ni tako nesmiselno. Nekateri računalniki imajo bralnike CF/SD/... vgrajene namesto disketne ter priključene na USB. Varno odstranjevanje (da se počistijo vsi cachei,...) pomeni za ponovni priklop reset računalnika.  Sem se tudi sam že spraševal, če je mogoče kako drugače. ",
+    "user": "gokky"
+  },
+  {
+    "message": "Ok, mislim da sem uspel. Torej:   na strani http://support.microsoft.com/kb/311272 je dosegljiv DevCon, command-line device manager (self-extracted ZIP). S tem se s pomočjo ukaza devcon status usb* dobi vse USB naprave. Poskušal sem restartati konkretno napravo, vendar to ne gre, ker hoče, da se napravo fizično ponovno priklopi. Lahko pa naredimo trik in resetiramo celi USB hub, kar med drugim povzroči tudi ponoven zagon USB naprave. Torej s prej omenjenim ukazom dobimo IDje vseh USB naprav, nato pa s poskušanjem resetiramo vsak posamezen hub, dokler ne zadanemo pravega (tistega, ki ima priklopljeno USB napravo, ki je bila varno odstranjena). Ukaz za reset je (moj primer) devcon restart @\"USB\\ROOT_HUB20\\4&88AB043&1.  Vse kar zdaj rabim je eno cool ikono na namizju za cmd skripto... ",
+    "user": "JanBrezov"
+  },
+  {
+    "message": "Stranski efekti?  Sicer pa bi tvoj postopek modificiral tako, da bi v CP/System/HW/Device Manager še pred odklopom preveril, na kateri HUB je priklopljeno (da ne bi iskal). ",
+    "user": "gokky"
+  }
+]

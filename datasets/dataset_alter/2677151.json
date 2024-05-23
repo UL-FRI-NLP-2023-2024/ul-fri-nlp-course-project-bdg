@@ -1,0 +1,122 @@
+[
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Zanima me kako  dobit router v bridge, klices se zal neda... za koji k se neda tko lepo na officaial situ od modema pise da podpira full bridge in half bridge. zadovoljen bi ze biv ceb vsj DMZ delu pa se to lahko dostopas do vsake j**** naprave v lanu.... (mozno da kj narobe delam sam dvomim k je samu en gumb  klices ce se da dobit dodaten ip tud to se neda ce nis biznis klasa.... Kaka ideja samu na pfsense bi rad dubu public ip kr mam ze dost 3x odpiranja portov skoz njihov firewall k tud ce ga neb blo bi blo isto. ps edino kar me se drzi pr telemachu je da ma cloudflare tunneling opcijo.\naja modem je pa calix 854G-2.... pac kje je fora da zaklepajo taksne opcije??? kod da je bol secure zarad tega kje je pa kak firmware update 4 leta isti firmware wtff sj da neb zaklenl tega na GUI. mah skoda besed\n\nps. sorry for my langue ampak prevec casa zgubljam z taksnimi bedarijami.\ntnx za ideje\nLP",
+    "author": "flokicat",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "imam isti problem in isti modem. Si mogoče rešil? zadaj mi laufa pfsense, ampak mi pol stvari ne dela. A je edina opcija NAT?",
+    "author": "u2ros",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Well, fwiw, klical sem na telemach, pa so mi oni dali modem v bridge mode. Če so ga pa res, bom pa preveril zvečer ",
+    "author": "u2ros",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Enaki Modem Calix 823G-2  od Telemacha, kot je zgoraj omenjen. \nRad bi mu omejil območje dodeljevanja IP številk tako, da bi modem  dodelil samo eno IP številko, katero sedaj ima pri njem moj ruter. Torej bi mu za začetno IP številko določil, kot ima do sedaj 192.168.1.2, vendar  za končno IP številko tudi isto 192.168.1.2. (namesto 192.168.254).\nRuterju Asus bi določil naj sam dodeljuje IP številke  namesto modema, od številke 192.168.1.3 naprej. \nZanima me,  je to možno s stališča morebitnih konfliktov IP adresiranja? \n\n\n\t\n\n\n\n\n\t\n\n",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Zakaj delaš dvojni NAT? Modem naj ti postavijo v bridge in delaj samo z Asusom.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Namen je itak bridge, samo bi to prej bila nekakšena vmesna faza. Da se naučim nekaj novega ",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Tako se ne boš kaj dosti naučil. Dvojni NAT sicer funkcionira pri nezahtevnih uporabnikih, kakor pa želiš kaj več so pa problemi.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Sedaj Asus dela začasno  kot AP, zato ne morem koristiti napredne funkcije firewala, tuneliranja, pogled kamer od zunaj, omrežja za goste... etc. \nVse nastavitve delam prek tablice s kauča,  in ni težko sprobavat. \nZa bridge je treba poklicat Telemach, in ko preklopijo, takrat ni več šale. ",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Če dela kot AP potem bi kamere delale. Tebi dela kot router. Če želiš, da dela kot AP moraš izklopiti DHCP in po možnosti še požarni zid na Asusu",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Sedaj dela kot AP in Asus vse sam ponastavi za ta način delovanja.  Netežavno. \n\n\n\t\n\n\n\nV načinu Ruter mi IP številke za vse naprave na WIFI-ju,  vrže na  podomrežje 192.168.56.XX, (tista številka 56).Tako mi WIFI zvočnik od Denona, ne vidi receiverja in špila sam. Kamere in NAS imajo fiksni IP, pa je tudi težava. Kamere takrat vidim, NAS pa ne.  NAS takrat  vidim, ko pogledam s stacionarca, ki je na kablu.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Potem pa napravam na statiki nastavi IPje iz ranga, ki ga oddaja Asus. Vse naprave na mreži morajo biti v istem podomrežju, drugače to nikakor ne dela.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Gonzo je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSedaj dela kot AP in Asus vse sam ponastavi za ta način delovanja.  Netežavno.\n\n\n\t\n\n\n\nV načinu Ruter mi IP številke za vse naprave na WIFI-ju,  vrže na  podomrežje 192.168.56.XX, (tista številka 56).Tako mi WIFI zvočnik od Denona, ne vidi receiverja in špila sam. Kamere in NAS imajo fiksni IP, pa je tudi težava. Kamere takrat vidim, NAS pa ne.  NAS takrat  vidim, ko pogledam s stacionarca, ki je na kablu.\n\t\t\n\t\tKlikni za razširitev\n\t\nPotem pač pusti Asusa kot AP. Če želiš funkcionalnosti Asusa, pote mora bit router in vse naprave vezane nanj.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTako se ne boš kaj dosti naučil. Dvojni NAT sicer funkcionira pri nezahtevnih uporabnikih, kakor pa želiš kaj več so pa problemi.\n\t\t\n\t\tKlikni za razširitev\n\t\nJe možno na eni napravi izklopiti NAT, da ne bi bilo podvojeno?",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Gonzo je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJe možno na eni napravi izklopiti NAT, da ne bi bilo podvojeno?\n\t\t\n\t\tKlikni za razširitev\n\t\nSeveda je možno. Na Asusu ga izklopi tako, da prestavi iz router v AP način in bo vse routing, NAT in ostale funkcije kot npr dodeljevanje IP naslovov opravljal telemachov modem. Boljše pa je, da telemachov router nastavijo en port v bridge, na katerem dobi stranka javni in direktni dostop do interneta, sem gor priklopi svoj router, Asus in ga nastavi v router način. Vse mrežne funkcije opravlja potem ta Asus router. Opcijsko, ne vem kako ima telemach to rešeno, lahko tudi STB TV vmesnike priklopiš na Asusa.\n\nDvojni NAT se pa reče žargonsko zato, ker sta zaporedno povezani dve routing napravi ena za drugo, vsaka ima tako ločeno svoje interno omrežje, sa je drugi zaporedni router enakovredna naprava kot ostale naprave vezane v mrežo prvega routerja. Načeloma se da urediti tudi prehajanje proneta iz ene mreže v drugo mrežo in obratno, a to ni ravno domena teh consumer naprav, rabiš kako bolj profi.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Ja. Temu se reče Bridge mode.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik damirj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSeveda je možno. Na Asusu ga izklopi tako, da prestavi iz router v AP način in bo vse routing, NAT in ostale funkcije kot npr dodeljevanje IP naslovov opravljal telemachov modem. Boljše pa je, da telemachov router nastavijo en port v bridge, na katerem dobi stranka javni in direktni dostop do interneta, sem gor priklopi svoj router, Asus in ga nastavi v router način. Vse mrežne funkcije opravlja potem ta Asus router. Opcijsko, ne vem kako ima telemach to rešeno, lahko tudi STB TV vmesnike priklopiš na Asusa.\n\t\t\n\t\tKlikni za razširitev\n\t\nSTB lahko priklopiš kjerkoli v EU na LAN in dela.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSTB lahko priklopiš kjerkoli v EU na LAN in dela.\n\t\t\n\t\tKlikni za razširitev\n\t\nNo sej pravim, bežno vem da bi tako moralo biti, nisem pa bil 100%.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Bom se zmenil s Telemachom za Bridge način. \nNaslednji teden, da ne bom jezil žene  s prekinjanjem povezave pri gledanju \"Skrito v raju\", zaradi rebutanja modema.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Rad bi da bi mi delal fast roaming wifi v hiši s 3 nadstropji. Trenutno uporabljam telemachov modem/router in nanj s kablom povezane še 3 dostopne točke v obliki Mi router 4A gigabit (DHCP na vseh treh izklopljen). Seveda zadeva ne preklaplja Wifija hitro, zato bi te 3 dostopne točke flešal s DD-WRT in tam nastavil fast roaming. Bo zadeva delovala (hitro preklapljanje wifi) če bo glavni router še vedno od telemacha?  Ali bom moral klicati, da mi dajo telemachov router v bridge in bi potem eden od Mi routerjev bil glavni router z vklopljenim dhcp?",
+    "author": "first1",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "tlelemach router bridge 2023??",
+    "content": "Ne vem, če ravno lahko uporabljaš fast roaming, če ga naprava že v osnovi ne podpira.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  }
+]

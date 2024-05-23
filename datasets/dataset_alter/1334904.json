@@ -1,0 +1,158 @@
+[
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Pozdrav, \n\nVsaka instalacija neta mi pobere kar nekaj živcev, ker se vedno znova učim od začetka. \n\nTorej, situacija je naslednja:\nSIOL internet z modemom Sagem F@st(TM) 3344\n\nČe na modem direktno priklopim PC zadeva deluje, se poveže na internet.\n\nProblem nastane, če se na net želim povezati prek routerja, ki ga priklopim med PC in modem. Pri tem se router Linksys WRT 150N) ne poveže prek Pppoe (status routerja je vseskozi connecting&#8230\n\nPovezavo sem poskusil vzpostaviti tudi z drugim routerjem (WRT 160 NL), ki ga uporabljam doma, tudi na SIOl paketu (drug modem), pa tudi ni šlo.\n\nTelekomovce sem klical parkirat pa nismo prišli skupaj. Ali moram kaj prekonfigurirati modem? Kolega je omenil, da je možno, da je neka nastavitev na modemu.\n\nProsim za pomoč. Upam, da je jasno, kakšen problem imam. Pri 38+ stopinjah vročine je mal zajeban normalno razmišljat in pisat  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nHvala in LP,",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Če želiš uporabljati lasten router, potem mora biti SiOL modem nastavljen na \"bridge mode\" in na svojem routerju nastaviš PPPoE.\n\nPrivzeto je namreč da SiOL modem vzpostavi PPPoE in že sam deluje kot router ter dodeljuje DHCP številke napravam.\n\nPokliči na SiOL in naj pogledajo, kako je nastavljen Sagem.",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Lahko greš v modem sagem noter 192.168.2.1 user - user , in pogledaš pod wireless , če je kaj vklopljeno . Imaš noter wireless kartico mogoče ? Gre iz ETH1 modema na plavo luknjico internet v linksysa .Rumena - Ethernet1 pa dej utp kabel v PC  mrežno .Zaženi cd in install .Router naj bo 192.168.1.1 .\nhttp://itm.siol.net/doc/2009/3/sagem3344.pdf",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "1. modem deluje tudi kot router - sam vzpostavi PPoE povezavo, upr. ime i geslo sta vpisani v modemu, na računalnikih imaš nastavljeno DHCP in se avtomatično povežejo na modem in v internet (lahko imaš switch - stikalo za priklop več PCjev).\n2. Modem deluje samo kot modem, nimaš nastavljega gesla un upr. imena v modemu. V tem primeru lahko na PCju vzpostaviš svojo PPoE sejo in se priklopiš na net. V tem načinu SiOL dovoljuje dve vzporedni seji (dva raunalnika vzpostavljata PPoE sejo).\n3. Modem nastavljen samo kot modem (isto kot pod 2. točko), nanj je priklopljen router v katerem nastaviš vzpostavljanje PPoE seje. Na router priklučiš poljubno računalnikov in jim dodeliš statične IPje ali pa na routerju nastaviš DHCP in na računalnikih takisto.\n\nKombinacije teh treh načinov ne gredo skupaj in jih ne moreš mešati (vsaj načeloma ne, nekaj se da, a to za tebe ni zanimivo).\nČe imaš router, uporabi tretjo možnost.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Ja, točno tako. Točko 3 sem imel v mislih.  Samo problem je kako konfigurirati modem, da bo deloval kot moden in ne kot router.\n\nHvala za odgovore, upam, da mi uspe.\n\nLPM;",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Joj, kako točno tam notri piše, pa res ne vem, ker vedno tako kunštno napišejo, da boli. Če nisi siguren, pokliči na 0801000 in prosi, naj ti nastavijo modem na MODEM, torej, da ne bo vzpostavljal PPoE seje. Lahko pa tudi prosiš, da te nekdo vodi do tja po telefonu. Če lepo prosiš in če na drugi strani ni totalen [censored], ne bo problema.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "http://www.siol.net/pomoc_in_podpora/internet/siol_internet/povezva_na_modemu/sagem.aspx\n\nTi pa samo tu pobriši username in password in to je to...",
+    "author": "Jiggler",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Vsaj pri Amisu (ko sem nazadnje probal) si lahko naredil PPPoE povezavo, ne glede na načim delovanja modema.\n\nRuter si prav nastavil? Če ja, pa ne deluje, bo res treba način modema spremeniti. Pri Amisu je za to zadostoval telefonski klic na podporo.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Jiggler pravi:\n http://www.siol.net/pomoc_in_podpora/internet/siol_internet/povezva_na_modemu/sagem.aspx\n\nTi pa samo tu pobriši username in password in to je to...\n\t\t\n\t\tKlikni za razširitev\n\t\nIn ne pozabi shranit sprememb.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Ve kdo telnetov  user in pass za innbox home gateway od siola? Imam tako konfiguracijo, da na web gui ne morem, telnet se mi pa javi ne jebe pa user/user. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "torentino",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Naredil vse po ps-u, pa router pri vzpostavljanju povezave se vedno javlja : \"can not get IP address from PPPoE server\"\n\nPojma nimam kaj bi lahko bilo...",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Ja valda, če si mu pravilno geslo izbrisal...",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Pravilno geslo je vpisano v routerju.",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Aja, sem narobe prebral.\n\nPa je modem v \"modemskem\" načinu?\n\nKabli so prav povezani?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Vse po ps-u, ja. Odpove vso znanje, izkusnje in logika....",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "kaki \"ps\" ?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Ali imaš tudi TV gor na modemu vklopljen v ETH1 ali ETH2 ? En je rezerviran za tv en pa za pc ali router .Če imaš adsl pomeni da je modem pppoe in je uporabniško ime in geslo zaženi tudi router v pppoe povezavi vpiši upo. ime in geslo in naprej .Modem ima 192.168.2.1 . Router pa dej na 192.168.1.1 .",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "\nNajbolje, ce poklices na SiOL oz. Telekom support in jim reces, da ti skatlo (modem/router) nastavijo tako, da bo delovala samo kot modem ... Svoj router pa nastavi tako, kot so ti ze svetovali... torej, da se povezuje preko PPPoE ... \n\n\n\n\n\n\n\n\n\n\n@stein\n\nA nisi v enem drugem sporocilu nekaj \"jamral\" cez mladino... Ce ne ves, kaj je to PS... potem sam sodis v to kategorijo  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "No, sva že dva....",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "zaka vam ne menjajo modema?",
+    "author": "jamiekarai",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Kaj sva ze dva? Jaz vem, kaj je to PS ... je moj EMSO taksen, da sem to se dozivel na lastni kozi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Evo fantje... Tko je to....\n@ stein: ps- pravila službe, fraza pač...\n\nOstali:\nHvala vsem za odgovore. Za začetek naj povem, da se z IT-jem neposredno ukvarjam skoraj že 15 let in da ni da ni situacije v kateri še nisem bil. Tudi takšne osnovne prčkarije, kot je namestitev routerja na modem sem delal že najmanj 10x. Jasno, da se vedno zajebavaš unih 15 minut, ker od ene do druge zgodbe pač pozabiš določene detajle. Kar pa se tega zadnjega primera tiče pa ne morem verjet.. obolevam!\n\nVse zresetirano, vse factory restorano, 5x klical na Telekom, druge face - iste informacije. Vse nastavljeno tako kot mora biti. Pamet odpove, logika tudi. \n\nSedaj je edina varianta , da zamenjam obe kišti, modem in router, pa da vidimo...\n\nLPM;",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik matt pravi:\n Naredil vse po ps-u, pa router pri vzpostavljanju povezave se vedno javlja : \"can not get IP address from PPPoE server\"\n\nPojma nimam kaj bi lahko bilo...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTorej si že poklical tehnično pomoč in mulcu na drugi strani rekel, naj se poveže na tvoj modem in ga nastavi v bridge mode?",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "A če direkt vežeš PC na modem in narediš PPoE, pol dela?\n\nJaz sem s FritzBoxom dobil sive lase, kriv je bil KABEL!!!",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Klical mulca in je nastavil. Sedaj znam nastaviti tudi sam \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. Če povežem PC in modem in modem konektam na net (skonfiguriram na modemu), zadeva dela. Nisem pa poskusil tako, kot praviš ti, da samo skonektam potem pa PPPoE nastavim na PC-u. \n\nKar se kablov tiče:  tudi to sem imel v mislih. Zamenjal kable. Isti šmorn. \nLPM;",
+    "author": "matt",
+    "author_level": "yeeeehaaaaw"
+  },
+  {
+    "ctx": "Problemi s povezavo na net - modem vs. router",
+    "content": "Če dela PPoE (pc-modem-cel svet), potem je haklc nekje na routerju.\nV nastavitvah moraš izbrati PPoE, vnesti username in password, to je verjetno jasno, ko beli dan. To naj bi bilo vse. \nČe se je spredaj prižgala zelena lučka, potem povezava je.\n\nPS: Na PCjih in routerju še prej izberi DHCP, ne vpisuj nobenih IPjev.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "message": "Ker vidim dostikrat, ko imajo ljudje težave z omrežnimi zadevami, da jim dela probleme že poiskati nastavitve omrežja kot so privzeti prehod (default gateway), IP naslov lokalne mašine ali routerja, sem na hitro skodiral tale programček, ki vrže ven osnovne nastavitve in če ugotovi, da obstaja spletni vmesnik routerja z nastavitvami, enostavno vklopi opcijo, ki odpre spletni vmesnik.  Programček izgleda takole:   Magic Packet - prikaz delovanja  Skodiran je v C# in potrebujete .NET 3.5.  Prosim za čim več testov pa kakšen screen če je možno, kakšen Exception se lahko pojavi, ker jih moram še pometat v bloke, imam namen dodati še Wake-On-Lan.  Linque do programa: Magic Packet  Enjoy! ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Opazil sem en IndexOutOfRange, že popravljam. ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Men se sploh stvar ne zažene, napiše \"BujenjeKiste has stopped working\".  te stvari je ravno zarad takih čudnih for in odvisnosti od net framworka boljše pisat v c++, delphi ipd.. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "blackclw, bom na novo naložil, sem našel napako.  Jeb..t ga, v C# sem kok tok domač, ostalo je tema. ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Zdaj bi pa moralo delat (upam )  Povezava: Magic Packet - updated ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Meni ne dela. Še vedno je has stopped working. ",
+    "user": "telen"
+  },
+  {
+    "message": "Čudno, zdaj sem sprobal na treh kištah pa dela. Poskusi zagnat kot Administrator. ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Dvomim, da bo šel kdorkoli zaganjat nepreverjen program kot administrator :P vsaj upam... ",
+    "user": "vorantz"
+  },
+  {
+    "message": "Ja, maš prav, previdnost je povsem na mestu, nimam pa nobenega problema teh par vrstic po kmečko naklofane kode na pastebin.com nalimat.  Potem bo pa spet kdo drugi rekel, da tam je že koda, sam ne ve se pa ali je v programu ta ista.  Tkole se lahko nategujemo v nedogled, dejstvo je, da se mi je pač dal mal klofat, če kdo proba prav, če ne tut prav.   Lahko se tudi zažene v sandbox-u pa so skrbi odveč. ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Ne dela...tudi če zaženeš kot administrator :) ",
+    "user": "Zoro3"
+  },
+  {
+    "message": "Nimam pojma zakaj, enim dela, enim ne, bom šel še 1x skozi kodo, bom bolj na ostro nastavu lovljenje izjem in napak, če se bo kaj pokazalo in bo lažje popravit. ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Glede na to da dela samo tebi in nobenemu drugemu je najbrž nekje kjer pobira podatke o mreži recimo... ",
+    "user": "vorantz"
+  },
+  {
+    "message": "Ja, sej to glih gledam kako pobira.  Zdaj sem vse requeste glede mreže blokiral, ostalo je samo iskanje podatkov o lokalni mašini, zanima me, če bi kdo od tistih, ki jim že prej ni delalo, poskusil tole zagnat.  Link: Magic Packet - half-done ",
+    "user": "norcuron"
+  },
+  {
+    "message": "men zdej zažene sam mal čudno kaže, št. omrežnih vmesnikov: 17, mal velik? :D  okenček kjer so informacije o omrežju pa je čiz prazen..nevem kakšno kodo maš heh, pomoje je bol zih sparsat tist kar vrže ven ipconfig ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Sej je napisu, da je dal začasno ven podatke o omrežju. To pa zato, da bi ugotovil, če se zaradi tega sesuje program. ",
+    "user": "telen"
+  },
+  {
+    "message": "Točno tko kot je telen napisal, začasno sem blokiral requeste za omrežne podatke.  Popravil sem malce kodo za podatke o računalniku in dodal nekaj podatkov.  blackclw, če greš v cmd konzolo in vpišeš ipconfig /all jih boš naštel 17, ker so tukaj šteti tudi razni tunel adapterji, loopback in podobno, ki imajo ponavadi status - Media disconnected - zato sem pa dal v izpis samo AKTIVNE adapterje, zraven fizičnih kartic bo seveda izpisan tudi loopback (127.0.0.1), ker je pač aktiven.   Updated verzija: Magic Packet - almost done  ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Novi update - dodan izpis za omrežje - če se bo komu dalo, bom hvaležen, da vidim, če je zdaj brez napak, hvala.  Link: Magic Packet 0.0.7a - UPDATED  Še slikca:   zadnja verzija ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Pri zadnji verziji, še kar javlja: System.IndexOutOfRangeException Med tem ko mi pa prejšnji dela (dva posta višji). ",
+    "user": "domenc"
+  },
+  {
+    "message": "Hvala, že odpravljam napako, dodajam še izpis DHCP stanja.  Evo, upam, da je napaka odpravljena (Tudi zgoraj sem maredu update povezave) Magic Packet ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Meni deluje program brez problema in napak.   lp, Luka ",
+    "user": "Zimavc"
+  },
+  {
+    "message": "No, lepo, vsaj nekomu, vmes sem updejtal datoteke na serverju pa me zanima katera verzija ti dela ... MagicPacket-7.exe ali MagicPacket-8.exe?  Zimavc, se ti da mogoče kakšen screen prilimat? ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Trenutno sem v šoli in je prtsc iz šolskega računalnika.    Slika ",
+    "user": "Zimavc"
+  },
+  {
+    "message": "Odlično, hvala. ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Meni 8-ka še zmerom pod Event Viewer-jam napiše: System.IndexOutOfRangeException (uporabljam pa Win 7, 64-bit, .NET Framework 4) ",
+    "user": "domenc"
+  },
+  {
+    "message": "Domen91,  hvala za podatke, sem vrgel sedal requeste v lovilec izjem, tako, da upam, da bo delal.  Link: Magic Packet - updated ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Še vedno mi javlja isto napako pod Event Viewer-jem  ",
+    "user": "domenc"
+  },
+  {
+    "message": "Domen91, našel sem napako, bil je problem pri shranjevanju IP naslova v array (IP razdeljen na 4 dele, ločilo je pika), ker sem pozabil, da na Visti in Windows 7 potegne tudi IPV6 naslov in je seveda bil v tem primeru array prazen, ker je pri IPV6 ločilo dvopičje in ne pika, ko ga je pa blo treba uporabit je seveda prišlo do Exception-a. Sedaj sem naredil, da ga zanimajo samo IPV4 naslovi in dela v redu (testirano na 8 različnih kištah in različnih Win OS verzijah).  Čez vikend bom dodal še možnost sproščanja (RELEASE leased IP) IP-ja in zahtevo po novem IP-ju (RENEW lease) včasih pride prav pa še verjetno kakšno stvar, ki bo prek SNMP-ja \"podregala\" router za kakšnimi informacijami.  Torej, čez kak dan ali dva bom objavu link do nove testne verzije, ko bo še to skodirano.  ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Fantje, evo ena zanimivost, končno smo zgruntali zakaj enim meče program ven, ki pa ni IndexOutOfRange Exception, ampak enostavno napiše, da je program prenehal delovati in da Windows išče morebitno rešitev.  Ugotovili smo, da do tega pride, ker program dostopa do mrežnih adapterjev, ko \"nabira\" podatke, le te pa skoraj praviloma nadzirajo razni programski požarni zidovi (firewall), testirano je bilo na BitDefender-ju in še parih antivirus/firewall paketih, da zablokira program in ga prekine, če ni dodan pod dovoljene programe oz. narejeno pravilo zanj.  Mogoče naj kdo poskusi, ki se mu program ni uspel zagnat, kako je stanje, če ga za potrebe testa doda kot izjemo, ki jo potem komot odstrani, ko si ogleda program in ga ne misli občasno uporabiti. Najbolje kar v sandboxu oz. virtualcu, če je možno, da ne bo kakšnih skrbi glede varnosti.   Jutri bo verjetno objavljen nov build.  ",
+    "user": "norcuron"
+  },
+  {
+    "message": "Res je, da napiše to napako, vendar pod Event viewerjem pa System.IndexOutOfRangeException, s tem, da nimam nobenega AV programa ali požarnega zida (izklopil sem tudi Windows-ov požarni zid), tako da mora biti napaka še kje drugje, mogoče.     Napaka ",
+    "user": "domenc"
+  },
+  {
+    "message": "Ja, res je, zato gre program v kompleten remodeling.  Beta testerji bodo več kot dobrodošli, da se spravi skupaj nekaj uporabnega.  ",
+    "user": "norcuron"
+  }
+]

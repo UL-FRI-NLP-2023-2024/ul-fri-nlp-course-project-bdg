@@ -1,0 +1,34 @@
+[
+  {
+    "message": "Torej rad bi se spustil na malo nižji nivo programiranja (predvsem video/audio zadeve) ampak bi še zaenkrat ostal pri C#. Kašne so vaše izkušnje z low level programiranju v C#? ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": "Premalo informacij ... ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Torej v mislih imam naredtiti en program, ki bo zajemal slike preko kamere. Zanima kako se naj lotim take zadeve? Kje naj žačnem zbirati informacije npr. katere dll-je potrebujem,kako delati z api-ji, ipd. Zanimajo me predvsem strani s takimi tutoriali. MSDN mi je preveč strokoven glede tega. ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": "Glede specifičnih dll-jev ti ne znam pomagat, ker sam nimam izkušenj z audio/video zadevami, boš pa verjetno prej ali slej prišel do uporabe zunanjih knjižnic, ki niso napisane v C#, tako da se boš moral posluževat sistema P/Invoke and Marshaling za komunikacijo z zunanjimi dll-ji (še en tutorial na to temo). Maš pa na http://pinvoke.net/ že spisane primere struktur, api klicev itd. za win32 api, tko da si lahko s tem pomagaš če boš prišel do situacije, ko boš moral klicati funkcije iz zunanjih dll-jev. ",
+    "user": "sas084"
+  },
+  {
+    "message": " BivšiUser2 je 3. apr 2016 ob 23:49 izjavil:Torej v mislih imam naredtiti en program, ki bo zajemal slike preko kamere. Zanima kako se naj lotim take zadeve? Kje naj žačnem zbirati informacije npr. katere dll-je potrebujem,kako delati z api-ji, ipd. Zanimajo me predvsem strani s takimi tutoriali. MSDN mi je preveč strokoven glede tega.    Sam imam v C# narejen program za zajemanje slike iz zunanjih kamer (8 mega pikslov kamere imam postavljene okoli hiše in zajemajo sliko stalno. Vsaka kamera sliko zajema stalno in jo primerja s predhodno. Če se vmes spremeni barvni odtenek za 8% od prejšnje slike, začne snemat in snema 30 sekund ter posname filmček, hkrati pa tista pred vhodom obvesti še po mailu ali sms-u, da vidim kdo prihaja in oghaja.  Za samo kamero uporabljam pa EmguCV knjižnico:  http://www.emgu.com/wiki/index.php/Tuto...  Za \"motion\" detektor pa del tega: http://www.codeproject.com/Articles/102... ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Tukaj imaš pa par že rešenih zadev: http://stackoverflow.com/questions/1258...  Emgu CV Code samples: http://www.fcih.net/oayman/main/files/A...  motion detector - cars: http://www.emgu.com/forum/viewtopic.php... ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Od kje pa potem priti na to kodo, na primer?(https://www.caveofprogramming.com/c-sha... - sicer čist offtopic s tem primerom  [DllImport(\"winmm.dll\")]\n        private static extern long mciSendString(string lpstrCommand, StringBuilder lpstrReturnString, int uReturnLength, int hwndCallback);\n Vedel bi si jo razložiti, samo pa napisati niti slučajno.Kaj hočem vprašati, ko se lotite nekih takih zadev, ki so vezane na hardware, kako se potem znajti kaj/kje to iskati oziroma kako začeti: prvo se poišče na primer nek dll potem pa od kod naj začnem razmišljati, da potem sledi tisti naslednji stavek? Kako potem nadaljevati, je res potem edina rešitev se zatopiti v članek in trial&error poskušati s kodo,ki je v članku opisana? ",
+    "user": "BivšiUser2"
+  },
+  {
+    "message": "Dej ti začni z emgucv, ker imaš vse tutorial in razloženo, kako kaj deluje. Ti bo lažje, tole bo pretežko zate. ",
+    "user": "krneki0001"
+  }
+]

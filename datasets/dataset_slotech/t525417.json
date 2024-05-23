@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Na WRT54GL sem namestil DDWRT s podporo za VPN.  Sledil sem tem navodilom, ampak povezave nikakor ne morem vzpovstaviti. Poskusil sem tudi forwardirat port 1723, kot piše v vodiču.  Trenutne nastavitve so: router ip 192.168.0.1 - tega sem nastavil tudi kot server ip DHCP ipji gredo od 192.168.0.100-149 VPN ipji bi morali iti od 192.168.0.20-29 v chap sem dodal uporabnika \"user * geslo *\" (brez narekovajev)  Ko se skušam povezati na VPN se ustavi pri preverjanju uporabniškega imena in gesla.  Napaka, ki jo javi Windows je: The remote connection was not made because the attempted VPN tunnels failed. The VPN server might be unreachable. If this connection is attempting to use an L2TP/IPsec tunnel, the security parameters required for IPsec negotiation might not be configured properly. ",
+    "user": "matej_jack"
+  },
+  {
+    "message": "Kateri isp ponudnik ? ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Teleing, lokalna kabelska. ",
+    "user": "matej_jack"
+  },
+  {
+    "message": "Windouz ti ne bo nič pametnega povedal. Na dd-wrt vklopi syslog ter v pptpd konfiguracijski fajl dopiši \"debug\" v kolikor še ni. Potem poskusi in glej log na routerju. ",
+    "user": "BlaY0"
+  },
+  {
+    "message": "Verjetno je problem, ker si port forwardal. Moraš dati samo na accpet v firewallu, ker servis laufa na routerju in ne na lokalni mašini. Pa gre protokol še moreš enablat, da ga spusti skoz. ",
+    "user": "kronik"
+  },
+  {
+    "message": "Sem probal tudi ugasnit firewall, pa je enako. Kje pa vklopim GRE? ",
+    "user": "matej_jack"
+  },
+  {
+    "message": "Dej naredi screenshot od vpn nastavitev na routerju.. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "  PPTP   Security ",
+    "user": "matej_jack"
+  },
+  {
+    "message": "Client ip napiši točno tako:  192.168.0.20-29  in probaj če potem deluje... ",
+    "user": "blackbfm"
+  },
+  {
+    "message": " blackbfm je 8. jul 2012 ob 16:49 izjavil:Client ip napiši točno tako: 192.168.0.20-29 in probaj če potem deluje...   To je to, povezava je vzpostavljena. Zakon, hvala!! Firewall je nazaj vklopljen, port pa tudi ne rabi bit forwardan. ",
+    "user": "matej_jack"
+  },
+  {
+    "message": "Iz službe se ne morem povezati na VPN  Windows XP odjemalec javi Error 619, preko LAN pa se VPN normalno vzpostavi. Še kakšna ideja morda? Drugače bom probal konfigurirat OpenVPN daemona enkrat v naslednjih dneh. ",
+    "user": "matej_jack"
+  },
+  {
+    "message": "Verjetno ti gre protokola ne spusti skozi, nimam tega routerja, poglej v manual. Na mirkotiku v firewall nastavitvah izbereš namesto tcp protokola GRE in izbereš acceppt in dela. ",
+    "user": "kronik"
+  },
+  {
+    "message": "A s to povezavo narediš, da se lahko na domač IP povežeš od bilokje in uporabiš svoj IP za surfanje po internetu naprej? Razumem prav? ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Da ",
+    "user": "kronik"
+  }
+]

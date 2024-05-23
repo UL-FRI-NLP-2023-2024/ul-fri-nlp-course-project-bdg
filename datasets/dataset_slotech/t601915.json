@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Ker programiram in imam programator z lpt priključkom, sem si omislil lpt to usb vmesnik, da lahko priključim v prenosnik in tukaj nastane problem :) Sedaj bi rabil oguljufati računalnik, da bi mislil da je to lpt port in bi mi programator deloval. Imam pa laptop in na stacionarcu samo priklučim v lpt vhod na matični in špila vse, tukaj se pa ne marata.  Pomagajte! :D ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "Za hobi ali resno uporabo?  Za resno uporabo (in nekaj dela po terenu) sem sam rabil serijski port, in na koncu sem pač kupil laptop ki ga ima - tudi nove se da še dobiti b.p.  Z LPT portom bo to gotovo večji problem, ampak če ne drugače pa kupi enega rabljenega na bolhi... :P ",
+    "user": "tony1"
+  },
+  {
+    "message": "http://www.mimovrste.com/artikel/114003...  Tole mogoče? ",
+    "user": "Pimoz"
+  },
+  {
+    "message": "Narobe ste razumeli...sem si že omislil, zdajle je zravem mene na mizi :D problem imam samo kako bi ga nastavil, da bi bil to lpt vhod ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "Driver za USB->LPT converter ? ",
+    "user": "Invictus"
+  },
+  {
+    "message": "V driverju konverterja nastaviš, da emulira vrata LPTX.  In potem v programatorju nastaviš naj dela z vrati LPTX. ",
+    "user": "tony1"
+  },
+  {
+    "message": "Ima kdo kakšen dober driver ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "To nastaviš v Control panel -> Devices (ali kako že po novem Winsi temu pravijo ). (Za takšnele gizmote winsi danes običajni sami najdejo driver in ga namestijo.) Ti tam samo poišči LPT porte oz. konverter in ga nastavi na željena LPT vrata. ",
+    "user": "tony1"
+  },
+  {
+    "message": "Ja driverje mi sam najde, imam ga pa pod vnosne naprave (hid). Še vedno mi izpisuje communication error :( ",
+    "user": "menjalnik"
+  },
+  {
+    "message": " menjalnik je 27. feb 2014 ob 15:40 izjavil:Ima kdo kakšen dober driver  Po tem postopku prilepi Vendor in Device ID: http://www.ccboot.com/find-ven-dev-id.h... ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Pri meni ta program ne dela, gumbi neaktivni  takole mi v device managerju prikazuje    ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "Lepo sem napisal \"Po tem postopku prilepi Vendor in Device ID\" ! Delaš do tukaj:  In Figure 1, the Vendor ID is \"1022\" and the Device ID is \"2000\".  Ničesar ne zaganjaš ! ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "Prisežem, da se nič ne zgodi pa sem vse ponovil 4x, še vedno se mi ne poveže ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "Oprosti, sem lahko žleht? Programerji, ki jih en windows test informacijske pismenosti pelje ... Bodo morali še nekaj ješprena pojesti. Khm. :P  Poskusi za test naštimati pretvornik še na drugem računalniku, če bo tam kaj drugače? So winsi 64 bitni? ",
+    "user": "tony1"
+  },
+  {
+    "message": "Ja tako je ja, windows je 64 biten ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "Včasih je lahko problem, da za kakšen gizmo so 32-bitni driverji, 64-bitnih pa ni. Ampak pri tem bi običajno že winsi zajamrali z napako pri inštalaciji driverja.  Poskusi še na kakšni drugi kišti, če z 32-bitnim OSom, toliko bolje. ",
+    "user": "tony1"
+  },
+  {
+    "message": "Če ne bo delalo bom pa nabavil eno kanto z lpt portom pa s tistim delalZdaj pa grem iskat 32 bitni windows ",
+    "user": "menjalnik"
+  },
+  {
+    "message": "Same \"pametne\" rešitve...  USB-neki pretvorniki ponavadi rpetvarjajo samo standardni protokol prenosa, torej če to \"neki\" uporabljaš na predviden način.  Pri LPT to pomeni,d a pošlejš byte preko driverja, kot si je bog zamislil.  Česar pa ravno programatorji ne počnejo. Ravnjo tem so COM in še bolj LPT porti zanimivi, ker se da s posameznimi pini igrat direktno. Tega pa USB pretvorniki AFAIK ne omogočajo.  Rešitev - nabavi PCI ali PCIe kartico. Jaz jo imam ( 2x COM + LPT/1284 na PCI ) in dela BP na linuxu in v DOS/Winsih. SW jo vidi, kto bi bila original, kar niti ni čudno, ker jo PCI mapira na prave porte... ",
+    "user": "Brane22"
+  },
+  {
+    "message": "IOW, neki takega rabiš:  PCI to LPT/COM ",
+    "user": "Brane22"
+  },
+  {
+    "message": "OP ima prenosnik. PCI kartice notri ne bo spravil... ",
+    "user": "MIHAc27"
+  },
+  {
+    "message": "Obstaja PC card (ex PCMCIA) z LPT vmesnikom? Če ima laptop sploh še PC card režo... ",
+    "user": "tony1"
+  },
+  {
+    "message": "Zakaj preprosto ne uporabiš USB za komunikacijo namesto LPT? ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Ali pa kar Bluetooth   V firmi uporabljam en RS232 programator, kar PITA za nastavit vse prav. Če ti bo kaj pomagalo, kaj moram jaz nardit: - izbrana prava št. porta (COM oz. LPT) - pravi baudrate - gonilniki za programator - pravilno skonfiguriran program za kompajlat ki ga uporabljaš - dodana podpora za programator v program  In če sem vse naredil 100% prav deluje. Deluje tudi na RS232 v USB adapterjih, pa tudi to ne na vseh, mam na sumu da imajo kitajski preslabe driverje. Polgej od FTDIja če ima kaj pametnega. ",
+    "user": "matobeli"
+  },
+  {
+    "message": " MIHAc27 je 28. feb 2014 ob 10:32 izjavil:OP ima prenosnik. PCI kartice notri ne bo spravil...   BO pa spravil uszno Expresscard ali picamica. Obe sta na PCI ali PCIe verziji vodila... ",
+    "user": "Brane22"
+  },
+  {
+    "message": "Evo za cardbus:  LPT na cardbus ",
+    "user": "Brane22"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Živjo, \n\nsledil sem komunikaciji na https://www.alter.si/tema/telekom-box-preko-routerja.2670315/post-3028018, vendar ne vem, ali sem nastavil pravilno. Innbox daje DHCP in ves promet na port1 na Mikrotik router. Vsi adapterji so v enem bridge in potem porabniki priključeni na Mikrotik, vključno z NEO. Na Mikrotik je priključen še PLEX server (Linux server), ki dela streaming na NEO in tudi v internet (na telefon). Ne delam nobenega vlan-a in ne tagginga, ne vem pa zakaj imam občutek, da bi ga moral. Nastavitve so: \n\n# sep/25/2021 20:42:39 by RouterOS 6.48.3\n# software id = CU72-U7YH\n#\n# model = RB962UiGS-5HacT2HnT\n# serial number = **********\n/interface bridge\nadd igmp-snooping=yes name=BRIDGE1\n/interface wireless\nset [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no mode=ap-bridge \\\n    multicast-helper=full ssid=MojSSID wireless-protocol=802.11\nset [ find default-name=wlan2 ] band=5ghz-n/ac disabled=no frequency=5220 \\\n    mode=ap-bridge multicast-helper=full ssid=MojSSID wireless-protocol=\\\n    802.11\n/interface wireless security-profiles\nset [ find default=yes ] authentication-types=wpa2-psk eap-methods=\"\" mode=\\\n    dynamic-keys supplicant-identity=MikroTik wpa2-pre-shared-key=\\\n    ************\n/interface bridge filter\nadd action=drop chain=forward out-interface=wlan2 packet-type=multicast\n/interface bridge port\nadd bridge=BRIDGE1 interface=ether1\nadd bridge=BRIDGE1 interface=ether3\nadd bridge=BRIDGE1 interface=ether2\nadd bridge=BRIDGE1 interface=ether4\nadd bridge=BRIDGE1 interface=ether5\nadd bridge=BRIDGE1 interface=wlan1 unknown-multicast-flood=no \\\n    unknown-unicast-flood=no\nadd bridge=BRIDGE1 interface=wlan2 unknown-multicast-flood=no \\\n    unknown-unicast-flood=no\n/ip neighbor discovery-settings\nset discover-interface-list=!dynamic\n/interface detect-internet\nset detect-interface-list=all\n/ip dhcp-client\nadd disabled=no interface=BRIDGE1\n/ip dhcp-relay\nadd dhcp-server=192.168.1.1 disabled=no interface=ether1 name=relay1\n/ip dns\nset allow-remote-requests=yes\n/system clock\nset time-zone-name=Europe/Ljubljana\n\nNajlepša hvala za pomoč!",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Kakšno je sploh stanje? Kaj ti dela in kaj ti ne dela? Če nisi nič nastavljal VLAN-ov, sumim, da ti na NEO-tu ne deluje IPTV?",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Mikrohard je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKakšno je sploh stanje? Kaj ti dela in kaj ti ne dela? Če nisi nič nastavljal VLAN-ov, sumim, da ti na NEO-tu ne deluje IPTV?\n\t\t\n\t\tKlikni za razširitev\n\t\nVse dela, tudi NEO tv. Porti na Innbox so nastavljeni na Trunk. Kar me moti, pa ne vem, ali je povezano s tem je, da internet promet po ostalih portih včasih pade na minimum, speedtest 2Mbit na 100Mbit povezavi, sploh na WiFi. Reštart pomaga, potem pa spet.",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik alesj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tVse dela, tudi NEO tv. Porti na Innbox so nastavljeni na Trunk. Kar me moti, pa ne vem, ali je povezano s tem je, da internet promet po ostalih portih včasih pade na minimum, speedtest 2Mbit na 100Mbit povezavi, sploh na WiFi. Reštart pomaga, potem pa spet.\n\t\t\n\t\tKlikni za razširitev\n\t\nČudno, da ti NEO dela. Sicer z NEOtom nimam nobenih izkušenj ampak če je vsaj malo tako kot so bili stari BOXi potem rabi VLAN3999. To si direkt na Telekomovem omrežju?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČudno, da ti NEO dela. Sicer z NEOtom nimam nobenih izkušenj ampak če je vsaj malo tako kot so bili stari BOXi potem rabi VLAN3999. To si direkt na Telekomovem omrežju?\n\t\t\n\t\tKlikni za razširitev\n\t\nDirekt ja. Optika \"pride\" v Innbox, ki tudi drži povezavo do Telekoma (pa tudi DHCP in NAT), potem pa link do porta1 na mikrotiku in NEO v mikrotik. Trenutno je NEO v ether3, ampak je vseeno kam ga dam. Skrbi pa me, da mi tv zdaj, v tej konfiguraciji, flooda po vseh portih.",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Zakaj sploh imaš tako nastavljeno? Ne bi bilo bolje PPPoE na Innboxu onemogočiti in ga nastaviti na mikrotiku? Potem pa samo še dodaš VLAN3999 na ETHER1 in Ether3, ter ju dodaš v ločen bridge, kjer vklopiš IGMP snooping (lahko tudi na osnovnem bridgu) pa je to za osnovno konfiguracijo zadosti. Važno je, da ti multicast ne gre na WLAN, kar se da tudi urediti.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZakaj sploh imaš tako nastavljeno? Ne bi bilo bolje PPPoE na Innboxu onemogočiti in ga nastaviti na mikrotiku? Potem pa samo še dodaš VLAN3999 na ETHER1 in Ether3, ter ju dodaš v ločen bridge, kjer vklopiš IGMP snooping (lahko tudi na osnovnem bridgu) pa je to za osnovno konfiguracijo zadosti. Važno je, da ti multicast ne gre na WLAN, kar se da tudi urediti.\n\t\t\n\t\tKlikni za razširitev\n\t\nTo da Mikrotik dela pppoe bi bilo smiselno, izgubim pa potem eno dostopno točko in LAN (za printer trenutno) na drugem koncu stanovanja. Ampak to bi še šlo. Bom se poigral z VLAN, ne bi pa rad izgubil interneta na Ether3 (ogled nazaj, youtube na NEO)? Imaš kak nasvet da ločim 3999 od ostalega omrežja in da omejim multicast le na Ether3? Hvala!",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Če NEO dela tako kot stari BOXi in nastaviš VLAN3999 na Eth3 na Mikrotiku to popolnoma nič ne vpliva na delovanje ostalega prometa na tem istem portu. Torej na Ether3 portu ti naprej normalno deluje internet, ki pride čez glavni bridge Mikrotika, dodatno pa je na portu še VLAN3999 iz dodatnega bridga, ki ga pač box ve uporabiti, ostale naprave pa se zanj ne zmenijo. Vklopi IGMP snooping na bridge, kot sem ti že zgoraj napisal. Če bo VLAN3999 samo na Ether 1 in 3, potem boš imel multicast le na teh portih. Ena opcija filtriranja Multicasta iz bridga proti VLANu je tudi tole, vendar po moje ne boš rabil. To pride bolj prav, če imaš IGMP proxy:\n\n/interface bridge filter\nadd action=drop chain=output out-interface=wlan1 packet-type=multicast\nadd action=drop chain=output out-interface=wlan2 packet-type=multicast",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Si poskusil?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSi poskusil?\n\t\t\n\t\tKlikni za razširitev\n\t\nNastavil sem vlan na 3999, in je povezava takoj nehala delovati. Lahko da sem naredil kaj narobe. Potem sem dodal vlan na interface (https://forum.mikrotik.com/viewtopic.php?t=156128), vendar ne morem aplicirati vlan-filtering = yes... Trenutno pa ne morem do konfiguracije, ker imajo hčerke ekskluzivo  Probam zvečer. THX",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Ne rabiš vlan filteringa. Tam v meniju interface samo klikneš + in dodaš nov VLAN 3999 na ether1 in nato še na ether3. Potem greš v meni bridge, ustvariš nov bridge, recimo SiolTV in v ta bridge daš oba VLANa in vklopiš IGMP snooping. To je osnova in bi že moralo delati.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe rabiš vlan filteringa. Tam v meniju interface samo klikneš + in dodaš nov VLAN 3999 na ether1 in nato še na ether3. Potem greš v meni bridge, ustvariš nov bridge, recimo SiolTV in v ta bridge daš oba VLANa in vklopiš IGMP snooping. To je osnova in bi že moralo delati.\n\t\t\n\t\tKlikni za razširitev\n\t\nRes je... NEO ni takoj zaznal spremembe. Dela TV, pregled za nazaj  in predvajanje iz Plex. Tagging v tem primeru dela na nivoju bridge in fizičnih portov? Kako pa preverim, da multicast ne dela na ostalih portih? THX!\n\n# sep/26/2021 19:49:53 by RouterOS 6.48.3\n# software id = CU72-U7YH\n#\n# model = RB962UiGS-5HacT2HnT\n# serial number = **********\n/interface bridge\nadd name=bridge\nadd igmp-snooping=yes name=bridge_tv\n/interface wireless\nset [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no mode=ap-bridge multicast-helper=full ssid=MySSID wireless-protocol=802.11\nset [ find default-name=wlan2 ] band=5ghz-n/ac disabled=no frequency=5220 mode=ap-bridge multicast-helper=full ssid=MySSID wireless-protocol=802.11\n/interface vlan\nadd interface=ether1 name=\"vlan1 - Eth1 3999\" vlan-id=3999\nadd interface=ether3 name=\"vlan2 - Eth3 - 3999\" vlan-id=3999\n/interface wireless security-profiles\nset [ find default=yes ] authentication-types=wpa2-psk eap-methods=\"\" mode=dynamic-keys supplicant-identity=MikroTik wpa2-pre-shared-key=********\n/interface bridge port\nadd bridge=bridge interface=wlan1 pvid=22\nadd bridge=bridge interface=wlan2 pvid=22\nadd bridge=bridge_tv fast-leave=yes interface=\"vlan1 - Eth1 3999\"\nadd bridge=bridge_tv fast-leave=yes interface=\"vlan2 - Eth3 - 3999\"\nadd bridge=bridge interface=ether1\nadd bridge=bridge interface=ether2\nadd bridge=bridge interface=ether3\n/ip neighbor discovery-settings\nset discover-interface-list=!dynamic\n/interface detect-internet\nset detect-interface-list=all\n/ip dhcp-client\nadd disabled=no interface=bridge\n/ip dhcp-relay\nadd dhcp-server=192.168.1.1 disabled=no interface=ether1 name=relay1\n/ip dns\nset allow-remote-requests=yes\n/system clock\nset time-zone-name=Europe/Ljubljana",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik alesj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tRes je... NEO ni takoj zaznal spremembe. Dela TV, pregled za nazaj  in predvajanje iz Plex. Tagging v tem primeru dela na nivoju bridge in fizičnih portov? Kako pa preverim, da multicast ne dela na ostalih portih? THX!\n\n# sep/26/2021 19:49:53 by RouterOS 6.48.3\n# software id = CU72-U7YH\n#\n# model = RB962UiGS-5HacT2HnT\n# serial number = **********\n/interface bridge\nadd name=bridge\nadd igmp-snooping=yes name=bridge_tv\n/interface wireless\nset [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no mode=ap-bridge multicast-helper=full ssid=MySSID wireless-protocol=802.11\nset [ find default-name=wlan2 ] band=5ghz-n/ac disabled=no frequency=5220 mode=ap-bridge multicast-helper=full ssid=MySSID wireless-protocol=802.11\n/interface vlan\nadd interface=ether1 name=\"vlan1 - Eth1 3999\" vlan-id=3999\nadd interface=ether3 name=\"vlan2 - Eth3 - 3999\" vlan-id=3999\n/interface wireless security-profiles\nset [ find default=yes ] authentication-types=wpa2-psk eap-methods=\"\" mode=dynamic-keys supplicant-identity=MikroTik wpa2-pre-shared-key=********\n/interface bridge port\nadd bridge=bridge interface=wlan1 pvid=22\nadd bridge=bridge interface=wlan2 pvid=22\nadd bridge=bridge_tv fast-leave=yes interface=\"vlan1 - Eth1 3999\"\nadd bridge=bridge_tv fast-leave=yes interface=\"vlan2 - Eth3 - 3999\"\nadd bridge=bridge interface=ether1\nadd bridge=bridge interface=ether2\nadd bridge=bridge interface=ether3\n/ip neighbor discovery-settings\nset discover-interface-list=!dynamic\n/interface detect-internet\nset detect-interface-list=all\n/ip dhcp-client\nadd disabled=no interface=bridge\n/ip dhcp-relay\nadd dhcp-server=192.168.1.1 disabled=no interface=ether1 name=relay1\n/ip dns\nset allow-remote-requests=yes\n/system clock\nset time-zone-name=Europe/Ljubljana\n\t\t\n\t\tKlikni za razširitev\n\t\nPopravek: Radio ne dela oziroma je zvok... marsovski... Če vključim IGMP snooping na bridge, potem radio dela.",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Zanimivo, da radio ne bi delal. Sam pač imam na eni lokaciji zadevo tako skonfiguruano, da je VLAN za IPTV ločeno in internet ločeno, vključen IGMP SNOOPING in zadeva dela BP že nakaj mesecev. Tagging je verjetno na softwarskem nivoju, možno pa tudi, da je na fizičnem. Dandanes je večina opreme toliko zmogljiva, da ne boš opazil razlike. Sicer Mikrotik omogoča še marsikaj drugega ampak nimam časa testirat.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Sem dodal še Ether3 v bridgetv (poleg obeh vlanov), in radio deluje. Hvala za pomoč!",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Ne bi smelo biti tako. V drugem bridgu morata biti samo oba VLANA. Sedaj, ko je ether3 v bridge je spet vse nekako na pol. To ni OK.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe bi smelo biti tako. V drugem bridgu morata biti samo oba VLANA. Sedaj, ko je ether3 v bridge je spet vse nekako na pol. To ni OK.\n\t\t\n\t\tKlikni za razširitev\n\t\nRazen če res pustim vse v enem bridge-u, brez vlan pa na vse porte, razen Ether3 naredim block na multicast?",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Tale radio, ki si ga omenil, to je preko Multicasta ali preko Interneta? V enem bridge vse skupaj ne bo ok delalo po moje.\n\nImaš sedaj priklopljeno sedaj tako, da je trunk port spuščen na ether1 in ti povezavo dela Mikrotik?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "To je recimo osnova in na obeh bridgih je vklopljen IGMP snooping. Tukaj imam sicer VLAN spuščen na vse porte Mikrotika, čeprav sta pri hiši samo dva sprejemnika, tako, da lahko priklopiš sprejemnik kamorkoli in mora delati.\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\t\t\n\t",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Težko je karkoli urediti in zvedeti kako se je končalo, če OP nima časa odgovarjati...",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTo je recimo osnova in na obeh bridgih je vklopljen IGMP snooping. Tukaj imam sicer VLAN spuščen na vse porte Mikrotika, čeprav sta pri hiši samo dva sprejemnika, tako, da lahko priklopiš sprejemnik kamorkoli in mora delati.\nPoglej priponko 48649Poglej priponko 48650\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSem se lotil zadeve resneje... Naredil sem reštart in naredil konfiguracijo tako, kot je prikazano na zgornji sliki. Tudi IGMP snooping sem vključil na obeh bridge-ih. \n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\nZanimivo, da tokrat radio dela brez problemov. Tudi povezava do internetnih vsebin in do Plex strežnika dela. Prav tako ne zaznavam več 3999 paketov na wlan1 in wlan2. \n\nBom stestiral še prepustnost omrežja in internetno povezavo na Ether2 ter Wlan2. Se mi zdi, da hitrosti še vedno niso konstantne... \n\nHvala za zgornje nastavitve!",
+    "author": "alesj",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Telekom NEO in PLEX na Mikrotik routerju za Innbox modemom",
+    "content": "Javi ugotovitve. So pa to osnove in če s tem ne dela zna biti res zanimivo vprašanje kje je težava.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  }
+]

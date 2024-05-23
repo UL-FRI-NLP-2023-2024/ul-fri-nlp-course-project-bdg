@@ -1,0 +1,116 @@
+[
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Doma imam takole postavljeno:\n\nSiol vdsl modem (se avtomatsko poveže preko pppoe) -&gt; wrt54gl s tomato (tudi tukaj imam narejeno pppoe povezavo) -&gt; pc-ji\n\nTo sicer dela ampak mi je čudno, ker je zdaj na obeh (modemu in na routerju) pppoe povezava, kar je sigurno nepotrebno.\nČe nek pc priklopim direkt na modem bo internet delal, torej je pppoe povezava na modemu vzpostavljena.\n\nSem na routerju že malo spreminjal vrsto povezave ampak ni bilo ok, tako da naprošam stručkote, da mi poveste kako naj pravilno nastavim router, da ne bo tudi on vzpostavljal PPPoE povezave?\n\nPoleg PPPoE imam na routerju še možnost za:\n- DHCP\n- Static\n- PPTP\n- L2TP\n- Disabled\n\nTrenutno imam pa takole:\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Probaj DHCP - modem bo potem routerju določil podatke.",
+    "author": "SouthPark",
+    "author_level": "Jas da nea vem?!  Ka te je..."
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Huh ni šlo.\nSej za pri meni doma ni problem, mi je v bistvu vseeno. \nSamo kolega je pa pozabil Siol geslo in zdaj mu ne morem nastaviti routerja, da bi imel ok wifi po celi hiši.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "DHCP je pravilna nastavitev, ja. Ampak jaz bi naredil drugače. Veliko bolje je namreč imeti NAT na routerju, kot na modemu. Zato bi jaz na modemu izklopil pppoe in ga imel le na routerju. Bo boljše delovalo, saj modem kot NAT sigurno ne zdrži take obremenitve kot router. Če je možno, skonfiguriraj modem v bridge način (to bo mogoče moral operater spremeniti). Sicer pa mu enostavno vnesi napačni user/pass za pppoe in je problem rešen.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "\n\t\t\n\t",
+    "author": "SouthPark",
+    "author_level": "Jas da nea vem?!  Ka te je..."
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Priklopi se direktno na modem in v nastavitvah onemogoči internet (pppoe). Tako kot so ti že svetovali. Pri siolu imaš lahko hkrati 2 aktivni seji.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Tnx vsem. \nPri meni bo to pomagalo, pri kolegu, ki ne ve gesla pa ne. Mu bom rekel da naj poklice na siol da mu ga povejo/resetirajo...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Če rabi wrt54gl samo za wifi, lahko wan čisto onemogoči. wan port dodeli switchu in ga poveže na switch od siolovega modema/routerja. Disabla DHCP in dobi glorified access point s svojim wifi signalom. Paketi bodo šli ven preko routerja v modemu.  Obstoječega routerja/modem ne rabi nič spreminjat.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "user user\n\nSta uporabniško ime in geslo na vseh siol routerjih.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Daniel pravi:\n user user\n\nSta uporabniško ime in geslo na vseh siol routerjih.\n\t\t\n\t\tKlikni za razširitev\n\t\nTo vem. Tip je izgubil geslo za pppoe povezavo.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik doto pravi:\n Če rabi wrt54gl samo za wifi, lahko wan čisto onemogoči. wan port dodeli switchu in ga poveže na switch od siolovega modema/routerja. Disabla DHCP in dobi glorified access point s svojim wifi signalom. Paketi bodo šli ven preko routerja v modemu.  Obstoječega routerja/modem ne rabi nič spreminjat.\n\t\t\n\t\tKlikni za razširitev\n\t\nMy brain hurts.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "futuristic: najmanjši problem. S Firefoxom se skonektaj na ruter, še prej inštaliraj v Fifefoxu dodatek na spodnjem linku, pojdi v meni, kjer so podatki o pppoe povezavi (user in pass), dvakrat klikni na tiste zvezdice pa ti pokaže geslo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.\n\nhttps://addons.mozilla.org/sl/firefox/addon/show-my-password/",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Carsko tole bom pa probal, če slučajno deluje.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Verjemi, deluje.",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "1.) V IE je to že vgrajeno (ikonico očesa klikneš)\n2.) Lahko preprosto \"Show page source\" klikneš\n3.) Ti nič ne pomaga, če gesla dejansko ni na strani. (ne vem, kako dotični ruter to počne)",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Sem poskusil na eni lokaciji pogledat geslo in gre bp.\n\n\t\t\n\t",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "To ti prikaže gesla, ki so itak že shranjena v ff (options &gt;&gt; security &gt;&gt; saved passwords)?",
+    "author": "blazko",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "Wrt54gl ima vgrajen switch. Tega lahko povežeš s switchem od siolovega modema in dobiš dodatne porte. Tomato pa omogoča, da wan port na wrt54gl onemogočiš in ga dodeliš v isti VLAN, kot so ostali porti. Tako dobiš 5 portni switch. Če onemogočiš dhcp, bodo odjemalci, priklopljeni na wrt54gl dobili ip od dhcpja na siolovem routerju. Tako efektivno dobiš access point - switch s funkcijo wifi.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "router - tomato - pravilna nastavitev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik blazko pravi:\n To ti prikaže gesla, ki so itak že shranjena v ff (options &gt;&gt; security &gt;&gt; saved passwords)?\n\t\t\n\t\tKlikni za razširitev\n\t\nNope, tam bi našel kvečjemu geslo za dostop do ruterja (user, user), teh gesel pa v FF ni shranjenih.",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  }
+]

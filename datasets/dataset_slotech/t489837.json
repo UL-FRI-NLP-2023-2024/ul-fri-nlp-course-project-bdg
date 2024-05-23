@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Zdravo!  Programiram že več let in obvladam programiranje v 8-ih programskih jezikih, zato vem, da je sintaksa pravilna in bi program moral delat. Uporabljam Windows 7 Professional in Dev C++ 4.9.9.2, ki vsebuje tako delovno okolje, kot tudi prevajalnik. Pa gremo k bistvu...  Napisal sem program z nekaj funkcijami... nič kompliciranega in pred 1 uro se je še normalno prevedel in izvedel. Potem sem nekaj popravljal in program je nehal delovat. Popravim nazaj, vendar program še vedno ne dela. Prevede se že (kar pomeni, da napak ni), vendar ko hočem pognat, mi izpiše to:  This application requested the Runtime to terminate it in an unusual way. Please contact the application's support team for more information.  Skratka enostaven program, ki bi moral delovat v konzoli mi ne deluje. Kaj je narobe pa tudi ne vem.  Definirano imam funkcijo: void funkcija(string niz1, string niz2, string niz3, string niz4);  Tokrat imam funkcijo prazno - programsko kodo v funkciji sem zakomentiral.  Funkcijo pa kličem tako: funkcija(\"a\", \"b\", \"c\", \"d\");  In v tej točki mi pride do napake. Če klic funkcije odstranim odstranim pa program normalno dela - čeprav ničesar ne naredi, saj je funkcija prazna. 100-krat sem že pregledal program in napak NI. Če kdo ve kaj je narobe, mi naj razloži, saj na tak primer velikokrat naletim in mi je že načel živce.  Je možno da gre za bug v prevajalniku ali celo v operacijskem sistemu? ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "Za kakršenkoli smiseln odgovor potrebujemo vso kodo.  Da se ti to v prihodnje ne bo dogajalo, priporočam uporabo RCS sistema. ",
+    "user": "jype"
+  },
+  {
+    "message": "100-krat sem že pregledal program in napak NI. Če kdo ve kaj je narobe, mi naj razloži Kot praviš, napak NI torej ni nič narobe... ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Mozno je tudi, da ti je en gama delec unicil celico v ramu. :>  Show us the code! ;) ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Celega programa ne morem prilepit, ker je prevelik za na forum. Sicer nič zahtevnega, ampak predolga koda. Bom pa povedal kako naj bi delal.  Iz tabele argv preberem argument 0 (torej ime programa), potem rekurzivno preberem vsebino delovnega imenika (z vsemi mapami in podmapami) in zapišem v datoteko, katere ime je argv[0]+\".txt\". Primer: če se program imenuje ODPRI_ME.exe, potem bo naredil datoteko ODPRI_ME.exe.txt (tekstovna datoteka), v kateri bo drevesna struktura imenikov in datotek glede na trenutni imenik.  Ta-isti program sem ravnokar pognal na virtualki in glej ga zlomka, program dela! Čim pa ga poženem na pravem računalniku, pa dobim tako napako. Pa čeprav je ta ista koda pred 1 uro še delala. Ne pomaga pa tudi reset računalnika.  Malo sem pogooglal in vidim, da gre za Visual C++ Runtime napako, ki je na spletu ratala že kar popularna. Zanima me, če mogoče kdo ve, kako se jo odpravi? Ne bi pa rad brisal dol neke programe (ali celo windowse), ker svinjarije na računalniku nimam... vsaj moja zaščita tako pravi. ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "Ni problem v tem kaj naj bi program delal ampak v tem kaj točno si ti naklofal skupaj. Za kakršnokoli pomoč glede samega programa moramo vidit dejansko kodo ne pa poslušat tvoje pesmice o njem. Če si na netu najdu omembe te napake potem se spodobi vsaj da daš linke.   Hudič je v detajlih katere rekla-kazala princip takoj zgubi.  Programiram že več let in obvladam programiranje v 8-ih programskih jezikih, zato vem, da je sintaksa pravilna in bi program moral delat. Mal preveč si poln sam sebe. Mogoče se morš naučit še tri jezike, pol boš pa res obvladal ... ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Trenutno sem preklopil na Linux in tam progam nadaljujem. Kot sem pričakoval, mi tukaj program čisto lepo dela... res pa je da, ga moram ponovno prevest. Jutri bom spet resetiral računalnik in bom nalepil par programov, kjer je prišlo do omenjene napake. Ampak ne vem, kaj ti bo program... gledal ga boš par uric in ti a) ne bo jasno kaj sploh program dela b) razvozlal boš delovanje programa in pogruntal da je popolnoma pravilen  Tako da, prepričal sem se, da napaka ni v mojem programu (drugače mi tudi na linuxu ne bi delal), ampak nekje v Windows programski opremi. Če je komu dolgčas pa lahko malo pogoogla: how to fix visual c++ runtime error. ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "Prehitro sklepaš. Ampak nauču se boš najbolje na lastnih napakah. ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Ker pr windowsih obstaja samo ena verzija c++ runtima a ne :) ",
+    "user": "Looooooka"
+  },
+  {
+    "message": "Skoraj gotovo je to, da nekje derefenciraš neobstoječ pointer (beri greš v tabeli čez meje).  Linux to tolerira, windows ne. ",
+    "user": "technolog"
+  },
+  {
+    "message": " technolog je 25. okt 2011 ob 23:45 izjavil:Skoraj gotovo je to, da nekje derefenciraš neobstoječ pointer (beri greš v tabeli čez meje).  Linux to tolerira, windows ne.   To je povsem napacna interpretacija.  Tako Linux, kot Windows to tolerirata, dokler ne povozis necesa kar ne bi smel povoziti.  Grizzly je 25. okt 2011 ob 22:20 izjavil: Tako da, prepričal sem se, da napaka ni v mojem programu (drugače mi tudi na linuxu ne bi delal), ampak nekje v Windows programski opremi. Če je komu dolgčas pa lahko malo pogoogla: how to fix visual c++ runtime error.   Tvoja napaka je tipicen buffer overrun error. Nekje nekaj povozis in se sam ne ves kje. Z malo srece stvar dela, v neki zmagovalni kombinaciji pa ne dela.  Ce moras googlat za \"how to fix c++ runtime error\" potem resno delas nekaj narobe. Ze skoraj celo desetletje. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "@BigWhale: In kaj bi lahko povozil s klicom funkcije... pa še funkcija je prazna. Bom še enkrat napisal, kar sm že zgoraj:  void funkcija(string niz1, string niz2, string niz3, string niz4) { /* Vso kodo sem zakomentiral, kar je enako, kot če bi bila funkcija prazna. Tako kot v tem primeru... */ }  int main() { funckija(\"a\", \"b\", \"c\", \"d\"); // Če ta klic odstranim (ne pa tudi funkcijo), program dela. return 0; }  Programsko kodo sm poslal sošolcu in mu rekel naj mi pomaga poiskat napako (da bi bilo bolj zanimivo, sem mu rekel, da se program sploh ne prevede). Čez 5 minut mi je odpisal, da ne najde napake in tudi program dela. Ker mu nisem verjel, mi je poslal še svoj screenshot (na windows sistemu). Prvo kar sem naredil danes ko sm vklopil računalnik: preveril program. Seveda sm pričakoval napako, a program se je normalno zagnal. Zato kode nism uploadal gor, kot sm včeraj napisal, saj ni kje iskati napake, če program dela.  Tabel v programu nimam. Imam le eno while zanko in strukturo DIR* (kazalec). Ampak še to sem zakomentiral, tako da imam le par funkcij, ki delajo z nizi. Ena vrne delovni imenik (CWD), druga iz celotne poti izloči ime datoteke, tretja vrne samo končnico datoteke itd. Funkcije so kratke (največ 5 vrstic) in bi napako v nizu takoj opazil. Sploh pa mi vsaka vrne točno to kar pričakujem (probal izpisat rezultat - kar funkcija vrne). Mogoče je napako treba iskat kje drugje... mogoče v kakšni knjižnici, ki jo kliče moj program. Ampak potem bi mi svar delovala vedno ali pa nikoli.  Kolikor sm včeraj izvedel o napaki, povzroča nasploh delovanje nekaterih programov. Nekdo je na nekem forumu napisal, da zaradi napake ne more igrat nek špil, ker ga vrže v namizje. je samo Treba poiskat vzrok za napako. ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "dva posta visje... ",
+    "user": "link_up"
+  },
+  {
+    "message": "Buffer overrun napake se pojavljajo ponavadi tam kjer jih naceloma ni.  Ce v programu povozis naslov neke funkcije potem ti bo program crknil sele takrat, ko bos klical tisto funkcijo. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Za ugotavljanje, kaj je šlo narobe se gleda izvorno kodo ali uporabiš debuggger & disassembler, lahko tudi kombinacija vseh 3. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Praviš da delaš v Dev C++ se pravi je jezik C++. Kolikor se spomnem te zadeve String ni \"izvorni\" podatkovni tip ampak je to le \"sinonim\" za CHAR[], ki pa se hendla kot navaden CHAR*. Na tebi je da poskrbiš za potreben prostor (naslove), kjer se hranijo posamezni znaki. Ti tega nisi nikjer naredu ampak si kompajler direkt poslilil s konstantami kjer je on pričakoval char*. Al pa celo pointer na class String. Bog si ga vedi kako kompajler to reč razume - precej očitno da narobe. Prvi korak bi bil, da bi iz funkcije ven zmetal vse parametre. Če bo pol delalo bi parametre v funkcijo dodal nazaj ampak ne kot konstante ampak vnaprej definirane variable. ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Btw buffer overrun Windows ne \"tolerira\"... Je pač odvisno, včasih gre skozi včasih ne, pa ni nujno da nekaj prepišeš, lahko samo greš izven page-a, in potem pišeš po protected memoryju, zato potem dobiš access violation. Ni pa nujno da je kaj tam, lahko je pač nek random \"prazen\" page ali ga sploh \"ni\". Za Linux nisem expert ampak bi si predstavljal da je tam podobno le da oni imajo segfault.  Znajo pa bit take napake hudič za debugirat, zato se splača sproti pazit. Edina taka opcija ki mi pade na pamet je hardware on-access breakpoint tam kjer se konča alociran prostor, pa potem vidiš če kakšen ukaz želi dostopat do te lokacije... Ampak ja, velik dela. Najlažje je it čez kodo podrobno in pogledat. Glede prvega stavka OP pa... No comment  ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Zakaj pa še ni dejanske kode? Koga briga, če je dolga al kratka. Pričakuješ odgovor brez, da bi pokazal source. Kaj pa mi vemo kaj si ti šaril in pisal. ",
+    "user": "ERGY"
+  },
+  {
+    "message": " WarpedGone je 26. okt 2011 ob 21:12 izjavil:Praviš da delaš v Dev C++ se pravi je jezik C++. Kolikor se spomnem te zadeve String ni \"izvorni\" podatkovni tip ampak je to le \"sinonim\" za CHAR[], ki pa se hendla kot navaden CHAR*. Na tebi je da poskrbiš za potreben prostor (naslove), kjer se hranijo posamezni znaki. Ti tega nisi nikjer naredu ampak si kompajler direkt poslilil s konstantami kjer je on pričakoval char*. Al pa celo pointer na class String. Bog si ga vedi kako kompajler to reč razume - precej očitno da narobe. Prvi korak bi bil, da bi iz funkcije ven zmetal vse parametre. Če bo pol delalo bi parametre v funkcijo dodal nazaj ampak ne kot konstante ampak vnaprej definirane variable.    Ne, string ni sinonim za char[]. String je v C++ del standardne knjižnice. ",
+    "user": "technolog"
+  },
+  {
+    "message": "Izveden je pa s čim oz. kaj to je sploh? ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": " WarpedGone je 30. okt 2011 ob 22:46 izjavil:Izveden je pa s čim oz. kaj to je sploh?   Ja, to nima veze, ker je ze sama implementacija tko narjena zato, da ti ne rabis gledat na to, da rezerviras pomnilnik zanj in da ni treba preverjati kdaj kje kak bufer 'cez odleti'. :) ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "WarpedOne> Izveden je pa s čim oz. kaj to je sploh?  String (C++) @ Wikipedia ",
+    "user": "jype"
+  },
+  {
+    "message": "Ja, to nima veze, ker je ze sama implementacija tko narjena zato, da ti ne rabis gledat na to, da rezerviras pomnilnik zanj in da ni treba preverjati kdaj kje kak bufer 'cez odleti'. :) To je že cool, še vseeno mi je pa zelo sumljiva deklaracija:  void funkcija(string niz1, string niz2, string niz3, string niz4) {}  in nato uporaba kot :  funckija(\"a\", \"b\", \"c\", \"d\");  Kako si bo to kompajler predstavljal je cela tombola in včasih odvisna že od subverzije kompajlerja.  Grem stavit levo jajco, da bodo njegove težave izginile, če zadevo spremeni v:   void funkcija(string niz1, string niz2, string niz3, string niz4) {}\n\n int main() {\n string a = \"a\";\n string b = \"b\";\n string c = \"c\";\n string d = \"d\";\n\n funckija(a, b, c, d);\n return 0;\n } ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Kako si compiler to predstavlja ni nobena tombola... Funkcija je definirana, da vzame 4 std::string parametre \"po vrednosti\". Funkciji da 4 const char* vrednosti, kar v principu ne štima, ima pa std::string ustrezne konstruktorje, da se lahko 4 stringi skonstruirajo. Če on dejansko kliče zadevo kot:  funckija(\"a\", \"b\", \"c\", \"d\");\n Sem jaz papež... ",
+    "user": "Senitel"
+  },
+  {
+    "message": "ima pa std::string ustrezne konstruktorje, da se lahko 4 stringi skonstruirajo. Se lahko, a pa se točno v tem primeru sigurno tudi res? Ne trdim, da se ne, sm le že vidu preveč čudnih situacij, da bi upal nekaj tazga garantirat takole od daleč. ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Seveda se. Tudi tvoj popravek naredi čisto isto, samo da namesto konstruktorja uporabiš assignment operator. Težave nastanejo, ko je folk uiber pameten in naredi \"MySuperStringImplementation\" (ali pač kak drug class) in potem dela gluposti po konstruktorjih. V danem primeru je po mojem najverjetnejša razlaga, da v funkcijo pač ne pridejo \"a\", \"b\", \"c\" in \"d\", ampak pointerji na neke char arraye, ki niso null terminirani (in potem implementacija poišče prvi null ). ",
+    "user": "Senitel"
+  },
+  {
+    "message": "Sej, hudič je vedno v detajlih, najraje takih katere zanemariš kot \"to očitno ni problem\". In pol ko fehtaš pomoč vztrajaš da zanemarjeno pa ja ne more bit problem... Been there :) ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Dejta si najprej wiki pogledat, ki ga je jype linkal, preden doktorirata iz std::stringa. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "Jaz bi še prej raje videl dejansko kodo, ki je delala težave. ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": " Grizzly je 25. okt 2011 ob 21:09 izjavil:Zdravo!  Programiram že več let in obvladam programiranje v 8-ih programskih jezikih  Fascinantno. Jst obvladam programiranje samo v enem jeziku pa programiram ze vec kot deset let. ",
+    "user": "Spura"
+  },
+  {
+    "message": "Haha, prov smešno, kok ste mu fovš.  ",
+    "user": "technolog"
+  },
+  {
+    "message": "Tega, da buffer overruna ne zna najt mu ni nihce fovs... :> ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Ponovno odpiram temo. Tokrat ne iščem napake, ampak rešitev.  Torej, pisal sm program, ki bi preveril katere datoteke in mape se nahajajo v delovnem imeniku in tudi v podmapah. Imena map in datotek sem nameraval zapisati v tabelo stringov. V drugi tabeli pa sm shranjeval spet neke druge podatke. In kaj je bil problem: ker je v mapi lahko veliko datotek, sm naredil par zelo velikih tabel. Predpostavljal sem, da največ 5000 (torej v tabelo bi shranil največ 5000 datotek, nadaljne pa ignoriram - ne shranim v tabelo). Kot rečeno, sem imel še nekaj ostalih tabel, kar predstavlja ogromno količino podatkov. Kako sm problem odkril: Povečeval sem po 1 podatek več (premikal indekse) toliko časa, dokler je program še delal. Ko je v neki tabeli prišlo do indeksa 52 je program še delal. Pri indeksu 53 (ali več) pa se je program začel podirat.  Zaključek: Zgleda, da je število podatkov s katerimi dela program, omejeno. Pri nekem številu (tako si razlagam) zmanjka prostora v pomnilniku, kar povzroči nepravilno delovanje programa. Na prvi pogled je program pravilno napisan, vendar problem je v pomnilniku, kar se v programski kodi ne vidi.  Možna rešitev bi bila, da nekatere podatke shranjujem v datoteki. Vendar v tem primeru je program neučinkovit, saj hitrost izvajanja ni zadovoljiva. Torej, zanima me, na kakšen način bi podatke hranil v pomnilniku in preprečil napako? ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "A to je spet C++?  std::vector? ",
+    "user": "jype"
+  },
+  {
+    "message": "Zakaj ne probaš kakega debagerja zalaufat in spremljat, kaj točno se zgodi preden se program sesuje?  P.S. V katerih jezikih vse pa znaš programirat? Namreč hvaljenje da obvladaš kar 8 programskih jezikov, debagerja pa ne, je malo čudno in zelo vprašljivo glede znanje tolikih jezikov. Na fakulteti (ob delu) na vajah programiramo v C, C++, C# in javi (odvisno od asistenta), kar mi sicer ne dela nobenih problemov, ampak da bi se hvalil, da jih obvladam pa ravno ne upam reči. Programe znam brati in razbrati kaj delajo, marsikaj znam tudi napisat v vseh štirih jezikih, vendar me vsak povprečen programer, ki s temi jeziki dela vsakodnevno, verjetno po vsej črti premaga. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Se ti ne zdi da so tvoji problemi zmeraj OS/HW related?  Zdaj boš ponovno zagovarjal svoj bug-free program in leechal informacije memberjev ter izginil neznano kam dokler ti ponovno ne zmanjka pomnilnika.  Source or gtfo ;) ",
+    "user": "Uros!no"
+  },
+  {
+    "message": " Grizzly je 6. nov 2011 ob 15:20 izjavil:Torej, zanima me, na kakšen način bi podatke hranil v pomnilniku in preprečil napako?   this ",
+    "user": "kihc"
+  },
+  {
+    "message": "Torej, zanima me, na kakšen način bi podatke hranil v pomnilniku in preprečil napako? V svojem programu poišči napako in jo odpravi.  No other way. ",
+    "user": "WarpedGone"
+  },
+  {
+    "message": "Grizzly, naredi si uslugo in se preberi kakšno knjigo o osnovah programiranja... Zelo očitno si nekaj zafrknil pri alokaciji pomnilnika. Ni problem v pomnilniku temveč v tvojem neznanju programiranja. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": " Grizzly je 6. nov 2011 ob 15:20 izjavil:Zaključek: Zgleda, da je število podatkov s katerimi dela program, omejeno. Pri nekem številu (tako si razlagam) zmanjka prostora v pomnilniku, kar povzroči nepravilno delovanje programa. Na prvi pogled je program pravilno napisan, vendar problem je v pomnilniku, kar se v programski kodi ne vidi.   Tvoj zakljucek je zal napacen. Problem, ki ga opisujes je 'text-book case' buffer overrun problema. Nekje si nekaj povozis in zato se program sesuje. Ce bi ti zmanjkalo pomnilnika bi sel tvoj program najprej v swap, ce bi se tega zmanjkalo bi se pa zacele dogajati cudne stvari.  Kaj ce bi objavil vsaj kak del kode? Strukturo v katero zapisujes te podatke?  Hec je v tem, da tvojih podatkov ni toliko, da bi lahko zapolnili nekaj megabajtov pomnilnika, kaj sele gigabajt. Govoris namrec o 5000 datotekah? ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Pa kot podatkovno strukturo za fajle uporabi drevo  ",
+    "user": "_Dormage_"
+  },
+  {
+    "message": "Ce program ne zaseda vec kot vsaj par giga pomnilnika ni razloga, da bi ga zmanjkalo. ",
+    "user": "Spura"
+  },
+  {
+    "message": "Programiram že več let in obvladam programiranje v 8-ih programskih jezikih, zato vem, da je sintaksa pravilna in bi program moral delat.  Sintakso ti itak preveri compiler. ",
+    "user": "technolog"
+  },
+  {
+    "message": "Task manager odpri pa poglej kolko ti nuca program. Jaz ga imam 1.3GB porabljenega, ko včitam 20miljonov vrstic trigramov v strukturo { string(trigram), verjetnost in frekvenco trigrama }. Sicer pa source pokaži pa bomo takoj povedali. ",
+    "user": "ERGY"
+  },
+  {
+    "message": "Am...ok tole bo cist mimo ampak glede na to, da trdis, da nikjer ne delas s pointerji in da si SVETO preprican, da je problem v tej funkciji...potem bom omenil nekaj kar se noben ocitno ni: Ce si tole DEJANSKO copy/paste-al iz sourca na slo-tech  void funkcija(string niz1, string niz2, string niz3, string niz4) { /* Vso kodo sem zakomentiral, kar je enako, kot če bi bila funkcija prazna. Tako kot v tem primeru... */ }  int main() { funckija(\"a\", \"b\", \"c\", \"d\"); // Če ta klic odstranim (ne pa tudi funkcijo), program dela. return 0; }   a je mozno, da mas ti mal vec header in source fajlov kjer mas definirani 2 funkciji...ena se imenuje \"funckija\" in ena \"funkcija\" pa gledas napacno? Ce je koda reeees full proof in sploh na pravilen nacin uporabljas pointerje in std:: knjiznico... ",
+    "user": "Looooooka"
+  },
+  {
+    "message": "Bom tokrat napisal še malo programske kode (problematična funkcija). Torej, prebral sem vsebino imenika, za vsako datoteko/podmapo pa še cel kup drugih podatkov (atributi, končnica, opis datoteke itd). Vse te podatke sem najprej shranil v datoteko (shranim za kasneje - ker me zanima kaj je program izpisal ob zadnjem zagonu - pri tem upoštevam, da je morda tokrat program zagnan na drugem računalniku, kar pomeni drugačno vsebino). Potem pa v nekem trenutku te podatke preberem iz datoteke. Berem vrstico za vrstico z getline in vrstico shranim v tabelo na nek indeks. Imam še več podobnih funkcij, ki pa delujejo pravilno (saj so vmesni rezultati po pričakovanjih). Ko se začne izvajat ta funkcija, se sproži napaka. Zadnjič se mi je to zgodilo, ko for zanka števec i nastavila na 53 (torej poskušam v prazno tabelo nekaj zapisat na indeks 53). Če bi zanka tekla samo do 50, napake ne bi bilo. (takšna je bila situacija nazadnje).    Čudno pa je to, da se je danes program normalno izvedel (do indeksa 5000). Kot rečeno, je tabela prazna. Imam še par zelo dolgih tabel (ki jih napolnim pred to). Vsebina vrstice, ki jo shranim v tabelo pa je tudi zelo dolga. Ker program enkrat deluje drugič pa ne, sem sklepal da je problem v pomnilniku. Še toliko bolj sem prepričan, ker ne uporabljam nobenega delete ukaza (za sproščanje pomnilnika), saj podatke še potrebujem.  Preden komentiraš, si preberi še naslednje: - vsebina delovnega imenika programa je vedno enaka (imam \"backup\", ki ga obnavljam - tako da so podatki vedno enaki) - random generatorja v programu tudi ne uporabljam (kar je še 1 dokaz, da so podatki vedno enaki) - funkcije so napisane tako, da se razlikujejo po imenu in št. argumentov (torej ne morem gledat napačne funkcije in tam iskat napake) - vsaka spremenljivka ima svojo začetno vrednost (pred uporabo spremenljivke še posebej preverim, če je njena vrednost ok) - na kritičnih območjih uporabljam delay  Torej, vem za vsako vrstico v programu kaj se mora zgoditi, podatki so vedno enaki (če bi uporabil cout) bi moralo vedno izpisat isto stvar. Ni mi pa jasno zakaj program enkrat dela, drugič pa ne. Napisal sem že nešteto programov (tudi daljših kot je ta), pa sm vedno napako odpravil. Tega pa res ne znam popravit. ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "Grizzly> Napisal sem že nešteto programov (tudi daljših kot je ta), pa sm vedno napako odpravil. Tega pa res ne znam popravit.  Jaz pa pojma nimam o programiranju, ampak to napako pa znam odpravit, če vidim vso kodo. ",
+    "user": "jype"
+  },
+  {
+    "message": "Ta funkcija sama po sebi je ok. Napako bos moral iskati drugje, ce uporabljas veliko globalnih spremenljivk in delas s stringi in s char array-i potem si verjetno nekje nekaj povozis.  Prevedi ze program z g++ -g in pozeni debugger. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "Ne vem, ker se nisem poglabljal v kodo, ampak a   string podatek[5000]  je namerno? To namreč ni en string, dolg 5000 znakov, to je skupek 5000 poljubno dolgih stringov... ",
+    "user": "technolog"
+  },
+  {
+    "message": "Glede na to kako v zanki polni te stringe, je videti OK. ",
+    "user": "jype"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Napišite ukazno skripto z imenom skripta1.sh, ki striktno v zaporedju naredi:  1. premaknite se v kazalo /tmp, 2. ustvarite kazalo z imenom 111, 3. premaknite se v ustvarjeno kazalo 111, 4. ustvarite kazalo z imenom Ime, 5. v kazalu Ime, brez uporabe urejevalnika, ustvarite zbirko z imenom Priimek.txt, 6. rekurzivno izpišite vsebino kazala /tmp/111, 7. pomaknite se v kazalo Ime, 8. v zbirko dodajte niz Neki tekst, 9. izpišite vsebino zbirke, 10. v zbirko dodajte niz 111 Ime Priimek, 11. izpišite vsebino zbirke, 12. kopirajte zbirko Priimek.txt v kazalo /tmp/111 13. rekurzivno izpišite vsebino kazala 111, 14. izpišite pot do ukaza ifconfig, 15. izpišite prvih 5 vrstic zbirke /etc/services, 16. izpišite zadnje 4 vrstice zbirke /etc/services, 17. izpišite zasedenost particij Vašega diska in 18. odstranite vse ustvarjene zbirke in kazala.  Pozdravljeni !  Zgornjo nalogo sem naredil vendar pa sistem, ki nalogo preveri javi, napako. Kaj bi lahko bilo tukaj narobe? (spodaj rešena naloga oz. izdelana skripta) ------------------------------------------------------------------------------ #!/bin/bash  cd /tmp  mkdir 111 cd 111 mkdir Ime cd Ime   touch Priimek.txt cd ..  ls -R  cd Ime echo \"Neki tekst\" > Priimek.txt  cat Priimek.txt  echo \"111 Ime Priimek\" >> Priimek.txt  cat Priimek.txt  cp Priimek.txt /tmp/111 ls -R /tmp/111  whereis ifconfig  head -n5 /etc/services  tail -n4 /etc/services  df -h -T  rm -r /tmp/111 ----------------------------------------------------------------------------------- Hvala vsem za odgovore, LP. ",
+    "user": "Cyrus008"
+  },
+  {
+    "message": "glede nato, da ti sistem javi kje je napaka bi blo vredu, če bi to skopiral.  Probaj pa pri cd naredit slash, cd /111 ",
+    "user": "Hardstyle"
+  },
+  {
+    "message": "Pri debugganju bash skript pomaga, če v prvo vrstico dodaš -x:  #!/bin/bash -x ",
+    "user": "c3p0"
+  },
+  {
+    "message": "Verjetno malo nefleksibilen server. Mogoče probaš še which namesto whereis, ali pa rm -rf namesto zgolj rm -r.  Ne razumem pa kaj hoče pri 6. točki z rekurzivnim izpisom. Mogoče da ostaneš v direktoriju in napišeš: ls .. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "Kakšno napako javi ?  Si mogoče pisal skripto na Windows sistemu ali kakšnem urejevalniku besedila, ki ima tip datoteke nastavljen na Dos/Windows (ali kaj podobnega) ?  Potem je možno, da ga moti carriage return (\\r) znak. ",
+    "user": "Kami"
+  },
+  {
+    "message": "nalogo moreš oddat v linuxi drugače sistem skos javla napake ",
+    "user": "mico28"
+  }
+]

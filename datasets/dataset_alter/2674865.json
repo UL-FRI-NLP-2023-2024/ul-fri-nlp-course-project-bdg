@@ -1,0 +1,98 @@
+[
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Imam težavo, ki si je ne znam razložit. Sam sem sicer od nekdaj na Telemachu, zato mi Telekom ni preveč domač. Skratka kolega si je v uti zraven hiše uredil manjši pub v katrerega si je zmontiral TV. Internet ima iz modema, ki ga ima v hiši (pripeljan po kablu in testirano dela b.p). Problem pa je, da ko na to vtičnico priklopi Telekomov BOX, na televiziji nikakor dobi slike. Ta isti box mu v bajti deluje brez problema. Sem s speedtestom zmeril hitrost in dosega 20/1. Sicer ne vem koliko plačuje po pogodbi ampak verjetno je to vseeno dovolj da box deluje. Ni mi jasno zakaj ni slike. Box je s tv-jem povezan preko HDMI in menuji od boxa so, prav tako ikone od programov, samo slike ne da. Kakšna ideja?",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Port ima pravilno nastavljen na modemu? Mora biti trunk.",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Tega nisem preverjal, ker razmišljam, da če mu v hiši dela, bi mu moralo tudi zunaj.  Res je da nisem siguren kako ima vse skonfigurirano ampak kolikor vem ima glavni modem v bajti in iz tega modema gre en UTP v dnevno, kjer ima EON box, drugi UTP mu gre v zgornje prostore od koder je vzel BOX (in tam je deloval), tretji pa gre ven iz hiše v uto (kjer box ne deluje). V uti ima tudi switch od koder pride kabel v vtičnico kamor je vklopljen BOX. Na tej isti vtičnici internet deluje, kot sem že omenil 20/1.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Ima v uti switch ali router? Če je slednji, potem je ta razlog za težave.",
+    "author": "Ledenko",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "switch ima, 100%. Sem mu ga jaz včeraj prinesel ",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Internet mu že deluje, po vsej verjetnostni pa ne pride vlan 3999 do ute.\nRazlogov je možnih več, izgubi se lahko na switchu (če ni ustrezen), kabel že v osnovi ni priklopljen na pravi port (trunk) ali pa ima vmes še en router, ki pa tudi ni pravilno skonfiguriran, da bi pošiljal vlan 3999 dalje",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Se pravi ni efekta ne s switchom, niti ne s kablom, ki gre direktno v telekomov modem?\n\nV kateri port na Telekomovem modemu pa je priključen ta kabel, ki gre v uto? Ker če se prav spomnim, naj bi bila 3 in 4 bila podprta za TV.",
+    "author": "Ledenko",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Lahko si na modemu nastaviš vse porte na trunk, če želiš",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "UTP konektor kabla iz ute, naj v hiši priklopi v port namesto kabla za zgornje prostore, in preveri delovanje. Mogoče je port drugače skonfiguriran.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Gonzo je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tUTP konektor kabla iz ute, naj v hiši priklopi v port namesto kabla za zgornje prostore, in preveri delovanje. Mogoče je port drugače skonfiguriran.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTočno to sem imel v mislih, da bi sprobal, ko se spet oglasim pri njem..verjetno jutri. Bom sporočil in preverim še ostale predloge. \n\nHvala vsem za hitre odzive in predloge.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Po vsej verjetnosti je port narobe nastavljen. Verjetno je data, ker sicer na tv dobi podatke o programu ne pa video signala. \nJa zamenjaj porta pa mora delati.",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Janch je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTega nisem preverjal, ker razmišljam, da če mu v hiši dela, bi mu moralo tudi zunaj.  Res je da nisem siguren kako ima vse skonfigurirano ampak kolikor vem ima glavni modem v bajti in iz tega modema gre en UTP v dnevno, kjer ima EON box, drugi UTP mu gre v zgornje prostore od koder je vzel BOX (in tam je deloval), tretji pa gre ven iz hiše v uto (kjer box ne deluje). V uti ima tudi switch od koder pride kabel v vtičnico kamor je vklopljen BOX. Na tej isti vtičnici internet deluje, kot sem že omenil 20/1.\n\t\t\n\t\tKlikni za razširitev\n\t\nV dnevni sobi je EON box ali NEO?",
+    "author": "jinetera",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Skoraj zagotovo manjka VLAN3999 na portu modema (TRUNK), ena zelo mala šansa pa je tudi, da switch ne spusti VLANa naprej, čeprav takega dumb switcha osebno še nisem srečal.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik jinetera je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tV dnevni sobi je EON box ali NEO?\n\t\t\n\t\tKlikni za razširitev\n\t\nNEO je, seveda, sem se zatipkal. V glavnem zadeva je rešena s preklopom lan kabla v drugi port na modemu, tega,  ki je prej vodil v zgornje prostore kjer je prvotno Box bil.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tNEO Smartbox\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tZ dostopom do vaših najljubših programov, aplikacij in iger vam NEO prinaša neskončno priložnosti za zabavo v vašem domu.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.telekom.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Tekekom BOX S",
+    "content": "Ampak samo  Netgem 8200 in Netgem 5200.\n7700 in 7800 ostaneta normalno v delovanju.",
+    "author": "jinetera",
+    "author_level": "Pripravnik"
+  }
+]

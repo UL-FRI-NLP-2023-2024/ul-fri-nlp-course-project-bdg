@@ -1,0 +1,110 @@
+[
+  {
+    "message": "V Excelu bi rad napisal skripto za en gumb, ki ga imam v workbooku, da bi ob kliku nanj iz odštel neko od ene celice odštel vrednost druge, rezultat pa bi bil v prvi celici.  Zaenkrat znam v workbook namestiti gumb in posneti makro ter pogledati skripto posnetega makra. ",
+    "user": "Kaiser"
+  },
+  {
+    "message": "Ne zastopim kaj bi rad... ampak zato ne rabis makra in programa!!?? Ce bi rad A3 celico odstel od A2 in shranil v A1 - ce to jaz prav zastopim, zapisi samo v celico A1: \"=A3-A2\" in to je to... ce bi pa rad da se ti to zapise v celico A1 sele ko pritisnes na gumb pa posnami makro kako zapises to v celico A1, ga shrani in nastavi da se sprozi ob tem gumbu, natu pobrisi vsebino celice A1 in to je to.  Samo dvomim da si to hotel... zato malce bolje pojasni zadevo pa bo.. ",
+    "user": "matic"
+  },
+  {
+    "message": "Rad bi, da se ob pritisku na gumb vrednost v neki celici zmanjša za določeno konstantno vrednost (ta vrednost pa je zapisana v neki drugi celici). Se pravi, če klikam na gumb se vrednost v celici zmanjšuje. ",
+    "user": "Kaiser"
+  },
+  {
+    "message": "Dim konstanta As Integer  Sub odstevanje()  'mesto konstante, v 1. vrstici in drugi koloni Row = 1 Col = 2  'prebere vrednost konstante konstanta = Cells(Row, Col)  'zmanjsa aktivno celico za konstanto Cells(Row, Col) = ActiveCell.Value - konstanta  End Sub ",
+    "user": "losnah"
+  },
+  {
+    "message": "Aja pa se to:  V meniju Tools->Customize, izberi Commands tab, pod Categories izber Macros. Izberi  Custom Button in ga nesi na toolbar.  Klikn na njega z desno tipko izberi Assign Macro. Izber makro, ki si ga napisu. Poj pa zapri okno Customize. ",
+    "user": "losnah"
+  },
+  {
+    "message": "1 Napaka: vrstico:   Cells(Row, Col) = ActiveCell.Value - konstanta  zamenjaj z  ActiveCell.Value = ActiveCell.Value - konstanta ",
+    "user": "losnah"
+  },
+  {
+    "message": "Super dela. Hvala! ",
+    "user": "Kaiser"
+  },
+  {
+    "message": "da ne bom odpiral nove teme:  moram narest en makro v excelu, oziroma proceduro v vba.  prvi korak je tak, da moram odprt (ter kasneje tudi zaprt) eno xls datoteko v novem oknu. neki sem brsku na netu, ampak vse kar sem najdu je odpiranje fajlov prek \"OpenFile\" dialoga, kjer mora user sam izbrati file ter klikniti open. no, tega nocem... ker pac nimam pojma o VB sprasujem znalce kako prevesti fopen ter fclose  ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Oboje je čisto specifično excelu.  Odpiranje: Workbooks.Open FileName:=\"X:\\Pot\\ExcelovaPeglednica.xls\"  Zapiranje je pa rahlo bolj komplicirano: Lahko zapreš vse odprte datoteke Workbooks.Close, določenega Workbooks(\"ExcelovaPeglednica.xls\").Close ali pa preko ThisWorkbook ali ActiveWorkbook lastnosti (Application) npr. Application.ThisWorkbook.Close (oni application lahko spustiš). ActiveWorkbook tu pomeni trenutno aktivni, ThisWorkbook pa tistega kjer se nahaja makro (VBAProject). Če uporabljaš personal.xls ali add-on, thisworkbook navadno odpade.  Ko zapiraš, navadno excel zagnjavi s shranjevanjem. Temu se izogneš, da pred zapiranjem vpišeš Application.DisplayAlerts = False in po zapranju nazaj nastaviš na true (drugače se ohrani). ",
+    "user": "Mercier"
+  },
+  {
+    "message": "tnx!  se en Q: kako pa naredis povsem nov prazen list ter mu das recimo svoje ime? ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "se en    kako preveris ce obstaja dolocen sheet? ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "sem pogruntal    workbooks.add workbooks(\"id\").sheets.count workbooks(\"id\").sheets.name ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": " vba exampli  ampak se vedno skoz podpicje pisem  ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Najkoristnejše povezave so zbrane tu: http://www.matjazev.net/prtenjam/index....  www.matjazev.net in na www.webblod.net je forum namenjen VBA. Tole dvoje je domače, za kaj drugega pa ne vem. ",
+    "user": "Mercier"
+  },
+  {
+    "message": "zakaj za wraga mi tole javlja subscript out of range error?  Set wb = Workbooks.Add Application.DisplayAlerts = False wb.SaveAs FileName:=\"output.xls\" Application.DisplayAlerts = True MsgBox \"blak\" Windows(\"output.xls\").Select ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Objekta window ne moreš select-at. Je pa tisti output.xls itak trenutno aktivni zvezek, ko si ga dodal.  Set wb = Workbooks.Add Application.DisplayAlerts = False wb.SaveAs Filename:=\"output.xls\" Application.DisplayAlerts = True MsgBox \"blak\" Workbooks(\"output.xls\").Activate  Subscript out of range pa mi ni jasen. Kje točno se ti pa ustavi izvajanje? Napoveduješ spremenljivke? (option explicit) V nasprotnem primeru lahko pride do čudnih napak... ",
+    "user": "Mercier"
+  },
+  {
+    "message": "ma ja, sej mi je nekako ratal, sem uporabil activate pa je zacelo delat...    napako mi je pa javljalo direkt po blak-u .   > je pa tisti output.xls itak trenutno aktivni zvezek, ko si ga dodal.  ja, sam vmes operiram se z enimi xls-i tko, da nisem ziher kater je aktiven in kater ne.  mam pa novo tezavco    imam en string zapis, ki je v biti hex vrednost (12 znakov). zdej morem izvest tole: 2000 A0B1 CCEE 1) po dva skupi vzet in jih obrnt 0200 0A1B CCEE 2) vzet en znak in njegov bitni zapis obrt (reverse) 0 - 0000 -> 0000 2 - 0010 -> 0100 A - 1010 -> 0101 0 - 0000 -> 0000 itd...  kako najlazje do tega? ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Ven vržeš presledke:  MyStr = Replace(niz, \" \", \"\")  Najhitreje obrneš po dva znaka v nizu:  For i = 1 To 12 Step 2\n  MyStrFUBAR = MyStrFUBAR & StrReverse(Mid$(MyStr, i, 2))\nNext\n  Za bitni zapis nevem kaj točno počneš, ampak v osnovi boš rabil select case stavek s šesnajstimi selecti, noter pa napisano, kaj naj bo kaj. Recimo funkcijo, ki sprejme string (hex) in vrne string (bin).   -------------- edit Eh, en šlampast del kode... ",
+    "user": "Mercier"
+  },
+  {
+    "message": "no zadeva deluje tko kot mora...  me pa zanima se ena stvar: zdej je postopek tak, da odprem xls filet, naredim data extract ter filet zaprem, nato vzamem drugega in tako naprej... ob vsem tem se seveda dogaja todno to :) okna se odpirajo in zapirajo kot zmesana. se da file odprt tako, da ne bo skaku gor? al bo treba za to presaltat na VB? ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Z Application.ScreenUpdating = False se znebiš bliskov. Ni treba vrednosti postavljat na true, ne spremeni nobene nastavitve excela.  Če rabiš excel, da ti kaj postori, ne rabiš ga pa gledat, bi mogoče skripta bila OK.   Set objExcel = CreateObject(\"Excel.Application\")  'odpre excelov zvezek objExcel.Workbooks.Open(\"X:\\zvezek.xls\")  'posuje excel z nevidnim prahom objExcel.Visible = False  'nekaj napiše, da ne bo zgledalo, 'da smo bezveze odpirali objExcel.Range(\"A1\") = \"WSH was here\"  'naredi, da excel ne gnjavi pri shranjevanju objExcel.DisplayAlerts = False  'shrani zvezek.xls kot zvezek1.xls objExcel.Workbooks(\"zvezek.xls\").SaveAs (\"X:\\zvezek1.xls\")  'dovoli excelu nazaj gnjavit objExcel.DisplayAlerts = True  'ugasne excel objExcel.Quit  Set objExcel = Nothing ",
+    "user": "Mercier"
+  },
+  {
+    "message": "heh, samo tezit mu moras, kaj?  ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "false screen updating deluje ok.  me pa zanima ena stvarca: ce bi hotu zadevo narest v \"pure\" VB z takim fancy gui-jem ter brez kakrsnih koli vidnih excelovih datotek, je koda zelo drugacna al bi se lahko zmuznu cez sz ctrl+c in ctrl+v ter kaksnim find/replace?  ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Če bi delal z excelom, bi zgledalo cca. kot zgornji VBS. Skoraj isto kot v samem excelu, ampak spredaj vedno 'objExcel'. Po  tem kopitu. ",
+    "user": "Mercier"
+  },
+  {
+    "message": "v VB: lExcel je Excel.app, selectam en sheet, nato pa hocem se en select: lExcel.Selection.SpecialCells(xlCellTypeLastCell).Select error: Ni mogoce dobiti lastnosti: SpecialCells razreda: Range ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": " If lExcel.Workbooks(lFileList(iFile)).Sheets(iGeneral).Cells(iRow, jLAA) <> Empty Then\n  tole tud noce, je empty problem (kot variant)? ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "v VB: lExcel je Excel.app, selectam en sheet, nato pa hocem se en select: lExcel.Selection.SpecialCells(xlCellTypeLastCell).Select error: Ni mogoce dobiti lastnosti: SpecialCells razreda: Range  Problem je, da pri pozni gradnji ne moreš uporabljat poimenovanih konstant excela.  xlCellTypeLastCell = 11  torej: lExcel.Selection.SpecialCells(11).Select   If lExcel.Workbooks(lFileList(iFile)).Sheets(iGeneral).Cells(iRow, jLAA) < > Empty Then  tole tud noce, je empty problem (kot variant)?  Hmm... Meni dela (VBS). Mogoče, če dodaš na konec še Value? (ali Value2, še bolje) ",
+    "user": "Mercier"
+  },
+  {
+    "message": "sem spravil skupaj   vcasih je dobro pri projektu dodati se kako referenco    ampak ni mi jasno zakaj je zadeva tako pocasna! kodo sem rahlo preuredil (beri optimiziral!), poskusil sem uporabljati cim manj late bindinga, faktor razlike hitrosti pa je vsaj 10x (tko na uc). warum?  ",
+    "user": "Vesoljc"
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Pozdravljeni.  Imam zelo zanimiv problem. Pred dnevi sem kupil external hdd docking station (konkretno IcyBox IB-124CL-U3). Zadeva ima zunanje napajanje, usb 3.0 izhod/vhod in dve reži za 2.5 ali 3.5 diska. Super. Majn super je dejstvo, da ga ne morem nikakor usposobiti za normalno delovanje. Najzanimivejši del je, da dock deluje delno. Ko je priključen v računalnik windows zazna disk in ga odpre (normalno, brez težav, takoj). Branje z diska preko docka je normalno, zapisovanje manjših datotek je možno. Problem se pojavi pri zapisovanju večjih (nekaj 100 MB) datotek ali disk bencmarku. Takrat disk za nekaj sekund zapisuje podatke in nato mu hitrost pade na nič. Disk se vrt, windows javlja 100% activity za disk in dock javlja, da disk nekaj “dela”. To traja potem npr. minuto in takrat se windows odloči, da napravo sam izključi/izvrže (slikici).   Sam sem poskusil že marsikaj tukaj so pa znana dejstva : 1)dock z obema (3,5” in/ali 2,5”) ali enim diskom z istimi kalbi deluje NORMALNO na drugi Windows 10 napravi (kišta) 2)dock deluje polovično na prenosniku (z zgoraj napisanimi problemi) 3)posodobil sem chipset od prenosnika (večkrat) (ne pomaga) 4)Dock ne deluje niti v enem od usb 3.0 portov na prenosniku. Probana oba. DELUJE PA preko adapterja usb-c -> usb 2.0 (banalno mala hitrost zaradi 2.0 standarda) 5) Preko usb 2.0 deluje tudi na ostalih napravah 5)device manager ne javlja nobenih problemov (klicajčkov) dokler sam ne “izvrže” naprave. Vse USB naprave sem uninstall in na novo naložil preko device managerja. Večkrat, vedno brez uspeha. Vmes seveda razni restarti sistema. 6)namesto windows kopiranja sem poskusil še drugi program za kopiranje (fastCopy). Tudi ta ni uspel z kopiranjem (na začetku nekaj zapiše kot windows potem pa več ne more) 7)Igral sem se tudi z nastavitvami diska v device managerju (kje cache, high performance itd.) Nič ne pomaga 8)Računalnik je nastavljen na high performance, za ziher pa še preverjeno ne izklaplja diskov (nikoli) ter ne izklaplja USBja 9)nekje sem prebral, da bi lahko pomagala nastavitev BIOSa tako, da je disablan legacy mode. To sem storil. Efekta ni 10)Windowse sem zagnal v safe modu, tudi tako so bili enaki problem 11)na prenosnik z lahkoto priklučim zunanje usb 3.0 diske (3,5\" z zunanjim napajanjem in 2,5\" z napajanjem iz usbja). Vsi delujejo normalno, dosedaj še brez problemov.  TL;DR Prenos na zunanji HDD se po nekaj sekundah sam ustavi. Isti hardware na drugem PCju dela tako, da hardware (po moji logiki) ni problem. Isti hardware dela na usb 2.0 na napravi kjer ne dela na usb 3.0 tako, da obtožujem software/driverje, ki sem jih že posodobil, ponovno nalagal ampak brez efekta.   Edina stvar, ki jo še vidim je posodobitev BIOSa če bi to pomagalo ampak raje preizkusim prej vse ostalo, ker mi bom potem imel problem z boot sekvenco windosow in NVME ssdjem v mašini. To je res ZADNJE na mojem spisku, ker dvomim, da bo pomagalo (trenutni bios je drugače iz novembra 2015).   Resnično mi je zmanjkalo idej, vse najdene ideje iz spleta pa sem že poskusil in brez uspeha. Takšnega obnašanja preko usbja ne poznam. Bom hvaležen za vse ideje/razmišljanja/nasvete.                 ",
+    "user": "okica11"
+  },
+  {
+    "message": "Kateri prenosnik? Starejši USB 3.0 čipi niso 100% kompatibilni z vsemi USB 3.0 napravami... ",
+    "user": "Han"
+  },
+  {
+    "message": "precej novi prenosnik: konkretno MSI GS60 6qe (skylake arhitektura, Intel HM170 chipset, ...) ",
+    "user": "okica11"
+  },
+  {
+    "message": "Naloži vse posodobitve - zadnji BIOS, firmware, gonilnike; v Windows 10 posodobi USB gonilnik... ",
+    "user": "Han"
+  },
+  {
+    "message": "Vse razen biosa je posodobljeno. Kot že rečeno pa mi posodabljanje BIOSa ne diši preveč.. Pred tem raje preizkušim še kako idejo. ",
+    "user": "okica11"
+  },
+  {
+    "message": "Potem lahko poskusiš samo še USB 3.0 gonilnik za Windows 7 / Server 2008. ",
+    "user": "Han"
+  },
+  {
+    "message": "Že poskusil :(    ",
+    "user": "okica11"
+  },
+  {
+    "message": "Moraš najprej namestit Win7...  ",
+    "user": "Han"
+  },
+  {
+    "message": " ",
+    "user": "okica11"
+  },
+  {
+    "message": "Mogoče bo čez en teden rešil zadevo Windows 10 Anniversary Update...  ",
+    "user": "Han"
+  },
+  {
+    "message": "Sem klical na slovenski Microsoft... nimajo nobene pametne ideje.  Kontaktiral proizvajalca prenosnika in so predlagali ponovno namestitev win 10. Človek več ne ve ali se naj joče ali smeji.  Ker sem 99% da je problem v enem od sledečih: USB Attached SCSI (UAS) Mass Storage Device USB xHCI Compliant Host Controller  me zanima kako jih naj torej na pravilen način odstranim/reinstallam. Edina pot, ki jo poznam je preko device mamagerja in potem desni klik in uninstall. Verjetno še je kakšna boljša.. ",
+    "user": "okica11"
+  },
+  {
+    "message": "S tem ne boš nič dosegel, ker ti bo Win10 vedno znova namestil isti gonilnik. Flešaj BIOS in počakaj na omenjeni Update. Če ne bo delovalo, kontaktiraj MSI. ",
+    "user": "Han"
+  },
+  {
+    "message": "Zanimivo, da je teh problemov kar veliko, tudi na win7 in win8, ker so gonilniki za vse USB3 naprave, napisani z levo roko. Sam sem zadevo rešil z nabavo USB 2 naprave iste znamke in zadeva deluje b.p.. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Puf.... Je*a :( ne morem verjet da zadeva dejansko deluje nekaj sekund (prenos) preden se ustavi. To me zelo spravlja ob živce. Bi pričakoval ne dela/dela. @han si prepričan, da bo vedno izbral enak gonilnik? Morda pa je kakšen konfiguraciski del curruptan (ugibam). Universary update sem 99%, da ne bo pomagal saj močno dvomim, da bo dopolnjen gonilniški del sistema. Kar se tiče BIOSa dopuščam možnost, da bi lahko pomagalo ampak se mi zdi malo verjetno. Ena možnost bi bila ponovna namestitev sistema ampak tudi to mi trenutno ne diši preveč (zaradi ponovnega nalaganja vseh programov). ",
+    "user": "okica11"
+  },
+  {
+    "message": "Kloniraš disk in za test namestiš 7 in 10... ",
+    "user": "Han"
+  },
+  {
+    "message": "Že že.. Ampak rabil bi/bom na win 10 in zagotovo deluje na win 10, ampak fizično na drugem računalniku. Bom najbrž na prenosniku naredil novo particijo in še enkrat na friško naložil win 10 in se potem dalje lotil draiverjev in testiranja... Če pa slučajno nebo šlo na tej drugi namestitvi 10-ke pa jo teoretično lahko povozim z win 7 pa še enkrat probam.   Hvala za ideje, sporočim ko bo znano kaj novega :) ",
+    "user": "okica11"
+  },
+  {
+    "message": "Še prej pa flešni BIOS!  ",
+    "user": "Han"
+  },
+  {
+    "message": "Noben od teh nasvetov ti ne bo pomagal, ker so gonilniki za USB3 pomanjkljivi in nekatere stvari meče ven, med njimi tudi icybox. Poizkusil na parih mašinah, na različnih sistemih - od xp do 10-ke in mi ni hotelo nikjer narediti kopijo diska.  Sedaj imam enako USB2 in dela b.p., je pa precej počasneje. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Intelov USB 3.0 gonilnik za Skylake je načeloma le eden. Poraja se vprašanje, kako je zadevo MSI (strojno) implementiral... ",
+    "user": "Han"
+  },
+  {
+    "message": " solatko je 26. jul 2016 ob 19:27 izjavil:Noben od teh nasvetov ti ne bo pomagal, ker so gonilniki za USB3 pomanjkljivi in nekatere stvari meče ven, med njimi tudi icybox. Poizkusil na parih mašinah, na različnih sistemih - od xp do 10-ke in mi ni hotelo nikjer narediti kopijo diska.  Sedaj imam enako USB2 in dela b.p., je pa precej počasneje.   Zelo zanimivo. Pa si jih kaj kontaktiral (raid sonic oz icybox) ? Meni drugače vse ostale usb 3.0 naprave delujejo normalno (zunanji 3,5 in 2,5 diski, ključki,..). Res hecno ampak tudi primeni deluje preko usb 2.0. Še bol hecno pa da dela BP preko usb 3.0 na neki Lenovo kišti z nevem katero lenovo matično ter i5 650, 4gb dd3 itd... svašta  Saj nevem ali naj krivim gonilnike ali icybox periferijo.. ",
+    "user": "okica11"
+  },
+  {
+    "message": "Verjetno eno in drugo ni kompatabilno med seboj. Z USB3 sem imel kar nekaj težav z različnimi napravami. Tudi USB3 hubi se pri prenašanju datotek med ključki, obnašajo podobno. Redko kaj gre lepo skozi. Pri 64 in 128GB hitrih ključkih je to kar velik problem, da je potrebno najprej prenesti na računalnik in potem na drugi ključek.  Torej so verjetno vzrok nedodelani gonilniki za USB3 na matičnih ploščah. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Poleg gonilnikov so vrzok za nekompatibilnost tudi različna čipovja oziroma USB 3.0 procesorji, ki se standarda ne držijo 100%. To velja za oba tabora, računalnike in medije (ključki, diski...). ",
+    "user": "Han"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Pred kratkim sem z FF šaltal na Chrome.\nEden večjih \"projektov\" je bila inštalacija certifikata (Poštarca), ki mi zdaj različno deluje na službenem in domačem compu (na obeh sem seveda prijavljen v Chrome).\n\nNa službenem (Win10)  ni ob vsaki zahtevi za uporabo certifikata zahteva geslo, kar je PRAV. Na domačem (Win7) pa lahko certifikat uporabljam že samo, ko sem prijavljen v Chromu. Sicer moram klikniti neko okno, da dovolim uporabo, a gesla ne zahteva. To mi ravno ne daje najboljšega občutka.\nKako, kje spremeniti to nastavitev , da mi bo tudi domači compu ob vsaki zahtevi po uporabi certifikata Chrome zahteval geslo?\nVerjamem, da sem ob uvozu certifikata kaj drugače klikal na odmačem in službenem compu, samo nimam pojma kaj.\n\nAja, pa še nekaj...\n...v čem je \"fora\" datoteke \"Varnostno potrdilo .cer\" in datoteke \"Izmenjava osebnih podatkov .p12\"?\nKo npr. izvozim certifikat iz Chroma (skupaj z varnostnim ključem) mi na mesto izvoza shrani datoteko \"Izmenjava osebnih podatkov .p12\". Je to OK?\nŠe nekaj: če certifikat izbrišem \"iz Chroma\" na domačem compu, ali bo izbrisan tudi na službenem, ker sem prijavljen v isti profil na Chromu?\n.\nVerjamem, da je že iz mojega vprašanja jasno, da nisem ravno kakšen advanced user tako, da prosim za pomoč na meni razumljivem nivoju  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.\nHvala.",
+    "author": "Mr_Wolf",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Certifikat ni shranjen v Chomu tako kot je bil v FF ampak je v sistemu. Lahko potem uporabiš isti certifikat tudi v IE brez ponovne namestitve. Če ga odstraniš iz sistema, to ne bo vplivalo na drugi PC, ker ga ne odstraniš iz Chroma. Pri namestitvi certifikata si očitno izbral nižjo stopnjo varnosti zato ti pa ne teži za geslo. Če bi certifikat namestil z višjo stopnjo varnosti pa bi mu vpisal še geslo in ti vedno teži za geslo. Če lahko to naknadno spremeniš brez ponovne namestitve gesla, pa ne vem.",
+    "author": "Zgaga",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Hvala za odgovor.\nTorej, če na domačem PC-ju iz Chroma (Win?) izbrišem certifikat in ga namestim še enkrat, ter označim višjo stopnjo varnosti, bi to rešilo mojo težavo.\nMogoče veš v čem je trik dveh različnih tipov datotek za \"certifikat\" - \"certifikat\".cer oz. \"Izmenjava podatkov\".p12?",
+    "author": "Mr_Wolf",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Si mogoče razmišljal o nakupu pametnega USB ključka za hrambo certifikatov? To je edini način za varno shrambo, sploh če boš certifikat uporabljal na več različnih računalnikih.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Mr_Wolf pravi:\n\nMogoče veš v čem je trik dveh različnih tipov datotek za \"certifikat\" - \"certifikat\".cer oz. \"Izmenjava podatkov\".p12?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nCertifikat je sestavljen iz dveh delov, privatnega in javnega ključa. Javni se uporabi za kodiranje podatkov, privatni pa za dekodiranje. V datoteki .cer je shranjen samo javni ključ + podatki o lastniku certifikata. V .p12, ali .pfx pa sta ponavadi shranjen a oba ključa in še certtifikat od izdajatelja (POSTArCA, SiGEN, ACNLB, ...). p12 je ponavadi tudi zaščiten z geslom.\n\nOz. če povzamem bolj preprosto. Za prijavo v spletno bančništvo/furs/... rabiš .p12. Če imaš samo .cer ne bo delalo, ker tam notri ni privatnega ključa.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Žal, ne poznam kako to sploh deluje.\nMoraš potem ob vsaki potrebi po uporabi certifikata le-tega s \"pametnega\"(kakšen je to?) USB ključka uvoziti v spletni brskalnik (IE/FF/Chrome) in ga po uporabi za sabo v brskalniku pobrisati?",
+    "author": "Mr_Wolf",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Nekaj takega -- https://www.creaplus.si/en/shop/smartusbkey",
+    "author": "asko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Tega sploh nisem poznal za \"privat\" uporabo. \nPreverim zadevo.\n\nFull hvala! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Mr_Wolf",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "Ce imam halcomovo pametno kartico  in na njej certfikat za proklik aki lahko na to kartico nalekako namestim tudi osebne certifikate?",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Mr_Wolf pravi:\n Hvala za odgovor.\nTorej, če na domačem PC-ju iz Chroma (Win?) izbrišem certifikat in ga namestim še enkrat, ter označim višjo stopnjo varnosti, bi to rešilo mojo težavo.\nMogoče veš v čem je trik dveh različnih tipov datotek za \"certifikat\" - \"certifikat\".cer oz. \"Izmenjava podatkov\".p12?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJa. Mislim da je finta v tem da je neumni default nižja stopnja varnosti, brez gesla. Če se prav spomnim s prvotno obliko certifikata NLB ni šlo, sem izvozil v drugi fromat, pobrisal in ponovno uvozil z višjo stopnjo varnosti.",
+    "author": "fujtajksel",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Chrome in certifikati",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Mr_Wolf pravi:\n Žal, ne poznam kako to sploh deluje.\nMoraš potem ob vsaki potrebi po uporabi certifikata le-tega s \"pametnega\"(kakšen je to?) USB ključka uvoziti v spletni brskalnik (IE/FF/Chrome) in ga po uporabi za sabo v brskalniku pobrisati?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe, to je ravno poanta pametnih USB ključkov (ki so v bistvu minificirana verzija pametne kartice + USB čitalca).\n\nKljuček je \"računalnik v malem\" in vso podpisovanje/šifriranje s certifikati se izvaja na samem ključku. Certifikat nikoli ne zapusti ključka (tudi skopirati ga ni možno), zato je to edina varna hramba certifikatov. Torej ko enkrat na ključek (ali pametno kartico) naložiš certifikat, ga lahko samo še uporabljaš ali izbrišeš.",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "message": "Imam T-2 in dokaj zapleteno shemo lokalnega omrežja...   \t\t\t\t\t     Amino\n\t\t\t\t\t       |\n(LAN switch) --- eth0 SERVER eth2 ------- (TV switch) --- C V\n   |   |  \t       eth1\t\t\t\t    O ---- T2\n  PC1 PC2 \t\t|\t\t\t\t    O\n\t\t\t--------------------------------- A D\n  Server ima bridgani mrežni kartici za TV promet (bridge je brez IPja), eth1 se normalno NATa na ven. Zdaj bi rad mreži dodal še wireless. Ker ne bi menjal LAN switcha za wireless (da mi šmelca v sobi 1m stran od glave) sem dobil idejo da bi TV switch (ki je v drugi sobi) zamenjal z wireless routerjem. Switching del routerja bi normalno opravljal switch funkcijo, wireless pa bi s pomočjo VPN tunela spravil čez eth2 v domače omrežje . Router ASUS WL-500gP sem že uspešno poflešal z openwrt, težave mi dela konfiguracija.  Shema zamišljenega omrežja. eth2 mrežna bi bila priklopljena na WAN port od routerja, AMINO in VOOD v LAN porte, WAN port in eth2 na serverju bi mela nek interni IP, WIFI bi bil v svojem subnetu in nato bi se preko WAN porta vzpostavil tunel v interno LAN omrežje (če kdo šteka... ):                                (tunel)\n\t\t\t............................WIFI\n\t\t\t.\t\t\t     .\n\t\t\t.\t\t     Amino   .\n\t\t       ppp0\t\t       |     .\n(LAN switch) --- eth0 SERVER eth2 ------- (ASUS WL500) -- C V\n   |   |  \t       eth1\t\t\t\t    O ---- T2\n  PC1 PC2 \t\t|\t\t\t\t    O\n\t\t\t--------------------------------- A D\n  Problem je, ker takoj ko dodam WAN port v bridge na routerju (WAN in LAN porti morajo bit bridgani zaradi TV prometa), zgubim povezavo do routerja...   root@OpenWrt:/etc# ifconfig\neth0      Link encap:Ethernet  HWaddr 00:17:31:1B:03:BC  \n          UP BROADCAST RUNNING PROMISC MULTICAST  MTU:1500  Metric:1\n          RX packets:2590 errors:0 dropped:0 overruns:0 frame:0\n          TX packets:3160 errors:0 dropped:0 overruns:0 carrier:0\n          collisions:0 txqueuelen:1000 \n          RX bytes:479218 (467.9 KiB)  TX bytes:409799 (400.1 KiB)\n          Interrupt:4 \n\nlo        Link encap:Local Loopback  \n          inet addr:127.0.0.1  Mask:255.0.0.0\n          UP LOOPBACK RUNNING  MTU:16436  Metric:1\n          RX packets:0 errors:0 dropped:0 overruns:0 frame:0\n          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0\n          collisions:0 txqueuelen:0 \n          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)\n\nvlan0     Link encap:Ethernet  HWaddr 00:17:31:1B:03:BC  \n          UP BROADCAST RUNNING PROMISC ALLMULTI MULTICAST  MTU:1500  Metric:1\n          RX packets:19 errors:0 dropped:0 overruns:0 frame:0\n          TX packets:1014 errors:0 dropped:0 overruns:0 carrier:0\n          collisions:0 txqueuelen:0 \n          RX bytes:2242 (2.1 KiB)  TX bytes:129736 (126.6 KiB)\n\nvlan1     Link encap:Ethernet  HWaddr 00:17:31:1B:03:BC  \n          inet addr:192.168.1.10  Bcast:192.168.1.255  Mask:255.255.255.0\n          UP BROADCAST RUNNING PROMISC ALLMULTI MULTICAST  MTU:1500  Metric:1\n          RX packets:2580 errors:0 dropped:0 overruns:0 frame:0\n          TX packets:2148 errors:0 dropped:0 overruns:0 carrier:0\n          collisions:0 txqueuelen:0 \n          RX bytes:431016 (420.9 KiB)  TX bytes:265263 (259.0 KiB)\n\nroot@OpenWrt:/etc# brctl show\nbridge name     bridge id               STP enabled     interfaces\nroot@OpenWrt:/etc# brctl addbr br0\nroot@OpenWrt:/etc# ebtables -t broute -L\nBridge table: broute\n\nBridge chain: BROUTING, entries: 0, policy: DROP\nroot@OpenWrt:/etc# brctl addif br0 vlan0\nroot@OpenWrt:/etc# brctl addif br0 vlan1\n (...in nato pomaga samo reset...)  Any ideas...moram rečt da mi niso čist jasni te vlani na routerju (vlan1 sem konfigural za port0 (WAN), vlan0 so porti 1 2 3 4). Router ima poleg eth0 tudi še eth1 (??) in eth2 (najbrž wireless). Če bridga ne vklopim dela stvar dokaj pričakovano, s tunelom se bom pa ukvarjal pol ko bodo osnove delale... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "VIdim, da ti je jasno, kaj delas, zato ti bom razlozil samo nekaj malega o tem routerju:  zadeva nima 5 mreznih interface-ov, ampak enega, ki je interno povezan s 6 portnim switchem (katerega konfiguriras z robocfg). Drugi interface pa je wifi.   Z robocfg torej nastavi, da bo vsak port posebej VLAN, ter da vsi ti VLAN-i (tagani) pridejo do routerja. Nato na routerju nastavis, da spila z vsemi VLAN-i, ter jih bridgas med sabo kot zelis.  Lazje bi bilo, ce bi imel povezavo na router preko serijskega porta, da se lahko igras in poskusis stvar vzpostavit. Naceloma bi se na Asusu to dalo s kaksnim USB-to-serial donglom (saj ima USB, ne?). ",
+    "user": "b"
+  },
+  {
+    "message": "USB ima, pa je gor konzola? Kako prideš do nje? No, saj zaenkrat bom pazljiv pa sprobal preden kaj commitam v nvram ampak nikoli ne veš :)  Fizične mrežne ima zagotovo 3, to javi dmesg...   PCI: Setting latency timer of device 00:01.0 to 64\neth0: Broadcom 47xx 10/100BaseT Ethernet 00:17:31:1b:03:bc\nPCI: Setting latency timer of device 00:02.0 to 64\neth1: Broadcom 47xx 10/100BaseT Ethernet 40:10:18:00:00:2d\nPCI: Setting latency timer of device 01:02.0 to 64\nPCI: Enabling device 01:02.0 (0004 -> 0006)\neth2: Broadcom BCM4318 802.11 Wireless Controller 3.90.37.0\n  eth0 je verjetno WAN-LAN switch ja, pojma nimam kaj je eth1. VLANe sem skonfiguriral kot   vlan0ports=\"1 2 3 4 5*\"\nvlan1ports=\"0 5\"\n  in to očitno dela (pridem na router preko WAN porta, ne pa preko LAN portov kot prej). Ne razumem pa zakaj vse crkne tako ko vlan0 in vlan1 dam v bridge... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "na svojem 500g deluxe imam privzeto takole: eth0 - cel switch (lan + wan) eth1 - wlan vlan0 - lan vlan1 - wan br0 - lan + wan bridge  a si nastavil pravila za ebtables tako, da ti v brouting verigi dropa IP protokol, če je ponor datagrama ip od usmerjevalnika, in podobno za ARP, da ti dropa okvirje, ki so naslovljeni na mac od routerja? to sem jaz moral narediti, ko sem pred časom spravljal sioltv preko svojega brouterja (sicer je bil na pc-ju, ampak mislim, da je zadeva enaka). ",
+    "user": "jini"
+  },
+  {
+    "message": "son of a b....očitno cela stvar zablokira dokler ne daš ifconfig br0 up. Jaz pa cel dan porabil zato  Je pa res da se stvari precej zakomplicirajo, saj grejo nekateri paketi 2x čez bridge chain-e (1x tagirani čez eth0, drugič netagirani čez vlanX). To bo treba še mal premislt točno kak je packet flow... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "dela ko šus  ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Kupil sem tegale Asusa. A je pametno že na začetku kakšen nov firmware gor dat, a je ta kt je gor ok za neki časa? Pa kakšen link dejet zraven, če je novejši.  Pa še tole vprašanje. Enim prijatlem sem kupu tud tale router pa mi težijo naj jim naštimam še brezžično povezavo z enim starim laptopom (500mhz, 96Mb Rama, 3gb diska) pa največji problem windows 98.  Ne vem kje bi dobil driverje za usb (ker sem kupu tud od Asusa tisto usb brezžično kartico) Pa še en prenosn disk bi priklopu, pa tud nimam driverjev.  A lahko kdo pomaga (link).  Thx ",
+    "user": "Climber"
+  },
+  {
+    "message": "Original firmware ni tok slab, te razni customizirani pa Premiuma še ne podpirajo na polno (če si Linux guru pa OpenWRT itak rula ;)). Za USB rabiš 98 SE, driverji za Asusa so pa na CDju (vsaj v ME so se mi inštalirali, dasiravno zadeva ne deluje sploh. Pač ME ) ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Ker je že omenjen router ASUS EL-500gP, tudi jaz tu postavljam vprašanje.  Sem lastnik tega routerja približno 16 ur. Sem newbie newbijev na področju usmerjevalnikov. Sem prikopljen na T-2 (DHCP). Za zdaj še nimam potrebe po brezžičnem omrežju, zato bi želel za zdaj to funkcionalnost routerja izklopiti. Ledica AIR periodično utripne, torej predvidevam, da brezžično router komunicira.   Kaj moram storiti, da začasno ugasnem brezžični del routerja?   LP, JOSE ",
+    "user": "Jose"
+  },
+  {
+    "message": "To bi tud jaz rad vedel. ",
+    "user": "Climber"
+  },
+  {
+    "message": "Wireless/Advanced/Enable Radio -> NO ",
+    "user": "delfinus"
+  },
+  {
+    "message": "Jaz sem prav tako pred nekaj dnevi kupil ta ruter in nevem, nekaj mu ne pase. ce mam en dan racunalnik vkloplen mi net freezne in ga moram ponovno zagnat (racunalnik), da mi normalno dela, pol na messeger se mi full dolgo vpisuje...  in imam se en problem. postavil sem ftp, da bi mi kolega preko enega drugega ftp-a poslal en file in nikak ne gre. Kaj naj naredim, da bi delalo. Moram kam vstavit kake porte in/ali ip-e? ",
+    "user": "E-xTreeM"
+  },
+  {
+    "message": "Delfinček a to pomen če daš NO, da router ne oddaja popolnoma nič signala brezžično. A se potem izklop lučka AIR.  Ker sem bral da ma ta router en notranji oddajnik, poleg njega pa še antenco. A kej veš.  A je kdo že probal kej dol vlečt na prenosn disk in da je mel izklučen comp. A je kompliciran to naštelat? ",
+    "user": "Climber"
+  },
+  {
+    "message": "Lucka potem ne blinka vec, ampak konstantno gori. Takrat je izkljuceno. Antenca je prilozena poleg. Kar se pa tice HDD na USB pa z novim Firmwarom gre brez problema, nisem se poizkusil, ker se nimam USB racka. Uporablja se en program, ki ga dobis poleg na CD in zadeva deluje po pricevanjih uporabnikov. ",
+    "user": "delfinus"
+  },
+  {
+    "message": "Asusi radi ponagajajo z izklopom WiFija, včasih je potrebno izklopit AIR v vseh dnevih v tednu...  ",
+    "user": "pujsek_"
+  },
+  {
+    "message": "Pujsek, kaj si mislil s tem vse dni v tednu.... ",
+    "user": "Climber"
+  },
+  {
+    "message": "Climber: v settingsih od routerja imas ob katerih dnevih zelis, da wireless dela oz ne dela, specificiras lahko tudi uro. lp, D. ",
+    "user": "delfinus"
+  },
+  {
+    "message": "Samo meni se vedno ono ne dela ko sem prej gori napisal, da bi mi kolega poslal preko drugega ftp-a na usb disk... ",
+    "user": "E-xTreeM"
+  },
+  {
+    "message": "Evo prišel je Oleg FW...  FW DL Center wlan-sat ",
+    "user": "pujsek_"
+  },
+  {
+    "message": "sicer pa bi vsakemu, ki kupi router priporočal, naj prebere navodila, da ne bo poznejših težav.  ",
+    "user": "bluefish"
+  },
+  {
+    "message": "da ponucam mal svojo temo...na kok se splača dat txpower? Niti ne rabim kakega hudega dosega (uglavnem po fletu, max 2 stene), hkrati pa ne bi rad tumorja . Trenutno imam na 79mW (19Dbm). Je to veliko? Preveč? Nimam nobene predstave... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Ja pri Linksysih je včasih bila največja razlika med 54 in 80mW, potem ni bilo ne vem kaj niti pri 250! Tudi pri Asusih je nekaj razlike med 19 in čez 35...  Torej če imaš neko srednjo vrednost si itak izkoristil to nastavitev! ",
+    "user": "pujsek_"
+  },
+  {
+    "message": "Jaz imam pa sledeč problem s tem routerjem.  Na njega imam priključen printer, imam pa dva računalnika, ki printata preko routerja.  En dan printer dela potem pa ne dela več, ponovno morm vnest nov IP od računalnika tam kjer dodam nov printer na compu.  Ni mi jasn, zakaj ima IP od compa vezo da noče več printat?  Aja nism še naložu nobenga novejšega firmwara.  Pa še to, kako zaprem mrežo da se drugi ne morejo brezžično povezovat zraven. ",
+    "user": "Climber"
+  },
+  {
+    "message": "Ja potem pa namesti drug FW, mrežo lahko zakleneš z MAC filtrom, IP+MAC, WEP in WPA enkripcijo... ",
+    "user": "pujsek_"
+  },
+  {
+    "message": "No tudi jaz sem kupil omenjeni ruter. Pa me zaima kako naj odprem porte za mulo.  Lp ",
+    "user": "amper"
+  },
+  {
+    "message": "@amper,  zaženi emulo, poišči \"Nastavitve\" -> \"Povezava\" in poglej katere številke imaš vpisane pod \"Port\" (TCP in UDP). Potem na ruterju pod \"NAT Setting\" -> \"Virtual Server\" vpiši te številke. Pod \"Local IP\" moraš vpisati IP tistega računalnika na katerem imaš emulo ! Za razlago poglej tole sliko  stran na www3.shrani.si (ta tretji vnos je forward za mikrotorrent)  LP ",
+    "user": "ge"
+  },
+  {
+    "message": "ge:  po kliki na \"apply\" in/ali \"finish\" bo (port forward) zacel delati sele po restartu usmerjevalnika... ",
+    "user": "Bakunin"
+  }
+]

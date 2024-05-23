@@ -1,0 +1,202 @@
+[
+  {
+    "message": "Nekaj casa nazaj smo imeli debato v  tej temi o trdih diskih, namrec kako se dva diska obnasata v raid0 nacinu. Jaz in se urosbe, sva imela velike probleme, namrec cetudi sta bila v diska v raid0 so bile performanse zelo slabe ... Jaz sem predvideval, da je zato kriv strip size, ki je bil nastavljen na default vrednost, i.e. 128KB ... No, zadnjic sem sel pa preveriti svoje trditve. Namrec to o strip sajzih.  Rezultat je to (HDtach 2.61):     Pri tej meritvi je bil strip size 16KB, kar sem tudu ugotovil, da je to optimalna velikost glede na porabo procesorja.  Torej 128KB strip je popolnoma neprimeren, 64KB in 32KB prav tako, ceprav se hitrosti zboljsujejo. No potem pa nastopi naslednja \"stopnica\" 16KB, 8KB in 4KB. 4KB strip size je nahitrejsi, toda tudi ima najvecjo porabo procesorja. Skratka dolocil sem nek optimum za Maxtorjeve diske 2MB cachea in Intel SATA kontroler, da je to 16KB. Namrec strip sajz lahko varira komponent. Torej vsim, ki imate podobno kombinacijo kot jaz in imate RAID0 oz. ga zelite vzpostaviti, nastavite strip size na 16KB.   PS: Za hec poglejte kaj se zgodi, ce nekdo ne zna nastaviti RAID0 polja, namrec dva Raptorja v RAID0 pa sta glede na moje rezultate pocasna.  Test SATA diskov   ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "jest pa to že vedu :)  sem furu 2xibm 15gb 7.2k v raid 0 na kt7 je pa v kt7 FAQ pisal da je 16kb optimum... ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Sicer sam imam raid, toda ne prevec iskusenj z njim. Ali se podatki dejansko zbrisejo, ce grem spreminjat strip size naprimer z 64 na 16 k?  Tnx. ",
+    "user": "Samson"
+  },
+  {
+    "message": "->jest pa to že vedu :) sem furu 2xibm 15gb 7.2k v raid 0 na kt7 je pa v kt7 FAQ pisal da je 16kb optimum...  Blagor tebi za tvojo pamet.Ne lej, tebi je lepo pisalo v FAQu, za intel SATA raid pa pise, da je 128 proporocljiv(zgleda za pomeni priporocljiv le - najbolj nevtralen )  Drugace sem pa tudi jaz imel KT7 in na njej RAID0 in se kaj drugega ...   ->Ali se podatki dejansko zbrisejo, ce grem spreminjat strip size naprimer z 64 na 16 k?  Lej, to je vse odvisno od drajverja. Toda naceloma low cost izdelki tega ne omogocajo (oz. vsaj jaz se nisem srecal takega), najvec kar omogocajo je, ustvariti raid polje iz enega podatkovnega diska in enega praznega v windowsih. Drugace moras pa vse delati v BIOSU od RAIDa, tam pa lahko le brises polja in jih na novo kreiras in le pri kreaciji potem nastavis strip size. (no pa pri kreaciji v Winwosih tudi, toda postopek je nevracljiv)  Torej verjetno bos moral na novo skreirati RAID0 polje.   ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "No, glde PCMarka sem imel drug rezultat v glavi ... Kajti pri 16KB stipu je rezultat HDD v PCMarku mnogo visji!   Neverjetnih, skoraj 3.1k HDD pik. Raptorji skrite se!      Res, neverjetna hitrost. Tudi Winsi se zbudijo po dva tri prehodnih tiste animacije na zacetku. Da o hibernaciji ne govorim, hibernira tako hitro, da se tudi tisto okono \"Hibernating ...\" ne pokaze!(mam 512MB rama) Skratka vsi ki potrebujete veliko prepustnost racunalnika, tako ali drugace je RAID-0 prava stvar.(in da je pravilno nastavljen, ce ni, povecanja hitrosti skoraj ni!)   ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "Welcome to the club  ",
+    "user": "zile"
+  },
+  {
+    "message": "Na trenutnke, ko gledam tele teste mi je kar žal, da nimam plate z RAIDom... Zarad RAIDa se mi pa ne splača kupovat nove plate, ne? ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "razen če je opteron ready  ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Žal, pomoje ne... Verjetno bom počakal kar na Prescota ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "->Na trenutnke, ko gledam tele teste mi je kar žal, da nimam plate z RAIDom... Zarad RAIDa se mi pa ne splača kupovat nove plate, ne?  Ne oz. ce tolk nujno rabis hitrost in imas v mislis se nov HDD!Drugace se pa res splaca narediti RAID polje. Zdaj ko ima itak ze skoraj vsaka plata RAID kontroler to ni problem ...  In ce pogledamo malo bolj na siroko imamo od RAID polja same koristi. Namrec lahko kupimo malo manjsi disk in malo pocasnejsi(tisji!!) Toda, da kupimo enega temvec kar dva! S tem dobimo ogromno kapaciteto(in je se cenejsa kot ce bi kupili le en disk) Toda ko sta ta dva diska v RAIDu pa prehiti vse ... SCSIje, Fiber Channele ... Vse, vse. (izvzemino access time ) Namrec skoraj 90MB/s povprecnega pretoka podatkov je z eno besedo ODKLOP. ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "Hudo. Tole pa bolj pohitri kot dual plata.  Če bi imel denar in vse zlato...  ",
+    "user": "upirna"
+  },
+  {
+    "message": "WOW... odkritje tople vode. Revolucionarno! ",
+    "user": "jetam"
+  },
+  {
+    "message": "Ja, tale RAID je res kot je že reku asPeter, pravi ODKLOP    Toda, da kupimo enega temvec kar dva! S tem dobimo ogromno kapaciteto(in je se cenejsa kot ce bi kupili le en disk) S tem se pa ne strinjam... Ravno zdele gledam po ceniku ene firme... Res je da imajo malo dražje stvari, ampak niso važne cene, važno je razmerje med velikostmi diskov in denarjem...  Cenik: IBM - 40 GB UATA-100 7.200 rpm IC35 VANCOUVER 17.400 IBM - 80 GB UATA-100 7.200 rpm IC35 VANCOUVER 24.800  Torej, če vzamemo 2 tiha, manjša diska odštejemo 32.800 SIT... Zdej pa ista kapaciteta, ista hitrost, EN disk in odštejemo 24.800 SIT... Razlika je 8.000 SIT  Res pa je, da moramo, če hočemo seveda imeti dober, hiter sistem, \"žrtvovati\" tistih 8k SIT za hitrost... Jst bi šel prec v to, sam plata nima RAID polja    ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "jetam, naslednjič pridrži svoje butaste komentarje zase.  asPeteR je pač hotel pomagati tudi ostlim. ",
+    "user": "upirna"
+  },
+  {
+    "message": "Ej, criLin15 nisem mislim value diske ...   Raje poglej malo visje. Npr: 120GB, 2x120GB ali pa disk 250GB, je opcija 2x120GB MNOGO cenejsa in hitrejsa!!!  Je pa ena slabost: namrec MTBF se prepolovi. Toda ta podatek na normalne userja ni kriticen. ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "Ampak SerialATA raid mora pa bit še vsaj par procenta pohitritev. Moram enkrat it to zadevo pogledat k daru.  ",
+    "user": "upirna"
+  },
+  {
+    "message": "peter: 90MB/s  . Praksa je okol 20Mb  .  Probaj kopirat en avi, boš videl kaj mislim. ",
+    "user": "zile"
+  },
+  {
+    "message": "@asPeteR Aja, ja, valda šele zdej mi je počl, da gre tle za večje ribe...   No, sej pol sva si na jasnem...  BTW: Kva je MTBF? ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "WOW... odkritje tople vode. Revolucionarno!  true true     jest mam pa maxtor 5400 60gb.....in ja....dela  ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "MTBF: mean time betwean failure, oz. čas med dvema napakama na napravi.  Btw. kako hud je RAID sistem sem jaz videl že par let nazaj pri zile-tu, ko je njemu ripalo mp3je ali pa delalo direct stream copy divx-a in je delalo res noro hitreje. Jaz si bom skoraj sigurno omislil še enega Raptorja, potem pa v RAID 0   Disk performanse so totalno zanemarjen del skupne zmogljivosti compa, v bistvu je pa prav disk najožje grlo celega compa in vse kar pospešuješ tu, se še kako pozna na skupnih zmogljivostih :) ",
+    "user": "morphling1"
+  },
+  {
+    "message": "->Disk performanse so totalno zanemarjen del skupne zmogljivosti compa, v bistvu je pa prav disk najožje grlo celega compa in vse kar pospešuješ tu, se še kako pozna na skupnih zmogljivostih :)  Tocno tako. Vsi nekaj navijajo procesorje, FSB v nebo, disk pa ostaja kaken noname @ 5400 vrtljajev ...(no, malo skrajen primer, toda da se ve kaj hocem povedat ) No, s tem pa ne pravim, da ne splaca navijat procesorja! Dalec od tega, toda treba je imeti uravnovesen sistem!  ->peter: 90MB/s . Praksa je okol 20Mb . Probaj kopirat en avi, boš videl kaj mislim.  Ja, ja zile jasno. Sploh je odvisna hitrost branja od veliko, veliko stvari. Ne bi se spuscal podrobno toda, sam naj nastejem glavne: -File system -Fragmentacija -OS  Drugace pa itak, ce se bere majhne fajle, nikoli ne dosezes nebes.(krivec: access time)  Drugace pa ne glede na vse. Tale maxtor kombinacija RAID preprosto rulz.(vcasih sem imel v RAIDu IBM DTLAje, sam to ni blo to ...)  Drugace pa Morph, Raptor v RAID-0 ... To je pa ubijalsko, max prenossi morjo bit tam nekje cez 140MB/s, povprecje v HDtachu okoli 100MB/s, access time nekje pri lediscu ... Skor da ne rabis vec rama. ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "Ja, morphling se strinjam s teboj... Recimo jst sm vedno do sedaj (do testov, ki so NORI) zanemarjal disk ob misli, da je pač pogon na katerem laufa OS... Ampak zdej sm tud jst spreminil mnenje... Že razmišljam ob kakšni plati z RAIDom   Aja, tenks za razlogo MTBFja   BTW: Morphling, ko boš dobil še enega raptorja in boš imel RAID 0 pričakujem tvoje rezultate... ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "criLin15: sicer nevem iz kere jame si ti prlezu, ampak kartice z raid kontrolerjem obstajajo malo dlje kot plate z raid... ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Aja ko že ravno govorimo o RAID-u, Windows 2000 in XP omogočata software RAID stripping (RAID 0) to pomeni da lahko delaš RAID polja s poljubnim številom diskov (najlepše če so enaki, ni pa nujno) vse je odvisno samo od števil IDE kontrolerjev, edina škoda je da ne moreš imeti samega sistema na tem polju. Je pa zadeva odlična za vzpostavitev sekundarnih polj, na katerih imaš recimo swap file, ali pa kake požrešne programe, ker ti pa direktno profitirajo od povečane hitrosti. Recimo test treh diskov na treh kanalih se je izkazal skoraj za idealnega, prišlo je praktično do zapolnitve PCI vodila, transferji na začetku diska so dosegali maximalni 133 MB/s na koncu pa še vedno ogromnih 75 MB/s, govorim seveda o realnih transferjih ne o buffered rezultatih. Uf zdaj ko sem se spet malo pogledal  ta test me je prešinilo, da imam na plati malo morje IDE master kanalov in bi s kakimi tremi cenenimi 80 GB diski lahko naredil pravo štalo  ",
+    "user": "morphling1"
+  },
+  {
+    "message": "ampak kartice z raid kontrolerjem obstajajo malo dlje kot plate z raid... A pol lohk dobiš kartico RAID in ne rabš, da plata podpira RAID?? ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "Ja, sej v bistvu cisti programski raid ni kaj dosti drugacen od \"RAIDa na platah\". Kalkulacije mora v obeh primerih izvajati CPU. Le z eno razliko, RAID je v drugem primeru strojni, v drugem pa programski, in tako, kot si ze sam reku, ne more bit sistemski disk kot RAID. To je pa velika slabost - vsaj zame. Ce pa kdo sam ripa filme je pa to fina resitev. Ja trije diski v RAIDu ali pa celo strije ... Prava zver. Recimo ceneni 80GB diski -> 320GB prostora ... pa se v raidu ...  Jaz mislim, da bo raid vedno bolj popularen, vsaj pri power userjih. Recimo ideln RAID bi bil na SATA krmlmilniku, toda zdej so na platah samo po dva odvisna(ki, jih lahko zvezemo v RAID). Recimo stirje SATA diski v raidu -> res zverina po hitrosti in kapaciteti. ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "Ne mor verjet, a?  Sem mislim, da se te kartice ne morejo primerjati z raidom na plati.  ",
+    "user": "upirna"
+  },
+  {
+    "message": "->A pol lohk dobiš kartico RAID in ne rabš, da plata podpira RAID??  Seveda. Sam tolk k jaz tebe poznam se ti ta opcija ne splaca.  ->Ne mor verjet, a? Sem mislim, da se te kartice ne morejo primerjati z raidom na plati.   Kako to mislis? Raid na plati je bolj tako-tako. Prave RAID kartice npr. Adaptecove, so pravi racunalnik v malem, CPU, RAM imajo ... Stanejo pa tud kt slabsi racunalnik 100k. Sam pa podpirajo RAID-5, ji je eden najboljsih in ne obremenljujejo glavnega CPUja, pa se hitrejse so. ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "U, asPeteR, prehitel si me v odgovoru crilinu.  ",
+    "user": "upirna"
+  },
+  {
+    "message": "Seveda. Sam tolk k jaz tebe poznam se ti ta opcija ne splaca. Uf, slabo me poznaš...    Aja, kok pa stane ena taka kartica?? ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "Jaz mislim, da bo raid vedno bolj popularen, vsaj pri power userjih. Recimo ideln RAID bi bil na SATA krmlmilniku, toda zdej so na platah samo po dva odvisna(ki, jih lahko zvezemo v RAID). Recimo stirje SATA diski v raidu -> res zverina po hitrosti in kapaciteti.  Hehe in goes P4C800dlx s 4x SATA in 3x PATA neomejeno možnosti (tudi 4x hdd v RAID 0 ali pa 0+1)  2x Raptor RAID 0 za sistem, potem pa kake tri poceni 80 GB diske za RAID 0, preostalega diska, smokinnnnn'  ",
+    "user": "morphling1"
+  },
+  {
+    "message": "->Aja, kok pa stane ena taka kartica??  No vidim, da si se navdusil nad RAIDom(sej to je bil namem tega posta. ) Kartice stanejo tam od 10k naprej ... Te najcenejse so v bistvu sam IDE kontroleji ... Pravi kontolerji so pa od 50k naprej ... Sam te pa res ne rabis.  ->Hehe in goes P4C800dlx s 4x SATA in 3x PATA neomejeno možnosti (tudi 4x hdd v RAID 0 ali pa 0+1) 2x Raptor RAID 0 za sistem, potem pa kake tri poceni 80 GB diske za RAID 0, preostalega diska, smokinnnnn'   Kaj da podpira 4x? Zanimivo. Sej to je 2x Intel SATA pa 2x Od Silicon Imageja ne? In da sta lahko povezana? No to ne mi zdi res zanimivo. Ce je pa tako potem pa, Morph, nikaj ne sparaj! Stri raptorje v raid, bos vudu - takrat pa lahko res ves ram ven vrzes.  ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "Kartice stanejo tam od 10k naprej  No, sej bo kmal Miklavž, pa bo RAID kartico prnesu, božiček pa še en disk   Tale RAID res rulz... ",
+    "user": "c3R4R"
+  },
+  {
+    "message": "u mlacomu majo malo morje takih kartic...promise,highpoint,3ware... take kartice majo iste cipe kot vecina plat z raid kontrolerjem.  intelov ich5 in viin VT8237sta prva southbridge-a ki imata ze vgrajen sata raid kontroler. pa viin je malenkost boljsi, vec funkcij ma. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "V bistvu Intel RAIDa nimam, imam pa Promisov PCD20378 kontroler in ta lahko kombinira RAID med 2xSATA in 1xPATA kanalom ( možnost RAID 0 z dvema Ultra ATA 133 diskoma na tem kanalu) in če se ne motim ima E različica te plate tudi Intel RAID tam pa sploh ne zmanjka opcij :) ",
+    "user": "morphling1"
+  },
+  {
+    "message": "mnja...nevem ce lohk kr zdruzujes razlicne kontrolerje skupi.  sicer pa ce bi res radi dobr raid - 3ware escalade8500-8 sata. sam se pci-x rabs   al pa escalade7500-12   ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Tu lahko, vsaj tako piše v navodilih.  ",
+    "user": "morphling1"
+  },
+  {
+    "message": "seveda lahko kombiniras sata in pata, ce delujeta na istem kontrolerju  ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Ja, jaz tud tko mislim, vse kar je v okviru enega kontolerja se da poljubno kombinirat ...  Torej to pomeni, da lahko na ICH5, deluje v 4x raid? Torej 2x SATA in 1x PATA(in dva diska gor obesena)? Ker jaz nimam na plati nic dodatnih kontolerjev ... Ker to je pa potem fantasticno! Skoraj pol terabajta podatkov in gromozanska hitrost ob nizki ceni!(za moj primer) ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "se mi zdi da ce delas raid na pata da das lohk samo 1 disk na kanal. lahko da se motim. no pa tut ce lohk das 2, ti slave ne pomaga kej dost, ker more zmeri cakat masterja. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Čeprav moje vprašanje ne sovpada čisto natančno z raid vsebino in da ne odpiram nove teme bi kar tule vprašal. Imam disk WD-JB160Gb in sem izmeril prenos kopiranja med particijami in ugotovil da je porazen in več kot to. 700mb velik fim sem kopiral 90/sec, to pomeni po kolikor toliko natančnih izračunih 7,8mb/s. Ali je to sploh mogoče, da bi disk z 8mb cacha imel tako slabe performanse. Čemu tako ali je mogoče kje nastaviti v winsih, zakaj potem ATA 100 pa ATA133 če niti 10mb/s ni prenosa. ",
+    "user": "matrix2"
+  },
+  {
+    "message": "men maxtor 80 (2MB) kopira iz particije na particijo 700MB 55s =12,27MB/s wd 120 (8MB) pa 49s = 14,28MB/s ",
+    "user": "bosstjann"
+  },
+  {
+    "message": "Ja morte vedet da ti ni relana hitrost diska, ce se kopira iz particije pa particijo. Realno bi blo iz diska na drug disk. Drugace pa itak, v realnosti nikoli ne doseze disk teoreticne hitrosti oz. hitrosti v najboljsih pogojih. Velik krivec za to je pa fragmentacija in access time diska.   ",
+    "user": "asPeteR"
+  },
+  {
+    "message": "ce kopiras je hitreje kot ce premikas.  ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "no to sem tudi opazil, če kopiraš gre hitreje. Ali je mogoče kje v winsih nastavit, da bi zadeva bila hitrejša tudi pri premikanju filov. ",
+    "user": "matrix2"
+  },
+  {
+    "message": "to je ubistvu omejitev diska in ne OS, tako da ti nobena nastavitev ne pomaga. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Vse te variante dobr delajo, dokler ne mrkne en od diskov in zgubis vse. Kar sploh ni tako zelo redko... ",
+    "user": "Realist"
+  },
+  {
+    "message": "tudi ce mas sam en disk, ti gre vse po gobe, ce ti en disk crkne :)  tak da to ni argument, oz. smo ga ze 100x slisali pa ni prav na mestu ",
+    "user": "VASkO"
+  },
+  {
+    "message": "Hja, evo, jutri naredim SATA RAID0 iz Maxtorjevih 120 gig.  Mam pa vprašanje: Ali se lahko RAID polje podre ob kakšni nadgradnji BIOSa, itd? Kako bo, ko bom menjal ploščo? ",
+    "user": "Sergio"
+  },
+  {
+    "message": "povsod itaq piše, da ob vsakršni nadgradnji bios-a nardiš bekap, ker obstaja možnost, da se podre. moje polje je preživelo več bios update-ov, od katerih sta bila tudi dva taka, ki sta poleg standardnega biosa, posodobila tudi bios raid krmilnika. na koncu, mi ga je sicer ratalo podret, a je biu za to kriv OCS (oc sindrom)    menjave plate z obstoječim poljem pa zaenkrat nism še sprobu... zna bit problem, če je drug krmilnik, vkolikor pa je vsaj \"podoben\", pa bi mogoče stvar tud delala... ",
+    "user": "Vesoljc"
+  }
+]

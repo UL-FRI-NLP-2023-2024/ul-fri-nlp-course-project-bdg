@@ -1,0 +1,138 @@
+[
+  {
+    "message": "Zdravo  Da opišem problem ...  Gostujem na Hitrost.net, navišji možni paket, pa vendar sem z njihove strani limitiran na 5.000 mejlov na dan, kar je 4x premalo kolikor rabim za naše potrebe.  Za mailing listo uporabljamo Email marketer (former SendStudio), ki v nastavitvah dovoljuje izbiro lastnega SMTP. le tega sem postavil - PostCast Server professional - deluje, stestirano in preko nejga samega in preko outloka, kjer sem kot smtp vpisal 127.0.0.1 (localhost)  Nastavitve na Hitrost.net so po defaultu, da če vpišem v smtp (EM) localhost ali 127.0.0.1, uporabijo php(mail) funkcijo, torej gre preko njihovega SMTPja ..  T2 na statiki ne blokira porta 25 in na routerju imam forwardiran port 25. problem se pojavlja ker ne morem \"povezati\"EM z PosCast serverjem. Če vpišem v SMTP Hostname localhost ali 127.0.0.1, bo uporabilo defualt phpmail funckijo in posledično njihov smtp, če pa določim, da gre na IP moje masine, pa pise connection refused  Za primerjavo sem uporabil BulkMailer (na moji mašini), ki je brez nadaljnjega poslal vse mejle preko lastnega SMTPja se pravi preko PostCasta ...  .. ja, zakomplicirano vem :)  Vseeno hvala za pomoč ",
+    "user": "gregy"
+  },
+  {
+    "message": "Mogoče smtp strežnik blokira zahteve z zunanjih ipjev. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Namesto 127.0.0.1 vpiši IP tvojega SMTP strežnika. ",
+    "user": "Klenobo"
+  },
+  {
+    "message": "govorimo o SMTP strezniku, ki laufa na moji masini? .. se pravi 88.121.xx.xx .. tam je tudi posebno polje za port v katerega vpišem 25 .. ",
+    "user": "gregy"
+  },
+  {
+    "message": "V aplikaciji, ki jo imaš na Hitrost vpiši tvoj IP SMTP strežnika. Da bo tvojega uporabila. Localhost ali 127.0.0.1 pomeni, da ti proba poslati preko njihovega strežnika - lokalno. ",
+    "user": "Klenobo"
+  },
+  {
+    "message": "5000 na DAN ? 0.o  Kaj hudica pa to furas ? ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "ja ne .. potem sem odvisen čisto od svojega SMTPja .. jaz pa svojega zaluafam le, ko moram razposlati mailing listo .. drugače sem zadovoljen z host smtpjem, ker tudi bounci so narejeni na mail pri hitrosti .. rabim samo outgoing smtp ",
+    "user": "gregy"
+  },
+  {
+    "message": "5000 na DAN ? 0.o  Kaj hudica pa to furas ?  Skoraj vsak dan, ali pa vsak drugi dan mailing lista 15.000+ mejlov ",
+    "user": "gregy"
+  },
+  {
+    "message": "to imas spletno stran, kolokacijo ali virtualni streznik ? samo pri slednjem si res lahko postavis lasten smtp na lokaciji. sicer bos pa moral preko necesa drugega posiljati....ali pa zakupiti kolokacijo/virtualni streznik, ce imajo taksno omejitev lokalnega [hosting] smtp. ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Zakupljeno imamo gostovanje 10+ .. VPS-a niso imeli na Hitrsti .. Domenca je bila pa predraga, ter nobenega supporta. Gledal sem ze smtp.com in podobne servise .. mucho dinero, zato pa sedaj konfiguriram tale postcast. Včeraj je brez problema poslal 13.000 mejlov zvecer. Moram ga samo \"konektat\" na Email marketer na serverju .. ",
+    "user": "gregy"
+  },
+  {
+    "message": "...če pa določim, da gre na IP moje masine, pa pise connection refused  tukaj je problem, verjetno v ruterju in nepravilno forwardiranem portu. poskusi iz cmdja prek telneta pridt na stmp daemon  telnet 88.92.xxx.xxx 25  pa se igraj z firewallom dokler te ne spusti, potem bo šlu tudi v tistmu mass mailerju.  btw: znajo te vržt na spam listo pri taki masi mejlov, to si preveril kako in kaj ? ",
+    "user": "preem"
+  },
+  {
+    "message": "umm .. kdo bi me lahko? ISPji prejemnikov? ALi v mojem primeru T2? .. z njimi sem že kontaktiral ne bo problema ..  Probam telnet  EDIT:  C:\\Documents and Settings\\Gregor>telnet 89.XXX.XXX 25 Connecting To 89.XXX.XXX...Could not open connection to the host, on port 25: Connect failed  hmm .. gremo kopati naprej, vendar kako .. port je forwardiran  pozabil sem omeniti, da imam dve mrežne ..   Ethernet adapter Mrežna - IP TV:  Connection-specific DNS Suffix . : IP Address. . . . . . . . . . . . : 192.168.4.5 Subnet Mask . . . . . . . . . . . : 255.255.255.0 Default Gateway . . . . . . . . . :  Ethernet adapter Mrežna - Internet:  Connection-specific DNS Suffix . : IP Address. . . . . . . . . . . . : 192.168.1.100 Subnet Mask . . . . . . . . . . . : 255.255.255.0 Default Gateway . . . . . . . . . : 192.168.1.1    . hvala za nasvete ",
+    "user": "gregy"
+  },
+  {
+    "message": "evo naj me koklja brcne :)   Slika portov  če grem skenirat porte so vsi ti zaprti .. ",
+    "user": "gregy"
+  },
+  {
+    "message": "Potem je kriv firewall na tvojem kompu. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Firewall izklopljen za obe mrezne .. ugasnjen AVG, če bi on slučajno kaj cincal ..   ... čudna so pota gospodova :) ",
+    "user": "gregy"
+  },
+  {
+    "message": "prazaprav ugotavljam, da imam vse porte zaprte (kar nekaj online testerjev) .. v routerju pa odprte ... ",
+    "user": "gregy"
+  },
+  {
+    "message": "prazaprav ugotavljam, da imam vse porte zaprte (kar nekaj online testerjev) .. v routerju pa odprte ...  Prizgi firewall nazaj, potem pa spremeni rule za porte na odprto. ",
+    "user": "balkanec"
+  },
+  {
+    "message": "hmm ne spomnim se tocno, kako ze deluje smtp strežnik.... pri določenih strežnikih je potrebno nastaviti na katerem IPju poslušajo... torej v tvojem primeru: 192.168.1.100 ... lp  Edit: poleg tega... katere windowse uporabljaš? Vista ima nek svoj firewall, ki ga je potrebno prav tako nastaviti... ",
+    "user": "nejck"
+  },
+  {
+    "message": "Za uporabo preko neta se nikdar ne nastavlja na lokalne naslove ampak na 0.0.0.0 ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "hvala za vašo pomoč vendar trenutno se ubadam s porti .. celo poldne dr*** gor in dol nastavitev .. na vseh testerjih je bodisi closed, timed out ali pa stealth ... res ne vem več kaj narediti .. na sliki zgoraj se lepo vidi, da imam vse porte odprte (btw. igra vlogo ali je odprto na 192.168.1.100 ali 192.168.1.1?) izklopil sem firewall na mrežni izklopil sem AVG .. bemosveca .. porti še kr zaprti. Zdej bom resetiral router  Uporabljam XP ",
+    "user": "gregy"
+  },
+  {
+    "message": "Ali si odprl tudi porte v Požarnem zidu programa Windows XP? Na routerju pa moraš imeti odprto tudi za pravi IP naslov (je pomembno ali je xxx.xxx.xxx.100 ali xxx.xxx.xxx.1). ",
+    "user": "krofko"
+  },
+  {
+    "message": "Men se zdi da nimaš programa prov nastavljenga. Takole preveri če imaš vse ostalo pravilno nastavljeno:  Ugasni smtp strežnik.  Potegni netcat za win http://joncraton.org/files/nc111nt.zip  Zaženi nc.exe in napiši -l -p 25  Odpri brskalnik in vpiši http://www.utorrent.com/testport.php?po...  Če ti vrže OK potem je router (in firewall na sistemu) pravilno konfiguriran. ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Error! Port 25 does not appear to be open.  .. guess not :( ",
+    "user": "gregy"
+  },
+  {
+    "message": "gregy, poglej se enkrt v dokumentacijo od linksysa. Ni cisto nujno da nastiman port forwarding tudi pomeni da firewall te porte odpre, za to zna bit posebej nastavitev. ",
+    "user": "bosto"
+  },
+  {
+    "message": "še nekaj .. sicer sem že oboje sprobal .. glede na to, da imam dve mrežne .. na kater lokalni IP forwardiram porte 192.168.1.1 ali 192.168.1.100 Stotka je dodeljena mrezni .. una 1. je pa v routerju napisana kot Local Ip Adress ",
+    "user": "gregy"
+  },
+  {
+    "message": "da nimaš kakšnega varnostnega paketa pri t-2 vklopljenega? ",
+    "user": "jamiroq"
+  },
+  {
+    "message": "nizek paket .. zaradi statike ... zdej me bo raz***** in bom zlelezel pod pisalno mizo in izklopil router, masino priklopil direkt na net .. pa da vidim ",
+    "user": "gregy"
+  },
+  {
+    "message": "evo masina priklopljena brez routerja .. jaz pa zaprt, da še driska skozi ne pride. Izklopljen firewall in AVG in SPyBot ..  21 Closed ftp Port 21 is used for FTP Servers. The File Transfer Protocol is a fairly obsolete and insecure way to transfer files. 22 Closed ssh Port 22 is used for SSH, a Remote Login Protocol for Unix based machines. If you do not use SSH and Port 22 is open, this is something to look into. 25 Closed smtp Port 25 is used for Mail Servers. If you are not running a Mail Server this port should be closed. 53 Closed DNS Port 53 is used for Domain Name Servers. 80 Closed http Port 80 is the port Web Servers run on. If you are not running a Web Server and your port 80 is open, this is something to look into. 110 Closed pop3 POP3 (aka POP) is the most common protocol for checking email on a mail server. Most ISP's use pop. 137 Timeout netbios These three ports are all used for Windows File Sharing over the internet. Most Internet Service Providers block these ports for security so generally you don't have to worry about them. You couldn't open them if you tried. 138 Timeout netbios 139 Timeout netbios 143 Closed imap IMAP is one of the two most common protocols used to check email. 443 Closed https Port 443 is for Web Servers running over SSL. This encrypts all the data so no one can listen in and steal data. 548 Closed afp Port 548 is used for the Apple File Sharing protocol. It allows you to connect to your Macintosh over the internet. 587 Closed smtp submission Port 587 is the preferred port for smtp submission (client to server submission). Most systems still use 25 for this. Often 587 is used as the SSL port. 993 Closed imap ssl The IMAP mail protocol, used over SSL to encrypt the data transfer (and protect your password etc) 995 Closed pop ssl The POP mail protocol, used over SSL to encrypt the data transfer (and protect your password etc) 1433 Closed mssql Port 1433 is used by Microsoft's SQL Server. Unless you know you are running MSSQL (Not MySQL), its very important to block this port. It is very vulnerable. 1701 Closed l2tp Layer-2 Tunneling Protocol. Used with IPSec to create a secure form of VPN. 1723 Closed pptp Point-to-Point Tunneling Protocol. A different form of VPN. Its not as good as IPSec, and MS's PPTP server has MAJOR flaws. 3306 Closed MySQL Port 3306 is used by MySQL. Not to be confused with Microsoft's SQL, MySQL if a free, open source, very powerful and very secure Database Server. This site is powered in part by MySQL. 5432 Closed PgSQL PostgreSQL. An Open source SQL server, like MySQL, but different. Some people Love PgSQL, some Love MySQL. ",
+    "user": "gregy"
+  },
+  {
+    "message": "SE enkrat: vklopi nazaj svoj softwarski firewall, ki gaimas na pc in spremeni pravila, da ti spuscajo promet. ",
+    "user": "balkanec"
+  },
+  {
+    "message": "Najbolš kr formatirat sistem pa je ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "ma sem zdajle že tako na koncu, da grem na cigaret.  Firewall back on .. v exceptions dodani še posamezni porti .. majebemumajku  P.s. hvala za vase potrpljenje :) ",
+    "user": "gregy"
+  },
+  {
+    "message": "na routerju si dmz naštimi pa izklop vse funkcije firewalla in raznih neznanih zahtev. pol se pa lahko mirno zabavaš s svojo mašinco. ",
+    "user": "eter"
+  },
+  {
+    "message": "Kaj pa modem? Maš na njemu tudi nastavljeno forwardiranje (če pusti/jo)? ",
+    "user": "PaX_MaN"
+  },
+  {
+    "message": "Ima tvoj ISP zaprt port. Zadnje čase jih zapirajo zaradi spamov ",
+    "user": "Klenobo"
+  }
+]

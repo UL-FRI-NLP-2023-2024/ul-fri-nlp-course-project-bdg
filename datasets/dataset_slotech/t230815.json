@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Torej uporabnik OwcA me je z svojo odlčno  izjavo, da bi za rešitev  tegale problema bil najboljši python napeljal k dajanju da spišem tole temo  .  Torej zanima me kakšne so prednosti ter slabosti tega jezika, zakaj izbrati python in zakaj ne, kter IDE je najboljši. Kolikor sem jaz gledal že nekaj kode spisane v pythonu, se mi sintaksa ne dopade preveč, ker se nekako ne znajdem, ker ni nikjer zaključka kot pri C-like sintaksi (mogoče sem preveč na to sintakso navajen), kjer imaš vso kodo, na katero vpliva if stavek v oklepajih...  ne vem mogoče kakšen IDE ponuja boljšo preglednost??   ",
+    "user": "sverde21"
+  },
+  {
+    "message": "Pri Pythonu se namesto oklepanja blokov kode med { in } uporablja zamikanje, kar te prisili, da pišeš kolikor toliko urejeno kodo. Primer:  class Avto:\n  def __init__(self):\n    print u\"Ta avto je ubercool\"\n    self.ok=True\n  def Velikost(self):\n    print u\"Avto je velik 4x2x1,5m\"\n ...  (tule se žal ne vidi zamikov) [edit - se se, samo znat mors :p - vsc]  Še ena prednost je ta, da je ta jezik strogo objektno orientiran. Vse v Pythonu je objekt. Torej če napišeš u\"Nekaj, nekaj, nekaj\" si kreiral novo instanco objekta unicode, oz. če napišeš \"nekaj, nekaj, nekaj\", si kreiral novo instanco objekta string. Oba imata podobne metode (dolžina besedila, ...)  Druga prednost je, da na koncu vsake vrstice ni potrebno podpičje .  Tretja pa je ta, da ni potrebno skrbeti za porabo pomnilnika, ker gredo vsi objekti (sem že omenil, da je sve pbjekt?) v garbage collection takoj, ko gredo izven konteksta. Npr. v funckiji ustvariš instanco objekta Avto in jo naslavljaš preko spremenljivke mojAvto. Ko je funkcije konec, te instance ni nikakor več mogoče nasloviti, zato gre v garbage collection, kjer čaka na cikel čiščenja pomnilnika in ko se to zgodi, se sprosti pomnilnik, ki ga je ta instanca zasedala (oz. tako nekako). V C(++) bi ta pomnilnik ostal zaseden, v kolikor ne bi programer pazil, da sprosti prostor.  Četrta prednost pa je ta, da ni potrebno paziti na podatkovni tip spremenljivk, ker jih Python samodejno pretvarja (v kolikor je to mogoče).  Je pa tudi ena slabost in sicer dokaj zahtevna distribucija v Pythonu napisanih programov, saj je v bistvu vedno potrebno imeti zraven še interpreter in cel kup modulov, ki jih program uporablja. Za uporabnike sistema Windows so ta problem rešili s programom Py2exe, ki prečeše naš program in ugotovi katere module rabi, ter jih zapakira v ZIP, zraven doda še vse DLL knjižnice in naredi .exe program, s katerim poženemo našo Python skripto, ki je skrita nekje v ZIP arhivu. V glavnem, ni potrebno, da ima uporabnik nameščen Python interpreter.  Gradi pa se tudi slovenska skupnost programerjev v Pythonu:  SOUP. ",
+    "user": "drola"
+  },
+  {
+    "message": "In ker je v pythonu tudi funkcija neke vrste objekt, je python kot nalašč za funkcijsko programiranje ( Functional programming). Ne mešat tega s proceduralnim. Funkcijsko je bolj kewl ",
+    "user": "[MYTiX]"
+  },
+  {
+    "message": "Kar se IDEja tiče, predvidevam, da se ti oni, ki je zraven Pythona ne dopade, meni tudi ne. Priporočam  PyScripter. ",
+    "user": "krho"
+  },
+  {
+    "message": "@drola: uporabi [ st.koda] [ /st.koda]    Sicr pa sei OK ampak tile zamiki pa to  nekako mi ne deluje pregledno, ker editorji ti pri C-like sintaksi, ko se postaviš pred { oba začetni in končni oklepaj obarvajo, tako točno veš do kam sega en stavek, tukaj pa neki zamiki  ",
+    "user": "sverde21"
+  },
+  {
+    "message": "Zgornja koda z zamiki:  class Avto:\n  def __init__(self):\n    print u\"Ta avto je ubercool\"\n    self.ok=True\n  def Velikost(self):\n    print u\"Avto je velik 4x2x1,5m\"  Tule se jasno vidi, do kje so različni bloki in mislim, da dodatna razlaga ni potrebna.  Jaz sem šel na Python s predhodnim znanjem PHPja in nekaj C++ in nisem imel nobenih težav. ",
+    "user": "drola"
+  },
+  {
+    "message": "Pluse in minuse je lažje naštevat, če malo bolj konkretiziramo s čim primerjamo. V splošnem pa:  + funkcije so prvorazredni objekti + izrazna moč + preglednost + preprostost, razumljivost + metaprogramiranje + standardna knjižnica + tuje knjižnice + uporabniška skuponist + povezljivost z drugimi jeziki (zlasti, če upoštevamo še IronPython in Jython) + interaktiven interpreter (REPL)  - ponekod nesmiselne omejitve in konvencije - preveč knjižnic (ni jasne izbire IDE-ja, spletnega ogrodja, GU, ...) - hitrost (ni grozno počasen kot recimo Ruby, ampak vseeno prepočasen, da bi bil uporaben za vse)  Malo je področji, kjer je Python najboljši, je pa odličen kompromis. ",
+    "user": "OwcA"
+  },
+  {
+    "message": "+ preglednost + preprostost, razumljivost Odvisn za koga    Hitrost pomoje ni slabost, ker je eden najhitrejših interpretiranih jezikov ",
+    "user": "sverde21"
+  },
+  {
+    "message": "Npr. v funckiji ustvariš instanco objekta Avto in jo naslavljaš preko spremenljivke mojAvto. Ko je funkcije konec, te instance ni nikakor več mogoče nasloviti, zato gre v garbage collection, kjer čaka na cikel čiščenja pomnilnika in ko se to zgodi, se sprosti pomnilnik, ki ga je ta instanca zasedala (oz. tako nekako). V C(++) bi ta pomnilnik ostal zaseden, v kolikor ne bi programer pazil, da sprosti prostor.  Objekti ki jih narediš na skladu se pri stack unwindingu pobrišejo implicitno, tako da si podal zelo slab primer. To bi veljalo le za ustvarjanje objekta na kopici, za kar pa se ponavadi uporabljajo pametni kazalci in podatkovne strukture v C++ standardni knjižnici (prek allocatorjev). Garbage collection je pač le eden od načinov za upravljanje s pomnilnikom, ki pri nekaterih jezikih ni najboljša pot. Ni niti + niti -.  - hitrost (ni grozno počasen kot recimo Ruby, ampak vseeno prepočasen, da bi bil uporaben za vse) Če si soočen s performančnimi omejitvami ti seveda nihče ne bo preprečil, da ne bi uporabil C++-a za komponente, ki jih nato uporabljaš v Pythonu.   Še en + \"deluje na praktično vseh aktualnih platformah\" in še eden IDE:  eric3. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "CCfly, bi mi prosim bolj razložil tisti del o brisanju objektov, ker se na to še ne spoznam toliko, prosil pa bi tudi za primer. ",
+    "user": "drola"
+  },
+  {
+    "message": "Enostavno povedano, dobri stari C je rekel tako. Imamo statični pomnilnik, kopico in sklad. C++ je ta model podedoval in programerju prepušča umazano delo.  1. sklad:  int main(int argc, char** argv) {\n   MojObjekt m;\n}\n V vsakem scope-u (funkcija, stavek, zanka, izjema) se izvrši stack unwinding. To pomeni da se avtomatsko kliče destruktor objekta MojObjekt.  2. kopica:  int main(int argc, char** argv) {\n   MojObjekt* m;\n   m = new MojObjekt;\n}\n Tukaj je ta klasični problem ko naš program neslavno \"spusti\" pomnilnik.  Ker je sklad omejen in ga ne moremo širiti ali zmanjševati, potrebujemo kopico. Kako narediti upravljanje s pomnilnikom bolj robustno ?  Nekateri jeziki, kot je Python so rekli. Hitrost razvoja je pomembnejša od hitrosti, zaradi česar bomo v našem prelepem jeziku uporabljali smetarja implicitno (vedno bomo uporabljali kopico, razen če sam Python uspe katero zadevo nekoliko zoptimizirati in jo vreči na sklad). Tako so pod preprogo pometli celoten problem, ter na grob z imenom \"RIP memory leak\" zalili betonsko ploščo (ki občasno vseeno prepušča vodo, če je programer dovolj kreativen). Zaradi tega so v takih jezikih destruktorji praktično neuporabni (kolikokrat vidite finalize funkcijo v Javi ?).  Ker je C++ nižjenivojski jezik od npr. Pythona si pomagamo z drugačno metodo, ki jo lahko na grobo opišemo kot RAII. Zanašamo se na konstruktorje in destruktorje pri objektih, da bodo ti zajeli in uničili pomnilnik na kopici. To pomeni da imamo na skladu majhno število objektov (tu se spomnite se na stack unwinding), ki v destruktorjih uničijo ves zajet pomnilnik avtomatsko, tudi če pride do izjeme (le v destruktorjih in izjemah samih ne sme priti do nove izjeme). Po enakem kopitu se delani auto_ptr, vector, stack, map v C++ standardni knjižnici.  Npr.:  auto_ptr<MojObjekt> m(new MojObjekt);\n Ko gre ta pametni kazalec iz scopa se izvede njegov destruktor, ki uniči MojObjekt.  Če si s sedaj predstavljamo kako deluje smetar dobimo enostaven algoritem, ki pregleda seznam vseh pametnih kazalcev in vsakega, kjer je število referenc na objekt enako 0 (ali kjer je seznam referenc prazen), izbriše iz seznama. Seveda pa je uporaba le-tega v Pythonu skrita in tako bistveno lažja za programerja. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "Najlepša hvala. ",
+    "user": "drola"
+  },
+  {
+    "message": "Danes zjutraj sem dobil fortune, ki nekaterim lahko razloži, zakaj je Python tako kul.   The tao that can be tar(1)ed\nis not the entire Tao.\nThe path that can be specified\nis not the Full Path.\n\nWe declare the names\nof all variables and functions.\nYet the Tao has no type specifier.\n\nDynamically binding, you realize the magic.\nStatically binding, you see only the hierarchy.\n\nYet magic and hierarchy\narise from the same source,\nand this source has a null pointer.\n\nReference the NULL within NULL,\nit is the gateway to all wizardry.\n ",
+    "user": "jype"
+  },
+  {
+    "message": "Dej mi samo povej en dober razlog, da si tole napisal znotraj st.koda taga. Ker mi je prav ogabno, da je vsaka druga vrstica prazna. Sicer pa dopuščam možnost, da je komu to všeč. ",
+    "user": "Gundolf"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "message": "Naredil sem sliko z Acronisom z HDD na SSD. Zdaj pa sem opazil v upravitelju diskov, da mi je naredilo 2 obnovitveni particiji in sistemsko EFI. Obnovitveni particiji nista nikjer vidni razen v upravitleju in imam občutek, da tudi približno ne služita svojemu namenu. Kaj naj naredim? Ju lahko združim m s sistemsko? Kaj je z EFI particijo?    slika1    slika2 ",
+    "user": "novuporabnik"
+  },
+  {
+    "message": "Ja očitno si komplet disk prenesel na SSD. Nekatere particije se pač v raziskovalcu ne vidijo, ker tudi njihov namen ni, da bi na njih nekaj shranjeval. Jaz bi pustil tako kot imaš sedaj, saj lahko sistem tudi obnoviš (zato imaš tudi obnovitveno particijo). Če bi pa na SSD čisto na novo instaliral win8.1, potem bi odpadle particije za obnovitev in EFI.  lp ",
+    "user": "dc10"
+  },
+  {
+    "message": " novuporabnik je 4. feb 2015 ob 23:02 izjavil: Obnovitveni particiji nista nikjer vidni razen v upravitleju in imam občutek, da tudi približno ne služita svojemu namenu.    Se strinjam. Meni so win 8.1 (čista, nova instalacija po priporočilu hojnikb-ja, svetovalca na SLO TECH :) ) poleg C: diska naredili samo še eno particijo 350 MB NTFS Rezerviran sistem. ",
+    "user": "Mare2"
+  },
+  {
+    "message": "Zdaj mi ni najbolj jasno. Ali imam bootano preko uefi ali preko legacy, ni mi čisto jasno tale uefi....Kako sistem namestim preko njega...nekaj sem gledal, ampak ne najdem ene ravno pametne razlage kaj moram sploh narediti.   V biosu imam zdaj nastavljeno na CSM disable in security boot enable. Tudi, če bi imel obratno nastavljeno deluje. Kaj je zdaj bolje? ",
+    "user": "novuporabnik"
+  },
+  {
+    "message": "To se naredi, če si inštaliral non-uefi windows. Drugače ti je še enkrat namestilo uefi.  TKo kot je mare rekel, nova instal non uefi windowsa, zbrišeš vse particije in ustvariš samo eno. ",
+    "user": "m0LN4r"
+  },
+  {
+    "message": "Če te zanima, če si v UEFI načinu preveri tukaj: http://blogs.technet.com/b/home_is_wher... UEFI način ti malenkost večjo varnost secure boota omogoča, pa hardware enkripcijo MX100 diskov recimo preko BItLockerja pa še kakšne bonbončke, nič posebaj bistvenega. Če imaš CSM disable potem si ziher v UEFI, ker CSM disable pomeni da izklopiš legacy boot.  Kar se pa tiče tistih recovery particij, ne sekiraj se zaradi 1GB, medtem ko tisto 20GB particijo lahko brez skrbi pobrišeš, če recovery ne rabiš. Nato backupiraš D disk, nato zbrišeš D particijo in nato narediš novo D particijo za 20GB večjo. Problem rešen brez potrebe po reinštalaciji;) Če pa hočeš tudi tisti slab GB nazaj pa bo najhitreje na novo naložit.  P.S: Pri majhnih 256GB diskih je ločevanje C in D particij samo nekvalitetna izraba prostora, ker nikoli ne boš mogel enakomerno razporediti med te dve. Jaz na diske manjše kot 1TB vedno delam samo eno particijo - C. Torej ti lepo zbriši D particijo in 20GB recovery particijo in nato povečaj C particijo(extend opcija v Disk Managerju) ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "No saj to imam namen narediti, povečati C particijo. Preveri tvojo sliko in videl, da sem v UEFI načinu. Tisto kar me še vedno moti je kakšne naj bodo nastavitve biosa. Ali naj imam CSM na disable in security boot na enable ali obratno?   Zdaj, če prav vse razumem je edino kar je potrebno imeti, imeti EFI datoteko in potem si po namestitvi avtomatsko v UEFI načinu? ",
+    "user": "novuporabnik"
+  },
+  {
+    "message": "Nastavitveni DVD od Windowsov vsebuje EFI in legacy boot in ko prižgeš računalnik tudi imaš dve možnosti boota na izbiro, če imaš v biosu legacy vklopljen. Če pa CSM izklopiš, potem si 100% ziher, da nobena legacy zadeva ne bo delala, še grafična brez UEFI podpore se ne bo zagnala! Tak da če podpira cel tvoj sistem UEFI, potem greš seveda z časom naprej in CSM izklopiš - med drugim pridobiš še kako sekundo pri bootu. Če je matična pametno narejena, bi iz sleepa v UEFI only načinu moral priti instantno(tako instantno kot iz sleepa pride Android tablet recimo!)  Security boot sam po sebi ne nudi skoraj nobene zaščite, ampak ne bo pa nič škodilo, če ga vklopiš... Secure boot pride do izraza, ko ga uporabiš v kombinaciji z TPM zaščitenim Bitlockerjem.  Pri vklopljenem SecureBootu ne moš mogel nič razen Windowsa bootati, tako da ga moraš izklopiti(ALI konfigurirati), če hočeš linux ali kak recovery program uporabit. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "Azgard, super razlaga, hvala! Skratka pustim izklopljen CSM in vklopljen securitry boot ter povečan C particijo in to je to. ",
+    "user": "novuporabnik"
+  }
+]

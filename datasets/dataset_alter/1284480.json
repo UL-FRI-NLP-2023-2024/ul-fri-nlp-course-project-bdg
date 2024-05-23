@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Torej - odločil sem se narediti RAID0 polje na mojem dekstop računalniku. Vzel sem 2 WD diska s kapaciteto 500GB, SATA III (6GB/s), 16MB predpomnilnika (WD500AAKX). Diska sta priključena na SATA III kontroler, matična ima že na plošči SATA III RAID kontroler.\n\nNajprej sem izmeril \"stari\" disk (WD150EARS), priključen na SATA II kontroler - izmerjena hitrost je nekje 100 MB/s.\nNato sem izmeril novo RAID0 polje - okrog 230 MB/s.\n\nGlede na to, da je razlika tako v kontrolerju (SATA III napram SATA II) in da sta diska v RAID0 polju, sem pričakoval večje povečanje hitrosti, kljub 2x povečanju hitrosti se nekako pri delu z računalnikom ne opazi (vsaj ne 2x). Dostopni časi so okrog 10ms.\n\nZa primerjavo - na prenosniku sem vgradil SSD OCZ Agility 3, sicer s podporo SATA III, vendar priključen kot SATA II in dosega hitrosti 200MB/s, dostopni čas pa je 0.1ms! Na hitrosti se pozna kot dan in noč...\n\nAli sem od RAID0 pričakoval več in so to realne hitrsoti ali mi nekaj \"ne štima\"? Ker če so meritve pričakovane, bi raje vzel še en OCZ 128, ga dal na SATA III pa bi stvar leteeeeela...",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Zakaj ne narediš raid1 polja? Pri raid0 če ti zletijo podatki ti ne ostane nič. Pri raid1 je drugi disk prvemu kopija",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Gre se mi za hitrost. Na RAID0 je OS in sprotni (nepomembni) podatki, za backup sem pa pustil \"starega\" 1.5TB WD-ja. Poleg tega je za slike in galsbo še en zunanji MyBook 500GB, za filme in serije pa en MyBook 1Tb in en network disk v velikosti 1TB...\n\nTorej backupa več kot dovolj...",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Kot prvo so kontrolerji na matični nekako zelo lenobna bitja in je bolje delat SW RAID. Sicer pa so dostopni časi precej pomemben dejavnik pri sistemskem delu, hitrost diska niti nima pomena ker se zelo malo dolgih sekvenc izvaja na samem disku.\n\nTorej tipičen priemr je nalaganje OSja ... tam se večinoma bere precej različnih podatkov iz različnih delov diska. Vsakič ko prebereš en podatek se mora glava premaknit drugam, načeloma so premiki glave večja zakasnitev kot pa samo branje ko se enkrat začne. Zato bo tudi SSD delal mnogo hitreje tudi če bo po hitrosti samega prenosa počasnejši. Je pa res da so pri določenih delih bolj pozna hitrost prenosa na diskih kot pa latenca dostopa, recimo kakšno urejanje videa ali pa večjih slik (grafična obdelava).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Jah latenca ostaja. Zelo je sicer pomembno tudi kako velik &#187;chunksize&#171; uporabiš. Če imaš recimo &#187;chunksize&#171; 512KiB, potem je v tvojem primeru &#187;stripesize&#171; 1MiB. Kar pomeni, da se podatki (tudi cele datoteke), ki so manjše od 512KiB, v resnici zapisujejo samo na en disk. Lahko, da bi v tvojem primeru bilo boljše vzet manjši &#187;chunk&#171; in pa dodati več diskov.\n\nJaz imam trenutno 8 diskov v RAID0 s 512KiB velikimi chunki, stripe je tako velik 4MiB. Se spravljam stestirat različne konfiguracije (RAID10, RAID1 + LVM stripe, ...), da vidim kaj se najboljše obnese.",
+    "author": "der_Alte",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Kaj točno pa si pričakoval ? \n\nVseeno je če priklopiš na SATA 2 ali SATA 3  tvoje  hitrosti diskov so zaenkrat  še prepočasne da bi lahko popolnoma izkoristile sata 3.\nKupi kakšni hitrejši SSD in ga priklopi na sata 3 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "No, po malo iskanja po spletu sem našel test mojega SATA III RAID kontrolerja (Marvel 9128):\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nTorej če gledam podatke za moj Marvel 9128 na Gigabyte plošči v polju RAID0, potem se moje meritve točne in se prenosi dejansko gibljejo okrog 200MB/s.\n\nOdkrito sem pričakoval več, ampak vseeno je bolje, kot ostati na starem WD-ju...",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Hja v teoriji bi moralo biti nekje faktor 4 glede na stari disk, ampak teorija je eno...\n\nAgility 3 na SATA 3 dosega rezultate okrog 480 MB/s...\n\nMogoče nabavim 2 OCZ-ja 64GB pa v RAID0... Če pa to ne leti, potem pa več ne vem kaj bo...",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Gargy pravi:\n Hja v teoriji bi moralo biti nekje faktor 4 glede na stari disk, ampak teorija je eno...\n\nAgility 3 na SATA 3 dosega rezultate okrog 480 MB/s...\n\nMogoče nabavim 2 OCZ-ja 64GB pa v RAID0... Če pa to ne leti, potem pa več ne vem kaj bo...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nfaktor 4 ?\n\nV teoriji 2x povečanje glede na en disk. Kar si tudi v praksi dosegel...   Na žalost se pozna samo pri nalaganju iger, programov. Ker še te vedno muči dostopni čas.",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Imam podobno konfiguracijo (2xWD 6400AAKS v RAID0 NA ICH9R kontrolerju) in podobne rezultate (cca 230MB/s).  Zanimivo je da podobno hitrost na tem kontrolerju dosega tudi Agility 3 SSD, ki je sicer precej hitrejši, tako da je to očitno meja tega kontrolerja).\n\nSSD se sicer zelo pozna, ni pa ta razlika taka kot pri laptopu, zato sem ga zaenkrat dal kar tja. Ko se pri RAID-u vse lepo naloži je zadeva še vedno hitra (se tolažim ko čakam še na en ssd, hehe)",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Kontrolerji, ki so integrirani na matični plošči so precej slabi. Za kaj več je potrebno kupiti zunanji kontroler z lastnim procesorjem, kar pa stane več sto evrov...",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "Nima veze kontroler.\nLinearen prenos je 2x, čas da se glava premakne na želen sektor pa je neodvisen od kontrolerja.\n\n\nSSD: 0,1 ms\ndisk: 10 ms\n\nfaktor 100.  Ni kaj za analizirat in pametovat.\n\nEdino  lahko omejiš uporabljen del diska na recimo 10% (narediš particijo takšno), da glave \"letijo\" po manjšem območju.\nS tem lahko dobiš recimo tam povprečni čas 4 ms.\nKar je še vedno nula v primerjavi z SSD.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Hitrost RAID0?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Gargy pravi:\n Hja v teoriji bi moralo biti nekje faktor 4 glede na stari disk, ampak teorija je eno...\n\nAgility 3 na SATA 3 dosega rezultate okrog 480 MB/s...\n\nMogoče nabavim 2 OCZ-ja 64GB pa v RAID0... Če pa to ne leti, potem pa več ne vem kaj bo...\n\t\t\n\t\tKlikni za razširitev\n\t\n\n64 GB modeli uporabljajo polovico (ali se manj) kanalov, tako da delajo priblizno pol pocasneje, kot vecji modeli (npr. 240 GB).",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "message": "Torej, nabavil sem zgoraj omenjeni router, naložil dd-wrt (Firmware: DD-WRT v24-sp2 (03/11/12) mini). Router naj bi omogočal 300mbps meni pa pride na maksimalno 130mbps. Vem, da je 300 mbps teoretična hitrost, vendar vsaj kolikor sem zasledil na forumih folku dela tud na 270 mbps.  Iskal sem nastavitve za wireless, vendar precej neuspešno. Trenutno imam nastavljeno tako: WIRELESS STATUS RadioRadio is On  Mode:AP  Network:Mixed  SSID:xxxxxx  Channel: -1 + 1  TX Power: 71 mW  Rate: 117 Mbps  Encryption - Interface wl0Enabled, WPA2 Personal Mixed PPTP StatusDisconnected  Zakaj to pišem. Na tablici Asus tf201 bi rad gledal HD filme (1080p) preko mreže (filmi so na mojem stacionarnem računalniku, ki ima 100 mbit mrežno kartico), vendar mi \"štekajo\". Predvidevam, da je to povezano z hitrostjo brezžične povezave. 720p filmi mi delajo normalno.  Če ima kdo kakšno idejo, kako nastavit router (če je sploh možno) se priporočam. Google mi ni našel nič pametnega, zato tale post.  Hvala. ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "Katero verzijo routerja imaš - prvo (bele barve, nima dodatnih oznak za številko modela na nalepki na spodnji strani), ali drugo (B1 - bele barve ali C1 - črne barve; B1 in C1 se razlikujeta po obliki ohišja, imata pa enak chipset)? ",
+    "user": "ender"
+  },
+  {
+    "message": "router je crne barve. HW Ver. C1. F/W Ver. V2.1.1.1.3390-IG10002M10-3PA0.Tole je prepisano z deklaracije. ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "A imaš omogočeno 40MHz širino kanala? In če jo imaš, ali je v resnici vklopljena (poglej v log - če router zazna, da je okoli preveč drugih omrežij, se avtomatsko omeji na 20MHz, kar pomeni 130Mbps teoretično hitrost namesto 270/300). ",
+    "user": "ender"
+  },
+  {
+    "message": "imam omogoceno 40Mhz. V okolici ni nobenega wifi-ja. Log-a pa ne najdem, delam na tem. ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "evo, sm moral se vklopit log, vendar tam ni videti nic glede drugih omrezij. ",
+    "user": "urbybaby"
+  },
+  {
+    "message": " ender je 17. feb 2013 ob 17:31 izjavil:A imaš omogočeno 40MHz širino kanala? In če jo imaš, ali je v resnici vklopljena (poglej v log - če router zazna, da je okoli preveč drugih omrežij, se avtomatsko omeji na 20MHz, kar pomeni 130Mbps teoretično hitrost namesto 270/300).   A mi lahko tvoje nastavitve napišeš (če maš dd-wrt)? ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "Nimam dd-wrt, na RT-N12 B1/C2 dajem Tomato-shibby. ",
+    "user": "ender"
+  },
+  {
+    "message": "a maš kakšn link za nastavitve, sm maltretirou google kar nekaj časa sam očitno ne znam najt. ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "Prisel sem do 130 mbps, vec ne gre. Na laptopu mi sicer kaze hitrost povezave 144 mbps. Na vseh androidnih (galaxy S2 in asus tf-201) napravah pa 65 mbps (predvidevam da je to normalno).  No ja, za prezivet bo. ",
+    "user": "urbybaby"
+  },
+  {
+    "message": " ender je 18. feb 2013 ob 11:19 izjavil:Nimam dd-wrt, na RT-N12 B1/C2 dajem Tomato-shibby.   kolk mbps pa dosežeš? ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "Meni se poveže z do 300Mbps. Še nekaj preveri, da nimaš v lastnostih brezžične kartice (zavihek Dodatno) vklopljeno \"Fat channel intolerant\". ",
+    "user": "ender"
+  },
+  {
+    "message": "Kateri kanal/frekvenco imaš nastavljeno? v prvem postu piše: Channel: -1 + 1  Če imaš nastavljen na 1 kanal, prestavi na 6 in ponovno poglej pod Status - Wireless, kater kanal ti izpiše. Verjetno bo 6 + 7 ali pa 5 + 6. ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "@Vaseer: kanale sem že nevemkolikokrat zamenjal in preizkusil razne kombinacije vendar nič bolje. Okoli mene drugih wifi-jev ni.  Trenutno imam take nastavitve. Bom prilimal vse wifi nastavitve in status.    wifi1    wifi2    status ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "Zavedaj se tudi, da nekatere mrežne kartice (med njimi Intelke) nočejo delati na 40Mhz na 2.4GHz območju (ker z laufanjem 40MHz na tem območju delaš štalo vsem okoli sebe). Tako ti noben router ne bo pomagal, če ti odjemalec noče govoriti s 40MHz po 2.4GHz področju. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "Kakšno propustnost pa ima WiFi kartica na prenosniku ?? ",
+    "user": "Frenckie"
+  },
+  {
+    "message": "Na prenosniku mi kaže 144 mbps (HP 6830s) ",
+    "user": "urbybaby"
+  },
+  {
+    "message": "Probaj dat kanal na auto. Če je enkripcija WPA2 potem mora biti samo AES in ne TKIP+AES. Probaj zmanjšati TX power..   Meni dela 300Mbps (100Mb, ker nimam hitrejše mrežne) v gostem naselju.. router je linksys e3200 dd wrt (build nekje okoli 20000) ",
+    "user": "blue"
+  },
+  {
+    "message": "Evo, sem pogruntal kaj je bilo narobe. Static Leases, prej sem imel za vsak komp določen ip glede na mac adress. Zdej tega ni več in hitrost se je približala obljubljenim 300 mbps. ",
+    "user": "urbybaby"
+  }
+]

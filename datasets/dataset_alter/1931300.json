@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Windows 7: sprememba IDE moda iz AHCI v RAID",
+    "content": "Ob namestitvi Windows 7 je bil IDE mode nastavljen na AHCI. Sedaj želim podatkovna  diska postaviti v RAID 1, vendar, ko v UEFI spremenim AHCI v RAID, se Windows ne zaženejo več. \n\nNa internetu sem našel napotek, da naj bi s spremembo Registry ključa   HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Pciide  za vrednost Start iz 3 v 0 ta problem odpravil. Vendar pri meni to ne deluje.\n\nMogoče kdo pozna kak drug način, da se izogneš ponovni namestitvi Windows 7?",
+    "author": "Zardoz",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7: sprememba IDE moda iz AHCI v RAID",
+    "content": "Na iastor si bil pozoren?\nCeloten tutorial imaš tukaj - http://www.askvg.com/how-to-ch...alling-windows/\nin pa http://www.gregledet.net/?p=569",
+    "author": "damek1a",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7: sprememba IDE moda iz AHCI v RAID",
+    "content": "Če imaš Intelov SATA adapter (kar imaš 99%, če imaš Intelov CPU), potem :\n\nNe rabiš čarati po registry, ampak le namestiti Intelove gonilnike.\nNa http://www.intel.com/p/en_US/support/highlights/sftwr-prod/imsm klikni pod \"Latest Downloads\" na Intel RST (RAID) Driver... trenutno je zadnja verzija od decembra 2013, v12.9\n\nBolj natančno: Tisti registry moraš spremeniti za iaStorV. Windows mogoče že ima oskubljeno kopijo Intelovega gonilnika, tako da če se ti ne da nameščati zgoraj omenjenega, poglej, če imaš v registry omenjeni iaStorV. Če ja, je to dovolj, pač onih dodatnih programov od Intela ne boš imel.",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Windows 7: sprememba IDE moda iz AHCI v RAID",
+    "content": "damek1a in jolko, najlepša hvala za informacije.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Zardoz",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Windows 7: sprememba IDE moda iz AHCI v RAID",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik damek1a pravi:\n Na iastor si bil pozoren?\n\t\t\n\t\tKlikni za razširitev\n\t\nImaš prav. Ko sem spremenil še ključ iaStorV, so Windows normalno startali. Kot je predlagal jolko, sem posodobil še RAID driver, tako da sedaj dela B.P.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nŠe enkrat hvala obema.",
+    "author": "Zardoz",
+    "author_level": "Pripravnik"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Hi  Imam pc na oddaljeni lokaciji, preko katerega dostopam prek VNC-ja in ga imam skozi zakljenjenega. In zdaj nastane problem, če ga hočem restartat, ker nimam autologon nastavljen, se vsi procesi po restartu ne zaženejo, vključno z vncjem ne, pride pač samo do welcome screena. Autologona pa nimam nastavljenega zato, ker bi potem lahko kdo brez moje vednosti pc na kraju samem restartu in prišel v system.  Kako bi se dalo to rešit, da bi se po restartu vsi procesi normalno zagnali tudi vnc, obenem pa bi bila postaja zakljenjena pred nepooblaščenimi osebami?  Hvala ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "Neverjetno enako vprasanje sem mislil napisat pred 5 minutami  zdaj bom pa samo cakal na brihtne glavce  ",
+    "user": "bosmla"
+  },
+  {
+    "message": "Kaj  takega. ",
+    "user": "PaX_MaN"
+  },
+  {
+    "message": "Thanks, samo tole meni ne pomaga, ker je verjetno mišljeno to za oddaljeno pomoč, ki je vgrajena v winse, jst pa uporabljam realvnc. Pa recimo saj nima vnc veze, vglavnem nekako bi rad nastavu, da bi se PC sam logiral in da bi se vsi procesi zagnali in naložli, potem pa bi se sam zaklenil oz. ostal zakljenjen tudi med logiranjem, da ne rabim hodit po reštartu do tega pcja in se ročno logirat. To se da recimo, nastaviš da se po minuti screansaverja postaja zaklene, samo kaj ko je tisto minuto pc ranljiv. Ali obstaja kakšen program ali kakšna druga fora, ki bi omogočala autologon pri zaklenjenem pcju. ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "kaj pa če bi dal auto logon pa da se zažene screensaver po 1 min, kjer nastaviš da ko se vrne na namizje vpraša za geslo? Po moje bi ta zadeva delovala. Druga rešitev pa je uporaba Remote desktop ki je že integriran v Win XP ter Win 2003 in višji, kateri deluje tudi brez da je user logiran. ",
+    "user": "Lucio"
+  },
+  {
+    "message": "Sem mislo, da bo ta odgovor hitro padel, ker so na forumu pravi eksperti pa zgleda nihce pojma nima - sem iskal drugot pa do zdaj nic nasel - si mogoce ti kaj zvedel? ",
+    "user": "bosmla"
+  },
+  {
+    "message": "Sicer ne vem zakaj noces uporabljat Remote Desktop, ki so del windowsov od XP dalje (Za win 2K tudi obstaja \"hack\"). Ker v primerjavi z VNCjem dela prakticno superiorno. Tudi za Linux sistem sedaj obstaja podpora za Microsoftov RD in pravtako deluje zelo dobro. Edino ce imas kak tretji sistem, za katerega ni podpore...   V tem primeru imas 2 varianti za katero vem.  1. Na oddaljenem racunalniku nastimas auto logon in v startup das shortcut, ki vsebuje naslednji ukaz C:\\WINDOWS\\system32\\rundll32.exe user32.dll,LockWorkStation. To ti bo, takoj ko se bo \"logiralo\", zaklenilo sistem.  2. Obstajajo programcki, ki navadne exe programe zalaufajo kot procese. V tem primeru, bi ti nastimal za vnc.exe, da se ti zalaufa se pred login screenom. Isci na googlu run application as a service... Oz karkoli v tej smeri... Tega imas polno. ",
+    "user": "Opkow"
+  },
+  {
+    "message": "tightvnc se mi zdi da laufa kot proces, ne? Vem da meni deluje če se odlogiram in logiram nazaj brez da bi me prekinilo... ",
+    "user": "SasoS"
+  },
+  {
+    "message": "Ne saj ne vstrajam pri realvncju, remote desktop je čist super zadeva in resnično lahko dostopaš do pcja preko njega, še predno se naložijo vsi procesi, sploh ne rabiš pcja odklepat, samo kaj ko to deluje le v lokalnem omrežju Moj pc pa ni v istem omrežju, tako da se more zagnati hamachi na oddaljenem pcju, da lahko uporabljam vnc ali remote desktop, tist se pa nikakor ne bo, če ne bo autologon izveden. Poskusu razne programe, ki se zaženejo ob zagonu in zaklenejo pc, samo to je tok nestabilno in nezanesljivo vse skupaj. Jah se bo pač treba sprehodit do oddaljenega pcja in se ročno logirat potem pa zaklenit nazaj. ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "> samo kaj ko to deluje le v lokalnem omrežju  Če te prav zastopim, se motiš. Remote Desktop deluje tudi preko \"interneta\". (Ravnokar ti tole pišem iz službe preko domačega računalnika ;))  Lahko pa v Windows -> Control Panel -> Scheduled Tasks nastaviš, da se neka aplikacija zažene že ob zagonu sistema, a pred logiranjem uporabnika. ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "od kje pa tebi da Remote desktop deluje samo v internem omrežju. Če imaš router preusmeri port 3389 na interni IP tvoje mašine in stvar je rešena. Pa še veliko boljši je ob VNC. ",
+    "user": "Lucio"
+  },
+  {
+    "message": "...v mojem primeru deluje samo v intranetu, nisem mislil na splošno, ker sem pozabu dopisat, da je oddaljeni PC za firewallom in nimam administratorskih pravic, da bi forwardiral porte. Ko pa se zalaufa hamachi, pa vse lepo deluje, hamachi se pa ne more zagnati, če ostane postaja zaklenjena, morebit če bi laufal hamachija kot system service, samo za to pa že moraš imeti premium account. ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "Mislim da bo s tem problem rešen. Po tem postopku naj bi hamachi delal kot system service in tako se ne rabi nobeden logirat v postajo, da se vse skupaj zažene.  system service ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "Remote Desktop Connection ali Remote Administrator nimata tega problema. Preverjeno. ",
+    "user": "Tr0n"
+  }
+]

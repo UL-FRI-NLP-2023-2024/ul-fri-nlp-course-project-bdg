@@ -1,0 +1,146 @@
+[
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Pozdravljeni,\nzamenjal sem ponudnika TV in interneta in šel na T2.  Sedaj mi ne delujejo kamere in NVR, ker imajo drugačne IP-je. Svetovali so mi, da bo najlažje, da kupim še en router (ki ima enak IP kot prejšnji), tega povežem z modemom in nanj kamere.\n\nZadeva je sedaj sledeča:\nČe se doma povežem na wifi od routerja, ki ima IP 192.168.1.1 mi deluje internet in v aplikaciji vidim vse kamere\nČe se doma povežem na wifi od T2 modema, ki ima IP 192.168.64.1 mi deluje internet, kamer ne vidim in tudi do routerja ne morem dostopati, če vpišem zgornji IP\nČe dostopam preko mobitela z aplikacijo, prav tako ne vidim kamer\n\nNa tehnični pomoči so mi rekli, da naj bi naredil Port forward in pri tem uporabim moj WAN, ki je 188.XXX.XXX.XX. in da bi moral na routerju nastaviti neko statiko. \n\nMi lahko pri tem pomagate prosim?  Kaj moram spodaj vpisati in kaj na routerju?\n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\nNa routerju imam Dynamic IP 192.168.64.XXX. A je tu treba dati statičnega in če, katerega?\n\nA je tukaj kaj za narediti?\n\n\t\t\n\t\n\n\n1000 x hvala!",
+    "author": "MUC",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Sedaj sem naredil nekaj drugega in sicer spremenil IPje vseh kamer na 192.168.64.xxx in sedaj jih vidim lokalno.\nNe morem pa dostopati iz mobitela \nTehnična pomoč pravi port forward, to sem naredil, ampak ne deluje.. port je 37777\n\n\n\t\t\n\t",
+    "author": "MUC",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Factory reset vseh kamer in NVR-ja....nato jih povezat z UTP-jem direkt na router....\nSicer si to že delal ko si jih kupil....",
+    "author": "endvatri",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Dela..\nNe vem kaj sem naredil, ampak je uspelo. Mogoče se me je usmilil, ko sem 20x probal isto  oz. spremenilo se je, ko sem dal DHCP namesto statike in potem nazaj na statiko..",
+    "author": "MUC",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik MUC je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tDela..\nNe vem kaj sem naredil, ampak je uspelo. Mogoče se me je usmilil, ko sem 20x probal isto  oz. spremenilo se je, ko sem dal DHCP namesto statike in potem nazaj na statiko..\n\t\t\n\t\tKlikni za razširitev\n\t\nNI dovolj samo zamenjati statični IP na povezanih napravah (kamere). Če ne zamenjaš \"prehoda\" (gateway), potem kamera ne pozna poti v internet in dela samo interno.\nTo se ti je posrečilo z zamenjavo v DHCP in nazaj, ker se je tako popravil tudi vnos za gateway. V bistvu je lahko problem tudi še \"subnet mask\", ampak ta se pri tebi ni spremenil.\n\nToporisic",
+    "author": "Toporisic",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Prosim za pomoč. Torej stanje: optika T-2, njihov modem, priklopljen na moj wifi router, Raspberry Pi priklopljen na wifi, na RPi lavfa qbittorrent-daemon (torej kot service). RPi ima statični IP. \n\nNa qbittorrent imam naštiman port za torrente. Na routerju imam forwardan ta isti port. Na T-2 Horizontu imam forwardan ta isti port. In mi še vedno en torrent portal iz soseske pravi, da nisem dosegljiv. Kaj lahko še naredim?",
+    "author": "sousis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik sousis je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tProsim za pomoč. Torej stanje: optika T-2, njihov modem, priklopljen na moj wifi router, Raspberry Pi priklopljen na wifi, na RPi lavfa qbittorrent-daemon (torej kot service). RPi ima statični IP.\n\nNa qbittorrent imam naštiman port za torrente. Na routerju imam forwardan ta isti port. Na T-2 Horizontu imam forwardan ta isti port. In mi še vedno en torrent portal iz soseske pravi, da nisem dosegljiv. Kaj lahko še naredim?\n\t\t\n\t\tKlikni za razširitev\n\t\nAja, pa nekaj tednov nazaj sem to vse nastavila in mi je par dni delalo (je kazalo, da je moj IP dosegljiv), potem sem nehala gledati in se je v nekem trenutku to spremenilo in ni več dosegljiv.",
+    "author": "sousis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Je tvoj router v bridge? Oz. bolje vprašano, kakšen IP dobi tvoj router od modema na WAN portu? \n\nDvojni NAT je zmeraj slaba stvar.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJe tvoj router v bridge? Oz. bolje vprašano, kakšen IP dobi tvoj router od modema na WAN portu?\n\nDvojni NAT je zmeraj slaba stvar.\n\t\t\n\t\tKlikni za razširitev\n\t\nPoleg tega ima pa T-2 na modemih tudi porte, kjer dobiš javni IP naslov (oziroma lahko daš tja pravo statiko) in ne rabiš nič odpirati na horizontu. T-2 tudi noče dati statičnega IP naslova na svoj modem ampak ti ga da samo tako, da ga vpišeš v svoj router (torej ne na 192.168.64.xx). \n\nDa je pa port v ustreznem načinu, pa preveriš tako, da vtakneš prenosni računalnik v npr. luknjo 4 na modemu in preveriš svoj IP. Če se IP zamenja v nekaj, kar je drugače kot 192.168.64.xx (na teh portih dela tudi TV box), si na pravi luknji. Potem pa samo še sprostiš IP (ipconfig /release) in v isto luknjo vtakneš svoj router, ki pa bo dobil malo drugačen IP, ki verjetno ostaja isti nekaj dni ali celo mesecev, ampak vsake toliko časa se pa vseeno zamenja. Če pa zaprosiš za statični IP, pa potem to vpišeš v router in bo vedno isti.\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Ok, hardverska stran mi ne gre najbolj, poznavanje omrežij je pa tudi zelo osnovno, zato lepo prosim za detajlna navodila.\n\nTorej, če vtaknem mrežni kabel v laptop in v modem v tisto luknjo, v kateri je sicer router, in preverim IP, dobim tako 192.168.64.x kot 192.168.1.x . (Mogoče, ker 192.168... še ni releasal?)\nV nastavitvah routerja ne vidim nič kar bi nakazovalo, da je v bridge mode. Imam samo opcijo \"router mode\" ali \"Access Point mode\". Nastavljen je na \"router mode\".\n\nA bi morala zbrisat tisti forwarding na Horizontu?\n\nBtw, ko pravim, da RPi ima statični IP, želim reči, da dobi vedno isti IP od mojega routerja, torej \"statični\" IP znotraj mojega LAN-a. Od T-2 imam samo dinamični IP.",
+    "author": "sousis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik sousis je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tOk, hardverska stran mi ne gre najbolj, poznavanje omrežij je pa tudi zelo osnovno, zato lepo prosim za detajlna navodila.\n\nTorej, če vtaknem mrežni kabel v laptop in v modem v tisto luknjo, v kateri je sicer router, in preverim IP, dobim tako 192.168.64.x kot 192.168.1.x . (Mogoče, ker 192.168... še ni releasal?)\nV nastavitvah routerja ne vidim nič kar bi nakazovalo, da je v bridge mode. Imam samo opcijo \"router mode\" ali \"Access Point mode\". Nastavljen je na \"router mode\".\n\nA bi morala zbrisat tisti forwarding na Horizontu?\n\nBtw, ko pravim, da RPi ima statični IP, želim reči, da dobi vedno isti IP od mojega routerja, torej \"statični\" IP znotraj mojega LAN-a. Od T-2 imam samo dinamični IP.\n\t\t\n\t\tKlikni za razširitev\n\t\nRouter moraš priklopiti na port na modemu, ki ni del lokalne mreže. To je ponavadi 3 in/ali 4.port, kamor se priklopi TV ali IP telefon. Zato preveri ostale porte z računalnikom in ko najdeš port, kjer dobiš IP naslov, ki ni iz razreda 192.168.64.xx, si na dobri poti. Mislim, da se takšen IP začne z 89.x.y.z. Če imaš port s takšnimi nastavitvami, potem tja noter vtakneš router in bo router direktno na internetu brez potrebe po dodatnih nastavitvah s strani horizonta.\n\nEdino če imaš že vse zasedeno (recimo da imaš dve televiziji), potem se bo pa treba znajti drugače. V tem primeru moraš pa preveriti, kakšen IP je dobil tvoj router na T-2 mreži (npr. 192.168.64.10) ter na horizontu odpreti ustrezne porte na točno ta naslov. Na tvojem routerju (predvidevam, da je na 192.168.1.1) pa spet odpreš iste porte naprej na IP naslov tvoje naprave.\n\nAha, ko testiraš IP naslove, ki jih dobiš iz modema, med vtikanjem kabla v novo luknjo počakaj vsaj nekaj sekund, da bo potem PC šel na novo iskat IP. Lahko pa tudi odpreš cmd okno (command prompt) in vpišeš ukaz\n\nipconfig /release\n\nto sprosti IP naslov ter potem \n\nipconfig /renew\n\nda spet dobi nov naslov.\n\nDa pa preveriš IP, pa poženeš samo \n\nipconfig\n\nPri T-2 moraš biti previden tudi zato, ker lahko dobiš samo dva javna IP naslova hkrati na dveh različnih napravah. Ampak če vtakneš v mrežo prenosnik, ta dobi javni IP za 24 ur in moraš zato ročno sprostiti! Ker v nasprotnem bo IP sproščen šele čez 24 ur, vmes pa ne dobiš IPja! Stvar je nevarna npr. takrat, ko daš na \"javni\" port na modemu še dodaten switch, kjer imaš priklopljeno vsega in svašta in se potem naenkrat priklopi nekaj računalnikov, tiskalniki in še kaj. Takrat je potrebno  ali počakati, ali pa ugotoviti, katera naprava je bil prva pri pridobivanju IPjev in potem na en način sprostiti. Ampak pri testiranju z enim prenosnikom ni panike, mora delati, ker ta zasede samo en IP, imaš pa na voljo dva!\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Je sicer še eno vprašanje. Je optika direkt od T2 ali je preko OŠO ali česa podobnega? Ker na OŠO ne moreš dobiti direktno zunanjega IPja, razen če zakupiš statiko (T2 malo špara in ne zakupi ustreznih storitev pri GVO oz. Telekomu).",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJe sicer še eno vprašanje. Je optika direkt od T2 ali je preko OŠO ali česa podobnega? Ker na OŠO ne moreš dobiti direktno zunanjega IPja, razen če zakupiš statiko (T2 malo špara in ne zakupi ustreznih storitev pri GVO oz. Telekomu).\n\t\t\n\t\tKlikni za razširitev\n\t\nVerjetno jo lahko dobiš v vsakem primeru, le enkrat je zastonj, drugič pa plačuješ vsak mesec. Ampak če sem prav videl, ne potrebuje statike ampak zgolj odprte določene porte. Če imaš svoj router, je vsekakor to lažje narediti na samo enem routerju kot da moraš na obeh...\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Ni preko OŠO, je kar od T-2 optika. \n\nStatični IP definitivno ni potreben, samo port mora bit odprt. Sem napisala \"statični IP\" v prvem sporočilu, ampak to samo pomeni, da ima moj Raspberry Pi statični IP v moji lokalni mreži (preko routerja), zato da mi je lažje nastavit port forwarding. \n\nOk, po preizkusu s kablom iz modema na laptop, na vseh 4 portih dobim IP 192.168.64.x , tudi s sproščanjem IPjev. Nimamo T-2 TV (gledamo Netflix in EON preko app-a).  \n\nTorej moram na Horizontu odpreti port na 192.168.64.x (naslov od routerja), in še na routerju ta isti port na 192.168.1.x (naslov od Raspberryja)? \n\nČe je to definitivno vse kar moram narediti, potem je port odprt in me torrent portal zafrkava in bom šla njim težit ",
+    "author": "sousis",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "No, pri tebi očitno nekaj ne štima, pokliči gor in naj uredijo. Vsaj na Innboxih je tole delovalo. Prva dva porta sta za lastnim routerjem Innboxa 192.168.64.* , tretji in četrti pa večinoma dajeta ven bridge mode in to je to, kar ti rabiš na svojem routerju, da se znebiš nastavitev preko horizonta in dvojnega NATa. Imam tasta še na bakru preko telekoma in tam tale varianta še zmeraj deluje BP.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "Na T-2 moraš bridge na portu posebej zahtevati, da nastavijo, ponavadi na port 4, tako da klic na T-2 bo potreben. \n\nKar se tiče torrent portalov pa zna biti, da jih dvojni NAT zeza, tako beri zgoraj, na modem od T-2 en port prestavite v bridge, v njega pa priklopi svoj router in na njem ustrezno nastavi NAT. \n\nPS: nekatere porte T-2 uporablja zase za dostop do svoje opreme in to pomeni, da jih na horizontu lahko nastaviš, ampak ne bodo delovali. rešitev je, spet, bridge ",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "kako na tem horizontu nastavim, da ima pc vedno isti IP? \ntrenutno ga imam na wifi, ga bom pa prestavil na kabel in bi rad obdržal isti ip...",
+    "author": "smrkec",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "pa včeraj je port forward deloval, je bil port odprtna ven, danes pa ne več. pa nisem ničl spreminjal. pc ima isti ip...",
+    "author": "smrkec",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smrkec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tkako na tem horizontu nastavim, da ima pc vedno isti IP?\ntrenutno ga imam na wifi, ga bom pa prestavil na kabel in bi rad obdržal isti ip...\n\t\t\n\t\tKlikni za razširitev\n\t\nIsti IP si lahko zagotoviš z rezervacijo preko MAC naslova. Tega pa T-2 modem/router preko horizonta ne omogoča. Omogoča pa to vsak router.",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "damirj: tole definitvni je dvojni nat kajne? sicer nimam nobenih težav (trkam po lesu), ampak za miren spanec bi moral prestaviti kabel iz routerja na 3 ali 4 (kjer je tv port) oziroma poklicati t2, da mi port 1 spremenijo v bridge port. \n\t\t\n\t",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bizi je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tIsti IP si lahko zagotoviš z rezervacijo preko MAC naslova. Tega pa T-2 modem/router preko horizonta ne omogoča. Omogoča pa to vsak router.\n\t\t\n\t\tKlikni za razširitev\n\t\nok, hvala.\nnekako se je port odprl...\nsamo na mojblinku mi še vedno piše, da nisem povezan... to je trenutno kar me še muči.",
+    "author": "smrkec",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tdamirj: tole definitvni je dvojni nat kajne? sicer nimam nobenih težav (trkam po lesu), ampak za miren spanec bi moral prestaviti kabel iz routerja na 3 ali 4 (kjer je tv port) oziroma poklicati t2, da mi port 1 spremenijo v bridge port. Poglej priponko 77071\n\t\t\n\t\tKlikni za razširitev\n\t\nDvojni NAT je ja.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tdamirj: tole definitvni je dvojni nat kajne? sicer nimam nobenih težav (trkam po lesu), ampak za miren spanec bi moral prestaviti kabel iz routerja na 3 ali 4 (kjer je tv port) oziroma poklicati t2, da mi port 1 spremenijo v bridge port. Poglej priponko 77071\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTako je. Glede na to, da imaš svoj router, je najboljše da si urediš bridge na enem portu.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako narediti port forward na T2 modemu?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik damirj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTako je. Glede na to, da imaš svoj router, je najboljše da si urediš bridge na enem portu.\n\t\t\n\t\tKlikni za razširitev\n\t\nsem poklical na t2 in so mi zrihtali.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  }
+]

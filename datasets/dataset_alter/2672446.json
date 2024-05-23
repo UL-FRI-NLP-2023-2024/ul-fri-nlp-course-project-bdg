@@ -1,0 +1,134 @@
+[
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "najprej problem: dva računalnika, vsak na svoji lokaciji. potrebujem sinhronizacijo samo ene mape, po možnosti vsaj takoj, ko se datoteke spremenijo. le ena sama datoteka se ne sme prenašati. \nprobal dropbox-naredi mapo znotraj te mape-ne, onedrive-isti problem. resilio zašteka komp, google drive-ne morem izključiti ene same datoteke. probal še tri druge sync zadeve in nikakor nočejo štartai, ko se spremenijo datoteke. zgubljal trud z aktiviranjem programov, bah.\ntorej...preden nadaljujem z iskanjem...kaj priporočate? aja, po možnosti naj bi bil free (velikost mape 120 mb, ki pa ne bo zrasla tako hitro...)",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Verjetno obstajajo boljše rešitve - vendar jaz že desetletje uporabljam program syncback, free verzijo. Lahko nastaviš kaj naj vključi oziroma kaj naj izključi.\nSam sicer ne zazna spremembe, torej ne zna \"bdeti\" nad mapo vendar lahko nastaviš v shedulerju da se zažene v nekem pametnem intervalu.",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik TGV je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tVerjetno obstajajo boljše rešitve - vendar jaz že desetletje uporabljam program syncback, free verzijo. Lahko nastaviš kaj naj vključi oziroma kaj naj izključi.\nSam sicer ne zazna spremembe, torej ne zna \"bdeti\" nad mapo vendar lahko nastaviš v shedulerju da se zažene v nekem pametnem intervalu.\n\t\t\n\t\tKlikni za razširitev\n\t\npa zna delati z mapo na računalnikih, kjer je eden v ljubljani, drugi pa mariboru?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Hm, uporabljal sem tudi v obliki i IP\\ime računalnika\\mapa  (znotraj iste mreže).. mora pa obstajati ustrezen share da zadeva teče.\n\nedit : tle je link https://www.2brightsparks.com/resou...-touch-to-backup-files-over-the-internet.html",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "aja, ne, znotraj mreže ne rabim. nucam program kot dropbox (in podobne finte), kjer mu rečem tole mapo in basta. pa da dela.\nno, dropbox, box, onedrive NE omogočajo selektivne izbire posameznih datotek. v letu 2020. hudo ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Če imaš katerikoli NAS, kot je Synology, Qnap, imajo vsi integrirani ravno to, sam imam tak share na 3. mašinah, pa še na svojem NASu, z zgodovino vred. Ce imaš možnost serverja pa poglej za Nextcloud recimo, dela ravno to. Tehnično gledano ga imaš lahko na eni od mašin, ali pa v virtualki, celo kot Docker obstaja.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "ne, nimam nas-a. zadeva, ki se mi je zdela čisto enostavna...kar naenkrat ni več. za to, da bi sinhroniziral eno mapo, ne bom kupoval nas naprave. bo očitno treba brskati naprej...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Mislim da lahko prideš do željene rešitve brez nove strojne opreme, samo pravilen pristop je potreben. Torej imaš kup datotek na računalnikuLJ  in jih - razen določene(ene ali več) - želiš imeti na računalnikuMB.  Za sinhronzacijo map uporabiš dropbox. Nič ne škodi da jih imaš podvojene.\nSedaj  na drugem računalniku izvedeš s pomočjo syncbacka lokalno sinhronizacijo.  V kolikor potrebuješ to samo ko zaganjaš kak program na drugem  pa lahko izpustiš sinhronizacajo prek šeduleraj in uporabiš enostavno .bat oziroma powershell da se pred zagonom izvede ustrezno kopiranje iz dropboxane mape v delovno mapo na drugem računalniku. Samo predlog, ,možnosti je ziljon ...",
+    "author": "TGV",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Jaz sem včasih uporabljal FreeFileSync, samo poglej če deluje samo lokalno (ok, vedno lahko narediš VPN med dvema lokacijama pa potem dela, ampak je nerodno z vidika avtomatike). Nekaj podobnega se da nastavit recimo s Cobian Backup, ampak spet ni v realnem času. Da res dela v ozadju rabiš nekaj podobnega Nextcloud, Owncloud, najbolje pa je sinhronizacija z lastnim NAS-om, vsaj veš kje imaš.\nMogoče opozorilo/premislek: tele sinhronizacije v realnem času so lahko tudi past: če boš brisal na enem bo pobrisano povsod - če dobiš kripto virus ti bo kriptiral na enem računalniku in čez par minut boš imel na vseh zakriptirane datoteke... tako da t.im. offline sinhronizaicja on-demand ima svoje prednosti. Za tekoče delo je sinhrnoizacija v realnem času super zadeva, ampak ni ga čez tedenski offline backup. To pišem zato ker sem glede na zapisano domneval da mogoče ne veš kaj točno bi rad in kaj to potegne za sabo, če pa še kdo prebere pa ne bo škodilo.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\taja, ne, znotraj mreže ne rabim. nucam program kot dropbox (in podobne finte), kjer mu rečem tole mapo in basta. pa da dela.\nno, dropbox, box, onedrive NE omogočajo selektivne izbire posameznih datotek. v letu 2020. hudo \n\t\t\n\t\tKlikni za razširitev\n\t\nkaj pa tole: https://help.dropbox.com/installs-integrations/sync-uploads/selective-sync-overview\n+ tole: https://www.cloudwards.net/how-to-sync-folders-outside-the-dropbox-folder/",
+    "author": "sass",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Točno to kar rabi odpiralec teme ima mega.nz. V nastavitvah pod \"advanced\" lahk določaš katere datoteke ali vrsto datotek izvzame iz sinhronizacije. Pa free je 50 GB",
+    "author": "map",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "sass: sem šel na njihov forum in so jasno napisali: one file exclusion is not an option in da ne ne bodo to vpeljali. poj se pa pejt \nmap, sem ravnokar namestil...pa da vidim",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "\n\t\t\n\t\t\n\t\n\n\t\n\nSpodaj desno klikni z desno tipko na ikono mega, pa potem settings/advanced",
+    "author": "map",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Opcij kako rešit je cel kup. Ampak če so obstoječe cloud sync rešitve točno to kar rabiš in je problem le, da ne moreš ene datoteke excludad, a ni opcija da to datoteko enostavno premakneš ven iz folderja  ? Oziroma če ne moraš syncat določene mape, pa (hard/sym)linkaš/mountaš mapo iz poljubnega mesta v onedrive/dropbox/gdrive/whatever mapo.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "akhm, v mapi je program, tista datoteka je pa licenca, ki je vezana na ta pc/program. drugi pc ima pa svojo licenco (file). a je isti program. zato bi rad mel simple zadevo  tako da program ves čas vidi osvežene podatke. in ja, program pač ni narejen za tak namen ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Čakaj ti dejansko sync inštalacijske/executable fajle nekega programa? Ni dovolj če syncaš podatke s katerimi operiraš znotraj peograma? Sicer pa, če ima licenca določen extension ga lahko kolikor vem na gdrive excludaš glede na extension.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "ja, program je tak, da vse laufa iz ene mape. gdrive pa sem gledal, pa nisem našel, da bi izključil samo eno datoteko...no, sedaj bom probal z mega...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Večina ima filtre kaj se ne sinhronizira, pa daš za filter celo ime datoteke, wildcard-a ali končnico. To imajo skoraj vsi sync programi ki sem jih videl v nastavitvah - skoraj ne verjamem da to ni basic funkcija vsakega sync programa.",
+    "author": "KarEn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\takhm, v mapi je program, tista datoteka je pa licenca, ki je vezana na ta pc/program. drugi pc ima pa svojo licenco (file). a je isti program. zato bi rad mel simple zadevo  tako da program ves čas vidi osvežene podatke. in ja, program pač ni narejen za tak namen \n\t\t\n\t\tKlikni za razširitev\n\t\na je program v eni sami (exe?) datoteki, ali gre za več datotek?",
+    "author": "sass",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "sass: program ima več datotek in map. sem že uspešno rešil z mega (pheew)\nkaren: no, izvoli to narediti v dropboxu ali msdrive. tudi jaz nisem verjel.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "Če mega.nz ne bo dovolj dober:\nše enkrat razmisli o \"dvostopenjskem\" sinhroniziranju, kot je napisal TGV:\n* za \"lokalno\" sinhronizacijo med programsko mapo in \"drop box, one drive, g drive\" mapo uporabi filesync ali karkoli drugega, kar omogoča filtre\n* za sihronizacijo med računalniki (omrežji) pa dropbox, onedrive, gdrive.\n\nTorej na obeh računalnikih nastaviš filesync da sinhronizira recimo c:\\program\\*.* (razen *.lic datoteke) in drop box mapo.\nIn potem po želji poganjaš filesync. Al na uro, al pa ročno.",
+    "author": "jurek1973",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "sinhronizacija datotek",
+    "content": "trenutno mega zadostuje. ja, saj verjamem, da dvostopenjska rešitev tudi deluje, a dokler prva rešitev dela...počakajmo.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  }
+]

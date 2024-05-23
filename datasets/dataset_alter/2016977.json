@@ -1,0 +1,74 @@
+[
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Pozdravljeni, prosim za pomoč.\nGlede računalništva oz. omrežij sem bolj amater zato se obračam na vas.\nDoma imamo Siol Trio. Model imam nameščen v kabinetu. Iz njega imam napeljan 1 UTP kabel do Siol boxa v dnevno sobo, kjer imam šeTV in receiver in ji jo tudi rad zaradi interneta (TV/radijske postaje) povezal z UTP kablom. Kolikor je meni znano, sedaj poteka po tem kablu samo \"trunk signal\". Za tv in receiver pa bi rabil \"data signal\". Poznana mi je samo ta opcija, da bi potegnil še en kabel, kar pa mi ni niti malo všeč in potem raje nimam neta. Obstaja še tudi wi-fi, a jaz bi raje imel preko kabla. Prosim za pomoč.",
+    "author": "dwight",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Če ti je 100 MB/s LAN dovol, potem se lahko preko enega UTP kabla speljeta dve povezavi. Za 100MB LAN sta dovlj dve parici, v kablu so pa štiri. Tako lahko dve parici uporabiš za eno, drugi dve pa za drugo povezavo.\n\nRabiš nekoga, ki ima klešče za stiskat UTP kable, da ti naredi po dva konektorja na vsaki strani kabla.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Pa si vsaj probal če preko tega kabla res ne deluje internet? Če bi slučajno delovalo, potem daš pri TVju en switch in je problem rešen.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Točno tako. Pred boxom imam switch in nanj povezan access point oz. degradiran router. Deluje BP s \"trunk\" opcijo",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Hvala za odgovore. Ta varianta, da bi delil kable mi ni najbolj všeč. Poskusil sem preko switcha, pa ni delalo. \nMi lahko malo bolj obrazložiš kaj s mislil z \"access point oz. degradiran router\"?",
+    "author": "dwight",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "V bistvu je router, ki sem mu izklopil DHCP server, kabel iz switcha pa je vklopljen v enega od LAN portov. Torej nima funkcije routerja, ampak samo access pointa, IP naslove dodeljuje še vedno modem.\n\nTorej povezava je modem Trunk port -&gt; switch -&gt; box+AP+tv",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Ne poznam konkretne situacije in ne vem kako ima SiOL to porihtano. Če gre za pravi trunk, kjer imaš taggane vse VLANe (vrjetno data/video/voice), bi potreboval managed switch, kamor priklopiš trunk in potem nastaviš posamezne porte kot aceess porte za določen VLAN (recimo data) ali pa trunk za box, če ga potrebuje. Možno je sicer, da sta tegana samo voice in video, data pa ne (mislim, da sem nekje zasledil, da je tako). V tem primeru bi zadeva lahko delovala, če trunk priklopiš na navaden (unmanaged) switch in gor box ter ostale naprave, ki potrebujejo dostop do neta (tako kot je omenil nekdo zgoraj). Box bo imel dostop do vseh VLANov tako kot zdaj, ostale naprave pa do neoznačenega data prometa. Je pa odvisno od switcha, če bo to delovalo, glede na to da običajni switchi ne poznajo 802.1q tagov in lahko označene okvirje zavržejo. V tem primeru lahko probaš še z drugim switchem.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Telekom ima v enem pvc-ju (video,voice) oba taggana na drugem pvc-ju pa netaggan data. Načeloma to na trotl switchu to dela.",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Bom poskusil še enkrat z mojim switchem. Zdaj malo gledam managed switche, pa so kr dragi.\nV bistvu mi je všeč varianta, ki jo je ponudil cat. Upam, da jo prav razumem. Iz sinope siol modema bi tisti UTP kabel, ki je bil do zdaj v siol box-u, priklopil switch. na switch bi vezal siol box pa še router (na lan port). potem takem je router access point in lahko nanj priključim tv in receiver?",
+    "author": "dwight",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Če boš imel switch na en port priključič siol box na drugi port na ruter ki ga narediš kot AP. Na ta ruter lahko potem tudi mrežno priključiš tv in receiver da bosta dobila internet",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Bom poskusil to, ja. Hvala. Še eno mogoče butasto vprašanje. Ali je to lahko brezžični router? da se potem v tem prostoru lahko uporablja tudi brezžično omrežje....",
+    "author": "dwight",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava UTP kablov",
+    "content": "Če boš imel brezžični ruter za AP bo potem tudi wifi ja \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  }
+]

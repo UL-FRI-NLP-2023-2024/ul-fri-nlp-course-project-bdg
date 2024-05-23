@@ -1,0 +1,30 @@
+[
+  {
+    "message": "Doma imam stacionarni računalnik (Windows XP), ki ga uporabljajo tudi drugi. Čez teden (včasih tudi po več tednov skupaj) sem v Ljubljani in ko se čez vikend vrnem domov, me čakajo blue-screeni, manjkajoče ali poškodovane datoteke... skratka, kup dela. Omislil sem si nadzor računalnika, ki pa je zaenkrat omejen:  Imam tudi prenosni računalnik (Windows Vista), zato sem naredil eksperiment - na obeh računalnikih sem omogočil napredno skupno rabo, zato lahko iz računalnika A dostopam do katere koli mape na računalniku B. Še več - na obeh računalnikih sem namestil program PsExec (pstools), ki mi omogoča tudi poganjanje programov. Tako je računalnik B 100% pod kontrolo. Vse kar moram poznati je ime računalnika ali njegov IP, ki je ponavadi v obliki 192.168.*.*  Imam pa en problem: oba računalnika sta povezana na isti router in zato tudi v istem domačem omrežju (LAN), kar omogoča da zadeva sploh deluje. Če pa sta računalnika v različnih omrežjih (se ne vidita med seboj), moja ideja ne deluje. Kaj pa zdaj? Rabil bi kakšno drugo programsko opremo, ki mi bo omogočala nadzor računalnika na daljavo. Iščem kakšno freeware verzijo, ki pa naj ne bo Team Viewer ali Windows Remote Desktop. Se kdo spozna na te zadeve in mi lahko kaj svetuje? ",
+    "user": "Robocop1"
+  },
+  {
+    "message": "TeamViewer  Pa še kar preko brskalnika lahko dostopaš. ",
+    "user": "sese12"
+  },
+  {
+    "message": "TeamViewer sicer uporabljam, vendar v tem primeru mi nekako ne ustreza, ker: 1. poznati moram podatke računalnika, ki pa se spremenijo vsakokrat ko TeamViewer poženeš 2. ne morem se na računalnik povezat, ne da bi uporabnik tega opazil 3. uporabnik lahko celo opazi, da se na računalniku izvaja TeamViewer in ga (po pomoti) zapre  Rabim kakšen program, ki bo neopazno deloval v vseh pogojih. Ena od možnosti je, da se lotim programiranja in nekaj svojega sestavim, vendar je zadeva precej komplicirana. ",
+    "user": "Grizzly"
+  },
+  {
+    "message": "Robocop = Grizzly ??  Mislim da je za tvoj razlog, najbolje da domačemu računalniku določiš uporabnike in jim dodeliš ustrezne pravice. Druge tvoji razlogi mi preveč smrdijo. Osebno nebi imel rad koga v družini, ki bi mi gledal pod prste. Vpraši to doma?  1. Drugače si TeamViewer zapomni uporabnika, tako da ti ni treba vedno vpisovati IDja in gesla za dostop. Le registrirati se moraš na teamviewerju. 2. preveč smrdi, 3. Še mal smrdi.  Če imaš računalnik 100% pod kontrolo in ne moreš dostopati od zunaj, si lahko omisliš VPN. Tako bo računalnik viden, kot da bi bil ti v istem omrežju. Če pa ne veš IPja, pa lahko uporabiš nameske programe, kateri iz routeja pošiljajo na določen web page podatke o tvojem IPju. ",
+    "user": "Damiani"
+  },
+  {
+    "message": "Pri radminu se je včasih dalo skriti ikono, kako je s sedanjo verzijo ne vem. ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "Ena od možnosti je SSH. Od tule naložiš strežnik za Windows, ki je za tvoje pogoje (neprofitna uporaba doma) brezplačen. Domnevam, da je domača mašina za NATom, zato si malo nastaviš domači usmerjevalnik tako, da bo ta mašina zmeraj dobila isti lokalni IP (192.168.x.x ali 10.x.x.x), najbolje, da ga vežeš na mrežni naslov MAC. Hkrati na usmerjevalniku nastaviš, da ti bo en  TCP port posredoval na neki port (po defaultu 22, ampak se da tudi prenastaviti) te tvoje domače mašine s fiksnim IP. Če imaš od ISP dodeljen fiksni zunanji IP naslov, je kul, sicer pa bi moral vsak še tako cenen router znati komunicirati z DynDNS ali čim podobnim.   Na tvoji prenosni mašini potrebuješ odjemalec za SSH, lahko je to PuTTY ali ga pa snameš s prej polinkane strani in je za tvoje potrebe ravno tako brezplačen in omogoča še malo več funkcionalnosti (integriran TC-like manager za prenos datotek po SFTP...). Če ti zadostuje lupinski dostop do command prompta, si že zmagal, sicer pa imaš v linkani rešitvi že integriran varen kanal za Remote Desktop z enim klikom na ikono... Če RDP ne maraš, pač v SSH vzpostaviš \"tuneliranje\" (a.k.a. port forwarding) in preg tega laufaš VNC ali kakršnokoli rešitev za remote access že. Edini pogoj je, da deluje kolikor toliko \"lepo\", to pomeni da vse teče prek enega porta.  Slaba stran te rešitve je, da še zdaj ne podpirajo IPv6. ",
+    "user": "metalc"
+  },
+  {
+    "message": " Grizzly je 14. maj 2012 ob 14:32 izjavil:TeamViewer sicer uporabljam, vendar v tem primeru mi nekako ne ustreza, ker: 1. poznati moram podatke računalnika, ki pa se spremenijo vsakokrat ko TeamViewer poženeš 2. ne morem se na računalnik povezat, ne da bi uporabnik tega opazil 3. uporabnik lahko celo opazi, da se na računalniku izvaja TeamViewer in ga (po pomoti) zapre  Rabim kakšen program, ki bo neopazno deloval v vseh pogojih. Ena od možnosti je, da se lotim programiranja in nekaj svojega sestavim, vendar je zadeva precej komplicirana.  2 in 3 je čisto vohunjenje.  Problema se lotevaš na napačnem koncu, kot je napisal Damiani uredi ustrezne pravice za posamezne uporabnike. ",
+    "user": "amigo_no1"
+  }
+]

@@ -1,0 +1,158 @@
+[
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Ojla!\n\nKolega je na svoj vikend namestil kamere, zdaj pa bi rad dostopal oddaljeno (od doma) do snemalnika. \n\nDostopa do interneta tam nima, niti ni možnosti priklopa, zato je nabavil 3G/4G USB stick Huawei in pa naročnino za mobilne podatke.\nProblem je v tem, da preko sticka lahko dostopa do interneta (torej iz vikenda, navzven), ne more pa dostopati od doma do vikenda (incoming traffic), ker ima Mobitel blokirane porte.\nPogoj za odprtje portov je poslovni paket, ki pa ga seveda nima.\n\nKako bi lahko zaobšel to zadevo? Morda preko kakšnega VPN? \nKako drugi rešujete problem do oddaljenega dostopa?\n\nRouter na lokaciji je sicer ASUS RT N14U,, ki podpira tudi OpenVPN, če kaj pomaga, dostop do neta pa je preko zgoraj omenjenega Huawei LTE USB stick E3372. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKakšne ideje?",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Jaz bi skonfiguriral Site-2-Site VPN z OpenVPN, tako da bi imel doma OpenVPN server (na usmerjevalniku/strežniku/malini kjer je pač možno), na tistem usmerjevalniku na vikendu pa OpenVPN klienta, ki je ves čas povezan domov. \n\nImam na ta način domov povezano eno lokacijo že par let (doma OpenVPN server na pfSense, na drugi strani OpenVPN client na OpenWRT) in dela BP. Sicer na drugi strani ni 3G/LTE ampak sem v štartu testiral preko 3G preden sem router odnesel na drugo lokacijo. Načeloma ni problema, ker se klient itak samo povezuje ven.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Apachi pravi:\n Ojla!\n\nKolega je na svoj vikend namestil kamere, zdaj pa bi rad dostopal oddaljeno (od doma) do snemalnika. \n\nDostopa do interneta tam nima, niti ni možnosti priklopa, zato je nabavil 3G/4G USB stick Huawei in pa naročnino za mobilne podatke.\nProblem je v tem, da preko sticka lahko dostopa do interneta (torej iz vikenda, navzven), ne more pa dostopati od doma do vikenda (incoming traffic), ker ima Mobitel blokirane porte.\nPogoj za odprtje portov je poslovni paket, ki pa ga seveda nima.\n\nKako bi lahko zaobšel to zadevo? Morda preko kakšnega VPN? \nKako drugi rešujete problem do oddaljenega dostopa?\n\nRouter na lokaciji je sicer ASUS RT N14U,, ki podpira tudi OpenVPN, če kaj pomaga, dostop do neta pa je preko zgoraj omenjenega Huawei LTE USB stick E3372. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKakšne ideje?\n\t\t\n\t\tKlikni za razširitev\n\t\nV osnovi ni problem v portih ampak v dinamicnem dodeljevanju IP naslovov - tako zunanjih kot notranjih. Se pa zadevo resuje z zakupom APN-jev in imas SIMko na svojem networku. Je pa to verjetno predraga resitev za tvojega kolega.",
+    "author": "Apollo8",
+    "author_level": "Mahoney"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Apollo8 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Apachi pravi:\n Ojla!\n\nKolega je na svoj vikend namestil kamere, zdaj pa bi rad dostopal oddaljeno (od doma) do snemalnika. \n\nDostopa do interneta tam nima, niti ni možnosti priklopa, zato je nabavil 3G/4G USB stick Huawei in pa naročnino za mobilne podatke.\nProblem je v tem, da preko sticka lahko dostopa do interneta (torej iz vikenda, navzven), ne more pa dostopati od doma do vikenda (incoming traffic), ker ima Mobitel blokirane porte.\nPogoj za odprtje portov je poslovni paket, ki pa ga seveda nima.\n\nKako bi lahko zaobšel to zadevo? Morda preko kakšnega VPN? \nKako drugi rešujete problem do oddaljenega dostopa?\n\nRouter na lokaciji je sicer ASUS RT N14U,, ki podpira tudi OpenVPN, če kaj pomaga, dostop do neta pa je preko zgoraj omenjenega Huawei LTE USB stick E3372. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKakšne ideje?\n\t\t\n\t\tKlikni za razširitev\n\t\nV osnovi ni problem v portih ampak v dinamicnem dodeljevanju IP naslovov - tako zunanjih kot notranjih. Se pa zadevo resuje z zakupom APN-jev in imas SIMko na svojem networku. Je pa to verjetno predraga resitev za tvojega kolega.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNi problem v dinamičnem dodeljevanju naslovov IP. To se da načeloma dokaj enostavno (in zastonj) rešit z dynamic DNS rešitevami, vendar ti to nič ne pomaga, če nisi dosegljiv od zunaj. V večini primerov si na mobilnem netu za CGN in sploh ne dobiš javnega naslova IP. Seveda se da zadevo rešit, ena možnost je tudi lasten APN ampak to ne bo poceni. \n\nČe že bo vrjetno ceneje katera od opcij domačega interneta preko 3G/LTE. Še vedno bo bolj poceni vzpostavit VPN do doma. Marsikateri videonadzorni sistem (tudi razni poceni kitajski) pa omogoča tudi remote dostop preko njihove cloud rešitve, če ti je to varnostno sprejemljiva rešitev (predvsem pri raznih poceni kitajcih je vprašanje glede varnosti na mestu).",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Googlaj \"reverse ssh\".",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Kupiš VPS za 1€ na mesec, postaviš OpenVPN strežnik in povežeš Asusa kot klienta gor. Na VPSju še ustrezno nastaviš port forwarding pa imaš dostopno vse na mobilnem modemu.\n\nhttps://www.arubacloud.com/vps/virtual-private-server-range.aspx\n\nŠe bolj simpl je kaj takega, tudi nekje 15€ na leto:\nhttps://www.torvpn.com/en/vpn",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n\n\nNi problem v dinamičnem dodeljevanju naslovov IP. To se da načeloma dokaj enostavno (in zastonj) rešit z dynamic DNS rešitevami, vendar ti to nič ne pomaga, če nisi dosegljiv od zunaj. V večini primerov si na mobilnem netu za CGN in sploh ne dobiš javnega naslova IP. Seveda se da zadevo rešit, ena možnost je tudi lasten APN ampak to ne bo poceni. \n.\n\t\t\n\t\tKlikni za razširitev\n\t\nTočno to. Tako snemalnik, kot Asus router omogočata DynDNS , No-IP, itd.... za dinamične IP naslove, problem je to, da ni dovoljene  od zunaj not.\n\nHvala vsem za odgovore, bom preveril, če bo s katero od teh rešitev šlo....\n\nVsak ma par pirov v dobrem! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "titov \n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n\nKupiš VPS za 1€ na mesec\n\t\t\n\t\tKlikni za razširitev\n\t\nIn potem v konfiguratorju 1 eu postane 4,99 .\nhttps://www.arubacloud.com/vps/configurator-virtual-private-server.aspx\n\nMoja napisana rešitev je zastonj.\n\nhttps://toic.org/blog/2009/reverse-ssh-port-forwarding/",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "ksz\n\nNabaviš poceni prenosnik, in uporabiš teamviewer",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Jaz bi preko open ali dd-wrt ali asus-merlin (ne vem če ga je podpiral, vem pa da n16 je bila podprta s prejšnimi verzijami) namestil tole:\nhttps://www.hqt.ro/webcam-video-surveillance-via-mjpg-streamer-entware/\nprej moraš pa seveda še naložiti:\nhttps://www.hqt.ro/how-to-install-new-generation-entware/\npreko usb porta pa bi naštimal 3g/4g wifi\n\nIn vse je free of charge razen seveda mobilni wifi",
+    "author": "brunobruno",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Jest bi to rešil z dvema Mikrotik-oma in vzpostavil OpenVPN, kot je predlagal XSIDE. Strošek cca. 100€.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Ytbnd pravi:\n titov \n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n\nKupiš VPS za 1€ na mesec\n\t\t\n\t\tKlikni za razširitev\n\t\nIn potem v konfiguratorju 1 eu postane 4,99 .\nhttps://www.arubacloud.com/vps/configurator-virtual-private-server.aspx\n\nMoja napisana rešitev je zastonj.\n\nhttps://toic.org/blog/2009/reverse-ssh-port-forwarding/\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTu izbereš tega za 1€, nazadnje, ko sem kupil je cena bila 1€+VAT:\nhttps://www.arubacloud.com/vps/virtual-private-server-range.aspx\n\nKako rešiš z reverse ssh recimo dostop iz mobitela na kamero npr.?\n\nbtw,\nMoj Torvpn affiliate link: \n https://www.torvpn.com/ \nTu lahko VPN vzpostaviš preko PPTP, OpenVPN in tudi SSH, uporabljam že več kot leto ravno za dostop do kamer na mobilnih modemih in deluje ok, čisto simpl za nastavit. Cena na leto pa malo več kot te pride elektrika na leto za 24/7 priklopljen kakšen dodaten ruter za VPN strežnik.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Ytbnd pravi:\n titov \n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n\nKupiš VPS za 1€ na mesec\n\t\t\n\t\tKlikni za razširitev\n\t\nIn potem v konfiguratorju 1 eu postane 4,99 .\nhttps://www.arubacloud.com/vps/configurator-virtual-private-server.aspx\n\nMoja napisana rešitev je zastonj.\n\nhttps://toic.org/blog/2009/reverse-ssh-port-forwarding/\n\t\t\n\t\tKlikni za razširitev\n\t\nA ne uprablja teamviewer podobne (enake) tehnologije?",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik onlyme pravi:\n ksz\n\nNabaviš poceni prenosnik, in uporabiš teamviewer\n\t\t\n\t\tKlikni za razširitev\n\t\nŠe enkrat...\n1. snemalnik je tam\n2. kamere so na priklopljene\n3. LAN snemalnika je priklopljen na router ASUS RT-N14u, ki je tudi že tam\n4. USB ključek je v ASUS-u in deluje\n\nBrez dodatnih računalnikov pa brez menjave routerjev, pa teamviewerjev....  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Ali se igraj z ssh, al pa investiraj, brez nič ni nič. Nekaj rešitev maš naštetih.",
+    "author": "onlyme",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "PA saj imaš gor asuswrt, moja opcija je zastonj in je ni težko implementirati.",
+    "author": "brunobruno",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik brunobruno pravi:\n PA saj imaš gor asuswrt, moja opcija je zastonj in je ni težko implementirati.\n\t\t\n\t\tKlikni za razširitev\n\t\nTvoja opcija ne vem, kako mu bo pomagala pri oddaljenem dostopu. Linkal si tutorial, kjer je opisano, kako lahko sliko iz USB webcama s pomočjo routerja streamaš preko mreže. Kot je napisal, kamere in snemalnik že ima na mreži, problem ima z dostopom od zunaj, ki ga na ta način ne bo rešil.\n\nZ reverse SSH tunelom se sicer da rešit, ampak se mi še vedno zdi najboljša opcija VPN (domov ali pa na VPS, po želji).",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Imaš zastonj user.asuscomm.com ddns in daš na port 3000\nyour_wan_ip adress:3000/stream_simple.html",
+    "author": "brunobruno",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik brunobruno pravi:\n Imaš zastonj user.asuscomm.com ddns in daš na port 3000\nyour_wan_ip adress:3000/stream_simple.html\n\t\t\n\t\tKlikni za razširitev\n\t\nKar mu ne pomaga čisto nič, ker njegov \"WAN\" IP address ni dosegljiv od zunaj in to je tudi point cele teme....",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik brunobruno pravi:\n Imaš zastonj user.asuscomm.com ddns in daš na port 3000\nyour_wan_ip adress:3000/stream_simple.html\n\t\t\n\t\tKlikni za razširitev\n\t\nKar mu ne pomaga čisto nič, ker njegov \"WAN\" IP address ni dosegljiv od zunaj in to je tudi point cele teme....\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTočno to. Če bo jutri volja in čas, bom šel malce probat rešitve \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nTačas še zbiram ideje \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nEna izmed opcij bi bila tudi, da bi na njegov domač router naredil VPN server, na oddaljeni lokaciji pa na router VPN client... pa bi teoretično moglo delat.... ampak potem ne vem, kako je z mobilnim dostopom (npr. telefon, ko je na terenu)..... kriza \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Če rabi dostop od kjerkoli (ne samo od doma), je še vedno več opcij:\n-Lahko še vedno vzpostaviš Site-2-Site VPN s strežnikom na domačem routerju in klientom na routerju oddaljene lokacije. V tem primeru imaš dve opciji. Ali od doma zadevo naprej odpreš na ven (DNAT oziroma port forwarding po domače narediš na domačem routerju za snemalnik, ki je sicer dosegljiv iz routerja preko VPNja. Samo če ne boš peljal iz oddaljene lokacije komplet prometa čez domač router bo treba poskrbet za ustrezne rute in/ali NAT. V končni fazi lahko na domačem routerju skofiguriraš tudi kakšen reverse proxy ala nginx ali HAProxy, ampak načeloma ni potrebe po tem. Nek port na zunanjem IP domače lokacije lahko preslikaš v IP in port snemalnika na oddaljeni lokaciji, samo poskrbet moreš, da promet pride tudi nazaj - specifična ruta ali pa default route na domač usmerjevalnik). Ali pa skonfiguriraš še Remote Access VPN, da se recimo iz telefona povežeš na domač router in potem imaš od tam itak dosegljiv tudi snemalnik preko Site-2-Site VPNja.\n-Lahko isto narediš na VPSju. V obeh primerih bo najbolj enostavno za nastavit, če ves promet spelješ preko VPNja, ni pa nujno seveda. \n-Še najlažje (minimalno dela) bo vrjetno uporabit kar VPN providerja, kot je predlagal titov.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Apachi pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik brunobruno pravi:\n Imaš zastonj user.asuscomm.com ddns in daš na port 3000\nyour_wan_ip adress:3000/stream_simple.html\n\t\t\n\t\tKlikni za razširitev\n\t\nKar mu ne pomaga čisto nič, ker njegov \"WAN\" IP address ni dosegljiv od zunaj in to je tudi point cele teme....\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTočno to. Če bo jutri volja in čas, bom šel malce probat rešitve \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nTačas še zbiram ideje \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nEna izmed opcij bi bila tudi, da bi na njegov domač router naredil VPN server, na oddaljeni lokaciji pa na router VPN client... pa bi teoretično moglo delat.... ampak potem ne vem, kako je z mobilnim dostopom (npr. telefon, ko je na terenu)..... kriza \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo bi seveda šlo, popolnoma isti princip kot povezava na namenski VPS/VPN strežnik. \n\nDoma mora potem imeti ali statični IP ali pa DDNS in potem ustrezno usmeriti zunanje porte naprej na VPN klient - Asus ruter in tam potem ponovno pravilno usmerit porte naprej na kamere. Dvakrat moraš potem dejansko port forwarding naredit.",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Evo - končno sem uspel priti do vikenda in zadevo priklopiti. \nVPN je vzpostavljen. Iz vikenda se lahko povežem domov, vidim vse domače računalnike, tiskalnike itd.\n\nProblem se pojavi s kontra strani (ki je v bistvi glavna) in od doma ne vidim snemalnika.\n\nKonfiguracija:\nDoma: DD-WRT VPN server\nIP: 10.10.10.1\nSubnet: 255.255.0.0\n\nVikend:\nASUS butasti VPN Client:\nIP: 10.10.11.1\nSubnet 255.255.0.0\n\nNa Asusu in na WRT je vzpostavljen \"advanced routing\", vendar dela samo enosmerno.\nKje iskati napako?\n\n\t\t\n\t",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Server side:\n\nVidijo se vsi računalniki na domači strani....\n\n\t\t\n\t",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Od doma lahko pingam VPN klienta 10.10.11.1 (ASUS router), ne pa tudi kamer (10.10.11.2)\n\n\t\t\n\t",
+    "author": "Apachi",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Oddaljen dostop do računalnika in mobilni internet",
+    "content": "Tole je vse skupaj rahlo čudno. Če imaš res naslove tako:\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nKonfiguracija:\nDoma: DD-WRT VPN server\nIP: 10.10.10.1\nSubnet: 255.255.0.0\n\nVikend:\nASUS butasti VPN Client:\nIP: 10.10.11.1\nSubnet 255.255.0.0\n\t\t\n\t\tKlikni za razširitev\n\t\npotem imaš na obeh lokacijah isti subnet (10.10.0.0/16) in je praktično nemogoče routat promet med obema lokacijama. Nastavljeno imaš masko 255.255.0.0 oziroma /16 kar pomeni, da je vse, kar je znotraj 10.10.X.X, v istem omrežju. Tista statična routa je tudi brez pomena, ker je destinacija v istem omrežju kot next hop (gateway). Promet se bo vedno dostavil lokalno tako, da se razreši MAC naslov preko ARP.\n\nZa začetek na drugi lokaciji izberi nek drug subnet, npr. 10.11.0.0/16, če imaš doma res 10.10.0.0/16 (čeprav vrjetno ni potrebe po tako ogromnem subnetu, je lahko kar 10.11.0.0/24 ali pa 192.168.0.0/24 oziroma spremeniš maske in imaš doma 10.10.10.0/24 na vikendu pa 10.10.11.0/24). Za ta network potem rabiš ruto na domačem usmerjevalniku, na vikendu pa ruto za domači subnet oziroma moreš samo klientu povedat ustrezen subnet za remote omrežje (To kar si obkrožil, čeprav nastavljeno je pa drugače, kot si zgoraj napisal. Tu imaš masko 255.255.255.0). Ni pa to ravno tipična Site-2-Site VPN postavitev, ker ni povezevalnega segmenta, ampak je VPN client kar na subnetu prve lokacije. \n\nSicer pa routing težko deluje enosmerno, saj morajo za dostop tako iz ene kot iz druge strani paketi pridet tja in nazaj. Mogoče bo lažje, če pokažeš še konfiguracijo VPN strežnika in konfiguracijo lokalnega vmesnika na vikendu. Ne pozabi preverit še nastavitev firewall, kaj je kam dovoljeno (predvsem na vikend strani).",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  }
+]

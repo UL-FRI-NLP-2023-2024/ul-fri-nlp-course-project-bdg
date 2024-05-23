@@ -1,0 +1,350 @@
+[
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "ok stvar je taka. \nsimobil LTE modem je tisti ki da internet.  192.168.1.1\nna to je povezan wrt45gl 192.168.1.2, ki ima preko DHCP.  Default gateway 192.168.1.1                                                     \nna wrt54gl je povezan preko lan porta en  TL-WR841ND.  DHCP disejblan in ip 192.168.1.4 default gateway 192.168.1.2\nTole vse ok zadeva deluje že več kot leto. Danes sem hotel razširit wifi v delavnico in sem povezal na tega WR841 še en wrt54gl. Seveda utp na lan porte. DHCP disejblal ip ima 192.168.1.3. in zadeva ne deluje. \n\ndo sedaj sem lahko iz vsakega routerja prišel na vsak ip za nastavitve. preko novega \"vidim\" samo 192.168.1.4 in 192.168.1.3. Internetne povezave ni. guglam zdaj že eno uro in ne najdem kaj delam narobe. Povsod piše nastavi tretji in vse kasnejše enako kot drugega. \n\nna ta način je povezava.\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "GW moraš nastavit tudi na 192.168.1.4 in vsem mašinam pod njim na 192.168.1.2 ker je tam DHCP. Ti si verjetno nastavil po logiki 192.168.1.3? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Gw je na obeh .1.2. Saj pravim te očitne stvari vse štimajo. Zato mi ni jasno",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "DNSe si vpisal? DHCP ni v rangu, kjer ročno dodeljuješ naslove?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Če se ne pingajo med sabo, bi jest preveril kable in če ni kaj priklopljeno na WAN port.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Dhcp je na 1.100 do 1.150\nWan porti so prosti, pingajo brez napak ko preverjam kable. \nDns je 8.8.8.8.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "wrt54gl 192.168.1.2 je iz lte modema priklopljen v wan ali lan port ? Si prepričan da simobil škatla ni tudi router (kot npr. Huawei B593) ?\n\nDa nimaš 100 wifi routerjev (temveč samo enega glavnega), raje nabavi wifi range extenderje.\n\n\n\"Nov\" wrt54gl je nov ali rabljen ? Če ga priklopiš namesto wrt54gl 192.168.1.2 dela ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Če imaš vse ruterje povezane na LAN port, potem itak delajo samo kot navadni switch-i, oz access pointi. Default GW pa mora bit nastavljen na router, ki je dejansko povezan na internet. Se pravi v tvojem primeru 192.168.1.1. Tako mora biti nastavljeno na vseh routrjih in vseh drugih napravah, ki spo povezane v takšno omrežje. To da je DHCP samo na routerju 192.168.1.2 nima veze, default GW mora biti 192.168.1.1. \n\nDefault GW se nastavi na napravo, ki ve, kajstoriti s paketom, ki je naslovljen na IP, ki ni v LAN segmentu. Ker imaš vse na 192.168.1.0/24, je edina naprava Simobilov LTE router na IP-ju 192.168.1.1. \n\nČe se s končne naprave lahko pingaš GW (192.168.1.1) in DNS server (npr. 8.8.8.8), potem internet mora delovati.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "mah jaz sem uradno obupal. Nimam pojma več.\n\n@Ybnd nebom kupoval nekih extenderjev, ker sem imel te routerje vse na voljo doma. Vsi so priklopleni na LAN. Simobilova škatla je seveda huawei router. Ampak je DHCP in wifi in te zadeve na off. Ni glih najboljše delalo. \"nov\" wrt54gl je 100% delujoč. Še do pred 14 dni nazaj je bil v stalnem pogonu brez težav pri fotru.\n\npingam lahko iz vseh dosedaj prikloplenih naprav vse brez težav. ali preko wifi ali preko kabla. Pingam lahko tudi \"nov\" router preko na novo položenega kabla iz bajte v delavnico. oziroma lahko pingam preko tega kabla iz delavnice vse ostalo po hiši. Če priklopim v delavnici \"nov\" router in hočem kaj pingat preko njega negre nič",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "1. Pingaj 192.168.1.3 brez nove naprave v omrežju,da nimaš IP že kje dodeljen in imaš konflikt? Mogoče novo napravo nastavi na kakšen drug IP\n2. Priklopi samo novo napravo, nastavi na računalnik finski IP in se priklopi direktno preko LAN na novo napravo. Tako ti UI deluje, je ping dostopen nove naprave?",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "ip je prost. Konfliktov ni. To sem najprej preveril. Sem že tudi v štartu probal z 1.5, 1.6, 1.7 in isto. \nsaj pravim če nov router priklopim z utp na računalnik deluje vse ok pingi letijo z 0-1ms. \nv glavnem vse te \"osnovne\" stvari štimajo in je vse kot mora bit nastavleno. \n\nkaj je možno, da je kabl kriv čeprav vsi pingi letijo skozi brez napak in z minimalnimi ms-ji?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Ne vem, kaj kompliciraš z različnimi gatewayi na istem subnetu. Enostavno si izberi en router, na katerem boš imel DHCP in povezan ter nastavljen WAN port za internet. Na vseh ostalih izklopi DHCP ter jih enostavno poveži preko LAN portov v bridge. Če pa želiš imeti ločene mreže, pa vsakemu določi svoj subnet in jih povezuj preko WAN portov.",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "ti si sploh prebral kaj smo do zdaj pisali?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik luka51 pravi:\n TL-WR841ND.  DHCP disejblan in ip 192.168.1.4 default gateway 192.168.1.  2  \nTole vse ok zadeva deluje že več kot leto. Danes sem hotel razširit wifi v delavnico in sem povezal na tega WR841 še en wrt54gl. Seveda utp na lan porte. DHCP disejblal ip ima 192.168.1.3. in zadeva ne deluje.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nrouter 3 mora imeti GW: 192.168.1.1\nisto router 4",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Samo \"primary router\" je router. Na WAN portu im modem, na LAN portu gres do drugega. Na nobenem od drugih \"routerjev\" NE uporabis WAN porta (!!). Torej, imel bos situacijo z enim Routerjem, vsi ostali pa so Access pointi. Vsak AP je na svojem IPju, ampam vsi imajo nastavljen Router naslov prvega (edinega dejanskega) routerja.",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik luka51 pravi:\n ti si sploh prebral kaj smo do zdaj pisali?\n\t\t\n\t\tKlikni za razširitev\n\t\nPrebral sem prvi post in v njemu videl, da imaš stvari čudno nastavljene (ali pa ne razumeš, kako stvari delujejo). Potem sem videl, da ti stvar še vedno ne deluje in se odločil, da napišem, kako bi stvar 100% delovala (če seveda razumeš, kaj sem sploh napisal). Take it or leave it. Step by step navodil ti gotovo ne bom šel pisat.\n\nČe ti stvar, ki bi po vsej logiki morala delovati, še vedno ne deluje, potem iščeš napake v opremi (slabi kabli, pokvarjeni porti, itd).",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Matko pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik luka51 pravi:\n TL-WR841ND.  DHCP disejblan in ip 192.168.1.4 default gateway 192.168.1.  2  \nTole vse ok zadeva deluje že več kot leto. Danes sem hotel razširit wifi v delavnico in sem povezal na tega WR841 še en wrt54gl. Seveda utp na lan porte. DHCP disejblal ip ima 192.168.1.3. in zadeva ne deluje.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nrouter 3 mora imeti GW: 192.168.1.1\nisto router 4\n\t\t\n\t\tKlikni za razširitev\n\t\nče nardim na 1.1 ni nobenih sprememb. To sem že vse v štartu te \"očitne\" stvari probal. Plus da če dam na 1.1 mi tv povezan na drugi router ne dobi več povezave preko wifi.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Kateri router je DHCP server? Simobil LTE modem ali Linksys (192.168.1.2)?",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "linksys. 192.168.1.2 \nSimobil (192.168.1.1) deluje samo kot modem. Ker ni blo nekega zadovoljivega wifi dometa in pa tudi občasn ponovn zagon je potreboval, ko je bil kot glavni router. torej DHCP in WIFI sta izkloplena. iz njega gre samo en kabl na LAN port od lynksisa. \nNa tega prvega lynksisa sta pa potem z kablom povezana dva stacionarca in tplink router (LAN). preko WIFI en tv in občasno en prenosnik in en telefon. \nna drugi tp link ni z kablom povezano nič. preko wifija pa laufata 2 prenosnika in 2 telefona, en tv in xbox. \nKaj se wifija tiče je isti SSID in isti kanal in iste nastavitve. Torej da je po celi bajti samo eno omrežje. \nIn to je delalo zdaj ene dve leti brez brez težav. vsak vidi vse, mreža laufa. vse je dostopno na vsaki napravi.\nTorej, da to nebi blo ok nastavleno dvomim.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Ne vem kaj točno bi bilo lahko narobe pri tebi vendar jaz imam v omrežju 5 routerjev, ki delujejo kot dostopne točke. Dva od teh skrbita tudi za WDS povezavo na oddaljeni lokaciji. \n\nImam pa postavljeno tako:\n\nOptični prehod v bridge načinu\nMikrotik z DHCP na WAN portu in ip naslovom 192.168.3.3\nza njim pa dostopne točke na 192.168.3.5, 192.168.3.6, 192.168.3.7 itd...\nNaprave pa nametane po celem omrežju. Dostopnim točkam izklopiš vse DHCP možnosti, požarni zid itd... lahko tudi onemogočiš WAN port. Dostopne točke morajo biti priklopljene v LAN porte (to že veš) in ne rabijo imeti vpisanega prehoda in DNS serverja. To rabiš vpisano zgolj če želiš, da ima tudi dostopna točka sama dostop do interneta.\n\nMe pa zanima nekaj, kako točno LTE modem posreduje internet prvemu routerju v omrežju? Oziroma bolje vprašano kakšen IP imaš na WAN portu prvega routerja za LTE modemom?\n\nEdit: A tam prav vidim, da pišeš, da imaš LTE modem vključen v LAN portu na prvem routerju? A ni to nekoliko čudna konfiguracija? Načeloma bi moral biti vključeno v WAN port in pa Router in dostopne točke v drugem subnetu kot modem.\n\nTežava je tudi, ker pri LTE dostopu do interneta ne moreš modema postaviti v Bridge, kot pri običajnem dostopu. Lahko le daš ip prvega routerja v DMZ.\n\nhttp://mybroadband.co.za/vb/sh...=1#post16923179\n\nEdit/2: WiFI lahko ima isto ime ampak je dobro, če so kanali različni, da se ne tepejo med sabo za pasovno širino.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Kakšen domet ima tale zadeva, če jo postavim na okensko polico?\n\nhttps://www.mimovrste.com/usmerjevalniki-routerji/linksys-brezzicni-router-linksys-wrt54gl",
+    "author": "dem",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Domet ima kar precej soliden, je pa vseeno že več kot 10 let stara zadeva. Poskusi si omisliti kaj novejšega s podporo N standardu.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Imaš kakšen predlog. Sam se ne spoznam... Potrebujem čimvečji domet.",
+    "author": "dem",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Usmerjeno ali za večji kot pokrivanja?\n\nSam ima za 180 stopinjsko pokrivanje sektorsko anteno in Ubiquity Bullet a je to cenovno kar drago. Za 45 stopinjski kot pokrivanja in kar soliden domet bi bilo dobro tudi kar takega: \n\nhttps://www.mimovrste.com/dost...hz-8dbi-150mbps\n\nhttps://dl.ubnt.com/datasheets/nanostationm/nsm_ds_web.pdf\n\nSeveda je domet zelo odvisen tudi od naprave na drugi strani.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Samo \"primary router\" je router. Na WAN portu im modem, na LAN portu gres do drugega. Na nobenem od drugih \"routerjev\" NE uporabis WAN porta (!!). Torej, imel bos situacijo z enim Routerjem, vsi ostali pa so Access pointi. Vsak AP je na svojem IPju, ampam vsi imajo nastavljen Router naslov prvega (edinega dejanskega) routerja.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSorry, ampak imam doma 2 routerja uporabljena kot AP/switch, pa sta na primarni router (telekomov) seveda povezana preko njunega WAN porta (torej kabel iz LAN porte primernega routerja v WAN port sekundarnih). In razen tega, da sem na DHCP primarnega routerja za vsak slučaj nastavil fiksna IPja za druga dva routerja (in jima seveda izklopil DHCP oz ju nastavil v bridge mode), ni bilo treba nič drugega narediti (logično, ker ko se kateri od teh dveh routerjev pofočka v mrežo, avtomatsko dobi IP, GW ... podatke od primarnega routerja zase, vse kar dobi od prilljučenih naprav pa itak le posreduje). Vse ostalo mora delat avtomatsko, ker računalnik itak sploh ne ve, da da je AP (v primeru WLAN povezave) oz switch (če je preko kabla) vmes. V bistvu \"vidi\" samo primarni router.",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik luka51 pravi:\n linksys. 192.168.1.2 \nSimobil (192.168.1.1) deluje samo kot modem. Ker ni blo nekega zadovoljivega wifi dometa in pa tudi občasn ponovn zagon je potreboval, ko je bil kot glavni router. torej DHCP in WIFI sta izkloplena. iz njega gre samo en kabl na LAN port od lynksisa. \nNa tega prvega lynksisa sta pa potem z kablom povezana dva stacionarca in tplink router (LAN). preko WIFI en tv in občasno en prenosnik in en telefon. \nna drugi tp link ni z kablom povezano nič. preko wifija pa laufata 2 prenosnika in 2 telefona, en tv in xbox. \nKaj se wifija tiče je isti SSID in isti kanal in iste nastavitve. Torej da je po celi bajti samo eno omrežje. \nIn to je delalo zdaj ene dve leti brez brez težav. vsak vidi vse, mreža laufa. vse je dostopno na vsaki napravi.\nTorej, da to nebi blo ok nastavleno dvomim.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKakšne LAN nastavitve ti pa DHCP da, če se povežeš preko WIFI na problematični AP?",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Luka kar sem jaz bral, imaš  pravilno priklopljene zadeve.. \nJaz bi probal problematični router na novi lokaciji priklopiti na WAN in potem vklopi DHCP v drugem rangu. Seveda mora biti getway in vse od tega routerja. On se pač poveže dalje preko DHCP-ja..\nZadeva bi enako morala delovati,.. Pač za sprobat.\nKakšna pa je dolžina tega novega UTP kablja ?",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Zdaj me sicer ni doma. Bom konec tedna še probal. Kabla je nekje 30m. Če pingam router preko kabla so časi 0-2ms na 100 paketov z 0% izgub.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Če so routerji brezhibni, pravilno konfigurirani (torej so samo switchi), potem ostane samo kabel med njiimi.\n\nSi sam delal končne priklope rj45 na kablu ?\n\npreveri če se povežejo preko wds bridge:\nhttp://www.polarcloud.com/tomatofaq#how_do_i_use_wds\n",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Drugače opažam, da je pogosto težava nastavljen fiksni IP na nekaterih napravah. Zato priporočam, da se na napravi, kjer je vključen DHCP strežnik nastavi tudi dodeljevanje statičnih IP-jev glede na MAC naslov povezanih naprav (ruterjev/switchev v tem primeru).",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Težava se pojavi predvsem, ko se igraš s fiksnimi IPji znotraj DHCP območja. Za to je pametno, če se dhcp začne pri .100 imeti vse statične naprave pod to številko. \n\nStatični IPji na MAC so sicer prava izbira, je pa problem, ko enkrat narediš restore routerja in moraš vse komplet še enkrat nastavljat, buhnedaj, da nisi imel nikjer zabeleženo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Ja, kakšen shranjen seznam rezerviranih IP-jev na MAC naslov ne škoduje. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\t\t\n\t\tKlikni za razširitev\n\t\nResno: zakaj na naslednjih routerjih ne uporabit WAN porta za vhod? Jaz ga uporabljam, pa dela. Dodatna routerja sta oba v bridge mode in vse se je samo nastavilo ...",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SJTV1 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\t\t\n\t\tKlikni za razširitev\n\t\nResno: zakaj na naslednjih routerjih ne uporabit WAN porta za vhod? Jaz ga uporabljam, pa dela. Dodatna routerja sta oba v bridge mode in vse se je samo nastavilo ...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nO kakšnem bridge modeu je govora? Predvidevam, da ne gre za wireless bridge, če je govora o priklopu s kablom. Ne nekaterih rotuerjih se da nastavit, da je WAN port del LAN segmenta, če je to to, potem je itak isto kot da bi v LAN priklapljal. \n\nPriklapljat dodatno dostopno točko/switch znotraj interne mreže preko NAT pa je pač bedarija in ne vem zakaj bi to počel. Najmanj kar imaš že kot laik problem je, ko se hočeš povezat na napravo, ki je tam zadaj (rabiš port forwarding) ali pa če hočeš uporabljati med napravimi katerikoli zeroconf protokol (DLNA, AirPlay,...). Še tam kjer brez NAT pač danes ne gre, si ga ne želiš, kaj šele da bi ga po ne potrebnem tlačil v interno mrežo....",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SJTV1 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\t\t\n\t\tKlikni za razširitev\n\t\nResno: zakaj na naslednjih routerjih ne uporabit WAN porta za vhod? Jaz ga uporabljam, pa dela. Dodatna routerja sta oba v bridge mode in vse se je samo nastavilo ...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nČe veš, kaj dela in, rabiš dodatne porte na routerjih, potem lahko. Če pa ne rabiš dodatnih portov, pa je lažje, če povežeš samo preko LAN portov in bo delalo brez dodatnih nastavitev routerja. Problem je v tem, da sta LAN in WAN porta na rezličnih mrežnih karticah, ki ju moraš dati v bridge mode, drugače ne bo delalo. Za nevešče uporabnike je ta dodatna komplikacija lahko problem. Zato je bolje, da se ji izogneš, če ne rabiš dodatnih portov.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SJTV1 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\t\t\n\t\tKlikni za razširitev\n\t\nResno: zakaj na naslednjih routerjih ne uporabit WAN porta za vhod? Jaz ga uporabljam, pa dela. Dodatna routerja sta oba v bridge mode in vse se je samo nastavilo ...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSaj to. \"...se je...\" lahko se pa ne bi. In po tem bi se moral postaviti na trepalnice, pa s kakim routerjem še ne bi šlo skozi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Za to, če ni potrebe da bi si kompliciral lajf, narediš \"the easy way\".",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SJTV1 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\t\t\n\t\tKlikni za razširitev\n\t\nResno: zakaj na naslednjih routerjih ne uporabit WAN porta za vhod? Jaz ga uporabljam, pa dela. Dodatna routerja sta oba v bridge mode in vse se je samo nastavilo ...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nO kakšnem bridge modeu je govora? Predvidevam, da ne gre za wireless bridge, če je govora o priklopu s kablom. Ne nekaterih rotuerjih se da nastavit, da je WAN port del LAN segmenta, če je to to, potem je itak isto kot da bi v LAN priklapljal. \n\nPriklapljat dodatno dostopno točko/switch znotraj interne mreže preko NAT pa je pač bedarija in ne vem zakaj bi to počel. Najmanj kar imaš že kot laik problem je, ko se hočeš povezat na napravo, ki je tam zadaj (rabiš port forwarding) ali pa če hočeš uporabljati med napravimi katerikoli zeroconf protokol (DLNA, AirPlay,...). Še tam kjer brez NAT pač danes ne gre, si ga ne želiš, kaj šele da bi ga po ne potrebnem tlačil v interno mrežo....\n\t\t\n\t\tKlikni za razširitev\n\t\n\nBridge mode temu rečejo routerji, vsaj tisti, ki jih imam (linksysi in appli). V bistvu deluje kot AP oz. switch. DHCP izklopljen. \nDLNA, AIrplay in dostopi do naprav BP delajo brez dodatnih nastavitev. V bistvu sem vse samo dal v bridge mode (1 nastavitev) + določil SSID, pass zanj in frekvenčno območje.\nMi je bilo logično, da bo tako delalo, tudi v navodilih tako piše. Pa očitno imam še srečo?",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SJTV1 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik SJTV1 pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n Torej, takole imaš povezano in nastavljeno? (wifiji na različnih kanalih, zelo priporočljivo...)\n\t\t\n\t\tKlikni za razširitev\n\t\nResno: zakaj na naslednjih routerjih ne uporabit WAN porta za vhod? Jaz ga uporabljam, pa dela. Dodatna routerja sta oba v bridge mode in vse se je samo nastavilo ...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nO kakšnem bridge modeu je govora? Predvidevam, da ne gre za wireless bridge, če je govora o priklopu s kablom. Ne nekaterih rotuerjih se da nastavit, da je WAN port del LAN segmenta, če je to to, potem je itak isto kot da bi v LAN priklapljal. \n\nPriklapljat dodatno dostopno točko/switch znotraj interne mreže preko NAT pa je pač bedarija in ne vem zakaj bi to počel. Najmanj kar imaš že kot laik problem je, ko se hočeš povezat na napravo, ki je tam zadaj (rabiš port forwarding) ali pa če hočeš uporabljati med napravimi katerikoli zeroconf protokol (DLNA, AirPlay,...). Še tam kjer brez NAT pač danes ne gre, si ga ne želiš, kaj šele da bi ga po ne potrebnem tlačil v interno mrežo....\n\t\t\n\t\tKlikni za razširitev\n\t\n\nBridge mode temu rečejo routerji, vsaj tisti, ki jih imam (linksysi in appli). V bistvu deluje kot AP oz. switch. DHCP izklopljen. \nDLNA, AIrplay in dostopi do naprav BP delajo brez dodatnih nastavitev. V bistvu sem vse samo dal v bridge mode (1 nastavitev) + določil SSID, pass zanj in frekvenčno območje.\nMi je bilo logično, da bo tako delalo, tudi v navodilih tako piše. Pa očitno imam še srečo?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nV tem primeru ni problema, gre le za lepo zapakirano funkcionalnost, ki ti vrže tudi WAN port v LAN segment (tako da WAN port v resnici ni več WAN), izklopi DHCP, NAT, itd., kar bi sicer storil sam. \n\nVprašanje sicer, kako je zadeva zadaj impelemntira. Če ima res za WAN posebno mrežno, ki je vezana direktno na CPU, mora potem delati ethernet bridge čez CPU, kar ni najbolj idealno (CPU se mora ukvarjati z bridganjem lokalnega prometa po nepotrebnem, namesto, da bi ta letel čez integriran switch). Je pa res, da kar sem videl teh el cheapo domačih routerjev, imajo ponavadi vse porte vezane na switch tudi če sta zadaj ločeni mrežni za WAN in LAN, in potem ločeno z VLANi tako kot pri tistih, ki imajo eno mrežno, le da gre prometa iz WAN čez eno mrežno, promet iz LAN pa čez drugo. V tem primeru lahko enostavno še tisti \"WAN\" port vrže v isti segment VLAN kot ostale LAN porte (kar je tudi najbolj logično za ta način) in se CPU ne ukvarja z bridganjem. \n\nUglavnem, če imaš takšno funkcionalnost (bodisi zapakirano kot \"bridge mode\" ali enostavno, da lahko WAN port uporabiš kot LAN in poleg tega izklopiš DHCP, itd), je priklop na \"WAN\" port OK, če pa dejansko priklapljaš na WAN stran usmerjevalnika bi se pa....",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik dem pravi:\n Kakšen domet ima tale zadeva, če jo postavim na okensko polico?\n\nhttps://www.mimovrste.com/usmerjevalniki-routerji/linksys-brezzicni-router-linksys-wrt54gl\n\t\t\n\t\tKlikni za razširitev\n\t\nPred casom je imel nekaj casa z dvema 54 ex sosed od mene net preko 200m. Ni bil pa original sw gor pa obcasno (ob slabem  vremenu)  je imel kaksne težave. \nNe me vprašat  kaj vse je delal ker nimam  pojma  o tem.  \nSe trenutno s svojim nekaj hecam,  ker mi ga je zadnjic nekaj nagajal in sem pritisnil /drzal reset tipko,  sedaj pa se vse naprave  ne povezejo preko  njegovega witi na net.  Najprej sem spravil laptop,  potem se en gsm,  pa ne vem kje je problem da se ne povezejo se druge naprave.  Se je pa SSID zbrisal ob tistem resetu  in sem na novo naredil  istega z istim geslom.",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n\nV tem primeru ni problema, gre le za lepo zapakirano funkcionalnost, ki ti vrže tudi WAN port v LAN segment (tako da WAN port v resnici ni več WAN), izklopi DHCP, NAT, itd., kar bi sicer storil sam. \n\nVprašanje sicer, kako je zadeva zadaj impelemntira. Če ima res za WAN posebno mrežno, ki je vezana direktno na CPU, mora potem delati ethernet bridge čez CPU, kar ni najbolj idealno (CPU se mora ukvarjati z bridganjem lokalnega prometa po nepotrebnem, namesto, da bi ta letel čez integriran switch). Je pa res, da kar sem videl teh el cheapo domačih routerjev, imajo ponavadi vse porte vezane na switch tudi če sta zadaj ločeni mrežni za WAN in LAN, in potem ločeno z VLANi tako kot pri tistih, ki imajo eno mrežno, le da gre prometa iz WAN čez eno mrežno, promet iz LAN pa čez drugo. V tem primeru lahko enostavno še tisti \"WAN\" port vrže v isti segment VLAN kot ostale LAN porte (kar je tudi najbolj logično za ta način) in se CPU ne ukvarja z bridganjem. \n\nUglavnem, če imaš takšno funkcionalnost (bodisi zapakirano kot \"bridge mode\" ali enostavno, da lahko WAN port uporabiš kot LAN in poleg tega izklopiš DHCP, itd), je priklop na \"WAN\" port OK, če pa dejansko priklapljaš na WAN stran usmerjevalnika bi se pa....\n\t\t\n\t\tKlikni za razširitev\n\t\nNo, pa sem se nekaj naučil. Hvala. S hitrostjo mreže seicer ni problema, itak je cheap roauter in je 100Mb ...",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Ti dobiš wifi od njega ?\nPotem imata verjetno urejen wds bridge.\nKateri fw je gor ?\nssid in geslo imaš pravo ?\nAnteni sta usmerjeni ?\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Imam siolov modem iz njega pa kabel v wrt (tri pa tv).  Iz wrt pa sem potem wifi,  ki pa mi zadnje case nekaj nagaja.  Pa sedaj vidim  še od siola wifi (ne vem pa njegovega gesla)   ki pa bi ga ugasnil,  pa ga gumb spredaj desno ne ugasne in se bom ocitno moral na njega povezat da ga bom disejblal.  To sem nekoc ze delal. \n\nOd wrt ssid in geslo poznam in ga tudi vidim na gsm,  se poveze na njega,  vendar na net pa ne gre.  Prej mi je se laptop nekaj nagajal.  \nBom res moral dobiti enega mojstra v hišo , ali pa koncno sam iti znanje  na net ali pa na kaksno delavnico.  Ker te mreže  in povezave mi pa res niso bile nikdar domace.",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Zakaj potem potrebuješ še sosedov net ?\nČe dela siolov jajc na istem kanalu kot wrt54gl, potem znajo biti motnje, ja.Preko kabla se priklopi nanj in ugasni wifi.",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "S kablom se poveži na siola (izštekaj router in na isti port daj računalo). Logiraj se na siol, če nisi spreminjal je najbrž (sej je še?) na naslovu 192.168.1.1 in uporabi:\nusername: user\npass: user\nizklopi wifi oziroma po želji, nastavi drugo geslo. \n(p.s.: je še kdo opazil, da nekateri telkoti so humoristi in nastavijo router na .254 adreso, kje je fora?)",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Hvala za \"telebanska\"  navodila. \nSe da podobna navodila napisat se za tole kar mi sedaj napise gsm? \nLaptop se mi preko tega wifi poveze na net,  (ne pa vse naprave v hiši)  \nV cem je stos tokrat.\n\n\t\t\n\t",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Pejdi na podrobnosti, pa poglej, če ti pravilno dodeli IP in GATEWAY naslove? (klikneš na ime dostopne točke in daš podrobno, nekaj v tem stilu, malo sem \"bos\" pri vesoljčku, sem bolj jabolčne sorte, sory \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Se opravičujem, ker kradem temo.\nZanima me kako postaviš Iskratel Sinope 568 v bridge mode? Kolega se ne znajde prav dobro, sam pa nisem našel manuala, ki bi to opisoval. thx",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Če pod bridge mode misliš to, da je za njim še 1 router, ki upravlja DHCP, Sinope pa samo spušča net do njega, enostavno ugasneš DHCP. Se ne spomnim več točno kako, ga nimam več.",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Ja to želim. Da spusti net in da router za njim upravlja z wireles in lan povezavami. SSID bi bil enak. Grem brat navodila. Če pa je kakšna dobra duša, ki je to že naredila pa naj pove kako se naredi. thx",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Izklopiš DHCP (ni sicer nujno,  ker router za njim na WAN portu vzpostavlja PPPoE povezavo). In pa izklopiš PPPoE povezavo na samem modemu (kar spet ni nujno,  ker imaš lahko dve aktivni  PPPoE seji).  Povežeš WAN na routerju z LAN na modemu in postaviš PPPoE sejo na routerju. \n\nPa WiFi na modemu izklopiš.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "No vidiš, pa ravno wifi na modemu rabi da razširi pokritost.\nNo tule je odgovor podpore: \"če na modemu izklopite PPPOE konekcijo, bo modem deloval v ''bridge mode''. Ko boste povezavo vzpostavili na vaše routerju, vam bo delovala tudi WiFi povezava, ki ste jo nastavili na routerju.\"",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Tega pač nisi napisal že na začetku.  Mislim pa,  da ne bo ravno tako enostavno,  kot si ti to predstavljaš.  Gre sicer v taki varianti,  da modem postavlja PPPoE sejo in se router obnaša kot AP,  kontra pa zadeve ne boš postavil,  ker ti nazaj čez WAN port ne bo delal DHCP od routerja,  če pa dodaš še en kabel v LAN -  LAN povezavo pa boš sesul modem.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Moreš se odločit, ali boš dal modem v \"bridge mode\" in vzpostavljal PPPoE na svojem routerju (seveda v tem primeru WiFi na modemu ne bo del tvojega lokalnega omrežja in ga ne more razširjati), ali pa boš uporabljal modem tudi kot router, AP, itd..",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "ja, sem malce slabo napisal na začetku.\nNič, bo pač kupil še en router za boljšo pokritost. \nthx vsem",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Wait, what? Preden bi ga ti postavljal v bridge povej, kaj bi rad dosegel? \n\nGlede na napisano predpostavljam, da imaš modem (ki ti trenutno hkrati služi kot modem+router+wifi) na lokaciji A in hočeš razširiti \"internet\" na lokacijo B? \n- Če imaš med lokacijama kabel, ne rabiš na modemu nastavljat nič, edino preveri, da imaš dhcp range nastavljen npr. .10-.255. \n- Na routerju pa izklopi DHCP, daj ga na statični IP na isti subnet (ergo, če je modem na naslovu 192.168.1.1, daj router na 192.168.1.2) in kabel, ki pride iz modema vtakni v LAN port. Nastavi settinge za Wifi in je to to. (sicer delovanje dveh enakih SSID-ov pogosto ne deluje OK, a lahko probaš srečo...) \n\nČe pa hočeš \"bridgat\" preko wifija, se pa zadeve znajo malo pokomplicirat, ampak spet, v bridge moraš nastavit router, ne \"modema\".",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Sedaj ima tako:\n- Na modemu sinope 568+R4 je priklopljen router Asus z DHCP in pravili za net (starševski nadzor, ure, etc) ter wifi.\n- Na modemu ni vklopljen wifi.\n- Oba sta na različnem delu hiše (razlika par m).\n\nRad bi:\n- Wifi na modemu bi  razžiril pokritost wifi po hiši s tem da obstanejo pravila na asusu za net tako na wifi kot lan.",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "3 ruterji zaporedno",
+    "content": "Hm, dvomim da bo znal modem to. Če bi bilo na modemu to možno nastavit in po tem asus dela kot bridge ja, obratno pa (mislim da, si upam rečt 90%) da ne. Ok, tista opcija da router dela pppoe in po tem nazaj oni dela bridge, sure, ampak ne bi si pa upal stavit, da bo to res dobro delovalo... \n(modem ti pa ne podpira vseh teh nastavitev, ki bi jih ti imel?)",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  }
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "message": "No da začnem....torej za lažjo predtavo sem vam narisal kako imam narejene povezave. Pred kratkim sem se odločil da v sosednjo hišo napeljem internet preko TP Linka (brezžično). Kupil sem dva TP Linka in sicer:  http://uk.tp-link.com/products/details/...  v moji hiši sem nastavil TP LINK na acces point...na drugemu na drugi strani pa client. Po hitrem testu je vse delovalo (ko sem poskusil brez druggih računalnikov.  Ko sem potem poskusil še vse druge računalnike (računalnik 1 in 2) ni več delalo. Računalnik 1 je skos deloval. problem je nastal samo med računalnikom 2 in 3. V kolikor sem v modem vstavil router in računalnik 2 je prenehal delovati računalnik 3. ko sem izklopil tp link iz modema pa je računalnik 2 začel delovati.  na obeh straneh kjer ni delovalo je vedno napisalo error 691 se mi zdi. Zdaj mislim da neki ni z ip-ji prav. naj mi kdo pomaga kaj naj naredim...ali če nastavim kako drugo nastavitev v tp linkih, naj bi zadeva potem špilala?     Na routerju bi rad imel tudi wireless da mi dela.  hvala vsem za pomoč in nasvete. ",
+    "user": "accord37"
+  },
+  {
+    "message": "Pc1 in tplink AP poveži na router (lan port 1-4), potem bo delalo. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": " Hayabusa je 25. okt 2013 ob 19:50 izjavil:Pc1 in tplink AP poveži na router (lan port 1-4), potem bo delalo.    problem je ker je router v prvem nadstropju. v pritličju je pa modem in pc1 in kabel za tp link ",
+    "user": "accord37"
+  },
+  {
+    "message": "Prestavi router v prvo nadstropje in priklopi vse na router, modem pa v WAN pa bi moralo delat. Potem moraš še router nastavit da dela kot router in ne switch kot je verjetno zdaj in modem v bridge mode.  ps Zakaj imaš sploh router za PC2? Za wi-fi? ",
+    "user": "BorutK-73"
+  },
+  {
+    "message": "Če imaš 8 žilni kabel lahko napelješ povezavo modem/router ter router/pc po istem kablu. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": " BorutK-73 je 25. okt 2013 ob 22:35 izjavil:Prestavi router v prvo nadstropje in priklopi vse na router, modem pa v WAN pa bi moralo delat. Potem moraš še router nastavit da dela kot router in ne switch kot je verjetno zdaj in modem v bridge mode.  ps Zakaj imaš sploh router za PC2? Za wi-fi?   v spodnjem nadstropju je pač pisarna in delavnica...potem imam vse v prvem nadstropju + wifi ja. a če bi router spodaj bil bi blo pa ql? pa bi lahko potem še en router dal zgoraj za wifi? ",
+    "user": "accord37"
+  },
+  {
+    "message": "daj ju v Bridge \"(Point to Point)\" vsakemu vnesi MAC od drugega in to je to......dela 100%, med sabo bosta komunicirala pa se videl ju ne bo noben, dostopal pa boš ti preko IPja, spodaj pa daj še en poceni AP in to je to.....si zmagal ",
+    "user": "Mravlek"
+  },
+  {
+    "message": "evo danes sem zrihtal zadevo. Povezal sem direktno v modem in potem oba v bridge mode dal in zadeva deluje. Sedaj me pa zanima kaj naj naredim na sledeči problem: na drugi strani tp linka (kjer ni modem) bi rad imel wireless...in sicer preko routerja linksys. Danes sem se igral cel dan in nisem našel rešitve...probal sem dhcp in static ip, vgasnil sem dhcp server in stvar kar ne deluje (deluje internet ampak wireless ne) pač zazna konflikt ip adressov se mi zdi pa tist klicaj je na povezavi. Ima kdo kakšno mnenje kako naj vspostavim wireless? hvala vam za odgovore.  lp   hvala vsem za svetovanje v prejšnih komentarjih ",
+    "user": "accord37"
+  },
+  {
+    "message": "Čaki mal, ta dva AP-ja sta 5GHz. To veš ne? A imaš ostale kliente, ki jih želiš naheblat gor, tudi 5GHz? Druga stvar pa je, da je point-to-point bridge WiFi povezava namenjena samo temu in se torej na AP-ja ne da priklopiti z drugimi napravami.  Tole malo naštudiraj, da se teoretično \"podkrepiš\":  http://www.dd-wrt.com/wiki/index.php/Wi... http://www.dd-wrt.com/wiki/index.php/Cl... http://www.dd-wrt.com/wiki/index.php/Re... ",
+    "user": "BlaY0"
+  },
+  {
+    "message": "Zdej mam iz modema direktno povezavo na tp link in sta z drugim tp linkom v bridge mode. s tega drugega tp linka imam naprej speljano (po kablu) do rtačunalnika....bi pa rad ta kabel napeljal na router in bi rad omogočil wireless. tp linka sta zdaj povezana samo s seboj....in to je to. zanima me potem naprej. ",
+    "user": "accord37"
+  },
+  {
+    "message": "Saj sem napisal da naprej NI, če ohraniš takšno postavitev. Če v obstoječi postavitvi nucaš 2,4GHz WiFi, na kabel iz AP-ja v bajti 2 priheftaš še en poceni ruterček, ki ti bo služil kot 2,4GHz AP + switch (BTW takr router te pride pribljižno pol ceneje kot AP in switch posebej). Drugače ne bo šlo. ",
+    "user": "BlaY0"
+  },
+  {
+    "message": "hm ne razumem...ker ta router dela na drugi strani...samo wireless ne vem kako usposobiti ",
+    "user": "accord37"
+  },
+  {
+    "message": "Še enkrat... WiFi dela teh dveh AP-jev v obstoječi postavitvi ne boš mogel izkoristiti za nič drugega kot za trenutno povezavo med njima samima, zato pa pravim, če hočeš v bajti 2 WiFi za svoje telefone/tablice/laptope, si boš moral omisliti še en WiFi AP/router. Kaj v rangu 20€ bo čisto ok. Pa še enkrat... ta dva tp-linka sta 5GHz! ",
+    "user": "BlaY0"
+  },
+  {
+    "message": "kot je napisal BlaY0 TP-linka brezžično komunicirata samo med sabo , ne moreš pa koristiti njun wifi signal.....nato rabiš se en poceni router ga das v AP v njega kabel iz drugega tp-linka in ti potem laufa wired in wireless....siml :) ",
+    "user": "Mravlek"
+  },
+  {
+    "message": "Seveda se da. WDS ali pa z uporabu costom firmware-a: npr. repeater bridge način na dd-wrt, ",
+    "user": "urbecar"
+  },
+  {
+    "message": "To je že zgoraj vse napisano pa še linki (isti kot si ga dal ti) so zraven. Bom pa še enkrat napisal zate... Gre za 5GHz band. Torej se bodo lahko na ta AP priklapljale samo 5GHz naprave. ",
+    "user": "BlaY0"
+  },
+  {
+    "message": "Saj ni stvari da se ne bi dale, samo ne komplicirat zadeve saj nima smisla ker je že omejitev 5GHz omrežje, WDS pa ima tudi omejitve......daj samo navaden 2.4GHz router na koncu in ga daj na AP in to je to..... ",
+    "user": "Mravlek"
+  },
+  {
+    "message": "ok....da vam na sliki pokažem kakšna je sedaj moja povezava:    Torej internet deluje sedaj samo na računalniku 2 (R2). rad bi pa še preko wireless povezal R3. Kaj moram narediti v nastavitvah da bo wireless deloval normalno.   Ip-je imam razdeljene:  internet 192.168.1.1 tp link 1: 192.168.1.2 tp link 2: 192.168.1.254  router je linksys  hvala vam za odgovore  ok tole mi je napisal nek prijatelj kako naj naredim...  accord37 je 8. dec 2013 ob 14:18 izjavil:  V bistvu bi moral dat linksysa v ap način dela, samo ne vem če se to da z original softwerom.  Kakorkoli najbolj simpl je če naštimaš ruter na wan strani na prosti ip 192.168.1.x, recimo 192.168.1.3 in tja vtakneš kabel ki prihaja iz ap-ja, potem pa na lan strani Linksys ruterja naštimaš ip območje 192.168.3.x, ruterjev lan ip daš na 192.168.3.1 in vklopiš dhcp strežnik, ter skonfigurirašp wifi čisto običajno. S tem si loču njihove računalnike od tvojega modema..seveda moraš v nastavitve wan/lan vpisat tudi gateway in dns strežnike, drugače ne bo nič delalo.  Tako kot si nastavljal sam, bi moralo sicer tudi delovati če bi ti uspelo nastavit AP način dela linksysa. V tem primeru sicer ne vem kako se postavi nastavitvena maska wan, lan in wifi in bi bilo potrebno sprobat, ko boš pri njih. Predvidoma v wan port kabel iz tp-link AP-ja, v lan porte pa ostale kable oziroma wifi..razlika je le, da se poslužujejo računalniki dhcp strežnika v tvojem modemu. Ampak, kot sem rekel..potrebno je sprobat!!!    kaj menite?  hvala ",
+    "user": "accord37"
+  },
+  {
+    "message": "Modem je modem+router ? Kaj piše na sami škatli ? Kateri ponudnik ineta ? Na R1 net dela brez pppoe dial-up povezave http://www.amis.net/web3/pomoc-in-podpo... ?  Linksys v hiši 2 je preko kabla povezan v lan port (torej je AP + switch) ?  Pri R3 nastavitvah mrežne kartice vpiši za \"default gateway\" ip naslov od tplink2, subnet je 255.255.255.0 (kot pri vseh ostalih, ip nekaj iz prostega poola, če imaš vse  na 192.168.1.x, potem npr:   R1 192.168.1.50 R2 192.168.1.51 R3 192.168.1.52  tplink1 192.168.1.60 tplink2 192.168.1.61  Dhcp bi jaz izklopil na vseh napravah razen na modemu.   Na R1 v konzoli vpiši \"ipconfig /all\" in poglej na katerem naslovu je \"modem\". ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "iz modema gre direktno v TP LINK...torej ni vmes nobenega routerja. imam pa siol. R1 se moram povezovati sam. Če bi imel še router pred R1 bi nastavil lahko samo PPoe in bi se samodejno povezal.   A tp linka moram spreminjati ip ali lahko pustim tako kot je?  iz tp link 2 imam kabel povezan na router v wan port ",
+    "user": "accord37"
+  },
+  {
+    "message": "internet 192.168.1.1 Na kateri napravi je to ?  Ponavljam vprašanje: Modem je modem+router ? Kaj piše na sami škatli ? Če je stari iskratel, potem je boljše da ostane samo modem, sinope se da nastaviti v modem+router, dela ok za light uporabo, pozabi na kakšen wifi ali p2p promet.   iz modema gre direktno v TP LINK...torej ni vmes nobenega routerja. imam pa siol. R1 se moram povezovati sam. Potem uporabljaš pppoe.Siol mislim da omogoča 3 ali 4 hkratne pppoe povezave iz enega priključka.   A tp linka moram spreminjati ip ali lahko pustim tako kot je? Pri načrtovanju omrežja je smiselno sorodne naprave spraviti v neke bližnje okvirje, ne da skačeš z ip-ji gor dol za 200 mest. Na 192.168.X.100 je ponavadi začne dhcp pool, zato sem izbral drug prost segment. ",
+    "user": "Hayabusa"
+  },
+  {
+    "message": "modem semdobil kakšne 2 meseca nazaj novega. je pa router + modem ja. v njega grem tako kot v router. ",
+    "user": "accord37"
+  },
+  {
+    "message": "Potem za R1 in vse ostale naprave ne potrebuješ delati pppoe povezave, če delujo kot modem+router. Lahko pingaš router / naprave med seboj ?  Kaj javi ukaz nslookup v konzoli ? Prilepi tudi ipconfig /all rezultat za vse računalnike. ",
+    "user": "Hayabusa"
+  }
+]

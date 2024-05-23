@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "Živjo,\n\ntorej, Windows XPje imam inštalirane v IDE načinu. (me inštalacija Windowsev ni spustila mimo, pa sem moral na IDE prestavit). Rad bi pa prešaltal na AHCI, ampak če samo v BIOSu to zdele spremenim, se verjetno nič ne bo zgodilo ne, b o kakšen blue screen se pojavil?\n\nNamreč, imam disk z eSATA priključkom in sem nekje prebral, da mora biti računalnik nastavljen na AHCI mode, če ne ne dela - sem sploh pravilno prebral? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n (disk mi preko eSATA sicer zazna - oz se pojavi tisti zvok, ko nekaj v štekaš - ampak viden ni pa nikjer)\n\nImam pa tole  plato. Predvidevam, da moram inštalirati driverje - nekaj v smislu tegale, ki je tudi na prej omenjeni strani: \n\n ICH10R AHCI/RAID Driver Disk for Windows XP/Vista & 64bit XP/Vista....?\n\nTorej, inštaliram driver - kar kliknem .exe oz karkoli pač bo, grem v BIOS, prestavim na AHCI in je to to? Al je malo bolj komplikovano vse skup? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nHvala\n\nLp",
+    "author": "Raven",
+    "author_level": "Voodoo"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "evo, sem zdej odkril malo tople vode:\n\n- če disk priklopim preko eSATA, se ne zgodi nič, pač ne zazna ga. Če pa potem računalnik reštartam, mi pa zazna disk. Dadalje sem ugotovil, da mi disk v bistvu prikaže kot notranji disk (ne najdem ga v \"Safely remove hardware\", v Disk managementu je pa prikazan kot basic disk), zgleda je tko glupo zvezan. Ima kdo zdej kako idejo, kako to prevezat nazaj, da bo zadeva delovala? Je treba kaj v BIOSu nastavit, al se bo treba fizično lotit in premetavat kable?\n\nTako da zgleda mi sploh ne bo treba menjavat v AHCI mode, ker to očitno ni krivo za nedelovanje eSATA priključka - mimogrede, kakšne so prednosti AHCI modea? Se sploh opazi razlika?",
+    "author": "Raven",
+    "author_level": "Voodoo"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "Namesti ustrezne gonilnike, verjetno so prišli zraven plate, pa bo.",
+    "author": "Numy",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "Za začetek v roke knjigo od plate,pa bi že vse imel porihtano.Če knjige nimaš potegni iz strani kjer si dal link za plato manual,ki je velik 7Mb.Pod Drugo si prenesi gonilnik za J-micron eSATA/PATA.Če boš gledal navodila v pdf iz njihove strani potem poglej pod 3.6 Advanced menu (3.6.3) in boš videl kako se v biosu nastavi.\n\nLp",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "nja.. teh j-micron gonilnikov je kar nekaj.... kateri je pa  pravi? \n\nPa tisti manual za plato mi momentalno tudi nič ne pomaga.. sem mislil, da kdo ve iz glave kako pa kaj, ker ne bi rad nekaj na pamet šaril po BIOSu, v manualu pa nisem našel kakšen je postopek iz IDE v AHCI način s tem, da so XPji že inštalirani in da jih ne bom še enkrat gor dajal.",
+    "author": "Raven",
+    "author_level": "Voodoo"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "Tudi sam sem nameraval narediti enako in po prebiranju miljaužnt postov na to temo sem ugotovil, da je zadeva v veliki večini primerov neizvedljiva (če govorimo o XP), sprememb pa se ne da povrnit nazaj.\n\nTak da sem sam raje naredil winse s driverji za sata in na novo namestil vse skupaj.",
+    "author": "SouthPark",
+    "author_level": "Jas da nea vem?!  Ka te je..."
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "JMicron eSATA kontroler je čist ločen od sistemskega, tak da ga lahko daš v AHCI način, pa bodo Windows delali isto kot prej.\nRazen, če slučajno v BIOS-u niso vse na eno samo opcijo vezali.\n\nHotplug sicer deluje tudi v IDE načinu (imam isti JMicron adapter na plati)\n\nGlede driverja: Zakaj pa ne bi vzel tistega, ki ga Asus ponuja za to plato ?\n-&gt; http://www.asus.com/product.aspx?P_ID=t4yhK6y9W9o7iQ9E   -&gt; Download / WinXP / Others\n\nSicer lahko tudi z ftp://driver.jmicron.com.tw/jmb36x/XP_Vista_Win7/\n\nKjer opaziš eno zanimivost. Vsak teden imajo nov driver. Z drugimi besedami: Vsak driver od začetka proizvodnje je imel tri milijone napak. Zadnji verjetno ni nobena izjema.\n\nTak da ne pričakuj 110% zanesljivosti.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "Se pravi, downzlovdam driver z asusove strani, zaženem in vse naredi sam? Potem pa v BIOSu samo nastavim na AHCI in bi zadeva morala delovati? Sliši se presimpl.. ali pač? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nKaj pa drugi problem - kako naj eSATA konektor prepričam, da ko priklopim disk preko eSATA kabla, da ga prepozna in dela? NAmreč, ker zdej dela samo, če reštartam mašino s priklopljenim diskom in se obnaša kot notranji disk? Tam v BIOSu je miljon nekih nastavitev, razalaga je pa zelo skopa, tudi v manual ne piše nič pametnega na to temo....\n\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n Hotplug sicer deluje tudi v IDE načinu (imam isti JMicron adapter na plati)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nse pravi, v AHCI načinu bi pa Hotplug deloval brezhibno, brez dodatnih nastavitev? (sej se nanaša ta hotplug na priključitev/izključitev diska v eSATA priključek ne?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )",
+    "author": "Raven",
+    "author_level": "Voodoo"
+  },
+  {
+    "ctx": "Iz IDE na AHCI način",
+    "content": "Izraza \"brezhibno\" v povezavi z JMicron JMB363 jaz ne bi uporabljal...\n\nPredlagam tale načrt:\n - v BIOS spremeni JMicron v AHCI način (nekje na drugi ali tretji strani nastavitev je, saj ni neka znanost, na prvi strani imaš AHCI-IDE opcijo za Intel ICH SATA, na drugi ali tretji pa za JMicron)\n - v Windows naložiš driver\n - restartaš, če zahteva\n - priklopiš eSATA disk\n - spiješ pivo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

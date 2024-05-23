@@ -1,0 +1,146 @@
+[
+  {
+    "message": "Zdravo. Imam mašino ki je direktno povezana na net, na njej je windows XP + dinamični IP Probal sem z Tight VNC in dela za moje pojme super, edino geslo je prekratko, ampak to lahko rešim z Ultra VNC ki dopušča 32 znakov če vklopim windows Log on.(kaj to je skoraj/nimam pojma)   Zdaj imam samo problem, ker so na mašini do katere bi rad dostopal, podatki ki jih nikakor ne smem zgubiti, ne bi pa tud rad da jih lahko vsak prestreže, + ker ne morem vsakič poklicat tja naj kelnarca (verjetno vsaka tudi ne zna, ali bo lokal zaprt) pogledat trenutni IP naslov, da bi jest lahko potem prišel na mašino kadarkoli.  Za rešitev IP problema vem da obstaja nek program, ki gre v tray in sporoča nekam tvoj trenutni IP, (sem tudi videl stran/zastonj/slovenskega ponudnika te storitve) samo nikakor se ne spomnim naslova/imena podjetja ali programa.  Za rešitev varnosti pa vem da obstaja SSH tunel, nimam pa pojma kaj točno rabim da izvedem to.  Ni vam treba pisat detaljnih navodil, se bom že potrudu, samo kak nasvet bi rabil, kako naj to izvedem, ter da bi bila čim bolj simpl zadeva. Hvala in LP ",
+    "user": "#000000"
+  },
+  {
+    "message": "Za dinamični IP maš recimo www.no-ip.com, registriraš, si nardiš hoste na free domenah, ki jih majo, snameš no-ip DUC proggy ... sicer je pa vse lepo tam razloženo. ",
+    "user": "Hypno"
+  },
+  {
+    "message": "Nabavi static IP za ne komplicirat. Kupi router za 20k. VNC-ju zamenjaj default port. Vnesi vsaj 6 mestno geslo z številkami in posebnimi znaki za varnost.  Če želiš popolno varnost pa to uredi z VPN povezavo. ",
+    "user": "ABX"
+  },
+  {
+    "message": "Za ip sem rešil 50%50 na dyn.webteh.net (samo še da najdem en client ali nakak prpravim tega, da se štarta ob zagonu sistema in ob prekinitvi povezave, zadevo sam osveži.   @ABX ja vem najbolj elegantno bi bilo naštimat statičnega. Sam pol bo verjetno spet kak jeba z ruterjem (ker nimam pojma delat z njim oz. ga popedenat da bo ok.) ne sme pa bit mašina izpostavljena skoz na istem naslovu, no vsaj pomojem je dobro da ni.   Aja kva pa je VPN  Hvala. LP ",
+    "user": "#000000"
+  },
+  {
+    "message": "Dinamicni IP ni nic kaj bolj varen kot staticni IP. (ce dam primerjavo z vhodnimi vrati v hiso. Premik vrat na zadnjo stran hise ne pomaga kaj dosti, ce imas vrata iz slame ali pa je hisa brez oken)  Samo sebi otezis administracijo ipd.  Vecina slovenskih ISP ti da staticni IP ZASTONJ in tudi ustrezno popravi povratni IP naslov (PTR record).  Kar se usmerjevalnika (routerja) tice - ravno danes za starse kupil pri Comtronu Netgear (router+switch) za 8200 SIT, kar se mi ne zdi pretirana cena. Sedaj se ne rabim vec zanasati na \"pozarni zid\", ki je vgrajen v Windows.  Administracija usmerjevalnika je otrocje lahka in poteka preko brskalnika.  Do it! ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Potem pa pozenes p2p, pa se zacne kadit ven iz routerja. ",
+    "user": "steev"
+  },
+  {
+    "message": "Aha no sej v bistvu to lahko naredim naknadno, zanima me samo kako si zagotovit kolikor toliko varno sejo (sej ne gre za nevem kako zaupne podatke) ampak nebi pa rad da si jih postreže kdor hoče. A moram za tki. varno sejo najet kak server, al se namesti kak program na obe mašini in to začne delat ?? To me v bistvu ta trenutek najbolj žuli.  Al si nabavim kak symantec PCanywhere ipd. sw. in če te programi imajo/omogočajo kako šifriranje ? kak nasvet še bi rabu. LP ",
+    "user": "#000000"
+  },
+  {
+    "message": " SSH tunnel. V slikah     Kako hudiča implementirat na win pa nebivedu. Putty? M$ Unix tools? Cygwin?  Razišči sam. ",
+    "user": "roscha"
+  },
+  {
+    "message": "Oziroma kaj takega? Bo dovolj? ",
+    "user": "roscha"
+  },
+  {
+    "message": "Tooo @roscha zdaj mi je pa mal bolj jasno zakaj sploh gre  Vsekakor dobri linki.   Zaenkrat HVALA vsem, itak pa se oglasim (ker verjetno mi iz prve nebo ratalo)  LP ",
+    "user": "#000000"
+  },
+  {
+    "message": "ne bo dovolj.  Zgornji primeri domnevajo da imas na oddaljenem omrezju unix streznik s ssh daemonom in potem preko njega naredis povezavo na rdesktop/vnc v LANu.  lahko probas vzpostaviti direkt ip2ip,vpn,... varno povezavo med Windows postajama preko Ineta. lahko das vnc na kaksna druga vrata kot 5800 ter  omejis VNC dostop samo iz enega IP naslova.     razne povezave ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Ja jest mam Tight VNC in če ga ne biksam z kakimi nastavitvami  mi dela BP, tale Real VNC pa še nisem probal. No zdele se mal igram doma da vidim če mi bo ratal narest povezavo med dvema xp mašinama, s Putty LP ",
+    "user": "#000000"
+  },
+  {
+    "message": "SSH tunel bos najlazje implementiral z paketom OpenSSH for windows, naprimer na hitro sem poguglal :  http://sourceforge.net/project/showfile...  tu ga dobis. Paket vsebuje in server in client. Podrobnosti sem pozabila, ampak bistveno je stvar taka :  1) Instaliraj paket na obeh racunalnikih 2) nastavi port na katerem poslusa server ( v sshd.conf ali nekaj takega ), iscer je pa default 22 3) odpri port na firewall-u, ce imas router, poskrbi da port forwarding 4) sedaj bos naredil tunel z domacega racunalnika do ciljnega : ssh -p serverPort uporabnik@domena -L port1:localhost:port2  kjer je  uporabnik ... uporabnik na ciljnem sistemu domena ... ip ali domena tvojega ciljnega racunalnika serverPort ... port na katerem poslusa ssh server ( default = 22 ) port1 ... izmisli si en port, naprimer 2000 port2 ... port na katerega se bos na ciljnem racunalniku povezal ( VNC port, 3900, ce se prav spomnim )  5) sedaj odpres vnc in se povezes na localhost:2000, in ssh bo prestregel podatke in jih prenesel na ciljni racunalnik, ustrezni port.  to bi moralo biti to, ssh tunneling je super zadeva, jaz to veliko uporabljam ... ",
+    "user": "Andruxa"
+  },
+  {
+    "message": "pa se to, na ciljnem racunalniku s firewall-om zapri vse porte razen tega na katerem poslusa ssh server. Vse kar potrebujes bos dosegel preko ssh tunela, enako velja za port forwarding na routerju ... ",
+    "user": "Andruxa"
+  },
+  {
+    "message": "andruxa - zanimivo... bom probal   PS: povezave se dajo pisati med [ st. povezava URL ime ] dosti \"lepse\" izpade    OpenSSH za Windows ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Samo zakaj če na RealVnc serverju spremenim default port 5900 recimo na 8350 in obkljukam da sprejema povezave na tem portu, zakaj se vseen ne morem z viewerjem konektat na ta pc. A je potrebno viewrju tut nastavt drug port na katerem se naj poveže, samo js te nastavitve ne najdem. Mogoče da mu ročno na konec ip-ja dodaš :8350 ali kako? ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "U super. Tole bo pa pomojem šlo.   Ja jest se tud nisem mogel povezat,Brainstorm mogoče bo tvoja fora palila, bom takoj probal. Drugač pa jest uporabljam Tight VNC brez instalacije tako za klient kot server, mogoče je v install verziji kaka funkcija več, no vsekakor probam s tvojo idejo. LP ",
+    "user": "#000000"
+  },
+  {
+    "message": "brainstorm: Tist :1 za adreso pomeni pri vncju port 5900+1. Probaj :2450  ",
+    "user": "64202"
+  },
+  {
+    "message": "Ok thanks, bom sprobal popoldn ko grem na šiht.  Zdej me pa še neki zanima. Ali se da dostopat do več pc-jev, ki so za routerju in majo lokalne ip-je, brez da bi kej nastavljal v routerju? Naprimer da vpišem zunanji ip in nato še lokalnega, bi to šlo. Ali je nujen poseg v router? ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "Ne, kr tko preprosto verjetno ne bo slo. Ce se noces dotikat rutrja, ti mora softver podpirat UPnP, torej da pcji znajo sami ukazat rutrju naj nardi port forwarding. Ali pa ce najdes kak UPnP utility...  Ob pogoju seveda, da rutr govori upnp in ma to vklopljeno  ",
+    "user": "64202"
+  },
+  {
+    "message": "Pa recimo da ma router že nastavljen port forwarding za določene pc-je. A lahk daš kak primer kok pol dostopat do določene mašine. Pomojem ni zadost da vpišeše samo zunanji ip, kako potem viewer ve na katirga se povezat, če recimo na 30 pc-jih laufa vnc server. Pomojem je treba zraven dopisat še lokalni ip al kako? ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "IP standard ti tega ne podpira, da bi \"vpisal\" se notranji IP. Moras narest ali VPN ali neke sorte forwarding (port, ssh, ..) ",
+    "user": "64202"
+  },
+  {
+    "message": "Ja ja se mi je zdelo da to ne bo tako enostavno, uglavnem če kdo naštudira kako varianto za dostopanje do pc-ja ki je za routerjem, brez da bi posegal v njega, pa naj pls sporoči. ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "Ja, ravno to je fora ssh tunela, da lahko dostopas do vseh pc-jev v LAN-u. Namrec ssh server je lahko instaliran samo na enem racunalniku, in ce si pogledas sintakso tunela :  ssh -p serverPort user@ipOrDomain -L port1:hostname:port2  je tistile hostname kazalec na racunalnik znotraj LAN-a na katerega se hoces povezati. To je sploh fora SSH tunnelinga, da imas na routerju prenesen samo en port, in to port do ssh serverja, medtem ko od tam dostopas do vseh moznih racunalnikov v LAN-u na vseh moznih portih, tisti pa imajo na firewallih nastimano da lahko do njih dostopa samo ssh-server ip.  Naprimer da imas v LAN-u tri racunalnike, ALFA, BETA in GAMA in je ssh server na ALFI, rad bi pa dostopal do remotre desktopa na vseh treeh racunalnikih ( 3389 ) :   ssh -p 22 admin@www.moja-domena.com -L 2000:localhost:3389 // dobim remote desktop na ALFI ssh -p 22 admin@www.moja-domena.com -L 2001:BETA:3389 // dobim remote desktop na BETI ssh -p 22 admin@www.moja-domena.com -L 2002:GAMA:3389 // dobim remote desktop na GAMI  ( ce imas router, potem www.moja-domena.com kaze na njega, on pa prenese port 22 na ALFO (port forwarding) ) sedaj pa da bi se povezal odpres remote desktop ( start,run, mstsc.exe ) in vpises :   za ALFA : localhost:2000 za BETA : localhost:2001 za GAMA : localhost:2002  ce pogosto uporabljas tunele, si tako kot jaz spravi stvari v en .bat fajl , daj si na desktop in ko rabis, dvakrat kliknes, opravis svoje, ko si koncal tunel zapres. Tunel lahko verizis :  ssh -p 22 admin@www.moja-domena.com -L 2000:localhost:3389 -L 2001:BETA:3389 -L 2002:GAMA:3389   to shrani v .bat in zdravo, ni vec tipkanja ...  ko smo ze pri tem, za prenasanje datotek uporabljas scp, zelo podobna sintaksa,  iste fora, samo vun pade datoteka, poglej si manual, tudi del openssh paketa ... ",
+    "user": "Andruxa"
+  },
+  {
+    "message": "yay, pravkar sem usposobil VNC preko  OpenVPN je malo igrackanja z nastavitvami, ampak potem deluje brez problemov ",
+    "user": "gumby"
+  },
+  {
+    "message": "Ok. thanks za obsežen vodič, se bom poskusu mal poigrat z nastavitvami, čeprav s tuneli še nisem nikol delal.  \"#000000\" ma sem probu, glede porta kakšnega nastavš na serverju, takšnega potem tut na viewerju dopišeš zraven in dela. naprimer xxx.xxx.xxx.xxx:8530  Zdej še pa nekaj, a je komu uspelo prenašat datoteke prek real vnc-ja, na uradni strani piše da z home oz. enterprise verzijo gre, js sicer obkljukam file sharing, sam nekako ne znam prenašat datotek, kot je to mogoče pri radminu.  Thanks ",
+    "user": "Brainstorm"
+  },
+  {
+    "message": "To kar ti tukaj razlagajo je precej hard-core zadeva in samo velike firme ali geek-i imajo take zadeve poštimane. ",
+    "user": "ABX"
+  },
+  {
+    "message": "varnost ni \"hard core\", ampak nekaj kar moras zagotavljati oz. imeti. ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Mogoče, ampak razen večjih firm in geekov, nobeden nima poštimane varnosti. ",
+    "user": "ABX"
+  },
+  {
+    "message": "ce \"skoraj vsi\" skocijo v Dravo, a bos tudi ti ? ",
+    "user": "Bakunin"
+  },
+  {
+    "message": "Hello!  Prebiral sem tole temo, ker iščem informacije kako si ustvarim remote access (VNC) iz službe, kjer imamo odprt samo port 8080. Uporabil bi putty in preko ssh na portu 8080 tuneliral promet na domačo kišto, kjer bo ssh server poslušal na tem portu. Je to možno ali sem kaj spregledal.   LP ",
+    "user": "Miran"
+  },
+  {
+    "message": "Jaz bi dodal še parametre -T , -C in -N   http://erdelynet.com/tech/ssh/rdp-through-ssh/  Potem pa v VNC clientu (ali MS RDP-ju) vpišeš \"localhost:št.porta, v parametru L\"  //link ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Kateri simetrični algoritem za kodiranje se v praksi izkaže za najhitrejšega (ter da je varen) (kako bi to izmeril) ?  privzeta izbira je (za spremembo urejaš datoteko etc\\sshd_config) :  Ciphers aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr  Kakšna je razlika med cbc in ctr ? ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Hitrost raznih enkripcijskih algoritmov lahko izmeris z openssl: openssl speed rsa openssl speed des Za vec informacij man speed Za razliko med cbc in ctr si oglej Block cipher modes of operation @ Wikipedia ",
+    "user": "flier"
+  },
+  {
+    "message": "@Miran  http://www.buzzsurf.com/surfatwork/  //link ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Uporabi Hamachi,preverjeno deluje preko vseh ruterjev,brez forwardiranja portov,pa še enostaven je . www.hamachi.cc ",
+    "user": "flisko"
+  }
+]

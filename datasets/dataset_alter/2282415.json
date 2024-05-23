@@ -1,0 +1,158 @@
+[
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Pozdravljeni,\n\nV prostem času sem s pomočjo raspberryja pripravil krmilnik za odpiranje dvoriščnih vrat. Uporabil sem motorček brisalcev (12v).\n\nOboje sem zvezali na isti napajalnik (12V 10A). Ker ima raspberry napetost 5v sem iz dx nabavil pretvornik iz 12 na 5v.\n\nKo sem vse skupaj sprobal v praksi je brez motorčka vse delovalo super, ko sem pa na isti napajalnik zvezal še motorček, mi je čez kakšno uro \"testiranja\" raspberry mrknil, nobena lučka se več ne sveti, tako da je verjetno pregorel.\n\nJe zaradi obremenitve motorja prišla kakšna večja napetost in mi skurila rpi ali kaj sem naredil narobe? Ne bi rad imel dveh ločenih napajalnikov, zato prosim za pomoč  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\nHvala že vnaprej, \n\nMiha",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "raspberry pi je 3.3V in ne 5. Tako da se je poslovil da.",
+    "author": "Abomination1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "napajanje ima prek usb, torej 5v",
+    "author": "hermann",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "nariši shemo kako si kaj povezal....",
+    "author": "Abomination1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Takole bi moral narest, pa bi bilo sigurno ok. Gej desni del sheme:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Zascito izhoda z relejem lahko prek kitajske kupis za par eur.",
+    "author": "THEDuke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Pa obvezno mora imeti diodo kontra čez rele (tisti arduino/rpi rele moduli jo najbrž že imajo...) .",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Evo takole sem zvezal, sem bolj po domače narisal ker nisem ravno iz te stroke \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nV glavnem iz napajalnika sem potegnil 2 žici ki gresta na motor (med motorjem in napajanjem je še rele ki ga kontrolira raspberry),\ndve pa gresta na pretvornik 12 -&gt; 5V in potem na raspberry.\n\nKje bi moral to zaščito dat, tam ko gre na RPI? Kaj je povzročilo da je pregorel, to da je motor bil obremenjen in se je tok/napetost povečala?",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Če imaš navaden rele (brez diode), bi to načeloma \"moralo\" skuriti samo izhod na RP, ne pa celotnega RP. Tukaj gre bolj za vprašanje kvalitete DC/DC pretvornika na 5V. V izogib težavam bi bilo potrebno med DC/DC in RP povezati en kondenzator ustrezne kapacitivnosti, ki bi filtriral napetostne konice.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "V bistvu rele sem že kupil sestavljen modul direkt za raspberryja, verjetno je težava bolj pri tem pretvorniku iz 12 na 5? Ker če je recimo prišla napetost pri vhodu 13v, je na izhodu bilo že npr. 5.5 (govorim na pamet), rpi pa je zelo občutljiv na to.\n\nKako pa lahko izračunam kakšen kondenzator bi rabil? Ali pa se da kupiti že kakšen gotov \"stabilizator\" ?\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Če uporabljaš ta modul na sliki, bi moralo biti OK, saj ima (če prav vidim) celo galvansko ločitev z octocouplerji.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik mickeycek pravi:\n V bistvu rele sem že kupil sestavljen modul direkt za raspberryja, verjetno je težava bolj pri tem pretvorniku iz 12 na 5? Ker če je recimo prišla napetost pri vhodu 13v, je na izhodu bilo že npr. 5.5 (govorim na pamet), rpi pa je zelo občutljiv na to.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nČe je DC/DC pravilno zasnovan, težav ne bi smelo biti, tudi če napetost naraste na 15V. Je pa problem, ker pri kitajcu nikoli ne veš, kakšne komponente so uporabili.\n\nV tvojem primeru bi jaz za pretvorbo iz 12V na 5V uporabil priporočila iz datasheeta.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Čudno da bi ti neslo raspberry pi, saj imaš vmes še dc/dc stabilizator, pač če bi bila napetost na vhodu prevelika, bi ti pač neslo vhodni filtrirni člen ali pa tisti LM05 ki je pač notri. Tako da bi raspverry moral preživeti.\n\nTista zaščita z diodo pa je nujna,+ še dodaten kondenzar vporedno z diodo ne škodi. Ker tista neptost ob izklopu bremena pa je odvisna od induktivnosti bremena, ki pa je pri takšnem motorčku kar velika.",
+    "author": "Abomination1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Ne bo držalo, dioda se uporablja zaradi induktivnosti tuljave releja, ne pa bremena (motorja).",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "eh pardon...navitja tuljave ja...Se razume \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n motor* je vezan preko releja....",
+    "author": "Abomination1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Razen, ce ima smolo in je spica od izklopa motorja vzgala preko dc-dc...",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik crashednburnt pravi:\n Ne bo držalo, dioda se uporablja zaradi induktivnosti tuljave releja, ne pa bremena (motorja).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nDioda je zato, ker ko tranzistor ugasnes (ko ni signala vec) je v navitju se vedno tok.. in ta tok se sprosti potem na diodi.. da posledicno to ne vpliva na izhod kadar ni vec aktiven",
+    "author": "THEDuke",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik THEDuke pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik crashednburnt pravi:\n Ne bo držalo, dioda se uporablja zaradi induktivnosti tuljave releja, ne pa bremena (motorja).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nDioda je zato, ker ko tranzistor ugasnes (ko ni signala vec) je v navitju se vedno tok.. in ta tok se sprosti potem na diodi.. da posledicno to ne vpliva na izhod kadar ni vec aktiven\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVem jaz točno zakaj je dioda. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n In ne, tok se ne sprosti samo na diodi, ampak na ohmskih upornostih vseh udeleženih komponent v vezju (torej žicah, tuljavi in diodi). Smo pa že malo skrenili s teme ...",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Hvala vsem za pomoč,\n\nMorda sem imel napačen pretvornik iz 12 na 5v, namreč kupil sem takega ki je ročno nastavljiv (input 8 - 20V, output 5 - 12v), in tako je verjetno zaradi povečanega inputa tudi output bil višji?\n\nBi bil tale vredu?\nhttp://www.ebay.co.uk/itm/DC-D...=item51bfee95d1\n\nBom pa vsekakor zvezal še ustrezen kondenzator in diodo, nočem skurit še enega \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nZa diodo verjetno ni vseeno v katero smer je zvezana? Verjetno jo lahko zvežem takoj za kablom ki gre iz napajalnika na rele? Ker za relejem se menjava polariteta, enkrat je +-, drugič -+, odvisno od smeri motorja.",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Točno takega imam jaz za napajanje RPI, da mi služi kot DNS server. Dela ok, seveda pa težko rečem, kaj bi se dogajalo, če bi bil zraven motorček za brisalce \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nA lahko kje dodaš kakšno povezavo do navodil, kako si delal ali si se lotil kar iz glave?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Daniel pravi:\n Točno takega imam jaz za napajanje RPI, da mi služi kot DNS server. Dela ok, seveda pa težko rečem, kaj bi se dogajalo, če bi bil zraven motorček za brisalce \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nA lahko kje dodaš kakšno povezavo do navodil, kako si delal ali si se lotil kar iz glave?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTudi mene to zanima, če zna stabilizirat v primeru da pride kak takšen \"sunek\".\n\nDrugače sem pa bolj \"iz glave\" delal. Za input (odpri, zapri, stop) sem si sam zaspajkal vezje ( link ) za output (vklop/izklop motorja, preklop smeri) pa sem uporabil že zgoraj pripravljeni rele.\n\nZdaj če bi delal znova bi si kupil PiFace, ki ima že vse to v enem.\n\nSprogramiral sem si pa sam (sem bolj iz te stroke)",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Misliš, da bi ta motorček imel dovolj moči za poganjanje kosilnice? Na vsako kolo 1 kos? Rad bi namreč predelal navadno kosilnico v robotsko \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Sem mislil uporabiti motorčka invalidskega vozička pa so kr dragi...",
+    "author": "tagelind",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik tagelind pravi:\n Misliš, da bi ta motorček imel dovolj moči za poganjanje kosilnice? Na vsako kolo 1 kos? Rad bi namreč predelal navadno kosilnico v robotsko \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Sem mislil uporabiti motorčka invalidskega vozička pa so kr dragi...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMislim da bi šlo, jaz mam kar težka dvoriščna vrata, jih je že z roko težko porivat, pa jih motor gladko odpira \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik mickeycek pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Daniel pravi:\n Točno takega imam jaz za napajanje RPI, da mi služi kot DNS server. Dela ok, seveda pa težko rečem, kaj bi se dogajalo, če bi bil zraven motorček za brisalce \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nA lahko kje dodaš kakšno povezavo do navodil, kako si delal ali si se lotil kar iz glave?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTudi mene to zanima, če zna stabilizirat v primeru da pride kak takšen \"sunek\".\n\nDrugače sem pa bolj \"iz glave\" delal. Za input (odpri, zapri, stop) sem si sam zaspajkal vezje ( link ) za output (vklop/izklop motorja, preklop smeri) pa sem uporabil že zgoraj pripravljeni rele.\n\nZdaj če bi delal znova bi si kupil PiFace, ki ima že vse to v enem.\n\nSprogramiral sem si pa sam (sem bolj iz te stroke)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPa imaš input tudi zaščiten? Ker tile inputi na rpiju so rak rana in že manjša \"indukcija\" na dovolj dolgi žici bo skurila rpi. Namreč stvar ni na rpi plati nič zaščitena ampak gre dirketno v čipovje kjer pa jasno hitro naredi štalo.\n\nGlede napajalnika, večina DC-DC nastavljivih step-down modulov drži napetost na nastavljeni ne glede na input. Output je pa ponavadi stabiliziran z dovolj velikim kondenzatorjem tako da drži lepo tudi nihanja ki bi bila posledica kakšnih \"impulzov\" na vhodni strani.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Input imam narejen tako kot je na  tej  sliki, torej dva upora...\n\nMi lahko pomagate še pri diodi? Kakšno bi rabil za ta motor? (12V 6A). Bo tale  P600M  vredu glede na to da je 6A ali kaj moram gledat",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Raspberry + motorček brisalcev - isti napajalnik",
+    "content": "Pa še eno vprašanje..\n\nGlede na to da je pri kondenzatorju pomembna polariteta, jaz pa z relejem preklapljam med polariteto (smer motorja), lahko zvežem kondenzator (in diodo) pred relejem? To pomeni da bo napetost šla skozi kondenzator tudi ko bo motor ustavljen, ker tam je vedno +12v, z relejem pa potem kontroliram na \"izhodni strani\"  +, -,stop?",
+    "author": "mickeycek",
+    "author_level": "Fizikalc"
+  }
+]

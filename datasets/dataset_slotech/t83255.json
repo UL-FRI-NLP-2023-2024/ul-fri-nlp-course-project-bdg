@@ -1,0 +1,54 @@
+[
+  {
+    "message": "Torej, imam ati radeon 9100 agp grafično kartico z vga, dvi in tv-out izhodom. Mislim, da je dvi izhod dvi-d tipa in da mi pri tem dvi-i/vga pretvornik nič ne pomaga; priklop še enega crt monitorja na kartico. ?Možnost imam?, če priklopim še eno kartico (S3 trio64V+ pci) na matično plato in v bios-u (wxp) nastavim primarni izhod na pci. Pri tem monitor na radeonu ne dobiva signala, monitor na pci kartici pa dela le do zagona OS; torej grem lahko še v bios po resetiranju. Drugače, pod normalnim zagonom mi v device manager-ju pci kartica javlja problem (klicaj-!) in drug monitor ne dobiva signala. Imam: - catalyst 03.9 (display properties_advanced_displays: monitor, ypbpr, tv, fpd) - hydravision (po mojem nepotrebno) - wxp  - samodejno izbrane driverje za S3 trio64V+ pci  Prosil bi, če je kdo zmozgal čim lažjo inštalacijo podobne konfiguracije naj kaj o tem napiše in možne probleme pri nastavitvah catalysta in, ali bi imel pri tem kakšen problem z tv- out izhodom.  lp  ",
+    "user": "monaghz"
+  },
+  {
+    "message": "Pozabi. Tvoja karta ima samo en RAMDAC v jedru (R200). Če drugega ni na plati, je DualMonitor setup no go. ",
+    "user": "kuglvinkl"
+  },
+  {
+    "message": "torej, sem proval vse variante? ",
+    "user": "monaghz"
+  },
+  {
+    "message": "Ja, žal. Vendar!!, v koru se ti ziher valja kakšni stara PCI karta. Dej jo not!  Mojo temo o tem si videl? ",
+    "user": "kuglvinkl"
+  },
+  {
+    "message": "preberi še enkrat prvo sporočilo... ali pa misliš dve pci kartice ",
+    "user": "monaghz"
+  },
+  {
+    "message": "Vidiš, sem misli, da sprašuješ, samo glede Radeona.   Ja, sem imel enak problem in obupal. Nakar mi odleti DTLA disk in se moral na novo naložiti sistem, pa si porečem, hej, zakaj ne bi še zadnjij probal. Karto zadegom notr in dela.  Ne znam ti pa povedat, zakaj prej po enakem postopku ni šlo, na novem sistemu pa. ",
+    "user": "kuglvinkl"
+  },
+  {
+    "message": "ha, ha, ha,... ponavadi tudi strojniki kaj skurimo, tudi ne da se mi vseh driverjev deinstalirati, itd.  Ali je problem pri nastavitvah v biosu _ matični plati? Ali je problem pri vrstnem zaporedju instalacije driverjev kartic? Ali pomaga kaj http://www.realtimesoft.com/ultramon/? Če imaš kak predlog ali manual, bi te prosil za odgovor, ker sem glede tega skoraj totalen laik. ",
+    "user": "monaghz"
+  },
+  {
+    "message": " To si preberi. ",
+    "user": "kuglvinkl"
+  },
+  {
+    "message": "Stvar rešena! Najprej bi se rad zahvalil kuglvikl-u za informacije o grafičnih karticah.  OS: WinXP. Zadevo sem rešil z dodano pci kartico: g-force 4 mx440-8x. Kartici delata na matični plati KuDoz7x-6A za enkrat brez problemov.Tudi v bios-u mi ni bilo treba nič ponastavljati: primary zagon sem pustil na AGP opciji.  Problem je dodajanje starih kartic, ki nimajo (ne podpirajo) driver-jev v WinXP (npr: stare S3 kartce,...)  Naj vas opomnim glede nakupov grafičnih kartic še enkrat (če mislite priklopiti dva monitorja na eno kartico). Kartice morajo imeti opcijo dual view ali dual head ali na kratko, imeti morajo dva RAMDAC-a.  Koristne informacije: galerija možnih priklopitev monitorjev: http://www.realtimesoft.com/multimon/ga... QDI Technical Support Forum: http://www.qdi.nl/cgi-bin/bbs/YaBB.pl#m... ultramon: http://www.realtimesoft.com/ultramon/ ",
+    "user": "monaghz"
+  },
+  {
+    "message": "Dual display lahko uporabljaš tudi z S3 Trio PCI karticami.  Jaz uporabljam na AGPju R9000 na PCIju pa S3 Trio.   Vse dela lepo.  Namestitev je šla gladko: boot PCI, po zagonu WINXP se vklopi še monitor, priklopljen na R9000.   LP ",
+    "user": "para!"
+  },
+  {
+    "message": "OS: WinXP Jaz sem probal poleg Radeon-a 9100 128 agp priklopit še S3 trio64V+ pci in potem še S3 diamond stealth 3D 2000pro pci, pri obeh pa mi je zaznalo driverje od S3 Virge DX/GX 375/385 in opozorilo: this device has a problem (nekaj takšnega). Če pa si zmozgu kako inštaliraš driverje, če obstajajo za te dve kartice, mi prosim sporoči. ",
+    "user": "monaghz"
+  },
+  {
+    "message": "Gonilniki za S3 Trio 64 so že v WINXP. Meni je ponudil dve vrsti gonilnika, izbral sem prvo, dela vse.  Probaj tudi z gonilniki z interneta. ",
+    "user": "para!"
+  },
+  {
+    "message": "Ne bom rekel dvakrat da nimam skurjene kartice (mogoče). Probal jo bom v še v starem kompjuterju (win 98).  Mi lahko poveš katere .dll imaš pod lastnostmi kartice, ker jaz pod driverguide.com najdem driverje le do win nt za 64-setko. In praviš, da imaš primary display v biosu na pci. Kaj imaš ACPI omogočen in APIC ne (jaz imam te opcije). ",
+    "user": "monaghz"
+  }
+]

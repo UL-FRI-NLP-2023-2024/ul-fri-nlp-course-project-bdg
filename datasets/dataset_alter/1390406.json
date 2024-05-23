@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "Zanima me, kako skopirati formule na drug list (pravzaprav kamorkoli), vendar da se nanašajo na iste celice, kot na prvem listu?\n\nNpr: v celici A1, na listu 1 imam formulo, ki naredi vsoto od A2 do A10\nTo formulo iz  A1 bi sedaj rad skopiral na drug list in da tam še vedno sešteva A2 do A10 iz lista 1.\n\nSem zelo poenostavil , v bistvu moram tako skopirati ogromno zakompliciranih formul \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "MUC",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "ko kopiraš furmulo iz lista 1 na list 2 uporabi posebno lepljenje -  prilepi povezavo. vsaj tako je v excel 2010",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "=SUM(List1!A2:A10)",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "saj ne sprašuje kako bi seštel iz lista 2 vrednosti na listu 1, ampak kako bi skopiral formulo iz celice a1 na listu 1.",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "v tiste celice ko jih zelis kopirat das spredi pa zadi $, da bodo pol \"statične\", drugac se ti bo \"nadomestil\" z celicam A1-A10 iz lista 2..\n\ntorej v celice A1 do A10 na listu1 dej notr $(vsebina celice)$\n\nenak je ce zelis kopirat iz ene vrstice v drugo",
+    "author": "twins",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "Hja, problem je, ker so vse te formule že narejene in so zelo komplicirane in dolge..tako da formul se ne da spreminjat. \nForo z $ in s tem, da v formulo vpišeš ime lista sicer poznam \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "MUC",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "Meni pa še vedno ni jasno zakaj hočeš na vsak način kopirati formule, a ne narediti povezave (link) do te \"komplicirane\" formule. Tako kot sem napisal neredi povezavo (tako kot sem napisal zgoraj ali pa napiši) na listu 2 na primer v celici A1 =list1!$A$1. Ob spremembi vrednosti se se formula na listu 1 avtomatsko preračuna obenem pa tudi osvežijo (updejtajo) povezave tako, da bo novo vrednost vidna tudi drugod.",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "Copy - Paste Special - Formulas",
+    "author": "Muzo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "Muzo In potem dobiš kopijo formule, ki sešteva vrednosti na listu 2, ne pa vrednosti iz lista 1!!!\npreberi še enkrat kakšno je bilo vprašanje.\nlp",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "True. Potem je tako kot so že omenili zgoraj, kopiranje formul je brezveze. Naj uporabi sklic na list 1. Lahko pa tudi v formuli popravi in namesto A2 zapiše List1!A2 če bi rad imel formulo.\n\nlp",
+    "author": "Muzo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Muzo pravi:\n True. Potem je tako kot so že omenili zgoraj, kopiranje formul je brezveze. Naj uporabi sklic na list 1. Lahko pa tudi v formuli popravi in namesto A2 zapiše List1!A2 če bi rad imel formulo.\n\nlp\n\t\t\n\t\tKlikni za razširitev\n\t\n\nkaj pa v primeru,ko imaš okoli 50 formul in tega nimaš časa ročno spremenjat,kako narediti,da vse kar vpišeš na listu1,je popolnoma enako na listu2,torej,da se samodejno posodablja\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "Prav zanimivo je tole brat in kot imam vtis bi kopirali formule, ki nekaj računajo na listu 1 na list 2 in te formule morajo računati isto kot na listu 1 (preračunavati podatke na listu 1). Nihče pa ne bi naredil linka(sklic) do te formule ali podatka; saj vas vendar zanima vrednost, ki jo izračuna formula ali podatek na listu 1 in ta vrednost se bo posodobila vedno ko bo nekaj spremenjeno na listu 1! Jaz sam te linke redno uporabljam ne samo v znotraj iste datoteke (tabele), imam narejene linke tudi med posameznimi datotekami, ki so na serverju v različnih mapah in vse dela tako kot mora (krepko čez sto linkov-sklicev)\nlp",
+    "author": "EdZed",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Vprašanje Excel - kopiranje formul",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik EdZed pravi:\n Prav zanimivo je tole brat in kot imam vtis bi kopirali formule, ki nekaj računajo na listu 1 na list 2 in te formule morajo računati isto kot na listu 1 (preračunavati podatke na listu 1). Nihče pa ne bi naredil linka(sklic) do te formule ali podatka; saj vas vendar zanima vrednost, ki jo izračuna formula ali podatek na listu 1 in ta vrednost se bo posodobila vedno ko bo nekaj spremenjeno na listu 1! Jaz sam te linke redno uporabljam ne samo v znotraj iste datoteke (tabele), imam narejene linke tudi med posameznimi datotekami, ki so na serverju v različnih mapah in vse dela tako kot mora (krepko čez sto linkov-sklicev)\nlp\n\t\t\n\t\tKlikni za razširitev\n\t\n\nse podpišem pod tole... zakaj bi hotel iz istih podatkov računat isto stvar na drugem sheetu? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "vedko",
+    "author_level": "Zelenc'"
+  }
+]

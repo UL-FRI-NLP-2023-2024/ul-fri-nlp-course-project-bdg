@@ -1,0 +1,20 @@
+[
+  {
+    "ctx": "Fritzbox 7490 in full VPN DMZ",
+    "content": "Pozdravljeni,\n\nse da na tem (ali kakšen novejšem, ki ga ima Telekom) narediti tako, da bi fritzbox še vedno deloval kot router, ampak da bi preusmeril ves promet na ruter, ki je priključen nanj in to tako, da se na tem ruterju lahko vzpostavi več VPN povezav od zunaj (ne PPTP). Na prvi pogled je to težko in deluje zgolj ena seja PPTP (na exposed host), ampak morebiti se da storiti kaj v to smer? Ruter pa potrebujemo zato, ker imamo na fritzboxu aktivirano SIP centralo in nanjo priklopljene IP telefone in IP domofon, ki je pravzaprav največja težava. Če sem prav videl, SIP ne deluje več, ko spremeniš fritzbox v modem način. Potem VPN na novem ruterju seveda dela, ampak pade pa IP telefonija . \n\nJe kdo že preskusil VPN server, ki je na samem fritzboxu? Tudi tam se mi zdi, da dovoli samo eno sejo naenkrat . Kako je na splošno z varnostjo na fritzboxih? Telekom jih daje kot \"poslovne rešitve\", kar načeloma ne pomeni prav veliko. \n\nHvala za odgovore,\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Fritzbox 7490 in full VPN DMZ",
+    "content": "imaš celo dokumentacijo na avm strani...  https://en.avm.de/service/fritzbox/fritzbox-7490/knowledge-base/    && https://en.avm.de/service/fritzbox/fritzbox-7490/knowledge-base/productsupport///1//?query=vpn\n\nSaj lahko uporabiš fritza za vpn host, brez dmz rulete..\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSetting up a VPN to the FRITZ!Box in Windows (FRITZ!VPN) | FRITZ!Box 7490\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tWith the FRITZ!VPN software you can establish a secure VPN (Virtual Private Network) connection over the internet from your Windows computer to your FRITZ!Box. This allows you to access your FRITZ!Box and devices in your home network with your computer even when you are away from home.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ten.avm.de\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nPodpira do 12 povezav nanj:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tMaximum number of simultaneous VPN connections to the FRITZ!Box | FRITZ!Box 7490\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ten.avm.de\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Fritzbox 7490 in full VPN DMZ",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Ytbnd je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\timaš celo dokumentacijo na avm strani...  https://en.avm.de/service/fritzbox/fritzbox-7490/knowledge-base/    && https://en.avm.de/service/fritzbox/fritzbox-7490/knowledge-base/productsupport///1//?query=vpn\n\nSaj lahko uporabiš fritza za vpn host, brez dmz rulete..\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSetting up a VPN to the FRITZ!Box in Windows (FRITZ!VPN) | FRITZ!Box 7490\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tWith the FRITZ!VPN software you can establish a secure VPN (Virtual Private Network) connection over the internet from your Windows computer to your FRITZ!Box. This allows you to access your FRITZ!Box and devices in your home network with your computer even when you are away from home.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ten.avm.de\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nPodpira do 12 povezav nanj:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tMaximum number of simultaneous VPN connections to the FRITZ!Box | FRITZ!Box 7490\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ten.avm.de\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nHvala za odgovor,\n\ndo tega sem prišel, ampak ker nisem na lokaciji, ne morem aktivirati uporabnika, ker moram potrditi preko telefona. Bom preskusil, ko dobim enega na telefon, da mi bo potrjeval.\n\nLep pozdrav,\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Zdravo!  Pri inštalaciji win 7 ultimate 64x sem naletel na težave in prosim za koristen nasvet. Torej na drug trdi disk (IBM eserver 500gb, SATA) bi rad na novo naložil omenjen operacijski sistem, ker mi dozdajšnji disk (WD BLUE CAVIAR 250GB, IDE) crkuje - občutno počasnejši, bluescreen... Torej naj bi bil boljši disk - enega takega že imam za podatke kot sekundarni disk in deluje super - ta zgoraj omenjeni bi bil torej zgolj sistemski (torej bi imel dva enaka diska: eden sistemski, drugi za podatke).  1) Najprej sem na laptopu zapekel ustrezen BOOTABLE DVD s preverjenimi windowsi s programom IMGBURN (po navodilih z neta, 2x hitrost zapisa...) 2) V biosu nastavil PRIMARY BOOT na cd-rom/dvd-optic arc 3) Celotna inštalacija je potekala povsem normalno - izbral sem CUSTOM INSTALLATION in si naredil dve particiji (+ po defaultu particija \"system reserved\") in obe particiji formatiral (na disku so bili od prej neki nepomembni podatki) - ena particija striktno za windowse, druga particija za razne pomembne install datoke, driverje, posnetke diska in podobno.  Problem je nastal, ko sem kliknil LOAD DRIVER in vstavil drug DVD z driverji, ki sem jih hotel naložiti (torej driverji za mojo matično ploščo GIGABYTE GA-H55M-USB3). Noben ustrezen driver ni bil prepoznan, niti prek direktnega brskanja mape z ustreznimi driverji. Posledično sem preklical to opercijo z zaprtjem okenca (nisem nikjer našel druge možnosti) in na vprašanje o prekinitvi inštalacije operacijskega sistema sem ponesreči klinil DA (mislil sem, da me sprašuje o prekinitvi inštalacije driverjev).  Začelo se je ustavljanje inštalacije windowsov, ki je kar trajalo in trajalo, zato sem kliknil RESTART GUMB na škatli. Pri ponovnih poskusih mi vedno znova napiše sledeče:  Najprej: LOADING OPERATING SYSTEM Potem pa: BOOTMGR IS MISSING... PRESS CTRL+AL+DEL TO RESTART  Skratka v vsem času pa DVD enota v prazno melje... Poskusil sem z nasveti iz neta (youtube, forumi), pa nič ne pomaga. Vedno znova ista zgodba, naj ponovim: - primary boot je nastavljen - bootable dvd je delujoč - na disku ni še nikakršnega sistema  Prosim za koristen nasvet. Hvala. ",
+    "user": "david_g"
+  },
+  {
+    "message": "Uporabi Hiren's BootCD ali nek live linux in formatiraj disk. ",
+    "user": "bluefish"
+  },
+  {
+    "message": " bluefish je 12. sep 2016 ob 11:06 izjavil:Uporabi Hiren's BootCD ali nek live linux in formatiraj disk.   Če prav razumem moram torej formatirati celoten disk, ker je očitno težava to, da sem zašuštral med ustvarjanjem pariticij in formatiranjem le-teh?  Bo ok, če ta disk priklopim na drug računalnik z že obstoječim sistemskim diskom in formatiram prek windows explorerja/raziskovalca? ",
+    "user": "david_g"
+  },
+  {
+    "message": "Saj lahko prvo pobriše vse particije znotraj win7 install-a. Glej le, da boš imel priklopljen samo nov hdd.   Problem je nastal, ko sem kliknil LOAD DRIVER in vstavil drug DVD z driverji, ki sem jih hotel naložiti  Ta korak preskočiš. ",
+    "user": "konspirator"
+  },
+  {
+    "message": " konspirator je 12. sep 2016 ob 11:13 izjavil:Saj lahko prvo pobriše vse particije znotraj win7 install-a. Glej le, da boš imel priklopljen samo nov hdd.   Problem je nastal, ko sem kliknil LOAD DRIVER in vstavil drug DVD z driverji, ki sem jih hotel naložiti  Ta korak preskočiš.   Saj fora je ravno v tem, da sploh ne pridem do \"win7 install-a\"...  Sedaj vem, da ta korak moram preskočiti in to kasneje v windowsih narediti. Itak mislim narediti potem obnovitev sistema preko slike, ki sem jo že naredil prej - da ne inštaliram vseh programov znova. ",
+    "user": "david_g"
+  },
+  {
+    "message": " david_g je 12. sep 2016 ob 11:12 izjavil:Bo ok, če ta disk priklopim na drug računalnik z že obstoječim sistemskim diskom in formatiram prek windows explorerja/raziskovalca? Ja. ",
+    "user": "bluefish"
+  },
+  {
+    "message": "Poskušam s HIRENS BOOTCD in tudi to šteka, se kar ustavi in melje... pridem v meni in bi rad to naredil preko KILLDISK, pa ne morem sploh do programa priti... vedno znova zahteva nalaganje nekih driverjev (SYS datotek) in potem se ustavi...  Bom poskusil, direkt z bootable CD samo z KillDisk. Upam, da bo to bolje... ",
+    "user": "david_g"
+  },
+  {
+    "message": "Uspel sem preko bootable cd-ja formatirati trdi disk s KillDisk (cca 4,5 ure je trajalo). Toda še vedno mi noče bootati inštalacije windowsov. DVD enota kar melje v prazno, poskusil s tremi različnimi dvd-ji rezultati isti - samo napis LOADING OPERATING SISTEM...   V čem je zdaj problem??? ",
+    "user": "david_g"
+  },
+  {
+    "message": "kaj če bi usb uporabil namesto dvd kište? na usb dej windowse gor z enim rufus programom ipd. in instaliraj.. ",
+    "user": "gddr85"
+  },
+  {
+    "message": "Rešeno :-D Zamenjal sem DVD \"kišto\"... iz USB še nikoli nisem in glede na komplikacije sem se držal \"preverjenega recepta\".  Če bo kdo imel podobne težave: 1) ImgBurn za \"peko\" BOOTABLE CD/DVD (ISO slik ali datotek) click - za ISO sliko izdelava glej click - za izdelavo BOOTABLE CD/DVD z operacijskim sistemom glej click  2) Active KillerDisk DOS v4.1 (glej spodaj na spletni strani) click, lahko tudi v okviru HIRENS BOOTCD... - za uporabo glej click  3) Windowse 7 ultimate 64x najdi na netu, zraven še windows loader 2.2 (by DAZ)  - namestitev click  4) Pred tem narediš sliko sistema click in jo v novem sistemu na novem disku obnoviš click  Hvala za pomoč. ",
+    "user": "david_g"
+  },
+  {
+    "message": " david_g je 12. sep 2016 ob 22:13 izjavil:Rešeno :-D Zamenjal sem DVD \"kišto\"... iz USB še nikoli nisem in glede na komplikacije sem se držal \"preverjenega recepta\".  Če bo kdo imel podobne težave: 1) ImgBurn za \"peko\" BOOTABLE CD/DVD (ISO slik ali datotek) click - za ISO sliko izdelava glej click - za izdelavo BOOTABLE CD/DVD z operacijskim sistemom glej click  2) Active KillerDisk DOS v4.1 (glej spodaj na spletni strani) click, lahko tudi v okviru HIRENS BOOTCD... - za uporabo glej click  3) Windowse 7 ultimate 64x najdi na netu, zraven še windows loader 2.2 (by DAZ)  - namestitev click  4) Pred tem narediš sliko sistema click in jo v novem sistemu na novem disku obnoviš click  Hvala za pomoč.    Tole bodo moderatorji morali brisat, ker je postopek aktivacije nelegalen.  Kar se tiče nalaganja windowsov, s CD/DVDji so se nalagali XPji, Win7 se nalaga na PC iz USBja. Če ne drugega, si vsaj ne razbijaš glave, če maš slab DVD pogon ali disk, pa še namestitev je v času SSDjev hitrejša.  USB zagonski ključek se naredi pa lažje kot zagonski DVD, od kar obstaja rufus. ",
+    "user": "d4vid"
+  }
+]

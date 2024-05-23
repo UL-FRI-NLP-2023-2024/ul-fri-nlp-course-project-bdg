@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Vodič: Kako predelati BlitzWolf BW-SHP2 vtičnico na ESPHome da deluje lokalno brez Tuya app-a",
+    "content": "Naj poudarim da deloten postopek delamo z vtičnico ki NE SME BITI VKLOPLJENA V OMREŽJE!\n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\nKo odšravfaš 4 vijake s trikotnim izvijačem vidiš tole:\n\n\t\t\n\t\n\nVse krogce povežemo s Usb2Serial adapterjem in sicer takole:\n\nBW-SHP2 -> Usb2Serial\n3.3V -> 3.3V\nGND -> GND\nRX -> TX\nTX -> RX\nGPIO0 -> GND\n\nPotem v HA greš na tab ESPHome in daš create new node. Ko ga narediš klikneš na njemu EDIT in vsebino zamenjaš s tole kodo spodaj.\nIn zamenjaš ime nodea s tem ki si ga ustvaril in pa popraviš ssid in geslo wifija.\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\tesphome:\n  name: tole_spremeniš_v_ime_tvojega_nodea\n  platform: ESP8266\n  board: esp8285\n\nwifi:\n  ssid: \"ime_tvojega_domačega_wifija\"\n  password: \"geslo_wifija\"\n\n# Enable logging\nlogger:\n\n# Enable Web server\nweb_server:\n  port: 80\n\n# Enable Home Assistant API\napi:\n\nota:\n\ntime:\n  - platform: homeassistant\n    id: homeassistant_time\n\nbinary_sensor:\n  - platform: gpio\n    pin:\n      number: GPIO3\n      inverted: True\n    name: \"bwshp2_2_button\"\n\nswitch:\n- platform: gpio\n  name: \"bwshp2_2_Relay\"\n  pin: GPIO14\n  restore_mode: ALWAYS_ON\n- platform: gpio\n  name: \"bwshp2_2_LED_Blue\"\n  pin: GPIO1\n  inverted: True\n  restore_mode: ALWAYS_OFF\n- platform: gpio\n  name: \"bwshp2_2_LED_Red\"\n  pin: GPIO13\n  inverted: True\n  restore_mode: ALWAYS_OFF\nsensor:\n  - platform: hlw8012\n    sel_pin:\n      number: GPIO12\n      inverted: True\n    cf_pin: GPIO04\n    cf1_pin: GPIO05\n    current_resistor: 0.00230\n    voltage_divider: 945\n    voltage:\n      name: \"bwshp2_2_Voltage\"\n      unit_of_measurement: V\n    power:\n      name: \"bwshp2_2_Wattage\"\n      unit_of_measurement: W\n      id: \"bwshp2_2_Wattage\"\n    change_mode_every: 4294967295\n    update_interval: 10s\n    initial_mode: VOLTAGE\n  - platform: total_daily_energy\n    name: \"bwshp2_2_Total Daily Energy\"\n    power_id: \"bwshp2_2_Wattage\"\n    filters:\n        # Multiplication factor from W to kW is 0.001\n        - multiply: 0.001\n    unit_of_measurement: kWh\n  \n# Extra sensor to keep track of plug uptime\n  - platform: uptime\n    name: bwshp2_2_Uptime Sensor\n\t\n\nKlikneš \"Save\". Nato klikneš tri pike in \"Compile\" in nato \"Download binary\".\n\nPotem pa greš na stran: https://github.com/esphome/esphome-flasher/releases\nSnameš file primerne za tvoj OS npr \"ESPHome-Flasher-1.4.0-Windows-x64.exe\" in ga poženeš.\n\nIzbreš com port tvojega usb2serial modula, nato izbereš še file ki si ga prej naredil (z download binary) on klikneš Flash ESP.\n\n\t\t\n\t\n\nPred nadaljevanjem odstraniš vse kabelčke in nazaj sestaviš vtičnico.\n\n1. KALIBRACIJA:\n\nDa bo vtičnica oddajala pravilne meritve jo je potrebno kalibrirati.\nV stensko vtičnico vtakneš to vtičnico v njo takle merilec (npr Emos P5821, ki ga ima večina tehničnih štacun) v njega vtakneš še npr kalorifer na najnižji temperaturi.\nAli pa 100W žarnico ali pa kak 500W reflektor. Fajn je da je čisto omsko breme... Torej nekaj kar se greje...\n\nV HAju greš spet na ta node in klikneš EDIT\n\n1.1 Kalibracija moči\nPoiščeš vrednost \"current_resistor: 0.00230\" in si na listek napišeš:\n230 -> moč ki jo kaže merilec / moč ki jo vidiš v logih če klikneš LOGS gumb na tem nodeu:\n\n\t\t\n\t\nČe je moč na nodeu prenizka potem greš spet EDIT  in spremeniš vrednost current_resistor na nekaj manj npr 0.00225, če pa je vrednost moči previsoka pa to vrednost povišaš na npr 0.00235. Ko narediš spremembo klikneš Save in nato Upload. Pa bo ESPHome kar preko wifija pofleshal novo verzijo kode na vtičnico.\nZatem se bodo prikazali logi lahko vidiš ali si že bližje pravilni moči. Če še nisi greš spet spremeniti vrednot dokler se moč vtičnice na ujema s tisto na merilcu.\n\n1.2 Kalibracija napetosti\nPostopek je enak kot zgoraj stem da spreminjaš samo vrednost \"voltage_divider: 945\".\nČe je napetost ko jo vtičnica sporoča previsoka moraš znižati cifro, če  je pa prenizka jo moraš pa povečati.\n\nTo je to.\n\n(Vtičnice ki sem jih dobil niso pravilno kazale moeritev toka zato sem to izločil iz moj konfiguracije.)\n\nPo uspešnem postopku lahko daš v HA različne kartice in dobiš ven tole:\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Kako predelati BlitzWolf BW-SHP2 vtičnico na ESPHome da deluje lokalno brez Tuya app-a",
+    "content": "Hvala za ta navodila, bom sprobal tole ob priliki. A daš lahko še prosim kak link za Usb2Serial adapter.",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Kako predelati BlitzWolf BW-SHP2 vtičnico na ESPHome da deluje lokalno brez Tuya app-a",
+    "content": "Tale bo ok ki ima čip CH340, pa izbereš lahko 3.3V s jumperjem. https://www.aliexpress.com/item/32529737466.html\nZa izogibat se je kitajske module ki imajo fejk FTDI ft232rl...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Kako predelati BlitzWolf BW-SHP2 vtičnico na ESPHome da deluje lokalno brez Tuya app-a",
+    "content": "Tri izvedbe so, tole za 0.95 eur vzamem?",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Kako predelati BlitzWolf BW-SHP2 vtičnico na ESPHome da deluje lokalno brez Tuya app-a",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smukec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTri izvedbe so, tole za 0.95 eur vzamem?\n\t\t\n\t\tKlikni za razširitev\n\t\nJa tega k piše CH340D. Pa če ga boš dobil takole kot je na sliki, potem seveda odstrani jumper med 3V3 in TX.\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  }
+]

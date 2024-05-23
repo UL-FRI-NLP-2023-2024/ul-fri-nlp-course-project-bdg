@@ -1,0 +1,170 @@
+[
+  {
+    "message": "pozdravljeni! Imam nalogo za naredit program v VB, ki bo komuniciral z zunanjo napravo. (ta bo na racunalnik prikljucena preko RS232). Rad bi dobil kaksne napotke kako se tega lotiti...v kaksno knjigo kaj pogledati...kakšen nasvet nasploh! LP ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "simpl, mau poglej v help za tem System.IO.Ports.SerialPort ",
+    "user": "Tutankhamun"
+  },
+  {
+    "message": "En primercek ti dam   MSComm1.CommPort = 1  MSComm1.Settings = \"4800,N,8,1\"  MSComm1.InputLen = 0  Odpres pa port z pomocjo:  MSComm1.PortOpen = True  Zapres pa z:  MSComm1.PortOpen = False ",
+    "user": "wishmaster"
+  },
+  {
+    "message": "se nekaj vprasanj: kako bi mi VB \"sam\" izbral ravno tisti port, kjer mam jst prikljucek RS232? ima kdo ksno idejo? zazeljen tudi primer s kodo... zanima me tudi:  With mySerialPort .Open() .write(\" bla bla bla\") End With  s kaksnimi ukazi nato sprejemam odziv-podatke te naprave? tega nisem nikjer zasledil...  oprostite za butasta vprasanja. LP ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Kateri VB uporabljaš? VB.NET ali VB6? ",
+    "user": "darkolord"
+  },
+  {
+    "message": "VB 2005 expres edition ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "OK,   pri serijskem portu ne moreš vedet, na katerega je tvoja naprava priključena. Lahko samo na vsakega pošlješ ukaz in čakaš na odziv tvoje naprave.   S funkcijo SerialPort.GetPortNames() pa dobiš spisek serijskih portov, ki so prisotni na sistemu.  Za sprejemanje uporabiš dogodek DataReceived:   Public Sub mySerialPort_DataReceived(ByVal sender as Object, ByVal e as SerialDataReceivedEventArgs) Handles mySerialPort.DataReceived\n' MsgBox mySerialPort.ReadExisting\nEnd Sub\n ",
+    "user": "darkolord"
+  },
+  {
+    "message": "zopet tezava... prej al selj sv vedu da bom naletew tudi na ta problem: kako izbran element iz comboboxa in ga nato vkljucim nekam drugam? u mojem primeru izberem enega imed izpisanih COM-portov in tega uporabljam.... glejte odspodaj-kjer so vprasaji!  Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load ComboBox1.Items.AddRange(IO.Ports.SerialPort.GetPortNames()) ==> mi izpise porte in si enga iberem iz delujocega programa  End Sub  Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click Dim mySerialPort As IO.Ports.SerialPort = New IO.Ports.SerialPort(??????????????tle morem sedaj nekako dodat moj izbran COM port, 56000, IO.Ports.Parity.None, 8,IO.Ports.StopBits.One) With mySerialPort .Close() End With If mySerialPort.IsOpen Then Label1.Text = (\"Port still Opened\") Else Label1.Text = (\"Port closed\") End If  End Sub ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "comboBox1.SelectedItem.ToString ",
+    "user": "darkolord"
+  },
+  {
+    "message": "komunikacija z mojim GSM umesnikom ( Siemens TC35 ), sevedno ne stece.    Koda: Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click With mySerialPort .Open() .Write(\"AT\" + vbCr) => posiljam AT ukaze+ ukaz za odziv  End With If mySerialPort.IsOpen = True Then Label1.Text = (\"Port odprt\") Else Label1.Text = (\"Port zaprt\") End If End Sub Private Sub mySerialPort_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Label2.Text = (mySerialPort.ReadExisting) End Sub  v VB posiljam ukaze na ta GSM umesnik vendar se mi ta sevedno ne odziva. port imam pravilno nastavljen ( BaudRate...) in tudi koda mislim da je uredu, sai mi ukaz AT poslje ( preverjeno z programom \"serial monitor\" ) a ne dobim odziva.    a ima kdo se kaksno idejo, kai bi lahko bilo narobe ali kai se manjka? bilo kaksen nasvet je dobrodosel LP vsem  ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "DataReceived se ti požene? Zakaj nimaš \"Handles mySerialPort.DataReceived\" ? ",
+    "user": "darkolord"
+  },
+  {
+    "message": "\"Handles mySerialPort.DataReceived\" ???? zakai to? Ne, DataRecieved se mi ne pozene..  ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Ja kako naj brez tega ve, katero funkcijo poklicat? ",
+    "user": "darkolord"
+  },
+  {
+    "message": "jeee bere! hvala za pomoc  ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "se eno vpr..  MsgBox(mySerialPort.ReadExisting)  tale ukaz mi sicer lepo izpise kai dobivam nazaj,ampak ko bi pa sprejemanje rad preselil v Labelo ( ali textbox ), se pojavi napaka. Vem da sprejemam bite in da bi mogu moj sprejem spremenit zopet u string a mi to s tem ukazom ne uspe:  Label2.Text = CStr(mySerialPort.ReadExisting)  kasen nasvet? zopet..zopet..... ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "A imaš obe vrstici (msgbox in label=...) ali ti ne deluje ko imaš tudi samo eno od teh dveh? ",
+    "user": "darkolord"
+  },
+  {
+    "message": "ko imam msgbox ..stvar deuje. a jst bi zelew da mi podatke izpisuje v labeli ali textboxu...to mi ne vspe ker nevem kako kodo morem napisat, da bo delalo. najbrz je treba convertirat u string... ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Če imaš obe vrstici eno za drugo, ne bo delalo:  MsgBox(mySerialPort.ReadExisting) Label2.Text = mySerialPort.ReadExisting  Če imaš pa samo drugo, mora delat. ReadExisting vrne string, tako da ni treba ničesar pretvarjati ",
+    "user": "darkolord"
+  },
+  {
+    "message": "no ko zazenem program mi javi tole napako:  Cross-thread operation not valid: Control 'Label2' accessed from a thread other than the thread it was created on.  kai naj bi tole pomenlo???  ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "pa se eno vpr: dobro bi blo da bi posiljaw in sprejem v nekih dolocenih intervalih. tu bi lahko uporabil timer... a bi vedel kako se glasi koda za povavljanje nekega dogotka.   primer:  ce kliknem na timer u VB, si me ze opre koda: Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick  Label2.Text = mySerialPort.ReadExisting .....to bi ponavljal ( a rabim zopet private sub...)  end sub  samo je tu problem ker morem za branje iz porta zopet klicat private sub.... in private sub v private sub ne gre    iscem in iscem...ne najdem. kaksna ideja? ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Spremeniš private v public.  Tista zgornja napaka pa pomeni, da poskušaš dostopati do labele iz druge niti, kjer je bila ustvarjena, kar za biti \"nevarno\"... To rešiš tako, da uporabiš metodo Me.Invoke in z njo pokličeš metodo v istem threadu kot je UI, tam pa lahko vsebino labele updejtaš ",
+    "user": "darkolord"
+  },
+  {
+    "message": "se opravicujem... bi se dalo bol tocno napisat?   Label2.Text = mySerialPort.ReadExisting .... kje kai dodam?  im still a noob in VB  ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Približno tako   Delegate Sub UpdateLabelHandler(ByVal sText As String)\n\nPublic Sub UpdateLabel(ByVal sText As String)\n    Label2.Text = sText\nEnd Sub\n\nPrivate Sub mySerialPort_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles mySerialPort.DataReceived\n     Me.Invoke(New UpdateLabelHandler(AddressOf UpdateLabel), New Object() {strMessage})\nEnd Sub\n ",
+    "user": "darkolord"
+  },
+  {
+    "message": "se vedno ne dela....  labela ostane prazna,najbrz zato ker se modem niti ne odzove.  Dim strmessage As String Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click With mySerialPort .PortName = ComboBox1.SelectedItem  .Open() .Write(\"AT\" + vbCr)  System.Threading.Thread.Sleep(200) End With end sub  Delegate Sub UpdateLabelHandler(ByVal sText As String) Public Sub UpdateLabel(ByVal sText As String)  Label2.Text = sText  End Sub  Private Sub mySerialPort_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles mySerialPort.DataReceived  Me.Invoke(New UpdateLabelHandler(AddressOf UpdateLabel), New Object() {strmessage})  End Sub  z spodnjo kodo se mi modem lepo odzove, a pride pa do napake ki sm jo ze prej navedu...   Private Sub mySerialPort_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles mySerialPort.DataReceived  TextBox1.Text = mySerialPort.ReadExisting  end Sub ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "pardon,  tole vrstico   Me.Invoke(New UpdateLabelHandler(AddressOf UpdateLabel), New Object() {strmessage})  zamenjaj v  Me.Invoke(New UpdateLabelHandler(AddressOf UpdateLabel), New Object() {mySerialPort.ReadExisting}) ",
+    "user": "darkolord"
+  },
+  {
+    "message": "jeeesss!! dela! zakon! hvala hvala!  imas se mogoce idejo, kako bi se sedaj ta srting obdelalo?  vsak byte u temu stringu mi predstawlja en znak...jst ne rabim vseh...rabim recimo samo 6 in 7 byte. ker ene bi rad daju v labele, druge u textboxe...itd. ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Mid(sText, 5, 1) je peti znak... 6 je za šesti znak itd ",
+    "user": "darkolord"
+  },
+  {
+    "message": "uporabil sem ukaz: sText.Substring(0, 4) in dela!    nova tezava    'primerjam: If sText = \"OK\" Then Label1.Text = (\"Port odprt, modem povezan\") Else Label1.Text = (\"Port zaprt, modem ni povezan\") End If  a se to sploh tako primerja? sicer jaz dobivam nazaj ATOK ampak tudi ce dam sText = \"ATOK\", se mi labela ne spremeni, oz pokaze port zaprt...  mogoce se kaksna ideja kako bi primerjal ta moj sText in na podlagi primerjave potem obdeloval podatke. jaz sem mislil delat if stavke enega pod drugim a se mi ne zdi lepo...  za ciscenje bufferjev uporabljam: .DiscardOutBuffer() .DiscardInBuffer() ...vsakic predem kaj posljem ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Jah, lahko poiščeš, če string vsebuje en drugi string...  If InStr(sText, \"OK\") Then ",
+    "user": "darkolord"
+  },
+  {
+    "message": "tole dela super:  If InStr(sText, \"OK\") Then  ..vendar se mi sText ne odziva vedno enako na moj poslani ukaz, zato je zgornji del kode neuporaben ko dobim samo \"K\" ali \"O\"....  kaj naj naredim da bom imel vedno enak odziv-tisti ki mi ga posilja modem? a morem pri posiljanju kaj ocistit...kaksen buffer...ali naj delam to po sprejemu?   zopet se obracam na potrpezljive, dobre ljudi  ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Probaj se malo poigrat z vrednostjo RTreshold ",
+    "user": "darkolord"
+  },
+  {
+    "message": "ojej...sevedno nc  sm daw RtsEnable na true in Handshake na requesttosend ( na myserialport-u nastavitvah )...ampak sevedno ne dela. najbrz sta input in output bufferja za postimat a s temi ukazi mi ni ratalo... still searching... ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "RTS in handshake tle nima veze... Bufferjev ti pa drugače ni treba čistit... Poskusi z ukazom ReadLine, v bistvu mi ni točno jasno, zakaj uporabljaš ReadExisting? ",
+    "user": "darkolord"
+  },
+  {
+    "message": "uporabljam ukaz ReadLine ze nekai casa...a ni dosti boljse. sevedno mi vcasih NE vrne vse kar rabim,vcasih pa samo del...in drugi del nevem kje se izgubi, vcasih mi drugi del vrne kasneje in mi zje** vse if stawke..  . jst bi pa seveda rabu vedno vse, ker drugace nemorem obdelovat podatkov. ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "Prebere ti ne zaradi tega, ker pač ne prebere, ampak ker modem do takrat ne pošlje... Če ne gre drugače, shranjuj podatke v en string in jih potem sprocesiraj... z ReceivedBytesThreshold nastavljaš, koliko bajtov je pri sprejemu potrebnih, da se sproži dogodek DataReceived ",
+    "user": "darkolord"
+  },
+  {
+    "message": "tesko je nastavljat ReceivedBytesThreshold, saj se ne ve kaksen bo odgovor (koliko bytov bo vseboval)  pa se eno vpr.:   rad bi poslal CTRL+Z... kako to posljem?   With mySerialPort  .Write(\"AT+CMGS=\" & Chr(34) & (TextBox1.Text) & Chr(34) + vbCrLf) 'najprej posljem stevilko  'nato pa se text in na koncu texta morem stisniti CTRL+Z 'tisti controlC nevem kako se napise da velja kot ukaz  .Write((RichTextBox1.Text) & (Keys.ControlKey) & \"z\" + vbCr) 'tole ne dela End With ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "tesko je nastavljat ReceivedBytesThreshold, saj se ne ve kaksen bo odgovor (koliko bytov bo vseboval)  veš, da bo vsaj en... če imaš nastavljeno na 8 in pride 7 bajtov, se ne bo zgodilo nič  rad bi poslal CTRL+Z... kako to posljem?  poglej s kakim com port monitorjem, kaj ta shortuct pošlje... če hočeš poslat control, je tko kot da bi rad poslal levi miškin klik na com port ",
+    "user": "darkolord"
+  },
+  {
+    "message": "hmmm modem se mi vedno lepo odziva na moje ukaze...vendar mi moj ListBox ( oz. kjer cem gledat odziv v VB ) tega ne pravilno pokaze. recimo: posljem ukaz AT in dobim nazaj ATOK, alpa OKAT... pravilno bi bilo AT OK. tudi ko preverjam jakost signala s casovikom in ga nato ustavim ter posljem kaksen drug ukaz, mi ListBox sevedno nekaj casa prejema odziv za jakost signala ceprow nebi smelo. modem pa mi daje pravilno...vedno pravilno.   ReceivedBytesThreshold imam na 1, in invoke sem spremenil na begininvoke, a sevedno mi Listbox ne dela pravilno. ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "no in koncno tudi resitev problema! ker readline() bere do prvega CR, mi prebere pac do tam, vhodni buffer ma lahko vsebuje vec stringov z vec CR-ji ki so posledica istega ukaza...zato nisem dobival popolnih odgovorov-ker nism bral celega bufferja. to se resi z zanko:  While mySerialPort.ReadBufferSize  Me.Invoke(New UpdateListBoxHandler(AddressOf UpdatelistBox), New Object() {mySerialPort.ReadLine})  End While ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "mogoce se nekaj z me.ivoke....  ali je treba obvezno dat tudi: end invoke??? in ce je to treba...kam in kako se to da?  LP ",
+    "user": "mNeRo"
+  },
+  {
+    "message": "ne ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Obstaja kaksna dobra slovenska razlaga kaj kej pomeni oz. kaj kej dela, kdo koga klice... Mislim na me.invoke...delegate.... ???? ",
+    "user": "mNeRo"
+  }
+]

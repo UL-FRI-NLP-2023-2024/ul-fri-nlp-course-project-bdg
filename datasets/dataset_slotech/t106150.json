@@ -1,0 +1,30 @@
+[
+  {
+    "message": "Ravno vceraj sem instaliral Win XP, danes pa se Suse 9.1 Professional. Naredil sem pet particij, vse FAT32. Na prvi je XP, na drugi Linux, na ostalih treh pa razni fajli. Sedaj ko sem v SuSE ne vidim ostalih particij - mapa mnt je popolnoma prazna. Ta problem sem imel ze s SuSE Live CD, a sem si mislil da je to le posledica tega da dela s CDja. Medtem ko je Slo-tech linux videl vse particije.  Allora fantje, kaj storiti? ",
+    "user": "mercury"
+  },
+  {
+    "message": "Nevermind, ni potrebno odgovarjat. V teh par minutah se je veliko zgodilo. 1. Windows XP se ne zažene več. LILO bootloader samo napiše \"Loading Windows\" in tam zadeva zmrzne. 2. SuSE se nekaj skrega s zvočno - slišati je samo piske. 3. SuSE ne more več na internet. Mozilla in Conqueror nočeta odpreti katerekoli strani. 4. Zaženem Slo-Tech linux ( s katerega sedaj pišem ) in ugotovim da je SuSE sesul vse particije, saj na nobeni ni videti fajlov. 5. Fajn prekolnem vse skupaj, ker je šlo dva dni dela v nič.  Linux bi res rad imel na PC-ju, ampak v prihodnosti to SuSE definitivno ne bo! ",
+    "user": "mercury"
+  },
+  {
+    "message": "Brezglavo klikanje NEXT brez da bi prebral kaj pise na ekranu ima veckrat take posledice.  Ce bos isto pocel se naprej, ne bo z drugo distribucijo nic drugace...  ... prav ti je. Problem, je bil, ocitno, med stolom in tipkovnico... ;) ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "1. Povozi MBR na tak nacin, da gres z XP Boot CDjem v recovery console ter pozenes \"fixboot\" ter \"fixmbr\" in upaj, da se ti bo windows zbootal..   1.a) ce ti uspe prit v win, shrani vse pomembne stvari v primeru, da te bo firbec se enkrat matral z \"NEXT NEXT NEXT\", tvojemu neznanju navkljub.  2. SuSE ni skregan z zvocno, ampak si ti skregan s supportom, potrebnim za delovanje zvocne. Prevedi modul ali includaj v kernel. Kako prevajat kernel, imas  tule.  3. Si povezan na internet ? Podpora tvoji mrezni kartici? Pppoe stima? Ako uporabljas ADSL.  4. Ce ni na nobeni particiji videt fajlov, se ne pomeni, da kar tako \"sesuje\" vse skupaj. Lahko nimas podpore za brat FAT32 particije.  5. Dva dni dela v nic po lastni krivdi.  Jebiga, ucimo se na napakah.  Good luck. ",
+    "user": "Gwanaroth"
+  },
+  {
+    "message": "Da nobi nove teme odpiral bom napisal moj podoben primer kr tuki..  Mam mandrake10. Ko hocem zapisovati na eno od fat32 (ne ntfs!?) particij mi napise, da je particija read only. To particijo mi priklopi md10 sam ze od instalacije dalje.  Zadeva se mi zdi toliko bolj cudna saj imam instaliran (na istem compu) tut pingo2.0 in je ista particija tam zapisljiva.  datoteka fstab v md10 izgleda takole: /dev/hdb2 / ext3 defaults 1 1 none /dev/pts devpts mode=0620 0 0 /dev/hdb8 /home ext3 defaults 1 2 /dev/hdc /mnt/cdrom auto umask=0,user,iocharset=iso8859-2,codepage=852,noauto,ro,exec 0 0 /dev/hdd /mnt/cdrom2 auto umask=0,user,iocharset=iso8859-2,codepage=852,noauto,ro,exec 0 0 none /mnt/floppy supermount dev=/dev/fd0,fs=ext2:vfat,--,umask=0,iocharset=iso8859-2,sync,codepage=852 0 0 /dev/hda1 /mnt/win_c ntfs umask=0,nls=iso8859-2,ro 0 0 /dev/hdb5 /mnt/win_c2 vfat umask=0,iocharset=iso8859-2,codepage=852 0 0 /dev/hda5 /mnt/win_d ntfs umask=0,nls=iso8859-2,ro 0 0 none /proc proc defaults 0 0 /dev/hdb7 swap swap defaults 0 0  Omenjena particija je mountana na win_c2  hvala ",
+    "user": "drejc"
+  },
+  {
+    "message": "Kaj ti izpise ukaz mount, brez parametrov? ",
+    "user": "jype"
+  },
+  {
+    "message": "Probaj pisat po particiji prijavlen kot root user. Če nebo šlo pa daj ukaz umount /mnt/win_c2 nato pa mount /dev/hd/dev/hdb5 /mnt/win_c2. pa probaj še nekrat. Če bo delalo je nekaj narobe z nastavitvami v fstab drugače pa je particija malo skregana z linuxom ampak pomoje se to vrjetno nebi smelo zgodit. ",
+    "user": "root"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "message": "Lp Sem pred priklopom KZS za neko kopalnico, ker pa še nikoli prej nisem priklapljal KZS bi potreboval pomoć kako se priklopi. IN sicer gre za 2 modul KZS ki ima spodaj 2 priklopa zgoraj pa 3 sedaj pa me zanima kako to izvesti. LP ",
+    "user": "andrej20"
+  },
+  {
+    "message": "In kaj je KZS? (Kopalnica Za Samske? Kanta Za Steno?) Imenuj, prilepi slikico, dodaj povezavo do proizvajalca... ",
+    "user": "telexdell"
+  },
+  {
+    "message": "KZS je kombinirano zaščitno stikalo ki se uporablja namesto klasične avtomatske varovalke sliko naložm jutri ",
+    "user": "andrej20"
+  },
+  {
+    "message": "http://www.elektronik.si/phpBB2/viewtop...     ",
+    "user": "Okapi"
+  },
+  {
+    "message": "Gre torej za kombinacijo FID stikala in dveh varovalk. Nanj lahko priključiš dva ločena tokokroga porabnikov(npr. en tokokrog vtičnice, drugi tokokrog infra grelec). Na mesto z dvema priklopoma daj dovod, (N-nevtralni vodnik (moder), L- fazni vodnik (črn)). Na mesto s tremi daj porabnike. Nevtralne vodnike porabnikov daj skupaj v isti priklop (N). Pravilnost priklopa preveri s tipko Test- če FID izpade je verjetno vse OK. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Pri tej elektro omarici ni FID-A ampak gre za enofazni sistem ki je varovan z 40 A varovalko . Imam pa še eno vprašanje. Zanima me kako je potem pri starejših elektro omaricah kjer so navadne varovalke kjer ni avtomatskih ali obstaja tudi kakšen KZS ali kaj podobnega in kako je tam z varovanjem npr bojlerja in vtični v kopalnici ",
+    "user": "andrej20"
+  },
+  {
+    "message": "Evo tuki nalagam slike od KZS situacija je pa taka da je elektro omarica brez FID-a, varuje jo samo navadna 40A varovalka. KOt sem gledal po slikah se na KZS spodaj na eno stran priklopi ničelni vodnik na drugo stran pa fazni vodnik.Ni mi pa jasno za ozemljitev ali jo priklopim direktno iz šine pa na porabnik ali mora tudi preko KZS, ker gre za ničenje    \nKZS s sprednje strani      ",
+    "user": "andrej20"
+  },
+  {
+    "message": "Ni mi pa jasno za ozemljitev ali jo priklopim direktno iz šine pa na porabnik ali mora tudi preko KZS, ker gre za ničenje  Naj bom karseda jasen.  Če gre za sistem brez zemeljskega vodnika (torej za ničenje), FID in KZS stikal ne moreš uporabljati. ",
+    "user": "A. Smith"
+  },
+  {
+    "message": "Najprej je treba razumeti delovanje FID stikala.  Skozi FID tečeta tok faznega in tok ničelnega vodnika. Če je tok faznega vodnika večji od toka v ničelnem, pomeni, da se je zgodil npr. preboj na ohišje in del toka teče skozi ozemljitveni vodnik. FID izklopi.  Pogoj je torej, da ozemljitveni vodnik obstaja. ",
+    "user": "A. Smith"
+  },
+  {
+    "message": "Če bi želel uporabljati FID (ali KZS) v napeljavi z ničenjem, moraš dodati tretji vodnik, in ga vezati na ohišja naprav, kakor vsak ozemljitveni vodnik.  Ničelni vodnik pa moraš izolirati od ozemljitvenih vodnikov, sicer ti bo FID po nepotrebnem izklapljal.  Tisti \"ozemljitveni vodnik\" bi potem moral vezati z ničelnim, ampak na \"vhodni\" strani FID stikala, oz. pred njim. ",
+    "user": "A. Smith"
+  },
+  {
+    "message": "Najprej je treba razumeti delovanje FID stikala.  Skozi FID tečeta tok faznega in tok ničelnega vodnika. Če je tok faznega vodnika večji od toka v ničelnem, pomeni, da se je zgodil npr. preboj na ohišje in del toka teče skozi ozemljitveni vodnik. FID izklopi.  Pogoj je torej, da ozemljitveni vodnik obstaja. FID stikalo dela na osnovi razlike tokov, torej je vseeno, v katerem vodniku je večji tok. Za delovanje FID stikala ni potrebna ozemljitev, saj ob dotiku steče tok skozi telo v zemljo in tako dobimo diferenco toka. Tako FID stikala zmogljivosti 10 ali 30 mA poleg zaščite pred požarom služijo tudi kot zašča pred direktnim dotikom vodnika pod napetostjo (daš prst v vtičnico??!!). Seveda pa inštalacija brez ustrezne ozemljitve ni tehnično ustrezna in jo je potrebno nemudoma sanirati. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Kaj potem to sploh ni možno če gre za ničenje. Kako pa je potem to izvedeno naprimer pri starih instalacijah kjer so še stare varovalke, kajti v teh starih instalacijah gre vsepovsod za nićenje. Kako pa je tam z zaščito naprimer bojlerja in vtičnic v kopalnici? ",
+    "user": "andrej20"
+  },
+  {
+    "message": "Evo tuki nalagam slike od KZS situacija je pa taka da je elektro omarica brez FID-a, varuje jo samo navadna 40A varovalka. KOt sem gledal po slikah se na KZS spodaj na eno stran priklopi ničelni vodnik na drugo stran pa fazni vodnik.Ni mi pa jasno za ozemljitev ali jo priklopim direktno iz šine pa na porabnik ali mora tudi preko KZS, ker gre za ničenje  Na mestu z rumeno oznako N priklopiš nevtralni vodnik dovoda, poleg priklopiš fazni vodnik. Na drugi strani stikala priklopiš vse vtičnice v kopalnici (lahko tudi komletno instalacijo kopalnice). Ker ni nobenih oznak moraš fazni vodnik ugotoviti s preizkuševalcem. Ozemljitveni vodnik vodiš vedno mimo: vseh stikal, varovalk, relejev, pretikal....direktno na ohišje naprav! Pravilnost vezave preveriš s pritiskom na tipko \"TEST\"- stikalo se mora izključiti.  PS- Glede na opisano stanje razdelilnika ti močno priporočam, da ti FID stikalo s pretokovno zaščito 16A priključi strokovnjak. Poleg ti naj pregleda instalacijo razdelilnika in kopalnice ter izmeri ozemljitveno upornost, neprekinjenost vodnikov in izvede preizkus zaščit. Kaj potem to sploh ni možno če gre za ničenje. Kako pa je potem to izvedeno naprimer pri starih instalacijah kjer so še stare varovalke, kajti v teh starih instalacijah gre vsepovsod za nićenje. Kako pa je tam z zaščito naprimer bojlerja in vtičnic v kopalnici? Če imaš ničenje izvedeno pravilno potem ni nobenega problema. Če pa imaš na vtičnicah in porabnikih nevtralni vodnik povezan z ohišji naprav ali zaščitnim kontaktom v vtičnici potem boš moral predelati celotno instalacijo, katero želiš varovati s FID stikalom.  Stvar boš dejansko ugotovil šele po namestitvi FID stikala in vklopom vseh porabnikov vezanih za fidom (v vtičnice moraš dati porabnik s šuko vtičem!). Če ti FID ne izklopi si na zeleni veji, drugače pa se začnejo problemi. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Problem je tudi v tem da gre pri zadevi za enofazni sistem. Potem takem ta stara instalacija ni dobra zardi tega ker ni FID-a če prav razumem. Potem takem bi moral zamenjati navadno varovalko s FID-om. ",
+    "user": "andrej20"
+  },
+  {
+    "message": "Problem je tudi v tem da gre pri zadevi za enofazni sistem. Potem takem ta stara instalacija ni dobra zardi tega ker ni FID-a če prav razumem. Potem takem bi moral zamenjati navadno varovalko s FID-om. Varovalka in FID stikalo nista medsebojno zamenljiva! Imeti moraš varovalko. Poleg pa lahko imaš še FID (za vtičnice v kopalnici je FID 30mA obvezen!). Namen FID je, da te še dodatno varuje, če ti npr. fen pade v vodo ali med tuširanjem preveč zmočiš pralni stroj ali... ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Potem če te telexdell prav zastopim naj dam vse kar je v kopalnici preko FID-a kupim enofazni FID in od tam naprej dam normalno varovalke samo da je FID ločilo med ostalo napeljavo in kopalnico. Potem KZS odpade če te zastopim. ",
+    "user": "andrej20"
+  },
+  {
+    "message": "Potem če te telexdell prav zastopim naj dam vse kar je v kopalnici preko FID-a kupim enofazni FID in od tam naprej dam normalno varovalke samo da je FID ločilo med ostalo napeljavo in kopalnico. Potem KZS odpade če te zastopim. Ne! Montiraj KZS. Je varovalka in FID obenem. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Najlepša hvala telexdell. Sedaj me pa zanima samo še nekaj. Kako pa je potem pri starih elktro omaricah kjer so navadne varovalke. Ali obstaja tudi kakšna posebna varovalka ali je pač vse vezano preko navadne varovalke saj tako imam pri sebi doma. Bojler je varovan z navadno varovalko. ",
+    "user": "andrej20"
+  },
+  {
+    "message": "FID stikalo dela na osnovi razlike tokov, torej je vseeno, v katerem vodniku je večji tok.Seveda. Ampak ne poznam scenarija, po katerem bi bil tok v ničelnem vodniku večji.  Tako FID stikala zmogljivosti 10 ali 30 mA poleg zaščite pred požarom služijo tudi kot zašča pred direktnim dotikom vodnika pod napetostjo (daš prst v vtičnico??!!).Pri taki vgradnji je funkcionalnost FID stikala okrnjena. Ohišje naprave je lahko pod napetostjo, pa FID ne bo reagiral, dokler se ohišja ne dotaknem. Sicer je to bolje, kot nič, vendar se meni vlečenje tiste dodatne žice ne zdi prevelika cena za boljšo varnost. ",
+    "user": "A. Smith"
+  },
+  {
+    "message": "FID stikalo dela na osnovi razlike tokov, torej je vseeno, v katerem vodniku je večji tok.Seveda. Ampak ne poznam scenarija, po katerem bi bil tok v ničelnem vodniku večji.  Tako FID stikala zmogljivosti 10 ali 30 mA poleg zaščite pred požarom služijo tudi kot zašča pred direktnim dotikom vodnika pod napetostjo (daš prst v vtičnico??!!).Pri taki vgradnji je funkcionalnost FID stikala okrnjena. Ohišje naprave je lahko pod napetostjo, pa FID ne bo reagiral, dokler se ohišja ne dotaknem. Sicer je to bolje, kot nič, vendar se meni vlečenje tiste dodatne žice ne zdi prevelika cena za boljšo varnost. Javim se še sedaj, potem pa bom nekaj časa tiho. V ničelnem vodniku se lahko pojavi večji tok kot v faznem npr., če nimaš vse instalacije napeljane skozi FID stikalo in pride do stika med ničelnim vodnikom skozi FID in ničelnim vodnikom mimo fida (FID za kopalnico je tipičen primer, v blokih sosed vrta, da bo obesil taščino sliko...). Po predpisih morajo biti vsi kovinski deli v zgradbi ozemljeni. Če temu ni tako, je potrebno nujno sanirati instalacijo. Če pride do stika faznega vodnika s prevodnim ohišjem mora izklopiti varovalka (prej kot v 5s). FID stikalo se uporablja kot dodatni ukrep, saj reagira pri veliko nižjem toku. Torej za samo delovanje FID stikala ozemljitev ni nujna, nikakor pa instalacija ne sme biti izvedena brez zaščitnega vodnika.  Pravi električar, ti bo najprej priključil ozmljitev in šele nato ostale žice, kolikor jih bo pač ostalo. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Telexdell, motil sem se. Se posipam s pepelom. ",
+    "user": "A. Smith"
+  },
+  {
+    "message": "pri boljših kablih je tudi nula debelejša še posebej pti trofaznih...to že nekaj pove.tudi pri enih trožilnih. Pri tistih poceni ki jih lahk kupiš v bauhausu itd... pa so vse žile enake in se lahko nula začne topit ali se izplacija zmehča pri kaki obremenitvi... ",
+    "user": "LordTado"
+  },
+  {
+    "message": "Cum quad habere cupis, noli cessare petendo: arbor nonprimo, sed saepe cadit ???@A.Smith, svoj moto moraš popraviti, na Wikipedii te je nekdo grdo potegnil, pravilno gre takole:  Cum quid habere cupis, noli cessare petendo: arbor non primo, sed saepe cadit feriendo. ",
+    "user": "ta_ki_tke"
+  },
+  {
+    "message": "pri boljših kablih je tudi nula debelejša še posebej pti trofaznih...to že nekaj pove.tudi pri enih trožilnih. Pri tistih poceni ki jih lahk kupiš v bauhausu itd... pa so vse žile enake in se lahko nula začne topit ali se izplacija zmehča pri kaki obremenitvi... Pri simetrični trifazni obremenitvi po nevtralnem vodniku ne teče noben tok. Pri dejanski pa razlika, zaradi nesimetrične obremenitve (ena faza bolj obremenjena kot ostali dve). Zaradi tega lahko imajo energetski kabli t.i. PEN vodnik le 1/3 preseka faznega ali pa so celo brez njega (visokonapetostni daljnovodi imajo le tri žice). Torej je nakup vodnika za električno napeljavo v stanovanjih, kateri bi naj imel debelejši nevtralni vodnik popoln nesmisel. ",
+    "user": "telexdell"
+  },
+  {
+    "message": "Ali mu lahko kdo pove, da \"navadna\"keramična varovalka ali pa avtom.varovalka sta v osnovi eno in isto.Za priklaplanje FID stikalo oziroma nadgradnjo instalacije pa PROSIM pokliči strokovnjaka, ker vidim da nimaš pojma o osnovah elektroinstalacij(rad bi ti naredil samo uslugo).Ker z nepravilno montažo lahko narediš več slabega kot dobrega.V kopalnici pa je to sploh lahko SMRTNO nevarno. Sem se moral oglasit,ker me je bilo že malo strah. ",
+    "user": "kremenko1"
+  },
+  {
+    "message": "Pri simetričnih ja,kaj pa plota recimo v kuhni...+ pečica ",
+    "user": "LordTado"
+  },
+  {
+    "message": "A.Smith, svoj moto moraš popravitiHvala.  Pri simetrični trifazni obremenitvi po nevtralnem vodniku ne teče noben tok. Pri dejanski pa razlika, zaradi nesimetrične obremenitve (ena faza bolj obremenjena kot ostali dve). Zaradi tega lahko imajo energetski kabli t.i. PEN vodnik le 1/3 preseka faznega ali pa so celo brez njega (visokonapetostni daljnovodi imajo le tri žice). Torej je nakup vodnika za električno napeljavo v stanovanjih, kateri bi naj imel debelejši nevtralni vodnik popoln nesmisel. Obstaja tudi primer, pri katerem je nevtralni vodnik bolj obremenjen. Recimo, da smo vse tri faze obremenili z enako močjo, a so bremena nelinearna (elektronika). Lastnost teh bremen je, da vlečejo veliko lihih harmonikov, med njimi harmonike, ki so večkratniki števila 3. Posebnost teh harmonikov je, da se v nevtralnem vodniku ne \"uničijo\", temveč seštejejo (ta del si je treba narisat) in dejansko preobremenijo vodnik.  Američani so že zdavnaj ugotovili, da imajo teh problemov največ v poslovnih stavbah, kjer je veliko računalnikov in ostale elektronike. Tudi razsvetljava že dolgo ni nedolžna. Če pa taki kabli imajo smisel tudi v stanovanjskih napeljavah, pa ne vem. ",
+    "user": "A. Smith"
+  },
+  {
+    "message": "Pri simetričnih ja,kaj pa plota recimo v kuhni...+ pečica Če imaš tri fazni kabel varovan v skladu s predpisi in standardi ti v nobeni kombinaciji obremenitve ne bo preobremenjen nevtralni vodnik. Problem se lahko pojavi pri domačih \"mojstrih\" kateri uporabijo npr. 4 ali 5 žilni kabel v enofaznem sistemu- v katerem sta 2 ali 3 vodniki fazna, eden nevtralen in eden zaščitni.   Živim v hiši z najmanj 30 let staro elektro instalacijo. Pa mi ni pregorela še nobena žica v nobenem kablu v steni. Poznaš ti koga, ki mu je? ",
+    "user": "telexdell"
+  }
+]

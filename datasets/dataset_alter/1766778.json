@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Pomoč pri nastavitvah oddaljenega dostopa",
+    "content": "Zopet se obračam na vas, ker mi tukaj moje znanje rahlo peša  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n in sicer rabim pomoč kako naj nastavim snemalnik  za video nadzor, da bom do posnetkov oz. live prenosa dostopal iz oddaljene lokacije. Torej da malo opišem kako in kaj. Snemalnik bi preko kabla povezal v ruter (Linksys wrt54gl) ki je vezan v bridge. Na ruterju je nameščen DD-WRT sistem. Wifi mam zaščiten samo z geslom se pravi se nan lahko poveže vsak, ki ima geslo. Meni snemalnika zgleda takole:\n\n \n\t\n\n\n\nPodmeni DDNS nastavitve pa zgleda takole:\n \n\t\n\n \n\nzdaj pa, ker nimam pojma kako naprej bi vas prosil kaj, kam in katere podatke moram vpisati v polja. Hvala za pomoč",
+    "author": "ivi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Pomoč pri nastavitvah oddaljenega dostopa",
+    "content": "Predpostavljam,da imaš router IP nastavljen na 192.168.1.1.\n\nKot IP v snemalnik napiši nekaj nezasedega, npr 192.168.1.233.\nGateway je routerjev IP, tj. 192.168.1.1. DNS je prav tako isti IP.\n\nNa routerju pa boš moral narediti forwarding na media port (9000) in http port (80) snemalnika. Lahko uporabiš iste cifre za porte ali druge. Daj za vsak slučaj TCP+UDP forwarding.\n\nČe hočeš imeti DynDNS, moraš to storitev vklopiti na routerju, ne na snemalniku. Router prej zazna, če se ti spremeni WAN IP...",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Pomoč pri nastavitvah oddaljenega dostopa",
+    "content": "Hm. IP mi snemalnik samodejno najde in mi ne omogoča sprememb recimo pod poljem IP naslov (slika1)in mi samodejno najde naslov : 192.168.069.131  (IP je izmišljen) Vse kar lahko nastavljam je v sivih okvirčkih (slika 1) se pravi lahko spreminjam polje TIP, Media port, Web port in DNS strežnik. Zdaj če jaz prav razumem moram v polje DNS strežnik napisat IP mojega ruterja se pravi 192.168.1.1. \nKako in kje na ruterju pa nastavim forwarding na media porte in TCP+UDP forwarding",
+    "author": "ivi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Pomoč pri nastavitvah oddaljenega dostopa",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik ivi pravi:\n Hm. IP mi snemalnik samodejno najde in mi ne omogoča sprememb recimo pod poljem IP naslov (slika1)in mi samodejno najde naslov : 192.168.069.131  (IP je izmišljen) Vse kar lahko nastavljam je v sivih okvirčkih (slika 1) se pravi lahko spreminjam polje TIP, Media port, Web port in DNS strežnik. Zdaj če jaz prav razumem moram v polje DNS strežnik napisat IP mojega ruterja se pravi 192.168.1.1. \nKako in kje na ruterju pa nastavim forwarding na media porte in TCP+UDP forwarding\n\t\t\n\t\tKlikni za razširitev\n\t\nSeveda! DHCP moraš izklopiti in nastaviti na statični IP. Pa IPjev si ni treba zmišljevati, itak gre za lokalne IP naslove, ki so vidni samo znotraj tvojega omrežja. To niso internetni IP naslovi.\n\nČe imaš DD-WRT glej http://www.dd-wrt.com/wiki/index.php/Port_Forwarding . Drugače pa pogooglaj za znamko tvojega routerja + \"port forwarding\".",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Pomoč pri nastavitvah oddaljenega dostopa",
+    "content": "a niso dyndns neki spreminjal pa moreš sedaj v free verziji 1x na mesec osvežit, ker drugač ne dela?",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  }
+]

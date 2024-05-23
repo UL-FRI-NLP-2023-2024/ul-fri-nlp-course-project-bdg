@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Na vikendu imamo T2. Do svoje sobe imam speljan utp kabel v mašino. Včasih preko VLCja kaj pogledam po teveju, ker nimam niti placa še za tv, je bolj priročno kar na računalniku gledat. Zadeva špila bp. No, včeraj pa staknem nov, nek router TENDA F300, pa sem rekel, pa dajmo met še wifi. Kabel iz pcja ki pride iz modema v wan port, drugi kabel iz TENDE v lan1 pa v pc. Skonfiguriram, nastavim wifi, dela vse, net in wifi. Glej ga zlomka, VLC ne odpre več nobenega programa. Če dam kabel iz modema direkt v pc, zadeva takoj zašpila. Kaj ta šrot ne podpira tega ali je fora kje drugje? Hvala za morebitno pomoč!",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Preveri da imaš multicast (IGMP) omogočen na routerju.",
+    "author": "roCkY",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Routerji blokirajo multicast, ker ta, če ga spustijo na interface od wlan kartice zabijejo povezavo s paketi in potem nič ne dela. Rešitev je IGMP snooping, če ga router podpira. Ena opcija je tudi, da narediš ločene VLANe in spustiš multicast samo na določene porte na routerju (tako ima narejeno T2 modem).",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Še lažja rešitev je uporaba T-2 tv2go.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Saj to imam (T2 tv2go) pa tudi D3GO. Fora je, da mi v vseh brskalnikih recimo YouTube v full HD dela bp, ta dva pa \"štekata\" in ne delata tekoče, kot recimo tv v VLCju. Win10, Edge, Chrome, Firefox, povsod enako...",
+    "author": "GSMobil",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Dvomim, da ta Tenda zna vlane in IGMP snooping delat.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Poskusi, če imaš timeshift, če le ta dela.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Maiden pravi:\n Poskusi, če imaš timeshift, če le ta dela.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKako pa to preveriš?",
+    "author": "kingo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Na STB-ju si samo pavzo stisno počakal par sekund in nato play, na VLCju pa ne bi vedel. Fora je v tem, da Timeshift dela na Unicast, spremljanje kanala v živo pa na Multicastu.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zakaj multicast preko ruterja crkne?",
+    "content": "Lahko tudi probaš tako, da priklopiš modem na LAN 1, PC pa na LAN2, WAN port ne uporabiš. V tem primeru izklopi DHCP strežnik na ruterju. Na ta način bo deloval ruter kot switch z AP točko. Edino ne vem če T-2 modemi dodelijo IP naslov računalniku, ali jih moraš ročno vpisati.\nS tem ko si ruter priklopi na WAN si dobil NAT (dva omrežja). Verjetno si prej imel direktno zunanji IP naslov na računalniku, zdaj pa imaš privatnega (192.168.1..).",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  }
+]

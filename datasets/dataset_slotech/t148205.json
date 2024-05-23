@@ -1,0 +1,94 @@
+[
+  {
+    "message": "Če bi mi kdo isto vprašanje postavil pred kakšnim letom bi rekel definitivno WD RAPTOR 10.000 obr/min, ker pa sedaj nisem toliko sledil teh zadev, povprašam vas, je disk še vedno najhitrejši? Glede prostorske kapacitete se mi ne gre, ker imam drugi računalnik z 2x160GB RAID0. Ta disk bi potreboval zgolj za operacijski sistem (win2k3 server), mssql server, ter razvoj aplikacij (asp.net). Nekoč sem ga že imel in sem bil zelo zadovoljen, kar me je motilo je bila glasnost - sicer so ostali govorili, da ni tako glasen, ampak meni se je zadeva zdela obupna? Če primerjate 36 in 72 GB, sta med seboj identična (tako po hitrosti, glasnosti), le kapacitete je pri slednjem 2x večja?  Že vnaprej hvala za odgovore!  LP Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": " Če primerjate 36 in 72 GB, sta med seboj identična (tako po hitrosti, glasnosti), le kapacitete je pri slednjem 2x večja?  74gb verzija je precej hitrejsa in boljsa. ma tut ze NCQ.  36gb je pa kot ena beta raptor verzija... ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Pa je imel kdo najprej 36 GB ter nato 74 GB, da lahko potrdi to razliko? Kaj pa naj bi NCQ predstavljal? Glasnosti enaka? ",
+    "user": "urosbe"
+  },
+  {
+    "message": "na netu je ogromno testov, ki potrjujejo to.  36gb verzija je tok hitra kot danasnji obicajni 7200rpm diski, edin dostopni cas ma malenkost boljsi. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Vsekakor Raptor 72GB, ali pa novi Maxtorji 300GB z NCQ v RAID 1  Pa seveda kakšna nForce4 Ultra/SLI plata s podporo NCQ. ",
+    "user": "Zheegec"
+  },
+  {
+    "message": "Kaj pa kakšni PCI SATA NCQ kontrolerji so v SLO že dobavljivi? (če so, kje in za koliko $$$?) ",
+    "user": "MadMax"
+  },
+  {
+    "message": "kaj dejansko pa je NCQ? Katere plošče to podpirajo (le Athlon like ali tudi Intel 915, 925..)? ",
+    "user": "urosbe"
+  },
+  {
+    "message": "intel za1x se nima podpore. majo jo samo NF4 ultra in sli.  ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Sem malo prebral teste, definitivno 74 GB RAPTOR, ima neke nove ležaje, tako da je tišji od 36 GB modela. Hitrejši je pa zaradi TQE (to mora bit nekaj podobnega not NCQ), pa zopet isto vprašanje - je ta TQE podprt na vseh osnovnih ploščah, torej je stvar software-a v raptorju ali moraš imeti tako ploščo, ki to podpira (intelov chipset?) ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Kje si našel ta TQE? Google ne najde nič pametnega. Če je res to samo WDjeva oznaka za NCQ, potem to podpirajo samo nForce4 SLI/Ultra in i925 plate kot native, drugače pa rabiš dodaten kontroler s podporo NCQ. ",
+    "user": "Zheegec"
+  },
+  {
+    "message": "Sory, moja napaka.. TCQ je ta stvar, ki jo ima Raptor 74GB. Torej moje vprašanje je, je TCQ podprt z osnovnimi ploščami novejših Inte chipsetov (915, 925) ali je to kakšna stvar diska samega?  LP Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Hm, sedaj sem pa rahlo zbegan. Pravite, da Intelov chipset ne podpira NCQ oz. TCQ? Na naslednji strani je bil test parih kontrolerjev:  http://www.gamepc.com/labs/print_content.asp?id=eoyraid  in če pogledaš prvo tabelo, ki se nahaja takoj pod slikami (nekje na sredini strani), piše pri INTEL ICH6R (925XE chipset), Native Command Queuing Support = Yes, verjetno torej tudi TCQ?  Pozna kdo te zadeve še bolj podrobno? Torej kaj dejansko je sedaj podprto in kaj ne?  LP Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Torej, še linki, ki potrjujejo da ICH6 podpira NCQ, TCQ:  http://www.quepublishing.com/articles/a...  http://www.hardtecs4u.com/reviews/2004/...  http://www.xbitlabs.com/articles/cpu/di...  http://www20.tomshardware.com/storage/2...  LP uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Jaz mam 2x 36 Raptoja v raid0 in ti povem da nisem mel še hitrejše zadeve, pa sem jih kar nekaj probal. Za denar 1x 74 dobiš 2x 36 in če jih daš v raid sta zihr hitrejša. Če maš pa denar pol se pa itak ve 2x74 raid 0 ",
+    "user": "Romčy"
+  },
+  {
+    "message": "Sem ti že jaz napisal, da NCQ podpirajo nForce4 Ultra/SLI in i925 čipseti (glej zgoraj moj post). Vsekakor se bolje splača nForce4 kombinacijo, sploh ker i925 nima podpore za DDR1, samo za DDR2. ",
+    "user": "Zheegec"
+  },
+  {
+    "message": "Sory, sem spregledal, da si omenil tudi i925. Glede DDR2 ni panike, ker že imam omenjen chipset in plato, prav tako ram (saj je tudi cena DDR2 padla že na dokaj sprejemljivo raven). Čeprav se mi zdi čudno, saj kakor sem prebral ICH6 prebiva tudi na 915 chipsetu, ta ima pa tudi DDR1.  LP Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Romčy; daj daunloudaj si tole  Sandro in napravi benć in povej drive indeks (za ta tvoj Raid Raptorjev /raspakiraj in uvozi reg ključ in startaj jo ( 459kB ,ni instala! - oskubljena!)/ ...  ",
+    "user": "Spajky"
+  },
+  {
+    "message": "No jaz sem medtem že nabavil Raptorja 74 GB in je zadeva res hitra... že pri odpiranju programov in klikanju je opazno hitrejši (tako reagira). Drive indeks mi je pokazal 42914.  LP Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Ja urosbe, popolnoma normalno ( 42k točk +/- max.1000) za ta disk; je npr. 2,2x hiter kot moj stari QuantumF+AS 20G (19,5k točk); WD800JB ma npr.23k-točk, WD800JD pa 28k-točk za primerjavo.  ",
+    "user": "Spajky"
+  },
+  {
+    "message": "Tudi jest razmisljam, da bi si nabavil raptorja 74gb. Predvsem me tukaj zanima, kako je glasen, proti drugim \"navadnim\" diskom. Gor bi laufal sam OS...zraven pa se 2x200gb za storage. Plata bo verjetno Gigabyte GA-8KNXP ",
+    "user": "tec"
+  },
+  {
+    "message": "Samo OS na 74gb disku (in verjetno se kaksen office)? ni to nekam potrata prostora? kaj pa samo 2x200 RAID? ",
+    "user": "Loki"
+  },
+  {
+    "message": "Raid ne pride v postev. Placa je ravno prav za temp fajle, ki so veliki po par giga...tko da mi 70gb cist ustreza. Edin cena je mal zasoljena. ",
+    "user": "tec"
+  },
+  {
+    "message": "Sam imam raptorja(74)) naštimanega na dve particije, prva OS, druga vse programovje pa za delati z DVDji, ostalo navlako imam na dveh drugih 160 diskih. Stvar je zelo glasna naspram ostalim diskom, je pa res da tudi zelo hitra, tako da ko se navadiš je čisto ok. ",
+    "user": "mat11"
+  }
+]

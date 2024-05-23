@@ -1,0 +1,66 @@
+[
+  {
+    "message": "Zanima me kakšen ukaz moram uporabit za zapret word. V bistvu jaz sm naredu program kateri pri zagonu Worda preverja prisotnost določenih fajlov. Če teli fajli niso prisotni jih ta program iz določene mape kopira in vtavi tam kjer je treba. Problem je sledeči: Program ne mora kopirat failov ker je Word zagnan in uporablja te file. Kaj ve kdo ukaz za zapirat programe. Vse skupaj sm programiral v Visual Basicu 6.  ",
+    "user": "Gunny"
+  },
+  {
+    "message": "Hmmmm....  Ni mi jasno, kaj hočeš... ali ti iz svojega programa poženeš Word, ali imaš v svoj Obrazec vstavljen ActiveX Word, ali imaš v Wordu makro?  Če imaš svoj lastni program, potem pač PRED zaganjanjem Worda pač preveriš, ali obstajajo ti določene datoteke, ki jih omenjaš, podobno tudi, če uporabljaš ActiveX, iz VBA bi pa moral poseči po Win32 API...  Skratka, malo bolj natančen opis težave bi prišel prav...  ",
+    "user": "webblod"
+  },
+  {
+    "message": "tako je, ta program se zažene ko Zaženem word. program preveri s funkcijo FileSearch, če obstaja določen file v računalniku(v tem primeru je nek file ki ga vstvari Word ob zagonu preko makra autoexec). Ta AutoExec je shrajnen v normal.dot ki ima še določene nastavitve Worda. to sm naredil zato da lahko program preveri če obstaja Macro AutoExec v Normal.dot, ker je veliko pametnih ki obriše Normal dot da bi stem odstranli čudne nastavitve Worda. Če ta makro ne obstaja ne vstvari tega fila ter program ga ne najde in zato mora kopirat Normal dot iz določene mape in ga prilepit tam kjer je traba, sam ker je word zagnam ne mora premestit tega fila ker je v uporabi. Zato rabim funkcijo za zapret Program(Word).  Program.exe je skoraj v delujočem stanju rabim sam funkcijo za zapret s tega programa Word.   Ne me spraševat zakaj to delam sam Šef hoče da je tako   Zakompliciral sm ga maksimalno, sam ne vem kako bi ti lahko bolj enostavno opisal problem.  LP ",
+    "user": "Gunny"
+  },
+  {
+    "message": "hja... če zadevo poženeš s ShellExecute, potem teče v svoji lastni niti, torej lahko mirne duše uporabiš SendMessage funkcijo in ji kot parameter podaš WM_CLOSE... Ročico Worda pa dobiš s funkcijo FindWindow... ",
+    "user": "webblod"
+  },
+  {
+    "message": "ShellExecute bom uporabu kasneje za ponovni zagon Worda. Word je zagnan iz svojega Word.exe fila Sm razmišljal da bi lahko uporabil Funkcijo TaskManager  misliš da bi šlo? Kaj bi mi znal napisat cel skript za zapret Word?  Thanx. ",
+    "user": "Gunny"
+  },
+  {
+    "message": "Kolikor jaz razumem, imamo dva (out of process) serverja, torej dva neodvisna programa. Eden je Word in dugi TvijProgram.exe...  Alora, v Wordu s pomočjo makro-ja najbrž pokličeš tisti svoj program in ta potem preverja potrebno... Glede na to tače v lastni niti, lahko počne kar se mu zljubi, med drugim tudi ubija druge procese... Vse kar moraš storiti je uporabiti funkcijo SendMessage in Wordovemu oknu poslati WM_CLOSE iz tega tvojega lastnega programa, nato prekopirati kar pač že prekopiraš in ponovno pognati Word s funkcijo ShellExecute...   Ni potrebno nič komplicirat... ",
+    "user": "webblod"
+  },
+  {
+    "message": "kaj mi lahko napišeš en primer kako uporabljati SendMessage in WM_Close? Nimam help-a pa mi je full bedno  Tnx  ",
+    "user": "Gunny"
+  },
+  {
+    "message": "Uporabi MSDN !! ",
+    "user": "StratOS"
+  },
+  {
+    "message": "Sm že našu  Zadeva dela.  Tnx  ",
+    "user": "Gunny"
+  },
+  {
+    "message": "Ti se pa nekam zelo mučiš okoli tega AutoExec oz. dela start rutine na normal.dot ali kakšnemo koli word fileu !!!, jaz bi ti priporočil, da na mesto tistega tvojega programčka raje enablaš macro protection v Wordu, kajti iskati rutino Autoexec v normal.dot ni tko easy kot si ti misliš, pa še manj zaščiten boš. Raje si nabavi kak AV program. ",
+    "user": "StratOS"
+  },
+  {
+    "message": "StarOS: Kaj pa je AV program?  Kar se tiče programiranja, sm začetnik, se pravi da rabim izkušnje in dvomim da bi se kahj naučil če bi sam programčke od drugih uporabljal. Programiranje me veseli, res je da so muke sam se da vse rešit. Program pa se ne nardi v enem dnevu, vem da je zaje**no in rbi mal več časa tudi za buge popravit.  ",
+    "user": "Gunny"
+  },
+  {
+    "message": "AV je antivirusni program. Za kaj pa natančno potrebuješ program pa lahko napišeš, lahko mi pa napišeš tudi na mail tukaj. Pa točno specificiri problem ! ",
+    "user": "StratOS"
+  },
+  {
+    "message": "kaj ve kdo kako se pa killa programe, ki se ne odzivajo več iz vbja? ",
+    "user": "jure1873"
+  },
+  {
+    "message": "tudi ti nič ne specificiraš ...  ",
+    "user": "StratOS"
+  },
+  {
+    "message": "evo tule imas eno funkcijo, ki jo jaz uporabljam    function PozeniInCakaj(FileName:String; Visibility, KillInterval : Integer):integer; var zAppName:array[0..512] of char; zCurDir:array[0..255] of char; WorkDir:String; StartupInfo:TStartupInfo; ProcessInfo:TProcessInformation; begin StrPCopy(zAppName,FileName); GetDir(0,WorkDir); StrPCopy(zCurDir,WorkDir); FillChar(StartupInfo,Sizeof(StartupInfo),#0); StartupInfo.cb := Sizeof(StartupInfo);  StartupInfo.dwFlags := STARTF_USESHOWWINDOW; StartupInfo.wShowWindow := Visibility; if not CreateProcess(nil, zAppName, { pointer to command line string } nil, { pointer to process security attributes } nil, { pointer to thread security attributes } false, { handle inheritance flag } CREATE_NEW_CONSOLE or { creation flags } NORMAL_PRIORITY_CLASS, nil, { pointer to new environment block } nil, { pointer to current directory name } StartupInfo, { pointer to STARTUPINFO } ProcessInfo) then Result := -1 { pointer to PROCESS_INF } else begin if WaitforSingleObject(ProcessInfo.hProcess,KillInterval*60000) = WAIT_TIMEOUT then begin Sleep(100); TerminateProcess(ProcessInfo.hProcess,Result); Result := -99; end; end;  end;    zadevi poves kateri program naj ti pozene in po kolikem casu naj ti ga ubije, ce se ne zapre sam.  Drugace je pa poanta v tem, da imas pac handle tistega programa in potem pac posljes z TerminateProcess(handle, pa kam nej vrne result)...  this should be enough ^_^ ",
+    "user": "Gandalfar"
+  },
+  {
+    "message": "nekateri pač ne znajo delphija oz. vsaj 2 programska jezika tako kot jaz npr, čeprav je specificiral za Vse skupaj sm programiral v Visual Basicu 6. ",
+    "user": "StratOS"
+  }
+]

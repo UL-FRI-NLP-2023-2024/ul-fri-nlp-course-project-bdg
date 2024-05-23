@@ -1,0 +1,62 @@
+[
+  {
+    "message": "Znotraj računalniškega ohišja bi blizu matične plošče postavil Arduino UNO in z njim krmilil druge naprave s PWM, žice (kar z UTP kabla) bi bile dolge med 10 in 20 cm.  Ali imam lahko težave zaradi \"sevanja\" matične plošče?  Sprobam težko, ker moram precej zvezati in bi lahko naredil tudi v svojem ohišju, vendar če dam vse skupaj bo lepo kompaktno.  Mogoče neumno vprašanje, pa vseeno raje vprašam. ",
+    "user": "-=Tomaz=-"
+  },
+  {
+    "message": "Očitno jih že imaš, da pišeš take bedarije.... ",
+    "user": "Invictus"
+  },
+  {
+    "message": " -=Tomaz=- je 18. mar 2019 ob 20:33 izjavil:Ali imam lahko težave zaradi \"sevanja\" matične plošče? Ne.  -=Tomaz=- je 18. mar 2019 ob 20:33 izjavil:Mogoče neumno vprašanje, pa vseeno raje vprašam. Nobeno vprašanje ni neumno, ne skrbi. ",
+    "user": "jype"
+  },
+  {
+    "message": "Definitivno lahko prihaja do minimalnih motenj, je pa zelo odvisno, kako občutljive stvari delaš. Večina DIY senzorjev s kitajske s tem ne bo mela problemov. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "https://www.youtube.com/user/GamersNexus  je ravno zadnjič imel en video kako proizvajalci plate testirajo za radiacijo, hrup... preden grejo v pregled za certifikat. ",
+    "user": "puRetuer"
+  },
+  {
+    "message": "Priklopljene bom imel AM882 driverje. Vsak pulz bo seveda pomemben. Na mizi deluje odlično, me je pa zaskrbelo, da bi zaradi vgradnje v računalniško ohišje prišlo do kakih motenj. ",
+    "user": "-=Tomaz=-"
+  },
+  {
+    "message": "Če boš zadevo pravilno dizajniral, uporabil bypass kondenzatorje, težav ne bi smelo biti. Glede na to, da plošča sama po sebi ni oddajnik (razen če ima kakšen wifi / BT modul), je sevanje minimalno oz zanemarljivo (skladnost z EMC direktivo). Prej ti zna težave povzročati kakšen poceni kitajski Arduino. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "ne pa tudi če ne boš pravilno dizajniral dvomim da boš imel težave ",
+    "user": "gendale2018"
+  },
+  {
+    "message": " -=Tomaz=- je 18. mar 2019 ob 20:33 izjavil:Znotraj računalniškega ohišja bi blizu matične plošče postavil Arduino UNO in z njim krmilil druge naprave s PWM, žice (kar z UTP kabla) bi bile dolge med 10 in 20 cm.  Ali imam lahko težave zaradi \"sevanja\" matične plošče?  Sprobam težko, ker moram precej zvezati in bi lahko naredil tudi v svojem ohišju, vendar če dam vse skupaj bo lepo kompaktno.  Mogoče neumno vprašanje, pa vseeno raje vprašam.   B.P. lahko das v PC. Kako bos krmilil PWM? Kaj tocno? Sli bos s PWM rezal sinusuido, za dimmanje ali kaj podobnega? ",
+    "user": "TheBlueOne"
+  },
+  {
+    "message": " -=Tomaz=- je 20. mar 2019 ob 21:09 izjavil:Priklopljene bom imel AM882 driverje. Vsak pulz bo seveda pomemben. Na mizi deluje odlično, me je pa zaskrbelo, da bi zaradi vgradnje v računalniško ohišje prišlo do kakih motenj.  \"PWM\" in \"vsak pulz bo pomemben\" ne gre ravno skupaj. Driverji, katere omenjas, so za koracne motorje.  Pri tebi bodo dalec vecji izvor motenj driverji sami (ko bodo enkrat prikljuceni motorcki). Tisti kabelcki do vhoda driverja so v celotni sliki nepomembni. ",
+    "user": "Ahim"
+  },
+  {
+    "message": "Vse skupaj zapri v kovinsko ohišje, pa driverje hladi, ker se grejejo ko vrag, sploh pri večji obremenitvi. Drugače pa ne bi smelo biti problem. Na veliko ohišjih je pwm kontroler za ventilatorje pa deluje bp. ",
+    "user": "mzakelj"
+  },
+  {
+    "message": "Oh ne vem kaj mi je. Že zgoraj sem napisal Android uno, potem pa še PWM. Android sem takoj popravil. Zelo lepo povedano, PWM in vsak pomemben pulz ne gre skupaj :).  Ja, s pulzi krmilim driverje za koračne motorje. Sem že začel sestavljati, pa bom videl kako bo. Ko sem na mizi vse testno sestavil, deluje odlično, daleč nad pričakovanji. Priklopljen imam 3 osni CNC. ",
+    "user": "-=Tomaz=-"
+  },
+  {
+    "message": "Na teh driverjih ne boš mel nobenih problemov.. Stepper driverji ne delajo na pwm?? signala sta dir in step, to ni PWM signal. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": " DeeCoy je 21. mar 2019 ob 22:23 izjavil:Na teh driverjih ne boš mel nobenih problemov.. Stepper driverji ne delajo na pwm?? signala sta dir in step, to ni PWM signal.  Ja, a je lahko (no, ne samo da je lahko, ampak je zelo koristno) napajanje navitja koracnega motorja izvedeno s PWM, ker so driverji ponavadi univerzalni in ne narejeni samo za en tip motorja z nekim cisto dolocenim navitjem. Tako zagotovis, da se driver ali motor ne pregreje.  Se pravi ne drzi navitja stalno pod polnim tokom, ampak to (s pomocjo induktivnosti navitja) s PWM lahko nastavi poljubno. ",
+    "user": "Ahim"
+  },
+  {
+    "message": "Lahko je, ampak arduino in podobni ne premorejo 12V PWM pina, ki je recimo klasika na nema17 motorjih.. In če je priklopljen na 12V se garantirano ne pregreva, razen, če je v kakšnem zelo vročem prostoru (tega še nisem poskusil). Bolj je problem pregrevanje cheap kitajskega driverja, kot pa stepper motorja. ",
+    "user": "DeeCoy"
+  }
+]

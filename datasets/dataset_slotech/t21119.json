@@ -1,0 +1,190 @@
+[
+  {
+    "message": "Ravno pred kratkim sem končal registracijski del strani, ga dopolnil, dodal razne cukerčke, itd.. odločil sem se, da namesto cookiejev uporabim session-e pri logiranju. Vse lepo in prav. Toda mene zanimata trenutno dve stvarčici (raje vprašam kot pa, da se sam spravim gruntat, kar mi lahko vzame uro, dve ali cel dan) 1. stvar: Tako kot tule na slo-techu .. me zanima kako so nardil, da prikaže novice enega dneva skupaj? In da še zgoraj napiše dan vseh teh novic.  2. stvar: Kako npr. narediti, da bi če bi človek moral vpisat datum svojega rojstva in, ker mysql hoče zapisovat samo po obliki 0000-00-00, sem nardil, da naj človek piše oblike llll-dd-mm (to sem napisal v form value). Sedaj pa me zanima ene par vrstic kode, da bi mi človeka obvestil, da je narobe vnesu datum. Za opozirilo sem si že nardil error funkcijo s malo JavaSkripta. Torej bi tule nekaj manjka: if($datumRojstva !=\"tuki bi naj nekaj pisal\")  { error(\"Niste pravilno vnesli datuma vašega rojstva\") }  So... what? ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "1. čist simple... nekam shraniš naslednjo vrednost: \"LETO-MESEC-DAN\", in primerjaš pri vsaki novici.. če je enako, pol je novica napisana še v istem dnevu, drugač pa outputaš ustrezn text....   ni mi jasno zakaj ti taki simple logicni problemčki delajo take težave...  2. če ti je všeč da uporabniku težiš z enim \"nerodnim\" vnašanjem datuma, ti kar, ne vem pa zakaj ne narediš treh polj, torej za dan, mesec ter leto in nato podatke lepo sestaviš v ustrezen value za shrant v bazo ?!  anyway... kako preverit če je datum napačen ? za JScript nimam pojma kako se to nardi, ampak v PHPju imaš funkcijo checkdate(), ki preveri, če je datum veljaven...  ",
+    "user": "darh"
+  },
+  {
+    "message": "Glede 2. točke. Ja mislu sem prvo tako naredit. 3 okence. Toda... maš tri inpute za vsakega drugo ime (name). Toda.. v bazo shraniš samo eden datum z enim imenom. Potemtakem moraš te tri združi v enega. npr. v bazo insertaš datumRojstva=\"$datumRojstva\" imaš pa letoRojstva , danRojstva, mesecRojstva ..in nato sem mislu združit takole: $datumRojstva=\"$letoRojstva-$danRojstva-$mesecRojstva\"; ... \"-\" je pomišlaj med ničlami (0000-00-00). Sem kaj narobe spacal? Ker včasih me ravno takšni mali problemčki nesejo...   Glede 1. točke pa mi ni čisto krasno jasno. Torej, ko pošlješ novico, da primerja datume o.k samo kako naprej?...hmm.. sorry mi ni najbolj jasno.  Heh... don't hurt me! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Ja, $datumRojstva=\"$letoRojstva-$danRojstva-$mesecRojstva\"; je ok.  btw, xbite: meni echo 'en text $spremenljivka text'; ne dela in more bit: echo 'en text '.$spremenljivka.' text'; wtf? ",
+    "user": "rc-car"
+  },
+  {
+    "message": "rc-car... Mar bi jaz moral napisat takole?! $datumRojstva=\"$letoRojstva.-.$danRojstva.-.$mesecRojstva\" ...tako? Ker ono zgori mi neče delat. V bazo mi zapiše takole.. npr.: 1984-- ali 1984-.-. ali kaj podobnega noče pa 1984-13-07 kot bi moral! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Si preprican, da ni kaka spremenljivka slucajno prazna? drugace pa: $datumRojstva = '$letoRojstva.'-'.$danRojstva.'-'.$mesecRojstva';   Meni drugace tut drugac ne dela :/  ' ' - to ti oznacuje zacetek/konec texta .. - to pa loci med seboj spremenljivke oz. tak text ",
+    "user": "rc-car"
+  },
+  {
+    "message": "razlika med dvojnim(\") in enojnim (') narekovajem ne naslednja: enojni narekovaj igonorira vsakršne spremenjivke (oz: '$nekej' izpiše $nekej ) enojni narekovaj posebne znake (i.e.: \\n, \\t, \\r...) dvojni narekovaj prebavi spremenjivke (oz: \"$nekej\" izpiše vrednost spre. $nekej)...  sem mal po manualu pobrskal, ampak zacuda nism nc nasel (?!?!)...  ",
+    "user": "darh"
+  },
+  {
+    "message": "Aha, jest uporabljam enojne, zato ker pri html kodi ponavadi uporabljas dvojne in potem ni komplikacij... ",
+    "user": "rc-car"
+  },
+  {
+    "message": "O.k.  Zdaj pa mene zanima naslednje.  Kako bi jaz lahko nardil profil nekoga? Hočerm reči... takole: Nekdo pošlje novico in je na dnu novice njegovo ime. Obiskovalec klikne na njegovo ime (ki je pravzaprav link) in bi se mu izpisal profil tega, ki je poslal novico. Kako to torej? Saj na tej strani je enako narejeno... npr. kliknem na tvojem ime xbite in se izpiše tvoj profil.. datum rojstva, dan včlanitve, ime, priimek, itd... Torej kako?  p.s. Z vajino pomočjo in eno goro tutotrialov prav dobro napredujem! Hvala! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "ejga.. sine ... dj si poglej kako to delajo drugi... podownlowdej si phpNuke, pa mal source poglej... ne morš pričakovat da ti bo vse padlo v naročje.. a boš v copyright napisu: made by me + 10% of slo-tech users :) ",
+    "user": "darh"
+  },
+  {
+    "message": "ah, ja... Poglej: ce imas v tabelo 'users' in v tej tabeli podatke o uporabnikih, pol samo zraven imena naredis link na recimo podatki_o_uporabniku.php zraven das pa se ?id=123  Id preberes iz tabela, skupaj z imenom uporabnika.  Potem, pa v podatki_o_uporabniku.php lepo naredis SELECT from users WHERE id='$id' in potem vse to lepo ipises na strani... Upam, da bos od tu naprej znal naprej sam, ker drugace bogi S-T users dokler ti ne koncas tega portala... ",
+    "user": "rc-car"
+  },
+  {
+    "message": "A tako... vse jasn.  Ja sj vem, da prevč težim. Klinc pa če sta tako ustrežljivi pač to izkoristim. Sam... povejte, da vam kar godi, da lahko malo pokažete svoje znanje... a ne? Hehe..  No.. upam, da ne bo več kakšnih težjih težavic. Sicer .. pa pričakujte vseeno kakšno vprašanje, če mi bo res zagustlo (npr. če na celem božjem netu ne najdem rešitve.. se bom vsekakor obrnu sem... sicer pa o čem pa bi se potem sploh menl. Men je včasih prav dogcajt lte gor, če nima nobedn kake pametne...).  O.k. Hvala vama! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Ne, sej je ql! Sam drugic mal premisli situacijo, probaj sam najti resitev, kot pa da ti moramo vse mi povedati... Ce ne drugega, bos ti bolj ponosen na svoj izdelek  ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Ej... sam zdej mam pa res eno težavo, bolj vprašanje. Glejte jaz sem naredil tako kot tukaj gor na Slo-techu, da se lahko uporabnik odloči če želi, da se določen podatek objavi v njegovem profilu. Prvo sem naredil, da sem nardil dve tabeli. V eno so se zapisal ti važni podatki (id, username, password, email, datum prijave) v drugo pa ti manj važni (kdaj si se rodil, spol, poklic, podpis in še enkrat username in id). Toda potem je men šinal, da je to možno narest kar z eno tabelo, kar izgleda bolj varneje, ker je možno, da se zgodi, da ne bi blo možn ofnat druge tabele in tako bi se lahko nato v profilu podatki zamešal. ... (ime, username od enga ki ima npr id=3, spol, rojstvo pa od drugega zarad različnega idja..). A ta stvar NE dela! Zakaj??? Ne želi vpisat ostalih podatkov. Vse je pa prav nastavljen. Zgodi se namreč tako, da včasih zapiše pod en id samo manj pomembne... pomembna polja pa pusti prazna... drugič pa samo pomembna, manj pomembna pa ne. Hmmm??? Sem se globoko zamislil... Prej, ko pa sem imel dve tabeli pa je delal brez problema.  ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Ehh... jaz lamer! Saj baza ne vem, pod katero polje naj to vpiše... zato nardi al nov id al pa nič...  JAO!! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "uh... jast mam pa eno idejo zate cahahopie.. dj ti sam piš v tole temo, mi te bomo pustl na mir.. mogoče boš kaj dobrega pogruntov v svojih samogovorih :) ",
+    "user": "darh"
+  },
+  {
+    "message": "xbite: lol   cahahopie: a pol zdej si pogruntal al nisi? ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Hmm catahopie.... 1. glede rojstnega dneva: zakaj ne naredis takole:  Dan 1 2 ...    mesec januar ...    Leto 1983 1984 ... Nakaj vse to samo zapises v bazo. Res je, da je malo vec dela, ampak jebiga...  2. kaj hoces, da se pokaze v profilu? pac naredis se nekaj columnov v tabeli in jih poimenujes npr. show_user_email, nastavis vnos kot stevilko (number) ter das 1/ 0 - pac glede na to, kakor se je user odlocil. za spreminjanje pa sam das hyperlink (kot tukaj na s-t) ter ga povezes s queryem v bazo ter enim if stavkom in to je to. ",
+    "user": "Loki"
+  },
+  {
+    "message": "Ja... sj sem vse zrihtu! Hvala za pomoč! Sem zrihtu tist s profilom. Glede tiste tvoje liste dnevov, mescev, let sem tud že naredo preden sem sploh vprašu le... da mi nikakor ni uspel združit vse to v eno spremenljivko.. lahko, da sem se kje uštel... a zdaj se ukvarjam s pamatnejšim delom. ...to pa je... način izpisa novic na stran. Svetujte mi tole: 1) Naj se novice prikažejo na strani glede na datum (npr. novice zadnjih 3-5 dni).  2) Naj se novice prikažejo glede na število teh na stran., kar mi bolj diši... bolj mi je všeč slo-comp prikaz novic (no... pa tud Primož bi že bil proti... saj vse nekam postaja slo-tech oblike... khm.. seveda še vse krhke skeletne oblike, brez mišic, kože in make-upa).  Sicer pa izdelava takšne strani niti ni tak trd oreh. (seveda je potrebno veliko razmišljanja in logike, ki jo pa men primanjkuje). ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "dej to user-onfigurable, kot default pa postavi dnevno postavko - recimo novice za 3 dni nazaj. ",
+    "user": "Loki"
+  },
+  {
+    "message": "Cist odvisno. Ce bo novic na strani veliko, tko kot na S-T, pol naj se prikazujejo za recimo tri dni nazaj. Ce pa bojo nove novice samo tri na teden, potem je pa bolje, da je recimo omejeno na 10 novic... ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Khm.. kakor je Roberto rekel, da bi naj imeli uporabniki možnost vseh teh različnih nastavitev pa je žal zame ... khm.. oz. lahko rečem, da se je Primož res potrudil pri izdelavi tega foruma in bi moral dobiti nekakšno priznanje!  Toda.. jaz ciljam na nekaj zmernega (še nedavno sem mislil ubrati kar Erorjevo strategijo... edino kar so sami spisal je blo možnost oddajanja novic, forum pa je tako in tako phpBB, jaz ciljam na nekaj višjega... želim še vsaj eden površen forum in predvsem galerijo za moje photoshop umetnine, pa seveda novice da bo stran sploh kaj zanimiva. Za pisanje člankov na tej strani pa se sigurno uporablja navaden html, ker jaz nebi toliko napisanega zaupal bazi (čeprav sem že slišal za delanje rednih kopij vsebine). ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Ja, tut moznost, da uporabnik sam zbere je ql!  Jest bi pa en dolg napisan text bolj zaupal v hrambo bazi kot pa, da je navaden html.. ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Seveda je bolj praktično, čeprav je to relativno. Če maš shranjeno v bazi lahko nanjo povežeš kakšno wap stran. Toda.. kdo pa pravi, da ne obstaja ctrl+c in ctrl+v .. čeprav je to bolj žličkarski postopek (prevod: neprofesionalni način dela). ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "???  To si pa res jasno povedal. ",
+    "user": "Loki"
+  },
+  {
+    "message": "Mah, bolje je baza! Lohk tut kako premetavas vnose, ni ti treba za vsako stran narest novga fileta, ampak samo klices recimo ?clanek=krneki ",
+    "user": "rc-car"
+  },
+  {
+    "message": "kok je fino odkrivat toplo vodo :)  mal si preberte phpbuilder.com, mogoc se boste se kej naucil :) ",
+    "user": "darh"
+  },
+  {
+    "message": "Sam eno sorodno vprasanje: kako definirati tabele v bazi, da bi lahko clanek klical takole: clanek.php?id=1&page=2?  pa tako, da bi uporabil cim manj tabel (po moznosti eno) in da ne bi bil omejen z st. strani.  TIA ",
+    "user": "Loki"
+  },
+  {
+    "message": "Ja ne vem kako to mislis kako bi tabelo definiru? Lepo z $HTTP_GET_VARS['id']; in $HTTP_GET_VARS['page'; preberes 1 in 2, pol pa samo daš tak SELECT stavek z temi stevilkami..  al kaj? ",
+    "user": "rc-car"
+  },
+  {
+    "message": "pardon... zanima me, kako bi v tabeli nastavil polja - ker ce bi dal id kot auto-increment, nebi potem mogel brat st. pagea razen ce bi naredil n columnov, vsakega za svojo stran, kar bi pa pomenillo zapravljanje prostora in tudi vsaj teoreticno omejitev pri st. strani, da o tezji administraciji baze sploh ne govorimo... ",
+    "user": "Loki"
+  },
+  {
+    "message": "Ne vem, ce te cist razumem, sam: Lahko nardis 2 tabeli: v 1. mas id auto increment in v vsakem vnosu eno stran v 2 tabeli mas pa clanke in zapisano zgornjo in spodnjo mejo strani za tisti clanek..  Tezke je tko svetovat.. Dejte se mal skupi vzet in si vzet opl ure cajta in vse skupi premislt, ker ne bomo to mi delal namest vas  ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Ma... nič več jasno ni meni zdaj.  Glej sem hotel, da bi čovek klikno na ime člana in bi se ofno profil. To sem nardil tako, da, ko je član napisu in odposlal novico, je iz fajla, ki kontrolira če je član prijavlen (v njem je session) in je nad htmljem in glavo dokumenta, vzel spremenjlivko $uid (username). In ko sem hotel selektat id iz baze za tega člana takole: $sql2 = \"select id from user where userid='$uid' \"; $rezultat = mysql_query($sql); in nato, ker mi je outputal \"Resource id #3\" nardil tole: $id = str_replace(\"Resource id #\", \"\", $rezultat);  in na koncu še vse oblikoval v link: $userProfil = \"[a href=profil.php?id=$id]$uid[/a]  (...[ in ] sem zamenju za < in >...) in zapisal v bazo: $sql = \"INSERT INTO novice SET userid ='$uid', userProfil ='$userProfil', itd..\"; In kot ste že opazl moj postopek je narobešn, ker ta \"Resource id #3\" ne pomeni id ampak neki drugega. Ker je id v user tabeli enak 1, tukaj pa potem 3. Khm..   God damat! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Dajte no.... pomoč prosim. Mene pa full neki zanima, ker mi stvarca noče in noče laufat. Povejte mi prosim kako naj nardim, da se mi npr. 10 novic na stran naj prikažejo?? To bo sigurno nekakšna zanka, toda... kako jo naj nastavim? Vse sem že nardil. Lepo mi selecta iz baze in zapiše vsako novico v tabelco, toda .. kaj naj se mi vse novice pokažejo na strani?! Potem se mi bo stran odpirala dve uri? ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "cccc Tko, da mas deset novic na strani samo nardis, da dodas selest stavku na koncu ORDER BY id DESC LIMIT 10  Glede unga klobasanja prej, pa niti ne vem kako kislis in kaj ti ne dela... Daj mal se potrudi, ziher bos sam pogruntal! ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Saj tudi sem. Glede tistih 10/ stran pa sem tud pogruntal, a sem ubral svojo pot, nardim sem zanko s for stavkom for($id=1, $id < 11, $id++) { $sql=\"Select ...... id=$id\"; .... }  Veš takole bi te prosil... Moraš me razumeti, sem preveč paničen in slej kot prej najdem rešitev, tako, če bom kaj lamerskega vprašu mi prosim ne odgovarjat edino, če bom 3x nabil zahteve po odgovoru.... Trenutno moram samo še pogruntat kako nardit, da selecta tazdanje idje it tabele in novice zapiše v kontra redu (nove novice imajo najvišji oz. zadnji id)... hmm.. pomoje bo to mogoče s reverse funkcijo. In... cahahopie razmišlja in razmišlja....  ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Hmm ne vem zakaj to pišem, morebiti, da ne izpadem še večji bedak od bedaka?! tale tvoj ORDER BY id DESC LIMIT 10 mi pomaga še tudi pri tem, da novice, ki so tazadnje napiše na vrhu... jao in jaz sem mislu nekaj z arry_reverse in for zankami delat... what a waste of time!  1000x Hvala rc-car! (hja... pri tem bo tudi samo ostalo? Hmm.. boš golaž? Moj ata zna zlo dobrga nardit!)... ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Pa kaj je tebi? ti bi bral iz baze 10x z if stavkom? lol Sej sem ti napisu kako je! Ce pa hoces pravilni vrstni red pa das namest DESC, ASC -> descending, ascending...  Aja, pa da dobis tazadnji ID, pac napises ORDER BY id DESC LIMIT 1. Kje je pa tuki problem?  ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Ma kak if stavek... for stavek!  Če napišes for($i=0, $i <11, $i++) Ti res 10x izbere iz baze... a zakaj bi to bil problem? Saj ne napišem 10x $sql = \"select from bla bla...\"; Kaj veliko več se ne zamudiš, hitrost pa tudi ni bila opazno počasnejša. Hmm.... ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Ups, my mistake! Mislil sem for, napisal sem if! Sam itaq tud for ni dost boljsi   In ja, to je pocasnejse, kot ce selectas samo deset izpisov iz baze! ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Spet en usran problem zaradi katerega si razbijam glavo že cel vikend!! Grrr!! Glejte želim, da bi se logiro na pejđ kot tukaj na slo-techu, kar iz index pejđa. In vsa fora v vsem skupaj je to, da bi mi potem, ko bi se logiro ob strani namesto input obrazcev napisal \"Prijavljeni ste kot Ta-pa-ta\". In to pomeni, da bi na vrhu index-a mogu includat pejđ, ki ima funkcijo start-session, ta pejđ že tako in tako includam pri vsaki strani, ki ima to potrebo (oddajanje novic, postov, komentiranje)... torej edino kar bi pri tem rad izvleko, da bi mi obstrani namesto form input okvirčkov (username, geslo) nato pisal kdo je prijavljen oz. bi mi moja error funkcija (ki je narejena s pomočjo javascripta) javla, da si vnesel narobešne podatke in te nazaj vrgo na začetn index pejđ.  Rc-car ali xbite.. prosim še slednjič mi prosim priskočite na pomoč!! (Mislim, da bo od tukaj naprej laufalo dokaj gladko...). In več je fora tega? Npr.. butasto bi bilo, da bi se nekdo prijavil na stran, nato bi mu sicer napisalo, da je uspešno prijavljen ampak, ko bi hotel iti na prvotno stran s klikom na home, bi zopet videl input okenca... hmm. bedasto a ne? ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "hmm.. Ves kaj sem si mislu, ko sem v 'programiranju' vidu rdeco kuverto zraven 'Še malo teženja o php' in tam na desni cahahopie? Bolje da ne   Drgac pa ne vem kako mas to narjen pa to.. Meni pride na misel, da bi pac naredu en if stavek in pogledal, ce je user loginan al ni. In pol na podlagi tega pac izrisal na zaslon, a?  Pa dej url, kje ti to preizkusas, ca mas kje na netu? Da vidim to umetnino!  ",
+    "user": "rc-car"
+  },
+  {
+    "message": "kot dodatek k rc-car-jevem odgovoru: človek ob branju tvojih postov res ne ve, a si res mal smotan, da ne rečem glup, al se samo zajebavaš iz nas.. ?  ",
+    "user": "darh"
+  },
+  {
+    "message": "Dej ne me žalit... Takole bom reku...tale PHP ni tak big deal, skoraj vse stvari, ki ste mi jih svetoval sem jih nato samo v glavi pogrunto (razen tist v zvezi s mysql z 10 izpidi idjev, ker si nisem kaj dosti ali skoraj nič prebral mysql manual). Klinc če je pa tak fajn, da mi je vse na pladno prinešeno.   ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "Klinc če je pa tak fajn, da mi je vse na pladno prinešeno. .......... in zato ti bom jet od zdj naprej odgovarju samo se na kaksna konstruktivna vprasanja... ",
+    "user": "darh"
+  },
+  {
+    "message": "in zato ti bom jet od zdj naprej odgovarju samo se na kaksna konstruktivna vprasanja... Enako tukaj!  Pojem programiranja oz. znati programirati ne pomeni, da poznas ti sintakso in potem ti drugi govorijo, kako se kaj naredi! To, da znas programirati pomeni, da znas najti resitev za nek dolocen problem, pa magar z flow charti (diagrami poteka)!! ",
+    "user": "rc-car"
+  },
+  {
+    "message": "Mi ni treba pravt... Vem.. že cel vikend se ubijam z neko stvarco pa mi je le nekaj kapnalo na glavo... sicer ne tako brilijantega a učinkovitega.  No, se opravičujem za morebitne duševne motnje!... Če bo zdaj res kaj hudo resnega zanimala bom pa vseeno vprašal. Sam... hudo resnega, kot sem že prej omenil. Se opravičujem! ",
+    "user": "cahahopie"
+  },
+  {
+    "message": "ok..  ",
+    "user": "rc-car"
+  }
+]

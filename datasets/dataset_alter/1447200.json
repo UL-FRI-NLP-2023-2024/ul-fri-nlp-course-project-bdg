@@ -1,0 +1,212 @@
+[
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Da malo objasnim; imam modem, kateri bi bil DHCP server, nanj pa bi rad žično obesil dva DDWRT routerja (WRT54GL), moja želja je da bi imela isti SSID. Torej eno dostopovno omrežje z dvam AP. Kaj je potrebno paziti in kako se nastavi in najpomembnejše, ali deluje avtomatski preklop na močnejše omrežje?\nHvala in LP",
+    "author": "janezek1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Kolikor sem jaz prebral uporabiš isti SSID in avtentikacijo, morata pa biti na različnih kanalih.",
+    "author": "ales85",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik ales85 pravi:\n Kolikor sem jaz prebral uporabiš isti SSID in avtentikacijo, morata pa biti na različnih kanalih.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTako je, edino kanal ne rabi nujno bit različen, je pa zaželeno (da se APja med seboj ne \"motita\"). Pa izbirati je potrebno frekvenčno neodvisne kanale - recimo 1, 6, 11 ali 1, 5, 9, 13.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Uh pol pa to ni neka znanost, hvala obema pom poskusil.",
+    "author": "janezek1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "A to maš zato, da povečaš doseg? Kako je v tem primeru s prehajanjem z enga na drugega?",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Seveda ne pozabit izklopit DHCP serverja v obeh wifi routerjih (če praviš da bo modem opravljal to funkcijo). Modem in routerja moraš med seboj povezati z LAN porti.\nPotem pa moraš še paziti pri IPjih. LAN IP od obeh routerjev mora biti na enakem omrežju kot modem in tudi vse naprave morajo imeti svoj IP. Primer: modem ima IP 192.168.X.1, router 1: 192.168.X.2, router 2: 192.168.X.3. Če boš imel oba routerja na istem IPju, boš naletel na probleme.\n\n@MadMitch: prehajanje med APjema poteka avtomatsko in ne bi smelo delati problemov ter bi moralo potekati brez prekinitev. Odjemalec se enostavno poveže z najmočnejšim APjem.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "QL, ker to potem tudi meni prav pride in sem že razmišljal, kako to rešit. Imam namreč hišo. ki ima cel kup medetaž in se od tam, kjer stoji vsa mašinerija, do ženine delovne sobe signal izgubi. Ker je cela hiša ožičena z mrežnim kablom, ne bo na tak način problem postavit še en routerček. Hvala.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n@MadMitch: prehajanje med APjema poteka avtomatsko in ne bi smelo delati problemov ter bi moralo potekati brez prekinitev. Odjemalec se enostavno poveže z najmočnejšim APjem.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKako ti misliš brez prekinitev? Takšna konfiguracija sigurno ne zmore seamless handoverja, že zaradi menjave kanala če ne drugega. Če pa se med samo uporabo ne bo menjalo APja, potem ni panike, sicer pa je potreben WDS.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Lej, saj če je par sekund prekinitve, je to zame še vedno brez prekinitev. Važno je, da mi ni treba šarit, da se to zgodi samodejno. Nisem eden tistih, ki izgubljajo milijone al pa pol življenja, ker jim net pade za pol minute, ko gre s tablico al pa odprtim laptopom iz delovne sobe do kavča.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Ja OK, samo tole potem ni brez prekinitev. Se pa da nastavit WDS na tvojem routerju ... kar je bolj ustrezno v tvojem primeru.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik crashednburnt pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n@MadMitch: prehajanje med APjema poteka avtomatsko in ne bi smelo delati problemov ter bi moralo potekati brez prekinitev. Odjemalec se enostavno poveže z najmočnejšim APjem.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKako ti misliš brez prekinitev? Takšna konfiguracija sigurno ne zmore seamless handoverja, že zaradi menjave kanala če ne drugega. Če pa se med samo uporabo ne bo menjalo APja, potem ni panike, sicer pa je potreben WDS.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSaj pri WDS se tudi menja AP, edino kanal je zaradi drugih omejitev enak.\nRecimo eduroam uporablja tak princip (različni kanali) in nisem nikoli opazil prekinitve pri preklaplanju med APji, tudi med intenzivnim downloadom.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Seveda se menja, ampak seamingless.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik crashednburnt pravi:\n Seveda se menja, ampak seamingless.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo da je seamingless je odvisno od klienta in morebitna menjava kanala tu ne vpliva. Novodobni OSi seveda so takšni klienti.\nMrežna kartica itak cel čas v ozadju išče nova omrežja zaradi morebitnega roaminga in zaradi tega ni nič motena povezava čeprav mora preskenirati vse možne kanale.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Tale tema je prava tudi zame, zato jo bom izkoristil \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nImam za postaviti wireles mrežo. In sicer moram povezati zadevo nekako v obliki črke E.  Steber je hodnik, 3 kraki so 3 hladilnice v katere bom verjetno potegnil samo antene. Kraki so namreč hladilnice ki delujejo na -20 st C, hodnik je pred prostr ki je konstantno +8 st. C.  Clienti morajo med postajami preklapljati samodejno in brez prekinitve...\nRavno iščem naprave da bi imel kar se da najmanj dela. Našel sem tole\nhttp://www.techtrade.si/product.asp?pf_id=9117004&dept_id=9117\nNapajanje tudi preko POE, čeprav nevem ali bom utp sploh rabil vleč (Bridge z drugo brezžično dostopno točko)...\nTrenutno sem si sposodil 2 enoti da malo stestiram predno gremo na montažo in kiksnemo na polno \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n     Imam 14 dni časa.\nTolk veliko zadevo z temi zahtevami še nisem postavljal, zato se malo lovim...   \nRazmišljal sem 1 AP in potem vežem gor te 3 naprave.. \nKakšen nasvet kako zadevo bolje nastaviti ?",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Če te prav razumem boš imel 3 naprave, ki bodo zunaj hladilnic, v hladilnico pa boš namestil zgolj antene?\nPotem boš potreboval dostopne točke s snemljivimi antenami + kabel. Zaželeno pa je, da podpirajo še DD-WRT, kjer lahko nastaviš da je aktivna samo ena antena (nisem prepričan da vse naprave to podpirajo). Tako boš v posamezno hladilnico lahko potegnil zgolj eno anteno in ne vseh.\n\nImajo mogoče hladilnice kovinske stene? Potem zna biti problem s preklapljanjem, ker ko se bodo vrata zaprla bo naprava verjetno zgubila signal z zunanjimi napravami in preden bo zaznala nov AP bo povezava že prekinjena in zadeva najverjetneje ne bo seamingless.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Za resno profesionalno rabo boš uporabil šrot iz praška???\n\nA maš res tolko denarja???\n\nCisco, Lancom, Motorola, pa še par proizvajalcev, ampak za resno uporabo te pride en AP 400EUR.\n\nVso srečo...",
+    "author": "joejoe",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Na lokaciji sem že stestiral in od zunaj pride signal v notranjost, vendar ne pokrije cele hladilnice, zato rabim anteno na notranji strani. porabil 3 ali 4 naprave.  Četrta naj bi pokrivala hodnik in napajala Preko Wlana z signalom seveda ostale točke... Druga opcija pa je da se potegne UTP in se napajajo preko POE. Ampak to ni težava. Težava je kako nastaviti da bo preklapljajo med točkami in drugi problem antene.... Prodajalci mi razlagajo če je antena snemljiva, potem lahko gor namontiraš kar češ... Vem da na nekatere naprave morajo imeti antene na točno določeni razdalji, če sta 2 seveda...Posodili so mi sicer zgoraj omenjeno napravo ki ima 2 anteni (snemljivi)... Ne vem..",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik joejoe pravi:\n Za resno profesionalno rabo boš uporabil šrot iz praška???\n\nA maš res tolko denarja???\n\nCisco, Lancom, Motorola, pa še par proizvajalcev, ampak za resno uporabo te pride en AP 400EUR.\n\nVso srečo...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVem da ni pro zadeva.... Hotel sem uporabiti \n\nhttp://www.telos.si/ruckus/MediaFlex_7200.htm\n\nVendar ni dobavljivo v prave času...  Lahko mi pa pomagaš z kakšnim modelom, ne bom nič hud    \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Antena je dovolj samo ena. Seveda moraš tudi na routerju nastavit da naj uporablja samo eno. To ti DD-WRT omogoča. Samodejno preklapljanje med APji pa je odvisno od klientov in nimaš kaj za nastavljati. Že zaradi temperature jaz ne bi dajal routerja v hladilnico ampak bi not potegnil le eno anteno. Vprašanje kako dolgo bi delali pri -20 (razen če kupiš namenske outdoor variante ki so odporne na takšne razmere).\n\nPosamezne APje pa med seboj le poveži s kablom, bo sigurno delovalo bolj zanesljivo.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Hvala za opozorila, tvoji nasveti so mi seveda logični in sem jih predvidel tudi sam. Drugače pa ja to bi potreboval za povečanje dosega. In če pride do kratke prekinitve med preklopom na drugi AP ni problema le, da se povezava samodejno vzpostavi nazaj.\n\nNo ker pa vidim, da nekateri kar nekaj obvladate in imate podobne rešitve kot jih iščem sam še eno vprašanje. Ali je že kdo uspešno in brezplačno postavil HOTSPOT oz SPLASH PAGE. Pravzaprav niti ne vem kaj je kaj. Kar bi potreboval je, da bi se pač zmeraj ko se nekdo na novo poveže pokazala neka začetna reklamna stran (turistične kmetije), kjer potrdiš strinjanje s pogoji in nato surfaš. Nekaj sem gledal na http://www.hotspotsystem.com/ pa mi ni uspelo.\nHvala in LP",
+    "author": "janezek1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Probal sem napravici... \nPreklopi ko mu zmanjka prvotnega signala... \nIzgubi 2 pinga.. prekinitev 5 sec. \nA je to to ?    Meni se ne zdi okey.... \n\nPrvotno je bil namenjen v hladilnico AP z grelcem ki bi delal BP.. Vendar stane 700 € tako da smo se domislili da bi potegnili notri samo anteno. Ampak še vedno ne najdem pravih naprav oz. ne znam spraviti skupaj.... Bo treba še mal suhega treninga \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nČe ima kdo kakšen preverjen model se priporočam za nasvet \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \nDa še enkrat ponovim zahteve: \n1. Rabim 4 AP ki posredujejo isti SSID in klient kroži med AP-ji brez prekinitve   (klienti naj bi znali preklapljati) \n2. Napajanje je zaželeno POE, \n3. Naprava naj bi imela samo eno snemljivo anteno da jo lahko zamenjamo.  \n\nTo je to...",
+    "author": "Wild",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Kakšne kliente pa imaš to? Jaz imam na laptopu pri nastavitvah mrežne kartice opcijo nastavljati roaming agressiveness, s čemer ga prisiliš da bolj pogosto išče in menjuje APje.\nKer razni smartphoni in tablice šparajo z energijo, zato v ozadju ne iščejo tako pogosto novih APjev kot kakšne druge naprave in posledično mu prekine signal iz prvega APja še preden bi se sam uspel prestaviti na drugega.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Wild pravi:\nDa še enkrat ponovim zahteve: \n1. Rabim 4 AP ki posredujejo isti SSID in klient kroži med AP-ji brez prekinitve   (klienti naj bi znali preklapljati) \n2. Napajanje je zaželeno POE, \n3. Naprava naj bi imela samo eno snemljivo anteno da jo lahko zamenjamo.  \n\nTo je to...\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\nGlede na tvoje zahteve je skoraj edina varianta, da postaviš vse skupaj v WDS, le tako bo vse še najbolj približek tega kar želiš. In potem niti kabla ne rabiš, WDS deluje bp brezžično.",
+    "author": "igorduska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik crashednburnt pravi:\n Seveda se menja, ampak seamingless.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo da je seamingless je odvisno od klienta in morebitna menjava kanala tu ne vpliva. Novodobni OSi seveda so takšni klienti.\nMrežna kartica itak cel čas v ozadju išče nova omrežja zaradi morebitnega roaminga in zaradi tega ni nič motena povezava čeprav mora preskenirati vse možne kanale.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nLej, če downloadaš nek file s serverja, ki ne podpira resuminga, ti pri handoverju povezava pade in moraš začet download znova. Če imaš WDS, ti zadeva laufa naprej. Sprobano večkrat. Za njegov primer je WDS preprosto boljša izbira.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Med WDS in navadnim DS je edina razlika v tem, da WDS za backbone uporablja wifi povezavo, navadni DS pa kabel. Obnašanje je popolnoma enako, seamless pa je odvisno zgolj od klienta.\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n Some other users' Answers and Comments on this question erroneously suggested that wireless protocols or features like wireless relay or WDS might be needed for roaming, but this is absolutely incorrect. Those features are just ways to replace a wired Ethernet backhaul with a wireless one.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVir: http://superuser.com/questions/122441/multiple-access-points-for-the-same-ssid",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Ruckus je v wifi svetu resna firma.",
+    "author": "joejoe",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n Med WDS in navadnim DS je edina razlika v tem, da WDS za backbone uporablja wifi povezavo, navadni DS pa kabel. Obnašanje je popolnoma enako, seamless pa je odvisno zgolj od klienta.\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n Some other users' Answers and Comments on this question erroneously suggested that wireless protocols or features like wireless relay or WDS might be needed for roaming, but this is absolutely incorrect. Those features are just ways to replace a wired Ethernet backhaul with a wireless one.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVir: http://superuser.com/questions/122441/multiple-access-points-for-the-same-ssid\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSeveda, ampak ob prvotni predlagani konfiguraciji ne gre za DS.",
+    "author": "crashednburnt",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "In kako je potrebno popraviti konfiguracijo, da bo stvar delovala kot DS?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Najbolje, da nekdo pri sebi proba, pa poroča.\n\nPS: Imam dva WLAN ruterja za na voljo...\n\nPPS: Pri WDS ni nujno da roaming deluje. Pri starših recimo 100% ne deluje roaming. (ker imata AP-ja različen SSID ter enkripcijo)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Pri WDS deluje roaming, saj vidiš samo en SSID, vsi routerji so pa na istem kanalu. Pri repeater bridgeu pa mi ni delal roaming, ker sta bila različna SSIDja in sem na drugi lokaciji moral ročno preklapljat. Res pa da sem večinoma uporabljal telefon in tablico. Zdaj mam  pa potegnjen kabel.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Lahko kdo pogleda, ki se spozna prosim:\n\nRouter mi ne vleče dobro na drugo stran stanovanja. K sreči imam potegnjen kabel in zdaj sta oba routerja med seboj povezana z kablom. Rad bi, da mi samodejno prestavi na boljši wireless signal.\n\nNa obeh je DD WRT.\n\nSem drugega v redu nastavil?:\n\n\t\n\n\n\n\n\t\n\n\n\nAli bi moral izbrati tukaj kaj druga / repeater mogoče?:\n\n\t\n\n\n\nVarnost sem nastavil enako kot na prvem ruterju:\n\n\t\n\n\n\n\nŠe moram kaj druga? Sem kaj pozabil? Ostale nastavitve sem pustil vse kot so originalno.",
+    "author": "kebab",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "AP mode je OK, poveži ju preko LAN portov. Za začetek na drugem daj drugačen SSID in se poveži nanj, samo toliko da preveriš če iz drugega routerja deluje internet. Potem pa daj enak SSID, zaščito in geslo.\n\nEDIT: pa na telefonu si naloži nek program za analiziranje wifija, kjer boš videl MAC naslov routerja, na katerega si povezan. Toliko da lahko stestiraš roaming. Pa preklapljanje je povsem odvisno od klienta, pa preklop načeloma ne bo seamless (kak videoklic zna prekinit ipd.).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Hvala, to je bil super hiter odgovor \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nIn ja, preklaplja dobro in hitro, na sredi stanovanja kot sem si predstavljal (Wifi Strongest Signal app če bo kdo kdaj rabil).",
+    "author": "kebab",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Še to pazi, da kanala nista skupaj. Če je prvi ruter na kanalu 1 daj drugega vsaj na 6, še raje pa višje.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Kako nastavit dva DDWRT na isti SSID?",
+    "content": "Iz screenshota je razvidno da je en na 6., drugi pa na 9. kanalu. Pa če je na obeh nastavljeno 20 MHz spekter, je to OK. Pri 40 MHz pa bi res bilo treba malo bolj paziti.",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

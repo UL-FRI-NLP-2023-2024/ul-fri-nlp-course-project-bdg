@@ -1,0 +1,248 @@
+[
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Vprašam tukaj, če je tole že kdo delal predno si začnem razbijati glavo. \n\nTorej doma imam Telekomovo optiko. Sedaj je wifi in ostali net speljan direktno preko Telekomovega ruterja, ki smo ga dobili zraven INbox al nekaj takega. V tega je potem s kablom na WAN port povezan NEO komunikator in na 1-4 računalniki in druge naprave. WIFI preko tega original ruterja je zadnje čase začel delati izredno slabo, zato sem si sposodil ASUS TUF-AX5400, da vidim če bo WIFI delal kaj bolje. Ustavi se pri povezovanju in konfiguraciji tega ASusa in starega Telekom ruterja. Dolgo je tega kar smo take finte nastavljali v moji stari službi.\n\nTorej a dam Asusa v Telekom na port 1 ali v WAN. Če v WAN kam naj potem priklopim NEO komunikator, da bo vse normalno delalo? To me za začetek zanima, da lahko začnem nastavljati ",
+    "author": "ribicija",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Če te moti samo wifi, potem Asusa nastavi kot wifi access point in potem ga boš priklopil na inbox v LAN. Pri Asusu pa poglej, ali v AP konfiguraciji moraš dat kabel v WAN ali LAN.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik damirj je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe te moti samo wifi, potem Asusa nastavi kot wifi access point in potem ga boš priklopil na inbox v LAN. Pri Asusu pa poglej, ali v AP konfiguraciji moraš dat kabel v WAN ali LAN.\n\t\t\n\t\tKlikni za razširitev\n\t\nce me spomin ne vara, mora biti asus povezan na wlan port, na inboxu pa mora biti kabel seveda v enem izmed lan portov.\n\nnaslednji korak, sploh ce sta stari in novi router fizicno skupaj,  je izklop wifi omrezja na starem. Ne zelis en kup omrezij, ki se prekrivajo med seboj na istem frekvencnem spektru. Ce sta bolj oddaljena, lahko kombiniras in ohranis wifi na obeh, da dosezes boljse pokritje prostorov.\n\nAlternativna moznost, imo priporocljiva, pa je, da postavis inbox v t.i. bridge mode. S tem izklopis router funkcijo na inboxu, to pa prvzame asus, ki je verjetno na tem podrocju precej boljsi. To storis s klicem na telekom, poves kaj bi rad in ti bodo inboxa ustrezno nastavili, nacin delovanja asusa pa spremenis iz access point (AP) v wireless router. Glede neo boxa je najlazje, da ostane povezan z inboxom (za priklop preko asusa je potrebno nekaj vec dela in rocnega konfiguriranja)",
+    "author": "blazko",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Samo, če ga bo dal v bridge mu nebojo več boxi delali (če se ne motim)...\nJaz mam boxe na original routeru z izkloplenim, wifi. Vse ostalo komunikacijo pa ureja Asusa povezan na Wan z PPPoE.\nInbox dobi svoj ip in Asus dobi svojega od Telekoma.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Ne vem, ker telekoma in njihove opreme ne poznam.\n\nZagotovo box lahko uporabljas, vprasanje je samo, kaj (ce sploh) moras dodatno nastavit.\n\nRecimo sam imam telemachov modem na kablu, postavljen v bridge mode, in njihov hibridni box (coax za live sliko, ethernet za smart stvari) dela preko mojega asusa. Ker ne potrebuje posebej taganega vlana, ampak mu je dovolj obicajna internet povezava.\n\nNe dolgo tega sem urejal bridge mode pri narocniku T2. Tam smo na modemu ohranili prvi lan port kot iptv (nanj je ostal povezan box), drugi port je bridgan (nanj je povezan router asus).\n\nTudi ce bi recimo potreboval poseben vlan za iptv, ti boljsi routerji omogocajo definiranje vlana, da lahko box povezes direktno na router. Recimo pri asusu to storis v zavihku IPTV.",
+    "author": "blazko",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "blazko",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Tule maš vse za asus. kaj deluje in kaj ne. In večina ne deluje. Razen z ne tako preprostimi posegi.\n https://slo-tech.com/forum/t746303",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik luka51 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe ga daš na router boš mel sliko ne pa vsega ostalega kaj dobiva preko \"interneta\" torej program in te stvari. Vsaj včasih je bilo tak. Lahko da so kaj spremenili, ker sem nazadnje 2 leti nazaj toplo vodo odkrival (kot mnogo drugih) in na Asusu tega nisi mogo nastavit v delujoče stanje.\n\t\t\n\t\tKlikni za razširitev\n\t\nRavno obratno. Slika v živo gre preko multicasta na ločenem tagiranem VLANu, ki ga z originalnim FWjem ne moreš nastavit na večin teh jajčk za domačo uporabo (se pa da z alterntivnimi FWji ala OpenWRT). Vse kar gre preko “interneta”, je na netagiranem data VLANu in za ta del je praktično vseeno kam priklopiš.\n\nOpcija je bodisi da\n- box ostane priklopljen na Telekomovo opremo (s tem, da mora v tem primeru ostati njihova oprema tudi v vlogi routerja, ali pa se moraš odpovedat IPv6, zato da lahko Telekomov router vzpostavi svoj PPPoE session in tvoj router svojega)\n- uporabiš opremo, ki se jo da pravilno nastavit (npr. kak mikrotik ali pa poljuben managaged switch za routerjem, pa potem posebaj pripelješ gor tvojo interno mrežo ter IPTV VLAN). Če se res potrudiš, se lahko tudi v celoti znebiš njihove opreme, ampak to je že malce bolj komplicirano (sploh na GPONu rabiš svoj GPON ONT SFP, ki mu nastaviš pravo serijsko in MAC, pa še to ne deluje ravno vsak, pa potem seveda naprej še VLANe…)\n- se igraš z alternativnim FWjem ala OpenWRT na teh Asusih/TP-Linkih/itd",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "ali pa preprosto na telekomovem modemu laufaš boxe in ne kompliciraš.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Sej sem napisal in tudi omejitve v tem primeru....",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Heh, tudi nam pred kratkim priklopili Telekom optiko na Rune omrežju in tudi sam imam občutek, da ta telekomov \"Innbox\" router včasih malce zajebava... Sicer imam vse naprave povezane preko wifi, ampak npr.: med brskanjem na laptopu kar včasih \"zmanjka\" povezave, tudi na tablici podobno...\n\nSam sem imel v mislih, da bi na Innbox popolnoma izklopil wifi in nanj žično povezal nek router (imam že doma enega Asusa od firme, ki sem ga uporabljal v časih covida). In potem na tem Asus routerju naštimal wifi. Tako bi na Innbox bil povezan samo Neo box in ta nov router... Je mogoče, da bo deloval internet preko wifi kaj boljše?\n\nribicija , ti wifi dela kaj boljše sedaj, ko si priklopil drug router? Javi, ko boš zrihtal.. ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Nisem še postavil v končno verzijo, tako da imam trenutno wifi na novem ruterju, kable na Inboxu od Telekoma. WIFI na novem ruterju je sedaj po celem stanovanju, če je bil prej v najbolj oddaljeni sobi 1 Mbs je sedaj 25 Mbs, na laptopu sem imel prej do 35Mbs, sedaj pa imam kot je pričakovati okrog 200 Mbs  WIFI omrežje je stabilno, kar prej ni bilo, ker se je v eno dogajalo, da je userje dol metalo. \nV naslednjih dveh tednih bom uredil do konca, ker me je sedaj malo ustavila najbolj popularna bolezen zadnjih let.",
+    "author": "ribicija",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Obujam temo, ker sem se danes spravil rihtat wifi, ker preko Telekomovega InnboxV80 dela bolj slabo...\n\nVglavnem, na telekomov InnboxV80 sem na port 3 povezal router Asus RT-AC58U V3 preko WAN porta. Na InnboxV80 sem potem izklopil wifi in ga omogočil na Asus routerju in sedaj imam wifi preko Asus. Na Innbox imam sedaj povezan NEO box (preko LAN4) in Asus router (preko LAN3). Innbox uporablja IP: 192.168.1.x (in nanj se ne bo povezoval nihče drug kot NEO box in Asus router), Asus pa 192.168.50.x (na katerega se bodo povezovale vse naprave preko WIFI)... Želel bi si, da Innbox samo omogoča internet (Video signal) NEO boxu in \"čimhitreje\" (brez kake pameti) zagotavlja internet Asus routerju.\n\nZanimajo me naslednje stvari:\n1. Ali bi naj bila vredu takšna \"postavitev\"? Zaenkrat deluje vse vredu..  \n2. Ali na Innbox onemogočim DHCP ali nima veze? Ker je Asus v svojem omrežju in tako mora imeti DHCP vklopljen?\n3. Na Innbox so vsi porti nastavljeni na \"Trunk\", kot prikazuje naslednja slika:\n\n\t\t\n\t\nAli nastavim LAN3 na \"Internet\" in LAN4 na \"video\" ali nima veze in pustim tako?\n4. Asus omogoča 2.4ghz in 5ghz wifi. Ker ne rabim 5ghz in ker bi si želel čimvečji doseg wifi, je smiselno izklopit 5ghz? Zaenkrat sem ga, ampak zanima me, če izklop 5ghz poveča doseg 2.4ghz wifi ali zmanjša ali načeloma nima veze?\n5. Če ima kdo boljšo konfiguracijo, naj prosim napiše.. \n\nIn hvala lepa za morebitne odgovore že vnaprej..",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "To kar si naredil je dvojni NAT. Sicer dela ampak ni ravno priporočljivo, ker moraš potem delati preusmeritve portov na obeh napravah, obenem pa si še zmeraj omejen z zmogljivostjo Innboxa, če vzpostavljaš veliko povezav (torrent). Če boš priklopil NEO box na Asusa, in dal Innbox v bridge, pa ti TV ne do delal, ker nekako še zmeraj nismo našli pametnega načina kako spraviti VLAN3999 čez vse te usmerjevalnike. Gre pa brez večjih težav na Mikrotiku.\n\nČe boš na Innboxu onemogočil DHCP v taki konfiguraciji, ti na Asusu ne bo delal internet in na NEO vse kar rabi internetno povezavo.\n\nPorte pustiš tako kot je.\n\nDoseg ostane popolnoma enak, tudi če izklopiš 5 Ghz. Kvečjemu imaš slabše hitrosti prenosa, ker 2.4 Ghz pač omogoča manjše hitrosti, ima pa večji doseg.\n\nBoljša konfiguracija je modem v bridge in, da vse dela tvoj router ampak kot sem že napisal, mislim, da čez asusa VLAN3999 ne boš spravil, rabiš nekaj z boljši podporo za VLANe.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Asusu reči naj preko PPPoE vzpostavi povezavo v svet. \nGreš v WAN nastavitve in daš WAN Connection type na PPPoE.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Daniel , očitno se spoznaš na te zadeve...   Bom te še malo zagnjavil... \n\nOsebno sem mislil, da je problem Innbox ravno ta, da je preveč naprav povezanih preko wifi in da ima problem z routanjem.. Sedaj Innbox samo dodeli IP Asusu in potem Asus dela vso routanje.. Ali ni tako?\n\nIn če bi na Innbox disable-al DHCP, ali ni tako, da bi samo moral dodelit 2 fiksna IP: za Neo box in za Asus router?\n\nluka51 : kaj misliš, da bo bolje delalo, če rečem Asusu, naj vzpostavi povezavo preko PPPoE?\n\nIn hvala lepa obema za pomoč.. ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Asus ti dela routanje, Innbox za njim pa še enkrat, ker, kot sem že omenil imaš dvojni NAT. Innbox se obnaša kot router in Asus za njim enako.\n\nČe boš na Innbox onemogočil DHCP Asus ne bo dobil IPja na WAN vmesniku, NEO pa ne na LAN, posledično ne bo delal internet. Če nastaviš fiksni IP pa imaš praktično isto konfiguracijo kot jo imaš sedaj ampak pač ročno nastavljeno.\n\nOpcija, kot je omenil luka51 je sicer, da na Asusu vzpostaviš PPPoE povezavo na WAN (mislim, da Telekom še zmeraj ima dva dinamična IPja), kar bo potem pošiljalo podatke direktno skozi Innbox, boš pa imel na Innboxu še zmeraj ločeno omrežje (drug zunanji IP naslov) za Neo, sicer ti TV ne bo delal in ob tem bo NEO v povsem ločenem omrežju (sicer je že sedaj).",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Še zdaj ne razumem, zakaj bi Innbox delal routanje še enkrat? Prej je Innbox dodeljeval IP številke napravam in je moral skrbet za routanje.. Sedaj pa da samo 1 IP naslov Asusu in ves Asus promet gre samo skozi Innbox.. Ali ni tako? In sedaj Asus skrbi za IP številke vseh naprav in za routanje... Ni tako?\n\nIn glede DHCP na Innbox - ali ni tako, da če bi fiksiral IP naslov na Asusu in Neo boxu, potem bi lahko DHCP izklopil na Innbox? Ker osnovna funkcija DHCP je, da dodeljuje IP naslove napravam... In če jih fiksiraš, potem ne rabiš več DHCP...\n\nJe pa možno, da sem kako uro pešprical, ko smo se o tem učili....    ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Ker je nastavljen kot router. In če je nekaj nastavljeno kot router potem so aktivne vse funkcije, torej tudi požarni zid, port forrwarding itn.\n\nČe boš na njem izklopil PPPoE povezavo in DHCP pa ne bo več router ampak bo samo še bridge, vendar boš v tem primeru izgubil internet na NEO boxu.\n\nRavno iz tega razloga se, če se že daje dodatne routerje za modem, kupi takega, (za primer Telekoma), ki ve delati z VLANi in potem lahko BOX normalno priklopiš tudi na svoj router in bo delal, Innbox pa se pusti v bridge načinu.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Daniel, sem še urejal moj prejšnji prispevek, ko si že ti objavil tvojega.. Lahko še ti tvoj odgovor prosim urediš na novo glede na moj dopis? ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tDanes sem dal Asus na PPPoE, kot prikazuje slika:\nPoglej priponko 63124\n\nJe to - to? Ko sem vnesel napačno geslo, ni bilo interneta, po vnesenem pravem geslu pa dela internet.. So ostale nastavitve vredu ali moram še kaj obkljukat ali ugasnit?\n\nIn če sem vas prav razumel, imata sedaj vsak router svoj zunanji IP naslov.. To drži? Moram preverit?\n\t\t\n\t\tKlikni za razširitev\n\t\nJe to to. Pri meni že 5 let tak BP",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Prešprical si uro. Ne glede na to ali je DHCP aktiven ali ne, dokler je na Innboxu postavljena PPPoE seja se bo obnašal kot router. Kot že omenjeno pa lahko na Asusu vklopiš PPPoE in boš pač imel 2 zunanja IPja.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Ja če boš na asusu na PPPoE bo dobil svoj ip. Tudi ločeno bo od NEOtov, če ti to ni neka ovira.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Da javim rezultate: imam občutek, da ne dela nič kaj boljše (kot ste mi rekli)...  Pač probat ni greh... \n\nTorej še vedno se nam na prenosnih napravah (telefoni, tablica, laptop) nekak niha povezava - npr.: klikneš neko stran in se ne odpre in takoj zatem refresh-aš in se stran odpre v trenutku.. In včasih klikneš na kako stran in nekaj čaka in čaka, potem pa jo v momentu naloži... In to kljub temu, da smo na optičnem omrežju...\n\nVe kdo, če ima telekom kakšne boljše routerje kot ta beli Innbox? Ker imam občutek, da ga ta router nekaj serje...",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Si poskusil s PPPoE iz Asusa ali ne?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "ne še.. Kaj to samo na Asusu vklopim, ker se mi zdi, da je nekdo nekje napisal, da potem rabim 2 IP naslova od Telekoma? Torej vse pustim enako vklopljeno (na Asus na WAN) in samo preklopim na PPPoE?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Sedaj ne vem iz glave kako je pri telekomu. Če se ti PPPoE ne bo povezal poskusi za tisti čas prekiniti PPPoE na modemu. Na Asusu preklopiš na PPPoE in vpišeš podatke za povezavo na internet. Potem gre povezava mimo usmerjevalnega dela Innboxa.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Če nimaš aktiviranega IPv6 bi načeloma moral dobiti dve PPPoE seji.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tTelekom Slovenije\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.telekom.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Daniel , najlepša hvala za vso pomoč.. Probam, ko pridem domov... ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tDa javim rezultate: imam občutek, da ne dela nič kaj boljše (kot ste mi rekli)...  Pač probat ni greh... \n\nTorej še vedno se nam na prenosnih napravah (telefoni, tablica, laptop) nekak niha povezava - npr.: klikneš neko stran in se ne odpre in takoj zatem refresh-aš in se stran odpre v trenutku.. In včasih klikneš na kako stran in nekaj čaka in čaka, potem pa jo v momentu naloži... In to kljub temu, da smo na optičnem omrežju...\n\nVe kdo, če ima telekom kakšne boljše routerje kot ta beli Innbox? Ker imam občutek, da ga ta router nekaj serje...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKer možno je, da sploh ni wifi kriv. Pri spletnih straneh je zelo odvisno tudi od strežnikov na drugi strani, povezave od njih in do njih. Odpiranje spletnih strani je na 10Mbps liniji skoraj enako hitro kot na 1Gbps. Včasih so pa tudi pričakovanja enostavno previsoka.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "damirj , to razumem, ampak po prehodu iz telekom LTE omrežja (Neo Brezžični - njihov 4G router FritzBox) na optično omrežje Rune in operater Telekom na tem routerju smo vsi v družini opazili te težave, ki jih preko prejšnje povezave ni bilo - vse je delalo vredu... Sedaj na optiki pa se te težave opazno zaznajo, ko bi naj še boljše delalo kot preko 4G...",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Ko se vmes omeni Rune je marsikaj možno.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Na Telekomu vzemite Fritza, pa bo vse delovalo bp.",
+    "author": "Ping",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKo se vmes omeni Rune je marsikaj možno.\n\t\t\n\t\tKlikni za razširitev\n\t\nNa žalost res. So se lotili s preveliko žlico tega projekta. Na prvi uč bi rekel, da rune namenoma \"žlajfa\", ker se grejo overprovisoning v še večji meri, kot običajno..",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Danes sem dal Asus na PPPoE, kot prikazuje slika:\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\nJe to - to? Ko sem vnesel napačno geslo, ni bilo interneta, po vnesenem pravem geslu pa dela internet.. So ostale nastavitve vredu ali moram še kaj obkljukat ali ugasnit? \n\nIn če sem vas prav razumel, imata sedaj vsak router svoj zunanji IP naslov.. To drži? Moram preverit?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Da odgovorim, zdaj imata oba routerja različni zunanji IP, ja... Sem preveril.. ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Bi še kaj pohitril, če bi uporabil hitre DNS: 1.1.1.1 in 8.8.8.8? Ali to nima veze?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Ne, najhitrejši so načeloma operaterjevi, ker so prvi v liniji. Razen če rabiš dostop do blokiranih strani, potem uporabiš druge.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tObujam temo, ker sem se danes spravil rihtat wifi, ker preko Telekomovega InnboxV80 dela bolj slabo...\n\nVglavnem, na telekomov InnboxV80 sem na port 3 povezal router Asus RT-AC58U V3 preko WAN porta. Na InnboxV80 sem potem izklopil wifi in ga omogočil na Asus routerju in sedaj imam wifi preko Asus. Na Innbox imam sedaj povezan NEO box (preko LAN4) in Asus router (preko LAN3). Innbox uporablja IP: 192.168.1.x (in nanj se ne bo povezoval nihče drug kot NEO box in Asus router), Asus pa 192.168.50.x (na katerega se bodo povezovale vse naprave preko WIFI)... Želel bi si, da Innbox samo omogoča internet (Video signal) NEO boxu in \"čimhitreje\" (brez kake pameti) zagotavlja internet Asus routerju.\n\nZanimajo me naslednje stvari:\n1. Ali bi naj bila vredu takšna \"postavitev\"? Zaenkrat deluje vse vredu..  \n2. Ali na Innbox onemogočim DHCP ali nima veze? Ker je Asus v svojem omrežju in tako mora imeti DHCP vklopljen?\n3. Na Innbox so vsi porti nastavljeni na \"Trunk\", kot prikazuje naslednja slika:\nPoglej priponko 62933\nAli nastavim LAN3 na \"Internet\" in LAN4 na \"video\" ali nima veze in pustim tako?\n4. Asus omogoča 2.4ghz in 5ghz wifi. Ker ne rabim 5ghz in ker bi si želel čimvečji doseg wifi, je smiselno izklopit 5ghz? Zaenkrat sem ga, ampak zanima me, če izklop 5ghz poveča doseg 2.4ghz wifi ali zmanjša ali načeloma nima veze?\n5. Če ima kdo boljšo konfiguracijo, naj prosim napiše.. \n\nIn hvala lepa za morebitne odgovore že vnaprej..\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJaz sem na Telekomovem InnboxV80 pustil WiFi prižgan, da pokriva tisto sobo, v kateri je in sobo zraven nje. Za pokrivanje ostalega dela hiše, pa sem preko kabla, na drugi strani hiše v mansardi, priklopil gor dostopno točko Tp-Link EAP245 zmontirano na strop. Ime omrežja in geslo sta ista. Telefon med omrežjema preklaplja neopazno. Sedaj imam pokrito vso hišo in še dvorišče. Pri obeh imam vklopljen 5Ghz in 2,4Ghz. Še robotska kosilnica, ki je na vrtu za hišo ima neprekinjeno povezavo. Prej ni šans.\nPo nevem koliko letih eksperimentiranja in menjavaja routerjev lahko rečem, daje to zdaj kot mora biti.",
+    "author": "Clancy",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tNe, najhitrejši so načeloma operaterjevi, ker so prvi v liniji. Razen če rabiš dostop do blokiranih strani, potem uporabiš druge.\n\t\t\n\t\tKlikni za razširitev\n\t\nNo to ni nujno res. Najhitrejši je po hopih, sam reply DNSa pa ne nujno. Cloudflareov 1.1.1.1 je OK, Googleov 8.8.8.8 (8.8.4.4) pa te lahko tudi nahecata, ker imata request limite, ki jih doma z domačo uporabo verjetno ne dosežeš, ampak dobro je vedeti.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omežje , Telekom ruter + nov ruter",
+    "content": "Tudi možno. Sam sicer uporabljam Pihole+Unbound in zadeva deluje odlično.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  }
+]

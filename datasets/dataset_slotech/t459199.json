@@ -1,0 +1,62 @@
+[
+  {
+    "message": "Pozdravljeni, imam eno težavo. Pred kratkim sem kupil prenosnika in nato še brezžično lasersko miško. V nastavitvah prenosnika sem si uredil, da miškin kazalec drsi po ekranu z največjo hitrostjo. Težava je v tem, da potem vedno ko ugasnem prenosnik, preide ta nastavitev spet na sredino in moram potem ponovno nastaviti na največjo hitrost. Se mogoče drsna plošča prenosnika in miška ''tepeta''?  V čem bi lahko bil problem? Hvala... ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "Poglej nastavitve gonilnikov za ploščico, morda pa imajo kako nastavitev da ponastavijo nastavitve miške. ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Nism nč našel. Evo to je vse kar imam:  ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "Nimaš nobenih dodatnih ikon z nastavitvami v nadzorni plošči?  Hja, lahko pogledaš kaj vse zapisuje v registerski ključ z nastavitvami miške: HKEY_CURRENT_USER\\Control Panel\\Mouse  Pogledaš pa s temle programčkom: Process Monitor Process Monitor is an advanced monitoring tool for Windows that shows real-time file system, Registry and process/thread activity. http://technet.microsoft.com/en-us/sysi...   Oziroma, če se ti ne da, preprosto nastavi miško kakor hočeš, potem pa samemu sebi odvzemi pravico do pisanja v zgoraj navedeni registerski ključ, karkoli že spreminja nastavitve jih potem ne bo moglo več.  Opomba: Pred igranjem z registrom obvezno ustvari obnovitveno točko v obnovitvi sistema. ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Po pravici povedano niti ne upam preveč ''čarati'' s tem da ne bom česarkoli zafrknil... Bom še probaval, če kdo kdaj konkretnega še ve, pa prosim da mi pove. Hvala  ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "No pa poizkusimo drugače, po korakih:   Najprej ustvari obnovitveno točko:  V \"meni Start\" vtipkaj obnovi , v rezultatih iskanja klikni na \"Ustvarjanje obnovitvene točke\", nato v oknu \"Sistemske lastnosti\" (zavihek \"Zaščita sistema\") v odseku \"Nastavitve zaščite\" klikni na gumb \"Ustvari\". V Okencu \"Ustvarjanje obnovitvene točke\" vpiši neko ime, ki ga boš kasneje prepoznal ter klikni na gumb \"Ustvari\".        Sedaj pa lahko poskrbiš za težave z nastavitvami miške:  Najprej nastavi miško kot želiš, potrdi nastavitve in zapri nadzorno ploščo.   Odpri \"meni Start\" in vtipkaj regedit , v seznamu rezultatov klikni na \"Regedit\", ter potrdi varnostno vprašanje.  V Oknu \"Registry Editor\" se premakni na ključ (mapo) \"HKEY_CURRENT_USER\\Control Panel\\Mouse\", desno klikni nanj ter v meniju izberi vnos \"Permissions...\".       V oknu \"Dovoljenja za vnos\" klikni na gumb \"Dodatno\".  V Oknu \"Dodatne varnostne nastavitve\" odstrani kljukico pri postavki \"Vključi podedovana dovoljenja od predmeta, nadrejenega temu\". Pojavilo se bo okence \"Varnost sistema Windows\", ki bo spraševalo kaj sedaj storiti z dovoljenji, klikni na gumb \"Dodaj\" - tako se bodo trenutno uveljavljena dovoljenja skopirala na trenutni registerski podključ (...\\Mouse).             Nato v oknu \"Dodatne varnostne nastavitve\" dvoklikni na svoje uporabniško ime (na sliki je prikazano u.i. \"Uporabnik\"), pojavilo se bo pogovorno okno \"Vnos za dovoljenje\", v seznamu \"Dovoljenja\" odstrani kljukice v stolpcu \"Dovoli\" pri vseh postavkah ki omogočajo urejanje (pusti jih zgolj pri postavkah \"Query Value\", \"Enumerate Subkeys\", \"Notify\" in \"Read Control\"), potrdi s klikom na \"V redu\"  V oknu \"Dodatne varnostne nastavitve\" pokljukaj še izbiro \"Zamenjaj vsa dovoljenja za podrejene predmete s podedovanimi dovoljenji tega predmeta\", ter klikni na \"V redu\".          Tako si samemu sebi odvzel možnost spreminjanja nastavitev miške, katerikoli program, ki je te nastavitve spreminjal v tvojem imenu jih sedaj ne bo mogel več.    Opombe:   a.) Tvoje uporabniško ime v Oknih je, na slikah nadomeščeno z \"Uporabnik\".  b.) Morda boš moral prevzeti lastništvo nad ključem, preden boš lahko urejal dovoljenja, to storiš v zavihku \"Lastnik\" v oknu \"Dodatne varnostne nastavitve\" - če ti ne bo šlo povej.  c.) Morda program, ki ti spreminja nastavitve ne teče pod tvojim uporabniškim imenom, v tem primeru boš moral tudi uporabniški skupini \"SYSTEM\" in \"Administrators\" odvzeti polne pravice (\"Full Control\") ter jih nadomestiti s pravico do zgolj branja (\"Read\").  Postopek je enak, samo namesto na lastno uporabniško ime dvo-klikni na SYSTEM in Administrators; če si odvzameš pravice do urejanja tega ključa si jih boš moral seveda še prej povrniti, preden boš lahko urejal pravice za druge uporabnike. ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Ne deluje, sem poizkusil še tisto opcijo c) za SYSTEM in Administrations pa je po ponovnem vklopu prenosnika zadeva ista, nastavitev gre spet na sredino. Evo takole imam:  ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "Ok, potem se morda spremembe sploh ne shranijo v registrski ključ, pokaži kaj ti piše v vrednostih.  Pri meni je pri najvišji hitrosti miške nastavitev \"MouseSensitivity\" nastavljena na 20. In pokljukaj tudi \"Zamenjaj vsa dovoljenja za podrejene predmete s podedovanimi dovoljenji tega predmeta\". ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Opažam, da tudi če je prenosnik prižgan in dam nastavitev na najvišjo, nato vzamem ven USB od miške in že takoj gre nastavitev nazaj na sredino. To so nastavitve:  ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "Kar pomeni, da nekaj le te spreminja ob z miško povezanih dogodkih, HP-jevo programje je prvi osumljeni.  Preveri katero vrednost imaš v: HKEY_CURRENT_USER\\Control Panel\\Mouse - MouseSensitivity  Pri meni je max 20 in min 1, če ti je ne uspe spremeniti skozi nadzorno ploščo, jo spremeni v registru in si takoj zatem odvzemi pravico do pisanja.  Če je HP-jevo programje prehitro, ga boš morda moral odstraniti, nastaviti miško, zakleniti ključ in šele nato zopet namestiti HP-jevo programje.  Je pa tudi možno da imaš nameščen dodaten HP-jev gonilnik, ki ne upošteva Okenskih nastavitev, potem moraš poiskati nastavitve zanj. ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Na 20 imam nastavljeno. Se pravi priporočaš, naj odstranim gonilnike za to brezžično miško, nastavim nastavitve in ponovno namestim gonilnike? ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "Hja samo preden to storiš mi povej: - Ali ti miška, ko je nastavitev na 20 deluje hitro, ali je nastavitev v nadzorni plošči nastavljena na hitro?  - Ali je nastavitev v registru, ko je miška počasna, še vedno 20?  - Ali si potrdil kljukico pri \"Zamenjaj vsa dovoljenja za podrejene predmete s podedovanimi dovoljenji tega predmeta\"? ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Ko je na 20 deluje hitro, tako kot bi rad da je vseskozi in tudi v nadzorni plošči je nastavljena na hitro. Da, ko je miška počasna je še vedno na 20. Sem izklopil in vklopil računalnik in je na istem (20). Sem potrdil kljukico, ja. ",
+    "user": "Kla_Man"
+  },
+  {
+    "message": "Ok, problem imaš - po vsej verjetnosti - s HP-jevim gonilnikom za miško.  Morda lahko najdeš njegove nastavitve in jih zakleneš tako kot okenske, drugače boš moral ta gonilnik odstraniti.  Poizkusi ga posodobiti na najnovejšo verzijo, morda se gre za hrošča (ne pa namerno funkcijo) in so ga popravili. ",
+    "user": "Cold1"
+  },
+  {
+    "message": "Ok, bom. Najlepša ti hvala za pomoč... ",
+    "user": "Kla_Man"
+  }
+]

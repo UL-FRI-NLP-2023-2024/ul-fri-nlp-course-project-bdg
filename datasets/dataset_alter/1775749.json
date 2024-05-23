@@ -1,0 +1,530 @@
+[
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Včeraj sem se odločil, da na omenjeni router naložim DD-WRT, zaradi stabilnejšega delovanja. Iz ddwrt strani sem potegnil dol datoteko factory to ddwrt, v routerju sem izbral update firmware, začeva se je začela nalagati, potem je napisalo da je bil update uspešno nameščen in sem čakal, ker so še eni procenti leteti da se kao restarta. No potem je router webui izginil, počakal sem nekaj minut da se zadeva postavi in ko sem v brskalnik zopet vpisal 192.168.1.1 je router nedosegljiv. Lučka pover in ETH1 v katerega je vklopljen UTP kabel gori, drugega pa iz routerja več ne dobim. Probal sem 30-30-30 reset, ne pomaga, probal sem priti v failsafe mode ampak mi SYS lučka sploh ne začne utripati. \n\nIma mogoče še kdo kakšen nasvet ali je edina možnost da ga rešim preko serijskega kabla? Ki pa ga seveda nimam....",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Si poskusil še z statičnimi IP-ji? Meni ga je Avast na takšen način povozil, ker je imel v posodobitvi neko napako in je občasno blokiral promet na lokalni mreži. Seveda mi je zablokiral ravno med posodabljanjem routerja.\n\nTelnet tudi ne dela?\n\nČe ne pomaga niti 30-30-30 reset potem je najbolje, da si poiščeš USB to TTL adapter in ga zrihtaš preko tega, vsaj meni je šlo. Boš pa moral na ploščo nalotati 3 jumper headerje.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ja probal sem tista navodila, kjer sem moral nastaviti mrežno kartico na 192.168.1.2, in potem kao preko putty in telnet protokola priti v router ampak ne gre, zadeva se ne odziva tko da ga je zgleda popolnoma zmedlo. Naročil sem tole: \n\nhttp://www.ebay.com/itm/180953299346?ssPageName=STRK:MEWNX:IT&_trksid=p3984.m1439.l2649\n\nMoram samo še nekje dobiti tiste jumper headerje: telele bojo vredu ne? http://www.ebay.com/itm/10pcs-...=item565657355e",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Bom pa še probal, če bo kolega najdel USB na COM port adapter, baye da se da zadevo flashat tudi s pomočjo raspberry pi, ki ga pa imam doma, samo je treba rasperrya preko COM porta povezat na PC, pine od routerja na prave pine na raspberry in naj bi zadeva stekla: http://www.raspberrypi.org/phpBB3/viewtopic.php?p=313052",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "http://wiki.openwrt.org/toh/tp-link/tl-wr1043nd\n\nZadev okrog oživljanja z Raspberryem ne poznam ravno a glede na zapisano na tisti strani, ki si jo dodal očitno deluje. A ga moraš nujno priklopiti na računalnik, ne bi šlo že samo s samim Raspberryem? Adapter za USB to TTL in pa jumper headerji bi pa morali biti vredu.\n\nJaz sem delal po OpenWRT vodiču in naložil OpenWRT. Kako pa sem potem iz OpenWRT prišel nazaj na DD-WRT pa se ne spomnim več natančno, morda sem celo vmes moral naložiti tovarniški firmware.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Hja, mogoče če na Raspberry naložim raspbian in potem na pine priklopim router, samo ne vem potem kako potem v raspianu preko pinov komunicirati z routerjem?",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Sklepal sem, da se da, glede na tisti link, ki si ga prilepil na začetku. Drugače pa, če si kje med prlekijo in koroško ti lahko posodim USB to TTL adapter, da rešiš zadevo.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo sem si sposodil kabel, na plato od routerja sem nalotal pine in žičke, dobil sem ta kabel http://www.amazon.co.uk/Aten-UC232A-USB-Serial-Converter/dp/B000J3OK7C\n\nto je pin layout: http://www.hydrologicalusa.com/images/uploads/USBSerialConverter.pdf\n\npin 2 RX sem dal na routerjev TX, pin 3 TX na routerjev RY in pin 5 GND na GND in dobim v putty nek odziv ampak so sami čudni znaki, nič berljivega. Sem slabo pospajkal zadeve?",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "S tem flashanjem se lahko naredi več škode kot pa koristi sicer pa ima tp linki že tako in tako dovolj zmogljiv software in sem mnenja da z dd wrt ne pridobiš kaj bistvenih prednosti. Sicer bi bil pa boljši naslov teme zafleshan  tp link . Verjetno se bi še najbolje obnesla zamenjava čipa če ga kje dobiš.",
+    "author": "sygicz",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Pa ti prikazuje da so omrežja na voljo ?. Ker sem sam fleshal sicer z original programom od edimaxa, isto kot pri tebi je napisalo ,da je fleshanje uspelo, pravtako se mi ni hotel router povezat na net . Potem sem pa toliko dolgo pritiskal reset ,da se je potem povezal sem bil pa tudi mnenja da je fuč.",
+    "author": "sygicz",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "neko brezžično omrežje se pokaže, ime so same neke cifre in se ne morem nanj povezat. V putty dobim pa same čudne znake, pa sem probal zamenjat TX in RX pa ne pomaga. Nekaj me masa zajebava",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik sygicz pravi:\n S tem flashanjem se lahko naredi več škode kot pa koristi sicer pa ima tp linki že tako in tako dovolj zmogljiv software in sem mnenja da z dd wrt ne pridobiš kaj bistvenih prednosti. Sicer bi bil pa boljši naslov teme zafleshan  tp link . Verjetno se bi še najbolje obnesla zamenjava čipa če ga kje dobiš.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n dej pejt raj za picopeka, računalništvo ni zate...",
+    "author": "R0KY",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Tp-Link z original softwerom se rad sesuva, ne vem od kje tebi take ideje...sploh o menjavi čipa.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Kaj si mi fouš , ker imaš slabši poklic. krohoho [cenzura]čič se pa krohota prizadeta budala , kaj pa ti veš kaj je zame brigaj se za svoje stvari in ne bi tukaj zabijat s takimi bedarijami glumac en je jasno!",
+    "author": "sygicz",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Mi ni s tem kablom uspelo rešiti routerja. Bom počakal da dobim iz kitajske stvari, ki sem jih naročil in upam da bo takrat šlo, če ne bo pa letel čez zaprto okno \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Sicer ponavadi ko ga res do konca zaflešaš le neprestano utripajo lučke, če tvoj tega ne dela je morda ostal kje vmes.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Omenjeni kabel (RS232) ni nujno da bo delal v win7. Sam sem na vitrualca nalozil XP-je in preko tega usposobil router. Je pa fino, ce imas na voljo dva racunalnika, da delas in obenem brskas po internetu za resitvami - ce prva ne pomaga..",
+    "author": "DJ_Beat",
+    "author_level": "Dacar"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ne, na mojem Power lučka gori in potem tista na kateri port je pač kabel vključen, da bi prav vse blinkale pa ne. Ja jaz sem to probaval na win 8, bom pa na eno starejšo mašino naložil še Win XP, ko pridejo zadeve domov, zdaj trenutno nimam časa se več ukvarjat s tem.\n\nSem pa tudi sam sumil kabel ali driverje, ker sem prelotal pine in žičke in je vedno enako delalo, tako da bom videl ko pride moja \"oprema\". Zaenkrat vsem hvala za pomoč, bom javil ko dobim stvari \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Če dobivaš nek čuden izpis, je ponavadi za naštimat samo še baud rate.",
+    "author": "Tusi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Baud rate sem dal na 115200 kot je bilo predlagano. Na koliko ti predlagaš da ga nastavim? Nisem ravno domač s temi serijskimi zadevami, zato ne poznam teh for najbolj. \n\nBo pa vsaka ideja prav prišla ko dobim novo opremo za reševanje \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Kar poskušaj, sej jih ni veliko. Ko boš našel pravo, boš dobil lep izpis.",
+    "author": "Tusi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "OK, hvala!",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Poskusi 115200 8N1, no flow control",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "S tem sem delal ves čas in sem dobival tiste čudne znake. Potem sem malo brskal zadnjič in so rekli da je enim pomagalo da so namesto TX - RX in RX - TX dali TX - TX in RX - RX, pri meni se v tem primeru router kljub vklopu v napajanje ni zagnal, prižgal se je šele, ko sem GND routerje staknil od kabla ampak se potem na računalniku ni nič izpisovalo. Se pravi sem nek izpis dobil samo ko je bil Rx - Tx in Tx - Rx ter GND - GND ampak takrat so bili ti čudni znaki, ki so se kar prepisovali, par vrstic se je izpisalo potem pa se je začelo malo prepisovati itd... ampak nič berljivega.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo update glede zadeve. Danes sem dobil tisto zadevo USB na COM iz Kitajske, en star računalnik sem formatiral in naložil windows xp, driverje za tisti kitajski usb ključek, na router sem nalotal 4 moške pine, 4 dump kable pa sem dobil poleg ključka in zadeva je uspela v prvo. Zdaj gor lavfa openwrt, v gui sem prišel, več se pa nisem imel časa igrati, se bom pa kasneje. Izgleda pa da je po defaultu na openwrt wifi izklopljen ali pa kaj na routerju ne dela :-D to bom še videl kasneje. Zaenkrat so znaki dobri.\n\nEdit: sem prebral da je wifi po default na off.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Odlično ",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo že lavfa vse na novi router. Tale OpenWRT mi je malo nepregleden ampak OK, sem usposobil zadevo da deluje \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Saj lahko naložiš nazaj DD-WRT ampak mislim, da ga moraš prej vrniti nazaj na tovarniški firmware. Drugače pa, če ti je OpenWRT ok je tudi izjemno uporaben le konfiguracija le tega je malo bolj težavna za osnovne uporabnike.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Kje si nabavil USB na COM, lahko daš kak link?\nIščem tudi mini usb na COM pa ne najdem nikjer.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "@popotnik: Tole sem vzel in dela super: http://www.ebay.com/itm/180953299346?ssPageName=STRK:MEWNX:IT&_trksid=p3984.m1439.l2649\n\nBom kar pustil openwrt ampak ne morem priti čez 65mbps hitrosti, kljub temu da recimo imam na laptopu N mrežno, tudi raspberry ima N mrežno. Kako to nastavim da bo delalo z vsaj 150mbps?",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Hvala ti za link  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ni za kej ",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Tudi jaz imam točno takega. Kar se pa hitrosti tiče, pa sem ravnokar gledal, da imam tudi sam povezave do največ 65mbps na DDWRT ampak ker bolj malo prenašam po mreži me to dejstvo ne moti ravno kaj dosti.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ma če je že N standard naj dela vsaj s 150mbps.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik bvader pravi:\nBom kar pustil openwrt ampak ne morem priti čez 65mbps hitrosti, kljub temu da recimo imam na laptopu N mrežno, tudi raspberry ima N mrežno. Kako to nastavim da bo delalo z vsaj 150mbps?\n\t\t\n\t\tKlikni za razširitev\n\t\nPri nastavitvah Wifi pod  Device Configuration/Advanced Settings v nastavitvi \"HT mode\" spremeni iz 20MHz na 40MHz.",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Sem že probal to, 2 možnosti za 40MHz imam, channel below pa channel above. Če dam bellow se nič ne spremeni, ostanem na 65mbps, če dam above se mi pa wifi izklopi in ne deluje.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Pri 40MHz zasedeš 2x večjo pasovno širino, torej 2 kanala. Zato imaš na izbiro kje naj bo ta dodatni drugi kanal (pred njim ali za njim). Izbira načeloma nima veze, tako da je očitno kaj drugega narobe (ni podprto v tem firmwaru ali podobno).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ma gledam in probavam vse kombinacije in ne pride preko 65mbps pa da ga jebesh. Morem najdet kako pridet nazaj na original firmware, če bo tam kej hitreje lavfalo, ker sem N routr kupil ravno z razlogom da bo bolj letelo preko mreže.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Sem naložl nazaj original TP-Link firmware pa mi iz prve dela s 130mbps. Sem pa šel openwrt-original-ddwrt, ki mi je spet bricknil router, tako da sem mogel spet preko serijske povezave restorati z openwrt in potem nazaj na original.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Pa imaš sploh mrežno, ki podpira 300mbps?",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "To v tem trenutku sploh ni bil problem, ker niti do 130 nisem prišel z openwrt. Mrežna je po moje do 150, in z original fw dela zdaj OK, openwrt pa ne vem kaj matra da je max 65.\n\nMam pa tole mrežno: http://ark.intel.com/products/59481/Intel-Centrino-Wireless-N-1030-Single-Band",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Verjetno je kaj narobe z OpenWRT oz. na tvojem modelu ni podprt 40MHz pas. Kaj pa je narobe s stock firmware? Za navadno surfanje je čisto dovolj.\n\nAja, pa glede na to da imaš samo 130Mbit... vklopi še short GI pa boš ravno na 150Mbit.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Za original sem bral po spletu, da je pod obremenitvijo nestabilen. Kaj je to short GI in kje to na stock FW vklopim?",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Poglej pod advanced wireless settings. Vsaj na mojem TP-Linku je tam.\n\nEDIT: glih opazil da imama isti router, tak da je ziher tam  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Je že obkljukano to ja, Enable WMM in Enable short GI.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo po nekaj urah delovanja je original firmware že prvič zatajil. Na lepem je zadeva padla dol in izgubila povezavo s spletom. Ko sem šel od doka sem dal nameščati gargoyle firmware , ki ga še nisem probal, pa upam da ta ne naredi enake zadeve kot ddwrt, se pravi bricka.\n\nEDIT: Gargoyle lavfa, zopet samp 65mbps. Kot kaže je nekaj v teh FW-jih.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Gargoyle je osnovan na OpenWRT. Ni mi jasno zakaj ti je spet bricknil, ko si šel na DD-WRT. Si uporabil najprej datoteko Factory to DD-WRT? (najdeš v isti mapi kot najnovejši firmware). \n\nftp://ftp.dd-wrt.com/others/eko/BrainSlayer-V24-preSP2/2013/05-27-2013-r21676/tplink_tl-wr1043nd/\n\nJaz imam trenutno uptime na DD-WRT 36 dni in 4 ure, tako da je zadeva res stabilna, hitrosti pa tako, kot pri tebi.\n\nEdit, sem šel za probo prižgat še prenosnik in se poveže z 300 Mbps, tako da mi do 65 delajo le telefoni. \n\nNastavitve pa so\n\nNG-Mixed\nTurbo (40MHZ)\n6 kanal\nupper - dodatni kanal\n\nWPA2 zaščita.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ja, šel sem na original TP LINK FW, potem sem pa iz DD-WRT strani potegnil \"WR1043N(D) v1.x Firmware - Webflash image for first installation\" za WR1043ND, ki je za vse verzije 1.x in dam lepo notri upgrade firmware, se lepo naloži, router se pa več ne zažene. Je pa to build V24.preSP2 r21061\n\nTega mi je ponudl na uradni strani, vidim da so pod pod other downloads še novejše verzije. KAtero verzijo pa imaš ti naloženo in kako si naložil. Enak postopek kot pri meni?\n\nMeni tablica in telefoni delajo 65mbps kar je za njih max, laptop pa tudi samo 65mbps, mogel bi iti pa do 300.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Daniel pravi:\nEdit, sem šel za probo prižgat še prenosnik in se poveže z 300 Mbps, tako da mi do 65 delajo le telefoni.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZa telefone/tablice je to \"normalno\", saj jih večina nima večkanalnih wifi kartic (šparanje z baterijo).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "LAhko ma tudi na prenosniku wifi kartica omogčeno varčevanje z energijo",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Kje to lahko preverim?",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Tukaj mislim da si ti iskal na napačni strani problem:\nhttps://www.google.com/search?...=1&bav=on.2,or.r_cp.r_qf.&bvm=bv.47534661,d.bGE&fp=3497d3384bcb6c22\n\nSlike:\nhttp://www.intel.com/support/wireless/wlan/sb/CS-032513.htm\n\nNajprej poskusi to kar sem ti dal pod slike, če ne bo pomagalo poglej zgornji link",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Tam ko se vpisujejo IP naslovi, prehod, DNS ročno po potrebi v Windows zgoraj klikneš na \"Konfiguriraj\" pod imenom kartice in tam poiščeš dodatne nastavitve. Ali pa čez Upravitelja naprav v Nadzorni plošči.\n\nNa tisti povezavi, ki sem jo prilepil zgoraj (Brainslayer builds) je zadnja verzija (27.5.2013). Najprej naložiš \"factory-to-ddwrt.bin\" da iz tovarniškega prideš do DD-WRT, takoj za njim , ko prideš znova v vmesnik pa še \"tl-wr1043nd-webflash.bin\"\n\nEdit: Poskusi še onemogočiti vse antiviruse, požarne zide in ostale programe, ki bi se lahko mešali v proces. Jaz sem ga sesul ravno zaradi Avasta, ki je vmes prekinil upload firmwara.\n\nDrugače moj trenutno dela na verziji iz 15.4.2013, še nisem posodabljal.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo, zdej lavfa na 150mbps! Pod nastavitve mnrežne je bil n-mode vključen ampak je bila pasovna širina kanala nastavljena na 20MHz in ne na Auto. Zdaj sem dal na Auto in na routerju na 40MHZ 2nd channel under in dela s 150mbps. \n\nKar se pa power managementa za mrežno tiče, je pa že na max.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Torej le ni bil TP-LINK \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ne, je bil pa tplink ko je včeraj samo dol vrglo net in tudi restart ni pomagal \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nHvala vsem za pomoč. Sm vesel da vsaj 150mbps dela!!!",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Če greš kaj bližje k routerju s prenosnikom tudi dela le do 150 Mbps? Sedaj si ostal na Gargoyle?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Daniel pravi:\n Če greš kaj bližje k routerju s prenosnikom tudi dela le do 150 Mbps?\n\t\t\n\t\tKlikni za razširitev\n\t\nHitreje od 150Mbps mu ne bo delalo, ker je pač taka mrežna",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ja ostal sem na gargoyle, ker DD-WRT sem delal po tem postopku kot si napisal pa se mi ne da več reševat routerja trenutno. \n\nKar se pa hitrosti tiče, ko se Wifi poveže par sekund kaže 300mbps, potem pa pade na 150mbps in na tem ostane. Stvari letijo potem preko wifi z okoli 11 MB/s.\n\nSicer pa ima mrežna pod specifikacijami tole: Max Speed\t150 Mbps TX /300 Mbps RX, kar jaz razumem kot da lahko sprejema do hitrosti 300 mbps in oddaja do hitrsoti 150 mbps, ali se motim?\n\nLaptop je pa ene 5 m od routerja z enim vmesnim zidom, bom še probal dati bliže k routerju ko bom imel čas da vidim za foro če bo šlo na 300 mbps.\n\nEDIT: Tudi čisto blizu routerja \"samo\" 150 mbps \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo na gargoyle isto, po 24 urah mi je vn vrglo internet, mreža in vse dela OK ampak dostopa do spleta ni. Dam reboot, SYS lučka utripa in ne obstane. Priklopim nazaj WRT54GL s tomato FW-jem in dela iz prve. Se po treba s tem tp linkom še malo poigrat kot kaže in najdet kakšen prav in stabilen FW.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Zanimivo, da kar ostane z utripanjem SYS lučke. Kaj takega se meni nikoli ni dogajalo, zmeraj se čisto normalno naloži, pa tudi posodabljal sem ga že nekajkrat po sesutju\n.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ne vem kaj ga matra, sem pa bral da naj bi gargoyle in openwrt na določenih verzijah izgubljal wan. Bom se še malo igral ko bom imel čas.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Na prvi pogled zgleda, kot da OpenWRT ne podpira MIMO (ali ga podpira slabo).\n\nNajprej si imel  laptop omejen na en kanal (20MHz):\n - z original FW je delovan po \"dveh žarkih\" (MIMO) in en frekvečni kanal: 130 Mbps\n - z OpenWRT pa en žarek in en kanal: 65 Mbps\n\nPotem ko si na laptopu vklopil še dvojni kanal (40MHz) si \"podvojil\" prenos:\n - OpenWRT zdaj dela na 40MHz, en žarek: 150 Mbps\n\nŠtevilke se ujemajo z maksimalno teoretično možno hitrostjo pri posameznih parametrih.\n\nStavim pol sixpacka, da bi z original FW delal na 300 Mbps \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nJe pa res, da je to kar nestabilno, torej če ni lepe povezave med ruterjem in laptopom, potem ne bo ostalo na 300.\nTorej mora biti blizu (ne preblizu, recimo 4 meter, brez vmesnih ovir), pa mirujoče. Razen tega je orientacija tudi pomebna:\ntri antene na ruterju dati v tri različne smeri (\"robovi kocke\"), pa probat nekaj orientacij laptopa. Kot rečeno, na mizi, da miruje, lahko tudi na tleh, za probo.",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Je nekako tako kot si opisal ja ampak če se z original fwjem usuje. Jaz potrebujem stabilen fw. Tomato na 54gl linksysu dela ko urca, imam lahko uptime po par mesecev in ne počepne, na tp-linku pa 4 naprave recimo, nobene posebne obremenitve in zadeva sama od sebe poklekne. Meni osebno je 150mbps vrh glave ker je opazna pohitritev v primerjavi z 54mbps. Zahtevam samo še stabilnost, ker ko mene ni doma in zadeva pade dol in reset ne pomaga je kriza, ker nihče drug nima pojma o tem. \n\nProbal bi še ddwrt samo kaj ko mi ga je brickalo za vsako. Bom probal še z novejšim factory to ddwrt, ki sem ga včeraj našel, da vidim kako bo.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Itak. Original FW sem mislil le kot potrditev zgornjih domnev.\n\nSam imam tudi OpenWRT na vseh ruterjih.",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Sem našel en vodič za ta router, če se serijska št. routerja začne z 12 potem je treba na original fw-ju flashat nek nemški fw in potem iz tistega iti na dd-wrt, ker drugače router brickne in se ne odziva in točno to se je meni dogajalo tako da močno sumim, da je moj router eden izmed \"12\" serije \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Bom ko bom doma pogledal kakšna serijska je na mojem routerju.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Evo, uspelo namestiti DD-WRT. Kot sem sumil, serijska mojega routerja se začne s številko 12 in za to serijo je baje znano, da med posodobitvijo programske opreme vmes izklopi WAN port oz. nekaj v tem smislu kar pripelje do tega, da pri posodobitvi na DD-WRT dobimo brick. \n\nKar je potrebno storiti je naložiti nemški TP-LINK original FW, ki WAN porta med posodobitvijo ne izklopi in zadeva gre čez brez problema. Tu pa so navodila z linki do datotek: http://joeyiodice.com/converting-tp-link-tl-wr1043nd-to-dd-wrt\n\nSicer pa ni nobena umetnost, če želite na DD-WRT samo najprej na original FW flashajte še enkrat original nemški FW iz linka in potem iz tega nemškega DD-WRT flasham DD-WRT factory to ddwrt in to je to.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Pa zdaj dela stabilno in s polno hitrostjo?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Dela s 150 mbps, čez noč je preživel, kako bo naprej bom pa videl \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nSicer mi pod system info pod wireless rate piše 300 mbps ampak računalnik se poveže s 150 mbps.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Pa to je tisti računalnik, ki ima not 300/150 Mbit kartico? Si probal še s kakšnim, ki ima 2x2 MIMO wifi kartico (full 300Mbit)?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ne, to je ta isti računalnik ja. Ne drugega nimam, na raspberry pi imam sicer nek kitajski usb wifi 150 mbps dongle ampak dela s 65mbps, ker na openelec ne morem nastaviti nič drugega razen imena omrežja in gesla. \n\nNa laptopu je z original FW drugače delalo z nekaj čez 200mbps par metrov od routerja, tako da mrežna podpira. Najbrž je fora še v kakšnih nastavitvah. Bom še malo pregledal ko bo čas.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Sedaj, ko si omenil sem se spomnil, da sem enkrat bral nekaj na to temo a sem vmes že pozabil, ker nisem imel teh težav. Izgleda, da nimam te serije, ki je izklapljala WAN port. No glavno da dobro deluje sedaj  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Jaz sem tudi preiskal veliko zakaj ne gre ddwrt gor in nikoli nisem naletel na to stran, potem sem pa zadnjič nekaj brskal in vidim sem si rekel da je 100% to krivo da mi bricka in je bilo. Zdaj pa samo testiram in čakam, če bo spet internet izklopilo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Nima kaj izklapljat \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Zdaj mi dela že 40 dni brez problema.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Da bi še meni \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n WRT54GL je imel prej par mesecev uptime brez reseta ali bilokakakega problema.",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ok, spet se je zgodilo da sem zgubil povezavo z internetom. Tudi reset ne pomaga tako da router ali software na njem ni kriv. Sem pri T-2 in sem imel prej na Linksys nastavljeno Static IP in ročno vnešen IP itd... Prej mi ni nikoli izgubilo neta, na TP-Linku pa dnevno in ga ne dobi več nazaj.\n\nProbal sem reset routerja in ni pomagalo, tudi večkrat ne, potem sem pa iz Static IP prestavil na DHCP, se pravi da avtomatsko najde nastavitve in je bil net spet takoj nazaj. Ampak ne razumem dejstva da s statilnim IP-jem na Linksysu deluje OK. Zdaj sem pogledal zunanji IP in je drugačen od tistega, ki sem ga imel vnešenega, tako da kot kaže pri T-2 nimam statičnega IP-ja kot so rekli ampak mi je router na vseh FW-jih metalo dol zato, ker sem mu vsiljeval statični IP, med tem ko so na centrali meni dodelili drugega.\n\nŠe vedno pa ostaja vprašanje, zakaj je na Linksysu delalo  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Razen na kabelskem imaš praviloma vedno dinamični IP, razen če izrecno zahtevaš statičnega.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Ja, sem študiral pol ampak vem da so enkrat na T-2 rekli sami da imam dodeljen statičen IP zdaj pa bog si ga vedi. Kot kaže je dinamičen \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n As long as it works...",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Tudi, če maš statični IP, ni nujno, da ga moraš ročno vnašati, nastavitve še vedno lahko dobiš preko DHCP-ja. Ne vem pa kako ima T-2 to urejeno.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Tudijaz ne bi vedel. Vem ko sem \"migriral\" iz Linksysa sem vse enako nastavil na tplinku in to je to, se nisem v nič poglabljal preveč ker je delalo. Če bo to zdaj OK bo naslednji podvig na router priklopiti zunanji disk in na računalnik nekako nastavit da se avtomatsko mape, ki jih bom izbral sinhronizirajo iz PC-ja na disk.\n\nAja pa še nova ugotovitev, zdaj sem z laptopom povezan z routerjem s 300 mbps?!? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "bvader",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "a se lahko ta router z original fw uporabi kot podaljšek omrežja?",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Definiraj \"podaljšek\". Boš uporabljal kot navaden AP (preko kabla), kot repeater, WDS ...?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "repeater sem misli, wifi-&gt;wifi",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Rabiš DD-Wrt ali Open Wrt",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Mogoče bi šlo tudi s stock FW. Preko WDS se načeloma lahko povežeš na en drug router, je pa vprašanje če bo delalo (odvisno od drugega routerja). Kakšen pa je tisti drugi router? Če sta ista ali pa vsaj iste firme, potem bi moralo skoraj sigurno delati.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "drugi je od siola.\n\nhvala! Ga bom pustil pri miru. Kolk imam sreče, bom preveč cajta zabil...",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "Saj WDS se načeloma nastavi samo na \"oddaljenem\" routerju, torej tisti ki ni s kablom povezan na modem. Probaj, mogoče bo delalo. Zgubit nimaš kaj.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Mrtev TP-LINK WR1043ND",
+    "content": "ok, tolk časa si bom vzel)\nthnx",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "message": "Pozdravljeni,  prosim za pomoč in sicer imam wifi omrežje po stanovanju. Vse naprave se normalno povezujejo nanj. V routerju imam za znane naprave opredeljene MAC naslove in statični IP, ki ga router (DD-WRT software) opredeli. Čez noč se mi ena naprava noče več povezovati v omrežje. Omrežje vidi, a ko se nanj povežem mi ne vzpostavi povezave. Kaj bi lahko bilo narobe ? To je sedaj že 2 dni, medtem ko se vse naprave povezujejo v wifi normalno. Kaj lahko naredim, ne da bi naredil factory restore settings in potem ponovno vnašal vse nastavitve ? Prosim če kdo ve za rešitev.  Lep pozdrav.  Mirc ",
+    "user": "JeromeDD"
+  },
+  {
+    "message": "Izklopi iz elektrike ono problematično napravo in jo priklopi nazaj čez čas ... ",
+    "user": "Spajky"
+  },
+  {
+    "message": "Bom pozkusil, hvala Spajky. Kaj bi pa vzrok lahko bil? A bi moral nastavit na routerju se kak lease time ali kaj podobnega? Se ne spoznam na nastavitve zato me zanima... hvala. ",
+    "user": "JeromeDD"
+  },
+  {
+    "message": "Ali si mogoče pred dvema dnevoma dodajal še kakšno novo napravo?  Ne vem sicer za DD-WRT, sem pa že na dveh različnih routerjih opazil, da je tabela z MAC adresami sicer sprejela dodaten zapis, nikakor pa se ni dalo priključiti. Na obeh napravah je bila kritična meja nekje okoli 20 MAC naslovov.  Poskusi izklopiti filtriranje po MAC adresah in preveri če se potem poveže. Če se, vklopi filtriranje nazaj in preveri, če kakšen MAC naslov ni več aktualen in ga izbriši. Reštartaj router in preveri, če potem zadeva deluje.  Seveda je lahko tudi karkoli drugega razlog tvojih težav. Je pa zanimiv problem, ki je povezan z filtriranjem MAC adres in ga še nisem slišal, da bi ga kdo omenjal, tako da bo mogoče kdaj komu prav prišlo, če bo vedel, da na nekaterih routerji lahko nastopijo težave z MAC filtriranjem, če je preveč zapisov v tabeli.  Vsekakor NAJPREJ samo reštartaj router in problematično napravo. Morda bo že to zadoščalo. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Ne, nisem kaj dodajal 10 mac naslovov imam vpisanih... je pa pomagalo, ko sem izklopil napravo in jo nazaj vklopil.... ne vem pa zakaj je kar naenkrat nehalo delat..grrr ",
+    "user": "JeromeDD"
+  },
+  {
+    "message": "Pozdravljeni,  rabil bi vašo pomoč. Za vas to ni nič za mene je pa ovira, kot Triglav.  Od soseda dobrih 40 m stran lovim z Jagico wifi signal, ki prihaja iz njegovega ruterja. Signal je običajno kar dovolj močan in je nekodiran. Kabel iz te zunanje antene imam preko konektorja prišraufan na omrežno kartico namiznega računalnika. Zadeva mi tako lepo deluje že nekaj let.  Sedaj pa nastopi problem katerega ne znam rešiti.  Rad bi imel wifi signal prisoten po stanovanju. Zaradi še drugih naprav, ki se s časom pojavijo in ki so odvisne od wifi signala. Imam torej en preprost ruter & access point \"Conceptronic c54brs4a\". Ko nanj prišraufam konektor zunanje antene, in ga zaženem mi tablica, prenosnik ipd takoj zaznajo signal vendar ne povežejo oz (\"strani ni mogoče povezati s strežnikom\"). Manjka sinhronizacija. Potrebno bi bilo nastaviti nekaj parametrov v ruterju, vendar se mi žal nikakor ne posreči. Veliko časa sem poskušal a mi ne uspe.  Lepo prosim nekoga, če mi lahko pomaga. S preprostimi izrazi. Preko http://192.168.0.1 se mi odprejo vsa ta vnosna polja (Wireless, WAN, LAN, DHSP itn) karkoli spremenim oz vnesem je brez učinka. Kaj bi moral kje vnesti> kateri MAC naslov, IP naslov, kaj v polje SSID itn. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Router, ki ga omenjaš ne podpira 'bridge' načina dela, niti ne moreš na njemu konfigurirati WiFi na WAN strani. Tako se z njim tudi ne moreš povezati na soseda.  Načeloma bi lahko nekje izbrskal še en router, ki podpira bridge ali wireless WAN in se z njegovo pomočjo povezal do soseda, obstoječega pa uporabil za delitev signala tvojim porabnikom.  Vprašanje pa je, če je to smiselno, saj pogosto routerji, ki podpirajo bridge ali wireless WAN način delovanja, istočasno tudi omogočajo priklop lokalnih brezžičnih odjemalcev.  Še ena opcija bi bila, da bi obstoječi router priključil z LAN portom na računalnik. V tem primeru bi moral WiFi in LAN port povezati v bridge. Žal pa bi zadeva delovala izključno toliko časa, dokler je računalnik prižgan, saj deluje kot posrednik med obema omrežjema. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Hvala ti. Poskušam razumeti kar si napisal..  Tega tu spodaj pa ne razumem najbolje..kaj misliš s tem zadnjim delom v predzadnjem odstavku \"..istočasno tudi omogočajo priklop lokalnih brezžičnih odjemalcev..\"? ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Predstavljaj si zadevo tako, kot če bi moral imeti dve 'anteni' - eno za povezavo do soseda, drugo pa za svoje odjemalce. Seveda v praksi to lahko deluje tudi preko ene in iste antene. Nekateri routerji to podpirajo, drugi pa ne.  V tvojem primeru ti tista jagi antena usmerjena proti sosedu kaj dosti ne koristi za lastne odjemalce, saj minimalno seva tja, kjer se nahajajo tvoji odjemalci. Dejansko potrebuješ dodatno anteno, da bi se lahko s svojimi odjemalci kakovostno povezal.  Vsekakor boš najboljše rezultate dosegal z dodatnim usmerjevalnikom. Če se ti kakšen preklada po omarah..... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Spustil si se in mi ra-zložil na enem nivoju nižje. Sedaj sem zadevo popolnoma razumel.. Hvala :- ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Še tole mi prosim povej \"SeMiNeSanja\".  Sta ta dva usmerjevalnika lahko - torej ta prvi na katerega je namontiran kabel iz zunanje antene in drugi, ki služi za ojačitev tega wifi signala in sevanje le tega naprej odjemalcem - med seboj povezana s kablom ali ne? Če je odgovor ja, kam v tem primeru pride vtaknjen kabel v prvem in kam v drugem ruterju? Sprašujem zato, ker bosta oba ruterja bivala skupaj eden zraven drugega. Hvala. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "S kablom povežež LAN port na prvemu z LAN portom na drugemu.  Bistven je prvi router, ki mora biti sposoben delovanja v bridge mode-u ali pa podpirati Wireless WAN opcijo.  Drugi router je lahko katerikoli (npr. obstoječi) - seveda, če si zadovoljen z njegovimi zmogljivostmi.  Drugače pa se da dobiti od podjetja Alfa kar 'komplete' (npr. primer), kjer pa v bistvu imaš v paketu routerček + USB WiFi sprejemnik (takšen, ki ga običajno uporabljaš samostojno na računalniku). V tem primeru je povezava kar preko USB kabla. Za nekoga, ki se na mreže ne spozna, dokaj privlačna alternativa, zlasti zato, ker slovi tisti AWUS036NH po svoji oddajni moči, ki je bistveno višja od tipične.  Lahko pa tudi posežeš po kakšnem navadnem routerju za 15-20€... Če tovarniško ne podpira bridge ali wireless WAN, mora ponujati vsaj možnost, da na njemu zamenjaš firmware in si nanj naložiš kakšen DD-WRT ali Tomato. Sam ne uporabljam ne enega, ne drugega, tako da naj ti kdo, ki to uporablja, pove oz. potrdi, da ti bo ta nadgradnja omogočila potrebne možnosti povezovanja. V tem primeru se povezuje tako kot prvotno napisano LAN port z LAN portom. Moraš pa malenkostno potem paziti pri konfiguraciji omrežja, da bo zadeva gladko delovala. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Ponovno se oglašam tukaj in morda najdem ustrezno pomoč, sam ne bom prišel naprej. Trajalo je. Že kmalu sem nabavil router linksys wrt54gl vendar je nastal problem zaradi različnih konektorjev. Ta na routerju je drugačen in veliko večji od tega (SMA), ki je na kablu zunanje antene. In zelo težko je najti primeren prekonektor, ker tega nobena trgovina ne drži.  Na routerju je naložen DD-WRT sp2. In zdaj sem pred problemom. Nekega takšnega primera pa ne najdem na netu pa tudi ne nikjer. Povsod le standardna konfiguracija: internetni operater> modem> povezava na router in oddajanj wifi signala v prostor. Problem je, ker je pri meni pa ravno obratno, na glavo postavljeno in tega nihče kao ne vkalkulira ko mi želi pomagati pri konfiguriranju...to je stalno prisoten problem.  Želel bi sledeče in morda je tukaj vendarle nekdo, ki takoj spozna, da je to kao narobe obrnjena \"enačba\" in je treba to upoštevati sicer ne gre.  Wifi signal, ki pride iz zunanje antene na konektor antene routerja bi rad preko tega routerja vzpostavil po prostoru. Preko tega enega routerja, ne preko dveh (bridge) ali kaj drugega. Ali je to možno ali ni možno - to me zanima? In če je kako?! Slišal sem, da je, da ne bi smelo biti problema. Torej namizni PC bi bil povezan s kablom iz LAN linije, wifi signal pa bi šel s pomočjo ustreznih nastavitev v DD-WRT naprej v prostor za še druge wifi porabnike (laptop, tableta). Samo to.  Prosil bi za pomoč pri nastavitvah..kaj moram kje vnesti, da bi to delovalo. Lepa hvala. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Wifi signal, ki pride iz zunanje antene na konektor antene routerja bi rad preko tega routerja vzpostavil po prostoru. Preko tega enega routerja, ne preko dveh (bridge) ali kaj drugega. Mogoče bi šlo, če bi lahko drugo anteno uporabil kot AP.  Čeprav kaklor razumem fw/hw tega ne podpira http://www.linksysinfo.org/index.php?th... ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "Morda z \"drugo anteno\" misliš na to drugo anteno na routerju??  Na R sta dve antenici. Eno sem odstranil zaradi kabla, ki je tam gor konektan, druga je pa ostala na R. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Morda z \"drugo anteno\" misliš na to drugo anteno na routerju??  Da-  in potem vlan wifi http://www.rickygao.com/shibby-tomato-c...   Če se seveda da fw nastaviti, da dela na dveh ločenih antenah dve ločeni zadevi. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "Ne vem, res ne. Je pa zanimiva interpretacija. Ima pa gor naložen filmware DD-WRT...  Morda bo še kdo kaj dodal...več glav več ve :) ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "\"AC DC\" .... v bistvu je zunanja antena že itak A in ta ta druga na routerju (omni) B, če gledam iz tvojega izhodišča.  \"SeMiNeSanja\"  vem, razumem, si mi že zadnjič o tem pisal.  Ampak glej ne gre pri meni, da bi želel Bridge-mode in dva routerja, za tem ni potrebe.  Želim le deljenje wifi signala po prostoru iz tega primarnega in edinega routerja. Torej Repeat mode opcija. Namizni PC bi povezal itak preko kabla iz LAN porta, prenosnik pa bi dobil wifi signal dobljen iz tega routerja in zato ravno vsa ta jeba! V bistvu enostavno a nastavitve mi nikakor ne gredo v to smer.   Karkoli sem do sedaj naredil router sosedovega wifi omrežja \"ne prepozna\", ki ga sicer omrežna kartica v PCju sprejema in ni bilo nikoli nobenih težav s tem, da ga ne bi spustila skozi..  Kje oz kam (v DD-WRT vnesti nastavitve omrežja oz sosedovega routerja (IP, Gateway, DNS, Subnet mask,..)?? ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Kaj nismo že v štartu ugotovili, da tvoj router ne omogoča 'wireless wan-a' oz. repeater načina delovanja?  Če to drži, boš lahko dolgo iskal po menijih...... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Ja, to imaš prav.  Pozabil sem prej omeniti, da gre to za drugi router; s tistim, ki sem ga bil omenil v štartu (C54br54a) seveda ne bi šlo. Imam Linksys WRT54GL. Nanj je naložen firmware DD-WRT v24 sp2. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Kaj ti v wireless nastavitvah ne ponuja možnosti za Wireless mode 'Repeater'? http://www.dd-wrt.com/wiki/index.php/Re... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Tako je.  Wireless Mode ponuja \"Repeater\".  Potem par vrstic nižje pod \"Network Configuration\" možnosti \"unbridged\" in \"bridged\" ..seveda sem odkljukal \"bridged\".  Na strani št 2  http://www.wi-fiplanet.com/tutorials/ar... ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Tam opšisuje WDS - pa podpira primarni router WDS? Če ne, potem ni čudno, da ti ne dela... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Morda sem postal zdajle bolj pozoren na ta dva odstavka:  Troubleshooting .  . You can configure DD-WRT as a client on the Wireless/Basic page. As a client, you do not have a virtual interface, since the client can only share the host router through wired connections.  If client mode does not work, be sure to check the security arrangement between the host router and the DD-WRT router. Once client mode works with a wired PC, you can then change DD-WRT from \"client\" to \"repeater\" and add the virtual interface.  (Naj povem, da v angleščini ravno ne blestim saj se je v šoli nikoli nisem učil, le kasneje samoiniciativno. Dočim NEM mi je jezikovno, kot slov. vendar si z njo tukaj ne morem prav nič pomagat).  p.s. ne razumem ravno kaj misliš z WDS. Nisem izbral WDS ampak Repeater mode. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": " Cifix63 je 17. feb 2016 ob 18:50 izjavil: p.s. ne razumem ravno kaj misliš z WDS. Nisem izbral WDS ampak Repeater mode.  Druga stran tistih navodil, ki si jih linkal, se nanašajo na WDS povezavo. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "To je ta stran.  At this point, you have essentially set up the DD-WRT router in wireless client mode. Your PC that is wired to the router should be able to access the Internet, assuming that the host router can.   \"TUKAJ SEDAJ MANJKA SLIKA: REPEAT MODE > ter odkljukano REPEATER\"   The next step is to enable the DD-WRT router to behave as a wireless AP in addition to being a wireless client. That's why they call it a repeater, mmmkay?  To perform this trick, you will create a Virtual Interface. This will behave as a software AP, broadcasting its own SSID and bridging external wireless clients to the router, which is itself a wireless client to the host router in this configuration.  The next step is to enable the DD-WRT router to behave as a wireless AP in addition to being a wireless client. That's why they call it a repeater, mmmkay?  To perform this trick, you will create a Virtual Interface. This will behave as a software AP, broadcasting its own SSID and bridging external wireless clients to the router, which is itself a wireless client to the host router in this configuration.  p. s. bom se zdaj šel zopet malo \"igrat\", kakšno uro bom izven neta, pozneje pa pogledam, če si morda kaj pogruntal. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Nič novega tukaj. Ok, očitno ne more nihče pomagat :( Se tudi zgodi.  Vrtim se v krogu in nima več smisla...vedno znova mi prikaže (USPEŠNO) eno drugo in sicer lokalno wifi povezavo, ki NI OPEN in katere repetitor je vsaj dober kilometer zračne linije stran. To preko opcij Repeate Mode> Repeater ali AP - in nato omrežje WDS.  Karkoli že spremenim v nastavitvah (v WDS), celo, če nek poljuben IP vpišem vedno znova to povezavo najde in jo predlaga za potrditi. Tole, ki jo pa na vsak način hočem najti ter potrditi in ki je 30 metrov stran - pa niti sledi od tega. Težko že to razumem no! ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Kaj ti nisem že prej napisal, da mora primarni router podpirati WDS in ga imeti vključenega, če hočeš uporabljati WDS?  Pa sem te že prej opozarjal, da gledaš navodila za WDS in ne navaden repeater mode. WDS je za 'mreženje' več accesspointov. Ti pa nočeš 'mrežiti' ampak zgolj vzpostaviti povezavo med dvema.  Pri tem je primarni router čisto navaden accesspoint, drugi pa najprej nastaviš kot navaden odjemalec. Če si nanj povezan preko kabla, bi ti že to moralo omogočiti dostop do interneta preko povezave. Da pa lahko potem še z brezžičnimi odjemalci dostopaš, moraš še definirati virtualni wireless interface in kreirati 'lokalni' SSID, na katerega se boš povezoval s svojimi klienti. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Saj nič ne rečem. Želel sem pač, da bi imel to preko enega routerja tako, kot imajo to narejeno tisti, ki imajo internet od operaterja; vtaknejo kabel v Ethernet, en kabel nato iz R (LAN port) v računalnik, wifi signal pa delijo naprej wifi odjemalcem. Tako bom pa imel v stanovanju polno teh škatlic (routerji) z utripajočimi lučkami in žarčenjem. In tega nisem želel tako zato sem želel opcijo repeater...razumeš?!  Zadeva mi seveda nikakor še ne deluje, ker je očitno ne znam med seboj korektno uskladiti. V enem slučaju sta se sicer ruterja med seboj povezala vendar wifi signala pa kljub temu ni bilo.  Najbrž bo napaka v nepravilnih vnosih IP ali kaj takega..ne vem.  Bi me lahko vodil po korakih, od točke A do B do C do konca? Lahko bi uspelo, saj tega pa tudi ni tako zelo veliko. Nekaj uspešnih korakov vnašanja in je zaključeno.  a) Primarni linksysov R (host) ima IP 10.0.0.1, sekundarni C54 R (client) IP 192.168.0.1, sosedov R pa javlja IP 192.168.1.7 - a za tega sploh ne vem kam pride vnešen, če sploh kje pride?  b) Kako je z DHCP pri primarnem, kako pri sekundarnem R, kje je enable in kje disable?  c) Pride torej v wifi nastavitvah za primarni R izbrana opcija AccessPoint?  d) WDS. Tam je so tri možnosti: disable, point to point in še ena (ne spomnim se zdaj kako se imenuje). Katero izbrati in kateri MAC naslov vnesti tam. ",
+    "user": "Cifix63"
+  },
+  {
+    "message": "Ježeš ježeš....občutek imam, da sploh ne veš kaj delaš.  Kaj ko bi stopil en korak nazaj, vzel kos papirja in si najprej sploh narisal vso to tvojo zgodbo. Ko boš imel skico, noter vpiši naslove omrežij, naslove na routerju, računalnikih, naslove prehodov,...  Ko ti bo kristalno jasno, kako eno komunicira z drugim in kako gre vse to s temi IP naslovi, tudi ne bo noben problem zadevo skonfigurirat.  Dokler ti pa jaz govorim, da ne uporabljaj WDS, če na drugi strani nimaš podprtega WDS (in ga v bistvu tudi ne rabiš), ti pa še kar sprašuješ, kako naj nastaviš WDS, pa res nima smisla, da ti še kaj razlagam.  Če sam me razumeš, za kaj se pri vseh teh cifrah gre, si najdi enega kolega, ki se vsaj malo razume, pa naj ti on pomaga. Bosta 100x hitreje prišla do kakšnega rezultata, kot če ti tukaj nekaj govorimo, ti pa potem takointako počneš čisto nekaj drugega. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "V redu, če tako trdiš s čimer se čist ne strinjam a ni važno, bom se že znašel. ",
+    "user": "Cifix63"
+  }
+]

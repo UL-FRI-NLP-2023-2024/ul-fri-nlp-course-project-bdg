@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Vzpostaviti moram oddaljeni dostop do računovodskega programa preko ADSLa. Operacijska sistema na obeh računalnikih sta WinXP. V omrežje sta povezana preko stikala in ADSL modema, ki je tudi router. Ker gre za računovodski program, se zahteva varnost povezave.   S strani prodajalca programa je bila priporočena uporaba Remote desktop aplikacije. Ko sem malo bral po forumu, sem zasledil da obstajata Remote desktop in Remote web connection. Kakšna je razlika med tema dvema aplikacijama, če je sploh kakšna? Ali zagotavljata osnovno varnost povezave?  Zasledil sem, da obstajajo tudi razne različice ***VNC. Je to bolj varen in enostaven način vzpostavitve oddaljenega dostopa? ",
+    "user": "krofko"
+  },
+  {
+    "message": "Se nihče ne spozna na to področje?? ",
+    "user": "krofko"
+  },
+  {
+    "message": "UltraVNC (lahko uporabljaš AES in/ali RC4 kodiranje)  http://ultravnc.sourceforge.net/ ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Ehh, bogi revež. Uro in pol si čakal, pa si že živčen, ker ti nihče ne odgovori.  Pri takem načinu te bo kap pri 40ih.  V glavnem, RDP prav tako uporablja kodirano povezavo, tako da je za varnost poskrbljeno.  Razlika med Web in navadno je:  navadna dela prek porta 3389 in za vzpostavljanje povezave potrebuješ klienta (ki je del OS od XP dalje, za starejše sisteme je na voljo dolpoteg na MSjevi strani). ker imaš na obeh straneh XP, ti priporočam tega.  Web pa dela prek IIS-ja, port 80 in za vzpostavljanje povezave potrebuješ zgolj Internet explorer. Vse ostale funkcije so enake.  Priporočam še, da na routerju odpreš nek drug port (ne 3389) in ga mapiraš na 3389 notranjega računalnika. Zgolj zaradi malo večje varnosti. Potem vzpostaviš povezavo z IPdostopanega_racunalnika:port ",
+    "user": "Djuro"
+  },
+  {
+    "message": "OFF: 1 dan in uroinpol ",
+    "user": "Matheeew"
+  },
+  {
+    "message": "Kako pa je z varnostjo pri RDP xp ? (Nekje sem prebral da moraš vzpostaviti VPN povezavo med računalnikoma)  Rdp dela samo v win xp pro ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Za RDP ni potreben VPN, če imaš navzven odprt in prerutan port 3389. In ja, RDP dela na XPpro, W2k3, Vista.   Odjemalec je, kot sem že omenil, na voljo za vse MS OS.  Mimogrede, se opravičujem, nisem videl da je 21.12.  Ajt ",
+    "user": "Djuro"
+  },
+  {
+    "message": "Remote desktop connection ali RDC je najboljša rešitev. Na PCju kjer imaš instaliran rač. program moraš vklopiti možnost da se lahko povežeš nanj preko RDCja Desni klik na My Computer > Properties > Remote tab > Remote Desktop > kljukico v Allow users to connect remotely ... Router na tej strani boš moral skonfigurirati tako da ti forvarda port 3389 na zunanji IP poleg tega boš moral na SIOL naročiti fixni IP za ADSL tam kjr imaš rač. program. ",
+    "user": "Stratus"
+  },
+  {
+    "message": "Imam še eno vprašanje glede statičnega IP. Ali bi to šlo tudi preko dinamičnega IP in programa na spletni strani  http://www.dyndns.com/, ki ti osvežuje tvoj IP?  Ehh, bogi revež. Uro in pol si čakal, pa si že živčen, ker ti nihče ne odgovori. Pri takem načinu te bo kap pri 40ih. Res, da mi manjka še 5 let do 40, ampak zaenkrat še nisem preveč živčen ",
+    "user": "krofko"
+  },
+  {
+    "message": "Ja dyndns je tudi resitev. Pac ce program vsakic popravi na kateri IP kaze tisti hostname bo tudi slo (dyndns mensezdi uporablja TTL 50, kar pomeni da ce se bo server na novo povezal in bo dobil drug IP bo mogoce treba malo cakati, da se bos lahko povezal nanj) Ampak staticen IP bi bil priporocljiv tudi na strani clienta - tako da dovolis dostop do TCP porta 3389 samo za ta pa ta IP ne pa vsem. ",
+    "user": "fiction"
+  }
+]

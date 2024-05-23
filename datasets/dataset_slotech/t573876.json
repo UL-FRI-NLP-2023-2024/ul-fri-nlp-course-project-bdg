@@ -1,0 +1,158 @@
+[
+  {
+    "message": "Lep pozdrav. Na novo sem odprl temo o amd radeon 7 seriji grafičnih kartic s boost biosi. Namreč ugotovil sem, da imajo te kartice majčkene težave a o tem kasneje. Kar sem prebiral in testiral obstaja več varijant boost kartic. Prve naj bi imele 2 biosa enega boost drugega navadnega. Sedaj novejše boost kartice, pa imajo oba biosa enaka. Govorim o biosih med katerima lahko preklapljamo s preprostim stikalom na sami grafični kartici   1 Hec je če nam kaj spodleti lahko preklopimo bios in popravimo situacijo. Kartice s boost biosi so HD 7870boost 7950boost 7970boost 7990boost če obstajajo še kakšne napišite.  Težave, ki naj bi jih imele te grafične kartice so, da pri malo večjih obremenitvah nočejo držati boost frekvenc. Frekvence nihajo kot tudi delovanje kartice. (Izmišljen primer): Zaženemo benchmark grafična deluje na 99% in 900mhz kar naenkrat začne nihati iz 99%-63% kot tudi ferkvence iz 900-800.  Najlepše se to opazi pri navijanju ko frekvence res konkretno opletajo recimo med 800-1100mhz in se precej pozna tudi na performancu.   Hotel sem ugotoviti zakaj grafične s boost biosi to počno in mi ni jasno. Ker thermal design power (TDP) limit je še daleč sploh v igrah v kakšnih extremnih mučilnih testih za testiranje stabilnosti grafične pridemo blizu TDP limitu drugače pa ne. Nasploh smešno je ko grafična zmanšuje gpu load ne samo frekvence. Ko gledaš kaj se dogaja in ti nič ni jasno.  Rešitve. Te grafične imajo power limit Ljudje pravijo naj povečamo power limit lahko v driverjih lahko s programi na +20% kar je pač maximum dovoljeno kar nam pri amd radeon omogočajo. To sicer za malenkost pomaga ampak pri bolj zahtevnih igrah ali mučilnih testih na žalost ne. Ni to nekaj kar bo skurilo grafično ampak naj bi omogočalo da grafična ko rabi lahko potegne več štroma.  Obstaja ena konkretna rešitev za to neprijetnost z boost karticami. Na lastno odgovornost How to Change The Power Control/Limit from +20% to +50%  Open 'regedit' as administrator-right click and 'run as administrator':  1  Browse to:  HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Contro l\\Class\\{4D36E968-E325-11CE-BFC1-08002BE10318}\\0000 ^ It might not be 0000, mines was 0006  . Export and save the entry(and also make a back up also in case of problems), this is the file you are going to edit to change the 20% value to 50%.  Open your reg file with notepad and find and edit the following value in 'PP_PhmSoftPowerPlayTable':  Look down about 4 lines and you'll see the number 14 in between a bunch of zeros and change the 14 to a 32, making sure not to change anything else at all!  Close and save it as 'Power Limit mod' or similar.  Na koncu dvojni klik na to datoteko ok in spremenili ste možnost za power limit do +50%.  Bom dal en primer kako to izgleda. Naprimer mučilni test V OCCT. Original sploh brez veze da kažem prva slika je s power limit na +20% druga slika pa power limit na +50%. Kot vidite na drugi sliki grafična je stabilna frekvence ne nihajo in v drugem primeru je 23fpsjev več, kar ni ravno zanemarljiva razlika.  Še vedno ne doženem zakaj +50% pomaga pri stabilnosti saj poraba ni zato nič večja ker sem spremljal koliko amperov in skupaj W porabi spremljal sem voltaže in razlik ni samo to nihanje izgine in grafična dela kot je treba.   1   2  To je moj primer 7950 boost. Sam sem zaenkrat sprobal 7950 boost različnih firm in vse so imele te težave tudi 7970 sem sprobal sicr samo eno je bilo isto. Nimam pa izkušenj s 7870boost in 7990boost. Zato prosim če imate katere koli od teh kartic v lasti s boost biosi napišite firmo kartice in vaše izkušnje z njo opažanja, da vidimo ali je to res težava vseh boost kartic ali samo nekaterih. Za nihanje frekvenc potestirajte karte s OCCT http://www.ocbase.com/index.php/download msi konbustorjem http://event.msi.com/vga/afterburner/do... ali kakšnih drugim free programčkom za mučenje grafičnih kartic. Za v pogled kaj vaša grafična počne med delovanjem pa priporočam msi afterburner http://event.msi.com/vga/afterburner/do... Hvala lepa lep pozdrav. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "heh sam če kartica dejansko dobi 50% več toka, to ziher ni dober za VRMje, sploh če niso hlajeni... ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Imam 7870 XT Boost se bom jutri malo poigral, do sedaj nisem tega opazil. Je to že vseskozi ali je z zadnjimi gonilniki. ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "Hudiča, pa res nekaj skače. Sapphire 7870 XT, windows 8, power limit 0, gonilnik 13.6.    amd  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "--- OP  Dviginiti vCore pa nisi probal? Meni se zdi, da se je to na moji (ex) HD 7950 dogajalo ob premajhni napetosti skozi jedro. ",
+    "user": "galu"
+  },
+  {
+    "message": "Boost kartice imajo itak fiksen višji vcore ponavadi. Recimo 7950 imajo 1.25v load in nekje 0.8v idle. 1.25v za 925mhz je čisto preveč pa še vedno ne drži frekvenc. Max kar lahko še dvigneš voltažo je 1.3v. Več so pa potem že vmodi. Problem ni v voltažah amperažah tudi ne v TDP. Problem je samo ta boost bios ki ga nekaj po svoje serje. In očitno se ga hudiča ne da drugače umirit kakor s tem hackom za +50% power limit.  +50% Power limit kartica zaradi tega ne dobi čisto nič več toka tok je enak kot prej samo potem ga konstantno drži če je pa power limit na 0 ali +20% pa trokira. Enron x86 OCCT ko testiraš tam imaš 60fps limit daj na 0 da bo kartica lahko maximum dala od sebe in shader compexity na 7.  Kot pravim sem spremljal toke voltaže s različnimi power limiti in razlik ni samo pri enih nastavitvah pootem frekvence in napetosti nihajo pri enih pa ne. Nekaj sem prebiral da ima ta power limit nekakšno vezo s PciE in naj bi podobo težavo imela grafična kartica gtx 680. A o tem si moram še nekaj prebrati. Drugače pa hvala in čim več testov da pogruntamo čim več glede teh težav. Mogoče obstaja kakšna čist simpl fora ki sem jo spregledal. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "@vaščan, ko bom imel čas se bom bolj potrudil in naredil teste s powerlimit 0 in +20. Če me bo zelo razjezilo, pa še s +50 :)  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Tudi moja 7870 XT to dela, imam jo že več mesecev pa sploh nisem vedel, meni je bilo sumljivo da se segreje le do 70C na 1200, sedaj gre na 80+ da začne kašljat tudi z venti na 100%, ko pa nabijem še fane od ohišja ostane na 80C. Dal sem pa +20 več ne bom, ker to reši mojo težavo. Je pa neumen furmark in vseskozi kaže 1200/1500, gpuz pa kaže pravilno.  Lp ",
+    "user": "Assass1n"
+  },
+  {
+    "message": " Assass1n je 15. jul 2013 ob 22:19 izjavil:Tudi moja 7870 XT to dela, imam jo že več mesecev pa sploh nisem vedel, meni je bilo sumljivo da se segreje le do 70C na 1200, sedaj gre na 80+ da začne kašljat tudi z venti na 100%, ko pa nabijem še fane od ohišja ostane na 80C. Dal sem pa +20 več ne bom, ker to reši mojo težavo. Je pa neumen furmark in vseskozi kaže 1200/1500, gpuz pa kaže pravilno.  Lp   na 1200/1500 stable? phh lepa lepa :D ",
+    "user": "klkkkkkkkkkk"
+  },
+  {
+    "message": "a je to ta fora?  https://slo-tech.com/forum/t555272/p393... ",
+    "user": "Janac"
+  },
+  {
+    "message": "Tole je dobro pojasnilo  Think of it This way The reason you always see the term \"throttling\" is because its easier to understand when you view it that way. (see below) But AMD will argue that the boost cards don't throttle, they \"BOOST!\". LOL  TDP = Thermal Design Power AMD's PowerTune technology maximizes performance without exceeding a cards Thermal Design Power (TDP). GPUs consume electrical energy while in operation, and convert this to heat energy that is removed by fans and cooling devices. The rate of energy consumption is limited by a cards ability to deliver power to the device and cool it by removing the heat that is generated. So if a card is exceeding its TDP, PowerTune will kick in and throttle the cards performance to match the cards intended TDP.  Higher speeds and voltage cause PowerTune to kick in and throttle performance to keep the card from exceeding its TDP.  Adjusting the cards powertune limits adjusts the TDP, thus allowing the card to operate at higher speeds / temps without throttling.  Your card can only \"boost\" when it can and still stay within the set TDP limit. So to keep it \"boosted\", you can adjust the powertune limit to ensure it does.  So it really does come down to whether you view the 925mhz as \"boosting\".(like AMD does) Or the 800-850mhz as \"throttling\".(like most of us do)  In other words, your card is working as AMD designed and only boosting when its within its TDP limit.   Dobra razlaga s strani AMDja :D ",
+    "user": "NightHawk"
+  },
+  {
+    "message": "LooL amdjevci so blesave res sem danes potestiral vse stock 7950 karta ima TDP 200w trokira pa na stock nastavitvah +20% power limit na 140-150w. Kakšen TDP še bliz mu ni. Zajebal so stvar samo ne priznajo. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "Kako trokira?... meni je šla 5870 iz 850/1200 na 400/900 med igrami.... ko sem driverje na novo dal gor dela lepo   Nisem te razumel glede TDP-ja?   lp ",
+    "user": "klkkkkkkkkkk"
+  },
+  {
+    "message": "Trokira je po domač da grafična ne dela kot je treba kot je opisano v mojem prvem postu. Kot če bi se vozil s mopedom kjer je diza zamašena ko daš gas ga zamori na ta način. Uglavnem TDP - Če presežeš TDP, PowerTune will kick in and throttle the cards performance to match the cards intended TDP. throttle- (Jaz pravim da Trokira) Zdej če kdo uporablja program GPUZ je super zadeva ko ti v real time piše kolk grafična voltov rabi kolk amperov itd itd. izračun za porabo IxV=W TDP za mojo grafično 7950 naj bi bil max 200W. Meni pa grafična zbija frekvence throttle že pri recimo 120w ali 150w. Hočem rečt da ta njihova boost tehnologija in power tune ne delujeta ravno najbolje. No meni sedaj dela ko sem uporabil ta software hack za +50% power limit. Previdevam da velik ljudi tud ni tolk tečnih za te stvari kokr sem jaz in so že zadovoljni da jim stvar deluje. Včasih je bolje če o kakšnih stvareh ne veš preveč imaš saj mir. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "lahko da je tut zarad temp ",
+    "user": "Isotropic"
+  },
+  {
+    "message": " vaščan je 18. jul 2013 ob 21:58 izjavil:Trokira je po domač da grafična ne dela kot je treba kot je opisano v mojem prvem postu. Kot če bi se vozil s mopedom kjer je diza zamašena ko daš gas ga zamori na ta način. Uglavnem TDP - Če presežeš TDP, PowerTune will kick in and throttle the cards performance to match the cards intended TDP. throttle- (Jaz pravim da Trokira) Zdej če kdo uporablja program GPUZ je super zadeva ko ti v real time piše kolk grafična voltov rabi kolk amperov itd itd. izračun za porabo IxV=W TDP za mojo grafično 7950 naj bi bil max 200W. Meni pa grafična zbija frekvence throttle že pri recimo 120w ali 150w. Hočem rečt da ta njihova boost tehnologija in power tune ne delujeta ravno najbolje. No meni sedaj dela ko sem uporabil ta software hack za +50% power limit. Previdevam da velik ljudi tud ni tolk tečnih za te stvari kokr sem jaz in so že zadovoljni da jim stvar deluje. Včasih je bolje če o kakšnih stvareh ne veš preveč imaš saj mir.    No ja ta trokiranje je bil tudi opažen na GTX 660Ti in GTX 650Ti boost. ",
+    "user": "klkkkkkkkkkk"
+  },
+  {
+    "message": "Kdo bo pa ugotovil kako to popravit na windows 8, kjer ne najdem tega zapisa v regedit oz. ga ni? ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "Nisi celih navodil kopiral  http://www.overclock.net/t/1387430/amd-... ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "No, zdajle sem testiral in uporabil nastavitve, ki jih je predlagal vaščan.  V glavnem, katastrofa.   pwrlimit0 Takšna je situacija z nastavitvijo power control 0: GPU usage je v redu, nihanje frekvence GPU-ja nesprejemljivo. Temperatura in glasnost pod obremenitvijo sta v redu.  Nato sem uporabil power control 20. Slike ni, ker je HUDIČ MED TESTIRANJEM ZMRZNIL. Sem pa spremljal in situacija je bila takšna: GPU usage je zelo pogosto nihal nekje med 100 % - 75 % (ali me morda v tem primeru zavira CPU, i5 750? Ni nič navit). Frekvenca GPU je še vedno nihala, ampak manj pogosto in morda le za 10 %. Temperature so postale nesprejemljive (no, vsaj zame - tam nekje 85 *C), posledično je bila zadeva neznosno glasna. In potem je vse skupaj zmrznilo. Jebenti.  Zdaj bom poskusil naslednje: namestil bom Trixx, izklopil Boost clock, poskušal poiskati nek kompromis med power control 0/power control 20.  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Ja boost ni posrečeno narejen pri AMD. Tako da manual oveclock ko rabiš, ko pa ne pa si itak na 300 Mhz v idle. ",
+    "user": "Pro_moted"
+  },
+  {
+    "message": "Vmesno poročilo:  1. Izklop boosta in znižanje frekvence na 900 MHz ni pomagal:   Boost izklopljen; frekvenca 900 (nastavljena v programu MSI Afterburner)  2. Znižanje frekvence še nižje (700 MHz) tudi ne pomaga:   Boost izklopljen; frekvenca 700 (nastavljena s programom MSI Afterburner)  3. Možnost \"force constant voltage\" v programu Trixx nima učinka, prav tako ne pomaga možnost \"disable ULPC\" (ali kaj že je).  Ostane mi torej še iskanje neke kompromisne vrednosti power control in igranje z voltažo.  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Torej, našel sem rešitev, ki je zame popolnoma sprejemljiva.   ok  Kot vidite na sliki, GPU niti zdaleč ni popolnoma obremenjen, je pa zato število FPS stalno in frekvenca jedra prav tako. Rešitev? Povišanje limita na +20 in omejitev zgornje meje FPS. V Perestroiki sem jo nastavil na 60 FPS. Napetost jedra sem pustil na default.  Da povzamem: Če ne omejimo zgornje meje FPS, kartica porabi vso svojo moč za izris slik. Pri tem porabi preveč štroma in vgrajeni nadzorni mehanizmi jo začnejo bremzati. Rezultat je seveda, da brez omejitve deluje počasneje (verjetno se lažje opazi tudi zatikanje zaradi nihanja), saj stalno pritiska na plin, nato pa zavira. Tehnologija Boost očitno še ni zrela. Najlažja rešitev bi bila, da AMD v svojih gonilnikih vpelje zgornjo mejo FPS (in dovoli uporabnikom, da jo po želji odpravijo oz. spremenijo). Seveda za to obstaja tudi namenski program, ki to že zmore: RadeonPro.  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Še en manjši popravek, če bo komu koristilo: na koncu se je izkazalo, da zadostuje, če je število FPS omejeno in power control nastavljen na +15 (pod obremenitvijo vedno 975 MHz). Pri +10 je GPU občasno preklopil na 925 MHz.  Pa hvala tebi vaščan, da si opozoril na problem.  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Enron x86 poizkusi hack Pusti vse ostalo stock samo tam nastavi +50% power limit ali pa +30%. More bit stabilno v vseh pogojih. V igrah se ti nebi smelo pregrevat. V testih kot je occt pa itak. Sej meni grafa v occt no fps limit tudi takoj čez 80C skoči v igrah pa max do 70C prileze. Moraš vedeti da ti OCCT šiba na grafi maximum se pravi si zelo blizu TDP to pa je maximalni toplotni izpust ki naj bi ga še grafična komaj prenesla. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "@vaščan, zaenkrat ne upam, sem predolgo šparal za grafično :) Saj pravim, če se omeji FPS-je in da power limit na +15 je čisto v redu. Pri 60 FPS drži frekvenco 975, to je zame zaenkrat dovolj.  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Na guru3d.com smo razpravljali o takšnih problemih tudi na Nvidia karticah.   Pri Nvidia karticah, če boost ne dela normalno, so lahko posledica dovajanja energije (slab ali čuden PSU, čudna matična) ali problemi driverjev - redko problemi same kartice.  Problemi driverjev so pa pri meni izgledali tako, da je GPU delal vedno čez 1200, GPU Usage je pa skakal 99,60,99,60,... Rešitev? Zelo preprosta. WIN+D, da špil minimiziraš, nato ga pa samo spet nazaj maximiziraš in GPU Usage je vedno 99%. Razlike med FPSji ni. (moja: Asus 670 DirectCU II Top) Aja, to je kazal samo MSI Afterburner, recimo GPUZ take žage pri GPU Usage ni kazal.    ---  AMD kartice, ki imajo Boost BIOS: Največ problemov je (bilo) pri karticah, ki so izšle pri default 900, potem se je pa pojavil \"Boost BIOS\" in če si ga flashal, si lahko imel takšne probleme.   Predvideva se, da so nekatere \"Boost kartice,\" ki se prodajajo, v trgovini (in ne sam proizvajalec) flashali in jih prodajajo kot \"GHZ\" ali \"Boost\" ali pa nič od tega, pa je vseeno gor \"Boost BIOS.\" (na škatli pa nobene oznake)  Rešitve so razmeroma preproste: Poiščeš svojo kartico in jo flashaš z enim starejšim BIOSom in jo potem brez problema naviješ na \"boost fekvence\" ali višje.   Druga rešitev je opisana tukaj: Power v registriju omogočiš na iz +20 na +50 in potem po resetu nastaviš na +50. Kartica bo držala svoj clock, razlike med porabo in temperaturo pa ne bo. Ta +50 na Boost 1000MHz ali +0 z starim BIOSom in navitjem na 1000, kaže, da ni razlike v porabi. Da ne bo pomote: če kartica zmanjša svoj core clock se bo seveda poznalo. To pa raje testirajte v špilih, kot pa Stress programih. Tudi 3DMark ali Unigine je OK, samo izogibajte se raznih OCCT, Furmark,...  Je pa res tudi to, da nekatere kartice po vseh \"hackih,\" tudi z +50, ne delajo normalno. Pač tisti, ki jih imate, niste imeli sreče pri nakupu. Probajte pa vseeno tako starejše biose in biose od drugih kartic, kot software hack +50 in navijanje.  Torej sta dva problema pri AMDju: hardwareski IN softwareski.  Pod črto:  Tako AMDjevi kot Nvidia uporabniki kupujemo BETA robo, zalagajo nas z BETA BIOSi in BETA Driverji. Žalostno.   Moram pa priznati, da so AMDjeve kartice 7950/7970 boljše kot pa 670/680. Ko sem kupil 670 (tovarniško navita), je bila na večini lestvicah nad 7900. Če pa imate sedaj AMD boost kartico in najnovejše driverje (ki deluje brez težav, boost frekvenca in driverji ne delajo težav), pa boste videli, da sta 7950/7970 v večini iger, ki so izšle v zadnjem času v večini v prednosti pred 670/680. Jaz že od začetka nisem bil zadovoljen z 670. Sedaj mi je kar malo žal, da nisem kupil AMDjeve, ampak kar je je...  Ta težava z Radeon (pomoje niti ni to toliko krivda AMDja, kot pa proizvajalcev kartic) Boost BIOSi je res moteča, čeprav se v dveh tretjinah precej enostavno reši. Brickati pa večino Radeon kartic ne moreš, ker ima switch za BIOS 1 in BIOS 2. Eden je read only, drugi je za flashanje.   Če pa tega stikala nimate, pa ZELO dobro preberite, kateri BIOSi (tudi od drugih proizvajalec) bi lahko delovali in pa imejte še eno grafično, če jo brickate. Če ste zmedeni/prestrašeni/nimate_izkušenj, ko to berete, probajte samo softwareski hack na +50 in vam bo v večini primerov kartica delovala normalno ali bolje. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Jst Dobr si opisal ja.  Moram samo še dodati da dokler nisem vedel za +50% power limit sem poizkusil tudi flashati kartico s starim non boost biosem a žal neuspešno. Rač se tudi prižgal ni več. Mislim da je bolj riskantno flasanje, da se kej uniči kot ta hack. Kot mi je znano ima nvidia ta boost malo bolje narejen pač kartica se boosta ko pa prideš do previsokih temperatur se sama počasi downclocka po majhnih korakih dokler temperature niso ok. Vsaj tako naj bi bilo v teoriji. Pri amdju pa skače vse povsod ob malo večjih obremenitvah čeprav so temperature ok mislim WTF. Zato boost funkcija ne pride do izraza. Primer igraš igro ravno tam kjer je najbolj zahtevno ti karta začne skakat iz 1100mhz na 850mhz in fpsji padejo. Ker če v heavy loadu ne zmore držati clocka potem je ta clock neuporaben zato je boost neuporaben. Ok sej 3dmark score imajo boost kartice malo višji kot stock kartice ker clock ne skače popolnoma ves čas ampak to v praksi v igrah ne pomaga ker se ti karta ravno takrat downclocka ko je najbolj zahtevno. Zgrešena tehnologija do konca nevem kaj so mislili lahko bi vsaj naredili tako kot nvidia glede na temperaturo pa bi bilo 90% manj težav ker se ati karte s dvema ali tremi ventilatorji sploh ne grejejo napram reference varjantam. ",
+    "user": "vaščan"
+  },
+  {
+    "message": " vaščan je 21. jul 2013 ob 08:50 izjavil:Jst Dobr si opisal ja.  Moram samo še dodati da dokler nisem vedel za +50% power limit sem poizkusil tudi flashati kartico s starim non boost biosem a žal neuspešno. Rač se tudi prižgal ni več. Mislim da je bolj riskantno flasanje, da se kej uniči kot ta hack. Kot mi je znano ima nvidia ta boost malo bolje narejen pač kartica se boosta ko pa prideš do previsokih temperatur se sama počasi downclocka po majhnih korakih dokler temperature niso ok. Vsaj tako naj bi bilo v teoriji. Pri amdju pa skače vse povsod ob malo večjih obremenitvah čeprav so temperature ok mislim WTF. Zato boost funkcija ne pride do izraza. Primer igraš igro ravno tam kjer je najbolj zahtevno ti karta začne skakat iz 1100mhz na 850mhz in fpsji padejo. Ker če v heavy loadu ne zmore držati clocka potem je ta clock neuporaben zato je boost neuporaben. Ok sej 3dmark score imajo boost kartice malo višji kot stock kartice ker clock ne skače popolnoma ves čas ampak to v praksi v igrah ne pomaga ker se ti karta ravno takrat downclocka ko je najbolj zahtevno. Zgrešena tehnologija do konca nevem kaj so mislili lahko bi vsaj naredili tako kot nvidia glede na temperaturo pa bi bilo 90% manj težav ker se ati karte s dvema ali tremi ventilatorji sploh ne grejejo napram reference varjantam.  Probaj vsak 800/1250 bios tvoje serije,tak sem jaz naredil in mi je pasal en xfx bios. Jaz imam pa powercolor firmo. ",
+    "user": "Nwanko"
+  },
+  {
+    "message": "Naj kdo sporoči, če je zamenjal BIOS na Sapphire 7870 XT (925(975 BOOST)/1500) in kako se obnese.  lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "Nevem če te karte sploh obstajajo non boost.   Jaz se ne bom zajebaval s flashanjem in iskanjem biosov mi sedaj overclockana 1050/1500 na +50% power limit Dela odlično. Se pa splača najti max overclock pri boost karticah ker imajo zaradi boosta precej višje voltaže kot navadne kartice in se zaradi overclocka ne grejejo nič bolj samo pač hitrejše so. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "Kater program pa kaže najbolj točne podatke. Uporabljam gpu-z in po pol ure valley na 1200 in +50% mi normalno drži frekvenco. Temp pod 80C Upam da je to to ",
+    "user": "Assass1n"
+  },
+  {
+    "message": "Načeloma vsi programi kažejo iste podatke za gpu senzorje vsaj kar sem jaz gledal ni tako kot pri procesorjih. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "Pri prejšnjih nvidia driverjih mi je GPUZ kazal GPU Usage vseskozi 99%, medtem, ko je MSI Afterburner kazal 99,60,99,60,... dokler nisem špil minimiziral z WIN+D, nato pa spet maximiziral. Driver problemi, ker Clock je kazal vedno nad 1200, FPS razlike ni bilo.   ---  Je pa moj kolega kupil 7950 \"boost\" in piše na škatli, da je \"GHZ edition\" in nima nobenih problemov. Voltaža je zaklenjena na 1.2, GPU Clock je 1000, MEM 1250. Problemov, ki so opisani v tej temi (in na guru3d, kjer je veliko ljudi, ki so to opazili) pa nima. OC potencial ima pa njegova kartica okoli 1100/1400, proizvajalca pa ne vem. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Moj kolega ima gigabyte 7950 boost s tremi ventilatorji 1ghz je boost clock overclockat ni probaval ampak mu isto frekvence skačejo kot pri večini. Kartica se mu pa niti pri OCCT ne segreje do 70C. Dobro hlajena. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "Je na škatli kaj označeno? ",
+    "user": "Jst"
+  },
+  {
+    "message": "nevem škatle nisem videl. ",
+    "user": "vaščan"
+  },
+  {
+    "message": "Zdajle furam OCCT že 20 min na 7870 XT(stock) in me zanima nekaj glede temperature jedra. V OCCT mi kaže konstantno 46°C v GPU-Z pa ne gre čez 42°C. Kateremu programu naj verjamem? ",
+    "user": "Janac"
+  },
+  {
+    "message": "vaščan:  Naj proba F43 BIOS: http://www.gigabyte.com/products/produc...  Navodila: http://worldcoinforum.org/topic/121-gig...  Znižalo mu bo default voltažo in clock na 900. Če bo hotel navijati, bo brez problema dosegel 1100.   ---  Janac: Probaj HWMonitor in poglej s katerim programom se temperatura ujema. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Vsak od 3 kaže drugače, pa saj to je neverjetno.    Kakorkoli, glede na to da mam celotno vodno pasivno in ambient 29.5°C so temp ok. ",
+    "user": "Janac"
+  }
+]

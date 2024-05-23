@@ -1,0 +1,92 @@
+[
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Dejte mi pomagat prosim... Zadnjih par let sem ful uporabljal Telargo za napovedi prihodov LPP preko spletne strani. Preverjal sem za tri postaje okrog službe, na kateri avtobus se mi najbolj splača lavfat in koliko se mi mudi. Potem pa je LPP ukinil Telargo in uvedel nekaj drugega... Ampak kako pridem do tega \"drugega\"? Na spletni strani LPP mi nudijo povezavo na Google Maps in prometni info za Ljubljano. Iz tega ne morem v treh klikih ugotovit kdaj grejo avtobusi iz treh različnih postaj. Po drugi strani če z Googlom iščem Telargo, pridem do strani ki zgleda še vedno deluje.",
+    "author": "ptil",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "trola.si",
+    "author": "Neuromancer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Trola.si se zanaša na Telargo, ki naj ne bi več deloval oz. ga je LPP opustil??",
+    "author": "ptil",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Kako da ne deluje, če pa so objavljeni ažurni podatki?",
+    "author": "Neuromancer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Lej, ne vem. Uradno naj LPP ne bi več imel Telarga: https://www.dnevnik.si/1042879405/l...go-nadomestili-z-novim-napovednikom-avtobusov",
+    "author": "ptil",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "MOL PromInfo Aktualne prometne informacije za Ljubljano\n\nhttps://prominfo.projekti.si/web/\n\njavni promet, ime postaje, išči - 3 kliki za eno postajo\nime postaje, išči - 2 klika za drugo postajo\n\nmene bolj moti da je čas precej nenatančen tudi zunaj prometne gneče (prihod čez 7 min, čez 2 minuti pa je že piše prihod).",
+    "author": "johan_blond",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "johan_blond, hvala. Tega sem včeraj testiral, pa mi je najprej 5 minut kazal prihod čez 20 min, ki se je ob vsakem refreshu bolj odmikal (čez 21, 22,... minut), potem je kar naenkrat pokazal prihod čez 10 minut in 20 minut. Tekel sem na avtobusno in je avtobus prišel 8 minut od trenutka, ko je izpisalo, da bo čez 10 minut. \n\nTrola.si in Telargo sta kazala popolnoma drugačne podatke (prihod čez 25 in 40 minut).\n\nSkratka, zelo nezanesljivo vse skupaj.",
+    "author": "ptil",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "To je narejeno za tiste, ki že čakajo na postaji in so potem prijetno presenečeni, ker pride hitreje. \n\nOstali, ki \"tečejo\" na postajo in se zanašajo na to pa: več sreče prihodnjič! ",
+    "author": "McGiver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "https://www.delo.si/lokalno/ljublja...sajo-zanesljivo-aplikacijo-za-lpp-207553.html",
+    "author": "ptil",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik johan_blond je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMOL PromInfo Aktualne prometne informacije za Ljubljano\n\t\t\n\t\tKlikni za razširitev\n\t\nRazvijalci aplikacij morajo posodobiti vir. Za posamezno postajo se podatki dobijo na:\n\nhttps://prominfo.projekti.si/lpp_rc/api/600011\n\n600011 je številka postaje (Bavarski dvor)",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Erikson, hvala za tole informacijo. Ali mogoče veš kje dobiti kakšne metapodatke o omenjeni REST storitvi. Kakšno razlago pomenov polj in njihovih vrednosti? Kako dobiti seznam vseh linij, postajališč in njihovih geokoordinat?",
+    "author": "smolep",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Takole nekako je po moje.\n\narrivals:\n\nisLowfloored: boolean (ali lahko zniža višino)\nminutes: integer (čez koliko minut bo naslednji)\nbusId: string (številčna oznaka proge)\nbusNameTo: string (opisna oznaka končne postaje / smeri)\n\nbusStationID: integer (števična oznaka postaje)\nbusStationName: string (opisna oznaka postaje)\n\nSeznam oznak postaj pa se lahko dobi naprimer na strani (v izvorni kodi):\nhttps://www.lpp.si/sites/default/files/lpp_vozniredi/iskalnik/index.php?stop=0&l=1\n\nV selectu \"stop\" imajo za value številko, poleg pa opisno ime postaje.\n\n<option  value=\"103112\">7. septembra (103112)</option>\n<option  value=\"505132\">Adamičev spomenik (505132)</option>",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Hvala. Ja saj za tiste govorljive oznake polj mi je bilo kar jasno. Ne vem pa kaj bi pomenilo “type”, ali pa npr. “*” v additionalInfo.\n\nGlede seznama postaj bi bilo dobro, če bi jih tudi lahko dobil preko REST storitve, saj se s časom lahko spreminjajo. Poled tega tu ni podatka o geokoordinatah postaje, da bi jih lahko prikazal na mapi.\n\nAli mogoče veš kdo je tole razvijal oz. na koga na občini oz. LPP bi se lahko obrnil glede tega API-ja?",
+    "author": "smolep",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Obstaja tudi tole:\n\nhttp://jozefstefaninstitute.github.io/LPPServer/\n\nProminfo je razvijal Luz: https://prominfo.projekti.si/web/\n\nZa LPP probaj kar mail@lpp.si in naj posredujejo naprej pravi osebi.",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Napoved prihodov avtobusov LPP",
+    "content": "Hvala erikson! Bom ob priliki pogledal tale api, da vidim ali dobim kaj uporabnega. Se mi je zdelo ja, da je tole razvijal Luz. Dvomim pa da bo privat firma karkoli pojasnjevala glede apija. No, konec koncev poizkusiti ni greh saj gre za javno storitev in je vsem v interesu, da se to lahko uporablja.",
+    "author": "smolep",
+    "author_level": "Zelenc'"
+  }
+]

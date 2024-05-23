@@ -1,0 +1,110 @@
+[
+  {
+    "message": "Zanima me kaj se splača uporabit za java namizno aplikacijo - predvidevam da swing, kakšen hibernate za bazo, oz ali obstajajo še kakšni dobri in preverjeni frameworki, ki bi jih lahko uporabil in bi mi olajšali delo? Morda kakšen GUI editor?  Maven verjetno ne bom uporabil, ker bi potreboval še potem repository in ga niti ne rabim... vsaj zaenkrat ne ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "Jaz sem v večini primerov preferiral SWT (toolkit v katerem je zgrajen Eclipse) preprosto zato ker zgleda veliko bolj \"native\".  Za druge frameworke pa bi bilo fajn vedeti kakšno vrsto aplikacije želiš napisati. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "V bistvu eno namizno aplikacijo, ki imela še neko bazo. Pozneje verjetno še kakšne web servise, poročila, grafe in podobno... ",
+    "user": "boss-tech"
+  },
+  {
+    "message": " Mavrik je 23. apr 2012 ob 17:44 izjavil:Jaz sem v večini primerov preferiral SWT (toolkit v katerem je zgrajen Eclipse) preprosto zato ker zgleda veliko bolj \"native\".  Za druge frameworke pa bi bilo fajn vedeti kakšno vrsto aplikacije želiš napisati.   Mi lahko poveš kaj več še o tem? Je potreben posebej narediti SWT projekt, ker sem gledal nek plugin za eclipse... ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "SWT če hočeš da zgleda popolnoma native ali pa swing če hočeš popolno prenosljivost. Za maven pa nerabiš lastnega repozitorija je maven central dovolj. Pa še 2 linka do tutorialov malo si poglej oba pa se potem odloči kaj boš uporabil.  SWT tutorial Swing tutorial ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Mi je tale SWT kar zanimiv in mislim da bo malo bolj pogledal kako in kaj. Za maven pa bom tudi pogledal, ker je tudi dobra stvar, ki ti marsikaj olajša. ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "Pri SWT je edini problem(vsaj za mene) da na maven central ni artifaktov. Sicer obstaja repozitorij na maven.eclipse.org ampak je ta repozitorij samo testing in so artefakti rahlo starejši. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Tisto pa potem verjetno na roke furaš?   Kaj pa baza? PostgreSQL? ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "Maš opcijo da inštaliraš jar v local maven repozitorij ali lastni nexus repozitorij. Nekako se sam bolj nagibam k 1 možnosti.  Za desktop applikacije ponavadi vzamem kar hsqldb ker je lahko embedded in na klientu ni potrebna inštalacija baze. Če pa bo aplikacija dostopala do remote baze potem pa MYSQL ali PostgreSQL. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Za bazo jst uporabljam MyBatis. Zdej se sprasujem, ce bi se moral (s stalisca viabilitya v drugih sluzbah) moral JPA naucit. ",
+    "user": "Spura"
+  },
+  {
+    "message": "Osebno mi je tudi MyBatis všeč, ker maš največ nadzora. Škodit nemore znanje JPA in Hibernate je kar veliko podjetij, ki uporabljajo JPA ali Hibernate. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Ve kdo za kakšen dober tutorial, kako najboljše ločit sloje med sabo - npr da imaš ločen gui, BI, ter sam dostop do baze... se pravi da lahko kakšen del tudi odklopiš in prestaviš. ",
+    "user": "boss-tech"
+  },
+  {
+    "message": " KaRkY je 24. apr 2012 ob 13:05 izjavil:Osebno mi je tudi MyBatis všeč, ker maš največ nadzora. Škodit nemore znanje JPA in Hibernate je kar veliko podjetij, ki uporabljajo JPA ali Hibernate.  A ni Hibernate implementacija JPA? ",
+    "user": "Spura"
+  },
+  {
+    "message": "@Spura je ja ampak omogoča mnogo več kot JPA. Večina podjetij uporablja direktno Hibernate ker omogoča več kot JPA.  @boss-tech za direkt tutorial nevem ampak ti priporočam, da si prebereš o MVC arhitekturi. Je pa za javo in desktop aplikacije prava žalost glede tutorialov. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Za GUI bi jaz uporabil SWT, za bazo PostgreSQL + Hibernate, za grafe ki si jih tudi omenil pa JFreeChart. ",
+    "user": "GupeM"
+  },
+  {
+    "message": "Jaz bi uporabil griffon. Je full blown Groovy MVC framework za rich client aplikacije. Groovy lepo laufa na JVM in ima isti objektni model kot Java in je hkrati dosti bolj expresiven. Neke vrste Grails za desktop.  Za persistance pa sem zadnje case vedno bolj staromoden in bi verjetno kr razmislil, ce rabim bazo ali lahko kr filesystem ponucam. Po principu - Things should be as simple as possible but not any simpler.  Ce pa bi ze uporabljal RDBMS potem pa je moja preferenca jdbc (recimo s springom ga je kr OK uporabljat) -> myBatis -> JPA. Po izkusnjah se vedno bolj strinjam z izjavo da je ORM Vietnam of Computer Science.  Ceprav je clanek ze star ima se vedno kar nekaj odmeva: Stack overlfow, Closed Loop. ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "Kakšna pa je kaj praksa glede GUIja? Se ponavadi za eno okno naredi 1 razred, ali se razdeli v več razredov... kako najbolje razdelit oz pripravit, da potem nimaš težav za naprej ko dodajaš nove stvari, dopolnjuješ in tako naprej. ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "Kolikor sem jaz o tem bral ni neke najboljše poti. Nekako ko razvijaš z iskušnjami vidiš kako je najbolje. Lahko pa si pogledaš MVC, MVP, Presenter Pattern potem pa se odloči kaj ti je najbolj všeč. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Aja še nekaj. Kaj pa pozicija in velikost elementov na oknu, glede na velikost okna? Se pravi da se velikost okna definira glede na resolucijo zaslona in potem elementi na njem % glede na velikost okna. Verjetno se ne uporablja vse fiksnih velikosti... ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "Poglej si layout managerje ima jih Swing in SWT. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "1. Kak se v eclipse naredi swing gui v javi? jaz sem porabil 2 ure da sem namestil novejši eclipse pa inštaliral windowbuilder pa eno drugo tretjo pa še vedno ne dela   2. Če se hoče naredit gui v javi, ali je bolj profi, če se uporablja orodje kjer z miško postaviš elemente v oknčk ali je bolj profi uporabljat javine layout managerje? v mislih imam postavljanje buttonov, textfieldov... ",
+    "user": "Blinder"
+  },
+  {
+    "message": "Če hočeš delat GUI in za začetek ti priporočam da pač vzameš enega drag and drop, pogledaš kodo kako to zgleda in potem drugič narediš na roke oz. popraviš določene stvari ker včasih ti GUI editorji kar lepo \"zasmetijo\" kodo. Za razvijanje GUI-ja v javi pa ti priporočam da uporabiš netbeans ki je od Oracla in ima za moj okus zelo lep GUI editor in tudi dokaj enostaven za uporabo. Koliko sem pred leti preizkušal eclipse addone za GUI editorje so bili vsi zanič razen tistih plačljivih. Netbeans pa je popolnoma zastonj in tudi se mi bolj dopade kot ecplise. ",
+    "user": "Jeremias"
+  },
+  {
+    "message": "kako se naštima code autocomplete v netbeansu? ",
+    "user": "Blinder"
+  },
+  {
+    "message": "Uporab Netbeans IDE. ",
+    "user": "nightrage"
+  },
+  {
+    "message": "Jaz bi ti odsvetoval uporabo drag and drop, ker koda ki jo sproducira je grda. Raje vloži malo več časa v učenje swing in potem na roke spiši. ",
+    "user": "KaRkY"
+  },
+  {
+    "message": "Nekaj me zanima. Kako najlažje rešit problem \"executable jar\" v win7? Ker ga zazna kot zip. Bo dovolj da se preimenuje končnica? (Sam ne morem preizkusit, ker nimam win7 pri sebi) Ali da se izvede preko konzole? ",
+    "user": "boss-tech"
+  },
+  {
+    "message": "Zanima me še kako pakirati knjižnice, ki so narejene za določene OS? Se pravi za win, linux... ",
+    "user": "boss-tech"
+  }
+]

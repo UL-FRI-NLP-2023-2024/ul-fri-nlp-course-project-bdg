@@ -1,0 +1,34 @@
+[
+  {
+    "message": "Pozdravljeni! V excelu imam napisan en programček za avtomatsko obdelavo podatkov v bin datoteki. Datoteka je velika 512 Bytov in na netu sem našel kodo za odpiranje/prenos podatkov v excell (Ta koda mi lepo zloži vsak byte (kot decimalno število) v svojo vrstico)  Private Sub CommandButton1_Click() Dim intFileNum, bytTemp As Byte, intCellRow% intFileNum = FreeFile intCellRow = 0 FileName = Application.GetOpenFilename If Not FileName = \"False\" Then MsgBox FileName Open FileName For Binary Access Read As intFileNum Do While Not EOF(intFileNum) intCellRow = intCellRow + 1 Get intFileNum, , bytTemp Cells(intCellRow, 1) = bytTemp Loop Close intFileNum End Sub  Po končani obdelavi podatkov bi pa želel shranit rezultate oz spremembe v novo datoteko, oz... bi rabil še kodo ki bi mi omogočila da obdelane podatke iz celic shranim nazaj v bin datoteko torej vseh 512 vrstic bi rad shranil nazaj v novo datoteko po zaporedju od 1 do 512 vrstice. (Torej da se ohrani enak format in velikost datoteke - 512 Bytov) Please :) ",
+    "user": "Silikon"
+  },
+  {
+    "message": "Ko zaženem tvojo kodo za odpiranje .bin dobim pri branju na koncu še eno odvečno 0 zraven. Ne vem, če js anrobe zapišem .bin ali že tvoja koda deluje narobe pri branju.  V glavnem koda za shranjevanje (Pri dialogu za shranit ne pozabi na končnico .bin)  Sub shraniBin()\n\n    Dim path As Variant\n    Dim stevec As Integer\n    Dim nFileNum As Integer\n    \n    path = Application.GetSaveAsFilename\n    If path <> False Then\n        nFileNum = FreeFile\n        Open path For Binary Lock Read Write As #nFileNum\n        stevec = 1\n        While Cells(stevec, 1) <> \"\"\n            Put #nFileNum, , CByte(Cells(stevec, 1))\n            stevec = stevec + 1\n        Wend\n        Close #nFileNum\n    End If\nEnd Sub\n ",
+    "user": "amacar"
+  },
+  {
+    "message": "Amacar hvala! Dela skoraj perfektno, res je da moja prejšnja koda doda 513 vrstico z vrednostjo 0, ki je pri obdelavi sploh ne uporabljam, in ravno tale 513 mi sedaj dela težavo pri shranjevanju namreč dobim 513 Bytov. Lahko mogoče prilagodiš tvojo kodo da naj shrani samo prvih 512 vrstic? Lp ",
+    "user": "Silikon"
+  },
+  {
+    "message": " Sub shraniBin()\n\n    Dim path As Variant\n    Dim stevec As Integer\n    Dim nFileNum As Integer\n    \n    path = Application.GetSaveAsFilename\n    If path <> False Then\n        nFileNum = FreeFile\n        Open path For Binary Lock Read Write As #nFileNum\n        stevec = 1\n        While stevec < 513\n            Put #nFileNum, , CByte(Cells(stevec, 1))\n            stevec = stevec + 1\n        Wend\n        Close #nFileNum\n    End If\nEnd Sub ",
+    "user": "amacar"
+  },
+  {
+    "message": "Hvala!  Dela super sedaj! Lp! ",
+    "user": "Silikon"
+  },
+  {
+    "message": "Hoj! Rabim še eno nadgradnjo algoritma :) Če je možno :) Ali se lahko integrira v kodo za odpiranje datoteke sprogramira, da se recimo bin datoteka naloži v stolepc A na del. listu 2 Tvoja koda za shranjevanje pa naj se izvede na celicah stolpca A na delovnem listu 3?  Namreč podatke obdelujem na delovnem zvezku 1, podatke pa bi rad imel ločeno (load / save) datoteke bi rad izvajal na del zvezku 1. Če to zrihtaš si pa res CAR :) ",
+    "user": "Silikon"
+  },
+  {
+    "message": "Za pravo vsoto se da vse zmenit    Sub naloziBin()\nDim intFileNum, bytTemp As Byte, intCellRow%\nintFileNum = FreeFile\nintCellRow = 0\nFilename = Application.GetOpenFilename\nIf Not Filename = \"False\" Then MsgBox Filename\nOpen Filename For Binary Access Read As intFileNum\nDo While Not EOF(intFileNum)\nintCellRow = intCellRow + 1\nGet intFileNum, , bytTemp\nSheets(2).Cells(intCellRow, 1) = bytTemp\nLoop\nClose intFileNum\nEnd Sub\n\n\nSub shraniBin()\n    Dim path As Variant\n    Dim stevec As Integer\n    Dim nFileNum As Integer\n     \n    path = Application.GetSaveAsFilename\n    If path <> False Then\n        nFileNum = FreeFile\n        Open path For Binary Lock Read Write As #nFileNum\n        stevec = 1\n        While stevec < 513\n            Put #nFileNum, , CByte(Sheets(3).Cells(stevec, 1))\n            stevec = stevec + 1\n        Wend\n        Close #nFileNum\n    End If\nEnd Sub ",
+    "user": "amacar"
+  },
+  {
+    "message": ";)  Lej ko se naslednjič vidima skupaj ti bo vse jasno, če ne prej se vidimo za krst maelga Li... :) :) :) :) ",
+    "user": "Silikon"
+  }
+]

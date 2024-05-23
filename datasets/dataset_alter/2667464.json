@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "Živjo,\n\nnimam pojma o Ecelu in VBA, moram pa nekaj poflikat, predvidevam pa da za nekoga ki se s tem ukvarja je zadeva popolnoma enostavna.\n\nNamreč na vrh stolpca bi rad postavil gumb ki odpre vnosno masko za vnos iskanega (sub)stringa v celicah stolpca.\nNpr.\n- v stolpcu A imam v celicah 1-n neke podatke ločene z delimiterjem ; lahko več vrstic v posamezni celici  (alt+enter)\nA1 BCE;hhhh;opiu;\n      iiii;lKOI;HHHGT\nA2 ZZZ;KKK;ooooooo;\nA3 tzt;lkoo;fder;\n     BCE;rrrrrr;ZTREEEE;\n     sdf;lllll;ikju\nA4 KJU;uuuuuu;\nA5   itd\n- v vnosno masko vnesem npr BCE in bi rad da mi poišče celice v stolpcu kjer je ta substring BCE in jih npr. prešteje ali označi.\n\nKakšna hitra rešitev da ne zajadram še v programerske vode, je ostalega preveč?\n\nHvala",
+    "author": "lemar",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "In čemu ne uporabiš že vgrajen filter??\n\nklikenzi - RTFM",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "Lahko pa tudi dodaš novi \"stolpec\" B:\n\nV B1 gre \"iskani\" string - v B2 (in nato dol vse to konca pa):\n\n=FIND($B$1;A2)\n\npod prepostavko, da imaš \"podatke\" v stolpcu A.\n\nTam kjer je \"BCE\" (ozr. vpis iz B2) se pojavi številka, tam kjer ni pa napaka #VALUE\n\nPa spet filter in \"izločiš\" vse \"napake\".\n\nSeveda se da s kakim IF \"rezultat\" formule \"polepšati\" in potem še s pogojnim oblikovanjem špilati ...",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik gr69 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tLahko pa tudi dodaš novi \"stolpec\" B:\n\nV B1 gre \"iskani\" string - v B2 (in nato dol vse to konca pa):\n\n=FIND($B$1;A2)\n\npod prepostavko, da imaš \"podatke\" v stolpcu A.\n\nTam kjer je \"BCE\" (ozr. vpis iz B2) se pojavi številka, tam kjer ni pa napaka #VALUE\n\nPa spet filter in \"izločiš\" vse \"napake\".\n\nSeveda se da s kakim IF \"rezultat\" formule \"polepšati\" in potem še s pogojnim oblikovanjem špilati ...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZadevo skušam čim bolj minimizirat, čim manj korakov, gumb, vnos, OK, konec vsak dodatni klik oz. nastavitev je na žalost problem za potencialne uporabnike",
+    "author": "lemar",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "V katero celico bi vpisoval iskalni kriterij? Katere stolpce in vrstice zajema celotna tabela? Se bo ta \"večala\"?\n\nMogoče se mi te dni res dalo kaj v VBA narest.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "Oups - in v katerem stolpcu bi iskal vrednost.",
+    "author": "gr69",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik gr69 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tOups - in v katerem stolpcu bi iskal vrednost.\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala, sem malce pogledal zadevo, pa sploh ni kaj posebnega, tako da sem nekaj že uspel, ostalo pa še bom.\n\nHvala še enkrat",
+    "author": "lemar",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel, VBA, iskanje (sub)stringa po celicah stolpca",
+    "content": "lemar \nJaz mam pa že napisan VBA ... - rabim samo še polje v katerem bo iskalni kriterij in področje tabele in stolpce - kkr češ ...\n\nPS: pa ne citiraj post po katerim direkt odgovarjaš ...",
+    "author": "gr69",
+    "author_level": "Guru"
+  }
+]

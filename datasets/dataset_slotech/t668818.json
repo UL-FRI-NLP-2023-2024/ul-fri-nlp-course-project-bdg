@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Zdravo,  imel sem probleme z mojo staro matično ploščo (870A-UD3P), kupil sem novo 970A-UD3P Rev 2.0, sistem z novo matično ploščo deluje stabilno.  Problem pa se pojavi pri USB 3.0 vhodih (zadaj in spredaj na ohišju, VIA VL805 chip), formatiral sem disk in naložil sveže Win 7 Ultimate 64bit in driverje, ki so bili priloženi na CD-ju matične plošče, poizkusil sem tudi z driverji iz gigabyte spletne strani in VIA driverje, vsi driverji so verzije 4,90A.  USB 3.0 porti delujejo dobro z napravami USB 2.0 in prenosnim diskom Seagate 3TB pravtako USB 3.0, ko pa v USB 3.0 hub vstavim USB 3.0 ključek pa mi ga ne prebere in windowsi v device managerju disabljajo \"VIA USB 2 Hub\", po restartu sistema USB 3.0 vhodi ponovno delujejo, prebrskal sem po netu in rešitve ne vidim oz. še nisem našel prave, vidim pa da ima veliko ljudi podobne probleme (različne plate). Pisal sem tudi na podporo gigabyta in še čakam odgovor.  Je imel kdo podoben problem? So to driverji ali je pač plata defektna? Je krivec VIA vl805 chip?  Hvala za odgovore. ",
+    "user": "Sami"
+  },
+  {
+    "message": "Znan problem...  Nabavi PCIe USB 3.0 kartico z boljšim čipovjem, npr. Nec/Renesas uPD720202. ",
+    "user": "Han"
+  },
+  {
+    "message": "Čudno se mi zdi, ker bi zadeva morala delovati \"out of the box\", vidim da ima veliko dobrih plat tale VIA usb 3.0 krmilnik. Če ne bo šlo drugače jo reklamiram, čakam še na podporo gigabyta.  Na prejšnji plati pa je bil Nec usb 3.0 in je delovalo bp. ",
+    "user": "Sami"
+  },
+  {
+    "message": "Mogoče bi delovalo v Windows 10. ",
+    "user": "Han"
+  },
+  {
+    "message": " Han je 11. mar 2016 ob 15:17 izjavil:Mogoče bi delovalo v Windows 10.   Nekateri še ne uporabljamo Win 10 oz. nočemo, bi moralo delovati tudi v Win7/8.1. ",
+    "user": "Sami"
+  },
+  {
+    "message": "Vseeno bi lahko naredil test če maš kaki stari disk doma pa nardiš fresh install 10 ke pa pustiš da updejt gre sam od sebe skozi (ne snemaj nič sam dokler se ne zupdejta windows ) pa testiri ... ker če to dela potem naredi izvoz gonilnikov pa jih probaj posnet na windows 7 ročno  v najslabšem primeru vsaj veš da iz tega čipovja nebo kruha :) ",
+    "user": "Compufreek"
+  },
+  {
+    "message": " Compufreek je 11. mar 2016 ob 16:12 izjavil:Vseeno bi lahko naredil test če maš kaki stari disk doma pa nardiš fresh install 10 ke pa pustiš da updejt gre sam od sebe skozi (ne snemaj nič sam dokler se ne zupdejta windows ) pa testiri ... ker če to dela potem naredi izvoz gonilnikov pa jih probaj posnet na windows 7 ročno  v najslabšem primeru vsaj veš da iz tega čipovja nebo kruha :)   Hvala za idejo, bom probal, naprej pa bom probal z Win 8.1, sem na našel neko \"rešitev\", ki naj bi določenim delovala:  \"I solved the problem in my case! When the USB3 XHCI controller and hub disappear, turn off the PC and unplug it from power outlet for 5 minutes (thanks to Bobtran12). You might speed this up by pressing the power button while unplugged to discharge the board.  And then you have to install the USB3 drivers also on one of the USB2 hubs. (USB2 compatibilty)  Driver date: 29. 5. 2014 Driver version: 6.1.7600.4701 from Gigabyte website Win Vista - 8.1 (mb_driver_via-usb3.exe)  As I already posted, you don't have to go through the setup. Just keep a copy of the driver folder, once the setup loads:  C:\\Users\\USER\\AppData\\Local\\Temp\\is-RRRRR.tmp\\USetup\\xhc You can then exit the setup. Now go to device manager and manually install 3 devices: - VIA USB 2 Hub - VIA USB 3 Root Hub - VIA USB eXtensible Host Controller  The latter two might be displayed as \"unknown devices\" or something similar. But the first as \"USB Root Hub\" (1 of 8) and looks to be working. So either try to install all 8 (one will succeed), or find the correct one by different HW ID. VUSB\\VID_2109&PID_3431&REV_0420  In my case the \"VIA USB 2 Hub\" seemed to be working before and used the generic MS driver (as the other 7 do). But one USB 3 HDD caused it to fail and become disabled by Windows. No disappearing since I installed this driver. Tested for 1 month.  Actually there is already a newer driver (6.1.7600.4903). I'm testng it on the other board - works too.\"  Res mi pa ni jasno da Gigabyte ali VIA ne rešita tega problema, zdi se mi bizarno...če prodajajo mora delovati. ",
+    "user": "Sami"
+  },
+  {
+    "message": "Odgovor Gigabyta, mi niti ne pomaga....se bom še malo igral, drugače pa servis oz. mi morajo plato zamenjati.  \"Thank you for your kindly mail and inquiry. We are sorry to hear that it seems there is a problem with your USB 3.0 ports. Before sending the item for further examination, we suggest you to do a simple test first in order to verify the issue:  1. Enter BIOS setting and confirm [USB3.0 Controller (VIA(R) VL805 USB Controller)] set as [Enabled].  2. Remove the current USB 3.0 driver, reboot your computer and reinstall VIA USB 3.0 Driver Version V4.90A for Windows 7 64-bit from our product page. Make sure there is no yellow exclamation mark in front of USB 3.0 in Device Manager and test your USB 3.0 flash drives again with both USB 3.0 ports.  3. Test your USB 3.0 flash drives on another motherboard or test other USB 3.0 flash drives on your motherboard to see if there is a hardware issue.  However, if the problem remains after the above procedure, a further testing or examination to the motherboard might be required. Since we hardly define the root cause through the internet, we suggest you to contact your supplier (where you purchased this product) and see if they can test your system directly. Sorry for the inconvenience.  Regards, GIGABYTE\" ",
+    "user": "Sami"
+  },
+  {
+    "message": "Predhodno se nisem imel dosti časa ubadati s plato, sem pa vse pretestiral in prišel do ugotovitve, da zadaj na plati USB 3.0 porti delujejo brez problema (USB2.0/3.0, diski, usb ključki,...itd.), samo spredaj na USB 3.0 Hub-u od ohišja ne delujejo USB 3.0 ključki, delujejo le 2.0 naprave (usb ključki, diski), od USB 3.0 naprav pa mi spredaj na HUB-u deluje samo zunanji disk, ki ima svoje napajanje.  Po tem sklepam, da je plata OK. Imam očitno težave s HUB-om na ohišju? Je to posledica, da ima premalo štroma? Se da HUB zamenjati? Ohišje je NZXT Elite 210. ",
+    "user": "Sami"
+  },
+  {
+    "message": "Hub USB 3.0 kabel je verjetno slab oziroma predolg. Če boš npr. priklopil zadaj cenen ali predolg USB 3.0 podaljšek, boš na istem... ",
+    "user": "Han"
+  },
+  {
+    "message": " Han je 15. mar 2016 ob 09:16 izjavil:Hub USB 3.0 kabel je verjetno slab oziroma predolg. Če boš npr. priklopil zadaj cenen ali predolg USB 3.0 podaljšek, boš na istem...   Očitno gre res za predolg kabel, ravno berem na tomshardware da mora biti 20/19 pin kabel dolg max 45cm za optimalno delovanje, moj je dosti daljši.  Bom probal verjetno skrajšati kabel, prej moram še preveriti, da ni kabel zalotan na HUB, če ni zalotan samo naročim drugega. ",
+    "user": "Sami"
+  }
+]

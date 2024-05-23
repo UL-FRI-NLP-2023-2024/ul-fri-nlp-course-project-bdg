@@ -1,0 +1,308 @@
+[
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Hej vsem.\n\nZanima me kar nekaj stvari, zato bom najprej razložil problem. \n\nPri kolegu bodo imeli internet v poslovni stavbi in na isti parceli imajo še eno hišo (20m stran), v kateri bi tudi radi imeli internet, med stavbama pa je še garaža. Rad bi povezal dva routerja brezžično: Siolov router, ki bo v poslovni stavbi (pridejo zmontirat naslednji teden) in še en router, ki ga moram še kupit in bo v hiši ali v garaži. Majhen problem je, ker bo siolov router na drugi strani poslovne stavbe, kot je hiša in se v hiši več ne vidi internetne povezave (to sem sprobal tako, da sem moj router WRT54GL postavil na mesto, kjer bo Siolov router in potem sem v hiši iskal omrežje in ga ni našlo, v garaži pa ga je našlo).\n\nPotrebujem torej naslednje nasvete:\n\n1) Kateri brezžični router ima najboljši domet (sprejem in oddajanje)?\n2) Baje, da lahko drugi router brezžično sprejema povezavo le, če ima naložen DD-WRT firmware. Ali to drži? Če drži, obstaja kakšen router z dobrim dometom, ki ima DD-WRT že nameščen?\n3) Ali ve kdo za kakšno drugo rešitev, s katero bi brezžično spravil povezavo v hišo (kakšne antene, ojačevalniki signala?)?\n\nČe ima kdo še kakšno pametno rešitev, naj jo prosim pove. Mora pa biti brezžično (in seveda čimbolj poceni, čeprav denar ni tak problem).\n\nLepo se imejte in hvala že vnaprej.",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "2.) Ne. Veliko ruterjev ima to funkcijo.\n3.) Še en ruter, na lokaciji, ki je viden z obeh tvojih.   Radijski signal pač mora it, skozi ovire pa ne gre. (oziroma gre, samo ga ovira oslabi. Koliko, pa je odvisno od snovi in geometrije ovire).\nSicer je ena možnost, da ga daš v garažo, v hiši pa potem loviš njegov WLAN. (ali pa , posebej če želiš kablovje v hiši, kot sem prej rekel, daš en ruter v garažo, pa enega v hišo. SiOL-ovega pa seveda v poslovno stavbo.\n\nDa povzamem: Najpreprosteje je (no ja, kabel potegnit, če je možno), če ni ovir med antenami. To gre komot tudi 100 metrov, tako da če lahko nekje postrani, pa čeprav preko ulice, postaviš tretji WLAN ruter, je to rešitev za razmislit.\n\nDruga stvar pa so boljše, usmerjene antene.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Jst mam tomato in dva routerja, oba linksys wrt54gl. Išči na googlu za wds, maš za pet minut skonfigurirano. Ne vem pa kak je ta siolov router. Z drugim firmwarom si lahk tud oddajno moč povečaš.",
+    "author": "flip",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "@stein, sam imam WRT54GL doma. Kako lahko z mojim routerjem brezžično sprejemam povezavo od soseda in jo nato preko istega routerja ponujam dalje (tako, da se z računalnikom potem povežem na moj router)?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Ponujaš dalje žično ali brezžično?\n\nZa žično je dovolj, da se ruter poveže na sosedovo mrežo (Wireless Client način).\n\nZa brezžično pa je \"wireless repeater\" mode. Ali pa podobno. Odvisno od fimware, kako se točno imenuje. Pa nimajo vsi te funkcije.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "A siOLov modem naj bi oddajal signal, ki bi ga ti rad lovil v hiši? Ne ga srat. No go, tistega še tri sobe naprej ne loviš več.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "To me ravno zanima, kateri routerji imajo to funkcijo da lahko kot vhodno povezavo (WAN) sprejemajo preko Wireless in nato (na drugi anteni) tudi preko Wireless oddajajo povezavo naprej... Router bi torej služil kot nekakšen ojačevalnik...",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Jaz bi naredil takole. Na modem bi priklopil WiFi router, po možnosti takega, na katerega lahko daš kakšno after market usmerjeno anteno, na drugi strani rano takega in od tam potem po žicah naprej. Če boš rabil tudi WiFi dostop, bo verjetno treba še en WiFi router, nisem pa siguren.\n\nMogoče kaj takega:\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \nhttp://www.dd-wrt.com/wiki/index.php/Wireless_Bridge\n\n\nBTW, to je bil čist prvi zadetek v Guglnu na WiFI Bridge.\n\nZa routerje in antene lahko pogledaš tukajle: http://shop.wlan-antene.net/",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik raners pravi:\n To me ravno zanima, kateri routerji imajo to funkcijo da lahko kot vhodno povezavo (WAN) sprejemajo preko Wireless in nato (na drugi anteni) tudi preko Wireless oddajajo povezavo naprej... Router bi torej služil kot nekakšen ojačevalnik...\n\t\t\n\t\tKlikni za razširitev\n\t\nTo zmore večina novejših routerjev. Je pa fino, da sta routerja, ki ju povezuješ od iste firme, ali pa vsaj na istem čipovju. Tako imaš garancijo, da bo skoraj sigurno delovalo. Pri različnih čipovjih je loterija.",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "O tem je bilo že precej govora na tem forumu, je treba malo search funkcijo uporabit.\n\nRepeater bridge seveda deluje na WRT54, vendar ne spreglej dejstva, da je Siolov modem zelo slaba zadeva in se nato bridge konstantno sesuva(preverjeno). Rešitev je zunanji router ali AP priklopljen na siolovega, obvezno izklop wirelles na siolu, ter nato wirelles bridge na  WRT54 z dd-wrt. Tako zadevo uporabljam sam in deluje bp, vendar spet ne spreglej dejstva, da z uporabo wirelles preko wrt54 zgubiš polovico hitrosti linije, ki jo omogoča siol. Po domače, če imaš linijo 4M, lahko uporabljaš preko wirelles na WRT54 samo 2M, če se pa na WRT54 priklopiš preko kabla pa vse torej 4M.",
+    "author": "igorduska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Zakaj se zafrkavati z zastarelim in dražjim Linksysem, če lahko rešiš problem z dvema TP-Linkoma WR741ND. WDS povezava deluje brez najmanjšega problema in tudi ni nobenih hecov glede enkripcije.",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igorduska pravi: Po domače, če imaš linijo 4M, lahko uporabljaš preko wirelles na WRT54 samo 2M, če se pa na WRT54 priklopiš preko kabla pa vse torej 4M.\n\t\t\n\t\tKlikni za razširitev\n\t\nTo pa ne bo držalo.\nImam podobno in preko WLAN leti preko 10 Mbps.\nInternet pa je 6 Mbps.\n(leti z enega PC na drugega, seveda).\nPrepolovi se teoretična zmogljivost WLAN.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Ja pa bo držalo. Ne moreš imeti 10M na liniji 6M, ni teorije.\nNe mešat lokalne povezave znotraj mreže z hitrostjo navzven. Ta se konkretno zniža na bridge vezavi(wirelles).\n\nNaredi speedtest direktno na siolu, nato pa še z wirelles preko bridge routerja. Razlika je več kot očitna.",
+    "author": "igorduska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Direktno na siol kišto 5/2, preko routerja 5/2, brezžično preko routerja 5/2, brezžično preko drugega routerja, ki je preko WDS obešen na prvega 5/2. Torej?",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Govora je bilo o Repeater Bridge, ne pa WDS.\n\nIz navodil za Repeater Bridge na strani od dd-wrt:\nAlso take note of the fact that all repeaters, including this Repeater Bridge mode, will sacrifice half of the bandwidth available from the primary router for clients wirelessly connected to the repeater. This is a result of the repeater taking turns talking to not just one partner, but to two, and having to relay the traffic between them.\n\nIz navodil za WDS(dd-wrt):\nAlso take note of the fact that all repeaters, including this WDS Repeater mode, will sacrifice half of the bandwidth available from the primary router for clients wirelessly connected to the repeater. This is a result of the repeater taking turns talking to not just one partner, but to two, and having to relay the traffic between them.\n\nTorej?",
+    "author": "igorduska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Ja, 20 in nekaj Mbps, koliko zmore WLAN (generacije 802.11g) se bo v primeru WDS ali podobnega \"podajanja signala\" prepolovilo na 10 in nekaj.\n\nKaki internet gor priklopiš pa nima veze.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Razen tega se \"prepolovitev\" zgodi, če se WLAN signal prejme in dalje odda.\nČe pa je WLAN povezava ena, vse drugo pa preko žice, do tega ne pride.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Da ne odpiram nove teme bom vprašanje zastavil kar tukaj\nImam router asus wl-500g ki sem ga dobil že kar nekaj časa nazaj .Priklopil sem vpisal ip pridem na prvo stran ne morem pa v njega ker ne vem imena in gesla saj je bil spremenjen.Probal sem vse varjante z admin ,user ,administrator...... probal sem ga tudi resetirat na gumb pa tudi nič.Reset sem naredil tako kot piše v navodilih da držiš gumb 5sek in več pa nič potem sem še kot pri nekaterih modelih  izklop držiš reset in vklop še zmeraj držiš tipko tukaj se nekaj zgodi začne utripat power lučka ampak še zmeraj nič.\nKaj bi lahko naredu ali obstaja kakšen program za hekanje gesla Kakšen nasvet\n\nHVALA",
+    "author": "BoRiiS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Kateri firmware je gor? Nimajo vsi isto geslo.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\nFirmware Version:    WHITE RUSSIAN (RC5)\nKernel Version:  Linux version 2.4.30 (nbd@ux-2y02) (gcc version 3.4.4 (OpenWrt-1.0)) #1 Sun Mar 26 19:02:04 CEST 2006",
+    "author": "BoRiiS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "http://wiki.openwrt.org/doc/howto/firstlogin\n\nTorej povezat se preko TELNET-a, pa nastavit geslo.\n(dobri stari Microsoft je v Windows 7 odstranil ta program, priporočam PuTTY kot nadomestek)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "glede Wlan-Wlan povezave se strinjam z nekom zgoraj ki omenja Tp-Link.\nDeluje tudi z različnimi modeli rputerjev, ki so (lahko zelo) poceni, povezava deluje brezhibno in stabilno.\nKonkretno šeram internet sestrični, pri meni je TP-Linkov  WR642G (predpotopen takorekoč), pri njen pa novejši WR741N.\nPoleg šeranja neta, gleda preko te mreže še TV preko MediaPortal-a. Vse deluje bp.",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "telnet je v win 7 samo ga je treba namestit\nhttp://windows.microsoft.com/sl-SI/windows-vista/Telnet-frequently-asked-questions",
+    "author": "BoRiiS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "cel dan se že zezam  z telnet-om PuTTY pa nič",
+    "author": "BoRiiS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Kaj se zezaš?\nA se sploh poveže?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "V telnet-u mi javlja napako porta 23 pa sem odpru port v požarnem zidu nastavu mrežno in odstranu antivirusni.\nV PuTTY-u pa me zeza ime ki je bil tudi spremenjen probol sem z vsem nastavitvami mogoče ne tapravimi.\nPomojem je bil rutar nastavljen za server da se je preko njega na daljavo prišlo v server.",
+    "author": "BoRiiS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Torej tole dobiš?\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Zanima me še nekaj (glede brezžične povezave dveh routerjev):\n\n1.) V čem je razlika med WDS in Repeater Bridge in Client Bridge (http://www.dd-wrt.com/wiki/index.php/Linking_Routers) (in tudi Wireless Bridge sem zasledil)? Mislim predvsem glede nastavitev, glede zanesljivosti delovanja, ipd. (bolj na kratko)... Saj sem si prebral, pa vseeno ne razumem najbolj...\n2.) Kateri način povezave moram gledat, če želim imeti brezžično povezavo na obeh routerjih?\n3.) Ali je možno povezat Siol-ov router in WRT54GL med seboj brezžično? Včeraj mi je namreč v eni trgovini trgovec rekel, da gre preko WDS.\n4.) Ali resnično ne obstaja nobena naprava, katera bi znala sprejemat katerokoli brezžično povezavo (brez nekih dodatnih nastavitev) in jo potem brezžično oddajat naprej?",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Sory  stein druge obveznosti ja tole mi javi\nDej če je kakšna fora bi te prosu za kaka navodila kako rešit\n\nHVALA",
+    "author": "BoRiiS",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik raners pravi:\n Zanima me še nekaj (glede brezžične povezave dveh routerjev):\n\n1.) V čem je razlika med WDS in Repeater Bridge in Client Bridge (http://www.dd-wrt.com/wiki/index.php/Linking_Routers) (in tudi Wireless Bridge sem zasledil)? Mislim predvsem glede nastavitev, glede zanesljivosti delovanja, ipd. (bolj na kratko)... Saj sem si prebral, pa vseeno ne razumem najbolj...\n2.) Kateri način povezave moram gledat, če želim imeti brezžično povezavo na obeh routerjih?\n3.) Ali je možno povezat Siol-ov router in WRT54GL med seboj brezžično? Včeraj mi je namreč v eni trgovini trgovec rekel, da gre preko WDS.\n4.) Ali resnično ne obstaja nobena naprava, katera bi znala sprejemat katerokoli brezžično povezavo (brez nekih dodatnih nastavitev) in jo potem brezžično oddajat naprej?\n\t\t\n\t\tKlikni za razširitev\n\t\n\n1.) WDS -  ruterja sta povezana brezžično, na oba se lahko priklapljajo WLAN klienti (brezžično torej)  - na obeh ruterjih je treba nastaviti WDS način\nClient Bridge - prvi ruter dela normalno , drugi se nanj poveže kot klient in omogča priklop klinetov, a le po žici - prvi ruter ni treba nič nastavljati za ta način\nRepeater Bridge - kot Client Bridge, le da se na drugi ruter klienti lahko povežejo tudi brezžično\n\nTo so slike, za lažje razumevanje:\nhttp://www.dd-wrt.com/wiki/index.php/Repeater_Bridge\nhttp://www.dd-wrt.com/wiki/index.php/Wireless_Bridge (Clint Bridge)\n\nWDS je podobna slika kot za Repeater Bridge, le interni detajli so drugačni)\n\n2.) WDS ali Repeater Bridge  (probaj enega, potem drugega, dokler en ne začne delovati)\n\n3.) Glej točko 2.  (različne naprave se različno obnašajo. Pri nekaterih kombinacijah naprav deluje WDS, pri drugih Repeater Bridge, prit tretjih oba, pri četrtih pa noben...)\n\n4.) To je več ali manj Repeater Bridge, oziroma Repeater mode (pri Repeater Bridge je ponavadi še treba IP-naslov ruterja nastavit na roke, čeprav bi teoretično lahko bilo avtomatsko).\n\n\nUpoštevaj, da lahko različni proizvajalci isto stvar imenujejo različno.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik BoRiiS pravi:\n Sory  stein druge obveznosti ja tole mi javi\nDej če je kakšna fora bi te prosu za kaka navodila kako rešit\n\nHVALA\n\t\t\n\t\tKlikni za razširitev\n\t\nČe drugo ne, instaliraj nov firmware. Asusov, ali pa novejši OpenWRT (White Russian je prastar). Ali pa DD-WRT.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "@stein, hvala za razlago. Če ima kdo še kakšne praktične izkušnje \"iz terena\", je tudi zelo dobrodošel za svoje mnenje.",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik raners pravi:\n Zanima me še nekaj (glede brezžične povezave dveh routerjev):\n\n1.) V čem je razlika med WDS in Repeater Bridge in Client Bridge (http://www.dd-wrt.com/wiki/index.php/Linking_Routers) (in tudi Wireless Bridge sem zasledil)? Mislim predvsem glede nastavitev, glede zanesljivosti delovanja, ipd. (bolj na kratko)... Saj sem si prebral, pa vseeno ne razumem najbolj...\n2.) Kateri način povezave moram gledat, če želim imeti brezžično povezavo na obeh routerjih?\n3.) Ali je možno povezat Siol-ov router in WRT54GL med seboj brezžično? Včeraj mi je namreč v eni trgovini trgovec rekel, da gre preko WDS.\n4.) Ali resnično ne obstaja nobena naprava, katera bi znala sprejemat katerokoli brezžično povezavo (brez nekih dodatnih nastavitev) in jo potem brezžično oddajat naprej?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPri WDS vidiš samo eno omrežje. Klienti se povežejo na tisti ruter, ki ima močnejši signal. Če se vmes premakne bližje drugemu, ga avtomatsko preklopi. Cena za to je, da morata ruterja(i) vedeti za en drugega in se med sabo pogovarjati. V praksi to deluje samo med ruterji, ki uporabljajo čipovje istega proizvajalca. Pazi, to ne pomeni vedno, da so med sabo povezljivi na ta način vsi modeli istega proizvajalca ruterja. Različni modeli lahko uporabljajo različno čipovje.\n\nPri repeater bridgeu pa imaš obstoječe omrežje, na katerega se poveže drugi ruter kot klient, potem pa sam oddaja to povezavo naprej. To pomeni, da  na prenosniku/telefonu potem vidiš dve omrežji in odločiti se moreš na katero se boš prIklopil. Ko se oddaljiš izven dosega tega omrežja, se povezava prekine, čeprav je mogoče drugo omrežje še dosegljivo. Preklopiti moraš ročno. Pri tem načinu v prvem ruterju ni treba nič spreminjat.\n\nClient bridge je pa podobno kot repeater bridge, le da se na  drugi ruter ne moreš povezati brezžično.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Za WDS ni nujno, da je isto čipovje. Jaz imam že leta WDS med Broadcomm in Inprocomm čipom.\nJe pa res, da je verjetnost uspeha višja, če so bolj podobni čipseti.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Če me je dd wrt wiki lagal, potem jaz lažem naprej.\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n WDS between different chip vendors (atheros, broadcom, ralink) will not work most of the time since it's INCOMPATIBLE and no we will NOT fix it\n. (However, if you are really desperate to give it a try, users in the forum have documented that this may work for certain hardware. Try at the peril of your sanity.)\n\t\t\n\t\tKlikni za razširitev\n\t\n\nhttp://www.dd-wrt.com/wiki/index.php/WDS_Linked_router_network",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Novejši TP-Linki se lahko preko WDS obesijo na praktično katerikoli router, neodvisno od tega, katero čipovje ima. Jaz sem do sedaj to uspešno izvedel na Atheros, Ralink in še enega xy Asusa, za katerega ne vem, kaj se v njemu nahaja",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Se bom se jaz vkljucil...sepravi kateri router potem nabavit, da se brezzicno poveze na Siolov router? Kateri router bi se najbolj zanesljivo povezal s Siolovim?\n\nEdit:\nKolikor sem sedaj posrfal, se na sinope ne da nastavit WDS.\n\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Ti raje to siolovo čudo uporabljej samo kot modem, ter zraven priklopi en spodoben router. Škoda živcev za karkoli drugega \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Ja samo je en mali problem, ker Sinope je v pisarnah, jaz pa rabim wifi v pisarnah in v hali kjer so wifi kamere. Med halo in pisarno je betonska pozarna stena zaradi katere je siolov wifi signal zelo slaboten. Ce postavim router v halo, bo lovilo tudi v pisrnah??\n\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Nasploh je \"modrost\" taka: Na Sinope izklopiš WLAN in na isto polico daš \"pravi\" WLAN ruter. Potem pa še drugega v halo.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "A da bi steno prebijal, se pa verjetno ne sme, če je požarna?",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\n Nasploh je \"modrost\" taka: Na Sinope izklopiš WLAN in na isto polico daš \"pravi\" WLAN ruter. Potem pa še drugega v halo.\n\t\t\n\t\tKlikni za razširitev\n\t\nDejmo to \"modrost\" še malo razširiti. Modem naj bo SAMO modem in router naj bo router, žični in/ali brezžični.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Ja pozarne stene naj se nebi prebijalo...sepravi varianta bi bla dva prava routerja, en v pisarni drug v hali, ali pa preboj stene in modem v pisarni povezat z routerjem v hali. \n\nSe nekaj me zanima...glede na to, da sedaj z sinope modemom/routerjem iz pisarne dobim wifi signal tudi v halo (par metrov), koiko bi se signal izboljsal s pametnim routerjem?\n\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Dosti. Ker ta Sinope ima slab signal.\nRecimo Sinope mi je nadstropje nižje prekinjal povezavo, TP-Link WR841ND pa ima na istem mestu 2, včasih 3 črtice signala, jasno brez prekinitev.",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "A bi kakšna usmerjena antena kaj pomagala pri prečkanju stene?",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Seveda bi. Samo si pa z usmerjeno anteno zelo zmanjšaš območje uporabnega signala. \nNo, pri routerjih z 2 ali več antenami to ni problem, če eno anteno zamenjaš z usmerjeno.",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Hej vsem.\n\nMoram vam povedat, da sem rešil problem, in sicer s Sitecom Wireless Range Extender 300N WL-330 (http://www.sitecom.com/wireless-range-extender-300n/p/714). Zaenkrat deluje vredu, preprost za namestitev s KATERIMKOLI brezžičnim  routerjem, saj se brezžično poveže na KATEROKOLI brezžičmo omrežje in ojača signal ter ga naprej oddaja brezžično!\n\nTako imam povezana Siol brezžični router in ta wireless extender in vse deluje vredu.",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Super, hvala, da si dal povratno informacijo, ne kot nekateri, ki dobijo tri strani nasvetov in potem niso niti toliko, da bi blagovolili napisati, kako so problem rešili.",
+    "author": "MadMitch",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "Katerega bi vi izbrali?\n\nhttp://www.mimovrste.com/artikel/2470033625/tech/brezzicni-router-tp-link-tl-wr1043nd#tech\n\nali \n\nhttp://www.mimovrste.com/artikel/2470015827/brezzicni-router-d-link-dir-635-rangebooster-n-650#tech\n\nLP",
+    "author": "alfist555",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "gled na pretekle izkušnje z D-linki in TP-linki bi izbral TP-Link (beri: nobenih težav).",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava Wireless - Wireless Router?",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik MadMitch pravi:\n Super, hvala, da si dal povratno informacijo, ne kot nekateri, ki dobijo tri strani nasvetov in potem niso niti toliko, da bi blagovolili napisati, kako so problem rešili.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "18zimoni",
+    "author_level": "Pripravnik"
+  }
+]

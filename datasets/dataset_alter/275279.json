@@ -1,0 +1,56 @@
+[
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "moram programirati nekaj v vb.net\n\nLahko kdo obrazloži kaj kaj pomeni, nekaj posameznih stavkov vem, ko povežem v celoto je pa kriza \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nrecimo tole:\n\n\nModule Module1\n\n    Sub Main()\n\n        Dim r As Single\n        Dim pi As Single\n\n        Console.WriteLine(\"program za izračun ploščine kroga \")\n        Console.WriteLine(\"\")\n\n        Console.Write(\"podaj radij kroga \")\n        r = Console.ReadLine()\n\n        pi = Math.PI * r ^ 2\n\n        Console.WriteLine(\"ploščina kroga: \" & pi.ToString(\"F3\"))\n\n\n\n        Console.ReadLine()\n\n\n    End Sub\n\nEnd Module\n\n...tole razumem kaj pomeni s to ploščino kroga.\n\n  --------------------------------------------------------------------------------------------------------------------------  \nbisekcija:\n\nModule Module1\n\n    Sub Main()\n        ' Deklariramo spemenljivke\n        Dim a As Single\n        Dim b As Single\n        Dim c As Single\n        Dim eps As Single\n        Dim sk As Integer\n\n        ' Določimo kako natanæno želimo izračunati rešitev\n        eps = 0.00001\n        ' Začetno število korakov = 0\n        sk = 0\n\n        Console.WriteLine(\"Podana je funkcija f(x)=2x-2\")\n        Console.Write(\"Podaj spodnjo mejo intervala: \")\n        a = Console.ReadLine\n        Console.Write(\"Podaj zgornjo mejo intervala: \")\n        b = Console.ReadLine\n\n        Console.WriteLine()\n        Console.WriteLine(\"Vmesnje stopnje števila c\")\n        Console.WriteLine()\n        Console.WriteLine(\"Negativne vrednosti:   Pozitivne vrednosti:\")\n        Console.WriteLine(\"                       c &lt; 1       c &gt; 1   \")\n        Console.WriteLine()\n\n        ' Ponavljamo niz operacij....\n        Do\n            c = (a + b) / 2\n            sk = sk + 1\n\n            If (2 * a - 2) * (2 * c - 2) &gt; 0 Then\n                a = c\n            Else\n                b = c\n            End If\n\n            ' Niz ukazov za izpis vmesnih vrednosti števila c.\n            '______________________________________________________________\n            If c &lt; 0 Then\n                Console.WriteLine(c & \"                       \")\n            End If\n\n            If c &gt; 0 And c &lt; 1 Then\n                Console.WriteLine(\"                       \" & c)\n            End If\n\n            If c &gt; 1 Then\n                Console.WriteLine(\"                                   \" & c)\n            End If\n            '_______________________________________________________________\n\n\n        Loop While Math.Abs(b - a) &gt; eps\n        ' ...dokler absolutna vrednost (b-a) ne preseže vrednosti 0.00001.\n\n        Console.WriteLine()\n        Console.WriteLine(\"Ničla funkcije = \" & c)\n        Console.WriteLine(\"Število korakov =  \" & sk)\n        Console.ReadLine()\n\n    End Sub\n\nEnd Module\n\n  ----------------------------------------------------------------------------------------------------------------------------------------------  \n\n  Imports  System.IO \n   Module  Module1 \n   \n     Sub  Main()\n\n         Dim  x()  As Single \n          Dim  y()  As Single \n         Dim  n  As Integer \n         Dim  i  As Integer \n         Dim  inp  As  StreamReader\n         Dim  out  As  StreamReader\n         Dim  podatki  As String \n         Dim  b()  As String \n\n        inp =  New  StreamReader(\"D:\\DELAJTU\\ogljisca.txt\")\n        n = inp.ReadLine()\n\n         ReDim  x(n - 1)\n         ReDim  y(n - 1)\n\n         For  i = 0  To  n - 1\n\n            Console.WriteLine(\"točka\" & i & \":\")\n            podatki = inp.ReadLine\n\n            b = podatki.Split()\n            x(i) = b(1)\n            y(1) = b(2)\n\n            Console.WriteLine(\"\" & x(i) & \" \" & y(i) & \"\")\n         Next \n        inp.Close()\n\n        out =  New  StreamReader(\"D:\\DELAJTU\\ogljisca.txt\")\n        out.ReadLine()\n        out.Close()\n\n        Console.ReadLine()\n\n     End Sub \n\n End Module \n\n  -------------------------------------------------------------------------------------------------------------------------------  \n\nkaj je zanka? kako naštimam if stavek?\n\nhvala, hvala \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "Kaj konkretno ti ni jasno? Ker tole je zeeeelo simple napisano, ni nikjer nobenih trikov, tko da... Aja, osnovne ukaze pa moraš vsaj približno priznat, da boš razumel kaj se dogaja...",
+    "author": "cbb",
+    "author_level": "Chef"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "Ja brez osnov ti bo bolj malo jasno\nZanko maš zgoraj DO...Loop, oziroma LOOP WHILE...Zanko maš tudi FOR...NEXT, in tako naprej\nIF stavek pa naštimaš IF...vmes pride koda in na koncu...END IF \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "SpEkTr",
+    "author_level": "ex mroizo"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "Za seminar Moram narest takšen program, ki bo izpisoval to:\n\nProgram za risanje in izračun vseh ničel funkcije f(x)=a × sin (&#969;×t+&#966, kjer je t čas, a je amplituda, &#966; je začetna faza, (2×&#960/&#969; pa je perioda.\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "moram narest takšen ukaz ki bo ob poljubnem a-ju, omegi, fi-ju izpisoval ničle. Najprej ustvarim to formulo, in kasneje še formulo za ničle?\n\nKako se tega sploh lotit?   \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "a res nihče ne bi vedel? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "Čaki, a zdej bi ti rad, da ti en seminarsko napiše, al ti samo kaj ni jasno?",
+    "author": "cbb",
+    "author_level": "Chef"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "Ne, ne ne. Seminarsko bom sam nrdu.\n\n\"Program za risanje in izračun vseh ničel funkcije f(x)=a × sin (&#969;×t+&#966, kjer je t čas, a je amplituda, &#966; je začetna faza, (2×&#960/&#969; pa je perioda\"\n\nZanima me če sem pravilno zastavil nalogo. Kako se je sploh lotiti? A moram narest ukaz za spremenljivko t?\nRecimo nekako takole:\n\n\n\nDim t As Single\nDim ...\n\nConsole.WriteLine(\"program za izračun ničel funkcije \")\nConsole.WriteLine(\"\")\n\nConsole.Write(\"podaj čas t \")\nt = Console.ReadLine()\n\nf(t) = Izrazim iz podane formule (?)\n\nConsole.WriteLine(\"za dan t je ničla v: \" & pi.ToString(\"F3\"))\n\nConsole.ReadLine()",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Visual Basic - Prva pomoč",
+    "content": "ja sej v tistem vprasaju pa ni nic programiranja. Je samo matematika.\n\nlp",
+    "author": "KrNeki99",
+    "author_level": "Pripravnik"
+  }
+]

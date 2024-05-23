@@ -1,0 +1,80 @@
+[
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Torej, situacija. Imel bi dva WLAN routerja (npr. Linksys WRT-54G z DD-WRT firmware-om). Prvi router bi bil povezan na net, drugi pa bi bil postavljen na oddaljeni lokaciji. Signal vmes je, rad bi le, da bi se na ta drugi router povezovali WLAN klienti in potem preko njega in prvega routerja dostopali do neta. Oba routerja bi morala biti povezana brezžično (ni možnosti UTP kabla vmes). Je to možno? Ta drugi router je lahko le posrednik, torej da so vse nastavitve za DHCP, itd. nastavljene na prvem routerju. To me ne bi motilo.\nČe je to možno, v kakšen mode moram nastavit posamezen router. Verjetno prvi ostane na Gateway, drugi pa na Router. Vendar, kako povezati oba routerja med sabo preko Wlan-a?\n\nAli bi to šlo, ali bi moral izkoristit dva routerja za most (torej le brezžična  povezava med lokacijama), potem pa tretjega priključit na drugega in ga skonfigurirat.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Prvi naj deluje kot običajen AP (to nastavljaš v nastavitvah brezžične povezave).\nDrugega pa nastavi na Repeater bridge, pri čemer ostale nastvavitve (SSID, enkripija povezave) nastavi enako, kot je na prvem, torej routerju z dostopom do interneta.\nPoskrbi še, da je povezava med routerjema dovolj dobra, da podatki letijo čez (preveriš pod Wireless status) in to je to. Načeloma bi moglo špilat.\nAja, pa splača se ti naložiti zadnjo, pred kratim izdano finalno verzijo DD-WRT v24. www.dd-wrt.com.\n\nlp",
+    "author": "grmek",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Super. Ta zadnjo že imam gor. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nŠe vprašanje: verjetno moram potem na Advanced Settings (ne od WLan-a) prenastavit na drugem routerju iz Gateway v Router. Potem imam pa spodaj še Static ali Dynamic Routing (glej slikco). Kaj tukaj nastavim?\n\nPS: Ima morda kdo za posodit Linksys WRT-54G(L) z DD-WRT-jem? Toliko da stestiram prej.\n\n\t\t\n\t",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Tisto načeloma pustiš tako kot je, ker router oz firmware že sam ugotovi, kaj in kako.\n\nNo, eventuelno lahko na drugem routerju prestaviš način delovanja v \"router\" (tako kot omenjaš). \nAmpak vseeno obstaja precejšnja možnost, da boš imel probleme s prehajanjem DHCP zahtev prek drugega routerja nazaj do prvega. Tak problem imam jaz, krivec pa je prvi router (Netgear 624), ki ga repeater za njim zmede.\nRešitvi sta dve: uporaba statičnih ipjev na klientih, ki so povezani prek repeaterja, ali pa nastavitev repeaterja v način \"repeater\" (torej brez bridge), kar pomeni da bo repeater sam dodeljeval IPje prek svojega DHCP strežnika. Če pravilno poskrbiš za IP range obeh routerjev, ne bi smel imet problemov. Seveda - če te dvojni NAT-ing ne moti ...\n\nlp",
+    "author": "grmek",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "DHCP ni problem, ker imam statične IP-je \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "sem jaz tukaj pred 3 meseci reševal enak problem, malo poišči. če se prav spomnim na prvem ne nastavljaš nič",
+    "author": "Steve",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Drugi ruter ne sme biti v router načinu, ampak \"bridge\" \"AP\" ali kaj pač ima.\n(sigurno to piše v navodilih od DD-WRT).\n\n(jaz imam podobno in DHCP paketi (ter vsi ostali) lepo gredo čez)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Tisti Router način je v osnovnih nastavitvah. Predvidevam, da to velja za UTP porte oz. na splošno za stikalo.\nV nastavitvah WLAN-a pa nastavitev repeater bridge.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Na 54 gl se da zagotovo naredit.\nSosed ima od mene (250m z drevesi) preko dveh GL internet.\nKako pa je naredil pa me ne spraševat, ker sem tukaj bolj bos, on pa dobro obut (pa mu Telekom-država) ne omogoči internet prkiljučka. Sedaj čaka telekomovo  optiko-omarico že ima-mo samo kablov pa še ni v njej.\n\nKolikor vem lahko oba dva srfava prekokabla ali pa preko WL.",
+    "author": "Hanzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "Evo, končno dobil strojno opremo, da se zrihtal to stvar.\nDodati je potrebno še Virtual Interface, ampak dummy-proof navodila so pa itak  tukaj. \nStvar deluje odlično  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nTako, sedaj si je pa DD-WRT zaslužil donacijo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik mtl pravi:\n Evo, končno dobil strojno opremo, da se zrihtal to stvar.\nDodati je potrebno še Virtual Interface, ampak dummy-proof navodila so pa itak  tukaj. \nStvar deluje odlično  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nTako, sedaj si je pa DD-WRT zaslužil donacijo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJaz sem samo tri WRT54GL (dd-wrt v23xxx)   postavil v WDS in dela bp. \n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik jernejd pravi:Jaz sem samo tri WRT54GL (dd-wrt v23xxx)   postavil v WDS in dela bp. \n\nJernej\n\t\t\n\t\tKlikni za razširitev\n\t\nNo, s v24 delajo pa še LAN porti na teh routerjih. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Podaljšanje dosega WLAN-a z dvema routerjema",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik mtl pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik jernejd pravi:Jaz sem samo tri WRT54GL (dd-wrt v23xxx)   postavil v WDS in dela bp. \n\nJernej\n\t\t\n\t\tKlikni za razširitev\n\t\nNo, s v24 delajo pa še LAN porti na teh routerjih. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\n? Pa saj delajo tudi na  v23. Res ne smeš uporabljti lanske julijske verzije, ampak to dela že vsaj od leta 2006.\n\n \"Z\" v24 pa najbrž tudi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n.\n\nJernej",
+    "author": "jernejd",
+    "author_level": "Majstr"
+  }
+]

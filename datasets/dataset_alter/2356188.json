@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "Po prebiranju nekaterih tem iz prejšnjih let sem že opazil dve temi gled tega avtoradia in navigacije. V bistvu imam tudi jaz problem...\n\nTa avtoradio je bil že vgrajen v avto ko sem ga kupil od prejšnjega lastnika. Navigacija je bila na SD kartici (original Xzent), ki je delovala  ampak so bile karte 2009. Posodobitev kart z neoriginalnimi fajli ni delovala, zato sem se odločil naložiti nov Igo. Z IGO primo 2.4 nisem imel sreče (ni se niti zagnal), zato sem naložil IGO8. IGO8 deluje, tudi karte sem dal lahko novejše in jih zazna. Problem je, ker se GPS zelo dolgo locka na satelite. včasih traja 15min, včasih 30min, ampak večino časa se sploh ne poveže. V nastavitvah piše da je GPS povezan, tudi port in baud rate ustrezata. Če moram vsakič čakati 30min na mestu da se mi poveže, potem je to res skoraj neuporabno \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nZaenkart je torej naložen neoriginalen IGO8 s karto Slovenije IGO 2014 Q2 here. Program deluje, tudi routing dela (ko se GPS poveže). Se da kako konfiguracijsko rešiti to dolgo lockanje ali je to problem samega GPS sprejemnika? V bistvu že s samim avtoradijem nasplošno nisem zadovoljen, tako da če mi ne rata rešiti vsaj te navigacije, bom resno razmišljal o zamenjavi. Prosim za pomoč.",
+    "author": "tmatic",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "kable za gps anteno si že kaj preverjal?\na ima anteno na kablu, al je nekje v radiu?\njst bi najprej raziskal vse okol antene.",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "s predpostavko, da je antena zmontirana tako kot je treba, si dodaj še te vnose v sys:\n\n[gps]\nport=1\nbaud=38400\n\ntočno te parametre za gps uporablja XT8020",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "včeraj sem avtoradio odmontiral in preveril povezave. Vse sem odklopil in na novo priklopil. GPS antena je eksterna in sicer tale:\nhttp://www.zenec-store-koeln.d...8020-gpsa.html \n\nZdelo se mi je da mogoče GPS antena ni bila dovolj dobro privita na avtoradio, ampak nisem čisto siguren. Dodal sem tudi vnose v sys.txt, ki jih je Janch predlagal.\n\nZadeva zdaj deluje malo boljše. \nvčeraj popoldan po preklopu: GPS sateliti so bili najdeni v roku cca 5min .Če sem avto izklopil/vklopil so bili GPS sateliti najdeni v cca 1 minuti. Zvečer sem ponovo poizkušal in satelite je našel v roku 5min. Če sem avto vklopil/izklopil so ponovno bili najdeni v roku 1 minute.Danes je prvič ponovno potreboval cca 5min. Kasneje, so bili najdeni v caa 30-60 sekundah. \n\nTorej zaenkrat zdi se mi kot da več časa preteče odkar je bil nazadnje fiksiran, dlje časa rabi da se poveže ponovno.  oziroma manj časa preteče, prej se poveže. Kako bi naj bilo idealno obnašanje pa ne vem, mogoče lahko kdo deli izkušnjo kako je z avtoradijskimi GPS-i?",
+    "author": "tmatic",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "Lahko pa da je problem v sami iGO aplikaciji (čeprav malo verjetno, če nebi imel prave, ti iGO sploh nebi deloval - zvok). Javi se na zasebno, če rabiš ti dam iGO8, ki je krekan posebej za ta model Xzent XT 8020, ki je nekoliko drugače od ostalih 2-din sistemov, saj bazira na Mips cpu arhitekturi. Večina ostalih je na ARM.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "Saj nekako deluje vse, z občasnimi kiksi. \n- Parkrat se je zgodilo da se je GPS kar diskonektal (je bil potreben reboot radia). \n- Hitro izgubi GPS signal (pod kakšnim mostom ali v ozkih ulicah z visokimi bloki)\n- Ko je dosti ulic med navigacijo, se mi zdi da zaostaja...ko bi že moral zavit v levo, še vedno čaka in kaže naslednjo križišče, čeprav bi že moral zavit",
+    "author": "tmatic",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "to je jasen znak, da so težave s sprejemom satelitov. Kot smo že napisali najprej je potrebno preverit samo anteno.",
+    "author": "Janch",
+    "author_level": "GPS guru"
+  },
+  {
+    "ctx": "Xzent XT8020 avtoradio navigacija",
+    "content": "preveril sem priklop antene in spoje in vse je bilo OK. Kaj se še pri GPS anteni lahko preveri? Obstaja kak test oz. diagnostika?",
+    "author": "tmatic",
+    "author_level": "Zelenc'"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Pozdravljeni. Mi lahko kdo pove kako bi v eno celico združil več IF formul:npr. če je A1=1 je B1=1, če je A1=2 je B1=2,A1=3 B1=3..itn.Proval sem združit več IF funkcij B1=IF(A1=1;1;0),IF(A1=2;2;0)...pa ne gre.Ali pa kaka druga funkcija? In pa če obstaja funkcija ki pi mi priklicala določen makro.  Hvala ",
+    "user": "jackson3"
+  },
+  {
+    "message": "Z IF-om je šlo- =IF(B10=1;HYPERLINK(\"c:\\file1\";\"OK\");IF(B10=2;HYPERLINK(\"c:\\file2\";\"OK\");IF(B10=3;HYPERLINK(\"c:\\file3\";\"OK\");IF(B10=4;HYPERLINK(\"c:\\file4\";\"OK\");\"NAPAKA\")))). Kaj pa makroji? ",
+    "user": "jackson3"
+  },
+  {
+    "message": "2 opciji  Sub test_if()\n    r = \"nic\"\n    v = Range(\"B10\").Value\n    If v = \"1\" Then\n        r = \"11\"\n    End If\n    If v = \"2\" Then\n        r = \"22\"\n    End If\n    Range(\"A1\").Value = r\nEnd Sub\n\n\nSub test_switch()\n    v = Range(\"B10\").Value\n    Range(\"A1\").Value = Switch(v = \"1\", 11, v = \"2\", 22, True, \"nic\")\nEnd Sub ",
+    "user": "snow"
+  },
+  {
+    "message": "snow hvala. Tudi makro mi bo prav prišel. Ampak pri konkretnem primeru sem z IF-om kar zadovoljen.  Lp ",
+    "user": "jackson3"
+  },
+  {
+    "message": "Me pa še zanima, kako bi kopiral ročno iz ene celice v drugo z OK s pomočjo Hyperlinka ali s kako drugo funkcijo. Rad bi da mi tako kot zgoraj napiše OK in s klikom izvedem prenos. Se pravi A1=vrednost1,B1=OK,C1=vrednost1.  Lp ",
+    "user": "jackson3"
+  },
+  {
+    "message": "Tudi brez makroja se da tole naredit. Pač, pravilno jih moraš vgnezdit. Torej: =IF(A1=1;1;IF(A1=2;2;IF(A1=3;3;\"tako naprej\"))) ",
+    "user": "BlackHole"
+  },
+  {
+    "message": "Gumb: http://www.mrexcel.com/tip068.shtml Hyperlink: http://www.ozgrid.com/forum/showthread....  BlackHole daj preberi drugi post v tej temi. ",
+    "user": "snow"
+  },
+  {
+    "message": "snow še enkrat hvala. Ta gumbek je super,makro pa moram še pretuhtat, čeprav sem zadevo že prej naredil malo drugače. Pa še eno vprašanje-save as makro: Public Sub SaveAsA1() ThisFile = Range(\"A1\").Value ActiveWorkbook.SaveAs FileName:=ThisFile End Sub Rabil bi zraven še pot - C:\\blabla\\haha\\A1 pri čemer je A1-haha B1-C:\\blabla\\haha ..ali pa drugače  A1-haha B1-C:\\blabla\\mapa je vedno ista kot ime datoteke A1   Hvala še enkrat ",
+    "user": "jackson3"
+  },
+  {
+    "message": "Ni mi čist jasno kaj hočeš. A vedno v isti dir? Ali se dir spreminja glede na vrednost v A1 ali kako?  Če maš ime datoteke v A1 in hočeš vedno pripet nek direktorij narediš tako:  ThisFile = Range(\"A1\").Value\nDir = \"C:\\blabla\\\"\nFullPath = Dir & ThisFile\nActiveWorkbook.SaveAs FileName:=FullPath\n ",
+    "user": "snow"
+  },
+  {
+    "message": "Mogoče res malo nerazumljivo. Mapa c:\\blabla\\ je vedno ista. Naslednja mapa je vedno ista kot ime datoteke. Ime datoteke se spreminja in hkrati tudi mapa. Če je celica A1=1 je takrat v B1=c:\\blabla\\1\\ in je pot c:\\blabla\\1\\1.xls, če je A1=5 B1=c:\\blabla\\5\\ je pot c:\\blabla\\5\\5.xls itn. Nekaj takega to zdaj naredi(Matjazev.net):  Public Sub SaveAsA1() ThisFile = Range(\"B1\").Value & Range(\"A1\").Value  ActiveWorkbook.SaveAs FileName:=ThisFile End Sub Ne vem, tvoj makro mi pa nekaj zašteka! ",
+    "user": "jackson3"
+  },
+  {
+    "message": " Sub SaveAs()\n    Sub SaveAs()\n    src = Range(\"B1\").Value & Range(\"A1\").Value\n    ActiveWorkbook.SaveAs Filename:=src, FileFormat:=xlNormal, _\n        Password:=\"\", WriteResPassword:=\"\", ReadOnlyRecommended:=False, _\n        CreateBackup:=False\nEnd Sub\n\nSub SaveAs2()\n    src = Range(\"B1\").Value & Range(\"A1\").Value\n    ActiveWorkbook.SaveAs Filename:=src\nEnd Sub  Prvi macro je bil narejen s pomočjo recorda, zato vsi tisti dodatni argumenti. V A1 test.xls v B1 c:\\  in dela. ",
+    "user": "snow"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "ctx": "excel sumif pomoc",
+    "content": "Imam excel tabelco z worksheeti za vsak mesec posebej. Sedaj bi rad zapisal na nov worksheet skupno vsoto vsakega izdelka posebej. V teoriji bi moralo iti skozi z sumif funkcijo pa mi vedno vrze #value ven. Ce delam ssestevanje samo za en worksheet potem deluje, ko pa grem oznacevat vec zavihkov hkrati pa zadeva pade v vodo in mi ni jasno zakaj. Worksheeti so med seboj kopije torej so vrednosti zapisane na vseh na istih mestih. Ima kdo resitev za ta hec?\n\nTorej imam liste od recimo jul 2017-dec2017, vrednosti so zapisane na vseh listih od B7-B300, izdelki oz. imena so v celicah od C7-C300, kriterij pa je na zadnjem listu kjer se bodo zadeve sestevale, denimo zavihek \"vsota\" v celici C59.",
+    "author": "Schumi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "excel sumif pomoc",
+    "content": "Takole pravijo: \"Sheet1:Sheet3!D45 This is the standard \"3D syntax\" but if you try to use it with SUMIF, you'll get a #VALUE error. \"\nTorej direktno ne gre.\nWorkaround:\n\"If you need to conditionally sum identical ranges that exist in separate worksheets, all in one formula, you can do so with the SUMIF function + INDIRECT, wrapped in SUMPRODUCT\"\nnpr:==SUMPRODUCT(SUMIF(INDIRECT(\"'\"&sheets&\"'!\"&\"rng\"),criteria,INDIRECT(\"'\"&sheets&\"'!\"&\"sumrng\")))\nSUMPRODUCT(SUMIF(INDIRECT(\"'\"&sheets&\"'!\"&\"B7:B300\"),c59,INDIRECT(\"'\"&sheets&\"'!\"&\"c7:c300\")))",
+    "author": "ferdo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "excel sumif pomoc",
+    "content": "Aaaaaaaa?",
+    "author": "brane_new",
+    "author_level": "Guru"
+  }
+]

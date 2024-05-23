@@ -1,0 +1,266 @@
+[
+  {
+    "message": "Pozdravljeni, odločil sem se zamenjati disk z SSDjem. Nadomestil sem ga s HDDjem in pognal računalnik. V BIOSu je disk lepo viden. Nadaljeval sem z vstavljenim usbjem z inštalacijo win8.1.  Nato mi tam diska ni našlo. Napisalo je, da nima gonilnikov za USB/DISK/DVD.  Potem sem poizkušal rešiti z diskpart->clean, vendar nič. SSD sem priklopil na drug računalnik preko USBja in ga formatiral na NTFS, exFAT, spremenil sem mu MDR v GPT. Vseeno nič. Poizkusil sem ga priklopiti tudi prek USBja in tako namestit Win. V vmesniku ga sicer prikaže, ampak reče, da ne more nameščati preko firewire ali USB.  Disk je Crucial bx100 250GB, računalnik ASUS x550lb, i7, ...  Prosim za pomoč.  Ne vem več kaj narediti.  LP ",
+    "user": "gtu"
+  },
+  {
+    "message": "vklop uefi :P ",
+    "user": "crniangeo"
+  },
+  {
+    "message": "Kako?Kaj? ",
+    "user": "gtu"
+  },
+  {
+    "message": "v biosu lahko probaš secure boot drugače pa seveda UEFI ponavadi ti v bootmenuju pokaže pred ključkom UEFI: in naprej ime ključka itd pa moraš meti na ključu tako narejeno da laho dela z GPT sepravi rabš met win z UEFI podporo je tut 7 sam morš pač narest neko particijo pa gor skopirat itd. ",
+    "user": "FX6300B"
+  },
+  {
+    "message": "seveda, da mi ne podpira zgleda. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Mogoče tule malo preglej:  https://www.youtube.com/results?search_... ",
+    "user": "Mare2"
+  },
+  {
+    "message": "Bios je zadnji ?  Prestavi ssd na en drug pc in tam preveri, če lahko namestiš win 8 nanj (vse ostale hdd na tem pcju odklopi). ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Bios je zadnji. V drug pc ga zal ne morem dat, ker imam samo identicnega temu. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Imaš dva problema - nastavitev bios-a - uefi ali legacy in pristnost windows OS. Večina travniških UEFI ne zažene instalacije. Drug problem je priprava diska - glede na način MBR ali GPT.  Če katera od nastavitev ni v redu, instalacije ne steče, ker imaš za način, ki si ga izbral, narobe nastavljen disk. Pa ne pozabi v bios-u nastavit na AHCI, ne IDE.  Sicer pa je problem, če imaš OEM verzijo 8.1 moraš izbrati pravo za instalacijo.  Lahko pa vstaviš stari disk in z namenskim orodjem preneseš OS na nov disk. Sam prenos bo nastavitve na disk vpisal avtomatsko. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Windows ni travniski, je iz msdnaaja, v BIOSu sploh nimam druge opcije kot AHCI. Glede MBR in GPT. Poizkusil sem ze oba. Ali je morda mozno, da bi moral namesto quick format izrbrati temeljitejso opcijo? ",
+    "user": "gtu"
+  },
+  {
+    "message": "Instalacijski medij ni pravilno pripravljen. Ponovno boš moral urediti USB ključek ali DVD. Disk pusti prazen unlocated, bo instalacija pripeljala do ureditve medija, problem imaš, ker ti instalacijski postopek zaradi neke napake (medij ali nastavitve bios-a) ne steče. Pojdi v bios in ga daj na default nastavitve.  Ključek pripravi po postopku za M$ WINDOWS in posnemi gor komplet razpakiran OS. Če je OS pravi in ključek prvilno pripravljen, bo instalacija stekla normalno, ko prideš do nastavitev diska, daš lahko naprej in bo sistem naredil ostalo, lahko pa določiš velikost particije.  To je način, če hočeš uporabit bombončke UEFI bios-a, sicer pa nastaviš legacy, ugasneš varnostno zaščito in instaliraš na stari način.  http://www.intowindows.com/how-to-insta... ",
+    "user": "solatko"
+  },
+  {
+    "message": "Naredil sem usb zagonski disk s pomocjo orodja z Microsoftove strani, potem v drugo pa se z Rufus-om. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Preveri kvaliteto posnetega OS na drugem računalniku. Si poizkusil z vsemi priklopi USB. Na nekaterih lahko sistem instaliraš samo na enem ali dveh portih. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Usb ključ ne tlači v modre usb porte (usb 3.0). ",
+    "user": "GTX970"
+  },
+  {
+    "message": " GTX970 je 5. jun 2015 ob 11:00 izjavil:Usb ključ ne tlači v modre usb porte (usb 3.0).  Sem probal zamenjat znavadnim, isto. Edino nisem pa poizkusil porta v katerem ždi reciever za miško. Bom še to. ",
+    "user": "gtu"
+  },
+  {
+    "message": "nam zaupas plato ? ker sem sam se tut zafrkaval s podobnim primerom dokler nisem nastavil da mora biti nastavljen secureboot.. šele po tej nastavitvi je nehalo sitnarit za driver :) ",
+    "user": "crniangeo"
+  },
+  {
+    "message": " crniangeo je 5. jun 2015 ob 15:23 izjavil:nam zaupas plato ? ker sem sam se tut zafrkaval s podobnim primerom dokler nisem nastavil da mora biti nastavljen secureboot.. šele po tej nastavitvi je nehalo sitnarit za driver :)  Verjetno bo tole: ASUS X550LB. Ne najdem drugega v System info. ",
+    "user": "gtu"
+  },
+  {
+    "message": "http://www.asus.com/support/FAQ/1004435 mogoče ti tole pomaga.. ",
+    "user": "crniangeo"
+  },
+  {
+    "message": " crniangeo je 5. jun 2015 ob 15:41 izjavil:http://www.asus.com/support/FAQ/1004435 mogoče ti tole pomaga..  Nimam teh opcij. Sedaj sem poizkusil namestiti win na prejšnji HDD. Zbrisal obstoječe particije in naredi nove GPT (ratajo ene 4) brez težav. Ko mi to inštalira, bom probal še vse to skopirat na SSD, pa da vidim če ga bo potem prijelo. Sicer pa ne vem več kaj bi lahko naredil. Je mogoče slab disk?  Požrlo mi bo živce. ",
+    "user": "gtu"
+  },
+  {
+    "message": "ni to problem , problem je v tem, da je treba imet secureboot :P  Lahko naredis screenshote tvojega biosa ? :) ",
+    "user": "crniangeo"
+  },
+  {
+    "message": "http://dlcdnet.asus.com/pub/ASUS/nb/X55... ",
+    "user": "crniangeo"
+  },
+  {
+    "message": " crniangeo je 5. jun 2015 ob 16:32 izjavil:ni to problem , problem je v tem, da je treba imet secureboot :P  Lahko naredis screenshote tvojega biosa ? :)    ena  dva  tri  stiri  pet Evo tukaj pa še kako se vidi SSD v Biosu.   SSD in DVD ",
+    "user": "gtu"
+  },
+  {
+    "message": "Usb ključ (ms win iso) moraš posneti kot uefi mode (rufus npr), potem bo šla namestitev skozi.   ",
+    "user": "GTX970"
+  },
+  {
+    "message": " GTX970 je 5. jun 2015 ob 17:08 izjavil:Usb ključ (ms win iso) moraš posneti kot uefi mode (rufus npr), potem bo šla namestitev skozi.   Sedaj sem probal vse možne kombinacije z Rufusom ključek formatiran FAT32:  -------------------------------------------------------------------\n    RUFUS      |         usb 2          |          usb3           |\nnačin priprave | uefi boot |navaden boot| uefi boot | navaden boot|\n-------------------------------------------------------------------\nGPT  UEFI      | NE DELA   | NE BOOTA   | NE DELA   | NE BOOTA    |\nMBR  UEFI      | NE DELA   | NE BOOTA   | NE DELA   | NE BOOTA    |\n------------------------------------------------------------------- Sedaj mi dela še tretjo in zadnjo možnost v Rufusu: MBR for BIOS or UEFI-CSM, formatiran NTFS. Sporočim ko probam, ma sem skoraj 100% da ne bo nič iz tega. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Obupal sem. Tudi zadnja opcija pri Rufusu ni prinesla rešitve. Diska enostavno ne zazna. Pouzkusil sem tudi narediti klon delujočega HDDja na SDD. Seveda ne dela.  Sploh ne vem več kaj naj naredim... ",
+    "user": "gtu"
+  },
+  {
+    "message": "Probaj z acronis disk director iz SSD ja izbrisat particije in formatirat SSD.  Logično, s štartnega CD-ja. ",
+    "user": "Mare2"
+  },
+  {
+    "message": "Si poskusil uporabiti drug ključek ? Ali posneti iso na dvd (v orig ms isotih je mbr in uefi boot) ? ",
+    "user": "GTX970"
+  },
+  {
+    "message": " GTX970 je 5. jun 2015 ob 19:31 izjavil:Si poskusil uporabiti drug ključek ? Ali posneti iso na dvd (v orig ms isotih je mbr in uefi boot) ?  Ne, ker imam trenutno samo 1 USB večji od 4GB, DVDja pa tudi nimam pri roki. Čeprov ne vem če ima to kak smisel, ker na drug HDD je inštaliralo normalno. Bom pa probal, seveda. ",
+    "user": "gtu"
+  },
+  {
+    "message": "No, sem probal še zapečt na DVD. Diska ne najde. V BIOSu je bil viden.   DISKPART ",
+    "user": "gtu"
+  },
+  {
+    "message": "Disk ni inicializiran, zato ga nobena naprava ne zna prbrat ali pa je enostavno ta SSD za v smeti - menjaj, saj je nov. Se zgodi, da je kontroler na novem SSD zanič. ",
+    "user": "solatko"
+  },
+  {
+    "message": "Če ga Bios vidi, instal pa ga ne najde, instal fajlu manjka generični driver (32bit-DOS driver!). V BartPE miniWIN CD/DVD-ju bi moral bit viden in z njim zrihtaš particije, formatiraš in prekopiraš nekam fajle iz install DVD-ja ...pol pa zaženeš instalacijo iz diska! ... bi moralo delat! ",
+    "user": "Spajky"
+  },
+  {
+    "message": "Sedaj sem našel še en (sicer travniški) Win7 instalacijski DVD. Ta zazna disk! Tudi inštalacija je šla čez. Potem sem probal nadgraditi iz 7->8.1 in ko se računalnik med inštalacijo ponovno zažene, mi ponudi screen za popravilo/recovery. Se pravi spet ne vidi diska.   Za tem sem probal še posodobiti Firmware na SSDju, ampak ga tako njihovo Win orodje kot bootable linux varianta nista sposobna posodobiti.  Sedaj grem probat posodobit firmware še na nek drug računalnik.  Upam da mi počasi rata...  @Spajky: to, da je z install filom kaj narobe sem opustil, ker sem probal že 3 različne, in na prejšnjem HDDju delajo vsi brez težav. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Tu imaš linka za win 8.1 pro (clean MS ISO) http://getintopc.com/softwares/operatin... ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Sedaj sem poizkusil dati na ključek še Intel Rapid Storage Driver, ki naj bi skrbel za SATA.   Driver Seveda mi tudi to ne pomaga. Danes bom probal še iz inštalacije Win7 dobiti gonilnik pa ga uporabiti pri Win8. Sicer je to že neko mutenje, ki ga ne bi smelo biti. Dobil sem tudi Samsungov SSD pa bom videl, če tega zazna inštalacija. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Tudi sam sem imel težave na Thinkpadu T420 z BX100. MX100 v istem računalniku deluje brez problemov. BX100 pa brez težav v T410. Izgleda da ima BX100 težave s kompatibilnostjo. ",
+    "user": "McNato"
+  },
+  {
+    "message": "No, danes sem poizkusil še z Samsungom 850 EVO. Inštalacija ga razpozna s prve brez nastavljanja česarkoli. Upam, da ga mi bodo v mimovrste pripravljeni zamenjati.  Čene pa: PRODAM CRUCIAL BX100 :) ",
+    "user": "gtu"
+  },
+  {
+    "message": "Sem pred 1 mesecem imel težavo z Asus prenosnikom in bx100 Uradni odgovor od Asusa je da ga ne podpira. Mx100 pa je delal BP.  Enako je bil na mimo vrste kupljen in zamenjan brez vprašanj. https://slo-tech.com/forum/t541080/p472... ",
+    "user": "wini"
+  },
+  {
+    "message": " wini je 10. jun 2015 ob 00:28 izjavil:Sem pred 1 mesecem imel težavo z Asus prenosnikom in bx100 Uradni odgovor od Asusa je da ga ne podpira. Mx100 pa je delal BP.  Enako je bil na mimo vrste kupljen in zamenjan brez vprašanj. https://slo-tech.com/forum/t541080/p472...  Očitno res ASUS in Crucial ne gresta skupaj. Sedaj se mi je pojavila še težava, ker mi ga na mimovrste nočejo zamenjati. Pozdravljeni,  odstopa od pogodbe vam glede na pogoje poslovanja ne moremo odobriti, zamenjav pa nam sistem ne omogoča.  Lep pozdrav Bi bilo mogoče uveljavljati stvarno napako, glede na to da \"artikel nima lastnosti, ki so potrebne za njegovo normalno rabo ali za promet\", vsaj po mojem? ",
+    "user": "gtu"
+  },
+  {
+    "message": "Težko, ker disk kot takšen dela. Ali kjerkoli navajajo kompatibilnost? oziroma nekompatibilnost?  A je minilo 15 dni od nakupa? ",
+    "user": "St235"
+  },
+  {
+    "message": "Na mimovrste ne navajajo kompatibilnosti, razen SATA3, kar pa moj računalnik ima. Tudi na uradni stani od Cruciala piše da je kompatibilen.  Verjetno gledajo samo da je SATA3. Ni še minilo 15 dni, vendar za podjetja ne velja 14 dnevno vračilo brez razloga. Jih bom poizkusil lepo prositi. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Praviš, da ti z travniško sedmico dela... Si probal z travniško 8.1 ? ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " hojnikb je 10. jun 2015 ob 10:13 izjavil:Praviš, da ti z travniško sedmico dela... Si probal z travniško 8.1 ?  Ne, in tudi ne bom. Nima smisla. Zadevi pač očitno ne gresta skupaj. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Očitno ni problem v hardwareu, če ti bios zazna disk... ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " hojnikb je 10. jun 2015 ob 10:17 izjavil:Očitno ni problem v hardwareu, če ti bios zazna disk...  Jaz si mislim, da je problem v tem Secure Bootu. Če prav razumem, ga pri Win7 ni, pri Win8 pa že. Izklopiti ga ne morem, zgleda pa, da pa tule disk odpove. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Samo Secure Boot pomeni, da lahko bootaš samo whitelistane os-je, kar nima veze s samim ssd/hdd pogonom. ",
+    "user": "GTX970"
+  },
+  {
+    "message": " GTX970 je 10. jun 2015 ob 10:30 izjavil:Samo Secure Boot pomeni, da lahko bootaš samo whitelistane os-je, kar nima veze s samim ssd/hdd pogonom.  Sm milslil, da tudi preverja če je firmware zaupanja vreden (ali nekaj podobnega). ",
+    "user": "gtu"
+  },
+  {
+    "message": "Daj preveri če gre Linux Mint/Manjaro/openSUSE gor. ",
+    "user": "GTX970"
+  },
+  {
+    "message": "Pa je kdo prebral kaj sem napisal jst višje? In podal link do teme, kjer sem imel iste težave. ",
+    "user": "wini"
+  },
+  {
+    "message": " wini je 10. jun 2015 ob 10:38 izjavil:Pa je kdo prebral kaj sem napisal jst višje? In podal link do teme, kjer sem imel iste težave.  Ja, saj zato se mi zdi sedaj to vse že brez pomena. Upam samo da me uslišijo in mi zamenjajo disk. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Si testiral ?  clean MS ISO https://slo-tech.com/forum/t645243/p480... ",
+    "user": "GTX970"
+  },
+  {
+    "message": " GTX970 je 10. jun 2015 ob 10:41 izjavil:Si testiral ?  clean MS ISO https://slo-tech.com/forum/t645243/p480...  Seveda. ",
+    "user": "gtu"
+  },
+  {
+    "message": "S clean MS ISO se zgodba ponovi ?  In linuxi https://slo-tech.com/forum/t645243/p480... ? ",
+    "user": "GTX970"
+  },
+  {
+    "message": " GTX970 je 10. jun 2015 ob 11:39 izjavil:S clean MS ISO se zgodba ponovi ?  In linuxi https://slo-tech.com/forum/t645243/p480... ?  S clean MS ISO se ponovi, linuxa ne bom probal. ",
+    "user": "gtu"
+  },
+  {
+    "message": "IMHO je problem v \"secure boot\".. Zakaj ga ne moreš izklopit v BIOS-u?? Sam sem prestavil v UEFI, mi je avtomatsko izklopilo secure boot v biosu, potem pa z USB ključkom z UEFI inštalacijo WIN 8.1 normalno dalje.. SSD bx100 512GB.. Je pa treba na ključku naredit UEFI bootable ključek.. Zadeva je šla kot po maslu, prej pa enaki problemi kot pri tebi.. Aja, pa SATA kabel sem dal drug ...  edit: v BIOSU sem preklopil na uefi najprej in shranil.. Seveda mi ni prepoznalo nič.. Ampka, ko sem dal nazaj na legacy BIOS, sem imel že avtomatsko disejblan secure boot.. Morda ga pri tebi tudi tako disejbla.. Ker jaz tudi nisem mogel direktno disejblat secure boot v legacy načinu.. ",
+    "user": "tomaz-"
+  },
+  {
+    "message": " tomaz- je 10. jun 2015 ob 12:04 izjavil:IMHO je problem v \"secure boot\".. Zakaj ga ne moreš izklopit v BIOS-u?? Sam sem prestavil v UEFI, mi je avtomatsko izklopilo secure boot v biosu, potem pa z USB ključkom z UEFI inštalacijo WIN 8.1 normalno dalje.. SSD bx100 512GB.. Je pa treba na ključku naredit UEFI bootable ključek.. Zadeva je šla kot po maslu, prej pa enaki problemi kot pri tebi.. Aja, pa SATA kabel sem dal drug ...  edit: v BIOSU sem preklopil na uefi najprej in shranil.. Seveda mi ni prepoznalo nič.. Ampka, ko sem dal nazaj na legacy BIOS, sem imel že avtomatsko disejblan secure boot.. Morda ga pri tebi tudi tako disejbla.. Ker jaz tudi nisem mogel direktno disejblat secure boot v legacy načinu..  Ne morem ga izklopiti, ker ni te možnosti. Zgleda ima ASUS zelo okrnjene možnosti. (poglej slike na prejnšnji strani). Ne najdem niti legacy moda, niti izklop secure boota. Tako da to odpade.  Pa še po eni strani se mi zdi neumno, da bi za stvar, ki bi morala delati out-of-the-box, moral izvajati nevem kakšne podvige. ",
+    "user": "gtu"
+  },
+  {
+    "message": "samo po slikah sodeč ti že imaš v UEFI mode.. Torej bi ti moral pravilno narejen ključek z WIN 8.1 normalno zagnat.. Na slikah ni vidno, kaj imaš pod zavihkom SATA configuration.. oziroma nikjer nimaš slikano, katere opcije imaš v zavihkih.. Ker imaš kar nekaj opcij. Skor dvomim, da ne bi imel nekje to skrito.. Ima ta BIOS kar precej možnosti.. ",
+    "user": "tomaz-"
+  },
+  {
+    "message": "išči csm mode. ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Bolj ko gledam tvoje slike, bolj sem prepričan, da ni SSD krivec.. Daj poslikaj zavihke oziroma tako kot HOJNIKB pravi... ",
+    "user": "tomaz-"
+  },
+  {
+    "message": "zanimiva tema, zanima me, če različne verzije biosa kakorkoli vplivajo na OP-jev problem?  Si morda poizkusil posodobit bios? ",
+    "user": "r3dkv1c4"
+  },
+  {
+    "message": " r3dkv1c4 je 10. jun 2015 ob 13:49 izjavil:zanimiva tema, zanima me, če različne verzije biosa kakorkoli vplivajo na OP-jev problem?  Si morda poizkusil posodobit bios?  Seveda sem, poizkusil sem namestiti tudi starejšega, vendar mi pa tega ne pusti, ker reče da je zastarel. Evo slike iz boot, security in sata config oken:   Sata Configuration   SATA mode selection   BOOT sedaj je izbran disk kot prvi, ker nism prestavljal nazaj na USB   Security, tule se ponavadi spreminja CSM   IO interface podokno Securityja vbistvu tukaj lahko samo vklapljaš in izklapljaš zadeve  To je načeloma tole. ",
+    "user": "gtu"
+  },
+  {
+    "message": "Pogledaš v garancijski list, kdo je serviser za tvoj SSD. Če jim ne rata vgradit ga, naj popravijo.   Pri spletnih nakupih nakup preko d.o.o. -ja ni možno vračati izdelkov. :) ",
+    "user": "Mare2"
+  },
+  {
+    "message": "Ti ob zagonu sistema ponudi možnost Fx za izbor boot enote. Če nalagaš v UEFI načinu, bi moral dobiti nekaj možnosti, med drugim tudi EFI način. Klikneš tega in bios sam poišče EFI fajl in požene instalacijo, po potrditvi pogodbe, ti ponudi izbor jezika in tipkovnice, potem pa enote na katero boš instaliral. Potem ti instalacija uredi GPT particije. Ob instalu, ti nastanejo 3, ena od teh je v FAT32 formatu, ostali dve sta NTFS. Sistemsko particijo imaš potem možnost prepoloviti, prazno polovico pa lahko razdeliš na poljubno število particij.   Lahko pa ključek prirediš za UEFI način instalacije, potem ti ga bo zaznal sistem sam in ti ni potrebno izbirat za boot enoto. S klasično pripravljenim ključkom, lahko na UEFI instaliraš samo z izborom boot - EFI. ",
+    "user": "solatko"
+  },
+  {
+    "message": " solatko je 10. jun 2015 ob 16:57 izjavil:Ti ob zagonu sistema ponudi možnost Fx za izbor boot enote. Če nalagaš v UEFI načinu, bi moral dobiti nekaj možnosti, med drugim tudi EFI način. Klikneš tega in bios sam poišče EFI fajl in požene instalacijo, po potrditvi pogodbe, ti ponudi izbor jezika in tipkovnice, potem pa enote na katero boš instaliral. Potem ti instalacija uredi GPT particije. Ob instalu, ti nastanejo 3, ena od teh je v FAT32 formatu, ostali dve sta NTFS. Sistemsko particijo imaš potem možnost prepoloviti, prazno polovico pa lahko razdeliš na poljubno število particij.   Lahko pa ključek prirediš za UEFI način instalacije, potem ti ga bo zaznal sistem sam in ti ni potrebno izbirat za boot enoto. S klasično pripravljenim ključkom, lahko na UEFI instaliraš samo z izborom boot - EFI.  Tukaj sploh ni problem da ne bi bootalo v EFI, do inštalacije pride povesem lepo, vendar potem disk čudežno izgine iz obličja SATA portov :) ",
+    "user": "gtu"
+  },
+  {
+    "message": "ja....imajo tudi drugi worldwide probleme z dotičnim ssd-jem pri inštalaciji na asus prenosnike  Nisem pa našel rešitve. Če bo prodajalec razumen in ti omogoči menjavo za drug ssd, vzemi mx100. Zadeva preverjeno deluje odlično, tudi na asus prenosnikih. V kolikor ne veš kam bi z njim, lahko vprašam kolega, ki kupuje ssd za svojega imac-a. ",
+    "user": "r3dkv1c4"
+  },
+  {
+    "message": "Ja sedaj cakam, ce mi bodo omogocili zamenjavo, cene ti pa napisem na ZS da se dogovoeiva, ce bo kolega zainteresiran. Hvala! ",
+    "user": "gtu"
+  },
+  {
+    "message": "Na Crucial strani je en program, test kompatibilnosti. Si probal? ",
+    "user": "Mare2"
+  }
+]

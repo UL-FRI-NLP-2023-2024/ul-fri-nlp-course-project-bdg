@@ -1,0 +1,38 @@
+[
+  {
+    "message": "Eno izpitno vprašanje:  Natančno opiši kako bi uporabili Houghovo transformacijo za iskanje kvadratnih oblik na binarni sliki. Koliko dimenzij bi morala imeti Houghova matrika in kaj bi bilo v njej zapisano?  Bil bi zelo hvaležen za kak pameten odgovor. ",
+    "user": "MaCoFaCo"
+  },
+  {
+    "message": "Čez sliko spustiš filter za detekcijo robov, jo binariziraš (nastaviš prag da jo pretvoriš v črno-belo sliko) in poženeš Houghov algoritem za zaznavanje črt, ki ti najde Z najbolj obetavnih točk. Nato le še te najobetavnejše premice poskusiš sestaviti v kvadrat. Matrika ima v tem primeru dve dimenziji (ker zaznavamo črte in imamo torej dve neznanki) in jo imenujemo akumulator. Potek pa je tak, da za vsak piksel v sliki vstavimo vrednost v ustrezno enačbo (črte, krogi, elipse, ...; ponavadi v parametrični obliki) in za vsak kot phi vidimo (se pravi za vsako možno črto skozi ta piksel), če na tej premici obstaja še kakšna točka, nakar se za vsak tak primer akumulator inkrementira. Največje vrednosti najverjetneje nakazujejo na to da čez njih poteka premica. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "Še dopolnilo: - slika v nalogi je že binarizirana, kar pomeni da je postopek skrajšan, - Gundolf me je opozoril, da je možno, da navodila zahtevajo direktno iskanje kvadratov, kar pomeni da bi bil problem bistveno kompleksnejši in podoben iskanju krogov (v tem primeru bi imel 3-dimenzionalno matriko), - opis iskanja kvadratov iz premic je potrebno podrobneje opisati, oz. povedati moraš da iz enačb premic poiščeš pare vzporednic in potem te pare med seboj primerjaš. Če dobiš med dvema premicama v paru kot 90 stopinj (oz bolje rečemo kot zelo blizu 90 stopinj) imaš kvadrat. ",
+    "user": "CCfly"
+  },
+  {
+    "message": "Jaz bi rekel 4D 'matrika', prvi dve dimenziji sta središče kvadrata, tretja je dolžina stranice in zadnja kot pod katerim je kvadrat nagnjen.  Ostalo ti je pa že CCfly povedal ",
+    "user": "Gundolf"
+  },
+  {
+    "message": "Najprej hvala za odgovor:) Tole s premicami recimo da vem postopek, sem se pa sam bolj nagibal na tole zadnjo možnost na katero si namignil, torej da direktno iščeš kvadrate (podobno kot za kroge). Sem iskal na netu veliko sam nisem nič kaj konkretnega našel v tej smeri. Kakšen je sploh parametričen zapis kvadrata/pravokotnika? :)  Obstaja pa tudi varijanta uporabe \"generalized Hough transformation\", ki je kao namenjena kompleksnejšim likom, sam raje ne bi tega, ker zgleda malo  . ",
+    "user": "MaCoFaCo"
+  },
+  {
+    "message": "No saj to je to kar ti rabiš. Houghova matrika prirejena za kompleksne like, v tem primeru kvadrate. Paramatričen zapis kvadrata (ena od možnosti) je {center, dolžina stranice, kot} ",
+    "user": "Gundolf"
+  },
+  {
+    "message": "Torej potem velja naslednje:  -premica: 2D (r, kot) -krog: 3D (x, y, r) -kvadrat: 4D (x, y, a, kot) -pravokotnik: 5D (x, y, a, b, kot) -elipsa: 5D (x, y, a, b, kot)  Za kaj več pa je tista splošna tranformacija. Drži? :) ",
+    "user": "MaCoFaCo"
+  },
+  {
+    "message": "Tako nekako ja. Karkoli znaš zapisat parametrično lahko na ta način vržeš v Hougha. ",
+    "user": "Gundolf"
+  },
+  {
+    "message": "Ok, obema se zelo zahvaljujem. Nisem pričakoval tako hitrih odgovorov :) Tnx. ",
+    "user": "MaCoFaCo"
+  }
+]

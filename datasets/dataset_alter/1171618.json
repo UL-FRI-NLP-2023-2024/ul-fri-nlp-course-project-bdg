@@ -1,0 +1,164 @@
+[
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Pozdravljeni,\nnaletel sem na en majhen problemček pri povezovanju VPN routerja CISCO 1712. In sicer zadeva je sledeča:\nTuje podjetje s katerim delamo, nam je dalo v uporabo VPN router, preko katerega naj bi se mi povezovali na njihovo omrežje, in vse skupaj se mi ustavi, pa naj bo butasto kakorkoli že, da me medejo kabli, priložena je shem, po kateri naj bi jaz priklopil kable v router. Tako da bi prosil če mi lahko kdo, ki je iz foha malo svetuje. V port ki so mi ga označili, naj bi vtaknil VDSL kabel, se pravi tisti,ki gre direkt iz T2 jevega Smartcom SV2M104, v en port naj bi vklopil ISDN kabel, OK, ta je na čakanju, in ni trenutno največjega pomena, v en port naj bi pa vtaknil LAN kabel, in tu me sedaj zmede, ali je to ta kabel, ki je na enem switchu, ki je povezan na Smartcoma, ali je to kaj drugega? ker namreč v pisarno imam speljana 2 UTP kabla( eden direktno iz Smartcoma, drugi pa iz tega switcha, ki je povezan na Smartcom), bi bil zelo hvaležen za kakršnokoli pomoč. \n\nHvala lepa\n\nPS, v priponki je shema, kako naj bi bilo vse skupaj zvezano da bi funkcioniralo\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "LAN moras prikljucit na switch.... VDSL MODEM pa SAMO preko routerja... ... Tisti kabel, ki gre iz VDSL routerja sedaj na switch pa izklopi. Verjetno je Cisco tako nastavljen, da bo sel ves promet preko njega... Torej bo v finkciji routerja tudi za VDSL.... Tako da potemtakem Smartcom VDSL modem deluje samo kot modem in ne kot modem/router...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Jest pravi:\nTako da potemtakem Smartcom VDSL modem deluje samo kot modem in ne kot modem/router...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nsej drugače ne deluje, samo modem/switch",
+    "author": "Narodnjak",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Se pravi je potem potrebno priklopiti samo tisti LAN kabel, v switch, in bi zadeva morala delati. Ali kaj pomaga če prilepim slike modemov in switchev, za lažje razumevanje?\n\nHvala za pomoč",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Narodnjak pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Jest pravi:\nTako da potemtakem Smartcom VDSL modem deluje samo kot modem in ne kot modem/router...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nsej drugače ne deluje, samo modem/switch\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTega Smartcoma ne poznam... Pri ostalih xDSL ponudnikih dobis ponavadi tak modem, ki deluje tudi kot router ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ... In nikjer ni omenil, da bi imeli se kaksen router ze sedaj v omrezju ...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Na te 4 vticnice priklopis tiste naprave ki so za routerjem... Ker pa je vticnic gotovo premalo... pac iz ene razdelis dalje tako, da priklopis na switch ... Tudi tisti dve napravi, pri kateri imas oznaceno \"PC\" in \"PRINTER\" lahko priklopis potem na Switch... je cisto vseeno. V glavnem VDSL modem ne sme biti prikljucen na obe skatli... ampak samo v tega Ciscota...\n\nNic nisi napisal, kako si imel prej to postavljeno. Ali se postavlja na novo?",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Ja do sedaj je bilo to tako, da sta v pisarno bila speljana samo dva kabla za internet, eden za IP telefon, in eden analogni priklop, včeraj ko sem pa odprl našo škatlo z temi zadevami, sem pa našel celo čudo kablovja. aja pa tisto prej ni bil switch, ampak je router, sem se narobe izrazil, imam priložene slike, če bo zadeva kaj bolj jasna, če je pa potrebno, lahko prilepim še kakšno sliko\n\n\t\t\n\t",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "pa še smartcom...\n\n\t\t\n\t",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Potem samo prestavis kabel, ki ga imas sedaj iz Smartcom-a v Tenda Router tako, da bo povezoval Smartcom-a in Cisco router. Tenda router pa bo se naprej deloval v vlogi switcha ... Bo pa treba Ciscota verjetno kaj nastavit... Nevem, kako ima T-2... ali ima PPPoE z uproabniskim imenom in geslom... ali ima kar DHCP povezavo ...To bo pa Narodnjak bolje vedel  ... Se najbolje, ce namesto Tenda routerja das en gigiabitni switch in imas potem vse racunalnik in tiskalnike prikljucene na ta switch ... \n\nISDN linija bo pa verjetno za backup, ko bo VDSL dol padel ... \n\nNa koncu naj bi izgledala vezava nekako takole ... \n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Jest pravi:\nNa koncu naj bi izgledala vezava nekako takole ... \n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTočno tako.\n\nS tem da naj avtor še pove kaj je primarni namen tega routerja? VPN bo za kaj? Ker če rabite VPN za recimo povezat 2 serverja ali pa kaj podobnega je tole totalni nesmisel (in varnostno zelo rizično) ker bo verjetno celo pisarna padla pod VLAN. Če pa uporabljate VPNje za delo v pisarni (na splošno, uporaba programske opreme, deljenje printerjev) pa bo taka konfiguracija kot je narisana ok.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Namen te konfiguracije, bo delo v SAP sistemu, sedež podjetja samega je v Nemčiji, in vse poteka preko njihovih strežnikov, zato potreba po tem.\n\nHvala vsem za pomoč, samo počakam da še danes ali jutri namontirajo ISDN, in sporočim če stvar štima, vsi dobite ***** za pomoč\n\nLP",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Se mi je zdelo. Potem naredi tako kot ti je Jest narisal.\n\nSamo pazi ker potem ti bodo nemci začeli printat preko neta! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "A bi rad vse PC-je imel na VPN \"liniji\" ali le določene?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Na VPN liniji bo samo en računalnik, in pa tiskalnik. Aja, pa še eno vprašanje, T2 ima v ponudbi ISDN priklop, jaz pa kolikor razumem, oziroma koliko so mi tujci razložili potrebujem \"true isdn\", se pravi tisto telekomovo zadevščino, ki je dejansko tudi modem? malo sem zmeden okoli tega zdej?",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Lamagras pravi:\n Na VPN liniji bo samo en računalnik, in pa tiskalnik. Aja, pa še eno vprašanje, T2 ima v ponudbi ISDN priklop, jaz pa kolikor razumem, oziroma koliko so mi tujci razložili potrebujem \"true isdn\", se pravi tisto telekomovo zadevščino, ki je dejansko tudi modem? malo sem zmeden okoli tega zdej?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nCe bosta preko VPNja samo en racunalnik in en tiskalnik... potem je pa vezava malce drugacna... ceprav lahko deluje tudi tako sem narisal... le da bodo potem vsi preko VPNja ... \n\nCe zelis tako, da bosta preko VPN samo en PC in en printer (ali pac le doloceni racunalniki, ne pa vsi)... ne smes pri T-2 imeti staticenga IPja... ali pa moras zahtevat dva staticna IPja (ne vem, ali to se posebej stane ali ne)... \n\nV tem primeru pa je shema potem nakeko taka:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nPotem moras pa tiste, za katere zelis, da so preko VPNja, prikljuciti na Cisco router (ce je premalo vticnic, na en port das en switch in imas potem vec prostih vticnic)... tiste, ki bodo brez VPNja pa pustis v Tenda routerju. \n\n\nGlede ISDN pri T-2... T-2 kolikor vem nima tapravega ISDNja... imajo samo pretvornik iz IP telefonije na ISDN ali analogni prikljucek (recimo za telefaks) ... Ce zelis \"true ISDN\" prikljucek, ga moras zahtevat pri Telekomu ...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Superca, potem moram danes naročit pri telekomu ISDN, pa še neki bi me zanimal glede staičnega IP-ja? Glede na to da so oni zahtevali naše uporabniško ime in geslo za \"internet\", so pomoje s tem povedali da moramo imeti statičen IP? Če mi pa lahko še odgovoriš, zakaj potem potreba po dveh statičnih Ipjih?\n\nHvala ti za odgovore",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Ce imas staticni IP, rabis dva zato, da bo stari router (Tenda) imel en IP... in preko tega se bodo povezovali tisti, ki ne potrebujejo VPN povezave... drugi IP pa bo imel VPN router (Cisco)... preko tega pa se bodo povezovali tisti, ki potrebujejo VPN povezavo ... \n\nCe bo vse slo preko Cisco VPN routerja, potem bo ves internetni promet sel preko te povezave ... \n\nGlede uporabniskega imena in gesla... pa ne vem tocno, kako ima to T-2 resen za VDSL... pri optiki vem,d a nimas uporabniskega imena in gesla... Za VDSL pa naj pove kdo od T-2-jevcev... ali je PPPoE (z uproabniskim imenom in geslom ) ali direktna povezava brez teh podatkov ... Ce se prav spomnim ( ko sem enkrat rihtal to pri eni stranki) ima T2 tudi na VDSLu diretkno povezavo... tako kot recimo AMIS ...\n\nV tem drugem primeru bo ostalim delovala povezava v internet tudi takrat, ko bo recimo VPN povezava padla ... \n\n\n Tukaj sem nasel, da tudi pri VDSLju nimas uporabniskega imena in gesla in je enako kot preko optike... in ce imas dinamicni IP, se lahko trije hkrati direktno povezejo ... torej imas v praksi lahko tri routerje, ki hkrati delujejo... ali pa en router in dva racunalnika dirketno brez routerja... \n\n\nSem pa sedajle probal v sluzbi, kjer imamo T-2 optiko in staticni IP... in priklopil notebook na en prost port od Milana (opticni \"modem\")... in mi je dodelilo dinamicni IP... tako, da imas lahko ocitno tudi, ce imas staticni IP se vedno do tri prikljucene racunalnike direktno... in ocitno pac ostali dobijo dinamicni IP dodeljen od DHCP streznika ...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Pa nujno rabiš ISDN? ISDN linja se je svoje čase uporabljal za backup, samo danes je xDSL tehnologija, sploh pa optika precej bolj robustna. Če crkne optika je mogoče ISDN rešitev, če pa crkne xDSL linija pri nekem resnem ponudniku potem bo verjetno tudi izpad ISDN kanalov. \n\nČe imate net na T-2 je verjento res bolje da se vzame še ISDN pri telekomu!  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Sicer če ni potrebe po 4x9 zanesljivosti je dovolj xDSL/optika pri enem providerju.\n\nDva IPja? Verjetno en za xDSL linijo in en za ISDN linijo ker gre pri ISPju za dva ločena tipa omrežji. Rabiš pa statičen IP zaradi VPN kanala (nastavitve).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Jp, nujno more bit ISDN linija, ker se gre ravno za backup linijo.\n\nUtisevalec in Jest, dolžen sem vama po pivo  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Lamagras pravi:\n Na VPN liniji bo samo en računalnik, in pa tiskalnik. Aja, pa še eno vprašanje, T2 ima v ponudbi ISDN priklop, jaz pa kolikor razumem, oziroma koliko so mi tujci razložili potrebujem \"true isdn\", se pravi tisto telekomovo zadevščino, ki je dejansko tudi modem? malo sem zmeden okoli tega zdej?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nEh, potem daj vse nazaj kot je bilo in:\n\n - iztakni mrežni kabel iz PC-ja, ki bo na VPN\n - ta kabel vtakni v Cisco na WAN port (na tvoji sliki označen z \"VDSL\")\n - taisti PC poveži z novim kablom na Cisco ruter v luknjo, ki je na sliki označen z \"PC\"\n - v sosednjo luknjo pa printer\n\nISDN, če je za backup povezavo, pa lahko poznej priklopiš, ko ga dobiš (od Telekoma, noben drug to ne ponuja).\n\nNa tak način ne rabiš nič čarati z modemom, drugim ruterjem itd.\nČe pa slučajno ne dela zaradi kakih \"čudnih\" protokolov, ki bi ga Cisco uporabil za VPN, pa lahko Cisco namesto v stari ruter direktno v T-2 modem priklopiš.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "PS: Na fotkah se napisi ne vidijo, ker je premajhno.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Vglavnem vsem hvala na pomoči, je bila tista Jestova shema kar taprava, in stvar sedaj funkcionira, na ISDN linijo pa še čakamo, ko pač pride pride, bomo pa še tist pol vklopl  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nLP",
+    "author": "Lamagras",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "PS: A zberemo denar in Jestu podarimo kako kopijo MS Paint-a ? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Takoj sponzoriram, ampak samo če je ASCII verzija MS Painta..",
+    "author": "hitcher",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik stein pravi:\n PS: A zberemo denar in Jestu podarimo kako kopijo MS Paint-a ? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZakaj bi rabil MS Paint? Kolikor vem, na MACu ne laufa  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ...\n\nVazen je koncni efekt... in ta je bil ocitno pozitiven  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "Bo takole bolje?  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "VPN ROUTER-POMOČ",
+    "content": "No ja, tiste krivulje so nekak s tresočo roko bile risane....\n\nHecam se. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

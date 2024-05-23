@@ -1,0 +1,140 @@
+[
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Ikeja prodaja zelo ugoden senzor kvalitete zraka s preprostim imenom \"VINDRIKTNING\". \n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tVINDRIKTNING senzor kakovosti zraka - IKEA\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tVINDRIKTNING senzor kakovosti zraka Ali si želiš izvedeti več o zraku, ki ga dihaš v svojem domu? Kakovost zraka glede na delce (2,5 PM) lahko preveriš s tem elegantnim senzorjem, ki je preprost za uporabo in ga zlahka kombiniraš s FÖRNUFTIG čistilnikom zraka.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.ikea.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nTa senzor ima noter modul, ki šteje cca 2,5um velike delce. Glede na količino teh delcev v zraku gori barvna lučka.\nZelena je ok, oranžna je slabše in rdeča je zelo slabo...\n\nSenzor sam po sebi je predvsem dekorativni okrasek, če pa dodaš noter Wifi modul, pa postane uporaben za avtomatizacije in natačno spremljanje števila delcev PM2.5.\n\nPotrebujemo:\nD1 Mini (Esp8266) https://www.aliexpress.com/premium/...ortType=total_tranpro_desc&groupsort=1&page=1\n\nTri barvne kabelčke (idealno, rdeč črn in tretja barva)\n\n1.KORAK\nV ESPHome dodaš novi Esp8266 node.\nPotem pa klikneš EDIT -> INSTALL -> Manual download, da dobiš nekaj.bin file\n\n2.KORAK\nZ eno žičko povežeš D3 pin GND pin in istočasno vštekaš \"D1 mini\" v računalnik. Potem lahko odstraniš žičko.\n\n3.KORAK\nPotem pa greš na stran: https://github.com/esphome/esphome-flasher/releases\nSnameš file primeren za tvoj OS npr \"ESPHome-Flasher-1.4.0-Windows-x64.exe\" in ga poženeš.\n\nIzbreš com port tvojega d1Mini modula, nato izbereš še file ki si ga prej naredil (nekaj.bin) in klikneš Flash ESP.\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\nKo bo končalo bo resetiralo D1mini in nadaljni updejti gredo preko OTA v ESPHome.\n\n4.KORAK\n\nNa tem novem node-u v ESPHome daš edit in dodaš tole kodo:\n\n\t\n\t\n\n\n\n\t\n\t\tYAML:\n\t\n\t\n\t\t# Ikea Vindriktning PM2.5 sensor\nuart:\n  rx_pin: D2\n  baud_rate: 9600\n\nsensor:\n  - platform: pm1006\n    pm_2_5:\n      name: \"Ikea Vindriktning PM25\"\n      filters:\n        - sliding_window_moving_average:\n            window_size: 10\n            send_every: 10\n\t\n\nCel file bo izgledal približno takole:\n\n\t\t\n\t\n\nPotem klikneš \"INSTALL\" in \"Wirelessly\". In si fertik s softwerom.\n\n5.KORAK\nOdpreš VINDRIKTNING in na tri zlate kontakte prilotaš tri žičke. Te tri žičke gredo tudi na D1Mini in sicer:\nVINDRIKTNING -> D1Mini\n5V -> 5V\nGND -> GND\nREST->D2\n\n\n\t\t\n\t\n\nPotem ga zatlačiš med ventilator in ohišje in nazaj sestaviš:\n\n\t\t\n\t\n\n\n6.KORAK\nV HA boš dobil notification da se je pojavil novi device in klikneš še \"Configure\" in \"OK\".\n\nPotem pa lahko dodaš takšne kartice v HA:\n\n\t\t\n\t\nPodatki so približno taki. Če imaš čist zrak (brez delcev) potem so vrednosti pod 20. Če pa pečeš jajčka pa gred tudi na 200...\nTe vrednosti lahko potem uporabiš v neki avtomatizaciji, da ti vklopi čistilec zraka ali pa nastavi prezračevanje na višjo stopnjo...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Tudi sam sem nabavil ta senzor in ga probal spariti na Lidlov gateway in njihovo aplikacijo, vendar mi ga ni nikakor uspelo povezati skupaj.\nTudi preko Tuya apk. ga ni zaznalo, tako da ne vem ali moraš imeti prav njihov gateway ali v čem je problem.\nPravtako  nima gor tudi nobenega reset gumba edino plug&play v elektriko.\nDrugače kakor sem na hitro zaznal se mi zadeva ne dopade, ker se na vsakih 10 sec  rahlo sliši motorček, kateri vsesava zrak in to zna biti na dolgi rok malo moteče.",
+    "author": "WeWatchingYou",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Če bi kdo želel namesto ESPHome uporabiti Tasmoto so tukaj navodila.",
+    "author": "Maiden",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik WeWatchingYou je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTudi sam sem nabavil ta senzor in ga probal spariti na Lidlov gateway in njihovo aplikacijo, vendar mi ga ni nikakor uspelo povezati skupaj.\nTudi preko Tuya apk. ga ni zaznalo, tako da ne vem ali moraš imeti prav njihov gateway ali v čem je problem.\nPravtako  nima gor tudi nobenega reset gumba edino plug&play v elektriko.\nDrugače kakor sem na hitro zaznal se mi zadeva ne dopade, ker se na vsakih 10 sec  rahlo sliši motorček, kateri vsesava zrak in to zna biti na dolgi rok malo moteče.\n\t\t\n\t\tKlikni za razširitev\n\t\nJa opcija je da zvežeš ventilator na 3.3V od D1mini ali pa daš noter mini 5V->3.3V regulator in nanj zvežeš ventilator.\n\n\t\t\n\t\nPotem ti dela ventilator ves čas ampak ker ne prekinja je manj moteče, pa ker je nižja napetost so malo nižji tudi vrtljaji...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Hvala za tole idejo. Ta senzor mi zdaj lepo začasno izklopi rekuperator, ko sosed zakuri drva v stari centralni in se začne dol kadit mimo mojega odjema zraka za hišo.",
+    "author": "Mirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Katero varianto D1 mini pa naj vzamem? Tole za 2,24 eur? \n\nColor : D1 MINI V3.0.0",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Jaz dam ponavadi samo sort po orders descendno in kupim pri enem ki ima veliko prodanih...\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\td1 mini - Buy d1 mini with free shipping on AliExpress\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tQuality d1 mini with free worldwide shipping on AliExpress\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.aliexpress.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smukec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKatero varianto D1 mini pa naj vzamem? Tole za 2,24 eur?\n\nColor : D1 MINI V3.0.0\n\t\t\n\t\tKlikni za razširitev\n\t\nJaz bi na tvojem mestu vzel tale model, ki ima kovinsko ohišje, ker bo sproduciral manj RF motenj v okolico...\n\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "kak pa flešaš tega, nima usb- priključka, če prav vidim",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik mcn je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tkak pa flešaš tega, nima usb- priključka, če prav vidim\n\t\t\n\t\tKlikni za razširitev\n\t\nNa spodnji strani je micro usb konektor.\n\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "uh, škoda, jaz sem že v3 naročil....",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Ce prav vidim gre za ta senzor: https://pdf.directindustry.com/pdf/...-led-particle-sensor-module/54752-927719.html,\nki meri (ali pa racuna) tudi PM1 in PM10. \nA je mogoče te vrednosti tudi prebrati?",
+    "author": "boc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik boc je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tCe prav vidim gre za ta senzor: https://pdf.directindustry.com/pdf/...-led-particle-sensor-module/54752-927719.html,\nki meri (ali pa racuna) tudi PM1 in PM10.\nA je mogoče te vrednosti tudi prebrati?\n\t\t\n\t\tKlikni za razširitev\n\t\nEsphome bere samo PM2.5.\n\nLahko pa ta senzor priklopiš tudi na arduino ali PC in spremljaš podatke na serial portu...\n\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Ne bo šlo (branje PM10), ker gre dejansko v tem primeru za PM1006 in ne PM1006K in ta meri le PM2.5Č\n\n\t\n\t\t\n\t\t\thttp://www.jdscompany.co.kr/download.asp?gubun=07&filename=PM1006_LED_PARTICLE_SENSOR_MODULE_SPECIFICATIONS.pdf\n\t\t\n\t\nkjer je  odgovor malo drugačen:\n\n\t\t\n\t",
+    "author": "boc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Hej fantje, modificiral sem si ta senzor, se poveže, ampak ne pošilja podatkov. lahko kdo ugotovi zakaj ne?",
+    "author": "mcn",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "esphome:\n  name: ikea-pm-sensor\n\nesp8266:\n  board: d1_mini\n\n# Enable logging\nlogger:\n\n# Enable Home Assistant API\napi:\n\nota:\n  password: \"xxx\"\n\nwifi:\n  networks:\n    - ssid: Network_01\n      password: kajtebriga\n      manual_ip:\n        static_ip: 192.168.0.11\n        gateway: 192.168.0.1\n        subnet: 255.255.255.0\n    - ssid: Network_02\n      password: kajtebriga\n      manual_ip:\n        static_ip: 192.168.1.241\n        gateway: 192.168.1.1\n        subnet: 255.255.255.0\n  use_address: 192.168.1.241\n\n  # Enable fallback hotspot (captive portal) in case wifi connection fails\n  ap:\n    ssid: \"Test-Board Fallback Hotspot\"\n    password: \"te tudi nič ne briga\"\n\ncaptive_portal:\n\nweb_server:\n\ntext_sensor:\n  - platform: wifi_info\n    ip_address:\n      name: IKEA PM Sensor IP Address\n    ssid:\n      name: IKEA PM Sensor  SSID\n    bssid:\n      name: IKEA PM Sensor  BSSID\n\nuart:\n  rx_pin: TX\n  baud_rate: 9600\n\nsensor:\n  - platform: wifi_signal\n    name: \"WiFi Signal Sensor\"\n    update_interval: 60s\n  - platform: pm1006\n    pm_2_5:\n      name: \"IKEA PM2.5 Concentration\"  \n      filters:\n        - quantile:\n            window_size: 10\n            send_every: 10\n            quantile: .2",
+    "author": "Izbrisan uporabnik 474",
+    "author_level": ""
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Zakaj mi to napako javi, ko dam update? \n\n\n\t\t\n\t",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smukec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZakaj mi to napako javi, ko dam update?\n\nPoglej priponko 54128\n\t\t\n\t\tKlikni za razširitev\n\t\nProbi v konfiguraciji spremenit iz d1_mini v esp01_1m:\n\n\n\t\t\n\t\n\nUgibam, da ima tvoj D1 mini samo 1MB flasha namesto 4MB...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Pa verjtno boš potem moral popraviti še iz\nrx_pin: D2\nv\nrx_pin:GPIO4\n\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Sem oboje popravil, pa enaka napaka.",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik smukec je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tSem oboje popravil, pa enaka napaka.\n\t\t\n\t\tKlikni za razširitev\n\t\nTakega primera še nisem imel...\nBi pa probal tole. V esphome daj compile in download binary.\nPotem pa znova flashas po zgornjem postopku z esp flasherjem...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Čudno mi je, da mi nič več ne napiše, da je update na voljo. A je možno da se je kljub napaki posodobilo? \n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "LjuboB",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vodič: Predelava Ikejinega Air Quality senzorja na Wifi",
+    "content": "Vse je mogoče... Sploh s to spremembo configa bi moral it...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  }
+]

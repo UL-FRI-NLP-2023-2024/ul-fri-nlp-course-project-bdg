@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Ammm....ker sem zdej itak do konca jezen, bom sam napisu tale nasvet/opozorilo. Ce si lastite XP winse, in se vam slucajno pojavi blue screen..potem pri naslednjem zagonu NUJNO pustite scan disk, da opravi svoje...jaz ga namrec nisem...in je slo ful stvari v p.m. ( prakticno vse nastavitve, kr neki fajlov.... ).... sam tko..da se ne bo se kdo polege mene zaj**u.... zdej grem pa win2k nazaj gor vrzt... ",
+    "user": "DrSergioDJ"
+  },
+  {
+    "message": "Nisi pustil scandiska?  Joj, joj kak so dandanes ljudje neucakani   [t502] ",
+    "user": "[t502]"
+  },
+  {
+    "message": "e, jebiga, mudil se mi je, pa ga nisem...dans je pa sestra przgala PC, pa pomoje spustila scandisc..pa je vse v p.m. k sm dam prsu...vse email v outlooku so sli pa take bedarije (vsako minuto kej novga najdem...) benti microsoft!! ",
+    "user": "DrSergioDJ"
+  },
+  {
+    "message": "meni je vedno izginjeval en fajl(sistem32\\config...) :)). Ta teden sem ga instaliral ze ene 5x. ",
+    "user": "MRtwister"
+  },
+  {
+    "message": "ena lepih stvari XPjev je System restore. Takrat, ko mas nastavitve, programe, bilokaj tko kot hoces, nardis system restore point in si lahk brez problemov. Obstaja pa tud system backup, ki ti (le kaj) backupira zeljene diske, direktorije, ipd.  ",
+    "user": "BojlerTM"
+  },
+  {
+    "message": "a si mel FAT32 al NTFS? ",
+    "user": "andrej"
+  },
+  {
+    "message": "ni pa ena lepih stvari system restorea k mele tko da ma več al manj folka to traparijo ugasneno!!! Vedno znova opažam, da so w2k najboljsi M$ OS... ",
+    "user": "krucymucy"
+  },
+  {
+    "message": "Hm, jest mam NTFS pa mi Scnadisk sploh nikol ne laufa, tak da NTFS mej ne pa FAT 32 ",
+    "user": "matter"
+  },
+  {
+    "message": "DrSergioDJ: dej nakladat, kokrat se je men že pojavu win logo pa sm spustu scandisk pa ni blo nč narobe.  ",
+    "user": "JXS"
+  },
+  {
+    "message": "Ko smo ze ravno pri modrih zaslonih XP sistema. Kolega si je na novo instaliral XPje in ko se prijavi mu vrne blue screen in napise naslednje (aja, ko si je prvic instaliral XPje so delali dobro, potem si je kupil maxtor disk in se enkrat instaliral sistem):  STOP: 0x0000008E (0xC0000005, 0XF9F5A7C3, 0xF919EB24, 0X00000000)  eapci40.sys - Address F9F5A7C3 base at F9F5B000, datastamp 350A268F  Any idea? ",
+    "user": "Tr0n"
+  },
+  {
+    "message": "Če je kej navit nej ga odvije pa pol ko bo naložen nazaj navije... ",
+    "user": "krucymucy"
+  },
+  {
+    "message": "TrOn: v bistvu gre za KERNEL_MODE_EXCEPTION_NOT_HANDLED, ki je zelo genericna napaka. Ce hoces res zvedet, kaj tocno je narobe mores na MSDN strani downloadat debuger in pogledat v help datoteko.  Da ne rabis ti tega delat, sem jaz zate to pogledal:  Bug Check 0x8E: KERNEL_MODE_EXCEPTION_NOT_HANDLED [This is preliminary documentation and subject to change.]   The KERNEL_MODE_EXCEPTION_NOT_HANDLED bug check has value 0x0000008E. This signals that a kernel-mode program generated an exception which the error handler did not catch.  Parameters The following parameters are displayed on the blue screen.  Parameter Description  1 The exception code that was not handled  2 The address at which the exception occurred  3 The trap frame  4 Reserved    Cause This is a very common bug check. To interpret it, you must identify which exception was generated.  Common exception codes include:   0x80000002: STATUS_DATATYPE_MISALIGNMENT  An unaligned data reference was encountered.   0x80000003: STATUS_BREAKPOINT  A breakpoint or ASSERT was encountered when no kernel debugger was attached to the system.   0xC0000005: STATUS_ACCESS_VIOLATION  A memory access violation occurred.   For a complete list of exception codes, see the ntstatus.h file located in the inc directory of the Windows DDK.  Resolving the Problem If you are not equipped to debug this problem, you should use some basic troubleshooting techniques. Make sure you have enough disk space. If a driver is identified in the bug check message, disable the driver or check with the manufacturer for driver updates. Try changing video adapters. Check with your hardware vendor for any BIOS updates. Disable BIOS memory options such as caching or shadowing.  If you plan to debug this problem, you may find it difficult to obtain a stack trace. Parameter 2 (the exception address) should pinpoint the driver or function that caused this problem.  If exception code 0x80000003 occurs, this indicates that a hard-coded breakpoint or assertion was hit, but the system was started with the /NODEBUG switch. This problem should rarely occur. If it occurs repeatedly, make sure a kernel debugger is connected and the system is started with the /DEBUG switch.  If exception code 0x80000002 occurs, the trap frame will supply additional information.  If the specific cause of the exception is unknown, the following should be considered:  Hardware incompatibility. First, make sure that any new hardware installed is listed on the Microsoft Windows Hardware Compatibility List (HCL).  Buggy device driver or system service. In addition, a bug-ridden device driver or system service might be responsible for this error. Hardware issues, such as BIOS incompatibilities, memory conflicts, and IRQ conflicts can also generate this error.  If a driver is listed by name within the bug check message, disable or remove that driver. Disable or remove any drivers or services that were recently added. If the error occurs during the startup sequence and the system partition is formatted with NTFS file system, you might be able to use Safe Mode to rename or delete the faulty driver. If the driver is used as part of the system startup process in Safe Mode, you need to start the computer by using the Recovery Console to access the file.   If the problem is associated with Win32k.sys, the source of the error might be a third-party remote control program. If such software is installed, the service can be removed by starting the system using the Recovery Console and deleting the offending system service file.  Check the System Log in Event Viewer for additional error messages that might help pinpoint the device or driver that is causing bug check 0x1E. Disabling memory caching of the BIOS might also resolve the error. You should also run hardware diagnostics, especially the memory scanner, supplied by the system manufacturer. For details on these procedures, see the owner's manual for your computer.   The error that generates this message can occur after the first restart during Windows Setup, or after Setup is finished. A possible cause of the error is lack of disk space for installation and system BIOS incompatibilities. For problems during Windows installation that are associated with lack of disk space, reduce the number of files on the target hard disk. Check for and delete any unneeded temporary files, Internet cache files, application backup files, and .chk files containing saved file fragments from disk scans. You can also use another hard disk with more free space for the installation. BIOS problems can be resolved by upgrading the system BIOS version.   ",
+    "user": "andrej"
+  },
+  {
+    "message": "krucymucy: To je tvoje mnenje. Meni je ze veckrat prov prslo, ko sem ene cudne driverje instaliru, pa mi je pol sistema zjebal (cudno obnasanje vsega) sm sel v restore, izbral stanje pred 15min in v 30s je vse spet lepo delal. men nc ne mele, zasede pa prib. 300Mb (jest si to lahko prvoscim - 60Gb disk). Men je to kr kul stvar ",
+    "user": "BojlerTM"
+  },
+  {
+    "message": "Sam neki me zanima. A lahko uporabis sistem restore samo 1x pol ga pa izklopis, da ti ne melje skos, ampak ce se ti slucajn sesuje a mas vseen uno kopijo k si jo naredu? ",
+    "user": "MitjaM."
+  },
+  {
+    "message": "Vse kar pise sem chekiral, tudi nobenih 3rd party gonilnikov ni instaliral. Samo disk je bil drugi. ",
+    "user": "Tr0n"
+  },
+  {
+    "message": "Ce ti napise, kdo ti je omogocil Blue Screen, poisci datoteko in pokukaj notri, kdo jo je napisal in za kateri hw pravzaprav je. Ce jo je napisal MS, potem ni dobro.. :)   Kar se tice pa izginevanja datotek (recimo kljub NTFSju), predvsem v system32\\config, pa moje sozalje. Meni se je to dogajalo pri pokvarjenem disku, ki je v pricipu delal lepo, k sreci je Maxtorjev MaxDiag povedal, da je nekja grdo narobe. Po zamenjavi se mi to ni vec nikoli zgodilo. Ce se to dogaja redko in je disk v redu, pomaga vcasih vklop ciscenja pagefile (Locasl security settings - Security setting - Local policies - Security options). Tako zaposlis disk, da pise nepomembne stvari na koncu, ne pa da sari po registryju, ko se racunalnik ugasne in mu zmanjka elektrike. ",
+    "user": "matevzm"
+  },
+  {
+    "message": "mitjaM: Ne. Ko izklopis SR ti zbrise vse varnostne tocke. ",
+    "user": "andrej"
+  },
+  {
+    "message": "mrxjs: dej...ne govort, ce te ni tle, ok? Jest sm tud do zdej preskocu scandisk ze vsaj 1000 krat, e tokrat me je pa zajebal...zdej sm spet onlajn...na w2k, pa ne diram vec unga sranja od XP...hvala za vs info ( ceprov sm ga vidu prepozn, hehe ) ",
+    "user": "DrSergioDJ"
+  },
+  {
+    "message": "Zanima me če se je komu pri zagonu zgodilt : to. Mogoče mi Andrej lahko pomagaš, vse sem preizkal ampak najdu nič konkretnega!! MRtw/ster je začel omenjat nekaj takega? ",
+    "user": "Kriko"
+  },
+  {
+    "message": "si probal s kaksnim drugim diskom? Po vsej verjetnosti gre za kaksen problem s hardverom, ali pa hardver/softver kombinacijo. To se tudi dogaja ce se instalira napacen driver za disk kontroler. Poglej za update za tvojo plosco, including BIOS. ",
+    "user": "andrej"
+  },
+  {
+    "message": "Instaliral sem več biosev zdaj imam zadnjo verzjo, za disk kontroler imam tudi zadnjo verzijo pa ni spremembe. Sem celo probal z enim starejšim diskom ki sem ga imel doma pa je isto. Instaliram dela par resetiranj dovolj in se pojavi napis da je v Windows\\System 32\\System mapa spremenjena ali manjkajoča!! Pred dvema dnevoma sem zamenjal slot rama in sem z slot1 dal v slot2 in zdaj je že dva dni dobro. Res mi ni čisto nič jasno!!  ",
+    "user": "Kriko"
+  },
+  {
+    "message": "zanimivo. cudna so pota racunalnistva ",
+    "user": "andrej"
+  },
+  {
+    "message": "mislis rect Microsoftova  ",
+    "user": "Tr0n"
+  },
+  {
+    "message": "ne, ker ni mozno trdit, da je MS kriv za to. Bolj verjetno je, da je kriva mamaplata. ",
+    "user": "andrej"
+  },
+  {
+    "message": "Lahko je ram ali pa samo pokvarjeni ram sloti   [t502] ",
+    "user": "[t502]"
+  }
+]

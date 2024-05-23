@@ -1,0 +1,128 @@
+[
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "ali pa tudi ne. če odmislim človeški faktor...fritz se skoraj vsak mesec sesuje (prekine povezavo-je v bridge načinu) in posledica tega je, da glavni ruter (ni najdražji na svetu-pač tplinkov c50) ne deluje več in ga moram vedno znova ponastaviti na factory defaults in ponovno skonfigurirati. prek neta vmesnika se sploh ne moreš  prijaviti. in za hec pa še istočasno, ko resetiram glavni ruter, drugi ruter (isto tplinkov 740), ki je samo zaradi tega, da ima drugi ip zaradi naprav, spremeni svoj ip-iz 0.1 v 1.1.\nvsa moja pamet mi tukaj odpove...če kdo ne sheka prav zabito vse skupaj...pa kako lahko ena naprava posledično \"sesuje\" vse povezane naprave za sabo...\nres ne vem kaj narediti...za glavni ruter sem imel že tri različne ruterje (ja, vse tplinkove, različnih cenovnih razredov) in vedno isto. ko fritz mrkne zaradi kakršnegakoli že razloga, se glavni ruter sesuje...in potem še sekundarni (no, na srečo je treba le lan ip zamenjati pa vseeno).",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Vseeno ne razumem čisto, kako in kaj je skonfigurirano, kateri port Fritz modema je povezan na kateri od C50, ter kateri port od 740 je povezan na kateri port katere naprave?\nFritz je v bridge itak ali šele po prekinitvi?\nJaz ko sem imel podobne probleme sicer na drugem Telekom modemu, ki se je sesedal pogosteje, vsaj 1x tedensko, sem enostavno rešil tako da je WRT54GL za njim, povezan na WAN, vzpostavljal PPPoE sejo, modem pa ne. Na modemu sem tudi ugasnil čisto vse od DHCP, WiFi itd in potem je bil mir.\nNe vem sicer ali gre pri tebi za optiko ali ADSL itd, ampak če ADSL, probaj tako kot jaz zgoraj. Pa na oba routerja bi jaz naložil Openwrt, ker s tem postaneta stabilnejša.\nGlede ročnega nastavljanja (ali Openwrt ali stock FW) naredi backup konfiguracije in je narejeno takoj.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "dodatno pojasnilo...zadeva je v lokalu, wifi je pa odprt (čeprav dvomim, da to igra bistveno vlogo). skratka, sedaj je bil fritzbox prvi, drugi ruter je vzpostavljal povezavo (pppoe), drugi ruter pa samo kot ap, da je določil drugi ip v omrežju. prvi ruter vklopljen wifi, modem in drugi ruter ne.\nsedaj sem nastavil tako, da je modem glavni (vzpostavlja povezavo), prvi in drugi ruter pa sta ap, ki imata vsak svoj ip omrežje...pa da vidmo...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Privzeta gesla pa spremeniš?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "To maš ti skoraj gotovo nekaj narobe zvezano in/ali skonfigurirano. Že to, da se ti subnet spremeni, je indikator, da imaš nekje dve mreži bridgani, kar ni ok.",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "erikson: ja seveda\nmikro: če bi vedel kaj in kje je narobe??? fritz ima 178.1, prvi ruter 3.1, drugi ruter 0.1. vse je na wan portih. pa načeloma bi verjel, da lahko na enem ruterju počneš hudiča in pol, pa to nima (in ne bi smelo) vpliva na drugega. no, lahko je pa drugi ruter fuč...\nsedaj čakam, da telekom zrihta povezavo, potem pa bomo spet počakali kak mesec, če bo spet mrknil...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Nekaj je narobe, ja. Gotovo. Jaz imam doma podobno narejeno omrežje ( modem - 1.1, izključen PPPoE, DHCP, WiFi --------> prvi router preko WAN - 2.1, ki vzpostavlja PPPoE kot AP -------------> drugi router preko WAN - 3.1). In stvar je stabilna, praktično brez izpadov. Res da je lahko pri tebi več klientov, ker pri meni gre za domače omrežje in jih je do 10, morda kdaj 15, ampak ta tvoj fenomen se ne bi smel pojavljati.\nDOKLER pa je modem vzpostavljal PPPoE, pa ni bilo OK. <---------- To pri tebi ni primer če prav razumem tvoj izraz \"bridge\".\nPa WAN drugega routerja daj IP na static.\n\nImaš morda aktiven tudi kak IPv6 med napravami?",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "bajk, ja, pri meni je bilo ravno obratno (prvi ruter je delal ppoe). \nglede static ip na drugem ruterju bom pa nastavil...\nip6 je povsod izklopljen (drugi ruter je starejši in ne vem če sploh ima-nisem našel)",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Saj je prav tako, da dela prvi router, tisti za modemom. V tvojem primeru je to C50. Razen če je za tebe Fritz prvi router (ki je zame modem). Če bo PPPoE vzpostavljal Fritz, bo Fritz bolj obremenjen in se bo posledično večkrat sesedel. Če že imaš postavljen dodatni router, na Fritzu izključi čisto vse, da ga čim bolj razbremeniš.\nA veš da lahko vzpostaviš dve PPPoE seji? Tako da če si PPPoE sejo kreiral na C50, še nisi nujno prekinil tiste na Fritzu. \nDa jo ptekineš, moraš v nastavitvah disejblati. Morda je to to ko omenjaš bridge. Jaz moram recimo za uporabniško ime in geslo vpisati \"disabled\".\n\nNa 740 imaš konfiguracijo za WAN port, tam kjer bi recimo spet lahko nastavil PPPoE imaš sedaj DHCP. Spremeni v static takole:\n192.168.3.247 <-------- 247 je primer, lahko karkoli drugega, samo da je izven dosega DHCP prvega C50 routerja.\nMaska 255.255.255.0\nGateway 192.168.3.1\nDNS:192.168.3.1",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Dajmo takole:\n\nFRITZ\n- disejblaš čisto vse kar se disejblati da, NUNJNO tudi PPPoE\n\n\n\nTP-link C50\nWAN:\n- PPPoE\n\nLAN:\n- normalno 192.168.3.1\n\n\n\nTP-link TL-WR740N:\n\nWAN:\n- static\n- 192.168.3.247 <-------- 247 je primer, lahko karkoli drugega, samo da je izven dosega DHCP prvega C50 routerja.\n- Maska: 255.255.255.0\n- Gateway: 192.168.3.1\n- DNS: 192.168.3.1 \n\nLAN:\n- normalno 192.168.1.1",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Kaj pravi\nTK support, ko se modem sesuje (kaj se vidi v logih, je takrat sploh dosegljiv za njih ) ?\nKoliko je star (napajalnik problem), točen model ?\n\n\nTk modem je torej v bridge načinu ? To ga je dal Tk support ?\n\nPotem praviš da imaš iz modema dva routerja priklopljena v wan port... PPPoE  (to ima TK) povezavo vzpostavi samo eden ali oba routerja (če nimaš statike so možne 3-4 hkratne povezave) ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Shema je taka ?\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tmodem\n        /                 \\\n  router1        |     router2\n[wan port]         [wan port]\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "ok, počasi v breg. zadeva še ne deluje (telekom pač ne dela čez vikend).\ndo takrat pa: bajkman, tvoj predlog je bil sedaj nekaj mesecev aktiven in se je vedno sesulo (najprej modem, potem pa še prvi in drugi ruter), zato pa sem tudi zdaj poskusil zadevo drugače (ker sicer bom bedak, če bom stalno preizkušal iste finte v upanju, da bo kej drugače) s tem, da sedaj modem (telekomov fritz) kliče pppoe. če je tako švoh, da ga tale klicanje sesuva, nej ga pa zamenjajo (hudiča).\nytbnd: tk pač pregleduje stanje in verjetno pojma nimajo, zakaj modem prekinja. ker vedno se modem vsuje (to imajo tudi zabeleženo). a zakaj...\nshema: modem > ruter 1 (wan) > ruter 2 (wan)\n\nergo...počakajmo, da vidmo, kaj bo sedaj s tako konfiguracijo...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tshema: modem > ruter 1 (wan) > ruter 2 (wan)\n\t\t\n\t\tKlikni za razširitev\n\t\nTK \"modem\" v bridge mode, nato se odloči, kateri router bo glavni, moj nasvet je c50,  drugi router priklopi v  lan port (bo deloval kot wifi ap in lan switch) plus izklopi mu dhcp server.",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Ne bo v redu LAN, ker kot razumem, želi imeti drugi Subnet.\nngc2392 ,pri Telekomu je seveda tehnična podpora aktivna tudi za vikend. S podatki pa si res skop.\nNajprej bi bilo res vredno pregledati Hardware, kot je namignil že Ytbnd .\nVse tri routerje in napajalnike fizično odpreš in preveriš če je kako od elektrolitskih kondenzatorjev morda napihnjen ali pa je spustil. Takole zgleda:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tHow do I find the one burnt or leaky capacitor on a PCB?\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tAnswer (1 of 7): An electrically leaky capacitor would be one where the dielectric resistance has decreased to the point where the capacitor can Ohmically conduct significant current. This usually happens as a result of chemical degradation of the dielectric.  An electrically leaky capacitor will...\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.quora.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nKer če je HW in imaš potrjeno da je, potem đabe izgubljati čas z nastavitvami. Potem so lahko od neviht skurjeni kaki LAN/WAN vhodi. Kasneje lahko dam sliko z vidnimi posledicami skurjenih 75ohm SMD uporčkov na vhodih.\nNapajalnik odpreš tam na zarezi. Raven izvijač in malo igranja. Sestaviš a nazaj z nekaj sekundnega lepila. Drži na dolgi rok.\n\nČe HW OK, bi vztrajal s PPPoE na C50. Imata oba routerja zadnjo verzijo Firmware-ja? Če nimata, namesti in potem čakaj dodaten mesec. Če ne pa Openwrt, itak je sedaj do uporabnika prijaznejši in mesec čakanja.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "ja ok, se opravičujem - to ni pri meni doma. ne morem skakat vsakih 5 minut pol ure do stranke in nazaj \nskratka...če je že kaj skurjenega, je to morda 740. ker za prvi ruter sem v dveh mesecih zamenjal dva (za test) in z obema je bilo isto. če je to res problem, imamo problem s štromom tam. a potem bi štrom kuril vse po vrsti, ne pa (samo) prvi ruter.\nybt...do sedaj je bil problem, ker je c50 (ali katerikoli) ruter klical prek pppoe. in sedaj sem za test nastavil, da modem kliče. pa da vidmo...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Jaz imam naprotne izkušnje. Pri meni ni prebijalo preko štroma ampak preko bakrene Telekom parice na modem, nato pa narej po pyczki dobil še WAN vhod routerja.\nTudi več primerov katere sem videl, je bilo tako.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Jaz bi za začetek za karkoli resnega nehal uporabljat te consumer grade kinder jajčke  Sicer pa ne glede na to, kaj se dogaja s Telekomovo opremo, se nima tvoj oprema zadaj kaj \"sesuvat\".",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "To se nikakor ne bi smelo dogajati, da se ti kar same od sebe ponastavljajo zadeve. Imam v omrežju 5 TP Linkov, Mikrotik in nekaj Ubiqity opreme in niti pri enem se mi ni v vseh teh letih zgodilo, da bi se kar sam ponastavil. Omislite si morda raje kakšen Mikrotik kot vzpostavljalec PPPoE povezave, poceni je npr. HAP AC2 ali pa kaj iz Ubiqity ranga, so bolj primerni za obremenjene povezave.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Se strinjam, jaz tudi mislim da potem folk nekaj pritiska ko internet guzne. In če nekdo pritisne tipko reset za 10s se TP-LINKi ponastavijo.",
+    "author": "Bajkman",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "telekomov modem sesuje dva ruterja...",
+    "content": "Če se zadeva ne vzpostavi nazaj po soft-resetu (beri: vklop/izklop), ampak komaj po hard-resetu (factory reset, re-konfiguracija), potem je definitivno nekaj narobe s konfiguracijo.\n\nV tej situaciji probaj izklopiti vse naprave, potem pa jih eno-po-eno vklapljaj nazaj po vrstnem redu, kot bi jih sicer konfiguriral pri hard-resetu. Če je kaj logike, bi tudi to moralo delovati.\n\nAmpak definitivno najprej popravi konfiguracijo...",
+    "author": "philips",
+    "author_level": "Guru"
+  }
+]

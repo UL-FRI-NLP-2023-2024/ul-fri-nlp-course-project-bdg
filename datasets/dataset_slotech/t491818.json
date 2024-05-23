@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Torej rad bi ustvaril sql poizvedbo katera bo vsebovala en podatek (v mojem primeru string 'ime') ki ga je vtipkal uporabnik v textbox. Po nekajurnem googlanju in probavanju mi stvar še vedno noče delati. Sam sem probal takole:     \n private void btnPrijava_Click(object sender, EventArgs e)\n{\n MySqlConnection mysqlpovezava = new MySqlConnection();\n mysqlpovezava.ConnectionString = deffinitions.Getconninfo();\n\nstring ime = txtUpime.Text;\n\n            mysqlpovezava.Open();\n            MySqlCommand command = new MySqlCommand(\"SELECT IME_UPORABNIKA, GESLO FROM `uporabniki` where IME_UPORABNIKA = $ime\",mysqlpovezava);\n            command.Parameters.AddWithValue(\"$ime\",ime);\n            MySqlDataReader reader;\n            reader = command.ExecuteReader();\n\n while (reader.Read())\n            {\n                //koda ki se bo izvedla\n\n            }\n}\n Hvaležen bi bil kakršnekoli pomoči. ",
+    "user": "xtrEeme"
+  },
+  {
+    "message": "če bi error napisal bi ti lahko iz glave kej ponudil ...tako pa   pojavi se vprašanje čemu je tabela v apostorfih? Ne pravim da je narobe... še eno se pojavi $ bi moral bit @? ",
+    "user": "detroit"
+  },
+  {
+    "message": "Aja pardon sem pozabil error prilepiti.     Torej ima neke težave ravno z tistim parametrom #ime  detroit je 7. nov 2011 ob 19:50 izjavil: še eno se pojavi $ bi moral bit @?   ne, mora biti $ ",
+    "user": "xtrEeme"
+  },
+  {
+    "message": " detroit je 7. nov 2011 ob 19:50 izjavil: pojavi se vprašanje čemu je tabela v apostorfih? Ne pravim da je narobe...    Tega vprašanja ne razumem Napaka odpravljena! Detroit prav si imel. $ je bilo potrebno zamenjat z @ Najlepša hvala za pomoč. ",
+    "user": "xtrEeme"
+  },
+  {
+    "message": "Komentar glede kode: za vse objekte, ki implementirajo vmesnik IDisposable uporabi izjavo using, ki samodejno poskrbi za pravilno odstranjevanje objektov in zapiranje povezave do podatkovnega strežnika.  Primer:  using (MySqlConnection mysqlpovezava = new MySqlConnection())\n{\n    // koda\n} ",
+    "user": "Ericssony"
+  },
+  {
+    "message": "and a good one to boot ",
+    "user": "detroit"
+  }
+]

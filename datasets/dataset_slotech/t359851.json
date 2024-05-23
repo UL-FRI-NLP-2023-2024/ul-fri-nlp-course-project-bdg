@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Zdravo!  Zanima me, ali je karkoli narobe, če sm si naložil nov firmware s strani sony-optiarc.eu, in sicer za model Optiarc DVD RW 7173A SCSI CDROM device (to piše pod System - Devices), ker je namreč pri tem, da sm probal tako v SAFE načinu kot normalen posodobiti moj DVD zapisovalnik z novim 1.04 firmwarom?  Že takoj na zečetku se je pojavilo UPGRADE FAILED, ker imam verzijo 1.0, me zanima ali je flash morda karkoli naložil čež (tistih par %) ali je vse skupaj tako kot je bilo pred tem?  Enostavno ne vem kako naprej, nekje piše če imate S-ATA nekje nek P-ATA, jst sam vem da mipiše SCSI, mam XPje.  Problem je v tem, da nisem mogel gledati določenih DVDjev...medtem ko na dvd predvajalniku vse špila, morda kak region problem? ",
+    "user": "tabla"
+  },
+  {
+    "message": "Pa kje dobit pravi firmware, ki bi deloval? Hvala! ",
+    "user": "tabla"
+  },
+  {
+    "message": "Imel sem optiarc pekač. Sicer je bil Atapi(eide) in morš ide kanal nastavin na najmanjšo hitrost -pio mode. Men je tut javljal podobn eror in flash ni pršu do konca. Vendar je naprej normalno deloval z starim firmwarejem. In sem ga končno flashal k sem pogruntal foro z pio mode. Da je tvoj scsi bl težko,skoraj nemogoče,ker scsi se zdavneje ne uporablja več pr optičnih enotah. Le ide in sata. Evo ti eno stran prav za flashanje omenjenih optiarcov,upam da ti bo kaj pomagal. http://liggydee.cdfreaks.com/page/en/ p.s. če ti ni škoda dnarja raje nabavi kšnga LG pekača,optiarc je navadn drek.Jaz sem ga pač dobu zravn kište,ampak še vedno si uporabljam starega 4x LG pekača,je zakon. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "edit. Model ki ga maš je 7173a torej je atapi(ide) tako k je pr men. Nastavi si ide kanal na pio mode in flashaj. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Načeloma pred flashanjem staro vsebino izbriše, torej ti zdaj niti eject gumb ne bi deloval. ",
+    "user": "c3p0"
+  },
+  {
+    "message": "Hvala vsem za pomoč, nej mi še kdo razloži kako se nastavi ide kanal na pio mode oz. kje se to naredi? ",
+    "user": "tabla"
+  },
+  {
+    "message": "Aha najdu v systemu, pod IDE/ATAPI, samo ce mam DVD RW na 4 portu (glavni setup), ker IDE je treba pol spremenit? v setupu jih je cel kup, tam pa 2 primary in 2 secondary pa se 2 serial ATA Storage controllerja. ",
+    "user": "tabla"
+  },
+  {
+    "message": "Nastaviš na pio pač tam kjer je pekač. Po končanem flashanju ne pozabit nastavit nazaj na udma.Ker bo deloval na res najmanjšo hitrost. Če ti ne bo ratalo tam spremenit sprobaj z programom powerdvd 6,7,8. Ta ima opcijo nastavitev udma-pio za optične enote. Včasih pr xp-ju in novejših pc-jev se ne da v upravljalniku naprav(device manager) nastavit pio mode. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Sem nastavu na PIO mode in še vedno isto, tam kjer je pisal Ultra DMA Mode 5, sem zamenjal in je potem pisalo PIO MODE. A je potrebno računalnik resetirat al kaj? Kr men skoz piše upgrade failed. ",
+    "user": "tabla"
+  },
+  {
+    "message": "Nastavi na pio in resetiraj. Pr ponovnem zagonu poglej če res piše pio,če je naprej udma boš mogu programček poiskat da spremeni nastavitev. Kšno plato maš in čipset. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Poišči program necflash ter probaj flashat z njim. Mam ga na disku,lahka ti pošljem po mejlu pa sprobaj. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Cudno, samo na Primary IDE je pisal ultra dma 5, in potem skoz PIO MODE. Pri ostalih piše samo not applicable (drugi primary ide in oba secondary). Ko sem resetiru je disk TAKOOOOO počas delu, da je trajal celo večnost da sm pršu v XPje...no pol sm očitno IDE za disk dal na PIO MODE in ne DVD RW. Ta plata ma drgac nek RAID kontroler še.  A je kej narobe če sm dal za hard disk na pio mode? Se ne spoznam te stvari. ",
+    "user": "tabla"
+  },
+  {
+    "message": "Nič hudega. Najboljše vse nastavi na pio,flashaj,in potem vse nazaj na udma,za vsak primer. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Okay, če sm prov razumel je PIO MODE, le hitrost prenosa podatkov do enote. To pomeni, da v nobene primeru ne more ta način škoditi čemurkoli, ne? ",
+    "user": "tabla"
+  },
+  {
+    "message": "yep. ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Nero InfoTool je ugotovu kje je tale DVD RW, ni preko IDE kanalov, ampak preko RAID controllerja ",
+    "user": "tabla"
+  },
+  {
+    "message": "Sej a obstaja kaka stvar, da bi lahko gledu DVD DL (dvoplastnega) enostavno noče, medtem ko Philipsov dvd predvajalnik spila brez problema. ",
+    "user": "tabla"
+  },
+  {
+    "message": "Odpri kišto in poglej data kabel.Najbolj sigurno. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Stvar se nahaja na RAID SCSI GIGABYTE controlerju, imam tut driverje in vedno preden instaliram me vprasa ali naj instalira SCSI Driver ali Standard IDE driver. ",
+    "user": "tabla"
+  },
+  {
+    "message": "Uspelo, naredu sm še eno stvar. Inštaliru Gigabyte motherboard driver sata2raid oz. ko me je programček vprašal ali naj inštaliram SCSI driver ali standard IDE driver, sem potem probal še standard IDE driver, pri naslednjem zagonu, sem dobim v System - Device Manager pod ATAPI/IDE DEVICES še 3 nove stvari: še en primary ide controller, še en secondary ide controller in standard dual channel PCIE IDE Controller (tistega gigabyte raid ki je imel čist svojo kategorijo pa ga ni več), sedaj mi tudi piše pod DVD/CD-ROM drives, SAMO OPTIARC AD-7173A (brez SCSI).  Ne vem očitno sem imel veš čas nastavleno da je povezava nekako potekala po RAID/SCSI controllerju in zato ni nč delal. Zdej mi zazna dvoplastne dvdje in vse dela. Hvala še enkrat vsem! ",
+    "user": "tabla"
+  },
+  {
+    "message": "Ti je končno ratal :) A si mogu na pio nastavljat al pa ni blo treba ? ",
+    "user": "Valvoline"
+  },
+  {
+    "message": "Ja tut na to sem moral nastaviti ",
+    "user": "tabla"
+  }
+]

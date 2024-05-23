@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Kako prisiliti Firefox11, da si zapomni VSA gesla?",
+    "content": "Ze nekaj casa (beri: nekaj verzij Firefoxa \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ) nisem rabil tega, ampak zdaj vidim, da so ocitno apdejtali tudi to, da si Firefox na dolocenih spletnih straneh tudi pod razno ne more oz. ne sme zapomniti gesla. Moj plonk za take strani je bil vcasih, da je bilo treba v naslovno vrstico (preden vneses username in geslo) vnesti bodisi tole:\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t javascript:(function(){var%20ca,cea,cs,df,dfe,i,j,x,y;function%20n(i,what){return%20i+\"%20\"+what+((i==1)?\"\":\"s\")}ca=cea=cs=0;df=document.forms;for(i=0;i&lt;df.length;++i){x=df[i];dfe=x.elements;if(x.onsubmit){x.onsubmit=\"\";++cs;}if(x.attributes[\"autocomplete\"]){x.attributes[\"autocomplete\"].value=\"on\";++ca;}for(j=0;j&lt;dfe.length;++j){y=dfe[j];if(y.attributes[\"autocomplete\"]){y.attributes[\"autocomplete\"].value=\"on\";++cea;}}}alert(\"Removed%20autocomplete=off%20from%20\"+n(ca,\"form\")+\"%20and%20from%20\"+n(cea,\"form%20element\")+\",%20and%20removed%20onsubmit%20from%20\"+n(cs,\"form\")+\".%20After%20you%20type%20your%20password%20and%20submit%20the%20form,%20the%20browser%20will%20offer%20to%20remember%20your%20password.\")})();\n\t\n\nbodisi tole:\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t javascript:(function(){var%20ac,c,f,fa,fe,fea,x,y,z;ac=\"autocomplete\";c=0;f=document.forms;for(x=0;x&lt;f.length;x++){fa=f[x].attributes;for(y=0;y&lt;fa.length;y++){if(fa[y].name.toLowerCase()==ac){fa[y].value=\"on\";c++;}}fe=f[x].elements;for(y=0;y&lt;fe.length;y++){fea=fe[y].attributes;for(z=0;z&lt;fea.length;z++){if(fea[z].name.toLowerCase()==ac){fea[z].value=\"on\";c++;}}}}alert(\"Enabled%20'\"+ac+\"'%20on%20\"+c+\"%20objects.\");})();\n\t\n\nZdaj pa nic od tega ne prime vec. Ker nisem programer, me zanima, v cem je po novem \"problem\", da se ne da vec prisiliti vseh strani v zapomnitev gesla?",
+    "author": "Commodore",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako prisiliti Firefox11, da si zapomni VSA gesla?",
+    "content": "http://kb.mozillazine.org/User_name_and_password_not_remembered",
+    "author": "zzz333",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Kako prisiliti Firefox11, da si zapomni VSA gesla?",
+    "content": "Jaz sem \"shekal\" (spremenil eno vrstico) del kode, kjer se odloča ali bo pustil pomnenje ali ne.\n\nJe JavaScript, tako da lahko komot z editorjem spremeniš.\nPoglej *.js fajle od Firefox-a, pošči kje se pojavlja beseda \"AUTOCOMPLETE\" in oni if stavek deaktiviraj.\n\nČe si kaj programerja je to mačji kašelj.\n\nČe ne, mi zateži, da pogledam in napišem. (eno web stran za testirat mi najte)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako prisiliti Firefox11, da si zapomni VSA gesla?",
+    "content": "Ce so tekstovni fajli, bi naceloma slo. Kateri fajli pa so to in kje se nahajajo (kar sem jih na hitro pogledal v Program files/.... in Profile, ni bilo nikjer te besede)?",
+    "author": "Commodore",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Kako prisiliti Firefox11, da si zapomni VSA gesla?",
+    "content": "Bilo je prej v nsLoginManager.js. Zdaj so zgleda skompajlali v zadnjih verzijah.\n\nBilo i prošlo... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Zdravo,\n\npred kratkim sem prešel iz Telemacha na A1.\nNa telemachu sem imel njihov router v garaži in en utp kabel potegnjen do dnevne sobe in tam imel tp link router, iz tp-linka sem imel TV in WIFI, in mi je delal, sedaj pri A1mi pa ne več. Sem klical na A1 in so  i rekli naj potegnem še en kabel samo za tv da bo ločeno. Je pa problem, da še en kabel ne morem več potegniti, če ne bi že.\nIma kdo kako rešitev, kolega mi je omenil fritzbox router da naj bi s tem deloval? \n\nhvala in lp",
+    "author": "fatmir",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "V dnevni daj stikalo in tam priklopi Tp Link router in TV. Sicer nisem 100% če bo delalo pri A1, ker ne vem kako nastavijo modem. Če je tako kot pri Telekomu bo delalo, drugače pa bo težava.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tV dnevni daj stikalo in tam priklopi Tp Link router in TV. Sicer nisem 100% če bo delalo pri A1, ker ne vem kako nastavijo modem. Če je tako kot pri Telekomu bo delalo, drugače pa bo težava.\n\t\t\n\t\tKlikni za razširitev\n\t\nSem probal, pa ne dela. Kolikor sem dobil še en info, da pri vseh ta novih boxih več ne dela ta kombinacija pri vseh operaterjih. Se prav vsaka naprava kabel zase tv-svoj kabel in router svoj kabel.\n\nlp",
+    "author": "fatmir",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Ena možnost (ki je verjetno ne boš znal sam nastaviti), je to, da se kupita dva managed switcha. Pri routerju en port nastaviš na VLAN X (dodajanje tagov za ingress, odstranjevanje za egress), drug port na VLAN Y. Kabel do dnevne sobe daš v tretji port, ki ga nastaviš na trunk (VLAN X+Y). Na drugi strani pa obratno... VLAN-a X in Y na trunk portu sprejmeš, jih dodeliš ločenim portom in odstraniš tage za izhodni promet in spet dodaš vlan tage za vhodni promet.\n\nNajbolj enostavna možnost bi pa verjetno bila PLC povezava (ethernet po električnih kablih). Za katero stvar (internet ali tv) boš pa to uporabil, se moraš pa sam odločit. Pri internetu ti lahko zniža hitrost (če imaš optiko). Pri TV-ju pa lahko potencialno povzroča kockanje.\n\nTretja opcija (ne priporočam) je pa to, da lahko iz enega 8 žilnega 1Gbit/s ethernet kabla narediš 2x 4 žilna 100Mbit/s kabla. Ampak s tem si znižaš hitrost za internet (če imaš optiko).",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Opcijo 2 ima že sam A1 in ti ponujajo komplet Elektro Set. TV signal pač speljejo prek elektroinštalacije.\n\nAmpak kljub vsemu ne razumem, kako lahko v letu 2022 pa tudi prej že, ko so tudi L3 switchi že kar poceni, ne uredijo tega z VLANI, če že ne morejo streamat TVja s HLS, kot to počne T2. A1 je tole zakompliciral do neba, pa sem mislil, da ni mogoče bolj zakomplicirat kot je uspelo Telekomu.\n\nČe se še prav spomnim, potem ta opcija 2 ima več podopcij, lahko zamenjaš Fritza za drugi zmogljivejši model, ki zna delat tudi trunk na portih kjer je TV in potem rabiš na drugi strani samo še en L3 switch, ampak verjetno menjava modema prinese dodatne stroške, ker Fritz ni ravno poceni, pa še verjetno dodatna mesečna naročnina te čaka. Tako je verjetno enostavneje rešiti z dvemi L3 switchi, najceneje narediš z mikrotiki, ki že v osnovi podpirajo VLANe, le da potrebuješ nekaj znanja ali pa dva najcenejša L3 switcha s 5-8 porti. \n\nMalo več piše tukaj:\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tKako s switchem razdeliti en kabel na IP TV (A1) in podatke? @ Slo-Tech\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tslo-tech.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nZadeva je z malo znanja enostavno rešljiva, ampak pri božji volji ne razumem ISPjev, kako so šli v izvedbo TVja brez naštudirat zadev in izbrat nekaj kar je brez prihodnosti.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "AFAIK imajo urejeno ravno z VLANi (ampak v drugačni konfiguraciji kot pri T-2 ali Telekomu). So pa VLANi še vedno L2 in zadostuje upravljivo L2 stikalo, L3 (IP) je druga zgoba.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Pač ja... ločen network imajo za IPTV in internet. Na njihovem networku je to seveda VLAN. Ampak na modemu pa to fizično ločijo na porte in odstranijo VLAN tage, ker njihovi boxi niso skonfigurirani za VLAN-e. Tako da kar se uporabnika tiče, nimajo VLAN-ov. Imajo dva porta... ena storitev dela preko enega porta, druga preko drugega.",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "My bad, imaš prav, pisal L3 mislil pa na L2 managed switch.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Mikrohard je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tPač ja... ločen network imajo za IPTV in internet. Na njihovem networku je to seveda VLAN. Ampak na modemu pa to fizično ločijo na porte in odstranijo VLAN tage, ker njihovi boxi niso skonfigurirani za VLAN-e. Tako da kar se uporabnika tiče, nimajo VLAN-ov. Imajo dva porta... ena storitev dela preko enega porta, druga preko drugega.\n\t\t\n\t\tKlikni za razširitev\n\t\nJasno, samo to, da ti ne žeijo nastavit trunka, je bolj stvar njihove politike, kot tega da \"niso naštudirali zadev\". Oziroma če prav razumem, moraš samo težit, da ti dajo Fritza in lahko nastaviš tudi trunk, ali se pa pač znajdeš s svojo opremo. Kolega, ki ima A1 vem, da je dobil Fritza po defaultu, ampak je takoj romal v omaro, ker je fiber priklopil direktno v svojo opremo (seveda P2P ethernet, z GPONom je mal bolj komplicirano).",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Da ni \"naštudirana\" zadeva pravim, ker da končnemu uporabniku otežujejo priklop opreme in se poslužujejo arhaičnih pristopov priklopa naprav, ni ravno biser načrtovanja nekega sistema. In to v času renesanse UTP kabla, kjer že UTP CAT5e zmore 2.5GbE (na sorazmerno kratki razdalji), CAT6 pa normalno uporaben do 10GbE in mi se tu omejujemo na fizično postavitev dveh kablov, enega za TV kjer zaradi takšnih in drugačnih omejutev več kot 15Mbps niti ne zmorejo, kar je nekih 2% zmogljivosti 1GbE, pri 2.5GbE pa je že v rangu statistične napake. Malo modernega razmišljanja system arhitektov v teh podjetjih ne bi škodilo.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Tale Zyxel modem/router tudi serje wi-fi, smo vsi družinski člani opazili, da wifi šteka. So pa nam A1 že nastavljali router pa je isto.\nTV dela brez problema, je pa kakovost slike slabša kot pri telemachu.\nBom vprašal če imajo še kak drug modem kot tale Zyxel in če mi lahko zamenjajo.\n\nlp",
+    "author": "fatmir",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Deluje vse OK z fritz-boxom 7590.\n\nlp",
+    "author": "fatmir",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "Bom kar tu povprašal za nasvet.  Znanec bi za gledanje TVeja  rabil WiFi ojačevalec, oddaljenost, oziroma potreben domet, cca 200m.",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik bpfc je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tBom kar tu povprašal za nasvet.  Znanec bi za gledanje TVeja  rabil WiFi ojačevalec, oddaljenost, oziroma potreben domet, cca 200m.\n\t\t\n\t\tKlikni za razširitev\n\t\nBo treba kar wi-fi bridge narediti. Pa še to če je vidna linija",
+    "author": "serviser!",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik serviser! je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tBo treba kar wi-fi bridge narediti. Pa še to če je vidna linija\n\t\t\n\t\tKlikni za razširitev\n\t\nHvala za odgovor. Linija je vidna. Ali lahko svetuješ, kaj bi bilo primerno za ta wi-fi bridge?",
+    "author": "bpfc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "A1 TV in WiFi",
+    "content": "\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSXTsq 5 ac | MikroTik\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tLow-cost small-size 16dBi 5GHz dual chain integrated CPE/Backbone with AC support and Gigabit Ethernet\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tmikrotik.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nAli, če ti hitrost ni važna\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSXTsq Lite2 | MikroTik\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tLow-cost small-size 10dBi 2.4GHz dual chain integrated CPE/Backbone\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tmikrotik.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nLahko pa tudi kaj od UI.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  }
+]

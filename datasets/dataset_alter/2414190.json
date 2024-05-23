@@ -1,0 +1,44 @@
+[
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "Zanima me, če ima Excel kakšno funkcijo, ki bi naredila tole.\nV eni celici imam številko, npr. 10437593 v A1 celici. \nRad bi, da mi to številko razdeli po dve skupaj in jih zapiše v celice zraven. \nTorej 10 v celico B1, 43 v celico C1, itd.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "v celico b1 vpišeš formulo =LEFT(A1;2)\nv celico c1 vpišeš formulo =MID(A1;3;2)\n.....\nSklepam, da je niz v A1 vedno enake dolžine?",
+    "author": "NeBluzi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "v celico d1 vpišeš formulo =MID(A1;5;2)\nv celico e1 vpišeš formulo =MID(A1;7;2)\n....",
+    "author": "NeBluzi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "Drži, niz je vedno enake dolžine, ki pa je lahko tudi večja.\nKako sformuliram formulo tudi za naslednje številke?",
+    "author": "mtl",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "lahko uporabiš funkcijo, ki ti preverja ali je dolžina niza tako dolga, da bo rezultat tudi v stolpcu F,G;H,...\nrecimo\nv celico F1 vpišeš =IF(LEN(A1&gt;8;MID(A1;9;2)\nv celico G1 vpišeš =IF(LEN(A1&gt;10;MID(A1;11;2)\n....\n\nnekaj v tem stilu",
+    "author": "NeBluzi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "Na vrh (ali kam drugam) dodaj stolpec v katerem imej cifre 1,3,5,7,9,....\n\nPotem v B2 vpiši (recimo da je 1 v B1), podatek imaš pa v stolpcu A:\n=MID($A1;B$1;2).\nPotem lahko ta stolpec s formulu poljubno kopiraš dol in levo, pa se bo prav referenciral.",
+    "author": "crnobog",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Excel - razdelitev številke",
+    "content": "Hvala obema, rešeno po nasvetu crnobog-a \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n. Deluje perfektno.",
+    "author": "mtl",
+    "author_level": "Majstr"
+  }
+]

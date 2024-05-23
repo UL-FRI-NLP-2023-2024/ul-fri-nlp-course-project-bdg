@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Živjo!  Imam en problem. Danes sem končno dobil 2x MAXTOR 120 GB SATA 7200 8 MB in se ravnokar naučil, kako dva SATA diska priključiš v RAID0, skratka vse je potekalo kot po maslu težava pa je samo ena. First boot device nastavim na cdrom, kajti na njem imam bootable cd od Windowsov XP in do tukaj še vse normalo.. računalnik se zboota s CDja in Windows XP prižne s SETUPom in tam kjer se bi moralo prikazati, na kateri disk naj bi se stvar naložila mi napiše, da ni nobenega diska priključenega na računalnik in naj preverim, ali sta ok priključena (seveda sta, saj mi jih v RAIDu grafičnem vmesniku lepo pokaže). Potem sem premišljeval kaj storiti in se spomnil, da ti Windowsi XP v prvih sekundah spodaj sporočijo, če želiš naložiti RAID ali SCSI driverje, pritisni F6 in tako sem tudi poskusil... in upal da bo delovalo. Nekaj nalaga in nato prikaže sporočilo, da ne najde nobenih SCSI ali RAID diskov (nekaj v tem stilu) in ali hočem nadaljevati (če nadaljuejm sem na istem kot prej... javi da ne ni priključenih diskov), ali pa imam še eno možnost, da pritisnem S, kar pa pomeni, da zahteva FLOPPY disketo od proizvajalca, na kateri bi bili neki driverji oz. verjetno gonilniki za RAID disk. Te diskete pa nimam, ko kupiš disk, dobiš pač disk v tisti embalaži. Drugače pa prvi vtis... Maxtorja sta v primerjavi z WD Raptorjem v idle time-u neslišna, kako se obneseta pa sporočim, takoj ko mi uspe.  Kaj storiti?  Lep pozdrav!  Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "PRobaj z cdjom od win 98 formatirat disk ce gre,pol pa xp gor. ",
+    "user": "kilergas"
+  },
+  {
+    "message": "tuki imaš link do novih driverjev mogoče bo pomagalo  ftp://ftp.abit.com.tw/pub/download/fae/disk121.exe ",
+    "user": "bosstjann"
+  },
+  {
+    "message": "kilergas: Hvala za nasvet, enako sem prebral na nekem tujem forumu... da po postavitvi RAID0 zaženem FDISK, ampak sem ravnokar sprobal in to naredil... zanimivo da FDISK celo nekaj prepozna, sicer samo nekih 38 GB (od 240 ki bi jih moral... 2x 120 gb) ampak particijo sem skreiral in nato pognal XP inštalacijo in še vedno isto... čisto isto.  Nato sem ga hotel pregnati, da sem še en ATA disk zraven priključil, seveda tega mi je pa takoj ponudil za inštalacijo, ampak tistih dveh Maxtorjev iz RAID0 pa od nikoder zraven. Torej to ne pomaga. Kaj naj še probam?  Mimogrede... imam ASUS P4P800 in ne ABIT, tako da ne vem kako bi teli driverji klapal kej med seboj... ampak bom probu najdet kaj ti driverji sploh so?  Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "če ti plata podpira raid, si ziher zraven dobil tudi disketo z driveri za diskovni krmilnik... driverjev ne dobiš pri nakupu diska, sej je le-temu čisto vseeno ali laufa sam ali v raid-u.. ",
+    "user": "Vesoljc"
+  },
+  {
+    "message": "Naj povem kako sem razrešil problem... Windowsi XP že normalno delujejo.  Glede ASUSove osnovne plošče sem dobil CD na njem pa polno gonilnikov, možno je, da se v kakem direktoriju nahaja kakšen batch ali exe fajl, s pomočjo katerega je narediti floppy disk, ki ga zahteva WindowsXP, vendar ob hitrem pregledu CDja tega nisem našel. Pač pa je pomagal tist link, ki je objavljen par postov nazaj, do ABITovega popravka... datoteko sem si prenesel, pognal -> potreboval sem disketo, kamor so se prenesli podatki in ta čudežna disketa je bila tista, ki jo XPji zahtevajo. Skratka, hvala za link in ostalim, ki ste mi pomagali.  LP! Uroš ",
+    "user": "urosbe"
+  },
+  {
+    "message": "Sem imel podoben preblem. Razlika je bila samo ta, da nisem imel dveh SATA diskov v RAID, ampak samo en sam SATA disk, ki mi ga tudi ni zaznalo. Problem sem rešil tako, da sem windowse naložil na IDE disk in potem ta disk z Norton ghost kloniral na SATA disk. Po kloniranju sem IDE disk odstranil in vse deluje bp. Vem da ni ravno najboljša rešitev in da mora obstajati tudi lažja, ampak pri meni je delovala in se kasneje tudi nisem več ubadal s tem problemom, tako da boljše rešitve jaz osebno nimam. ",
+    "user": "Lime"
+  },
+  {
+    "message": "Halo, kaj še noben od vas ni pri inštalaciji winsov opazil opozorilo na začetku \"Pritisni F6 za inštalacijo v primeru drugih IDE kontrolerjev\" to držiš in ko pride pravi trenutek, vstaviš disketo z gonilniki SATA in lepo v prvo inštaliraš winse tudi na SATA diske. Podobno je z ostalimi IDE RAID kontrolerji in podobnimi IDE zadevami ki niso v južnem mostu, samo gonilnike je treba imet na disketi. ",
+    "user": "morphling1"
+  },
+  {
+    "message": "V bistvu ni problema, samo nekateri ste malo razvajeni.     Gre se preprosto za to, da je sata tako nova tehnologija, da defolt gonilniki v winXP-jih sploh še niso vključeni, kar pomeni, da disk ne bo delal pa če se na glavo postaviš (za druge OS-je ne vem, ampak domnevam da kaki novejši SP to že ima, morda tudi zadnje distribucije linuxa). Zato zraven plate (ne pa tudi diska) dobiš disketo z gonilniki (meni jo je uspelo založiti že med sestavljanjem in potem težil sosedu da sem dobil gonilnike z neta). SATA (raid), kot vsaki drugi kos hardwera potrebuje softwer za pravilno delovanje.  (saj nisem zamoril?)  ",
+    "user": "Yohan del Sud"
+  },
+  {
+    "message": "Yohan ni problem v SATA, problem je samo v kontrolerjih izven south bridga. Recimo na P4P800 865 plati s ICH5R južnim mostom, kjer je SATA native ni bilo potrebno nobene diskete, SATA disk je bil spoznan in winsi inštalirani brez težav. ",
+    "user": "morphling1"
+  }
+]

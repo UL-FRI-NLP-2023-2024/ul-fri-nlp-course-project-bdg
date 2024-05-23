@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Program nam generira excel datotko - zbir podatkov - meritev in jih spravlja na direktorij. vsako s svojim imenom -ni ključa za ime.\nSedaj bi pa rad vse te podatke združil v en excel - pregled nad vsemi meritvami v vseh datotekah na direktoriju.\nNekaj takega imam v glavi - poženem excel, (ta prebere vsebino direktorija za datotekami in iz vseh pobere podatkein jih da v eno preglednico/list - po stolpcih, vrsticali vseeno). \nEna VBA koda se mi je pokazala na GOOOGLE, ampak mi ne dela.  Nisem glih trd ko diamant, ampak rabi pomoč.\nKODA*\nSub main()\nDim objFSO As Object\nDim objFSO2 As Object\n\nDim objFolder As Object\nDim objFolder2 As Object\nDim objSubFolder As Object\nDim objSubFile As Object\nDim i As Integer\n&#8216;This is the path to the directory\nDim PATH As String\n&#8216;The directory path\nPATH = &#8220;D: Data&#8221;\n&#8216;Create an instance of the FileSystemObject\nSet objFSO = CreateObject(&#8220;Scripting.FileSystemObject&#8221\n&#8216;Get the folder object\nSet objFolder = objFSO.GetFolder(PATH)\ni = 1\n&#8216;loops through each file in the directory and prints their names and path\nFor Each objSubFolder In objFolder.subfolders\n    Set objFSO2 = CreateObject(&#8220;Scripting.FileSystemObject&#8221\n    Set objFolder2 = objFSO2.GetFolder(PATH + &#8220;&#8221; + objSubFolder.Name)\n    For Each objSubFile In objFolder2.Files\n        &#8216;objSubFile will iterate through all the files in the sub folder\n    Next objSubFolder\nNext objSubFolder\nEnd Sub\nEnd Sub",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Kaj pa če najprej narediš eno csv datoteko s seznamom datotek, \npa to odpreš v excelu in naprej obdeluješ?\n\ndir /s /b *.txt &gt;&gt; seznam.csv",
+    "author": "jurek1973",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Datoteko naredi excel. \nCSV za direktorji bi bil možen, vendar uporabniki niso tako vešči, mene pa ne bo vedno \"zraven\"\nVsak dan(!) bo 21 takih Excelov. Grem naprej z vašo pomočjo.",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Pa napišeš eno BAT datoteko, ki naredi seznam, potem pa odpre en excel, ki ta seznam obdela.",
+    "author": "jurek1973",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Našel eno rešitev, zadovoljivo dela.\nSedaj je drug problem. Imam ime datoteke-se spreminja, imam pot do te/teh datotek-fiksno, ne morem in ne znam\npa narediti sklicevanje na to datoteko/celico, da dobim vrednost. INDIRECTne deluje.\n@jurek: hvala, ampak za moje znanje prekomplicirano. Kaj šele za moje sodelavce  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Za prvo tole:\nhttp://www.ehow.com/how_8542477_use-filedialog-list-files-directory.html\n\nZa drugo, če te prav razumem, pa tole:\nhttps://support.office.com/en-...6a-d7cca2a9b95f",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Da ne odpiram nove teme, bom kar tu vprašal. Kako bi nastavil celico, katera bi se v primeru negativnega zneska obarvala rdeče?\nRecimo da seštevam celici a1 + a2 in dobim znak -5. Kako nastaviti, da se celica obarva rdeče? \nHvala za pomoč.",
+    "author": "Kolimero",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "S tem: http://www.excel-easy.com/data-analysis/conditional-formatting.html",
+    "author": "amacar",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik amacar pravi:\n S tem: http://www.excel-easy.com/data-analysis/conditional-formatting.html\n\t\t\n\t\tKlikni za razširitev\n\t\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Kolimero",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Ja, moja rešitev je naredila 45 Mb velik fajl. Brez podatkov, samo formule.\n Stvar gre v slabo stran. Preveč zapisov in preračunanj.\nProblem dela ?.?lookup. Pri vrivanju vrstice se mi ne spreminja številka, ki definira celico v kateri so podatki!\nV glavnem sranje. Slaba zasnova \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "EXCEL Seznam datotek v  drugem direktoriju.",
+    "content": "Ja je videti, da sem sam. Verjetno - zagotovo zaradi slabo razloženega primera.\nTorej stvar porihtal. Laufa v nulo.\nProblem je samo velik fajl. Sedej je samo 15 Mb\nMislim, da bo šlo, ker namesto 10 starih datotek/variant  sem vse spravil v eno datoteko.\nPa še formule računajo pravilno.\nImam pa bolečine v hrbtu, ker malce bolj pokončno hodim.",
+    "author": "brane_new",
+    "author_level": "Guru"
+  }
+]

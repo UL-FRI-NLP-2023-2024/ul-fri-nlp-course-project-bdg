@@ -1,0 +1,554 @@
+[
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Zdravo.\n\nV projektu imam, da bi prešel iz BIAB načina z enim 100l loncem na HERMS sistem, kjer bi lahko delal 100l+ količine piva. Ker se za to potrebuje 3 posode in je težje vse prestavljati bi bilo vse skupaj spravljeno v kleti. Tako odpade segrevanje s plinom. Za segrevanje bi tako uporabil električne grelce. \nDoma imamo 3x25A trofazni tok, zato bi uporabil trofazne grelce.  Natančno tele: https://store.brewpi.com/mashi...ent-8500w-9250w \nPo enega v HLT in BOIL kettlu. Za vzor kako naj bi vse skupaj izgledalo sem si vzel http://www.theelectricbrewery.com/ in njegovo kontrolno ploščo. \n\n\t\n\n\n\n\t\n\n\nUporabil bom PIDe in SSR za kontrolo grelcev. Ker nisem najbolj vešč v elektriki mi bo kontrolno ploščo sestavil stric, ki je električar. Rabi pa vseeno shemo vezave, da ve kako vse skupaj paše. Na internetu obstaja veliko informacij ter shem kako vse skupaj zvezat vendar so bolj kot ne vse oblikovane za ameriški električni sistem, ker uporabljajo 1 fazni štrom. \nNašel sem eno shemo, ki uporablja trofazni tok, za vezavo treh 1 faznih grelcev za eno posodo. \n\n\t\n\n\nLotil sem se spreminjanje te sheme na svoj projekt:\n-namesto 3 enofaznih grelcev za eno posodo bom imel 1 trofazni grelec.\n-enofazni grelci so vezani v delto (trikotnik), pri meni bo grelec vezan v zvezdo.\n-zgornja skica uporablja za kontrolo grelcev preko PIDa neke kontrole, ki mi niso poznani, jaz bom uporabil trofazni SSR https://store.brewpi.com/3-phase-solid-state-relay-ssr-20a\n-Vtičnice za tok do kontrolne plošče in za priključitev grelcev bodo za trofazni tok\n\nNeke spremembe sem naredil na shemi, kolikor sem našel informacij na spletu. Imam pa še vedno nekaj dilem in vprašanj in bi bil vesel, če mi lahko kakšen od vas, ki ste bolj podkovani v znanju elektrike pomaga:\n-Koliko A morajo biti varovalke?\n-Kakšen Rele je potreben? (ang: contactor)\n-Ali je trofazna vtičnica (32A 3P+N+E 400v) pravilna za to kar jaz hočem?\n-Kako povezati 3 fazni SSR z grelci in Releji?\n\nNova shema z glavnimi dilemami\n\n\t\n\n",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Podoben sistem mam jaz.\n\nNimam sheme pri roki. No, je nimam, ker sem na pamet delal  Imam 100l lonce, kar pomeni max 70l pira v fermentor. Za 80-85l pivine vreti je 6kW trifazni grelec zadosti. Lušten je pa 9kW za vodo hitro pogret. Če boš delal pa v 120-150l loncih bo pa 9kW za vretje kar fajn.\n\n1. Ker maš doma 3x25A za celo bajto in boš ti tam 13A na fazo kuril, moraš dizajnirat, da gre vsaka faza lahko naenkrat samo čez en grelec.\n2. Preveri z voltmetrom, da nimaš slučajno povezane (prebrikane) nule in zemlje. To mora bit nadovezno ločeno! Sicer se bo vse skupaj klavrno končalo.\n3. Obvezno, obvezno in obvezno investiraj 60€ v trofazni 30mA FID. Ne 300mA, 30mA. 300 ščiti mašinerijo, 30 pa ljudi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Poanta je da ta meri razliko med tokom v fazah in tokom na nuli. Če gre ves tok iz faz v nulo, je razlika 0. Če ti pa faza prebija v zemljo, bo razlika &gt;0 in bo vrglo ven. Seveda moraš ozeljiti lonce. Zemljo iz trofazne vtičnice priklopiš na lonec. http://www.lotos.si/sl-si/shop/item/3838895002413\n4. Faze iz vtičnice gredo na FID, nula na grelce in zemlja na posode (oz. priključno ohišje grelca, priporočam te, ki jih ma brewpi).\n5. Iz FID gredo faze na tripolno grebenasto stikalo 0-1. 16A je dovolj.\n6. Iz kontaktorja gre vsaka faza na svoje 1-0-2 stikalo.\n7. iz 1-0-2 stikala gre vsaka faza po dveh linijah, vsaka do svojega SSR.\n8. Izhode iz SSR vežeš na fazne priklope grelca.\n9. Ker je vezava zvezda, je nula povezana skupaj in gre od grelca nazaj v FID.\n10. Med izhodom iz SSR in priklopom na grelec si lahko VZPOREDNO priklopiš signalne lučke. Tako se lepo vidi katera faza je aktivna na katerem grelcu.\n11. Zdaj pa PID-i. Rabiš 3. Napajanje naj bo 220V. Na njih poveži eno od faz od grbenastega stikala in nulo iz FID. PID 1 in 2 kontrolirata SSR1 (HLT). PID 3 kontrolira SSR2 (BK). Kontrolni izhod naj bo enosmerni 12-24V. To rabijo teli SSR od BrewPi (kontroliraš jih z 3-32V DC). https://www.amazon.co.uk/gp/product/B008GS2QFU\n12. Izhoda iz PID1 in 2 gresta preko releja (bolj komplicirano) ali enostavno preko dvopolnega stikala 1-0-2 in tako kontroliraš kateri PID je povezan z SSR1 krmilnim vhodom.\n13. Izhod iz PID 3 je direktno zvezan na kontrolni vhod SSR 2.\n14. Temperaturne senzorje zvežeš: HLT na PID 1, vhod v MLT (iz HERMS tuljave) na PID 2, BK na PID 3. Jaz imam te: http://www.angelhomebrew.co.uk/en/thermometers-and-probes/208-pt100-temperature-probe-80mm.html  Na HLT in BK sta 15cm od dna na steni. Na vhodu v MLT pa imam senzor v T kosu. \n\nUpam, da sem ti razpucal večino vprašanj \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Zmikavt",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Zmikavt pravi:\n Podoben sistem mam jaz.\n\nNimam sheme pri roki. No, je nimam, ker sem na pamet delal  Imam 100l lonce, kar pomeni max 70l pira v fermentor. Za 80-85l pivine vreti je 6kW trifazni grelec zadosti. Lušten je pa 9kW za vodo hitro pogret. Če boš delal pa v 120-150l loncih bo pa 9kW za vretje kar fajn.\n\n1. Ker maš doma 3x25A za celo bajto in boš ti tam 13A na fazo kuril, moraš dizajnirat, da gre vsaka faza lahko naenkrat samo čez en grelec.\n2. Preveri z voltmetrom, da nimaš slučajno povezane (prebrikane) nule in zemlje. To mora bit nadovezno ločeno! Sicer se bo vse skupaj klavrno končalo.\n3. Obvezno, obvezno in obvezno investiraj 60€ v trofazni 30mA FID. Ne 300mA, 30mA. 300 ščiti mašinerijo, 30 pa ljudi \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Poanta je da ta meri razliko med tokom v fazah in tokom na nuli. Če gre ves tok iz faz v nulo, je razlika 0. Če ti pa faza prebija v zemljo, bo razlika &gt;0 in bo vrglo ven. Seveda moraš ozeljiti lonce. Zemljo iz trofazne vtičnice priklopiš na lonec. http://www.lotos.si/sl-si/shop/item/3838895002413\n4. Faze iz vtičnice gredo na FID, nula na grelce in zemlja na posode (oz. priključno ohišje grelca, priporočam te, ki jih ma brewpi).\n5. Iz FID gredo faze na tripolno grebenasto stikalo 0-1. 16A je dovolj.\n6. Iz kontaktorja gre vsaka faza na svoje 1-0-2 stikalo.\n7. iz 1-0-2 stikala gre vsaka faza po dveh linijah, vsaka do svojega SSR.\n8. Izhode iz SSR vežeš na fazne priklope grelca.\n9. Ker je vezava zvezda, je nula povezana skupaj in gre od grelca nazaj v FID.\n10. Med izhodom iz SSR in priklopom na grelec si lahko VZPOREDNO priklopiš signalne lučke. Tako se lepo vidi katera faza je aktivna na katerem grelcu.\n11. Zdaj pa PID-i. Rabiš 3. Napajanje naj bo 220V. Na njih poveži eno od faz od grbenastega stikala in nulo iz FID. PID 1 in 2 kontrolirata SSR1 (HLT). PID 3 kontrolira SSR2 (BK). Kontrolni izhod naj bo enosmerni 12-24V. To rabijo teli SSR od BrewPi (kontroliraš jih z 3-32V DC). https://www.amazon.co.uk/gp/product/B008GS2QFU\n12. Izhoda iz PID1 in 2 gresta preko releja (bolj komplicirano) ali enostavno preko dvopolnega stikala 1-0-2 in tako kontroliraš kateri PID je povezan z SSR1 krmilnim vhodom.\n13. Izhod iz PID 3 je direktno zvezan na kontrolni vhod SSR 2.\n14. Temperaturne senzorje zvežeš: HLT na PID 1, vhod v MLT (iz HERMS tuljave) na PID 2, BK na PID 3. Jaz imam te: http://www.angelhomebrew.co.uk/en/thermometers-and-probes/208-pt100-temperature-probe-80mm.html  Na HLT in BK sta 15cm od dna na steni. Na vhodu v MLT pa imam senzor v T kosu. \n\nUpam, da sem ti razpucal večino vprašanj \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nHvala za odgovore. Bom probal tvoje odgovore strnit v skico, ker nimam toliko znanja elektronike, mi vizualizacija bolj pomaga pri predstavljanju kako naj bi vse skupaj izgledalo. Imam samo še nekaj vprašanj, da si bolj razčistim kar si napisal:\n\n1. To pomeni, da je samo en grelec na enkrat priključen/delujoč? Pač odpadejo dvojne runde (vrel v BLK in že segreval vodo za naslednjo rundo v HLT?)\n2. Bom sporočil električarju da preveri.\n3&4. Namen imam uporabiti ta ohišja https://store.brewpi.com/mashing/stainless-steel-heating-elements/3f-heating-element-enclosure-kit  od Brewpi za grelce, ki naj bi imelo ozemljitev\n5. To je stikalo za celotno omarico, da dobi tok?\n6. Kontaktor je med 0-1 stikalom in 1-0-2 stikalom?\n7. Stikalo, da se izmenično vklaplja HLT ali BLK grelec?\n8. Izhodi so 2, vhodi pa 1?",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "13A porabi tvoj grelec na fazo, po hitrem pregledu gre dejansko za 3 enofazne grelce (pač vsaka faza svoja \"cev\").\n\nČe imaš 25A glavne varovalke dveh takih grelcev ne boš mogel uporabljat, vsaj ne na isti fazi, ker ti bo glavne varovalke odklopilo (najbrž bo že prej tvoje razvodne v omarici). Zato je najbolje že na tvoji \"pivovarski omarici\" preprečit da se to zgodi s 3 polnim stikalom (1-0-2) za vsako fazo posebej. Tako boš recimo lahko v fazi vretja 2 fazi preklopil na lonec in eno na drozgalnik brez da bi moral kaj razmišljat kako bo kaj obremenjeno.\n\nRegulacijo lahko furaš samo na eni fazi, recimo en grelc imaš na polno vključen drugega pa reguliraš po moči glede na potrebe. S tem se prihrani na vezavah in elektroniki. \n\nSicer pazi na ostale porabnike, če kdo vključi pralni stroj, pomivalni stroj, bojler ali pa kakšen drugi večji porabnik boš hitro na omejitvi hišne linije.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "1. Jap. Ampak, če boš mel 9kW grelec v BK, lahko eno fazo preklopiš v HLT. Tako vreš z 6kW in greješ s 3kW. Kot rečeno, 6kW je dovolj za 85l (kar je maksimum za 98l lonec, da ne prevre).\n3&4. Te mam tud jaz in so odlična.\n5. Ja.\n6. Sori. 0-1 glavno stikalo sem mislil, ko sem napisal kontaktor.\n7. Ja. Gre pa vsaka faza posebej. Se pravi imaš 3 1-0-2 stikala. Če maš trofazno v zvezdo, je to v bistvu isti šmorn kot tri enofazne. Tako maš lahko naštimano tudi 1/3 - 2/3 gretje po kotlih. Mi večkrat prav pride. Recimo, ko grejem vodo. V HLT mam na začetku 80l za HERMS in potem spiranje in 40l strike vode v BK.  Tako dam dve fazi na HLT in 1 na BK. Isto potem med izpiranjem. Ko mam v BK dovolj (20l) preklopim dve fazi na BK in držim temp na 90. Ena faza je dovolj, da se mi v HLT voda za spiranje ne shladi preveč. Ko začnem vreti, je hitreje, ker je pivina že na 90°C namesto 75°C kakršna pride ven iz MLT.\n8. Tako je. A1 recimo je vhod, A2 pa njegov pripadajoči izhod. Zelo pomembno: Breme (grelec) moraš priklopit na A2, sicer boš skuril SSR.",
+    "author": "Zmikavt",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Pozdravljeni,\n\nna tem forumu sem zacetnik, pivovarim pa ze vec kot 10 let. \nTrenutno imam sistem na plin 2x50L + HLT 30L. Rad bi si zgradil elektricni sistem da bi lazje nadziral mashing temperature.\n\n\nZgradil bi 200L sistem z filtrom na podnu, inox 3 fazni grelni element, RasberyPI (Craftbeerpi), zivilska pumpa Telerini, CounterFlowChiller. \n \nCraftBeerPI bi kontroliral postopek, pumpe, grelce...\nInstaliral sem ze CraftBeerPI in konektal gor SSR in temp sensor in zadevca deluje.\n\nRabil bi pomoc pri elektriki, nisem elektronik ampak bolj hobby varianta kar sem se priucil ko sem ukvarjal z Arduinom/WemosD1.  \nDoma je prikljucek 3x16A, grelec bi vzel 380V/8kw tako da bi pustil nekaj lufta za ostale naprave v hisi. \n\nImel bom 2 SSR vodena iz RPI, eden 3 fazen, drugi 1 fazen. 3 faznen bo kotroliral grelec, 1 fazen za pumpo.\nNaredil bom kontrolno ohisje kjer bi bila vsa elektronika, varovalke, rpi, ssr, itd....\n\nDo kontrolnega ohisja bom pripeljal 3 faze, te bom vezal na 3x16A hitre varovalke, 2 fazi bi razdelil za napajanje pumpe 220v in DC napajanja za rpi in SSR.\n\nKaj naj naredim za dodatno varnost na sistemu? Kako se naj varujem enosmerno vezje RPI, pred preskokom napetosti iz visokega toka na nizek tok itd....\nKako naj vezem grelec Delta ali Y?\nKako preverim ali je zemlja vezana na 0? Preverim upor/stik med zemljo in nulo na 3 faznem vtikacu z multimetrom?\n\nLp, Klemen\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "KlemenK",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "1. 8kW je za 100l sistem. Če boš mel dobro izolirano, mogoče 12kW. Priporočam ti pa vsaj 16kW. Ampak tukaj boš mel pa že probleme z 3x16A varovalkami... Čeprav odvisno kaj je zate 200l sistem. Bruto? Neto? Končne pivine v fermentor? Ampak že pri bruto, kjer boš potem recimo 150l v fermentor tankal, se mi 8kW zdi malo. Jaz recimo vrem 80l (neto, pre-boil) s 6kW in je ravno prav. Za gretje vode mam pa 9kW v HLT, ker je pač 50% hitrejše \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n2. 380V pomeni, da moraš vezat v delto, če hočeš 8kW ven potegnt. Jaz mam sicer raje Y, ker si ga lažje predstavljam \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Pri delta shemah me začne glava bolet... Pa še nisem čisto prepričan kako bi FID deloval pri delta vezavi...\n3. Kje te pa skrbi preskok napetosti? V SSR maš optokopler, nima kaj preskakovat... Kadar si v dvomih in te kaj skrbi, dodaj poljubno število optokoplerjev, dokler ne boš mirno spal \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n4. Ja za dodatno varnost je fino met FID takoj na začetku. Ta meri razliko med vhodnim (faze) in izhodnim (nula) tokom. Če ti prebije kaj v zemljo (kotel mora bit ozemljen), ga vrže vn.\n5. Ja, obvezno pa preveri, da zemlja ni vezana na 0. Multimeter in pomeri upor, ja. Ma da je neskončno \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Brez možnosti ozemljitve se je brezveze it take hece.",
+    "author": "Zmikavt",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Kotel bi bil 200l bruto,ki bi ga lahko dogrel dodatno s plinom CE bi bila potreba. Kaksna je maksimalna moc PRI 3x16A. Kar sem jaz naracunal 10560W. Ali se pri razlicnem nacinu vezave lahko spremeni moc?\nKaksen je maksimalen grelec ki si ga lahko privosim na 3x16A?\n\nLp,K",
+    "author": "KlemenK",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Seveda. Pri trikotu imaš 3 x 16A x 230V. Pri zvezdi pa 3 x 16A x 400V. Se pravi ene 19kW\nJasno moraš imeti grelec, ki je narejen za priklop na medfazno napetost.",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Pri delti imaš moč zaradi zamika sinusa manjšo od nazivnega toka/napetosti: 3 x 16A x Koren3 x 400V = 11kW \nPri zvezdi oz. pri grelcih je to enostavna \"enofazna\" vezava je pa: 3x16Ax230V = 11kW\n\nSkratka moč je enaka.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Utisevalec pravi:\n Pri delti imaš moč zaradi zamika sinusa manjšo od nazivnega toka/napetosti: 3 x 16A x Koren3 x 400V = 11kW \nPri zvezdi oz. pri grelcih je to enostavna \"enofazna\" vezava je pa: 3x16Ax230V = 11kW\n\nSkratka moč je enaka.\n\t\t\n\t\tKlikni za razširitev\n\t\njebeštrga, ko zraven nekej drugega počnes in ne misliš \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nBtw, ni x koren ampak / koren",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\t\n\t\n\n\n\n\nDeljeno je ja! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Hvala za info. Kako je s pozicijo senzorja, kaksne imate izkusnje?\nKako mesate mash (lopatice,pumpa...)? \n\nLp, K",
+    "author": "KlemenK",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Obtočna črpalka. Nisem hotel vrtat dodatne luknje za temperaturo in sem ga porinil v Tkos med kotlom in pumpo. Ker med boilom stopnjo gretja nastavim \"peš\" me niti ne boli \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Kaksna je razlika med temperaturo masha in tekocine .... Oziroma koliko casa potrbujes da se izenaci?",
+    "author": "KlemenK",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Hm, bi si upal rečt, da pri mojem konceptu merjenja je odstopanje minimalno, ker navsezadnje, pumpa ima pretoka ~5l/min torej mi v ~4minutah zakroži celotna količina tekočine. Merim torej dejansko \"v\" pretoku tekočine, ki teče čez žito.",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Recirkulacija HERMS, do 70l v fermentor\n\nJaz mam senzor v t kosu tik pred prihodom sladice nazaj v mash. Ta je kontrolni. Imam pa še enega na drugi strani posode kakih 10cm od dna. Ta mi informativno pove kdaj je kompletna drozga na pravi temperaturi.\nPumpa je magnetna (25l/min max), ampak je ne gonim na polno med recirkulacijo. Tam 5l/min najbrž.\n\nTemperatura na vhodu se mi hitro stabilizira na željeno (1°C/min), se pravi odvisno kako sem zadel temperaturo vode pri mash-in. Potem pa za 12kg slada in 40l vode traja 10-15 min, da je tudi komplet drozga na tej temperaturi.\n\nMešam samo na začetku, potem pa 60 min recirkuliram sladico čez HERMS tuljavo.",
+    "author": "Zmikavt",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Mogoce ce kdo ve na zacetek bom postavil uro ki meri kwh porabljene. Kaj pomeni specifikacija na stevcu 3 fazem 3x10(100)A?\nAl je to 3x10A ali 100A skupno?\n\nLp",
+    "author": "KlemenK",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Ok. Malo dlje je trajalo kot bi sam želel, ampak ni dopuščal čas in $$, da bi šlo hitreje. Potem so bili pa še prazniki in sem dobra dva meseca samo čakal, da sem dobil vse dele sploh.\n\nPosodobil sem shemo električnega vezja na trofazni tok, in uporabo 3-faznih SSR-jev ter dveh 3-faznih 8500w grelcev.\n\n\t\n\n\n\nZa posode sem nabavil rabljene 300l vinske cisterne. BK sem sem se odločil, da bo stoječa na nogah ker ima še priročen spodnji izpust, HLT in MLT sem pa dal na stojalo, ki sem ga doma našvasal. \n\n\t\n\n\n\nPIDe in T sonde sem nabavil iz Amerike od Auberja, Grelce in inox priključke pri BrewPi. Pumpo pa od MaltMillerja\n\n\t\n\n\n\nSedaj moram še umerit posode da bom vedel kakšna količina vode je notri in za vikend prvo varjenje.",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Uuu, zgleda slastno, bravo!\nKok pa pride kej tole cenovno...",
+    "author": "pocast",
+    "author_level": "Pivovarski majstr"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Zgleda lepo, bravo. Porocej kako se obnese.",
+    "author": "Pivopivec1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Tole je pa tudi meni všeč!\nMe pa zanima, če je 8500W grelec dovolj, da zavre tako količino (sklepam da okrog 250l)?",
+    "author": "MabundoNagumbe",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Cenovno takole na pamet:\n-cisterne 3 kom. 450€\n-fitingi, grelci in vsi priključki: 800€ (inox je drag \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n )\n-pumpa (100€)\n-PIDi, timer in sonde 380€ (tukaj je bilo 100€ davka in carine, ker je bilo iz amerike naročeno)\n-stojalo 100€\n-ventilator+inox napa 400€\n-elektro material 200€ (omarica, kabli, varovalke, vtičnice, ...)\n\nSkupaj cca. okoli 2500€\n\nKoličinsko planiram od 100 do 200L. Grelec mislim da je dovolj za tako količino, bo pa trajalo malo dlje časa.",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "U pišuka, tole je pa že resna vsota  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDaj ko boš kuhal, malo poštopaj pa objavi, koliko časa greješ vodo do masha, pa koliko časa do boila, pa če boš (valda boš) meril, koliko kWh/l piva porabiš \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nMoja varianta s 50l piskrom, ravno danes sem delal kalibracijo, ker sem vgradil nov grelec (prej sem imel isti sod postavljen na rinko s starega štedilnika). Sicer pa podoben koncept elektronike, tipalo, pumpa, grelec, PID krmilnik \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Koliko se ti pa grelec paca, ko kuhaš eno uro? Kako to sploh spucaš?\n\nKatero pumpo uporabljaš?",
+    "author": "guliver",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Grelec je nov (tako grelec kot njegova postavitev), nimam pojma kako se bo obneslo, bom pomoje nekje v torek s temle prvic kuhal \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n U pišuka, tole je pa že resna vsota  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDaj ko boš kuhal, malo poštopaj pa objavi, koliko časa greješ vodo do masha, pa koliko časa do boila, pa če boš (valda boš) meril, koliko kWh/l piva porabiš \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nMoja varianta s 50l piskrom, ravno danes sem delal kalibracijo, ker sem vgradil nov grelec (prej sem imel isti sod postavljen na rinko s starega štedilnika). Sicer pa podoben koncept elektronike, tipalo, pumpa, grelec, PID krmilnik \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMen se pa ne zdi... 200 l pivovarna za 2500eu je ka.. ka., kapo dol \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "kadunnc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "200L brewiks ali pa braumeister sta krepko prek 10.000€\n\nZa vikend sem delal prvih 100l za test. \n230L vode v HLT-ju se je iz 15 stopinj na 70 segrelo v cirka 2 urah. \nV BK sem potem 120L iz tam 60 stopinj do vretja rabil še okoli 30-45 minut da je začelo vreti. kW ure še nisem gledal, imamo pa za vikend tapocen tok pri nas doma \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nUčinkovitost je bila 88%, lahko bi bila pomoje še višja, če bi delal sparge še bolj počasi z bolj priprtimi pipcami na pumpah.\nGrelec se je pa najlepše očistil z vročo vodo in pa krtačo, ki jo imam za čiščenje steklenic.\n\n\t\n\n\n\npa omarica bližje\n\n\t\n\n\n\n\t\n\n",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik kadunnc pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Odisej pravi:\n U pišuka, tole je pa že resna vsota  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDaj ko boš kuhal, malo poštopaj pa objavi, koliko časa greješ vodo do masha, pa koliko časa do boila, pa če boš (valda boš) meril, koliko kWh/l piva porabiš \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nMoja varianta s 50l piskrom, ravno danes sem delal kalibracijo, ker sem vgradil nov grelec (prej sem imel isti sod postavljen na rinko s starega štedilnika). Sicer pa podoben koncept elektronike, tipalo, pumpa, grelec, PID krmilnik \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMen se pa ne zdi... 200 l pivovarna za 2500eu je ka.. ka., kapo dol \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNarobe si razumel... absolutno postane to kar velika številka, v primerjavi s tistimi nekajsto evri, ki jih povprečni homebrewer želi namenit za opremo. Namenski sistemi so pa itq absolutno predragi za hobi uporabo, tako da jasno, vsaka čast za dobro zapeljano investicijo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Če pa uspeš še kako izolacijo gor dati na cisterne boš pa še zmanjšal čas oz. prihranil na energiji.",
+    "author": "guliver",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik guliver pravi:\n Koliko se ti pa grelec paca, ko kuhaš eno uro? Kako to sploh spucaš?\n\nKatero pumpo uporabljaš?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nDa se javim... par dni nazaj sem skuhal prvi batch s temle grelcem v sistemu. Nazivna moč je 3300W, na 100% da od sebe 3150W kar se mi zdi super (prej sem imel \"rinko\" ki je dala od sebe ~2,2kW). Tole je hkrati mashtun in pisker za boil (notri pride še košara z mrežastim filtrom). Mash je šel super, vmes pri steepingu pač nekaj časa laufa grelec, brez nekih sumljivih vonjav (torej, nič sumljivega da bi se karkoli žgalo), prav tako po izpiranju boil. Ko sem \"kuhal\" je bil grelec na 70% večino časa, pa je fino vrelo (naprogramirano imam 10% resolucijo). Ko sem vrgel notri potopni hladilnik, sem dal na 100% in ni nehalo vret spljoh  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nSkratka, pri čiščenju se je izkazalo, da je problem edino vodni kamen (enak špas kot pri prejšnji varianti - s tem da prej sem drgnil po dnu (rinka) zdaj pa pač lepo nežno po grelcu. Gobica in voda, pa malo detergenta. Nič drugega, kristalne sode (?) za inox prat še nisem našel v štacuni... Da bi se gor nabirala karamela ali zažgal hmelj, ni bilo videti. Na koncu dneva - po prvi kuhi je grelec tak kot je bil prvi dan  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nGlede pumpe: uporabljam dve, ebay el'cheapo, za moj volumen je dovolj. Črna je \"magnetic drive\", če ti kaj pomeni to... malo bolj hec je za čistit, (če jo razstaviš) ker ima eno podložko na takem mestu, da če nisi pozoren, jo zgubiš takoj \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Imam identičen komplet el'cheepo pumpic \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n .... Super, samo da dela.",
+    "author": "guliver",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Update:\nDames kuhal pale ale. Prvic uporabil crno crpalko za cirkulacijo. Toplo odsvetujem, ker se bolj zamasi kot rjava - vsi trije zitki so se ujeli v rotor pumpe. Preprosto je design tak, da dopusca le tekocijo z manj kot 2mm delci. \n\nPrilagam sliko grelca, takoj po tem, ko sem odlil tekocino \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Jih imaš priključene na 12v ali na 24v? Moja črna na 12v je bolj jadna ...morem sprobat na 24v ....",
+    "author": "guliver",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Obe dve sta 12V. Sem namenoma tko kupil... za moj volumen je dovolj \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\n\t\t\n\t",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Wolf, kake grelce mas ti not? 8,5kw? Jaz razmisljam o 3kw na 130l z moznostjo dodatnega 1,5kw, torej skupno 4,5.",
+    "author": "HudaLiza",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "8,5kW trofazne od brewPI",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Mimogrede, osnovni setup za 200 litrov je 16kEUR (Brewix), 12kEUR Spiedel (Braumeister) in cca 9kEUTR Zottel.Škrlj in Plevnik sta pač drugačna liga (za katero žal nimamo pagarcev \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n ...).\nŠe enkrat čestitke za setup.\n\nAli imaš kako informacijo o časih, katere si porabil (da zavreš, da ohladiš, da ... skratka spiješ pir na koncu)?",
+    "author": "guliver",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "2 ure za segrevanje 250l vode od 15 do 70 C za mashing\n0,5 ure za pretakanje pa dodatno dogrevanje\n1 ura za sam mashing\n1 ura sparge (vmes že prižgem grelce za segrevanje v BK\n0.5 ure da mi zavre, ko neham s spargom (za 100l piva trenutno)\n1 ura vretja\n1 ura pretakanja prek protitočnega hladilnika v fermentorje.\n\n6 do 7 ur mi nekje vzame od oka brew dan.\nje pa res da tukaj samo nastavim stikala pa lahko grem delat vmes kakšne druge stvari \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Zmikavt pravi:\n4. Faze iz vtičnice gredo na FID, nula na grelce in zemlja na posode (oz. priključno ohišje grelca, priporočam te, ki jih ma brewpi)\n\t\t\n\t\tKlikni za razširitev\n\t\nEno neumestno vprašanje: kaj pa če ni nule na voljo? Se pravi je samo štiripolna vtičnica (3 faze in ozemljitev)? Kako izvesti vezavo v tem primeru? Ali sploh ni opcije priklopiti grelce brez nule, in zraven ostati živ?",
+    "author": "TRiK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Brez nule je priklop namenjen furanju medfazne napetosti (trikot) ... tako da lahko uporabiš grelce ki so namenjene delovanju v takem režimu. Ozmeljitev imaš še vedno vezano klasično in potem dalje ustrezno zaščito (v konkretnem primeru rabiš 3f fid).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Ravno nabavljam grelec (3 x 2kW) in mi proizvajalec pove, da je trofazna vezava v zvezdo, tako da lahko uporabim nevtralni vodnik ali pa brez njega, mora pa biti ozemljeno, tako da se na prirobnici nekje vreže navoj. Bo tako ok? Sem mislil, da zvezda nujno rabi nulo...\nGlede na moje slabo poznavanje elektrike bom za priklop sigurno prosil kakšnega električarja, te stvari sprašujem predvsem zato, da ne kupim česa neuporabnega.",
+    "author": "TRiK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Odgovor je da in ne. Če imaš vezavo v zvezdo imaš sredinski potencial načeloma na 0 in imaš tako plavajočo nulo (ter 230V na krakih). Problem se zgodi če ti odnese eno od faz (ali pa zaradi obremenitev na eni fazi pade napetost), ker se potencial napram ostalim fazam kar naenkrat spremeni in ni več nula temveč medfazna napetost, kar bo vodilo v to da ti bo (najbrž) skurilo grelec. Tako da vezava nule pri zvezdi je \"klasika\", v idealnih pogojih bo delalo pa tudi brez.\n\nTako da ti priporočam da od nekje povlečeš nulo oz. če boš klical električarja naj ti preveri kako bi bilo najbolj elegantno tole rešit.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Ali da najdem grelec s priklopom v trikot (v tem primeru nule sploh ne rabim), če prav razumem?",
+    "author": "TRiK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Jp pri trikotu nimaš nule ker gre za potencial/napetost med fazami.\n\nPri grelcih dejansko so trikot/zvezda vezave itak \"fejk\", važno je samo ali grelec oz. posamezni element dela na 230V ali na 400V. Če dela na 400V ga vežeš med dva fazna vodnika in ne rabiš nule. Trifazni grelci imajo ponavadi sicer 3 grelne elemente zato pa se uporablja klasične \"motorske\" vezave, čeprav kot rečeno je vsak element neodvisen od ostalih in lahko dela ločeno (230V grelce lahko poganjaš samo z eno fazo in 400V grelce lahko poganjaš s samo dvema fazama [če ne upoštevamo pri tem porušitve oz. nebalansiranosti simetrije med fazami]).\n\nPod črto se večina grelcev uporablja na 230V in zanje dobiš tudi dokaj poceni SCRje .. pri 400V se pa začenja \"redkost\" oz. grelce že še dobiš, problem so potem regulacije. Tako da ti ne priporočam 400V grelcev oz. delta/trikot vezave.\n\nEna opcija glede na to da imaš na voljo \"zemljo\" je da bi fural nulo preko zemlje oz. mogoče gre itak za ničenje in imaš na ozemljitvi dejansko nulo ter kompiciraš na napačnem koncu! \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Nula ni \"ozemljena\", tako da ta opcija odpade. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "TRiK",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Tisti, ki uporabljate PIDe, imate original sonde ali katere druge?\nKam in kako jih nataknete na lonec?\nVprašujem zaradi pomivanja lonca, da ne vlačite kabla po vodi...",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Uporabiš \"thermowell\" in sondo noter vstaviš ko rabiš, drugače lonec veselo nosiš naokoli. tole recimo (notranji premer cevke naj bo čimbolj podoben premeru sonde (uporabiš samo termalo pasto za boljši kontakt, sicer če je večji zatlačiš pa malo alu folje da objame sondo)!",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Hvala!\nPravkar naročil RTD pt100 sondo, na ebayu cca 7eu\nGrelec je že, lonec tudi, še ventil in pid čakam...",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Pa ko bo to vse v nulo, ne pozabit pivovarskih osnov. Sam povem.",
+    "author": "kalbo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik kalbo pravi:\n Pa ko bo to vse v nulo, ne pozabit pivovarskih osnov. Sam povem.\n\t\t\n\t\tKlikni za razširitev\n\t\nItak!  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Živjo.\nSpravljam se k projektu sestave električne pivovarne.\nPlan je nekako takšen:\nInox sod za vino 50 litrov\nGrelno telo http://www.thermal-heater.com/...18115402298.jpg\n20 cm 2800w\nPumpa \nKonzola od grainfatherja https://cdn1.homebrewsupply.co...10190__2_-b.jpg\nZanima pa me, če je kozola dovolj da reguliram temperaturo (glede na to da ima konzola senzor za tempreaturo), ali rabim glede tega še kaj.\nSeveda zraven pridejo še cevi in pretočna košara za drozgat\nHvala za pomoč",
+    "author": "Dukc",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Dukc pravi:\n Živjo.\nSpravljam se k projektu sestave električne pivovarne.\nPlan je nekako takšen:\nInox sod za vino 50 litrov\nGrelno telo http://www.thermal-heater.com/...18115402298.jpg\n20 cm 2800w\nPumpa \nKonzola od grainfatherja https://cdn1.homebrewsupply.co...10190__2_-b.jpg\nZanima pa me, če je kozola dovolj da reguliram temperaturo (glede na to da ima konzola senzor za tempreaturo), ali rabim glede tega še kaj.\nSeveda zraven pridejo še cevi in pretočna košara za drozgat\nHvala za pomoč\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMalo preveri kakšni so izhodi za grelec na Controlerju. Se mi zdi da samo 10A....",
+    "author": "kadunnc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Koliko misliš pa količinsko vret? Ker 2800W za recimo 40l ne vem če bo dajalo ustrezen boil, sploh pri indirektnem gretju kjer so še izgube malo večje kot pri potopnih grelcih v loncu.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Mislim da podobne grelce z podobno močjo uporabljajo razni Gutenbraui in Klarstein kotli za 50 l, sem mislil da bo dovolj. Je blo v planiranih 40 l",
+    "author": "Dukc",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Tisti kitajci imajo 3kw, 50l braumaister ima pa 3.2kw. Sicer bo kdo drug povedal kako uporabno je tole pri vretju 40l sladice, ampak po izkušnjah je tisti boil bolj za silo pa še počasno segrevanje je. Če imaš na sobni temperaturi v zaprtem prostoru (da ni prepiha) bi sicer moralo bit ok.\n\nAmpak če greš delat custom sistem bi sam šel na največ kar se da dobit za klasično šuko vtičnico (samo mora bit kvalitetna) je torej to omejitev 16A ... tako da bi sam vzel 3.5kW grelec. Grelec ni skoraj nič dražji, elektrike porabiš enako, samo vse stvari se ti pohitrijo in boil je bolj agresiven.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Kolikor sem testiral 35l dobro vre. 40l bi lahko bolje, ma vseeno ni tako slabo. Vsaj čez ti ne šprica \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Za BM v soboto povem kakšen boil je. Ima pa zdaj omogočen boil brez regulacije, tko da bi znal bit OK, sploh ker mam izolacijo gor.",
+    "author": "kalbo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Jaz imam 2 grelca, vsak 2 kw, vsak na svoji fazi. Pri boilu 60l+ znižam SSR na 80-90%, ker je boil sicer preveč energičen.",
+    "author": "Harloc",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Evo, prilagam še par slikc, če že nisem kaj pošiljal.\nSicer se oproščam za smetenje. slike so pa malo bolj meglene, druge trenutno nimam.\nTako nekako zgleda:\n\n\t\n\n\n\n\t\n\n\n\n\t\n\n\n\n\t\n\n\n\n\t\n\n\n\n\t\n\n",
+    "author": "Harloc",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Lep sistem! &#128077;",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Ko fotkaš probaj spit čim manj pirov in poizkušaj držat telefon čimbolj pri miru",
+    "author": "komar89",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Kok maš to max slada?",
+    "author": "kadunnc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "hahaha, slikano je v vinski kleti, tako da promilov ne manjka. Bom naredil raje en video ob prvi kuhi. \n\nNotri dam pa ponavadi enih 11-12kg slada. Verjetno bi natlačil tudi 13.\nSem delal po merah \"originala\".",
+    "author": "Harloc",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Oj!\nUporablja kdo Raspberry pi s CraftBeerPi programom za kuhanje?",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Zdravo!\nkaj menite o temle grelcu:  klik \n\nUporabil bi ga skupaj z SmartPID v za 50l sistem. verjetno potem rabi vsaka faza svoj SSR? Se jih da vezati na en PWD izhod na SmartPIDu?",
+    "author": "erck",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Hm. Potem moraš imeti luknjo na sredini dna lonca. Kaj če kaj ne tesni dobro. Je pa res, da je gretje lepo razporejeno.\n\nJaz imam pa naročena 2 trifazna na ebay ( Link ).  Dobiš 3fazne SSR. Verjetno je pa tudi izvedljivo da uporabiš 3 enofazne. Po enega za vsako fazo in s tem bi lahko tudi reguliral jakost gretja na način, da ne vključiš vseh faz, vseh cevi grelca. Jaz bom uporabljal Raspberry z lastnim software. Tukaj je potem še opcija trifaznega grelca za 220v (230) ali 380v (400). Jaz sem izbral 380v in trifazni SSR zerrocross.",
+    "author": "Brrane",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Evo pa je prva kuha z električnim grelcom in CraftBeerPI za mano \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Mislim da za prvič kar ok, malce problemov imam da skoraj dobesedo speče hmelj na grelec gor. Druga stvar pa je nihanje temperature ker še zaenkrat nimam pumpe, in me zanima ima kdo pumpo katero bi priporočal (seveda da jo povežem na CraftBeerPi)?",
+    "author": "ArcaneWater",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ArcaneWater je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tEvo pa je prva kuha z električnim grelcom in CraftBeerPI za mano \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Mislim da za prvič kar ok, malce problemov imam da skoraj dobesedo speče hmelj na grelec gor. Druga stvar pa je nihanje temperature ker še zaenkrat nimam pumpe, in me zanima ima kdo pumpo katero bi priporočal (seveda da jo povežem na CraftBeerPi)?\n\t\t\n\t\tKlikni za razširitev\n\t\nOj, poglej na mojo opremo, gor sem postal slike, tudi pumpe, imam enako kot Odisej...",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Kako imate rešeno zaščito grelca?\nSam sem si omislil nekaj takega.\nPod grelcem je par mm lufta in se ga ne dotika, zgoraj pa kar cm od njega.\nZadeva je mislim, da pokromana. Bo to ok za kuhanje?\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Wofk, false bottom si dal not? Kje si to nabavil?",
+    "author": "zoki",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Jaz uporabljam tisto \"fedrasto\" špiralo + žakelj sešit iz zavese zaradi lažjega čiščenja.\n\nkupil sem tukaj https://store.brewpi.com/mashing/filtering/brewpi-mattmill-lauterhexe-kit-bsp\nima jo pa tudi moje pivo https://www.mojepivo.si/mojepivo-oprema/drozganje/mojepivo-mattmill-lauterhelix-1800.html",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Wofk je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz uporabljam tisto \"fedrasto\" špiralo + žakelj sešit iz zavese zaradi lažjega čiščenja.\n\nkupil sem tukaj https://store.brewpi.com/mashing/filtering/brewpi-mattmill-lauterhexe-kit-bsp\nima jo pa tudi moje pivo https://www.mojepivo.si/mojepivo-oprema/drozganje/mojepivo-mattmill-lauterhelix-1800.html\n\t\t\n\t\tKlikni za razširitev\n\t\nAha, tnx. Ta žakelj je mišljen tako kot pri BIAB za celo posodo, ali samo da pokrije spiralo?",
+    "author": "zoki",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Celo posodo kot pri BIAB in je super za čiščenje pa še dvojna filtracija je in ni možnosti stuck masha",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik rookie je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tKako imate rešeno zaščito grelca?\nSam sem si omislil nekaj takega.\nPod grelcem je par mm lufta in se ga ne dotika, zgoraj pa kar cm od njega.\nZadeva je mislim, da pokromana. Bo to ok za kuhanje?\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\nPomoje tole ne bo vredu. Nad grelcem moraš imet dvignjeno slepo dno ki bo čisto do roba lonca. Če ti bo prišla vreča na grelec jo bo prežgalo.\nNekaj takega...\n\n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "reflex",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Tudi moj projekt napreduje, kmalu bo dokončana omarica \n \n\t\t\n\t",
+    "author": "ArcaneWater",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Danes sem stestiral opremo, končno! \n20 litrov vode segreje na 74 stopinje  v 45 min, do vretja dobra ura, cfc shladi s pomočjo pumpe na 25 stopinj zelo hitro, s polovicno hitrostjo pumpe in na pol odprto vodo je tik tak shlajeno.\nTorej, sistem deluje!\nJutri pa prvo kuhanje!\nBil je že čas...",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ArcaneWater je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tTudi moj projekt napreduje, kmalu bo dokončana omarica \nPoglej priponko 21389\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKaj sta črna modula na sredini? ",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "SSR za tri fazni tok,  spodaj levo sta pa dva SSR za enofazni tok",
+    "author": "Wofk",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Kul, tnx! Spodnja dva poznam, za to nisem bil zihr ",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Tako je  Zgornja sta trofazna, spodaj pa so sedaj 3 enofazni. Omarica pa danes dokončana  \n\n\n\t\t\n\t\t\n\t\n\n\t",
+    "author": "ArcaneWater",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Vau, vsaka čast!\nEni to tako lepo zapakirate, moje je pa kot skropucalo! \nPa nič zato, služi namenu...",
+    "author": "rookie",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Še moja \"omarica\":\n\n\t\t\n\t",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Po dolgem zatišju zaradi selitve in pomanjkanja prostora spet zaganjam svojo pivovarno, hkrati pa sem se odločil za upgrade na HERMS z PID kontrolo.\nV bistvu gre za kombinacijo plin-elektrika, ker imam na razpolago samo 16A varovalko.\nTorej Boil bo na plin, začetno segrevanje vode v HLT tudi, za vzdrževanje temperature v HLT in črpalke bi pa uporabil sistem po vzoru \"The electric brewery\".\nUporabljeni PID-i bodo REX C100 z PT100 sondami, črpalke 24V vezane na 220V to 24V transformer, grelec pa 2800W z ohišjem iz BrewPi (grelec bo kot napisano samo za vzdrževanje temperature v HLT, segrevanje in boil pa s plinom.)\nCeloten sistem nadzorne plošče in vezave sicer razumem, ampak ker nisem glih domač pri elektriki (brez skrbi, pred uporabo bom dal vezavo vsaj pregledat, če ne celo v izvedb znancu električarju) sem pri kontrolni plošči naletel na oviro.\n1. Rabim v \"control panel\" tudi FID in katerega naj montiram?\n2. ali res rabim še mehanski rele za \"power in\" ter za grelce? Katere naj nabavim? na eBay ne najdem nič primernega\nhttp://www.theelectricbrewery.com/control-panel-part-2?page=13\n\nZa obe dilemi bi bil najbolj vesel direktnega linka/ imena modela.\n\nhvala",
+    "author": "strasni",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "FID ni neumna stvar; če pride do situacije, kjer bi ga \"rabil\" je modro vzeti bolj občutljivega kot je pri hišni inštalaciji. Če ga tam ni, bi ga jaz skoraj da vzel. \n\nGlede \"releja\" ne vem točno kaj misliš, če to kar je na sliki, je to preklopno stikalo 1-0-2. Pravi naslov so ti razni baubau in merkurji... sicer iščeš kontaktor, če hočeš da ti ves tok ne gre čez stikalo.\n\nlp",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Tako, pa sem zaključil omarico (no, skoraj. Manjkajo še oznake z napisi za stikala).\nNarejeno po vzoru TheelectricBrewery, ampak zaenkrat samo z enim grelcem 2,8kw.\nJe pa puščen prostor za mogočo nadgradnjo na 2 grelca in 30A. Samo dodam še en SSR in izhodni kontaktor.\nRex C100 PID bo sčasoma tudi zamenjan za Inkbird, trenutno je tam da zapolni luknjo \n\n\t\t\n\t\n\n\n\t\t\n\t\n\nHLT je tudi že pripravljen, manjka še novo lažno dno za MT in nekaj metrov silikonske cevi in upam da bo čez 2 tedna preizkus.\n\n\t\t\n\t",
+    "author": "strasni",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Zdravo vsem. Po dolgem zatišju odpiram temo... Rad bi posodobil svoj sistem.\n\nTrenutno kuham v 300L inox sodu, ki  mi postaja premajhen. Ker ni optimiziran proces porabim veliko časa... V bolj resne vode se pa še ne upam spustiti (mogoče enkrat v prihodnosti pa ...).  \n\nRad bi prišel do klona Braumeistra 200.  Zanima me ali je kdo izmed tukaj prisotnih forumašev  že izdelal kaj podobnega  in kako se je ta  sistem odnesel v praksi? (njegove slabosti,…).  Verjetno mi boste svetovali, da naj si kupim Brewiksa ali pa original Braumeistra…. Verjamem, da domači projekti niso najbolj optimizirani v primerjavi z originali, kjer je vloženega veliko znanja, izkušenj,… Rabljene pivovarske opreme pa tudi ni veliko… Vendar me vseeno zanima, ali je kdo v Sloveniji, ki ima takšno znanje oz. izkušnje  z izdelavo …\n\nHvala za vsak nasvet, pomoč.",
+    "author": "markolinux",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Zdravo mojstri\n\nImam 5500W grelec od BrewPi in kontroler od Auberins. \nVse deluje na eni fazi ('bojda' imam 30A elektrike na voljo)\nTa teden sem gostil električarja in ga poprosil da izmeri tok ki teče skozi grelec v času vretja. Na kontrolerju sem nastavil 100% moč, brezkontaktni amper-meter pa je v omarici pokazal 18A toka.\nTorej, ker je 18A x 230V = 4140W, in ker je to bistveno manj od deklariranih 5500W me zanima kdo mi 'krade' moč?\n-Je tat SSR, ki ne pusti dovolj moči na grelec?\n-So tatovi pri BrewPi in so nekaj watov izgubili na Nizozemskem?\n-Mi moja elektro družba ne pusti polno odprte pipice?\n\nHvala",
+    "author": "tomaz_m",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "SSR ima lučko, ki kaže kdaj je vklopljen. Če ti je lučka na njem med meritvijo konstantno utripala, potem je kriv PID ki ti vklaplja/izklaplja SSR.\n\nElektro ti ne more na tak način omejevati moči - če prekoračiš zakupljeno moč, bo izpadla varovalka oziroma odklopnik in boš moral klicati Elektro da ti zadevo vklopijo nazaj.",
+    "author": "Gavran",
+    "author_level": "direktor!"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Hvala\n\nLed lučka na PIDu (DSPR320)  že pri 70% utripa tako hitro, da ne vem ali utripa ali konstantno gori. \nDober test bi najbrž bil da grelec priključim direkt na omrežno napetost?",
+    "author": "tomaz_m",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "Ja priključi ga direktno in potem meri",
+    "author": "Gavran",
+    "author_level": "direktor!"
+  },
+  {
+    "ctx": "Električna pivovarna",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Gavran je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJa priključi ga direktno in potem meri\n\t\t\n\t\tKlikni za razširitev\n\t\nPri direktni vezavi je Ampermeter pokazal zgolj minimalno večji tok.\n\nImam osumljenca - Slab inštrument, ker ko sem z njim meril še napetost je pokazal sumljivo nizko vrednost 195V. Napetost pa sem lahko primerjal z drugo napravo (ki pa ne meri toka), ki je pokazala regularnih 228V.\nPreden ga dokončno obsodim (inštrument), moram izvesti še meritev z bolj zanesljivo napravo.",
+    "author": "tomaz_m",
+    "author_level": "Pripravnik"
+  }
+]

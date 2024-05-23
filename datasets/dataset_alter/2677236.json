@@ -1,0 +1,92 @@
+[
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Torej znalci, potrebujem malo pomoči. HP Proliant DL20 gen9 z Windows server 2016, po izgubi napajanja (izpraznilo UPS) se mu je malo zmešalo. Sumim sicer UPS, ki je tudi spražil napajalnik od routerja, ampak smo ga zamenjali in internet zdaj normalno deluje. \n\nNa logon screenu imam desno spodaj rdeč znakec, ki mi po kliku pravi \"No network connections are available\" in vsak poskus prijave zabriše napako \"there are currently no logon servers available to service the logon request\", čeprav smo priklopili še tretjo USB kartico in v DHCP tabeli vidim da dobi IP, ping nanjo deluje.\n\nV Safe mode (z ali brez networkinga) se lahko prijavim kot domain admin. V nadzorni plošči vidim, da so aktivne tri mrežne kartice (dve od kontrolerja sta \"teamed/bridged\", tretja je USB) in ob izklapljanju kablov se vse odzivajo, vendar mi ipconfig izpiše config samo USB kartice. Če USB kartico izklopim mi ipconfig napiše, da ni mrežnih adapterjev. \n\nServer ima fiksni IP, ki ga lahko pingam in se nanj poskušam tudi prijaviti preko RDP (na IP, ki ga ipconfi sploh ne omenja),  seveda z istim annoying sporočilom \"there are currently no logon servers available to service the logon request\". \n\nTorej : v safe mode se lahko prijavim, ne morem pa spremeniti takorekoč nič, medtem je v normal mode prijava onemogočena. Nad googlom sem obupal, health pravi da sta obe kartici ok, ILO deluje.\n\nŠe kakšna ideja kaj naj preizkusim ?",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Mogoče je samo to\nFix Stuck Service issue (Netlogon)\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t[Solved] There are Currently No Logon Servers Available to Service the Logon Request\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tError \"there are currently no logon servers available to service the logon request\". You'll get to know that there are many reasons and fix.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ttechiwiz.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\ndns serverji\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tHow to Fix the No Logon Servers Available Issue? Follow the Guide - MiniTool\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tThis post introduces how to fix the “there are currently no logon servers available to service the logon request” issue. Follow the guide to fix it.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.minitool.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\nJe kaj v win event viewerju ?",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Videl to ponujeno rešitev, ampak\n\n- se ne morem prijaviti kot local admin, account ne obstaja - ob nastavitvi AD se vsi lokalni accounti pobrišejo. Tudi poskus dodajanja lokalnega računa (cmd, control userpasswords2) je neslavno propadel.\n- v safe mode mi ne delujejo servisi kot netlogon in server. Poskus zagona pravi, da v safe mode pač to ne gre\n\nPoleg tega je ta postopek opisan za člane AD, ne ADC kot tak...",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Lahko sta dve opciji:\n1. porušena shema AD, rabiš it v restore mode, če imaš to narejeno. Rabiš seveda backup. Če nimaš, potem jeba.\n2. nimaš vpisanega pravega DNS v mrežni kartici. Biti mora localhost IP, 127.0.0.1 ali pa lokalni IP, ampak potem moraš preveriti firewall nastavitve. DHCP ti tle sigurno ni v pomoč, saj ti verjetno nastavlja IP napačnega DNSa\n\nOpcija 1. se zelo redko zgodi, zato mislim, da začni kar s točko 2. \n\nPS: zelo pametno je imeti dva DCja..",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Managing mrežnih kartic sploh ni mogoč (okno properties je prazno). Sem iz device managerja izbrisal mrežne kartice in pognal detekcijo na novo, device manager mi jih najde, med network connectioni pa jih ni. In ne, nisem vzdrževalec tega sistema, sem samo tisti, ki poskuša pogasiti požar. Backupov seveda ni.\nVedno bolj se mi zdi, da bo treba vse skupaj na novo postaviti, ampak mi je kar slabo ko pomislim kaj to pomeni za delovne postaje...",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Ker moraš štartat v safe mode with networking. Sam safe mode ne naloži networking modula.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Brez skrbi da sem v \"Safe mode with networking\". Saj vem, da se v safe mode vsi servisi ne zaženejo, ampak da ne želi pognati 48 servisov pa je malo huda. \n\nInternet mi dela preko USB mrežne kartice, rezultat pa tak kot na fotki",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Bi se bolj nagibal na uporabo ipconfig /all ... Ker če ti internet deluje, potem IPji so nastavljeni in so v sistemu vidni",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "ipconfig/all mi izpiše vse IPje, ampak kljub temu sem pri originalnem problemu - There are Currently No Logon Servers Available to Service the Logon Request.\n\nPrijavim se lahko samo v safe mode, normalno ne",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "C/P kar vrže ven ipconfig. \n\nPreveriš lahko še ali ti tečejo DNS server servis in Active directory domain services servis oz. v event viewerju poišči errorje",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Nisem več pri stranki, sem obupal. Sicer je ipconfig izgledal čisto normalno. Opazil sem, da imajo Veam , zdaj pa samo upam, da imajo backup celega strežnika in ne samo datotek. V nasprotnem primeru pa bo cela jeba vse na novo postavit, ampak to mene ne bo bolelo.",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "V Event viewerju je bilo toliko napak in neuspešnih zagonov servisov, da se je bilo nemogoče prebiti. Verjetno je problem tudi v tem, da se v safe mode vsi servisi pač nočejo startat, v normal mode pa ne moreš...",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Poskusi resetirati tcp stack\nV administrativnem cmd vpiši naslednje komande:\nipconfig/release\nipconfig/flushdns\nipconfig/renew\nnetsh int ip reset\nnetsh winsock reset\n\nNato restartaj server\nMene je to že rešilo, ko se mi je totalno sesula internetna povezava. Če ukazi z ipconfig ne delujejo, poženi samo zadnja dva ukaza.",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Poskusil tudi z resetom TCP stacka, brez uspeha. sfc /scannow javi, da imam corrupted datoteke ki jih ne more popraviti, dism pa v vseh mogočih kombinacijah naredi točno nič. Izpiše verzijo in se ustavi, iz dism logov pa nisem uspel razbrati vzroka. Po sedmih urah preizkušanja vsega kar sem se spomnil ali našel na googlu sem obupal.",
+    "author": "cat",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Onemogočena prijava v ADC",
+    "content": "Nenaden izklop ti je delno zjebal ntfs in posledično s tem windows instalacijo.\n\ndism in sfc nista ravno vsemogočna.\nNa win10/11 tole dela, nimam pojma če tudi na win server 2016\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tRepair Windows Image Component Store in Windows 11  Tutorial\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tThis tutorial will show you how to repair Windows image component store corruption in Windows 11.  If a Windows image becomes unserviceable, you can use the DISM (Deployment Imaging and Servicing Management) tool or Repair-WindowsImage cmdlet to update the files and correct the problem.  For...\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.elevenforum.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\nDaj tole poženi\nSFCFix\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tSFCFix Official Download - Repair Windows Update\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tDownload SFCFix completely free to repair Windows Update and SFC corruptions, fix error messages and get help with Windows Update / SFC problems. Tool author: niemiro.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.sysnative.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nprvo chkdsk\nnato chkdsk /f /r\n\n\n\nNa win10/11 tole dela, nimam pojma če tudi na win server 2016:\n\nwindows clean reinstall (and keep all data/programs/settings)\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tHere's how to reinstall Windows 10 without deleting your files\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tReinstalling Windows is simpler than you might think, and there's an easy way to keep all your files intact. Here's how it's done on Windows 10\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.techadvisor.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  }
+]

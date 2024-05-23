@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Pozdravljeni,\ns temle se že dve uri matram, pa ne najdem rešitve, upam da komu tukaj uspe.\n\nNačeloma ne rad seštel isto celico (recimo A1) na več listih (recimo da imam Sheet1, Sheet2, Sheet3; lepo eden za drugim; v resnici bo listov veliko več - pribl. 100).\nZakomplicira se, ker bi na nekem četrtem listu rad določal kaetri list (od prej omenjenih treh) naj se upošteva v vsoti.\nNa četrtem listu bi imel navpično naštete ostale liste in v sosednjem stolpcu 0 ali 1.\n1 pomeni, da naj relevantni list upošteva v vsoti, 0 pa da ga ne.\n\nPrimer:\nSheet1     0\nSheet2     1\nSheet3     1\n\nTo pomeni, da sešteje samo A1 celici na Sheet2 in Sheet3.\n\nŠe to, ne iščem VBA rešitve, ker jo že imam. Rad bi videl, če obstaja alternativa z navadnimi formulami.\n\nhvala in lp!\nj.",
+    "author": "Jason",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "če prav razumem...\n\nnaredi dodatni stolpec v C koloni na zadnjem listu, v spolpcu daj pogoj IF(B2=1;Sheet1!A1;0) , IF(B3=1;Sheet2!A1;0).. itd\nSe pravi ti za tiste kjer je pogoj izpolnjen (=1) prepiše vrednost iz celice A1 na določenem listu, kjer ni pa zapiše 0.\nV zadnji celici sešteješ celotno kolono",
+    "author": "jgfd",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "hvala, ampak pozabil sem napisat, da se za izracun rezultata lahko porabi samo ena celica. Zato mi mnozica if formul in na koncu vsota ne pomaga. Na sheetih bo namrec veliko vrstic in stolpcev. Se to, nic naj se ne bi dodajalo na liste, ki jih sestevamo.\nKoncni cilj je ta, da bi lahko pripravil vec scenarijev, kjer bi v vsakem dolocil katere liste naj sesteva.",
+    "author": "Jason",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "teoretično bi sicer lako vse folmule spravil v eno celico, ampak to je preveč mukotrpno\nEnostavna rešitev bi bila da celice ki jih nočeš videt enostavno skriješ. \nSicer se za taksen namen uporabi finkcijo SUMIF... ampak v tvojem primeru so celice katere zalis sesteti vsaka na svojem listu.\n\nPredlagam da si najprej na zadnji list prikličeš vse A1 celice iz vsakega lista in potem naprej račnaš s funkcijo sumif .....\nnpr:\n      A ..................B...........................C.................D\nSheet1........=Sheet1!A1...............0..................1\nSheet2........=Sheet2!A1...............1..................0\nSheet2........=Sheet3!A1...............1..................0\n...............................................=SUMIF( ...)....=SUMIF(..)\n\nSumif je v tem primeru   =SUMIF(C1:C3;1;B1:B3)      in   =SUMIF(D13;1;B1:B3)\nče te moti lahko na koncu celotni stolpec B skrijes",
+    "author": "jgfd",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Jason pravi:\n hvala, ampak pozabil sem napisat, da se za izracun rezultata lahko porabi samo ena celica. Zato mi mnozica if formul in na koncu vsota ne pomaga. Na sheetih bo namrec veliko vrstic in stolpcev. Se to, nic naj se ne bi dodajalo na liste, ki jih sestevamo.\nKoncni cilj je ta, da bi lahko pripravil vec scenarijev, kjer bi v vsakem dolocil katere liste naj sesteva.\n\t\t\n\t\tKlikni za razširitev\n\t\nČe preneseš en dodatni stolpec, v njem sestavi naslov celice na katero se sklicuješ (s funkcijo INDIRECT), potem pa seštej s SUMPRODUCT ...",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Leska, hvala.\nAli je mozno INDIRECT vgnezdit v SUMPRODUCT? (meni nikakor ne uspe)\nRad bi se namrec znebil C stolpca. V koncni verziji bodo listi imeli veliko stolpcev in vrstic. List z rezultatom bo imel enako strukturo kot listi s podatki. Zato ne morem imeti dodatnega stolpca, ki opravljal vmesni korak, t.j. priklic vrednosti z listov.",
+    "author": "Jason",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Hja, slutim, da bi se dalo, nisem pa prepričan ...\nEna podobna tema je tukaj:\nhttp://www.excelforum.com/exce...ion-is-met.html\nSporoči, če boš uspel.",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Leska,\nprimer iz tvojega linka je zanimiv, ampak tam je bil kriterij na vsakem od listov, ki so se seštevali.\nTe rešitve mi ni uspelo prilagodit, da bi delalo s kriteriji na svojem listu.\n\nProbal sem en kup formul, pa mi da vsaka napačen rezultat. Glej rdeče v pripetem fajlu. \nTukaj poskušam sešteti celice B2 na Sheet1 do Sheet3. V vseh formulah se dokaj jasno sklicujem na B2, ampak se mi rezultati spreminjajo če spreminjam vrednosti v B3 in B4, tako da mi ni nič jasno.\nlp!",
+    "author": "Jason",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Hja, res ne vem, poskus6 se mi zdi navidez OK ...\nŠe nekaj podobnega;\nhttp://www.ozgrid.com/forum/showthread.php?t=27306",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Tole bo:\n=SUMPRODUCT(SUMIF(INDIRECT(\"'\"&A2:A4&\"'!B2\");\"&gt;0\");B2:B4)\n\nNe vem pa, zakaj ne dela tole ...\n=SUMPRODUCT(INDIRECT(\"'\"&A2:A4&\"'!B2\");B2:B4)",
+    "author": "Leska",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel: sum enake celice na več listih +kriterij",
+    "content": "Bravo, najlepša hvala. Bi ti dal 5*, pa ne morem še enkrat.\nNi mi sicer jasno, kako lahko SUMIF dela samo z dvema argumentoma, ampak rezultat je pravi.\nlp!",
+    "author": "Jason",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Za podaljšanje dosega brezæičnega omrežja sem povezal dva ruterja. Sta v istem podomrežju, povezana s crossover kablom. Drugi ruter je nastavljen kot access point z drugim SSID-jem. Zadeva deluje.\n\nProblem je v tem, da se nikakor ne morem povezati na drugi ruter. Če v Browser vpišem IP ga ne najde. Skušam se povezati preko prvega ruterja (Lan) ali preko drugega (WIFI).",
+    "author": "alpek",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Preden si mu šel spreminjat način delovanja, upam da si mu nastavil IP istega subneta? Ergo, vsaj sam ponavadi naredim tako, da je glavni router x.x.x.1, naslednji x.x.x.2, ... \nSi dal v drugi router eth kabel v lan port, ne wan? (dan današnji ne bi več rabil cross kabla, ampak če ga že imaš...)\n\nlp",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Jaz mam tak vezano z normalnimi kabli.\n\nKabelski modem ---&gt; router1 --- mrežni kabel preko elektrike ---&gt; ruter dva.\nNa oba se lahko priklopim wifi ali kabel.\n\nSem pa moral na drugem spremeniti IP, sicer ni bilo dostopa.\n\nAta server: prvi, ki je na modem:\nAutomatic configuration DHCP pustiš (naj telemach določi zunanji ip)\n\nNato pa določiš notranji IP ruterja 1 ( v tem primeru sem pustil kar 1)\n\nIP adress192.168.1.1\n\nPotem pa sem tam vklopil:\nDHCP server enabled in Start IP 192.168.1.100 (drugi ruter) ter vpisal DNSe od telemacha/triere.\n\nDrugi ruter:\n\nVpisal drug IP in sicer 192.168.1.100 ter disejblal DHCP server.\n\nPrvo vklopi prvi ruter in tam nastavi, potem pa samo drugega in tam nastavi.\nNato vklopiš oba in se bosta \"zmenila.\"\n\np.s.\nzakaj crossover kabl? navaden je dovolj za tako igro\n\nImam različna ruterja, od iste firme linksys.",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Da bo lažje za razumet. Oziroma če ti kaj pomaga.\n\nVerjetno se ti tepeta IPja, po defaultu imajo ruterji 192.168.1.1 ali 0.1, zato moraš na drugem IP spremenit, na prvem pa določiš DHCP server in start IP, ki je isti drugemu ruterju.\n\nRouter 1:\n\n\n\t\n\n\n\nRouter 2:\n\n\t\n\n",
+    "author": "Izbrisan uporabnik #488",
+    "author_level": ""
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Mogoče sem se narobe izrazil.\n\nLahko se povežem na wifi od drugega ruterja (tega, ki sem ga nastavil kot dostopno točko), se pravi vse nastavitve so ustrezne: isti subnet, izklopljen dhcp, kabel v LAN portu. Tudi internet in  vse dela. To ni bistvo.\n\nS povezavo sem mislil, da ne morem dostopati do nastavitev drugega ruteja (v meni za nastavitve preko IP-ja v browserju).",
+    "author": "alpek",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Ne ne, pravilno si se izrazil, ampak po defaultu sta oba routerja na 192.168.1.1 naslovu. Kar je IP conflict. \nZato, ali si, ko si izklopil DHCP na drugem, ali si nastavil tudi statični ip, ki je različen od prvega routerja (torej, če si ga dal na 192.168.1.2 ?)",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Tako je , drugi ruter ima različen ip na isti poddomeni. Če pa vpišem ta ip 192.168.1.2 v browser ga ne najde.\n\nProblem je v tem, da zadeva nekaj časa deluje, potem pa se sesuje. Wifi naprave se sicer kao povežejo gor, vendar je omrežje neodzivno. Zato sem želel še enkrat preverit nastavitve, ampak ne morem gor.",
+    "author": "alpek",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Še enkrat naredi konfig drugega routerja, najlažje... edino kar mu moraš nastavit je, ugasneš dhcp, njegov ip 192.168.1.2 in gateway 192.168.1.1",
+    "author": "Odisej",
+    "author_level": "arhivar"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Gateway na drugem routerju nima veze, ker klienti dobijo ta podatek preko DHCPja, samemu routerju pa ta podatek tudi ne koristi, saj želi privzeto dostopati do interneta preko WAN porta, ki pa je v tem primeru prazen. Ampak router itak ne rabi interneta (pač razno pridobivanje internetnega časa ipd. ne bo delovalo).\n\n@alpek: pa imaš router 2 povezan do routerja 1 preko LAN porta? Torej ta tvoj crossover kabel je na obeh routerjih priključen v LAN port. WAN port na routerju 2 mora biti prazen, na routerju 1 pa povezan z modemom.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "Ok sem ga ponovno vrnil na tovarniške nastavitve in vse še enkrat nastavil. Trenutno deluje.",
+    "author": "alpek",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "domače omrežje-povezava dveh ruterjev",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n \n@alpek: pa imaš router 2 povezan do routerja 1 preko LAN porta? Torej ta tvoj crossover kabel je na obeh routerjih priključen v LAN port. WAN port na routerju 2 mora biti prazen, na routerju 1 pa povezan z modemom.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nja, ja in ja.",
+    "author": "alpek",
+    "author_level": "Pripravnik"
+  }
+]

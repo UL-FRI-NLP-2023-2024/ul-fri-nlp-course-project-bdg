@@ -1,0 +1,70 @@
+[
+  {
+    "message": "Rad bi brezžično šibal internet v sosednjo hišo. Za lažje razumevanje:     To bi rad dosegel - PC 3 potrebuje dostop do interneta, to pa bi rad uredil brez hardverskega poseganja v PC 3 (brez brezžičnih mrežnih kartic torej), ampak z dedicated napravico (WLAN router 2), ki bi na PC 3 bila povezana preko navadnega mrežnega kabla.  Zaenkrat WLAN routerja 2 še ni, PC 3 ima svoj modem in je priklopljen na drug ISP.  Zanima me, ali LAN porti na routerju ostanejo aktivni, če ga postaviš v \"repeater mode\" (v tem primeru WLAN router 2). Je kakšen drug režim delovanja, v katerem router WAN povezavo prejema preko WLAN in jo potem širi dalje preko LAN? Na kratko: kako skonfigurirat WLAN router 2, da bo omrežje takšno kot na sliki (če je to sploh možno).  Hvala za pomoč! ",
+    "user": "dela"
+  },
+  {
+    "message": "Namesto routerja 2 kupi access point, in ga priklopi na router 1. Pri tem je zlo fino, če je iste znamke kot router 1. Sem delal nekaj podobnega med Linksys in d-link (AP) pa se nista najbolje ujela - sada radi, sada ne radi. Potem smo pa smao dali možjenšo zunanjo anteno na router 1, pa je šlo direkt. Wlan mrežna na usb pa je šlo. Če ne gre brez routerja 2, boš rabil nek AP. Je čisto dovolj. Tudi pri routerjih ni rečeno, da bo vedno šlo se priheftat (in obdržat) povezavo. Sem se kar namučil, preden sem uspel :) Še lažja rešitev - je je 100-120m potegni kabl. Jaz sem ga kar 1m pod električnim, pa mi že 5 ali 6 let dela super.  Lp ",
+    "user": "urosh"
+  },
+  {
+    "message": "S kablom je preveč dela, WLAN signal pa je bil ustrezen že zdaj, ko sem ga preizkusil z eee-pcjem. Z routerjem/AP, ki bo imel zunanjo anteno (in nekakšno pomagalo, ki bo signal usmerjalo proti routerju 1), bo signal verjetno le še boljši.  Najbolj pomembno mi je, da kupim samo eno stvar - ker ima PC 3 samo navadno mrežno kartico, mi je za novo napravico pomembno, da zna WAN signal sprejeti brezžično in ga pošiljati dalje preko LAN (po možnosti na več PCjev - za rezervo).  Če bi kupil WLAN mrežno kartico ne bi potreboval nič drugega, ker že sedaj signal routerja 1 doseže PC 3, vendar raje dam 30 evrov več za še en router (ali kakšno podobno napravo) pa je potem mir (če še slučajno pride zraven en PC, ki spet ne bo imel WLAN mrežne kartice, npr.) ",
+    "user": "dela"
+  },
+  {
+    "message": "Namesto routerja 2 kupi access point, in ga priklopi na router 1. APji so dosti dražji kot routerji. WRT54GL z dd-wrtjem pa lahko deluje tudi kot AP tako, da tukaj ne vidim razloga zakaj bi kupoval namenski AP, ki je dražji. ",
+    "user": "Spc"
+  },
+  {
+    "message": "Sem malce brskal in ugotovil, da bi za tak setup potreboval še en router, ki podpira WDS (obstoječi ga na srečo podpira). Taka WDS mreža pa s seboj prinese veliko pomanjkljivosti, zato se zdaj najbolj nagibam k WLAN kartici z zunanjo anteno za PC 3 (čemur sem se hotel na začetku izogniti). ",
+    "user": "dela"
+  },
+  {
+    "message": "Kupi to kar je napisal SPC in v DD-wrt nastavi repeater bridge. Sam imam podobno situacijo kot ti, le da so klienti na router dva priključeni brezžično. Deluje pa preverjeno tudi z žično povezavo. ",
+    "user": "jc"
+  },
+  {
+    "message": "Na tej slikci, ki si jo narisal router 2 ni v vlogi repeaterja ampak v vlogi access pointa.  Repeater pomeni, da ojača wlan signal in ga potem pošlje naprej, kot wlan.  Tako da ti ne rabiš WDS-ja. ",
+    "user": "fosil"
+  },
+  {
+    "message": "Se pravi, da lahko navaden AP wireless povezavo razdeli med wired kliente (in ne le wired povezave med wireless kliente)?  Če bi imel na \"WLAN routerju 2\" še dodatne wireless kliente (kar v mojem primeru še morda pride v prihodnosti), bi pa rabil WDS, ali še vedno ne razumem prav? ",
+    "user": "dela"
+  },
+  {
+    "message": "WDS rabiš samo v primeru če hočeš da ti WLAN Router 2 povečuje doseg (torej lastno oddaja in sprejema paketke).  Drugače preprosto WLAN Router 2 priklopiš na WLAN Router 1 kot katerkol drugi klient, ostale pa tudi in bo prav tako vse delalo, Wireless se bo obnašal kot povezava s kablom. Seveda ne pozabit izklopit DHCP na drugem routerju, drugače ti bo omrežje podrlo. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "Aha, potem se na moji shemi \"WLAN router 2\" (brez WDS in ostalih dodatkov) obnaša kot navaden ožičen switch? Le router 1 nastavim za gateway, DHCP server na routerju 2 izklopim in je to to? ",
+    "user": "dela"
+  },
+  {
+    "message": "\"Router 2\" bo moral bit v client načinu, torej WRT-54GL z dd-wrt ali tomato. Na \"router 1\" ni potrebno nič spreminjat. ",
+    "user": "Senitel"
+  },
+  {
+    "message": "Hvala! To je to, client mode rabim, je tu na začetku lepo razloženo.  Router 2 bo identičen kot router 1 - Buffalo WHR-HP-G54 - na oba pa pride tomato. ",
+    "user": "dela"
+  },
+  {
+    "message": "Zanima me ali je možno router uporabit kot repeater. In sicer v 3. nadstropju imam brezžični Cisco modem, sedaj pa bi rad imel tudi v 1. nadstropju dovolj dober signal. Doma imam viška dva routerja. Si je možno s tem kaj pomagati ali bo potrebo kupit wifi ojačevalnik? Povezava med routerjem in modemom pride v poštev samo brezžična. ",
+    "user": "G_mAn"
+  },
+  {
+    "message": "Malce sem še pobrskal po spletu in zasledil, da bi zadeva naj delovala. Imam telemachov modem in router TP LINK WR741 router. Sledil sem temu postopku: http://uk.tp-link.com/article/?faqid=227, vendar zadeva ne deluje. Kateri IP moram vpisat pod LAN IP Address oz. ter ali mi morejo spremeniti kakšne nastavitve tudi na telemachovem Cisco modemu? ",
+    "user": "G_mAn"
+  },
+  {
+    "message": "WDS med razlicni tip/proizvajalci je vecinoma no-go.Recimo zadeva ni delovala med Asusom in Tplinkom, prav tako ne med mikrotikom.  Imas tudi na tvojem linku napisano: WDS may be incompatible between different products (even occasionally from the same vendor) since the IEEE 802.11-1999 standard does not define how to construct any such implementations or how stations interact to arrange for exchanging frames of this format.  Jaz sem na vojega tplinka namestip openwrt, ki zna na enem wifi device-u delat kot client in AP. Se pravi kot wifi Client na Ciscota in nato dalje v prvem nadstrupju broadcasta nov AP. 30Mbit neta na tak nacin deluje, vec nisem sprobaval ",
+    "user": "mile"
+  },
+  {
+    "message": " mile je 24. mar 2015 ob 14:07 izjavil:WDS med razlicni tip/proizvajalci je vecinoma no-go.Recimo zadeva ni delovala med Asusom in Tplinkom, prav tako ne med mikrotikom.  Imas tudi na tvojem linku napisano: WDS may be incompatible between different products (even occasionally from the same vendor) since the IEEE 802.11-1999 standard does not define how to construct any such implementations or how stations interact to arrange for exchanging frames of this format.  Jaz sem na vojega tplinka namestip openwrt, ki zna na enem wifi device-u delat kot client in AP. Se pravi kot wifi Client na Ciscota in nato dalje v prvem nadstrupju broadcasta nov AP. 30Mbit neta na tak nacin deluje, vec nisem sprobaval   Ne spoznam se ravno na te zadeve zato bi bil zelo vesel kakšnega namiga kako to storiti, da poskusim še ta način. 30Mbit je več kot dovolj, saj v kletnem prostoru potrebujem internet le za brskanje po spletu. ",
+    "user": "G_mAn"
+  },
+  {
+    "message": "To so navodila za openwrt, imas vec nacinov delovanja, jaz uporabljam masqueraded, ker sem zelel omejiti dostop http://wiki.openwrt.org/doc/howto/clien...  prvo moras zamenjat sw na routerju za kaj bolj naprednega (original tplink tega vcasih ni podpiral) ",
+    "user": "mile"
+  }
+]

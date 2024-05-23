@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Živjo.  V accessu imam tabelo s precej podatki in ne znam spraviti teh podatkov v tako obliko kot bi jo rad. primer tabele je: 1stolpec 2stolpec izdelek1 sestava1 izdelek1 sestava2 izdelek1 sestava3 izdelek2 sestava1  in tako naprej za cca 7000 izdelkov. Rad bi pa dobil izpis v naslednji obliki: 1stolpec 2stolpec 3stolpec 4stolpec izdelek1 sestava1 sestava2 sestava3 izdelek2 sestava1 blank blank  možnost je, da ima izdelek več opisov sestave (ne vem koliko) ali pa samo enega (kar je v bistvu najmanj). Ima kdo mogoče kakšno varijanto kako priti do teh podatkov?  že v naprej lepa hvala! Plačam pivo ob prvi priliki tistemu ki tole reši. ",
+    "user": "gkovac"
+  },
+  {
+    "message": "a res moras obrnit tabelo in dodajat stolpce? tvoj problem se enostavno resi z osnovnimi SQL poizvedbami ",
+    "user": "VASkO"
+  },
+  {
+    "message": "Hja... na žalost res morm. Vem sicer da se da dobit rezultate ampak jaz jih rabim v stolpcih :( Največji razlog zakaj to rabim tako je, da imam preko 6000 zapisov v bazi. In ta rešitev po kateri sprašujem je najbolj elegantna.  Hvala,G ",
+    "user": "gkovac"
+  },
+  {
+    "message": "Sicer nisem kak SQL expert, but to my knowledge se samo z SQL tega ne da. Boš moral malce poprijeti tudi VBA oz VB/VB.NET. Na kratko, sam boš moral naredit neko funkcijo, makro ki ti bo izdelal tako tabelo.  Bojim se da je to edini način. Če pa se motim, pa bom zelo vesel, saj bom zvedel nekaj novega in zelo uporabnega o SQL.  PS: Če slučajno potrebuješ da ti to nekdo naredi je moj MSN: aaronvonshell@hotmail.com. ",
+    "user": "apachee"
+  },
+  {
+    "message": "Jaz to trivialno rešim v Excelu. Izbereš tabelo, greš v Podatki-Poročilo vrtilne tabele, levo daš stolpec 1, na vrh stolpec 2, v polje pa štej od stolpec2. Rezultat je tole:  1stolpec sestava1 sestava2 sestava3 izdelek1 1 1 1 izdelek2 1 0 0  Tam kjer je 1 pomeni, da izdelek vsebuje sestavino. Z kakšno uporabo formule pa dobiš potem tvoj željen rezultat. ",
+    "user": "dronyx"
+  },
+  {
+    "message": "Rešitev je v ukazu pivot. V MSAccessu se izvede nakako takole:  TRANSFORM Sum(izdelki.[ID]) AS VsotaodID\nSELECT izdelki.[izdelek]\nFROM izdelki\nGROUP BY izdelki.[izdelek]\nPIVOT izdelki.[sestava] ",
+    "user": "mHook"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "ZDravo, imam Genexisov router in modem. imam pa tudi negear WGR614 (že star) in bi jih rad povezal z lan kablom na katerem bi tudi deloval internet in WIFI. sedaj me pa zanimajo nastavitve na netgearu.\ngenexis router imam ip 192.168.1.254\n\nima kdo tutorial za netgear da bi deloval na njem internet s čimer sta med seboj povezana žično.\nv glavnem v router netgear bi rad dobil internet. kateri port uporabim za priklop lan kabla? wan ali lan1?",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "ve kdo? sedaj sem na drugem (netgear) nastavil DHCP OFF ter drug IP. 192.168.1.220 ter WIFI.. venddar še vedno ni interneta...",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "Imel sem sam podoben primer. Telekom Innbox - modem router ter sekundarni linksys router\nPovezano je tako: od Innboxa LAN na LAN od sekundarnega routerja. Drugi router (192.168.1.2) ima IP za enega večji kak primarni  (192.168.1.1). Sama zadnja številka ne igra nobene vloge. Primarni router preko DHCP deli adrese od 192.168.1.20 dalje. Sekundarni pa ima DHCP off. Na primarnem moraš še definirati, da naj ima tvoj sekundarni router s svojim MAC naslovom točno določen statični IP. Nastavitve sekundarnega routerja napravi brez povezave na primarnega. Pa delaj preko kable in ne preko WiFi. Zakaj pa ne vprašaj - sem delal preko WiFi pa me je nekaj za(j)ebavalo. Ko boš nastavitve obeh spravil skupaj, pa ju poveži. Ko se na sekundarnega povežem preko njegovega IP, mi kaže kot da nima povezave v svet, pa vseeno dela.\n Upam, da ti rata.\nTukaj so še navodila od linksys \n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tLinksys | Networking & WiFi Technology\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tExperience fast, reliable, secure and easy to use WiFi when you level up with connectivity solutions made for home, business, and enterprise from Linksys.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.linksys.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Borca",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "ma sm čist isto naredu in IP spremenil v ločenega...nekaj sekund deluje in potem nima internet povezave. je pa ta drugi modem povezan in switcha preko lan kabla.",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "Smola- Jaz sem pri tem skoraj živce zgubo... Na koncu sem poiskal pomoč pri sodelavcu, ki dela na tem področju. Sekundarni router res kaže, da nima povezave v svet, dela pa. Aja prestavi še kanale za WiFi obeh routerjev na ločena  eden 5 drugi 11, da se ne prekrivata. Tukaj pa se moje znanje žal konča. Upam, da ti rata.",
+    "author": "Borca",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "IP drugega routerja ne sme biti v dhcp območju glavnega routerja. Dhcp na drugem routerju izključen. GW in DNS na drugem routerju sta IP glavnega routerja. Predvidevam, da je maska 255.255.255.0, zato morajo biti prve 3 cifre obeh IP enake. Wifi pa po želji, lahko je SSID enak, tudi kanal je lahko isti, če ne boš oba gnal do fula. Povezano pa LAN-LAN.",
+    "author": "Alioth",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "WikiHow je tvoj prijatelj: How to Connect Two Routers .",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "sm vse tako naštimal..DHCP sm izklopil dodelil drug iP recimor 192.168.2.1 na drugem routerju ter nastavili WIFI in povezal v LAN  LAN. in nima interneta. DNS PA GW pa nism nastavil.",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "kater DNS vpišem? \nto je iz primarnega routerja\n\nIP Address193.77.81.126 P-t-PNetmask255.255.255.255Gateway213.250.19.90DNS Server 1127.0.0.1DNS Server 2193.189.160.23DNS Server 3193.189.177.55DNS Server 410.253.9.6DNS Server 510.253.9.8DNS Server 610.10.0.4\n",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "Pa si iz prvega routerja LAN port 1-4, skonektu na drugem ruterju na WAN/ethernet port?",
+    "author": "Smrkc",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "Pa si na drugem routerju vpisal kot gateway IP prvega routerja ???",
+    "author": "Spajky",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "Eh, ali sta oba ruterja v 192.168.2.x? Če ne, je jasno, zakaj ti ne dela. DNS in GW na drugem ruterju, kateri ima izklopljen DHCP, morata biti obvezno vpisana kot IP prvega ruterja.",
+    "author": "Alioth",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "na drugem routerju je v portu LAN. drugi router ima gateway prvega. 192.168.1.254.\noba routerja nista v 192.168.2..\nčak če prou zastopm....če imam prvi router 192.168.1.1 kolk naj ima recimor drugi?",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "Drugi mora biti 192.168.1.2",
+    "author": "Mr_NO",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "iz zgornje slike potem jeIP routerja 193.77.81.126?",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Netgear router to primar router",
+    "content": "sm raj kar kupil še en extender pa je ....s tem routerjem nikakor ne gre..",
+    "author": "blazpoglavc",
+    "author_level": "Pripravnik"
+  }
+]

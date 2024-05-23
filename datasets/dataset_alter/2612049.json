@@ -1,0 +1,116 @@
+[
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Sem naročnik Telemacha preko kabelskega omrežja. Imam njihov ruter Cisco epc3925. In včeraj sem cel dan zabil s tem, da bi uspel postaviti en klinčev VPN. Uporabljal bi ga za občasni dostop do datotek na lokalnem omrežju.\n \nIdeja je bila L2TP/IPsec. Sam ruter tega ne omogoča, zato sem to najprej želel narediti kar na Synology NASu. Iphone in Ipad se povežeta brez težav. WIN računalnik pa nikakor. Tudi nastavitev registra ni pomagala.\n\nNo potem pa sem iz omare izbrskal še enega Mikrotika. PPTP deluje brez težav, L2TP pa nikakor. Kot da omrežje/ruter nebi skozi spustilo IPseca.\n\nTelemach suport pravi, da nič ne blokirajo. \n\nA je kakšna znana težava v tej smeri? Če ne bo druge ideje bom poskusil dobiti od ponudnika samo modem in bom pač gor obesil en svoj ruter.\n\nHvala",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\n Sem naročnik Telemacha preko kabelskega omrežja. Imam njihov ruter Cisco epc3925. In včeraj sem cel dan zabil s tem, da bi uspel postaviti en klinčev VPN. Uporabljal bi ga za občasni dostop do datotek na lokalnem omrežju.\n \nIdeja je bila L2TP/IPsec. Sam ruter tega ne omogoča, zato sem to najprej želel narediti kar na Synology NASu. Iphone in Ipad se povežeta brez težav. WIN računalnik pa nikakor. Tudi nastavitev registra ni pomagala.\n\nNo potem pa sem iz omare izbrskal še enega Mikrotika. PPTP deluje brez težav, L2TP pa nikakor. Kot da omrežje/ruter nebi skozi spustilo IPseca.\n\nTelemach suport pravi, da nič ne blokirajo. \n\nA je kakšna znana težava v tej smeri? Če ne bo druge ideje bom poskusil dobiti od ponudnika samo modem in bom pač gor obesil en svoj ruter.\n\nHvala\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPPTP bi se jaz izogibal iz varnostnih razlogov. \n\nIPSec zna bit problematičen pri uporabi čez NAT, saj v osnovi ESP vrjetno ne bo šel čez NAPT pri odjemlcu, pa tudi pri port fowardingu na svoji strani moraš bit pazljiv, ker ga je treba nastavit tudi za ESP poleg UDP 500, ki se uporablja za ISAKMP. Če hočeš IPSec uporabljat čez NAT (vrjetno boš imel odjemalca pri oddaljenem dostopu večinoma za NAPT in ne na javnem IPju), moraš imet pravilno skonfiuriran NAT-Traversal in forwardiran tudi UDP 4500, ali pa uporabljat IPSec over UDP, kjer se ESP vedno enkapsulira v UDP datagram.\n\nZdaj, če ti je v prvem primeru iz iPhone in iPada zadeva delovala tudi od zunaj, dvomim, da je problem v tem, da bi operater kaj blokiral. Bo prej treba preverit konfiguracijo klienta.\n\nSicer pa je za oddaljen dostop najbolj primeren kak SSL VPN, ker imaš največ šans, da bo zadeva delovala iz katerega koli omrežja. Sam uporabljam kar OpenVPN prek TCP porta 443. Server laufam na pfSense routerju, od Telemacha pa imam samo modem (EPC3212).\n\nČe Mikrotik ni prestar, bi ga jaz v vsakem primeru raje uporabil za router in od Telemacha vzameš samo mdoem, pa še VPN boš potem lažje skonfiguriral na Mikrotiku.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Na Telemachovem ruterju sem forwardiral 1701, 500 in 4500. Sem sicer ga za test dal še v DMZ pa ni bilo razlike. Na ruterju je opcija IPSec Passthrough in imam na enable. Druga pa tam ne morem nič nastavljati.\n\nMikrotik (RB751) je za glavni ruter prestar. Sem ga sicer poflešal na zadnjo verzijo, vendar to ni to.\n\nTo da dela Iphone, WIN računalnik pa ne mi sicer ni jasno, vendar sem dejansko poskusil vse kar mi je padlo na pamet.\n\nNajbolj elegantno bi mi trenutno bilo, da na NASu (Synology DS216)  dvignem VPN. PPTP ne želim. Ostane mi L2TP (ki ne deluje) in pa OpenVPN. Tega še lahko poskusim, vendar sem se ga izogibal ker moram imeti dodatne aplikacije. Kaj pa uporabljaš?\n\nNačeloma pa ja, najbolje bi bilo en svoj ruter dodati. Ampak ta dostop uporabljam zelo redko in še to bo bolj kot ne za tale NAS. Konec koncev bi podatke lahko tudi v kak oblak selil, samo...",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\n Na Telemachovem ruterju sem forwardiral 1701, 500 in 4500. Sem sicer ga za test dal še v DMZ pa ni bilo razlike. Na ruterju je opcija IPSec Passthrough in imam na enable. Druga pa tam ne morem nič nastavljati.\n\nMikrotik (RB751) je za glavni ruter prestar. Sem ga sicer poflešal na zadnjo verzijo, vendar to ni to.\n\nTo da dela Iphone, WIN računalnik pa ne mi sicer ni jasno, vendar sem dejansko poskusil vse kar mi je padlo na pamet.\n\nNajbolj elegantno bi mi trenutno bilo, da na NASu (Synology DS216)  dvignem VPN. PPTP ne želim. Ostane mi L2TP (ki ne deluje) in pa OpenVPN. Tega še lahko poskusim, vendar sem se ga izogibal ker moram imeti dodatne aplikacije. Kaj pa uporabljaš?\n\nNačeloma pa ja, najbolje bi bilo en svoj ruter dodati. Ampak ta dostop uporabljam zelo redko in še to bo bolj kot ne za tale NAS. Konec koncev bi podatke lahko tudi v kak oblak selil, samo...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNa Windowsih je treba po mojem NAT-Traversal (ki deluje preko UDP 4500)  omogočit v registru, razen če so že kaj spremenili default nastavitve. \n\nZa OpenVPN uporabljam OpenVPN server na pfSense, ki ga laufam na virtualki. Za kliente pa uradni OpenVPN klient na Windows in iOS, na Macu pa TunnelBlick, ki deluje super. Dostopam pa uglavnem do NASa prek SMB, Plexa, kamer, RDP na Windows virtualko, pa če je treba še kaj drugega na daljavo uredit. Uporabljam pa tudi za gledanje TV in podobno iz tujine, kjer se rabi slo IP, ali pa za brskanje po spletu na kakem fishy odprtem WiFiju, da ne more ravno vsak v bližini prometa sniffat.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Jaz uporabljam IPsec Xauth PSK. To je varianta brez L2TP saj sem z L2TP imel velike težave in mi nikakor ni uspelo vzpostaviti povezave.\n\nServer teče direktno na routerju (TP-Link 1043NDv3 z nameščenim OpenWRT). Kot server uporabljam strongSwan, client pa je zaenkrat samo Android telefon (pri čemer deluje tudi Always-on VPN).\n\nV grobem moraš na firewallu odpreti 500 in 4500 UDP porta ter hkrati spustiti skozi \"esp\" in \"ah\" protokol.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Jaz imam tudi openvpn, predvsem zato, ker ga najlažje spraviš preko firewallov. Samo en port forwardiraš. Server dela pa na raspbery pi. \n\nClient na winowsih uporabljam uradni openvpn gui, na macOS tunnelblick. Na iOS napravah je openvpn app, ki deluje kot vpn provider. To pomeni, da ko instaliraš app in dodaš config, potem ne rabiš več startati aplikacije. Tunnel lahko startaš kot vse druge iz settings.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\n Sem naročnik Telemacha preko kabelskega omrežja. Imam njihov ruter Cisco epc3925. In včeraj sem cel dan zabil s tem, da bi uspel postaviti en klinčev VPN. Uporabljal bi ga za občasni dostop do datotek na lokalnem omrežju.\n \nIdeja je bila L2TP/IPsec. Sam ruter tega ne omogoča, zato sem to najprej želel narediti kar na Synology NASu. Iphone in Ipad se povežeta brez težav. WIN računalnik pa nikakor. Tudi nastavitev registra ni pomagala.\n\nNo potem pa sem iz omare izbrskal še enega Mikrotika. PPTP deluje brez težav, L2TP pa nikakor. Kot da omrežje/ruter nebi skozi spustilo IPseca.\n\nTelemach suport pravi, da nič ne blokirajo. \n\nA je kakšna znana težava v tej smeri? Če ne bo druge ideje bom poskusil dobiti od ponudnika samo modem in bom pač gor obesil en svoj ruter.\n\nHvala\n\t\t\n\t\tKlikni za razširitev\n\t\n\njaz mam na win10 + synology in deluje brez problema - L2TP\n\npo mojem imas tezave v security katere opcije imas obkljukane, se mi zdi, da je tudi mene to zezalo ",
+    "author": "tratnjak",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik tratnjak pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\n Sem naročnik Telemacha preko kabelskega omrežja. Imam njihov ruter Cisco epc3925. In včeraj sem cel dan zabil s tem, da bi uspel postaviti en klinčev VPN. Uporabljal bi ga za občasni dostop do datotek na lokalnem omrežju.\n \nIdeja je bila L2TP/IPsec. Sam ruter tega ne omogoča, zato sem to najprej želel narediti kar na Synology NASu. Iphone in Ipad se povežeta brez težav. WIN računalnik pa nikakor. Tudi nastavitev registra ni pomagala.\n\nNo potem pa sem iz omare izbrskal še enega Mikrotika. PPTP deluje brez težav, L2TP pa nikakor. Kot da omrežje/ruter nebi skozi spustilo IPseca.\n\nTelemach suport pravi, da nič ne blokirajo. \n\nA je kakšna znana težava v tej smeri? Če ne bo druge ideje bom poskusil dobiti od ponudnika samo modem in bom pač gor obesil en svoj ruter.\n\nHvala\n\t\t\n\t\tKlikni za razširitev\n\t\n\njaz mam na win10 + synology in deluje brez problema - L2TP\n\npo mojem imas tezave v security katere opcije imas obkljukane, se mi zdi, da je tudi mene to zezalo \n\t\t\n\t\tKlikni za razširitev\n\t\n\nSecurity česa?",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\nSecurity česa?\n\t\t\n\t\tKlikni za razširitev\n\t\n\ncontrol panel/network and sharing center/change adapter settings\n\ndesni gumb in properties na svoji vpn povezavi in mas zavihek security. Jaz mam:\ndata encryption: optional encryption\n\npa pri allow this protocols mam obkljukane prve tri - zadnje nimam kljukice",
+    "author": "tratnjak",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Sem sedaj dvignil OpenVPN in zadeva deluje iz vseh naprav. \nImam pa še nekaj vprašanj...\n\n\n- Na server strani lahko nastavljam v bistvu samo enkripcijo in protokol. Po defoltu je BF-CBC in SHA1. Spremenim ali je ok?\n\n- na iphonu mi aplikacija doda \"profil\" tudi v vgrajene nastavitve \"settings/VPN\". Vendar če tam poženem se ne poveže in samo \"connecting\". Če grem v aplikacijo je povezano v sekundi.\n\n- IP s katerim se po povezavi predstavljam navzven ostane lokalni (recimo od mobilnega operaterja) in ne tisti, ki bi ga želel (domači). Tu moram verjetno konfiguracijski fajl kaj popraviti?\nHvala",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "meni pri L2TP dela vse to po default - se pravi, da je gateway domaci IP in poveze se tudi zelo hitro.\n\nAja mogoce se to - prvo sem imel druge open in pptp, ampak mi veckrat na kakem w-lanu teh dveh ni spustilo skozi. Z L2TP pa do zdaj nisem imel nikjer tezav",
+    "author": "tratnjak",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Za IP, moraš popraviti routing. Lahko daš v client config:\n\nredirect-gateway def1\n\nAli v server config:\n\npush \"redirect-gateway def1\"\npush \"dhcp-option DNS 8.8.8.8\"",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\n Sem sedaj dvignil OpenVPN in zadeva deluje iz vseh naprav. \nImam pa še nekaj vprašanj...\n\n\n- Na server strani lahko nastavljam v bistvu samo enkripcijo in protokol. Po defoltu je BF-CBC in SHA1. Spremenim ali je ok?\n\n- na iphonu mi aplikacija doda \"profil\" tudi v vgrajene nastavitve \"settings/VPN\". Vendar če tam poženem se ne poveže in samo \"connecting\". Če grem v aplikacijo je povezano v sekundi.\n\n- IP s katerim se po povezavi predstavljam navzven ostane lokalni (recimo od mobilnega operaterja) in ne tisti, ki bi ga želel (domači). Tu moram verjetno konfiguracijski fajl kaj popraviti?\nHvala\n\t\t\n\t\tKlikni za razširitev\n\t\n\nGlede enkripcije je AES-256-CBC boljša opcija, za auth digest pa uporabi SHA512 (tudi SHA256 bo ok).\n\nDa bo šel internet promet čez VPN, pa je potrebno v config OpenVPN strežnika dodat opcijo, da potisne privzet prehod odjemalcu. Pri native konfiguraciji za OpenVPN je to relativno simpl z opcijo redirect-gateway. Ne vem pa, kako je z nastavitvami na Synologyu. \n\nGlede na to, da Synology ni tvoj \"primarni\" router, ki bi delal tudi NAT in routal promet naprej, bi moral v tem primeru še routerju povedat, da naj dela NAT tudi za naslove IP, ki jih dobijo VPN klienti, in mu povedat, da se ti naslovi dosegljivi preko Synology (statična ruta za range, ki ga uporablja Synoology za VPN), da bo znal prvilno usmerit povratni promet. Drugo opcija je, da bi Synologyju nastavil, da dela NAT za VPN kliente, če se to da nastavit.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik tratnjak pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\nSecurity česa?\n\t\t\n\t\tKlikni za razširitev\n\t\n\ncontrol panel/network and sharing center/change adapter settings\n\ndesni gumb in properties na svoji vpn povezavi in mas zavihek security. Jaz mam:\ndata encryption: optional encryption\n\npa pri allow this protocols mam obkljukane prve tri - zadnje nimam kljukice\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVse kombinacije poskusil in ne gre.",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik tratnjak pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\nSecurity česa?\n\t\t\n\t\tKlikni za razširitev\n\t\n\ncontrol panel/network and sharing center/change adapter settings\n\ndesni gumb in properties na svoji vpn povezavi in mas zavihek security. Jaz mam:\ndata encryption: optional encryption\n\npa pri allow this protocols mam obkljukane prve tri - zadnje nimam kljukice\n\t\t\n\t\tKlikni za razširitev\n\t\n\nVse kombinacije poskusil in ne gre.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKot sem prej napisal, je vrjetno problem, da na klientu ni omgočen NAT-Traversal... Security pa mora bit nastavljen tako, kot je na strežniku.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik igi pravi:\nVse kombinacije poskusil in ne gre.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nlahko odpres testnega uporabnika pa se probam jaz povezat, da vidimo al je v win10 tezava, ce tudi meni ne dela je pa verjetno tezava pri tebih v nastavitvah",
+    "author": "tratnjak",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Na Telemachovem ruterju sem našel:\n\nIP Address Pass-through \nThis page allows you to add/delete passthrough CPEs (bypass NAT).\n\n\nIn seveda zadeva sedaj deluje tudi preko L2TP. To pa pomeni, da za NAS niso več odprti samo trije porti ampak malce več...",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik dune pravi:\n Za IP, moraš popraviti routing. Lahko daš v client config:\n\nredirect-gateway def1\n\nAli v server config:\n\npush \"redirect-gateway def1\"\npush \"dhcp-option DNS 8.8.8.8\"\n\t\t\n\t\tKlikni za razširitev\n\t\n\nDodal v configuracijo: redirect-gateway def1 in deluje kot sem želel\n\nza DNS imam pa po defoltu \"pull\". A bi bili bolje, če bi jih določil?",
+    "author": "igi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Telemach in VPN, ki ga ne uspem spravit skupaj",
+    "content": "Če ti dela ni treba. To je bolj opcija, da lahko bypasaš kake dns blokade.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  }
+]

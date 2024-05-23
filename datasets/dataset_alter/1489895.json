@@ -1,0 +1,74 @@
+[
+  {
+    "ctx": "Zaflešan router",
+    "content": "Imam router linksys wrt54gl. Hotel sem ga nadgraditi z dd-wrt, napisalo je da nadgradnja ni bila uspešna. Ko sem ga resetiral po sistemu 30/30/30 ga ne morem več zbuditi nazaj. Na hitro utripa samo power lučka, druga lučka nobena ne utripa. Ne morem v nastavitve routerja preko 192.168.1.1. ker se ne pojavi niti okno za vpis gesla. Lahko pa ga pingam. Kakšna rešitev?",
+    "author": "slr",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "http://www.dd-wrt.com/wiki/index.php/Recover_from_a_Bad_Flash",
+    "author": "Roby",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Od tega sem probal samo večkratno resetiranje pa ni bilo nič bolje.\n\nSedaj bom probal še z TFTP.\n\nMogoče še kakšna konkretna izkušnja?",
+    "author": "slr",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Jest sem ga rešil s tftp-jem. S tem ti bo 100% delalo.",
+    "author": "Roby",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "drgač ga pa lahko še \"prepinaš\" in ga tko zbudis...",
+    "author": "R0KY",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Eni ruterji imajo tudi priložen softver za take primere, na CD-ju.\nPreveri, če imaš kaj takega.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Fixing a Bricked Linksys Router:\nNote: If you have attempted a flash update and it failed, this tutorial is for you. Before proceeding, disable any wireless connections. We will be working via a wired port to communicate and repair the broken Linksys router. I have personally tested this tutorial on Linksys WRT54G and Linksys WRT600N routers.\n1.\tDownload known working firmware for your Linksys router. Rename the bin file to works.bin and move it to your desktop\n2.\tConnect your PC to the broken Linksys router via an Ethernet cable\n3.\tNavigate to Start-&gt;Control Panel-&gt;Network Connections and double click the Local Area Connection icon. Click the Properties button and double click Internet Protocol (TCP/IP) from the list\n4.\tClick the option to Use the following IP address: and set it up as follows and then click Ok:\no\tIP address: 192.168.1.10\no\tSubnet mask: 255.255.255.0\no\tDefault gateway: 192.168.1.1\n5.\tNext, navigate to Start-&gt;Run and type cmd and click Ok\n6.\tRepeat step 4. You should now have two command windows open\n7.\tFrom the first command window type cd Desktop and press enter. Next, type PING -t 192.168.1.1 but DO NOT PRESS enter yet\n8.\tFrom the Second command windows type cd Desktop and press enter. Next, type tftp -i 192.168.1.1 PUT works.bin but DO NOT PRESS enter yet\n9.\tFrom the first command window press enter. Immediately following, press enter from the second command window\n10.\tAfter the firmware has been uploaded, you should be able to reset your Linksys router and log into the Linksys admin panel\n\n\nSem poskusil to pa ni šlo. V dos oknu napiše da gornji ukaz ni prepoznan kot notranji ali zunajji ukaz, izvedljiv program oz. paketna datoteka.\n\nŠe kak predlog mogoče?",
+    "author": "slr",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "A je mogoče kje na celjskem kakšen dober servis za te zadeve?",
+    "author": "slr",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Windows nima TFTP. To je problem s PC-jem, ne pa ruterjem.\n\nKako dobiš TFTP ponavadi piše zraven navodil.\n\nEvo:\n\nVista and Win7 command line TFTP: You need to enable it in Control Panel -&gt; Programs and Features -&gt; Windows Features -&gt; check mark: TFTP Client",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Tole dela 10000%. Ze resil s tem.",
+    "author": "DJ_Beat",
+    "author_level": "Dacar"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Lahko me kontaktiras",
+    "author": "baldrick",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Zaflešan router",
+    "content": "Popravljeno\n\nZ enim malim programčkom, ki se imenuje upgrade firmware sem preko mrežne in utp kabla na router prekopiral nazaj originalni software, ki sem ga dobil na domači strani od Linksysa. Potrebno je bilo še resetirati router in je delovalo.  V router sem se lahko normalno prijavil.  Tudi lučka ne utripa več ampak gori tako kot mora. Gori tudi rumena lučka, ki prej ni.",
+    "author": "slr",
+    "author_level": "Pripravnik"
+  }
+]

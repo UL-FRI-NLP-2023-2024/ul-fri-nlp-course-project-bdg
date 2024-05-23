@@ -1,0 +1,142 @@
+[
+  {
+    "message": "v katerih programskih jezikih se programirajo krmilniki ala Siemens, PIC ipd.? kmal mi bo to ratalo aktualno na faxu in bi se rad malo vnaprej pripravil.   na vsake toliko casa bi pa rabil tudi kako win app (primarno za fax)... ",
+    "user": "Loki"
+  },
+  {
+    "message": "Ja C al pa asembler. Čeprov za fax boš uporablu asembler. PIC -> v MPLABU ... ",
+    "user": "Tutankhamun"
+  },
+  {
+    "message": "Siemens ne vem če ima samo mikrokrmilnike, vem pa, da ima PLCje, ki se programirajo v Simatic Step 7.   Siemensov PLC ",
+    "user": "Jackal"
+  },
+  {
+    "message": "siemens sem dal samo kot referenco, je enega takega navedel profesor na faxu. tocno v cem bomo delali, ne vem. bom pa mehatronika, LJ (v okviru fs). kako naj se pa lotim vsega skupaj? kje priceti?  za gui bi prisel prav .net, za plc c ali ass. kje priceti?  prejsnih izkusenj z programiranjem imam samo toliko, da lahko recem, da poznam osnove (variable, konstante, loop, pogojni stavki (brez pointerjev sicer). ",
+    "user": "Loki"
+  },
+  {
+    "message": "Mi smo delali letos (1. FE UNI) z motorolami in so precej enostaven mikrokontroler za začetnike. Drugače pa bi ti priporočal PIC, z AVRji nimam izkušenj. Prav tako bi ti svetoval, da začneš programirati v assemblerju, saj spoznaš arhitekturo mikrokontrolerjev, kasneje pa lahko preideš na kakšen višji jezik (C, Basic, ...), kjer ti bo znanje assemblerja včasih precej prav prišlo. .NET še nisem videl v svetu mikrokontrolerjev... Je pa po mojem vseeno s katerim mikroprocesorjem začneš. Ko enkrat spoznaš, kako stvari funkcionirajo, se precej hitro prilagodiš na druge, podobne, ki jih boš potreboval na faksu/delu/... ",
+    "user": "neoto"
+  },
+  {
+    "message": "PLC pa C? To pa žal ne gre skupaj. PLCji se programirajo z ladderjem.    Ladder programming  Se pa ti PLCji bolj uporabljajo v industrijskih okoljih za upravljanje kakšnih naprav. ",
+    "user": "Jackal"
+  },
+  {
+    "message": "mislil sem pic. ",
+    "user": "Loki"
+  },
+  {
+    "message": "@Loki: jest sem tudi mehatronik 5. letnik FS v Lj (še malo pa bo konc!!!!! ) Če si na FS v Lj. potem boš v okviru mikroprocesorskih sistemih 1 spoznal atmela 2051, ki ga boste programirali v assemblerju. Pri mehatronskih sistemih pa si pač lahko vzameš kakršen koli mikrokontroler, moja osebna preferenca je PIC, nekdo drug pa ti bo kaj drugega predlagal (AVR-e od Atmela ali pa kaj podobnega), pač kar ti je ljubše. Itak je pa to stvar navade. Pri mehatronskih sistemih vam bo asistent pokazal Atmelove AVR-e in boste delali na njih (interface z standardno tipkovnico, LCD ekrančkom ipd.) v C-ju (SDCC, ki je open source zadevščina in je kar ql!).  Kar se tiče GUI-jev boste v glavnem delali z Borland Builderjem (C++) in DevC++-em.  Če \"rabiš\" kaj več mi pošlji pod ZS.  Ajde! ",
+    "user": "ql000"
+  },
+  {
+    "message": "...PLC pa C? To pa žal ne gre skupaj. PLCji se programirajo z ladderjem....   Pravzaprav bi moral napisati drugače Med PLC-ji ter mikrokontrolerji je namreč ogromna razlika.   PLC je pravzaprav gotov sklop elektronike, ki je sestavljen iz CPU (centralne procesne enote+ spominske enote) ter vhodno izhodnih modulov. Vhodi so prirejeni tako, da na njih lahko direkno vežemo razne druge industrijske sklope (stikala, sonde, razne dajalnike, displeje ) enako je z izhodi.  Programskih \"jezikov\" je več. Kot je bilo že omenjeno velika večina podpira ladder, običajno pa še FBD ter STL. Od naštetih je FBD najvišji. Program izgleda kot narisan z logičnimi vezji. STL je nekako podoben assemblerju.   Mikrokontroler je elektronski element, ki praktično vsebuje podobno periferijo kot PCL.Le tukaj neposredno na njega lahko priklapljamo ostale elektronske elemente. ",
+    "user": "16F84"
+  },
+  {
+    "message": "kje naj zacnem z ucenjem assemblerja?  kar z mplab ide od microchipa (simulator za pic)? i386 arhitektura? in kje dobim kaj literature? ",
+    "user": "Loki"
+  },
+  {
+    "message": "Ker se sam tudi \"matram\" z assemblerjem na PIC -ih ti lahko svetujem, da si za začetek kupi kakšno knjigo na to temo. Ena zelo dobra je PIC mikrokontroleri založbe Mikro (Srbohrvaščina), kjer ti lepo razložijo arhitekturo najpopularnejšega amaterskega PICA 16F84A.   Drugače lahko obiščeš kakšen soroden forum recimo  Maxi, kjer sodeluje en kup ljudi ki res vedo kaj delajo. Imaš teme kako začeti, primere kode, seznam hardwera, ki ga potrebuješ ....  MPLAB je predvsem zelo dobro razvojno orodje, ki omogoča razvoj programov v asemblerju popolnoma zastonj, lahko ga pa nadgradiš z plačljivim C kompajlerjem. Zna simulirati hardware večino PIC-ev, in ima zelo dober tekst editor za pisanje.  Ko boš hotel svoje remek delo spraviti na PIC boš rabil še programator.   Vse pa se začne pri izbiri PIC-a, s katerim boš začel. Za začetek je 16f84a sigurno najprimernejši, ker po internetu ravno za tega dobiš največ informacij. Potem je treba preučiti PDF, ki ga je proizvajalec Microchip pripravil za ta PIC, in lahko začneš tipkat. ",
+    "user": "Highlag"
+  },
+  {
+    "message": "Pusti PICe in asembler pri miru, skoda casa. Omisli si kaksen AVR (recimo atmega8) in kar zacni z Cjem (no zaradi mene lahko tudi na PICu). C se lahko ucis tudi na PCu. Asembler se lahko ucis sproti, ko bos potreboval dolocene prijeme za resitev nekaterih problemov. ",
+    "user": "slawc"
+  },
+  {
+    "message": "To s C-jem ni ravno najboljši namig. Meni je velikokrat pomagalo hitro rešiti problem v C-ju z znanjem assemblerja. Zanimivo, da celo na faksu smo najprej v assemblerju delali, pa šele potem šli na C. Izbira mikrokontrolerja je pa njegova izbira. Na eni strani imaš AVR tabor, ki svoje hvali, na drugi pa PIC tabor, ki prav tako misli, da je najboljši...  AVR-ji so poceni, PIC-i se uporabljajo več v profesionalne namene (zakaj, ne vem) in so malce dražji. Programatorji za AVR-je so ponavadi enostavnejši.  Sam nekako preferiram PIC-e, začetnik se lahko znebi stroškov s tem, da se registrira pri Microchip-u in naroči vzorce (sample) PIC-ev (do 12 PIC-ev na pošiljko, do 2 pošiljki na mesec). Mislim pa, da ene pošiljke ne boš porabil nekaj mesecev... ",
+    "user": "neoto"
+  },
+  {
+    "message": "Tukaj se povsem strinjam z neoto-om. Kaj zbrati PIC - AVR je stvar posameznika. Kot je omenil neoto na eni strani imaš AVR tabor, ki svoje hvali, na drugi pa PIC tabor.... podobno kot pri avtomobilih Nemci - Japonci pa telefoniji Simobil - Mobitel ...  Kot je tudi omenil neoto pic je za malenkost dražji, pozitivna plat je da je assembler s svojimi 35 instrukcijami izredno enostaven ter se ga da osvojiti v izredno kratkem času. Razlaga zakaj se PIC-i več uporabljajo za \"profesionalne\" namene je zelo preprosta. Familija šteje vrjetno krepko preko sto članov, ki se razlikujejo pred vsem po vgrajeni periferiji. Torej imaš veliko večo možnost izbrati točno tistega, ki ti ustreza za določeno aplikacijo. Eostavno povedano zakaj bi izbral recimo 40 pinsko \"raketo\" če v aplikaciji potrebuješ le 10 pinov. ",
+    "user": "16F84"
+  },
+  {
+    "message": "Osnova mora vsekakor bit assembler (lahko preverite moje poste za nazaj ko sem reševal neke probleme s picom v C-ju)! Jaz sem ta del izpustil in sem imel kar nekaj problemov. Določene zadeve lahko v assemblerju hitreje rešiš kot v C-ju in obratno! Npr. za aritimetiko je boljš C, po drugi strani pa za časovno občutljive zadeve rabiš assembler. Pa finta C-ja za mikorkontrolerje je, da assemblerska koda (*.lst fajl) približno 2-3x daljša kot pa če bi isto kodo pisal direkt v assemblerju. ",
+    "user": "ql000"
+  },
+  {
+    "message": "Pa če boš uporabljal v prihodnosti CCS-ov C prevajalnik za PIC-e je znanje assemblerja nujno! Določene stvari se ne prevedejo čisto tako, kot bi hotel in napako najhitreje odkriješ ravno v assemblerski kodi, ki jo prevajalnik izpljune. ",
+    "user": "neoto"
+  },
+  {
+    "message": "a poj se ucim assemblerja kar na pic simulatorju? ali bi bil dober tudi recimo kaksen star x86 ali kaj takega? (bi rad cimbolj univerzalno znanje).  kaj pa tiste motorole 8083 (ali kakorkoli ze), ki se jih ucijo v ss? ",
+    "user": "Loki"
+  },
+  {
+    "message": "Assembler ni nek univerzalni jezik. Je le neka človeku bolj razumljiva podoba strojne kode. Različni procesorji imajo različne registre, pomnilnike, ukaze,... x86 ima z mikrokrmilniki bolj malo skupnega. Imajo stotine ukazov, ki so precej specializirani. PIC je pa npr. RISC procesor (reduced instruction set controller). Večina PIC-ev družin 10, 12, 14 in 16 ima okoli 35 ukazov, 18 serija jih ima nekaj čez 70. Mi smo na faksu delali z motorolami HC11, ki so prav tako RISC procesor.  Tako da, če misliš delati v prihodnje z mikrokontrolerji odmisli x86 assembler... (samo nasvet), če pa misliš pisati programe za PC-je pa je ponavadi enostavneje delati s kakšnim c-jem. ",
+    "user": "neoto"
+  },
+  {
+    "message": "neoto: kaj je profesionalno? Od kje ti informacija:\" PIC-i se uporabljajo več v profesionalne namene...\". Rad bi vedel kako si prisel do tega. To, da imajo nevem kaksno familijo ne predstavlja nic. PICi imajo tako familijo zato, ker so na trgu ze zelo dolgo.   AVR sem omenil zaradi cene, enostavne in zelo zmogljive arhitekture, ki ne ovira programerja pri delu tako kot npr. PIC z npr. strojnim stackom, ter zaradi 100% brezplacnega razvojnega okolja (simulator, programator, asembler, C prevajalnik, debuger,...). Lahko bi pac omenil katerega drugega, vendar pri nas niso ravno najbolje zastopani (tezko jih dobis in razvojna orodja bolj niso kot so). Jasno je, da je vsak mikro namenjen svoji nalogi. Ce bi hotel predstaviti zmagovalca bi omenil nekaj popolnoma drugega.   Na faksu tisijo asembler samo zaradi pedagosko-zgodovinskih razlogov. Sole je povozil cas, danasnji sistemi so prevec kompleksni, da bi se jih resevalo z asemblerjem. Pa pustimo enostavne stvari, ki so pravzaprav vec ali manj solski primeri kako sploh vklopiti stvar.  Loki, hoces univerzalnost? Upostevaj moj nasvet. Ti bo bolj koristilo, ce bo iskal sluzbo. Ne izgubljaj casa z ucenjem asemblerja. Raje se nauci programirat. Ta cilj bos dosegel prej s Cjem, pa sploh ni pomembno ali bos uporabil ta ali oni mikro, ma kaj ... se na PCu bos lahko delal. Ne bos se ukvarjal s tem kam shranit kaksno spremenljivko, kateri ukaz bi bilo bolje uporabit itd. da o nepreglednosti ne govorim. Asembler je bil vcasih edina stvar, ker prevajalnikov ali ni bilo ali pa so bili preslabi. Pazi! Kot sem napisal, znanje asemblerja je pri mikrokrmilnikih seveda obvezno, vendar to pocni raje sproti. Ker ko bos izpopolnil programiranje do neke mere, bos opazil da nekatere stvari enostavno ne mores narediti drugace kot pa pes (recimo startup koda, hitri matematicni izracuni, ...). Videl bos, da bo nek drug mikro za dolocene naloge enostavno boljsa izbira kot pa \"trenutni\" (cena, poraba, zmogljivost, periferija,...). Kaj bos potem? Se spet ucil asembler za drugi mikro? NNe, za \"trenutnega\" bos napisal lepo strukturiran program v Cju, locil bos arhitekturno odvisno kodo od neodvisne. Z zelo malo spremembami bos v kratkem casu popolnoma presaltal drugam.   neoto, hc11 ni RISC. In malo ukazov je lahko prej slabost kot prednost. V primeru PICa pa sploh, clovek bi pricakoval da bo teh malo ukazov izvrseval zelo hitro (kar je smisel RISC arhitekture), pa jih ne. ",
+    "user": "slawc"
+  },
+  {
+    "message": "Ja, moja napaka pri HC11... Še vedno pa ima veliko manj ukazov kot kakšen x86... Drugače pa glede hitrosti izvajanja pri PIC-ih: za 1 ukaz pač potrebuje 4 urine cikle zaradi same arhitekture. Izvedejo se pa vsi (razen vejitvenih) v enem ciklu. Če potrebuješ hitrost posežeš po novejši familiji 18F... ali dsPIC. Razvojno okolje za PIC je zastonj, prav tako simulator (ki je že vgrajen v MPLAB), zastonjski C prevajalnik prav tako obstaja , a ima tudi tako kot pri AVR-jih omejitev v velikosti programa. Za programatorje se pa strinjam, da jih je malo težje dobit, a se vse da, če ima človek voljo. Drugače pa praviš, da imajo PIC-i strojni stack in da te ovirajo pri delu (assembler?) po drugi strani pa praviš, da naj piše v C-ju, kjer te takšne stvari čisto nič ne motijo. Takole bi lahko šlo v nedogled. Eni bi hvalili svoje, drugi prav tako. Odločitev je njegova. ",
+    "user": "neoto"
+  },
+  {
+    "message": "C prevajalnik je za AVR popolnoma brezplacen in je brez omejitev, dela tako za windows kot za linux.    Drugače pa praviš, da imajo PIC-i strojni stack in da te ovirajo pri delu (assembler?) po drugi strani pa praviš, da naj piše v C-ju, kjer te takšne stvari čisto nič ne motijo.  Rekel sem malce drugace. Nisem pogojeval ene stvari z drugo. Nekaj pa je res: v Cju se implementacija skrije, tvoje delo je omejeno na resevanje problema nekega algoritma. S tega stalisca je vseeno kateri mikrokrmilnik izberes. Kasneje pa pride tudi do tega, da zaradi arhitekture nekatere stvari ne morejo biti optimalno izvedene ali pa moras uporabiti neke cudne resitve, logicna resitev je izbira mocnejsega clana kar povlece za sabo visjo ceno. Kaj pa ce boljsega clana ni? Kaj pa je cena previsoka? Hja... to me definitivno moti.   Dokoncno: vseeno kateri mikrokrmilnik je izbran. Razmisljanje o izbiri mikrokrmilnika na podlagi stevila ukazov v asemblerju je pa popolnoma zgreseno. ",
+    "user": "slawc"
+  },
+  {
+    "message": "Dokoncno: vseeno kateri mikrokrmilnik je izbran. Razmisljanje o izbiri mikrokrmilnika na podlagi stevila ukazov v asemblerju je pa popolnoma zgreseno. Tukaj se čisto strinjam s teboj. ",
+    "user": "neoto"
+  },
+  {
+    "message": "Časovno kritične zanke in natančne timinge je po moje treba pisat v assemblerju. Ampak to je ko smo pri mikrosekundah :)  Mislim pa da vsi C compilerji omogočajo vključevanje asm kode, tako da je volk sit in koza cela  V C-ju se veliko lažje napiše berljivo kodo in ti ni treba gruntat in iskat raznih knjižic za kakšne malo bolj zapletene matematične izraze.  Mogoče ti assembler da boljše razumevanje delovanja in strukture samega čipa, kar ti pomagati tudi pri pisanju boljše C kode!  Zaenkrat sem programiral le s PICi... MPLAB (dobiš na http://www.mircochip.com) je super zadeva, tudi dokumentacija imajo super... programator narejen doma, program za pisanje v čip pa :  Oshon PIC programmer.   No ko smo glih pri tem, da ne bom iskal ko/če se bom loteval AVRjev in da ne rabim spet celega interneta okol obrnat. program za pisanje C in/ali ASM kode, simulator? programator? program za pisanje v čip? dokumentacija? ",
+    "user": "snow"
+  },
+  {
+    "message": " Winavr  Avrstudio  PonyProg  Prvi link vsebuje vse kar potrebujes (ce uporabljas Linux pa poklikaj linke na source), vendar raje uporabljam AVRStudio za prenos kode, nastavitve bitov in JTAG debug (fake varianta, vendar dela). Ponyprog je pac alternativa za download kode. ",
+    "user": "slawc"
+  },
+  {
+    "message": "@slawc: kako je z AVR-i na Linuxu? Obstajajo grafična orodja za programiranje ali so še v konzoli?  Jaz za programiranje PIC-ov na Suse-ju uporabljem PIC C Compiler, ki laufa preko XOverOffica (C koda) za programiranje pa en kar ql program (gr4fični) samo sem pozabil kako se mu reče (nisem v Lj trenutno, tak da ne morem pogledat). Zadeve kar laufajo, sam v Linuxu pogrešam en tak program kot je IC-prog za zapečt program v čip (laufa na winsih). ",
+    "user": "ql000"
+  },
+  {
+    "message": "He, he zanimiva debata, kot vedno ko se začne tovrstna \"vojna\" ;) Naj povem,da nisem nikakršen zagovornik PIC. O njem pišem z razlogom, ker jih sorazmerno dobro poznam. Eden iz med razlogov, da je pic precej razširjen je sigurno ta, ki ga je omenil Slawc, da je bil zelo hitro na trgu. Velik del uporabnikov, ki so takrat začeli delati z njim je pač ostalo na njem. Sorazmerno temu je verjetno tudi Microchip prisluhnil potrebam uporabnikov. Sicer si ne znam razlagati zakaj so izdelali toliko različnih tipov, ki se recimo razlikujejo le po \"malenkostih\" - recimo po količini pomnilnika - cena pa ni dosti različna (individualnemu uporabniku, ki potrebuje par kosov)   Aseembler: Vsekakor se strinjam z Slawc-em, da število instukcij ni merilo za izbiro mikrokontrolerja. Omenil sem le, da je assembler zaradi malo instrukcij izredno enostaven za učenje. Prej bi celo rekel, da je malo instukcij slabost. Konec koncev je ravno zaradi tega potrebno napisati več kode...in višji jeziki so napisani z nižjimi... spet je kode več...postaja problem programski pomnilnik, brzina, časovno odvisne aplikacije. Tisti Picbasic mislim, da se ni kaj prida prijel.  Zaradi malo instrukcij so nekatere tudi \"nerodne\". Primer; Nujno potrebna in \"nerodna\" asemblerska instrukcija katero drugi assemblerji mislim da obravnavajo drugače je recimo btfss (btfsc) REGISTER,bit Povedano po slovensko: Če je bit v REGISTR-u postavljen, preskoči sledečo vrstico. A če ni in želimo tok programa spremeniti? Tja bomo napisali \"goto\" ali \"call\". (spet dve instukciji, ki bosta \"požrli\" dva ukazna ciklusa) A to res niso mogli spraviti v eno instrukcijo, ki bi se \"glasila\" \"Če je bit postavljen, nadaljuj s programom sicer 'idi tja' ?\" Tudi arhitehtura serije 12x ter 16x je precej nerodna. Ne vem zakaj so si umislili registre v več bankah, pa programski pomnilnik v več straneh? ",
+    "user": "16F84"
+  },
+  {
+    "message": "Mislis na IDE ali software za \"download\" hex kode? IDE programov za Linux je kar nekaj, kar se pa tice downloaderjev bo pa bolj tezka. Nikoli vec nisem iskal kaj takega od kar sem presaltal razvoj iz Solarisa na Win. AVRdude je sicer konzolna aplikacija in ce ga potrebujem, ga poklicem kar iz editorja (pac napises parametre). Napisati GUI za samo to aplikacijo to ni problem, cudno da se nihce se ni spomnil. Verjetno zaradi pomanjkanja casa ali pa se jim zdi nepotrebno (ce pac poklices iz IDE ali editorja - podas parametre in puf).  16F84: temu se rece conditional executing. Ves katero jedro na veliko izkorisca take zadeve? ARM!  Zgodovinski razlogi vedno kaj zaserjejo (poglej x86). scasoma jih le uspejo premagati, svoj cas z resevanjem teh tezav pa resis tako, da jih prepustis drugim npr.prevajalniku. Aja, se nekaj. Vcasih je odvisno od prevajalnika ali bo znal spacati kaj koristnega tudi za najmanjse clane. Ponavadi obstajajo neke minimalne zahteve, da bo program napisan v Cju sploh delal v nekem mini sistemu. S tega stalisca je znanje asemblerja obvezno. ",
+    "user": "slawc"
+  },
+  {
+    "message": "Mislil sem v splošnem IDE za vsako operacijo pri delu z mikrokrmilniki. Za linux vem, da je kar nekaj zadev, sam so običjano rahlo buggy, vsaj tisto programje z GUI-jem; v konzoli pa itak, da skor vse laufa. Samo glede na to kako se zadeve razvijajo bi lahko že proizvajalci uC-jev začeli delat programje tudi za linux! ",
+    "user": "ql000"
+  },
+  {
+    "message": "Še moja zaključna misel.  Osebno bom, kljub nekaterih slabosti ostal na picu še naprej, ker zadostuje mojim potrebam, ga soraznerno dobro poznam, imam vse potrebno za programiranje. Mika me sicer poskusiti philipov LPC, o katerim je bilo kar precej napisanega na forumu na maxi-ju. Mogoče čez zimo...  lp Silvo ",
+    "user": "16F84"
+  },
+  {
+    "message": "men je na začetku zelo prav prišla tale internetna stran  delal pa PIC in BASIC  se pa počas učim mal še C ",
+    "user": "damo123"
+  },
+  {
+    "message": "Za popolnega začetnika je uporabna knjiga Programirajmo PIC mikrokontrolerje, od AX elektronike. Najdeš  tukaj.  LP ",
+    "user": "iso2000"
+  },
+  {
+    "message": "V MB na FERI-ju se načeloma tudi dela z PIC-i. Pa tudi z H8 se nekaj dela...  Jaz sem prej delal veliko z PIC-i in asemblerjem. Zdaj pa sem skoraj da že čisto preklopil na ti tu maš  MSP serijo. Ti uC niso namenjeni programiranju v asemblerju. Gre pa tudi. No ampak še vedno kako zadevo realiziram tudi z PIC-om. Atmela nisem nikoli uporablaj zato tudi o njem nic ne vem... No pri MSP-jih je lotanje malo težje ker ni DIP-astih ",
+    "user": "radiator"
+  },
+  {
+    "message": "@neoto: Sam nekako preferiram PIC-e, začetnik se lahko znebi stroškov s tem, da se registrira pri Microchip-u in naroči vzorce (sample) PIC-ev (do 12 PIC-ev na pošiljko, do 2 pošiljki na mesec). Mislim pa, da ene pošiljke ne boš porabil nekaj mesecev...  Kaj se ti je mogoče kdaj zgodilo, da bi imel kakšne probleme s carino? Vem, da so vzorci zastonj, toda v nekaterih temah sem bral, da so nekateri imeli kljub temu določene probleme. Toda sedaj se ne spomnim od katere firme so bili vzorci. ",
+    "user": "egomez"
+  },
+  {
+    "message": "Do zdaj jaz še nisem imel problemov s carino. Microchip odpošilja vzorce iz podružnice v Angliji (torej znotraj EU), Dallas-ove čipe pa sem tudi brez problema dobil. Je pa imel probleme kolega z Motorollinimi senzorji. ",
+    "user": "neoto"
+  },
+  {
+    "message": "Dallas/ Maxim tudi pošilja iz UK. Pa tudi od ti-ja sem dobil sample brez tezav. In to v 3 dneh iz USA. ti plačal tudi carino!  če še gdo ne ve ti = texas instruments :) ",
+    "user": "radiator"
+  }
+]

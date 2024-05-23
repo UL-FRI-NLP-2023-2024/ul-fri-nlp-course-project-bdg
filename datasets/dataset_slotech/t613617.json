@@ -1,0 +1,134 @@
+[
+  {
+    "message": "Zanima me, v kateri port je potrebno izvrtati luknjo v požarnem zidu, da lahko (iz precej konzervativne mreže) z rsync-om vlečeš datoteke iz strežnika (zgolj rsync, brez ssh-ja). Rsyncd sicer posluša na portu 873. Ali to pomeni, da mora biti odprt isti port na klientu? Če z wiresharkom pogledam promet, se rsync lokalno poveže na \"kar nek naključen port\" (nekje nad 64.000).  Admina sem prosila, če mi odpre rsync, pa me sprašuje, kateri port naj odpre in po katerem protokolu. Protokol je verjetno kar TCP? Sama se na požarne zidove ne spoznam dovolj, da bi vedela odgovor ali da bi znala najti odgovor na googlu brez parih ur študiranja tematike. ",
+    "user": "mojca"
+  },
+  {
+    "message": "Tcp 873. ",
+    "user": "s6c-gEL"
+  },
+  {
+    "message": "Hvala. So mi razložili, da se na požarnem zidu filtrira glede na \"destination port\" in da \"source port\" nima veze. Ta podatek mi je manjkal. Tisti \"naključen port\" me je zmedel, zdaj razumem.  Mi pa admin noče odpreti porta, ker ne ve, če je varno (in ker se tega niso učili na Microsoftovih TMG in ostalih certificiranjih). ",
+    "user": "mojca"
+  },
+  {
+    "message": " mojca je 1. jul 2014 ob 20:24 izjavil:Mi pa admin noče odpreti porta, ker ne ve, če je varno (in ker se tega niso učili na Microsoftovih TMG in ostalih certificiranjih).  Predlagaj mu, da ti po potrebi ročno pošilja datoteke. ",
+    "user": "black ice"
+  },
+  {
+    "message": "Mojca, ne uporabljaj rsynca brez ssh, razen če nadzoruješ vse kable in mašine na poti.  Rsync sam ne uporablja šifriranja (to velja tudi za morebitna gesla).  Če vseeno rabiš rsync, mu lahko rečeš naj uporablja kak drug port. ",
+    "user": "specing"
+  },
+  {
+    "message": "Rsyncd vsekakor ni varen. Splaca se uporabiti ssh tunel za rsync. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": "In kako naj administratorja nekega naključnega strežnika, od koder prenašam datoteke, prosim za ssh account oz. za spremembo porta? Oziroma ali naj kar vsem svojim tisočim uporabnikom dodelim ssh dostop do strežnika (ki sicer ni za tem specifičnim požarnim zidom), ker bo bolj varno, če imajo vpogled v vse datoteke na strežniku namesto dostopa do izključno tistih datotek, ki jih želim deliti?  (Je pa res, da še nisem pomislila na to, da bi svoje osebne datoteke \"objavila\" v rsyncd konfiguraciji. Ko gre za prenos \"zasebnih stvari\" iz drugega računalnika, samodejno uporabim ssh. Zdaj vsaj razumem argument, da \"rsync ni varen\". Ampak enako lahko Apache skonfiguriraš, da na portu 80 servira celotno vsebino diska. Pa porta 80 zaenkrat še nimamo blokiranega.) ",
+    "user": "mojca"
+  },
+  {
+    "message": "ssh strežnik lahko administrator enostavno nastavi tako, da sprejme ključ in izvede specifični ukaz, recimo rsync specifičnega direktorija:  http://ramblings.narrabilis.com/using-r... ",
+    "user": "jype"
+  },
+  {
+    "message": "Če imaš ssh dostop do strežnika, to ne pomeni nujno, da imaš dostop do vsega na /. Ravno zato obstajajo dovoljenja ter chroot (howto). Oziroma lahko uporabnik uporablja sftp, če rabiš dostop samo za prenos datotek, ssh dostop mu pa onemogočiš.  Torej imaš lahko na strežniku 1000 userjev, ki imajo ssh/sftp dostop. En drugega ali vidijo in ne morejo dostopat do datotek, ali sploh ne vidijo (chroot), omejiš pa jim tudi nabor ukazov, ki jih lahko izvajajo. Imaš samo kar nekaj dela, da to vzpostaviš in administriraš. Obstajajo boljše namenske rešitve. :)  Se pa načeloma za vsako zahtevo/\"problem\"najde ustrezna (lahko tudi specifična) rešitev, ki je prilagojena situaciji in ustreza vsem kriterijem ter se prilagodi vsem zahtevam. Zato pač ni vedno ssh (edina) rešitev. ",
+    "user": "Jakka"
+  },
+  {
+    "message": "Jype, hvala za tale link. Zelo uporabno. (V konkretnih scenarijih, ki jih imam v mislih, sicer ni rešitev, je pa uporabno za druge namene.)  --------  Ampak resno glede požarnega zidu. Recimo, da spišeš nek odprtokodni X, ki ga želiš deliti s celim svetom. Objaviš na GitHub-u, Torrentu, spletni strani, FTP-ju, rsync-u. V čem je poanta, da tiste, ki bi stvar prenašali preko rsync-a, \"posiljuješ\" z ssh-jem? Oziroma zakaj točno je recimo uporaba http://www.gentoo.org/main/en/mirrors-r... tako nevarna, da mi mora admin blokirati dostop? (Sicer ne uporabljam konkretno Gentoo-ja, uporabljam pa vsaj nekaj drugih stvari, ki delujejo na podobnem principu.) ",
+    "user": "mojca"
+  },
+  {
+    "message": "Neobičajno je, da so porti zaprti navzven. Če je administrator zatežen, se seveda da utemeljiti, zakaj je to pametno. ",
+    "user": "jype"
+  },
+  {
+    "message": "Rsync ne pozna enkripcije, zato ti vsi priporočajo da ga \"posiliš\" (kot si se sama elegantno izrazila) s sshjem. Sicer je nekaj overheada, opcija pa je tudi vpn in rsync. Ampak, če se admin tega ni učil je boljše da ne drezaš vanj. :> ",
+    "user": "black ice"
+  },
+  {
+    "message": "Ja, zaprti so navzven. Da navznoter niso odprti brez posebnega razloga, je logično. Administrator pa itak prvič sliši za rsync. Po komunikaciji sodeč tudi prvič za ssh. (Je pa večkrat poudaril, da je certificiran IT Security Engeneer, pa MS Certified whatever, pa naštel izkušnje z N požarnimi zidovi. Vsaj iz prve roke vidim, koliko so vredni tisti pildki.) ",
+    "user": "mojca"
+  },
+  {
+    "message": "Jaz tudi ne vem zakaj je rsync privzeta metoda sinhronizacije Gentoo repozitorijev. Stvar ne preverja integritete/avtenčnosti repozitorija med in po prenosu in zato nas malo (ker ni veliko folka, ki bi jih skrbela varnost??) uporablja emerge-webrsync (gpg verifikacija - varnost) iz https mirrorjev (zasebnost). ",
+    "user": "specing"
+  },
+  {
+    "message": "Naslednje vprašanje. Admin pravi, da Microsoft TMG ne podpira nobenega preverjanja prometa na portu 873 in da bi moral ekstra zaračunati, da bi glede na RFC standard pravilno implementiral zaščito, da ne bi ogrožali varnosti ostalih v omrežju, če odpre ta port.  Kakšen komentar na tole? (Priznam, da TMG-ja ne poznam, ampak moj nesramen odgovor bi bil, da je morda čas, da se zamenja firewall.) ",
+    "user": "mojca"
+  },
+  {
+    "message": " mojca je 22. jul 2014 ob 11:42 izjavil: Kakšen komentar na tole? (Priznam, da TMG-ja ne poznam, ampak moj nesramen odgovor bi bil, da je morda čas, da se zamenja firewall.)   Si pomislila da če bi malenkost manj pizdila čez firmo in tehnologijo, da bi ti bil tud sysadmin bolj pripravljeni pomagati? Ker to preprosto zgleda kot da se je odločil da ga malo zajebavaš. Ali pa je nesposoben. Samo dejstvo je, da ni nič bolj tečno, kot se je profesionalno ukvarjati z ljudmi, ki uporabijo vsako šanso, da kurčijo čez tvojo (pogosto neprostovoljno) izbiro tehnologije.  V vsakem primeru je mogoče čas da se nehaš fokusirati na tehnologijo in začneš reševati človeški faktor. ",
+    "user": "Mavrik"
+  },
+  {
+    "message": "Offtopic: priznam, da sem verjetno res preveč razvajena. Dosedanji admini (drugje) so ti še kavo skuhali, če si prišel s kakšnim zanimivim problemom. Imeli so par sigma večji IQ od povprečnega zaposlenega. Uredili so karkoli. Težav z vdori niso imeli. Znali so popedenati vse od Linuxa, Mac-ov, Windows mašin, iPhonov, ostalih pametnih telefonov, pa do Vaxov ... Tu pa nisem edina, ki ima probleme z adminom. Samo tajnici lahko po mili volji prodaja buče in namesto \"ne da se mi\" in \"ne znam\" odgovarja z \"ne da se\" in \"ni varno\". Moj predhodnik se je težavam pametno izognil tako, da je jasno in glasno povedal, da njihovega maila ne bo uporabljal, s sabo je privlekel svoj router in ignoriral admina. Jaz pa naivno pristopim k stvari, sporočim vse MAC adrese, poskušam urediti IP-je za vso že prej obstoječo opremo. Ampak po pol leta admin še vedno ne zna maila urediti tako, da bi delal kjerkoli drugje razen na Nokiah in v Outlooku. In v webmailu, kjer niti tipkati ne morem, ker z mojo nastavitvijo tipkovnice na vsak natipkan \"š\" veselo pošlje mail sredi prvega stavka in tega \"ni mogoče popraviti\". In za vsako mojo prošnjo samo komplicira, kaj si spet zmišljujem. Ignorira vsaj polovico mailov. In če smo že pri varnosti: imajo odprt wireless brez gesla. Kdorkoli lahko pride na parkirišče in prisluškuje vsemu prometu. Ampak ne, rsync je na tem omrežju prenevarno odpreti. Zaradi mene lahko admin uprablja strežnik na luknjanje kartic. Samo spedena naj ga tako, da bo delal tudi ostalim.  Ontopic: Dejansko me zanima, ali je to z rsync-om in TMG-jem spet samo prodajanje buč ali je TMG res tako butast kot pravi admin. ",
+    "user": "mojca"
+  },
+  {
+    "message": "http://search.dilbert.com/comic/Mordac%...  TMG (ex ISA server) je relativno uporabna zadeva. Kako zgleda za konfigurirat pa ne bi vedel. Glede na to, kaj vse zna, verjamem da kar kompleksno. ",
+    "user": "pegasus"
+  },
+  {
+    "message": "Hvala za popestritev dneva   Bom upoštevala tvoj nasvet.   http://dilbert.com/strips/comic/1999-10-03/ ",
+    "user": "mojca"
+  },
+  {
+    "message": " jype je 1. jul 2014 ob 23:22 izjavil:Neobičajno je, da so porti zaprti navzven. Če je administrator zatežen, se seveda da utemeljiti, zakaj je to pametno.  'Neobičajno' izključno zaradi lenobe administratorjev in odsotnosti neke resne varnostne politike v podjetju. Tam kjer so zadeve poštimane 'kot treba' so navzven zaprti vsi porti razen explicitno dovoljenih. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " mojca je 22. jul 2014 ob 11:42 izjavil:Naslednje vprašanje. Admin pravi, da Microsoft TMG ne podpira nobenega preverjanja prometa na portu 873 in da bi moral ekstra zaračunati, da bi glede na RFC standard pravilno implementiral zaščito, da ne bi ogrožali varnosti ostalih v omrežju, če odpre ta port.  Kakšen komentar na tole? (Priznam, da TMG-ja ne poznam, ampak moj nesramen odgovor bi bil, da je morda čas, da se zamenja firewall.)  Nenavadno nakladanje. Skrajno nenavadno nakladanje. Ne vem, kaj bi imel za računati. Če si edini uporabnik, ki ta port potrebuje, se pač samo tebi (ali tvojemu sistemu) dovoli, da ga uporablja, medtem ko za vse ostale ostane zaprt. Če je admin zelo strikten, lahko zahteva tudi eksplicitno definicijo IP naslova, do katerega naj bi odprl ta port. V malo resnejših mrežah mora poleg admina takšno spremembo na požarni pregradi 'požegnati' vsaj še ena nadrejena oseba. Kaj dosti več 'čaranja' pa tu ni.  Edino kar ostane na koncu vprašanje varnosti uporabe določenega protokola, ki nima nobene enkripcije za prenos podatkov. Mogoče sami podatki niso 'zaupne narave', je pa lahko problematično, če se username in password preko omrežja pretakata v cleartextu. Tu mora vsakdo znati presoditi, ali se gre za nekaj 'brezveznega' in imaš uporabljeno neko 'brezvezno' geslo, ali se gre za sistem, kjer bi bila izguba gesla lahko boleča zadeva. Problem pa je, če ti sistem na oddaljeni strani ne ponuja nekih drugih, varnejših opcij za prenašanje datotek. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 22. jul 2014 ob 18:18 izjavil: 'Neobičajno' izključno zaradi lenobe administratorjev in odsotnosti neke resne varnostne politike v podjetju. Tam kjer so zadeve poštimane 'kot treba' so navzven zaprti vsi porti razen explicitno dovoljenih.   Tole je navaden crap. Ce imas odprt en port, je popolnoma vseeno, ce imas odprte vse. Navzven. ",
+    "user": "BigWhale"
+  },
+  {
+    "message": " BigWhale je 23. jul 2014 ob 08:38 izjavil:SeMiNeSanja je 22. jul 2014 ob 18:18 izjavil: 'Neobičajno' izključno zaradi lenobe administratorjev in odsotnosti neke resne varnostne politike v podjetju. Tam kjer so zadeve poštimane 'kot treba' so navzven zaprti vsi porti razen explicitno dovoljenih.   Tole je navaden crap. Ce imas odprt en port, je popolnoma vseeno, ce imas odprte vse. Navzven.  No comment....  Ni vredno komentiranja! ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Mi lahko prosim nekdo razlozi luknje v mojem (spodnjem) razumevanju pozarnega zidu?   Vsak port, ki je odprt navznoter, predstavlja tveganje zaradi pomanjkljivosti v operacijskem sistemu in programski opremi, zato je smiselno imeti vse porte navznoter zaprte, razen tistih, ki jih eksplicitno potrebujes.  Port, ki je odprt navzven, predstavlja tveganje zlasti v primeru, ko se okuzi racunalnik v mrezi in:  a) Tvoj racunalnik v mrezi posilja zaupne podatke v svet in/ali prejema posodobitve malware-a. V tem primeru je ista figa, ce imas odprt samo port 80, ker je to povsem dovolj za nemoteno nadaljnje povzrocanje skode. Razlika je morda samo v tem, da firewall malenkost bolj striktno kontrolira/logira port 80, malware pa bi se lahko pretakal na katerem drugem portu in ostal neopazen.  b) Tvoj racunalnik postane leglo nesnage in zacne samodejno napadati druge racunalnike v svetu. \"Prednost\" tega, da imas navzven odprt se port X (poleg npr. porta 80), je zgolj v tem, da lahko tvoj racunalnik potencialno okuzi/napade vecje stevilo drugih racunalnikov, ker lahko izkoristi luknje v pozarnih zidovih in ranljivosti drugih racunalnikov po svetu.  V obeh primerih mora biti racunalnik ze okuzen, da navzven odprti porti sploh lahko povzrocijo dodatno skodo.  (Porte navzven se zapira tudi zato, da npr. sef onemogoca dolocene aktivnosti svojim zaposlenim, ampak to ni relevantno za ta primer.)   Katerega dela nevarnosti pri navzven odprtih portih se ne razumem? Oziroma kaksni so razlogi, da bi zganjal paranojo pri navzven odprtih portih?  Napadi iz spleta se izvajajo na porte, ki so odprti navznoter, ali se motim? ",
+    "user": "mojca"
+  },
+  {
+    "message": " mojca je 23. jul 2014 ob 11:01 izjavil: Katerega dela nevarnosti pri navzven odprtih portih se ne razumem? Oziroma kaksni so razlogi, da bi zganjal paranojo pri navzven odprtih portih?  Napadi iz spleta se izvajajo na porte, ki so odprti navznoter, ali se motim?  Odvisno od tega, kaj razumeš kot 'napad'. Vse velike kompromitacije zadnjega časa, kjer je ušlo neznano kam na tone podatkov kreditnih kartic in podatkov intelektualne narave, pa koneckoncev tudi Cryptolocker, so bile tipa 'trojanec' - ti se okužiš (phishing, drive-by download, itd.), namesti se ti zlonamerna programska koda, ki potem vzpostavi stik s svojim nadzornim centrom nekje na internetu. Torej imamo v tej fazi že outgoing promet. V primeru razvpitega primera trgovin Target, je malware podatke kreditnih kartic pošiljal ven preko FTP protokola. Če bi imeli zaprte porte za FTP in spremljali, da se je 'nekaj blokiralo' na teh portih - z blagajn, ki sicer nimajo kaj uporabljati FTP, bi zadevo lahko preprečili. (Dejansko so zadevo spremljali in bili opozorjeni, da se nekaj nenavadnega dogaja, pa niso ukrepali - kar je po svoje še bolj žalostno). Zadnji krik mode pri malware-u je uporaba TOR omrežja, za povezavo navzven, tako da se ne ve, kam dejansko odtekajo podatki in kje se nahajajo nadzorni centri. Tako je logično, da boš želel imeti zaprte tudi porte za TOR. Od nekdaj pa je priljubljen tudi IRC za nadzorne kanale botnetov. Ker se te zdeve spreminjajo iz dneva v dan in ne moreš kot gasilec neprestano krpati luknje, je ustaljena praksa (ki se je pa žal držijo le v resnejših okoljih), da se navzven zapre vse porte in odpira izključno tiste, ki so za poslovanje potrebni - za tiste računalnike, ki jih rabijo. Če imam npr. SIP centralo, bom odprl SIP porte samo za centralo in nikogar drugega.  Načeloma naj bi 'varnostna politika podjetja' (med drugim) opredeljevala, kaj sme v omrežje vstopati in kaj ga sme zapuščati. Vendar se v praksi tako dodelane politike redko kje najde. Sploh v manjših podjetjih vse skupaj ostane na ramenih administratorja, ki je pogosto edini, ki se mu vsaj malo sanja (če se mu sanja). Ker večina požarnih pregrad ne nudi kakšnih posebnih orodij, ki bi olajšala ugotavljanje, kaj je 'sprejemljiv' in kaj 'nesprejemljiv' odhodni promet, mnogi admini preprosto sploh ne poskušajo karkoli blokirati na outgoing strani. Šele ko jih kakšen šef začne nadlegovati, začno zapirati kakšen posamezni port - z namenom 'dviga produktivnosti'. Prvenstveno se admini izogibajo zapreti vse, ker jih je strah, kaj vse se bo s tem 'podrlo' in da se bo nanje vsula toča jeznih klicev uporabnikov, kaj vse jim ne deluje.  Če imaš prava orodja, se da takšen sistem vzpostaviti v enem dnevu. Nato potrebuješ še dva dni za 'finetuning' in na koncu noben uporabnik sploh ne sme opaziti, da so vsi porti razen eksplicitno dovoljenih zaprti. Če nimaš pravih orodij, je zadeva bolj počasna, vse skupaj traja kakšen dan dlje, ni pa nerešljiva. Treba je imeti zgolj pravi pristop.  Ko je enkrat takšno varno stanje vzpostavljeno, se lahko takšne zahteve, kot je bila tvoja po odprtju dodatnega porta, obravnava individualno. Uporabnika vprašaš kaj ima to za eno aplikacijo, čemu jo potrebuje, kam bo z njo komuniciral in s katerega računalnika. Ti podatki bi morali adminu zadoščati za presojo o tem, ali je odprtje tega porta v skladu z zadano varnostno politiko (ali pa bi jo bilo potrebno popravljati), kot mu tudi omogoči, da lahko port zelo selektivno odpre in s tem minimizira tveganje, ki bi s tem nastalo. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 23. jul 2014 ob 11:49 izjavil:V primeru razvpitega primera trgovin Target, je malware podatke kreditnih kartic pošiljal ven preko FTP protokola. Če bi imeli zaprte porte za FTP in spremljali, da se je 'nekaj blokiralo' na teh portih - z blagajn, ki sicer nimajo kaj uporabljati FTP, bi zadevo lahko preprečili. (Dejansko so zadevo spremljali in bili opozorjeni, da se nekaj nenavadnega dogaja, pa niso ukrepali - kar je po svoje še bolj žalostno).  Bi pa malware verjetno enako dobro deloval in leakal podatke, ce bi posiljal na katerikoli drugi port? Morda bi zgolj trajalo teden dni dlje, da bi malware nasel drugo luknjo? ",
+    "user": "mojca"
+  },
+  {
+    "message": "Še to....  Trditev, da če imaš odprt port 80, da si že s tem v 'peklu', drži le pogojno - če uporabljaš neko predpotopno požarno pregrado, ki ne premore nobenih dodatnih kontrol prometa (klasična SPI pregrada).  Sodobne požarne pregrade zmorejo prepoznati aplikacije, ki ustvarjajo tak promet. Pametna požarna pregrada npr. ne bo dovolila IRC prometa ali telneta preko porta 80. Istočasno nad prometom bdi IPS, ki lahko zazna anomalije, na koncu pa se še s pomočjo web filtra blokira dostop do znanih IP-jev, na katerih so različni nadzorni centri.  skratka imaš opravka s kar tremi dodatnimi mehanizmi, ki ne bodo kar tako spustili 'karkoli' skozi port 80, temveč skušajo ta promet omejiti na legitimno spletno brskanje.  Nekoliko večji problem predstavlja https, kjer moraš dekriptirati promet, da bi lahko izvajal zgoraj navedene kontrole. Ta del je sicer popolnoma legitimen, vendar je nekaterim, ki jim ni jasno, zakaj bi to bilo potrebo, hud trn v očesu.  Drugače pa se v pravilu skušaš omejevati pri odpiranju portov, da dovoliš določen protokol do ZNANIH strežnikov, kjer je to možno in ne kar 'kamorkoli ven'.  Če se potem nek računalnik na omrežju okuži, rabiš kot administrator imeti zgolj nekaj pozornosti nad tem, če se nek računalnik sumljivo pogosto znajde na listi blokiranih povezav. Določena orodja so pri tem bolj nazorna, druga manj. Če imaš na voljo zgolj syslog logiranje in potem gledaš kot tele v nova vrata v tisto log datoteko, pa verjetno ne boš kaj dosti videl. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Problem \"rešen\".  Po približno 30-40 mailih, dveh urah sestankovanja in eni uri dela je admin odprl rsync porte na dveh mašinah. Na tisti, kjer to potrebujem. In na drugi, kjer tega ne potrebujem. Na lastnem prenosniku, kjer bi še potrebovala rsync, pa mi tega ne sme odpreti, ker mi ne sme dati statičnega IP-ja (beri: ne, da ne smem priklopiti računalnika - to lahko; tudi izberem si lahko poljuben IP v mreži, tudi če ga ukradem tajnici ali računovodkinji, samo MAC naslova ne sme vnesti, da bi mi DHCP samodejno dodelil pravi naslov; tudi ne gre za to, da je treba šparat z IP-ji, ker je mreža itak za NAT-om).  Njegov nasvet, kako rešiti problem na prenosniku, kjer bi potrebovala rsync, je, naj ukradem IP drugi mašini z odprtim portom (kjer rsync-a ne potrebujem). Da ima tisti IP odprte porte *navznoter*, ga seveda ne zanima.  Na wireless-u (brez gesla in kamor se lahko priklopi kdorkoli s ceste) tega porta seveda ni varno odpirati.  Živeli sysadmini! ",
+    "user": "mojca"
+  },
+  {
+    "message": "V petek je bil SysAdmin Day. Si mu poslala čestitko?   Drugače pa se bojim, da je preteklo že veliko bitov, odkar je bil tale vaš admin nazadnje na kakšnem šolanju, logika pa....jah, se mi zdi, da ni vredno izgubljati besede.  Če je problem tvojega prenosnika to, da je kao 'BYOD' šara, se take zadeve rešuje tako, da se uredi poseben segment omrežja, ki je ločeno od poslovnih računalnikov in se tam lahko dodeli manj stroga pravila. Lahko bi imeli tudi 'guest network', na katerem bi ti zadevo odprl. Še bolj elegantno se rešuje zadevo s pomočjo avtentikacije na požarni pregradi. Definiraš, da sme user 'mojca' uporabljati ta in ta port - ne glede na IP naslov, s katerega se je avtenticirala.  Opcij je kolikor jih hočeš, da lahko stvari izpelješ na varen način, ne glede na to, koliko si paranoičen, ali pa imate strogo postavljena varnostna pravila.   Žalostno je, da se je treba 'boriti' za takšno stvar, če je potrebna za delo. Več kot en mail in en 'sestanek' tu nebi smelo biti potrebno... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Šment. Pa ravno 25. julija sva se dobila in borila  Bom dala drugo leto ta dan na koledar.  Nek username na požarnem zidu je omenjal, ampak itak se ni bilo moč ničesar dogovoriti.  Ja, \"BYOD šara\" je kao moj problem. Ampak glavna mašina se tudi obravnava skoraj tako kot \"BYOD\" (OK, statičen IP ima), ker na njej ne poganjam Windowsa. Zato ni njegov problem, če elektronska pošta ne dela, če se ne da zamenjati gesla, če se ne da dostopati do mrežnega diska in tudi z backupi admin ne bo ukvarjal. \"Linuxa se on ne bo učil\" (njegove besede). Ima vse potrebne Microsoftove certifikate in več ne potrebuje. ",
+    "user": "mojca"
+  },
+  {
+    "message": "Jaz sicer ne vem s čem se ukvarjaš in kaj v firmi počneš (očitno tudi vaš admin ne?) - ampak ravno v takem primeru bi ti dal na razpolago lasten Vlan (ali dva), ki bi ga izoliral od ostalega omrežja. Kao 'eksperimentalno omrežje'. Tako potem ni problem odpirati določene porte, ki jih na ostalih omrežjih ne želiš imeti odprte. Ravno tako potem ni problem DHCP, saj vse ostane v tistem eksperimentalnem delu omrežja.  Včasih je treba biti tudi malo prilagodljiv in se znajdet. Varnost je že prav da je, vendar ne na račun tega, da se potem ne da delati. Treba je biti toliko fleksibilen, da se potrudiš poiskati rešitve, ki so sprejemljive za obe strani, a hkrati ne kompromitiraš varnosti.  Sicer pa TMG odhaja v pokoj - kaj si bo vaš 'talent' potem izmislil (glede na to, da obvlada sam MS)? To bo še zanimiva zgodba..... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Ko gremo na optiko, se bodo vsa omrežja in vsi IP-ji spremenili. Takrat bom poskusila poskrbeti za to, da me snamejo s TMG-ja in dodelijo v drugo omrežje. Zoprno je samo to, da je potem težje deliti tiskalnike, mrežne diske ipd.  Sicer ne počnem nič tako posebnega, samo edina sem, ki ne uporablja oken in s tem očitno hud trn v peti adminu. Ali pa sem samo preveč razvajena od prejšnjih adminov, ki so brez vprašanj uredili vse, za kar si jih prosil, pa so verjetno vseeno imeli varnejše omrežje. ",
+    "user": "mojca"
+  },
+  {
+    "message": "Aja, če še koga zanima. Moj predhodnik se je naveličal ukvarjati z adminom in si je (na službene stroške, čeprav tega nihče ni vedel) naročil mobilni internet neomejeno, da je zaobšel firewall. Dva tedna nazaj je Telekom do tu pomotoma napeljal optiko (povsem neodvisno od preostale mreže), tako da lahko ponovim \"nepokorščino adminu\" še na mnogo elegantnejši način . ",
+    "user": "mojca"
+  }
+]

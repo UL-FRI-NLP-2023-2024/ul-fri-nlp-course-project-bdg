@@ -1,0 +1,110 @@
+[
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Imam naslednji problem. Kot je razvidno iz skice sta Ruter 1 in Ruter 2 povezana z LAN kablom v switch (iz ethernet v ethernet). Ruter 3 je nastavljen na repeater bridge in se poveže z Ruterjem 2 brezžično. Problem nastane ker Ruter 2 rabi nekaj ur, da začne oddajat internet potem ko ga izklopiš (na njega se sicer lahko povežeš brezžižno ampak ni dostopa do interneta). Če priklopiš računalnik v switch na drugem ruterju dela vse normalno. Ruterja 2 in 3 sta Lynksys wrt54gl z dd-wrt. Kakšne ideje kako nastavit Ruter 2?\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "yamahafazer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Ruter 1 LAN mora it v ruter 2 WAN. Na ruterju 2 pac nastavi WAN pravilno, za notranjo mrezo pa uporabi drugo IP mrežo kot na prvem.\nTolk za začetek ... če razumem pravilno...",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik darkstar66 pravi:\n Ruter 1 LAN mora it v ruter 2 WAN. Na ruterju 2 pac nastavi WAN pravilno, za notranjo mrezo pa uporabi drugo IP mrežo kot na prvem.\nTolk za začetek ... če razumem pravilno...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nLahko je tudi LAN-LAN, samo potem mora na router 2 biti izklopljen DHCP. Paziti je tudi treba, da sta oba routerja na enakih subnetih in da imata različne IPje (recimo 192.168.0.1 in 192.168.0.2).\n\nPa glede na to da uporabljaš repeater bridge, mora tudi tretji router biti na enakem omrežju in imeti drugačen IP (recimo 192.168.0.3).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik darkstar66 pravi:\n Ruter 1 LAN mora it v ruter 2 WAN. Na ruterju 2 pac nastavi WAN pravilno, za notranjo mrezo pa uporabi drugo IP mrežo kot na prvem.\nTolk za začetek ... če razumem pravilno...\n\t\t\n\t\tKlikni za razširitev\n\t\n\nLahko je tudi LAN-LAN, samo potem mora na router 2 biti izklopljen DHCP. Paziti je tudi treba, da sta oba routerja na enakih subnetih in da imata različne IPje (recimo 192.168.0.1 in 192.168.0.2).\n\nPa glede na to da uporabljaš repeater bridge, mora tudi tretji router biti na enakem omrežju in imeti drugačen IP (recimo 192.168.0.3).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nDhcp mam izklopljen na drugem, IP pa je je drugačen na vseh treh ruterjih. Tretji sploh ni problematičen. Ko je internet na drugem, potem je na tretjem tudi. Tako, da je problem nekje med prvim in drugim. \nČe prav razumem, mora bit subnet isti na vseh treh al samo na drugem in tretjem?",
+    "author": "yamahafazer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Na vseh treh mora biti enak subnet. Med prvim in drugim imaš LAN-LAN povezavo, kar pomeni da sta na istem omrežju, tretji pa je bridge, kar tudi pomeni da je v istem omrežju kot tisti na katerega se povezuješ. DHCP pa mora biti le en na celotnem omrežju, tako da ga moraš na routerju 2 in 3 izklopiti.\n\nTo da ni interneta XY časa, je zelo čudno. Kaj če se z računalnikom priklopiš na LAN port na routerju 2. Takrat tudi ne dela? Če ne dela, prilepi konfiguracijo IPjev, ki jih DHCP dodeli tistemu računalniku.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Ce se priklopim z racunalnikom prek LAN na drugi ruter internet dela. Samo wireless zafrkava",
+    "author": "yamahafazer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "To pa je zelo čudno, ker če se priklopiš na LAN ali pa na WIFI je načeloma ista stvar. Mogoče je kakšna težava pri wireless bridge?",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Bridge je pomojem vredu, ker ne vpliva na drugi ruter. Kadar drugi ruter spusti internet je na tretjem tudi. Je možnost napaka na ruterju? Bom probal drugega in tretjega zamenjat",
+    "author": "yamahafazer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik yamahafazer pravi:\n Ce se priklopim z racunalnikom prek LAN na drugi ruter internet dela. Samo wireless zafrkava\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSem imel isto težavo pri vzpostavljanju WDS-a. \n\nRešil sem jo z ponovnim konfiguriranjem vseh udeleženih routerjev. \nJe bilo hitreje kot pa iskanje točne napake...",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Sem beta verzijo dd-wrt nalozil in zaenkrat dela. Bomo videlu kako dolgo. Hvala za pomoc",
+    "author": "yamahafazer",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Živjo\n Da se malo pridružim tej temi.Doma bi rad povezal dva routerja med sabo z WDSjem.To mi je nekako uspelo,nastane pa problem,ker me preko drugega routarja ne spusti čez.Povezava med obema je torej dobra do interneta pa ne morem dostopat.Napiše omejen dostop.Morem pa povedat,da glih nisem neki expert na tem področju in je to prvič da se ukvarjam s tem.Prosu bi za kakšen nasvet.",
+    "author": "Basko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Sem že rešu zadevo",
+    "author": "Basko",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "super da si povedal rešitev,bo marsikomu pomagala \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nImam tudi sam vprašanje, verjetno povsem enostavna rašitev.. V podjtetju imamo \"najeto\" linijo in pride mreža že do firme, mi imamo po firmi switche in gor cca 40 naprav/računalnikov. Kako bi v to našo interno mrežo naredil en wifi point, za notebooke in ostalo kramo? nabor IPjev nam je dodelil \"provider\". \n\nmoja ideja je, čeprav razumem da gre z wifi ruterje prikljopljenim na en switch? bi to šlo? Kam se potem zabije v WAN ali LAN? dhcp izklopit? Domače omrežje z ruterjem mi je jasno..a tale nachbau pa ne čist.. ne bi rad ruterja kupoval pa da ne bo delalo.",
+    "author": "sajkek",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "https://www.alter.si/tabla/showflat.php/Cat/0/Number/1754840/an/0/page/1#1754840",
+    "author": "wd40",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Če nimaš dovolj IP-jev lahko na wifi laufa svoj subnet. Ruter priklopiš na switch preko WAN porta. DHCP pustiš, nastaviš pa drug subnet, kot je vaša mreža. Wan povezavo na ruterju nastaviš na DHCP ali static. Poenostavljeno povedano, se bo ruter na ta način povezal v vaše omrežje kot klient in to povezavo ponudil svojim odjemalcem preko WiFi. Vašo lokalno mrežo bo smatral kot ponudnika interneta, zadaj bo pa fural svoj subnet. Na ta način bodo naprave preko wifi lahko šle na internet. Ne bo pa delal dostop do windows sharov na primer. \n\nDruga varjanta pa je, če lahko zagotoviš nabor IP-jev, ki bodo na voljo wifi uporabnikom. V tem primeru pa lahko priklopiš ruter na LAN port. DHCP server na ruterju pa nastaviš, da bo dodelil IP iz tega nabora. Tako bo ruter delal kot access point. Njegov DHCP server pa bo skrbel, da wifi uporabniki dobijo IP-je, ki so namenjeni WiFi-ju.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "hvala vam pubeci, bom skušal tako narediti.",
+    "author": "sajkek",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Hm, vprašanje, kako naj zdaj nastavim ruter,da bodo wifi naprave avtomatsko našle proxy (naša mreža je za proxijwm) in šle lahko na net? da ni potrebno ročno to vpisovat?",
+    "author": "sajkek",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nastavitev ruterja!",
+    "content": "Potrebuješ ustrezno PAC datoteko, potem pa ali lokacijo PAC datoteke sporočiš z DHCP strežnikom (option 252) ali pa imaš v DNS strežniku ustrezen zapis za wpad.interna.domena, na katerem mora teči spletni strežnik, ki bo PAC datoteko postregel browserju, ko bo zahteval datoteko http://wpad.interna.domena/wpad.dat\n\nKaj od tega deluje, je pa stvar infrastrukture.",
+    "author": "der_Alte",
+    "author_level": "Fizikalc"
+  }
+]

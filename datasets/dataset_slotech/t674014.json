@@ -1,0 +1,26 @@
+[
+  {
+    "message": " $ su -c  \"yum install httpd-devel\"\nPassword: \nLoaded plugins: security\nel5_latest                                                                     | 1.4 kB     00:00     \nel5_latest/primary                                                             |  25 MB     00:03     \nel5_latest: [################################################################            ] 4318/13198\n  To počne že skoraj pol ure.  Hec je, da je \"enako\" naredil malo prej, ko sem pognal \"yum search apache\" (kot ne-root).  Je to normalno? Bo to vsakič delal?  Izkušnje imam bolj z apt-get, tako da sem z yum v temi.  Gre za Oracle Linux. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "CPU load je do 5%, network nič, edino po disku \"šrota\" (thrashing). Evo, končno končalo. Nekje eno uro je trajalo. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Poguglaj: oracle linux yum slow ",
+    "user": "b3D_950"
+  },
+  {
+    "message": "Uh, ne. Nekaj ne štima.  Za primerjavo (nek star CentOS 5 strežnik):   time yum search apache\nLoaded plugins: fastestmirror\nDetermining fastest mirrors\n * base: ftp.arnes.si\n * epel: ftp.uni-stuttgart.de\n * extras: ftp.arnes.si\n * updates: ftp.arnes.si\nbase                                                                                                                     | 1.1 kB     00:00\nepel                                                                                                                     | 3.6 kB     00:00\nepel/primary_db                                                                                                          | 2.9 MB     00:00\nextras                                                                                                                   | 2.1 kB     00:00\nupdates                                                                                                                  | 1.9 kB     00:00\nupdates/primary_db                                                                                                       | 757 kB     00:00\nExcluding Packages from Extra Packages for Enterprise Linux 5 - x86_64\nFinished\n...\n\nreal\t0m47.433s\nuser\t0m2.038s\nsys\t\t0m0.364s\n  Ob naslednji ponovitvi ukaza (svež yum cache):   real\t0m1.050s\nuser\t0m0.925s\nsys\t\t0m0.122s\n ",
+    "user": "Ales"
+  },
+  {
+    "message": "Počasni mirrorji? Počasen DNS? Počasen internet? ",
+    "user": "b3D_950"
+  },
+  {
+    "message": "-----> disk I/O <-----  \"write\" , če sem natančen.  Zgleda kot tole: https://bugzilla.redhat.com/show_bug.cg... ",
+    "user": "MrStein"
+  }
+]

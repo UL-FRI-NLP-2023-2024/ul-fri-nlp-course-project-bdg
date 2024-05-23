@@ -1,0 +1,94 @@
+[
+  {
+    "message": "Imam naslednji problem:  imam osnovno ploščo ASUS A7V8X-X na kateri se nahaja KT400 čipovje ki naj bi podpiralo FSB 333Mhz.Se pravi FSB CPU je 166Mhz.Imam procesor Barton 2600+ (11.5 x 166 = 1909 Mhz)(množilec zaklenjen).Vendar ga ne morem imeti na 166 FSB CPU ker ko prekoračim mejo 149 CPU FSB mi napiše tole  \"according to cpu external frequency setting, system memory can operate only at frequency higher than or equal to 333mhz, please make the dram maximal frequeny is not less than 333mhz\".   Vzrok tega je da mi pc med igranjem čisto zmrzne.Če pa dam CPU FSB na 149Mhz dela normalno a ko ga dam na 150 Mhz mi napiše to opozorilo.Zakaj se men to ne zdi logično.A nebi blo bolj logično da bi mi to opozorilo javil če bi prekoračil mejo iz 166 na 167 Mhz.  Ram je 400Mhz DDR.sedaj ko imam CPU FSB na 149 Mhz je spominjsko vodilo na 184 Mhz.če bi dal CPU FSB na 150 mhz (ko že javi opozorilo)je pa spominjsko vodilo na 183 Mhz.Logično seveda.Po opozorilu sodeč je to mnogo več kot mi utruja v opozorilu kjer govori da ne sme biti manj kot 166Mhz.Vidimo da ni manj.  Vprašanje je: zakaj mi da to opozorilo iz 149 na 150 mhz CPU FSB.Kajti sedaj moram imeti Bartona na 1713 (11.5 x 149) da mi dela normalno.A njegova delovna frekvenca je 1903 Mhz.A je no morem dosečt ker mi že preh javi opozorilo.  Hvala ",
+    "user": "diative"
+  },
+  {
+    "message": "Probaj prestavit jumper na maticni plosci na FSB166(333). ",
+    "user": "tiborrr"
+  },
+  {
+    "message": "Takoj nastavi na 166MHZ FSB, pa poročaj če dela (AGP/PCI lock)  @tiborr ni jumperja za FSB, sem ravnokar manual pogledu ",
+    "user": "dxx"
+  },
+  {
+    "message": "Bom pogledal u priročnik od plate kje bi se ta jumper nahaju. Drugače pa lahko še mal več poveš o tej rešitvi,ker nisem glih strokovnjak    hvala za pomoč ",
+    "user": "diative"
+  },
+  {
+    "message": "Ni treba gledat, sem jaz pogledal in tega jumperja ni. Poskusi kot sem napisal, direkt na 166 v bios-u. ",
+    "user": "dxx"
+  },
+  {
+    "message": "ko nastavim na 166 imam 166/33 se pravi da deluje PCI na 33Mhz če se ne motim - za AGP ne vem kje naj pogledam.Vendar ne rešim problema Opozorilo mi javi že iz 149 na 150Mhz. ",
+    "user": "diative"
+  },
+  {
+    "message": "agp bo na 66, nič bat, ker se pri 166 delilnik spet lepo nastavi na 33/66 PCI/AGP. Poskusi na 166, javlja ti ker plata misli da si 133 FSB procesor navil. ",
+    "user": "dxx"
+  },
+  {
+    "message": "Sicer pa naloži proghramček CPU-z in poglej kaj tam piše pod CPU in pod memory. ",
+    "user": "dxx"
+  },
+  {
+    "message": "Zadeva zgleda nekako takole:   ter   Problem je da tisto opozorilo \"according to cpu external frequency setting, system memory can operate only at frequency higher than or equal to 333mhz, please make the dram maximal frequeny is not less than 333mhz\" ni tako nedolžno.Ko ga ni (do 149Mhz FSB CPU) dela ko pa je (nad 150Mhz CPU FSB pa mi zablokira sistem) (ampak samo med igranjem kar je tudi čudno v windowsih je vse prav).Sem probal dxx tako da to opozorilo neki pomeni.Saj bi mogla plata zaznati procesor se pravi da bi mogla javljati nad 166Mhz da ga navijam (ker je barton 11,5x166).Ali je kaj s plato al biosem mogoče.  A ma še kdo kakšne ideje. ",
+    "user": "diative"
+  },
+  {
+    "message": "Frekvenco rama nsatavi na 166(333)MHz ",
+    "user": "jest10"
+  },
+  {
+    "message": "Spreminjam lahko samo CPU FSB frekvenco.Edino možno da zmanjšam frekvenco rama da povečujem CPU FSB frekvenco.Da bi dobil frekvenco rama moram dati frekvenco CPU FSB na 166.Da bi blo 166/166 ratio.Vendar frekvence CPU FSB ne morem dati višje od 149mhz ne da mi nebi začelo javljati opozorila.  Idino če obstaja še drug način za spreminjanje frekvence spomina za katerega ne vem (oziroma moja matična plata ne ve). ",
+    "user": "diative"
+  },
+  {
+    "message": "Poskusi: -frekvenco rama dati na 1:1 ne pa FSB+33MHz -reset biosa -menjavo biosa ",
+    "user": "dxx"
+  },
+  {
+    "message": "Na prvo točko ti lahko kar sedaj odgovorim.Imel sem ratio 1:1 na 166/166 nič pomagal.zablokiral med igranjem.potem sem imel neki časa na 185/185 sem malo navijal.Isto.S strani pomnilnika ni nobenih napačnih nastavitev ker sistem že sam ne pusti frekvenco Rama manj kot 166. Primer: će nižam FSB CPU frekvnco nižje od 166 Mhz se frekvenca rama povečuje (da je vsota zmeraj 333Mhz FSB.Če pa povečujem FSB CPU višje od 166 Mhz se pa frekvenca rama POVEČUJE s frekvenco CPU FSB.Tako da ni nikoli nižja od 166 kar mi utruja v opozorilu. Tako da je to zelo zanimiv koncept ki mi ne da spati že vrsto let.  Bios sem že dal upgrade mogoče je bla to napaka.Probu bom še reset s jumperju bom vidu kaj se bo zgodil.  Ne branim se novih idej za rešitev problema.Kar na dan z njimi  ",
+    "user": "diative"
+  },
+  {
+    "message": "ali je možno da so novejše verzije slabše od predhodnih.In ali je kaj narobe če naložim starejši bios nad novejšega. ",
+    "user": "diative"
+  },
+  {
+    "message": "Voltaža proca bi morala biti za tvoj procesor 1.65V. Daj si zloadej še mali programček  Central Brain Identifier 8.0.0.4 Build 0505 R4 in prilimaj sliko, da vidim serijsko procesorja... Vglavnem VOLTAŽA je PREVELIKA. Ročno nastavi na 1.65V. Mogoče je kriva matična(stara nabor + starost sama) ali pa napajalnik. Jaz bi okrivil matično, sajčetudi bi napajalnik malo nagajal, bi matična morala kompenzirati razlike napetosti... ",
+    "user": "jan01"
+  },
+  {
+    "message": "  v biosu imam za nastavit voltaže 1.65 V potem je pa takoj 1.7 V in navzgor.Nič ni vmes.  Tukaj je pa še slika iz EVEREST   Napajalnik je čisto nov 420W ",
+    "user": "diative"
+  },
+  {
+    "message": "Najbrž boš moral posodobiti bios  klik!. Ne vem katero verzijo trenutno imaš, a piše pri verziji A7V8X-X BIOS 1003 Enlarge stability for 333MHz FSB CPU. Zloadej najnovejši bios(a raje ne beto) http://dlsvr02.asus.com/pub/ASUS/mb/soc...  Navodila za flashanje tvoje matične Ker je matična stara jo je treba kar s disketo flashat. Pri novejših kar v windowsih.. Če nimaš iskušenj/znanja/... naj kdo drug opravi delo.   Daj prilimaj še slikico iz everesta(osnovna plošča->BIOS) kateri bios imaš zdajle! ",
+    "user": "jan01"
+  },
+  {
+    "message": "tule so karakteristike biosa  tule pa matične plošče   Bios imam že dolgo upgrade na 1013. A misliš da bi blo kej drugače če dam gor kakšno starejšo verzijo biosa.Pomoje bi še poslabšal zadevo. ",
+    "user": "diative"
+  },
+  {
+    "message": "To ploščo se da čisto vredu fleshat iz Windowsov. Ni toliko stara, da to ne bi bilo možno.  Ni pa to problem.  Kakšen RAM imaš?  Plošča je sposobna prebavljati nastavitev za 200 MHz. Če imaš sposoben RAM, ga ročno nastavi, kar na toliko. Mogoče ti bo potem dovoljevalo, da spremeniš še frekvenco vodila. ",
+    "user": "cekr"
+  },
+  {
+    "message": "kaj, pa če bi malo premetal palčke rama? ",
+    "user": "Pyr0Beast"
+  },
+  {
+    "message": "Imam tale RAM http://www.transcendusa.com/Products/ME... velikost je 1GB.Sem že premikal po slotih pa ni nobene razlike.  Tule so pa še karakteristike v EVERESTU ne vem točno kaj bi se dalo spreminjati.V biosu sem se igral neki s timingi pa se mi 3 al pa 2.5 ne zdi nobene razlike če dam pa 2 se mi pa sploh pc ne prižge.Samo neki piska v kišti.   Kaj so tiste glavne značilnosti ki se dajo ročno spreminjat pri ramih. ",
+    "user": "diative"
+  },
+  {
+    "message": "Cekr ne vem če se da to plato flashat iz windowsov, saj v navodilih ni nič omenjeno od tega.Samo prek diskete.Če pa slučajno veš za način prek windowsov pa kar povej. ",
+    "user": "diative"
+  },
+  {
+    "message": "Na CD-ju zraven plošče si dobil program ASUSUpdate, ki ti sam poišče zadnji firmware in ti ga tudi naloži. Kot sem pa videl, imaš že zadnji firmware. Je pa nekje na ASUS-ovi strani lestvica, kater firmware potrebuješ za katero osnovno ploščo oz. procesor. Tvoj procesor bi morala ta plošča zaznati v avtomatskem načinu in to brez problemov. So pa bile na začetku neke različice, ki so delovale samo na 266 MHz. Odpri ohišje in poglej, če je na veznem čipu nalepka 333MHz. Lahko, da je v tem tvoj problem. Na moji plošči obstaja jumper, ki omogoča preklop na 333. Je pa res, da imaš ti socialno verzijo plošče. ",
+    "user": "cekr"
+  }
+]

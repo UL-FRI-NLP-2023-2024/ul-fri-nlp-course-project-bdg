@@ -1,0 +1,74 @@
+[
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Haj,\n\nimam:\nSE W960i\nGM XT  5.00.00sUIQ.9\nzunanji GPS\n\nNaredil sem:\n- inštalacijo GM XT\n- preko keygeneratorja 1.5 preko ID cifre zgeneriral obe cifri, eno za SW.UNL drugo za GMAPSUPP.UNL\n- vsako od obeh cifer sem ločeno shranil v beležnico, vsako v svoj fajl, ki sem ga (oba) ustvaril na novo, ter datoteki poimenoval kot zgoraj. Notepad fajla sta v mapi Garmin na GSM in ne v kaki podmapi\n- za AR 2.1 generated code sem uporabil kodo 708\n- AR 2.1 sem porihtal preko map sourca in je shranjen na GSM drektno na kartico in ne v mapo Garmin. Naziv mape je FAM_708\n- GPS sem povezal z GSM preko pair device, ter ga dal označil kot zaupanja vredno napravo\n\nKAJ SEM NAREDIL NAROBE, DA MI NE NAJDE ZUNANJEGA GPS-a?\n\nTHX!",
+    "author": "pinkfish",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Koliko je meni znano karte se inštalirajo v mapo garmin na kartico in v isto mapo in isto mesto gmapsupp.unl in sw. unl. To pomeni da je vse inštalirano na SD/GARMIN. ne pa na tel.",
+    "author": "malisale",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "No ja, integriranih imam 8 GB kartico in na tej je vse in ne na pomnilniku telefona (sorry za dezinfo...). \n\nTO PA SEM ZASLEDIL V NAVODILIH ZA INSTALACIJO:\nkopiraj mapo FAM_708\nter jo pošlji na kartico telefona (ne v direktorij Garmin!!!)\n\nTAKO, DA NE VEM SEDAJ AL MAPO fam_708 z ar 2.1 KOPIRAT V MAPO GARMIN ALI DIREKT NA KARTICO?\n\nImam pa kolega, ki pa nima mape FAM_708 na kartici, ki predstavlja AR 2.1 ampak je image direktno skopiral v mapo Garmin in dela. Sicer imam v mapi FAM_708 veliko image-ov in ne en sam image, Le ti so se ustvarili, ko sem AR 2.1 spustil preko mapsourca.\n\nŠe kakšna pomoč??",
+    "author": "pinkfish",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "mapo FAM_708 z AR2.1 sem prenesel v mapo Garmin, pa se ne spremeni nič t.j. še vedno ne zazna zunajega gps-a.",
+    "author": "pinkfish",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Nisam vedel da je integriranih 8 gb, tako da to ni bila namerna dezinformacija. Mapo z oznako Fam- 708 nemoreš imet na telefonu. Ta mapa se ustvari ko ti adriaroute  razpakiraš  na računalnik in potem napr:v C/garmin /Fam-708 uz pomoč mapsourca prenašaš na garmine,dlančnike, telefone, kartice. Če dobiš pa sam img file sa kakšne sd kartice potem moraš z ustreznimi orodji karto odklenit na id številko tvoje kartice(telefona)",
+    "author": "malisale",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Na telefonski kartici v mapi Garmin moraš imet  \"gmapsupp.img\" in ustrezno sw.unl datoteko, če si prenesel z MapSourca v katerem imaš odklenjene mape. Če si pa prekopiral gmapsupp.img, rabiš še \"gmapsupp.unl\". , ravno tako v mapi Garmin.",
+    "author": "bojch",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Najverjetneši problem je v sw.unl datoteki in sicer ti je notepad ali beležnica shranil datoteko kot TXT in sw.unl.TXT in ne zgolj kot sw.unl.\n\nPri shranjevanju datoteke v beležnici(notepad) ne pozabi v spodnjem zavihku \"Vrsta datoteke\" spremeniti iz TXT na \"Vse datoteke\"(All files) in bo zadeva delovala.\n\nTo je bil problem pri meni, da ni zaznalo zunanjega GPS modula.",
+    "author": "podmornik",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Haj,\n\nmapa porihtana. Izdelan 1 image preko Mapsourca in prenešen na tel. Vendar zunanjega GPS-a še vedno ne zazna. Spremenil sem sw.unl, tako, da sem namesto končnice txt dal na vse datoteke in takšno shranil. Javlja mi pa tudi kern exec napako.",
+    "author": "pinkfish",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Sporočilo je zbrisal(-a) malisale",
+    "author": "malisale",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik malisale pravi:\n Pred eno uro inštaliral garmin mobile xt na omnio. Postopek je naslednji:\n1.Inštaliraj garmin mobile xt\n2.V mapsourcu odkleni zemljevide in jih pošalji na kartico v mapo garmin\n3.Sw.unl in  gmapsupp.unl v notepadu shrani na kartico v mapo garmin.\n4. Sedaj gremo v nastavitve telefona: setings/system/enhanced gps-xtra-enabled; auto download/disabled. Zapremo aplikacijo.\n5.Odpremo external gps in pod jezičkom program ga damo na com2; v jezičku hardware ga damo na com9 baud rate na 9600; access damo uklopljen.\n6.Inštaliramo program gpsgate.\n7. V jezičku input nastavimo na com2-premaknemo se na setings in nastavimo serial port com2,baud rate 4800,party no,stop one,handsake none,byte size 8, potrjeni DTR in RTS\n8.jeziček output damo na virtual comport in gremo na ad in ga damo na com6.\n9:Gremo ven iz programa in zaženemo garmin mobile xt. \n10. Po iskanju gps naprave gremo na gpsinfo in tam damo da gre na comport 2  \n11.Hitro bo najdel satelite.\nČe je še kaj nejasnega oglejte si še enkrat tale videro:http://www.ipmart-forum.com/showthread.php?t=291570 \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\n  Tudi brez tega (modro označenega dela) bo hitro našel satelite ",
+    "author": "Jodlar",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Uh, na napačen post sem dal- to so navodila za omnio. Še enkrat se opravičujem.",
+    "author": "malisale",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "GM XT: težava s povezavo zunanjega GPS-a",
+    "content": "Yo, v bistvu sem vse delal prav, pa mi je očitno keygen 1.5 napačne key-e ven metal. Sem probal za finto še starejši keygen 1.3 pa je šlo v prvo. \n\nTHX za help!",
+    "author": "later",
+    "author_level": "Zelenc'"
+  }
+]

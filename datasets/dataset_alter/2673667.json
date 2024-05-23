@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "Zanima me če je možno vzpostaviti povezavo med wifi printerjem, ki je preko wifija povezan na router in PCjem, ki je preko ethernet kabla povezan na T2 modem?\n\nT2 modem---PC (lan)\n         | (lan)\n   Router \n         | (wifi)\n   Printer \n\nPrinter dela normalno na vseh napravah, katere so povezane na router, nikakor pa znam vzpostaviti povezave med PCjem in printerjem, ker sem v tem popoln laik \n\nZa vsako pomoč se že vnaprej zahvaljujem \n\nlp",
+    "author": "Rsk",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Rsk je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZanima me če je možno vzpostaviti povezavo med wifi printerjem, ki je preko wifija povezan na router in PCjem, ki je preko ethernet kabla povezan na T2 modem?\n\nT2 modem---PC (lan)\n         | (lan)\n   Router\n         | (wifi)\n   Printer\n\nPrinter dela normalno na vseh napravah, katere so povezane na router, nikakor pa znam vzpostaviti povezave med PCjem in printerjem, ker sem v tem popoln laik \n\nZa vsako pomoč se že vnaprej zahvaljujem \n\nlp\n\t\t\n\t\tKlikni za razširitev\n\t\n\nČe nista na isti IP mreži sigurno ne, če pa sta, pa po moje ja. Nisem pa 100%. Ampak v tvojem primeru po moje ne bo šlo.",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Rsk je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tT2 modem---PC (lan)\n         | (lan)\n   Router\n         | (wifi)\n   Printer\n\t\t\n\t\tKlikni za razširitev\n\t\nZakaj taka konfiguracija?\nJe router res v funkciji routerja ali je tam samo zato da imaš WiFi? (vprašanje je, ali je je povezava modem->router na WAN portu routerja ali na LAN-u?)",
+    "author": "Romzi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "Če uporabljaš T-2 opremo kot router in še svoj router z ločeno mrežo in NATom vmes, out of the ne bo delovalo. Lahko sicer odpreš porte na firewallu, skofiguriraš DNAT in ročno dodaš tiskalnim po IP naslovu, ampak je bolj smiselno, da bodisi vse naprave priklopiš na svoj router ter daš t-2jevo opremo v bridge ali pa svoj router uporabiš zgolj kot AP (torej izklopiš DHCP server, NAT, FW, ...) in kot router uporabljaš zgolj T-2jevo opremo.\n\n\n\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik darkstar66 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe nista na isti IP mreži sigurno ne, če pa sta, pa po moje ja. Nisem pa 100%. Ampak v tvojem primeru po moje ne bo šlo.\n\t\t\n\t\tKlikni za razširitev\n\t\nTudi to se da, vprašanje je bolj če je takšna konfiguracija sploh smiselna (sploh dodaten NAT).",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "Romzi router imam zaradi wifija, povezava modem->router je na lanu.\nXSIDE tole se sliši čist preveč zakomplicirano \nGlede na to da sta PC in printer narazen cca. 4-5m, bom povezal kar preko usbja, vseeno hvala \nlp",
+    "author": "Rsk",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "Kater del? Načeloma je dovolj, če na svojem routerju izklopiš DHCP in kabel pretakneš iz WAN v LAN port. Oziroma pogledaš prej če ima že v nastavitvah kak AP mode, ki ti naredi vse kar je treba. Edino IP bi mi bilo fino spremenit v nekaj znotraj prvega omrežja vendae izven obsega, v katerem dodeljuje DHCP, da ne pride do konflikta.\n\nČe imaš že sedaj res priklopljeno preko LAN porta na routerju, je pa sploh za preverit konfiguracijo, da nimaš dveh različno nastavljenih DHCP strežnikov v isti mreži. Samo čudno da bi ti potem sploh delal internet na napravah, ki dobijo IP od napčnega DHCP.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "Zakaj sploh komplicirat? Router na wan in vse naprave preko routerja.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Vzpostavitev povezave med wifi printerjem in PCjem",
+    "content": "Ni povedal zakaj ima en PC direktno na modemu.\nPa nima veze, če ma router samo za Wifi (AP), mora delat, samo na routerju naj nastavi lokalni IP na nekaj izven obsega naslovov na modemu (če že ni) in tudi na routerju izklopi DHCP.",
+    "author": "Romzi",
+    "author_level": "Guru"
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "message": "Pozdravljeni, ucim se javo in imam tezave z metodami. Ni mi jasno kaj so metode ,ki varacajo vrednost in kaj tiste katere ne vracajo. evo konkretnega primera: 10. Izdelajte program, ki bo omogočal pretvarjanje CHF v EUR. Za vnos zneska in menjalnega tečaja uporabite metodo readLine iz razreda Console. Program shranite v datoteko Naloga10.java. to sem ze naredil z uporabo razreda Scanner. 1. Izdelajte program, ki bo omogočal pretvarjanje CHF v EUR. Za vnos zneska in menjalnega tečaja uporabite metodo readLine iz razreda Console. Uporabite predmetni način programiranja (ustvarite razred Menjalnica, ki naj vsebuje spremenljivko tecaj in metodo menjaj). Program shranite pod imenom Naloga1.java. to ker sem prej naredil bi zdaj mogel narediti predmetno. in ne gre.... Prosim ce mi lahko pomagate malo. Lep pozdrav, Gagić Igor ",
+    "user": "fantom333"
+  },
+  {
+    "message": "void metoda1(){ //koda tukaj } je nekaj kar ne vrača vrednosti, in samo nekaj izvede, rezervirana beseda za to je \"void\"  int metoda2(){ //koda tukaj return 2; } je metoda ki mora vrnit nek \"int\", to je število integer, zato imaš na koncu return x;, kjer mora x biti tipa int primer uporabe: int x = izracunajXizSpremenljivkeZ(10) int izracunajXizSpremenljivkeZ(int z){ return z+10; }  razred1 metoda3(){ //koda tukaj return new razred1(); } je metoda ki mora vrnit objekt tipa razred1, kaj vsebuje/mora vsebovati ta object definiraš v class razred1  class ima lahko znotraj notranje metode, ki jih lahko kličeš na objektu, v teh metodah lahko dostopaš do property-jev objekta npr če ima class razred1 znotraj metodo \"int dobiVenXkratY()\" in ima class razred1 2 property-ja \"int x\" in \"int y\" potem lahko narediš da funkcija dobiVenXkratY vrača recimo \"return x*y\" primer: razred1 neki = new razred1(); neki.x = 10; neki.y = 20; int xy = neki.dobiVenXkratY(); //v xy bo potem vrednost 200 ",
+    "user": "mirancar"
+  },
+  {
+    "message": "kaj pa static?  ",
+    "user": "fantom333"
+  },
+  {
+    "message": "statična metoda je ista kot ne-statična, samo s to razliko da jo kličeš z imenom razreda in NI potrebno ustvarjati novega objekta, da jo lahko uporabimo.  Recimo:   \npublic class Clovek{\n\npublic void dvigniRoko() {\n\n//koda\n}\n\npublic static void dvigniNogo() {\n\n// koda\n\n}\n\n}\n\n\n   Razlika med temi dvemi metodami je ta da boš dvigniRoko(), klical tako:  new Clovek.dvigniRoko();  In metodo dvigniNogo(), boš klical takole:  Clovek.dvigniNogo(); ",
+    "user": "shadeX"
+  },
+  {
+    "message": "kaj bi v mojem primeru mogel narediti? hvali stari...ker pomagas public void Menjaj(InputStream in) { System.out.println(\"Vnesi znesek v CHF:\"); Scanner branje = new Scanner(System.in); chf=branje.nextLong();  System.out.println(\"Vnesi tecaj:\"); Scanner branje1 = new Scanner(System.in); tecaj=branje1.nextLong();  /* eur=chf/tecaj; System.out.println(\"***********\"); System.out.println(\"Znesek\\n\"+chf+\" CHF\\n\"+\"je\\n\"+(eur)+\" eur\");*/  }  jaz sem tko naredil metodo, rad bi da mi metoda omogoci ,da vnesem podatke. kako da klicem to metodo? oz. to  public void Menjaj() { System.out.println(\"Vnesi znesek v CHF:\"); Scanner branje = new Scanner(System.in); chf=branje.nextLong();  System.out.println(\"Vnesi tecaj:\"); Scanner branje1 = new Scanner(System.in); tecaj=branje1.nextLong(); } uspel mi je ",
+    "user": "fantom333"
+  },
+  {
+    "message": "Zdaj lahko naredis z argumenti in da metoda vrne rezultat :) ",
+    "user": "b00mer"
+  },
+  {
+    "message": "e a ves kaj o rekurziji? ",
+    "user": "fantom333"
+  },
+  {
+    "message": "ti fantom, raje se uči kakšen bolj preprost programski jezik, java se mi zdi nekoliko težka za začetnika ... raje si za začetek izberi pascal ali phyton ali pa prej kakšno javoscript ... še o rekurziji: bistvo rekurzije je, da se kliče sama sebe, pri tem pa potrebuješ tisti robni pogoj. ",
+    "user": "lebdim"
+  },
+  {
+    "message": "pascal sam se ze ucil in mi je super slo, samo to potrebujem za faks...to pravi da nimam izbire hahahhahahah ",
+    "user": "fantom333"
+  },
+  {
+    "message": "Ena neumesna. Ker faks je to če smem prašat? :) ",
+    "user": "mladec"
+  },
+  {
+    "message": "javo se ponavadi učijo na FRI-ju, seveda pa tudi kje drugje, na kakšnem drugem faksu ... ",
+    "user": "lebdim"
+  },
+  {
+    "message": " lebdim je 13. jan 2014 ob 10:16 izjavil:javo se ponavadi učijo na FRI-ju, seveda pa tudi kje drugje, na kakšnem drugem faksu ...  Če sem prav slišal, so na FRI za začetne programerske predmete prešaltali na Python. ",
+    "user": "Arto"
+  },
+  {
+    "message": "Torej....  java je v resnici zelo fina za zacetnika, ker je objektna in je podobna c-ju (oz c++), ki sta dokaj industrijska standardna, a ni tako kompleksna (ni ti potrebno memorija rihtat stalno in memory leakov pazit).  Kar se pa tvojega programa tice, jest bi se lotil nekako takole:    import java.util.Scanner;\n\n\npublic class Menjalnica {\n\t\n\tpublic static void main(String[] args) {\n\t\tScanner sc = new Scanner(System.in); //Torej inicializacija razreda, za branje iz standardnega vhoda (System.in)\n\t\t\n\t\tSystem.out.println(\"Vnesi stevilo cekinov v EUR: \");\n\t\tlong eur = sc.nextLong();\t//Beremo eure\n\t\t\n\t\tSystem.out.println(\"Vnesi zeljeno valuto, v katero pretvarjas: \");\n\t\tString valuta = sc.next();\t//Beremo ciljno valuto\n\t\t\n\t\tconvert(eur, valuta);\n\t\t\n\t\tSystem.out.println(\"***********************\");\n\t\tmain(null);\t//Ponovno zazenemo program (ce ti je vsec rekurzija ;)\n\t}\n\t\n\tstatic void convert(long eur, String valuta){\n\t\tdouble converted = 0;\t//inicializacija\n\t\tif(eur > 0){\n\t\t\tswitch (valuta) {\n\t\t\tcase \"CHF\":\t//nastejes case za valute in izracunas\n\t\t\t\t converted = eur*1.23;\n\t\t\t\t break;\n\t\t\tdefault:\t//Se prozi, ce String valuta ne ustreza nobenemu od nastetih tecajev\n\t\t\t\tSystem.out.println(\"Neznana valuta.\");\n\t\t\t\treturn; //Zaradi return stavka ti ni potrebno printa, ki sledi spodaj \"ifati\"\n\t\t\t}\n\t\t\tSystem.out.printf(\"%d EUR = %.2f %s\\n\", eur, converted, valuta);\t//%d nakazuje celo stevilo, %f decimalno (%.2f na dve decimalki zaokrozeno\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t//%s  nakazuje string, \\n pa novo vrstico\n\t\t}else{\n\t\t\tSystem.out.println(\"Vnesite pozitivno vrednost za EUR\");\n\t\t}\n\t}\n\n}\n  Namenoma ti nisem dal popolnoma resene naloge, lahko pa si s tem pomagas, da naredis svojo :) ",
+    "user": "vraGG_"
+  },
+  {
+    "message": "to sem ze resil, sicer ne na tak nacin.Tvoj nacin je bolj premisljeno narejen... Se nekaj me zanima a mi znas malo razloziti rekurzijo. Jaz vem da se pri rekurziji gre za to da klices metodo v metodi, samo mi nije jasno kdaj jo lahko uporabim(ce mi lahko razlozis skozi primer)in koliko se uporablja v praksi taksen nacin programiranja.  Hvala. ",
+    "user": "fantom333"
+  },
+  {
+    "message": "npr. da imaš za napisati rekurzivno funkcijo fakulteta(stevilo), ki je vhodni parameter ... ti bom zapisal kar v pascalu ...   function fakulteta(st: integer):integer;  begin  if ((st = 0) or (st = 1)) then  fakulteta:=1  else  fakulteta:=st*fakulteta(st - 1); end; ",
+    "user": "lebdim"
+  },
+  {
+    "message": " fantom333 je 13. jan 2014 ob 14:09 izjavil:to sem ze resil, sicer ne na tak nacin.Tvoj nacin je bolj premisljeno narejen... Se nekaj me zanima a mi znas malo razloziti rekurzijo. Jaz vem da se pri rekurziji gre za to da klices metodo v metodi, samo mi nije jasno kdaj jo lahko uporabim(ce mi lahko razlozis skozi primer)in koliko se uporablja v praksi taksen nacin programiranja.  Hvala.   Pozdravljen,  lepo, da ti je koda jasna. Kot si ze sam ugotovil gre pri rekurziji za veckratno klicanje metode znotraj same sebe. Uporablja se obicajno takrat, ko je problem primeren za rekurzijo (po naravi rekurziven problem). Preden se spustim v to naj ti se omenim, da se VSAKO rekurzijo da napisati kot iteracijo, a tega vcasih ne pocnemo, ker je iterativna koda lahko zelo kompleksna. Vcasih pa je to vseeno potrebno storiti, ker gredo rekurzivni klici na \"stack\" (tako, kot ce bi polagal roke eno na drugo, dokler ne prides do tiste roke, kjer bi se rekurzija zakljucila in vrnila vrednost. Torej najprej ti najvisja roka vrne vrednost v roko, ki je pod njo in tako naprej), ta pa vcasih ni dovolj velik (stack overflow error).  Nekaj klasicnih rekurzivnih problemov: -Solski primer je racunanje Fibonacijevega zaporedja (kjer je rezultat funkcije rezultat njenih predhodnic). Meni osebno je bil ta v nekoc tezak za razumet -Recimo tak primer bi bilo preiskovanje direktorijev v racunalniku. Postavis se v mapo. Pogledas vse njene podmape (in tako naprej, dokler ni vec podmap) (odpri CMD in napisi \"cd \\.\" (to te postavi v root diska), potem pa napisi ukaz \"tree\" (ce bi bil rad se bolj hacker pa pred tem napisi se \"color a\" :P)). To je meni lep prikaz rekurzije -Preiskovanje dreves (pa ne tistih, ki se jih posadi) in grafov (ne tistih, ki jih naredis iz preglednice)  Pa se doticni program v javi kot funkcija (pozor, ne smes racunati prevec velikih fakultet, ker presezejo velikost integerja).   public int fact(int a){\n    return((a>1)? a*fact(a-1): a); //to je pa inline if stavki\n}\n (kode nisem preverjal, ampak mislim, da bi morala delat. ",
+    "user": "vraGG_"
+  },
+  {
+    "message": "res je, rekurzija se uporablja predvsem pri programiranje dreves (binarnih iskalnih, AVL,kopica...) itd. ... ",
+    "user": "lebdim"
+  },
+  {
+    "message": "pomoje pa se na FRI-ju učijo kar javo že od začetka ...    Arto je 13. jan 2014 ob 11:04 izjavil:lebdim je 13. jan 2014 ob 10:16 izjavil:javo se ponavadi učijo na FRI-ju, seveda pa tudi kje drugje, na kakšnem drugem faksu ...  Če sem prav slišal, so na FRI za začetne programerske predmete prešaltali na Python.  ",
+    "user": "lebdim"
+  },
+  {
+    "message": "uni ma uvod v programiranje v javi, vss v pythonu ",
+    "user": "ragezor"
+  },
+  {
+    "message": " vraGG_ je 13. jan 2014 ob 18:35 izjavil: ...    public int fact(int a){\n    return((a>1)? a*fact(a-1): 1); //to je pa inline if stavki\n}\n  tkole je pravilno. se bolj pravilno bi bilo ce nebi dopuscal negativnih cifer. ",
+    "user": "ragezor"
+  },
+  {
+    "message": "Torej gospod, ki to sprašuje hodi na fri? (se opravičujem za offtopic) ",
+    "user": "mladec"
+  },
+  {
+    "message": "avtor ni povedal, na kateri faks hodi ... zato sem pač sklepal da na enega izmed računalniških smeri (FRI / FERI / kakšen drug računalniških faks) ",
+    "user": "lebdim"
+  },
+  {
+    "message": "a je to pomembno na katerem faksu studiram? ",
+    "user": "fantom333"
+  },
+  {
+    "message": "logika Fibonacijevega zaporedja mi je jasna samo ne vem kako bi napisal nerekurzivno...   a mi lahko nekdo pomaga.  hvala vsema. ",
+    "user": "fantom333"
+  },
+  {
+    "message": "faks na katerega hodiš nima veze, ampak tudi programski jezik v katerem pišeš nima veze ",
+    "user": "detroit"
+  },
+  {
+    "message": " fantom333 je 15. jan 2014 ob 03:02 izjavil:a je to pomembno na katerem faksu studiram?   Ne. ",
+    "user": "mladec"
+  },
+  {
+    "message": " fantom333 je 15. jan 2014 ob 03:10 izjavil:logika Fibonacijevega zaporedja mi je jasna samo ne vem kako bi napisal nerekurzivno...   a mi lahko nekdo pomaga.  hvala vsema.   ja kaj rabis eno for zanko pa dve spremenljivki  x1 = 1 x2 = 1 for i = od 1 do (kero fibonacijevo cifro hoces) { temp = x1 + x2 x1 = x2 x2 = temp }  return x2  nekaj takega. nisem testiral ampak ti mas verjetno vec kot 2 min cajta pa bos ze pogruntal ce je kje napaka ane. ",
+    "user": "ragezor"
+  },
+  {
+    "message": "ni potrebno toliko komplicirati pri takih nalogah ... če je naloga dosti bolje izpeljana rekurzivno, naj se naloga sprogramira na rekurzivni način. pri fibonaccijevem zaporedju velja enačba:  a1=1, a2=1 ter an = an-1 + an-2 ...    torej delček kode:   if ((n==1)||(n==2)) { fib=1 } else {  fib=fib(n-1)+fib(n-2); } ",
+    "user": "lebdim"
+  },
+  {
+    "message": "\"komplicirati\"  iterativna koda je za moje pojme cist lahko razumljiva. mamo dve spremenljivki in ju sestevamo skupaj. tko kot ce gres na roke racunat.  btw, fibonacija implementirati rekurzivno je zelo slabo. ne samo to, da je rekurzija pocasnejsa zaradi alociranja novega stacka pri vsakem klicu metode, je tukaj se problem samega rekurzivnega algoritma, ki si podvaja delo.  vzamimo za primer fib(10), ki bo klical fib(9) in fib(8)  fib(9) bo klical fib(8) in fib(7) in tukaj je problem. fib(8) klicemo dvakrat. in ker klicemo fib(8) dvakrat klicemo fib(7) trikrat (enkrat od fib(9) in dvakrat od fib(8)... in tako naprej. to ma za posledico, da je rakurzivna implementacija dosti dosti pocasnejsa od iterativne. ",
+    "user": "ragezor"
+  },
+  {
+    "message": "Narediš tail recursive funkcijo pa ni problema z brzino. ",
+    "user": "celada"
+  },
+  {
+    "message": "Če je problem s hitrostjo uporabiš formulo: Fibonacci number @ Wikipedia ",
+    "user": "win64"
+  },
+  {
+    "message": "NE.  kot prvo funkcije takega tipa  f(x) { return f(x-1) + f(x-2) }  ne gre tail optimizirati  torej jo moras prepisati na tako funkcijo, ki jo gre. kar ni lahko.  kot drugo, na novo napisana funkcija oz algoritem je se vedno lahko dosti pocasnejsi  kot tretje, java nima tail optimizacije ",
+    "user": "ragezor"
+  },
+  {
+    "message": "Ja sem ravno prebral, da nima in potem niti ni poante da to delaš rekurzivno. ",
+    "user": "celada"
+  },
+  {
+    "message": "Fibonaci rekurzivno je samo vaja iz rekurzije in kot tako moramo jemat ta algoritem. Tail recursion ne resuje nicesar, ker ni problem v stacku ampak v tem, da ima fibonacci za N priblizno 2^N klicev. Tega ne resis s tail optimizacijo, ampak z memoizacijo.  Se nekaj Ragezor: Method call stack praviloma ne alocira (zelo redko), ampak se ga le postavlja. ",
+    "user": "Spura"
+  },
+  {
+    "message": "nekaj primerov je tipičnih pri uporabi rekurzij ... (npr. hanojski stolpi, fibonaccijevo zaporedje, fakulteta ....), tako da pri teh primerih naj se uporabi rekurzija.  sicer pa se rekurzija najbolj uporablja pri programiranju dreves (binarnih iskalnih, 2-3, AVL drevesa, tudi pri kopici, itd....), vendar je to že bolj del predmeta algoritmov in podatkovnih struktur. ",
+    "user": "lebdim"
+  },
+  {
+    "message": " Spura je 15. jan 2014 ob 14:18 izjavil:Se nekaj Ragezor: Method call stack praviloma ne alocira (zelo redko), ampak se ga le postavlja.   Ne razumem tega. Z alociranjem sem mislil pac, da se za vsak klic funkcije ustvari nov okvir na stacku. Verjetno sem se slabo izrazil. Kaj mislis s tem, da se ga postavlja? ",
+    "user": "ragezor"
+  }
+]

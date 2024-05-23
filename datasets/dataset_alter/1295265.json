@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Omejitev upstreama za 1 IP v DD-WRT",
+    "content": "A se da (in kako) v DD-WRT na ASUS WL500g Premium routerju nastaviti maksimalno višino upstream bandwidtha, ki jo določen IP (ali mogoče še bolje, MAC) sme uporabljati? Nekaj sem gledal QoS tab, ampak se mi zdi, da to nekako ni to (pa menda tudi deluje ne pravilno). Potreboval bi nastavitev, da za določeno mašino (definirano bodisi po IP bodisi MAC) dovoli maksimalen upstream npr. 256 kbit (katerekoli servise ali število povezav) in pika.",
+    "author": "Commodore",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Omejitev upstreama za 1 IP v DD-WRT",
+    "content": "Tukaj mislim da je lepo opisano:\nEnsure a Fast Internet Connection When You Need It \n\nPod MAC priority vpišeš MAC naslov računalnika, ki bi ga rad omejeval, in ga daš v skupino \"Bulk\". To pomeni, da bo imel samo toliko pasovne širine, kot je bo ostalo na voljo (torej da ne bo upočasnjeval ostalih). Pomembno je samo da v QoS Settings vpišeš pravilne vrednosti najvišje možne hitrosti.\n\nJaz sicer v te namene uporabljam Tomato, kjer je vse skupaj malo bolj pregledno in lahko nastavljaš tudi količinske omejitve (npr. da so prenosi do 100K hitri - spletne strani, nad 100K - download - pa gredo v počasnejšo skupino).",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Omejitev upstreama za 1 IP v DD-WRT",
+    "content": "Sem probal, pa sem izgleda nekaj zajebal, ker je bil latency tudi iz moje mašine v rangu 1100-3100 ms in celo SSH do routerja je bil počasen kot na dial-up modemih...\nAli zadošča vnos MAC samo računalnika, ki se ga omejuje? In ni potrebno našteti še vseh ostalih in jih dati pod Exempt? Pod QoS Settings sem vnesel 8000 kbps downlink in 256 kbps uplink (linija je sicer ca. 12/1 mega) - po moji logiki bi potem vsi ostali računalniki imeli polno 12/1 hitrost, navedeni pa 8/256k?",
+    "author": "Commodore",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Omejitev upstreama za 1 IP v DD-WRT",
+    "content": "Ne te nastavitve so za vse, se pravi za celo linijo. Nastaviti moraš malo manj, kot je zmožna tvojalinija. S tem dosežeš to, da so čakalne vrste pri tebi ne na na ISP strani. s tem se zmanjša latence. Potem pa lahko še nastavljaš, da imajo določeni servisi/odjemalci večjo ali manjšo prioriteto. To je pa tudi vse. Za točno omejitev za posameznega odjemalca, pa je treba narediti ročno s  tc ukazom , ki pa je malo zapleten. Pro verzija dd-wrt pa ima baje tudi podporo, da to delaš preko GUI.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Omejitev upstreama za 1 IP v DD-WRT",
+    "content": "Torej če v obstoječem stanju navedem tisti MAC, ki ga želim omejiti, v skupino npr. \"Standard\", eno ali več drugih mašin pa v \"Exempt\", bi načeloma tisti v Standard moral imeti manjši bandwidth, ko bi katerikoli iz Exempt pobral več? Oz. ko je priključen samo tisti v Standard, lahko ta izkorišča celotno pasovno širino up/down, ko pa pride v obratovanje nekdo iz Exempt, lahko slednji pokuri celotno (oz. kolikor rabi), medtem ko se v tistem trenutku na Standard zniža razpoložljivost?",
+    "author": "Commodore",
+    "author_level": "Fizikalc"
+  }
+]

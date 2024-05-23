@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "IGo Primo (Android) problem - Out of Memory",
+    "content": "Pozdravljeni,\n\nNaj naprej opišem glavne podatke za moj problem.\nTelefon: Samsung Galaxy S2, Android 4.1.2 (Simobil, I9100BULS1), nerootan\nNavigacija Software: Igo Primo 9.6.22.290143, Mar 27 2013\nNavigacija je v celoti nameščena na zunanjo SD kartico (32 Gb), v direktorij IGo. Dodani so še zemljevidi za celo Evropo, POI, 3D,......\n\nProblem se pojavi, ko pričnem z iskanjem kakšne točke in sicer preko menija Najdi &#8211; Najdi Točke &#8211; Iskanje po meri &#8211; v mestu - .......\nKo vpišem mesto in nato izberem še kaj naj poišče, mi izpiše \nERROR\nOut Of Memory\nRequested: 3427255137\nCache: 444068\n\nProgram postane neaktiven (zamrzne) in po parih sekundah se IGo avtomatsko zapre.\n\nAli ima kdo kakšno idejo, kje bi lahko bil problem.\n\nHvala in LP",
+    "author": "Atomic",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "IGo Primo (Android) problem - Out of Memory",
+    "content": "lahko prosim prilepiš vsebino sys.txt?",
+    "author": "Abomination1",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "IGo Primo (Android) problem - Out of Memory",
+    "content": "Takole izgleda sys.txt\n\n[device]\ndevtype_fallback_to_model=1\ntype=\"android\"\n\n[android]\ncreate_sdcard_dir=1\ncheck_folders_after_rebuild=0\ngetdeviceid_gemini=1\nhas_physical_home_button=0\ncheck_for_dead_links=1\nshow_status_bar=1\nfullscreen=1\ntablet=1\n\n[project]\n;name=\"igo9_android_gpsandmore\"\n\n[gps]\nlocation_net=1\nlocation_gps=1\n;this should be in android igo9 config:\nbackground_navigation=1\nlocation_log=0\nlocation_log_filename=\"gpslog/LocationManager\"\n\n[debug]\nskip_eula=1\nimei=\"000000000000000\"\nexperimental_features=1\nshow_networkservices=1\n\n[folders]\nlinked_root_list=\"/sdcard2/iGO /sdcard/iGO /sdcard/sd/iGO /sdcard/external_sd/iGO /mnt/sdcard/iGO /mnt/sd/iGO /mnt/iGO /storage/iGO /mnt/sdcard/sd/iGO /mnt/sdcard/external_sd/iGO /mnt/exsdcard/iGO /mnt/sdcard/extStorages/SdCard/iGO /ext_card/iGO /mnt/ext_card/iGO /mnt/extSdCard /mnt/ext_sd\"\n;has_secondary_root=0\n;secondary_app=\"android_linked_root\"\n;user_backup_path=\"android_linked_root\"\n\n[rawdisplay]\ndriver=engine\nscreen_xy=\"auto\"\n\n[feature]\nback_exit=1\nback_button=1\n\n[interface]\nextra_settings=1\n\n[other]\ndemo_enabled=0\n\n[2d]\ntraffic_lights=1\n\n[3d]\nusepolyfarroads=0\n\n[hnr]\nignored_missing_country_ids=*\n\n[route]\nhnr_ignored_missing_country_ids=*\n\n[map_update_checker]\nenabled=0\n\n[poi]\npicturepoi_scan=\"/mnt/sdcard/myPictures\"\npicturepoi_nonrecursive_scan=\"/mnt/sdcard/myPictures\"\n\n;TEMPORARY\n[sound]\ntemp_dir=/data/data/com.nng.igoprimoisr.javaclient\ncsv_voice_enabled=1\nding_muted=1\n\n[warning]\nspeedcam_enabled=1\nspeedcam_warning=1\nis_spoken=0\n\n[network]\navailable=1\n\n[naviextras]\nboot_service_address=\"http://zippy.naviextras.com/services/index/rest/2/boot\"\n\n[tmc-http]\nenabled=1\nstart=1\nservers.size=1\nservers[0].url=\"http://zippy.naviextras.com/services/tmclite/data/nng-igo-tmc-iphone/0/\"\n\n[google]\nenabled=1\nstart=1\nservers.size=1\nservers[0].url=\"http://zippy.naviextras.com/services/tmclite/data/nng-igo-tmc-iphone/0/\"\n\n[services]\nserver_addr=\"https://android.naviextras.com/\"",
+    "author": "Atomic",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "IGo Primo (Android) problem - Out of Memory",
+    "content": "Glede na to, da ni tablica lahko spremeniš tako:\n\n[android]\ncreate_sdcard_dir=0\ncheck_folders_after_rebuild=0\ngetdeviceid_gemini=1\nhas_physical_home_button=0\ncheck_for_dead_links=1\nshow_status_bar=0\nfullscreen=0\ntablet=0",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  },
+  {
+    "ctx": "IGo Primo (Android) problem - Out of Memory",
+    "content": "Z uporabnikom @Atomic sva ugotovila, da ta problem reši izbris mape SAVE.",
+    "author": "popotnik",
+    "author_level": "GPS presidente"
+  }
+]

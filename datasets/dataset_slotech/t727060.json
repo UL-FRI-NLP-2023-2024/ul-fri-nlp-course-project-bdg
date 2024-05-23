@@ -1,0 +1,106 @@
+[
+  {
+    "message": "Mojstri pri enih znancih so blokirali varnostno dober RDP (Remote Desktop) in se zdaj uporablja varnostno \"vemo kaj je bilo\" TV (TeamViewer).  Blokada je na PC-ju samem (ne vem še točno, ali kaj v registry ali GPO , v glavnem opcija za vklopit RDP je v nastavitvah siva - gre za Windows 10).  Je tu kaka možnost, razen da se odgovornega prepričuje?  Da ne omenim, da je blokada le na novih win10, na starih PC-jih pa seveda ne...  Razlog pa je zaradi feature-jev (RDP napram TV): - multimonitor dela takoj in brez komplikacij - TV kaže zmanjšano remote sliko, čeprav je izbran View Mode 1:1 - ponavadi boljše performanse - RDP je del Windows in je tako avtomatično vedno up-to-date (varnost...) - dela z originalnim Windows user/pass namesto še enim dodatnim - user je navajen na RDP - in še kaj  Obstaja kaki tretji izdelek, ki ima podobne feature-je? Kakršnakoli druga ideja? (razen prepričevanja \"prepričanega\"?) ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Če dostopate do RDP preko VPN, potem res ni razloga, da se ga onemogoči, sploh če uporabljate dvofaktorsko avtentikacijo.  Če pa do RDP dostopate direktno, samo z port forwardingom, potem so vam še ušesa za potrgat, ne samo za onemogočiti RDP. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 28. jul 2018 ob 00:35 izjavil:Če dostopate do RDP preko VPN, potem res ni razloga, da se ga onemogoči, sploh če uporabljate dvofaktorsko avtentikacijo.  Če pa do RDP dostopate direktno, samo z port forwardingom, potem so vam še ušesa za potrgat, ne samo za onemogočiti RDP.   haha lepo ti je napisal SeMiNeSanja, ni kej dodat :) ",
+    "user": "greatdrakon"
+  },
+  {
+    "message": " SeMiNeSanja je 28. jul 2018 ob 00:35 izjavil:Če dostopate do RDP ...  Ne \"dostopamo\" do DRP. To je bistvo problema. Išče se primerljiva rešitev. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Vpn + rdp pa maš vse rešeno. Mi uporabljamo tak način pa je super. ",
+    "user": "mzakelj"
+  },
+  {
+    "message": "---> RDP je izklopljen ",
+    "user": "MrStein"
+  },
+  {
+    "message": "LogMeIn baje podpira custom resolucije. Probam: - ne, ne gre nastavit več (testiram z oddaljenim PC-jem, ki ima mikro monitor s resolucijo 1280x800, torej na 27\" monitorju imam ves GUI stisnjen v eno malo okence) - opcija \"Blank Screen\" ne deluje, mimoidoči vidijo, kaj delam (niti po namestitvi njegovega gonilnika ne deluje) ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Enako GoToMyPC. (nekdo je podal idejo, da tadva imata taki feature, očitno nimata) ",
+    "user": "MrStein"
+  },
+  {
+    "message": " SeMiNeSanja je 28. jul 2018 ob 00:35 izjavil:Če dostopate do RDP preko VPN, potem res ni razloga, da se ga onemogoči, sploh če uporabljate dvofaktorsko avtentikacijo.  Če pa do RDP dostopate direktno, samo z port forwardingom, potem so vam še ušesa za potrgat, ne samo za onemogočiti RDP.  +1 ",
+    "user": "aleksander10"
+  },
+  {
+    "message": "Ena dobra debata o RDP in varnosti (omenjajo tudi TV pogosto): https://security.stackexchange.com/ques... ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Kako varno pa je imet odprte porte za VPN?  Za to reč verjetno obstajajo boti, virusi, karkoli podobnega z namenom, da bi izkoriščal varnostne luknje v VPN implementaciji, ki jo uporabljaš? ",
+    "user": "b3D_950"
+  },
+  {
+    "message": " b3D_950 je 31. jul 2018 ob 16:34 izjavil:Kako varno pa je imet odprte porte za VPN?  Za to reč verjetno obstajajo boti, virusi, karkoli podobnega z namenom, da bi izkoriščal varnostne luknje v VPN implementaciji, ki jo uporabljaš?  Če ne uporabljaš PPTP, ostalo pa imaš posodobljeno, poleg tega pa še uporabljaš dvofaktorsko avtentikacijo, se ne rabiš obremenjevat.  Vedno pa je vprašanje, kako imaš vse skupaj implementirano, kaj uporabljaš kot VPN prehod. Lahko imaš zadevo na usmerjevalniku, požarni pregradi, nekem ločenem strežniku (Linux, Windows,...). Variant je tu precej. Tako pa potem tudi lahko niha stanje posodobljenosti od variante do variante. Vsekakor pa se je za izogibat PPTP, ki je že zdavnaj odslužil svoje.  Tako kot pri vsakem oddaljenem dostopu, pa je vedno uporabnikovo geslo tisti največji faktor tveganja. Tega pa zmanjšaš z uporabo dvofaktorske avtentikacije. Zdaj je najbolj moderno, da imaš kar push notifikacijo na mobitelu, tako da ti ni treba pretipkavat tistih generiranih številk. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Ali pač omejiš dostop iz določenega IP-ja. ",
+    "user": "espacious"
+  },
+  {
+    "message": " - RDP je del Windows in je tako avtomatično vedno up-to-date (varnost...)  ne ga srat. RDP je čist ok za uporabo, vendar strogo in vedno za VPN strežnikom. sicer se boš znašel med rezultati na Shodanu in jaz bom potem preveril, kako varna je vaša implementacija. :-) na splošno, vsi servisi ki niso namenjeni širiši javnosti nimajo kaj bit dostopni preko interneta, ker jih bo \"širša javnost\" našla in poskusila izkoristit - explotation, brute force napadi, ni da ni.  Kar se ostalega remote software-a tiče je vse isto sranje, s tem, da ima teamviewer verjetno daleč največ funkcij in je najbolj optimiziran za delovanje na Windows boxih.  Dokler se pri teamviewerju ne odločijo, da software uporabljate v komercialne namene ga pač uporabljaj, ker je zastonj. Ko boš pred problemom licenc boš itak še enkrat prišel na ta forum, saj so ogabno drage.  Če si ti IT guy in je RDP izklopljen, boš potrubleshootov na googlu in ugotovil čemu je tako. verjetno group policy, ampak kdo ga je štimal? sicer predlagaj IT-ju vklop in rešitev z vpn.  tldr; najboljša dolgoročna rešitev je imho pravilna implementacija in administracija VPN strežnika (ki je lahko zastonj, kar se tiče programske opreme in strežnika - OpenVPN). Povezovanje in delo preko RDP je tako trivialno. Predlagaj IT-ju. ",
+    "user": "Saul Goodman"
+  },
+  {
+    "message": "popravljena verzija zgornjega posta, ker sem še enkrat prebral OP-jev post. :-)  tldr; najboljša dolgoročna rešitev je imho pravilna implementacija in administracija VPN strežnika (ki je lahko zastonj, kar se tiče programske opreme in strežnika - OpenVPN). Povezovanje in delo preko RDP je tako trivialno. Predlagaj IT-ju, oz. tem mojstrom. namest routerja lahko kako pfsense škatlco postavte v pisarni, pa imate rešeno 1,2,3. qotom Q355G4 poglej na aliexpressu.  upam, da se ne bo seminesanja preveč vžigal na ta predlog.  edit2: dejansko lahko z raspberry pi nardiš vpn strežnik, če ne potrebuješ velikih hitrosti preko vpn. ene 8mbit/s ga lahk neseš z openvpn na minimal raspbian inštalaciji. ",
+    "user": "Saul Goodman"
+  },
+  {
+    "message": "Vprašanje, kaj je g.Kamen pravzaprav želel slišati.  'Težavo' lahko odpravi v Group Policy, vendar tukaj niti ni tako zanimivo vprašanje TV vs. RDP oz. kako nazaj do RDP.   Bolj zanimivo vprašanje je kako vraga kar 'eni mojstri' nekaj po GPO šarajo.  Mogoče pa le niso bili to kar eni mojstri ampak je v podjetju padla taka komanda, ker so nekje prebrali, da je RDP lahko resen problem. Če so ti 'mojstri' izklopili RDP po navodilu vodstva podjetja ali v skladu z varnostno politiko podjetja, potem je to pač stvar politike in kot navaden uporabnik kaj dosti ne boš naredil, če se ne preleviš v politika in izpogajaš svoje želje.  Lahko pa bi prvi prispevek tudi razumel tako, da je nek zunanji izvajalec kar samovoljno uvedel te spremembe. Vendar nekako dvomim v ta scenarij. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 31. jul 2018 ob 20:28 izjavil:Vprašanje, kaj je g.Kamen pravzaprav želel slišati.   Ni, ker je bilo napisano. Evo še enkrat: Obstaja kaki tretji izdelek, ki ima podobne feature-je? (Kakršnakoli druga ideja?) ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Kjer je RDP nekoliko bolj množično uporabljen, prisegajo na RDP Gateway, kot tisto 'ultimativno' rešitev. Najbolje v kombinaciji z dvofaktorsko avtentikacijo. Gateway reši problem kupa portov, ki se jih mora sicer forwardirat na razne konce in kraje, vse skupaj gre na port 443 - uporablja SSL tunel. Ostane le problem z geslom, ki pa ga rešuješ z dvofaktorsko avtentikacijo.  Kjer se gre za peščico občasnih uporabnikov, je RDP Gateway overkill. Greš na VPN + RDP.  TV....so imeli (baje) neke težave. Se je precej šušljalo... recimo da drži tisti \"kjer je dim je tudi ogenj\". Vendar se je to poleglo, tako da so bodisi kaj pokrpali, ali pa se je trač izpel....  Po moje je zadeva danes razmeroma ok.  Mene predvsem moti, kadar si uporabniki sami nameščajo TV (ali kaj podobnega). Takrat nikoli ne moreš biti prepričan kako je zadeva skonfigurirana, kakšno geslo je uporabnik postavil,....da ti ni nazadnje odprl zadnja vrata v podjetje.  Druge alternative? Poglej na link... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Glede varnosti jaz TV ne bi ravno zaupal. Ves promet gre prek njihovih strežnikov, tako da v bistvu ne moreš vedeti, kaj se s tem prometom sploh dogaja in kako je zadeva zavarovana.  ConnectWise Control je npr. v redu alternativa (tako TV kot LogMeIn), ker jo lahko namestiš na svoje strežnike. ",
+    "user": "darkolord"
+  },
+  {
+    "message": " SeMiNeSanja je 1. avg 2018 ob 00:07 izjavil: Druge alternative? Poglej na link...  Useless, ker ni spiska feature-jev, kaj šele podrobnosti.  Pomemben je predvsem prvonašteti: multimonitor dela takoj in brez komplikacij Ter soroden: na 4K monitorju je 4K slika, ne pa okence 1024x768 ",
+    "user": "MrStein"
+  },
+  {
+    "message": " darkolord je 1. avg 2018 ob 00:30 izjavil:Glede varnosti jaz TV ne bi ravno zaupal. Ves promet gre prek njihovih strežnikov, tako da v bistvu ne moreš vedeti, kaj se s tem prometom sploh dogaja in kako je zadeva zavarovana.   Lahko postavis svoj TV server. ",
+    "user": "user-pass"
+  },
+  {
+    "message": "Link? ",
+    "user": "darkolord"
+  },
+  {
+    "message": "Nameščen TV ima opcijo, da posluša za povezave direktno, brez obvoza na \"oblak\". Nekje v options. (neki \"listen locally\", google it...) ((vsaj tako pišejo po forumih, sam nisem preveril, bom pa verjetno kmalu)) ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Verjetno to? https://community.teamviewer.com/t5/Kno... ",
+    "user": "misek"
+  },
+  {
+    "message": " MrStein je 1. avg 2018 ob 12:59 izjavil:Nameščen TV ima opcijo, da posluša za povezave direktno, brez obvoza na \"oblak\". Nekje v options. (neki \"listen locally\", google it...) ((vsaj tako pišejo po forumih, sam nisem preveril, bom pa verjetno kmalu))  In kaj s tem profitiraš? Sicer promet ne bo šel čez TV strežnike, boš pa spet moral odpirat in forwardirat porte na požarni pregradi. Zna biti še bolj nepraktičen kot RDP. Bo namesto RDP porta izpostavljen TV port, kjer se spet lahko nekdo poskuša z ugibanjem gesla....  Pomagaš si spet lahko z VPN povezavo, da ti ne bo treba odpirat in preusmerjat portov.  Skratka....na koncu prideš do zaključka, da je čisto vseena figa kaj uporabljaš, ker mimo VPN povezave takointako ne moreš, če hočeš karkoli naresti prav. Pa še 2FA na VPN-u nebi škodovala.  Pa kaj je 'mojstrom' res tako težko razložiti, da za določeno delovno mesto (verjetno je to kakšno posebno) TV pač ni uporaben, ker .........(dolg spisek). Naj uporabnik zahteva, da se mu nazaj vklopi RDP in omogoči dostop do njega preko VPN povezave. Če se vidi, da se ne gre za kaprico in se da zadevo izvesti da bo še vedno varna, ne vidim (tehničnega, racionalnega) razloga, da 'mojstri' nebi ustregli. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 1. avg 2018 ob 00:07 izjavil: Druge alternative? Poglej na link...  Probal AnyDesk.... po nekaj urah nehal delovati. Status: desk_rt_ipc_error (to je sicer zgleda neka \"catchall\" napaka, sodeč po skopih informacijah na web-u) ",
+    "user": "MrStein"
+  }
+]

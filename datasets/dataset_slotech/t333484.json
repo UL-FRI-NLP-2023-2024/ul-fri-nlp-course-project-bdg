@@ -1,0 +1,162 @@
+[
+  {
+    "message": "Torej izdelujem seminarsko nalogo, kjer bi rad izdelal evidenco delovnega časa. Malo sem razmišljal in ugotovil, da bi bilo verjetno prijetno delati v Javi v navezi z Accessom. Zanima me, če je potrebno za to (pre)veliko časa, da naredim do februarja - gre za maturitetno nalogo? Javo znam, Access poznam še kar dobro, ne vem pa kako bi združil. V javi bi naprimer naredil program za vnašanje in prikaz evidence itd., to pa bi shranjeval potem v Access bazo.  Any tip? ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Acces je last MS in je v kombinaciji z Javo precej čudna izbira. Poskusi raje z bazo, ki pride zraven OpenOffice-a, zelo podobno Access-u. Tam je java 'native', tudi glede licenčnine boš na varnem.  V vsakem primeru boš moral malo naštudirati JDBC. ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Hvala za odgovor ;)  No, Access sem si izbral zato, ker ga poznam vsaj malo, z OpenOffice bazami pa še nisem delal in bi me verjetno veliko bolj matralo kot pa če delam z Accessom.  No, našel sem tole JDBC-ODBC navezo in zadeva deluje, imam pa nekaj realizacijskih problemov... Ali naj za vsakega delavca izdelam eno tabelo in imam tam stolpce kot so prihod, odhod, ime, priimek? ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Na tvojem mestu bi naredil tabelo delavcev, in tabelo kjer belezis prihod in odhod. Potem pa to tabelo odhodov/prihodov povezes z delavci prek IDja delavca (foreign key). ",
+    "user": "Binji"
+  },
+  {
+    "message": "Priporočam da tale OpenOffice Base vsaj malo prekontroliraš. Moraš pa imeti nameščeno javo, da lahko sploh uporabljaš. Drugače je res podobno Accessu.   PS Itak so vse baze na tem svetu iste PPS Celo Oracle ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Eh, ce mu ze priporocate naj zamenja bazo. potem bo zaziher najbolj ajnfoh resitev kar JavaDB, ki je itak del JDK 1.6 in kasnejsih. Zakaj bi uporabljal eksterne zadeve, ce vgrajene delajo cisto OK? ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "No, tale evidenca je bila mišljena tako, da bi bila baza na administratorjevemu računalniku, ki bi lahko z accessom urejal vse skupaj, java aplikacija pa bi bila samo \"klient\" za prijavo in odjavo na nekem npr. službenem terminalu.   bernardv, hvala za priporočilo, bom se malo razgledal naokoli ... Dvomim sicer da se bom premislil, ker imam že izdelan nek približen osnutek v katerem uporabljam M$ Access    Imam pa problem, in sicer:  S temlem vnesem v tabelo \"Matej_Melnik\" v stolpec \"Datum\" in \"Prihod\" trenutni sistemski datum in sistemski čas. Deluje vse ok. Do tu..   Statement ukaz = con.createStatement();\nint a = ukaz.executeUpdate(\"INSERT INTO Matej_Melnik (Datum, Prihod)\nVALUES('\"+access.now(\"dd.MM.yy\")+\"','\"+access.now(\"H:mm\")+\"')\");\nSystem.out.println(\"Vneseno.\");\nukaz.close();  Ko se uslužbenec odjavi, bi rad vpisal sistemski časv stolpec Odhod. Čas se shrani, a v novi vrstici, namesto v prejšnji, kjer je že Datum in Prihod.  Problem je zato samo tale SQL query, ki nevem kakšen bi bil. Poskusil sem z sledečim, a neuspešno:  Statement ukaz = con.createStatement();\nint b = ukaz.executeUpdate(\"INSERT INTO Matej_Melnik where ID_Zapisa like '1' (Odhod)\nVALUES('\"+access.now(\"H:mm\")+\"')\"); To je seveda konkreten primer, da je ID_Zapisa 1.. Moralo bit biti nekako where Datum like \"26.11.2008\"...  Kakšen bi torej mogel bit query? Samo tale del: INSERT INTO Matej_Melnik where ID_Zapisa like '1' (Odhod) VALUES(...) ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "No, sem pogruntal tole s pomočjo googla, sam je kr trajal   Takole je sedaj z odjavo:  else if(izbira==2){\n       Statement ukaz = con.createStatement();\n       int b = ukaz.executeUpdate(\"UPDATE Matej_Melnik SET Odhod = '\"+access.now(\"H:mm\")+\"' where Datum =\n'\"+access.now(\"dd.MM.yyyy\")+\"'\");\n        System.out.println(\"Vneseno.\");\n         ukaz.close();\n}\n  ...ampak mi vrže ven napako java.sql.SQLException: Data type mismatch in criteria expression. Torej je problem z where Datum = '\"+access.now(\"dd.MM.yyyy\")+\".. V accessu mam format isti (dd.MM,yyyy)...  ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Format datuma v Accessu je 100110011010001....1   dd.MM.yyyy in podobno je stvar perspektive, odvisno od kod gledaš. Po navadi pri bazah oz v SQL-u prime nekaj takega: yyyy-MM-dd HH:mm:ss.0000, ampak tudi na to ne moreš računati zanesljivo. Zaradi tega obstaja parametriziranje. Uporabiš ps = con.prepareStatement(\"UPDATE xy set datum = ? WHERE ...), po tem daš ps.setDate(1, new Date()). new Date() ti da trenutni datum. Tisti tvoj access.now mi ni znan, lahko je to specifika, če delaš z Accessom in ravno zaradi takih specifik ima človek včasih težave. ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Saj vem, da si zacetnik ampak imeti tabelo za vsakega zaposlenega je precej slaba odlocitev. Binji ti je svetoval dosti boljso shemo. ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "No, sedaj imam eno tabelo kjer so info. o uslužbencih in eno, v kateri so beleženi prihodi in odhodi. Hvala za dosti bolj ugodno rešitev    Imam pa probleme z vnašanjem datumov v bazo.              SimpleDateFormat sdf = new SimpleDateFormat (\"dd.MM.yyyy\");\n           Date danes= new Date();\n            String datum=sdf.format(danes);\n            PreparedStatement ps = con.prepareStatement(\"INSERT INTO Prihodi_Odhodi (ID, Datum) VALUES(?, ?)\");\n            ps.setInt(1, 20);\n            ps.setString(2, datum);\n            ps.executeUpdate();\n  Zakaj zgornje ne deluje? Vsakič namreč dobim SQLException general error   Namesto ps.setString(...) sem poskusil tudi z ps.setDate(...), pa dobim error, da setDate ni prepoznana funkcija. ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Prosim za stack trace. ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "... Namesto ps.setString(...) sem poskusil tudi z ps.setDate(...), pa dobim error, da setDate ni prepoznana funkcija.  Poskušaš z java.sql.Date ali java.util.Date? Bi rekel da z util, kar ni prav.  Iz util v sql: dateSql = new java.sql.Date(dateUtil.getTime());  Oziroma kar trenutni sql date: trenutniDateSql = new java.sql.Date(System.currentTimeMillis()); ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "bernardv, tole za datum deluje super, ko dam naprimer samo System.out.println(datum); če pa želim vnesti v bazo, pa vseeno dobim General error, tako da sumim da je nekje drugje kaj narobe.  infiniteLoop, ne morem postat stack tracea, ker je edinini feedback ki ga dobim Exception: java.sql.Exception: General error  Poskusil sem tudi z čisto banalnim primerom, pa vseeno dobim tale general error. Primer kode tu:  if(izbira==1){\n  Statement st = con.createStatement();\n  st.execute(\"INSERT INTO Prihodi_Odhodi (ID) VALUES('1')\");\n   System.out.println(\"Vneseno.\");\n   st.close();    }\n  Tole bi moralo delat in js ne vidim nobene napake v kodi, zato ne vem zakaj se ne izvede   Pa še to: general error mi vrže ven le takrat, ko želim izvesti ta if stavek (za izbira=1); ostalo deluje vse. ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Saj java.util.Date na splošno deluje super, ampak če želiš datum vnesti v bazo rabiš pa java.sql.Date- Ta je sicer podedovan od util.Date-a, navzgor ga lahko kar cast-aš.   '1' ni int, to je string oz v DB jeziku CHAR(1). 1 je int. ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Počas dobivam občutek, da java vsebuje skrito kodo, ki prepoveduje normalno delo na računalniku z imenom c0dehunter     Zdaj deluje OK, ampak  java.sql.Date datum = new java.sql.Date(System.currentTimeMillis()); za datum mi vnese 17.6.1905  ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "A to ti vnese v bazo? Kaj pa ce datum izpises preden ga zapises v bazo?  npr.:  java.sql.Date datum = new java.sql.Date(System.currentTimeMillis()); System.out.println(datum);  kaj ti izpise v tem primeru? ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "Potem izpiše 2008-12-1, torej YYYY-MM-DD. V accessu imam nastavljen format na short date, ki pa je DD.MM.YYYY.   Danes sem v šoli profesorico za rač vprašal glede tega in je rekla, da je to odvisno tudi od Regional Settings v nadzorni plošči. Sem pogledal in mam tam tudi short date formata DD.MM.YYYY. ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Moraš razločiti med prikazom in vsebino. V bazi je datum vedno integer, vrednost v miliskekundah od nekega datuma v preteklosti. Zgleda, da imata Access in Java ta izhodiščni datum različen. Praktično pri vseh ostalih bazah bi se ti to ne bi zgodilo.  YYYY-MM-DD ali DD.MM.YYYY je samo privzeti prikaz datuma, če pogledaš datum direktno v bazo z nekim priloženim orodjem. Če greš na bazo npr. z javo to niti ni pomembno, ker se pretvorba iz integer v string zgodi na nivoju jave. Se pravi java v bistvu prebere iz baze integer, ki ga mora interpretirati kot datum. ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Zgleda, da imata Access in Java ta izhodiščni datum različen. Praktično pri vseh ostalih bazah bi se ti to ne bi zgodilo.  Tu se pa pojavi močen dvom o primernosti Accessa.. Zgleda, da bo res treba pogledat kakšen OpenOffice paket. Bom še malo pobrskal po netu, sem siguren da je kdo že naletel na tako oviro (in jo tudi uspešno prešel).  Hvala za pojasnila!!  ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Se vedno ti priporocam  JavaDB, ki pride skupaj z JDKjem ali pak  HSQLDB. Hsql mislim, da ze pride z GUI-jem za JavaDB pa lahko ponucas kakrsenkoli klient, ki podpira jdbc recimo  SQuirreL. Izbira je se vedno tvoja. ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "Kako MS Access shranjuje datum: http://support.microsoft.com/kb/210276  Ampak po razmisleku se mi zdi, da bi moral tvoj odbc-jdbc bridge to vseeno preračunati, da bi vse štimalo, pri branju in pisanju. ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Mogoce je to vprasanje malo mimo, ampak vseeno.  Ali obstaja funkcija v Accessu, ki ti vrne datum? Ce obstaj, zakaj ne klices te funkcije v insert stavku?  P.S. Mislim da je Date() funkcija. ",
+    "user": "xordie"
+  },
+  {
+    "message": "Uf, to pa sploh nism pomislu, xordie, hvala! Bom pogledal ko pridem domov, če se to da - to bi bila še najelegantnejša rešitev    Kako MS Access shranjuje datum: http://support.microsoft.com/kb/210276 Sem si malo pogledal, ampak ne najdem nič, kar bi mi pomagalo zaenkrat; je pa res da sem samo na hitro preletel zarad časovne stiske.. Bom še doma prečekiral. Če pa še vseeno ne bom našel rešitve, bom pa verjetno res uporabil kar JavaDB in SQuireL, čeprav z uporabo Accessa treniram tudi znanje, ki ga potrebujem v šoli (ja, še vedno raje plačujejo microsoftu, kot pa da bi uporabljali odprtokodne programe  ) ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Date() in Time() funkciji delujeta, kot morata. V primeru da bo kdo še imel kdaj podobn problem, tole je vse kar potrebuješ za datum in čas:  st.executeUpdate(\"INSERT INTO Prihodi_Odhodi (ID, Datum, Prihod) VALUES(\"+id+\", Date(), Time())\");\n  Imam pa še eno vprašanje glede Primary Key-a, pa bom postal kar sliko, da bo bolj razumljivo:   Glavna tabela je \"Zaposleni\", \"ID\" je Primary key. Druga tabela pa je Prihodi_Odhodi, ampak jaz bi želel da se ID nanaša na ID iz tabele Zaposleni. Če določim v tabeli \"Prihodi_Odhodi\" za Primary key ID, pa to seveda ni mogoče, ker so potem duplicate values. Kako bi potem to lahko naredil? ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Ponavadi se v tem primeru naredi takole: V tabeli prihodi_odhodi se doda se eno kolono in potem imas naprimer  PRIHODI_ODHODI: ------------------------ ID - primary key ZAPOSLENI_ID - foreign key DATUM PRIHOD ODHOD ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "Hvala  ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Ugotovil sem, da je tukaj neka čudna fora z PreparedStatement, bom dal kr delček kode:   String id_S=JOptionPane.showInputDialog(\"Tvoj ID:\");\nint id=Integer.parseInt(id_S);\nPreparedStatement ps=con.prepareStatement(\"SELECT ? FROM Zaposleni WHERE ID=?\");\n ps.setString(1, \"Kraj\");\n ps.setInt(2, id);\n ResultSet rs=ps.executeQuery();\n    while (rs.next()){\n    System.out.println(\"Pozdravljen \"+rs.getString(1));\n        }\n  To mi izpiše \"Pozdravljen Kraj\", namesto da bi izpisalo dejansko ime kraja, ne string \"Kraj\". Če pa PreparedStatement takole naštimam, deluje pa čist ok:  PreparedStatement ps=con.prepareStatement(\"SELECT Kraj FROM Zaposleni WHERE ID=?\");\n ps.setInt(1, id);\n  Kak je to možno?! ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "SELECT 'KRAJ' FROM ... vrne string 'KRAJ', to v bistvu delaš ti, samo prek parametra. SELECT KRAJ FROM ... vrne vsebino polja KRAJ  Vprašaje uporabljaj za vhodne parametre, pri WHERE. Pri imenih polj enostavno napiši ime polja v SELECT ali pa uporabi *. ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "Ja, ampak problem je ker je ime polja, ki ga zares potrebuje Ime in priimek, tu pa nastane problem zarad presledkov.  Verjetno bi bilo najboljše spremenit ime polja v npr. Ime_Priimek? Ampak vseeno me zanima kako bi to izvedel z PreparedStatement  ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Kak je to možno?!   Naredil bi tako, da bi sql stavek dal v svojo spremenljivko, ali še bolje, eksternaliziral v datoteko. Težava je v tem, da govoriš o dveh nivojih parametriziranja sql stavka - 1. nivo je oblika samega stavka, 2. nivo pa vrednosti parametrov že obliovanega stavka. Lahko narediš npr. takole :  private void blabla(String imePolja)\n{\n    String sql = \"Select {0} from zaposleni where id = ?\"; \n    sql = MessageFormat.format(sql, imePolja);\n    PreparedStatement ps=con.prepareStatement(sql);\n    ps.setInt(1, id);\n    ...\n}\n  Pa potem je fajn poskrbeti še za escape-anje sql stavka, da ne pride do nezaželenih dogodkov pri zlobnih uporabnikih.  EDIT: dodal citat, da se lažje vidi, na kaj repliciram. ",
+    "user": "kopernik"
+  },
+  {
+    "message": "Presledki v imenih polj niso običaj, dosti baz tega sploh ne dovoli. Raje preimenuj.  Lahko uporabiš tudi *.   Mislim, da lahko daš ime polja tudi v dvojne narekovaje. V javanskem stringu dobiš dvojni narekovaj z dvema dvojnima - \"SELECT \"\"ime priimek\"\" FROM...\" ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "kopernik, to verjetno pride prav pri kakšnih večjih aplikacijah, jaz pa ta prepared statement potebujem samo enkrat v celem programu, tako da se mi verjetno ne splača pisat posbeje metode.  Sem preimenoval ime polja, da je sedaj brez presledkov in je vse ok. Hvala obema, mata pir v dobrem  ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Še nekaj me zanima; uslužbenec se lahko sedaj večkrat prijavi in bosta potem duplicate vnosa z istim datumom (recimo da pozabi, da se je že enkrat prijavil - how lame is that  ). Zato sem šel mal raziskovat na google, našel nekaj rešitev, ampak mi nobena ne uspe. Najlažje se mi zdi da bi bilo z uporabo \"HAVING( COUNT(Datum)=0)\", verjetno bo bolj razumljivo v če dam cel stavek:  Statement st = con.createStatement();\nst.executeUpdate(\"INSERT INTO Prihodi_Odhodi (ID_usluzbenca, Datum, Prihod) VALUES(\"+id+\", Date(), Time()) HAVING(COUNT(Datum)=0);\");\n  Dobim nazaj tako banalno napako, ki vem da ni kriva za to in sicer \"MIssing semicolon (;) at the end on sql statement\". Mogoče sem zamešal vrstni red SQL ukazov, al pa sploh ni pravilno? ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "HAVING sodi po navadi k SELECT...GROUP BY. Jaz ga v INSERT-u še nisem videl. Na splošno se izogibaj ultra pametnim in kompliciranim SQL-om, če se kaj zakomplicira to raje reši v javi. V tvojem primeru to pomeni da naredi v javi dva SQL stavka, najprej poglej če se je že logiral, če se še ni ... ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "V tvojem primeru to pomeni da naredi v javi dva SQL stavka, najprej poglej če se je že logiral, če se še ni ... Tudi to sem že poskusil, pa mi ni ratalo in sem opustil   Hotel sem narediti tako, da bi z SELECT query-om izbral datum in id delavca, in jih shranil v int in String. Potem bi preveril če se ta datum ujema z datumom, ki bi ga dobil iz neke druge funkcije v javi. Če bi se ujemal, bi izpisal da si se že prijavil, sicer pa bi normalno izvedel sql query za prijavo. Problem je, ker se bom spet jeb** z Date formati, ker ne bom mogel primerjat, kot se je to že v preteklosti zgodilo enkrat nekje nekdaj.  Vem, zapleteno  Sem tudi šel malo gledat če ima SQL kake posebne funkcije in sem odkril npr. IS NULL, ampak preprosto ne vem, kako ga naj v danem primeru uporabim. ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "SELECT count(*) FROM Prihodi_Odhodi WHERE Datum=DATE() AND ID_Usluzbenca = ?  if (rs.getInt(1)==0) ... ",
+    "user": "rgv45vg4t335"
+  },
+  {
+    "message": "No, tegale sigurno ne bi sam skup spravil, hvala ti    Zdej pa veselo na delo naprej... ",
+    "user": "c0dehunter"
+  },
+  {
+    "message": "Offtopic ampak vseeno: Ljudem kot je c0dehunter je veselje pomagati, cetudi vcasih sprasujejo banalnosti, ker se vidi, da je fant zagret in pokaze tudi lastno iniciativo. Sicer pa me bernardv vedno prehiti.... ",
+    "user": "infiniteLoop"
+  },
+  {
+    "message": "Heheh, hvala infiniteLoop    Sej me včasih kdo vpraša \"Ti, zakaj pa ne bi to kar v Accessu naredil obrazec, pa se ne rabiš z Javo zajebavat zravn\". Moj odgovor je, zakaj se ne bi naučil česa novega, predvsem pa uporabnega. Ko vidiš kake možnosti vse maš, te še bolj potegne, da bi raziskoval nove funkcije etc..  Še enkrat hvala vsem, ki ste pomagali  ",
+    "user": "c0dehunter"
+  }
+]

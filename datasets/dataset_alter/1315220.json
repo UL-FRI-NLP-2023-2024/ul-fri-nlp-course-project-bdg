@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Excel - primerjava",
+    "content": "Imam 2 XLS datoteki, v obeh je unikatni identifikator npr vredsnosti v stolpcu A. Iste vrednosti (ni nujno da vse) so tudi v drugi XLS datoteki. Se pravi vazemem vrednost v celici A1, to vrednost poiščem v drugi XLS datoteki in če jo najde, naj pogleda še vrednost v celici B1 in vse skupaj naj prepiše v nov delovni list se pravi vrednost celice A1 in vrednost celice B1, če je pa v drugi XLS ne najde, pa naj doda v neko celico nek znak (npr. 1)\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "asko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - primerjava",
+    "content": "Jaz bi naredil takole:\n- drugo datoteko bi dodal v drugi list prve datoteke (pač mi je bolj preprosto delat, če imam vse v istem fajlu), lahko delaš tudi z ločenima datotekama,\n- v zadnji stolpec prve datoteke / lista (npr. stolpec X) prepišeš identifikator iz drugega lista, če ta obstaja (uporabi VLOOKUP),\n- potem narediš avtofilter na tem zadnjem stolpcu in izpišeš samo tiste, ki jih VLOOKUP ni našel in jih popraviš na 1\n- vrednost stolpca X preneseš na nov delovni list (stolpec X vsebuje identifikator oz. vrednost 1).\nA sem te prav razumel?",
+    "author": "Slick",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Excel - primerjava",
+    "content": "thx za namig...se že mučim, nekaj bo že ratalo.",
+    "author": "asko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel - primerjava",
+    "content": "Ključna je funkcija VLOOKUP. Če ne najde vrednosti, vrne vrednost #N/A. Če bi rad vse v enem koraku, lahko skombiniraš z IF in funkcijo ISNA nekako takole: =IF(ISNA(VLOOKUP(A1...;\"vrednost če je ISNA TRUE\";VLOOKUP(A1 - vrednost vlookup funkcije\")))\n\nlp",
+    "author": "Muzo",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - primerjava",
+    "content": "Še lazje je pa sedaj z powerpivotom naredit,.. \n \nzdruzis obe datotek in potem naredis pivot tabelco,.. dela pa pomoje da smao v 2010",
+    "author": "gas",
+    "author_level": "Fizikalc"
+  }
+]

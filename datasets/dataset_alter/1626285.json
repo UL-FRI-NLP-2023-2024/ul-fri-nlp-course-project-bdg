@@ -1,0 +1,68 @@
+[
+  {
+    "ctx": "RAID vprašanje",
+    "content": "Hipotetično vprašanje:\n\nna voljo so 4 diski z enako količino prostora; za potrebe zadošča prostor 2 diskov.\n\nKaj je s stališča zanesljivosti boljše?\n2x RAID 1\nRAID 5 + spare\nRAID 6\n\nNezveznost prostora pri 2x RAID 1 ne moti.",
+    "author": "NigelM",
+    "author_level": "Pingvin"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "najbolj ziher je 2 x mirror\nRAID6, enega pa si kupiš na rezervo, da ga menjaš ,. če misliš da so zanič   - je pa najhitrejše - to bo jaz naredil",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "Odvisno kakšne preformance rabiš, koliko bo branja in koliko pisanje, kakšen tip branja (naključni, zaporedni).\nNi vsak tip RAID polja dober za vse...",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "Pri RAID 5 in 6 boš potreboval še vredu kontroler, če hočeš da ti bo vredu delalo (iz performančnega vidika).\nVerjetno najboljše da izbereš kar RAID10, sploh če boš imel softwarski kontroler.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "Točno tako. Če ni profi kontroler potem višji raidi odpadejo, ker bo preveč bremzalo vse skupaj.",
+    "author": "IbizaDriver",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "Sej veš, pravi majstri pravijo da je edini pravi RAID najbolj enostaven RAID, torej RAID 1 (in 0).\n\nZa tvoje potrebe torej RAID 10.\n\nKar se tiče kontrolerjev in RAID 5 (in 6) danes ni noben problem ker je hitrost diskov relativno nizka v primerjavi z sposobnostjo procesorja (in diskovnega vodila). Problem je ker se pri današnjih velikih diskih pojavijo majhne napakice na katere RAID 5 in ostali derivati ni imun, ena napakica lahko poruši simetrijo diska, RAID 5 ne preverja zapisov oz. jih ne zna popravljat (oz. lahko jih ampak potem si ob ves performance).",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "raid 10 s štirimi diski  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nraid 0  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n = stripe, gre en disk u qrac gre vse u qrac \n\nraid 1 = mirror\n\nv skrajnem primeru bi lahko  uporabil raid 0 + 1 kar pomeni mirror stripe seta. ampak tega noben ne dela , ker gre hitro lahko vse u qrac",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "pa še nekaj : če za raid oz mirror itd uporabljaš kontroler in gre za rakom žvižgat  se za podatke lahko obrišeš pod nosom\n\nsedaj pa bodo vsi še vsaj 10 strani naprej pametovali",
+    "author": "ceedevita",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "Kaj ti ni jasno, RAID 10 ali RAID 1+0 pomeni da imaš dva stripa dveh mirorrjev. Ali po domače nad RAID 1 (2 diska v 2 polji) delaš še stripping. (načeloma je možno tudi obratno, torej 0+1 kar se imenuje tudi RAID10, output je povsem enak razlike s v podrobnostih glede na zahteve branja/pisanja in velikost chunkov)\n\nV najslabšem primeru imaš pri RAID10 redundanco izpada 1-ga diska (torej če en disk crkne, dela vse normalno dalje), v najboljšem primeru lahko crkneta 2 (DVA) diska v kolikor crkneta v različnih stripih.\n\nHitrost (pohitritev) RAIDa 10 je 2x pri branju in 2x pri pisanju.\n\nKapaciteta je /2, torej pol manjša od vsega diskovnega prostora.\n\nPri izpadu je padec hitrosti na nivo 1ga diska, kar ni problematično (za razliko od RAIDov s parityjem kjer performance pade na nulo)!\n\nRAID 10 se BP obnovi v primeru izpada diska ker gre za čisti \"podvojeni\" mirror, torej samo vsebino enega diska se skopira na drugega. Zadeva potrebuje zelo malo \"procesiranja\" ker gre večinoma za čiste I/O operacije. Čisto BP deluje na polno obremenjeni mašini (skratka vmes lahko baze/whatever tečejo). Recimo pri parity RAIDih je stvar malce kompleksna in mašina porabi vso procesiranje samo da obnovi RAID polje.\n\nKot že omenjeno pa imaš pri mirroringu vedno podovojene zapise na ločenih nosilcih, pri parity RAIDih pa imaš samo en zapis in dele za rekonstrukcijo (parity). Pri izgubi parih bitov na parity chunku izgubiš podatek pa tega niti ne veš.\n\nKar se tiče kontrolerjev, danes je vsak SATA kontroler sposoben furat 4 diske, RAID mehanizem je pa BP na SW nivoju. Če crkne kontroler je rekostrukcija možna BP na bilokakšni mašini ki vsebuje SW orodje. HW kontrolerji (true in fake RAID) so pase, nima smisla uporabljat ker je performance na SW nivoju enak ali celo boljši (napram fake RAIDu)!",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik ceedevita pravi:\n raid 10 s štirimi diski  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nraid 0  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n = stripe, gre en disk u qrac gre vse u qrac \n\nraid 1 = mirror\n\nv skrajnem primeru bi lahko  uporabil raid 0 + 1 kar pomeni mirror stripe seta. ampak tega noben ne dela , ker gre hitro lahko vse u qrac\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSploh veš kaj je RAID 10? Hint: 10 = 1 + 0\n\nPa še razlika med 01 in 10.\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n The key difference from RAID 1+0 is that RAID 0+1 creates a second striped set to mirror a primary striped set. The array continues to operate with one or more drives failed in the same mirror set, but if drives fail on both sides of the mirror the data on the RAID system is lost.\n\t\t\n\t\tKlikni za razširitev\n\t\n\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\n The key difference from RAID 0+1 is that RAID 1+0 creates a striped set from a series of mirrored drives. The array can sustain multiple drive losses so long as no mirror loses all its drives.\n\t\t\n\t\tKlikni za razširitev\n\t\n",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "RAID vprašanje",
+    "content": "ksz\nHvala vsem za odgovore",
+    "author": "NigelM",
+    "author_level": "Pingvin"
+  }
+]

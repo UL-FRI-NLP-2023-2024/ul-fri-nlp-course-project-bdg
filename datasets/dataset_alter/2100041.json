@@ -1,0 +1,86 @@
+[
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Imam dotičen primer, ki mi povzorča probleme. \nModem je siolov Innbox V60 na kater bi priključil 2 routerja. Do sedaj mi eden deluje normalno. Ko pa priključim drugega pa se pri povezavi pojavi to sporočilo: can not get a IP address from PPPoE server.\n\nProbaval sem že spremembami ip adrese iz 192.168.x.x (spremnil obe številke) na novem routerju. Modem od siola je povezan prek pppoe povezave. Bi lahko to bil problem? \n\nJe pa router 1 povezan na ETH1 in router 2 na ETH2 modema.",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Imaš statični IP? Ker glede na napako ti ne more dodeliti še enega public IPja. Zakaj pa ne povežeš en router v drugega ? Variant je ogromno, samo napisati moraš kaj pri tebi pride v poštev in kaj ne.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Kaj bi rad naredil???\nProblem je v PPPoE, le ta omogoča samo eno povezavo. Če bi rat dva ločena omrežja boš moral nabaviti boljši routher ki to omogoča, ali pa veži routherja zaporedno, je pa to približna rešitev\n\nlp bluub",
+    "author": "bluub",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Jah zadeva je sledeča. Kolega mi je prinesel router (linksys wrt54gl) z razlago iz naslova, da se ne poveže. Zdaj sem se doma malo spravil to preizkušat kako bi šlo. Sam imam poleg tega še Ruckus router. \nDrugače je pri njem taka situacija, da je modem v tronadstropni hiši v srednjem nadstropju. Eden router za wifi je v spodnjem nadstropju, drugi pa bi sedaj bil v zgornjem. S tem povezava routerjev zaporedno verjetno odpade. \nRazmišlajl sem tudi, da bi pač nabavil kake wifi ojačevalnike in na siol modemu nastavil brezžično povezavo ter signal pač ojačal , da bi ga imel še v zgornjem nadstropju. Čist tko na hitr kar sm najdu \n\nhttp://www.conrad.si/Univerzal...n&pi=986354\n\nKak modem imajo pa ne vem. \nKateri router pa bi bil primeren in za kakšno ceno? Aja pa ip ni statičen.\n\nSem pa probaval doma in sem linksysov router priključil tudi na svoj Ruckus. Kolk sem gledal imata čisto drugačna ip področja pa vseeno ni delovalo, če seveda vsaj približno prav razmišljam.\nTole je recimo na Ruckusu : http://shrani.si/f/2M/Ut/on7T7Hm/ruckus.jpg\nNa linksysu se začne  local ip address pri 192.168.1.1\nSe pa teh zadev še nisem lotil tko, da ... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik bluub pravi:\n Kaj bi rad naredil???\nProblem je v PPPoE, le ta omogoča samo eno povezavo. Če bi rat dva ločena omrežja boš moral nabaviti boljši routher ki to omogoča, ali pa veži routherja zaporedno, je pa to približna rešitev\n\nlp bluub\n\t\t\n\t\tKlikni za razširitev\n\t\n\nMožnih je tudi več hkratnih povezav, vendar je to število omejeno. Navadno na 2, včasih celo 4 (odvisno od ponudnika interneta). Če pa imaš statični IP pa imaš lahko samo eno hkratno povezavo.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Na Linksys je najboljše, narediš reset in nato priklopis na Ruckus... Moreš paziti, da imaš automatic DHCP, pa na Ruckus priklopiš eden od lan in ne wan, na linksys pa wan.... načeloma, če daš reset, se samodejno poveže z drugim routerjem. Vsaj pri meni se bp, poveže na d-link router, brez da bi karkol nastavljal. Drugače ip adrese imaš pravilno nastavljene, tako da to pusti.",
+    "author": "Scorp84",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "No danes sem se malo lotil spet te zadeve.\nProbal sem tvojo varianto Scorp84 pa ni delovala. Potem sem preizkusil, da sem ruckusa dal stran in imel samo linksys router pa isto ni delovalo. Potem sem odstranil še pppoe povezavo na modemu od siola in isto ni delovalo.\nVedno napiše can not get a IP address from PPPoE server.\n\nPotem sem še probal s programom od linksysa za namestitev povezave. Isto brez uspeha.\n\nSedaj pa res ne vem več, kje je problem. Vsaj sam v povezavi z modemom bi moral delati, če sedaj ruckus deluje brez problema.",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Daj ti to malo nariši kako imaš narejeno. Oziroma kako naj bo narejeno.",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Hm, malo butasto vprašanje. Pa si se prijavil na PPPoE server z veljavnim uporabniškim imenom in geslom?",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "To sem se. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nMa sej kar imam sam nastavljeno normalno deluje. \nSam imam doma priključen na modem od siola ruckusa prek katerega gre TV in internet. Povezano imam iz eth4 (video) na wan ruckusa in eth1 (data) na modemu v eth1 na ruckusu in vse deluje. Ruckus se preko pppoe povezuje. Prav tako sem imel modem povezan preko pppoe.\n\nSvoj router sem dal stran in priklopil samo iz eth1 modema na wan linksysa pa je isto napisalo da ne more dobiti ip adrese. Username/pass sem napisal pravi.\n\nProbal sem tudi, da sem iz eth2 ruckusa povezal na wan linksysa (zaporedno zvezal routerja) in na linksys nastavil naj automatic DHCP, kot je svetoval Scorp84 pa tudi ni delovalo.\n\nReset sem naredil zmeraj, ko sem spremenil vezavo.\n\nMa čudno mi je, ko tudi sam ni hotel delati. Do sedaj mi je sam v vezavi z modemom delal še vsak router. Ma bo že. Router moram tko sedaj dati nazaj tako, da. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Kaj pa MAC addressa na routerju? Ni važna?",
+    "author": "darkstar66",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Z MAC adreso sem se do sedaj samo enkrat zajebaval, ko sem nastavljal router na modemu kabeljskega ponudnika.",
+    "author": "Schime",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Probaj, še drug kabel dat. Drugače pa ja, včasih se routerji, nočejo med seboj povezati. Recimo pri meni, asus, ni hotel dat internet linksysu. D-link pa bp, da niti nisem nič rabil nastavljat. Probaj še drug firmware dat, novejši al pa neuradni. Za tvoj router je odličen tomato.",
+    "author": "Scorp84",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Povezava siol modem in 2x router",
+    "content": "Pri tebi je očitno samo en problem, da router noče sodelovati z modemom preko PPPoE povezave. Poveži se s providerjem, morda je to znan problem za tvojo znamko routerja. Dokler ne boš rešil tega problema, ti seveda nobena sekundarna povezava ne bo delovala.",
+    "author": "bizi",
+    "author_level": "Guru"
+  }
+]

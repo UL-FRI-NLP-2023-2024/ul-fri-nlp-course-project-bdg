@@ -1,0 +1,26 @@
+[
+  {
+    "message": "Naredil sem VPN povezavo. Sedaj ne vidim domačega NAS strežnika in printerja. Verjetno gre tudi tole pisanje preko VPN-ja.  Kje se nastavlja kaj gre preko VPNja (recimo samo RDP session) in kaj gre kot da VPN-ja ni?  Lp,  Peter ",
+    "user": "twom"
+  },
+  {
+    "message": "Openvpn? ",
+    "user": "mlamat"
+  },
+  {
+    "message": "Ne moreš samo RDP pošiljati preko VPN do strežnika A, resimo SSH do istega strežnika pa direktno brez VPN.  Kaj gre v VPN in kaj ne, se določa preko routinga, ta pa ne loči med različnimi servisi, temveč zgolj IP naslovi omrežij in računalnikov.  Da pa ne gre čisto vse preko VPN se običajno definira še določena pravila, s katerimi blokiramo vse, razen tiste servise, katere želimo dovoliti preko VPN. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " SeMiNeSanja je 20. maj 2017 ob 17:41 izjavil:Ne moreš samo RDP pošiljati preko VPN do strežnika A, resimo SSH do istega strežnika pa direktno brez VPN.  Kaj gre v VPN in kaj ne, se določa preko routinga, ta pa ne loči med različnimi servisi, temveč zgolj IP naslovi omrežij in računalnikov.  Da pa ne gre čisto vse preko VPN se običajno definira še določena pravila, s katerimi blokiramo vse, razen tiste servise, katere želimo dovoliti preko VPN.  To me zanima,  kako omejim VPN samo na določen IP range(, ali obratno),  in..., katera so to določena pravila? Lahko izpostaviš kakšne bolj \"zanimive\"?  Bom tudi googlal, a to da vneseš add route v routing tabelo zadostuje?  Lp,  Peter ",
+    "user": "twom"
+  },
+  {
+    "message": "To je pa čisto odvisno od rešitve, ki jo uporabljaš za VPN gateway. Na enih je to otročje enostavno, medtem ko na kakšnih drugih misliš, da stvar ni narejena za povprečnega zemljana.  Jaz te reči delam na WatchGuard požarni pregradi, kjer se routa (in konfiguracija klienta) sama generira na osnovi tega, kaj vpišem med resourse, ki jim želim omogočiti dostop preko tunela. Sama routa drugače ni najbolj problematična pri VPN povezavah, bolj bistveno je potem omejevanje, da ne more kar vsakdo preko VPN početi, kar mu je volja. Če npr. daš serviserju klimatike VPN dostop, potem ga želiš omejiti, da lahko dostopa le do klimatike, ne pa tudi do drugih sistemov in računalnikov na omrežju.  Ker vsem VPN uporabnikom definiraš tunel do npr. 10.10.10.0/24 (celemu omrežju), potem v ACL pravilih oz. pravilih požarne pregrade definiraš, da uporabniki iz skupine 'klimaservis' lahko dostopajo izključno preko porta X do IP naslova 10.10.10.123, vse ostalo pa potem onemogočiš z deny pravilom.  Kot rečeno, je vsaka implementacija nekoliko drugačna. Boš moral že malo bolj podrobno pojasniti, kaj za en router imaš in kakšno varianto VPN povezljivosti si na njemu skonfiguriral. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Poskušaj dodat statični route le za ta IP oz. IP range, na VPN gateway. ",
+    "user": "c3p0"
+  }
+]

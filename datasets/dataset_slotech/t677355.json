@@ -1,0 +1,362 @@
+[
+  {
+    "message": "Torej dobil sem optiko preko telekoma in me zanima kako naj nastavim innbox da bo deloval samo kot modem? Vse ostalo imam že nastavljeno na tp-link routerju ker omogoča bandwidth control. Trenutno imam innbox na 192.168.1.1 router pa na 192.168.1.2, na innbox sem disablal dhcp na tp-linku pa je ostal enable. Problem imam z WOL, iz zunanjega omrežja ne morem vklopit domač PC, prav tako ne vidim nadzorne kamere. ",
+    "user": "refosk"
+  },
+  {
+    "message": "TP-link daj v router mode, LAN naj bo v drugem subnetu (recimo 192.168.2.0/24). Na Innboxu maš pod advanced setup -> NAT -> DMZ host, pa daj IP od TP-linka (192.168.1.2 - pa ne pozabi ga nastaviti na static!). Potem port forwarding delaš vse na tp-linku. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Kako dam tp-link v router mode? Ni mi čisto jasno na kateri ip naj dam potem innbox in na katerega router? ",
+    "user": "refosk"
+  },
+  {
+    "message": "Ali je možno vzpostaviti internetno povezavo mimo innbox-a? Imam samo optični internet brez TV, router pa je tp-link archer C7. ",
+    "user": "refosk"
+  },
+  {
+    "message": "Ne.  \"Router mode\" je privzeti način delovanja. Če nisi v kakšen AP bridge ali repeater mode dajal, ne spreminjaš ničesar. Ne razumem, kakšen ip bi ti vpisoval v innbox? Če ti internet dela in si vnesel WAN 192.168.1.2 pod DMZ na innboxu si konec. Vse nadaljnje stvari (port forwarding in podobno) urejaš na tplinku. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Ne razumem kje je tole z dmz-jem ok...  Povezi: Innbox port3 - router wan Port  Na innbox Portu 3 in 4 naj bi dobil wanip. Če ga ne, Pokliči na t2 ",
+    "user": "Klemenn"
+  },
+  {
+    "message": "Pokliči na telekom in dajo innbox v bridge mode. ",
+    "user": "AC_DC"
+  },
+  {
+    "message": "Internet dela samo v primeru da imam lan1 iz innbox povezan na lan port routerja. Sem dal 192.168.1.2 pod DMZ vendar mi wol iz zunajega omrežja vseeno ne dela. Problem je tudi bandwidth control na routerju ker deluje samo če gre internet preko WAN. ",
+    "user": "refosk"
+  },
+  {
+    "message": "Kliči/piši (mail, chat) na Telekom, da se z modema umakne PPPoE sejo (prestavi v bridge) in boš lahko na routerju vzpostavil PPPoE in vse urejal na njem. ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "DMZ nima veze z bridge modom. Inbnboxov privzet IP je 192.168.1.1 user user. Najlazje je ta IP spremenit v 192.168.100.1 recimo. DHCP pusti vkloplen zaradi ostale siol opreme kot tvbox. Ruterjev WAN port vtakni v innboxov LAN. Na ruteru nastavi PPOE in vpisi svoje podatke. Router IP Address pa spremeni recimo v 192.168.1.1 ce ze ni. Samo istega ko modem nesme imeti.  V kolikoe imas dinamični IP imas zdaj obe zadevi ločeno povezani na internet z svojim zunanjim IP. Ce imas pa fixni IP pa prej v innboxu disable Internet Connection Configuration  Ce imas močno optiko ne priporočam uporabo teh poceni 100€ ruterjev ker vec ali majn vsi klecnejo hitro. Innboxi so zelo spodobne ruter mašince za heavy duty torentanje. ",
+    "user": "Pesimist"
+  },
+  {
+    "message": "Innbox imam na 192.168.1.1, DHCP disable (nimam TV samo internet), router je na 192.168.1.2, dhcp enabled. Imam fiksni IP. Kot si svetoval sem v innbox disable internet connection configuration. Če povežem lan port od innbox na wan od routerja vedno izgubim povezavo z internetom ne glede na to ali v router wan configuration vnesem podatke za PPPoE ali pa fix IP. ",
+    "user": "refosk"
+  },
+  {
+    "message": "Innbox u60 nima direktne nastavitve za bridge mode. V bridge mode ga postavis tako, da prekines pppoe sejo in onemogocis avtomatsko vzpostavljanje povezave. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "nastavi svoj router na ip 192.168.2.1, njihovega pa pusti na default 192.168.1.1 pa bo delalo vse. na innboxu samo izklopi wireless pa si zmagal. ",
+    "user": "romex"
+  },
+  {
+    "message": " romex je 9. jul 2016 ob 10:52 izjavil:nastavi svoj router na ip 192.168.2.1, njihovega pa pusti na default 192.168.1.1 pa bo delalo vse. na innboxu samo izklopi wireless pa si zmagal.  Hvala za nasvet, zadeva rešena ! ",
+    "user": "refosk"
+  },
+  {
+    "message": "Ni problema :) Potrebuješ obrazložitev zakaj taka nastavitev ali ti je dovolj da deluje? :D ",
+    "user": "romex"
+  },
+  {
+    "message": "Ma ne, da sem to napisal že v prvem odgovoru... ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Romex je to napisal čisto enostavno.   romex je 10. jul 2016 ob 16:12 izjavil:Ni problema :) Potrebuješ obrazložitev zakaj taka nastavitev ali ti je dovolj da deluje? :D   Ja razloži, vedno se lahko kaj novega naučim (pa še kdo drug tudi). ",
+    "user": "refosk"
+  },
+  {
+    "message": "Romex bi lahko razložil zakaj so te nastavitve kaj si ti navedel najboljše.Da bi stvar bolje razumel. ",
+    "user": "kari"
+  },
+  {
+    "message": "Pozdravljeni, imam Telekomov modem Innbox V60U z privzetimi nastavitvami in sedaj bi rad z enim kablom povezal Asusov ruter rt N12+. Iz Asusovega ruterja bi rad imel brezžični internet, žični internet in pa 1 iptv. (Na Innbox V60U ostane priklopljen drugi tv in drugi računalniki. Je kakšna enostavna rešitev glede tega?   Hvala za odgovor! :) ",
+    "user": "car100"
+  },
+  {
+    "message": "Ni.  Načeloma na Innbox V60U priklopiš iptv-je, router (v wan port) in na slednjega pcje (kabel/wifi). Da router prepušča iptv mora podpirati IGMP snooping. IGMP snooping @ Wikipedia Mikrotik T-2 IPTV IGMP Proxy https://slo-tech.com/forum/isci/?q=IGMP+  Imaš optiko ali dsl ?   Ruckus Wireless, optimiziran za iptv http://www.telos.si/ruckus/MediaFlex_pa... ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Ok drži bo za iptv šel nov kabel iz telekomovga V60 stvar urejena.   Sedaj me pa zanima če je možno uredit da obstoječi Innbox V60U oddaja brezžičen in žičen internet zraven bi pa pol na en kabel priklopil Asusov ruter rt N12+ da še ta naprej deli internet.  Mora kaj telekom modem spremenit? ",
+    "user": "car100"
+  },
+  {
+    "message": "Ne. Vse lahko narediš sam. ",
+    "user": "SaXsIm"
+  },
+  {
+    "message": "Ve mogoče kdo v grobem kaj je treba nastavit v ruterju? (optika) ",
+    "user": "car100"
+  },
+  {
+    "message": "Router moras nastavit kot access point in to je to. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Sem nastavil Asusov ruter rt N12+ v access point in dela brez težav! Je pa v primerjavi z Innbox V60U prej omenjeni Asus dosti slabši čez meter betona ne pride signal (za pokrit eno sobo pa čez en zid naprej je kaj več pa ne). Zanima me če pri postavitvi ruterja v access point je normalno da se ne moreš z ip vpisat v ruter in urejat nastavitve? ",
+    "user": "car100"
+  },
+  {
+    "message": "Ne, ni normalno, si nastavil ip na asusu drugacen, kot je na v60? ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Bom probal drug tedn še enkrat nastavit, fora je ker vse nastavitve ko kreiraš access point sam naredi (tudi za wifi imaš samo za ime pa geslo za nastavit. In potem niti prek lana niti žično ne pusti da bi prek ipja not pršu tud če ni povezan z V60U. ",
+    "user": "car100"
+  },
+  {
+    "message": "Staticen ip na mrezni, ker ti DHCP ne dela (logicno je, da na AP nimas DHCPja vlopljenga, ampak ga imas na glavnem routerju) ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Sem danes še enkrat naredil ročno AP dal drug IP in sedaj dela vse tako kot mora :D Hvala za pomoč Dr_M! ",
+    "user": "car100"
+  },
+  {
+    "message": "Pozdravljeni. Tudi sam imam nekaj težav z Innbox-om in Asusom. Imam Asus RT-AC68U za Innbox-om. Na njemu imam OpenVPN strežnik in priklopljen NAS strežnik. Iz zunanjenega sveta želim dostopati do njiju, pa tudi BOX mora videti NAS, ker na njemu teče PLEX media strežnik. Vse to bi moralo biti v enem in istem omrežju. Poizkusil sem onemogočiti Innbox in vse furati na ASUS, TV deluje, VPN deluje BOX pa ne poveže v isto omrežje (gre v 10.x.x.x) in posledično ne vidi PLEX-a. Če ASUS-a povežem preko LAN in IPTV ostane na Innbox-u, sem z napravami v istem omrežju, ne dostopam pa nikakor do VPN (nastavlejn NAT na Innbox), zgleda da ne zna preko LAN na Asusu delat. Kakšna ideja kako to spravit v eno omrežje? Tnx ",
+    "user": "bobi23"
+  },
+  {
+    "message": "Če uporabljaš velik box, lahko sprobaš preko wi-fi. Asusa nastavi kot rutar. BOX preko kabla povežeš direkt v innbox in še preko wi-fi na asus (oz. na svoj domač wi-fi). Tako ti bo delala TV preko innboxa in ostale storitve (youtube, media center,...) preko wi-fi. ",
+    "user": "MacGyver141"
+  },
+  {
+    "message": "Ma nimam velikega, BOX S imam. Nism dobr specificiru. ",
+    "user": "bobi23"
+  },
+  {
+    "message": "Imam Innbox v60u in vse izhode na modemu imam tako nastavljene    Televizija (BOX in/ali BOX S) in dela hkrati TV BOX S in Internet preko utp kabla v pc  Na enem vhodu Televizija (BOX in/ali BOX S) imam pa iz modema innboox 192.168.1.1 v svoj \"ddwrt router 192.168.2.1\" in brez nastavitev oz Automatic Configuration DHCP  kot je na fotki   samo da imam iz modema v router na WAN priklopljen in dela brez težav wifi (razen hitrosti niso enako napram UTP kablu)  zanima me v čem je razlika, če bi imel drugače nastavljen siolov modem (npr nastavljen na internet in ne na BOX) in če bi imel pppoe na ddwrt vpisano uporabniško ime in geslo (geslo sploh ne vem kje je napisano oz. kje ga izvem)  imam optiko in ne xDSL..verejtno to ne igra vloge pri teh nastavitvah?  hvala za pomoč :) ",
+    "user": "KTr1sk"
+  },
+  {
+    "message": "Če nastaviš port na internet ne bo nobene razlike. Če pa vzpostaviš PPPoE sejo na routerju boš imel težave z internetom na BOXih. Razen če boš onemogočil IPv6 na modemu in bojo Boxi imeli svoje lokalno omrežje, naprave na DDWRT pa svoje. To imaš pravzaprav že sedaj, ker bi za normalno delovanje omrežja moral izklopiti DHCP na DDWRT in vklopiti kabel iz Innboxa v LAN in ne v WAN. Potem bi se vse naprave na mreži videle med sabo.  Sedaj pa imaš na DDWRT dejansko dvojni NAT, kar ni ravno praktično, če rabiš kakšne odprte porte. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Zdravo, mogoce ve zakaj ima tale modem omejitev na max 16 uporabnikov na brežičnem omrežju? Posledicno se mi vcasih kaksna naprava me poveze. Mogoce je ena rešitev če bi naredil dve brežični omrežji na modemu(home and guest)? ",
+    "user": "kokpa"
+  },
+  {
+    "message": " kokpa je 11. jul 2019 ob 21:35 izjavil:Zdravo, mogoce ve zakaj ima tale modem omejitev na max 16 uporabnikov na brežičnem omrežju? Posledicno se mi vcasih kaksna naprava me poveze. Mogoce je ena rešitev če bi naredil dve brežični omrežji na modemu(home and guest)?   Jaz imam precej več kot 16 wifi userjev gor, pa deluje bp. ",
+    "user": "akulp"
+  },
+  {
+    "message": " kokpa je 11. jul 2019 ob 21:35 izjavil:Zdravo, mogoce ve zakaj ima tale modem omejitev na max 16 uporabnikov na brežičnem omrežju? Posledicno se mi vcasih kaksna naprava me poveze. Mogoce je ena rešitev če bi naredil dve brežični omrežji na modemu(home and guest)?  Mogoče premali dhcp range? Sicer taka omejitev ne obstaja.. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "Probaj z zmanjsanjem DHCP leas time iz 1440 na naprimer 60 ",
+    "user": "bobby"
+  },
+  {
+    "message": "Res trapasta omejitev na v60.     ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Imam Innbox V60U-AC in iščem opcijo, da bi v določenem časovnem obdobju (preko noči) povsem izključil WiFi. Ali ne najdem opcije ali pa je res ni. Mogoče bi se dalo to izključiti na kakšen drug način (pa ne cel router :( ). ",
+    "user": "dussan"
+  },
+  {
+    "message": "Zakaj točno bi pa to bilo dobro? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Razlogov je več, glavni pa je, da ponoči WiFija ne rabim. Posebej pa otroci ne. (Filtiranje po mac in urah je sicer možno ampak grozno nerodno). ",
+    "user": "dussan"
+  },
+  {
+    "message": "Vedno je veljalo in še vedno velja, da se uporabi svoj router, če kdo rabi kake bolj napredne nastavitve, kot je izklop wifi. Govorimo o nekaj desetakih. To je 15 dni do 1 meseca naročnine in imaš mir. Tema kateri router je pa tudi že odprta. ",
+    "user": "starfotr"
+  },
+  {
+    "message": "Je kakšna možnost, da bi ta nesrečni Innbox ugasnil lučke (brez ugašanja seveda)? Sveti nenormalno ... ",
+    "user": "dunda"
+  },
+  {
+    "message": "Izolirni trak. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Ja, to sem pomislil. Ampak ima vrag polno rež in lukenj ... potem pa seveda na vseh koncih sveti ven. ",
+    "user": "dunda"
+  },
+  {
+    "message": "Potem boš pa moral kakšno škatlo z luknjicami čez celega dati, če te tako motijo. ",
+    "user": "Daniel"
+  },
+  {
+    "message": " dunda je 24. jan 2020 ob 06:56 izjavil:Je kakšna možnost, da bi ta nesrečni Innbox ugasnil lučke (brez ugašanja seveda)? Sveti nenormalno ...  Odpreš, pocvikaš ledice, zapreš. Ali pa je enostavno v prostoru, v katerem nihče ne spi. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "Potem te pa na tehnični pomoči vpraša, če dioda za sinhronizacijo gori rdeče ali zeleno, pa rečeš ne vem, sem jih pocvikal... ",
+    "user": "Daniel"
+  },
+  {
+    "message": " dunda je 24. jan 2020 ob 06:56 izjavil:Je kakšna možnost, da bi ta nesrečni Innbox ugasnil lučke (brez ugašanja seveda)? Sveti nenormalno ...  Pred njega postavi sliko z dopusta  ",
+    "user": "secops"
+  },
+  {
+    "message": " Daniel je 24. jan 2020 ob 10:38 izjavil:Potem te pa na tehnični pomoči vpraša, če dioda za sinhronizacijo gori rdeče ali zeleno, pa rečeš ne vem, sem jih pocvikal...  Ta je dobra ja  Sicer je bil moj prejšnji komentar zajebancija.. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": " dunda je 24. jan 2020 ob 06:56 izjavil:Je kakšna možnost, da bi ta nesrečni Innbox ugasnil lučke (brez ugašanja seveda)? Sveti nenormalno ...   Ne bod držalo, da sveti nenormalno. Ima prijetno zeleno svetlobo, ki ni moteča. A si si moral modem inštalirat v spalnico. Jaz ga imam na hodniku, tako kot vsak normalen človek. ",
+    "user": "2dark"
+  },
+  {
+    "message": "Jaz sem zalepil črni selotejp čez vse lučke. ",
+    "user": "krneki"
+  },
+  {
+    "message": "Zaviješ v alu folijo, ne sveti, ne seva, . . .  ",
+    "user": "fikus_"
+  },
+  {
+    "message": "Jest sem ledice prelepil z dvema plastema izolir traka in je super. So se vedno zelo vidne, niso pa vec motece. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": "Men ga je uspel naštelat da je vse gorelo.. en teden so rabili, da so ga prišli zamenjat :D     innbox fail ",
+    "user": "romex"
+  },
+  {
+    "message": " romex je 25. jan 2020 ob 11:55 izjavil:Men ga je uspel naštelat da je vse gorelo.. en teden so rabili, da so ga prišli zamenjat :D     innbox fail  Wtf je ta grdoba,? Mi mamo drugacnega... ",
+    "user": "2dark"
+  },
+  {
+    "message": "g67.. grd ali ne grd.. me ne moti, je zabetoniran v steno :D ",
+    "user": "romex"
+  },
+  {
+    "message": " 2dark je 25. jan 2020 ob 12:20 izjavil:romex je 25. jan 2020 ob 11:55 izjavil:Men ga je uspel naštelat da je vse gorelo.. en teden so rabili, da so ga prišli zamenjat :D    innbox fail  Wtf je ta grdoba,? Mi mamo drugacnega...   Take majo sam u Šalki vasi  ",
+    "user": "krneki"
+  },
+  {
+    "message": "Kako odstraniš stojalo pri innbox v60u? Zatiče kot vsak normalni človek vlečem ven pa se podstavek ne premakne. Rad bi ga namontiral na steno. Z stojalom pa to ne gre. ",
+    "user": "Gapi"
+  },
+  {
+    "message": " krneki je 28. jan 2020 ob 23:19 izjavil:2dark je 25. jan 2020 ob 12:20 izjavil:romex je 25. jan 2020 ob 11:55 izjavil:Men ga je uspel naštelat da je vse gorelo.. en teden so rabili, da so ga prišli zamenjat :D    innbox fail  Wtf je ta grdoba,? Mi mamo drugacnega...   Take majo sam u Šalki vasi     Izgleda da jih imajo še kje, ker jaz nisem od tam. ",
+    "user": "romex"
+  },
+  {
+    "message": "Da ne odpiram nove teme bom izkoristu to..  Doma imam Innbox V60U (optika, dinamični ip). V omrežju ni drugih routerjev/switchev. Na raspberry pi sem postavil bazo (mariadb) za katero želim, da je dostopna tudi nauzven (izven lan omrežja). Preko no-ip sem registriral zastonj domeno in uredil nastavitve na routerju (advance setup / dns), da se rešim problema z dinamičnimi IP naslovi. Nastavim port forwading: Source: any, destination: Rpi za Porte: 20:65000..  Zadeva na lokalnem omrežji (preko domene) deluje. Izven lokalnega omrežja pa zadeva še vedno ne. Port forwarding sem poiskušal z \"VPS\" (advance/virtual server) in \"Port forward\" (advanced/IP Security/Inbound). Kaj sem spregledal? Je omejitev na strani IPSja (telekom)?  Hvala za pomoč. ",
+    "user": "misticnimrk"
+  },
+  {
+    "message": "Za tiste, ki bi radi odstranili podstavek:  https://t-2.rula.net/viewtopic.php?t=88...  (T-2 v navodilih sicer \"prepoveduje\" odstranitev stojala).  Za Dyn DNS priporočam uporabo: https://www.duckdns.org/  Namesto no ip. ",
+    "user": "starfotr"
+  },
+  {
+    "message": " starfotr je 18. mar 2020 ob 12:20 izjavil: Za Dyn DNS priporočam uporabo: https://www.duckdns.org/  Namesto no ip.   Hvala za priporočilo, ampak nastavitve dovoljujejo zgolj (3) določene ponudnike. DynDNS, No-IP in še enega (se ne spomnem katerega).. Sumiš dyn dns za nedelovanje? ",
+    "user": "misticnimrk"
+  },
+  {
+    "message": "afraid.org ",
+    "user": "romex"
+  },
+  {
+    "message": "misticnimrk Na raspberry pi si \"odprl\" port v firewallu ? TK načeloma nima nekih blokad v stilu t2 visoka varsnot in podobno...Ednio vsi ispji blokirajo port_fw pod 1000 portom. ",
+    "user": "sbawe64"
+  },
+  {
+    "message": "sbawe64 na rpi je firewall default zaprt. [Link]  Ta informacija, da ISPji blokirajo porte pod 1000 je resnična, ampak tehniki so mi danes zagotavljali drugače. (da na njihovi strani ne blokirajo nobenih portov).  Sem se še nekaj igral danes... Najprej sem izključil dyn dns, pobrisal vsa pravila (Advanced/Nat/Virtual server) in jih nastavil na novo.  Porti so preverjeno odprti (based on this page status). Stran je ob klicu tipa http://myLocalIp:8080/ dosegljiva. Kar pa še vedno ne velja za http://myGlobalIp:8080/.  Apache2 konfiguracija: v ports.conf datoteki sem spremenil port 80 na 8080. v sites-available/000-default.conf sem določil port 8080 za VirtualHost  Kaj sem spustil, da zadeva ne špila po mojih pričakovanjih? ",
+    "user": "misticnimrk"
+  },
+  {
+    "message": "Ok, uspelo je.  Potrebno je bilo nastavit: NAT -- Virtual Servers NAT -- Port Triggering Incoming IP Filtering (Dynamic DNS)  Če eno od prvih treh alinej ni nastavljeno pravilno, zadeva ne špila.  Lepe korona praznike še naprej. ",
+    "user": "misticnimrk"
+  },
+  {
+    "message": "A mi lahko kdo razloži na enostavni način kako nastavit port forwarding na tem??? Ker nimam pojma o pojmu, naj bi se dalo nastavit v virtual servers a nimam pojma kako.  Server IP Address:  Remote hosts IP Address/subnet masks:  NAT Loopback:  External Port Start External Port End Protocol Internal Port Start Internal Port End   Sklepam da tam pod porti pač napišem ta moj port, ampak kaj vse napišem gori, remote host ip? server ip address? keri ip točno pride kam? ",
+    "user": "FiReFTW"
+  },
+  {
+    "message": "V server IP address sem napisal IP routera pa porte sem napisal tiste ki hočem odpret  pa ni delovalo  Zdaj sem pa v server IP address napisal IP routera v remote host IP sem napisal IP računalnika pa porte napisal  Pa spet ne deluje  porti še kar zaprti ",
+    "user": "FiReFTW"
+  },
+  {
+    "message": "server ip: tvoj lokalni ip od pcja ~192.168.1.x Remote host IP Address: prazno NAT Loopback: on External Port Start External Port End Protocol Internal Port Start Internal Port End št. porta, povsod isto. ",
+    "user": "Vuli"
+  },
+  {
+    "message": " Vuli je 21. mar 2020 ob 18:06 izjavil:server ip: tvoj lokalni ip od pcja ~192.168.1.x Remote host IP Address: prazno NAT Loopback: on External Port Start External Port End Protocol Internal Port Start Internal Port End št. porta, povsod isto.   Če pa naredim to pa mi ne gre, piše da je port zaprt ko ga stestiram..  Kaj bi tu bilo lahko krivo? ",
+    "user": "FiReFTW"
+  },
+  {
+    "message": "hja... enkrat me je zezalo na podoben način in mi odpro porte po \"resetu\" modema(on/off). drugače imaš pa še mogoče windows firewall oz od antivirusa. Poskusi jih ugasnt. A maš mogoče še kak router odzadi za modemom in si v bistvu na router proklopljen?  ČE imaš router odzadi in si na router priklopljen, pol mora bit server ip od routerja in pol odpreš na routerju iste porte ampak na lan ip od pcja. ",
+    "user": "Vuli"
+  },
+  {
+    "message": "Pozdravljeni,  Pred kratkim so nam pri Telekomu nadgradili povezavo na VDSL. Imamo modem INNBOXV45, preko katerega se povezujemo na internet preko WiFija. Na Wifi se sicer poveže zelo hitro, ampak potem lahko traja tudi do 5 minut, da internet začne delovati (testirano z večimi telefonimi/računalniki). Ko začne delovati, deluje normalno. Večkrat sem že klical na Telekom (reset modema,...) ampak težava še vedno ostaja. Sumim, da naprave nekako ne pridobijo DNS strežnika oz. pridobivanje traja dolgo časa. Ima kdo kakšno idejo kaj bi to lahko bilo?  Hvala ",
+    "user": "blazekg"
+  },
+  {
+    "message": "Pozdravljeni,   če iz enega porta nastavljenga na \"trunk\" peljem kabel na switch, od tam naprej pa na TV in PC. Bo deloval tako internet kot televizija? Kakšno priporočilo za switch, rabim samo par dodatnih portov ostalo nič posebnega. Hvala! ",
+    "user": "dreamtheater"
+  },
+  {
+    "message": "Da, na večini stikal to dela BP, razen, če bi res našel kakšno eksotiko. Če pa boš kupil smart switch, pa bo treba nastaviti VLAne na njem. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Imam T2. Optika preko tiste Huawei zadeve v Innbox V60, nato naprej v moj router. Kako naredim da priklopim Huawei zadevo direktv moj router in zaobidem Innbox ? ",
+    "user": "gazibo"
+  },
+  {
+    "message": "Najlažje tako, da te preklopijo na način p2p v kolikor nisi. Ko si enkrat, lahko potem vtakneš fiber kamor koli ti paše in net delal, z TV pa bo nekaj dela. ",
+    "user": "Fsegula62"
+  },
+  {
+    "message": "kdo pa da v P2P ? Telekom ? Na TVju mam ze T2 app, tako da z tem ne bi smelo bit tezav. ",
+    "user": "gazibo"
+  },
+  {
+    "message": "P2P je način kako si ti priklopljen na centralo. P2P je če imaš svoje vlakno do centrale. GPON kar pa ti imaš ker je Huawei škatlca kot vmesnik oz pretvornik. V P2P pa lahko samo spremeni lastnik omrežja če seveda ima prosto parico. Router imaš pa kateri? Naprimer v Mikrotika lahko direkt vklopiš SFP v določenih primerih. ",
+    "user": "Gapi"
+  },
+  {
+    "message": "Mikrotik RB4011iGS+RM    saj zato lih razmisljam da ga dam direkt v Tika, da se losam nepotrebne aparature od T2 in Telekoma. Moram samo se preveriti kater SFP modul bo taprav, tukaj sem se malo zelen. ",
+    "user": "gazibo"
+  },
+  {
+    "message": "A nimaš od tiste Huawei škatlice do Innboxa mrežnega kabla? GPON nikakor ne priklapljaj direkt v Mikrotika, ker boš sesul internet vsem, ki so na isti parici s tabo. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Ce malo ukradem temo - ima kdo kaj izkusenj z Innbox v60 in staticnimi IPv6 routami? Nikakor ne uspem pravilno (=tako, da bi delalo) vpisati IPv6 route proti LAN omrezju. Recimo, da imam aaaa:bbbb:cccc:dd00::1/64 na LAN vmesniku na Innboxu, omrezje aaaa:bbbb:cccc:dd01::/64 bi pa rad usmeril na aaaa:bbbb:cccc:dd00::2 Glede na to, da kaj dosti moznosti itak ni, kako se to nastavi, vedno bolj sumim na kaksen bug. A komu to dela? ",
+    "user": "rokp"
+  },
+  {
+    "message": "Nekateri imamo proper router.    Screenshot ipv6 settings innbox  Povej kaj imaš tuki obkljukan. ",
+    "user": "Gapi"
+  },
+  {
+    "message": "Sicer hvala za odgovor, ampak ne razumem, zakaj bi bilo to pomembno?  Iz tega LANa mi seveda vse deluje, ampak ker je na voljo se precej vecji naslovni prostor kot tisti directly connected /64 na Innboxovem LANu, bi pac kaksnega izmed (trenutno neuporabljenih) razpolozljivih naslovov/networkov, ki jih ISP usmerja proti meni, rad routal kam naprej v svojem (malce kompleksnejsem) omrezju. Seveda bi lahko na kaksnem notranjem usmerjevalniku (torej tistem, ki je za Innboxom, a ima z njim skupen segment) kaj caral z NAT66 (preslikoval IPv6 naslove v taksne, ki so v tem skupnem segmentu) in bi (preverjeno) delovalo, ampak tega nocem, ce ze imam na voljo veljavne naslove in jih lahko samo routam... V tem povezovalnem LAN segmentu ne potrebujem ne DHCPv6 in ne SLAAC, ker imam vse naslove staticne. ",
+    "user": "rokp"
+  },
+  {
+    "message": " Daniel je 3. mar 2021 ob 07:19 izjavil:A nimaš od tiste Huawei škatlice do Innboxa mrežnega kabla? GPON nikakor ne priklapljaj direkt v Mikrotika, ker boš sesul internet vsem, ki so na isti parici s tabo.   Kako to da sesuje vsem parico ? Ni nobene opcije da bi se direkt v usmerjevalnik povezalo ? Zdej sem odstranil innbox in priklopil direkt v mikrotika in dela super, ce bi lahko vlakno direkt povezal bi bila zmaga ",
+    "user": "gazibo"
+  },
+  {
+    "message": "Pri GPON ne. Delovanje GPONa mi sicer ni tehnično znano v podrobnosti ampak če se kar priklopiš direkt na vlakno na katerem je morda še ostalih 32, 64,... Itd. uporabnikov s svojim neustreznim GBICom bo tale tvoj GBIC naredil kaos na liniji in podrl internet vsem ostalim. To ni isto kot P2P optika, kjer to komot rešiš z ustreznim GBICom v Mikrotiku ali Switchu.  Bo morda XSIDE vedel kako točno je s tem, kaj je možno in kaj ne. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Nastavit bi moral port forwarding za port 5514 UDP, da lahko pogledam neke loge. Bi mi lahko kdo pomagal s tem, da bo sigurno pravilno nastavljeno? ",
+    "user": "Map"
+  },
+  {
+    "message": "Pozdravljeni,  trenutno imam na telekomovi optiki priklopljen Innbox v60u na katerem sem izklopil wifi, za brezžični prenos, pa je nanj priklopljen starejši usmerjevalnik Tp-Link Archer C5 v1.20. Iptv NEO box moram laufati preko dveh innbox PLC-jev, od katerih je eden pred kratkim nehal delovati in bi moral nabaviti novega.  Razmišljal sem, da bi osvežil celoten sistem in ga nadomestil z Fritzbox 5490 modemom in Fritzbox PLC. Torej, namesto dveh škatel Innbox v60u in Archer C5, bi imel le eno škatlo Fritzbox 5490.  Sedaj bi pa vprašal, ali bi ob zamenjavi, ob prihranku prostora, pridobil tudi boljšo stabilnost in pokritost s signalom wifi, ter boljšo uporabniško izkušnjo? ",
+    "user": "clancy"
+  },
+  {
+    "message": "Pokritost signala med 20€ in 2000€ oddajniki je tam-tam. Da se kaj dejansko pozna je treba ali boljšo postavitev ali več WiFi točk. ",
+    "user": "Lonsarg"
+  }
+]

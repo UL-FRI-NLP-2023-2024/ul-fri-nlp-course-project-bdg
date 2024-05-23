@@ -1,0 +1,74 @@
+[
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "ok, naslov bi bil predolg, zato nadaljujem tukaj. torej, na nasu imam eno odprto, se pravi read/write mapo za vse. sedaj bi rad naredil še eno, ki bi bila pod geslom. z batch datoteko lahko naredim povezavo do obeh map, a mi pri drugi vrže napako, da se na isti disk ne more prijavljati več (istih) oseb (čeprav v bat file vnesem drugega uporabnika in geslo). torej, karkoli poskušam, se vrtim v krogu. rad bi naredil pač foolproof zadevo. ko se uporabnik prijavi, ima na voljo povezavo (stalno ali pa vsakokratni batch file) do javne mape, po kliku (ali batch file) pa bi imel dostop še do zaklenjene mape. ki bi jo po želji z bat datoteko spet zaprl (to znam...). windows je 10 home, zato kake finte z group policy zadevo odpadejo. ali pa če kdo uporablja kakšen program, ki to z minimalnimi kliki naredi.",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "Hkrati na isto napravo ne moreš biti povezan z različnimi uporabniški imeni, ker potem ne ve, kakšne pravice naj ti da.\n\nTo moraš rešiti tako, da se batch datoteka najprej odjavi in ponovno prijavi kot drug uporabnik. Drugemu, omejenemu uporabniku pa dodaš še rw dostop do prve mape.",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "ok, vmes sem preveril še nekaj free lock folder programčkov, ki so sicer super, a ne znajo delat z share mapami  itak.\npa ta batch bi te moral dejansko odjaviti s sistema ali kako? ker delam za navadne userje in narediti zadevo kompleksno, to ni za njih. zato bi rabil le batch, ki z klikom odpre ali zapre dostop do mape (seveda z geslom).",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "Če prav razumem, boš moral odjavit uporabnika ali restartat service za SMB share, ker windowsi dovolijo samo eno aktivno prijavo za SMB. Podoben problem sem rešil s to bat skripto.\n\n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t@echo off\nnet stop workstation /y\nnet start workstation\n:: net start browser :: smb v1 service\n\nexit /b 0\n\t\n",
+    "author": "monsi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "ok. kaj naredita ukaza start browser in smbv1 service? je to pomembno zame ali je bilo samo zate?",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": ":: je znak za komentar, če imaš NAS še s staro verzijo SMB, potem odstrani ::, da bo samo net start browser. Sicer pa to bat skripto poženi vmes, ko menjaš mapo z drugim userjem.",
+    "author": "monsi",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik ngc2392 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tok. kaj naredita ukaza start browser in smbv1 service? je to pomembno zame ali je bilo samo zate?\n\t\t\n\t\tKlikni za razširitev\n\t\nok, če zalaufam tole (brez une smb1) kot admin, ne javi nobene napake, ampak ne kreira mrežni pogon. če pa ga zalaufam kot navaden user, mi pa javi error 5, ampak naredi pa pogon z userjem. v dani situaciji mislim, da bo tole nekako laufalo...",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "Mogoče malo pozen odgovor, ampak načeloma lahko uporabljaš DNS aliase za isto mašino, torej v /etc/hosts* na isti IP vežeš več različnih domen in potem vsak shared folder mountaš z uporabo druge domene - s tem bi mislim da moral prisiliti Windows da ločuje credentiale med obema shared folderjema - kar je trenutno bil problem.\n\n* na windowsih je to v C:\\Windows\\System32\\drivers\\etc",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "to sem tudi stauhal na internetu...ampak, izvedba mi ni čisto jasna in sem odnehal. v hosts sem napisal recimo 192.168.0.5 (kar je ip od nas-a) zraven pa samo ime mape (recimo delo). a bi moral celotno ime, \\\\delo...pojma nimam (inštrukcije nejasne ",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "ehhh\nvpišeš npr v host file tkole:\n192.168.0.5 server1\n192.168.0.5 server2\n\npol pa ko mapiraš enkrat uporabš:\nnet use X: \\\\server1\\ime_mape /user: USERNAME1 PASSWORD1\ndrugič pa:\nnet use Y: \\\\server2\\ime_mape /user: USERNAME2 PASSWORD2\n\nčeprov je zadost da v hosts vpišeš en ime, in mapiraš na tega (hostname), tadruzga pa na ip:\nnet use Z: \\\\192.168.0.5\\ime_mape /user: USERNAME3 PASSWORD3",
+    "author": "Piton",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "lej, hvala ker se trudiš...ampak tole men ne brca. domnevam, da je ime server povsem random? ker meni ne prepozna \"serverja\".",
+    "author": "ngc2392",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Dostop do dveh map na enem mrežnem disku...",
+    "content": "Moraš najprej datoteko hosts ki jo najdeš v C:\\Windows\\System32\\drivers\\etc\\ pravilno uredit, kot so ti zgoraj napisali. Dodaš:\n192.168.0.5 server1\n192.168.0.5 server2\n\nIP naslovi so izmišljeni, uporabi tvoj primer.\n\nin shraniš.",
+    "author": "damirj",
+    "author_level": "Guru"
+  }
+]

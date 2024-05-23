@@ -1,0 +1,22 @@
+[
+  {
+    "message": "Kako napravti \"bližnjico\" za vklapljane in izklapljanje (disable) USB naprave? Sedaj je treba iti v System in Device Maneger da disablam napravico. Problem je v tem, da se \"tepe\" z drugimi.  tx, za predloge ",
+    "user": "k4vz0024"
+  },
+  {
+    "message": " DEVCON  Prenesi si program DevCon, ga nekam razzipaj in potem DEVCON.EXE skopiraj v Windows\\system32 mapo.  V Device Managerju desni klik na napravo, ki jo želiš disejblat, \"Lastnosti\", zadnji zavihek \"Podrobnosti\" in izbereš \"ID primerka naprave\". Klikneš na niz, da pomodri in CRTL+C, da niz skopiraš, ker tipkat ga je muka.  Npr, da disejblaš flopi disk odtipkaš v command promptu:  devcon /r disable \"@FDC\\GENERIC_FLOPPY_DRIVE\\4&33BC18FA&0&0\"   in v device managerju se ti pojavi tisti rdeč križec žez napravo. Seveda niz v narekovajih nadomesti s svojim ID-jem naprave. Narekovaji so obvezni pri direktnem ukazu iz Command Prompta !   Ukaz DevCon ima kar nekaj stikal/možnosti npr. tudi REMOVE in je kot nalašč za kak USB ključek, da ne klikaš tolikokrat z miško okoli Varnega odstranjevanja naprav...  Npr. za remove USB ključka imam jaz sledečo bližnjico:  devcon /r remove \"@USBSTOR\\DISK&VEN_USB_2.0&PROD_FLASH_DISK&REV_1100\\AA00000000000572&0\"  Ukaz shrani v neko BAT datoteko in na namizju ali še bolje v Quick Lanch baru naredi bližnjico do te BAT datoteke.  Poročaj, če ti rata. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "Tole mi ne dela. Sm razpakiral in in prenesel v system32 devcon.exe.  V .bat datoteko sem vnesel tole: devcon /r disable \"USB\\VID_0923&PID_010F\\7&145CF7B0&0&1\".  To je napačno. Treba je hrdware Ids. Pol pa dela.  Tx ",
+    "user": "k4vz0024"
+  },
+  {
+    "message": "Dodal bi še da za ponovni vklop disable zamenjamo z enable in posnamemo novo. bat. Cool!  ",
+    "user": "k4vz0024"
+  },
+  {
+    "message": "Hval, Duhec ",
+    "user": "k4vz0024"
+  }
+]

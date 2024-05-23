@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Rabil bi malo pomoči. ;) Preko neta se hočem povezati na oddaljeni router. Seveda sem vklopil remote access in nastavil port. Ko v browser napišem naslov me vpraša za username in geslo, potem se pa ustavi in lovda v neskončnost. :) Username in geslo sta pravilna, ker če vpišem napačna mi to javi.  Do zdaj sem ugotovil, da probleme očitno povzroča lokalni router. Kajti tudi pc, s katerih se hočem povezati na oddaljeni router, je na net povezan preko routerja. Ko lokalni router odstranim in se na net povežem direktno preko modema, tako, da v windowsih ustvarim klasično PPPoe povezavo, se pa lahko normalno povežem na oddaljeni router.  Seveda, jaz bi bil rad na net povezan preko routerja. Zdaj sem že naredil hard reset in se nekaj igral z firewallom, ampak brez uspeha, ker sploh ne vem kaj naj iščem. Če ima kdo kašno idejo oz., če je kdo že imel podoben problem se priporočam. :D  Oba routerja sta WRT54GL. Na lokalnem teče Tomato, na oddaljenem pa originalni firmware. ",
+    "user": "Pozejdon"
+  },
+  {
+    "message": "Najlažje gre z teamviewer, logmein free... lahko tudi ssh/ vpn/ hamachi +ms rdp, samo je več dela da vse nastaviš. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Ampak jaz ne rabim remote desktopa. Jaz se hočem povezat na router in to bi moralo delat brez remote desktopa. ",
+    "user": "Pozejdon"
+  },
+  {
+    "message": "V Tomato FW nastaviš pod \"Administration\" -> Admin access. Tomatov firewall nič ne filtrira outbound povezave.  Na original FW greš v \"The Administration Tab\" -> Management. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "To imam nastavljeno in deluje, razen, če se povežem na net preko lokalnega routerja. Takrat pa pridem samo do log in okna. :) ",
+    "user": "Pozejdon"
+  },
+  {
+    "message": "Torej se zacikla pri routerju z linksys fw-jem ?  Uporabljaš https za remote povezavo ? Spremeni sedanji port za dostop.  Vklopi log na routerju in poglej če je notri kaj uporabnega. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Povezat se hočem na router z linksys fw-jem, na lokalnem imam pa tomato. Sumim, da lokalni (tomato) nekaj blokira, ker ko se na net povežem brez routerja, stvar dela.  Porte sem že menjal, https sem tudi že vklopil. Problem ostaja.  Zdaj sem za lokalni router uporabil še siolov modem (OxyGEN) in je isti problem. Pridem do logina potem se pa ustavi. :)  Do routerja lahko pridem samo preko PPPoe povezave v windovsih. ",
+    "user": "Pozejdon"
+  },
+  {
+    "message": "Kateri modem imaš ? Da ni tudi router ? ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Saj sem napisal. :) Modem je OxyGEN od siola in je tudi router. Ampak jaz ga običajno uporabljam samo kot modem, potem se pa z linksyson povežem na net.  No, zdaj sem tudi v tem routerju nastavil povezavo in je isti problem. Ne vem kaj je narobe. :) ",
+    "user": "Pozejdon"
+  },
+  {
+    "message": "Dvojni nat je imho (2x router v shemi), daj modem v modem only način (bridge mode) in vzpostavi povezavo na routerju. ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Stori sledeče: - pusti lokalni ruter priklopljen - v oddaljenem ruterjevem firmveru omogoči ssh ali telnet dostop, priklopi se na ruter preko telnet ali ssh klienta z lokalnega računalnika - če telnet ali ssh dostop delujeta, se na ruter poizkusi priklopit s kakšnim drugim brskalnikom (IE, FF, Chrome) - če telnet ali ssh dostop ne delujeta, na lokalnem računalniku poženi wireshark in poglej kdo in zakaj zavrača povezavo ",
+    "user": "srus"
+  }
+]

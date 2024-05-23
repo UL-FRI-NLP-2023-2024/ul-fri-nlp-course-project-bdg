@@ -1,0 +1,122 @@
+[
+  {
+    "message": "En disk ki mi je služil kot notranji disk sem dal v ohišje od WD-ja in ga priklopil kot USB zunanji disk. Disk je OK, kot notranji je deloval odlično, SMART parametri OK, vse normalno. Ampak prek USB pa ne gre. Piše da ga mora inicializirat. AMpak tega se ne da ker napiše Access is denied. Poskušal sem z WD orodji, poskušal sem z novimi driverji, z zbrisanjem naprav (in disk in USB) v devide managerju... brez uspeha. kakšna ideja mogoče?   access denied ",
+    "user": "ncop1"
+  },
+  {
+    "message": "kaj pa če mora bit wd disk za v wd ohišje ?? ",
+    "user": "Riff"
+  },
+  {
+    "message": "odpri command prompt kot administrator, pa probaj potem z orodjem DISKPART ... navodila si pa pogooglaj ",
+    "user": "blackbfm"
+  },
+  {
+    "message": "Riff: pač zazna ga zato sem mislu da bi moglo iti. Načeloma je Samsung še celo napiše pravilno kapaciteto, tudi SMART parametre bere (tosto orodje od WD-ja) tako da mislim da to ni problem. zdi se mi da so problem administratorske pravice ali pa kej v tem smislu  Blackbfm: Tudi s tem nimam dostopa. ",
+    "user": "ncop1"
+  },
+  {
+    "message": "mislim da moraš formatirat potem bo ok. ",
+    "user": "janezvalva"
+  },
+  {
+    "message": "Ne gre formatirati. Ne pokaže ga v Moj računalnik, ne morem preko command prompt, nič. Še tole sem poskusil, pa slike:   disk   Tole so SMART parametri tega &quot;problematičnega diska&quot; ",
+    "user": "ncop1"
+  },
+  {
+    "message": "zloadaj en minitool partition pa s tistim probaj ",
+    "user": "gddr85"
+  },
+  {
+    "message": "Probaj Ubuntu live zbootat pa z gparted uredit zadevo ",
+    "user": "issak"
+  },
+  {
+    "message": "google diskpart clean ",
+    "user": "Baja"
+  },
+  {
+    "message": "Baja: DiskPart has encountered an error: Access is denied. See the System Event Log for more information. Ne gre nič niti s tem.  Gddr85: ne da se s tem  Issak: bom poskusil še s tem, če bom znal ",
+    "user": "ncop1"
+  },
+  {
+    "message": "linux ne zazna :(    ",
+    "user": "ncop1"
+  },
+  {
+    "message": "Zazna ti ga kot particijo P:\\ na usb priključku ! ... Premeščaj ga med raznimi USB priključki ... probat ni greh ... ",
+    "user": "Spajky"
+  },
+  {
+    "message": "Pozdrav  Isto stvar sem imel pred dobrim letom, ko sem iz starega računalnika (ki je delal pod XP-ji) prestavil IDE trdi disk v zunanje ohišje in ga preko USB-ja povezal na prenosnik kot zunanji disk. Prenosnik ima naložene Win 7. Po nekajurnem googlanju se je izkazalo, da je problem v lastništvu (ownership) datotek na disku. Potem sem naredil tako, kot je zapisano tukaj:  https://answers.microsoft.com/en-us/win...  Datoteke so potem bile vse dostopne in zadeva še danes lepo deluje....  LP  Jože ",
+    "user": "Barbarpapa2"
+  },
+  {
+    "message": "Spajky: ne to je drug disk, na tej sliki sta bila dva vključena...  Barbarpapa2: mal sem zgubljen. ne dela nič kaj. ne morem črke določiti, in zao tudi ne morem ownership prevzeti...  takole to zgleda. Disk 1 je ta problematični disk. Spodaj so napisani Volume. Ne vem kaj je tisti E, ker nimam DVD rom predvajalnika, najbrž je to disk prepoznan kot E. Ne morem ustvariti novih. Ne morem delati particij, ne morem dodeliti črke...    DISKPART> convert dynamic  DiskPart has encountered an error: Access is denied. See the System Event Log for more information. ",
+    "user": "ncop1"
+  },
+  {
+    "message": "Pa pa je šel...če imaš kakšne pomembne podatke gor, ga niti ne priklaplaj, ker vsakič, ko ga želiš pognat, gre še kakšen sektor k vragu. ",
+    "user": "r3dkv1c4"
+  },
+  {
+    "message": "ma ne ni mi fora v podatkih, sam rad bi da dela. podatki so na varnem, jes bi ga sam v funkcijo rad spravil, sej kot SATA še zmerej dela v kompu ",
+    "user": "ncop1"
+  },
+  {
+    "message": "DISKPART> detail disk  WD Ext HDD 1021 USB Device Disk ID: 00000000 Type : USB Status : Online Path : 0 Target : 0 LUN ID : 0 Location Path : UNAVAILABLE Current Read-only State : No Read-only : No Boot Disk : No Pagefile Disk : No Hibernation File Disk : No Crashdump Disk : No Clustered Disk : No  There are no volumes. ",
+    "user": "ncop1"
+  },
+  {
+    "message": "v diskpartu:  select disk 1 clean  to bi moglo biti to. ",
+    "user": "Baja"
+  },
+  {
+    "message": "To gre, sam ni dost. Jes rabm particije, pa se crko dodelit... ",
+    "user": "ncop1"
+  },
+  {
+    "message": "Kaj bi rad ? Hdd je crknil (oz če je samo datotečni sistem vsul do konca, potem uporabi checkdisk oz orodje proizvajalca - wd in seagate imata orodje, ki dela v \"dosu\"). Za reševanje podatkov uporabi free testdisk ali plačljiv getdata back ntfs/fat; kopiraš itak na drug hdd. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Mogoce banalno, ampak kaj ce bi si pod upraviteljem dodal admin pravice?  ",
+    "user": "OmegaM"
+  },
+  {
+    "message": " konspirator je 18. dec 2016 ob 15:57 izjavil:Kaj bi rad ? Hdd je crknil (oz če je samo datotečni sistem vsul do konca, potem uporabi checkdisk oz orodje proizvajalca - wd in seagate imata orodje, ki dela v \"dosu\"). Za reševanje podatkov uporabi free testdisk ali plačljiv getdata back ntfs/fat; kopiraš itak na drug hdd.   NI crknil! na sata priključek dela odlično. in podatkov ne rabim, sploh niso podatko problem tukaj. a lahko najprej temo prebereš prosim.  OmegaM: saj sem uporabljal comand prompt (admin).  Moj sklep je da je zgleda vezje nekompatibilno z diskom, tako da najbrž bom kupil nov kabel USB/SATA. Če ima pa kdo še kakšno idejo da poskusim pa z veseljem probam. ",
+    "user": "ncop1"
+  },
+  {
+    "message": "Nisem imel v mislim cmd, ampak v upravitelju diskov lahko na ta disk dolocis pravice. ",
+    "user": "OmegaM"
+  },
+  {
+    "message": "a narobe sem razumel. ne tudi to ne pomaga  ",
+    "user": "ncop1"
+  },
+  {
+    "message": "poiskuis takole: https://www.amazon.com/Manhattan-Hi-Spe... ",
+    "user": "janezvalva"
+  },
+  {
+    "message": "Mhm, sej nekej taksnega si bom umislu. Alpa ce gdo zeli disk, ga zamenjam za nekaj podobnega zunanjega. ",
+    "user": "ncop1"
+  },
+  {
+    "message": "Bodi povezan z netom, nato desni klik na Disk1 (tisti del kjer je rdeče/bel logo puščice), Properties, zavihek Driver, Update Driver, izberi prvo možnost \"Search automatically for updated driver sw\". Načeloma se naloži ali osveži Generic External usb Device driver.  Po restartu test. Poročaj. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "Če je hdd 3.5\", potem kupi nekaj takega http://www.ebay.com/itm/MAIWO-3-5-USB-3... .   Za 2.5\" hdd http://www.ebay.com/itm/Portable-ORICO-... . ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Ker ne morem več editirati prejšnjega testa zato: p.s. Vidim, da imaš Win10 sistem, zato prvo aktiviraj administratorski račun, restartaj pc ter se prijavi kot administrator. Aktiviraš ga tako: DK na Start, izberi Command Prompt (administrator), in odtipkaš: net user administrator /active:yes S tem si skriti račun aktiviral; restart, prijavi se kot admin in še 1x test inicializacije diska. ",
+    "user": "Duhec"
+  },
+  {
+    "message": "Na zalost nic ne dela, @Duhec tudi to ne dela. ",
+    "user": "ncop1"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "message": "Iamamo težavo z VPN tuneli. Ko so zavodi, ki jih vzdržujemo prešli na Arnesovo infrastrukturo (optiko, ki so jo dobili zastonj), nam ne dela noben VPN. Ti VPNji so delovali vse do preklopa na Arnes. V teoriji bi bilo potrebno zamenjati le IP in bi vse moralo delovati. Pa ne. Na Arnesu so odprli vse porte, ki so potrebni, pa VPN še vedno ne deluje. Probali smo PPTP, L2TP, L2TP over IPsec. Noben ne deluje. Oprema, ki jo uporabljamo je Draytek Vigor 2920, Draytek Vigor 2950, Mikrotik CCR1009-8G-1S. Ne delujejo VPNji med routerjema in z računalnika na router. Ima kdo kaj izkušenj?  V naprej hvala, Sebastijan ",
+    "user": "seba75"
+  },
+  {
+    "message": "IPsec si naredi asinhrone ključe. V primeru zamenjave IP naslova, je treba obnoviti \"certifikate\".   Predlagam, da shraniš konfiguracijo, pobrišeš vse in znova poskusiš. Kdaj pa kdaj se tudi kaj pojavi v samih napravah, da iz neznanega vzroka ne delajo. ",
+    "user": "...:TOMI:..."
+  },
+  {
+    "message": "Zagotovo ni Arnes kriv, če je odprl porte.  To kar Tomi pravi glede certifikatovpa nima veze, če delaš z preshared key-em. Prej predvidevam, da je štos v obupnem uporabniškem vmesniku, ki ga ima Drytek. Tako nelogičnega vmesnika ne vem, če sem še pri kerem drugem proizvajalcu videl.  Če imaš 'cookbook' za vzpostavitev VPN povezav, bi priporočal, da podreš tunele in jih zgradiš od začetka po navodilih. Če nimaš veliko teh tunelov, to nebi smelo biti problem.  Alternativno - če ne verjameš v to, da bi bil problem na Dryteku in njegovi konfiguraciji, lahko poskusiš z neko drugo rešitvijo (če nimaš nič pri roki, lahko jaz kaj posodim). Ko se prepričaš, da z drugo rešitvijo dela, se pač zakoplješ v Drytek konfiguracijo (kontaktiraš njihov support?), da stvar pošlihtaš.  Verjamem, da je hudič, če si v dvomu ali je problem na strani tvojega HW ali na strani providerja. Tako pa lahko en element dokončno izključiš in se fokusiraš na tistega, ki je dejansko problematičen. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Problem je, ker je to delovalo. V trenutku, ko je na eni strani Arnes, pa ne deluje več. Isto zadevo imam z dial-in v Mikrotik router! Tudi tukaj je nehalo delat v trenutku, ko je router na Arnesovi optiki. ",
+    "user": "seba75"
+  },
+  {
+    "message": "Emmm.... mogoče glupo vprašanje, ampak vseeno: si popravil VPN parametre na obeh straneh tunelov? ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Na pamet ugibat, kaj bi šlo lahko narobe bo težko. Za začetek bi jaz pogledal kakšne debug izpise in zajel promet na obeh straneh. Iz tega bi moral dobiti dovolj informacij, da vidiš kje se zatakne oziroma kje iskati napako naprej. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": " SeMiNeSanja je 13. maj 2017 ob 23:05 izjavil:Zagotovo ni Arnes kriv, če je odprl porte.    Sicer ne poznam situacije, ampak ce so odpirali samo porte, ne pa tudi vseh protokolov, ki se uporabljajo, je normalno, da ne deluje. (PPTP uporablja TCP port 1723 in protokol GRE, L2TP UDP port 1701 (ampak to samo po sebi ni kriptirano), IPSec pa ponavadi ali UDP port 500 in protokol ESP, ali pa UDP porta 500 in 4500, odvisno, kaksna je situacija). Ce sta torej GRE oziroma ESP protokol blokirana, je mozno, da ne deluje zaradi tega (spet, odvisno od tega, kaj je nastavljeno in kaj je med napravama, ki vzpostavljata VPN)... (Sicer po dosedaj napisanem vem, da @SeMiNeSanja vse to ve, OP pa verjetno ne...) ",
+    "user": "rokp"
+  },
+  {
+    "message": "Ne vem... zadnjič je ena stranka šla dol s HKOM na Arnes, pa so samo zahtevali, da jim odprejo porte, pa niso imeli nobenih težav z VPN povezavami (IPSec in SSL VPN). Ker stranka ni ravno hudo vešča internetnih pojmov, dvomim, da so kaj preveč podrobno specificirali, kaj naj jim odprejo, ker tega preprosto niso sposobni. Pa tudi na strani Arnesa predvidevam, da se tega zavedajo in ne komplicirajo, da bi stvari samo deloma odpirali, če jih zaprosiš, da ti naj 'vse odprejo'. Drugače pa to lahko hitro razjasniš z enim klicem na Arnesov helpdesk, kjer jih vprašaš, če je še kaj ostalo blokiranega, ali so ti res vse odprli. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Po njihovih besedah je vse odprto.   + permit udp any host 193.2.xxx.xxx eq isakmp + permit udp any host 193.2.xxx.xxx eq non500-isakmp + permit udp any host 193.2.xxx.xxx eq 1701 + permit esp any host 193.2.xxx.xxx + permit tcp any host 193.2.xxx.xxx eq 1723 + permit gre any host 193.2.xxx.xxx ",
+    "user": "seba75"
+  },
+  {
+    "message": "Daj vseeno še 1x preveri, kako si na OBEH straneh tunelov definiral zadeve.  Pri IPSec-u je najbolj pogosto uporabljen preshared key. Predvidevam, da to metodo uporabljaš tudi ti. Pri tej metodi je tvoja IP adresa običajno uporabljena 2x - enkrat za naslov gateway-a, drugič pa za avtentikacijo.   Če si popravil samo naslov gateway-a, ne pa tudi IP naslov pri avtentikaciji, bo zadeva ravno tako padala. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "za tisto z računalnikom na router - mogoče greš preko substringa-domene in še vedno kaže na star IP? primer: vpn.domena.com=starIP? če greš pa direktno na IP, je pa itak moo point to kar sem napisal.. ",
+    "user": "Bizkit45"
+  }
+]

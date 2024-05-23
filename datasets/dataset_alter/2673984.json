@@ -1,0 +1,20 @@
+[
+  {
+    "ctx": "Excel Visual Basic",
+    "content": "V Excelovem dokumentu sem pripravil kar obsežno tabelo, ki ima več stolpcev s spustnim seznamom in bi rad, da bi pri večjem številu (100+) bila možnost iz spustnega seznama izbrati več možnosti.\n\nNapisal oz. prekopiral sem spodnje, ki pa omogoča samo, da se navede v katerih stolpcih (označeno z modro) je možno izbrati več možnosti iz spustnega seznama. Zanima me kako naj napišem, da se bo to nanašalo na celo tabelo oz. list oz. kar cel Excelov dokument, ker je res veliko stolpcev.\n\nHvala\n\nPrivate Sub Worksheet_Change(ByVal Target As Range)\nDim Oldvalue As String\nDim Newvalue As String\nApplication.EnableEvents = True\nOn Error GoTo Exitsub\nIf Target.Column = 15 Or Target.Column = 16 Or Target.Column = 17 Or Target.Column = 18 Or Target.Column = 19 Or Target.Column = 20 Or Target.Column = 21 Or Target.Column = 22 Or Target.Column = 23 Or Target.Column = 24 Or Target.Column = 25 Or Target.Column = 26 Or Target.Column = 30 Or Target.Column = 31 Or Target.Column = 32 Or Target.Column = 33 Or Target.Column = 34 Or Target.Column = 35 Or Target.Column = 36 Or Target.Column = 37 Or Target.Column = 38 Or Target.Column = 39 Or Target.Column = 40 Or Target.Column = 41 Then\n  If Target.SpecialCells(xlCellTypeAllValidation) Is Nothing Then\n    GoTo Exitsub\n  Else: If Target.Value = \"\" Then GoTo Exitsub Else\n    Application.EnableEvents = False\n    Newvalue = Target.Value\n    Application.Undo\n    Oldvalue = Target.Value\n      If Oldvalue = \"\" Then\n        Target.Value = Newvalue\n      Else\n        If InStr(1, Oldvalue, Newvalue) = 0 Then\n            Target.Value = Oldvalue & \", \" & Newvalue\n      Else:\n        Target.Value = Oldvalue\n      End If\n    End If\n  End If\nEnd If\nApplication.EnableEvents = True\nExitsub:\nApplication.EnableEvents = True\nEnd Sub",
+    "author": "Alan_Bastard",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel Visual Basic",
+    "content": "na pamet pišem.. jaz bi poiskusil nekaj v smeri for zanke For i = 1 to... 100+",
+    "author": "zakajaltersuxu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Excel Visual Basic",
+    "content": "\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tExcel VBA Loops: For Next, Do While, Do Until, For Each (with Examples)\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tLearn all about Excel VBA LOOPS. It covers - For Next loops, Do While & Do Until loops, For Each-Next loops (explained with relevant examples)\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\ttrumpexcel.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\nExample 1",
+    "author": "Ytbnd",
+    "author_level": "Guru"
+  }
+]

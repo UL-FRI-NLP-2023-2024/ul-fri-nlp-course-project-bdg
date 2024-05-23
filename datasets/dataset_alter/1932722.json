@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Outlook Express in WIN XP - SLO",
+    "content": "Mi lahko kdo pove preverjeno rešitev, kako bi spremenil Outlook Express nazaj na slovenski jezik, zdaj je namreč angleški. Res pa je, da se je pred časom sam spremenil (najverjetneje kakšni updati) na angleškega. Pa tudi Windows XP Home Edition so pol slovenski pol angleški. Je pa nameščen SP3.\n\nSkratka, prosil bi za pomoč, da bi imel vse normalno slovensko. Se da to kako elegantno in hitro rešiti? Sem nekaj iskal po netu, ampak je težava, da računalnik ni pri meni in ne morem nič testirati...\n\nlp",
+    "author": "Alko_man",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Outlook Express in WIN XP - SLO",
+    "content": "ponovno slo language pack inštalirej",
+    "author": "Alijen",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Outlook Express in WIN XP - SLO",
+    "content": "ali slo language dela na vseh SP-kih HOME verzije?",
+    "author": "Alko_man",
+    "author_level": "gps navigator"
+  },
+  {
+    "ctx": "Outlook Express in WIN XP - SLO",
+    "content": "Dejansko jezik povozi update IE. Tole spodaj deluje preizkušeno. Mislim da je zelo lepo razloženo.\nLp,\n\ns slo-tech\n SLO-TECH \n\nRešitev za težavo z angleškim Outlook Expressom v slovenskem o.s. Windows XP je opisana spodaj:\n\n- Presnemi datoteke: ACCTRES.dll, BROWSELC.dll, MSOERES.dll iz računalnika kjer je Outlook Express slovenski (Različica vseh treh datotek je v. 6.0.2600.0, jezik je slovenščina)\n\nZbrane datoteke so tudi na spodnji povezavi:\n\nhttp://www.mawasti.net/online/support/LIP/LIP.rar\n\n- Zaženi operacijski sistem v varnem načinu, opis postopka zagona v varnem načinu najdeš na naslednji povezavi:\n\nOpis možnosti varnega zagona v operacijskem sistemu Windows XP\nhttp://support.microsoft.com/kb/315222/sl\n\n- Klikni Start -&gt; Iskanje ter izberi iskanje po vseh datotekah in mapah (tudi skritih datotekah in mapah)\n\n- Poišči in preimenuj naslednje datoteke: ACCTRES.dll, BROWSELC.dll, MSOERES.dll ter namesto starih datotek na njihovo mesto posnemi te, ki si jih presnel iz drugega računalnika (kjer je Outlook Express v slovenščini)\n\nlahko si pomagaš s spodnji batch skripto:\n-----------------------------------------------------\ncopy ACCTRES.dll %systemroot%\\system32 /y\ncopy ACCTRES.dll %systemroot%\\system32\\dllcache /y\n\ncopy BROWSELC.dll %systemroot%\\system32 /y\ncopy BROWSELC.dll %systemroot%\\system32\\dllcache /y\n\ncopy MSOERES.dll %programfiles%\\Outlook Express /y\ncopy MSOERES.dll %systemroot%\\system32\\dllcache Express /y\n\npause\n-----------------------------------------------------\n\n- Shrani spodnji reg. ključ ter ga zaženi. (ali pa zaženi lip.reg, če si prenesel datoteke z zgornje povezave)\n\n-----------------------------------------------------\nWindows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Internet Explorer\\International]\n\"msimn.exe\"=\"6.0.2600.0-6.0.9999.9999\"\n\"wab.exe\"=\"6.0.2600.0-6.0.9999.9999\"\n\"iexplore.exe\"=\"6.0.2600.0-6.0.9999.9999\"\n\"explorer.exe\"=\"6.0.2600.0-6.0.9999.9999\"\n\"rundll32.exe\"=\"6.0.2600.0-6.0.9999.9999\"\n-----------------------------------------------------\n\n(ko se pojavi opozorilo, ga potrdi)\n\n\n- Ponovno zaženi računalnik v navadnem načinu ter preveri če je Outlook Express sedaj v Slovenščini",
+    "author": "ermej",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Outlook Express in WIN XP - SLO",
+    "content": "Pozdravljeni!\nTudi jaz sem imel take težave in mi jih ni rešil odinštalacija  in ponovna inštalacija jezika. Sedaj sem naredil po tej metodi in zaenkrat je tako kot mora bit.\nHvala @ermej.",
+    "author": "Leon2007",
+    "author_level": "Fizikalc"
+  }
+]

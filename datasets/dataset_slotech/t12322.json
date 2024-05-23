@@ -1,0 +1,62 @@
+[
+  {
+    "message": "Kako lahko naredim, da se bom lahko logiral na stran z usernamom in passwordom?  Tko kot je npr. tuki za forum? ",
+    "user": "ahac"
+  },
+  {
+    "message": "ce bi rad samo zascitil direktorij, ga lahko zascitis z .htaccess datoteko...   to kar je pa pri slotechu, je pa uporabniski vmesnik, katerega izdelava je težja. Vse temelji na podatkovni bazi, v katero so vnešeni uporabniki.  ",
+    "user": "whatson"
+  },
+  {
+    "message": "točno.. imaš dve možnosti..  1. .htaccess datoteka (če imaš strežnik apache) 2. z podatkovnimi bazami (mysql)  zdaj pa moraš spet ti povedat, kaj želiš ",
+    "user": "lordgreg"
+  },
+  {
+    "message": "Tko je: Za tole stran bi rad naredu tako, da bom lahko v mySQL bazo dodajal zgodbe, ki jih bojo obiskovalci lahko komentirali. Rad bi naredu tko, da bom moral vpisat password za dostop do admin dela in da bom logiran dokler ne bom kliknil logout.  Sej če drugač ne bo šlo bom pa naredu tko, da vsakič ko kaj delam kot admin vpišem password. Ko/če bo pa enkrat vse delal bi pa naredu tko, da se uporabniki lahko registrirajo (tako kot na forumu). ",
+    "user": "ahac"
+  },
+  {
+    "message": "to pa rešiš s cookiji....  v PHP manualu si preber mal od funkcije setCookie, informacije o cookiju pa dobiš iz spremenljivke (assoc array !) $HTTP_COOKIE_VARS  to je en način... da se se z session-i, sam men tist mal na bed deluje, tko da ne uporablam... ",
+    "user": "darh"
+  },
+  {
+    "message": "session. ",
+    "user": "glavic"
+  },
+  {
+    "message": " Sicer bom pa kr tko naredu, da bom password vpisal vsakič, ko bom kaj spreminjal v mysql bazi.  ",
+    "user": "ahac"
+  },
+  {
+    "message": "eh.. jaz ti priporočam, da si kreiraš cookie,.. za username recimo in za password.. pol pa,.. ko prideš na stran, skripta avtomatsko preveri, če sta tvojadva kukija enaka tistimadvema besedma v bazi (s tem mislim username in password), greš komot naprej, drgače te vpraša za user in pass ",
+    "user": "lordgreg"
+  },
+  {
+    "message": "Kako bi pa brez cookija? Recimo, da računalnik od nekoga ne sprejema kukijev. Tko se mora vsakič logirat. Kako naj naredim, da bo ostal logiran dokler ne zapre browserja ali gre na drugo stran? ",
+    "user": "ahac"
+  },
+  {
+    "message": "V PHP-ju imas prijetne session-e, ki kar lepo delujejo - Tudi brez cookiejev. Samo SessionID furas z GET metodo in dela. www.php.net/manual/ Isci Session :-)  Lp, Dejan ",
+    "user": "DeViCeD"
+  },
+  {
+    "message": "Ne znam. Na začetek sem dal session_start(); pol pa session_register(\"neki\"); Kako pa naredim, da se $neki prenese na naslednjo stran. Pa kako gre to brez kukijev? Sej sem manual in ene tutoriale bral, ampak mi ni jasn. ",
+    "user": "ahac"
+  },
+  {
+    "message": "$PHPSESSID (Al karkoli je pac nastavljeno za SessionID) neses preko GET metode ... Torej &ltA HREF = \"lala.php?PHPSESSID=$PHPSESSID\"&gt To je cist tko na hitr ... vec na php.net :-) Lp, Dejan ",
+    "user": "DeViCeD"
+  },
+  {
+    "message": "Na loginu preveriš z bazo, če je uporabnik avtentičen in mu pošlješ Cokiee = 1. Potem pa na vsako stran v vrh includaš tester, če ma uporabnik cookie nastavljen na 1 ali 0. Zadeva trivialno rešena!  ----- ilanium.com   ",
+    "user": "ilanium"
+  },
+  {
+    "message": "ja, samo to ni dobro narejeno -- ce je malo stevilo uporabnikov ze, ce jih je pa vec pa ne (tukaj mislim, ce gre za stran kot slo-tech da ima vsak uporabnik svoje up. ime in geslo)  primer: se uporabnik registrira in prijavi ter dobi cookie 1 (za celo leto)  to pomeni da ko bo gledal slo-tech bo imel eno leto cookie 1  to je v redu, razen ce mi zelimo tega uporabnika odstranit (ja, tudi taksni so ;)  mi ga pobrisemo iz baze, ampak on ima v cookiju se kr nastavljeno vrednost 1, ceprov tega uporabnika v bazi sploh ni.. in lahko pise komentarje.. samo s cem bos ti njegovo uporabnisko ime vezal, ce v bazi ne obstaja?:)  jst sm to resil tako, da se v cookie poslje up. ime in geslo potem pa se na vsaki strani uame iz cookija ven in pregleda.  jst hitrejse resitve nisem nasel  Lp, David ",
+    "user": "DavidJ"
+  },
+  {
+    "message": "Sej zdej sem se mal nauču cookije uporabljat, tko da bom tud jaz podobn naredu.  Brez session_start() pa tega. ",
+    "user": "ahac"
+  }
+]

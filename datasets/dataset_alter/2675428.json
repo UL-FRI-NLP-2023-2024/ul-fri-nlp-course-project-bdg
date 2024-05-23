@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Hej vsem...\n\nJe kdo tukaj, ki se spozna na VMWare ESX server? V službi v poslovne namene uporabljamo eno \"močno\" mašino (server), na kateri je VMWare ESX server in na tem serverju poganjamo virtualne mašine (z dosti snapshoti). Po parih letih uporabe nam je začel ta server delovat zelo počasi.. Pred meseci smo menjali en disk in je spet deloval dokaj hitro.. Pred parimi tedni je spet začel delovat zelo počasi..\n\nTorej, pozna kdo kakega strokovnjaka za VMWare ESX server? Ker ne najdemo nobenega res strokovnjaka... Ker so stvari kar zapletene, bi potrebovali kako svetovanje (lahko izstavi račun.. )",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Sicer se ne spoznam na ESX, ampak kaj pa pravi osnovna \"diagnostika\"? Mislim predvsem na:\n\nCPU load\nRAM usage\nDisk utilization (iopsi, queue length, latency)\nČe je karkoli od tega povišano oz. imaš spike (in je takrat sistem počasen), potem je to tvoj \"problem\".",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Če imaš diske v RAIDu, je lahko počasno delovanje tudi povezano z okvaro enega od diskov. Za kaj več se lahko tudi na ZS pomenimo.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Izvedel sem, da je v MB za VMWare certificirano podjetje Arhides... ",
+    "author": "raners",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Strojne okvare na strežnikih so ponavadni vidne po kakšni rdeči ali oranžni lučki. Samo moraš vedeti kaj gledaš.\nNekateri imajo tudi ekrane.",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik raners je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tIzvedel sem, da je v MB za VMWare certificirano podjetje Arhides... \n\t\t\n\t\tKlikni za razširitev\n\t\n\nPo mojem jih ne rabiš. Veliko denarja za malo efekta. Preveri diskovje, če imaš RAID5, 10 ipd konfiguracije, gre lahko za okvaro od enega od diskov, v teh primerih redundanca sicer deluje, samo je to računsko zahtevno in tudi če imaš kakšen zelo zmogljiv RAID kontroler, je upad performans občuten. Tudi če je polje v rebuild statusu, je enako padec performans. Lahko gre tudi za okvaro cache modula ali pa napajanja cache modula, tako da RAID polje deluje brez cachea. PAč preveri. Glede na to, da imaš ESX(i), potem poglej, če imaš RAID kontroler toolse nameščene, ker če jih nimaš, potem ti ostane jih ročno namestit ali pa pregled preko monitoringa (iLO, idrac ipd server management, če imaš) sicer ti ostane samo reboot serverja in pregled preko server toolsov. Glede na to, da si napisal, da ste podoben problem že imeli in odpravili z menajvo diska, je tudi zdaj skoraj zagotovo povezano s tem.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Pa še nekaj, omenil si, da imaš ogromno snapshotov. \n\nPotrebno je vedeti, da ti snapshoti začnejo s časom, predvsem, če je na strežniku ogromno sprememb, zelo obremenjevati celoten sistem. Zato velja mogoče pogledati v tej smeri, če so potrebni snapshoti za daljši čas nazaj.",
+    "author": "haloski_pepek",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VMWare ESX server - je kaki strokovnjak tukaj?",
+    "content": "Upam, da so diski SSD. Snapshoti so smrt za performanse, sploh če se veliko dela z datotekami, naprimer da so kakšne baze. Ker mora ob branju oziroma pisanju združevati osnovo in po verigi še vse snapshote. Do neke mere lahko pomaga cache na kontrolerju, če se spreminja manjša količina podatkov. V monitoringu se vidi, kje je ozko grlo.\n\n\n\t\n\t\t\n\t\t\thttps://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-A8B06BE0-E5FC-435C-B12F-A31618B21E2C.html\n\t\t\n\t",
+    "author": "erikson",
+    "author_level": "Guru"
+  }
+]

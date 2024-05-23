@@ -1,0 +1,158 @@
+[
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Zdravo. Rabim pomoč pri izvedbi wifi signala in NEO boxa za gledanje TV.\n\nTrenutno stanje: iz modema imam potegnjen UTP kabel do NEOta (oddaljena lokacija, ne vidiš WiFi od modema), ki omogoča WiFi omrežje (izključno 5 GHz) ter gledanje TV. Ker mi WiFi (5 GHz) omrežje ne ustreza, ne deluje kamera in klima (ki imata izključno 2,4 GHz), želim vključiti vmesni člen.\n\n1. Lahko vključim pred NEOta stikalo, na katerega vključim NEO in usmerjevalnik (ki ima tudi WiFi 2,4 GHz), pa gledam TV in imam željeni WiFi (2,4 GHz). --> ne želim imeti stikala in dodatno usmerjevalnik.\n2. Želim pa namesto stikala vključiti samo usmerjevalnik, ki bo omogočal WiFi in da na usmerjevalnik priključim NEOta, pa da bo usmerjevalnik spustil čez tudi video signal za NEOta. --> se pravi, kateri usmerjevalnik bi bil pravi da je namesto uporabljenega stikala. Je potrebno usmerjevalnik kaj nastavljati, je to komplicirano?\n\nMi lahko kdo pomaga z nasvetom, kateri usmerjevalnik bi bil pravi.\n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "godfather",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Jaz sem rešil s tem\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tMikrotik cAP RBCAP2ND dostopna točka | mimovrste=)\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tStropna/stenska brezžična dostopna točka, ki je s svojim nevpadljivim videzom idealna za domove, hotele, trgovine in podobne prostore. Podpira standard 802.11b/g/n in se lahko napaja prek PoE povezave.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.mimovrste.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nv bistvu katerikoli mikrotik uporabis, bi moralo delati. \nje pa potrebno nekaj znanja za nastaviti.",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Fly je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tJaz sem rešil s tem\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tMikrotik cAP RBCAP2ND dostopna točka | mimovrste=)\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tStropna/stenska brezžična dostopna točka, ki je s svojim nevpadljivim videzom idealna za domove, hotele, trgovine in podobne prostore. Podpira standard 802.11b/g/n in se lahko napaja prek PoE povezave.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.mimovrste.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\nv bistvu katerikoli mikrotik uporabis, bi moralo delati.\nje pa potrebno nekaj znanja za nastaviti.\n\t\t\n\t\tKlikni za razširitev\n\t\nČe te prav razumem, uporabim to dostopno točko vmes, Mikrotik bo delal WIFI, istočasno pa potem potegnem kabel iz mikrotika do NEO-ta (ali SiolBOxa) in bo potem delal tudi TV? Kaj pa je potrebno nastaviti na Mikrotiku, da bo potem deloval Wifi in istočasno preko kabla prepuščal video signal?",
+    "author": "godfather",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Ustrezno bi bilo potrebno nastavit VLANe, ampak tale točka ima itak samo 1 ethernet port, tako da je ne moreš priklopit vmes, bi rabil potem še dodatno (managed) stikalo, kjer spet ustrezno nastaviš VLANe. Lahko pa vzameš neko dostopno točko, ki ima 2 ethernet porta, in jo \"priklopiš vmes\".",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Napačen link sem dal\nImam ta model, ta ima dva porta, enega za napajanje iz drugega potegneš kabel v neota.\nSeveda pa je potrebno pravilno nastaviti vlane.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tMikrotik dostopna točka Wi-Fi 1200Mb cAP ac RBcAPGi-5acD2nD\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tMikrotik cAP ac RBcAPGi-5acD2nD je izredno majhna brezžična dostopna točka, ki deluje pri hitrosti 2.4GHz do 300 Mbit/s in vsebuje dva mrežna priključka.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.techtrade.si\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Lahko pa uporabis katerikoli mikrotik router za ta namen, če ti ni pomembna hitrost wifi prenosa. Prideš še precej ceneje skozi.",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Mikrotik Hap Ac2 ali Hap Ac3 (na tega lahko daš tudi WiFi Wave2 paket, s katerim bo Wifi na 5 Ghz šel čez 400 Mbit, kar je za Mikrotik že dosežek) ali zgoraj omenjena dostopna točka.\n\nVažno, da ima vsaj dva LAN porta. V vmesniku Mikrotika potem dodaš VLAN 3999 na eth1 in eth2, v bridge ustvariš nov bridge za TV, vklopiš IGMP snooping na bridge (lahko tudi na obeh) in na ta nov bridge dodaš oba VLANa (zavihek \"Ports\").To je za delovanje TV, ostale nastavitve pa po želji (WiFi...).",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tMikrotik Hap Ac2 ali Hap Ac3 (na tega lahko daš tudi WiFi Wave2 paket, s katerim bo Wifi na 5 Ghz šel čez 400 Mbit, kar je za Mikrotik že dosežek) ali zgoraj omenjena dostopna točka.\n\nVažno, da ima vsaj dva LAN porta. V vmesniku Mikrotika potem dodaš VLAN 3999 na eth1 in eth2, v bridge ustvariš nov bridge za TV, vklopiš IGMP snooping na bridge (lahko tudi na obeh) in na ta nov bridge dodaš oba VLANa (zavihek \"Ports\").To je za delovanje TV, ostale nastavitve pa po želji (WiFi...).\n\t\t\n\t\tKlikni za razširitev\n\t\nKaj pa če bi dal vmes stikalo (npr. https://www.techtrade.si/stikalo-100m-05xrj45-mini-s105-tenda-9104046 al pa kaj podobnega), na to stikalo priključim na en port stari ruter, da mi bo delal wifi 2,4 GHz, na drugi port pa NEOta za televizijo?\nSe pravi namesto Mikrotik dostopne točke, ki naj bi opravljala vlogo stikala (dela WIFI in prepušča VLAN za NEO).",
+    "author": "godfather",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Če se gre po sistemu naj stane čim manj lahko daš stikalo ja, ampak vzami gigabitnega. Večina jih brez težav prepušča VLANe, boš pa najbrž imel konstanten promet na vseh portih, ko boš gledal tv (ker navadno stikalo ne podpira IGMP snoopinga). \n\nNe vem sicer zakaj si potem pisal, da ne želiš stikala in dodatno usmerevalnika.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Jaz sem na drugem koncu hiše za podoben namen uporabil tp link tl-sg105 switch.",
+    "author": "Fly",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Daniel je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tČe se gre po sistemu naj stane čim manj lahko daš stikalo ja, ampak vzami gigabitnega. Večina jih brez težav prepušča VLANe, boš pa najbrž imel konstanten promet na vseh portih, ko boš gledal tv (ker navadno stikalo ne podpira IGMP snoopinga).\n\nNe vem sicer zakaj si potem pisal, da ne želiš stikala in dodatno usmerevalnika.\n\t\t\n\t\tKlikni za razširitev\n\t\nNe gre glih za to, naj stane čim manj. Imam en Fritzbox (pa ne dela kot stikalo, temveč naredi  samo Wifi), ki mi stoji, pa bi ga uporabil, dodatno kupim stikalo pa skupaj zvežem kot napisano.\n\nAmpak ker nimam preveč prostora tam oz. nočem imeti preveč škatel je bila ideja da naštimam samo en usmerjevalnik, ki bo delal wifi pa kot stikalo prepuščal video (VLAN) za televizijo. Konec koncev bom mogoče tud to naredil, samo nimam izkušenj z nastavitvami kot si napisal:\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tVažno, da ima vsaj dva LAN porta. V vmesniku Mikrotika potem dodaš VLAN 3999 na eth1 in eth2, v bridge ustvariš nov bridge za TV, vklopiš IGMP snooping na bridge (lahko tudi na obeh) in na ta nov bridge dodaš oba VLANa (zavihek \"Ports\").To je za delovanje TV, ostale nastavitve pa po želji (WiFi...).\n\t\t\n\t\tKlikni za razširitev\n\t\npa se bojim da ne bom prav nastavil, zadeva ne bo delovala in bom na koncu kupil še stikalo pa bo delovalo. Mi ni glih da bi vračal opremo, ker je ne znam naštimat da deluje.",
+    "author": "godfather",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Odvisno od Fritzboxa, kaj omogoča. Tega ti tako na daljavo ne more nihče ugotoviti. Lahko sicer napišeš model ampak dvomim, da se da na njem nastaviti VLANe.\n\nKot smo že omenili, se zadeva da vsekakor urediti na Mikrotiku, sama izvedba in preizkušanje kaj gre in kaj ne, pa je tvoje.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Da napišem rešitev. Nabavil sem ta usmerjevalnik, nastavil takole (imel nekaj dela, prvič to delal):\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tV vmesniku Mikrotika potem dodaš VLAN 3999 na eth1 in eth2, v bridge ustvariš nov bridge za TV, vklopiš IGMP snooping na bridge (lahko tudi na obeh) in na ta nov bridge dodaš oba VLANa (zavihek \"Ports\").To je za delovanje TV, ostale nastavitve pa po želji (WiFi...).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZadeva deluje b.p., Neo deluje preko UTP,  wifi 2,4 GHz za kamere, klimo, ..., ter wifi 5 GHz za ostale zadeve. \n\nHvala za pomoč vsem.",
+    "author": "godfather",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik godfather je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tDa napišem rešitev. Nabavil sem ta usmerjevalnik, nastavil takole (imel nekaj dela, prvič to delal):\n\n\nZadeva deluje b.p., Neo deluje preko UTP,  wifi 2,4 GHz za kamere, klimo, ..., ter wifi 5 GHz za ostale zadeve.\n\nHvala za pomoč vsem.\n\t\t\n\t\tKlikni za razširitev\n\t\nŠkoda, da nisi vzel kaj novejšega na ARM osnovi, tale je že krepko zastarel. Meni je TV na 2011 preko Mikrotika kockala, ker enostavno ni zmogel. Na Ac2 in Ac3 pa dela BP.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Za TV komot skofiguriraš, da ne rabi čez CPU ampak direktno čez switch chip. Je pa res, da za manj kot 20€ razlike dobiš ac2, ki ima giga porte namesto 100Mb/s, hitrejši WiFi in boljši CPU….",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik XSIDE je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZa TV komot skofiguriraš, da ne rabi čez CPU ampak direktno čez switch chip. Je pa res, da za manj kot 20€ razlike dobiš ac2, ki ima giga porte namesto 100Mb/s, hitrejši WiFi in boljši CPU….\n\t\t\n\t\tKlikni za razširitev\n\t\nSem poskušal nekajkrat pa se mi je Mikrotik vsakič sesul, ali pa enostavno ni delalo, ker še nisem ugotovil ali se to konfigurira pod switch in kako se sploh konfigurira VLAN direkt na SWITCH. Dejansko je na Ac2 in Ac3 zadevo lažje nastaviti kar v interface in zadeva dela, saj je procesor dovolj zmogljiv.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Telekom omogoca t.i. Trunk povezavo, ki sluzi kot IP internet in IPTV. Na modemu jo moras nastavit in potem gre vse prek 1 UTP kabla. Neo bo pa potem ze znal razvozlati vse sam od sebe, neglede na vmesni router ",
+    "author": "Komponentko",
+    "author_level": "Zelenc'"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Pozdravljeni ,bi prosil če mi kdo podrobno opiše postopek instalacije Xaomi  WIFI range extender pro , nikakor mi ne uspe. \nBi lepo prosil.\n\nl.p.",
+    "author": "mags",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "dvomim, da lahko kdo bol podrobno razloži kot navodila\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tUser manual Xiaomi Mi Wi-Fi Range Extender Pro (English - 52 pages)\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\tManual Xiaomi Mi Wi-Fi Range Extender Pro. View the Xiaomi Mi Wi-Fi Range Extender Pro manual for free or ask your question to other Xiaomi Mi Wi-Fi Range Extender Pro owners.\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\twww.manua.ls\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Hvala Luka za navodila, ta navodila  imam , vendar so zelo splošna in se z njimi ne moreš kaj dosti pomagat,\ntežava je predvsem v konfiguraciji  na aplikaciji, nikakor ne gre čez.\n\nl.p.",
+    "author": "mags",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "pa si povezan na wifi od extenderja?",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Na prenosniku in tel., mi ga zazna , vendar mi javi da je dostop omejen",
+    "author": "mags",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Verjetno je sporočilo \"dostop omejen\" mišljeno na dostop do interneta, do samega range externderja pa mora delovati, saj le-ta še nima konfiguracije da bi ti lahko posredoval dostop do interneta. To bo imel šele, ko boš šel skozi konfiguracijo (izbereš obstoječi SSID na katerega naj se range extender poveže, izbereš nov SSID za wifi, ki ga bo oddajala RE, itd.. )",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Ti se moreš povezat na to omrežje potem bo aplikacija delala kot je treba.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Saj piše, da se poveže na to omrežje, zato pa mu tudi da obvestilo da je \"dostop omejen\" ker to obvestilo ti tako telefon kot tudi PC pokžeta, kadar wifi povezava je, nima pa dostopa do interneta in je v tem primeru popolnoma pravilno to sporočilo, ker dokler WiFI RE ne skonfiguriraš, dejansko nima dostopa do interneta. Popolnoma enako obvestilo dobiš tudi z wifi direct printanjem, če se zvežeš direktno na wifi printer.",
+    "author": "damirj",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Usmerjevalnik (WiFi 2,4 GHz) + Neo (ali Siol Box)",
+    "content": "Uh , hvala  za vse info. ,sem izvedu  reset in še enkrat prek aplikacije , no sedaj je uspelo, je kar zahtevna konfiguracija,  moraš bit kar vztrajen.\nHvala še enkrat",
+    "author": "mags",
+    "author_level": "Fizikalc"
+  }
+]

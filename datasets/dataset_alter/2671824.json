@@ -1,0 +1,188 @@
+[
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Doma bi rad imel omrežje poštimano tako kot se šika zato se obračam na vas vseznalce. \n\nImam:\n- telekom modem Comtrend GRG-4260us (optika)\n- wifi router Linksys wrt-1900acs (naložen openwrt)\n\nRad bi imel samo eno omrežje torej 192.168.*.*\nPreko ipijev naj bosta dostopna oba modem in router.\n\nZnal bi narest tole https://openwrt.org/docs/guide-user/network/wifi/dumbap\nTorej, da ima modem ip 192.168.1.1 in router 192.168.1.2, ter da modem dodeljuje ip-je. Edina funkcija routerja bi bila da nudi wifi dostop.\nAmpak se mi zdi, da to ni ravno optimalno ker je ta router veliko bolj performančno zmogljiv od modema?\nPa tudi tole me skrbi \"It's called a “Dumb Access Point” because it does not provide routing\" torej bi promet med napravami šel preko modema, kar je ziher slabše...\n\nVerjtno bi bilo boljše, da bi router imel dhcp vklopljen, modem pa izklopljen, samo ne vem če bi lahko potem še dostopal do modema preko IPja?\nPa tudi ne vem kaj je boljše, da se modem sam povezuje na telekom (PPPoE) ali je boljše da to dela router?\n\nDajte se prosim malo razpisati kakšna bi bila optimalna varianta. Meni je bistveno, da lahko dostopam do obeh škatel in da so vse povezane naprave na istem omrežju.\n\nŽe v naprej hvala za vse koristne informacije.",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Sicer ne poznam tega modema. Če ga lahko nastaviš, da dela samo kot modem in ne kot router, bo verjetno najbolj enostavno, ker lahko potem pozabiš nanj in vse nastavljaš na routerju. Če bo pa modem vzpostavil pppoe, bo potem ta glavni gateway za ves promet, ki bo šel izven tvojega omrežja. Če boš rabil kak port forwarding boš to moral delati na modemu.\n\nVsak router ima dva interfacea WAN in LAN. WAN ima ponavadi en port, LAN pa štiri ali več. Kar je pomembno tu je, da so vsi LAN porti dejansko switch. Kar pomeni, da so naprave priklopljene gor v istem omrežju in lahko med sabo direktno pošiljalo pakete. Vsak paket, ki ni naslovljen na lokalno omrežje, se pošlje pa na default GW, ki ga ta potem posreduje naprej v internet. S tem, ko povežeš LAN porte od routerja in modema, poskrbiš, da sta oba na istem omrežju in se vse naprave, ki so povezane gor med sabo vidijo. To velja tudi za tiste, ki so gor povezane preko WiFija.\n\nizklapljanje DHCP v bistvu ni zaželjeno. Nič ni narobe, če imaš v omrežju več DHCP serverjev. Naprava, ki se poveže v omrežje, bo dobila IP od prvega, ki bo na voljo. Se pravi, če je priklopljen na modem, bo IP dodelil modem, drugače pa router. Edino, kar moreš poskrbeti, da bo vsak dodeljeval IPje v svojem intervalu, da ne bo IP conflictov. Npr. modem 192.168.1.10 - 99, router pa 192.168.1.100  - 254. Prednost tega je tudi, da se potem iz IPja vidi kam je določena naprava povezana",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Kliči na Telekom support in reči naj ti dajo modem v bridge mode. Potem svoj WIFI router skonfiguriraj tako, kot da je edina/glavna naprava v omrežju (DHCP, NAT itd.).\n\nToplo priporočam tudi konfiguracijo QoS (packet prioritization), tako da ti nek večji download ne bo vplival na ostale zadeve (videokonference, online igre, remote desktop itd.). Boš pa moral za zanesljivo delovanje \"žrtvovati\" 5-10% bandwidtha.\n\nTrenutno je \"in\" CAKE. Navodila za openwrt: https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm\n\nSam imam tudi optiko in router z openwrt, je pa res da ga že en čas nisem posodobil ",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "jaz imam nekaj podobnega na t-2 ju.\n\ninbox ima nek svoj 192.168.64.x rang, potem pa še router 192.168.1.x\n\nna katerega imam vse naprave povezane....zanimivo je to, da imam 2 pcja na router, en ima 192.168.1.x ip drugi pc ima 192.168.64.x in se zato ne vidita med sabo, čeprav sta fizično vezana na isti router.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t12-4-2020 11-40-00.jpg\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tdrive.google.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t12-4-2020 11-41-37.jpg\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tdrive.google.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t",
+    "author": "Jado",
+    "author_level": "SCANIA, na uro ziher 140"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Jado je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tjaz imam nekaj podobnega na t-2 ju.\n\ninbox ima nek svoj 192.168.64.x rang, potem pa še router 192.168.1.x\n\nna katerega imam vse naprave povezane....zanimivo je to, da imam 2 pcja na router, en ima 192.168.1.x ip drugi pc ima 192.168.64.x in se zato ne vidita med sabo, čeprav sta fizično vezana na isti router.\n\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t12-4-2020 11-40-00.jpg\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tdrive.google.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\n\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t12-4-2020 11-41-37.jpg\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\tdrive.google.com\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\n\t\t\n\t\tKlikni za razširitev\n\t\nmasko popravi na 255.255.0.0, pa se bosta vidla",
+    "author": "jinetera",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik jinetera je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tmasko popravi na 255.255.0.0, pa se bosta vidla\n\t\t\n\t\tKlikni za razširitev\n\t\n\nTo je hackanje, ki niti ne vem ali bo delovalo. Pravilna rešitev je re-konfiguracija omrežja, torej da je vse v enem subnetu. Najlažje da odstraniš en DHCP strežnik.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "dostop to inbox nimam, tam ne morem nič nastavljat ",
+    "author": "Jado",
+    "author_level": "SCANIA, na uro ziher 140"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Močno dvomim da nimaš dostopa do inboxa. Te osnovne omrežne nastavitve sem do zdaj še na vseh modemih lahko nastavljal (od različnih ponudnikov).\n\nSicer pa kliči naj dajo modem v bridge mode in je to to.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Modem naj Telekom nastavi kod bridge. IP ima verjetno 192.168.1.1\nRouderju nastavi gateway na 192.168.1.2, lahko pustiš DHCP vključen. Jaz imam sicer na vseh napravah v hiši statični IP.\nTako bi moral imeti dostop do obeh naprav.",
+    "author": "jinetera",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "V bridge ga lahko dam sam (mislim vsaj):\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\nDam samo disconnect in disable... ?\n\nSem pa nekaj guglal in znam imeti težave s TVjem (NEO box)?\nSej vem da je najlažje probat ampak če kdo ve, toliko boljše da ne bo doma slabe volje če tv ne bo delal (happy wife happy life  ).",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "philips nima....\nport forwarding, telefonija, wifi, wan in dmz.",
+    "author": "Jado",
+    "author_level": "SCANIA, na uro ziher 140"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik futuristic je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tV bridge ga lahko dam sam (mislim vsaj):\nPoglej priponko 33119\n\nDam samo disconnect in disable... ?\n\nSem pa nekaj guglal in znam imeti težave s TVjem (NEO box)?\nSej vem da je najlažje probat ampak če kdo ve, toliko boljše da ne bo doma slabe volje če tv ne bo delal (happy wife happy life  ).\n\t\t\n\t\tKlikni za razširitev\n\t\n\nProbaj za foro prvo \"Disconnect\" pa da vidiš če TV še dela \n\nMe pa čudi da Telekom še kar vztraja s PPPeE na optiki. Še imajo vedno redne disconnecte na 24 ur? ",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik philips je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tProbaj za foro prvo \"Disconnect\" pa da vidiš če TV še dela \n\nMe pa čudi da Telekom še kar vztraja s PPPeE na optiki. Še imajo vedno redne disconnecte na 24 ur? \n\t\t\n\t\tKlikni za razširitev\n\t\nGrem spat ob 9ih, tako da ne vem kaj se ponoči dogaja. \n\nKaj pa če PPPoE pustim vključeno na modemu, a je to fejst slabo, pač na routerju tega nebi nastavljal...",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Če ti bo modem delal PPPoE konekcijo, potem boš imel double NAT. Lahko sicer na modemou vklopiš DMZ (če sploh imaš to možnost), najbolj clean opcija pa je vedno bridge mode na modemu in potem PPPoE na routerju.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik Jado je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tdostop to inbox nimam, tam ne morem nič nastavljat \n\t\t\n\t\tKlikni za razširitev\n\t\nPri T-2 imaš dostop do modema preko Horizonta. Tam lahko Wi-fi od modema tudi izklopiš, kar je priporočljivo, če imaš svoj router.",
+    "author": "bizi",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "a ne bo net dol padu potem in pa zbrka s temi ipji?",
+    "author": "Jado",
+    "author_level": "SCANIA, na uro ziher 140"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik dune je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tVsak router ima dva interfacea WAN in LAN. WAN ima ponavadi en port, LAN pa štiri ali več. Kar je pomembno tu je, da so vsi LAN porti dejansko switch. Kar pomeni, da so naprave priklopljene gor v istem omrežju in lahko med sabo direktno pošiljalo pakete. Vsak paket, ki ni naslovljen na lokalno omrežje, se pošlje pa na default GW, ki ga ta potem posreduje naprej v internet. S tem, ko povežeš LAN porte od routerja in modema, poskrbiš, da sta oba na istem omrežju in se vse naprave, ki so povezane gor med sabo vidijo. To velja tudi za tiste, ki so gor povezane preko WiFija.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKer nisem ravno poznavalec teh stvari (kar se bo iz nadaljevanja pisanja tudi videlo), imam na tole zgopraj podvprašanje.\nSam imam Telekomov Innbox kot modem in DHCP server. Potem imam (ker je drugače problem s signalom) še enega starejšega Linkysa in dva TP linka (archerja). Vse skupaj sem nastavil tako, da so vsi trije routerji v AP mode brez DHCP. Kabli iz Innboxovih LAN portov gredo v WAN porte teh treh routerjev/APjev. No ja, ker je še par LAN mrećnih naprav zraven, je pri enem od AP vmes še switch, ampak to je vseeno.\n\nSkratka, LAN v WAN, routerji v AP mode in dela brez težav. Se mi je zdelo najbolj preprosto in foolproof. \n\nVprašanje je torej: a imam samo srečo, da dela, ali je to čisto OK rešitev (če izvzamem dejstvo, da je zdaj najbolj obremenjen Innbox, ki je od vseh verjetno še najslabši kot router?\n\n\nTo bi sicer lahko rešil tako, da bi archerja skloniral kot modem in dal Innbox v bridge mode (tako sem imel pred leti v prejšnjem stanovanju), ampak ker dela, se mi ne da ukvarjat. Je pa res, da omrežje ni glih obremenjeno, vsega skupaj (s TV boxi in TVji) kakih 20 naprav.",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Če ti Innbox kot router deluje ok in zadostuje tvojim potrebam, ni nič narobe. Vsekakor je boljše, da imaš ostale škatle v AP mode (v tem primeru WAN port vrjetno itak deluje kot LAN, če gre res za AP mode), kot da bi imel na vsakem vklopljen še NAT (potem je itak cela zmeda z naslovi in popolnoma nepotrebnimi translacijami med njimi).\n\nDejstvo je, da so v resnici na teh poceni škatlah itak vsi porti switch porti, WAN/LAN je samo stvar konfiguracije, tako da v \"AP modeu\" lahko delujejo kot 5 portno stikalo  in WiFI dostopna točka brez ostalih funkcij (routing/FW/NAT/DHCP/DNS/...). Če nima AP modea, pa pač izklopiš DHCP (načeloma lahko tudi vse ostalo, če se da, ampak DHCP je edini, ki ti bo delal probleme, saj bo po svoje dodeljeval naslove) in vse skupaj priklopiš na preostale LAN porte ali pa namestiš alternativni FW, kjer lahko običajno switch chip poljubno prekonfiguriraš.\n\nSicer ne vem, kaj misliš s kloniranjem, ampak ja, če želiš uporabljat svojega Archera tudi za router/firewall/NAT/DHCP/... potem je edino smisleno, da Innboxa prestaviš v bridge mode, da ostane le še kot modem (sedaj je tudi router in vse ostalo), vse ostale funkcije pa prepustiš svoji napravi. S tem seveda izgubiš tudi WiFi na Innboxu.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Za AP mode recimo v navodilih od vseh treh piše, da se uporabi WAN port. Sklepam,  da v tem načinu delovanja pač dela za WiFi kot AP, za LAN porte pa kot klasičen switch (ker imam na Linkysu v LAN potr vtaknjen mrežni disk ipd... pa dela OK).\nArcher zna klonirat MAC od Innboxa in prevzet vse njegove funkcije. No ja, v teoriji. V starem stanovanju sem imel Telemach in sem imel tako, brez težav, na Telemachu ni bilo treba nič nastavljat (pri njih). Ugibam, da bi bilo enako tudi pri Telekomu. Probavam pa ne, ker tisto malo obremenitve + NAT in Port forwarding deluje tudi na Innboxu.\nČe bi pa začel klecat, se pa lahko začnem igrat in potem tukaj prosjačit za pomoč, ko vse zaj... ",
+    "author": "SJTV1",
+    "author_level": "eV12"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "\n\t\n\t\t\n\t\t\t\n\t\t\t\tUporabnik SJTV1 je napisal:\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\n\t\t\tZa AP mode recimo v navodilih od vseh treh piše, da se uporabi WAN port. Sklepam,  da v tem načinu delovanja pač dela za WiFi kot AP, za LAN porte pa kot klasičen switch (ker imam na Linkysu v LAN potr vtaknjen mrežni disk ipd... pa dela OK).\nArcher zna klonirat MAC od Innboxa in prevzet vse njegove funkcije. No ja, v teoriji. V starem stanovanju sem imel Telemach in sem imel tako, brez težav, na Telemachu ni bilo treba nič nastavljat (pri njih). Ugibam, da bi bilo enako tudi pri Telekomu. Probavam pa ne, ker tisto malo obremenitve + NAT in Port forwarding deluje tudi na Innboxu.\nČe bi pa začel klecat, se pa lahko začnem igrat in potem tukaj prosjačit za pomoč, ko vse zaj... \n\t\t\n\t\tKlikni za razširitev\n\t\nNi problema mi še ti bomo dot1x vklopli   \n\nDrugače se pa drži principa:\nif it ain't broke don't fix it \n\nKloniranje maca je bilo uporabno, ko so operaterji zaklepali modeme na mac naslov. Sedaj mislim da tega več noben ne počne.",
+    "author": "AndrejD",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Je MACa klonirat ni treba že dolgo, pa še to je bilo treba samo, če se ti ni dalo sporočit novega naslova ISPju.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Moje zahteve so manjše. Iz PC 1 želim dostopat do PC 2 in printerja. Mreža mora ostati taka.\n\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Tu moraš samo printer dati v skupno rabo. Žal mora biti PC2 prižgan, da lahko PC1 printa.\nČe ima modem USB port, poizkusi tiskalnik tja priklopiti. Kateri modem imaš?",
+    "author": "jinetera",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "A1?\nOK. Gre za občasno rabo in bi bil s tem pogojem zadovoljen!",
+    "author": "brane_new",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Da si sposodim temo:\nV hiši imamo ruter/modem od Telemacha (TM) - Ubee EVW32C in brezžično se vsi lepo povezujemo nanj.\nKer pa želimo pri TVju v dnevni postavit EON box, bi moral do TVja potegnit UTP kabel, kar pa žal ni možno.\nDoma se mi potika en stari ruter (LevelOne WBR-6001), ki sem ga želel uporabiti kot dostopno točko preko katere bom povezal EON box s kablom.\nDva dni poskušam vse živo, da bi na prenosniku, ki ga povežem s kablom s tem WBR-6001 dostopal do interneta, pa mi ne uspe.\nUbee DHPC:\n\n\nWBR-6001:\n- DCHP off (ko izklopim DHCP, se ne morem več povezat z 192.168.0.1 v ta ruter, zato moram na prenosniku v lastnostih kartice določit: IP address, Default getaway in Prefered DNS, da lahko potem spet pridem z 192.168.0.100 (ki sem mu ga določil) do ruterja\n\n- WDS: dam scaning AP im mi najde Ubee-ja, katerega naslov skopiram v Remote AP MAC:\n\n\nKaj bi še moral naredit, da bi se WBR povezal wireless na Ubee-ja, da bi imel internet in bi lahko potem EON box povezal s kablom na WBR? \nKer sem že malo blesav in ne vem več naprej, bi prosil, če lahko nekdo to razloži po domače.\nBil bi zelo hvaležen.\nHvala",
+    "author": "Ketidu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "kaj pa powerline?",
+    "author": "Jado",
+    "author_level": "SCANIA, na uro ziher 140"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "A ti EON boxi se priklapljajo direkt v internet ali gredo v ločeno omrežje, kot so šli D3 BOXi?",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Eon box je prikljucen preko ethernet kabla na router... Ne potrebuje nobenega posebnega porta ... Poleg tega je prikljucen se preko coax-a, ce gre za kabelsko omrezje ... D3 Box pa je pri meni prikljucen samo preko coax-a (na TVju spodaj pri tastu ni ethernet prikljucka)  ... in recimo ogled nazaj deluje brez interneta ... torej gre vse preko koaksialnega kabla ...",
+    "author": "Jest",
+    "author_level": "iPhone Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Ja D3 se poveže z lastnim Docsis modemom ali pa v primeru na optiki imam na modemu ločeno dva porta samo za D3 box. Zato me je zanimalo kako je zadeva izvedena pri EONu.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Tako je, lahko se (in običajno se) povežejo v običajno lokalno mrežo z dostopom do interneta enako kot ostale naprave. Nimajo ločene mreže, ki je potrebna za delovanje D3 boxa. \n\nKar se tiče coaxa, so pa hibridni Kaoni vedno priklopljeni tudi na coax za live v njihovem omrežju (tudi na optiki, kjer imaš od CPE dalje itak oboje. Tako imam jaz recimo v spalnici Kaona na LAN+coax). So pa nekateri tu javili, da so tudi na njihovem omrežju dobili SDMC ALL IP box, kjer gre pa vse prek IP. Tako da vprašanje kaj dobiš.",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Domače omrežje - prosim za pomoč",
+    "content": "Zadevo rešil tako, da sem priklopil en stari kitajski WiFi Repeater, ki je sicer dal od sebe hitrost 9/2, kar pa je hvalabogu dovolj za EON. Zadeva dela. Starega ruterja mi pa ni uspelo skonfigurirat.",
+    "author": "Ketidu",
+    "author_level": "Fizikalc"
+  }
+]

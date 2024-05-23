@@ -1,0 +1,134 @@
+[
+  {
+    "ctx": "DNS problem",
+    "content": "Doma imam siol optiko, uporabljam Prospero router/modem - nastavljen kot PPPoE\nV lokalnem omrežju imam 3 računalnike in WD live tv,urejen imam tudi wireless dostop. \nProblem se pojavlja na enem izmed računalnikov (HP ProBook 6540b).\n\n- če pingam javno ip adreso mi deluje BP\n- če pingam npr. www.alter.si se paketi izgubljajo (50% loss)\n-http dostop mi ne deluje\n\n\\Documents and Settings\\xxx&gt;ipconfig /displaydns\n\nWindows IP Configuration\n\nCould not display the DNS Resolver Cache.\n\nC:\\Documents and Settings\\xxx&gt;ipconfig /flushdns\n\nWindows IP Configuration\n\nCould not flush the DNS Resolver Cache: Function failed during execution.\n\n\nC:\\Documents and Settings\\xxx&gt;nslookup\n*** Can't find server name for address 192.168.1.1: Query refused\n*** Default servers are not available\nDefault Server:  UnKnown\nAddress:  192.168.1.1\n\nC:\\Documents and Settings\\xxx&gt;nslookup www.alter.si\n*** Can't find server name for address 192.168.1.1: Query refused\n*** Default servers are not available\nServer:  UnKnown\nAddress:  192.168.1.1\n\nNon-authoritative answer:\nName:    www.alter.si\nAddress:  91.185.208.172\n\nima kdo kakšno idejo, kaj bi lahko bilo narobe\n\nlp\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "si poskusil na tem računalniku ročno vpisati DNS strežnika?",
+    "author": "damek1a",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "V lastnostih mrežne kartice ročno vpiši DNS strežnika 208.67.222.222 in 208.67.220.220 .\n\nAli se promet izgublja tudi če pingaš svoj router?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik erikson pravi:\n V lastnostih mrežne kartice ročno vpiši DNS strežnika 208.67.222.222 in 208.67.220.220 .\n\nAli se promet izgublja tudi če pingaš svoj router?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nNe, če pingam svoj router, se promet ne izgublja\n\nTudi, če ročno vpišem dns strežnike (poizkusil sem s  Siolovimi, še z enim drugim (4.2.2.2) in dns serverjema, ki ju omenjaš ti) je stvar ista......",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Na ostalih računalnikih pa nimaš teh težav?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "ne \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nDeluje tako z Visto, Win 7 in Win XP.\nNa prenosniku, kjer imam težave  je operacijski sistem win XP SP3\n\nNe vem kje je problem... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Si malce prevec pridno ugasal service, katerih ne bi smel ? Prilepi tukaj izpis od\n\ntasklist /svc",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Možno  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nImage Name                   PID Services\n========================= ====== ==========================================\nSystem Idle Process            0 N/A\nSystem                         4 N/A\nsmss.exe                    1680 N/A\ncsrss.exe                   1880 N/A\nwinlogon.exe                1920 N/A\nservices.exe                1964 Eventlog, PlugPlay\nlsass.exe                   1976 PolicyAgent, ProtectedStorage, SamSs\nHPFSService.exe              348 HPFSService\nsvchost.exe                  376 DcomLaunch, TermService\nHpFkCrypt.exe                436 HpFkCryptService\nsvchost.exe                  476 RpcSs\nsvchost.exe                  732 AudioSrv, BITS, CryptSvc, Dhcp, dmserver,\n                                 ERSvc, EventSystem,\n                                 FastUserSwitchingCompatibility, helpsvc,\n                                 LanmanServer, lanmanworkstation, Netman,\n                                 Nla, RasMan, Schedule, seclogon, SENS,\n                                 SharedAccess, ShellHWDetection, TapiSrv,\n                                 Themes, TrkWks, W32Time, winmgmt, wscsvc,\n                                 wuauserv, WZCSVC\nsvchost.exe                 1104 LmHosts, RemoteRegistry, SSDPSRV\nsvchost.exe                 1136 yksvc\nspoolsv.exe                 1460 Spooler\nSTACSV.EXE                  1492 STacSV\nac.sharedstore.exe          1516 ac.sharedstore\nscardsvr.exe                1600 SCardSvr\nDpHostW.exe                 1664 DpHost\nsvchost.exe                  888 WebClient\nagrsmsvc.exe                 920 AgereModemAudio\nekrn.exe                     952 ekrn\nPTChangeFilterService.exe    980 HP ProtectTools Service\nIFXSPMGT.exe                1016 IFXSpMgtSrv\nIFXTCS.exe                  1032 IFXTCS\niviRegMgr.exe               1084 IviRegMgr\nLMS.EXE                     1176 LMS\npdfsvc.exe                  1208 pdfcDispatcher\nIfxPsdSv.exe                1580 PersonalSecureDriveService\nPsiService_2.exe            1716 PSI_SVC_2\nsgvpn.exe                    572 sgipsecvpn\nsvchost.exe                  664 stisvc\nUNS.EXE                      752 UNS\nsearchindexer.exe            852 WSearch\nHPPA_Service.exe            1564 HP Power Assistant Service\nHPWA_Service.exe            2108 HP Wireless Assistant Service\nIAANTMON.EXE                2144 IAANTMON\nwmiprvse.exe                2384 N/A\nbtwdins.exe                 2532 btwdins\nsgpm.exe                    2628 N/A\nhpqWmiEx.exe                3052 hpqwmiex\nalg.exe                     3264 ALG\nDPAgent.exe                 3208 N/A\nexplorer.exe                3236 N/A\nAESTFLTR.EXE                 224 N/A\nIAANOTIF.EXE                3940 N/A\nhkcmd.exe                   3224 N/A\nigfxpers.exe                2680 N/A\nigfxsrvc.exe                1956 N/A\nQLBCtrl.exe                 2292 N/A\nSynTPEnh.exe                2728 N/A\naccelerometerST.exe         2748 N/A\nHPPA_Main.exe               1760 N/A\nHPWA_Main.exe               3368 N/A\nacevents.exe                2964 N/A\naccrdsub.exe                1980 N/A\ncoreshredder.exe            3696 N/A\negui.exe                     556 N/A\nGrooveMonitor.exe           2400 N/A\nwinampa.exe                 3156 N/A\nctfmon.exe                  2332 N/A\nCom4QLBEx.exe               1132 Com4QLBEx\nPSDrt.exe                   2276 N/A\nBTTray.exe                  3876 N/A\nWindowsSearch.exe           3992 N/A\nPresentationFontCache.exe   4348 FontCache3.0.0.0\nBTSTAC~1.EXE                5516 N/A\niexplore.exe                2472 N/A\niexplore.exe                 560 N/A\ncmd.exe                     5760 N/A\nfirefox.exe                 4556 N/A\nwmiprvse.exe                5184 N/A\ntasklist.exe                2232 N/A",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Prvo kot prvo, pri meni je seznam vec kot polovico krajsi in to z razlogom. Naredi si uslugo in svojo skatlo temeljito pocisti.\n\nDrugo, ne deluje ti zato, ker ne tece DNS Client service. Start -&gt; Run \"services.msc\" -&gt; najdi DNS Client na spisku -&gt; nastavi Automatic ter obvezno daj Start.",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Na žalost je stanje isto...... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Lahko probaš še reset TCP stack-a: http://support.microsoft.com/kb/299357",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik nepot pravi:\n Na žalost je stanje isto...... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\nPriklopi laptop še na kak drug router na drugi lokaciji. Če tudi tam ne dela, pa bo najbrž res najbolj enostavno narediti reinstall.",
+    "author": "Bush",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "\n\nflush dns si verjetno probal....\n\nmožno je tudi HW eror, sicer so redki, ampak možno je...",
+    "author": "reality",
+    "author_level": "Vudu lešinar"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik nepot pravi:\n Na žalost je stanje isto...... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nPrilepi izpis tasklist /svc potem, ko tole tece.",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Image Name                   PID Services\n========================= ====== =========================================\nSystem Idle Process            0 N/A\nSystem                         4 N/A\nsmss.exe                    1216 N/A\ncsrss.exe                   1336 N/A\nwinlogon.exe                1368 N/A\nservices.exe                1412 Eventlog, PlugPlay\nlsass.exe                   1424 PolicyAgent, ProtectedStorage, SamSs\nHPFSService.exe             1592 HPFSService\nsvchost.exe                 1616 DcomLaunch, TermService\nHpFkCrypt.exe               1716 HpFkCryptService\nsvchost.exe                 1744 RpcSs\nsvchost.exe                 1784 AudioSrv, BITS, Browser, CryptSvc, Dhcp,\n                                 dmserver, ERSvc, EventSystem,\n                                 FastUserSwitchingCompatibility, helpsvc,\n                                 LanmanServer, lanmanworkstation, Netman,\n                                 Nla, RasMan, Schedule, seclogon, SENS,\n                                 SharedAccess, ShellHWDetection, TapiSrv,\n                                 Themes, TrkWks, W32Time, winmgmt, wscsvc,\n                                 wuauserv, WZCSVC\nsvchost.exe                 1964 LmHosts, RemoteRegistry, SSDPSRV\nsvchost.exe                 1984 yksvc\nspoolsv.exe                  424 Spooler\nSTACSV.EXE                   456 STacSV\nac.sharedstore.exe           532 ac.sharedstore\nscardsvr.exe                 596 SCardSvr\nDpHostW.exe                  668 DpHost\nsvchost.exe                  848 WebClient\nagrsmsvc.exe                 884 AgereModemAudio\nekrn.exe                     908 ekrn\nPTChangeFilterService.exe   1100 HP ProtectTools Service\nIFXSPMGT.exe                1176 IFXSpMgtSrv\nIFXTCS.exe                  1220 IFXTCS\niviRegMgr.exe               1324 IviRegMgr\nLMS.EXE                     1544 LMS\npdfsvc.exe                  1644 pdfcDispatcher\nIfxPsdSv.exe                1256 PersonalSecureDriveService\nPsiService_2.exe            1852 PSI_SVC_2\nsgvpn.exe                   1928 sgipsecvpn\nsvchost.exe                  264 stisvc\nUNS.EXE                      332 UNS\nsearchindexer.exe            936 WSearch\nHPPA_Service.exe            1008 HP Power Assistant Service\nHPWA_Service.exe            1180 HP Wireless Assistant Service\nsgpm.exe                     748 N/A\nIAANTMON.EXE                2024 IAANTMON\nwmiprvse.exe                2312 N/A\nbtwdins.exe                 2624 btwdins\nhpqWmiEx.exe                2808 hpqwmiex\nalg.exe                     3116 ALG\nDPAgent.exe                 2912 N/A\nexplorer.exe                3028 N/A\nAESTFLTR.EXE                1028 N/A\nIAANOTIF.EXE                3768 N/A\nhkcmd.exe                   4004 N/A\nigfxsrvc.exe                4028 N/A\nigfxpers.exe                3484 N/A\nQLBCtrl.exe                 4040 N/A\nSynTPEnh.exe                4084 N/A\naccelerometerST.exe         3792 N/A\nHPPA_Main.exe               1540 N/A\nHPWA_Main.exe               3820 N/A\nacevents.exe                1868 N/A\naccrdsub.exe                2248 N/A\ncoreshredder.exe            2900 N/A\negui.exe                    3984 N/A\nGrooveMonitor.exe           3532 N/A\nsggui.exe                   2348 N/A\nwinampa.exe                 2224 N/A\nCom4QLBEx.exe                812 Com4QLBEx\nctfmon.exe                  2472 N/A\nsgcrypto.exe                3608 N/A\nmsnmsgr.exe                 2584 N/A\nPSDrt.exe                    528 N/A\nBTTray.exe                  3340 N/A\nWindowsSearch.exe           4148 N/A\nBTSTAC~1.EXE                4680 N/A\nPresentationFontCache.exe   5008 FontCache3.0.0.0\nwmiprvse.exe                4336 N/A\nfirefox.exe                 4872 N/A\nmmc.exe                     2552 N/A\nplugin-container.exe        3296 N/A\nsvchost.exe                 6124 Dnscache\nsearchprotocolhost.exe      3240 N/A\nsearchfilterhost.exe        5788 N/A\ncmd.exe                     3156 N/A\ntasklist.exe                1044 N/A\n\n\t\t\n\t",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Bush pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik nepot pravi:\n Na žalost je stanje isto...... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\nPriklopi laptop še na kak drug router na drugi lokaciji. Če tudi tam ne dela, pa bo najbrž res najbolj enostavno narediti reinstall.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nSem probal in na drugi lokaciji deluje bp (tako wireless kot drat).\nNe vem zakaj nisem preizkusil že prej.....računalnik na dratu tudi doma deluje bp.\n\nPotem je težava nekje na WiFi-ju pri meni doma....",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "In preverjeno se vedno napise \"Could not flush the DNS Resolver Cache: Function failed during execution.\" ko das ipconfig /flushdns in \"Could not display the DNS Resolver Cache.\" za ipconfig /displaydns ?",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "ne. \nFlushdns - successfully flushed the DNS resolver Cache\n\nJe pa zadeva prišla tako daleč, da lahko ob prijavi v omrežje odprem 3-4 internetne strani (naključne), potem pa enostavno neha delovati.\nPingov na javne adrese ne izgubljam, prav tako ne z default gateway-om (v domačem omrežju).\n\nše nekaj je zanimivo:\n\ntelnet www.alter.si 80 deluje, strani mi ne odpre",
+    "author": "nepot",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "No, torej ni stanje isto kot prej. En problem je resen, glede drugega bi pa jaz gledal v smeri spyware/hijack, ce nimas kaksnih bolno nastavljenih firewallov (ali na routerju ali pa na tvoji skatli). Pravis, da je fizicno povezava OK, torej je SW edina preostala alternativa. Najbolj smiseln korak bi bil zagon kaksnega drugega OSa in poskus povezave od tam - npr. kaksen LiveCD Linuxa.",
+    "author": "Radirko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Reset stacka si probal?",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Možno je da je to rešitev, če je register sfukan....\n\nAmpak skoz bl sumim na kak virus, ni pa izključen tud HW error, samo potem bi do gatewaya isto pingi odletaval kot če pingaš kakšne dns...\n\njest sem mu že tak primer, da je karta enosavno delala nato pa na pou mal dropa pa sper reply...",
+    "author": "reality",
+    "author_level": "Vudu lešinar"
+  },
+  {
+    "ctx": "DNS problem",
+    "content": "Si probal kakšen CCLEANER za register cleaner ali pa če misliŠ da je kakšen virus trojan spyware itd  MALWAREBYTES",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  }
+]

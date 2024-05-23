@@ -1,0 +1,274 @@
+[
+  {
+    "message": "Pozdravljeni  Kupil sem nov prenosnik Lenovo y580 brez prednaloženih windowsev. Doma imam original windows 7 home premium 64bitne, vendar ko probam zadevo inštalirati mi reče da je sistem MBR (master boot), ter da je v sistemih EFI windowse mogoče naložiti le na GPT diske. Na računalnik sem nato naložil krekane windows 7 ultimate, ker se ta problem ni pojavil. malo sem že googlal kaj za vraga vse to pomeni, vendar se na zadevo ne spozman dovolj da bi sam kej spreminjal (pisalo nekaj da pod MY COMPUTER/Manage/Disc Management možno sptemeniti v gpt, vendar ta opcija ni na voljo. Šel sem tudi v bios pogledat in imam nek UEFI enablan (karkoli že to je,...). MI zna kdo pomagat, kako bi lahko spremenil zadevo, da bi lahko naložil na računalnik svoje Originalne windows 7 home premium?  Hvala za pomoč  Žiga ",
+    "user": "Smilko"
+  },
+  {
+    "message": "V bios-u dizejblaj UEFI in probaj na novo ... ",
+    "user": "Spajky"
+  },
+  {
+    "message": "GPT pride prav, če imaš hdd, večji od 2.2 TB in na njem (windows) OS... drugače nastavi tako kot je predlagal Spajky.  windows install problem ",
+    "user": "amigo_no1"
+  },
+  {
+    "message": "Disablal sem UEFI in uspel z inštalacijo windows. Hvala za odgovore  Žiga ",
+    "user": "Smilko"
+  },
+  {
+    "message": "hotel sem združit dve particiji diska, po nasvetu kolega sem jih iz GPT spremenil v MBR na računalniku imam inštaliran windows in podatke  ko sem windows zagnal se ne zažene, po nasvetu yt sem v cmd vpisal listdisk clear conver gtp da bi spremenil nazaj v GPT. sedaj računalnik ne prepozna diska in mi vrže takoj v BIOS,   kje je opcija v BIOSU da se disabla UEFI, prenosnik je X751S kaj naj a naj pri inštalaciji, kjer se samo en disk ker se je formatiral naredim particijo inštaliram windowse   lp ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "situacija je takšna da so se particije \"skrile\"   preko katerega programa, ki bi lavfal preko USB ključka se da particije uredit ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "naredi usb ključek uradnega W10 od Microsofta: https://www.microsoft.com/sl-si/softwar... Daš prenesi orodje in ima zadeva opcijo iso ali pa usb ključ.  Med inštalacijo greš v repair opcijo in nato cmd in boš imel na voljo listdik komande za špilat se. GPT in UEFI je ok, ker smo v 21. stoletju im pustič Ti samo pobriši vse particije, potem pa med inštalacijo izberi disk in bo sam setup naredil particije. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "bom probal ju3 to. se pravi mora bit GPT in ne MBR  stanje je tako  prišel sem prek USB ključa, disk je samo en brez particije piše tudi da disk/particija NI active - ko pa preko programa  iščem particije ali fajle pa se odre vseh 5 particij z fajli ampak so nekako skrite če ne odprem posebej program. imam pa windows 7 in tega želim obrdžat ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "   ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "bo treba v bios vklopit uefi boot oz. uefi/legacy za bootat windowse iz gpt diska, afaik.. ..al pa spremenit disk v mbr ",
+    "user": "gddr85"
+  },
+  {
+    "message": "urejeno. hvala ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "a naj inštaliram windows 7 kot GPT al kot MBR? imam samo 1 tb disk pa a naj bo fat al ntfs? ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "mbr, ntfs. ",
+    "user": "sbawe64"
+  },
+  {
+    "message": " zuz3k je 6. jun 2018 ob 20:37 izjavil:     spet imam isti problem, četudi izberem formatiraj C disk  a lahko dam ključek MBR opcija a je prav to? kaj bi moral v biosu spremenit LEGACY support al kaj da bi delalo   lp ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "BIOS setup možnosti       kako naj inštaliram windows s kakšnimi nastavitvami - ker je zdaj particija na GPT načinu ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "V čem je težava? GPT je boljše kot MBR. Format pa seveda NTFS. ",
+    "user": "Han"
+  },
+  {
+    "message": " zuz3k je 6. jun 2018 ob 20:37 izjavil:     v tem je problem da mi napiše ta error - ne morem inštalirat windowsa na C particijo (jih imam več) kljub bios nastavitvam   a naj potem probam inštalirat v GTP obliki al MBR al kako?? zdaj imam USB ključ z windowsi naštiman na MBR način  najraje bi samo da inštaliram na to particijo  lp ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "legacy bios boot + gpt je no go afaik, pa če imaš 32bit os tud ne bo šlo.. ",
+    "user": "gddr85"
+  },
+  {
+    "message": "windows je 64 bit  kakšno nastavitev naj izberem v biosu iz slik?  ali naj bo win usb ključ MBR ali GPT (fat ali ntfs) ?  samo da inštaliram na to particijo, ki mi pokaže trenuten error ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Sploh ni dileme: - NTFS - GPT - legacy boot na DISABLED (s tem forcaš UEFI boot ki je veliko hitrejši) - secure boot ON (v kolikor imaš kompatibilni OS, sicer na OFF)  Je pa res da boš glede na error sporočilo najbrž moral novi bootable USB ključek najverjetneje narediti. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "opcija je lagecy+MBR (Windows 7) ali pa UEFI + GPT (Windows 10)  Za Windows 7 naredi takole: 1.Za spremenjat med MBR in GPT predlagam software Acronis true image. Zloudaj si ISO, zapeči na CD ali ključek in zalaufej ob zagonu računalnika 2. v Acronis na novo inicializiraš disk kot MBR in opcijsko narediš novo NTFS particijo. 3. Bios nastavi kot lagecy, se pravi, izklopi UEFI. 4. inštaliraj windows 7. Če delaš usb ključek iz ISO, uporabi RUFUS orodje. Izbrati moraš MBR in BIOS parametra, drugače ne bo delovalo.  Če inštaliraš Windows 10, pa cel zgornji postopek obrni na UEFI+GPT in usb ključek win10 za inštalacijo v RUFUSU nastavi GPT in UEFI ** PS Stara tema :D ",
+    "user": "pviran3"
+  },
+  {
+    "message": "Windows 7 tudi podpira drugače kombinacijo UEFI + GPT, rabiš pa res paziti pri delanju intalacijskega USBja da to omogočiš. V primeru W10 že originalni Microsoft USB poskrbi za to.  Skratka ja te čaka delo: a) bodisi narediš nov Inštalacijski USB z opcijo UEFI b) slediš navodilo pviran3 zgoraj in konvertiraš svoj trdi disk iz MBR v GPT in potem uporabiš obstoječi USB za inštalacijo  Jaz res priporočam UEFI zaradi instantnega zagona, itak boš najverjetneje kasneje upgradal v W10. ",
+    "user": "Lonsarg"
+  },
+  {
+    "message": "Seveda win7 tudi podpira UEFI, je pa fino imeti daz podporo :P Avtor verjetno z razlogom rine na Win7, ki je že kaput s podporo, tako da mu par sekund pri zagonu ne pomeni veliko, verjetno še SSDja nima, tako da je zagonski čas z UEFI zanemarljiv :D ",
+    "user": "pviran3"
+  },
+  {
+    "message": " Lonsarg je 12. apr 2020 ob 18:25 izjavil:Sploh ni dileme: - NTFS - GPT - legacy boot na DISABLED (s tem forcaš UEFI boot ki je veliko hitrejši) - secure boot ON (v kolikor imaš kompatibilni OS, sicer na OFF)  Je pa res da boš glede na error sporočilo najbrž moral novi bootable USB ključek najverjetneje narediti.   USB z GPT opcijo ter NTFS in nastavitvami mi naredi če dam secure boot ON rdeč error sicer da EFI ampak napiše coudnt load te fajli kot so    a je možno samo eno particijo spremenit iz GPT v MBR, brez da formatiram cel disk ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "ne, cel disk je treba resetnit, ta MBR je pod particijami na nižjem nivoju ",
+    "user": "pviran3"
+  },
+  {
+    "message": "se pravi je opcija install v GTP obliki  trenutno mi napiše error could not locate \\efi\\boot\\bootx64.efi in tudi ključek (z ntfs) načinom nima tega fajla, will try to fix. ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Windows 7 ne podpira Secure boot, zato je potrebno to v BIOS-u izklopiti. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "zelel sem instalirat se win 10, pa mi zdaj pri zagonu win 7 napiše tole napako     ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "cak kaj? A na enem disku imas 2 sistema al kako? ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "ne  en disk, 5 particij, instalacija na prazno particijo ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "edit:  na enem disku je več particij  na eni je win 7 na drugi prazni bi bil win 10 win 10 samo setup in zdaj 7ka ne dela ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "seveda ne dela, ce ti je instalacija povozla bootloader... ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "samo setup sem dal  in kako popravim bootloader ",
+    "user": "zuz3k"
+  },
+  {
+    "message": " zuz3k je 30. avg 2020 ob 22:34 izjavil:zelel sem instalirat se win 10, pa mi zdaj pri zagonu win 7 napiše tole napako       kako naj popravim to, anyone? ",
+    "user": "zuz3k"
+  },
+  {
+    "message": " zuz3k je 31. avg 2020 ob 12:34 izjavil:zuz3k je 30. avg 2020 ob 22:34 izjavil:zelel sem instalirat se win 10, pa mi zdaj pri zagonu win 7 napiše tole napako      kako naj popravim to, anyone?    Vrzi not USB od iste Windows 7, ki jo imaš inštalirane, pa izberi pri setupu \"Repair My Computer\".  Drugače pa stran zabriši sedmico, pa inštaliraj samo 10ko. ",
+    "user": "Gejspodar"
+  },
+  {
+    "message": "od Cd boota pridem v tale meni      s katero opcijo bi popravil memtest.efi mogoče Disc comander  kje bi dobil celoten boot fajli, pa ga kopiram v mapo   v običajni repar od windowsov ne gre ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "memtest.efi ni del Windows.  Malo razmisli, kaj bi sploh rad imel, in potem pojdi proti temu cilju. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "da mi spet windows 7 dela in ne napiše te napake  kako naj to popravim? ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Tole rabiš:    Windows 10 sicer ponavadi prepozna obstoječi Windows 7 in ga da v boot meni. Si nameščal na kaki čuden način? PS: V BIOS imaš SecureBoot izklopljen? Ker Windows 7 tega ne podpira. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "do tega menija ne morem prit ker mi prej pokaže napako iz screenshota  secureboot je sklopljen  ne. dal sem cd z win10 in šel samo prve nastavitve nisem niti dal install, še predenj  zbereš kam boš inštaliral win  disk windows z vsemi particijami se ne boota preko UEFI  mogoče so narobe nastavitve u biosu, ker vem da prenosnik ASUS ima nastavitve za inštalacijo preko UEFI nastavljeno imam: Fast boot - enable Launch CSM - disable  ampak četudi imam: Launch CSM - enable Launch PXE OpROM policy - disable  pokaže enako napako  pa iz tistega menija kjer mi pokaže na windowsov iz CD-ja, katera opcija je za popravilo tega?  pa se pravi ta memtest.efi je del česa? se pravi windows 7 je ok al kako, ker imam kopijo windowsov in backup more biti pot da se uredi nazaj ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Kot prvo se poskusi bolj jasno izražati.  Torej naredil si \"nekaj\" in naenkrat Windows 7 več ne dela?  Daj BIOS nastavitve nazaj tako kot so bile. Ko so delovale.  Repair opcija je takoj na začtku, ko zaženeš namestitveni CD (DVD, ker na CD več ne gre gor). Ali USB. Najbolje tisti od Windows 10, sploh, če misliš potem še to nameščati.  Pa to vzemi iz microsoft.com, ne iz nekih \"čudnih virov\". Tule: https://www.microsoft.com/en-us/softwar...  zuz3k je 31. avg 2020 ob 17:04 izjavil: pa se pravi ta memtest.efi je del česa?  gugle pravi, da je del tega: https://www.memtest86.com/ ",
+    "user": "MrStein"
+  },
+  {
+    "message": "tole izgleda vseskup en clusterfuck, imo backup fajlov + format diska pa nova inštalacija ...lahko pa probaš mogoče še kak bootrec /fixmbr al pa fixboot preko cmdja v recovery opciji ",
+    "user": "gddr85"
+  },
+  {
+    "message": "to da imaš en windows in si želiš naložit še win 10, daš samo meni nič inštalacije pa ti uniči win 7 boot je neumnost  bom poskusil z bootrec /fixmbr  @MrStein:  pa če želim win 7 popravit, moram z win 7 ne 10 ali se da tudi z 10ko 7ko  na 7ki imma recovery tool takšen kot sem ga dal par postov že zgoraj: http://techgenix.com/content/wn/img/upl... ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Sledi navodilom:  ",
+    "user": "Gejspodar"
+  },
+  {
+    "message": " zuz3k je 31. avg 2020 ob 20:10 izjavil:to da imaš en windows in si želiš naložit še win 10, daš samo meni nič inštalacije pa ti uniči win 7 boot je neumnost  bom poskusil z bootrec /fixmbr  @MrStein:  pa če želim win 7 popravit, moram z win 7 ne 10 ali se da tudi z 10ko 7ko  na 7ki imma recovery tool takšen kot sem ga dal par postov že zgoraj: http://techgenix.com/content/wn/img/upl...  kam si šel to na diagnostics toolset? na prvi strani bi moral imet startup repair, cmd, image recovery itd. ",
+    "user": "gddr85"
+  },
+  {
+    "message": " zuz3k je 31. avg 2020 ob 20:10 izjavil: pa če želim win 7 popravit, moram z win 7 ne 10 ali se da tudi z 10ko 7ko   Bi šlo. Če imaš samo Win7, pa uporabi win7. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "@gddr85@  ta iz slike pride z DVD/usb driveom od windowsa  tisti, ki bi moral pa pride iz inštaliranega windowsa ampak kot sem že 3x napisal  ga ne dobim ker tudi od windows F8 ne prime  imam od win 7 system repair ampak ne popravi  so še druge opcije v meniju iz zgornjega linka ",
+    "user": "zuz3k"
+  },
+  {
+    "message": " zuz3k je 5. jun 2018 ob 23:36 izjavil:situacija je takšna da so se particije \"skrile\"   preko katerega programa, ki bi lavfal preko USB ključka se da particije uredit   Brises particije tako dolgo, dokler ne ostane samo ena, takrat lahko izbereš particijo, kjer boš instaliral. ",
+    "user": "IL_DIAVOLO"
+  },
+  {
+    "message": "probal sem kopirat mapo iz windows DVDja v disk I in disk J  locirano tu:  efi\\microsoft\\boot\\memtest.efi  pa ne dela  tukej ima en podoben problem: Memtest.efi does not run in efi shell  BCD System Store Settings for UEFI  a je važno, oz. kako bi v biosu prenosnik ASUS X751S naredil  da mi pred boot option disk C piše UEFI, recimo pri bootu iz CD ROMA to piše  še kakšna pomoč? kako bi ta fajl ali pa vse kopiral da bi se windows zagnal ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Kdo ti je rekel, da kopiraj datoteko? Če si mogoče opazil, je to bila tvoja ideja.  Sledi našim navodilom ter naredi repair z Windows 7 DVD-jem ali pa formatiraj ter pred tem skopiraj datoteke. ",
+    "user": "Gejspodar"
+  },
+  {
+    "message": "memtest je program za test oziroma diagnozo RAM-a.  To ni potrebno za delovanje Windows. Zakaj sploh \"težiš\" s tem memtest-om? ",
+    "user": "MrStein"
+  },
+  {
+    "message": "če me razumeta jaz bi samo DA DELA WINDOWS DA PRIDEM U WINDOWS  te memtest pa napiše napako.  kako popravim, da pridem u windows?   repar opcija iz windows DVDja NE popravi zadeve  u windowsu pa NE pridem z tipko F8 sploh v meni, da bi prišel do repar   ok, kaj naj naredim da popravim/pridem u windows? ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "in zakaj rabiš prit v windowse? zdej bi že imel fresh install + skopiran backup, kar zna bit na konc tvoja edina opcija.. ",
+    "user": "gddr85"
+  },
+  {
+    "message": "ker bi raje popravil vse skupaj, kot pa da spet inštaliram vse gonilnike in programe in vse skp  mora bit način da popravim samo ta error. kaj naj naredim? ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "F8 si hitro pritiskal?  možno, da je memtest nastavlje kot default, ker si v Windows pognal opcijo \"testiraj RAM\". ",
+    "user": "MrStein"
+  },
+  {
+    "message": "sem pritiskal F8 in je šlo čez napako sem prišel v WINDOWS   trenutno ne dela tipkovnica, poročam kako pa kaj naprej ",
+    "user": "zuz3k"
+  },
+  {
+    "message": " zuz3k je 1. sep 2020 ob 19:12 izjavil:ker bi raje popravil vse skupaj, kot pa da spet inštaliram vse gonilnike in programe in vse skp  mora bit način da popravim samo ta error. kaj naj naredim?  glede na to, da se ze 2 dni jahas s tem trivialnim problemom, bi mel v tem casu oba sistema ze 5x postavljenga iz nule. Backup pa reinstall sistema, dual boot pa pozabi. Instaliraj tisti drugi OS v virtualko ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "No, backup in restore ni ravno tako preprosto. Sploh aplikacij. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "kje je u windowsih opcija popravi računalnik?   recimo tudi če dam DVD z windowsi (sem jih dal že par) ne pokaže spodaj levo popravi računalnik ampak je opcija samo inštaliraj ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "Tule bi moglo biti:      Celoten video:  ",
+    "user": "MrStein"
+  },
+  {
+    "message": "odkar sem kopiral fajl iz DVDja windows dela, tudi po testiranju ",
+    "user": "zuz3k"
+  },
+  {
+    "message": "sposodim si temo. v računalniku imam disk z GPT z nameščenim Win 10.  Na računalnik bi priklopil še en MBR disk z Win 10. Bo potrebno pred bootanjem kaj spremenit v biosu. ",
+    "user": "uporabnick"
+  },
+  {
+    "message": "Če hočeš bootat z MBR diska, moraš v BIOS omogočiti legacy suport. ",
+    "user": "MrStein"
+  },
+  {
+    "message": "Kolega ima PC Elitedesk 800 G1, ta ima dva diska, HDD disk na katerega sem naložil Win10, način BIOSa je UEFI, torej je HDD disk GPT. Ima pa še en disk SSD disk 110gb, ta naj bi bil MBR. Želel sem Windows namestit na ta disk vendar mi ni dovolilo češ da ni GPT. Ni mi dovolilo niti formatirat particij ali izbrisat.  Zaradi tega sem Windows 10 naložil na HDD. Potem ko sem Windows naložil na HDD sem v upravljanju preveril, vendar pravtako nemorem ne formatirat, ne izbrisat nosilec(the request could not be performed because of an I/O device error). Če kliknem na lastnosti pri zmogljivosti diska piše 0Gb.  Nato sem v BIOSU izbral Legacy support in je pri ponovni namestitvi Windowsa dovolilo izbiro SSD diska, vendar se je inštalacija takoj na začetku pri 0% ustavila ter javilo napako.  V čem bi naj bila težava? ",
+    "user": "blackRa"
+  },
+  {
+    "message": "Najbrž je SSD defekten. Če odklopiš HDD, zaženeš Windows namestitev z USB ključa in ne moreš pobrisat particij na SSD, je z njim nekaj narobe. ",
+    "user": "Han"
+  },
+  {
+    "message": "Ssd disk preveri v drugem računalniku. ",
+    "user": "sbawe64"
+  },
+  {
+    "message": "Odklopil HDD, SSD pustil, zagnal namestitev z USB ključka. Pri upravljanju diskov oz. particij imam takoj dve particiji. Ne moren nobene ne formatirat in ne izbrisat. Lahko zaženem inštalacijo Windowsa a takoj pri kopiranju datotek sistema Windows ostane na 0% čez nekaj minut pa javi napako: \"Windows ni mogel formatirat particije na disku 0. Med pripravljanjem particije izbrane namestitve, je prišlo do napake. Koda napake: 0x80070057\"  Poskusil sem še preko cmd z uporabo diskparta z ukazom clean a niti tako ne pusti izbrisat vsebine diska.   Poskusil še z drugim sata kablom pa tudi enako.  Očitno je res disk hin. hvala. ",
+    "user": "blackRa"
+  },
+  {
+    "message": "Imam težavo. V računalniku sem imel ssd disk na katerem je bil sistem in še en hdd disk(s tremi particijami), ki je bil za datoteke. Ena od teh treh particij je bila primarna. Disk je bil prazen. Odklopil sem ssd in z dbanom pobrisal hdd disk. Zdaj se mi sistem ne postavi s ssdja. Poskusil sem popravilo z inštalacijskim dvdjem in ne deluje. Poskusism se z bootrec in ne deluje: /fixmbr -> operation completed suscessfully /fixboot -> elementa ni mogoče najti /scanos -> najde: [1] c:\\windows /rebuildbcd -> najde: [1] c:\\windows -> add to boot list Y, N, ALL -> elementa ni mogoče najti Prosim za pomoč. ",
+    "user": "mailer"
+  }
+]

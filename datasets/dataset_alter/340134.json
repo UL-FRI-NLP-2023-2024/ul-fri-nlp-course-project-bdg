@@ -1,0 +1,212 @@
+[
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Imam zunanji disk z USB in ESata priklopom. Disk je Medion MD 90101....500 giga.\nNa USB prikopu dela OK. Med mirovanjem celo ugasne motor.\nKupil sem še ESata kontroler za PCI vodilo, ki ima zadaj vtičnico za zunanji disk..\nKontroler je Equip_Silicon Image.Winzi XP pravilno zaznajo kartico, in ni nobenih sporov.\nKo prikopim disk na vtičnice, se ne zgodi nič. Diska ni videti nikjer v winzih.\nV biosu ni nikakšnih nastavitev za sata diske, ker je mamaplata Asus A7V8X, in je brez kontrolerja.\nNe vem zakaj prek ESata ni videti diska. Je še mogoče kakšna zadeva, ki jo treba upoštevati \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Poglej v Device Manager (pred in predvsem po priklopu diska).\n\nPred preklopom diska iz USB na eSATA disk izklopi.\n\nČe še vedno ne gre, naprej priklopi disk na eSATA in šele potem ga vklopi.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "ali pa ga daš meni \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n jaz rabim sata disk hehe",
+    "author": "novaa",
+    "author_level": "Pubec"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Kolikor vem, je to odvisno od kontrolerjev ter od diska.\n\nNekatere matične imajo priložene eSata konektorje (dobiš ploščico, ki jo priviješ zadaj na PCI režo, na plato se priklopi z SATA). Ko priklopiš na živo, diska ne najde. Potreben je ponovni zagon. \n\nSATA naj bi se načeloma lahko na živo priklapljalo, ampak v praksi vidim, da to še ni vedno mogoče.\n\neSATA je pa tudi nek posebnež. Čez par mesecev bojo zunaj diski, ki se bojo napajali preko podatkovnega kabla. Zaenkrat moraš uporabiti dodatno napajanje.\n\nSkratka, če ponovno zaženeš, vidiš disk?",
+    "author": "mtey",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Če nimaš dotičnega SATA krmilnika v AHCI načinu, ne bo nič s priklapljanjem med delom.\n\nIDE način tega ne omogoča.",
+    "author": "der_Alte",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik der_Alte pravi:\n Če nimaš dotičnega SATA krmilnika v AHCI načinu, ne bo nič s priklapljanjem med delom.\n\nIDE način tega ne omogoča.\n\t\t\n\t\tKlikni za razširitev\n\t\nKot sem rekel, odvisno od gonilnika.\nLahko prideš pogledat v živo kak v IDE načinu detekta \"vroče\" priklopljeni disk.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "aha, no vidiš, nikoli se nisem potrudil, da bi izvedel kaj AHCI sploh je.\n\nHvala za info \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "mtey",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "AHCI..kje se to sploh nastavlja \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nPreveril sem nastavitve. Ni nobenih možnosti nastavitev v winzih.\nDevice managaer napiše:\nSilicon Imaga SATA Link controler\nPCI slot 5\nIRQ 19\nNo conflict.. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nBios sploh ne omenja SATA. Samo EIDE..\nMogoče treba nadgraditi BIOS \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Si prebral kar smo napisali ?\nDisk dela, če priklopiš prev vklopom PC-ja ? (pred tem disk vklopi)\n\nBIOS nima veze, če je to dodatna kartica.\n\nČe dela v ahci načinu pa lahko preveriš tako da:\n - ali poženeš kaki linux in pogledaš, če uporabi AHCI gonilnik\n - ali prisiliš Windows da uporabi AHCI gonilnik (Vista ima zraven, v XP uporabiš recimo Intelovega) in gledaš, če deluje",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Kabel ni bil pravi. Bil je navadni SATA, in ne ESATA. Pa vtičnica na kartici je navadna SATA..\nTrgovec je naročil novo kartico.",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "SATA konektor kabel si stisnil v eSATA vtičnico ???",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "očitno se da \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nsaj veš kako pravijo... če nekaj negre, uporabi večje kladivo \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "novaa",
+    "author_level": "Pubec"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Yes, zelo sem se potrudil, in ni šlo zlahka  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "KSZ:\nDa malce ugrabim temo.\n\nKatero PCI kartico, da ima eSATA in brezhibno delovanje?",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Kupi si SATA &lt;-&gt; eSATA kabel in vtakni v mainboard.\n(za hotplug, torej priklop med delovanjem, rabiš moderen čipset v AHCI načinu)",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Zanima me zgolj PCI kartica!",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Potem bi le priporočil, da se izogibaš JMicron čipa...",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Ima kdo slabe izkušnje s:\nSilicon Image 3512\nali\nSilicon Image 3114 ?",
+    "author": "Matko",
+    "author_level": "pohodnik"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "se pravi ta kabel http://www.enaa.com/oddelki/racunalniskiDodatki/izd_2044_TE8514003_Serial_ATA_eSATA_kabel_1m\nzunanji disk iz hoferja\nin tale matična (glej stran 21) http://www.fujitsu-siemens.co....534-Z120-UK.pdf\nče tole skup prklopim bi moglo delat?",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Nisem gledal opis plate, ampak če ima SATA potem gre.\neSATA je le SATA z drugi obliko konektorja.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "No, saj vsi JMicron čipi niso tako slabi. Recimo tisti, ki je na asrockovi Dual sata 2 plati, je čisto ok. Ali pa le jaz nimam nobenih težav z njim \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "jest5",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "JMB363 je \"slaven\", mogoče so drugi boljši.",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Fusion pravi:\n se pravi ta kabel http://www.enaa.com/oddelki/racunalniskiDodatki/izd_2044_TE8514003_Serial_ATA_eSATA_kabel_1m\nzunanji disk iz hoferja\nin tale matična (glej stran 21) http://www.fujitsu-siemens.co....534-Z120-UK.pdf\nče tole skup prklopim bi moglo delat?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nnanaša se še na tole debato https://www.alter.si/tabla/showflat.php?Cat=0&Number=354800&page=0&vc=#Post354800\n\nok gremo po vrsti:\nv citatu se vidi katero matično imam.\n\nne glavni disk ni na sata.\n\nsedaj sem novega priklopil, če gledaš zgornji pdf na strani 7 na št 10, a bi moral na 12?\n\na obstaja kej univerzalnega, al boljš, da na novo inštaliram xp-je kateri imajo sata gonilnike že noter. ker od zdejšnjega sistema nimam cd-ja, da bi jih zraven dopeku.",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Evo, zrihtano. Kartica PCI zamenjana. Namesto Eqip-ove, imam STLabovo.\nČip je Silicon Image 3512. Podpira Hot Plug (še nisem preveril).\nKopiral 2,3 giga datoteko na disk;\n\nUSB 2___1,5 minute\neSATA___slaba ninuta\n\nPa še vtikač gre lepo za vtaknit \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "To pa je kr velika razlika, sploh pri večjih prenosih.",
+    "author": "Mare2",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "USB disk je ob daljši neaktivnosti izklopil motor.\nKo ga prešaltam na eSATA, motorja ne ugasne več.\nSe da to kje nastavljati \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nHot Plug sem preizkusil. Dela OK \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Gonzo pravi:\n USB disk je ob daljši neaktivnosti izklopil motor.\nKo ga prešaltam na eSATA, motorja ne ugasne več.\nSe da to kje nastavljati\n\t\t\n\t\tKlikni za razširitev\n\t\nControl Panel / Power Options / Turn off hard disks after X minutes",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Fusion pravi: \n  \nsedaj sem novega priklopil, če gledaš zgornji pdf na strani 7 na št 10, a bi moral na 12?\n\na obstaja kej univerzalnega, al boljš, da na novo inštaliram xp-je kateri imajo sata gonilnike že noter. ker od zdejšnjega sistema nimam cd-ja, da bi jih zraven dopeku.\n\t\t\n\t\tKlikni za razširitev\n\t\nWindows pusti.\nGonilnik imaš  tukaj",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "&lt;&lt;&lt;&lt; USB 2___1,5 minute\n\n\nA je to minuta in pol ali minuta in 50 sekund?",
+    "author": "Mare2",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "nč boljš \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nbom probal še bios updejtat.",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Kake opcije pa imaš glede SATA v BIOS-u ?\nKaj je v Device Manager-ju ? Predvsem pod:\n - Disk Drives\n - IDE ATA/ATAPI controllers\n - SCSI and RAID controllers",
+    "author": "stein",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "evo slikce kaj imam.\ndriverje imam kao vse najnovejše, ker mi ni nič našlo, ko sem dal da samo poišče.\n\nmed diski ki se vidjo na slikci je en na ata, en na usb-maxtor, pa usb ključek. manjka pa samsung na sata\n\n\n\t\n\n\n\n\naja nastavitve v biosu ne morme zdej pogledat, ker sem na un pc povezan prkeo neta (razen če obstaja kaka fora). po spominu pa tut ne vem več kaj točno je pisal.",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "evo še nastavitve iz bios-a\nbios sem danes tudi posodbil in še vedno tema kar se tiča sata diska.\n\n\t\n\n",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "Ena minuta in pol  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Gonzo",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ESata zunanji disk",
+    "content": "se morda komu kaj sanja glede moje težave?",
+    "author": "Fusion",
+    "author_level": "Fizikalc"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "message": "Se oproščam za novo temo, vendar bi se rad osredotočil zgolj na PHP klic za davčno blagajno.  Skratka, spodnja koda mi sproducira napako \"Fatal error: Uncaught exception 'Exception' with message 'CODECURL: Peer's certificate issuer has been marked as not trusted by the user.' in /var/www/davcna.php\"  \n    $url = 'https://blagajne-test.fu.gov.si:9002/v1/cash_registers';\n    $Cert = 'test-tls.cer';\n    $xml_string = file_get_contents('http://www.datoteke.fu.gov.si/dpr/files/example/PrimerDokumentacijaRacunXmlPodpisan.xml');\n    $xml = new DOMDocument();\n    $xml->loadXML($xml_string);\n    $header = array(\n            \"Content-Type: text/xml; charset=UTF-8\",\n            \"Cache-Control: no-cache\",\n            \"Pragma: no-cache\",\n            \"SOAPAction: \\\"/echo\\\"\"\n    );\n   \n    $conn = curl_init();\n    $settings = array(\n        CURLOPT_URL => $url,\n        CURLOPT_CONNECTTIMEOUT_MS => 3000,\n        CURLOPT_TIMEOUT_MS => 3000,\n        CURLOPT_RETURNTRANSFER => true,\n        CURLOPT_POST => 1,\n        CURLOPT_POSTFIELDS => $xml,\n        CURLOPT_FRESH_CONNECT => true,\n        CURLOPT_HTTPHEADER => $header,\n           \n        // secure this!\n        CURLOPT_SSL_VERIFYHOST => 2,\n        CURLOPT_SSL_VERIFYPEER => true,\n        CURLOPT_CAINFO => $Cert\n    );\n   \n    curl_setopt_array($conn, $settings);\n       \n    if ($rawResponse = curl_exec($conn)) {\n        print_r($rawResponse);\n    } else {\n        throw new Exception('CODECURL: ' . curl_error($conn));\n    }\n  Ima kdo kakšno idejo kje je težava ? ",
+    "user": "dextersi"
+  },
+  {
+    "message": "Nimajo valid certifikata. Tudi ce gres gor z browserjam ti bo javil isto. V PHP moras najti, kje preverja server cert in tudi ce je napacen reci, da je OK. V .Net se to nardi tako, da nekam v program napises tole:  ServicePointManager.ServerCertificateValidationCallback = delegate { return true; }; ",
+    "user": "d-mon"
+  },
+  {
+    "message": "CURLOPT_SSL_VERIFYHOST => false, CURLOPT_SSL_VERIFYPEER => false,  to bi moralo zadostovat, da bi avtentikacija šla skoz. ",
+    "user": "Strato5"
+  },
+  {
+    "message": "Pozdravljeni,  imam sledeč problem:  - če izvedem zgornjo kodo in namesto metanja izjeme izpišem: print_r(curl_error($conn)) dobim naslednje: Failed to connect to 84.39.218.166: Permission denied  - v vrstici za tls certifikat sem navedel celotno pot do certifikata na mojem strežniku. - tudi CURLOPT_SSL_VERIFYHOST => false, CURLOPT_SSL_VERIFYPEER => false,  sem oboje postavil na false.  Ima še kdo tak problem? Lepo prosim za kak nasvet. Hvala.  Ivan ",
+    "user": "ivanhoe5x"
+  },
+  {
+    "message": "Ne izklapljaj varnosti, raje naredi tako kot je treba.  Po vklopu dvosmerne TLS komunikacije nujno rabis testni certifikat z ustreznim privatnim kljucem (dobis ce posljes mail - http://www.datoteke.fu.gov.si/dpr/#DIG).  Spodnja koda bi morala delovati, ko enkrat pridobis testni certifikat od fursa.   $url = 'https://blagajne-test.fu.gov.si:9002/v1/cash_registers/echo';\n$header = array(\n    \"Content-Type: application/json; charset=UTF-8\",\n);\n$data = '{\"EchoRequest\":\"ma da dela\"}';\n\n$conn = curl_init();\n$settings = array(\n    CURLOPT_URL => $url,\n    CURLOPT_CONNECTTIMEOUT_MS => 3000,\n    CURLOPT_TIMEOUT_MS => 3000,\n    CURLOPT_RETURNTRANSFER => true,\n    CURLOPT_POST => true,\n    CURLOPT_POSTFIELDS => $data,\n    CURLOPT_FRESH_CONNECT => true,\n    CURLOPT_HTTPHEADER => $header,\n\n    // security\n    CURLOPT_SSL_VERIFYHOST => 2,\n    CURLOPT_SSL_VERIFYPEER => true,\n    CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2,\n    CURLOPT_CAINFO => 'cert/furs_server.pem', //prevejanje server certifikata - uporabi: openssl x509 -inform der -in sitest-ca.cer -out furs_server.pem\n    CURLOPT_SSLCERT => 'cert/furs_client.pem', //dodas svoj certifikat - uporabi: openssl pkcs12 -in ****.p12 -out furs_client.pem -password pass:*****\n    CURLOPT_SSLCERTPASSWD => '*****' //geslo za svoj certifikat\n);\n\ncurl_setopt_array($conn, $settings);\n\nif ($rawResponse = curl_exec($conn)) {\n    print_r($rawResponse);\n} else {\n    throw new Exception('ERROR: ' . curl_error($conn));\n}\n ",
+    "user": "JerKoJ"
+  },
+  {
+    "message": "Hvala JerKoJ. Imaš mogoče idejo kako najhitreje in s čim manj napak podpisati xml s php-jem? Zelo bi bil hvaležem. Takoj dam za pir. ",
+    "user": "ivanhoe5x"
+  },
+  {
+    "message": "JerKoJ je 30. nov 2015 ob 18:36:51 izjavil:   JerKoJ je 30. nov 2015 ob 18:36 izjavil:Ne izklapljaj varnosti, raje naredi tako kot je treba.  Po vklopu dvosmerne TLS komunikacije nujno rabis testni certifikat z ustreznim privatnim kljucem (dobis ce posljes mail - http://www.datoteke.fu.gov.si/dpr/#DIG).  Spodnja koda bi morala delovati, ko enkrat pridobis testni certifikat od fursa.   $url = 'https://blagajne-test.fu.gov.si:9002/v1... $header = array( \"Content-Type: application/json; charset=UTF-8\", ); $data = '{\"EchoRequest\":\"ma da dela\"}';  $conn = curl_init(); $settings = array( CURLOPT_URL => $url, CURLOPT_CONNECTTIMEOUT_MS => 3000, CURLOPT_TIMEOUT_MS => 3000, CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true, CURLOPT_POSTFIELDS => $data, CURLOPT_FRESH_CONNECT => true, CURLOPT_HTTPHEADER => $header,  // security CURLOPT_SSL_VERIFYHOST => 2, CURLOPT_SSL_VERIFYPEER => true, CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2, CURLOPT_CAINFO => 'cert/furs_server.pem', //prevejanje server certifikata - uporabi: openssl x509 -inform der -in sitest-ca.cer -out furs_server.pem CURLOPT_SSLCERT => 'cert/furs_client.pem', //dodas svoj certifikat - uporabi: openssl pkcs12 -in ****.p12 -out furs_client.pem -password pass:***** CURLOPT_SSLCERTPASSWD => '*****' //geslo za svoj certifikat );  curl_setopt_array($conn, $settings);  if ($rawResponse = curl_exec($conn)) { print_r($rawResponse); } else { throw new Exception('ERROR: ' . curl_error($conn)); }     Ko sem naredil po zgornjem zgledu dobim napaka: Unable to load client cert -8018. Ima kdo kako idejo? ",
+    "user": "lorbec"
+  },
+  {
+    "message": "S tole kodo mi gre echo brez težav skozi:  <?php\n\t$Cert = \"mojcertifikat.pem\";\n\t$ca = \"sitest-ca.pem\";\n    $url = 'https://blagajne-test.fu.gov.si:9002/v1/cash_registers';\n    $xml_string = file_get_contents('echo.xml');\n    $header = array(\n            \"Content-Type: text/xml; charset=utf-8\",\n            \"Cache-Control: no-cache\",\n            \"Pragma: no-cache\",\n            \"SOAPAction: /echo\"\n    );\n    $conn = curl_init();\n    $settings = array(\n        CURLOPT_URL => $url,\n        CURLOPT_FRESH_CONNECT => true,\n        CURLOPT_CONNECTTIMEOUT_MS => 3000,\n        CURLOPT_TIMEOUT_MS => 3000,\n        CURLOPT_RETURNTRANSFER => true,\n        CURLOPT_POST => 1,\n        CURLOPT_HTTPHEADER => $header,\n        CURLOPT_POSTFIELDS => $xml_string,\n        CURLOPT_SSL_VERIFYHOST => 2,\n        CURLOPT_SSL_VERIFYPEER => true,\n        CURLOPT_SSLCERT => $Cert,\n\t\tCURLOPT_CAINFO => $ca\n    );\n    curl_setopt_array($conn, $settings);\n    if ($rawResponse = curl_exec($conn)) {\n        echo\"\\n\";\n        print_r($rawResponse);\n    } else {\n        throw new Exception('CODECURL: ' . curl_error($conn));\n    }\n?> ",
+    "user": "vajenec"
+  },
+  {
+    "message": "Še vedno mi javlja isto napako. Ali je treba v php.ini kaj spremenit? Ali imam napako v generiranju pem datoteke?  openssl pkcs12 -in certificat_od fursa.p12 -out furs_client.pem -password pass:**geslo od fursa** PEM pass phrase: **** ",
+    "user": "lorbec"
+  },
+  {
+    "message": "Tole je koda, ki uspešno pošlje ECHO in če so certifikati narejeni po tem vzorcu: //prevejanje server certifikata - uporabi: openssl x509 -inform der -in sitest-ca.cer -out fursserver.pem //dodas svoj certifikat - uporabi: openssl pkcs12 -in ****.p12 -out mojcertifikat.pem -password pass:*****  <?php\n\t$Cert = \"mojcertifikat.pem\";\n\t$geslo = 'Geslo123#';\n\t$ca = \"fursserver.pem\";\n    $url = 'https://blagajne-test.fu.gov.si:9002/v1/cash_registers';\n    $xml_string = file_get_contents('echo.xml');\n    $header = array(\n            \"Content-Type: text/xml; charset=utf-8\",\n            \"Cache-Control: no-cache\",\n            \"Pragma: no-cache\",\n            \"SOAPAction: /echo\"\n    );\n    $conn = curl_init();\n    $settings = array(\n        CURLOPT_URL => $url,\n        CURLOPT_FRESH_CONNECT => true,\n        CURLOPT_CONNECTTIMEOUT_MS => 3000,\n        CURLOPT_TIMEOUT_MS => 3000,\n        CURLOPT_RETURNTRANSFER => true,\n        CURLOPT_POST => 1,\n        CURLOPT_HTTPHEADER => $header,\n        CURLOPT_POSTFIELDS => $xml_string,\n        CURLOPT_SSL_VERIFYHOST => 2,\n        CURLOPT_SSL_VERIFYPEER => true,\n        CURLOPT_SSLCERT => $Cert,\n\t\tCURLOPT_SSLCERTPASSWD => $geslo,\n\t\tCURLOPT_CAINFO => $ca\n    );\n    curl_setopt_array($conn, $settings);\n    if ($rawResponse = curl_exec($conn)) {\n        echo\"\\n\";\n        print_r($rawResponse);\n    } else {\n        throw new Exception('CODECURL: ' . curl_error($conn));\n    }\n?> ",
+    "user": "vajenec"
+  },
+  {
+    "message": "Pri meni je PHP 5.4.39, cURL 7.38.0, OpenSSL 1.0.1e ",
+    "user": "vajenec"
+  },
+  {
+    "message": "Vse to imam narejeno, pa mi še vedno javlja  - na linux centos: Unable to load client cert -8018  - na wamp: unable to use client certificate (no key found or wrong pass phrase?))  imam php 5.5.30; curl 7.19.0; OpenSSL 1.0.1e  Ima še kdo isto težavo? ",
+    "user": "lorbec"
+  },
+  {
+    "message": "Sem preveril in pri meni WAMP na WIN7 tudi javi napako kot tebi. Moram pogledati zakaj... (oziroma zakaj na strežniku deluje :-) ). ",
+    "user": "vajenec"
+  },
+  {
+    "message": "$header = array( \"Content-Type: text/xml; charset=utf-8\", \"Cache-Control: no-cache\", \"Pragma: no-cache\", \"SOAPAction: /echo\"  Ali kdo ve kaj je treba vpisati, oz. kje je to objavljeno, za httpheader (v php) namesto \"SOAPAction: /echo\" za ostale možnosti: - prijavo prostora - potrjevanje računa - storno računa - potrjevanje računa iz vezane knjige - navaden račun z dvema stopnjama DDV - storno za račun \"Navaden račun z dvema stopnjama DDV\" - Podpisano sporočilo za prijavo premičnega poslovnega prostora ",
+    "user": "lorbec"
+  },
+  {
+    "message": "\"SOAPAction: /invoices\" - za račune \"SOAPAction: /invoices/register\" - za prostor ",
+    "user": "vajenec"
+  },
+  {
+    "message": " lorbec je 4. dec 2015 ob 14:32 izjavil:Vse to imam narejeno, pa mi še vedno javlja  - na wamp: unable to use client certificate (no key found or wrong pass phrase?))  Ima še kdo isto težavo?   Zanima me če je komu uspelo rešiti to težavo na WAMP, na koncu vedno pristanem pri tem err. Edini premik je če dam absolute path na .pem fajla in mi vrže err \"unable to set private key file\", pri obeh primerih errCode 58. ",
+    "user": "orel_m"
+  },
+  {
+    "message": "Pozdravljen, Meni osnovna funkcija potejevanje racuna deluje lepo v Wampu. Pisi ZS pa vidiva če ti lahko pomagam. ",
+    "user": "mrgapo"
+  },
+  {
+    "message": "Pozdravljeni,  meni sedaj na wamp serverju (windows 7 ) zadeva deluje - vsaj echo...  $Cert = \"c://wamp/www/jani/mojcertifikat.pem\";\n$geslo = 'Geslo123#';\n$ca = \"c://wamp/www/jani/fursserver.pem\";\n$url = 'https://blagajne-test.fu.gov.si:9002/v1/cash_registers';\n$xml_string = file_get_contents('echo.xml');\n$header = array(\n        \"Content-Type: text/xml; charset=utf-8\",\n        \"Cache-Control: no-cache\",\n        \"Pragma: no-cache\",\n        \"SOAPAction: /echo\"\n);\n$conn = curl_init();\n$settings = array(\n    CURLOPT_URL => $url,\n    CURLOPT_FRESH_CONNECT => true,\n    CURLOPT_CONNECTTIMEOUT_MS => 3000,\n    CURLOPT_TIMEOUT_MS => 3000,\n    CURLOPT_RETURNTRANSFER => true,\n    CURLOPT_POST => 1,\n    CURLOPT_HTTPHEADER => $header,\n    CURLOPT_POSTFIELDS => $xml_string,\n    CURLOPT_SSL_VERIFYHOST => 2,\n    CURLOPT_SSL_VERIFYPEER => true,\n    CURLOPT_SSLCERT => $Cert,\n    CURLOPT_SSLCERTPASSWD => $geslo,\n    CURLOPT_CAINFO => $ca\n);\ncurl_setopt_array($conn, $settings);\nif ($rawResponse = curl_exec($conn)) {\n    echo\"\\n\";\n    print_r($rawResponse);\n} else {\n    throw new Exception('CODECURL: ' . curl_error($conn));\n}\n ",
+    "user": "vajenec"
+  },
+  {
+    "message": "Zdravo pubeci ino pupe.  Najprej bi se rad zahvalil vsem, ki tako lepo sodelujete na tem forumu. Tudi z vašo pomočjo sem skupaj sestavil to presneto skripto. Ker bi rad prihranil muke vsem, ki se s tem ukvarjate, sem se odločil, da svojo skripto objavim. Skripta pokriva: - echo sporočilo - prijavo poslovnega prostora - prijavo posameznega računa - se omejuje na operacije prek spletne strani, kar pomeni, da obstaja 1 poslovni prostor in 1 elektronska naprava.  Ker drugega v tem trenutku ne potrebujem, se mi ni dalo pisati naprej. V osnovi je skripta tako narejena, da je nadgradnja precej logična in enostavna. Vse kar vas prosim, je, da če boste skripto (kvalitativno) nadgradili, da mi jo pošljete nazaj, da jo objavim še za vse ostale. Pošljite mi še svoje ime, da ga navedem v avtorstvu.  PHP skripta za potrjevanje računov je dostopna na:  https://github.com/matejpos/PHP-davcne-... ",
+    "user": "brble"
+  }
+]

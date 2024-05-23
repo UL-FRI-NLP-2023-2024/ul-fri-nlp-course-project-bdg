@@ -1,0 +1,146 @@
+[
+  {
+    "message": "Torej, ideja je da se izvajajo varnostne kopije na NAS, ki je na drugi lokaciji. Na routerju je narejen VPN na katerega se NAS uspešno poveže in je dostopen v lokalni mreži na svojem IP-ju. Očitno pa ta tip povezave ni dovolj stabilen, saj med kopiranjem večjih datotek pride do napake. In sicer sistem iz katerega se kopira, javi da ciljne datoteke ni več na voljo in kopiranje se prekine. Sklepam, da prihaja do hipnih prekinitev povezave. Preizkusil sem program od Qnap-a, za varnostne kopije, pa backup od Windows Server, ter še program Handybackup. V vseh primerih pride do enake napake. Router je od Mikrotik-a, VPN pa je tipa L2TP/IPsec. Sedaj pa vprašanje, ali bi se zadeva rešila, če bi bil izbran drugačen tip VPN povezave? Morda OpenVPN? Ali je kakšen program oziroma način, ki uporablja bolj robusten način kopiranja, da ga trenutna prekinitev povezave ne bi onesposobila? NAS je bil preizkušen na dveh različnih lokacijah, pri dveh različnih operaterjih. Izvorni sistem je povezan v splet pri tretjem.  Ima kdo kakšen predlog kako bi lahko ali zagotovil stabilnejšo (varno) povezavo, ali uporabil kakšen software, ki bi imel vgrajeno \"podporo\" za slabše povezave? ",
+    "user": "iso2000"
+  },
+  {
+    "message": "Sam uporabljam povezavo z Gre tunnelom med dvema strežnikoma na različnih ipjih. ",
+    "user": "Fsegula62"
+  },
+  {
+    "message": "Jaz ne bi kompliciral z VPN-ji.  Zašifriraj podatke preden gredo ven iz nasa na drug nas. Vzpostavi backup na Webdavu ali preko Rsync over SSH.   Na NASu, ki je cilni NAS pa nastavi na firewalu tako, da boš odprl samo zahtevane port/e in omeji lokacijsko, da se lahko poveže na ta nas od zunaj samo IP iz izvornega omrežja. ",
+    "user": "carovnik1900"
+  },
+  {
+    "message": "Jaz imam isto konfiguracijo NAS+(Mikrotik in na njem VPN IPsec L2TP s PSK) pa mi dela brez težav. ",
+    "user": "starfotr"
+  },
+  {
+    "message": "Kolikšna je po vašem ocena stroška postavitve takšne povezave s strani IT podjetja? ",
+    "user": "recmajkemi"
+  },
+  {
+    "message": "https://www.virtua-it.si/najemi-mikroti... ",
+    "user": "starfotr"
+  },
+  {
+    "message": "Gawd damn zlatarji. 150 € + DDV, če še koga zanima. ",
+    "user": "recmajkemi"
+  },
+  {
+    "message": " recmajkemi je 15. dec 2020 ob 15:07 izjavil:Gawd damn zlatarji. 150 € + DDV, če še koga zanima.   A sosedov mulc ne zna za pivo ?? Profi storitve majo profi cene.... Drugače pa youtube in se naučit. ",
+    "user": "mzakelj"
+  },
+  {
+    "message": " iso2000 je 15. dec 2020 ob 13:20 izjavil:NAS je bil preizkušen na dveh različnih lokacijah, pri dveh različnih operaterjih. Izvorni sistem je povezan v splet pri tretjem.   Ste poskusili tudi z NASom na isti lokaciji ? ",
+    "user": "Voluharr"
+  },
+  {
+    "message": " Voluharr je 15. dec 2020 ob 15:51 izjavil:iso2000 je 15. dec 2020 ob 13:20 izjavil:NAS je bil preizkušen na dveh različnih lokacijah, pri dveh različnih operaterjih. Izvorni sistem je povezan v splet pri tretjem.   Ste poskusili tudi z NASom na isti lokaciji ?  Smo. Na isti lokaciji je delalo. Zadeva se je povezala na VPN in kopiranje je delovalo bp. Testiranje na isti lokaciji je trajalo par tednov, pa ni bilo težav. Ob prenosu na drugo lokacijo pa so se začele težave. Ker občasno zamrzne tudi RDP preko VPN povezave sumim, da je težava v stabilnosti povezave. Kaj jo povzroča, pa ne vem kako ugotoviti. ",
+    "user": "iso2000"
+  },
+  {
+    "message": " mzakelj je 15. dec 2020 ob 15:11 izjavil:recmajkemi je 15. dec 2020 ob 15:07 izjavil:Gawd damn zlatarji. 150 € + DDV, če še koga zanima.   A sosedov mulc ne zna za pivo ?? Profi storitve majo profi cene.... Drugače pa youtube in se naučit.   Za slo razmere je 150€ na uro tudi v IT sektorju pač zlatarska cena. In to za konfiguracijo Mikrotika, LOL. Me res zanima kdo tole plača. ",
+    "user": "RoccoC"
+  },
+  {
+    "message": "@iso2000, za začetek znižaj MTU VPN tunela (npr 1480 byte-ov ali nekaj manj). ",
+    "user": "Vaseer"
+  },
+  {
+    "message": "Če imaš na obeh straneh Mikrotika lahko poskusiš še z EoIP povezavo med njima. ",
+    "user": "Karen"
+  },
+  {
+    "message": " RoccoC je 15. dec 2020 ob 17:08 izjavil:Za slo razmere je 150€ na uro tudi v IT sektorju pač zlatarska cena. In to za konfiguracijo Mikrotika, LOL. Me res zanima kdo tole plača.  Nak, za 45 minut! ;)   \"Koliko pa stane? Ena enota svetovanja ali pomoči stane 150 eur + ddv in traja 45 minut.\" ",
+    "user": "brbr21"
+  },
+  {
+    "message": "Jaz sam pravim vsaka čast računalničarjem za take cene, in prav je, da imajo tako, ker je veliko truda vloženo v učenje. Sej poglej odvetnike, samo dober dan mu rečeš v pisarni pa si ob 100EUR. Mi gre pa na jok za \"nas\" gradbenike, ko prideš na teren pa hočeš obračunat po IZS ceniku projektantsko uro pa je cela hajka, da smo zlatarji...  http://arhiv.izs.si/fileadmin/dokumenti...  P.S.  Cene in plače niso niti približno podobne kot na tem IZS dokumentu. Vodje projektov mogoče dobijo do 2000EUR neto. Pa ne poznam kakega, da bi imel toliko plače, poznam pa kar dosti vodij... ",
+    "user": "Vanadium"
+  },
+  {
+    "message": "Bodi brez skrbi da za konfiguracijo mikrotika noben ne plača 150€ na 45min. Razen seveda mogoče kakšna stranka v javnem sektorju kjer je pa zadaj še dodaten deal. ",
+    "user": "RoccoC"
+  },
+  {
+    "message": "Zakaj pa ne? Še vedno je neprimerno ceneje, kot če se ga spraviš sam učiti. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "Ti misliš da sta na voljo same 2 možnosti? Tale cena ali pa da delaš sam? Ok... ",
+    "user": "RoccoC"
+  },
+  {
+    "message": " RoccoC je 15. dec 2020 ob 17:08 izjavil: Za slo razmere je 150€ na uro tudi v IT sektorju pač zlatarska cena. In to za konfiguracijo Mikrotika, LOL. Me res zanima kdo tole plača.  Top je tudi v tujini trenutno zlatarska cena... ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Vem za podjetje v tujini, kjer placas priblizno 65EUR + VAT za taksna dela (na uro). Smeska ",
+    "user": "SmeskoSnezak"
+  },
+  {
+    "message": "Vse je odvisno od osnovnega sistema. Npr. ZFS snapshote filesystemov lahko pošljemo preko SSH, resume je podprt, pošljejo se le spremembe in ne vedno vse... ",
+    "user": "c3p0"
+  },
+  {
+    "message": "@iso2000 - če prav razumem, imaš na eni strani Mikrotik - kaj pa imaš na drugi?  Sliši se, kot da imaš neko 'on demand / dialup' varianto (Windows računalnik z native L2TP?), ne pa stalno VPN povezavo med dvema routerjema?  Zakaj nimaš stalno IPSec VPN povezavo med routerjema? Če hočeš stabilnost, je to najbolj optimalna varianta.  Obstaja še kakšna skupna lastnost tem 'prekinitvam'? Zadnjič sem nekaj zasledil en štos z rekey-em, da zna baje Microsoft Windows 10 z določenimi routerji in L2TP imeti težavo pri 7,6 urah, ho hoče naresti rekey. Zadevo so reševali tako, da so na strani routerja v Phase1 skrajšali SA Life na 6 ur, tako da je potem router prožil rekey, ne pa Windows.  Drugake pa je L2TP tudi že ven iz mode - stvari gredo v smer IKEv2, če imaš VPN tipa odjemalec-mreža.  Istočasno pa je SSLVPN (OpenVPN) še vedno populaten, ker rabi samo 1 port, pa če tega nastaviš na 443, prideš praktično povsod skozi.  V glavnem - če imaš na obeh straneh Mikrotika, naredi stalni VPN med Mikrotikoma. Bo verjetno bolj stabilen od tistega z Windows-i (ne poganjaš še nevem kaj drugega na routerju, tako kot na računalniku).  Drugače pa je praktično uporabljati kakšen SFTP ali podoben protokol za prenašanje datotek, ki obvladuje nadaljevanje prenosa ob prekinitvi - če imaš težavo z prekinitvami. Vprašanje so vedno le performanse oz. overhead protokola in njegovega strežnika/odjemalca. To moraš potem malo testirati, pa tudi sam prenos ustrezno skriptat, da se ob nepredvideni prekinitvi ponovno zažene - od točke, kjer je stvar padla. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "SeMiNeSanja najprej hvala za izčrpen odgovor! Na mikrotiku je VPN strežnik. Na Qnqap NAS-u je nastavljeno, da se avtomatsko poveže na ta VPN in potem postane dostopen v lokalni mreži. Razmišljanje je bilo, da bi lahko NAS kjerkoli priklopil in bi bil na voljo v mreži preko VPNja, neodvisno od (brez dodatnih nastavitev) routerja na lokaciji NAS-a. Poveže se, podatkovna struktura je dostopna in jo lahko pregledujem. Podatki se bi morali kopirati s pomočjo neke programske rešitve na ta NAS. Za sedaj sem stestiral software od Qnapa, pa Windows backup aplikacijo (Win Server) in trenutno poizkušam s programom Handy backup. Če probam normalno kopiranje, se pojavlja omenjena napaka. Sedaj testiram, če bo morda šlo preko sftp. Preverjal sem tudi nastavitev MTU s pomočjo ping ukaza in je pokazalo, da vse kar je bil MTU nad 1352 je javljalo napako. Sedaj je MTU nastavljen na 1380 (tule sem izvedel nekaj več o tej tematiki https://hide.me/en/knowledgebase/how-to..., ampak je napaka še vedno prisotna. Za sedaj bom videl kaj bo pokazal sftp prenos, če ne se bom probal še igrat z MTU nastavitvijo. ",
+    "user": "iso2000"
+  },
+  {
+    "message": "Se pravi ti sploh ne začne kopirati. Syncati prek neta? Qnap ima več backup možnosti. Ena od njih je tudi iscis lun snapshoti. Problem bo najbrž v nastavitvah povezave. ",
+    "user": "Zimonem"
+  },
+  {
+    "message": "Začne kopirati, vendar po recimo 1-2GB prenešenih podatkov javi napako in se kopiranje prekine. Napaka, ki jo javi je, da ne najde ciljne datoteke. Torej, kot da ne vidi datoteke na NAS-u. ",
+    "user": "iso2000"
+  },
+  {
+    "message": " Vanadium je 16. dec 2020 ob 11:19 izjavil:Jaz sam pravim vsaka čast računalničarjem za take cene, in prav je, da imajo tako, ker je veliko truda vloženo v učenje. Sej poglej odvetnike, samo dober dan mu rečeš v pisarni pa si ob 100EUR. Mi gre pa na jok za \"nas\" gradbenike, ko prideš na teren pa hočeš obračunat po IZS ceniku projektantsko uro pa je cela hajka, da smo zlatarji...  http://arhiv.izs.si/fileadmin/dokumenti... Potrebno je upoštevat še profil dela. V tujini naročnik ceni svoj čas in svoj projekt in ima vsak korak (ali čimveč njih) zanesljivo pokrit. Pri nas šteje količina izdanega denarja. Tudi v gradbeništvu, zato pa vsak gradi svojo hišo. Še dobro, da avto kupimo sestavljen.  In ker je tako, ponudnik v tujini računa, da bo na 10 strank, katerim mora nastaviti MikroTik, imel 8 enostavnih, 2 pa taki kot sta OP. Seveda ne ve, kateri dve sta to, ampak s ceno ne vem, 80+DDV pri desetih dobi dovolj, da dve dela z izgubo, skupaj pa lepo živi in se razvija. pri nas je jasno, da bo vsak najprej poskusil sam s pomočjo YouTube, potem bo vprašal sosede, ex-svake in podobno in ko bo prišel k profesonalcu, je temu \"jasno,\" da ima pred sabo enega od unih dveh. Morda se pri 1 od 10 zmoti in gre za enostavno konfiguracijo, ampak večina dela je pa zajeban troubleshooting. Zato so cene zlatarske. Kot za reševanje podatkov iz HDD, ko je to še bil use case. Ali ponudniki backupa, ki računajo za restore. Ko prideš do njega, so cene zlatarske, ker vsi vpleteni vedo, da res potrebuješ. ",
+    "user": "joze67"
+  },
+  {
+    "message": "Če se je OP pripravljen poigrati, pri nas so za podoben problem predlagali restic backup. (Druge sestavine so bile še rPi obešen na HDD in TailScale, ki pa niso nujno relevantne za OPjev problem - NAS je več kot rPi=HDD, VPN pa tudi že je in ni težav s konfiguracijo.) ",
+    "user": "joze67"
+  },
+  {
+    "message": "Hm, pa so to res zlatarske ure? Če zna, je OK.  Mimogrede TechTrade ima uro \"zahtevnejšega\" šraufanja MikroTika 45 EUR: https://www.techtrade.si/cenik-dostavni...  Imamo pa pri nas s temi \"zlatarji\" bolj slabe izkušnje. Smo imeli primere, ko je zlatar: - obupal in težil da opreme, ki jo je sam dobavil, ne zna skonfigurirat oz se je ne da uporabiti tako, kot je bilo zahtevano (Cisco pooblaščenec),  - da takega diskovnega polja še ni videl in ne ve kako dela (Dellov pooblaščenec oz uvoznik),  - da oprema ne omogoča takšnega tipa kumunikacije (neki industrijski modemi),  - ...  Če zlatar googla kako se nekaj nastavi, potem ni vreden 150 EUR / 45 minut. Če zna zrihtat in mi prišpara 150 EUR, potem je. Isto kot avtomehanik.  Da ne bo pomote, smo tudi samo zlatarji za marsikoga. ",
+    "user": "jukoz"
+  },
+  {
+    "message": " iso2000 je 17. dec 2020 ob 10:19 izjavil:Začne kopirati, vendar po recimo 1-2GB prenešenih podatkov javi napako in se kopiranje prekine. Napaka, ki jo javi je, da ne najde ciljne datoteke. Torej, kot da ne vidi datoteke na NAS-u.  Odklukaj delete extra file. ",
+    "user": "Zimonem"
+  },
+  {
+    "message": "uporabi resilio ce lahko instaliras na obeh mestih. za privat uporabo je free. sinhroniziras lahko vec direktorijev posebaj, nastavljas razna pravila ... Ce bos kasneje dodal 3. lokacijo za backup enostavno dodas tisti folder na novi napravi in imas 3. backup.  Sinhronizira tudi samo razlike v datotekah. Za kake log fajle recimo ne bo sinhroniziral celega fajla ampak samo rep. ",
+    "user": "Red_Mamba"
+  },
+  {
+    "message": " RoccoC je 16. dec 2020 ob 11:23 izjavil:Bodi brez skrbi da za konfiguracijo mikrotika noben ne plača 150€ na 45min. Razen seveda mogoče kakšna stranka v javnem sektorju kjer je pa zadaj še dodaten deal.   Jaz sem za eno konfiguracijo dobil ceno 45 eur na uro, vendar so ocenili da bo dela 10 ur. Še vedno je bolje dati 150 eur pa je narejeno v 45 minutah. ",
+    "user": "starfotr"
+  },
+  {
+    "message": " starfotr je 17. dec 2020 ob 12:57 izjavil:RoccoC je 16. dec 2020 ob 11:23 izjavil:Bodi brez skrbi da za konfiguracijo mikrotika noben ne plača 150€ na 45min. Razen seveda mogoče kakšna stranka v javnem sektorju kjer je pa zadaj še dodaten deal.   Jaz sem za eno konfiguracijo dobil ceno 45 eur na uro, vendar so ocenili da bo dela 10 ur. Še vedno je bolje dati 150 eur pa je narejeno v 45 minutah.  Ali ni to malo naivno?  Imaš takšne in drugačne konfiguracije. Seveda lahko narediš konfiguracijo v 45 minutah, ki 'deluje' - nekako po sistemu \"drži vodu, dok majstori odu\".  Čudežev v 45 minutah nihče ne more naresti, pa če je še tolikšen mojster. Požene nek 'čarovnik' in spaca neko generično konfiguracijo, ki ni vredna počenega groša, kaj šele 150€! Kdor ti tako 'packarijo' proda za 150€, te je v bistvu na suho nategnil.  V tem primeru je bil veliko bolj pošten tisti, ki ti je ponujal uro po 45€ in povedal, da za kolikor toliko SPODOBNO konfiguracijo potrebuje 10 ur. Če ti je bilo to preveč, bi mu pa rekel, da hočeš zgolj \"Wizard konfiguracijo\", pa bi tudi on opravil v 45 minutah - in to prav nič slabše, kakor tisti 'mojster' za 150€. No, ker je očitno bil poštenjak, bi te morda celo zavrnil in rekel, da ne bo svojega imena zastavljal za generično \"Wizard konfiguracijo\".  Ni čudno, da potem ob taki škrtosti najdeš opremo, za katero se je zmetalo stotine ali celo tisoče €, skonfigurirana pa je tako, da je izkoriščeno max. 10% njene funkcionalnosti. Če to pri 'navadnem' routerju še nekako gre, pa ne razumem, kako naj bi to šlo pri malo bolj resnih varnostnih rešitvah. V bistvu stran vržen denar.... Ampak ja... če so eni tako bogati, da imajo za najdražjo opremo in hkrati tako škrti, da ne dajo za spodobno konfiguriranje, potem se pač veselijo železninarji. Tistih 150€ pa je potem kazenski 'prispevek', ker stvar nisi že v začetku postavil kot treba - za bistveno manj denarja, ker zagotovo ne boš klical 'mojstra' samo 1x... In ne pozabiti, da ti bo 'mojster' zaračunal 150€ tudi takrat, ko bo imel dejanskega dela zgolj za 10 minut!  Kako so že rekli nekoč......? Nekaj v smislu \"Nisem tako bogat, da bi poceni kupoval\"....  No, tukaj se lahko s tem pregovorom tolažiš, če si bil v štartu tak bumbar in tega pravila nisi upošteval za vse ostalo - razen za železnino. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Jaz SFTP-jam iz QNAP-a na Synology na drugo lokacijo (ampak to dela Cobian backup na serverju, ki lokalno vidi Qnap-a), cca. 70GB datoteko, brez težav, 2x na teden. Na obeh straneh Mikrotika, ampak ni posebne povezave, pač SFTP postavi pa je. Podobno iz QNAP-a na drug Qnap - FTPS protokol, ista vsebina. Sem sprobal nekaj teh backup SW-jev od Synologyja in Qnapa pa so križno bili skoz neki problemi, tako da sem se enostavno odločil da bo Cobian iz LAN-a kjer vidi share porival ven preko sFTP-ja, pa dela kot mora. ",
+    "user": "Karen"
+  },
+  {
+    "message": "jaz sem si to rešil tako da sem 2 starejša računalnika, ki imata vsak po 6sata portov namestil Truenas, nametal notri 6diskov (raidz2), skonfiguriral, namestil resiliosync na oba, ju polinkal in potem enega odnesel v domači kraj, drugega imam pri sebi. Thats it. Zadeva brca zdele cca 2 leti, če je s katerim diskom kaj narobe, mi pošlje mail, Resilio poskrbi, da so spremenjene datoteke na voljo še 60dni pol se brišejo in to je to. NIč posebnega. ampak je DIY projekt ",
+    "user": "bobby"
+  },
+  {
+    "message": " iso2000 je 17. dec 2020 ob 10:19 izjavil:Začne kopirati, vendar po recimo 1-2GB prenešenih podatkov javi napako in se kopiranje prekine. Napaka, ki jo javi je, da ne najde ciljne datoteke. Torej, kot da ne vidi datoteke na NAS-u.  Lahko da je problem v nasu in ne vpn povezavi. ",
+    "user": "sbawe64"
+  },
+  {
+    "message": " RoccoC je 15. dec 2020 ob 17:08 izjavil:mzakelj je 15. dec 2020 ob 15:11 izjavil:recmajkemi je 15. dec 2020 ob 15:07 izjavil:Gawd damn zlatarji. 150 € + DDV, če še koga zanima.   A sosedov mulc ne zna za pivo ?? Profi storitve majo profi cene.... Drugače pa youtube in se naučit.   Za slo razmere je 150€ na uro tudi v IT sektorju pač zlatarska cena. In to za konfiguracijo Mikrotika, LOL. Me res zanima kdo tole plača.   vsak, ki je dober v svojem biznisu. a si boš vzel par dni in si razbijal glavo kako nastavit mikrotika? v parih dneh s svojim delom nisi sposoben zaslužit 150e? o zlatarskih cenah gobezdajo razni s.p. mazači, ki so zanič tudi v svojem biznisu.  a zobe si tud sam popraviš? pa avto? a vodovodar si tud sam, pa ploščice znaš tud polagat? same \"zlatarje\" sem ti naštel, po slovenceljskih \"šparejmo pa nej stane kar hoče\" standardih.  150e je zato, ker taki debili najprej sami zapravjo goro časa, da bodo za pršparanih 50e sami naredl. ko obupajo pridejo do tebe, ampak takrat je cena dvojna.  jaz sem konfiguriral omrežno opremo za 250e/h v sloveniji. ko zafukaš do te mere da ne znaš več odfukat, posel pa trpi, plačaš marsikaj. ",
+    "user": "Saul Goodman"
+  }
+]

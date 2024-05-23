@@ -1,0 +1,54 @@
+[
+  {
+    "message": "mene pa zanima kje bi dobu osnove bascoma za programiranje pa če se le da v slovenščini    L.P. ",
+    "user": "pato90"
+  },
+  {
+    "message": "Obstaja knjiga za začetnike: Jurij Mikeln - Uvod v programiranje mikrokontrolerjev s programskim jeziko BascomLT. Knjiga je čisto solidna za bascom 8051 tudi ",
+    "user": "|CyGNUS-x"
+  },
+  {
+    "message": "aha a je ta knjiga v slovenščini al je v kšnem drugem jeziku pa kje bi se jo dal drgač nabavt   L.P. ",
+    "user": "pato90"
+  },
+  {
+    "message": "Tale je hrvaška.  Bascom šolski priročnik CRO  Tu naj bi tudi prodajali tisto, ki jo je napisal |CyGNUS-x. ",
+    "user": "r5r"
+  },
+  {
+    "message": "V knjižnici sem si rezerviral naslednja gradiva:  - Avtor: Mikeln, Jurij Naslov: Praktična uporaba mikrokontrolerjev : ponatis izbranih člankov [iz revije Svet elektronike] Jezik: slv (slovenski) Leto izida: 2003  - Avtor: Mikeln, Jurij Naslov: Praktična uporaba mikrokontrolerjev : primeri vezij, programatorjev in razvojnih okolij za mikrokontrolerje : ponatis izbranih člankov iz revije Svet elektronike Jezik: slv (slovenski) Leto izida: 2000   - Avtor: Mitrović, Vladimir ;Mikeln, Jurij ;Pavleković, Zdravko Naslov: Programiranje mikrokontrolera programskim jezikom Bascom Jezik: cro (hrvaški) Leto izida: 2002   Zanime me, če je kaj od tega tisto, kar ste že opisovali zgoraj oz. če je že kdo naletel na to gradivo, torej ali je vredu? Če obstaja po vašem mnenju še kaj boljšega vas prosim da natipkate naslov. ",
+    "user": "Mikron"
+  },
+  {
+    "message": "Zelo zanimiva literatura čeprav so projekti v njih bolj kot ne enaki. Dovolj bi bilo če bi si od teh treh izposodil samo Mikeln Jurij - Praktična uporaba mikrokontrolerjev 2 - leto 2003 in Mitrović Vladimi,... - Programiranje mikrokontrolera programskim jezikom Bascom - leto 2002 Pa še pri tej drugi pride v upoštev bolj kot ne samo prvih par strani na katerih so bolj osove npr. kako se vežejo različne izhodne, vhodne enote na mikrokontroler, ipd. Same uporabne stvari  ",
+    "user": "Mikron"
+  },
+  {
+    "message": "zanimam me če se da mikrokontrolerje programerat v javi?  L.P. ",
+    "user": "pato90"
+  },
+  {
+    "message": "zanima me ukaz wait 1 če je to v praksi točno eno sekundo ali ne ",
+    "user": "pato90"
+  },
+  {
+    "message": "@pato90: seveda. V principu lahko programiraš v čemerkoli samo compiler je treba poiskati na netu. Jaz sem si že en cajt nazaj ogledoval OOPic ( klik). ",
+    "user": "ql000"
+  },
+  {
+    "message": "Priporočam  Arduino pišeš v c++, so pa ukazi zelo lahki vse se namreč dela preko ukazov in ne prek registrov. Glede wait 1 pa to pomeni čakanje 1ms! ",
+    "user": "cupacup"
+  },
+  {
+    "message": "Glede wait 1 pa to pomeni čakanje 1ms!  Ni res. Če je govora o bascomu, je to delay (približno, ne 100% točno) 1s. Za 1ms pa obstaja ukaz 'waitms 1' ",
+    "user": "Jawohl!"
+  },
+  {
+    "message": "Kar se tiče raznih delay-ov vedno izhajajte, če se hočete izogniti kakšnim glupim bugom, iz clocka. Jaz naprimer delam na picu, tam je cikel Frekvenca osc/4. Kar pomeni, če je oscilator 20MHz, deljeno s 4, pa še pretvorim v časovno domeno dobim 200ns. C18 od MPLaba- ima potem najbolj basic funkcijo za delay npr. Delay1TCYx() iza ketere si potem sam sestavim ustrezne delay-a. Še enkrat vse je odvisno od uporabljenega oscilatorja.    void delay_us(unsigned int value)\n{\n\tunsigned int i;\n\t\n\tfor (i = 0; i < value; i++)\n\t{\n\t\tDelay1TCY();\t// |\n\t\tDelay1TCY();\t// |\n\t\tDelay1TCY();\t// |--> We get a delay of 1us at 20MHz clock\n\t\tDelay1TCY();\t// |\t\tChange No. of these to match your OSC freq.\n\t\tDelay1TCY();\t// |\n\t}\n\n\treturn;\n}\n\nvoid delay_ms(unsigned int value)\n{\n\tunsigned int i;\n\n\tfor (i = 0; i < value; i++)\n\t{\n\t\tDelay1KTCYx(5);\t// 1ms delay at 20MHz clock\n\t}\n\n\treturn;\n}\n ",
+    "user": "ql000"
+  },
+  {
+    "message": " BAscom priročniki! ",
+    "user": "cupacup"
+  }
+]

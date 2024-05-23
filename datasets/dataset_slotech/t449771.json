@@ -1,0 +1,50 @@
+[
+  {
+    "message": "dober mesec nazaj sem si sestavil računalnik. Vse sem lepo gladko sestavil in nanj namestil windows 7. Po nakaj zagonih pa so me začeli poplavlajti blue screens of death. Ti pa so se le pojavlali ob zagonu windowsov. Ponavadi takoj po welcome screenu.   Ker so pogosti vzroki teh sem najprej sumil ram.  Najprej sem u biosu naštimal prave timinge potem pa sem jih stestiral v Memtestu+ za 10h. Testi niso pokazali nobene napake.  Potem sem sumil, da je vzrok trdi disk, ki je še od prejšnega računalnika. Ker mi je disk javlal neke napake sem ga zamenjal. Vendar ta ni rešil bsod-jev. Sicer sem pregledal dump file vendar nisem nič več zvedel. Napake se ne ponavljajo   Moja konfiguracija: AMD Phenom II X6 1055T XFX Radeon HD 6870 1GB OCZ Obsidian Edition 4GB 1600Mhz cl9 KIT - 1.65V MSI 890FXA-GD70 OCZ Fatal1ty Series 750W WD Caviar Black 7200 rpm, 32 MB, SATAIII  Hvala za vse odgovore Lep pozdrav  ",
+    "user": "rokypajo"
+  },
+  {
+    "message": "Kaj pa sporoči za en stop error? Izklopi avtomatski restart (advanced properties na properties od My računalnika), da boš lahko prebral error kode. Na koncu bo pa po vsej verjetnosti kriv gonilnik za grafiko... ",
+    "user": "Malajlo"
+  },
+  {
+    "message": "Večina jih je: IRQL_NOT_LESS_OR_EQUAL se pa pojavijo tudi: PAGE_FAULT_IN_NONPAGED_AREA bug check code pa je ponavadi: 0x0000000a, nekajkrat 0x00000050 in enkrat, prvič 0x0000001e. sem pa pizkusil tudi v safe modu ki pa tudi crasha, le ta pa nekaj minut pozneje(ponavadi nekaj 5min) ",
+    "user": "rokypajo"
+  },
+  {
+    "message": "Tak kot pravi Malajlo so verjetno krivi gonilniki za grafično ali kakšni drugi gonilniki ali/ter nekompatibilna strojna oprema! ",
+    "user": "s1m0n"
+  },
+  {
+    "message": "NonPaged area je RAM. 0xa (RAM) http://support.microsoft.com/kb/314063 0x50 (grafika) http://support.microsoft.com/kb/329293 0x1e (ASPI) http://support.microsoft.com/kb/307128  Torej, grafika ali pa RAM. Preveri gonilnike za grafiko (če imaš zadnjo verzijo, poskusi s starejšim). Prestavi RAM module (lahko je tudi samo kak slab stik), poskusi s kakšnim brez. ",
+    "user": "Malajlo"
+  },
+  {
+    "message": "bom preveril oboje in poročal hvala za nasvet =) ",
+    "user": "rokypajo"
+  },
+  {
+    "message": "Sem imel podobno težavo, ko sem XP-ja kar upgradal na Sedmico (in ja, res ni priporočljivo ). Pogovarjal sem se z nekim računalničarjem, ki je takoj vedel v čem je bil problem. Rekel mi je, da so se po vsej verjetnosti narobe nastavili IRQ-ji za določeno strojno opremo (torej 2 dela strojne opreme delata na enem IRQ-ju). Napaka je bila vedno samo IRQL_NOT_LESS_OR_EQUAL. Pojavljala se je povsem ob različnih časih. Svtujem ti, da preveriš če so IRQ-ji pravilno nastavljeni. Računlnik/Upravljaj in tam nekje (se ne spomnim več kje točno ). ",
+    "user": "SLO_Matej"
+  },
+  {
+    "message": "Dej nehi, no... IRQ (ne IRQL) in strojna oprema so bili problem na ISA vodilih v Win9x (in starejšem). Če bi bil to poreblem, potem bi bil error IRQL_IS_EQUAL. Če se je napaka pojavljala naključno, je to kvečjemu problem s pregrevanjem kake jebice ali pa kontakta. No, pa šlampasto spisanih driverjev in/ali aplikacij. ",
+    "user": "Malajlo"
+  },
+  {
+    "message": "Malajlo, to je letelo name? Če je, potem si poglej, da obstaja tudi tak moder zaslon:   moder zaslon IRQL_NOT_LESS_OR_EQUAL  In ne, nisem imel nobenih problemov s komponentami in pregrevanjem, saj se takrat na novo namestil Sedmico in dela še vedno bp. ",
+    "user": "SLO_Matej"
+  },
+  {
+    "message": " SLO_Matej je 14. jan 2011 ob 21:50 izjavil:Malajlo, to je letelo name? Če je, potem si poglej, da obstaja tudi tak moder zaslon:   moder zaslon IRQL_NOT_LESS_OR_EQUAL  In ne, nisem imel nobenih problemov s komponentami in pregrevanjem, saj se takrat na novo namestil Sedmico in dela še vedno bp.  ja tega dobivam pogosto... ali si problem rešil? ",
+    "user": "rokypajo"
+  },
+  {
+    "message": "IRQL NI IRQ. Stop errorji v BSoD imajo nek pomen. Nonpaged area je RAM (ali je gonilnik šlamapsto spisan ali pa je kakšna palčka v riti). Paged area je disk (kaj to pomeni, se ve). V primeru nonpaged napak, je v 90% primerih kriv poganjalec grafike (ostalih 30% pa zanič RAM). Zamenjaš z generičnim microsoftovim (če obstaja) in testiraš. ",
+    "user": "Malajlo"
+  },
+  {
+    "message": " rokypajo je 16. jan 2011 ob 17:49 izjavil:SLO_Matej je 14. jan 2011 ob 21:50 izjavil:Malajlo, to je letelo name? Če je, potem si poglej, da obstaja tudi tak moder zaslon:  moder zaslon IRQL_NOT_LESS_OR_EQUAL  In ne, nisem imel nobenih problemov s komponentami in pregrevanjem, saj se takrat na novo namestil Sedmico in dela še vedno bp.  ja tega dobivam pogosto... ali si problem rešil?  Tudi jaz sem ga dobival pogosto. S problemom sem se nekaj časa ukvarjal, nameščal nove in nove gonilnike, ato kot kaže ni bil vzrok. Po nadgradnji mašine sem na novo namestil 64-bitno Sedmico, saj zaradi količine pomnilnika 32-bitna ni več delovala. Mi je pa računalničar povedal, da je po vsej verjetnosti problem tisto, kar sem že omenil. ",
+    "user": "SLO_Matej"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "danes so se mi začele pojavljati težave z internetom in sicer preko zgoraj omenjenega routerja. na njem imam naložen dd-wrt že kar nekaj časa in do danes težav ni bilo. ponudnik je t-2. \n\nopis težave: \ndo interneta dostopam brezžično. na router se povežem brez težav vendar v opravilni vrstici kaže poleg odličnega signala klicaj (takrat internet ne dela - očitno se router ne poveže na wan?). enake težave so tudi kadar se povezujem žično. router sem tudi že nastavil na tovarniške nastavitve in ponovno naložil dd-wrt. ali je lahko težava v samem routerju (strojna napaka?). za kratek čas klicaj v opravilni vrstici izgine in takrat internet deluje za kratek čas, nakar se klicaj spet pojavi. težave se dogajajo na večih računalnikah. če pc povežem mimo routerja, direktno na modem od t-2, internet deluje 100%. ima mogoče še kdo podobne težave in kako jih je rešil?\n\nhvala za odgovor\n\nlp",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "Tudi jaz imam že več let wrt160nl in t-2. Se takrat ko imaš klicajček lahko prijaviš na wrt160nl ali ne dela popolnoma nič. Če lahko, potem je možno da boš na routerju videl kaj je narobe. Probaj v administraciji ping t-2-jevih dns-ov. \n\nJaz sem bil z dd-wrt do verzije 14896 zadovoljen, novejše pa mi niso delale dobro (wifi je po nekaj dneh prenehal delovati - pomagal je restart). \n\nTrenutno sem na openwrt in dela tko kt je treba.",
+    "author": "irCAR81",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "takrat ko imam klicajček se lahko povežem na router v nastavitve. do nekaj minut nazaj mi je delalo 15 min brez problem, potem pa se je pojavil klicajček in zopet ni delalo. zdele sem probal v nastavitvah pod zavihek status in wan klikniti na DHCP renew, in je klicajčk po parih sekundah izginil. vendar sumim da se bo zopet kaj kmalu pojavil. bom probal še openwrt če bo zafrkavalo.",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "PING 84.255.209.79 (84.255.209.79): 56 data bytes\n64 bytes from 84.255.209.79: seq=0 ttl=61 time=0.947 ms\n64 bytes from 84.255.209.79: seq=1 ttl=61 time=1.090 ms\n64 bytes from 84.255.209.79: seq=2 ttl=61 time=0.866 ms\n--- 84.255.209.79 ping statistics ---\n3 packets transmitted, 3 packets received, 0% packet loss\nround-trip min/avg/max = 0.866/0.967/1.090 ms\n\npinganje dns strežnikov, medtem ko ni bilo klicaja",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "Če se ne da ugotoviti zakaj nagaja, bi jaz na tvojem mestu za test namestil tovarniški rom in probal če z njim dela bp. Potem pa bi šel na openwrt - itak je priporočljivo, da se pri prehodu iz dd-wrt na openwrt naloži tovarniški rom.",
+    "author": "irCAR81",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik 115256 pravi:\n\npinganje dns strežnikov, medtem ko ni bilo klicaja\n\t\t\n\t\tKlikni za razširitev\n\t\n\nBolj bo zanimivo takrat ko bo klicaj, boš vsaj vedel ali ima router dostop do neta, pa samo pc-ov ne spusti gor ali tudi router ne pride na net.",
+    "author": "irCAR81",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "sem dobil ravnokar klicaj in sem probal pingat in ne gre. ne gre tako v routerju kot iz dosa. zdaj sem routerju povrnil tovarniške nastavitve in sem brez klicaja, ravno toliko da sem zdownloadal original FW.",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "Dobro, potem je težava med routerjem in t-2 škatlo - po vsej verjetnosti imaš kaj narobe nastavljeno, možnost da router crkne je majhna, ni pa nemogoče. Boš videl kako bo s tovarniškim romom.",
+    "author": "irCAR81",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "tovarniški rom zaenkrat deluje ampak zelo počasiiiiiiiii. speedtest v downlinku ne preseže 0,25 Mbit/s, uplink 2 Mbit/s. povezava je sicer 10/10. tudi v nastavitvah od routerja delujejo kliki zelo počasi. mi lahko poveš kje downloadati oz. katero datoteko izbrati za openwrt.",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "Slaba. Si na tovarniškem romu ponastavil nastavitve?\nJaz sem vzel tega: http://downloads.openwrt.org/a...hfs-factory.bin\n\nMotilo me je ker v samem romu ni bilo WOL in QoS ampak ima openwrt to full dobro rešeno dodajanje paketov, tako da sedaj imam oboje in QoS dejansko dobr dela - za razliko od dd-wrt.",
+    "author": "irCAR81",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "nastavitve so itak tovarniške na novo naloženim original FW. povezava obupno počasi deluje oz. sploh, zato sem se na net priklopil mimo routerja. bom sedaj probal z open wrt če bo kaj drugače, samo dvomim da bo pomagalo. nekaj drugega mora bit po moje samo kaj??",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "sem se prej povezal še na router na tovarniškem routerju \n\nhttp://www.speedtest.net/my-result/3122831884\n\ninternet deluje odlično, vendar wireless je pa v pi...\n\nbom vseeno probal openwrt, wireless mora delati",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "openwrt je inštaliran. kaj se splača nastaviti za boljše delovanje?",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "Pri wifi si ne pozabi vklopit WPA2-PSK, neko kompleksno geslo + geslo za administracijo, pa jaz sem si izklopil ping iz interneta ter naložil WOL in QoS. Jaz bi na tvojem mestu čim več pustil, da  vidiš če bo sedaj router deloval tako kot je treba.",
+    "author": "irCAR81",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "vklopil sem zaščito in nič drugega. zaenkrat deluje tako kot mora.bomo pa videli koliko časa \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "UPNP ni po defoltu vklopljen na OpenWRT.\nTo lahko namestiš, da ne rabiš na roke porte urejat.",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "tudi na openwrt je začelo zafrkavati. ne dela oz. dela/ne dela pa še takrat ko dela dela zelo počasi. očitno bo treba menjati router. linksys-a nikoli več.",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "Jaz sem pa po podobnih težavah na dd-wrt kot si jih imel ti, šel nazaj na originalni firmware (FW_WRT160NL_1.0.04.002) in od takrat naprej deuje bp.\nSi pri menjavi firmware-ov, naredil 30/30/30 reset? \nEnkrat je bil pri meni za obupno počasen wireless kriva malce odvita antena  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Ketidu",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "nisem naredil takega reseta. kakšen pa je to?",
+    "author": "115256",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Linksys WRT160nl router",
+    "content": "\n\t\n\t\t\n\t\n\nS tem naj bi bil siguren, da si vse stare nastavitve v routerju pobrisal...\nMogoče ti pomaga.",
+    "author": "Ketidu",
+    "author_level": "Fizikalc"
+  }
+]

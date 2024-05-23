@@ -1,0 +1,104 @@
+[
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Multimeter Uni-T UT210E ima čip DTM0660, ki ima objavljeno dokumentacijo o konfiguraciji preko eeproma.\n\nPosledično se da ta multimeter in tiste z enakim čipom (UNI-T 139C, Velleman DV4100, Tekpower TP40,  Victor VC921,ennoLogic eM860T) nadgraditi z določenimi opcijami, ki so sicer na voljo samo v veliko dražjih modelih.\n\nPar stvari, ki jih spodnji postopek pofixa:\n- Count 6200\n- Power off po30min\n- Backlight čas 3min\n- Alarmi onemogočeni\n- NCV prikaz v mV\n- DC kot privzet način\n\nPostopek je precej enostaven; rabimo samo en arduino in par žičk.\n\nNajprej je potrebno odstraniti baterije in preklopiti vrteč gumb na \"~V\".\nPotem lahko odstraniš zadnjo stranico.\n\nNato povežeš vezje z (izklopljenim) arduinotom takole:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nVštekaš arduinota v usb, odpreš serial port monitor v arduino IDE in poženeš kodo:\n\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t #include &lt;Wire.h&gt;\nconst int I2C_ADDR = 0x50;\n\nvoid MODeeprom() {\n\n  Serial.print(\"\\n...Flashing EEPROM...\\n\");\n \n  //Dotless mode calibration data, copied from 0x50, 0x51\n  writeByte(I2C_ADDR, 0x56, (byte) 0x00);\n  writeByte(I2C_ADDR, 0x57, (byte) 0x00);\n\n  writeByte(I2C_ADDR, 0xFB, (byte) 0x1E); //Power off after 30min\n  writeByte(I2C_ADDR, 0xFC, (byte) 0xB4); //Backlight time 3min\n\n  //Count 6200\n  writeByte(I2C_ADDR, 0x12, (byte) 0x38);\n  writeByte(I2C_ADDR, 0x13, (byte) 0x18);\n\n  //Alarms disabled\n  writeByte(I2C_ADDR, 0x16, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x17, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x18, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x19, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x1C, (byte) 0xFF);\n\n  //With selector in 2A order:\n  writeByte(I2C_ADDR, 0x87, (byte) 0x1C);  //Dotless DCA\n  writeByte(I2C_ADDR, 0x97, (byte) 0x1D);  //Dotless ACA\n  writeByte(I2C_ADDR, 0xA7, (byte) 0x1C);  //Dot DCA\n  writeByte(I2C_ADDR, 0xB7, (byte) 0x1D);  //Dot ACA\n\n  //With selector in 20A order:\n  writeByte(I2C_ADDR, 0x8B, (byte) 0x18);  //Dot DCA\n  writeByte(I2C_ADDR, 0x9B, (byte) 0x19);  //Dot ACA\n\n  //With selector in NCV Display in mV\n  writeByte(I2C_ADDR, 0x9C, (byte) 0x02);\n  writeByte(I2C_ADDR, 0xAC, (byte) 0x1D);\n\n  //With selector in 100A order is: (DC)A - (AC)A\n  writeByte(I2C_ADDR, 0x8D, (byte) 0x1A);\n  writeByte(I2C_ADDR, 0x9D, (byte) 0x1B);\n  \n  //With selector in V range order is: V(DC) - V(AC) - V(DC mV) - V(AC mV)\n  writeByte(I2C_ADDR, 0x8E, (byte) 0x03);\n  writeByte(I2C_ADDR, 0x9E, (byte) 0x04);  \n  writeByte(I2C_ADDR, 0xAE, (byte) 0x05);\n  writeByte(I2C_ADDR, 0xBE, (byte) 0x06);\n}\n\nvoid printHex(int num, int precision) {\n  char tmp[16];\n  char format[128];\n\n  sprintf(format, \"%%.%dX\", precision);\n\n  sprintf(tmp, format, num);\n  Serial.print(tmp);\n}\n\nvoid setup() {\n\n  Serial.begin(9600);\n  Wire.begin();\n  Serial.print(\"\\n...Before EEPROM Dump...\\n\");\n  dumpEEPROM();\n  delay(10);\n  \n  //MODeeprom();\n  \n  delay(10);\n  Serial.print(\"\\n...After EEPROM Dump...\\n\");\n  dumpEEPROM();\n}\nvoid loop() {}\n\nvoid dumpEEPROM()\n{\n  for (int i = 0; i &lt; 256; i++) {\n    byte b = readByte(I2C_ADDR, i);\n    //Serial.print(b, HEX); Serial.print(\" \");\n    printHex(b, 2); Serial.print(\" \");\n    if ((i + 1) % 16 == 0) Serial.println();\n  }\n  Serial.println();\n}\n\nvoid writeByte(int i2cAddr, unsigned int addr, byte data) {\n  Wire.beginTransmission(i2cAddr);\n  Wire.write(addr);\n  Wire.write(data);\n  Wire.endTransmission();\n  delay(5);\n}\n\nbyte readByte(int i2cAddr, unsigned int addr) {\n  byte data = 0x00;\n  Wire.beginTransmission(i2cAddr);\n  Wire.write(addr);\n  Wire.endTransmission();\n  Wire.requestFrom(i2cAddr, 1);\n  while (!Wire.available()) ;\n  data = Wire.read();\n  return data;\n}\n\t\n\nIzpiše se ti vsebina eeproma (2x). Shrani si jo nekam na varno za backup...\n\nNpr pri meni je bilo:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nNato 1 in 2 byte v 6 vrstici vneseš v 9 in 10 vrtico kode v arduinotu.\n\nNpr moj primer:\nNa teh lokacijah imam \"1B\" in \"8B\", kar sem dal v arduino kodo takole:\n  writeByte(I2C_ADDR, 0x56, (byte) 0x1B);\n  writeByte(I2C_ADDR, 0x57, (byte) 0x8B);\n\n\nNato v 69 vrstici odkomentiraš   //MODeeprom(); da postane:   MODeeprom();\n\nSedaj ponovno poženeš kodo in arduino bo zapisal nove vrednosti v eeprom.\n\nTo je to. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nPar fotk (uporabil sem diy pogo pins pripomoček, da mi ni bilo treba nič lotati...)\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n(pini so zviti namenoma, ker je 1.27mm razmika)\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nVeč o tem hacku: http://www.eevblog.com/forum/testgear/a-look-at-the-uni-t-ut210e/",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Pazi se: zdaj zdaj bodo uletele Horde pravičnikov za zaščito svinjskih interesov Svinjskih korporacij, včlanjenih med oboževalce katalogov turističnih kapacitet s Kajmanskih OtokovTM, in ti začeli predavati, da tvoje početje krši pravice Svinjskih korporacij  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nAPZ, na pomoč!!!  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Hja no jaz sem mnenja, da ko enkrat kupiš neko reč je tvoja. Torej jo lahko predelaš, uničiš ozr. narediš z rečjo kar ti srce poželi... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik futuristic pravi:\n Multimeter Uni-T UT210E ima čip DTM0660, ki ima objavljeno dokumentacijo o konfiguraciji preko eeproma.\n\nPosledično se da ta multimeter in tiste z enakim čipom (UNI-T 139C, Velleman DV4100, Tekpower TP40,  Victor VC921,ennoLogic eM860T) nadgraditi z določenimi opcijami, ki so sicer na voljo samo v veliko dražjih modelih.\n\nPar stvari, ki jih spodnji postopek pofixa:\n- Count 6200\n- Power off po30min\n- Backlight čas 3min\n- Alarmi onemogočeni\n- NCV prikaz v mV\n- DC kot privzet način\n\nPostopek je precej enostaven; rabimo samo en arduino in par žičk.\n\nNajprej je potrebno odstraniti baterije in preklopiti vrteč gumb na \"~V\".\nPotem lahko odstraniš zadnjo stranico.\n\nNato povežeš vezje z (izklopljenim) arduinotom takole:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nVštekaš arduinota v usb, odpreš serial port monitor v arduino IDE in poženeš kodo:\n\n \n\t\n\t\n\n\n\n\t\n\t\tKoda:\n\t\n\t\n\t\t #include &lt;Wire.h&gt;\nconst int I2C_ADDR = 0x50;\n\nvoid MODeeprom() {\n\n  Serial.print(\"\\n...Flashing EEPROM...\\n\");\n \n  //Dotless mode calibration data, copied from 0x50, 0x51\n  writeByte(I2C_ADDR, 0x56, (byte) 0x00);\n  writeByte(I2C_ADDR, 0x57, (byte) 0x00);\n\n  writeByte(I2C_ADDR, 0xFB, (byte) 0x1E); //Power off after 30min\n  writeByte(I2C_ADDR, 0xFC, (byte) 0xB4); //Backlight time 3min\n\n  //Count 6200\n  writeByte(I2C_ADDR, 0x12, (byte) 0x38);\n  writeByte(I2C_ADDR, 0x13, (byte) 0x18);\n\n  //Alarms disabled\n  writeByte(I2C_ADDR, 0x16, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x17, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x18, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x19, (byte) 0xFF);\n  writeByte(I2C_ADDR, 0x1C, (byte) 0xFF);\n\n  //With selector in 2A order:\n  writeByte(I2C_ADDR, 0x87, (byte) 0x1C);  //Dotless DCA\n  writeByte(I2C_ADDR, 0x97, (byte) 0x1D);  //Dotless ACA\n  writeByte(I2C_ADDR, 0xA7, (byte) 0x1C);  //Dot DCA\n  writeByte(I2C_ADDR, 0xB7, (byte) 0x1D);  //Dot ACA\n\n  //With selector in 20A order:\n  writeByte(I2C_ADDR, 0x8B, (byte) 0x18);  //Dot DCA\n  writeByte(I2C_ADDR, 0x9B, (byte) 0x19);  //Dot ACA\n\n  //With selector in NCV Display in mV\n  writeByte(I2C_ADDR, 0x9C, (byte) 0x02);\n  writeByte(I2C_ADDR, 0xAC, (byte) 0x1D);\n\n  //With selector in 100A order is: (DC)A - (AC)A\n  writeByte(I2C_ADDR, 0x8D, (byte) 0x1A);\n  writeByte(I2C_ADDR, 0x9D, (byte) 0x1B);\n  \n  //With selector in V range order is: V(DC) - V(AC) - V(DC mV) - V(AC mV)\n  writeByte(I2C_ADDR, 0x8E, (byte) 0x03);\n  writeByte(I2C_ADDR, 0x9E, (byte) 0x04);  \n  writeByte(I2C_ADDR, 0xAE, (byte) 0x05);\n  writeByte(I2C_ADDR, 0xBE, (byte) 0x06);\n}\n\nvoid printHex(int num, int precision) {\n  char tmp[16];\n  char format[128];\n\n  sprintf(format, \"%%.%dX\", precision);\n\n  sprintf(tmp, format, num);\n  Serial.print(tmp);\n}\n\nvoid setup() {\n\n  Serial.begin(9600);\n  Wire.begin();\n  Serial.print(\"\\n...Before EEPROM Dump...\\n\");\n  dumpEEPROM();\n  delay(10);\n  \n  //MODeeprom();\n  \n  delay(10);\n  Serial.print(\"\\n...After EEPROM Dump...\\n\");\n  dumpEEPROM();\n}\nvoid loop() {}\n\nvoid dumpEEPROM()\n{\n  for (int i = 0; i &lt; 256; i++) {\n    byte b = readByte(I2C_ADDR, i);\n    //Serial.print(b, HEX); Serial.print(\" \");\n    printHex(b, 2); Serial.print(\" \");\n    if ((i + 1) % 16 == 0) Serial.println();\n  }\n  Serial.println();\n}\n\nvoid writeByte(int i2cAddr, unsigned int addr, byte data) {\n  Wire.beginTransmission(i2cAddr);\n  Wire.write(addr);\n  Wire.write(data);\n  Wire.endTransmission();\n  delay(5);\n}\n\nbyte readByte(int i2cAddr, unsigned int addr) {\n  byte data = 0x00;\n  Wire.beginTransmission(i2cAddr);\n  Wire.write(addr);\n  Wire.endTransmission();\n  Wire.requestFrom(i2cAddr, 1);\n  while (!Wire.available()) ;\n  data = Wire.read();\n  return data;\n}\n\t\n\nIzpiše se ti vsebina eeproma (2x). Shrani si jo nekam na varno za backup...\n\nNpr pri meni je bilo:\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n\nNato 1 in 2 byte v 6 vrstici vneseš v 9 in 10 vrtico kode v arduinotu.\n\nNpr moj primer:\nNa teh lokacijah imam \"1B\" in \"8B\", kar sem dal v arduino kodo takole:\n  writeByte(I2C_ADDR, 0x56, (byte) 0x1B);\n  writeByte(I2C_ADDR, 0x57, (byte) 0x8B);\n\n\nNato v 69 vrstici odkomentiraš   //MODeeprom(); da postane:   MODeeprom();\n\nSedaj ponovno poženeš kodo in arduino bo zapisal nove vrednosti v eeprom.\n\nTo je to. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nPar fotk (uporabil sem diy pogo pins pripomoček, da mi ni bilo treba nič lotati...)\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n \n(pini so zviti namenoma, ker je 1.27mm razmika)\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nVeč o tem hacku: http://www.eevblog.com/forum/testgear/a-look-at-the-uni-t-ut210e/\n\t\t\n\t\tKlikni za razširitev\n\t\n\n\n \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nComplimenti...\n\nSuper si tole uštimal...Samo zaradi tega bom  nabavil tele klešče..da damo mal  živčke na pašo..hehe\n\nLp",
+    "author": "mercedes",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Odlično  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "XSIDE",
+    "author_level": "01101010"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik futuristic pravi:\n Hja no jaz sem mnenja, da ko enkrat kupiš neko reč je tvoja. Torej jo lahko predelaš, uničiš ozr. narediš z rečjo kar ti srce poželi... \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nJaz tudi, ampak, še čakam sralce, ki bodo povedali, da se motim kolikor sem dolg in širok  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik XSIDE pravi:\n Odlično  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\t\t\n\t\tKlikni za razširitev\n\t\n\nČas kako dolgo je backlight vklopljen in po kolikšnem času naj se multimeter ugasne lahko nastaviš tudi po lastnih potrebah...\n\nTrenutno je:\n\nwriteByte(I2C_ADDR, 0xFB, (byte) 0x1E); //Power off after 30min\n\n1E v hexu je  30 v dec. Pomeni 30 minut. Če bi tam dal npr 0F potem bi se ugasnil po 15min.\n\nwriteByte(I2C_ADDR, 0xFC, (byte) 0xB4); //Backlight time 3min\n\nB4 v hexu je 180 v dec. Pomeni 180sekund. Lahko daš npr F0 pa bo vključen 4 minute (240sec).",
+    "author": "futuristic",
+    "author_level": "geđet frik"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Da ne boste pametni...\nKupili  ste strojno opremo (glupo gajbo) ki je v vaši lasti. Programsko opremo ki teče na njej ste pa najeli in se strinjali, da je ne boste spreminjali kakorkoli. Programska oprema je intelektualna lastnina in plačali ste licenčnino za uporabo.\nČe ne verjamete, preberite dokumentacijo.\nIsto velja za multimeter, OS na PCju ali programsko opremo v avtu (vklapljane nelicenciranih funkcionalnosti).\n\nZgolj v vednost.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "a) Lažja varianta: Hja, na Balkanu smo, je6iga  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nb) Težja varianta: potrošniki moramo svoje pravice iztožiti na sodišču. Tako je npr. prišla v veljavo odločitev Švabskega sodišča, ki je odločilo, da je MSjeva določba, da kište z OEM Windowsi (ali nekaj takega) prvotni lastnik ne sme prodati, nezakonita.",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Sem bral. Kaj bo ista država potem uredila ko bo nastopil audit in BSA pa še ne veš. Ampak to še zmeraj ne pomeni da si kupil OEM winse ampak samo da si kupil pravico do uporabe winsow... Torej originalni pogoji še zmeraj veljajo. Ni dovoljeno poseganje v kodo.\n\nMeni je vseeno kaj počneš, samo povem ti kaj pomeni \"nakup programske opreme\"...\nMimogrede, a to veš, da če pri HPS ali IBM nimaš sklenjene pogodbe o vzdrževanju ne moreš nadgraditi programske opreme (mikrokode)? \nIn si v prekršku če jo kakorkoli pridobiš preko \"standardnih\" kanalov?",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Vem, kar pa ne pomeni, da se na (zasebni) ravni s tem tudi strinjam. Tole s HPjevim serverskim firmwarom sem doživel zadnjič v živo in preklel oba, tako Hja kot Pja, da se še zdaj v grobu obračata.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n Firmware sem potem dobil prek nestandardnih kanalov (na HPjevem webu me niti zraven niso spustili do download pejdža).\n\n(Mimogrede bi še opozoril na nekonsistetno politiko HPja: pri omrežnih napravah, kjer je očitno konkurence več kot pri serverjih, se pa hvalijo, kako delajo po standardih, in imajo vso dokumentacijo in ves softver na voljo brezplačno na netu. Potrebna ni niti registracija...  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n).\n\nPrišel sem do sklepa, da od HPja ne kupim več niti svinčnika.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "KSZ\n\nEvo, to pa lahko samo jaz naredim. Sem flashal svojega UT210E in ko sem končal sem populil ven žičke (v luknje sem zalotal pine) in avtomatsko sem izpulil tudi tisto, ki je bila prilotana na kondenzator. Seveda sem uničil kondenzator. Ve mogoče kdo njegovo vrednost?",
+    "author": "pinkobalinko",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Roberto pravi:\nČe ne verjamete, preberite dokumentacijo.\n\t\t\n\t\tKlikni za razširitev\n\t\nLahko kakšen link za konkretno ali podobno napravo?\nKako pa ce naložim svoj SW?",
+    "author": "boc",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik boc pravi:\n \n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Roberto pravi:\nČe ne verjamete, preberite dokumentacijo.\n\t\t\n\t\tKlikni za razširitev\n\t\nLahko kakšen link za konkretno ali podobno napravo?\nKako pa ce naložim svoj SW?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nKdo bi vedel, morda bi šlo pravno skozi, če bi odlotal tovarniški flash in fizično nalotal svojega. Vse je odvisno od EULE, ki je prišla zraven z napravo. Kot je napisal Robert, običajno s programsko opremo te ne dobiš v last, ampak ti dajo le omejeno pravico do uporabe le-te, običajno pa zraven tudi določijo, da je ni dovoljeno razstavljati in spreminjati. Dokler se ne bo našel nek norec in milijardne koroporacije iztožil do zadnjih gat, bo tako tudi ostalo...",
+    "author": "tony",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Imam enega takšnega pa lahko pogledam, kateri kondenzator, še najbolje če narediš kakšno sliko in označiš element\n\nhttp://shrani.si/f/2n/bD/4rgvW4sD/dtm0660l.jpg",
+    "author": "Tomas",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik Roberto pravi:\n Programsko opremo ki teče na njej ste pa najeli in se strinjali, da je ne boste spreminjali kakorkoli.\n\t\t\n\t\tKlikni za razširitev\n\t\nSaj jo nisem jaz, ampak sosedov Francelj, on ni nič podpisal.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Numy",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "Nadgradnja (eeprom hack) multimetra UT210E",
+    "content": "Hvala! Kot kaže je to C8 100n - ta ki je na pinu 55\nSicer multimeter deluje, ampak verjetno ne bo meril pravilno vsega. Zaenkrat sem testiral V= in dela.",
+    "author": "pinkobalinko",
+    "author_level": "Guru"
+  }
+]

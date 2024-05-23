@@ -1,0 +1,62 @@
+[
+  {
+    "message": "Zdravo, ker nisem ne vem kako vešč izdelave spletnih strani, bo to mogoče za koga neumno vprašanje, a ne najdem nobenega pametnega primera na netu: Torej, kako bi se dalo najenostavneje zlinkat podatke med DIV-i, nekako v smislu kot je bilo to včasih pri html straneh s frame-i (open in target frame...)? npr. imam DIV, v katerem so thumbnaili in bi rad, da se, ko kliknem na enega izmed njih, v drugem DIV-u odpre neka vsebina, recimo galerija slik, teksti... ?  je to možno? kam naj pogledam za primer kode / oblikovanja? Hvala vnaprej! ",
+    "user": "tntn3000"
+  },
+  {
+    "message": "Ne, divi niso frame-i. Divi so samo področja, ki vsebujejo informacije. Preveri več možnosti: - običajna html povezava:  <a href=\"http://www.slo-tech.com\">Slo-tech.com</a> - jquery, ajax - html anchor:  <a href=\"#sidro\">Pojdi na sidro</a>\n\n<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />\n\n<a name=\"sidro\"></a>\n<p>Do tukaj te vrže, če si kliknil zgornjo povezavo</p>\n\n ",
+    "user": "Gost"
+  },
+  {
+    "message": "hvala za hiter odgovor! glede html/anchor mi je kolikortoliko jasno, kako uporabljati, samo se hocem izogniti scrolanju in osveževanju cele strani. sem našel nekaj, kar je vsaj približno tisto kar iščem (Spry-i? + CSV - to zadnje mi ni najbolj všeč, ker bi rad podatke vlekel iz baze podatkov  oziroma konkretno file managerja v concrete5 cms: http://labs.adobe.com/technologies/spry... bom pogledal še jquery, ajax... ",
+    "user": "tntn3000"
+  },
+  {
+    "message": "Upoštevaj, da klasika vedno deluje. Več linkov pomeni v večini primerov tudi boljši page rank strani in enostavnejše podajanje informacij.  Drugače pa si poglej kaj takega: http://net.tutsplus.com/tutorials/javas... ",
+    "user": "Gost"
+  },
+  {
+    "message": "Mogoče bi si lahko pogledal tudi FRAME in IFRAME. ",
+    "user": "fizikalac"
+  },
+  {
+    "message": "mogoče pa bi nehal ljudi učit zastarele tehnologije? ",
+    "user": "Tody"
+  },
+  {
+    "message": "Mogoče če človek ne zna linkat dive, ne zna še delat z ajaxom? Pa to ni zastarela tehnologija če je pravilno uporabljena! Ne vem zakaj so Slovenci tok napaljeni na jQuery, ki ima dosti kilobajtov, potem pa itak uporabjo samo eno bedno funkcijo za GET povezavo, ki jo itak na roke napišeš v 10 vrsticah... bravo... ",
+    "user": "fizikalac"
+  },
+  {
+    "message": "ja če mu predlagaš Frame pa si tudi zelo veliko naredil za optimizacijo njegove spletne strani in lepši izgledt. Po strani se pač srfa s sidri, če hoče kaj bolj fancy naj se pa nauči uporabljat javascript v taki ali drugačni obliki. ",
+    "user": "Tody"
+  },
+  {
+    "message": "Ja sej se strinjam, da je frame definitivno bolj lesen, ampak če bo že iskal možne rešitve, naj prouči vse možnosti in jih primerja.  LP ",
+    "user": "fizikalac"
+  },
+  {
+    "message": "jquery dobis prek google CDNja... torej ce bi ga vsi uporabljali, bi lahko samo na eni strani pobral... in drugje bi bil ze kesiran, tako da sploh ni noben problem v velikosti jQuery-ja.  torej tntn3000...  edino kar moras razumet kako se obnasajo HTML dokumenti (strani) in DOM...potem bos razumel te stvari (div-i, frami, etc)...  tvoja zadeva pa je zelo preprosta, kot je ze nekdo prej omenil, to preprosto resis z AJAX-om.   in sicer, naredis en menu, recimo tako  <ul id=\"my_menu\">\n\t<li><a href=\"/text1.html\">link 1</a></li>\n\t<li><a href=\"/text2.html\">link 2</a></li>\n\t<li><a href=\"/text3.html\">link 3</a></li>\n\t<li><a href=\"/text4.html\">link 4</a></li>\n</ul>\n  nato naredis en okvir kamor bomo nalagali vsebino   <div id=\"content\">\n\tvsebina\n</div>  potem pa uredis javascript kodo...   <script language=\"javascript\" type=\"text/javascript\">\n\t$(document).ready(function(){  // na tak nacin dolocis blok js kode, ki se bo izvedla sele ko bo jQuery nalozen\n\t\t//prvo ukrades click event vsem linkom v menuju\n\t\t//in ga zamenjas s svojim\n\t\t$('#my_menu a').click(function(){\n\t\t\tvar url = $(this).attr('href');\n\t\t\t//sedaj pa izvedemo ajax klic vsebine za ta klik\n\t\t\t//in dobljeno vsebino zamenjamo z obstojeco v div z ID-jem content\n\t\t\t$('#content').load(url);\n\t\t\treturn false; // dolocis false, da preprecis izvedbo default obnasanja (da bi dejansko browser sel na url v href atributu\n\t\t});\n\t});\n</script>   in to je to... torej kaj se zgodi...ko kliknes na link v menuju, namesto da te browser preusmeri dejansko na tisti link, mi to njemu preprecimo in mu povemo, da tisto vsebino iz tiste strani interno pograbimo in jo \"vstulimo\" v tisti div element....  zdaj vsakic ko bos kliknu na drugi link, se bo vsebina notri zamenjala...  to je osnovno... seveda pa je pametno, da si preberes razlicne tutoriale o jQuery-ju in ajax... jee veliko zelo handy primerov  p.s. ne pozabit pred vso kolobocijo zgoraj opisano, prej klicati jQuery-ja...  najbolj elegantno resis tako:  <script language=\"javascript\" type=\"text/javascript\" src=\"http://www.google.com/jsapi\"></script>\n\t<script language=\"javascript\" type=\"text/javascript\">google.load(\"jquery\", \"1.4.2\");</script>\n ",
+    "user": "Lion29"
+  },
+  {
+    "message": "hvala vsem in še posebej lion29 za nazoren prikaz! zdaj vem, v kaj se zakopat za naslednjih par tednov :) ",
+    "user": "tntn3000"
+  },
+  {
+    "message": " fizikalac je 27. sep 2010 ob 22:52 izjavil:Mogoče če človek ne zna linkat dive, ne zna še delat z ajaxom? Pa to ni zastarela tehnologija če je pravilno uporabljena! Ne vem zakaj so Slovenci tok napaljeni na jQuery, ki ima dosti kilobajtov, potem pa itak uporabjo samo eno bedno funkcijo za GET povezavo, ki jo itak na roke napišeš v 10 vrsticah... bravo...  Dosti kilobajtov ima? 24KB... Kaj ti v kameni dobi živiš? Samo HTML koda od prve strani na 24ur.com je 50KB... Veliko bolje uporabljat npr. jQuery, Prototype ali mootools, kot pa da potem vse skupaj dela recimo samo v FF, za IE pa moraš potem nekaj hekat. Že samo zaradi kompatibilnosti med browserji se splača uporabljat javascript frameworke. Če pa želiš \"reinvent the wheel\"... izvoli. ",
+    "user": "MrBrdo"
+  },
+  {
+    "message": "MrBrdo... sej ma prav, za majhne in preproste strani, za vecje strani ali celo portale kot so 24ur.com pa je jQuery dobesedno \"a must\" sicer pa za preprosto funkcionalnost, se lahko nalozi kak star jQuery, ki zasede pol manj, recimo 1.2.6... te osnovne stvari cist ok laufajo ",
+    "user": "Lion29"
+  },
+  {
+    "message": "Če se človek uči, je treba je prvo razument kako jQuery dela, potem pa greš delat stran kot je 24ur.com! Če ne veš kako jQuery dela potem je mogoče bolj zdravo, da se prvo naučiš osnove javascripta in vidiš če res to rabiš!!!  Vse je odvisno od spletne strani... včasih res ne rabiš... to da ma 24 kilobajtov res samo po sebi ne pomeni nič. Sej slike majo pa po 300KB+-, pa kaj? ",
+    "user": "fizikalac"
+  },
+  {
+    "message": "Hočem povedat da ima JavaScript en velik problem (multiple implementations) in če delaš z pure JS brez frameworka boš slej ko prej imel problem da bo v enem browserju delalo, v drugem pa ne. Za učenje samega jezika pa te razlike med browserji niso bistvene (ker gre za neke obskurne malenkosti), zato je bolj smiselno uporabljat nek framework ki ti zakrije te razlike. ",
+    "user": "MrBrdo"
+  }
+]

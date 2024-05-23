@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Imam Windows server 2003 in jih seveda uporabljam kot web server. Problem je pa sledeč: Ker imam računalnik z omenjenimi windowsi povezan čez ups, se po določenem času ko zmanka elektike OS ugasne in seveda posledično, ko elektrika pride, tudi prižge. Zdaj smo pa tam kjer pride logon screen. Kako bi jaz naredil da bi pred logon screenom omogočil delovanje mreže (recimo da bi internetna stran in remote desktop delovala brez kakeršnega koli logina). Pa še to a ima samo moj UPS tako zakompliciran SW, al ga majo vsi, kr neki java, sploh nič jasn  ? ",
+    "user": "boss_y"
+  },
+  {
+    "message": "\"Remote Desktop\" in ostali strežniki praviloma delujejo kot \"services\" (svchost.exe!) in niso odvisni od tega, da bi bil kdorkoli prijavljen na rčaunalnik lokalno (konzola).  Je težava morda v tem, da se ti računalnik poveže na internet šele ko se nekdo zlogira? (V tem primeru si poglej Routing and Remote Access v Administrative tools oz. v \"Manage my server\" dodaj to storitev.) ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "hm.. mreza, internetna stran in remote desktop SE nalozijo brez logina... ce ne pa probal  Windows+R Run: control userpasswords2 pa tam nastavi avtomatsko prijavo  p.s.: jaz imam tudi 2k3 server in ne rabis nobene prijave v sistem... (uporabljam za web, ftp, mail, sql, nat router) in mi diala adsl brez prijave... ",
+    "user": "neo977"
+  },
+  {
+    "message": "Lahko tudi  tako. Potem pa nasatvis skrin sejver, da je zasciten z pasvordom. Recimo.   by Miha ",
+    "user": "Microsoft"
+  },
+  {
+    "message": "Je težava morda v tem, da se ti računalnik poveže na internet šele ko se nekdo zlogira? (V tem primeru si poglej Routing and Remote Access v Administrative tools oz. v \"Manage my server\" dodaj to storitev.)  Težava tiči točno tukaj. Kaj točno moram nastavit, ker sem to že delal pa sem naredil samo zmešnjavo. ",
+    "user": "boss_y"
+  },
+  {
+    "message": "Ja, tisto zna bit precej zmešnjavasto (meni je pomagal Matri[X]).  Tega modula zdaj nimam nameščenega, tako da govorim na pamet: v prvi veji RRAS okna dodaš novo povezavo (tipa persistent, ne \"on demand\"). Potem moraš pa verjetno še nekje \"nekaj\" nastavit, da lahko dostopaš do neta z lokalne kište, definitivno pa, da omogočiš dostop do interneta ostalemu omrežju. Specifičnosti -- sori, se ne spominjam :). ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "povezavo za adsl naredi brez cdja od siola.. v win network connections...new connection wizard..pppoe in tako naprej..ok potem gres v properties od povezave.. predn se konektas  obkljukas redial if line is dropped redial attemps das najvecjo stevilko (99 ce se ne motim) time betwen redial attempts das 30s al pa 1min (ne dat manj ker vcasih traja ping timeout dlje in te ne bo povezalo) idle time before handing up das 1min to dela.. prevrjeno ",
+    "user": "pikachu004"
+  },
+  {
+    "message": "aha, ce imas 2k3 in nimas winroute pro 4.2.5 tak pa nekak NE dela... uporabljam RasPPPoE ",
+    "user": "neo977"
+  },
+  {
+    "message": "Pa deluje to kot servis, torej se ti ni potrebno zlogirat, da bi se povezalo na net? ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "to kar sm ti js povedal dleuje.. je dovol da racunalnik prizges in ga pustis na miru in bo na netu in vse kar das v service.. apache..ftp.. bo delalo brez da se logiras ",
+    "user": "pikachu004"
+  },
+  {
+    "message": "Edini problem je povezava z internetom. Nič drugega :-). ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "To je že vse res. Samo problem je v tem da se mrežne postavijo šele po login-u. Drgač mam pa itak statičen IP, tko da bi itak moral delat brez da kej štelam, pa noče. Mogoče je problem v tem da imam samo standard verzijo. Tud k se mi zalaufa bi moral pred loginom naredit preparing network connections, pa noče. ",
+    "user": "boss_y"
+  },
+  {
+    "message": "Boss_y, si probal routing & remote access? Ker _TO DELA_. ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "Boss_y v 5 min ti lahko to prekoo vncja zrihtam msgme ",
+    "user": "pikachu004"
+  }
+]

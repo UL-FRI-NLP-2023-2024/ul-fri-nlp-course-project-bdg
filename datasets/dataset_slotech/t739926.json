@@ -1,0 +1,90 @@
+[
+  {
+    "message": "Domeni bitchute.com in bigpornlist.com imata iste IPje:   >nslookup bitchute.com\nServer:  xxx\nAddress:  xxx\n\nNon-authoritative answer:\nName:    bitchute.com\nAddresses:  2606:4700:20::6818:1757\n          2606:4700:20::6818:1657\n          104.24.23.87\n          104.24.22.87\n\n\n>nslookup bigpornlist.com\nServer:  xxx\nAddress:  xxx\n\nNon-authoritative answer:\nName:    bigpornlist.com\nAddresses:  104.24.23.87\n          104.24.22.87\n  Če domeni vpišeš v brskalnik, pa se prikažeta različni strani. Kako je to mogoče? ",
+    "user": "Aleks Nafi"
+  },
+  {
+    "message": "Zato ker se gre samo za ime...  Nauči se kaj je IP naslov in kaj DNS... ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Zakaj se prikažeta dve različni strani, če se resolvata na isti strežnik (IP)? ",
+    "user": "Aleks Nafi"
+  },
+  {
+    "message": "Kaj se zgodi, ko v brskalnik vpišeš naslov spletne strani: 1. brskalnik pridobi IP naslov strežnika iz naslova spletne strani - to informacijo da DNS 2. brskalnik se poveže s pridobljenih IP-jem strežnika in zahteva dotično spletno stran  Kaj pa, če v brskalnik neposredno vpišeš IP naslov? Večinoma bo javilo napako - če je na enem strežniku z enim IP naslovom dostopnih več spletnih strani, strežnik ne bo vedel katero si želel obiskati. ",
+    "user": "garamond"
+  },
+  {
+    "message": "Na istem IPju lahko laufa N domen - sploh ni omejitve! ",
+    "user": "AndrejS"
+  },
+  {
+    "message": "Ker strežniku brskalnik javi željeno stran preko Host: headerja. ",
+    "user": "c3p0"
+  },
+  {
+    "message": " c3p0 je 19. feb 2019 ob 21:03 izjavil:Ker strežniku brskalnik javi željeno stran preko Host: headerja.   Hvala! Se da to kako sfiltrirati? ",
+    "user": "Aleks Nafi"
+  },
+  {
+    "message": "Na server strani je kam te pošje. ",
+    "user": "spegli"
+  },
+  {
+    "message": "temu se reče vhost oz virtualen host. en IP = strežnik ima lahko veliko vhostov (virtualnih hostov) = različnih domen.  ko vpišeš domeno pošlješ request strežniku in ta sam ugotovi, na kater vhost te mora preusmerit (tisti, ki gosti stran te iste domene). IP lahko analiziraš dalje. če stran gosti pri kakšnem shared hosting ponudniku, boš našel še ogromno drugih domen, ki gostijo na tem istem strežniku.  edit: v tvojem primeru je IP v lasti cloudflare. to pa je CDN provider, ki ga lahko uporabiš tudi sam. v tem primeru se lahko zgodi, da bi tudi tvoja spletna stran občasno imela isti IP. ker cloudflare vse strani \"preslika\" k sebi in jih naprej ponuja preko svojih CDN strežnikov (deluje kot nekakšen proxy). cloudflare druge strani uporabljajo predvsem kot content distributorja (tvoja stran je na slovenskem strežniku, obiskovalca imaš iz japonske, zato cloudflare servira kopijo tvoje strani iz njihovega japonskega strežnika = stran se mu hitreje naloži) ali DDos protekcijo, saj imajo dovolj široke pipe, da lahko z lahkoto požrejo take napade. ",
+    "user": "Saul Goodman"
+  },
+  {
+    "message": "Pogovarjaj se s strežnikom v httpju prek telneta, pa ti ni treba nič filtrirati. ",
+    "user": "pegasus"
+  },
+  {
+    "message": " Aleks Nafi je 19. feb 2019 ob 21:07 izjavil: Hvala! Se da to kako sfiltrirati?   Ne vem kaj točno bi filtriral oz. kaj je namen. Prijetno večerno branje je RFC, ki definira HTTP/1.1:  https://tools.ietf.org/html/rfc2616 ",
+    "user": "c3p0"
+  },
+  {
+    "message": "Verjetno OP gleda kam mu hodijo uporabniki... pa je naletel na primer, ko je na istem IP naslovu gostujeta tako 'sprejemljiva', kot tudi 'nesprejemljiva' stran.  Vsekakor bi bilo dobro, da bi bolj podrobno razložil svojo željo po 'filtriranju'.  Vse se da nekako filtrirat... najbolj banalno 'filtriraš', da zmanipuliraš DNS server oz. hosts datoteko, da se neželeni naslov ne resolva. Pod 'manipulacijo DNS serverja spadajo tudi storitve kot OpenDNS, Cisco Umbrella, Strongarm, DNSWatchGo,.... Ta način je razmeroma omejen razmeroma enostavno se ga tudi zaobide, če veš na kakšen način se te 'blokira'. Bolj uporaben je za tiste, ki se želijo zaščititi (ti se ne bodo trudili zaobiti zadevo), ne pa toliko za tiste, ki želijo nekomu vsiliti neka pravila, kaj sme brskati.  Za resnejše (tudi vsiljeno) filtriranje pa se uporablja požarne pregrade, katere (odvisno od proizvajalca) na različne načine blokirajo neželene vsebine, med drugim tudi preko kategorizacije spletišč (blokiraš kategorijo 'porn'...).  Če imaš trmaste uporabnike, ki poleg vsega obvladujejo še določene networking finte, lahko tako blokiranje hitro postane igra mačke z mišjo. Zato marsikdo reče, da to ni problem tehnologije, temveč problem za kadrovsko službo. Niso nujno vse rešitve tehnološke. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " Aleks Nafi je 19. feb 2019 ob 20:56 izjavil:Zakaj se prikažeta dve različni strani, če se resolvata na isti strežnik (IP)?   Ker sta na oni strani dva različna virtualna strežnika, ločena po *imenih* (na istem IPju).  V HTTP requestu je zapisano ime, na kateri strežnik zahteva leti in potem http server, na katerega je zahteva naslovljena, zahtevo obdela. ",
+    "user": "bbbbbb2015"
+  },
+  {
+    "message": "Obe domeni kažeta na ponudnika CloudFlare, tako kot še nekaj milijonov drugih domen, tako da filtriranje IP naslova tule ne bo prava rešitev.  S preprosto požarno pregrado tule ne bo šlo, potrebuješ napredno požarno pregrado, ki filtrira neposredno HTTP/S promet na podlagi domene, odvisno od ponudnika se tej funkciji reče web filtering, content filtering, domain filtering, web application firewall, ...  Napiši katero opremo imaš na voljo. ",
+    "user": "680x0"
+  },
+  {
+    "message": "Iskreno povedano, filtriral bi rad sam sebe.  V principu gre torej za laptop, Win 7 in firewall, ki zna blokirat IPje, filtrirati DNS/HTTPS pa ne. Geslo od firewalla, ki ima tudi uninstall protekcijo ipd. imam shranjeno na drugi fizični lokaciji.  OpenDNS in podobno ne pride v poštev, ker nočem zbiranja vseh mojih DNS zahtevkov pri enem podjetju.  Idealno bi bilo, da bi lahko ohranil administratorsko geslo od windowsov (torej ne downgrade na user/power user nivo). Obstaja še kakšna druga možnost od manipulacije hosts datoteke? ",
+    "user": "Aleks Nafi"
+  },
+  {
+    "message": "Obstaja več variant... samo vprašanje je, katera zate pride v poštev, ker ne vemo, kaj imaš na razpolago za barantanje.  Najbolj preprosta varianta je vzpostavitev tzv. \"DNS Sinkhole\". Na Googlu najdeš cel kup linkov, kako vzpostaviti DNS Sinkhole/Blackhole, če imaš Windows server z DNS. V bistvu lahko uporabiš katerikoli DNS strežnik. Pravzaprav me preseneča, da med zadetki prevladujejo Windows DNS napotki, ker bi kakšen Linux te zadeve zelo lepo urejal, pa nekako bolj 'priročen' je, saj ima le redko kdo doma Windows server. Ko enkrat razumeš za kaj se gre, je zadevo dokaj preprosto postaviti.  Druga opcija... Web proxy server, npr. Squid. V tem primeru namesto DNS zahtevkov filtriraš HTTP in HTTPS zahtevke. Lahko pa se zatika pri HTTPS... Pa dejansko deluje samo za http/https, ne pa tudi za vse ostale protokole/porte.   Tretja opcija... postaviš malo bolj 'pametno' požarno pregrado. To je pa že lahko vprašanje financ. 'Pamet' se tu plačuje... ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "Jaz imam to narejeno v malem merilu doma.  Tudi jaz imam dve domeni, ki resolvata na isti IP. Vse HTTP in HTTPS povezave iz mojega routerja priletijo preko NATa na reverse proxy strežnik, ki filtrira HTTP requeste glede na URL. Poenostavljeno - ve, kaj je napisano v okence na brskalniku. Potem pa posreduje dvema različnima strežnikoma glede na pravila, ki jih določim.  HTTPS povezava je samo od klienta do proxyja, kar pomeni, da lahko uporabljam isti certifikat za dve strani, hkrati pa mi povezava v LAN-u poteka hitreje, ker gre prek hitrejšega HTTP-ja. Nekateri temu pravijo SSL acceleration.  Delam pa to s pomočjo relayd serverja na OpenBSD-ju. Je zelo močno orodje za postavljanje load balancerjev, proxyjev, itd. Tudi njegov firewall, pf, na katerem temelji malo bolj znan PFsense, je izredno zmogljiv in precej enostaven za postavit, če znaš z linux oz. *nix okolji. ",
+    "user": "d3m1g0d"
+  },
+  {
+    "message": "SSL acceleration je, če imaš ločeno fizično kartico, ki ti vzpostavlja sejo. To kar ti delaš je zgolj, da terminiraš ssl na reverse proxy-ju. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "To je nekako ok za regularni http/s promet, če imaš pošlihtano da dela kot mora (https ima veliko pasti, kjer lahko slabe implementacije proxijev podrejo varnost, ki naj bi jo nudil https). Tudi v tvojem primeru mi ni čisto jasno, če sem te prav razumel - do proxija gre promet po http? To mi nebi bilo všeč niti za doma, za kakšno poslovno mrežo pa je to čisti no-go. Brskalnik ti mora pokazati zeleno ključavnico, če si na legitimni strani s pravimi certifikati. Karkoli drugega bi bilo kot vožnja po regionalki z zavezanimi očmi.  Problem je tudi, ker je to explicitni proxy - torej moraš brskalniku eksplicitno zaukazati, da mora preusmeriti zahteve na proxy server. To lepo deluje za 'pridni' software... problem pa je lahko kakšen malware, ki se požvižga na proxy nastavitve v brskalniku. Deloma to lahko rešiš tako, da na požarni pregradi omejiš http/s zahteve, da smejo prihajati izključno s proxy strežnika, vse ostale pa droppaš.  Toda promet ni samo http/s. Sploh rizični promet zna iti tudi po kakšnih drugih portih in protokolih. Zato ni čisto nepomembno, če lahko tudi DNS zahteve filtriramo, tako da znane problematične fqdn naslove preusmerimo čisto nekam drugam (npr. na localhost ali 0.0.0.0).  Te zadeve se da nanesti skupaj in spentljat, da tudi periodično pobirajo podatke z znanih blacklist, vendar zna biti vzdrževanje precej zahtevno. Za ljubiteljsko rabo in učenje ok... Za produkcijo / poslovno rabo, pa se nebi šel tega. Imaš rešitve, ki imajo vse to in še veliko tega integrirano in te letno ne stanejo nič bistveno več, kot če nekomu plačuješ, da vse proxije, DNS sinkhole in pfSense redno vzdržuje na profesionalnem nivoju. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": "On govori o serverju za reverse proxy-jem, ne o proxy-ju pred clienti. Standardna zadeva, ko imaš SSL med clientom in reverse proxy-jem, ki nato po http komunicira z dejanskim web serverjem. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": " Poldi112 je 20. feb 2019 ob 21:36 izjavil:On govori o serverju za reverse proxy-jem, ne o proxy-ju pred clienti. Standardna zadeva, ko imaš SSL med clientom in reverse proxy-jem, ki nato po http komunicira z dejanskim web serverjem.  Ups.. to je druga stvar... bolj odgovor na poste z začetka teme.   Sem ga razumel, da ima postavljen kot proxy za 'odhodni' promet, ne pa za 'dohodnega'. Druga zgodba, ki nima veze z zadnjimi posti v temi. ",
+    "user": "SeMiNeSanja"
+  },
+  {
+    "message": " Te zadeve se da nanesti skupaj in spentljat, da tudi periodično pobirajo podatke z znanih blacklist, vendar zna biti vzdrževanje precej zahtevno. Za ljubiteljsko rabo in učenje ok... Za produkcijo / poslovno rabo, pa se nebi šel tega. Imaš rešitve, ki imajo vse to in še veliko tega integrirano in te letno ne stanejo nič bistveno več, kot če nekomu plačuješ, da vse proxije, DNS sinkhole in pfSense redno vzdržuje na profesionalnem nivoju.   Dobro, tudi nekateri cenejši routerji znajo to sami osveževat preko skripte. ",
+    "user": "c3p0"
+  }
+]

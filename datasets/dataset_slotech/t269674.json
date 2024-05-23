@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Uporabljam openssh za dostop do svojega racunalnika, ko sem kje drugje. Povezujem se preko winscp ali putty-ja. Uporabljam požarni zid Comodo in mi je nekaj casa blokiral openssh, ker je razumel kot vdor, ce sem poskusal dostopat do doma. Ko sem odkril napako zakaj je blokiral in odpravi,l sem podvomil v varnost tega dostopa saj mi je občasno javil, da nekdo z nekega ip poskusa uporabit ssh. Noben ne ve da imam to narejeno ker sem uporabl samo za lastno uporabo, poleg tega pa bi moral vedet geslo. Zakaj mi je v trenutku ko sem bil doma Comodo javil, da nekdo poskusa dostopat? Jaz ocitno nisem. Zanimivo je da je ip dostopa isti kot ce jaz poskusam dostopat od kjerkoli drugje.  Ali se kdo dobro razume v SSH da mi pojasni kako podrobno zadeva deluje? Sem sicer poguglal, ampak nikjer nisem najdo glede same varnosti v tem primeru ali lahko kdo ugotovi geslo ali pa uporabi kak backdoor.  Hvala za info  edit: ce sem zgresil temo, naj moderator prestavi. ",
+    "user": "Volk|"
+  },
+  {
+    "message": "Če imaš odprt port potem seveda to vsi ki hočejo vedeti vedo. Zato ker ko potrkajo na tvoja vrata tvoj server vpraša: Kdo je?  In čisto normalno je da se ti hočejo povezovati. Če logiraš poskuse boš videl ogromno nekih imen, ki skušajo na par sekund zadeti usrn/pass kombinacijo. Tudi če omogočaš samo avtentikacijo s certifikatom, ki je bolj varna. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "Port je odprt ki je privzet za varni prenos(22). Torej,ce te pravilno razumem...pozarni zid belezi tudi nekoga ki poskusa(trka), toda ker nima gesla itak ne more not... Jaz sem mislim da javi požarni zid(Comodo) samo tistega ki ima dostop ze tako dalec (pravilno geslo) zato me je zagrabila 'panika' ",
+    "user": "Volk|"
+  },
+  {
+    "message": "Ne ne, požarni zid pravzaprav sploh ne ve, kaj se \"znotraj\" povezave dogaja.  Tudi če ne kdo vpiše v brskalnik tvoj_ip:22 se bo povezal na SSH, brskalnik bo sicer zmeden, požarni zid bo pa zagotov zabeležil povezavo na SSH.  Če lahko, potem je pametno dostop do SSH omejiti na določene IP naslove. ",
+    "user": "jype"
+  },
+  {
+    "message": "@Poldi Kako pa omogočiš avtentikacijo s certifikatom. In seveda s katerim certifkatom?  Pravzparav ne vem(sem v tem zacetnik) kako lahko nastavljas open ssh. Namrec, ko sem instaliral sem nastavil grupo in password v cmd, kakšne druge nastavitve pa ne vem. Program lahufa tako v odzadju. ",
+    "user": "Volk|"
+  },
+  {
+    "message": "V /etc/ssh imaš običajno nastavitveno datoteko, v kateri lahko izključiš prijavo z geslom (Password, keyboard-interactive).  S programom ssh-keygen lahko ustvariš pare ključev, ki jih potem uporabljaš za dostop brez gesla (seveda moraš potem paziti na zasebne ključe). ",
+    "user": "jype"
+  },
+  {
+    "message": "Jaz sicer ne uporabljam certifikata, ampak sem enkrat za hec testiral in vem da ti lepo vse pise v readme-ju kako se naredi, torej read-on !  Itak ga bos moral prej ali slej prebrati. Orodja za izdelavo certifikatov so vsa ze prilozena v OpenSSH paketu, tako da imas vse kar rabis, ce se hoces igrat. Samo potem mors pac private key nosit okrog na kaksnem usb kljucu, za kar jaz recimo nisem imel zivcev ...  Server si prestavi na en netipicen port. Naprimer na 27531 ... Ce imas ssh server na 22, potem itak da te bo takoj najdu kasn mozoljko ko bo skeniru random ipje, pa ti bo ves cas firewall jokal. Pa v datoteki passwd lahko pustis samo tistega userja ki ga bos uporabljal, ali si ustvaris posebnega userja samo za dostop preko ssh, to je pac odvisno s kaksnim namenom ssh dostop uporabljas.  Jaz imam narejeno tako da imam posebnega userja za SSH service, pod katerim server tece, fajli od ssh serverja so recimo pod c:\\ssh in na ta direktorij ima user SSH_SERVICE server vse pravice. Potem imam enega posebnega userja, ali grupo za dostop do masine, naprimer SSHACCESS, in ta ima recimo samo read dostop do C:\\SSH, mogoce je zadosti celo c:\\SSH\\bin, in ima kot vsak drug Windows user en svoj direktorij C:\\Documents And Settings\\SSHUSer zato ker te ssh ob login avtomagicno vrze v %home% in ce ta ne obstaja potem je narobe. To je to.   In potem s tem userjem ne morem nikamor, niti v Windows, niti v Program Files, .... ( mogoce sem si NTFS permissione se naknadno rihtal, tega se zdaj ne spomnim )  Vse hude userje ala admin sem pometal ven iz passwd, ker jih ne rabim. Itak ti ssh dostop ni uporaben kot shell, ker na windowsih je shell prevec oklesten, ampak ga verjetno rabis za tunneling za Remote desktop ali VNC. Za to ti pa zadostuje najosnovnejsi user, samo da se ti pozicionira v %home% in zdravo.   Minimalne pravice pac .. imas manj moznosti da bodo tvoje nage fotke na youtube.com ",
+    "user": "Andruxa"
+  },
+  {
+    "message": "Jaz imam torej namescen ssh in v njem definirano da lahko dostopam do vseh datotek. Dostop imam samo prek gesla. Ocitno to ni najbolj pametno. Torej glede na prebrano moram nekaj spremenit. Ne bi rad imel prevec userjev. Toda hocem pa imet dostop do vseh datotek. Nekako se mi bi zdelo najbolj varno s cetrifikatom. Bom poskusal ugotovit kako to naredit. Res pa ne bi rad odkrival tople vode... ",
+    "user": "Volk|"
+  },
+  {
+    "message": "jo  ja spremeni recimo da se ti bo odzival na 22 port samo z DOLOČENEGA IP naslova... na nek drugi port npr. 22578 pa z vsakega....obenem lahko tudi preko ključa..pa če bo samo geslo naj bo mal bl zakomplicirano,  obvezno sklopi direkten root dostop. ",
+    "user": "urarrr"
+  },
+  {
+    "message": "To je moj sshd.conf, če ti kaj pomaga:  Protocol 2 HostKey /etc/ssh/ssh_host_rsa_key HostKey /etc/ssh/ssh_host_dsa_key  AllowUsers jure PermitRootLogin no MaxAuthTries 10  RSAAuthentication no PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys  RhostsRSAAuthentication no HostbasedAuthentication no  PasswordAuthentication no PermitEmptyPasswords no  ChallengeResponseAuthentication no  ClientAliveInterval 300 ClientAliveCountMax 2  Banner /etc/ssh/banner.txt  Subsystem sftp /usr/lib64/misc/sftp-server ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "Lahko pa uporabiš  \"port knocking\". Sam še tega nisem delal le ideja mi je zanimiva. =) ",
+    "user": "Quikee"
+  },
+  {
+    "message": "Osebno se mi ne da ukvarjati s port knocking, ker mislim da je to kar imam dovolj, ampak če se že želiš zajebavat s tem potem si raje preberi kaj o  Single Packet Authorization. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "Ker sem precej novi v tej zadeva me zanima kako si lahko vse te stvari nastavljam. Mogoce mi poveste na kašnem konkretnem primeru.  Zelo bi bil hvalezen. Vem da pise o tem na netu, nekaj v navodilih v mapi doc, toda vedno vse ne deluje kot je tam napisano. Npr. sem se kar namucil da sem usposobil da mi prikaze vse diske. Tisto kaj je bilo napisano v mapi doc ni delalo. Sem kar moral poguglat da sem usposobil.  Pa verjetno ni pametno da mi kaze cisto vse diske in mape, kajne? ",
+    "user": "Volk|"
+  },
+  {
+    "message": "Volk|> Pa verjetno ni pametno da mi kaze cisto vse diske in mape, kajne?  S čim se pa to povezuješ, da ti kar \"kaže vse diske in mape\"?  Načeloma dobiš ukazno lupino. Če hočeš kakšno mapo \"skrit\" to lahko narediš tako, da ustrezno popraviš pravice. Seveda moraš paziti, da se ne zakleneš iz sistema. Uporabnik potrebuje dostop do nekaterih sistemskih datotek, da mu sploh kaj deluje. ",
+    "user": "jype"
+  },
+  {
+    "message": "Najprej povem, ce nisem bil dovolj jasen, da mi ssh deluje pod Xp-ji. Torej instaliral sem si openssh for windows. Tam sem nastavil /cygdrive/d:/bin/switch v datoteki passwd in mi prek winscp kaze vse mape. Ce tega ne bi storil imam samo korensko mapo programa ssh. Kljub temu da sem definiral samo D: se lahko sprehajam po celem racunalniku in po vseh mapah.  Res ni najbolj pametno zato bi hotel omejiti dostop do nekih map in diskov.  Najbolj pa me mika, da bi pustil dostop taksen kot imam, ampak bi uporabil certifikat, kot je nekdo ze omenil zgoraj. Toda ne vem, kako ga naj ustvarim. Navodila ki so v mapi doc so pomanjklilva, kot sem ze omenil. Rabil bi pomoc. Mislim da bi marsikoga zanimalo ce bi kdo to tukaj opisal.(seveda ne pozabit da vse dela pod XP). ",
+    "user": "Volk|"
+  },
+  {
+    "message": "navodila za ssh s certifikati imaš  tule. sicer so za linux openssh strežnik, vendar jih boš najverjetneje lahko uporabil tudi na windowsih. ",
+    "user": "jamiroq"
+  },
+  {
+    "message": "Sledil sem ta navodila. Edino ko pridem do tja, da bi moral kljuc vnest v ssh server nastopi problem. Ne morem ga vnest, ker je ta nacin napisan za linux. Nikjer opcije. Drugace pa je drugo ok. ",
+    "user": "Volk|"
+  },
+  {
+    "message": "hm? misliš v datoteko .ssh/authorized_keys2? domači direktoriji v cygwin so privzeto v c:\\documents and settings\\uporabnik (tako piše v readmeju). tam ustvariš direktorij .ssh, če ga še ni (v konzoli, explorer ti ga ne bo dovolil) in v njem ustvariš datoteko authorized_keys2 (oz. kar pač je v etc/sshd_config definirano) in vanjo počiš tvoj javni ključ. to bi moralo bit to...  edit: ne vem, če si opazil ampak v start>programs>openssh for windows>key based authentication imaš navodila kako to usposobiti :).  edit2: svoj javni ključ moraš skopirati v authorized_keys2. poleg tega moraš v sshd_config spremeniti PasswordAuthentication iz yes v no, StrictModes iz yes v no (vsaj pri meni brez tega ni delovalo) in RSAAuthentication iz no v yes (iirc, sem toliko spreminjal ta sshd_config, da se ne spomnim ali je bilo to po defaultu vklopljeno ali ne). potem preverjeno deluje. ",
+    "user": "jamiroq"
+  },
+  {
+    "message": "Sem probal po tvojem nasvetu. ni slo. Sem nato generiral kljuc kot j zapisano v mapi doc pa mi tam ustvari kljuc .pub Prek putty-ja in winscp pa mi javi tole:  Unable to use key file \"C:\\Documents and Settings\\*****\\authorized_keys2\" (OpenSSH SSH-2 private key) login as:  Ce bi se kljuc imenoval ppk bi mi verjetno slo ker javi da ni pravi kljuc v winscp. Ali pa moram uporabit kakšen drug program za dostop? Saj je ssh-2, kar pa winscp tudi podpira.  nastavil sem vse tako kot pise v navodilih. Nisem razumel edino tega kaj hoce od mene: \"For Windows, use copy /b authorized_keys + publickeyname authorized_keys, replacing publickeyname with the proper key name if authorized_keys exists. If that file does not exist, use copy /b publickeyname authorized_keys.\" ",
+    "user": "Volk|"
+  },
+  {
+    "message": "Putty ima svoj bedast format za ključe. Na njihovi domači strani najdeš tool za convert. ",
+    "user": "Poldi112"
+  },
+  {
+    "message": "naredil vse. Me vprasa za login:(Phrase) pa mi pol javi Server refused our key ",
+    "user": "Volk|"
+  },
+  {
+    "message": "to je zato, ker si v puttyju navedel pot do svojega javnega ključa. v puttyju (connection>ssh>auth>browse) uporabljaš svoj privatni ključ, to je datoteka brez končnice, ki si jo shranil v puttygen. datoteka authorized_keys2 je namenjena ssh strežniku, v njej je seznam javnih, ključev, ki jim je dovoljen dostop za določen uporabniški račun.  edit: ključe ustvari s puttygen. ni se potrebno ukvarjati še s konverzijo ključev. ",
+    "user": "jamiroq"
+  },
+  {
+    "message": "Če pa mi putty ne prepozna nicesar kar se ne konca na .ppk Torej sem moral kljuc ki sem ga ustvaril za dostop convertirat. To sem storil.   da razlozim kako sem naredil: najprej sem z ukazom \"ssh-keygen -t keytype\" naredil oba kljuca(brez koncnice in z koncnico .pub) Obe datoteki sta v C:\\Documents and Settings\\****\\.ssh\\ obe sem preimenoval v authorized_keys2 .pub sem pustil v mapi ker rabi server, brez koncnice pa je za moj dostop in sem jo z puttygenom spremenil v .ppk nato sem poskusal dostopat pa mi ja javil kar sem napisal.  nato sem se še nekaj igral tako da se mi zdaj vec ne zazene ne ssh server, ne tv kartica pa se kaj...ocnitno sem nekaj zjebal ko sem uporabil ukaz v cmd za restart(%windir%\\system32\\SHUTDOWN.exe -r -t 01)  Ostale nastavitve sem tudi naredil v sshd_config(izklop gesla in podobno)  zdaj bom moral najprej usposobit da mi bo se win normalno zaganjal... ",
+    "user": "Volk|"
+  },
+  {
+    "message": "bože mili, kako kompliciraš .  datoteka brez končnice je tvoj zasebni ključ, ki ga uporabljaš izključno v odjemalcu. datoteka .pub je tvoj javni ključ, ki ga skopiraš na strežnik in preimenuješ v authorized_keys2. zasebni ključ nato uvoziš v puttyged in iz njega shraniš .ppk datoteko, ki jo uporabljaš v puttyju.  še enkrat: glej howtoforge tutorial. vsaj za ustvarjanje ključev. ",
+    "user": "jamiroq"
+  },
+  {
+    "message": "Tocno tako sem naredil kot si opisal...ne gre! ",
+    "user": "Volk|"
+  }
+]

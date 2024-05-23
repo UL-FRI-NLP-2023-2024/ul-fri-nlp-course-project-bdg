@@ -1,0 +1,50 @@
+[
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "Ima kdo mogoče kak nasvet\n\nImam strežnik, ki teče na MAC PRO z dvema lan kartama, na prvo kartico imam pripeljan IP s prvega ruterja, ki ima dinamično dodeljen zunanji ip in kartica ima določen statični ip tu deluje vse lepo in prav tudi mreža štima navznoter vse dela b.p.\n\nNa drugo kartico, ki ima prav tako statični ip sem pripeljal drugi router, kateremu sem dodelil statični ip od ISP (t-2), da bi lahko dodelil storitve, ki jih rabim VPN, FTP... ( Ta router ima VPN (ker je DDWRT)) vendar na OSX mi teče tudi server in na njem mi deluje VPN ( na dinamiki je delalo vse ok odprl sem vse porte na obeh routerjih in je delovalo) sedaj mi na strežniku teče VPN, FTP, AMP servici in delajo vsi razen VPN nevem več kaj delam narobe. Sem že na koncu z živci porte imam vse odprte IP nastavljene a vedno mi prekinja T-2 pravi da imajo vse porte odprte vendar, ker je danes gospodov dan ni nikogar od tehnikov pa moram počakat do jutri. Najbrž bo slednje.",
+    "author": "baldrick",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "VPN uporablja posebne protokole, ki jih routerji navadno kar ven sfiltrirajo. Navadno imajo routerji posebej opcijo za spuščanje posamezne tipe VPNjev (PPTP, L2TP, IPSec).\n\nTako da za začetek preveri firewall na Macu in na DD-WRT routerju. Pa omenil si tudi, da ima DD-WRT router tudi VPN opcijo - če imaš na routerju vključen isti VPN server kot na Macu, potem ni čudno da ti ne dela.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "Tretno sta oba firewall off in tudi vse porte na ruterju sem odpru 1701 1723 500 50 4500 uporabljam protokol L2TP če grem skozi lokalno mi normalno dela, če grem skozi dinamični ip na drugi router, ki ima isto odprte porte mi dela, če grem preko statike mi ne dela sedaj že sumim da je na T-2 blokirani ti porti.",
+    "author": "baldrick",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "Http in ftp mi delata b.p.",
+    "author": "baldrick",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "T-2 na statiki kolikor mi je znano ne blokira nobenih portov (kot tudi sam vidiš, saj ti FTP in HTTP delata). Jaz bi rekel da je težava prej v DD-WRT routerju. Forwardani porti namreč niso dovolj, saj se pri VPNjih uporabljajo še neke druge zadeve, ki jih moraš posebej spustiti skozi.\n\nMalo pogooglaj za \"DD-WRT L2TP passthrough\".",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "Zakaj imaš dva routerja? A imaš dve liniji? Več segmentov? DMZ? Če imaš več routerjev, je lahko tudi problem z routanjem paketov.\n\nDrugače načeloma ne rabiš različnih kartic za različne storitve. Na eno kartico lahko dodeliš tudi več IP naslovov. Dve mrežni se uporabljata, kadar želiš povezati dva segmenta, ali želiš imeti NAS na ločeni mrežni, za Bolšoj izkoristek bandwitha.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "Zadeva je sledeča nekako mi je uspelo priti skozi in uštimati da se sedaj lahko povežem z vpn preko pptp povezave začelo je delat samo od sebe??? Dejansko nisem spreminjal nič. Probal sem tudi povezat brez routerja pa ni šlo (direkt vpis v mrežne nastavitve). Ok to težavo sem rešil sedaj druga težava server je dosegljiv direktno na notranji IP (192.168.1.99) druga kartica je IP 192.168.1.100 subnet je pri obeh isti gateway prav tako, drugih mašin ne vidim ko sem povezan z VPN, če se VNCjam na server pa na desktopu pod network vidim vse kompe če jih kličem po njihovih IP jih me ne spusti do njih.\n\nZakaj imam dva Routerja?\nNa enem imam dinamiko, to uporabljamo za brskanje in delo. Na drugem imam strežnik obešen zaradi FTP, HTTP demo in tega bi rad obdržal na statiki, da ga lahko kličem od koder koli, pa še za remote backup ga uporabljam in za TIMEMACHINE, PLEX...\n\nZdaj bi rad prerutal to kartico na drugo da vidim celotno mrežo pa mi ne rata oz. bi poguglal pa ne vem pravih izrazov oz. nekako mi je vse šlo iz glave.",
+    "author": "baldrick",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "VPN na strežnik z dvema mrežnima",
+    "content": "Sam sebi probleme delaš. Server poveži samo preko ene mrežno in daj gor statični IP, ali več, če jih rabiš več.",
+    "author": "dune",
+    "author_level": "Fizikalc"
+  }
+]

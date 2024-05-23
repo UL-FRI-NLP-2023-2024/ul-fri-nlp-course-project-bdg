@@ -1,0 +1,42 @@
+[
+  {
+    "message": "Imam eno precej newbie vprašanje....  Ravno včeraj sem v Jokerju prebral, da se da master naprava (npr. cd-rom. pekač, dvd...) vedno na konec kabla, slave pa na sredino. Enako piše tudi na raznih how-to straneh.  Fora je v tem, ker imam jaz cd-rom/cd-rw naštimana ravno obratno, odkar pomnim. Torej je master na sredini kabla, slave pa na koncu. Tako so mi zadeve prvič naštimali pri Mlacomu (prej sem imel vedno le po eno IDE napravo na kablu), ko sem kake tri leta nazaj tam kupil svoj prvi pekač in od takrat tudi sam IDE naprave v svojem komjuterju tako priključujem (razen diska, ki je vedno sam - primary/master - na koncu kabla).  Ko sem poklical na servis (ne na Mlacomov), so mi rekli, da je popolnoma vseeno, na katerem koncu kabla sta master in slave napravi.  Kaj je sedaj res? ",
+    "user": "TheJack"
+  },
+  {
+    "message": "Hmm, takega napotka nisem slišal še nikoli, naprave sem montiral poljubno (kljub \"nalepkam\" na kablih) in nisem imel še nobenih težav -- dvomim, da bi vedno po naključju montiral ravno tako, kot si tu omenil :-)).  Morda se bom pa kaj nobega naučil :]>  ",
+    "user": "Ziga Dolhar"
+  },
+  {
+    "message": "Resnica je odvisna od kabla.    IDE/ATA Configuration and Cabling ",
+    "user": "Han"
+  },
+  {
+    "message": "Hvala za odgovore. Han, bom prebral. Čeprav je branja kar veliko...  ",
+    "user": "TheJack"
+  },
+  {
+    "message": "Evo, sem že prebral.  Assuming cable select is not being used, any connector on a standard 40-conductor cable can go to any device, because all 40 wires are connected \"straight through\" to all three connectors. Since two of the connectors are closer to each other than the third, the distant connector is normally attached to the motherboard (or hard disk controller card). The other two devices can be used for either the master or the slave, and it doesn't matter which is which. If a single device is used, it should be attached to the connector at the end of the cable, and the connector in the middle of the cable left unattached. Using the middle connector and leaving the end connector unattached is technically allowed for regular PIO and DMA transfer modes, but leaves part of the cable \"dangling\". This is called a stub and creates much worse electrical characteristics on the cable, due to reflections from the unterminated ends of the cable wires. It is not recommended.   Connector Assignments and Color Coding: For the first time, the 80-conductor cable defines specific roles for each of the connectors on the cable; the older cable did not. Color coding of the connectors is used to make it easier to determine which connector goes with each device:  * Blue: The blue connector attaches to the host (motherboard or controller). * Gray: The gray connector is in the middle of the cable, and goes to any slave (device 1) drive if present on the channel. * Black: The black connector is at the opposite end from the host connector and goes to the master drive (device 0), or a single drive if only one is used.    Skratka kul, saj za disk uporabljam 80 žilen kabel, za cd-roma pa 40 žilen. Me je pa v zadrego spravil tale stavek:  The new 80-conductor cable is compatible with regular 40-conductor cables (not cable select cables). If you are having integrity problems with an older system using a 40-conductor cable, try replacing it with one of the newer cables, which are superior electrically to the older design. Many people now use the 80-conductor cables exclusively on all systems, even ones not using Ultra DMA.  Kakšen kabel vi uporabljate za cd-rom/pekač/dvd? Jaz sem zraven pekača dobil 40 žilnega in tega uprabljam. Je bolje, če uprabljaš 80 žilnega? Je morda 40 žilen kabel kriv za opozorila, ki jih dobivam vsake toliko časa (redko) v Event Viewerju (System):  Warning Event ID: 51 An error was detected on device \\Device\\CdRom0 during a paging operation.  in pa (tega sem dobil le enkrat do sedaj, skupaj s prvim): Error Event ID: 9 The device, \\Device\\Ide\\IdePort1, did not respond within the timeout period.  Se spozna kdo kaj na te evente? Jaz sem iskal in nisem nič pametnega našel. Drugače pekač in dvd ne delata nobenih problemov, ne z DMAjem, ne s transferjem.   ",
+    "user": "TheJack"
+  },
+  {
+    "message": "za prenos cdrom ali dvdja more pisat na ohisju kaksen je, recimo ata33 (cdromi in pekaci - 40 zilni) ali ata66 (to so ponavadi dvdji - 80 zilni) ",
+    "user": "the_unborn"
+  },
+  {
+    "message": "Jaz imam tako pekač kot dvd-rom na UDMA 2.... ",
+    "user": "TheJack"
+  },
+  {
+    "message": "kar je ata33 in ne rabis 80 zilnega kabla ",
+    "user": "the_unborn"
+  },
+  {
+    "message": "Pekači in starejši CD ter DVD pogoni imajo \"rajši\" 40-žilni kabel. Načeloma naj ne bi bilo razlike, a se zgodi, da pečka ne deluje na 80-žilnem kablu oziroma so z njo težave. (Osebno menim, da je za to kriv nekvaliteten kabel.)  Kar se \"eventov\" tiče: prvega še nisem zasledil, verjetno pa gre za trenutno nedostopnost naprave. Drugi se pojavi takrat, ko prehitro ukažeš branje pravkar vstavljene plošče, ki se še ni dobro zavrtela. Pojavi pa se tudi v primeru, ko ima pogon težave z DMA načinom prenosa... ",
+    "user": "Han"
+  },
+  {
+    "message": "Hvala za odgovore!  Saj sem vedel, da ni nič hudega, kajti drugače problemov s transferjem ni. ",
+    "user": "TheJack"
+  }
+]

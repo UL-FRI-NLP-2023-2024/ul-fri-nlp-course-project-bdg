@@ -1,0 +1,78 @@
+[
+  {
+    "message": "Zelja je imeti analogno uro na steni (kazalci pa to), v kateri bi tiktakal tudi en wifi modul, ki bi z nekaj pameti prebral cas iz NTP streznika (recimo 1x na dan ob prednastavljanem casu) in uro naravnal na tocen lokalni cas (casovni pas tudi prednastavljen).  Vse skupaj bi moralo biti cimbolj low energy (absolutno brez vticnice; ce zadeva deluje na AA ali AAA baterije toliko bolje), menjava baterij cimbolj poredko (ce se cas menjave lahko meri v letih, ali pa vsaj v polletjih bi bilo super).  Google najde neke stare linke ki so ze broken, pa en Arduino link kjer mora zadeva delat na vticnico drugace crkne v nekaj dneh.  Ima kdo kaksen predlog kako zadevo sestaviti? Kaj uporabiti za wifi povezavo, katero \"pamet\" uporabiti da bo vse dleovalo s cimmanj energije, kako jo spariti s koracnimi motorji ki se nahajajo v cheap stenskih urah? ",
+    "user": "antonija"
+  },
+  {
+    "message": "Zakaj ne kar radijsko vodena stenska ura? Je wifi in omrežna povezava na NTP strežnik nujen pogoj? ",
+    "user": "Ales"
+  },
+  {
+    "message": "Imaš nemogoče zahteve.. Na AAA baterije bo zadeva laufala mogoče par tednov.. Tudi s stepperji bo zelo težko kaj delat, ker \"cheap ure\" ne vejo koliko je ura.. Kupi radijsko vodeno uro.. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "En projekt: https://hackaday.io/project/16742-espcl...  Google: wifi analog clock ",
+    "user": "misek"
+  },
+  {
+    "message": "Saj OP verjetno misli radijsko vodeno stensko uro. Takšne ure so tako s kazalci kot samo digitalne s števičnico ali pa kombinirane in vse delujejo na baterije. Jaz vstavljam NiMH-baterije, ki jih po potrebi polnim in nimam težav. ",
+    "user": "mirator"
+  },
+  {
+    "message": "Na Ebay-u išči pod DCF ali DCF77. Taka ura vsako noč ob 2. ali 3. uri vključi radijski sprejemnik in posluša za signalom nemškega oddajnika blizu Frankfurta. Če sprejme njegov časovni signal, se ustrezno korigira, drugače teče naprej po taktu svojega kvarca. Ker gre za šibak dolgovalovni (77,5 kHz) signal, je pomembno, da ima sprejemnik čimvečjo anteno. Običajno je to feritna palčka.  Sam imam nekaj takih ur in dve srejmeta signal celo podnevi, ko je zaradi absorbcije v ionosferi še šibkejši. Ena izmed teh je vremenska postaja, ki se je pred dobrim mesecem prodajala v Lidlu za 10 eur.  DCF77 odajnik ni nekaj novega, saj deluje že 60 let. Podobni oddajniki so tudi na ostalih celinah. DCF77 @ Wikipedia ",
+    "user": "737"
+  },
+  {
+    "message": "Vse pa res ne rabimo na wifi priklopit.  Me res zanima zakaj wifi in ne DCF? Če pa ni signala za DCF pa je tudi quartz dovolj dober. ",
+    "user": "bf4ed"
+  },
+  {
+    "message": " 737 je 28. okt 2019 ob 10:51 izjavil: Sam imam nekaj takih ur in dve srejmeta signal celo podnevi, ko je zaradi absorbcije v ionosferi še šibkejši. Ena izmed teh je vremenska postaja, ki se je pred dobrim mesecem prodajala v Lidlu za 10 eur. DCF77 @ Wikipedia  Res je, imam 4 DCF sprejemnike (ročna ura, namizna ura in 2 vremenski postaji), pa jih ta iz lidla po sprejemu daleč prekosi. Pa antenca ni nič večja od drugih (razen ročne ure). Drugače pa je varianta tudi točen čas preko GPS. ",
+    "user": "MTB"
+  },
+  {
+    "message": "Problem stenskih ur, da bi morale delovati dolgo časa na baterijo. Če imaš Wifi, potem to kuri veliko energije. Treba je naredit sw, ki ugasne vse in samo 1x na mesec preveri stanje.  Alternativno je lora ali nb lte ali podobno, ki se prižge samo občasno.  Čas se da dobiti tudi iz drugih virov, kot je gnss, radijski signal (npr. dab, dvb-t) ipd. ",
+    "user": "starfotr"
+  },
+  {
+    "message": "Radijsko vodeno stensko uro imam. In ce hocem da pride signal do nje, jo moram \"sprehajat\" po okenskih policah :(   Na steni, kjer je njeno stalno mesto, ni signala sploh. Ja zbi pa rad da se sinhronizira sama, brez da jop non-stop nosim noakrog. Pa tisti kvarc v uri ima pa strasno muhast takt, cas na uri precej hitro \"odplava\" v svojo smer.  Hisa, v kateri ura prebiva je zidana iz ceglov (ni zelezobetona), se celo GPS signal ulovim prej kot pa ura ulovi frankfurtski signal. Zato bi raje uro ki se sinhronizira na kaj drugega, kar bo bolj robustno lovilo v moji hisi (ali pa upgrade sprejemnika/antene v uri da bo delovala kot bi clovek pricakoval). ",
+    "user": "antonija"
+  },
+  {
+    "message": "https://hackaday.com/2018/09/10/no-sign...  Lasten dcf ;) ",
+    "user": "All"
+  },
+  {
+    "message": "Lahko pa probamo iz druge strani... ce si omislim malo bolj konkretno anteno za DCF77 signal (nekaj takega: https://www.hkw-shop.de/Empfangstechnik.... Lahko to zadevo prilopim direktno na urin obstojeci mehanizem? Ali je treba vmes vtaknit se kaj extra elektronike? ",
+    "user": "antonija"
+  },
+  {
+    "message": "Popravi link.. Potem pa razderi uro in poslikaj elektroniko  Čeprav bi najbolj primerno bilo kar je All predlagal zgoraj. Lasten oddajnik, katerega nekam skriješ. Ne rabi bit ravno nekaj cm od ure. Lahko je samo v istem prostoru. ",
+    "user": "bf4ed"
+  },
+  {
+    "message": "Popravljen link: https://www.hkw-shop.de/Empfangstechnik... (oz. katerakoli 77.5kHz antena iz tukajle: https://www.hkw-shop.de/Empfangstechnik...  Ura ima v sebi nekaj takega: https://www.conrad.si/radijska-urni-meh... (zadnja stran ima 3 gumber (reset, mset in set) in prostor za eno AA baterijo. Vidno so tudi kontakti za lotanje na sprednji strani...  Ure nebi razdiral v tem trenutku, ker bi to zelo ujezilo mojo boljso polovico. Najprej bi rad vedel ce se jo da upgradati, potem se pa lotim razdiranja. ",
+    "user": "antonija"
+  },
+  {
+    "message": "Malina in kos bakrene žice mislim da je boljša rešitev. ",
+    "user": "bf4ed"
+  },
+  {
+    "message": "Z isto težavo se srečujem tudi sam, s tem da imam jaz 7 ur v proizvodnji in samo ena občasno lovi signal... je pa hala precej velika + še 2 nadstropja v upravnem delu... Si morda potem rešil težavo? Oz. ima kdo kakšen predlog? Ti \"corporate\" sistemi so abnormalno dragi. In to, glede na to da delavci na njo gledajo 5 minut pred malico in 5 minut preden zaključijo z delom, ni vredno nekaj 1000€...   Hvala za info. ",
+    "user": "Omelo"
+  },
+  {
+    "message": "Lahko narediš oddajnik z malino.  Ali Arduinom.  Upoštevaj, da sta oddajna moč in s tem domet majhna. ",
+    "user": "int47"
+  },
+  {
+    "message": "Ko smo prestavili ure sem spet odnesel uro na okensko polico da bi ujela signal. Po parih urah se ni nastavila na nov cas, zato sem jo moral nastaviti rocno. Skratka en sekret od sprejema signala.  Ce imas lahko priklopljeno na strom je moznosti ogromno. Vsak *duino in kloni, vsaka malina in kloni, vse to lahko komot pobira cas poljubno pogosto in potem z njim delas kar hoces. Ampak ce nimas dobre antene (in verjetno je ne bos imel; tista v nemciji predvsem ni majha), ne vem ce ti bo lovilo cez proizvodno halo.  Problem nastane ce hoces imet zadevo na baterijah (pomoznosti na 2xAA baterijah kar je ponavadi v uri). Vsaka \"zracna\" povezavi kuri precej stroma (sploh za AA baterije).  Ce si zadovoljen z digitalnimi urami (brez stevilcnice in kazalcev) potem najdes kar nekaj opcij za wifi ure na netu. Kitajci jih stancajo na metre. Dobis tudi analogne, recimo take; ampak zadeva rabi 4 D baterije, pa verjetno je draga ke rjo reklamirjao za bolnisnice in podobne ustanove.  Ce rabis pa samo delavce opozoriti 5 minut pred malico in 5 minut pred koncem sihta, si mogoce omisli en zvocnik (\"solski zvonec\") in jim zaigraj en jingle ob prednastavljenih urah  ",
+    "user": "antonija"
+  },
+  {
+    "message": "Hehe, zvonček ne pride v ožji izbor, je že bil na tapeti. Dejansko je želja ura in to s kazalci, pa tudi elektrika bi znala biti težava ponekod. Trenutno res razmišljam o malini, ker tudi če jo imam blizu vsake ure pridem ceneje čez, kot če bi postavljal industrijski sistem. Za dobrih 30€ + delo + ura, mislim da ceneje ne pridemo čez.   Bi pa bila idealna WiFi ura, ki se 1x na teden sinhronizira in je to to.  Hvala za info! ",
+    "user": "Omelo"
+  }
+]

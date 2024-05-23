@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "innbox v45 in router",
+    "content": "Sem dočakal končno nek net ki pride do mene po kablu \nNo problem je ta Kako zrihtat siolov innbox v45 in pa Linksys EA8300, da bo innbox samo modem.\nČe na inboxu ukinem dhcp potem boxi nimajo dostopa do podatkov ( ne delajo novice in spored). Če pustim na obeh dhcp imam modem 192.168.1.1 in router na 192.168.1.2. In modem in router različni ip range.  V modemu je NAT -> dmz host nastavitev narejena na 192.168.1.2, to naj bi pomenlo, da vse modem pošilja naprej v router kolko sem bral.\nNo kje je problem. Plex server recimo ne dela. Piše da ni povezave. Tudi boxi ne vidijo mreže v kateri je nas. Če router povežem preko lan porta na innbox mi zmanjka en port za ostaloin bi bil potreben en switch še pri routerju, tako, da je povezano preko wan.\n\nTrenutno se in modem in router povezujeta preko ppoe vsak za sebe. Imam dinamični ip.\nTorej kako naj zrihtam, da bo innbox samo modem, vse ostalo bo ddelal router. Lahko to sam ali je treba klicat na Telekom.",
+    "author": "luka51",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "innbox v45 in router",
+    "content": "Na routerju nastaviš VLANe - če jih privzeto ne omogoča uporabiš alternativen firmware. Nato TRUNK port spustiš na WAN in potem na vseh portih kjer so priklopljeni BOXi in na WAN portu kreiraš dodaten VLAN 3999. \n\nSeveda boš rabil tudi dodaten Switch. Ostale opcije so pa bolj tako tako, lahko povzročijo težave (Če bi npr. izklopil DHCP in PPPoE na Innboxu in potegnil še en kabel med DATA portoma modema in routerja). Lahko se ti zgodi, da bo modem pričel divje utripat.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "innbox v45 in router",
+    "content": "Napaka. \nKot si ugotovil, če je Innbox samo modem, potem ne dela telefonija, ne dela LPG in podobna šarovna na TV. Lahko pa mu izklopiš WiFi. Pač nastaviš Linksys kot klasičen router in dostop kot PPoE, IP range se mora razlikovati (recimo Linksys je 192.168.10.0/24 in Innbox na 192.168.1.0/24). DHCP je lahko vklopljen naprej, saj nimaš vmes DHCP RELAY konfiguriran in se ne motita med sabo. \nJaz lahko celo iz omrežja 192.168.10.0 dostopam do 192.168.1.0, obratno ne gre.\nČe nimaš statičnega IPja zadeva deluje b.p., tako postavitev imam že nekaj let. Pa še 3 porte na Innboxu za TRUNK (TV) in samo enega DATA, ki gre na router naprej.",
+    "author": "Roberto",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "innbox v45 in router",
+    "content": "Telefonija dela brez težav, tudi če je innbox samo modem, ne vem od kje ti te ideje.",
+    "author": "Daniel",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "innbox v45 in router",
+    "content": "Na svojem routerju WAN nastavi na PPPoE... bodo pa potem boxi izven tvojega omrežja. Če želiš boxe v svojem omrežju, boš moral konfigurirati VLAN-e.",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  }
+]

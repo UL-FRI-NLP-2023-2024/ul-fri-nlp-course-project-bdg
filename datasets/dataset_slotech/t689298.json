@@ -1,0 +1,158 @@
+[
+  {
+    "message": "Zdravo.  Evo, kupili smo nov prenosnik Lenovo in že par dni se matramo, da bi naložili Windowse gor. Prenosnik je čisto prazen (torej samo Free Dos) in v njemu je samo SSD disk (brez HDD). Ko damo USB ključek z (nakrekanimi) Windowsi (na starem prenosniku čisto lepo delajo) gor in ko pride do tistega dela, kjer izbereš particije, particije sploh ni, je prazno, kot da ssd-ja sploh ni v računalniku. Kliknili smo Load Driver ikono, nič. Refresh, nič. Usb ključek z različnimi driverji noče niti zaznati. V glavnem Windows inštalacija ne zazna SSD diska, medtem ko je v BIOSu viden! Je Samsungov. Računalnik je čisto nov tako, da disk mora delat.   Poskušali smo že na vse načine, a nič ne obrodi sadov. Res, da nismo nekaj računalničarji, a mater, da znamo razmišljati in poiskati povezave ter brati :)  Poskusili smo z Windows live, da bi tam ustvarili particijo in smo jo, ampak v inštalaciji zopet ni bila vidna. V BIOSu smo iz Legacy dali na UEFI, samo sploh ni hotelo zagrabiti USB ključka; preko Windows Live smo poskusili dati tudi različne gonilnike, neuspešno; potem update biosa, neuspešno; Samsungov gonilnik, nope; v Free Dosu kaj spisati, ne gre; itd... Pa v windows live smo na command prompt (ne vem ce je pravi izraz) v dos načinu naredili particije ki so bile vidne in zaznane, med inštalacijo pa nič...  Prebrali smo že nešteto člankov, poskusili razične variante, a kar ne uspeva :(  Ko pride do tistega dela inštalacije, da izbereš particijo oz. vsaj daš load drivers...to je mrtva točka...naprej ne moremo, ker ne zazna SSD diska in seveda zaradi tega ne more nikamor naložiti Windowsov.  Prosimo za pomoč!!!! ",
+    "user": "Hladilnik"
+  },
+  {
+    "message": "Kristalna krogla pravi da hočeš inštalirati Wondows ME na Lenovo NeRadi model... ",
+    "user": "Invictus"
+  },
+  {
+    "message": "Katera verzija windows? Kateri prenosnik? Kateri disk? ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "https://www.mimovrste.com/multimedijski...  a je to? windows 10 th2 10586? ",
+    "user": "Hladilnik"
+  },
+  {
+    "message": "BIOSu smo iz Legacy dali na UEFI, samo sploh ni hotelo zagrabiti USB ključka; Z rufusom naredi uefi install na usb. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Windows and Office ISO Downloader + Rufus = UEFI zagonski USB ključ... ",
+    "user": "Han"
+  },
+  {
+    "message": "MS win iso posnetki so legacy+uefi hkrati (če ga zapečeš na plošček). ",
+    "user": "konspirator"
+  },
+  {
+    "message": "UEFI ne dovoli instalacije piratske programske opreme. Pri legacy pa moraš odstranit varnostno preverjanje. Heba je tale novi bios, ki hoče legal.  Sicer mi pa ni jasno, čemu uporabljate rufus, če se z microsoftove strani, enostavno potegne orodje za izdelavo ISO slike - DVD ali USB? ",
+    "user": "solatko"
+  },
+  {
+    "message": " solatko je 11. dec 2016 ob 22:09 izjavil:UEFI ne dovoli instalacije piratske programske opreme. Pri legacy pa moraš odstranit varnostno preverjanje. Heba je tale novi bios, ki hoče legal.  Sicer mi pa ni jasno, čemu uporabljate rufus, če se z microsoftove strani, enostavno potegne orodje za izdelavo ISO slike - DVD ali USB?   Kaksno preverjanje, kje te bedarije pobirate. Uefi boot nima prav nobene veze z legalno opremo.  Op: kreiraj usb kljucek z windows media creation toolom. Ta ustvari uefi instalacijo s podporo za usb. Tole je za legalen nacin. Za pirate se malo znajdi po svoje(namestitev lahko das cez tudi brez kljuca za windows, ce upostevamo da ga bos vnesel pozneje)  Ustavi se najbz zaradi tega ker instalacija ki jo uporabljate nima usb 3 gonilnikov. Lahko probas tudi takole. Tam kjer bi morali biti izpisani diski odstrani usb kljucek, klikni na x da se instalacija vrne na zacetni zaslon in vstavi kljucek nazaj in ponovno klikni na install now. ",
+    "user": "Evolve"
+  },
+  {
+    "message": "Zbriši vse particije (tako, da bo SSD čisto prazen, niti sledu ne bi smelo biti na njem*) in samo označi na kateri disk naj se inštalirajo.   *ta problem se pojavi, če se ustvari MBR tip particij namesto GPT tabele (za Win10 install). ",
+    "user": "Jst"
+  },
+  {
+    "message": " solatko je 11. dec 2016 ob 22:09 izjavil:UEFI ne dovoli instalacije piratske programske opreme. Pri legacy pa moraš odstranit varnostno preverjanje. Heba je tale novi bios, ki hoče legal.  Sicer mi pa ni jasno, čemu uporabljate rufus, če se z microsoftove strani, enostavno potegne orodje za izdelavo ISO slike - DVD ali USB?   Kot so ti rekli, UEFI nic ne preverja. Pa tudi ves, da ce instaliras windowse od 7ke naprej (verjetno tudi vista) vsaj en mesec, dokler ti ne zacne teziti z aktivacijo.  Edino ce so izumili kaksen algoritem, pa vnaprej vejo tvoj namen? ",
+    "user": "Scorpia"
+  },
+  {
+    "message": "Na UEFI bios ne moreš instalirat windows iz torrenta, saj ti stalno sporoča ob zagonu, da ni boot medija. Lahko pa instaliraš na legacy, vendar izgubiš bombončke, ki jih nudi GPT. Point je, da moraš, če hočeš, da ti sploh zažene instalacijo, imeti original sliko windows-a, sicer ti EFI ne zažene. ",
+    "user": "solatko"
+  },
+  {
+    "message": ">Lahko pa instaliraš na legacy, vendar izgubiš bombončke, ki jih nudi GPT.  Kaj ima pa legacy način z tabelo particij? (OK, mogoče so na kakšni matični Secure Boot in UEFI povezana v eno nastavitev, ampak vseeno lahko furaš UEFI in ne Secure Boot.)  Še enkrat: Windows 10 se ne bodo hotele inštalirati na SSD, ki ima MBT particije. Vse pobriši, da bo disk čisto prazen in med inštalacijo izberi disk in ne delaj nobenih particij, bo inštalacija sama poskrbela za to. Neumno da ti to ne pove, ampak Steven Novella je pred parimi meseci v SGU podcastu ravno govoril o isti težavi in se jezil, zakaj za vraga ne napišejo tega. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Disk je prazen, ni particij, ni ničesar. Tak računalnik smo kupili. Med inštalacijo Windowsov se sploh ne zazna diska, prostora. Nekako moramo narediti, da je disk viden.  Vse vaše predloge bomo preizkusili popoldan. Hvala vam za vse vaše predloge! Vi se še kar naprej razpisujte :) pridno beremo :) ",
+    "user": "Hladilnik"
+  },
+  {
+    "message": "ti disk sploh zazna v biosu ? Mogoče si fasal defekten ssd ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " Hladilnik je 12. dec 2016 ob 09:51 izjavil:Vi se še kar naprej razpisujte :) pridno beremo :) Predlagam, da poskusiš tole: SSD v namiznem r. priključi na SATA/ zaženi Win/ kot admin vpiši v ukazno vrstico: diskmgmt.msc/ naredi particije v GPT partition style/ SSD vstavi v prenosnik/ v BIOS-u izberi UEFI mode/ v prenosnik vstavi ključek ali DVD kjer je Win .iso, ki ga dobiš na Microsoft strani in naloži Win. ",
+    "user": "ST-777"
+  },
+  {
+    "message": " solatko je 12. dec 2016 ob 06:50 izjavil:Na UEFI bios ne moreš instalirat windows iz torrenta, saj ti stalno sporoča ob zagonu, da ni boot medija. Lahko pa instaliraš na legacy, vendar izgubiš bombončke, ki jih nudi GPT. Point je, da moraš, če hočeš, da ti sploh zažene instalacijo, imeti original sliko windows-a, sicer ti EFI ne zažene.   To pa ni res, lepo se da opraviti instalacijo, brez kakih komplikacij. ",
+    "user": "Scorpia"
+  },
+  {
+    "message": "solatko meša secure boot pa uefi... ",
+    "user": "hojnikb"
+  },
+  {
+    "message": " Hladilnik je 12. dec 2016 ob 09:51 izjavil:Disk je prazen, ni particij, ni ničesar. Tak računalnik smo kupili. Med inštalacijo Windowsov se sploh ne zazna diska, prostora. Nekako moramo narediti, da je disk viden...  Windows 10 install, wont see my new SSD?  Boot the Windows Installer.  Press Shift + F10; a command prompt windows will pop up.  Type 'diskpart' and press enter.  Type 'list disk' and press enter.  Look for the SSD in the list. You should see a disk number identifying it. Now type 'select disk x' ; x being the number identifying your SSD. and press enter.  Type 'clean' and press enter; This will write a blank MBR.  try installing again. ",
+    "user": "m3k"
+  },
+  {
+    "message": " hojnikb je 12. dec 2016 ob 10:44 izjavil:ti disk sploh zazna v biosu ? Mogoče si fasal defekten ssd   zazna ",
+    "user": "Hladilnik"
+  },
+  {
+    "message": "zakaj bi krekano verzijo winsow dajal na usb ključek, ko pa lahko vse uradno s strani M$.a nardiš pa se pol kms activator čez poženeš? ",
+    "user": "kmegli"
+  },
+  {
+    "message": "Fora je da se ti ne dvigne driver za disk controller, bios ga vidi, ne vidi pa ga instalacija windowsov (nameščaš win 7?). Poglej kateri chipset imas in mu pred instalacijo providaj driver (ponavadi intel nekaj...) ki ga imas na kljucku skupaj z windowsi itd.  To je sedaj problem s skoraj vsemi novejšimi chipseti za katere sami isoti (win7) ali pa celo win 10 (sem že mel primer) nimajo driverjev in ga moraš sneti iz uradne strani.  Tukaj imas razlozeno  https://www.partitionwizard.com/partiti... ",
+    "user": "Tac20"
+  },
+  {
+    "message": "Katero verzijo windows 10 imaš?  Meni namreč build 1607 dela podobne probleme s SAS diski in SAS priklopom na plati. Enako jih noče prepoznat. Sem moral sas priklopit na navaden sata z vmesnikom, inštalirat windows 10, potem dodat še en sas disk, da so se driverji naložili in potem preklopit na sas port brez vmesnika.  Zanimivo da build 1511 teh problemov nima. ",
+    "user": "krneki0001"
+  },
+  {
+    "message": "Da bi jaz inštaliral vzamem disk iz prenosnika in nainštaliram prvi del windows inštalacije na kakšnem stacionarnem računalniku.Ko se restarta ugasnem računalnik in dam disk spet v prenosnika in normalno inštaliram do konca.Tako čisto po kmečko. ",
+    "user": "maketa"
+  },
+  {
+    "message": " kmegli je 12. dec 2016 ob 14:45 izjavil:zakaj bi krekano verzijo winsow dajal na usb ključek, ko pa lahko vse uradno s strani M$.a nardiš pa se pol kms activator čez poženeš?   Zakaj bi sploh kupoval računalnik če ga lahko ukradeš. To mi je še manj jasno. ",
+    "user": "LeQuack"
+  },
+  {
+    "message": "Edini pravilni odgovor v tej temi je: Odnesite računalnik nekomu in ki se spozna! In vsaj plačajte tistemu za namestitev, če ste že toliko da niste za Windowse se izprsli! ",
+    "user": "forplan"
+  },
+  {
+    "message": "Z original windows sistemom ni prav nobenih težav, tudi izbira ali UEFI ali legacy spremeni samo vrstni red zagonov in vrsto particij. Nelegalnega windows OS-a pa UEFI ne sprejme, ne glede ali je secure boot obkljukan ali ne. Enostavn noče zagnat iz EFI in javlja, da ni insatalcijskega faila ali ni boot medija.  In nič ne mešam. ",
+    "user": "solatko"
+  },
+  {
+    "message": "solatko: that is just not true. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Ja kliknit moraš na load DRIVER in mu providat driverje sem ze napisal gor ",
+    "user": "Tac20"
+  },
+  {
+    "message": "again solatko bluziš tako da glava peče. @OP  Namesti windows10 z microsoftovim toolom https://www.microsoft.com/sl-si/softwar...  in daj usb obvezno v usb2 port (črn) ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "V čem? A morda v tem, da, če imaš srečo, dobiš na torrentih tudi sliko original diska? ali v čem drugem. Pojasnite malo bolj natančno, morda se bom pa nučil kaj novega, predvsem pa to, kako spravit pirata v UEFI. Legacy ni problem instaliraš glih vse kar hočeš, samo da procesor podpira.  Kam pa vtakneš USB, če so vsi, ki so na voljo plavi?  Sicer pa prepoznavanje diskov za instal ni problem - na delujočem sistemu, namestiš željeno particijo MBR ali GPT in legalna kopija OS ne bo nič težila in tudi SSD bo takoj prepoznalo. Ob instalu itak ponovno postaviš particije - disk - delete - new in naštimaš željeno velikost sistemske particije, potem pa sistem sam naredi željeno. http://www.disk-partition.com/free-part... ",
+    "user": "solatko"
+  },
+  {
+    "message": "Inštalacijski usb dej v drug usb priključek pa ti bo delal.... ",
+    "user": "ameba"
+  },
+  {
+    "message": " forplan je 12. dec 2016 ob 19:26 izjavil:Edini pravilni odgovor v tej temi je: Odnesite računalnik nekomu in ki se spozna! In vsaj plačajte tistemu za namestitev, če ste že toliko da niste za Windowse se izprsli!  To bilo preveč enostavno. Se bodo raje še 1 teden ukvarjali s tem xD. ",
+    "user": "konspirator"
+  },
+  {
+    "message": "Tudi jaz sem imel težave z namestitvijo win7 na uefi mb iz usb ključa. Problem sem rešil tako da sem zagnal inštalacijo iz USB nato pa sem ob zahtevi za driverje vstavil še CD na kateri je bil enak iso kot na usb. Namestil sem pa win7 enterprise, ker ultimate nikakor nisem uspel namestiti. ",
+    "user": "refosk"
+  },
+  {
+    "message": "V čem? A morda v tem, da, če imaš srečo, dobiš na torrentih tudi sliko original diska? ali v čem drugem. Pojasnite malo bolj natančno, morda se bom pa nučil kaj novega, predvsem pa to, kako spravit pirata v UEFI. Legacy ni problem instaliraš glih vse kar hočeš, samo da procesor podpira.   v tem, da uefi kot tak ne gleda na to ali je original ali crackan. Uefi preber katerkol efi image ki mu ga daš, če je le kompatabilen z x86/x64. Čisto možno je, da si dejansko pobral kakšne čungalunga image-e, ki imajo uefi celo odstranjen in potem jasno ni zagnalo  Druga stvar je secure boot, kjer more bit efi binary podpisan s strani microsofta. Tam pa jasno če gre za modifikacije, nebo zagnalo.  again uefi=/=secure boot ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Edina možnost je mogoče ta, da je solatko videl bios, ki z vklopitvijo UEFI avtomatsko vključi SecureBoot in nima te opcije posebej. ",
+    "user": "Jst"
+  },
+  {
+    "message": "Fantje, probleme imate vi, ne glede na to kaj vidi solatko. Sam nisem imel nikoli problemov z original windows instalacijo, zato mi ni čisto jasno, kaj vas muči. Bom potegnil dol en piratski sistem in poizkušal, da vidim v čem je problem.  Po defaultu, naj bi na legacy bilo možno instalirat vse, kar računalnik podpira, brez problemov. ",
+    "user": "solatko"
+  },
+  {
+    "message": "problem ni uefi, problem je slab image. Ali pa PEBKAC ",
+    "user": "hojnikb"
+  },
+  {
+    "message": "Vsekakor. ",
+    "user": "solatko"
+  }
+]

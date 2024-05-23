@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Torej kot je napisano v naslovu mi računalnik stalno prekinja povezavo in sicer po prenesenih cca 100 mega podatkov, potem se prenos podatkov ustavi in pokaže se rumen trikotnik in napiše omejena povezava  nato je potrebno ročno prekinit povezavo in ponovno vzpostavit povezavo in deluje zopet samo cca 100 do 200 mega in tako do onemoglosti.\n\nRačunalnik je nov Medion erazer z windows 8, internet od Telemacha s svojim modemom nato gre na ruter Linksys WRT 160 NL z  zadnjim dd-wrt FW. Na ruter so priklopljeni do štirje računalniki, tiskalnik in še občasno kakšen telefon  in noben med njimi nima težav.\n\nDejavnosti, ki sem jih do sedaj izvajal:\n\n-preveril vse meni poznane nastavitve v računalniku in ruterju in so ok, \n-povezal računalnik direkt iz modema s kablom in internet deluje bp\n-povezal računalnik s kablom iz ruterja in deluje bp. Torej povezavo z internetom prekinja samo wireles.\n-zresetiral ruter 30/30/30 nato naložil zadnji dd-wrt. Rezultat enak, na kabel deluje internet, wireles prekinja samo na medion eraser ostali računalniki ne prekinjajo.\n-ponovno zrestiral in naložil original Linksys firmware. Rezultat enak. Samo Medion prekinja.\n-priklopil star ruter wrt 54 gl tomato firmware. Popolnoma enak rezultat, samo Medion prekinja. \n-odinštaliral protivirusni program in izklopil požarni zid. Enako.\n-odnesel Medion računalnik do dveh prijateljev in se priklopil na njun net. In glej ga zlomka, vse deluje bp in popolnoma nič ne prekinja.\n\nSe pravi, da ni težava v Medion računalniku temveč v  mojem ruterju. Ni mi pa jasno kako, da vse ostale naprave povezane na omenjeni ruter delujejo brez problema. \n\nIma morda kdo kakšno idejo kaj ni v redu.",
+    "author": "hipnotik",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Driverji za wlan mrežno kartico? Včasih se zgodi, da se določeni chipseti ne razumejo najbolje.\nPoizkusi tudi s kakšnim linux live CDjem, da vidiš če je tudi tam na wifiju enako. Če je tam OK, potem znajo biti res driverji krivi.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Vmes sem naložil windows 8.1 in mislim, da je tudi driverje posodobilo.\nOziroma mi pokaže, da so naloženi najnovejši.\nZ Linux live cd sem pa že poskusil samo mi ne deluje wireles samo na kabel.",
+    "author": "hipnotik",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Event Viewer si pogledal, če kaj zabeleži v tistem času?",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Ravnokar pregledujem in piše razlog napake Dinamična izmenjava ključev ni uspela v nastavljenem času.",
+    "author": "hipnotik",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Imaš WPA-TKIP wireless zaščito? Spremeni na WPA2-PSK. Pa po potrebi podaljšaj tisti interval za menjavo ključa (privzeto je mislim da tak 1 ura).",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Evo napaka je najdena.\nKo izklopim zaščito mi wi-fi deluje pri vklopljeni zaščiti pa zopet ustavi na 100 mega.\nZaščito imam pa WPA2-TKIP nastavljeno na 3600 s.\nEnkripcijo mi ponudi samo TKIP in AES.",
+    "author": "hipnotik",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Potem pa nastavi na WPA2-PSK in izberi AES.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "Evo deluje. \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\n\nZdaj sem nastavil na WPA2-Personal in algoritem kodiranja TKIP+AES in čas sem povečal na 36000 s.\nSe pravi napaka je bila ker je bil izbran samo TKIP algoritem kodiranja.\n\nNajlepša hvala za pomoč.\nZvezdice sledijo.",
+    "author": "hipnotik",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Internetna povezava se konstantno prekinja",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik philips pravi:\n Potem pa nastavi na WPA2-PSK in izberi AES.\n\t\t\n\t\tKlikni za razširitev\n\t\nZa info: WPA je vedno PSK, tako WPA1 kot WPA2.\n\nPSK = Pre Shared Key , torej po domače \"wifi geslo\", ki ga vtipkaš\n\n(razen če imaš enterprise setup, samo ga v tej temi noben nima)",
+    "author": "jolko",
+    "author_level": "Fizikalc"
+  }
+]

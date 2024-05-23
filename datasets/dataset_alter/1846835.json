@@ -1,0 +1,110 @@
+[
+  {
+    "ctx": "PHP program",
+    "content": "mi lahko kak programer pogledaj kaj je narobe z tem php kontaktnim obrazcem, moral bi delati,\nvnesel sem le svoj e- mail\n\n &lt;?php\n          \n          // Set-up these 3 parameters\n          // 1. Enter the email address you would like the enquiry sent to\n          // 2. Enter the subject of the email you will receive, when someone contacts you\n          // 3. Enter the text that you would like the user to see once they submit the contact form\n          $to = 'info@pc-storitve.si';\n          $subject = 'info@pc-storitve.si';\n          $contact_submitted = 'Your message has been sent.';\n\n          // Do not amend anything below here, unless you know PHP\n          function email_is_valid($email) {\n            return preg_match('/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i',$email);\n          }\n          if (!email_is_valid($to)) {\n            echo '&lt;p style=\"color: red;\"&gt;You must set-up a valid (to) email address before this contact page will work.&lt;/p&gt;';\n          }\n          if (isset($_POST['contact_submitted'])) {\n            $return = \"\\r\";\n            $youremail = trim(htmlspecialchars($_POST['your_email']));\n            $yourname = stripslashes(strip_tags($_POST['your_name']));\n            $yourmessage = stripslashes(strip_tags($_POST['your_message']));\n            $contact_name = \"Name: \".$yourname;\n            $message_text = \"Message: \".$yourmessage;\n            $user_answer = trim(htmlspecialchars($_POST['user_answer']));\n            $answer = trim(htmlspecialchars($_POST['answer']));\n            $message = $contact_name . $return . $message_text;\n            $headers = \"From: \".$youremail;\n            if (email_is_valid($youremail) && !eregi(\"\\r\",$youremail) && !eregi(\"\\n\",$youremail) && $yourname != \"\" && $yourmessage != \"\" && substr(md5($user_answer),5,10) === $answer) {\n              mail($to,$subject,$message,$headers);\n              $yourname = '';\n              $youremail = '';\n              $yourmessage = '';\n              echo '&lt;p style=\"color: blue;\"&gt;'.$contact_submitted.'&lt;/p&gt;';\n            }\n            else echo '&lt;p style=\"color: red;\"&gt;Please enter your name, a valid email address, your message and the answer to the simple maths question before sending your message.&lt;/p&gt;';\n          }\n          $number_1 = rand(1, 9);\n          $number_2 = rand(1, 9);\n          $answer = substr(md5($number_1+$number_2),5,10);\n        ?&gt;\n        &lt;form id=\"contact\" action=\"contact.php\" method=\"post\"&gt;\n          &lt;div class=\"form_settings\"&gt;\n            &lt;p&gt;&lt;span&gt;Name&lt;/span&gt;&lt;input class=\"contact\" type=\"text\" name=\"your_name\" value=\"&lt;?php echo $yourname; ?&gt;\" /&gt;&lt;/p&gt;\n            &lt;p&gt;&lt;span&gt;Email Address&lt;/span&gt;&lt;input class=\"contact\" type=\"text\" name=\"your_email\" value=\"&lt;?php echo $youremail; ?&gt;\" /&gt;&lt;/p&gt;\n            &lt;p&gt;&lt;span&gt;Message&lt;/span&gt;&lt;textarea class=\"contact textarea\" rows=\"5\" cols=\"50\" name=\"your_message\"&gt;&lt;?php echo $yourmessage; ?&gt;&lt;/textarea&gt;&lt;/p&gt;\n            &lt;p style=\"line-height: 1.7em;\"&gt;To help prevent spam, please enter the answer to this question:&lt;/p&gt;\n            &lt;p&gt;&lt;span&gt;&lt;?php echo $number_1; ?&gt; + &lt;?php echo $number_2; ?&gt; = ?&lt;/span&gt;&lt;input type=\"text\" name=\"user_answer\" /&gt;&lt;input type=\"hidden\" name=\"answer\" value=\"&lt;?php echo $answer; ?&gt;\" /&gt;&lt;/p&gt;\n            &lt;p style=\"padding-top: 15px\"&gt;&lt;span&gt;&nbsp;&lt;/span&gt;&lt;input class=\"submit\" type=\"submit\" name=\"contact_submitted\" value=\"send\" /&gt;&lt;/p&gt;\n          &lt;/div&gt;\n        &lt;/form&gt;\n      &lt;/div&gt;\n\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Kaj pa ne dela?\n\nCe ne pošlje maila potem je krivda v mail() funkciji, veliko providerjev je namreč ne omogča (ker rabiš delujoči sendmail na mašini)!\n\nEdit: sicer koda deluje OK, ni napake v sintaksi ipd.",
+    "author": "Utisevalec",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "V php.ini moraš nastaviti parametre za mail() funkcijo. Za windows sisteme se nastavi ip od smtp strežnika, za *nix sisteme pa pot do sendmail aplikacije.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "vse skopiram na server in v vrstici, kjer piše Name se v oknu, kjer bi naj uporabnik napisal svoje ime izpiše tole\n\n&lt;br /&gt;&lt;b&gt;Notice&lt;/b&gt;:  Undefined variable: yourname in &lt;b&gt;/home/spletnic/public_html/contact.php&lt;/b&gt; on line &lt;b&gt;122&lt;/b&gt;&lt;br /&gt;\n\nv vrstici za mail pa tole\n\n&lt;br /&gt;&lt;b&gt;Notice&lt;/b&gt;:  Undefined variable: youremail in &lt;b&gt;/home/spletnic/public_html/contact.php&lt;/b&gt; on line &lt;b&gt;123&lt;/b&gt;&lt;br /&gt;\n\nv vrstici za sporočilo pa\n\n&lt;br /&gt;\n&lt;b&gt;Notice&lt;/b&gt;:  Undefined variable: yourmessage in &lt;b&gt;/home/spletnic/public_html/contact.php&lt;/b&gt; on line &lt;b&gt;124&lt;/b&gt;&lt;br /&gt;\n\nkaj moram spremeniti v kodi, da ne bo tega in bo deloval\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Izklopi izpis obvestil v PHP (\"display_errors = Off\" v php.ini).\n\nOb prvem klicu polja še nimajo vrednosti in se nič ne izpiše.\n\nLahko pa pred vrstico \"$number_1 = rand(1, 9);\" dodaš:\n\nelse {\n$yourname = '';\n$youremail = '';\n$yourmessage = '';\n}",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Na začetku za &lt;? dodaj spodnjo kodo:\n\n$yourname = \"\";\n$youremail = \"\";\n$yourmessage = \"\";",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Naredil sem po navodil erikson kot prvi odgovor, sem dobil sporočilo na mail,\nsedaj paizpiše še tole v 107 vrstici\n\nDeprecated: Function eregi() is deprecated in /home/spletnic/public_html/contact.php on line 107\n\n\nhvala",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "povratni mail vsebuje le ime in sporočilo, ne pa maila, se da še to popraviti\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Funkcija eregi naj se od PHP 5.3 ne bi več uporabljala. Ampak še deluje.",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "A je težko zadevo napisat v google in pogledat, kaj ti ponudi za rešitev?\nhttp://php.net/manual/en/function.eregi.php\n\n\n\n\n\n\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\neregi() is deprecated as of PHP 5.3.0. preg_match() with the i (PCRE_CASELESS) modifier is the suggested alternative.\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZa zamenjavo uporabi to funkcijo: http://www.php.net/manual/en/function.preg-match.php",
+    "author": "Mikrohard",
+    "author_level": "iPhone Profi"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "doto\n\nnevem kje točno si mislil, da prilepim tole\n\nNa začetku za &lt;? dodaj spodnjo kodo:\n\nhvala in lp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Mail imaš v From.\n\nLahko ga dodaš:\n\n$message = $contact_name . $return . $message_text;\n\nspremeni v\n\n$message = $contact_name . \" (\" . $youremail . \")\" . $return . $message_text;",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "hvala erikson,kako pa naj to rešim, funkcije nemorem kar tako zamenjati, kot pravi mikrohard\n\nNaredil sem po navodil erikson kot prvi odgovor, sem dobil sporočilo na mail,\nsedaj pa izpiše še tole v 107 vrstici\n\nDeprecated: Function eregi() is deprecated in /home/spletnic/public_html/contact.php on line 107\n\n\nhvala",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Tole pobriši, ker ni potrebno:\n\n !eregi(\"\\r\",$youremail) && !eregi(\"\\n\",$youremail) &&",
+    "author": "erikson",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "hvala, deluje.",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "vsakih nekaj ur dobim na mail responce sporočilo,ki sem ga napisal na serverju.\nTo sporočilo je v bistvu odgovor, čemi nekdo piše iz kontaktnega obrazca na moji spletne strani.\nsem kontaktiral kjer gostuje moja stran in pravijo,da problem ni pri njih,da je v kodi php obrazca.\nKoda mojega kontaktnega je malo višje, če lahko kdo prosim pogleda,\n\nhvala",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "Spammerji so te našli.",
+    "author": "doto",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "PHP program",
+    "content": "sumim enega kolega, ki je nevoščljiv, itak imam proti spam seštevek dveh stevil\n\nlp",
+    "author": "dejvi",
+    "author_level": "Fizikalc"
+  }
+]

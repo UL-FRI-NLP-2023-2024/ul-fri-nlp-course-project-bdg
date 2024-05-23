@@ -1,0 +1,106 @@
+[
+  {
+    "message": "Torej imam tp link router povezan na siol router. Do sem je vse ok. Ali je možno da bi na tp linku imel funkcionalnosti navadnega routerja (imam ga za povečanje dometa wifija) in da bi lahko obenem še uporabljal siol box priključen na tp link router? Ko sem sprobal je internet delal normalno (kabel in wifi), vendar siol box ne dela, saj je le črna slika. Kakšne nastavitve moram spremenit v tp linku da bi poleg interneta(wifi in kabel) lahko imel povezan še siol box? Port, ki pelje iz siol modema/routerja do tp linka je nastavljen na trunk. ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "To da imaš črno sliko je po moje vzrok bolj v Boxu, kot pa v vezavi ruterjev. V Boxu so v Menuju, Nastavitve (zadnja opcija), Nastavitev kanala ali nekaj podobnega. Tam poveži Box s Tp linkom, resetiraj Box...Pa bo.  Sicer pa je ta varianta, da imaš TP link samo za to da povečaš signal malce nerodna. V ta namen se uporablja extender (repeater). Seveda, če želiš povečati domet Wifi. Ti Extenderji niso dragi, dobijo se sedaj že za kakih 15-20€. In res funkcionirajo.Sicer pa od Extenderja lahko povežeš tudi z LAN, če ima priključek Ethernet. Predpostavljam, da imaš Box povezan z LAN. To je še razlog več, da bi Box moral delovati. Poveži ga v LAN2 od TP linka...če drugače ne moreš, lahko tudi preko Powerline-Adapterja. To je Ethernet povezava preko električne napeljave v hiši. In najboljše pri tem je, da ta PWL funkcionira zelo dobro po celi hiši. Preizkušeno! Sam imam do zgornjega nadstropja pripeljano z PWL od TP linka. Dela! Sicer pa tako, kot zgoraj opisano.  Vso srečo. ",
+    "user": "aokorn"
+  },
+  {
+    "message": "Nevem, če je glih problem v boxu, saj če povežem direktno na siolov modem/router box deluje. Če ga imam povezanega v tp link piše da se je povezalo (zadnji meni), ko pa grem pri prvem meniju (ali drugem, nevem točno) pod splošne informacije pa piše da je lokalna povezava vzpostavljena (ip 192.168.0.101), vendar pri omrežni povezavi piše da je ni. Probal sem vse porte na tp linku ampak je pri vseh isto(medtem ko internet na pcju povezanem na tp link deluje bp). Tp link ne mora biti v istem omrežju kot siolov router, kajne? Bi delovalo če bi ga nekako dal v isto omrežje (siolov router= 192.168.1.xxx, tp link 192.168.0.xxx)?Bom tudi pogledal za repeaterje ja:) ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "Meni so iz teleloma rekli, da mora router delovati kot switch, da bo deloval box ok. In seveda switch mora biti priklopljen na tv vhod na modemu, v mojem primeru to pomeni eth3 ali eth4. ",
+    "user": "abyssus"
+  },
+  {
+    "message": " foxdeko je 21. okt 2017 ob 15:56 izjavil:Torej imam tp link router povezan na siol router. Do sem je vse ok. Ali je možno da bi na tp linku imel funkcionalnosti navadnega routerja (imam ga za povečanje dometa wifija) in da bi lahko obenem še uporabljal siol box priključen na tp link router? Ko sem sprobal je internet delal normalno (kabel in wifi), vendar siol box ne dela, saj je le črna slika. Kakšne nastavitve moram spremenit v tp linku da bi poleg interneta(wifi in kabel) lahko imel povezan še siol box? Port, ki pelje iz siol modema/routerja do tp linka je nastavljen na trunk.   kateri tp-link router imas? najlaze ti bo da na tp-linka nalozis lede openwrt firmware....potem se dodas vlan3999 v routerju in siol box bo zacel delovati.... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "abyssus: Wifi deluje če je router nastavljen kot switch ?   Router je tp link wr740N v4.23. Sem flashal nek drug openwrt fw (Kako naložiti lede openwrt? Na njihovi strani je pod download sekcijo polno nekih datotek, torej ni v eni bin datoteki) in sem po pomoti izklopil dchp na routerju(tako je če si prvič v takem sistemu;( ) tako da potem še dostopat nisem mogel do njegaa, ampak sem rešil vse s failsafe mode. Ali je še kakšna alternativa temu lede fwju? ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "Žal ne bi vedel, se ne spoznam preveč na to. Jaz sem potem nabavil za 10 evrov mali switch. In tam deluje BOX brez težav. ",
+    "user": "abyssus"
+  },
+  {
+    "message": " foxdeko je 24. okt 2017 ob 10:17 izjavil:abyssus: Wifi deluje če je router nastavljen kot switch ?   Router je tp link wr740N v4.23. Sem flashal nek drug openwrt fw (Kako naložiti lede openwrt? Na njihovi strani je pod download sekcijo polno nekih datotek, torej ni v eni bin datoteki) in sem po pomoti izklopil dchp na routerju(tako je če si prvič v takem sistemu;( ) tako da potem še dostopat nisem mogel do njegaa, ampak sem rešil vse s failsafe mode. Ali je še kakšna alternativa temu lede fwju?   tukaj sem nasel lede firmware za tvoj router....potegni datoteko sysupgrade.bin in ne factory.bin.....poglej tukaj: https://lede-project.org/toh/views/toh_... ",
+    "user": "vinkop"
+  },
+  {
+    "message": "Zadnje dni se mi ni dalo ubadat z routerjev, ampak sedaj sem nazaj. Hvala vinko! Naložil sem lede fw, vendar ne morem dostopati do interneta preko routerja (se bo že rešlo). Bolj me zanima za ta vlan3999, katerega si omenil v prejšnjem postu. Ali je to kot nek plugin, ki ga tudi dobim na lede strani? ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "Pri 740 routerju je vprašanje, kako bo delalo, ker se pri WAN portu ponavadi ne da nastaviti VLANa. Je treba imeti nekaj v rangu 1043ND ali višje. Poskusiti seveda ni greh. Network - Switch razdelek pod nastavitvami. Dodaš VLAN 3999 in ga označiš kot tagged pri portu kjer boš imel priklopljen BOX (1043ND ima tukaj dodan še WAN port, ki ga tudi označiš kot TAGGED in tam potem BOX normalno dela). Možno je tudi, da boš sesul router, če mu te nastavitve ne bojo ustrezale in bo potrebno oživljanje :) ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Kopirano iz: siol tv na lede/openwrt usmerjevalniku  da vidiš, kako izgleda nastavitev SWITCHa, kjer se da nastavljati VLAN za WAN.    VLAN_Switch_LEDE ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Hvala za pomoč! Sem našel ta meni, vendar ni WANA. Torej to pomeni da ne bom mogel uporabit tega routerja za box? ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "Najverjetneje ne. Velika možnost je, da boš sesul router. Če poznaš koga, ki ti ga lahko popravi se lahko malo igraš s tem in testiraš, če ne, pa je bolje, da nabaviš kaj, kar podpira nastavljanje VLANa na WANu. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "poglej še na telekomovem modemu nastavitve pod port configuration in nastavi port na katerega je povezan tplink na trunk. tako mam doma in stvar deluje. ",
+    "user": "barrels"
+  },
+  {
+    "message": "Hvala vsem! Na siol routerju je nastavljeno na trunk ze od vsega zacetka. Bom se probal varianto da bom vse boxe priklopil na switch in da bi vlekel od switcha do tega tp link routerja (samo za wifi nic drugega). Bi v teoriji moglo delat kajne? ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "To bi moralo delati skoraj zagotovo delati. ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Superca hvala vsem! ",
+    "user": "foxdeko"
+  },
+  {
+    "message": "Tudi sam hočem siolov box povezati preko \"routerja\" (ki ga še nimam). Dejansko routerja ne potrebujem, hočem le da imam pred boxom wifi dostopno točko z nje pa kabel v box. Kot je bilo zgoraj že omenjeno, če kupim poceni router in ga dam v switch mode z prižganim wi-fijem, je to to? Najcenejša opcija? Oz. kaj naj kupim, da pridem čim veneje skozi, ker hočem če da box dela in da bo v dnevni močnejši wi-fi. Opcija z poceni switchom in na njega dostopno točko je možnost 2, ampak potrebujem 2 napravi = dražje? Če deluje le z routerjem v switch modu, katerega naj kupim (cenejši - le za to)? Mogoče bi kupil mikrotika, bi bil uporaben tudi za kaj drugega kasneje, ampak če dobim kaj poceni le za to bi raje izbral slednje. ",
+    "user": "Wad@"
+  },
+  {
+    "message": "Kolegu sem to rešil s TP-Linkom 1043NDv2 in OpenWRT fwjem. Edino ne vem, kako je s podporo za OpenWRT/LEDE pri novejših revizijah. Je pa spet odvisno, kaj sploh rabiš (giga porti, AC wifi, ...). Tale TP-Link ima samo 2.4Ghz wifi. Archer C50 je recimo poceni in ima AC wifi (2x2), ima pa samo 100Mbps porte.   Na mikrotiku boš lahko VLANe nastavil brez alternativnih firmwareov, je pa recimo hAP AC, ki ima giga porte in AC WiFi 120€. RB951G-2HnD je cca. 80€ in ima giga porte ter N WiFi. hAP ac Lite (single chain AC) je 43€, vendar ima samo 100Mbps porte. wAP AC odpade, ker ima samo en port in nimaš kam priklopit boxa. Če rabiš res minimum, imaš pa za dobrih 20€ hAP lite classic z 100Mbps porti in N WiFijem. ",
+    "user": "XS!D3"
+  },
+  {
+    "message": "hAP ac lite zgleda da bo čisto dovolj. ",
+    "user": "Wad@"
+  },
+  {
+    "message": "Pozdravljeni,  je že nekaj časa od kar je bilo govora o tej zadevi, da opišem moj problem. Mrežo po hiši imamo narejeno sledeče: V srednjem nadstropju je Siol modem z brezžičnim omrežjem v tem nadstropju imamo 2 TV boxa, ki sta priklopljena na modem. Ostaneat 2 prosta porta, eden gre na switch, drugi gre na 3 box v zgornje nadstropje. Iz switcha gre en lan kabel na stacionarni računalnik v srednjem nadstropju, en lan kabel gre za mrežo v zgornjem nadstropju in en lan kabel gre v klet. V zgornjem nadstropju imam lan kabel iz spodnjega switcha povezan na brežični ruter loglink https://www.mimovrste.com/usmerjevalnik..., zgoraj je potem razpeljana mreža žična po sobah. Kje nastane problem... Ko vzpostavim povezava nastane težava da v zgornjem nadstropju računalnik, ki je povezan na mrežo preko kabla ne vzpostavi povezave. Če grem dol in resetiram modem se zgoraj vzpostavi povezava in deluje, grem v srednje nadstropje prižgem računalnik v srednjem nadstropju in sedaj na tem ne deluje internet... Vglavnem probaval sem vse živo prenastavljal nastavitve ruterja, a za enkrat še nimam prave rešitve. Če kdo ve kako bi to moralo delovati, bi prosil za nasvet. Da povzamem: 3 Nadstropja, v vsakem imam lan povezavo preko kabla, v srednjem in zgornjem morata biti wifi. Zgoraj 1 box, v srednjem 2 boxa.  Hvala, Gregor ",
+    "user": "gregor90"
+  },
+  {
+    "message": "Pa še ena zadevica, ki sem jo pozabil omenit, ko zgornji ruter izklopim in direktno povežem vse v mrežo internet deluje povsed... Torej problem je v zgornjem brezžičnem ruterju, a ne vem točno kaj je narobe.  Lp Gregor ",
+    "user": "gregor90"
+  },
+  {
+    "message": "Imaš izklopljen DHCP/Firewall na zgornjem routerju? Je kabel iz Switcha priklopljen v WAN ali LAN na routerju? V modemu imaš port kjer je priklopljen Switch nastavljen na Data ali Trunk? ",
+    "user": "Daniel"
+  },
+  {
+    "message": "Glej, da imas vse routerje, razen glavnega, nastavljen kot access point in DHCP samo na glavnem routerju. ",
+    "user": "Dr_M"
+  },
+  {
+    "message": " Daniel je 3. nov 2018 ob 13:28 izjavil:Imaš izklopljen DHCP/Firewall na zgornjem routerju? Je kabel iz Switcha priklopljen v WAN ali LAN na routerju? V modemu imaš port kjer je priklopljen Switch nastavljen na Data ali Trunk?  Za DCHP bom preveril, na glavnem ruterju je kabel od zunanje škatlice priklopljen na WAN, drugače ne more bit, sepravi imam switch na LANu. Bom pogledal switch mislm da je na Trunk.  Dr M, bom pogledal če je na zgornjem ruterju tudi vklopljen DHCP, zgornji je nastavljen na access point, tako da ne vzpostavlja svoje seje. ",
+    "user": "gregor90"
+  },
+  {
+    "message": "Saj ravno ta zgornji je pomemben, če ima vklopljen DHCP dela zmešnjavo v omrežju. Torej? ",
+    "user": "Daniel"
+  }
+]

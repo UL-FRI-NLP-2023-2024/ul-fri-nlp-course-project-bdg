@@ -1,0 +1,62 @@
+[
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "Po zadnji uporabi notebooka se ga pri pospravljanju z levim robom zadel v rob omare. Od takrat dalje mi ne dela lan povezava. Konektor za povezavo je na levi strani in ko vtkanem notri utp kabel, se normalno prizigajo lucke tam kjer je konektor.\n\nNaredil sem printscreen, kjer se vidi da podatki sicer laufajo gor dol, vendar se vedno ni dostopa do neta.   \n\n\nČe kliknem diganosticiraj, mi napiše: Računalnik je verjetno konfiguriran pravilno, vendar se naprava ali sredstvi (Strežnik DNS) ne odziva več \n\n-notebook je HP 4710s,  vstekan v Milan router od T2, če isti kabel vštekam v Pc, internet DELA!\n a obstaja kak program da stestira mrežno?\nČe je mrežna fuč, sklepam, da je del matične in se jo ne da menjati separatno?",
+    "author": "univerza982",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "Probaj popingat 8.8.8.8, ampak naceloma bi reku da z mrezni nimas problemov.... Pa tkole javno objavlat public ip se odvadi...",
+    "author": "R0KY",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "Dej probaj narediti:\nV (run - zaženi) vpiši cmd, klikni da odpre in vpiši:  ipconfig /release,  počakaj malo da resetira cca pol minute, sedaj vpiši ipconfig /renew, in probaj če sedaj dela.",
+    "author": "TUPLI",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "če v cmd napišem \nipconfig /realese mi napiše :unrecognized  or imcoplite comand line. Notebook sem zadel v petek, in sem šele včeraj opazil da ne dela net. Sem pa opzail da mi pod povezavo kaže drug ip, kot ga imam na pc, ki je povezan z istim kablom. Ali je možno da mi je v notebooku ostal še ip od petka, novega mi pa ne dodeli, ker je okvarjena mrežna? Kaj lahko še storim?",
+    "author": "univerza982",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "Vpiši statičen ip in gateway.",
+    "author": "titov",
+    "author_level": "Fizikalc"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "kako definiram to komando  v cmd?",
+    "author": "univerza982",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "\n\t\n\t\n\t\t\n\t\t\n\t\t\tCitat:\nUporabnik univerza982 pravi:\n če v cmd napišem \nipconfig /realese mi napiše :unrecognized  or imcoplite comand line. Notebook sem zadel v petek, in sem šele včeraj opazil da ne dela net. Sem pa opzail da mi pod povezavo kaže drug ip, kot ga imam na pc, ki je povezan z istim kablom. Ali je možno da mi je v notebooku ostal še ip od petka, novega mi pa ne dodeli, ker je okvarjena mrežna? Kaj lahko še storim?\n\t\t\n\t\tKlikni za razširitev\n\t\n\nZatipkal si se. Pravilno je release.",
+    "author": "philips",
+    "author_level": "Guru"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "maš res\n\n C:\\Users\\home&gt;ipconfig /release \n\nWindows IP Configuration\n\nNo operation can be performed on Brezžična omrežna povezava while it has its med\nia disconnected.\n\nWireless LAN adapter Brezžična omrežna povezava:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . : t-2.net\n\nEthernet adapter Povezava lokalnega omrežja:\n\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d860:80e1:9083:3c8c%10\n   Default Gateway . . . . . . . . . :\n\nTunnel adapter isatap.{DE3FF357-8CA9-469F-98F2-F3EE33E955AE}:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nTunnel adapter Povezava lokalnega omrežja* 11:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nTunnel adapter 6TO4 Adapter:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nTunnel adapter isatap.t-2.net:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\n C:\\Users\\home&gt;ipconfig /renew \n\nWindows IP Configuration\n\nNo operation can be performed on Brezžična omrežna povezava while it has its med\nia disconnected.\n\nWireless LAN adapter Brezžična omrežna povezava:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . : t-2.net\n\nEthernet adapter Povezava lokalnega omrežja:\n\n   Connection-specific DNS Suffix  . : t-2.net\n   Link-local IPv6 Address . . . . . : fe80::d860:80e1:9083:3c8c%10\n   IPv4 Address. . . . . . . . . . . : \n   Subnet Mask . . . . . . . . . . . : \n   Default Gateway . . . . . . . . . : \n tukaj je ip, mask, gateway definiran, vendar je ip drugačen kot ga imam na istem kablu na pc, predvidevam da se ni na novo ponastavil \nTunnel adapter isatap.{DE3FF357-8CA9-469F-98F2-F3EE33E955AE}:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nTunnel adapter Povezava lokalnega omrežja* 11:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nTunnel adapter 6TO4 Adapter:\n\n   Connection-specific DNS Suffix  . : t-2.net\n   IPv6 Address. . . . . . . . . . . : 2002:59d4:e05d::59d4:e05d\n   Default Gateway . . . . . . . . . :\n\nTunnel adapter isatap.{D7B63D67-8854-4E6E-8968-3D76E25D0DFB}:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nTunnel adapter isatap.t-2.net:\n\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\n\nC:\\Users\\home&gt;\n\nworse case scenario kupim tole, bo delalo?\n 1 primerek na bolhi \npovezava s providerjem je 100 megabitna (upam, da ta vmsenik ne bo ozko grlo?) \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "univerza982",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "Imaš vmes router ?\nGlede na zgoraj prilepljeno si na T-2. Če nimaš routerja si omejen z dvemi(tremi) IPji -po domače: lahko priključiš samo dva(tri) različne računalnike, da delajo. Si ga poiskusil priključiti drugje ?\n\nBDW: Drug računalnik na istemu kablu MORA imeti drugačen IP - le kaj bi bilo, če bi vsi imeli enakega  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t\n\n\n\nRouter ga dodeli na podlagi MAC naslova in ga rezervira zanj določen čas.  \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "Robert",
+    "author_level": "Majstr"
+  },
+  {
+    "ctx": "ne dela net povezava na notebooku",
+    "content": "ni nobenga ruterja vmes, samo kabl in switch od t2... imaš prav zdele gledam in vidim da ima pc svoj ip, notebook pa svojga, čeprav sta na istem kablu. seeno hvala za trud, zadevo sem rešil z vmesnim adaptrerjem usb to lan (če ne gre čez goro je pa treba okoli nje \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "univerza982",
+    "author_level": "Pripravnik"
+  }
+]

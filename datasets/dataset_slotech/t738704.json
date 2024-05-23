@@ -1,0 +1,58 @@
+[
+  {
+    "message": "se da kakao nardit da bi ms windows explorer disk cleanup se zagnal vsak dan ob določe uri? tist ko greš v ms windows explorer pa na particijo c: desnoklikneš pa izbereš disk cleanup. da bi se to zagnal vska dan kot sem rekel ob določeni uri. se da kaj naredit preko task schedulerja pa cmd kakega .bat fajla? ",
+    "user": "Ijus"
+  },
+  {
+    "message": "evo. rešu. simple ko pasulj. zagnal v ms windows explorerju disk cleanup. v task managerju na ikonci pogledal ker program je. program je: cleanmng.exe zagnal prek winkey+r \"cmd\" v cmd okolju zagnal \"cleanmgr.exe /?\" ukaz v win10 gui okolju dobil okno z navodili probaval ugotovil da je ta string pravi (recimo - tle če kdo pokomentira, če se mu ljubi, prosim): \"cleanmgr.exe /sagerun:c: tuneup:c: /autoclean\" shranil ta string v cleanmgr.bat file ga shranil v nek moj personal folder pol sem zagnal task scheduler iz control panel\\administrative tools ter tam kreiral basic task: izbral vsak dan ob 00:00 ter določil pot do tega cleanmgr.bat fajla.  simple. hehe.  sorry k sem vprašal preden sem sam pogruntal. ne pa brisat tega če bo komu prav prišlo.   ps: hočem, da mam ssd čim bolj čist.  lp ",
+    "user": "Ijus"
+  },
+  {
+    "message": "How to run Disk Cleanup as a Scheduled Task  https://www.geeksinphoenix.com/blog/pos...       Left-click on the Start button.\n    Left-click on All apps.\n    Scroll down to Windows Administrative Tools and left-click to expand.\n    Left-click on Task Scheduler.\n    In the right column labeled Actions, select Create Basic Task. The Create a Basic Task Wizard will appear.\n    Give the task a name and description and then select Next.\n    Select when you want it to run (trigger).\n    When prompted for what task you want to perform, select Start a program then select Next.\n    When prompted for a program / script to start, select Browse and navigate to C:\\Windows\\System32\\ and select cleanmgr.exe.\n    In the Add arguments section, type /sagerun:n and then select Next.\n    The then select Finish and you're all set.\n ",
+    "user": "b3D_950"
+  },
+  {
+    "message": "ja sej to je to simple sma če mi poveste če moj string zbriše tud system temp files?  cleanmgr.exe /sagerun:c: tuneup:c: /autoclean ",
+    "user": "Ijus"
+  },
+  {
+    "message": "mislim da ne zbriše, preveri v mapi %temp% če izginejo po cleanup-u...  (start-run->%temp%)   @echo off\ncd /D %temp%\nfor /d %%D in (*) do rd /s /q \"%%D\"\ndel /f /q   ali pa    del %TEMP%\\*.* /f /s /q ",
+    "user": "b3D_950"
+  },
+  {
+    "message": "Mogoče še tole pride v poštev: https://www.howtogeek.com/348635/use-wi...  Jaz sicer takšni avtomatizaciji ne zaupam in raje poženem ročno po potrebi :)  Lp ",
+    "user": "Enron x86"
+  },
+  {
+    "message": "ja ta slednji link je sam zoprn glede recycle bina. sam moja izvedba tud ni nedolžna. zbriše recycle bin lih tko. kdaj prav pride da vzameš iz recycle bina ven kaj kar si po pomoti zbrisal.  -----------------  ja, ja. tist echo off pa pol naprej... del %temp%\\*.* /f /s /q je tud dobra ideja. sam un cleanmgr vse zbriše kar se tiče temp fajlov.  edin mislim da ne zbriše: C:\\Windows\\SoftwareDistribution tle mam še 1.04GB fajlov. - to vedno na roke zbrišem vsake tolk cajta. pa tud na roke vsake tolk cajta zbrišem: C:\\Windows\\Downloaded Program Files pa še robocopy bom spet uporabil za delat backup svojih osebnih fajlov (slike, videji, glarika, muska,...) lihkar delam backup iz ssd-ja na hdd. dobr da sem se spomnil. string je: Robocopy.exe d:\\mine e:\\backup\\mine /mir /w:0 /r:0 ",
+    "user": "Ijus"
+  },
+  {
+    "message": "dejte mi še neki pomagat. ne lub se mi več iskat.  rad bi naredil v task schedulerju nalogo ki bi vsak ponedeljek v tednu naredila system check windowsov. torej sfc.exe  uakz je \"sfc.exe /scannow\"  problem je ker ta ukaz deluje samo, če zaženem ali cmd ali powershell z administratorskimi pravicami.  ko naredim task v task schedulerju pa spremenim pod: genral\\security options\\change user or group -> v administrator ... se mi task ne zažene. pol sem šel explorat na googla pa najdel ukaz: runas.exe s tem ukazom zaženeš določen .exe al .com al .bat z določenimi praivcami. in kakor sem uspel ugotoviti je ukaz ta: \"runas.exe /user:administrator\" ter za tem še dodaš program z parametri ki bi ga rad zagnal torej je cel ukaz tak: runas.exe /user:administrator \"sfc.exe /scannow\" //narekovaji morjo bit če ne ne dela//  problem je ko me vpraša za geslo. tf kakšno je geslo? kje naj to dobim? pa ne bom vpisoval vsak ponedeljek ob 6AM geslo.  a je to sploh prava smer? ",
+    "user": "Ijus"
+  },
+  {
+    "message": "Prava smer je, da tega ne delaš, ker načeloma to uredi windows sam. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "ja ne vem.  zdje mam že ene par dni na f.install narejen. pa sem včer pognal v cmd okolju z admin pravicami ta ukaz sfc /scannow pa je app javil da je najdel nekaj napak in da so bile uspešno odpravlejne - fajli popravljeni ",
+    "user": "Ijus"
+  },
+  {
+    "message": "Vedno bo našel kako napako. Načeloma se to ne dela, če ni kakega problema z delovanjem. Jaz na 5 let inštalirani mašini še nisem tega pognal, pa še nisem mel problema. Pa sem vmes selil iz ssd na hdd. ",
+    "user": "DeeCoy"
+  },
+  {
+    "message": "in kaj je pol narobe, če bi vsak teden se zagnal ta task? - da poproavi corruptane fajle.  ---------------------  bi znal kod sestavit ukaz? en ukaz (poln/zadosten) za task scheduler z settingsi za ta task. ",
+    "user": "Ijus"
+  },
+  {
+    "message": "če se tedensko \"podirajo fajli\" je nekaj narobe s hardwareom oz. diskom, malware, ipd.  All Windows NT-based operating systems since Windows 2000 introduced real-time file protection, called Windows File Protection (WFP).[2]  In addition, the System File Checker utility (sfc.exe) was reimplemented as a more robust command-line utility that integrated with WFP. Unlike the Windows 98 SFC utility, the new utility forces a scan of protected system files using Windows File Protection and allows the immediate silent restoration of system files from the DLLCache folder or installation media. ",
+    "user": "b3D_950"
+  },
+  {
+    "message": "spet sem zagnal sfc.exe mal za zajebancijo. pa ni nič najdel. cool. hehe. kako je napisal: ...did not find any integrity violations. lol ",
+    "user": "Ijus"
+  }
+]

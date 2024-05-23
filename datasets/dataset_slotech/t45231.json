@@ -1,0 +1,106 @@
+[
+  {
+    "message": "Torej problem je sledec Dobil sem dva P1 letnik 95\\96, od tega je eden bil svoje cajte uporabljan kot streznik in ima zato tudi kar posten disk(3,2Gb)-za tiste cajte in tudi dosti rama......preidimo na bistvo. Odlocil sem se in sem zmotal skupi dva diska in ves ram v enega..........dodal se CD (neka arnca) in racunačnik za nujne potrebe (pisanje v wordu in mogoce se kaj je tu) aja Moto racer 1 tud dela.........u glavnem mislim da sem vse potrebno kablovje povezal saj mi je oba diska lepo zaznal sam me cudi da cd-ja pa ne. Bili so na enem disku namesceni tud 3.1 Winows tak da sem lahko\" normalno\" uporabljal computor. In potem pametnjakovic formatiram oba diska vstavim sistemsko, v biosu nastelam boot A in gremo............vse kul nakar pridem do menija kok ze gre.........s podporo za cd al neki takega pod ena.........brez pod dve itd...........uglavnem kliknem prvo funkcijo in mogl bi delat, ampak nekaj je compo mlel potem pa se v dos ekranu ustavi in napise Device name: 000CLKX........NEKI V TEM STILU.............in stvar se ustavi nakoncu kratice utripa kurzorcek ampak nic ne moram nardit. Jest sem ze enkrat svoj compo formatiru in to in jr vse delal kul........ Zdej ne vem jest sem CD sam vsteku in nic instaliru tud prej ne ko sem se mel one vindovse gor sam to bi tak mogl delat...........probu sem tud z dvem razlicnim CD enotam pa nic .......... A mi lahko gdo pomaga lahka da sem tud postopek kej zaje.....ker glih vsak dan ne delam to.....tak da ce kdo ve kak bi tocen mogu to nardit naj bo prosen...........hvala ce se kako info nisem navedu naj me gdo opozori.......  Hvala ze za samo branje kaj sele za odgovor Ful bi rad zrihtu tole ce ne druga da se kaj naucim        ",
+    "user": "big"
+  },
+  {
+    "message": "aja mutec Hotu sem instalirat Win 95 in probu sem tud z 98se oboje na instalacijskem CD-ju pa sploh nisem prisel do tja...........setup disketo sem naredu v 98-se na mojem compu.............  ",
+    "user": "big"
+  },
+  {
+    "message": "-kako imaš vezane diske/cd-je? kaj ne na katerem kanalu? -ali imaš v biosu nastavljene vse enote na autodetect? -ti bios prepozna vse diske/cd? ",
+    "user": "gumby"
+  },
+  {
+    "message": "ja mal sem pozen sam.  diske mam vezane kot master in slave na enem kablu, cd pa na drugem com portu al kok se rece.... sam sem probu tud z sam enim diskom in cd-jem na isti znuri s cd-jem kot slave ........ potem v biosu nisem opazu kje naj nastavim autodetect kej posebi,,,,,,,diska mi pa oba lepo prepozna cd pa mislim da tudi saj v tem zagonskem ekranu napise cd detected itd. sam pol pa ta problem iz prvega posta da v 3.1 cd-ja ni blo prikazanga........ ",
+    "user": "big"
+  },
+  {
+    "message": "bom se enkrat vse cekiru.............zanima me vezava na enem kablu je vazna recimo kir je na vrhu kabla in vmes ?........ ",
+    "user": "big"
+  },
+  {
+    "message": "hm.. če ti bios napiše nekaj v stilu CD detected, potem je z kablom vse v redu. sicer pa je vseeno, na kateri konektor daš CD ali disk - master/slave se določi z jumperji (paziti moraš samo pri kablu od disketnika - konektor na koncu je A, na sredini pa B, se mi zdi). probaj pritisniti F8 pri zagonu in vključi potrjevanje korakov. potem pa prepiši točno tisto napako ali sporočilo, ki se izpiše pri \"zmrznitvi\" ",
+    "user": "gumby"
+  },
+  {
+    "message": "takole......... DOS=HIGH,UMB ENTER ZA DA , ESC ZA NE (pa ne da vem tocno kaj to pomeni in dam enter vse kul gre naprej DEVICE=HIMEM.SIS /TESTMEM:OFF.........DAM SPET ENTER vse kul gre napraj DEVICE=OAKCDROM.SIS /D:MSCD001 ..........eeeeee tu se pa ustav in me vrze na ekran ki ga vidim ze od zacetka problemov konec  ravnokar probavam da sem dal NO pri tem vprasanju pa je slo naprej zdej pa klikam v nedogled enter torej da in bomo videl kaj bo pojma tak nimam kaj vse to pomeni    se kak nasvet prosim  ",
+    "user": "big"
+  },
+  {
+    "message": "Probaj najti pravi driver za DOS za tvoj model CD-ja. Problem je v CD driverju za DOS. ",
+    "user": "ToniT"
+  },
+  {
+    "message": "ja... probaj zamenjati oak z atapicd.sys ali mtmcdai.sys. ",
+    "user": "gumby"
+  },
+  {
+    "message": "ok dobil sem drajver za dos ga razpakiru na disketo in gremo zdej v dos na racunalniku lahka pridem sam prek setup dikete za windovs ne? dam brez podpore za cd in pridem v dos ..........iz a: zazenem instal.exe pa me vprasa kam cem dat in predlog c:\\teac......kliknem ok dela ....copira neke fajle nakar konca in me vprasa kje je lociran fail mscdex.exe ki pa je ponavadi v windows direktoriju ki pa jih nimam gor al kaj? uglavnem ne gre naprej. zdej ne vem al morem celo disketo najprej na disk posnet al kaj?   glede zadnjega posta t.g pa kje so pa locirani te fajli in s cem jih naj zamenjam (kje so pa te)  jebe me vse povrsti nemorem verjet......  hvala vama    ",
+    "user": "big"
+  },
+  {
+    "message": "ja zdej sem ta fajl kr iz svojga computorja presnel na disketo in potem na disk ..........ja instalacija je kao uspela sej tak pise ..........nardil je autoexec in se eno sistemsko datoteko.........sam pol pa hocem zagnat cd player v dosu pa mu spet nek fail manjka ............potem probam isti postopek s setupom pa spet isto sporocilce mogoc se tole da sta master disk in cd v zacetnem ekranu obadva oznacena kot mode 4 karkole ze to pomeni torej master disk(primari master disk-mode 4 ) in cd (secondari slave-mode 4) to neki ni kul po moje ",
+    "user": "big"
+  },
+  {
+    "message": "mscdex.exe se ponavadi nahaja v windows ali windows\\command direktoriju, moral pa bi biti tudi na disketi od CD-ja...  sicer pa bi v config.sys moralo biti nekaj takega: device=mtmcdai.sys /D:mscd001 namesto mtmcdai.sys bi moral biti gonilnik za tvoj CD  v autoexec.bat pa mora biti tole: MSCDEX.EXE /D:mscd001 /L:r najboljše je, da mscdex.exe skopiraš na disketo.  parameter /L:r določa črko pogona (jaz mam pač na R: nastavljeno)  ",
+    "user": "gumby"
+  },
+  {
+    "message": "-tisti mode 4 je čisto v redu. -napiši točno, katero datoteko išče... -daj še autoexec.bat in config.sys gor, pa bomo videli ",
+    "user": "gumby"
+  },
+  {
+    "message": "mcsdex.ekse sem dal na disketo kr iz windowsowv na mojem compu ker original instalacijskega cd-ja od playerja nimam ga nikoli nisem mel config .sis in autoexec.bat je ze na disku ker mi ju je ustvarl med instalacijo drajverja za cd kot sem ze prej povedu  ce zazenem autoexec. bat mi napise tole: c:\\c:teac\\mscdex.exe /D:teac-cdi /m:15 Device driver not found: ´teac-cdi´. No valid CDROM dewicw driver selected  config.sis mi pa sploh ne zazene al pa jez ne znam  Kaj mislis s tem dej gor auto... con... da isto bresnamem iz svojga compa pa jih kr v c: posnamem al kaj?  kje mislis katero datoteko isce? pri instalaciji cd-ja al pri setup windows al kje....... ",
+    "user": "big"
+  },
+  {
+    "message": "mal sem smotan sej vem sam ne obupat please  ",
+    "user": "big"
+  },
+  {
+    "message": "z \"daj gor\" sem mislil na copy/paste v forum... če ne gre drugače, potem natipkaj type config.sys v DOS-u in ti bo izpisalo vsebino datoteke... kot vidim, imaš za ID gonilnika nastavljeno teac-cdi. potem bi moral v config.sys imeti vrstico device=xxx.sys /D:teac-cdi namesto tistega xxx mora biti tvoj gonilnik - poglej, kaj je na disketi (dir *.sys) ",
+    "user": "gumby"
+  },
+  {
+    "message": "hvala za nasvet type mal pozabljam dos......ok config.sys torej pise tole DEVICE=C:\\TEAC\\TEAC_CDI.SYS \\D:TEAC_CDI FILES=40 LASTDRIVE=Z ZAL NE ZNAM LOVDAT V FORUM COPI PASTE NE DELUJE na disketi je od sys fajlov sam teac_cdi.sys logicno ne  mislis da ma kake veze ce najprej vseskupaj zazenem z instalacijsko za dos (sem najdu na netu        polno glavo ze mam teh podatko ampak se trudim ",
+    "user": "big"
+  },
+  {
+    "message": "poglej malo teac_cdi... v config.sys imaš podčrtaj (_), v autoexec.bat pa vezaj (-)... spremeni tako, da bo v obeh enako ",
+    "user": "gumby"
+  },
+  {
+    "message": "kako pa prides v autoexec da lahko kej spreminjas? ",
+    "user": "big"
+  },
+  {
+    "message": "ok eno knjigo za dos sem nasu doma zdej sem to spremenil  autoexec je zdej vse z podvezaji sam se zmerom ce hocem cdplay zagnat mi napise, pravzaprav se nahiter pokaze potem pa napise mscdex not found........... ce pa dam dir v teac direktoriju ga pa vidim kaj je to to je z druzga compa fail mscdex namrec (glej enega izmed zgornjih postov) je lahko to narobe zaganjam s setup diketo z podporo za cd-je .........spet isti napis device name............ne dela ",
+    "user": "big"
+  },
+  {
+    "message": "-če zaganjaš z diskete, potem moraš imeti te fajle na disketi... -če zaganjaš z HD-ja, potem pa napiši polno pot do fajlov: device=c:\\teac\\teac_cdi.sys /d:teac_cdi (config.sys) in c:\\teac\\mscdex /d:teac_cdi (autoexec.bat) -cdplay (predvidevam, da je to za audio CD-je) ti javi napako, ker mscdex ni pravilno naložen... ",
+    "user": "gumby"
+  },
+  {
+    "message": "ce pa zazenem mscdex pa pise usage: MSCDEX (/E/K/S/V) (/D: (driver)...) (/L:(letter)) (/M:(buffers))  z oglatimi in puscica oklepaji ce to kej pomaaga ",
+    "user": "big"
+  },
+  {
+    "message": "ja.. napiše ti sintakso, ker verjetno nima dobrih parametrov... parameter /d:teac_cdi mora biti enak pri .sys gonilniku in mscdex, drugače ne bo delalo ",
+    "user": "gumby"
+  },
+  {
+    "message": "zdej sploh ne vem ce se zastopmo  meneki cist z nule zanima jest sem oba diska preden sem sploh karkoli zacel delat formatiru format c: in format d: ne. tak da mam dva popolnoma prazna diska brez OP al dos al wins nakar se zgodba z setupom zacne  Zakaj to sprasujem ........zato ker sem zdej montiru en drug cd za keterega imam original setup disketo  kok naj zacnem  pri zagonu brez setup diskete za windows sploh nikamor ne morem ker mi napise da ni sistema ...........  kje sem ?          obup ",
+    "user": "big"
+  },
+  {
+    "message": "Big, C disk moraš formatirati z ukazom : FORMAT C:/S Še enkrat vstavi sistemsko disketo in prenesi sistem z ukazom SYS C: in disk ti mora sedaj bootat.   ",
+    "user": "Duhec"
+  },
+  {
+    "message": "točno tako... bootaj z diskete in prenesi sistem z sys c: - nato bi ti moralo bootati z HD-ja (sem mislil, da si to že naredil)  potem pa še prekopiraš potrebne datoteke nekam na disk (verjetno jih že imaš v c:\\teac), namečeš tiste ukaze v autoexec.bat in config.sys in stvar bi morala delati... ",
+    "user": "gumby"
+  }
+]

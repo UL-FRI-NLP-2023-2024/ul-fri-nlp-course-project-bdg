@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": "Excel - povezava med listi",
+    "content": "Lp\nV Excelu imam več listov z tabelami. Za iskanje podatkov na vsakem listu posebej uporabljam funkcijo offset, ki deluje brez problema.\nPrimer formule =OFFSET(A1;MATCH(30;A2:A31;0);MATCH(1;B2:U2;0))\nSedaj pa bi rad vse podatke, ki jih potrebujem združil v novem listu, da mi nebi bilo potrebno odpirati vsakega lista posebej.\nTo pa mi nikakor ne uspe, z predelavo zgornje formule, saj imam premalo znanja z delanjem z Excelom.\nJe sploh kakšna možnost za to? \n\t\n\n\t\n\t\n\t\t\n\t\t\n\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\n\n\t\n\t\t\n\t",
+    "author": "jendomen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - povezava med listi",
+    "content": "js bi probu A1 v formuli offset, torej referenco, skombinirat s formulo INDIRECT.\nNamest A1 bi vpiso INDIRECT(A2&\"!A1\") in potem v celico A2 vpises ime lista katerga zelis preiskat:\n\nnekak takole: =OFFSET(INDIRECT(A2&\"!A1\");MATCH(30;A2:A31;0);MATCH(1;B2:U2;0))",
+    "author": "Evrokrat",
+    "author_level": "mX's brotherPEPČEK 08"
+  },
+  {
+    "ctx": "Excel - povezava med listi",
+    "content": "Lp\nSem poizkusil po zgornji formuli, pa zadeva ne deluje.",
+    "author": "jendomen",
+    "author_level": "Pripravnik"
+  },
+  {
+    "ctx": "Excel - povezava med listi",
+    "content": "prilozi kak primer z opisom kaj bi rad, da vidim, ce se da kaj nardit\nta formula bi naceloma morala delovat",
+    "author": "Evrokrat",
+    "author_level": "mX's brotherPEPČEK 08"
+  },
+  {
+    "ctx": "Excel - povezava med listi",
+    "content": "Lp\nSem s pomočjo strička Googla našel rešitev, ki je sledeča\n=OFFSET(List1!A2;MATCH(30;List1!A3:A32;0);MATCH(1;List1!B2:U2;0))\nEvrokart hvala za pomoč.",
+    "author": "jendomen",
+    "author_level": "Pripravnik"
+  }
+]
