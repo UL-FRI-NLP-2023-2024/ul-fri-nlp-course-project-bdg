@@ -241,9 +241,9 @@ for filename in os.listdir(path_to_data):
                 if ("@assistant" in mention_answer):
                     exact_assistant = re.search(r'@assistant_(\d+)', mention_answer).group(1)
                     exact_assistant = "assistant_" + str(exact_assistant)
-                    special_answer = mention_answer.replace("@" + exact_assistant, "@user")
+                    mention_answer = mention_answer.replace("@" + exact_assistant, "@user")
                 if ("@user" in mention_prompt):
-                    special_prompt = mention_prompt.replace("@user", "@assistant")
+                    mention_prompt = mention_prompt.replace("@user", "@assistant")
 
                 list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': mention_prompt.strip(), 'answers': [{'role': "assistant", 'message': mention_answer.strip(), "answer_rating": int(row["role_rating"]), "answer_hate": 0}]})
                 corpus_index += 1

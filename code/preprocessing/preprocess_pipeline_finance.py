@@ -24,7 +24,7 @@ index_files = 1
 for filename in os.listdir(path_to_data):
     #if filename == 't39073.json':
     #    print('exception')
-    #filename = '2676836.json'
+    #filename = '111450_no_duplicates.json'
 
     load_path = ""
     load_path = os.path.join(path_to_data, filename)
@@ -117,21 +117,46 @@ for filename in os.listdir(path_to_data):
         question_words = [line.strip() for line in file]
 
     # prepare regex patterns for citations
-    citation_pattern_start_1 = r'.*Citat: Uporabnik .*? pravi:'
-    citation_pattern_start_2 = r'.*Uporabnik .*? je napisal:'
-    citation_pattern_start_1_exact = r'Citat: Uporabnik .*? pravi:'
-    citation_pattern_start_2_exact = r'Uporabnik .*? je napisal:'
-    citation_pattern_end = r'Klikni za razširitev'
-    citation_pattern_whole_1 = r'{}.*{}'.format(citation_pattern_start_1, citation_pattern_end)
-    citation_pattern_whole_2 = r'{}.*{}'.format(citation_pattern_start_2, citation_pattern_end)
+    citation_pattern_start_1 = r'.* wrote:'
+    citation_pattern_start_2 = r'.* je napisal(a):'
+    citation_pattern_start_3 = r'^\[\b(\w+\s){0,2}\w+\b]'
+
+    citation_pattern_start_1_exact = r'^\b(\w+\s){0,2}\w+\b wrote:'
+    citation_pattern_start_2_exact = r'^\b(\w+\s){0,2}\w+\b je napisal\(a\):'
+    citation_pattern_start_3_exact = r'^@\b(\w+\s){0,2}\w+\b wrote:'
+    citation_pattern_start_4_exact = r'^@\b(\w+\s){0,2}\w+\b je napisal\(a\):'
+
+    citation_pattern_start_5_exact = r'^\[\b(\w+\s){0,2}\w+\b]'
+    citation_pattern_start_6_exact = r'^\[@\b(\w+\s){0,2}\w+\b]'
+    #citation_pattern_start_2_exact = r'[.*?]'
+    #citation_pattern_end = r'Klikni za razširitev'
+    #citation_pattern_whole_1 = r'{}.*{}'.format(citation_pattern_start_1, citation_pattern_end)
+    #citation_pattern_whole_2 = r'{}.*{}'.format(citation_pattern_start_2, citation_pattern_end)
+    edit_pattern1 = r'^Zadnja sprememba: @assistant_\d+ .*? \d{2}:\d{2}'
+    edit_pattern2 = r'^Zadnja sprememba: @user .*? \d{2}:\d{2}'
 
     for index, row in data.iterrows():
 
         msg = row['message']
         msg = msg.strip()
 
-        citation_match_1 = re.match(citation_pattern_whole_1, msg)
-        citation_match_2 = re.match(citation_pattern_whole_2, msg)
+        # match edit pattern and remove it
+        edit_match1 = re.match(edit_pattern1, msg)
+        if (edit_match1):
+            msg = msg.replace(edit_match1.group(0), "")
+            msg = msg.strip()
+        else :
+            edit_match2 = re.match(edit_pattern2, msg)
+            if (edit_match2):
+                msg = msg.replace(edit_match2.group(0), "")
+                msg = msg.strip()
+
+        citation_match_1 = re.match(citation_pattern_start_1_exact, msg)
+        citation_match_2 = re.match(citation_pattern_start_2_exact, msg)
+        citation_match_3 = re.match(citation_pattern_start_3_exact, msg)
+        citation_match_4 = re.match(citation_pattern_start_4_exact, msg)
+        citation_match_5 = re.match(citation_pattern_start_5_exact, msg)
+        citation_match_6 = re.match(citation_pattern_start_6_exact, msg)
 
         # first prompt
         if (index == 0):
@@ -139,53 +164,88 @@ for filename in os.listdir(path_to_data):
             prompt = row['ctx'] + ". " + row['message']
 
         # special case - citation
-        elif (citation_match_1 or citation_match_2):
+        elif (citation_match_1 or citation_match_2 or citation_match_3 or citation_match_4 or citation_match_5 or citation_match_6):
 
-            while(msg != ""):
-                # only 1 citation
-                # get the citation between the start and stop pattern
-                citation_prompt = ""
-                citation_answer = ""
+            # extra handle for citation match 3
+            #if (citation_match_3):
+            #    print("exception")
 
-                # find the prompt
-                citation_start = re.search(citation_pattern_start_1_exact, msg)
-                if (citation_start == None):
-                    citation_start = re.search(citation_pattern_start_2_exact, msg)
-                citation_end = re.search(citation_pattern_end, msg)
+            #while(msg != ""):
+            # only 1 citation
+            # get the citation between the start and stop pattern
+            citation_prompt = ""
+            citation_answer = ""
 
-                citation_prompt = msg[citation_start.regs[0][1]:citation_end.regs[0][0]]
-                # find the answer
-                citation_answer = msg[citation_end.regs[0][1]:]
+            # find the prompt
+            # find correct start pattern
+            citation_start = None
+            if (citation_match_1):
+                citation_start = re.match(citation_pattern_start_1_exact, msg)
+            elif (citation_match_2):
+                citation_start = re.match(citation_pattern_start_2_exact, msg)
+            elif (citation_match_3):
+                citation_start = re.match(citation_pattern_start_3_exact, msg)
+            elif (citation_match_4):
+                citation_start = re.match(citation_pattern_start_4_exact, msg)
+            elif (citation_match_5):
+                citation_start = re.match(citation_pattern_start_5_exact, msg)
+            elif (citation_match_6):
+                citation_start = re.match(citation_pattern_start_6_exact, msg)
 
-                # does answer contain citation?
-                citation_match_1 = re.match(citation_pattern_whole_1, citation_answer)
-                citation_match_2 = re.match(citation_pattern_whole_2, citation_answer)
-                if (citation_match_1 or citation_match_2):
-                    # find new start
-                    citation_start = re.search(citation_pattern_start_1_exact, citation_answer)
-                    if (citation_start == None):
-                        citation_start = re.search(citation_pattern_start_2_exact, citation_answer)
+            if (citation_start == None):
+                print("exception")
+            else:
+                # remove starging pattern
+                #citation_prompt = msg.replace(citation_start.group(0), "").strip()
 
-                    msg = citation_answer[citation_start.regs[0][0]:]
-                    citation_answer = citation_answer[:citation_start.regs[0][0]]
+                # search for citation source in previous messages
+                for i in range(index-1, -1, -1):
+                    prev_msg = data['message'][i]
+                    if ((msg.replace(citation_start.group(0), "").strip()).startswith(prev_msg)):
+                        citation_prompt = data['message'][i]
+                        break
+
+                if (citation_prompt == ""):
+                    # no quite found - use as prompt/anwser
+                    if (row['user'] == prompt_user):
+                        # save current one
+                        if (len(answers) > 0):
+                            list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
+                            corpus_index += 1
+                        # start new
+                        prompt = msg
+                        continue
+                    else:
+                        # save as answer
+                        answers.append({'role': "assistant", 'message': msg.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0})
+                        continue
                 else:
-                    msg = ""
+                    # citation is msg - stargin_pattern - citation_prompt
+                    citation_answer = msg.replace(citation_start.group(0), "").strip()
+                    citation_answer = citation_answer.replace(citation_prompt, "").strip()
+                    citation_answer = citation_answer.strip()
 
+                    if (citation_answer == ""):
+                        print("exception")
+                        continue
+
+                # into dataframe save only the answer without citation for next iteration
+                data.at[index, 'message'] = citation_answer
 
                 # save the citation
-                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': citation_prompt.strip(), 'answers': [{'role': "assistant", 'message': citation_answer.strip(), "answer_rating": row["role_rating"], "answer_hate": 0}]})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': citation_prompt.strip(), 'answers': [{'role': "assistant", 'message': citation_answer.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0}]})
                 corpus_index += 1
 
 
         # special case - mention assistant
-        elif ("@assistant" in row['message']):
-            exact_assistant = re.search(r'@assistant_(\d+)', row['message']).group(1)
+        elif ("@assistant" in msg):
+            exact_assistant = re.search(r'@assistant_(\d+)', msg).group(1)
             exact_assistant = "assistant_" + str(exact_assistant)
 
             # check if its talking about himself
             if (exact_assistant == row['user']):
                 # remove number
-                row['message'] = row['message'].replace("@" + exact_assistant, "")
+                msg = msg.replace("@" + exact_assistant, "")
                 # if user
                 if (row['user'] == prompt_user):
                     # save current one
@@ -193,12 +253,12 @@ for filename in os.listdir(path_to_data):
                         list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
                         corpus_index += 1
                     # start new
-                    prompt = row['message']
+                    prompt = msg
                 else:
-                    answers.append({'role': "assistant", 'message': row['message'].strip(), "answer_rating": row['role_rating'], "answer_hate": 0})
+                    answers.append({'role': "assistant", 'message': msg.strip(), "answer_rating": int(row['upvotes']), "answer_hate": 0})
             else:
                 mention_prompt = ""
-                mention_answer = row['message']
+                mention_answer = msg
                 # change assistant_n to "user"
                 mention_answer = mention_answer.replace("@" + exact_assistant, "@user")
 
@@ -216,20 +276,20 @@ for filename in os.listdir(path_to_data):
                 if ("@assistant" in mention_answer):
                     exact_assistant = re.search(r'@assistant_(\d+)', mention_answer).group(1)
                     exact_assistant = "assistant_" + str(exact_assistant)
-                    special_answer = mention_answer.replace("@" + exact_assistant, "@user")
+                    mention_answer = mention_answer.replace("@" + exact_assistant, "@user")
                 if ("@user" in mention_prompt):
-                    special_prompt = mention_prompt.replace("@user", "@assistant")
+                    mention_prompt = mention_prompt.replace("@user", "@assistant")
 
-                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': mention_prompt.strip(), 'answers': [{'role': "assistant", 'message': mention_answer.strip(), "answer_rating": row["role_rating"], "answer_hate": 0}]})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': mention_prompt.strip(), 'answers': [{'role': "assistant", 'message': mention_answer.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0}]})
                 corpus_index += 1
 
         # special case - mention user
-        elif ("@user" in row['message']):
+        elif ("@user" in msg):
             exact_user = "user"
             # check if its talking about himself
             if (exact_user == row['user']):
                 # remove number
-                row['message'] = row['message'].replace("@" + exact_user, "")
+                msg = msg.replace("@" + exact_user, "")
                 # if user
                 if (row['user'] == prompt_user):
                     # save current one
@@ -237,12 +297,12 @@ for filename in os.listdir(path_to_data):
                         list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
                         corpus_index += 1
                     # start new
-                    prompt = row['message']
+                    prompt = msg
                 else:
-                    answers.append({'role': "assistant", 'message': row['message'].strip(), "answer_rating": row["role_rating"], "answer_hate": 0})
+                    answers.append({'role': "assistant", 'message': msg.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0})
             else:
                 mention_prompt = ""
-                mention_answer = row['message']
+                mention_answer = msg
 
                 # find previous message from this user
                 for i in range(index-1, -1, -1):
@@ -262,7 +322,7 @@ for filename in os.listdir(path_to_data):
                 if ("@user" in mention_prompt):
                     mention_prompt = mention_prompt.replace("@user", "@assistant")
 
-                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': mention_prompt.strip(), 'answers': [{'role': "assistant", 'message': mention_answer.strip(), "answer_rating": row["role_rating"], "answer_hate": 0}]})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': mention_prompt.strip(), 'answers': [{'role': "assistant", 'message': mention_answer.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0}]})
                 corpus_index += 1
 
         # new prompt
@@ -273,7 +333,7 @@ for filename in os.listdir(path_to_data):
 
             is_question = False
             for word in question_words:
-                if word.lower() in row['message'].lower():
+                if word.lower() in msg.lower():
                     is_question = True
                     break
 
@@ -285,25 +345,39 @@ for filename in os.listdir(path_to_data):
                     corpus_index += 1
 
                 # start new
-                prompt = row['message']
+                prompt = msg
                 answers = []
             else:
                 # answer
-                new_answer = [{'role': "assistant", 'message': row['message'].strip(), "answer_rating": row["role_rating"], "answer_hate": 0}]
+                new_answer = [{'role': "assistant", 'message': msg.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0}]
                 # prompt is previous
-                new_prompt = data['message'][index-1]
+                new_prompt_msg = data['message'][index-1]
+                new_prompt_msg = new_prompt_msg.strip()
+
+                # match edit pattern and remove it
+                edit_match1 = re.match(edit_pattern1, new_prompt_msg)
+                if (edit_match1):
+                    new_prompt_msg = new_prompt_msg.replace(edit_match1.group(0), "")
+                    new_prompt_msg = new_prompt_msg.strip()
+                else:
+                    edit_match2 = re.match(edit_pattern2, new_prompt_msg)
+                    if (edit_match2):
+                        new_prompt_msg = new_prompt_msg.replace(edit_match2.group(0), "")
+                        new_prompt_msg = new_prompt_msg.strip()
+
+                new_prompt = new_prompt_msg
                 list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': new_prompt.strip(), 'answers': new_answer})
 
 
         # answer
         else:
-            answers.append({'role': "assistant", 'message': row['message'].strip(), "answer_rating": row["role_rating"], "answer_hate": 0})
+            answers.append({'role': "assistant", 'message': msg.strip(), "answer_rating": int(row["upvotes"]), "answer_hate": 0})
 
     # save the last one
 
     # if answers are empty - reply to previous message
     if (len(answers) == 0):
-        answers.append({'role': "assistant", 'message': prompt.strip(), "answer_rating": data.iloc[-1]["role_rating"], "answer_hate": 0})
+        answers.append({'role': "assistant", 'message': prompt.strip(), "answer_rating": int(data.iloc[-1]["upvotes"]), "answer_hate": 0})
         # prompt is one before last
         prompt = data['message'][data.shape[0]-2]
     list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
@@ -340,6 +414,7 @@ answer_user = "assistant"
 preprocessed_data = []
 i = 0
 for entry in list_corpus:
+    i += 1
     print(f'Saving {i}/{len(list_corpus)}')
     # save the prompt
     prompt = entry['prompt']
