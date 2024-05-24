@@ -95,6 +95,11 @@ for filename in os.listdir(path_to_data):
         not_dialogue_count += 1
         continue
 
+    # remove invisible characters
+    data['message'] = data['message'].str.replace(u'\u00A0', ' ')
+    # strip extra spaces
+    data['message'] = data['message'].str.strip()
+
 
     # save the preprocessed data - corpus
     #preprocessed_data = []

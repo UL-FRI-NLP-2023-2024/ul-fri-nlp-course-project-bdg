@@ -103,6 +103,12 @@ for filename in os.listdir(path_to_data):
         continue
 
 
+    # remove invisible characters
+    data['message'] = data['message'].str.replace(u'\u00A0', ' ')
+    # strip extra spaces
+    data['message'] = data['message'].str.strip()
+
+
 
     # save the preprocessed data - corpus
     source = "finance"
@@ -432,7 +438,7 @@ save_path = os.path.join(path_to_save_corpus, "corpus_finance.json")
 with open(save_path, 'w', encoding='utf-8') as f:
     json.dump(list_corpus, f, indent=4, ensure_ascii=False)
 
-save_path = os.path.join(path_to_save_our_model, "model_finetune_fincance.json")
+save_path = os.path.join(path_to_save_our_model, "model_finetune_finance.json")
 with open(save_path, 'w', encoding='utf-8') as f:
     json.dump(list_our_model, f, indent=4, ensure_ascii=False)
 

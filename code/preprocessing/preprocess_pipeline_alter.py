@@ -123,6 +123,11 @@ for filename in os.listdir(path_to_data):
     # convert numpy.int64 to int
     data['role_rating'] = data['role_rating'].astype(int)
 
+    # remove invisible characters
+    data['message'] = data['message'].str.replace(u'\u00A0', ' ')
+    # strip extra spaces
+    data['message'] = data['message'].str.strip()
+
 
     # save the preprocessed data - corpus
     source = "alter"
