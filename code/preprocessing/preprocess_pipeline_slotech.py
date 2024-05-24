@@ -7,7 +7,7 @@ import sys
 import json
 
 path_to_data = os.path.join('../../datasets/dataset_slotech/')
-path_to_save_corpus = os.path.join('../../corpora/corpora_slotech/')
+path_to_save_corpus = os.path.join('../../corpora/corpus_slotech/')
 path_to_save_our_model = os.path.join('../../corpora_model_fine-tune/corpus_model_fine-tune_slotech')
 
 all_files_count = len(os.listdir(path_to_data))
@@ -90,6 +90,11 @@ for filename in os.listdir(path_to_data):
     # reset index
     data = data.reset_index(drop=True)
 
+    # skip conversation with only one message
+    if (data.shape[0] < 2):
+        not_dialogue_count += 1
+        continue
+
 
     # save the preprocessed data - corpus
     #preprocessed_data = []
@@ -169,7 +174,7 @@ for filename in os.listdir(path_to_data):
                     citation_answer = msg
 
                 # save the citation
-                list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': citation_prompt.strip(), 'answers': [{'role': "assistant", 'message': citation_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': citation_prompt.strip(), 'answers': [{'role': "assistant", 'message': citation_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
                 corpus_index += 1
 
 
@@ -212,7 +217,7 @@ for filename in os.listdir(path_to_data):
                         citation_answer = msg
 
                     # save the citation
-                    list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': citation_prompt.strip(), 'answers': [{'role': "assistant", 'message': citation_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
+                    list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': citation_prompt.strip(), 'answers': [{'role': "assistant", 'message': citation_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
                     corpus_index += 1
 
 
@@ -230,7 +235,7 @@ for filename in os.listdir(path_to_data):
                 if (row['user'] == prompt_user):
                     # save current one
                     if (len(answers) > 0):
-                        list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
+                        list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
                         #save_path = os.path.join(path_to_save_corpus, filename + "_" + str(corpus_index))
                         #with open(save_path, 'w', encoding='utf-8') as f:
                         #    json.dump(dict, f, indent=4, ensure_ascii=False)
@@ -264,7 +269,7 @@ for filename in os.listdir(path_to_data):
                 if ("@user" in special_prompt):
                     special_prompt = special_prompt.replace("@user", "@assistant")
 
-                list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': special_prompt.strip(), 'answers': [{'role': "assistant", 'message': special_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': special_prompt.strip(), 'answers': [{'role': "assistant", 'message': special_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
                 #save_path = os.path.join(path_to_save_corpus, filename + "_" + str(corpus_index))
                 #with open(save_path, 'w', encoding='utf-8') as f:
                 #    json.dump(dict, f, indent=4, ensure_ascii=False)
@@ -283,7 +288,7 @@ for filename in os.listdir(path_to_data):
                 if (row['user'] == prompt_user):
                     # save current one
                     if (len(answers) > 0):
-                        list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
+                        list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
                         #save_path = os.path.join(path_to_save_corpus, filename + "_" + str(corpus_index))
                         #with open(save_path, 'w', encoding='utf-8') as f:
                         #    json.dump(dict, f, indent=4, ensure_ascii=False)
@@ -312,10 +317,10 @@ for filename in os.listdir(path_to_data):
                     exact_user = "user"
                     exact_assistant = re.search(r'@assistant_(\d+)', special_answer).group(1)
                     special_answer = special_answer.replace("@" + exact_assistant, "@user")
-                if ("@assistant" in special_prompt):
+                if ("@user" in special_prompt):
                     special_prompt = special_prompt.replace("@user", "@assistant")
 
-                list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': special_prompt.strip(), 'answers': [{'role': "assistant", 'message': special_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': special_prompt.strip(), 'answers': [{'role': "assistant", 'message': special_answer.strip(), "answer_rating": 0, "answer_hate": 0}]})
 
 
         # new prompt
@@ -334,7 +339,7 @@ for filename in os.listdir(path_to_data):
                 # new prompt
                 # save current one
                 if (len(answers) > 0):
-                    list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
+                    list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
                     #save_path = os.path.join(path_to_save_corpus, filename + "_" + str(corpus_index))
                     #with open(save_path, 'w', encoding='utf-8') as f:
                     #    json.dump(dict, f, indent=4, ensure_ascii=False)
@@ -349,7 +354,7 @@ for filename in os.listdir(path_to_data):
                 new_answer = [{'role': "assistant", 'message': row['message'].strip(), "answer_rating": 0, "answer_hate": 0}]
                 # prompt is previous
                 new_prompt = data['message'][index-1]
-                list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': new_prompt.strip(), 'answers': new_answer})
+                list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': new_prompt.strip(), 'answers': new_answer})
 
 
         # answer
@@ -363,7 +368,7 @@ for filename in os.listdir(path_to_data):
         answers.append({'role': "assistant", 'message': prompt.strip(), "answer_rating": 0, "answer_hate": 0})
         # prompt is one before last
         prompt = data['message'][data.shape[0]-2]
-    list_corpus.append({'index': corpus_index, 'source': source, 'category': category, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
+    list_corpus.append({'index': corpus_index, 'source': source, "role": "user", 'prompt': prompt.strip(), 'answers': answers})
     #save_path = os.path.join(path_to_save_corpus, filename + "_" + str(corpus_index))
     #with open(save_path, 'w', encoding='utf-8') as f:
     #    json.dump(dict, f, indent=4, ensure_ascii=False)
@@ -388,8 +393,9 @@ for entry in list_corpus:
         words = answer['message'].split()
         hate_word_count = 0
         for word in words:
-            if (word.lower() in hate_words):
-                hate_word_count += 1
+            for hate_word in hate_words:
+                if word.lower().startswith(hate_word):
+                    hate_word_count += 1
 
         answer['answer_hate'] = hate_word_count
 
@@ -403,7 +409,10 @@ prompt_user = "user"
 prompt = ""
 answer_user = "assistant"
 preprocessed_data = []
+i = 0
 for entry in list_corpus:
+    i += 1
+    print(f'Saving {i}/{len(list_corpus)}')
     # save the prompt
     prompt = entry['prompt']
     answers = entry['answers']
