@@ -24,16 +24,24 @@ Folder `./corpora_model_fine-tune` includes all of our final corpora, structured
   
   <br/><br/>
 ### INSTUCTIONS TO RUN ALL THE CODE AND REPRODUCE OUR RESULTS
-1. CRAWLING: TODO
-2. DATA PROCESSING:  
+1. CRAWLING
+
+   a.) In `code/crawler` check `package.json`file
+   
+   b.) There are three crawlers in repository `main_alter.ts`, `main_finance.ts` and `main_slotech.ts`
+
+   c.) Change `"start:dev": "tsx src/main.ts"` in `package.json` to desired crawler
+   
+   d.) Run `npm start` to start crawling. Progress can be seen in terminal.
+3. DATA PROCESSING:  
    a.) Run preprocessing scripts on the crawled data in `./datasets` using 3 prepered scripts in `./code/preprocessing`  
    b.) This will create 3 corpora inside each `./corpora` folder and also 3 corpora suited specifically for our model's fine-tuning in   `./corpora_model_fine-tune` 
-3. COMBINING CORPORA AND CORPUS EVALUATION  
+4. COMBINING CORPORA AND CORPUS EVALUATION  
    a.) Run `./code/evaluate_corpus.py` to combine seperate corpora into a 1 large final corpus  
    b.) Script will also return corpus statistics (number of conversations, number of tokens)  
    c.) Script also randomly samples 10 conversations  
    d.) Finally script converts corpora to a .jsonl file, suitable for LLM training  
-4. MODEL FINE-TUNING  
+5. MODEL FINE-TUNING  
    a.) Execute cells in `./code/LLM/mistral_model_fine-tuning.ipynb`  
    b.) This step takes large amount of computing resources (GPU) and time to complete  
    c.) Using same prompts test the difference between initial model and fine-tuned model  
