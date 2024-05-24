@@ -66,7 +66,6 @@ for i, conversation in enumerate(random_conversations):
 
 
 # nltk tokenization in slovenian
-
 print("Tokenizing all conversations using NLTK...")
 import nltk
 nltk.download('punkt')
@@ -93,3 +92,11 @@ for conversation in combined_corpus_list:
 print()
 print(f'Number of tokens after NLTK tokenization: {num_tokens}')
 
+
+# convert combined corpus.json to corpus.jsonl format to save space
+corpus_jsonl_path = '../corpora/corpus_combined/corpus_combined.jsonl'
+with open(corpus_jsonl_path, 'w', encoding='utf-8') as f:
+    for conversation in combined_corpus_list:
+        f.write(json.dumps(conversation, ensure_ascii=False) + '\n')
+
+print(f"Combined data saved to {corpus_jsonl_path}")
