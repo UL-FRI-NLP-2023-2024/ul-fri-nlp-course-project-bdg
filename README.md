@@ -11,7 +11,7 @@ This file is continiously getting updated as we update our project.
 ### ALL PROJECT REPORTS
 SUBMISSION1 REPORT: [Report1](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report1.pdf)  
 SUBMISSION2 REPORT: [Report2](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report2.pdf)  
-SUBMISSION2 REPORT: [Report3](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report3.pdf)  
+SUBMISSION3 REPORT: [Report3](https://github.com/UL-FRI-NLP-2023-2024/ul-fri-nlp-course-project-bdg/blob/main/report/report3.pdf)  
 
 <br/><br/>
 ### REPOSITORY STRUCTURE
